@@ -1,0 +1,11 @@
+# UltraCartAdminV2::ItemsResponse
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**error** | [**Error**](Error.md) |  | [optional] 
+**items** | [**Array&lt;Item&gt;**](Item.md) |  | [optional] 
+**metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] 
+**success** | **BOOLEAN** |  | [optional] 
+
+
