@@ -135,7 +135,7 @@ module UltraCartAdminV2
 
     def initialize
       @scheme = 'https'
-      @host = ''
+      @host = 'secure.ultracart.com'
       @base_path = '/rest/admin/v2'
       @api_key = {}
       @api_key_prefix = {}
