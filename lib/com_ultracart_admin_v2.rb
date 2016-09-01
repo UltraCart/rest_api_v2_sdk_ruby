@@ -28,9 +28,11 @@ require 'com_ultracart_admin_v2/version'
 require 'com_ultracart_admin_v2/configuration'
 
 # Models
+require 'com_ultracart_admin_v2/models/api_user_application_profile'
 require 'com_ultracart_admin_v2/models/distance'
 require 'com_ultracart_admin_v2/models/error'
 require 'com_ultracart_admin_v2/models/error_response'
+require 'com_ultracart_admin_v2/models/http_header'
 require 'com_ultracart_admin_v2/models/item'
 require 'com_ultracart_admin_v2/models/item_accounting'
 require 'com_ultracart_admin_v2/models/item_amember'
@@ -104,10 +106,21 @@ require 'com_ultracart_admin_v2/models/response_metadata'
 require 'com_ultracart_admin_v2/models/result_set'
 require 'com_ultracart_admin_v2/models/temp_multimedia'
 require 'com_ultracart_admin_v2/models/temp_multimedia_response'
+require 'com_ultracart_admin_v2/models/webhook'
+require 'com_ultracart_admin_v2/models/webhook_event_category'
+require 'com_ultracart_admin_v2/models/webhook_event_subscription'
+require 'com_ultracart_admin_v2/models/webhook_log'
+require 'com_ultracart_admin_v2/models/webhook_log_response'
+require 'com_ultracart_admin_v2/models/webhook_log_summaries_response'
+require 'com_ultracart_admin_v2/models/webhook_log_summary'
+require 'com_ultracart_admin_v2/models/webhook_sample_request'
+require 'com_ultracart_admin_v2/models/webhook_sample_request_response'
+require 'com_ultracart_admin_v2/models/webhooks_response'
 require 'com_ultracart_admin_v2/models/weight'
 
 # APIs
 require 'com_ultracart_admin_v2/api/item_api'
+require 'com_ultracart_admin_v2/api/webhook_api'
 
 module UltraCartAdminV2
   class << self
