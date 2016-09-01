@@ -37,7 +37,13 @@ end
 api_instance = UltraCartAdminV2::ItemApi.new
 
 opts = { 
-  parent_category_id: 56 # Integer | The parent category to retrieve items for.  Unspecified means all items on the account.  0 = root
+  parent_category_id: 56, # Integer | The parent category to retrieve items for.  Unspecified means all items on the account.  0 = root
+  _limit: 56, # Integer | The maximum number of records to return on this one API call.
+  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
+  _since: "_since_example", # String | Fetch items that have been created/modified since this date/time.
+  _sort: "_sort_example", # String | The sort order of the items.  See documentation for examples
+  _expand: "_expand_example", # String | The object expansion to perform on the result.  See documentation for examples
+  _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
 }
 
 begin
@@ -54,6 +60,12 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **parent_category_id** | **Integer**| The parent category to retrieve items for.  Unspecified means all items on the account.  0 &#x3D; root | [optional] 
+ **_limit** | **Integer**| The maximum number of records to return on this one API call. | [optional] 
+ **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] 
+ **_since** | **String**| Fetch items that have been created/modified since this date/time. | [optional] 
+ **_sort** | **String**| The sort order of the items.  See documentation for examples | [optional] 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+ **_placeholders** | **BOOLEAN**| Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] 
 
 ### Return type
 
@@ -127,7 +139,7 @@ nil (empty response body)
 
 
 # **item_items_merchant_item_oid_get**
-> ItemResponse item_items_merchant_item_oid_get(merchant_item_oid)
+> ItemResponse item_items_merchant_item_oid_get(merchant_item_oid, opts)
 
 Retrieve an item
 
@@ -152,10 +164,14 @@ api_instance = UltraCartAdminV2::ItemApi.new
 
 merchant_item_oid = 56 # Integer | The item oid to retrieve.
 
+opts = { 
+  _expand: "_expand_example", # String | The object expansion to perform on the result.  See documentation for examples
+  _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+}
 
 begin
   #Retrieve an item
-  result = api_instance.item_items_merchant_item_oid_get(merchant_item_oid)
+  result = api_instance.item_items_merchant_item_oid_get(merchant_item_oid, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
   puts "Exception when calling ItemApi->item_items_merchant_item_oid_get: #{e}"
@@ -167,6 +183,8 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **merchant_item_oid** | **Integer**| The item oid to retrieve. | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+ **_placeholders** | **BOOLEAN**| Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] 
 
 ### Return type
 

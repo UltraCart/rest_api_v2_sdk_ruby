@@ -35,6 +35,12 @@ module UltraCartAdminV2
     # Retrieves a group of items from the account.  If no parameters are specified, all items will be returned. 
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :parent_category_id The parent category to retrieve items for.  Unspecified means all items on the account.  0 &#x3D; root
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call.
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
+    # @option opts [String] :_since Fetch items that have been created/modified since this date/time.
+    # @option opts [String] :_sort The sort order of the items.  See documentation for examples
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [ItemsResponse]
     def item_items_get(opts = {})
       data, _status_code, _headers = item_items_get_with_http_info(opts)
@@ -45,6 +51,12 @@ module UltraCartAdminV2
     # Retrieves a group of items from the account.  If no parameters are specified, all items will be returned. 
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :parent_category_id The parent category to retrieve items for.  Unspecified means all items on the account.  0 &#x3D; root
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call.
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
+    # @option opts [String] :_since Fetch items that have been created/modified since this date/time.
+    # @option opts [String] :_sort The sort order of the items.  See documentation for examples
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [Array<(ItemsResponse, Fixnum, Hash)>] ItemsResponse data, response status code and response headers
     def item_items_get_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -56,6 +68,12 @@ module UltraCartAdminV2
       # query parameters
       query_params = {}
       query_params[:'parent_category_id'] = opts[:'parent_category_id'] if !opts[:'parent_category_id'].nil?
+      query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
+      query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
+      query_params[:'_since'] = opts[:'_since'] if !opts[:'_since'].nil?
+      query_params[:'_sort'] = opts[:'_sort'] if !opts[:'_sort'].nil?
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+      query_params[:'_placeholders'] = opts[:'_placeholders'] if !opts[:'_placeholders'].nil?
 
       # header parameters
       header_params = {}
@@ -147,6 +165,8 @@ module UltraCartAdminV2
     # Retrieves a single item using the specified item oid. 
     # @param merchant_item_oid The item oid to retrieve.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [ItemResponse]
     def item_items_merchant_item_oid_get(merchant_item_oid, opts = {})
       data, _status_code, _headers = item_items_merchant_item_oid_get_with_http_info(merchant_item_oid, opts)
@@ -157,6 +177,8 @@ module UltraCartAdminV2
     # Retrieves a single item using the specified item oid. 
     # @param merchant_item_oid The item oid to retrieve.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [Array<(ItemResponse, Fixnum, Hash)>] ItemResponse data, response status code and response headers
     def item_items_merchant_item_oid_get_with_http_info(merchant_item_oid, opts = {})
       if @api_client.config.debugging
@@ -169,6 +191,8 @@ module UltraCartAdminV2
 
       # query parameters
       query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+      query_params[:'_placeholders'] = opts[:'_placeholders'] if !opts[:'_placeholders'].nil?
 
       # header parameters
       header_params = {}
