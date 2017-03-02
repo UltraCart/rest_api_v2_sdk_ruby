@@ -26,144 +26,233 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemEbay
+    # True if the item is active for listing
     attr_accessor :active
 
+    # e-Bay category ID
     attr_accessor :category_id
 
+    # Answers to category specific questions
     attr_accessor :category_specifics
 
+    # Description of the condition (e-Bay constant)
     attr_accessor :condition_description
 
+    # Numerical ID of the condition (e-Bay constant)
     attr_accessor :condition_id
 
+    # Number of consecutive failures trying to list this item
     attr_accessor :consecutive_failures
 
+    # e-Bay Store category 1
     attr_accessor :custom_category1
 
+    # e-Bay Store category 2
     attr_accessor :custom_category2
 
+    # Maximum number of days it will take to ship the item
     attr_accessor :dispatch_time_max
 
+    # Domestic 1 method additional item cost
     attr_accessor :domestic_1_additional_cost
 
+    # Domestic 1 method first item cost
     attr_accessor :domestic_1_first_cost
 
+    # Domestic 2 method additional item cost
     attr_accessor :domestic_2_additional_cost
 
+    # Domestic 2 method first item cost
     attr_accessor :domestic_2_first_cost
 
+    # Domestic 3 method additional item cost
     attr_accessor :domestic_3_additional_cost
 
+    # Domestic 3 method first item cost
     attr_accessor :domestic_3_first_cost
 
+    # Domestic 4 method additional item cost
     attr_accessor :domestic_4_additional_cost
 
+    # Domestic 4 method first item cost
     attr_accessor :domestic_4_first_cost
 
+    # If listed, this is the e-Bay auction id
     attr_accessor :ebay_auction_id
 
+    # e-Bay specific inventory
     attr_accessor :ebay_specific_inventory
 
+    # The template name to use hwen rendering the e-Bay listing
     attr_accessor :ebay_template_name
 
+    # The template object identifier to use when rendering the e-Bay listing
     attr_accessor :ebay_template_oid
 
+    # Date/time of the auction end
     attr_accessor :end_time
 
+    # True if item receives free shipping
     attr_accessor :free_shipping
 
+    # The method that is free for free shipping
     attr_accessor :free_shipping_method
 
+    # International 1 method additional item cost
     attr_accessor :international_1_additional_cost
 
+    # International 1 method first item cost
     attr_accessor :international_1_first_cost
 
+    # International 2 method additional item cost
     attr_accessor :international_2_additional_cost
 
+    # International 2 method first item cost
     attr_accessor :international_2_first_cost
 
+    # International 3 method additional item cost
     attr_accessor :international_3_additional_cost
 
+    # International 3 method first item cost
     attr_accessor :international_3_first_cost
 
+    # International 4 method additional item cost
     attr_accessor :international_4_additional_cost
 
+    # International 4 method first item cost
     attr_accessor :international_4_first_cost
 
+    # Date/time of the last status check
     attr_accessor :last_status_dts
 
+    # Current listing dispatch time maximum
     attr_accessor :listed_dispatch_time_max
 
+    # The template object identifier used for the listing
     attr_accessor :listed_ebay_template_oid
 
+    # Date/time of the listing
     attr_accessor :listing_dts
 
+    # The duration of the listing
     attr_accessor :listing_duration
 
+    # Price to list the item at
     attr_accessor :listing_price
 
+    # The price to list the item at if different than the regular UltraCart item price
     attr_accessor :listing_price_override
 
+    # The type of e-Bay listing
     attr_accessor :listing_type
 
     attr_accessor :marketplace_analysis
 
+    # True if marketplace analysis should be performed
     attr_accessor :marketplace_analysis_perform
 
+    # Marketplace FVF percentage
     attr_accessor :marketplace_final_value_fee_percentage
 
+    # Date/time of the marketplace analysis last check
     attr_accessor :marketplace_last_check_dts
 
+    # True if we are the lowest offer in the marketplace
     attr_accessor :marketplace_lowest
 
+    # True if another seller is violating MAP
     attr_accessor :marketplace_map_violation
 
+    # Marketplace multiplier
     attr_accessor :marketplace_multiplier
 
+    # Marketplace other price
     attr_accessor :marketplace_other_price
 
+    # Marketplace other seller
     attr_accessor :marketplace_other_seller
 
+    # Marketplace other shipping
     attr_accessor :marketplace_other_shipping
 
+    # Marketplace other total
     attr_accessor :marketplace_other_total
 
+    # Marketplace our additional profit potential
     attr_accessor :marketplace_our_additional_profit_potential
 
+    # Marketplace our price
     attr_accessor :marketplace_our_price
 
+    # Marketplace our profit
     attr_accessor :marketplace_our_profit
 
+    # Marketplace our shipping
     attr_accessor :marketplace_our_shipping
 
+    # Marketplace our total
     attr_accessor :marketplace_our_total
 
+    # Marketplace overhead
     attr_accessor :marketplace_overhead
 
+    # True if our listing is profitable to sell
     attr_accessor :marketplace_profitable
 
-    attr_accessor :next_attemp_dts
+    # Date/time for the next attempt to list
+    attr_accessor :next_attempt_dts
 
+    # The next listing duration to use when the current listing ends.
     attr_accessor :next_listing_duration
 
+    # True if the item should not qualify for promotional shipping
     attr_accessor :no_promotional_shipping
 
+    # Packaging and handling costs
     attr_accessor :packaging_handling_costs
 
+    # Previous e-Bay auction id
     attr_accessor :previous_ebay_auction_id
 
+    # Quantity available of the item
     attr_accessor :quantity
 
+    # Reserve price
     attr_accessor :reserve_price
 
+    # How to send the item dimensions and weights to e-Bay
     attr_accessor :send_dimensions_and_weight
 
+    # Date/time of the auction start
     attr_accessor :start_time
 
+    # Status of the item's listing
     attr_accessor :status
 
+    # Typical number of days it will take to ship the item
     attr_accessor :target_dispatch_time_max
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -226,7 +315,7 @@ module UltraCartAdminV2
         :'marketplace_our_total' => :'marketplace_our_total',
         :'marketplace_overhead' => :'marketplace_overhead',
         :'marketplace_profitable' => :'marketplace_profitable',
-        :'next_attemp_dts' => :'next_attemp_dts',
+        :'next_attempt_dts' => :'next_attempt_dts',
         :'next_listing_duration' => :'next_listing_duration',
         :'no_promotional_shipping' => :'no_promotional_shipping',
         :'packaging_handling_costs' => :'packaging_handling_costs',
@@ -301,7 +390,7 @@ module UltraCartAdminV2
         :'marketplace_our_total' => :'Float',
         :'marketplace_overhead' => :'Float',
         :'marketplace_profitable' => :'BOOLEAN',
-        :'next_attemp_dts' => :'String',
+        :'next_attempt_dts' => :'String',
         :'next_listing_duration' => :'String',
         :'no_promotional_shipping' => :'BOOLEAN',
         :'packaging_handling_costs' => :'Float',
@@ -557,8 +646,8 @@ module UltraCartAdminV2
         self.marketplace_profitable = attributes[:'marketplace_profitable']
       end
 
-      if attributes.has_key?(:'next_attemp_dts')
-        self.next_attemp_dts = attributes[:'next_attemp_dts']
+      if attributes.has_key?(:'next_attempt_dts')
+        self.next_attempt_dts = attributes[:'next_attempt_dts']
       end
 
       if attributes.has_key?(:'next_listing_duration')
@@ -613,7 +702,19 @@ module UltraCartAdminV2
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      listing_type_validator = EnumAttributeValidator.new('String', ["", "Auction", "Fixed", "Store"])
+      return false unless listing_type_validator.valid?(@listing_type)
       return true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] listing_type Object to be assigned
+    def listing_type=(listing_type)
+      validator = EnumAttributeValidator.new('String', ["", "Auction", "Fixed", "Store"])
+      unless validator.valid?(listing_type)
+        fail ArgumentError, "invalid value for 'listing_type', must be one of #{validator.allowable_values}."
+      end
+      @listing_type = listing_type
     end
 
     # Checks equality by comparing each attribute.
@@ -679,7 +780,7 @@ module UltraCartAdminV2
           marketplace_our_total == o.marketplace_our_total &&
           marketplace_overhead == o.marketplace_overhead &&
           marketplace_profitable == o.marketplace_profitable &&
-          next_attemp_dts == o.next_attemp_dts &&
+          next_attempt_dts == o.next_attempt_dts &&
           next_listing_duration == o.next_listing_duration &&
           no_promotional_shipping == o.no_promotional_shipping &&
           packaging_handling_costs == o.packaging_handling_costs &&
@@ -701,7 +802,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [active, category_id, category_specifics, condition_description, condition_id, consecutive_failures, custom_category1, custom_category2, dispatch_time_max, domestic_1_additional_cost, domestic_1_first_cost, domestic_2_additional_cost, domestic_2_first_cost, domestic_3_additional_cost, domestic_3_first_cost, domestic_4_additional_cost, domestic_4_first_cost, ebay_auction_id, ebay_specific_inventory, ebay_template_name, ebay_template_oid, end_time, free_shipping, free_shipping_method, international_1_additional_cost, international_1_first_cost, international_2_additional_cost, international_2_first_cost, international_3_additional_cost, international_3_first_cost, international_4_additional_cost, international_4_first_cost, last_status_dts, listed_dispatch_time_max, listed_ebay_template_oid, listing_dts, listing_duration, listing_price, listing_price_override, listing_type, marketplace_analysis, marketplace_analysis_perform, marketplace_final_value_fee_percentage, marketplace_last_check_dts, marketplace_lowest, marketplace_map_violation, marketplace_multiplier, marketplace_other_price, marketplace_other_seller, marketplace_other_shipping, marketplace_other_total, marketplace_our_additional_profit_potential, marketplace_our_price, marketplace_our_profit, marketplace_our_shipping, marketplace_our_total, marketplace_overhead, marketplace_profitable, next_attemp_dts, next_listing_duration, no_promotional_shipping, packaging_handling_costs, previous_ebay_auction_id, quantity, reserve_price, send_dimensions_and_weight, start_time, status, target_dispatch_time_max].hash
+      [active, category_id, category_specifics, condition_description, condition_id, consecutive_failures, custom_category1, custom_category2, dispatch_time_max, domestic_1_additional_cost, domestic_1_first_cost, domestic_2_additional_cost, domestic_2_first_cost, domestic_3_additional_cost, domestic_3_first_cost, domestic_4_additional_cost, domestic_4_first_cost, ebay_auction_id, ebay_specific_inventory, ebay_template_name, ebay_template_oid, end_time, free_shipping, free_shipping_method, international_1_additional_cost, international_1_first_cost, international_2_additional_cost, international_2_first_cost, international_3_additional_cost, international_3_first_cost, international_4_additional_cost, international_4_first_cost, last_status_dts, listed_dispatch_time_max, listed_ebay_template_oid, listing_dts, listing_duration, listing_price, listing_price_override, listing_type, marketplace_analysis, marketplace_analysis_perform, marketplace_final_value_fee_percentage, marketplace_last_check_dts, marketplace_lowest, marketplace_map_violation, marketplace_multiplier, marketplace_other_price, marketplace_other_seller, marketplace_other_shipping, marketplace_other_total, marketplace_our_additional_profit_potential, marketplace_our_price, marketplace_our_profit, marketplace_our_shipping, marketplace_our_total, marketplace_overhead, marketplace_profitable, next_attempt_dts, next_listing_duration, no_promotional_shipping, packaging_handling_costs, previous_ebay_auction_id, quantity, reserve_price, send_dimensions_and_weight, start_time, status, target_dispatch_time_max].hash
     end
 
     # Builds the object from hash

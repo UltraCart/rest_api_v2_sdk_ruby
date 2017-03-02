@@ -26,15 +26,17 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemAutoOrderStepArbitraryUnitCostSchedule
+    # Arbitrary unit cost
     attr_accessor :arbitrary_unit_cost
 
+    # Retry days
     attr_accessor :retry_days
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'arbitrary_unit_cost' => :'arbitrary_unit_Cost',
+        :'arbitrary_unit_cost' => :'arbitrary_unit_cost',
         :'retry_days' => :'retry_days'
       }
     end
@@ -55,8 +57,8 @@ module UltraCartAdminV2
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'arbitrary_unit_Cost')
-        self.arbitrary_unit_cost = attributes[:'arbitrary_unit_Cost']
+      if attributes.has_key?(:'arbitrary_unit_cost')
+        self.arbitrary_unit_cost = attributes[:'arbitrary_unit_cost']
       end
 
       if attributes.has_key?(:'retry_days')

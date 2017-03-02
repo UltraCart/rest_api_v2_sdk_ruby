@@ -26,8 +26,10 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemShippingPackageRequirement
+    # Package name
     attr_accessor :package_name
 
+    # Package object identifier
     attr_accessor :package_oid
 
 

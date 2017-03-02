@@ -26,21 +26,26 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemKitComponent
+    # Component item cost
     attr_accessor :component_cost
 
+    # Component item description
     attr_accessor :component_description
 
+    # Component item ID
     attr_accessor :component_merchant_item_id
 
+    # Component item object identifier
     attr_accessor :component_merchant_item_oid
 
+    # Quantity
     attr_accessor :quantity
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'component_cost' => :'component_Cost',
+        :'component_cost' => :'component_cost',
         :'component_description' => :'component_description',
         :'component_merchant_item_id' => :'component_merchant_item_id',
         :'component_merchant_item_oid' => :'component_merchant_item_oid',
@@ -67,8 +72,8 @@ module UltraCartAdminV2
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'component_Cost')
-        self.component_cost = attributes[:'component_Cost']
+      if attributes.has_key?(:'component_cost')
+        self.component_cost = attributes[:'component_cost']
       end
 
       if attributes.has_key?(:'component_description')

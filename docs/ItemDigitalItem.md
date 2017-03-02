@@ -3,10 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**creation_dts** | **String** |  | [optional] 
-**description** | **String** |  | [optional] 
-**file_size** | **Integer** |  | [optional] 
-**mime_type** | **String** |  | [optional] 
-**original_filename** | **String** |  | [optional] 
+**creation_dts** | **String** | File creation date | [optional] 
+**description** | **String** | Description of the digital item | [optional] 
+**file_size** | **Integer** | File size | [optional] 
+**mime_type** | **String** | Mime type associated with the file | [optional] 
+**original_filename** | **String** | Original filename | [optional] 
 
 

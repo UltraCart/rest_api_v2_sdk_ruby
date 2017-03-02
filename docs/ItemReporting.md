@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**report_as_upsell** | **BOOLEAN** |  | [optional] 
-**report_pickable_quantities** | **String** |  | [optional] 
+**report_as_upsell** | **BOOLEAN** | Report as an upsell | [optional] 
+**report_pickable_quantities** | **Array&lt;Integer&gt;** | Report pickable quantities | [optional] 
 
 

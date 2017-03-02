@@ -1,6 +1,6 @@
 # UltraCartAdminV2::WebhookApi
 
-All URIs are relative to *https://secure.ultracart.com/rest/admin/v2*
+All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,12 +11,10 @@ Method | HTTP request | Description
 [**webhook_webhooks_webhook_oid_logs_request_id_get**](WebhookApi.md#webhook_webhooks_webhook_oid_logs_request_id_get) | **GET** /webhook/webhooks/{webhookOid}/logs/{requestId} | Retrieve an individual log
 [**webhook_webhooks_webhook_oid_put**](WebhookApi.md#webhook_webhooks_webhook_oid_put) | **PUT** /webhook/webhooks/{webhookOid} | Update a webhook
 [**webhook_webhooks_webhook_oid_reflow_event_name_post**](WebhookApi.md#webhook_webhooks_webhook_oid_reflow_event_name_post) | **POST** /webhook/webhooks/{webhookOid}/reflow/{eventName} | Resend events to the webhook endpoint.
-[**webhook_webhooks_webhook_oid_samples_get**](WebhookApi.md#webhook_webhooks_webhook_oid_samples_get) | **GET** /webhook/webhooks/{webhookOid}/samples | Retrieve a sample notification.
-[**webhook_webhooks_webhook_oid_validate_post**](WebhookApi.md#webhook_webhooks_webhook_oid_validate_post) | **POST** /webhook/webhooks/{webhookOid}/validate | Send test message to an endpoint.
 
 
 # **webhook_webhooks_get**
-> WebhooksResponse webhook_webhooks_get
+> WebhooksResponse webhook_webhooks_get(opts)
 
 Retrieve webhooks
 
@@ -39,9 +37,16 @@ end
 
 api_instance = UltraCartAdminV2::WebhookApi.new
 
+opts = { 
+  _limit: 100, # Integer | The maximum number of records to return on this one API call.
+  _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
+  _sort: "_sort_example", # String | The sort order of the webhooks.  See documentation for examples
+  _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+}
+
 begin
   #Retrieve webhooks
-  result = api_instance.webhook_webhooks_get
+  result = api_instance.webhook_webhooks_get(opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
   puts "Exception when calling WebhookApi->webhook_webhooks_get: #{e}"
@@ -49,7 +54,13 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_limit** | **Integer**| The maximum number of records to return on this one API call. | [optional] [default to 100]
+ **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] [default to 0]
+ **_sort** | **String**| The sort order of the webhooks.  See documentation for examples | [optional] 
+ **_placeholders** | **BOOLEAN**| Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] 
 
 ### Return type
 
@@ -67,11 +78,11 @@ This endpoint does not need any parameter.
 
 
 # **webhook_webhooks_post**
-> WebhooksResponse webhook_webhooks_post(webhook)
+> WebhookResponse webhook_webhooks_post(webhook, opts)
 
 Add a webhook
 
-Adds a new webhook on the account 
+Adds a new webhook on the account.  If you add a new webhook with the authentication_type set to basic, but do not specify the basic_username and basic_password, UltraCart will automatically generate random ones and return them.  This allows your application to have simpler logic on the setup of a secure webhook. 
 
 ### Example
 ```ruby
@@ -92,10 +103,13 @@ api_instance = UltraCartAdminV2::WebhookApi.new
 
 webhook = UltraCartAdminV2::Webhook.new # Webhook | Webhook to create
 
+opts = { 
+  _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+}
 
 begin
   #Add a webhook
-  result = api_instance.webhook_webhooks_post(webhook)
+  result = api_instance.webhook_webhooks_post(webhook, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
   puts "Exception when calling WebhookApi->webhook_webhooks_post: #{e}"
@@ -107,10 +121,11 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **webhook** | [**Webhook**](Webhook.md)| Webhook to create | 
+ **_placeholders** | **BOOLEAN**| Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] 
 
 ### Return type
 
-[**WebhooksResponse**](WebhooksResponse.md)
+[**WebhookResponse**](WebhookResponse.md)
 
 ### Authorization
 
@@ -118,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json; charset=UTF-8
  - **Accept**: application/json
 
 
@@ -180,7 +195,7 @@ nil (empty response body)
 
 
 # **webhook_webhooks_webhook_oid_logs_get**
-> WebhookLogSummariesResponse webhook_webhooks_webhook_oid_logs_get(webhook_oid)
+> WebhookLogSummariesResponse webhook_webhooks_webhook_oid_logs_get(webhook_oid, opts)
 
 Retrieve the log summaries
 
@@ -205,10 +220,15 @@ api_instance = UltraCartAdminV2::WebhookApi.new
 
 webhook_oid = 56 # Integer | The webhook oid to retrieve log summaries for.
 
+opts = { 
+  _limit: 100, # Integer | The maximum number of records to return on this one API call.
+  _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
+  _since: "_since_example" # String | Fetch log summaries that have been delivered since this date/time.
+}
 
 begin
   #Retrieve the log summaries
-  result = api_instance.webhook_webhooks_webhook_oid_logs_get(webhook_oid)
+  result = api_instance.webhook_webhooks_webhook_oid_logs_get(webhook_oid, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
   puts "Exception when calling WebhookApi->webhook_webhooks_webhook_oid_logs_get: #{e}"
@@ -220,6 +240,9 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **webhook_oid** | **Integer**| The webhook oid to retrieve log summaries for. | 
+ **_limit** | **Integer**| The maximum number of records to return on this one API call. | [optional] [default to 100]
+ **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] [default to 0]
+ **_since** | **String**| Fetch log summaries that have been delivered since this date/time. | [optional] 
 
 ### Return type
 
@@ -297,7 +320,7 @@ Name | Type | Description  | Notes
 
 
 # **webhook_webhooks_webhook_oid_put**
-> WebhooksResponse webhook_webhooks_webhook_oid_put(webhook, webhook_oid)
+> WebhookResponse webhook_webhooks_webhook_oid_put(webhook, webhook_oid, opts)
 
 Update a webhook
 
@@ -324,10 +347,13 @@ webhook = UltraCartAdminV2::Webhook.new # Webhook | Webhook to update
 
 webhook_oid = 56 # Integer | The webhook oid to update.
 
+opts = { 
+  _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+}
 
 begin
   #Update a webhook
-  result = api_instance.webhook_webhooks_webhook_oid_put(webhook, webhook_oid)
+  result = api_instance.webhook_webhooks_webhook_oid_put(webhook, webhook_oid, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
   puts "Exception when calling WebhookApi->webhook_webhooks_webhook_oid_put: #{e}"
@@ -340,10 +366,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **webhook** | [**Webhook**](Webhook.md)| Webhook to update | 
  **webhook_oid** | **Integer**| The webhook oid to update. | 
+ **_placeholders** | **BOOLEAN**| Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] 
 
 ### Return type
 
-[**WebhooksResponse**](WebhooksResponse.md)
+[**WebhookResponse**](WebhookResponse.md)
 
 ### Authorization
 
@@ -351,7 +378,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json; charset=UTF-8
  - **Accept**: application/json
 
 
@@ -411,124 +438,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **webhook_webhooks_webhook_oid_samples_get**
-> WebhookSampleRequestResponse webhook_webhooks_webhook_oid_samples_get(webhook_oid)
-
-Retrieve a sample notification.
-
-Retrieves a sample notification for the webhook.  This provides as example of what the notifications that can be delivered will look like. 
-
-### Example
-```ruby
-# load the gem
-require 'com_ultracart_admin_v2'
-# setup authorization
-UltraCartAdminV2.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
-
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
-
-api_instance = UltraCartAdminV2::WebhookApi.new
-
-webhook_oid = 56 # Integer | The webhook oid to retrieve samples for.
-
-
-begin
-  #Retrieve a sample notification.
-  result = api_instance.webhook_webhooks_webhook_oid_samples_get(webhook_oid)
-  p result
-rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling WebhookApi->webhook_webhooks_webhook_oid_samples_get: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **webhook_oid** | **Integer**| The webhook oid to retrieve samples for. | 
-
-### Return type
-
-[**WebhookSampleRequestResponse**](WebhookSampleRequestResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **webhook_webhooks_webhook_oid_validate_post**
-> WebhookLogResponse webhook_webhooks_webhook_oid_validate_post(samples, webhook_oid)
-
-Send test message to an endpoint.
-
-Performs a test of the webhook endpoint given the specified sample request and returns the log associated with the response. 
-
-### Example
-```ruby
-# load the gem
-require 'com_ultracart_admin_v2'
-# setup authorization
-UltraCartAdminV2.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
-
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
-
-api_instance = UltraCartAdminV2::WebhookApi.new
-
-samples = UltraCartAdminV2::WebhookSampleRequest.new # WebhookSampleRequest | Samples to send in the test
-
-webhook_oid = 56 # Integer | The webhook oid that is being tested.
-
-
-begin
-  #Send test message to an endpoint.
-  result = api_instance.webhook_webhooks_webhook_oid_validate_post(samples, webhook_oid)
-  p result
-rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling WebhookApi->webhook_webhooks_webhook_oid_validate_post: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **samples** | [**WebhookSampleRequest**](WebhookSampleRequest.md)| Samples to send in the test | 
- **webhook_oid** | **Integer**| The webhook oid that is being tested. | 
-
-### Return type
-
-[**WebhookLogResponse**](WebhookLogResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
+ - **Content-Type**: application/json; charset=UTF-8
  - **Accept**: application/json
 
 

@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**barcode** | **String** |  | [optional] 
-**manufacturer_name** | **String** |  | [optional] 
-**manufacturer_sku** | **String** |  | [optional] 
-**unspsc** | **String** |  | [optional] 
+**barcode** | **String** | Barcode | [optional] 
+**manufacturer_name** | **String** | Manufacturer Name | [optional] 
+**manufacturer_sku** | **String** | Manufacturer SKU | [optional] 
+**unspsc** | **String** | UNSPSC | [optional] 
 
 

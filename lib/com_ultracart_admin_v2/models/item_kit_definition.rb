@@ -26,6 +26,7 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemKitDefinition
+    # Components
     attr_accessor :components
 
 

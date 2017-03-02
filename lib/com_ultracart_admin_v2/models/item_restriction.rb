@@ -26,20 +26,28 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemRestriction
+    # Exclude coupons
     attr_accessor :exclude_coupon
 
+    # Exclude from free promotion
     attr_accessor :exclude_from_free_promotion
 
+    # Items
     attr_accessor :items
 
+    # Maximum quantity
     attr_accessor :maximum_quantity
 
+    # Minimum quantity (defaults to 1)
     attr_accessor :minimum_quantity
 
+    # Multiple of quantity
     attr_accessor :multiple_quantity
 
+    # One per customer
     attr_accessor :one_per_customer
 
+    # Purchase separately
     attr_accessor :purchase_separately
 
 

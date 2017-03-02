@@ -26,18 +26,25 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemReviews
+    # True if the item has an approved review
     attr_accessor :has_approved_review
 
+    # True if the item has a review
     attr_accessor :has_review
 
+    # Number of approved reviews
     attr_accessor :review_count
 
+    # Overall score of reviews
     attr_accessor :review_overall
 
+    # Review template name
     attr_accessor :review_template_name
 
+    # Review template object identifier
     attr_accessor :review_template_oid
 
+    # True if the item is reviewable
     attr_accessor :reviewable
 
 

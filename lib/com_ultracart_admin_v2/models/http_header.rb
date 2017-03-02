@@ -26,8 +26,10 @@ require 'date'
 module UltraCartAdminV2
 
   class HTTPHeader
+    # Name of the HTTP header
     attr_accessor :name
 
+    # Value of the HTTP header
     attr_accessor :value
 
 

@@ -26,8 +26,10 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemAmember
+    # The number of days that the customer should be given access to the item
     attr_accessor :amember_payment_duration_days
 
+    # A-member product id give customer access to when they purchase this item
     attr_accessor :amember_product_id
 
 
@@ -69,13 +71,30 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@amember_product_id.nil? && @amember_product_id.to_s.length > 10
+        invalid_properties.push("invalid value for 'amember_product_id', the character length must be smaller than or equal to 10.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@amember_product_id.nil? && @amember_product_id.to_s.length > 10
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] amember_product_id Value to be assigned
+    def amember_product_id=(amember_product_id)
+
+      if !amember_product_id.nil? && amember_product_id.to_s.length > 10
+        fail ArgumentError, "invalid value for 'amember_product_id', the character length must be smaller than or equal to 10."
+      end
+
+      @amember_product_id = amember_product_id
     end
 
     # Checks equality by comparing each attribute.

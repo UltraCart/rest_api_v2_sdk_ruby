@@ -26,36 +26,72 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemContentMultimedia
+    # URL where the image can be downloaded from the cloud
     attr_accessor :cloud_url
 
+    # Expiration date of the cloud URL
     attr_accessor :cloud_url_expiration
 
+    # Code assigned to the file
     attr_accessor :code
 
+    # Description
     attr_accessor :description
 
+    # True to exclude from multimedia gallery
     attr_accessor :exclude_from_gallery
 
+    # File name
     attr_accessor :file_name
 
+    # Height of the image
     attr_accessor :height
 
+    # Item multimedia object identifier
     attr_accessor :merchant_item_multimedia_oid
 
+    # True if the multimedia is an orphan of the active StoreFront themes
     attr_accessor :orphan
 
+    # True if the object is a place holder that can be populated
     attr_accessor :placeholder
 
+    # Temporary multimedia object identifier assigned if uploading new multimedia
     attr_accessor :temp_multimedia_oid
 
+    # Thumbnails of this image
     attr_accessor :thumbnails
 
+    # Type of file
     attr_accessor :type
 
+    # URL to download file
     attr_accessor :url
 
+    # Width of the image
     attr_accessor :width
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -175,13 +211,76 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@code.nil? && @code.to_s.length > 20
+        invalid_properties.push("invalid value for 'code', the character length must be smaller than or equal to 20.")
+      end
+
+
+      if !@description.nil? && @description.to_s.length > 50000
+        invalid_properties.push("invalid value for 'description', the character length must be smaller than or equal to 50000.")
+      end
+
+
+      if !@file_name.nil? && @file_name.to_s.length > 75
+        invalid_properties.push("invalid value for 'file_name', the character length must be smaller than or equal to 75.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@code.nil? && @code.to_s.length > 20
+      return false if !@description.nil? && @description.to_s.length > 50000
+      return false if !@file_name.nil? && @file_name.to_s.length > 75
+      type_validator = EnumAttributeValidator.new('String', ["Image", "PDF", "Text", "Unknown", "Video"])
+      return false unless type_validator.valid?(@type)
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] code Value to be assigned
+    def code=(code)
+
+      if !code.nil? && code.to_s.length > 20
+        fail ArgumentError, "invalid value for 'code', the character length must be smaller than or equal to 20."
+      end
+
+      @code = code
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+
+      if !description.nil? && description.to_s.length > 50000
+        fail ArgumentError, "invalid value for 'description', the character length must be smaller than or equal to 50000."
+      end
+
+      @description = description
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] file_name Value to be assigned
+    def file_name=(file_name)
+
+      if !file_name.nil? && file_name.to_s.length > 75
+        fail ArgumentError, "invalid value for 'file_name', the character length must be smaller than or equal to 75."
+      end
+
+      @file_name = file_name
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] type Object to be assigned
+    def type=(type)
+      validator = EnumAttributeValidator.new('String', ["Image", "PDF", "Text", "Unknown", "Video"])
+      unless validator.valid?(type)
+        fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
+      end
+      @type = type
     end
 
     # Checks equality by comparing each attribute.

@@ -26,38 +26,55 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemChannelPartnerMapping
+    # Barcode UA (EDI only)
     attr_accessor :barcode_ua
 
+    # Barcode UC (EDI only)
     attr_accessor :barcode_uc
 
+    # Barcode UI (EDI only)
     attr_accessor :barcode_ui
 
+    # Barcode UK (EDI only)
     attr_accessor :barcode_uk
 
+    # Buyer DPCI (EDI only)
     attr_accessor :buyer_dpci
 
+    # Buyer item number (EDI only)
     attr_accessor :buyer_item_number
 
+    # Channel partner code
     attr_accessor :channel_partner_code
 
+    # Channel partner object identifier
     attr_accessor :channel_partner_oid
 
+    # From Item ID
     attr_accessor :from_item_id
 
+    # From SKU
     attr_accessor :from_sku
 
+    # Mutually defined number (EDI only)
     attr_accessor :mutually_defined_number
 
+    # Ratio (Channel Partner)
     attr_accessor :quantity_ratio_cp
 
+    # Ratio (UltraCart)
     attr_accessor :quantity_ratio_uc
 
+    # SKU
     attr_accessor :sku
 
+    # Unit of measure
     attr_accessor :unit_of_measure
 
+    # Vendor number (EDI only)
     attr_accessor :vendor_number
 
+    # Vendor style number (EDI only)
     attr_accessor :vendor_style_number
 
 
@@ -189,13 +206,64 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@from_item_id.nil? && @from_item_id.to_s.length > 30
+        invalid_properties.push("invalid value for 'from_item_id', the character length must be smaller than or equal to 30.")
+      end
+
+
+      if !@from_sku.nil? && @from_sku.to_s.length > 50
+        invalid_properties.push("invalid value for 'from_sku', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@sku.nil? && @sku.to_s.length > 50
+        invalid_properties.push("invalid value for 'sku', the character length must be smaller than or equal to 50.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@from_item_id.nil? && @from_item_id.to_s.length > 30
+      return false if !@from_sku.nil? && @from_sku.to_s.length > 50
+      return false if !@sku.nil? && @sku.to_s.length > 50
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] from_item_id Value to be assigned
+    def from_item_id=(from_item_id)
+
+      if !from_item_id.nil? && from_item_id.to_s.length > 30
+        fail ArgumentError, "invalid value for 'from_item_id', the character length must be smaller than or equal to 30."
+      end
+
+      @from_item_id = from_item_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] from_sku Value to be assigned
+    def from_sku=(from_sku)
+
+      if !from_sku.nil? && from_sku.to_s.length > 50
+        fail ArgumentError, "invalid value for 'from_sku', the character length must be smaller than or equal to 50."
+      end
+
+      @from_sku = from_sku
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] sku Value to be assigned
+    def sku=(sku)
+
+      if !sku.nil? && sku.to_s.length > 50
+        fail ArgumentError, "invalid value for 'sku', the character length must be smaller than or equal to 50."
+      end
+
+      @sku = sku
     end
 
     # Checks equality by comparing each attribute.

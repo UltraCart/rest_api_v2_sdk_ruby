@@ -26,12 +26,16 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemShippingCase
+    # Case label
     attr_accessor :case_label
 
+    # Case item id
     attr_accessor :case_merchant_item_id
 
+    # Case item object identifier
     attr_accessor :case_merchant_item_oid
 
+    # Case quantity
     attr_accessor :quantity
 
 
@@ -85,13 +89,30 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@case_label.nil? && @case_label.to_s.length > 20
+        invalid_properties.push("invalid value for 'case_label', the character length must be smaller than or equal to 20.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@case_label.nil? && @case_label.to_s.length > 20
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] case_label Value to be assigned
+    def case_label=(case_label)
+
+      if !case_label.nil? && case_label.to_s.length > 20
+        fail ArgumentError, "invalid value for 'case_label', the character length must be smaller than or equal to 20."
+      end
+
+      @case_label = case_label
     end
 
     # Checks equality by comparing each attribute.

@@ -26,14 +26,19 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemDigitalItem
+    # File creation date
     attr_accessor :creation_dts
 
+    # Description of the digital item
     attr_accessor :description
 
+    # File size
     attr_accessor :file_size
 
+    # Mime type associated with the file
     attr_accessor :mime_type
 
+    # Original filename
     attr_accessor :original_filename
 
 
@@ -93,13 +98,64 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@description.nil? && @description.to_s.length > 200
+        invalid_properties.push("invalid value for 'description', the character length must be smaller than or equal to 200.")
+      end
+
+
+      if !@mime_type.nil? && @mime_type.to_s.length > 100
+        invalid_properties.push("invalid value for 'mime_type', the character length must be smaller than or equal to 100.")
+      end
+
+
+      if !@original_filename.nil? && @original_filename.to_s.length > 250
+        invalid_properties.push("invalid value for 'original_filename', the character length must be smaller than or equal to 250.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@description.nil? && @description.to_s.length > 200
+      return false if !@mime_type.nil? && @mime_type.to_s.length > 100
+      return false if !@original_filename.nil? && @original_filename.to_s.length > 250
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+
+      if !description.nil? && description.to_s.length > 200
+        fail ArgumentError, "invalid value for 'description', the character length must be smaller than or equal to 200."
+      end
+
+      @description = description
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] mime_type Value to be assigned
+    def mime_type=(mime_type)
+
+      if !mime_type.nil? && mime_type.to_s.length > 100
+        fail ArgumentError, "invalid value for 'mime_type', the character length must be smaller than or equal to 100."
+      end
+
+      @mime_type = mime_type
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] original_filename Value to be assigned
+    def original_filename=(original_filename)
+
+      if !original_filename.nil? && original_filename.to_s.length > 250
+        fail ArgumentError, "invalid value for 'original_filename', the character length must be smaller than or equal to 250."
+      end
+
+      @original_filename = original_filename
     end
 
     # Checks equality by comparing each attribute.

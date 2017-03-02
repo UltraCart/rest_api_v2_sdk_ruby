@@ -26,12 +26,16 @@ require 'date'
 module UltraCartAdminV2
 
   class WebhookSampleRequest
+    # Request
     attr_accessor :request
 
+    # Request headers
     attr_accessor :request_headers
 
+    # Request id
     attr_accessor :request_id
 
+    # URI to send request to
     attr_accessor :uri
 
 

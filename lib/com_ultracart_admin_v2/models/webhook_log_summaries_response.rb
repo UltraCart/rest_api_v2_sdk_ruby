@@ -30,8 +30,10 @@ module UltraCartAdminV2
 
     attr_accessor :metadata
 
+    # Indicates if API call was successful
     attr_accessor :success
 
+    # Webhook log summaries
     attr_accessor :webhook_log_summaries
 
 

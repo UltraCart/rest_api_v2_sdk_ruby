@@ -26,30 +26,43 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemShippingDistributionCenter
+    # Allocated to placed orders
     attr_accessor :allocated_to_placed_orders
 
+    # Allocated to shopping carts
     attr_accessor :allocated_to_shopping_carts
 
+    # Available to allocate
     attr_accessor :available_to_allocate
 
+    # Desired inventory level
     attr_accessor :desired_inventory_level
 
+    # Distribution center code
     attr_accessor :distribution_center_code
 
+    # Distribution center object identifier
     attr_accessor :distribution_center_oid
 
+    # Estimated time of arrival
     attr_accessor :eta
 
+    # True if this distribution center handles this item
     attr_accessor :handles
 
+    # Inventory level
     attr_accessor :inventory_level
 
+    # Maximum back-order
     attr_accessor :maximum_backorder
 
+    # Reorder inventory level (triggers notification)
     attr_accessor :reorder_inventory_level
 
+    # SKU
     attr_accessor :sku
 
+    # Stock picking location
     attr_accessor :stock_picking_location
 
 
@@ -157,13 +170,47 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@sku.nil? && @sku.to_s.length > 50
+        invalid_properties.push("invalid value for 'sku', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@stock_picking_location.nil? && @stock_picking_location.to_s.length > 20
+        invalid_properties.push("invalid value for 'stock_picking_location', the character length must be smaller than or equal to 20.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@sku.nil? && @sku.to_s.length > 50
+      return false if !@stock_picking_location.nil? && @stock_picking_location.to_s.length > 20
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] sku Value to be assigned
+    def sku=(sku)
+
+      if !sku.nil? && sku.to_s.length > 50
+        fail ArgumentError, "invalid value for 'sku', the character length must be smaller than or equal to 50."
+      end
+
+      @sku = sku
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] stock_picking_location Value to be assigned
+    def stock_picking_location=(stock_picking_location)
+
+      if !stock_picking_location.nil? && stock_picking_location.to_s.length > 20
+        fail ArgumentError, "invalid value for 'stock_picking_location', the character length must be smaller than or equal to 20."
+      end
+
+      @stock_picking_location = stock_picking_location
     end
 
     # Checks equality by comparing each attribute.

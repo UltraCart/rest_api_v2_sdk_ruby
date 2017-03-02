@@ -26,12 +26,16 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemVariationOption
+    # True if default option
     attr_accessor :default_option
 
+    # Multimedia object identifier
     attr_accessor :merchant_item_multimedia_oid
 
+    # Translated text instance id
     attr_accessor :translated_text_instance_oid
 
+    # Value
     attr_accessor :value
 
 
@@ -85,13 +89,30 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@value.nil? && @value.to_s.length > 50
+        invalid_properties.push("invalid value for 'value', the character length must be smaller than or equal to 50.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@value.nil? && @value.to_s.length > 50
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] value Value to be assigned
+    def value=(value)
+
+      if !value.nil? && value.to_s.length > 50
+        fail ArgumentError, "invalid value for 'value', the character length must be smaller than or equal to 50."
+      end
+
+      @value = value
     end
 
     # Checks equality by comparing each attribute.

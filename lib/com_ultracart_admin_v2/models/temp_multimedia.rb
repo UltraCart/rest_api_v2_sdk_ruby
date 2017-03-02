@@ -26,20 +26,48 @@ require 'date'
 module UltraCartAdminV2
 
   class TempMultimedia
+    # Filename
     attr_accessor :filename
 
+    # Height
     attr_accessor :height
 
+    # Multimedia type
     attr_accessor :multimedia_type
 
+    # Size
     attr_accessor :size
 
+    # Temporary multimedia object identifier
     attr_accessor :temp_multimedia_oid
 
+    # URL
     attr_accessor :url
 
+    # Width
     attr_accessor :width
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -109,13 +137,42 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@filename.nil? && @filename.to_s.length > 75
+        invalid_properties.push("invalid value for 'filename', the character length must be smaller than or equal to 75.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@filename.nil? && @filename.to_s.length > 75
+      multimedia_type_validator = EnumAttributeValidator.new('String', ["Image", "PDF", "Text", "Video"])
+      return false unless multimedia_type_validator.valid?(@multimedia_type)
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] filename Value to be assigned
+    def filename=(filename)
+
+      if !filename.nil? && filename.to_s.length > 75
+        fail ArgumentError, "invalid value for 'filename', the character length must be smaller than or equal to 75."
+      end
+
+      @filename = filename
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] multimedia_type Object to be assigned
+    def multimedia_type=(multimedia_type)
+      validator = EnumAttributeValidator.new('String', ["Image", "PDF", "Text", "Video"])
+      unless validator.valid?(multimedia_type)
+        fail ArgumentError, "invalid value for 'multimedia_type', must be one of #{validator.allowable_values}."
+      end
+      @multimedia_type = multimedia_type
     end
 
     # Checks equality by comparing each attribute.

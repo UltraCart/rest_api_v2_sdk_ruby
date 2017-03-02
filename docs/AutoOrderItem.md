@@ -1,0 +1,26 @@
+# UltraCartAdminV2::AutoOrderItem
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**arbitrary_item_id** | **String** | Arbitrary item id that should be rebilled instead of the normal schedule | [optional] 
+**arbitrary_percentage_discount** | **Float** | An arbitrary percentage discount to provide on future rebills | [optional] 
+**arbitrary_quantity** | **Float** | Arbitrary quantity to rebill | [optional] 
+**arbitrary_schedule_days** | **Integer** | The number of days to rebill if the frequency is set to an arbitrary number of days | [optional] 
+**arbitrary_unit_cost** | **Float** | Arbitrary unit cost that rebills of this item should occur at | [optional] 
+**arbitrary_unit_cost_remaining_orders** | **Integer** | The number of rebills to give the arbitrary unit cost on before reverting to normal pricing. | [optional] 
+**frequency** | **String** | Frequency of the rebill if not a fixed schedule | [optional] 
+**last_order_dts** | **String** | Date/time of the last order of this item | [optional] 
+**life_time_value** | **Float** | The life time value of this item including the original purchase | [optional] 
+**next_preshipment_notice_dts** | **String** | The date/time of when the next pre-shipment notice should be sent | [optional] 
+**next_shipment_dts** | **String** | Date/time that this item is scheduled to rebill | [optional] 
+**no_order_after_dts** | **String** | Date/time after which no additional rebills of this item should occur | [optional] 
+**number_of_rebills** | **Integer** | The number of times this item has rebilled | [optional] 
+**options** | [**Array&lt;AutoOrderItemOption&gt;**](AutoOrderItemOption.md) | Options associated with this item | [optional] 
+**original_item_id** | **String** | The original item id purchased | [optional] 
+**original_quantity** | **Float** | The original quantity purchased | [optional] 
+**preshipment_notice_sent** | **BOOLEAN** | True if the preshipment notice associated with the next rebill has been sent | [optional] 
+**rebill_value** | **Float** | The value of the rebills of this item | [optional] 
+**remaining_repeat_count** | **Integer** | The number of rebills remaining before this item is complete | [optional] 
+
+

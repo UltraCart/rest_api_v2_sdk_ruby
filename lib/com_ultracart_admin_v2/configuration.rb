@@ -136,7 +136,7 @@ module UltraCartAdminV2
     def initialize
       @scheme = 'https'
       @host = 'secure.ultracart.com'
-      @base_path = '/rest/admin/v2'
+      @base_path = '/rest/v2'
       @api_key = {}
       @api_key_prefix = {}
       @timeout = 0
@@ -201,6 +201,13 @@ module UltraCartAdminV2
     # Returns Auth Settings hash for api client.
     def auth_settings
       {
+        'ultraCartBrowserApiKey' =>
+          {
+            type: 'api_key',
+            in: 'header',
+            key: 'x-ultracart-browser-key',
+            value: api_key_with_prefix('x-ultracart-browser-key')
+          },
         'ultraCartOauth' =>
           {
             type: 'oauth2',

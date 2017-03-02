@@ -26,12 +26,16 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemChargebackAddendum
+    # Chargeback addendum object identifier
     attr_accessor :chargeback_addendum_oid
 
+    # Description
     attr_accessor :description
 
+    # Size of the file
     attr_accessor :file_size
 
+    # Number of pages
     attr_accessor :pages
 
 

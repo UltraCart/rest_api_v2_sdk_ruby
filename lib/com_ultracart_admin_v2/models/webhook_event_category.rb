@@ -26,10 +26,13 @@ require 'date'
 module UltraCartAdminV2
 
   class WebhookEventCategory
+    # Name of the event category
     attr_accessor :event_category
 
+    # The events within the category.  Individual subscription flags contained within the child object.
     attr_accessor :events
 
+    # True if all the events within this category are subscribed.  This is a convenience flag to make user interfaces easier.
     attr_accessor :subscribed
 
 

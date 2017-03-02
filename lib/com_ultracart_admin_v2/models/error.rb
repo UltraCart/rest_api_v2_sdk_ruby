@@ -26,12 +26,16 @@ require 'date'
 module UltraCartAdminV2
 
   class Error
+    # A technical message meant to be read by a developer
     attr_accessor :developer_message
 
+    # HTTP status code
     attr_accessor :error_code
 
+    # Additional information often a link to additional documentation
     attr_accessor :more_info
 
+    # An end-user friendly message suitable for display to the customer
     attr_accessor :user_message
 
 

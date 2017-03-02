@@ -26,10 +26,13 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemRealtimePricing
+    # Real-time pricing provider parameters
     attr_accessor :realtime_pricing_parameter
 
+    # Real-time pricing provider name
     attr_accessor :realtime_pricing_provider
 
+    # Real-time pricing provide object identifier
     attr_accessor :realtime_pricing_provider_oid
 
 

@@ -26,36 +26,68 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemOptionValue
+    # Additional dimensions application
     attr_accessor :additional_dimension_application
 
+    # Additional items to add to the order if this value is selected
     attr_accessor :additional_items
 
+    # Cost change
     attr_accessor :cost_change
 
+    # True if default value
     attr_accessor :default_value
 
+    # Digital items to allow the customer to download if this option value is selected
     attr_accessor :digital_items
 
     attr_accessor :height
 
     attr_accessor :length
 
+    # Multimedia object identifier associated with this option value
     attr_accessor :merchant_item_multimedia_oid
 
+    # Option value object identifier
     attr_accessor :option_value_oid
 
+    # Percentage cost change
     attr_accessor :percent_cost_change
 
+    # Translated text instance id
     attr_accessor :translated_text_instance_oid
 
+    # Value
     attr_accessor :value
 
     attr_accessor :weight_change
 
+    # Percentage weight change
     attr_accessor :weight_change_percent
 
     attr_accessor :width
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -177,13 +209,42 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@value.nil? && @value.to_s.length > 1024
+        invalid_properties.push("invalid value for 'value', the character length must be smaller than or equal to 1024.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      additional_dimension_application_validator = EnumAttributeValidator.new('String', ["none", "set item to", "add item"])
+      return false unless additional_dimension_application_validator.valid?(@additional_dimension_application)
+      return false if !@value.nil? && @value.to_s.length > 1024
       return true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] additional_dimension_application Object to be assigned
+    def additional_dimension_application=(additional_dimension_application)
+      validator = EnumAttributeValidator.new('String', ["none", "set item to", "add item"])
+      unless validator.valid?(additional_dimension_application)
+        fail ArgumentError, "invalid value for 'additional_dimension_application', must be one of #{validator.allowable_values}."
+      end
+      @additional_dimension_application = additional_dimension_application
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] value Value to be assigned
+    def value=(value)
+
+      if !value.nil? && value.to_s.length > 1024
+        fail ArgumentError, "invalid value for 'value', the character length must be smaller than or equal to 1024."
+      end
+
+      @value = value
     end
 
     # Checks equality by comparing each attribute.

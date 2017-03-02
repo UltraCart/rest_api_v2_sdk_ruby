@@ -26,10 +26,33 @@ require 'date'
 module UltraCartAdminV2
 
   class Distance
+    # Unit of measure
     attr_accessor :uom
 
+    # The distance measured in UOM
     attr_accessor :value
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -69,13 +92,31 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@uom.nil? && @uom.to_s.length > 2
+        invalid_properties.push("invalid value for 'uom', the character length must be smaller than or equal to 2.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      uom_validator = EnumAttributeValidator.new('String', ["IN", "CM"])
+      return false unless uom_validator.valid?(@uom)
+      return false if !@uom.nil? && @uom.to_s.length > 2
       return true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] uom Object to be assigned
+    def uom=(uom)
+      validator = EnumAttributeValidator.new('String', ["IN", "CM"])
+      unless validator.valid?(uom)
+        fail ArgumentError, "invalid value for 'uom', must be one of #{validator.allowable_values}."
+      end
+      @uom = uom
     end
 
     # Checks equality by comparing each attribute.

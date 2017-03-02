@@ -26,8 +26,10 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemChargeback
+    # Addendums
     attr_accessor :addendums
 
+    # Adjustment requests
     attr_accessor :adjustment_requests
 
 

@@ -26,8 +26,10 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemOptionValueDigitalItem
+    # Digital item object identifier
     attr_accessor :digital_item_oid
 
+    # Original filename
     attr_accessor :original_filename
 
 

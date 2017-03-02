@@ -26,14 +26,19 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemTaxExemption
+    # City
     attr_accessor :city
 
+    # Country code (ISO-3166 two letter)
     attr_accessor :country_code
 
+    # County
     attr_accessor :county
 
+    # Postal code
     attr_accessor :postal_code
 
+    # State code
     attr_accessor :state_code
 
 
@@ -93,13 +98,98 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@city.nil? && @city.to_s.length > 32
+        invalid_properties.push("invalid value for 'city', the character length must be smaller than or equal to 32.")
+      end
+
+
+      if !@country_code.nil? && @country_code.to_s.length > 2
+        invalid_properties.push("invalid value for 'country_code', the character length must be smaller than or equal to 2.")
+      end
+
+
+      if !@county.nil? && @county.to_s.length > 32
+        invalid_properties.push("invalid value for 'county', the character length must be smaller than or equal to 32.")
+      end
+
+
+      if !@postal_code.nil? && @postal_code.to_s.length > 20
+        invalid_properties.push("invalid value for 'postal_code', the character length must be smaller than or equal to 20.")
+      end
+
+
+      if !@state_code.nil? && @state_code.to_s.length > 32
+        invalid_properties.push("invalid value for 'state_code', the character length must be smaller than or equal to 32.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@city.nil? && @city.to_s.length > 32
+      return false if !@country_code.nil? && @country_code.to_s.length > 2
+      return false if !@county.nil? && @county.to_s.length > 32
+      return false if !@postal_code.nil? && @postal_code.to_s.length > 20
+      return false if !@state_code.nil? && @state_code.to_s.length > 32
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] city Value to be assigned
+    def city=(city)
+
+      if !city.nil? && city.to_s.length > 32
+        fail ArgumentError, "invalid value for 'city', the character length must be smaller than or equal to 32."
+      end
+
+      @city = city
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] country_code Value to be assigned
+    def country_code=(country_code)
+
+      if !country_code.nil? && country_code.to_s.length > 2
+        fail ArgumentError, "invalid value for 'country_code', the character length must be smaller than or equal to 2."
+      end
+
+      @country_code = country_code
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] county Value to be assigned
+    def county=(county)
+
+      if !county.nil? && county.to_s.length > 32
+        fail ArgumentError, "invalid value for 'county', the character length must be smaller than or equal to 32."
+      end
+
+      @county = county
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] postal_code Value to be assigned
+    def postal_code=(postal_code)
+
+      if !postal_code.nil? && postal_code.to_s.length > 20
+        fail ArgumentError, "invalid value for 'postal_code', the character length must be smaller than or equal to 20."
+      end
+
+      @postal_code = postal_code
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] state_code Value to be assigned
+    def state_code=(state_code)
+
+      if !state_code.nil? && state_code.to_s.length > 32
+        fail ArgumentError, "invalid value for 'state_code', the character length must be smaller than or equal to 32."
+      end
+
+      @state_code = state_code
     end
 
     # Checks equality by comparing each attribute.

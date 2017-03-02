@@ -26,27 +26,22 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemContentAttribute
-    attr_accessor :item_meta_description
-
-    attr_accessor :item_meta_keywords
-
-    attr_accessor :item_meta_title
-
+    # Attribute name
     attr_accessor :name
 
+    # Attribute translated text instance identifier
     attr_accessor :translated_text_instance_oid
 
+    # Attribute type
     attr_accessor :type
 
+    # Attribute value
     attr_accessor :value
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'item_meta_description' => :'ITEM_META_DESCRIPTION',
-        :'item_meta_keywords' => :'ITEM_META_KEYWORDS',
-        :'item_meta_title' => :'ITEM_META_TITLE',
         :'name' => :'name',
         :'translated_text_instance_oid' => :'translated_text_instance_oid',
         :'type' => :'type',
@@ -57,9 +52,6 @@ module UltraCartAdminV2
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'item_meta_description' => :'String',
-        :'item_meta_keywords' => :'String',
-        :'item_meta_title' => :'String',
         :'name' => :'String',
         :'translated_text_instance_oid' => :'Integer',
         :'type' => :'String',
@@ -74,18 +66,6 @@ module UltraCartAdminV2
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
-
-      if attributes.has_key?(:'ITEM_META_DESCRIPTION')
-        self.item_meta_description = attributes[:'ITEM_META_DESCRIPTION']
-      end
-
-      if attributes.has_key?(:'ITEM_META_KEYWORDS')
-        self.item_meta_keywords = attributes[:'ITEM_META_KEYWORDS']
-      end
-
-      if attributes.has_key?(:'ITEM_META_TITLE')
-        self.item_meta_title = attributes[:'ITEM_META_TITLE']
-      end
 
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
@@ -109,13 +89,47 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@name.nil? && @name.to_s.length > 400
+        invalid_properties.push("invalid value for 'name', the character length must be smaller than or equal to 400.")
+      end
+
+
+      if !@value.nil? && @value.to_s.length > 100000
+        invalid_properties.push("invalid value for 'value', the character length must be smaller than or equal to 100000.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@name.nil? && @name.to_s.length > 400
+      return false if !@value.nil? && @value.to_s.length > 100000
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+
+      if !name.nil? && name.to_s.length > 400
+        fail ArgumentError, "invalid value for 'name', the character length must be smaller than or equal to 400."
+      end
+
+      @name = name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] value Value to be assigned
+    def value=(value)
+
+      if !value.nil? && value.to_s.length > 100000
+        fail ArgumentError, "invalid value for 'value', the character length must be smaller than or equal to 100000."
+      end
+
+      @value = value
     end
 
     # Checks equality by comparing each attribute.
@@ -123,9 +137,6 @@ module UltraCartAdminV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          item_meta_description == o.item_meta_description &&
-          item_meta_keywords == o.item_meta_keywords &&
-          item_meta_title == o.item_meta_title &&
           name == o.name &&
           translated_text_instance_oid == o.translated_text_instance_oid &&
           type == o.type &&
@@ -141,7 +152,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [item_meta_description, item_meta_keywords, item_meta_title, name, translated_text_instance_oid, type, value].hash
+      [name, translated_text_instance_oid, type, value].hash
     end
 
     # Builds the object from hash

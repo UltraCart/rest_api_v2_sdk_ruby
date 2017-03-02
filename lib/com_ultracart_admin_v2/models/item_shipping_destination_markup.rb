@@ -26,23 +26,29 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemShippingDestinationMarkup
-    attr_accessor :country
+    # Country code (ISO-3166 two letter)
+    attr_accessor :country_code
 
+    # Flat fee
     attr_accessor :flat_fee
 
+    # Per item
     attr_accessor :per_item
 
+    # Postal code
     attr_accessor :postal_code
 
+    # Shipping method
     attr_accessor :shipping_method
 
+    # State
     attr_accessor :state
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'country' => :'country',
+        :'country_code' => :'country_code',
         :'flat_fee' => :'flat_fee',
         :'per_item' => :'per_item',
         :'postal_code' => :'postal_code',
@@ -54,7 +60,7 @@ module UltraCartAdminV2
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'country' => :'String',
+        :'country_code' => :'String',
         :'flat_fee' => :'Float',
         :'per_item' => :'Float',
         :'postal_code' => :'String',
@@ -71,8 +77,8 @@ module UltraCartAdminV2
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'country')
-        self.country = attributes[:'country']
+      if attributes.has_key?(:'country_code')
+        self.country_code = attributes[:'country_code']
       end
 
       if attributes.has_key?(:'flat_fee')
@@ -101,13 +107,64 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@country_code.nil? && @country_code.to_s.length > 2
+        invalid_properties.push("invalid value for 'country_code', the character length must be smaller than or equal to 2.")
+      end
+
+
+      if !@postal_code.nil? && @postal_code.to_s.length > 20
+        invalid_properties.push("invalid value for 'postal_code', the character length must be smaller than or equal to 20.")
+      end
+
+
+      if !@state.nil? && @state.to_s.length > 32
+        invalid_properties.push("invalid value for 'state', the character length must be smaller than or equal to 32.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@country_code.nil? && @country_code.to_s.length > 2
+      return false if !@postal_code.nil? && @postal_code.to_s.length > 20
+      return false if !@state.nil? && @state.to_s.length > 32
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] country_code Value to be assigned
+    def country_code=(country_code)
+
+      if !country_code.nil? && country_code.to_s.length > 2
+        fail ArgumentError, "invalid value for 'country_code', the character length must be smaller than or equal to 2."
+      end
+
+      @country_code = country_code
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] postal_code Value to be assigned
+    def postal_code=(postal_code)
+
+      if !postal_code.nil? && postal_code.to_s.length > 20
+        fail ArgumentError, "invalid value for 'postal_code', the character length must be smaller than or equal to 20."
+      end
+
+      @postal_code = postal_code
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] state Value to be assigned
+    def state=(state)
+
+      if !state.nil? && state.to_s.length > 32
+        fail ArgumentError, "invalid value for 'state', the character length must be smaller than or equal to 32."
+      end
+
+      @state = state
     end
 
     # Checks equality by comparing each attribute.
@@ -115,7 +172,7 @@ module UltraCartAdminV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          country == o.country &&
+          country_code == o.country_code &&
           flat_fee == o.flat_fee &&
           per_item == o.per_item &&
           postal_code == o.postal_code &&
@@ -132,7 +189,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [country, flat_fee, per_item, postal_code, shipping_method, state].hash
+      [country_code, flat_fee, per_item, postal_code, shipping_method, state].hash
     end
 
     # Builds the object from hash

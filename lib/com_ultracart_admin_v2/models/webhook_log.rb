@@ -26,24 +26,34 @@ require 'date'
 module UltraCartAdminV2
 
   class WebhookLog
+    # Date/time of delivery
     attr_accessor :delivery_dts
 
+    # Number of milliseconds to process the notification
     attr_accessor :duration
 
+    # Request payload (first 100,000 characters)
     attr_accessor :request
 
+    # Request headers sent to the server
     attr_accessor :request_headers
 
+    # Request id is a unique string that you can look up in the logs
     attr_accessor :request_id
 
+    # Response payload (first 100,000 characters)
     attr_accessor :response
 
+    # Response headers received from the server
     attr_accessor :response_headers
 
+    # HTTP status code received from the server
     attr_accessor :status_code
 
+    # True if the delivery was successful
     attr_accessor :success
 
+    # URI of the webhook delivered to
     attr_accessor :uri
 
 

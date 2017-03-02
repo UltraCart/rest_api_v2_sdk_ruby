@@ -26,8 +26,10 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemEbayCategorySpecific
+    # Name of the category specification field
     attr_accessor :name
 
+    # Value
     attr_accessor :value
 
 

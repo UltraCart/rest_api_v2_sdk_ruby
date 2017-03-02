@@ -26,6 +26,7 @@ require 'date'
 module UltraCartAdminV2
 
   class ResponseMetadata
+    # Payload name
     attr_accessor :payload_name
 
     attr_accessor :result_set

@@ -26,14 +26,19 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemEbayMarketListing
+    # Auction ID
     attr_accessor :auction_id
 
+    # Price
     attr_accessor :price
 
+    # Seller
     attr_accessor :seller
 
+    # Shipping
     attr_accessor :shipping
 
+    # Total
     attr_accessor :total
 
 

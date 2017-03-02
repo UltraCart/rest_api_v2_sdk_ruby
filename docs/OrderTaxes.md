@@ -1,0 +1,19 @@
+# UltraCartAdminV2::OrderTaxes
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**tax_city_accounting_code** | **String** | QuickBooks tax city code | [optional] 
+**tax_country_accounting_code** | **String** | QuickBooks tax country code | [optional] 
+**tax_county** | **String** | County used for tax calculation purposes (only in the United States) | [optional] 
+**tax_county_accounting_code** | **String** | QuickBooks tax county code | [optional] 
+**tax_postal_code_accounting_code** | **String** | QuickBooks tax postal code code | [optional] 
+**tax_rate** | **Float** | Tax rate | [optional] 
+**tax_rate_city** | **Float** | Tax rate at the city level | [optional] 
+**tax_rate_country** | **Float** | Tax rate at the country level | [optional] 
+**tax_rate_county** | **Float** | Tax rate at the county level | [optional] 
+**tax_rate_postal_code** | **Float** | Tax rate at the postal code level | [optional] 
+**tax_rate_state** | **Float** | Tax rate at the state level | [optional] 
+**tax_state_accounting_code** | **String** | QuickBOoks tax state code | [optional] 
+
+

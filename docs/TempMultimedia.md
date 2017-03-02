@@ -3,12 +3,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filename** | **String** |  | [optional] 
-**height** | **Integer** |  | [optional] 
-**multimedia_type** | **String** |  | [optional] 
-**size** | **Integer** |  | [optional] 
-**temp_multimedia_oid** | **Integer** |  | [optional] 
-**url** | **String** |  | [optional] 
-**width** | **Integer** |  | [optional] 
+**filename** | **String** | Filename | [optional] 
+**height** | **Integer** | Height | [optional] 
+**multimedia_type** | **String** | Multimedia type | [optional] 
+**size** | **Integer** | Size | [optional] 
+**temp_multimedia_oid** | **Integer** | Temporary multimedia object identifier | [optional] 
+**url** | **String** | URL | [optional] 
+**width** | **Integer** | Width | [optional] 
 
 

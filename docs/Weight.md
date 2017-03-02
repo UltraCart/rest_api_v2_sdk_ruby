@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**uom** | **String** |  | [optional] 
-**value** | **Float** |  | [optional] 
+**uom** | **String** | Unit of measure | [optional] 
+**value** | **Float** | Weight | [optional] 
 
 

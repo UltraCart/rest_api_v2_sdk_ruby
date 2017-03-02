@@ -26,6 +26,7 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemInternal
+    # Memo
     attr_accessor :memo
 
 
@@ -61,13 +62,30 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@memo.nil? && @memo.to_s.length > 250
+        invalid_properties.push("invalid value for 'memo', the character length must be smaller than or equal to 250.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@memo.nil? && @memo.to_s.length > 250
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] memo Value to be assigned
+    def memo=(memo)
+
+      if !memo.nil? && memo.to_s.length > 250
+        fail ArgumentError, "invalid value for 'memo', the character length must be smaller than or equal to 250."
+      end
+
+      @memo = memo
     end
 
     # Checks equality by comparing each attribute.

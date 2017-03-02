@@ -32,13 +32,14 @@ module UltraCartAdminV2
     end
 
     # Retrieve items
-    # Retrieves a group of items from the account.  If no parameters are specified, all items will be returned. 
+    # Retrieves a group of items from the account.  If no parameters are specified, all items will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :parent_category_id The parent category to retrieve items for.  Unspecified means all items on the account.  0 &#x3D; root
-    # @option opts [Integer] :_limit The maximum number of records to return on this one API call.
-    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
+    # @option opts [Integer] :parent_category_id The parent category object id to retrieve items for.  Unspecified means all items on the account.  0 &#x3D; root
+    # @option opts [String] :parent_category_path The parent category path to retrieve items for.  Unspecified means all items on the account.  / &#x3D; root
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Default 100, Max 2000) (default to 100)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
     # @option opts [String] :_since Fetch items that have been created/modified since this date/time.
-    # @option opts [String] :_sort The sort order of the items.  See documentation for examples
+    # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [ItemsResponse]
@@ -48,13 +49,14 @@ module UltraCartAdminV2
     end
 
     # Retrieve items
-    # Retrieves a group of items from the account.  If no parameters are specified, all items will be returned. 
+    # Retrieves a group of items from the account.  If no parameters are specified, all items will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :parent_category_id The parent category to retrieve items for.  Unspecified means all items on the account.  0 &#x3D; root
-    # @option opts [Integer] :_limit The maximum number of records to return on this one API call.
+    # @option opts [Integer] :parent_category_id The parent category object id to retrieve items for.  Unspecified means all items on the account.  0 &#x3D; root
+    # @option opts [String] :parent_category_path The parent category path to retrieve items for.  Unspecified means all items on the account.  / &#x3D; root
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Default 100, Max 2000)
     # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
     # @option opts [String] :_since Fetch items that have been created/modified since this date/time.
-    # @option opts [String] :_sort The sort order of the items.  See documentation for examples
+    # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [Array<(ItemsResponse, Fixnum, Hash)>] ItemsResponse data, response status code and response headers
@@ -68,6 +70,7 @@ module UltraCartAdminV2
       # query parameters
       query_params = {}
       query_params[:'parent_category_id'] = opts[:'parent_category_id'] if !opts[:'parent_category_id'].nil?
+      query_params[:'parent_category_path'] = opts[:'parent_category_path'] if !opts[:'parent_category_path'].nil?
       query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
       query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
       query_params[:'_since'] = opts[:'_since'] if !opts[:'_since'].nil?
@@ -226,7 +229,7 @@ module UltraCartAdminV2
 
     # Update an item
     # Update a new item on the UltraCart account. 
-    # @param item Item to create
+    # @param item Item to update
     # @param merchant_item_oid The item oid to update.
     # @param [Hash] opts the optional parameters
     # @return [ItemResponse]
@@ -237,7 +240,7 @@ module UltraCartAdminV2
 
     # Update an item
     # Update a new item on the UltraCart account. 
-    # @param item Item to create
+    # @param item Item to update
     # @param merchant_item_oid The item oid to update.
     # @param [Hash] opts the optional parameters
     # @return [Array<(ItemResponse, Fixnum, Hash)>] ItemResponse data, response status code and response headers
@@ -263,7 +266,7 @@ module UltraCartAdminV2
       local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
+      local_header_content_type = ['application/json; charset=UTF-8']
       header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
@@ -320,7 +323,7 @@ module UltraCartAdminV2
       local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
+      local_header_content_type = ['application/json; charset=UTF-8']
       header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters

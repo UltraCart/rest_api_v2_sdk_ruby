@@ -26,14 +26,19 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemContentAssignment
+    # Page (group) object identifier
     attr_accessor :group_oid
 
+    # Page (group) path
     attr_accessor :group_path
 
+    # StoreFront host name
     attr_accessor :host
 
+    # Sort order (optional)
     attr_accessor :sort_order
 
+    # URL part if the item id is not used
     attr_accessor :url_part
 
 
@@ -93,13 +98,30 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@url_part.nil? && @url_part.to_s.length > 150
+        invalid_properties.push("invalid value for 'url_part', the character length must be smaller than or equal to 150.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@url_part.nil? && @url_part.to_s.length > 150
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] url_part Value to be assigned
+    def url_part=(url_part)
+
+      if !url_part.nil? && url_part.to_s.length > 150
+        fail ArgumentError, "invalid value for 'url_part', the character length must be smaller than or equal to 150."
+      end
+
+      @url_part = url_part
     end
 
     # Checks equality by comparing each attribute.

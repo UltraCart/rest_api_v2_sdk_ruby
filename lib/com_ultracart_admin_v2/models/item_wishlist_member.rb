@@ -26,10 +26,13 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemWishlistMember
+    # WishList Member instance description
     attr_accessor :wishlist_member_instance_description
 
+    # WishList Member instance object identifier
     attr_accessor :wishlist_member_instance_oid
 
+    # WishList Member SKU
     attr_accessor :wishlist_member_sku
 
 
@@ -77,13 +80,30 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@wishlist_member_sku.nil? && @wishlist_member_sku.to_s.length > 25
+        invalid_properties.push("invalid value for 'wishlist_member_sku', the character length must be smaller than or equal to 25.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@wishlist_member_sku.nil? && @wishlist_member_sku.to_s.length > 25
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] wishlist_member_sku Value to be assigned
+    def wishlist_member_sku=(wishlist_member_sku)
+
+      if !wishlist_member_sku.nil? && wishlist_member_sku.to_s.length > 25
+        fail ArgumentError, "invalid value for 'wishlist_member_sku', the character length must be smaller than or equal to 25."
+      end
+
+      @wishlist_member_sku = wishlist_member_sku
     end
 
     # Checks equality by comparing each attribute.

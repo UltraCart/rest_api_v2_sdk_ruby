@@ -26,14 +26,19 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemVariation
+    # Default text
     attr_accessor :default_text
 
+    # Default text translated text instance id
     attr_accessor :default_text_translated_text_instance_oid
 
+    # Name
     attr_accessor :name
 
+    # Name translated text instance id
     attr_accessor :name_translated_text_instance_oid
 
+    # Options
     attr_accessor :options
 
 
@@ -95,13 +100,47 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@default_text.nil? && @default_text.to_s.length > 50
+        invalid_properties.push("invalid value for 'default_text', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@name.nil? && @name.to_s.length > 50
+        invalid_properties.push("invalid value for 'name', the character length must be smaller than or equal to 50.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@default_text.nil? && @default_text.to_s.length > 50
+      return false if !@name.nil? && @name.to_s.length > 50
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] default_text Value to be assigned
+    def default_text=(default_text)
+
+      if !default_text.nil? && default_text.to_s.length > 50
+        fail ArgumentError, "invalid value for 'default_text', the character length must be smaller than or equal to 50."
+      end
+
+      @default_text = default_text
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+
+      if !name.nil? && name.to_s.length > 50
+        fail ArgumentError, "invalid value for 'name', the character length must be smaller than or equal to 50."
+      end
+
+      @name = name
     end
 
     # Checks equality by comparing each attribute.

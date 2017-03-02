@@ -26,17 +26,41 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemShippingDestinationRestriction
-    attr_accessor :country
+    # Country code (ISO-3166 two letter)
+    attr_accessor :country_code
 
+    # State
     attr_accessor :state
 
+    # Validity
     attr_accessor :validity
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'country' => :'country',
+        :'country_code' => :'country_code',
         :'state' => :'state',
         :'validity' => :'validity'
       }
@@ -45,7 +69,7 @@ module UltraCartAdminV2
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'country' => :'String',
+        :'country_code' => :'String',
         :'state' => :'String',
         :'validity' => :'String'
       }
@@ -59,8 +83,8 @@ module UltraCartAdminV2
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'country')
-        self.country = attributes[:'country']
+      if attributes.has_key?(:'country_code')
+        self.country_code = attributes[:'country_code']
       end
 
       if attributes.has_key?(:'state')
@@ -77,13 +101,59 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@country_code.nil? && @country_code.to_s.length > 2
+        invalid_properties.push("invalid value for 'country_code', the character length must be smaller than or equal to 2.")
+      end
+
+
+      if !@state.nil? && @state.to_s.length > 32
+        invalid_properties.push("invalid value for 'state', the character length must be smaller than or equal to 32.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@country_code.nil? && @country_code.to_s.length > 2
+      return false if !@state.nil? && @state.to_s.length > 32
+      validity_validator = EnumAttributeValidator.new('String', ["valid only for", "invalid for"])
+      return false unless validity_validator.valid?(@validity)
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] country_code Value to be assigned
+    def country_code=(country_code)
+
+      if !country_code.nil? && country_code.to_s.length > 2
+        fail ArgumentError, "invalid value for 'country_code', the character length must be smaller than or equal to 2."
+      end
+
+      @country_code = country_code
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] state Value to be assigned
+    def state=(state)
+
+      if !state.nil? && state.to_s.length > 32
+        fail ArgumentError, "invalid value for 'state', the character length must be smaller than or equal to 32."
+      end
+
+      @state = state
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] validity Object to be assigned
+    def validity=(validity)
+      validator = EnumAttributeValidator.new('String', ["valid only for", "invalid for"])
+      unless validator.valid?(validity)
+        fail ArgumentError, "invalid value for 'validity', must be one of #{validator.allowable_values}."
+      end
+      @validity = validity
     end
 
     # Checks equality by comparing each attribute.
@@ -91,7 +161,7 @@ module UltraCartAdminV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          country == o.country &&
+          country_code == o.country_code &&
           state == o.state &&
           validity == o.validity
     end
@@ -105,7 +175,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [country, state, validity].hash
+      [country_code, state, validity].hash
     end
 
     # Builds the object from hash

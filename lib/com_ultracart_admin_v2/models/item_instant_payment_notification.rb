@@ -26,10 +26,13 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemInstantPaymentNotification
+    # True for HTTP POST instead of GET
     attr_accessor :post_operation
 
+    # Successful response text
     attr_accessor :successful_response_text
 
+    # URL
     attr_accessor :url
 
 
@@ -77,13 +80,47 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@successful_response_text.nil? && @successful_response_text.to_s.length > 1024
+        invalid_properties.push("invalid value for 'successful_response_text', the character length must be smaller than or equal to 1024.")
+      end
+
+
+      if !@url.nil? && @url.to_s.length > 1024
+        invalid_properties.push("invalid value for 'url', the character length must be smaller than or equal to 1024.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@successful_response_text.nil? && @successful_response_text.to_s.length > 1024
+      return false if !@url.nil? && @url.to_s.length > 1024
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] successful_response_text Value to be assigned
+    def successful_response_text=(successful_response_text)
+
+      if !successful_response_text.nil? && successful_response_text.to_s.length > 1024
+        fail ArgumentError, "invalid value for 'successful_response_text', the character length must be smaller than or equal to 1024."
+      end
+
+      @successful_response_text = successful_response_text
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] url Value to be assigned
+    def url=(url)
+
+      if !url.nil? && url.to_s.length > 1024
+        fail ArgumentError, "invalid value for 'url', the character length must be smaller than or equal to 1024."
+      end
+
+      @url = url
     end
 
     # Checks equality by comparing each attribute.

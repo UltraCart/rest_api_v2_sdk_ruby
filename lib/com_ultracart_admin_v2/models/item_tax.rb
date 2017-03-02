@@ -26,10 +26,13 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemTax
+    # Exemptions
     attr_accessor :exemptions
 
+    # True if tax free
     attr_accessor :tax_free
 
+    # Taxable cost if different than regular cost
     attr_accessor :taxable_cost
 
 

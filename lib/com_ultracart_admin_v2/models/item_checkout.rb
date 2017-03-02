@@ -26,10 +26,13 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemCheckout
+    # True to suppress buySAFE
     attr_accessor :suppress_buysafe
 
+    # Terms for purchasing this item
     attr_accessor :terms
 
+    # Terms translated text instance identifier
     attr_accessor :terms_translated_text_instance_oid
 
 
@@ -77,13 +80,30 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@terms.nil? && @terms.to_s.length > 10000
+        invalid_properties.push("invalid value for 'terms', the character length must be smaller than or equal to 10000.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@terms.nil? && @terms.to_s.length > 10000
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] terms Value to be assigned
+    def terms=(terms)
+
+      if !terms.nil? && terms.to_s.length > 10000
+        fail ArgumentError, "invalid value for 'terms', the character length must be smaller than or equal to 10000."
+      end
+
+      @terms = terms
     end
 
     # Checks equality by comparing each attribute.

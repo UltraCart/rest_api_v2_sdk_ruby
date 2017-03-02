@@ -28,10 +28,12 @@ module UltraCartAdminV2
   class ItemsResponse
     attr_accessor :error
 
+    # items
     attr_accessor :items
 
     attr_accessor :metadata
 
+    # Indicates if API call was successful
     attr_accessor :success
 
 

@@ -26,38 +26,55 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemPricing
+    # Allow arbitrary cost
     attr_accessor :allow_arbitrary_cost
 
+    # Arbitrary cost velocity code
     attr_accessor :arbitrary_cost_velocity_code
 
+    # Automatic pricing tier name
     attr_accessor :automatic_pricing_tier_name
 
+    # Automatic pricing tier object identifier
     attr_accessor :automatic_pricing_tier_oid
 
+    # Cost of goods sold
     attr_accessor :cogs
 
+    # Cost
     attr_accessor :cost
 
+    # Currency code
     attr_accessor :currency_code
 
+    # Manufacturer suggested retail price
     attr_accessor :manufacturer_suggested_retail_price
 
+    # Maximum arbitrary cost
     attr_accessor :maximum_arbitrary_cost
 
+    # Minimum advertised price
     attr_accessor :minimum_advertised_price
 
+    # Minimum arbitrary cost
     attr_accessor :minimum_arbitrary_cost
 
+    # Mix and match group
     attr_accessor :mix_and_match_group
 
+    # Mix and match group object identifier
     attr_accessor :mix_and_match_group_oid
 
+    # Sale cost
     attr_accessor :sale_cost
 
+    # Sale end
     attr_accessor :sale_end
 
+    # Sale start
     attr_accessor :sale_start
 
+    # Tiers
     attr_accessor :tiers
 
 
@@ -191,13 +208,47 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@arbitrary_cost_velocity_code.nil? && @arbitrary_cost_velocity_code.to_s.length > 10000
+        invalid_properties.push("invalid value for 'arbitrary_cost_velocity_code', the character length must be smaller than or equal to 10000.")
+      end
+
+
+      if !@currency_code.nil? && @currency_code.to_s.length > 3
+        invalid_properties.push("invalid value for 'currency_code', the character length must be smaller than or equal to 3.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@arbitrary_cost_velocity_code.nil? && @arbitrary_cost_velocity_code.to_s.length > 10000
+      return false if !@currency_code.nil? && @currency_code.to_s.length > 3
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] arbitrary_cost_velocity_code Value to be assigned
+    def arbitrary_cost_velocity_code=(arbitrary_cost_velocity_code)
+
+      if !arbitrary_cost_velocity_code.nil? && arbitrary_cost_velocity_code.to_s.length > 10000
+        fail ArgumentError, "invalid value for 'arbitrary_cost_velocity_code', the character length must be smaller than or equal to 10000."
+      end
+
+      @arbitrary_cost_velocity_code = arbitrary_cost_velocity_code
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] currency_code Value to be assigned
+    def currency_code=(currency_code)
+
+      if !currency_code.nil? && currency_code.to_s.length > 3
+        fail ArgumentError, "invalid value for 'currency_code', the character length must be smaller than or equal to 3."
+      end
+
+      @currency_code = currency_code
     end
 
     # Checks equality by comparing each attribute.

@@ -26,36 +26,72 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemShippingMethod
+    # Cost
     attr_accessor :cost
 
+    # Each additional item markup
     attr_accessor :each_additional_item_markup
 
+    # Filter to this method if available
     attr_accessor :filter_to_if_available
 
+    # First item markup
     attr_accessor :first_item_markup
 
+    # Fixed shipping cost
     attr_accessor :fixed_shipping_cost
 
+    # Flat fee markup
     attr_accessor :flat_fee_markup
 
+    # Free shipping
     attr_accessor :free_shipping
 
+    # Per item fee markup
     attr_accessor :per_item_fee_markup
 
+    # Percentage markup
     attr_accessor :percentage_markup
 
+    # Percentage of item markup
     attr_accessor :percentage_of_item_markup
 
+    # Relax restrictions on upsell
     attr_accessor :relax_restrictions_on_upsell
 
+    # Shipping method name
     attr_accessor :shipping_method
 
+    # Shipping method object identifier
     attr_accessor :shipping_method_oid
 
+    # Shipping method validity
     attr_accessor :shipping_method_validity
 
+    # Signature required
     attr_accessor :signature_required
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -179,7 +215,19 @@ module UltraCartAdminV2
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      shipping_method_validity_validator = EnumAttributeValidator.new('String', ["invalid for", "valid for", "valid only for"])
+      return false unless shipping_method_validity_validator.valid?(@shipping_method_validity)
       return true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] shipping_method_validity Object to be assigned
+    def shipping_method_validity=(shipping_method_validity)
+      validator = EnumAttributeValidator.new('String', ["invalid for", "valid for", "valid only for"])
+      unless validator.valid?(shipping_method_validity)
+        fail ArgumentError, "invalid value for 'shipping_method_validity', must be one of #{validator.allowable_values}."
+      end
+      @shipping_method_validity = shipping_method_validity
     end
 
     # Checks equality by comparing each attribute.

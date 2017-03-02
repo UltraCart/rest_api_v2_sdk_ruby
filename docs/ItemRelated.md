@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**no_system_calculated_related_items** | **BOOLEAN** |  | [optional] 
-**not_relatable** | **BOOLEAN** |  | [optional] 
-**related_items** | [**Array&lt;ItemRelatedItem&gt;**](ItemRelatedItem.md) |  | [optional] 
+**no_system_calculated_related_items** | **BOOLEAN** | True to suppress system calculated relationships | [optional] 
+**not_relatable** | **BOOLEAN** | Not relatable | [optional] 
+**related_items** | [**Array&lt;ItemRelatedItem&gt;**](ItemRelatedItem.md) | Related items | [optional] 
 
 

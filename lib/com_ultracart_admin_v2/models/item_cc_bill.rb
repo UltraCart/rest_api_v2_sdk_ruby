@@ -26,16 +26,22 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemCCBill
+    # Allowed currencies
     attr_accessor :ccbill_allowed_currencies
 
+    # Allowed types
     attr_accessor :ccbill_allowed_types
 
+    # Currency code
     attr_accessor :ccbill_currency_code
 
+    # Form name
     attr_accessor :ccbill_form_name
 
+    # Sub-account id
     attr_accessor :ccbill_subaccount_id
 
+    # Subscription type id
     attr_accessor :ccbill_subscription_type_id
 
 

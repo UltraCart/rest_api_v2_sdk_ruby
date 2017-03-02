@@ -26,20 +26,28 @@ require 'date'
 module UltraCartAdminV2
 
   class WebhookEventSubscription
+    # Comment about the event to provide further clarification to the end user
     attr_accessor :comments
 
+    # True if the event is deprecated.  See the API change log for details on when it will be discontinued.
     attr_accessor :deprecated_flag
 
+    # True if the event is discontinued.  See the API change log for details on migration details.
     attr_accessor :discontinued_flag
 
+    # Description of the event
     attr_accessor :event_description
 
+    # Event name
     attr_accessor :event_name
 
+    # The expand string for the notification object.  See the individual resource _expand documentation for valid values.
     attr_accessor :expansion
 
+    # True if this is event is subscribed to
     attr_accessor :subscribed
 
+    # The webhook event object identifier
     attr_accessor :webhook_event_oid
 
 

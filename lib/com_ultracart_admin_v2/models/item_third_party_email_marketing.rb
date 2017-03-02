@@ -26,16 +26,42 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemThirdPartyEmailMarketing
+    # Add tags
     attr_accessor :add_tags
 
+    # Provider name
     attr_accessor :provider_name
 
+    # Remove tags
     attr_accessor :remove_tags
 
+    # Subscribe to lists
     attr_accessor :subscribe_lists
 
+    # Unsubscribe from lists
     attr_accessor :unsubscribe_lists
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -107,7 +133,19 @@ module UltraCartAdminV2
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      provider_name_validator = EnumAttributeValidator.new('String', ["ActiveCampaign", "AWeber", "Campaign Monitor", "ConstantContact", "Emma", "GetResponse", "iContact", "Klaviyo", "Lyris", "LyrisHQ", "MailChimp", "SilverPop"])
+      return false unless provider_name_validator.valid?(@provider_name)
       return true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] provider_name Object to be assigned
+    def provider_name=(provider_name)
+      validator = EnumAttributeValidator.new('String', ["ActiveCampaign", "AWeber", "Campaign Monitor", "ConstantContact", "Emma", "GetResponse", "iContact", "Klaviyo", "Lyris", "LyrisHQ", "MailChimp", "SilverPop"])
+      unless validator.valid?(provider_name)
+        fail ArgumentError, "invalid value for 'provider_name', must be one of #{validator.allowable_values}."
+      end
+      @provider_name = provider_name
     end
 
     # Checks equality by comparing each attribute.

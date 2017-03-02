@@ -26,34 +26,69 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemOption
+    # Cost if specified
     attr_accessor :cost_if_specified
 
+    # Cost per letter
     attr_accessor :cost_per_letter
 
+    # Cost per line
     attr_accessor :cost_per_line
 
+    # Ignore this option on the order if the default value is selected
     attr_accessor :ignore_if_default
 
+    # Label
     attr_accessor :label
 
+    # Label translated text instance ID
     attr_accessor :label_translated_text_instance_oid
 
+    # Name
     attr_accessor :name
 
+    # Name translated text instance ID
     attr_accessor :name_translated_text_instance_oid
 
+    # One time fee
     attr_accessor :one_time_fee
 
+    # Option object identifier
     attr_accessor :option_oid
 
+    # True if the customer is required to specify an answer
     attr_accessor :required
 
+    # True if this is a system option
     attr_accessor :system_option
 
+    # Type of option
     attr_accessor :type
 
+    # Values
     attr_accessor :values
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -167,13 +202,59 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@label.nil? && @label.to_s.length > 50
+        invalid_properties.push("invalid value for 'label', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@name.nil? && @name.to_s.length > 50
+        invalid_properties.push("invalid value for 'name', the character length must be smaller than or equal to 50.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@label.nil? && @label.to_s.length > 50
+      return false if !@name.nil? && @name.to_s.length > 50
+      type_validator = EnumAttributeValidator.new('String', ["dropdown", "file attachment", "fixed", "hidden", "multiline", "radio", "single"])
+      return false unless type_validator.valid?(@type)
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] label Value to be assigned
+    def label=(label)
+
+      if !label.nil? && label.to_s.length > 50
+        fail ArgumentError, "invalid value for 'label', the character length must be smaller than or equal to 50."
+      end
+
+      @label = label
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+
+      if !name.nil? && name.to_s.length > 50
+        fail ArgumentError, "invalid value for 'name', the character length must be smaller than or equal to 50."
+      end
+
+      @name = name
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] type Object to be assigned
+    def type=(type)
+      validator = EnumAttributeValidator.new('String', ["dropdown", "file attachment", "fixed", "hidden", "multiline", "radio", "single"])
+      unless validator.valid?(type)
+        fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
+      end
+      @type = type
     end
 
     # Checks equality by comparing each attribute.

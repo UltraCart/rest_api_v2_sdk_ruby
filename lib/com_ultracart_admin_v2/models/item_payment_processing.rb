@@ -26,14 +26,19 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemPaymentProcessing
+    # True if prepaid cards should be blocked from buying this item
     attr_accessor :block_prepaid
 
+    # Credit card transaction type
     attr_accessor :credit_card_transaction_type
 
+    # True if no real-time charge should be performed on this item.
     attr_accessor :no_realtime_charge
 
+    # Payment method validity
     attr_accessor :payment_method_validity
 
+    # Rotating transaction gateway codes
     attr_accessor :rotating_transaction_gateway_codes
 
 
@@ -54,8 +59,8 @@ module UltraCartAdminV2
         :'block_prepaid' => :'BOOLEAN',
         :'credit_card_transaction_type' => :'String',
         :'no_realtime_charge' => :'BOOLEAN',
-        :'payment_method_validity' => :'String',
-        :'rotating_transaction_gateway_codes' => :'String'
+        :'payment_method_validity' => :'Array<String>',
+        :'rotating_transaction_gateway_codes' => :'Array<String>'
       }
     end
 
@@ -80,11 +85,15 @@ module UltraCartAdminV2
       end
 
       if attributes.has_key?(:'payment_method_validity')
-        self.payment_method_validity = attributes[:'payment_method_validity']
+        if (value = attributes[:'payment_method_validity']).is_a?(Array)
+          self.payment_method_validity = value
+        end
       end
 
       if attributes.has_key?(:'rotating_transaction_gateway_codes')
-        self.rotating_transaction_gateway_codes = attributes[:'rotating_transaction_gateway_codes']
+        if (value = attributes[:'rotating_transaction_gateway_codes']).is_a?(Array)
+          self.rotating_transaction_gateway_codes = value
+        end
       end
 
     end

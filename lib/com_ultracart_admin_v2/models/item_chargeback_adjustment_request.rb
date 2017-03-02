@@ -26,10 +26,13 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemChargebackAdjustmentRequest
+    # Chargeback adjustment request object identifier
     attr_accessor :chargeback_adjustment_request_oid
 
+    # Description
     attr_accessor :description
 
+    # Reason code
     attr_accessor :reason_code
 
 

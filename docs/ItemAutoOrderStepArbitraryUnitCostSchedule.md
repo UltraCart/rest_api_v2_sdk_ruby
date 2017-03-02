@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**arbitrary_unit_cost** | **Float** |  | [optional] 
-**retry_days** | **Integer** |  | [optional] 
+**arbitrary_unit_cost** | **Float** | Arbitrary unit cost | [optional] 
+**retry_days** | **Integer** | Retry days | [optional] 
 
 

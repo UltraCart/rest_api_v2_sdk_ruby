@@ -26,8 +26,10 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemSalesforce
+    # Salesforce.com pricebook id
     attr_accessor :sfdc_pricebook_id
 
+    # Salesforce.com product id
     attr_accessor :sfdc_product_id
 
 

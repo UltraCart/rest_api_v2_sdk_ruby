@@ -26,40 +26,49 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemAutoOrder
+    # Amount to try and authorize for the future rebill
     attr_accessor :auth_future_amount
 
+    # Amount to try and test authorize
     attr_accessor :auth_test_amount
 
+    # Item id to attempt charging the customer for if they cancel
+    attr_accessor :auto_order_cancel_item_id
+
+    # Item object identifier to attempt charging the customer for if they cancel
     attr_accessor :auto_order_cancel_item_oid
 
+    # List of downgrade items presented to customer service representatives
     attr_accessor :auto_order_downgrade_items
 
+    # True if the rebill processing of this item is paused
     attr_accessor :auto_order_paused
 
+    # The user selectable schedules that are available
     attr_accessor :auto_order_schedules
 
+    # List of upgrade items presented to customer service representatives
     attr_accessor :auto_order_upgrade_items
 
+    # True if this item uses a fixed upsell step schedule
     attr_accessor :auto_order_upsell
 
-    attr_accessor :auto_order_upsell_delay
-
-    attr_accessor :auto_order_upsell_merchant_item_oid
-
+    # Do not send the easy cancel email to the customer
     attr_accessor :auto_order_upsell_no_easy_cancel
 
+    # Limit the purchase of this item to one per customer
     attr_accessor :auto_order_upsell_one_per_customer
 
-    attr_accessor :auto_order_upsell_repeat_count
-
-    attr_accessor :auto_order_upsell_schedule
-
+    # True if this item can be automatically ordered by the customer
     attr_accessor :auto_orderable
 
+    # True if other auto orders for this customer should be canceled when this item is ordered
     attr_accessor :cancel_other_auto_orders
 
+    # True if the customer should be given free shipping
     attr_accessor :free_shipping_auto_order
 
+    # The rebill steps if this auto order is an upsell
     attr_accessor :steps
 
 
@@ -68,18 +77,15 @@ module UltraCartAdminV2
       {
         :'auth_future_amount' => :'auth_future_amount',
         :'auth_test_amount' => :'auth_test_amount',
+        :'auto_order_cancel_item_id' => :'auto_order_cancel_item_id',
         :'auto_order_cancel_item_oid' => :'auto_order_cancel_item_oid',
         :'auto_order_downgrade_items' => :'auto_order_downgrade_items',
         :'auto_order_paused' => :'auto_order_paused',
         :'auto_order_schedules' => :'auto_order_schedules',
         :'auto_order_upgrade_items' => :'auto_order_upgrade_items',
         :'auto_order_upsell' => :'auto_order_upsell',
-        :'auto_order_upsell_delay' => :'auto_order_upsell_delay',
-        :'auto_order_upsell_merchant_item_oid' => :'auto_order_upsell_merchant_item_oid',
         :'auto_order_upsell_no_easy_cancel' => :'auto_order_upsell_no_easy_cancel',
         :'auto_order_upsell_one_per_customer' => :'auto_order_upsell_one_per_customer',
-        :'auto_order_upsell_repeat_count' => :'auto_order_upsell_repeat_count',
-        :'auto_order_upsell_schedule' => :'auto_order_upsell_schedule',
         :'auto_orderable' => :'auto_orderable',
         :'cancel_other_auto_orders' => :'cancel_other_auto_orders',
         :'free_shipping_auto_order' => :'free_shipping_auto_order',
@@ -92,18 +98,15 @@ module UltraCartAdminV2
       {
         :'auth_future_amount' => :'Float',
         :'auth_test_amount' => :'Float',
+        :'auto_order_cancel_item_id' => :'String',
         :'auto_order_cancel_item_oid' => :'Integer',
-        :'auto_order_downgrade_items' => :'String',
+        :'auto_order_downgrade_items' => :'Array<String>',
         :'auto_order_paused' => :'BOOLEAN',
-        :'auto_order_schedules' => :'Integer',
-        :'auto_order_upgrade_items' => :'String',
+        :'auto_order_schedules' => :'Array<String>',
+        :'auto_order_upgrade_items' => :'Array<String>',
         :'auto_order_upsell' => :'BOOLEAN',
-        :'auto_order_upsell_delay' => :'Integer',
-        :'auto_order_upsell_merchant_item_oid' => :'Integer',
         :'auto_order_upsell_no_easy_cancel' => :'BOOLEAN',
         :'auto_order_upsell_one_per_customer' => :'BOOLEAN',
-        :'auto_order_upsell_repeat_count' => :'Integer',
-        :'auto_order_upsell_schedule' => :'String',
         :'auto_orderable' => :'BOOLEAN',
         :'cancel_other_auto_orders' => :'BOOLEAN',
         :'free_shipping_auto_order' => :'BOOLEAN',
@@ -127,12 +130,18 @@ module UltraCartAdminV2
         self.auth_test_amount = attributes[:'auth_test_amount']
       end
 
+      if attributes.has_key?(:'auto_order_cancel_item_id')
+        self.auto_order_cancel_item_id = attributes[:'auto_order_cancel_item_id']
+      end
+
       if attributes.has_key?(:'auto_order_cancel_item_oid')
         self.auto_order_cancel_item_oid = attributes[:'auto_order_cancel_item_oid']
       end
 
       if attributes.has_key?(:'auto_order_downgrade_items')
-        self.auto_order_downgrade_items = attributes[:'auto_order_downgrade_items']
+        if (value = attributes[:'auto_order_downgrade_items']).is_a?(Array)
+          self.auto_order_downgrade_items = value
+        end
       end
 
       if attributes.has_key?(:'auto_order_paused')
@@ -140,23 +149,19 @@ module UltraCartAdminV2
       end
 
       if attributes.has_key?(:'auto_order_schedules')
-        self.auto_order_schedules = attributes[:'auto_order_schedules']
+        if (value = attributes[:'auto_order_schedules']).is_a?(Array)
+          self.auto_order_schedules = value
+        end
       end
 
       if attributes.has_key?(:'auto_order_upgrade_items')
-        self.auto_order_upgrade_items = attributes[:'auto_order_upgrade_items']
+        if (value = attributes[:'auto_order_upgrade_items']).is_a?(Array)
+          self.auto_order_upgrade_items = value
+        end
       end
 
       if attributes.has_key?(:'auto_order_upsell')
         self.auto_order_upsell = attributes[:'auto_order_upsell']
-      end
-
-      if attributes.has_key?(:'auto_order_upsell_delay')
-        self.auto_order_upsell_delay = attributes[:'auto_order_upsell_delay']
-      end
-
-      if attributes.has_key?(:'auto_order_upsell_merchant_item_oid')
-        self.auto_order_upsell_merchant_item_oid = attributes[:'auto_order_upsell_merchant_item_oid']
       end
 
       if attributes.has_key?(:'auto_order_upsell_no_easy_cancel')
@@ -165,14 +170,6 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'auto_order_upsell_one_per_customer')
         self.auto_order_upsell_one_per_customer = attributes[:'auto_order_upsell_one_per_customer']
-      end
-
-      if attributes.has_key?(:'auto_order_upsell_repeat_count')
-        self.auto_order_upsell_repeat_count = attributes[:'auto_order_upsell_repeat_count']
-      end
-
-      if attributes.has_key?(:'auto_order_upsell_schedule')
-        self.auto_order_upsell_schedule = attributes[:'auto_order_upsell_schedule']
       end
 
       if attributes.has_key?(:'auto_orderable')
@@ -199,13 +196,30 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@auto_order_cancel_item_id.nil? && @auto_order_cancel_item_id.to_s.length > 20
+        invalid_properties.push("invalid value for 'auto_order_cancel_item_id', the character length must be smaller than or equal to 20.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@auto_order_cancel_item_id.nil? && @auto_order_cancel_item_id.to_s.length > 20
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] auto_order_cancel_item_id Value to be assigned
+    def auto_order_cancel_item_id=(auto_order_cancel_item_id)
+
+      if !auto_order_cancel_item_id.nil? && auto_order_cancel_item_id.to_s.length > 20
+        fail ArgumentError, "invalid value for 'auto_order_cancel_item_id', the character length must be smaller than or equal to 20."
+      end
+
+      @auto_order_cancel_item_id = auto_order_cancel_item_id
     end
 
     # Checks equality by comparing each attribute.
@@ -215,18 +229,15 @@ module UltraCartAdminV2
       self.class == o.class &&
           auth_future_amount == o.auth_future_amount &&
           auth_test_amount == o.auth_test_amount &&
+          auto_order_cancel_item_id == o.auto_order_cancel_item_id &&
           auto_order_cancel_item_oid == o.auto_order_cancel_item_oid &&
           auto_order_downgrade_items == o.auto_order_downgrade_items &&
           auto_order_paused == o.auto_order_paused &&
           auto_order_schedules == o.auto_order_schedules &&
           auto_order_upgrade_items == o.auto_order_upgrade_items &&
           auto_order_upsell == o.auto_order_upsell &&
-          auto_order_upsell_delay == o.auto_order_upsell_delay &&
-          auto_order_upsell_merchant_item_oid == o.auto_order_upsell_merchant_item_oid &&
           auto_order_upsell_no_easy_cancel == o.auto_order_upsell_no_easy_cancel &&
           auto_order_upsell_one_per_customer == o.auto_order_upsell_one_per_customer &&
-          auto_order_upsell_repeat_count == o.auto_order_upsell_repeat_count &&
-          auto_order_upsell_schedule == o.auto_order_upsell_schedule &&
           auto_orderable == o.auto_orderable &&
           cancel_other_auto_orders == o.cancel_other_auto_orders &&
           free_shipping_auto_order == o.free_shipping_auto_order &&
@@ -242,7 +253,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [auth_future_amount, auth_test_amount, auto_order_cancel_item_oid, auto_order_downgrade_items, auto_order_paused, auto_order_schedules, auto_order_upgrade_items, auto_order_upsell, auto_order_upsell_delay, auto_order_upsell_merchant_item_oid, auto_order_upsell_no_easy_cancel, auto_order_upsell_one_per_customer, auto_order_upsell_repeat_count, auto_order_upsell_schedule, auto_orderable, cancel_other_auto_orders, free_shipping_auto_order, steps].hash
+      [auth_future_amount, auth_test_amount, auto_order_cancel_item_id, auto_order_cancel_item_oid, auto_order_downgrade_items, auto_order_paused, auto_order_schedules, auto_order_upgrade_items, auto_order_upsell, auto_order_upsell_no_easy_cancel, auto_order_upsell_one_per_customer, auto_orderable, cancel_other_auto_orders, free_shipping_auto_order, steps].hash
     end
 
     # Builds the object from hash

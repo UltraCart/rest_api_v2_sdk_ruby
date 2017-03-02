@@ -26,8 +26,10 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemEmailNotifications
+    # Skip receipt email to customer
     attr_accessor :skip_receipt
 
+    # Skip shipment notification to customer
     attr_accessor :skip_shipment_notification
 
 

@@ -26,36 +26,72 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemAutoOrderStep
+    # If the schedule is arbitrary, then this is the number of days
     attr_accessor :arbitrary_schedule_days
 
+    # Arbitrary unit cost used to override the regular item cost
     attr_accessor :arbitrary_unit_cost
 
+    # Arbitrary unit costs schedules for more advanced discounting by rebill attempt
     attr_accessor :arbitrary_unit_cost_schedules
 
+    # Grand-father pricing configuration if the rebill schedule has changed over time
     attr_accessor :grandfather_pricing
 
+    # Managed by (defaults to UltraCart)
     attr_accessor :managed_by
 
+    # Number of days to pause
     attr_accessor :pause_days
 
-    attr_accessor :pause_unit_date
+    # Wait for this step to happen until the specified date
+    attr_accessor :pause_until_date
 
+    # If set, a pre-shipment notice is sent to the customer this many days in advance
     attr_accessor :preshipment_notice_days
 
+    # Item id to rebill
     attr_accessor :recurring_merchant_item_id
 
+    # Item object identifier to rebill
     attr_accessor :recurring_merchant_item_oid
 
+    # Number of times to rebill.  Last step can be null for infinite
     attr_accessor :repeat_count
 
+    # Frequency of the rebill
     attr_accessor :schedule
 
+    # Email list name to subscribe the customer to when the rebill occurs
     attr_accessor :subscribe_email_list_name
 
+    # Email list identifier to subscribe the customer to when this rebill occurs
     attr_accessor :subscribe_email_list_oid
 
+    # Type of step (item or pause)
     attr_accessor :type
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -66,7 +102,7 @@ module UltraCartAdminV2
         :'grandfather_pricing' => :'grandfather_pricing',
         :'managed_by' => :'managed_by',
         :'pause_days' => :'pause_days',
-        :'pause_unit_date' => :'pause_unit_date',
+        :'pause_until_date' => :'pause_until_date',
         :'preshipment_notice_days' => :'preshipment_notice_days',
         :'recurring_merchant_item_id' => :'recurring_merchant_item_id',
         :'recurring_merchant_item_oid' => :'recurring_merchant_item_oid',
@@ -87,7 +123,7 @@ module UltraCartAdminV2
         :'grandfather_pricing' => :'Array<ItemAutoOrderStepGrandfatherPricing>',
         :'managed_by' => :'String',
         :'pause_days' => :'Integer',
-        :'pause_unit_date' => :'String',
+        :'pause_until_date' => :'String',
         :'preshipment_notice_days' => :'Integer',
         :'recurring_merchant_item_id' => :'String',
         :'recurring_merchant_item_oid' => :'Integer',
@@ -135,8 +171,8 @@ module UltraCartAdminV2
         self.pause_days = attributes[:'pause_days']
       end
 
-      if attributes.has_key?(:'pause_unit_date')
-        self.pause_unit_date = attributes[:'pause_unit_date']
+      if attributes.has_key?(:'pause_until_date')
+        self.pause_until_date = attributes[:'pause_until_date']
       end
 
       if attributes.has_key?(:'preshipment_notice_days')
@@ -177,13 +213,42 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@recurring_merchant_item_id.nil? && @recurring_merchant_item_id.to_s.length > 20
+        invalid_properties.push("invalid value for 'recurring_merchant_item_id', the character length must be smaller than or equal to 20.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@recurring_merchant_item_id.nil? && @recurring_merchant_item_id.to_s.length > 20
+      type_validator = EnumAttributeValidator.new('String', ["item", "pause"])
+      return false unless type_validator.valid?(@type)
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] recurring_merchant_item_id Value to be assigned
+    def recurring_merchant_item_id=(recurring_merchant_item_id)
+
+      if !recurring_merchant_item_id.nil? && recurring_merchant_item_id.to_s.length > 20
+        fail ArgumentError, "invalid value for 'recurring_merchant_item_id', the character length must be smaller than or equal to 20."
+      end
+
+      @recurring_merchant_item_id = recurring_merchant_item_id
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] type Object to be assigned
+    def type=(type)
+      validator = EnumAttributeValidator.new('String', ["item", "pause"])
+      unless validator.valid?(type)
+        fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
+      end
+      @type = type
     end
 
     # Checks equality by comparing each attribute.
@@ -197,7 +262,7 @@ module UltraCartAdminV2
           grandfather_pricing == o.grandfather_pricing &&
           managed_by == o.managed_by &&
           pause_days == o.pause_days &&
-          pause_unit_date == o.pause_unit_date &&
+          pause_until_date == o.pause_until_date &&
           preshipment_notice_days == o.preshipment_notice_days &&
           recurring_merchant_item_id == o.recurring_merchant_item_id &&
           recurring_merchant_item_oid == o.recurring_merchant_item_oid &&
@@ -217,7 +282,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_schedules, grandfather_pricing, managed_by, pause_days, pause_unit_date, preshipment_notice_days, recurring_merchant_item_id, recurring_merchant_item_oid, repeat_count, schedule, subscribe_email_list_name, subscribe_email_list_oid, type].hash
+      [arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_schedules, grandfather_pricing, managed_by, pause_days, pause_until_date, preshipment_notice_days, recurring_merchant_item_id, recurring_merchant_item_oid, repeat_count, schedule, subscribe_email_list_name, subscribe_email_list_oid, type].hash
     end
 
     # Builds the object from hash

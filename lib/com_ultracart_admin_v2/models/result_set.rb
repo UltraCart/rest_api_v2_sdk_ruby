@@ -26,13 +26,23 @@ require 'date'
 module UltraCartAdminV2
 
   class ResultSet
+    # Number of results in this set
     attr_accessor :count
 
+    # Maximum number of results that can be returned in a set
     attr_accessor :limit
 
+    # True if there are more results to query
     attr_accessor :more
 
+    # The next offset that you should query to retrieve more results
+    attr_accessor :next_offset
+
+    # Offset of this result set (zero based)
     attr_accessor :offset
+
+    # The total number of records in the result set.  May be null if the number is not known and the client should continue iterating as long as more is true.
+    attr_accessor :total_records
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -41,7 +51,9 @@ module UltraCartAdminV2
         :'count' => :'count',
         :'limit' => :'limit',
         :'more' => :'more',
-        :'offset' => :'offset'
+        :'next_offset' => :'next_offset',
+        :'offset' => :'offset',
+        :'total_records' => :'total_records'
       }
     end
 
@@ -51,7 +63,9 @@ module UltraCartAdminV2
         :'count' => :'Integer',
         :'limit' => :'Integer',
         :'more' => :'BOOLEAN',
-        :'offset' => :'Integer'
+        :'next_offset' => :'Integer',
+        :'offset' => :'Integer',
+        :'total_records' => :'Integer'
       }
     end
 
@@ -75,8 +89,16 @@ module UltraCartAdminV2
         self.more = attributes[:'more']
       end
 
+      if attributes.has_key?(:'next_offset')
+        self.next_offset = attributes[:'next_offset']
+      end
+
       if attributes.has_key?(:'offset')
         self.offset = attributes[:'offset']
+      end
+
+      if attributes.has_key?(:'total_records')
+        self.total_records = attributes[:'total_records']
       end
 
     end
@@ -102,7 +124,9 @@ module UltraCartAdminV2
           count == o.count &&
           limit == o.limit &&
           more == o.more &&
-          offset == o.offset
+          next_offset == o.next_offset &&
+          offset == o.offset &&
+          total_records == o.total_records
     end
 
     # @see the `==` method
@@ -114,7 +138,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [count, limit, more, offset].hash
+      [count, limit, more, next_offset, offset, total_records].hash
     end
 
     # Builds the object from hash

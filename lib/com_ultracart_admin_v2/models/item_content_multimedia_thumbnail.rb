@@ -26,16 +26,22 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemContentMultimediaThumbnail
+    # Height of the thumbnail
     attr_accessor :height
 
+    # HTTP URL to view the thumbnail
     attr_accessor :http_url
 
+    # HTTPS URL to view the thumbnail
     attr_accessor :https_url
 
+    # True if PNG, false if JPEG
     attr_accessor :png_format
 
+    # True if the thumbnail is square
     attr_accessor :square
 
+    # Width of the thumbnail
     attr_accessor :width
 
 

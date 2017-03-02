@@ -26,98 +26,145 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemGoogleProductSearch
+    # Adwords grouping
     attr_accessor :adwords_grouping
 
+    # Adwords label 1
     attr_accessor :adwords_label1
 
+    # Adwords label 2
     attr_accessor :adwords_label2
 
+    # Adwords label 3
     attr_accessor :adwords_label3
 
+    # Adwords label 4
     attr_accessor :adwords_label4
 
+    # Adwords label 5
     attr_accessor :adwords_label5
 
+    # Age group
     attr_accessor :age_group
 
+    # Available at physical store
     attr_accessor :available_at_physical_store
 
+    # Book - author
     attr_accessor :book_author
 
+    # Book - format
     attr_accessor :book_format
 
+    # Bood - ISBN
     attr_accessor :book_isbn
 
+    # Book - publisher
     attr_accessor :book_publisher
 
+    # Category description
     attr_accessor :category_description
 
+    # Color
     attr_accessor :color
 
+    # Condition
     attr_accessor :condition
 
+    # Custom label 0
     attr_accessor :custom_label0
 
+    # Custom label 1
     attr_accessor :custom_label1
 
+    # Custom label 2
     attr_accessor :custom_label2
 
+    # Custom label 3
     attr_accessor :custom_label3
 
+    # Custom label 4
     attr_accessor :custom_label4
 
+    # Gender
     attr_accessor :gender
 
+    # Google product category
     attr_accessor :google_product_category
 
+    # Music - artist
     attr_accessor :music_artist
 
+    # Music - format
     attr_accessor :music_format
 
+    # Music - release date
     attr_accessor :music_release_date
 
+    # Omit from feed
     attr_accessor :omit_from_feed
 
+    # Product type
     attr_accessor :product_type
 
+    # Promotion ID 1
     attr_accessor :promotion_id1
 
+    # Promotion ID 10
     attr_accessor :promotion_id10
 
+    # Promotion ID 2
     attr_accessor :promotion_id2
 
+    # Promotion ID 3
     attr_accessor :promotion_id3
 
+    # Promotion ID 4
     attr_accessor :promotion_id4
 
+    # Promotion ID 5
     attr_accessor :promotion_id5
 
+    # Promotion ID 6
     attr_accessor :promotion_id6
 
+    # Promotion ID 7
     attr_accessor :promotion_id7
 
+    # Promotion ID 8
     attr_accessor :promotion_id8
 
+    # Promotion ID 9
     attr_accessor :promotion_id9
 
+    # Search date/time
     attr_accessor :search_dts
 
+    # Search lowest price
     attr_accessor :search_lowest_price
 
+    # Search lowest URL
     attr_accessor :search_lowest_url
 
+    # Search position
     attr_accessor :search_position
 
+    # Size
     attr_accessor :size
 
+    # Video - director
     attr_accessor :video_director
 
+    # Video - format
     attr_accessor :video_format
 
+    # Video - rating
     attr_accessor :video_rating
 
+    # Video - release date
     attr_accessor :video_release_date
 
+    # Video - starring
     attr_accessor :video_starring
 
 
@@ -429,13 +476,693 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@adwords_grouping.nil? && @adwords_grouping.to_s.length > 50
+        invalid_properties.push("invalid value for 'adwords_grouping', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@adwords_label1.nil? && @adwords_label1.to_s.length > 50
+        invalid_properties.push("invalid value for 'adwords_label1', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@adwords_label2.nil? && @adwords_label2.to_s.length > 50
+        invalid_properties.push("invalid value for 'adwords_label2', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@adwords_label3.nil? && @adwords_label3.to_s.length > 50
+        invalid_properties.push("invalid value for 'adwords_label3', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@adwords_label4.nil? && @adwords_label4.to_s.length > 50
+        invalid_properties.push("invalid value for 'adwords_label4', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@adwords_label5.nil? && @adwords_label5.to_s.length > 50
+        invalid_properties.push("invalid value for 'adwords_label5', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@age_group.nil? && @age_group.to_s.length > 5
+        invalid_properties.push("invalid value for 'age_group', the character length must be smaller than or equal to 5.")
+      end
+
+
+      if !@book_author.nil? && @book_author.to_s.length > 50
+        invalid_properties.push("invalid value for 'book_author', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@book_format.nil? && @book_format.to_s.length > 50
+        invalid_properties.push("invalid value for 'book_format', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@book_isbn.nil? && @book_isbn.to_s.length > 20
+        invalid_properties.push("invalid value for 'book_isbn', the character length must be smaller than or equal to 20.")
+      end
+
+
+      if !@book_publisher.nil? && @book_publisher.to_s.length > 50
+        invalid_properties.push("invalid value for 'book_publisher', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@category_description.nil? && @category_description.to_s.length > 1000
+        invalid_properties.push("invalid value for 'category_description', the character length must be smaller than or equal to 1000.")
+      end
+
+
+      if !@color.nil? && @color.to_s.length > 20
+        invalid_properties.push("invalid value for 'color', the character length must be smaller than or equal to 20.")
+      end
+
+
+      if !@condition.nil? && @condition.to_s.length > 15
+        invalid_properties.push("invalid value for 'condition', the character length must be smaller than or equal to 15.")
+      end
+
+
+      if !@custom_label0.nil? && @custom_label0.to_s.length > 50
+        invalid_properties.push("invalid value for 'custom_label0', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@custom_label1.nil? && @custom_label1.to_s.length > 50
+        invalid_properties.push("invalid value for 'custom_label1', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@custom_label2.nil? && @custom_label2.to_s.length > 50
+        invalid_properties.push("invalid value for 'custom_label2', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@custom_label3.nil? && @custom_label3.to_s.length > 50
+        invalid_properties.push("invalid value for 'custom_label3', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@custom_label4.nil? && @custom_label4.to_s.length > 50
+        invalid_properties.push("invalid value for 'custom_label4', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@gender.nil? && @gender.to_s.length > 6
+        invalid_properties.push("invalid value for 'gender', the character length must be smaller than or equal to 6.")
+      end
+
+
+      if !@google_product_category.nil? && @google_product_category.to_s.length > 250
+        invalid_properties.push("invalid value for 'google_product_category', the character length must be smaller than or equal to 250.")
+      end
+
+
+      if !@music_artist.nil? && @music_artist.to_s.length > 50
+        invalid_properties.push("invalid value for 'music_artist', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@music_format.nil? && @music_format.to_s.length > 5
+        invalid_properties.push("invalid value for 'music_format', the character length must be smaller than or equal to 5.")
+      end
+
+
+      if !@product_type.nil? && @product_type.to_s.length > 10
+        invalid_properties.push("invalid value for 'product_type', the character length must be smaller than or equal to 10.")
+      end
+
+
+      if !@promotion_id1.nil? && @promotion_id1.to_s.length > 30
+        invalid_properties.push("invalid value for 'promotion_id1', the character length must be smaller than or equal to 30.")
+      end
+
+
+      if !@promotion_id10.nil? && @promotion_id10.to_s.length > 30
+        invalid_properties.push("invalid value for 'promotion_id10', the character length must be smaller than or equal to 30.")
+      end
+
+
+      if !@promotion_id2.nil? && @promotion_id2.to_s.length > 30
+        invalid_properties.push("invalid value for 'promotion_id2', the character length must be smaller than or equal to 30.")
+      end
+
+
+      if !@promotion_id3.nil? && @promotion_id3.to_s.length > 30
+        invalid_properties.push("invalid value for 'promotion_id3', the character length must be smaller than or equal to 30.")
+      end
+
+
+      if !@promotion_id4.nil? && @promotion_id4.to_s.length > 30
+        invalid_properties.push("invalid value for 'promotion_id4', the character length must be smaller than or equal to 30.")
+      end
+
+
+      if !@promotion_id5.nil? && @promotion_id5.to_s.length > 30
+        invalid_properties.push("invalid value for 'promotion_id5', the character length must be smaller than or equal to 30.")
+      end
+
+
+      if !@promotion_id6.nil? && @promotion_id6.to_s.length > 30
+        invalid_properties.push("invalid value for 'promotion_id6', the character length must be smaller than or equal to 30.")
+      end
+
+
+      if !@promotion_id7.nil? && @promotion_id7.to_s.length > 30
+        invalid_properties.push("invalid value for 'promotion_id7', the character length must be smaller than or equal to 30.")
+      end
+
+
+      if !@promotion_id8.nil? && @promotion_id8.to_s.length > 30
+        invalid_properties.push("invalid value for 'promotion_id8', the character length must be smaller than or equal to 30.")
+      end
+
+
+      if !@promotion_id9.nil? && @promotion_id9.to_s.length > 30
+        invalid_properties.push("invalid value for 'promotion_id9', the character length must be smaller than or equal to 30.")
+      end
+
+
+      if !@search_lowest_url.nil? && @search_lowest_url.to_s.length > 250
+        invalid_properties.push("invalid value for 'search_lowest_url', the character length must be smaller than or equal to 250.")
+      end
+
+
+      if !@size.nil? && @size.to_s.length > 20
+        invalid_properties.push("invalid value for 'size', the character length must be smaller than or equal to 20.")
+      end
+
+
+      if !@video_director.nil? && @video_director.to_s.length > 50
+        invalid_properties.push("invalid value for 'video_director', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@video_format.nil? && @video_format.to_s.length > 5
+        invalid_properties.push("invalid value for 'video_format', the character length must be smaller than or equal to 5.")
+      end
+
+
+      if !@video_rating.nil? && @video_rating.to_s.length > 5
+        invalid_properties.push("invalid value for 'video_rating', the character length must be smaller than or equal to 5.")
+      end
+
+
+      if !@video_starring.nil? && @video_starring.to_s.length > 150
+        invalid_properties.push("invalid value for 'video_starring', the character length must be smaller than or equal to 150.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@adwords_grouping.nil? && @adwords_grouping.to_s.length > 50
+      return false if !@adwords_label1.nil? && @adwords_label1.to_s.length > 50
+      return false if !@adwords_label2.nil? && @adwords_label2.to_s.length > 50
+      return false if !@adwords_label3.nil? && @adwords_label3.to_s.length > 50
+      return false if !@adwords_label4.nil? && @adwords_label4.to_s.length > 50
+      return false if !@adwords_label5.nil? && @adwords_label5.to_s.length > 50
+      return false if !@age_group.nil? && @age_group.to_s.length > 5
+      return false if !@book_author.nil? && @book_author.to_s.length > 50
+      return false if !@book_format.nil? && @book_format.to_s.length > 50
+      return false if !@book_isbn.nil? && @book_isbn.to_s.length > 20
+      return false if !@book_publisher.nil? && @book_publisher.to_s.length > 50
+      return false if !@category_description.nil? && @category_description.to_s.length > 1000
+      return false if !@color.nil? && @color.to_s.length > 20
+      return false if !@condition.nil? && @condition.to_s.length > 15
+      return false if !@custom_label0.nil? && @custom_label0.to_s.length > 50
+      return false if !@custom_label1.nil? && @custom_label1.to_s.length > 50
+      return false if !@custom_label2.nil? && @custom_label2.to_s.length > 50
+      return false if !@custom_label3.nil? && @custom_label3.to_s.length > 50
+      return false if !@custom_label4.nil? && @custom_label4.to_s.length > 50
+      return false if !@gender.nil? && @gender.to_s.length > 6
+      return false if !@google_product_category.nil? && @google_product_category.to_s.length > 250
+      return false if !@music_artist.nil? && @music_artist.to_s.length > 50
+      return false if !@music_format.nil? && @music_format.to_s.length > 5
+      return false if !@product_type.nil? && @product_type.to_s.length > 10
+      return false if !@promotion_id1.nil? && @promotion_id1.to_s.length > 30
+      return false if !@promotion_id10.nil? && @promotion_id10.to_s.length > 30
+      return false if !@promotion_id2.nil? && @promotion_id2.to_s.length > 30
+      return false if !@promotion_id3.nil? && @promotion_id3.to_s.length > 30
+      return false if !@promotion_id4.nil? && @promotion_id4.to_s.length > 30
+      return false if !@promotion_id5.nil? && @promotion_id5.to_s.length > 30
+      return false if !@promotion_id6.nil? && @promotion_id6.to_s.length > 30
+      return false if !@promotion_id7.nil? && @promotion_id7.to_s.length > 30
+      return false if !@promotion_id8.nil? && @promotion_id8.to_s.length > 30
+      return false if !@promotion_id9.nil? && @promotion_id9.to_s.length > 30
+      return false if !@search_lowest_url.nil? && @search_lowest_url.to_s.length > 250
+      return false if !@size.nil? && @size.to_s.length > 20
+      return false if !@video_director.nil? && @video_director.to_s.length > 50
+      return false if !@video_format.nil? && @video_format.to_s.length > 5
+      return false if !@video_rating.nil? && @video_rating.to_s.length > 5
+      return false if !@video_starring.nil? && @video_starring.to_s.length > 150
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] adwords_grouping Value to be assigned
+    def adwords_grouping=(adwords_grouping)
+
+      if !adwords_grouping.nil? && adwords_grouping.to_s.length > 50
+        fail ArgumentError, "invalid value for 'adwords_grouping', the character length must be smaller than or equal to 50."
+      end
+
+      @adwords_grouping = adwords_grouping
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] adwords_label1 Value to be assigned
+    def adwords_label1=(adwords_label1)
+
+      if !adwords_label1.nil? && adwords_label1.to_s.length > 50
+        fail ArgumentError, "invalid value for 'adwords_label1', the character length must be smaller than or equal to 50."
+      end
+
+      @adwords_label1 = adwords_label1
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] adwords_label2 Value to be assigned
+    def adwords_label2=(adwords_label2)
+
+      if !adwords_label2.nil? && adwords_label2.to_s.length > 50
+        fail ArgumentError, "invalid value for 'adwords_label2', the character length must be smaller than or equal to 50."
+      end
+
+      @adwords_label2 = adwords_label2
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] adwords_label3 Value to be assigned
+    def adwords_label3=(adwords_label3)
+
+      if !adwords_label3.nil? && adwords_label3.to_s.length > 50
+        fail ArgumentError, "invalid value for 'adwords_label3', the character length must be smaller than or equal to 50."
+      end
+
+      @adwords_label3 = adwords_label3
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] adwords_label4 Value to be assigned
+    def adwords_label4=(adwords_label4)
+
+      if !adwords_label4.nil? && adwords_label4.to_s.length > 50
+        fail ArgumentError, "invalid value for 'adwords_label4', the character length must be smaller than or equal to 50."
+      end
+
+      @adwords_label4 = adwords_label4
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] adwords_label5 Value to be assigned
+    def adwords_label5=(adwords_label5)
+
+      if !adwords_label5.nil? && adwords_label5.to_s.length > 50
+        fail ArgumentError, "invalid value for 'adwords_label5', the character length must be smaller than or equal to 50."
+      end
+
+      @adwords_label5 = adwords_label5
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] age_group Value to be assigned
+    def age_group=(age_group)
+
+      if !age_group.nil? && age_group.to_s.length > 5
+        fail ArgumentError, "invalid value for 'age_group', the character length must be smaller than or equal to 5."
+      end
+
+      @age_group = age_group
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] book_author Value to be assigned
+    def book_author=(book_author)
+
+      if !book_author.nil? && book_author.to_s.length > 50
+        fail ArgumentError, "invalid value for 'book_author', the character length must be smaller than or equal to 50."
+      end
+
+      @book_author = book_author
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] book_format Value to be assigned
+    def book_format=(book_format)
+
+      if !book_format.nil? && book_format.to_s.length > 50
+        fail ArgumentError, "invalid value for 'book_format', the character length must be smaller than or equal to 50."
+      end
+
+      @book_format = book_format
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] book_isbn Value to be assigned
+    def book_isbn=(book_isbn)
+
+      if !book_isbn.nil? && book_isbn.to_s.length > 20
+        fail ArgumentError, "invalid value for 'book_isbn', the character length must be smaller than or equal to 20."
+      end
+
+      @book_isbn = book_isbn
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] book_publisher Value to be assigned
+    def book_publisher=(book_publisher)
+
+      if !book_publisher.nil? && book_publisher.to_s.length > 50
+        fail ArgumentError, "invalid value for 'book_publisher', the character length must be smaller than or equal to 50."
+      end
+
+      @book_publisher = book_publisher
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] category_description Value to be assigned
+    def category_description=(category_description)
+
+      if !category_description.nil? && category_description.to_s.length > 1000
+        fail ArgumentError, "invalid value for 'category_description', the character length must be smaller than or equal to 1000."
+      end
+
+      @category_description = category_description
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] color Value to be assigned
+    def color=(color)
+
+      if !color.nil? && color.to_s.length > 20
+        fail ArgumentError, "invalid value for 'color', the character length must be smaller than or equal to 20."
+      end
+
+      @color = color
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] condition Value to be assigned
+    def condition=(condition)
+
+      if !condition.nil? && condition.to_s.length > 15
+        fail ArgumentError, "invalid value for 'condition', the character length must be smaller than or equal to 15."
+      end
+
+      @condition = condition
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] custom_label0 Value to be assigned
+    def custom_label0=(custom_label0)
+
+      if !custom_label0.nil? && custom_label0.to_s.length > 50
+        fail ArgumentError, "invalid value for 'custom_label0', the character length must be smaller than or equal to 50."
+      end
+
+      @custom_label0 = custom_label0
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] custom_label1 Value to be assigned
+    def custom_label1=(custom_label1)
+
+      if !custom_label1.nil? && custom_label1.to_s.length > 50
+        fail ArgumentError, "invalid value for 'custom_label1', the character length must be smaller than or equal to 50."
+      end
+
+      @custom_label1 = custom_label1
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] custom_label2 Value to be assigned
+    def custom_label2=(custom_label2)
+
+      if !custom_label2.nil? && custom_label2.to_s.length > 50
+        fail ArgumentError, "invalid value for 'custom_label2', the character length must be smaller than or equal to 50."
+      end
+
+      @custom_label2 = custom_label2
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] custom_label3 Value to be assigned
+    def custom_label3=(custom_label3)
+
+      if !custom_label3.nil? && custom_label3.to_s.length > 50
+        fail ArgumentError, "invalid value for 'custom_label3', the character length must be smaller than or equal to 50."
+      end
+
+      @custom_label3 = custom_label3
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] custom_label4 Value to be assigned
+    def custom_label4=(custom_label4)
+
+      if !custom_label4.nil? && custom_label4.to_s.length > 50
+        fail ArgumentError, "invalid value for 'custom_label4', the character length must be smaller than or equal to 50."
+      end
+
+      @custom_label4 = custom_label4
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] gender Value to be assigned
+    def gender=(gender)
+
+      if !gender.nil? && gender.to_s.length > 6
+        fail ArgumentError, "invalid value for 'gender', the character length must be smaller than or equal to 6."
+      end
+
+      @gender = gender
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] google_product_category Value to be assigned
+    def google_product_category=(google_product_category)
+
+      if !google_product_category.nil? && google_product_category.to_s.length > 250
+        fail ArgumentError, "invalid value for 'google_product_category', the character length must be smaller than or equal to 250."
+      end
+
+      @google_product_category = google_product_category
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] music_artist Value to be assigned
+    def music_artist=(music_artist)
+
+      if !music_artist.nil? && music_artist.to_s.length > 50
+        fail ArgumentError, "invalid value for 'music_artist', the character length must be smaller than or equal to 50."
+      end
+
+      @music_artist = music_artist
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] music_format Value to be assigned
+    def music_format=(music_format)
+
+      if !music_format.nil? && music_format.to_s.length > 5
+        fail ArgumentError, "invalid value for 'music_format', the character length must be smaller than or equal to 5."
+      end
+
+      @music_format = music_format
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] product_type Value to be assigned
+    def product_type=(product_type)
+
+      if !product_type.nil? && product_type.to_s.length > 10
+        fail ArgumentError, "invalid value for 'product_type', the character length must be smaller than or equal to 10."
+      end
+
+      @product_type = product_type
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] promotion_id1 Value to be assigned
+    def promotion_id1=(promotion_id1)
+
+      if !promotion_id1.nil? && promotion_id1.to_s.length > 30
+        fail ArgumentError, "invalid value for 'promotion_id1', the character length must be smaller than or equal to 30."
+      end
+
+      @promotion_id1 = promotion_id1
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] promotion_id10 Value to be assigned
+    def promotion_id10=(promotion_id10)
+
+      if !promotion_id10.nil? && promotion_id10.to_s.length > 30
+        fail ArgumentError, "invalid value for 'promotion_id10', the character length must be smaller than or equal to 30."
+      end
+
+      @promotion_id10 = promotion_id10
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] promotion_id2 Value to be assigned
+    def promotion_id2=(promotion_id2)
+
+      if !promotion_id2.nil? && promotion_id2.to_s.length > 30
+        fail ArgumentError, "invalid value for 'promotion_id2', the character length must be smaller than or equal to 30."
+      end
+
+      @promotion_id2 = promotion_id2
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] promotion_id3 Value to be assigned
+    def promotion_id3=(promotion_id3)
+
+      if !promotion_id3.nil? && promotion_id3.to_s.length > 30
+        fail ArgumentError, "invalid value for 'promotion_id3', the character length must be smaller than or equal to 30."
+      end
+
+      @promotion_id3 = promotion_id3
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] promotion_id4 Value to be assigned
+    def promotion_id4=(promotion_id4)
+
+      if !promotion_id4.nil? && promotion_id4.to_s.length > 30
+        fail ArgumentError, "invalid value for 'promotion_id4', the character length must be smaller than or equal to 30."
+      end
+
+      @promotion_id4 = promotion_id4
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] promotion_id5 Value to be assigned
+    def promotion_id5=(promotion_id5)
+
+      if !promotion_id5.nil? && promotion_id5.to_s.length > 30
+        fail ArgumentError, "invalid value for 'promotion_id5', the character length must be smaller than or equal to 30."
+      end
+
+      @promotion_id5 = promotion_id5
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] promotion_id6 Value to be assigned
+    def promotion_id6=(promotion_id6)
+
+      if !promotion_id6.nil? && promotion_id6.to_s.length > 30
+        fail ArgumentError, "invalid value for 'promotion_id6', the character length must be smaller than or equal to 30."
+      end
+
+      @promotion_id6 = promotion_id6
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] promotion_id7 Value to be assigned
+    def promotion_id7=(promotion_id7)
+
+      if !promotion_id7.nil? && promotion_id7.to_s.length > 30
+        fail ArgumentError, "invalid value for 'promotion_id7', the character length must be smaller than or equal to 30."
+      end
+
+      @promotion_id7 = promotion_id7
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] promotion_id8 Value to be assigned
+    def promotion_id8=(promotion_id8)
+
+      if !promotion_id8.nil? && promotion_id8.to_s.length > 30
+        fail ArgumentError, "invalid value for 'promotion_id8', the character length must be smaller than or equal to 30."
+      end
+
+      @promotion_id8 = promotion_id8
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] promotion_id9 Value to be assigned
+    def promotion_id9=(promotion_id9)
+
+      if !promotion_id9.nil? && promotion_id9.to_s.length > 30
+        fail ArgumentError, "invalid value for 'promotion_id9', the character length must be smaller than or equal to 30."
+      end
+
+      @promotion_id9 = promotion_id9
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] search_lowest_url Value to be assigned
+    def search_lowest_url=(search_lowest_url)
+
+      if !search_lowest_url.nil? && search_lowest_url.to_s.length > 250
+        fail ArgumentError, "invalid value for 'search_lowest_url', the character length must be smaller than or equal to 250."
+      end
+
+      @search_lowest_url = search_lowest_url
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] size Value to be assigned
+    def size=(size)
+
+      if !size.nil? && size.to_s.length > 20
+        fail ArgumentError, "invalid value for 'size', the character length must be smaller than or equal to 20."
+      end
+
+      @size = size
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] video_director Value to be assigned
+    def video_director=(video_director)
+
+      if !video_director.nil? && video_director.to_s.length > 50
+        fail ArgumentError, "invalid value for 'video_director', the character length must be smaller than or equal to 50."
+      end
+
+      @video_director = video_director
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] video_format Value to be assigned
+    def video_format=(video_format)
+
+      if !video_format.nil? && video_format.to_s.length > 5
+        fail ArgumentError, "invalid value for 'video_format', the character length must be smaller than or equal to 5."
+      end
+
+      @video_format = video_format
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] video_rating Value to be assigned
+    def video_rating=(video_rating)
+
+      if !video_rating.nil? && video_rating.to_s.length > 5
+        fail ArgumentError, "invalid value for 'video_rating', the character length must be smaller than or equal to 5."
+      end
+
+      @video_rating = video_rating
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] video_starring Value to be assigned
+    def video_starring=(video_starring)
+
+      if !video_starring.nil? && video_starring.to_s.length > 150
+        fail ArgumentError, "invalid value for 'video_starring', the character length must be smaller than or equal to 150."
+      end
+
+      @video_starring = video_starring
     end
 
     # Checks equality by comparing each attribute.

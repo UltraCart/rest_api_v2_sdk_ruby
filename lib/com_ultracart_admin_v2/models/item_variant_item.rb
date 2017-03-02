@@ -26,16 +26,22 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemVariantItem
+    # Description
     attr_accessor :description
 
+    # Multimedia object identifier
     attr_accessor :merchant_item_multimedia_oid
 
+    # Variant item id
     attr_accessor :variant_merchant_item_id
 
+    # Variant item object identifier
     attr_accessor :variant_merchant_item_oid
 
+    # Variation options
     attr_accessor :variation_options
 
+    # Variations
     attr_accessor :variations
 
 
@@ -105,13 +111,30 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@description.nil? && @description.to_s.length > 512
+        invalid_properties.push("invalid value for 'description', the character length must be smaller than or equal to 512.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@description.nil? && @description.to_s.length > 512
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+
+      if !description.nil? && description.to_s.length > 512
+        fail ArgumentError, "invalid value for 'description', the character length must be smaller than or equal to 512."
+      end
+
+      @description = description
     end
 
     # Checks equality by comparing each attribute.

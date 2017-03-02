@@ -34,6 +34,7 @@ module UltraCartAdminV2
 
     attr_accessor :ccbill
 
+    # Channel Partner Item Mapping
     attr_accessor :channel_partner_mappings
 
     attr_accessor :chargeback
@@ -42,10 +43,13 @@ module UltraCartAdminV2
 
     attr_accessor :content
 
+    # Date/time of creation
     attr_accessor :creation_dts
 
+    # Description of the item up to 500 characters.
     attr_accessor :description
 
+    # Description translated text instance id
     attr_accessor :description_translated_text_instance_oid
 
     attr_accessor :digital_delivery
@@ -62,26 +66,34 @@ module UltraCartAdminV2
 
     attr_accessor :identifiers
 
+    # True if this item is inactive and can not be purchased
     attr_accessor :inactive
 
     attr_accessor :instant_payment_notifications
 
     attr_accessor :internal
 
+    # True if this item is a kit
     attr_accessor :kit
 
     attr_accessor :kit_definition
 
+    # Date/time of last modification
     attr_accessor :last_modified_dts
 
+    # UltraCart merchant ID owning item
     attr_accessor :merchant_id
 
+    # Unique item id assigned to this item
     attr_accessor :merchant_item_id
 
+    # Unique object identifier for this item
     attr_accessor :merchant_item_oid
 
+    # Options
     attr_accessor :options
 
+    # Parent category of the item.  Zero indicates the root folder.
     attr_accessor :parent_category_id
 
     attr_accessor :payment_processing
@@ -108,10 +120,13 @@ module UltraCartAdminV2
 
     attr_accessor :tax
 
+    # 3rd Party Email Marketing
     attr_accessor :third_party_email_marketing
 
+    # Variant Items
     attr_accessor :variant_items
 
+    # Variations
     attr_accessor :variations
 
     attr_accessor :wishlist_member
@@ -423,13 +438,64 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@description.nil? && @description.to_s.length > 512
+        invalid_properties.push("invalid value for 'description', the character length must be smaller than or equal to 512.")
+      end
+
+
+      if !@merchant_id.nil? && @merchant_id.to_s.length > 5
+        invalid_properties.push("invalid value for 'merchant_id', the character length must be smaller than or equal to 5.")
+      end
+
+
+      if !@merchant_item_id.nil? && @merchant_item_id.to_s.length > 20
+        invalid_properties.push("invalid value for 'merchant_item_id', the character length must be smaller than or equal to 20.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@description.nil? && @description.to_s.length > 512
+      return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
+      return false if !@merchant_item_id.nil? && @merchant_item_id.to_s.length > 20
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+
+      if !description.nil? && description.to_s.length > 512
+        fail ArgumentError, "invalid value for 'description', the character length must be smaller than or equal to 512."
+      end
+
+      @description = description
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] merchant_id Value to be assigned
+    def merchant_id=(merchant_id)
+
+      if !merchant_id.nil? && merchant_id.to_s.length > 5
+        fail ArgumentError, "invalid value for 'merchant_id', the character length must be smaller than or equal to 5."
+      end
+
+      @merchant_id = merchant_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] merchant_item_id Value to be assigned
+    def merchant_item_id=(merchant_item_id)
+
+      if !merchant_item_id.nil? && merchant_item_id.to_s.length > 20
+        fail ArgumentError, "invalid value for 'merchant_item_id', the character length must be smaller than or equal to 20."
+      end
+
+      @merchant_item_id = merchant_item_id
     end
 
     # Checks equality by comparing each attribute.

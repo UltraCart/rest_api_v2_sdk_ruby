@@ -26,14 +26,19 @@ require 'date'
 module UltraCartAdminV2
 
   class ApiUserApplicationProfile
+    # Application logo URL
     attr_accessor :api_application_logo_url
 
+    # Application description
     attr_accessor :application_description
 
+    # Application name
     attr_accessor :application_name
 
+    # Developer name
     attr_accessor :developer_name
 
+    # Developer website
     attr_accessor :developer_website
 
 

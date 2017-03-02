@@ -26,8 +26,10 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemGiftCertificate
+    # True if the purchase of this item generates a gift certificate
     attr_accessor :gift_certificate
 
+    # The number of days that the gift certificate is good for (optional)
     attr_accessor :gift_certificate_expiration_days
 
 

@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**country** | **String** |  | [optional] 
-**state** | **String** |  | [optional] 
-**validity** | **String** |  | [optional] 
+**country_code** | **String** | Country code (ISO-3166 two letter) | [optional] 
+**state** | **String** | State | [optional] 
+**validity** | **String** | Validity | [optional] 
 
 

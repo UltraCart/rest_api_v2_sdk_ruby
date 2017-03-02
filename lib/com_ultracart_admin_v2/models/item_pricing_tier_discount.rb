@@ -26,8 +26,10 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemPricingTierDiscount
+    # Cost
     attr_accessor :cost
 
+    # Quantity
     attr_accessor :quantity
 
 

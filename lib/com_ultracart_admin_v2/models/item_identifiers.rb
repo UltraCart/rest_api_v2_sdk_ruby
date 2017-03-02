@@ -26,12 +26,16 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemIdentifiers
+    # Barcode
     attr_accessor :barcode
 
+    # Manufacturer Name
     attr_accessor :manufacturer_name
 
+    # Manufacturer SKU
     attr_accessor :manufacturer_sku
 
+    # UNSPSC
     attr_accessor :unspsc
 
 
@@ -85,13 +89,81 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@barcode.nil? && @barcode.to_s.length > 30
+        invalid_properties.push("invalid value for 'barcode', the character length must be smaller than or equal to 30.")
+      end
+
+
+      if !@manufacturer_name.nil? && @manufacturer_name.to_s.length > 50
+        invalid_properties.push("invalid value for 'manufacturer_name', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@manufacturer_sku.nil? && @manufacturer_sku.to_s.length > 25
+        invalid_properties.push("invalid value for 'manufacturer_sku', the character length must be smaller than or equal to 25.")
+      end
+
+
+      if !@unspsc.nil? && @unspsc.to_s.length > 20
+        invalid_properties.push("invalid value for 'unspsc', the character length must be smaller than or equal to 20.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@barcode.nil? && @barcode.to_s.length > 30
+      return false if !@manufacturer_name.nil? && @manufacturer_name.to_s.length > 50
+      return false if !@manufacturer_sku.nil? && @manufacturer_sku.to_s.length > 25
+      return false if !@unspsc.nil? && @unspsc.to_s.length > 20
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] barcode Value to be assigned
+    def barcode=(barcode)
+
+      if !barcode.nil? && barcode.to_s.length > 30
+        fail ArgumentError, "invalid value for 'barcode', the character length must be smaller than or equal to 30."
+      end
+
+      @barcode = barcode
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] manufacturer_name Value to be assigned
+    def manufacturer_name=(manufacturer_name)
+
+      if !manufacturer_name.nil? && manufacturer_name.to_s.length > 50
+        fail ArgumentError, "invalid value for 'manufacturer_name', the character length must be smaller than or equal to 50."
+      end
+
+      @manufacturer_name = manufacturer_name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] manufacturer_sku Value to be assigned
+    def manufacturer_sku=(manufacturer_sku)
+
+      if !manufacturer_sku.nil? && manufacturer_sku.to_s.length > 25
+        fail ArgumentError, "invalid value for 'manufacturer_sku', the character length must be smaller than or equal to 25."
+      end
+
+      @manufacturer_sku = manufacturer_sku
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] unspsc Value to be assigned
+    def unspsc=(unspsc)
+
+      if !unspsc.nil? && unspsc.to_s.length > 20
+        fail ArgumentError, "invalid value for 'unspsc', the character length must be smaller than or equal to 20."
+      end
+
+      @unspsc = unspsc
     end
 
     # Checks equality by comparing each attribute.

@@ -32,6 +32,7 @@ module UltraCartAdminV2
 
     attr_accessor :metadata
 
+    # Indicates if API call was successful
     attr_accessor :success
 
 

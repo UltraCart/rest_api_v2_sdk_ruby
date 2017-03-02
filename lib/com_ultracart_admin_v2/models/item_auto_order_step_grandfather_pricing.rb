@@ -26,8 +26,10 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemAutoOrderStepGrandfatherPricing
+    # On or before date
     attr_accessor :on_or_before_date
 
+    # Unit cost
     attr_accessor :unit_cost
 
 

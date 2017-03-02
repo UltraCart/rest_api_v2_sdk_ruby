@@ -26,6 +26,7 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemInstantPaymentNotifications
+    # Notifications
     attr_accessor :notifications
 
 

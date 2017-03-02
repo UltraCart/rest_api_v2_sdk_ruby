@@ -26,14 +26,18 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemPricingTier
+    # True if this is the default tier
     attr_accessor :default_tier
 
+    # Discounts
     attr_accessor :discounts
 
     attr_accessor :limit
 
+    # Pricing tier name
     attr_accessor :name
 
+    # Pricing tier object identifier
     attr_accessor :pricing_tier_oid
 
 

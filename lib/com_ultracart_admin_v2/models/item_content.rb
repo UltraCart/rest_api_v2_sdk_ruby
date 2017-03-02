@@ -26,26 +26,37 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemContent
+    # StoreFront assignments
     attr_accessor :assignments
 
+    # StoreFront attributes
     attr_accessor :attributes
 
+    # Exclude from search
     attr_accessor :exclude_from_search
 
+    # Exclude from the top sellers list in the StoreFront
     attr_accessor :exclude_from_top_sellers
 
+    # Extended description (max 2000 characters)
     attr_accessor :extended_description
 
+    # Extneded description text translation instance identifier
     attr_accessor :extended_description_translated_text_instance_oid
 
+    # Multimedia
     attr_accessor :multimedia
 
+    # True if the item is new
     attr_accessor :new_item
 
+    # The date the item should no longer be considered new
     attr_accessor :new_item_end
 
+    # The date the item should start being considered new
     attr_accessor :new_item_start
 
+    # Legacy view URL (not used by StoreFronts)
     attr_accessor :view_url
 
 
@@ -147,13 +158,30 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@extended_description.nil? && @extended_description.to_s.length > 2000
+        invalid_properties.push("invalid value for 'extended_description', the character length must be smaller than or equal to 2000.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@extended_description.nil? && @extended_description.to_s.length > 2000
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] extended_description Value to be assigned
+    def extended_description=(extended_description)
+
+      if !extended_description.nil? && extended_description.to_s.length > 2000
+        fail ArgumentError, "invalid value for 'extended_description', the character length must be smaller than or equal to 2000."
+      end
+
+      @extended_description = extended_description
     end
 
     # Checks equality by comparing each attribute.

@@ -26,10 +26,13 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemPricingTierLimit
+    # Cumulative order limit
     attr_accessor :cumulative_order_limit
 
+    # Individual order limit
     attr_accessor :individual_order_limit
 
+    # Multiple quantity
     attr_accessor :multiple_quantity
 
 

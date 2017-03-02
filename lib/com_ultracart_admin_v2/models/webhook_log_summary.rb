@@ -26,10 +26,13 @@ require 'date'
 module UltraCartAdminV2
 
   class WebhookLogSummary
+    # Date/time of the delivery
     attr_accessor :delivery_dts
 
+    # Request id
     attr_accessor :request_id
 
+    # True if the notification was successful
     attr_accessor :success
 
 

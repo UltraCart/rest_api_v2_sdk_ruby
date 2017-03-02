@@ -26,6 +26,7 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemEnrollment123
+    # Enrolment 123 product code
     attr_accessor :enrollment123_product_code
 
 

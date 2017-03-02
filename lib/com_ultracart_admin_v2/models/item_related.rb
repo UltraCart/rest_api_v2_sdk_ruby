@@ -26,10 +26,13 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemRelated
+    # True to suppress system calculated relationships
     attr_accessor :no_system_calculated_related_items
 
+    # Not relatable
     attr_accessor :not_relatable
 
+    # Related items
     attr_accessor :related_items
 
 

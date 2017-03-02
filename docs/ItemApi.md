@@ -1,6 +1,6 @@
 # UltraCartAdminV2::ItemApi
 
-All URIs are relative to *https://secure.ultracart.com/rest/admin/v2*
+All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Retrieve items
 
-Retrieves a group of items from the account.  If no parameters are specified, all items will be returned. 
+Retrieves a group of items from the account.  If no parameters are specified, all items will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
 
 ### Example
 ```ruby
@@ -37,11 +37,12 @@ end
 api_instance = UltraCartAdminV2::ItemApi.new
 
 opts = { 
-  parent_category_id: 56, # Integer | The parent category to retrieve items for.  Unspecified means all items on the account.  0 = root
-  _limit: 56, # Integer | The maximum number of records to return on this one API call.
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
+  parent_category_id: 56, # Integer | The parent category object id to retrieve items for.  Unspecified means all items on the account.  0 = root
+  parent_category_path: "parent_category_path_example", # String | The parent category path to retrieve items for.  Unspecified means all items on the account.  / = root
+  _limit: 100, # Integer | The maximum number of records to return on this one API call. (Default 100, Max 2000)
+  _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
   _since: "_since_example", # String | Fetch items that have been created/modified since this date/time.
-  _sort: "_sort_example", # String | The sort order of the items.  See documentation for examples
+  _sort: "_sort_example", # String | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
   _expand: "_expand_example", # String | The object expansion to perform on the result.  See documentation for examples
   _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
 }
@@ -59,11 +60,12 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parent_category_id** | **Integer**| The parent category to retrieve items for.  Unspecified means all items on the account.  0 &#x3D; root | [optional] 
- **_limit** | **Integer**| The maximum number of records to return on this one API call. | [optional] 
- **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] 
+ **parent_category_id** | **Integer**| The parent category object id to retrieve items for.  Unspecified means all items on the account.  0 &#x3D; root | [optional] 
+ **parent_category_path** | **String**| The parent category path to retrieve items for.  Unspecified means all items on the account.  / &#x3D; root | [optional] 
+ **_limit** | **Integer**| The maximum number of records to return on this one API call. (Default 100, Max 2000) | [optional] [default to 100]
+ **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] [default to 0]
  **_since** | **String**| Fetch items that have been created/modified since this date/time. | [optional] 
- **_sort** | **String**| The sort order of the items.  See documentation for examples | [optional] 
+ **_sort** | **String**| The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] 
  **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
  **_placeholders** | **BOOLEAN**| Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] 
 
@@ -225,7 +227,7 @@ end
 
 api_instance = UltraCartAdminV2::ItemApi.new
 
-item = UltraCartAdminV2::Item.new # Item | Item to create
+item = UltraCartAdminV2::Item.new # Item | Item to update
 
 merchant_item_oid = 56 # Integer | The item oid to update.
 
@@ -243,7 +245,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **item** | [**Item**](Item.md)| Item to create | 
+ **item** | [**Item**](Item.md)| Item to update | 
  **merchant_item_oid** | **Integer**| The item oid to update. | 
 
 ### Return type
@@ -256,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json; charset=UTF-8
  - **Accept**: application/json
 
 
@@ -313,7 +315,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json; charset=UTF-8
  - **Accept**: application/json
 
 

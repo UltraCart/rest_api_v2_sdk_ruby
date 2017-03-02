@@ -26,8 +26,10 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemReporting
+    # Report as an upsell
     attr_accessor :report_as_upsell
 
+    # Report pickable quantities
     attr_accessor :report_pickable_quantities
 
 
@@ -43,7 +45,7 @@ module UltraCartAdminV2
     def self.swagger_types
       {
         :'report_as_upsell' => :'BOOLEAN',
-        :'report_pickable_quantities' => :'String'
+        :'report_pickable_quantities' => :'Array<Integer>'
       }
     end
 
@@ -60,7 +62,9 @@ module UltraCartAdminV2
       end
 
       if attributes.has_key?(:'report_pickable_quantities')
-        self.report_pickable_quantities = attributes[:'report_pickable_quantities']
+        if (value = attributes[:'report_pickable_quantities']).is_a?(Array)
+          self.report_pickable_quantities = value
+        end
       end
 
     end

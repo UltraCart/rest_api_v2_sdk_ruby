@@ -26,18 +26,25 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemRevguard
+    # Canceled CSR prompt group
     attr_accessor :revguard_canceled_csr_prompt_group
 
+    # IVR prompt group
     attr_accessor :revguard_canceled_ivr_prompt_group
 
+    # Canceled web prompt group
     attr_accessor :revguard_canceled_web_prompt_group
 
+    # Client brand
     attr_accessor :revguard_client_brand
 
+    # CSR prompt group
     attr_accessor :revguard_csr_prompt_group
 
+    # IVR prompt group
     attr_accessor :revguard_ivr_prompt_group
 
+    # Web prompt group
     attr_accessor :revguard_web_prompt_group
 
 

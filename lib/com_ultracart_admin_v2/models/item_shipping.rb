@@ -26,82 +26,124 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemShipping
+    # Allow back order
     attr_accessor :allow_back_order
 
+    # Fulfillment by Amazon.com
     attr_accessor :amazon_fba
 
+    # Case inner packs
     attr_accessor :case_inner_packs
 
+    # Case units
     attr_accessor :case_units
 
+    # Cases
     attr_accessor :cases
 
-    attr_accessor :country_of_origin
+    # Country code of origin for customs forms.  (ISO-3166 two letter code)
+    attr_accessor :country_code_of_origin
 
+    # Customs description
     attr_accessor :customs_description
 
+    # Customs value
     attr_accessor :customs_value
 
+    # Delivery on Friday
     attr_accessor :delivery_on_friday
 
+    # Delivery on Monday
     attr_accessor :delivery_on_monday
 
+    # Delivery on Saturday
     attr_accessor :delivery_on_saturday
 
+    # Delivery on Sunday
     attr_accessor :delivery_on_sunday
 
+    # Delivery on Thursday
     attr_accessor :delivery_on_thursday
 
+    # Delivery on Tuesday
     attr_accessor :delivery_on_tuesday
 
+    # Delivery on Wednesday
     attr_accessor :delivery_on_wednesday
 
+    # Destination markups
     attr_accessor :destination_markups
 
+    # Destination restrictions
     attr_accessor :destination_restrictions
 
+    # Distribution centers
     attr_accessor :distribution_centers
 
+    # Estimated time of arrival
     attr_accessor :eta
 
+    # Qualifies for free shipping
     attr_accessor :free_shipping
 
+    # Freight class
     attr_accessor :freight_class
 
+    # Hazardous material
     attr_accessor :hazmat
 
+    # True if this item is made to order
     attr_accessor :made_to_order
 
+    # Number of days lead time it takes to make the item before ite can ship
     attr_accessor :made_to_order_lead_time
 
+    # Maximum days allowed in transit
     attr_accessor :max_days_time_in_transit
 
+    # Methods
     attr_accessor :methods
 
+    # No shipping discounts
     attr_accessor :no_shipping_discount
 
+    # Package requirements
     attr_accessor :package_requirements
 
+    # Perishable class name
+    attr_accessor :perishable_class_name
+
+    # Perishable class object identifier
     attr_accessor :perishable_class_oid
 
+    # This item is on pre-order
     attr_accessor :preorder
 
+    # True to require customer to select a delivery date
     attr_accessor :require_delivery_date
 
+    # Restrict shipment on Friday
     attr_accessor :restrict_shipment_on_friday
 
+    # Restrict shipment on Monday
     attr_accessor :restrict_shipment_on_monday
 
+    # Restrict shipment on Saturday
     attr_accessor :restrict_shipment_on_saturday
 
+    # Restrict shipment on Sunday
     attr_accessor :restrict_shipment_on_sunday
 
+    # Restrict shipment on Thursday
     attr_accessor :restrict_shipment_on_thursday
 
+    # Restrict shipment on Tuesday
     attr_accessor :restrict_shipment_on_tuesday
 
+    # Restrict shipment on Wednesday
     attr_accessor :restrict_shipment_on_wednesday
 
+    # Ship this item in a separate box
     attr_accessor :ship_separately
 
     attr_accessor :ship_separately_additional_weight
@@ -110,12 +152,15 @@ module UltraCartAdminV2
 
     attr_accessor :ship_separately_length
 
+    # Ship separately package special type
     attr_accessor :ship_separately_package_special_type
 
     attr_accessor :ship_separately_width
 
+    # Special product type (USPS Media Mail)
     attr_accessor :special_product_type
 
+    # Track inventory
     attr_accessor :track_inventory
 
 
@@ -127,7 +172,7 @@ module UltraCartAdminV2
         :'case_inner_packs' => :'case_inner_packs',
         :'case_units' => :'case_units',
         :'cases' => :'cases',
-        :'country_of_origin' => :'country_of_origin',
+        :'country_code_of_origin' => :'country_code_of_origin',
         :'customs_description' => :'customs_description',
         :'customs_value' => :'customs_value',
         :'delivery_on_friday' => :'delivery_on_friday',
@@ -150,6 +195,7 @@ module UltraCartAdminV2
         :'methods' => :'methods',
         :'no_shipping_discount' => :'no_shipping_discount',
         :'package_requirements' => :'package_requirements',
+        :'perishable_class_name' => :'perishable_class_name',
         :'perishable_class_oid' => :'perishable_class_oid',
         :'preorder' => :'preorder',
         :'require_delivery_date' => :'require_delivery_date',
@@ -179,7 +225,7 @@ module UltraCartAdminV2
         :'case_inner_packs' => :'Integer',
         :'case_units' => :'Integer',
         :'cases' => :'Array<ItemShippingCase>',
-        :'country_of_origin' => :'String',
+        :'country_code_of_origin' => :'String',
         :'customs_description' => :'String',
         :'customs_value' => :'Float',
         :'delivery_on_friday' => :'BOOLEAN',
@@ -202,6 +248,7 @@ module UltraCartAdminV2
         :'methods' => :'Array<ItemShippingMethod>',
         :'no_shipping_discount' => :'BOOLEAN',
         :'package_requirements' => :'Array<ItemShippingPackageRequirement>',
+        :'perishable_class_name' => :'String',
         :'perishable_class_oid' => :'Integer',
         :'preorder' => :'BOOLEAN',
         :'require_delivery_date' => :'BOOLEAN',
@@ -253,8 +300,8 @@ module UltraCartAdminV2
         end
       end
 
-      if attributes.has_key?(:'country_of_origin')
-        self.country_of_origin = attributes[:'country_of_origin']
+      if attributes.has_key?(:'country_code_of_origin')
+        self.country_code_of_origin = attributes[:'country_code_of_origin']
       end
 
       if attributes.has_key?(:'customs_description')
@@ -355,6 +402,10 @@ module UltraCartAdminV2
         end
       end
 
+      if attributes.has_key?(:'perishable_class_name')
+        self.perishable_class_name = attributes[:'perishable_class_name']
+      end
+
       if attributes.has_key?(:'perishable_class_oid')
         self.perishable_class_oid = attributes[:'perishable_class_oid']
       end
@@ -433,13 +484,30 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@country_code_of_origin.nil? && @country_code_of_origin.to_s.length > 2
+        invalid_properties.push("invalid value for 'country_code_of_origin', the character length must be smaller than or equal to 2.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@country_code_of_origin.nil? && @country_code_of_origin.to_s.length > 2
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] country_code_of_origin Value to be assigned
+    def country_code_of_origin=(country_code_of_origin)
+
+      if !country_code_of_origin.nil? && country_code_of_origin.to_s.length > 2
+        fail ArgumentError, "invalid value for 'country_code_of_origin', the character length must be smaller than or equal to 2."
+      end
+
+      @country_code_of_origin = country_code_of_origin
     end
 
     # Checks equality by comparing each attribute.
@@ -452,7 +520,7 @@ module UltraCartAdminV2
           case_inner_packs == o.case_inner_packs &&
           case_units == o.case_units &&
           cases == o.cases &&
-          country_of_origin == o.country_of_origin &&
+          country_code_of_origin == o.country_code_of_origin &&
           customs_description == o.customs_description &&
           customs_value == o.customs_value &&
           delivery_on_friday == o.delivery_on_friday &&
@@ -475,6 +543,7 @@ module UltraCartAdminV2
           methods == o.methods &&
           no_shipping_discount == o.no_shipping_discount &&
           package_requirements == o.package_requirements &&
+          perishable_class_name == o.perishable_class_name &&
           perishable_class_oid == o.perishable_class_oid &&
           preorder == o.preorder &&
           require_delivery_date == o.require_delivery_date &&
@@ -504,7 +573,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allow_back_order, amazon_fba, case_inner_packs, case_units, cases, country_of_origin, customs_description, customs_value, delivery_on_friday, delivery_on_monday, delivery_on_saturday, delivery_on_sunday, delivery_on_thursday, delivery_on_tuesday, delivery_on_wednesday, destination_markups, destination_restrictions, distribution_centers, eta, free_shipping, freight_class, hazmat, made_to_order, made_to_order_lead_time, max_days_time_in_transit, methods, no_shipping_discount, package_requirements, perishable_class_oid, preorder, require_delivery_date, restrict_shipment_on_friday, restrict_shipment_on_monday, restrict_shipment_on_saturday, restrict_shipment_on_sunday, restrict_shipment_on_thursday, restrict_shipment_on_tuesday, restrict_shipment_on_wednesday, ship_separately, ship_separately_additional_weight, ship_separately_height, ship_separately_length, ship_separately_package_special_type, ship_separately_width, special_product_type, track_inventory].hash
+      [allow_back_order, amazon_fba, case_inner_packs, case_units, cases, country_code_of_origin, customs_description, customs_value, delivery_on_friday, delivery_on_monday, delivery_on_saturday, delivery_on_sunday, delivery_on_thursday, delivery_on_tuesday, delivery_on_wednesday, destination_markups, destination_restrictions, distribution_centers, eta, free_shipping, freight_class, hazmat, made_to_order, made_to_order_lead_time, max_days_time_in_transit, methods, no_shipping_discount, package_requirements, perishable_class_name, perishable_class_oid, preorder, require_delivery_date, restrict_shipment_on_friday, restrict_shipment_on_monday, restrict_shipment_on_saturday, restrict_shipment_on_sunday, restrict_shipment_on_thursday, restrict_shipment_on_tuesday, restrict_shipment_on_wednesday, ship_separately, ship_separately_additional_weight, ship_separately_height, ship_separately_length, ship_separately_package_special_type, ship_separately_width, special_product_type, track_inventory].hash
     end
 
     # Builds the object from hash

@@ -26,8 +26,10 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemAccounting
+    # QuickBooks item name if different than the item id
     attr_accessor :accounting_code
 
+    # QuickBooks class if you are classifying items on your invoices/receipts
     attr_accessor :qb_class
 
 
@@ -69,13 +71,47 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@accounting_code.nil? && @accounting_code.to_s.length > 50
+        invalid_properties.push("invalid value for 'accounting_code', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@qb_class.nil? && @qb_class.to_s.length > 31
+        invalid_properties.push("invalid value for 'qb_class', the character length must be smaller than or equal to 31.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@accounting_code.nil? && @accounting_code.to_s.length > 50
+      return false if !@qb_class.nil? && @qb_class.to_s.length > 31
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] accounting_code Value to be assigned
+    def accounting_code=(accounting_code)
+
+      if !accounting_code.nil? && accounting_code.to_s.length > 50
+        fail ArgumentError, "invalid value for 'accounting_code', the character length must be smaller than or equal to 50."
+      end
+
+      @accounting_code = accounting_code
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] qb_class Value to be assigned
+    def qb_class=(qb_class)
+
+      if !qb_class.nil? && qb_class.to_s.length > 31
+        fail ArgumentError, "invalid value for 'qb_class', the character length must be smaller than or equal to 31."
+      end
+
+      @qb_class = qb_class
     end
 
     # Checks equality by comparing each attribute.

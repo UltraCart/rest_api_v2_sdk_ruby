@@ -26,41 +26,80 @@ require 'date'
 module UltraCartAdminV2
 
   class Webhook
+    # Populated if webhook associated with an API user
     attr_accessor :api_user_oid
+
+    # Version of the API objects that are sent in notifications
+    attr_accessor :api_version
 
     attr_accessor :application_profile
 
+    # The type of authentication this webhook will use when communicating with your server
     attr_accessor :authentication_type
 
+    # Basic authentication password
     attr_accessor :basic_password
 
+    # Basic authentication user name
     attr_accessor :basic_username
 
+    # The number of consecutive failures that have occurred trying to deliver notifications to the target server
     attr_accessor :consecutive_failures
 
+    # True if the webhook has been disabled
     attr_accessor :disabled
 
+    # The categories of events.  Individual events and subscriptions are handled in the child objects.  _placeholders parameter effects the population of this on a retrieval.
     attr_accessor :event_categories
 
+    # The maximum number of events in the payload that UltraCart will deliver
     attr_accessor :maximum_events
 
+    # The maximum size of the payload that UltraCart will deliver
     attr_accessor :maximum_size
 
+    # The UltraCart merchant ID that owns this webhook
     attr_accessor :merchant_id
 
+    # The next time UltraCart will attempt delivery if failures have been occurring
     attr_accessor :next_retry_after
 
+    # The number of pending events for this webhook
     attr_accessor :pending
 
+    # The object identifier for this webhook
     attr_accessor :webhook_oid
 
+    # The URL to deliver events to.  Must be HTTPS for customer related information.
     attr_accessor :webhook_url
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'api_user_oid' => :'api_user_oid',
+        :'api_version' => :'api_version',
         :'application_profile' => :'application_profile',
         :'authentication_type' => :'authentication_type',
         :'basic_password' => :'basic_password',
@@ -82,6 +121,7 @@ module UltraCartAdminV2
     def self.swagger_types
       {
         :'api_user_oid' => :'Integer',
+        :'api_version' => :'String',
         :'application_profile' => :'ApiUserApplicationProfile',
         :'authentication_type' => :'String',
         :'basic_password' => :'String',
@@ -109,6 +149,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'api_user_oid')
         self.api_user_oid = attributes[:'api_user_oid']
+      end
+
+      if attributes.has_key?(:'api_version')
+        self.api_version = attributes[:'api_version']
       end
 
       if attributes.has_key?(:'application_profile')
@@ -181,7 +225,31 @@ module UltraCartAdminV2
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      api_version_validator = EnumAttributeValidator.new('String', ["2016-10-01"])
+      return false unless api_version_validator.valid?(@api_version)
+      authentication_type_validator = EnumAttributeValidator.new('String', ["none", "basic"])
+      return false unless authentication_type_validator.valid?(@authentication_type)
       return true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] api_version Object to be assigned
+    def api_version=(api_version)
+      validator = EnumAttributeValidator.new('String', ["2016-10-01"])
+      unless validator.valid?(api_version)
+        fail ArgumentError, "invalid value for 'api_version', must be one of #{validator.allowable_values}."
+      end
+      @api_version = api_version
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] authentication_type Object to be assigned
+    def authentication_type=(authentication_type)
+      validator = EnumAttributeValidator.new('String', ["none", "basic"])
+      unless validator.valid?(authentication_type)
+        fail ArgumentError, "invalid value for 'authentication_type', must be one of #{validator.allowable_values}."
+      end
+      @authentication_type = authentication_type
     end
 
     # Checks equality by comparing each attribute.
@@ -190,6 +258,7 @@ module UltraCartAdminV2
       return true if self.equal?(o)
       self.class == o.class &&
           api_user_oid == o.api_user_oid &&
+          api_version == o.api_version &&
           application_profile == o.application_profile &&
           authentication_type == o.authentication_type &&
           basic_password == o.basic_password &&
@@ -215,7 +284,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [api_user_oid, application_profile, authentication_type, basic_password, basic_username, consecutive_failures, disabled, event_categories, maximum_events, maximum_size, merchant_id, next_retry_after, pending, webhook_oid, webhook_url].hash
+      [api_user_oid, api_version, application_profile, authentication_type, basic_password, basic_username, consecutive_failures, disabled, event_categories, maximum_events, maximum_size, merchant_id, next_retry_after, pending, webhook_oid, webhook_url].hash
     end
 
     # Builds the object from hash

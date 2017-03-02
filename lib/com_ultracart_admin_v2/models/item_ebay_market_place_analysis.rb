@@ -26,24 +26,33 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemEbayMarketPlaceAnalysis
+    # Adjusted price
     attr_accessor :adjusted_price
 
+    # Adjusted shipping
     attr_accessor :adjusted_shipping
 
+    # Adjusted total
     attr_accessor :adjusted_total
 
+    # Cost of goods sold
     attr_accessor :cogs
 
+    # Final value fee
     attr_accessor :final_value_fee
 
+    # Minimum advertised price
     attr_accessor :minimum_advertised_price
 
+    # Other listings
     attr_accessor :other_listings
 
     attr_accessor :our_listing
 
+    # Overhead
     attr_accessor :overhead
 
+    # Profit potential
     attr_accessor :profit_potential
 
 

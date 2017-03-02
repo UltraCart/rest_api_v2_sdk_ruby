@@ -26,8 +26,10 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemOptionValueAdditionalItem
+    # Additional item id
     attr_accessor :additional_merchant_item_id
 
+    # Additional item object identifier
     attr_accessor :additional_merchant_item_oid
 
 

@@ -26,16 +26,22 @@ require 'date'
 module UltraCartAdminV2
 
   class ItemDigitalDelivery
+    # Description of the activation code
     attr_accessor :activation_code_description
 
+    # The number of activation codes whcih should generate a warning email
     attr_accessor :activation_code_low_warning
 
+    # The URL to retrieve activation codes from in real-time
     attr_accessor :activation_code_realtime_url
 
+    # Shared secret used when communicating with the real-time URL
     attr_accessor :activation_code_shared_secret
 
+    # Type of activation code
     attr_accessor :activation_code_type
 
+    # Digital items that customer can download when this item is purchased
     attr_accessor :digital_items
 
 
@@ -103,13 +109,64 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+
+      if !@activation_code_description.nil? && @activation_code_description.to_s.length > 50
+        invalid_properties.push("invalid value for 'activation_code_description', the character length must be smaller than or equal to 50.")
+      end
+
+
+      if !@activation_code_realtime_url.nil? && @activation_code_realtime_url.to_s.length > 350
+        invalid_properties.push("invalid value for 'activation_code_realtime_url', the character length must be smaller than or equal to 350.")
+      end
+
+
+      if !@activation_code_shared_secret.nil? && @activation_code_shared_secret.to_s.length > 20
+        invalid_properties.push("invalid value for 'activation_code_shared_secret', the character length must be smaller than or equal to 20.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@activation_code_description.nil? && @activation_code_description.to_s.length > 50
+      return false if !@activation_code_realtime_url.nil? && @activation_code_realtime_url.to_s.length > 350
+      return false if !@activation_code_shared_secret.nil? && @activation_code_shared_secret.to_s.length > 20
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] activation_code_description Value to be assigned
+    def activation_code_description=(activation_code_description)
+
+      if !activation_code_description.nil? && activation_code_description.to_s.length > 50
+        fail ArgumentError, "invalid value for 'activation_code_description', the character length must be smaller than or equal to 50."
+      end
+
+      @activation_code_description = activation_code_description
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] activation_code_realtime_url Value to be assigned
+    def activation_code_realtime_url=(activation_code_realtime_url)
+
+      if !activation_code_realtime_url.nil? && activation_code_realtime_url.to_s.length > 350
+        fail ArgumentError, "invalid value for 'activation_code_realtime_url', the character length must be smaller than or equal to 350."
+      end
+
+      @activation_code_realtime_url = activation_code_realtime_url
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] activation_code_shared_secret Value to be assigned
+    def activation_code_shared_secret=(activation_code_shared_secret)
+
+      if !activation_code_shared_secret.nil? && activation_code_shared_secret.to_s.length > 20
+        fail ArgumentError, "invalid value for 'activation_code_shared_secret', the character length must be smaller than or equal to 20."
+      end
+
+      @activation_code_shared_secret = activation_code_shared_secret
     end
 
     # Checks equality by comparing each attribute.
