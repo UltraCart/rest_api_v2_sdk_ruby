@@ -31,6 +31,63 @@ module UltraCartAdminV2
       @api_client = api_client
     end
 
+    # Delete a customer
+    # Delete a customer on the UltraCart account. 
+    # @param customer_profile_oid The customer_profile_oid to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [CustomerResponse]
+    def customer_customers_customer_profile_oid_delete(customer_profile_oid, opts = {})
+      data, _status_code, _headers = customer_customers_customer_profile_oid_delete_with_http_info(customer_profile_oid, opts)
+      return data
+    end
+
+    # Delete a customer
+    # Delete a customer on the UltraCart account. 
+    # @param customer_profile_oid The customer_profile_oid to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomerResponse, Fixnum, Hash)>] CustomerResponse data, response status code and response headers
+    def customer_customers_customer_profile_oid_delete_with_http_info(customer_profile_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CustomerApi.customer_customers_customer_profile_oid_delete ..."
+      end
+      # verify the required parameter 'customer_profile_oid' is set
+      fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.customer_customers_customer_profile_oid_delete" if customer_profile_oid.nil?
+      # resource path
+      local_var_path = "/customer/customers/{customer_profile_oid}".sub('{format}','json').sub('{' + 'customer_profile_oid' + '}', customer_profile_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json; charset=UTF-8']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CustomerResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#customer_customers_customer_profile_oid_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a customer
     # Retrieves a single customer using the specified customer profile oid. 
     # @param customer_profile_oid The customer oid to retrieve.
@@ -297,6 +354,63 @@ module UltraCartAdminV2
         :return_type => 'CustomersResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CustomerApi#customer_customers_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Insert a customer
+    # Insert a customer on the UltraCart account. 
+    # @param customer Customer to insert
+    # @param [Hash] opts the optional parameters
+    # @return [CustomerResponse]
+    def customer_customers_post(customer, opts = {})
+      data, _status_code, _headers = customer_customers_post_with_http_info(customer, opts)
+      return data
+    end
+
+    # Insert a customer
+    # Insert a customer on the UltraCart account. 
+    # @param customer Customer to insert
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomerResponse, Fixnum, Hash)>] CustomerResponse data, response status code and response headers
+    def customer_customers_post_with_http_info(customer, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CustomerApi.customer_customers_post ..."
+      end
+      # verify the required parameter 'customer' is set
+      fail ArgumentError, "Missing the required parameter 'customer' when calling CustomerApi.customer_customers_post" if customer.nil?
+      # resource path
+      local_var_path = "/customer/customers".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json; charset=UTF-8']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(customer)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CustomerResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#customer_customers_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

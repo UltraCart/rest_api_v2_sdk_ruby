@@ -25,88 +25,34 @@ require 'date'
 
 module UltraCartAdminV2
 
-  class OrderPaymentCreditCard
-    # Card authorization ticket
-    attr_accessor :card_auth_ticket
+  class ChargebackDisputesResponse
+    attr_accessor :chargebacks
 
-    # Card authorization amount
-    attr_accessor :card_authorization_amount
+    attr_accessor :error
 
-    # Card authorization date/time
-    attr_accessor :card_authorization_dts
+    attr_accessor :metadata
 
-    # Card authorization reference number
-    attr_accessor :card_authorization_reference_number
+    # Indicates if API call was successful
+    attr_accessor :success
 
-    # Card expiration month (1-12)
-    attr_accessor :card_expiration_month
-
-    # Card expiration year (Four digit year)
-    attr_accessor :card_expiration_year
-
-    # Card number (masked to last 4)
-    attr_accessor :card_number
-
-    # Card number token from hosted fields used to update the cart number
-    attr_accessor :card_number_token
-
-    # True if the card has been truncated
-    attr_accessor :card_number_truncated
-
-    # Card type
-    attr_accessor :card_type
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'card_auth_ticket' => :'card_auth_ticket',
-        :'card_authorization_amount' => :'card_authorization_amount',
-        :'card_authorization_dts' => :'card_authorization_dts',
-        :'card_authorization_reference_number' => :'card_authorization_reference_number',
-        :'card_expiration_month' => :'card_expiration_month',
-        :'card_expiration_year' => :'card_expiration_year',
-        :'card_number' => :'card_number',
-        :'card_number_token' => :'card_number_token',
-        :'card_number_truncated' => :'card_number_truncated',
-        :'card_type' => :'card_type'
+        :'chargebacks' => :'chargebacks',
+        :'error' => :'error',
+        :'metadata' => :'metadata',
+        :'success' => :'success'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'card_auth_ticket' => :'String',
-        :'card_authorization_amount' => :'Float',
-        :'card_authorization_dts' => :'String',
-        :'card_authorization_reference_number' => :'String',
-        :'card_expiration_month' => :'Integer',
-        :'card_expiration_year' => :'Integer',
-        :'card_number' => :'String',
-        :'card_number_token' => :'String',
-        :'card_number_truncated' => :'BOOLEAN',
-        :'card_type' => :'String'
+        :'chargebacks' => :'Array<ChargebackDispute>',
+        :'error' => :'Error',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'BOOLEAN'
       }
     end
 
@@ -118,44 +64,22 @@ module UltraCartAdminV2
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'card_auth_ticket')
-        self.card_auth_ticket = attributes[:'card_auth_ticket']
+      if attributes.has_key?(:'chargebacks')
+        if (value = attributes[:'chargebacks']).is_a?(Array)
+          self.chargebacks = value
+        end
       end
 
-      if attributes.has_key?(:'card_authorization_amount')
-        self.card_authorization_amount = attributes[:'card_authorization_amount']
+      if attributes.has_key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.has_key?(:'card_authorization_dts')
-        self.card_authorization_dts = attributes[:'card_authorization_dts']
+      if attributes.has_key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.has_key?(:'card_authorization_reference_number')
-        self.card_authorization_reference_number = attributes[:'card_authorization_reference_number']
-      end
-
-      if attributes.has_key?(:'card_expiration_month')
-        self.card_expiration_month = attributes[:'card_expiration_month']
-      end
-
-      if attributes.has_key?(:'card_expiration_year')
-        self.card_expiration_year = attributes[:'card_expiration_year']
-      end
-
-      if attributes.has_key?(:'card_number')
-        self.card_number = attributes[:'card_number']
-      end
-
-      if attributes.has_key?(:'card_number_token')
-        self.card_number_token = attributes[:'card_number_token']
-      end
-
-      if attributes.has_key?(:'card_number_truncated')
-        self.card_number_truncated = attributes[:'card_number_truncated']
-      end
-
-      if attributes.has_key?(:'card_type')
-        self.card_type = attributes[:'card_type']
+      if attributes.has_key?(:'success')
+        self.success = attributes[:'success']
       end
 
     end
@@ -170,19 +94,7 @@ module UltraCartAdminV2
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      card_type_validator = EnumAttributeValidator.new('String', ["AMEX", "Diners Club", "Discover", "JCB", "MasterCard", "VISA", "Visa"])
-      return false unless card_type_validator.valid?(@card_type)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] card_type Object to be assigned
-    def card_type=(card_type)
-      validator = EnumAttributeValidator.new('String', ["AMEX", "Diners Club", "Discover", "JCB", "MasterCard", "VISA", "Visa"])
-      unless validator.valid?(card_type)
-        fail ArgumentError, "invalid value for 'card_type', must be one of #{validator.allowable_values}."
-      end
-      @card_type = card_type
     end
 
     # Checks equality by comparing each attribute.
@@ -190,16 +102,10 @@ module UltraCartAdminV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          card_auth_ticket == o.card_auth_ticket &&
-          card_authorization_amount == o.card_authorization_amount &&
-          card_authorization_dts == o.card_authorization_dts &&
-          card_authorization_reference_number == o.card_authorization_reference_number &&
-          card_expiration_month == o.card_expiration_month &&
-          card_expiration_year == o.card_expiration_year &&
-          card_number == o.card_number &&
-          card_number_token == o.card_number_token &&
-          card_number_truncated == o.card_number_truncated &&
-          card_type == o.card_type
+          chargebacks == o.chargebacks &&
+          error == o.error &&
+          metadata == o.metadata &&
+          success == o.success
     end
 
     # @see the `==` method
@@ -211,7 +117,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [card_auth_ticket, card_authorization_amount, card_authorization_dts, card_authorization_reference_number, card_expiration_month, card_expiration_year, card_number, card_number_token, card_number_truncated, card_type].hash
+      [chargebacks, error, metadata, success].hash
     end
 
     # Builds the object from hash

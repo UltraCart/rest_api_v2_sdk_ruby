@@ -225,7 +225,7 @@ module UltraCartAdminV2
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      api_version_validator = EnumAttributeValidator.new('String', ["2016-10-01"])
+      api_version_validator = EnumAttributeValidator.new('String', ["2017-03-01"])
       return false unless api_version_validator.valid?(@api_version)
       authentication_type_validator = EnumAttributeValidator.new('String', ["none", "basic"])
       return false unless authentication_type_validator.valid?(@authentication_type)
@@ -235,7 +235,7 @@ module UltraCartAdminV2
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] api_version Object to be assigned
     def api_version=(api_version)
-      validator = EnumAttributeValidator.new('String', ["2016-10-01"])
+      validator = EnumAttributeValidator.new('String', ["2017-03-01"])
       unless validator.valid?(api_version)
         fail ArgumentError, "invalid value for 'api_version', must be one of #{validator.allowable_values}."
       end

@@ -355,6 +355,7 @@ module UltraCartAdminV2
     # @param order Order to update
     # @param order_id The order id to update.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [OrderResponse]
     def order_orders_order_id_put(order, order_id, opts = {})
       data, _status_code, _headers = order_orders_order_id_put_with_http_info(order, order_id, opts)
@@ -366,6 +367,7 @@ module UltraCartAdminV2
     # @param order Order to update
     # @param order_id The order id to update.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(OrderResponse, Fixnum, Hash)>] OrderResponse data, response status code and response headers
     def order_orders_order_id_put_with_http_info(order, order_id, opts = {})
       if @api_client.config.debugging
@@ -380,6 +382,7 @@ module UltraCartAdminV2
 
       # query parameters
       query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
 
       # header parameters
       header_params = {}

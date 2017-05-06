@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 
 # **order_orders_order_id_put**
-> OrderResponse order_orders_order_id_put(order, order_id)
+> OrderResponse order_orders_order_id_put(order, order_id, opts)
 
 Update an order
 
@@ -333,10 +333,13 @@ order = UltraCartAdminV2::Order.new # Order | Order to update
 
 order_id = "order_id_example" # String | The order id to update.
 
+opts = { 
+  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+}
 
 begin
   #Update an order
-  result = api_instance.order_orders_order_id_put(order, order_id)
+  result = api_instance.order_orders_order_id_put(order, order_id, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
   puts "Exception when calling OrderApi->order_orders_order_id_put: #{e}"
@@ -349,6 +352,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order** | [**Order**](Order.md)| Order to update | 
  **order_id** | **String**| The order id to update. | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
 
 ### Return type
 
