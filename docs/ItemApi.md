@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 
 # **item_items_merchant_item_oid_put**
-> ItemResponse item_items_merchant_item_oid_put(item, merchant_item_oid)
+> ItemResponse item_items_merchant_item_oid_put(item, merchant_item_oid, opts)
 
 Update an item
 
@@ -231,10 +231,14 @@ item = UltraCartAdminV2::Item.new # Item | Item to update
 
 merchant_item_oid = 56 # Integer | The item oid to update.
 
+opts = { 
+  _expand: "_expand_example", # String | The object expansion to perform on the result.  See documentation for examples
+  _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+}
 
 begin
   #Update an item
-  result = api_instance.item_items_merchant_item_oid_put(item, merchant_item_oid)
+  result = api_instance.item_items_merchant_item_oid_put(item, merchant_item_oid, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
   puts "Exception when calling ItemApi->item_items_merchant_item_oid_put: #{e}"
@@ -247,6 +251,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **item** | [**Item**](Item.md)| Item to update | 
  **merchant_item_oid** | **Integer**| The item oid to update. | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+ **_placeholders** | **BOOLEAN**| Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] 
 
 ### Return type
 
@@ -264,7 +270,7 @@ Name | Type | Description  | Notes
 
 
 # **item_items_post**
-> ItemResponse item_items_post(item)
+> ItemResponse item_items_post(item, opts)
 
 Create an item
 
@@ -289,10 +295,14 @@ api_instance = UltraCartAdminV2::ItemApi.new
 
 item = UltraCartAdminV2::Item.new # Item | Item to create
 
+opts = { 
+  _expand: "_expand_example", # String | The object expansion to perform on the result.  See documentation for examples
+  _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+}
 
 begin
   #Create an item
-  result = api_instance.item_items_post(item)
+  result = api_instance.item_items_post(item, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
   puts "Exception when calling ItemApi->item_items_post: #{e}"
@@ -304,6 +314,8 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **item** | [**Item**](Item.md)| Item to create | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+ **_placeholders** | **BOOLEAN**| Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] 
 
 ### Return type
 

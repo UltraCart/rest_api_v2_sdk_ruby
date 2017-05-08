@@ -170,7 +170,7 @@ module UltraCartAdminV2
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      card_type_validator = EnumAttributeValidator.new('String', ["AMEX", "Diners Club", "Discover", "JCB", "MasterCard", "VISA", "Visa"])
+      card_type_validator = EnumAttributeValidator.new('String', ["AMEX", "Diners Club", "Discover", "JCB", "MasterCard", "VISA"])
       return false unless card_type_validator.valid?(@card_type)
       return true
     end
@@ -178,7 +178,7 @@ module UltraCartAdminV2
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] card_type Object to be assigned
     def card_type=(card_type)
-      validator = EnumAttributeValidator.new('String', ["AMEX", "Diners Club", "Discover", "JCB", "MasterCard", "VISA", "Visa"])
+      validator = EnumAttributeValidator.new('String', ["AMEX", "Diners Club", "Discover", "JCB", "MasterCard", "VISA"])
       unless validator.valid?(card_type)
         fail ArgumentError, "invalid value for 'card_type', must be one of #{validator.allowable_values}."
       end

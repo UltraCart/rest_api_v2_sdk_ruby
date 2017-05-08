@@ -153,6 +153,7 @@ module UltraCartAdminV2
     # @param chargeback Chargeback to update
     # @param chargeback_dispute_oid The chargeback_dispute_oid to update.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [ChargebackDisputeResponse]
     def chargeback_chargebacks_chargeback_dispute_oid_put(chargeback, chargeback_dispute_oid, opts = {})
       data, _status_code, _headers = chargeback_chargebacks_chargeback_dispute_oid_put_with_http_info(chargeback, chargeback_dispute_oid, opts)
@@ -164,6 +165,7 @@ module UltraCartAdminV2
     # @param chargeback Chargeback to update
     # @param chargeback_dispute_oid The chargeback_dispute_oid to update.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(ChargebackDisputeResponse, Fixnum, Hash)>] ChargebackDisputeResponse data, response status code and response headers
     def chargeback_chargebacks_chargeback_dispute_oid_put_with_http_info(chargeback, chargeback_dispute_oid, opts = {})
       if @api_client.config.debugging
@@ -178,6 +180,7 @@ module UltraCartAdminV2
 
       # query parameters
       query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
 
       # header parameters
       header_params = {}
@@ -302,6 +305,7 @@ module UltraCartAdminV2
     # Insert a chargeback on the UltraCart account. 
     # @param chargeback Chargeback to insert
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [ChargebackDisputeResponse]
     def chargeback_chargebacks_post(chargeback, opts = {})
       data, _status_code, _headers = chargeback_chargebacks_post_with_http_info(chargeback, opts)
@@ -312,6 +316,7 @@ module UltraCartAdminV2
     # Insert a chargeback on the UltraCart account. 
     # @param chargeback Chargeback to insert
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(ChargebackDisputeResponse, Fixnum, Hash)>] ChargebackDisputeResponse data, response status code and response headers
     def chargeback_chargebacks_post_with_http_info(chargeback, opts = {})
       if @api_client.config.debugging
@@ -324,6 +329,7 @@ module UltraCartAdminV2
 
       # query parameters
       query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
 
       # header parameters
       header_params = {}

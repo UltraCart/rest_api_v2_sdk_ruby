@@ -232,6 +232,8 @@ module UltraCartAdminV2
     # @param item Item to update
     # @param merchant_item_oid The item oid to update.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [ItemResponse]
     def item_items_merchant_item_oid_put(item, merchant_item_oid, opts = {})
       data, _status_code, _headers = item_items_merchant_item_oid_put_with_http_info(item, merchant_item_oid, opts)
@@ -243,6 +245,8 @@ module UltraCartAdminV2
     # @param item Item to update
     # @param merchant_item_oid The item oid to update.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [Array<(ItemResponse, Fixnum, Hash)>] ItemResponse data, response status code and response headers
     def item_items_merchant_item_oid_put_with_http_info(item, merchant_item_oid, opts = {})
       if @api_client.config.debugging
@@ -257,6 +261,8 @@ module UltraCartAdminV2
 
       # query parameters
       query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+      query_params[:'_placeholders'] = opts[:'_placeholders'] if !opts[:'_placeholders'].nil?
 
       # header parameters
       header_params = {}
@@ -292,6 +298,8 @@ module UltraCartAdminV2
     # Create a new item on the UltraCart account. 
     # @param item Item to create
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [ItemResponse]
     def item_items_post(item, opts = {})
       data, _status_code, _headers = item_items_post_with_http_info(item, opts)
@@ -302,6 +310,8 @@ module UltraCartAdminV2
     # Create a new item on the UltraCart account. 
     # @param item Item to create
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [Array<(ItemResponse, Fixnum, Hash)>] ItemResponse data, response status code and response headers
     def item_items_post_with_http_info(item, opts = {})
       if @api_client.config.debugging
@@ -314,6 +324,8 @@ module UltraCartAdminV2
 
       # query parameters
       query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+      query_params[:'_placeholders'] = opts[:'_placeholders'] if !opts[:'_placeholders'].nil?
 
       # header parameters
       header_params = {}

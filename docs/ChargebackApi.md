@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 
 # **chargeback_chargebacks_chargeback_dispute_oid_put**
-> ChargebackDisputeResponse chargeback_chargebacks_chargeback_dispute_oid_put(chargeback, chargeback_dispute_oid)
+> ChargebackDisputeResponse chargeback_chargebacks_chargeback_dispute_oid_put(chargeback, chargeback_dispute_oid, opts)
 
 Update a chargeback
 
@@ -157,10 +157,13 @@ chargeback = UltraCartAdminV2::ChargebackDispute.new # ChargebackDispute | Charg
 
 chargeback_dispute_oid = 56 # Integer | The chargeback_dispute_oid to update.
 
+opts = { 
+  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+}
 
 begin
   #Update a chargeback
-  result = api_instance.chargeback_chargebacks_chargeback_dispute_oid_put(chargeback, chargeback_dispute_oid)
+  result = api_instance.chargeback_chargebacks_chargeback_dispute_oid_put(chargeback, chargeback_dispute_oid, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
   puts "Exception when calling ChargebackApi->chargeback_chargebacks_chargeback_dispute_oid_put: #{e}"
@@ -173,6 +176,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chargeback** | [**ChargebackDispute**](ChargebackDispute.md)| Chargeback to update | 
  **chargeback_dispute_oid** | **Integer**| The chargeback_dispute_oid to update. | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
 
 ### Return type
 
@@ -270,7 +274,7 @@ Name | Type | Description  | Notes
 
 
 # **chargeback_chargebacks_post**
-> ChargebackDisputeResponse chargeback_chargebacks_post(chargeback)
+> ChargebackDisputeResponse chargeback_chargebacks_post(chargeback, opts)
 
 Insert a chargeback
 
@@ -295,10 +299,13 @@ api_instance = UltraCartAdminV2::ChargebackApi.new
 
 chargeback = UltraCartAdminV2::ChargebackDispute.new # ChargebackDispute | Chargeback to insert
 
+opts = { 
+  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+}
 
 begin
   #Insert a chargeback
-  result = api_instance.chargeback_chargebacks_post(chargeback)
+  result = api_instance.chargeback_chargebacks_post(chargeback, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
   puts "Exception when calling ChargebackApi->chargeback_chargebacks_post: #{e}"
@@ -310,6 +317,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chargeback** | [**ChargebackDispute**](ChargebackDispute.md)| Chargeback to insert | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
 
 ### Return type
 

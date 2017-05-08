@@ -153,6 +153,7 @@ module UltraCartAdminV2
     # @param customer Customer to update
     # @param customer_profile_oid The customer_profile_oid to update.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [CustomerResponse]
     def customer_customers_customer_profile_oid_put(customer, customer_profile_oid, opts = {})
       data, _status_code, _headers = customer_customers_customer_profile_oid_put_with_http_info(customer, customer_profile_oid, opts)
@@ -164,6 +165,7 @@ module UltraCartAdminV2
     # @param customer Customer to update
     # @param customer_profile_oid The customer_profile_oid to update.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(CustomerResponse, Fixnum, Hash)>] CustomerResponse data, response status code and response headers
     def customer_customers_customer_profile_oid_put_with_http_info(customer, customer_profile_oid, opts = {})
       if @api_client.config.debugging
@@ -178,6 +180,7 @@ module UltraCartAdminV2
 
       # query parameters
       query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
 
       # header parameters
       header_params = {}
@@ -362,6 +365,7 @@ module UltraCartAdminV2
     # Insert a customer on the UltraCart account. 
     # @param customer Customer to insert
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [CustomerResponse]
     def customer_customers_post(customer, opts = {})
       data, _status_code, _headers = customer_customers_post_with_http_info(customer, opts)
@@ -372,6 +376,7 @@ module UltraCartAdminV2
     # Insert a customer on the UltraCart account. 
     # @param customer Customer to insert
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(CustomerResponse, Fixnum, Hash)>] CustomerResponse data, response status code and response headers
     def customer_customers_post_with_http_info(customer, opts = {})
       if @api_client.config.debugging
@@ -384,6 +389,7 @@ module UltraCartAdminV2
 
       # query parameters
       query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
 
       # header parameters
       header_params = {}

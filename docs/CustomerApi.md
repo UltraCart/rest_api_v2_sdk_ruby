@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 
 # **customer_customers_customer_profile_oid_put**
-> CustomerResponse customer_customers_customer_profile_oid_put(customer, customer_profile_oid)
+> CustomerResponse customer_customers_customer_profile_oid_put(customer, customer_profile_oid, opts)
 
 Update a customer
 
@@ -157,10 +157,13 @@ customer = UltraCartAdminV2::Customer.new # Customer | Customer to update
 
 customer_profile_oid = 56 # Integer | The customer_profile_oid to update.
 
+opts = { 
+  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+}
 
 begin
   #Update a customer
-  result = api_instance.customer_customers_customer_profile_oid_put(customer, customer_profile_oid)
+  result = api_instance.customer_customers_customer_profile_oid_put(customer, customer_profile_oid, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
   puts "Exception when calling CustomerApi->customer_customers_customer_profile_oid_put: #{e}"
@@ -173,6 +176,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customer** | [**Customer**](Customer.md)| Customer to update | 
  **customer_profile_oid** | **Integer**| The customer_profile_oid to update. | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
 
 ### Return type
 
@@ -310,7 +314,7 @@ Name | Type | Description  | Notes
 
 
 # **customer_customers_post**
-> CustomerResponse customer_customers_post(customer)
+> CustomerResponse customer_customers_post(customer, opts)
 
 Insert a customer
 
@@ -335,10 +339,13 @@ api_instance = UltraCartAdminV2::CustomerApi.new
 
 customer = UltraCartAdminV2::Customer.new # Customer | Customer to insert
 
+opts = { 
+  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+}
 
 begin
   #Insert a customer
-  result = api_instance.customer_customers_post(customer)
+  result = api_instance.customer_customers_post(customer, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
   puts "Exception when calling CustomerApi->customer_customers_post: #{e}"
@@ -350,6 +357,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customer** | [**Customer**](Customer.md)| Customer to insert | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
 
 ### Return type
 
