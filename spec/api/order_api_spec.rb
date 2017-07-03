@@ -43,7 +43,44 @@ describe 'OrderApi' do
     end
   end
 
-  # unit tests for order_orders_get
+  # unit tests for cancel_order
+  # Cancel an order
+  # Cancel an order on the UltraCart account.  If the success flag is false, then consult the error message for why it failed. 
+  # @param order_id The order id to cancel.
+  # @param [Hash] opts the optional parameters
+  # @return [BaseResponse]
+  describe 'cancel_order test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for delete_order
+  # Delete an order
+  # Delete an order on the UltraCart account. 
+  # @param order_id The order id to delete.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'delete_order test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_order
+  # Retrieve an order
+  # Retrieves a single order using the specified order id. 
+  # @param order_id The order id to retrieve.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @return [OrderResponse]
+  describe 'get_order test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_orders
   # Retrieve orders
   # Retrieves a group of orders from the account.  If no parameters are specified, the API call will fail with a bad request error.  Always specify some parameters to limit the scope of the orders returned to ones you are truly interested in.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
   # @param [Hash] opts the optional parameters
@@ -79,81 +116,45 @@ describe 'OrderApi' do
   # @option opts [String] :_sort The sort order of the orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
   # @option opts [String] :_expand The object expansion to perform on the result.
   # @return [OrdersResponse]
-  describe 'order_orders_get test' do
+  describe 'get_orders test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for order_orders_order_id_cancel_post
-  # Cancel an order
-  # Cancel an order on the UltraCart account.  If the success flag is false, then consult the error message for why it failed. 
-  # @param order_id The order id to cancel.
-  # @param [Hash] opts the optional parameters
-  # @return [BaseResponse]
-  describe 'order_orders_order_id_cancel_post test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for order_orders_order_id_delete
-  # Delete an order
-  # Delete an order on the UltraCart account. 
-  # @param order_id The order id to delete.
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'order_orders_order_id_delete test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for order_orders_order_id_get
-  # Retrieve an order
-  # Retrieves a single order using the specified order id. 
-  # @param order_id The order id to retrieve.
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-  # @return [OrderResponse]
-  describe 'order_orders_order_id_get test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for order_orders_order_id_put
-  # Update an order
-  # Update a new order on the UltraCart account. 
-  # @param order Order to update
-  # @param order_id The order id to update.
-  # @param [Hash] opts the optional parameters
-  # @return [OrderResponse]
-  describe 'order_orders_order_id_put test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for order_orders_order_id_resend_receipt_post
+  # unit tests for resend_receipt
   # Resend receipt
   # Resend the receipt for an order on the UltraCart account. 
   # @param order_id The order id to resend the receipt for.
   # @param [Hash] opts the optional parameters
   # @return [BaseResponse]
-  describe 'order_orders_order_id_resend_receipt_post test' do
+  describe 'resend_receipt test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for order_orders_order_id_resend_shipment_confirmation_post
+  # unit tests for resend_shipment_confirmation
   # Resend shipment confirmation
   # Resend shipment confirmation for an order on the UltraCart account. 
   # @param order_id The order id to resend the shipment notification for.
   # @param [Hash] opts the optional parameters
   # @return [BaseResponse]
-  describe 'order_orders_order_id_resend_shipment_confirmation_post test' do
+  describe 'resend_shipment_confirmation test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for update_order
+  # Update an order
+  # Update a new order on the UltraCart account. 
+  # @param order Order to update
+  # @param order_id The order id to update.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @return [OrderResponse]
+  describe 'update_order test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

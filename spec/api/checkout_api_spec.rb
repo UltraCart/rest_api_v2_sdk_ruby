@@ -43,146 +43,134 @@ describe 'CheckoutApi' do
     end
   end
 
-  # unit tests for checkout_browser_key_put
-  # Setup Browser Application
-  # Setup a browser key authenticated application with checkout permissions.  This REST call must be made with an authentication scheme that is not browser key.  The new application will be linked to the application that makes this call.  If this application is disabled / deleted, then so will the application setup by this call.  The purpose of this call is to allow an OAuth applicaiton, such as the Wordpress plugin, to setup the proper browser based authentication for the REST checkout API to use. 
-  # @param browser_key_request Setup browser key request
+  # unit tests for city_state
+  # City/State for Zip
+  # Look up the city and state for the shipping zip code.  Useful for building an auto complete for parts of the shipping address 
+  # @param cart Cart
   # @param [Hash] opts the optional parameters
-  # @return [CheckoutSetupBrowserKeyResponse]
-  describe 'checkout_browser_key_put test' do
+  # @return [ItemsResponse]
+  describe 'city_state test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for checkout_cart_cart_id_get
+  # unit tests for finalize_order
+  # Finalize Order
+  # Finalize the cart into an order.  This method can not be called with browser key authentication.  It is ONLY meant for server side code to call. 
+  # @param finalize_request Finalize request
+  # @param [Hash] opts the optional parameters
+  # @return [CartFinalizeOrderResponse]
+  describe 'finalize_order test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_cart
+  # Get cart
+  # If the cookie is set on the browser making the request then it will return their active cart.  Otherwise it will create a new cart. 
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @return [CartResponse]
+  describe 'get_cart test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_cart_by_cart_id
   # Get cart (by cart id)
   # Get a cart specified by the cart_id parameter. 
   # @param cart_id Cart ID to retrieve
   # @param [Hash] opts the optional parameters
   # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
   # @return [CartResponse]
-  describe 'checkout_cart_cart_id_get test' do
+  describe 'get_cart_by_cart_id test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for checkout_cart_finalize_order_post
-  # Finalize Order
-  # Finalize the cart into an order.  This method can not be called with browser key authentication.  It is ONLY meant for server side code to call. 
-  # @param finalize_request Finalize request
-  # @param [Hash] opts the optional parameters
-  # @return [CartFinalizeOrderResponse]
-  describe 'checkout_cart_finalize_order_post test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for checkout_cart_get
-  # Get cart
-  # If the cookie is set on the browser making the request then it will return their active cart.  Otherwise it will create a new cart. 
+  # unit tests for get_cart_by_return_code
+  # Get cart (by return code)
+  # Get a cart specified by the return code parameter. 
+  # @param return_code Return code to lookup cart ID by
   # @param [Hash] opts the optional parameters
   # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
   # @return [CartResponse]
-  describe 'checkout_cart_get test' do
+  describe 'get_cart_by_return_code test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for checkout_cart_handoff_post
+  # unit tests for handoff_cart
   # Handoff cart
   # Handoff the browser to UltraCart for view cart on StoreFront, transfer to PayPal or finalization of the order (including upsell processing). 
   # @param handoff_request Handoff request
   # @param [Hash] opts the optional parameters
   # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
   # @return [CheckoutHandoffResponse]
-  describe 'checkout_cart_handoff_post test' do
+  describe 'handoff_cart test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for checkout_cart_profile_login_post
+  # unit tests for login
   # Profile login
   # Login in to the customer profile specified by cart.billing.email and password 
   # @param login_request Login request
   # @param [Hash] opts the optional parameters
   # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
   # @return [CartProfileLoginResponse]
-  describe 'checkout_cart_profile_login_post test' do
+  describe 'login test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for checkout_cart_profile_logout_post
+  # unit tests for logout
   # Profile logout
   # Log the cart out of the current profile.  No error will occur if they are not logged in. 
   # @param cart Cart
   # @param [Hash] opts the optional parameters
   # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
   # @return [CartResponse]
-  describe 'checkout_cart_profile_logout_post test' do
+  describe 'logout test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for checkout_cart_profile_register_post
+  # unit tests for register
   # Profile registration
   # Register a new customer profile.  Requires the cart.billing object to be populated along with the password. 
   # @param register_request Register request
   # @param [Hash] opts the optional parameters
   # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
   # @return [CartProfileRegisterResponse]
-  describe 'checkout_cart_profile_register_post test' do
+  describe 'register test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for checkout_cart_put
-  # Update cart
-  # Update the cart. 
+  # unit tests for related_items_for_cart
+  # Related items
+  # Retrieve all the related items for the cart contents.  Expansion is limited to content, content.assignments, content.attributes, content.multimedia, content.multimedia.thumbnails, options, pricing, and pricing.tiers. 
   # @param cart Cart
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-  # @return [CartResponse]
-  describe 'checkout_cart_put test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for checkout_cart_validate_post
-  # Validate
-  # Validate the cart for errors.  Specific checks can be passed and multiple validations can occur throughout your checkout flow. 
-  # @param validation_request Validation request
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-  # @return [CartValidationResponse]
-  describe 'checkout_cart_validate_post test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for checkout_city_state_post
-  # City/State for Zip
-  # Look up the city and state for the shipping zip code.  Useful for building an auto complete for parts of the shipping address 
-  # @param cart Cart
-  # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See item resource documentation for examples
   # @return [ItemsResponse]
-  describe 'checkout_city_state_post test' do
+  describe 'related_items_for_cart test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for checkout_related_items_item_id_post
+  # unit tests for related_items_for_item
   # Related items (specific item)
   # Retrieve all the related items for the cart contents.  Expansion is limited to content, content.assignments, content.attributes, content.multimedia, content.multimedia.thumbnails, options, pricing, and pricing.tiers. 
   # @param item_id Item ID to retrieve related items for
@@ -190,33 +178,45 @@ describe 'CheckoutApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :_expand The object expansion to perform on the result.  See item resource documentation for examples
   # @return [ItemsResponse]
-  describe 'checkout_related_items_item_id_post test' do
+  describe 'related_items_for_item test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for checkout_related_items_post
-  # Related items
-  # Retrieve all the related items for the cart contents.  Expansion is limited to content, content.assignments, content.attributes, content.multimedia, content.multimedia.thumbnails, options, pricing, and pricing.tiers. 
-  # @param cart Cart
+  # unit tests for setup_browser_key
+  # Setup Browser Application
+  # Setup a browser key authenticated application with checkout permissions.  This REST call must be made with an authentication scheme that is not browser key.  The new application will be linked to the application that makes this call.  If this application is disabled / deleted, then so will the application setup by this call.  The purpose of this call is to allow an OAuth applicaiton, such as the Wordpress plugin, to setup the proper browser based authentication for the REST checkout API to use. 
+  # @param browser_key_request Setup browser key request
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :_expand The object expansion to perform on the result.  See item resource documentation for examples
-  # @return [ItemsResponse]
-  describe 'checkout_related_items_post test' do
+  # @return [CheckoutSetupBrowserKeyResponse]
+  describe 'setup_browser_key test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for checkout_return_return_code_get
-  # Get cart (by return code)
-  # Get a cart specified by the return code parameter. 
-  # @param return_code Return code to lookup cart ID by
+  # unit tests for update_cart
+  # Update cart
+  # Update the cart. 
+  # @param cart Cart
   # @param [Hash] opts the optional parameters
   # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
   # @return [CartResponse]
-  describe 'checkout_return_return_code_get test' do
+  describe 'update_cart test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for validate_cart
+  # Validate
+  # Validate the cart for errors.  Specific checks can be passed and multiple validations can occur throughout your checkout flow. 
+  # @param validation_request Validation request
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @return [CartValidationResponse]
+  describe 'validate_cart test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

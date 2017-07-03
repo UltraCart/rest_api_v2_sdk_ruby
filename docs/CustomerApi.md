@@ -4,15 +4,15 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**customer_customers_customer_profile_oid_delete**](CustomerApi.md#customer_customers_customer_profile_oid_delete) | **DELETE** /customer/customers/{customer_profile_oid} | Delete a customer
-[**customer_customers_customer_profile_oid_get**](CustomerApi.md#customer_customers_customer_profile_oid_get) | **GET** /customer/customers/{customer_profile_oid} | Retrieve a customer
-[**customer_customers_customer_profile_oid_put**](CustomerApi.md#customer_customers_customer_profile_oid_put) | **PUT** /customer/customers/{customer_profile_oid} | Update a customer
-[**customer_customers_get**](CustomerApi.md#customer_customers_get) | **GET** /customer/customers | Retrieve customers
-[**customer_customers_post**](CustomerApi.md#customer_customers_post) | **POST** /customer/customers | Insert a customer
+[**delete_customer**](CustomerApi.md#delete_customer) | **DELETE** /customer/customers/{customer_profile_oid} | Delete a customer
+[**get_customer**](CustomerApi.md#get_customer) | **GET** /customer/customers/{customer_profile_oid} | Retrieve a customer
+[**get_customers**](CustomerApi.md#get_customers) | **GET** /customer/customers | Retrieve customers
+[**insert_customer**](CustomerApi.md#insert_customer) | **POST** /customer/customers | Insert a customer
+[**update_customer**](CustomerApi.md#update_customer) | **PUT** /customer/customers/{customer_profile_oid} | Update a customer
 
 
-# **customer_customers_customer_profile_oid_delete**
-> CustomerResponse customer_customers_customer_profile_oid_delete(customer_profile_oid)
+# **delete_customer**
+> CustomerResponse delete_customer(customer_profile_oid)
 
 Delete a customer
 
@@ -40,10 +40,10 @@ customer_profile_oid = 56 # Integer | The customer_profile_oid to delete.
 
 begin
   #Delete a customer
-  result = api_instance.customer_customers_customer_profile_oid_delete(customer_profile_oid)
+  result = api_instance.delete_customer(customer_profile_oid)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling CustomerApi->customer_customers_customer_profile_oid_delete: #{e}"
+  puts "Exception when calling CustomerApi->delete_customer: #{e}"
 end
 ```
 
@@ -68,8 +68,8 @@ Name | Type | Description  | Notes
 
 
 
-# **customer_customers_customer_profile_oid_get**
-> CustomerResponse customer_customers_customer_profile_oid_get(customer_profile_oid, opts)
+# **get_customer**
+> CustomerResponse get_customer(customer_profile_oid, opts)
 
 Retrieve a customer
 
@@ -100,10 +100,10 @@ opts = {
 
 begin
   #Retrieve a customer
-  result = api_instance.customer_customers_customer_profile_oid_get(customer_profile_oid, opts)
+  result = api_instance.get_customer(customer_profile_oid, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling CustomerApi->customer_customers_customer_profile_oid_get: #{e}"
+  puts "Exception when calling CustomerApi->get_customer: #{e}"
 end
 ```
 
@@ -129,72 +129,8 @@ Name | Type | Description  | Notes
 
 
 
-# **customer_customers_customer_profile_oid_put**
-> CustomerResponse customer_customers_customer_profile_oid_put(customer, customer_profile_oid, opts)
-
-Update a customer
-
-Update a customer on the UltraCart account. 
-
-### Example
-```ruby
-# load the gem
-require 'com_ultracart_admin_v2'
-# setup authorization
-UltraCartAdminV2.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
-
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
-
-api_instance = UltraCartAdminV2::CustomerApi.new
-
-customer = UltraCartAdminV2::Customer.new # Customer | Customer to update
-
-customer_profile_oid = 56 # Integer | The customer_profile_oid to update.
-
-opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
-}
-
-begin
-  #Update a customer
-  result = api_instance.customer_customers_customer_profile_oid_put(customer, customer_profile_oid, opts)
-  p result
-rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling CustomerApi->customer_customers_customer_profile_oid_put: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customer** | [**Customer**](Customer.md)| Customer to update | 
- **customer_profile_oid** | **Integer**| The customer_profile_oid to update. | 
- **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
-
-### Return type
-
-[**CustomerResponse**](CustomerResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json; charset=UTF-8
- - **Accept**: application/json
-
-
-
-# **customer_customers_get**
-> CustomersResponse customer_customers_get(opts)
+# **get_customers**
+> CustomersResponse get_customers(opts)
 
 Retrieve customers
 
@@ -254,10 +190,10 @@ opts = {
 
 begin
   #Retrieve customers
-  result = api_instance.customer_customers_get(opts)
+  result = api_instance.get_customers(opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling CustomerApi->customer_customers_get: #{e}"
+  puts "Exception when calling CustomerApi->get_customers: #{e}"
 end
 ```
 
@@ -313,8 +249,8 @@ Name | Type | Description  | Notes
 
 
 
-# **customer_customers_post**
-> CustomerResponse customer_customers_post(customer, opts)
+# **insert_customer**
+> CustomerResponse insert_customer(customer, opts)
 
 Insert a customer
 
@@ -345,10 +281,10 @@ opts = {
 
 begin
   #Insert a customer
-  result = api_instance.customer_customers_post(customer, opts)
+  result = api_instance.insert_customer(customer, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling CustomerApi->customer_customers_post: #{e}"
+  puts "Exception when calling CustomerApi->insert_customer: #{e}"
 end
 ```
 
@@ -357,6 +293,70 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customer** | [**Customer**](Customer.md)| Customer to insert | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+
+### Return type
+
+[**CustomerResponse**](CustomerResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
+ - **Accept**: application/json
+
+
+
+# **update_customer**
+> CustomerResponse update_customer(customer, customer_profile_oid, opts)
+
+Update a customer
+
+Update a customer on the UltraCart account. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::CustomerApi.new
+
+customer = UltraCartAdminV2::Customer.new # Customer | Customer to update
+
+customer_profile_oid = 56 # Integer | The customer_profile_oid to update.
+
+opts = { 
+  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+}
+
+begin
+  #Update a customer
+  result = api_instance.update_customer(customer, customer_profile_oid, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling CustomerApi->update_customer: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customer** | [**Customer**](Customer.md)| Customer to update | 
+ **customer_profile_oid** | **Integer**| The customer_profile_oid to update. | 
  **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
 
 ### Return type

@@ -43,7 +43,7 @@ describe 'ItemShippingDestinationMarkup' do
       expect(@instance).to be_instance_of(UltraCartAdminV2::ItemShippingDestinationMarkup)
     end
   end
-  describe 'test attribute "country"' do
+  describe 'test attribute "country_code"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

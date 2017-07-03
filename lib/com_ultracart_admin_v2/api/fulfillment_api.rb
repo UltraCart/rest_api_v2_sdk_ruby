@@ -37,8 +37,8 @@ module UltraCartAdminV2
     # @param order_ids Orders to acknowledge receipt of (limit 100)
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def fulfillment_distribution_centers_distribution_center_code_acknowledgements_put(distribution_center_code, order_ids, opts = {})
-      fulfillment_distribution_centers_distribution_center_code_acknowledgements_put_with_http_info(distribution_center_code, order_ids, opts)
+    def acknowledge_orders(distribution_center_code, order_ids, opts = {})
+      acknowledge_orders_with_http_info(distribution_center_code, order_ids, opts)
       return nil
     end
 
@@ -48,14 +48,14 @@ module UltraCartAdminV2
     # @param order_ids Orders to acknowledge receipt of (limit 100)
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def fulfillment_distribution_centers_distribution_center_code_acknowledgements_put_with_http_info(distribution_center_code, order_ids, opts = {})
+    def acknowledge_orders_with_http_info(distribution_center_code, order_ids, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: FulfillmentApi.fulfillment_distribution_centers_distribution_center_code_acknowledgements_put ..."
+        @api_client.config.logger.debug "Calling API: FulfillmentApi.acknowledge_orders ..."
       end
       # verify the required parameter 'distribution_center_code' is set
-      fail ArgumentError, "Missing the required parameter 'distribution_center_code' when calling FulfillmentApi.fulfillment_distribution_centers_distribution_center_code_acknowledgements_put" if distribution_center_code.nil?
+      fail ArgumentError, "Missing the required parameter 'distribution_center_code' when calling FulfillmentApi.acknowledge_orders" if distribution_center_code.nil?
       # verify the required parameter 'order_ids' is set
-      fail ArgumentError, "Missing the required parameter 'order_ids' when calling FulfillmentApi.fulfillment_distribution_centers_distribution_center_code_acknowledgements_put" if order_ids.nil?
+      fail ArgumentError, "Missing the required parameter 'order_ids' when calling FulfillmentApi.acknowledge_orders" if order_ids.nil?
       # resource path
       local_var_path = "/fulfillment/distribution_centers/{distribution_center_code}/acknowledgements".sub('{format}','json').sub('{' + 'distribution_center_code' + '}', distribution_center_code.to_s)
 
@@ -86,67 +86,7 @@ module UltraCartAdminV2
         :body => post_body,
         :auth_names => auth_names)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: FulfillmentApi#fulfillment_distribution_centers_distribution_center_code_acknowledgements_put\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Update inventory
-    # Update the inventory for items associated with this distribution center 
-    # @param distribution_center_code Distribution center code
-    # @param inventories Inventory updates (limit 500)
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def fulfillment_distribution_centers_distribution_center_code_inventory_post(distribution_center_code, inventories, opts = {})
-      fulfillment_distribution_centers_distribution_center_code_inventory_post_with_http_info(distribution_center_code, inventories, opts)
-      return nil
-    end
-
-    # Update inventory
-    # Update the inventory for items associated with this distribution center 
-    # @param distribution_center_code Distribution center code
-    # @param inventories Inventory updates (limit 500)
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def fulfillment_distribution_centers_distribution_center_code_inventory_post_with_http_info(distribution_center_code, inventories, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: FulfillmentApi.fulfillment_distribution_centers_distribution_center_code_inventory_post ..."
-      end
-      # verify the required parameter 'distribution_center_code' is set
-      fail ArgumentError, "Missing the required parameter 'distribution_center_code' when calling FulfillmentApi.fulfillment_distribution_centers_distribution_center_code_inventory_post" if distribution_center_code.nil?
-      # verify the required parameter 'inventories' is set
-      fail ArgumentError, "Missing the required parameter 'inventories' when calling FulfillmentApi.fulfillment_distribution_centers_distribution_center_code_inventory_post" if inventories.nil?
-      # resource path
-      local_var_path = "/fulfillment/distribution_centers/{distribution_center_code}/inventory".sub('{format}','json').sub('{' + 'distribution_center_code' + '}', distribution_center_code.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(inventories)
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: FulfillmentApi#fulfillment_distribution_centers_distribution_center_code_inventory_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: FulfillmentApi#acknowledge_orders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -156,8 +96,8 @@ module UltraCartAdminV2
     # @param distribution_center_code Distribution center code
     # @param [Hash] opts the optional parameters
     # @return [OrdersResponse]
-    def fulfillment_distribution_centers_distribution_center_code_orders_get(distribution_center_code, opts = {})
-      data, _status_code, _headers = fulfillment_distribution_centers_distribution_center_code_orders_get_with_http_info(distribution_center_code, opts)
+    def get_distribution_center_orders(distribution_center_code, opts = {})
+      data, _status_code, _headers = get_distribution_center_orders_with_http_info(distribution_center_code, opts)
       return data
     end
 
@@ -166,12 +106,12 @@ module UltraCartAdminV2
     # @param distribution_center_code Distribution center code
     # @param [Hash] opts the optional parameters
     # @return [Array<(OrdersResponse, Fixnum, Hash)>] OrdersResponse data, response status code and response headers
-    def fulfillment_distribution_centers_distribution_center_code_orders_get_with_http_info(distribution_center_code, opts = {})
+    def get_distribution_center_orders_with_http_info(distribution_center_code, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: FulfillmentApi.fulfillment_distribution_centers_distribution_center_code_orders_get ..."
+        @api_client.config.logger.debug "Calling API: FulfillmentApi.get_distribution_center_orders ..."
       end
       # verify the required parameter 'distribution_center_code' is set
-      fail ArgumentError, "Missing the required parameter 'distribution_center_code' when calling FulfillmentApi.fulfillment_distribution_centers_distribution_center_code_orders_get" if distribution_center_code.nil?
+      fail ArgumentError, "Missing the required parameter 'distribution_center_code' when calling FulfillmentApi.get_distribution_center_orders" if distribution_center_code.nil?
       # resource path
       local_var_path = "/fulfillment/distribution_centers/{distribution_center_code}/orders".sub('{format}','json').sub('{' + 'distribution_center_code' + '}', distribution_center_code.to_s)
 
@@ -203,67 +143,7 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'OrdersResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: FulfillmentApi#fulfillment_distribution_centers_distribution_center_code_orders_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Mark orders as shipped
-    # Store the tracking information and mark the order shipped for this distribution center. 
-    # @param distribution_center_code Distribution center code
-    # @param shipments Orders to mark shipped
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def fulfillment_distribution_centers_distribution_center_code_shipments_post(distribution_center_code, shipments, opts = {})
-      fulfillment_distribution_centers_distribution_center_code_shipments_post_with_http_info(distribution_center_code, shipments, opts)
-      return nil
-    end
-
-    # Mark orders as shipped
-    # Store the tracking information and mark the order shipped for this distribution center. 
-    # @param distribution_center_code Distribution center code
-    # @param shipments Orders to mark shipped
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def fulfillment_distribution_centers_distribution_center_code_shipments_post_with_http_info(distribution_center_code, shipments, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: FulfillmentApi.fulfillment_distribution_centers_distribution_center_code_shipments_post ..."
-      end
-      # verify the required parameter 'distribution_center_code' is set
-      fail ArgumentError, "Missing the required parameter 'distribution_center_code' when calling FulfillmentApi.fulfillment_distribution_centers_distribution_center_code_shipments_post" if distribution_center_code.nil?
-      # verify the required parameter 'shipments' is set
-      fail ArgumentError, "Missing the required parameter 'shipments' when calling FulfillmentApi.fulfillment_distribution_centers_distribution_center_code_shipments_post" if shipments.nil?
-      # resource path
-      local_var_path = "/fulfillment/distribution_centers/{distribution_center_code}/shipments".sub('{format}','json').sub('{' + 'distribution_center_code' + '}', distribution_center_code.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(shipments)
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: FulfillmentApi#fulfillment_distribution_centers_distribution_center_code_shipments_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: FulfillmentApi#get_distribution_center_orders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -272,8 +152,8 @@ module UltraCartAdminV2
     # Retrieves the distribution centers that this user has access to. 
     # @param [Hash] opts the optional parameters
     # @return [DistributionCentersResponse]
-    def fulfillment_distribution_centers_get(opts = {})
-      data, _status_code, _headers = fulfillment_distribution_centers_get_with_http_info(opts)
+    def get_distribution_centers(opts = {})
+      data, _status_code, _headers = get_distribution_centers_with_http_info(opts)
       return data
     end
 
@@ -281,9 +161,9 @@ module UltraCartAdminV2
     # Retrieves the distribution centers that this user has access to. 
     # @param [Hash] opts the optional parameters
     # @return [Array<(DistributionCentersResponse, Fixnum, Hash)>] DistributionCentersResponse data, response status code and response headers
-    def fulfillment_distribution_centers_get_with_http_info(opts = {})
+    def get_distribution_centers_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: FulfillmentApi.fulfillment_distribution_centers_get ..."
+        @api_client.config.logger.debug "Calling API: FulfillmentApi.get_distribution_centers ..."
       end
       # resource path
       local_var_path = "/fulfillment/distribution_centers".sub('{format}','json')
@@ -316,7 +196,127 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'DistributionCentersResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: FulfillmentApi#fulfillment_distribution_centers_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: FulfillmentApi#get_distribution_centers\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Mark orders as shipped
+    # Store the tracking information and mark the order shipped for this distribution center. 
+    # @param distribution_center_code Distribution center code
+    # @param shipments Orders to mark shipped
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def ship_orders(distribution_center_code, shipments, opts = {})
+      ship_orders_with_http_info(distribution_center_code, shipments, opts)
+      return nil
+    end
+
+    # Mark orders as shipped
+    # Store the tracking information and mark the order shipped for this distribution center. 
+    # @param distribution_center_code Distribution center code
+    # @param shipments Orders to mark shipped
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def ship_orders_with_http_info(distribution_center_code, shipments, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: FulfillmentApi.ship_orders ..."
+      end
+      # verify the required parameter 'distribution_center_code' is set
+      fail ArgumentError, "Missing the required parameter 'distribution_center_code' when calling FulfillmentApi.ship_orders" if distribution_center_code.nil?
+      # verify the required parameter 'shipments' is set
+      fail ArgumentError, "Missing the required parameter 'shipments' when calling FulfillmentApi.ship_orders" if shipments.nil?
+      # resource path
+      local_var_path = "/fulfillment/distribution_centers/{distribution_center_code}/shipments".sub('{format}','json').sub('{' + 'distribution_center_code' + '}', distribution_center_code.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(shipments)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: FulfillmentApi#ship_orders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update inventory
+    # Update the inventory for items associated with this distribution center 
+    # @param distribution_center_code Distribution center code
+    # @param inventories Inventory updates (limit 500)
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def update_inventory(distribution_center_code, inventories, opts = {})
+      update_inventory_with_http_info(distribution_center_code, inventories, opts)
+      return nil
+    end
+
+    # Update inventory
+    # Update the inventory for items associated with this distribution center 
+    # @param distribution_center_code Distribution center code
+    # @param inventories Inventory updates (limit 500)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def update_inventory_with_http_info(distribution_center_code, inventories, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: FulfillmentApi.update_inventory ..."
+      end
+      # verify the required parameter 'distribution_center_code' is set
+      fail ArgumentError, "Missing the required parameter 'distribution_center_code' when calling FulfillmentApi.update_inventory" if distribution_center_code.nil?
+      # verify the required parameter 'inventories' is set
+      fail ArgumentError, "Missing the required parameter 'inventories' when calling FulfillmentApi.update_inventory" if inventories.nil?
+      # resource path
+      local_var_path = "/fulfillment/distribution_centers/{distribution_center_code}/inventory".sub('{format}','json').sub('{' + 'distribution_center_code' + '}', distribution_center_code.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(inventories)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: FulfillmentApi#update_inventory\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

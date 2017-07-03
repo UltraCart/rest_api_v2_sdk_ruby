@@ -43,45 +43,32 @@ describe 'ChargebackApi' do
     end
   end
 
-  # unit tests for chargeback_chargebacks_chargeback_dispute_oid_delete
+  # unit tests for delete_chargeback
   # Delete a chargeback
   # Delete a chargeback on the UltraCart account. 
   # @param chargeback_dispute_oid The chargeback_dispute_oid to delete.
   # @param [Hash] opts the optional parameters
   # @return [ChargebackDisputeResponse]
-  describe 'chargeback_chargebacks_chargeback_dispute_oid_delete test' do
+  describe 'delete_chargeback test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for chargeback_chargebacks_chargeback_dispute_oid_get
+  # unit tests for get_chargeback_dispute
   # Retrieve a chargeback
   # Retrieves a single chargeback using the specified chargeback dispute oid. 
   # @param chargeback_dispute_oid The chargeback dispute oid to retrieve.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
   # @return [ChargebackDisputeResponse]
-  describe 'chargeback_chargebacks_chargeback_dispute_oid_get test' do
+  describe 'get_chargeback_dispute test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for chargeback_chargebacks_chargeback_dispute_oid_put
-  # Update a chargeback
-  # Update a chargeback on the UltraCart account. 
-  # @param chargeback Chargeback to update
-  # @param chargeback_dispute_oid The chargeback_dispute_oid to update.
-  # @param [Hash] opts the optional parameters
-  # @return [ChargebackDisputeResponse]
-  describe 'chargeback_chargebacks_chargeback_dispute_oid_put test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for chargeback_chargebacks_get
+  # unit tests for get_chargeback_disputes
   # Retrieve chargebacks
   # Retrieves chargebacks from the account.  If no parameters are specified, all chargebacks will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
   # @param [Hash] opts the optional parameters
@@ -98,19 +85,34 @@ describe 'ChargebackApi' do
   # @option opts [String] :_sort The sort order of the chargebacks.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
   # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
   # @return [ChargebackDisputesResponse]
-  describe 'chargeback_chargebacks_get test' do
+  describe 'get_chargeback_disputes test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for chargeback_chargebacks_post
+  # unit tests for insert_chargeback
   # Insert a chargeback
   # Insert a chargeback on the UltraCart account. 
   # @param chargeback Chargeback to insert
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
   # @return [ChargebackDisputeResponse]
-  describe 'chargeback_chargebacks_post test' do
+  describe 'insert_chargeback test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for update_chargeback
+  # Update a chargeback
+  # Update a chargeback on the UltraCart account. 
+  # @param chargeback Chargeback to update
+  # @param chargeback_dispute_oid The chargeback_dispute_oid to update.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @return [ChargebackDisputeResponse]
+  describe 'update_chargeback test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

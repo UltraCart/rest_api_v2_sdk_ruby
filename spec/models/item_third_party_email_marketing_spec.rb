@@ -52,6 +52,10 @@ describe 'ItemThirdPartyEmailMarketing' do
   describe 'test attribute "provider_name"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+       #validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["ActiveCampaign", "AWeber", "Campaign Monitor", "ConstantContact", "Emma", "GetResponse", "iContact", "Klaviyo", "Lyris", "LyrisHQ", "MailChimp", "SilverPop"])
+       #validator.allowable_values.each do |value|
+       #  expect { @instance.provider_name = value }.not_to raise_error
+       #end
     end
   end
 

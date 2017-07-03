@@ -31,6 +31,179 @@ module UltraCartAdminV2
       @api_client = api_client
     end
 
+    # Cancel an order
+    # Cancel an order on the UltraCart account.  If the success flag is false, then consult the error message for why it failed. 
+    # @param order_id The order id to cancel.
+    # @param [Hash] opts the optional parameters
+    # @return [BaseResponse]
+    def cancel_order(order_id, opts = {})
+      data, _status_code, _headers = cancel_order_with_http_info(order_id, opts)
+      return data
+    end
+
+    # Cancel an order
+    # Cancel an order on the UltraCart account.  If the success flag is false, then consult the error message for why it failed. 
+    # @param order_id The order id to cancel.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BaseResponse, Fixnum, Hash)>] BaseResponse data, response status code and response headers
+    def cancel_order_with_http_info(order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: OrderApi.cancel_order ..."
+      end
+      # verify the required parameter 'order_id' is set
+      fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.cancel_order" if order_id.nil?
+      # resource path
+      local_var_path = "/order/orders/{order_id}/cancel".sub('{format}','json').sub('{' + 'order_id' + '}', order_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'BaseResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#cancel_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete an order
+    # Delete an order on the UltraCart account. 
+    # @param order_id The order id to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_order(order_id, opts = {})
+      delete_order_with_http_info(order_id, opts)
+      return nil
+    end
+
+    # Delete an order
+    # Delete an order on the UltraCart account. 
+    # @param order_id The order id to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def delete_order_with_http_info(order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: OrderApi.delete_order ..."
+      end
+      # verify the required parameter 'order_id' is set
+      fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.delete_order" if order_id.nil?
+      # resource path
+      local_var_path = "/order/orders/{order_id}".sub('{format}','json').sub('{' + 'order_id' + '}', order_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#delete_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve an order
+    # Retrieves a single order using the specified order id. 
+    # @param order_id The order id to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [OrderResponse]
+    def get_order(order_id, opts = {})
+      data, _status_code, _headers = get_order_with_http_info(order_id, opts)
+      return data
+    end
+
+    # Retrieve an order
+    # Retrieves a single order using the specified order id. 
+    # @param order_id The order id to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(OrderResponse, Fixnum, Hash)>] OrderResponse data, response status code and response headers
+    def get_order_with_http_info(order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: OrderApi.get_order ..."
+      end
+      # verify the required parameter 'order_id' is set
+      fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.get_order" if order_id.nil?
+      # resource path
+      local_var_path = "/order/orders/{order_id}".sub('{format}','json').sub('{' + 'order_id' + '}', order_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'OrderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#get_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve orders
     # Retrieves a group of orders from the account.  If no parameters are specified, the API call will fail with a bad request error.  Always specify some parameters to limit the scope of the orders returned to ones you are truly interested in.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
     # @param [Hash] opts the optional parameters
@@ -66,8 +239,8 @@ module UltraCartAdminV2
     # @option opts [String] :_sort The sort order of the orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
     # @option opts [String] :_expand The object expansion to perform on the result.
     # @return [OrdersResponse]
-    def order_orders_get(opts = {})
-      data, _status_code, _headers = order_orders_get_with_http_info(opts)
+    def get_orders(opts = {})
+      data, _status_code, _headers = get_orders_with_http_info(opts)
       return data
     end
 
@@ -106,9 +279,9 @@ module UltraCartAdminV2
     # @option opts [String] :_sort The sort order of the orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
     # @option opts [String] :_expand The object expansion to perform on the result.
     # @return [Array<(OrdersResponse, Fixnum, Hash)>] OrdersResponse data, response status code and response headers
-    def order_orders_get_with_http_info(opts = {})
+    def get_orders_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: OrderApi.order_orders_get ..."
+        @api_client.config.logger.debug "Calling API: OrderApi.get_orders ..."
       end
       # resource path
       local_var_path = "/order/orders".sub('{format}','json')
@@ -172,34 +345,34 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'OrdersResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: OrderApi#order_orders_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: OrderApi#get_orders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Cancel an order
-    # Cancel an order on the UltraCart account.  If the success flag is false, then consult the error message for why it failed. 
-    # @param order_id The order id to cancel.
+    # Resend receipt
+    # Resend the receipt for an order on the UltraCart account. 
+    # @param order_id The order id to resend the receipt for.
     # @param [Hash] opts the optional parameters
     # @return [BaseResponse]
-    def order_orders_order_id_cancel_post(order_id, opts = {})
-      data, _status_code, _headers = order_orders_order_id_cancel_post_with_http_info(order_id, opts)
+    def resend_receipt(order_id, opts = {})
+      data, _status_code, _headers = resend_receipt_with_http_info(order_id, opts)
       return data
     end
 
-    # Cancel an order
-    # Cancel an order on the UltraCart account.  If the success flag is false, then consult the error message for why it failed. 
-    # @param order_id The order id to cancel.
+    # Resend receipt
+    # Resend the receipt for an order on the UltraCart account. 
+    # @param order_id The order id to resend the receipt for.
     # @param [Hash] opts the optional parameters
     # @return [Array<(BaseResponse, Fixnum, Hash)>] BaseResponse data, response status code and response headers
-    def order_orders_order_id_cancel_post_with_http_info(order_id, opts = {})
+    def resend_receipt_with_http_info(order_id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: OrderApi.order_orders_order_id_cancel_post ..."
+        @api_client.config.logger.debug "Calling API: OrderApi.resend_receipt ..."
       end
       # verify the required parameter 'order_id' is set
-      fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.order_orders_order_id_cancel_post" if order_id.nil?
+      fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.resend_receipt" if order_id.nil?
       # resource path
-      local_var_path = "/order/orders/{order_id}/cancel".sub('{format}','json').sub('{' + 'order_id' + '}', order_id.to_s)
+      local_var_path = "/order/orders/{order_id}/resend_receipt".sub('{format}','json').sub('{' + 'order_id' + '}', order_id.to_s)
 
       # query parameters
       query_params = {}
@@ -229,96 +402,37 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'BaseResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: OrderApi#order_orders_order_id_cancel_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: OrderApi#resend_receipt\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Delete an order
-    # Delete an order on the UltraCart account. 
-    # @param order_id The order id to delete.
+    # Resend shipment confirmation
+    # Resend shipment confirmation for an order on the UltraCart account. 
+    # @param order_id The order id to resend the shipment notification for.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def order_orders_order_id_delete(order_id, opts = {})
-      order_orders_order_id_delete_with_http_info(order_id, opts)
-      return nil
-    end
-
-    # Delete an order
-    # Delete an order on the UltraCart account. 
-    # @param order_id The order id to delete.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def order_orders_order_id_delete_with_http_info(order_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: OrderApi.order_orders_order_id_delete ..."
-      end
-      # verify the required parameter 'order_id' is set
-      fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.order_orders_order_id_delete" if order_id.nil?
-      # resource path
-      local_var_path = "/order/orders/{order_id}".sub('{format}','json').sub('{' + 'order_id' + '}', order_id.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: OrderApi#order_orders_order_id_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Retrieve an order
-    # Retrieves a single order using the specified order id. 
-    # @param order_id The order id to retrieve.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [OrderResponse]
-    def order_orders_order_id_get(order_id, opts = {})
-      data, _status_code, _headers = order_orders_order_id_get_with_http_info(order_id, opts)
+    # @return [BaseResponse]
+    def resend_shipment_confirmation(order_id, opts = {})
+      data, _status_code, _headers = resend_shipment_confirmation_with_http_info(order_id, opts)
       return data
     end
 
-    # Retrieve an order
-    # Retrieves a single order using the specified order id. 
-    # @param order_id The order id to retrieve.
+    # Resend shipment confirmation
+    # Resend shipment confirmation for an order on the UltraCart account. 
+    # @param order_id The order id to resend the shipment notification for.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [Array<(OrderResponse, Fixnum, Hash)>] OrderResponse data, response status code and response headers
-    def order_orders_order_id_get_with_http_info(order_id, opts = {})
+    # @return [Array<(BaseResponse, Fixnum, Hash)>] BaseResponse data, response status code and response headers
+    def resend_shipment_confirmation_with_http_info(order_id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: OrderApi.order_orders_order_id_get ..."
+        @api_client.config.logger.debug "Calling API: OrderApi.resend_shipment_confirmation ..."
       end
       # verify the required parameter 'order_id' is set
-      fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.order_orders_order_id_get" if order_id.nil?
+      fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.resend_shipment_confirmation" if order_id.nil?
       # resource path
-      local_var_path = "/order/orders/{order_id}".sub('{format}','json').sub('{' + 'order_id' + '}', order_id.to_s)
+      local_var_path = "/order/orders/{order_id}/resend_shipment_confirmation".sub('{format}','json').sub('{' + 'order_id' + '}', order_id.to_s)
 
       # query parameters
       query_params = {}
-      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
 
       # header parameters
       header_params = {}
@@ -337,15 +451,15 @@ module UltraCartAdminV2
       # http body (model)
       post_body = nil
       auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'OrderResponse')
+        :return_type => 'BaseResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: OrderApi#order_orders_order_id_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: OrderApi#resend_shipment_confirmation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -357,8 +471,8 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [OrderResponse]
-    def order_orders_order_id_put(order, order_id, opts = {})
-      data, _status_code, _headers = order_orders_order_id_put_with_http_info(order, order_id, opts)
+    def update_order(order, order_id, opts = {})
+      data, _status_code, _headers = update_order_with_http_info(order, order_id, opts)
       return data
     end
 
@@ -369,14 +483,14 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(OrderResponse, Fixnum, Hash)>] OrderResponse data, response status code and response headers
-    def order_orders_order_id_put_with_http_info(order, order_id, opts = {})
+    def update_order_with_http_info(order, order_id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: OrderApi.order_orders_order_id_put ..."
+        @api_client.config.logger.debug "Calling API: OrderApi.update_order ..."
       end
       # verify the required parameter 'order' is set
-      fail ArgumentError, "Missing the required parameter 'order' when calling OrderApi.order_orders_order_id_put" if order.nil?
+      fail ArgumentError, "Missing the required parameter 'order' when calling OrderApi.update_order" if order.nil?
       # verify the required parameter 'order_id' is set
-      fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.order_orders_order_id_put" if order_id.nil?
+      fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.update_order" if order_id.nil?
       # resource path
       local_var_path = "/order/orders/{order_id}".sub('{format}','json').sub('{' + 'order_id' + '}', order_id.to_s)
 
@@ -409,121 +523,7 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'OrderResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: OrderApi#order_orders_order_id_put\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Resend receipt
-    # Resend the receipt for an order on the UltraCart account. 
-    # @param order_id The order id to resend the receipt for.
-    # @param [Hash] opts the optional parameters
-    # @return [BaseResponse]
-    def order_orders_order_id_resend_receipt_post(order_id, opts = {})
-      data, _status_code, _headers = order_orders_order_id_resend_receipt_post_with_http_info(order_id, opts)
-      return data
-    end
-
-    # Resend receipt
-    # Resend the receipt for an order on the UltraCart account. 
-    # @param order_id The order id to resend the receipt for.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(BaseResponse, Fixnum, Hash)>] BaseResponse data, response status code and response headers
-    def order_orders_order_id_resend_receipt_post_with_http_info(order_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: OrderApi.order_orders_order_id_resend_receipt_post ..."
-      end
-      # verify the required parameter 'order_id' is set
-      fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.order_orders_order_id_resend_receipt_post" if order_id.nil?
-      # resource path
-      local_var_path = "/order/orders/{order_id}/resend_receipt".sub('{format}','json').sub('{' + 'order_id' + '}', order_id.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'BaseResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: OrderApi#order_orders_order_id_resend_receipt_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Resend shipment confirmation
-    # Resend shipment confirmation for an order on the UltraCart account. 
-    # @param order_id The order id to resend the shipment notification for.
-    # @param [Hash] opts the optional parameters
-    # @return [BaseResponse]
-    def order_orders_order_id_resend_shipment_confirmation_post(order_id, opts = {})
-      data, _status_code, _headers = order_orders_order_id_resend_shipment_confirmation_post_with_http_info(order_id, opts)
-      return data
-    end
-
-    # Resend shipment confirmation
-    # Resend shipment confirmation for an order on the UltraCart account. 
-    # @param order_id The order id to resend the shipment notification for.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(BaseResponse, Fixnum, Hash)>] BaseResponse data, response status code and response headers
-    def order_orders_order_id_resend_shipment_confirmation_post_with_http_info(order_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: OrderApi.order_orders_order_id_resend_shipment_confirmation_post ..."
-      end
-      # verify the required parameter 'order_id' is set
-      fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.order_orders_order_id_resend_shipment_confirmation_post" if order_id.nil?
-      # resource path
-      local_var_path = "/order/orders/{order_id}/resend_shipment_confirmation".sub('{format}','json').sub('{' + 'order_id' + '}', order_id.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'BaseResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: OrderApi#order_orders_order_id_resend_shipment_confirmation_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: OrderApi#update_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

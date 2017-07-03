@@ -43,63 +43,63 @@ describe 'FulfillmentApi' do
     end
   end
 
-  # unit tests for fulfillment_distribution_centers_distribution_center_code_acknowledgements_put
+  # unit tests for acknowledge_orders
   # Acknowledge receipt of orders.
   # Acknowledge receipt of orders so that they are removed from the fulfillment queue.  This method must be called after receiving and order (via webhook) or retrieving (via retrieve orders method). 
   # @param distribution_center_code Distribution center code
   # @param order_ids Orders to acknowledge receipt of (limit 100)
   # @param [Hash] opts the optional parameters
   # @return [nil]
-  describe 'fulfillment_distribution_centers_distribution_center_code_acknowledgements_put test' do
+  describe 'acknowledge_orders test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for fulfillment_distribution_centers_distribution_center_code_inventory_post
-  # Update inventory
-  # Update the inventory for items associated with this distribution center 
-  # @param distribution_center_code Distribution center code
-  # @param inventories Inventory updates (limit 500)
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'fulfillment_distribution_centers_distribution_center_code_inventory_post test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for fulfillment_distribution_centers_distribution_center_code_orders_get
+  # unit tests for get_distribution_center_orders
   # Retrieve orders queued up for this distribution center.
   # Retrieves up to 100 orders that are queued up in this distribution center.  You must acknowledge them before additional new orders will be returned.  The orders that are returned contain only items for this distribution center and are expanded with billing, buysafe, channel_partner, checkout, coupons, customer_profile, edi, gift, gift_certificate, internal, items, payment, shipping, summary, taxes. 
   # @param distribution_center_code Distribution center code
   # @param [Hash] opts the optional parameters
   # @return [OrdersResponse]
-  describe 'fulfillment_distribution_centers_distribution_center_code_orders_get test' do
+  describe 'get_distribution_center_orders test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for fulfillment_distribution_centers_distribution_center_code_shipments_post
+  # unit tests for get_distribution_centers
+  # Retrieve distribution centers
+  # Retrieves the distribution centers that this user has access to. 
+  # @param [Hash] opts the optional parameters
+  # @return [DistributionCentersResponse]
+  describe 'get_distribution_centers test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for ship_orders
   # Mark orders as shipped
   # Store the tracking information and mark the order shipped for this distribution center. 
   # @param distribution_center_code Distribution center code
   # @param shipments Orders to mark shipped
   # @param [Hash] opts the optional parameters
   # @return [nil]
-  describe 'fulfillment_distribution_centers_distribution_center_code_shipments_post test' do
+  describe 'ship_orders test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for fulfillment_distribution_centers_get
-  # Retrieve distribution centers
-  # Retrieves the distribution centers that this user has access to. 
+  # unit tests for update_inventory
+  # Update inventory
+  # Update the inventory for items associated with this distribution center 
+  # @param distribution_center_code Distribution center code
+  # @param inventories Inventory updates (limit 500)
   # @param [Hash] opts the optional parameters
-  # @return [DistributionCentersResponse]
-  describe 'fulfillment_distribution_centers_get test' do
+  # @return [nil]
+  describe 'update_inventory test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

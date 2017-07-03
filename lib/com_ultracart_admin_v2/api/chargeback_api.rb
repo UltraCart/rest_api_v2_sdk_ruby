@@ -36,8 +36,8 @@ module UltraCartAdminV2
     # @param chargeback_dispute_oid The chargeback_dispute_oid to delete.
     # @param [Hash] opts the optional parameters
     # @return [ChargebackDisputeResponse]
-    def chargeback_chargebacks_chargeback_dispute_oid_delete(chargeback_dispute_oid, opts = {})
-      data, _status_code, _headers = chargeback_chargebacks_chargeback_dispute_oid_delete_with_http_info(chargeback_dispute_oid, opts)
+    def delete_chargeback(chargeback_dispute_oid, opts = {})
+      data, _status_code, _headers = delete_chargeback_with_http_info(chargeback_dispute_oid, opts)
       return data
     end
 
@@ -46,12 +46,12 @@ module UltraCartAdminV2
     # @param chargeback_dispute_oid The chargeback_dispute_oid to delete.
     # @param [Hash] opts the optional parameters
     # @return [Array<(ChargebackDisputeResponse, Fixnum, Hash)>] ChargebackDisputeResponse data, response status code and response headers
-    def chargeback_chargebacks_chargeback_dispute_oid_delete_with_http_info(chargeback_dispute_oid, opts = {})
+    def delete_chargeback_with_http_info(chargeback_dispute_oid, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: ChargebackApi.chargeback_chargebacks_chargeback_dispute_oid_delete ..."
+        @api_client.config.logger.debug "Calling API: ChargebackApi.delete_chargeback ..."
       end
       # verify the required parameter 'chargeback_dispute_oid' is set
-      fail ArgumentError, "Missing the required parameter 'chargeback_dispute_oid' when calling ChargebackApi.chargeback_chargebacks_chargeback_dispute_oid_delete" if chargeback_dispute_oid.nil?
+      fail ArgumentError, "Missing the required parameter 'chargeback_dispute_oid' when calling ChargebackApi.delete_chargeback" if chargeback_dispute_oid.nil?
       # resource path
       local_var_path = "/chargeback/chargebacks/{chargeback_dispute_oid}".sub('{format}','json').sub('{' + 'chargeback_dispute_oid' + '}', chargeback_dispute_oid.to_s)
 
@@ -83,7 +83,7 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'ChargebackDisputeResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ChargebackApi#chargeback_chargebacks_chargeback_dispute_oid_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ChargebackApi#delete_chargeback\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -94,8 +94,8 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [ChargebackDisputeResponse]
-    def chargeback_chargebacks_chargeback_dispute_oid_get(chargeback_dispute_oid, opts = {})
-      data, _status_code, _headers = chargeback_chargebacks_chargeback_dispute_oid_get_with_http_info(chargeback_dispute_oid, opts)
+    def get_chargeback_dispute(chargeback_dispute_oid, opts = {})
+      data, _status_code, _headers = get_chargeback_dispute_with_http_info(chargeback_dispute_oid, opts)
       return data
     end
 
@@ -105,12 +105,12 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(ChargebackDisputeResponse, Fixnum, Hash)>] ChargebackDisputeResponse data, response status code and response headers
-    def chargeback_chargebacks_chargeback_dispute_oid_get_with_http_info(chargeback_dispute_oid, opts = {})
+    def get_chargeback_dispute_with_http_info(chargeback_dispute_oid, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: ChargebackApi.chargeback_chargebacks_chargeback_dispute_oid_get ..."
+        @api_client.config.logger.debug "Calling API: ChargebackApi.get_chargeback_dispute ..."
       end
       # verify the required parameter 'chargeback_dispute_oid' is set
-      fail ArgumentError, "Missing the required parameter 'chargeback_dispute_oid' when calling ChargebackApi.chargeback_chargebacks_chargeback_dispute_oid_get" if chargeback_dispute_oid.nil?
+      fail ArgumentError, "Missing the required parameter 'chargeback_dispute_oid' when calling ChargebackApi.get_chargeback_dispute" if chargeback_dispute_oid.nil?
       # resource path
       local_var_path = "/chargeback/chargebacks/{chargeback_dispute_oid}".sub('{format}','json').sub('{' + 'chargeback_dispute_oid' + '}', chargeback_dispute_oid.to_s)
 
@@ -143,71 +143,7 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'ChargebackDisputeResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ChargebackApi#chargeback_chargebacks_chargeback_dispute_oid_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Update a chargeback
-    # Update a chargeback on the UltraCart account. 
-    # @param chargeback Chargeback to update
-    # @param chargeback_dispute_oid The chargeback_dispute_oid to update.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [ChargebackDisputeResponse]
-    def chargeback_chargebacks_chargeback_dispute_oid_put(chargeback, chargeback_dispute_oid, opts = {})
-      data, _status_code, _headers = chargeback_chargebacks_chargeback_dispute_oid_put_with_http_info(chargeback, chargeback_dispute_oid, opts)
-      return data
-    end
-
-    # Update a chargeback
-    # Update a chargeback on the UltraCart account. 
-    # @param chargeback Chargeback to update
-    # @param chargeback_dispute_oid The chargeback_dispute_oid to update.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [Array<(ChargebackDisputeResponse, Fixnum, Hash)>] ChargebackDisputeResponse data, response status code and response headers
-    def chargeback_chargebacks_chargeback_dispute_oid_put_with_http_info(chargeback, chargeback_dispute_oid, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: ChargebackApi.chargeback_chargebacks_chargeback_dispute_oid_put ..."
-      end
-      # verify the required parameter 'chargeback' is set
-      fail ArgumentError, "Missing the required parameter 'chargeback' when calling ChargebackApi.chargeback_chargebacks_chargeback_dispute_oid_put" if chargeback.nil?
-      # verify the required parameter 'chargeback_dispute_oid' is set
-      fail ArgumentError, "Missing the required parameter 'chargeback_dispute_oid' when calling ChargebackApi.chargeback_chargebacks_chargeback_dispute_oid_put" if chargeback_dispute_oid.nil?
-      # resource path
-      local_var_path = "/chargeback/chargebacks/{chargeback_dispute_oid}".sub('{format}','json').sub('{' + 'chargeback_dispute_oid' + '}', chargeback_dispute_oid.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json; charset=UTF-8']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(chargeback)
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'ChargebackDisputeResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ChargebackApi#chargeback_chargebacks_chargeback_dispute_oid_put\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ChargebackApi#get_chargeback_dispute\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -228,8 +164,8 @@ module UltraCartAdminV2
     # @option opts [String] :_sort The sort order of the chargebacks.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [ChargebackDisputesResponse]
-    def chargeback_chargebacks_get(opts = {})
-      data, _status_code, _headers = chargeback_chargebacks_get_with_http_info(opts)
+    def get_chargeback_disputes(opts = {})
+      data, _status_code, _headers = get_chargeback_disputes_with_http_info(opts)
       return data
     end
 
@@ -249,9 +185,9 @@ module UltraCartAdminV2
     # @option opts [String] :_sort The sort order of the chargebacks.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(ChargebackDisputesResponse, Fixnum, Hash)>] ChargebackDisputesResponse data, response status code and response headers
-    def chargeback_chargebacks_get_with_http_info(opts = {})
+    def get_chargeback_disputes_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: ChargebackApi.chargeback_chargebacks_get ..."
+        @api_client.config.logger.debug "Calling API: ChargebackApi.get_chargeback_disputes ..."
       end
       # resource path
       local_var_path = "/chargeback/chargebacks".sub('{format}','json')
@@ -296,7 +232,7 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'ChargebackDisputesResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ChargebackApi#chargeback_chargebacks_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ChargebackApi#get_chargeback_disputes\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -307,8 +243,8 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [ChargebackDisputeResponse]
-    def chargeback_chargebacks_post(chargeback, opts = {})
-      data, _status_code, _headers = chargeback_chargebacks_post_with_http_info(chargeback, opts)
+    def insert_chargeback(chargeback, opts = {})
+      data, _status_code, _headers = insert_chargeback_with_http_info(chargeback, opts)
       return data
     end
 
@@ -318,12 +254,12 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(ChargebackDisputeResponse, Fixnum, Hash)>] ChargebackDisputeResponse data, response status code and response headers
-    def chargeback_chargebacks_post_with_http_info(chargeback, opts = {})
+    def insert_chargeback_with_http_info(chargeback, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: ChargebackApi.chargeback_chargebacks_post ..."
+        @api_client.config.logger.debug "Calling API: ChargebackApi.insert_chargeback ..."
       end
       # verify the required parameter 'chargeback' is set
-      fail ArgumentError, "Missing the required parameter 'chargeback' when calling ChargebackApi.chargeback_chargebacks_post" if chargeback.nil?
+      fail ArgumentError, "Missing the required parameter 'chargeback' when calling ChargebackApi.insert_chargeback" if chargeback.nil?
       # resource path
       local_var_path = "/chargeback/chargebacks".sub('{format}','json')
 
@@ -356,7 +292,71 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'ChargebackDisputeResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ChargebackApi#chargeback_chargebacks_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ChargebackApi#insert_chargeback\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a chargeback
+    # Update a chargeback on the UltraCart account. 
+    # @param chargeback Chargeback to update
+    # @param chargeback_dispute_oid The chargeback_dispute_oid to update.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [ChargebackDisputeResponse]
+    def update_chargeback(chargeback, chargeback_dispute_oid, opts = {})
+      data, _status_code, _headers = update_chargeback_with_http_info(chargeback, chargeback_dispute_oid, opts)
+      return data
+    end
+
+    # Update a chargeback
+    # Update a chargeback on the UltraCart account. 
+    # @param chargeback Chargeback to update
+    # @param chargeback_dispute_oid The chargeback_dispute_oid to update.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(ChargebackDisputeResponse, Fixnum, Hash)>] ChargebackDisputeResponse data, response status code and response headers
+    def update_chargeback_with_http_info(chargeback, chargeback_dispute_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: ChargebackApi.update_chargeback ..."
+      end
+      # verify the required parameter 'chargeback' is set
+      fail ArgumentError, "Missing the required parameter 'chargeback' when calling ChargebackApi.update_chargeback" if chargeback.nil?
+      # verify the required parameter 'chargeback_dispute_oid' is set
+      fail ArgumentError, "Missing the required parameter 'chargeback_dispute_oid' when calling ChargebackApi.update_chargeback" if chargeback_dispute_oid.nil?
+      # resource path
+      local_var_path = "/chargeback/chargebacks/{chargeback_dispute_oid}".sub('{format}','json').sub('{' + 'chargeback_dispute_oid' + '}', chargeback_dispute_oid.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json; charset=UTF-8']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(chargeback)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ChargebackDisputeResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ChargebackApi#update_chargeback\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

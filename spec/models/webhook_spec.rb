@@ -49,6 +49,16 @@ describe 'Webhook' do
     end
   end
 
+  describe 'test attribute "api_version"' do
+    it 'should work' do
+       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+       #validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["2017-03-01"])
+       #validator.allowable_values.each do |value|
+       #  expect { @instance.api_version = value }.not_to raise_error
+       #end
+    end
+  end
+
   describe 'test attribute "application_profile"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -58,6 +68,10 @@ describe 'Webhook' do
   describe 'test attribute "authentication_type"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+       #validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["none", "basic"])
+       #validator.allowable_values.each do |value|
+       #  expect { @instance.authentication_type = value }.not_to raise_error
+       #end
     end
   end
 

@@ -4,15 +4,15 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**fulfillment_distribution_centers_distribution_center_code_acknowledgements_put**](FulfillmentApi.md#fulfillment_distribution_centers_distribution_center_code_acknowledgements_put) | **PUT** /fulfillment/distribution_centers/{distribution_center_code}/acknowledgements | Acknowledge receipt of orders.
-[**fulfillment_distribution_centers_distribution_center_code_inventory_post**](FulfillmentApi.md#fulfillment_distribution_centers_distribution_center_code_inventory_post) | **POST** /fulfillment/distribution_centers/{distribution_center_code}/inventory | Update inventory
-[**fulfillment_distribution_centers_distribution_center_code_orders_get**](FulfillmentApi.md#fulfillment_distribution_centers_distribution_center_code_orders_get) | **GET** /fulfillment/distribution_centers/{distribution_center_code}/orders | Retrieve orders queued up for this distribution center.
-[**fulfillment_distribution_centers_distribution_center_code_shipments_post**](FulfillmentApi.md#fulfillment_distribution_centers_distribution_center_code_shipments_post) | **POST** /fulfillment/distribution_centers/{distribution_center_code}/shipments | Mark orders as shipped
-[**fulfillment_distribution_centers_get**](FulfillmentApi.md#fulfillment_distribution_centers_get) | **GET** /fulfillment/distribution_centers | Retrieve distribution centers
+[**acknowledge_orders**](FulfillmentApi.md#acknowledge_orders) | **PUT** /fulfillment/distribution_centers/{distribution_center_code}/acknowledgements | Acknowledge receipt of orders.
+[**get_distribution_center_orders**](FulfillmentApi.md#get_distribution_center_orders) | **GET** /fulfillment/distribution_centers/{distribution_center_code}/orders | Retrieve orders queued up for this distribution center.
+[**get_distribution_centers**](FulfillmentApi.md#get_distribution_centers) | **GET** /fulfillment/distribution_centers | Retrieve distribution centers
+[**ship_orders**](FulfillmentApi.md#ship_orders) | **POST** /fulfillment/distribution_centers/{distribution_center_code}/shipments | Mark orders as shipped
+[**update_inventory**](FulfillmentApi.md#update_inventory) | **POST** /fulfillment/distribution_centers/{distribution_center_code}/inventory | Update inventory
 
 
-# **fulfillment_distribution_centers_distribution_center_code_acknowledgements_put**
-> fulfillment_distribution_centers_distribution_center_code_acknowledgements_put(distribution_center_code, order_ids)
+# **acknowledge_orders**
+> acknowledge_orders(distribution_center_code, order_ids)
 
 Acknowledge receipt of orders.
 
@@ -42,9 +42,9 @@ order_ids = [UltraCartAdminV2::Array<String>.new] # Array<String> | Orders to ac
 
 begin
   #Acknowledge receipt of orders.
-  api_instance.fulfillment_distribution_centers_distribution_center_code_acknowledgements_put(distribution_center_code, order_ids)
+  api_instance.acknowledge_orders(distribution_center_code, order_ids)
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling FulfillmentApi->fulfillment_distribution_centers_distribution_center_code_acknowledgements_put: #{e}"
+  puts "Exception when calling FulfillmentApi->acknowledge_orders: #{e}"
 end
 ```
 
@@ -70,67 +70,8 @@ nil (empty response body)
 
 
 
-# **fulfillment_distribution_centers_distribution_center_code_inventory_post**
-> fulfillment_distribution_centers_distribution_center_code_inventory_post(distribution_center_code, inventories)
-
-Update inventory
-
-Update the inventory for items associated with this distribution center 
-
-### Example
-```ruby
-# load the gem
-require 'com_ultracart_admin_v2'
-# setup authorization
-UltraCartAdminV2.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
-
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
-
-api_instance = UltraCartAdminV2::FulfillmentApi.new
-
-distribution_center_code = "distribution_center_code_example" # String | Distribution center code
-
-inventories = [UltraCartAdminV2::FulfillmentInventory.new] # Array<FulfillmentInventory> | Inventory updates (limit 500)
-
-
-begin
-  #Update inventory
-  api_instance.fulfillment_distribution_centers_distribution_center_code_inventory_post(distribution_center_code, inventories)
-rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling FulfillmentApi->fulfillment_distribution_centers_distribution_center_code_inventory_post: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **distribution_center_code** | **String**| Distribution center code | 
- **inventories** | [**Array&lt;FulfillmentInventory&gt;**](FulfillmentInventory.md)| Inventory updates (limit 500) | 
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **fulfillment_distribution_centers_distribution_center_code_orders_get**
-> OrdersResponse fulfillment_distribution_centers_distribution_center_code_orders_get(distribution_center_code)
+# **get_distribution_center_orders**
+> OrdersResponse get_distribution_center_orders(distribution_center_code)
 
 Retrieve orders queued up for this distribution center.
 
@@ -158,10 +99,10 @@ distribution_center_code = "distribution_center_code_example" # String | Distrib
 
 begin
   #Retrieve orders queued up for this distribution center.
-  result = api_instance.fulfillment_distribution_centers_distribution_center_code_orders_get(distribution_center_code)
+  result = api_instance.get_distribution_center_orders(distribution_center_code)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling FulfillmentApi->fulfillment_distribution_centers_distribution_center_code_orders_get: #{e}"
+  puts "Exception when calling FulfillmentApi->get_distribution_center_orders: #{e}"
 end
 ```
 
@@ -186,8 +127,59 @@ Name | Type | Description  | Notes
 
 
 
-# **fulfillment_distribution_centers_distribution_center_code_shipments_post**
-> fulfillment_distribution_centers_distribution_center_code_shipments_post(distribution_center_code, shipments)
+# **get_distribution_centers**
+> DistributionCentersResponse get_distribution_centers
+
+Retrieve distribution centers
+
+Retrieves the distribution centers that this user has access to. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::FulfillmentApi.new
+
+begin
+  #Retrieve distribution centers
+  result = api_instance.get_distribution_centers
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling FulfillmentApi->get_distribution_centers: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**DistributionCentersResponse**](DistributionCentersResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **ship_orders**
+> ship_orders(distribution_center_code, shipments)
 
 Mark orders as shipped
 
@@ -217,9 +209,9 @@ shipments = [UltraCartAdminV2::FulfillmentShipment.new] # Array<FulfillmentShipm
 
 begin
   #Mark orders as shipped
-  api_instance.fulfillment_distribution_centers_distribution_center_code_shipments_post(distribution_center_code, shipments)
+  api_instance.ship_orders(distribution_center_code, shipments)
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling FulfillmentApi->fulfillment_distribution_centers_distribution_center_code_shipments_post: #{e}"
+  puts "Exception when calling FulfillmentApi->ship_orders: #{e}"
 end
 ```
 
@@ -245,12 +237,12 @@ nil (empty response body)
 
 
 
-# **fulfillment_distribution_centers_get**
-> DistributionCentersResponse fulfillment_distribution_centers_get
+# **update_inventory**
+> update_inventory(distribution_center_code, inventories)
 
-Retrieve distribution centers
+Update inventory
 
-Retrieves the distribution centers that this user has access to. 
+Update the inventory for items associated with this distribution center 
 
 ### Example
 ```ruby
@@ -269,21 +261,29 @@ end
 
 api_instance = UltraCartAdminV2::FulfillmentApi.new
 
+distribution_center_code = "distribution_center_code_example" # String | Distribution center code
+
+inventories = [UltraCartAdminV2::FulfillmentInventory.new] # Array<FulfillmentInventory> | Inventory updates (limit 500)
+
+
 begin
-  #Retrieve distribution centers
-  result = api_instance.fulfillment_distribution_centers_get
-  p result
+  #Update inventory
+  api_instance.update_inventory(distribution_center_code, inventories)
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling FulfillmentApi->fulfillment_distribution_centers_get: #{e}"
+  puts "Exception when calling FulfillmentApi->update_inventory: #{e}"
 end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **distribution_center_code** | **String**| Distribution center code | 
+ **inventories** | [**Array&lt;FulfillmentInventory&gt;**](FulfillmentInventory.md)| Inventory updates (limit 500) | 
 
 ### Return type
 
-[**DistributionCentersResponse**](DistributionCentersResponse.md)
+nil (empty response body)
 
 ### Authorization
 

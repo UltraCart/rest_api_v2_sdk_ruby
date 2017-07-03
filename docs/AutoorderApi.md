@@ -4,13 +4,13 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**auto_order_auto_orders_auto_order_oid_get**](AutoorderApi.md#auto_order_auto_orders_auto_order_oid_get) | **GET** /auto_order/auto_orders/{auto_order_oid} | Retrieve an auto order
-[**auto_order_auto_orders_auto_order_oid_put**](AutoorderApi.md#auto_order_auto_orders_auto_order_oid_put) | **PUT** /auto_order/auto_orders/{auto_order_oid} | Update an auto order
-[**auto_order_auto_orders_get**](AutoorderApi.md#auto_order_auto_orders_get) | **GET** /auto_order/auto_orders | Retrieve auto orders
+[**get_auto_order**](AutoorderApi.md#get_auto_order) | **GET** /auto_order/auto_orders/{auto_order_oid} | Retrieve an auto order
+[**get_auto_orders**](AutoorderApi.md#get_auto_orders) | **GET** /auto_order/auto_orders | Retrieve auto orders
+[**update_auto_order**](AutoorderApi.md#update_auto_order) | **PUT** /auto_order/auto_orders/{auto_order_oid} | Update an auto order
 
 
-# **auto_order_auto_orders_auto_order_oid_get**
-> AutoOrderResponse auto_order_auto_orders_auto_order_oid_get(auto_order_oid, opts)
+# **get_auto_order**
+> AutoOrderResponse get_auto_order(auto_order_oid, opts)
 
 Retrieve an auto order
 
@@ -41,10 +41,10 @@ opts = {
 
 begin
   #Retrieve an auto order
-  result = api_instance.auto_order_auto_orders_auto_order_oid_get(auto_order_oid, opts)
+  result = api_instance.get_auto_order(auto_order_oid, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling AutoorderApi->auto_order_auto_orders_auto_order_oid_get: #{e}"
+  puts "Exception when calling AutoorderApi->get_auto_order: #{e}"
 end
 ```
 
@@ -70,68 +70,8 @@ Name | Type | Description  | Notes
 
 
 
-# **auto_order_auto_orders_auto_order_oid_put**
-> AutoOrderResponse auto_order_auto_orders_auto_order_oid_put(auto_order, auto_order_oid)
-
-Update an auto order
-
-Update an auto order on the UltraCart account. 
-
-### Example
-```ruby
-# load the gem
-require 'com_ultracart_admin_v2'
-# setup authorization
-UltraCartAdminV2.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
-
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
-
-api_instance = UltraCartAdminV2::AutoorderApi.new
-
-auto_order = UltraCartAdminV2::AutoOrder.new # AutoOrder | Auto order to update
-
-auto_order_oid = 56 # Integer | The auto order oid to update.
-
-
-begin
-  #Update an auto order
-  result = api_instance.auto_order_auto_orders_auto_order_oid_put(auto_order, auto_order_oid)
-  p result
-rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling AutoorderApi->auto_order_auto_orders_auto_order_oid_put: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **auto_order** | [**AutoOrder**](AutoOrder.md)| Auto order to update | 
- **auto_order_oid** | **Integer**| The auto order oid to update. | 
-
-### Return type
-
-[**AutoOrderResponse**](AutoOrderResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json; charset=UTF-8
- - **Accept**: application/json
-
-
-
-# **auto_order_auto_orders_get**
-> AutoOrdersResponse auto_order_auto_orders_get(opts)
+# **get_auto_orders**
+> AutoOrdersResponse get_auto_orders(opts)
 
 Retrieve auto orders
 
@@ -182,10 +122,10 @@ opts = {
 
 begin
   #Retrieve auto orders
-  result = api_instance.auto_order_auto_orders_get(opts)
+  result = api_instance.get_auto_orders(opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling AutoorderApi->auto_order_auto_orders_get: #{e}"
+  puts "Exception when calling AutoorderApi->get_auto_orders: #{e}"
 end
 ```
 
@@ -228,6 +168,70 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_auto_order**
+> AutoOrderResponse update_auto_order(auto_order, auto_order_oid, opts)
+
+Update an auto order
+
+Update an auto order on the UltraCart account. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::AutoorderApi.new
+
+auto_order = UltraCartAdminV2::AutoOrder.new # AutoOrder | Auto order to update
+
+auto_order_oid = 56 # Integer | The auto order oid to update.
+
+opts = { 
+  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+}
+
+begin
+  #Update an auto order
+  result = api_instance.update_auto_order(auto_order, auto_order_oid, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling AutoorderApi->update_auto_order: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **auto_order** | [**AutoOrder**](AutoOrder.md)| Auto order to update | 
+ **auto_order_oid** | **Integer**| The auto order oid to update. | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+
+### Return type
+
+[**AutoOrderResponse**](AutoOrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
  - **Accept**: application/json
 
 

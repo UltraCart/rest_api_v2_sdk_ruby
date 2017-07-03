@@ -73,7 +73,7 @@ describe 'ItemShipping' do
     end
   end
 
-  describe 'test attribute "country_of_origin"' do
+  describe 'test attribute "country_code_of_origin"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -206,6 +206,12 @@ describe 'ItemShipping' do
   end
 
   describe 'test attribute "package_requirements"' do
+    it 'should work' do
+       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "perishable_class_name"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

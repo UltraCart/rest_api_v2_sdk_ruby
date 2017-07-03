@@ -55,6 +55,12 @@ describe 'ItemAutoOrder' do
     end
   end
 
+  describe 'test attribute "auto_order_cancel_item_id"' do
+    it 'should work' do
+       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "auto_order_cancel_item_oid"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -91,18 +97,6 @@ describe 'ItemAutoOrder' do
     end
   end
 
-  describe 'test attribute "auto_order_upsell_delay"' do
-    it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  describe 'test attribute "auto_order_upsell_merchant_item_oid"' do
-    it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
   describe 'test attribute "auto_order_upsell_no_easy_cancel"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -110,18 +104,6 @@ describe 'ItemAutoOrder' do
   end
 
   describe 'test attribute "auto_order_upsell_one_per_customer"' do
-    it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  describe 'test attribute "auto_order_upsell_repeat_count"' do
-    it 'should work' do
-       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  describe 'test attribute "auto_order_upsell_schedule"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

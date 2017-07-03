@@ -43,112 +43,96 @@ describe 'WebhookApi' do
     end
   end
 
-  # unit tests for webhook_webhooks_get
-  # Retrieve webhooks
-  # Retrieves the webhooks associated with this application. 
-  # @param [Hash] opts the optional parameters
-  # @return [WebhooksResponse]
-  describe 'webhook_webhooks_get test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for webhook_webhooks_post
-  # Add a webhook
-  # Adds a new webhook on the account 
-  # @param webhook Webhook to create
-  # @param [Hash] opts the optional parameters
-  # @return [WebhooksResponse]
-  describe 'webhook_webhooks_post test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for webhook_webhooks_webhook_oid_delete
+  # unit tests for delete_webhook
   # Delete a webhook
   # Delete a webhook on the UltraCart account. 
   # @param webhook_oid The webhook oid to delete.
   # @param [Hash] opts the optional parameters
   # @return [nil]
-  describe 'webhook_webhooks_webhook_oid_delete test' do
+  describe 'delete_webhook test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for webhook_webhooks_webhook_oid_logs_get
-  # Retrieve the log summaries
-  # Retrieves the log summary information for a given webhook.  This is useful for displaying all the various logs that can be viewed. 
-  # @param webhook_oid The webhook oid to retrieve log summaries for.
-  # @param [Hash] opts the optional parameters
-  # @return [WebhookLogSummariesResponse]
-  describe 'webhook_webhooks_webhook_oid_logs_get test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for webhook_webhooks_webhook_oid_logs_request_id_get
+  # unit tests for get_webhook_log
   # Retrieve an individual log
   # Retrieves an individual log for a webhook given the webhook oid the request id. 
   # @param webhook_oid The webhook oid that owns the log.
   # @param request_id The request id associated with the log to view.
   # @param [Hash] opts the optional parameters
   # @return [WebhookLogResponse]
-  describe 'webhook_webhooks_webhook_oid_logs_request_id_get test' do
+  describe 'get_webhook_log test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for webhook_webhooks_webhook_oid_put
-  # Update a webhook
-  # Update a webhook on the account 
-  # @param webhook Webhook to update
-  # @param webhook_oid The webhook oid to update.
+  # unit tests for get_webhook_log_summaries
+  # Retrieve the log summaries
+  # Retrieves the log summary information for a given webhook.  This is useful for displaying all the various logs that can be viewed. 
+  # @param webhook_oid The webhook oid to retrieve log summaries for.
   # @param [Hash] opts the optional parameters
-  # @return [WebhooksResponse]
-  describe 'webhook_webhooks_webhook_oid_put test' do
+  # @option opts [Integer] :_limit The maximum number of records to return on this one API call.
+  # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
+  # @option opts [String] :_since Fetch log summaries that have been delivered since this date/time.
+  # @return [WebhookLogSummariesResponse]
+  describe 'get_webhook_log_summaries test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for webhook_webhooks_webhook_oid_reflow_event_name_post
+  # unit tests for get_webhooks
+  # Retrieve webhooks
+  # Retrieves the webhooks associated with this application. 
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :_limit The maximum number of records to return on this one API call.
+  # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
+  # @option opts [String] :_sort The sort order of the webhooks.  See documentation for examples
+  # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+  # @return [WebhooksResponse]
+  describe 'get_webhooks test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for insert_webhook
+  # Add a webhook
+  # Adds a new webhook on the account.  If you add a new webhook with the authentication_type set to basic, but do not specify the basic_username and basic_password, UltraCart will automatically generate random ones and return them.  This allows your application to have simpler logic on the setup of a secure webhook. 
+  # @param webhook Webhook to create
+  # @param [Hash] opts the optional parameters
+  # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+  # @return [WebhookResponse]
+  describe 'insert_webhook test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for resend_event
   # Resend events to the webhook endpoint.
   # This method will resend events to the webhook endpoint.  This method can be used for example to send all the existing items on an account to a webhook. 
   # @param webhook_oid The webhook oid that is receiving the reflowed events.
   # @param event_name The event to reflow.
   # @param [Hash] opts the optional parameters
   # @return [WebhookSampleRequestResponse]
-  describe 'webhook_webhooks_webhook_oid_reflow_event_name_post test' do
+  describe 'resend_event test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for webhook_webhooks_webhook_oid_samples_get
-  # Retrieve a sample notification.
-  # Retrieves a sample notification for the webhook.  This provides as example of what the notifications that can be delivered will look like. 
-  # @param webhook_oid The webhook oid to retrieve samples for.
+  # unit tests for update_webhook
+  # Update a webhook
+  # Update a webhook on the account 
+  # @param webhook Webhook to update
+  # @param webhook_oid The webhook oid to update.
   # @param [Hash] opts the optional parameters
-  # @return [WebhookSampleRequestResponse]
-  describe 'webhook_webhooks_webhook_oid_samples_get test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for webhook_webhooks_webhook_oid_validate_post
-  # Send test message to an endpoint.
-  # Performs a test of the webhook endpoint given the specified sample request and returns the log associated with the response. 
-  # @param samples Samples to send in the test
-  # @param webhook_oid The webhook oid that is being tested.
-  # @param [Hash] opts the optional parameters
-  # @return [WebhookLogResponse]
-  describe 'webhook_webhooks_webhook_oid_validate_post test' do
+  # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+  # @return [WebhookResponse]
+  describe 'update_webhook test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

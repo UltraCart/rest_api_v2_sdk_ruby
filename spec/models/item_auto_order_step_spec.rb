@@ -79,7 +79,7 @@ describe 'ItemAutoOrderStep' do
     end
   end
 
-  describe 'test attribute "pause_unit_date"' do
+  describe 'test attribute "pause_until_date"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -130,6 +130,10 @@ describe 'ItemAutoOrderStep' do
   describe 'test attribute "type"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+       #validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["item", "pause"])
+       #validator.allowable_values.each do |value|
+       #  expect { @instance.type = value }.not_to raise_error
+       #end
     end
   end
 

@@ -36,8 +36,8 @@ module UltraCartAdminV2
     # @param customer_profile_oid The customer_profile_oid to delete.
     # @param [Hash] opts the optional parameters
     # @return [CustomerResponse]
-    def customer_customers_customer_profile_oid_delete(customer_profile_oid, opts = {})
-      data, _status_code, _headers = customer_customers_customer_profile_oid_delete_with_http_info(customer_profile_oid, opts)
+    def delete_customer(customer_profile_oid, opts = {})
+      data, _status_code, _headers = delete_customer_with_http_info(customer_profile_oid, opts)
       return data
     end
 
@@ -46,12 +46,12 @@ module UltraCartAdminV2
     # @param customer_profile_oid The customer_profile_oid to delete.
     # @param [Hash] opts the optional parameters
     # @return [Array<(CustomerResponse, Fixnum, Hash)>] CustomerResponse data, response status code and response headers
-    def customer_customers_customer_profile_oid_delete_with_http_info(customer_profile_oid, opts = {})
+    def delete_customer_with_http_info(customer_profile_oid, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CustomerApi.customer_customers_customer_profile_oid_delete ..."
+        @api_client.config.logger.debug "Calling API: CustomerApi.delete_customer ..."
       end
       # verify the required parameter 'customer_profile_oid' is set
-      fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.customer_customers_customer_profile_oid_delete" if customer_profile_oid.nil?
+      fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.delete_customer" if customer_profile_oid.nil?
       # resource path
       local_var_path = "/customer/customers/{customer_profile_oid}".sub('{format}','json').sub('{' + 'customer_profile_oid' + '}', customer_profile_oid.to_s)
 
@@ -83,7 +83,7 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'CustomerResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CustomerApi#customer_customers_customer_profile_oid_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: CustomerApi#delete_customer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -94,8 +94,8 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [CustomerResponse]
-    def customer_customers_customer_profile_oid_get(customer_profile_oid, opts = {})
-      data, _status_code, _headers = customer_customers_customer_profile_oid_get_with_http_info(customer_profile_oid, opts)
+    def get_customer(customer_profile_oid, opts = {})
+      data, _status_code, _headers = get_customer_with_http_info(customer_profile_oid, opts)
       return data
     end
 
@@ -105,12 +105,12 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(CustomerResponse, Fixnum, Hash)>] CustomerResponse data, response status code and response headers
-    def customer_customers_customer_profile_oid_get_with_http_info(customer_profile_oid, opts = {})
+    def get_customer_with_http_info(customer_profile_oid, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CustomerApi.customer_customers_customer_profile_oid_get ..."
+        @api_client.config.logger.debug "Calling API: CustomerApi.get_customer ..."
       end
       # verify the required parameter 'customer_profile_oid' is set
-      fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.customer_customers_customer_profile_oid_get" if customer_profile_oid.nil?
+      fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.get_customer" if customer_profile_oid.nil?
       # resource path
       local_var_path = "/customer/customers/{customer_profile_oid}".sub('{format}','json').sub('{' + 'customer_profile_oid' + '}', customer_profile_oid.to_s)
 
@@ -143,71 +143,7 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'CustomerResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CustomerApi#customer_customers_customer_profile_oid_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Update a customer
-    # Update a customer on the UltraCart account. 
-    # @param customer Customer to update
-    # @param customer_profile_oid The customer_profile_oid to update.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [CustomerResponse]
-    def customer_customers_customer_profile_oid_put(customer, customer_profile_oid, opts = {})
-      data, _status_code, _headers = customer_customers_customer_profile_oid_put_with_http_info(customer, customer_profile_oid, opts)
-      return data
-    end
-
-    # Update a customer
-    # Update a customer on the UltraCart account. 
-    # @param customer Customer to update
-    # @param customer_profile_oid The customer_profile_oid to update.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [Array<(CustomerResponse, Fixnum, Hash)>] CustomerResponse data, response status code and response headers
-    def customer_customers_customer_profile_oid_put_with_http_info(customer, customer_profile_oid, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CustomerApi.customer_customers_customer_profile_oid_put ..."
-      end
-      # verify the required parameter 'customer' is set
-      fail ArgumentError, "Missing the required parameter 'customer' when calling CustomerApi.customer_customers_customer_profile_oid_put" if customer.nil?
-      # verify the required parameter 'customer_profile_oid' is set
-      fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.customer_customers_customer_profile_oid_put" if customer_profile_oid.nil?
-      # resource path
-      local_var_path = "/customer/customers/{customer_profile_oid}".sub('{format}','json').sub('{' + 'customer_profile_oid' + '}', customer_profile_oid.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json; charset=UTF-8']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(customer)
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'CustomerResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CustomerApi#customer_customers_customer_profile_oid_put\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: CustomerApi#get_customer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -248,8 +184,8 @@ module UltraCartAdminV2
     # @option opts [String] :_sort The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [CustomersResponse]
-    def customer_customers_get(opts = {})
-      data, _status_code, _headers = customer_customers_get_with_http_info(opts)
+    def get_customers(opts = {})
+      data, _status_code, _headers = get_customers_with_http_info(opts)
       return data
     end
 
@@ -289,9 +225,9 @@ module UltraCartAdminV2
     # @option opts [String] :_sort The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(CustomersResponse, Fixnum, Hash)>] CustomersResponse data, response status code and response headers
-    def customer_customers_get_with_http_info(opts = {})
+    def get_customers_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CustomerApi.customer_customers_get ..."
+        @api_client.config.logger.debug "Calling API: CustomerApi.get_customers ..."
       end
       # resource path
       local_var_path = "/customer/customers".sub('{format}','json')
@@ -356,7 +292,7 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'CustomersResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CustomerApi#customer_customers_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: CustomerApi#get_customers\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -367,8 +303,8 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [CustomerResponse]
-    def customer_customers_post(customer, opts = {})
-      data, _status_code, _headers = customer_customers_post_with_http_info(customer, opts)
+    def insert_customer(customer, opts = {})
+      data, _status_code, _headers = insert_customer_with_http_info(customer, opts)
       return data
     end
 
@@ -378,12 +314,12 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(CustomerResponse, Fixnum, Hash)>] CustomerResponse data, response status code and response headers
-    def customer_customers_post_with_http_info(customer, opts = {})
+    def insert_customer_with_http_info(customer, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CustomerApi.customer_customers_post ..."
+        @api_client.config.logger.debug "Calling API: CustomerApi.insert_customer ..."
       end
       # verify the required parameter 'customer' is set
-      fail ArgumentError, "Missing the required parameter 'customer' when calling CustomerApi.customer_customers_post" if customer.nil?
+      fail ArgumentError, "Missing the required parameter 'customer' when calling CustomerApi.insert_customer" if customer.nil?
       # resource path
       local_var_path = "/customer/customers".sub('{format}','json')
 
@@ -416,7 +352,71 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'CustomerResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CustomerApi#customer_customers_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: CustomerApi#insert_customer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a customer
+    # Update a customer on the UltraCart account. 
+    # @param customer Customer to update
+    # @param customer_profile_oid The customer_profile_oid to update.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [CustomerResponse]
+    def update_customer(customer, customer_profile_oid, opts = {})
+      data, _status_code, _headers = update_customer_with_http_info(customer, customer_profile_oid, opts)
+      return data
+    end
+
+    # Update a customer
+    # Update a customer on the UltraCart account. 
+    # @param customer Customer to update
+    # @param customer_profile_oid The customer_profile_oid to update.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(CustomerResponse, Fixnum, Hash)>] CustomerResponse data, response status code and response headers
+    def update_customer_with_http_info(customer, customer_profile_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CustomerApi.update_customer ..."
+      end
+      # verify the required parameter 'customer' is set
+      fail ArgumentError, "Missing the required parameter 'customer' when calling CustomerApi.update_customer" if customer.nil?
+      # verify the required parameter 'customer_profile_oid' is set
+      fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.update_customer" if customer_profile_oid.nil?
+      # resource path
+      local_var_path = "/customer/customers/{customer_profile_oid}".sub('{format}','json').sub('{' + 'customer_profile_oid' + '}', customer_profile_oid.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json; charset=UTF-8']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(customer)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CustomerResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#update_customer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

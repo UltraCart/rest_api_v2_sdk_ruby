@@ -4,16 +4,135 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**item_items_get**](ItemApi.md#item_items_get) | **GET** /item/items | Retrieve items
-[**item_items_merchant_item_oid_delete**](ItemApi.md#item_items_merchant_item_oid_delete) | **DELETE** /item/items/{merchant_item_oid} | Delete an item
-[**item_items_merchant_item_oid_get**](ItemApi.md#item_items_merchant_item_oid_get) | **GET** /item/items/{merchant_item_oid} | Retrieve an item
-[**item_items_merchant_item_oid_put**](ItemApi.md#item_items_merchant_item_oid_put) | **PUT** /item/items/{merchant_item_oid} | Update an item
-[**item_items_post**](ItemApi.md#item_items_post) | **POST** /item/items | Create an item
-[**item_temp_multimedia_post**](ItemApi.md#item_temp_multimedia_post) | **POST** /item/temp_multimedia | Upload an image to the temporary multimedia.
+[**delete_item**](ItemApi.md#delete_item) | **DELETE** /item/items/{merchant_item_oid} | Delete an item
+[**get_item**](ItemApi.md#get_item) | **GET** /item/items/{merchant_item_oid} | Retrieve an item
+[**get_items**](ItemApi.md#get_items) | **GET** /item/items | Retrieve items
+[**insert_item**](ItemApi.md#insert_item) | **POST** /item/items | Create an item
+[**update_item**](ItemApi.md#update_item) | **PUT** /item/items/{merchant_item_oid} | Update an item
+[**upload_temporary_multimedia**](ItemApi.md#upload_temporary_multimedia) | **POST** /item/temp_multimedia | Upload an image to the temporary multimedia.
 
 
-# **item_items_get**
-> ItemsResponse item_items_get(opts)
+# **delete_item**
+> delete_item(merchant_item_oid)
+
+Delete an item
+
+Delete an item on the UltraCart account. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::ItemApi.new
+
+merchant_item_oid = 56 # Integer | The item oid to delete.
+
+
+begin
+  #Delete an item
+  api_instance.delete_item(merchant_item_oid)
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling ItemApi->delete_item: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **merchant_item_oid** | **Integer**| The item oid to delete. | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_item**
+> ItemResponse get_item(merchant_item_oid, opts)
+
+Retrieve an item
+
+Retrieves a single item using the specified item oid. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::ItemApi.new
+
+merchant_item_oid = 56 # Integer | The item oid to retrieve.
+
+opts = { 
+  _expand: "_expand_example", # String | The object expansion to perform on the result.  See documentation for examples
+  _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+}
+
+begin
+  #Retrieve an item
+  result = api_instance.get_item(merchant_item_oid, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling ItemApi->get_item: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **merchant_item_oid** | **Integer**| The item oid to retrieve. | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+ **_placeholders** | **BOOLEAN**| Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] 
+
+### Return type
+
+[**ItemResponse**](ItemResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_items**
+> ItemsResponse get_items(opts)
 
 Retrieve items
 
@@ -49,10 +168,10 @@ opts = {
 
 begin
   #Retrieve items
-  result = api_instance.item_items_get(opts)
+  result = api_instance.get_items(opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling ItemApi->item_items_get: #{e}"
+  puts "Exception when calling ItemApi->get_items: #{e}"
 end
 ```
 
@@ -84,68 +203,12 @@ Name | Type | Description  | Notes
 
 
 
-# **item_items_merchant_item_oid_delete**
-> item_items_merchant_item_oid_delete(merchant_item_oid)
+# **insert_item**
+> ItemResponse insert_item(item, opts)
 
-Delete an item
+Create an item
 
-Delete an item on the UltraCart account. 
-
-### Example
-```ruby
-# load the gem
-require 'com_ultracart_admin_v2'
-# setup authorization
-UltraCartAdminV2.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
-
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
-
-api_instance = UltraCartAdminV2::ItemApi.new
-
-merchant_item_oid = 56 # Integer | The item oid to delete.
-
-
-begin
-  #Delete an item
-  api_instance.item_items_merchant_item_oid_delete(merchant_item_oid)
-rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling ItemApi->item_items_merchant_item_oid_delete: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **merchant_item_oid** | **Integer**| The item oid to delete. | 
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **item_items_merchant_item_oid_get**
-> ItemResponse item_items_merchant_item_oid_get(merchant_item_oid, opts)
-
-Retrieve an item
-
-Retrieves a single item using the specified item oid. 
+Create a new item on the UltraCart account. 
 
 ### Example
 ```ruby
@@ -164,7 +227,7 @@ end
 
 api_instance = UltraCartAdminV2::ItemApi.new
 
-merchant_item_oid = 56 # Integer | The item oid to retrieve.
+item = UltraCartAdminV2::Item.new # Item | Item to create
 
 opts = { 
   _expand: "_expand_example", # String | The object expansion to perform on the result.  See documentation for examples
@@ -172,11 +235,11 @@ opts = {
 }
 
 begin
-  #Retrieve an item
-  result = api_instance.item_items_merchant_item_oid_get(merchant_item_oid, opts)
+  #Create an item
+  result = api_instance.insert_item(item, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling ItemApi->item_items_merchant_item_oid_get: #{e}"
+  puts "Exception when calling ItemApi->insert_item: #{e}"
 end
 ```
 
@@ -184,7 +247,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **merchant_item_oid** | **Integer**| The item oid to retrieve. | 
+ **item** | [**Item**](Item.md)| Item to create | 
  **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
  **_placeholders** | **BOOLEAN**| Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] 
 
@@ -198,13 +261,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json; charset=UTF-8
  - **Accept**: application/json
 
 
 
-# **item_items_merchant_item_oid_put**
-> ItemResponse item_items_merchant_item_oid_put(item, merchant_item_oid, opts)
+# **update_item**
+> ItemResponse update_item(item, merchant_item_oid, opts)
 
 Update an item
 
@@ -238,10 +301,10 @@ opts = {
 
 begin
   #Update an item
-  result = api_instance.item_items_merchant_item_oid_put(item, merchant_item_oid, opts)
+  result = api_instance.update_item(item, merchant_item_oid, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling ItemApi->item_items_merchant_item_oid_put: #{e}"
+  puts "Exception when calling ItemApi->update_item: #{e}"
 end
 ```
 
@@ -269,71 +332,8 @@ Name | Type | Description  | Notes
 
 
 
-# **item_items_post**
-> ItemResponse item_items_post(item, opts)
-
-Create an item
-
-Create a new item on the UltraCart account. 
-
-### Example
-```ruby
-# load the gem
-require 'com_ultracart_admin_v2'
-# setup authorization
-UltraCartAdminV2.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
-
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
-
-api_instance = UltraCartAdminV2::ItemApi.new
-
-item = UltraCartAdminV2::Item.new # Item | Item to create
-
-opts = { 
-  _expand: "_expand_example", # String | The object expansion to perform on the result.  See documentation for examples
-  _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-}
-
-begin
-  #Create an item
-  result = api_instance.item_items_post(item, opts)
-  p result
-rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling ItemApi->item_items_post: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **item** | [**Item**](Item.md)| Item to create | 
- **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
- **_placeholders** | **BOOLEAN**| Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] 
-
-### Return type
-
-[**ItemResponse**](ItemResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json; charset=UTF-8
- - **Accept**: application/json
-
-
-
-# **item_temp_multimedia_post**
-> TempMultimediaResponse item_temp_multimedia_post(file)
+# **upload_temporary_multimedia**
+> TempMultimediaResponse upload_temporary_multimedia(file)
 
 Upload an image to the temporary multimedia.
 
@@ -361,10 +361,10 @@ file = File.new("/path/to/file.txt") # File | File to upload
 
 begin
   #Upload an image to the temporary multimedia.
-  result = api_instance.item_temp_multimedia_post(file)
+  result = api_instance.upload_temporary_multimedia(file)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling ItemApi->item_temp_multimedia_post: #{e}"
+  puts "Exception when calling ItemApi->upload_temporary_multimedia: #{e}"
 end
 ```
 

@@ -43,7 +43,7 @@ describe 'ItemShippingDestinationRestriction' do
       expect(@instance).to be_instance_of(UltraCartAdminV2::ItemShippingDestinationRestriction)
     end
   end
-  describe 'test attribute "country"' do
+  describe 'test attribute "country_code"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -58,6 +58,10 @@ describe 'ItemShippingDestinationRestriction' do
   describe 'test attribute "validity"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+       #validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["valid only for", "invalid for"])
+       #validator.allowable_values.each do |value|
+       #  expect { @instance.validity = value }.not_to raise_error
+       #end
     end
   end
 

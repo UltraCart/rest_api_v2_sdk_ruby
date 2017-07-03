@@ -4,17 +4,191 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**order_orders_get**](OrderApi.md#order_orders_get) | **GET** /order/orders | Retrieve orders
-[**order_orders_order_id_cancel_post**](OrderApi.md#order_orders_order_id_cancel_post) | **POST** /order/orders/{order_id}/cancel | Cancel an order
-[**order_orders_order_id_delete**](OrderApi.md#order_orders_order_id_delete) | **DELETE** /order/orders/{order_id} | Delete an order
-[**order_orders_order_id_get**](OrderApi.md#order_orders_order_id_get) | **GET** /order/orders/{order_id} | Retrieve an order
-[**order_orders_order_id_put**](OrderApi.md#order_orders_order_id_put) | **PUT** /order/orders/{order_id} | Update an order
-[**order_orders_order_id_resend_receipt_post**](OrderApi.md#order_orders_order_id_resend_receipt_post) | **POST** /order/orders/{order_id}/resend_receipt | Resend receipt
-[**order_orders_order_id_resend_shipment_confirmation_post**](OrderApi.md#order_orders_order_id_resend_shipment_confirmation_post) | **POST** /order/orders/{order_id}/resend_shipment_confirmation | Resend shipment confirmation
+[**cancel_order**](OrderApi.md#cancel_order) | **POST** /order/orders/{order_id}/cancel | Cancel an order
+[**delete_order**](OrderApi.md#delete_order) | **DELETE** /order/orders/{order_id} | Delete an order
+[**get_order**](OrderApi.md#get_order) | **GET** /order/orders/{order_id} | Retrieve an order
+[**get_orders**](OrderApi.md#get_orders) | **GET** /order/orders | Retrieve orders
+[**resend_receipt**](OrderApi.md#resend_receipt) | **POST** /order/orders/{order_id}/resend_receipt | Resend receipt
+[**resend_shipment_confirmation**](OrderApi.md#resend_shipment_confirmation) | **POST** /order/orders/{order_id}/resend_shipment_confirmation | Resend shipment confirmation
+[**update_order**](OrderApi.md#update_order) | **PUT** /order/orders/{order_id} | Update an order
 
 
-# **order_orders_get**
-> OrdersResponse order_orders_get(opts)
+# **cancel_order**
+> BaseResponse cancel_order(order_id)
+
+Cancel an order
+
+Cancel an order on the UltraCart account.  If the success flag is false, then consult the error message for why it failed. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::OrderApi.new
+
+order_id = "order_id_example" # String | The order id to cancel.
+
+
+begin
+  #Cancel an order
+  result = api_instance.cancel_order(order_id)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling OrderApi->cancel_order: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **String**| The order id to cancel. | 
+
+### Return type
+
+[**BaseResponse**](BaseResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **delete_order**
+> delete_order(order_id)
+
+Delete an order
+
+Delete an order on the UltraCart account. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::OrderApi.new
+
+order_id = "order_id_example" # String | The order id to delete.
+
+
+begin
+  #Delete an order
+  api_instance.delete_order(order_id)
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling OrderApi->delete_order: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **String**| The order id to delete. | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_order**
+> OrderResponse get_order(order_id, opts)
+
+Retrieve an order
+
+Retrieves a single order using the specified order id. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::OrderApi.new
+
+order_id = "order_id_example" # String | The order id to retrieve.
+
+opts = { 
+  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+}
+
+begin
+  #Retrieve an order
+  result = api_instance.get_order(order_id, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling OrderApi->get_order: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **String**| The order id to retrieve. | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+
+### Return type
+
+[**OrderResponse**](OrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_orders**
+> OrdersResponse get_orders(opts)
 
 Retrieve orders
 
@@ -73,10 +247,10 @@ opts = {
 
 begin
   #Retrieve orders
-  result = api_instance.order_orders_get(opts)
+  result = api_instance.get_orders(opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling OrderApi->order_orders_get: #{e}"
+  puts "Exception when calling OrderApi->get_orders: #{e}"
 end
 ```
 
@@ -131,12 +305,12 @@ Name | Type | Description  | Notes
 
 
 
-# **order_orders_order_id_cancel_post**
-> BaseResponse order_orders_order_id_cancel_post(order_id)
+# **resend_receipt**
+> BaseResponse resend_receipt(order_id)
 
-Cancel an order
+Resend receipt
 
-Cancel an order on the UltraCart account.  If the success flag is false, then consult the error message for why it failed. 
+Resend the receipt for an order on the UltraCart account. 
 
 ### Example
 ```ruby
@@ -155,15 +329,15 @@ end
 
 api_instance = UltraCartAdminV2::OrderApi.new
 
-order_id = "order_id_example" # String | The order id to cancel.
+order_id = "order_id_example" # String | The order id to resend the receipt for.
 
 
 begin
-  #Cancel an order
-  result = api_instance.order_orders_order_id_cancel_post(order_id)
+  #Resend receipt
+  result = api_instance.resend_receipt(order_id)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling OrderApi->order_orders_order_id_cancel_post: #{e}"
+  puts "Exception when calling OrderApi->resend_receipt: #{e}"
 end
 ```
 
@@ -171,7 +345,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **order_id** | **String**| The order id to cancel. | 
+ **order_id** | **String**| The order id to resend the receipt for. | 
 
 ### Return type
 
@@ -188,68 +362,12 @@ Name | Type | Description  | Notes
 
 
 
-# **order_orders_order_id_delete**
-> order_orders_order_id_delete(order_id)
+# **resend_shipment_confirmation**
+> BaseResponse resend_shipment_confirmation(order_id)
 
-Delete an order
+Resend shipment confirmation
 
-Delete an order on the UltraCart account. 
-
-### Example
-```ruby
-# load the gem
-require 'com_ultracart_admin_v2'
-# setup authorization
-UltraCartAdminV2.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
-
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
-
-api_instance = UltraCartAdminV2::OrderApi.new
-
-order_id = "order_id_example" # String | The order id to delete.
-
-
-begin
-  #Delete an order
-  api_instance.order_orders_order_id_delete(order_id)
-rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling OrderApi->order_orders_order_id_delete: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **order_id** | **String**| The order id to delete. | 
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **order_orders_order_id_get**
-> OrderResponse order_orders_order_id_get(order_id, opts)
-
-Retrieve an order
-
-Retrieves a single order using the specified order id. 
+Resend shipment confirmation for an order on the UltraCart account. 
 
 ### Example
 ```ruby
@@ -268,18 +386,15 @@ end
 
 api_instance = UltraCartAdminV2::OrderApi.new
 
-order_id = "order_id_example" # String | The order id to retrieve.
+order_id = "order_id_example" # String | The order id to resend the shipment notification for.
 
-opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
-}
 
 begin
-  #Retrieve an order
-  result = api_instance.order_orders_order_id_get(order_id, opts)
+  #Resend shipment confirmation
+  result = api_instance.resend_shipment_confirmation(order_id)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling OrderApi->order_orders_order_id_get: #{e}"
+  puts "Exception when calling OrderApi->resend_shipment_confirmation: #{e}"
 end
 ```
 
@@ -287,12 +402,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **order_id** | **String**| The order id to retrieve. | 
- **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+ **order_id** | **String**| The order id to resend the shipment notification for. | 
 
 ### Return type
 
-[**OrderResponse**](OrderResponse.md)
+[**BaseResponse**](BaseResponse.md)
 
 ### Authorization
 
@@ -305,8 +419,8 @@ Name | Type | Description  | Notes
 
 
 
-# **order_orders_order_id_put**
-> OrderResponse order_orders_order_id_put(order, order_id, opts)
+# **update_order**
+> OrderResponse update_order(order, order_id, opts)
 
 Update an order
 
@@ -339,10 +453,10 @@ opts = {
 
 begin
   #Update an order
-  result = api_instance.order_orders_order_id_put(order, order_id, opts)
+  result = api_instance.update_order(order, order_id, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling OrderApi->order_orders_order_id_put: #{e}"
+  puts "Exception when calling OrderApi->update_order: #{e}"
 end
 ```
 
@@ -365,120 +479,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json; charset=UTF-8
- - **Accept**: application/json
-
-
-
-# **order_orders_order_id_resend_receipt_post**
-> BaseResponse order_orders_order_id_resend_receipt_post(order_id)
-
-Resend receipt
-
-Resend the receipt for an order on the UltraCart account. 
-
-### Example
-```ruby
-# load the gem
-require 'com_ultracart_admin_v2'
-# setup authorization
-UltraCartAdminV2.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
-
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
-
-api_instance = UltraCartAdminV2::OrderApi.new
-
-order_id = "order_id_example" # String | The order id to resend the receipt for.
-
-
-begin
-  #Resend receipt
-  result = api_instance.order_orders_order_id_resend_receipt_post(order_id)
-  p result
-rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling OrderApi->order_orders_order_id_resend_receipt_post: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **order_id** | **String**| The order id to resend the receipt for. | 
-
-### Return type
-
-[**BaseResponse**](BaseResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **order_orders_order_id_resend_shipment_confirmation_post**
-> BaseResponse order_orders_order_id_resend_shipment_confirmation_post(order_id)
-
-Resend shipment confirmation
-
-Resend shipment confirmation for an order on the UltraCart account. 
-
-### Example
-```ruby
-# load the gem
-require 'com_ultracart_admin_v2'
-# setup authorization
-UltraCartAdminV2.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
-
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
-
-api_instance = UltraCartAdminV2::OrderApi.new
-
-order_id = "order_id_example" # String | The order id to resend the shipment notification for.
-
-
-begin
-  #Resend shipment confirmation
-  result = api_instance.order_orders_order_id_resend_shipment_confirmation_post(order_id)
-  p result
-rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling OrderApi->order_orders_order_id_resend_shipment_confirmation_post: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **order_id** | **String**| The order id to resend the shipment notification for. | 
-
-### Return type
-
-[**BaseResponse**](BaseResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 

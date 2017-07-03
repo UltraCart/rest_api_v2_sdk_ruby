@@ -43,33 +43,20 @@ describe 'AutoorderApi' do
     end
   end
 
-  # unit tests for auto_order_auto_orders_auto_order_oid_get
+  # unit tests for get_auto_order
   # Retrieve an auto order
   # Retrieves a single auto order using the specified auto order oid. 
   # @param auto_order_oid The auto order oid to retrieve.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
   # @return [AutoOrderResponse]
-  describe 'auto_order_auto_orders_auto_order_oid_get test' do
+  describe 'get_auto_order test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for auto_order_auto_orders_auto_order_oid_put
-  # Update an auto order
-  # Update an auto order on the UltraCart account. 
-  # @param auto_order Auto order to update
-  # @param auto_order_oid The auto order oid to update.
-  # @param [Hash] opts the optional parameters
-  # @return [AutoOrderResponse]
-  describe 'auto_order_auto_orders_auto_order_oid_put test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for auto_order_auto_orders_get
+  # unit tests for get_auto_orders
   # Retrieve auto orders
   # Retrieves auto orders from the account.  If no parameters are specified, all auto orders will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
   # @param [Hash] opts the optional parameters
@@ -97,7 +84,21 @@ describe 'AutoorderApi' do
   # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
   # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
   # @return [AutoOrdersResponse]
-  describe 'auto_order_auto_orders_get test' do
+  describe 'get_auto_orders test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for update_auto_order
+  # Update an auto order
+  # Update an auto order on the UltraCart account. 
+  # @param auto_order Auto order to update
+  # @param auto_order_oid The auto order oid to update.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @return [AutoOrderResponse]
+  describe 'update_auto_order test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

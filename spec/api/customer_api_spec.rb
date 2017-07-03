@@ -43,33 +43,32 @@ describe 'CustomerApi' do
     end
   end
 
-  # unit tests for customer_customers_customer_profile_oid_get
+  # unit tests for delete_customer
+  # Delete a customer
+  # Delete a customer on the UltraCart account. 
+  # @param customer_profile_oid The customer_profile_oid to delete.
+  # @param [Hash] opts the optional parameters
+  # @return [CustomerResponse]
+  describe 'delete_customer test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_customer
   # Retrieve a customer
   # Retrieves a single customer using the specified customer profile oid. 
   # @param customer_profile_oid The customer oid to retrieve.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
   # @return [CustomerResponse]
-  describe 'customer_customers_customer_profile_oid_get test' do
+  describe 'get_customer test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for customer_customers_customer_profile_oid_put
-  # Update a customer
-  # Update a customer on the UltraCart account. 
-  # @param customer Customer to update
-  # @param customer_profile_oid The customer_profile_oid to update.
-  # @param [Hash] opts the optional parameters
-  # @return [CustomerResponse]
-  describe 'customer_customers_customer_profile_oid_put test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for customer_customers_get
+  # unit tests for get_customers
   # Retrieve customers
   # Retrieves customers from the account.  If no parameters are specified, all customers will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
   # @param [Hash] opts the optional parameters
@@ -106,7 +105,34 @@ describe 'CustomerApi' do
   # @option opts [String] :_sort The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
   # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
   # @return [CustomersResponse]
-  describe 'customer_customers_get test' do
+  describe 'get_customers test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for insert_customer
+  # Insert a customer
+  # Insert a customer on the UltraCart account. 
+  # @param customer Customer to insert
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @return [CustomerResponse]
+  describe 'insert_customer test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for update_customer
+  # Update a customer
+  # Update a customer on the UltraCart account. 
+  # @param customer Customer to update
+  # @param customer_profile_oid The customer_profile_oid to update.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @return [CustomerResponse]
+  describe 'update_customer test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

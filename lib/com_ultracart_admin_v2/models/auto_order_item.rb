@@ -44,6 +44,9 @@ module UltraCartAdminV2
     # The number of rebills to give the arbitrary unit cost on before reverting to normal pricing.
     attr_accessor :arbitrary_unit_cost_remaining_orders
 
+    # Primary key of AutoOrderItem
+    attr_accessor :auto_order_item_oid
+
     # Frequency of the rebill if not a fixed schedule
     attr_accessor :frequency
 
@@ -73,6 +76,12 @@ module UltraCartAdminV2
 
     # The original quantity purchased
     attr_accessor :original_quantity
+
+    # The PayPal Payer ID tied to this item
+    attr_accessor :paypal_payer_id
+
+    # The PayPal Profile ID tied to this item
+    attr_accessor :paypal_recurring_payment_profile_id
 
     # True if the preshipment notice associated with the next rebill has been sent
     attr_accessor :preshipment_notice_sent
@@ -114,6 +123,7 @@ module UltraCartAdminV2
         :'arbitrary_schedule_days' => :'arbitrary_schedule_days',
         :'arbitrary_unit_cost' => :'arbitrary_unit_cost',
         :'arbitrary_unit_cost_remaining_orders' => :'arbitrary_unit_cost_remaining_orders',
+        :'auto_order_item_oid' => :'auto_order_item_oid',
         :'frequency' => :'frequency',
         :'last_order_dts' => :'last_order_dts',
         :'life_time_value' => :'life_time_value',
@@ -124,6 +134,8 @@ module UltraCartAdminV2
         :'options' => :'options',
         :'original_item_id' => :'original_item_id',
         :'original_quantity' => :'original_quantity',
+        :'paypal_payer_id' => :'paypal_payer_id',
+        :'paypal_recurring_payment_profile_id' => :'paypal_recurring_payment_profile_id',
         :'preshipment_notice_sent' => :'preshipment_notice_sent',
         :'rebill_value' => :'rebill_value',
         :'remaining_repeat_count' => :'remaining_repeat_count'
@@ -139,6 +151,7 @@ module UltraCartAdminV2
         :'arbitrary_schedule_days' => :'Integer',
         :'arbitrary_unit_cost' => :'Float',
         :'arbitrary_unit_cost_remaining_orders' => :'Integer',
+        :'auto_order_item_oid' => :'Integer',
         :'frequency' => :'String',
         :'last_order_dts' => :'String',
         :'life_time_value' => :'Float',
@@ -149,6 +162,8 @@ module UltraCartAdminV2
         :'options' => :'Array<AutoOrderItemOption>',
         :'original_item_id' => :'String',
         :'original_quantity' => :'Float',
+        :'paypal_payer_id' => :'String',
+        :'paypal_recurring_payment_profile_id' => :'String',
         :'preshipment_notice_sent' => :'BOOLEAN',
         :'rebill_value' => :'Float',
         :'remaining_repeat_count' => :'Integer'
@@ -185,6 +200,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'arbitrary_unit_cost_remaining_orders')
         self.arbitrary_unit_cost_remaining_orders = attributes[:'arbitrary_unit_cost_remaining_orders']
+      end
+
+      if attributes.has_key?(:'auto_order_item_oid')
+        self.auto_order_item_oid = attributes[:'auto_order_item_oid']
       end
 
       if attributes.has_key?(:'frequency')
@@ -227,6 +246,14 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'original_quantity')
         self.original_quantity = attributes[:'original_quantity']
+      end
+
+      if attributes.has_key?(:'paypal_payer_id')
+        self.paypal_payer_id = attributes[:'paypal_payer_id']
+      end
+
+      if attributes.has_key?(:'paypal_recurring_payment_profile_id')
+        self.paypal_recurring_payment_profile_id = attributes[:'paypal_recurring_payment_profile_id']
       end
 
       if attributes.has_key?(:'preshipment_notice_sent')
@@ -279,6 +306,7 @@ module UltraCartAdminV2
           arbitrary_schedule_days == o.arbitrary_schedule_days &&
           arbitrary_unit_cost == o.arbitrary_unit_cost &&
           arbitrary_unit_cost_remaining_orders == o.arbitrary_unit_cost_remaining_orders &&
+          auto_order_item_oid == o.auto_order_item_oid &&
           frequency == o.frequency &&
           last_order_dts == o.last_order_dts &&
           life_time_value == o.life_time_value &&
@@ -289,6 +317,8 @@ module UltraCartAdminV2
           options == o.options &&
           original_item_id == o.original_item_id &&
           original_quantity == o.original_quantity &&
+          paypal_payer_id == o.paypal_payer_id &&
+          paypal_recurring_payment_profile_id == o.paypal_recurring_payment_profile_id &&
           preshipment_notice_sent == o.preshipment_notice_sent &&
           rebill_value == o.rebill_value &&
           remaining_repeat_count == o.remaining_repeat_count
@@ -303,7 +333,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [arbitrary_item_id, arbitrary_percentage_discount, arbitrary_quantity, arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_remaining_orders, frequency, last_order_dts, life_time_value, next_preshipment_notice_dts, next_shipment_dts, no_order_after_dts, number_of_rebills, options, original_item_id, original_quantity, preshipment_notice_sent, rebill_value, remaining_repeat_count].hash
+      [arbitrary_item_id, arbitrary_percentage_discount, arbitrary_quantity, arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_remaining_orders, auto_order_item_oid, frequency, last_order_dts, life_time_value, next_preshipment_notice_dts, next_shipment_dts, no_order_after_dts, number_of_rebills, options, original_item_id, original_quantity, paypal_payer_id, paypal_recurring_payment_profile_id, preshipment_notice_sent, rebill_value, remaining_repeat_count].hash
     end
 
     # Builds the object from hash

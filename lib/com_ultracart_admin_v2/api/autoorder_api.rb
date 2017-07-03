@@ -37,8 +37,8 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [AutoOrderResponse]
-    def auto_order_auto_orders_auto_order_oid_get(auto_order_oid, opts = {})
-      data, _status_code, _headers = auto_order_auto_orders_auto_order_oid_get_with_http_info(auto_order_oid, opts)
+    def get_auto_order(auto_order_oid, opts = {})
+      data, _status_code, _headers = get_auto_order_with_http_info(auto_order_oid, opts)
       return data
     end
 
@@ -48,12 +48,12 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(AutoOrderResponse, Fixnum, Hash)>] AutoOrderResponse data, response status code and response headers
-    def auto_order_auto_orders_auto_order_oid_get_with_http_info(auto_order_oid, opts = {})
+    def get_auto_order_with_http_info(auto_order_oid, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: AutoorderApi.auto_order_auto_orders_auto_order_oid_get ..."
+        @api_client.config.logger.debug "Calling API: AutoorderApi.get_auto_order ..."
       end
       # verify the required parameter 'auto_order_oid' is set
-      fail ArgumentError, "Missing the required parameter 'auto_order_oid' when calling AutoorderApi.auto_order_auto_orders_auto_order_oid_get" if auto_order_oid.nil?
+      fail ArgumentError, "Missing the required parameter 'auto_order_oid' when calling AutoorderApi.get_auto_order" if auto_order_oid.nil?
       # resource path
       local_var_path = "/auto_order/auto_orders/{auto_order_oid}".sub('{format}','json').sub('{' + 'auto_order_oid' + '}', auto_order_oid.to_s)
 
@@ -86,68 +86,7 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'AutoOrderResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: AutoorderApi#auto_order_auto_orders_auto_order_oid_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Update an auto order
-    # Update an auto order on the UltraCart account. 
-    # @param auto_order Auto order to update
-    # @param auto_order_oid The auto order oid to update.
-    # @param [Hash] opts the optional parameters
-    # @return [AutoOrderResponse]
-    def auto_order_auto_orders_auto_order_oid_put(auto_order, auto_order_oid, opts = {})
-      data, _status_code, _headers = auto_order_auto_orders_auto_order_oid_put_with_http_info(auto_order, auto_order_oid, opts)
-      return data
-    end
-
-    # Update an auto order
-    # Update an auto order on the UltraCart account. 
-    # @param auto_order Auto order to update
-    # @param auto_order_oid The auto order oid to update.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(AutoOrderResponse, Fixnum, Hash)>] AutoOrderResponse data, response status code and response headers
-    def auto_order_auto_orders_auto_order_oid_put_with_http_info(auto_order, auto_order_oid, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: AutoorderApi.auto_order_auto_orders_auto_order_oid_put ..."
-      end
-      # verify the required parameter 'auto_order' is set
-      fail ArgumentError, "Missing the required parameter 'auto_order' when calling AutoorderApi.auto_order_auto_orders_auto_order_oid_put" if auto_order.nil?
-      # verify the required parameter 'auto_order_oid' is set
-      fail ArgumentError, "Missing the required parameter 'auto_order_oid' when calling AutoorderApi.auto_order_auto_orders_auto_order_oid_put" if auto_order_oid.nil?
-      # resource path
-      local_var_path = "/auto_order/auto_orders/{auto_order_oid}".sub('{format}','json').sub('{' + 'auto_order_oid' + '}', auto_order_oid.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json; charset=UTF-8']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(auto_order)
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'AutoOrderResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: AutoorderApi#auto_order_auto_orders_auto_order_oid_put\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: AutoorderApi#get_auto_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -179,8 +118,8 @@ module UltraCartAdminV2
     # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [AutoOrdersResponse]
-    def auto_order_auto_orders_get(opts = {})
-      data, _status_code, _headers = auto_order_auto_orders_get_with_http_info(opts)
+    def get_auto_orders(opts = {})
+      data, _status_code, _headers = get_auto_orders_with_http_info(opts)
       return data
     end
 
@@ -211,9 +150,9 @@ module UltraCartAdminV2
     # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(AutoOrdersResponse, Fixnum, Hash)>] AutoOrdersResponse data, response status code and response headers
-    def auto_order_auto_orders_get_with_http_info(opts = {})
+    def get_auto_orders_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: AutoorderApi.auto_order_auto_orders_get ..."
+        @api_client.config.logger.debug "Calling API: AutoorderApi.get_auto_orders ..."
       end
       # resource path
       local_var_path = "/auto_order/auto_orders".sub('{format}','json')
@@ -269,7 +208,71 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'AutoOrdersResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: AutoorderApi#auto_order_auto_orders_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: AutoorderApi#get_auto_orders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update an auto order
+    # Update an auto order on the UltraCart account. 
+    # @param auto_order Auto order to update
+    # @param auto_order_oid The auto order oid to update.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [AutoOrderResponse]
+    def update_auto_order(auto_order, auto_order_oid, opts = {})
+      data, _status_code, _headers = update_auto_order_with_http_info(auto_order, auto_order_oid, opts)
+      return data
+    end
+
+    # Update an auto order
+    # Update an auto order on the UltraCart account. 
+    # @param auto_order Auto order to update
+    # @param auto_order_oid The auto order oid to update.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(AutoOrderResponse, Fixnum, Hash)>] AutoOrderResponse data, response status code and response headers
+    def update_auto_order_with_http_info(auto_order, auto_order_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: AutoorderApi.update_auto_order ..."
+      end
+      # verify the required parameter 'auto_order' is set
+      fail ArgumentError, "Missing the required parameter 'auto_order' when calling AutoorderApi.update_auto_order" if auto_order.nil?
+      # verify the required parameter 'auto_order_oid' is set
+      fail ArgumentError, "Missing the required parameter 'auto_order_oid' when calling AutoorderApi.update_auto_order" if auto_order_oid.nil?
+      # resource path
+      local_var_path = "/auto_order/auto_orders/{auto_order_oid}".sub('{format}','json').sub('{' + 'auto_order_oid' + '}', auto_order_oid.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json; charset=UTF-8']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(auto_order)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AutoOrderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AutoorderApi#update_auto_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

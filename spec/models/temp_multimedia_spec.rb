@@ -58,6 +58,10 @@ describe 'TempMultimedia' do
   describe 'test attribute "multimedia_type"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+       #validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["Image", "PDF", "Text", "Video"])
+       #validator.allowable_values.each do |value|
+       #  expect { @instance.multimedia_type = value }.not_to raise_error
+       #end
     end
   end
 

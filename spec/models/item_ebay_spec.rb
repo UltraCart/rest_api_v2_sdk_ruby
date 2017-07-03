@@ -280,6 +280,10 @@ describe 'ItemEbay' do
   describe 'test attribute "listing_type"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+       #validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["", "Auction", "Fixed", "Store"])
+       #validator.allowable_values.each do |value|
+       #  expect { @instance.listing_type = value }.not_to raise_error
+       #end
     end
   end
 
@@ -391,7 +395,7 @@ describe 'ItemEbay' do
     end
   end
 
-  describe 'test attribute "next_attemp_dts"' do
+  describe 'test attribute "next_attempt_dts"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

@@ -31,6 +31,125 @@ module UltraCartAdminV2
       @api_client = api_client
     end
 
+    # Delete an item
+    # Delete an item on the UltraCart account. 
+    # @param merchant_item_oid The item oid to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_item(merchant_item_oid, opts = {})
+      delete_item_with_http_info(merchant_item_oid, opts)
+      return nil
+    end
+
+    # Delete an item
+    # Delete an item on the UltraCart account. 
+    # @param merchant_item_oid The item oid to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def delete_item_with_http_info(merchant_item_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: ItemApi.delete_item ..."
+      end
+      # verify the required parameter 'merchant_item_oid' is set
+      fail ArgumentError, "Missing the required parameter 'merchant_item_oid' when calling ItemApi.delete_item" if merchant_item_oid.nil?
+      # resource path
+      local_var_path = "/item/items/{merchant_item_oid}".sub('{format}','json').sub('{' + 'merchant_item_oid' + '}', merchant_item_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ItemApi#delete_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve an item
+    # Retrieves a single item using the specified item oid. 
+    # @param merchant_item_oid The item oid to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+    # @return [ItemResponse]
+    def get_item(merchant_item_oid, opts = {})
+      data, _status_code, _headers = get_item_with_http_info(merchant_item_oid, opts)
+      return data
+    end
+
+    # Retrieve an item
+    # Retrieves a single item using the specified item oid. 
+    # @param merchant_item_oid The item oid to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+    # @return [Array<(ItemResponse, Fixnum, Hash)>] ItemResponse data, response status code and response headers
+    def get_item_with_http_info(merchant_item_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: ItemApi.get_item ..."
+      end
+      # verify the required parameter 'merchant_item_oid' is set
+      fail ArgumentError, "Missing the required parameter 'merchant_item_oid' when calling ItemApi.get_item" if merchant_item_oid.nil?
+      # resource path
+      local_var_path = "/item/items/{merchant_item_oid}".sub('{format}','json').sub('{' + 'merchant_item_oid' + '}', merchant_item_oid.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+      query_params[:'_placeholders'] = opts[:'_placeholders'] if !opts[:'_placeholders'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ItemResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ItemApi#get_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve items
     # Retrieves a group of items from the account.  If no parameters are specified, all items will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
     # @param [Hash] opts the optional parameters
@@ -43,8 +162,8 @@ module UltraCartAdminV2
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [ItemsResponse]
-    def item_items_get(opts = {})
-      data, _status_code, _headers = item_items_get_with_http_info(opts)
+    def get_items(opts = {})
+      data, _status_code, _headers = get_items_with_http_info(opts)
       return data
     end
 
@@ -60,9 +179,9 @@ module UltraCartAdminV2
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [Array<(ItemsResponse, Fixnum, Hash)>] ItemsResponse data, response status code and response headers
-    def item_items_get_with_http_info(opts = {})
+    def get_items_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: ItemApi.item_items_get ..."
+        @api_client.config.logger.debug "Calling API: ItemApi.get_items ..."
       end
       # resource path
       local_var_path = "/item/items".sub('{format}','json')
@@ -103,193 +222,7 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'ItemsResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ItemApi#item_items_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Delete an item
-    # Delete an item on the UltraCart account. 
-    # @param merchant_item_oid The item oid to delete.
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def item_items_merchant_item_oid_delete(merchant_item_oid, opts = {})
-      item_items_merchant_item_oid_delete_with_http_info(merchant_item_oid, opts)
-      return nil
-    end
-
-    # Delete an item
-    # Delete an item on the UltraCart account. 
-    # @param merchant_item_oid The item oid to delete.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def item_items_merchant_item_oid_delete_with_http_info(merchant_item_oid, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: ItemApi.item_items_merchant_item_oid_delete ..."
-      end
-      # verify the required parameter 'merchant_item_oid' is set
-      fail ArgumentError, "Missing the required parameter 'merchant_item_oid' when calling ItemApi.item_items_merchant_item_oid_delete" if merchant_item_oid.nil?
-      # resource path
-      local_var_path = "/item/items/{merchant_item_oid}".sub('{format}','json').sub('{' + 'merchant_item_oid' + '}', merchant_item_oid.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ItemApi#item_items_merchant_item_oid_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Retrieve an item
-    # Retrieves a single item using the specified item oid. 
-    # @param merchant_item_oid The item oid to retrieve.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-    # @return [ItemResponse]
-    def item_items_merchant_item_oid_get(merchant_item_oid, opts = {})
-      data, _status_code, _headers = item_items_merchant_item_oid_get_with_http_info(merchant_item_oid, opts)
-      return data
-    end
-
-    # Retrieve an item
-    # Retrieves a single item using the specified item oid. 
-    # @param merchant_item_oid The item oid to retrieve.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-    # @return [Array<(ItemResponse, Fixnum, Hash)>] ItemResponse data, response status code and response headers
-    def item_items_merchant_item_oid_get_with_http_info(merchant_item_oid, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: ItemApi.item_items_merchant_item_oid_get ..."
-      end
-      # verify the required parameter 'merchant_item_oid' is set
-      fail ArgumentError, "Missing the required parameter 'merchant_item_oid' when calling ItemApi.item_items_merchant_item_oid_get" if merchant_item_oid.nil?
-      # resource path
-      local_var_path = "/item/items/{merchant_item_oid}".sub('{format}','json').sub('{' + 'merchant_item_oid' + '}', merchant_item_oid.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
-      query_params[:'_placeholders'] = opts[:'_placeholders'] if !opts[:'_placeholders'].nil?
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'ItemResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ItemApi#item_items_merchant_item_oid_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Update an item
-    # Update a new item on the UltraCart account. 
-    # @param item Item to update
-    # @param merchant_item_oid The item oid to update.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-    # @return [ItemResponse]
-    def item_items_merchant_item_oid_put(item, merchant_item_oid, opts = {})
-      data, _status_code, _headers = item_items_merchant_item_oid_put_with_http_info(item, merchant_item_oid, opts)
-      return data
-    end
-
-    # Update an item
-    # Update a new item on the UltraCart account. 
-    # @param item Item to update
-    # @param merchant_item_oid The item oid to update.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-    # @return [Array<(ItemResponse, Fixnum, Hash)>] ItemResponse data, response status code and response headers
-    def item_items_merchant_item_oid_put_with_http_info(item, merchant_item_oid, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: ItemApi.item_items_merchant_item_oid_put ..."
-      end
-      # verify the required parameter 'item' is set
-      fail ArgumentError, "Missing the required parameter 'item' when calling ItemApi.item_items_merchant_item_oid_put" if item.nil?
-      # verify the required parameter 'merchant_item_oid' is set
-      fail ArgumentError, "Missing the required parameter 'merchant_item_oid' when calling ItemApi.item_items_merchant_item_oid_put" if merchant_item_oid.nil?
-      # resource path
-      local_var_path = "/item/items/{merchant_item_oid}".sub('{format}','json').sub('{' + 'merchant_item_oid' + '}', merchant_item_oid.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
-      query_params[:'_placeholders'] = opts[:'_placeholders'] if !opts[:'_placeholders'].nil?
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json; charset=UTF-8']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(item)
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'ItemResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ItemApi#item_items_merchant_item_oid_put\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ItemApi#get_items\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -301,8 +234,8 @@ module UltraCartAdminV2
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [ItemResponse]
-    def item_items_post(item, opts = {})
-      data, _status_code, _headers = item_items_post_with_http_info(item, opts)
+    def insert_item(item, opts = {})
+      data, _status_code, _headers = insert_item_with_http_info(item, opts)
       return data
     end
 
@@ -313,12 +246,12 @@ module UltraCartAdminV2
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [Array<(ItemResponse, Fixnum, Hash)>] ItemResponse data, response status code and response headers
-    def item_items_post_with_http_info(item, opts = {})
+    def insert_item_with_http_info(item, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: ItemApi.item_items_post ..."
+        @api_client.config.logger.debug "Calling API: ItemApi.insert_item ..."
       end
       # verify the required parameter 'item' is set
-      fail ArgumentError, "Missing the required parameter 'item' when calling ItemApi.item_items_post" if item.nil?
+      fail ArgumentError, "Missing the required parameter 'item' when calling ItemApi.insert_item" if item.nil?
       # resource path
       local_var_path = "/item/items".sub('{format}','json')
 
@@ -352,7 +285,74 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'ItemResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ItemApi#item_items_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ItemApi#insert_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update an item
+    # Update a new item on the UltraCart account. 
+    # @param item Item to update
+    # @param merchant_item_oid The item oid to update.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+    # @return [ItemResponse]
+    def update_item(item, merchant_item_oid, opts = {})
+      data, _status_code, _headers = update_item_with_http_info(item, merchant_item_oid, opts)
+      return data
+    end
+
+    # Update an item
+    # Update a new item on the UltraCart account. 
+    # @param item Item to update
+    # @param merchant_item_oid The item oid to update.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+    # @return [Array<(ItemResponse, Fixnum, Hash)>] ItemResponse data, response status code and response headers
+    def update_item_with_http_info(item, merchant_item_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: ItemApi.update_item ..."
+      end
+      # verify the required parameter 'item' is set
+      fail ArgumentError, "Missing the required parameter 'item' when calling ItemApi.update_item" if item.nil?
+      # verify the required parameter 'merchant_item_oid' is set
+      fail ArgumentError, "Missing the required parameter 'merchant_item_oid' when calling ItemApi.update_item" if merchant_item_oid.nil?
+      # resource path
+      local_var_path = "/item/items/{merchant_item_oid}".sub('{format}','json').sub('{' + 'merchant_item_oid' + '}', merchant_item_oid.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+      query_params[:'_placeholders'] = opts[:'_placeholders'] if !opts[:'_placeholders'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json; charset=UTF-8']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(item)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ItemResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ItemApi#update_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -362,8 +362,8 @@ module UltraCartAdminV2
     # @param file File to upload
     # @param [Hash] opts the optional parameters
     # @return [TempMultimediaResponse]
-    def item_temp_multimedia_post(file, opts = {})
-      data, _status_code, _headers = item_temp_multimedia_post_with_http_info(file, opts)
+    def upload_temporary_multimedia(file, opts = {})
+      data, _status_code, _headers = upload_temporary_multimedia_with_http_info(file, opts)
       return data
     end
 
@@ -372,12 +372,12 @@ module UltraCartAdminV2
     # @param file File to upload
     # @param [Hash] opts the optional parameters
     # @return [Array<(TempMultimediaResponse, Fixnum, Hash)>] TempMultimediaResponse data, response status code and response headers
-    def item_temp_multimedia_post_with_http_info(file, opts = {})
+    def upload_temporary_multimedia_with_http_info(file, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: ItemApi.item_temp_multimedia_post ..."
+        @api_client.config.logger.debug "Calling API: ItemApi.upload_temporary_multimedia ..."
       end
       # verify the required parameter 'file' is set
-      fail ArgumentError, "Missing the required parameter 'file' when calling ItemApi.item_temp_multimedia_post" if file.nil?
+      fail ArgumentError, "Missing the required parameter 'file' when calling ItemApi.upload_temporary_multimedia" if file.nil?
       # resource path
       local_var_path = "/item/temp_multimedia".sub('{format}','json')
 
@@ -410,7 +410,7 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'TempMultimediaResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ItemApi#item_temp_multimedia_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ItemApi#upload_temporary_multimedia\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

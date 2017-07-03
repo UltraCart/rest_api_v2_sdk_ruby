@@ -31,6 +31,189 @@ module UltraCartAdminV2
       @api_client = api_client
     end
 
+    # Delete a webhook
+    # Delete a webhook on the UltraCart account. 
+    # @param webhook_oid The webhook oid to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_webhook(webhook_oid, opts = {})
+      delete_webhook_with_http_info(webhook_oid, opts)
+      return nil
+    end
+
+    # Delete a webhook
+    # Delete a webhook on the UltraCart account. 
+    # @param webhook_oid The webhook oid to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def delete_webhook_with_http_info(webhook_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: WebhookApi.delete_webhook ..."
+      end
+      # verify the required parameter 'webhook_oid' is set
+      fail ArgumentError, "Missing the required parameter 'webhook_oid' when calling WebhookApi.delete_webhook" if webhook_oid.nil?
+      # resource path
+      local_var_path = "/webhook/webhooks/{webhookOid}".sub('{format}','json').sub('{' + 'webhookOid' + '}', webhook_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: WebhookApi#delete_webhook\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve an individual log
+    # Retrieves an individual log for a webhook given the webhook oid the request id. 
+    # @param webhook_oid The webhook oid that owns the log.
+    # @param request_id The request id associated with the log to view.
+    # @param [Hash] opts the optional parameters
+    # @return [WebhookLogResponse]
+    def get_webhook_log(webhook_oid, request_id, opts = {})
+      data, _status_code, _headers = get_webhook_log_with_http_info(webhook_oid, request_id, opts)
+      return data
+    end
+
+    # Retrieve an individual log
+    # Retrieves an individual log for a webhook given the webhook oid the request id. 
+    # @param webhook_oid The webhook oid that owns the log.
+    # @param request_id The request id associated with the log to view.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(WebhookLogResponse, Fixnum, Hash)>] WebhookLogResponse data, response status code and response headers
+    def get_webhook_log_with_http_info(webhook_oid, request_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: WebhookApi.get_webhook_log ..."
+      end
+      # verify the required parameter 'webhook_oid' is set
+      fail ArgumentError, "Missing the required parameter 'webhook_oid' when calling WebhookApi.get_webhook_log" if webhook_oid.nil?
+      # verify the required parameter 'request_id' is set
+      fail ArgumentError, "Missing the required parameter 'request_id' when calling WebhookApi.get_webhook_log" if request_id.nil?
+      # resource path
+      local_var_path = "/webhook/webhooks/{webhookOid}/logs/{requestId}".sub('{format}','json').sub('{' + 'webhookOid' + '}', webhook_oid.to_s).sub('{' + 'requestId' + '}', request_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'WebhookLogResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: WebhookApi#get_webhook_log\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve the log summaries
+    # Retrieves the log summary information for a given webhook.  This is useful for displaying all the various logs that can be viewed. 
+    # @param webhook_oid The webhook oid to retrieve log summaries for.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (default to 100)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
+    # @option opts [String] :_since Fetch log summaries that have been delivered since this date/time.
+    # @return [WebhookLogSummariesResponse]
+    def get_webhook_log_summaries(webhook_oid, opts = {})
+      data, _status_code, _headers = get_webhook_log_summaries_with_http_info(webhook_oid, opts)
+      return data
+    end
+
+    # Retrieve the log summaries
+    # Retrieves the log summary information for a given webhook.  This is useful for displaying all the various logs that can be viewed. 
+    # @param webhook_oid The webhook oid to retrieve log summaries for.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call.
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
+    # @option opts [String] :_since Fetch log summaries that have been delivered since this date/time.
+    # @return [Array<(WebhookLogSummariesResponse, Fixnum, Hash)>] WebhookLogSummariesResponse data, response status code and response headers
+    def get_webhook_log_summaries_with_http_info(webhook_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: WebhookApi.get_webhook_log_summaries ..."
+      end
+      # verify the required parameter 'webhook_oid' is set
+      fail ArgumentError, "Missing the required parameter 'webhook_oid' when calling WebhookApi.get_webhook_log_summaries" if webhook_oid.nil?
+      # resource path
+      local_var_path = "/webhook/webhooks/{webhookOid}/logs".sub('{format}','json').sub('{' + 'webhookOid' + '}', webhook_oid.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
+      query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
+      query_params[:'_since'] = opts[:'_since'] if !opts[:'_since'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'WebhookLogSummariesResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: WebhookApi#get_webhook_log_summaries\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve webhooks
     # Retrieves the webhooks associated with this application. 
     # @param [Hash] opts the optional parameters
@@ -39,8 +222,8 @@ module UltraCartAdminV2
     # @option opts [String] :_sort The sort order of the webhooks.  See documentation for examples
     # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [WebhooksResponse]
-    def webhook_webhooks_get(opts = {})
-      data, _status_code, _headers = webhook_webhooks_get_with_http_info(opts)
+    def get_webhooks(opts = {})
+      data, _status_code, _headers = get_webhooks_with_http_info(opts)
       return data
     end
 
@@ -52,9 +235,9 @@ module UltraCartAdminV2
     # @option opts [String] :_sort The sort order of the webhooks.  See documentation for examples
     # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [Array<(WebhooksResponse, Fixnum, Hash)>] WebhooksResponse data, response status code and response headers
-    def webhook_webhooks_get_with_http_info(opts = {})
+    def get_webhooks_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: WebhookApi.webhook_webhooks_get ..."
+        @api_client.config.logger.debug "Calling API: WebhookApi.get_webhooks ..."
       end
       # resource path
       local_var_path = "/webhook/webhooks".sub('{format}','json')
@@ -91,7 +274,7 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'WebhooksResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: WebhookApi#webhook_webhooks_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: WebhookApi#get_webhooks\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -102,8 +285,8 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [WebhookResponse]
-    def webhook_webhooks_post(webhook, opts = {})
-      data, _status_code, _headers = webhook_webhooks_post_with_http_info(webhook, opts)
+    def insert_webhook(webhook, opts = {})
+      data, _status_code, _headers = insert_webhook_with_http_info(webhook, opts)
       return data
     end
 
@@ -113,12 +296,12 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [Array<(WebhookResponse, Fixnum, Hash)>] WebhookResponse data, response status code and response headers
-    def webhook_webhooks_post_with_http_info(webhook, opts = {})
+    def insert_webhook_with_http_info(webhook, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: WebhookApi.webhook_webhooks_post ..."
+        @api_client.config.logger.debug "Calling API: WebhookApi.insert_webhook ..."
       end
       # verify the required parameter 'webhook' is set
-      fail ArgumentError, "Missing the required parameter 'webhook' when calling WebhookApi.webhook_webhooks_post" if webhook.nil?
+      fail ArgumentError, "Missing the required parameter 'webhook' when calling WebhookApi.insert_webhook" if webhook.nil?
       # resource path
       local_var_path = "/webhook/webhooks".sub('{format}','json')
 
@@ -151,102 +334,41 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'WebhookResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: WebhookApi#webhook_webhooks_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: WebhookApi#insert_webhook\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Delete a webhook
-    # Delete a webhook on the UltraCart account. 
-    # @param webhook_oid The webhook oid to delete.
+    # Resend events to the webhook endpoint.
+    # This method will resend events to the webhook endpoint.  This method can be used for example to send all the existing items on an account to a webhook. 
+    # @param webhook_oid The webhook oid that is receiving the reflowed events.
+    # @param event_name The event to reflow.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def webhook_webhooks_webhook_oid_delete(webhook_oid, opts = {})
-      webhook_webhooks_webhook_oid_delete_with_http_info(webhook_oid, opts)
-      return nil
-    end
-
-    # Delete a webhook
-    # Delete a webhook on the UltraCart account. 
-    # @param webhook_oid The webhook oid to delete.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def webhook_webhooks_webhook_oid_delete_with_http_info(webhook_oid, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: WebhookApi.webhook_webhooks_webhook_oid_delete ..."
-      end
-      # verify the required parameter 'webhook_oid' is set
-      fail ArgumentError, "Missing the required parameter 'webhook_oid' when calling WebhookApi.webhook_webhooks_webhook_oid_delete" if webhook_oid.nil?
-      # resource path
-      local_var_path = "/webhook/webhooks/{webhookOid}".sub('{format}','json').sub('{' + 'webhookOid' + '}', webhook_oid.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: WebhookApi#webhook_webhooks_webhook_oid_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Retrieve the log summaries
-    # Retrieves the log summary information for a given webhook.  This is useful for displaying all the various logs that can be viewed. 
-    # @param webhook_oid The webhook oid to retrieve log summaries for.
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (default to 100)
-    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
-    # @option opts [String] :_since Fetch log summaries that have been delivered since this date/time.
-    # @return [WebhookLogSummariesResponse]
-    def webhook_webhooks_webhook_oid_logs_get(webhook_oid, opts = {})
-      data, _status_code, _headers = webhook_webhooks_webhook_oid_logs_get_with_http_info(webhook_oid, opts)
+    # @return [WebhookSampleRequestResponse]
+    def resend_event(webhook_oid, event_name, opts = {})
+      data, _status_code, _headers = resend_event_with_http_info(webhook_oid, event_name, opts)
       return data
     end
 
-    # Retrieve the log summaries
-    # Retrieves the log summary information for a given webhook.  This is useful for displaying all the various logs that can be viewed. 
-    # @param webhook_oid The webhook oid to retrieve log summaries for.
+    # Resend events to the webhook endpoint.
+    # This method will resend events to the webhook endpoint.  This method can be used for example to send all the existing items on an account to a webhook. 
+    # @param webhook_oid The webhook oid that is receiving the reflowed events.
+    # @param event_name The event to reflow.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :_limit The maximum number of records to return on this one API call.
-    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
-    # @option opts [String] :_since Fetch log summaries that have been delivered since this date/time.
-    # @return [Array<(WebhookLogSummariesResponse, Fixnum, Hash)>] WebhookLogSummariesResponse data, response status code and response headers
-    def webhook_webhooks_webhook_oid_logs_get_with_http_info(webhook_oid, opts = {})
+    # @return [Array<(WebhookSampleRequestResponse, Fixnum, Hash)>] WebhookSampleRequestResponse data, response status code and response headers
+    def resend_event_with_http_info(webhook_oid, event_name, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: WebhookApi.webhook_webhooks_webhook_oid_logs_get ..."
+        @api_client.config.logger.debug "Calling API: WebhookApi.resend_event ..."
       end
       # verify the required parameter 'webhook_oid' is set
-      fail ArgumentError, "Missing the required parameter 'webhook_oid' when calling WebhookApi.webhook_webhooks_webhook_oid_logs_get" if webhook_oid.nil?
+      fail ArgumentError, "Missing the required parameter 'webhook_oid' when calling WebhookApi.resend_event" if webhook_oid.nil?
+      # verify the required parameter 'event_name' is set
+      fail ArgumentError, "Missing the required parameter 'event_name' when calling WebhookApi.resend_event" if event_name.nil?
       # resource path
-      local_var_path = "/webhook/webhooks/{webhookOid}/logs".sub('{format}','json').sub('{' + 'webhookOid' + '}', webhook_oid.to_s)
+      local_var_path = "/webhook/webhooks/{webhookOid}/reflow/{eventName}".sub('{format}','json').sub('{' + 'webhookOid' + '}', webhook_oid.to_s).sub('{' + 'eventName' + '}', event_name.to_s)
 
       # query parameters
       query_params = {}
-      query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
-      query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
-      query_params[:'_since'] = opts[:'_since'] if !opts[:'_since'].nil?
 
       # header parameters
       header_params = {}
@@ -256,7 +378,7 @@ module UltraCartAdminV2
       local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
 
       # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
+      local_header_content_type = ['application/json; charset=UTF-8']
       header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
 
       # form parameters
@@ -265,76 +387,15 @@ module UltraCartAdminV2
       # http body (model)
       post_body = nil
       auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'WebhookLogSummariesResponse')
+        :return_type => 'WebhookSampleRequestResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: WebhookApi#webhook_webhooks_webhook_oid_logs_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Retrieve an individual log
-    # Retrieves an individual log for a webhook given the webhook oid the request id. 
-    # @param webhook_oid The webhook oid that owns the log.
-    # @param request_id The request id associated with the log to view.
-    # @param [Hash] opts the optional parameters
-    # @return [WebhookLogResponse]
-    def webhook_webhooks_webhook_oid_logs_request_id_get(webhook_oid, request_id, opts = {})
-      data, _status_code, _headers = webhook_webhooks_webhook_oid_logs_request_id_get_with_http_info(webhook_oid, request_id, opts)
-      return data
-    end
-
-    # Retrieve an individual log
-    # Retrieves an individual log for a webhook given the webhook oid the request id. 
-    # @param webhook_oid The webhook oid that owns the log.
-    # @param request_id The request id associated with the log to view.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(WebhookLogResponse, Fixnum, Hash)>] WebhookLogResponse data, response status code and response headers
-    def webhook_webhooks_webhook_oid_logs_request_id_get_with_http_info(webhook_oid, request_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: WebhookApi.webhook_webhooks_webhook_oid_logs_request_id_get ..."
-      end
-      # verify the required parameter 'webhook_oid' is set
-      fail ArgumentError, "Missing the required parameter 'webhook_oid' when calling WebhookApi.webhook_webhooks_webhook_oid_logs_request_id_get" if webhook_oid.nil?
-      # verify the required parameter 'request_id' is set
-      fail ArgumentError, "Missing the required parameter 'request_id' when calling WebhookApi.webhook_webhooks_webhook_oid_logs_request_id_get" if request_id.nil?
-      # resource path
-      local_var_path = "/webhook/webhooks/{webhookOid}/logs/{requestId}".sub('{format}','json').sub('{' + 'webhookOid' + '}', webhook_oid.to_s).sub('{' + 'requestId' + '}', request_id.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'WebhookLogResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: WebhookApi#webhook_webhooks_webhook_oid_logs_request_id_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: WebhookApi#resend_event\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -346,8 +407,8 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [WebhookResponse]
-    def webhook_webhooks_webhook_oid_put(webhook, webhook_oid, opts = {})
-      data, _status_code, _headers = webhook_webhooks_webhook_oid_put_with_http_info(webhook, webhook_oid, opts)
+    def update_webhook(webhook, webhook_oid, opts = {})
+      data, _status_code, _headers = update_webhook_with_http_info(webhook, webhook_oid, opts)
       return data
     end
 
@@ -358,14 +419,14 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [Array<(WebhookResponse, Fixnum, Hash)>] WebhookResponse data, response status code and response headers
-    def webhook_webhooks_webhook_oid_put_with_http_info(webhook, webhook_oid, opts = {})
+    def update_webhook_with_http_info(webhook, webhook_oid, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: WebhookApi.webhook_webhooks_webhook_oid_put ..."
+        @api_client.config.logger.debug "Calling API: WebhookApi.update_webhook ..."
       end
       # verify the required parameter 'webhook' is set
-      fail ArgumentError, "Missing the required parameter 'webhook' when calling WebhookApi.webhook_webhooks_webhook_oid_put" if webhook.nil?
+      fail ArgumentError, "Missing the required parameter 'webhook' when calling WebhookApi.update_webhook" if webhook.nil?
       # verify the required parameter 'webhook_oid' is set
-      fail ArgumentError, "Missing the required parameter 'webhook_oid' when calling WebhookApi.webhook_webhooks_webhook_oid_put" if webhook_oid.nil?
+      fail ArgumentError, "Missing the required parameter 'webhook_oid' when calling WebhookApi.update_webhook" if webhook_oid.nil?
       # resource path
       local_var_path = "/webhook/webhooks/{webhookOid}".sub('{format}','json').sub('{' + 'webhookOid' + '}', webhook_oid.to_s)
 
@@ -398,68 +459,7 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'WebhookResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: WebhookApi#webhook_webhooks_webhook_oid_put\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Resend events to the webhook endpoint.
-    # This method will resend events to the webhook endpoint.  This method can be used for example to send all the existing items on an account to a webhook. 
-    # @param webhook_oid The webhook oid that is receiving the reflowed events.
-    # @param event_name The event to reflow.
-    # @param [Hash] opts the optional parameters
-    # @return [WebhookSampleRequestResponse]
-    def webhook_webhooks_webhook_oid_reflow_event_name_post(webhook_oid, event_name, opts = {})
-      data, _status_code, _headers = webhook_webhooks_webhook_oid_reflow_event_name_post_with_http_info(webhook_oid, event_name, opts)
-      return data
-    end
-
-    # Resend events to the webhook endpoint.
-    # This method will resend events to the webhook endpoint.  This method can be used for example to send all the existing items on an account to a webhook. 
-    # @param webhook_oid The webhook oid that is receiving the reflowed events.
-    # @param event_name The event to reflow.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(WebhookSampleRequestResponse, Fixnum, Hash)>] WebhookSampleRequestResponse data, response status code and response headers
-    def webhook_webhooks_webhook_oid_reflow_event_name_post_with_http_info(webhook_oid, event_name, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: WebhookApi.webhook_webhooks_webhook_oid_reflow_event_name_post ..."
-      end
-      # verify the required parameter 'webhook_oid' is set
-      fail ArgumentError, "Missing the required parameter 'webhook_oid' when calling WebhookApi.webhook_webhooks_webhook_oid_reflow_event_name_post" if webhook_oid.nil?
-      # verify the required parameter 'event_name' is set
-      fail ArgumentError, "Missing the required parameter 'event_name' when calling WebhookApi.webhook_webhooks_webhook_oid_reflow_event_name_post" if event_name.nil?
-      # resource path
-      local_var_path = "/webhook/webhooks/{webhookOid}/reflow/{eventName}".sub('{format}','json').sub('{' + 'webhookOid' + '}', webhook_oid.to_s).sub('{' + 'eventName' + '}', event_name.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json; charset=UTF-8']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'WebhookSampleRequestResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: WebhookApi#webhook_webhooks_webhook_oid_reflow_event_name_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: WebhookApi#update_webhook\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

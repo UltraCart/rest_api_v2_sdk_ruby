@@ -43,20 +43,7 @@ describe 'OauthApi' do
     end
   end
 
-  # unit tests for oauth_revoke_post
-  # Revoke this OAuth application.
-  # Revokes the OAuth application associated with the specified client_id and token. 
-  # @param client_id The OAuth application client_id.
-  # @param token The OAuth access token that is to be revoked..
-  # @param [Hash] opts the optional parameters
-  # @return [OauthRevokeSuccessResponse]
-  describe 'oauth_revoke_post test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for oauth_token_post
+  # unit tests for oauth_access_token
   # Exchange authorization code for access token.
   # The final leg in the OAuth process which exchanges the specified access token for the access code needed to make API calls. 
   # @param client_id The OAuth application client_id.
@@ -66,7 +53,20 @@ describe 'OauthApi' do
   # @option opts [String] :redirect_uri The URI that you redirect the browser to to start the authorization process
   # @option opts [String] :refresh_token The refresh token received during the original grant_type&#x3D;authorization_code that can be used to return a new access token
   # @return [OauthTokenResponse]
-  describe 'oauth_token_post test' do
+  describe 'oauth_access_token test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for oauth_revoke
+  # Revoke this OAuth application.
+  # Revokes the OAuth application associated with the specified client_id and token. 
+  # @param client_id The OAuth application client_id.
+  # @param token The OAuth access token that is to be revoked..
+  # @param [Hash] opts the optional parameters
+  # @return [OauthRevokeSuccessResponse]
+  describe 'oauth_revoke test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

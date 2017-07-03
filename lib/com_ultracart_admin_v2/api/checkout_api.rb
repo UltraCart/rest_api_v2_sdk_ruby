@@ -31,29 +31,29 @@ module UltraCartAdminV2
       @api_client = api_client
     end
 
-    # Setup Browser Application
-    # Setup a browser key authenticated application with checkout permissions.  This REST call must be made with an authentication scheme that is not browser key.  The new application will be linked to the application that makes this call.  If this application is disabled / deleted, then so will the application setup by this call.  The purpose of this call is to allow an OAuth applicaiton, such as the Wordpress plugin, to setup the proper browser based authentication for the REST checkout API to use. 
-    # @param browser_key_request Setup browser key request
+    # City/State for Zip
+    # Look up the city and state for the shipping zip code.  Useful for building an auto complete for parts of the shipping address 
+    # @param cart Cart
     # @param [Hash] opts the optional parameters
-    # @return [CheckoutSetupBrowserKeyResponse]
-    def checkout_browser_key_put(browser_key_request, opts = {})
-      data, _status_code, _headers = checkout_browser_key_put_with_http_info(browser_key_request, opts)
+    # @return [ItemsResponse]
+    def city_state(cart, opts = {})
+      data, _status_code, _headers = city_state_with_http_info(cart, opts)
       return data
     end
 
-    # Setup Browser Application
-    # Setup a browser key authenticated application with checkout permissions.  This REST call must be made with an authentication scheme that is not browser key.  The new application will be linked to the application that makes this call.  If this application is disabled / deleted, then so will the application setup by this call.  The purpose of this call is to allow an OAuth applicaiton, such as the Wordpress plugin, to setup the proper browser based authentication for the REST checkout API to use. 
-    # @param browser_key_request Setup browser key request
+    # City/State for Zip
+    # Look up the city and state for the shipping zip code.  Useful for building an auto complete for parts of the shipping address 
+    # @param cart Cart
     # @param [Hash] opts the optional parameters
-    # @return [Array<(CheckoutSetupBrowserKeyResponse, Fixnum, Hash)>] CheckoutSetupBrowserKeyResponse data, response status code and response headers
-    def checkout_browser_key_put_with_http_info(browser_key_request, opts = {})
+    # @return [Array<(ItemsResponse, Fixnum, Hash)>] ItemsResponse data, response status code and response headers
+    def city_state_with_http_info(cart, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CheckoutApi.checkout_browser_key_put ..."
+        @api_client.config.logger.debug "Calling API: CheckoutApi.city_state ..."
       end
-      # verify the required parameter 'browser_key_request' is set
-      fail ArgumentError, "Missing the required parameter 'browser_key_request' when calling CheckoutApi.checkout_browser_key_put" if browser_key_request.nil?
+      # verify the required parameter 'cart' is set
+      fail ArgumentError, "Missing the required parameter 'cart' when calling CheckoutApi.city_state" if cart.nil?
       # resource path
-      local_var_path = "/checkout/browser_key".sub('{format}','json')
+      local_var_path = "/checkout/city_state".sub('{format}','json')
 
       # query parameters
       query_params = {}
@@ -73,17 +73,130 @@ module UltraCartAdminV2
       form_params = {}
 
       # http body (model)
-      post_body = @api_client.object_to_http_body(browser_key_request)
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+      post_body = @api_client.object_to_http_body(cart)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'CheckoutSetupBrowserKeyResponse')
+        :return_type => 'ItemsResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CheckoutApi#checkout_browser_key_put\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: CheckoutApi#city_state\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Finalize Order
+    # Finalize the cart into an order.  This method can not be called with browser key authentication.  It is ONLY meant for server side code to call. 
+    # @param finalize_request Finalize request
+    # @param [Hash] opts the optional parameters
+    # @return [CartFinalizeOrderResponse]
+    def finalize_order(finalize_request, opts = {})
+      data, _status_code, _headers = finalize_order_with_http_info(finalize_request, opts)
+      return data
+    end
+
+    # Finalize Order
+    # Finalize the cart into an order.  This method can not be called with browser key authentication.  It is ONLY meant for server side code to call. 
+    # @param finalize_request Finalize request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CartFinalizeOrderResponse, Fixnum, Hash)>] CartFinalizeOrderResponse data, response status code and response headers
+    def finalize_order_with_http_info(finalize_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CheckoutApi.finalize_order ..."
+      end
+      # verify the required parameter 'finalize_request' is set
+      fail ArgumentError, "Missing the required parameter 'finalize_request' when calling CheckoutApi.finalize_order" if finalize_request.nil?
+      # resource path
+      local_var_path = "/checkout/cart/finalizeOrder".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(finalize_request)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CartFinalizeOrderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CheckoutApi#finalize_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get cart
+    # If the cookie is set on the browser making the request then it will return their active cart.  Otherwise it will create a new cart. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [CartResponse]
+    def get_cart(opts = {})
+      data, _status_code, _headers = get_cart_with_http_info(opts)
+      return data
+    end
+
+    # Get cart
+    # If the cookie is set on the browser making the request then it will return their active cart.  Otherwise it will create a new cart. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(CartResponse, Fixnum, Hash)>] CartResponse data, response status code and response headers
+    def get_cart_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CheckoutApi.get_cart ..."
+      end
+      # resource path
+      local_var_path = "/checkout/cart".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CartResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CheckoutApi#get_cart\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -94,8 +207,8 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [CartResponse]
-    def checkout_cart_cart_id_get(cart_id, opts = {})
-      data, _status_code, _headers = checkout_cart_cart_id_get_with_http_info(cart_id, opts)
+    def get_cart_by_cart_id(cart_id, opts = {})
+      data, _status_code, _headers = get_cart_by_cart_id_with_http_info(cart_id, opts)
       return data
     end
 
@@ -105,12 +218,12 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(CartResponse, Fixnum, Hash)>] CartResponse data, response status code and response headers
-    def checkout_cart_cart_id_get_with_http_info(cart_id, opts = {})
+    def get_cart_by_cart_id_with_http_info(cart_id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CheckoutApi.checkout_cart_cart_id_get ..."
+        @api_client.config.logger.debug "Calling API: CheckoutApi.get_cart_by_cart_id ..."
       end
       # verify the required parameter 'cart_id' is set
-      fail ArgumentError, "Missing the required parameter 'cart_id' when calling CheckoutApi.checkout_cart_cart_id_get" if cart_id.nil?
+      fail ArgumentError, "Missing the required parameter 'cart_id' when calling CheckoutApi.get_cart_by_cart_id" if cart_id.nil?
       # resource path
       local_var_path = "/checkout/cart/{cart_id}".sub('{format}','json').sub('{' + 'cart_id' + '}', cart_id.to_s)
 
@@ -143,661 +256,7 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'CartResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CheckoutApi#checkout_cart_cart_id_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Finalize Order
-    # Finalize the cart into an order.  This method can not be called with browser key authentication.  It is ONLY meant for server side code to call. 
-    # @param finalize_request Finalize request
-    # @param [Hash] opts the optional parameters
-    # @return [CartFinalizeOrderResponse]
-    def checkout_cart_finalize_order_post(finalize_request, opts = {})
-      data, _status_code, _headers = checkout_cart_finalize_order_post_with_http_info(finalize_request, opts)
-      return data
-    end
-
-    # Finalize Order
-    # Finalize the cart into an order.  This method can not be called with browser key authentication.  It is ONLY meant for server side code to call. 
-    # @param finalize_request Finalize request
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(CartFinalizeOrderResponse, Fixnum, Hash)>] CartFinalizeOrderResponse data, response status code and response headers
-    def checkout_cart_finalize_order_post_with_http_info(finalize_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CheckoutApi.checkout_cart_finalize_order_post ..."
-      end
-      # verify the required parameter 'finalize_request' is set
-      fail ArgumentError, "Missing the required parameter 'finalize_request' when calling CheckoutApi.checkout_cart_finalize_order_post" if finalize_request.nil?
-      # resource path
-      local_var_path = "/checkout/cart/finalizeOrder".sub('{format}','json')
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(finalize_request)
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'CartFinalizeOrderResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CheckoutApi#checkout_cart_finalize_order_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get cart
-    # If the cookie is set on the browser making the request then it will return their active cart.  Otherwise it will create a new cart. 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [CartResponse]
-    def checkout_cart_get(opts = {})
-      data, _status_code, _headers = checkout_cart_get_with_http_info(opts)
-      return data
-    end
-
-    # Get cart
-    # If the cookie is set on the browser making the request then it will return their active cart.  Otherwise it will create a new cart. 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [Array<(CartResponse, Fixnum, Hash)>] CartResponse data, response status code and response headers
-    def checkout_cart_get_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CheckoutApi.checkout_cart_get ..."
-      end
-      # resource path
-      local_var_path = "/checkout/cart".sub('{format}','json')
-
-      # query parameters
-      query_params = {}
-      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'CartResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CheckoutApi#checkout_cart_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Handoff cart
-    # Handoff the browser to UltraCart for view cart on StoreFront, transfer to PayPal or finalization of the order (including upsell processing). 
-    # @param handoff_request Handoff request
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [CheckoutHandoffResponse]
-    def checkout_cart_handoff_post(handoff_request, opts = {})
-      data, _status_code, _headers = checkout_cart_handoff_post_with_http_info(handoff_request, opts)
-      return data
-    end
-
-    # Handoff cart
-    # Handoff the browser to UltraCart for view cart on StoreFront, transfer to PayPal or finalization of the order (including upsell processing). 
-    # @param handoff_request Handoff request
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [Array<(CheckoutHandoffResponse, Fixnum, Hash)>] CheckoutHandoffResponse data, response status code and response headers
-    def checkout_cart_handoff_post_with_http_info(handoff_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CheckoutApi.checkout_cart_handoff_post ..."
-      end
-      # verify the required parameter 'handoff_request' is set
-      fail ArgumentError, "Missing the required parameter 'handoff_request' when calling CheckoutApi.checkout_cart_handoff_post" if handoff_request.nil?
-      # resource path
-      local_var_path = "/checkout/cart/handoff".sub('{format}','json')
-
-      # query parameters
-      query_params = {}
-      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(handoff_request)
-      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'CheckoutHandoffResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CheckoutApi#checkout_cart_handoff_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Profile login
-    # Login in to the customer profile specified by cart.billing.email and password 
-    # @param login_request Login request
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [CartProfileLoginResponse]
-    def checkout_cart_profile_login_post(login_request, opts = {})
-      data, _status_code, _headers = checkout_cart_profile_login_post_with_http_info(login_request, opts)
-      return data
-    end
-
-    # Profile login
-    # Login in to the customer profile specified by cart.billing.email and password 
-    # @param login_request Login request
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [Array<(CartProfileLoginResponse, Fixnum, Hash)>] CartProfileLoginResponse data, response status code and response headers
-    def checkout_cart_profile_login_post_with_http_info(login_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CheckoutApi.checkout_cart_profile_login_post ..."
-      end
-      # verify the required parameter 'login_request' is set
-      fail ArgumentError, "Missing the required parameter 'login_request' when calling CheckoutApi.checkout_cart_profile_login_post" if login_request.nil?
-      # resource path
-      local_var_path = "/checkout/cart/profile/login".sub('{format}','json')
-
-      # query parameters
-      query_params = {}
-      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(login_request)
-      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'CartProfileLoginResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CheckoutApi#checkout_cart_profile_login_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Profile logout
-    # Log the cart out of the current profile.  No error will occur if they are not logged in. 
-    # @param cart Cart
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [CartResponse]
-    def checkout_cart_profile_logout_post(cart, opts = {})
-      data, _status_code, _headers = checkout_cart_profile_logout_post_with_http_info(cart, opts)
-      return data
-    end
-
-    # Profile logout
-    # Log the cart out of the current profile.  No error will occur if they are not logged in. 
-    # @param cart Cart
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [Array<(CartResponse, Fixnum, Hash)>] CartResponse data, response status code and response headers
-    def checkout_cart_profile_logout_post_with_http_info(cart, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CheckoutApi.checkout_cart_profile_logout_post ..."
-      end
-      # verify the required parameter 'cart' is set
-      fail ArgumentError, "Missing the required parameter 'cart' when calling CheckoutApi.checkout_cart_profile_logout_post" if cart.nil?
-      # resource path
-      local_var_path = "/checkout/cart/profile/logout".sub('{format}','json')
-
-      # query parameters
-      query_params = {}
-      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(cart)
-      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'CartResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CheckoutApi#checkout_cart_profile_logout_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Profile registration
-    # Register a new customer profile.  Requires the cart.billing object to be populated along with the password. 
-    # @param register_request Register request
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [CartProfileRegisterResponse]
-    def checkout_cart_profile_register_post(register_request, opts = {})
-      data, _status_code, _headers = checkout_cart_profile_register_post_with_http_info(register_request, opts)
-      return data
-    end
-
-    # Profile registration
-    # Register a new customer profile.  Requires the cart.billing object to be populated along with the password. 
-    # @param register_request Register request
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [Array<(CartProfileRegisterResponse, Fixnum, Hash)>] CartProfileRegisterResponse data, response status code and response headers
-    def checkout_cart_profile_register_post_with_http_info(register_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CheckoutApi.checkout_cart_profile_register_post ..."
-      end
-      # verify the required parameter 'register_request' is set
-      fail ArgumentError, "Missing the required parameter 'register_request' when calling CheckoutApi.checkout_cart_profile_register_post" if register_request.nil?
-      # resource path
-      local_var_path = "/checkout/cart/profile/register".sub('{format}','json')
-
-      # query parameters
-      query_params = {}
-      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(register_request)
-      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'CartProfileRegisterResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CheckoutApi#checkout_cart_profile_register_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Update cart
-    # Update the cart. 
-    # @param cart Cart
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [CartResponse]
-    def checkout_cart_put(cart, opts = {})
-      data, _status_code, _headers = checkout_cart_put_with_http_info(cart, opts)
-      return data
-    end
-
-    # Update cart
-    # Update the cart. 
-    # @param cart Cart
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [Array<(CartResponse, Fixnum, Hash)>] CartResponse data, response status code and response headers
-    def checkout_cart_put_with_http_info(cart, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CheckoutApi.checkout_cart_put ..."
-      end
-      # verify the required parameter 'cart' is set
-      fail ArgumentError, "Missing the required parameter 'cart' when calling CheckoutApi.checkout_cart_put" if cart.nil?
-      # resource path
-      local_var_path = "/checkout/cart".sub('{format}','json')
-
-      # query parameters
-      query_params = {}
-      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(cart)
-      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'CartResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CheckoutApi#checkout_cart_put\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Validate
-    # Validate the cart for errors.  Specific checks can be passed and multiple validations can occur throughout your checkout flow. 
-    # @param validation_request Validation request
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [CartValidationResponse]
-    def checkout_cart_validate_post(validation_request, opts = {})
-      data, _status_code, _headers = checkout_cart_validate_post_with_http_info(validation_request, opts)
-      return data
-    end
-
-    # Validate
-    # Validate the cart for errors.  Specific checks can be passed and multiple validations can occur throughout your checkout flow. 
-    # @param validation_request Validation request
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [Array<(CartValidationResponse, Fixnum, Hash)>] CartValidationResponse data, response status code and response headers
-    def checkout_cart_validate_post_with_http_info(validation_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CheckoutApi.checkout_cart_validate_post ..."
-      end
-      # verify the required parameter 'validation_request' is set
-      fail ArgumentError, "Missing the required parameter 'validation_request' when calling CheckoutApi.checkout_cart_validate_post" if validation_request.nil?
-      # resource path
-      local_var_path = "/checkout/cart/validate".sub('{format}','json')
-
-      # query parameters
-      query_params = {}
-      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(validation_request)
-      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'CartValidationResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CheckoutApi#checkout_cart_validate_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # City/State for Zip
-    # Look up the city and state for the shipping zip code.  Useful for building an auto complete for parts of the shipping address 
-    # @param cart Cart
-    # @param [Hash] opts the optional parameters
-    # @return [ItemsResponse]
-    def checkout_city_state_post(cart, opts = {})
-      data, _status_code, _headers = checkout_city_state_post_with_http_info(cart, opts)
-      return data
-    end
-
-    # City/State for Zip
-    # Look up the city and state for the shipping zip code.  Useful for building an auto complete for parts of the shipping address 
-    # @param cart Cart
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(ItemsResponse, Fixnum, Hash)>] ItemsResponse data, response status code and response headers
-    def checkout_city_state_post_with_http_info(cart, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CheckoutApi.checkout_city_state_post ..."
-      end
-      # verify the required parameter 'cart' is set
-      fail ArgumentError, "Missing the required parameter 'cart' when calling CheckoutApi.checkout_city_state_post" if cart.nil?
-      # resource path
-      local_var_path = "/checkout/city_state".sub('{format}','json')
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(cart)
-      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'ItemsResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CheckoutApi#checkout_city_state_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Related items (specific item)
-    # Retrieve all the related items for the cart contents.  Expansion is limited to content, content.assignments, content.attributes, content.multimedia, content.multimedia.thumbnails, options, pricing, and pricing.tiers. 
-    # @param item_id Item ID to retrieve related items for
-    # @param cart Cart
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See item resource documentation for examples
-    # @return [ItemsResponse]
-    def checkout_related_items_item_id_post(item_id, cart, opts = {})
-      data, _status_code, _headers = checkout_related_items_item_id_post_with_http_info(item_id, cart, opts)
-      return data
-    end
-
-    # Related items (specific item)
-    # Retrieve all the related items for the cart contents.  Expansion is limited to content, content.assignments, content.attributes, content.multimedia, content.multimedia.thumbnails, options, pricing, and pricing.tiers. 
-    # @param item_id Item ID to retrieve related items for
-    # @param cart Cart
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See item resource documentation for examples
-    # @return [Array<(ItemsResponse, Fixnum, Hash)>] ItemsResponse data, response status code and response headers
-    def checkout_related_items_item_id_post_with_http_info(item_id, cart, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CheckoutApi.checkout_related_items_item_id_post ..."
-      end
-      # verify the required parameter 'item_id' is set
-      fail ArgumentError, "Missing the required parameter 'item_id' when calling CheckoutApi.checkout_related_items_item_id_post" if item_id.nil?
-      # verify the required parameter 'cart' is set
-      fail ArgumentError, "Missing the required parameter 'cart' when calling CheckoutApi.checkout_related_items_item_id_post" if cart.nil?
-      # resource path
-      local_var_path = "/checkout/relatedItems/{item_id}".sub('{format}','json').sub('{' + 'item_id' + '}', item_id.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(cart)
-      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'ItemsResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CheckoutApi#checkout_related_items_item_id_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Related items
-    # Retrieve all the related items for the cart contents.  Expansion is limited to content, content.assignments, content.attributes, content.multimedia, content.multimedia.thumbnails, options, pricing, and pricing.tiers. 
-    # @param cart Cart
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See item resource documentation for examples
-    # @return [ItemsResponse]
-    def checkout_related_items_post(cart, opts = {})
-      data, _status_code, _headers = checkout_related_items_post_with_http_info(cart, opts)
-      return data
-    end
-
-    # Related items
-    # Retrieve all the related items for the cart contents.  Expansion is limited to content, content.assignments, content.attributes, content.multimedia, content.multimedia.thumbnails, options, pricing, and pricing.tiers. 
-    # @param cart Cart
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See item resource documentation for examples
-    # @return [Array<(ItemsResponse, Fixnum, Hash)>] ItemsResponse data, response status code and response headers
-    def checkout_related_items_post_with_http_info(cart, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CheckoutApi.checkout_related_items_post ..."
-      end
-      # verify the required parameter 'cart' is set
-      fail ArgumentError, "Missing the required parameter 'cart' when calling CheckoutApi.checkout_related_items_post" if cart.nil?
-      # resource path
-      local_var_path = "/checkout/related_items".sub('{format}','json')
-
-      # query parameters
-      query_params = {}
-      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = ['application/json']
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(cart)
-      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'ItemsResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CheckoutApi#checkout_related_items_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: CheckoutApi#get_cart_by_cart_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -808,8 +267,8 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [CartResponse]
-    def checkout_return_return_code_get(return_code, opts = {})
-      data, _status_code, _headers = checkout_return_return_code_get_with_http_info(return_code, opts)
+    def get_cart_by_return_code(return_code, opts = {})
+      data, _status_code, _headers = get_cart_by_return_code_with_http_info(return_code, opts)
       return data
     end
 
@@ -819,12 +278,12 @@ module UltraCartAdminV2
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(CartResponse, Fixnum, Hash)>] CartResponse data, response status code and response headers
-    def checkout_return_return_code_get_with_http_info(return_code, opts = {})
+    def get_cart_by_return_code_with_http_info(return_code, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: CheckoutApi.checkout_return_return_code_get ..."
+        @api_client.config.logger.debug "Calling API: CheckoutApi.get_cart_by_return_code ..."
       end
       # verify the required parameter 'return_code' is set
-      fail ArgumentError, "Missing the required parameter 'return_code' when calling CheckoutApi.checkout_return_return_code_get" if return_code.nil?
+      fail ArgumentError, "Missing the required parameter 'return_code' when calling CheckoutApi.get_cart_by_return_code" if return_code.nil?
       # resource path
       local_var_path = "/checkout/return/{return_code}".sub('{format}','json').sub('{' + 'return_code' + '}', return_code.to_s)
 
@@ -857,7 +316,548 @@ module UltraCartAdminV2
         :auth_names => auth_names,
         :return_type => 'CartResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CheckoutApi#checkout_return_return_code_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: CheckoutApi#get_cart_by_return_code\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Handoff cart
+    # Handoff the browser to UltraCart for view cart on StoreFront, transfer to PayPal or finalization of the order (including upsell processing). 
+    # @param handoff_request Handoff request
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [CheckoutHandoffResponse]
+    def handoff_cart(handoff_request, opts = {})
+      data, _status_code, _headers = handoff_cart_with_http_info(handoff_request, opts)
+      return data
+    end
+
+    # Handoff cart
+    # Handoff the browser to UltraCart for view cart on StoreFront, transfer to PayPal or finalization of the order (including upsell processing). 
+    # @param handoff_request Handoff request
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(CheckoutHandoffResponse, Fixnum, Hash)>] CheckoutHandoffResponse data, response status code and response headers
+    def handoff_cart_with_http_info(handoff_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CheckoutApi.handoff_cart ..."
+      end
+      # verify the required parameter 'handoff_request' is set
+      fail ArgumentError, "Missing the required parameter 'handoff_request' when calling CheckoutApi.handoff_cart" if handoff_request.nil?
+      # resource path
+      local_var_path = "/checkout/cart/handoff".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(handoff_request)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CheckoutHandoffResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CheckoutApi#handoff_cart\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Profile login
+    # Login in to the customer profile specified by cart.billing.email and password 
+    # @param login_request Login request
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [CartProfileLoginResponse]
+    def login(login_request, opts = {})
+      data, _status_code, _headers = login_with_http_info(login_request, opts)
+      return data
+    end
+
+    # Profile login
+    # Login in to the customer profile specified by cart.billing.email and password 
+    # @param login_request Login request
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(CartProfileLoginResponse, Fixnum, Hash)>] CartProfileLoginResponse data, response status code and response headers
+    def login_with_http_info(login_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CheckoutApi.login ..."
+      end
+      # verify the required parameter 'login_request' is set
+      fail ArgumentError, "Missing the required parameter 'login_request' when calling CheckoutApi.login" if login_request.nil?
+      # resource path
+      local_var_path = "/checkout/cart/profile/login".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(login_request)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CartProfileLoginResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CheckoutApi#login\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Profile logout
+    # Log the cart out of the current profile.  No error will occur if they are not logged in. 
+    # @param cart Cart
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [CartResponse]
+    def logout(cart, opts = {})
+      data, _status_code, _headers = logout_with_http_info(cart, opts)
+      return data
+    end
+
+    # Profile logout
+    # Log the cart out of the current profile.  No error will occur if they are not logged in. 
+    # @param cart Cart
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(CartResponse, Fixnum, Hash)>] CartResponse data, response status code and response headers
+    def logout_with_http_info(cart, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CheckoutApi.logout ..."
+      end
+      # verify the required parameter 'cart' is set
+      fail ArgumentError, "Missing the required parameter 'cart' when calling CheckoutApi.logout" if cart.nil?
+      # resource path
+      local_var_path = "/checkout/cart/profile/logout".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(cart)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CartResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CheckoutApi#logout\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Profile registration
+    # Register a new customer profile.  Requires the cart.billing object to be populated along with the password. 
+    # @param register_request Register request
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [CartProfileRegisterResponse]
+    def register(register_request, opts = {})
+      data, _status_code, _headers = register_with_http_info(register_request, opts)
+      return data
+    end
+
+    # Profile registration
+    # Register a new customer profile.  Requires the cart.billing object to be populated along with the password. 
+    # @param register_request Register request
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(CartProfileRegisterResponse, Fixnum, Hash)>] CartProfileRegisterResponse data, response status code and response headers
+    def register_with_http_info(register_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CheckoutApi.register ..."
+      end
+      # verify the required parameter 'register_request' is set
+      fail ArgumentError, "Missing the required parameter 'register_request' when calling CheckoutApi.register" if register_request.nil?
+      # resource path
+      local_var_path = "/checkout/cart/profile/register".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(register_request)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CartProfileRegisterResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CheckoutApi#register\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Related items
+    # Retrieve all the related items for the cart contents.  Expansion is limited to content, content.assignments, content.attributes, content.multimedia, content.multimedia.thumbnails, options, pricing, and pricing.tiers. 
+    # @param cart Cart
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See item resource documentation for examples
+    # @return [ItemsResponse]
+    def related_items_for_cart(cart, opts = {})
+      data, _status_code, _headers = related_items_for_cart_with_http_info(cart, opts)
+      return data
+    end
+
+    # Related items
+    # Retrieve all the related items for the cart contents.  Expansion is limited to content, content.assignments, content.attributes, content.multimedia, content.multimedia.thumbnails, options, pricing, and pricing.tiers. 
+    # @param cart Cart
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See item resource documentation for examples
+    # @return [Array<(ItemsResponse, Fixnum, Hash)>] ItemsResponse data, response status code and response headers
+    def related_items_for_cart_with_http_info(cart, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CheckoutApi.related_items_for_cart ..."
+      end
+      # verify the required parameter 'cart' is set
+      fail ArgumentError, "Missing the required parameter 'cart' when calling CheckoutApi.related_items_for_cart" if cart.nil?
+      # resource path
+      local_var_path = "/checkout/related_items".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(cart)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ItemsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CheckoutApi#related_items_for_cart\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Related items (specific item)
+    # Retrieve all the related items for the cart contents.  Expansion is limited to content, content.assignments, content.attributes, content.multimedia, content.multimedia.thumbnails, options, pricing, and pricing.tiers. 
+    # @param item_id Item ID to retrieve related items for
+    # @param cart Cart
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See item resource documentation for examples
+    # @return [ItemsResponse]
+    def related_items_for_item(item_id, cart, opts = {})
+      data, _status_code, _headers = related_items_for_item_with_http_info(item_id, cart, opts)
+      return data
+    end
+
+    # Related items (specific item)
+    # Retrieve all the related items for the cart contents.  Expansion is limited to content, content.assignments, content.attributes, content.multimedia, content.multimedia.thumbnails, options, pricing, and pricing.tiers. 
+    # @param item_id Item ID to retrieve related items for
+    # @param cart Cart
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See item resource documentation for examples
+    # @return [Array<(ItemsResponse, Fixnum, Hash)>] ItemsResponse data, response status code and response headers
+    def related_items_for_item_with_http_info(item_id, cart, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CheckoutApi.related_items_for_item ..."
+      end
+      # verify the required parameter 'item_id' is set
+      fail ArgumentError, "Missing the required parameter 'item_id' when calling CheckoutApi.related_items_for_item" if item_id.nil?
+      # verify the required parameter 'cart' is set
+      fail ArgumentError, "Missing the required parameter 'cart' when calling CheckoutApi.related_items_for_item" if cart.nil?
+      # resource path
+      local_var_path = "/checkout/relatedItems/{item_id}".sub('{format}','json').sub('{' + 'item_id' + '}', item_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(cart)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ItemsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CheckoutApi#related_items_for_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Setup Browser Application
+    # Setup a browser key authenticated application with checkout permissions.  This REST call must be made with an authentication scheme that is not browser key.  The new application will be linked to the application that makes this call.  If this application is disabled / deleted, then so will the application setup by this call.  The purpose of this call is to allow an OAuth applicaiton, such as the Wordpress plugin, to setup the proper browser based authentication for the REST checkout API to use. 
+    # @param browser_key_request Setup browser key request
+    # @param [Hash] opts the optional parameters
+    # @return [CheckoutSetupBrowserKeyResponse]
+    def setup_browser_key(browser_key_request, opts = {})
+      data, _status_code, _headers = setup_browser_key_with_http_info(browser_key_request, opts)
+      return data
+    end
+
+    # Setup Browser Application
+    # Setup a browser key authenticated application with checkout permissions.  This REST call must be made with an authentication scheme that is not browser key.  The new application will be linked to the application that makes this call.  If this application is disabled / deleted, then so will the application setup by this call.  The purpose of this call is to allow an OAuth applicaiton, such as the Wordpress plugin, to setup the proper browser based authentication for the REST checkout API to use. 
+    # @param browser_key_request Setup browser key request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CheckoutSetupBrowserKeyResponse, Fixnum, Hash)>] CheckoutSetupBrowserKeyResponse data, response status code and response headers
+    def setup_browser_key_with_http_info(browser_key_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CheckoutApi.setup_browser_key ..."
+      end
+      # verify the required parameter 'browser_key_request' is set
+      fail ArgumentError, "Missing the required parameter 'browser_key_request' when calling CheckoutApi.setup_browser_key" if browser_key_request.nil?
+      # resource path
+      local_var_path = "/checkout/browser_key".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(browser_key_request)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CheckoutSetupBrowserKeyResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CheckoutApi#setup_browser_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update cart
+    # Update the cart. 
+    # @param cart Cart
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [CartResponse]
+    def update_cart(cart, opts = {})
+      data, _status_code, _headers = update_cart_with_http_info(cart, opts)
+      return data
+    end
+
+    # Update cart
+    # Update the cart. 
+    # @param cart Cart
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(CartResponse, Fixnum, Hash)>] CartResponse data, response status code and response headers
+    def update_cart_with_http_info(cart, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CheckoutApi.update_cart ..."
+      end
+      # verify the required parameter 'cart' is set
+      fail ArgumentError, "Missing the required parameter 'cart' when calling CheckoutApi.update_cart" if cart.nil?
+      # resource path
+      local_var_path = "/checkout/cart".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(cart)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CartResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CheckoutApi#update_cart\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Validate
+    # Validate the cart for errors.  Specific checks can be passed and multiple validations can occur throughout your checkout flow. 
+    # @param validation_request Validation request
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [CartValidationResponse]
+    def validate_cart(validation_request, opts = {})
+      data, _status_code, _headers = validate_cart_with_http_info(validation_request, opts)
+      return data
+    end
+
+    # Validate
+    # Validate the cart for errors.  Specific checks can be passed and multiple validations can occur throughout your checkout flow. 
+    # @param validation_request Validation request
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(CartValidationResponse, Fixnum, Hash)>] CartValidationResponse data, response status code and response headers
+    def validate_cart_with_http_info(validation_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CheckoutApi.validate_cart ..."
+      end
+      # verify the required parameter 'validation_request' is set
+      fail ArgumentError, "Missing the required parameter 'validation_request' when calling CheckoutApi.validate_cart" if validation_request.nil?
+      # resource path
+      local_var_path = "/checkout/cart/validate".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(validation_request)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CartValidationResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CheckoutApi#validate_cart\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

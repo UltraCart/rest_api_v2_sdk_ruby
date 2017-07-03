@@ -46,6 +46,10 @@ describe 'ItemOptionValue' do
   describe 'test attribute "additional_dimension_application"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+       #validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["none", "set item to", "add item"])
+       #validator.allowable_values.each do |value|
+       #  expect { @instance.additional_dimension_application = value }.not_to raise_error
+       #end
     end
   end
 

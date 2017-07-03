@@ -124,6 +124,10 @@ describe 'ItemShippingMethod' do
   describe 'test attribute "shipping_method_validity"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+       #validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["invalid for", "valid for", "valid only for"])
+       #validator.allowable_values.each do |value|
+       #  expect { @instance.shipping_method_validity = value }.not_to raise_error
+       #end
     end
   end
 

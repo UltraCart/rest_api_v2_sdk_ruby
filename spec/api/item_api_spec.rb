@@ -43,74 +43,87 @@ describe 'ItemApi' do
     end
   end
 
-  # unit tests for item_items_get
-  # Retrieve items
-  # Retrieves a group of items from the account.  If no parameters are specified, all items will be returned. 
-  # @param [Hash] opts the optional parameters
-  # @option opts [Integer] :parent_category_id The parent category to retrieve items for.  Unspecified means all items on the account.  0 &#x3D; root
-  # @return [ItemsResponse]
-  describe 'item_items_get test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for item_items_merchant_item_oid_delete
+  # unit tests for delete_item
   # Delete an item
   # Delete an item on the UltraCart account. 
   # @param merchant_item_oid The item oid to delete.
   # @param [Hash] opts the optional parameters
   # @return [nil]
-  describe 'item_items_merchant_item_oid_delete test' do
+  describe 'delete_item test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for item_items_merchant_item_oid_get
+  # unit tests for get_item
   # Retrieve an item
   # Retrieves a single item using the specified item oid. 
   # @param merchant_item_oid The item oid to retrieve.
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
   # @return [ItemResponse]
-  describe 'item_items_merchant_item_oid_get test' do
+  describe 'get_item test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for item_items_merchant_item_oid_put
-  # Update an item
-  # Update a new item on the UltraCart account. 
-  # @param item Item to create
-  # @param merchant_item_oid The item oid to update.
+  # unit tests for get_items
+  # Retrieve items
+  # Retrieves a group of items from the account.  If no parameters are specified, all items will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
   # @param [Hash] opts the optional parameters
-  # @return [ItemResponse]
-  describe 'item_items_merchant_item_oid_put test' do
+  # @option opts [Integer] :parent_category_id The parent category object id to retrieve items for.  Unspecified means all items on the account.  0 &#x3D; root
+  # @option opts [String] :parent_category_path The parent category path to retrieve items for.  Unspecified means all items on the account.  / &#x3D; root
+  # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Default 100, Max 2000)
+  # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
+  # @option opts [String] :_since Fetch items that have been created/modified since this date/time.
+  # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+  # @return [ItemsResponse]
+  describe 'get_items test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for item_items_post
+  # unit tests for insert_item
   # Create an item
   # Create a new item on the UltraCart account. 
   # @param item Item to create
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
   # @return [ItemResponse]
-  describe 'item_items_post test' do
+  describe 'insert_item test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  # unit tests for item_temp_multimedia_post
+  # unit tests for update_item
+  # Update an item
+  # Update a new item on the UltraCart account. 
+  # @param item Item to update
+  # @param merchant_item_oid The item oid to update.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+  # @return [ItemResponse]
+  describe 'update_item test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for upload_temporary_multimedia
   # Upload an image to the temporary multimedia.
   # Uploads an image and returns back meta information about the image as well as the identifier needed for the item update. 
   # @param file File to upload
   # @param [Hash] opts the optional parameters
   # @return [TempMultimediaResponse]
-  describe 'item_temp_multimedia_post test' do
+  describe 'upload_temporary_multimedia test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

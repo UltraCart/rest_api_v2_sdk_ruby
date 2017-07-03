@@ -4,15 +4,15 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**chargeback_chargebacks_chargeback_dispute_oid_delete**](ChargebackApi.md#chargeback_chargebacks_chargeback_dispute_oid_delete) | **DELETE** /chargeback/chargebacks/{chargeback_dispute_oid} | Delete a chargeback
-[**chargeback_chargebacks_chargeback_dispute_oid_get**](ChargebackApi.md#chargeback_chargebacks_chargeback_dispute_oid_get) | **GET** /chargeback/chargebacks/{chargeback_dispute_oid} | Retrieve a chargeback
-[**chargeback_chargebacks_chargeback_dispute_oid_put**](ChargebackApi.md#chargeback_chargebacks_chargeback_dispute_oid_put) | **PUT** /chargeback/chargebacks/{chargeback_dispute_oid} | Update a chargeback
-[**chargeback_chargebacks_get**](ChargebackApi.md#chargeback_chargebacks_get) | **GET** /chargeback/chargebacks | Retrieve chargebacks
-[**chargeback_chargebacks_post**](ChargebackApi.md#chargeback_chargebacks_post) | **POST** /chargeback/chargebacks | Insert a chargeback
+[**delete_chargeback**](ChargebackApi.md#delete_chargeback) | **DELETE** /chargeback/chargebacks/{chargeback_dispute_oid} | Delete a chargeback
+[**get_chargeback_dispute**](ChargebackApi.md#get_chargeback_dispute) | **GET** /chargeback/chargebacks/{chargeback_dispute_oid} | Retrieve a chargeback
+[**get_chargeback_disputes**](ChargebackApi.md#get_chargeback_disputes) | **GET** /chargeback/chargebacks | Retrieve chargebacks
+[**insert_chargeback**](ChargebackApi.md#insert_chargeback) | **POST** /chargeback/chargebacks | Insert a chargeback
+[**update_chargeback**](ChargebackApi.md#update_chargeback) | **PUT** /chargeback/chargebacks/{chargeback_dispute_oid} | Update a chargeback
 
 
-# **chargeback_chargebacks_chargeback_dispute_oid_delete**
-> ChargebackDisputeResponse chargeback_chargebacks_chargeback_dispute_oid_delete(chargeback_dispute_oid)
+# **delete_chargeback**
+> ChargebackDisputeResponse delete_chargeback(chargeback_dispute_oid)
 
 Delete a chargeback
 
@@ -40,10 +40,10 @@ chargeback_dispute_oid = 56 # Integer | The chargeback_dispute_oid to delete.
 
 begin
   #Delete a chargeback
-  result = api_instance.chargeback_chargebacks_chargeback_dispute_oid_delete(chargeback_dispute_oid)
+  result = api_instance.delete_chargeback(chargeback_dispute_oid)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling ChargebackApi->chargeback_chargebacks_chargeback_dispute_oid_delete: #{e}"
+  puts "Exception when calling ChargebackApi->delete_chargeback: #{e}"
 end
 ```
 
@@ -68,8 +68,8 @@ Name | Type | Description  | Notes
 
 
 
-# **chargeback_chargebacks_chargeback_dispute_oid_get**
-> ChargebackDisputeResponse chargeback_chargebacks_chargeback_dispute_oid_get(chargeback_dispute_oid, opts)
+# **get_chargeback_dispute**
+> ChargebackDisputeResponse get_chargeback_dispute(chargeback_dispute_oid, opts)
 
 Retrieve a chargeback
 
@@ -100,10 +100,10 @@ opts = {
 
 begin
   #Retrieve a chargeback
-  result = api_instance.chargeback_chargebacks_chargeback_dispute_oid_get(chargeback_dispute_oid, opts)
+  result = api_instance.get_chargeback_dispute(chargeback_dispute_oid, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling ChargebackApi->chargeback_chargebacks_chargeback_dispute_oid_get: #{e}"
+  puts "Exception when calling ChargebackApi->get_chargeback_dispute: #{e}"
 end
 ```
 
@@ -129,72 +129,8 @@ Name | Type | Description  | Notes
 
 
 
-# **chargeback_chargebacks_chargeback_dispute_oid_put**
-> ChargebackDisputeResponse chargeback_chargebacks_chargeback_dispute_oid_put(chargeback, chargeback_dispute_oid, opts)
-
-Update a chargeback
-
-Update a chargeback on the UltraCart account. 
-
-### Example
-```ruby
-# load the gem
-require 'com_ultracart_admin_v2'
-# setup authorization
-UltraCartAdminV2.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
-
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
-
-api_instance = UltraCartAdminV2::ChargebackApi.new
-
-chargeback = UltraCartAdminV2::ChargebackDispute.new # ChargebackDispute | Chargeback to update
-
-chargeback_dispute_oid = 56 # Integer | The chargeback_dispute_oid to update.
-
-opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
-}
-
-begin
-  #Update a chargeback
-  result = api_instance.chargeback_chargebacks_chargeback_dispute_oid_put(chargeback, chargeback_dispute_oid, opts)
-  p result
-rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling ChargebackApi->chargeback_chargebacks_chargeback_dispute_oid_put: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **chargeback** | [**ChargebackDispute**](ChargebackDispute.md)| Chargeback to update | 
- **chargeback_dispute_oid** | **Integer**| The chargeback_dispute_oid to update. | 
- **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
-
-### Return type
-
-[**ChargebackDisputeResponse**](ChargebackDisputeResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json; charset=UTF-8
- - **Accept**: application/json
-
-
-
-# **chargeback_chargebacks_get**
-> ChargebackDisputesResponse chargeback_chargebacks_get(opts)
+# **get_chargeback_disputes**
+> ChargebackDisputesResponse get_chargeback_disputes(opts)
 
 Retrieve chargebacks
 
@@ -234,10 +170,10 @@ opts = {
 
 begin
   #Retrieve chargebacks
-  result = api_instance.chargeback_chargebacks_get(opts)
+  result = api_instance.get_chargeback_disputes(opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling ChargebackApi->chargeback_chargebacks_get: #{e}"
+  puts "Exception when calling ChargebackApi->get_chargeback_disputes: #{e}"
 end
 ```
 
@@ -273,8 +209,8 @@ Name | Type | Description  | Notes
 
 
 
-# **chargeback_chargebacks_post**
-> ChargebackDisputeResponse chargeback_chargebacks_post(chargeback, opts)
+# **insert_chargeback**
+> ChargebackDisputeResponse insert_chargeback(chargeback, opts)
 
 Insert a chargeback
 
@@ -305,10 +241,10 @@ opts = {
 
 begin
   #Insert a chargeback
-  result = api_instance.chargeback_chargebacks_post(chargeback, opts)
+  result = api_instance.insert_chargeback(chargeback, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
-  puts "Exception when calling ChargebackApi->chargeback_chargebacks_post: #{e}"
+  puts "Exception when calling ChargebackApi->insert_chargeback: #{e}"
 end
 ```
 
@@ -317,6 +253,70 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chargeback** | [**ChargebackDispute**](ChargebackDispute.md)| Chargeback to insert | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+
+### Return type
+
+[**ChargebackDisputeResponse**](ChargebackDisputeResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
+ - **Accept**: application/json
+
+
+
+# **update_chargeback**
+> ChargebackDisputeResponse update_chargeback(chargeback, chargeback_dispute_oid, opts)
+
+Update a chargeback
+
+Update a chargeback on the UltraCart account. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::ChargebackApi.new
+
+chargeback = UltraCartAdminV2::ChargebackDispute.new # ChargebackDispute | Chargeback to update
+
+chargeback_dispute_oid = 56 # Integer | The chargeback_dispute_oid to update.
+
+opts = { 
+  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+}
+
+begin
+  #Update a chargeback
+  result = api_instance.update_chargeback(chargeback, chargeback_dispute_oid, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling ChargebackApi->update_chargeback: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chargeback** | [**ChargebackDispute**](ChargebackDispute.md)| Chargeback to update | 
+ **chargeback_dispute_oid** | **Integer**| The chargeback_dispute_oid to update. | 
  **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
 
 ### Return type
