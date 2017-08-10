@@ -262,8 +262,6 @@ module UltraCartAdminV2
     def valid?
       bin_match_validator = EnumAttributeValidator.new('String', ["NA", "No", "NotFound", "Yes"])
       return false unless bin_match_validator.valid?(@bin_match)
-      customer_phone_in_billing_location_validator = EnumAttributeValidator.new('String', ["", "No", "NotFound", "Yes"])
-      return false unless customer_phone_in_billing_location_validator.valid?(@customer_phone_in_billing_location)
       return true
     end
 
@@ -275,16 +273,6 @@ module UltraCartAdminV2
         fail ArgumentError, "invalid value for 'bin_match', must be one of #{validator.allowable_values}."
       end
       @bin_match = bin_match
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] customer_phone_in_billing_location Object to be assigned
-    def customer_phone_in_billing_location=(customer_phone_in_billing_location)
-      validator = EnumAttributeValidator.new('String', ["", "No", "NotFound", "Yes"])
-      unless validator.valid?(customer_phone_in_billing_location)
-        fail ArgumentError, "invalid value for 'customer_phone_in_billing_location', must be one of #{validator.allowable_values}."
-      end
-      @customer_phone_in_billing_location = customer_phone_in_billing_location
     end
 
     # Checks equality by comparing each attribute.

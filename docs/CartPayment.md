@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **credit_card** | [**CartPaymentCreditCard**](CartPaymentCreditCard.md) |  | [optional] 
 **payment_method** | **String** | Payment method | [optional] 
 **purchase_order** | [**CartPaymentPurchaseOrder**](CartPaymentPurchaseOrder.md) |  | [optional] 
+**rtg_code** | **String** | Rotating transaction gateway code | [optional] 
 
 

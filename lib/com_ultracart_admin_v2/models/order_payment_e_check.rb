@@ -180,18 +180,8 @@ module UltraCartAdminV2
       end
 
 
-      if !@bank_account_type.nil? && @bank_account_type.to_s.length > 8
-        invalid_properties.push("invalid value for 'bank_account_type', the character length must be smaller than or equal to 8.")
-      end
-
-
       if !@bank_name.nil? && @bank_name.to_s.length > 50
         invalid_properties.push("invalid value for 'bank_name', the character length must be smaller than or equal to 50.")
-      end
-
-
-      if !@bank_owner_type.nil? && @bank_owner_type.to_s.length > 8
-        invalid_properties.push("invalid value for 'bank_owner_type', the character length must be smaller than or equal to 8.")
       end
 
 
@@ -225,11 +215,9 @@ module UltraCartAdminV2
       return false if !@bank_account_number.nil? && @bank_account_number.to_s.length > 50
       bank_account_type_validator = EnumAttributeValidator.new('String', ["Checking", "Savings"])
       return false unless bank_account_type_validator.valid?(@bank_account_type)
-      return false if !@bank_account_type.nil? && @bank_account_type.to_s.length > 8
       return false if !@bank_name.nil? && @bank_name.to_s.length > 50
       bank_owner_type_validator = EnumAttributeValidator.new('String', ["Personal", "Business"])
       return false unless bank_owner_type_validator.valid?(@bank_owner_type)
-      return false if !@bank_owner_type.nil? && @bank_owner_type.to_s.length > 8
       return false if !@customer_tax_id.nil? && @customer_tax_id.to_s.length > 9
       return false if !@drivers_license_dob.nil? && @drivers_license_dob.to_s.length > 10
       return false if !@drivers_license_number.nil? && @drivers_license_number.to_s.length > 50

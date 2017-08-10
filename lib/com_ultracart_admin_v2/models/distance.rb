@@ -92,11 +92,6 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-
-      if !@uom.nil? && @uom.to_s.length > 2
-        invalid_properties.push("invalid value for 'uom', the character length must be smaller than or equal to 2.")
-      end
-
       return invalid_properties
     end
 
@@ -105,7 +100,6 @@ module UltraCartAdminV2
     def valid?
       uom_validator = EnumAttributeValidator.new('String', ["IN", "CM"])
       return false unless uom_validator.valid?(@uom)
-      return false if !@uom.nil? && @uom.to_s.length > 2
       return true
     end
 

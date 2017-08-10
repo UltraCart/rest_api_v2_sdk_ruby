@@ -37,6 +37,9 @@ module UltraCartAdminV2
 
     attr_accessor :purchase_order
 
+    # Rotating transaction gateway code
+    attr_accessor :rtg_code
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -45,7 +48,8 @@ module UltraCartAdminV2
         :'check' => :'check',
         :'credit_card' => :'credit_card',
         :'payment_method' => :'payment_method',
-        :'purchase_order' => :'purchase_order'
+        :'purchase_order' => :'purchase_order',
+        :'rtg_code' => :'rtg_code'
       }
     end
 
@@ -56,7 +60,8 @@ module UltraCartAdminV2
         :'check' => :'CartPaymentCheck',
         :'credit_card' => :'CartPaymentCreditCard',
         :'payment_method' => :'String',
-        :'purchase_order' => :'CartPaymentPurchaseOrder'
+        :'purchase_order' => :'CartPaymentPurchaseOrder',
+        :'rtg_code' => :'String'
       }
     end
 
@@ -88,6 +93,10 @@ module UltraCartAdminV2
         self.purchase_order = attributes[:'purchase_order']
       end
 
+      if attributes.has_key?(:'rtg_code')
+        self.rtg_code = attributes[:'rtg_code']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -112,7 +121,8 @@ module UltraCartAdminV2
           check == o.check &&
           credit_card == o.credit_card &&
           payment_method == o.payment_method &&
-          purchase_order == o.purchase_order
+          purchase_order == o.purchase_order &&
+          rtg_code == o.rtg_code
     end
 
     # @see the `==` method
@@ -124,7 +134,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [amazon, check, credit_card, payment_method, purchase_order].hash
+      [amazon, check, credit_card, payment_method, purchase_order, rtg_code].hash
     end
 
     # Builds the object from hash
