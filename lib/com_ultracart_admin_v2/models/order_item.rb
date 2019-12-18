@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -31,6 +31,14 @@ module UltraCartAdminV2
 
     # Activation codes assigned to this item
     attr_accessor :activation_codes
+
+    attr_accessor :arbitrary_unit_cost
+
+    # Date/time of the last rebill, used only during order insert to help project future rebills
+    attr_accessor :auto_order_last_rebill_dts
+
+    # Auto order schedule, used only during inserts supplying the recurring schedule
+    attr_accessor :auto_order_schedule
 
     # Barcode
     attr_accessor :barcode
@@ -119,10 +127,13 @@ module UltraCartAdminV2
     # Pricing tier that granted the particular price for this item if the customer profile had pricing tiers assigned
     attr_accessor :pricing_tier_name
 
+    # Properties
+    attr_accessor :properties
+
     # Quantity
     attr_accessor :quantity
 
-    # Quantity refunded on this item
+    # Quantity refunded on this item (read only except refund operation)
     attr_accessor :quantity_refunded
 
     # QuickBooks class
@@ -139,6 +150,9 @@ module UltraCartAdminV2
 
     # Special product type (USPS Media Mail)
     attr_accessor :special_product_type
+
+    # Tags
+    attr_accessor :tags
 
     # True if the item is tax free
     attr_accessor :tax_free
@@ -167,6 +181,9 @@ module UltraCartAdminV2
       {
         :'accounting_code' => :'accounting_code',
         :'activation_codes' => :'activation_codes',
+        :'arbitrary_unit_cost' => :'arbitrary_unit_cost',
+        :'auto_order_last_rebill_dts' => :'auto_order_last_rebill_dts',
+        :'auto_order_schedule' => :'auto_order_schedule',
         :'barcode' => :'barcode',
         :'channel_partner_item_id' => :'channel_partner_item_id',
         :'cogs' => :'cogs',
@@ -198,6 +215,7 @@ module UltraCartAdminV2
         :'packed_by_user' => :'packed_by_user',
         :'perishable_class' => :'perishable_class',
         :'pricing_tier_name' => :'pricing_tier_name',
+        :'properties' => :'properties',
         :'quantity' => :'quantity',
         :'quantity_refunded' => :'quantity_refunded',
         :'quickbooks_class' => :'quickbooks_class',
@@ -205,6 +223,7 @@ module UltraCartAdminV2
         :'shipped_by_user' => :'shipped_by_user',
         :'shipped_dts' => :'shipped_dts',
         :'special_product_type' => :'special_product_type',
+        :'tags' => :'tags',
         :'tax_free' => :'tax_free',
         :'taxable_cost' => :'taxable_cost',
         :'total_cost_with_discount' => :'total_cost_with_discount',
@@ -222,6 +241,9 @@ module UltraCartAdminV2
       {
         :'accounting_code' => :'String',
         :'activation_codes' => :'Array<String>',
+        :'arbitrary_unit_cost' => :'Currency',
+        :'auto_order_last_rebill_dts' => :'String',
+        :'auto_order_schedule' => :'String',
         :'barcode' => :'String',
         :'channel_partner_item_id' => :'String',
         :'cogs' => :'Float',
@@ -253,6 +275,7 @@ module UltraCartAdminV2
         :'packed_by_user' => :'String',
         :'perishable_class' => :'String',
         :'pricing_tier_name' => :'String',
+        :'properties' => :'Array<OrderItemProperty>',
         :'quantity' => :'Float',
         :'quantity_refunded' => :'Float',
         :'quickbooks_class' => :'String',
@@ -260,6 +283,7 @@ module UltraCartAdminV2
         :'shipped_by_user' => :'String',
         :'shipped_dts' => :'String',
         :'special_product_type' => :'String',
+        :'tags' => :'Array<OrderItemTag>',
         :'tax_free' => :'BOOLEAN',
         :'taxable_cost' => :'Currency',
         :'total_cost_with_discount' => :'Currency',
@@ -288,6 +312,18 @@ module UltraCartAdminV2
         if (value = attributes[:'activation_codes']).is_a?(Array)
           self.activation_codes = value
         end
+      end
+
+      if attributes.has_key?(:'arbitrary_unit_cost')
+        self.arbitrary_unit_cost = attributes[:'arbitrary_unit_cost']
+      end
+
+      if attributes.has_key?(:'auto_order_last_rebill_dts')
+        self.auto_order_last_rebill_dts = attributes[:'auto_order_last_rebill_dts']
+      end
+
+      if attributes.has_key?(:'auto_order_schedule')
+        self.auto_order_schedule = attributes[:'auto_order_schedule']
       end
 
       if attributes.has_key?(:'barcode')
@@ -416,6 +452,12 @@ module UltraCartAdminV2
         self.pricing_tier_name = attributes[:'pricing_tier_name']
       end
 
+      if attributes.has_key?(:'properties')
+        if (value = attributes[:'properties']).is_a?(Array)
+          self.properties = value
+        end
+      end
+
       if attributes.has_key?(:'quantity')
         self.quantity = attributes[:'quantity']
       end
@@ -442,6 +484,12 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'special_product_type')
         self.special_product_type = attributes[:'special_product_type']
+      end
+
+      if attributes.has_key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
+        end
       end
 
       if attributes.has_key?(:'tax_free')
@@ -604,6 +652,9 @@ module UltraCartAdminV2
       self.class == o.class &&
           accounting_code == o.accounting_code &&
           activation_codes == o.activation_codes &&
+          arbitrary_unit_cost == o.arbitrary_unit_cost &&
+          auto_order_last_rebill_dts == o.auto_order_last_rebill_dts &&
+          auto_order_schedule == o.auto_order_schedule &&
           barcode == o.barcode &&
           channel_partner_item_id == o.channel_partner_item_id &&
           cogs == o.cogs &&
@@ -635,6 +686,7 @@ module UltraCartAdminV2
           packed_by_user == o.packed_by_user &&
           perishable_class == o.perishable_class &&
           pricing_tier_name == o.pricing_tier_name &&
+          properties == o.properties &&
           quantity == o.quantity &&
           quantity_refunded == o.quantity_refunded &&
           quickbooks_class == o.quickbooks_class &&
@@ -642,6 +694,7 @@ module UltraCartAdminV2
           shipped_by_user == o.shipped_by_user &&
           shipped_dts == o.shipped_dts &&
           special_product_type == o.special_product_type &&
+          tags == o.tags &&
           tax_free == o.tax_free &&
           taxable_cost == o.taxable_cost &&
           total_cost_with_discount == o.total_cost_with_discount &&
@@ -662,7 +715,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accounting_code, activation_codes, barcode, channel_partner_item_id, cogs, component_unit_value, cost, country_code_of_origin, customs_description, description, discount, discount_quantity, discount_shipping_weight, distribution_center_code, edi, exclude_coupon, free_shipping, hazmat, height, item_reference_oid, kit, kit_component, length, manufacturer_sku, max_days_time_in_transit, merchant_item_id, mix_and_match_group_name, mix_and_match_group_oid, no_shipping_discount, options, packed_by_user, perishable_class, pricing_tier_name, quantity, quantity_refunded, quickbooks_class, ship_separately, shipped_by_user, shipped_dts, special_product_type, tax_free, taxable_cost, total_cost_with_discount, total_refunded, transmitted_to_distribution_center_dts, unit_cost_with_discount, upsell, weight, width].hash
+      [accounting_code, activation_codes, arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, barcode, channel_partner_item_id, cogs, component_unit_value, cost, country_code_of_origin, customs_description, description, discount, discount_quantity, discount_shipping_weight, distribution_center_code, edi, exclude_coupon, free_shipping, hazmat, height, item_reference_oid, kit, kit_component, length, manufacturer_sku, max_days_time_in_transit, merchant_item_id, mix_and_match_group_name, mix_and_match_group_oid, no_shipping_discount, options, packed_by_user, perishable_class, pricing_tier_name, properties, quantity, quantity_refunded, quickbooks_class, ship_separately, shipped_by_user, shipped_dts, special_product_type, tags, tax_free, taxable_cost, total_cost_with_discount, total_refunded, transmitted_to_distribution_center_dts, unit_cost_with_discount, upsell, weight, width].hash
     end
 
     # Builds the object from hash

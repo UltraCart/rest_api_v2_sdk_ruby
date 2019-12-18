@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -26,6 +26,15 @@ require 'date'
 module UltraCartAdminV2
 
   class OrderTaxes
+    # Arbitrary Tax, this is meaningless for updating an order.  For inserting a new order, this will override any internal tax calculations and should only be used for orders completed outside the system.
+    attr_accessor :arbitrary_tax
+
+    # Arbitrary tax rate, this is meaningless for updating an order.  For inserting a new order, this will override any internal tax calculations and should only be used for orders completed outside the system.
+    attr_accessor :arbitrary_tax_rate
+
+    # Arbitrary taxable subtotal, this is meaningless for updating an order.  For inserting a new order, this will override any internal tax calculations and should only be used for orders completed outside the system.
+    attr_accessor :arbitrary_taxable_subtotal
+
     # QuickBooks tax city code
     attr_accessor :tax_city_accounting_code
 
@@ -38,10 +47,13 @@ module UltraCartAdminV2
     # QuickBooks tax county code
     attr_accessor :tax_county_accounting_code
 
+    # True if gift charge is taxed
+    attr_accessor :tax_gift_charge
+
     # QuickBooks tax postal code code
     attr_accessor :tax_postal_code_accounting_code
 
-    # Tax rate
+    # Tax rate, this is meaningless for updating an order.  For inserting a new order, if you need to override internal tax calculations, use the arbitrary fields.
     attr_accessor :tax_rate
 
     # Tax rate at the city level
@@ -59,17 +71,24 @@ module UltraCartAdminV2
     # Tax rate at the state level
     attr_accessor :tax_rate_state
 
-    # QuickBOoks tax state code
+    # True if shipping is taxed
+    attr_accessor :tax_shipping
+
+    # QuickBooks tax state code
     attr_accessor :tax_state_accounting_code
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'arbitrary_tax' => :'arbitrary_tax',
+        :'arbitrary_tax_rate' => :'arbitrary_tax_rate',
+        :'arbitrary_taxable_subtotal' => :'arbitrary_taxable_subtotal',
         :'tax_city_accounting_code' => :'tax_city_accounting_code',
         :'tax_country_accounting_code' => :'tax_country_accounting_code',
         :'tax_county' => :'tax_county',
         :'tax_county_accounting_code' => :'tax_county_accounting_code',
+        :'tax_gift_charge' => :'tax_gift_charge',
         :'tax_postal_code_accounting_code' => :'tax_postal_code_accounting_code',
         :'tax_rate' => :'tax_rate',
         :'tax_rate_city' => :'tax_rate_city',
@@ -77,6 +96,7 @@ module UltraCartAdminV2
         :'tax_rate_county' => :'tax_rate_county',
         :'tax_rate_postal_code' => :'tax_rate_postal_code',
         :'tax_rate_state' => :'tax_rate_state',
+        :'tax_shipping' => :'tax_shipping',
         :'tax_state_accounting_code' => :'tax_state_accounting_code'
       }
     end
@@ -84,10 +104,14 @@ module UltraCartAdminV2
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'arbitrary_tax' => :'Float',
+        :'arbitrary_tax_rate' => :'Float',
+        :'arbitrary_taxable_subtotal' => :'Float',
         :'tax_city_accounting_code' => :'String',
         :'tax_country_accounting_code' => :'String',
         :'tax_county' => :'String',
         :'tax_county_accounting_code' => :'String',
+        :'tax_gift_charge' => :'BOOLEAN',
         :'tax_postal_code_accounting_code' => :'String',
         :'tax_rate' => :'Float',
         :'tax_rate_city' => :'Float',
@@ -95,6 +119,7 @@ module UltraCartAdminV2
         :'tax_rate_county' => :'Float',
         :'tax_rate_postal_code' => :'Float',
         :'tax_rate_state' => :'Float',
+        :'tax_shipping' => :'BOOLEAN',
         :'tax_state_accounting_code' => :'String'
       }
     end
@@ -106,6 +131,18 @@ module UltraCartAdminV2
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
+
+      if attributes.has_key?(:'arbitrary_tax')
+        self.arbitrary_tax = attributes[:'arbitrary_tax']
+      end
+
+      if attributes.has_key?(:'arbitrary_tax_rate')
+        self.arbitrary_tax_rate = attributes[:'arbitrary_tax_rate']
+      end
+
+      if attributes.has_key?(:'arbitrary_taxable_subtotal')
+        self.arbitrary_taxable_subtotal = attributes[:'arbitrary_taxable_subtotal']
+      end
 
       if attributes.has_key?(:'tax_city_accounting_code')
         self.tax_city_accounting_code = attributes[:'tax_city_accounting_code']
@@ -121,6 +158,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'tax_county_accounting_code')
         self.tax_county_accounting_code = attributes[:'tax_county_accounting_code']
+      end
+
+      if attributes.has_key?(:'tax_gift_charge')
+        self.tax_gift_charge = attributes[:'tax_gift_charge']
       end
 
       if attributes.has_key?(:'tax_postal_code_accounting_code')
@@ -149,6 +190,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'tax_rate_state')
         self.tax_rate_state = attributes[:'tax_rate_state']
+      end
+
+      if attributes.has_key?(:'tax_shipping')
+        self.tax_shipping = attributes[:'tax_shipping']
       end
 
       if attributes.has_key?(:'tax_state_accounting_code')
@@ -192,10 +237,14 @@ module UltraCartAdminV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          arbitrary_tax == o.arbitrary_tax &&
+          arbitrary_tax_rate == o.arbitrary_tax_rate &&
+          arbitrary_taxable_subtotal == o.arbitrary_taxable_subtotal &&
           tax_city_accounting_code == o.tax_city_accounting_code &&
           tax_country_accounting_code == o.tax_country_accounting_code &&
           tax_county == o.tax_county &&
           tax_county_accounting_code == o.tax_county_accounting_code &&
+          tax_gift_charge == o.tax_gift_charge &&
           tax_postal_code_accounting_code == o.tax_postal_code_accounting_code &&
           tax_rate == o.tax_rate &&
           tax_rate_city == o.tax_rate_city &&
@@ -203,6 +252,7 @@ module UltraCartAdminV2
           tax_rate_county == o.tax_rate_county &&
           tax_rate_postal_code == o.tax_rate_postal_code &&
           tax_rate_state == o.tax_rate_state &&
+          tax_shipping == o.tax_shipping &&
           tax_state_accounting_code == o.tax_state_accounting_code
     end
 
@@ -215,7 +265,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [tax_city_accounting_code, tax_country_accounting_code, tax_county, tax_county_accounting_code, tax_postal_code_accounting_code, tax_rate, tax_rate_city, tax_rate_country, tax_rate_county, tax_rate_postal_code, tax_rate_state, tax_state_accounting_code].hash
+      [arbitrary_tax, arbitrary_tax_rate, arbitrary_taxable_subtotal, tax_city_accounting_code, tax_country_accounting_code, tax_county, tax_county_accounting_code, tax_gift_charge, tax_postal_code_accounting_code, tax_rate, tax_rate_city, tax_rate_country, tax_rate_county, tax_rate_postal_code, tax_rate_state, tax_shipping, tax_state_accounting_code].hash
     end
 
     # Builds the object from hash

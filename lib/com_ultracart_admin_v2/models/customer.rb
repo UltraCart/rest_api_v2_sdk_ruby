@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -26,6 +26,8 @@ require 'date'
 module UltraCartAdminV2
 
   class Customer
+    attr_accessor :activity
+
     # Affiliate oid
     attr_accessor :affiliate_oid
 
@@ -43,6 +45,9 @@ module UltraCartAdminV2
 
     # Allow selection of residential or business address type
     attr_accessor :allow_selection_of_address_type
+
+    # Attachments
+    attr_accessor :attachments
 
     # Auto approve COD
     attr_accessor :auto_approve_cod
@@ -62,11 +67,17 @@ module UltraCartAdminV2
     # Credit Cards for this customer
     attr_accessor :cards
 
+    # Additional emails to CC notification
+    attr_accessor :cc_emails
+
     # Customer profile object identifier
     attr_accessor :customer_profile_oid
 
     # DHL account number
     attr_accessor :dhl_account_number
+
+    # DHL duty account number
+    attr_accessor :dhl_duty_account_number
 
     # Email address of this customer profile
     attr_accessor :email
@@ -89,6 +100,8 @@ module UltraCartAdminV2
     # Last modified date
     attr_accessor :last_modified_dts
 
+    attr_accessor :loyalty
+
     # Maximum item count
     attr_accessor :maximum_item_count
 
@@ -107,11 +120,18 @@ module UltraCartAdminV2
     # No realtime charge
     attr_accessor :no_realtime_charge
 
+    # Orders associated with this customer profile
+    attr_accessor :orders
+
+    attr_accessor :orders_summary
+
     # Password (may only be set, never read)
     attr_accessor :password
 
     # Pricing tiers for this customer
     attr_accessor :pricing_tiers
+
+    attr_accessor :privacy
 
     # QuickBooks class to import this customer as
     attr_accessor :qb_class
@@ -119,8 +139,15 @@ module UltraCartAdminV2
     # QuickBooks name to import this customer as
     attr_accessor :qb_code
 
+    # Quotes associated with this customer profile
+    attr_accessor :quotes
+
+    attr_accessor :quotes_summary
+
     # Referral Source
     attr_accessor :referral_source
+
+    attr_accessor :reviewer
 
     # Sales rep code
     attr_accessor :sales_rep_code
@@ -134,8 +161,16 @@ module UltraCartAdminV2
     # Signup date
     attr_accessor :signup_dts
 
+    # Software entitlements owned by this customer
+    attr_accessor :software_entitlements
+
     # Suppress buySAFE
     attr_accessor :suppress_buysafe
+
+    # Tags for this customer
+    attr_accessor :tags
+
+    attr_accessor :tax_codes
 
     # True if the customer is tax exempt
     attr_accessor :tax_exempt
@@ -162,20 +197,24 @@ module UltraCartAdminV2
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'activity' => :'activity',
         :'affiliate_oid' => :'affiliate_oid',
         :'allow_3rd_party_billing' => :'allow_3rd_party_billing',
         :'allow_cod' => :'allow_cod',
         :'allow_purchase_order' => :'allow_purchase_order',
         :'allow_quote_request' => :'allow_quote_request',
         :'allow_selection_of_address_type' => :'allow_selection_of_address_type',
+        :'attachments' => :'attachments',
         :'auto_approve_cod' => :'auto_approve_cod',
         :'auto_approve_purchase_order' => :'auto_approve_purchase_order',
         :'automatic_merchant_notes' => :'automatic_merchant_notes',
         :'billing' => :'billing',
         :'business_notes' => :'business_notes',
         :'cards' => :'cards',
+        :'cc_emails' => :'cc_emails',
         :'customer_profile_oid' => :'customer_profile_oid',
         :'dhl_account_number' => :'dhl_account_number',
+        :'dhl_duty_account_number' => :'dhl_duty_account_number',
         :'email' => :'email',
         :'exempt_shipping_handling_charge' => :'exempt_shipping_handling_charge',
         :'fedex_account_number' => :'fedex_account_number',
@@ -183,22 +222,32 @@ module UltraCartAdminV2
         :'free_shipping_minimum' => :'free_shipping_minimum',
         :'last_modified_by' => :'last_modified_by',
         :'last_modified_dts' => :'last_modified_dts',
+        :'loyalty' => :'loyalty',
         :'maximum_item_count' => :'maximum_item_count',
         :'minimum_item_count' => :'minimum_item_count',
         :'minimum_subtotal' => :'minimum_subtotal',
         :'no_coupons' => :'no_coupons',
         :'no_free_shipping' => :'no_free_shipping',
         :'no_realtime_charge' => :'no_realtime_charge',
+        :'orders' => :'orders',
+        :'orders_summary' => :'orders_summary',
         :'password' => :'password',
         :'pricing_tiers' => :'pricing_tiers',
+        :'privacy' => :'privacy',
         :'qb_class' => :'qb_class',
         :'qb_code' => :'qb_code',
+        :'quotes' => :'quotes',
+        :'quotes_summary' => :'quotes_summary',
         :'referral_source' => :'referral_source',
+        :'reviewer' => :'reviewer',
         :'sales_rep_code' => :'sales_rep_code',
         :'send_signup_notification' => :'send_signup_notification',
         :'shipping' => :'shipping',
         :'signup_dts' => :'signup_dts',
+        :'software_entitlements' => :'software_entitlements',
         :'suppress_buysafe' => :'suppress_buysafe',
+        :'tags' => :'tags',
+        :'tax_codes' => :'tax_codes',
         :'tax_exempt' => :'tax_exempt',
         :'tax_id' => :'tax_id',
         :'terms' => :'terms',
@@ -212,20 +261,24 @@ module UltraCartAdminV2
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'activity' => :'CustomerActivity',
         :'affiliate_oid' => :'Integer',
         :'allow_3rd_party_billing' => :'BOOLEAN',
         :'allow_cod' => :'BOOLEAN',
         :'allow_purchase_order' => :'BOOLEAN',
         :'allow_quote_request' => :'BOOLEAN',
         :'allow_selection_of_address_type' => :'BOOLEAN',
+        :'attachments' => :'Array<CustomerAttachment>',
         :'auto_approve_cod' => :'BOOLEAN',
         :'auto_approve_purchase_order' => :'BOOLEAN',
         :'automatic_merchant_notes' => :'String',
         :'billing' => :'Array<CustomerBilling>',
         :'business_notes' => :'String',
         :'cards' => :'Array<CustomerCard>',
+        :'cc_emails' => :'Array<CustomerEmail>',
         :'customer_profile_oid' => :'Integer',
         :'dhl_account_number' => :'String',
+        :'dhl_duty_account_number' => :'String',
         :'email' => :'String',
         :'exempt_shipping_handling_charge' => :'BOOLEAN',
         :'fedex_account_number' => :'String',
@@ -233,22 +286,32 @@ module UltraCartAdminV2
         :'free_shipping_minimum' => :'Float',
         :'last_modified_by' => :'String',
         :'last_modified_dts' => :'String',
+        :'loyalty' => :'CustomerLoyalty',
         :'maximum_item_count' => :'Integer',
         :'minimum_item_count' => :'Integer',
         :'minimum_subtotal' => :'Float',
         :'no_coupons' => :'BOOLEAN',
         :'no_free_shipping' => :'BOOLEAN',
         :'no_realtime_charge' => :'BOOLEAN',
+        :'orders' => :'Array<Order>',
+        :'orders_summary' => :'CustomerOrdersSummary',
         :'password' => :'String',
         :'pricing_tiers' => :'Array<CustomerPricingTier>',
+        :'privacy' => :'CustomerPrivacy',
         :'qb_class' => :'String',
         :'qb_code' => :'String',
+        :'quotes' => :'Array<Order>',
+        :'quotes_summary' => :'CustomerQuotesSummary',
         :'referral_source' => :'String',
+        :'reviewer' => :'CustomerReviewer',
         :'sales_rep_code' => :'String',
         :'send_signup_notification' => :'BOOLEAN',
         :'shipping' => :'Array<CustomerShipping>',
         :'signup_dts' => :'String',
+        :'software_entitlements' => :'Array<CustomerSoftwareEntitlement>',
         :'suppress_buysafe' => :'BOOLEAN',
+        :'tags' => :'Array<CustomerTag>',
+        :'tax_codes' => :'CustomerTaxCodes',
         :'tax_exempt' => :'BOOLEAN',
         :'tax_id' => :'String',
         :'terms' => :'String',
@@ -266,6 +329,10 @@ module UltraCartAdminV2
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
+
+      if attributes.has_key?(:'activity')
+        self.activity = attributes[:'activity']
+      end
 
       if attributes.has_key?(:'affiliate_oid')
         self.affiliate_oid = attributes[:'affiliate_oid']
@@ -289,6 +356,12 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'allow_selection_of_address_type')
         self.allow_selection_of_address_type = attributes[:'allow_selection_of_address_type']
+      end
+
+      if attributes.has_key?(:'attachments')
+        if (value = attributes[:'attachments']).is_a?(Array)
+          self.attachments = value
+        end
       end
 
       if attributes.has_key?(:'auto_approve_cod')
@@ -319,12 +392,22 @@ module UltraCartAdminV2
         end
       end
 
+      if attributes.has_key?(:'cc_emails')
+        if (value = attributes[:'cc_emails']).is_a?(Array)
+          self.cc_emails = value
+        end
+      end
+
       if attributes.has_key?(:'customer_profile_oid')
         self.customer_profile_oid = attributes[:'customer_profile_oid']
       end
 
       if attributes.has_key?(:'dhl_account_number')
         self.dhl_account_number = attributes[:'dhl_account_number']
+      end
+
+      if attributes.has_key?(:'dhl_duty_account_number')
+        self.dhl_duty_account_number = attributes[:'dhl_duty_account_number']
       end
 
       if attributes.has_key?(:'email')
@@ -355,6 +438,10 @@ module UltraCartAdminV2
         self.last_modified_dts = attributes[:'last_modified_dts']
       end
 
+      if attributes.has_key?(:'loyalty')
+        self.loyalty = attributes[:'loyalty']
+      end
+
       if attributes.has_key?(:'maximum_item_count')
         self.maximum_item_count = attributes[:'maximum_item_count']
       end
@@ -379,6 +466,16 @@ module UltraCartAdminV2
         self.no_realtime_charge = attributes[:'no_realtime_charge']
       end
 
+      if attributes.has_key?(:'orders')
+        if (value = attributes[:'orders']).is_a?(Array)
+          self.orders = value
+        end
+      end
+
+      if attributes.has_key?(:'orders_summary')
+        self.orders_summary = attributes[:'orders_summary']
+      end
+
       if attributes.has_key?(:'password')
         self.password = attributes[:'password']
       end
@@ -389,6 +486,10 @@ module UltraCartAdminV2
         end
       end
 
+      if attributes.has_key?(:'privacy')
+        self.privacy = attributes[:'privacy']
+      end
+
       if attributes.has_key?(:'qb_class')
         self.qb_class = attributes[:'qb_class']
       end
@@ -397,8 +498,22 @@ module UltraCartAdminV2
         self.qb_code = attributes[:'qb_code']
       end
 
+      if attributes.has_key?(:'quotes')
+        if (value = attributes[:'quotes']).is_a?(Array)
+          self.quotes = value
+        end
+      end
+
+      if attributes.has_key?(:'quotes_summary')
+        self.quotes_summary = attributes[:'quotes_summary']
+      end
+
       if attributes.has_key?(:'referral_source')
         self.referral_source = attributes[:'referral_source']
+      end
+
+      if attributes.has_key?(:'reviewer')
+        self.reviewer = attributes[:'reviewer']
       end
 
       if attributes.has_key?(:'sales_rep_code')
@@ -419,8 +534,24 @@ module UltraCartAdminV2
         self.signup_dts = attributes[:'signup_dts']
       end
 
+      if attributes.has_key?(:'software_entitlements')
+        if (value = attributes[:'software_entitlements']).is_a?(Array)
+          self.software_entitlements = value
+        end
+      end
+
       if attributes.has_key?(:'suppress_buysafe')
         self.suppress_buysafe = attributes[:'suppress_buysafe']
+      end
+
+      if attributes.has_key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
+        end
+      end
+
+      if attributes.has_key?(:'tax_codes')
+        self.tax_codes = attributes[:'tax_codes']
       end
 
       if attributes.has_key?(:'tax_exempt')
@@ -468,6 +599,11 @@ module UltraCartAdminV2
       end
 
 
+      if !@dhl_duty_account_number.nil? && @dhl_duty_account_number.to_s.length > 20
+        invalid_properties.push("invalid value for 'dhl_duty_account_number', the character length must be smaller than or equal to 20.")
+      end
+
+
       if !@fedex_account_number.nil? && @fedex_account_number.to_s.length > 20
         invalid_properties.push("invalid value for 'fedex_account_number', the character length must be smaller than or equal to 20.")
       end
@@ -475,11 +611,6 @@ module UltraCartAdminV2
 
       if !@last_modified_by.nil? && @last_modified_by.to_s.length > 100
         invalid_properties.push("invalid value for 'last_modified_by', the character length must be smaller than or equal to 100.")
-      end
-
-
-      if !@last_modified_dts.nil? && @last_modified_dts.to_s.length > 25
-        invalid_properties.push("invalid value for 'last_modified_dts', the character length must be smaller than or equal to 25.")
       end
 
 
@@ -520,9 +651,9 @@ module UltraCartAdminV2
     def valid?
       return false if !@business_notes.nil? && @business_notes.to_s.length > 2000
       return false if !@dhl_account_number.nil? && @dhl_account_number.to_s.length > 20
+      return false if !@dhl_duty_account_number.nil? && @dhl_duty_account_number.to_s.length > 20
       return false if !@fedex_account_number.nil? && @fedex_account_number.to_s.length > 20
       return false if !@last_modified_by.nil? && @last_modified_by.to_s.length > 100
-      return false if !@last_modified_dts.nil? && @last_modified_dts.to_s.length > 25
       return false if !@password.nil? && @password.to_s.length > 30
       return false if !@referral_source.nil? && @referral_source.to_s.length > 50
       return false if !@sales_rep_code.nil? && @sales_rep_code.to_s.length > 10
@@ -555,6 +686,17 @@ module UltraCartAdminV2
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] dhl_duty_account_number Value to be assigned
+    def dhl_duty_account_number=(dhl_duty_account_number)
+
+      if !dhl_duty_account_number.nil? && dhl_duty_account_number.to_s.length > 20
+        fail ArgumentError, "invalid value for 'dhl_duty_account_number', the character length must be smaller than or equal to 20."
+      end
+
+      @dhl_duty_account_number = dhl_duty_account_number
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] fedex_account_number Value to be assigned
     def fedex_account_number=(fedex_account_number)
 
@@ -574,17 +716,6 @@ module UltraCartAdminV2
       end
 
       @last_modified_by = last_modified_by
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] last_modified_dts Value to be assigned
-    def last_modified_dts=(last_modified_dts)
-
-      if !last_modified_dts.nil? && last_modified_dts.to_s.length > 25
-        fail ArgumentError, "invalid value for 'last_modified_dts', the character length must be smaller than or equal to 25."
-      end
-
-      @last_modified_dts = last_modified_dts
     end
 
     # Custom attribute writer method with validation
@@ -658,20 +789,24 @@ module UltraCartAdminV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          activity == o.activity &&
           affiliate_oid == o.affiliate_oid &&
           allow_3rd_party_billing == o.allow_3rd_party_billing &&
           allow_cod == o.allow_cod &&
           allow_purchase_order == o.allow_purchase_order &&
           allow_quote_request == o.allow_quote_request &&
           allow_selection_of_address_type == o.allow_selection_of_address_type &&
+          attachments == o.attachments &&
           auto_approve_cod == o.auto_approve_cod &&
           auto_approve_purchase_order == o.auto_approve_purchase_order &&
           automatic_merchant_notes == o.automatic_merchant_notes &&
           billing == o.billing &&
           business_notes == o.business_notes &&
           cards == o.cards &&
+          cc_emails == o.cc_emails &&
           customer_profile_oid == o.customer_profile_oid &&
           dhl_account_number == o.dhl_account_number &&
+          dhl_duty_account_number == o.dhl_duty_account_number &&
           email == o.email &&
           exempt_shipping_handling_charge == o.exempt_shipping_handling_charge &&
           fedex_account_number == o.fedex_account_number &&
@@ -679,22 +814,32 @@ module UltraCartAdminV2
           free_shipping_minimum == o.free_shipping_minimum &&
           last_modified_by == o.last_modified_by &&
           last_modified_dts == o.last_modified_dts &&
+          loyalty == o.loyalty &&
           maximum_item_count == o.maximum_item_count &&
           minimum_item_count == o.minimum_item_count &&
           minimum_subtotal == o.minimum_subtotal &&
           no_coupons == o.no_coupons &&
           no_free_shipping == o.no_free_shipping &&
           no_realtime_charge == o.no_realtime_charge &&
+          orders == o.orders &&
+          orders_summary == o.orders_summary &&
           password == o.password &&
           pricing_tiers == o.pricing_tiers &&
+          privacy == o.privacy &&
           qb_class == o.qb_class &&
           qb_code == o.qb_code &&
+          quotes == o.quotes &&
+          quotes_summary == o.quotes_summary &&
           referral_source == o.referral_source &&
+          reviewer == o.reviewer &&
           sales_rep_code == o.sales_rep_code &&
           send_signup_notification == o.send_signup_notification &&
           shipping == o.shipping &&
           signup_dts == o.signup_dts &&
+          software_entitlements == o.software_entitlements &&
           suppress_buysafe == o.suppress_buysafe &&
+          tags == o.tags &&
+          tax_codes == o.tax_codes &&
           tax_exempt == o.tax_exempt &&
           tax_id == o.tax_id &&
           terms == o.terms &&
@@ -713,7 +858,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affiliate_oid, allow_3rd_party_billing, allow_cod, allow_purchase_order, allow_quote_request, allow_selection_of_address_type, auto_approve_cod, auto_approve_purchase_order, automatic_merchant_notes, billing, business_notes, cards, customer_profile_oid, dhl_account_number, email, exempt_shipping_handling_charge, fedex_account_number, free_shipping, free_shipping_minimum, last_modified_by, last_modified_dts, maximum_item_count, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, password, pricing_tiers, qb_class, qb_code, referral_source, sales_rep_code, send_signup_notification, shipping, signup_dts, suppress_buysafe, tax_exempt, tax_id, terms, track_separately, unapproved, ups_account_number, website_url].hash
+      [activity, affiliate_oid, allow_3rd_party_billing, allow_cod, allow_purchase_order, allow_quote_request, allow_selection_of_address_type, attachments, auto_approve_cod, auto_approve_purchase_order, automatic_merchant_notes, billing, business_notes, cards, cc_emails, customer_profile_oid, dhl_account_number, dhl_duty_account_number, email, exempt_shipping_handling_charge, fedex_account_number, free_shipping, free_shipping_minimum, last_modified_by, last_modified_dts, loyalty, maximum_item_count, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, orders, orders_summary, password, pricing_tiers, privacy, qb_class, qb_code, quotes, quotes_summary, referral_source, reviewer, sales_rep_code, send_signup_notification, shipping, signup_dts, software_entitlements, suppress_buysafe, tags, tax_codes, tax_exempt, tax_id, terms, track_separately, unapproved, ups_account_number, website_url].hash
     end
 
     # Builds the object from hash

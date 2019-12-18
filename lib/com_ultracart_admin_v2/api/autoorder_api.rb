@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -87,6 +87,126 @@ module UltraCartAdminV2
         :return_type => 'AutoOrderResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AutoorderApi#get_auto_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve an auto order
+    # Retrieves a single auto order using the specified reference (original) order id. 
+    # @param auto_order_code The auto order oid to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [AutoOrderResponse]
+    def get_auto_order_by_code(auto_order_code, opts = {})
+      data, _status_code, _headers = get_auto_order_by_code_with_http_info(auto_order_code, opts)
+      return data
+    end
+
+    # Retrieve an auto order
+    # Retrieves a single auto order using the specified reference (original) order id. 
+    # @param auto_order_code The auto order oid to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(AutoOrderResponse, Fixnum, Hash)>] AutoOrderResponse data, response status code and response headers
+    def get_auto_order_by_code_with_http_info(auto_order_code, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: AutoorderApi.get_auto_order_by_code ..."
+      end
+      # verify the required parameter 'auto_order_code' is set
+      fail ArgumentError, "Missing the required parameter 'auto_order_code' when calling AutoorderApi.get_auto_order_by_code" if auto_order_code.nil?
+      # resource path
+      local_var_path = "/auto_order/auto_orders/code/{auto_order_code}".sub('{format}','json').sub('{' + 'auto_order_code' + '}', auto_order_code.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AutoOrderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AutoorderApi#get_auto_order_by_code\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve an auto order
+    # Retrieves a single auto order using the specified reference (original) order id. 
+    # @param reference_order_id The auto order oid to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [AutoOrderResponse]
+    def get_auto_order_by_reference_order_id(reference_order_id, opts = {})
+      data, _status_code, _headers = get_auto_order_by_reference_order_id_with_http_info(reference_order_id, opts)
+      return data
+    end
+
+    # Retrieve an auto order
+    # Retrieves a single auto order using the specified reference (original) order id. 
+    # @param reference_order_id The auto order oid to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(AutoOrderResponse, Fixnum, Hash)>] AutoOrderResponse data, response status code and response headers
+    def get_auto_order_by_reference_order_id_with_http_info(reference_order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: AutoorderApi.get_auto_order_by_reference_order_id ..."
+      end
+      # verify the required parameter 'reference_order_id' is set
+      fail ArgumentError, "Missing the required parameter 'reference_order_id' when calling AutoorderApi.get_auto_order_by_reference_order_id" if reference_order_id.nil?
+      # resource path
+      local_var_path = "/auto_order/auto_orders/reference_order_id/{reference_order_id}".sub('{format}','json').sub('{' + 'reference_order_id' + '}', reference_order_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AutoOrderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AutoorderApi#get_auto_order_by_reference_order_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -209,6 +329,75 @@ module UltraCartAdminV2
         :return_type => 'AutoOrdersResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AutoorderApi#get_auto_orders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve auto orders
+    # Retrieves a group of auto orders from the account based on a query object.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
+    # @param auto_order_query Auto order query
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Maximum 200) (default to 100)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
+    # @option opts [String] :_sort The sort order of the auto orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+    # @option opts [String] :_expand The object expansion to perform on the result.
+    # @return [AutoOrdersResponse]
+    def get_auto_orders_by_query(auto_order_query, opts = {})
+      data, _status_code, _headers = get_auto_orders_by_query_with_http_info(auto_order_query, opts)
+      return data
+    end
+
+    # Retrieve auto orders
+    # Retrieves a group of auto orders from the account based on a query object.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
+    # @param auto_order_query Auto order query
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Maximum 200)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
+    # @option opts [String] :_sort The sort order of the auto orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+    # @option opts [String] :_expand The object expansion to perform on the result.
+    # @return [Array<(AutoOrdersResponse, Fixnum, Hash)>] AutoOrdersResponse data, response status code and response headers
+    def get_auto_orders_by_query_with_http_info(auto_order_query, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: AutoorderApi.get_auto_orders_by_query ..."
+      end
+      # verify the required parameter 'auto_order_query' is set
+      fail ArgumentError, "Missing the required parameter 'auto_order_query' when calling AutoorderApi.get_auto_orders_by_query" if auto_order_query.nil?
+      # resource path
+      local_var_path = "/auto_order/auto_orders/query".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
+      query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
+      query_params[:'_sort'] = opts[:'_sort'] if !opts[:'_sort'].nil?
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(auto_order_query)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AutoOrdersResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AutoorderApi#get_auto_orders_by_query\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

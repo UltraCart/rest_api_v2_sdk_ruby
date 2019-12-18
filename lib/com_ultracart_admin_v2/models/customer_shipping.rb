@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -252,11 +252,6 @@ module UltraCartAdminV2
       end
 
 
-      if !@last_used_dts.nil? && @last_used_dts.to_s.length > 25
-        invalid_properties.push("invalid value for 'last_used_dts', the character length must be smaller than or equal to 25.")
-      end
-
-
       if !@postal_code.nil? && @postal_code.to_s.length > 20
         invalid_properties.push("invalid value for 'postal_code', the character length must be smaller than or equal to 20.")
       end
@@ -291,7 +286,6 @@ module UltraCartAdminV2
       return false if !@evening_phone.nil? && @evening_phone.to_s.length > 25
       return false if !@first_name.nil? && @first_name.to_s.length > 30
       return false if !@last_name.nil? && @last_name.to_s.length > 30
-      return false if !@last_used_dts.nil? && @last_used_dts.to_s.length > 25
       return false if !@postal_code.nil? && @postal_code.to_s.length > 20
       return false if !@state_region.nil? && @state_region.to_s.length > 32
       return false if !@tax_county.nil? && @tax_county.to_s.length > 32
@@ -396,17 +390,6 @@ module UltraCartAdminV2
       end
 
       @last_name = last_name
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] last_used_dts Value to be assigned
-    def last_used_dts=(last_used_dts)
-
-      if !last_used_dts.nil? && last_used_dts.to_s.length > 25
-        fail ArgumentError, "invalid value for 'last_used_dts', the character length must be smaller than or equal to 25."
-      end
-
-      @last_used_dts = last_used_dts
     end
 
     # Custom attribute writer method with validation

@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -47,6 +47,9 @@ module UltraCartAdminV2
     # True if this is event is subscribed to
     attr_accessor :subscribed
 
+    # True if the event can be triggered to reflow existing records
+    attr_accessor :supports_reflow
+
     # The webhook event object identifier
     attr_accessor :webhook_event_oid
 
@@ -61,6 +64,7 @@ module UltraCartAdminV2
         :'event_name' => :'event_name',
         :'expansion' => :'expansion',
         :'subscribed' => :'subscribed',
+        :'supports_reflow' => :'supports_reflow',
         :'webhook_event_oid' => :'webhook_event_oid'
       }
     end
@@ -75,6 +79,7 @@ module UltraCartAdminV2
         :'event_name' => :'String',
         :'expansion' => :'String',
         :'subscribed' => :'BOOLEAN',
+        :'supports_reflow' => :'BOOLEAN',
         :'webhook_event_oid' => :'Integer'
       }
     end
@@ -115,6 +120,10 @@ module UltraCartAdminV2
         self.subscribed = attributes[:'subscribed']
       end
 
+      if attributes.has_key?(:'supports_reflow')
+        self.supports_reflow = attributes[:'supports_reflow']
+      end
+
       if attributes.has_key?(:'webhook_event_oid')
         self.webhook_event_oid = attributes[:'webhook_event_oid']
       end
@@ -146,6 +155,7 @@ module UltraCartAdminV2
           event_name == o.event_name &&
           expansion == o.expansion &&
           subscribed == o.subscribed &&
+          supports_reflow == o.supports_reflow &&
           webhook_event_oid == o.webhook_event_oid
     end
 
@@ -158,7 +168,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [comments, deprecated_flag, discontinued_flag, event_description, event_name, expansion, subscribed, webhook_event_oid].hash
+      [comments, deprecated_flag, discontinued_flag, event_description, event_name, expansion, subscribed, supports_reflow, webhook_event_oid].hash
     end
 
     # Builds the object from hash

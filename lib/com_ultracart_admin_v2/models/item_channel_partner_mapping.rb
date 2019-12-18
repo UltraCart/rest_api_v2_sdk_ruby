@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -37,6 +37,9 @@ module UltraCartAdminV2
 
     # Barcode UK (EDI only)
     attr_accessor :barcode_uk
+
+    # Buyer catalog number (EDI only)
+    attr_accessor :buyer_catalog_number
 
     # Buyer DPCI (EDI only)
     attr_accessor :buyer_dpci
@@ -85,6 +88,7 @@ module UltraCartAdminV2
         :'barcode_uc' => :'barcode_uc',
         :'barcode_ui' => :'barcode_ui',
         :'barcode_uk' => :'barcode_uk',
+        :'buyer_catalog_number' => :'buyer_catalog_number',
         :'buyer_dpci' => :'buyer_dpci',
         :'buyer_item_number' => :'buyer_item_number',
         :'channel_partner_code' => :'channel_partner_code',
@@ -108,6 +112,7 @@ module UltraCartAdminV2
         :'barcode_uc' => :'String',
         :'barcode_ui' => :'String',
         :'barcode_uk' => :'String',
+        :'buyer_catalog_number' => :'String',
         :'buyer_dpci' => :'String',
         :'buyer_item_number' => :'String',
         :'channel_partner_code' => :'String',
@@ -146,6 +151,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'barcode_uk')
         self.barcode_uk = attributes[:'barcode_uk']
+      end
+
+      if attributes.has_key?(:'buyer_catalog_number')
+        self.buyer_catalog_number = attributes[:'buyer_catalog_number']
       end
 
       if attributes.has_key?(:'buyer_dpci')
@@ -275,6 +284,7 @@ module UltraCartAdminV2
           barcode_uc == o.barcode_uc &&
           barcode_ui == o.barcode_ui &&
           barcode_uk == o.barcode_uk &&
+          buyer_catalog_number == o.buyer_catalog_number &&
           buyer_dpci == o.buyer_dpci &&
           buyer_item_number == o.buyer_item_number &&
           channel_partner_code == o.channel_partner_code &&
@@ -299,7 +309,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [barcode_ua, barcode_uc, barcode_ui, barcode_uk, buyer_dpci, buyer_item_number, channel_partner_code, channel_partner_oid, from_item_id, from_sku, mutually_defined_number, quantity_ratio_cp, quantity_ratio_uc, sku, unit_of_measure, vendor_number, vendor_style_number].hash
+      [barcode_ua, barcode_uc, barcode_ui, barcode_uk, buyer_catalog_number, buyer_dpci, buyer_item_number, channel_partner_code, channel_partner_oid, from_item_id, from_sku, mutually_defined_number, quantity_ratio_cp, quantity_ratio_uc, sku, unit_of_measure, vendor_number, vendor_style_number].hash
     end
 
     # Builds the object from hash

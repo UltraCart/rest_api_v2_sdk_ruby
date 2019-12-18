@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -26,6 +26,12 @@ require 'date'
 module UltraCartAdminV2
 
   class Currency
+    # Currency code of the localized value
+    attr_accessor :currency_code
+
+    # Exchange rate used to localize
+    attr_accessor :exchange_rate
+
     # Value localized to the customer
     attr_accessor :localized
 
@@ -39,6 +45,8 @@ module UltraCartAdminV2
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'currency_code' => :'currency_code',
+        :'exchange_rate' => :'exchange_rate',
         :'localized' => :'localized',
         :'localized_formatted' => :'localized_formatted',
         :'value' => :'value'
@@ -48,6 +56,8 @@ module UltraCartAdminV2
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'currency_code' => :'String',
+        :'exchange_rate' => :'Float',
         :'localized' => :'Float',
         :'localized_formatted' => :'String',
         :'value' => :'Float'
@@ -61,6 +71,14 @@ module UltraCartAdminV2
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
+
+      if attributes.has_key?(:'currency_code')
+        self.currency_code = attributes[:'currency_code']
+      end
+
+      if attributes.has_key?(:'exchange_rate')
+        self.exchange_rate = attributes[:'exchange_rate']
+      end
 
       if attributes.has_key?(:'localized')
         self.localized = attributes[:'localized']
@@ -94,6 +112,8 @@ module UltraCartAdminV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          currency_code == o.currency_code &&
+          exchange_rate == o.exchange_rate &&
           localized == o.localized &&
           localized_formatted == o.localized_formatted &&
           value == o.value
@@ -108,7 +128,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [localized, localized_formatted, value].hash
+      [currency_code, exchange_rate, localized, localized_formatted, value].hash
     end
 
     # Builds the object from hash

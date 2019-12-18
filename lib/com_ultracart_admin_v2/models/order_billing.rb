@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -47,6 +47,9 @@ module UltraCartAdminV2
     # Day time phone
     attr_accessor :day_phone
 
+    # Day time phone (E164 format)
+    attr_accessor :day_phone_e164
+
     # Email
     attr_accessor :email
 
@@ -79,6 +82,7 @@ module UltraCartAdminV2
         :'company' => :'company',
         :'country_code' => :'country_code',
         :'day_phone' => :'day_phone',
+        :'day_phone_e164' => :'day_phone_e164',
         :'email' => :'email',
         :'evening_phone' => :'evening_phone',
         :'first_name' => :'first_name',
@@ -99,6 +103,7 @@ module UltraCartAdminV2
         :'company' => :'String',
         :'country_code' => :'String',
         :'day_phone' => :'String',
+        :'day_phone_e164' => :'String',
         :'email' => :'String',
         :'evening_phone' => :'String',
         :'first_name' => :'String',
@@ -145,6 +150,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'day_phone')
         self.day_phone = attributes[:'day_phone']
+      end
+
+      if attributes.has_key?(:'day_phone_e164')
+        self.day_phone_e164 = attributes[:'day_phone_e164']
       end
 
       if attributes.has_key?(:'email')
@@ -212,6 +221,11 @@ module UltraCartAdminV2
       end
 
 
+      if !@day_phone_e164.nil? && @day_phone_e164.to_s.length > 25
+        invalid_properties.push("invalid value for 'day_phone_e164', the character length must be smaller than or equal to 25.")
+      end
+
+
       if !@email.nil? && @email.to_s.length > 100
         invalid_properties.push("invalid value for 'email', the character length must be smaller than or equal to 100.")
       end
@@ -258,6 +272,7 @@ module UltraCartAdminV2
       return false if !@company.nil? && @company.to_s.length > 50
       return false if !@country_code.nil? && @country_code.to_s.length > 2
       return false if !@day_phone.nil? && @day_phone.to_s.length > 25
+      return false if !@day_phone_e164.nil? && @day_phone_e164.to_s.length > 25
       return false if !@email.nil? && @email.to_s.length > 100
       return false if !@evening_phone.nil? && @evening_phone.to_s.length > 25
       return false if !@first_name.nil? && @first_name.to_s.length > 30
@@ -332,6 +347,17 @@ module UltraCartAdminV2
       end
 
       @day_phone = day_phone
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] day_phone_e164 Value to be assigned
+    def day_phone_e164=(day_phone_e164)
+
+      if !day_phone_e164.nil? && day_phone_e164.to_s.length > 25
+        fail ArgumentError, "invalid value for 'day_phone_e164', the character length must be smaller than or equal to 25."
+      end
+
+      @day_phone_e164 = day_phone_e164
     end
 
     # Custom attribute writer method with validation
@@ -423,6 +449,7 @@ module UltraCartAdminV2
           company == o.company &&
           country_code == o.country_code &&
           day_phone == o.day_phone &&
+          day_phone_e164 == o.day_phone_e164 &&
           email == o.email &&
           evening_phone == o.evening_phone &&
           first_name == o.first_name &&
@@ -441,7 +468,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [address1, address2, cc_emails, city, company, country_code, day_phone, email, evening_phone, first_name, last_name, postal_code, state_region, title].hash
+      [address1, address2, cc_emails, city, company, country_code, day_phone, day_phone_e164, email, evening_phone, first_name, last_name, postal_code, state_region, title].hash
     end
 
     # Builds the object from hash

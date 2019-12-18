@@ -1,0 +1,10 @@
+# UltraCartAdminV2::CouponPercentOffItemsAndFreeShipping
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**discount_percent** | **Float** | The percentage of subtotal discount | [optional] 
+**excluded_items** | **Array&lt;String&gt;** | A list of items which cannot be discounted. | [optional] 
+**items** | **Array&lt;String&gt;** | An optional list of items which will receive a discount.  If blank, discount applies to all items except excluded items. | [optional] 
+
+

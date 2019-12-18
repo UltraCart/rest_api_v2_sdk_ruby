@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -26,8 +26,17 @@ require 'date'
 module UltraCartAdminV2
 
   class FulfillmentShipment
+    # Fees charged by the fulfillment company other than the shipping cost to process the order.
+    attr_accessor :fulfillment_fee
+
     # Order ID that was shipped
     attr_accessor :order_id
+
+    # The cost of the packaging used to sent this shipment
+    attr_accessor :package_cost
+
+    # The actual total cost of shipping this order
+    attr_accessor :shipping_cost
 
     # Tracking numbers associated with the shipment
     attr_accessor :tracking_numbers
@@ -36,7 +45,10 @@ module UltraCartAdminV2
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'fulfillment_fee' => :'fulfillment_fee',
         :'order_id' => :'order_id',
+        :'package_cost' => :'package_cost',
+        :'shipping_cost' => :'shipping_cost',
         :'tracking_numbers' => :'tracking_numbers'
       }
     end
@@ -44,7 +56,10 @@ module UltraCartAdminV2
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'fulfillment_fee' => :'Float',
         :'order_id' => :'String',
+        :'package_cost' => :'Float',
+        :'shipping_cost' => :'Float',
         :'tracking_numbers' => :'Array<String>'
       }
     end
@@ -57,8 +72,20 @@ module UltraCartAdminV2
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
+      if attributes.has_key?(:'fulfillment_fee')
+        self.fulfillment_fee = attributes[:'fulfillment_fee']
+      end
+
       if attributes.has_key?(:'order_id')
         self.order_id = attributes[:'order_id']
+      end
+
+      if attributes.has_key?(:'package_cost')
+        self.package_cost = attributes[:'package_cost']
+      end
+
+      if attributes.has_key?(:'shipping_cost')
+        self.shipping_cost = attributes[:'shipping_cost']
       end
 
       if attributes.has_key?(:'tracking_numbers')
@@ -87,7 +114,10 @@ module UltraCartAdminV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          fulfillment_fee == o.fulfillment_fee &&
           order_id == o.order_id &&
+          package_cost == o.package_cost &&
+          shipping_cost == o.shipping_cost &&
           tracking_numbers == o.tracking_numbers
     end
 
@@ -100,7 +130,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [order_id, tracking_numbers].hash
+      [fulfillment_fee, order_id, package_cost, shipping_cost, tracking_numbers].hash
     end
 
     # Builds the object from hash

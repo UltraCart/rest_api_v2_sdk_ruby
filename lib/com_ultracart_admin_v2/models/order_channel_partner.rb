@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -26,36 +26,66 @@ require 'date'
 module UltraCartAdminV2
 
   class OrderChannelPartner
+    # If true, any purchase order submitted is automatically approved
+    attr_accessor :auto_approve_purchase_order
+
     # The code of the channel partner
     attr_accessor :channel_partner_code
 
-    # Additional data provided by the channel partner
+    # Additional data provided by the channel partner, read-only
     attr_accessor :channel_partner_data
 
-    # Channel partner object identifier
+    # Channel partner object identifier, read-only and available on existing channel orders only.
     attr_accessor :channel_partner_oid
 
     # The order ID assigned by the channel partner for this order
     attr_accessor :channel_partner_order_id
 
+    # Indicates this order should be placed in Account Receivable for later payment processing
+    attr_accessor :no_realtime_payment_processing
+
+    # Indicates this order was already paid for via a channel purchase and no payment collection should be attempted
+    attr_accessor :skip_payment_processing
+
+    # Instructs UltraCart to skip shipping department and mark this order as fully complete.  Set this flag if you have already shipped product for this order.
+    attr_accessor :store_completed
+
+    # If true, any failed payment will place the order in Accounts Receivable rather than rejecting it.
+    attr_accessor :store_if_payment_declines
+
+    # Any warnings are raised as errors and halt the import of the order
+    attr_accessor :treat_warnings_as_errors
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'auto_approve_purchase_order' => :'auto_approve_purchase_order',
         :'channel_partner_code' => :'channel_partner_code',
         :'channel_partner_data' => :'channel_partner_data',
         :'channel_partner_oid' => :'channel_partner_oid',
-        :'channel_partner_order_id' => :'channel_partner_order_id'
+        :'channel_partner_order_id' => :'channel_partner_order_id',
+        :'no_realtime_payment_processing' => :'no_realtime_payment_processing',
+        :'skip_payment_processing' => :'skip_payment_processing',
+        :'store_completed' => :'store_completed',
+        :'store_if_payment_declines' => :'store_if_payment_declines',
+        :'treat_warnings_as_errors' => :'treat_warnings_as_errors'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'auto_approve_purchase_order' => :'BOOLEAN',
         :'channel_partner_code' => :'String',
         :'channel_partner_data' => :'String',
         :'channel_partner_oid' => :'Integer',
-        :'channel_partner_order_id' => :'String'
+        :'channel_partner_order_id' => :'String',
+        :'no_realtime_payment_processing' => :'BOOLEAN',
+        :'skip_payment_processing' => :'BOOLEAN',
+        :'store_completed' => :'BOOLEAN',
+        :'store_if_payment_declines' => :'BOOLEAN',
+        :'treat_warnings_as_errors' => :'BOOLEAN'
       }
     end
 
@@ -66,6 +96,10 @@ module UltraCartAdminV2
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
+
+      if attributes.has_key?(:'auto_approve_purchase_order')
+        self.auto_approve_purchase_order = attributes[:'auto_approve_purchase_order']
+      end
 
       if attributes.has_key?(:'channel_partner_code')
         self.channel_partner_code = attributes[:'channel_partner_code']
@@ -81,6 +115,26 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'channel_partner_order_id')
         self.channel_partner_order_id = attributes[:'channel_partner_order_id']
+      end
+
+      if attributes.has_key?(:'no_realtime_payment_processing')
+        self.no_realtime_payment_processing = attributes[:'no_realtime_payment_processing']
+      end
+
+      if attributes.has_key?(:'skip_payment_processing')
+        self.skip_payment_processing = attributes[:'skip_payment_processing']
+      end
+
+      if attributes.has_key?(:'store_completed')
+        self.store_completed = attributes[:'store_completed']
+      end
+
+      if attributes.has_key?(:'store_if_payment_declines')
+        self.store_if_payment_declines = attributes[:'store_if_payment_declines']
+      end
+
+      if attributes.has_key?(:'treat_warnings_as_errors')
+        self.treat_warnings_as_errors = attributes[:'treat_warnings_as_errors']
       end
 
     end
@@ -103,10 +157,16 @@ module UltraCartAdminV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          auto_approve_purchase_order == o.auto_approve_purchase_order &&
           channel_partner_code == o.channel_partner_code &&
           channel_partner_data == o.channel_partner_data &&
           channel_partner_oid == o.channel_partner_oid &&
-          channel_partner_order_id == o.channel_partner_order_id
+          channel_partner_order_id == o.channel_partner_order_id &&
+          no_realtime_payment_processing == o.no_realtime_payment_processing &&
+          skip_payment_processing == o.skip_payment_processing &&
+          store_completed == o.store_completed &&
+          store_if_payment_declines == o.store_if_payment_declines &&
+          treat_warnings_as_errors == o.treat_warnings_as_errors
     end
 
     # @see the `==` method
@@ -118,7 +178,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [channel_partner_code, channel_partner_data, channel_partner_oid, channel_partner_order_id].hash
+      [auto_approve_purchase_order, channel_partner_code, channel_partner_data, channel_partner_oid, channel_partner_order_id, no_realtime_payment_processing, skip_payment_processing, store_completed, store_if_payment_declines, treat_warnings_as_errors].hash
     end
 
     # Builds the object from hash

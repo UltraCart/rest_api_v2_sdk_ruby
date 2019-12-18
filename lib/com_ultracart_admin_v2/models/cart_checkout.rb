@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -50,8 +50,11 @@ module UltraCartAdminV2
     # Custom field 7
     attr_accessor :custom_field7
 
-    # IP Address
+    # IP Address (read only unless non-browser key authenticated)
     attr_accessor :ip_address
+
+    # Return code assigned for send return email operation
+    attr_accessor :return_code
 
     # Screen branding theme code
     attr_accessor :screen_branding_theme_code
@@ -69,6 +72,7 @@ module UltraCartAdminV2
         :'custom_field6' => :'custom_field6',
         :'custom_field7' => :'custom_field7',
         :'ip_address' => :'ip_address',
+        :'return_code' => :'return_code',
         :'screen_branding_theme_code' => :'screen_branding_theme_code'
       }
     end
@@ -85,6 +89,7 @@ module UltraCartAdminV2
         :'custom_field6' => :'String',
         :'custom_field7' => :'String',
         :'ip_address' => :'String',
+        :'return_code' => :'String',
         :'screen_branding_theme_code' => :'String'
       }
     end
@@ -131,6 +136,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'ip_address')
         self.ip_address = attributes[:'ip_address']
+      end
+
+      if attributes.has_key?(:'return_code')
+        self.return_code = attributes[:'return_code']
       end
 
       if attributes.has_key?(:'screen_branding_theme_code')
@@ -319,6 +328,7 @@ module UltraCartAdminV2
           custom_field6 == o.custom_field6 &&
           custom_field7 == o.custom_field7 &&
           ip_address == o.ip_address &&
+          return_code == o.return_code &&
           screen_branding_theme_code == o.screen_branding_theme_code
     end
 
@@ -331,7 +341,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [comments, custom_field1, custom_field2, custom_field3, custom_field4, custom_field5, custom_field6, custom_field7, ip_address, screen_branding_theme_code].hash
+      [comments, custom_field1, custom_field2, custom_field3, custom_field4, custom_field5, custom_field6, custom_field7, ip_address, return_code, screen_branding_theme_code].hash
     end
 
     # Builds the object from hash

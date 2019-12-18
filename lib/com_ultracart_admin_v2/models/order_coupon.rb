@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -29,6 +29,9 @@ module UltraCartAdminV2
     # QuickBooks accounting code for this coupon
     attr_accessor :accounting_code
 
+    # Whether or not the coupon was automatically applied to the order
+    attr_accessor :automatically_applied
+
     # Coupon code configured by the merchant.  Will differ if the customer used a one time coupon code generated off this base coupon
     attr_accessor :base_coupon_code
 
@@ -40,6 +43,7 @@ module UltraCartAdminV2
     def self.attribute_map
       {
         :'accounting_code' => :'accounting_code',
+        :'automatically_applied' => :'automatically_applied',
         :'base_coupon_code' => :'base_coupon_code',
         :'coupon_code' => :'coupon_code'
       }
@@ -49,6 +53,7 @@ module UltraCartAdminV2
     def self.swagger_types
       {
         :'accounting_code' => :'String',
+        :'automatically_applied' => :'BOOLEAN',
         :'base_coupon_code' => :'String',
         :'coupon_code' => :'String'
       }
@@ -64,6 +69,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'accounting_code')
         self.accounting_code = attributes[:'accounting_code']
+      end
+
+      if attributes.has_key?(:'automatically_applied')
+        self.automatically_applied = attributes[:'automatically_applied']
       end
 
       if attributes.has_key?(:'base_coupon_code')
@@ -129,6 +138,7 @@ module UltraCartAdminV2
       return true if self.equal?(o)
       self.class == o.class &&
           accounting_code == o.accounting_code &&
+          automatically_applied == o.automatically_applied &&
           base_coupon_code == o.base_coupon_code &&
           coupon_code == o.coupon_code
     end
@@ -142,7 +152,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accounting_code, base_coupon_code, coupon_code].hash
+      [accounting_code, automatically_applied, base_coupon_code, coupon_code].hash
     end
 
     # Builds the object from hash

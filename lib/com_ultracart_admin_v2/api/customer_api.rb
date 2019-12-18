@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -297,6 +297,240 @@ module UltraCartAdminV2
       return data, status_code, headers
     end
 
+    # Retrieve customers by query
+    # Retrieves customers from the account.  If no parameters are specified, all customers will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
+    # @param customer_query Customer query
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Max 200) (default to 100)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
+    # @option opts [String] :_since Fetch customers that have been created/modified since this date/time.
+    # @option opts [String] :_sort The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [CustomersResponse]
+    def get_customers_by_query(customer_query, opts = {})
+      data, _status_code, _headers = get_customers_by_query_with_http_info(customer_query, opts)
+      return data
+    end
+
+    # Retrieve customers by query
+    # Retrieves customers from the account.  If no parameters are specified, all customers will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
+    # @param customer_query Customer query
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Max 200)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
+    # @option opts [String] :_since Fetch customers that have been created/modified since this date/time.
+    # @option opts [String] :_sort The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(CustomersResponse, Fixnum, Hash)>] CustomersResponse data, response status code and response headers
+    def get_customers_by_query_with_http_info(customer_query, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CustomerApi.get_customers_by_query ..."
+      end
+      # verify the required parameter 'customer_query' is set
+      fail ArgumentError, "Missing the required parameter 'customer_query' when calling CustomerApi.get_customers_by_query" if customer_query.nil?
+      # resource path
+      local_var_path = "/customer/customers/query".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
+      query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
+      query_params[:'_since'] = opts[:'_since'] if !opts[:'_since'].nil?
+      query_params[:'_sort'] = opts[:'_sort'] if !opts[:'_sort'].nil?
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(customer_query)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CustomersResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#get_customers_by_query\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve customers for DataTables plugin
+    # Retrieves customers from the account.  If no searches are specified, all customers will be returned. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [DataTablesServerSideResponse]
+    def get_customers_for_data_tables(opts = {})
+      data, _status_code, _headers = get_customers_for_data_tables_with_http_info(opts)
+      return data
+    end
+
+    # Retrieve customers for DataTables plugin
+    # Retrieves customers from the account.  If no searches are specified, all customers will be returned. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(DataTablesServerSideResponse, Fixnum, Hash)>] DataTablesServerSideResponse data, response status code and response headers
+    def get_customers_for_data_tables_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CustomerApi.get_customers_for_data_tables ..."
+      end
+      # resource path
+      local_var_path = "/customer/customers/dataTables".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'DataTablesServerSideResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#get_customers_for_data_tables\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve values needed for a customer profile editor
+    # Retrieve values needed for a customer profile editor. 
+    # @param [Hash] opts the optional parameters
+    # @return [CustomerEditorValues]
+    def get_editor_values(opts = {})
+      data, _status_code, _headers = get_editor_values_with_http_info(opts)
+      return data
+    end
+
+    # Retrieve values needed for a customer profile editor
+    # Retrieve values needed for a customer profile editor. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomerEditorValues, Fixnum, Hash)>] CustomerEditorValues data, response status code and response headers
+    def get_editor_values_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CustomerApi.get_editor_values ..."
+      end
+      # resource path
+      local_var_path = "/customer/editor_values".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CustomerEditorValues')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#get_editor_values\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all email lists across all storefronts
+    # Retrieve all email lists across all storefronts 
+    # @param [Hash] opts the optional parameters
+    # @return [EmailListsResponse]
+    def get_email_lists(opts = {})
+      data, _status_code, _headers = get_email_lists_with_http_info(opts)
+      return data
+    end
+
+    # Retrieve all email lists across all storefronts
+    # Retrieve all email lists across all storefronts 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailListsResponse, Fixnum, Hash)>] EmailListsResponse data, response status code and response headers
+    def get_email_lists_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CustomerApi.get_email_lists ..."
+      end
+      # resource path
+      local_var_path = "/customer/email_lists".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailListsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#get_email_lists\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Insert a customer
     # Insert a customer on the UltraCart account. 
     # @param customer Customer to insert
@@ -417,6 +651,67 @@ module UltraCartAdminV2
         :return_type => 'CustomerResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CustomerApi#update_customer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update email list subscriptions for a customer
+    # Update email list subscriptions for a customer 
+    # @param customer_profile_oid The customer profile oid
+    # @param list_changes List changes
+    # @param [Hash] opts the optional parameters
+    # @return [CustomerEmailListChanges]
+    def update_customer_email_lists(customer_profile_oid, list_changes, opts = {})
+      data, _status_code, _headers = update_customer_email_lists_with_http_info(customer_profile_oid, list_changes, opts)
+      return data
+    end
+
+    # Update email list subscriptions for a customer
+    # Update email list subscriptions for a customer 
+    # @param customer_profile_oid The customer profile oid
+    # @param list_changes List changes
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomerEmailListChanges, Fixnum, Hash)>] CustomerEmailListChanges data, response status code and response headers
+    def update_customer_email_lists_with_http_info(customer_profile_oid, list_changes, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CustomerApi.update_customer_email_lists ..."
+      end
+      # verify the required parameter 'customer_profile_oid' is set
+      fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.update_customer_email_lists" if customer_profile_oid.nil?
+      # verify the required parameter 'list_changes' is set
+      fail ArgumentError, "Missing the required parameter 'list_changes' when calling CustomerApi.update_customer_email_lists" if list_changes.nil?
+      # resource path
+      local_var_path = "/customer/customers/{customer_profile_oid}/email_lists".sub('{format}','json').sub('{' + 'customer_profile_oid' + '}', customer_profile_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json; charset=UTF-8']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(list_changes)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CustomerEmailListChanges')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#update_customer_email_lists\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

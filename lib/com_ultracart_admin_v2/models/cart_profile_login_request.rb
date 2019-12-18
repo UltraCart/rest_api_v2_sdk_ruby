@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -28,6 +28,9 @@ module UltraCartAdminV2
   class CartProfileLoginRequest
     attr_accessor :cart
 
+    # Unique identifier for customer profile.  Can not be used with browser key authentication type.
+    attr_accessor :customer_profile_oid
+
     # Password for the profile
     attr_accessor :password
 
@@ -36,6 +39,7 @@ module UltraCartAdminV2
     def self.attribute_map
       {
         :'cart' => :'cart',
+        :'customer_profile_oid' => :'customer_profile_oid',
         :'password' => :'password'
       }
     end
@@ -44,6 +48,7 @@ module UltraCartAdminV2
     def self.swagger_types
       {
         :'cart' => :'Cart',
+        :'customer_profile_oid' => :'Integer',
         :'password' => :'String'
       }
     end
@@ -58,6 +63,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'cart')
         self.cart = attributes[:'cart']
+      end
+
+      if attributes.has_key?(:'customer_profile_oid')
+        self.customer_profile_oid = attributes[:'customer_profile_oid']
       end
 
       if attributes.has_key?(:'password')
@@ -85,6 +94,7 @@ module UltraCartAdminV2
       return true if self.equal?(o)
       self.class == o.class &&
           cart == o.cart &&
+          customer_profile_oid == o.customer_profile_oid &&
           password == o.password
     end
 
@@ -97,7 +107,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [cart, password].hash
+      [cart, customer_profile_oid, password].hash
     end
 
     # Builds the object from hash

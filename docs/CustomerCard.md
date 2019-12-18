@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **card_type** | **String** | Card type | [optional] 
 **customer_profile_credit_card_id** | **Integer** | ID of the stored credit card to use | [optional] 
 **customer_profile_oid** | **Integer** | Customer profile object identifier | [optional] 
+**last_used_dts** | **String** | Last used date | [optional] 
 
 

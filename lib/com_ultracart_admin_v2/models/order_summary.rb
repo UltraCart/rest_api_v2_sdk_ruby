@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -26,6 +26,8 @@ require 'date'
 module UltraCartAdminV2
 
   class OrderSummary
+    attr_accessor :arbitrary_shipping_handling_total
+
     attr_accessor :other_refunded
 
     attr_accessor :shipping_handling_refunded
@@ -58,6 +60,7 @@ module UltraCartAdminV2
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'arbitrary_shipping_handling_total' => :'arbitrary_shipping_handling_total',
         :'other_refunded' => :'other_refunded',
         :'shipping_handling_refunded' => :'shipping_handling_refunded',
         :'shipping_handling_total' => :'shipping_handling_total',
@@ -78,6 +81,7 @@ module UltraCartAdminV2
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'arbitrary_shipping_handling_total' => :'Currency',
         :'other_refunded' => :'Currency',
         :'shipping_handling_refunded' => :'Currency',
         :'shipping_handling_total' => :'Currency',
@@ -102,6 +106,10 @@ module UltraCartAdminV2
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
+
+      if attributes.has_key?(:'arbitrary_shipping_handling_total')
+        self.arbitrary_shipping_handling_total = attributes[:'arbitrary_shipping_handling_total']
+      end
 
       if attributes.has_key?(:'other_refunded')
         self.other_refunded = attributes[:'other_refunded']
@@ -179,6 +187,7 @@ module UltraCartAdminV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          arbitrary_shipping_handling_total == o.arbitrary_shipping_handling_total &&
           other_refunded == o.other_refunded &&
           shipping_handling_refunded == o.shipping_handling_refunded &&
           shipping_handling_total == o.shipping_handling_total &&
@@ -204,7 +213,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [other_refunded, shipping_handling_refunded, shipping_handling_total, shipping_handling_total_discount, subtotal, subtotal_discount, subtotal_discount_refunded, subtotal_refunded, tax, tax_refunded, taxable_subtotal, taxable_subtotal_discount, total, total_refunded].hash
+      [arbitrary_shipping_handling_total, other_refunded, shipping_handling_refunded, shipping_handling_total, shipping_handling_total_discount, subtotal, subtotal_discount, subtotal_discount_refunded, subtotal_refunded, tax, tax_refunded, taxable_subtotal, taxable_subtotal_discount, total, total_refunded].hash
     end
 
     # Builds the object from hash

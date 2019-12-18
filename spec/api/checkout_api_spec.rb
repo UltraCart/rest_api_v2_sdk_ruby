@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -48,7 +48,7 @@ describe 'CheckoutApi' do
   # Look up the city and state for the shipping zip code.  Useful for building an auto complete for parts of the shipping address 
   # @param cart Cart
   # @param [Hash] opts the optional parameters
-  # @return [ItemsResponse]
+  # @return [CityStateZip]
   describe 'city_state test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -107,7 +107,7 @@ describe 'CheckoutApi' do
 
   # unit tests for handoff_cart
   # Handoff cart
-  # Handoff the browser to UltraCart for view cart on StoreFront, transfer to PayPal or finalization of the order (including upsell processing). 
+  # Handoff the browser to UltraCart for view cart on StoreFront, transfer to PayPal, transfer to Affirm or finalization of the order (including upsell processing). 
   # @param handoff_request Handoff request
   # @param [Hash] opts the optional parameters
   # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples

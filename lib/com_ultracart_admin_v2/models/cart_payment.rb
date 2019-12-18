@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -26,6 +26,8 @@ require 'date'
 module UltraCartAdminV2
 
   class CartPayment
+    attr_accessor :affirm
+
     attr_accessor :amazon
 
     attr_accessor :check
@@ -44,6 +46,7 @@ module UltraCartAdminV2
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'affirm' => :'affirm',
         :'amazon' => :'amazon',
         :'check' => :'check',
         :'credit_card' => :'credit_card',
@@ -56,6 +59,7 @@ module UltraCartAdminV2
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'affirm' => :'CartPaymentAffirm',
         :'amazon' => :'CartPaymentAmazon',
         :'check' => :'CartPaymentCheck',
         :'credit_card' => :'CartPaymentCreditCard',
@@ -72,6 +76,10 @@ module UltraCartAdminV2
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
+
+      if attributes.has_key?(:'affirm')
+        self.affirm = attributes[:'affirm']
+      end
 
       if attributes.has_key?(:'amazon')
         self.amazon = attributes[:'amazon']
@@ -117,6 +125,7 @@ module UltraCartAdminV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          affirm == o.affirm &&
           amazon == o.amazon &&
           check == o.check &&
           credit_card == o.credit_card &&
@@ -134,7 +143,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [amazon, check, credit_card, payment_method, purchase_order, rtg_code].hash
+      [affirm, amazon, check, credit_card, payment_method, purchase_order, rtg_code].hash
     end
 
     # Builds the object from hash

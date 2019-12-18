@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -83,6 +83,63 @@ module UltraCartAdminV2
         :auth_names => auth_names)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: WebhookApi#delete_webhook\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a webhook by URL
+    # Delete a webhook based upon the URL on the webhook_url matching an existing webhook. 
+    # @param webhook Webhook to delete
+    # @param [Hash] opts the optional parameters
+    # @return [WebhookResponse]
+    def delete_webhook_by_url(webhook, opts = {})
+      data, _status_code, _headers = delete_webhook_by_url_with_http_info(webhook, opts)
+      return data
+    end
+
+    # Delete a webhook by URL
+    # Delete a webhook based upon the URL on the webhook_url matching an existing webhook. 
+    # @param webhook Webhook to delete
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(WebhookResponse, Fixnum, Hash)>] WebhookResponse data, response status code and response headers
+    def delete_webhook_by_url_with_http_info(webhook, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: WebhookApi.delete_webhook_by_url ..."
+      end
+      # verify the required parameter 'webhook' is set
+      fail ArgumentError, "Missing the required parameter 'webhook' when calling WebhookApi.delete_webhook_by_url" if webhook.nil?
+      # resource path
+      local_var_path = "/webhook/webhooks".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json; charset=UTF-8']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(webhook)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'WebhookResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: WebhookApi#delete_webhook_by_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -51,6 +51,12 @@ module UltraCartAdminV2
 
     # The categories of events.  Individual events and subscriptions are handled in the child objects.  _placeholders parameter effects the population of this on a retrieval.
     attr_accessor :event_categories
+
+    # IAM Access Key for AWS SQS Delivery
+    attr_accessor :iam_access_key
+
+    # IAM Secret Key for AWS SQS Delivery
+    attr_accessor :iam_secret_key
 
     # The maximum number of events in the payload that UltraCart will deliver
     attr_accessor :maximum_events
@@ -107,6 +113,8 @@ module UltraCartAdminV2
         :'consecutive_failures' => :'consecutive_failures',
         :'disabled' => :'disabled',
         :'event_categories' => :'event_categories',
+        :'iam_access_key' => :'iam_access_key',
+        :'iam_secret_key' => :'iam_secret_key',
         :'maximum_events' => :'maximum_events',
         :'maximum_size' => :'maximum_size',
         :'merchant_id' => :'merchant_id',
@@ -129,6 +137,8 @@ module UltraCartAdminV2
         :'consecutive_failures' => :'Integer',
         :'disabled' => :'BOOLEAN',
         :'event_categories' => :'Array<WebhookEventCategory>',
+        :'iam_access_key' => :'String',
+        :'iam_secret_key' => :'String',
         :'maximum_events' => :'Integer',
         :'maximum_size' => :'Integer',
         :'merchant_id' => :'String',
@@ -183,6 +193,14 @@ module UltraCartAdminV2
         if (value = attributes[:'event_categories']).is_a?(Array)
           self.event_categories = value
         end
+      end
+
+      if attributes.has_key?(:'iam_access_key')
+        self.iam_access_key = attributes[:'iam_access_key']
+      end
+
+      if attributes.has_key?(:'iam_secret_key')
+        self.iam_secret_key = attributes[:'iam_secret_key']
       end
 
       if attributes.has_key?(:'maximum_events')
@@ -266,6 +284,8 @@ module UltraCartAdminV2
           consecutive_failures == o.consecutive_failures &&
           disabled == o.disabled &&
           event_categories == o.event_categories &&
+          iam_access_key == o.iam_access_key &&
+          iam_secret_key == o.iam_secret_key &&
           maximum_events == o.maximum_events &&
           maximum_size == o.maximum_size &&
           merchant_id == o.merchant_id &&
@@ -284,7 +304,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [api_user_oid, api_version, application_profile, authentication_type, basic_password, basic_username, consecutive_failures, disabled, event_categories, maximum_events, maximum_size, merchant_id, next_retry_after, pending, webhook_oid, webhook_url].hash
+      [api_user_oid, api_version, application_profile, authentication_type, basic_password, basic_username, consecutive_failures, disabled, event_categories, iam_access_key, iam_secret_key, maximum_events, maximum_size, merchant_id, next_retry_after, pending, webhook_oid, webhook_url].hash
     end
 
     # Builds the object from hash

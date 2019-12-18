@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -35,7 +35,7 @@ module UltraCartAdminV2
     # True if order has been held for fraud review
     attr_accessor :hold_for_fraud_review
 
-    # Date/time that the payment was successfully processed
+    # Date/time that the payment was successfully processed, for new orders, this field is only considered if channel_partner.skip_payment_processing is true
     attr_accessor :payment_dts
 
     # Payment method
@@ -230,7 +230,7 @@ module UltraCartAdminV2
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      payment_method_validator = EnumAttributeValidator.new('String', ["Affirm", "Amazon", "Amazon SC", "Cash", "Check", "COD", "Coinbase", "Credit Card", "eCheck", "Money Order", "PayPal", "Purchase Order", "Quote Request", "Unknown", "Wire Transfer"])
+      payment_method_validator = EnumAttributeValidator.new('String', ["Affirm", "Amazon", "Amazon SC", "Cash", "Check", "COD", "Credit Card", "eBay", "eCheck", "LoanHero", "Money Order", "PayPal", "Purchase Order", "Quote Request", "Unknown", "Wire Transfer", "Walmart"])
       return false unless payment_method_validator.valid?(@payment_method)
       payment_status_validator = EnumAttributeValidator.new('String', ["Unprocessed", "Authorized", "Capture Failed", "Processed", "Declined", "Voided", "Refunded", "Skipped"])
       return false unless payment_status_validator.valid?(@payment_status)
@@ -240,7 +240,7 @@ module UltraCartAdminV2
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] payment_method Object to be assigned
     def payment_method=(payment_method)
-      validator = EnumAttributeValidator.new('String', ["Affirm", "Amazon", "Amazon SC", "Cash", "Check", "COD", "Coinbase", "Credit Card", "eCheck", "Money Order", "PayPal", "Purchase Order", "Quote Request", "Unknown", "Wire Transfer"])
+      validator = EnumAttributeValidator.new('String', ["Affirm", "Amazon", "Amazon SC", "Cash", "Check", "COD", "Credit Card", "eBay", "eCheck", "LoanHero", "Money Order", "PayPal", "Purchase Order", "Quote Request", "Unknown", "Wire Transfer", "Walmart"])
       unless validator.valid?(payment_method)
         fail ArgumentError, "invalid value for 'payment_method', must be one of #{validator.allowable_values}."
       end

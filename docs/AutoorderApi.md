@@ -5,7 +5,10 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_auto_order**](AutoorderApi.md#get_auto_order) | **GET** /auto_order/auto_orders/{auto_order_oid} | Retrieve an auto order
+[**get_auto_order_by_code**](AutoorderApi.md#get_auto_order_by_code) | **GET** /auto_order/auto_orders/code/{auto_order_code} | Retrieve an auto order
+[**get_auto_order_by_reference_order_id**](AutoorderApi.md#get_auto_order_by_reference_order_id) | **GET** /auto_order/auto_orders/reference_order_id/{reference_order_id} | Retrieve an auto order
 [**get_auto_orders**](AutoorderApi.md#get_auto_orders) | **GET** /auto_order/auto_orders | Retrieve auto orders
+[**get_auto_orders_by_query**](AutoorderApi.md#get_auto_orders_by_query) | **POST** /auto_order/auto_orders/query | Retrieve auto orders
 [**update_auto_order**](AutoorderApi.md#update_auto_order) | **PUT** /auto_order/auto_orders/{auto_order_oid} | Update an auto order
 
 
@@ -53,6 +56,128 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **auto_order_oid** | **Integer**| The auto order oid to retrieve. | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+
+### Return type
+
+[**AutoOrderResponse**](AutoOrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_auto_order_by_code**
+> AutoOrderResponse get_auto_order_by_code(auto_order_code, opts)
+
+Retrieve an auto order
+
+Retrieves a single auto order using the specified reference (original) order id. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::AutoorderApi.new
+
+auto_order_code = "auto_order_code_example" # String | The auto order oid to retrieve.
+
+opts = { 
+  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+}
+
+begin
+  #Retrieve an auto order
+  result = api_instance.get_auto_order_by_code(auto_order_code, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling AutoorderApi->get_auto_order_by_code: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **auto_order_code** | **String**| The auto order oid to retrieve. | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+
+### Return type
+
+[**AutoOrderResponse**](AutoOrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_auto_order_by_reference_order_id**
+> AutoOrderResponse get_auto_order_by_reference_order_id(reference_order_id, opts)
+
+Retrieve an auto order
+
+Retrieves a single auto order using the specified reference (original) order id. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::AutoorderApi.new
+
+reference_order_id = "reference_order_id_example" # String | The auto order oid to retrieve.
+
+opts = { 
+  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+}
+
+begin
+  #Retrieve an auto order
+  result = api_instance.get_auto_order_by_reference_order_id(reference_order_id, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling AutoorderApi->get_auto_order_by_reference_order_id: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **reference_order_id** | **String**| The auto order oid to retrieve. | 
  **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
 
 ### Return type
@@ -156,6 +281,73 @@ Name | Type | Description  | Notes
  **_since** | **String**| Fetch auto orders that have been created/modified since this date/time. | [optional] 
  **_sort** | **String**| The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] 
  **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+
+### Return type
+
+[**AutoOrdersResponse**](AutoOrdersResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_auto_orders_by_query**
+> AutoOrdersResponse get_auto_orders_by_query(auto_order_query, opts)
+
+Retrieve auto orders
+
+Retrieves a group of auto orders from the account based on a query object.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::AutoorderApi.new
+
+auto_order_query = UltraCartAdminV2::AutoOrderQuery.new # AutoOrderQuery | Auto order query
+
+opts = { 
+  _limit: 100, # Integer | The maximum number of records to return on this one API call. (Maximum 200)
+  _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
+  _sort: "_sort_example", # String | The sort order of the auto orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+  _expand: "_expand_example" # String | The object expansion to perform on the result.
+}
+
+begin
+  #Retrieve auto orders
+  result = api_instance.get_auto_orders_by_query(auto_order_query, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling AutoorderApi->get_auto_orders_by_query: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **auto_order_query** | [**AutoOrderQuery**](AutoOrderQuery.md)| Auto order query | 
+ **_limit** | **Integer**| The maximum number of records to return on this one API call. (Maximum 200) | [optional] [default to 100]
+ **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] [default to 0]
+ **_sort** | **String**| The sort order of the auto orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] 
+ **_expand** | **String**| The object expansion to perform on the result. | [optional] 
 
 ### Return type
 

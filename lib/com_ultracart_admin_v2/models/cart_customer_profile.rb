@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -46,6 +46,9 @@ module UltraCartAdminV2
 
     # DHL account number on file
     attr_accessor :dhl_account_number
+
+    # DHL duty account number on file
+    attr_accessor :dhl_duty_account_number
 
     # Email
     attr_accessor :email
@@ -100,6 +103,7 @@ module UltraCartAdminV2
         :'credit_cards' => :'credit_cards',
         :'customer_profile_oid' => :'customer_profile_oid',
         :'dhl_account_number' => :'dhl_account_number',
+        :'dhl_duty_account_number' => :'dhl_duty_account_number',
         :'email' => :'email',
         :'fedex_account_number' => :'fedex_account_number',
         :'free_shipping' => :'free_shipping',
@@ -127,6 +131,7 @@ module UltraCartAdminV2
         :'credit_cards' => :'Array<CartCustomerProfileCreditCard>',
         :'customer_profile_oid' => :'Integer',
         :'dhl_account_number' => :'String',
+        :'dhl_duty_account_number' => :'String',
         :'email' => :'String',
         :'fedex_account_number' => :'String',
         :'free_shipping' => :'BOOLEAN',
@@ -182,6 +187,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'dhl_account_number')
         self.dhl_account_number = attributes[:'dhl_account_number']
+      end
+
+      if attributes.has_key?(:'dhl_duty_account_number')
+        self.dhl_duty_account_number = attributes[:'dhl_duty_account_number']
       end
 
       if attributes.has_key?(:'email')
@@ -271,6 +280,7 @@ module UltraCartAdminV2
           credit_cards == o.credit_cards &&
           customer_profile_oid == o.customer_profile_oid &&
           dhl_account_number == o.dhl_account_number &&
+          dhl_duty_account_number == o.dhl_duty_account_number &&
           email == o.email &&
           fedex_account_number == o.fedex_account_number &&
           free_shipping == o.free_shipping &&
@@ -296,7 +306,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allow_3rd_party_billing, allow_cod, allow_purchase_order, billing_addresses, credit_cards, customer_profile_oid, dhl_account_number, email, fedex_account_number, free_shipping, free_shipping_minimum, maximum_item_count, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, pricing_tiers, shipping_addresses, tax_exempt, ups_account_number].hash
+      [allow_3rd_party_billing, allow_cod, allow_purchase_order, billing_addresses, credit_cards, customer_profile_oid, dhl_account_number, dhl_duty_account_number, email, fedex_account_number, free_shipping, free_shipping_minimum, maximum_item_count, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, pricing_tiers, shipping_addresses, tax_exempt, ups_account_number].hash
     end
 
     # Builds the object from hash

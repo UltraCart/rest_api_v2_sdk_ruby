@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -68,6 +68,9 @@ module UltraCartAdminV2
     # True if the customer should be given free shipping
     attr_accessor :free_shipping_auto_order
 
+    # True if other auto orders for this customer should refunded if this item is refunded.
+    attr_accessor :refund_other_auto_orders
+
     # The rebill steps if this auto order is an upsell
     attr_accessor :steps
 
@@ -89,6 +92,7 @@ module UltraCartAdminV2
         :'auto_orderable' => :'auto_orderable',
         :'cancel_other_auto_orders' => :'cancel_other_auto_orders',
         :'free_shipping_auto_order' => :'free_shipping_auto_order',
+        :'refund_other_auto_orders' => :'refund_other_auto_orders',
         :'steps' => :'steps'
       }
     end
@@ -110,6 +114,7 @@ module UltraCartAdminV2
         :'auto_orderable' => :'BOOLEAN',
         :'cancel_other_auto_orders' => :'BOOLEAN',
         :'free_shipping_auto_order' => :'BOOLEAN',
+        :'refund_other_auto_orders' => :'BOOLEAN',
         :'steps' => :'Array<ItemAutoOrderStep>'
       }
     end
@@ -184,6 +189,10 @@ module UltraCartAdminV2
         self.free_shipping_auto_order = attributes[:'free_shipping_auto_order']
       end
 
+      if attributes.has_key?(:'refund_other_auto_orders')
+        self.refund_other_auto_orders = attributes[:'refund_other_auto_orders']
+      end
+
       if attributes.has_key?(:'steps')
         if (value = attributes[:'steps']).is_a?(Array)
           self.steps = value
@@ -241,6 +250,7 @@ module UltraCartAdminV2
           auto_orderable == o.auto_orderable &&
           cancel_other_auto_orders == o.cancel_other_auto_orders &&
           free_shipping_auto_order == o.free_shipping_auto_order &&
+          refund_other_auto_orders == o.refund_other_auto_orders &&
           steps == o.steps
     end
 
@@ -253,7 +263,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [auth_future_amount, auth_test_amount, auto_order_cancel_item_id, auto_order_cancel_item_oid, auto_order_downgrade_items, auto_order_paused, auto_order_schedules, auto_order_upgrade_items, auto_order_upsell, auto_order_upsell_no_easy_cancel, auto_order_upsell_one_per_customer, auto_orderable, cancel_other_auto_orders, free_shipping_auto_order, steps].hash
+      [auth_future_amount, auth_test_amount, auto_order_cancel_item_id, auto_order_cancel_item_oid, auto_order_downgrade_items, auto_order_paused, auto_order_schedules, auto_order_upgrade_items, auto_order_upsell, auto_order_upsell_no_easy_cancel, auto_order_upsell_one_per_customer, auto_orderable, cancel_other_auto_orders, free_shipping_auto_order, refund_other_auto_orders, steps].hash
     end
 
     # Builds the object from hash

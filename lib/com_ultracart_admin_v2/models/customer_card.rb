@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -47,6 +47,9 @@ module UltraCartAdminV2
     # Customer profile object identifier
     attr_accessor :customer_profile_oid
 
+    # Last used date
+    attr_accessor :last_used_dts
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -57,7 +60,8 @@ module UltraCartAdminV2
         :'card_number_token' => :'card_number_token',
         :'card_type' => :'card_type',
         :'customer_profile_credit_card_id' => :'customer_profile_credit_card_id',
-        :'customer_profile_oid' => :'customer_profile_oid'
+        :'customer_profile_oid' => :'customer_profile_oid',
+        :'last_used_dts' => :'last_used_dts'
       }
     end
 
@@ -70,7 +74,8 @@ module UltraCartAdminV2
         :'card_number_token' => :'String',
         :'card_type' => :'String',
         :'customer_profile_credit_card_id' => :'Integer',
-        :'customer_profile_oid' => :'Integer'
+        :'customer_profile_oid' => :'Integer',
+        :'last_used_dts' => :'String'
       }
     end
 
@@ -110,6 +115,10 @@ module UltraCartAdminV2
         self.customer_profile_oid = attributes[:'customer_profile_oid']
       end
 
+      if attributes.has_key?(:'last_used_dts')
+        self.last_used_dts = attributes[:'last_used_dts']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -136,7 +145,8 @@ module UltraCartAdminV2
           card_number_token == o.card_number_token &&
           card_type == o.card_type &&
           customer_profile_credit_card_id == o.customer_profile_credit_card_id &&
-          customer_profile_oid == o.customer_profile_oid
+          customer_profile_oid == o.customer_profile_oid &&
+          last_used_dts == o.last_used_dts
     end
 
     # @see the `==` method
@@ -148,7 +158,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [card_expiration_month, card_expiration_year, card_number, card_number_token, card_type, customer_profile_credit_card_id, customer_profile_oid].hash
+      [card_expiration_month, card_expiration_year, card_number, card_number_token, card_type, customer_profile_credit_card_id, customer_profile_oid, last_used_dts].hash
     end
 
     # Builds the object from hash

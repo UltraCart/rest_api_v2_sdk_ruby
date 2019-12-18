@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -80,10 +80,6 @@ describe 'OrderFraudScore' do
   describe 'test attribute "customer_phone_in_billing_location"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-       #validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["", "No", "NotFound", "Yes"])
-       #validator.allowable_values.each do |value|
-       #  expect { @instance.customer_phone_in_billing_location = value }.not_to raise_error
-       #end
     end
   end
 

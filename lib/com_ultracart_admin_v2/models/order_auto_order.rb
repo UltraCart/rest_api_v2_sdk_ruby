@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -26,8 +26,11 @@ require 'date'
 module UltraCartAdminV2
 
   class OrderAutoOrder
-    # Unique identifier assigned to the auto order
+    # Unique code assigned to the auto order
     attr_accessor :auto_order_code
+
+    # Unique identifier assigned to the auto order
+    attr_accessor :auto_order_oid
 
     # Orignal order id that started this auto order sequence
     attr_accessor :original_order_id
@@ -61,6 +64,7 @@ module UltraCartAdminV2
     def self.attribute_map
       {
         :'auto_order_code' => :'auto_order_code',
+        :'auto_order_oid' => :'auto_order_oid',
         :'original_order_id' => :'original_order_id',
         :'status' => :'status'
       }
@@ -70,6 +74,7 @@ module UltraCartAdminV2
     def self.swagger_types
       {
         :'auto_order_code' => :'String',
+        :'auto_order_oid' => :'Integer',
         :'original_order_id' => :'String',
         :'status' => :'String'
       }
@@ -85,6 +90,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'auto_order_code')
         self.auto_order_code = attributes[:'auto_order_code']
+      end
+
+      if attributes.has_key?(:'auto_order_oid')
+        self.auto_order_oid = attributes[:'auto_order_oid']
       end
 
       if attributes.has_key?(:'original_order_id')
@@ -128,6 +137,7 @@ module UltraCartAdminV2
       return true if self.equal?(o)
       self.class == o.class &&
           auto_order_code == o.auto_order_code &&
+          auto_order_oid == o.auto_order_oid &&
           original_order_id == o.original_order_id &&
           status == o.status
     end
@@ -141,7 +151,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [auto_order_code, original_order_id, status].hash
+      [auto_order_code, auto_order_oid, original_order_id, status].hash
     end
 
     # Builds the object from hash

@@ -1,0 +1,11 @@
+# UltraCartAdminV2::AffiliateLedgersResponse
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**error** | [**Error**](Error.md) |  | [optional] 
+**ledgers** | [**Array&lt;AffiliateLedger&gt;**](AffiliateLedger.md) | ledgers | [optional] 
+**metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] 
+**success** | **BOOLEAN** | Indicates if API call was successful | [optional] 
+
+

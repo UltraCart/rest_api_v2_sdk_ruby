@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -64,6 +64,8 @@ module UltraCartAdminV2
 
     # True if the shipment should be held before transmission and require a manual release
     attr_accessor :hold_before_transmission
+
+    attr_accessor :hold_auto_order_before_shipment_minutes
 
     # Latitude where the distribution center is located
     attr_accessor :latitude
@@ -142,6 +144,7 @@ module UltraCartAdminV2
         :'ftp_password' => :'ftp_password',
         :'hold_before_shipment_minutes' => :'hold_before_shipment_minutes',
         :'hold_before_transmission' => :'hold_before_transmission',
+        :'hold_auto_order_before_shipment_minutes' => :'holdAutoOrderBeforeShipmentMinutes',
         :'latitude' => :'latitude',
         :'longitude' => :'longitude',
         :'name' => :'name',
@@ -181,6 +184,7 @@ module UltraCartAdminV2
         :'ftp_password' => :'String',
         :'hold_before_shipment_minutes' => :'Integer',
         :'hold_before_transmission' => :'BOOLEAN',
+        :'hold_auto_order_before_shipment_minutes' => :'Integer',
         :'latitude' => :'Float',
         :'longitude' => :'Float',
         :'name' => :'String',
@@ -262,6 +266,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'hold_before_transmission')
         self.hold_before_transmission = attributes[:'hold_before_transmission']
+      end
+
+      if attributes.has_key?(:'holdAutoOrderBeforeShipmentMinutes')
+        self.hold_auto_order_before_shipment_minutes = attributes[:'holdAutoOrderBeforeShipmentMinutes']
       end
 
       if attributes.has_key?(:'latitude')
@@ -377,6 +385,7 @@ module UltraCartAdminV2
           ftp_password == o.ftp_password &&
           hold_before_shipment_minutes == o.hold_before_shipment_minutes &&
           hold_before_transmission == o.hold_before_transmission &&
+          hold_auto_order_before_shipment_minutes == o.hold_auto_order_before_shipment_minutes &&
           latitude == o.latitude &&
           longitude == o.longitude &&
           name == o.name &&
@@ -408,7 +417,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [address1, address2, city, code, country_code, default_center, default_handles_all_items, distribution_center_oid, duns, estimate_from_distribution_center_oid, ftp_password, hold_before_shipment_minutes, hold_before_transmission, latitude, longitude, name, no_customer_direct_shipments, no_split_shipment, postal_code, process_days, process_inventory_start_time, process_inventory_stop_time, require_asn, send_kit_instead_of_components, shipment_cutoff_time_friday, shipment_cutoff_time_monday, shipment_cutoff_time_saturday, shipment_cutoff_time_sunday, shipment_cutoff_time_thursday, shipment_cutoff_time_tuesday, shipment_cutoff_time_wednesday, state, transport].hash
+      [address1, address2, city, code, country_code, default_center, default_handles_all_items, distribution_center_oid, duns, estimate_from_distribution_center_oid, ftp_password, hold_before_shipment_minutes, hold_before_transmission, hold_auto_order_before_shipment_minutes, latitude, longitude, name, no_customer_direct_shipments, no_split_shipment, postal_code, process_days, process_inventory_start_time, process_inventory_stop_time, require_asn, send_kit_instead_of_components, shipment_cutoff_time_friday, shipment_cutoff_time_monday, shipment_cutoff_time_saturday, shipment_cutoff_time_sunday, shipment_cutoff_time_thursday, shipment_cutoff_time_tuesday, shipment_cutoff_time_wednesday, state, transport].hash
     end
 
     # Builds the object from hash

@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -149,6 +149,8 @@ module UltraCartAdminV2
     # Search position
     attr_accessor :search_position
 
+    attr_accessor :shipping_label
+
     # Size
     attr_accessor :size
 
@@ -212,6 +214,7 @@ module UltraCartAdminV2
         :'search_lowest_price' => :'search_lowest_price',
         :'search_lowest_url' => :'search_lowest_url',
         :'search_position' => :'search_position',
+        :'shipping_label' => :'shippingLabel',
         :'size' => :'size',
         :'video_director' => :'video_director',
         :'video_format' => :'video_format',
@@ -265,6 +268,7 @@ module UltraCartAdminV2
         :'search_lowest_price' => :'Float',
         :'search_lowest_url' => :'String',
         :'search_position' => :'Integer',
+        :'shipping_label' => :'String',
         :'size' => :'String',
         :'video_director' => :'String',
         :'video_format' => :'String',
@@ -444,6 +448,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'search_position')
         self.search_position = attributes[:'search_position']
+      end
+
+      if attributes.has_key?(:'shippingLabel')
+        self.shipping_label = attributes[:'shippingLabel']
       end
 
       if attributes.has_key?(:'size')
@@ -1211,6 +1219,7 @@ module UltraCartAdminV2
           search_lowest_price == o.search_lowest_price &&
           search_lowest_url == o.search_lowest_url &&
           search_position == o.search_position &&
+          shipping_label == o.shipping_label &&
           size == o.size &&
           video_director == o.video_director &&
           video_format == o.video_format &&
@@ -1228,7 +1237,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [adwords_grouping, adwords_label1, adwords_label2, adwords_label3, adwords_label4, adwords_label5, age_group, available_at_physical_store, book_author, book_format, book_isbn, book_publisher, category_description, color, condition, custom_label0, custom_label1, custom_label2, custom_label3, custom_label4, gender, google_product_category, music_artist, music_format, music_release_date, omit_from_feed, product_type, promotion_id1, promotion_id10, promotion_id2, promotion_id3, promotion_id4, promotion_id5, promotion_id6, promotion_id7, promotion_id8, promotion_id9, search_dts, search_lowest_price, search_lowest_url, search_position, size, video_director, video_format, video_rating, video_release_date, video_starring].hash
+      [adwords_grouping, adwords_label1, adwords_label2, adwords_label3, adwords_label4, adwords_label5, age_group, available_at_physical_store, book_author, book_format, book_isbn, book_publisher, category_description, color, condition, custom_label0, custom_label1, custom_label2, custom_label3, custom_label4, gender, google_product_category, music_artist, music_format, music_release_date, omit_from_feed, product_type, promotion_id1, promotion_id10, promotion_id2, promotion_id3, promotion_id4, promotion_id5, promotion_id6, promotion_id7, promotion_id8, promotion_id9, search_dts, search_lowest_price, search_lowest_url, search_position, shipping_label, size, video_director, video_format, video_rating, video_release_date, video_starring].hash
     end
 
     # Builds the object from hash

@@ -6,9 +6,12 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**city_state**](CheckoutApi.md#city_state) | **POST** /checkout/city_state | City/State for Zip
 [**finalize_order**](CheckoutApi.md#finalize_order) | **POST** /checkout/cart/finalizeOrder | Finalize Order
+[**get_affirm_checkout**](CheckoutApi.md#get_affirm_checkout) | **GET** /checkout/cart/{cart_id}/affirmCheckout | Get affirm checkout (by cart id)
+[**get_allowed_countries**](CheckoutApi.md#get_allowed_countries) | **POST** /checkout/allowedCountries | Allowed countries
 [**get_cart**](CheckoutApi.md#get_cart) | **GET** /checkout/cart | Get cart
 [**get_cart_by_cart_id**](CheckoutApi.md#get_cart_by_cart_id) | **GET** /checkout/cart/{cart_id} | Get cart (by cart id)
 [**get_cart_by_return_code**](CheckoutApi.md#get_cart_by_return_code) | **GET** /checkout/return/{return_code} | Get cart (by return code)
+[**get_state_provinces_for_country**](CheckoutApi.md#get_state_provinces_for_country) | **POST** /checkout/stateProvincesForCountry/{country_code} | Get state/province list for a country code
 [**handoff_cart**](CheckoutApi.md#handoff_cart) | **POST** /checkout/cart/handoff | Handoff cart
 [**login**](CheckoutApi.md#login) | **POST** /checkout/cart/profile/login | Profile login
 [**logout**](CheckoutApi.md#logout) | **POST** /checkout/cart/profile/logout | Profile logout
@@ -21,7 +24,7 @@ Method | HTTP request | Description
 
 
 # **city_state**
-> ItemsResponse city_state(cart)
+> CityStateZip city_state(cart)
 
 City/State for Zip
 
@@ -69,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ItemsResponse**](ItemsResponse.md)
+[**CityStateZip**](CityStateZip.md)
 
 ### Authorization
 
@@ -131,6 +134,124 @@ Name | Type | Description  | Notes
 ### Authorization
 
 [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_affirm_checkout**
+> CartAffirmCheckoutResponse get_affirm_checkout(cart_id)
+
+Get affirm checkout (by cart id)
+
+Get a Affirm checkout object for the specified cart_id parameter. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::CheckoutApi.new
+
+cart_id = "cart_id_example" # String | Cart ID to retrieve
+
+
+begin
+  #Get affirm checkout (by cart id)
+  result = api_instance.get_affirm_checkout(cart_id)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling CheckoutApi->get_affirm_checkout: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cart_id** | **String**| Cart ID to retrieve | 
+
+### Return type
+
+[**CartAffirmCheckoutResponse**](CartAffirmCheckoutResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_allowed_countries**
+> CheckoutAllowedCountriesResponse get_allowed_countries
+
+Allowed countries
+
+Lookup the allowed countries for this merchant id 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::CheckoutApi.new
+
+begin
+  #Allowed countries
+  result = api_instance.get_allowed_countries
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling CheckoutApi->get_allowed_countries: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**CheckoutAllowedCountriesResponse**](CheckoutAllowedCountriesResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
 
 ### HTTP request headers
 
@@ -334,12 +455,74 @@ Name | Type | Description  | Notes
 
 
 
+# **get_state_provinces_for_country**
+> CheckoutStateProvinceResponse get_state_provinces_for_country(country_code)
+
+Get state/province list for a country code
+
+Lookup a state/province list for a given country code 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::CheckoutApi.new
+
+country_code = "country_code_example" # String | Two letter ISO country code
+
+
+begin
+  #Get state/province list for a country code
+  result = api_instance.get_state_provinces_for_country(country_code)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling CheckoutApi->get_state_provinces_for_country: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **country_code** | **String**| Two letter ISO country code | 
+
+### Return type
+
+[**CheckoutStateProvinceResponse**](CheckoutStateProvinceResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **handoff_cart**
 > CheckoutHandoffResponse handoff_cart(handoff_request, opts)
 
 Handoff cart
 
-Handoff the browser to UltraCart for view cart on StoreFront, transfer to PayPal or finalization of the order (including upsell processing). 
+Handoff the browser to UltraCart for view cart on StoreFront, transfer to PayPal, transfer to Affirm or finalization of the order (including upsell processing). 
 
 ### Example
 ```ruby

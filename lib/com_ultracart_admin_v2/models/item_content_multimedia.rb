@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -65,7 +65,7 @@ module UltraCartAdminV2
     # Type of file
     attr_accessor :type
 
-    # URL to download file
+    # URL to download file (on new multimedia record this can be a URL for UltraCart to fetch)
     attr_accessor :url
 
     # Width of the image

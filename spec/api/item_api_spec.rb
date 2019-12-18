@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -69,6 +69,20 @@ describe 'ItemApi' do
     end
   end
 
+  # unit tests for get_item_by_merchant_item_id
+  # Retrieve an item by item id
+  # Retrieves a single item using the specified item id. 
+  # @param merchant_item_id The item id to retrieve.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+  # @return [ItemResponse]
+  describe 'get_item_by_merchant_item_id test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_items
   # Retrieve items
   # Retrieves a group of items from the account.  If no parameters are specified, all items will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
@@ -83,6 +97,18 @@ describe 'ItemApi' do
   # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
   # @return [ItemsResponse]
   describe 'get_items test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_pricing_tiers
+  # Retrieve pricing tiers
+  # Retrieves the pricing tiers 
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @return [PricingTiersResponse]
+  describe 'get_pricing_tiers test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -112,6 +138,21 @@ describe 'ItemApi' do
   # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
   # @return [ItemResponse]
   describe 'update_item test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for update_items
+  # Update multiple items
+  # Update multiple item on the UltraCart account. 
+  # @param items_request Items to update (synchronous maximum 20 / asynchronous maximum 100)
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+  # @option opts [BOOLEAN] :_async True if the operation should be run async.  No result returned
+  # @return [ItemsResponse]
+  describe 'update_items test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

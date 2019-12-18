@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -45,6 +45,8 @@ module UltraCartAdminV2
 
     # The ISO-4217 three letter currency code the customer is viewing prices in
     attr_accessor :currency_code
+
+    attr_accessor :currency_conversion
 
     attr_accessor :customer_profile
 
@@ -93,6 +95,7 @@ module UltraCartAdminV2
         :'checkout' => :'checkout',
         :'coupons' => :'coupons',
         :'currency_code' => :'currency_code',
+        :'currency_conversion' => :'currency_conversion',
         :'customer_profile' => :'customer_profile',
         :'exchange_rate' => :'exchange_rate',
         :'gift' => :'gift',
@@ -122,6 +125,7 @@ module UltraCartAdminV2
         :'checkout' => :'CartCheckout',
         :'coupons' => :'Array<CartCoupon>',
         :'currency_code' => :'String',
+        :'currency_conversion' => :'CartCurrencyConversion',
         :'customer_profile' => :'CartCustomerProfile',
         :'exchange_rate' => :'Float',
         :'gift' => :'CartGift',
@@ -180,6 +184,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'currency_code')
         self.currency_code = attributes[:'currency_code']
+      end
+
+      if attributes.has_key?(:'currency_conversion')
+        self.currency_conversion = attributes[:'currency_conversion']
       end
 
       if attributes.has_key?(:'customer_profile')
@@ -323,6 +331,7 @@ module UltraCartAdminV2
           checkout == o.checkout &&
           coupons == o.coupons &&
           currency_code == o.currency_code &&
+          currency_conversion == o.currency_conversion &&
           customer_profile == o.customer_profile &&
           exchange_rate == o.exchange_rate &&
           gift == o.gift &&
@@ -349,7 +358,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affiliate, base_currency_code, billing, buysafe, cart_id, checkout, coupons, currency_code, customer_profile, exchange_rate, gift, gift_certificate, items, language_iso_code, logged_in, marketing, merchant_id, payment, settings, shipping, summary, taxes, upsell_after].hash
+      [affiliate, base_currency_code, billing, buysafe, cart_id, checkout, coupons, currency_code, currency_conversion, customer_profile, exchange_rate, gift, gift_certificate, items, language_iso_code, logged_in, marketing, merchant_id, payment, settings, shipping, summary, taxes, upsell_after].hash
     end
 
     # Builds the object from hash

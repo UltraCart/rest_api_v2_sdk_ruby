@@ -3,7 +3,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.email       = ["support@ultracart.com"]
   s.homepage    = "https://github.com/swagger-api/swagger-codegen"
   s.summary     = "UltraCart Rest API V2 Ruby Gem"
-  s.description = "This is the next generation UltraCart REST API..."
+  s.description = "UltraCart REST API Version 2"
   s.license     = "Apache 2.0"
 
   s.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'

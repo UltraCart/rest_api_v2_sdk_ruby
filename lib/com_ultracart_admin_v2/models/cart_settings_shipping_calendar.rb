@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -26,7 +26,7 @@ require 'date'
 module UltraCartAdminV2
 
   class CartSettingsShippingCalendar
-    # Specified dates that are blacked out on the calendar
+    # Specified dates that are blacked out on the calendar in ISO8601 format
     attr_accessor :blackouts
 
     # Days of week that should be enabled on the calendar (0 - Sunday through 6 - Saturday)
@@ -56,7 +56,7 @@ module UltraCartAdminV2
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'blackouts' => :'String',
+        :'blackouts' => :'Array<String>',
         :'days_of_week' => :'Array<BOOLEAN>',
         :'earliest' => :'String',
         :'require' => :'BOOLEAN',
@@ -73,7 +73,9 @@ module UltraCartAdminV2
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
       if attributes.has_key?(:'blackouts')
-        self.blackouts = attributes[:'blackouts']
+        if (value = attributes[:'blackouts']).is_a?(Array)
+          self.blackouts = value
+        end
       end
 
       if attributes.has_key?(:'days_of_week')

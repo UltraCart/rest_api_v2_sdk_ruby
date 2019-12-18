@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -51,6 +51,32 @@ describe 'AutoorderApi' do
   # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
   # @return [AutoOrderResponse]
   describe 'get_auto_order test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_auto_order_by_code
+  # Retrieve an auto order
+  # Retrieves a single auto order using the specified reference (original) order id. 
+  # @param auto_order_code The auto order oid to retrieve.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @return [AutoOrderResponse]
+  describe 'get_auto_order_by_code test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_auto_order_by_reference_order_id
+  # Retrieve an auto order
+  # Retrieves a single auto order using the specified reference (original) order id. 
+  # @param reference_order_id The auto order oid to retrieve.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @return [AutoOrderResponse]
+  describe 'get_auto_order_by_reference_order_id test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

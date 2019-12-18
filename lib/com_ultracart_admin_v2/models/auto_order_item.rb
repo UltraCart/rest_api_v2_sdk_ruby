@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -50,6 +50,9 @@ module UltraCartAdminV2
     # Frequency of the rebill if not a fixed schedule
     attr_accessor :frequency
 
+    # The future rebill schedule for this item up to the next ten rebills
+    attr_accessor :future_schedules
+
     # Date/time of the last order of this item
     attr_accessor :last_order_dts
 
@@ -71,7 +74,7 @@ module UltraCartAdminV2
     # Options associated with this item
     attr_accessor :options
 
-    # The original item id purchased
+    # The original item id purchased.  This item controls scheduling.  If you wish to modify a schedule, for example, from monthly to yearly, change this item from your monthly item to your yearly item, and then change the next_shipment_dts to your desired date.
     attr_accessor :original_item_id
 
     # The original quantity purchased
@@ -125,6 +128,7 @@ module UltraCartAdminV2
         :'arbitrary_unit_cost_remaining_orders' => :'arbitrary_unit_cost_remaining_orders',
         :'auto_order_item_oid' => :'auto_order_item_oid',
         :'frequency' => :'frequency',
+        :'future_schedules' => :'future_schedules',
         :'last_order_dts' => :'last_order_dts',
         :'life_time_value' => :'life_time_value',
         :'next_preshipment_notice_dts' => :'next_preshipment_notice_dts',
@@ -153,6 +157,7 @@ module UltraCartAdminV2
         :'arbitrary_unit_cost_remaining_orders' => :'Integer',
         :'auto_order_item_oid' => :'Integer',
         :'frequency' => :'String',
+        :'future_schedules' => :'Array<AutoOrderItemFutureSchedule>',
         :'last_order_dts' => :'String',
         :'life_time_value' => :'Float',
         :'next_preshipment_notice_dts' => :'String',
@@ -208,6 +213,12 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'frequency')
         self.frequency = attributes[:'frequency']
+      end
+
+      if attributes.has_key?(:'future_schedules')
+        if (value = attributes[:'future_schedules']).is_a?(Array)
+          self.future_schedules = value
+        end
       end
 
       if attributes.has_key?(:'last_order_dts')
@@ -308,6 +319,7 @@ module UltraCartAdminV2
           arbitrary_unit_cost_remaining_orders == o.arbitrary_unit_cost_remaining_orders &&
           auto_order_item_oid == o.auto_order_item_oid &&
           frequency == o.frequency &&
+          future_schedules == o.future_schedules &&
           last_order_dts == o.last_order_dts &&
           life_time_value == o.life_time_value &&
           next_preshipment_notice_dts == o.next_preshipment_notice_dts &&
@@ -333,7 +345,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [arbitrary_item_id, arbitrary_percentage_discount, arbitrary_quantity, arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_remaining_orders, auto_order_item_oid, frequency, last_order_dts, life_time_value, next_preshipment_notice_dts, next_shipment_dts, no_order_after_dts, number_of_rebills, options, original_item_id, original_quantity, paypal_payer_id, paypal_recurring_payment_profile_id, preshipment_notice_sent, rebill_value, remaining_repeat_count].hash
+      [arbitrary_item_id, arbitrary_percentage_discount, arbitrary_quantity, arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_remaining_orders, auto_order_item_oid, frequency, future_schedules, last_order_dts, life_time_value, next_preshipment_notice_dts, next_shipment_dts, no_order_after_dts, number_of_rebills, options, original_item_id, original_quantity, paypal_payer_id, paypal_recurring_payment_profile_id, preshipment_notice_sent, rebill_value, remaining_repeat_count].hash
     end
 
     # Builds the object from hash

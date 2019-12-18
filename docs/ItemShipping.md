@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **case_inner_packs** | **Integer** | Case inner packs | [optional] 
 **case_units** | **Integer** | Case units | [optional] 
 **cases** | [**Array&lt;ItemShippingCase&gt;**](ItemShippingCase.md) | Cases | [optional] 
+**collect_serial_numbers** | **BOOLEAN** | This item is on pre-order | [optional] 
 **country_code_of_origin** | **String** | Country code of origin for customs forms.  (ISO-3166 two letter code) | [optional] 
 **customs_description** | **String** | Customs description | [optional] 
 **customs_value** | **Float** | Customs value | [optional] 

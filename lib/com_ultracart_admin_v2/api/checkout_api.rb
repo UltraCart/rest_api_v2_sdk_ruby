@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -35,7 +35,7 @@ module UltraCartAdminV2
     # Look up the city and state for the shipping zip code.  Useful for building an auto complete for parts of the shipping address 
     # @param cart Cart
     # @param [Hash] opts the optional parameters
-    # @return [ItemsResponse]
+    # @return [CityStateZip]
     def city_state(cart, opts = {})
       data, _status_code, _headers = city_state_with_http_info(cart, opts)
       return data
@@ -45,7 +45,7 @@ module UltraCartAdminV2
     # Look up the city and state for the shipping zip code.  Useful for building an auto complete for parts of the shipping address 
     # @param cart Cart
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ItemsResponse, Fixnum, Hash)>] ItemsResponse data, response status code and response headers
+    # @return [Array<(CityStateZip, Fixnum, Hash)>] CityStateZip data, response status code and response headers
     def city_state_with_http_info(cart, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: CheckoutApi.city_state ..."
@@ -81,7 +81,7 @@ module UltraCartAdminV2
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'ItemsResponse')
+        :return_type => 'CityStateZip')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CheckoutApi#city_state\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -141,6 +141,116 @@ module UltraCartAdminV2
         :return_type => 'CartFinalizeOrderResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CheckoutApi#finalize_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get affirm checkout (by cart id)
+    # Get a Affirm checkout object for the specified cart_id parameter. 
+    # @param cart_id Cart ID to retrieve
+    # @param [Hash] opts the optional parameters
+    # @return [CartAffirmCheckoutResponse]
+    def get_affirm_checkout(cart_id, opts = {})
+      data, _status_code, _headers = get_affirm_checkout_with_http_info(cart_id, opts)
+      return data
+    end
+
+    # Get affirm checkout (by cart id)
+    # Get a Affirm checkout object for the specified cart_id parameter. 
+    # @param cart_id Cart ID to retrieve
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CartAffirmCheckoutResponse, Fixnum, Hash)>] CartAffirmCheckoutResponse data, response status code and response headers
+    def get_affirm_checkout_with_http_info(cart_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CheckoutApi.get_affirm_checkout ..."
+      end
+      # verify the required parameter 'cart_id' is set
+      fail ArgumentError, "Missing the required parameter 'cart_id' when calling CheckoutApi.get_affirm_checkout" if cart_id.nil?
+      # resource path
+      local_var_path = "/checkout/cart/{cart_id}/affirmCheckout".sub('{format}','json').sub('{' + 'cart_id' + '}', cart_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CartAffirmCheckoutResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CheckoutApi#get_affirm_checkout\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Allowed countries
+    # Lookup the allowed countries for this merchant id 
+    # @param [Hash] opts the optional parameters
+    # @return [CheckoutAllowedCountriesResponse]
+    def get_allowed_countries(opts = {})
+      data, _status_code, _headers = get_allowed_countries_with_http_info(opts)
+      return data
+    end
+
+    # Allowed countries
+    # Lookup the allowed countries for this merchant id 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CheckoutAllowedCountriesResponse, Fixnum, Hash)>] CheckoutAllowedCountriesResponse data, response status code and response headers
+    def get_allowed_countries_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CheckoutApi.get_allowed_countries ..."
+      end
+      # resource path
+      local_var_path = "/checkout/allowedCountries".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CheckoutAllowedCountriesResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CheckoutApi#get_allowed_countries\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -321,8 +431,65 @@ module UltraCartAdminV2
       return data, status_code, headers
     end
 
+    # Get state/province list for a country code
+    # Lookup a state/province list for a given country code 
+    # @param country_code Two letter ISO country code
+    # @param [Hash] opts the optional parameters
+    # @return [CheckoutStateProvinceResponse]
+    def get_state_provinces_for_country(country_code, opts = {})
+      data, _status_code, _headers = get_state_provinces_for_country_with_http_info(country_code, opts)
+      return data
+    end
+
+    # Get state/province list for a country code
+    # Lookup a state/province list for a given country code 
+    # @param country_code Two letter ISO country code
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CheckoutStateProvinceResponse, Fixnum, Hash)>] CheckoutStateProvinceResponse data, response status code and response headers
+    def get_state_provinces_for_country_with_http_info(country_code, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CheckoutApi.get_state_provinces_for_country ..."
+      end
+      # verify the required parameter 'country_code' is set
+      fail ArgumentError, "Missing the required parameter 'country_code' when calling CheckoutApi.get_state_provinces_for_country" if country_code.nil?
+      # resource path
+      local_var_path = "/checkout/stateProvincesForCountry/{country_code}".sub('{format}','json').sub('{' + 'country_code' + '}', country_code.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['application/json']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CheckoutStateProvinceResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CheckoutApi#get_state_provinces_for_country\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Handoff cart
-    # Handoff the browser to UltraCart for view cart on StoreFront, transfer to PayPal or finalization of the order (including upsell processing). 
+    # Handoff the browser to UltraCart for view cart on StoreFront, transfer to PayPal, transfer to Affirm or finalization of the order (including upsell processing). 
     # @param handoff_request Handoff request
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
@@ -333,7 +500,7 @@ module UltraCartAdminV2
     end
 
     # Handoff cart
-    # Handoff the browser to UltraCart for view cart on StoreFront, transfer to PayPal or finalization of the order (including upsell processing). 
+    # Handoff the browser to UltraCart for view cart on StoreFront, transfer to PayPal, transfer to Affirm or finalization of the order (including upsell processing). 
     # @param handoff_request Handoff request
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples

@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -44,6 +44,9 @@ module UltraCartAdminV2
     # Day time phone
     attr_accessor :day_phone
 
+    # Day time phone (E164 format)
+    attr_accessor :day_phone_e164
+
     # Date the customer is requesting delivery on.  Typically used for perishable product delivery.
     attr_accessor :delivery_date
 
@@ -55,6 +58,12 @@ module UltraCartAdminV2
 
     # Last name
     attr_accessor :last_name
+
+    # If true, instructs UltraCart to apply the cheapest shipping method to this order.  Used only for channel partner order inserts.
+    attr_accessor :least_cost_route
+
+    # List of shipping methods to consider if least_code_route is true. Used only for channel parter order inserts.
+    attr_accessor :least_cost_route_shipping_methods
 
     # Lift gate requested (LTL shipping methods only)
     attr_accessor :lift_gate
@@ -110,10 +119,13 @@ module UltraCartAdminV2
         :'company' => :'company',
         :'country_code' => :'country_code',
         :'day_phone' => :'day_phone',
+        :'day_phone_e164' => :'day_phone_e164',
         :'delivery_date' => :'delivery_date',
         :'evening_phone' => :'evening_phone',
         :'first_name' => :'first_name',
         :'last_name' => :'last_name',
+        :'least_cost_route' => :'least_cost_route',
+        :'least_cost_route_shipping_methods' => :'least_cost_route_shipping_methods',
         :'lift_gate' => :'lift_gate',
         :'postal_code' => :'postal_code',
         :'rma' => :'rma',
@@ -141,10 +153,13 @@ module UltraCartAdminV2
         :'company' => :'String',
         :'country_code' => :'String',
         :'day_phone' => :'String',
+        :'day_phone_e164' => :'String',
         :'delivery_date' => :'String',
         :'evening_phone' => :'String',
         :'first_name' => :'String',
         :'last_name' => :'String',
+        :'least_cost_route' => :'BOOLEAN',
+        :'least_cost_route_shipping_methods' => :'Array<String>',
         :'lift_gate' => :'BOOLEAN',
         :'postal_code' => :'String',
         :'rma' => :'String',
@@ -195,6 +210,10 @@ module UltraCartAdminV2
         self.day_phone = attributes[:'day_phone']
       end
 
+      if attributes.has_key?(:'day_phone_e164')
+        self.day_phone_e164 = attributes[:'day_phone_e164']
+      end
+
       if attributes.has_key?(:'delivery_date')
         self.delivery_date = attributes[:'delivery_date']
       end
@@ -209,6 +228,16 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'last_name')
         self.last_name = attributes[:'last_name']
+      end
+
+      if attributes.has_key?(:'least_cost_route')
+        self.least_cost_route = attributes[:'least_cost_route']
+      end
+
+      if attributes.has_key?(:'least_cost_route_shipping_methods')
+        if (value = attributes[:'least_cost_route_shipping_methods']).is_a?(Array)
+          self.least_cost_route_shipping_methods = value
+        end
       end
 
       if attributes.has_key?(:'lift_gate')
@@ -310,6 +339,11 @@ module UltraCartAdminV2
       end
 
 
+      if !@day_phone_e164.nil? && @day_phone_e164.to_s.length > 25
+        invalid_properties.push("invalid value for 'day_phone_e164', the character length must be smaller than or equal to 25.")
+      end
+
+
       if !@evening_phone.nil? && @evening_phone.to_s.length > 25
         invalid_properties.push("invalid value for 'evening_phone', the character length must be smaller than or equal to 25.")
       end
@@ -366,6 +400,7 @@ module UltraCartAdminV2
       return false if !@company.nil? && @company.to_s.length > 50
       return false if !@country_code.nil? && @country_code.to_s.length > 2
       return false if !@day_phone.nil? && @day_phone.to_s.length > 25
+      return false if !@day_phone_e164.nil? && @day_phone_e164.to_s.length > 25
       return false if !@evening_phone.nil? && @evening_phone.to_s.length > 25
       return false if !@first_name.nil? && @first_name.to_s.length > 30
       return false if !@last_name.nil? && @last_name.to_s.length > 30
@@ -442,6 +477,17 @@ module UltraCartAdminV2
       end
 
       @day_phone = day_phone
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] day_phone_e164 Value to be assigned
+    def day_phone_e164=(day_phone_e164)
+
+      if !day_phone_e164.nil? && day_phone_e164.to_s.length > 25
+        fail ArgumentError, "invalid value for 'day_phone_e164', the character length must be smaller than or equal to 25."
+      end
+
+      @day_phone_e164 = day_phone_e164
     end
 
     # Custom attribute writer method with validation
@@ -554,10 +600,13 @@ module UltraCartAdminV2
           company == o.company &&
           country_code == o.country_code &&
           day_phone == o.day_phone &&
+          day_phone_e164 == o.day_phone_e164 &&
           delivery_date == o.delivery_date &&
           evening_phone == o.evening_phone &&
           first_name == o.first_name &&
           last_name == o.last_name &&
+          least_cost_route == o.least_cost_route &&
+          least_cost_route_shipping_methods == o.least_cost_route_shipping_methods &&
           lift_gate == o.lift_gate &&
           postal_code == o.postal_code &&
           rma == o.rma &&
@@ -584,7 +633,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [address1, address2, city, company, country_code, day_phone, delivery_date, evening_phone, first_name, last_name, lift_gate, postal_code, rma, ship_on_date, ship_to_residential, shipping_3rd_party_account_number, shipping_date, shipping_department_status, shipping_method, shipping_method_accounting_code, special_instructions, state_region, title, tracking_numbers, weight].hash
+      [address1, address2, city, company, country_code, day_phone, day_phone_e164, delivery_date, evening_phone, first_name, last_name, least_cost_route, least_cost_route_shipping_methods, lift_gate, postal_code, rma, ship_on_date, ship_to_residential, shipping_3rd_party_account_number, shipping_date, shipping_department_status, shipping_method, shipping_method_accounting_code, special_instructions, state_region, title, tracking_numbers, weight].hash
     end
 
     # Builds the object from hash

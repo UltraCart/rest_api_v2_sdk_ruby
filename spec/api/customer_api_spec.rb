@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -106,6 +106,46 @@ describe 'CustomerApi' do
   # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
   # @return [CustomersResponse]
   describe 'get_customers test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_customers_by_query
+  # Retrieve customers by query
+  # Retrieves customers from the account.  If no parameters are specified, all customers will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
+  # @param customer_query Customer query
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Max 200)
+  # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
+  # @option opts [String] :_since Fetch customers that have been created/modified since this date/time.
+  # @option opts [String] :_sort The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @return [CustomersResponse]
+  describe 'get_customers_by_query test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_customers_for_data_tables
+  # Retrieve customers for DataTables plugin
+  # Retrieves customers from the account.  If no searches are specified, all customers will be returned. 
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @return [DataTablesServerSideResponse]
+  describe 'get_customers_for_data_tables test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_editor_values
+  # Retrieve values needed for a customer profile editor
+  # Retrieve values needed for a customer profile editor. 
+  # @param [Hash] opts the optional parameters
+  # @return [CustomerEditorValues]
+  describe 'get_editor_values test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

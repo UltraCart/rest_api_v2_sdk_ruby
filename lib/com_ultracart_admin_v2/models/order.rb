@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -86,6 +86,9 @@ module UltraCartAdminV2
 
     attr_accessor :payment
 
+    # Properties, available only through update, not through insert due to the nature of how properties are handled internally
+    attr_accessor :properties
+
     attr_accessor :quote
 
     # If the order was refunded, the date/time that the last refund occurred
@@ -99,6 +102,9 @@ module UltraCartAdminV2
     attr_accessor :shipping
 
     attr_accessor :summary
+
+    # tags, available only through update, not through insert due to the nature of how tags are handled internally
+    attr_accessor :tags
 
     attr_accessor :taxes
 
@@ -152,12 +158,14 @@ module UltraCartAdminV2
         :'merchant_id' => :'merchant_id',
         :'order_id' => :'order_id',
         :'payment' => :'payment',
+        :'properties' => :'properties',
         :'quote' => :'quote',
         :'refund_dts' => :'refund_dts',
         :'reject_dts' => :'reject_dts',
         :'salesforce' => :'salesforce',
         :'shipping' => :'shipping',
         :'summary' => :'summary',
+        :'tags' => :'Tags',
         :'taxes' => :'taxes'
       }
     end
@@ -190,12 +198,14 @@ module UltraCartAdminV2
         :'merchant_id' => :'String',
         :'order_id' => :'String',
         :'payment' => :'OrderPayment',
+        :'properties' => :'Array<OrderProperty>',
         :'quote' => :'OrderQuote',
         :'refund_dts' => :'String',
         :'reject_dts' => :'String',
         :'salesforce' => :'OrderSalesforce',
         :'shipping' => :'OrderShipping',
         :'summary' => :'OrderSummary',
+        :'tags' => :'Array<OrderTag>',
         :'taxes' => :'OrderTaxes'
       }
     end
@@ -314,6 +324,12 @@ module UltraCartAdminV2
         self.payment = attributes[:'payment']
       end
 
+      if attributes.has_key?(:'properties')
+        if (value = attributes[:'properties']).is_a?(Array)
+          self.properties = value
+        end
+      end
+
       if attributes.has_key?(:'quote')
         self.quote = attributes[:'quote']
       end
@@ -336,6 +352,12 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'summary')
         self.summary = attributes[:'summary']
+      end
+
+      if attributes.has_key?(:'Tags')
+        if (value = attributes[:'Tags']).is_a?(Array)
+          self.tags = value
+        end
       end
 
       if attributes.has_key?(:'taxes')
@@ -433,12 +455,14 @@ module UltraCartAdminV2
           merchant_id == o.merchant_id &&
           order_id == o.order_id &&
           payment == o.payment &&
+          properties == o.properties &&
           quote == o.quote &&
           refund_dts == o.refund_dts &&
           reject_dts == o.reject_dts &&
           salesforce == o.salesforce &&
           shipping == o.shipping &&
           summary == o.summary &&
+          tags == o.tags &&
           taxes == o.taxes
     end
 
@@ -451,7 +475,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affiliates, auto_order, billing, buysafe, channel_partner, checkout, coupons, creation_dts, currency_code, current_stage, customer_profile, digital_order, edi, exchange_rate, fraud_score, gift, gift_certificate, internal, items, language_iso_code, linked_shipment, marketing, merchant_id, order_id, payment, quote, refund_dts, reject_dts, salesforce, shipping, summary, taxes].hash
+      [affiliates, auto_order, billing, buysafe, channel_partner, checkout, coupons, creation_dts, currency_code, current_stage, customer_profile, digital_order, edi, exchange_rate, fraud_score, gift, gift_certificate, internal, items, language_iso_code, linked_shipment, marketing, merchant_id, order_id, payment, properties, quote, refund_dts, reject_dts, salesforce, shipping, summary, tags, taxes].hash
     end
 
     # Builds the object from hash

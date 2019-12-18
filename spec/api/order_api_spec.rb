@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -67,6 +67,19 @@ describe 'OrderApi' do
     end
   end
 
+  # unit tests for format
+  # Format order
+  # Format the order for display at text or html 
+  # @param order_id The order id to format
+  # @param format_options Format options
+  # @param [Hash] opts the optional parameters
+  # @return [OrderFormatResponse]
+  describe 'format test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_order
   # Retrieve an order
   # Retrieves a single order using the specified order id. 
@@ -111,12 +124,48 @@ describe 'OrderApi' do
   # @option opts [String] :current_stage Current Stage
   # @option opts [String] :channel_partner_code Channel Partner Code
   # @option opts [String] :channel_partner_order_id Channel Partner Order ID
+  # @option opts [Integer] :customer_profile_oid null
   # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Maximum 200)
   # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
   # @option opts [String] :_sort The sort order of the orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
   # @option opts [String] :_expand The object expansion to perform on the result.
   # @return [OrdersResponse]
   describe 'get_orders test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_orders_by_query
+  # Retrieve orders
+  # Retrieves a group of orders from the account based on a query object.  If no parameters are specified, the API call will fail with a bad request error.  Always specify some parameters to limit the scope of the orders returned to ones you are truly interested in.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
+  # @param order_query Order query
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Maximum 200)
+  # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
+  # @option opts [String] :_sort The sort order of the orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+  # @option opts [String] :_expand The object expansion to perform on the result.
+  # @return [OrdersResponse]
+  describe 'get_orders_by_query test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for refund_order
+  # Refund an order
+  # Perform a refund operation on an order and then update the order if successful 
+  # @param order Order to refund
+  # @param order_id The order id to refund.
+  # @param [Hash] opts the optional parameters
+  # @option opts [BOOLEAN] :reject_after_refund Reject order after refund
+  # @option opts [BOOLEAN] :skip_customer_notification Skip customer email notification
+  # @option opts [BOOLEAN] :auto_order_cancel Cancel associated auto orders
+  # @option opts [BOOLEAN] :manual_refund Consider a manual refund done externally
+  # @option opts [BOOLEAN] :reverse_affiliate_transactions Reverse affiliate transactions
+  # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+  # @return [OrderResponse]
+  describe 'refund_order test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

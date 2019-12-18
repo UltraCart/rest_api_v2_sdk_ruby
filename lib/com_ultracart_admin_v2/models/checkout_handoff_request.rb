@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -142,7 +142,7 @@ module UltraCartAdminV2
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      operation_validator = EnumAttributeValidator.new('String', ["checkout", "payPal", "payPalCredit", "view"])
+      operation_validator = EnumAttributeValidator.new('String', ["checkout", "payPal", "payPalCredit", "view", "affirm"])
       return false unless operation_validator.valid?(@operation)
       return true
     end
@@ -150,7 +150,7 @@ module UltraCartAdminV2
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] operation Object to be assigned
     def operation=(operation)
-      validator = EnumAttributeValidator.new('String', ["checkout", "payPal", "payPalCredit", "view"])
+      validator = EnumAttributeValidator.new('String', ["checkout", "payPal", "payPalCredit", "view", "affirm"])
       unless validator.valid?(operation)
         fail ArgumentError, "invalid value for 'operation', must be one of #{validator.allowable_values}."
       end

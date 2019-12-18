@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -96,6 +96,9 @@ module UltraCartAdminV2
     # Parent category of the item.  Zero indicates the root folder.
     attr_accessor :parent_category_id
 
+    # Parent category path.  / indicates the root folder.
+    attr_accessor :parent_category_path
+
     attr_accessor :payment_processing
 
     attr_accessor :physical
@@ -117,6 +120,8 @@ module UltraCartAdminV2
     attr_accessor :salesforce
 
     attr_accessor :shipping
+
+    attr_accessor :tags
 
     attr_accessor :tax
 
@@ -164,6 +169,7 @@ module UltraCartAdminV2
         :'merchant_item_oid' => :'merchant_item_oid',
         :'options' => :'options',
         :'parent_category_id' => :'parent_category_id',
+        :'parent_category_path' => :'parent_category_path',
         :'payment_processing' => :'payment_processing',
         :'physical' => :'physical',
         :'pricing' => :'pricing',
@@ -175,6 +181,7 @@ module UltraCartAdminV2
         :'reviews' => :'reviews',
         :'salesforce' => :'salesforce',
         :'shipping' => :'shipping',
+        :'tags' => :'tags',
         :'tax' => :'tax',
         :'third_party_email_marketing' => :'third_party_email_marketing',
         :'variant_items' => :'variant_items',
@@ -215,6 +222,7 @@ module UltraCartAdminV2
         :'merchant_item_oid' => :'Integer',
         :'options' => :'Array<ItemOption>',
         :'parent_category_id' => :'Integer',
+        :'parent_category_path' => :'String',
         :'payment_processing' => :'ItemPaymentProcessing',
         :'physical' => :'ItemPhysical',
         :'pricing' => :'ItemPricing',
@@ -226,6 +234,7 @@ module UltraCartAdminV2
         :'reviews' => :'ItemReviews',
         :'salesforce' => :'ItemSalesforce',
         :'shipping' => :'ItemShipping',
+        :'tags' => :'ItemTags',
         :'tax' => :'ItemTax',
         :'third_party_email_marketing' => :'Array<ItemThirdPartyEmailMarketing>',
         :'variant_items' => :'Array<ItemVariantItem>',
@@ -362,6 +371,10 @@ module UltraCartAdminV2
         self.parent_category_id = attributes[:'parent_category_id']
       end
 
+      if attributes.has_key?(:'parent_category_path')
+        self.parent_category_path = attributes[:'parent_category_path']
+      end
+
       if attributes.has_key?(:'payment_processing')
         self.payment_processing = attributes[:'payment_processing']
       end
@@ -404,6 +417,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'shipping')
         self.shipping = attributes[:'shipping']
+      end
+
+      if attributes.has_key?(:'tags')
+        self.tags = attributes[:'tags']
       end
 
       if attributes.has_key?(:'tax')
@@ -532,6 +549,7 @@ module UltraCartAdminV2
           merchant_item_oid == o.merchant_item_oid &&
           options == o.options &&
           parent_category_id == o.parent_category_id &&
+          parent_category_path == o.parent_category_path &&
           payment_processing == o.payment_processing &&
           physical == o.physical &&
           pricing == o.pricing &&
@@ -543,6 +561,7 @@ module UltraCartAdminV2
           reviews == o.reviews &&
           salesforce == o.salesforce &&
           shipping == o.shipping &&
+          tags == o.tags &&
           tax == o.tax &&
           third_party_email_marketing == o.third_party_email_marketing &&
           variant_items == o.variant_items &&
@@ -559,7 +578,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accounting, amember, auto_order, ccbill, channel_partner_mappings, chargeback, checkout, content, creation_dts, description, description_translated_text_instance_oid, digital_delivery, ebay, email_notifications, enrollment123, gift_certificate, google_product_search, identifiers, inactive, instant_payment_notifications, internal, kit, kit_definition, last_modified_dts, merchant_id, merchant_item_id, merchant_item_oid, options, parent_category_id, payment_processing, physical, pricing, realtime_pricing, related, reporting, restriction, revguard, reviews, salesforce, shipping, tax, third_party_email_marketing, variant_items, variations, wishlist_member].hash
+      [accounting, amember, auto_order, ccbill, channel_partner_mappings, chargeback, checkout, content, creation_dts, description, description_translated_text_instance_oid, digital_delivery, ebay, email_notifications, enrollment123, gift_certificate, google_product_search, identifiers, inactive, instant_payment_notifications, internal, kit, kit_definition, last_modified_dts, merchant_id, merchant_item_id, merchant_item_oid, options, parent_category_id, parent_category_path, payment_processing, physical, pricing, realtime_pricing, related, reporting, restriction, revguard, reviews, salesforce, shipping, tags, tax, third_party_email_marketing, variant_items, variations, wishlist_member].hash
     end
 
     # Builds the object from hash

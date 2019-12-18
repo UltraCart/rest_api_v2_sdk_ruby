@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -40,6 +40,9 @@ module UltraCartAdminV2
 
     # Cases
     attr_accessor :cases
+
+    # This item is on pre-order
+    attr_accessor :collect_serial_numbers
 
     # Country code of origin for customs forms.  (ISO-3166 two letter code)
     attr_accessor :country_code_of_origin
@@ -172,6 +175,7 @@ module UltraCartAdminV2
         :'case_inner_packs' => :'case_inner_packs',
         :'case_units' => :'case_units',
         :'cases' => :'cases',
+        :'collect_serial_numbers' => :'collect_serial_numbers',
         :'country_code_of_origin' => :'country_code_of_origin',
         :'customs_description' => :'customs_description',
         :'customs_value' => :'customs_value',
@@ -225,6 +229,7 @@ module UltraCartAdminV2
         :'case_inner_packs' => :'Integer',
         :'case_units' => :'Integer',
         :'cases' => :'Array<ItemShippingCase>',
+        :'collect_serial_numbers' => :'BOOLEAN',
         :'country_code_of_origin' => :'String',
         :'customs_description' => :'String',
         :'customs_value' => :'Float',
@@ -298,6 +303,10 @@ module UltraCartAdminV2
         if (value = attributes[:'cases']).is_a?(Array)
           self.cases = value
         end
+      end
+
+      if attributes.has_key?(:'collect_serial_numbers')
+        self.collect_serial_numbers = attributes[:'collect_serial_numbers']
       end
 
       if attributes.has_key?(:'country_code_of_origin')
@@ -520,6 +529,7 @@ module UltraCartAdminV2
           case_inner_packs == o.case_inner_packs &&
           case_units == o.case_units &&
           cases == o.cases &&
+          collect_serial_numbers == o.collect_serial_numbers &&
           country_code_of_origin == o.country_code_of_origin &&
           customs_description == o.customs_description &&
           customs_value == o.customs_value &&
@@ -573,7 +583,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allow_back_order, amazon_fba, case_inner_packs, case_units, cases, country_code_of_origin, customs_description, customs_value, delivery_on_friday, delivery_on_monday, delivery_on_saturday, delivery_on_sunday, delivery_on_thursday, delivery_on_tuesday, delivery_on_wednesday, destination_markups, destination_restrictions, distribution_centers, eta, free_shipping, freight_class, hazmat, made_to_order, made_to_order_lead_time, max_days_time_in_transit, methods, no_shipping_discount, package_requirements, perishable_class_name, perishable_class_oid, preorder, require_delivery_date, restrict_shipment_on_friday, restrict_shipment_on_monday, restrict_shipment_on_saturday, restrict_shipment_on_sunday, restrict_shipment_on_thursday, restrict_shipment_on_tuesday, restrict_shipment_on_wednesday, ship_separately, ship_separately_additional_weight, ship_separately_height, ship_separately_length, ship_separately_package_special_type, ship_separately_width, special_product_type, track_inventory].hash
+      [allow_back_order, amazon_fba, case_inner_packs, case_units, cases, collect_serial_numbers, country_code_of_origin, customs_description, customs_value, delivery_on_friday, delivery_on_monday, delivery_on_saturday, delivery_on_sunday, delivery_on_thursday, delivery_on_tuesday, delivery_on_wednesday, destination_markups, destination_restrictions, distribution_centers, eta, free_shipping, freight_class, hazmat, made_to_order, made_to_order_lead_time, max_days_time_in_transit, methods, no_shipping_discount, package_requirements, perishable_class_name, perishable_class_oid, preorder, require_delivery_date, restrict_shipment_on_friday, restrict_shipment_on_monday, restrict_shipment_on_saturday, restrict_shipment_on_sunday, restrict_shipment_on_thursday, restrict_shipment_on_tuesday, restrict_shipment_on_wednesday, ship_separately, ship_separately_additional_weight, ship_separately_height, ship_separately_length, ship_separately_package_special_type, ship_separately_width, special_product_type, track_inventory].hash
     end
 
     # Builds the object from hash

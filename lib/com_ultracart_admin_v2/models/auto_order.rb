@@ -1,7 +1,7 @@
 =begin
 #UltraCart Rest API V2
 
-#This is the next generation UltraCart REST API...
+#UltraCart REST API Version 2
 
 OpenAPI spec version: 2.0.0
 Contact: support@ultracart.com
@@ -47,6 +47,9 @@ module UltraCartAdminV2
     # The date/time that the auto order was canceled
     attr_accessor :canceled_dts
 
+    # True if the auto order ran successfully to completion
+    attr_accessor :completed
+
     # The number of credit card attempts that have taken place
     attr_accessor :credit_card_attempt
 
@@ -90,6 +93,7 @@ module UltraCartAdminV2
         :'cancel_upgrade' => :'cancel_upgrade',
         :'canceled_by_user' => :'canceled_by_user',
         :'canceled_dts' => :'canceled_dts',
+        :'completed' => :'completed',
         :'credit_card_attempt' => :'credit_card_attempt',
         :'disabled_dts' => :'disabled_dts',
         :'enabled' => :'enabled',
@@ -114,6 +118,7 @@ module UltraCartAdminV2
         :'cancel_upgrade' => :'BOOLEAN',
         :'canceled_by_user' => :'String',
         :'canceled_dts' => :'String',
+        :'completed' => :'BOOLEAN',
         :'credit_card_attempt' => :'Integer',
         :'disabled_dts' => :'String',
         :'enabled' => :'BOOLEAN',
@@ -162,6 +167,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'canceled_dts')
         self.canceled_dts = attributes[:'canceled_dts']
+      end
+
+      if attributes.has_key?(:'completed')
+        self.completed = attributes[:'completed']
       end
 
       if attributes.has_key?(:'credit_card_attempt')
@@ -239,6 +248,7 @@ module UltraCartAdminV2
           cancel_upgrade == o.cancel_upgrade &&
           canceled_by_user == o.canceled_by_user &&
           canceled_dts == o.canceled_dts &&
+          completed == o.completed &&
           credit_card_attempt == o.credit_card_attempt &&
           disabled_dts == o.disabled_dts &&
           enabled == o.enabled &&
@@ -261,7 +271,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [auto_order_code, auto_order_oid, cancel_after_next_x_orders, cancel_downgrade, cancel_upgrade, canceled_by_user, canceled_dts, credit_card_attempt, disabled_dts, enabled, failure_reason, items, next_attempt, original_order, original_order_id, override_affiliate_id, rebill_orders, rotating_transaction_gateway_code].hash
+      [auto_order_code, auto_order_oid, cancel_after_next_x_orders, cancel_downgrade, cancel_upgrade, canceled_by_user, canceled_dts, completed, credit_card_attempt, disabled_dts, enabled, failure_reason, items, next_attempt, original_order, original_order_id, override_affiliate_id, rebill_orders, rotating_transaction_gateway_code].hash
     end
 
     # Builds the object from hash
