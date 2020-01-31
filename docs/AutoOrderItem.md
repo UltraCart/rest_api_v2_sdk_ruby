@@ -26,5 +26,6 @@ Name | Type | Description | Notes
 **preshipment_notice_sent** | **BOOLEAN** | True if the preshipment notice associated with the next rebill has been sent | [optional] 
 **rebill_value** | **Float** | The value of the rebills of this item | [optional] 
 **remaining_repeat_count** | **Integer** | The number of rebills remaining before this item is complete | [optional] 
+**simple_schedule** | [**AutoOrderItemSimpleSchedule**](AutoOrderItemSimpleSchedule.md) |  | [optional] 
 
 

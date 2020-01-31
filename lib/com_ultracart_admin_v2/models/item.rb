@@ -105,6 +105,9 @@ module UltraCartAdminV2
 
     attr_accessor :pricing
 
+    # Properties
+    attr_accessor :properties
+
     attr_accessor :realtime_pricing
 
     attr_accessor :related
@@ -173,6 +176,7 @@ module UltraCartAdminV2
         :'payment_processing' => :'payment_processing',
         :'physical' => :'physical',
         :'pricing' => :'pricing',
+        :'properties' => :'properties',
         :'realtime_pricing' => :'realtime_pricing',
         :'related' => :'related',
         :'reporting' => :'reporting',
@@ -226,6 +230,7 @@ module UltraCartAdminV2
         :'payment_processing' => :'ItemPaymentProcessing',
         :'physical' => :'ItemPhysical',
         :'pricing' => :'ItemPricing',
+        :'properties' => :'Array<ItemProperty>',
         :'realtime_pricing' => :'ItemRealtimePricing',
         :'related' => :'ItemRelated',
         :'reporting' => :'ItemReporting',
@@ -385,6 +390,12 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'pricing')
         self.pricing = attributes[:'pricing']
+      end
+
+      if attributes.has_key?(:'properties')
+        if (value = attributes[:'properties']).is_a?(Array)
+          self.properties = value
+        end
       end
 
       if attributes.has_key?(:'realtime_pricing')
@@ -553,6 +564,7 @@ module UltraCartAdminV2
           payment_processing == o.payment_processing &&
           physical == o.physical &&
           pricing == o.pricing &&
+          properties == o.properties &&
           realtime_pricing == o.realtime_pricing &&
           related == o.related &&
           reporting == o.reporting &&
@@ -578,7 +590,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accounting, amember, auto_order, ccbill, channel_partner_mappings, chargeback, checkout, content, creation_dts, description, description_translated_text_instance_oid, digital_delivery, ebay, email_notifications, enrollment123, gift_certificate, google_product_search, identifiers, inactive, instant_payment_notifications, internal, kit, kit_definition, last_modified_dts, merchant_id, merchant_item_id, merchant_item_oid, options, parent_category_id, parent_category_path, payment_processing, physical, pricing, realtime_pricing, related, reporting, restriction, revguard, reviews, salesforce, shipping, tags, tax, third_party_email_marketing, variant_items, variations, wishlist_member].hash
+      [accounting, amember, auto_order, ccbill, channel_partner_mappings, chargeback, checkout, content, creation_dts, description, description_translated_text_instance_oid, digital_delivery, ebay, email_notifications, enrollment123, gift_certificate, google_product_search, identifiers, inactive, instant_payment_notifications, internal, kit, kit_definition, last_modified_dts, merchant_id, merchant_item_id, merchant_item_oid, options, parent_category_id, parent_category_path, payment_processing, physical, pricing, properties, realtime_pricing, related, reporting, restriction, revguard, reviews, salesforce, shipping, tags, tax, third_party_email_marketing, variant_items, variations, wishlist_member].hash
     end
 
     # Builds the object from hash

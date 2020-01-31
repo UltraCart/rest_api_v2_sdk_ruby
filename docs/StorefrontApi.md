@@ -49,6 +49,7 @@ Method | HTTP request | Description
 [**get_experiments**](StorefrontApi.md#get_experiments) | **GET** /storefront/{storefront_oid}/experiments | Get experiments
 [**get_histogram_property_names**](StorefrontApi.md#get_histogram_property_names) | **GET** /storefront/{storefront_oid}/email/histogram/property_names | Get histogram property names
 [**get_histogram_property_values**](StorefrontApi.md#get_histogram_property_values) | **GET** /storefront/{storefront_oid}/email/histogram/property_values | Get histogram property values
+[**get_transaction_email_list**](StorefrontApi.md#get_transaction_email_list) | **GET** /storefront/{id}/transaction_email/list | Gets a list of transaction email names
 [**import_email_third_party_provider_list**](StorefrontApi.md#import_email_third_party_provider_list) | **POST** /storefront/{storefront_oid}/email/third_party_providers/import | Import a third party provider list
 [**insert_email_campaign**](StorefrontApi.md#insert_email_campaign) | **POST** /storefront/{storefront_oid}/email/campaigns | Insert email campaign
 [**insert_email_commseq**](StorefrontApi.md#insert_email_commseq) | **POST** /storefront/{storefront_oid}/email/commseqs | Insert email commseq
@@ -2887,6 +2888,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EmailHistogramPropertyValuesResponse**](EmailHistogramPropertyValuesResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_transaction_email_list**
+> TransactionEmailListResponse get_transaction_email_list(id)
+
+Gets a list of transaction email names
+
+Obtain a list of all transactional emails and return back just their names 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+id = 56 # Integer | null
+
+
+begin
+  #Gets a list of transaction email names
+  result = api_instance.get_transaction_email_list(id)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_transaction_email_list: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| null | 
+
+### Return type
+
+[**TransactionEmailListResponse**](TransactionEmailListResponse.md)
 
 ### Authorization
 

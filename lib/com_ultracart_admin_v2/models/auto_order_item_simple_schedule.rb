@@ -25,62 +25,53 @@ require 'date'
 
 module UltraCartAdminV2
 
-  class EmailList
-    # Created date
-    attr_accessor :created_dts
+  class AutoOrderItemSimpleSchedule
+    # Frequency of the rebill if not a fixed schedule
+    attr_accessor :frequency
 
-    # True if this campaign was deleted
-    attr_accessor :deleted
+    # Item ID that should rebill
+    attr_accessor :item_id
 
-    # Email list UUID
-    attr_accessor :email_list_uuid
+    # The number of times this simple schedule is configured for
+    attr_accessor :repeat_count
 
-    # Count of members in this list
-    attr_accessor :member_count
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    # Merchant ID
-    attr_accessor :merchant_id
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
 
-    # Name of email list
-    attr_accessor :name
-
-    # Description of list shown to customer.
-    attr_accessor :public_description
-
-    # True if this list is public
-    attr_accessor :public_list
-
-    # Storefront oid
-    attr_accessor :storefront_oid
-
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'created_dts' => :'created_dts',
-        :'deleted' => :'deleted',
-        :'email_list_uuid' => :'email_list_uuid',
-        :'member_count' => :'member_count',
-        :'merchant_id' => :'merchant_id',
-        :'name' => :'name',
-        :'public_description' => :'public_description',
-        :'public_list' => :'public_list',
-        :'storefront_oid' => :'storefront_oid'
+        :'frequency' => :'frequency',
+        :'item_id' => :'item_id',
+        :'repeat_count' => :'repeat_count'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'created_dts' => :'String',
-        :'deleted' => :'BOOLEAN',
-        :'email_list_uuid' => :'String',
-        :'member_count' => :'Integer',
-        :'merchant_id' => :'String',
-        :'name' => :'String',
-        :'public_description' => :'String',
-        :'public_list' => :'BOOLEAN',
-        :'storefront_oid' => :'Integer'
+        :'frequency' => :'String',
+        :'item_id' => :'String',
+        :'repeat_count' => :'Integer'
       }
     end
 
@@ -92,40 +83,16 @@ module UltraCartAdminV2
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'created_dts')
-        self.created_dts = attributes[:'created_dts']
+      if attributes.has_key?(:'frequency')
+        self.frequency = attributes[:'frequency']
       end
 
-      if attributes.has_key?(:'deleted')
-        self.deleted = attributes[:'deleted']
+      if attributes.has_key?(:'item_id')
+        self.item_id = attributes[:'item_id']
       end
 
-      if attributes.has_key?(:'email_list_uuid')
-        self.email_list_uuid = attributes[:'email_list_uuid']
-      end
-
-      if attributes.has_key?(:'member_count')
-        self.member_count = attributes[:'member_count']
-      end
-
-      if attributes.has_key?(:'merchant_id')
-        self.merchant_id = attributes[:'merchant_id']
-      end
-
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'public_description')
-        self.public_description = attributes[:'public_description']
-      end
-
-      if attributes.has_key?(:'public_list')
-        self.public_list = attributes[:'public_list']
-      end
-
-      if attributes.has_key?(:'storefront_oid')
-        self.storefront_oid = attributes[:'storefront_oid']
+      if attributes.has_key?(:'repeat_count')
+        self.repeat_count = attributes[:'repeat_count']
       end
 
     end
@@ -134,30 +101,25 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-
-      if !@name.nil? && @name.to_s.length > 250
-        invalid_properties.push("invalid value for 'name', the character length must be smaller than or equal to 250.")
-      end
-
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@name.nil? && @name.to_s.length > 250
+      frequency_validator = EnumAttributeValidator.new('String', ["Weekly", "Biweekly", "Every...", "Every 10 Days", "Every 24 Days", "Every 28 Days", "Monthly", "Every 45 Days", "Every 2 Months", "Every 3 Months", "Every 4 Months", "Every 6 Months", "Yearly"])
+      return false unless frequency_validator.valid?(@frequency)
       return true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] name Value to be assigned
-    def name=(name)
-
-      if !name.nil? && name.to_s.length > 250
-        fail ArgumentError, "invalid value for 'name', the character length must be smaller than or equal to 250."
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] frequency Object to be assigned
+    def frequency=(frequency)
+      validator = EnumAttributeValidator.new('String', ["Weekly", "Biweekly", "Every...", "Every 10 Days", "Every 24 Days", "Every 28 Days", "Monthly", "Every 45 Days", "Every 2 Months", "Every 3 Months", "Every 4 Months", "Every 6 Months", "Yearly"])
+      unless validator.valid?(frequency)
+        fail ArgumentError, "invalid value for 'frequency', must be one of #{validator.allowable_values}."
       end
-
-      @name = name
+      @frequency = frequency
     end
 
     # Checks equality by comparing each attribute.
@@ -165,15 +127,9 @@ module UltraCartAdminV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          created_dts == o.created_dts &&
-          deleted == o.deleted &&
-          email_list_uuid == o.email_list_uuid &&
-          member_count == o.member_count &&
-          merchant_id == o.merchant_id &&
-          name == o.name &&
-          public_description == o.public_description &&
-          public_list == o.public_list &&
-          storefront_oid == o.storefront_oid
+          frequency == o.frequency &&
+          item_id == o.item_id &&
+          repeat_count == o.repeat_count
     end
 
     # @see the `==` method
@@ -185,7 +141,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [created_dts, deleted, email_list_uuid, member_count, merchant_id, name, public_description, public_list, storefront_oid].hash
+      [frequency, item_id, repeat_count].hash
     end
 
     # Builds the object from hash

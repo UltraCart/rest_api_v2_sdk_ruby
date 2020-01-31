@@ -68,6 +68,12 @@ module UltraCartAdminV2
     # Count of opened emails, formatted
     attr_accessor :open_count_formatted
 
+    # Count of orders
+    attr_accessor :order_count
+
+    # Count of orders, formatted
+    attr_accessor :order_count_formatted
+
     # Count of emails permanently bounced
     attr_accessor :permanent_bounce_count
 
@@ -113,6 +119,12 @@ module UltraCartAdminV2
     # Storefront oid
     attr_accessor :storefront_oid
 
+    # Count of unsubscribes caused
+    attr_accessor :unsubscribe_count
+
+    # Count of unsubscribes caused, formatted
+    attr_accessor :unsubscribe_count_formatted
+
     # Count of views
     attr_accessor :view_count
 
@@ -137,6 +149,8 @@ module UltraCartAdminV2
         :'merchant_id' => :'merchant_id',
         :'open_count' => :'open_count',
         :'open_count_formatted' => :'open_count_formatted',
+        :'order_count' => :'order_count',
+        :'order_count_formatted' => :'order_count_formatted',
         :'permanent_bounce_count' => :'permanent_bounce_count',
         :'permanent_bounce_count_formatted' => :'permanent_bounce_count_formatted',
         :'profit' => :'profit',
@@ -152,6 +166,8 @@ module UltraCartAdminV2
         :'started_count' => :'started_count',
         :'started_count_formatted' => :'started_count_formatted',
         :'storefront_oid' => :'storefront_oid',
+        :'unsubscribe_count' => :'unsubscribe_count',
+        :'unsubscribe_count_formatted' => :'unsubscribe_count_formatted',
         :'view_count' => :'view_count',
         :'view_count_formatted' => :'view_count_formatted'
       }
@@ -174,6 +190,8 @@ module UltraCartAdminV2
         :'merchant_id' => :'String',
         :'open_count' => :'Integer',
         :'open_count_formatted' => :'String',
+        :'order_count' => :'Integer',
+        :'order_count_formatted' => :'String',
         :'permanent_bounce_count' => :'Integer',
         :'permanent_bounce_count_formatted' => :'String',
         :'profit' => :'Float',
@@ -189,6 +207,8 @@ module UltraCartAdminV2
         :'started_count' => :'Integer',
         :'started_count_formatted' => :'String',
         :'storefront_oid' => :'Integer',
+        :'unsubscribe_count' => :'Integer',
+        :'unsubscribe_count_formatted' => :'String',
         :'view_count' => :'Integer',
         :'view_count_formatted' => :'String'
       }
@@ -258,6 +278,14 @@ module UltraCartAdminV2
         self.open_count_formatted = attributes[:'open_count_formatted']
       end
 
+      if attributes.has_key?(:'order_count')
+        self.order_count = attributes[:'order_count']
+      end
+
+      if attributes.has_key?(:'order_count_formatted')
+        self.order_count_formatted = attributes[:'order_count_formatted']
+      end
+
       if attributes.has_key?(:'permanent_bounce_count')
         self.permanent_bounce_count = attributes[:'permanent_bounce_count']
       end
@@ -318,6 +346,14 @@ module UltraCartAdminV2
         self.storefront_oid = attributes[:'storefront_oid']
       end
 
+      if attributes.has_key?(:'unsubscribe_count')
+        self.unsubscribe_count = attributes[:'unsubscribe_count']
+      end
+
+      if attributes.has_key?(:'unsubscribe_count_formatted')
+        self.unsubscribe_count_formatted = attributes[:'unsubscribe_count_formatted']
+      end
+
       if attributes.has_key?(:'view_count')
         self.view_count = attributes[:'view_count']
       end
@@ -360,6 +396,8 @@ module UltraCartAdminV2
           merchant_id == o.merchant_id &&
           open_count == o.open_count &&
           open_count_formatted == o.open_count_formatted &&
+          order_count == o.order_count &&
+          order_count_formatted == o.order_count_formatted &&
           permanent_bounce_count == o.permanent_bounce_count &&
           permanent_bounce_count_formatted == o.permanent_bounce_count_formatted &&
           profit == o.profit &&
@@ -375,6 +413,8 @@ module UltraCartAdminV2
           started_count == o.started_count &&
           started_count_formatted == o.started_count_formatted &&
           storefront_oid == o.storefront_oid &&
+          unsubscribe_count == o.unsubscribe_count &&
+          unsubscribe_count_formatted == o.unsubscribe_count_formatted &&
           view_count == o.view_count &&
           view_count_formatted == o.view_count_formatted
     end
@@ -388,7 +428,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [click_count, click_count_formatted, delivered_count, delivered_count_formatted, email_communication_sequence_uuid, finished_count, finished_count_formatted, in_progress_count, in_progress_count_formatted, kickbox_count, kickbox_count_formatted, merchant_id, open_count, open_count_formatted, permanent_bounce_count, permanent_bounce_count_formatted, profit, profit_formatted, revenue, revenue_formatted, send_count, send_count_formatted, skipped_count, skipped_count_formatted, spam_count, spam_count_formatted, started_count, started_count_formatted, storefront_oid, view_count, view_count_formatted].hash
+      [click_count, click_count_formatted, delivered_count, delivered_count_formatted, email_communication_sequence_uuid, finished_count, finished_count_formatted, in_progress_count, in_progress_count_formatted, kickbox_count, kickbox_count_formatted, merchant_id, open_count, open_count_formatted, order_count, order_count_formatted, permanent_bounce_count, permanent_bounce_count_formatted, profit, profit_formatted, revenue, revenue_formatted, send_count, send_count_formatted, skipped_count, skipped_count_formatted, spam_count, spam_count_formatted, started_count, started_count_formatted, storefront_oid, unsubscribe_count, unsubscribe_count_formatted, view_count, view_count_formatted].hash
     end
 
     # Builds the object from hash

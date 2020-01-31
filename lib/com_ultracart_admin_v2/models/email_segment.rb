@@ -35,6 +35,9 @@ module UltraCartAdminV2
     # Email segment UUID
     attr_accessor :email_segment_uuid
 
+    # True if you want to sync to a facebook custom audience
+    attr_accessor :facebook_custom_audience
+
     # File profile equation json
     attr_accessor :filter_profile_equation_json
 
@@ -60,6 +63,7 @@ module UltraCartAdminV2
         :'created_dts' => :'created_dts',
         :'deleted' => :'deleted',
         :'email_segment_uuid' => :'email_segment_uuid',
+        :'facebook_custom_audience' => :'facebook_custom_audience',
         :'filter_profile_equation_json' => :'filter_profile_equation_json',
         :'member_count' => :'member_count',
         :'merchant_id' => :'merchant_id',
@@ -75,6 +79,7 @@ module UltraCartAdminV2
         :'created_dts' => :'String',
         :'deleted' => :'BOOLEAN',
         :'email_segment_uuid' => :'String',
+        :'facebook_custom_audience' => :'BOOLEAN',
         :'filter_profile_equation_json' => :'String',
         :'member_count' => :'Integer',
         :'merchant_id' => :'String',
@@ -102,6 +107,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'email_segment_uuid')
         self.email_segment_uuid = attributes[:'email_segment_uuid']
+      end
+
+      if attributes.has_key?(:'facebook_custom_audience')
+        self.facebook_custom_audience = attributes[:'facebook_custom_audience']
       end
 
       if attributes.has_key?(:'filter_profile_equation_json')
@@ -168,6 +177,7 @@ module UltraCartAdminV2
           created_dts == o.created_dts &&
           deleted == o.deleted &&
           email_segment_uuid == o.email_segment_uuid &&
+          facebook_custom_audience == o.facebook_custom_audience &&
           filter_profile_equation_json == o.filter_profile_equation_json &&
           member_count == o.member_count &&
           merchant_id == o.merchant_id &&
@@ -185,7 +195,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [created_dts, deleted, email_segment_uuid, filter_profile_equation_json, member_count, merchant_id, name, rebuild_required, storefront_oid].hash
+      [created_dts, deleted, email_segment_uuid, facebook_custom_audience, filter_profile_equation_json, member_count, merchant_id, name, rebuild_required, storefront_oid].hash
     end
 
     # Builds the object from hash

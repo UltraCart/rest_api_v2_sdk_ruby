@@ -41,6 +41,12 @@ module UltraCartAdminV2
     # Email communication sequence UUID
     attr_accessor :email_communication_sequence_uuid
 
+    # User of the sending address
+    attr_accessor :esp_domain_user
+
+    # UUID of the sending domain
+    attr_accessor :esp_domain_uuid
+
     # List and segment memberships
     attr_accessor :memberships
 
@@ -77,6 +83,8 @@ module UltraCartAdminV2
         :'deleted' => :'deleted',
         :'email_campaign_uuid' => :'email_campaign_uuid',
         :'email_communication_sequence_uuid' => :'email_communication_sequence_uuid',
+        :'esp_domain_user' => :'esp_domain_user',
+        :'esp_domain_uuid' => :'esp_domain_uuid',
         :'memberships' => :'memberships',
         :'merchant_id' => :'merchant_id',
         :'name' => :'name',
@@ -97,6 +105,8 @@ module UltraCartAdminV2
         :'deleted' => :'BOOLEAN',
         :'email_campaign_uuid' => :'String',
         :'email_communication_sequence_uuid' => :'String',
+        :'esp_domain_user' => :'String',
+        :'esp_domain_uuid' => :'String',
         :'memberships' => :'Array<EmailListSegmentMembership>',
         :'merchant_id' => :'String',
         :'name' => :'String',
@@ -135,6 +145,14 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'email_communication_sequence_uuid')
         self.email_communication_sequence_uuid = attributes[:'email_communication_sequence_uuid']
+      end
+
+      if attributes.has_key?(:'esp_domain_user')
+        self.esp_domain_user = attributes[:'esp_domain_user']
+      end
+
+      if attributes.has_key?(:'esp_domain_uuid')
+        self.esp_domain_uuid = attributes[:'esp_domain_uuid']
       end
 
       if attributes.has_key?(:'memberships')
@@ -217,6 +235,8 @@ module UltraCartAdminV2
           deleted == o.deleted &&
           email_campaign_uuid == o.email_campaign_uuid &&
           email_communication_sequence_uuid == o.email_communication_sequence_uuid &&
+          esp_domain_user == o.esp_domain_user &&
+          esp_domain_uuid == o.esp_domain_uuid &&
           memberships == o.memberships &&
           merchant_id == o.merchant_id &&
           name == o.name &&
@@ -237,7 +257,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [click_rate_formatted, created_dts, deleted, email_campaign_uuid, email_communication_sequence_uuid, memberships, merchant_id, name, open_rate_formatted, revenue_formatted, scheduled_dts, status, status_dts, storefront_oid].hash
+      [click_rate_formatted, created_dts, deleted, email_campaign_uuid, email_communication_sequence_uuid, esp_domain_user, esp_domain_uuid, memberships, merchant_id, name, open_rate_formatted, revenue_formatted, scheduled_dts, status, status_dts, storefront_oid].hash
     end
 
     # Builds the object from hash

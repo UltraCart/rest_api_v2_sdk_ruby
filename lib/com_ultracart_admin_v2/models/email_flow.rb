@@ -29,6 +29,9 @@ module UltraCartAdminV2
     # True if a customer may be enrolled in this flow multiple times
     attr_accessor :allow_multiple_concurrent_enrollments
 
+    # Click rate of emails, formatted
+    attr_accessor :click_rate_formatted
+
     # Created date
     attr_accessor :created_dts
 
@@ -41,6 +44,12 @@ module UltraCartAdminV2
     # Email flow UUID
     attr_accessor :email_flow_uuid
 
+    # Username of sending email
+    attr_accessor :esp_domain_user
+
+    # UUID of sending domain
+    attr_accessor :esp_domain_uuid
+
     # File profile equation json
     attr_accessor :filter_profile_equation_json
 
@@ -49,6 +58,12 @@ module UltraCartAdminV2
 
     # Name of email flow
     attr_accessor :name
+
+    # Open rate of emails, formatted
+    attr_accessor :open_rate_formatted
+
+    # Revenue, formatted
+    attr_accessor :revenue_formatted
 
     # Status of the campaign of draft, archived, active, and inactive
     attr_accessor :status
@@ -73,13 +88,18 @@ module UltraCartAdminV2
     def self.attribute_map
       {
         :'allow_multiple_concurrent_enrollments' => :'allow_multiple_concurrent_enrollments',
+        :'click_rate_formatted' => :'click_rate_formatted',
         :'created_dts' => :'created_dts',
         :'deleted' => :'deleted',
         :'email_communication_sequence_uuid' => :'email_communication_sequence_uuid',
         :'email_flow_uuid' => :'email_flow_uuid',
+        :'esp_domain_user' => :'esp_domain_user',
+        :'esp_domain_uuid' => :'esp_domain_uuid',
         :'filter_profile_equation_json' => :'filter_profile_equation_json',
         :'merchant_id' => :'merchant_id',
         :'name' => :'name',
+        :'open_rate_formatted' => :'open_rate_formatted',
+        :'revenue_formatted' => :'revenue_formatted',
         :'status' => :'status',
         :'status_dts' => :'status_dts',
         :'storefront_oid' => :'storefront_oid',
@@ -93,13 +113,18 @@ module UltraCartAdminV2
     def self.swagger_types
       {
         :'allow_multiple_concurrent_enrollments' => :'BOOLEAN',
+        :'click_rate_formatted' => :'String',
         :'created_dts' => :'String',
         :'deleted' => :'BOOLEAN',
         :'email_communication_sequence_uuid' => :'String',
         :'email_flow_uuid' => :'String',
+        :'esp_domain_user' => :'String',
+        :'esp_domain_uuid' => :'String',
         :'filter_profile_equation_json' => :'String',
         :'merchant_id' => :'String',
         :'name' => :'String',
+        :'open_rate_formatted' => :'String',
+        :'revenue_formatted' => :'String',
         :'status' => :'String',
         :'status_dts' => :'String',
         :'storefront_oid' => :'Integer',
@@ -121,6 +146,10 @@ module UltraCartAdminV2
         self.allow_multiple_concurrent_enrollments = attributes[:'allow_multiple_concurrent_enrollments']
       end
 
+      if attributes.has_key?(:'click_rate_formatted')
+        self.click_rate_formatted = attributes[:'click_rate_formatted']
+      end
+
       if attributes.has_key?(:'created_dts')
         self.created_dts = attributes[:'created_dts']
       end
@@ -137,6 +166,14 @@ module UltraCartAdminV2
         self.email_flow_uuid = attributes[:'email_flow_uuid']
       end
 
+      if attributes.has_key?(:'esp_domain_user')
+        self.esp_domain_user = attributes[:'esp_domain_user']
+      end
+
+      if attributes.has_key?(:'esp_domain_uuid')
+        self.esp_domain_uuid = attributes[:'esp_domain_uuid']
+      end
+
       if attributes.has_key?(:'filter_profile_equation_json')
         self.filter_profile_equation_json = attributes[:'filter_profile_equation_json']
       end
@@ -147,6 +184,14 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'open_rate_formatted')
+        self.open_rate_formatted = attributes[:'open_rate_formatted']
+      end
+
+      if attributes.has_key?(:'revenue_formatted')
+        self.revenue_formatted = attributes[:'revenue_formatted']
       end
 
       if attributes.has_key?(:'status')
@@ -211,13 +256,18 @@ module UltraCartAdminV2
       return true if self.equal?(o)
       self.class == o.class &&
           allow_multiple_concurrent_enrollments == o.allow_multiple_concurrent_enrollments &&
+          click_rate_formatted == o.click_rate_formatted &&
           created_dts == o.created_dts &&
           deleted == o.deleted &&
           email_communication_sequence_uuid == o.email_communication_sequence_uuid &&
           email_flow_uuid == o.email_flow_uuid &&
+          esp_domain_user == o.esp_domain_user &&
+          esp_domain_uuid == o.esp_domain_uuid &&
           filter_profile_equation_json == o.filter_profile_equation_json &&
           merchant_id == o.merchant_id &&
           name == o.name &&
+          open_rate_formatted == o.open_rate_formatted &&
+          revenue_formatted == o.revenue_formatted &&
           status == o.status &&
           status_dts == o.status_dts &&
           storefront_oid == o.storefront_oid &&
@@ -235,7 +285,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allow_multiple_concurrent_enrollments, created_dts, deleted, email_communication_sequence_uuid, email_flow_uuid, filter_profile_equation_json, merchant_id, name, status, status_dts, storefront_oid, trigger_parameter, trigger_parameter_name, trigger_type].hash
+      [allow_multiple_concurrent_enrollments, click_rate_formatted, created_dts, deleted, email_communication_sequence_uuid, email_flow_uuid, esp_domain_user, esp_domain_uuid, filter_profile_equation_json, merchant_id, name, open_rate_formatted, revenue_formatted, status, status_dts, storefront_oid, trigger_parameter, trigger_parameter_name, trigger_type].hash
     end
 
     # Builds the object from hash

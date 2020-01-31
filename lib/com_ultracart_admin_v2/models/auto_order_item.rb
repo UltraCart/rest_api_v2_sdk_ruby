@@ -95,6 +95,8 @@ module UltraCartAdminV2
     # The number of rebills remaining before this item is complete
     attr_accessor :remaining_repeat_count
 
+    attr_accessor :simple_schedule
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -142,7 +144,8 @@ module UltraCartAdminV2
         :'paypal_recurring_payment_profile_id' => :'paypal_recurring_payment_profile_id',
         :'preshipment_notice_sent' => :'preshipment_notice_sent',
         :'rebill_value' => :'rebill_value',
-        :'remaining_repeat_count' => :'remaining_repeat_count'
+        :'remaining_repeat_count' => :'remaining_repeat_count',
+        :'simple_schedule' => :'simple_schedule'
       }
     end
 
@@ -171,7 +174,8 @@ module UltraCartAdminV2
         :'paypal_recurring_payment_profile_id' => :'String',
         :'preshipment_notice_sent' => :'BOOLEAN',
         :'rebill_value' => :'Float',
-        :'remaining_repeat_count' => :'Integer'
+        :'remaining_repeat_count' => :'Integer',
+        :'simple_schedule' => :'AutoOrderItemSimpleSchedule'
       }
     end
 
@@ -279,6 +283,10 @@ module UltraCartAdminV2
         self.remaining_repeat_count = attributes[:'remaining_repeat_count']
       end
 
+      if attributes.has_key?(:'simple_schedule')
+        self.simple_schedule = attributes[:'simple_schedule']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -333,7 +341,8 @@ module UltraCartAdminV2
           paypal_recurring_payment_profile_id == o.paypal_recurring_payment_profile_id &&
           preshipment_notice_sent == o.preshipment_notice_sent &&
           rebill_value == o.rebill_value &&
-          remaining_repeat_count == o.remaining_repeat_count
+          remaining_repeat_count == o.remaining_repeat_count &&
+          simple_schedule == o.simple_schedule
     end
 
     # @see the `==` method
@@ -345,7 +354,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [arbitrary_item_id, arbitrary_percentage_discount, arbitrary_quantity, arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_remaining_orders, auto_order_item_oid, frequency, future_schedules, last_order_dts, life_time_value, next_preshipment_notice_dts, next_shipment_dts, no_order_after_dts, number_of_rebills, options, original_item_id, original_quantity, paypal_payer_id, paypal_recurring_payment_profile_id, preshipment_notice_sent, rebill_value, remaining_repeat_count].hash
+      [arbitrary_item_id, arbitrary_percentage_discount, arbitrary_quantity, arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_remaining_orders, auto_order_item_oid, frequency, future_schedules, last_order_dts, life_time_value, next_preshipment_notice_dts, next_shipment_dts, no_order_after_dts, number_of_rebills, options, original_item_id, original_quantity, paypal_payer_id, paypal_recurring_payment_profile_id, preshipment_notice_sent, rebill_value, remaining_repeat_count, simple_schedule].hash
     end
 
     # Builds the object from hash

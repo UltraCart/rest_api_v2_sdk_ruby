@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **merchant_id** | **String** | Merchant ID | [optional] 
 **open_count** | **Integer** | Count of opened emails | [optional] 
 **open_count_formatted** | **String** | Count of opened emails, formatted | [optional] 
+**order_count** | **Integer** | Count of orders | [optional] 
+**order_count_formatted** | **String** | Count of orders, formatted | [optional] 
 **permanent_bounce_count** | **Integer** | Count of emails permanently bounced | [optional] 
 **permanent_bounce_count_formatted** | **String** | Count of emails permanently bounced, formatted | [optional] 
 **profit** | **Float** | Profit | [optional] 
@@ -32,6 +34,8 @@ Name | Type | Description | Notes
 **started_count** | **Integer** | Count of customers that started the sequence | [optional] 
 **started_count_formatted** | **String** | Count of customers that started the sequence, formatted | [optional] 
 **storefront_oid** | **Integer** | Storefront oid | [optional] 
+**unsubscribe_count** | **Integer** | Count of unsubscribes caused | [optional] 
+**unsubscribe_count_formatted** | **String** | Count of unsubscribes caused, formatted | [optional] 
 **view_count** | **Integer** | Count of views | [optional] 
 **view_count_formatted** | **String** | Count of views, formatted | [optional] 
 

@@ -25,62 +25,21 @@ require 'date'
 
 module UltraCartAdminV2
 
-  class EmailList
-    # Created date
-    attr_accessor :created_dts
-
-    # True if this campaign was deleted
-    attr_accessor :deleted
-
-    # Email list UUID
-    attr_accessor :email_list_uuid
-
-    # Count of members in this list
-    attr_accessor :member_count
-
-    # Merchant ID
-    attr_accessor :merchant_id
-
-    # Name of email list
-    attr_accessor :name
-
-    # Description of list shown to customer.
-    attr_accessor :public_description
-
-    # True if this list is public
-    attr_accessor :public_list
-
-    # Storefront oid
-    attr_accessor :storefront_oid
+  class TransactionEmailListResponse
+    attr_accessor :email_names
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'created_dts' => :'created_dts',
-        :'deleted' => :'deleted',
-        :'email_list_uuid' => :'email_list_uuid',
-        :'member_count' => :'member_count',
-        :'merchant_id' => :'merchant_id',
-        :'name' => :'name',
-        :'public_description' => :'public_description',
-        :'public_list' => :'public_list',
-        :'storefront_oid' => :'storefront_oid'
+        :'email_names' => :'email_names'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'created_dts' => :'String',
-        :'deleted' => :'BOOLEAN',
-        :'email_list_uuid' => :'String',
-        :'member_count' => :'Integer',
-        :'merchant_id' => :'String',
-        :'name' => :'String',
-        :'public_description' => :'String',
-        :'public_list' => :'BOOLEAN',
-        :'storefront_oid' => :'Integer'
+        :'email_names' => :'Array<String>'
       }
     end
 
@@ -92,40 +51,10 @@ module UltraCartAdminV2
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'created_dts')
-        self.created_dts = attributes[:'created_dts']
-      end
-
-      if attributes.has_key?(:'deleted')
-        self.deleted = attributes[:'deleted']
-      end
-
-      if attributes.has_key?(:'email_list_uuid')
-        self.email_list_uuid = attributes[:'email_list_uuid']
-      end
-
-      if attributes.has_key?(:'member_count')
-        self.member_count = attributes[:'member_count']
-      end
-
-      if attributes.has_key?(:'merchant_id')
-        self.merchant_id = attributes[:'merchant_id']
-      end
-
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'public_description')
-        self.public_description = attributes[:'public_description']
-      end
-
-      if attributes.has_key?(:'public_list')
-        self.public_list = attributes[:'public_list']
-      end
-
-      if attributes.has_key?(:'storefront_oid')
-        self.storefront_oid = attributes[:'storefront_oid']
+      if attributes.has_key?(:'email_names')
+        if (value = attributes[:'email_names']).is_a?(Array)
+          self.email_names = value
+        end
       end
 
     end
@@ -134,30 +63,13 @@ module UltraCartAdminV2
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-
-      if !@name.nil? && @name.to_s.length > 250
-        invalid_properties.push("invalid value for 'name', the character length must be smaller than or equal to 250.")
-      end
-
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@name.nil? && @name.to_s.length > 250
       return true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] name Value to be assigned
-    def name=(name)
-
-      if !name.nil? && name.to_s.length > 250
-        fail ArgumentError, "invalid value for 'name', the character length must be smaller than or equal to 250."
-      end
-
-      @name = name
     end
 
     # Checks equality by comparing each attribute.
@@ -165,15 +77,7 @@ module UltraCartAdminV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          created_dts == o.created_dts &&
-          deleted == o.deleted &&
-          email_list_uuid == o.email_list_uuid &&
-          member_count == o.member_count &&
-          merchant_id == o.merchant_id &&
-          name == o.name &&
-          public_description == o.public_description &&
-          public_list == o.public_list &&
-          storefront_oid == o.storefront_oid
+          email_names == o.email_names
     end
 
     # @see the `==` method
@@ -185,7 +89,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [created_dts, deleted, email_list_uuid, member_count, merchant_id, name, public_description, public_list, storefront_oid].hash
+      [email_names].hash
     end
 
     # Builds the object from hash
