@@ -37,7 +37,7 @@ click_query = UltraCartAdminV2::AffiliateClickQuery.new # AffiliateClickQuery | 
 opts = { 
   _limit: 10000, # Integer | The maximum number of records to return on this one API call. (Maximum 10000)
   _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  Only option is link.
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  Only option is link.
 }
 
 begin
@@ -102,7 +102,7 @@ ledger_query = UltraCartAdminV2::AffiliateLedgerQuery.new # AffiliateLedgerQuery
 opts = { 
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Maximum 200)
   _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  Only option is link.
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  Only option is link.
 }
 
 begin

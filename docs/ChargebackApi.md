@@ -95,7 +95,7 @@ api_instance = UltraCartAdminV2::ChargebackApi.new
 chargeback_dispute_oid = 56 # Integer | The chargeback dispute oid to retrieve.
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -154,18 +154,18 @@ end
 api_instance = UltraCartAdminV2::ChargebackApi.new
 
 opts = { 
-  order_id: "order_id_example", # String | Order Id
-  case_number: "case_number_example", # String | Case number
-  status: "status_example", # String | Status
-  expiration_dts_start: "expiration_dts_start_example", # String | Expiration dts start
-  expiration_dts_end: "expiration_dts_end_example", # String | Expiration dts end
-  chargeback_dts_start: "chargeback_dts_start_example", # String | Chargeback dts start
-  chargeback_dts_end: "chargeback_dts_end_example", # String | Chargeback dts end
+  order_id: 'order_id_example', # String | Order Id
+  case_number: 'case_number_example', # String | Case number
+  status: 'status_example', # String | Status
+  expiration_dts_start: 'expiration_dts_start_example', # String | Expiration dts start
+  expiration_dts_end: 'expiration_dts_end_example', # String | Expiration dts end
+  chargeback_dts_start: 'chargeback_dts_start_example', # String | Chargeback dts start
+  chargeback_dts_end: 'chargeback_dts_end_example', # String | Chargeback dts end
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Max 200)
   _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _since: "_since_example", # String | Fetch chargebacks that have been created/modified since this date/time.
-  _sort: "_sort_example", # String | The sort order of the chargebacks.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _since: '_since_example', # String | Fetch chargebacks that have been created/modified since this date/time.
+  _sort: '_sort_example', # String | The sort order of the chargebacks.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -236,7 +236,7 @@ api_instance = UltraCartAdminV2::ChargebackApi.new
 chargeback = UltraCartAdminV2::ChargebackDispute.new # ChargebackDispute | Chargeback to insert
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -299,7 +299,7 @@ chargeback = UltraCartAdminV2::ChargebackDispute.new # ChargebackDispute | Charg
 chargeback_dispute_oid = 56 # Integer | The chargeback_dispute_oid to update.
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin

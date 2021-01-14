@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**delete_customer**](CustomerApi.md#delete_customer) | **DELETE** /customer/customers/{customer_profile_oid} | Delete a customer
 [**get_customer**](CustomerApi.md#get_customer) | **GET** /customer/customers/{customer_profile_oid} | Retrieve a customer
 [**get_customers**](CustomerApi.md#get_customers) | **GET** /customer/customers | Retrieve customers
-[**get_customers_by_query**](CustomerApi.md#get_customers_by_query) | **GET** /customer/customers/query | Retrieve customers by query
+[**get_customers_by_query**](CustomerApi.md#get_customers_by_query) | **POST** /customer/customers/query | Retrieve customers by query
 [**get_customers_for_data_tables**](CustomerApi.md#get_customers_for_data_tables) | **POST** /customer/customers/dataTables | Retrieve customers for DataTables plugin
 [**get_editor_values**](CustomerApi.md#get_editor_values) | **GET** /customer/editor_values | Retrieve values needed for a customer profile editor
 [**get_email_lists**](CustomerApi.md#get_email_lists) | **GET** /customer/email_lists | Retrieve all email lists across all storefronts
@@ -100,7 +100,7 @@ api_instance = UltraCartAdminV2::CustomerApi.new
 customer_profile_oid = 56 # Integer | The customer oid to retrieve.
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -159,38 +159,38 @@ end
 api_instance = UltraCartAdminV2::CustomerApi.new
 
 opts = { 
-  email: "email_example", # String | Email
-  qb_class: "qb_class_example", # String | Quickbooks class
-  quickbooks_code: "quickbooks_code_example", # String | Quickbooks code
-  last_modified_dts_start: "last_modified_dts_start_example", # String | Last modified date start
-  last_modified_dts_end: "last_modified_dts_end_example", # String | Last modified date end
-  signup_dts_start: "signup_dts_start_example", # String | Signup date start
-  signup_dts_end: "signup_dts_end_example", # String | Signup date end
-  billing_first_name: "billing_first_name_example", # String | Billing first name
-  billing_last_name: "billing_last_name_example", # String | Billing last name
-  billing_company: "billing_company_example", # String | Billing company
-  billing_city: "billing_city_example", # String | Billing city
-  billing_state: "billing_state_example", # String | Billing state
-  billing_postal_code: "billing_postal_code_example", # String | Billing postal code
-  billing_country_code: "billing_country_code_example", # String | Billing country code
-  billing_day_phone: "billing_day_phone_example", # String | Billing day phone
-  billing_evening_phone: "billing_evening_phone_example", # String | Billing evening phone
-  shipping_first_name: "shipping_first_name_example", # String | Shipping first name
-  shipping_last_name: "shipping_last_name_example", # String | Shipping last name
-  shipping_company: "shipping_company_example", # String | Shipping company
-  shipping_city: "shipping_city_example", # String | Shipping city
-  shipping_state: "shipping_state_example", # String | Shipping state
-  shipping_postal_code: "shipping_postal_code_example", # String | Shipping postal code
-  shipping_country_code: "shipping_country_code_example", # String | Shipping country code
-  shipping_day_phone: "shipping_day_phone_example", # String | Shipping day phone
-  shipping_evening_phone: "shipping_evening_phone_example", # String | Shipping evening phone
+  email: 'email_example', # String | Email
+  qb_class: 'qb_class_example', # String | Quickbooks class
+  quickbooks_code: 'quickbooks_code_example', # String | Quickbooks code
+  last_modified_dts_start: 'last_modified_dts_start_example', # String | Last modified date start
+  last_modified_dts_end: 'last_modified_dts_end_example', # String | Last modified date end
+  signup_dts_start: 'signup_dts_start_example', # String | Signup date start
+  signup_dts_end: 'signup_dts_end_example', # String | Signup date end
+  billing_first_name: 'billing_first_name_example', # String | Billing first name
+  billing_last_name: 'billing_last_name_example', # String | Billing last name
+  billing_company: 'billing_company_example', # String | Billing company
+  billing_city: 'billing_city_example', # String | Billing city
+  billing_state: 'billing_state_example', # String | Billing state
+  billing_postal_code: 'billing_postal_code_example', # String | Billing postal code
+  billing_country_code: 'billing_country_code_example', # String | Billing country code
+  billing_day_phone: 'billing_day_phone_example', # String | Billing day phone
+  billing_evening_phone: 'billing_evening_phone_example', # String | Billing evening phone
+  shipping_first_name: 'shipping_first_name_example', # String | Shipping first name
+  shipping_last_name: 'shipping_last_name_example', # String | Shipping last name
+  shipping_company: 'shipping_company_example', # String | Shipping company
+  shipping_city: 'shipping_city_example', # String | Shipping city
+  shipping_state: 'shipping_state_example', # String | Shipping state
+  shipping_postal_code: 'shipping_postal_code_example', # String | Shipping postal code
+  shipping_country_code: 'shipping_country_code_example', # String | Shipping country code
+  shipping_day_phone: 'shipping_day_phone_example', # String | Shipping day phone
+  shipping_evening_phone: 'shipping_evening_phone_example', # String | Shipping evening phone
   pricing_tier_oid: 56, # Integer | Pricing tier oid
-  pricing_tier_name: "pricing_tier_name_example", # String | Pricing tier name
+  pricing_tier_name: 'pricing_tier_name_example', # String | Pricing tier name
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Max 200)
   _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _since: "_since_example", # String | Fetch customers that have been created/modified since this date/time.
-  _sort: "_sort_example", # String | The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _since: '_since_example', # String | Fetch customers that have been created/modified since this date/time.
+  _sort: '_sort_example', # String | The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -283,9 +283,9 @@ customer_query = UltraCartAdminV2::CustomerQuery.new # CustomerQuery | Customer 
 opts = { 
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Max 200)
   _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _since: "_since_example", # String | Fetch customers that have been created/modified since this date/time.
-  _sort: "_sort_example", # String | The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _since: '_since_example', # String | Fetch customers that have been created/modified since this date/time.
+  _sort: '_sort_example', # String | The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -348,7 +348,7 @@ end
 api_instance = UltraCartAdminV2::CustomerApi.new
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -510,7 +510,7 @@ api_instance = UltraCartAdminV2::CustomerApi.new
 customer = UltraCartAdminV2::Customer.new # Customer | Customer to insert
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -573,7 +573,7 @@ customer = UltraCartAdminV2::Customer.new # Customer | Customer to update
 customer_profile_oid = 56 # Integer | The customer_profile_oid to update.
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin

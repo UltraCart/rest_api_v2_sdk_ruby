@@ -153,7 +153,7 @@ api_instance = UltraCartAdminV2::WebhookApi.new
 
 webhook_oid = 56 # Integer | The webhook oid that owns the log.
 
-request_id = "request_id_example" # String | The request id associated with the log to view.
+request_id = 'request_id_example' # String | The request id associated with the log to view.
 
 
 begin
@@ -216,7 +216,7 @@ webhook_oid = 56 # Integer | The webhook oid to retrieve log summaries for.
 opts = { 
   _limit: 100, # Integer | The maximum number of records to return on this one API call.
   _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _since: "_since_example" # String | Fetch log summaries that have been delivered since this date/time.
+  _since: '_since_example' # String | Fetch log summaries that have been delivered since this date/time.
 }
 
 begin
@@ -279,7 +279,7 @@ api_instance = UltraCartAdminV2::WebhookApi.new
 opts = { 
   _limit: 100, # Integer | The maximum number of records to return on this one API call.
   _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _sort: "_sort_example", # String | The sort order of the webhooks.  See documentation for examples
+  _sort: '_sort_example', # String | The sort order of the webhooks.  See documentation for examples
   _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
 }
 
@@ -403,7 +403,7 @@ api_instance = UltraCartAdminV2::WebhookApi.new
 
 webhook_oid = 56 # Integer | The webhook oid that is receiving the reflowed events.
 
-event_name = "event_name_example" # String | The event to reflow.
+event_name = 'event_name_example' # String | The event to reflow.
 
 
 begin

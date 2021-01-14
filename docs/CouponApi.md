@@ -5,19 +5,25 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_coupon**](CouponApi.md#delete_coupon) | **DELETE** /coupon/coupons/{coupon_oid} | Delete a coupon
+[**delete_coupons_by_code**](CouponApi.md#delete_coupons_by_code) | **DELETE** /coupon/coupons/by_code | Deletes multiple coupons
+[**delete_coupons_by_oid**](CouponApi.md#delete_coupons_by_oid) | **DELETE** /coupon/coupons/by_oid | Deletes multiple coupons
 [**generate_coupon_codes**](CouponApi.md#generate_coupon_codes) | **POST** /coupon/coupons/{coupon_oid}/generate_codes | Generates one time codes for a coupon
 [**generate_one_time_codes_by_merchant_code**](CouponApi.md#generate_one_time_codes_by_merchant_code) | **POST** /coupon/coupons/merchant_code/{merchant_code}/generate_codes | Generates one time codes by merchant code
+[**get_auto_apply**](CouponApi.md#get_auto_apply) | **GET** /coupon/auto_apply | Retrieve auto apply rules and conditions
 [**get_coupon**](CouponApi.md#get_coupon) | **GET** /coupon/coupons/{coupon_oid} | Retrieve a coupon
 [**get_coupon_by_merchant_code**](CouponApi.md#get_coupon_by_merchant_code) | **GET** /coupon/coupons/merchant_code/{merchant_code} | Retrieve a coupon by merchant code
 [**get_coupons**](CouponApi.md#get_coupons) | **GET** /coupon/coupons | Retrieve coupons
 [**get_coupons_by_query**](CouponApi.md#get_coupons_by_query) | **GET** /coupon/coupons/query | Retrieve coupons by query
 [**get_editor_values**](CouponApi.md#get_editor_values) | **GET** /coupon/editor_values | Retrieve values needed for a coupon editor
 [**insert_coupon**](CouponApi.md#insert_coupon) | **POST** /coupon/coupons | Insert a coupon
+[**search_items**](CouponApi.md#search_items) | **GET** /coupon/searchItems | Searches for items to display within a coupon editor and assign to coupons
+[**update_auto_apply**](CouponApi.md#update_auto_apply) | **POST** /coupon/auto_apply | Update auto apply rules and conditions
 [**update_coupon**](CouponApi.md#update_coupon) | **PUT** /coupon/coupons/{coupon_oid} | Update a coupon
+[**upload_coupon_codes**](CouponApi.md#upload_coupon_codes) | **POST** /coupon/coupons/{coupon_oid}/upload_codes | Upload one-time codes for a coupon
 
 
 # **delete_coupon**
-> CouponResponse delete_coupon(coupon_oid)
+> delete_coupon(coupon_oid)
 
 Delete a coupon
 
@@ -45,8 +51,7 @@ coupon_oid = 56 # Integer | The coupon_oid to delete.
 
 begin
   #Delete a coupon
-  result = api_instance.delete_coupon(coupon_oid)
-  p result
+  api_instance.delete_coupon(coupon_oid)
 rescue UltraCartAdminV2::ApiError => e
   puts "Exception when calling CouponApi->delete_coupon: #{e}"
 end
@@ -60,7 +65,119 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CouponResponse**](CouponResponse.md)
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **delete_coupons_by_code**
+> delete_coupons_by_code(coupon_delete_request)
+
+Deletes multiple coupons
+
+Delete coupons on the UltraCart account. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::CouponApi.new
+
+coupon_delete_request = UltraCartAdminV2::CouponDeletesRequest.new # CouponDeletesRequest | Coupon oids to delete
+
+
+begin
+  #Deletes multiple coupons
+  api_instance.delete_coupons_by_code(coupon_delete_request)
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling CouponApi->delete_coupons_by_code: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coupon_delete_request** | [**CouponDeletesRequest**](CouponDeletesRequest.md)| Coupon oids to delete | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **delete_coupons_by_oid**
+> delete_coupons_by_oid(coupon_delete_request)
+
+Deletes multiple coupons
+
+Delete coupons on the UltraCart account. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::CouponApi.new
+
+coupon_delete_request = UltraCartAdminV2::CouponDeletesRequest.new # CouponDeletesRequest | Coupon oids to delete
+
+
+begin
+  #Deletes multiple coupons
+  api_instance.delete_coupons_by_oid(coupon_delete_request)
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling CouponApi->delete_coupons_by_oid: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coupon_delete_request** | [**CouponDeletesRequest**](CouponDeletesRequest.md)| Coupon oids to delete | 
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
@@ -157,7 +274,7 @@ end
 
 api_instance = UltraCartAdminV2::CouponApi.new
 
-merchant_code = "merchant_code_example" # String | The merchant code to generate one time codes.
+merchant_code = 'merchant_code_example' # String | The merchant code to generate one time codes.
 
 coupon_codes_request = UltraCartAdminV2::CouponCodesRequest.new # CouponCodesRequest | Coupon code generation parameters
 
@@ -193,6 +310,57 @@ Name | Type | Description  | Notes
 
 
 
+# **get_auto_apply**
+> CouponAutoApplyConditions get_auto_apply
+
+Retrieve auto apply rules and conditions
+
+Retrieve auto apply rules and conditions 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::CouponApi.new
+
+begin
+  #Retrieve auto apply rules and conditions
+  result = api_instance.get_auto_apply
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling CouponApi->get_auto_apply: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**CouponAutoApplyConditions**](CouponAutoApplyConditions.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **get_coupon**
 > CouponResponse get_coupon(coupon_oid, opts)
 
@@ -220,7 +388,7 @@ api_instance = UltraCartAdminV2::CouponApi.new
 coupon_oid = 56 # Integer | The coupon oid to retrieve.
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -278,10 +446,10 @@ end
 
 api_instance = UltraCartAdminV2::CouponApi.new
 
-merchant_code = "merchant_code_example" # String | The coupon merchant code to retrieve.
+merchant_code = 'merchant_code_example' # String | The coupon merchant code to retrieve.
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -340,19 +508,19 @@ end
 api_instance = UltraCartAdminV2::CouponApi.new
 
 opts = { 
-  merchant_code: "merchant_code_example", # String | Merchant code
-  description: "description_example", # String | Description
-  coupon_type: "coupon_type_example", # String | Coupon type
-  start_date_begin: "start_date_begin_example", # String | Start date begin
-  start_date_end: "start_date_end_example", # String | Start date end
-  expiration_date_begin: "expiration_date_begin_example", # String | Expiration date begin
-  expiration_date_end: "expiration_date_end_example", # String | Expiration date end
+  merchant_code: 'merchant_code_example', # String | Merchant code
+  description: 'description_example', # String | Description
+  coupon_type: 'coupon_type_example', # String | Coupon type
+  start_date_begin: 'start_date_begin_example', # String | Start date begin
+  start_date_end: 'start_date_end_example', # String | Start date end
+  expiration_date_begin: 'expiration_date_begin_example', # String | Expiration date begin
+  expiration_date_end: 'expiration_date_end_example', # String | Expiration date end
   affiliate_oid: 56, # Integer | Affiliate oid
   exclude_expired: true, # BOOLEAN | Exclude expired
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Max 200)
   _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _sort: "_sort_example", # String | The sort order of the coupons.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _sort: '_sort_example', # String | The sort order of the coupons.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -426,8 +594,8 @@ coupon_query = UltraCartAdminV2::CouponQuery.new # CouponQuery | Coupon query
 opts = { 
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Max 200)
   _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _sort: "_sort_example", # String | The sort order of the coupons.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _sort: '_sort_example', # String | The sort order of the coupons.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -542,7 +710,7 @@ api_instance = UltraCartAdminV2::CouponApi.new
 coupon = UltraCartAdminV2::Coupon.new # Coupon | Coupon to insert
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -576,6 +744,122 @@ Name | Type | Description  | Notes
 
 
 
+# **search_items**
+> CouponItemSearchResultsResponse search_items(opts)
+
+Searches for items to display within a coupon editor and assign to coupons
+
+Searches for items to display within a coupon editor and assign to coupons 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::CouponApi.new
+
+opts = { 
+  s: 's_example', # String | 
+  m: 56 # Integer | 
+}
+
+begin
+  #Searches for items to display within a coupon editor and assign to coupons
+  result = api_instance.search_items(opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling CouponApi->search_items: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **s** | **String**|  | [optional] 
+ **m** | **Integer**|  | [optional] 
+
+### Return type
+
+[**CouponItemSearchResultsResponse**](CouponItemSearchResultsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_auto_apply**
+> update_auto_apply(conditions)
+
+Update auto apply rules and conditions
+
+Update auto apply rules and conditions 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::CouponApi.new
+
+conditions = UltraCartAdminV2::CouponAutoApplyConditions.new # CouponAutoApplyConditions | Conditions
+
+
+begin
+  #Update auto apply rules and conditions
+  api_instance.update_auto_apply(conditions)
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling CouponApi->update_auto_apply: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conditions** | [**CouponAutoApplyConditions**](CouponAutoApplyConditions.md)| Conditions | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **update_coupon**
 > CouponResponse update_coupon(coupon, coupon_oid, opts)
 
@@ -605,7 +889,7 @@ coupon = UltraCartAdminV2::Coupon.new # Coupon | Coupon to update
 coupon_oid = 56 # Integer | The coupon_oid to update.
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -628,6 +912,66 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CouponResponse**](CouponResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
+ - **Accept**: application/json
+
+
+
+# **upload_coupon_codes**
+> UploadCouponCodesResponse upload_coupon_codes(coupon_oid, upload_coupon_codes_request)
+
+Upload one-time codes for a coupon
+
+Upload one-time codes for a coupon 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::CouponApi.new
+
+coupon_oid = 56 # Integer | The coupon oid to associate with the provided one-time codes.
+
+upload_coupon_codes_request = UltraCartAdminV2::UploadCouponCodesRequest.new # UploadCouponCodesRequest | One-time coupon codes
+
+
+begin
+  #Upload one-time codes for a coupon
+  result = api_instance.upload_coupon_codes(coupon_oid, upload_coupon_codes_request)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling CouponApi->upload_coupon_codes: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coupon_oid** | **Integer**| The coupon oid to associate with the provided one-time codes. | 
+ **upload_coupon_codes_request** | [**UploadCouponCodesRequest**](UploadCouponCodesRequest.md)| One-time coupon codes | 
+
+### Return type
+
+[**UploadCouponCodesResponse**](UploadCouponCodesResponse.md)
 
 ### Authorization
 

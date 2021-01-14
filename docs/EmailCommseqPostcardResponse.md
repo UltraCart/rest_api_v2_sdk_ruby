@@ -1,0 +1,12 @@
+# UltraCartAdminV2::EmailCommseqPostcardResponse
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**error** | [**Error**](Error.md) |  | [optional] 
+**metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] 
+**postcard** | [**EmailCommseqPostcard**](EmailCommseqPostcard.md) |  | [optional] 
+**success** | **BOOLEAN** | Indicates if API call was successful | [optional] 
+**warning** | [**Warning**](Warning.md) |  | [optional] 
+
+

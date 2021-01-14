@@ -22,5 +22,6 @@ Name | Type | Description | Notes
 **override_affiliate_id** | **Integer** | Override the affiliate id given credit for rebills of this auto order | [optional] 
 **rebill_orders** | [**Array&lt;Order&gt;**](Order.md) | Rebill orders that have taken place on this auto order | [optional] 
 **rotating_transaction_gateway_code** | **String** | The RTG code associated with this order for future rebills | [optional] 
+**status** | **String** | The status of the auto order | [optional] 
 
 

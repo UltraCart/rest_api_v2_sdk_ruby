@@ -7,5 +7,6 @@ Name | Type | Description | Notes
 **ledgers** | [**Array&lt;AffiliateLedger&gt;**](AffiliateLedger.md) | ledgers | [optional] 
 **metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] 
 **success** | **BOOLEAN** | Indicates if API call was successful | [optional] 
+**warning** | [**Warning**](Warning.md) |  | [optional] 
 
 

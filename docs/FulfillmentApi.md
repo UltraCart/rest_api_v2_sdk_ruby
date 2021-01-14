@@ -35,7 +35,7 @@ end
 
 api_instance = UltraCartAdminV2::FulfillmentApi.new
 
-distribution_center_code = "distribution_center_code_example" # String | Distribution center code
+distribution_center_code = 'distribution_center_code_example' # String | Distribution center code
 
 order_ids = [UltraCartAdminV2::Array<String>.new] # Array<String> | Orders to acknowledge receipt of (limit 100)
 
@@ -94,7 +94,7 @@ end
 
 api_instance = UltraCartAdminV2::FulfillmentApi.new
 
-distribution_center_code = "distribution_center_code_example" # String | Distribution center code
+distribution_center_code = 'distribution_center_code_example' # String | Distribution center code
 
 
 begin
@@ -202,7 +202,7 @@ end
 
 api_instance = UltraCartAdminV2::FulfillmentApi.new
 
-distribution_center_code = "distribution_center_code_example" # String | Distribution center code
+distribution_center_code = 'distribution_center_code_example' # String | Distribution center code
 
 shipments = [UltraCartAdminV2::FulfillmentShipment.new] # Array<FulfillmentShipment> | Orders to mark shipped
 
@@ -261,7 +261,7 @@ end
 
 api_instance = UltraCartAdminV2::FulfillmentApi.new
 
-distribution_center_code = "distribution_center_code_example" # String | Distribution center code
+distribution_center_code = 'distribution_center_code_example' # String | Distribution center code
 
 inventories = [UltraCartAdminV2::FulfillmentInventory.new] # Array<FulfillmentInventory> | Inventory updates (limit 500)
 

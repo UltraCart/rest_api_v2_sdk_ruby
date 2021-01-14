@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **has_linked_accounts** | **BOOLEAN** |  | [optional] 
 **metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] 
 **success** | **BOOLEAN** | Indicates if API call was successful | [optional] 
+**warning** | [**Warning**](Warning.md) |  | [optional] 
 
 

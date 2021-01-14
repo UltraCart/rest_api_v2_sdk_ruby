@@ -37,14 +37,14 @@ end
 
 api_instance = UltraCartAdminV2::OauthApi.new
 
-client_id = "client_id_example" # String | The OAuth application client_id.
+client_id = 'client_id_example' # String | The OAuth application client_id.
 
-grant_type = "grant_type_example" # String | Type of grant
+grant_type = 'grant_type_example' # String | Type of grant
 
 opts = { 
-  code: "code_example", # String | Authorization code received back from the browser redirect
-  redirect_uri: "redirect_uri_example", # String | The URI that you redirect the browser to to start the authorization process
-  refresh_token: "refresh_token_example" # String | The refresh token received during the original grant_type=authorization_code that can be used to return a new access token
+  code: 'code_example', # String | Authorization code received back from the browser redirect
+  redirect_uri: 'redirect_uri_example', # String | The URI that you redirect the browser to to start the authorization process
+  refresh_token: 'refresh_token_example' # String | The refresh token received during the original grant_type=authorization_code that can be used to return a new access token
 }
 
 begin
@@ -110,9 +110,9 @@ end
 
 api_instance = UltraCartAdminV2::OauthApi.new
 
-client_id = "client_id_example" # String | The OAuth application client_id.
+client_id = 'client_id_example' # String | The OAuth application client_id.
 
-token = "token_example" # String | The OAuth access token that is to be revoked..
+token = 'token_example' # String | The OAuth access token that is to be revoked..
 
 
 begin

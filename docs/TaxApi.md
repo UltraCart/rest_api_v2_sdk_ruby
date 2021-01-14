@@ -15,6 +15,8 @@ Method | HTTP request | Description
 [**get_tax_provider_self**](TaxApi.md#get_tax_provider_self) | **GET** /tax/providers/self | Retrieve the Self tax provider
 [**get_tax_provider_self_countries**](TaxApi.md#get_tax_provider_self_countries) | **GET** /tax/providers/self/countries | Retrieve the Self tax provider countries
 [**get_tax_provider_self_regions_by_country_code**](TaxApi.md#get_tax_provider_self_regions_by_country_code) | **GET** /tax/providers/self/regions/{countryCode} | Retrieve the Self tax provider regions for a given country code
+[**get_tax_provider_sovos**](TaxApi.md#get_tax_provider_sovos) | **GET** /tax/providers/sovos | Retrieve the Sovos tax provider
+[**get_tax_provider_sovos_test**](TaxApi.md#get_tax_provider_sovos_test) | **GET** /tax/providers/sovos/test | Attempts to connect to Sovos and returns back the response
 [**get_tax_provider_tax_jar**](TaxApi.md#get_tax_provider_tax_jar) | **GET** /tax/providers/taxjar | Retrieve the TaxJar tax provider
 [**get_tax_provider_tax_jar_test**](TaxApi.md#get_tax_provider_tax_jar_test) | **GET** /tax/providers/taxjar/test | Attempts to connect to TaxJar and returns back the response
 [**get_tax_provider_ultra_cart**](TaxApi.md#get_tax_provider_ultra_cart) | **GET** /tax/providers/ultracart | Retrieve the UltraCart tax provider
@@ -27,6 +29,7 @@ Method | HTTP request | Description
 [**update_tax_provider_self_county**](TaxApi.md#update_tax_provider_self_county) | **POST** /tax/providers/self/county/{county} | Updates a Self tax provider county
 [**update_tax_provider_self_postal_code**](TaxApi.md#update_tax_provider_self_postal_code) | **POST** /tax/providers/self/postalCode/{postal_code} | Updates a Self tax provider postalCode
 [**update_tax_provider_self_state**](TaxApi.md#update_tax_provider_self_state) | **POST** /tax/providers/self/state/{stateCode} | Updates a Self tax provider state
+[**update_tax_provider_sovos**](TaxApi.md#update_tax_provider_sovos) | **POST** /tax/providers/sovos | Update the Sovos tax provider
 [**update_tax_provider_tax_jar**](TaxApi.md#update_tax_provider_tax_jar) | **POST** /tax/providers/taxjar | Update the TaxJar tax provider
 [**update_tax_provider_ultra_cart**](TaxApi.md#update_tax_provider_ultra_cart) | **POST** /tax/providers/ultracart | Update the UltraCart tax provider
 
@@ -55,7 +58,7 @@ end
 
 api_instance = UltraCartAdminV2::TaxApi.new
 
-city = "city_example" # String | The city being deleted.
+city = 'city_example' # String | The city being deleted.
 
 tax_city = UltraCartAdminV2::TaxCity.new # TaxCity | tax city to be deleted
 
@@ -114,7 +117,7 @@ end
 
 api_instance = UltraCartAdminV2::TaxApi.new
 
-country_code = "country_code_example" # String | The country code being deleted.
+country_code = 'country_code_example' # String | The country code being deleted.
 
 tax_country = UltraCartAdminV2::TaxCountry.new # TaxCountry | tax country to be deleted
 
@@ -173,7 +176,7 @@ end
 
 api_instance = UltraCartAdminV2::TaxApi.new
 
-county = "county_example" # String | The county being deleted.
+county = 'county_example' # String | The county being deleted.
 
 tax_county = UltraCartAdminV2::TaxCounty.new # TaxCounty | tax county to be deleted
 
@@ -232,7 +235,7 @@ end
 
 api_instance = UltraCartAdminV2::TaxApi.new
 
-postal_code = "postal_code_example" # String | The postal code being deleted.
+postal_code = 'postal_code_example' # String | The postal code being deleted.
 
 tax_postal_code = UltraCartAdminV2::TaxPostalCode.new # TaxPostalCode | tax postal code to be deleted
 
@@ -291,7 +294,7 @@ end
 
 api_instance = UltraCartAdminV2::TaxApi.new
 
-state_code = "state_code_example" # String | The state code being deleted.
+state_code = 'state_code_example' # String | The state code being deleted.
 
 tax_state = UltraCartAdminV2::TaxState.new # TaxState | tax state to be deleted
 
@@ -611,7 +614,7 @@ end
 
 api_instance = UltraCartAdminV2::TaxApi.new
 
-country_code = "country_code_example" # String | The country code regions desired.
+country_code = 'country_code_example' # String | The country code regions desired.
 
 
 begin
@@ -632,6 +635,108 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TaxProviderSelfRegionsResponse**](TaxProviderSelfRegionsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_tax_provider_sovos**
+> TaxProviderSovos get_tax_provider_sovos
+
+Retrieve the Sovos tax provider
+
+Retrieves the Sovos tax provider. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::TaxApi.new
+
+begin
+  #Retrieve the Sovos tax provider
+  result = api_instance.get_tax_provider_sovos
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling TaxApi->get_tax_provider_sovos: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**TaxProviderSovos**](TaxProviderSovos.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_tax_provider_sovos_test**
+> TaxProviderTestResult get_tax_provider_sovos_test
+
+Attempts to connect to Sovos and returns back the response
+
+Attempts to connect to Sovos and returns back the response. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::TaxApi.new
+
+begin
+  #Attempts to connect to Sovos and returns back the response
+  result = api_instance.get_tax_provider_sovos_test
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling TaxApi->get_tax_provider_sovos_test: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**TaxProviderTestResult**](TaxProviderTestResult.md)
 
 ### Authorization
 
@@ -824,7 +929,7 @@ api_instance = UltraCartAdminV2::TaxApi.new
 opts = { 
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Max 200)
   _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -883,7 +988,7 @@ end
 
 api_instance = UltraCartAdminV2::TaxApi.new
 
-provider_name = "provider_name_example" # String | The tax provider to set active.
+provider_name = 'provider_name_example' # String | The tax provider to set active.
 
 
 begin
@@ -1054,7 +1159,7 @@ end
 
 api_instance = UltraCartAdminV2::TaxApi.new
 
-city = "city_example" # String | The city being updated.
+city = 'city_example' # String | The city being updated.
 
 tax_city = UltraCartAdminV2::TaxCity.new # TaxCity | tax city to be updated
 
@@ -1114,7 +1219,7 @@ end
 
 api_instance = UltraCartAdminV2::TaxApi.new
 
-country_code = "country_code_example" # String | The country code being updated.
+country_code = 'country_code_example' # String | The country code being updated.
 
 tax_country = UltraCartAdminV2::TaxCountry.new # TaxCountry | tax country to be updated
 
@@ -1174,7 +1279,7 @@ end
 
 api_instance = UltraCartAdminV2::TaxApi.new
 
-county = "county_example" # String | The county being updated.
+county = 'county_example' # String | The county being updated.
 
 tax_county = UltraCartAdminV2::TaxCounty.new # TaxCounty | tax county to be updated
 
@@ -1234,7 +1339,7 @@ end
 
 api_instance = UltraCartAdminV2::TaxApi.new
 
-postal_code = "postal_code_example" # String | The postal code being updated.
+postal_code = 'postal_code_example' # String | The postal code being updated.
 
 tax_postal_code = UltraCartAdminV2::TaxPostalCode.new # TaxPostalCode | tax postal code to be updated
 
@@ -1294,7 +1399,7 @@ end
 
 api_instance = UltraCartAdminV2::TaxApi.new
 
-state_code = "state_code_example" # String | The state code being updated.
+state_code = 'state_code_example' # String | The state code being updated.
 
 tax_state = UltraCartAdminV2::TaxState.new # TaxState | tax state to be updated
 
@@ -1318,6 +1423,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TaxState**](TaxState.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_tax_provider_sovos**
+> TaxProviderSovos update_tax_provider_sovos(tax_provider_sovos)
+
+Update the Sovos tax provider
+
+Update the Sovos tax provider. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::TaxApi.new
+
+tax_provider_sovos = UltraCartAdminV2::TaxProviderSovos.new # TaxProviderSovos | TaxProviderSovos object
+
+
+begin
+  #Update the Sovos tax provider
+  result = api_instance.update_tax_provider_sovos(tax_provider_sovos)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling TaxApi->update_tax_provider_sovos: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tax_provider_sovos** | [**TaxProviderSovos**](TaxProviderSovos.md)| TaxProviderSovos object | 
+
+### Return type
+
+[**TaxProviderSovos**](TaxProviderSovos.md)
 
 ### Authorization
 

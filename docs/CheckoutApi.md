@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**login**](CheckoutApi.md#login) | **POST** /checkout/cart/profile/login | Profile login
 [**logout**](CheckoutApi.md#logout) | **POST** /checkout/cart/profile/logout | Profile logout
 [**register**](CheckoutApi.md#register) | **POST** /checkout/cart/profile/register | Profile registration
+[**register_affiliate_click**](CheckoutApi.md#register_affiliate_click) | **POST** /checkout/affiliateClick/register | Register affiliate click
 [**related_items_for_cart**](CheckoutApi.md#related_items_for_cart) | **POST** /checkout/related_items | Related items
 [**related_items_for_item**](CheckoutApi.md#related_items_for_item) | **POST** /checkout/relatedItems/{item_id} | Related items (specific item)
 [**setup_browser_key**](CheckoutApi.md#setup_browser_key) | **PUT** /checkout/browser_key | Setup Browser Application
@@ -171,7 +172,7 @@ end
 
 api_instance = UltraCartAdminV2::CheckoutApi.new
 
-cart_id = "cart_id_example" # String | Cart ID to retrieve
+cart_id = 'cart_id_example' # String | Cart ID to retrieve
 
 
 begin
@@ -290,7 +291,7 @@ end
 api_instance = UltraCartAdminV2::CheckoutApi.new
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -352,10 +353,10 @@ end
 
 api_instance = UltraCartAdminV2::CheckoutApi.new
 
-cart_id = "cart_id_example" # String | Cart ID to retrieve
+cart_id = 'cart_id_example' # String | Cart ID to retrieve
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -418,10 +419,10 @@ end
 
 api_instance = UltraCartAdminV2::CheckoutApi.new
 
-return_code = "return_code_example" # String | Return code to lookup cart ID by
+return_code = 'return_code_example' # String | Return code to lookup cart ID by
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -484,7 +485,7 @@ end
 
 api_instance = UltraCartAdminV2::CheckoutApi.new
 
-country_code = "country_code_example" # String | Two letter ISO country code
+country_code = 'country_code_example' # String | Two letter ISO country code
 
 
 begin
@@ -522,7 +523,7 @@ Name | Type | Description  | Notes
 
 Handoff cart
 
-Handoff the browser to UltraCart for view cart on StoreFront, transfer to PayPal, transfer to Affirm or finalization of the order (including upsell processing). 
+Handoff the browser to UltraCart for view cart on StoreFront, transfer to PayPal, transfer to Affirm, transfer to Sezzle or finalization of the order (including upsell processing). 
 
 ### Example
 ```ruby
@@ -549,7 +550,7 @@ api_instance = UltraCartAdminV2::CheckoutApi.new
 handoff_request = UltraCartAdminV2::CheckoutHandoffRequest.new # CheckoutHandoffRequest | Handoff request
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -615,7 +616,7 @@ api_instance = UltraCartAdminV2::CheckoutApi.new
 login_request = UltraCartAdminV2::CartProfileLoginRequest.new # CartProfileLoginRequest | Login request
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -681,7 +682,7 @@ api_instance = UltraCartAdminV2::CheckoutApi.new
 cart = UltraCartAdminV2::Cart.new # Cart | Cart
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -747,7 +748,7 @@ api_instance = UltraCartAdminV2::CheckoutApi.new
 register_request = UltraCartAdminV2::CartProfileRegisterRequest.new # CartProfileRegisterRequest | Register request
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -769,6 +770,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CartProfileRegisterResponse**](CartProfileRegisterResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **register_affiliate_click**
+> RegisterAffiliateClickResponse register_affiliate_click(register_affiliate_click_request, opts)
+
+Register affiliate click
+
+Register an affiliate click.  Used by custom checkouts that are completely API based and do not perform checkout handoff. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::CheckoutApi.new
+
+register_affiliate_click_request = UltraCartAdminV2::RegisterAffiliateClickRequest.new # RegisterAffiliateClickRequest | Register affiliate click request
+
+opts = { 
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
+}
+
+begin
+  #Register affiliate click
+  result = api_instance.register_affiliate_click(register_affiliate_click_request, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling CheckoutApi->register_affiliate_click: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **register_affiliate_click_request** | [**RegisterAffiliateClickRequest**](RegisterAffiliateClickRequest.md)| Register affiliate click request | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+
+### Return type
+
+[**RegisterAffiliateClickResponse**](RegisterAffiliateClickResponse.md)
 
 ### Authorization
 
@@ -813,7 +880,7 @@ api_instance = UltraCartAdminV2::CheckoutApi.new
 cart = UltraCartAdminV2::Cart.new # Cart | Cart
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See item resource documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See item resource documentation for examples
 }
 
 begin
@@ -876,12 +943,12 @@ end
 
 api_instance = UltraCartAdminV2::CheckoutApi.new
 
-item_id = "item_id_example" # String | Item ID to retrieve related items for
+item_id = 'item_id_example' # String | Item ID to retrieve related items for
 
 cart = UltraCartAdminV2::Cart.new # Cart | Cart
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See item resource documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See item resource documentation for examples
 }
 
 begin
@@ -1005,7 +1072,7 @@ api_instance = UltraCartAdminV2::CheckoutApi.new
 cart = UltraCartAdminV2::Cart.new # Cart | Cart
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -1071,7 +1138,7 @@ api_instance = UltraCartAdminV2::CheckoutApi.new
 validation_request = UltraCartAdminV2::CartValidationRequest.new # CartValidationRequest | Validation request
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin

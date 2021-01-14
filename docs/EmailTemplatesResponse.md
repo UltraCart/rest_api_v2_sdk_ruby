@@ -7,5 +7,6 @@ Name | Type | Description | Notes
 **metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] 
 **success** | **BOOLEAN** | Indicates if API call was successful | [optional] 
 **templates** | [**Array&lt;EmailTemplate&gt;**](EmailTemplate.md) |  | [optional] 
+**warning** | [**Warning**](Warning.md) |  | [optional] 
 
 

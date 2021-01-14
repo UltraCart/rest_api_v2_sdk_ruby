@@ -4,38 +4,62 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**add_to_library**](StorefrontApi.md#add_to_library) | **POST** /storefront/code_library | Add to library
+[**apply_to_store_front**](StorefrontApi.md#apply_to_store_front) | **POST** /storefront/code_library/apply | Apply library item to storefront.
 [**archive_email_list**](StorefrontApi.md#archive_email_list) | **POST** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/archive | Archive email list
 [**archive_email_segment**](StorefrontApi.md#archive_email_segment) | **POST** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/archive | Archive email segment
+[**back_populate_email_flow**](StorefrontApi.md#back_populate_email_flow) | **POST** /storefront/{storefront_oid}/email/flows/{email_flow_uuid}/backfill | Back populate email flow
 [**check_download_email_segment**](StorefrontApi.md#check_download_email_segment) | **POST** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/downloadPrepare/{email_segment_rebuild_uuid} | Check download of email segment
 [**clone_email_campaign**](StorefrontApi.md#clone_email_campaign) | **POST** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid}/clone | Clone email campaign
 [**clone_email_flow**](StorefrontApi.md#clone_email_flow) | **POST** /storefront/{storefront_oid}/email/flows/{email_flow_uuid}/clone | Clone email flow
 [**create_email_sending_domain**](StorefrontApi.md#create_email_sending_domain) | **POST** /storefront/email/sending_domains/{domain}/create | Create email campaign
+[**delete_email_commseq_stat**](StorefrontApi.md#delete_email_commseq_stat) | **DELETE** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/stat | Delete communication sequence stats
 [**delete_email_email**](StorefrontApi.md#delete_email_email) | **DELETE** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid} | Delete email email
 [**delete_email_list_customer**](StorefrontApi.md#delete_email_list_customer) | **DELETE** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/customers/{email_customer_uuid} | Delete email list customer
+[**delete_email_postcard**](StorefrontApi.md#delete_email_postcard) | **DELETE** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid} | Delete email postcard
 [**delete_email_sending_domain**](StorefrontApi.md#delete_email_sending_domain) | **DELETE** /storefront/email/sending_domains/{domain} | delete email campaign
 [**delete_experiment**](StorefrontApi.md#delete_experiment) | **DELETE** /storefront/{storefront_oid}/experiments/{storefront_experiment_oid} | Delete experiment
+[**delete_library_item**](StorefrontApi.md#delete_library_item) | **DELETE** /storefront/code_library/{library_item_oid} | Delete library item
+[**delete_library_item_published_versions**](StorefrontApi.md#delete_library_item_published_versions) | **DELETE** /storefront/code_library/{library_item_oid}/published_versions | Delete all published versions for a library item, including anything in review.
+[**duplicate_library_item**](StorefrontApi.md#duplicate_library_item) | **POST** /storefront/code_library/{library_item_oid}/duplicate | Duplicate library item.
 [**geocode_address**](StorefrontApi.md#geocode_address) | **POST** /storefront/{storefront_oid}/email/geocode | Obtain lat/long for an address
 [**get_countries**](StorefrontApi.md#get_countries) | **GET** /storefront/{storefront_oid}/email/countries | Get countries
+[**get_editor_token**](StorefrontApi.md#get_editor_token) | **GET** /storefront/{storefront_oid}/editor_token | Gets editor token
 [**get_email_base_templates**](StorefrontApi.md#get_email_base_templates) | **GET** /storefront/{storefront_oid}/email/baseTemplates | Get email communication base templates
 [**get_email_campaign**](StorefrontApi.md#get_email_campaign) | **GET** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid} | Get email campaign
+[**get_email_campaign_screenshots**](StorefrontApi.md#get_email_campaign_screenshots) | **GET** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid}/screenshots | Get email campaign screenshots
 [**get_email_campaigns**](StorefrontApi.md#get_email_campaigns) | **GET** /storefront/{storefront_oid}/email/campaigns | Get email campaigns
 [**get_email_campaigns_with_stats**](StorefrontApi.md#get_email_campaigns_with_stats) | **GET** /storefront/{storefront_oid}/email/campaignsWithStats/{stat_days} | Get email campaigns with stats
 [**get_email_commseq**](StorefrontApi.md#get_email_commseq) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid} | Get email commseq
 [**get_email_commseq_email_stats**](StorefrontApi.md#get_email_commseq_email_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/emailStats | Get email communication sequence emails stats
+[**get_email_commseq_postcard_stats**](StorefrontApi.md#get_email_commseq_postcard_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/postcardStats | Get email communication sequence postcard stats
 [**get_email_commseq_stat_overall**](StorefrontApi.md#get_email_commseq_stat_overall) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/stat | Get communication sequence stats overall
+[**get_email_commseq_step_stats**](StorefrontApi.md#get_email_commseq_step_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/stepStats | Get email communication sequence step stats
 [**get_email_commseq_step_waiting**](StorefrontApi.md#get_email_commseq_step_waiting) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/waiting | Get email communication sequence customers waiting at each requested step
 [**get_email_commseqs**](StorefrontApi.md#get_email_commseqs) | **GET** /storefront/{storefront_oid}/email/commseqs | Get email commseqs
+[**get_email_customer_editor_url**](StorefrontApi.md#get_email_customer_editor_url) | **GET** /storefront/{storefront_oid}/email/customers/{email_customer_uuid}/editor_url | Get customers editor URL
+[**get_email_customers**](StorefrontApi.md#get_email_customers) | **GET** /storefront/{storefront_oid}/email/customers | Get email customers
 [**get_email_dashboard_activity**](StorefrontApi.md#get_email_dashboard_activity) | **GET** /storefront/{storefront_oid}/email/dashboard_activity | Get email dashboard activity
 [**get_email_dashboard_stats**](StorefrontApi.md#get_email_dashboard_stats) | **GET** /storefront/{storefront_oid}/email/dashboard_stats | Get dashboard stats
 [**get_email_email**](StorefrontApi.md#get_email_email) | **GET** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid} | Get email email
+[**get_email_email_clicks**](StorefrontApi.md#get_email_email_clicks) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/steps/{commseq_step_uuid}/emails/{commseq_email_uuid}/clicks | Get email email clicks
+[**get_email_email_customer_editor_url**](StorefrontApi.md#get_email_email_customer_editor_url) | **GET** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid}/orders/{order_id}/editor_url | Get email order customer editor url
+[**get_email_email_orders**](StorefrontApi.md#get_email_email_orders) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/steps/{commseq_step_uuid}/emails/{commseq_email_uuid}/orders | Get email email orders
 [**get_email_emails**](StorefrontApi.md#get_email_emails) | **GET** /storefront/{storefront_oid}/email/emails | Get email emails
 [**get_email_emails_multiple**](StorefrontApi.md#get_email_emails_multiple) | **POST** /storefront/{storefront_oid}/email/emails/multiple | Get email emails multiple
 [**get_email_flow**](StorefrontApi.md#get_email_flow) | **GET** /storefront/{storefront_oid}/email/flows/{email_flow_uuid} | Get email flow
+[**get_email_flow_screenshots**](StorefrontApi.md#get_email_flow_screenshots) | **GET** /storefront/{storefront_oid}/email/flows/{email_flow_uuid}/screenshots | Get email flow screenshots
 [**get_email_flows**](StorefrontApi.md#get_email_flows) | **GET** /storefront/{storefront_oid}/email/flows | Get email flows
+[**get_email_global_settings**](StorefrontApi.md#get_email_global_settings) | **GET** /storefront/email/global_settings | Get email globalsettings
 [**get_email_list**](StorefrontApi.md#get_email_list) | **GET** /storefront/{storefront_oid}/email/lists/{email_list_uuid} | Get email list
-[**get_email_list_customer_editor_url**](StorefrontApi.md#get_email_list_customer_editor_url) | **GET** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/customers/{email_customer_uuid}/editor_url | Get email list customers
+[**get_email_list_customer_editor_url**](StorefrontApi.md#get_email_list_customer_editor_url) | **GET** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/customers/{email_customer_uuid}/editor_url | Get email list customer editor url
 [**get_email_list_customers**](StorefrontApi.md#get_email_list_customers) | **GET** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/customers | Get email list customers
 [**get_email_lists**](StorefrontApi.md#get_email_lists) | **GET** /storefront/{storefront_oid}/email/lists | Get email lists
+[**get_email_performance**](StorefrontApi.md#get_email_performance) | **GET** /storefront/{storefront_oid}/email/performance | Get email performance
+[**get_email_plan**](StorefrontApi.md#get_email_plan) | **GET** /storefront/{storefront_oid}/email/plan | Get email plan
+[**get_email_postcard**](StorefrontApi.md#get_email_postcard) | **GET** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid} | Get email postcard
+[**get_email_postcards**](StorefrontApi.md#get_email_postcards) | **GET** /storefront/{storefront_oid}/email/postcards | Get email postcards
+[**get_email_postcards_multiple**](StorefrontApi.md#get_email_postcards_multiple) | **POST** /storefront/{storefront_oid}/email/postcards/multiple | Get email postcards multiple
 [**get_email_segment**](StorefrontApi.md#get_email_segment) | **GET** /storefront/{storefront_oid}/email/segments/{email_segment_uuid} | Get email segment
 [**get_email_segment_customer_editor_url**](StorefrontApi.md#get_email_segment_customer_editor_url) | **GET** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/customers/{email_customer_uuid}/editor_url | Get email segment customers editor URL
 [**get_email_segment_customers**](StorefrontApi.md#get_email_segment_customers) | **GET** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/customers | Get email segment customers
@@ -43,33 +67,181 @@ Method | HTTP request | Description
 [**get_email_sending_domain**](StorefrontApi.md#get_email_sending_domain) | **GET** /storefront/email/sending_domain/{domain} | Get email sending domain
 [**get_email_sending_domain_status**](StorefrontApi.md#get_email_sending_domain_status) | **POST** /storefront/email/sending_domains/{domain}/status | Get email sending domain status
 [**get_email_sending_domains**](StorefrontApi.md#get_email_sending_domains) | **GET** /storefront/email/sending_domains | Get email sending domains
+[**get_email_settings**](StorefrontApi.md#get_email_settings) | **GET** /storefront/{storefront_oid}/email/settings | Get email settings
 [**get_email_template**](StorefrontApi.md#get_email_template) | **GET** /storefront/{storefront_oid}/email/templates/{email_template_oid} | Get email template
 [**get_email_templates**](StorefrontApi.md#get_email_templates) | **GET** /storefront/{storefront_oid}/email/templates | Get email templates
 [**get_email_third_party_providers**](StorefrontApi.md#get_email_third_party_providers) | **GET** /storefront/{storefront_oid}/email/third_party_providers | Get a list of third party email providers
 [**get_experiments**](StorefrontApi.md#get_experiments) | **GET** /storefront/{storefront_oid}/experiments | Get experiments
 [**get_histogram_property_names**](StorefrontApi.md#get_histogram_property_names) | **GET** /storefront/{storefront_oid}/email/histogram/property_names | Get histogram property names
 [**get_histogram_property_values**](StorefrontApi.md#get_histogram_property_values) | **GET** /storefront/{storefront_oid}/email/histogram/property_values | Get histogram property values
-[**get_transaction_email_list**](StorefrontApi.md#get_transaction_email_list) | **GET** /storefront/{id}/transaction_email/list | Gets a list of transaction email names
+[**get_library_filter_values**](StorefrontApi.md#get_library_filter_values) | **GET** /storefront/code_library/filter_values | Get library values used to populate drop down boxes for filtering.
+[**get_library_item**](StorefrontApi.md#get_library_item) | **GET** /storefront/code_library/{library_item_oid} | Get library item.
+[**get_library_item_published_versions**](StorefrontApi.md#get_library_item_published_versions) | **GET** /storefront/code_library/{library_item_oid}/published_versions | Get all published versions for a library item.
+[**get_pricing_tiers**](StorefrontApi.md#get_pricing_tiers) | **GET** /storefront/pricing_tiers | Retrieve pricing tiers
+[**get_thumbnail_parameters**](StorefrontApi.md#get_thumbnail_parameters) | **POST** /storefront/thumbnailParameters | Get thumbnail parameters
+[**get_transaction_email**](StorefrontApi.md#get_transaction_email) | **GET** /storefront/{storefront_oid}/transaction_email/list/{email_id} | Gets a transaction email object
+[**get_transaction_email_list**](StorefrontApi.md#get_transaction_email_list) | **GET** /storefront/{storefront_oid}/transaction_email/list | Gets a list of transaction email names
+[**get_transaction_email_screenshots**](StorefrontApi.md#get_transaction_email_screenshots) | **GET** /storefront/{storefront_oid}/transaction_email/list/{email_id}/screenshots | Get transactional email screenshots
+[**global_unsubscribe**](StorefrontApi.md#global_unsubscribe) | **POST** /storefront/{storefront_oid}/email/globalUnsubscribe | Globally unsubscribe a customer
 [**import_email_third_party_provider_list**](StorefrontApi.md#import_email_third_party_provider_list) | **POST** /storefront/{storefront_oid}/email/third_party_providers/import | Import a third party provider list
 [**insert_email_campaign**](StorefrontApi.md#insert_email_campaign) | **POST** /storefront/{storefront_oid}/email/campaigns | Insert email campaign
 [**insert_email_commseq**](StorefrontApi.md#insert_email_commseq) | **POST** /storefront/{storefront_oid}/email/commseqs | Insert email commseq
 [**insert_email_email**](StorefrontApi.md#insert_email_email) | **POST** /storefront/{storefront_oid}/email/emails | Insert email email
 [**insert_email_flow**](StorefrontApi.md#insert_email_flow) | **POST** /storefront/{storefront_oid}/email/flows | Insert email flow
 [**insert_email_list**](StorefrontApi.md#insert_email_list) | **POST** /storefront/{storefront_oid}/email/lists | Insert email list
+[**insert_email_postcard**](StorefrontApi.md#insert_email_postcard) | **POST** /storefront/{storefront_oid}/email/postcards | Insert email postcard
 [**insert_email_segment**](StorefrontApi.md#insert_email_segment) | **POST** /storefront/{storefront_oid}/email/segments | Insert email segment
 [**prepare_download_email_segment**](StorefrontApi.md#prepare_download_email_segment) | **POST** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/downloadPrepare | Prepare download of email segment
+[**publish_library_item**](StorefrontApi.md#publish_library_item) | **POST** /storefront/code_library/{library_item_oid}/publish | Publish library item.
+[**purchase_library_item**](StorefrontApi.md#purchase_library_item) | **POST** /storefront/code_library/{library_item_oid}/purchase | Purchase public library item, which creates a copy of the item in your personal code library
+[**release_email_commseq_step_waiting**](StorefrontApi.md#release_email_commseq_step_waiting) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/waiting/{commseq_step_uuid} | Release email communication sequence customers waiting at the specified step
+[**review**](StorefrontApi.md#review) | **POST** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid}/review | Request a review of an email
 [**search**](StorefrontApi.md#search) | **GET** /storefront/search | Searches for all matching values
+[**search2**](StorefrontApi.md#search2) | **POST** /storefront/search | Searches for all matching values (using POST)
 [**search_email_list_customers**](StorefrontApi.md#search_email_list_customers) | **GET** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/search | Search email list customers
 [**search_email_segment_customers**](StorefrontApi.md#search_email_segment_customers) | **GET** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/search | Search email segment customers
+[**search_library_items**](StorefrontApi.md#search_library_items) | **POST** /storefront/code_library/search | Retrieve library items
+[**search_published_items**](StorefrontApi.md#search_published_items) | **POST** /storefront/code_library/search_published | Retrieve library items
+[**search_review_items**](StorefrontApi.md#search_review_items) | **POST** /storefront/code_library/search_review | Retrieve library items needing review or rejected
+[**search_shared_items**](StorefrontApi.md#search_shared_items) | **POST** /storefront/code_library/search_shared | Retrieve library items
+[**send_email_test**](StorefrontApi.md#send_email_test) | **POST** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid}/test | Send email test
+[**send_postcard_test**](StorefrontApi.md#send_postcard_test) | **POST** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid}/test | Send postcard test
 [**start_email_campaign**](StorefrontApi.md#start_email_campaign) | **PUT** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid}/start | Start email campaign
 [**subscribe_to_email_list**](StorefrontApi.md#subscribe_to_email_list) | **POST** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/subscribe | Subscribe customers to email list
 [**update_email_campaign**](StorefrontApi.md#update_email_campaign) | **PUT** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid} | Update email campaign
 [**update_email_commseq**](StorefrontApi.md#update_email_commseq) | **PUT** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid} | Update email commseq
+[**update_email_customer**](StorefrontApi.md#update_email_customer) | **PUT** /storefront/{storefront_oid}/email/customers/{email_customer_uuid} | Update email customer
 [**update_email_email**](StorefrontApi.md#update_email_email) | **PUT** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid} | Update email email
 [**update_email_flow**](StorefrontApi.md#update_email_flow) | **PUT** /storefront/{storefront_oid}/email/flows/{email_flow_uuid} | Update email flow
+[**update_email_global_settings**](StorefrontApi.md#update_email_global_settings) | **POST** /storefront/email/global_settings | Update email global settings
 [**update_email_list**](StorefrontApi.md#update_email_list) | **PUT** /storefront/{storefront_oid}/email/lists/{email_list_uuid} | Update email list
+[**update_email_plan**](StorefrontApi.md#update_email_plan) | **POST** /storefront/{storefront_oid}/email/plan | Update email plan
+[**update_email_postcard**](StorefrontApi.md#update_email_postcard) | **PUT** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid} | Update email postcard
 [**update_email_segment**](StorefrontApi.md#update_email_segment) | **PUT** /storefront/{storefront_oid}/email/segments/{email_segment_uuid} | Update email segment
+[**update_email_settings**](StorefrontApi.md#update_email_settings) | **POST** /storefront/{storefront_oid}/email/settings | Update email settings
 [**update_experiment**](StorefrontApi.md#update_experiment) | **PUT** /storefront/{storefront_oid}/experiments/{storefront_experiment_oid} | Update experiment
+[**update_library_item**](StorefrontApi.md#update_library_item) | **PUT** /storefront/code_library/{library_item_oid} | Update library item. Note that only certain fields may be updated via this method.
+[**update_transaction_email**](StorefrontApi.md#update_transaction_email) | **PUT** /storefront/{storefront_oid}/transaction_email/list/{email_id} | Updates a transaction email object
+
+
+# **add_to_library**
+> LibraryItemResponse add_to_library(add_library_request)
+
+Add to library
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+add_library_request = UltraCartAdminV2::AddLibraryItemRequest.new # AddLibraryItemRequest | New library item request
+
+
+begin
+  #Add to library
+  result = api_instance.add_to_library(add_library_request)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->add_to_library: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **add_library_request** | [**AddLibraryItemRequest**](AddLibraryItemRequest.md)| New library item request | 
+
+### Return type
+
+[**LibraryItemResponse**](LibraryItemResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **apply_to_store_front**
+> ApplyLibraryItemResponse apply_to_store_front(apply_library_request)
+
+Apply library item to storefront.
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+apply_library_request = UltraCartAdminV2::ApplyLibraryItemRequest.new # ApplyLibraryItemRequest | New library item
+
+
+begin
+  #Apply library item to storefront.
+  result = api_instance.apply_to_store_front(apply_library_request)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->apply_to_store_front: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apply_library_request** | [**ApplyLibraryItemRequest**](ApplyLibraryItemRequest.md)| New library item | 
+
+### Return type
+
+[**ApplyLibraryItemResponse**](ApplyLibraryItemResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 
 
 # **archive_email_list**
@@ -99,9 +271,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_list_uuid = "email_list_uuid_example" # String | null
+email_list_uuid = 'email_list_uuid_example' # String | 
 
 
 begin
@@ -117,8 +289,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_list_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_list_uuid** | **String**|  | 
 
 ### Return type
 
@@ -162,9 +334,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_segment_uuid = "email_segment_uuid_example" # String | null
+email_segment_uuid = 'email_segment_uuid_example' # String | 
 
 
 begin
@@ -180,12 +352,78 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_segment_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_segment_uuid** | **String**|  | 
 
 ### Return type
 
 [**EmailSegmentArchiveResponse**](EmailSegmentArchiveResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **back_populate_email_flow**
+> EmailFlowBackPopulateResponse back_populate_email_flow(storefront_oid, email_flow_uuid, back_populate_request)
+
+Back populate email flow
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_flow_uuid = 'email_flow_uuid_example' # String | 
+
+back_populate_request = UltraCartAdminV2::EmailFlowBackPopulateRequest.new # EmailFlowBackPopulateRequest | The request to back populate
+
+
+begin
+  #Back populate email flow
+  result = api_instance.back_populate_email_flow(storefront_oid, email_flow_uuid, back_populate_request)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->back_populate_email_flow: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_flow_uuid** | **String**|  | 
+ **back_populate_request** | [**EmailFlowBackPopulateRequest**](EmailFlowBackPopulateRequest.md)| The request to back populate | 
+
+### Return type
+
+[**EmailFlowBackPopulateResponse**](EmailFlowBackPopulateResponse.md)
 
 ### Authorization
 
@@ -225,11 +463,11 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_segment_uuid = "email_segment_uuid_example" # String | null
+email_segment_uuid = 'email_segment_uuid_example' # String | 
 
-email_segment_rebuild_uuid = "email_segment_rebuild_uuid_example" # String | null
+email_segment_rebuild_uuid = 'email_segment_rebuild_uuid_example' # String | 
 
 
 begin
@@ -245,9 +483,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_segment_uuid** | **String**| null | 
- **email_segment_rebuild_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_segment_uuid** | **String**|  | 
+ **email_segment_rebuild_uuid** | **String**|  | 
 
 ### Return type
 
@@ -265,7 +503,7 @@ Name | Type | Description  | Notes
 
 
 # **clone_email_campaign**
-> EmailCampaignResponse clone_email_campaign(storefront_oid, email_campaign_uuid)
+> EmailCampaignResponse clone_email_campaign(storefront_oid, email_campaign_uuid, opts)
 
 Clone email campaign
 
@@ -291,14 +529,17 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_campaign_uuid = "email_campaign_uuid_example" # String | null
+email_campaign_uuid = 'email_campaign_uuid_example' # String | 
 
+opts = { 
+  target_storefront_oid: 56 # Integer | 
+}
 
 begin
   #Clone email campaign
-  result = api_instance.clone_email_campaign(storefront_oid, email_campaign_uuid)
+  result = api_instance.clone_email_campaign(storefront_oid, email_campaign_uuid, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
   puts "Exception when calling StorefrontApi->clone_email_campaign: #{e}"
@@ -309,8 +550,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_campaign_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_campaign_uuid** | **String**|  | 
+ **target_storefront_oid** | **Integer**|  | [optional] 
 
 ### Return type
 
@@ -328,7 +570,7 @@ Name | Type | Description  | Notes
 
 
 # **clone_email_flow**
-> EmailFlowResponse clone_email_flow(storefront_oid, email_flow_uuid)
+> EmailFlowResponse clone_email_flow(storefront_oid, email_flow_uuid, opts)
 
 Clone email flow
 
@@ -354,14 +596,17 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_flow_uuid = "email_flow_uuid_example" # String | null
+email_flow_uuid = 'email_flow_uuid_example' # String | 
 
+opts = { 
+  target_storefront_oid: 56 # Integer | 
+}
 
 begin
   #Clone email flow
-  result = api_instance.clone_email_flow(storefront_oid, email_flow_uuid)
+  result = api_instance.clone_email_flow(storefront_oid, email_flow_uuid, opts)
   p result
 rescue UltraCartAdminV2::ApiError => e
   puts "Exception when calling StorefrontApi->clone_email_flow: #{e}"
@@ -372,8 +617,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_flow_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_flow_uuid** | **String**|  | 
+ **target_storefront_oid** | **Integer**|  | [optional] 
 
 ### Return type
 
@@ -417,7 +663,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-domain = "domain_example" # String | null
+domain = 'domain_example' # String | 
 
 
 begin
@@ -433,11 +679,73 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **domain** | **String**| null | 
+ **domain** | **String**|  | 
 
 ### Return type
 
 [**EmailSendingDomainResponse**](EmailSendingDomainResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **delete_email_commseq_stat**
+> delete_email_commseq_stat(storefront_oid, commseq_uuid)
+
+Delete communication sequence stats
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+commseq_uuid = 'commseq_uuid_example' # String | 
+
+
+begin
+  #Delete communication sequence stats
+  api_instance.delete_email_commseq_stat(storefront_oid, commseq_uuid)
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->delete_email_commseq_stat: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **commseq_uuid** | **String**|  | 
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
@@ -477,9 +785,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-commseq_email_uuid = "commseq_email_uuid_example" # String | null
+commseq_email_uuid = 'commseq_email_uuid_example' # String | 
 
 
 begin
@@ -495,8 +803,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **commseq_email_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **commseq_email_uuid** | **String**|  | 
 
 ### Return type
 
@@ -540,11 +848,11 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_list_uuid = "email_list_uuid_example" # String | null
+email_list_uuid = 'email_list_uuid_example' # String | 
 
-email_customer_uuid = "email_customer_uuid_example" # String | null
+email_customer_uuid = 'email_customer_uuid_example' # String | 
 
 
 begin
@@ -560,9 +868,72 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_list_uuid** | **String**| null | 
- **email_customer_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_list_uuid** | **String**|  | 
+ **email_customer_uuid** | **String**|  | 
+
+### Return type
+
+[**BaseResponse**](BaseResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **delete_email_postcard**
+> BaseResponse delete_email_postcard(storefront_oid, commseq_postcard_uuid)
+
+Delete email postcard
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+commseq_postcard_uuid = 'commseq_postcard_uuid_example' # String | 
+
+
+begin
+  #Delete email postcard
+  result = api_instance.delete_email_postcard(storefront_oid, commseq_postcard_uuid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->delete_email_postcard: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **commseq_postcard_uuid** | **String**|  | 
 
 ### Return type
 
@@ -606,7 +977,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-domain = "domain_example" # String | null
+domain = 'domain_example' # String | 
 
 
 begin
@@ -622,7 +993,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **domain** | **String**| null | 
+ **domain** | **String**|  | 
 
 ### Return type
 
@@ -666,9 +1037,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-storefront_experiment_oid = 56 # Integer | null
+storefront_experiment_oid = 56 # Integer | 
 
 
 begin
@@ -683,12 +1054,190 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **storefront_experiment_oid** | **Integer**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **storefront_experiment_oid** | **Integer**|  | 
 
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **delete_library_item**
+> delete_library_item(library_item_oid)
+
+Delete library item
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+library_item_oid = 56 # Integer | 
+
+
+begin
+  #Delete library item
+  api_instance.delete_library_item(library_item_oid)
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->delete_library_item: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **library_item_oid** | **Integer**|  | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **delete_library_item_published_versions**
+> delete_library_item_published_versions(library_item_oid)
+
+Delete all published versions for a library item, including anything in review.
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+library_item_oid = 56 # Integer | 
+
+
+begin
+  #Delete all published versions for a library item, including anything in review.
+  api_instance.delete_library_item_published_versions(library_item_oid)
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->delete_library_item_published_versions: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **library_item_oid** | **Integer**|  | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **duplicate_library_item**
+> LibraryItemResponse duplicate_library_item(library_item_oid)
+
+Duplicate library item.
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+library_item_oid = 56 # Integer | 
+
+
+begin
+  #Duplicate library item.
+  result = api_instance.duplicate_library_item(library_item_oid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->duplicate_library_item: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **library_item_oid** | **Integer**|  | 
+
+### Return type
+
+[**LibraryItemResponse**](LibraryItemResponse.md)
 
 ### Authorization
 
@@ -728,7 +1277,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 geocode_request = UltraCartAdminV2::GeocodeRequest.new # GeocodeRequest | geocode request
 
@@ -746,7 +1295,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
  **geocode_request** | [**GeocodeRequest**](GeocodeRequest.md)| geocode request | 
 
 ### Return type
@@ -793,7 +1342,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 
 begin
@@ -809,11 +1358,73 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
 
 ### Return type
 
 [**CountriesResponse**](CountriesResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_editor_token**
+> EmailEditorTokenResponse get_editor_token(storefront_oid)
+
+Gets editor token
+
+Fetches a temporary authentication token for the editor 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+
+begin
+  #Gets editor token
+  result = api_instance.get_editor_token(storefront_oid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_editor_token: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+
+### Return type
+
+[**EmailEditorTokenResponse**](EmailEditorTokenResponse.md)
 
 ### Authorization
 
@@ -853,7 +1464,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 
 begin
@@ -869,7 +1480,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
 
 ### Return type
 
@@ -913,9 +1524,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_campaign_uuid = "email_campaign_uuid_example" # String | null
+email_campaign_uuid = 'email_campaign_uuid_example' # String | 
 
 
 begin
@@ -931,12 +1542,75 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_campaign_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_campaign_uuid** | **String**|  | 
 
 ### Return type
 
 [**EmailCampaignResponse**](EmailCampaignResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_campaign_screenshots**
+> ScreenshotsResponse get_email_campaign_screenshots(storefront_oid, email_campaign_uuid)
+
+Get email campaign screenshots
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_campaign_uuid = 'email_campaign_uuid_example' # String | 
+
+
+begin
+  #Get email campaign screenshots
+  result = api_instance.get_email_campaign_screenshots(storefront_oid, email_campaign_uuid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_campaign_screenshots: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_campaign_uuid** | **String**|  | 
+
+### Return type
+
+[**ScreenshotsResponse**](ScreenshotsResponse.md)
 
 ### Authorization
 
@@ -976,7 +1650,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 
 begin
@@ -992,7 +1666,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
 
 ### Return type
 
@@ -1036,9 +1710,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-stat_days = "stat_days_example" # String | null
+stat_days = 'stat_days_example' # String | 
 
 
 begin
@@ -1054,8 +1728,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **stat_days** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **stat_days** | **String**|  | 
 
 ### Return type
 
@@ -1099,9 +1773,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-commseq_uuid = "commseq_uuid_example" # String | null
+commseq_uuid = 'commseq_uuid_example' # String | 
 
 
 begin
@@ -1117,8 +1791,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **commseq_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **commseq_uuid** | **String**|  | 
 
 ### Return type
 
@@ -1162,9 +1836,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-commseq_uuid = "commseq_uuid_example" # String | null
+commseq_uuid = 'commseq_uuid_example' # String | 
 
 stats_request = UltraCartAdminV2::EmailStatSummaryRequest.new # EmailStatSummaryRequest | StatsRequest
 
@@ -1182,13 +1856,79 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **commseq_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **commseq_uuid** | **String**|  | 
  **stats_request** | [**EmailStatSummaryRequest**](EmailStatSummaryRequest.md)| StatsRequest | 
 
 ### Return type
 
 [**EmailStatSummaryResponse**](EmailStatSummaryResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_commseq_postcard_stats**
+> EmailStatPostcardSummaryResponse get_email_commseq_postcard_stats(storefront_oid, commseq_uuid, stats_request)
+
+Get email communication sequence postcard stats
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+commseq_uuid = 'commseq_uuid_example' # String | 
+
+stats_request = UltraCartAdminV2::EmailStatPostcardSummaryRequest.new # EmailStatPostcardSummaryRequest | StatsRequest
+
+
+begin
+  #Get email communication sequence postcard stats
+  result = api_instance.get_email_commseq_postcard_stats(storefront_oid, commseq_uuid, stats_request)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_commseq_postcard_stats: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **commseq_uuid** | **String**|  | 
+ **stats_request** | [**EmailStatPostcardSummaryRequest**](EmailStatPostcardSummaryRequest.md)| StatsRequest | 
+
+### Return type
+
+[**EmailStatPostcardSummaryResponse**](EmailStatPostcardSummaryResponse.md)
 
 ### Authorization
 
@@ -1228,9 +1968,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-commseq_uuid = "commseq_uuid_example" # String | null
+commseq_uuid = 'commseq_uuid_example' # String | 
 
 
 begin
@@ -1246,12 +1986,78 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **commseq_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **commseq_uuid** | **String**|  | 
 
 ### Return type
 
 [**EmailCommseqStatResponse**](EmailCommseqStatResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_commseq_step_stats**
+> EmailStepStatResponse get_email_commseq_step_stats(storefront_oid, commseq_uuid, stats_request)
+
+Get email communication sequence step stats
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+commseq_uuid = 'commseq_uuid_example' # String | 
+
+stats_request = UltraCartAdminV2::EmailStepStatRequest.new # EmailStepStatRequest | StatsRequest
+
+
+begin
+  #Get email communication sequence step stats
+  result = api_instance.get_email_commseq_step_stats(storefront_oid, commseq_uuid, stats_request)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_commseq_step_stats: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **commseq_uuid** | **String**|  | 
+ **stats_request** | [**EmailStepStatRequest**](EmailStepStatRequest.md)| StatsRequest | 
+
+### Return type
+
+[**EmailStepStatResponse**](EmailStepStatResponse.md)
 
 ### Authorization
 
@@ -1291,9 +2097,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-commseq_uuid = "commseq_uuid_example" # String | null
+commseq_uuid = 'commseq_uuid_example' # String | 
 
 waiting_request = UltraCartAdminV2::EmailStepWaitingRequest.new # EmailStepWaitingRequest | WaitingRequest
 
@@ -1311,8 +2117,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **commseq_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **commseq_uuid** | **String**|  | 
  **waiting_request** | [**EmailStepWaitingRequest**](EmailStepWaitingRequest.md)| WaitingRequest | 
 
 ### Return type
@@ -1357,7 +2163,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 
 begin
@@ -1373,11 +2179,142 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
 
 ### Return type
 
 [**EmailCommseqsResponse**](EmailCommseqsResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_customer_editor_url**
+> EmailCustomerEditorUrlResponse get_email_customer_editor_url(storefront_oid, email_customer_uuid)
+
+Get customers editor URL
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_customer_uuid = 'email_customer_uuid_example' # String | 
+
+
+begin
+  #Get customers editor URL
+  result = api_instance.get_email_customer_editor_url(storefront_oid, email_customer_uuid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_customer_editor_url: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_customer_uuid** | **String**|  | 
+
+### Return type
+
+[**EmailCustomerEditorUrlResponse**](EmailCustomerEditorUrlResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_customers**
+> EmailCustomersResponse get_email_customers(storefront_oid, opts)
+
+Get email customers
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+opts = { 
+  page_number: 56, # Integer | 
+  page_size: 56, # Integer | 
+  search_email_prefix: 'search_email_prefix_example' # String | 
+}
+
+begin
+  #Get email customers
+  result = api_instance.get_email_customers(storefront_oid, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_customers: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **page_number** | **Integer**|  | [optional] 
+ **page_size** | **Integer**|  | [optional] 
+ **search_email_prefix** | **String**|  | [optional] 
+
+### Return type
+
+[**EmailCustomersResponse**](EmailCustomersResponse.md)
 
 ### Authorization
 
@@ -1417,10 +2354,10 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 opts = { 
-  last_records: 56 # Integer | null
+  last_records: 56 # Integer | 
 }
 
 begin
@@ -1436,8 +2373,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **last_records** | **Integer**| null | [optional] 
+ **storefront_oid** | **Integer**|  | 
+ **last_records** | **Integer**|  | [optional] 
 
 ### Return type
 
@@ -1481,10 +2418,10 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 opts = { 
-  days: 56 # Integer | null
+  days: 56 # Integer | 
 }
 
 begin
@@ -1500,8 +2437,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **days** | **Integer**| null | [optional] 
+ **storefront_oid** | **Integer**|  | 
+ **days** | **Integer**|  | [optional] 
 
 ### Return type
 
@@ -1545,9 +2482,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-commseq_email_uuid = "commseq_email_uuid_example" # String | null
+commseq_email_uuid = 'commseq_email_uuid_example' # String | 
 
 
 begin
@@ -1563,12 +2500,224 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **commseq_email_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **commseq_email_uuid** | **String**|  | 
 
 ### Return type
 
 [**EmailCommseqEmailResponse**](EmailCommseqEmailResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_email_clicks**
+> EmailClicksResponse get_email_email_clicks(storefront_oid, commseq_uuid, commseq_step_uuid, commseq_email_uuid, opts)
+
+Get email email clicks
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+commseq_uuid = 'commseq_uuid_example' # String | 
+
+commseq_step_uuid = 'commseq_step_uuid_example' # String | 
+
+commseq_email_uuid = 'commseq_email_uuid_example' # String | 
+
+opts = { 
+  days: 56 # Integer | 
+}
+
+begin
+  #Get email email clicks
+  result = api_instance.get_email_email_clicks(storefront_oid, commseq_uuid, commseq_step_uuid, commseq_email_uuid, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_email_clicks: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **commseq_uuid** | **String**|  | 
+ **commseq_step_uuid** | **String**|  | 
+ **commseq_email_uuid** | **String**|  | 
+ **days** | **Integer**|  | [optional] 
+
+### Return type
+
+[**EmailClicksResponse**](EmailClicksResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_email_customer_editor_url**
+> EmailCustomerEditorUrlResponse get_email_email_customer_editor_url(storefront_oid, commseq_email_uuid, order_id)
+
+Get email order customer editor url
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+commseq_email_uuid = 'commseq_email_uuid_example' # String | 
+
+order_id = 'order_id_example' # String | 
+
+
+begin
+  #Get email order customer editor url
+  result = api_instance.get_email_email_customer_editor_url(storefront_oid, commseq_email_uuid, order_id)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_email_customer_editor_url: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **commseq_email_uuid** | **String**|  | 
+ **order_id** | **String**|  | 
+
+### Return type
+
+[**EmailCustomerEditorUrlResponse**](EmailCustomerEditorUrlResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_email_orders**
+> EmailOrdersResponse get_email_email_orders(storefront_oid, commseq_uuid, commseq_step_uuid, commseq_email_uuid, opts)
+
+Get email email orders
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+commseq_uuid = 'commseq_uuid_example' # String | 
+
+commseq_step_uuid = 'commseq_step_uuid_example' # String | 
+
+commseq_email_uuid = 'commseq_email_uuid_example' # String | 
+
+opts = { 
+  days: 56 # Integer | 
+}
+
+begin
+  #Get email email orders
+  result = api_instance.get_email_email_orders(storefront_oid, commseq_uuid, commseq_step_uuid, commseq_email_uuid, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_email_orders: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **commseq_uuid** | **String**|  | 
+ **commseq_step_uuid** | **String**|  | 
+ **commseq_email_uuid** | **String**|  | 
+ **days** | **Integer**|  | [optional] 
+
+### Return type
+
+[**EmailOrdersResponse**](EmailOrdersResponse.md)
 
 ### Authorization
 
@@ -1608,7 +2757,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 
 begin
@@ -1624,7 +2773,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
 
 ### Return type
 
@@ -1668,7 +2817,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 email_commseq_emails_request = UltraCartAdminV2::EmailCommseqEmailsRequest.new # EmailCommseqEmailsRequest | Request of email uuids
 
@@ -1686,7 +2835,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
  **email_commseq_emails_request** | [**EmailCommseqEmailsRequest**](EmailCommseqEmailsRequest.md)| Request of email uuids | 
 
 ### Return type
@@ -1731,9 +2880,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_flow_uuid = "email_flow_uuid_example" # String | null
+email_flow_uuid = 'email_flow_uuid_example' # String | 
 
 
 begin
@@ -1749,12 +2898,75 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_flow_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_flow_uuid** | **String**|  | 
 
 ### Return type
 
 [**EmailFlowResponse**](EmailFlowResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_flow_screenshots**
+> ScreenshotsResponse get_email_flow_screenshots(storefront_oid, email_flow_uuid)
+
+Get email flow screenshots
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_flow_uuid = 'email_flow_uuid_example' # String | 
+
+
+begin
+  #Get email flow screenshots
+  result = api_instance.get_email_flow_screenshots(storefront_oid, email_flow_uuid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_flow_screenshots: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_flow_uuid** | **String**|  | 
+
+### Return type
+
+[**ScreenshotsResponse**](ScreenshotsResponse.md)
 
 ### Authorization
 
@@ -1794,7 +3006,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 
 begin
@@ -1810,11 +3022,65 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
 
 ### Return type
 
 [**EmailFlowsResponse**](EmailFlowsResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_global_settings**
+> EmailGlobalSettingsResponse get_email_global_settings
+
+Get email globalsettings
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+begin
+  #Get email globalsettings
+  result = api_instance.get_email_global_settings
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_global_settings: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**EmailGlobalSettingsResponse**](EmailGlobalSettingsResponse.md)
 
 ### Authorization
 
@@ -1854,9 +3120,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_list_uuid = "email_list_uuid_example" # String | null
+email_list_uuid = 'email_list_uuid_example' # String | 
 
 
 begin
@@ -1872,8 +3138,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_list_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_list_uuid** | **String**|  | 
 
 ### Return type
 
@@ -1893,7 +3159,7 @@ Name | Type | Description  | Notes
 # **get_email_list_customer_editor_url**
 > EmailCustomerEditorUrlResponse get_email_list_customer_editor_url(storefront_oid, email_list_uuid, email_customer_uuid)
 
-Get email list customers
+Get email list customer editor url
 
 ### Example
 ```ruby
@@ -1917,15 +3183,15 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_list_uuid = "email_list_uuid_example" # String | null
+email_list_uuid = 'email_list_uuid_example' # String | 
 
-email_customer_uuid = "email_customer_uuid_example" # String | null
+email_customer_uuid = 'email_customer_uuid_example' # String | 
 
 
 begin
-  #Get email list customers
+  #Get email list customer editor url
   result = api_instance.get_email_list_customer_editor_url(storefront_oid, email_list_uuid, email_customer_uuid)
   p result
 rescue UltraCartAdminV2::ApiError => e
@@ -1937,9 +3203,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_list_uuid** | **String**| null | 
- **email_customer_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_list_uuid** | **String**|  | 
+ **email_customer_uuid** | **String**|  | 
 
 ### Return type
 
@@ -1983,13 +3249,13 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_list_uuid = "email_list_uuid_example" # String | null
+email_list_uuid = 'email_list_uuid_example' # String | 
 
 opts = { 
-  page_number: 56, # Integer | null
-  page_size: 56 # Integer | null
+  page_number: 56, # Integer | 
+  page_size: 56 # Integer | 
 }
 
 begin
@@ -2005,10 +3271,10 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_list_uuid** | **String**| null | 
- **page_number** | **Integer**| null | [optional] 
- **page_size** | **Integer**| null | [optional] 
+ **storefront_oid** | **Integer**|  | 
+ **email_list_uuid** | **String**|  | 
+ **page_number** | **Integer**|  | [optional] 
+ **page_size** | **Integer**|  | [optional] 
 
 ### Return type
 
@@ -2052,7 +3318,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 
 begin
@@ -2068,11 +3334,317 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
 
 ### Return type
 
 [**EmailListsResponse**](EmailListsResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_performance**
+> EmailPerformanceResponse get_email_performance(storefront_oid)
+
+Get email performance
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+
+begin
+  #Get email performance
+  result = api_instance.get_email_performance(storefront_oid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_performance: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+
+### Return type
+
+[**EmailPerformanceResponse**](EmailPerformanceResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_plan**
+> EmailPlanResponse get_email_plan(storefront_oid)
+
+Get email plan
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+
+begin
+  #Get email plan
+  result = api_instance.get_email_plan(storefront_oid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_plan: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+
+### Return type
+
+[**EmailPlanResponse**](EmailPlanResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_postcard**
+> EmailCommseqPostcardResponse get_email_postcard(storefront_oid, commseq_postcard_uuid)
+
+Get email postcard
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+commseq_postcard_uuid = 'commseq_postcard_uuid_example' # String | 
+
+
+begin
+  #Get email postcard
+  result = api_instance.get_email_postcard(storefront_oid, commseq_postcard_uuid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_postcard: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **commseq_postcard_uuid** | **String**|  | 
+
+### Return type
+
+[**EmailCommseqPostcardResponse**](EmailCommseqPostcardResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_postcards**
+> EmailCommseqPostcardsResponse get_email_postcards(storefront_oid)
+
+Get email postcards
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+
+begin
+  #Get email postcards
+  result = api_instance.get_email_postcards(storefront_oid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_postcards: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+
+### Return type
+
+[**EmailCommseqPostcardsResponse**](EmailCommseqPostcardsResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_postcards_multiple**
+> EmailCommseqPostcardsResponse get_email_postcards_multiple(storefront_oid, email_commseq_postcards_request)
+
+Get email postcards multiple
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_commseq_postcards_request = UltraCartAdminV2::EmailCommseqPostcardsRequest.new # EmailCommseqPostcardsRequest | Request of postcard uuids
+
+
+begin
+  #Get email postcards multiple
+  result = api_instance.get_email_postcards_multiple(storefront_oid, email_commseq_postcards_request)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_postcards_multiple: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_commseq_postcards_request** | [**EmailCommseqPostcardsRequest**](EmailCommseqPostcardsRequest.md)| Request of postcard uuids | 
+
+### Return type
+
+[**EmailCommseqPostcardsResponse**](EmailCommseqPostcardsResponse.md)
 
 ### Authorization
 
@@ -2112,9 +3684,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_segment_uuid = "email_segment_uuid_example" # String | null
+email_segment_uuid = 'email_segment_uuid_example' # String | 
 
 
 begin
@@ -2130,8 +3702,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_segment_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_segment_uuid** | **String**|  | 
 
 ### Return type
 
@@ -2175,11 +3747,11 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_segment_uuid = "email_segment_uuid_example" # String | null
+email_segment_uuid = 'email_segment_uuid_example' # String | 
 
-email_customer_uuid = "email_customer_uuid_example" # String | null
+email_customer_uuid = 'email_customer_uuid_example' # String | 
 
 
 begin
@@ -2195,9 +3767,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_segment_uuid** | **String**| null | 
- **email_customer_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_segment_uuid** | **String**|  | 
+ **email_customer_uuid** | **String**|  | 
 
 ### Return type
 
@@ -2241,13 +3813,13 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_segment_uuid = "email_segment_uuid_example" # String | null
+email_segment_uuid = 'email_segment_uuid_example' # String | 
 
 opts = { 
-  page_number: 56, # Integer | null
-  page_size: 56 # Integer | null
+  page_number: 56, # Integer | 
+  page_size: 56 # Integer | 
 }
 
 begin
@@ -2263,10 +3835,10 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_segment_uuid** | **String**| null | 
- **page_number** | **Integer**| null | [optional] 
- **page_size** | **Integer**| null | [optional] 
+ **storefront_oid** | **Integer**|  | 
+ **email_segment_uuid** | **String**|  | 
+ **page_number** | **Integer**|  | [optional] 
+ **page_size** | **Integer**|  | [optional] 
 
 ### Return type
 
@@ -2310,7 +3882,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 
 begin
@@ -2326,7 +3898,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
 
 ### Return type
 
@@ -2370,7 +3942,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-domain = "domain_example" # String | null
+domain = 'domain_example' # String | 
 
 
 begin
@@ -2386,7 +3958,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **domain** | **String**| null | 
+ **domain** | **String**|  | 
 
 ### Return type
 
@@ -2430,7 +4002,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-domain = "domain_example" # String | null
+domain = 'domain_example' # String | 
 
 
 begin
@@ -2446,7 +4018,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **domain** | **String**| null | 
+ **domain** | **String**|  | 
 
 ### Return type
 
@@ -2517,6 +4089,66 @@ This endpoint does not need any parameter.
 
 
 
+# **get_email_settings**
+> EmailSettingsResponse get_email_settings(storefront_oid)
+
+Get email settings
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+
+begin
+  #Get email settings
+  result = api_instance.get_email_settings(storefront_oid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_settings: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+
+### Return type
+
+[**EmailSettingsResponse**](EmailSettingsResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **get_email_template**
 > EmailTemplate get_email_template(storefront_oid, email_template_oid)
 
@@ -2544,9 +4176,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_template_oid = 56 # Integer | null
+email_template_oid = 56 # Integer | 
 
 
 begin
@@ -2562,8 +4194,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_template_oid** | **Integer**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_template_oid** | **Integer**|  | 
 
 ### Return type
 
@@ -2607,10 +4239,10 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 opts = { 
-  trigger_type: "trigger_type_example" # String | null
+  trigger_type: 'trigger_type_example' # String | 
 }
 
 begin
@@ -2626,8 +4258,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **trigger_type** | **String**| null | [optional] 
+ **storefront_oid** | **Integer**|  | 
+ **trigger_type** | **String**|  | [optional] 
 
 ### Return type
 
@@ -2671,7 +4303,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 
 begin
@@ -2687,7 +4319,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
 
 ### Return type
 
@@ -2731,7 +4363,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 
 begin
@@ -2747,7 +4379,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
 
 ### Return type
 
@@ -2793,10 +4425,10 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 opts = { 
-  property_type: "property_type_example" # String | null
+  property_type: 'property_type_example' # String | 
 }
 
 begin
@@ -2812,8 +4444,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **property_type** | **String**| null | [optional] 
+ **storefront_oid** | **Integer**|  | 
+ **property_type** | **String**|  | [optional] 
 
 ### Return type
 
@@ -2859,12 +4491,12 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 opts = { 
-  property_name: "property_name_example", # String | null
-  property_type: "property_type_example", # String | null
-  limit: 56 # Integer | null
+  property_name: 'property_name_example', # String | 
+  property_type: 'property_type_example', # String | 
+  limit: 56 # Integer | 
 }
 
 begin
@@ -2880,10 +4512,10 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **property_name** | **String**| null | [optional] 
- **property_type** | **String**| null | [optional] 
- **limit** | **Integer**| null | [optional] 
+ **storefront_oid** | **Integer**|  | 
+ **property_name** | **String**|  | [optional] 
+ **property_type** | **String**|  | [optional] 
+ **limit** | **Integer**|  | [optional] 
 
 ### Return type
 
@@ -2900,8 +4532,365 @@ Name | Type | Description  | Notes
 
 
 
+# **get_library_filter_values**
+> LibraryFilterValuesResponse get_library_filter_values
+
+Get library values used to populate drop down boxes for filtering.
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+begin
+  #Get library values used to populate drop down boxes for filtering.
+  result = api_instance.get_library_filter_values
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_library_filter_values: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**LibraryFilterValuesResponse**](LibraryFilterValuesResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_library_item**
+> LibraryItemResponse get_library_item(library_item_oid)
+
+Get library item.
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+library_item_oid = 56 # Integer | 
+
+
+begin
+  #Get library item.
+  result = api_instance.get_library_item(library_item_oid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_library_item: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **library_item_oid** | **Integer**|  | 
+
+### Return type
+
+[**LibraryItemResponse**](LibraryItemResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_library_item_published_versions**
+> LibraryItemsResponse get_library_item_published_versions(library_item_oid)
+
+Get all published versions for a library item.
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+library_item_oid = 56 # Integer | 
+
+
+begin
+  #Get all published versions for a library item.
+  result = api_instance.get_library_item_published_versions(library_item_oid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_library_item_published_versions: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **library_item_oid** | **Integer**|  | 
+
+### Return type
+
+[**LibraryItemsResponse**](LibraryItemsResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_pricing_tiers**
+> PricingTiersResponse get_pricing_tiers(opts)
+
+Retrieve pricing tiers
+
+Retrieves the pricing tiers 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+opts = { 
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
+}
+
+begin
+  #Retrieve pricing tiers
+  result = api_instance.get_pricing_tiers(opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_pricing_tiers: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+
+### Return type
+
+[**PricingTiersResponse**](PricingTiersResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_thumbnail_parameters**
+> ThumbnailParametersResponse get_thumbnail_parameters(thumbnail_parameters)
+
+Get thumbnail parameters
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+thumbnail_parameters = UltraCartAdminV2::ThumbnailParametersRequest.new # ThumbnailParametersRequest | Thumbnail Parameters
+
+
+begin
+  #Get thumbnail parameters
+  result = api_instance.get_thumbnail_parameters(thumbnail_parameters)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_thumbnail_parameters: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **thumbnail_parameters** | [**ThumbnailParametersRequest**](ThumbnailParametersRequest.md)| Thumbnail Parameters | 
+
+### Return type
+
+[**ThumbnailParametersResponse**](ThumbnailParametersResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_transaction_email**
+> TransactionEmailResponse get_transaction_email(storefront_oid, email_id)
+
+Gets a transaction email object
+
+Fetch a transactional email 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_id = 'email_id_example' # String | 
+
+
+begin
+  #Gets a transaction email object
+  result = api_instance.get_transaction_email(storefront_oid, email_id)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_transaction_email: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_id** | **String**|  | 
+
+### Return type
+
+[**TransactionEmailResponse**](TransactionEmailResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **get_transaction_email_list**
-> TransactionEmailListResponse get_transaction_email_list(id)
+> TransactionEmailListResponse get_transaction_email_list(storefront_oid)
 
 Gets a list of transaction email names
 
@@ -2929,12 +4918,12 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-id = 56 # Integer | null
+storefront_oid = 56 # Integer | 
 
 
 begin
   #Gets a list of transaction email names
-  result = api_instance.get_transaction_email_list(id)
+  result = api_instance.get_transaction_email_list(storefront_oid)
   p result
 rescue UltraCartAdminV2::ApiError => e
   puts "Exception when calling StorefrontApi->get_transaction_email_list: #{e}"
@@ -2945,11 +4934,137 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Integer**| null | 
+ **storefront_oid** | **Integer**|  | 
 
 ### Return type
 
 [**TransactionEmailListResponse**](TransactionEmailListResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_transaction_email_screenshots**
+> ScreenshotsResponse get_transaction_email_screenshots(storefront_oid, email_id)
+
+Get transactional email screenshots
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_id = 'email_id_example' # String | 
+
+
+begin
+  #Get transactional email screenshots
+  result = api_instance.get_transaction_email_screenshots(storefront_oid, email_id)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_transaction_email_screenshots: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_id** | **String**|  | 
+
+### Return type
+
+[**ScreenshotsResponse**](ScreenshotsResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **global_unsubscribe**
+> EmailGlobalUnsubscribeResponse global_unsubscribe(storefront_oid, unsubscribe)
+
+Globally unsubscribe a customer
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+unsubscribe = UltraCartAdminV2::EmailGlobalUnsubscribeRequest.new # EmailGlobalUnsubscribeRequest | Unsubscribe
+
+
+begin
+  #Globally unsubscribe a customer
+  result = api_instance.global_unsubscribe(storefront_oid, unsubscribe)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->global_unsubscribe: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **unsubscribe** | [**EmailGlobalUnsubscribeRequest**](EmailGlobalUnsubscribeRequest.md)| Unsubscribe | 
+
+### Return type
+
+[**EmailGlobalUnsubscribeResponse**](EmailGlobalUnsubscribeResponse.md)
 
 ### Authorization
 
@@ -2989,7 +5104,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 import_request = UltraCartAdminV2::EmailThirdPartyListImportRequest.new # EmailThirdPartyListImportRequest | lists to import
 
@@ -3006,7 +5121,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
  **import_request** | [**EmailThirdPartyListImportRequest**](EmailThirdPartyListImportRequest.md)| lists to import | 
 
 ### Return type
@@ -3051,7 +5166,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 email_campaign = UltraCartAdminV2::EmailCampaign.new # EmailCampaign | Email campaign
 
@@ -3069,7 +5184,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
  **email_campaign** | [**EmailCampaign**](EmailCampaign.md)| Email campaign | 
 
 ### Return type
@@ -3114,7 +5229,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 email_commseq = UltraCartAdminV2::EmailCommseq.new # EmailCommseq | Email commseq
 
@@ -3132,7 +5247,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
  **email_commseq** | [**EmailCommseq**](EmailCommseq.md)| Email commseq | 
 
 ### Return type
@@ -3177,7 +5292,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 email_commseq_email = UltraCartAdminV2::EmailCommseqEmail.new # EmailCommseqEmail | Email email
 
@@ -3195,7 +5310,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
  **email_commseq_email** | [**EmailCommseqEmail**](EmailCommseqEmail.md)| Email email | 
 
 ### Return type
@@ -3240,7 +5355,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 email_flow = UltraCartAdminV2::EmailFlow.new # EmailFlow | Email flow
 
@@ -3258,7 +5373,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
  **email_flow** | [**EmailFlow**](EmailFlow.md)| Email flow | 
 
 ### Return type
@@ -3303,7 +5418,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 email_list = UltraCartAdminV2::EmailList.new # EmailList | Email list
 
@@ -3321,12 +5436,75 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
  **email_list** | [**EmailList**](EmailList.md)| Email list | 
 
 ### Return type
 
 [**EmailListResponse**](EmailListResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **insert_email_postcard**
+> EmailCommseqPostcardResponse insert_email_postcard(storefront_oid, email_commseq_postcard)
+
+Insert email postcard
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_commseq_postcard = UltraCartAdminV2::EmailCommseqPostcard.new # EmailCommseqPostcard | Email postcard
+
+
+begin
+  #Insert email postcard
+  result = api_instance.insert_email_postcard(storefront_oid, email_commseq_postcard)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->insert_email_postcard: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_commseq_postcard** | [**EmailCommseqPostcard**](EmailCommseqPostcard.md)| Email postcard | 
+
+### Return type
+
+[**EmailCommseqPostcardResponse**](EmailCommseqPostcardResponse.md)
 
 ### Authorization
 
@@ -3366,7 +5544,7 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
 email_segment = UltraCartAdminV2::EmailSegment.new # EmailSegment | Email segment
 
@@ -3384,7 +5562,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
  **email_segment** | [**EmailSegment**](EmailSegment.md)| Email segment | 
 
 ### Return type
@@ -3429,9 +5607,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_segment_uuid = "email_segment_uuid_example" # String | null
+email_segment_uuid = 'email_segment_uuid_example' # String | 
 
 
 begin
@@ -3447,12 +5625,270 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_segment_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_segment_uuid** | **String**|  | 
 
 ### Return type
 
 [**EmailSegmentDownloadPrepareResponse**](EmailSegmentDownloadPrepareResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **publish_library_item**
+> LibraryItemResponse publish_library_item(library_item_oid, publish_library_request)
+
+Publish library item.
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+library_item_oid = 56 # Integer | 
+
+publish_library_request = UltraCartAdminV2::PublishLibraryItemRequest.new # PublishLibraryItemRequest | Publish library item request
+
+
+begin
+  #Publish library item.
+  result = api_instance.publish_library_item(library_item_oid, publish_library_request)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->publish_library_item: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **library_item_oid** | **Integer**|  | 
+ **publish_library_request** | [**PublishLibraryItemRequest**](PublishLibraryItemRequest.md)| Publish library item request | 
+
+### Return type
+
+[**LibraryItemResponse**](LibraryItemResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **purchase_library_item**
+> LibraryItemResponse purchase_library_item(library_item_oid, opts)
+
+Purchase public library item, which creates a copy of the item in your personal code library
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+library_item_oid = 56 # Integer | 
+
+opts = { 
+  storefront_oid: 56 # Integer | 
+}
+
+begin
+  #Purchase public library item, which creates a copy of the item in your personal code library
+  result = api_instance.purchase_library_item(library_item_oid, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->purchase_library_item: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **library_item_oid** | **Integer**|  | 
+ **storefront_oid** | **Integer**|  | [optional] 
+
+### Return type
+
+[**LibraryItemResponse**](LibraryItemResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **release_email_commseq_step_waiting**
+> release_email_commseq_step_waiting(storefront_oid, commseq_uuid, commseq_step_uuid)
+
+Release email communication sequence customers waiting at the specified step
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+commseq_uuid = 'commseq_uuid_example' # String | 
+
+commseq_step_uuid = 'commseq_step_uuid_example' # String | 
+
+
+begin
+  #Release email communication sequence customers waiting at the specified step
+  api_instance.release_email_commseq_step_waiting(storefront_oid, commseq_uuid, commseq_step_uuid)
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->release_email_commseq_step_waiting: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **commseq_uuid** | **String**|  | 
+ **commseq_step_uuid** | **String**|  | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **review**
+> EmailCommseqEmailSendTestResponse review(storefront_oid, commseq_email_uuid, email_commseq_email_review_request)
+
+Request a review of an email
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+commseq_email_uuid = 'commseq_email_uuid_example' # String | 
+
+email_commseq_email_review_request = UltraCartAdminV2::EmailCommseqEmailSendTestRequest.new # EmailCommseqEmailSendTestRequest | Email commseq email review request
+
+
+begin
+  #Request a review of an email
+  result = api_instance.review(storefront_oid, commseq_email_uuid, email_commseq_email_review_request)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->review: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **commseq_email_uuid** | **String**|  | 
+ **email_commseq_email_review_request** | [**EmailCommseqEmailSendTestRequest**](EmailCommseqEmailSendTestRequest.md)| Email commseq email review request | 
+
+### Return type
+
+[**EmailCommseqEmailSendTestResponse**](EmailCommseqEmailSendTestResponse.md)
 
 ### Authorization
 
@@ -3493,9 +5929,11 @@ end
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
 opts = { 
-  category: "category_example", # String | null
-  matches: "matches_example", # String | null
-  max_hits: 56 # Integer | null
+  category: 'category_example', # String | 
+  matches: 'matches_example', # String | 
+  storefront_oid: 'storefront_oid_example', # String | 
+  max_hits: 56, # Integer | 
+  subcategory: 'subcategory_example' # String | 
 }
 
 begin
@@ -3511,9 +5949,71 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **category** | **String**| null | [optional] 
- **matches** | **String**| null | [optional] 
- **max_hits** | **Integer**| null | [optional] 
+ **category** | **String**|  | [optional] 
+ **matches** | **String**|  | [optional] 
+ **storefront_oid** | **String**|  | [optional] 
+ **max_hits** | **Integer**|  | [optional] 
+ **subcategory** | **String**|  | [optional] 
+
+### Return type
+
+[**LookupResponse**](LookupResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **search2**
+> LookupResponse search2(lookup_request)
+
+Searches for all matching values (using POST)
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+lookup_request = UltraCartAdminV2::LookupRequest.new # LookupRequest | LookupRequest
+
+
+begin
+  #Searches for all matching values (using POST)
+  result = api_instance.search2(lookup_request)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->search2: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lookup_request** | [**LookupRequest**](LookupRequest.md)| LookupRequest | 
 
 ### Return type
 
@@ -3557,12 +6057,12 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_list_uuid = "email_list_uuid_example" # String | null
+email_list_uuid = 'email_list_uuid_example' # String | 
 
 opts = { 
-  starts_with: "starts_with_example" # String | null
+  starts_with: 'starts_with_example' # String | 
 }
 
 begin
@@ -3578,9 +6078,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_list_uuid** | **String**| null | 
- **starts_with** | **String**| null | [optional] 
+ **storefront_oid** | **Integer**|  | 
+ **email_list_uuid** | **String**|  | 
+ **starts_with** | **String**|  | [optional] 
 
 ### Return type
 
@@ -3624,12 +6124,12 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_segment_uuid = "email_segment_uuid_example" # String | null
+email_segment_uuid = 'email_segment_uuid_example' # String | 
 
 opts = { 
-  starts_with: "starts_with_example" # String | null
+  starts_with: 'starts_with_example' # String | 
 }
 
 begin
@@ -3645,13 +6145,405 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_segment_uuid** | **String**| null | 
- **starts_with** | **String**| null | [optional] 
+ **storefront_oid** | **Integer**|  | 
+ **email_segment_uuid** | **String**|  | 
+ **starts_with** | **String**|  | [optional] 
 
 ### Return type
 
 [**EmailSegmentCustomersResponse**](EmailSegmentCustomersResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **search_library_items**
+> LibraryItemsResponse search_library_items(item_query, opts)
+
+Retrieve library items
+
+Retrieves a library items based on a query object.  If no parameters are specified, the API call will default to the merchant id only.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+item_query = UltraCartAdminV2::LibraryItemQuery.new # LibraryItemQuery | Item query
+
+opts = { 
+  _limit: 10000, # Integer | The maximum number of records to return on this one API call. (Maximum 10000)
+  _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
+  _sort: '_sort_example' # String | The sort order of the library items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+}
+
+begin
+  #Retrieve library items
+  result = api_instance.search_library_items(item_query, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->search_library_items: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **item_query** | [**LibraryItemQuery**](LibraryItemQuery.md)| Item query | 
+ **_limit** | **Integer**| The maximum number of records to return on this one API call. (Maximum 10000) | [optional] [default to 10000]
+ **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] [default to 0]
+ **_sort** | **String**| The sort order of the library items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] 
+
+### Return type
+
+[**LibraryItemsResponse**](LibraryItemsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **search_published_items**
+> LibraryItemsResponse search_published_items(item_query, opts)
+
+Retrieve library items
+
+Retrieves a library items based on a query object.  If no parameters are specified, the API call will default to the merchant id only.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+item_query = UltraCartAdminV2::LibraryItemQuery.new # LibraryItemQuery | Item query
+
+opts = { 
+  _limit: 10000, # Integer | The maximum number of records to return on this one API call. (Maximum 10000)
+  _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
+  _sort: '_sort_example' # String | The sort order of the library items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+}
+
+begin
+  #Retrieve library items
+  result = api_instance.search_published_items(item_query, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->search_published_items: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **item_query** | [**LibraryItemQuery**](LibraryItemQuery.md)| Item query | 
+ **_limit** | **Integer**| The maximum number of records to return on this one API call. (Maximum 10000) | [optional] [default to 10000]
+ **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] [default to 0]
+ **_sort** | **String**| The sort order of the library items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] 
+
+### Return type
+
+[**LibraryItemsResponse**](LibraryItemsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **search_review_items**
+> LibraryItemsResponse search_review_items(item_query, opts)
+
+Retrieve library items needing review or rejected
+
+Retrieves a library items based on a query object.  If no parameters are specified, the API call will default to the merchant id only.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+item_query = UltraCartAdminV2::LibraryItemQuery.new # LibraryItemQuery | Item query
+
+opts = { 
+  _limit: 10000, # Integer | The maximum number of records to return on this one API call. (Maximum 10000)
+  _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
+  _sort: '_sort_example' # String | The sort order of the library items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+}
+
+begin
+  #Retrieve library items needing review or rejected
+  result = api_instance.search_review_items(item_query, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->search_review_items: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **item_query** | [**LibraryItemQuery**](LibraryItemQuery.md)| Item query | 
+ **_limit** | **Integer**| The maximum number of records to return on this one API call. (Maximum 10000) | [optional] [default to 10000]
+ **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] [default to 0]
+ **_sort** | **String**| The sort order of the library items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] 
+
+### Return type
+
+[**LibraryItemsResponse**](LibraryItemsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **search_shared_items**
+> LibraryItemsResponse search_shared_items(item_query, opts)
+
+Retrieve library items
+
+Retrieves a library items based on a query object.  If no parameters are specified, the API call will default to the merchant id only.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+item_query = UltraCartAdminV2::LibraryItemQuery.new # LibraryItemQuery | Item query
+
+opts = { 
+  _limit: 10000, # Integer | The maximum number of records to return on this one API call. (Maximum 10000)
+  _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
+  _sort: '_sort_example' # String | The sort order of the library items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+}
+
+begin
+  #Retrieve library items
+  result = api_instance.search_shared_items(item_query, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->search_shared_items: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **item_query** | [**LibraryItemQuery**](LibraryItemQuery.md)| Item query | 
+ **_limit** | **Integer**| The maximum number of records to return on this one API call. (Maximum 10000) | [optional] [default to 10000]
+ **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] [default to 0]
+ **_sort** | **String**| The sort order of the library items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] 
+
+### Return type
+
+[**LibraryItemsResponse**](LibraryItemsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **send_email_test**
+> EmailCommseqEmailSendTestResponse send_email_test(storefront_oid, commseq_email_uuid, email_commseq_email_test_request)
+
+Send email test
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+commseq_email_uuid = 'commseq_email_uuid_example' # String | 
+
+email_commseq_email_test_request = UltraCartAdminV2::EmailCommseqEmailSendTestRequest.new # EmailCommseqEmailSendTestRequest | Email commseq email test request
+
+
+begin
+  #Send email test
+  result = api_instance.send_email_test(storefront_oid, commseq_email_uuid, email_commseq_email_test_request)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->send_email_test: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **commseq_email_uuid** | **String**|  | 
+ **email_commseq_email_test_request** | [**EmailCommseqEmailSendTestRequest**](EmailCommseqEmailSendTestRequest.md)| Email commseq email test request | 
+
+### Return type
+
+[**EmailCommseqEmailSendTestResponse**](EmailCommseqEmailSendTestResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **send_postcard_test**
+> EmailCommseqPostcardSendTestResponse send_postcard_test(storefront_oid, commseq_postcard_uuid, email_commseq_postcard_test_request)
+
+Send postcard test
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+commseq_postcard_uuid = 'commseq_postcard_uuid_example' # String | 
+
+email_commseq_postcard_test_request = UltraCartAdminV2::EmailCommseqPostcardSendTestRequest.new # EmailCommseqPostcardSendTestRequest | Email commseq email test request
+
+
+begin
+  #Send postcard test
+  result = api_instance.send_postcard_test(storefront_oid, commseq_postcard_uuid, email_commseq_postcard_test_request)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->send_postcard_test: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **commseq_postcard_uuid** | **String**|  | 
+ **email_commseq_postcard_test_request** | [**EmailCommseqPostcardSendTestRequest**](EmailCommseqPostcardSendTestRequest.md)| Email commseq email test request | 
+
+### Return type
+
+[**EmailCommseqPostcardSendTestResponse**](EmailCommseqPostcardSendTestResponse.md)
 
 ### Authorization
 
@@ -3691,9 +6583,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_campaign_uuid = "email_campaign_uuid_example" # String | null
+email_campaign_uuid = 'email_campaign_uuid_example' # String | 
 
 
 begin
@@ -3709,8 +6601,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_campaign_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_campaign_uuid** | **String**|  | 
 
 ### Return type
 
@@ -3754,9 +6646,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_list_uuid = "email_list_uuid_example" # String | null
+email_list_uuid = 'email_list_uuid_example' # String | 
 
 customers = [UltraCartAdminV2::EmailCustomer.new] # Array<EmailCustomer> | Customers
 
@@ -3774,8 +6666,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_list_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_list_uuid** | **String**|  | 
  **customers** | [**Array&lt;EmailCustomer&gt;**](EmailCustomer.md)| Customers | 
 
 ### Return type
@@ -3820,9 +6712,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_campaign_uuid = "email_campaign_uuid_example" # String | null
+email_campaign_uuid = 'email_campaign_uuid_example' # String | 
 
 email_campaign = UltraCartAdminV2::EmailCampaign.new # EmailCampaign | Email campaign
 
@@ -3840,8 +6732,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_campaign_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_campaign_uuid** | **String**|  | 
  **email_campaign** | [**EmailCampaign**](EmailCampaign.md)| Email campaign | 
 
 ### Return type
@@ -3886,9 +6778,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-commseq_uuid = "commseq_uuid_example" # String | null
+commseq_uuid = 'commseq_uuid_example' # String | 
 
 email_commseq = UltraCartAdminV2::EmailCommseq.new # EmailCommseq | Email commseq
 
@@ -3906,13 +6798,78 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **commseq_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **commseq_uuid** | **String**|  | 
  **email_commseq** | [**EmailCommseq**](EmailCommseq.md)| Email commseq | 
 
 ### Return type
 
 [**EmailCommseqResponse**](EmailCommseqResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_email_customer**
+> update_email_customer(storefront_oid, email_customer_uuid, email_customer)
+
+Update email customer
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_customer_uuid = 'email_customer_uuid_example' # String | 
+
+email_customer = UltraCartAdminV2::EmailCustomer.new # EmailCustomer | Email customer
+
+
+begin
+  #Update email customer
+  api_instance.update_email_customer(storefront_oid, email_customer_uuid, email_customer)
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->update_email_customer: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_customer_uuid** | **String**|  | 
+ **email_customer** | [**EmailCustomer**](EmailCustomer.md)| Email customer | 
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
@@ -3952,9 +6909,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-commseq_email_uuid = "commseq_email_uuid_example" # String | null
+commseq_email_uuid = 'commseq_email_uuid_example' # String | 
 
 email_commseq_email = UltraCartAdminV2::EmailCommseqEmail.new # EmailCommseqEmail | Email commseq email
 
@@ -3972,8 +6929,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **commseq_email_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **commseq_email_uuid** | **String**|  | 
  **email_commseq_email** | [**EmailCommseqEmail**](EmailCommseqEmail.md)| Email commseq email | 
 
 ### Return type
@@ -4018,9 +6975,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_flow_uuid = "email_flow_uuid_example" # String | null
+email_flow_uuid = 'email_flow_uuid_example' # String | 
 
 email_flow = UltraCartAdminV2::EmailFlow.new # EmailFlow | Email flow
 
@@ -4038,13 +6995,73 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_flow_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_flow_uuid** | **String**|  | 
  **email_flow** | [**EmailFlow**](EmailFlow.md)| Email flow | 
 
 ### Return type
 
 [**EmailFlowResponse**](EmailFlowResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_email_global_settings**
+> EmailGlobalSettingsResponse update_email_global_settings(global_settings)
+
+Update email global settings
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+global_settings = UltraCartAdminV2::EmailGlobalSettings.new # EmailGlobalSettings | global settings request
+
+
+begin
+  #Update email global settings
+  result = api_instance.update_email_global_settings(global_settings)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->update_email_global_settings: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **global_settings** | [**EmailGlobalSettings**](EmailGlobalSettings.md)| global settings request | 
+
+### Return type
+
+[**EmailGlobalSettingsResponse**](EmailGlobalSettingsResponse.md)
 
 ### Authorization
 
@@ -4084,9 +7101,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_list_uuid = "email_list_uuid_example" # String | null
+email_list_uuid = 'email_list_uuid_example' # String | 
 
 email_list = UltraCartAdminV2::EmailList.new # EmailList | Email list
 
@@ -4104,13 +7121,142 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_list_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_list_uuid** | **String**|  | 
  **email_list** | [**EmailList**](EmailList.md)| Email list | 
 
 ### Return type
 
 [**EmailListResponse**](EmailListResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_email_plan**
+> EmailPlanResponse update_email_plan(storefront_oid, settings)
+
+Update email plan
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+settings = UltraCartAdminV2::EmailPlan.new # EmailPlan | plan request
+
+
+begin
+  #Update email plan
+  result = api_instance.update_email_plan(storefront_oid, settings)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->update_email_plan: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **settings** | [**EmailPlan**](EmailPlan.md)| plan request | 
+
+### Return type
+
+[**EmailPlanResponse**](EmailPlanResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_email_postcard**
+> EmailCommseqPostcardResponse update_email_postcard(storefront_oid, commseq_postcard_uuid, email_commseq_postcard)
+
+Update email postcard
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+commseq_postcard_uuid = 'commseq_postcard_uuid_example' # String | 
+
+email_commseq_postcard = UltraCartAdminV2::EmailCommseqPostcard.new # EmailCommseqPostcard | Email commseq postcard
+
+
+begin
+  #Update email postcard
+  result = api_instance.update_email_postcard(storefront_oid, commseq_postcard_uuid, email_commseq_postcard)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->update_email_postcard: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **commseq_postcard_uuid** | **String**|  | 
+ **email_commseq_postcard** | [**EmailCommseqPostcard**](EmailCommseqPostcard.md)| Email commseq postcard | 
+
+### Return type
+
+[**EmailCommseqPostcardResponse**](EmailCommseqPostcardResponse.md)
 
 ### Authorization
 
@@ -4150,9 +7296,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-email_segment_uuid = "email_segment_uuid_example" # String | null
+email_segment_uuid = 'email_segment_uuid_example' # String | 
 
 email_segment = UltraCartAdminV2::EmailSegment.new # EmailSegment | Email segment
 
@@ -4170,13 +7316,76 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **email_segment_uuid** | **String**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **email_segment_uuid** | **String**|  | 
  **email_segment** | [**EmailSegment**](EmailSegment.md)| Email segment | 
 
 ### Return type
 
 [**EmailSegmentResponse**](EmailSegmentResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_email_settings**
+> EmailSettingsResponse update_email_settings(storefront_oid, settings)
+
+Update email settings
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+settings = UltraCartAdminV2::EmailSettings.new # EmailSettings | settings request
+
+
+begin
+  #Update email settings
+  result = api_instance.update_email_settings(storefront_oid, settings)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->update_email_settings: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **settings** | [**EmailSettings**](EmailSettings.md)| settings request | 
+
+### Return type
+
+[**EmailSettingsResponse**](EmailSettingsResponse.md)
 
 ### Authorization
 
@@ -4216,9 +7425,9 @@ end
 
 api_instance = UltraCartAdminV2::StorefrontApi.new
 
-storefront_oid = "storefront_oid_example" # String | null
+storefront_oid = 56 # Integer | 
 
-storefront_experiment_oid = 56 # Integer | null
+storefront_experiment_oid = 56 # Integer | 
 
 experiment = UltraCartAdminV2::Experiment.new # Experiment | Experiment
 
@@ -4236,13 +7445,144 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storefront_oid** | **String**| null | 
- **storefront_experiment_oid** | **Integer**| null | 
+ **storefront_oid** | **Integer**|  | 
+ **storefront_experiment_oid** | **Integer**|  | 
  **experiment** | [**Experiment**](Experiment.md)| Experiment | 
 
 ### Return type
 
 [**ExperimentResponse**](ExperimentResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_library_item**
+> LibraryItemResponse update_library_item(library_item_oid, library_item)
+
+Update library item. Note that only certain fields may be updated via this method.
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+library_item_oid = 56 # Integer | 
+
+library_item = UltraCartAdminV2::LibraryItem.new # LibraryItem | Library item
+
+
+begin
+  #Update library item. Note that only certain fields may be updated via this method.
+  result = api_instance.update_library_item(library_item_oid, library_item)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->update_library_item: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **library_item_oid** | **Integer**|  | 
+ **library_item** | [**LibraryItem**](LibraryItem.md)| Library item | 
+
+### Return type
+
+[**LibraryItemResponse**](LibraryItemResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_transaction_email**
+> TransactionEmailResponse update_transaction_email(storefront_oid, email_id, transaction_email)
+
+Updates a transaction email object
+
+Updates a transactional email 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_id = 'email_id_example' # String | 
+
+transaction_email = UltraCartAdminV2::TransactionEmail.new # TransactionEmail | TransactionEmail
+
+
+begin
+  #Updates a transaction email object
+  result = api_instance.update_transaction_email(storefront_oid, email_id, transaction_email)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->update_transaction_email: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_id** | **String**|  | 
+ **transaction_email** | [**TransactionEmail**](TransactionEmail.md)| TransactionEmail | 
+
+### Return type
+
+[**TransactionEmailResponse**](TransactionEmailResponse.md)
 
 ### Authorization
 

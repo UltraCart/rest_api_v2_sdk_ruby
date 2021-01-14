@@ -98,7 +98,7 @@ api_instance = UltraCartAdminV2::ItemApi.new
 merchant_item_oid = 56 # Integer | The item oid to retrieve.
 
 opts = { 
-  _expand: "_expand_example", # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
   _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
 }
 
@@ -158,10 +158,10 @@ end
 
 api_instance = UltraCartAdminV2::ItemApi.new
 
-merchant_item_id = "merchant_item_id_example" # String | The item id to retrieve.
+merchant_item_id = 'merchant_item_id_example' # String | The item id to retrieve.
 
 opts = { 
-  _expand: "_expand_example", # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
   _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
 }
 
@@ -223,12 +223,12 @@ api_instance = UltraCartAdminV2::ItemApi.new
 
 opts = { 
   parent_category_id: 56, # Integer | The parent category object id to retrieve items for.  Unspecified means all items on the account.  0 = root
-  parent_category_path: "parent_category_path_example", # String | The parent category path to retrieve items for.  Unspecified means all items on the account.  / = root
+  parent_category_path: 'parent_category_path_example', # String | The parent category path to retrieve items for.  Unspecified means all items on the account.  / = root
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Default 100, Max 2000)
   _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _since: "_since_example", # String | Fetch items that have been created/modified since this date/time.
-  _sort: "_sort_example", # String | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-  _expand: "_expand_example", # String | The object expansion to perform on the result.  See documentation for examples
+  _since: '_since_example', # String | Fetch items that have been created/modified since this date/time.
+  _sort: '_sort_example', # String | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
   _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
 }
 
@@ -294,7 +294,7 @@ end
 api_instance = UltraCartAdminV2::ItemApi.new
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -354,7 +354,7 @@ api_instance = UltraCartAdminV2::ItemApi.new
 item = UltraCartAdminV2::Item.new # Item | Item to create
 
 opts = { 
-  _expand: "_expand_example", # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
   _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
 }
 
@@ -419,7 +419,7 @@ item = UltraCartAdminV2::Item.new # Item | Item to update
 merchant_item_oid = 56 # Integer | The item oid to update.
 
 opts = { 
-  _expand: "_expand_example", # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
   _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
 }
 
@@ -483,7 +483,7 @@ api_instance = UltraCartAdminV2::ItemApi.new
 items_request = UltraCartAdminV2::ItemsRequest.new # ItemsRequest | Items to update (synchronous maximum 20 / asynchronous maximum 100)
 
 opts = { 
-  _expand: "_expand_example", # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
   _placeholders: true, # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
   _async: true # BOOLEAN | True if the operation should be run async.  No result returned
 }
@@ -545,7 +545,7 @@ end
 
 api_instance = UltraCartAdminV2::ItemApi.new
 
-file = File.new("/path/to/file.txt") # File | File to upload
+file = File.new('/path/to/file.txt') # File | File to upload
 
 
 begin

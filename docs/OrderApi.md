@@ -4,22 +4,86 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**adjust_order_total**](OrderApi.md#adjust_order_total) | **POST** /order/orders/{order_id}/adjust_order_total/{desired_total} | Adjusts an order total
 [**cancel_order**](OrderApi.md#cancel_order) | **POST** /order/orders/{order_id}/cancel | Cancel an order
 [**delete_order**](OrderApi.md#delete_order) | **DELETE** /order/orders/{order_id} | Delete an order
 [**format**](OrderApi.md#format) | **POST** /order/orders/{order_id}/format | Format order
+[**generate_order_token**](OrderApi.md#generate_order_token) | **GET** /order/orders/token/{order_id} | Generate an order token for a given order id
 [**get_accounts_receivable_retry_config**](OrderApi.md#get_accounts_receivable_retry_config) | **GET** /order/accountsReceivableRetryConfig | Retrieve A/R Retry Configuration
 [**get_accounts_receivable_retry_stats**](OrderApi.md#get_accounts_receivable_retry_stats) | **GET** /order/accountsReceivableRetryConfig/stats | Retrieve A/R Retry Statistics
 [**get_order**](OrderApi.md#get_order) | **GET** /order/orders/{order_id} | Retrieve an order
+[**get_order_by_token**](OrderApi.md#get_order_by_token) | **POST** /order/orders/token | Retrieve an order using a token
 [**get_orders**](OrderApi.md#get_orders) | **GET** /order/orders | Retrieve orders
 [**get_orders_batch**](OrderApi.md#get_orders_batch) | **POST** /order/orders/batch | Retrieve order batch
 [**get_orders_by_query**](OrderApi.md#get_orders_by_query) | **POST** /order/orders/query | Retrieve orders
 [**insert_order**](OrderApi.md#insert_order) | **POST** /order/orders | Insert an order
+[**process_payment**](OrderApi.md#process_payment) | **POST** /order/orders/{order_id}/process_payment | Process payment
 [**refund_order**](OrderApi.md#refund_order) | **PUT** /order/orders/{order_id}/refund | Refund an order
 [**replacement**](OrderApi.md#replacement) | **POST** /order/orders/{order_id}/replacement | Replacement order
 [**resend_receipt**](OrderApi.md#resend_receipt) | **POST** /order/orders/{order_id}/resend_receipt | Resend receipt
 [**resend_shipment_confirmation**](OrderApi.md#resend_shipment_confirmation) | **POST** /order/orders/{order_id}/resend_shipment_confirmation | Resend shipment confirmation
 [**update_accounts_receivable_retry_config**](OrderApi.md#update_accounts_receivable_retry_config) | **POST** /order/accountsReceivableRetryConfig | Update A/R Retry Configuration
 [**update_order**](OrderApi.md#update_order) | **PUT** /order/orders/{order_id} | Update an order
+
+
+# **adjust_order_total**
+> BaseResponse adjust_order_total(order_id, desired_total)
+
+Adjusts an order total
+
+Adjusts an order total.  Adjusts individual items appropriately and considers taxes.  Desired total should be provided in the same currency as the order.  Returns true if successful. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::OrderApi.new
+
+order_id = 'order_id_example' # String | The order id to cancel.
+
+desired_total = 'desired_total_example' # String | The desired total with no formatting. example 123.45
+
+
+begin
+  #Adjusts an order total
+  result = api_instance.adjust_order_total(order_id, desired_total)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling OrderApi->adjust_order_total: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **String**| The order id to cancel. | 
+ **desired_total** | **String**| The desired total with no formatting. example 123.45 | 
+
+### Return type
+
+[**BaseResponse**](BaseResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 
 
 # **cancel_order**
@@ -46,7 +110,7 @@ end
 
 api_instance = UltraCartAdminV2::OrderApi.new
 
-order_id = "order_id_example" # String | The order id to cancel.
+order_id = 'order_id_example' # String | The order id to cancel.
 
 
 begin
@@ -103,7 +167,7 @@ end
 
 api_instance = UltraCartAdminV2::OrderApi.new
 
-order_id = "order_id_example" # String | The order id to delete.
+order_id = 'order_id_example' # String | The order id to delete.
 
 
 begin
@@ -159,7 +223,7 @@ end
 
 api_instance = UltraCartAdminV2::OrderApi.new
 
-order_id = "order_id_example" # String | The order id to format
+order_id = 'order_id_example' # String | The order id to format
 
 format_options = UltraCartAdminV2::OrderFormat.new # OrderFormat | Format options
 
@@ -183,6 +247,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OrderFormatResponse**](OrderFormatResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **generate_order_token**
+> OrderTokenResponse generate_order_token(order_id)
+
+Generate an order token for a given order id
+
+Retrieves a single order token for a given order id.  The token can be used with the getOrderByToken API. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::OrderApi.new
+
+order_id = 'order_id_example' # String | The order id to generate a token for.
+
+
+begin
+  #Generate an order token for a given order id
+  result = api_instance.generate_order_token(order_id)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling OrderApi->generate_order_token: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **String**| The order id to generate a token for. | 
+
+### Return type
+
+[**OrderTokenResponse**](OrderTokenResponse.md)
 
 ### Authorization
 
@@ -271,8 +392,8 @@ end
 api_instance = UltraCartAdminV2::OrderApi.new
 
 opts = { 
-  from: "from_example", # String | null
-  to: "to_example" # String | null
+  from: 'from_example', # String | 
+  to: 'to_example' # String | 
 }
 
 begin
@@ -288,8 +409,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **from** | **String**| null | [optional] 
- **to** | **String**| null | [optional] 
+ **from** | **String**|  | [optional] 
+ **to** | **String**|  | [optional] 
 
 ### Return type
 
@@ -330,10 +451,10 @@ end
 
 api_instance = UltraCartAdminV2::OrderApi.new
 
-order_id = "order_id_example" # String | The order id to retrieve.
+order_id = 'order_id_example' # String | The order id to retrieve.
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -350,6 +471,67 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order_id** | **String**| The order id to retrieve. | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+
+### Return type
+
+[**OrderResponse**](OrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_order_by_token**
+> OrderResponse get_order_by_token(order_by_token_query, opts)
+
+Retrieve an order using a token
+
+Retrieves a single order using the specified order token. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::OrderApi.new
+
+order_by_token_query = UltraCartAdminV2::OrderByTokenQuery.new # OrderByTokenQuery | Order by token query
+
+opts = { 
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
+}
+
+begin
+  #Retrieve an order using a token
+  result = api_instance.get_order_by_token(order_by_token_query, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling OrderApi->get_order_by_token: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_by_token_query** | [**OrderByTokenQuery**](OrderByTokenQuery.md)| Order by token query | 
  **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
 
 ### Return type
@@ -392,40 +574,40 @@ end
 api_instance = UltraCartAdminV2::OrderApi.new
 
 opts = { 
-  order_id: "order_id_example", # String | Order Id
-  payment_method: "payment_method_example", # String | Payment Method
-  company: "company_example", # String | Company
-  first_name: "first_name_example", # String | First Name
-  last_name: "last_name_example", # String | Last Name
-  city: "city_example", # String | City
-  state_region: "state_region_example", # String | State/Region
-  postal_code: "postal_code_example", # String | Postal Code
-  country_code: "country_code_example", # String | Country Code (ISO-3166 two letter)
-  phone: "phone_example", # String | Phone
-  email: "email_example", # String | Email
-  cc_email: "cc_email_example", # String | CC Email
-  total: 3.4, # Float | Total
-  screen_branding_theme_code: "screen_branding_theme_code_example", # String | Screen Branding Theme Code
-  storefront_host_name: "storefront_host_name_example", # String | StoreFront Host Name
-  creation_date_begin: "creation_date_begin_example", # String | Creation Date Begin
-  creation_date_end: "creation_date_end_example", # String | Creation Date End
-  payment_date_begin: "payment_date_begin_example", # String | Payment Date Begin
-  payment_date_end: "payment_date_end_example", # String | Payment Date End
-  shipment_date_begin: "shipment_date_begin_example", # String | Shipment Date Begin
-  shipment_date_end: "shipment_date_end_example", # String | Shipment Date End
-  rma: "rma_example", # String | RMA
-  purchase_order_number: "purchase_order_number_example", # String | Purchase Order Number
-  item_id: "item_id_example", # String | Item Id
-  current_stage: "current_stage_example", # String | Current Stage
-  channel_partner_code: "channel_partner_code_example", # String | Channel Partner Code
-  channel_partner_order_id: "channel_partner_order_id_example", # String | Channel Partner Order ID
-  customer_profile_oid: 56, # Integer | null
-  refund_date_begin: "refund_date_begin_example", # String | null
-  refund_date_end: "refund_date_end_example", # String | null
+  order_id: 'order_id_example', # String | Order Id
+  payment_method: 'payment_method_example', # String | Payment Method
+  company: 'company_example', # String | Company
+  first_name: 'first_name_example', # String | First Name
+  last_name: 'last_name_example', # String | Last Name
+  city: 'city_example', # String | City
+  state_region: 'state_region_example', # String | State/Region
+  postal_code: 'postal_code_example', # String | Postal Code
+  country_code: 'country_code_example', # String | Country Code (ISO-3166 two letter)
+  phone: 'phone_example', # String | Phone
+  email: 'email_example', # String | Email
+  cc_email: 'cc_email_example', # String | CC Email
+  total: 8.14, # Float | Total
+  screen_branding_theme_code: 'screen_branding_theme_code_example', # String | Screen Branding Theme Code
+  storefront_host_name: 'storefront_host_name_example', # String | StoreFront Host Name
+  creation_date_begin: 'creation_date_begin_example', # String | Creation Date Begin
+  creation_date_end: 'creation_date_end_example', # String | Creation Date End
+  payment_date_begin: 'payment_date_begin_example', # String | Payment Date Begin
+  payment_date_end: 'payment_date_end_example', # String | Payment Date End
+  shipment_date_begin: 'shipment_date_begin_example', # String | Shipment Date Begin
+  shipment_date_end: 'shipment_date_end_example', # String | Shipment Date End
+  rma: 'rma_example', # String | RMA
+  purchase_order_number: 'purchase_order_number_example', # String | Purchase Order Number
+  item_id: 'item_id_example', # String | Item Id
+  current_stage: 'current_stage_example', # String | Current Stage
+  channel_partner_code: 'channel_partner_code_example', # String | Channel Partner Code
+  channel_partner_order_id: 'channel_partner_order_id_example', # String | Channel Partner Order ID
+  customer_profile_oid: 56, # Integer | 
+  refund_date_begin: 'refund_date_begin_example', # String | 
+  refund_date_end: 'refund_date_end_example', # String | 
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Maximum 200)
   _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _sort: "_sort_example", # String | The sort order of the orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-  _expand: "_expand_example" # String | The object expansion to perform on the result.
+  _sort: '_sort_example', # String | The sort order of the orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+  _expand: '_expand_example' # String | The object expansion to perform on the result.
 }
 
 begin
@@ -468,9 +650,9 @@ Name | Type | Description  | Notes
  **current_stage** | **String**| Current Stage | [optional] 
  **channel_partner_code** | **String**| Channel Partner Code | [optional] 
  **channel_partner_order_id** | **String**| Channel Partner Order ID | [optional] 
- **customer_profile_oid** | **Integer**| null | [optional] 
- **refund_date_begin** | **String**| null | [optional] 
- **refund_date_end** | **String**| null | [optional] 
+ **customer_profile_oid** | **Integer**|  | [optional] 
+ **refund_date_begin** | **String**|  | [optional] 
+ **refund_date_end** | **String**|  | [optional] 
  **_limit** | **Integer**| The maximum number of records to return on this one API call. (Maximum 200) | [optional] [default to 100]
  **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] [default to 0]
  **_sort** | **String**| The sort order of the orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] 
@@ -518,7 +700,7 @@ api_instance = UltraCartAdminV2::OrderApi.new
 order_batch = UltraCartAdminV2::OrderQueryBatch.new # OrderQueryBatch | Order batch
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.
+  _expand: '_expand_example' # String | The object expansion to perform on the result.
 }
 
 begin
@@ -581,8 +763,8 @@ order_query = UltraCartAdminV2::OrderQuery.new # OrderQuery | Order query
 opts = { 
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Maximum 200)
   _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _sort: "_sort_example", # String | The sort order of the orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-  _expand: "_expand_example" # String | The object expansion to perform on the result.
+  _sort: '_sort_example', # String | The sort order of the orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+  _expand: '_expand_example' # String | The object expansion to perform on the result.
 }
 
 begin
@@ -646,7 +828,7 @@ api_instance = UltraCartAdminV2::OrderApi.new
 order = UltraCartAdminV2::Order.new # Order | Order to insert
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -680,6 +862,66 @@ Name | Type | Description  | Notes
 
 
 
+# **process_payment**
+> OrderProcessPaymentResponse process_payment(order_id, process_payment_request)
+
+Process payment
+
+Process payment on order 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::OrderApi.new
+
+order_id = 'order_id_example' # String | The order id to process payment on
+
+process_payment_request = UltraCartAdminV2::OrderProcessPaymentRequest.new # OrderProcessPaymentRequest | Process payment parameters
+
+
+begin
+  #Process payment
+  result = api_instance.process_payment(order_id, process_payment_request)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling OrderApi->process_payment: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **String**| The order id to process payment on | 
+ **process_payment_request** | [**OrderProcessPaymentRequest**](OrderProcessPaymentRequest.md)| Process payment parameters | 
+
+### Return type
+
+[**OrderProcessPaymentResponse**](OrderProcessPaymentResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **refund_order**
 > OrderResponse refund_order(order, order_id, opts)
 
@@ -706,7 +948,7 @@ api_instance = UltraCartAdminV2::OrderApi.new
 
 order = UltraCartAdminV2::Order.new # Order | Order to refund
 
-order_id = "order_id_example" # String | The order id to refund.
+order_id = 'order_id_example' # String | The order id to refund.
 
 opts = { 
   reject_after_refund: false, # BOOLEAN | Reject order after refund
@@ -714,7 +956,7 @@ opts = {
   auto_order_cancel: false, # BOOLEAN | Cancel associated auto orders
   manual_refund: false, # BOOLEAN | Consider a manual refund done externally
   reverse_affiliate_transactions: true, # BOOLEAN | Reverse affiliate transactions
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
@@ -778,7 +1020,7 @@ end
 
 api_instance = UltraCartAdminV2::OrderApi.new
 
-order_id = "order_id_example" # String | The order id to generate a replacement for.
+order_id = 'order_id_example' # String | The order id to generate a replacement for.
 
 replacement = UltraCartAdminV2::OrderReplacement.new # OrderReplacement | Replacement order details
 
@@ -838,7 +1080,7 @@ end
 
 api_instance = UltraCartAdminV2::OrderApi.new
 
-order_id = "order_id_example" # String | The order id to resend the receipt for.
+order_id = 'order_id_example' # String | The order id to resend the receipt for.
 
 
 begin
@@ -895,7 +1137,7 @@ end
 
 api_instance = UltraCartAdminV2::OrderApi.new
 
-order_id = "order_id_example" # String | The order id to resend the shipment notification for.
+order_id = 'order_id_example' # String | The order id to resend the shipment notification for.
 
 
 begin
@@ -1011,10 +1253,10 @@ api_instance = UltraCartAdminV2::OrderApi.new
 
 order = UltraCartAdminV2::Order.new # Order | Order to update
 
-order_id = "order_id_example" # String | The order id to update.
+order_id = 'order_id_example' # String | The order id to update.
 
 opts = { 
-  _expand: "_expand_example" # String | The object expansion to perform on the result.  See documentation for examples
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
