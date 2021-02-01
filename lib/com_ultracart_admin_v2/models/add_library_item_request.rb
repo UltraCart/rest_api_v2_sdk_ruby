@@ -14,6 +14,9 @@ require 'date'
 
 module UltraCartAdminV2
   class AddLibraryItemRequest
+    # Attributes associated with the library item to contain additional configuration.
+    attr_accessor :attributes
+
     # Cjson to be added to library
     attr_accessor :cjson
 
@@ -47,6 +50,7 @@ module UltraCartAdminV2
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'attributes' => :'attributes',
         :'cjson' => :'cjson',
         :'content_type' => :'content_type',
         :'description' => :'description',
@@ -63,6 +67,7 @@ module UltraCartAdminV2
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'attributes' => :'Array<LibraryItemAttribute>',
         :'cjson' => :'String',
         :'content_type' => :'String',
         :'description' => :'String',
@@ -83,6 +88,12 @@ module UltraCartAdminV2
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'attributes')
+        if (value = attributes[:'attributes']).is_a?(Array)
+          self.attributes = value
+        end
+      end
 
       if attributes.has_key?(:'cjson')
         self.cjson = attributes[:'cjson']
@@ -145,6 +156,7 @@ module UltraCartAdminV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          attributes == o.attributes &&
           cjson == o.cjson &&
           content_type == o.content_type &&
           description == o.description &&
@@ -166,7 +178,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [cjson, content_type, description, email_name, email_path, screenshots, storefront_oid, title, upsell_offer_oid, uuid].hash
+      [attributes, cjson, content_type, description, email_name, email_path, screenshots, storefront_oid, title, upsell_offer_oid, uuid].hash
     end
 
     # Builds the object from hash

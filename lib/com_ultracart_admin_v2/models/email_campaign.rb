@@ -32,6 +32,9 @@ module UltraCartAdminV2
     # True if the customer should end the flow once they purchase
     attr_accessor :end_once_customer_purchases
 
+    # Campaign folder UUID.  Null for uncategorized
+    attr_accessor :esp_campaign_folder_uuid
+
     # User of the sending address
     attr_accessor :esp_domain_user
 
@@ -62,6 +65,9 @@ module UltraCartAdminV2
     # Revenue associated with campaign
     attr_accessor :revenue_formatted
 
+    # Revenue per customer associated with campaign
+    attr_accessor :revenue_per_customer_formatted
+
     # Scheduled date
     attr_accessor :scheduled_dts
 
@@ -86,6 +92,7 @@ module UltraCartAdminV2
         :'email_campaign_uuid' => :'email_campaign_uuid',
         :'email_communication_sequence_uuid' => :'email_communication_sequence_uuid',
         :'end_once_customer_purchases' => :'end_once_customer_purchases',
+        :'esp_campaign_folder_uuid' => :'esp_campaign_folder_uuid',
         :'esp_domain_user' => :'esp_domain_user',
         :'esp_domain_uuid' => :'esp_domain_uuid',
         :'esp_friendly_name' => :'esp_friendly_name',
@@ -96,6 +103,7 @@ module UltraCartAdminV2
         :'open_rate_formatted' => :'open_rate_formatted',
         :'prevent_sending_due_to_spam' => :'prevent_sending_due_to_spam',
         :'revenue_formatted' => :'revenue_formatted',
+        :'revenue_per_customer_formatted' => :'revenue_per_customer_formatted',
         :'scheduled_dts' => :'scheduled_dts',
         :'screenshot_large_full_url' => :'screenshot_large_full_url',
         :'status' => :'status',
@@ -113,6 +121,7 @@ module UltraCartAdminV2
         :'email_campaign_uuid' => :'String',
         :'email_communication_sequence_uuid' => :'String',
         :'end_once_customer_purchases' => :'BOOLEAN',
+        :'esp_campaign_folder_uuid' => :'String',
         :'esp_domain_user' => :'String',
         :'esp_domain_uuid' => :'String',
         :'esp_friendly_name' => :'String',
@@ -123,6 +132,7 @@ module UltraCartAdminV2
         :'open_rate_formatted' => :'String',
         :'prevent_sending_due_to_spam' => :'BOOLEAN',
         :'revenue_formatted' => :'String',
+        :'revenue_per_customer_formatted' => :'String',
         :'scheduled_dts' => :'String',
         :'screenshot_large_full_url' => :'String',
         :'status' => :'String',
@@ -161,6 +171,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'end_once_customer_purchases')
         self.end_once_customer_purchases = attributes[:'end_once_customer_purchases']
+      end
+
+      if attributes.has_key?(:'esp_campaign_folder_uuid')
+        self.esp_campaign_folder_uuid = attributes[:'esp_campaign_folder_uuid']
       end
 
       if attributes.has_key?(:'esp_domain_user')
@@ -203,6 +217,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'revenue_formatted')
         self.revenue_formatted = attributes[:'revenue_formatted']
+      end
+
+      if attributes.has_key?(:'revenue_per_customer_formatted')
+        self.revenue_per_customer_formatted = attributes[:'revenue_per_customer_formatted']
       end
 
       if attributes.has_key?(:'scheduled_dts')
@@ -265,6 +283,7 @@ module UltraCartAdminV2
           email_campaign_uuid == o.email_campaign_uuid &&
           email_communication_sequence_uuid == o.email_communication_sequence_uuid &&
           end_once_customer_purchases == o.end_once_customer_purchases &&
+          esp_campaign_folder_uuid == o.esp_campaign_folder_uuid &&
           esp_domain_user == o.esp_domain_user &&
           esp_domain_uuid == o.esp_domain_uuid &&
           esp_friendly_name == o.esp_friendly_name &&
@@ -275,6 +294,7 @@ module UltraCartAdminV2
           open_rate_formatted == o.open_rate_formatted &&
           prevent_sending_due_to_spam == o.prevent_sending_due_to_spam &&
           revenue_formatted == o.revenue_formatted &&
+          revenue_per_customer_formatted == o.revenue_per_customer_formatted &&
           scheduled_dts == o.scheduled_dts &&
           screenshot_large_full_url == o.screenshot_large_full_url &&
           status == o.status &&
@@ -291,7 +311,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [click_rate_formatted, created_dts, deleted, email_campaign_uuid, email_communication_sequence_uuid, end_once_customer_purchases, esp_domain_user, esp_domain_uuid, esp_friendly_name, library_item_oid, memberships, merchant_id, name, open_rate_formatted, prevent_sending_due_to_spam, revenue_formatted, scheduled_dts, screenshot_large_full_url, status, status_dts, storefront_oid].hash
+      [click_rate_formatted, created_dts, deleted, email_campaign_uuid, email_communication_sequence_uuid, end_once_customer_purchases, esp_campaign_folder_uuid, esp_domain_user, esp_domain_uuid, esp_friendly_name, library_item_oid, memberships, merchant_id, name, open_rate_formatted, prevent_sending_due_to_spam, revenue_formatted, revenue_per_customer_formatted, scheduled_dts, screenshot_large_full_url, status, status_dts, storefront_oid].hash
     end
 
     # Builds the object from hash

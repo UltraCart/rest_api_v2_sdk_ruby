@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**delete_coupon**](CouponApi.md#delete_coupon) | **DELETE** /coupon/coupons/{coupon_oid} | Delete a coupon
 [**delete_coupons_by_code**](CouponApi.md#delete_coupons_by_code) | **DELETE** /coupon/coupons/by_code | Deletes multiple coupons
 [**delete_coupons_by_oid**](CouponApi.md#delete_coupons_by_oid) | **DELETE** /coupon/coupons/by_oid | Deletes multiple coupons
+[**does_coupon_code_exist**](CouponApi.md#does_coupon_code_exist) | **GET** /coupon/coupons/merchant_code/{merchant_code}/exists | Determines if a coupon merchant code already exists
 [**generate_coupon_codes**](CouponApi.md#generate_coupon_codes) | **POST** /coupon/coupons/{coupon_oid}/generate_codes | Generates one time codes for a coupon
 [**generate_one_time_codes_by_merchant_code**](CouponApi.md#generate_one_time_codes_by_merchant_code) | **POST** /coupon/coupons/merchant_code/{merchant_code}/generate_codes | Generates one time codes by merchant code
 [**get_auto_apply**](CouponApi.md#get_auto_apply) | **GET** /coupon/auto_apply | Retrieve auto apply rules and conditions
@@ -16,9 +17,11 @@ Method | HTTP request | Description
 [**get_coupons_by_query**](CouponApi.md#get_coupons_by_query) | **GET** /coupon/coupons/query | Retrieve coupons by query
 [**get_editor_values**](CouponApi.md#get_editor_values) | **GET** /coupon/editor_values | Retrieve values needed for a coupon editor
 [**insert_coupon**](CouponApi.md#insert_coupon) | **POST** /coupon/coupons | Insert a coupon
+[**insert_coupons**](CouponApi.md#insert_coupons) | **POST** /coupon/coupons/batch | Insert multiple coupons
 [**search_items**](CouponApi.md#search_items) | **GET** /coupon/searchItems | Searches for items to display within a coupon editor and assign to coupons
 [**update_auto_apply**](CouponApi.md#update_auto_apply) | **POST** /coupon/auto_apply | Update auto apply rules and conditions
 [**update_coupon**](CouponApi.md#update_coupon) | **PUT** /coupon/coupons/{coupon_oid} | Update a coupon
+[**update_coupons**](CouponApi.md#update_coupons) | **PUT** /coupon/coupons/batch | Update multiple coupons
 [**upload_coupon_codes**](CouponApi.md#upload_coupon_codes) | **POST** /coupon/coupons/{coupon_oid}/upload_codes | Upload one-time codes for a coupon
 
 
@@ -178,6 +181,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **does_coupon_code_exist**
+> CouponExistsResponse does_coupon_code_exist(merchant_code)
+
+Determines if a coupon merchant code already exists
+
+Determines if a coupon merchant code already exists. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::CouponApi.new
+
+merchant_code = 'merchant_code_example' # String | The coupon merchant code to examine.
+
+
+begin
+  #Determines if a coupon merchant code already exists
+  result = api_instance.does_coupon_code_exist(merchant_code)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling CouponApi->does_coupon_code_exist: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **merchant_code** | **String**| The coupon merchant code to examine. | 
+
+### Return type
+
+[**CouponExistsResponse**](CouponExistsResponse.md)
 
 ### Authorization
 
@@ -744,6 +804,69 @@ Name | Type | Description  | Notes
 
 
 
+# **insert_coupons**
+> CouponsResponse insert_coupons(coupons_request, opts)
+
+Insert multiple coupons
+
+Insert multiple coupon on the UltraCart account. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::CouponApi.new
+
+coupons_request = UltraCartAdminV2::CouponsRequest.new # CouponsRequest | Coupons to insert (maximum 20)
+
+opts = { 
+  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
+  _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+}
+
+begin
+  #Insert multiple coupons
+  result = api_instance.insert_coupons(coupons_request, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling CouponApi->insert_coupons: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coupons_request** | [**CouponsRequest**](CouponsRequest.md)| Coupons to insert (maximum 20) | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+ **_placeholders** | **BOOLEAN**| Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] 
+
+### Return type
+
+[**CouponsResponse**](CouponsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
+ - **Accept**: application/json
+
+
+
 # **search_items**
 > CouponItemSearchResultsResponse search_items(opts)
 
@@ -912,6 +1035,71 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CouponResponse**](CouponResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
+ - **Accept**: application/json
+
+
+
+# **update_coupons**
+> CouponsResponse update_coupons(coupons_request, opts)
+
+Update multiple coupons
+
+Update multiple coupon on the UltraCart account. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::CouponApi.new
+
+coupons_request = UltraCartAdminV2::CouponsRequest.new # CouponsRequest | Coupons to update (synchronous maximum 20 / asynchronous maximum 100)
+
+opts = { 
+  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
+  _placeholders: true, # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+  _async: true # BOOLEAN | True if the operation should be run async.  No result returned
+}
+
+begin
+  #Update multiple coupons
+  result = api_instance.update_coupons(coupons_request, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling CouponApi->update_coupons: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coupons_request** | [**CouponsRequest**](CouponsRequest.md)| Coupons to update (synchronous maximum 20 / asynchronous maximum 100) | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+ **_placeholders** | **BOOLEAN**| Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] 
+ **_async** | **BOOLEAN**| True if the operation should be run async.  No result returned | [optional] 
+
+### Return type
+
+[**CouponsResponse**](CouponsResponse.md)
 
 ### Authorization
 

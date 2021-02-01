@@ -550,6 +550,65 @@ module UltraCartAdminV2
       end
       return data, status_code, headers
     end
+    # Delete email campaignFolder
+    # @param storefront_oid 
+    # @param email_campaign_folder_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [BaseResponse]
+    def delete_email_campaign_folder(storefront_oid, email_campaign_folder_uuid, opts = {})
+      data, _status_code, _headers = delete_email_campaign_folder_with_http_info(storefront_oid, email_campaign_folder_uuid, opts)
+      data
+    end
+
+    # Delete email campaignFolder
+    # @param storefront_oid 
+    # @param email_campaign_folder_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BaseResponse, Fixnum, Hash)>] BaseResponse data, response status code and response headers
+    def delete_email_campaign_folder_with_http_info(storefront_oid, email_campaign_folder_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.delete_email_campaign_folder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.delete_email_campaign_folder"
+      end
+      # verify the required parameter 'email_campaign_folder_uuid' is set
+      if @api_client.config.client_side_validation && email_campaign_folder_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'email_campaign_folder_uuid' when calling StorefrontApi.delete_email_campaign_folder"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/campaign_folders/{email_campaign_folder_uuid}'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'email_campaign_folder_uuid' + '}', email_campaign_folder_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'BaseResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#delete_email_campaign_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Delete communication sequence stats
     # @param storefront_oid 
     # @param commseq_uuid 
@@ -664,6 +723,65 @@ module UltraCartAdminV2
         :return_type => 'BaseResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#delete_email_email\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Delete email flowFolder
+    # @param storefront_oid 
+    # @param email_flow_folder_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [BaseResponse]
+    def delete_email_flow_folder(storefront_oid, email_flow_folder_uuid, opts = {})
+      data, _status_code, _headers = delete_email_flow_folder_with_http_info(storefront_oid, email_flow_folder_uuid, opts)
+      data
+    end
+
+    # Delete email flowFolder
+    # @param storefront_oid 
+    # @param email_flow_folder_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BaseResponse, Fixnum, Hash)>] BaseResponse data, response status code and response headers
+    def delete_email_flow_folder_with_http_info(storefront_oid, email_flow_folder_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.delete_email_flow_folder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.delete_email_flow_folder"
+      end
+      # verify the required parameter 'email_flow_folder_uuid' is set
+      if @api_client.config.client_side_validation && email_flow_folder_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'email_flow_folder_uuid' when calling StorefrontApi.delete_email_flow_folder"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/flow_folders/{email_flow_folder_uuid}'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'email_flow_folder_uuid' + '}', email_flow_folder_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'BaseResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#delete_email_flow_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1006,6 +1124,65 @@ module UltraCartAdminV2
       end
       return data, status_code, headers
     end
+    # Delete screen recording segment
+    # @param storefront_oid 
+    # @param screen_recording_segment_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [ScreenRecordingSegmentResponse]
+    def delete_screen_recording_segment(storefront_oid, screen_recording_segment_oid, opts = {})
+      data, _status_code, _headers = delete_screen_recording_segment_with_http_info(storefront_oid, screen_recording_segment_oid, opts)
+      data
+    end
+
+    # Delete screen recording segment
+    # @param storefront_oid 
+    # @param screen_recording_segment_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ScreenRecordingSegmentResponse, Fixnum, Hash)>] ScreenRecordingSegmentResponse data, response status code and response headers
+    def delete_screen_recording_segment_with_http_info(storefront_oid, screen_recording_segment_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.delete_screen_recording_segment ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.delete_screen_recording_segment"
+      end
+      # verify the required parameter 'screen_recording_segment_oid' is set
+      if @api_client.config.client_side_validation && screen_recording_segment_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'screen_recording_segment_oid' when calling StorefrontApi.delete_screen_recording_segment"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid}'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'screen_recording_segment_oid' + '}', screen_recording_segment_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ScreenRecordingSegmentResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#delete_screen_recording_segment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Duplicate library item.
     # @param library_item_oid 
     # @param [Hash] opts the optional parameters
@@ -1056,6 +1233,66 @@ module UltraCartAdminV2
         :return_type => 'LibraryItemResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#duplicate_library_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update favorite flag on screen recording
+    # Update favorite flag on screen recording 
+    # @param storefront_oid 
+    # @param screen_recording_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def favorite_screen_recording(storefront_oid, screen_recording_uuid, opts = {})
+      favorite_screen_recording_with_http_info(storefront_oid, screen_recording_uuid, opts)
+      nil
+    end
+
+    # Update favorite flag on screen recording
+    # Update favorite flag on screen recording 
+    # @param storefront_oid 
+    # @param screen_recording_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def favorite_screen_recording_with_http_info(storefront_oid, screen_recording_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.favorite_screen_recording ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.favorite_screen_recording"
+      end
+      # verify the required parameter 'screen_recording_uuid' is set
+      if @api_client.config.client_side_validation && screen_recording_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'screen_recording_uuid' when calling StorefrontApi.favorite_screen_recording"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/favorite'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'screen_recording_uuid' + '}', screen_recording_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#favorite_screen_recording\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1337,6 +1574,118 @@ module UltraCartAdminV2
         :return_type => 'EmailCampaignResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#get_email_campaign\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get email campaign folder
+    # @param storefront_oid 
+    # @param email_campaign_folder_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [EmailCampaignFolderResponse]
+    def get_email_campaign_folder(storefront_oid, email_campaign_folder_uuid, opts = {})
+      data, _status_code, _headers = get_email_campaign_folder_with_http_info(storefront_oid, email_campaign_folder_uuid, opts)
+      data
+    end
+
+    # Get email campaign folder
+    # @param storefront_oid 
+    # @param email_campaign_folder_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailCampaignFolderResponse, Fixnum, Hash)>] EmailCampaignFolderResponse data, response status code and response headers
+    def get_email_campaign_folder_with_http_info(storefront_oid, email_campaign_folder_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_email_campaign_folder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_email_campaign_folder"
+      end
+      # verify the required parameter 'email_campaign_folder_uuid' is set
+      if @api_client.config.client_side_validation && email_campaign_folder_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'email_campaign_folder_uuid' when calling StorefrontApi.get_email_campaign_folder"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/campaign_folders/{email_campaign_folder_uuid}'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'email_campaign_folder_uuid' + '}', email_campaign_folder_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailCampaignFolderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_email_campaign_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get email campaign folders
+    # @param storefront_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [EmailCampaignFoldersResponse]
+    def get_email_campaign_folders(storefront_oid, opts = {})
+      data, _status_code, _headers = get_email_campaign_folders_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Get email campaign folders
+    # @param storefront_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailCampaignFoldersResponse, Fixnum, Hash)>] EmailCampaignFoldersResponse data, response status code and response headers
+    def get_email_campaign_folders_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_email_campaign_folders ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_email_campaign_folders"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/campaign_folders'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailCampaignFoldersResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_email_campaign_folders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2615,6 +2964,118 @@ module UltraCartAdminV2
         :return_type => 'EmailFlowResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#get_email_flow\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get email flow folder
+    # @param storefront_oid 
+    # @param email_flow_folder_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [EmailFlowFolderResponse]
+    def get_email_flow_folder(storefront_oid, email_flow_folder_uuid, opts = {})
+      data, _status_code, _headers = get_email_flow_folder_with_http_info(storefront_oid, email_flow_folder_uuid, opts)
+      data
+    end
+
+    # Get email flow folder
+    # @param storefront_oid 
+    # @param email_flow_folder_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailFlowFolderResponse, Fixnum, Hash)>] EmailFlowFolderResponse data, response status code and response headers
+    def get_email_flow_folder_with_http_info(storefront_oid, email_flow_folder_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_email_flow_folder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_email_flow_folder"
+      end
+      # verify the required parameter 'email_flow_folder_uuid' is set
+      if @api_client.config.client_side_validation && email_flow_folder_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'email_flow_folder_uuid' when calling StorefrontApi.get_email_flow_folder"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/flow_folders/{email_flow_folder_uuid}'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'email_flow_folder_uuid' + '}', email_flow_folder_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailFlowFolderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_email_flow_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get email flow folders
+    # @param storefront_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [EmailFlowFoldersResponse]
+    def get_email_flow_folders(storefront_oid, opts = {})
+      data, _status_code, _headers = get_email_flow_folders_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Get email flow folders
+    # @param storefront_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailFlowFoldersResponse, Fixnum, Hash)>] EmailFlowFoldersResponse data, response status code and response headers
+    def get_email_flow_folders_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_email_flow_folders ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_email_flow_folders"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/flow_folders'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailFlowFoldersResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_email_flow_folders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -4292,6 +4753,494 @@ module UltraCartAdminV2
       end
       return data, status_code, headers
     end
+    # Get screen recording
+    # Get screen recording 
+    # @param storefront_oid 
+    # @param screen_recording_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [ScreenRecordingResponse]
+    def get_screen_recording(storefront_oid, screen_recording_uuid, opts = {})
+      data, _status_code, _headers = get_screen_recording_with_http_info(storefront_oid, screen_recording_uuid, opts)
+      data
+    end
+
+    # Get screen recording
+    # Get screen recording 
+    # @param storefront_oid 
+    # @param screen_recording_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ScreenRecordingResponse, Fixnum, Hash)>] ScreenRecordingResponse data, response status code and response headers
+    def get_screen_recording_with_http_info(storefront_oid, screen_recording_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_screen_recording ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_screen_recording"
+      end
+      # verify the required parameter 'screen_recording_uuid' is set
+      if @api_client.config.client_side_validation && screen_recording_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'screen_recording_uuid' when calling StorefrontApi.get_screen_recording"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'screen_recording_uuid' + '}', screen_recording_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ScreenRecordingResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_screen_recording\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get screen recording page view data
+    # Get screen recording page view data 
+    # @param storefront_oid 
+    # @param screen_recording_uuid 
+    # @param screen_recording_page_view_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [ScreenRecordingResponse]
+    def get_screen_recording_page_view_data(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid, opts = {})
+      data, _status_code, _headers = get_screen_recording_page_view_data_with_http_info(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid, opts)
+      data
+    end
+
+    # Get screen recording page view data
+    # Get screen recording page view data 
+    # @param storefront_oid 
+    # @param screen_recording_uuid 
+    # @param screen_recording_page_view_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ScreenRecordingResponse, Fixnum, Hash)>] ScreenRecordingResponse data, response status code and response headers
+    def get_screen_recording_page_view_data_with_http_info(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_screen_recording_page_view_data ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_screen_recording_page_view_data"
+      end
+      # verify the required parameter 'screen_recording_uuid' is set
+      if @api_client.config.client_side_validation && screen_recording_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'screen_recording_uuid' when calling StorefrontApi.get_screen_recording_page_view_data"
+      end
+      # verify the required parameter 'screen_recording_page_view_uuid' is set
+      if @api_client.config.client_side_validation && screen_recording_page_view_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'screen_recording_page_view_uuid' when calling StorefrontApi.get_screen_recording_page_view_data"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/page_view_data/{screen_recording_page_view_uuid}'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'screen_recording_uuid' + '}', screen_recording_uuid.to_s).sub('{' + 'screen_recording_page_view_uuid' + '}', screen_recording_page_view_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ScreenRecordingResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_screen_recording_page_view_data\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get screen recording segment
+    # @param storefront_oid 
+    # @param screen_recording_segment_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [ScreenRecordingSegmentResponse]
+    def get_screen_recording_segment(storefront_oid, screen_recording_segment_oid, opts = {})
+      data, _status_code, _headers = get_screen_recording_segment_with_http_info(storefront_oid, screen_recording_segment_oid, opts)
+      data
+    end
+
+    # Get screen recording segment
+    # @param storefront_oid 
+    # @param screen_recording_segment_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ScreenRecordingSegmentResponse, Fixnum, Hash)>] ScreenRecordingSegmentResponse data, response status code and response headers
+    def get_screen_recording_segment_with_http_info(storefront_oid, screen_recording_segment_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_screen_recording_segment ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_screen_recording_segment"
+      end
+      # verify the required parameter 'screen_recording_segment_oid' is set
+      if @api_client.config.client_side_validation && screen_recording_segment_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'screen_recording_segment_oid' when calling StorefrontApi.get_screen_recording_segment"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid}'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'screen_recording_segment_oid' + '}', screen_recording_segment_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ScreenRecordingSegmentResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_screen_recording_segment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get screen recording segments
+    # @param storefront_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [ScreenRecordingSegmentsResponse]
+    def get_screen_recording_segments(storefront_oid, opts = {})
+      data, _status_code, _headers = get_screen_recording_segments_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Get screen recording segments
+    # @param storefront_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ScreenRecordingSegmentsResponse, Fixnum, Hash)>] ScreenRecordingSegmentsResponse data, response status code and response headers
+    def get_screen_recording_segments_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_screen_recording_segments ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_screen_recording_segments"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/segments'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ScreenRecordingSegmentsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_screen_recording_segments\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get screen recording settings
+    # @param storefront_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [ScreenRecordingSettingsResponse]
+    def get_screen_recording_settings(storefront_oid, opts = {})
+      data, _status_code, _headers = get_screen_recording_settings_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Get screen recording settings
+    # @param storefront_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ScreenRecordingSettingsResponse, Fixnum, Hash)>] ScreenRecordingSettingsResponse data, response status code and response headers
+    def get_screen_recording_settings_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_screen_recording_settings ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_screen_recording_settings"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/settings'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ScreenRecordingSettingsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_screen_recording_settings\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get tags used by screen recording
+    # Get tags used by screen recording 
+    # @param storefront_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [ScreenRecordingTagsResponse]
+    def get_screen_recording_tags(storefront_oid, opts = {})
+      data, _status_code, _headers = get_screen_recording_tags_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Get tags used by screen recording
+    # Get tags used by screen recording 
+    # @param storefront_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ScreenRecordingTagsResponse, Fixnum, Hash)>] ScreenRecordingTagsResponse data, response status code and response headers
+    def get_screen_recording_tags_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_screen_recording_tags ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_screen_recording_tags"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/tags'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ScreenRecordingTagsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_screen_recording_tags\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Query screen recordings
+    # Query screen recordings 
+    # @param storefront_oid 
+    # @param query Query
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Default 100, Max 500) (default to 100)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
+    # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+    # @return [ScreenRecordingQueryResponse]
+    def get_screen_recordings_by_query(storefront_oid, query, opts = {})
+      data, _status_code, _headers = get_screen_recordings_by_query_with_http_info(storefront_oid, query, opts)
+      data
+    end
+
+    # Query screen recordings
+    # Query screen recordings 
+    # @param storefront_oid 
+    # @param query Query
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Default 100, Max 500)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
+    # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+    # @return [Array<(ScreenRecordingQueryResponse, Fixnum, Hash)>] ScreenRecordingQueryResponse data, response status code and response headers
+    def get_screen_recordings_by_query_with_http_info(storefront_oid, query, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_screen_recordings_by_query ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_screen_recordings_by_query"
+      end
+      # verify the required parameter 'query' is set
+      if @api_client.config.client_side_validation && query.nil?
+        fail ArgumentError, "Missing the required parameter 'query' when calling StorefrontApi.get_screen_recordings_by_query"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/query'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
+      query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
+      query_params[:'_sort'] = opts[:'_sort'] if !opts[:'_sort'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(query)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ScreenRecordingQueryResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_screen_recordings_by_query\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get screen recordings by segment
+    # Get screen recordings by segment 
+    # @param storefront_oid 
+    # @param screen_recording_segment_oid 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Default 100, Max 500) (default to 100)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
+    # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+    # @return [ScreenRecordingQueryResponse]
+    def get_screen_recordings_by_segment(storefront_oid, screen_recording_segment_oid, opts = {})
+      data, _status_code, _headers = get_screen_recordings_by_segment_with_http_info(storefront_oid, screen_recording_segment_oid, opts)
+      data
+    end
+
+    # Get screen recordings by segment
+    # Get screen recordings by segment 
+    # @param storefront_oid 
+    # @param screen_recording_segment_oid 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Default 100, Max 500)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
+    # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+    # @return [Array<(ScreenRecordingQueryResponse, Fixnum, Hash)>] ScreenRecordingQueryResponse data, response status code and response headers
+    def get_screen_recordings_by_segment_with_http_info(storefront_oid, screen_recording_segment_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_screen_recordings_by_segment ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_screen_recordings_by_segment"
+      end
+      # verify the required parameter 'screen_recording_segment_oid' is set
+      if @api_client.config.client_side_validation && screen_recording_segment_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'screen_recording_segment_oid' when calling StorefrontApi.get_screen_recordings_by_segment"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid}/query'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'screen_recording_segment_oid' + '}', screen_recording_segment_oid.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
+      query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
+      query_params[:'_sort'] = opts[:'_sort'] if !opts[:'_sort'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ScreenRecordingQueryResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_screen_recordings_by_segment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Get thumbnail parameters
     # @param thumbnail_parameters Thumbnail Parameters
     # @param [Hash] opts the optional parameters
@@ -4696,6 +5645,65 @@ module UltraCartAdminV2
       end
       return data, status_code, headers
     end
+    # Insert email campaign folder
+    # @param storefront_oid 
+    # @param email_campaign_folder Email campaign folder
+    # @param [Hash] opts the optional parameters
+    # @return [EmailCampaignFolderResponse]
+    def insert_email_campaign_folder(storefront_oid, email_campaign_folder, opts = {})
+      data, _status_code, _headers = insert_email_campaign_folder_with_http_info(storefront_oid, email_campaign_folder, opts)
+      data
+    end
+
+    # Insert email campaign folder
+    # @param storefront_oid 
+    # @param email_campaign_folder Email campaign folder
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailCampaignFolderResponse, Fixnum, Hash)>] EmailCampaignFolderResponse data, response status code and response headers
+    def insert_email_campaign_folder_with_http_info(storefront_oid, email_campaign_folder, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.insert_email_campaign_folder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.insert_email_campaign_folder"
+      end
+      # verify the required parameter 'email_campaign_folder' is set
+      if @api_client.config.client_side_validation && email_campaign_folder.nil?
+        fail ArgumentError, "Missing the required parameter 'email_campaign_folder' when calling StorefrontApi.insert_email_campaign_folder"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/campaign_folders'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(email_campaign_folder)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailCampaignFolderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#insert_email_campaign_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Insert email commseq
     # @param storefront_oid 
     # @param email_commseq Email commseq
@@ -4873,6 +5881,65 @@ module UltraCartAdminV2
       end
       return data, status_code, headers
     end
+    # Insert email flow folder
+    # @param storefront_oid 
+    # @param email_flow_folder Email flow folder
+    # @param [Hash] opts the optional parameters
+    # @return [EmailFlowFolderResponse]
+    def insert_email_flow_folder(storefront_oid, email_flow_folder, opts = {})
+      data, _status_code, _headers = insert_email_flow_folder_with_http_info(storefront_oid, email_flow_folder, opts)
+      data
+    end
+
+    # Insert email flow folder
+    # @param storefront_oid 
+    # @param email_flow_folder Email flow folder
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailFlowFolderResponse, Fixnum, Hash)>] EmailFlowFolderResponse data, response status code and response headers
+    def insert_email_flow_folder_with_http_info(storefront_oid, email_flow_folder, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.insert_email_flow_folder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.insert_email_flow_folder"
+      end
+      # verify the required parameter 'email_flow_folder' is set
+      if @api_client.config.client_side_validation && email_flow_folder.nil?
+        fail ArgumentError, "Missing the required parameter 'email_flow_folder' when calling StorefrontApi.insert_email_flow_folder"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/flow_folders'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(email_flow_folder)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailFlowFolderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#insert_email_flow_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Insert email list
     # @param storefront_oid 
     # @param email_list Email list
@@ -5047,6 +6114,65 @@ module UltraCartAdminV2
         :return_type => 'EmailSegmentResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#insert_email_segment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Insert screen recording segment
+    # @param storefront_oid 
+    # @param segment Segment
+    # @param [Hash] opts the optional parameters
+    # @return [ScreenRecordingSegmentResponse]
+    def insert_screen_recording_segment(storefront_oid, segment, opts = {})
+      data, _status_code, _headers = insert_screen_recording_segment_with_http_info(storefront_oid, segment, opts)
+      data
+    end
+
+    # Insert screen recording segment
+    # @param storefront_oid 
+    # @param segment Segment
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ScreenRecordingSegmentResponse, Fixnum, Hash)>] ScreenRecordingSegmentResponse data, response status code and response headers
+    def insert_screen_recording_segment_with_http_info(storefront_oid, segment, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.insert_screen_recording_segment ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.insert_screen_recording_segment"
+      end
+      # verify the required parameter 'segment' is set
+      if @api_client.config.client_side_validation && segment.nil?
+        fail ArgumentError, "Missing the required parameter 'segment' when calling StorefrontApi.insert_screen_recording_segment"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/segments'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(segment)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ScreenRecordingSegmentResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#insert_screen_recording_segment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6102,6 +7228,66 @@ module UltraCartAdminV2
       end
       return data, status_code, headers
     end
+    # Remove favorite flag on screen recording
+    # Remove favorite flag on screen recording 
+    # @param storefront_oid 
+    # @param screen_recording_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def unfavorite_screen_recording(storefront_oid, screen_recording_uuid, opts = {})
+      unfavorite_screen_recording_with_http_info(storefront_oid, screen_recording_uuid, opts)
+      nil
+    end
+
+    # Remove favorite flag on screen recording
+    # Remove favorite flag on screen recording 
+    # @param storefront_oid 
+    # @param screen_recording_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def unfavorite_screen_recording_with_http_info(storefront_oid, screen_recording_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.unfavorite_screen_recording ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.unfavorite_screen_recording"
+      end
+      # verify the required parameter 'screen_recording_uuid' is set
+      if @api_client.config.client_side_validation && screen_recording_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'screen_recording_uuid' when calling StorefrontApi.unfavorite_screen_recording"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/favorite'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'screen_recording_uuid' + '}', screen_recording_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#unfavorite_screen_recording\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Update email campaign
     # @param storefront_oid 
     # @param email_campaign_uuid 
@@ -6164,6 +7350,71 @@ module UltraCartAdminV2
         :return_type => 'EmailCampaignResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#update_email_campaign\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update email campaign folder
+    # @param storefront_oid 
+    # @param email_campaign_folder_uuid 
+    # @param email_campaign_folder Email campaign folder
+    # @param [Hash] opts the optional parameters
+    # @return [EmailCampaignFolderResponse]
+    def update_email_campaign_folder(storefront_oid, email_campaign_folder_uuid, email_campaign_folder, opts = {})
+      data, _status_code, _headers = update_email_campaign_folder_with_http_info(storefront_oid, email_campaign_folder_uuid, email_campaign_folder, opts)
+      data
+    end
+
+    # Update email campaign folder
+    # @param storefront_oid 
+    # @param email_campaign_folder_uuid 
+    # @param email_campaign_folder Email campaign folder
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailCampaignFolderResponse, Fixnum, Hash)>] EmailCampaignFolderResponse data, response status code and response headers
+    def update_email_campaign_folder_with_http_info(storefront_oid, email_campaign_folder_uuid, email_campaign_folder, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.update_email_campaign_folder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.update_email_campaign_folder"
+      end
+      # verify the required parameter 'email_campaign_folder_uuid' is set
+      if @api_client.config.client_side_validation && email_campaign_folder_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'email_campaign_folder_uuid' when calling StorefrontApi.update_email_campaign_folder"
+      end
+      # verify the required parameter 'email_campaign_folder' is set
+      if @api_client.config.client_side_validation && email_campaign_folder.nil?
+        fail ArgumentError, "Missing the required parameter 'email_campaign_folder' when calling StorefrontApi.update_email_campaign_folder"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/campaign_folders/{email_campaign_folder_uuid}'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'email_campaign_folder_uuid' + '}', email_campaign_folder_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(email_campaign_folder)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailCampaignFolderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#update_email_campaign_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6423,6 +7674,71 @@ module UltraCartAdminV2
         :return_type => 'EmailFlowResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#update_email_flow\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update email flow folder
+    # @param storefront_oid 
+    # @param email_flow_folder_uuid 
+    # @param email_flow_folder Email flow folder
+    # @param [Hash] opts the optional parameters
+    # @return [EmailFlowFolderResponse]
+    def update_email_flow_folder(storefront_oid, email_flow_folder_uuid, email_flow_folder, opts = {})
+      data, _status_code, _headers = update_email_flow_folder_with_http_info(storefront_oid, email_flow_folder_uuid, email_flow_folder, opts)
+      data
+    end
+
+    # Update email flow folder
+    # @param storefront_oid 
+    # @param email_flow_folder_uuid 
+    # @param email_flow_folder Email flow folder
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailFlowFolderResponse, Fixnum, Hash)>] EmailFlowFolderResponse data, response status code and response headers
+    def update_email_flow_folder_with_http_info(storefront_oid, email_flow_folder_uuid, email_flow_folder, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.update_email_flow_folder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.update_email_flow_folder"
+      end
+      # verify the required parameter 'email_flow_folder_uuid' is set
+      if @api_client.config.client_side_validation && email_flow_folder_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'email_flow_folder_uuid' when calling StorefrontApi.update_email_flow_folder"
+      end
+      # verify the required parameter 'email_flow_folder' is set
+      if @api_client.config.client_side_validation && email_flow_folder.nil?
+        fail ArgumentError, "Missing the required parameter 'email_flow_folder' when calling StorefrontApi.update_email_flow_folder"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/flow_folders/{email_flow_folder_uuid}'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'email_flow_folder_uuid' + '}', email_flow_folder_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(email_flow_folder)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailFlowFolderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#update_email_flow_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6913,6 +8229,196 @@ module UltraCartAdminV2
         :return_type => 'LibraryItemResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#update_library_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update screen recording segment
+    # @param storefront_oid 
+    # @param screen_recording_segment_oid 
+    # @param segment Segment
+    # @param [Hash] opts the optional parameters
+    # @return [ScreenRecordingSegmentResponse]
+    def update_screen_recording_segment(storefront_oid, screen_recording_segment_oid, segment, opts = {})
+      data, _status_code, _headers = update_screen_recording_segment_with_http_info(storefront_oid, screen_recording_segment_oid, segment, opts)
+      data
+    end
+
+    # Update screen recording segment
+    # @param storefront_oid 
+    # @param screen_recording_segment_oid 
+    # @param segment Segment
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ScreenRecordingSegmentResponse, Fixnum, Hash)>] ScreenRecordingSegmentResponse data, response status code and response headers
+    def update_screen_recording_segment_with_http_info(storefront_oid, screen_recording_segment_oid, segment, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.update_screen_recording_segment ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.update_screen_recording_segment"
+      end
+      # verify the required parameter 'screen_recording_segment_oid' is set
+      if @api_client.config.client_side_validation && screen_recording_segment_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'screen_recording_segment_oid' when calling StorefrontApi.update_screen_recording_segment"
+      end
+      # verify the required parameter 'segment' is set
+      if @api_client.config.client_side_validation && segment.nil?
+        fail ArgumentError, "Missing the required parameter 'segment' when calling StorefrontApi.update_screen_recording_segment"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid}'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'screen_recording_segment_oid' + '}', screen_recording_segment_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(segment)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ScreenRecordingSegmentResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#update_screen_recording_segment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update screen recording settings
+    # @param storefront_oid 
+    # @param settings Settings
+    # @param [Hash] opts the optional parameters
+    # @return [ScreenRecordingSettingsResponse]
+    def update_screen_recording_settings(storefront_oid, settings, opts = {})
+      data, _status_code, _headers = update_screen_recording_settings_with_http_info(storefront_oid, settings, opts)
+      data
+    end
+
+    # Update screen recording settings
+    # @param storefront_oid 
+    # @param settings Settings
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ScreenRecordingSettingsResponse, Fixnum, Hash)>] ScreenRecordingSettingsResponse data, response status code and response headers
+    def update_screen_recording_settings_with_http_info(storefront_oid, settings, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.update_screen_recording_settings ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.update_screen_recording_settings"
+      end
+      # verify the required parameter 'settings' is set
+      if @api_client.config.client_side_validation && settings.nil?
+        fail ArgumentError, "Missing the required parameter 'settings' when calling StorefrontApi.update_screen_recording_settings"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/settings'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(settings)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ScreenRecordingSettingsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#update_screen_recording_settings\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update tags on a screen recording
+    # Update tags on a screen recording 
+    # @param storefront_oid 
+    # @param screen_recording_uuid 
+    # @param tags Tags
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def update_screen_recording_tags(storefront_oid, screen_recording_uuid, tags, opts = {})
+      update_screen_recording_tags_with_http_info(storefront_oid, screen_recording_uuid, tags, opts)
+      nil
+    end
+
+    # Update tags on a screen recording
+    # Update tags on a screen recording 
+    # @param storefront_oid 
+    # @param screen_recording_uuid 
+    # @param tags Tags
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def update_screen_recording_tags_with_http_info(storefront_oid, screen_recording_uuid, tags, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.update_screen_recording_tags ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.update_screen_recording_tags"
+      end
+      # verify the required parameter 'screen_recording_uuid' is set
+      if @api_client.config.client_side_validation && screen_recording_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'screen_recording_uuid' when calling StorefrontApi.update_screen_recording_tags"
+      end
+      # verify the required parameter 'tags' is set
+      if @api_client.config.client_side_validation && tags.nil?
+        fail ArgumentError, "Missing the required parameter 'tags' when calling StorefrontApi.update_screen_recording_tags"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/tags'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'screen_recording_uuid' + '}', screen_recording_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(tags)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#update_screen_recording_tags\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

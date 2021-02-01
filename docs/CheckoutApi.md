@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**get_cart**](CheckoutApi.md#get_cart) | **GET** /checkout/cart | Get cart
 [**get_cart_by_cart_id**](CheckoutApi.md#get_cart_by_cart_id) | **GET** /checkout/cart/{cart_id} | Get cart (by cart id)
 [**get_cart_by_return_code**](CheckoutApi.md#get_cart_by_return_code) | **GET** /checkout/return/{return_code} | Get cart (by return code)
+[**get_cart_by_return_token**](CheckoutApi.md#get_cart_by_return_token) | **GET** /checkout/return_token | Get cart (by return token)
 [**get_state_provinces_for_country**](CheckoutApi.md#get_state_provinces_for_country) | **POST** /checkout/stateProvincesForCountry/{country_code} | Get state/province list for a country code
 [**handoff_cart**](CheckoutApi.md#handoff_cart) | **POST** /checkout/cart/handoff | Handoff cart
 [**login**](CheckoutApi.md#login) | **POST** /checkout/cart/profile/login | Profile login
@@ -439,6 +440,71 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **return_code** | **String**| Return code to lookup cart ID by | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+
+### Return type
+
+[**CartResponse**](CartResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_cart_by_return_token**
+> CartResponse get_cart_by_return_token(opts)
+
+Get cart (by return token)
+
+Get a cart specified by the encrypted return token parameter. 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::CheckoutApi.new
+
+opts = { 
+  return_token: 'return_token_example', # String | Return token provided by StoreFront Communications
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
+}
+
+begin
+  #Get cart (by return token)
+  result = api_instance.get_cart_by_return_token(opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling CheckoutApi->get_cart_by_return_token: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **return_token** | **String**| Return token provided by StoreFront Communications | [optional] 
  **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
 
 ### Return type

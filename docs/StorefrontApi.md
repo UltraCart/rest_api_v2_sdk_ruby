@@ -13,20 +13,26 @@ Method | HTTP request | Description
 [**clone_email_campaign**](StorefrontApi.md#clone_email_campaign) | **POST** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid}/clone | Clone email campaign
 [**clone_email_flow**](StorefrontApi.md#clone_email_flow) | **POST** /storefront/{storefront_oid}/email/flows/{email_flow_uuid}/clone | Clone email flow
 [**create_email_sending_domain**](StorefrontApi.md#create_email_sending_domain) | **POST** /storefront/email/sending_domains/{domain}/create | Create email campaign
+[**delete_email_campaign_folder**](StorefrontApi.md#delete_email_campaign_folder) | **DELETE** /storefront/{storefront_oid}/email/campaign_folders/{email_campaign_folder_uuid} | Delete email campaignFolder
 [**delete_email_commseq_stat**](StorefrontApi.md#delete_email_commseq_stat) | **DELETE** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/stat | Delete communication sequence stats
 [**delete_email_email**](StorefrontApi.md#delete_email_email) | **DELETE** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid} | Delete email email
+[**delete_email_flow_folder**](StorefrontApi.md#delete_email_flow_folder) | **DELETE** /storefront/{storefront_oid}/email/flow_folders/{email_flow_folder_uuid} | Delete email flowFolder
 [**delete_email_list_customer**](StorefrontApi.md#delete_email_list_customer) | **DELETE** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/customers/{email_customer_uuid} | Delete email list customer
 [**delete_email_postcard**](StorefrontApi.md#delete_email_postcard) | **DELETE** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid} | Delete email postcard
 [**delete_email_sending_domain**](StorefrontApi.md#delete_email_sending_domain) | **DELETE** /storefront/email/sending_domains/{domain} | delete email campaign
 [**delete_experiment**](StorefrontApi.md#delete_experiment) | **DELETE** /storefront/{storefront_oid}/experiments/{storefront_experiment_oid} | Delete experiment
 [**delete_library_item**](StorefrontApi.md#delete_library_item) | **DELETE** /storefront/code_library/{library_item_oid} | Delete library item
 [**delete_library_item_published_versions**](StorefrontApi.md#delete_library_item_published_versions) | **DELETE** /storefront/code_library/{library_item_oid}/published_versions | Delete all published versions for a library item, including anything in review.
+[**delete_screen_recording_segment**](StorefrontApi.md#delete_screen_recording_segment) | **DELETE** /storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid} | Delete screen recording segment
 [**duplicate_library_item**](StorefrontApi.md#duplicate_library_item) | **POST** /storefront/code_library/{library_item_oid}/duplicate | Duplicate library item.
+[**favorite_screen_recording**](StorefrontApi.md#favorite_screen_recording) | **POST** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/favorite | Update favorite flag on screen recording
 [**geocode_address**](StorefrontApi.md#geocode_address) | **POST** /storefront/{storefront_oid}/email/geocode | Obtain lat/long for an address
 [**get_countries**](StorefrontApi.md#get_countries) | **GET** /storefront/{storefront_oid}/email/countries | Get countries
 [**get_editor_token**](StorefrontApi.md#get_editor_token) | **GET** /storefront/{storefront_oid}/editor_token | Gets editor token
 [**get_email_base_templates**](StorefrontApi.md#get_email_base_templates) | **GET** /storefront/{storefront_oid}/email/baseTemplates | Get email communication base templates
 [**get_email_campaign**](StorefrontApi.md#get_email_campaign) | **GET** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid} | Get email campaign
+[**get_email_campaign_folder**](StorefrontApi.md#get_email_campaign_folder) | **GET** /storefront/{storefront_oid}/email/campaign_folders/{email_campaign_folder_uuid} | Get email campaign folder
+[**get_email_campaign_folders**](StorefrontApi.md#get_email_campaign_folders) | **GET** /storefront/{storefront_oid}/email/campaign_folders | Get email campaign folders
 [**get_email_campaign_screenshots**](StorefrontApi.md#get_email_campaign_screenshots) | **GET** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid}/screenshots | Get email campaign screenshots
 [**get_email_campaigns**](StorefrontApi.md#get_email_campaigns) | **GET** /storefront/{storefront_oid}/email/campaigns | Get email campaigns
 [**get_email_campaigns_with_stats**](StorefrontApi.md#get_email_campaigns_with_stats) | **GET** /storefront/{storefront_oid}/email/campaignsWithStats/{stat_days} | Get email campaigns with stats
@@ -48,6 +54,8 @@ Method | HTTP request | Description
 [**get_email_emails**](StorefrontApi.md#get_email_emails) | **GET** /storefront/{storefront_oid}/email/emails | Get email emails
 [**get_email_emails_multiple**](StorefrontApi.md#get_email_emails_multiple) | **POST** /storefront/{storefront_oid}/email/emails/multiple | Get email emails multiple
 [**get_email_flow**](StorefrontApi.md#get_email_flow) | **GET** /storefront/{storefront_oid}/email/flows/{email_flow_uuid} | Get email flow
+[**get_email_flow_folder**](StorefrontApi.md#get_email_flow_folder) | **GET** /storefront/{storefront_oid}/email/flow_folders/{email_flow_folder_uuid} | Get email flow folder
+[**get_email_flow_folders**](StorefrontApi.md#get_email_flow_folders) | **GET** /storefront/{storefront_oid}/email/flow_folders | Get email flow folders
 [**get_email_flow_screenshots**](StorefrontApi.md#get_email_flow_screenshots) | **GET** /storefront/{storefront_oid}/email/flows/{email_flow_uuid}/screenshots | Get email flow screenshots
 [**get_email_flows**](StorefrontApi.md#get_email_flows) | **GET** /storefront/{storefront_oid}/email/flows | Get email flows
 [**get_email_global_settings**](StorefrontApi.md#get_email_global_settings) | **GET** /storefront/email/global_settings | Get email globalsettings
@@ -78,6 +86,14 @@ Method | HTTP request | Description
 [**get_library_item**](StorefrontApi.md#get_library_item) | **GET** /storefront/code_library/{library_item_oid} | Get library item.
 [**get_library_item_published_versions**](StorefrontApi.md#get_library_item_published_versions) | **GET** /storefront/code_library/{library_item_oid}/published_versions | Get all published versions for a library item.
 [**get_pricing_tiers**](StorefrontApi.md#get_pricing_tiers) | **GET** /storefront/pricing_tiers | Retrieve pricing tiers
+[**get_screen_recording**](StorefrontApi.md#get_screen_recording) | **GET** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid} | Get screen recording
+[**get_screen_recording_page_view_data**](StorefrontApi.md#get_screen_recording_page_view_data) | **GET** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/page_view_data/{screen_recording_page_view_uuid} | Get screen recording page view data
+[**get_screen_recording_segment**](StorefrontApi.md#get_screen_recording_segment) | **GET** /storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid} | Get screen recording segment
+[**get_screen_recording_segments**](StorefrontApi.md#get_screen_recording_segments) | **GET** /storefront/{storefront_oid}/screen_recordings/segments | Get screen recording segments
+[**get_screen_recording_settings**](StorefrontApi.md#get_screen_recording_settings) | **GET** /storefront/{storefront_oid}/screen_recordings/settings | Get screen recording settings
+[**get_screen_recording_tags**](StorefrontApi.md#get_screen_recording_tags) | **POST** /storefront/{storefront_oid}/screen_recordings/tags | Get tags used by screen recording
+[**get_screen_recordings_by_query**](StorefrontApi.md#get_screen_recordings_by_query) | **POST** /storefront/{storefront_oid}/screen_recordings/query | Query screen recordings
+[**get_screen_recordings_by_segment**](StorefrontApi.md#get_screen_recordings_by_segment) | **POST** /storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid}/query | Get screen recordings by segment
 [**get_thumbnail_parameters**](StorefrontApi.md#get_thumbnail_parameters) | **POST** /storefront/thumbnailParameters | Get thumbnail parameters
 [**get_transaction_email**](StorefrontApi.md#get_transaction_email) | **GET** /storefront/{storefront_oid}/transaction_email/list/{email_id} | Gets a transaction email object
 [**get_transaction_email_list**](StorefrontApi.md#get_transaction_email_list) | **GET** /storefront/{storefront_oid}/transaction_email/list | Gets a list of transaction email names
@@ -85,12 +101,15 @@ Method | HTTP request | Description
 [**global_unsubscribe**](StorefrontApi.md#global_unsubscribe) | **POST** /storefront/{storefront_oid}/email/globalUnsubscribe | Globally unsubscribe a customer
 [**import_email_third_party_provider_list**](StorefrontApi.md#import_email_third_party_provider_list) | **POST** /storefront/{storefront_oid}/email/third_party_providers/import | Import a third party provider list
 [**insert_email_campaign**](StorefrontApi.md#insert_email_campaign) | **POST** /storefront/{storefront_oid}/email/campaigns | Insert email campaign
+[**insert_email_campaign_folder**](StorefrontApi.md#insert_email_campaign_folder) | **POST** /storefront/{storefront_oid}/email/campaign_folders | Insert email campaign folder
 [**insert_email_commseq**](StorefrontApi.md#insert_email_commseq) | **POST** /storefront/{storefront_oid}/email/commseqs | Insert email commseq
 [**insert_email_email**](StorefrontApi.md#insert_email_email) | **POST** /storefront/{storefront_oid}/email/emails | Insert email email
 [**insert_email_flow**](StorefrontApi.md#insert_email_flow) | **POST** /storefront/{storefront_oid}/email/flows | Insert email flow
+[**insert_email_flow_folder**](StorefrontApi.md#insert_email_flow_folder) | **POST** /storefront/{storefront_oid}/email/flow_folders | Insert email flow folder
 [**insert_email_list**](StorefrontApi.md#insert_email_list) | **POST** /storefront/{storefront_oid}/email/lists | Insert email list
 [**insert_email_postcard**](StorefrontApi.md#insert_email_postcard) | **POST** /storefront/{storefront_oid}/email/postcards | Insert email postcard
 [**insert_email_segment**](StorefrontApi.md#insert_email_segment) | **POST** /storefront/{storefront_oid}/email/segments | Insert email segment
+[**insert_screen_recording_segment**](StorefrontApi.md#insert_screen_recording_segment) | **POST** /storefront/{storefront_oid}/screen_recordings/segments | Insert screen recording segment
 [**prepare_download_email_segment**](StorefrontApi.md#prepare_download_email_segment) | **POST** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/downloadPrepare | Prepare download of email segment
 [**publish_library_item**](StorefrontApi.md#publish_library_item) | **POST** /storefront/code_library/{library_item_oid}/publish | Publish library item.
 [**purchase_library_item**](StorefrontApi.md#purchase_library_item) | **POST** /storefront/code_library/{library_item_oid}/purchase | Purchase public library item, which creates a copy of the item in your personal code library
@@ -108,11 +127,14 @@ Method | HTTP request | Description
 [**send_postcard_test**](StorefrontApi.md#send_postcard_test) | **POST** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid}/test | Send postcard test
 [**start_email_campaign**](StorefrontApi.md#start_email_campaign) | **PUT** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid}/start | Start email campaign
 [**subscribe_to_email_list**](StorefrontApi.md#subscribe_to_email_list) | **POST** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/subscribe | Subscribe customers to email list
+[**unfavorite_screen_recording**](StorefrontApi.md#unfavorite_screen_recording) | **DELETE** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/favorite | Remove favorite flag on screen recording
 [**update_email_campaign**](StorefrontApi.md#update_email_campaign) | **PUT** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid} | Update email campaign
+[**update_email_campaign_folder**](StorefrontApi.md#update_email_campaign_folder) | **PUT** /storefront/{storefront_oid}/email/campaign_folders/{email_campaign_folder_uuid} | Update email campaign folder
 [**update_email_commseq**](StorefrontApi.md#update_email_commseq) | **PUT** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid} | Update email commseq
 [**update_email_customer**](StorefrontApi.md#update_email_customer) | **PUT** /storefront/{storefront_oid}/email/customers/{email_customer_uuid} | Update email customer
 [**update_email_email**](StorefrontApi.md#update_email_email) | **PUT** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid} | Update email email
 [**update_email_flow**](StorefrontApi.md#update_email_flow) | **PUT** /storefront/{storefront_oid}/email/flows/{email_flow_uuid} | Update email flow
+[**update_email_flow_folder**](StorefrontApi.md#update_email_flow_folder) | **PUT** /storefront/{storefront_oid}/email/flow_folders/{email_flow_folder_uuid} | Update email flow folder
 [**update_email_global_settings**](StorefrontApi.md#update_email_global_settings) | **POST** /storefront/email/global_settings | Update email global settings
 [**update_email_list**](StorefrontApi.md#update_email_list) | **PUT** /storefront/{storefront_oid}/email/lists/{email_list_uuid} | Update email list
 [**update_email_plan**](StorefrontApi.md#update_email_plan) | **POST** /storefront/{storefront_oid}/email/plan | Update email plan
@@ -121,6 +143,9 @@ Method | HTTP request | Description
 [**update_email_settings**](StorefrontApi.md#update_email_settings) | **POST** /storefront/{storefront_oid}/email/settings | Update email settings
 [**update_experiment**](StorefrontApi.md#update_experiment) | **PUT** /storefront/{storefront_oid}/experiments/{storefront_experiment_oid} | Update experiment
 [**update_library_item**](StorefrontApi.md#update_library_item) | **PUT** /storefront/code_library/{library_item_oid} | Update library item. Note that only certain fields may be updated via this method.
+[**update_screen_recording_segment**](StorefrontApi.md#update_screen_recording_segment) | **POST** /storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid} | Update screen recording segment
+[**update_screen_recording_settings**](StorefrontApi.md#update_screen_recording_settings) | **POST** /storefront/{storefront_oid}/screen_recordings/settings | Update screen recording settings
+[**update_screen_recording_tags**](StorefrontApi.md#update_screen_recording_tags) | **POST** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/tags | Update tags on a screen recording
 [**update_transaction_email**](StorefrontApi.md#update_transaction_email) | **PUT** /storefront/{storefront_oid}/transaction_email/list/{email_id} | Updates a transaction email object
 
 
@@ -696,6 +721,69 @@ Name | Type | Description  | Notes
 
 
 
+# **delete_email_campaign_folder**
+> BaseResponse delete_email_campaign_folder(storefront_oid, email_campaign_folder_uuid)
+
+Delete email campaignFolder
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_campaign_folder_uuid = 'email_campaign_folder_uuid_example' # String | 
+
+
+begin
+  #Delete email campaignFolder
+  result = api_instance.delete_email_campaign_folder(storefront_oid, email_campaign_folder_uuid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->delete_email_campaign_folder: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_campaign_folder_uuid** | **String**|  | 
+
+### Return type
+
+[**BaseResponse**](BaseResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **delete_email_commseq_stat**
 > delete_email_commseq_stat(storefront_oid, commseq_uuid)
 
@@ -805,6 +893,69 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **storefront_oid** | **Integer**|  | 
  **commseq_email_uuid** | **String**|  | 
+
+### Return type
+
+[**BaseResponse**](BaseResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **delete_email_flow_folder**
+> BaseResponse delete_email_flow_folder(storefront_oid, email_flow_folder_uuid)
+
+Delete email flowFolder
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_flow_folder_uuid = 'email_flow_folder_uuid_example' # String | 
+
+
+begin
+  #Delete email flowFolder
+  result = api_instance.delete_email_flow_folder(storefront_oid, email_flow_folder_uuid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->delete_email_flow_folder: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_flow_folder_uuid** | **String**|  | 
 
 ### Return type
 
@@ -1190,6 +1341,69 @@ nil (empty response body)
 
 
 
+# **delete_screen_recording_segment**
+> ScreenRecordingSegmentResponse delete_screen_recording_segment(storefront_oid, screen_recording_segment_oid)
+
+Delete screen recording segment
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+screen_recording_segment_oid = 56 # Integer | 
+
+
+begin
+  #Delete screen recording segment
+  result = api_instance.delete_screen_recording_segment(storefront_oid, screen_recording_segment_oid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->delete_screen_recording_segment: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **screen_recording_segment_oid** | **Integer**|  | 
+
+### Return type
+
+[**ScreenRecordingSegmentResponse**](ScreenRecordingSegmentResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **duplicate_library_item**
 > LibraryItemResponse duplicate_library_item(library_item_oid)
 
@@ -1242,6 +1456,65 @@ Name | Type | Description  | Notes
 ### Authorization
 
 [ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **favorite_screen_recording**
+> favorite_screen_recording(storefront_oid, screen_recording_uuid)
+
+Update favorite flag on screen recording
+
+Update favorite flag on screen recording 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+screen_recording_uuid = 'screen_recording_uuid_example' # String | 
+
+
+begin
+  #Update favorite flag on screen recording
+  api_instance.favorite_screen_recording(storefront_oid, screen_recording_uuid)
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->favorite_screen_recording: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **screen_recording_uuid** | **String**|  | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
 
 ### HTTP request headers
 
@@ -1548,6 +1821,129 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EmailCampaignResponse**](EmailCampaignResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_campaign_folder**
+> EmailCampaignFolderResponse get_email_campaign_folder(storefront_oid, email_campaign_folder_uuid)
+
+Get email campaign folder
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_campaign_folder_uuid = 'email_campaign_folder_uuid_example' # String | 
+
+
+begin
+  #Get email campaign folder
+  result = api_instance.get_email_campaign_folder(storefront_oid, email_campaign_folder_uuid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_campaign_folder: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_campaign_folder_uuid** | **String**|  | 
+
+### Return type
+
+[**EmailCampaignFolderResponse**](EmailCampaignFolderResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_campaign_folders**
+> EmailCampaignFoldersResponse get_email_campaign_folders(storefront_oid)
+
+Get email campaign folders
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+
+begin
+  #Get email campaign folders
+  result = api_instance.get_email_campaign_folders(storefront_oid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_campaign_folders: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+
+### Return type
+
+[**EmailCampaignFoldersResponse**](EmailCampaignFoldersResponse.md)
 
 ### Authorization
 
@@ -2904,6 +3300,129 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EmailFlowResponse**](EmailFlowResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_flow_folder**
+> EmailFlowFolderResponse get_email_flow_folder(storefront_oid, email_flow_folder_uuid)
+
+Get email flow folder
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_flow_folder_uuid = 'email_flow_folder_uuid_example' # String | 
+
+
+begin
+  #Get email flow folder
+  result = api_instance.get_email_flow_folder(storefront_oid, email_flow_folder_uuid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_flow_folder: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_flow_folder_uuid** | **String**|  | 
+
+### Return type
+
+[**EmailFlowFolderResponse**](EmailFlowFolderResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_flow_folders**
+> EmailFlowFoldersResponse get_email_flow_folders(storefront_oid)
+
+Get email flow folders
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+
+begin
+  #Get email flow folders
+  result = api_instance.get_email_flow_folders(storefront_oid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_flow_folders: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+
+### Return type
+
+[**EmailFlowFoldersResponse**](EmailFlowFoldersResponse.md)
 
 ### Authorization
 
@@ -4764,6 +5283,505 @@ Name | Type | Description  | Notes
 
 
 
+# **get_screen_recording**
+> ScreenRecordingResponse get_screen_recording(storefront_oid, screen_recording_uuid)
+
+Get screen recording
+
+Get screen recording 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+screen_recording_uuid = 'screen_recording_uuid_example' # String | 
+
+
+begin
+  #Get screen recording
+  result = api_instance.get_screen_recording(storefront_oid, screen_recording_uuid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_screen_recording: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **screen_recording_uuid** | **String**|  | 
+
+### Return type
+
+[**ScreenRecordingResponse**](ScreenRecordingResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_screen_recording_page_view_data**
+> ScreenRecordingResponse get_screen_recording_page_view_data(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid)
+
+Get screen recording page view data
+
+Get screen recording page view data 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+screen_recording_uuid = 'screen_recording_uuid_example' # String | 
+
+screen_recording_page_view_uuid = 'screen_recording_page_view_uuid_example' # String | 
+
+
+begin
+  #Get screen recording page view data
+  result = api_instance.get_screen_recording_page_view_data(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_screen_recording_page_view_data: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **screen_recording_uuid** | **String**|  | 
+ **screen_recording_page_view_uuid** | **String**|  | 
+
+### Return type
+
+[**ScreenRecordingResponse**](ScreenRecordingResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_screen_recording_segment**
+> ScreenRecordingSegmentResponse get_screen_recording_segment(storefront_oid, screen_recording_segment_oid)
+
+Get screen recording segment
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+screen_recording_segment_oid = 56 # Integer | 
+
+
+begin
+  #Get screen recording segment
+  result = api_instance.get_screen_recording_segment(storefront_oid, screen_recording_segment_oid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_screen_recording_segment: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **screen_recording_segment_oid** | **Integer**|  | 
+
+### Return type
+
+[**ScreenRecordingSegmentResponse**](ScreenRecordingSegmentResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_screen_recording_segments**
+> ScreenRecordingSegmentsResponse get_screen_recording_segments(storefront_oid)
+
+Get screen recording segments
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+
+begin
+  #Get screen recording segments
+  result = api_instance.get_screen_recording_segments(storefront_oid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_screen_recording_segments: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+
+### Return type
+
+[**ScreenRecordingSegmentsResponse**](ScreenRecordingSegmentsResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_screen_recording_settings**
+> ScreenRecordingSettingsResponse get_screen_recording_settings(storefront_oid)
+
+Get screen recording settings
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+
+begin
+  #Get screen recording settings
+  result = api_instance.get_screen_recording_settings(storefront_oid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_screen_recording_settings: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+
+### Return type
+
+[**ScreenRecordingSettingsResponse**](ScreenRecordingSettingsResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_screen_recording_tags**
+> ScreenRecordingTagsResponse get_screen_recording_tags(storefront_oid)
+
+Get tags used by screen recording
+
+Get tags used by screen recording 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+
+begin
+  #Get tags used by screen recording
+  result = api_instance.get_screen_recording_tags(storefront_oid)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_screen_recording_tags: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+
+### Return type
+
+[**ScreenRecordingTagsResponse**](ScreenRecordingTagsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_screen_recordings_by_query**
+> ScreenRecordingQueryResponse get_screen_recordings_by_query(storefront_oid, query, opts)
+
+Query screen recordings
+
+Query screen recordings 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+query = UltraCartAdminV2::ScreenRecordingQueryRequest.new # ScreenRecordingQueryRequest | Query
+
+opts = { 
+  _limit: 100, # Integer | The maximum number of records to return on this one API call. (Default 100, Max 500)
+  _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
+  _sort: '_sort_example' # String | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+}
+
+begin
+  #Query screen recordings
+  result = api_instance.get_screen_recordings_by_query(storefront_oid, query, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_screen_recordings_by_query: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **query** | [**ScreenRecordingQueryRequest**](ScreenRecordingQueryRequest.md)| Query | 
+ **_limit** | **Integer**| The maximum number of records to return on this one API call. (Default 100, Max 500) | [optional] [default to 100]
+ **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] [default to 0]
+ **_sort** | **String**| The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] 
+
+### Return type
+
+[**ScreenRecordingQueryResponse**](ScreenRecordingQueryResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_screen_recordings_by_segment**
+> ScreenRecordingQueryResponse get_screen_recordings_by_segment(storefront_oid, screen_recording_segment_oid, opts)
+
+Get screen recordings by segment
+
+Get screen recordings by segment 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+screen_recording_segment_oid = 56 # Integer | 
+
+opts = { 
+  _limit: 100, # Integer | The maximum number of records to return on this one API call. (Default 100, Max 500)
+  _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
+  _sort: '_sort_example' # String | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+}
+
+begin
+  #Get screen recordings by segment
+  result = api_instance.get_screen_recordings_by_segment(storefront_oid, screen_recording_segment_oid, opts)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->get_screen_recordings_by_segment: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **screen_recording_segment_oid** | **Integer**|  | 
+ **_limit** | **Integer**| The maximum number of records to return on this one API call. (Default 100, Max 500) | [optional] [default to 100]
+ **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] [default to 0]
+ **_sort** | **String**| The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] 
+
+### Return type
+
+[**ScreenRecordingQueryResponse**](ScreenRecordingQueryResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **get_thumbnail_parameters**
 > ThumbnailParametersResponse get_thumbnail_parameters(thumbnail_parameters)
 
@@ -5202,6 +6220,69 @@ Name | Type | Description  | Notes
 
 
 
+# **insert_email_campaign_folder**
+> EmailCampaignFolderResponse insert_email_campaign_folder(storefront_oid, email_campaign_folder)
+
+Insert email campaign folder
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_campaign_folder = UltraCartAdminV2::EmailCampaignFolder.new # EmailCampaignFolder | Email campaign folder
+
+
+begin
+  #Insert email campaign folder
+  result = api_instance.insert_email_campaign_folder(storefront_oid, email_campaign_folder)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->insert_email_campaign_folder: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_campaign_folder** | [**EmailCampaignFolder**](EmailCampaignFolder.md)| Email campaign folder | 
+
+### Return type
+
+[**EmailCampaignFolderResponse**](EmailCampaignFolderResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **insert_email_commseq**
 > EmailCommseqResponse insert_email_commseq(storefront_oid, email_commseq)
 
@@ -5391,6 +6472,69 @@ Name | Type | Description  | Notes
 
 
 
+# **insert_email_flow_folder**
+> EmailFlowFolderResponse insert_email_flow_folder(storefront_oid, email_flow_folder)
+
+Insert email flow folder
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_flow_folder = UltraCartAdminV2::EmailFlowFolder.new # EmailFlowFolder | Email flow folder
+
+
+begin
+  #Insert email flow folder
+  result = api_instance.insert_email_flow_folder(storefront_oid, email_flow_folder)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->insert_email_flow_folder: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_flow_folder** | [**EmailFlowFolder**](EmailFlowFolder.md)| Email flow folder | 
+
+### Return type
+
+[**EmailFlowFolderResponse**](EmailFlowFolderResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **insert_email_list**
 > EmailListResponse insert_email_list(storefront_oid, email_list)
 
@@ -5568,6 +6712,69 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EmailSegmentResponse**](EmailSegmentResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **insert_screen_recording_segment**
+> ScreenRecordingSegmentResponse insert_screen_recording_segment(storefront_oid, segment)
+
+Insert screen recording segment
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+segment = UltraCartAdminV2::ScreenRecordingSegment.new # ScreenRecordingSegment | Segment
+
+
+begin
+  #Insert screen recording segment
+  result = api_instance.insert_screen_recording_segment(storefront_oid, segment)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->insert_screen_recording_segment: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **segment** | [**ScreenRecordingSegment**](ScreenRecordingSegment.md)| Segment | 
+
+### Return type
+
+[**ScreenRecordingSegmentResponse**](ScreenRecordingSegmentResponse.md)
 
 ### Authorization
 
@@ -6685,6 +7892,65 @@ Name | Type | Description  | Notes
 
 
 
+# **unfavorite_screen_recording**
+> unfavorite_screen_recording(storefront_oid, screen_recording_uuid)
+
+Remove favorite flag on screen recording
+
+Remove favorite flag on screen recording 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+screen_recording_uuid = 'screen_recording_uuid_example' # String | 
+
+
+begin
+  #Remove favorite flag on screen recording
+  api_instance.unfavorite_screen_recording(storefront_oid, screen_recording_uuid)
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->unfavorite_screen_recording: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **screen_recording_uuid** | **String**|  | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **update_email_campaign**
 > EmailCampaignResponse update_email_campaign(storefront_oid, email_campaign_uuid, email_campaign)
 
@@ -6739,6 +8005,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EmailCampaignResponse**](EmailCampaignResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_email_campaign_folder**
+> EmailCampaignFolderResponse update_email_campaign_folder(storefront_oid, email_campaign_folder_uuid, email_campaign_folder)
+
+Update email campaign folder
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_campaign_folder_uuid = 'email_campaign_folder_uuid_example' # String | 
+
+email_campaign_folder = UltraCartAdminV2::EmailCampaignFolder.new # EmailCampaignFolder | Email campaign folder
+
+
+begin
+  #Update email campaign folder
+  result = api_instance.update_email_campaign_folder(storefront_oid, email_campaign_folder_uuid, email_campaign_folder)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->update_email_campaign_folder: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_campaign_folder_uuid** | **String**|  | 
+ **email_campaign_folder** | [**EmailCampaignFolder**](EmailCampaignFolder.md)| Email campaign folder | 
+
+### Return type
+
+[**EmailCampaignFolderResponse**](EmailCampaignFolderResponse.md)
 
 ### Authorization
 
@@ -7002,6 +8334,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EmailFlowResponse**](EmailFlowResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_email_flow_folder**
+> EmailFlowFolderResponse update_email_flow_folder(storefront_oid, email_flow_folder_uuid, email_flow_folder)
+
+Update email flow folder
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+email_flow_folder_uuid = 'email_flow_folder_uuid_example' # String | 
+
+email_flow_folder = UltraCartAdminV2::EmailFlowFolder.new # EmailFlowFolder | Email flow folder
+
+
+begin
+  #Update email flow folder
+  result = api_instance.update_email_flow_folder(storefront_oid, email_flow_folder_uuid, email_flow_folder)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->update_email_flow_folder: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **email_flow_folder_uuid** | **String**|  | 
+ **email_flow_folder** | [**EmailFlowFolder**](EmailFlowFolder.md)| Email flow folder | 
+
+### Return type
+
+[**EmailFlowFolderResponse**](EmailFlowFolderResponse.md)
 
 ### Authorization
 
@@ -7519,6 +8917,197 @@ Name | Type | Description  | Notes
 ### Authorization
 
 [ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_screen_recording_segment**
+> ScreenRecordingSegmentResponse update_screen_recording_segment(storefront_oid, screen_recording_segment_oid, segment)
+
+Update screen recording segment
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+screen_recording_segment_oid = 56 # Integer | 
+
+segment = UltraCartAdminV2::ScreenRecordingSegment.new # ScreenRecordingSegment | Segment
+
+
+begin
+  #Update screen recording segment
+  result = api_instance.update_screen_recording_segment(storefront_oid, screen_recording_segment_oid, segment)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->update_screen_recording_segment: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **screen_recording_segment_oid** | **Integer**|  | 
+ **segment** | [**ScreenRecordingSegment**](ScreenRecordingSegment.md)| Segment | 
+
+### Return type
+
+[**ScreenRecordingSegmentResponse**](ScreenRecordingSegmentResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_screen_recording_settings**
+> ScreenRecordingSettingsResponse update_screen_recording_settings(storefront_oid, settings)
+
+Update screen recording settings
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-browser-key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+settings = UltraCartAdminV2::ScreenRecordingSettings.new # ScreenRecordingSettings | Settings
+
+
+begin
+  #Update screen recording settings
+  result = api_instance.update_screen_recording_settings(storefront_oid, settings)
+  p result
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->update_screen_recording_settings: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **settings** | [**ScreenRecordingSettings**](ScreenRecordingSettings.md)| Settings | 
+
+### Return type
+
+[**ScreenRecordingSettingsResponse**](ScreenRecordingSettingsResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_screen_recording_tags**
+> update_screen_recording_tags(storefront_oid, screen_recording_uuid, tags)
+
+Update tags on a screen recording
+
+Update tags on a screen recording 
+
+### Example
+```ruby
+# load the gem
+require 'com_ultracart_admin_v2'
+# setup authorization
+UltraCartAdminV2.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
+
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
+end
+
+api_instance = UltraCartAdminV2::StorefrontApi.new
+
+storefront_oid = 56 # Integer | 
+
+screen_recording_uuid = 'screen_recording_uuid_example' # String | 
+
+tags = UltraCartAdminV2::ScreenRecordingTagsRequest.new # ScreenRecordingTagsRequest | Tags
+
+
+begin
+  #Update tags on a screen recording
+  api_instance.update_screen_recording_tags(storefront_oid, screen_recording_uuid, tags)
+rescue UltraCartAdminV2::ApiError => e
+  puts "Exception when calling StorefrontApi->update_screen_recording_tags: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **screen_recording_uuid** | **String**|  | 
+ **tags** | [**ScreenRecordingTagsRequest**](ScreenRecordingTagsRequest.md)| Tags | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
 
 ### HTTP request headers
 

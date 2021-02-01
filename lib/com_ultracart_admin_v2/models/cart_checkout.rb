@@ -44,6 +44,9 @@ module UltraCartAdminV2
     # Return code assigned for send return email operation
     attr_accessor :return_code
 
+    # The URL to redirect the customer to when they return from an abandon cart email.  Must be https protocol.
+    attr_accessor :return_url
+
     # Screen branding theme code
     attr_accessor :screen_branding_theme_code
 
@@ -66,6 +69,7 @@ module UltraCartAdminV2
         :'custom_field7' => :'custom_field7',
         :'ip_address' => :'ip_address',
         :'return_code' => :'return_code',
+        :'return_url' => :'return_url',
         :'screen_branding_theme_code' => :'screen_branding_theme_code',
         :'storefront_host_name' => :'storefront_host_name',
         :'user_agent' => :'user_agent'
@@ -85,6 +89,7 @@ module UltraCartAdminV2
         :'custom_field7' => :'String',
         :'ip_address' => :'String',
         :'return_code' => :'String',
+        :'return_url' => :'String',
         :'screen_branding_theme_code' => :'String',
         :'storefront_host_name' => :'String',
         :'user_agent' => :'String'
@@ -139,6 +144,10 @@ module UltraCartAdminV2
         self.return_code = attributes[:'return_code']
       end
 
+      if attributes.has_key?(:'return_url')
+        self.return_url = attributes[:'return_url']
+      end
+
       if attributes.has_key?(:'screen_branding_theme_code')
         self.screen_branding_theme_code = attributes[:'screen_branding_theme_code']
       end
@@ -188,6 +197,10 @@ module UltraCartAdminV2
         invalid_properties.push('invalid value for "custom_field7", the character length must be smaller than or equal to 50.')
       end
 
+      if !@return_url.nil? && @return_url.to_s.length > 2048
+        invalid_properties.push('invalid value for "return_url", the character length must be smaller than or equal to 2048.')
+      end
+
       if !@screen_branding_theme_code.nil? && @screen_branding_theme_code.to_s.length > 10
         invalid_properties.push('invalid value for "screen_branding_theme_code", the character length must be smaller than or equal to 10.')
       end
@@ -206,6 +219,7 @@ module UltraCartAdminV2
       return false if !@custom_field5.nil? && @custom_field5.to_s.length > 75
       return false if !@custom_field6.nil? && @custom_field6.to_s.length > 50
       return false if !@custom_field7.nil? && @custom_field7.to_s.length > 50
+      return false if !@return_url.nil? && @return_url.to_s.length > 2048
       return false if !@screen_branding_theme_code.nil? && @screen_branding_theme_code.to_s.length > 10
       true
     end
@@ -291,6 +305,16 @@ module UltraCartAdminV2
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] return_url Value to be assigned
+    def return_url=(return_url)
+      if !return_url.nil? && return_url.to_s.length > 2048
+        fail ArgumentError, 'invalid value for "return_url", the character length must be smaller than or equal to 2048.'
+      end
+
+      @return_url = return_url
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] screen_branding_theme_code Value to be assigned
     def screen_branding_theme_code=(screen_branding_theme_code)
       if !screen_branding_theme_code.nil? && screen_branding_theme_code.to_s.length > 10
@@ -315,6 +339,7 @@ module UltraCartAdminV2
           custom_field7 == o.custom_field7 &&
           ip_address == o.ip_address &&
           return_code == o.return_code &&
+          return_url == o.return_url &&
           screen_branding_theme_code == o.screen_branding_theme_code &&
           storefront_host_name == o.storefront_host_name &&
           user_agent == o.user_agent
@@ -329,7 +354,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [comments, custom_field1, custom_field2, custom_field3, custom_field4, custom_field5, custom_field6, custom_field7, ip_address, return_code, screen_branding_theme_code, storefront_host_name, user_agent].hash
+      [comments, custom_field1, custom_field2, custom_field3, custom_field4, custom_field5, custom_field6, custom_field7, ip_address, return_code, return_url, screen_branding_theme_code, storefront_host_name, user_agent].hash
     end
 
     # Builds the object from hash

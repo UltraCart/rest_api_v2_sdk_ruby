@@ -1,0 +1,39 @@
+# UltraCartAdminV2::ScreenRecording
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**analytics_client_oid** | **Integer** |  | [optional] 
+**analytics_session_dts** | **Integer** |  | [optional] 
+**analytics_session_oid** | **Integer** |  | [optional] 
+**email** | **String** |  | [optional] 
+**end_timestamp** | **String** | Ending timestamp | [optional] 
+**esp_customer_uuid** | **String** |  | [optional] 
+**events_gz_size** | **Integer** |  | [optional] 
+**events_json_key** | **String** |  | [optional] 
+**favorites** | **Array&lt;Integer&gt;** |  | [optional] 
+**geolocation** | [**GeoPoint**](GeoPoint.md) |  | [optional] 
+**geolocation_country** | **String** |  | [optional] 
+**geolocation_state** | **String** |  | [optional] 
+**merchant_id** | **String** |  | [optional] 
+**order_id** | **String** |  | [optional] 
+**page_view_count** | **Integer** |  | [optional] 
+**page_views** | [**Array&lt;ScreenRecordingPageView&gt;**](ScreenRecordingPageView.md) |  | [optional] 
+**rrweb_version** | **String** |  | [optional] 
+**screen_recording_uuid** | **String** |  | [optional] 
+**signed_download_url** | **String** |  | [optional] 
+**start_timestamp** | **String** | Starting timestamp | [optional] 
+**storefront_oids** | **Array&lt;Integer&gt;** |  | [optional] 
+**storefronts** | [**Array&lt;ScreenRecordingStoreFront&gt;**](ScreenRecordingStoreFront.md) |  | [optional] 
+**tags** | **Array&lt;String&gt;** |  | [optional] 
+**time_on_site** | **Integer** |  | [optional] 
+**ucacid** | **String** |  | [optional] 
+**user_agent** | [**ScreenRecordingUserAgent**](ScreenRecordingUserAgent.md) |  | [optional] 
+**user_agent_raw** | **String** |  | [optional] 
+**user_ip** | **String** |  | [optional] 
+**user_properties** | [**Array&lt;ScreenRecordingUserProperty&gt;**](ScreenRecordingUserProperty.md) |  | [optional] 
+**watched** | **BOOLEAN** |  | [optional] 
+**window_height** | **Integer** |  | [optional] 
+**window_width** | **Integer** |  | [optional] 
+
+

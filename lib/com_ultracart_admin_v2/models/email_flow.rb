@@ -47,6 +47,9 @@ module UltraCartAdminV2
     # UUID of sending domain
     attr_accessor :esp_domain_uuid
 
+    # Flow folder UUID.  Null for uncategorized
+    attr_accessor :esp_flow_folder_uuid
+
     # Friendly name of the sending email
     attr_accessor :esp_friendly_name
 
@@ -67,6 +70,9 @@ module UltraCartAdminV2
 
     # Revenue, formatted
     attr_accessor :revenue_formatted
+
+    # Revenue per customer, formatted
+    attr_accessor :revenue_per_customer_formatted
 
     # URL to a large full length screenshot
     attr_accessor :screenshot_large_full_url
@@ -103,6 +109,7 @@ module UltraCartAdminV2
         :'enrolled_customers' => :'enrolled_customers',
         :'esp_domain_user' => :'esp_domain_user',
         :'esp_domain_uuid' => :'esp_domain_uuid',
+        :'esp_flow_folder_uuid' => :'esp_flow_folder_uuid',
         :'esp_friendly_name' => :'esp_friendly_name',
         :'filter_profile_equation_json' => :'filter_profile_equation_json',
         :'library_item_oid' => :'library_item_oid',
@@ -110,6 +117,7 @@ module UltraCartAdminV2
         :'name' => :'name',
         :'open_rate_formatted' => :'open_rate_formatted',
         :'revenue_formatted' => :'revenue_formatted',
+        :'revenue_per_customer_formatted' => :'revenue_per_customer_formatted',
         :'screenshot_large_full_url' => :'screenshot_large_full_url',
         :'status' => :'status',
         :'status_dts' => :'status_dts',
@@ -134,6 +142,7 @@ module UltraCartAdminV2
         :'enrolled_customers' => :'Integer',
         :'esp_domain_user' => :'String',
         :'esp_domain_uuid' => :'String',
+        :'esp_flow_folder_uuid' => :'String',
         :'esp_friendly_name' => :'String',
         :'filter_profile_equation_json' => :'String',
         :'library_item_oid' => :'Integer',
@@ -141,6 +150,7 @@ module UltraCartAdminV2
         :'name' => :'String',
         :'open_rate_formatted' => :'String',
         :'revenue_formatted' => :'String',
+        :'revenue_per_customer_formatted' => :'String',
         :'screenshot_large_full_url' => :'String',
         :'status' => :'String',
         :'status_dts' => :'String',
@@ -203,6 +213,10 @@ module UltraCartAdminV2
         self.esp_domain_uuid = attributes[:'esp_domain_uuid']
       end
 
+      if attributes.has_key?(:'esp_flow_folder_uuid')
+        self.esp_flow_folder_uuid = attributes[:'esp_flow_folder_uuid']
+      end
+
       if attributes.has_key?(:'esp_friendly_name')
         self.esp_friendly_name = attributes[:'esp_friendly_name']
       end
@@ -229,6 +243,10 @@ module UltraCartAdminV2
 
       if attributes.has_key?(:'revenue_formatted')
         self.revenue_formatted = attributes[:'revenue_formatted']
+      end
+
+      if attributes.has_key?(:'revenue_per_customer_formatted')
+        self.revenue_per_customer_formatted = attributes[:'revenue_per_customer_formatted']
       end
 
       if attributes.has_key?(:'screenshot_large_full_url')
@@ -304,6 +322,7 @@ module UltraCartAdminV2
           enrolled_customers == o.enrolled_customers &&
           esp_domain_user == o.esp_domain_user &&
           esp_domain_uuid == o.esp_domain_uuid &&
+          esp_flow_folder_uuid == o.esp_flow_folder_uuid &&
           esp_friendly_name == o.esp_friendly_name &&
           filter_profile_equation_json == o.filter_profile_equation_json &&
           library_item_oid == o.library_item_oid &&
@@ -311,6 +330,7 @@ module UltraCartAdminV2
           name == o.name &&
           open_rate_formatted == o.open_rate_formatted &&
           revenue_formatted == o.revenue_formatted &&
+          revenue_per_customer_formatted == o.revenue_per_customer_formatted &&
           screenshot_large_full_url == o.screenshot_large_full_url &&
           status == o.status &&
           status_dts == o.status_dts &&
@@ -329,7 +349,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allow_multiple_concurrent_enrollments, back_populating, click_rate_formatted, created_dts, deleted, email_communication_sequence_uuid, email_flow_uuid, end_once_customer_purchases, enrolled_customers, esp_domain_user, esp_domain_uuid, esp_friendly_name, filter_profile_equation_json, library_item_oid, merchant_id, name, open_rate_formatted, revenue_formatted, screenshot_large_full_url, status, status_dts, storefront_oid, trigger_parameter, trigger_parameter_name, trigger_type].hash
+      [allow_multiple_concurrent_enrollments, back_populating, click_rate_formatted, created_dts, deleted, email_communication_sequence_uuid, email_flow_uuid, end_once_customer_purchases, enrolled_customers, esp_domain_user, esp_domain_uuid, esp_flow_folder_uuid, esp_friendly_name, filter_profile_equation_json, library_item_oid, merchant_id, name, open_rate_formatted, revenue_formatted, revenue_per_customer_formatted, screenshot_large_full_url, status, status_dts, storefront_oid, trigger_parameter, trigger_parameter_name, trigger_type].hash
     end
 
     # Builds the object from hash

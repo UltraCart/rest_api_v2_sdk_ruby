@@ -16,6 +16,8 @@ module UltraCartAdminV2
   class LibraryItem
     attr_accessor :assets
 
+    attr_accessor :attributes
+
     attr_accessor :categories
 
     attr_accessor :content
@@ -118,6 +120,7 @@ module UltraCartAdminV2
     def self.attribute_map
       {
         :'assets' => :'assets',
+        :'attributes' => :'attributes',
         :'categories' => :'categories',
         :'content' => :'content',
         :'content_type' => :'content_type',
@@ -163,6 +166,7 @@ module UltraCartAdminV2
     def self.swagger_types
       {
         :'assets' => :'Array<LibraryItemAsset>',
+        :'attributes' => :'Array<LibraryItemAttribute>',
         :'categories' => :'Array<String>',
         :'content' => :'String',
         :'content_type' => :'String',
@@ -215,6 +219,12 @@ module UltraCartAdminV2
       if attributes.has_key?(:'assets')
         if (value = attributes[:'assets']).is_a?(Array)
           self.assets = value
+        end
+      end
+
+      if attributes.has_key?(:'attributes')
+        if (value = attributes[:'attributes']).is_a?(Array)
+          self.attributes = value
         end
       end
 
@@ -400,6 +410,7 @@ module UltraCartAdminV2
       return true if self.equal?(o)
       self.class == o.class &&
           assets == o.assets &&
+          attributes == o.attributes &&
           categories == o.categories &&
           content == o.content &&
           content_type == o.content_type &&
@@ -449,7 +460,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [assets, categories, content, content_type, description, industries, library_item_oid, merchant_id, my_purchased_version, original_object_id, price, price_formatted, published, published_dts, published_from_library_item_oid, published_meta, published_version, purchased, purchased_from_library_item_oid, purchased_meta, purchased_version, rejected, rejected_reason, release_notes, release_version, reviewed, reviewed_dts, screenshots, share_with_accounts, share_with_other_emails, shared, source, source_to_library_item_oid, source_version, style, times_purchased, title, type, under_review].hash
+      [assets, attributes, categories, content, content_type, description, industries, library_item_oid, merchant_id, my_purchased_version, original_object_id, price, price_formatted, published, published_dts, published_from_library_item_oid, published_meta, published_version, purchased, purchased_from_library_item_oid, purchased_meta, purchased_version, rejected, rejected_reason, release_notes, release_version, reviewed, reviewed_dts, screenshots, share_with_accounts, share_with_other_emails, shared, source, source_to_library_item_oid, source_version, style, times_purchased, title, type, under_review].hash
     end
 
     # Builds the object from hash

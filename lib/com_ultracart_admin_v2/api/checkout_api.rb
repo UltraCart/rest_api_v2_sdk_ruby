@@ -401,6 +401,61 @@ module UltraCartAdminV2
       end
       return data, status_code, headers
     end
+    # Get cart (by return token)
+    # Get a cart specified by the encrypted return token parameter. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :return_token Return token provided by StoreFront Communications
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [CartResponse]
+    def get_cart_by_return_token(opts = {})
+      data, _status_code, _headers = get_cart_by_return_token_with_http_info(opts)
+      data
+    end
+
+    # Get cart (by return token)
+    # Get a cart specified by the encrypted return token parameter. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :return_token Return token provided by StoreFront Communications
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(CartResponse, Fixnum, Hash)>] CartResponse data, response status code and response headers
+    def get_cart_by_return_token_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CheckoutApi.get_cart_by_return_token ...'
+      end
+      # resource path
+      local_var_path = '/checkout/return_token'
+
+      # query parameters
+      query_params = {}
+      query_params[:'return_token'] = opts[:'return_token'] if !opts[:'return_token'].nil?
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CartResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CheckoutApi#get_cart_by_return_token\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Get state/province list for a country code
     # Lookup a state/province list for a given country code 
     # @param country_code Two letter ISO country code

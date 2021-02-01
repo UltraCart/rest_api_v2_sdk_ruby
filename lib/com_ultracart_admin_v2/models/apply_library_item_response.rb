@@ -14,6 +14,9 @@ require 'date'
 
 module UltraCartAdminV2
   class ApplyLibraryItemResponse
+    # Attributes from the library item
+    attr_accessor :attributes
+
     # Cjson from library item, only populated if this library item was a cjson snippet or marketing email (not transactional)
     attr_accessor :cjson
 
@@ -44,6 +47,7 @@ module UltraCartAdminV2
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'attributes' => :'attributes',
         :'cjson' => :'cjson',
         :'content_type' => :'content_type',
         :'email_template_vm_path' => :'email_template_vm_path',
@@ -60,6 +64,7 @@ module UltraCartAdminV2
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'attributes' => :'Array<LibraryItemAttribute>',
         :'cjson' => :'String',
         :'content_type' => :'String',
         :'email_template_vm_path' => :'String',
@@ -80,6 +85,12 @@ module UltraCartAdminV2
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'attributes')
+        if (value = attributes[:'attributes']).is_a?(Array)
+          self.attributes = value
+        end
+      end
 
       if attributes.has_key?(:'cjson')
         self.cjson = attributes[:'cjson']
@@ -140,6 +151,7 @@ module UltraCartAdminV2
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          attributes == o.attributes &&
           cjson == o.cjson &&
           content_type == o.content_type &&
           email_template_vm_path == o.email_template_vm_path &&
@@ -161,7 +173,7 @@ module UltraCartAdminV2
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [cjson, content_type, email_template_vm_path, error, metadata, storefront_oid, success, title, uuid, warning].hash
+      [attributes, cjson, content_type, email_template_vm_path, error, metadata, storefront_oid, success, title, uuid, warning].hash
     end
 
     # Builds the object from hash

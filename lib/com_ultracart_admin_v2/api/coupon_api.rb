@@ -181,6 +181,61 @@ module UltraCartAdminV2
       end
       return data, status_code, headers
     end
+    # Determines if a coupon merchant code already exists
+    # Determines if a coupon merchant code already exists. 
+    # @param merchant_code The coupon merchant code to examine.
+    # @param [Hash] opts the optional parameters
+    # @return [CouponExistsResponse]
+    def does_coupon_code_exist(merchant_code, opts = {})
+      data, _status_code, _headers = does_coupon_code_exist_with_http_info(merchant_code, opts)
+      data
+    end
+
+    # Determines if a coupon merchant code already exists
+    # Determines if a coupon merchant code already exists. 
+    # @param merchant_code The coupon merchant code to examine.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CouponExistsResponse, Fixnum, Hash)>] CouponExistsResponse data, response status code and response headers
+    def does_coupon_code_exist_with_http_info(merchant_code, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CouponApi.does_coupon_code_exist ...'
+      end
+      # verify the required parameter 'merchant_code' is set
+      if @api_client.config.client_side_validation && merchant_code.nil?
+        fail ArgumentError, "Missing the required parameter 'merchant_code' when calling CouponApi.does_coupon_code_exist"
+      end
+      # resource path
+      local_var_path = '/coupon/coupons/merchant_code/{merchant_code}/exists'.sub('{' + 'merchant_code' + '}', merchant_code.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CouponExistsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CouponApi#does_coupon_code_exist\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Generates one time codes for a coupon
     # Generate one time codes for a coupon 
     # @param coupon_oid The coupon oid to generate codes.
@@ -730,6 +785,67 @@ module UltraCartAdminV2
       end
       return data, status_code, headers
     end
+    # Insert multiple coupons
+    # Insert multiple coupon on the UltraCart account. 
+    # @param coupons_request Coupons to insert (maximum 20)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+    # @return [CouponsResponse]
+    def insert_coupons(coupons_request, opts = {})
+      data, _status_code, _headers = insert_coupons_with_http_info(coupons_request, opts)
+      data
+    end
+
+    # Insert multiple coupons
+    # Insert multiple coupon on the UltraCart account. 
+    # @param coupons_request Coupons to insert (maximum 20)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+    # @return [Array<(CouponsResponse, Fixnum, Hash)>] CouponsResponse data, response status code and response headers
+    def insert_coupons_with_http_info(coupons_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CouponApi.insert_coupons ...'
+      end
+      # verify the required parameter 'coupons_request' is set
+      if @api_client.config.client_side_validation && coupons_request.nil?
+        fail ArgumentError, "Missing the required parameter 'coupons_request' when calling CouponApi.insert_coupons"
+      end
+      # resource path
+      local_var_path = '/coupon/coupons/batch'
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+      query_params[:'_placeholders'] = opts[:'_placeholders'] if !opts[:'_placeholders'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(coupons_request)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CouponsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CouponApi#insert_coupons\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Searches for items to display within a coupon editor and assign to coupons
     # Searches for items to display within a coupon editor and assign to coupons 
     # @param [Hash] opts the optional parameters
@@ -900,6 +1016,70 @@ module UltraCartAdminV2
         :return_type => 'CouponResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CouponApi#update_coupon\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update multiple coupons
+    # Update multiple coupon on the UltraCart account. 
+    # @param coupons_request Coupons to update (synchronous maximum 20 / asynchronous maximum 100)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+    # @option opts [BOOLEAN] :_async True if the operation should be run async.  No result returned
+    # @return [CouponsResponse]
+    def update_coupons(coupons_request, opts = {})
+      data, _status_code, _headers = update_coupons_with_http_info(coupons_request, opts)
+      data
+    end
+
+    # Update multiple coupons
+    # Update multiple coupon on the UltraCart account. 
+    # @param coupons_request Coupons to update (synchronous maximum 20 / asynchronous maximum 100)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+    # @option opts [BOOLEAN] :_async True if the operation should be run async.  No result returned
+    # @return [Array<(CouponsResponse, Fixnum, Hash)>] CouponsResponse data, response status code and response headers
+    def update_coupons_with_http_info(coupons_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CouponApi.update_coupons ...'
+      end
+      # verify the required parameter 'coupons_request' is set
+      if @api_client.config.client_side_validation && coupons_request.nil?
+        fail ArgumentError, "Missing the required parameter 'coupons_request' when calling CouponApi.update_coupons"
+      end
+      # resource path
+      local_var_path = '/coupon/coupons/batch'
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+      query_params[:'_placeholders'] = opts[:'_placeholders'] if !opts[:'_placeholders'].nil?
+      query_params[:'_async'] = opts[:'_async'] if !opts[:'_async'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(coupons_request)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CouponsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CouponApi#update_coupons\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
