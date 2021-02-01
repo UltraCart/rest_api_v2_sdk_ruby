@@ -18,6 +18,8 @@ module UltracartClient
 
     attr_accessor :additional_emails
 
+    attr_accessor :additional_fee
+
     attr_accessor :allow_list_import
 
     attr_accessor :allow_tracking_emails
@@ -51,6 +53,7 @@ module UltracartClient
       {
         :'additional_customers' => :'additional_customers',
         :'additional_emails' => :'additional_emails',
+        :'additional_fee' => :'additional_fee',
         :'allow_list_import' => :'allow_list_import',
         :'allow_tracking_emails' => :'allow_tracking_emails',
         :'customer_tiers' => :'customer_tiers',
@@ -73,6 +76,7 @@ module UltracartClient
       {
         :'additional_customers' => :'Integer',
         :'additional_emails' => :'Integer',
+        :'additional_fee' => :'Float',
         :'allow_list_import' => :'BOOLEAN',
         :'allow_tracking_emails' => :'BOOLEAN',
         :'customer_tiers' => :'Array<EmailPlanAdditional>',
@@ -104,6 +108,10 @@ module UltracartClient
 
       if attributes.has_key?(:'additional_emails')
         self.additional_emails = attributes[:'additional_emails']
+      end
+
+      if attributes.has_key?(:'additional_fee')
+        self.additional_fee = attributes[:'additional_fee']
       end
 
       if attributes.has_key?(:'allow_list_import')
@@ -185,6 +193,7 @@ module UltracartClient
       self.class == o.class &&
           additional_customers == o.additional_customers &&
           additional_emails == o.additional_emails &&
+          additional_fee == o.additional_fee &&
           allow_list_import == o.allow_list_import &&
           allow_tracking_emails == o.allow_tracking_emails &&
           customer_tiers == o.customer_tiers &&
@@ -210,7 +219,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [additional_customers, additional_emails, allow_list_import, allow_tracking_emails, customer_tiers, initial_sending_limits, plan_customers, plan_emails, plan_name, plan_name_formatted, require_order_within_last_days, revenue_percent, spam_percent_limit, total_customers, total_emails, upgrade_to].hash
+      [additional_customers, additional_emails, additional_fee, allow_list_import, allow_tracking_emails, customer_tiers, initial_sending_limits, plan_customers, plan_emails, plan_name, plan_name_formatted, require_order_within_last_days, revenue_percent, spam_percent_limit, total_customers, total_emails, upgrade_to].hash
     end
 
     # Builds the object from hash

@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **additional_customers** | **Integer** |  | [optional] 
 **additional_emails** | **Integer** |  | [optional] 
+**additional_fee** | **Float** |  | [optional] 
 **allow_list_import** | **BOOLEAN** |  | [optional] 
 **allow_tracking_emails** | **BOOLEAN** |  | [optional] 
 **customer_tiers** | [**Array&lt;EmailPlanAdditional&gt;**](EmailPlanAdditional.md) |  | [optional] 

@@ -20,6 +20,10 @@ module UltracartClient
 
     attr_accessor :cost
 
+    attr_accessor :cost_change
+
+    attr_accessor :cost_change_formatted
+
     attr_accessor :cost_formatted
 
     attr_accessor :customers
@@ -32,6 +36,8 @@ module UltracartClient
         :'can_downgrade' => :'can_downgrade',
         :'can_upgrade' => :'can_upgrade',
         :'cost' => :'cost',
+        :'cost_change' => :'cost_change',
+        :'cost_change_formatted' => :'cost_change_formatted',
         :'cost_formatted' => :'cost_formatted',
         :'customers' => :'customers',
         :'emails' => :'emails'
@@ -44,6 +50,8 @@ module UltracartClient
         :'can_downgrade' => :'BOOLEAN',
         :'can_upgrade' => :'BOOLEAN',
         :'cost' => :'Float',
+        :'cost_change' => :'Float',
+        :'cost_change_formatted' => :'String',
         :'cost_formatted' => :'String',
         :'customers' => :'Integer',
         :'emails' => :'Integer'
@@ -68,6 +76,14 @@ module UltracartClient
 
       if attributes.has_key?(:'cost')
         self.cost = attributes[:'cost']
+      end
+
+      if attributes.has_key?(:'cost_change')
+        self.cost_change = attributes[:'cost_change']
+      end
+
+      if attributes.has_key?(:'cost_change_formatted')
+        self.cost_change_formatted = attributes[:'cost_change_formatted']
       end
 
       if attributes.has_key?(:'cost_formatted')
@@ -104,6 +120,8 @@ module UltracartClient
           can_downgrade == o.can_downgrade &&
           can_upgrade == o.can_upgrade &&
           cost == o.cost &&
+          cost_change == o.cost_change &&
+          cost_change_formatted == o.cost_change_formatted &&
           cost_formatted == o.cost_formatted &&
           customers == o.customers &&
           emails == o.emails
@@ -118,7 +136,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [can_downgrade, can_upgrade, cost, cost_formatted, customers, emails].hash
+      [can_downgrade, can_upgrade, cost, cost_change, cost_change_formatted, cost_formatted, customers, emails].hash
     end
 
     # Builds the object from hash
