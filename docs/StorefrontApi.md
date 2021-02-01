@@ -1,4 +1,4 @@
-# UltraCartAdminV2::StorefrontApi
+# ultracart_client::StorefrontApi
 
 All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
@@ -157,9 +157,9 @@ Add to library
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -174,16 +174,16 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
-add_library_request = UltraCartAdminV2::AddLibraryItemRequest.new # AddLibraryItemRequest | New library item request
+add_library_request = ultracart_client::AddLibraryItemRequest.new # AddLibraryItemRequest | New library item request
 
 
 begin
   #Add to library
   result = api_instance.add_to_library(add_library_request)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->add_to_library: #{e}"
 end
 ```
@@ -217,9 +217,9 @@ Apply library item to storefront.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -234,16 +234,16 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
-apply_library_request = UltraCartAdminV2::ApplyLibraryItemRequest.new # ApplyLibraryItemRequest | New library item
+apply_library_request = ultracart_client::ApplyLibraryItemRequest.new # ApplyLibraryItemRequest | New library item
 
 
 begin
   #Apply library item to storefront.
   result = api_instance.apply_to_store_front(apply_library_request)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->apply_to_store_front: #{e}"
 end
 ```
@@ -277,9 +277,9 @@ Archive email list
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -294,7 +294,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -305,7 +305,7 @@ begin
   #Archive email list
   result = api_instance.archive_email_list(storefront_oid, email_list_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->archive_email_list: #{e}"
 end
 ```
@@ -340,9 +340,9 @@ Archive email segment
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -357,7 +357,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -368,7 +368,7 @@ begin
   #Archive email segment
   result = api_instance.archive_email_segment(storefront_oid, email_segment_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->archive_email_segment: #{e}"
 end
 ```
@@ -403,9 +403,9 @@ Back populate email flow
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -420,20 +420,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 email_flow_uuid = 'email_flow_uuid_example' # String | 
 
-back_populate_request = UltraCartAdminV2::EmailFlowBackPopulateRequest.new # EmailFlowBackPopulateRequest | The request to back populate
+back_populate_request = ultracart_client::EmailFlowBackPopulateRequest.new # EmailFlowBackPopulateRequest | The request to back populate
 
 
 begin
   #Back populate email flow
   result = api_instance.back_populate_email_flow(storefront_oid, email_flow_uuid, back_populate_request)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->back_populate_email_flow: #{e}"
 end
 ```
@@ -469,9 +469,9 @@ Check download of email segment
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -486,7 +486,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -499,7 +499,7 @@ begin
   #Check download of email segment
   result = api_instance.check_download_email_segment(storefront_oid, email_segment_uuid, email_segment_rebuild_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->check_download_email_segment: #{e}"
 end
 ```
@@ -535,9 +535,9 @@ Clone email campaign
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -552,7 +552,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -566,7 +566,7 @@ begin
   #Clone email campaign
   result = api_instance.clone_email_campaign(storefront_oid, email_campaign_uuid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->clone_email_campaign: #{e}"
 end
 ```
@@ -602,9 +602,9 @@ Clone email flow
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -619,7 +619,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -633,7 +633,7 @@ begin
   #Clone email flow
   result = api_instance.clone_email_flow(storefront_oid, email_flow_uuid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->clone_email_flow: #{e}"
 end
 ```
@@ -669,9 +669,9 @@ Create email campaign
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -686,7 +686,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 domain = 'domain_example' # String | 
 
@@ -695,7 +695,7 @@ begin
   #Create email campaign
   result = api_instance.create_email_sending_domain(domain)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->create_email_sending_domain: #{e}"
 end
 ```
@@ -729,9 +729,9 @@ Delete email campaignFolder
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -746,7 +746,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -757,7 +757,7 @@ begin
   #Delete email campaignFolder
   result = api_instance.delete_email_campaign_folder(storefront_oid, email_campaign_folder_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->delete_email_campaign_folder: #{e}"
 end
 ```
@@ -792,9 +792,9 @@ Delete communication sequence stats
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -809,7 +809,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -819,7 +819,7 @@ commseq_uuid = 'commseq_uuid_example' # String |
 begin
   #Delete communication sequence stats
   api_instance.delete_email_commseq_stat(storefront_oid, commseq_uuid)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->delete_email_commseq_stat: #{e}"
 end
 ```
@@ -854,9 +854,9 @@ Delete email email
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -871,7 +871,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -882,7 +882,7 @@ begin
   #Delete email email
   result = api_instance.delete_email_email(storefront_oid, commseq_email_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->delete_email_email: #{e}"
 end
 ```
@@ -917,9 +917,9 @@ Delete email flowFolder
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -934,7 +934,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -945,7 +945,7 @@ begin
   #Delete email flowFolder
   result = api_instance.delete_email_flow_folder(storefront_oid, email_flow_folder_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->delete_email_flow_folder: #{e}"
 end
 ```
@@ -980,9 +980,9 @@ Delete email list customer
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -997,7 +997,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -1010,7 +1010,7 @@ begin
   #Delete email list customer
   result = api_instance.delete_email_list_customer(storefront_oid, email_list_uuid, email_customer_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->delete_email_list_customer: #{e}"
 end
 ```
@@ -1046,9 +1046,9 @@ Delete email postcard
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1063,7 +1063,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -1074,7 +1074,7 @@ begin
   #Delete email postcard
   result = api_instance.delete_email_postcard(storefront_oid, commseq_postcard_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->delete_email_postcard: #{e}"
 end
 ```
@@ -1109,9 +1109,9 @@ delete email campaign
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1126,7 +1126,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 domain = 'domain_example' # String | 
 
@@ -1135,7 +1135,7 @@ begin
   #delete email campaign
   result = api_instance.delete_email_sending_domain(domain)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->delete_email_sending_domain: #{e}"
 end
 ```
@@ -1169,9 +1169,9 @@ Delete experiment
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1186,7 +1186,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -1196,7 +1196,7 @@ storefront_experiment_oid = 56 # Integer |
 begin
   #Delete experiment
   api_instance.delete_experiment(storefront_oid, storefront_experiment_oid)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->delete_experiment: #{e}"
 end
 ```
@@ -1231,9 +1231,9 @@ Delete library item
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1248,7 +1248,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 library_item_oid = 56 # Integer | 
 
@@ -1256,7 +1256,7 @@ library_item_oid = 56 # Integer |
 begin
   #Delete library item
   api_instance.delete_library_item(library_item_oid)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->delete_library_item: #{e}"
 end
 ```
@@ -1290,9 +1290,9 @@ Delete all published versions for a library item, including anything in review.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1307,7 +1307,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 library_item_oid = 56 # Integer | 
 
@@ -1315,7 +1315,7 @@ library_item_oid = 56 # Integer |
 begin
   #Delete all published versions for a library item, including anything in review.
   api_instance.delete_library_item_published_versions(library_item_oid)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->delete_library_item_published_versions: #{e}"
 end
 ```
@@ -1349,9 +1349,9 @@ Delete screen recording segment
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1366,7 +1366,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -1377,7 +1377,7 @@ begin
   #Delete screen recording segment
   result = api_instance.delete_screen_recording_segment(storefront_oid, screen_recording_segment_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->delete_screen_recording_segment: #{e}"
 end
 ```
@@ -1412,9 +1412,9 @@ Duplicate library item.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1429,7 +1429,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 library_item_oid = 56 # Integer | 
 
@@ -1438,7 +1438,7 @@ begin
   #Duplicate library item.
   result = api_instance.duplicate_library_item(library_item_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->duplicate_library_item: #{e}"
 end
 ```
@@ -1474,9 +1474,9 @@ Update favorite flag on screen recording
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1486,7 +1486,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -1496,7 +1496,7 @@ screen_recording_uuid = 'screen_recording_uuid_example' # String |
 begin
   #Update favorite flag on screen recording
   api_instance.favorite_screen_recording(storefront_oid, screen_recording_uuid)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->favorite_screen_recording: #{e}"
 end
 ```
@@ -1531,9 +1531,9 @@ Obtain lat/long for an address
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1548,18 +1548,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-geocode_request = UltraCartAdminV2::GeocodeRequest.new # GeocodeRequest | geocode request
+geocode_request = ultracart_client::GeocodeRequest.new # GeocodeRequest | geocode request
 
 
 begin
   #Obtain lat/long for an address
   result = api_instance.geocode_address(storefront_oid, geocode_request)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->geocode_address: #{e}"
 end
 ```
@@ -1596,9 +1596,9 @@ Obtain a list of all the countries
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1613,7 +1613,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -1622,7 +1622,7 @@ begin
   #Get countries
   result = api_instance.get_countries(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_countries: #{e}"
 end
 ```
@@ -1658,9 +1658,9 @@ Fetches a temporary authentication token for the editor
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1675,7 +1675,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -1684,7 +1684,7 @@ begin
   #Gets editor token
   result = api_instance.get_editor_token(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_editor_token: #{e}"
 end
 ```
@@ -1718,9 +1718,9 @@ Get email communication base templates
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1735,7 +1735,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -1744,7 +1744,7 @@ begin
   #Get email communication base templates
   result = api_instance.get_email_base_templates(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_base_templates: #{e}"
 end
 ```
@@ -1778,9 +1778,9 @@ Get email campaign
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1795,7 +1795,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -1806,7 +1806,7 @@ begin
   #Get email campaign
   result = api_instance.get_email_campaign(storefront_oid, email_campaign_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_campaign: #{e}"
 end
 ```
@@ -1841,9 +1841,9 @@ Get email campaign folder
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1858,7 +1858,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -1869,7 +1869,7 @@ begin
   #Get email campaign folder
   result = api_instance.get_email_campaign_folder(storefront_oid, email_campaign_folder_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_campaign_folder: #{e}"
 end
 ```
@@ -1904,9 +1904,9 @@ Get email campaign folders
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1921,7 +1921,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -1930,7 +1930,7 @@ begin
   #Get email campaign folders
   result = api_instance.get_email_campaign_folders(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_campaign_folders: #{e}"
 end
 ```
@@ -1964,9 +1964,9 @@ Get email campaign screenshots
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1981,7 +1981,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -1992,7 +1992,7 @@ begin
   #Get email campaign screenshots
   result = api_instance.get_email_campaign_screenshots(storefront_oid, email_campaign_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_campaign_screenshots: #{e}"
 end
 ```
@@ -2027,9 +2027,9 @@ Get email campaigns
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2044,7 +2044,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -2053,7 +2053,7 @@ begin
   #Get email campaigns
   result = api_instance.get_email_campaigns(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_campaigns: #{e}"
 end
 ```
@@ -2087,9 +2087,9 @@ Get email campaigns with stats
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2104,7 +2104,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -2115,7 +2115,7 @@ begin
   #Get email campaigns with stats
   result = api_instance.get_email_campaigns_with_stats(storefront_oid, stat_days)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_campaigns_with_stats: #{e}"
 end
 ```
@@ -2150,9 +2150,9 @@ Get email commseq
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2167,7 +2167,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -2178,7 +2178,7 @@ begin
   #Get email commseq
   result = api_instance.get_email_commseq(storefront_oid, commseq_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_commseq: #{e}"
 end
 ```
@@ -2213,9 +2213,9 @@ Get email communication sequence emails stats
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2230,20 +2230,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 commseq_uuid = 'commseq_uuid_example' # String | 
 
-stats_request = UltraCartAdminV2::EmailStatSummaryRequest.new # EmailStatSummaryRequest | StatsRequest
+stats_request = ultracart_client::EmailStatSummaryRequest.new # EmailStatSummaryRequest | StatsRequest
 
 
 begin
   #Get email communication sequence emails stats
   result = api_instance.get_email_commseq_email_stats(storefront_oid, commseq_uuid, stats_request)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_commseq_email_stats: #{e}"
 end
 ```
@@ -2279,9 +2279,9 @@ Get email communication sequence postcard stats
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2296,20 +2296,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 commseq_uuid = 'commseq_uuid_example' # String | 
 
-stats_request = UltraCartAdminV2::EmailStatPostcardSummaryRequest.new # EmailStatPostcardSummaryRequest | StatsRequest
+stats_request = ultracart_client::EmailStatPostcardSummaryRequest.new # EmailStatPostcardSummaryRequest | StatsRequest
 
 
 begin
   #Get email communication sequence postcard stats
   result = api_instance.get_email_commseq_postcard_stats(storefront_oid, commseq_uuid, stats_request)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_commseq_postcard_stats: #{e}"
 end
 ```
@@ -2345,9 +2345,9 @@ Get communication sequence stats overall
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2362,7 +2362,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -2373,7 +2373,7 @@ begin
   #Get communication sequence stats overall
   result = api_instance.get_email_commseq_stat_overall(storefront_oid, commseq_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_commseq_stat_overall: #{e}"
 end
 ```
@@ -2408,9 +2408,9 @@ Get email communication sequence step stats
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2425,20 +2425,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 commseq_uuid = 'commseq_uuid_example' # String | 
 
-stats_request = UltraCartAdminV2::EmailStepStatRequest.new # EmailStepStatRequest | StatsRequest
+stats_request = ultracart_client::EmailStepStatRequest.new # EmailStepStatRequest | StatsRequest
 
 
 begin
   #Get email communication sequence step stats
   result = api_instance.get_email_commseq_step_stats(storefront_oid, commseq_uuid, stats_request)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_commseq_step_stats: #{e}"
 end
 ```
@@ -2474,9 +2474,9 @@ Get email communication sequence customers waiting at each requested step
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2491,20 +2491,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 commseq_uuid = 'commseq_uuid_example' # String | 
 
-waiting_request = UltraCartAdminV2::EmailStepWaitingRequest.new # EmailStepWaitingRequest | WaitingRequest
+waiting_request = ultracart_client::EmailStepWaitingRequest.new # EmailStepWaitingRequest | WaitingRequest
 
 
 begin
   #Get email communication sequence customers waiting at each requested step
   result = api_instance.get_email_commseq_step_waiting(storefront_oid, commseq_uuid, waiting_request)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_commseq_step_waiting: #{e}"
 end
 ```
@@ -2540,9 +2540,9 @@ Get email commseqs
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2557,7 +2557,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -2566,7 +2566,7 @@ begin
   #Get email commseqs
   result = api_instance.get_email_commseqs(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_commseqs: #{e}"
 end
 ```
@@ -2600,9 +2600,9 @@ Get customers editor URL
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2617,7 +2617,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -2628,7 +2628,7 @@ begin
   #Get customers editor URL
   result = api_instance.get_email_customer_editor_url(storefront_oid, email_customer_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_customer_editor_url: #{e}"
 end
 ```
@@ -2663,9 +2663,9 @@ Get email customers
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2680,7 +2680,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -2694,7 +2694,7 @@ begin
   #Get email customers
   result = api_instance.get_email_customers(storefront_oid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_customers: #{e}"
 end
 ```
@@ -2731,9 +2731,9 @@ Get email dashboard activity
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2748,7 +2748,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -2760,7 +2760,7 @@ begin
   #Get email dashboard activity
   result = api_instance.get_email_dashboard_activity(storefront_oid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_dashboard_activity: #{e}"
 end
 ```
@@ -2795,9 +2795,9 @@ Get dashboard stats
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2812,7 +2812,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -2824,7 +2824,7 @@ begin
   #Get dashboard stats
   result = api_instance.get_email_dashboard_stats(storefront_oid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_dashboard_stats: #{e}"
 end
 ```
@@ -2859,9 +2859,9 @@ Get email email
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2876,7 +2876,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -2887,7 +2887,7 @@ begin
   #Get email email
   result = api_instance.get_email_email(storefront_oid, commseq_email_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_email: #{e}"
 end
 ```
@@ -2922,9 +2922,9 @@ Get email email clicks
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2939,7 +2939,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -2957,7 +2957,7 @@ begin
   #Get email email clicks
   result = api_instance.get_email_email_clicks(storefront_oid, commseq_uuid, commseq_step_uuid, commseq_email_uuid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_email_clicks: #{e}"
 end
 ```
@@ -2995,9 +2995,9 @@ Get email order customer editor url
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3012,7 +3012,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -3025,7 +3025,7 @@ begin
   #Get email order customer editor url
   result = api_instance.get_email_email_customer_editor_url(storefront_oid, commseq_email_uuid, order_id)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_email_customer_editor_url: #{e}"
 end
 ```
@@ -3061,9 +3061,9 @@ Get email email orders
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3078,7 +3078,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -3096,7 +3096,7 @@ begin
   #Get email email orders
   result = api_instance.get_email_email_orders(storefront_oid, commseq_uuid, commseq_step_uuid, commseq_email_uuid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_email_orders: #{e}"
 end
 ```
@@ -3134,9 +3134,9 @@ Get email emails
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3151,7 +3151,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -3160,7 +3160,7 @@ begin
   #Get email emails
   result = api_instance.get_email_emails(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_emails: #{e}"
 end
 ```
@@ -3194,9 +3194,9 @@ Get email emails multiple
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3211,18 +3211,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-email_commseq_emails_request = UltraCartAdminV2::EmailCommseqEmailsRequest.new # EmailCommseqEmailsRequest | Request of email uuids
+email_commseq_emails_request = ultracart_client::EmailCommseqEmailsRequest.new # EmailCommseqEmailsRequest | Request of email uuids
 
 
 begin
   #Get email emails multiple
   result = api_instance.get_email_emails_multiple(storefront_oid, email_commseq_emails_request)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_emails_multiple: #{e}"
 end
 ```
@@ -3257,9 +3257,9 @@ Get email flow
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3274,7 +3274,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -3285,7 +3285,7 @@ begin
   #Get email flow
   result = api_instance.get_email_flow(storefront_oid, email_flow_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_flow: #{e}"
 end
 ```
@@ -3320,9 +3320,9 @@ Get email flow folder
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3337,7 +3337,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -3348,7 +3348,7 @@ begin
   #Get email flow folder
   result = api_instance.get_email_flow_folder(storefront_oid, email_flow_folder_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_flow_folder: #{e}"
 end
 ```
@@ -3383,9 +3383,9 @@ Get email flow folders
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3400,7 +3400,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -3409,7 +3409,7 @@ begin
   #Get email flow folders
   result = api_instance.get_email_flow_folders(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_flow_folders: #{e}"
 end
 ```
@@ -3443,9 +3443,9 @@ Get email flow screenshots
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3460,7 +3460,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -3471,7 +3471,7 @@ begin
   #Get email flow screenshots
   result = api_instance.get_email_flow_screenshots(storefront_oid, email_flow_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_flow_screenshots: #{e}"
 end
 ```
@@ -3506,9 +3506,9 @@ Get email flows
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3523,7 +3523,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -3532,7 +3532,7 @@ begin
   #Get email flows
   result = api_instance.get_email_flows(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_flows: #{e}"
 end
 ```
@@ -3566,9 +3566,9 @@ Get email globalsettings
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3583,13 +3583,13 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 begin
   #Get email globalsettings
   result = api_instance.get_email_global_settings
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_global_settings: #{e}"
 end
 ```
@@ -3620,9 +3620,9 @@ Get email list
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3637,7 +3637,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -3648,7 +3648,7 @@ begin
   #Get email list
   result = api_instance.get_email_list(storefront_oid, email_list_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_list: #{e}"
 end
 ```
@@ -3683,9 +3683,9 @@ Get email list customer editor url
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3700,7 +3700,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -3713,7 +3713,7 @@ begin
   #Get email list customer editor url
   result = api_instance.get_email_list_customer_editor_url(storefront_oid, email_list_uuid, email_customer_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_list_customer_editor_url: #{e}"
 end
 ```
@@ -3749,9 +3749,9 @@ Get email list customers
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3766,7 +3766,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -3781,7 +3781,7 @@ begin
   #Get email list customers
   result = api_instance.get_email_list_customers(storefront_oid, email_list_uuid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_list_customers: #{e}"
 end
 ```
@@ -3818,9 +3818,9 @@ Get email lists
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3835,7 +3835,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -3844,7 +3844,7 @@ begin
   #Get email lists
   result = api_instance.get_email_lists(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_lists: #{e}"
 end
 ```
@@ -3878,9 +3878,9 @@ Get email performance
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3895,7 +3895,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -3904,7 +3904,7 @@ begin
   #Get email performance
   result = api_instance.get_email_performance(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_performance: #{e}"
 end
 ```
@@ -3938,9 +3938,9 @@ Get email plan
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3955,7 +3955,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -3964,7 +3964,7 @@ begin
   #Get email plan
   result = api_instance.get_email_plan(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_plan: #{e}"
 end
 ```
@@ -3998,9 +3998,9 @@ Get email postcard
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4015,7 +4015,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -4026,7 +4026,7 @@ begin
   #Get email postcard
   result = api_instance.get_email_postcard(storefront_oid, commseq_postcard_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_postcard: #{e}"
 end
 ```
@@ -4061,9 +4061,9 @@ Get email postcards
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4078,7 +4078,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -4087,7 +4087,7 @@ begin
   #Get email postcards
   result = api_instance.get_email_postcards(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_postcards: #{e}"
 end
 ```
@@ -4121,9 +4121,9 @@ Get email postcards multiple
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4138,18 +4138,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-email_commseq_postcards_request = UltraCartAdminV2::EmailCommseqPostcardsRequest.new # EmailCommseqPostcardsRequest | Request of postcard uuids
+email_commseq_postcards_request = ultracart_client::EmailCommseqPostcardsRequest.new # EmailCommseqPostcardsRequest | Request of postcard uuids
 
 
 begin
   #Get email postcards multiple
   result = api_instance.get_email_postcards_multiple(storefront_oid, email_commseq_postcards_request)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_postcards_multiple: #{e}"
 end
 ```
@@ -4184,9 +4184,9 @@ Get email segment
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4201,7 +4201,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -4212,7 +4212,7 @@ begin
   #Get email segment
   result = api_instance.get_email_segment(storefront_oid, email_segment_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_segment: #{e}"
 end
 ```
@@ -4247,9 +4247,9 @@ Get email segment customers editor URL
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4264,7 +4264,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -4277,7 +4277,7 @@ begin
   #Get email segment customers editor URL
   result = api_instance.get_email_segment_customer_editor_url(storefront_oid, email_segment_uuid, email_customer_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_segment_customer_editor_url: #{e}"
 end
 ```
@@ -4313,9 +4313,9 @@ Get email segment customers
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4330,7 +4330,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -4345,7 +4345,7 @@ begin
   #Get email segment customers
   result = api_instance.get_email_segment_customers(storefront_oid, email_segment_uuid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_segment_customers: #{e}"
 end
 ```
@@ -4382,9 +4382,9 @@ Get email segments
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4399,7 +4399,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -4408,7 +4408,7 @@ begin
   #Get email segments
   result = api_instance.get_email_segments(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_segments: #{e}"
 end
 ```
@@ -4442,9 +4442,9 @@ Get email sending domain
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4459,7 +4459,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 domain = 'domain_example' # String | 
 
@@ -4468,7 +4468,7 @@ begin
   #Get email sending domain
   result = api_instance.get_email_sending_domain(domain)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_sending_domain: #{e}"
 end
 ```
@@ -4502,9 +4502,9 @@ Get email sending domain status
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4519,7 +4519,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 domain = 'domain_example' # String | 
 
@@ -4528,7 +4528,7 @@ begin
   #Get email sending domain status
   result = api_instance.get_email_sending_domain_status(domain)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_sending_domain_status: #{e}"
 end
 ```
@@ -4562,9 +4562,9 @@ Get email sending domains
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4579,13 +4579,13 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 begin
   #Get email sending domains
   result = api_instance.get_email_sending_domains
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_sending_domains: #{e}"
 end
 ```
@@ -4616,9 +4616,9 @@ Get email settings
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4633,7 +4633,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -4642,7 +4642,7 @@ begin
   #Get email settings
   result = api_instance.get_email_settings(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_settings: #{e}"
 end
 ```
@@ -4676,9 +4676,9 @@ Get email template
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4693,7 +4693,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -4704,7 +4704,7 @@ begin
   #Get email template
   result = api_instance.get_email_template(storefront_oid, email_template_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_template: #{e}"
 end
 ```
@@ -4739,9 +4739,9 @@ Get email templates
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4756,7 +4756,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -4768,7 +4768,7 @@ begin
   #Get email templates
   result = api_instance.get_email_templates(storefront_oid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_templates: #{e}"
 end
 ```
@@ -4803,9 +4803,9 @@ Get a list of third party email providers
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4820,7 +4820,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -4829,7 +4829,7 @@ begin
   #Get a list of third party email providers
   result = api_instance.get_email_third_party_providers(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_email_third_party_providers: #{e}"
 end
 ```
@@ -4863,9 +4863,9 @@ Get experiments
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4880,7 +4880,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -4889,7 +4889,7 @@ begin
   #Get experiments
   result = api_instance.get_experiments(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_experiments: #{e}"
 end
 ```
@@ -4925,9 +4925,9 @@ Obtain a list of property names for a given property type
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4942,7 +4942,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -4954,7 +4954,7 @@ begin
   #Get histogram property names
   result = api_instance.get_histogram_property_names(storefront_oid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_histogram_property_names: #{e}"
 end
 ```
@@ -4991,9 +4991,9 @@ Obtain a list of property values for a given property name and type
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5008,7 +5008,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -5022,7 +5022,7 @@ begin
   #Get histogram property values
   result = api_instance.get_histogram_property_values(storefront_oid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_histogram_property_values: #{e}"
 end
 ```
@@ -5059,9 +5059,9 @@ Get library values used to populate drop down boxes for filtering.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5076,13 +5076,13 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 begin
   #Get library values used to populate drop down boxes for filtering.
   result = api_instance.get_library_filter_values
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_library_filter_values: #{e}"
 end
 ```
@@ -5113,9 +5113,9 @@ Get library item.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5130,7 +5130,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 library_item_oid = 56 # Integer | 
 
@@ -5139,7 +5139,7 @@ begin
   #Get library item.
   result = api_instance.get_library_item(library_item_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_library_item: #{e}"
 end
 ```
@@ -5173,9 +5173,9 @@ Get all published versions for a library item.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5190,7 +5190,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 library_item_oid = 56 # Integer | 
 
@@ -5199,7 +5199,7 @@ begin
   #Get all published versions for a library item.
   result = api_instance.get_library_item_published_versions(library_item_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_library_item_published_versions: #{e}"
 end
 ```
@@ -5235,9 +5235,9 @@ Retrieves the pricing tiers
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -5247,7 +5247,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -5257,7 +5257,7 @@ begin
   #Retrieve pricing tiers
   result = api_instance.get_pricing_tiers(opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_pricing_tiers: #{e}"
 end
 ```
@@ -5293,9 +5293,9 @@ Get screen recording
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -5305,7 +5305,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -5316,7 +5316,7 @@ begin
   #Get screen recording
   result = api_instance.get_screen_recording(storefront_oid, screen_recording_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_screen_recording: #{e}"
 end
 ```
@@ -5353,9 +5353,9 @@ Get screen recording page view data
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -5365,7 +5365,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -5378,7 +5378,7 @@ begin
   #Get screen recording page view data
   result = api_instance.get_screen_recording_page_view_data(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_screen_recording_page_view_data: #{e}"
 end
 ```
@@ -5414,9 +5414,9 @@ Get screen recording segment
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5431,7 +5431,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -5442,7 +5442,7 @@ begin
   #Get screen recording segment
   result = api_instance.get_screen_recording_segment(storefront_oid, screen_recording_segment_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_screen_recording_segment: #{e}"
 end
 ```
@@ -5477,9 +5477,9 @@ Get screen recording segments
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5494,7 +5494,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -5503,7 +5503,7 @@ begin
   #Get screen recording segments
   result = api_instance.get_screen_recording_segments(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_screen_recording_segments: #{e}"
 end
 ```
@@ -5537,9 +5537,9 @@ Get screen recording settings
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5554,7 +5554,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -5563,7 +5563,7 @@ begin
   #Get screen recording settings
   result = api_instance.get_screen_recording_settings(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_screen_recording_settings: #{e}"
 end
 ```
@@ -5599,9 +5599,9 @@ Get tags used by screen recording
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -5611,7 +5611,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -5620,7 +5620,7 @@ begin
   #Get tags used by screen recording
   result = api_instance.get_screen_recording_tags(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_screen_recording_tags: #{e}"
 end
 ```
@@ -5656,9 +5656,9 @@ Query screen recordings
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -5668,11 +5668,11 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-query = UltraCartAdminV2::ScreenRecordingQueryRequest.new # ScreenRecordingQueryRequest | Query
+query = ultracart_client::ScreenRecordingQueryRequest.new # ScreenRecordingQueryRequest | Query
 
 opts = { 
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Default 100, Max 500)
@@ -5684,7 +5684,7 @@ begin
   #Query screen recordings
   result = api_instance.get_screen_recordings_by_query(storefront_oid, query, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_screen_recordings_by_query: #{e}"
 end
 ```
@@ -5724,9 +5724,9 @@ Get screen recordings by segment
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -5736,7 +5736,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -5752,7 +5752,7 @@ begin
   #Get screen recordings by segment
   result = api_instance.get_screen_recordings_by_segment(storefront_oid, screen_recording_segment_oid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_screen_recordings_by_segment: #{e}"
 end
 ```
@@ -5790,9 +5790,9 @@ Get thumbnail parameters
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5807,16 +5807,16 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
-thumbnail_parameters = UltraCartAdminV2::ThumbnailParametersRequest.new # ThumbnailParametersRequest | Thumbnail Parameters
+thumbnail_parameters = ultracart_client::ThumbnailParametersRequest.new # ThumbnailParametersRequest | Thumbnail Parameters
 
 
 begin
   #Get thumbnail parameters
   result = api_instance.get_thumbnail_parameters(thumbnail_parameters)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_thumbnail_parameters: #{e}"
 end
 ```
@@ -5852,9 +5852,9 @@ Fetch a transactional email
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5869,7 +5869,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -5880,7 +5880,7 @@ begin
   #Gets a transaction email object
   result = api_instance.get_transaction_email(storefront_oid, email_id)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_transaction_email: #{e}"
 end
 ```
@@ -5917,9 +5917,9 @@ Obtain a list of all transactional emails and return back just their names
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5934,7 +5934,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -5943,7 +5943,7 @@ begin
   #Gets a list of transaction email names
   result = api_instance.get_transaction_email_list(storefront_oid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_transaction_email_list: #{e}"
 end
 ```
@@ -5977,9 +5977,9 @@ Get transactional email screenshots
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5994,7 +5994,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -6005,7 +6005,7 @@ begin
   #Get transactional email screenshots
   result = api_instance.get_transaction_email_screenshots(storefront_oid, email_id)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->get_transaction_email_screenshots: #{e}"
 end
 ```
@@ -6040,9 +6040,9 @@ Globally unsubscribe a customer
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6057,18 +6057,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-unsubscribe = UltraCartAdminV2::EmailGlobalUnsubscribeRequest.new # EmailGlobalUnsubscribeRequest | Unsubscribe
+unsubscribe = ultracart_client::EmailGlobalUnsubscribeRequest.new # EmailGlobalUnsubscribeRequest | Unsubscribe
 
 
 begin
   #Globally unsubscribe a customer
   result = api_instance.global_unsubscribe(storefront_oid, unsubscribe)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->global_unsubscribe: #{e}"
 end
 ```
@@ -6103,9 +6103,9 @@ Import a third party provider list
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6120,17 +6120,17 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-import_request = UltraCartAdminV2::EmailThirdPartyListImportRequest.new # EmailThirdPartyListImportRequest | lists to import
+import_request = ultracart_client::EmailThirdPartyListImportRequest.new # EmailThirdPartyListImportRequest | lists to import
 
 
 begin
   #Import a third party provider list
   api_instance.import_email_third_party_provider_list(storefront_oid, import_request)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->import_email_third_party_provider_list: #{e}"
 end
 ```
@@ -6165,9 +6165,9 @@ Insert email campaign
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6182,18 +6182,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-email_campaign = UltraCartAdminV2::EmailCampaign.new # EmailCampaign | Email campaign
+email_campaign = ultracart_client::EmailCampaign.new # EmailCampaign | Email campaign
 
 
 begin
   #Insert email campaign
   result = api_instance.insert_email_campaign(storefront_oid, email_campaign)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->insert_email_campaign: #{e}"
 end
 ```
@@ -6228,9 +6228,9 @@ Insert email campaign folder
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6245,18 +6245,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-email_campaign_folder = UltraCartAdminV2::EmailCampaignFolder.new # EmailCampaignFolder | Email campaign folder
+email_campaign_folder = ultracart_client::EmailCampaignFolder.new # EmailCampaignFolder | Email campaign folder
 
 
 begin
   #Insert email campaign folder
   result = api_instance.insert_email_campaign_folder(storefront_oid, email_campaign_folder)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->insert_email_campaign_folder: #{e}"
 end
 ```
@@ -6291,9 +6291,9 @@ Insert email commseq
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6308,18 +6308,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-email_commseq = UltraCartAdminV2::EmailCommseq.new # EmailCommseq | Email commseq
+email_commseq = ultracart_client::EmailCommseq.new # EmailCommseq | Email commseq
 
 
 begin
   #Insert email commseq
   result = api_instance.insert_email_commseq(storefront_oid, email_commseq)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->insert_email_commseq: #{e}"
 end
 ```
@@ -6354,9 +6354,9 @@ Insert email email
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6371,18 +6371,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-email_commseq_email = UltraCartAdminV2::EmailCommseqEmail.new # EmailCommseqEmail | Email email
+email_commseq_email = ultracart_client::EmailCommseqEmail.new # EmailCommseqEmail | Email email
 
 
 begin
   #Insert email email
   result = api_instance.insert_email_email(storefront_oid, email_commseq_email)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->insert_email_email: #{e}"
 end
 ```
@@ -6417,9 +6417,9 @@ Insert email flow
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6434,18 +6434,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-email_flow = UltraCartAdminV2::EmailFlow.new # EmailFlow | Email flow
+email_flow = ultracart_client::EmailFlow.new # EmailFlow | Email flow
 
 
 begin
   #Insert email flow
   result = api_instance.insert_email_flow(storefront_oid, email_flow)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->insert_email_flow: #{e}"
 end
 ```
@@ -6480,9 +6480,9 @@ Insert email flow folder
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6497,18 +6497,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-email_flow_folder = UltraCartAdminV2::EmailFlowFolder.new # EmailFlowFolder | Email flow folder
+email_flow_folder = ultracart_client::EmailFlowFolder.new # EmailFlowFolder | Email flow folder
 
 
 begin
   #Insert email flow folder
   result = api_instance.insert_email_flow_folder(storefront_oid, email_flow_folder)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->insert_email_flow_folder: #{e}"
 end
 ```
@@ -6543,9 +6543,9 @@ Insert email list
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6560,18 +6560,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-email_list = UltraCartAdminV2::EmailList.new # EmailList | Email list
+email_list = ultracart_client::EmailList.new # EmailList | Email list
 
 
 begin
   #Insert email list
   result = api_instance.insert_email_list(storefront_oid, email_list)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->insert_email_list: #{e}"
 end
 ```
@@ -6606,9 +6606,9 @@ Insert email postcard
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6623,18 +6623,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-email_commseq_postcard = UltraCartAdminV2::EmailCommseqPostcard.new # EmailCommseqPostcard | Email postcard
+email_commseq_postcard = ultracart_client::EmailCommseqPostcard.new # EmailCommseqPostcard | Email postcard
 
 
 begin
   #Insert email postcard
   result = api_instance.insert_email_postcard(storefront_oid, email_commseq_postcard)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->insert_email_postcard: #{e}"
 end
 ```
@@ -6669,9 +6669,9 @@ Insert email segment
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6686,18 +6686,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-email_segment = UltraCartAdminV2::EmailSegment.new # EmailSegment | Email segment
+email_segment = ultracart_client::EmailSegment.new # EmailSegment | Email segment
 
 
 begin
   #Insert email segment
   result = api_instance.insert_email_segment(storefront_oid, email_segment)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->insert_email_segment: #{e}"
 end
 ```
@@ -6732,9 +6732,9 @@ Insert screen recording segment
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6749,18 +6749,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-segment = UltraCartAdminV2::ScreenRecordingSegment.new # ScreenRecordingSegment | Segment
+segment = ultracart_client::ScreenRecordingSegment.new # ScreenRecordingSegment | Segment
 
 
 begin
   #Insert screen recording segment
   result = api_instance.insert_screen_recording_segment(storefront_oid, segment)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->insert_screen_recording_segment: #{e}"
 end
 ```
@@ -6795,9 +6795,9 @@ Prepare download of email segment
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6812,7 +6812,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -6823,7 +6823,7 @@ begin
   #Prepare download of email segment
   result = api_instance.prepare_download_email_segment(storefront_oid, email_segment_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->prepare_download_email_segment: #{e}"
 end
 ```
@@ -6858,9 +6858,9 @@ Publish library item.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6875,18 +6875,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 library_item_oid = 56 # Integer | 
 
-publish_library_request = UltraCartAdminV2::PublishLibraryItemRequest.new # PublishLibraryItemRequest | Publish library item request
+publish_library_request = ultracart_client::PublishLibraryItemRequest.new # PublishLibraryItemRequest | Publish library item request
 
 
 begin
   #Publish library item.
   result = api_instance.publish_library_item(library_item_oid, publish_library_request)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->publish_library_item: #{e}"
 end
 ```
@@ -6921,9 +6921,9 @@ Purchase public library item, which creates a copy of the item in your personal 
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6938,7 +6938,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 library_item_oid = 56 # Integer | 
 
@@ -6950,7 +6950,7 @@ begin
   #Purchase public library item, which creates a copy of the item in your personal code library
   result = api_instance.purchase_library_item(library_item_oid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->purchase_library_item: #{e}"
 end
 ```
@@ -6985,9 +6985,9 @@ Release email communication sequence customers waiting at the specified step
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7002,7 +7002,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -7014,7 +7014,7 @@ commseq_step_uuid = 'commseq_step_uuid_example' # String |
 begin
   #Release email communication sequence customers waiting at the specified step
   api_instance.release_email_commseq_step_waiting(storefront_oid, commseq_uuid, commseq_step_uuid)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->release_email_commseq_step_waiting: #{e}"
 end
 ```
@@ -7050,9 +7050,9 @@ Request a review of an email
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7067,20 +7067,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 commseq_email_uuid = 'commseq_email_uuid_example' # String | 
 
-email_commseq_email_review_request = UltraCartAdminV2::EmailCommseqEmailSendTestRequest.new # EmailCommseqEmailSendTestRequest | Email commseq email review request
+email_commseq_email_review_request = ultracart_client::EmailCommseqEmailSendTestRequest.new # EmailCommseqEmailSendTestRequest | Email commseq email review request
 
 
 begin
   #Request a review of an email
   result = api_instance.review(storefront_oid, commseq_email_uuid, email_commseq_email_review_request)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->review: #{e}"
 end
 ```
@@ -7116,9 +7116,9 @@ Searches for all matching values
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7133,7 +7133,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 opts = { 
   category: 'category_example', # String | 
@@ -7147,7 +7147,7 @@ begin
   #Searches for all matching values
   result = api_instance.search(opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->search: #{e}"
 end
 ```
@@ -7185,9 +7185,9 @@ Searches for all matching values (using POST)
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7202,16 +7202,16 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
-lookup_request = UltraCartAdminV2::LookupRequest.new # LookupRequest | LookupRequest
+lookup_request = ultracart_client::LookupRequest.new # LookupRequest | LookupRequest
 
 
 begin
   #Searches for all matching values (using POST)
   result = api_instance.search2(lookup_request)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->search2: #{e}"
 end
 ```
@@ -7245,9 +7245,9 @@ Search email list customers
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7262,7 +7262,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -7276,7 +7276,7 @@ begin
   #Search email list customers
   result = api_instance.search_email_list_customers(storefront_oid, email_list_uuid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->search_email_list_customers: #{e}"
 end
 ```
@@ -7312,9 +7312,9 @@ Search email segment customers
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7329,7 +7329,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -7343,7 +7343,7 @@ begin
   #Search email segment customers
   result = api_instance.search_email_segment_customers(storefront_oid, email_segment_uuid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->search_email_segment_customers: #{e}"
 end
 ```
@@ -7381,9 +7381,9 @@ Retrieves a library items based on a query object.  If no parameters are specifi
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -7393,9 +7393,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
-item_query = UltraCartAdminV2::LibraryItemQuery.new # LibraryItemQuery | Item query
+item_query = ultracart_client::LibraryItemQuery.new # LibraryItemQuery | Item query
 
 opts = { 
   _limit: 10000, # Integer | The maximum number of records to return on this one API call. (Maximum 10000)
@@ -7407,7 +7407,7 @@ begin
   #Retrieve library items
   result = api_instance.search_library_items(item_query, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->search_library_items: #{e}"
 end
 ```
@@ -7446,9 +7446,9 @@ Retrieves a library items based on a query object.  If no parameters are specifi
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -7458,9 +7458,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
-item_query = UltraCartAdminV2::LibraryItemQuery.new # LibraryItemQuery | Item query
+item_query = ultracart_client::LibraryItemQuery.new # LibraryItemQuery | Item query
 
 opts = { 
   _limit: 10000, # Integer | The maximum number of records to return on this one API call. (Maximum 10000)
@@ -7472,7 +7472,7 @@ begin
   #Retrieve library items
   result = api_instance.search_published_items(item_query, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->search_published_items: #{e}"
 end
 ```
@@ -7511,9 +7511,9 @@ Retrieves a library items based on a query object.  If no parameters are specifi
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -7523,9 +7523,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
-item_query = UltraCartAdminV2::LibraryItemQuery.new # LibraryItemQuery | Item query
+item_query = ultracart_client::LibraryItemQuery.new # LibraryItemQuery | Item query
 
 opts = { 
   _limit: 10000, # Integer | The maximum number of records to return on this one API call. (Maximum 10000)
@@ -7537,7 +7537,7 @@ begin
   #Retrieve library items needing review or rejected
   result = api_instance.search_review_items(item_query, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->search_review_items: #{e}"
 end
 ```
@@ -7576,9 +7576,9 @@ Retrieves a library items based on a query object.  If no parameters are specifi
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -7588,9 +7588,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
-item_query = UltraCartAdminV2::LibraryItemQuery.new # LibraryItemQuery | Item query
+item_query = ultracart_client::LibraryItemQuery.new # LibraryItemQuery | Item query
 
 opts = { 
   _limit: 10000, # Integer | The maximum number of records to return on this one API call. (Maximum 10000)
@@ -7602,7 +7602,7 @@ begin
   #Retrieve library items
   result = api_instance.search_shared_items(item_query, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->search_shared_items: #{e}"
 end
 ```
@@ -7639,9 +7639,9 @@ Send email test
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7656,20 +7656,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 commseq_email_uuid = 'commseq_email_uuid_example' # String | 
 
-email_commseq_email_test_request = UltraCartAdminV2::EmailCommseqEmailSendTestRequest.new # EmailCommseqEmailSendTestRequest | Email commseq email test request
+email_commseq_email_test_request = ultracart_client::EmailCommseqEmailSendTestRequest.new # EmailCommseqEmailSendTestRequest | Email commseq email test request
 
 
 begin
   #Send email test
   result = api_instance.send_email_test(storefront_oid, commseq_email_uuid, email_commseq_email_test_request)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->send_email_test: #{e}"
 end
 ```
@@ -7705,9 +7705,9 @@ Send postcard test
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7722,20 +7722,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 commseq_postcard_uuid = 'commseq_postcard_uuid_example' # String | 
 
-email_commseq_postcard_test_request = UltraCartAdminV2::EmailCommseqPostcardSendTestRequest.new # EmailCommseqPostcardSendTestRequest | Email commseq email test request
+email_commseq_postcard_test_request = ultracart_client::EmailCommseqPostcardSendTestRequest.new # EmailCommseqPostcardSendTestRequest | Email commseq email test request
 
 
 begin
   #Send postcard test
   result = api_instance.send_postcard_test(storefront_oid, commseq_postcard_uuid, email_commseq_postcard_test_request)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->send_postcard_test: #{e}"
 end
 ```
@@ -7771,9 +7771,9 @@ Start email campaign
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7788,7 +7788,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -7799,7 +7799,7 @@ begin
   #Start email campaign
   result = api_instance.start_email_campaign(storefront_oid, email_campaign_uuid)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->start_email_campaign: #{e}"
 end
 ```
@@ -7834,9 +7834,9 @@ Subscribe customers to email list
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7851,20 +7851,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 email_list_uuid = 'email_list_uuid_example' # String | 
 
-customers = [UltraCartAdminV2::EmailCustomer.new] # Array<EmailCustomer> | Customers
+customers = [ultracart_client::EmailCustomer.new] # Array<EmailCustomer> | Customers
 
 
 begin
   #Subscribe customers to email list
   result = api_instance.subscribe_to_email_list(storefront_oid, email_list_uuid, customers)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->subscribe_to_email_list: #{e}"
 end
 ```
@@ -7902,9 +7902,9 @@ Remove favorite flag on screen recording
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -7914,7 +7914,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
@@ -7924,7 +7924,7 @@ screen_recording_uuid = 'screen_recording_uuid_example' # String |
 begin
   #Remove favorite flag on screen recording
   api_instance.unfavorite_screen_recording(storefront_oid, screen_recording_uuid)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->unfavorite_screen_recording: #{e}"
 end
 ```
@@ -7959,9 +7959,9 @@ Update email campaign
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7976,20 +7976,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 email_campaign_uuid = 'email_campaign_uuid_example' # String | 
 
-email_campaign = UltraCartAdminV2::EmailCampaign.new # EmailCampaign | Email campaign
+email_campaign = ultracart_client::EmailCampaign.new # EmailCampaign | Email campaign
 
 
 begin
   #Update email campaign
   result = api_instance.update_email_campaign(storefront_oid, email_campaign_uuid, email_campaign)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_email_campaign: #{e}"
 end
 ```
@@ -8025,9 +8025,9 @@ Update email campaign folder
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8042,20 +8042,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 email_campaign_folder_uuid = 'email_campaign_folder_uuid_example' # String | 
 
-email_campaign_folder = UltraCartAdminV2::EmailCampaignFolder.new # EmailCampaignFolder | Email campaign folder
+email_campaign_folder = ultracart_client::EmailCampaignFolder.new # EmailCampaignFolder | Email campaign folder
 
 
 begin
   #Update email campaign folder
   result = api_instance.update_email_campaign_folder(storefront_oid, email_campaign_folder_uuid, email_campaign_folder)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_email_campaign_folder: #{e}"
 end
 ```
@@ -8091,9 +8091,9 @@ Update email commseq
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8108,20 +8108,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 commseq_uuid = 'commseq_uuid_example' # String | 
 
-email_commseq = UltraCartAdminV2::EmailCommseq.new # EmailCommseq | Email commseq
+email_commseq = ultracart_client::EmailCommseq.new # EmailCommseq | Email commseq
 
 
 begin
   #Update email commseq
   result = api_instance.update_email_commseq(storefront_oid, commseq_uuid, email_commseq)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_email_commseq: #{e}"
 end
 ```
@@ -8157,9 +8157,9 @@ Update email customer
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8174,19 +8174,19 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 email_customer_uuid = 'email_customer_uuid_example' # String | 
 
-email_customer = UltraCartAdminV2::EmailCustomer.new # EmailCustomer | Email customer
+email_customer = ultracart_client::EmailCustomer.new # EmailCustomer | Email customer
 
 
 begin
   #Update email customer
   api_instance.update_email_customer(storefront_oid, email_customer_uuid, email_customer)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_email_customer: #{e}"
 end
 ```
@@ -8222,9 +8222,9 @@ Update email email
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8239,20 +8239,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 commseq_email_uuid = 'commseq_email_uuid_example' # String | 
 
-email_commseq_email = UltraCartAdminV2::EmailCommseqEmail.new # EmailCommseqEmail | Email commseq email
+email_commseq_email = ultracart_client::EmailCommseqEmail.new # EmailCommseqEmail | Email commseq email
 
 
 begin
   #Update email email
   result = api_instance.update_email_email(storefront_oid, commseq_email_uuid, email_commseq_email)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_email_email: #{e}"
 end
 ```
@@ -8288,9 +8288,9 @@ Update email flow
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8305,20 +8305,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 email_flow_uuid = 'email_flow_uuid_example' # String | 
 
-email_flow = UltraCartAdminV2::EmailFlow.new # EmailFlow | Email flow
+email_flow = ultracart_client::EmailFlow.new # EmailFlow | Email flow
 
 
 begin
   #Update email flow
   result = api_instance.update_email_flow(storefront_oid, email_flow_uuid, email_flow)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_email_flow: #{e}"
 end
 ```
@@ -8354,9 +8354,9 @@ Update email flow folder
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8371,20 +8371,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 email_flow_folder_uuid = 'email_flow_folder_uuid_example' # String | 
 
-email_flow_folder = UltraCartAdminV2::EmailFlowFolder.new # EmailFlowFolder | Email flow folder
+email_flow_folder = ultracart_client::EmailFlowFolder.new # EmailFlowFolder | Email flow folder
 
 
 begin
   #Update email flow folder
   result = api_instance.update_email_flow_folder(storefront_oid, email_flow_folder_uuid, email_flow_folder)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_email_flow_folder: #{e}"
 end
 ```
@@ -8420,9 +8420,9 @@ Update email global settings
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8437,16 +8437,16 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
-global_settings = UltraCartAdminV2::EmailGlobalSettings.new # EmailGlobalSettings | global settings request
+global_settings = ultracart_client::EmailGlobalSettings.new # EmailGlobalSettings | global settings request
 
 
 begin
   #Update email global settings
   result = api_instance.update_email_global_settings(global_settings)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_email_global_settings: #{e}"
 end
 ```
@@ -8480,9 +8480,9 @@ Update email list
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8497,20 +8497,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 email_list_uuid = 'email_list_uuid_example' # String | 
 
-email_list = UltraCartAdminV2::EmailList.new # EmailList | Email list
+email_list = ultracart_client::EmailList.new # EmailList | Email list
 
 
 begin
   #Update email list
   result = api_instance.update_email_list(storefront_oid, email_list_uuid, email_list)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_email_list: #{e}"
 end
 ```
@@ -8546,9 +8546,9 @@ Update email plan
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8563,18 +8563,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-settings = UltraCartAdminV2::EmailPlan.new # EmailPlan | plan request
+settings = ultracart_client::EmailPlan.new # EmailPlan | plan request
 
 
 begin
   #Update email plan
   result = api_instance.update_email_plan(storefront_oid, settings)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_email_plan: #{e}"
 end
 ```
@@ -8609,9 +8609,9 @@ Update email postcard
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8626,20 +8626,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 commseq_postcard_uuid = 'commseq_postcard_uuid_example' # String | 
 
-email_commseq_postcard = UltraCartAdminV2::EmailCommseqPostcard.new # EmailCommseqPostcard | Email commseq postcard
+email_commseq_postcard = ultracart_client::EmailCommseqPostcard.new # EmailCommseqPostcard | Email commseq postcard
 
 
 begin
   #Update email postcard
   result = api_instance.update_email_postcard(storefront_oid, commseq_postcard_uuid, email_commseq_postcard)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_email_postcard: #{e}"
 end
 ```
@@ -8675,9 +8675,9 @@ Update email segment
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8692,20 +8692,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 email_segment_uuid = 'email_segment_uuid_example' # String | 
 
-email_segment = UltraCartAdminV2::EmailSegment.new # EmailSegment | Email segment
+email_segment = ultracart_client::EmailSegment.new # EmailSegment | Email segment
 
 
 begin
   #Update email segment
   result = api_instance.update_email_segment(storefront_oid, email_segment_uuid, email_segment)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_email_segment: #{e}"
 end
 ```
@@ -8741,9 +8741,9 @@ Update email settings
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8758,18 +8758,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-settings = UltraCartAdminV2::EmailSettings.new # EmailSettings | settings request
+settings = ultracart_client::EmailSettings.new # EmailSettings | settings request
 
 
 begin
   #Update email settings
   result = api_instance.update_email_settings(storefront_oid, settings)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_email_settings: #{e}"
 end
 ```
@@ -8804,9 +8804,9 @@ Update experiment
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8821,20 +8821,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 storefront_experiment_oid = 56 # Integer | 
 
-experiment = UltraCartAdminV2::Experiment.new # Experiment | Experiment
+experiment = ultracart_client::Experiment.new # Experiment | Experiment
 
 
 begin
   #Update experiment
   result = api_instance.update_experiment(storefront_oid, storefront_experiment_oid, experiment)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_experiment: #{e}"
 end
 ```
@@ -8870,9 +8870,9 @@ Update library item. Note that only certain fields may be updated via this metho
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8887,18 +8887,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 library_item_oid = 56 # Integer | 
 
-library_item = UltraCartAdminV2::LibraryItem.new # LibraryItem | Library item
+library_item = ultracart_client::LibraryItem.new # LibraryItem | Library item
 
 
 begin
   #Update library item. Note that only certain fields may be updated via this method.
   result = api_instance.update_library_item(library_item_oid, library_item)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_library_item: #{e}"
 end
 ```
@@ -8933,9 +8933,9 @@ Update screen recording segment
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8950,20 +8950,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 screen_recording_segment_oid = 56 # Integer | 
 
-segment = UltraCartAdminV2::ScreenRecordingSegment.new # ScreenRecordingSegment | Segment
+segment = ultracart_client::ScreenRecordingSegment.new # ScreenRecordingSegment | Segment
 
 
 begin
   #Update screen recording segment
   result = api_instance.update_screen_recording_segment(storefront_oid, screen_recording_segment_oid, segment)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_screen_recording_segment: #{e}"
 end
 ```
@@ -8999,9 +8999,9 @@ Update screen recording settings
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -9016,18 +9016,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
-settings = UltraCartAdminV2::ScreenRecordingSettings.new # ScreenRecordingSettings | Settings
+settings = ultracart_client::ScreenRecordingSettings.new # ScreenRecordingSettings | Settings
 
 
 begin
   #Update screen recording settings
   result = api_instance.update_screen_recording_settings(storefront_oid, settings)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_screen_recording_settings: #{e}"
 end
 ```
@@ -9064,9 +9064,9 @@ Update tags on a screen recording
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -9076,19 +9076,19 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 screen_recording_uuid = 'screen_recording_uuid_example' # String | 
 
-tags = UltraCartAdminV2::ScreenRecordingTagsRequest.new # ScreenRecordingTagsRequest | Tags
+tags = ultracart_client::ScreenRecordingTagsRequest.new # ScreenRecordingTagsRequest | Tags
 
 
 begin
   #Update tags on a screen recording
   api_instance.update_screen_recording_tags(storefront_oid, screen_recording_uuid, tags)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_screen_recording_tags: #{e}"
 end
 ```
@@ -9126,9 +9126,9 @@ Updates a transactional email
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -9143,20 +9143,20 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::StorefrontApi.new
+api_instance = ultracart_client::StorefrontApi.new
 
 storefront_oid = 56 # Integer | 
 
 email_id = 'email_id_example' # String | 
 
-transaction_email = UltraCartAdminV2::TransactionEmail.new # TransactionEmail | TransactionEmail
+transaction_email = ultracart_client::TransactionEmail.new # TransactionEmail | TransactionEmail
 
 
 begin
   #Updates a transaction email object
   result = api_instance.update_transaction_email(storefront_oid, email_id, transaction_email)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling StorefrontApi->update_transaction_email: #{e}"
 end
 ```

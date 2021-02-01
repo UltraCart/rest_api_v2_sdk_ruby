@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CouponDeletesRequest
+# ultracart_client::CouponDeletesRequest
 
 ## Properties
 Name | Type | Description | Notes

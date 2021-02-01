@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailStatSummaryResponse
+# ultracart_client::EmailStatSummaryResponse
 
 ## Properties
 Name | Type | Description | Notes

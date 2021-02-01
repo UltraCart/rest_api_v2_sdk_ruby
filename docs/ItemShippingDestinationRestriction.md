@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemShippingDestinationRestriction
+# ultracart_client::ItemShippingDestinationRestriction
 
 ## Properties
 Name | Type | Description | Notes

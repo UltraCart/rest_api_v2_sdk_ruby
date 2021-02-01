@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CouponPercentOffSubtotal
+# ultracart_client::CouponPercentOffSubtotal
 
 ## Properties
 Name | Type | Description | Notes

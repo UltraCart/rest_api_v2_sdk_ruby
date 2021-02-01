@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailListSegmentUsedBy
+# ultracart_client::EmailListSegmentUsedBy
 
 ## Properties
 Name | Type | Description | Notes

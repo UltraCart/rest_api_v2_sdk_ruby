@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailTemplatesResponse
+# ultracart_client::EmailTemplatesResponse
 
 ## Properties
 Name | Type | Description | Notes

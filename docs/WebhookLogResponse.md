@@ -1,4 +1,4 @@
-# UltraCartAdminV2::WebhookLogResponse
+# ultracart_client::WebhookLogResponse
 
 ## Properties
 Name | Type | Description | Notes

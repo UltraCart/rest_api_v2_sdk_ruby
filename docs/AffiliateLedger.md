@@ -1,4 +1,4 @@
-# UltraCartAdminV2::AffiliateLedger
+# ultracart_client::AffiliateLedger
 
 ## Properties
 Name | Type | Description | Notes

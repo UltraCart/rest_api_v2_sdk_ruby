@@ -1,4 +1,4 @@
-# UltraCartAdminV2::LibraryFilterValues
+# ultracart_client::LibraryFilterValues
 
 ## Properties
 Name | Type | Description | Notes

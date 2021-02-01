@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailCommseqPostcardSendTestResponse
+# ultracart_client::EmailCommseqPostcardSendTestResponse
 
 ## Properties
 Name | Type | Description | Notes

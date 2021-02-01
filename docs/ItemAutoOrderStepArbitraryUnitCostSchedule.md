@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemAutoOrderStepArbitraryUnitCostSchedule
+# ultracart_client::ItemAutoOrderStepArbitraryUnitCostSchedule
 
 ## Properties
 Name | Type | Description | Notes

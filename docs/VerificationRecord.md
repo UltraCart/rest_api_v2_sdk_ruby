@@ -1,4 +1,4 @@
-# UltraCartAdminV2::VerificationRecord
+# ultracart_client::VerificationRecord
 
 ## Properties
 Name | Type | Description | Notes

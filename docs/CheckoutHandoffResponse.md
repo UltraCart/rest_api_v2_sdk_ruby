@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CheckoutHandoffResponse
+# ultracart_client::CheckoutHandoffResponse
 
 ## Properties
 Name | Type | Description | Notes

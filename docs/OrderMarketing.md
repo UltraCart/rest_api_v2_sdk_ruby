@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OrderMarketing
+# ultracart_client::OrderMarketing
 
 ## Properties
 Name | Type | Description | Notes

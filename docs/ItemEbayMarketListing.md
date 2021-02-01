@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemEbayMarketListing
+# ultracart_client::ItemEbayMarketListing
 
 ## Properties
 Name | Type | Description | Notes

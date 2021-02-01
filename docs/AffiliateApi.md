@@ -1,4 +1,4 @@
-# UltraCartAdminV2::AffiliateApi
+# ultracart_client::AffiliateApi
 
 All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
@@ -18,9 +18,9 @@ Retrieves a group of clicks from the account based on a query object.  If no par
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -30,9 +30,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::AffiliateApi.new
+api_instance = ultracart_client::AffiliateApi.new
 
-click_query = UltraCartAdminV2::AffiliateClickQuery.new # AffiliateClickQuery | Click query
+click_query = ultracart_client::AffiliateClickQuery.new # AffiliateClickQuery | Click query
 
 opts = { 
   _limit: 10000, # Integer | The maximum number of records to return on this one API call. (Maximum 10000)
@@ -44,7 +44,7 @@ begin
   #Retrieve clicks
   result = api_instance.get_clicks_by_query(click_query, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling AffiliateApi->get_clicks_by_query: #{e}"
 end
 ```
@@ -83,9 +83,9 @@ Retrieves a group of ledger entries from the account based on a query object.  I
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -95,9 +95,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::AffiliateApi.new
+api_instance = ultracart_client::AffiliateApi.new
 
-ledger_query = UltraCartAdminV2::AffiliateLedgerQuery.new # AffiliateLedgerQuery | Ledger query
+ledger_query = ultracart_client::AffiliateLedgerQuery.new # AffiliateLedgerQuery | Ledger query
 
 opts = { 
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Maximum 200)
@@ -109,7 +109,7 @@ begin
   #Retrieve ledger entries
   result = api_instance.get_ledgers_by_query(ledger_query, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling AffiliateApi->get_ledgers_by_query: #{e}"
 end
 ```

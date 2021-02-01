@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CheckoutApi
+# ultracart_client::CheckoutApi
 
 All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
@@ -35,9 +35,9 @@ Look up the city and state for the shipping zip code.  Useful for building an au
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -52,16 +52,16 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
-cart = UltraCartAdminV2::Cart.new # Cart | Cart
+cart = ultracart_client::Cart.new # Cart | Cart
 
 
 begin
   #City/State for Zip
   result = api_instance.city_state(cart)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->city_state: #{e}"
 end
 ```
@@ -97,9 +97,9 @@ Finalize the cart into an order.  This method can not be called with browser key
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -109,16 +109,16 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
-finalize_request = UltraCartAdminV2::CartFinalizeOrderRequest.new # CartFinalizeOrderRequest | Finalize request
+finalize_request = ultracart_client::CartFinalizeOrderRequest.new # CartFinalizeOrderRequest | Finalize request
 
 
 begin
   #Finalize Order
   result = api_instance.finalize_order(finalize_request)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->finalize_order: #{e}"
 end
 ```
@@ -154,9 +154,9 @@ Get a Affirm checkout object for the specified cart_id parameter.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -171,7 +171,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
 cart_id = 'cart_id_example' # String | Cart ID to retrieve
 
@@ -180,7 +180,7 @@ begin
   #Get affirm checkout (by cart id)
   result = api_instance.get_affirm_checkout(cart_id)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->get_affirm_checkout: #{e}"
 end
 ```
@@ -216,9 +216,9 @@ Lookup the allowed countries for this merchant id
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -233,13 +233,13 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
 begin
   #Allowed countries
   result = api_instance.get_allowed_countries
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->get_allowed_countries: #{e}"
 end
 ```
@@ -272,9 +272,9 @@ If the cookie is set on the browser making the request then it will return their
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -289,7 +289,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -299,7 +299,7 @@ begin
   #Get cart
   result = api_instance.get_cart(opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->get_cart: #{e}"
 end
 ```
@@ -335,9 +335,9 @@ Get a cart specified by the cart_id parameter.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -352,7 +352,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
 cart_id = 'cart_id_example' # String | Cart ID to retrieve
 
@@ -364,7 +364,7 @@ begin
   #Get cart (by cart id)
   result = api_instance.get_cart_by_cart_id(cart_id, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->get_cart_by_cart_id: #{e}"
 end
 ```
@@ -401,9 +401,9 @@ Get a cart specified by the return code parameter.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -418,7 +418,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
 return_code = 'return_code_example' # String | Return code to lookup cart ID by
 
@@ -430,7 +430,7 @@ begin
   #Get cart (by return code)
   result = api_instance.get_cart_by_return_code(return_code, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->get_cart_by_return_code: #{e}"
 end
 ```
@@ -467,9 +467,9 @@ Get a cart specified by the encrypted return token parameter.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -484,7 +484,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
 opts = { 
   return_token: 'return_token_example', # String | Return token provided by StoreFront Communications
@@ -495,7 +495,7 @@ begin
   #Get cart (by return token)
   result = api_instance.get_cart_by_return_token(opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->get_cart_by_return_token: #{e}"
 end
 ```
@@ -532,9 +532,9 @@ Lookup a state/province list for a given country code
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -549,7 +549,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
 country_code = 'country_code_example' # String | Two letter ISO country code
 
@@ -558,7 +558,7 @@ begin
   #Get state/province list for a country code
   result = api_instance.get_state_provinces_for_country(country_code)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->get_state_provinces_for_country: #{e}"
 end
 ```
@@ -594,9 +594,9 @@ Handoff the browser to UltraCart for view cart on StoreFront, transfer to PayPal
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -611,9 +611,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
-handoff_request = UltraCartAdminV2::CheckoutHandoffRequest.new # CheckoutHandoffRequest | Handoff request
+handoff_request = ultracart_client::CheckoutHandoffRequest.new # CheckoutHandoffRequest | Handoff request
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -623,7 +623,7 @@ begin
   #Handoff cart
   result = api_instance.handoff_cart(handoff_request, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->handoff_cart: #{e}"
 end
 ```
@@ -660,9 +660,9 @@ Login in to the customer profile specified by cart.billing.email and password
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -677,9 +677,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
-login_request = UltraCartAdminV2::CartProfileLoginRequest.new # CartProfileLoginRequest | Login request
+login_request = ultracart_client::CartProfileLoginRequest.new # CartProfileLoginRequest | Login request
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -689,7 +689,7 @@ begin
   #Profile login
   result = api_instance.login(login_request, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->login: #{e}"
 end
 ```
@@ -726,9 +726,9 @@ Log the cart out of the current profile.  No error will occur if they are not lo
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -743,9 +743,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
-cart = UltraCartAdminV2::Cart.new # Cart | Cart
+cart = ultracart_client::Cart.new # Cart | Cart
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -755,7 +755,7 @@ begin
   #Profile logout
   result = api_instance.logout(cart, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->logout: #{e}"
 end
 ```
@@ -792,9 +792,9 @@ Register a new customer profile.  Requires the cart.billing object to be populat
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -809,9 +809,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
-register_request = UltraCartAdminV2::CartProfileRegisterRequest.new # CartProfileRegisterRequest | Register request
+register_request = ultracart_client::CartProfileRegisterRequest.new # CartProfileRegisterRequest | Register request
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -821,7 +821,7 @@ begin
   #Profile registration
   result = api_instance.register(register_request, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->register: #{e}"
 end
 ```
@@ -858,9 +858,9 @@ Register an affiliate click.  Used by custom checkouts that are completely API b
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -875,9 +875,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
-register_affiliate_click_request = UltraCartAdminV2::RegisterAffiliateClickRequest.new # RegisterAffiliateClickRequest | Register affiliate click request
+register_affiliate_click_request = ultracart_client::RegisterAffiliateClickRequest.new # RegisterAffiliateClickRequest | Register affiliate click request
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -887,7 +887,7 @@ begin
   #Register affiliate click
   result = api_instance.register_affiliate_click(register_affiliate_click_request, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->register_affiliate_click: #{e}"
 end
 ```
@@ -924,9 +924,9 @@ Retrieve all the related items for the cart contents.  Expansion is limited to c
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -941,9 +941,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
-cart = UltraCartAdminV2::Cart.new # Cart | Cart
+cart = ultracart_client::Cart.new # Cart | Cart
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See item resource documentation for examples
@@ -953,7 +953,7 @@ begin
   #Related items
   result = api_instance.related_items_for_cart(cart, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->related_items_for_cart: #{e}"
 end
 ```
@@ -990,9 +990,9 @@ Retrieve all the related items for the cart contents.  Expansion is limited to c
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1007,11 +1007,11 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
 item_id = 'item_id_example' # String | Item ID to retrieve related items for
 
-cart = UltraCartAdminV2::Cart.new # Cart | Cart
+cart = ultracart_client::Cart.new # Cart | Cart
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See item resource documentation for examples
@@ -1021,7 +1021,7 @@ begin
   #Related items (specific item)
   result = api_instance.related_items_for_item(item_id, cart, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->related_items_for_item: #{e}"
 end
 ```
@@ -1059,9 +1059,9 @@ Setup a browser key authenticated application with checkout permissions.  This R
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1071,16 +1071,16 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
-browser_key_request = UltraCartAdminV2::CheckoutSetupBrowserKeyRequest.new # CheckoutSetupBrowserKeyRequest | Setup browser key request
+browser_key_request = ultracart_client::CheckoutSetupBrowserKeyRequest.new # CheckoutSetupBrowserKeyRequest | Setup browser key request
 
 
 begin
   #Setup Browser Application
   result = api_instance.setup_browser_key(browser_key_request)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->setup_browser_key: #{e}"
 end
 ```
@@ -1116,9 +1116,9 @@ Update the cart.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1133,9 +1133,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
-cart = UltraCartAdminV2::Cart.new # Cart | Cart
+cart = ultracart_client::Cart.new # Cart | Cart
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -1145,7 +1145,7 @@ begin
   #Update cart
   result = api_instance.update_cart(cart, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->update_cart: #{e}"
 end
 ```
@@ -1182,9 +1182,9 @@ Validate the cart for errors.  Specific checks can be passed and multiple valida
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1199,9 +1199,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::CheckoutApi.new
+api_instance = ultracart_client::CheckoutApi.new
 
-validation_request = UltraCartAdminV2::CartValidationRequest.new # CartValidationRequest | Validation request
+validation_request = ultracart_client::CartValidationRequest.new # CartValidationRequest | Validation request
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -1211,7 +1211,7 @@ begin
   #Validate
   result = api_instance.validate_cart(validation_request, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling CheckoutApi->validate_cart: #{e}"
 end
 ```

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::TaxCountry
+# ultracart_client::TaxCountry
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CartProfileRegisterResponse
+# ultracart_client::CartProfileRegisterResponse
 
 ## Properties
 Name | Type | Description | Notes

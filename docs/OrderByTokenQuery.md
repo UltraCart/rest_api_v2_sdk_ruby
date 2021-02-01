@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OrderByTokenQuery
+# ultracart_client::OrderByTokenQuery
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CartFinalizeOrderRequest
+# ultracart_client::CartFinalizeOrderRequest
 
 ## Properties
 Name | Type | Description | Notes

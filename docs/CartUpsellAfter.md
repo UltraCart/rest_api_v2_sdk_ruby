@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CartUpsellAfter
+# ultracart_client::CartUpsellAfter
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::Metric
+# ultracart_client::Metric
 
 ## Properties
 Name | Type | Description | Notes

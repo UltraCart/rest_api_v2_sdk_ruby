@@ -1,4 +1,4 @@
-# UltraCartAdminV2::Notification
+# ultracart_client::Notification
 
 ## Properties
 Name | Type | Description | Notes

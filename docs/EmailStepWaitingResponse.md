@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailStepWaitingResponse
+# ultracart_client::EmailStepWaitingResponse
 
 ## Properties
 Name | Type | Description | Notes

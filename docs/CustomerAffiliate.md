@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CustomerAffiliate
+# ultracart_client::CustomerAffiliate
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::TaxProviderTaxJar
+# ultracart_client::TaxProviderTaxJar
 
 ## Properties
 Name | Type | Description | Notes

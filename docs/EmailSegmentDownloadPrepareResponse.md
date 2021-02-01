@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailSegmentDownloadPrepareResponse
+# ultracart_client::EmailSegmentDownloadPrepareResponse
 
 ## Properties
 Name | Type | Description | Notes

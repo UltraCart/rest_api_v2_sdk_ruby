@@ -1,4 +1,4 @@
-# UltraCartAdminV2::Currency
+# ultracart_client::Currency
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::AffiliateClickQuery
+# ultracart_client::AffiliateClickQuery
 
 ## Properties
 Name | Type | Description | Notes

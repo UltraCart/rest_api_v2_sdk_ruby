@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CouponRestriction
+# ultracart_client::CouponRestriction
 
 ## Properties
 Name | Type | Description | Notes

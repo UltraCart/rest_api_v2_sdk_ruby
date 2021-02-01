@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ScreenRecordingFilterRangeBigDecimal
+# ultracart_client::ScreenRecordingFilterRangeBigDecimal
 
 ## Properties
 Name | Type | Description | Notes

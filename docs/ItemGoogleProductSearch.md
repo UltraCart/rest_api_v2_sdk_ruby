@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemGoogleProductSearch
+# ultracart_client::ItemGoogleProductSearch
 
 ## Properties
 Name | Type | Description | Notes

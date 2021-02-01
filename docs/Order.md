@@ -1,4 +1,4 @@
-# UltraCartAdminV2::Order
+# ultracart_client::Order
 
 ## Properties
 Name | Type | Description | Notes

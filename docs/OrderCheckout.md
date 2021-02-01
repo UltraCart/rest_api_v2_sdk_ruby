@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OrderCheckout
+# ultracart_client::OrderCheckout
 
 ## Properties
 Name | Type | Description | Notes

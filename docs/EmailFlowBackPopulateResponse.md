@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailFlowBackPopulateResponse
+# ultracart_client::EmailFlowBackPopulateResponse
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CouponBuyOneGetOneLimit
+# ultracart_client::CouponBuyOneGetOneLimit
 
 ## Properties
 Name | Type | Description | Notes

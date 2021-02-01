@@ -1,4 +1,4 @@
-# UltraCartAdminV2::GeoPoint
+# ultracart_client::GeoPoint
 
 ## Properties
 Name | Type | Description | Notes

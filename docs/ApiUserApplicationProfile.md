@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ApiUserApplicationProfile
+# ultracart_client::ApiUserApplicationProfile
 
 ## Properties
 Name | Type | Description | Notes

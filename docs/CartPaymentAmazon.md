@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CartPaymentAmazon
+# ultracart_client::CartPaymentAmazon
 
 ## Properties
 Name | Type | Description | Notes

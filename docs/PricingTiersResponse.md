@@ -1,4 +1,4 @@
-# UltraCartAdminV2::PricingTiersResponse
+# ultracart_client::PricingTiersResponse
 
 ## Properties
 Name | Type | Description | Notes

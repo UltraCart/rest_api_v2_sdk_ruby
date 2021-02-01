@@ -1,4 +1,4 @@
-# UltraCartAdminV2::LibraryItemScreenshot
+# ultracart_client::LibraryItemScreenshot
 
 ## Properties
 Name | Type | Description | Notes

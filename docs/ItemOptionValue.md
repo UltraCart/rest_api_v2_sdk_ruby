@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemOptionValue
+# ultracart_client::ItemOptionValue
 
 ## Properties
 Name | Type | Description | Notes

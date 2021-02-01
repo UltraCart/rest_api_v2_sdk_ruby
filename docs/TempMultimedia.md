@@ -1,4 +1,4 @@
-# UltraCartAdminV2::TempMultimedia
+# ultracart_client::TempMultimedia
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OrderChannelPartner
+# ultracart_client::OrderChannelPartner
 
 ## Properties
 Name | Type | Description | Notes

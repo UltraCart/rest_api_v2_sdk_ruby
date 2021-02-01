@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ResponseMetadata
+# ultracart_client::ResponseMetadata
 
 ## Properties
 Name | Type | Description | Notes

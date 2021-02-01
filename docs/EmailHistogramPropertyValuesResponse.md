@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailHistogramPropertyValuesResponse
+# ultracart_client::EmailHistogramPropertyValuesResponse
 
 ## Properties
 Name | Type | Description | Notes

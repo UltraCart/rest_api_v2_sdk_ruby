@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemPricingTierDiscount
+# ultracart_client::ItemPricingTierDiscount
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::BaseResponse
+# ultracart_client::BaseResponse
 
 ## Properties
 Name | Type | Description | Notes

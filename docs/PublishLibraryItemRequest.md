@@ -1,4 +1,4 @@
-# UltraCartAdminV2::PublishLibraryItemRequest
+# ultracart_client::PublishLibraryItemRequest
 
 ## Properties
 Name | Type | Description | Notes

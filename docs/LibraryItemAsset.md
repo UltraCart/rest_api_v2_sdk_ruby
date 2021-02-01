@@ -1,4 +1,4 @@
-# UltraCartAdminV2::LibraryItemAsset
+# ultracart_client::LibraryItemAsset
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailCampaignFolder
+# ultracart_client::EmailCampaignFolder
 
 ## Properties
 Name | Type | Description | Notes

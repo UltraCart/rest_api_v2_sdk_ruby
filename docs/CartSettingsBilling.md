@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CartSettingsBilling
+# ultracart_client::CartSettingsBilling
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CouponFreeShippingSpecificItems
+# ultracart_client::CouponFreeShippingSpecificItems
 
 ## Properties
 Name | Type | Description | Notes

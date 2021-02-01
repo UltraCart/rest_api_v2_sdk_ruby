@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ScreenRecordingSettings
+# ultracart_client::ScreenRecordingSettings
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemTaxExemption
+# ultracart_client::ItemTaxExemption
 
 ## Properties
 Name | Type | Description | Notes

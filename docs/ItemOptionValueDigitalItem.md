@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemOptionValueDigitalItem
+# ultracart_client::ItemOptionValueDigitalItem
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::GroupUserMembership
+# ultracart_client::GroupUserMembership
 
 ## Properties
 Name | Type | Description | Notes

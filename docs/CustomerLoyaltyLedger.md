@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CustomerLoyaltyLedger
+# ultracart_client::CustomerLoyaltyLedger
 
 ## Properties
 Name | Type | Description | Notes

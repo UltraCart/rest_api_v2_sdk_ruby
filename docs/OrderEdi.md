@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OrderEdi
+# ultracart_client::OrderEdi
 
 ## Properties
 Name | Type | Description | Notes

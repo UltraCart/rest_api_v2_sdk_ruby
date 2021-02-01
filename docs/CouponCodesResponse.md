@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CouponCodesResponse
+# ultracart_client::CouponCodesResponse
 
 ## Properties
 Name | Type | Description | Notes

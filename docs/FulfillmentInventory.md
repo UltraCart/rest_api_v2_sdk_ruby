@@ -1,4 +1,4 @@
-# UltraCartAdminV2::FulfillmentInventory
+# ultracart_client::FulfillmentInventory
 
 ## Properties
 Name | Type | Description | Notes

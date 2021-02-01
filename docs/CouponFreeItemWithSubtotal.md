@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CouponFreeItemWithSubtotal
+# ultracart_client::CouponFreeItemWithSubtotal
 
 ## Properties
 Name | Type | Description | Notes

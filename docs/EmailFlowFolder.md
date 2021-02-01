@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailFlowFolder
+# ultracart_client::EmailFlowFolder
 
 ## Properties
 Name | Type | Description | Notes

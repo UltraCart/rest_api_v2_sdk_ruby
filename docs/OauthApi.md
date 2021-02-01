@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OauthApi
+# ultracart_client::OauthApi
 
 All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
@@ -18,9 +18,9 @@ The final leg in the OAuth process which exchanges the specified access token fo
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -35,7 +35,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::OauthApi.new
+api_instance = ultracart_client::OauthApi.new
 
 client_id = 'client_id_example' # String | The OAuth application client_id.
 
@@ -51,7 +51,7 @@ begin
   #Exchange authorization code for access token.
   result = api_instance.oauth_access_token(client_id, grant_type, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling OauthApi->oauth_access_token: #{e}"
 end
 ```
@@ -91,9 +91,9 @@ Revokes the OAuth application associated with the specified client_id and token.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -108,7 +108,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::OauthApi.new
+api_instance = ultracart_client::OauthApi.new
 
 client_id = 'client_id_example' # String | The OAuth application client_id.
 
@@ -119,7 +119,7 @@ begin
   #Revoke this OAuth application.
   result = api_instance.oauth_revoke(client_id, token)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling OauthApi->oauth_revoke: #{e}"
 end
 ```

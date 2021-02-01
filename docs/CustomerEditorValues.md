@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CustomerEditorValues
+# ultracart_client::CustomerEditorValues
 
 ## Properties
 Name | Type | Description | Notes

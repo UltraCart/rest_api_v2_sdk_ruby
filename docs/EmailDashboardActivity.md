@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailDashboardActivity
+# ultracart_client::EmailDashboardActivity
 
 ## Properties
 Name | Type | Description | Notes

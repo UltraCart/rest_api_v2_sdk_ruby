@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailCommseqPostcardsRequest
+# ultracart_client::EmailCommseqPostcardsRequest
 
 ## Properties
 Name | Type | Description | Notes

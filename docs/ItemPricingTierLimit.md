@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemPricingTierLimit
+# ultracart_client::ItemPricingTierLimit
 
 ## Properties
 Name | Type | Description | Notes

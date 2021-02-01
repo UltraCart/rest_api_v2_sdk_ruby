@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailThirdPartyProvidersResponse
+# ultracart_client::EmailThirdPartyProvidersResponse
 
 ## Properties
 Name | Type | Description | Notes

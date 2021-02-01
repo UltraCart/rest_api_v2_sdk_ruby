@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemContentAssignment
+# ultracart_client::ItemContentAssignment
 
 ## Properties
 Name | Type | Description | Notes

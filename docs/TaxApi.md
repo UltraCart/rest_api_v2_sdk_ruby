@@ -1,4 +1,4 @@
-# UltraCartAdminV2::TaxApi
+# ultracart_client::TaxApi
 
 All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
@@ -44,9 +44,9 @@ Deletes a Self tax provider city.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -56,17 +56,17 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 city = 'city_example' # String | The city being deleted.
 
-tax_city = UltraCartAdminV2::TaxCity.new # TaxCity | tax city to be deleted
+tax_city = ultracart_client::TaxCity.new # TaxCity | tax city to be deleted
 
 
 begin
   #Deletes a Self tax provider city
   api_instance.delete_tax_provider_self_city(city, tax_city)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->delete_tax_provider_self_city: #{e}"
 end
 ```
@@ -103,9 +103,9 @@ Deletes a Self tax provider country.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -115,17 +115,17 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 country_code = 'country_code_example' # String | The country code being deleted.
 
-tax_country = UltraCartAdminV2::TaxCountry.new # TaxCountry | tax country to be deleted
+tax_country = ultracart_client::TaxCountry.new # TaxCountry | tax country to be deleted
 
 
 begin
   #Deletes a Self tax provider country
   api_instance.delete_tax_provider_self_country(country_code, tax_country)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->delete_tax_provider_self_country: #{e}"
 end
 ```
@@ -162,9 +162,9 @@ Deletes a Self tax provider county.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -174,17 +174,17 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 county = 'county_example' # String | The county being deleted.
 
-tax_county = UltraCartAdminV2::TaxCounty.new # TaxCounty | tax county to be deleted
+tax_county = ultracart_client::TaxCounty.new # TaxCounty | tax county to be deleted
 
 
 begin
   #Deletes a Self tax provider county
   api_instance.delete_tax_provider_self_county(county, tax_county)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->delete_tax_provider_self_county: #{e}"
 end
 ```
@@ -221,9 +221,9 @@ Deletes a Self tax provider postalCode.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -233,17 +233,17 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 postal_code = 'postal_code_example' # String | The postal code being deleted.
 
-tax_postal_code = UltraCartAdminV2::TaxPostalCode.new # TaxPostalCode | tax postal code to be deleted
+tax_postal_code = ultracart_client::TaxPostalCode.new # TaxPostalCode | tax postal code to be deleted
 
 
 begin
   #Deletes a Self tax provider postalCode
   api_instance.delete_tax_provider_self_postal_code(postal_code, tax_postal_code)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->delete_tax_provider_self_postal_code: #{e}"
 end
 ```
@@ -280,9 +280,9 @@ Deletes a Self tax provider state.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -292,17 +292,17 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 state_code = 'state_code_example' # String | The state code being deleted.
 
-tax_state = UltraCartAdminV2::TaxState.new # TaxState | tax state to be deleted
+tax_state = ultracart_client::TaxState.new # TaxState | tax state to be deleted
 
 
 begin
   #Deletes a Self tax provider state
   api_instance.delete_tax_provider_self_state(state_code, tax_state)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->delete_tax_provider_self_state: #{e}"
 end
 ```
@@ -339,9 +339,9 @@ Retrieves the Avalara tax provider.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -351,13 +351,13 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 begin
   #Retrieve the Avalara tax provider
   result = api_instance.get_tax_provider_avalara
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->get_tax_provider_avalara: #{e}"
 end
 ```
@@ -390,9 +390,9 @@ Returns Avalara Tax companies configured by the merchant
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -402,16 +402,16 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
-tax_provider_avalara = UltraCartAdminV2::TaxProviderAvalara.new # TaxProviderAvalara | TaxProviderAvalara object
+tax_provider_avalara = ultracart_client::TaxProviderAvalara.new # TaxProviderAvalara | TaxProviderAvalara object
 
 
 begin
   #Returns Avalara Tax companies configured by the merchant
   result = api_instance.get_tax_provider_avalara_companies(tax_provider_avalara)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->get_tax_provider_avalara_companies: #{e}"
 end
 ```
@@ -447,9 +447,9 @@ Attempts to connect to Avalara and returns back the response.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -459,13 +459,13 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 begin
   #Attempts to connect to Avalara and returns back the response
   result = api_instance.get_tax_provider_avalara_test
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->get_tax_provider_avalara_test: #{e}"
 end
 ```
@@ -498,9 +498,9 @@ Retrieves the Self tax provider.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -510,13 +510,13 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 begin
   #Retrieve the Self tax provider
   result = api_instance.get_tax_provider_self
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->get_tax_provider_self: #{e}"
 end
 ```
@@ -549,9 +549,9 @@ Retrieves the Self tax provider countries.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -561,13 +561,13 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 begin
   #Retrieve the Self tax provider countries
   result = api_instance.get_tax_provider_self_countries
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->get_tax_provider_self_countries: #{e}"
 end
 ```
@@ -600,9 +600,9 @@ Retrieves the Self tax provider regions for a given country code.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -612,7 +612,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 country_code = 'country_code_example' # String | The country code regions desired.
 
@@ -621,7 +621,7 @@ begin
   #Retrieve the Self tax provider regions for a given country code
   result = api_instance.get_tax_provider_self_regions_by_country_code(country_code)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->get_tax_provider_self_regions_by_country_code: #{e}"
 end
 ```
@@ -657,9 +657,9 @@ Retrieves the Sovos tax provider.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -669,13 +669,13 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 begin
   #Retrieve the Sovos tax provider
   result = api_instance.get_tax_provider_sovos
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->get_tax_provider_sovos: #{e}"
 end
 ```
@@ -708,9 +708,9 @@ Attempts to connect to Sovos and returns back the response.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -720,13 +720,13 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 begin
   #Attempts to connect to Sovos and returns back the response
   result = api_instance.get_tax_provider_sovos_test
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->get_tax_provider_sovos_test: #{e}"
 end
 ```
@@ -759,9 +759,9 @@ Retrieves the TaxJar tax provider.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -771,13 +771,13 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 begin
   #Retrieve the TaxJar tax provider
   result = api_instance.get_tax_provider_tax_jar
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->get_tax_provider_tax_jar: #{e}"
 end
 ```
@@ -810,9 +810,9 @@ Attempts to connect to TaxJar and returns back the response.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -822,13 +822,13 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 begin
   #Attempts to connect to TaxJar and returns back the response
   result = api_instance.get_tax_provider_tax_jar_test
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->get_tax_provider_tax_jar_test: #{e}"
 end
 ```
@@ -861,9 +861,9 @@ Retrieves the UltraCart tax provider.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -873,13 +873,13 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 begin
   #Retrieve the UltraCart tax provider
   result = api_instance.get_tax_provider_ultra_cart
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->get_tax_provider_ultra_cart: #{e}"
 end
 ```
@@ -912,9 +912,9 @@ Retrieves tax methods for this account.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -924,7 +924,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 opts = { 
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Max 200)
@@ -936,7 +936,7 @@ begin
   #Retrieve tax methods
   result = api_instance.get_tax_providers(opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->get_tax_providers: #{e}"
 end
 ```
@@ -974,9 +974,9 @@ Toggle a tax provider to active.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -986,7 +986,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 provider_name = 'provider_name_example' # String | The tax provider to set active.
 
@@ -995,7 +995,7 @@ begin
   #Toggle a tax provider to active
   result = api_instance.set_active_tax_provider(provider_name)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->set_active_tax_provider: #{e}"
 end
 ```
@@ -1031,9 +1031,9 @@ Update the Avalara tax provider.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1043,16 +1043,16 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
-tax_provider_avalara = UltraCartAdminV2::TaxProviderAvalara.new # TaxProviderAvalara | TaxProviderAvalara object
+tax_provider_avalara = ultracart_client::TaxProviderAvalara.new # TaxProviderAvalara | TaxProviderAvalara object
 
 
 begin
   #Update the Avalara tax provider
   result = api_instance.update_tax_provider_avalara(tax_provider_avalara)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->update_tax_provider_avalara: #{e}"
 end
 ```
@@ -1088,9 +1088,9 @@ Update the Self tax provider.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1100,16 +1100,16 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
-tax_provider_self = UltraCartAdminV2::TaxProviderSelf.new # TaxProviderSelf | TaxProviderSelf object
+tax_provider_self = ultracart_client::TaxProviderSelf.new # TaxProviderSelf | TaxProviderSelf object
 
 
 begin
   #Update the Self tax provider
   result = api_instance.update_tax_provider_self(tax_provider_self)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->update_tax_provider_self: #{e}"
 end
 ```
@@ -1145,9 +1145,9 @@ Updates a Self tax provider city.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1157,18 +1157,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 city = 'city_example' # String | The city being updated.
 
-tax_city = UltraCartAdminV2::TaxCity.new # TaxCity | tax city to be updated
+tax_city = ultracart_client::TaxCity.new # TaxCity | tax city to be updated
 
 
 begin
   #Updates a Self tax provider city
   result = api_instance.update_tax_provider_self_city(city, tax_city)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->update_tax_provider_self_city: #{e}"
 end
 ```
@@ -1205,9 +1205,9 @@ Updates a Self tax provider country.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1217,18 +1217,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 country_code = 'country_code_example' # String | The country code being updated.
 
-tax_country = UltraCartAdminV2::TaxCountry.new # TaxCountry | tax country to be updated
+tax_country = ultracart_client::TaxCountry.new # TaxCountry | tax country to be updated
 
 
 begin
   #Updates a Self tax provider country
   result = api_instance.update_tax_provider_self_country(country_code, tax_country)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->update_tax_provider_self_country: #{e}"
 end
 ```
@@ -1265,9 +1265,9 @@ Updates a Self tax provider county.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1277,18 +1277,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 county = 'county_example' # String | The county being updated.
 
-tax_county = UltraCartAdminV2::TaxCounty.new # TaxCounty | tax county to be updated
+tax_county = ultracart_client::TaxCounty.new # TaxCounty | tax county to be updated
 
 
 begin
   #Updates a Self tax provider county
   result = api_instance.update_tax_provider_self_county(county, tax_county)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->update_tax_provider_self_county: #{e}"
 end
 ```
@@ -1325,9 +1325,9 @@ Updates a Self tax provider postalCode.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1337,18 +1337,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 postal_code = 'postal_code_example' # String | The postal code being updated.
 
-tax_postal_code = UltraCartAdminV2::TaxPostalCode.new # TaxPostalCode | tax postal code to be updated
+tax_postal_code = ultracart_client::TaxPostalCode.new # TaxPostalCode | tax postal code to be updated
 
 
 begin
   #Updates a Self tax provider postalCode
   result = api_instance.update_tax_provider_self_postal_code(postal_code, tax_postal_code)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->update_tax_provider_self_postal_code: #{e}"
 end
 ```
@@ -1385,9 +1385,9 @@ Updates a Self tax provider state.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1397,18 +1397,18 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
 state_code = 'state_code_example' # String | The state code being updated.
 
-tax_state = UltraCartAdminV2::TaxState.new # TaxState | tax state to be updated
+tax_state = ultracart_client::TaxState.new # TaxState | tax state to be updated
 
 
 begin
   #Updates a Self tax provider state
   result = api_instance.update_tax_provider_self_state(state_code, tax_state)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->update_tax_provider_self_state: #{e}"
 end
 ```
@@ -1445,9 +1445,9 @@ Update the Sovos tax provider.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1457,16 +1457,16 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
-tax_provider_sovos = UltraCartAdminV2::TaxProviderSovos.new # TaxProviderSovos | TaxProviderSovos object
+tax_provider_sovos = ultracart_client::TaxProviderSovos.new # TaxProviderSovos | TaxProviderSovos object
 
 
 begin
   #Update the Sovos tax provider
   result = api_instance.update_tax_provider_sovos(tax_provider_sovos)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->update_tax_provider_sovos: #{e}"
 end
 ```
@@ -1502,9 +1502,9 @@ Update the TaxJar tax provider.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1514,16 +1514,16 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
-tax_provider_tax_jar = UltraCartAdminV2::TaxProviderTaxJar.new # TaxProviderTaxJar | TaxProviderTaxJar object
+tax_provider_tax_jar = ultracart_client::TaxProviderTaxJar.new # TaxProviderTaxJar | TaxProviderTaxJar object
 
 
 begin
   #Update the TaxJar tax provider
   result = api_instance.update_tax_provider_tax_jar(tax_provider_tax_jar)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->update_tax_provider_tax_jar: #{e}"
 end
 ```
@@ -1559,9 +1559,9 @@ Update the UltraCart tax provider.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1571,16 +1571,16 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::TaxApi.new
+api_instance = ultracart_client::TaxApi.new
 
-tax_provider_ultracart = UltraCartAdminV2::TaxProviderUltraCart.new # TaxProviderUltraCart | TaxProviderUltraCart object
+tax_provider_ultracart = ultracart_client::TaxProviderUltraCart.new # TaxProviderUltraCart | TaxProviderUltraCart object
 
 
 begin
   #Update the UltraCart tax provider
   result = api_instance.update_tax_provider_ultra_cart(tax_provider_ultracart)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling TaxApi->update_tax_provider_ultra_cart: #{e}"
 end
 ```

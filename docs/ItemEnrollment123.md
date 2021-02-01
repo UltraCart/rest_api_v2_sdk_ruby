@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemEnrollment123
+# ultracart_client::ItemEnrollment123
 
 ## Properties
 Name | Type | Description | Notes

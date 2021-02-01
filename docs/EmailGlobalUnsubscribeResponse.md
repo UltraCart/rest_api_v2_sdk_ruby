@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailGlobalUnsubscribeResponse
+# ultracart_client::EmailGlobalUnsubscribeResponse
 
 ## Properties
 Name | Type | Description | Notes

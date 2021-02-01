@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CartSettingsPaymentPayPal
+# ultracart_client::CartSettingsPaymentPayPal
 
 ## Properties
 Name | Type | Description | Notes

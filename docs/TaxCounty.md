@@ -1,4 +1,4 @@
-# UltraCartAdminV2::TaxCounty
+# ultracart_client::TaxCounty
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::AccountsReceivableRetryStatAccount
+# ultracart_client::AccountsReceivableRetryStatAccount
 
 ## Properties
 Name | Type | Description | Notes

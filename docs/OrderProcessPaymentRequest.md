@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OrderProcessPaymentRequest
+# ultracart_client::OrderProcessPaymentRequest
 
 ## Properties
 Name | Type | Description | Notes

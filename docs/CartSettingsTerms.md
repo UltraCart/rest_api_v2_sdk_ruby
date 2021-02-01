@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CartSettingsTerms
+# ultracart_client::CartSettingsTerms
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemDigitalDelivery
+# ultracart_client::ItemDigitalDelivery
 
 ## Properties
 Name | Type | Description | Notes

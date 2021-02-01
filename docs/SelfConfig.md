@@ -1,4 +1,4 @@
-# UltraCartAdminV2::SelfConfig
+# ultracart_client::SelfConfig
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OrderBuysafe
+# ultracart_client::OrderBuysafe
 
 ## Properties
 Name | Type | Description | Notes

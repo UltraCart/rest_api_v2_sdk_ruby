@@ -1,4 +1,4 @@
-# UltraCartAdminV2::StepWaiting
+# ultracart_client::StepWaiting
 
 ## Properties
 Name | Type | Description | Notes

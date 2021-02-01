@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OrderGiftCertificate
+# ultracart_client::OrderGiftCertificate
 
 ## Properties
 Name | Type | Description | Notes

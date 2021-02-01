@@ -1,4 +1,4 @@
-# UltraCartAdminV2::TaxPostalCode
+# ultracart_client::TaxPostalCode
 
 ## Properties
 Name | Type | Description | Notes

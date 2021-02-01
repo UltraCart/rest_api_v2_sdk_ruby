@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OrderReplacementResponse
+# ultracart_client::OrderReplacementResponse
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemCCBill
+# ultracart_client::ItemCCBill
 
 ## Properties
 Name | Type | Description | Notes

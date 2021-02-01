@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CouponPercentOffItemWithItemsQuantityPurchase
+# ultracart_client::CouponPercentOffItemWithItemsQuantityPurchase
 
 ## Properties
 Name | Type | Description | Notes

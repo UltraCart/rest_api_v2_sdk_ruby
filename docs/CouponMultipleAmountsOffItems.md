@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CouponMultipleAmountsOffItems
+# ultracart_client::CouponMultipleAmountsOffItems
 
 ## Properties
 Name | Type | Description | Notes

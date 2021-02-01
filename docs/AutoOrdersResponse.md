@@ -1,4 +1,4 @@
-# UltraCartAdminV2::AutoOrdersResponse
+# ultracart_client::AutoOrdersResponse
 
 ## Properties
 Name | Type | Description | Notes

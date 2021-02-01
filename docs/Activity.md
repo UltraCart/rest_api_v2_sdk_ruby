@@ -1,4 +1,4 @@
-# UltraCartAdminV2::Activity
+# ultracart_client::Activity
 
 ## Properties
 Name | Type | Description | Notes

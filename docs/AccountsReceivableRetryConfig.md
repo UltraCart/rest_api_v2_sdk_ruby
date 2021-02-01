@@ -1,4 +1,4 @@
-# UltraCartAdminV2::AccountsReceivableRetryConfig
+# ultracart_client::AccountsReceivableRetryConfig
 
 ## Properties
 Name | Type | Description | Notes

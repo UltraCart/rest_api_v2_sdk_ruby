@@ -1,4 +1,4 @@
-# UltraCartAdminV2::WebhookEventCategory
+# ultracart_client::WebhookEventCategory
 
 ## Properties
 Name | Type | Description | Notes

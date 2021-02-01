@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailListSegmentMembership
+# ultracart_client::EmailListSegmentMembership
 
 ## Properties
 Name | Type | Description | Notes

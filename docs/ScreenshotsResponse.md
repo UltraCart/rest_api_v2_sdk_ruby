@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ScreenshotsResponse
+# ultracart_client::ScreenshotsResponse
 
 ## Properties
 Name | Type | Description | Notes

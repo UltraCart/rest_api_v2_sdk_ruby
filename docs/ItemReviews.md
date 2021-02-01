@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemReviews
+# ultracart_client::ItemReviews
 
 ## Properties
 Name | Type | Description | Notes

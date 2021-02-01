@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ScreenRecordingPageViewEvent
+# ultracart_client::ScreenRecordingPageViewEvent
 
 ## Properties
 Name | Type | Description | Notes

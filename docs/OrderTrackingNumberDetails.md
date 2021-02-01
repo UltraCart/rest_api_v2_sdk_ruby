@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OrderTrackingNumberDetails
+# ultracart_client::OrderTrackingNumberDetails
 
 ## Properties
 Name | Type | Description | Notes

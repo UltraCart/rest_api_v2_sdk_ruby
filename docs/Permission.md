@@ -1,4 +1,4 @@
-# UltraCartAdminV2::Permission
+# ultracart_client::Permission
 
 ## Properties
 Name | Type | Description | Notes

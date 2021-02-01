@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemApi
+# ultracart_client::ItemApi
 
 All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
@@ -25,9 +25,9 @@ Delete an item on the UltraCart account.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -37,7 +37,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::ItemApi.new
+api_instance = ultracart_client::ItemApi.new
 
 merchant_item_oid = 56 # Integer | The item oid to delete.
 
@@ -45,7 +45,7 @@ merchant_item_oid = 56 # Integer | The item oid to delete.
 begin
   #Delete an item
   api_instance.delete_item(merchant_item_oid)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling ItemApi->delete_item: #{e}"
 end
 ```
@@ -81,9 +81,9 @@ Retrieves a single item using the specified item oid.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -93,7 +93,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::ItemApi.new
+api_instance = ultracart_client::ItemApi.new
 
 merchant_item_oid = 56 # Integer | The item oid to retrieve.
 
@@ -106,7 +106,7 @@ begin
   #Retrieve an item
   result = api_instance.get_item(merchant_item_oid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling ItemApi->get_item: #{e}"
 end
 ```
@@ -144,9 +144,9 @@ Retrieves a single item using the specified item id.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -156,7 +156,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::ItemApi.new
+api_instance = ultracart_client::ItemApi.new
 
 merchant_item_id = 'merchant_item_id_example' # String | The item id to retrieve.
 
@@ -169,7 +169,7 @@ begin
   #Retrieve an item by item id
   result = api_instance.get_item_by_merchant_item_id(merchant_item_id, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling ItemApi->get_item_by_merchant_item_id: #{e}"
 end
 ```
@@ -207,9 +207,9 @@ Retrieves a group of items from the account.  If no parameters are specified, al
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -219,7 +219,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::ItemApi.new
+api_instance = ultracart_client::ItemApi.new
 
 opts = { 
   parent_category_id: 56, # Integer | The parent category object id to retrieve items for.  Unspecified means all items on the account.  0 = root
@@ -236,7 +236,7 @@ begin
   #Retrieve items
   result = api_instance.get_items(opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling ItemApi->get_items: #{e}"
 end
 ```
@@ -279,9 +279,9 @@ Retrieves the pricing tiers
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -291,7 +291,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::ItemApi.new
+api_instance = ultracart_client::ItemApi.new
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -301,7 +301,7 @@ begin
   #Retrieve pricing tiers
   result = api_instance.get_pricing_tiers(opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling ItemApi->get_pricing_tiers: #{e}"
 end
 ```
@@ -337,9 +337,9 @@ Create a new item on the UltraCart account.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -349,9 +349,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::ItemApi.new
+api_instance = ultracart_client::ItemApi.new
 
-item = UltraCartAdminV2::Item.new # Item | Item to create
+item = ultracart_client::Item.new # Item | Item to create
 
 opts = { 
   _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
@@ -362,7 +362,7 @@ begin
   #Create an item
   result = api_instance.insert_item(item, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling ItemApi->insert_item: #{e}"
 end
 ```
@@ -400,9 +400,9 @@ Update a new item on the UltraCart account.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -412,9 +412,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::ItemApi.new
+api_instance = ultracart_client::ItemApi.new
 
-item = UltraCartAdminV2::Item.new # Item | Item to update
+item = ultracart_client::Item.new # Item | Item to update
 
 merchant_item_oid = 56 # Integer | The item oid to update.
 
@@ -427,7 +427,7 @@ begin
   #Update an item
   result = api_instance.update_item(item, merchant_item_oid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling ItemApi->update_item: #{e}"
 end
 ```
@@ -466,9 +466,9 @@ Update multiple item on the UltraCart account.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -478,9 +478,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::ItemApi.new
+api_instance = ultracart_client::ItemApi.new
 
-items_request = UltraCartAdminV2::ItemsRequest.new # ItemsRequest | Items to update (synchronous maximum 20 / asynchronous maximum 100)
+items_request = ultracart_client::ItemsRequest.new # ItemsRequest | Items to update (synchronous maximum 20 / asynchronous maximum 100)
 
 opts = { 
   _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
@@ -492,7 +492,7 @@ begin
   #Update multiple items
   result = api_instance.update_items(items_request, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling ItemApi->update_items: #{e}"
 end
 ```
@@ -531,9 +531,9 @@ Uploads an image and returns back meta information about the image as well as th
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -543,7 +543,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::ItemApi.new
+api_instance = ultracart_client::ItemApi.new
 
 file = File.new('/path/to/file.txt') # File | File to upload
 
@@ -552,7 +552,7 @@ begin
   #Upload an image to the temporary multimedia.
   result = api_instance.upload_temporary_multimedia(file)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling ItemApi->upload_temporary_multimedia: #{e}"
 end
 ```

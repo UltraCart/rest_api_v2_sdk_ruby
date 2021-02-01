@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemAutoOrderStepGrandfatherPricing
+# ultracart_client::ItemAutoOrderStepGrandfatherPricing
 
 ## Properties
 Name | Type | Description | Notes

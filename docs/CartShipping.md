@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CartShipping
+# ultracart_client::CartShipping
 
 ## Properties
 Name | Type | Description | Notes

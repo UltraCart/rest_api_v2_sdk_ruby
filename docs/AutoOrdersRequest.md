@@ -1,4 +1,4 @@
-# UltraCartAdminV2::AutoOrdersRequest
+# ultracart_client::AutoOrdersRequest
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ExperimentVariation
+# ultracart_client::ExperimentVariation
 
 ## Properties
 Name | Type | Description | Notes

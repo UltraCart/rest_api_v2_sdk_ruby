@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemShippingCase
+# ultracart_client::ItemShippingCase
 
 ## Properties
 Name | Type | Description | Notes

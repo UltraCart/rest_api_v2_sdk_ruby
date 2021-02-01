@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemInternal
+# ultracart_client::ItemInternal
 
 ## Properties
 Name | Type | Description | Notes

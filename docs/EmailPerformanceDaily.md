@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailPerformanceDaily
+# ultracart_client::EmailPerformanceDaily
 
 ## Properties
 Name | Type | Description | Notes

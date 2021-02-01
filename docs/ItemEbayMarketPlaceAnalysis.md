@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemEbayMarketPlaceAnalysis
+# ultracart_client::ItemEbayMarketPlaceAnalysis
 
 ## Properties
 Name | Type | Description | Notes

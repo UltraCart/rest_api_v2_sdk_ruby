@@ -1,4 +1,4 @@
-# UltraCartAdminV2::UserLogin
+# ultracart_client::UserLogin
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemInstantPaymentNotifications
+# ultracart_client::ItemInstantPaymentNotifications
 
 ## Properties
 Name | Type | Description | Notes

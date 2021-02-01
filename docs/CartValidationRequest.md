@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CartValidationRequest
+# ultracart_client::CartValidationRequest
 
 ## Properties
 Name | Type | Description | Notes

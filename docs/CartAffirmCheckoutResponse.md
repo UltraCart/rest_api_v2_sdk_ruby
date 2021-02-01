@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CartAffirmCheckoutResponse
+# ultracart_client::CartAffirmCheckoutResponse
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailPlanAdditional
+# ultracart_client::EmailPlanAdditional
 
 ## Properties
 Name | Type | Description | Notes

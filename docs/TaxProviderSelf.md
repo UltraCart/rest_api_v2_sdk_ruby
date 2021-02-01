@@ -1,4 +1,4 @@
-# UltraCartAdminV2::TaxProviderSelf
+# ultracart_client::TaxProviderSelf
 
 ## Properties
 Name | Type | Description | Notes

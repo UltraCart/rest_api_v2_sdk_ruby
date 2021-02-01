@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailCommseqStep
+# ultracart_client::EmailCommseqStep
 
 ## Properties
 Name | Type | Description | Notes

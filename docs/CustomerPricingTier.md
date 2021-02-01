@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CustomerPricingTier
+# ultracart_client::CustomerPricingTier
 
 ## Properties
 Name | Type | Description | Notes

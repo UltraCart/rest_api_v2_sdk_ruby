@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CartKitComponentOption
+# ultracart_client::CartKitComponentOption
 
 ## Properties
 Name | Type | Description | Notes

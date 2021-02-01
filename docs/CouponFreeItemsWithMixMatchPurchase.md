@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CouponFreeItemsWithMixMatchPurchase
+# ultracart_client::CouponFreeItemsWithMixMatchPurchase
 
 ## Properties
 Name | Type | Description | Notes

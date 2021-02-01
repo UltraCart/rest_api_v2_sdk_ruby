@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ScreenRecordingQueryRequest
+# ultracart_client::ScreenRecordingQueryRequest
 
 ## Properties
 Name | Type | Description | Notes

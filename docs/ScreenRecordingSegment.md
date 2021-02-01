@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ScreenRecordingSegment
+# ultracart_client::ScreenRecordingSegment
 
 ## Properties
 Name | Type | Description | Notes

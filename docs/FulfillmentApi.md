@@ -1,4 +1,4 @@
-# UltraCartAdminV2::FulfillmentApi
+# ultracart_client::FulfillmentApi
 
 All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
@@ -21,9 +21,9 @@ Acknowledge receipt of orders so that they are removed from the fulfillment queu
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -33,17 +33,17 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::FulfillmentApi.new
+api_instance = ultracart_client::FulfillmentApi.new
 
 distribution_center_code = 'distribution_center_code_example' # String | Distribution center code
 
-order_ids = [UltraCartAdminV2::Array<String>.new] # Array<String> | Orders to acknowledge receipt of (limit 100)
+order_ids = [ultracart_client::Array<String>.new] # Array<String> | Orders to acknowledge receipt of (limit 100)
 
 
 begin
   #Acknowledge receipt of orders.
   api_instance.acknowledge_orders(distribution_center_code, order_ids)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling FulfillmentApi->acknowledge_orders: #{e}"
 end
 ```
@@ -80,9 +80,9 @@ Retrieves up to 100 orders that are queued up in this distribution center.  You 
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -92,7 +92,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::FulfillmentApi.new
+api_instance = ultracart_client::FulfillmentApi.new
 
 distribution_center_code = 'distribution_center_code_example' # String | Distribution center code
 
@@ -101,7 +101,7 @@ begin
   #Retrieve orders queued up for this distribution center.
   result = api_instance.get_distribution_center_orders(distribution_center_code)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling FulfillmentApi->get_distribution_center_orders: #{e}"
 end
 ```
@@ -137,9 +137,9 @@ Retrieves the distribution centers that this user has access to.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -149,13 +149,13 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::FulfillmentApi.new
+api_instance = ultracart_client::FulfillmentApi.new
 
 begin
   #Retrieve distribution centers
   result = api_instance.get_distribution_centers
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling FulfillmentApi->get_distribution_centers: #{e}"
 end
 ```
@@ -188,9 +188,9 @@ Store the tracking information and mark the order shipped for this distribution 
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -200,17 +200,17 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::FulfillmentApi.new
+api_instance = ultracart_client::FulfillmentApi.new
 
 distribution_center_code = 'distribution_center_code_example' # String | Distribution center code
 
-shipments = [UltraCartAdminV2::FulfillmentShipment.new] # Array<FulfillmentShipment> | Orders to mark shipped
+shipments = [ultracart_client::FulfillmentShipment.new] # Array<FulfillmentShipment> | Orders to mark shipped
 
 
 begin
   #Mark orders as shipped
   api_instance.ship_orders(distribution_center_code, shipments)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling FulfillmentApi->ship_orders: #{e}"
 end
 ```
@@ -247,9 +247,9 @@ Update the inventory for items associated with this distribution center
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -259,17 +259,17 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::FulfillmentApi.new
+api_instance = ultracart_client::FulfillmentApi.new
 
 distribution_center_code = 'distribution_center_code_example' # String | Distribution center code
 
-inventories = [UltraCartAdminV2::FulfillmentInventory.new] # Array<FulfillmentInventory> | Inventory updates (limit 500)
+inventories = [ultracart_client::FulfillmentInventory.new] # Array<FulfillmentInventory> | Inventory updates (limit 500)
 
 
 begin
   #Update inventory
   api_instance.update_inventory(distribution_center_code, inventories)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling FulfillmentApi->update_inventory: #{e}"
 end
 ```

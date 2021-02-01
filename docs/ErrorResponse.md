@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ErrorResponse
+# ultracart_client::ErrorResponse
 
 ## Properties
 Name | Type | Description | Notes

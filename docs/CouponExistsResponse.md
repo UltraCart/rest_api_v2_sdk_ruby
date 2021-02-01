@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CouponExistsResponse
+# ultracart_client::CouponExistsResponse
 
 ## Properties
 Name | Type | Description | Notes

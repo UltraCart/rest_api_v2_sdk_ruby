@@ -1,4 +1,4 @@
-# UltraCartAdminV2::DistributionCentersResponse
+# ultracart_client::DistributionCentersResponse
 
 ## Properties
 Name | Type | Description | Notes

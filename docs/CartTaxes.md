@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CartTaxes
+# ultracart_client::CartTaxes
 
 ## Properties
 Name | Type | Description | Notes

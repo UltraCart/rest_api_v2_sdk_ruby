@@ -1,4 +1,4 @@
-# UltraCartAdminV2::TaxProviderSelfRegionsResponse
+# ultracart_client::TaxProviderSelfRegionsResponse
 
 ## Properties
 Name | Type | Description | Notes

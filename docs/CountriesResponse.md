@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CountriesResponse
+# ultracart_client::CountriesResponse
 
 ## Properties
 Name | Type | Description | Notes

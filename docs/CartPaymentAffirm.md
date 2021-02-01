@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CartPaymentAffirm
+# ultracart_client::CartPaymentAffirm
 
 ## Properties
 Name | Type | Description | Notes

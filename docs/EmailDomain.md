@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailDomain
+# ultracart_client::EmailDomain
 
 ## Properties
 Name | Type | Description | Notes

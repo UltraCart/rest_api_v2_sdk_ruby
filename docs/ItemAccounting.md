@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemAccounting
+# ultracart_client::ItemAccounting
 
 ## Properties
 Name | Type | Description | Notes

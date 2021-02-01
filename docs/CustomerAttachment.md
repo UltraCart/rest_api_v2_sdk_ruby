@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CustomerAttachment
+# ultracart_client::CustomerAttachment
 
 ## Properties
 Name | Type | Description | Notes

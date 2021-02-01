@@ -1,4 +1,4 @@
-# UltraCartAdminV2::TaxProviderSovos
+# ultracart_client::TaxProviderSovos
 
 ## Properties
 Name | Type | Description | Notes

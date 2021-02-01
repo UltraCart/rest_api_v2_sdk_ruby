@@ -1,4 +1,4 @@
-# UltraCartAdminV2::Group
+# ultracart_client::Group
 
 ## Properties
 Name | Type | Description | Notes

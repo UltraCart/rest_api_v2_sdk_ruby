@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OrderItemOptionFileAttachment
+# ultracart_client::OrderItemOptionFileAttachment
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ScreenRecordingUserAgentDevice
+# ultracart_client::ScreenRecordingUserAgentDevice
 
 ## Properties
 Name | Type | Description | Notes

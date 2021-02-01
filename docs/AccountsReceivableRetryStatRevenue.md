@@ -1,4 +1,4 @@
-# UltraCartAdminV2::AccountsReceivableRetryStatRevenue
+# ultracart_client::AccountsReceivableRetryStatRevenue
 
 ## Properties
 Name | Type | Description | Notes

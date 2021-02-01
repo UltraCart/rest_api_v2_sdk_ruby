@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OrderQuery
+# ultracart_client::OrderQuery
 
 ## Properties
 Name | Type | Description | Notes

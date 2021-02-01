@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CustomerReviewer
+# ultracart_client::CustomerReviewer
 
 ## Properties
 Name | Type | Description | Notes

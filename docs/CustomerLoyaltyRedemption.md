@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CustomerLoyaltyRedemption
+# ultracart_client::CustomerLoyaltyRedemption
 
 ## Properties
 Name | Type | Description | Notes

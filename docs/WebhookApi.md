@@ -1,4 +1,4 @@
-# UltraCartAdminV2::WebhookApi
+# ultracart_client::WebhookApi
 
 All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
@@ -24,9 +24,9 @@ Delete a webhook on the UltraCart account.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -36,7 +36,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::WebhookApi.new
+api_instance = ultracart_client::WebhookApi.new
 
 webhook_oid = 56 # Integer | The webhook oid to delete.
 
@@ -44,7 +44,7 @@ webhook_oid = 56 # Integer | The webhook oid to delete.
 begin
   #Delete a webhook
   api_instance.delete_webhook(webhook_oid)
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling WebhookApi->delete_webhook: #{e}"
 end
 ```
@@ -80,9 +80,9 @@ Delete a webhook based upon the URL on the webhook_url matching an existing webh
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -92,16 +92,16 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::WebhookApi.new
+api_instance = ultracart_client::WebhookApi.new
 
-webhook = UltraCartAdminV2::Webhook.new # Webhook | Webhook to delete
+webhook = ultracart_client::Webhook.new # Webhook | Webhook to delete
 
 
 begin
   #Delete a webhook by URL
   result = api_instance.delete_webhook_by_url(webhook)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling WebhookApi->delete_webhook_by_url: #{e}"
 end
 ```
@@ -137,9 +137,9 @@ Retrieves an individual log for a webhook given the webhook oid the request id.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -149,7 +149,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::WebhookApi.new
+api_instance = ultracart_client::WebhookApi.new
 
 webhook_oid = 56 # Integer | The webhook oid that owns the log.
 
@@ -160,7 +160,7 @@ begin
   #Retrieve an individual log
   result = api_instance.get_webhook_log(webhook_oid, request_id)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling WebhookApi->get_webhook_log: #{e}"
 end
 ```
@@ -197,9 +197,9 @@ Retrieves the log summary information for a given webhook.  This is useful for d
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -209,7 +209,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::WebhookApi.new
+api_instance = ultracart_client::WebhookApi.new
 
 webhook_oid = 56 # Integer | The webhook oid to retrieve log summaries for.
 
@@ -223,7 +223,7 @@ begin
   #Retrieve the log summaries
   result = api_instance.get_webhook_log_summaries(webhook_oid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling WebhookApi->get_webhook_log_summaries: #{e}"
 end
 ```
@@ -262,9 +262,9 @@ Retrieves the webhooks associated with this application.
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -274,7 +274,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::WebhookApi.new
+api_instance = ultracart_client::WebhookApi.new
 
 opts = { 
   _limit: 100, # Integer | The maximum number of records to return on this one API call.
@@ -287,7 +287,7 @@ begin
   #Retrieve webhooks
   result = api_instance.get_webhooks(opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling WebhookApi->get_webhooks: #{e}"
 end
 ```
@@ -326,9 +326,9 @@ Adds a new webhook on the account.  If you add a new webhook with the authentica
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -338,9 +338,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::WebhookApi.new
+api_instance = ultracart_client::WebhookApi.new
 
-webhook = UltraCartAdminV2::Webhook.new # Webhook | Webhook to create
+webhook = ultracart_client::Webhook.new # Webhook | Webhook to create
 
 opts = { 
   _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
@@ -350,7 +350,7 @@ begin
   #Add a webhook
   result = api_instance.insert_webhook(webhook, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling WebhookApi->insert_webhook: #{e}"
 end
 ```
@@ -387,9 +387,9 @@ This method will resend events to the webhook endpoint.  This method can be used
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -399,7 +399,7 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::WebhookApi.new
+api_instance = ultracart_client::WebhookApi.new
 
 webhook_oid = 56 # Integer | The webhook oid that is receiving the reflowed events.
 
@@ -410,7 +410,7 @@ begin
   #Resend events to the webhook endpoint.
   result = api_instance.resend_event(webhook_oid, event_name)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling WebhookApi->resend_event: #{e}"
 end
 ```
@@ -447,9 +447,9 @@ Update a webhook on the account
 ### Example
 ```ruby
 # load the gem
-require 'com_ultracart_admin_v2'
+require 'ultracart_api'
 # setup authorization
-UltraCartAdminV2.configure do |config|
+ultracart_client.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -459,9 +459,9 @@ UltraCartAdminV2.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = UltraCartAdminV2::WebhookApi.new
+api_instance = ultracart_client::WebhookApi.new
 
-webhook = UltraCartAdminV2::Webhook.new # Webhook | Webhook to update
+webhook = ultracart_client::Webhook.new # Webhook | Webhook to update
 
 webhook_oid = 56 # Integer | The webhook oid to update.
 
@@ -473,7 +473,7 @@ begin
   #Update a webhook
   result = api_instance.update_webhook(webhook, webhook_oid, opts)
   p result
-rescue UltraCartAdminV2::ApiError => e
+rescue ultracart_client::ApiError => e
   puts "Exception when calling WebhookApi->update_webhook: #{e}"
 end
 ```

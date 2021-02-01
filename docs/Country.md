@@ -1,4 +1,4 @@
-# UltraCartAdminV2::Country
+# ultracart_client::Country
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ResultSet
+# ultracart_client::ResultSet
 
 ## Properties
 Name | Type | Description | Notes

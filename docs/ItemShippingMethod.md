@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemShippingMethod
+# ultracart_client::ItemShippingMethod
 
 ## Properties
 Name | Type | Description | Notes

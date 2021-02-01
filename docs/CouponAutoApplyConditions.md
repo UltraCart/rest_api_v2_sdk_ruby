@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CouponAutoApplyConditions
+# ultracart_client::CouponAutoApplyConditions
 
 ## Properties
 Name | Type | Description | Notes

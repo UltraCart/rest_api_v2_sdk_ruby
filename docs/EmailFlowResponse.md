@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailFlowResponse
+# ultracart_client::EmailFlowResponse
 
 ## Properties
 Name | Type | Description | Notes

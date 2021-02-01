@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ScreenRecordingFilterStringSearch
+# ultracart_client::ScreenRecordingFilterStringSearch
 
 ## Properties
 Name | Type | Description | Notes

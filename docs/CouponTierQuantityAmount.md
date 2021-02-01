@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CouponTierQuantityAmount
+# ultracart_client::CouponTierQuantityAmount
 
 ## Properties
 Name | Type | Description | Notes

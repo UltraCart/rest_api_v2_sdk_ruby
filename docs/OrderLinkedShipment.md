@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OrderLinkedShipment
+# ultracart_client::OrderLinkedShipment
 
 ## Properties
 Name | Type | Description | Notes

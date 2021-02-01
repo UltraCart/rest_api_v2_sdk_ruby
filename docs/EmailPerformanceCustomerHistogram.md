@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailPerformanceCustomerHistogram
+# ultracart_client::EmailPerformanceCustomerHistogram
 
 ## Properties
 Name | Type | Description | Notes

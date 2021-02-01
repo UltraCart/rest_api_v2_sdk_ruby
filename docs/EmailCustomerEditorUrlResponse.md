@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailCustomerEditorUrlResponse
+# ultracart_client::EmailCustomerEditorUrlResponse
 
 ## Properties
 Name | Type | Description | Notes

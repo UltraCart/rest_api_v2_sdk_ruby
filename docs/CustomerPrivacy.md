@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CustomerPrivacy
+# ultracart_client::CustomerPrivacy
 
 ## Properties
 Name | Type | Description | Notes

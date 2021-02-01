@@ -1,4 +1,4 @@
-# UltraCartAdminV2::GeocodeResponse
+# ultracart_client::GeocodeResponse
 
 ## Properties
 Name | Type | Description | Notes

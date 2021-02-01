@@ -1,4 +1,4 @@
-# UltraCartAdminV2::LinkedAccount
+# ultracart_client::LinkedAccount
 
 ## Properties
 Name | Type | Description | Notes

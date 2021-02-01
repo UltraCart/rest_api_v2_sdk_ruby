@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ScreenRecordingFilterPageViewReferrerParam
+# ultracart_client::ScreenRecordingFilterPageViewReferrerParam
 
 ## Properties
 Name | Type | Description | Notes

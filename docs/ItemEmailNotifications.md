@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemEmailNotifications
+# ultracart_client::ItemEmailNotifications
 
 ## Properties
 Name | Type | Description | Notes

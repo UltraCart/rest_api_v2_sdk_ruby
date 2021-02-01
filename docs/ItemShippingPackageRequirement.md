@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemShippingPackageRequirement
+# ultracart_client::ItemShippingPackageRequirement
 
 ## Properties
 Name | Type | Description | Notes

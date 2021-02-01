@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ScreenRecordingFilterRangeDate
+# ultracart_client::ScreenRecordingFilterRangeDate
 
 ## Properties
 Name | Type | Description | Notes

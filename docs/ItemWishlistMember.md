@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemWishlistMember
+# ultracart_client::ItemWishlistMember
 
 ## Properties
 Name | Type | Description | Notes

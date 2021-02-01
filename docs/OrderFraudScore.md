@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OrderFraudScore
+# ultracart_client::OrderFraudScore
 
 ## Properties
 Name | Type | Description | Notes

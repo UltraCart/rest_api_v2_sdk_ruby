@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OrderPaymentTransaction
+# ultracart_client::OrderPaymentTransaction
 
 ## Properties
 Name | Type | Description | Notes

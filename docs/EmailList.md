@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailList
+# ultracart_client::EmailList
 
 ## Properties
 Name | Type | Description | Notes

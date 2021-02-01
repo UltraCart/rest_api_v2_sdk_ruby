@@ -1,4 +1,4 @@
-# UltraCartAdminV2::Distance
+# ultracart_client::Distance
 
 ## Properties
 Name | Type | Description | Notes

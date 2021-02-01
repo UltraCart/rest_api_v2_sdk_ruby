@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OauthRevokeSuccessResponse
+# ultracart_client::OauthRevokeSuccessResponse
 
 ## Properties
 Name | Type | Description | Notes

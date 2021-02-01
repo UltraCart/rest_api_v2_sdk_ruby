@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OrderSalesforce
+# ultracart_client::OrderSalesforce
 
 ## Properties
 Name | Type | Description | Notes

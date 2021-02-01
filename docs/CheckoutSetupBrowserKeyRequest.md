@@ -1,4 +1,4 @@
-# UltraCartAdminV2::CheckoutSetupBrowserKeyRequest
+# ultracart_client::CheckoutSetupBrowserKeyRequest
 
 ## Properties
 Name | Type | Description | Notes

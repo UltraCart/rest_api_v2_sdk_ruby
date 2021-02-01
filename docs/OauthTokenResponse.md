@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OauthTokenResponse
+# ultracart_client::OauthTokenResponse
 
 ## Properties
 Name | Type | Description | Notes

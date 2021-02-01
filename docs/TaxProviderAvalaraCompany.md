@@ -1,4 +1,4 @@
-# UltraCartAdminV2::TaxProviderAvalaraCompany
+# ultracart_client::TaxProviderAvalaraCompany
 
 ## Properties
 Name | Type | Description | Notes

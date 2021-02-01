@@ -1,4 +1,4 @@
-# UltraCartAdminV2::EmailGlobalSettingsResponse
+# ultracart_client::EmailGlobalSettingsResponse
 
 ## Properties
 Name | Type | Description | Notes

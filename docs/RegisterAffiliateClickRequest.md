@@ -1,4 +1,4 @@
-# UltraCartAdminV2::RegisterAffiliateClickRequest
+# ultracart_client::RegisterAffiliateClickRequest
 
 ## Properties
 Name | Type | Description | Notes

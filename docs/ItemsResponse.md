@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemsResponse
+# ultracart_client::ItemsResponse
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# UltraCartAdminV2::AccountsReceivableRetryDayActivity
+# ultracart_client::AccountsReceivableRetryDayActivity
 
 ## Properties
 Name | Type | Description | Notes

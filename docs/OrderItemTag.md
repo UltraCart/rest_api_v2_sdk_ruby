@@ -1,4 +1,4 @@
-# UltraCartAdminV2::OrderItemTag
+# ultracart_client::OrderItemTag
 
 ## Properties
 Name | Type | Description | Notes

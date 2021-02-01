@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemChargebackAdjustmentRequest
+# ultracart_client::ItemChargebackAdjustmentRequest
 
 ## Properties
 Name | Type | Description | Notes

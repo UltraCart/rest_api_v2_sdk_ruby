@@ -1,4 +1,4 @@
-# UltraCartAdminV2::ItemRestriction
+# ultracart_client::ItemRestriction
 
 ## Properties
 Name | Type | Description | Notes
