@@ -1,4 +1,4 @@
-# ultracart_client::SimpleValue
+# UltracartClient::SimpleValue
 
 ## Properties
 Name | Type | Description | Notes

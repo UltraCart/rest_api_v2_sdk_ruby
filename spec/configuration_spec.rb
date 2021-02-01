@@ -12,14 +12,14 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 
 require 'spec_helper'
 
-describe ultracart_client::Configuration do
-  let(:config) { ultracart_client::Configuration.default }
+describe UltracartClient::Configuration do
+  let(:config) { UltracartClient::Configuration.default }
 
   before(:each) do
     # uncomment below to setup host and base_path
     # require 'URI'
     # uri = URI.parse("https://secure.ultracart.com/rest/v2")
-    # ultracart_client.configure do |c|
+    # UltracartClient.configure do |c|
     #   c.host = uri.host
     #   c.base_path = uri.path
     # end

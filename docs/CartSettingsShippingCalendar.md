@@ -1,4 +1,4 @@
-# ultracart_client::CartSettingsShippingCalendar
+# UltracartClient::CartSettingsShippingCalendar
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# ultracart_client::CartPaymentAffirm
+# UltracartClient::CartPaymentAffirm
 
 ## Properties
 Name | Type | Description | Notes

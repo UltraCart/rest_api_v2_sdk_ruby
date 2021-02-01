@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 
 require 'uri'
 
-module ultracart_client
+module UltracartClient
   class Configuration
     # Defines url scheme
     attr_accessor :scheme

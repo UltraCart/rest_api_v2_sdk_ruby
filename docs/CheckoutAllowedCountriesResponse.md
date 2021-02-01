@@ -1,4 +1,4 @@
-# ultracart_client::CheckoutAllowedCountriesResponse
+# UltracartClient::CheckoutAllowedCountriesResponse
 
 ## Properties
 Name | Type | Description | Notes

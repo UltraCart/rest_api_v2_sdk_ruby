@@ -1,4 +1,4 @@
-# ultracart_client::CartGiftCertificate
+# UltracartClient::CartGiftCertificate
 
 ## Properties
 Name | Type | Description | Notes

@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 
 require 'date'
 
-module ultracart_client
+module UltracartClient
   class OrderChannelPartner
     # If true, any purchase order submitted is automatically approved
     attr_accessor :auto_approve_purchase_order
@@ -224,7 +224,7 @@ module ultracart_client
           end
         end
       else # model
-        temp_model = ultracart_client.const_get(type).new
+        temp_model = UltracartClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

@@ -1,4 +1,4 @@
-# ultracart_client::CartProfileLoginRequest
+# UltracartClient::CartProfileLoginRequest
 
 ## Properties
 Name | Type | Description | Notes

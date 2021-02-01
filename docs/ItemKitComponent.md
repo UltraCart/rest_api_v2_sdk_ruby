@@ -1,4 +1,4 @@
-# ultracart_client::ItemKitComponent
+# UltracartClient::ItemKitComponent
 
 ## Properties
 Name | Type | Description | Notes

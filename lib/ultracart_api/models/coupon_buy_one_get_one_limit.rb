@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 
 require 'date'
 
-module ultracart_client
+module UltracartClient
   class CouponBuyOneGetOneLimit
     # An optional list of items of which one must be purchased to receive free quantity of the same item.
     attr_accessor :items
@@ -146,7 +146,7 @@ module ultracart_client
           end
         end
       else # model
-        temp_model = ultracart_client.const_get(type).new
+        temp_model = UltracartClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

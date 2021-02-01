@@ -1,4 +1,4 @@
-# ultracart_client::CartSettingsShippingEstimate
+# UltracartClient::CartSettingsShippingEstimate
 
 ## Properties
 Name | Type | Description | Notes

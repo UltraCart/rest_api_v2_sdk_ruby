@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 
 require 'date'
 
-module ultracart_client
+module UltracartClient
   class CustomerSoftwareEntitlement
     # Activation Code Associated with the software
     attr_accessor :activation_code
@@ -279,7 +279,7 @@ module ultracart_client
           end
         end
       else # model
-        temp_model = ultracart_client.const_get(type).new
+        temp_model = UltracartClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

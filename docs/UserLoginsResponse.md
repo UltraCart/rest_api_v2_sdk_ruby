@@ -1,4 +1,4 @@
-# ultracart_client::UserLoginsResponse
+# UltracartClient::UserLoginsResponse
 
 ## Properties
 Name | Type | Description | Notes

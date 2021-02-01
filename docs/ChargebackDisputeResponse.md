@@ -1,4 +1,4 @@
-# ultracart_client::ChargebackDisputeResponse
+# UltracartClient::ChargebackDisputeResponse
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# ultracart_client::OauthApi
+# UltracartClient::OauthApi
 
 All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
@@ -20,7 +20,7 @@ The final leg in the OAuth process which exchanges the specified access token fo
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -35,7 +35,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OauthApi.new
+api_instance = UltracartClient::OauthApi.new
 
 client_id = 'client_id_example' # String | The OAuth application client_id.
 
@@ -51,7 +51,7 @@ begin
   #Exchange authorization code for access token.
   result = api_instance.oauth_access_token(client_id, grant_type, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OauthApi->oauth_access_token: #{e}"
 end
 ```
@@ -93,7 +93,7 @@ Revokes the OAuth application associated with the specified client_id and token.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure API key authorization: ultraCartBrowserApiKey
   config.api_key['x-ultracart-browser-key'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -108,7 +108,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OauthApi.new
+api_instance = UltracartClient::OauthApi.new
 
 client_id = 'client_id_example' # String | The OAuth application client_id.
 
@@ -119,7 +119,7 @@ begin
   #Revoke this OAuth application.
   result = api_instance.oauth_revoke(client_id, token)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OauthApi->oauth_revoke: #{e}"
 end
 ```

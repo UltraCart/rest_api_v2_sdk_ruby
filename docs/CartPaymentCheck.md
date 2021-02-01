@@ -1,4 +1,4 @@
-# ultracart_client::CartPaymentCheck
+# UltracartClient::CartPaymentCheck
 
 ## Properties
 Name | Type | Description | Notes

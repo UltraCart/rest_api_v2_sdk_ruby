@@ -1,4 +1,4 @@
-# ultracart_client::TaxProviderTestResult
+# UltracartClient::TaxProviderTestResult
 
 ## Properties
 Name | Type | Description | Notes

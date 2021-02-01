@@ -1,4 +1,4 @@
-# ultracart_client::CouponDiscountItemWithItemPurchase
+# UltracartClient::CouponDiscountItemWithItemPurchase
 
 ## Properties
 Name | Type | Description | Notes

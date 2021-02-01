@@ -1,4 +1,4 @@
-# ultracart_client::TaxStateCode
+# UltracartClient::TaxStateCode
 
 ## Properties
 Name | Type | Description | Notes

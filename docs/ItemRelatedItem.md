@@ -1,4 +1,4 @@
-# ultracart_client::ItemRelatedItem
+# UltracartClient::ItemRelatedItem
 
 ## Properties
 Name | Type | Description | Notes

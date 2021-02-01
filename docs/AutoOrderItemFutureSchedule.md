@@ -1,4 +1,4 @@
-# ultracart_client::AutoOrderItemFutureSchedule
+# UltracartClient::AutoOrderItemFutureSchedule
 
 ## Properties
 Name | Type | Description | Notes

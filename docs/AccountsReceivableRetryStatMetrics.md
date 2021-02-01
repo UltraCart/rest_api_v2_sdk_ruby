@@ -1,4 +1,4 @@
-# ultracart_client::AccountsReceivableRetryStatMetrics
+# UltracartClient::AccountsReceivableRetryStatMetrics
 
 ## Properties
 Name | Type | Description | Notes

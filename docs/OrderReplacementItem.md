@@ -1,4 +1,4 @@
-# ultracart_client::OrderReplacementItem
+# UltracartClient::OrderReplacementItem
 
 ## Properties
 Name | Type | Description | Notes

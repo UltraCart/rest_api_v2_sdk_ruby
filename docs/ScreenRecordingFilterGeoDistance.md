@@ -1,4 +1,4 @@
-# ultracart_client::ScreenRecordingFilterGeoDistance
+# UltracartClient::ScreenRecordingFilterGeoDistance
 
 ## Properties
 Name | Type | Description | Notes

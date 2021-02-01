@@ -1,4 +1,4 @@
-# ultracart_client::ItemThirdPartyEmailMarketing
+# UltracartClient::ItemThirdPartyEmailMarketing
 
 ## Properties
 Name | Type | Description | Notes

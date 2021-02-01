@@ -1,4 +1,4 @@
-# ultracart_client::ItemWishlistMember
+# UltracartClient::ItemWishlistMember
 
 ## Properties
 Name | Type | Description | Notes

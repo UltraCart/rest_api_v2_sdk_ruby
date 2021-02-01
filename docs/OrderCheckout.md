@@ -1,4 +1,4 @@
-# ultracart_client::OrderCheckout
+# UltracartClient::OrderCheckout
 
 ## Properties
 Name | Type | Description | Notes

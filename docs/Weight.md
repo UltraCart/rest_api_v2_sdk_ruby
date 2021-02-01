@@ -1,4 +1,4 @@
-# ultracart_client::Weight
+# UltracartClient::Weight
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# ultracart_client::EmailEditorTokenResponse
+# UltracartClient::EmailEditorTokenResponse
 
 ## Properties
 Name | Type | Description | Notes

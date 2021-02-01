@@ -1,4 +1,4 @@
-# ultracart_client::ItemSalesforce
+# UltracartClient::ItemSalesforce
 
 ## Properties
 Name | Type | Description | Notes

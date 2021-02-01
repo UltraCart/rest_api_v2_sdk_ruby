@@ -1,4 +1,4 @@
-# ultracart_client::EmailOrder
+# UltracartClient::EmailOrder
 
 ## Properties
 Name | Type | Description | Notes

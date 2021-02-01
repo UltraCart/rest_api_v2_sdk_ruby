@@ -1,4 +1,4 @@
-# ultracart_client::GeocodeRequest
+# UltracartClient::GeocodeRequest
 
 ## Properties
 Name | Type | Description | Notes

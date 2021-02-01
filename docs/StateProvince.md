@@ -1,4 +1,4 @@
-# ultracart_client::StateProvince
+# UltracartClient::StateProvince
 
 ## Properties
 Name | Type | Description | Notes

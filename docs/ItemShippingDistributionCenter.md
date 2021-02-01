@@ -1,4 +1,4 @@
-# ultracart_client::ItemShippingDistributionCenter
+# UltracartClient::ItemShippingDistributionCenter
 
 ## Properties
 Name | Type | Description | Notes

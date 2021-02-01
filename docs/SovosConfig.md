@@ -1,4 +1,4 @@
-# ultracart_client::SovosConfig
+# UltracartClient::SovosConfig
 
 ## Properties
 Name | Type | Description | Notes

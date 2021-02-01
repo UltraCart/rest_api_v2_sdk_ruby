@@ -1,4 +1,4 @@
-# ultracart_client::CustomerQuery
+# UltracartClient::CustomerQuery
 
 ## Properties
 Name | Type | Description | Notes

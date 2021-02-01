@@ -1,4 +1,4 @@
-# ultracart_client::CustomerApi
+# UltracartClient::CustomerApi
 
 All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
@@ -28,7 +28,7 @@ Delete a customer on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -38,7 +38,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CustomerApi.new
+api_instance = UltracartClient::CustomerApi.new
 
 customer_profile_oid = 56 # Integer | The customer_profile_oid to delete.
 
@@ -47,7 +47,7 @@ begin
   #Delete a customer
   result = api_instance.delete_customer(customer_profile_oid)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CustomerApi->delete_customer: #{e}"
 end
 ```
@@ -85,7 +85,7 @@ Retrieves a single customer using the specified customer profile oid.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -95,7 +95,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CustomerApi.new
+api_instance = UltracartClient::CustomerApi.new
 
 customer_profile_oid = 56 # Integer | The customer oid to retrieve.
 
@@ -107,7 +107,7 @@ begin
   #Retrieve a customer
   result = api_instance.get_customer(customer_profile_oid, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CustomerApi->get_customer: #{e}"
 end
 ```
@@ -146,7 +146,7 @@ Retrieves customers from the account.  If no parameters are specified, all custo
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -156,7 +156,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CustomerApi.new
+api_instance = UltracartClient::CustomerApi.new
 
 opts = { 
   email: 'email_example', # String | Email
@@ -197,7 +197,7 @@ begin
   #Retrieve customers
   result = api_instance.get_customers(opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CustomerApi->get_customers: #{e}"
 end
 ```
@@ -266,7 +266,7 @@ Retrieves customers from the account.  If no parameters are specified, all custo
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -276,9 +276,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CustomerApi.new
+api_instance = UltracartClient::CustomerApi.new
 
-customer_query = ultracart_client::CustomerQuery.new # CustomerQuery | Customer query
+customer_query = UltracartClient::CustomerQuery.new # CustomerQuery | Customer query
 
 opts = { 
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Max 200)
@@ -292,7 +292,7 @@ begin
   #Retrieve customers by query
   result = api_instance.get_customers_by_query(customer_query, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CustomerApi->get_customers_by_query: #{e}"
 end
 ```
@@ -335,7 +335,7 @@ Retrieves customers from the account.  If no searches are specified, all custome
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -345,7 +345,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CustomerApi.new
+api_instance = UltracartClient::CustomerApi.new
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -355,7 +355,7 @@ begin
   #Retrieve customers for DataTables plugin
   result = api_instance.get_customers_for_data_tables(opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CustomerApi->get_customers_for_data_tables: #{e}"
 end
 ```
@@ -393,7 +393,7 @@ Retrieve values needed for a customer profile editor.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -403,13 +403,13 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CustomerApi.new
+api_instance = UltracartClient::CustomerApi.new
 
 begin
   #Retrieve values needed for a customer profile editor
   result = api_instance.get_editor_values
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CustomerApi->get_editor_values: #{e}"
 end
 ```
@@ -444,7 +444,7 @@ Retrieve all email lists across all storefronts
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -454,13 +454,13 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CustomerApi.new
+api_instance = UltracartClient::CustomerApi.new
 
 begin
   #Retrieve all email lists across all storefronts
   result = api_instance.get_email_lists
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CustomerApi->get_email_lists: #{e}"
 end
 ```
@@ -495,7 +495,7 @@ Insert a customer on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -505,9 +505,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CustomerApi.new
+api_instance = UltracartClient::CustomerApi.new
 
-customer = ultracart_client::Customer.new # Customer | Customer to insert
+customer = UltracartClient::Customer.new # Customer | Customer to insert
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -517,7 +517,7 @@ begin
   #Insert a customer
   result = api_instance.insert_customer(customer, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CustomerApi->insert_customer: #{e}"
 end
 ```
@@ -556,7 +556,7 @@ Update a customer on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -566,9 +566,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CustomerApi.new
+api_instance = UltracartClient::CustomerApi.new
 
-customer = ultracart_client::Customer.new # Customer | Customer to update
+customer = UltracartClient::Customer.new # Customer | Customer to update
 
 customer_profile_oid = 56 # Integer | The customer_profile_oid to update.
 
@@ -580,7 +580,7 @@ begin
   #Update a customer
   result = api_instance.update_customer(customer, customer_profile_oid, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CustomerApi->update_customer: #{e}"
 end
 ```
@@ -620,7 +620,7 @@ Update email list subscriptions for a customer
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -630,18 +630,18 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CustomerApi.new
+api_instance = UltracartClient::CustomerApi.new
 
 customer_profile_oid = 56 # Integer | The customer profile oid
 
-list_changes = ultracart_client::CustomerEmailListChanges.new # CustomerEmailListChanges | List changes
+list_changes = UltracartClient::CustomerEmailListChanges.new # CustomerEmailListChanges | List changes
 
 
 begin
   #Update email list subscriptions for a customer
   result = api_instance.update_customer_email_lists(customer_profile_oid, list_changes)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CustomerApi->update_customer_email_lists: #{e}"
 end
 ```

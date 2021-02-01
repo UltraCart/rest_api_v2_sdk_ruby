@@ -1,4 +1,4 @@
-# ultracart_client::ScreenRecordingStoreFront
+# UltracartClient::ScreenRecordingStoreFront
 
 ## Properties
 Name | Type | Description | Notes

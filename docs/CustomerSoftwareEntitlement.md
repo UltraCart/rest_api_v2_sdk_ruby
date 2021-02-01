@@ -1,4 +1,4 @@
-# ultracart_client::CustomerSoftwareEntitlement
+# UltracartClient::CustomerSoftwareEntitlement
 
 ## Properties
 Name | Type | Description | Notes

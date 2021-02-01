@@ -1,4 +1,4 @@
-# ultracart_client::ItemOptionValueDigitalItem
+# UltracartClient::ItemOptionValueDigitalItem
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# ultracart_client::EmailSegment
+# UltracartClient::EmailSegment
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# ultracart_client::CouponQuery
+# UltracartClient::CouponQuery
 
 ## Properties
 Name | Type | Description | Notes

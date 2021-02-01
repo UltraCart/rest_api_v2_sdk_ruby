@@ -1,4 +1,4 @@
-# ultracart_client::CustomerTag
+# UltracartClient::CustomerTag
 
 ## Properties
 Name | Type | Description | Notes

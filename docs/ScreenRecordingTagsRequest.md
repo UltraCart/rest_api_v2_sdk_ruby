@@ -1,4 +1,4 @@
-# ultracart_client::ScreenRecordingTagsRequest
+# UltracartClient::ScreenRecordingTagsRequest
 
 ## Properties
 Name | Type | Description | Notes

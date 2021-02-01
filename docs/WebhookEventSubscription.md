@@ -1,4 +1,4 @@
-# ultracart_client::WebhookEventSubscription
+# UltracartClient::WebhookEventSubscription
 
 ## Properties
 Name | Type | Description | Notes

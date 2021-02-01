@@ -10,7 +10,7 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 
 =end
 
-module ultracart_client
+module UltracartClient
   class ApiError < StandardError
     attr_reader :code, :response_headers, :response_body
 

@@ -1,4 +1,4 @@
-# ultracart_client::CustomerActivity
+# UltracartClient::CustomerActivity
 
 ## Properties
 Name | Type | Description | Notes

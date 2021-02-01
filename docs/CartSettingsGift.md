@@ -1,4 +1,4 @@
-# ultracart_client::CartSettingsGift
+# UltracartClient::CartSettingsGift
 
 ## Properties
 Name | Type | Description | Notes

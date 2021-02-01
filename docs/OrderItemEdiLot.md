@@ -1,4 +1,4 @@
-# ultracart_client::OrderItemEdiLot
+# UltracartClient::OrderItemEdiLot
 
 ## Properties
 Name | Type | Description | Notes

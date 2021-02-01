@@ -1,4 +1,4 @@
-# ultracart_client::EmailCampaignFolderResponse
+# UltracartClient::EmailCampaignFolderResponse
 
 ## Properties
 Name | Type | Description | Notes

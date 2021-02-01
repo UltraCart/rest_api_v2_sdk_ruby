@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 
 require 'date'
 
-module ultracart_client
+module UltracartClient
   class OrderInternal
     # True if the order has been exported to QuickBooks. If QuickBooks is not configured, then this will already be true
     attr_accessor :exported_to_accounting
@@ -189,7 +189,7 @@ module ultracart_client
           end
         end
       else # model
-        temp_model = ultracart_client.const_get(type).new
+        temp_model = UltracartClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

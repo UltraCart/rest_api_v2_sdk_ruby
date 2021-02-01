@@ -1,4 +1,4 @@
-# ultracart_client::CouponAmountOffSubtotalWithBlockPurchase
+# UltracartClient::CouponAmountOffSubtotalWithBlockPurchase
 
 ## Properties
 Name | Type | Description | Notes

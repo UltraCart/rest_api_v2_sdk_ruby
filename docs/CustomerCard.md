@@ -1,4 +1,4 @@
-# ultracart_client::CustomerCard
+# UltracartClient::CustomerCard
 
 ## Properties
 Name | Type | Description | Notes

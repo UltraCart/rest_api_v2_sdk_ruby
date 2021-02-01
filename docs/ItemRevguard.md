@@ -1,4 +1,4 @@
-# ultracart_client::ItemRevguard
+# UltracartClient::ItemRevguard
 
 ## Properties
 Name | Type | Description | Notes

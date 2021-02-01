@@ -1,4 +1,4 @@
-# ultracart_client::EmailStatSummaryRequest
+# UltracartClient::EmailStatSummaryRequest
 
 ## Properties
 Name | Type | Description | Notes

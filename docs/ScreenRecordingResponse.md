@@ -1,4 +1,4 @@
-# ultracart_client::ScreenRecordingResponse
+# UltracartClient::ScreenRecordingResponse
 
 ## Properties
 Name | Type | Description | Notes

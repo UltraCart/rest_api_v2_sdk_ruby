@@ -1,4 +1,4 @@
-# ultracart_client::CartItem
+# UltracartClient::CartItem
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# ultracart_client::OrderPaymentCreditCard
+# UltracartClient::OrderPaymentCreditCard
 
 ## Properties
 Name | Type | Description | Notes

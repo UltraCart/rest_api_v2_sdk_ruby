@@ -1,4 +1,4 @@
-# ultracart_client::TempMultimediaResponse
+# UltracartClient::TempMultimediaResponse
 
 ## Properties
 Name | Type | Description | Notes

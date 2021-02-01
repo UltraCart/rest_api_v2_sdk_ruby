@@ -1,4 +1,4 @@
-# ultracart_client::EmailPerformanceCustomerHistogramPeriod
+# UltracartClient::EmailPerformanceCustomerHistogramPeriod
 
 ## Properties
 Name | Type | Description | Notes

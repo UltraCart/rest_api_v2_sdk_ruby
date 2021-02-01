@@ -1,4 +1,4 @@
-# ultracart_client::CouponPercentOffShipping
+# UltracartClient::CouponPercentOffShipping
 
 ## Properties
 Name | Type | Description | Notes

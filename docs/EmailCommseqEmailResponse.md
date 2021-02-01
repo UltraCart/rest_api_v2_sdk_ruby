@@ -1,4 +1,4 @@
-# ultracart_client::EmailCommseqEmailResponse
+# UltracartClient::EmailCommseqEmailResponse
 
 ## Properties
 Name | Type | Description | Notes

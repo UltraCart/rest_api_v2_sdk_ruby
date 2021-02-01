@@ -1,4 +1,4 @@
-# ultracart_client::ScreenRecordingMultifield
+# UltracartClient::ScreenRecordingMultifield
 
 ## Properties
 Name | Type | Description | Notes

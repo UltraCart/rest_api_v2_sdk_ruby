@@ -1,4 +1,4 @@
-# ultracart_client::ItemChannelPartnerMapping
+# UltracartClient::ItemChannelPartnerMapping
 
 ## Properties
 Name | Type | Description | Notes

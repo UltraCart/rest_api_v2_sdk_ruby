@@ -1,4 +1,4 @@
-# ultracart_client::AutoOrderApi
+# UltracartClient::AutoOrderApi
 
 All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
@@ -26,7 +26,7 @@ Retrieves a single auto order using the specified auto order oid.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -36,7 +36,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::AutoOrderApi.new
+api_instance = UltracartClient::AutoOrderApi.new
 
 auto_order_oid = 56 # Integer | The auto order oid to retrieve.
 
@@ -48,7 +48,7 @@ begin
   #Retrieve an auto order
   result = api_instance.get_auto_order(auto_order_oid, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling AutoOrderApi->get_auto_order: #{e}"
 end
 ```
@@ -87,7 +87,7 @@ Retrieves a single auto order using the specified reference (original) order id.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -97,7 +97,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::AutoOrderApi.new
+api_instance = UltracartClient::AutoOrderApi.new
 
 auto_order_code = 'auto_order_code_example' # String | The auto order oid to retrieve.
 
@@ -109,7 +109,7 @@ begin
   #Retrieve an auto order
   result = api_instance.get_auto_order_by_code(auto_order_code, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling AutoOrderApi->get_auto_order_by_code: #{e}"
 end
 ```
@@ -148,7 +148,7 @@ Retrieves a single auto order using the specified reference (original) order id.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -158,7 +158,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::AutoOrderApi.new
+api_instance = UltracartClient::AutoOrderApi.new
 
 reference_order_id = 'reference_order_id_example' # String | The auto order oid to retrieve.
 
@@ -170,7 +170,7 @@ begin
   #Retrieve an auto order
   result = api_instance.get_auto_order_by_reference_order_id(reference_order_id, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling AutoOrderApi->get_auto_order_by_reference_order_id: #{e}"
 end
 ```
@@ -209,7 +209,7 @@ Retrieves auto orders from the account.  If no parameters are specified, all aut
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -219,7 +219,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::AutoOrderApi.new
+api_instance = UltracartClient::AutoOrderApi.new
 
 opts = { 
   auto_order_code: 'auto_order_code_example', # String | Auto order code
@@ -251,7 +251,7 @@ begin
   #Retrieve auto orders
   result = api_instance.get_auto_orders(opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling AutoOrderApi->get_auto_orders: #{e}"
 end
 ```
@@ -311,7 +311,7 @@ Retrieves a group of auto orders from the account based on an array of auto orde
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -321,9 +321,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::AutoOrderApi.new
+api_instance = UltracartClient::AutoOrderApi.new
 
-auto_order_batch = ultracart_client::AutoOrderQueryBatch.new # AutoOrderQueryBatch | Auto order batch
+auto_order_batch = UltracartClient::AutoOrderQueryBatch.new # AutoOrderQueryBatch | Auto order batch
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.
@@ -333,7 +333,7 @@ begin
   #Retrieve auto order batch
   result = api_instance.get_auto_orders_batch(auto_order_batch, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling AutoOrderApi->get_auto_orders_batch: #{e}"
 end
 ```
@@ -372,7 +372,7 @@ Retrieves a group of auto orders from the account based on a query object.  You 
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -382,9 +382,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::AutoOrderApi.new
+api_instance = UltracartClient::AutoOrderApi.new
 
-auto_order_query = ultracart_client::AutoOrderQuery.new # AutoOrderQuery | Auto order query
+auto_order_query = UltracartClient::AutoOrderQuery.new # AutoOrderQuery | Auto order query
 
 opts = { 
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Maximum 200)
@@ -397,7 +397,7 @@ begin
   #Retrieve auto orders
   result = api_instance.get_auto_orders_by_query(auto_order_query, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling AutoOrderApi->get_auto_orders_by_query: #{e}"
 end
 ```
@@ -439,7 +439,7 @@ Update an auto order on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -449,9 +449,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::AutoOrderApi.new
+api_instance = UltracartClient::AutoOrderApi.new
 
-auto_order = ultracart_client::AutoOrder.new # AutoOrder | Auto order to update
+auto_order = UltracartClient::AutoOrder.new # AutoOrder | Auto order to update
 
 auto_order_oid = 56 # Integer | The auto order oid to update.
 
@@ -463,7 +463,7 @@ begin
   #Update an auto order
   result = api_instance.update_auto_order(auto_order, auto_order_oid, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling AutoOrderApi->update_auto_order: #{e}"
 end
 ```
@@ -503,7 +503,7 @@ Update multiple auto orders on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -513,9 +513,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::AutoOrderApi.new
+api_instance = UltracartClient::AutoOrderApi.new
 
-auto_orders_request = ultracart_client::AutoOrdersRequest.new # AutoOrdersRequest | Auto orders to update (synchronous maximum 20 / asynchronous maximum 100)
+auto_orders_request = UltracartClient::AutoOrdersRequest.new # AutoOrdersRequest | Auto orders to update (synchronous maximum 20 / asynchronous maximum 100)
 
 opts = { 
   _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
@@ -527,7 +527,7 @@ begin
   #Update multiple auto orders
   result = api_instance.update_auto_orders_batch(auto_orders_request, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling AutoOrderApi->update_auto_orders_batch: #{e}"
 end
 ```

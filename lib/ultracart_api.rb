@@ -590,10 +590,10 @@ require 'ultracart_api/api/tax_api'
 require 'ultracart_api/api/user_api'
 require 'ultracart_api/api/webhook_api'
 
-module ultracart_client
+module UltracartClient
   class << self
     # Customize default settings for the SDK using block.
-    #   ultracart_client.configure do |config|
+    #   UltracartClient.configure do |config|
     #     config.username = "xxx"
     #     config.password = "xxx"
     #   end

@@ -1,4 +1,4 @@
-# ultracart_client::EmailSendingDomainResponse
+# UltracartClient::EmailSendingDomainResponse
 
 ## Properties
 Name | Type | Description | Notes

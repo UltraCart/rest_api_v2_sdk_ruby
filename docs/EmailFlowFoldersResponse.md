@@ -1,4 +1,4 @@
-# ultracart_client::EmailFlowFoldersResponse
+# UltracartClient::EmailFlowFoldersResponse
 
 ## Properties
 Name | Type | Description | Notes

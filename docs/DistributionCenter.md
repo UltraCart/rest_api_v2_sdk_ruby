@@ -1,4 +1,4 @@
-# ultracart_client::DistributionCenter
+# UltracartClient::DistributionCenter
 
 ## Properties
 Name | Type | Description | Notes

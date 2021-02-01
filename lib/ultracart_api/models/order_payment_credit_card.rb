@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 
 require 'date'
 
-module ultracart_client
+module UltracartClient
   class OrderPaymentCreditCard
     # Card authorization ticket
     attr_accessor :card_auth_ticket
@@ -268,7 +268,7 @@ module ultracart_client
           end
         end
       else # model
-        temp_model = ultracart_client.const_get(type).new
+        temp_model = UltracartClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

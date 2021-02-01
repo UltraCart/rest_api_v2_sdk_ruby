@@ -1,4 +1,4 @@
-# ultracart_client::GroupUserMembership
+# UltracartClient::GroupUserMembership
 
 ## Properties
 Name | Type | Description | Notes

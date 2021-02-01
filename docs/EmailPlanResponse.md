@@ -1,4 +1,4 @@
-# ultracart_client::EmailPlanResponse
+# UltracartClient::EmailPlanResponse
 
 ## Properties
 Name | Type | Description | Notes

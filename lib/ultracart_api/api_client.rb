@@ -17,7 +17,7 @@ require 'tempfile'
 require 'typhoeus'
 require 'uri'
 
-module ultracart_client
+module UltracartClient
   class ApiClient
     # The Configuration object holding settings to be used in the API client.
     attr_accessor :config
@@ -212,7 +212,7 @@ module ultracart_client
         end
       else
         # models, e.g. Pet
-        ultracart_client.const_get(return_type).new.tap do |model|
+        UltracartClient.const_get(return_type).new.tap do |model|
           model.build_from_hash data
         end
       end

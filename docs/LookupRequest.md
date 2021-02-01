@@ -1,4 +1,4 @@
-# ultracart_client::LookupRequest
+# UltracartClient::LookupRequest
 
 ## Properties
 Name | Type | Description | Notes

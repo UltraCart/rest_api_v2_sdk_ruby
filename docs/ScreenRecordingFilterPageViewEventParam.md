@@ -1,4 +1,4 @@
-# ultracart_client::ScreenRecordingFilterPageViewEventParam
+# UltracartClient::ScreenRecordingFilterPageViewEventParam
 
 ## Properties
 Name | Type | Description | Notes

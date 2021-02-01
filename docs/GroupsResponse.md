@@ -1,4 +1,4 @@
-# ultracart_client::GroupsResponse
+# UltracartClient::GroupsResponse
 
 ## Properties
 Name | Type | Description | Notes

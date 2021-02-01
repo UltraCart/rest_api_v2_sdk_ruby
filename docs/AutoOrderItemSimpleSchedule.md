@@ -1,4 +1,4 @@
-# ultracart_client::AutoOrderItemSimpleSchedule
+# UltracartClient::AutoOrderItemSimpleSchedule
 
 ## Properties
 Name | Type | Description | Notes

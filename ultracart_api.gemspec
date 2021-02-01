@@ -17,7 +17,7 @@ require "ultracart_api/version"
 
 Gem::Specification.new do |s|
   s.name        = "ultracart_api"
-  s.version     = ultracart_client::VERSION
+  s.version     = UltracartClient::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["UltraCart"]
   s.email       = ["support@ultracart.com"]

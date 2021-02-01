@@ -1,4 +1,4 @@
-# ultracart_client::ItemPaymentProcessing
+# UltracartClient::ItemPaymentProcessing
 
 ## Properties
 Name | Type | Description | Notes

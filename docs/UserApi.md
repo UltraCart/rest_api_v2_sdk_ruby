@@ -1,4 +1,4 @@
-# ultracart_client::UserApi
+# UltracartClient::UserApi
 
 All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
@@ -29,7 +29,7 @@ Delete a group on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -39,7 +39,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::UserApi.new
+api_instance = UltracartClient::UserApi.new
 
 group_oid = 56 # Integer | The group_oid to delete.
 
@@ -47,7 +47,7 @@ group_oid = 56 # Integer | The group_oid to delete.
 begin
   #Delete a group
   api_instance.delete_group(group_oid)
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling UserApi->delete_group: #{e}"
 end
 ```
@@ -85,7 +85,7 @@ Delete a user on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -95,7 +95,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::UserApi.new
+api_instance = UltracartClient::UserApi.new
 
 user_id = 56 # Integer | The user_id to delete.
 
@@ -103,7 +103,7 @@ user_id = 56 # Integer | The user_id to delete.
 begin
   #Delete a user
   api_instance.delete_user(user_id)
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling UserApi->delete_user: #{e}"
 end
 ```
@@ -141,7 +141,7 @@ Retrieves a single group using the specified group id.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -151,7 +151,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::UserApi.new
+api_instance = UltracartClient::UserApi.new
 
 group_oid = 56 # Integer | The group id to retrieve.
 
@@ -159,7 +159,7 @@ group_oid = 56 # Integer | The group id to retrieve.
 begin
   #Retrieve a group
   api_instance.get_group(group_oid)
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling UserApi->get_group: #{e}"
 end
 ```
@@ -195,7 +195,7 @@ Get groups
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -205,13 +205,13 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::UserApi.new
+api_instance = UltracartClient::UserApi.new
 
 begin
   #Get groups
   result = api_instance.get_groups
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling UserApi->get_groups: #{e}"
 end
 ```
@@ -246,7 +246,7 @@ Retrieves a single user using the specified user id.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -256,7 +256,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::UserApi.new
+api_instance = UltracartClient::UserApi.new
 
 user_id = 56 # Integer | The user id to retrieve.
 
@@ -265,7 +265,7 @@ begin
   #Retrieve a user
   result = api_instance.get_user(user_id)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling UserApi->get_user: #{e}"
 end
 ```
@@ -303,7 +303,7 @@ Retrieves logins for a single user using the specified user id.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -313,7 +313,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::UserApi.new
+api_instance = UltracartClient::UserApi.new
 
 user_id = 56 # Integer | The user id to retrieve.
 
@@ -322,7 +322,7 @@ begin
   #Retrieve a user's login history
   result = api_instance.get_user_logins(user_id)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling UserApi->get_user_logins: #{e}"
 end
 ```
@@ -358,7 +358,7 @@ Get users
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -368,13 +368,13 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::UserApi.new
+api_instance = UltracartClient::UserApi.new
 
 begin
   #Get users
   result = api_instance.get_users
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling UserApi->get_users: #{e}"
 end
 ```
@@ -409,7 +409,7 @@ Insert a group on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -419,16 +419,16 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::UserApi.new
+api_instance = UltracartClient::UserApi.new
 
-group = ultracart_client::Group.new # Group | Group to insert
+group = UltracartClient::Group.new # Group | Group to insert
 
 
 begin
   #Insert a group
   result = api_instance.insert_group(group)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling UserApi->insert_group: #{e}"
 end
 ```
@@ -466,7 +466,7 @@ Insert a user on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -476,16 +476,16 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::UserApi.new
+api_instance = UltracartClient::UserApi.new
 
-user = ultracart_client::User.new # User | User to insert
+user = UltracartClient::User.new # User | User to insert
 
 
 begin
   #Insert a user
   result = api_instance.insert_user(user)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling UserApi->insert_user: #{e}"
 end
 ```
@@ -523,7 +523,7 @@ Update a group on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -533,9 +533,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::UserApi.new
+api_instance = UltracartClient::UserApi.new
 
-group = ultracart_client::Group.new # Group | Group to update
+group = UltracartClient::Group.new # Group | Group to update
 
 group_oid = 56 # Integer | The group_oid to update.
 
@@ -544,7 +544,7 @@ begin
   #Update a group
   result = api_instance.update_group(group, group_oid)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling UserApi->update_group: #{e}"
 end
 ```
@@ -583,7 +583,7 @@ Update a user on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -593,9 +593,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::UserApi.new
+api_instance = UltracartClient::UserApi.new
 
-user = ultracart_client::User.new # User | User to update
+user = UltracartClient::User.new # User | User to update
 
 user_id = 56 # Integer | The user_id to update.
 
@@ -604,7 +604,7 @@ begin
   #Update a user
   result = api_instance.update_user(user, user_id)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling UserApi->update_user: #{e}"
 end
 ```

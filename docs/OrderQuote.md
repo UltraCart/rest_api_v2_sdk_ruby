@@ -1,4 +1,4 @@
-# ultracart_client::OrderQuote
+# UltracartClient::OrderQuote
 
 ## Properties
 Name | Type | Description | Notes

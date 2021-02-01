@@ -1,4 +1,4 @@
-# ultracart_client::ItemContentMultimedia
+# UltracartClient::ItemContentMultimedia
 
 ## Properties
 Name | Type | Description | Notes

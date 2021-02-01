@@ -1,4 +1,4 @@
-# ultracart_client::DataTablesServerSideResponse
+# UltracartClient::DataTablesServerSideResponse
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# ultracart_client::OrderQueryBatch
+# UltracartClient::OrderQueryBatch
 
 ## Properties
 Name | Type | Description | Notes

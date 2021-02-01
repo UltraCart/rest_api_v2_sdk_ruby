@@ -1,4 +1,4 @@
-# ultracart_client::CartItemPhysical
+# UltracartClient::CartItemPhysical
 
 ## Properties
 Name | Type | Description | Notes

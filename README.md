@@ -1,6 +1,6 @@
 # ultracart_api
 
-ultracart_client - the Ruby gem for the UltraCart Rest API V2
+UltracartClient - the Ruby gem for the UltraCart Rest API V2
 
 UltraCart REST API Version 2
 
@@ -56,7 +56,7 @@ Please follow the [installation](#installation) procedure and then run the follo
 require 'ultracart_api'
 
 # Setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -66,9 +66,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::AffiliateApi.new
+api_instance = UltracartClient::AffiliateApi.new
 
-click_query = ultracart_client::AffiliateClickQuery.new # AffiliateClickQuery | Click query
+click_query = UltracartClient::AffiliateClickQuery.new # AffiliateClickQuery | Click query
 
 opts = { 
   _limit: 10000, # Integer | The maximum number of records to return on this one API call. (Maximum 10000)
@@ -80,7 +80,7 @@ begin
   #Retrieve clicks
   result = api_instance.get_clicks_by_query(click_query, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling AffiliateApi->get_clicks_by_query: #{e}"
 end
 
@@ -92,855 +92,855 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ultracart_client::AffiliateApi* | [**get_clicks_by_query**](docs/AffiliateApi.md#get_clicks_by_query) | **POST** /affiliate/clicks/query | Retrieve clicks
-*ultracart_client::AffiliateApi* | [**get_ledgers_by_query**](docs/AffiliateApi.md#get_ledgers_by_query) | **POST** /affiliate/ledgers/query | Retrieve ledger entries
-*ultracart_client::AutoOrderApi* | [**get_auto_order**](docs/AutoOrderApi.md#get_auto_order) | **GET** /auto_order/auto_orders/{auto_order_oid} | Retrieve an auto order
-*ultracart_client::AutoOrderApi* | [**get_auto_order_by_code**](docs/AutoOrderApi.md#get_auto_order_by_code) | **GET** /auto_order/auto_orders/code/{auto_order_code} | Retrieve an auto order
-*ultracart_client::AutoOrderApi* | [**get_auto_order_by_reference_order_id**](docs/AutoOrderApi.md#get_auto_order_by_reference_order_id) | **GET** /auto_order/auto_orders/reference_order_id/{reference_order_id} | Retrieve an auto order
-*ultracart_client::AutoOrderApi* | [**get_auto_orders**](docs/AutoOrderApi.md#get_auto_orders) | **GET** /auto_order/auto_orders | Retrieve auto orders
-*ultracart_client::AutoOrderApi* | [**get_auto_orders_batch**](docs/AutoOrderApi.md#get_auto_orders_batch) | **POST** /auto_order/auto_orders/batch | Retrieve auto order batch
-*ultracart_client::AutoOrderApi* | [**get_auto_orders_by_query**](docs/AutoOrderApi.md#get_auto_orders_by_query) | **POST** /auto_order/auto_orders/query | Retrieve auto orders
-*ultracart_client::AutoOrderApi* | [**update_auto_order**](docs/AutoOrderApi.md#update_auto_order) | **PUT** /auto_order/auto_orders/{auto_order_oid} | Update an auto order
-*ultracart_client::AutoOrderApi* | [**update_auto_orders_batch**](docs/AutoOrderApi.md#update_auto_orders_batch) | **PUT** /auto_order/auto_orders/batch | Update multiple auto orders
-*ultracart_client::ChargebackApi* | [**delete_chargeback**](docs/ChargebackApi.md#delete_chargeback) | **DELETE** /chargeback/chargebacks/{chargeback_dispute_oid} | Delete a chargeback
-*ultracart_client::ChargebackApi* | [**get_chargeback_dispute**](docs/ChargebackApi.md#get_chargeback_dispute) | **GET** /chargeback/chargebacks/{chargeback_dispute_oid} | Retrieve a chargeback
-*ultracart_client::ChargebackApi* | [**get_chargeback_disputes**](docs/ChargebackApi.md#get_chargeback_disputes) | **GET** /chargeback/chargebacks | Retrieve chargebacks
-*ultracart_client::ChargebackApi* | [**insert_chargeback**](docs/ChargebackApi.md#insert_chargeback) | **POST** /chargeback/chargebacks | Insert a chargeback
-*ultracart_client::ChargebackApi* | [**update_chargeback**](docs/ChargebackApi.md#update_chargeback) | **PUT** /chargeback/chargebacks/{chargeback_dispute_oid} | Update a chargeback
-*ultracart_client::CheckoutApi* | [**city_state**](docs/CheckoutApi.md#city_state) | **POST** /checkout/city_state | City/State for Zip
-*ultracart_client::CheckoutApi* | [**finalize_order**](docs/CheckoutApi.md#finalize_order) | **POST** /checkout/cart/finalizeOrder | Finalize Order
-*ultracart_client::CheckoutApi* | [**get_affirm_checkout**](docs/CheckoutApi.md#get_affirm_checkout) | **GET** /checkout/cart/{cart_id}/affirmCheckout | Get affirm checkout (by cart id)
-*ultracart_client::CheckoutApi* | [**get_allowed_countries**](docs/CheckoutApi.md#get_allowed_countries) | **POST** /checkout/allowedCountries | Allowed countries
-*ultracart_client::CheckoutApi* | [**get_cart**](docs/CheckoutApi.md#get_cart) | **GET** /checkout/cart | Get cart
-*ultracart_client::CheckoutApi* | [**get_cart_by_cart_id**](docs/CheckoutApi.md#get_cart_by_cart_id) | **GET** /checkout/cart/{cart_id} | Get cart (by cart id)
-*ultracart_client::CheckoutApi* | [**get_cart_by_return_code**](docs/CheckoutApi.md#get_cart_by_return_code) | **GET** /checkout/return/{return_code} | Get cart (by return code)
-*ultracart_client::CheckoutApi* | [**get_cart_by_return_token**](docs/CheckoutApi.md#get_cart_by_return_token) | **GET** /checkout/return_token | Get cart (by return token)
-*ultracart_client::CheckoutApi* | [**get_state_provinces_for_country**](docs/CheckoutApi.md#get_state_provinces_for_country) | **POST** /checkout/stateProvincesForCountry/{country_code} | Get state/province list for a country code
-*ultracart_client::CheckoutApi* | [**handoff_cart**](docs/CheckoutApi.md#handoff_cart) | **POST** /checkout/cart/handoff | Handoff cart
-*ultracart_client::CheckoutApi* | [**login**](docs/CheckoutApi.md#login) | **POST** /checkout/cart/profile/login | Profile login
-*ultracart_client::CheckoutApi* | [**logout**](docs/CheckoutApi.md#logout) | **POST** /checkout/cart/profile/logout | Profile logout
-*ultracart_client::CheckoutApi* | [**register**](docs/CheckoutApi.md#register) | **POST** /checkout/cart/profile/register | Profile registration
-*ultracart_client::CheckoutApi* | [**register_affiliate_click**](docs/CheckoutApi.md#register_affiliate_click) | **POST** /checkout/affiliateClick/register | Register affiliate click
-*ultracart_client::CheckoutApi* | [**related_items_for_cart**](docs/CheckoutApi.md#related_items_for_cart) | **POST** /checkout/related_items | Related items
-*ultracart_client::CheckoutApi* | [**related_items_for_item**](docs/CheckoutApi.md#related_items_for_item) | **POST** /checkout/relatedItems/{item_id} | Related items (specific item)
-*ultracart_client::CheckoutApi* | [**setup_browser_key**](docs/CheckoutApi.md#setup_browser_key) | **PUT** /checkout/browser_key | Setup Browser Application
-*ultracart_client::CheckoutApi* | [**update_cart**](docs/CheckoutApi.md#update_cart) | **PUT** /checkout/cart | Update cart
-*ultracart_client::CheckoutApi* | [**validate_cart**](docs/CheckoutApi.md#validate_cart) | **POST** /checkout/cart/validate | Validate
-*ultracart_client::CouponApi* | [**delete_coupon**](docs/CouponApi.md#delete_coupon) | **DELETE** /coupon/coupons/{coupon_oid} | Delete a coupon
-*ultracart_client::CouponApi* | [**delete_coupons_by_code**](docs/CouponApi.md#delete_coupons_by_code) | **DELETE** /coupon/coupons/by_code | Deletes multiple coupons
-*ultracart_client::CouponApi* | [**delete_coupons_by_oid**](docs/CouponApi.md#delete_coupons_by_oid) | **DELETE** /coupon/coupons/by_oid | Deletes multiple coupons
-*ultracart_client::CouponApi* | [**does_coupon_code_exist**](docs/CouponApi.md#does_coupon_code_exist) | **GET** /coupon/coupons/merchant_code/{merchant_code}/exists | Determines if a coupon merchant code already exists
-*ultracart_client::CouponApi* | [**generate_coupon_codes**](docs/CouponApi.md#generate_coupon_codes) | **POST** /coupon/coupons/{coupon_oid}/generate_codes | Generates one time codes for a coupon
-*ultracart_client::CouponApi* | [**generate_one_time_codes_by_merchant_code**](docs/CouponApi.md#generate_one_time_codes_by_merchant_code) | **POST** /coupon/coupons/merchant_code/{merchant_code}/generate_codes | Generates one time codes by merchant code
-*ultracart_client::CouponApi* | [**get_auto_apply**](docs/CouponApi.md#get_auto_apply) | **GET** /coupon/auto_apply | Retrieve auto apply rules and conditions
-*ultracart_client::CouponApi* | [**get_coupon**](docs/CouponApi.md#get_coupon) | **GET** /coupon/coupons/{coupon_oid} | Retrieve a coupon
-*ultracart_client::CouponApi* | [**get_coupon_by_merchant_code**](docs/CouponApi.md#get_coupon_by_merchant_code) | **GET** /coupon/coupons/merchant_code/{merchant_code} | Retrieve a coupon by merchant code
-*ultracart_client::CouponApi* | [**get_coupons**](docs/CouponApi.md#get_coupons) | **GET** /coupon/coupons | Retrieve coupons
-*ultracart_client::CouponApi* | [**get_coupons_by_query**](docs/CouponApi.md#get_coupons_by_query) | **GET** /coupon/coupons/query | Retrieve coupons by query
-*ultracart_client::CouponApi* | [**get_editor_values**](docs/CouponApi.md#get_editor_values) | **GET** /coupon/editor_values | Retrieve values needed for a coupon editor
-*ultracart_client::CouponApi* | [**insert_coupon**](docs/CouponApi.md#insert_coupon) | **POST** /coupon/coupons | Insert a coupon
-*ultracart_client::CouponApi* | [**insert_coupons**](docs/CouponApi.md#insert_coupons) | **POST** /coupon/coupons/batch | Insert multiple coupons
-*ultracart_client::CouponApi* | [**search_items**](docs/CouponApi.md#search_items) | **GET** /coupon/searchItems | Searches for items to display within a coupon editor and assign to coupons
-*ultracart_client::CouponApi* | [**update_auto_apply**](docs/CouponApi.md#update_auto_apply) | **POST** /coupon/auto_apply | Update auto apply rules and conditions
-*ultracart_client::CouponApi* | [**update_coupon**](docs/CouponApi.md#update_coupon) | **PUT** /coupon/coupons/{coupon_oid} | Update a coupon
-*ultracart_client::CouponApi* | [**update_coupons**](docs/CouponApi.md#update_coupons) | **PUT** /coupon/coupons/batch | Update multiple coupons
-*ultracart_client::CouponApi* | [**upload_coupon_codes**](docs/CouponApi.md#upload_coupon_codes) | **POST** /coupon/coupons/{coupon_oid}/upload_codes | Upload one-time codes for a coupon
-*ultracart_client::CustomerApi* | [**delete_customer**](docs/CustomerApi.md#delete_customer) | **DELETE** /customer/customers/{customer_profile_oid} | Delete a customer
-*ultracart_client::CustomerApi* | [**get_customer**](docs/CustomerApi.md#get_customer) | **GET** /customer/customers/{customer_profile_oid} | Retrieve a customer
-*ultracart_client::CustomerApi* | [**get_customers**](docs/CustomerApi.md#get_customers) | **GET** /customer/customers | Retrieve customers
-*ultracart_client::CustomerApi* | [**get_customers_by_query**](docs/CustomerApi.md#get_customers_by_query) | **POST** /customer/customers/query | Retrieve customers by query
-*ultracart_client::CustomerApi* | [**get_customers_for_data_tables**](docs/CustomerApi.md#get_customers_for_data_tables) | **POST** /customer/customers/dataTables | Retrieve customers for DataTables plugin
-*ultracart_client::CustomerApi* | [**get_editor_values**](docs/CustomerApi.md#get_editor_values) | **GET** /customer/editor_values | Retrieve values needed for a customer profile editor
-*ultracart_client::CustomerApi* | [**get_email_lists**](docs/CustomerApi.md#get_email_lists) | **GET** /customer/email_lists | Retrieve all email lists across all storefronts
-*ultracart_client::CustomerApi* | [**insert_customer**](docs/CustomerApi.md#insert_customer) | **POST** /customer/customers | Insert a customer
-*ultracart_client::CustomerApi* | [**update_customer**](docs/CustomerApi.md#update_customer) | **PUT** /customer/customers/{customer_profile_oid} | Update a customer
-*ultracart_client::CustomerApi* | [**update_customer_email_lists**](docs/CustomerApi.md#update_customer_email_lists) | **POST** /customer/customers/{customer_profile_oid}/email_lists | Update email list subscriptions for a customer
-*ultracart_client::FulfillmentApi* | [**acknowledge_orders**](docs/FulfillmentApi.md#acknowledge_orders) | **PUT** /fulfillment/distribution_centers/{distribution_center_code}/acknowledgements | Acknowledge receipt of orders.
-*ultracart_client::FulfillmentApi* | [**get_distribution_center_orders**](docs/FulfillmentApi.md#get_distribution_center_orders) | **GET** /fulfillment/distribution_centers/{distribution_center_code}/orders | Retrieve orders queued up for this distribution center.
-*ultracart_client::FulfillmentApi* | [**get_distribution_centers**](docs/FulfillmentApi.md#get_distribution_centers) | **GET** /fulfillment/distribution_centers | Retrieve distribution centers
-*ultracart_client::FulfillmentApi* | [**ship_orders**](docs/FulfillmentApi.md#ship_orders) | **POST** /fulfillment/distribution_centers/{distribution_center_code}/shipments | Mark orders as shipped
-*ultracart_client::FulfillmentApi* | [**update_inventory**](docs/FulfillmentApi.md#update_inventory) | **POST** /fulfillment/distribution_centers/{distribution_center_code}/inventory | Update inventory
-*ultracart_client::ItemApi* | [**delete_item**](docs/ItemApi.md#delete_item) | **DELETE** /item/items/{merchant_item_oid} | Delete an item
-*ultracart_client::ItemApi* | [**get_item**](docs/ItemApi.md#get_item) | **GET** /item/items/{merchant_item_oid} | Retrieve an item
-*ultracart_client::ItemApi* | [**get_item_by_merchant_item_id**](docs/ItemApi.md#get_item_by_merchant_item_id) | **GET** /item/items/merchant_item_id/{merchant_item_id} | Retrieve an item by item id
-*ultracart_client::ItemApi* | [**get_items**](docs/ItemApi.md#get_items) | **GET** /item/items | Retrieve items
-*ultracart_client::ItemApi* | [**get_pricing_tiers**](docs/ItemApi.md#get_pricing_tiers) | **GET** /item/pricing_tiers | Retrieve pricing tiers
-*ultracart_client::ItemApi* | [**insert_item**](docs/ItemApi.md#insert_item) | **POST** /item/items | Create an item
-*ultracart_client::ItemApi* | [**update_item**](docs/ItemApi.md#update_item) | **PUT** /item/items/{merchant_item_oid} | Update an item
-*ultracart_client::ItemApi* | [**update_items**](docs/ItemApi.md#update_items) | **PUT** /item/items/batch | Update multiple items
-*ultracart_client::ItemApi* | [**upload_temporary_multimedia**](docs/ItemApi.md#upload_temporary_multimedia) | **POST** /item/temp_multimedia | Upload an image to the temporary multimedia.
-*ultracart_client::OauthApi* | [**oauth_access_token**](docs/OauthApi.md#oauth_access_token) | **POST** /oauth/token | Exchange authorization code for access token.
-*ultracart_client::OauthApi* | [**oauth_revoke**](docs/OauthApi.md#oauth_revoke) | **POST** /oauth/revoke | Revoke this OAuth application.
-*ultracart_client::OrderApi* | [**adjust_order_total**](docs/OrderApi.md#adjust_order_total) | **POST** /order/orders/{order_id}/adjust_order_total/{desired_total} | Adjusts an order total
-*ultracart_client::OrderApi* | [**cancel_order**](docs/OrderApi.md#cancel_order) | **POST** /order/orders/{order_id}/cancel | Cancel an order
-*ultracart_client::OrderApi* | [**delete_order**](docs/OrderApi.md#delete_order) | **DELETE** /order/orders/{order_id} | Delete an order
-*ultracart_client::OrderApi* | [**format**](docs/OrderApi.md#format) | **POST** /order/orders/{order_id}/format | Format order
-*ultracart_client::OrderApi* | [**generate_order_token**](docs/OrderApi.md#generate_order_token) | **GET** /order/orders/token/{order_id} | Generate an order token for a given order id
-*ultracart_client::OrderApi* | [**get_accounts_receivable_retry_config**](docs/OrderApi.md#get_accounts_receivable_retry_config) | **GET** /order/accountsReceivableRetryConfig | Retrieve A/R Retry Configuration
-*ultracart_client::OrderApi* | [**get_accounts_receivable_retry_stats**](docs/OrderApi.md#get_accounts_receivable_retry_stats) | **GET** /order/accountsReceivableRetryConfig/stats | Retrieve A/R Retry Statistics
-*ultracart_client::OrderApi* | [**get_order**](docs/OrderApi.md#get_order) | **GET** /order/orders/{order_id} | Retrieve an order
-*ultracart_client::OrderApi* | [**get_order_by_token**](docs/OrderApi.md#get_order_by_token) | **POST** /order/orders/token | Retrieve an order using a token
-*ultracart_client::OrderApi* | [**get_orders**](docs/OrderApi.md#get_orders) | **GET** /order/orders | Retrieve orders
-*ultracart_client::OrderApi* | [**get_orders_batch**](docs/OrderApi.md#get_orders_batch) | **POST** /order/orders/batch | Retrieve order batch
-*ultracart_client::OrderApi* | [**get_orders_by_query**](docs/OrderApi.md#get_orders_by_query) | **POST** /order/orders/query | Retrieve orders
-*ultracart_client::OrderApi* | [**insert_order**](docs/OrderApi.md#insert_order) | **POST** /order/orders | Insert an order
-*ultracart_client::OrderApi* | [**process_payment**](docs/OrderApi.md#process_payment) | **POST** /order/orders/{order_id}/process_payment | Process payment
-*ultracart_client::OrderApi* | [**refund_order**](docs/OrderApi.md#refund_order) | **PUT** /order/orders/{order_id}/refund | Refund an order
-*ultracart_client::OrderApi* | [**replacement**](docs/OrderApi.md#replacement) | **POST** /order/orders/{order_id}/replacement | Replacement order
-*ultracart_client::OrderApi* | [**resend_receipt**](docs/OrderApi.md#resend_receipt) | **POST** /order/orders/{order_id}/resend_receipt | Resend receipt
-*ultracart_client::OrderApi* | [**resend_shipment_confirmation**](docs/OrderApi.md#resend_shipment_confirmation) | **POST** /order/orders/{order_id}/resend_shipment_confirmation | Resend shipment confirmation
-*ultracart_client::OrderApi* | [**update_accounts_receivable_retry_config**](docs/OrderApi.md#update_accounts_receivable_retry_config) | **POST** /order/accountsReceivableRetryConfig | Update A/R Retry Configuration
-*ultracart_client::OrderApi* | [**update_order**](docs/OrderApi.md#update_order) | **PUT** /order/orders/{order_id} | Update an order
-*ultracart_client::StorefrontApi* | [**add_to_library**](docs/StorefrontApi.md#add_to_library) | **POST** /storefront/code_library | Add to library
-*ultracart_client::StorefrontApi* | [**apply_to_store_front**](docs/StorefrontApi.md#apply_to_store_front) | **POST** /storefront/code_library/apply | Apply library item to storefront.
-*ultracart_client::StorefrontApi* | [**archive_email_list**](docs/StorefrontApi.md#archive_email_list) | **POST** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/archive | Archive email list
-*ultracart_client::StorefrontApi* | [**archive_email_segment**](docs/StorefrontApi.md#archive_email_segment) | **POST** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/archive | Archive email segment
-*ultracart_client::StorefrontApi* | [**back_populate_email_flow**](docs/StorefrontApi.md#back_populate_email_flow) | **POST** /storefront/{storefront_oid}/email/flows/{email_flow_uuid}/backfill | Back populate email flow
-*ultracart_client::StorefrontApi* | [**check_download_email_segment**](docs/StorefrontApi.md#check_download_email_segment) | **POST** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/downloadPrepare/{email_segment_rebuild_uuid} | Check download of email segment
-*ultracart_client::StorefrontApi* | [**clone_email_campaign**](docs/StorefrontApi.md#clone_email_campaign) | **POST** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid}/clone | Clone email campaign
-*ultracart_client::StorefrontApi* | [**clone_email_flow**](docs/StorefrontApi.md#clone_email_flow) | **POST** /storefront/{storefront_oid}/email/flows/{email_flow_uuid}/clone | Clone email flow
-*ultracart_client::StorefrontApi* | [**create_email_sending_domain**](docs/StorefrontApi.md#create_email_sending_domain) | **POST** /storefront/email/sending_domains/{domain}/create | Create email campaign
-*ultracart_client::StorefrontApi* | [**delete_email_campaign_folder**](docs/StorefrontApi.md#delete_email_campaign_folder) | **DELETE** /storefront/{storefront_oid}/email/campaign_folders/{email_campaign_folder_uuid} | Delete email campaignFolder
-*ultracart_client::StorefrontApi* | [**delete_email_commseq_stat**](docs/StorefrontApi.md#delete_email_commseq_stat) | **DELETE** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/stat | Delete communication sequence stats
-*ultracart_client::StorefrontApi* | [**delete_email_email**](docs/StorefrontApi.md#delete_email_email) | **DELETE** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid} | Delete email email
-*ultracart_client::StorefrontApi* | [**delete_email_flow_folder**](docs/StorefrontApi.md#delete_email_flow_folder) | **DELETE** /storefront/{storefront_oid}/email/flow_folders/{email_flow_folder_uuid} | Delete email flowFolder
-*ultracart_client::StorefrontApi* | [**delete_email_list_customer**](docs/StorefrontApi.md#delete_email_list_customer) | **DELETE** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/customers/{email_customer_uuid} | Delete email list customer
-*ultracart_client::StorefrontApi* | [**delete_email_postcard**](docs/StorefrontApi.md#delete_email_postcard) | **DELETE** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid} | Delete email postcard
-*ultracart_client::StorefrontApi* | [**delete_email_sending_domain**](docs/StorefrontApi.md#delete_email_sending_domain) | **DELETE** /storefront/email/sending_domains/{domain} | delete email campaign
-*ultracart_client::StorefrontApi* | [**delete_experiment**](docs/StorefrontApi.md#delete_experiment) | **DELETE** /storefront/{storefront_oid}/experiments/{storefront_experiment_oid} | Delete experiment
-*ultracart_client::StorefrontApi* | [**delete_library_item**](docs/StorefrontApi.md#delete_library_item) | **DELETE** /storefront/code_library/{library_item_oid} | Delete library item
-*ultracart_client::StorefrontApi* | [**delete_library_item_published_versions**](docs/StorefrontApi.md#delete_library_item_published_versions) | **DELETE** /storefront/code_library/{library_item_oid}/published_versions | Delete all published versions for a library item, including anything in review.
-*ultracart_client::StorefrontApi* | [**delete_screen_recording_segment**](docs/StorefrontApi.md#delete_screen_recording_segment) | **DELETE** /storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid} | Delete screen recording segment
-*ultracart_client::StorefrontApi* | [**duplicate_library_item**](docs/StorefrontApi.md#duplicate_library_item) | **POST** /storefront/code_library/{library_item_oid}/duplicate | Duplicate library item.
-*ultracart_client::StorefrontApi* | [**favorite_screen_recording**](docs/StorefrontApi.md#favorite_screen_recording) | **POST** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/favorite | Update favorite flag on screen recording
-*ultracart_client::StorefrontApi* | [**geocode_address**](docs/StorefrontApi.md#geocode_address) | **POST** /storefront/{storefront_oid}/email/geocode | Obtain lat/long for an address
-*ultracart_client::StorefrontApi* | [**get_countries**](docs/StorefrontApi.md#get_countries) | **GET** /storefront/{storefront_oid}/email/countries | Get countries
-*ultracart_client::StorefrontApi* | [**get_editor_token**](docs/StorefrontApi.md#get_editor_token) | **GET** /storefront/{storefront_oid}/editor_token | Gets editor token
-*ultracart_client::StorefrontApi* | [**get_email_base_templates**](docs/StorefrontApi.md#get_email_base_templates) | **GET** /storefront/{storefront_oid}/email/baseTemplates | Get email communication base templates
-*ultracart_client::StorefrontApi* | [**get_email_campaign**](docs/StorefrontApi.md#get_email_campaign) | **GET** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid} | Get email campaign
-*ultracart_client::StorefrontApi* | [**get_email_campaign_folder**](docs/StorefrontApi.md#get_email_campaign_folder) | **GET** /storefront/{storefront_oid}/email/campaign_folders/{email_campaign_folder_uuid} | Get email campaign folder
-*ultracart_client::StorefrontApi* | [**get_email_campaign_folders**](docs/StorefrontApi.md#get_email_campaign_folders) | **GET** /storefront/{storefront_oid}/email/campaign_folders | Get email campaign folders
-*ultracart_client::StorefrontApi* | [**get_email_campaign_screenshots**](docs/StorefrontApi.md#get_email_campaign_screenshots) | **GET** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid}/screenshots | Get email campaign screenshots
-*ultracart_client::StorefrontApi* | [**get_email_campaigns**](docs/StorefrontApi.md#get_email_campaigns) | **GET** /storefront/{storefront_oid}/email/campaigns | Get email campaigns
-*ultracart_client::StorefrontApi* | [**get_email_campaigns_with_stats**](docs/StorefrontApi.md#get_email_campaigns_with_stats) | **GET** /storefront/{storefront_oid}/email/campaignsWithStats/{stat_days} | Get email campaigns with stats
-*ultracart_client::StorefrontApi* | [**get_email_commseq**](docs/StorefrontApi.md#get_email_commseq) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid} | Get email commseq
-*ultracart_client::StorefrontApi* | [**get_email_commseq_email_stats**](docs/StorefrontApi.md#get_email_commseq_email_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/emailStats | Get email communication sequence emails stats
-*ultracart_client::StorefrontApi* | [**get_email_commseq_postcard_stats**](docs/StorefrontApi.md#get_email_commseq_postcard_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/postcardStats | Get email communication sequence postcard stats
-*ultracart_client::StorefrontApi* | [**get_email_commseq_stat_overall**](docs/StorefrontApi.md#get_email_commseq_stat_overall) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/stat | Get communication sequence stats overall
-*ultracart_client::StorefrontApi* | [**get_email_commseq_step_stats**](docs/StorefrontApi.md#get_email_commseq_step_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/stepStats | Get email communication sequence step stats
-*ultracart_client::StorefrontApi* | [**get_email_commseq_step_waiting**](docs/StorefrontApi.md#get_email_commseq_step_waiting) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/waiting | Get email communication sequence customers waiting at each requested step
-*ultracart_client::StorefrontApi* | [**get_email_commseqs**](docs/StorefrontApi.md#get_email_commseqs) | **GET** /storefront/{storefront_oid}/email/commseqs | Get email commseqs
-*ultracart_client::StorefrontApi* | [**get_email_customer_editor_url**](docs/StorefrontApi.md#get_email_customer_editor_url) | **GET** /storefront/{storefront_oid}/email/customers/{email_customer_uuid}/editor_url | Get customers editor URL
-*ultracart_client::StorefrontApi* | [**get_email_customers**](docs/StorefrontApi.md#get_email_customers) | **GET** /storefront/{storefront_oid}/email/customers | Get email customers
-*ultracart_client::StorefrontApi* | [**get_email_dashboard_activity**](docs/StorefrontApi.md#get_email_dashboard_activity) | **GET** /storefront/{storefront_oid}/email/dashboard_activity | Get email dashboard activity
-*ultracart_client::StorefrontApi* | [**get_email_dashboard_stats**](docs/StorefrontApi.md#get_email_dashboard_stats) | **GET** /storefront/{storefront_oid}/email/dashboard_stats | Get dashboard stats
-*ultracart_client::StorefrontApi* | [**get_email_email**](docs/StorefrontApi.md#get_email_email) | **GET** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid} | Get email email
-*ultracart_client::StorefrontApi* | [**get_email_email_clicks**](docs/StorefrontApi.md#get_email_email_clicks) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/steps/{commseq_step_uuid}/emails/{commseq_email_uuid}/clicks | Get email email clicks
-*ultracart_client::StorefrontApi* | [**get_email_email_customer_editor_url**](docs/StorefrontApi.md#get_email_email_customer_editor_url) | **GET** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid}/orders/{order_id}/editor_url | Get email order customer editor url
-*ultracart_client::StorefrontApi* | [**get_email_email_orders**](docs/StorefrontApi.md#get_email_email_orders) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/steps/{commseq_step_uuid}/emails/{commseq_email_uuid}/orders | Get email email orders
-*ultracart_client::StorefrontApi* | [**get_email_emails**](docs/StorefrontApi.md#get_email_emails) | **GET** /storefront/{storefront_oid}/email/emails | Get email emails
-*ultracart_client::StorefrontApi* | [**get_email_emails_multiple**](docs/StorefrontApi.md#get_email_emails_multiple) | **POST** /storefront/{storefront_oid}/email/emails/multiple | Get email emails multiple
-*ultracart_client::StorefrontApi* | [**get_email_flow**](docs/StorefrontApi.md#get_email_flow) | **GET** /storefront/{storefront_oid}/email/flows/{email_flow_uuid} | Get email flow
-*ultracart_client::StorefrontApi* | [**get_email_flow_folder**](docs/StorefrontApi.md#get_email_flow_folder) | **GET** /storefront/{storefront_oid}/email/flow_folders/{email_flow_folder_uuid} | Get email flow folder
-*ultracart_client::StorefrontApi* | [**get_email_flow_folders**](docs/StorefrontApi.md#get_email_flow_folders) | **GET** /storefront/{storefront_oid}/email/flow_folders | Get email flow folders
-*ultracart_client::StorefrontApi* | [**get_email_flow_screenshots**](docs/StorefrontApi.md#get_email_flow_screenshots) | **GET** /storefront/{storefront_oid}/email/flows/{email_flow_uuid}/screenshots | Get email flow screenshots
-*ultracart_client::StorefrontApi* | [**get_email_flows**](docs/StorefrontApi.md#get_email_flows) | **GET** /storefront/{storefront_oid}/email/flows | Get email flows
-*ultracart_client::StorefrontApi* | [**get_email_global_settings**](docs/StorefrontApi.md#get_email_global_settings) | **GET** /storefront/email/global_settings | Get email globalsettings
-*ultracart_client::StorefrontApi* | [**get_email_list**](docs/StorefrontApi.md#get_email_list) | **GET** /storefront/{storefront_oid}/email/lists/{email_list_uuid} | Get email list
-*ultracart_client::StorefrontApi* | [**get_email_list_customer_editor_url**](docs/StorefrontApi.md#get_email_list_customer_editor_url) | **GET** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/customers/{email_customer_uuid}/editor_url | Get email list customer editor url
-*ultracart_client::StorefrontApi* | [**get_email_list_customers**](docs/StorefrontApi.md#get_email_list_customers) | **GET** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/customers | Get email list customers
-*ultracart_client::StorefrontApi* | [**get_email_lists**](docs/StorefrontApi.md#get_email_lists) | **GET** /storefront/{storefront_oid}/email/lists | Get email lists
-*ultracart_client::StorefrontApi* | [**get_email_performance**](docs/StorefrontApi.md#get_email_performance) | **GET** /storefront/{storefront_oid}/email/performance | Get email performance
-*ultracart_client::StorefrontApi* | [**get_email_plan**](docs/StorefrontApi.md#get_email_plan) | **GET** /storefront/{storefront_oid}/email/plan | Get email plan
-*ultracart_client::StorefrontApi* | [**get_email_postcard**](docs/StorefrontApi.md#get_email_postcard) | **GET** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid} | Get email postcard
-*ultracart_client::StorefrontApi* | [**get_email_postcards**](docs/StorefrontApi.md#get_email_postcards) | **GET** /storefront/{storefront_oid}/email/postcards | Get email postcards
-*ultracart_client::StorefrontApi* | [**get_email_postcards_multiple**](docs/StorefrontApi.md#get_email_postcards_multiple) | **POST** /storefront/{storefront_oid}/email/postcards/multiple | Get email postcards multiple
-*ultracart_client::StorefrontApi* | [**get_email_segment**](docs/StorefrontApi.md#get_email_segment) | **GET** /storefront/{storefront_oid}/email/segments/{email_segment_uuid} | Get email segment
-*ultracart_client::StorefrontApi* | [**get_email_segment_customer_editor_url**](docs/StorefrontApi.md#get_email_segment_customer_editor_url) | **GET** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/customers/{email_customer_uuid}/editor_url | Get email segment customers editor URL
-*ultracart_client::StorefrontApi* | [**get_email_segment_customers**](docs/StorefrontApi.md#get_email_segment_customers) | **GET** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/customers | Get email segment customers
-*ultracart_client::StorefrontApi* | [**get_email_segments**](docs/StorefrontApi.md#get_email_segments) | **GET** /storefront/{storefront_oid}/email/segments | Get email segments
-*ultracart_client::StorefrontApi* | [**get_email_sending_domain**](docs/StorefrontApi.md#get_email_sending_domain) | **GET** /storefront/email/sending_domain/{domain} | Get email sending domain
-*ultracart_client::StorefrontApi* | [**get_email_sending_domain_status**](docs/StorefrontApi.md#get_email_sending_domain_status) | **POST** /storefront/email/sending_domains/{domain}/status | Get email sending domain status
-*ultracart_client::StorefrontApi* | [**get_email_sending_domains**](docs/StorefrontApi.md#get_email_sending_domains) | **GET** /storefront/email/sending_domains | Get email sending domains
-*ultracart_client::StorefrontApi* | [**get_email_settings**](docs/StorefrontApi.md#get_email_settings) | **GET** /storefront/{storefront_oid}/email/settings | Get email settings
-*ultracart_client::StorefrontApi* | [**get_email_template**](docs/StorefrontApi.md#get_email_template) | **GET** /storefront/{storefront_oid}/email/templates/{email_template_oid} | Get email template
-*ultracart_client::StorefrontApi* | [**get_email_templates**](docs/StorefrontApi.md#get_email_templates) | **GET** /storefront/{storefront_oid}/email/templates | Get email templates
-*ultracart_client::StorefrontApi* | [**get_email_third_party_providers**](docs/StorefrontApi.md#get_email_third_party_providers) | **GET** /storefront/{storefront_oid}/email/third_party_providers | Get a list of third party email providers
-*ultracart_client::StorefrontApi* | [**get_experiments**](docs/StorefrontApi.md#get_experiments) | **GET** /storefront/{storefront_oid}/experiments | Get experiments
-*ultracart_client::StorefrontApi* | [**get_histogram_property_names**](docs/StorefrontApi.md#get_histogram_property_names) | **GET** /storefront/{storefront_oid}/email/histogram/property_names | Get histogram property names
-*ultracart_client::StorefrontApi* | [**get_histogram_property_values**](docs/StorefrontApi.md#get_histogram_property_values) | **GET** /storefront/{storefront_oid}/email/histogram/property_values | Get histogram property values
-*ultracart_client::StorefrontApi* | [**get_library_filter_values**](docs/StorefrontApi.md#get_library_filter_values) | **GET** /storefront/code_library/filter_values | Get library values used to populate drop down boxes for filtering.
-*ultracart_client::StorefrontApi* | [**get_library_item**](docs/StorefrontApi.md#get_library_item) | **GET** /storefront/code_library/{library_item_oid} | Get library item.
-*ultracart_client::StorefrontApi* | [**get_library_item_published_versions**](docs/StorefrontApi.md#get_library_item_published_versions) | **GET** /storefront/code_library/{library_item_oid}/published_versions | Get all published versions for a library item.
-*ultracart_client::StorefrontApi* | [**get_pricing_tiers**](docs/StorefrontApi.md#get_pricing_tiers) | **GET** /storefront/pricing_tiers | Retrieve pricing tiers
-*ultracart_client::StorefrontApi* | [**get_screen_recording**](docs/StorefrontApi.md#get_screen_recording) | **GET** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid} | Get screen recording
-*ultracart_client::StorefrontApi* | [**get_screen_recording_page_view_data**](docs/StorefrontApi.md#get_screen_recording_page_view_data) | **GET** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/page_view_data/{screen_recording_page_view_uuid} | Get screen recording page view data
-*ultracart_client::StorefrontApi* | [**get_screen_recording_segment**](docs/StorefrontApi.md#get_screen_recording_segment) | **GET** /storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid} | Get screen recording segment
-*ultracart_client::StorefrontApi* | [**get_screen_recording_segments**](docs/StorefrontApi.md#get_screen_recording_segments) | **GET** /storefront/{storefront_oid}/screen_recordings/segments | Get screen recording segments
-*ultracart_client::StorefrontApi* | [**get_screen_recording_settings**](docs/StorefrontApi.md#get_screen_recording_settings) | **GET** /storefront/{storefront_oid}/screen_recordings/settings | Get screen recording settings
-*ultracart_client::StorefrontApi* | [**get_screen_recording_tags**](docs/StorefrontApi.md#get_screen_recording_tags) | **POST** /storefront/{storefront_oid}/screen_recordings/tags | Get tags used by screen recording
-*ultracart_client::StorefrontApi* | [**get_screen_recordings_by_query**](docs/StorefrontApi.md#get_screen_recordings_by_query) | **POST** /storefront/{storefront_oid}/screen_recordings/query | Query screen recordings
-*ultracart_client::StorefrontApi* | [**get_screen_recordings_by_segment**](docs/StorefrontApi.md#get_screen_recordings_by_segment) | **POST** /storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid}/query | Get screen recordings by segment
-*ultracart_client::StorefrontApi* | [**get_thumbnail_parameters**](docs/StorefrontApi.md#get_thumbnail_parameters) | **POST** /storefront/thumbnailParameters | Get thumbnail parameters
-*ultracart_client::StorefrontApi* | [**get_transaction_email**](docs/StorefrontApi.md#get_transaction_email) | **GET** /storefront/{storefront_oid}/transaction_email/list/{email_id} | Gets a transaction email object
-*ultracart_client::StorefrontApi* | [**get_transaction_email_list**](docs/StorefrontApi.md#get_transaction_email_list) | **GET** /storefront/{storefront_oid}/transaction_email/list | Gets a list of transaction email names
-*ultracart_client::StorefrontApi* | [**get_transaction_email_screenshots**](docs/StorefrontApi.md#get_transaction_email_screenshots) | **GET** /storefront/{storefront_oid}/transaction_email/list/{email_id}/screenshots | Get transactional email screenshots
-*ultracart_client::StorefrontApi* | [**global_unsubscribe**](docs/StorefrontApi.md#global_unsubscribe) | **POST** /storefront/{storefront_oid}/email/globalUnsubscribe | Globally unsubscribe a customer
-*ultracart_client::StorefrontApi* | [**import_email_third_party_provider_list**](docs/StorefrontApi.md#import_email_third_party_provider_list) | **POST** /storefront/{storefront_oid}/email/third_party_providers/import | Import a third party provider list
-*ultracart_client::StorefrontApi* | [**insert_email_campaign**](docs/StorefrontApi.md#insert_email_campaign) | **POST** /storefront/{storefront_oid}/email/campaigns | Insert email campaign
-*ultracart_client::StorefrontApi* | [**insert_email_campaign_folder**](docs/StorefrontApi.md#insert_email_campaign_folder) | **POST** /storefront/{storefront_oid}/email/campaign_folders | Insert email campaign folder
-*ultracart_client::StorefrontApi* | [**insert_email_commseq**](docs/StorefrontApi.md#insert_email_commseq) | **POST** /storefront/{storefront_oid}/email/commseqs | Insert email commseq
-*ultracart_client::StorefrontApi* | [**insert_email_email**](docs/StorefrontApi.md#insert_email_email) | **POST** /storefront/{storefront_oid}/email/emails | Insert email email
-*ultracart_client::StorefrontApi* | [**insert_email_flow**](docs/StorefrontApi.md#insert_email_flow) | **POST** /storefront/{storefront_oid}/email/flows | Insert email flow
-*ultracart_client::StorefrontApi* | [**insert_email_flow_folder**](docs/StorefrontApi.md#insert_email_flow_folder) | **POST** /storefront/{storefront_oid}/email/flow_folders | Insert email flow folder
-*ultracart_client::StorefrontApi* | [**insert_email_list**](docs/StorefrontApi.md#insert_email_list) | **POST** /storefront/{storefront_oid}/email/lists | Insert email list
-*ultracart_client::StorefrontApi* | [**insert_email_postcard**](docs/StorefrontApi.md#insert_email_postcard) | **POST** /storefront/{storefront_oid}/email/postcards | Insert email postcard
-*ultracart_client::StorefrontApi* | [**insert_email_segment**](docs/StorefrontApi.md#insert_email_segment) | **POST** /storefront/{storefront_oid}/email/segments | Insert email segment
-*ultracart_client::StorefrontApi* | [**insert_screen_recording_segment**](docs/StorefrontApi.md#insert_screen_recording_segment) | **POST** /storefront/{storefront_oid}/screen_recordings/segments | Insert screen recording segment
-*ultracart_client::StorefrontApi* | [**prepare_download_email_segment**](docs/StorefrontApi.md#prepare_download_email_segment) | **POST** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/downloadPrepare | Prepare download of email segment
-*ultracart_client::StorefrontApi* | [**publish_library_item**](docs/StorefrontApi.md#publish_library_item) | **POST** /storefront/code_library/{library_item_oid}/publish | Publish library item.
-*ultracart_client::StorefrontApi* | [**purchase_library_item**](docs/StorefrontApi.md#purchase_library_item) | **POST** /storefront/code_library/{library_item_oid}/purchase | Purchase public library item, which creates a copy of the item in your personal code library
-*ultracart_client::StorefrontApi* | [**release_email_commseq_step_waiting**](docs/StorefrontApi.md#release_email_commseq_step_waiting) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/waiting/{commseq_step_uuid} | Release email communication sequence customers waiting at the specified step
-*ultracart_client::StorefrontApi* | [**review**](docs/StorefrontApi.md#review) | **POST** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid}/review | Request a review of an email
-*ultracart_client::StorefrontApi* | [**search**](docs/StorefrontApi.md#search) | **GET** /storefront/search | Searches for all matching values
-*ultracart_client::StorefrontApi* | [**search2**](docs/StorefrontApi.md#search2) | **POST** /storefront/search | Searches for all matching values (using POST)
-*ultracart_client::StorefrontApi* | [**search_email_list_customers**](docs/StorefrontApi.md#search_email_list_customers) | **GET** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/search | Search email list customers
-*ultracart_client::StorefrontApi* | [**search_email_segment_customers**](docs/StorefrontApi.md#search_email_segment_customers) | **GET** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/search | Search email segment customers
-*ultracart_client::StorefrontApi* | [**search_library_items**](docs/StorefrontApi.md#search_library_items) | **POST** /storefront/code_library/search | Retrieve library items
-*ultracart_client::StorefrontApi* | [**search_published_items**](docs/StorefrontApi.md#search_published_items) | **POST** /storefront/code_library/search_published | Retrieve library items
-*ultracart_client::StorefrontApi* | [**search_review_items**](docs/StorefrontApi.md#search_review_items) | **POST** /storefront/code_library/search_review | Retrieve library items needing review or rejected
-*ultracart_client::StorefrontApi* | [**search_shared_items**](docs/StorefrontApi.md#search_shared_items) | **POST** /storefront/code_library/search_shared | Retrieve library items
-*ultracart_client::StorefrontApi* | [**send_email_test**](docs/StorefrontApi.md#send_email_test) | **POST** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid}/test | Send email test
-*ultracart_client::StorefrontApi* | [**send_postcard_test**](docs/StorefrontApi.md#send_postcard_test) | **POST** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid}/test | Send postcard test
-*ultracart_client::StorefrontApi* | [**start_email_campaign**](docs/StorefrontApi.md#start_email_campaign) | **PUT** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid}/start | Start email campaign
-*ultracart_client::StorefrontApi* | [**subscribe_to_email_list**](docs/StorefrontApi.md#subscribe_to_email_list) | **POST** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/subscribe | Subscribe customers to email list
-*ultracart_client::StorefrontApi* | [**unfavorite_screen_recording**](docs/StorefrontApi.md#unfavorite_screen_recording) | **DELETE** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/favorite | Remove favorite flag on screen recording
-*ultracart_client::StorefrontApi* | [**update_email_campaign**](docs/StorefrontApi.md#update_email_campaign) | **PUT** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid} | Update email campaign
-*ultracart_client::StorefrontApi* | [**update_email_campaign_folder**](docs/StorefrontApi.md#update_email_campaign_folder) | **PUT** /storefront/{storefront_oid}/email/campaign_folders/{email_campaign_folder_uuid} | Update email campaign folder
-*ultracart_client::StorefrontApi* | [**update_email_commseq**](docs/StorefrontApi.md#update_email_commseq) | **PUT** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid} | Update email commseq
-*ultracart_client::StorefrontApi* | [**update_email_customer**](docs/StorefrontApi.md#update_email_customer) | **PUT** /storefront/{storefront_oid}/email/customers/{email_customer_uuid} | Update email customer
-*ultracart_client::StorefrontApi* | [**update_email_email**](docs/StorefrontApi.md#update_email_email) | **PUT** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid} | Update email email
-*ultracart_client::StorefrontApi* | [**update_email_flow**](docs/StorefrontApi.md#update_email_flow) | **PUT** /storefront/{storefront_oid}/email/flows/{email_flow_uuid} | Update email flow
-*ultracart_client::StorefrontApi* | [**update_email_flow_folder**](docs/StorefrontApi.md#update_email_flow_folder) | **PUT** /storefront/{storefront_oid}/email/flow_folders/{email_flow_folder_uuid} | Update email flow folder
-*ultracart_client::StorefrontApi* | [**update_email_global_settings**](docs/StorefrontApi.md#update_email_global_settings) | **POST** /storefront/email/global_settings | Update email global settings
-*ultracart_client::StorefrontApi* | [**update_email_list**](docs/StorefrontApi.md#update_email_list) | **PUT** /storefront/{storefront_oid}/email/lists/{email_list_uuid} | Update email list
-*ultracart_client::StorefrontApi* | [**update_email_plan**](docs/StorefrontApi.md#update_email_plan) | **POST** /storefront/{storefront_oid}/email/plan | Update email plan
-*ultracart_client::StorefrontApi* | [**update_email_postcard**](docs/StorefrontApi.md#update_email_postcard) | **PUT** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid} | Update email postcard
-*ultracart_client::StorefrontApi* | [**update_email_segment**](docs/StorefrontApi.md#update_email_segment) | **PUT** /storefront/{storefront_oid}/email/segments/{email_segment_uuid} | Update email segment
-*ultracart_client::StorefrontApi* | [**update_email_settings**](docs/StorefrontApi.md#update_email_settings) | **POST** /storefront/{storefront_oid}/email/settings | Update email settings
-*ultracart_client::StorefrontApi* | [**update_experiment**](docs/StorefrontApi.md#update_experiment) | **PUT** /storefront/{storefront_oid}/experiments/{storefront_experiment_oid} | Update experiment
-*ultracart_client::StorefrontApi* | [**update_library_item**](docs/StorefrontApi.md#update_library_item) | **PUT** /storefront/code_library/{library_item_oid} | Update library item. Note that only certain fields may be updated via this method.
-*ultracart_client::StorefrontApi* | [**update_screen_recording_segment**](docs/StorefrontApi.md#update_screen_recording_segment) | **POST** /storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid} | Update screen recording segment
-*ultracart_client::StorefrontApi* | [**update_screen_recording_settings**](docs/StorefrontApi.md#update_screen_recording_settings) | **POST** /storefront/{storefront_oid}/screen_recordings/settings | Update screen recording settings
-*ultracart_client::StorefrontApi* | [**update_screen_recording_tags**](docs/StorefrontApi.md#update_screen_recording_tags) | **POST** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/tags | Update tags on a screen recording
-*ultracart_client::StorefrontApi* | [**update_transaction_email**](docs/StorefrontApi.md#update_transaction_email) | **PUT** /storefront/{storefront_oid}/transaction_email/list/{email_id} | Updates a transaction email object
-*ultracart_client::TaxApi* | [**delete_tax_provider_self_city**](docs/TaxApi.md#delete_tax_provider_self_city) | **DELETE** /tax/providers/self/city/{city} | Deletes a Self tax provider city
-*ultracart_client::TaxApi* | [**delete_tax_provider_self_country**](docs/TaxApi.md#delete_tax_provider_self_country) | **DELETE** /tax/providers/self/country/{countryCode} | Deletes a Self tax provider country
-*ultracart_client::TaxApi* | [**delete_tax_provider_self_county**](docs/TaxApi.md#delete_tax_provider_self_county) | **DELETE** /tax/providers/self/county/{county} | Deletes a Self tax provider county
-*ultracart_client::TaxApi* | [**delete_tax_provider_self_postal_code**](docs/TaxApi.md#delete_tax_provider_self_postal_code) | **DELETE** /tax/providers/self/postalCode/{postal_code} | Deletes a Self tax provider postalCode
-*ultracart_client::TaxApi* | [**delete_tax_provider_self_state**](docs/TaxApi.md#delete_tax_provider_self_state) | **DELETE** /tax/providers/self/state/{stateCode} | Deletes a Self tax provider state
-*ultracart_client::TaxApi* | [**get_tax_provider_avalara**](docs/TaxApi.md#get_tax_provider_avalara) | **GET** /tax/providers/avalara | Retrieve the Avalara tax provider
-*ultracart_client::TaxApi* | [**get_tax_provider_avalara_companies**](docs/TaxApi.md#get_tax_provider_avalara_companies) | **POST** /tax/providers/avalara/companies | Returns Avalara Tax companies configured by the merchant
-*ultracart_client::TaxApi* | [**get_tax_provider_avalara_test**](docs/TaxApi.md#get_tax_provider_avalara_test) | **GET** /tax/providers/avalara/test | Attempts to connect to Avalara and returns back the response
-*ultracart_client::TaxApi* | [**get_tax_provider_self**](docs/TaxApi.md#get_tax_provider_self) | **GET** /tax/providers/self | Retrieve the Self tax provider
-*ultracart_client::TaxApi* | [**get_tax_provider_self_countries**](docs/TaxApi.md#get_tax_provider_self_countries) | **GET** /tax/providers/self/countries | Retrieve the Self tax provider countries
-*ultracart_client::TaxApi* | [**get_tax_provider_self_regions_by_country_code**](docs/TaxApi.md#get_tax_provider_self_regions_by_country_code) | **GET** /tax/providers/self/regions/{countryCode} | Retrieve the Self tax provider regions for a given country code
-*ultracart_client::TaxApi* | [**get_tax_provider_sovos**](docs/TaxApi.md#get_tax_provider_sovos) | **GET** /tax/providers/sovos | Retrieve the Sovos tax provider
-*ultracart_client::TaxApi* | [**get_tax_provider_sovos_test**](docs/TaxApi.md#get_tax_provider_sovos_test) | **GET** /tax/providers/sovos/test | Attempts to connect to Sovos and returns back the response
-*ultracart_client::TaxApi* | [**get_tax_provider_tax_jar**](docs/TaxApi.md#get_tax_provider_tax_jar) | **GET** /tax/providers/taxjar | Retrieve the TaxJar tax provider
-*ultracart_client::TaxApi* | [**get_tax_provider_tax_jar_test**](docs/TaxApi.md#get_tax_provider_tax_jar_test) | **GET** /tax/providers/taxjar/test | Attempts to connect to TaxJar and returns back the response
-*ultracart_client::TaxApi* | [**get_tax_provider_ultra_cart**](docs/TaxApi.md#get_tax_provider_ultra_cart) | **GET** /tax/providers/ultracart | Retrieve the UltraCart tax provider
-*ultracart_client::TaxApi* | [**get_tax_providers**](docs/TaxApi.md#get_tax_providers) | **GET** /tax/providers | Retrieve tax methods
-*ultracart_client::TaxApi* | [**set_active_tax_provider**](docs/TaxApi.md#set_active_tax_provider) | **POST** /tax/providers/setActive/{providerName} | Toggle a tax provider to active
-*ultracart_client::TaxApi* | [**update_tax_provider_avalara**](docs/TaxApi.md#update_tax_provider_avalara) | **POST** /tax/providers/avalara | Update the Avalara tax provider
-*ultracart_client::TaxApi* | [**update_tax_provider_self**](docs/TaxApi.md#update_tax_provider_self) | **POST** /tax/providers/self | Update the Self tax provider
-*ultracart_client::TaxApi* | [**update_tax_provider_self_city**](docs/TaxApi.md#update_tax_provider_self_city) | **POST** /tax/providers/self/city/{city} | Updates a Self tax provider city
-*ultracart_client::TaxApi* | [**update_tax_provider_self_country**](docs/TaxApi.md#update_tax_provider_self_country) | **POST** /tax/providers/self/country/{countryCode} | Updates a Self tax provider country
-*ultracart_client::TaxApi* | [**update_tax_provider_self_county**](docs/TaxApi.md#update_tax_provider_self_county) | **POST** /tax/providers/self/county/{county} | Updates a Self tax provider county
-*ultracart_client::TaxApi* | [**update_tax_provider_self_postal_code**](docs/TaxApi.md#update_tax_provider_self_postal_code) | **POST** /tax/providers/self/postalCode/{postal_code} | Updates a Self tax provider postalCode
-*ultracart_client::TaxApi* | [**update_tax_provider_self_state**](docs/TaxApi.md#update_tax_provider_self_state) | **POST** /tax/providers/self/state/{stateCode} | Updates a Self tax provider state
-*ultracart_client::TaxApi* | [**update_tax_provider_sovos**](docs/TaxApi.md#update_tax_provider_sovos) | **POST** /tax/providers/sovos | Update the Sovos tax provider
-*ultracart_client::TaxApi* | [**update_tax_provider_tax_jar**](docs/TaxApi.md#update_tax_provider_tax_jar) | **POST** /tax/providers/taxjar | Update the TaxJar tax provider
-*ultracart_client::TaxApi* | [**update_tax_provider_ultra_cart**](docs/TaxApi.md#update_tax_provider_ultra_cart) | **POST** /tax/providers/ultracart | Update the UltraCart tax provider
-*ultracart_client::UserApi* | [**delete_group**](docs/UserApi.md#delete_group) | **DELETE** /user/groups/{group_oid} | Delete a group
-*ultracart_client::UserApi* | [**delete_user**](docs/UserApi.md#delete_user) | **DELETE** /user/users/{user_id} | Delete a user
-*ultracart_client::UserApi* | [**get_group**](docs/UserApi.md#get_group) | **GET** /user/groups/{group_oid} | Retrieve a group
-*ultracart_client::UserApi* | [**get_groups**](docs/UserApi.md#get_groups) | **GET** /user/groups | Get groups
-*ultracart_client::UserApi* | [**get_user**](docs/UserApi.md#get_user) | **GET** /user/users/{user_id} | Retrieve a user
-*ultracart_client::UserApi* | [**get_user_logins**](docs/UserApi.md#get_user_logins) | **GET** /user/users/{user_id}/logins | Retrieve a user's login history
-*ultracart_client::UserApi* | [**get_users**](docs/UserApi.md#get_users) | **GET** /user/users | Get users
-*ultracart_client::UserApi* | [**insert_group**](docs/UserApi.md#insert_group) | **POST** /user/groups | Insert a group
-*ultracart_client::UserApi* | [**insert_user**](docs/UserApi.md#insert_user) | **POST** /user/users | Insert a user
-*ultracart_client::UserApi* | [**update_group**](docs/UserApi.md#update_group) | **PUT** /user/groups/{group_oid} | Update a group
-*ultracart_client::UserApi* | [**update_user**](docs/UserApi.md#update_user) | **PUT** /user/users/{user_id} | Update a user
-*ultracart_client::WebhookApi* | [**delete_webhook**](docs/WebhookApi.md#delete_webhook) | **DELETE** /webhook/webhooks/{webhookOid} | Delete a webhook
-*ultracart_client::WebhookApi* | [**delete_webhook_by_url**](docs/WebhookApi.md#delete_webhook_by_url) | **DELETE** /webhook/webhooks | Delete a webhook by URL
-*ultracart_client::WebhookApi* | [**get_webhook_log**](docs/WebhookApi.md#get_webhook_log) | **GET** /webhook/webhooks/{webhookOid}/logs/{requestId} | Retrieve an individual log
-*ultracart_client::WebhookApi* | [**get_webhook_log_summaries**](docs/WebhookApi.md#get_webhook_log_summaries) | **GET** /webhook/webhooks/{webhookOid}/logs | Retrieve the log summaries
-*ultracart_client::WebhookApi* | [**get_webhooks**](docs/WebhookApi.md#get_webhooks) | **GET** /webhook/webhooks | Retrieve webhooks
-*ultracart_client::WebhookApi* | [**insert_webhook**](docs/WebhookApi.md#insert_webhook) | **POST** /webhook/webhooks | Add a webhook
-*ultracart_client::WebhookApi* | [**resend_event**](docs/WebhookApi.md#resend_event) | **POST** /webhook/webhooks/{webhookOid}/reflow/{eventName} | Resend events to the webhook endpoint.
-*ultracart_client::WebhookApi* | [**update_webhook**](docs/WebhookApi.md#update_webhook) | **PUT** /webhook/webhooks/{webhookOid} | Update a webhook
+*UltracartClient::AffiliateApi* | [**get_clicks_by_query**](docs/AffiliateApi.md#get_clicks_by_query) | **POST** /affiliate/clicks/query | Retrieve clicks
+*UltracartClient::AffiliateApi* | [**get_ledgers_by_query**](docs/AffiliateApi.md#get_ledgers_by_query) | **POST** /affiliate/ledgers/query | Retrieve ledger entries
+*UltracartClient::AutoOrderApi* | [**get_auto_order**](docs/AutoOrderApi.md#get_auto_order) | **GET** /auto_order/auto_orders/{auto_order_oid} | Retrieve an auto order
+*UltracartClient::AutoOrderApi* | [**get_auto_order_by_code**](docs/AutoOrderApi.md#get_auto_order_by_code) | **GET** /auto_order/auto_orders/code/{auto_order_code} | Retrieve an auto order
+*UltracartClient::AutoOrderApi* | [**get_auto_order_by_reference_order_id**](docs/AutoOrderApi.md#get_auto_order_by_reference_order_id) | **GET** /auto_order/auto_orders/reference_order_id/{reference_order_id} | Retrieve an auto order
+*UltracartClient::AutoOrderApi* | [**get_auto_orders**](docs/AutoOrderApi.md#get_auto_orders) | **GET** /auto_order/auto_orders | Retrieve auto orders
+*UltracartClient::AutoOrderApi* | [**get_auto_orders_batch**](docs/AutoOrderApi.md#get_auto_orders_batch) | **POST** /auto_order/auto_orders/batch | Retrieve auto order batch
+*UltracartClient::AutoOrderApi* | [**get_auto_orders_by_query**](docs/AutoOrderApi.md#get_auto_orders_by_query) | **POST** /auto_order/auto_orders/query | Retrieve auto orders
+*UltracartClient::AutoOrderApi* | [**update_auto_order**](docs/AutoOrderApi.md#update_auto_order) | **PUT** /auto_order/auto_orders/{auto_order_oid} | Update an auto order
+*UltracartClient::AutoOrderApi* | [**update_auto_orders_batch**](docs/AutoOrderApi.md#update_auto_orders_batch) | **PUT** /auto_order/auto_orders/batch | Update multiple auto orders
+*UltracartClient::ChargebackApi* | [**delete_chargeback**](docs/ChargebackApi.md#delete_chargeback) | **DELETE** /chargeback/chargebacks/{chargeback_dispute_oid} | Delete a chargeback
+*UltracartClient::ChargebackApi* | [**get_chargeback_dispute**](docs/ChargebackApi.md#get_chargeback_dispute) | **GET** /chargeback/chargebacks/{chargeback_dispute_oid} | Retrieve a chargeback
+*UltracartClient::ChargebackApi* | [**get_chargeback_disputes**](docs/ChargebackApi.md#get_chargeback_disputes) | **GET** /chargeback/chargebacks | Retrieve chargebacks
+*UltracartClient::ChargebackApi* | [**insert_chargeback**](docs/ChargebackApi.md#insert_chargeback) | **POST** /chargeback/chargebacks | Insert a chargeback
+*UltracartClient::ChargebackApi* | [**update_chargeback**](docs/ChargebackApi.md#update_chargeback) | **PUT** /chargeback/chargebacks/{chargeback_dispute_oid} | Update a chargeback
+*UltracartClient::CheckoutApi* | [**city_state**](docs/CheckoutApi.md#city_state) | **POST** /checkout/city_state | City/State for Zip
+*UltracartClient::CheckoutApi* | [**finalize_order**](docs/CheckoutApi.md#finalize_order) | **POST** /checkout/cart/finalizeOrder | Finalize Order
+*UltracartClient::CheckoutApi* | [**get_affirm_checkout**](docs/CheckoutApi.md#get_affirm_checkout) | **GET** /checkout/cart/{cart_id}/affirmCheckout | Get affirm checkout (by cart id)
+*UltracartClient::CheckoutApi* | [**get_allowed_countries**](docs/CheckoutApi.md#get_allowed_countries) | **POST** /checkout/allowedCountries | Allowed countries
+*UltracartClient::CheckoutApi* | [**get_cart**](docs/CheckoutApi.md#get_cart) | **GET** /checkout/cart | Get cart
+*UltracartClient::CheckoutApi* | [**get_cart_by_cart_id**](docs/CheckoutApi.md#get_cart_by_cart_id) | **GET** /checkout/cart/{cart_id} | Get cart (by cart id)
+*UltracartClient::CheckoutApi* | [**get_cart_by_return_code**](docs/CheckoutApi.md#get_cart_by_return_code) | **GET** /checkout/return/{return_code} | Get cart (by return code)
+*UltracartClient::CheckoutApi* | [**get_cart_by_return_token**](docs/CheckoutApi.md#get_cart_by_return_token) | **GET** /checkout/return_token | Get cart (by return token)
+*UltracartClient::CheckoutApi* | [**get_state_provinces_for_country**](docs/CheckoutApi.md#get_state_provinces_for_country) | **POST** /checkout/stateProvincesForCountry/{country_code} | Get state/province list for a country code
+*UltracartClient::CheckoutApi* | [**handoff_cart**](docs/CheckoutApi.md#handoff_cart) | **POST** /checkout/cart/handoff | Handoff cart
+*UltracartClient::CheckoutApi* | [**login**](docs/CheckoutApi.md#login) | **POST** /checkout/cart/profile/login | Profile login
+*UltracartClient::CheckoutApi* | [**logout**](docs/CheckoutApi.md#logout) | **POST** /checkout/cart/profile/logout | Profile logout
+*UltracartClient::CheckoutApi* | [**register**](docs/CheckoutApi.md#register) | **POST** /checkout/cart/profile/register | Profile registration
+*UltracartClient::CheckoutApi* | [**register_affiliate_click**](docs/CheckoutApi.md#register_affiliate_click) | **POST** /checkout/affiliateClick/register | Register affiliate click
+*UltracartClient::CheckoutApi* | [**related_items_for_cart**](docs/CheckoutApi.md#related_items_for_cart) | **POST** /checkout/related_items | Related items
+*UltracartClient::CheckoutApi* | [**related_items_for_item**](docs/CheckoutApi.md#related_items_for_item) | **POST** /checkout/relatedItems/{item_id} | Related items (specific item)
+*UltracartClient::CheckoutApi* | [**setup_browser_key**](docs/CheckoutApi.md#setup_browser_key) | **PUT** /checkout/browser_key | Setup Browser Application
+*UltracartClient::CheckoutApi* | [**update_cart**](docs/CheckoutApi.md#update_cart) | **PUT** /checkout/cart | Update cart
+*UltracartClient::CheckoutApi* | [**validate_cart**](docs/CheckoutApi.md#validate_cart) | **POST** /checkout/cart/validate | Validate
+*UltracartClient::CouponApi* | [**delete_coupon**](docs/CouponApi.md#delete_coupon) | **DELETE** /coupon/coupons/{coupon_oid} | Delete a coupon
+*UltracartClient::CouponApi* | [**delete_coupons_by_code**](docs/CouponApi.md#delete_coupons_by_code) | **DELETE** /coupon/coupons/by_code | Deletes multiple coupons
+*UltracartClient::CouponApi* | [**delete_coupons_by_oid**](docs/CouponApi.md#delete_coupons_by_oid) | **DELETE** /coupon/coupons/by_oid | Deletes multiple coupons
+*UltracartClient::CouponApi* | [**does_coupon_code_exist**](docs/CouponApi.md#does_coupon_code_exist) | **GET** /coupon/coupons/merchant_code/{merchant_code}/exists | Determines if a coupon merchant code already exists
+*UltracartClient::CouponApi* | [**generate_coupon_codes**](docs/CouponApi.md#generate_coupon_codes) | **POST** /coupon/coupons/{coupon_oid}/generate_codes | Generates one time codes for a coupon
+*UltracartClient::CouponApi* | [**generate_one_time_codes_by_merchant_code**](docs/CouponApi.md#generate_one_time_codes_by_merchant_code) | **POST** /coupon/coupons/merchant_code/{merchant_code}/generate_codes | Generates one time codes by merchant code
+*UltracartClient::CouponApi* | [**get_auto_apply**](docs/CouponApi.md#get_auto_apply) | **GET** /coupon/auto_apply | Retrieve auto apply rules and conditions
+*UltracartClient::CouponApi* | [**get_coupon**](docs/CouponApi.md#get_coupon) | **GET** /coupon/coupons/{coupon_oid} | Retrieve a coupon
+*UltracartClient::CouponApi* | [**get_coupon_by_merchant_code**](docs/CouponApi.md#get_coupon_by_merchant_code) | **GET** /coupon/coupons/merchant_code/{merchant_code} | Retrieve a coupon by merchant code
+*UltracartClient::CouponApi* | [**get_coupons**](docs/CouponApi.md#get_coupons) | **GET** /coupon/coupons | Retrieve coupons
+*UltracartClient::CouponApi* | [**get_coupons_by_query**](docs/CouponApi.md#get_coupons_by_query) | **GET** /coupon/coupons/query | Retrieve coupons by query
+*UltracartClient::CouponApi* | [**get_editor_values**](docs/CouponApi.md#get_editor_values) | **GET** /coupon/editor_values | Retrieve values needed for a coupon editor
+*UltracartClient::CouponApi* | [**insert_coupon**](docs/CouponApi.md#insert_coupon) | **POST** /coupon/coupons | Insert a coupon
+*UltracartClient::CouponApi* | [**insert_coupons**](docs/CouponApi.md#insert_coupons) | **POST** /coupon/coupons/batch | Insert multiple coupons
+*UltracartClient::CouponApi* | [**search_items**](docs/CouponApi.md#search_items) | **GET** /coupon/searchItems | Searches for items to display within a coupon editor and assign to coupons
+*UltracartClient::CouponApi* | [**update_auto_apply**](docs/CouponApi.md#update_auto_apply) | **POST** /coupon/auto_apply | Update auto apply rules and conditions
+*UltracartClient::CouponApi* | [**update_coupon**](docs/CouponApi.md#update_coupon) | **PUT** /coupon/coupons/{coupon_oid} | Update a coupon
+*UltracartClient::CouponApi* | [**update_coupons**](docs/CouponApi.md#update_coupons) | **PUT** /coupon/coupons/batch | Update multiple coupons
+*UltracartClient::CouponApi* | [**upload_coupon_codes**](docs/CouponApi.md#upload_coupon_codes) | **POST** /coupon/coupons/{coupon_oid}/upload_codes | Upload one-time codes for a coupon
+*UltracartClient::CustomerApi* | [**delete_customer**](docs/CustomerApi.md#delete_customer) | **DELETE** /customer/customers/{customer_profile_oid} | Delete a customer
+*UltracartClient::CustomerApi* | [**get_customer**](docs/CustomerApi.md#get_customer) | **GET** /customer/customers/{customer_profile_oid} | Retrieve a customer
+*UltracartClient::CustomerApi* | [**get_customers**](docs/CustomerApi.md#get_customers) | **GET** /customer/customers | Retrieve customers
+*UltracartClient::CustomerApi* | [**get_customers_by_query**](docs/CustomerApi.md#get_customers_by_query) | **POST** /customer/customers/query | Retrieve customers by query
+*UltracartClient::CustomerApi* | [**get_customers_for_data_tables**](docs/CustomerApi.md#get_customers_for_data_tables) | **POST** /customer/customers/dataTables | Retrieve customers for DataTables plugin
+*UltracartClient::CustomerApi* | [**get_editor_values**](docs/CustomerApi.md#get_editor_values) | **GET** /customer/editor_values | Retrieve values needed for a customer profile editor
+*UltracartClient::CustomerApi* | [**get_email_lists**](docs/CustomerApi.md#get_email_lists) | **GET** /customer/email_lists | Retrieve all email lists across all storefronts
+*UltracartClient::CustomerApi* | [**insert_customer**](docs/CustomerApi.md#insert_customer) | **POST** /customer/customers | Insert a customer
+*UltracartClient::CustomerApi* | [**update_customer**](docs/CustomerApi.md#update_customer) | **PUT** /customer/customers/{customer_profile_oid} | Update a customer
+*UltracartClient::CustomerApi* | [**update_customer_email_lists**](docs/CustomerApi.md#update_customer_email_lists) | **POST** /customer/customers/{customer_profile_oid}/email_lists | Update email list subscriptions for a customer
+*UltracartClient::FulfillmentApi* | [**acknowledge_orders**](docs/FulfillmentApi.md#acknowledge_orders) | **PUT** /fulfillment/distribution_centers/{distribution_center_code}/acknowledgements | Acknowledge receipt of orders.
+*UltracartClient::FulfillmentApi* | [**get_distribution_center_orders**](docs/FulfillmentApi.md#get_distribution_center_orders) | **GET** /fulfillment/distribution_centers/{distribution_center_code}/orders | Retrieve orders queued up for this distribution center.
+*UltracartClient::FulfillmentApi* | [**get_distribution_centers**](docs/FulfillmentApi.md#get_distribution_centers) | **GET** /fulfillment/distribution_centers | Retrieve distribution centers
+*UltracartClient::FulfillmentApi* | [**ship_orders**](docs/FulfillmentApi.md#ship_orders) | **POST** /fulfillment/distribution_centers/{distribution_center_code}/shipments | Mark orders as shipped
+*UltracartClient::FulfillmentApi* | [**update_inventory**](docs/FulfillmentApi.md#update_inventory) | **POST** /fulfillment/distribution_centers/{distribution_center_code}/inventory | Update inventory
+*UltracartClient::ItemApi* | [**delete_item**](docs/ItemApi.md#delete_item) | **DELETE** /item/items/{merchant_item_oid} | Delete an item
+*UltracartClient::ItemApi* | [**get_item**](docs/ItemApi.md#get_item) | **GET** /item/items/{merchant_item_oid} | Retrieve an item
+*UltracartClient::ItemApi* | [**get_item_by_merchant_item_id**](docs/ItemApi.md#get_item_by_merchant_item_id) | **GET** /item/items/merchant_item_id/{merchant_item_id} | Retrieve an item by item id
+*UltracartClient::ItemApi* | [**get_items**](docs/ItemApi.md#get_items) | **GET** /item/items | Retrieve items
+*UltracartClient::ItemApi* | [**get_pricing_tiers**](docs/ItemApi.md#get_pricing_tiers) | **GET** /item/pricing_tiers | Retrieve pricing tiers
+*UltracartClient::ItemApi* | [**insert_item**](docs/ItemApi.md#insert_item) | **POST** /item/items | Create an item
+*UltracartClient::ItemApi* | [**update_item**](docs/ItemApi.md#update_item) | **PUT** /item/items/{merchant_item_oid} | Update an item
+*UltracartClient::ItemApi* | [**update_items**](docs/ItemApi.md#update_items) | **PUT** /item/items/batch | Update multiple items
+*UltracartClient::ItemApi* | [**upload_temporary_multimedia**](docs/ItemApi.md#upload_temporary_multimedia) | **POST** /item/temp_multimedia | Upload an image to the temporary multimedia.
+*UltracartClient::OauthApi* | [**oauth_access_token**](docs/OauthApi.md#oauth_access_token) | **POST** /oauth/token | Exchange authorization code for access token.
+*UltracartClient::OauthApi* | [**oauth_revoke**](docs/OauthApi.md#oauth_revoke) | **POST** /oauth/revoke | Revoke this OAuth application.
+*UltracartClient::OrderApi* | [**adjust_order_total**](docs/OrderApi.md#adjust_order_total) | **POST** /order/orders/{order_id}/adjust_order_total/{desired_total} | Adjusts an order total
+*UltracartClient::OrderApi* | [**cancel_order**](docs/OrderApi.md#cancel_order) | **POST** /order/orders/{order_id}/cancel | Cancel an order
+*UltracartClient::OrderApi* | [**delete_order**](docs/OrderApi.md#delete_order) | **DELETE** /order/orders/{order_id} | Delete an order
+*UltracartClient::OrderApi* | [**format**](docs/OrderApi.md#format) | **POST** /order/orders/{order_id}/format | Format order
+*UltracartClient::OrderApi* | [**generate_order_token**](docs/OrderApi.md#generate_order_token) | **GET** /order/orders/token/{order_id} | Generate an order token for a given order id
+*UltracartClient::OrderApi* | [**get_accounts_receivable_retry_config**](docs/OrderApi.md#get_accounts_receivable_retry_config) | **GET** /order/accountsReceivableRetryConfig | Retrieve A/R Retry Configuration
+*UltracartClient::OrderApi* | [**get_accounts_receivable_retry_stats**](docs/OrderApi.md#get_accounts_receivable_retry_stats) | **GET** /order/accountsReceivableRetryConfig/stats | Retrieve A/R Retry Statistics
+*UltracartClient::OrderApi* | [**get_order**](docs/OrderApi.md#get_order) | **GET** /order/orders/{order_id} | Retrieve an order
+*UltracartClient::OrderApi* | [**get_order_by_token**](docs/OrderApi.md#get_order_by_token) | **POST** /order/orders/token | Retrieve an order using a token
+*UltracartClient::OrderApi* | [**get_orders**](docs/OrderApi.md#get_orders) | **GET** /order/orders | Retrieve orders
+*UltracartClient::OrderApi* | [**get_orders_batch**](docs/OrderApi.md#get_orders_batch) | **POST** /order/orders/batch | Retrieve order batch
+*UltracartClient::OrderApi* | [**get_orders_by_query**](docs/OrderApi.md#get_orders_by_query) | **POST** /order/orders/query | Retrieve orders
+*UltracartClient::OrderApi* | [**insert_order**](docs/OrderApi.md#insert_order) | **POST** /order/orders | Insert an order
+*UltracartClient::OrderApi* | [**process_payment**](docs/OrderApi.md#process_payment) | **POST** /order/orders/{order_id}/process_payment | Process payment
+*UltracartClient::OrderApi* | [**refund_order**](docs/OrderApi.md#refund_order) | **PUT** /order/orders/{order_id}/refund | Refund an order
+*UltracartClient::OrderApi* | [**replacement**](docs/OrderApi.md#replacement) | **POST** /order/orders/{order_id}/replacement | Replacement order
+*UltracartClient::OrderApi* | [**resend_receipt**](docs/OrderApi.md#resend_receipt) | **POST** /order/orders/{order_id}/resend_receipt | Resend receipt
+*UltracartClient::OrderApi* | [**resend_shipment_confirmation**](docs/OrderApi.md#resend_shipment_confirmation) | **POST** /order/orders/{order_id}/resend_shipment_confirmation | Resend shipment confirmation
+*UltracartClient::OrderApi* | [**update_accounts_receivable_retry_config**](docs/OrderApi.md#update_accounts_receivable_retry_config) | **POST** /order/accountsReceivableRetryConfig | Update A/R Retry Configuration
+*UltracartClient::OrderApi* | [**update_order**](docs/OrderApi.md#update_order) | **PUT** /order/orders/{order_id} | Update an order
+*UltracartClient::StorefrontApi* | [**add_to_library**](docs/StorefrontApi.md#add_to_library) | **POST** /storefront/code_library | Add to library
+*UltracartClient::StorefrontApi* | [**apply_to_store_front**](docs/StorefrontApi.md#apply_to_store_front) | **POST** /storefront/code_library/apply | Apply library item to storefront.
+*UltracartClient::StorefrontApi* | [**archive_email_list**](docs/StorefrontApi.md#archive_email_list) | **POST** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/archive | Archive email list
+*UltracartClient::StorefrontApi* | [**archive_email_segment**](docs/StorefrontApi.md#archive_email_segment) | **POST** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/archive | Archive email segment
+*UltracartClient::StorefrontApi* | [**back_populate_email_flow**](docs/StorefrontApi.md#back_populate_email_flow) | **POST** /storefront/{storefront_oid}/email/flows/{email_flow_uuid}/backfill | Back populate email flow
+*UltracartClient::StorefrontApi* | [**check_download_email_segment**](docs/StorefrontApi.md#check_download_email_segment) | **POST** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/downloadPrepare/{email_segment_rebuild_uuid} | Check download of email segment
+*UltracartClient::StorefrontApi* | [**clone_email_campaign**](docs/StorefrontApi.md#clone_email_campaign) | **POST** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid}/clone | Clone email campaign
+*UltracartClient::StorefrontApi* | [**clone_email_flow**](docs/StorefrontApi.md#clone_email_flow) | **POST** /storefront/{storefront_oid}/email/flows/{email_flow_uuid}/clone | Clone email flow
+*UltracartClient::StorefrontApi* | [**create_email_sending_domain**](docs/StorefrontApi.md#create_email_sending_domain) | **POST** /storefront/email/sending_domains/{domain}/create | Create email campaign
+*UltracartClient::StorefrontApi* | [**delete_email_campaign_folder**](docs/StorefrontApi.md#delete_email_campaign_folder) | **DELETE** /storefront/{storefront_oid}/email/campaign_folders/{email_campaign_folder_uuid} | Delete email campaignFolder
+*UltracartClient::StorefrontApi* | [**delete_email_commseq_stat**](docs/StorefrontApi.md#delete_email_commseq_stat) | **DELETE** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/stat | Delete communication sequence stats
+*UltracartClient::StorefrontApi* | [**delete_email_email**](docs/StorefrontApi.md#delete_email_email) | **DELETE** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid} | Delete email email
+*UltracartClient::StorefrontApi* | [**delete_email_flow_folder**](docs/StorefrontApi.md#delete_email_flow_folder) | **DELETE** /storefront/{storefront_oid}/email/flow_folders/{email_flow_folder_uuid} | Delete email flowFolder
+*UltracartClient::StorefrontApi* | [**delete_email_list_customer**](docs/StorefrontApi.md#delete_email_list_customer) | **DELETE** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/customers/{email_customer_uuid} | Delete email list customer
+*UltracartClient::StorefrontApi* | [**delete_email_postcard**](docs/StorefrontApi.md#delete_email_postcard) | **DELETE** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid} | Delete email postcard
+*UltracartClient::StorefrontApi* | [**delete_email_sending_domain**](docs/StorefrontApi.md#delete_email_sending_domain) | **DELETE** /storefront/email/sending_domains/{domain} | delete email campaign
+*UltracartClient::StorefrontApi* | [**delete_experiment**](docs/StorefrontApi.md#delete_experiment) | **DELETE** /storefront/{storefront_oid}/experiments/{storefront_experiment_oid} | Delete experiment
+*UltracartClient::StorefrontApi* | [**delete_library_item**](docs/StorefrontApi.md#delete_library_item) | **DELETE** /storefront/code_library/{library_item_oid} | Delete library item
+*UltracartClient::StorefrontApi* | [**delete_library_item_published_versions**](docs/StorefrontApi.md#delete_library_item_published_versions) | **DELETE** /storefront/code_library/{library_item_oid}/published_versions | Delete all published versions for a library item, including anything in review.
+*UltracartClient::StorefrontApi* | [**delete_screen_recording_segment**](docs/StorefrontApi.md#delete_screen_recording_segment) | **DELETE** /storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid} | Delete screen recording segment
+*UltracartClient::StorefrontApi* | [**duplicate_library_item**](docs/StorefrontApi.md#duplicate_library_item) | **POST** /storefront/code_library/{library_item_oid}/duplicate | Duplicate library item.
+*UltracartClient::StorefrontApi* | [**favorite_screen_recording**](docs/StorefrontApi.md#favorite_screen_recording) | **POST** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/favorite | Update favorite flag on screen recording
+*UltracartClient::StorefrontApi* | [**geocode_address**](docs/StorefrontApi.md#geocode_address) | **POST** /storefront/{storefront_oid}/email/geocode | Obtain lat/long for an address
+*UltracartClient::StorefrontApi* | [**get_countries**](docs/StorefrontApi.md#get_countries) | **GET** /storefront/{storefront_oid}/email/countries | Get countries
+*UltracartClient::StorefrontApi* | [**get_editor_token**](docs/StorefrontApi.md#get_editor_token) | **GET** /storefront/{storefront_oid}/editor_token | Gets editor token
+*UltracartClient::StorefrontApi* | [**get_email_base_templates**](docs/StorefrontApi.md#get_email_base_templates) | **GET** /storefront/{storefront_oid}/email/baseTemplates | Get email communication base templates
+*UltracartClient::StorefrontApi* | [**get_email_campaign**](docs/StorefrontApi.md#get_email_campaign) | **GET** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid} | Get email campaign
+*UltracartClient::StorefrontApi* | [**get_email_campaign_folder**](docs/StorefrontApi.md#get_email_campaign_folder) | **GET** /storefront/{storefront_oid}/email/campaign_folders/{email_campaign_folder_uuid} | Get email campaign folder
+*UltracartClient::StorefrontApi* | [**get_email_campaign_folders**](docs/StorefrontApi.md#get_email_campaign_folders) | **GET** /storefront/{storefront_oid}/email/campaign_folders | Get email campaign folders
+*UltracartClient::StorefrontApi* | [**get_email_campaign_screenshots**](docs/StorefrontApi.md#get_email_campaign_screenshots) | **GET** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid}/screenshots | Get email campaign screenshots
+*UltracartClient::StorefrontApi* | [**get_email_campaigns**](docs/StorefrontApi.md#get_email_campaigns) | **GET** /storefront/{storefront_oid}/email/campaigns | Get email campaigns
+*UltracartClient::StorefrontApi* | [**get_email_campaigns_with_stats**](docs/StorefrontApi.md#get_email_campaigns_with_stats) | **GET** /storefront/{storefront_oid}/email/campaignsWithStats/{stat_days} | Get email campaigns with stats
+*UltracartClient::StorefrontApi* | [**get_email_commseq**](docs/StorefrontApi.md#get_email_commseq) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid} | Get email commseq
+*UltracartClient::StorefrontApi* | [**get_email_commseq_email_stats**](docs/StorefrontApi.md#get_email_commseq_email_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/emailStats | Get email communication sequence emails stats
+*UltracartClient::StorefrontApi* | [**get_email_commseq_postcard_stats**](docs/StorefrontApi.md#get_email_commseq_postcard_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/postcardStats | Get email communication sequence postcard stats
+*UltracartClient::StorefrontApi* | [**get_email_commseq_stat_overall**](docs/StorefrontApi.md#get_email_commseq_stat_overall) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/stat | Get communication sequence stats overall
+*UltracartClient::StorefrontApi* | [**get_email_commseq_step_stats**](docs/StorefrontApi.md#get_email_commseq_step_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/stepStats | Get email communication sequence step stats
+*UltracartClient::StorefrontApi* | [**get_email_commseq_step_waiting**](docs/StorefrontApi.md#get_email_commseq_step_waiting) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/waiting | Get email communication sequence customers waiting at each requested step
+*UltracartClient::StorefrontApi* | [**get_email_commseqs**](docs/StorefrontApi.md#get_email_commseqs) | **GET** /storefront/{storefront_oid}/email/commseqs | Get email commseqs
+*UltracartClient::StorefrontApi* | [**get_email_customer_editor_url**](docs/StorefrontApi.md#get_email_customer_editor_url) | **GET** /storefront/{storefront_oid}/email/customers/{email_customer_uuid}/editor_url | Get customers editor URL
+*UltracartClient::StorefrontApi* | [**get_email_customers**](docs/StorefrontApi.md#get_email_customers) | **GET** /storefront/{storefront_oid}/email/customers | Get email customers
+*UltracartClient::StorefrontApi* | [**get_email_dashboard_activity**](docs/StorefrontApi.md#get_email_dashboard_activity) | **GET** /storefront/{storefront_oid}/email/dashboard_activity | Get email dashboard activity
+*UltracartClient::StorefrontApi* | [**get_email_dashboard_stats**](docs/StorefrontApi.md#get_email_dashboard_stats) | **GET** /storefront/{storefront_oid}/email/dashboard_stats | Get dashboard stats
+*UltracartClient::StorefrontApi* | [**get_email_email**](docs/StorefrontApi.md#get_email_email) | **GET** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid} | Get email email
+*UltracartClient::StorefrontApi* | [**get_email_email_clicks**](docs/StorefrontApi.md#get_email_email_clicks) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/steps/{commseq_step_uuid}/emails/{commseq_email_uuid}/clicks | Get email email clicks
+*UltracartClient::StorefrontApi* | [**get_email_email_customer_editor_url**](docs/StorefrontApi.md#get_email_email_customer_editor_url) | **GET** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid}/orders/{order_id}/editor_url | Get email order customer editor url
+*UltracartClient::StorefrontApi* | [**get_email_email_orders**](docs/StorefrontApi.md#get_email_email_orders) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/steps/{commseq_step_uuid}/emails/{commseq_email_uuid}/orders | Get email email orders
+*UltracartClient::StorefrontApi* | [**get_email_emails**](docs/StorefrontApi.md#get_email_emails) | **GET** /storefront/{storefront_oid}/email/emails | Get email emails
+*UltracartClient::StorefrontApi* | [**get_email_emails_multiple**](docs/StorefrontApi.md#get_email_emails_multiple) | **POST** /storefront/{storefront_oid}/email/emails/multiple | Get email emails multiple
+*UltracartClient::StorefrontApi* | [**get_email_flow**](docs/StorefrontApi.md#get_email_flow) | **GET** /storefront/{storefront_oid}/email/flows/{email_flow_uuid} | Get email flow
+*UltracartClient::StorefrontApi* | [**get_email_flow_folder**](docs/StorefrontApi.md#get_email_flow_folder) | **GET** /storefront/{storefront_oid}/email/flow_folders/{email_flow_folder_uuid} | Get email flow folder
+*UltracartClient::StorefrontApi* | [**get_email_flow_folders**](docs/StorefrontApi.md#get_email_flow_folders) | **GET** /storefront/{storefront_oid}/email/flow_folders | Get email flow folders
+*UltracartClient::StorefrontApi* | [**get_email_flow_screenshots**](docs/StorefrontApi.md#get_email_flow_screenshots) | **GET** /storefront/{storefront_oid}/email/flows/{email_flow_uuid}/screenshots | Get email flow screenshots
+*UltracartClient::StorefrontApi* | [**get_email_flows**](docs/StorefrontApi.md#get_email_flows) | **GET** /storefront/{storefront_oid}/email/flows | Get email flows
+*UltracartClient::StorefrontApi* | [**get_email_global_settings**](docs/StorefrontApi.md#get_email_global_settings) | **GET** /storefront/email/global_settings | Get email globalsettings
+*UltracartClient::StorefrontApi* | [**get_email_list**](docs/StorefrontApi.md#get_email_list) | **GET** /storefront/{storefront_oid}/email/lists/{email_list_uuid} | Get email list
+*UltracartClient::StorefrontApi* | [**get_email_list_customer_editor_url**](docs/StorefrontApi.md#get_email_list_customer_editor_url) | **GET** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/customers/{email_customer_uuid}/editor_url | Get email list customer editor url
+*UltracartClient::StorefrontApi* | [**get_email_list_customers**](docs/StorefrontApi.md#get_email_list_customers) | **GET** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/customers | Get email list customers
+*UltracartClient::StorefrontApi* | [**get_email_lists**](docs/StorefrontApi.md#get_email_lists) | **GET** /storefront/{storefront_oid}/email/lists | Get email lists
+*UltracartClient::StorefrontApi* | [**get_email_performance**](docs/StorefrontApi.md#get_email_performance) | **GET** /storefront/{storefront_oid}/email/performance | Get email performance
+*UltracartClient::StorefrontApi* | [**get_email_plan**](docs/StorefrontApi.md#get_email_plan) | **GET** /storefront/{storefront_oid}/email/plan | Get email plan
+*UltracartClient::StorefrontApi* | [**get_email_postcard**](docs/StorefrontApi.md#get_email_postcard) | **GET** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid} | Get email postcard
+*UltracartClient::StorefrontApi* | [**get_email_postcards**](docs/StorefrontApi.md#get_email_postcards) | **GET** /storefront/{storefront_oid}/email/postcards | Get email postcards
+*UltracartClient::StorefrontApi* | [**get_email_postcards_multiple**](docs/StorefrontApi.md#get_email_postcards_multiple) | **POST** /storefront/{storefront_oid}/email/postcards/multiple | Get email postcards multiple
+*UltracartClient::StorefrontApi* | [**get_email_segment**](docs/StorefrontApi.md#get_email_segment) | **GET** /storefront/{storefront_oid}/email/segments/{email_segment_uuid} | Get email segment
+*UltracartClient::StorefrontApi* | [**get_email_segment_customer_editor_url**](docs/StorefrontApi.md#get_email_segment_customer_editor_url) | **GET** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/customers/{email_customer_uuid}/editor_url | Get email segment customers editor URL
+*UltracartClient::StorefrontApi* | [**get_email_segment_customers**](docs/StorefrontApi.md#get_email_segment_customers) | **GET** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/customers | Get email segment customers
+*UltracartClient::StorefrontApi* | [**get_email_segments**](docs/StorefrontApi.md#get_email_segments) | **GET** /storefront/{storefront_oid}/email/segments | Get email segments
+*UltracartClient::StorefrontApi* | [**get_email_sending_domain**](docs/StorefrontApi.md#get_email_sending_domain) | **GET** /storefront/email/sending_domain/{domain} | Get email sending domain
+*UltracartClient::StorefrontApi* | [**get_email_sending_domain_status**](docs/StorefrontApi.md#get_email_sending_domain_status) | **POST** /storefront/email/sending_domains/{domain}/status | Get email sending domain status
+*UltracartClient::StorefrontApi* | [**get_email_sending_domains**](docs/StorefrontApi.md#get_email_sending_domains) | **GET** /storefront/email/sending_domains | Get email sending domains
+*UltracartClient::StorefrontApi* | [**get_email_settings**](docs/StorefrontApi.md#get_email_settings) | **GET** /storefront/{storefront_oid}/email/settings | Get email settings
+*UltracartClient::StorefrontApi* | [**get_email_template**](docs/StorefrontApi.md#get_email_template) | **GET** /storefront/{storefront_oid}/email/templates/{email_template_oid} | Get email template
+*UltracartClient::StorefrontApi* | [**get_email_templates**](docs/StorefrontApi.md#get_email_templates) | **GET** /storefront/{storefront_oid}/email/templates | Get email templates
+*UltracartClient::StorefrontApi* | [**get_email_third_party_providers**](docs/StorefrontApi.md#get_email_third_party_providers) | **GET** /storefront/{storefront_oid}/email/third_party_providers | Get a list of third party email providers
+*UltracartClient::StorefrontApi* | [**get_experiments**](docs/StorefrontApi.md#get_experiments) | **GET** /storefront/{storefront_oid}/experiments | Get experiments
+*UltracartClient::StorefrontApi* | [**get_histogram_property_names**](docs/StorefrontApi.md#get_histogram_property_names) | **GET** /storefront/{storefront_oid}/email/histogram/property_names | Get histogram property names
+*UltracartClient::StorefrontApi* | [**get_histogram_property_values**](docs/StorefrontApi.md#get_histogram_property_values) | **GET** /storefront/{storefront_oid}/email/histogram/property_values | Get histogram property values
+*UltracartClient::StorefrontApi* | [**get_library_filter_values**](docs/StorefrontApi.md#get_library_filter_values) | **GET** /storefront/code_library/filter_values | Get library values used to populate drop down boxes for filtering.
+*UltracartClient::StorefrontApi* | [**get_library_item**](docs/StorefrontApi.md#get_library_item) | **GET** /storefront/code_library/{library_item_oid} | Get library item.
+*UltracartClient::StorefrontApi* | [**get_library_item_published_versions**](docs/StorefrontApi.md#get_library_item_published_versions) | **GET** /storefront/code_library/{library_item_oid}/published_versions | Get all published versions for a library item.
+*UltracartClient::StorefrontApi* | [**get_pricing_tiers**](docs/StorefrontApi.md#get_pricing_tiers) | **GET** /storefront/pricing_tiers | Retrieve pricing tiers
+*UltracartClient::StorefrontApi* | [**get_screen_recording**](docs/StorefrontApi.md#get_screen_recording) | **GET** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid} | Get screen recording
+*UltracartClient::StorefrontApi* | [**get_screen_recording_page_view_data**](docs/StorefrontApi.md#get_screen_recording_page_view_data) | **GET** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/page_view_data/{screen_recording_page_view_uuid} | Get screen recording page view data
+*UltracartClient::StorefrontApi* | [**get_screen_recording_segment**](docs/StorefrontApi.md#get_screen_recording_segment) | **GET** /storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid} | Get screen recording segment
+*UltracartClient::StorefrontApi* | [**get_screen_recording_segments**](docs/StorefrontApi.md#get_screen_recording_segments) | **GET** /storefront/{storefront_oid}/screen_recordings/segments | Get screen recording segments
+*UltracartClient::StorefrontApi* | [**get_screen_recording_settings**](docs/StorefrontApi.md#get_screen_recording_settings) | **GET** /storefront/{storefront_oid}/screen_recordings/settings | Get screen recording settings
+*UltracartClient::StorefrontApi* | [**get_screen_recording_tags**](docs/StorefrontApi.md#get_screen_recording_tags) | **POST** /storefront/{storefront_oid}/screen_recordings/tags | Get tags used by screen recording
+*UltracartClient::StorefrontApi* | [**get_screen_recordings_by_query**](docs/StorefrontApi.md#get_screen_recordings_by_query) | **POST** /storefront/{storefront_oid}/screen_recordings/query | Query screen recordings
+*UltracartClient::StorefrontApi* | [**get_screen_recordings_by_segment**](docs/StorefrontApi.md#get_screen_recordings_by_segment) | **POST** /storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid}/query | Get screen recordings by segment
+*UltracartClient::StorefrontApi* | [**get_thumbnail_parameters**](docs/StorefrontApi.md#get_thumbnail_parameters) | **POST** /storefront/thumbnailParameters | Get thumbnail parameters
+*UltracartClient::StorefrontApi* | [**get_transaction_email**](docs/StorefrontApi.md#get_transaction_email) | **GET** /storefront/{storefront_oid}/transaction_email/list/{email_id} | Gets a transaction email object
+*UltracartClient::StorefrontApi* | [**get_transaction_email_list**](docs/StorefrontApi.md#get_transaction_email_list) | **GET** /storefront/{storefront_oid}/transaction_email/list | Gets a list of transaction email names
+*UltracartClient::StorefrontApi* | [**get_transaction_email_screenshots**](docs/StorefrontApi.md#get_transaction_email_screenshots) | **GET** /storefront/{storefront_oid}/transaction_email/list/{email_id}/screenshots | Get transactional email screenshots
+*UltracartClient::StorefrontApi* | [**global_unsubscribe**](docs/StorefrontApi.md#global_unsubscribe) | **POST** /storefront/{storefront_oid}/email/globalUnsubscribe | Globally unsubscribe a customer
+*UltracartClient::StorefrontApi* | [**import_email_third_party_provider_list**](docs/StorefrontApi.md#import_email_third_party_provider_list) | **POST** /storefront/{storefront_oid}/email/third_party_providers/import | Import a third party provider list
+*UltracartClient::StorefrontApi* | [**insert_email_campaign**](docs/StorefrontApi.md#insert_email_campaign) | **POST** /storefront/{storefront_oid}/email/campaigns | Insert email campaign
+*UltracartClient::StorefrontApi* | [**insert_email_campaign_folder**](docs/StorefrontApi.md#insert_email_campaign_folder) | **POST** /storefront/{storefront_oid}/email/campaign_folders | Insert email campaign folder
+*UltracartClient::StorefrontApi* | [**insert_email_commseq**](docs/StorefrontApi.md#insert_email_commseq) | **POST** /storefront/{storefront_oid}/email/commseqs | Insert email commseq
+*UltracartClient::StorefrontApi* | [**insert_email_email**](docs/StorefrontApi.md#insert_email_email) | **POST** /storefront/{storefront_oid}/email/emails | Insert email email
+*UltracartClient::StorefrontApi* | [**insert_email_flow**](docs/StorefrontApi.md#insert_email_flow) | **POST** /storefront/{storefront_oid}/email/flows | Insert email flow
+*UltracartClient::StorefrontApi* | [**insert_email_flow_folder**](docs/StorefrontApi.md#insert_email_flow_folder) | **POST** /storefront/{storefront_oid}/email/flow_folders | Insert email flow folder
+*UltracartClient::StorefrontApi* | [**insert_email_list**](docs/StorefrontApi.md#insert_email_list) | **POST** /storefront/{storefront_oid}/email/lists | Insert email list
+*UltracartClient::StorefrontApi* | [**insert_email_postcard**](docs/StorefrontApi.md#insert_email_postcard) | **POST** /storefront/{storefront_oid}/email/postcards | Insert email postcard
+*UltracartClient::StorefrontApi* | [**insert_email_segment**](docs/StorefrontApi.md#insert_email_segment) | **POST** /storefront/{storefront_oid}/email/segments | Insert email segment
+*UltracartClient::StorefrontApi* | [**insert_screen_recording_segment**](docs/StorefrontApi.md#insert_screen_recording_segment) | **POST** /storefront/{storefront_oid}/screen_recordings/segments | Insert screen recording segment
+*UltracartClient::StorefrontApi* | [**prepare_download_email_segment**](docs/StorefrontApi.md#prepare_download_email_segment) | **POST** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/downloadPrepare | Prepare download of email segment
+*UltracartClient::StorefrontApi* | [**publish_library_item**](docs/StorefrontApi.md#publish_library_item) | **POST** /storefront/code_library/{library_item_oid}/publish | Publish library item.
+*UltracartClient::StorefrontApi* | [**purchase_library_item**](docs/StorefrontApi.md#purchase_library_item) | **POST** /storefront/code_library/{library_item_oid}/purchase | Purchase public library item, which creates a copy of the item in your personal code library
+*UltracartClient::StorefrontApi* | [**release_email_commseq_step_waiting**](docs/StorefrontApi.md#release_email_commseq_step_waiting) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/waiting/{commseq_step_uuid} | Release email communication sequence customers waiting at the specified step
+*UltracartClient::StorefrontApi* | [**review**](docs/StorefrontApi.md#review) | **POST** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid}/review | Request a review of an email
+*UltracartClient::StorefrontApi* | [**search**](docs/StorefrontApi.md#search) | **GET** /storefront/search | Searches for all matching values
+*UltracartClient::StorefrontApi* | [**search2**](docs/StorefrontApi.md#search2) | **POST** /storefront/search | Searches for all matching values (using POST)
+*UltracartClient::StorefrontApi* | [**search_email_list_customers**](docs/StorefrontApi.md#search_email_list_customers) | **GET** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/search | Search email list customers
+*UltracartClient::StorefrontApi* | [**search_email_segment_customers**](docs/StorefrontApi.md#search_email_segment_customers) | **GET** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/search | Search email segment customers
+*UltracartClient::StorefrontApi* | [**search_library_items**](docs/StorefrontApi.md#search_library_items) | **POST** /storefront/code_library/search | Retrieve library items
+*UltracartClient::StorefrontApi* | [**search_published_items**](docs/StorefrontApi.md#search_published_items) | **POST** /storefront/code_library/search_published | Retrieve library items
+*UltracartClient::StorefrontApi* | [**search_review_items**](docs/StorefrontApi.md#search_review_items) | **POST** /storefront/code_library/search_review | Retrieve library items needing review or rejected
+*UltracartClient::StorefrontApi* | [**search_shared_items**](docs/StorefrontApi.md#search_shared_items) | **POST** /storefront/code_library/search_shared | Retrieve library items
+*UltracartClient::StorefrontApi* | [**send_email_test**](docs/StorefrontApi.md#send_email_test) | **POST** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid}/test | Send email test
+*UltracartClient::StorefrontApi* | [**send_postcard_test**](docs/StorefrontApi.md#send_postcard_test) | **POST** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid}/test | Send postcard test
+*UltracartClient::StorefrontApi* | [**start_email_campaign**](docs/StorefrontApi.md#start_email_campaign) | **PUT** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid}/start | Start email campaign
+*UltracartClient::StorefrontApi* | [**subscribe_to_email_list**](docs/StorefrontApi.md#subscribe_to_email_list) | **POST** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/subscribe | Subscribe customers to email list
+*UltracartClient::StorefrontApi* | [**unfavorite_screen_recording**](docs/StorefrontApi.md#unfavorite_screen_recording) | **DELETE** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/favorite | Remove favorite flag on screen recording
+*UltracartClient::StorefrontApi* | [**update_email_campaign**](docs/StorefrontApi.md#update_email_campaign) | **PUT** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid} | Update email campaign
+*UltracartClient::StorefrontApi* | [**update_email_campaign_folder**](docs/StorefrontApi.md#update_email_campaign_folder) | **PUT** /storefront/{storefront_oid}/email/campaign_folders/{email_campaign_folder_uuid} | Update email campaign folder
+*UltracartClient::StorefrontApi* | [**update_email_commseq**](docs/StorefrontApi.md#update_email_commseq) | **PUT** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid} | Update email commseq
+*UltracartClient::StorefrontApi* | [**update_email_customer**](docs/StorefrontApi.md#update_email_customer) | **PUT** /storefront/{storefront_oid}/email/customers/{email_customer_uuid} | Update email customer
+*UltracartClient::StorefrontApi* | [**update_email_email**](docs/StorefrontApi.md#update_email_email) | **PUT** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid} | Update email email
+*UltracartClient::StorefrontApi* | [**update_email_flow**](docs/StorefrontApi.md#update_email_flow) | **PUT** /storefront/{storefront_oid}/email/flows/{email_flow_uuid} | Update email flow
+*UltracartClient::StorefrontApi* | [**update_email_flow_folder**](docs/StorefrontApi.md#update_email_flow_folder) | **PUT** /storefront/{storefront_oid}/email/flow_folders/{email_flow_folder_uuid} | Update email flow folder
+*UltracartClient::StorefrontApi* | [**update_email_global_settings**](docs/StorefrontApi.md#update_email_global_settings) | **POST** /storefront/email/global_settings | Update email global settings
+*UltracartClient::StorefrontApi* | [**update_email_list**](docs/StorefrontApi.md#update_email_list) | **PUT** /storefront/{storefront_oid}/email/lists/{email_list_uuid} | Update email list
+*UltracartClient::StorefrontApi* | [**update_email_plan**](docs/StorefrontApi.md#update_email_plan) | **POST** /storefront/{storefront_oid}/email/plan | Update email plan
+*UltracartClient::StorefrontApi* | [**update_email_postcard**](docs/StorefrontApi.md#update_email_postcard) | **PUT** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid} | Update email postcard
+*UltracartClient::StorefrontApi* | [**update_email_segment**](docs/StorefrontApi.md#update_email_segment) | **PUT** /storefront/{storefront_oid}/email/segments/{email_segment_uuid} | Update email segment
+*UltracartClient::StorefrontApi* | [**update_email_settings**](docs/StorefrontApi.md#update_email_settings) | **POST** /storefront/{storefront_oid}/email/settings | Update email settings
+*UltracartClient::StorefrontApi* | [**update_experiment**](docs/StorefrontApi.md#update_experiment) | **PUT** /storefront/{storefront_oid}/experiments/{storefront_experiment_oid} | Update experiment
+*UltracartClient::StorefrontApi* | [**update_library_item**](docs/StorefrontApi.md#update_library_item) | **PUT** /storefront/code_library/{library_item_oid} | Update library item. Note that only certain fields may be updated via this method.
+*UltracartClient::StorefrontApi* | [**update_screen_recording_segment**](docs/StorefrontApi.md#update_screen_recording_segment) | **POST** /storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid} | Update screen recording segment
+*UltracartClient::StorefrontApi* | [**update_screen_recording_settings**](docs/StorefrontApi.md#update_screen_recording_settings) | **POST** /storefront/{storefront_oid}/screen_recordings/settings | Update screen recording settings
+*UltracartClient::StorefrontApi* | [**update_screen_recording_tags**](docs/StorefrontApi.md#update_screen_recording_tags) | **POST** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/tags | Update tags on a screen recording
+*UltracartClient::StorefrontApi* | [**update_transaction_email**](docs/StorefrontApi.md#update_transaction_email) | **PUT** /storefront/{storefront_oid}/transaction_email/list/{email_id} | Updates a transaction email object
+*UltracartClient::TaxApi* | [**delete_tax_provider_self_city**](docs/TaxApi.md#delete_tax_provider_self_city) | **DELETE** /tax/providers/self/city/{city} | Deletes a Self tax provider city
+*UltracartClient::TaxApi* | [**delete_tax_provider_self_country**](docs/TaxApi.md#delete_tax_provider_self_country) | **DELETE** /tax/providers/self/country/{countryCode} | Deletes a Self tax provider country
+*UltracartClient::TaxApi* | [**delete_tax_provider_self_county**](docs/TaxApi.md#delete_tax_provider_self_county) | **DELETE** /tax/providers/self/county/{county} | Deletes a Self tax provider county
+*UltracartClient::TaxApi* | [**delete_tax_provider_self_postal_code**](docs/TaxApi.md#delete_tax_provider_self_postal_code) | **DELETE** /tax/providers/self/postalCode/{postal_code} | Deletes a Self tax provider postalCode
+*UltracartClient::TaxApi* | [**delete_tax_provider_self_state**](docs/TaxApi.md#delete_tax_provider_self_state) | **DELETE** /tax/providers/self/state/{stateCode} | Deletes a Self tax provider state
+*UltracartClient::TaxApi* | [**get_tax_provider_avalara**](docs/TaxApi.md#get_tax_provider_avalara) | **GET** /tax/providers/avalara | Retrieve the Avalara tax provider
+*UltracartClient::TaxApi* | [**get_tax_provider_avalara_companies**](docs/TaxApi.md#get_tax_provider_avalara_companies) | **POST** /tax/providers/avalara/companies | Returns Avalara Tax companies configured by the merchant
+*UltracartClient::TaxApi* | [**get_tax_provider_avalara_test**](docs/TaxApi.md#get_tax_provider_avalara_test) | **GET** /tax/providers/avalara/test | Attempts to connect to Avalara and returns back the response
+*UltracartClient::TaxApi* | [**get_tax_provider_self**](docs/TaxApi.md#get_tax_provider_self) | **GET** /tax/providers/self | Retrieve the Self tax provider
+*UltracartClient::TaxApi* | [**get_tax_provider_self_countries**](docs/TaxApi.md#get_tax_provider_self_countries) | **GET** /tax/providers/self/countries | Retrieve the Self tax provider countries
+*UltracartClient::TaxApi* | [**get_tax_provider_self_regions_by_country_code**](docs/TaxApi.md#get_tax_provider_self_regions_by_country_code) | **GET** /tax/providers/self/regions/{countryCode} | Retrieve the Self tax provider regions for a given country code
+*UltracartClient::TaxApi* | [**get_tax_provider_sovos**](docs/TaxApi.md#get_tax_provider_sovos) | **GET** /tax/providers/sovos | Retrieve the Sovos tax provider
+*UltracartClient::TaxApi* | [**get_tax_provider_sovos_test**](docs/TaxApi.md#get_tax_provider_sovos_test) | **GET** /tax/providers/sovos/test | Attempts to connect to Sovos and returns back the response
+*UltracartClient::TaxApi* | [**get_tax_provider_tax_jar**](docs/TaxApi.md#get_tax_provider_tax_jar) | **GET** /tax/providers/taxjar | Retrieve the TaxJar tax provider
+*UltracartClient::TaxApi* | [**get_tax_provider_tax_jar_test**](docs/TaxApi.md#get_tax_provider_tax_jar_test) | **GET** /tax/providers/taxjar/test | Attempts to connect to TaxJar and returns back the response
+*UltracartClient::TaxApi* | [**get_tax_provider_ultra_cart**](docs/TaxApi.md#get_tax_provider_ultra_cart) | **GET** /tax/providers/ultracart | Retrieve the UltraCart tax provider
+*UltracartClient::TaxApi* | [**get_tax_providers**](docs/TaxApi.md#get_tax_providers) | **GET** /tax/providers | Retrieve tax methods
+*UltracartClient::TaxApi* | [**set_active_tax_provider**](docs/TaxApi.md#set_active_tax_provider) | **POST** /tax/providers/setActive/{providerName} | Toggle a tax provider to active
+*UltracartClient::TaxApi* | [**update_tax_provider_avalara**](docs/TaxApi.md#update_tax_provider_avalara) | **POST** /tax/providers/avalara | Update the Avalara tax provider
+*UltracartClient::TaxApi* | [**update_tax_provider_self**](docs/TaxApi.md#update_tax_provider_self) | **POST** /tax/providers/self | Update the Self tax provider
+*UltracartClient::TaxApi* | [**update_tax_provider_self_city**](docs/TaxApi.md#update_tax_provider_self_city) | **POST** /tax/providers/self/city/{city} | Updates a Self tax provider city
+*UltracartClient::TaxApi* | [**update_tax_provider_self_country**](docs/TaxApi.md#update_tax_provider_self_country) | **POST** /tax/providers/self/country/{countryCode} | Updates a Self tax provider country
+*UltracartClient::TaxApi* | [**update_tax_provider_self_county**](docs/TaxApi.md#update_tax_provider_self_county) | **POST** /tax/providers/self/county/{county} | Updates a Self tax provider county
+*UltracartClient::TaxApi* | [**update_tax_provider_self_postal_code**](docs/TaxApi.md#update_tax_provider_self_postal_code) | **POST** /tax/providers/self/postalCode/{postal_code} | Updates a Self tax provider postalCode
+*UltracartClient::TaxApi* | [**update_tax_provider_self_state**](docs/TaxApi.md#update_tax_provider_self_state) | **POST** /tax/providers/self/state/{stateCode} | Updates a Self tax provider state
+*UltracartClient::TaxApi* | [**update_tax_provider_sovos**](docs/TaxApi.md#update_tax_provider_sovos) | **POST** /tax/providers/sovos | Update the Sovos tax provider
+*UltracartClient::TaxApi* | [**update_tax_provider_tax_jar**](docs/TaxApi.md#update_tax_provider_tax_jar) | **POST** /tax/providers/taxjar | Update the TaxJar tax provider
+*UltracartClient::TaxApi* | [**update_tax_provider_ultra_cart**](docs/TaxApi.md#update_tax_provider_ultra_cart) | **POST** /tax/providers/ultracart | Update the UltraCart tax provider
+*UltracartClient::UserApi* | [**delete_group**](docs/UserApi.md#delete_group) | **DELETE** /user/groups/{group_oid} | Delete a group
+*UltracartClient::UserApi* | [**delete_user**](docs/UserApi.md#delete_user) | **DELETE** /user/users/{user_id} | Delete a user
+*UltracartClient::UserApi* | [**get_group**](docs/UserApi.md#get_group) | **GET** /user/groups/{group_oid} | Retrieve a group
+*UltracartClient::UserApi* | [**get_groups**](docs/UserApi.md#get_groups) | **GET** /user/groups | Get groups
+*UltracartClient::UserApi* | [**get_user**](docs/UserApi.md#get_user) | **GET** /user/users/{user_id} | Retrieve a user
+*UltracartClient::UserApi* | [**get_user_logins**](docs/UserApi.md#get_user_logins) | **GET** /user/users/{user_id}/logins | Retrieve a user's login history
+*UltracartClient::UserApi* | [**get_users**](docs/UserApi.md#get_users) | **GET** /user/users | Get users
+*UltracartClient::UserApi* | [**insert_group**](docs/UserApi.md#insert_group) | **POST** /user/groups | Insert a group
+*UltracartClient::UserApi* | [**insert_user**](docs/UserApi.md#insert_user) | **POST** /user/users | Insert a user
+*UltracartClient::UserApi* | [**update_group**](docs/UserApi.md#update_group) | **PUT** /user/groups/{group_oid} | Update a group
+*UltracartClient::UserApi* | [**update_user**](docs/UserApi.md#update_user) | **PUT** /user/users/{user_id} | Update a user
+*UltracartClient::WebhookApi* | [**delete_webhook**](docs/WebhookApi.md#delete_webhook) | **DELETE** /webhook/webhooks/{webhookOid} | Delete a webhook
+*UltracartClient::WebhookApi* | [**delete_webhook_by_url**](docs/WebhookApi.md#delete_webhook_by_url) | **DELETE** /webhook/webhooks | Delete a webhook by URL
+*UltracartClient::WebhookApi* | [**get_webhook_log**](docs/WebhookApi.md#get_webhook_log) | **GET** /webhook/webhooks/{webhookOid}/logs/{requestId} | Retrieve an individual log
+*UltracartClient::WebhookApi* | [**get_webhook_log_summaries**](docs/WebhookApi.md#get_webhook_log_summaries) | **GET** /webhook/webhooks/{webhookOid}/logs | Retrieve the log summaries
+*UltracartClient::WebhookApi* | [**get_webhooks**](docs/WebhookApi.md#get_webhooks) | **GET** /webhook/webhooks | Retrieve webhooks
+*UltracartClient::WebhookApi* | [**insert_webhook**](docs/WebhookApi.md#insert_webhook) | **POST** /webhook/webhooks | Add a webhook
+*UltracartClient::WebhookApi* | [**resend_event**](docs/WebhookApi.md#resend_event) | **POST** /webhook/webhooks/{webhookOid}/reflow/{eventName} | Resend events to the webhook endpoint.
+*UltracartClient::WebhookApi* | [**update_webhook**](docs/WebhookApi.md#update_webhook) | **PUT** /webhook/webhooks/{webhookOid} | Update a webhook
 
 
 ## Documentation for Models
 
- - [ultracart_client::AccountsReceivableRetryConfig](docs/AccountsReceivableRetryConfig.md)
- - [ultracart_client::AccountsReceivableRetryConfigResponse](docs/AccountsReceivableRetryConfigResponse.md)
- - [ultracart_client::AccountsReceivableRetryDayActivity](docs/AccountsReceivableRetryDayActivity.md)
- - [ultracart_client::AccountsReceivableRetryStatAccount](docs/AccountsReceivableRetryStatAccount.md)
- - [ultracart_client::AccountsReceivableRetryStatMetrics](docs/AccountsReceivableRetryStatMetrics.md)
- - [ultracart_client::AccountsReceivableRetryStatRevenue](docs/AccountsReceivableRetryStatRevenue.md)
- - [ultracart_client::AccountsReceivableRetryStatsResponse](docs/AccountsReceivableRetryStatsResponse.md)
- - [ultracart_client::Activity](docs/Activity.md)
- - [ultracart_client::AddLibraryItemRequest](docs/AddLibraryItemRequest.md)
- - [ultracart_client::AffiliateClick](docs/AffiliateClick.md)
- - [ultracart_client::AffiliateClickQuery](docs/AffiliateClickQuery.md)
- - [ultracart_client::AffiliateClicksResponse](docs/AffiliateClicksResponse.md)
- - [ultracart_client::AffiliateLedger](docs/AffiliateLedger.md)
- - [ultracart_client::AffiliateLedgerQuery](docs/AffiliateLedgerQuery.md)
- - [ultracart_client::AffiliateLedgersResponse](docs/AffiliateLedgersResponse.md)
- - [ultracart_client::AffiliateLink](docs/AffiliateLink.md)
- - [ultracart_client::ApiUserApplicationProfile](docs/ApiUserApplicationProfile.md)
- - [ultracart_client::ApplyLibraryItemRequest](docs/ApplyLibraryItemRequest.md)
- - [ultracart_client::ApplyLibraryItemResponse](docs/ApplyLibraryItemResponse.md)
- - [ultracart_client::AutoOrder](docs/AutoOrder.md)
- - [ultracart_client::AutoOrderItem](docs/AutoOrderItem.md)
- - [ultracart_client::AutoOrderItemFutureSchedule](docs/AutoOrderItemFutureSchedule.md)
- - [ultracart_client::AutoOrderItemOption](docs/AutoOrderItemOption.md)
- - [ultracart_client::AutoOrderItemSimpleSchedule](docs/AutoOrderItemSimpleSchedule.md)
- - [ultracart_client::AutoOrderQuery](docs/AutoOrderQuery.md)
- - [ultracart_client::AutoOrderQueryBatch](docs/AutoOrderQueryBatch.md)
- - [ultracart_client::AutoOrderResponse](docs/AutoOrderResponse.md)
- - [ultracart_client::AutoOrdersRequest](docs/AutoOrdersRequest.md)
- - [ultracart_client::AutoOrdersResponse](docs/AutoOrdersResponse.md)
- - [ultracart_client::AvalaraConfig](docs/AvalaraConfig.md)
- - [ultracart_client::BaseResponse](docs/BaseResponse.md)
- - [ultracart_client::Cart](docs/Cart.md)
- - [ultracart_client::CartAffiliate](docs/CartAffiliate.md)
- - [ultracart_client::CartAffirmCheckoutResponse](docs/CartAffirmCheckoutResponse.md)
- - [ultracart_client::CartBilling](docs/CartBilling.md)
- - [ultracart_client::CartBuysafe](docs/CartBuysafe.md)
- - [ultracart_client::CartCheckout](docs/CartCheckout.md)
- - [ultracart_client::CartCoupon](docs/CartCoupon.md)
- - [ultracart_client::CartCurrencyConversion](docs/CartCurrencyConversion.md)
- - [ultracart_client::CartCustomerProfile](docs/CartCustomerProfile.md)
- - [ultracart_client::CartCustomerProfileAddress](docs/CartCustomerProfileAddress.md)
- - [ultracart_client::CartCustomerProfileCreditCard](docs/CartCustomerProfileCreditCard.md)
- - [ultracart_client::CartFinalizeOrderRequest](docs/CartFinalizeOrderRequest.md)
- - [ultracart_client::CartFinalizeOrderRequestOptions](docs/CartFinalizeOrderRequestOptions.md)
- - [ultracart_client::CartFinalizeOrderResponse](docs/CartFinalizeOrderResponse.md)
- - [ultracart_client::CartGift](docs/CartGift.md)
- - [ultracart_client::CartGiftCertificate](docs/CartGiftCertificate.md)
- - [ultracart_client::CartItem](docs/CartItem.md)
- - [ultracart_client::CartItemAttribute](docs/CartItemAttribute.md)
- - [ultracart_client::CartItemMultimedia](docs/CartItemMultimedia.md)
- - [ultracart_client::CartItemMultimediaThumbnail](docs/CartItemMultimediaThumbnail.md)
- - [ultracart_client::CartItemOption](docs/CartItemOption.md)
- - [ultracart_client::CartItemOptionValue](docs/CartItemOptionValue.md)
- - [ultracart_client::CartItemPhysical](docs/CartItemPhysical.md)
- - [ultracart_client::CartItemVariationSelection](docs/CartItemVariationSelection.md)
- - [ultracart_client::CartKitComponentOption](docs/CartKitComponentOption.md)
- - [ultracart_client::CartMarketing](docs/CartMarketing.md)
- - [ultracart_client::CartPayment](docs/CartPayment.md)
- - [ultracart_client::CartPaymentAffirm](docs/CartPaymentAffirm.md)
- - [ultracart_client::CartPaymentAmazon](docs/CartPaymentAmazon.md)
- - [ultracart_client::CartPaymentCheck](docs/CartPaymentCheck.md)
- - [ultracart_client::CartPaymentCreditCard](docs/CartPaymentCreditCard.md)
- - [ultracart_client::CartPaymentPurchaseOrder](docs/CartPaymentPurchaseOrder.md)
- - [ultracart_client::CartProfileLoginRequest](docs/CartProfileLoginRequest.md)
- - [ultracart_client::CartProfileLoginResponse](docs/CartProfileLoginResponse.md)
- - [ultracart_client::CartProfileRegisterRequest](docs/CartProfileRegisterRequest.md)
- - [ultracart_client::CartProfileRegisterResponse](docs/CartProfileRegisterResponse.md)
- - [ultracart_client::CartProperty](docs/CartProperty.md)
- - [ultracart_client::CartResponse](docs/CartResponse.md)
- - [ultracart_client::CartSettings](docs/CartSettings.md)
- - [ultracart_client::CartSettingsBilling](docs/CartSettingsBilling.md)
- - [ultracart_client::CartSettingsGift](docs/CartSettingsGift.md)
- - [ultracart_client::CartSettingsGiftWrap](docs/CartSettingsGiftWrap.md)
- - [ultracart_client::CartSettingsPayment](docs/CartSettingsPayment.md)
- - [ultracart_client::CartSettingsPaymentAmazon](docs/CartSettingsPaymentAmazon.md)
- - [ultracart_client::CartSettingsPaymentCreditCard](docs/CartSettingsPaymentCreditCard.md)
- - [ultracart_client::CartSettingsPaymentPayPal](docs/CartSettingsPaymentPayPal.md)
- - [ultracart_client::CartSettingsProvince](docs/CartSettingsProvince.md)
- - [ultracart_client::CartSettingsShipping](docs/CartSettingsShipping.md)
- - [ultracart_client::CartSettingsShippingCalendar](docs/CartSettingsShippingCalendar.md)
- - [ultracart_client::CartSettingsShippingEstimate](docs/CartSettingsShippingEstimate.md)
- - [ultracart_client::CartSettingsTaxes](docs/CartSettingsTaxes.md)
- - [ultracart_client::CartSettingsTerms](docs/CartSettingsTerms.md)
- - [ultracart_client::CartShipping](docs/CartShipping.md)
- - [ultracart_client::CartSummary](docs/CartSummary.md)
- - [ultracart_client::CartTaxes](docs/CartTaxes.md)
- - [ultracart_client::CartUpsellAfter](docs/CartUpsellAfter.md)
- - [ultracart_client::CartValidationRequest](docs/CartValidationRequest.md)
- - [ultracart_client::CartValidationResponse](docs/CartValidationResponse.md)
- - [ultracart_client::ChargebackDispute](docs/ChargebackDispute.md)
- - [ultracart_client::ChargebackDisputeResponse](docs/ChargebackDisputeResponse.md)
- - [ultracart_client::ChargebackDisputesResponse](docs/ChargebackDisputesResponse.md)
- - [ultracart_client::CheckoutAllowedCountriesResponse](docs/CheckoutAllowedCountriesResponse.md)
- - [ultracart_client::CheckoutHandoffRequest](docs/CheckoutHandoffRequest.md)
- - [ultracart_client::CheckoutHandoffResponse](docs/CheckoutHandoffResponse.md)
- - [ultracart_client::CheckoutSetupBrowserKeyRequest](docs/CheckoutSetupBrowserKeyRequest.md)
- - [ultracart_client::CheckoutSetupBrowserKeyResponse](docs/CheckoutSetupBrowserKeyResponse.md)
- - [ultracart_client::CheckoutStateProvinceResponse](docs/CheckoutStateProvinceResponse.md)
- - [ultracart_client::CityStateZip](docs/CityStateZip.md)
- - [ultracart_client::CountriesResponse](docs/CountriesResponse.md)
- - [ultracart_client::Country](docs/Country.md)
- - [ultracart_client::Coupon](docs/Coupon.md)
- - [ultracart_client::CouponAmountOffItems](docs/CouponAmountOffItems.md)
- - [ultracart_client::CouponAmountOffShipping](docs/CouponAmountOffShipping.md)
- - [ultracart_client::CouponAmountOffShippingWithItemsPurchase](docs/CouponAmountOffShippingWithItemsPurchase.md)
- - [ultracart_client::CouponAmountOffSubtotal](docs/CouponAmountOffSubtotal.md)
- - [ultracart_client::CouponAmountOffSubtotalAndShipping](docs/CouponAmountOffSubtotalAndShipping.md)
- - [ultracart_client::CouponAmountOffSubtotalFreeShippingWithPurchase](docs/CouponAmountOffSubtotalFreeShippingWithPurchase.md)
- - [ultracart_client::CouponAmountOffSubtotalWithBlockPurchase](docs/CouponAmountOffSubtotalWithBlockPurchase.md)
- - [ultracart_client::CouponAmountOffSubtotalWithItemsPurchase](docs/CouponAmountOffSubtotalWithItemsPurchase.md)
- - [ultracart_client::CouponAutoApplyCondition](docs/CouponAutoApplyCondition.md)
- - [ultracart_client::CouponAutoApplyConditions](docs/CouponAutoApplyConditions.md)
- - [ultracart_client::CouponAutomaticallyApplyCouponCodes](docs/CouponAutomaticallyApplyCouponCodes.md)
- - [ultracart_client::CouponBuyOneGetOneLimit](docs/CouponBuyOneGetOneLimit.md)
- - [ultracart_client::CouponCodesRequest](docs/CouponCodesRequest.md)
- - [ultracart_client::CouponCodesResponse](docs/CouponCodesResponse.md)
- - [ultracart_client::CouponDeletesRequest](docs/CouponDeletesRequest.md)
- - [ultracart_client::CouponDiscountItemWithItemPurchase](docs/CouponDiscountItemWithItemPurchase.md)
- - [ultracart_client::CouponDiscountItems](docs/CouponDiscountItems.md)
- - [ultracart_client::CouponEditorValues](docs/CouponEditorValues.md)
- - [ultracart_client::CouponExistsResponse](docs/CouponExistsResponse.md)
- - [ultracart_client::CouponFreeItemAndShippingWithSubtotal](docs/CouponFreeItemAndShippingWithSubtotal.md)
- - [ultracart_client::CouponFreeItemWithItemPurchase](docs/CouponFreeItemWithItemPurchase.md)
- - [ultracart_client::CouponFreeItemWithSubtotal](docs/CouponFreeItemWithSubtotal.md)
- - [ultracart_client::CouponFreeItemsWithItemPurchase](docs/CouponFreeItemsWithItemPurchase.md)
- - [ultracart_client::CouponFreeItemsWithMixMatchPurchase](docs/CouponFreeItemsWithMixMatchPurchase.md)
- - [ultracart_client::CouponFreeShipping](docs/CouponFreeShipping.md)
- - [ultracart_client::CouponFreeShippingSpecificItems](docs/CouponFreeShippingSpecificItems.md)
- - [ultracart_client::CouponFreeShippingWithItemsPurchase](docs/CouponFreeShippingWithItemsPurchase.md)
- - [ultracart_client::CouponFreeShippingWithSubtotal](docs/CouponFreeShippingWithSubtotal.md)
- - [ultracart_client::CouponItemSearchResult](docs/CouponItemSearchResult.md)
- - [ultracart_client::CouponItemSearchResultsResponse](docs/CouponItemSearchResultsResponse.md)
- - [ultracart_client::CouponMultipleAmountsOffItems](docs/CouponMultipleAmountsOffItems.md)
- - [ultracart_client::CouponNoDiscount](docs/CouponNoDiscount.md)
- - [ultracart_client::CouponPercentOffItemWithItemsQuantityPurchase](docs/CouponPercentOffItemWithItemsQuantityPurchase.md)
- - [ultracart_client::CouponPercentOffItems](docs/CouponPercentOffItems.md)
- - [ultracart_client::CouponPercentOffItemsAndFreeShipping](docs/CouponPercentOffItemsAndFreeShipping.md)
- - [ultracart_client::CouponPercentOffItemsWithItemsPurchase](docs/CouponPercentOffItemsWithItemsPurchase.md)
- - [ultracart_client::CouponPercentOffRetailPriceItems](docs/CouponPercentOffRetailPriceItems.md)
- - [ultracart_client::CouponPercentOffShipping](docs/CouponPercentOffShipping.md)
- - [ultracart_client::CouponPercentOffSubtotal](docs/CouponPercentOffSubtotal.md)
- - [ultracart_client::CouponPercentOffSubtotalAndFreeShipping](docs/CouponPercentOffSubtotalAndFreeShipping.md)
- - [ultracart_client::CouponPercentOffSubtotalLimit](docs/CouponPercentOffSubtotalLimit.md)
- - [ultracart_client::CouponPercentOffSubtotalWithItemsPurchase](docs/CouponPercentOffSubtotalWithItemsPurchase.md)
- - [ultracart_client::CouponPercentOffSubtotalWithSubtotal](docs/CouponPercentOffSubtotalWithSubtotal.md)
- - [ultracart_client::CouponQuery](docs/CouponQuery.md)
- - [ultracart_client::CouponResponse](docs/CouponResponse.md)
- - [ultracart_client::CouponRestriction](docs/CouponRestriction.md)
- - [ultracart_client::CouponTierAmount](docs/CouponTierAmount.md)
- - [ultracart_client::CouponTierItemDiscount](docs/CouponTierItemDiscount.md)
- - [ultracart_client::CouponTierPercent](docs/CouponTierPercent.md)
- - [ultracart_client::CouponTierQuantityAmount](docs/CouponTierQuantityAmount.md)
- - [ultracart_client::CouponTierQuantityPercent](docs/CouponTierQuantityPercent.md)
- - [ultracart_client::CouponTieredAmountOffItem](docs/CouponTieredAmountOffItem.md)
- - [ultracart_client::CouponTieredAmountOffSubtotal](docs/CouponTieredAmountOffSubtotal.md)
- - [ultracart_client::CouponTieredPercentOffItems](docs/CouponTieredPercentOffItems.md)
- - [ultracart_client::CouponTieredPercentOffShipping](docs/CouponTieredPercentOffShipping.md)
- - [ultracart_client::CouponTieredPercentOffSubtotal](docs/CouponTieredPercentOffSubtotal.md)
- - [ultracart_client::CouponType](docs/CouponType.md)
- - [ultracart_client::CouponsRequest](docs/CouponsRequest.md)
- - [ultracart_client::CouponsResponse](docs/CouponsResponse.md)
- - [ultracart_client::Currency](docs/Currency.md)
- - [ultracart_client::Customer](docs/Customer.md)
- - [ultracart_client::CustomerActivity](docs/CustomerActivity.md)
- - [ultracart_client::CustomerAffiliate](docs/CustomerAffiliate.md)
- - [ultracart_client::CustomerAttachment](docs/CustomerAttachment.md)
- - [ultracart_client::CustomerBilling](docs/CustomerBilling.md)
- - [ultracart_client::CustomerCard](docs/CustomerCard.md)
- - [ultracart_client::CustomerEditorValues](docs/CustomerEditorValues.md)
- - [ultracart_client::CustomerEmail](docs/CustomerEmail.md)
- - [ultracart_client::CustomerEmailListChanges](docs/CustomerEmailListChanges.md)
- - [ultracart_client::CustomerLoyalty](docs/CustomerLoyalty.md)
- - [ultracart_client::CustomerLoyaltyLedger](docs/CustomerLoyaltyLedger.md)
- - [ultracart_client::CustomerLoyaltyRedemption](docs/CustomerLoyaltyRedemption.md)
- - [ultracart_client::CustomerOrdersSummary](docs/CustomerOrdersSummary.md)
- - [ultracart_client::CustomerPricingTier](docs/CustomerPricingTier.md)
- - [ultracart_client::CustomerPrivacy](docs/CustomerPrivacy.md)
- - [ultracart_client::CustomerQuery](docs/CustomerQuery.md)
- - [ultracart_client::CustomerQuotesSummary](docs/CustomerQuotesSummary.md)
- - [ultracart_client::CustomerResponse](docs/CustomerResponse.md)
- - [ultracart_client::CustomerReviewer](docs/CustomerReviewer.md)
- - [ultracart_client::CustomerShipping](docs/CustomerShipping.md)
- - [ultracart_client::CustomerSoftwareEntitlement](docs/CustomerSoftwareEntitlement.md)
- - [ultracart_client::CustomerTag](docs/CustomerTag.md)
- - [ultracart_client::CustomerTaxCodes](docs/CustomerTaxCodes.md)
- - [ultracart_client::CustomersResponse](docs/CustomersResponse.md)
- - [ultracart_client::DataTablesServerSideResponse](docs/DataTablesServerSideResponse.md)
- - [ultracart_client::Distance](docs/Distance.md)
- - [ultracart_client::DistributionCenter](docs/DistributionCenter.md)
- - [ultracart_client::DistributionCentersResponse](docs/DistributionCentersResponse.md)
- - [ultracart_client::EmailBaseTemplateListResponse](docs/EmailBaseTemplateListResponse.md)
- - [ultracart_client::EmailCampaign](docs/EmailCampaign.md)
- - [ultracart_client::EmailCampaignFolder](docs/EmailCampaignFolder.md)
- - [ultracart_client::EmailCampaignFolderResponse](docs/EmailCampaignFolderResponse.md)
- - [ultracart_client::EmailCampaignFoldersResponse](docs/EmailCampaignFoldersResponse.md)
- - [ultracart_client::EmailCampaignResponse](docs/EmailCampaignResponse.md)
- - [ultracart_client::EmailCampaignsResponse](docs/EmailCampaignsResponse.md)
- - [ultracart_client::EmailClick](docs/EmailClick.md)
- - [ultracart_client::EmailClicksResponse](docs/EmailClicksResponse.md)
- - [ultracart_client::EmailCommseq](docs/EmailCommseq.md)
- - [ultracart_client::EmailCommseqEmail](docs/EmailCommseqEmail.md)
- - [ultracart_client::EmailCommseqEmailResponse](docs/EmailCommseqEmailResponse.md)
- - [ultracart_client::EmailCommseqEmailSendTestRequest](docs/EmailCommseqEmailSendTestRequest.md)
- - [ultracart_client::EmailCommseqEmailSendTestResponse](docs/EmailCommseqEmailSendTestResponse.md)
- - [ultracart_client::EmailCommseqEmailsRequest](docs/EmailCommseqEmailsRequest.md)
- - [ultracart_client::EmailCommseqEmailsResponse](docs/EmailCommseqEmailsResponse.md)
- - [ultracart_client::EmailCommseqPostcard](docs/EmailCommseqPostcard.md)
- - [ultracart_client::EmailCommseqPostcardResponse](docs/EmailCommseqPostcardResponse.md)
- - [ultracart_client::EmailCommseqPostcardSendTestRequest](docs/EmailCommseqPostcardSendTestRequest.md)
- - [ultracart_client::EmailCommseqPostcardSendTestResponse](docs/EmailCommseqPostcardSendTestResponse.md)
- - [ultracart_client::EmailCommseqPostcardsRequest](docs/EmailCommseqPostcardsRequest.md)
- - [ultracart_client::EmailCommseqPostcardsResponse](docs/EmailCommseqPostcardsResponse.md)
- - [ultracart_client::EmailCommseqResponse](docs/EmailCommseqResponse.md)
- - [ultracart_client::EmailCommseqStat](docs/EmailCommseqStat.md)
- - [ultracart_client::EmailCommseqStatResponse](docs/EmailCommseqStatResponse.md)
- - [ultracart_client::EmailCommseqStep](docs/EmailCommseqStep.md)
- - [ultracart_client::EmailCommseqsResponse](docs/EmailCommseqsResponse.md)
- - [ultracart_client::EmailCustomer](docs/EmailCustomer.md)
- - [ultracart_client::EmailCustomerEditorUrlResponse](docs/EmailCustomerEditorUrlResponse.md)
- - [ultracart_client::EmailCustomersResponse](docs/EmailCustomersResponse.md)
- - [ultracart_client::EmailDashboardActivity](docs/EmailDashboardActivity.md)
- - [ultracart_client::EmailDashboardActivityResponse](docs/EmailDashboardActivityResponse.md)
- - [ultracart_client::EmailDashboardStatsResponse](docs/EmailDashboardStatsResponse.md)
- - [ultracart_client::EmailDomain](docs/EmailDomain.md)
- - [ultracart_client::EmailEditorTokenResponse](docs/EmailEditorTokenResponse.md)
- - [ultracart_client::EmailFlow](docs/EmailFlow.md)
- - [ultracart_client::EmailFlowBackPopulateRequest](docs/EmailFlowBackPopulateRequest.md)
- - [ultracart_client::EmailFlowBackPopulateResponse](docs/EmailFlowBackPopulateResponse.md)
- - [ultracart_client::EmailFlowFolder](docs/EmailFlowFolder.md)
- - [ultracart_client::EmailFlowFolderResponse](docs/EmailFlowFolderResponse.md)
- - [ultracart_client::EmailFlowFoldersResponse](docs/EmailFlowFoldersResponse.md)
- - [ultracart_client::EmailFlowResponse](docs/EmailFlowResponse.md)
- - [ultracart_client::EmailFlowsResponse](docs/EmailFlowsResponse.md)
- - [ultracart_client::EmailGlobalSettings](docs/EmailGlobalSettings.md)
- - [ultracart_client::EmailGlobalSettingsResponse](docs/EmailGlobalSettingsResponse.md)
- - [ultracart_client::EmailGlobalUnsubscribeRequest](docs/EmailGlobalUnsubscribeRequest.md)
- - [ultracart_client::EmailGlobalUnsubscribeResponse](docs/EmailGlobalUnsubscribeResponse.md)
- - [ultracart_client::EmailHistogramPropertyNamesResponse](docs/EmailHistogramPropertyNamesResponse.md)
- - [ultracart_client::EmailHistogramPropertyValuesResponse](docs/EmailHistogramPropertyValuesResponse.md)
- - [ultracart_client::EmailList](docs/EmailList.md)
- - [ultracart_client::EmailListArchiveResponse](docs/EmailListArchiveResponse.md)
- - [ultracart_client::EmailListCustomer](docs/EmailListCustomer.md)
- - [ultracart_client::EmailListCustomersResponse](docs/EmailListCustomersResponse.md)
- - [ultracart_client::EmailListResponse](docs/EmailListResponse.md)
- - [ultracart_client::EmailListSegmentMembership](docs/EmailListSegmentMembership.md)
- - [ultracart_client::EmailListSegmentUsedBy](docs/EmailListSegmentUsedBy.md)
- - [ultracart_client::EmailListSubscribeResponse](docs/EmailListSubscribeResponse.md)
- - [ultracart_client::EmailListsResponse](docs/EmailListsResponse.md)
- - [ultracart_client::EmailOrder](docs/EmailOrder.md)
- - [ultracart_client::EmailOrdersResponse](docs/EmailOrdersResponse.md)
- - [ultracart_client::EmailPerformance](docs/EmailPerformance.md)
- - [ultracart_client::EmailPerformanceCustomerHistogram](docs/EmailPerformanceCustomerHistogram.md)
- - [ultracart_client::EmailPerformanceCustomerHistogramPeriod](docs/EmailPerformanceCustomerHistogramPeriod.md)
- - [ultracart_client::EmailPerformanceDaily](docs/EmailPerformanceDaily.md)
- - [ultracart_client::EmailPerformanceResponse](docs/EmailPerformanceResponse.md)
- - [ultracart_client::EmailPlan](docs/EmailPlan.md)
- - [ultracart_client::EmailPlanAdditional](docs/EmailPlanAdditional.md)
- - [ultracart_client::EmailPlanResponse](docs/EmailPlanResponse.md)
- - [ultracart_client::EmailPostcardStat](docs/EmailPostcardStat.md)
- - [ultracart_client::EmailSegment](docs/EmailSegment.md)
- - [ultracart_client::EmailSegmentArchiveResponse](docs/EmailSegmentArchiveResponse.md)
- - [ultracart_client::EmailSegmentCustomer](docs/EmailSegmentCustomer.md)
- - [ultracart_client::EmailSegmentCustomersResponse](docs/EmailSegmentCustomersResponse.md)
- - [ultracart_client::EmailSegmentDownloadPrepareResponse](docs/EmailSegmentDownloadPrepareResponse.md)
- - [ultracart_client::EmailSegmentResponse](docs/EmailSegmentResponse.md)
- - [ultracart_client::EmailSegmentsResponse](docs/EmailSegmentsResponse.md)
- - [ultracart_client::EmailSendingDomainResponse](docs/EmailSendingDomainResponse.md)
- - [ultracart_client::EmailSendingDomainsResponse](docs/EmailSendingDomainsResponse.md)
- - [ultracart_client::EmailSettings](docs/EmailSettings.md)
- - [ultracart_client::EmailSettingsResponse](docs/EmailSettingsResponse.md)
- - [ultracart_client::EmailStat](docs/EmailStat.md)
- - [ultracart_client::EmailStatPostcardSummaryRequest](docs/EmailStatPostcardSummaryRequest.md)
- - [ultracart_client::EmailStatPostcardSummaryResponse](docs/EmailStatPostcardSummaryResponse.md)
- - [ultracart_client::EmailStatSummaryRequest](docs/EmailStatSummaryRequest.md)
- - [ultracart_client::EmailStatSummaryResponse](docs/EmailStatSummaryResponse.md)
- - [ultracart_client::EmailStepStat](docs/EmailStepStat.md)
- - [ultracart_client::EmailStepStatRequest](docs/EmailStepStatRequest.md)
- - [ultracart_client::EmailStepStatResponse](docs/EmailStepStatResponse.md)
- - [ultracart_client::EmailStepWaitingRequest](docs/EmailStepWaitingRequest.md)
- - [ultracart_client::EmailStepWaitingResponse](docs/EmailStepWaitingResponse.md)
- - [ultracart_client::EmailTemplate](docs/EmailTemplate.md)
- - [ultracart_client::EmailTemplatesResponse](docs/EmailTemplatesResponse.md)
- - [ultracart_client::EmailThirdPartyList](docs/EmailThirdPartyList.md)
- - [ultracart_client::EmailThirdPartyListImportRequest](docs/EmailThirdPartyListImportRequest.md)
- - [ultracart_client::EmailThirdPartyProvider](docs/EmailThirdPartyProvider.md)
- - [ultracart_client::EmailThirdPartyProvidersResponse](docs/EmailThirdPartyProvidersResponse.md)
- - [ultracart_client::Error](docs/Error.md)
- - [ultracart_client::ErrorResponse](docs/ErrorResponse.md)
- - [ultracart_client::Experiment](docs/Experiment.md)
- - [ultracart_client::ExperimentResponse](docs/ExperimentResponse.md)
- - [ultracart_client::ExperimentVariation](docs/ExperimentVariation.md)
- - [ultracart_client::ExperimentsResponse](docs/ExperimentsResponse.md)
- - [ultracart_client::FulfillmentInventory](docs/FulfillmentInventory.md)
- - [ultracart_client::FulfillmentShipment](docs/FulfillmentShipment.md)
- - [ultracart_client::GeoPoint](docs/GeoPoint.md)
- - [ultracart_client::GeocodeRequest](docs/GeocodeRequest.md)
- - [ultracart_client::GeocodeResponse](docs/GeocodeResponse.md)
- - [ultracart_client::Group](docs/Group.md)
- - [ultracart_client::GroupResponse](docs/GroupResponse.md)
- - [ultracart_client::GroupUserMembership](docs/GroupUserMembership.md)
- - [ultracart_client::GroupsResponse](docs/GroupsResponse.md)
- - [ultracart_client::HTTPHeader](docs/HTTPHeader.md)
- - [ultracart_client::Item](docs/Item.md)
- - [ultracart_client::ItemAccounting](docs/ItemAccounting.md)
- - [ultracart_client::ItemAmember](docs/ItemAmember.md)
- - [ultracart_client::ItemAutoOrder](docs/ItemAutoOrder.md)
- - [ultracart_client::ItemAutoOrderStep](docs/ItemAutoOrderStep.md)
- - [ultracart_client::ItemAutoOrderStepArbitraryUnitCostSchedule](docs/ItemAutoOrderStepArbitraryUnitCostSchedule.md)
- - [ultracart_client::ItemAutoOrderStepGrandfatherPricing](docs/ItemAutoOrderStepGrandfatherPricing.md)
- - [ultracart_client::ItemCCBill](docs/ItemCCBill.md)
- - [ultracart_client::ItemChannelPartnerMapping](docs/ItemChannelPartnerMapping.md)
- - [ultracart_client::ItemChargeback](docs/ItemChargeback.md)
- - [ultracart_client::ItemChargebackAddendum](docs/ItemChargebackAddendum.md)
- - [ultracart_client::ItemChargebackAdjustmentRequest](docs/ItemChargebackAdjustmentRequest.md)
- - [ultracart_client::ItemCheckout](docs/ItemCheckout.md)
- - [ultracart_client::ItemContent](docs/ItemContent.md)
- - [ultracart_client::ItemContentAssignment](docs/ItemContentAssignment.md)
- - [ultracart_client::ItemContentAttribute](docs/ItemContentAttribute.md)
- - [ultracart_client::ItemContentMultimedia](docs/ItemContentMultimedia.md)
- - [ultracart_client::ItemContentMultimediaThumbnail](docs/ItemContentMultimediaThumbnail.md)
- - [ultracart_client::ItemDigitalDelivery](docs/ItemDigitalDelivery.md)
- - [ultracart_client::ItemDigitalItem](docs/ItemDigitalItem.md)
- - [ultracart_client::ItemEbay](docs/ItemEbay.md)
- - [ultracart_client::ItemEbayCategorySpecific](docs/ItemEbayCategorySpecific.md)
- - [ultracart_client::ItemEbayMarketListing](docs/ItemEbayMarketListing.md)
- - [ultracart_client::ItemEbayMarketPlaceAnalysis](docs/ItemEbayMarketPlaceAnalysis.md)
- - [ultracart_client::ItemEmailNotifications](docs/ItemEmailNotifications.md)
- - [ultracart_client::ItemEnrollment123](docs/ItemEnrollment123.md)
- - [ultracart_client::ItemGiftCertificate](docs/ItemGiftCertificate.md)
- - [ultracart_client::ItemGoogleProductSearch](docs/ItemGoogleProductSearch.md)
- - [ultracart_client::ItemIdentifiers](docs/ItemIdentifiers.md)
- - [ultracart_client::ItemInstantPaymentNotification](docs/ItemInstantPaymentNotification.md)
- - [ultracart_client::ItemInstantPaymentNotifications](docs/ItemInstantPaymentNotifications.md)
- - [ultracart_client::ItemInternal](docs/ItemInternal.md)
- - [ultracart_client::ItemKitComponent](docs/ItemKitComponent.md)
- - [ultracart_client::ItemKitDefinition](docs/ItemKitDefinition.md)
- - [ultracart_client::ItemOption](docs/ItemOption.md)
- - [ultracart_client::ItemOptionValue](docs/ItemOptionValue.md)
- - [ultracart_client::ItemOptionValueAdditionalItem](docs/ItemOptionValueAdditionalItem.md)
- - [ultracart_client::ItemOptionValueDigitalItem](docs/ItemOptionValueDigitalItem.md)
- - [ultracart_client::ItemPaymentProcessing](docs/ItemPaymentProcessing.md)
- - [ultracart_client::ItemPhysical](docs/ItemPhysical.md)
- - [ultracart_client::ItemPricing](docs/ItemPricing.md)
- - [ultracart_client::ItemPricingTier](docs/ItemPricingTier.md)
- - [ultracart_client::ItemPricingTierDiscount](docs/ItemPricingTierDiscount.md)
- - [ultracart_client::ItemPricingTierLimit](docs/ItemPricingTierLimit.md)
- - [ultracart_client::ItemProperty](docs/ItemProperty.md)
- - [ultracart_client::ItemRealtimePricing](docs/ItemRealtimePricing.md)
- - [ultracart_client::ItemRelated](docs/ItemRelated.md)
- - [ultracart_client::ItemRelatedItem](docs/ItemRelatedItem.md)
- - [ultracart_client::ItemReporting](docs/ItemReporting.md)
- - [ultracart_client::ItemResponse](docs/ItemResponse.md)
- - [ultracart_client::ItemRestriction](docs/ItemRestriction.md)
- - [ultracart_client::ItemRestrictionItem](docs/ItemRestrictionItem.md)
- - [ultracart_client::ItemRevguard](docs/ItemRevguard.md)
- - [ultracart_client::ItemReviews](docs/ItemReviews.md)
- - [ultracart_client::ItemSalesforce](docs/ItemSalesforce.md)
- - [ultracart_client::ItemShipping](docs/ItemShipping.md)
- - [ultracart_client::ItemShippingCase](docs/ItemShippingCase.md)
- - [ultracart_client::ItemShippingDestinationMarkup](docs/ItemShippingDestinationMarkup.md)
- - [ultracart_client::ItemShippingDestinationRestriction](docs/ItemShippingDestinationRestriction.md)
- - [ultracart_client::ItemShippingDistributionCenter](docs/ItemShippingDistributionCenter.md)
- - [ultracart_client::ItemShippingMethod](docs/ItemShippingMethod.md)
- - [ultracart_client::ItemShippingPackageRequirement](docs/ItemShippingPackageRequirement.md)
- - [ultracart_client::ItemTag](docs/ItemTag.md)
- - [ultracart_client::ItemTags](docs/ItemTags.md)
- - [ultracart_client::ItemTax](docs/ItemTax.md)
- - [ultracart_client::ItemTaxExemption](docs/ItemTaxExemption.md)
- - [ultracart_client::ItemThirdPartyEmailMarketing](docs/ItemThirdPartyEmailMarketing.md)
- - [ultracart_client::ItemVariantItem](docs/ItemVariantItem.md)
- - [ultracart_client::ItemVariation](docs/ItemVariation.md)
- - [ultracart_client::ItemVariationOption](docs/ItemVariationOption.md)
- - [ultracart_client::ItemWishlistMember](docs/ItemWishlistMember.md)
- - [ultracart_client::ItemsRequest](docs/ItemsRequest.md)
- - [ultracart_client::ItemsResponse](docs/ItemsResponse.md)
- - [ultracart_client::KeyValue](docs/KeyValue.md)
- - [ultracart_client::LibraryFilterValues](docs/LibraryFilterValues.md)
- - [ultracart_client::LibraryFilterValuesResponse](docs/LibraryFilterValuesResponse.md)
- - [ultracart_client::LibraryItem](docs/LibraryItem.md)
- - [ultracart_client::LibraryItemAccount](docs/LibraryItemAccount.md)
- - [ultracart_client::LibraryItemAsset](docs/LibraryItemAsset.md)
- - [ultracart_client::LibraryItemAttribute](docs/LibraryItemAttribute.md)
- - [ultracart_client::LibraryItemEmail](docs/LibraryItemEmail.md)
- - [ultracart_client::LibraryItemPublishedMeta](docs/LibraryItemPublishedMeta.md)
- - [ultracart_client::LibraryItemPurchasedMeta](docs/LibraryItemPurchasedMeta.md)
- - [ultracart_client::LibraryItemQuery](docs/LibraryItemQuery.md)
- - [ultracart_client::LibraryItemResponse](docs/LibraryItemResponse.md)
- - [ultracart_client::LibraryItemScreenshot](docs/LibraryItemScreenshot.md)
- - [ultracart_client::LibraryItemsResponse](docs/LibraryItemsResponse.md)
- - [ultracart_client::LinkedAccount](docs/LinkedAccount.md)
- - [ultracart_client::ListSegmentMembership](docs/ListSegmentMembership.md)
- - [ultracart_client::LookupRequest](docs/LookupRequest.md)
- - [ultracart_client::LookupResponse](docs/LookupResponse.md)
- - [ultracart_client::Metric](docs/Metric.md)
- - [ultracart_client::Notification](docs/Notification.md)
- - [ultracart_client::OauthRevokeSuccessResponse](docs/OauthRevokeSuccessResponse.md)
- - [ultracart_client::OauthTokenResponse](docs/OauthTokenResponse.md)
- - [ultracart_client::Order](docs/Order.md)
- - [ultracart_client::OrderAffiliate](docs/OrderAffiliate.md)
- - [ultracart_client::OrderAffiliateLedger](docs/OrderAffiliateLedger.md)
- - [ultracart_client::OrderAutoOrder](docs/OrderAutoOrder.md)
- - [ultracart_client::OrderBilling](docs/OrderBilling.md)
- - [ultracart_client::OrderBuysafe](docs/OrderBuysafe.md)
- - [ultracart_client::OrderByTokenQuery](docs/OrderByTokenQuery.md)
- - [ultracart_client::OrderChannelPartner](docs/OrderChannelPartner.md)
- - [ultracart_client::OrderCheckout](docs/OrderCheckout.md)
- - [ultracart_client::OrderCoupon](docs/OrderCoupon.md)
- - [ultracart_client::OrderDigitalItem](docs/OrderDigitalItem.md)
- - [ultracart_client::OrderDigitalOrder](docs/OrderDigitalOrder.md)
- - [ultracart_client::OrderEdi](docs/OrderEdi.md)
- - [ultracart_client::OrderFormat](docs/OrderFormat.md)
- - [ultracart_client::OrderFormatResponse](docs/OrderFormatResponse.md)
- - [ultracart_client::OrderFraudScore](docs/OrderFraudScore.md)
- - [ultracart_client::OrderGift](docs/OrderGift.md)
- - [ultracart_client::OrderGiftCertificate](docs/OrderGiftCertificate.md)
- - [ultracart_client::OrderInternal](docs/OrderInternal.md)
- - [ultracart_client::OrderItem](docs/OrderItem.md)
- - [ultracart_client::OrderItemEdi](docs/OrderItemEdi.md)
- - [ultracart_client::OrderItemEdiIdentification](docs/OrderItemEdiIdentification.md)
- - [ultracart_client::OrderItemEdiLot](docs/OrderItemEdiLot.md)
- - [ultracart_client::OrderItemOption](docs/OrderItemOption.md)
- - [ultracart_client::OrderItemOptionFileAttachment](docs/OrderItemOptionFileAttachment.md)
- - [ultracart_client::OrderItemProperty](docs/OrderItemProperty.md)
- - [ultracart_client::OrderItemTag](docs/OrderItemTag.md)
- - [ultracart_client::OrderLinkedShipment](docs/OrderLinkedShipment.md)
- - [ultracart_client::OrderMarketing](docs/OrderMarketing.md)
- - [ultracart_client::OrderPayment](docs/OrderPayment.md)
- - [ultracart_client::OrderPaymentCheck](docs/OrderPaymentCheck.md)
- - [ultracart_client::OrderPaymentCreditCard](docs/OrderPaymentCreditCard.md)
- - [ultracart_client::OrderPaymentECheck](docs/OrderPaymentECheck.md)
- - [ultracart_client::OrderPaymentPurchaseOrder](docs/OrderPaymentPurchaseOrder.md)
- - [ultracart_client::OrderPaymentTransaction](docs/OrderPaymentTransaction.md)
- - [ultracart_client::OrderPaymentTransactionDetail](docs/OrderPaymentTransactionDetail.md)
- - [ultracart_client::OrderProcessPaymentRequest](docs/OrderProcessPaymentRequest.md)
- - [ultracart_client::OrderProcessPaymentResponse](docs/OrderProcessPaymentResponse.md)
- - [ultracart_client::OrderProperty](docs/OrderProperty.md)
- - [ultracart_client::OrderQuery](docs/OrderQuery.md)
- - [ultracart_client::OrderQueryBatch](docs/OrderQueryBatch.md)
- - [ultracart_client::OrderQuote](docs/OrderQuote.md)
- - [ultracart_client::OrderReplacement](docs/OrderReplacement.md)
- - [ultracart_client::OrderReplacementItem](docs/OrderReplacementItem.md)
- - [ultracart_client::OrderReplacementResponse](docs/OrderReplacementResponse.md)
- - [ultracart_client::OrderResponse](docs/OrderResponse.md)
- - [ultracart_client::OrderSalesforce](docs/OrderSalesforce.md)
- - [ultracart_client::OrderShipping](docs/OrderShipping.md)
- - [ultracart_client::OrderSummary](docs/OrderSummary.md)
- - [ultracart_client::OrderTag](docs/OrderTag.md)
- - [ultracart_client::OrderTaxes](docs/OrderTaxes.md)
- - [ultracart_client::OrderTokenResponse](docs/OrderTokenResponse.md)
- - [ultracart_client::OrderTrackingNumberDetail](docs/OrderTrackingNumberDetail.md)
- - [ultracart_client::OrderTrackingNumberDetails](docs/OrderTrackingNumberDetails.md)
- - [ultracart_client::OrdersResponse](docs/OrdersResponse.md)
- - [ultracart_client::Permission](docs/Permission.md)
- - [ultracart_client::PricingTier](docs/PricingTier.md)
- - [ultracart_client::PricingTierNotification](docs/PricingTierNotification.md)
- - [ultracart_client::PricingTiersResponse](docs/PricingTiersResponse.md)
- - [ultracart_client::Property](docs/Property.md)
- - [ultracart_client::PublishLibraryItemRequest](docs/PublishLibraryItemRequest.md)
- - [ultracart_client::RegisterAffiliateClickRequest](docs/RegisterAffiliateClickRequest.md)
- - [ultracart_client::RegisterAffiliateClickResponse](docs/RegisterAffiliateClickResponse.md)
- - [ultracart_client::ResponseMetadata](docs/ResponseMetadata.md)
- - [ultracart_client::ResultSet](docs/ResultSet.md)
- - [ultracart_client::ScreenRecording](docs/ScreenRecording.md)
- - [ultracart_client::ScreenRecordingFilter](docs/ScreenRecordingFilter.md)
- - [ultracart_client::ScreenRecordingFilterGeoDistance](docs/ScreenRecordingFilterGeoDistance.md)
- - [ultracart_client::ScreenRecordingFilterIpSearch](docs/ScreenRecordingFilterIpSearch.md)
- - [ultracart_client::ScreenRecordingFilterPageView](docs/ScreenRecordingFilterPageView.md)
- - [ultracart_client::ScreenRecordingFilterPageViewEvent](docs/ScreenRecordingFilterPageViewEvent.md)
- - [ultracart_client::ScreenRecordingFilterPageViewEventParam](docs/ScreenRecordingFilterPageViewEventParam.md)
- - [ultracart_client::ScreenRecordingFilterPageViewParam](docs/ScreenRecordingFilterPageViewParam.md)
- - [ultracart_client::ScreenRecordingFilterPageViewReferrerParam](docs/ScreenRecordingFilterPageViewReferrerParam.md)
- - [ultracart_client::ScreenRecordingFilterRangeBigDecimal](docs/ScreenRecordingFilterRangeBigDecimal.md)
- - [ultracart_client::ScreenRecordingFilterRangeDate](docs/ScreenRecordingFilterRangeDate.md)
- - [ultracart_client::ScreenRecordingFilterRangeInteger](docs/ScreenRecordingFilterRangeInteger.md)
- - [ultracart_client::ScreenRecordingFilterStringSearch](docs/ScreenRecordingFilterStringSearch.md)
- - [ultracart_client::ScreenRecordingFilterValues](docs/ScreenRecordingFilterValues.md)
- - [ultracart_client::ScreenRecordingFilterValuesEvent](docs/ScreenRecordingFilterValuesEvent.md)
- - [ultracart_client::ScreenRecordingFilterValuesEventParams](docs/ScreenRecordingFilterValuesEventParams.md)
- - [ultracart_client::ScreenRecordingMultifield](docs/ScreenRecordingMultifield.md)
- - [ultracart_client::ScreenRecordingPageView](docs/ScreenRecordingPageView.md)
- - [ultracart_client::ScreenRecordingPageViewEvent](docs/ScreenRecordingPageViewEvent.md)
- - [ultracart_client::ScreenRecordingPageViewEventParameter](docs/ScreenRecordingPageViewEventParameter.md)
- - [ultracart_client::ScreenRecordingPageViewParameter](docs/ScreenRecordingPageViewParameter.md)
- - [ultracart_client::ScreenRecordingQueryRequest](docs/ScreenRecordingQueryRequest.md)
- - [ultracart_client::ScreenRecordingQueryResponse](docs/ScreenRecordingQueryResponse.md)
- - [ultracart_client::ScreenRecordingResponse](docs/ScreenRecordingResponse.md)
- - [ultracart_client::ScreenRecordingSegment](docs/ScreenRecordingSegment.md)
- - [ultracart_client::ScreenRecordingSegmentResponse](docs/ScreenRecordingSegmentResponse.md)
- - [ultracart_client::ScreenRecordingSegmentsResponse](docs/ScreenRecordingSegmentsResponse.md)
- - [ultracart_client::ScreenRecordingSettings](docs/ScreenRecordingSettings.md)
- - [ultracart_client::ScreenRecordingSettingsResponse](docs/ScreenRecordingSettingsResponse.md)
- - [ultracart_client::ScreenRecordingStoreFront](docs/ScreenRecordingStoreFront.md)
- - [ultracart_client::ScreenRecordingTagsRequest](docs/ScreenRecordingTagsRequest.md)
- - [ultracart_client::ScreenRecordingTagsResponse](docs/ScreenRecordingTagsResponse.md)
- - [ultracart_client::ScreenRecordingUserAgent](docs/ScreenRecordingUserAgent.md)
- - [ultracart_client::ScreenRecordingUserAgentDevice](docs/ScreenRecordingUserAgentDevice.md)
- - [ultracart_client::ScreenRecordingUserAgentOS](docs/ScreenRecordingUserAgentOS.md)
- - [ultracart_client::ScreenRecordingUserProperty](docs/ScreenRecordingUserProperty.md)
- - [ultracart_client::ScreenshotsResponse](docs/ScreenshotsResponse.md)
- - [ultracart_client::SelfConfig](docs/SelfConfig.md)
- - [ultracart_client::SimpleValue](docs/SimpleValue.md)
- - [ultracart_client::SovosConfig](docs/SovosConfig.md)
- - [ultracart_client::StateProvince](docs/StateProvince.md)
- - [ultracart_client::StepWaiting](docs/StepWaiting.md)
- - [ultracart_client::TaxCity](docs/TaxCity.md)
- - [ultracart_client::TaxCountry](docs/TaxCountry.md)
- - [ultracart_client::TaxCountryCode](docs/TaxCountryCode.md)
- - [ultracart_client::TaxCounty](docs/TaxCounty.md)
- - [ultracart_client::TaxJarConfig](docs/TaxJarConfig.md)
- - [ultracart_client::TaxPostalCode](docs/TaxPostalCode.md)
- - [ultracart_client::TaxProviderActivateResult](docs/TaxProviderActivateResult.md)
- - [ultracart_client::TaxProviderAvalara](docs/TaxProviderAvalara.md)
- - [ultracart_client::TaxProviderAvalaraCompaniesResult](docs/TaxProviderAvalaraCompaniesResult.md)
- - [ultracart_client::TaxProviderAvalaraCompany](docs/TaxProviderAvalaraCompany.md)
- - [ultracart_client::TaxProviderSelf](docs/TaxProviderSelf.md)
- - [ultracart_client::TaxProviderSelfCountriesResponse](docs/TaxProviderSelfCountriesResponse.md)
- - [ultracart_client::TaxProviderSelfRegionsResponse](docs/TaxProviderSelfRegionsResponse.md)
- - [ultracart_client::TaxProviderSovos](docs/TaxProviderSovos.md)
- - [ultracart_client::TaxProviderTaxJar](docs/TaxProviderTaxJar.md)
- - [ultracart_client::TaxProviderTestResult](docs/TaxProviderTestResult.md)
- - [ultracart_client::TaxProviderUltraCart](docs/TaxProviderUltraCart.md)
- - [ultracart_client::TaxProviderUltraCartState](docs/TaxProviderUltraCartState.md)
- - [ultracart_client::TaxProvidersResponse](docs/TaxProvidersResponse.md)
- - [ultracart_client::TaxState](docs/TaxState.md)
- - [ultracart_client::TaxStateCode](docs/TaxStateCode.md)
- - [ultracart_client::TempMultimedia](docs/TempMultimedia.md)
- - [ultracart_client::TempMultimediaResponse](docs/TempMultimediaResponse.md)
- - [ultracart_client::ThumbnailParametersRequest](docs/ThumbnailParametersRequest.md)
- - [ultracart_client::ThumbnailParametersResponse](docs/ThumbnailParametersResponse.md)
- - [ultracart_client::TransactionEmail](docs/TransactionEmail.md)
- - [ultracart_client::TransactionEmailListResponse](docs/TransactionEmailListResponse.md)
- - [ultracart_client::TransactionEmailOption](docs/TransactionEmailOption.md)
- - [ultracart_client::TransactionEmailResponse](docs/TransactionEmailResponse.md)
- - [ultracart_client::UltraCartConfig](docs/UltraCartConfig.md)
- - [ultracart_client::UploadCouponCodesRequest](docs/UploadCouponCodesRequest.md)
- - [ultracart_client::UploadCouponCodesResponse](docs/UploadCouponCodesResponse.md)
- - [ultracart_client::User](docs/User.md)
- - [ultracart_client::UserGroupMembership](docs/UserGroupMembership.md)
- - [ultracart_client::UserLogin](docs/UserLogin.md)
- - [ultracart_client::UserLoginsResponse](docs/UserLoginsResponse.md)
- - [ultracart_client::UserResponse](docs/UserResponse.md)
- - [ultracart_client::UsersResponse](docs/UsersResponse.md)
- - [ultracart_client::VerificationRecord](docs/VerificationRecord.md)
- - [ultracart_client::Warning](docs/Warning.md)
- - [ultracart_client::Webhook](docs/Webhook.md)
- - [ultracart_client::WebhookEventCategory](docs/WebhookEventCategory.md)
- - [ultracart_client::WebhookEventSubscription](docs/WebhookEventSubscription.md)
- - [ultracart_client::WebhookLog](docs/WebhookLog.md)
- - [ultracart_client::WebhookLogResponse](docs/WebhookLogResponse.md)
- - [ultracart_client::WebhookLogSummariesResponse](docs/WebhookLogSummariesResponse.md)
- - [ultracart_client::WebhookLogSummary](docs/WebhookLogSummary.md)
- - [ultracart_client::WebhookResponse](docs/WebhookResponse.md)
- - [ultracart_client::WebhookSampleRequest](docs/WebhookSampleRequest.md)
- - [ultracart_client::WebhookSampleRequestResponse](docs/WebhookSampleRequestResponse.md)
- - [ultracart_client::WebhooksResponse](docs/WebhooksResponse.md)
- - [ultracart_client::Weight](docs/Weight.md)
+ - [UltracartClient::AccountsReceivableRetryConfig](docs/AccountsReceivableRetryConfig.md)
+ - [UltracartClient::AccountsReceivableRetryConfigResponse](docs/AccountsReceivableRetryConfigResponse.md)
+ - [UltracartClient::AccountsReceivableRetryDayActivity](docs/AccountsReceivableRetryDayActivity.md)
+ - [UltracartClient::AccountsReceivableRetryStatAccount](docs/AccountsReceivableRetryStatAccount.md)
+ - [UltracartClient::AccountsReceivableRetryStatMetrics](docs/AccountsReceivableRetryStatMetrics.md)
+ - [UltracartClient::AccountsReceivableRetryStatRevenue](docs/AccountsReceivableRetryStatRevenue.md)
+ - [UltracartClient::AccountsReceivableRetryStatsResponse](docs/AccountsReceivableRetryStatsResponse.md)
+ - [UltracartClient::Activity](docs/Activity.md)
+ - [UltracartClient::AddLibraryItemRequest](docs/AddLibraryItemRequest.md)
+ - [UltracartClient::AffiliateClick](docs/AffiliateClick.md)
+ - [UltracartClient::AffiliateClickQuery](docs/AffiliateClickQuery.md)
+ - [UltracartClient::AffiliateClicksResponse](docs/AffiliateClicksResponse.md)
+ - [UltracartClient::AffiliateLedger](docs/AffiliateLedger.md)
+ - [UltracartClient::AffiliateLedgerQuery](docs/AffiliateLedgerQuery.md)
+ - [UltracartClient::AffiliateLedgersResponse](docs/AffiliateLedgersResponse.md)
+ - [UltracartClient::AffiliateLink](docs/AffiliateLink.md)
+ - [UltracartClient::ApiUserApplicationProfile](docs/ApiUserApplicationProfile.md)
+ - [UltracartClient::ApplyLibraryItemRequest](docs/ApplyLibraryItemRequest.md)
+ - [UltracartClient::ApplyLibraryItemResponse](docs/ApplyLibraryItemResponse.md)
+ - [UltracartClient::AutoOrder](docs/AutoOrder.md)
+ - [UltracartClient::AutoOrderItem](docs/AutoOrderItem.md)
+ - [UltracartClient::AutoOrderItemFutureSchedule](docs/AutoOrderItemFutureSchedule.md)
+ - [UltracartClient::AutoOrderItemOption](docs/AutoOrderItemOption.md)
+ - [UltracartClient::AutoOrderItemSimpleSchedule](docs/AutoOrderItemSimpleSchedule.md)
+ - [UltracartClient::AutoOrderQuery](docs/AutoOrderQuery.md)
+ - [UltracartClient::AutoOrderQueryBatch](docs/AutoOrderQueryBatch.md)
+ - [UltracartClient::AutoOrderResponse](docs/AutoOrderResponse.md)
+ - [UltracartClient::AutoOrdersRequest](docs/AutoOrdersRequest.md)
+ - [UltracartClient::AutoOrdersResponse](docs/AutoOrdersResponse.md)
+ - [UltracartClient::AvalaraConfig](docs/AvalaraConfig.md)
+ - [UltracartClient::BaseResponse](docs/BaseResponse.md)
+ - [UltracartClient::Cart](docs/Cart.md)
+ - [UltracartClient::CartAffiliate](docs/CartAffiliate.md)
+ - [UltracartClient::CartAffirmCheckoutResponse](docs/CartAffirmCheckoutResponse.md)
+ - [UltracartClient::CartBilling](docs/CartBilling.md)
+ - [UltracartClient::CartBuysafe](docs/CartBuysafe.md)
+ - [UltracartClient::CartCheckout](docs/CartCheckout.md)
+ - [UltracartClient::CartCoupon](docs/CartCoupon.md)
+ - [UltracartClient::CartCurrencyConversion](docs/CartCurrencyConversion.md)
+ - [UltracartClient::CartCustomerProfile](docs/CartCustomerProfile.md)
+ - [UltracartClient::CartCustomerProfileAddress](docs/CartCustomerProfileAddress.md)
+ - [UltracartClient::CartCustomerProfileCreditCard](docs/CartCustomerProfileCreditCard.md)
+ - [UltracartClient::CartFinalizeOrderRequest](docs/CartFinalizeOrderRequest.md)
+ - [UltracartClient::CartFinalizeOrderRequestOptions](docs/CartFinalizeOrderRequestOptions.md)
+ - [UltracartClient::CartFinalizeOrderResponse](docs/CartFinalizeOrderResponse.md)
+ - [UltracartClient::CartGift](docs/CartGift.md)
+ - [UltracartClient::CartGiftCertificate](docs/CartGiftCertificate.md)
+ - [UltracartClient::CartItem](docs/CartItem.md)
+ - [UltracartClient::CartItemAttribute](docs/CartItemAttribute.md)
+ - [UltracartClient::CartItemMultimedia](docs/CartItemMultimedia.md)
+ - [UltracartClient::CartItemMultimediaThumbnail](docs/CartItemMultimediaThumbnail.md)
+ - [UltracartClient::CartItemOption](docs/CartItemOption.md)
+ - [UltracartClient::CartItemOptionValue](docs/CartItemOptionValue.md)
+ - [UltracartClient::CartItemPhysical](docs/CartItemPhysical.md)
+ - [UltracartClient::CartItemVariationSelection](docs/CartItemVariationSelection.md)
+ - [UltracartClient::CartKitComponentOption](docs/CartKitComponentOption.md)
+ - [UltracartClient::CartMarketing](docs/CartMarketing.md)
+ - [UltracartClient::CartPayment](docs/CartPayment.md)
+ - [UltracartClient::CartPaymentAffirm](docs/CartPaymentAffirm.md)
+ - [UltracartClient::CartPaymentAmazon](docs/CartPaymentAmazon.md)
+ - [UltracartClient::CartPaymentCheck](docs/CartPaymentCheck.md)
+ - [UltracartClient::CartPaymentCreditCard](docs/CartPaymentCreditCard.md)
+ - [UltracartClient::CartPaymentPurchaseOrder](docs/CartPaymentPurchaseOrder.md)
+ - [UltracartClient::CartProfileLoginRequest](docs/CartProfileLoginRequest.md)
+ - [UltracartClient::CartProfileLoginResponse](docs/CartProfileLoginResponse.md)
+ - [UltracartClient::CartProfileRegisterRequest](docs/CartProfileRegisterRequest.md)
+ - [UltracartClient::CartProfileRegisterResponse](docs/CartProfileRegisterResponse.md)
+ - [UltracartClient::CartProperty](docs/CartProperty.md)
+ - [UltracartClient::CartResponse](docs/CartResponse.md)
+ - [UltracartClient::CartSettings](docs/CartSettings.md)
+ - [UltracartClient::CartSettingsBilling](docs/CartSettingsBilling.md)
+ - [UltracartClient::CartSettingsGift](docs/CartSettingsGift.md)
+ - [UltracartClient::CartSettingsGiftWrap](docs/CartSettingsGiftWrap.md)
+ - [UltracartClient::CartSettingsPayment](docs/CartSettingsPayment.md)
+ - [UltracartClient::CartSettingsPaymentAmazon](docs/CartSettingsPaymentAmazon.md)
+ - [UltracartClient::CartSettingsPaymentCreditCard](docs/CartSettingsPaymentCreditCard.md)
+ - [UltracartClient::CartSettingsPaymentPayPal](docs/CartSettingsPaymentPayPal.md)
+ - [UltracartClient::CartSettingsProvince](docs/CartSettingsProvince.md)
+ - [UltracartClient::CartSettingsShipping](docs/CartSettingsShipping.md)
+ - [UltracartClient::CartSettingsShippingCalendar](docs/CartSettingsShippingCalendar.md)
+ - [UltracartClient::CartSettingsShippingEstimate](docs/CartSettingsShippingEstimate.md)
+ - [UltracartClient::CartSettingsTaxes](docs/CartSettingsTaxes.md)
+ - [UltracartClient::CartSettingsTerms](docs/CartSettingsTerms.md)
+ - [UltracartClient::CartShipping](docs/CartShipping.md)
+ - [UltracartClient::CartSummary](docs/CartSummary.md)
+ - [UltracartClient::CartTaxes](docs/CartTaxes.md)
+ - [UltracartClient::CartUpsellAfter](docs/CartUpsellAfter.md)
+ - [UltracartClient::CartValidationRequest](docs/CartValidationRequest.md)
+ - [UltracartClient::CartValidationResponse](docs/CartValidationResponse.md)
+ - [UltracartClient::ChargebackDispute](docs/ChargebackDispute.md)
+ - [UltracartClient::ChargebackDisputeResponse](docs/ChargebackDisputeResponse.md)
+ - [UltracartClient::ChargebackDisputesResponse](docs/ChargebackDisputesResponse.md)
+ - [UltracartClient::CheckoutAllowedCountriesResponse](docs/CheckoutAllowedCountriesResponse.md)
+ - [UltracartClient::CheckoutHandoffRequest](docs/CheckoutHandoffRequest.md)
+ - [UltracartClient::CheckoutHandoffResponse](docs/CheckoutHandoffResponse.md)
+ - [UltracartClient::CheckoutSetupBrowserKeyRequest](docs/CheckoutSetupBrowserKeyRequest.md)
+ - [UltracartClient::CheckoutSetupBrowserKeyResponse](docs/CheckoutSetupBrowserKeyResponse.md)
+ - [UltracartClient::CheckoutStateProvinceResponse](docs/CheckoutStateProvinceResponse.md)
+ - [UltracartClient::CityStateZip](docs/CityStateZip.md)
+ - [UltracartClient::CountriesResponse](docs/CountriesResponse.md)
+ - [UltracartClient::Country](docs/Country.md)
+ - [UltracartClient::Coupon](docs/Coupon.md)
+ - [UltracartClient::CouponAmountOffItems](docs/CouponAmountOffItems.md)
+ - [UltracartClient::CouponAmountOffShipping](docs/CouponAmountOffShipping.md)
+ - [UltracartClient::CouponAmountOffShippingWithItemsPurchase](docs/CouponAmountOffShippingWithItemsPurchase.md)
+ - [UltracartClient::CouponAmountOffSubtotal](docs/CouponAmountOffSubtotal.md)
+ - [UltracartClient::CouponAmountOffSubtotalAndShipping](docs/CouponAmountOffSubtotalAndShipping.md)
+ - [UltracartClient::CouponAmountOffSubtotalFreeShippingWithPurchase](docs/CouponAmountOffSubtotalFreeShippingWithPurchase.md)
+ - [UltracartClient::CouponAmountOffSubtotalWithBlockPurchase](docs/CouponAmountOffSubtotalWithBlockPurchase.md)
+ - [UltracartClient::CouponAmountOffSubtotalWithItemsPurchase](docs/CouponAmountOffSubtotalWithItemsPurchase.md)
+ - [UltracartClient::CouponAutoApplyCondition](docs/CouponAutoApplyCondition.md)
+ - [UltracartClient::CouponAutoApplyConditions](docs/CouponAutoApplyConditions.md)
+ - [UltracartClient::CouponAutomaticallyApplyCouponCodes](docs/CouponAutomaticallyApplyCouponCodes.md)
+ - [UltracartClient::CouponBuyOneGetOneLimit](docs/CouponBuyOneGetOneLimit.md)
+ - [UltracartClient::CouponCodesRequest](docs/CouponCodesRequest.md)
+ - [UltracartClient::CouponCodesResponse](docs/CouponCodesResponse.md)
+ - [UltracartClient::CouponDeletesRequest](docs/CouponDeletesRequest.md)
+ - [UltracartClient::CouponDiscountItemWithItemPurchase](docs/CouponDiscountItemWithItemPurchase.md)
+ - [UltracartClient::CouponDiscountItems](docs/CouponDiscountItems.md)
+ - [UltracartClient::CouponEditorValues](docs/CouponEditorValues.md)
+ - [UltracartClient::CouponExistsResponse](docs/CouponExistsResponse.md)
+ - [UltracartClient::CouponFreeItemAndShippingWithSubtotal](docs/CouponFreeItemAndShippingWithSubtotal.md)
+ - [UltracartClient::CouponFreeItemWithItemPurchase](docs/CouponFreeItemWithItemPurchase.md)
+ - [UltracartClient::CouponFreeItemWithSubtotal](docs/CouponFreeItemWithSubtotal.md)
+ - [UltracartClient::CouponFreeItemsWithItemPurchase](docs/CouponFreeItemsWithItemPurchase.md)
+ - [UltracartClient::CouponFreeItemsWithMixMatchPurchase](docs/CouponFreeItemsWithMixMatchPurchase.md)
+ - [UltracartClient::CouponFreeShipping](docs/CouponFreeShipping.md)
+ - [UltracartClient::CouponFreeShippingSpecificItems](docs/CouponFreeShippingSpecificItems.md)
+ - [UltracartClient::CouponFreeShippingWithItemsPurchase](docs/CouponFreeShippingWithItemsPurchase.md)
+ - [UltracartClient::CouponFreeShippingWithSubtotal](docs/CouponFreeShippingWithSubtotal.md)
+ - [UltracartClient::CouponItemSearchResult](docs/CouponItemSearchResult.md)
+ - [UltracartClient::CouponItemSearchResultsResponse](docs/CouponItemSearchResultsResponse.md)
+ - [UltracartClient::CouponMultipleAmountsOffItems](docs/CouponMultipleAmountsOffItems.md)
+ - [UltracartClient::CouponNoDiscount](docs/CouponNoDiscount.md)
+ - [UltracartClient::CouponPercentOffItemWithItemsQuantityPurchase](docs/CouponPercentOffItemWithItemsQuantityPurchase.md)
+ - [UltracartClient::CouponPercentOffItems](docs/CouponPercentOffItems.md)
+ - [UltracartClient::CouponPercentOffItemsAndFreeShipping](docs/CouponPercentOffItemsAndFreeShipping.md)
+ - [UltracartClient::CouponPercentOffItemsWithItemsPurchase](docs/CouponPercentOffItemsWithItemsPurchase.md)
+ - [UltracartClient::CouponPercentOffRetailPriceItems](docs/CouponPercentOffRetailPriceItems.md)
+ - [UltracartClient::CouponPercentOffShipping](docs/CouponPercentOffShipping.md)
+ - [UltracartClient::CouponPercentOffSubtotal](docs/CouponPercentOffSubtotal.md)
+ - [UltracartClient::CouponPercentOffSubtotalAndFreeShipping](docs/CouponPercentOffSubtotalAndFreeShipping.md)
+ - [UltracartClient::CouponPercentOffSubtotalLimit](docs/CouponPercentOffSubtotalLimit.md)
+ - [UltracartClient::CouponPercentOffSubtotalWithItemsPurchase](docs/CouponPercentOffSubtotalWithItemsPurchase.md)
+ - [UltracartClient::CouponPercentOffSubtotalWithSubtotal](docs/CouponPercentOffSubtotalWithSubtotal.md)
+ - [UltracartClient::CouponQuery](docs/CouponQuery.md)
+ - [UltracartClient::CouponResponse](docs/CouponResponse.md)
+ - [UltracartClient::CouponRestriction](docs/CouponRestriction.md)
+ - [UltracartClient::CouponTierAmount](docs/CouponTierAmount.md)
+ - [UltracartClient::CouponTierItemDiscount](docs/CouponTierItemDiscount.md)
+ - [UltracartClient::CouponTierPercent](docs/CouponTierPercent.md)
+ - [UltracartClient::CouponTierQuantityAmount](docs/CouponTierQuantityAmount.md)
+ - [UltracartClient::CouponTierQuantityPercent](docs/CouponTierQuantityPercent.md)
+ - [UltracartClient::CouponTieredAmountOffItem](docs/CouponTieredAmountOffItem.md)
+ - [UltracartClient::CouponTieredAmountOffSubtotal](docs/CouponTieredAmountOffSubtotal.md)
+ - [UltracartClient::CouponTieredPercentOffItems](docs/CouponTieredPercentOffItems.md)
+ - [UltracartClient::CouponTieredPercentOffShipping](docs/CouponTieredPercentOffShipping.md)
+ - [UltracartClient::CouponTieredPercentOffSubtotal](docs/CouponTieredPercentOffSubtotal.md)
+ - [UltracartClient::CouponType](docs/CouponType.md)
+ - [UltracartClient::CouponsRequest](docs/CouponsRequest.md)
+ - [UltracartClient::CouponsResponse](docs/CouponsResponse.md)
+ - [UltracartClient::Currency](docs/Currency.md)
+ - [UltracartClient::Customer](docs/Customer.md)
+ - [UltracartClient::CustomerActivity](docs/CustomerActivity.md)
+ - [UltracartClient::CustomerAffiliate](docs/CustomerAffiliate.md)
+ - [UltracartClient::CustomerAttachment](docs/CustomerAttachment.md)
+ - [UltracartClient::CustomerBilling](docs/CustomerBilling.md)
+ - [UltracartClient::CustomerCard](docs/CustomerCard.md)
+ - [UltracartClient::CustomerEditorValues](docs/CustomerEditorValues.md)
+ - [UltracartClient::CustomerEmail](docs/CustomerEmail.md)
+ - [UltracartClient::CustomerEmailListChanges](docs/CustomerEmailListChanges.md)
+ - [UltracartClient::CustomerLoyalty](docs/CustomerLoyalty.md)
+ - [UltracartClient::CustomerLoyaltyLedger](docs/CustomerLoyaltyLedger.md)
+ - [UltracartClient::CustomerLoyaltyRedemption](docs/CustomerLoyaltyRedemption.md)
+ - [UltracartClient::CustomerOrdersSummary](docs/CustomerOrdersSummary.md)
+ - [UltracartClient::CustomerPricingTier](docs/CustomerPricingTier.md)
+ - [UltracartClient::CustomerPrivacy](docs/CustomerPrivacy.md)
+ - [UltracartClient::CustomerQuery](docs/CustomerQuery.md)
+ - [UltracartClient::CustomerQuotesSummary](docs/CustomerQuotesSummary.md)
+ - [UltracartClient::CustomerResponse](docs/CustomerResponse.md)
+ - [UltracartClient::CustomerReviewer](docs/CustomerReviewer.md)
+ - [UltracartClient::CustomerShipping](docs/CustomerShipping.md)
+ - [UltracartClient::CustomerSoftwareEntitlement](docs/CustomerSoftwareEntitlement.md)
+ - [UltracartClient::CustomerTag](docs/CustomerTag.md)
+ - [UltracartClient::CustomerTaxCodes](docs/CustomerTaxCodes.md)
+ - [UltracartClient::CustomersResponse](docs/CustomersResponse.md)
+ - [UltracartClient::DataTablesServerSideResponse](docs/DataTablesServerSideResponse.md)
+ - [UltracartClient::Distance](docs/Distance.md)
+ - [UltracartClient::DistributionCenter](docs/DistributionCenter.md)
+ - [UltracartClient::DistributionCentersResponse](docs/DistributionCentersResponse.md)
+ - [UltracartClient::EmailBaseTemplateListResponse](docs/EmailBaseTemplateListResponse.md)
+ - [UltracartClient::EmailCampaign](docs/EmailCampaign.md)
+ - [UltracartClient::EmailCampaignFolder](docs/EmailCampaignFolder.md)
+ - [UltracartClient::EmailCampaignFolderResponse](docs/EmailCampaignFolderResponse.md)
+ - [UltracartClient::EmailCampaignFoldersResponse](docs/EmailCampaignFoldersResponse.md)
+ - [UltracartClient::EmailCampaignResponse](docs/EmailCampaignResponse.md)
+ - [UltracartClient::EmailCampaignsResponse](docs/EmailCampaignsResponse.md)
+ - [UltracartClient::EmailClick](docs/EmailClick.md)
+ - [UltracartClient::EmailClicksResponse](docs/EmailClicksResponse.md)
+ - [UltracartClient::EmailCommseq](docs/EmailCommseq.md)
+ - [UltracartClient::EmailCommseqEmail](docs/EmailCommseqEmail.md)
+ - [UltracartClient::EmailCommseqEmailResponse](docs/EmailCommseqEmailResponse.md)
+ - [UltracartClient::EmailCommseqEmailSendTestRequest](docs/EmailCommseqEmailSendTestRequest.md)
+ - [UltracartClient::EmailCommseqEmailSendTestResponse](docs/EmailCommseqEmailSendTestResponse.md)
+ - [UltracartClient::EmailCommseqEmailsRequest](docs/EmailCommseqEmailsRequest.md)
+ - [UltracartClient::EmailCommseqEmailsResponse](docs/EmailCommseqEmailsResponse.md)
+ - [UltracartClient::EmailCommseqPostcard](docs/EmailCommseqPostcard.md)
+ - [UltracartClient::EmailCommseqPostcardResponse](docs/EmailCommseqPostcardResponse.md)
+ - [UltracartClient::EmailCommseqPostcardSendTestRequest](docs/EmailCommseqPostcardSendTestRequest.md)
+ - [UltracartClient::EmailCommseqPostcardSendTestResponse](docs/EmailCommseqPostcardSendTestResponse.md)
+ - [UltracartClient::EmailCommseqPostcardsRequest](docs/EmailCommseqPostcardsRequest.md)
+ - [UltracartClient::EmailCommseqPostcardsResponse](docs/EmailCommseqPostcardsResponse.md)
+ - [UltracartClient::EmailCommseqResponse](docs/EmailCommseqResponse.md)
+ - [UltracartClient::EmailCommseqStat](docs/EmailCommseqStat.md)
+ - [UltracartClient::EmailCommseqStatResponse](docs/EmailCommseqStatResponse.md)
+ - [UltracartClient::EmailCommseqStep](docs/EmailCommseqStep.md)
+ - [UltracartClient::EmailCommseqsResponse](docs/EmailCommseqsResponse.md)
+ - [UltracartClient::EmailCustomer](docs/EmailCustomer.md)
+ - [UltracartClient::EmailCustomerEditorUrlResponse](docs/EmailCustomerEditorUrlResponse.md)
+ - [UltracartClient::EmailCustomersResponse](docs/EmailCustomersResponse.md)
+ - [UltracartClient::EmailDashboardActivity](docs/EmailDashboardActivity.md)
+ - [UltracartClient::EmailDashboardActivityResponse](docs/EmailDashboardActivityResponse.md)
+ - [UltracartClient::EmailDashboardStatsResponse](docs/EmailDashboardStatsResponse.md)
+ - [UltracartClient::EmailDomain](docs/EmailDomain.md)
+ - [UltracartClient::EmailEditorTokenResponse](docs/EmailEditorTokenResponse.md)
+ - [UltracartClient::EmailFlow](docs/EmailFlow.md)
+ - [UltracartClient::EmailFlowBackPopulateRequest](docs/EmailFlowBackPopulateRequest.md)
+ - [UltracartClient::EmailFlowBackPopulateResponse](docs/EmailFlowBackPopulateResponse.md)
+ - [UltracartClient::EmailFlowFolder](docs/EmailFlowFolder.md)
+ - [UltracartClient::EmailFlowFolderResponse](docs/EmailFlowFolderResponse.md)
+ - [UltracartClient::EmailFlowFoldersResponse](docs/EmailFlowFoldersResponse.md)
+ - [UltracartClient::EmailFlowResponse](docs/EmailFlowResponse.md)
+ - [UltracartClient::EmailFlowsResponse](docs/EmailFlowsResponse.md)
+ - [UltracartClient::EmailGlobalSettings](docs/EmailGlobalSettings.md)
+ - [UltracartClient::EmailGlobalSettingsResponse](docs/EmailGlobalSettingsResponse.md)
+ - [UltracartClient::EmailGlobalUnsubscribeRequest](docs/EmailGlobalUnsubscribeRequest.md)
+ - [UltracartClient::EmailGlobalUnsubscribeResponse](docs/EmailGlobalUnsubscribeResponse.md)
+ - [UltracartClient::EmailHistogramPropertyNamesResponse](docs/EmailHistogramPropertyNamesResponse.md)
+ - [UltracartClient::EmailHistogramPropertyValuesResponse](docs/EmailHistogramPropertyValuesResponse.md)
+ - [UltracartClient::EmailList](docs/EmailList.md)
+ - [UltracartClient::EmailListArchiveResponse](docs/EmailListArchiveResponse.md)
+ - [UltracartClient::EmailListCustomer](docs/EmailListCustomer.md)
+ - [UltracartClient::EmailListCustomersResponse](docs/EmailListCustomersResponse.md)
+ - [UltracartClient::EmailListResponse](docs/EmailListResponse.md)
+ - [UltracartClient::EmailListSegmentMembership](docs/EmailListSegmentMembership.md)
+ - [UltracartClient::EmailListSegmentUsedBy](docs/EmailListSegmentUsedBy.md)
+ - [UltracartClient::EmailListSubscribeResponse](docs/EmailListSubscribeResponse.md)
+ - [UltracartClient::EmailListsResponse](docs/EmailListsResponse.md)
+ - [UltracartClient::EmailOrder](docs/EmailOrder.md)
+ - [UltracartClient::EmailOrdersResponse](docs/EmailOrdersResponse.md)
+ - [UltracartClient::EmailPerformance](docs/EmailPerformance.md)
+ - [UltracartClient::EmailPerformanceCustomerHistogram](docs/EmailPerformanceCustomerHistogram.md)
+ - [UltracartClient::EmailPerformanceCustomerHistogramPeriod](docs/EmailPerformanceCustomerHistogramPeriod.md)
+ - [UltracartClient::EmailPerformanceDaily](docs/EmailPerformanceDaily.md)
+ - [UltracartClient::EmailPerformanceResponse](docs/EmailPerformanceResponse.md)
+ - [UltracartClient::EmailPlan](docs/EmailPlan.md)
+ - [UltracartClient::EmailPlanAdditional](docs/EmailPlanAdditional.md)
+ - [UltracartClient::EmailPlanResponse](docs/EmailPlanResponse.md)
+ - [UltracartClient::EmailPostcardStat](docs/EmailPostcardStat.md)
+ - [UltracartClient::EmailSegment](docs/EmailSegment.md)
+ - [UltracartClient::EmailSegmentArchiveResponse](docs/EmailSegmentArchiveResponse.md)
+ - [UltracartClient::EmailSegmentCustomer](docs/EmailSegmentCustomer.md)
+ - [UltracartClient::EmailSegmentCustomersResponse](docs/EmailSegmentCustomersResponse.md)
+ - [UltracartClient::EmailSegmentDownloadPrepareResponse](docs/EmailSegmentDownloadPrepareResponse.md)
+ - [UltracartClient::EmailSegmentResponse](docs/EmailSegmentResponse.md)
+ - [UltracartClient::EmailSegmentsResponse](docs/EmailSegmentsResponse.md)
+ - [UltracartClient::EmailSendingDomainResponse](docs/EmailSendingDomainResponse.md)
+ - [UltracartClient::EmailSendingDomainsResponse](docs/EmailSendingDomainsResponse.md)
+ - [UltracartClient::EmailSettings](docs/EmailSettings.md)
+ - [UltracartClient::EmailSettingsResponse](docs/EmailSettingsResponse.md)
+ - [UltracartClient::EmailStat](docs/EmailStat.md)
+ - [UltracartClient::EmailStatPostcardSummaryRequest](docs/EmailStatPostcardSummaryRequest.md)
+ - [UltracartClient::EmailStatPostcardSummaryResponse](docs/EmailStatPostcardSummaryResponse.md)
+ - [UltracartClient::EmailStatSummaryRequest](docs/EmailStatSummaryRequest.md)
+ - [UltracartClient::EmailStatSummaryResponse](docs/EmailStatSummaryResponse.md)
+ - [UltracartClient::EmailStepStat](docs/EmailStepStat.md)
+ - [UltracartClient::EmailStepStatRequest](docs/EmailStepStatRequest.md)
+ - [UltracartClient::EmailStepStatResponse](docs/EmailStepStatResponse.md)
+ - [UltracartClient::EmailStepWaitingRequest](docs/EmailStepWaitingRequest.md)
+ - [UltracartClient::EmailStepWaitingResponse](docs/EmailStepWaitingResponse.md)
+ - [UltracartClient::EmailTemplate](docs/EmailTemplate.md)
+ - [UltracartClient::EmailTemplatesResponse](docs/EmailTemplatesResponse.md)
+ - [UltracartClient::EmailThirdPartyList](docs/EmailThirdPartyList.md)
+ - [UltracartClient::EmailThirdPartyListImportRequest](docs/EmailThirdPartyListImportRequest.md)
+ - [UltracartClient::EmailThirdPartyProvider](docs/EmailThirdPartyProvider.md)
+ - [UltracartClient::EmailThirdPartyProvidersResponse](docs/EmailThirdPartyProvidersResponse.md)
+ - [UltracartClient::Error](docs/Error.md)
+ - [UltracartClient::ErrorResponse](docs/ErrorResponse.md)
+ - [UltracartClient::Experiment](docs/Experiment.md)
+ - [UltracartClient::ExperimentResponse](docs/ExperimentResponse.md)
+ - [UltracartClient::ExperimentVariation](docs/ExperimentVariation.md)
+ - [UltracartClient::ExperimentsResponse](docs/ExperimentsResponse.md)
+ - [UltracartClient::FulfillmentInventory](docs/FulfillmentInventory.md)
+ - [UltracartClient::FulfillmentShipment](docs/FulfillmentShipment.md)
+ - [UltracartClient::GeoPoint](docs/GeoPoint.md)
+ - [UltracartClient::GeocodeRequest](docs/GeocodeRequest.md)
+ - [UltracartClient::GeocodeResponse](docs/GeocodeResponse.md)
+ - [UltracartClient::Group](docs/Group.md)
+ - [UltracartClient::GroupResponse](docs/GroupResponse.md)
+ - [UltracartClient::GroupUserMembership](docs/GroupUserMembership.md)
+ - [UltracartClient::GroupsResponse](docs/GroupsResponse.md)
+ - [UltracartClient::HTTPHeader](docs/HTTPHeader.md)
+ - [UltracartClient::Item](docs/Item.md)
+ - [UltracartClient::ItemAccounting](docs/ItemAccounting.md)
+ - [UltracartClient::ItemAmember](docs/ItemAmember.md)
+ - [UltracartClient::ItemAutoOrder](docs/ItemAutoOrder.md)
+ - [UltracartClient::ItemAutoOrderStep](docs/ItemAutoOrderStep.md)
+ - [UltracartClient::ItemAutoOrderStepArbitraryUnitCostSchedule](docs/ItemAutoOrderStepArbitraryUnitCostSchedule.md)
+ - [UltracartClient::ItemAutoOrderStepGrandfatherPricing](docs/ItemAutoOrderStepGrandfatherPricing.md)
+ - [UltracartClient::ItemCCBill](docs/ItemCCBill.md)
+ - [UltracartClient::ItemChannelPartnerMapping](docs/ItemChannelPartnerMapping.md)
+ - [UltracartClient::ItemChargeback](docs/ItemChargeback.md)
+ - [UltracartClient::ItemChargebackAddendum](docs/ItemChargebackAddendum.md)
+ - [UltracartClient::ItemChargebackAdjustmentRequest](docs/ItemChargebackAdjustmentRequest.md)
+ - [UltracartClient::ItemCheckout](docs/ItemCheckout.md)
+ - [UltracartClient::ItemContent](docs/ItemContent.md)
+ - [UltracartClient::ItemContentAssignment](docs/ItemContentAssignment.md)
+ - [UltracartClient::ItemContentAttribute](docs/ItemContentAttribute.md)
+ - [UltracartClient::ItemContentMultimedia](docs/ItemContentMultimedia.md)
+ - [UltracartClient::ItemContentMultimediaThumbnail](docs/ItemContentMultimediaThumbnail.md)
+ - [UltracartClient::ItemDigitalDelivery](docs/ItemDigitalDelivery.md)
+ - [UltracartClient::ItemDigitalItem](docs/ItemDigitalItem.md)
+ - [UltracartClient::ItemEbay](docs/ItemEbay.md)
+ - [UltracartClient::ItemEbayCategorySpecific](docs/ItemEbayCategorySpecific.md)
+ - [UltracartClient::ItemEbayMarketListing](docs/ItemEbayMarketListing.md)
+ - [UltracartClient::ItemEbayMarketPlaceAnalysis](docs/ItemEbayMarketPlaceAnalysis.md)
+ - [UltracartClient::ItemEmailNotifications](docs/ItemEmailNotifications.md)
+ - [UltracartClient::ItemEnrollment123](docs/ItemEnrollment123.md)
+ - [UltracartClient::ItemGiftCertificate](docs/ItemGiftCertificate.md)
+ - [UltracartClient::ItemGoogleProductSearch](docs/ItemGoogleProductSearch.md)
+ - [UltracartClient::ItemIdentifiers](docs/ItemIdentifiers.md)
+ - [UltracartClient::ItemInstantPaymentNotification](docs/ItemInstantPaymentNotification.md)
+ - [UltracartClient::ItemInstantPaymentNotifications](docs/ItemInstantPaymentNotifications.md)
+ - [UltracartClient::ItemInternal](docs/ItemInternal.md)
+ - [UltracartClient::ItemKitComponent](docs/ItemKitComponent.md)
+ - [UltracartClient::ItemKitDefinition](docs/ItemKitDefinition.md)
+ - [UltracartClient::ItemOption](docs/ItemOption.md)
+ - [UltracartClient::ItemOptionValue](docs/ItemOptionValue.md)
+ - [UltracartClient::ItemOptionValueAdditionalItem](docs/ItemOptionValueAdditionalItem.md)
+ - [UltracartClient::ItemOptionValueDigitalItem](docs/ItemOptionValueDigitalItem.md)
+ - [UltracartClient::ItemPaymentProcessing](docs/ItemPaymentProcessing.md)
+ - [UltracartClient::ItemPhysical](docs/ItemPhysical.md)
+ - [UltracartClient::ItemPricing](docs/ItemPricing.md)
+ - [UltracartClient::ItemPricingTier](docs/ItemPricingTier.md)
+ - [UltracartClient::ItemPricingTierDiscount](docs/ItemPricingTierDiscount.md)
+ - [UltracartClient::ItemPricingTierLimit](docs/ItemPricingTierLimit.md)
+ - [UltracartClient::ItemProperty](docs/ItemProperty.md)
+ - [UltracartClient::ItemRealtimePricing](docs/ItemRealtimePricing.md)
+ - [UltracartClient::ItemRelated](docs/ItemRelated.md)
+ - [UltracartClient::ItemRelatedItem](docs/ItemRelatedItem.md)
+ - [UltracartClient::ItemReporting](docs/ItemReporting.md)
+ - [UltracartClient::ItemResponse](docs/ItemResponse.md)
+ - [UltracartClient::ItemRestriction](docs/ItemRestriction.md)
+ - [UltracartClient::ItemRestrictionItem](docs/ItemRestrictionItem.md)
+ - [UltracartClient::ItemRevguard](docs/ItemRevguard.md)
+ - [UltracartClient::ItemReviews](docs/ItemReviews.md)
+ - [UltracartClient::ItemSalesforce](docs/ItemSalesforce.md)
+ - [UltracartClient::ItemShipping](docs/ItemShipping.md)
+ - [UltracartClient::ItemShippingCase](docs/ItemShippingCase.md)
+ - [UltracartClient::ItemShippingDestinationMarkup](docs/ItemShippingDestinationMarkup.md)
+ - [UltracartClient::ItemShippingDestinationRestriction](docs/ItemShippingDestinationRestriction.md)
+ - [UltracartClient::ItemShippingDistributionCenter](docs/ItemShippingDistributionCenter.md)
+ - [UltracartClient::ItemShippingMethod](docs/ItemShippingMethod.md)
+ - [UltracartClient::ItemShippingPackageRequirement](docs/ItemShippingPackageRequirement.md)
+ - [UltracartClient::ItemTag](docs/ItemTag.md)
+ - [UltracartClient::ItemTags](docs/ItemTags.md)
+ - [UltracartClient::ItemTax](docs/ItemTax.md)
+ - [UltracartClient::ItemTaxExemption](docs/ItemTaxExemption.md)
+ - [UltracartClient::ItemThirdPartyEmailMarketing](docs/ItemThirdPartyEmailMarketing.md)
+ - [UltracartClient::ItemVariantItem](docs/ItemVariantItem.md)
+ - [UltracartClient::ItemVariation](docs/ItemVariation.md)
+ - [UltracartClient::ItemVariationOption](docs/ItemVariationOption.md)
+ - [UltracartClient::ItemWishlistMember](docs/ItemWishlistMember.md)
+ - [UltracartClient::ItemsRequest](docs/ItemsRequest.md)
+ - [UltracartClient::ItemsResponse](docs/ItemsResponse.md)
+ - [UltracartClient::KeyValue](docs/KeyValue.md)
+ - [UltracartClient::LibraryFilterValues](docs/LibraryFilterValues.md)
+ - [UltracartClient::LibraryFilterValuesResponse](docs/LibraryFilterValuesResponse.md)
+ - [UltracartClient::LibraryItem](docs/LibraryItem.md)
+ - [UltracartClient::LibraryItemAccount](docs/LibraryItemAccount.md)
+ - [UltracartClient::LibraryItemAsset](docs/LibraryItemAsset.md)
+ - [UltracartClient::LibraryItemAttribute](docs/LibraryItemAttribute.md)
+ - [UltracartClient::LibraryItemEmail](docs/LibraryItemEmail.md)
+ - [UltracartClient::LibraryItemPublishedMeta](docs/LibraryItemPublishedMeta.md)
+ - [UltracartClient::LibraryItemPurchasedMeta](docs/LibraryItemPurchasedMeta.md)
+ - [UltracartClient::LibraryItemQuery](docs/LibraryItemQuery.md)
+ - [UltracartClient::LibraryItemResponse](docs/LibraryItemResponse.md)
+ - [UltracartClient::LibraryItemScreenshot](docs/LibraryItemScreenshot.md)
+ - [UltracartClient::LibraryItemsResponse](docs/LibraryItemsResponse.md)
+ - [UltracartClient::LinkedAccount](docs/LinkedAccount.md)
+ - [UltracartClient::ListSegmentMembership](docs/ListSegmentMembership.md)
+ - [UltracartClient::LookupRequest](docs/LookupRequest.md)
+ - [UltracartClient::LookupResponse](docs/LookupResponse.md)
+ - [UltracartClient::Metric](docs/Metric.md)
+ - [UltracartClient::Notification](docs/Notification.md)
+ - [UltracartClient::OauthRevokeSuccessResponse](docs/OauthRevokeSuccessResponse.md)
+ - [UltracartClient::OauthTokenResponse](docs/OauthTokenResponse.md)
+ - [UltracartClient::Order](docs/Order.md)
+ - [UltracartClient::OrderAffiliate](docs/OrderAffiliate.md)
+ - [UltracartClient::OrderAffiliateLedger](docs/OrderAffiliateLedger.md)
+ - [UltracartClient::OrderAutoOrder](docs/OrderAutoOrder.md)
+ - [UltracartClient::OrderBilling](docs/OrderBilling.md)
+ - [UltracartClient::OrderBuysafe](docs/OrderBuysafe.md)
+ - [UltracartClient::OrderByTokenQuery](docs/OrderByTokenQuery.md)
+ - [UltracartClient::OrderChannelPartner](docs/OrderChannelPartner.md)
+ - [UltracartClient::OrderCheckout](docs/OrderCheckout.md)
+ - [UltracartClient::OrderCoupon](docs/OrderCoupon.md)
+ - [UltracartClient::OrderDigitalItem](docs/OrderDigitalItem.md)
+ - [UltracartClient::OrderDigitalOrder](docs/OrderDigitalOrder.md)
+ - [UltracartClient::OrderEdi](docs/OrderEdi.md)
+ - [UltracartClient::OrderFormat](docs/OrderFormat.md)
+ - [UltracartClient::OrderFormatResponse](docs/OrderFormatResponse.md)
+ - [UltracartClient::OrderFraudScore](docs/OrderFraudScore.md)
+ - [UltracartClient::OrderGift](docs/OrderGift.md)
+ - [UltracartClient::OrderGiftCertificate](docs/OrderGiftCertificate.md)
+ - [UltracartClient::OrderInternal](docs/OrderInternal.md)
+ - [UltracartClient::OrderItem](docs/OrderItem.md)
+ - [UltracartClient::OrderItemEdi](docs/OrderItemEdi.md)
+ - [UltracartClient::OrderItemEdiIdentification](docs/OrderItemEdiIdentification.md)
+ - [UltracartClient::OrderItemEdiLot](docs/OrderItemEdiLot.md)
+ - [UltracartClient::OrderItemOption](docs/OrderItemOption.md)
+ - [UltracartClient::OrderItemOptionFileAttachment](docs/OrderItemOptionFileAttachment.md)
+ - [UltracartClient::OrderItemProperty](docs/OrderItemProperty.md)
+ - [UltracartClient::OrderItemTag](docs/OrderItemTag.md)
+ - [UltracartClient::OrderLinkedShipment](docs/OrderLinkedShipment.md)
+ - [UltracartClient::OrderMarketing](docs/OrderMarketing.md)
+ - [UltracartClient::OrderPayment](docs/OrderPayment.md)
+ - [UltracartClient::OrderPaymentCheck](docs/OrderPaymentCheck.md)
+ - [UltracartClient::OrderPaymentCreditCard](docs/OrderPaymentCreditCard.md)
+ - [UltracartClient::OrderPaymentECheck](docs/OrderPaymentECheck.md)
+ - [UltracartClient::OrderPaymentPurchaseOrder](docs/OrderPaymentPurchaseOrder.md)
+ - [UltracartClient::OrderPaymentTransaction](docs/OrderPaymentTransaction.md)
+ - [UltracartClient::OrderPaymentTransactionDetail](docs/OrderPaymentTransactionDetail.md)
+ - [UltracartClient::OrderProcessPaymentRequest](docs/OrderProcessPaymentRequest.md)
+ - [UltracartClient::OrderProcessPaymentResponse](docs/OrderProcessPaymentResponse.md)
+ - [UltracartClient::OrderProperty](docs/OrderProperty.md)
+ - [UltracartClient::OrderQuery](docs/OrderQuery.md)
+ - [UltracartClient::OrderQueryBatch](docs/OrderQueryBatch.md)
+ - [UltracartClient::OrderQuote](docs/OrderQuote.md)
+ - [UltracartClient::OrderReplacement](docs/OrderReplacement.md)
+ - [UltracartClient::OrderReplacementItem](docs/OrderReplacementItem.md)
+ - [UltracartClient::OrderReplacementResponse](docs/OrderReplacementResponse.md)
+ - [UltracartClient::OrderResponse](docs/OrderResponse.md)
+ - [UltracartClient::OrderSalesforce](docs/OrderSalesforce.md)
+ - [UltracartClient::OrderShipping](docs/OrderShipping.md)
+ - [UltracartClient::OrderSummary](docs/OrderSummary.md)
+ - [UltracartClient::OrderTag](docs/OrderTag.md)
+ - [UltracartClient::OrderTaxes](docs/OrderTaxes.md)
+ - [UltracartClient::OrderTokenResponse](docs/OrderTokenResponse.md)
+ - [UltracartClient::OrderTrackingNumberDetail](docs/OrderTrackingNumberDetail.md)
+ - [UltracartClient::OrderTrackingNumberDetails](docs/OrderTrackingNumberDetails.md)
+ - [UltracartClient::OrdersResponse](docs/OrdersResponse.md)
+ - [UltracartClient::Permission](docs/Permission.md)
+ - [UltracartClient::PricingTier](docs/PricingTier.md)
+ - [UltracartClient::PricingTierNotification](docs/PricingTierNotification.md)
+ - [UltracartClient::PricingTiersResponse](docs/PricingTiersResponse.md)
+ - [UltracartClient::Property](docs/Property.md)
+ - [UltracartClient::PublishLibraryItemRequest](docs/PublishLibraryItemRequest.md)
+ - [UltracartClient::RegisterAffiliateClickRequest](docs/RegisterAffiliateClickRequest.md)
+ - [UltracartClient::RegisterAffiliateClickResponse](docs/RegisterAffiliateClickResponse.md)
+ - [UltracartClient::ResponseMetadata](docs/ResponseMetadata.md)
+ - [UltracartClient::ResultSet](docs/ResultSet.md)
+ - [UltracartClient::ScreenRecording](docs/ScreenRecording.md)
+ - [UltracartClient::ScreenRecordingFilter](docs/ScreenRecordingFilter.md)
+ - [UltracartClient::ScreenRecordingFilterGeoDistance](docs/ScreenRecordingFilterGeoDistance.md)
+ - [UltracartClient::ScreenRecordingFilterIpSearch](docs/ScreenRecordingFilterIpSearch.md)
+ - [UltracartClient::ScreenRecordingFilterPageView](docs/ScreenRecordingFilterPageView.md)
+ - [UltracartClient::ScreenRecordingFilterPageViewEvent](docs/ScreenRecordingFilterPageViewEvent.md)
+ - [UltracartClient::ScreenRecordingFilterPageViewEventParam](docs/ScreenRecordingFilterPageViewEventParam.md)
+ - [UltracartClient::ScreenRecordingFilterPageViewParam](docs/ScreenRecordingFilterPageViewParam.md)
+ - [UltracartClient::ScreenRecordingFilterPageViewReferrerParam](docs/ScreenRecordingFilterPageViewReferrerParam.md)
+ - [UltracartClient::ScreenRecordingFilterRangeBigDecimal](docs/ScreenRecordingFilterRangeBigDecimal.md)
+ - [UltracartClient::ScreenRecordingFilterRangeDate](docs/ScreenRecordingFilterRangeDate.md)
+ - [UltracartClient::ScreenRecordingFilterRangeInteger](docs/ScreenRecordingFilterRangeInteger.md)
+ - [UltracartClient::ScreenRecordingFilterStringSearch](docs/ScreenRecordingFilterStringSearch.md)
+ - [UltracartClient::ScreenRecordingFilterValues](docs/ScreenRecordingFilterValues.md)
+ - [UltracartClient::ScreenRecordingFilterValuesEvent](docs/ScreenRecordingFilterValuesEvent.md)
+ - [UltracartClient::ScreenRecordingFilterValuesEventParams](docs/ScreenRecordingFilterValuesEventParams.md)
+ - [UltracartClient::ScreenRecordingMultifield](docs/ScreenRecordingMultifield.md)
+ - [UltracartClient::ScreenRecordingPageView](docs/ScreenRecordingPageView.md)
+ - [UltracartClient::ScreenRecordingPageViewEvent](docs/ScreenRecordingPageViewEvent.md)
+ - [UltracartClient::ScreenRecordingPageViewEventParameter](docs/ScreenRecordingPageViewEventParameter.md)
+ - [UltracartClient::ScreenRecordingPageViewParameter](docs/ScreenRecordingPageViewParameter.md)
+ - [UltracartClient::ScreenRecordingQueryRequest](docs/ScreenRecordingQueryRequest.md)
+ - [UltracartClient::ScreenRecordingQueryResponse](docs/ScreenRecordingQueryResponse.md)
+ - [UltracartClient::ScreenRecordingResponse](docs/ScreenRecordingResponse.md)
+ - [UltracartClient::ScreenRecordingSegment](docs/ScreenRecordingSegment.md)
+ - [UltracartClient::ScreenRecordingSegmentResponse](docs/ScreenRecordingSegmentResponse.md)
+ - [UltracartClient::ScreenRecordingSegmentsResponse](docs/ScreenRecordingSegmentsResponse.md)
+ - [UltracartClient::ScreenRecordingSettings](docs/ScreenRecordingSettings.md)
+ - [UltracartClient::ScreenRecordingSettingsResponse](docs/ScreenRecordingSettingsResponse.md)
+ - [UltracartClient::ScreenRecordingStoreFront](docs/ScreenRecordingStoreFront.md)
+ - [UltracartClient::ScreenRecordingTagsRequest](docs/ScreenRecordingTagsRequest.md)
+ - [UltracartClient::ScreenRecordingTagsResponse](docs/ScreenRecordingTagsResponse.md)
+ - [UltracartClient::ScreenRecordingUserAgent](docs/ScreenRecordingUserAgent.md)
+ - [UltracartClient::ScreenRecordingUserAgentDevice](docs/ScreenRecordingUserAgentDevice.md)
+ - [UltracartClient::ScreenRecordingUserAgentOS](docs/ScreenRecordingUserAgentOS.md)
+ - [UltracartClient::ScreenRecordingUserProperty](docs/ScreenRecordingUserProperty.md)
+ - [UltracartClient::ScreenshotsResponse](docs/ScreenshotsResponse.md)
+ - [UltracartClient::SelfConfig](docs/SelfConfig.md)
+ - [UltracartClient::SimpleValue](docs/SimpleValue.md)
+ - [UltracartClient::SovosConfig](docs/SovosConfig.md)
+ - [UltracartClient::StateProvince](docs/StateProvince.md)
+ - [UltracartClient::StepWaiting](docs/StepWaiting.md)
+ - [UltracartClient::TaxCity](docs/TaxCity.md)
+ - [UltracartClient::TaxCountry](docs/TaxCountry.md)
+ - [UltracartClient::TaxCountryCode](docs/TaxCountryCode.md)
+ - [UltracartClient::TaxCounty](docs/TaxCounty.md)
+ - [UltracartClient::TaxJarConfig](docs/TaxJarConfig.md)
+ - [UltracartClient::TaxPostalCode](docs/TaxPostalCode.md)
+ - [UltracartClient::TaxProviderActivateResult](docs/TaxProviderActivateResult.md)
+ - [UltracartClient::TaxProviderAvalara](docs/TaxProviderAvalara.md)
+ - [UltracartClient::TaxProviderAvalaraCompaniesResult](docs/TaxProviderAvalaraCompaniesResult.md)
+ - [UltracartClient::TaxProviderAvalaraCompany](docs/TaxProviderAvalaraCompany.md)
+ - [UltracartClient::TaxProviderSelf](docs/TaxProviderSelf.md)
+ - [UltracartClient::TaxProviderSelfCountriesResponse](docs/TaxProviderSelfCountriesResponse.md)
+ - [UltracartClient::TaxProviderSelfRegionsResponse](docs/TaxProviderSelfRegionsResponse.md)
+ - [UltracartClient::TaxProviderSovos](docs/TaxProviderSovos.md)
+ - [UltracartClient::TaxProviderTaxJar](docs/TaxProviderTaxJar.md)
+ - [UltracartClient::TaxProviderTestResult](docs/TaxProviderTestResult.md)
+ - [UltracartClient::TaxProviderUltraCart](docs/TaxProviderUltraCart.md)
+ - [UltracartClient::TaxProviderUltraCartState](docs/TaxProviderUltraCartState.md)
+ - [UltracartClient::TaxProvidersResponse](docs/TaxProvidersResponse.md)
+ - [UltracartClient::TaxState](docs/TaxState.md)
+ - [UltracartClient::TaxStateCode](docs/TaxStateCode.md)
+ - [UltracartClient::TempMultimedia](docs/TempMultimedia.md)
+ - [UltracartClient::TempMultimediaResponse](docs/TempMultimediaResponse.md)
+ - [UltracartClient::ThumbnailParametersRequest](docs/ThumbnailParametersRequest.md)
+ - [UltracartClient::ThumbnailParametersResponse](docs/ThumbnailParametersResponse.md)
+ - [UltracartClient::TransactionEmail](docs/TransactionEmail.md)
+ - [UltracartClient::TransactionEmailListResponse](docs/TransactionEmailListResponse.md)
+ - [UltracartClient::TransactionEmailOption](docs/TransactionEmailOption.md)
+ - [UltracartClient::TransactionEmailResponse](docs/TransactionEmailResponse.md)
+ - [UltracartClient::UltraCartConfig](docs/UltraCartConfig.md)
+ - [UltracartClient::UploadCouponCodesRequest](docs/UploadCouponCodesRequest.md)
+ - [UltracartClient::UploadCouponCodesResponse](docs/UploadCouponCodesResponse.md)
+ - [UltracartClient::User](docs/User.md)
+ - [UltracartClient::UserGroupMembership](docs/UserGroupMembership.md)
+ - [UltracartClient::UserLogin](docs/UserLogin.md)
+ - [UltracartClient::UserLoginsResponse](docs/UserLoginsResponse.md)
+ - [UltracartClient::UserResponse](docs/UserResponse.md)
+ - [UltracartClient::UsersResponse](docs/UsersResponse.md)
+ - [UltracartClient::VerificationRecord](docs/VerificationRecord.md)
+ - [UltracartClient::Warning](docs/Warning.md)
+ - [UltracartClient::Webhook](docs/Webhook.md)
+ - [UltracartClient::WebhookEventCategory](docs/WebhookEventCategory.md)
+ - [UltracartClient::WebhookEventSubscription](docs/WebhookEventSubscription.md)
+ - [UltracartClient::WebhookLog](docs/WebhookLog.md)
+ - [UltracartClient::WebhookLogResponse](docs/WebhookLogResponse.md)
+ - [UltracartClient::WebhookLogSummariesResponse](docs/WebhookLogSummariesResponse.md)
+ - [UltracartClient::WebhookLogSummary](docs/WebhookLogSummary.md)
+ - [UltracartClient::WebhookResponse](docs/WebhookResponse.md)
+ - [UltracartClient::WebhookSampleRequest](docs/WebhookSampleRequest.md)
+ - [UltracartClient::WebhookSampleRequestResponse](docs/WebhookSampleRequestResponse.md)
+ - [UltracartClient::WebhooksResponse](docs/WebhooksResponse.md)
+ - [UltracartClient::Weight](docs/Weight.md)
 
 
 ## Documentation for Authorization

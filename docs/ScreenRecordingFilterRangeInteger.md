@@ -1,4 +1,4 @@
-# ultracart_client::ScreenRecordingFilterRangeInteger
+# UltracartClient::ScreenRecordingFilterRangeInteger
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# ultracart_client::OrderAutoOrder
+# UltracartClient::OrderAutoOrder
 
 ## Properties
 Name | Type | Description | Notes

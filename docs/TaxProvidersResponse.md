@@ -1,4 +1,4 @@
-# ultracart_client::TaxProvidersResponse
+# UltracartClient::TaxProvidersResponse
 
 ## Properties
 Name | Type | Description | Notes

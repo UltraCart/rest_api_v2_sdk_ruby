@@ -1,4 +1,4 @@
-# ultracart_client::CouponApi
+# UltracartClient::CouponApi
 
 All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
@@ -37,7 +37,7 @@ Delete a coupon on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -47,7 +47,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
 coupon_oid = 56 # Integer | The coupon_oid to delete.
 
@@ -55,7 +55,7 @@ coupon_oid = 56 # Integer | The coupon_oid to delete.
 begin
   #Delete a coupon
   api_instance.delete_coupon(coupon_oid)
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->delete_coupon: #{e}"
 end
 ```
@@ -93,7 +93,7 @@ Delete coupons on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -103,15 +103,15 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
-coupon_delete_request = ultracart_client::CouponDeletesRequest.new # CouponDeletesRequest | Coupon oids to delete
+coupon_delete_request = UltracartClient::CouponDeletesRequest.new # CouponDeletesRequest | Coupon oids to delete
 
 
 begin
   #Deletes multiple coupons
   api_instance.delete_coupons_by_code(coupon_delete_request)
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->delete_coupons_by_code: #{e}"
 end
 ```
@@ -149,7 +149,7 @@ Delete coupons on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -159,15 +159,15 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
-coupon_delete_request = ultracart_client::CouponDeletesRequest.new # CouponDeletesRequest | Coupon oids to delete
+coupon_delete_request = UltracartClient::CouponDeletesRequest.new # CouponDeletesRequest | Coupon oids to delete
 
 
 begin
   #Deletes multiple coupons
   api_instance.delete_coupons_by_oid(coupon_delete_request)
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->delete_coupons_by_oid: #{e}"
 end
 ```
@@ -205,7 +205,7 @@ Determines if a coupon merchant code already exists.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -215,7 +215,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
 merchant_code = 'merchant_code_example' # String | The coupon merchant code to examine.
 
@@ -224,7 +224,7 @@ begin
   #Determines if a coupon merchant code already exists
   result = api_instance.does_coupon_code_exist(merchant_code)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->does_coupon_code_exist: #{e}"
 end
 ```
@@ -262,7 +262,7 @@ Generate one time codes for a coupon
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -272,18 +272,18 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
 coupon_oid = 56 # Integer | The coupon oid to generate codes.
 
-coupon_codes_request = ultracart_client::CouponCodesRequest.new # CouponCodesRequest | Coupon code generation parameters
+coupon_codes_request = UltracartClient::CouponCodesRequest.new # CouponCodesRequest | Coupon code generation parameters
 
 
 begin
   #Generates one time codes for a coupon
   result = api_instance.generate_coupon_codes(coupon_oid, coupon_codes_request)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->generate_coupon_codes: #{e}"
 end
 ```
@@ -322,7 +322,7 @@ Generate one time codes by merchant code
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -332,18 +332,18 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
 merchant_code = 'merchant_code_example' # String | The merchant code to generate one time codes.
 
-coupon_codes_request = ultracart_client::CouponCodesRequest.new # CouponCodesRequest | Coupon code generation parameters
+coupon_codes_request = UltracartClient::CouponCodesRequest.new # CouponCodesRequest | Coupon code generation parameters
 
 
 begin
   #Generates one time codes by merchant code
   result = api_instance.generate_one_time_codes_by_merchant_code(merchant_code, coupon_codes_request)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->generate_one_time_codes_by_merchant_code: #{e}"
 end
 ```
@@ -382,7 +382,7 @@ Retrieve auto apply rules and conditions
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -392,13 +392,13 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
 begin
   #Retrieve auto apply rules and conditions
   result = api_instance.get_auto_apply
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->get_auto_apply: #{e}"
 end
 ```
@@ -433,7 +433,7 @@ Retrieves a single coupon using the specified coupon profile oid.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -443,7 +443,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
 coupon_oid = 56 # Integer | The coupon oid to retrieve.
 
@@ -455,7 +455,7 @@ begin
   #Retrieve a coupon
   result = api_instance.get_coupon(coupon_oid, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->get_coupon: #{e}"
 end
 ```
@@ -494,7 +494,7 @@ Retrieves a single coupon using the specified merchant code.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -504,7 +504,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
 merchant_code = 'merchant_code_example' # String | The coupon merchant code to retrieve.
 
@@ -516,7 +516,7 @@ begin
   #Retrieve a coupon by merchant code
   result = api_instance.get_coupon_by_merchant_code(merchant_code, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->get_coupon_by_merchant_code: #{e}"
 end
 ```
@@ -555,7 +555,7 @@ Retrieves coupons for this account.  If no parameters are specified, all coupons
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -565,7 +565,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
 opts = { 
   merchant_code: 'merchant_code_example', # String | Merchant code
@@ -587,7 +587,7 @@ begin
   #Retrieve coupons
   result = api_instance.get_coupons(opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->get_coupons: #{e}"
 end
 ```
@@ -637,7 +637,7 @@ Retrieves coupons from the account.  If no parameters are specified, all coupons
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -647,9 +647,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
-coupon_query = ultracart_client::CouponQuery.new # CouponQuery | Coupon query
+coupon_query = UltracartClient::CouponQuery.new # CouponQuery | Coupon query
 
 opts = { 
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Max 200)
@@ -662,7 +662,7 @@ begin
   #Retrieve coupons by query
   result = api_instance.get_coupons_by_query(coupon_query, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->get_coupons_by_query: #{e}"
 end
 ```
@@ -704,7 +704,7 @@ Retrieve values needed for a coupon editor
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -714,13 +714,13 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
 begin
   #Retrieve values needed for a coupon editor
   result = api_instance.get_editor_values
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->get_editor_values: #{e}"
 end
 ```
@@ -755,7 +755,7 @@ Insert a coupon on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -765,9 +765,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
-coupon = ultracart_client::Coupon.new # Coupon | Coupon to insert
+coupon = UltracartClient::Coupon.new # Coupon | Coupon to insert
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -777,7 +777,7 @@ begin
   #Insert a coupon
   result = api_instance.insert_coupon(coupon, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->insert_coupon: #{e}"
 end
 ```
@@ -816,7 +816,7 @@ Insert multiple coupon on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -826,9 +826,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
-coupons_request = ultracart_client::CouponsRequest.new # CouponsRequest | Coupons to insert (maximum 20)
+coupons_request = UltracartClient::CouponsRequest.new # CouponsRequest | Coupons to insert (maximum 20)
 
 opts = { 
   _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
@@ -839,7 +839,7 @@ begin
   #Insert multiple coupons
   result = api_instance.insert_coupons(coupons_request, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->insert_coupons: #{e}"
 end
 ```
@@ -879,7 +879,7 @@ Searches for items to display within a coupon editor and assign to coupons
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -889,7 +889,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
 opts = { 
   s: 's_example', # String | 
@@ -900,7 +900,7 @@ begin
   #Searches for items to display within a coupon editor and assign to coupons
   result = api_instance.search_items(opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->search_items: #{e}"
 end
 ```
@@ -939,7 +939,7 @@ Update auto apply rules and conditions
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -949,15 +949,15 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
-conditions = ultracart_client::CouponAutoApplyConditions.new # CouponAutoApplyConditions | Conditions
+conditions = UltracartClient::CouponAutoApplyConditions.new # CouponAutoApplyConditions | Conditions
 
 
 begin
   #Update auto apply rules and conditions
   api_instance.update_auto_apply(conditions)
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->update_auto_apply: #{e}"
 end
 ```
@@ -995,7 +995,7 @@ Update a coupon on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1005,9 +1005,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
-coupon = ultracart_client::Coupon.new # Coupon | Coupon to update
+coupon = UltracartClient::Coupon.new # Coupon | Coupon to update
 
 coupon_oid = 56 # Integer | The coupon_oid to update.
 
@@ -1019,7 +1019,7 @@ begin
   #Update a coupon
   result = api_instance.update_coupon(coupon, coupon_oid, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->update_coupon: #{e}"
 end
 ```
@@ -1059,7 +1059,7 @@ Update multiple coupon on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1069,9 +1069,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
-coupons_request = ultracart_client::CouponsRequest.new # CouponsRequest | Coupons to update (synchronous maximum 20 / asynchronous maximum 100)
+coupons_request = UltracartClient::CouponsRequest.new # CouponsRequest | Coupons to update (synchronous maximum 20 / asynchronous maximum 100)
 
 opts = { 
   _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
@@ -1083,7 +1083,7 @@ begin
   #Update multiple coupons
   result = api_instance.update_coupons(coupons_request, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->update_coupons: #{e}"
 end
 ```
@@ -1124,7 +1124,7 @@ Upload one-time codes for a coupon
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1134,18 +1134,18 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::CouponApi.new
+api_instance = UltracartClient::CouponApi.new
 
 coupon_oid = 56 # Integer | The coupon oid to associate with the provided one-time codes.
 
-upload_coupon_codes_request = ultracart_client::UploadCouponCodesRequest.new # UploadCouponCodesRequest | One-time coupon codes
+upload_coupon_codes_request = UltracartClient::UploadCouponCodesRequest.new # UploadCouponCodesRequest | One-time coupon codes
 
 
 begin
   #Upload one-time codes for a coupon
   result = api_instance.upload_coupon_codes(coupon_oid, upload_coupon_codes_request)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling CouponApi->upload_coupon_codes: #{e}"
 end
 ```

@@ -1,4 +1,4 @@
-# ultracart_client::WebhookSampleRequest
+# UltracartClient::WebhookSampleRequest
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# ultracart_client::ScreenRecordingFilter
+# UltracartClient::ScreenRecordingFilter
 
 ## Properties
 Name | Type | Description | Notes

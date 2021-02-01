@@ -1,4 +1,4 @@
-# ultracart_client::ApplyLibraryItemResponse
+# UltracartClient::ApplyLibraryItemResponse
 
 ## Properties
 Name | Type | Description | Notes

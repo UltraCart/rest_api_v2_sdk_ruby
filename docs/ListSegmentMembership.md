@@ -1,4 +1,4 @@
-# ultracart_client::ListSegmentMembership
+# UltracartClient::ListSegmentMembership
 
 ## Properties
 Name | Type | Description | Notes

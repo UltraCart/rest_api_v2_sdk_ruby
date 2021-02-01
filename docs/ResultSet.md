@@ -1,4 +1,4 @@
-# ultracart_client::ResultSet
+# UltracartClient::ResultSet
 
 ## Properties
 Name | Type | Description | Notes

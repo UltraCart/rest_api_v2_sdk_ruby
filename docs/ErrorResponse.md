@@ -1,4 +1,4 @@
-# ultracart_client::ErrorResponse
+# UltracartClient::ErrorResponse
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# ultracart_client::OrderShipping
+# UltracartClient::OrderShipping
 
 ## Properties
 Name | Type | Description | Notes

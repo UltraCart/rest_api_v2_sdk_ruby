@@ -1,4 +1,4 @@
-# ultracart_client::TaxCity
+# UltracartClient::TaxCity
 
 ## Properties
 Name | Type | Description | Notes

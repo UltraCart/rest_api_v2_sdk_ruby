@@ -1,4 +1,4 @@
-# ultracart_client::OrderApi
+# UltracartClient::OrderApi
 
 All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
@@ -38,7 +38,7 @@ Adjusts an order total.  Adjusts individual items appropriately and considers ta
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -48,7 +48,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to cancel.
 
@@ -59,7 +59,7 @@ begin
   #Adjusts an order total
   result = api_instance.adjust_order_total(order_id, desired_total)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->adjust_order_total: #{e}"
 end
 ```
@@ -98,7 +98,7 @@ Cancel an order on the UltraCart account.  If the success flag is false, then co
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -108,7 +108,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to cancel.
 
@@ -117,7 +117,7 @@ begin
   #Cancel an order
   result = api_instance.cancel_order(order_id)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->cancel_order: #{e}"
 end
 ```
@@ -155,7 +155,7 @@ Delete an order on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -165,7 +165,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to delete.
 
@@ -173,7 +173,7 @@ order_id = 'order_id_example' # String | The order id to delete.
 begin
   #Delete an order
   api_instance.delete_order(order_id)
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->delete_order: #{e}"
 end
 ```
@@ -211,7 +211,7 @@ Format the order for display at text or html
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -221,18 +221,18 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to format
 
-format_options = ultracart_client::OrderFormat.new # OrderFormat | Format options
+format_options = UltracartClient::OrderFormat.new # OrderFormat | Format options
 
 
 begin
   #Format order
   result = api_instance.format(order_id, format_options)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->format: #{e}"
 end
 ```
@@ -271,7 +271,7 @@ Retrieves a single order token for a given order id.  The token can be used with
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -281,7 +281,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to generate a token for.
 
@@ -290,7 +290,7 @@ begin
   #Generate an order token for a given order id
   result = api_instance.generate_order_token(order_id)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->generate_order_token: #{e}"
 end
 ```
@@ -328,7 +328,7 @@ Retrieve A/R Retry Configuration. This is primarily an internal API call.  It is
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -338,13 +338,13 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
 begin
   #Retrieve A/R Retry Configuration
   result = api_instance.get_accounts_receivable_retry_config
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->get_accounts_receivable_retry_config: #{e}"
 end
 ```
@@ -379,7 +379,7 @@ Retrieve A/R Retry Statistics. This is primarily an internal API call.  It is do
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -389,7 +389,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
 opts = { 
   from: 'from_example', # String | 
@@ -400,7 +400,7 @@ begin
   #Retrieve A/R Retry Statistics
   result = api_instance.get_accounts_receivable_retry_stats(opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->get_accounts_receivable_retry_stats: #{e}"
 end
 ```
@@ -439,7 +439,7 @@ Retrieves a single order using the specified order id.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -449,7 +449,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to retrieve.
 
@@ -461,7 +461,7 @@ begin
   #Retrieve an order
   result = api_instance.get_order(order_id, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->get_order: #{e}"
 end
 ```
@@ -500,7 +500,7 @@ Retrieves a single order using the specified order token.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -510,9 +510,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
-order_by_token_query = ultracart_client::OrderByTokenQuery.new # OrderByTokenQuery | Order by token query
+order_by_token_query = UltracartClient::OrderByTokenQuery.new # OrderByTokenQuery | Order by token query
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -522,7 +522,7 @@ begin
   #Retrieve an order using a token
   result = api_instance.get_order_by_token(order_by_token_query, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->get_order_by_token: #{e}"
 end
 ```
@@ -561,7 +561,7 @@ Retrieves a group of orders from the account.  If no parameters are specified, t
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -571,7 +571,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
 opts = { 
   order_id: 'order_id_example', # String | Order Id
@@ -614,7 +614,7 @@ begin
   #Retrieve orders
   result = api_instance.get_orders(opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->get_orders: #{e}"
 end
 ```
@@ -685,7 +685,7 @@ Retrieves a group of orders from the account based on an array of order ids.  If
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -695,9 +695,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
-order_batch = ultracart_client::OrderQueryBatch.new # OrderQueryBatch | Order batch
+order_batch = UltracartClient::OrderQueryBatch.new # OrderQueryBatch | Order batch
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.
@@ -707,7 +707,7 @@ begin
   #Retrieve order batch
   result = api_instance.get_orders_batch(order_batch, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->get_orders_batch: #{e}"
 end
 ```
@@ -746,7 +746,7 @@ Retrieves a group of orders from the account based on a query object.  If no par
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -756,9 +756,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
-order_query = ultracart_client::OrderQuery.new # OrderQuery | Order query
+order_query = UltracartClient::OrderQuery.new # OrderQuery | Order query
 
 opts = { 
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Maximum 200)
@@ -771,7 +771,7 @@ begin
   #Retrieve orders
   result = api_instance.get_orders_by_query(order_query, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->get_orders_by_query: #{e}"
 end
 ```
@@ -813,7 +813,7 @@ Inserts a new order on the UltraCart account.  This is probably NOT the method y
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -823,9 +823,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
-order = ultracart_client::Order.new # Order | Order to insert
+order = UltracartClient::Order.new # Order | Order to insert
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -835,7 +835,7 @@ begin
   #Insert an order
   result = api_instance.insert_order(order, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->insert_order: #{e}"
 end
 ```
@@ -874,7 +874,7 @@ Process payment on order
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -884,18 +884,18 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to process payment on
 
-process_payment_request = ultracart_client::OrderProcessPaymentRequest.new # OrderProcessPaymentRequest | Process payment parameters
+process_payment_request = UltracartClient::OrderProcessPaymentRequest.new # OrderProcessPaymentRequest | Process payment parameters
 
 
 begin
   #Process payment
   result = api_instance.process_payment(order_id, process_payment_request)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->process_payment: #{e}"
 end
 ```
@@ -934,7 +934,7 @@ Perform a refund operation on an order and then update the order if successful
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -944,9 +944,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
-order = ultracart_client::Order.new # Order | Order to refund
+order = UltracartClient::Order.new # Order | Order to refund
 
 order_id = 'order_id_example' # String | The order id to refund.
 
@@ -963,7 +963,7 @@ begin
   #Refund an order
   result = api_instance.refund_order(order, order_id, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->refund_order: #{e}"
 end
 ```
@@ -1008,7 +1008,7 @@ Create a replacement order based upon a previous order
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1018,18 +1018,18 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to generate a replacement for.
 
-replacement = ultracart_client::OrderReplacement.new # OrderReplacement | Replacement order details
+replacement = UltracartClient::OrderReplacement.new # OrderReplacement | Replacement order details
 
 
 begin
   #Replacement order
   result = api_instance.replacement(order_id, replacement)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->replacement: #{e}"
 end
 ```
@@ -1068,7 +1068,7 @@ Resend the receipt for an order on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1078,7 +1078,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to resend the receipt for.
 
@@ -1087,7 +1087,7 @@ begin
   #Resend receipt
   result = api_instance.resend_receipt(order_id)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->resend_receipt: #{e}"
 end
 ```
@@ -1125,7 +1125,7 @@ Resend shipment confirmation for an order on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1135,7 +1135,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to resend the shipment notification for.
 
@@ -1144,7 +1144,7 @@ begin
   #Resend shipment confirmation
   result = api_instance.resend_shipment_confirmation(order_id)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->resend_shipment_confirmation: #{e}"
 end
 ```
@@ -1182,7 +1182,7 @@ Update A/R Retry Configuration.  This is primarily an internal API call.  It is 
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1192,16 +1192,16 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
-retry_config = ultracart_client::AccountsReceivableRetryConfig.new # AccountsReceivableRetryConfig | AccountsReceivableRetryConfig object
+retry_config = UltracartClient::AccountsReceivableRetryConfig.new # AccountsReceivableRetryConfig | AccountsReceivableRetryConfig object
 
 
 begin
   #Update A/R Retry Configuration
   result = api_instance.update_accounts_receivable_retry_config(retry_config)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->update_accounts_receivable_retry_config: #{e}"
 end
 ```
@@ -1239,7 +1239,7 @@ Update a new order on the UltraCart account.  This is probably NOT the method yo
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -1249,9 +1249,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::OrderApi.new
+api_instance = UltracartClient::OrderApi.new
 
-order = ultracart_client::Order.new # Order | Order to update
+order = UltracartClient::Order.new # Order | Order to update
 
 order_id = 'order_id_example' # String | The order id to update.
 
@@ -1263,7 +1263,7 @@ begin
   #Update an order
   result = api_instance.update_order(order, order_id, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->update_order: #{e}"
 end
 ```

@@ -1,4 +1,4 @@
-# ultracart_client::UsersResponse
+# UltracartClient::UsersResponse
 
 ## Properties
 Name | Type | Description | Notes

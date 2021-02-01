@@ -1,4 +1,4 @@
-# ultracart_client::LibraryItemPurchasedMeta
+# UltracartClient::LibraryItemPurchasedMeta
 
 ## Properties
 Name | Type | Description | Notes

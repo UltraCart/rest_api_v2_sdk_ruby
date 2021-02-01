@@ -1,4 +1,4 @@
-# ultracart_client::ThumbnailParametersResponse
+# UltracartClient::ThumbnailParametersResponse
 
 ## Properties
 Name | Type | Description | Notes

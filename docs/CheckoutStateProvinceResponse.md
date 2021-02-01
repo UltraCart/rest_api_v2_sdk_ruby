@@ -1,4 +1,4 @@
-# ultracart_client::CheckoutStateProvinceResponse
+# UltracartClient::CheckoutStateProvinceResponse
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# ultracart_client::CartSettingsPaymentCreditCard
+# UltracartClient::CartSettingsPaymentCreditCard
 
 ## Properties
 Name | Type | Description | Notes

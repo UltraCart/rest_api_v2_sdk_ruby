@@ -1,4 +1,4 @@
-# ultracart_client::CustomerEmailListChanges
+# UltracartClient::CustomerEmailListChanges
 
 ## Properties
 Name | Type | Description | Notes

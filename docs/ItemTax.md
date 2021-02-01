@@ -1,4 +1,4 @@
-# ultracart_client::ItemTax
+# UltracartClient::ItemTax
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# ultracart_client::TransactionEmail
+# UltracartClient::TransactionEmail
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# ultracart_client::ItemAccounting
+# UltracartClient::ItemAccounting
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# ultracart_client::CartCustomerProfileAddress
+# UltracartClient::CartCustomerProfileAddress
 
 ## Properties
 Name | Type | Description | Notes

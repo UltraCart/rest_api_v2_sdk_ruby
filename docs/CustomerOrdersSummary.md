@@ -1,4 +1,4 @@
-# ultracart_client::CustomerOrdersSummary
+# UltracartClient::CustomerOrdersSummary
 
 ## Properties
 Name | Type | Description | Notes

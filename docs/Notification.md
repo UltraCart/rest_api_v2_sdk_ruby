@@ -1,4 +1,4 @@
-# ultracart_client::Notification
+# UltracartClient::Notification
 
 ## Properties
 Name | Type | Description | Notes

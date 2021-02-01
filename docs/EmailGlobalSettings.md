@@ -1,4 +1,4 @@
-# ultracart_client::EmailGlobalSettings
+# UltracartClient::EmailGlobalSettings
 
 ## Properties
 Name | Type | Description | Notes

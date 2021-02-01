@@ -1,4 +1,4 @@
-# ultracart_client::AvalaraConfig
+# UltracartClient::AvalaraConfig
 
 ## Properties
 Name | Type | Description | Notes

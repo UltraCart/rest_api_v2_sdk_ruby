@@ -1,4 +1,4 @@
-# ultracart_client::ChargebackApi
+# UltracartClient::ChargebackApi
 
 All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
@@ -23,7 +23,7 @@ Delete a chargeback on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -33,7 +33,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::ChargebackApi.new
+api_instance = UltracartClient::ChargebackApi.new
 
 chargeback_dispute_oid = 56 # Integer | The chargeback_dispute_oid to delete.
 
@@ -42,7 +42,7 @@ begin
   #Delete a chargeback
   result = api_instance.delete_chargeback(chargeback_dispute_oid)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling ChargebackApi->delete_chargeback: #{e}"
 end
 ```
@@ -80,7 +80,7 @@ Retrieves a single chargeback using the specified chargeback dispute oid.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -90,7 +90,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::ChargebackApi.new
+api_instance = UltracartClient::ChargebackApi.new
 
 chargeback_dispute_oid = 56 # Integer | The chargeback dispute oid to retrieve.
 
@@ -102,7 +102,7 @@ begin
   #Retrieve a chargeback
   result = api_instance.get_chargeback_dispute(chargeback_dispute_oid, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling ChargebackApi->get_chargeback_dispute: #{e}"
 end
 ```
@@ -141,7 +141,7 @@ Retrieves chargebacks from the account.  If no parameters are specified, all cha
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -151,7 +151,7 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::ChargebackApi.new
+api_instance = UltracartClient::ChargebackApi.new
 
 opts = { 
   order_id: 'order_id_example', # String | Order Id
@@ -172,7 +172,7 @@ begin
   #Retrieve chargebacks
   result = api_instance.get_chargeback_disputes(opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling ChargebackApi->get_chargeback_disputes: #{e}"
 end
 ```
@@ -221,7 +221,7 @@ Insert a chargeback on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -231,9 +231,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::ChargebackApi.new
+api_instance = UltracartClient::ChargebackApi.new
 
-chargeback = ultracart_client::ChargebackDispute.new # ChargebackDispute | Chargeback to insert
+chargeback = UltracartClient::ChargebackDispute.new # ChargebackDispute | Chargeback to insert
 
 opts = { 
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -243,7 +243,7 @@ begin
   #Insert a chargeback
   result = api_instance.insert_chargeback(chargeback, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling ChargebackApi->insert_chargeback: #{e}"
 end
 ```
@@ -282,7 +282,7 @@ Update a chargeback on the UltraCart account.
 # load the gem
 require 'ultracart_api'
 # setup authorization
-ultracart_client.configure do |config|
+UltracartClient.configure do |config|
   # Configure OAuth2 access token for authorization: ultraCartOauth
   config.access_token = 'YOUR ACCESS TOKEN'
 
@@ -292,9 +292,9 @@ ultracart_client.configure do |config|
   #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
 end
 
-api_instance = ultracart_client::ChargebackApi.new
+api_instance = UltracartClient::ChargebackApi.new
 
-chargeback = ultracart_client::ChargebackDispute.new # ChargebackDispute | Chargeback to update
+chargeback = UltracartClient::ChargebackDispute.new # ChargebackDispute | Chargeback to update
 
 chargeback_dispute_oid = 56 # Integer | The chargeback_dispute_oid to update.
 
@@ -306,7 +306,7 @@ begin
   #Update a chargeback
   result = api_instance.update_chargeback(chargeback, chargeback_dispute_oid, opts)
   p result
-rescue ultracart_client::ApiError => e
+rescue UltracartClient::ApiError => e
   puts "Exception when calling ChargebackApi->update_chargeback: #{e}"
 end
 ```

@@ -1,4 +1,4 @@
-# ultracart_client::AffiliateClicksResponse
+# UltracartClient::AffiliateClicksResponse
 
 ## Properties
 Name | Type | Description | Notes

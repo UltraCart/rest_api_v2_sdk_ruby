@@ -1,4 +1,4 @@
-# ultracart_client::CouponTierQuantityPercent
+# UltracartClient::CouponTierQuantityPercent
 
 ## Properties
 Name | Type | Description | Notes

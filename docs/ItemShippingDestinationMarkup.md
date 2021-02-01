@@ -1,4 +1,4 @@
-# ultracart_client::ItemShippingDestinationMarkup
+# UltracartClient::ItemShippingDestinationMarkup
 
 ## Properties
 Name | Type | Description | Notes

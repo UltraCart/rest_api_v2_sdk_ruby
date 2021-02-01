@@ -1,4 +1,4 @@
-# ultracart_client::EmailListArchiveResponse
+# UltracartClient::EmailListArchiveResponse
 
 ## Properties
 Name | Type | Description | Notes

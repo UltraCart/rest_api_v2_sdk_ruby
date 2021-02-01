@@ -1,4 +1,4 @@
-# ultracart_client::CartSettingsShipping
+# UltracartClient::CartSettingsShipping
 
 ## Properties
 Name | Type | Description | Notes

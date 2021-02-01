@@ -1,4 +1,4 @@
-# ultracart_client::ScreenshotsResponse
+# UltracartClient::ScreenshotsResponse
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# ultracart_client::WebhooksResponse
+# UltracartClient::WebhooksResponse
 
 ## Properties
 Name | Type | Description | Notes

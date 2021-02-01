@@ -1,4 +1,4 @@
-# ultracart_client::AffiliateLink
+# UltracartClient::AffiliateLink
 
 ## Properties
 Name | Type | Description | Notes

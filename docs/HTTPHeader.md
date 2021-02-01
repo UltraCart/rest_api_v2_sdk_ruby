@@ -1,4 +1,4 @@
-# ultracart_client::HTTPHeader
+# UltracartClient::HTTPHeader
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# ultracart_client::PricingTierNotification
+# UltracartClient::PricingTierNotification
 
 ## Properties
 Name | Type | Description | Notes

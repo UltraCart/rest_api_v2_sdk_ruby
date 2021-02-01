@@ -12,51 +12,51 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 
 require 'spec_helper'
 
-describe ultracart_client::ApiClient do
+describe UltracartClient::ApiClient do
   context 'initialization' do
     context 'URL stuff' do
       context 'host' do
         it 'removes http from host' do
-          ultracart_client.configure { |c| c.host = 'http://example.com' }
-          expect(ultracart_client::Configuration.default.host).to eq('example.com')
+          UltracartClient.configure { |c| c.host = 'http://example.com' }
+          expect(UltracartClient::Configuration.default.host).to eq('example.com')
         end
 
         it 'removes https from host' do
-          ultracart_client.configure { |c| c.host = 'https://wookiee.com' }
-          expect(ultracart_client::ApiClient.default.config.host).to eq('wookiee.com')
+          UltracartClient.configure { |c| c.host = 'https://wookiee.com' }
+          expect(UltracartClient::ApiClient.default.config.host).to eq('wookiee.com')
         end
 
         it 'removes trailing path from host' do
-          ultracart_client.configure { |c| c.host = 'hobo.com/v4' }
-          expect(ultracart_client::Configuration.default.host).to eq('hobo.com')
+          UltracartClient.configure { |c| c.host = 'hobo.com/v4' }
+          expect(UltracartClient::Configuration.default.host).to eq('hobo.com')
         end
       end
 
       context 'base_path' do
         it "prepends a slash to base_path" do
-          ultracart_client.configure { |c| c.base_path = 'v4/dog' }
-          expect(ultracart_client::Configuration.default.base_path).to eq('/v4/dog')
+          UltracartClient.configure { |c| c.base_path = 'v4/dog' }
+          expect(UltracartClient::Configuration.default.base_path).to eq('/v4/dog')
         end
 
         it "doesn't prepend a slash if one is already there" do
-          ultracart_client.configure { |c| c.base_path = '/v4/dog' }
-          expect(ultracart_client::Configuration.default.base_path).to eq('/v4/dog')
+          UltracartClient.configure { |c| c.base_path = '/v4/dog' }
+          expect(UltracartClient::Configuration.default.base_path).to eq('/v4/dog')
         end
 
         it "ends up as a blank string if nil" do
-          ultracart_client.configure { |c| c.base_path = nil }
-          expect(ultracart_client::Configuration.default.base_path).to eq('')
+          UltracartClient.configure { |c| c.base_path = nil }
+          expect(UltracartClient::Configuration.default.base_path).to eq('')
         end
       end
     end
   end
 
   describe 'params_encoding in #build_request' do
-    let(:config) { ultracart_client::Configuration.new }
-    let(:api_client) { ultracart_client::ApiClient.new(config) }
+    let(:config) { UltracartClient::Configuration.new }
+    let(:api_client) { UltracartClient::ApiClient.new(config) }
 
     it 'defaults to nil' do
-      expect(ultracart_client::Configuration.default.params_encoding).to eq(nil)
+      expect(UltracartClient::Configuration.default.params_encoding).to eq(nil)
       expect(config.params_encoding).to eq(nil)
 
       request = api_client.build_request(:get, '/test')
@@ -71,11 +71,11 @@ describe ultracart_client::ApiClient do
   end
 
   describe 'timeout in #build_request' do
-    let(:config) { ultracart_client::Configuration.new }
-    let(:api_client) { ultracart_client::ApiClient.new(config) }
+    let(:config) { UltracartClient::Configuration.new }
+    let(:api_client) { UltracartClient::ApiClient.new(config) }
 
     it 'defaults to 0' do
-      expect(ultracart_client::Configuration.default.timeout).to eq(0)
+      expect(UltracartClient::Configuration.default.timeout).to eq(0)
       expect(config.timeout).to eq(0)
 
       request = api_client.build_request(:get, '/test')
@@ -90,8 +90,8 @@ describe ultracart_client::ApiClient do
   end
 
   describe '#build_request' do
-    let(:config) { ultracart_client::Configuration.new }
-    let(:api_client) { ultracart_client::ApiClient.new(config) }
+    let(:config) { UltracartClient::Configuration.new }
+    let(:api_client) { UltracartClient::ApiClient.new(config) }
 
     it 'does not send multipart to request' do
       expect(Typhoeus::Request).to receive(:new).with(anything, hash_not_including(:multipart))
@@ -108,7 +108,7 @@ describe ultracart_client::ApiClient do
 
   describe '#deserialize' do
     it "handles Array<Integer>" do
-      api_client = ultracart_client::ApiClient.new
+      api_client = UltracartClient::ApiClient.new
       headers = { 'Content-Type' => 'application/json' }
       response = double('response', headers: headers, body: '[12, 34]')
       data = api_client.deserialize(response, 'Array<Integer>')
@@ -117,7 +117,7 @@ describe ultracart_client::ApiClient do
     end
 
     it 'handles Array<Array<Integer>>' do
-      api_client = ultracart_client::ApiClient.new
+      api_client = UltracartClient::ApiClient.new
       headers = { 'Content-Type' => 'application/json' }
       response = double('response', headers: headers, body: '[[12, 34], [56]]')
       data = api_client.deserialize(response, 'Array<Array<Integer>>')
@@ -126,7 +126,7 @@ describe ultracart_client::ApiClient do
     end
 
     it 'handles Hash<String, String>' do
-      api_client = ultracart_client::ApiClient.new
+      api_client = UltracartClient::ApiClient.new
       headers = { 'Content-Type' => 'application/json' }
       response = double('response', headers: headers, body: '{"message": "Hello"}')
       data = api_client.deserialize(response, 'Hash<String, String>')
@@ -138,8 +138,8 @@ describe ultracart_client::ApiClient do
   describe "#object_to_hash" do
     it 'ignores nils and includes empty arrays' do
       # uncomment below to test object_to_hash for model
-      # api_client = ultracart_client::ApiClient.new
-      # _model = ultracart_client::ModelName.new
+      # api_client = UltracartClient::ApiClient.new
+      # _model = UltracartClient::ModelName.new
       # update the model attribute below
       # _model.id = 1
       # update the expected value (hash) below
@@ -150,7 +150,7 @@ describe ultracart_client::ApiClient do
 
   describe '#build_collection_param' do
     let(:param) { ['aa', 'bb', 'cc'] }
-    let(:api_client) { ultracart_client::ApiClient.new }
+    let(:api_client) { UltracartClient::ApiClient.new }
 
     it 'works for csv' do
       expect(api_client.build_collection_param(param, :csv)).to eq('aa,bb,cc')
@@ -178,7 +178,7 @@ describe ultracart_client::ApiClient do
   end
 
   describe '#json_mime?' do
-    let(:api_client) { ultracart_client::ApiClient.new }
+    let(:api_client) { UltracartClient::ApiClient.new }
 
     it 'works' do
       expect(api_client.json_mime?(nil)).to eq false
@@ -195,7 +195,7 @@ describe ultracart_client::ApiClient do
   end
 
   describe '#select_header_accept' do
-    let(:api_client) { ultracart_client::ApiClient.new }
+    let(:api_client) { UltracartClient::ApiClient.new }
 
     it 'works' do
       expect(api_client.select_header_accept(nil)).to be_nil
@@ -211,7 +211,7 @@ describe ultracart_client::ApiClient do
   end
 
   describe '#select_header_content_type' do
-    let(:api_client) { ultracart_client::ApiClient.new }
+    let(:api_client) { UltracartClient::ApiClient.new }
 
     it 'works' do
       expect(api_client.select_header_content_type(nil)).to eq('application/json')
@@ -226,7 +226,7 @@ describe ultracart_client::ApiClient do
   end
 
   describe '#sanitize_filename' do
-    let(:api_client) { ultracart_client::ApiClient.new }
+    let(:api_client) { UltracartClient::ApiClient.new }
 
     it 'works' do
       expect(api_client.sanitize_filename('sun')).to eq('sun')

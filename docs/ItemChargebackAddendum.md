@@ -1,4 +1,4 @@
-# ultracart_client::ItemChargebackAddendum
+# UltracartClient::ItemChargebackAddendum
 
 ## Properties
 Name | Type | Description | Notes

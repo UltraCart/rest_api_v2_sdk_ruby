@@ -1,4 +1,4 @@
-# ultracart_client::CityStateZip
+# UltracartClient::CityStateZip
 
 ## Properties
 Name | Type | Description | Notes

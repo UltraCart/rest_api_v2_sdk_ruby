@@ -1,4 +1,4 @@
-# ultracart_client::CountriesResponse
+# UltracartClient::CountriesResponse
 
 ## Properties
 Name | Type | Description | Notes

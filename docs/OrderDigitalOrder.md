@@ -1,4 +1,4 @@
-# ultracart_client::OrderDigitalOrder
+# UltracartClient::OrderDigitalOrder
 
 ## Properties
 Name | Type | Description | Notes

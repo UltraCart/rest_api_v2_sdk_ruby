@@ -1,4 +1,4 @@
-# ultracart_client::CustomerAttachment
+# UltracartClient::CustomerAttachment
 
 ## Properties
 Name | Type | Description | Notes

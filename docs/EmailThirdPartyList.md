@@ -1,4 +1,4 @@
-# ultracart_client::EmailThirdPartyList
+# UltracartClient::EmailThirdPartyList
 
 ## Properties
 Name | Type | Description | Notes
