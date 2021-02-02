@@ -45,18 +45,11 @@ Deletes a Self tax provider city.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 city = 'city_example' # String | The city being deleted.
 
@@ -104,18 +97,11 @@ Deletes a Self tax provider country.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 country_code = 'country_code_example' # String | The country code being deleted.
 
@@ -163,18 +149,11 @@ Deletes a Self tax provider county.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 county = 'county_example' # String | The county being deleted.
 
@@ -222,18 +201,11 @@ Deletes a Self tax provider postalCode.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 postal_code = 'postal_code_example' # String | The postal code being deleted.
 
@@ -281,18 +253,11 @@ Deletes a Self tax provider state.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 state_code = 'state_code_example' # String | The state code being deleted.
 
@@ -340,18 +305,12 @@ Retrieves the Avalara tax provider.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
+
 
 begin
   #Retrieve the Avalara tax provider
@@ -391,18 +350,11 @@ Returns Avalara Tax companies configured by the merchant
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 tax_provider_avalara = UltracartClient::TaxProviderAvalara.new # TaxProviderAvalara | TaxProviderAvalara object
 
@@ -448,18 +400,12 @@ Attempts to connect to Avalara and returns back the response.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
+
 
 begin
   #Attempts to connect to Avalara and returns back the response
@@ -499,18 +445,12 @@ Retrieves the Self tax provider.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
+
 
 begin
   #Retrieve the Self tax provider
@@ -550,18 +490,12 @@ Retrieves the Self tax provider countries.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
+
 
 begin
   #Retrieve the Self tax provider countries
@@ -601,18 +535,11 @@ Retrieves the Self tax provider regions for a given country code.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 country_code = 'country_code_example' # String | The country code regions desired.
 
@@ -658,18 +585,12 @@ Retrieves the Sovos tax provider.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
+
 
 begin
   #Retrieve the Sovos tax provider
@@ -709,18 +630,12 @@ Attempts to connect to Sovos and returns back the response.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
+
 
 begin
   #Attempts to connect to Sovos and returns back the response
@@ -760,18 +675,12 @@ Retrieves the TaxJar tax provider.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
+
 
 begin
   #Retrieve the TaxJar tax provider
@@ -811,18 +720,12 @@ Attempts to connect to TaxJar and returns back the response.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
+
 
 begin
   #Attempts to connect to TaxJar and returns back the response
@@ -862,18 +765,12 @@ Retrieves the UltraCart tax provider.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
+
 
 begin
   #Retrieve the UltraCart tax provider
@@ -913,18 +810,11 @@ Retrieves tax methods for this account.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 opts = { 
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Max 200)
@@ -975,18 +865,11 @@ Toggle a tax provider to active.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 provider_name = 'provider_name_example' # String | The tax provider to set active.
 
@@ -1032,18 +915,11 @@ Update the Avalara tax provider.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 tax_provider_avalara = UltracartClient::TaxProviderAvalara.new # TaxProviderAvalara | TaxProviderAvalara object
 
@@ -1089,18 +965,11 @@ Update the Self tax provider.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 tax_provider_self = UltracartClient::TaxProviderSelf.new # TaxProviderSelf | TaxProviderSelf object
 
@@ -1146,18 +1015,11 @@ Updates a Self tax provider city.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 city = 'city_example' # String | The city being updated.
 
@@ -1206,18 +1068,11 @@ Updates a Self tax provider country.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 country_code = 'country_code_example' # String | The country code being updated.
 
@@ -1266,18 +1121,11 @@ Updates a Self tax provider county.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 county = 'county_example' # String | The county being updated.
 
@@ -1326,18 +1174,11 @@ Updates a Self tax provider postalCode.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 postal_code = 'postal_code_example' # String | The postal code being updated.
 
@@ -1386,18 +1227,11 @@ Updates a Self tax provider state.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 state_code = 'state_code_example' # String | The state code being updated.
 
@@ -1446,18 +1280,11 @@ Update the Sovos tax provider.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 tax_provider_sovos = UltracartClient::TaxProviderSovos.new # TaxProviderSovos | TaxProviderSovos object
 
@@ -1503,18 +1330,11 @@ Update the TaxJar tax provider.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 tax_provider_tax_jar = UltracartClient::TaxProviderTaxJar.new # TaxProviderTaxJar | TaxProviderTaxJar object
 
@@ -1560,18 +1380,11 @@ Update the UltraCart tax provider.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::TaxApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::TaxApi.new
 
 tax_provider_ultracart = UltracartClient::TaxProviderUltraCart.new # TaxProviderUltraCart | TaxProviderUltraCart object
 

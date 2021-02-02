@@ -25,18 +25,11 @@ Retrieves a single auto order using the specified auto order oid.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::AutoOrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::AutoOrderApi.new
 
 auto_order_oid = 56 # Integer | The auto order oid to retrieve.
 
@@ -86,18 +79,11 @@ Retrieves a single auto order using the specified reference (original) order id.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::AutoOrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::AutoOrderApi.new
 
 auto_order_code = 'auto_order_code_example' # String | The auto order oid to retrieve.
 
@@ -147,18 +133,11 @@ Retrieves a single auto order using the specified reference (original) order id.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::AutoOrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::AutoOrderApi.new
 
 reference_order_id = 'reference_order_id_example' # String | The auto order oid to retrieve.
 
@@ -208,18 +187,11 @@ Retrieves auto orders from the account.  If no parameters are specified, all aut
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::AutoOrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::AutoOrderApi.new
 
 opts = { 
   auto_order_code: 'auto_order_code_example', # String | Auto order code
@@ -310,18 +282,11 @@ Retrieves a group of auto orders from the account based on an array of auto orde
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::AutoOrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::AutoOrderApi.new
 
 auto_order_batch = UltracartClient::AutoOrderQueryBatch.new # AutoOrderQueryBatch | Auto order batch
 
@@ -371,18 +336,11 @@ Retrieves a group of auto orders from the account based on a query object.  You 
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::AutoOrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::AutoOrderApi.new
 
 auto_order_query = UltracartClient::AutoOrderQuery.new # AutoOrderQuery | Auto order query
 
@@ -438,18 +396,11 @@ Update an auto order on the UltraCart account.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::AutoOrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::AutoOrderApi.new
 
 auto_order = UltracartClient::AutoOrder.new # AutoOrder | Auto order to update
 
@@ -502,18 +453,11 @@ Update multiple auto orders on the UltraCart account.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::AutoOrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::AutoOrderApi.new
 
 auto_orders_request = UltracartClient::AutoOrdersRequest.new # AutoOrdersRequest | Auto orders to update (synchronous maximum 20 / asynchronous maximum 100)
 

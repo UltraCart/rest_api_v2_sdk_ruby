@@ -19,6 +19,19 @@ module UltracartClient
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+
+    def self.new_using_api_key(simple_key, verify_ssl = true, debugging = false)
+      api_config = Configuration.new
+      api_config.api_key_prefix['x-ultracart-simple-key'] = simple_key
+      api_config.api_version = '2017-03-01'
+      api_config.verify_ssl = verify_ssl
+
+      api_client = ApiClient.new(api_config)
+      api_client.config.debugging = debugging
+
+      UltracartClient::AutoOrderApi.new(api_client)
+    end
+
     # Retrieve an auto order
     # Retrieves a single auto order using the specified auto order oid. 
     # @param auto_order_oid The auto order oid to retrieve.

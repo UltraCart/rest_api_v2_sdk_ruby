@@ -19,6 +19,19 @@ module UltracartClient
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+
+    def self.new_using_api_key(simple_key, verify_ssl = true, debugging = false)
+      api_config = Configuration.new
+      api_config.api_key_prefix['x-ultracart-simple-key'] = simple_key
+      api_config.api_version = '2017-03-01'
+      api_config.verify_ssl = verify_ssl
+
+      api_client = ApiClient.new(api_config)
+      api_client.config.debugging = debugging
+
+      UltracartClient::AffiliateApi.new(api_client)
+    end
+
     # Retrieve clicks
     # Retrieves a group of clicks from the account based on a query object.  If no parameters are specified, the API call will fail with a bad request error.  Always specify some parameters to limit the scope of the clicks returned to ones you are truly interested in.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
     # @param click_query Click query

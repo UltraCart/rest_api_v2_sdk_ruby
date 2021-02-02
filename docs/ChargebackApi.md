@@ -22,18 +22,11 @@ Delete a chargeback on the UltraCart account.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ChargebackApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::ChargebackApi.new
 
 chargeback_dispute_oid = 56 # Integer | The chargeback_dispute_oid to delete.
 
@@ -79,18 +72,11 @@ Retrieves a single chargeback using the specified chargeback dispute oid.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ChargebackApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::ChargebackApi.new
 
 chargeback_dispute_oid = 56 # Integer | The chargeback dispute oid to retrieve.
 
@@ -140,18 +126,11 @@ Retrieves chargebacks from the account.  If no parameters are specified, all cha
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ChargebackApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::ChargebackApi.new
 
 opts = { 
   order_id: 'order_id_example', # String | Order Id
@@ -220,18 +199,11 @@ Insert a chargeback on the UltraCart account.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ChargebackApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::ChargebackApi.new
 
 chargeback = UltracartClient::ChargebackDispute.new # ChargebackDispute | Chargeback to insert
 
@@ -281,18 +253,11 @@ Update a chargeback on the UltraCart account.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ChargebackApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::ChargebackApi.new
 
 chargeback = UltracartClient::ChargebackDispute.new # ChargebackDispute | Chargeback to update
 

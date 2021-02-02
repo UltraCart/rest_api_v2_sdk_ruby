@@ -19,6 +19,19 @@ module UltracartClient
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+
+    def self.new_using_api_key(simple_key, verify_ssl = true, debugging = false)
+      api_config = Configuration.new
+      api_config.api_key_prefix['x-ultracart-simple-key'] = simple_key
+      api_config.api_version = '2017-03-01'
+      api_config.verify_ssl = verify_ssl
+
+      api_client = ApiClient.new(api_config)
+      api_client.config.debugging = debugging
+
+      UltracartClient::CustomerApi.new(api_client)
+    end
+
     # Delete a customer
     # Delete a customer on the UltraCart account. 
     # @param customer_profile_oid The customer_profile_oid to delete.

@@ -37,18 +37,11 @@ Adjusts an order total.  Adjusts individual items appropriately and considers ta
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to cancel.
 
@@ -97,18 +90,11 @@ Cancel an order on the UltraCart account.  If the success flag is false, then co
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to cancel.
 
@@ -154,18 +140,11 @@ Delete an order on the UltraCart account.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to delete.
 
@@ -210,18 +189,11 @@ Format the order for display at text or html
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to format
 
@@ -270,18 +242,11 @@ Retrieves a single order token for a given order id.  The token can be used with
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to generate a token for.
 
@@ -327,18 +292,12 @@ Retrieve A/R Retry Configuration. This is primarily an internal API call.  It is
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
+
 
 begin
   #Retrieve A/R Retry Configuration
@@ -378,18 +337,11 @@ Retrieve A/R Retry Statistics. This is primarily an internal API call.  It is do
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 opts = { 
   from: 'from_example', # String | 
@@ -438,18 +390,11 @@ Retrieves a single order using the specified order id.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to retrieve.
 
@@ -499,18 +444,11 @@ Retrieves a single order using the specified order token.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 order_by_token_query = UltracartClient::OrderByTokenQuery.new # OrderByTokenQuery | Order by token query
 
@@ -560,18 +498,11 @@ Retrieves a group of orders from the account.  If no parameters are specified, t
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 opts = { 
   order_id: 'order_id_example', # String | Order Id
@@ -684,18 +615,11 @@ Retrieves a group of orders from the account based on an array of order ids.  If
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 order_batch = UltracartClient::OrderQueryBatch.new # OrderQueryBatch | Order batch
 
@@ -745,18 +669,11 @@ Retrieves a group of orders from the account based on a query object.  If no par
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 order_query = UltracartClient::OrderQuery.new # OrderQuery | Order query
 
@@ -812,18 +729,11 @@ Inserts a new order on the UltraCart account.  This is probably NOT the method y
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 order = UltracartClient::Order.new # Order | Order to insert
 
@@ -873,18 +783,11 @@ Process payment on order
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to process payment on
 
@@ -933,18 +836,11 @@ Perform a refund operation on an order and then update the order if successful
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 order = UltracartClient::Order.new # Order | Order to refund
 
@@ -1007,18 +903,11 @@ Create a replacement order based upon a previous order
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to generate a replacement for.
 
@@ -1067,18 +956,11 @@ Resend the receipt for an order on the UltraCart account.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to resend the receipt for.
 
@@ -1124,18 +1006,11 @@ Resend shipment confirmation for an order on the UltraCart account.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 order_id = 'order_id_example' # String | The order id to resend the shipment notification for.
 
@@ -1181,18 +1056,11 @@ Update A/R Retry Configuration.  This is primarily an internal API call.  It is 
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 retry_config = UltracartClient::AccountsReceivableRetryConfig.new # AccountsReceivableRetryConfig | AccountsReceivableRetryConfig object
 
@@ -1238,18 +1106,11 @@ Update a new order on the UltraCart account.  This is probably NOT the method yo
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::OrderApi.new
 
 order = UltracartClient::Order.new # Order | Order to update
 

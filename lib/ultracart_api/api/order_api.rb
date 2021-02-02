@@ -19,6 +19,19 @@ module UltracartClient
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+
+    def self.new_using_api_key(simple_key, verify_ssl = true, debugging = false)
+      api_config = Configuration.new
+      api_config.api_key_prefix['x-ultracart-simple-key'] = simple_key
+      api_config.api_version = '2017-03-01'
+      api_config.verify_ssl = verify_ssl
+
+      api_client = ApiClient.new(api_config)
+      api_client.config.debugging = debugging
+
+      UltracartClient::OrderApi.new(api_client)
+    end
+
     # Adjusts an order total
     # Adjusts an order total.  Adjusts individual items appropriately and considers taxes.  Desired total should be provided in the same currency as the order.  Returns true if successful. 
     # @param order_id The order id to cancel.

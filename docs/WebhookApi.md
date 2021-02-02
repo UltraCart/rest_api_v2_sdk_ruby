@@ -25,18 +25,11 @@ Delete a webhook on the UltraCart account.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::WebhookApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::WebhookApi.new
 
 webhook_oid = 56 # Integer | The webhook oid to delete.
 
@@ -81,18 +74,11 @@ Delete a webhook based upon the URL on the webhook_url matching an existing webh
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::WebhookApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::WebhookApi.new
 
 webhook = UltracartClient::Webhook.new # Webhook | Webhook to delete
 
@@ -138,18 +124,11 @@ Retrieves an individual log for a webhook given the webhook oid the request id.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::WebhookApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::WebhookApi.new
 
 webhook_oid = 56 # Integer | The webhook oid that owns the log.
 
@@ -198,18 +177,11 @@ Retrieves the log summary information for a given webhook.  This is useful for d
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::WebhookApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::WebhookApi.new
 
 webhook_oid = 56 # Integer | The webhook oid to retrieve log summaries for.
 
@@ -263,18 +235,11 @@ Retrieves the webhooks associated with this application.
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::WebhookApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::WebhookApi.new
 
 opts = { 
   _limit: 100, # Integer | The maximum number of records to return on this one API call.
@@ -327,18 +292,11 @@ Adds a new webhook on the account.  If you add a new webhook with the authentica
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::WebhookApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::WebhookApi.new
 
 webhook = UltracartClient::Webhook.new # Webhook | Webhook to create
 
@@ -388,18 +346,11 @@ This method will resend events to the webhook endpoint.  This method can be used
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::WebhookApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::WebhookApi.new
 
 webhook_oid = 56 # Integer | The webhook oid that is receiving the reflowed events.
 
@@ -448,18 +399,11 @@ Update a webhook on the account
 ```ruby
 # load the gem
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['x-ultracart-simple-key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['x-ultracart-simple-key'] = 'Bearer'
-end
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::WebhookApi.new_using_api_key(simple_key, false, false)
 
-api_instance = UltracartClient::WebhookApi.new
 
 webhook = UltracartClient::Webhook.new # Webhook | Webhook to update
 
