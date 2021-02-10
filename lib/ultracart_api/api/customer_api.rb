@@ -145,6 +145,64 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Retrieve a customer by Email
+    # Retrieves a single customer using the specified customer email address. 
+    # @param email The email address of the customer to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [CustomerResponse]
+    def get_customer_by_email(email, opts = {})
+      data, _status_code, _headers = get_customer_by_email_with_http_info(email, opts)
+      data
+    end
+
+    # Retrieve a customer by Email
+    # Retrieves a single customer using the specified customer email address. 
+    # @param email The email address of the customer to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(CustomerResponse, Fixnum, Hash)>] CustomerResponse data, response status code and response headers
+    def get_customer_by_email_with_http_info(email, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.get_customer_by_email ...'
+      end
+      # verify the required parameter 'email' is set
+      if @api_client.config.client_side_validation && email.nil?
+        fail ArgumentError, "Missing the required parameter 'email' when calling CustomerApi.get_customer_by_email"
+      end
+      # resource path
+      local_var_path = '/customer/customers/by_email/{email}'.sub('{' + 'email' + '}', email.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CustomerResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#get_customer_by_email\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Retrieve customers
     # Retrieves customers from the account.  If no parameters are specified, all customers will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
     # @param [Hash] opts the optional parameters

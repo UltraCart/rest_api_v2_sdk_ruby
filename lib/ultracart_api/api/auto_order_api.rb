@@ -32,7 +32,7 @@ module UltracartClient
       UltracartClient::AutoOrderApi.new(api_client)
     end
 
-    # Retrieve an auto order
+    # Retrieve an auto order by oid
     # Retrieves a single auto order using the specified auto order oid. 
     # @param auto_order_oid The auto order oid to retrieve.
     # @param [Hash] opts the optional parameters
@@ -43,7 +43,7 @@ module UltracartClient
       data
     end
 
-    # Retrieve an auto order
+    # Retrieve an auto order by oid
     # Retrieves a single auto order using the specified auto order oid. 
     # @param auto_order_oid The auto order oid to retrieve.
     # @param [Hash] opts the optional parameters
@@ -90,7 +90,7 @@ module UltracartClient
       end
       return data, status_code, headers
     end
-    # Retrieve an auto order
+    # Retrieve an auto order by code
     # Retrieves a single auto order using the specified reference (original) order id. 
     # @param auto_order_code The auto order oid to retrieve.
     # @param [Hash] opts the optional parameters
@@ -101,7 +101,7 @@ module UltracartClient
       data
     end
 
-    # Retrieve an auto order
+    # Retrieve an auto order by code
     # Retrieves a single auto order using the specified reference (original) order id. 
     # @param auto_order_code The auto order oid to retrieve.
     # @param [Hash] opts the optional parameters
@@ -148,7 +148,7 @@ module UltracartClient
       end
       return data, status_code, headers
     end
-    # Retrieve an auto order
+    # Retrieve an auto order by order id
     # Retrieves a single auto order using the specified reference (original) order id. 
     # @param reference_order_id The auto order oid to retrieve.
     # @param [Hash] opts the optional parameters
@@ -159,7 +159,7 @@ module UltracartClient
       data
     end
 
-    # Retrieve an auto order
+    # Retrieve an auto order by order id
     # Retrieves a single auto order using the specified reference (original) order id. 
     # @param reference_order_id The auto order oid to retrieve.
     # @param [Hash] opts the optional parameters
@@ -382,7 +382,7 @@ module UltracartClient
       end
       return data, status_code, headers
     end
-    # Retrieve auto orders
+    # Retrieve auto orders by query
     # Retrieves a group of auto orders from the account based on a query object.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
     # @param auto_order_query Auto order query
     # @param [Hash] opts the optional parameters
@@ -396,7 +396,7 @@ module UltracartClient
       data
     end
 
-    # Retrieve auto orders
+    # Retrieve auto orders by query
     # Retrieves a group of auto orders from the account based on a query object.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
     # @param auto_order_query Auto order query
     # @param [Hash] opts the optional parameters

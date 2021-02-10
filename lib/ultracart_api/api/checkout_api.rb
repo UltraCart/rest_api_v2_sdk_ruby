@@ -937,7 +937,7 @@ module UltracartClient
       return data, status_code, headers
     end
     # Setup Browser Application
-    # Setup a browser key authenticated application with checkout permissions.  This REST call must be made with an authentication scheme that is not browser key.  The new application will be linked to the application that makes this call.  If this application is disabled / deleted, then so will the application setup by this call.  The purpose of this call is to allow an OAuth applicaiton, such as the Wordpress plugin, to setup the proper browser based authentication for the REST checkout API to use. 
+    # Setup a browser key authenticated application with checkout permissions.  This REST call must be made with an authentication scheme that is not browser key.  The new application will be linked to the application that makes this call.  If this application is disabled / deleted, then so will the application setup by this call.  The purpose of this call is to allow an OAuth application, such as the Wordpress plugin, to setup the proper browser based authentication for the REST checkout API to use. 
     # @param browser_key_request Setup browser key request
     # @param [Hash] opts the optional parameters
     # @return [CheckoutSetupBrowserKeyResponse]
@@ -947,7 +947,7 @@ module UltracartClient
     end
 
     # Setup Browser Application
-    # Setup a browser key authenticated application with checkout permissions.  This REST call must be made with an authentication scheme that is not browser key.  The new application will be linked to the application that makes this call.  If this application is disabled / deleted, then so will the application setup by this call.  The purpose of this call is to allow an OAuth applicaiton, such as the Wordpress plugin, to setup the proper browser based authentication for the REST checkout API to use. 
+    # Setup a browser key authenticated application with checkout permissions.  This REST call must be made with an authentication scheme that is not browser key.  The new application will be linked to the application that makes this call.  If this application is disabled / deleted, then so will the application setup by this call.  The purpose of this call is to allow an OAuth application, such as the Wordpress plugin, to setup the proper browser based authentication for the REST checkout API to use. 
     # @param browser_key_request Setup browser key request
     # @param [Hash] opts the optional parameters
     # @return [Array<(CheckoutSetupBrowserKeyResponse, Fixnum, Hash)>] CheckoutSetupBrowserKeyResponse data, response status code and response headers

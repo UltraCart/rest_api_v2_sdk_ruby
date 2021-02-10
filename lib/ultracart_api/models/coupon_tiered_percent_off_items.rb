@@ -17,7 +17,7 @@ module UltracartClient
     # A list of items of which at least one must be purchased for coupon to be valid.
     attr_accessor :items
 
-    # The maximum amount of total discount by this coupon.
+    # The (optional) maximum quantity of discounted items.
     attr_accessor :limit
 
     # A list of discount tiers.

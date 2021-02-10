@@ -17,7 +17,7 @@ module UltracartClient
     # The item being discounted by this coupon.
     attr_accessor :item
 
-    # The maximum amount of total discount by this coupon.
+    # The maximum number of discounted items.
     attr_accessor :limit
 
     # A list of discount tiers.

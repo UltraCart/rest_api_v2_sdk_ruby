@@ -14,6 +14,8 @@ require 'date'
 
 module UltracartClient
   class EmailPlanAdditional
+    attr_accessor :active
+
     attr_accessor :can_downgrade
 
     attr_accessor :can_upgrade
@@ -33,6 +35,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'active' => :'active',
         :'can_downgrade' => :'can_downgrade',
         :'can_upgrade' => :'can_upgrade',
         :'cost' => :'cost',
@@ -47,6 +50,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'active' => :'BOOLEAN',
         :'can_downgrade' => :'BOOLEAN',
         :'can_upgrade' => :'BOOLEAN',
         :'cost' => :'Float',
@@ -65,6 +69,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'active')
+        self.active = attributes[:'active']
+      end
 
       if attributes.has_key?(:'can_downgrade')
         self.can_downgrade = attributes[:'can_downgrade']
@@ -117,6 +125,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          active == o.active &&
           can_downgrade == o.can_downgrade &&
           can_upgrade == o.can_upgrade &&
           cost == o.cost &&
@@ -136,7 +145,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [can_downgrade, can_upgrade, cost, cost_change, cost_change_formatted, cost_formatted, customers, emails].hash
+      [active, can_downgrade, can_upgrade, cost, cost_change, cost_change_formatted, cost_formatted, customers, emails].hash
     end
 
     # Builds the object from hash
