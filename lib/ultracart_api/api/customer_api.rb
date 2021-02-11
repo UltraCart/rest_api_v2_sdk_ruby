@@ -810,7 +810,7 @@ module UltracartClient
     # Validate a token that can be used to verify a customer email address.  The implementation of how a customer interacts with this token is left to the merchant. 
     # @param validation_request Token validation request
     # @param [Hash] opts the optional parameters
-    # @return [EmailVerifyTokenResponse]
+    # @return [EmailVerifyTokenValidateResponse]
     def validate_email_verification_token(validation_request, opts = {})
       data, _status_code, _headers = validate_email_verification_token_with_http_info(validation_request, opts)
       data
@@ -820,7 +820,7 @@ module UltracartClient
     # Validate a token that can be used to verify a customer email address.  The implementation of how a customer interacts with this token is left to the merchant. 
     # @param validation_request Token validation request
     # @param [Hash] opts the optional parameters
-    # @return [Array<(EmailVerifyTokenResponse, Fixnum, Hash)>] EmailVerifyTokenResponse data, response status code and response headers
+    # @return [Array<(EmailVerifyTokenValidateResponse, Fixnum, Hash)>] EmailVerifyTokenValidateResponse data, response status code and response headers
     def validate_email_verification_token_with_http_info(validation_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CustomerApi.validate_email_verification_token ...'
@@ -855,7 +855,7 @@ module UltracartClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'EmailVerifyTokenResponse')
+        :return_type => 'EmailVerifyTokenValidateResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CustomerApi#validate_email_verification_token\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
