@@ -31,6 +31,10 @@ module UltracartClient
 
     attr_accessor :events_json_key
 
+    # True if the user calling the API has favorited this particular screen recording.
+    attr_accessor :favorite
+
+    # Array of user ids that favorited this particular screen recording.
     attr_accessor :favorites
 
     attr_accessor :geolocation
@@ -91,6 +95,7 @@ module UltracartClient
         :'esp_customer_uuid' => :'esp_customer_uuid',
         :'events_gz_size' => :'events_gz_size',
         :'events_json_key' => :'events_json_key',
+        :'favorite' => :'favorite',
         :'favorites' => :'favorites',
         :'geolocation' => :'geolocation',
         :'geolocation_country' => :'geolocation_country',
@@ -129,6 +134,7 @@ module UltracartClient
         :'esp_customer_uuid' => :'String',
         :'events_gz_size' => :'Integer',
         :'events_json_key' => :'String',
+        :'favorite' => :'BOOLEAN',
         :'favorites' => :'Array<Integer>',
         :'geolocation' => :'GeoPoint',
         :'geolocation_country' => :'String',
@@ -194,6 +200,10 @@ module UltracartClient
 
       if attributes.has_key?(:'events_json_key')
         self.events_json_key = attributes[:'events_json_key']
+      end
+
+      if attributes.has_key?(:'favorite')
+        self.favorite = attributes[:'favorite']
       end
 
       if attributes.has_key?(:'favorites')
@@ -331,6 +341,7 @@ module UltracartClient
           esp_customer_uuid == o.esp_customer_uuid &&
           events_gz_size == o.events_gz_size &&
           events_json_key == o.events_json_key &&
+          favorite == o.favorite &&
           favorites == o.favorites &&
           geolocation == o.geolocation &&
           geolocation_country == o.geolocation_country &&
@@ -366,7 +377,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [analytics_client_oid, analytics_session_dts, analytics_session_oid, email, end_timestamp, esp_customer_uuid, events_gz_size, events_json_key, favorites, geolocation, geolocation_country, geolocation_state, merchant_id, order_id, page_view_count, page_views, rrweb_version, screen_recording_uuid, signed_download_url, start_timestamp, storefront_oids, storefronts, tags, time_on_site, ucacid, user_agent, user_agent_raw, user_ip, user_properties, watched, window_height, window_width].hash
+      [analytics_client_oid, analytics_session_dts, analytics_session_oid, email, end_timestamp, esp_customer_uuid, events_gz_size, events_json_key, favorite, favorites, geolocation, geolocation_country, geolocation_state, merchant_id, order_id, page_view_count, page_views, rrweb_version, screen_recording_uuid, signed_download_url, start_timestamp, storefront_oids, storefronts, tags, time_on_site, ucacid, user_agent, user_agent_raw, user_ip, user_properties, watched, window_height, window_width].hash
     end
 
     # Builds the object from hash

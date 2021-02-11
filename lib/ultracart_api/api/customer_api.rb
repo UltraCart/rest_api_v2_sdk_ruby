@@ -568,6 +568,61 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Create a token that can be used to verify a customer email address
+    # Create a token that can be used to verify a customer email address.  The implementation of how a customer interacts with this token is left to the merchant. 
+    # @param token_request Token request
+    # @param [Hash] opts the optional parameters
+    # @return [EmailVerifyTokenResponse]
+    def get_email_verification_token(token_request, opts = {})
+      data, _status_code, _headers = get_email_verification_token_with_http_info(token_request, opts)
+      data
+    end
+
+    # Create a token that can be used to verify a customer email address
+    # Create a token that can be used to verify a customer email address.  The implementation of how a customer interacts with this token is left to the merchant. 
+    # @param token_request Token request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailVerifyTokenResponse, Fixnum, Hash)>] EmailVerifyTokenResponse data, response status code and response headers
+    def get_email_verification_token_with_http_info(token_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.get_email_verification_token ...'
+      end
+      # verify the required parameter 'token_request' is set
+      if @api_client.config.client_side_validation && token_request.nil?
+        fail ArgumentError, "Missing the required parameter 'token_request' when calling CustomerApi.get_email_verification_token"
+      end
+      # resource path
+      local_var_path = '/customer/customers/email_verify/get_token'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(token_request)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailVerifyTokenResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#get_email_verification_token\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Insert a customer
     # Insert a customer on the UltraCart account. 
     # @param customer Customer to insert
@@ -748,6 +803,61 @@ module UltracartClient
         :return_type => 'CustomerEmailListChanges')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CustomerApi#update_customer_email_lists\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Validate a token that can be used to verify a customer email address
+    # Validate a token that can be used to verify a customer email address.  The implementation of how a customer interacts with this token is left to the merchant. 
+    # @param validation_request Token validation request
+    # @param [Hash] opts the optional parameters
+    # @return [EmailVerifyTokenResponse]
+    def validate_email_verification_token(validation_request, opts = {})
+      data, _status_code, _headers = validate_email_verification_token_with_http_info(validation_request, opts)
+      data
+    end
+
+    # Validate a token that can be used to verify a customer email address
+    # Validate a token that can be used to verify a customer email address.  The implementation of how a customer interacts with this token is left to the merchant. 
+    # @param validation_request Token validation request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailVerifyTokenResponse, Fixnum, Hash)>] EmailVerifyTokenResponse data, response status code and response headers
+    def validate_email_verification_token_with_http_info(validation_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.validate_email_verification_token ...'
+      end
+      # verify the required parameter 'validation_request' is set
+      if @api_client.config.client_side_validation && validation_request.nil?
+        fail ArgumentError, "Missing the required parameter 'validation_request' when calling CustomerApi.validate_email_verification_token"
+      end
+      # resource path
+      local_var_path = '/customer/customers/email_verify/validate_token'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(validation_request)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailVerifyTokenResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#validate_email_verification_token\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

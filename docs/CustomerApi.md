@@ -12,9 +12,11 @@ Method | HTTP request | Description
 [**get_customers_for_data_tables**](CustomerApi.md#get_customers_for_data_tables) | **POST** /customer/customers/dataTables | Retrieve customers for DataTables plugin
 [**get_editor_values**](CustomerApi.md#get_editor_values) | **GET** /customer/editor_values | Retrieve values needed for a customer profile editor
 [**get_email_lists**](CustomerApi.md#get_email_lists) | **GET** /customer/email_lists | Retrieve all email lists across all storefronts
+[**get_email_verification_token**](CustomerApi.md#get_email_verification_token) | **POST** /customer/customers/email_verify/get_token | Create a token that can be used to verify a customer email address
 [**insert_customer**](CustomerApi.md#insert_customer) | **POST** /customer/customers | Insert a customer
 [**update_customer**](CustomerApi.md#update_customer) | **PUT** /customer/customers/{customer_profile_oid} | Update a customer
 [**update_customer_email_lists**](CustomerApi.md#update_customer_email_lists) | **POST** /customer/customers/{customer_profile_oid}/email_lists | Update email list subscriptions for a customer
+[**validate_email_verification_token**](CustomerApi.md#validate_email_verification_token) | **POST** /customer/customers/email_verify/validate_token | Validate a token that can be used to verify a customer email address
 
 
 # **delete_customer**
@@ -491,6 +493,56 @@ This endpoint does not need any parameter.
 
 
 
+# **get_email_verification_token**
+> EmailVerifyTokenResponse get_email_verification_token(token_request)
+
+Create a token that can be used to verify a customer email address
+
+Create a token that can be used to verify a customer email address.  The implementation of how a customer interacts with this token is left to the merchant. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+
+
+token_request = UltracartClient::EmailVerifyTokenRequest.new # EmailVerifyTokenRequest | Token request
+
+
+begin
+  #Create a token that can be used to verify a customer email address
+  result = api_instance.get_email_verification_token(token_request)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling CustomerApi->get_email_verification_token: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token_request** | [**EmailVerifyTokenRequest**](EmailVerifyTokenRequest.md)| Token request | 
+
+### Return type
+
+[**EmailVerifyTokenResponse**](EmailVerifyTokenResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **insert_customer**
 > CustomerResponse insert_customer(customer, opts)
 
@@ -651,6 +703,56 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json; charset=UTF-8
+ - **Accept**: application/json
+
+
+
+# **validate_email_verification_token**
+> EmailVerifyTokenResponse validate_email_verification_token(validation_request)
+
+Validate a token that can be used to verify a customer email address
+
+Validate a token that can be used to verify a customer email address.  The implementation of how a customer interacts with this token is left to the merchant. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+
+
+validation_request = UltracartClient::EmailVerifyTokenValidateRequest.new # EmailVerifyTokenValidateRequest | Token validation request
+
+
+begin
+  #Validate a token that can be used to verify a customer email address
+  result = api_instance.validate_email_verification_token(validation_request)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling CustomerApi->validate_email_verification_token: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **validation_request** | [**EmailVerifyTokenValidateRequest**](EmailVerifyTokenValidateRequest.md)| Token validation request | 
+
+### Return type
+
+[**EmailVerifyTokenResponse**](EmailVerifyTokenResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
