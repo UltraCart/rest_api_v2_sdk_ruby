@@ -1034,7 +1034,7 @@ module UltracartClient
     end
     # Update multiple coupons
     # Update multiple coupon on the UltraCart account. 
-    # @param coupons_request Coupons to update (synchronous maximum 20 / asynchronous maximum 100)
+    # @param coupons_request Coupons to update (synchronous maximum 50 / asynchronous maximum 100)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
@@ -1047,7 +1047,7 @@ module UltracartClient
 
     # Update multiple coupons
     # Update multiple coupon on the UltraCart account. 
-    # @param coupons_request Coupons to update (synchronous maximum 20 / asynchronous maximum 100)
+    # @param coupons_request Coupons to update (synchronous maximum 50 / asynchronous maximum 100)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
