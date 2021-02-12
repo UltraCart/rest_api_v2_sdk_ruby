@@ -4366,7 +4366,7 @@ Name | Type | Description  | Notes
 
 
 # **get_screen_recording_page_view_data**
-> ScreenRecordingResponse get_screen_recording_page_view_data(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid)
+> ScreenRecordingPageViewDataResponse get_screen_recording_page_view_data(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid)
 
 Get screen recording page view data
 
@@ -4408,7 +4408,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ScreenRecordingResponse**](ScreenRecordingResponse.md)
+[**ScreenRecordingPageViewDataResponse**](ScreenRecordingPageViewDataResponse.md)
 
 ### Authorization
 

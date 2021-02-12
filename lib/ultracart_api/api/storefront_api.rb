@@ -4833,7 +4833,7 @@ module UltracartClient
     # @param screen_recording_uuid 
     # @param screen_recording_page_view_uuid 
     # @param [Hash] opts the optional parameters
-    # @return [ScreenRecordingResponse]
+    # @return [ScreenRecordingPageViewDataResponse]
     def get_screen_recording_page_view_data(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid, opts = {})
       data, _status_code, _headers = get_screen_recording_page_view_data_with_http_info(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid, opts)
       data
@@ -4845,7 +4845,7 @@ module UltracartClient
     # @param screen_recording_uuid 
     # @param screen_recording_page_view_uuid 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ScreenRecordingResponse, Fixnum, Hash)>] ScreenRecordingResponse data, response status code and response headers
+    # @return [Array<(ScreenRecordingPageViewDataResponse, Fixnum, Hash)>] ScreenRecordingPageViewDataResponse data, response status code and response headers
     def get_screen_recording_page_view_data_with_http_info(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StorefrontApi.get_screen_recording_page_view_data ...'
@@ -4888,7 +4888,7 @@ module UltracartClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'ScreenRecordingResponse')
+        :return_type => 'ScreenRecordingPageViewDataResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#get_screen_recording_page_view_data\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
