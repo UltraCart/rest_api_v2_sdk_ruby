@@ -24,6 +24,8 @@ module UltracartClient
     # Last event timestamp
     attr_accessor :last_event_timestamp
 
+    attr_accessor :missing_events
+
     attr_accessor :params
 
     attr_accessor :range_end
@@ -53,6 +55,7 @@ module UltracartClient
         :'first_event_timestamp' => :'first_event_timestamp',
         :'http_post' => :'http_post',
         :'last_event_timestamp' => :'last_event_timestamp',
+        :'missing_events' => :'missing_events',
         :'params' => :'params',
         :'range_end' => :'range_end',
         :'range_start' => :'range_start',
@@ -74,6 +77,7 @@ module UltracartClient
         :'first_event_timestamp' => :'String',
         :'http_post' => :'BOOLEAN',
         :'last_event_timestamp' => :'String',
+        :'missing_events' => :'BOOLEAN',
         :'params' => :'Array<ScreenRecordingPageViewParameter>',
         :'range_end' => :'Integer',
         :'range_start' => :'Integer',
@@ -112,6 +116,10 @@ module UltracartClient
 
       if attributes.has_key?(:'last_event_timestamp')
         self.last_event_timestamp = attributes[:'last_event_timestamp']
+      end
+
+      if attributes.has_key?(:'missing_events')
+        self.missing_events = attributes[:'missing_events']
       end
 
       if attributes.has_key?(:'params')
@@ -185,6 +193,7 @@ module UltracartClient
           first_event_timestamp == o.first_event_timestamp &&
           http_post == o.http_post &&
           last_event_timestamp == o.last_event_timestamp &&
+          missing_events == o.missing_events &&
           params == o.params &&
           range_end == o.range_end &&
           range_start == o.range_start &&
@@ -207,7 +216,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [events, first_event_timestamp, http_post, last_event_timestamp, params, range_end, range_start, referrer, referrer_params, referrer_raw, screen_recording_page_view_uuid, time_on_page, truncated_events, ucapv, url].hash
+      [events, first_event_timestamp, http_post, last_event_timestamp, missing_events, params, range_end, range_start, referrer, referrer_params, referrer_raw, screen_recording_page_view_uuid, time_on_page, truncated_events, ucapv, url].hash
     end
 
     # Builds the object from hash

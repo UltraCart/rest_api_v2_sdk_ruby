@@ -14,6 +14,9 @@ require 'date'
 
 module UltracartClient
   class ItemContentAssignment
+    # True if this group is the default assignment for this item
+    attr_accessor :default_assignment
+
     # Page (group) object identifier
     attr_accessor :group_oid
 
@@ -32,6 +35,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'default_assignment' => :'default_assignment',
         :'group_oid' => :'group_oid',
         :'group_path' => :'group_path',
         :'host' => :'host',
@@ -43,6 +47,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'default_assignment' => :'BOOLEAN',
         :'group_oid' => :'Integer',
         :'group_path' => :'String',
         :'host' => :'String',
@@ -58,6 +63,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'default_assignment')
+        self.default_assignment = attributes[:'default_assignment']
+      end
 
       if attributes.has_key?(:'group_oid')
         self.group_oid = attributes[:'group_oid']
@@ -113,6 +122,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          default_assignment == o.default_assignment &&
           group_oid == o.group_oid &&
           group_path == o.group_path &&
           host == o.host &&
@@ -129,7 +139,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [group_oid, group_path, host, sort_order, url_part].hash
+      [default_assignment, group_oid, group_path, host, sort_order, url_part].hash
     end
 
     # Builds the object from hash
