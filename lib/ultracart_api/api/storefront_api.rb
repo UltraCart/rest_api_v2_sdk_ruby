@@ -8245,6 +8245,72 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Update merchant notes on a screen recording
+    # Update merchant notes on a screen recording 
+    # @param storefront_oid 
+    # @param screen_recording_uuid 
+    # @param merchant_notes_request Merchant Notes
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def update_screen_recording_merchant_notes(storefront_oid, screen_recording_uuid, merchant_notes_request, opts = {})
+      update_screen_recording_merchant_notes_with_http_info(storefront_oid, screen_recording_uuid, merchant_notes_request, opts)
+      nil
+    end
+
+    # Update merchant notes on a screen recording
+    # Update merchant notes on a screen recording 
+    # @param storefront_oid 
+    # @param screen_recording_uuid 
+    # @param merchant_notes_request Merchant Notes
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def update_screen_recording_merchant_notes_with_http_info(storefront_oid, screen_recording_uuid, merchant_notes_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.update_screen_recording_merchant_notes ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.update_screen_recording_merchant_notes"
+      end
+      # verify the required parameter 'screen_recording_uuid' is set
+      if @api_client.config.client_side_validation && screen_recording_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'screen_recording_uuid' when calling StorefrontApi.update_screen_recording_merchant_notes"
+      end
+      # verify the required parameter 'merchant_notes_request' is set
+      if @api_client.config.client_side_validation && merchant_notes_request.nil?
+        fail ArgumentError, "Missing the required parameter 'merchant_notes_request' when calling StorefrontApi.update_screen_recording_merchant_notes"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/merchant_notes'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'screen_recording_uuid' + '}', screen_recording_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(merchant_notes_request)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#update_screen_recording_merchant_notes\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Update screen recording segment
     # @param storefront_oid 
     # @param screen_recording_segment_oid 
