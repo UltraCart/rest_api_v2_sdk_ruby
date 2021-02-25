@@ -34,6 +34,7 @@ Name | Type | Description | Notes
 **user_agent_raw** | **String** |  | [optional] 
 **user_ip** | **String** |  | [optional] 
 **user_properties** | [**Array&lt;ScreenRecordingUserProperty&gt;**](ScreenRecordingUserProperty.md) |  | [optional] 
+**visitor_first_seen** | **String** | Timestamp this visitor was first seen | [optional] 
 **visitor_number** | **Integer** |  | [optional] 
 **watched** | **BOOLEAN** |  | [optional] 
 **window_height** | **Integer** |  | [optional] 

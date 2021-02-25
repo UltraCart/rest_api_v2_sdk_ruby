@@ -80,6 +80,9 @@ module UltracartClient
 
     attr_accessor :user_properties
 
+    # Timestamp this visitor was first seen
+    attr_accessor :visitor_first_seen
+
     attr_accessor :visitor_number
 
     attr_accessor :watched
@@ -122,6 +125,7 @@ module UltracartClient
         :'user_agent_raw' => :'user_agent_raw',
         :'user_ip' => :'user_ip',
         :'user_properties' => :'user_properties',
+        :'visitor_first_seen' => :'visitor_first_seen',
         :'visitor_number' => :'visitor_number',
         :'watched' => :'watched',
         :'window_height' => :'window_height',
@@ -163,6 +167,7 @@ module UltracartClient
         :'user_agent_raw' => :'String',
         :'user_ip' => :'String',
         :'user_properties' => :'Array<ScreenRecordingUserProperty>',
+        :'visitor_first_seen' => :'String',
         :'visitor_number' => :'Integer',
         :'watched' => :'BOOLEAN',
         :'window_height' => :'Integer',
@@ -314,6 +319,10 @@ module UltracartClient
         end
       end
 
+      if attributes.has_key?(:'visitor_first_seen')
+        self.visitor_first_seen = attributes[:'visitor_first_seen']
+      end
+
       if attributes.has_key?(:'visitor_number')
         self.visitor_number = attributes[:'visitor_number']
       end
@@ -380,6 +389,7 @@ module UltracartClient
           user_agent_raw == o.user_agent_raw &&
           user_ip == o.user_ip &&
           user_properties == o.user_properties &&
+          visitor_first_seen == o.visitor_first_seen &&
           visitor_number == o.visitor_number &&
           watched == o.watched &&
           window_height == o.window_height &&
@@ -395,7 +405,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [analytics_client_oid, analytics_session_dts, analytics_session_oid, email, end_timestamp, esp_customer_uuid, events_gz_size, events_json_key, favorite, favorites, geolocation, geolocation_country, geolocation_state, merchant_id, merchant_notes, order_id, page_view_count, page_views, rrweb_version, screen_recording_uuid, signed_download_url, start_timestamp, storefront_oids, storefronts, tags, time_on_site, ucacid, user_agent, user_agent_raw, user_ip, user_properties, visitor_number, watched, window_height, window_width].hash
+      [analytics_client_oid, analytics_session_dts, analytics_session_oid, email, end_timestamp, esp_customer_uuid, events_gz_size, events_json_key, favorite, favorites, geolocation, geolocation_country, geolocation_state, merchant_id, merchant_notes, order_id, page_view_count, page_views, rrweb_version, screen_recording_uuid, signed_download_url, start_timestamp, storefront_oids, storefronts, tags, time_on_site, ucacid, user_agent, user_agent_raw, user_ip, user_properties, visitor_first_seen, visitor_number, watched, window_height, window_width].hash
     end
 
     # Builds the object from hash

@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **user_agent_os_name** | **String** |  | [optional] 
 **user_agent_os_version** | **String** |  | [optional] 
 **user_ip** | [**ScreenRecordingFilterIpSearch**](ScreenRecordingFilterIpSearch.md) |  | [optional] 
+**visitor_number** | **Integer** |  | [optional] 
 **watched** | **BOOLEAN** |  | [optional] 
 
 
