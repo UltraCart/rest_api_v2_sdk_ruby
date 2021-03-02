@@ -800,7 +800,7 @@ module UltracartClient
     end
     # Insert multiple coupons
     # Insert multiple coupon on the UltraCart account. 
-    # @param coupons_request Coupons to insert (maximum 20)
+    # @param coupons_request Coupons to insert (maximum 50)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
@@ -812,7 +812,7 @@ module UltracartClient
 
     # Insert multiple coupons
     # Insert multiple coupon on the UltraCart account. 
-    # @param coupons_request Coupons to insert (maximum 20)
+    # @param coupons_request Coupons to insert (maximum 50)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
