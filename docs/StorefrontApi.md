@@ -1115,7 +1115,7 @@ nil (empty response body)
 
 
 # **delete_screen_recording_segment**
-> ScreenRecordingSegmentResponse delete_screen_recording_segment(storefront_oid, screen_recording_segment_oid)
+> delete_screen_recording_segment(storefront_oid, screen_recording_segment_oid)
 
 Delete screen recording segment
 
@@ -1136,8 +1136,7 @@ screen_recording_segment_oid = 56 # Integer |
 
 begin
   #Delete screen recording segment
-  result = api_instance.delete_screen_recording_segment(storefront_oid, screen_recording_segment_oid)
-  p result
+  api_instance.delete_screen_recording_segment(storefront_oid, screen_recording_segment_oid)
 rescue UltracartClient::ApiError => e
   puts "Exception when calling StorefrontApi->delete_screen_recording_segment: #{e}"
 end
@@ -1152,7 +1151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ScreenRecordingSegmentResponse**](ScreenRecordingSegmentResponse.md)
+nil (empty response body)
 
 ### Authorization
 

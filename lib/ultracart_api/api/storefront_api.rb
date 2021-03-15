@@ -1141,17 +1141,17 @@ module UltracartClient
     # @param storefront_oid 
     # @param screen_recording_segment_oid 
     # @param [Hash] opts the optional parameters
-    # @return [ScreenRecordingSegmentResponse]
+    # @return [nil]
     def delete_screen_recording_segment(storefront_oid, screen_recording_segment_oid, opts = {})
-      data, _status_code, _headers = delete_screen_recording_segment_with_http_info(storefront_oid, screen_recording_segment_oid, opts)
-      data
+      delete_screen_recording_segment_with_http_info(storefront_oid, screen_recording_segment_oid, opts)
+      nil
     end
 
     # Delete screen recording segment
     # @param storefront_oid 
     # @param screen_recording_segment_oid 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ScreenRecordingSegmentResponse, Fixnum, Hash)>] ScreenRecordingSegmentResponse data, response status code and response headers
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_screen_recording_segment_with_http_info(storefront_oid, screen_recording_segment_oid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StorefrontApi.delete_screen_recording_segment ...'
@@ -1189,8 +1189,7 @@ module UltracartClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'ScreenRecordingSegmentResponse')
+        :auth_names => auth_names)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#delete_screen_recording_segment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
