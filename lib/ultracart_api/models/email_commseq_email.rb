@@ -80,6 +80,9 @@ module UltracartClient
     # Subject
     attr_accessor :subject
 
+    # True if the email was suspended for too high of a spam rate.
+    attr_accessor :suspended_for_spam
+
     # Transactional email
     attr_accessor :transactional_email
 
@@ -111,6 +114,7 @@ module UltracartClient
         :'smart_sending' => :'smart_sending',
         :'storefront_oid' => :'storefront_oid',
         :'subject' => :'subject',
+        :'suspended_for_spam' => :'suspended_for_spam',
         :'transactional_email' => :'transactional_email',
         :'version' => :'version'
       }
@@ -141,6 +145,7 @@ module UltracartClient
         :'smart_sending' => :'BOOLEAN',
         :'storefront_oid' => :'Integer',
         :'subject' => :'String',
+        :'suspended_for_spam' => :'BOOLEAN',
         :'transactional_email' => :'BOOLEAN',
         :'version' => :'Integer'
       }
@@ -242,6 +247,10 @@ module UltracartClient
         self.subject = attributes[:'subject']
       end
 
+      if attributes.has_key?(:'suspended_for_spam')
+        self.suspended_for_spam = attributes[:'suspended_for_spam']
+      end
+
       if attributes.has_key?(:'transactional_email')
         self.transactional_email = attributes[:'transactional_email']
       end
@@ -291,6 +300,7 @@ module UltracartClient
           smart_sending == o.smart_sending &&
           storefront_oid == o.storefront_oid &&
           subject == o.subject &&
+          suspended_for_spam == o.suspended_for_spam &&
           transactional_email == o.transactional_email &&
           version == o.version
     end
@@ -304,7 +314,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [deleted, edited_by_user, email_communication_sequence_email_uuid, email_communication_sequence_uuid, email_container_cjson, email_container_cjson_last_modified_dts, email_template_vm_path, filter_profile_equation_json, individually_render, library_item_oid, merchant_id, pending_review, preview_text, rejected, requires_review, screenshot_large_full_url, screenshot_large_viewport_url, screenshot_small_full_url, screenshot_small_viewport_url, smart_sending, storefront_oid, subject, transactional_email, version].hash
+      [deleted, edited_by_user, email_communication_sequence_email_uuid, email_communication_sequence_uuid, email_container_cjson, email_container_cjson_last_modified_dts, email_template_vm_path, filter_profile_equation_json, individually_render, library_item_oid, merchant_id, pending_review, preview_text, rejected, requires_review, screenshot_large_full_url, screenshot_large_viewport_url, screenshot_small_full_url, screenshot_small_viewport_url, smart_sending, storefront_oid, subject, suspended_for_spam, transactional_email, version].hash
     end
 
     # Builds the object from hash

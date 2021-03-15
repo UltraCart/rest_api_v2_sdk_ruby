@@ -571,6 +571,13 @@ module UltracartClient
     # @option opts [Integer] :customer_profile_oid 
     # @option opts [String] :refund_date_begin 
     # @option opts [String] :refund_date_end 
+    # @option opts [String] :custom_field_1 
+    # @option opts [String] :custom_field_2 
+    # @option opts [String] :custom_field_3 
+    # @option opts [String] :custom_field_4 
+    # @option opts [String] :custom_field_5 
+    # @option opts [String] :custom_field_6 
+    # @option opts [String] :custom_field_7 
     # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Maximum 200) (default to 100)
     # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
     # @option opts [String] :_sort The sort order of the orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
@@ -614,6 +621,13 @@ module UltracartClient
     # @option opts [Integer] :customer_profile_oid 
     # @option opts [String] :refund_date_begin 
     # @option opts [String] :refund_date_end 
+    # @option opts [String] :custom_field_1 
+    # @option opts [String] :custom_field_2 
+    # @option opts [String] :custom_field_3 
+    # @option opts [String] :custom_field_4 
+    # @option opts [String] :custom_field_5 
+    # @option opts [String] :custom_field_6 
+    # @option opts [String] :custom_field_7 
     # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Maximum 200)
     # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
     # @option opts [String] :_sort The sort order of the orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
@@ -658,6 +672,13 @@ module UltracartClient
       query_params[:'customer_profile_oid'] = opts[:'customer_profile_oid'] if !opts[:'customer_profile_oid'].nil?
       query_params[:'Refund Date Begin'] = opts[:'refund_date_begin'] if !opts[:'refund_date_begin'].nil?
       query_params[:'Refund Date End'] = opts[:'refund_date_end'] if !opts[:'refund_date_end'].nil?
+      query_params[:'Custom Field 1'] = opts[:'custom_field_1'] if !opts[:'custom_field_1'].nil?
+      query_params[:'Custom Field 2'] = opts[:'custom_field_2'] if !opts[:'custom_field_2'].nil?
+      query_params[:'Custom Field 3'] = opts[:'custom_field_3'] if !opts[:'custom_field_3'].nil?
+      query_params[:'Custom Field 4'] = opts[:'custom_field_4'] if !opts[:'custom_field_4'].nil?
+      query_params[:'Custom Field 5'] = opts[:'custom_field_5'] if !opts[:'custom_field_5'].nil?
+      query_params[:'Custom Field 6'] = opts[:'custom_field_6'] if !opts[:'custom_field_6'].nil?
+      query_params[:'Custom Field 7'] = opts[:'custom_field_7'] if !opts[:'custom_field_7'].nil?
       query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
       query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
       query_params[:'_sort'] = opts[:'_sort'] if !opts[:'_sort'].nil?

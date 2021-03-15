@@ -535,6 +535,13 @@ opts = {
   customer_profile_oid: 56, # Integer | 
   refund_date_begin: 'refund_date_begin_example', # String | 
   refund_date_end: 'refund_date_end_example', # String | 
+  custom_field_1: 'custom_field_1_example', # String | 
+  custom_field_2: 'custom_field_2_example', # String | 
+  custom_field_3: 'custom_field_3_example', # String | 
+  custom_field_4: 'custom_field_4_example', # String | 
+  custom_field_5: 'custom_field_5_example', # String | 
+  custom_field_6: 'custom_field_6_example', # String | 
+  custom_field_7: 'custom_field_7_example', # String | 
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Maximum 200)
   _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
   _sort: '_sort_example', # String | The sort order of the orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
@@ -584,6 +591,13 @@ Name | Type | Description  | Notes
  **customer_profile_oid** | **Integer**|  | [optional] 
  **refund_date_begin** | **String**|  | [optional] 
  **refund_date_end** | **String**|  | [optional] 
+ **custom_field_1** | **String**|  | [optional] 
+ **custom_field_2** | **String**|  | [optional] 
+ **custom_field_3** | **String**|  | [optional] 
+ **custom_field_4** | **String**|  | [optional] 
+ **custom_field_5** | **String**|  | [optional] 
+ **custom_field_6** | **String**|  | [optional] 
+ **custom_field_7** | **String**|  | [optional] 
  **_limit** | **Integer**| The maximum number of records to return on this one API call. (Maximum 200) | [optional] [default to 100]
  **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] [default to 0]
  **_sort** | **String**| The sort order of the orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] 
