@@ -156,6 +156,7 @@ require 'ultracart_api/models/coupon_percent_off_item_with_items_quantity_purcha
 require 'ultracart_api/models/coupon_percent_off_items'
 require 'ultracart_api/models/coupon_percent_off_items_and_free_shipping'
 require 'ultracart_api/models/coupon_percent_off_items_with_items_purchase'
+require 'ultracart_api/models/coupon_percent_off_msrp_items'
 require 'ultracart_api/models/coupon_percent_off_retail_price_items'
 require 'ultracart_api/models/coupon_percent_off_shipping'
 require 'ultracart_api/models/coupon_percent_off_subtotal'
