@@ -110,11 +110,17 @@ module UltracartClient
     # Screen branding theme code associated with the order (legacy checkout)
     attr_accessor :screen_branding_theme_code
 
-    # Date/time that the order was shipping
+    # Date/time that the order was shipped
     attr_accessor :shipment_date_begin
 
     # Date/time that the order was shipped
     attr_accessor :shipment_date_end
+
+    # Date/time that the order should ship on
+    attr_accessor :shipped_on_date_begin
+
+    # Date/time that the order should ship on
+    attr_accessor :shipped_on_date_end
 
     # State for United States otherwise region or province for other countries
     attr_accessor :state_region
@@ -184,6 +190,8 @@ module UltracartClient
         :'screen_branding_theme_code' => :'screen_branding_theme_code',
         :'shipment_date_begin' => :'shipment_date_begin',
         :'shipment_date_end' => :'shipment_date_end',
+        :'shipped_on_date_begin' => :'shipped_on_date_begin',
+        :'shipped_on_date_end' => :'shipped_on_date_end',
         :'state_region' => :'state_region',
         :'storefront_host_name' => :'storefront_host_name',
         :'total' => :'total'
@@ -227,6 +235,8 @@ module UltracartClient
         :'screen_branding_theme_code' => :'String',
         :'shipment_date_begin' => :'String',
         :'shipment_date_end' => :'String',
+        :'shipped_on_date_begin' => :'String',
+        :'shipped_on_date_end' => :'String',
         :'state_region' => :'String',
         :'storefront_host_name' => :'String',
         :'total' => :'Float'
@@ -375,6 +385,14 @@ module UltracartClient
 
       if attributes.has_key?(:'shipment_date_end')
         self.shipment_date_end = attributes[:'shipment_date_end']
+      end
+
+      if attributes.has_key?(:'shipped_on_date_begin')
+        self.shipped_on_date_begin = attributes[:'shipped_on_date_begin']
+      end
+
+      if attributes.has_key?(:'shipped_on_date_end')
+        self.shipped_on_date_end = attributes[:'shipped_on_date_end']
       end
 
       if attributes.has_key?(:'state_region')
@@ -646,6 +664,8 @@ module UltracartClient
           screen_branding_theme_code == o.screen_branding_theme_code &&
           shipment_date_begin == o.shipment_date_begin &&
           shipment_date_end == o.shipment_date_end &&
+          shipped_on_date_begin == o.shipped_on_date_begin &&
+          shipped_on_date_end == o.shipped_on_date_end &&
           state_region == o.state_region &&
           storefront_host_name == o.storefront_host_name &&
           total == o.total
@@ -660,7 +680,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [cc_email, channel_partner_code, channel_partner_order_id, city, company, country_code, creation_date_begin, creation_date_end, current_stage, custom_field_1, custom_field_2, custom_field_3, custom_field_4, custom_field_5, custom_field_6, custom_field_7, customer_profile_oid, email, first_name, item_id, last_name, order_id, payment_date_begin, payment_date_end, payment_method, phone, postal_code, purchase_order_number, refund_date_begin, refund_date_end, rma, screen_branding_theme_code, shipment_date_begin, shipment_date_end, state_region, storefront_host_name, total].hash
+      [cc_email, channel_partner_code, channel_partner_order_id, city, company, country_code, creation_date_begin, creation_date_end, current_stage, custom_field_1, custom_field_2, custom_field_3, custom_field_4, custom_field_5, custom_field_6, custom_field_7, customer_profile_oid, email, first_name, item_id, last_name, order_id, payment_date_begin, payment_date_end, payment_method, phone, postal_code, purchase_order_number, refund_date_begin, refund_date_end, rma, screen_branding_theme_code, shipment_date_begin, shipment_date_end, shipped_on_date_begin, shipped_on_date_end, state_region, storefront_host_name, total].hash
     end
 
     # Builds the object from hash

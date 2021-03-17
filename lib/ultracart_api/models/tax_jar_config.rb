@@ -29,6 +29,9 @@ module UltracartClient
     # Send test orders through to TaxJar.  The default is to not transmit test orders to TaxJar.
     attr_accessor :send_test_orders
 
+    # Do not send channel partner orders to TaxJar.  Set this to true if your channel partner reports tax on their own.
+    attr_accessor :skip_channel_orders
+
     # Use distribution center from address
     attr_accessor :use_distribution_center_from
 
@@ -40,6 +43,7 @@ module UltracartClient
         :'estimate_only' => :'estimate_only',
         :'send_outside_nexus' => :'send_outside_nexus',
         :'send_test_orders' => :'send_test_orders',
+        :'skip_channel_orders' => :'skip_channel_orders',
         :'use_distribution_center_from' => :'use_distribution_center_from'
       }
     end
@@ -52,6 +56,7 @@ module UltracartClient
         :'estimate_only' => :'BOOLEAN',
         :'send_outside_nexus' => :'BOOLEAN',
         :'send_test_orders' => :'BOOLEAN',
+        :'skip_channel_orders' => :'BOOLEAN',
         :'use_distribution_center_from' => :'BOOLEAN'
       }
     end
@@ -84,6 +89,10 @@ module UltracartClient
         self.send_test_orders = attributes[:'send_test_orders']
       end
 
+      if attributes.has_key?(:'skip_channel_orders')
+        self.skip_channel_orders = attributes[:'skip_channel_orders']
+      end
+
       if attributes.has_key?(:'use_distribution_center_from')
         self.use_distribution_center_from = attributes[:'use_distribution_center_from']
       end
@@ -112,6 +121,7 @@ module UltracartClient
           estimate_only == o.estimate_only &&
           send_outside_nexus == o.send_outside_nexus &&
           send_test_orders == o.send_test_orders &&
+          skip_channel_orders == o.skip_channel_orders &&
           use_distribution_center_from == o.use_distribution_center_from
     end
 
@@ -124,7 +134,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [active, api_key, estimate_only, send_outside_nexus, send_test_orders, use_distribution_center_from].hash
+      [active, api_key, estimate_only, send_outside_nexus, send_test_orders, skip_channel_orders, use_distribution_center_from].hash
     end
 
     # Builds the object from hash
