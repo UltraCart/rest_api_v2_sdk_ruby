@@ -18,6 +18,10 @@ module UltracartClient
 
     attr_accessor :page_params
 
+    attr_accessor :time_on_page_max
+
+    attr_accessor :time_on_page_min
+
     attr_accessor :urls
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -25,6 +29,8 @@ module UltracartClient
       {
         :'events' => :'events',
         :'page_params' => :'page_params',
+        :'time_on_page_max' => :'time_on_page_max',
+        :'time_on_page_min' => :'time_on_page_min',
         :'urls' => :'urls'
       }
     end
@@ -34,6 +40,8 @@ module UltracartClient
       {
         :'events' => :'Array<ScreenRecordingFilterValuesEvent>',
         :'page_params' => :'Array<ScreenRecordingFilterValuesPageParam>',
+        :'time_on_page_max' => :'Integer',
+        :'time_on_page_min' => :'Integer',
         :'urls' => :'Array<String>'
       }
     end
@@ -56,6 +64,14 @@ module UltracartClient
         if (value = attributes[:'page_params']).is_a?(Array)
           self.page_params = value
         end
+      end
+
+      if attributes.has_key?(:'time_on_page_max')
+        self.time_on_page_max = attributes[:'time_on_page_max']
+      end
+
+      if attributes.has_key?(:'time_on_page_min')
+        self.time_on_page_min = attributes[:'time_on_page_min']
       end
 
       if attributes.has_key?(:'urls')
@@ -85,6 +101,8 @@ module UltracartClient
       self.class == o.class &&
           events == o.events &&
           page_params == o.page_params &&
+          time_on_page_max == o.time_on_page_max &&
+          time_on_page_min == o.time_on_page_min &&
           urls == o.urls
     end
 
@@ -97,7 +115,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [events, page_params, urls].hash
+      [events, page_params, time_on_page_max, time_on_page_min, urls].hash
     end
 
     # Builds the object from hash

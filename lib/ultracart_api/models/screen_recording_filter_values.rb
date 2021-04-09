@@ -22,6 +22,10 @@ module UltracartClient
 
     attr_accessor :page_views
 
+    attr_accessor :time_on_site_max
+
+    attr_accessor :time_on_site_min
+
     attr_accessor :urls
 
     attr_accessor :user_agent_device_names
@@ -41,6 +45,8 @@ module UltracartClient
         :'geolocation_states' => :'geolocation_states',
         :'max_values' => :'max_values',
         :'page_views' => :'page_views',
+        :'time_on_site_max' => :'time_on_site_max',
+        :'time_on_site_min' => :'time_on_site_min',
         :'urls' => :'urls',
         :'user_agent_device_names' => :'user_agent_device_names',
         :'user_agent_device_os_names' => :'user_agent_device_os_names',
@@ -57,6 +63,8 @@ module UltracartClient
         :'geolocation_states' => :'Array<String>',
         :'max_values' => :'Integer',
         :'page_views' => :'Array<ScreenRecordingFilterValuesPageView>',
+        :'time_on_site_max' => :'Integer',
+        :'time_on_site_min' => :'Integer',
         :'urls' => :'Array<String>',
         :'user_agent_device_names' => :'Array<String>',
         :'user_agent_device_os_names' => :'Array<String>',
@@ -94,6 +102,14 @@ module UltracartClient
         if (value = attributes[:'page_views']).is_a?(Array)
           self.page_views = value
         end
+      end
+
+      if attributes.has_key?(:'time_on_site_max')
+        self.time_on_site_max = attributes[:'time_on_site_max']
+      end
+
+      if attributes.has_key?(:'time_on_site_min')
+        self.time_on_site_min = attributes[:'time_on_site_min']
       end
 
       if attributes.has_key?(:'urls')
@@ -155,6 +171,8 @@ module UltracartClient
           geolocation_states == o.geolocation_states &&
           max_values == o.max_values &&
           page_views == o.page_views &&
+          time_on_site_max == o.time_on_site_max &&
+          time_on_site_min == o.time_on_site_min &&
           urls == o.urls &&
           user_agent_device_names == o.user_agent_device_names &&
           user_agent_device_os_names == o.user_agent_device_os_names &&
@@ -172,7 +190,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [geolocation_countries, geolocation_states, max_values, page_views, urls, user_agent_device_names, user_agent_device_os_names, user_agent_device_os_versions, user_agent_names, user_agent_originals].hash
+      [geolocation_countries, geolocation_states, max_values, page_views, time_on_site_max, time_on_site_min, urls, user_agent_device_names, user_agent_device_os_names, user_agent_device_os_versions, user_agent_names, user_agent_originals].hash
     end
 
     # Builds the object from hash
