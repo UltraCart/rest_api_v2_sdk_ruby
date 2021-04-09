@@ -13,56 +13,28 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ScreenRecordingFilterValues
-    attr_accessor :geolocation_countries
+  class ScreenRecordingFilterValuesPageView
+    attr_accessor :events
 
-    attr_accessor :geolocation_states
-
-    attr_accessor :max_values
-
-    attr_accessor :page_views
+    attr_accessor :page_params
 
     attr_accessor :urls
-
-    attr_accessor :user_agent_device_names
-
-    attr_accessor :user_agent_device_os_names
-
-    attr_accessor :user_agent_device_os_versions
-
-    attr_accessor :user_agent_names
-
-    attr_accessor :user_agent_originals
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'geolocation_countries' => :'geolocation_countries',
-        :'geolocation_states' => :'geolocation_states',
-        :'max_values' => :'max_values',
-        :'page_views' => :'page_views',
-        :'urls' => :'urls',
-        :'user_agent_device_names' => :'user_agent_device_names',
-        :'user_agent_device_os_names' => :'user_agent_device_os_names',
-        :'user_agent_device_os_versions' => :'user_agent_device_os_versions',
-        :'user_agent_names' => :'user_agent_names',
-        :'user_agent_originals' => :'user_agent_originals'
+        :'events' => :'events',
+        :'page_params' => :'page_params',
+        :'urls' => :'urls'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'geolocation_countries' => :'Array<String>',
-        :'geolocation_states' => :'Array<String>',
-        :'max_values' => :'Integer',
-        :'page_views' => :'Array<ScreenRecordingFilterValuesPageView>',
-        :'urls' => :'Array<String>',
-        :'user_agent_device_names' => :'Array<String>',
-        :'user_agent_device_os_names' => :'Array<String>',
-        :'user_agent_device_os_versions' => :'Array<String>',
-        :'user_agent_names' => :'Array<String>',
-        :'user_agent_originals' => :'Array<String>'
+        :'events' => :'Array<ScreenRecordingFilterValuesEvent>',
+        :'page_params' => :'Array<ScreenRecordingFilterValuesPageParam>',
+        :'urls' => :'Array<String>'
       }
     end
 
@@ -74,61 +46,21 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'geolocation_countries')
-        if (value = attributes[:'geolocation_countries']).is_a?(Array)
-          self.geolocation_countries = value
+      if attributes.has_key?(:'events')
+        if (value = attributes[:'events']).is_a?(Array)
+          self.events = value
         end
       end
 
-      if attributes.has_key?(:'geolocation_states')
-        if (value = attributes[:'geolocation_states']).is_a?(Array)
-          self.geolocation_states = value
-        end
-      end
-
-      if attributes.has_key?(:'max_values')
-        self.max_values = attributes[:'max_values']
-      end
-
-      if attributes.has_key?(:'page_views')
-        if (value = attributes[:'page_views']).is_a?(Array)
-          self.page_views = value
+      if attributes.has_key?(:'page_params')
+        if (value = attributes[:'page_params']).is_a?(Array)
+          self.page_params = value
         end
       end
 
       if attributes.has_key?(:'urls')
         if (value = attributes[:'urls']).is_a?(Array)
           self.urls = value
-        end
-      end
-
-      if attributes.has_key?(:'user_agent_device_names')
-        if (value = attributes[:'user_agent_device_names']).is_a?(Array)
-          self.user_agent_device_names = value
-        end
-      end
-
-      if attributes.has_key?(:'user_agent_device_os_names')
-        if (value = attributes[:'user_agent_device_os_names']).is_a?(Array)
-          self.user_agent_device_os_names = value
-        end
-      end
-
-      if attributes.has_key?(:'user_agent_device_os_versions')
-        if (value = attributes[:'user_agent_device_os_versions']).is_a?(Array)
-          self.user_agent_device_os_versions = value
-        end
-      end
-
-      if attributes.has_key?(:'user_agent_names')
-        if (value = attributes[:'user_agent_names']).is_a?(Array)
-          self.user_agent_names = value
-        end
-      end
-
-      if attributes.has_key?(:'user_agent_originals')
-        if (value = attributes[:'user_agent_originals']).is_a?(Array)
-          self.user_agent_originals = value
         end
       end
     end
@@ -151,16 +83,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          geolocation_countries == o.geolocation_countries &&
-          geolocation_states == o.geolocation_states &&
-          max_values == o.max_values &&
-          page_views == o.page_views &&
-          urls == o.urls &&
-          user_agent_device_names == o.user_agent_device_names &&
-          user_agent_device_os_names == o.user_agent_device_os_names &&
-          user_agent_device_os_versions == o.user_agent_device_os_versions &&
-          user_agent_names == o.user_agent_names &&
-          user_agent_originals == o.user_agent_originals
+          events == o.events &&
+          page_params == o.page_params &&
+          urls == o.urls
     end
 
     # @see the `==` method
@@ -172,7 +97,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [geolocation_countries, geolocation_states, max_values, page_views, urls, user_agent_device_names, user_agent_device_os_names, user_agent_device_os_versions, user_agent_names, user_agent_originals].hash
+      [events, page_params, urls].hash
     end
 
     # Builds the object from hash

@@ -20,7 +20,7 @@ module UltracartClient
     # A list of items which cannot be discounted.
     attr_accessor :excluded_items
 
-    # An optional list of items which will receive a discount.  If blank, discount applies to all items except excluded items.
+    # An list of items which will receive a discount.
     attr_accessor :items
 
     # The (optional) maximum quantity of discounted items.
