@@ -44,6 +44,10 @@ module UltracartClient
 
     attr_accessor :user_agent_originals
 
+    attr_accessor :utm_campaigns
+
+    attr_accessor :utm_sources
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -61,7 +65,9 @@ module UltracartClient
         :'user_agent_device_os_names' => :'user_agent_device_os_names',
         :'user_agent_device_os_versions' => :'user_agent_device_os_versions',
         :'user_agent_names' => :'user_agent_names',
-        :'user_agent_originals' => :'user_agent_originals'
+        :'user_agent_originals' => :'user_agent_originals',
+        :'utm_campaigns' => :'utm_campaigns',
+        :'utm_sources' => :'utm_sources'
       }
     end
 
@@ -82,7 +88,9 @@ module UltracartClient
         :'user_agent_device_os_names' => :'Array<String>',
         :'user_agent_device_os_versions' => :'Array<String>',
         :'user_agent_names' => :'Array<String>',
-        :'user_agent_originals' => :'Array<String>'
+        :'user_agent_originals' => :'Array<String>',
+        :'utm_campaigns' => :'Array<String>',
+        :'utm_sources' => :'Array<String>'
       }
     end
 
@@ -177,6 +185,18 @@ module UltracartClient
           self.user_agent_originals = value
         end
       end
+
+      if attributes.has_key?(:'utm_campaigns')
+        if (value = attributes[:'utm_campaigns']).is_a?(Array)
+          self.utm_campaigns = value
+        end
+      end
+
+      if attributes.has_key?(:'utm_sources')
+        if (value = attributes[:'utm_sources']).is_a?(Array)
+          self.utm_sources = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -211,7 +231,9 @@ module UltracartClient
           user_agent_device_os_names == o.user_agent_device_os_names &&
           user_agent_device_os_versions == o.user_agent_device_os_versions &&
           user_agent_names == o.user_agent_names &&
-          user_agent_originals == o.user_agent_originals
+          user_agent_originals == o.user_agent_originals &&
+          utm_campaigns == o.utm_campaigns &&
+          utm_sources == o.utm_sources
     end
 
     # @see the `==` method
@@ -223,7 +245,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [communications_campaign_names, communications_email_subjects, communications_flow_names, geolocation_countries, geolocation_states, max_values, page_views, time_on_site_max, time_on_site_min, urls, user_agent_device_names, user_agent_device_os_names, user_agent_device_os_versions, user_agent_names, user_agent_originals].hash
+      [communications_campaign_names, communications_email_subjects, communications_flow_names, geolocation_countries, geolocation_states, max_values, page_views, time_on_site_max, time_on_site_min, urls, user_agent_device_names, user_agent_device_os_names, user_agent_device_os_versions, user_agent_names, user_agent_originals, utm_campaigns, utm_sources].hash
     end
 
     # Builds the object from hash

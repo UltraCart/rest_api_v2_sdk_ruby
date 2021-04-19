@@ -98,6 +98,12 @@ module UltracartClient
 
     attr_accessor :user_properties
 
+    # UTM Campaign
+    attr_accessor :utm_campaign
+
+    # UTM Source
+    attr_accessor :utm_source
+
     # Timestamp this visitor was first seen
     attr_accessor :visitor_first_seen
 
@@ -149,6 +155,8 @@ module UltracartClient
         :'user_agent_raw' => :'user_agent_raw',
         :'user_ip' => :'user_ip',
         :'user_properties' => :'user_properties',
+        :'utm_campaign' => :'utm_campaign',
+        :'utm_source' => :'utm_source',
         :'visitor_first_seen' => :'visitor_first_seen',
         :'visitor_number' => :'visitor_number',
         :'watched' => :'watched',
@@ -197,6 +205,8 @@ module UltracartClient
         :'user_agent_raw' => :'String',
         :'user_ip' => :'String',
         :'user_properties' => :'Array<ScreenRecordingUserProperty>',
+        :'utm_campaign' => :'String',
+        :'utm_source' => :'String',
         :'visitor_first_seen' => :'String',
         :'visitor_number' => :'Integer',
         :'watched' => :'BOOLEAN',
@@ -373,6 +383,14 @@ module UltracartClient
         end
       end
 
+      if attributes.has_key?(:'utm_campaign')
+        self.utm_campaign = attributes[:'utm_campaign']
+      end
+
+      if attributes.has_key?(:'utm_source')
+        self.utm_source = attributes[:'utm_source']
+      end
+
       if attributes.has_key?(:'visitor_first_seen')
         self.visitor_first_seen = attributes[:'visitor_first_seen']
       end
@@ -449,6 +467,8 @@ module UltracartClient
           user_agent_raw == o.user_agent_raw &&
           user_ip == o.user_ip &&
           user_properties == o.user_properties &&
+          utm_campaign == o.utm_campaign &&
+          utm_source == o.utm_source &&
           visitor_first_seen == o.visitor_first_seen &&
           visitor_number == o.visitor_number &&
           watched == o.watched &&
@@ -465,7 +485,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [analytics_client_oid, analytics_session_dts, analytics_session_oid, communications_campaign_name, communications_campaign_uuid, communications_email_subject, communications_email_uuid, communications_flow_name, communications_flow_uuid, email, end_timestamp, esp_customer_uuid, events_gz_size, events_json_key, favorite, favorites, geolocation, geolocation_country, geolocation_state, merchant_id, merchant_notes, order_id, page_view_count, page_views, rrweb_version, screen_recording_uuid, signed_download_url, start_timestamp, storefront_oids, storefronts, tags, time_on_site, ucacid, user_agent, user_agent_raw, user_ip, user_properties, visitor_first_seen, visitor_number, watched, window_height, window_width].hash
+      [analytics_client_oid, analytics_session_dts, analytics_session_oid, communications_campaign_name, communications_campaign_uuid, communications_email_subject, communications_email_uuid, communications_flow_name, communications_flow_uuid, email, end_timestamp, esp_customer_uuid, events_gz_size, events_json_key, favorite, favorites, geolocation, geolocation_country, geolocation_state, merchant_id, merchant_notes, order_id, page_view_count, page_views, rrweb_version, screen_recording_uuid, signed_download_url, start_timestamp, storefront_oids, storefronts, tags, time_on_site, ucacid, user_agent, user_agent_raw, user_ip, user_properties, utm_campaign, utm_source, visitor_first_seen, visitor_number, watched, window_height, window_width].hash
     end
 
     # Builds the object from hash

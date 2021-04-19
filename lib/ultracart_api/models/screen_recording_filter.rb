@@ -72,6 +72,10 @@ module UltracartClient
 
     attr_accessor :user_ip
 
+    attr_accessor :utm_campaign
+
+    attr_accessor :utm_source
+
     attr_accessor :visitor_number
 
     attr_accessor :watched
@@ -108,6 +112,8 @@ module UltracartClient
         :'user_agent_os_name' => :'user_agent_os_name',
         :'user_agent_os_version' => :'user_agent_os_version',
         :'user_ip' => :'user_ip',
+        :'utm_campaign' => :'utm_campaign',
+        :'utm_source' => :'utm_source',
         :'visitor_number' => :'visitor_number',
         :'watched' => :'watched'
       }
@@ -145,6 +151,8 @@ module UltracartClient
         :'user_agent_os_name' => :'String',
         :'user_agent_os_version' => :'String',
         :'user_ip' => :'ScreenRecordingFilterIpSearch',
+        :'utm_campaign' => :'String',
+        :'utm_source' => :'String',
         :'visitor_number' => :'Integer',
         :'watched' => :'BOOLEAN'
       }
@@ -282,6 +290,14 @@ module UltracartClient
         self.user_ip = attributes[:'user_ip']
       end
 
+      if attributes.has_key?(:'utm_campaign')
+        self.utm_campaign = attributes[:'utm_campaign']
+      end
+
+      if attributes.has_key?(:'utm_source')
+        self.utm_source = attributes[:'utm_source']
+      end
+
       if attributes.has_key?(:'visitor_number')
         self.visitor_number = attributes[:'visitor_number']
       end
@@ -338,6 +354,8 @@ module UltracartClient
           user_agent_os_name == o.user_agent_os_name &&
           user_agent_os_version == o.user_agent_os_version &&
           user_ip == o.user_ip &&
+          utm_campaign == o.utm_campaign &&
+          utm_source == o.utm_source &&
           visitor_number == o.visitor_number &&
           watched == o.watched
     end
@@ -351,7 +369,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [communications_campaign_name, communications_email_subject, communications_flow_name, email, email_identified, end_timestamp, esp_customer_uuid, favorite, geolocation, geolocation_country, geolocation_state, max_filter_values, order_id, page_view_count, page_views, placed_order, screen_recording_uuids, screen_sizes, skip_filter_values, skip_hits, start_timestamp, tags, time_on_site, user_agent_device_name, user_agent_name, user_agent_original, user_agent_os_name, user_agent_os_version, user_ip, visitor_number, watched].hash
+      [communications_campaign_name, communications_email_subject, communications_flow_name, email, email_identified, end_timestamp, esp_customer_uuid, favorite, geolocation, geolocation_country, geolocation_state, max_filter_values, order_id, page_view_count, page_views, placed_order, screen_recording_uuids, screen_sizes, skip_filter_values, skip_hits, start_timestamp, tags, time_on_site, user_agent_device_name, user_agent_name, user_agent_original, user_agent_os_name, user_agent_os_version, user_ip, utm_campaign, utm_source, visitor_number, watched].hash
     end
 
     # Builds the object from hash
