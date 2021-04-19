@@ -20,6 +20,24 @@ module UltracartClient
 
     attr_accessor :analytics_session_oid
 
+    # Campaign Name
+    attr_accessor :communications_campaign_name
+
+    # Campaign UUID
+    attr_accessor :communications_campaign_uuid
+
+    # Email subject
+    attr_accessor :communications_email_subject
+
+    # Email UUID
+    attr_accessor :communications_email_uuid
+
+    # Flow Name
+    attr_accessor :communications_flow_name
+
+    # Flow UUID
+    attr_accessor :communications_flow_uuid
+
     attr_accessor :email
 
     # Ending timestamp
@@ -97,6 +115,12 @@ module UltracartClient
         :'analytics_client_oid' => :'analytics_client_oid',
         :'analytics_session_dts' => :'analytics_session_dts',
         :'analytics_session_oid' => :'analytics_session_oid',
+        :'communications_campaign_name' => :'communications_campaign_name',
+        :'communications_campaign_uuid' => :'communications_campaign_uuid',
+        :'communications_email_subject' => :'communications_email_subject',
+        :'communications_email_uuid' => :'communications_email_uuid',
+        :'communications_flow_name' => :'communications_flow_name',
+        :'communications_flow_uuid' => :'communications_flow_uuid',
         :'email' => :'email',
         :'end_timestamp' => :'end_timestamp',
         :'esp_customer_uuid' => :'esp_customer_uuid',
@@ -139,6 +163,12 @@ module UltracartClient
         :'analytics_client_oid' => :'Integer',
         :'analytics_session_dts' => :'Integer',
         :'analytics_session_oid' => :'Integer',
+        :'communications_campaign_name' => :'String',
+        :'communications_campaign_uuid' => :'String',
+        :'communications_email_subject' => :'String',
+        :'communications_email_uuid' => :'String',
+        :'communications_flow_name' => :'String',
+        :'communications_flow_uuid' => :'String',
         :'email' => :'String',
         :'end_timestamp' => :'String',
         :'esp_customer_uuid' => :'String',
@@ -193,6 +223,30 @@ module UltracartClient
 
       if attributes.has_key?(:'analytics_session_oid')
         self.analytics_session_oid = attributes[:'analytics_session_oid']
+      end
+
+      if attributes.has_key?(:'communications_campaign_name')
+        self.communications_campaign_name = attributes[:'communications_campaign_name']
+      end
+
+      if attributes.has_key?(:'communications_campaign_uuid')
+        self.communications_campaign_uuid = attributes[:'communications_campaign_uuid']
+      end
+
+      if attributes.has_key?(:'communications_email_subject')
+        self.communications_email_subject = attributes[:'communications_email_subject']
+      end
+
+      if attributes.has_key?(:'communications_email_uuid')
+        self.communications_email_uuid = attributes[:'communications_email_uuid']
+      end
+
+      if attributes.has_key?(:'communications_flow_name')
+        self.communications_flow_name = attributes[:'communications_flow_name']
+      end
+
+      if attributes.has_key?(:'communications_flow_uuid')
+        self.communications_flow_uuid = attributes[:'communications_flow_uuid']
       end
 
       if attributes.has_key?(:'email')
@@ -361,6 +415,12 @@ module UltracartClient
           analytics_client_oid == o.analytics_client_oid &&
           analytics_session_dts == o.analytics_session_dts &&
           analytics_session_oid == o.analytics_session_oid &&
+          communications_campaign_name == o.communications_campaign_name &&
+          communications_campaign_uuid == o.communications_campaign_uuid &&
+          communications_email_subject == o.communications_email_subject &&
+          communications_email_uuid == o.communications_email_uuid &&
+          communications_flow_name == o.communications_flow_name &&
+          communications_flow_uuid == o.communications_flow_uuid &&
           email == o.email &&
           end_timestamp == o.end_timestamp &&
           esp_customer_uuid == o.esp_customer_uuid &&
@@ -405,7 +465,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [analytics_client_oid, analytics_session_dts, analytics_session_oid, email, end_timestamp, esp_customer_uuid, events_gz_size, events_json_key, favorite, favorites, geolocation, geolocation_country, geolocation_state, merchant_id, merchant_notes, order_id, page_view_count, page_views, rrweb_version, screen_recording_uuid, signed_download_url, start_timestamp, storefront_oids, storefronts, tags, time_on_site, ucacid, user_agent, user_agent_raw, user_ip, user_properties, visitor_first_seen, visitor_number, watched, window_height, window_width].hash
+      [analytics_client_oid, analytics_session_dts, analytics_session_oid, communications_campaign_name, communications_campaign_uuid, communications_email_subject, communications_email_uuid, communications_flow_name, communications_flow_uuid, email, end_timestamp, esp_customer_uuid, events_gz_size, events_json_key, favorite, favorites, geolocation, geolocation_country, geolocation_state, merchant_id, merchant_notes, order_id, page_view_count, page_views, rrweb_version, screen_recording_uuid, signed_download_url, start_timestamp, storefront_oids, storefronts, tags, time_on_site, ucacid, user_agent, user_agent_raw, user_ip, user_properties, visitor_first_seen, visitor_number, watched, window_height, window_width].hash
     end
 
     # Builds the object from hash

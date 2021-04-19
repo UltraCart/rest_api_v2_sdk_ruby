@@ -14,6 +14,12 @@ require 'date'
 
 module UltracartClient
   class ScreenRecordingFilterValues
+    attr_accessor :communications_campaign_names
+
+    attr_accessor :communications_email_subjects
+
+    attr_accessor :communications_flow_names
+
     attr_accessor :geolocation_countries
 
     attr_accessor :geolocation_states
@@ -41,6 +47,9 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'communications_campaign_names' => :'communications_campaign_names',
+        :'communications_email_subjects' => :'communications_email_subjects',
+        :'communications_flow_names' => :'communications_flow_names',
         :'geolocation_countries' => :'geolocation_countries',
         :'geolocation_states' => :'geolocation_states',
         :'max_values' => :'max_values',
@@ -59,6 +68,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'communications_campaign_names' => :'Array<String>',
+        :'communications_email_subjects' => :'Array<String>',
+        :'communications_flow_names' => :'Array<String>',
         :'geolocation_countries' => :'Array<String>',
         :'geolocation_states' => :'Array<String>',
         :'max_values' => :'Integer',
@@ -81,6 +93,24 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'communications_campaign_names')
+        if (value = attributes[:'communications_campaign_names']).is_a?(Array)
+          self.communications_campaign_names = value
+        end
+      end
+
+      if attributes.has_key?(:'communications_email_subjects')
+        if (value = attributes[:'communications_email_subjects']).is_a?(Array)
+          self.communications_email_subjects = value
+        end
+      end
+
+      if attributes.has_key?(:'communications_flow_names')
+        if (value = attributes[:'communications_flow_names']).is_a?(Array)
+          self.communications_flow_names = value
+        end
+      end
 
       if attributes.has_key?(:'geolocation_countries')
         if (value = attributes[:'geolocation_countries']).is_a?(Array)
@@ -167,6 +197,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          communications_campaign_names == o.communications_campaign_names &&
+          communications_email_subjects == o.communications_email_subjects &&
+          communications_flow_names == o.communications_flow_names &&
           geolocation_countries == o.geolocation_countries &&
           geolocation_states == o.geolocation_states &&
           max_values == o.max_values &&
@@ -190,7 +223,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [geolocation_countries, geolocation_states, max_values, page_views, time_on_site_max, time_on_site_min, urls, user_agent_device_names, user_agent_device_os_names, user_agent_device_os_versions, user_agent_names, user_agent_originals].hash
+      [communications_campaign_names, communications_email_subjects, communications_flow_names, geolocation_countries, geolocation_states, max_values, page_views, time_on_site_max, time_on_site_min, urls, user_agent_device_names, user_agent_device_os_names, user_agent_device_os_versions, user_agent_names, user_agent_originals].hash
     end
 
     # Builds the object from hash

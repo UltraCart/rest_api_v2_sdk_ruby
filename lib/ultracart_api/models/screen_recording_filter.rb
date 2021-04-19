@@ -14,6 +14,12 @@ require 'date'
 
 module UltracartClient
   class ScreenRecordingFilter
+    attr_accessor :communications_campaign_name
+
+    attr_accessor :communications_email_subject
+
+    attr_accessor :communications_flow_name
+
     attr_accessor :email
 
     attr_accessor :email_identified
@@ -73,6 +79,9 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'communications_campaign_name' => :'communications_campaign_name',
+        :'communications_email_subject' => :'communications_email_subject',
+        :'communications_flow_name' => :'communications_flow_name',
         :'email' => :'email',
         :'email_identified' => :'email_identified',
         :'end_timestamp' => :'end_timestamp',
@@ -107,6 +116,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'communications_campaign_name' => :'String',
+        :'communications_email_subject' => :'String',
+        :'communications_flow_name' => :'String',
         :'email' => :'ScreenRecordingFilterStringSearch',
         :'email_identified' => :'BOOLEAN',
         :'end_timestamp' => :'ScreenRecordingFilterRangeDate',
@@ -145,6 +157,18 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'communications_campaign_name')
+        self.communications_campaign_name = attributes[:'communications_campaign_name']
+      end
+
+      if attributes.has_key?(:'communications_email_subject')
+        self.communications_email_subject = attributes[:'communications_email_subject']
+      end
+
+      if attributes.has_key?(:'communications_flow_name')
+        self.communications_flow_name = attributes[:'communications_flow_name']
+      end
 
       if attributes.has_key?(:'email')
         self.email = attributes[:'email']
@@ -285,6 +309,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          communications_campaign_name == o.communications_campaign_name &&
+          communications_email_subject == o.communications_email_subject &&
+          communications_flow_name == o.communications_flow_name &&
           email == o.email &&
           email_identified == o.email_identified &&
           end_timestamp == o.end_timestamp &&
@@ -324,7 +351,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [email, email_identified, end_timestamp, esp_customer_uuid, favorite, geolocation, geolocation_country, geolocation_state, max_filter_values, order_id, page_view_count, page_views, placed_order, screen_recording_uuids, screen_sizes, skip_filter_values, skip_hits, start_timestamp, tags, time_on_site, user_agent_device_name, user_agent_name, user_agent_original, user_agent_os_name, user_agent_os_version, user_ip, visitor_number, watched].hash
+      [communications_campaign_name, communications_email_subject, communications_flow_name, email, email_identified, end_timestamp, esp_customer_uuid, favorite, geolocation, geolocation_country, geolocation_state, max_filter_values, order_id, page_view_count, page_views, placed_order, screen_recording_uuids, screen_sizes, skip_filter_values, skip_hits, start_timestamp, tags, time_on_site, user_agent_device_name, user_agent_name, user_agent_original, user_agent_os_name, user_agent_os_version, user_ip, visitor_number, watched].hash
     end
 
     # Builds the object from hash
