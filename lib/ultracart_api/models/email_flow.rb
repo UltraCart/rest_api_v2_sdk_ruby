@@ -35,8 +35,11 @@ module UltracartClient
     # Email flow UUID
     attr_accessor :email_flow_uuid
 
-    # True if the customer should end the flow once they purchase
+    # True if the customer should end the flow once they purchase from an email on this flow
     attr_accessor :end_once_customer_purchases
+
+    # True if the customer should end the flow once they purchase from any source
+    attr_accessor :end_once_customer_purchases_anywhere
 
     # Number of enrolled customers.
     attr_accessor :enrolled_customers
@@ -106,6 +109,7 @@ module UltracartClient
         :'email_communication_sequence_uuid' => :'email_communication_sequence_uuid',
         :'email_flow_uuid' => :'email_flow_uuid',
         :'end_once_customer_purchases' => :'end_once_customer_purchases',
+        :'end_once_customer_purchases_anywhere' => :'end_once_customer_purchases_anywhere',
         :'enrolled_customers' => :'enrolled_customers',
         :'esp_domain_user' => :'esp_domain_user',
         :'esp_domain_uuid' => :'esp_domain_uuid',
@@ -139,6 +143,7 @@ module UltracartClient
         :'email_communication_sequence_uuid' => :'String',
         :'email_flow_uuid' => :'String',
         :'end_once_customer_purchases' => :'BOOLEAN',
+        :'end_once_customer_purchases_anywhere' => :'BOOLEAN',
         :'enrolled_customers' => :'Integer',
         :'esp_domain_user' => :'String',
         :'esp_domain_uuid' => :'String',
@@ -199,6 +204,10 @@ module UltracartClient
 
       if attributes.has_key?(:'end_once_customer_purchases')
         self.end_once_customer_purchases = attributes[:'end_once_customer_purchases']
+      end
+
+      if attributes.has_key?(:'end_once_customer_purchases_anywhere')
+        self.end_once_customer_purchases_anywhere = attributes[:'end_once_customer_purchases_anywhere']
       end
 
       if attributes.has_key?(:'enrolled_customers')
@@ -319,6 +328,7 @@ module UltracartClient
           email_communication_sequence_uuid == o.email_communication_sequence_uuid &&
           email_flow_uuid == o.email_flow_uuid &&
           end_once_customer_purchases == o.end_once_customer_purchases &&
+          end_once_customer_purchases_anywhere == o.end_once_customer_purchases_anywhere &&
           enrolled_customers == o.enrolled_customers &&
           esp_domain_user == o.esp_domain_user &&
           esp_domain_uuid == o.esp_domain_uuid &&
@@ -349,7 +359,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allow_multiple_concurrent_enrollments, back_populating, click_rate_formatted, created_dts, deleted, email_communication_sequence_uuid, email_flow_uuid, end_once_customer_purchases, enrolled_customers, esp_domain_user, esp_domain_uuid, esp_flow_folder_uuid, esp_friendly_name, filter_profile_equation_json, library_item_oid, merchant_id, name, open_rate_formatted, revenue_formatted, revenue_per_customer_formatted, screenshot_large_full_url, status, status_dts, storefront_oid, trigger_parameter, trigger_parameter_name, trigger_type].hash
+      [allow_multiple_concurrent_enrollments, back_populating, click_rate_formatted, created_dts, deleted, email_communication_sequence_uuid, email_flow_uuid, end_once_customer_purchases, end_once_customer_purchases_anywhere, enrolled_customers, esp_domain_user, esp_domain_uuid, esp_flow_folder_uuid, esp_friendly_name, filter_profile_equation_json, library_item_oid, merchant_id, name, open_rate_formatted, revenue_formatted, revenue_per_customer_formatted, screenshot_large_full_url, status, status_dts, storefront_oid, trigger_parameter, trigger_parameter_name, trigger_type].hash
     end
 
     # Builds the object from hash
