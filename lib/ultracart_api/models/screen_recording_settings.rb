@@ -16,17 +16,37 @@ module UltracartClient
   class ScreenRecordingSettings
     attr_accessor :enabled
 
+    attr_accessor :sessions_current_billing_period
+
+    attr_accessor :sessions_last_billing_period
+
+    attr_accessor :sessions_trial_billing_period
+
+    attr_accessor :trial_expiration
+
+    attr_accessor :trial_expired
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'enabled' => :'enabled'
+        :'enabled' => :'enabled',
+        :'sessions_current_billing_period' => :'sessions_current_billing_period',
+        :'sessions_last_billing_period' => :'sessions_last_billing_period',
+        :'sessions_trial_billing_period' => :'sessions_trial_billing_period',
+        :'trial_expiration' => :'trial_expiration',
+        :'trial_expired' => :'trial_expired'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'enabled' => :'BOOLEAN'
+        :'enabled' => :'BOOLEAN',
+        :'sessions_current_billing_period' => :'Integer',
+        :'sessions_last_billing_period' => :'Integer',
+        :'sessions_trial_billing_period' => :'Integer',
+        :'trial_expiration' => :'String',
+        :'trial_expired' => :'BOOLEAN'
       }
     end
 
@@ -40,6 +60,26 @@ module UltracartClient
 
       if attributes.has_key?(:'enabled')
         self.enabled = attributes[:'enabled']
+      end
+
+      if attributes.has_key?(:'sessions_current_billing_period')
+        self.sessions_current_billing_period = attributes[:'sessions_current_billing_period']
+      end
+
+      if attributes.has_key?(:'sessions_last_billing_period')
+        self.sessions_last_billing_period = attributes[:'sessions_last_billing_period']
+      end
+
+      if attributes.has_key?(:'sessions_trial_billing_period')
+        self.sessions_trial_billing_period = attributes[:'sessions_trial_billing_period']
+      end
+
+      if attributes.has_key?(:'trial_expiration')
+        self.trial_expiration = attributes[:'trial_expiration']
+      end
+
+      if attributes.has_key?(:'trial_expired')
+        self.trial_expired = attributes[:'trial_expired']
       end
     end
 
@@ -61,7 +101,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          enabled == o.enabled
+          enabled == o.enabled &&
+          sessions_current_billing_period == o.sessions_current_billing_period &&
+          sessions_last_billing_period == o.sessions_last_billing_period &&
+          sessions_trial_billing_period == o.sessions_trial_billing_period &&
+          trial_expiration == o.trial_expiration &&
+          trial_expired == o.trial_expired
     end
 
     # @see the `==` method
@@ -73,7 +118,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [enabled].hash
+      [enabled, sessions_current_billing_period, sessions_last_billing_period, sessions_trial_billing_period, trial_expiration, trial_expired].hash
     end
 
     # Builds the object from hash

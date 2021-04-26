@@ -36,6 +36,8 @@ module UltracartClient
 
     attr_accessor :geolocation_state
 
+    attr_accessor :language_iso_code
+
     attr_accessor :max_filter_values
 
     attr_accessor :order_id
@@ -94,6 +96,7 @@ module UltracartClient
         :'geolocation' => :'geolocation',
         :'geolocation_country' => :'geolocation_country',
         :'geolocation_state' => :'geolocation_state',
+        :'language_iso_code' => :'language_iso_code',
         :'max_filter_values' => :'max_filter_values',
         :'order_id' => :'order_id',
         :'page_view_count' => :'page_view_count',
@@ -133,6 +136,7 @@ module UltracartClient
         :'geolocation' => :'ScreenRecordingFilterGeoDistance',
         :'geolocation_country' => :'ScreenRecordingFilterStringSearch',
         :'geolocation_state' => :'ScreenRecordingFilterStringSearch',
+        :'language_iso_code' => :'ScreenRecordingFilterStringSearch',
         :'max_filter_values' => :'Integer',
         :'order_id' => :'ScreenRecordingFilterStringSearch',
         :'page_view_count' => :'ScreenRecordingFilterRangeInteger',
@@ -208,6 +212,10 @@ module UltracartClient
 
       if attributes.has_key?(:'geolocation_state')
         self.geolocation_state = attributes[:'geolocation_state']
+      end
+
+      if attributes.has_key?(:'language_iso_code')
+        self.language_iso_code = attributes[:'language_iso_code']
       end
 
       if attributes.has_key?(:'max_filter_values')
@@ -336,6 +344,7 @@ module UltracartClient
           geolocation == o.geolocation &&
           geolocation_country == o.geolocation_country &&
           geolocation_state == o.geolocation_state &&
+          language_iso_code == o.language_iso_code &&
           max_filter_values == o.max_filter_values &&
           order_id == o.order_id &&
           page_view_count == o.page_view_count &&
@@ -369,7 +378,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [communications_campaign_name, communications_email_subject, communications_flow_name, email, email_identified, end_timestamp, esp_customer_uuid, favorite, geolocation, geolocation_country, geolocation_state, max_filter_values, order_id, page_view_count, page_views, placed_order, screen_recording_uuids, screen_sizes, skip_filter_values, skip_hits, start_timestamp, tags, time_on_site, user_agent_device_name, user_agent_name, user_agent_original, user_agent_os_name, user_agent_os_version, user_ip, utm_campaign, utm_source, visitor_number, watched].hash
+      [communications_campaign_name, communications_email_subject, communications_flow_name, email, email_identified, end_timestamp, esp_customer_uuid, favorite, geolocation, geolocation_country, geolocation_state, language_iso_code, max_filter_values, order_id, page_view_count, page_views, placed_order, screen_recording_uuids, screen_sizes, skip_filter_values, skip_hits, start_timestamp, tags, time_on_site, user_agent_device_name, user_agent_name, user_agent_original, user_agent_os_name, user_agent_os_version, user_ip, utm_campaign, utm_source, visitor_number, watched].hash
     end
 
     # Builds the object from hash

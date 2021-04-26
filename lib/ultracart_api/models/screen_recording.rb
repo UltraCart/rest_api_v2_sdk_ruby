@@ -61,6 +61,9 @@ module UltracartClient
 
     attr_accessor :geolocation_state
 
+    # Language ISO code
+    attr_accessor :language_iso_code
+
     attr_accessor :merchant_id
 
     attr_accessor :merchant_notes
@@ -137,6 +140,7 @@ module UltracartClient
         :'geolocation' => :'geolocation',
         :'geolocation_country' => :'geolocation_country',
         :'geolocation_state' => :'geolocation_state',
+        :'language_iso_code' => :'language_iso_code',
         :'merchant_id' => :'merchant_id',
         :'merchant_notes' => :'merchant_notes',
         :'order_id' => :'order_id',
@@ -187,6 +191,7 @@ module UltracartClient
         :'geolocation' => :'GeoPoint',
         :'geolocation_country' => :'String',
         :'geolocation_state' => :'String',
+        :'language_iso_code' => :'String',
         :'merchant_id' => :'String',
         :'merchant_notes' => :'String',
         :'order_id' => :'String',
@@ -299,6 +304,10 @@ module UltracartClient
 
       if attributes.has_key?(:'geolocation_state')
         self.geolocation_state = attributes[:'geolocation_state']
+      end
+
+      if attributes.has_key?(:'language_iso_code')
+        self.language_iso_code = attributes[:'language_iso_code']
       end
 
       if attributes.has_key?(:'merchant_id')
@@ -449,6 +458,7 @@ module UltracartClient
           geolocation == o.geolocation &&
           geolocation_country == o.geolocation_country &&
           geolocation_state == o.geolocation_state &&
+          language_iso_code == o.language_iso_code &&
           merchant_id == o.merchant_id &&
           merchant_notes == o.merchant_notes &&
           order_id == o.order_id &&
@@ -485,7 +495,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [analytics_client_oid, analytics_session_dts, analytics_session_oid, communications_campaign_name, communications_campaign_uuid, communications_email_subject, communications_email_uuid, communications_flow_name, communications_flow_uuid, email, end_timestamp, esp_customer_uuid, events_gz_size, events_json_key, favorite, favorites, geolocation, geolocation_country, geolocation_state, merchant_id, merchant_notes, order_id, page_view_count, page_views, rrweb_version, screen_recording_uuid, signed_download_url, start_timestamp, storefront_oids, storefronts, tags, time_on_site, ucacid, user_agent, user_agent_raw, user_ip, user_properties, utm_campaign, utm_source, visitor_first_seen, visitor_number, watched, window_height, window_width].hash
+      [analytics_client_oid, analytics_session_dts, analytics_session_oid, communications_campaign_name, communications_campaign_uuid, communications_email_subject, communications_email_uuid, communications_flow_name, communications_flow_uuid, email, end_timestamp, esp_customer_uuid, events_gz_size, events_json_key, favorite, favorites, geolocation, geolocation_country, geolocation_state, language_iso_code, merchant_id, merchant_notes, order_id, page_view_count, page_views, rrweb_version, screen_recording_uuid, signed_download_url, start_timestamp, storefront_oids, storefronts, tags, time_on_site, ucacid, user_agent, user_agent_raw, user_ip, user_properties, utm_campaign, utm_source, visitor_first_seen, visitor_number, watched, window_height, window_width].hash
     end
 
     # Builds the object from hash
