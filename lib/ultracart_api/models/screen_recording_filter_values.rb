@@ -20,6 +20,8 @@ module UltracartClient
 
     attr_accessor :communications_flow_names
 
+    attr_accessor :email_domains
+
     attr_accessor :geolocation_countries
 
     attr_accessor :geolocation_states
@@ -29,6 +31,10 @@ module UltracartClient
     attr_accessor :max_values
 
     attr_accessor :page_views
+
+    attr_accessor :preferred_languages
+
+    attr_accessor :referrer_domains
 
     attr_accessor :time_on_site_max
 
@@ -56,11 +62,14 @@ module UltracartClient
         :'communications_campaign_names' => :'communications_campaign_names',
         :'communications_email_subjects' => :'communications_email_subjects',
         :'communications_flow_names' => :'communications_flow_names',
+        :'email_domains' => :'email_domains',
         :'geolocation_countries' => :'geolocation_countries',
         :'geolocation_states' => :'geolocation_states',
         :'language_iso_codes' => :'language_iso_codes',
         :'max_values' => :'max_values',
         :'page_views' => :'page_views',
+        :'preferred_languages' => :'preferred_languages',
+        :'referrer_domains' => :'referrer_domains',
         :'time_on_site_max' => :'time_on_site_max',
         :'time_on_site_min' => :'time_on_site_min',
         :'urls' => :'urls',
@@ -80,11 +89,14 @@ module UltracartClient
         :'communications_campaign_names' => :'Array<String>',
         :'communications_email_subjects' => :'Array<String>',
         :'communications_flow_names' => :'Array<String>',
+        :'email_domains' => :'Array<String>',
         :'geolocation_countries' => :'Array<String>',
         :'geolocation_states' => :'Array<String>',
         :'language_iso_codes' => :'Array<String>',
         :'max_values' => :'Integer',
         :'page_views' => :'Array<ScreenRecordingFilterValuesPageView>',
+        :'preferred_languages' => :'Array<String>',
+        :'referrer_domains' => :'Array<String>',
         :'time_on_site_max' => :'Integer',
         :'time_on_site_min' => :'Integer',
         :'urls' => :'Array<String>',
@@ -124,6 +136,12 @@ module UltracartClient
         end
       end
 
+      if attributes.has_key?(:'email_domains')
+        if (value = attributes[:'email_domains']).is_a?(Array)
+          self.email_domains = value
+        end
+      end
+
       if attributes.has_key?(:'geolocation_countries')
         if (value = attributes[:'geolocation_countries']).is_a?(Array)
           self.geolocation_countries = value
@@ -149,6 +167,18 @@ module UltracartClient
       if attributes.has_key?(:'page_views')
         if (value = attributes[:'page_views']).is_a?(Array)
           self.page_views = value
+        end
+      end
+
+      if attributes.has_key?(:'preferred_languages')
+        if (value = attributes[:'preferred_languages']).is_a?(Array)
+          self.preferred_languages = value
+        end
+      end
+
+      if attributes.has_key?(:'referrer_domains')
+        if (value = attributes[:'referrer_domains']).is_a?(Array)
+          self.referrer_domains = value
         end
       end
 
@@ -230,11 +260,14 @@ module UltracartClient
           communications_campaign_names == o.communications_campaign_names &&
           communications_email_subjects == o.communications_email_subjects &&
           communications_flow_names == o.communications_flow_names &&
+          email_domains == o.email_domains &&
           geolocation_countries == o.geolocation_countries &&
           geolocation_states == o.geolocation_states &&
           language_iso_codes == o.language_iso_codes &&
           max_values == o.max_values &&
           page_views == o.page_views &&
+          preferred_languages == o.preferred_languages &&
+          referrer_domains == o.referrer_domains &&
           time_on_site_max == o.time_on_site_max &&
           time_on_site_min == o.time_on_site_min &&
           urls == o.urls &&
@@ -256,7 +289,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [communications_campaign_names, communications_email_subjects, communications_flow_names, geolocation_countries, geolocation_states, language_iso_codes, max_values, page_views, time_on_site_max, time_on_site_min, urls, user_agent_device_names, user_agent_device_os_names, user_agent_device_os_versions, user_agent_names, user_agent_originals, utm_campaigns, utm_sources].hash
+      [communications_campaign_names, communications_email_subjects, communications_flow_names, email_domains, geolocation_countries, geolocation_states, language_iso_codes, max_values, page_views, preferred_languages, referrer_domains, time_on_site_max, time_on_site_min, urls, user_agent_device_names, user_agent_device_os_names, user_agent_device_os_versions, user_agent_names, user_agent_originals, utm_campaigns, utm_sources].hash
     end
 
     # Builds the object from hash

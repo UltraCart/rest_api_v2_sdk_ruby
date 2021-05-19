@@ -14,6 +14,10 @@ require 'date'
 
 module UltracartClient
   class ScreenRecordingFilter
+    attr_accessor :affiliate_email
+
+    attr_accessor :affiliate_id
+
     attr_accessor :communications_campaign_name
 
     attr_accessor :communications_email_subject
@@ -21,6 +25,8 @@ module UltracartClient
     attr_accessor :communications_flow_name
 
     attr_accessor :email
+
+    attr_accessor :email_domain
 
     attr_accessor :email_identified
 
@@ -38,6 +44,8 @@ module UltracartClient
 
     attr_accessor :language_iso_code
 
+    attr_accessor :last_x_days
+
     attr_accessor :max_filter_values
 
     attr_accessor :order_id
@@ -47,6 +55,10 @@ module UltracartClient
     attr_accessor :page_views
 
     attr_accessor :placed_order
+
+    attr_accessor :preferred_language
+
+    attr_accessor :referrer_domain
 
     attr_accessor :screen_recording_uuids
 
@@ -85,10 +97,13 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'affiliate_email' => :'affiliate_email',
+        :'affiliate_id' => :'affiliate_id',
         :'communications_campaign_name' => :'communications_campaign_name',
         :'communications_email_subject' => :'communications_email_subject',
         :'communications_flow_name' => :'communications_flow_name',
         :'email' => :'email',
+        :'email_domain' => :'email_domain',
         :'email_identified' => :'email_identified',
         :'end_timestamp' => :'end_timestamp',
         :'esp_customer_uuid' => :'esp_customer_uuid',
@@ -97,11 +112,14 @@ module UltracartClient
         :'geolocation_country' => :'geolocation_country',
         :'geolocation_state' => :'geolocation_state',
         :'language_iso_code' => :'language_iso_code',
+        :'last_x_days' => :'last_x_days',
         :'max_filter_values' => :'max_filter_values',
         :'order_id' => :'order_id',
         :'page_view_count' => :'page_view_count',
         :'page_views' => :'page_views',
         :'placed_order' => :'placed_order',
+        :'preferred_language' => :'preferred_language',
+        :'referrer_domain' => :'referrer_domain',
         :'screen_recording_uuids' => :'screen_recording_uuids',
         :'screen_sizes' => :'screen_sizes',
         :'skip_filter_values' => :'skip_filter_values',
@@ -125,10 +143,13 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'affiliate_email' => :'String',
+        :'affiliate_id' => :'Integer',
         :'communications_campaign_name' => :'String',
         :'communications_email_subject' => :'String',
         :'communications_flow_name' => :'String',
         :'email' => :'ScreenRecordingFilterStringSearch',
+        :'email_domain' => :'String',
         :'email_identified' => :'BOOLEAN',
         :'end_timestamp' => :'ScreenRecordingFilterRangeDate',
         :'esp_customer_uuid' => :'String',
@@ -137,11 +158,14 @@ module UltracartClient
         :'geolocation_country' => :'ScreenRecordingFilterStringSearch',
         :'geolocation_state' => :'ScreenRecordingFilterStringSearch',
         :'language_iso_code' => :'ScreenRecordingFilterStringSearch',
+        :'last_x_days' => :'Integer',
         :'max_filter_values' => :'Integer',
         :'order_id' => :'ScreenRecordingFilterStringSearch',
         :'page_view_count' => :'ScreenRecordingFilterRangeInteger',
         :'page_views' => :'Array<ScreenRecordingFilterPageView>',
         :'placed_order' => :'BOOLEAN',
+        :'preferred_language' => :'ScreenRecordingFilterStringSearch',
+        :'referrer_domain' => :'String',
         :'screen_recording_uuids' => :'Array<String>',
         :'screen_sizes' => :'Array<String>',
         :'skip_filter_values' => :'BOOLEAN',
@@ -170,6 +194,14 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
+      if attributes.has_key?(:'affiliate_email')
+        self.affiliate_email = attributes[:'affiliate_email']
+      end
+
+      if attributes.has_key?(:'affiliate_id')
+        self.affiliate_id = attributes[:'affiliate_id']
+      end
+
       if attributes.has_key?(:'communications_campaign_name')
         self.communications_campaign_name = attributes[:'communications_campaign_name']
       end
@@ -184,6 +216,10 @@ module UltracartClient
 
       if attributes.has_key?(:'email')
         self.email = attributes[:'email']
+      end
+
+      if attributes.has_key?(:'email_domain')
+        self.email_domain = attributes[:'email_domain']
       end
 
       if attributes.has_key?(:'email_identified')
@@ -218,6 +254,10 @@ module UltracartClient
         self.language_iso_code = attributes[:'language_iso_code']
       end
 
+      if attributes.has_key?(:'last_x_days')
+        self.last_x_days = attributes[:'last_x_days']
+      end
+
       if attributes.has_key?(:'max_filter_values')
         self.max_filter_values = attributes[:'max_filter_values']
       end
@@ -238,6 +278,14 @@ module UltracartClient
 
       if attributes.has_key?(:'placed_order')
         self.placed_order = attributes[:'placed_order']
+      end
+
+      if attributes.has_key?(:'preferred_language')
+        self.preferred_language = attributes[:'preferred_language']
+      end
+
+      if attributes.has_key?(:'referrer_domain')
+        self.referrer_domain = attributes[:'referrer_domain']
       end
 
       if attributes.has_key?(:'screen_recording_uuids')
@@ -333,10 +381,13 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          affiliate_email == o.affiliate_email &&
+          affiliate_id == o.affiliate_id &&
           communications_campaign_name == o.communications_campaign_name &&
           communications_email_subject == o.communications_email_subject &&
           communications_flow_name == o.communications_flow_name &&
           email == o.email &&
+          email_domain == o.email_domain &&
           email_identified == o.email_identified &&
           end_timestamp == o.end_timestamp &&
           esp_customer_uuid == o.esp_customer_uuid &&
@@ -345,11 +396,14 @@ module UltracartClient
           geolocation_country == o.geolocation_country &&
           geolocation_state == o.geolocation_state &&
           language_iso_code == o.language_iso_code &&
+          last_x_days == o.last_x_days &&
           max_filter_values == o.max_filter_values &&
           order_id == o.order_id &&
           page_view_count == o.page_view_count &&
           page_views == o.page_views &&
           placed_order == o.placed_order &&
+          preferred_language == o.preferred_language &&
+          referrer_domain == o.referrer_domain &&
           screen_recording_uuids == o.screen_recording_uuids &&
           screen_sizes == o.screen_sizes &&
           skip_filter_values == o.skip_filter_values &&
@@ -378,7 +432,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [communications_campaign_name, communications_email_subject, communications_flow_name, email, email_identified, end_timestamp, esp_customer_uuid, favorite, geolocation, geolocation_country, geolocation_state, language_iso_code, max_filter_values, order_id, page_view_count, page_views, placed_order, screen_recording_uuids, screen_sizes, skip_filter_values, skip_hits, start_timestamp, tags, time_on_site, user_agent_device_name, user_agent_name, user_agent_original, user_agent_os_name, user_agent_os_version, user_ip, utm_campaign, utm_source, visitor_number, watched].hash
+      [affiliate_email, affiliate_id, communications_campaign_name, communications_email_subject, communications_flow_name, email, email_domain, email_identified, end_timestamp, esp_customer_uuid, favorite, geolocation, geolocation_country, geolocation_state, language_iso_code, last_x_days, max_filter_values, order_id, page_view_count, page_views, placed_order, preferred_language, referrer_domain, screen_recording_uuids, screen_sizes, skip_filter_values, skip_hits, start_timestamp, tags, time_on_site, user_agent_device_name, user_agent_name, user_agent_original, user_agent_os_name, user_agent_os_version, user_ip, utm_campaign, utm_source, visitor_number, watched].hash
     end
 
     # Builds the object from hash

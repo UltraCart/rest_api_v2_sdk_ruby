@@ -42,6 +42,12 @@ module UltracartClient
 
     attr_accessor :time_on_page
 
+    # Amount of time for DOMContentLoaded event to fire (milliseconds)
+    attr_accessor :timing_dom_content_loaded
+
+    # Amount of time for loaded event to fire (milliseconds)
+    attr_accessor :timing_loaded
+
     attr_accessor :truncated_events
 
     attr_accessor :ucapv
@@ -64,6 +70,8 @@ module UltracartClient
         :'referrer_raw' => :'referrer_raw',
         :'screen_recording_page_view_uuid' => :'screen_recording_page_view_uuid',
         :'time_on_page' => :'time_on_page',
+        :'timing_dom_content_loaded' => :'timing_dom_content_loaded',
+        :'timing_loaded' => :'timing_loaded',
         :'truncated_events' => :'truncated_events',
         :'ucapv' => :'ucapv',
         :'url' => :'url'
@@ -86,6 +94,8 @@ module UltracartClient
         :'referrer_raw' => :'String',
         :'screen_recording_page_view_uuid' => :'String',
         :'time_on_page' => :'Integer',
+        :'timing_dom_content_loaded' => :'Integer',
+        :'timing_loaded' => :'Integer',
         :'truncated_events' => :'BOOLEAN',
         :'ucapv' => :'String',
         :'url' => :'String'
@@ -158,6 +168,14 @@ module UltracartClient
         self.time_on_page = attributes[:'time_on_page']
       end
 
+      if attributes.has_key?(:'timing_dom_content_loaded')
+        self.timing_dom_content_loaded = attributes[:'timing_dom_content_loaded']
+      end
+
+      if attributes.has_key?(:'timing_loaded')
+        self.timing_loaded = attributes[:'timing_loaded']
+      end
+
       if attributes.has_key?(:'truncated_events')
         self.truncated_events = attributes[:'truncated_events']
       end
@@ -202,6 +220,8 @@ module UltracartClient
           referrer_raw == o.referrer_raw &&
           screen_recording_page_view_uuid == o.screen_recording_page_view_uuid &&
           time_on_page == o.time_on_page &&
+          timing_dom_content_loaded == o.timing_dom_content_loaded &&
+          timing_loaded == o.timing_loaded &&
           truncated_events == o.truncated_events &&
           ucapv == o.ucapv &&
           url == o.url
@@ -216,7 +236,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [events, first_event_timestamp, http_post, last_event_timestamp, missing_events, params, range_end, range_start, referrer, referrer_params, referrer_raw, screen_recording_page_view_uuid, time_on_page, truncated_events, ucapv, url].hash
+      [events, first_event_timestamp, http_post, last_event_timestamp, missing_events, params, range_end, range_start, referrer, referrer_params, referrer_raw, screen_recording_page_view_uuid, time_on_page, timing_dom_content_loaded, timing_loaded, truncated_events, ucapv, url].hash
     end
 
     # Builds the object from hash

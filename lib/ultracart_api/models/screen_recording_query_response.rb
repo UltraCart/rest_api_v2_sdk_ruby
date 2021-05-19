@@ -20,6 +20,12 @@ module UltracartClient
 
     attr_accessor :filter_values
 
+    attr_accessor :histogram_data
+
+    attr_accessor :histogram_interval
+
+    attr_accessor :histogram_start_dts
+
     attr_accessor :metadata
 
     attr_accessor :screen_recordings
@@ -35,6 +41,9 @@ module UltracartClient
         :'error' => :'error',
         :'filter' => :'filter',
         :'filter_values' => :'filter_values',
+        :'histogram_data' => :'histogram_data',
+        :'histogram_interval' => :'histogram_interval',
+        :'histogram_start_dts' => :'histogram_start_dts',
         :'metadata' => :'metadata',
         :'screen_recordings' => :'screen_recordings',
         :'success' => :'success',
@@ -48,6 +57,9 @@ module UltracartClient
         :'error' => :'Error',
         :'filter' => :'ScreenRecordingFilter',
         :'filter_values' => :'ScreenRecordingFilterValues',
+        :'histogram_data' => :'Array<Integer>',
+        :'histogram_interval' => :'String',
+        :'histogram_start_dts' => :'String',
         :'metadata' => :'ResponseMetadata',
         :'screen_recordings' => :'Array<ScreenRecording>',
         :'success' => :'BOOLEAN',
@@ -73,6 +85,20 @@ module UltracartClient
 
       if attributes.has_key?(:'filter_values')
         self.filter_values = attributes[:'filter_values']
+      end
+
+      if attributes.has_key?(:'histogram_data')
+        if (value = attributes[:'histogram_data']).is_a?(Array)
+          self.histogram_data = value
+        end
+      end
+
+      if attributes.has_key?(:'histogram_interval')
+        self.histogram_interval = attributes[:'histogram_interval']
+      end
+
+      if attributes.has_key?(:'histogram_start_dts')
+        self.histogram_start_dts = attributes[:'histogram_start_dts']
       end
 
       if attributes.has_key?(:'metadata')
@@ -115,6 +141,9 @@ module UltracartClient
           error == o.error &&
           filter == o.filter &&
           filter_values == o.filter_values &&
+          histogram_data == o.histogram_data &&
+          histogram_interval == o.histogram_interval &&
+          histogram_start_dts == o.histogram_start_dts &&
           metadata == o.metadata &&
           screen_recordings == o.screen_recordings &&
           success == o.success &&
@@ -130,7 +159,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [error, filter, filter_values, metadata, screen_recordings, success, warning].hash
+      [error, filter, filter_values, histogram_data, histogram_interval, histogram_start_dts, metadata, screen_recordings, success, warning].hash
     end
 
     # Builds the object from hash

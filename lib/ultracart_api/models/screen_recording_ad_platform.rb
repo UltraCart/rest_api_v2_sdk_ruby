@@ -13,26 +13,46 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class OrderProcessPaymentRequest
-    # Specific amount to bill (optional).  If not specified the total of the order is billed.
-    attr_accessor :amount
+  class ScreenRecordingAdPlatform
+    # Facebook Click Id (Cookie)
+    attr_accessor :fbc
 
-    # Card verification number token from hosted fields used during credit card transaction processing (optional)
-    attr_accessor :card_verification_number_token
+    # Facebook Click Id Parameter (Parameter)
+    attr_accessor :fbclid
+
+    # Facebook Browser Id (Cookie)
+    attr_accessor :fbp
+
+    # Google Analytics CID (Cookie)
+    attr_accessor :gacid
+
+    # Google Adwords Click Id (Parameter)
+    attr_accessor :glcid
+
+    # Bing Click Id (Parameter
+    attr_accessor :msclkid
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'amount' => :'amount',
-        :'card_verification_number_token' => :'card_verification_number_token'
+        :'fbc' => :'fbc',
+        :'fbclid' => :'fbclid',
+        :'fbp' => :'fbp',
+        :'gacid' => :'gacid',
+        :'glcid' => :'glcid',
+        :'msclkid' => :'msclkid'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'amount' => :'Float',
-        :'card_verification_number_token' => :'String'
+        :'fbc' => :'String',
+        :'fbclid' => :'String',
+        :'fbp' => :'String',
+        :'gacid' => :'String',
+        :'glcid' => :'String',
+        :'msclkid' => :'String'
       }
     end
 
@@ -44,12 +64,28 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'amount')
-        self.amount = attributes[:'amount']
+      if attributes.has_key?(:'fbc')
+        self.fbc = attributes[:'fbc']
       end
 
-      if attributes.has_key?(:'card_verification_number_token')
-        self.card_verification_number_token = attributes[:'card_verification_number_token']
+      if attributes.has_key?(:'fbclid')
+        self.fbclid = attributes[:'fbclid']
+      end
+
+      if attributes.has_key?(:'fbp')
+        self.fbp = attributes[:'fbp']
+      end
+
+      if attributes.has_key?(:'gacid')
+        self.gacid = attributes[:'gacid']
+      end
+
+      if attributes.has_key?(:'glcid')
+        self.glcid = attributes[:'glcid']
+      end
+
+      if attributes.has_key?(:'msclkid')
+        self.msclkid = attributes[:'msclkid']
       end
     end
 
@@ -71,8 +107,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          amount == o.amount &&
-          card_verification_number_token == o.card_verification_number_token
+          fbc == o.fbc &&
+          fbclid == o.fbclid &&
+          fbp == o.fbp &&
+          gacid == o.gacid &&
+          glcid == o.glcid &&
+          msclkid == o.msclkid
     end
 
     # @see the `==` method
@@ -84,7 +124,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [amount, card_verification_number_token].hash
+      [fbc, fbclid, fbp, gacid, glcid, msclkid].hash
     end
 
     # Builds the object from hash

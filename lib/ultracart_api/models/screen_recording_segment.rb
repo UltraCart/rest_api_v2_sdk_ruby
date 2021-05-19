@@ -20,6 +20,12 @@ module UltracartClient
 
     attr_accessor :filter
 
+    attr_accessor :histogram_data
+
+    attr_accessor :histogram_interval
+
+    attr_accessor :histogram_start_dts
+
     attr_accessor :name
 
     attr_accessor :screen_recording_segment_oid
@@ -34,6 +40,9 @@ module UltracartClient
         :'create_dts' => :'create_dts',
         :'description' => :'description',
         :'filter' => :'filter',
+        :'histogram_data' => :'histogram_data',
+        :'histogram_interval' => :'histogram_interval',
+        :'histogram_start_dts' => :'histogram_start_dts',
         :'name' => :'name',
         :'screen_recording_segment_oid' => :'screen_recording_segment_oid',
         :'session_count' => :'session_count',
@@ -47,6 +56,9 @@ module UltracartClient
         :'create_dts' => :'String',
         :'description' => :'String',
         :'filter' => :'ScreenRecordingFilter',
+        :'histogram_data' => :'Array<Integer>',
+        :'histogram_interval' => :'String',
+        :'histogram_start_dts' => :'String',
         :'name' => :'String',
         :'screen_recording_segment_oid' => :'Integer',
         :'session_count' => :'Integer',
@@ -72,6 +84,20 @@ module UltracartClient
 
       if attributes.has_key?(:'filter')
         self.filter = attributes[:'filter']
+      end
+
+      if attributes.has_key?(:'histogram_data')
+        if (value = attributes[:'histogram_data']).is_a?(Array)
+          self.histogram_data = value
+        end
+      end
+
+      if attributes.has_key?(:'histogram_interval')
+        self.histogram_interval = attributes[:'histogram_interval']
+      end
+
+      if attributes.has_key?(:'histogram_start_dts')
+        self.histogram_start_dts = attributes[:'histogram_start_dts']
       end
 
       if attributes.has_key?(:'name')
@@ -112,6 +138,9 @@ module UltracartClient
           create_dts == o.create_dts &&
           description == o.description &&
           filter == o.filter &&
+          histogram_data == o.histogram_data &&
+          histogram_interval == o.histogram_interval &&
+          histogram_start_dts == o.histogram_start_dts &&
           name == o.name &&
           screen_recording_segment_oid == o.screen_recording_segment_oid &&
           session_count == o.session_count &&
@@ -127,7 +156,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [create_dts, description, filter, name, screen_recording_segment_oid, session_count, session_count_last_update_dts].hash
+      [create_dts, description, filter, histogram_data, histogram_interval, histogram_start_dts, name, screen_recording_segment_oid, session_count, session_count_last_update_dts].hash
     end
 
     # Builds the object from hash

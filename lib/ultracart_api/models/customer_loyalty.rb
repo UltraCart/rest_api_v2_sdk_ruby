@@ -20,6 +20,9 @@ module UltracartClient
     # Ledger entries
     attr_accessor :ledger_entries
 
+    # Pending Points
+    attr_accessor :pending_points
+
     # Redemptions
     attr_accessor :redemptions
 
@@ -28,6 +31,7 @@ module UltracartClient
       {
         :'current_points' => :'current_points',
         :'ledger_entries' => :'ledger_entries',
+        :'pending_points' => :'pending_points',
         :'redemptions' => :'redemptions'
       }
     end
@@ -37,6 +41,7 @@ module UltracartClient
       {
         :'current_points' => :'Integer',
         :'ledger_entries' => :'Array<CustomerLoyaltyLedger>',
+        :'pending_points' => :'Integer',
         :'redemptions' => :'Array<CustomerLoyaltyRedemption>'
       }
     end
@@ -57,6 +62,10 @@ module UltracartClient
         if (value = attributes[:'ledger_entries']).is_a?(Array)
           self.ledger_entries = value
         end
+      end
+
+      if attributes.has_key?(:'pending_points')
+        self.pending_points = attributes[:'pending_points']
       end
 
       if attributes.has_key?(:'redemptions')
@@ -86,6 +95,7 @@ module UltracartClient
       self.class == o.class &&
           current_points == o.current_points &&
           ledger_entries == o.ledger_entries &&
+          pending_points == o.pending_points &&
           redemptions == o.redemptions
     end
 
@@ -98,7 +108,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [current_points, ledger_entries, redemptions].hash
+      [current_points, ledger_entries, pending_points, redemptions].hash
     end
 
     # Builds the object from hash
