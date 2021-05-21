@@ -14,6 +14,8 @@ require 'date'
 
 module UltracartClient
   class ScreenRecordingPageView
+    attr_accessor :domain
+
     attr_accessor :events
 
     # First event timestamp
@@ -57,6 +59,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'domain' => :'domain',
         :'events' => :'events',
         :'first_event_timestamp' => :'first_event_timestamp',
         :'http_post' => :'http_post',
@@ -81,6 +84,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'domain' => :'String',
         :'events' => :'Array<ScreenRecordingPageViewEvent>',
         :'first_event_timestamp' => :'String',
         :'http_post' => :'BOOLEAN',
@@ -109,6 +113,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'domain')
+        self.domain = attributes[:'domain']
+      end
 
       if attributes.has_key?(:'events')
         if (value = attributes[:'events']).is_a?(Array)
@@ -207,6 +215,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          domain == o.domain &&
           events == o.events &&
           first_event_timestamp == o.first_event_timestamp &&
           http_post == o.http_post &&
@@ -236,7 +245,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [events, first_event_timestamp, http_post, last_event_timestamp, missing_events, params, range_end, range_start, referrer, referrer_params, referrer_raw, screen_recording_page_view_uuid, time_on_page, timing_dom_content_loaded, timing_loaded, truncated_events, ucapv, url].hash
+      [domain, events, first_event_timestamp, http_post, last_event_timestamp, missing_events, params, range_end, range_start, referrer, referrer_params, referrer_raw, screen_recording_page_view_uuid, time_on_page, timing_dom_content_loaded, timing_loaded, truncated_events, ucapv, url].hash
     end
 
     # Builds the object from hash

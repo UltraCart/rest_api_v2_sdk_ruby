@@ -14,6 +14,8 @@ require 'date'
 
 module UltracartClient
   class ScreenRecordingFilterPageView
+    attr_accessor :domain
+
     attr_accessor :events
 
     attr_accessor :params
@@ -31,6 +33,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'domain' => :'domain',
         :'events' => :'events',
         :'params' => :'params',
         :'referrer' => :'referrer',
@@ -44,6 +47,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'domain' => :'ScreenRecordingFilterStringSearch',
         :'events' => :'Array<ScreenRecordingFilterPageViewEvent>',
         :'params' => :'Array<ScreenRecordingFilterPageViewParam>',
         :'referrer' => :'ScreenRecordingFilterStringSearch',
@@ -61,6 +65,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'domain')
+        self.domain = attributes[:'domain']
+      end
 
       if attributes.has_key?(:'events')
         if (value = attributes[:'events']).is_a?(Array)
@@ -115,6 +123,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          domain == o.domain &&
           events == o.events &&
           params == o.params &&
           referrer == o.referrer &&
@@ -133,7 +142,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [events, params, referrer, referrer_params, referrer_raw, time_on_page, url].hash
+      [domain, events, params, referrer, referrer_params, referrer_raw, time_on_page, url].hash
     end
 
     # Builds the object from hash

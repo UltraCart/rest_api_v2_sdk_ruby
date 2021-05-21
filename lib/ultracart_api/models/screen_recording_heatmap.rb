@@ -13,40 +13,64 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ScreenRecordingFilterValuesPageView
-    attr_accessor :domains
+  class ScreenRecordingHeatmap
+    attr_accessor :large_click_url
 
-    attr_accessor :events
+    attr_accessor :large_movement_url
 
-    attr_accessor :page_params
+    attr_accessor :large_regular_url
 
-    attr_accessor :time_on_page_max
+    attr_accessor :large_scroll_url
 
-    attr_accessor :time_on_page_min
+    attr_accessor :medium_click_url
 
-    attr_accessor :urls
+    attr_accessor :medium_movement_url
+
+    attr_accessor :medium_regular_url
+
+    attr_accessor :medium_scroll_url
+
+    attr_accessor :small_click_url
+
+    attr_accessor :small_movement_url
+
+    attr_accessor :small_regular_url
+
+    attr_accessor :small_scroll_url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'domains' => :'domains',
-        :'events' => :'events',
-        :'page_params' => :'page_params',
-        :'time_on_page_max' => :'time_on_page_max',
-        :'time_on_page_min' => :'time_on_page_min',
-        :'urls' => :'urls'
+        :'large_click_url' => :'large_click_url',
+        :'large_movement_url' => :'large_movement_url',
+        :'large_regular_url' => :'large_regular_url',
+        :'large_scroll_url' => :'large_scroll_url',
+        :'medium_click_url' => :'medium_click_url',
+        :'medium_movement_url' => :'medium_movement_url',
+        :'medium_regular_url' => :'medium_regular_url',
+        :'medium_scroll_url' => :'medium_scroll_url',
+        :'small_click_url' => :'small_click_url',
+        :'small_movement_url' => :'small_movement_url',
+        :'small_regular_url' => :'small_regular_url',
+        :'small_scroll_url' => :'small_scroll_url'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'domains' => :'Array<String>',
-        :'events' => :'Array<ScreenRecordingFilterValuesEvent>',
-        :'page_params' => :'Array<ScreenRecordingFilterValuesPageParam>',
-        :'time_on_page_max' => :'Integer',
-        :'time_on_page_min' => :'Integer',
-        :'urls' => :'Array<String>'
+        :'large_click_url' => :'String',
+        :'large_movement_url' => :'String',
+        :'large_regular_url' => :'String',
+        :'large_scroll_url' => :'String',
+        :'medium_click_url' => :'String',
+        :'medium_movement_url' => :'String',
+        :'medium_regular_url' => :'String',
+        :'medium_scroll_url' => :'String',
+        :'small_click_url' => :'String',
+        :'small_movement_url' => :'String',
+        :'small_regular_url' => :'String',
+        :'small_scroll_url' => :'String'
       }
     end
 
@@ -58,36 +82,52 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'domains')
-        if (value = attributes[:'domains']).is_a?(Array)
-          self.domains = value
-        end
+      if attributes.has_key?(:'large_click_url')
+        self.large_click_url = attributes[:'large_click_url']
       end
 
-      if attributes.has_key?(:'events')
-        if (value = attributes[:'events']).is_a?(Array)
-          self.events = value
-        end
+      if attributes.has_key?(:'large_movement_url')
+        self.large_movement_url = attributes[:'large_movement_url']
       end
 
-      if attributes.has_key?(:'page_params')
-        if (value = attributes[:'page_params']).is_a?(Array)
-          self.page_params = value
-        end
+      if attributes.has_key?(:'large_regular_url')
+        self.large_regular_url = attributes[:'large_regular_url']
       end
 
-      if attributes.has_key?(:'time_on_page_max')
-        self.time_on_page_max = attributes[:'time_on_page_max']
+      if attributes.has_key?(:'large_scroll_url')
+        self.large_scroll_url = attributes[:'large_scroll_url']
       end
 
-      if attributes.has_key?(:'time_on_page_min')
-        self.time_on_page_min = attributes[:'time_on_page_min']
+      if attributes.has_key?(:'medium_click_url')
+        self.medium_click_url = attributes[:'medium_click_url']
       end
 
-      if attributes.has_key?(:'urls')
-        if (value = attributes[:'urls']).is_a?(Array)
-          self.urls = value
-        end
+      if attributes.has_key?(:'medium_movement_url')
+        self.medium_movement_url = attributes[:'medium_movement_url']
+      end
+
+      if attributes.has_key?(:'medium_regular_url')
+        self.medium_regular_url = attributes[:'medium_regular_url']
+      end
+
+      if attributes.has_key?(:'medium_scroll_url')
+        self.medium_scroll_url = attributes[:'medium_scroll_url']
+      end
+
+      if attributes.has_key?(:'small_click_url')
+        self.small_click_url = attributes[:'small_click_url']
+      end
+
+      if attributes.has_key?(:'small_movement_url')
+        self.small_movement_url = attributes[:'small_movement_url']
+      end
+
+      if attributes.has_key?(:'small_regular_url')
+        self.small_regular_url = attributes[:'small_regular_url']
+      end
+
+      if attributes.has_key?(:'small_scroll_url')
+        self.small_scroll_url = attributes[:'small_scroll_url']
       end
     end
 
@@ -109,12 +149,18 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          domains == o.domains &&
-          events == o.events &&
-          page_params == o.page_params &&
-          time_on_page_max == o.time_on_page_max &&
-          time_on_page_min == o.time_on_page_min &&
-          urls == o.urls
+          large_click_url == o.large_click_url &&
+          large_movement_url == o.large_movement_url &&
+          large_regular_url == o.large_regular_url &&
+          large_scroll_url == o.large_scroll_url &&
+          medium_click_url == o.medium_click_url &&
+          medium_movement_url == o.medium_movement_url &&
+          medium_regular_url == o.medium_regular_url &&
+          medium_scroll_url == o.medium_scroll_url &&
+          small_click_url == o.small_click_url &&
+          small_movement_url == o.small_movement_url &&
+          small_regular_url == o.small_regular_url &&
+          small_scroll_url == o.small_scroll_url
     end
 
     # @see the `==` method
@@ -126,7 +172,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [domains, events, page_params, time_on_page_max, time_on_page_min, urls].hash
+      [large_click_url, large_movement_url, large_regular_url, large_scroll_url, medium_click_url, medium_movement_url, medium_regular_url, medium_scroll_url, small_click_url, small_movement_url, small_regular_url, small_scroll_url].hash
     end
 
     # Builds the object from hash

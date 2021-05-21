@@ -13,40 +13,36 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ScreenRecordingFilterValuesPageView
-    attr_accessor :domains
+  class ScreenRecordingHeatmapUrl
+    attr_accessor :histogram_data
 
-    attr_accessor :events
+    attr_accessor :histogram_interval
 
-    attr_accessor :page_params
+    attr_accessor :histogram_start_dts
 
-    attr_accessor :time_on_page_max
+    attr_accessor :session_count
 
-    attr_accessor :time_on_page_min
-
-    attr_accessor :urls
+    attr_accessor :url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'domains' => :'domains',
-        :'events' => :'events',
-        :'page_params' => :'page_params',
-        :'time_on_page_max' => :'time_on_page_max',
-        :'time_on_page_min' => :'time_on_page_min',
-        :'urls' => :'urls'
+        :'histogram_data' => :'histogram_data',
+        :'histogram_interval' => :'histogram_interval',
+        :'histogram_start_dts' => :'histogram_start_dts',
+        :'session_count' => :'session_count',
+        :'url' => :'url'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'domains' => :'Array<String>',
-        :'events' => :'Array<ScreenRecordingFilterValuesEvent>',
-        :'page_params' => :'Array<ScreenRecordingFilterValuesPageParam>',
-        :'time_on_page_max' => :'Integer',
-        :'time_on_page_min' => :'Integer',
-        :'urls' => :'Array<String>'
+        :'histogram_data' => :'Array<Integer>',
+        :'histogram_interval' => :'String',
+        :'histogram_start_dts' => :'String',
+        :'session_count' => :'Integer',
+        :'url' => :'String'
       }
     end
 
@@ -58,36 +54,26 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'domains')
-        if (value = attributes[:'domains']).is_a?(Array)
-          self.domains = value
+      if attributes.has_key?(:'histogram_data')
+        if (value = attributes[:'histogram_data']).is_a?(Array)
+          self.histogram_data = value
         end
       end
 
-      if attributes.has_key?(:'events')
-        if (value = attributes[:'events']).is_a?(Array)
-          self.events = value
-        end
+      if attributes.has_key?(:'histogram_interval')
+        self.histogram_interval = attributes[:'histogram_interval']
       end
 
-      if attributes.has_key?(:'page_params')
-        if (value = attributes[:'page_params']).is_a?(Array)
-          self.page_params = value
-        end
+      if attributes.has_key?(:'histogram_start_dts')
+        self.histogram_start_dts = attributes[:'histogram_start_dts']
       end
 
-      if attributes.has_key?(:'time_on_page_max')
-        self.time_on_page_max = attributes[:'time_on_page_max']
+      if attributes.has_key?(:'session_count')
+        self.session_count = attributes[:'session_count']
       end
 
-      if attributes.has_key?(:'time_on_page_min')
-        self.time_on_page_min = attributes[:'time_on_page_min']
-      end
-
-      if attributes.has_key?(:'urls')
-        if (value = attributes[:'urls']).is_a?(Array)
-          self.urls = value
-        end
+      if attributes.has_key?(:'url')
+        self.url = attributes[:'url']
       end
     end
 
@@ -109,12 +95,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          domains == o.domains &&
-          events == o.events &&
-          page_params == o.page_params &&
-          time_on_page_max == o.time_on_page_max &&
-          time_on_page_min == o.time_on_page_min &&
-          urls == o.urls
+          histogram_data == o.histogram_data &&
+          histogram_interval == o.histogram_interval &&
+          histogram_start_dts == o.histogram_start_dts &&
+          session_count == o.session_count &&
+          url == o.url
     end
 
     # @see the `==` method
@@ -126,7 +111,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [domains, events, page_params, time_on_page_max, time_on_page_min, urls].hash
+      [histogram_data, histogram_interval, histogram_start_dts, session_count, url].hash
     end
 
     # Builds the object from hash

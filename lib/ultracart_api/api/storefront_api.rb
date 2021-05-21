@@ -1033,6 +1033,66 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Delete screen recording heatmap
+    # Delete screen recording heatmap 
+    # @param storefront_oid 
+    # @param query Query
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_heatmap(storefront_oid, query, opts = {})
+      delete_heatmap_with_http_info(storefront_oid, query, opts)
+      nil
+    end
+
+    # Delete screen recording heatmap
+    # Delete screen recording heatmap 
+    # @param storefront_oid 
+    # @param query Query
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def delete_heatmap_with_http_info(storefront_oid, query, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.delete_heatmap ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.delete_heatmap"
+      end
+      # verify the required parameter 'query' is set
+      if @api_client.config.client_side_validation && query.nil?
+        fail ArgumentError, "Missing the required parameter 'query' when calling StorefrontApi.delete_heatmap"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/heatmap'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(query)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#delete_heatmap\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Delete library item
     # @param library_item_oid 
     # @param [Hash] opts the optional parameters
@@ -4435,6 +4495,122 @@ module UltracartClient
         :return_type => 'ExperimentsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#get_experiments\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get screen recording heatmap
+    # Get screen recording heatmap 
+    # @param storefront_oid 
+    # @param query Query
+    # @param [Hash] opts the optional parameters
+    # @return [ScreenRecordingHeatmapResponse]
+    def get_heatmap(storefront_oid, query, opts = {})
+      data, _status_code, _headers = get_heatmap_with_http_info(storefront_oid, query, opts)
+      data
+    end
+
+    # Get screen recording heatmap
+    # Get screen recording heatmap 
+    # @param storefront_oid 
+    # @param query Query
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ScreenRecordingHeatmapResponse, Fixnum, Hash)>] ScreenRecordingHeatmapResponse data, response status code and response headers
+    def get_heatmap_with_http_info(storefront_oid, query, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_heatmap ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_heatmap"
+      end
+      # verify the required parameter 'query' is set
+      if @api_client.config.client_side_validation && query.nil?
+        fail ArgumentError, "Missing the required parameter 'query' when calling StorefrontApi.get_heatmap"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/heatmap'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(query)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ScreenRecordingHeatmapResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_heatmap\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get screen recording heatmap index
+    # Get screen recording heatmap index 
+    # @param storefront_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [ScreenRecordingHeatmapIndexResponse]
+    def get_heatmap_index(storefront_oid, opts = {})
+      data, _status_code, _headers = get_heatmap_index_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Get screen recording heatmap index
+    # Get screen recording heatmap index 
+    # @param storefront_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ScreenRecordingHeatmapIndexResponse, Fixnum, Hash)>] ScreenRecordingHeatmapIndexResponse data, response status code and response headers
+    def get_heatmap_index_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_heatmap_index ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_heatmap_index"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/screen_recordings/heatmap/index'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ScreenRecordingHeatmapIndexResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_heatmap_index\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

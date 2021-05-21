@@ -13,40 +13,24 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ScreenRecordingFilterValuesPageView
-    attr_accessor :domains
+  class ScreenRecordingHeatmapRequest
+    attr_accessor :range
 
-    attr_accessor :events
-
-    attr_accessor :page_params
-
-    attr_accessor :time_on_page_max
-
-    attr_accessor :time_on_page_min
-
-    attr_accessor :urls
+    attr_accessor :url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'domains' => :'domains',
-        :'events' => :'events',
-        :'page_params' => :'page_params',
-        :'time_on_page_max' => :'time_on_page_max',
-        :'time_on_page_min' => :'time_on_page_min',
-        :'urls' => :'urls'
+        :'range' => :'range',
+        :'url' => :'url'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'domains' => :'Array<String>',
-        :'events' => :'Array<ScreenRecordingFilterValuesEvent>',
-        :'page_params' => :'Array<ScreenRecordingFilterValuesPageParam>',
-        :'time_on_page_max' => :'Integer',
-        :'time_on_page_min' => :'Integer',
-        :'urls' => :'Array<String>'
+        :'range' => :'ScreenRecordingFilterRangeDate',
+        :'url' => :'String'
       }
     end
 
@@ -58,36 +42,12 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'domains')
-        if (value = attributes[:'domains']).is_a?(Array)
-          self.domains = value
-        end
+      if attributes.has_key?(:'range')
+        self.range = attributes[:'range']
       end
 
-      if attributes.has_key?(:'events')
-        if (value = attributes[:'events']).is_a?(Array)
-          self.events = value
-        end
-      end
-
-      if attributes.has_key?(:'page_params')
-        if (value = attributes[:'page_params']).is_a?(Array)
-          self.page_params = value
-        end
-      end
-
-      if attributes.has_key?(:'time_on_page_max')
-        self.time_on_page_max = attributes[:'time_on_page_max']
-      end
-
-      if attributes.has_key?(:'time_on_page_min')
-        self.time_on_page_min = attributes[:'time_on_page_min']
-      end
-
-      if attributes.has_key?(:'urls')
-        if (value = attributes[:'urls']).is_a?(Array)
-          self.urls = value
-        end
+      if attributes.has_key?(:'url')
+        self.url = attributes[:'url']
       end
     end
 
@@ -109,12 +69,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          domains == o.domains &&
-          events == o.events &&
-          page_params == o.page_params &&
-          time_on_page_max == o.time_on_page_max &&
-          time_on_page_min == o.time_on_page_min &&
-          urls == o.urls
+          range == o.range &&
+          url == o.url
     end
 
     # @see the `==` method
@@ -126,7 +82,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [domains, events, page_params, time_on_page_max, time_on_page_min, urls].hash
+      [range, url].hash
     end
 
     # Builds the object from hash

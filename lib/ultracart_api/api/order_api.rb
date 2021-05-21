@@ -33,7 +33,7 @@ module UltracartClient
     end
 
     # Adjusts an order total
-    # Adjusts an order total.  Adjusts individual items appropriately and considers taxes.  Desired total should be provided in the same currency as the order.  Returns true if successful. 
+    # Adjusts an order total.  Adjusts individual items appropriately and considers taxes.  Desired total should be provided in the same currency as the order and must be less than the current total and greater than zero.  This call will change the order total.  It returns true if the desired total is achieved.  If the goal seeking algorithm falls short (usually by pennies), this method returns back false.  View the merchant notes for the order for further details. 
     # @param order_id The order id to cancel.
     # @param desired_total The desired total with no formatting. example 123.45
     # @param [Hash] opts the optional parameters
@@ -44,7 +44,7 @@ module UltracartClient
     end
 
     # Adjusts an order total
-    # Adjusts an order total.  Adjusts individual items appropriately and considers taxes.  Desired total should be provided in the same currency as the order.  Returns true if successful. 
+    # Adjusts an order total.  Adjusts individual items appropriately and considers taxes.  Desired total should be provided in the same currency as the order and must be less than the current total and greater than zero.  This call will change the order total.  It returns true if the desired total is achieved.  If the goal seeking algorithm falls short (usually by pennies), this method returns back false.  View the merchant notes for the order for further details. 
     # @param order_id The order id to cancel.
     # @param desired_total The desired total with no formatting. example 123.45
     # @param [Hash] opts the optional parameters

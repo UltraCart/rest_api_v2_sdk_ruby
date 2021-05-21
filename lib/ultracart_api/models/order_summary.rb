@@ -16,6 +16,8 @@ module UltracartClient
   class OrderSummary
     attr_accessor :actual_fulfillment
 
+    attr_accessor :actual_payment_processing
+
     attr_accessor :actual_shipping
 
     attr_accessor :arbitrary_shipping_handling_total
@@ -52,6 +54,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'actual_fulfillment' => :'actual_fulfillment',
+        :'actual_payment_processing' => :'actual_payment_processing',
         :'actual_shipping' => :'actual_shipping',
         :'arbitrary_shipping_handling_total' => :'arbitrary_shipping_handling_total',
         :'other_refunded' => :'other_refunded',
@@ -75,6 +78,7 @@ module UltracartClient
     def self.swagger_types
       {
         :'actual_fulfillment' => :'Currency',
+        :'actual_payment_processing' => :'Currency',
         :'actual_shipping' => :'Currency',
         :'arbitrary_shipping_handling_total' => :'Currency',
         :'other_refunded' => :'Currency',
@@ -104,6 +108,10 @@ module UltracartClient
 
       if attributes.has_key?(:'actual_fulfillment')
         self.actual_fulfillment = attributes[:'actual_fulfillment']
+      end
+
+      if attributes.has_key?(:'actual_payment_processing')
+        self.actual_payment_processing = attributes[:'actual_payment_processing']
       end
 
       if attributes.has_key?(:'actual_shipping')
@@ -190,6 +198,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           actual_fulfillment == o.actual_fulfillment &&
+          actual_payment_processing == o.actual_payment_processing &&
           actual_shipping == o.actual_shipping &&
           arbitrary_shipping_handling_total == o.arbitrary_shipping_handling_total &&
           other_refunded == o.other_refunded &&
@@ -217,7 +226,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [actual_fulfillment, actual_shipping, arbitrary_shipping_handling_total, other_refunded, shipping_handling_refunded, shipping_handling_total, shipping_handling_total_discount, subtotal, subtotal_discount, subtotal_discount_refunded, subtotal_refunded, tax, tax_refunded, taxable_subtotal, taxable_subtotal_discount, total, total_refunded].hash
+      [actual_fulfillment, actual_payment_processing, actual_shipping, arbitrary_shipping_handling_total, other_refunded, shipping_handling_refunded, shipping_handling_total, shipping_handling_total_discount, subtotal, subtotal_discount, subtotal_discount_refunded, subtotal_refunded, tax, tax_refunded, taxable_subtotal, taxable_subtotal_discount, total, total_refunded].hash
     end
 
     # Builds the object from hash

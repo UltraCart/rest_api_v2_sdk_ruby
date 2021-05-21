@@ -13,40 +13,37 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ScreenRecordingFilterValuesPageView
-    attr_accessor :domains
+  class ScreenRecordingHeatmapIndexResponse
+    attr_accessor :error
 
-    attr_accessor :events
+    attr_accessor :heatmap_urls
 
-    attr_accessor :page_params
+    attr_accessor :metadata
 
-    attr_accessor :time_on_page_max
+    # Indicates if API call was successful
+    attr_accessor :success
 
-    attr_accessor :time_on_page_min
-
-    attr_accessor :urls
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'domains' => :'domains',
-        :'events' => :'events',
-        :'page_params' => :'page_params',
-        :'time_on_page_max' => :'time_on_page_max',
-        :'time_on_page_min' => :'time_on_page_min',
-        :'urls' => :'urls'
+        :'error' => :'error',
+        :'heatmap_urls' => :'heatmap_urls',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'domains' => :'Array<String>',
-        :'events' => :'Array<ScreenRecordingFilterValuesEvent>',
-        :'page_params' => :'Array<ScreenRecordingFilterValuesPageParam>',
-        :'time_on_page_max' => :'Integer',
-        :'time_on_page_min' => :'Integer',
-        :'urls' => :'Array<String>'
+        :'error' => :'Error',
+        :'heatmap_urls' => :'Array<ScreenRecordingHeatmapUrl>',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'BOOLEAN',
+        :'warning' => :'Warning'
       }
     end
 
@@ -58,36 +55,26 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'domains')
-        if (value = attributes[:'domains']).is_a?(Array)
-          self.domains = value
+      if attributes.has_key?(:'error')
+        self.error = attributes[:'error']
+      end
+
+      if attributes.has_key?(:'heatmap_urls')
+        if (value = attributes[:'heatmap_urls']).is_a?(Array)
+          self.heatmap_urls = value
         end
       end
 
-      if attributes.has_key?(:'events')
-        if (value = attributes[:'events']).is_a?(Array)
-          self.events = value
-        end
+      if attributes.has_key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.has_key?(:'page_params')
-        if (value = attributes[:'page_params']).is_a?(Array)
-          self.page_params = value
-        end
+      if attributes.has_key?(:'success')
+        self.success = attributes[:'success']
       end
 
-      if attributes.has_key?(:'time_on_page_max')
-        self.time_on_page_max = attributes[:'time_on_page_max']
-      end
-
-      if attributes.has_key?(:'time_on_page_min')
-        self.time_on_page_min = attributes[:'time_on_page_min']
-      end
-
-      if attributes.has_key?(:'urls')
-        if (value = attributes[:'urls']).is_a?(Array)
-          self.urls = value
-        end
+      if attributes.has_key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -109,12 +96,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          domains == o.domains &&
-          events == o.events &&
-          page_params == o.page_params &&
-          time_on_page_max == o.time_on_page_max &&
-          time_on_page_min == o.time_on_page_min &&
-          urls == o.urls
+          error == o.error &&
+          heatmap_urls == o.heatmap_urls &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -126,7 +112,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [domains, events, page_params, time_on_page_max, time_on_page_min, urls].hash
+      [error, heatmap_urls, metadata, success, warning].hash
     end
 
     # Builds the object from hash
