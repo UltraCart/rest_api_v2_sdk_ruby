@@ -20,6 +20,9 @@ module UltracartClient
     # Number of milliseconds to process the notification
     attr_accessor :duration
 
+    # Number of milliseconds of delay caused by queuing
+    attr_accessor :queue_delay
+
     # Request payload (first 100,000 characters)
     attr_accessor :request
 
@@ -49,6 +52,7 @@ module UltracartClient
       {
         :'delivery_dts' => :'delivery_dts',
         :'duration' => :'duration',
+        :'queue_delay' => :'queue_delay',
         :'request' => :'request',
         :'request_headers' => :'request_headers',
         :'request_id' => :'request_id',
@@ -65,6 +69,7 @@ module UltracartClient
       {
         :'delivery_dts' => :'String',
         :'duration' => :'Integer',
+        :'queue_delay' => :'Integer',
         :'request' => :'String',
         :'request_headers' => :'Array<HTTPHeader>',
         :'request_id' => :'String',
@@ -90,6 +95,10 @@ module UltracartClient
 
       if attributes.has_key?(:'duration')
         self.duration = attributes[:'duration']
+      end
+
+      if attributes.has_key?(:'queue_delay')
+        self.queue_delay = attributes[:'queue_delay']
       end
 
       if attributes.has_key?(:'request')
@@ -149,6 +158,7 @@ module UltracartClient
       self.class == o.class &&
           delivery_dts == o.delivery_dts &&
           duration == o.duration &&
+          queue_delay == o.queue_delay &&
           request == o.request &&
           request_headers == o.request_headers &&
           request_id == o.request_id &&
@@ -168,7 +178,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [delivery_dts, duration, request, request_headers, request_id, response, response_headers, status_code, success, uri].hash
+      [delivery_dts, duration, queue_delay, request, request_headers, request_id, response, response_headers, status_code, success, uri].hash
     end
 
     # Builds the object from hash

@@ -17,6 +17,9 @@ module UltracartClient
     # The amount of subtotal discount
     attr_accessor :discount_amount
 
+    # Quickbooks accounting code.
+    attr_accessor :quickbooks_code
+
     # The amount of subtotal required to receive the discount amount
     attr_accessor :subtotal_amount
 
@@ -24,6 +27,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'discount_amount' => :'discount_amount',
+        :'quickbooks_code' => :'quickbooks_code',
         :'subtotal_amount' => :'subtotal_amount'
       }
     end
@@ -32,6 +36,7 @@ module UltracartClient
     def self.swagger_types
       {
         :'discount_amount' => :'Float',
+        :'quickbooks_code' => :'String',
         :'subtotal_amount' => :'Float'
       }
     end
@@ -48,6 +53,10 @@ module UltracartClient
         self.discount_amount = attributes[:'discount_amount']
       end
 
+      if attributes.has_key?(:'quickbooks_code')
+        self.quickbooks_code = attributes[:'quickbooks_code']
+      end
+
       if attributes.has_key?(:'subtotal_amount')
         self.subtotal_amount = attributes[:'subtotal_amount']
       end
@@ -57,13 +66,28 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@quickbooks_code.nil? && @quickbooks_code.to_s.length > 20
+        invalid_properties.push('invalid value for "quickbooks_code", the character length must be smaller than or equal to 20.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@quickbooks_code.nil? && @quickbooks_code.to_s.length > 20
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] quickbooks_code Value to be assigned
+    def quickbooks_code=(quickbooks_code)
+      if !quickbooks_code.nil? && quickbooks_code.to_s.length > 20
+        fail ArgumentError, 'invalid value for "quickbooks_code", the character length must be smaller than or equal to 20.'
+      end
+
+      @quickbooks_code = quickbooks_code
     end
 
     # Checks equality by comparing each attribute.
@@ -72,6 +96,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           discount_amount == o.discount_amount &&
+          quickbooks_code == o.quickbooks_code &&
           subtotal_amount == o.subtotal_amount
     end
 
@@ -84,7 +109,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [discount_amount, subtotal_amount].hash
+      [discount_amount, quickbooks_code, subtotal_amount].hash
     end
 
     # Builds the object from hash
