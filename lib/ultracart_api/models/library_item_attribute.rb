@@ -14,6 +14,8 @@ require 'date'
 
 module UltracartClient
   class LibraryItemAttribute
+    attr_accessor :library_item_oid
+
     attr_accessor :name
 
     attr_accessor :value
@@ -21,6 +23,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'library_item_oid' => :'libraryItemOid',
         :'name' => :'name',
         :'value' => :'value'
       }
@@ -29,6 +32,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'library_item_oid' => :'Integer',
         :'name' => :'String',
         :'value' => :'String'
       }
@@ -41,6 +45,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'libraryItemOid')
+        self.library_item_oid = attributes[:'libraryItemOid']
+      end
 
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
@@ -69,6 +77,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          library_item_oid == o.library_item_oid &&
           name == o.name &&
           value == o.value
     end
@@ -82,7 +91,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, value].hash
+      [library_item_oid, name, value].hash
     end
 
     # Builds the object from hash

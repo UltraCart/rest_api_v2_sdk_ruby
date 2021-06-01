@@ -23,7 +23,7 @@ module UltracartClient
     attr_accessor :ccbill
 
     # Channel Partner Item Mapping
-    attr_accessor :channel_partner_mappings
+    attr_accessor :channel_partner_item_mappings
 
     attr_accessor :chargeback
 
@@ -140,7 +140,7 @@ module UltracartClient
         :'amember' => :'amember',
         :'auto_order' => :'auto_order',
         :'ccbill' => :'ccbill',
-        :'channel_partner_mappings' => :'channelPartnerMappings',
+        :'channel_partner_item_mappings' => :'channel_partner_item_mappings',
         :'chargeback' => :'chargeback',
         :'checkout' => :'checkout',
         :'content' => :'content',
@@ -196,7 +196,7 @@ module UltracartClient
         :'amember' => :'ItemAmember',
         :'auto_order' => :'ItemAutoOrder',
         :'ccbill' => :'ItemCCBill',
-        :'channel_partner_mappings' => :'Array<ItemChannelPartnerMapping>',
+        :'channel_partner_item_mappings' => :'Array<ItemChannelPartnerMapping>',
         :'chargeback' => :'ItemChargeback',
         :'checkout' => :'ItemCheckout',
         :'content' => :'ItemContent',
@@ -269,9 +269,9 @@ module UltracartClient
         self.ccbill = attributes[:'ccbill']
       end
 
-      if attributes.has_key?(:'channelPartnerMappings')
-        if (value = attributes[:'channelPartnerMappings']).is_a?(Array)
-          self.channel_partner_mappings = value
+      if attributes.has_key?(:'channel_partner_item_mappings')
+        if (value = attributes[:'channel_partner_item_mappings']).is_a?(Array)
+          self.channel_partner_item_mappings = value
         end
       end
 
@@ -533,7 +533,7 @@ module UltracartClient
           amember == o.amember &&
           auto_order == o.auto_order &&
           ccbill == o.ccbill &&
-          channel_partner_mappings == o.channel_partner_mappings &&
+          channel_partner_item_mappings == o.channel_partner_item_mappings &&
           chargeback == o.chargeback &&
           checkout == o.checkout &&
           content == o.content &&
@@ -590,7 +590,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accounting, amember, auto_order, ccbill, channel_partner_mappings, chargeback, checkout, content, creation_dts, description, description_translated_text_instance_oid, digital_delivery, ebay, email_notifications, enrollment123, gift_certificate, google_product_search, identifiers, inactive, instant_payment_notifications, internal, kit, kit_component_only, kit_definition, last_modified_dts, merchant_id, merchant_item_id, merchant_item_oid, options, parent_category_id, parent_category_path, payment_processing, physical, pricing, properties, realtime_pricing, recommend_replenishment_days, related, reporting, restriction, revguard, reviews, salesforce, shipping, tags, tax, third_party_email_marketing, variant_items, variations, wishlist_member].hash
+      [accounting, amember, auto_order, ccbill, channel_partner_item_mappings, chargeback, checkout, content, creation_dts, description, description_translated_text_instance_oid, digital_delivery, ebay, email_notifications, enrollment123, gift_certificate, google_product_search, identifiers, inactive, instant_payment_notifications, internal, kit, kit_component_only, kit_definition, last_modified_dts, merchant_id, merchant_item_id, merchant_item_oid, options, parent_category_id, parent_category_path, payment_processing, physical, pricing, properties, realtime_pricing, recommend_replenishment_days, related, reporting, restriction, revguard, reviews, salesforce, shipping, tags, tax, third_party_email_marketing, variant_items, variations, wishlist_member].hash
     end
 
     # Builds the object from hash
