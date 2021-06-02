@@ -35,6 +35,12 @@ module UltracartClient
     # True if the item is reviewable
     attr_accessor :reviewable
 
+    # Share reviews with item id.  To set, use the share_reviews_with_merchant_item_oid field.
+    attr_accessor :share_reviews_with_merchant_item_id
+
+    # Share reviews with item oid.  To null out this field, set teh value to zero.
+    attr_accessor :share_reviews_with_merchant_item_oid
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -44,7 +50,9 @@ module UltracartClient
         :'review_overall' => :'review_overall',
         :'review_template_name' => :'review_template_name',
         :'review_template_oid' => :'review_template_oid',
-        :'reviewable' => :'reviewable'
+        :'reviewable' => :'reviewable',
+        :'share_reviews_with_merchant_item_id' => :'share_reviews_with_merchant_item_id',
+        :'share_reviews_with_merchant_item_oid' => :'share_reviews_with_merchant_item_oid'
       }
     end
 
@@ -57,7 +65,9 @@ module UltracartClient
         :'review_overall' => :'Float',
         :'review_template_name' => :'String',
         :'review_template_oid' => :'Integer',
-        :'reviewable' => :'BOOLEAN'
+        :'reviewable' => :'BOOLEAN',
+        :'share_reviews_with_merchant_item_id' => :'String',
+        :'share_reviews_with_merchant_item_oid' => :'Integer'
       }
     end
 
@@ -96,6 +106,14 @@ module UltracartClient
       if attributes.has_key?(:'reviewable')
         self.reviewable = attributes[:'reviewable']
       end
+
+      if attributes.has_key?(:'share_reviews_with_merchant_item_id')
+        self.share_reviews_with_merchant_item_id = attributes[:'share_reviews_with_merchant_item_id']
+      end
+
+      if attributes.has_key?(:'share_reviews_with_merchant_item_oid')
+        self.share_reviews_with_merchant_item_oid = attributes[:'share_reviews_with_merchant_item_oid']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -122,7 +140,9 @@ module UltracartClient
           review_overall == o.review_overall &&
           review_template_name == o.review_template_name &&
           review_template_oid == o.review_template_oid &&
-          reviewable == o.reviewable
+          reviewable == o.reviewable &&
+          share_reviews_with_merchant_item_id == o.share_reviews_with_merchant_item_id &&
+          share_reviews_with_merchant_item_oid == o.share_reviews_with_merchant_item_oid
     end
 
     # @see the `==` method
@@ -134,7 +154,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [has_approved_review, has_review, review_count, review_overall, review_template_name, review_template_oid, reviewable].hash
+      [has_approved_review, has_review, review_count, review_overall, review_template_name, review_template_oid, reviewable, share_reviews_with_merchant_item_id, share_reviews_with_merchant_item_oid].hash
     end
 
     # Builds the object from hash
