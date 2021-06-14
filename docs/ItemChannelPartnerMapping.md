@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **buyer_item_number** | **String** | Buyer item number (EDI only) | [optional] 
 **channel_partner_code** | **String** | Channel partner code | [optional] 
 **channel_partner_oid** | **Integer** | Channel partner object identifier | [optional] 
+**cost** | **Float** | Cost given to this channel partner | [optional] 
 **from_item_id** | **String** | From Item ID | [optional] 
 **from_sku** | **String** | From SKU | [optional] 
 **mutually_defined_number** | **String** | Mutually defined number (EDI only) | [optional] 

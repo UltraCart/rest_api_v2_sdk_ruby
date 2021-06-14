@@ -20,6 +20,8 @@ module UltracartClient
 
     attr_accessor :histogram_start_dts
 
+    attr_accessor :page_rank
+
     attr_accessor :session_count
 
     attr_accessor :url
@@ -30,6 +32,7 @@ module UltracartClient
         :'histogram_data' => :'histogram_data',
         :'histogram_interval' => :'histogram_interval',
         :'histogram_start_dts' => :'histogram_start_dts',
+        :'page_rank' => :'page_rank',
         :'session_count' => :'session_count',
         :'url' => :'url'
       }
@@ -41,6 +44,7 @@ module UltracartClient
         :'histogram_data' => :'Array<Integer>',
         :'histogram_interval' => :'String',
         :'histogram_start_dts' => :'String',
+        :'page_rank' => :'Integer',
         :'session_count' => :'Integer',
         :'url' => :'String'
       }
@@ -66,6 +70,10 @@ module UltracartClient
 
       if attributes.has_key?(:'histogram_start_dts')
         self.histogram_start_dts = attributes[:'histogram_start_dts']
+      end
+
+      if attributes.has_key?(:'page_rank')
+        self.page_rank = attributes[:'page_rank']
       end
 
       if attributes.has_key?(:'session_count')
@@ -98,6 +106,7 @@ module UltracartClient
           histogram_data == o.histogram_data &&
           histogram_interval == o.histogram_interval &&
           histogram_start_dts == o.histogram_start_dts &&
+          page_rank == o.page_rank &&
           session_count == o.session_count &&
           url == o.url
     end
@@ -111,7 +120,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [histogram_data, histogram_interval, histogram_start_dts, session_count, url].hash
+      [histogram_data, histogram_interval, histogram_start_dts, page_rank, session_count, url].hash
     end
 
     # Builds the object from hash

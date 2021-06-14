@@ -41,6 +41,9 @@ module UltracartClient
     # Channel partner object identifier
     attr_accessor :channel_partner_oid
 
+    # Cost given to this channel partner
+    attr_accessor :cost
+
     # From Item ID
     attr_accessor :from_item_id
 
@@ -80,6 +83,7 @@ module UltracartClient
         :'buyer_item_number' => :'buyer_item_number',
         :'channel_partner_code' => :'channel_partner_code',
         :'channel_partner_oid' => :'channel_partner_oid',
+        :'cost' => :'cost',
         :'from_item_id' => :'from_item_id',
         :'from_sku' => :'from_sku',
         :'mutually_defined_number' => :'mutually_defined_number',
@@ -104,6 +108,7 @@ module UltracartClient
         :'buyer_item_number' => :'String',
         :'channel_partner_code' => :'String',
         :'channel_partner_oid' => :'Integer',
+        :'cost' => :'Float',
         :'from_item_id' => :'String',
         :'from_sku' => :'String',
         :'mutually_defined_number' => :'String',
@@ -158,6 +163,10 @@ module UltracartClient
 
       if attributes.has_key?(:'channel_partner_oid')
         self.channel_partner_oid = attributes[:'channel_partner_oid']
+      end
+
+      if attributes.has_key?(:'cost')
+        self.cost = attributes[:'cost']
       end
 
       if attributes.has_key?(:'from_item_id')
@@ -269,6 +278,7 @@ module UltracartClient
           buyer_item_number == o.buyer_item_number &&
           channel_partner_code == o.channel_partner_code &&
           channel_partner_oid == o.channel_partner_oid &&
+          cost == o.cost &&
           from_item_id == o.from_item_id &&
           from_sku == o.from_sku &&
           mutually_defined_number == o.mutually_defined_number &&
@@ -289,7 +299,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [barcode_ua, barcode_uc, barcode_ui, barcode_uk, buyer_catalog_number, buyer_dpci, buyer_item_number, channel_partner_code, channel_partner_oid, from_item_id, from_sku, mutually_defined_number, quantity_ratio_cp, quantity_ratio_uc, sku, unit_of_measure, vendor_number, vendor_style_number].hash
+      [barcode_ua, barcode_uc, barcode_ui, barcode_uk, buyer_catalog_number, buyer_dpci, buyer_item_number, channel_partner_code, channel_partner_oid, cost, from_item_id, from_sku, mutually_defined_number, quantity_ratio_cp, quantity_ratio_uc, sku, unit_of_measure, vendor_number, vendor_style_number].hash
     end
 
     # Builds the object from hash

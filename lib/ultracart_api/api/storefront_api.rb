@@ -4562,19 +4562,27 @@ module UltracartClient
     # Get screen recording heatmap index
     # Get screen recording heatmap index 
     # @param storefront_oid 
+    # @param query Query
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Default 100, Max 500) (default to 100)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
+    # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
     # @return [ScreenRecordingHeatmapIndexResponse]
-    def get_heatmap_index(storefront_oid, opts = {})
-      data, _status_code, _headers = get_heatmap_index_with_http_info(storefront_oid, opts)
+    def get_heatmap_index(storefront_oid, query, opts = {})
+      data, _status_code, _headers = get_heatmap_index_with_http_info(storefront_oid, query, opts)
       data
     end
 
     # Get screen recording heatmap index
     # Get screen recording heatmap index 
     # @param storefront_oid 
+    # @param query Query
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Default 100, Max 500)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
+    # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
     # @return [Array<(ScreenRecordingHeatmapIndexResponse, Fixnum, Hash)>] ScreenRecordingHeatmapIndexResponse data, response status code and response headers
-    def get_heatmap_index_with_http_info(storefront_oid, opts = {})
+    def get_heatmap_index_with_http_info(storefront_oid, query, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StorefrontApi.get_heatmap_index ...'
       end
@@ -4582,11 +4590,18 @@ module UltracartClient
       if @api_client.config.client_side_validation && storefront_oid.nil?
         fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_heatmap_index"
       end
+      # verify the required parameter 'query' is set
+      if @api_client.config.client_side_validation && query.nil?
+        fail ArgumentError, "Missing the required parameter 'query' when calling StorefrontApi.get_heatmap_index"
+      end
       # resource path
       local_var_path = '/storefront/{storefront_oid}/screen_recordings/heatmap/index'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s)
 
       # query parameters
       query_params = {}
+      query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
+      query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
+      query_params[:'_sort'] = opts[:'_sort'] if !opts[:'_sort'].nil?
 
       # header parameters
       header_params = {}
@@ -4600,7 +4615,7 @@ module UltracartClient
       form_params = {}
 
       # http body (model)
-      post_body = nil
+      post_body = @api_client.object_to_http_body(query)
       auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,

@@ -13,41 +13,20 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class Error
-    # A technical message meant to be read by a developer
-    attr_accessor :developer_message
-
-    # HTTP status code
-    attr_accessor :error_code
-
-    # Additional information often a link to additional documentation
-    attr_accessor :more_info
-
-    # Object id that the error is associated with
-    attr_accessor :object_id
-
-    # An end-user friendly message suitable for display to the customer
-    attr_accessor :user_message
+  class ScreenRecordingHeatmapIndexRequest
+    attr_accessor :url_contains
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'developer_message' => :'developer_message',
-        :'error_code' => :'error_code',
-        :'more_info' => :'more_info',
-        :'object_id' => :'object_id',
-        :'user_message' => :'user_message'
+        :'url_contains' => :'url_contains'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'developer_message' => :'String',
-        :'error_code' => :'String',
-        :'more_info' => :'String',
-        :'object_id' => :'String',
-        :'user_message' => :'String'
+        :'url_contains' => :'String'
       }
     end
 
@@ -59,24 +38,8 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'developer_message')
-        self.developer_message = attributes[:'developer_message']
-      end
-
-      if attributes.has_key?(:'error_code')
-        self.error_code = attributes[:'error_code']
-      end
-
-      if attributes.has_key?(:'more_info')
-        self.more_info = attributes[:'more_info']
-      end
-
-      if attributes.has_key?(:'object_id')
-        self.object_id = attributes[:'object_id']
-      end
-
-      if attributes.has_key?(:'user_message')
-        self.user_message = attributes[:'user_message']
+      if attributes.has_key?(:'url_contains')
+        self.url_contains = attributes[:'url_contains']
       end
     end
 
@@ -98,11 +61,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          developer_message == o.developer_message &&
-          error_code == o.error_code &&
-          more_info == o.more_info &&
-          object_id == o.object_id &&
-          user_message == o.user_message
+          url_contains == o.url_contains
     end
 
     # @see the `==` method
@@ -114,7 +73,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [developer_message, error_code, more_info, object_id, user_message].hash
+      [url_contains].hash
     end
 
     # Builds the object from hash

@@ -4119,7 +4119,7 @@ Name | Type | Description  | Notes
 
 
 # **get_heatmap_index**
-> ScreenRecordingHeatmapIndexResponse get_heatmap_index(storefront_oid)
+> ScreenRecordingHeatmapIndexResponse get_heatmap_index(storefront_oid, query, opts)
 
 Get screen recording heatmap index
 
@@ -4137,10 +4137,17 @@ api_instance = UltracartClient::StorefrontApi.new_using_api_key(simple_key, fals
 
 storefront_oid = 56 # Integer | 
 
+query = UltracartClient::ScreenRecordingHeatmapIndexRequest.new # ScreenRecordingHeatmapIndexRequest | Query
+
+opts = { 
+  _limit: 100, # Integer | The maximum number of records to return on this one API call. (Default 100, Max 500)
+  _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
+  _sort: '_sort_example' # String | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+}
 
 begin
   #Get screen recording heatmap index
-  result = api_instance.get_heatmap_index(storefront_oid)
+  result = api_instance.get_heatmap_index(storefront_oid, query, opts)
   p result
 rescue UltracartClient::ApiError => e
   puts "Exception when calling StorefrontApi->get_heatmap_index: #{e}"
@@ -4152,6 +4159,10 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **storefront_oid** | **Integer**|  | 
+ **query** | [**ScreenRecordingHeatmapIndexRequest**](ScreenRecordingHeatmapIndexRequest.md)| Query | 
+ **_limit** | **Integer**| The maximum number of records to return on this one API call. (Default 100, Max 500) | [optional] [default to 100]
+ **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] [default to 0]
+ **_sort** | **String**| The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] 
 
 ### Return type
 
