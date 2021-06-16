@@ -13,28 +13,76 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class LibraryItemAttribute
-    attr_accessor :library_item_oid
+  class IntegrationLog
+    attr_accessor :action
 
-    attr_accessor :name
+    attr_accessor :direction
 
-    attr_accessor :value
+    attr_accessor :email
+
+    attr_accessor :files
+
+    attr_accessor :integration_log_oid
+
+    attr_accessor :item_id
+
+    attr_accessor :item_ipn_oid
+
+    attr_accessor :log_dts
+
+    attr_accessor :log_type
+
+    attr_accessor :logger_id
+
+    attr_accessor :logs
+
+    attr_accessor :order_ids
+
+    attr_accessor :pk
+
+    attr_accessor :sk
+
+    attr_accessor :status
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'library_item_oid' => :'libraryItemOid',
-        :'name' => :'name',
-        :'value' => :'value'
+        :'action' => :'action',
+        :'direction' => :'direction',
+        :'email' => :'email',
+        :'files' => :'files',
+        :'integration_log_oid' => :'integration_log_oid',
+        :'item_id' => :'item_id',
+        :'item_ipn_oid' => :'item_ipn_oid',
+        :'log_dts' => :'log_dts',
+        :'log_type' => :'log_type',
+        :'logger_id' => :'logger_id',
+        :'logs' => :'logs',
+        :'order_ids' => :'order_ids',
+        :'pk' => :'pk',
+        :'sk' => :'sk',
+        :'status' => :'status'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'library_item_oid' => :'Integer',
-        :'name' => :'String',
-        :'value' => :'String'
+        :'action' => :'String',
+        :'direction' => :'String',
+        :'email' => :'String',
+        :'files' => :'Array<IntegrationLogFile>',
+        :'integration_log_oid' => :'Integer',
+        :'item_id' => :'String',
+        :'item_ipn_oid' => :'Integer',
+        :'log_dts' => :'String',
+        :'log_type' => :'String',
+        :'logger_id' => :'String',
+        :'logs' => :'Array<IntegrationLogLog>',
+        :'order_ids' => :'Array<String>',
+        :'pk' => :'String',
+        :'sk' => :'String',
+        :'status' => :'String'
       }
     end
 
@@ -46,16 +94,70 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'libraryItemOid')
-        self.library_item_oid = attributes[:'libraryItemOid']
+      if attributes.has_key?(:'action')
+        self.action = attributes[:'action']
       end
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'direction')
+        self.direction = attributes[:'direction']
       end
 
-      if attributes.has_key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.has_key?(:'email')
+        self.email = attributes[:'email']
+      end
+
+      if attributes.has_key?(:'files')
+        if (value = attributes[:'files']).is_a?(Array)
+          self.files = value
+        end
+      end
+
+      if attributes.has_key?(:'integration_log_oid')
+        self.integration_log_oid = attributes[:'integration_log_oid']
+      end
+
+      if attributes.has_key?(:'item_id')
+        self.item_id = attributes[:'item_id']
+      end
+
+      if attributes.has_key?(:'item_ipn_oid')
+        self.item_ipn_oid = attributes[:'item_ipn_oid']
+      end
+
+      if attributes.has_key?(:'log_dts')
+        self.log_dts = attributes[:'log_dts']
+      end
+
+      if attributes.has_key?(:'log_type')
+        self.log_type = attributes[:'log_type']
+      end
+
+      if attributes.has_key?(:'logger_id')
+        self.logger_id = attributes[:'logger_id']
+      end
+
+      if attributes.has_key?(:'logs')
+        if (value = attributes[:'logs']).is_a?(Array)
+          self.logs = value
+        end
+      end
+
+      if attributes.has_key?(:'order_ids')
+        if (value = attributes[:'order_ids']).is_a?(Array)
+          self.order_ids = value
+        end
+      end
+
+      if attributes.has_key?(:'pk')
+        self.pk = attributes[:'pk']
+      end
+
+      if attributes.has_key?(:'sk')
+        self.sk = attributes[:'sk']
+      end
+
+      if attributes.has_key?(:'status')
+        self.status = attributes[:'status']
       end
     end
 
@@ -77,9 +179,21 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          library_item_oid == o.library_item_oid &&
-          name == o.name &&
-          value == o.value
+          action == o.action &&
+          direction == o.direction &&
+          email == o.email &&
+          files == o.files &&
+          integration_log_oid == o.integration_log_oid &&
+          item_id == o.item_id &&
+          item_ipn_oid == o.item_ipn_oid &&
+          log_dts == o.log_dts &&
+          log_type == o.log_type &&
+          logger_id == o.logger_id &&
+          logs == o.logs &&
+          order_ids == o.order_ids &&
+          pk == o.pk &&
+          sk == o.sk &&
+          status == o.status
     end
 
     # @see the `==` method
@@ -91,7 +205,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [library_item_oid, name, value].hash
+      [action, direction, email, files, integration_log_oid, item_id, item_ipn_oid, log_dts, log_type, logger_id, logs, order_ids, pk, sk, status].hash
     end
 
     # Builds the object from hash

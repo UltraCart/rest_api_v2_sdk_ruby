@@ -13,28 +13,52 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class LibraryItemAttribute
-    attr_accessor :library_item_oid
+  class IntegrationLogQueryFilterValues
+    attr_accessor :actions
 
-    attr_accessor :name
+    attr_accessor :directions
 
-    attr_accessor :value
+    attr_accessor :emails
+
+    attr_accessor :file_names
+
+    attr_accessor :item_ids
+
+    attr_accessor :item_ipn_oids
+
+    attr_accessor :log_types
+
+    attr_accessor :order_ids
+
+    attr_accessor :statuses
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'library_item_oid' => :'libraryItemOid',
-        :'name' => :'name',
-        :'value' => :'value'
+        :'actions' => :'actions',
+        :'directions' => :'directions',
+        :'emails' => :'emails',
+        :'file_names' => :'file_names',
+        :'item_ids' => :'item_ids',
+        :'item_ipn_oids' => :'item_ipn_oids',
+        :'log_types' => :'log_types',
+        :'order_ids' => :'order_ids',
+        :'statuses' => :'statuses'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'library_item_oid' => :'Integer',
-        :'name' => :'String',
-        :'value' => :'String'
+        :'actions' => :'Array<String>',
+        :'directions' => :'Array<String>',
+        :'emails' => :'Array<String>',
+        :'file_names' => :'Array<String>',
+        :'item_ids' => :'Array<String>',
+        :'item_ipn_oids' => :'Array<Integer>',
+        :'log_types' => :'Array<String>',
+        :'order_ids' => :'Array<String>',
+        :'statuses' => :'Array<String>'
       }
     end
 
@@ -46,16 +70,58 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'libraryItemOid')
-        self.library_item_oid = attributes[:'libraryItemOid']
+      if attributes.has_key?(:'actions')
+        if (value = attributes[:'actions']).is_a?(Array)
+          self.actions = value
+        end
       end
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'directions')
+        if (value = attributes[:'directions']).is_a?(Array)
+          self.directions = value
+        end
       end
 
-      if attributes.has_key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.has_key?(:'emails')
+        if (value = attributes[:'emails']).is_a?(Array)
+          self.emails = value
+        end
+      end
+
+      if attributes.has_key?(:'file_names')
+        if (value = attributes[:'file_names']).is_a?(Array)
+          self.file_names = value
+        end
+      end
+
+      if attributes.has_key?(:'item_ids')
+        if (value = attributes[:'item_ids']).is_a?(Array)
+          self.item_ids = value
+        end
+      end
+
+      if attributes.has_key?(:'item_ipn_oids')
+        if (value = attributes[:'item_ipn_oids']).is_a?(Array)
+          self.item_ipn_oids = value
+        end
+      end
+
+      if attributes.has_key?(:'log_types')
+        if (value = attributes[:'log_types']).is_a?(Array)
+          self.log_types = value
+        end
+      end
+
+      if attributes.has_key?(:'order_ids')
+        if (value = attributes[:'order_ids']).is_a?(Array)
+          self.order_ids = value
+        end
+      end
+
+      if attributes.has_key?(:'statuses')
+        if (value = attributes[:'statuses']).is_a?(Array)
+          self.statuses = value
+        end
       end
     end
 
@@ -77,9 +143,15 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          library_item_oid == o.library_item_oid &&
-          name == o.name &&
-          value == o.value
+          actions == o.actions &&
+          directions == o.directions &&
+          emails == o.emails &&
+          file_names == o.file_names &&
+          item_ids == o.item_ids &&
+          item_ipn_oids == o.item_ipn_oids &&
+          log_types == o.log_types &&
+          order_ids == o.order_ids &&
+          statuses == o.statuses
     end
 
     # @see the `==` method
@@ -91,7 +163,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [library_item_oid, name, value].hash
+      [actions, directions, emails, file_names, item_ids, item_ipn_oids, log_types, order_ids, statuses].hash
     end
 
     # Builds the object from hash

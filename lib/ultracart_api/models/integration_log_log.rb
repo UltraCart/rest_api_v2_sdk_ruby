@@ -13,28 +13,24 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class LibraryItemAttribute
-    attr_accessor :library_item_oid
+  class IntegrationLogLog
+    attr_accessor :contents
 
     attr_accessor :name
-
-    attr_accessor :value
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'library_item_oid' => :'libraryItemOid',
-        :'name' => :'name',
-        :'value' => :'value'
+        :'contents' => :'contents',
+        :'name' => :'name'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'library_item_oid' => :'Integer',
-        :'name' => :'String',
-        :'value' => :'String'
+        :'contents' => :'String',
+        :'name' => :'String'
       }
     end
 
@@ -46,16 +42,12 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'libraryItemOid')
-        self.library_item_oid = attributes[:'libraryItemOid']
+      if attributes.has_key?(:'contents')
+        self.contents = attributes[:'contents']
       end
 
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'value')
-        self.value = attributes[:'value']
       end
     end
 
@@ -77,9 +69,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          library_item_oid == o.library_item_oid &&
-          name == o.name &&
-          value == o.value
+          contents == o.contents &&
+          name == o.name
     end
 
     # @see the `==` method
@@ -91,7 +82,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [library_item_oid, name, value].hash
+      [contents, name].hash
     end
 
     # Builds the object from hash

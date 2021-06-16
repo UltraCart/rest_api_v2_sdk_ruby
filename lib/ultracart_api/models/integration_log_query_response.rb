@@ -13,28 +13,41 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class LibraryItemAttribute
-    attr_accessor :library_item_oid
+  class IntegrationLogQueryResponse
+    attr_accessor :error
 
-    attr_accessor :name
+    attr_accessor :filter_values
 
-    attr_accessor :value
+    attr_accessor :integration_logs
+
+    attr_accessor :metadata
+
+    # Indicates if API call was successful
+    attr_accessor :success
+
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'library_item_oid' => :'libraryItemOid',
-        :'name' => :'name',
-        :'value' => :'value'
+        :'error' => :'error',
+        :'filter_values' => :'filter_values',
+        :'integration_logs' => :'integration_logs',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'library_item_oid' => :'Integer',
-        :'name' => :'String',
-        :'value' => :'String'
+        :'error' => :'Error',
+        :'filter_values' => :'IntegrationLogQueryFilterValues',
+        :'integration_logs' => :'Array<IntegrationLog>',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'BOOLEAN',
+        :'warning' => :'Warning'
       }
     end
 
@@ -46,16 +59,30 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'libraryItemOid')
-        self.library_item_oid = attributes[:'libraryItemOid']
+      if attributes.has_key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'filter_values')
+        self.filter_values = attributes[:'filter_values']
       end
 
-      if attributes.has_key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.has_key?(:'integration_logs')
+        if (value = attributes[:'integration_logs']).is_a?(Array)
+          self.integration_logs = value
+        end
+      end
+
+      if attributes.has_key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.has_key?(:'success')
+        self.success = attributes[:'success']
+      end
+
+      if attributes.has_key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -77,9 +104,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          library_item_oid == o.library_item_oid &&
-          name == o.name &&
-          value == o.value
+          error == o.error &&
+          filter_values == o.filter_values &&
+          integration_logs == o.integration_logs &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -91,7 +121,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [library_item_oid, name, value].hash
+      [error, filter_values, integration_logs, metadata, success, warning].hash
     end
 
     # Builds the object from hash

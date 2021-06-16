@@ -1,10 +1,9 @@
-# UltracartClient::LibraryItemAttribute
+# UltracartClient::IntegrationLogLog
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**library_item_oid** | **Integer** |  | [optional] 
+**contents** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
-**value** | **String** |  | [optional] 
 
 
