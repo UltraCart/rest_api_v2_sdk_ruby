@@ -13,28 +13,37 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ScreenRecordingHeatmapRequest
-    attr_accessor :range
+  class IntegrationLogResponse
+    attr_accessor :error
 
-    attr_accessor :screen_sizes
+    attr_accessor :integration_log
 
-    attr_accessor :url
+    attr_accessor :metadata
+
+    # Indicates if API call was successful
+    attr_accessor :success
+
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'range' => :'range',
-        :'screen_sizes' => :'screen_sizes',
-        :'url' => :'url'
+        :'error' => :'error',
+        :'integration_log' => :'integration_log',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'range' => :'ScreenRecordingFilterRangeDate',
-        :'screen_sizes' => :'Array<String>',
-        :'url' => :'String'
+        :'error' => :'Error',
+        :'integration_log' => :'IntegrationLog',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'BOOLEAN',
+        :'warning' => :'Warning'
       }
     end
 
@@ -46,18 +55,24 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'range')
-        self.range = attributes[:'range']
+      if attributes.has_key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.has_key?(:'screen_sizes')
-        if (value = attributes[:'screen_sizes']).is_a?(Array)
-          self.screen_sizes = value
-        end
+      if attributes.has_key?(:'integration_log')
+        self.integration_log = attributes[:'integration_log']
       end
 
-      if attributes.has_key?(:'url')
-        self.url = attributes[:'url']
+      if attributes.has_key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.has_key?(:'success')
+        self.success = attributes[:'success']
+      end
+
+      if attributes.has_key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -79,9 +94,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          range == o.range &&
-          screen_sizes == o.screen_sizes &&
-          url == o.url
+          error == o.error &&
+          integration_log == o.integration_log &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -93,7 +110,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [range, screen_sizes, url].hash
+      [error, integration_log, metadata, success, warning].hash
     end
 
     # Builds the object from hash

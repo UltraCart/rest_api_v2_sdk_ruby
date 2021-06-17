@@ -14,44 +14,80 @@ require 'date'
 
 module UltracartClient
   class ScreenRecordingHeatmap
+    attr_accessor :large_click_thumbnail_url
+
     attr_accessor :large_click_url
+
+    attr_accessor :large_movement_thumbnail_url
 
     attr_accessor :large_movement_url
 
+    attr_accessor :large_regular_thumbnail_url
+
     attr_accessor :large_regular_url
+
+    attr_accessor :large_scroll_thumbnail_url
 
     attr_accessor :large_scroll_url
 
+    attr_accessor :medium_click_thumbnail_url
+
     attr_accessor :medium_click_url
+
+    attr_accessor :medium_movement_thumbnail_url
 
     attr_accessor :medium_movement_url
 
+    attr_accessor :medium_regular_thumbnail_url
+
     attr_accessor :medium_regular_url
+
+    attr_accessor :medium_scroll_thumbnail_url
 
     attr_accessor :medium_scroll_url
 
+    attr_accessor :small_click_thumbnail_url
+
     attr_accessor :small_click_url
+
+    attr_accessor :small_movement_thumbnail_url
 
     attr_accessor :small_movement_url
 
+    attr_accessor :small_regular_thumbnail_url
+
     attr_accessor :small_regular_url
+
+    attr_accessor :small_scroll_thumbnail_url
 
     attr_accessor :small_scroll_url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'large_click_thumbnail_url' => :'large_click_thumbnail_url',
         :'large_click_url' => :'large_click_url',
+        :'large_movement_thumbnail_url' => :'large_movement_thumbnail_url',
         :'large_movement_url' => :'large_movement_url',
+        :'large_regular_thumbnail_url' => :'large_regular_thumbnail_url',
         :'large_regular_url' => :'large_regular_url',
+        :'large_scroll_thumbnail_url' => :'large_scroll_thumbnail_url',
         :'large_scroll_url' => :'large_scroll_url',
+        :'medium_click_thumbnail_url' => :'medium_click_thumbnail_url',
         :'medium_click_url' => :'medium_click_url',
+        :'medium_movement_thumbnail_url' => :'medium_movement_thumbnail_url',
         :'medium_movement_url' => :'medium_movement_url',
+        :'medium_regular_thumbnail_url' => :'medium_regular_thumbnail_url',
         :'medium_regular_url' => :'medium_regular_url',
+        :'medium_scroll_thumbnail_url' => :'medium_scroll_thumbnail_url',
         :'medium_scroll_url' => :'medium_scroll_url',
+        :'small_click_thumbnail_url' => :'small_click_thumbnail_url',
         :'small_click_url' => :'small_click_url',
+        :'small_movement_thumbnail_url' => :'small_movement_thumbnail_url',
         :'small_movement_url' => :'small_movement_url',
+        :'small_regular_thumbnail_url' => :'small_regular_thumbnail_url',
         :'small_regular_url' => :'small_regular_url',
+        :'small_scroll_thumbnail_url' => :'small_scroll_thumbnail_url',
         :'small_scroll_url' => :'small_scroll_url'
       }
     end
@@ -59,17 +95,29 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'large_click_thumbnail_url' => :'String',
         :'large_click_url' => :'String',
+        :'large_movement_thumbnail_url' => :'String',
         :'large_movement_url' => :'String',
+        :'large_regular_thumbnail_url' => :'String',
         :'large_regular_url' => :'String',
+        :'large_scroll_thumbnail_url' => :'String',
         :'large_scroll_url' => :'String',
+        :'medium_click_thumbnail_url' => :'String',
         :'medium_click_url' => :'String',
+        :'medium_movement_thumbnail_url' => :'String',
         :'medium_movement_url' => :'String',
+        :'medium_regular_thumbnail_url' => :'String',
         :'medium_regular_url' => :'String',
+        :'medium_scroll_thumbnail_url' => :'String',
         :'medium_scroll_url' => :'String',
+        :'small_click_thumbnail_url' => :'String',
         :'small_click_url' => :'String',
+        :'small_movement_thumbnail_url' => :'String',
         :'small_movement_url' => :'String',
+        :'small_regular_thumbnail_url' => :'String',
         :'small_regular_url' => :'String',
+        :'small_scroll_thumbnail_url' => :'String',
         :'small_scroll_url' => :'String'
       }
     end
@@ -82,48 +130,96 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
+      if attributes.has_key?(:'large_click_thumbnail_url')
+        self.large_click_thumbnail_url = attributes[:'large_click_thumbnail_url']
+      end
+
       if attributes.has_key?(:'large_click_url')
         self.large_click_url = attributes[:'large_click_url']
+      end
+
+      if attributes.has_key?(:'large_movement_thumbnail_url')
+        self.large_movement_thumbnail_url = attributes[:'large_movement_thumbnail_url']
       end
 
       if attributes.has_key?(:'large_movement_url')
         self.large_movement_url = attributes[:'large_movement_url']
       end
 
+      if attributes.has_key?(:'large_regular_thumbnail_url')
+        self.large_regular_thumbnail_url = attributes[:'large_regular_thumbnail_url']
+      end
+
       if attributes.has_key?(:'large_regular_url')
         self.large_regular_url = attributes[:'large_regular_url']
+      end
+
+      if attributes.has_key?(:'large_scroll_thumbnail_url')
+        self.large_scroll_thumbnail_url = attributes[:'large_scroll_thumbnail_url']
       end
 
       if attributes.has_key?(:'large_scroll_url')
         self.large_scroll_url = attributes[:'large_scroll_url']
       end
 
+      if attributes.has_key?(:'medium_click_thumbnail_url')
+        self.medium_click_thumbnail_url = attributes[:'medium_click_thumbnail_url']
+      end
+
       if attributes.has_key?(:'medium_click_url')
         self.medium_click_url = attributes[:'medium_click_url']
+      end
+
+      if attributes.has_key?(:'medium_movement_thumbnail_url')
+        self.medium_movement_thumbnail_url = attributes[:'medium_movement_thumbnail_url']
       end
 
       if attributes.has_key?(:'medium_movement_url')
         self.medium_movement_url = attributes[:'medium_movement_url']
       end
 
+      if attributes.has_key?(:'medium_regular_thumbnail_url')
+        self.medium_regular_thumbnail_url = attributes[:'medium_regular_thumbnail_url']
+      end
+
       if attributes.has_key?(:'medium_regular_url')
         self.medium_regular_url = attributes[:'medium_regular_url']
+      end
+
+      if attributes.has_key?(:'medium_scroll_thumbnail_url')
+        self.medium_scroll_thumbnail_url = attributes[:'medium_scroll_thumbnail_url']
       end
 
       if attributes.has_key?(:'medium_scroll_url')
         self.medium_scroll_url = attributes[:'medium_scroll_url']
       end
 
+      if attributes.has_key?(:'small_click_thumbnail_url')
+        self.small_click_thumbnail_url = attributes[:'small_click_thumbnail_url']
+      end
+
       if attributes.has_key?(:'small_click_url')
         self.small_click_url = attributes[:'small_click_url']
+      end
+
+      if attributes.has_key?(:'small_movement_thumbnail_url')
+        self.small_movement_thumbnail_url = attributes[:'small_movement_thumbnail_url']
       end
 
       if attributes.has_key?(:'small_movement_url')
         self.small_movement_url = attributes[:'small_movement_url']
       end
 
+      if attributes.has_key?(:'small_regular_thumbnail_url')
+        self.small_regular_thumbnail_url = attributes[:'small_regular_thumbnail_url']
+      end
+
       if attributes.has_key?(:'small_regular_url')
         self.small_regular_url = attributes[:'small_regular_url']
+      end
+
+      if attributes.has_key?(:'small_scroll_thumbnail_url')
+        self.small_scroll_thumbnail_url = attributes[:'small_scroll_thumbnail_url']
       end
 
       if attributes.has_key?(:'small_scroll_url')
@@ -149,17 +245,29 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          large_click_thumbnail_url == o.large_click_thumbnail_url &&
           large_click_url == o.large_click_url &&
+          large_movement_thumbnail_url == o.large_movement_thumbnail_url &&
           large_movement_url == o.large_movement_url &&
+          large_regular_thumbnail_url == o.large_regular_thumbnail_url &&
           large_regular_url == o.large_regular_url &&
+          large_scroll_thumbnail_url == o.large_scroll_thumbnail_url &&
           large_scroll_url == o.large_scroll_url &&
+          medium_click_thumbnail_url == o.medium_click_thumbnail_url &&
           medium_click_url == o.medium_click_url &&
+          medium_movement_thumbnail_url == o.medium_movement_thumbnail_url &&
           medium_movement_url == o.medium_movement_url &&
+          medium_regular_thumbnail_url == o.medium_regular_thumbnail_url &&
           medium_regular_url == o.medium_regular_url &&
+          medium_scroll_thumbnail_url == o.medium_scroll_thumbnail_url &&
           medium_scroll_url == o.medium_scroll_url &&
+          small_click_thumbnail_url == o.small_click_thumbnail_url &&
           small_click_url == o.small_click_url &&
+          small_movement_thumbnail_url == o.small_movement_thumbnail_url &&
           small_movement_url == o.small_movement_url &&
+          small_regular_thumbnail_url == o.small_regular_thumbnail_url &&
           small_regular_url == o.small_regular_url &&
+          small_scroll_thumbnail_url == o.small_scroll_thumbnail_url &&
           small_scroll_url == o.small_scroll_url
     end
 
@@ -172,7 +280,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [large_click_url, large_movement_url, large_regular_url, large_scroll_url, medium_click_url, medium_movement_url, medium_regular_url, medium_scroll_url, small_click_url, small_movement_url, small_regular_url, small_scroll_url].hash
+      [large_click_thumbnail_url, large_click_url, large_movement_thumbnail_url, large_movement_url, large_regular_thumbnail_url, large_regular_url, large_scroll_thumbnail_url, large_scroll_url, medium_click_thumbnail_url, medium_click_url, medium_movement_thumbnail_url, medium_movement_url, medium_regular_thumbnail_url, medium_regular_url, medium_scroll_thumbnail_url, medium_scroll_url, small_click_thumbnail_url, small_click_url, small_movement_thumbnail_url, small_movement_url, small_regular_thumbnail_url, small_regular_url, small_scroll_thumbnail_url, small_scroll_url].hash
     end
 
     # Builds the object from hash

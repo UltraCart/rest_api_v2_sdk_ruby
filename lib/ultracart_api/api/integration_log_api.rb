@@ -37,7 +37,7 @@ module UltracartClient
     # @param pk 
     # @param sk 
     # @param [Hash] opts the optional parameters
-    # @return [IntegrationLog]
+    # @return [IntegrationLogResponse]
     def get_integration_log(pk, sk, opts = {})
       data, _status_code, _headers = get_integration_log_with_http_info(pk, sk, opts)
       data
@@ -48,7 +48,7 @@ module UltracartClient
     # @param pk 
     # @param sk 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(IntegrationLog, Fixnum, Hash)>] IntegrationLog data, response status code and response headers
+    # @return [Array<(IntegrationLogResponse, Fixnum, Hash)>] IntegrationLogResponse data, response status code and response headers
     def get_integration_log_with_http_info(pk, sk, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IntegrationLogApi.get_integration_log ...'
@@ -87,7 +87,7 @@ module UltracartClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'IntegrationLog')
+        :return_type => 'IntegrationLogResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IntegrationLogApi#get_integration_log\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

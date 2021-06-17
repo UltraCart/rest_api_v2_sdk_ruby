@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_integration_log**
-> IntegrationLog get_integration_log(pk, sk)
+> IntegrationLogResponse get_integration_log(pk, sk)
 
 Retrieve an integration log
 
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IntegrationLog**](IntegrationLog.md)
+[**IntegrationLogResponse**](IntegrationLogResponse.md)
 
 ### Authorization
 
