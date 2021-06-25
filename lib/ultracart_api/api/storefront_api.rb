@@ -4904,58 +4904,6 @@ module UltracartClient
       end
       return data, status_code, headers
     end
-    # Retrieve pricing tiers
-    # Retrieves the pricing tiers 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [PricingTiersResponse]
-    def get_pricing_tiers(opts = {})
-      data, _status_code, _headers = get_pricing_tiers_with_http_info(opts)
-      data
-    end
-
-    # Retrieve pricing tiers
-    # Retrieves the pricing tiers 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @return [Array<(PricingTiersResponse, Fixnum, Hash)>] PricingTiersResponse data, response status code and response headers
-    def get_pricing_tiers_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_pricing_tiers ...'
-      end
-      # resource path
-      local_var_path = '/storefront/pricing_tiers'
-
-      # query parameters
-      query_params = {}
-      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
-
-      # header parameters
-      header_params = {}
-      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'PricingTiersResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: StorefrontApi#get_pricing_tiers\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
     # Get screen recording
     # Get screen recording 
     # @param storefront_oid 
@@ -5441,6 +5389,58 @@ module UltracartClient
         :return_type => 'ScreenRecordingQueryResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#get_screen_recordings_by_segment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Retrieve pricing tiers
+    # Retrieves the pricing tiers 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [PricingTiersResponse]
+    def get_store_front_pricing_tiers(opts = {})
+      data, _status_code, _headers = get_store_front_pricing_tiers_with_http_info(opts)
+      data
+    end
+
+    # Retrieve pricing tiers
+    # Retrieves the pricing tiers 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(PricingTiersResponse, Fixnum, Hash)>] PricingTiersResponse data, response status code and response headers
+    def get_store_front_pricing_tiers_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_store_front_pricing_tiers ...'
+      end
+      # resource path
+      local_var_path = '/storefront/pricing_tiers'
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'PricingTiersResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_store_front_pricing_tiers\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

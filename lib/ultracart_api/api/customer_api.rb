@@ -203,6 +203,104 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Retrieve values needed for a customer profile editor
+    # Retrieve values needed for a customer profile editor. 
+    # @param [Hash] opts the optional parameters
+    # @return [CustomerEditorValues]
+    def get_customer_editor_values(opts = {})
+      data, _status_code, _headers = get_customer_editor_values_with_http_info(opts)
+      data
+    end
+
+    # Retrieve values needed for a customer profile editor
+    # Retrieve values needed for a customer profile editor. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomerEditorValues, Fixnum, Hash)>] CustomerEditorValues data, response status code and response headers
+    def get_customer_editor_values_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.get_customer_editor_values ...'
+      end
+      # resource path
+      local_var_path = '/customer/editor_values'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CustomerEditorValues')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#get_customer_editor_values\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Retrieve all email lists across all storefronts
+    # Retrieve all email lists across all storefronts 
+    # @param [Hash] opts the optional parameters
+    # @return [EmailListsResponse]
+    def get_customer_email_lists(opts = {})
+      data, _status_code, _headers = get_customer_email_lists_with_http_info(opts)
+      data
+    end
+
+    # Retrieve all email lists across all storefronts
+    # Retrieve all email lists across all storefronts 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailListsResponse, Fixnum, Hash)>] EmailListsResponse data, response status code and response headers
+    def get_customer_email_lists_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.get_customer_email_lists ...'
+      end
+      # resource path
+      local_var_path = '/customer/email_lists'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailListsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#get_customer_email_lists\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Retrieve customers
     # Retrieves customers from the account.  If no parameters are specified, all customers will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
     # @param [Hash] opts the optional parameters
@@ -467,104 +565,6 @@ module UltracartClient
         :return_type => 'DataTablesServerSideResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CustomerApi#get_customers_for_data_tables\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-    # Retrieve values needed for a customer profile editor
-    # Retrieve values needed for a customer profile editor. 
-    # @param [Hash] opts the optional parameters
-    # @return [CustomerEditorValues]
-    def get_editor_values(opts = {})
-      data, _status_code, _headers = get_editor_values_with_http_info(opts)
-      data
-    end
-
-    # Retrieve values needed for a customer profile editor
-    # Retrieve values needed for a customer profile editor. 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(CustomerEditorValues, Fixnum, Hash)>] CustomerEditorValues data, response status code and response headers
-    def get_editor_values_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: CustomerApi.get_editor_values ...'
-      end
-      # resource path
-      local_var_path = '/customer/editor_values'
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'CustomerEditorValues')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CustomerApi#get_editor_values\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-    # Retrieve all email lists across all storefronts
-    # Retrieve all email lists across all storefronts 
-    # @param [Hash] opts the optional parameters
-    # @return [EmailListsResponse]
-    def get_email_lists(opts = {})
-      data, _status_code, _headers = get_email_lists_with_http_info(opts)
-      data
-    end
-
-    # Retrieve all email lists across all storefronts
-    # Retrieve all email lists across all storefronts 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(EmailListsResponse, Fixnum, Hash)>] EmailListsResponse data, response status code and response headers
-    def get_email_lists_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: CustomerApi.get_email_lists ...'
-      end
-      # resource path
-      local_var_path = '/customer/email_lists'
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'EmailListsResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CustomerApi#get_email_lists\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

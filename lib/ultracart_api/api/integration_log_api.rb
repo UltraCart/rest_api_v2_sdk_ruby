@@ -93,6 +93,73 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Retrieve an integration log file
+    # Retrieve an integration log file from the account based identifiers 
+    # @param pk 
+    # @param sk 
+    # @param uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [File]
+    def get_integration_log_file(pk, sk, uuid, opts = {})
+      data, _status_code, _headers = get_integration_log_file_with_http_info(pk, sk, uuid, opts)
+      data
+    end
+
+    # Retrieve an integration log file
+    # Retrieve an integration log file from the account based identifiers 
+    # @param pk 
+    # @param sk 
+    # @param uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def get_integration_log_file_with_http_info(pk, sk, uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationLogApi.get_integration_log_file ...'
+      end
+      # verify the required parameter 'pk' is set
+      if @api_client.config.client_side_validation && pk.nil?
+        fail ArgumentError, "Missing the required parameter 'pk' when calling IntegrationLogApi.get_integration_log_file"
+      end
+      # verify the required parameter 'sk' is set
+      if @api_client.config.client_side_validation && sk.nil?
+        fail ArgumentError, "Missing the required parameter 'sk' when calling IntegrationLogApi.get_integration_log_file"
+      end
+      # verify the required parameter 'uuid' is set
+      if @api_client.config.client_side_validation && uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'uuid' when calling IntegrationLogApi.get_integration_log_file"
+      end
+      # resource path
+      local_var_path = '/integration_log/query/{pk}/{sk}/{uuid}'.sub('{' + 'pk' + '}', pk.to_s).sub('{' + 'sk' + '}', sk.to_s).sub('{' + 'uuid' + '}', uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationLogApi#get_integration_log_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Retrieve integration logs
     # Retrieves a set of integration logs from the account based on a query object. 
     # @param integration_log_query Integration log query

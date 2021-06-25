@@ -14,6 +14,8 @@ require 'date'
 
 module UltracartClient
   class IntegrationLogFile
+    attr_accessor :mime_type
+
     attr_accessor :name
 
     attr_accessor :size
@@ -23,6 +25,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'mime_type' => :'mime_type',
         :'name' => :'name',
         :'size' => :'size',
         :'uuid' => :'uuid'
@@ -32,6 +35,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'mime_type' => :'String',
         :'name' => :'String',
         :'size' => :'Integer',
         :'uuid' => :'String'
@@ -45,6 +49,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'mime_type')
+        self.mime_type = attributes[:'mime_type']
+      end
 
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
@@ -77,6 +85,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          mime_type == o.mime_type &&
           name == o.name &&
           size == o.size &&
           uuid == o.uuid
@@ -91,7 +100,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, size, uuid].hash
+      [mime_type, name, size, uuid].hash
     end
 
     # Builds the object from hash
