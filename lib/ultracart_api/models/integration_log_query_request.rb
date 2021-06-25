@@ -36,6 +36,8 @@ module UltracartClient
 
     attr_accessor :logger_id
 
+    attr_accessor :logger_name
+
     attr_accessor :order_ids
 
     attr_accessor :status
@@ -53,6 +55,7 @@ module UltracartClient
         :'log_dts_end' => :'log_dts_end',
         :'log_type' => :'log_type',
         :'logger_id' => :'logger_id',
+        :'logger_name' => :'logger_name',
         :'order_ids' => :'order_ids',
         :'status' => :'status'
       }
@@ -71,6 +74,7 @@ module UltracartClient
         :'log_dts_end' => :'String',
         :'log_type' => :'String',
         :'logger_id' => :'String',
+        :'logger_name' => :'String',
         :'order_ids' => :'Array<String>',
         :'status' => :'String'
       }
@@ -126,6 +130,10 @@ module UltracartClient
         self.logger_id = attributes[:'logger_id']
       end
 
+      if attributes.has_key?(:'logger_name')
+        self.logger_name = attributes[:'logger_name']
+      end
+
       if attributes.has_key?(:'order_ids')
         if (value = attributes[:'order_ids']).is_a?(Array)
           self.order_ids = value
@@ -165,6 +173,7 @@ module UltracartClient
           log_dts_end == o.log_dts_end &&
           log_type == o.log_type &&
           logger_id == o.logger_id &&
+          logger_name == o.logger_name &&
           order_ids == o.order_ids &&
           status == o.status
     end
@@ -178,7 +187,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [action, direction, email, file_names, item_id, item_ipn_oid, log_dts_begin, log_dts_end, log_type, logger_id, order_ids, status].hash
+      [action, direction, email, file_names, item_id, item_ipn_oid, log_dts_begin, log_dts_end, log_type, logger_id, logger_name, order_ids, status].hash
     end
 
     # Builds the object from hash
