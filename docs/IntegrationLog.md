@@ -15,9 +15,11 @@ Name | Type | Description | Notes
 **logger_id** | **String** |  | [optional] 
 **logger_name** | **String** |  | [optional] 
 **logs** | [**Array&lt;IntegrationLogLog&gt;**](IntegrationLogLog.md) |  | [optional] 
+**omit_log_map** | **BOOLEAN** |  | [optional] 
 **order_ids** | **Array&lt;String&gt;** |  | [optional] 
 **pk** | **String** |  | [optional] 
 **sk** | **String** |  | [optional] 
 **status** | **String** |  | [optional] 
+**status_code** | **Integer** |  | [optional] 
 
 

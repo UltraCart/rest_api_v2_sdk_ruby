@@ -38,17 +38,23 @@ module UltracartClient
     # First name
     attr_accessor :first_name
 
-    # Item ID
+    # Item ID.  Deprecated query field.  This incorrectly meant the original order contained this item id.
     attr_accessor :item_id
 
     # Last name
     attr_accessor :last_name
+
+    # Next Item ID that is supposed to ship.  This is calculated based upon the schedule associated with the original item id.
+    attr_accessor :next_item_id
 
     # Next shipment date begin
     attr_accessor :next_shipment_date_begin
 
     # Next shipment date end
     attr_accessor :next_shipment_date_end
+
+    # Original Item ID purchased on auto order.
+    attr_accessor :original_item_id
 
     # Original order date begin
     attr_accessor :original_order_date_begin
@@ -84,8 +90,10 @@ module UltracartClient
         :'first_name' => :'first_name',
         :'item_id' => :'item_id',
         :'last_name' => :'last_name',
+        :'next_item_id' => :'next_item_id',
         :'next_shipment_date_begin' => :'next_shipment_date_begin',
         :'next_shipment_date_end' => :'next_shipment_date_end',
+        :'original_item_id' => :'original_item_id',
         :'original_order_date_begin' => :'original_order_date_begin',
         :'original_order_date_end' => :'original_order_date_end',
         :'original_order_id' => :'original_order_id',
@@ -109,8 +117,10 @@ module UltracartClient
         :'first_name' => :'String',
         :'item_id' => :'String',
         :'last_name' => :'String',
+        :'next_item_id' => :'String',
         :'next_shipment_date_begin' => :'String',
         :'next_shipment_date_end' => :'String',
+        :'original_item_id' => :'String',
         :'original_order_date_begin' => :'String',
         :'original_order_date_end' => :'String',
         :'original_order_id' => :'String',
@@ -169,12 +179,20 @@ module UltracartClient
         self.last_name = attributes[:'last_name']
       end
 
+      if attributes.has_key?(:'next_item_id')
+        self.next_item_id = attributes[:'next_item_id']
+      end
+
       if attributes.has_key?(:'next_shipment_date_begin')
         self.next_shipment_date_begin = attributes[:'next_shipment_date_begin']
       end
 
       if attributes.has_key?(:'next_shipment_date_end')
         self.next_shipment_date_end = attributes[:'next_shipment_date_end']
+      end
+
+      if attributes.has_key?(:'original_item_id')
+        self.original_item_id = attributes[:'original_item_id']
       end
 
       if attributes.has_key?(:'original_order_date_begin')
@@ -294,8 +312,10 @@ module UltracartClient
           first_name == o.first_name &&
           item_id == o.item_id &&
           last_name == o.last_name &&
+          next_item_id == o.next_item_id &&
           next_shipment_date_begin == o.next_shipment_date_begin &&
           next_shipment_date_end == o.next_shipment_date_end &&
+          original_item_id == o.original_item_id &&
           original_order_date_begin == o.original_order_date_begin &&
           original_order_date_end == o.original_order_date_end &&
           original_order_id == o.original_order_id &&
@@ -314,7 +334,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [auto_order_code, card_type, city, company, country_code, customer_profile_oid, email, first_name, item_id, last_name, next_shipment_date_begin, next_shipment_date_end, original_order_date_begin, original_order_date_end, original_order_id, phone, postal_code, state, status].hash
+      [auto_order_code, card_type, city, company, country_code, customer_profile_oid, email, first_name, item_id, last_name, next_item_id, next_shipment_date_begin, next_shipment_date_end, original_item_id, original_order_date_begin, original_order_date_end, original_order_id, phone, postal_code, state, status].hash
     end
 
     # Builds the object from hash

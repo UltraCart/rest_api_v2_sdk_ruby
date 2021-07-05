@@ -38,6 +38,8 @@ module UltracartClient
 
     attr_accessor :logs
 
+    attr_accessor :omit_log_map
+
     attr_accessor :order_ids
 
     attr_accessor :pk
@@ -45,6 +47,8 @@ module UltracartClient
     attr_accessor :sk
 
     attr_accessor :status
+
+    attr_accessor :status_code
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -61,10 +65,12 @@ module UltracartClient
         :'logger_id' => :'logger_id',
         :'logger_name' => :'logger_name',
         :'logs' => :'logs',
+        :'omit_log_map' => :'omit_log_map',
         :'order_ids' => :'order_ids',
         :'pk' => :'pk',
         :'sk' => :'sk',
-        :'status' => :'status'
+        :'status' => :'status',
+        :'status_code' => :'status_code'
       }
     end
 
@@ -83,10 +89,12 @@ module UltracartClient
         :'logger_id' => :'String',
         :'logger_name' => :'String',
         :'logs' => :'Array<IntegrationLogLog>',
+        :'omit_log_map' => :'BOOLEAN',
         :'order_ids' => :'Array<String>',
         :'pk' => :'String',
         :'sk' => :'String',
-        :'status' => :'String'
+        :'status' => :'String',
+        :'status_code' => :'Integer'
       }
     end
 
@@ -150,6 +158,10 @@ module UltracartClient
         end
       end
 
+      if attributes.has_key?(:'omit_log_map')
+        self.omit_log_map = attributes[:'omit_log_map']
+      end
+
       if attributes.has_key?(:'order_ids')
         if (value = attributes[:'order_ids']).is_a?(Array)
           self.order_ids = value
@@ -166,6 +178,10 @@ module UltracartClient
 
       if attributes.has_key?(:'status')
         self.status = attributes[:'status']
+      end
+
+      if attributes.has_key?(:'status_code')
+        self.status_code = attributes[:'status_code']
       end
     end
 
@@ -199,10 +215,12 @@ module UltracartClient
           logger_id == o.logger_id &&
           logger_name == o.logger_name &&
           logs == o.logs &&
+          omit_log_map == o.omit_log_map &&
           order_ids == o.order_ids &&
           pk == o.pk &&
           sk == o.sk &&
-          status == o.status
+          status == o.status &&
+          status_code == o.status_code
     end
 
     # @see the `==` method
@@ -214,7 +232,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [action, direction, email, files, integration_log_oid, item_id, item_ipn_oid, log_dts, log_type, logger_id, logger_name, logs, order_ids, pk, sk, status].hash
+      [action, direction, email, files, integration_log_oid, item_id, item_ipn_oid, log_dts, log_type, logger_id, logger_name, logs, omit_log_map, order_ids, pk, sk, status, status_code].hash
     end
 
     # Builds the object from hash
