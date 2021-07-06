@@ -28,6 +28,7 @@ module UltracartClient
 
     attr_accessor :item_ipn_oid
 
+    # Date/time the integration log was created
     attr_accessor :log_dts
 
     attr_accessor :log_type

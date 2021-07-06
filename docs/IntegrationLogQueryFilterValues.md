@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **file_names** | **Array&lt;String&gt;** |  | [optional] 
 **item_ids** | **Array&lt;String&gt;** |  | [optional] 
 **item_ipn_oids** | **Array&lt;Integer&gt;** |  | [optional] 
+**log_dts_max** | **String** | Maximum date/time log date/time | [optional] 
+**log_dts_min** | **String** | Minimum date/time log date/time | [optional] 
 **log_types** | **Array&lt;String&gt;** |  | [optional] 
 **logger_names** | **Array&lt;String&gt;** |  | [optional] 
 **order_ids** | **Array&lt;String&gt;** |  | [optional] 

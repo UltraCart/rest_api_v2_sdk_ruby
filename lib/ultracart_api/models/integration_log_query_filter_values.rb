@@ -26,6 +26,12 @@ module UltracartClient
 
     attr_accessor :item_ipn_oids
 
+    # Maximum date/time log date/time
+    attr_accessor :log_dts_max
+
+    # Minimum date/time log date/time
+    attr_accessor :log_dts_min
+
     attr_accessor :log_types
 
     attr_accessor :logger_names
@@ -43,6 +49,8 @@ module UltracartClient
         :'file_names' => :'file_names',
         :'item_ids' => :'item_ids',
         :'item_ipn_oids' => :'item_ipn_oids',
+        :'log_dts_max' => :'log_dts_max',
+        :'log_dts_min' => :'log_dts_min',
         :'log_types' => :'log_types',
         :'logger_names' => :'logger_names',
         :'order_ids' => :'order_ids',
@@ -59,6 +67,8 @@ module UltracartClient
         :'file_names' => :'Array<String>',
         :'item_ids' => :'Array<String>',
         :'item_ipn_oids' => :'Array<Integer>',
+        :'log_dts_max' => :'String',
+        :'log_dts_min' => :'String',
         :'log_types' => :'Array<String>',
         :'logger_names' => :'Array<String>',
         :'order_ids' => :'Array<String>',
@@ -110,6 +120,14 @@ module UltracartClient
         end
       end
 
+      if attributes.has_key?(:'log_dts_max')
+        self.log_dts_max = attributes[:'log_dts_max']
+      end
+
+      if attributes.has_key?(:'log_dts_min')
+        self.log_dts_min = attributes[:'log_dts_min']
+      end
+
       if attributes.has_key?(:'log_types')
         if (value = attributes[:'log_types']).is_a?(Array)
           self.log_types = value
@@ -159,6 +177,8 @@ module UltracartClient
           file_names == o.file_names &&
           item_ids == o.item_ids &&
           item_ipn_oids == o.item_ipn_oids &&
+          log_dts_max == o.log_dts_max &&
+          log_dts_min == o.log_dts_min &&
           log_types == o.log_types &&
           logger_names == o.logger_names &&
           order_ids == o.order_ids &&
@@ -174,7 +194,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [actions, directions, emails, file_names, item_ids, item_ipn_oids, log_types, logger_names, order_ids, statuses].hash
+      [actions, directions, emails, file_names, item_ids, item_ipn_oids, log_dts_max, log_dts_min, log_types, logger_names, order_ids, statuses].hash
     end
 
     # Builds the object from hash
