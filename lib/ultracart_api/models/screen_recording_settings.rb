@@ -14,7 +14,13 @@ require 'date'
 
 module UltracartClient
   class ScreenRecordingSettings
+    # Cost per one thousand sessions
+    attr_accessor :cost_per_thousand
+
     attr_accessor :enabled
+
+    # How long screen recording data is retained
+    attr_accessor :retention_interval
 
     attr_accessor :sessions_current_billing_period
 
@@ -29,7 +35,9 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'cost_per_thousand' => :'cost_per_thousand',
         :'enabled' => :'enabled',
+        :'retention_interval' => :'retention_interval',
         :'sessions_current_billing_period' => :'sessions_current_billing_period',
         :'sessions_last_billing_period' => :'sessions_last_billing_period',
         :'sessions_trial_billing_period' => :'sessions_trial_billing_period',
@@ -41,7 +49,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'cost_per_thousand' => :'Float',
         :'enabled' => :'BOOLEAN',
+        :'retention_interval' => :'String',
         :'sessions_current_billing_period' => :'Integer',
         :'sessions_last_billing_period' => :'Integer',
         :'sessions_trial_billing_period' => :'Integer',
@@ -58,8 +68,16 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
+      if attributes.has_key?(:'cost_per_thousand')
+        self.cost_per_thousand = attributes[:'cost_per_thousand']
+      end
+
       if attributes.has_key?(:'enabled')
         self.enabled = attributes[:'enabled']
+      end
+
+      if attributes.has_key?(:'retention_interval')
+        self.retention_interval = attributes[:'retention_interval']
       end
 
       if attributes.has_key?(:'sessions_current_billing_period')
@@ -101,7 +119,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          cost_per_thousand == o.cost_per_thousand &&
           enabled == o.enabled &&
+          retention_interval == o.retention_interval &&
           sessions_current_billing_period == o.sessions_current_billing_period &&
           sessions_last_billing_period == o.sessions_last_billing_period &&
           sessions_trial_billing_period == o.sessions_trial_billing_period &&
@@ -118,7 +138,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [enabled, sessions_current_billing_period, sessions_last_billing_period, sessions_trial_billing_period, trial_expiration, trial_expired].hash
+      [cost_per_thousand, enabled, retention_interval, sessions_current_billing_period, sessions_last_billing_period, sessions_trial_billing_period, trial_expiration, trial_expired].hash
     end
 
     # Builds the object from hash
