@@ -25,6 +25,9 @@ module UltracartClient
     # Allow COD
     attr_accessor :allow_cod
 
+    # Allow Drop Shipping
+    attr_accessor :allow_drop_shipping
+
     # Allow purchase orders by this customer
     attr_accessor :allow_purchase_order
 
@@ -188,6 +191,7 @@ module UltracartClient
         :'affiliate_oid' => :'affiliate_oid',
         :'allow_3rd_party_billing' => :'allow_3rd_party_billing',
         :'allow_cod' => :'allow_cod',
+        :'allow_drop_shipping' => :'allow_drop_shipping',
         :'allow_purchase_order' => :'allow_purchase_order',
         :'allow_quote_request' => :'allow_quote_request',
         :'allow_selection_of_address_type' => :'allow_selection_of_address_type',
@@ -252,6 +256,7 @@ module UltracartClient
         :'affiliate_oid' => :'Integer',
         :'allow_3rd_party_billing' => :'BOOLEAN',
         :'allow_cod' => :'BOOLEAN',
+        :'allow_drop_shipping' => :'BOOLEAN',
         :'allow_purchase_order' => :'BOOLEAN',
         :'allow_quote_request' => :'BOOLEAN',
         :'allow_selection_of_address_type' => :'BOOLEAN',
@@ -331,6 +336,10 @@ module UltracartClient
 
       if attributes.has_key?(:'allow_cod')
         self.allow_cod = attributes[:'allow_cod']
+      end
+
+      if attributes.has_key?(:'allow_drop_shipping')
+        self.allow_drop_shipping = attributes[:'allow_drop_shipping']
       end
 
       if attributes.has_key?(:'allow_purchase_order')
@@ -757,6 +766,7 @@ module UltracartClient
           affiliate_oid == o.affiliate_oid &&
           allow_3rd_party_billing == o.allow_3rd_party_billing &&
           allow_cod == o.allow_cod &&
+          allow_drop_shipping == o.allow_drop_shipping &&
           allow_purchase_order == o.allow_purchase_order &&
           allow_quote_request == o.allow_quote_request &&
           allow_selection_of_address_type == o.allow_selection_of_address_type &&
@@ -822,7 +832,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [activity, affiliate_oid, allow_3rd_party_billing, allow_cod, allow_purchase_order, allow_quote_request, allow_selection_of_address_type, attachments, auto_approve_cod, auto_approve_purchase_order, automatic_merchant_notes, billing, business_notes, cards, cc_emails, customer_profile_oid, dhl_account_number, dhl_duty_account_number, email, exempt_shipping_handling_charge, fedex_account_number, free_shipping, free_shipping_minimum, last_modified_by, last_modified_dts, loyalty, maximum_item_count, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, orders, orders_summary, password, pricing_tiers, privacy, qb_class, qb_code, quotes, quotes_summary, referral_source, reviewer, sales_rep_code, send_signup_notification, shipping, signup_dts, software_entitlements, suppress_buysafe, tags, tax_codes, tax_exempt, tax_id, terms, track_separately, unapproved, ups_account_number, website_url].hash
+      [activity, affiliate_oid, allow_3rd_party_billing, allow_cod, allow_drop_shipping, allow_purchase_order, allow_quote_request, allow_selection_of_address_type, attachments, auto_approve_cod, auto_approve_purchase_order, automatic_merchant_notes, billing, business_notes, cards, cc_emails, customer_profile_oid, dhl_account_number, dhl_duty_account_number, email, exempt_shipping_handling_charge, fedex_account_number, free_shipping, free_shipping_minimum, last_modified_by, last_modified_dts, loyalty, maximum_item_count, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, orders, orders_summary, password, pricing_tiers, privacy, qb_class, qb_code, quotes, quotes_summary, referral_source, reviewer, sales_rep_code, send_signup_notification, shipping, signup_dts, software_entitlements, suppress_buysafe, tags, tax_codes, tax_exempt, tax_id, terms, track_separately, unapproved, ups_account_number, website_url].hash
     end
 
     # Builds the object from hash
