@@ -14,6 +14,8 @@ require 'date'
 
 module UltracartClient
   class ScreenRecordingResponse
+    attr_accessor :checkout_only
+
     attr_accessor :error
 
     attr_accessor :metadata
@@ -28,6 +30,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'checkout_only' => :'checkout_only',
         :'error' => :'error',
         :'metadata' => :'metadata',
         :'screen_recording' => :'screen_recording',
@@ -39,6 +42,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'checkout_only' => :'BOOLEAN',
         :'error' => :'Error',
         :'metadata' => :'ResponseMetadata',
         :'screen_recording' => :'ScreenRecording',
@@ -54,6 +58,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'checkout_only')
+        self.checkout_only = attributes[:'checkout_only']
+      end
 
       if attributes.has_key?(:'error')
         self.error = attributes[:'error']
@@ -94,6 +102,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          checkout_only == o.checkout_only &&
           error == o.error &&
           metadata == o.metadata &&
           screen_recording == o.screen_recording &&
@@ -110,7 +119,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [error, metadata, screen_recording, success, warning].hash
+      [checkout_only, error, metadata, screen_recording, success, warning].hash
     end
 
     # Builds the object from hash
