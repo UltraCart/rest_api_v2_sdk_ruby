@@ -92,6 +92,67 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Generate a packing slip for this order for the given distribution center.
+    # The packing slip PDF that is returned is base 64 encoded 
+    # @param distribution_center_code Distribution center code
+    # @param order_id Order ID
+    # @param [Hash] opts the optional parameters
+    # @return [OrdersResponse]
+    def generate_packing_slip(distribution_center_code, order_id, opts = {})
+      data, _status_code, _headers = generate_packing_slip_with_http_info(distribution_center_code, order_id, opts)
+      data
+    end
+
+    # Generate a packing slip for this order for the given distribution center.
+    # The packing slip PDF that is returned is base 64 encoded 
+    # @param distribution_center_code Distribution center code
+    # @param order_id Order ID
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OrdersResponse, Fixnum, Hash)>] OrdersResponse data, response status code and response headers
+    def generate_packing_slip_with_http_info(distribution_center_code, order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: FulfillmentApi.generate_packing_slip ...'
+      end
+      # verify the required parameter 'distribution_center_code' is set
+      if @api_client.config.client_side_validation && distribution_center_code.nil?
+        fail ArgumentError, "Missing the required parameter 'distribution_center_code' when calling FulfillmentApi.generate_packing_slip"
+      end
+      # verify the required parameter 'order_id' is set
+      if @api_client.config.client_side_validation && order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'order_id' when calling FulfillmentApi.generate_packing_slip"
+      end
+      # resource path
+      local_var_path = '/fulfillment/distribution_centers/{distribution_center_code}/orders/{order_id}'.sub('{' + 'distribution_center_code' + '}', distribution_center_code.to_s).sub('{' + 'order_id' + '}', order_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'OrdersResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: FulfillmentApi#generate_packing_slip\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Retrieve orders queued up for this distribution center.
     # Retrieves up to 100 orders that are queued up in this distribution center.  You must acknowledge them before additional new orders will be returned.  There is NO record chunking.  You'll get the same 100 records again and again until you acknowledge orders.  The orders that are returned contain only items for this distribution center and are by default completely expanded with billing, buysafe, channel_partner, checkout, coupons, customer_profile, edi, gift, gift_certificate, internal, items, payment, shipping, summary, taxes. 
     # @param distribution_center_code Distribution center code

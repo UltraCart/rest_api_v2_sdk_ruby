@@ -318,6 +318,122 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Generate a packing slip for this order for the given distribution center.
+    # The packing slip PDF that is returned is base 64 encoded 
+    # @param order_id Order ID
+    # @param [Hash] opts the optional parameters
+    # @return [OrdersResponse]
+    def generate_packing_slip_all_dc(order_id, opts = {})
+      data, _status_code, _headers = generate_packing_slip_all_dc_with_http_info(order_id, opts)
+      data
+    end
+
+    # Generate a packing slip for this order for the given distribution center.
+    # The packing slip PDF that is returned is base 64 encoded 
+    # @param order_id Order ID
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OrdersResponse, Fixnum, Hash)>] OrdersResponse data, response status code and response headers
+    def generate_packing_slip_all_dc_with_http_info(order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.generate_packing_slip_all_dc ...'
+      end
+      # verify the required parameter 'order_id' is set
+      if @api_client.config.client_side_validation && order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.generate_packing_slip_all_dc"
+      end
+      # resource path
+      local_var_path = '/order/orders/{order_id}/packing_slip'.sub('{' + 'order_id' + '}', order_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'OrdersResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#generate_packing_slip_all_dc\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Generate a packing slip for this order for the given distribution center.
+    # The packing slip PDF that is returned is base 64 encoded 
+    # @param distribution_center_code Distribution center code
+    # @param order_id Order ID
+    # @param [Hash] opts the optional parameters
+    # @return [OrdersResponse]
+    def generate_packing_slip_specific_dc(distribution_center_code, order_id, opts = {})
+      data, _status_code, _headers = generate_packing_slip_specific_dc_with_http_info(distribution_center_code, order_id, opts)
+      data
+    end
+
+    # Generate a packing slip for this order for the given distribution center.
+    # The packing slip PDF that is returned is base 64 encoded 
+    # @param distribution_center_code Distribution center code
+    # @param order_id Order ID
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OrdersResponse, Fixnum, Hash)>] OrdersResponse data, response status code and response headers
+    def generate_packing_slip_specific_dc_with_http_info(distribution_center_code, order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.generate_packing_slip_specific_dc ...'
+      end
+      # verify the required parameter 'distribution_center_code' is set
+      if @api_client.config.client_side_validation && distribution_center_code.nil?
+        fail ArgumentError, "Missing the required parameter 'distribution_center_code' when calling OrderApi.generate_packing_slip_specific_dc"
+      end
+      # verify the required parameter 'order_id' is set
+      if @api_client.config.client_side_validation && order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.generate_packing_slip_specific_dc"
+      end
+      # resource path
+      local_var_path = '/order/orders/{order_id}/packing_slip/{distribution_center_code}'.sub('{' + 'distribution_center_code' + '}', distribution_center_code.to_s).sub('{' + 'order_id' + '}', order_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'OrdersResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#generate_packing_slip_specific_dc\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Retrieve A/R Retry Configuration
     # Retrieve A/R Retry Configuration. This is primarily an internal API call.  It is doubtful you would ever need to use it. 
     # @param [Hash] opts the optional parameters
