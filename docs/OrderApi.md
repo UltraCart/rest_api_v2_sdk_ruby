@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**delete_order**](OrderApi.md#delete_order) | **DELETE** /order/orders/{order_id} | Delete an order
 [**format**](OrderApi.md#format) | **POST** /order/orders/{order_id}/format | Format order
 [**generate_order_token**](OrderApi.md#generate_order_token) | **GET** /order/orders/token/{order_id} | Generate an order token for a given order id
-[**generate_packing_slip_all_dc**](OrderApi.md#generate_packing_slip_all_dc) | **GET** /order/orders/{order_id}/packing_slip | Generate a packing slip for this order for the given distribution center.
+[**generate_packing_slip_all_dc**](OrderApi.md#generate_packing_slip_all_dc) | **GET** /order/orders/{order_id}/packing_slip | Generate a packing slip for this order across all distribution centers.
 [**generate_packing_slip_specific_dc**](OrderApi.md#generate_packing_slip_specific_dc) | **GET** /order/orders/{order_id}/packing_slip/{distribution_center_code} | Generate a packing slip for this order for the given distribution center.
 [**get_accounts_receivable_retry_config**](OrderApi.md#get_accounts_receivable_retry_config) | **GET** /order/accountsReceivableRetryConfig | Retrieve A/R Retry Configuration
 [**get_accounts_receivable_retry_stats**](OrderApi.md#get_accounts_receivable_retry_stats) | **GET** /order/accountsReceivableRetryConfig/stats | Retrieve A/R Retry Statistics
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 # **generate_packing_slip_all_dc**
 > OrdersResponse generate_packing_slip_all_dc(order_id)
 
-Generate a packing slip for this order for the given distribution center.
+Generate a packing slip for this order across all distribution centers.
 
 The packing slip PDF that is returned is base 64 encoded 
 
@@ -304,7 +304,7 @@ order_id = 'order_id_example' # String | Order ID
 
 
 begin
-  #Generate a packing slip for this order for the given distribution center.
+  #Generate a packing slip for this order across all distribution centers.
   result = api_instance.generate_packing_slip_all_dc(order_id)
   p result
 rescue UltracartClient::ApiError => e

@@ -318,7 +318,7 @@ module UltracartClient
       end
       return data, status_code, headers
     end
-    # Generate a packing slip for this order for the given distribution center.
+    # Generate a packing slip for this order across all distribution centers.
     # The packing slip PDF that is returned is base 64 encoded 
     # @param order_id Order ID
     # @param [Hash] opts the optional parameters
@@ -328,7 +328,7 @@ module UltracartClient
       data
     end
 
-    # Generate a packing slip for this order for the given distribution center.
+    # Generate a packing slip for this order across all distribution centers.
     # The packing slip PDF that is returned is base 64 encoded 
     # @param order_id Order ID
     # @param [Hash] opts the optional parameters

@@ -26,13 +26,17 @@ module UltracartClient
     # Coupon code entered by the customer
     attr_accessor :coupon_code
 
+    # True if this coupon is hidde from the customer
+    attr_accessor :hdie_from_customer
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'accounting_code' => :'accounting_code',
         :'automatically_applied' => :'automatically_applied',
         :'base_coupon_code' => :'base_coupon_code',
-        :'coupon_code' => :'coupon_code'
+        :'coupon_code' => :'coupon_code',
+        :'hdie_from_customer' => :'hdie_from_customer'
       }
     end
 
@@ -42,7 +46,8 @@ module UltracartClient
         :'accounting_code' => :'String',
         :'automatically_applied' => :'BOOLEAN',
         :'base_coupon_code' => :'String',
-        :'coupon_code' => :'String'
+        :'coupon_code' => :'String',
+        :'hdie_from_customer' => :'BOOLEAN'
       }
     end
 
@@ -68,6 +73,10 @@ module UltracartClient
 
       if attributes.has_key?(:'coupon_code')
         self.coupon_code = attributes[:'coupon_code']
+      end
+
+      if attributes.has_key?(:'hdie_from_customer')
+        self.hdie_from_customer = attributes[:'hdie_from_customer']
       end
     end
 
@@ -122,7 +131,8 @@ module UltracartClient
           accounting_code == o.accounting_code &&
           automatically_applied == o.automatically_applied &&
           base_coupon_code == o.base_coupon_code &&
-          coupon_code == o.coupon_code
+          coupon_code == o.coupon_code &&
+          hdie_from_customer == o.hdie_from_customer
     end
 
     # @see the `==` method
@@ -134,7 +144,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accounting_code, automatically_applied, base_coupon_code, coupon_code].hash
+      [accounting_code, automatically_applied, base_coupon_code, coupon_code, hdie_from_customer].hash
     end
 
     # Builds the object from hash
