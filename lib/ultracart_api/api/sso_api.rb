@@ -85,7 +85,7 @@ module UltracartClient
     # Starts the process of authorizing a single sign on session. 
     # @param authorization_request Authorization request
     # @param [Hash] opts the optional parameters
-    # @return [ItemsResponse]
+    # @return [SingleSignOnAuthorizeResponse]
     def sso_authorize(authorization_request, opts = {})
       data, _status_code, _headers = sso_authorize_with_http_info(authorization_request, opts)
       data
@@ -95,7 +95,7 @@ module UltracartClient
     # Starts the process of authorizing a single sign on session. 
     # @param authorization_request Authorization request
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ItemsResponse, Fixnum, Hash)>] ItemsResponse data, response status code and response headers
+    # @return [Array<(SingleSignOnAuthorizeResponse, Fixnum, Hash)>] SingleSignOnAuthorizeResponse data, response status code and response headers
     def sso_authorize_with_http_info(authorization_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SsoApi.sso_authorize ...'
@@ -130,7 +130,7 @@ module UltracartClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'ItemsResponse')
+        :return_type => 'SingleSignOnAuthorizeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SsoApi#sso_authorize\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -188,7 +188,7 @@ module UltracartClient
     # Called by your application after receiving the code back on the redirect URI to obtain a simple key token to make API calls with 
     # @param token_request Token request
     # @param [Hash] opts the optional parameters
-    # @return [ItemsResponse]
+    # @return [SingleSignOnTokenResponse]
     def sso_token(token_request, opts = {})
       data, _status_code, _headers = sso_token_with_http_info(token_request, opts)
       data
@@ -198,7 +198,7 @@ module UltracartClient
     # Called by your application after receiving the code back on the redirect URI to obtain a simple key token to make API calls with 
     # @param token_request Token request
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ItemsResponse, Fixnum, Hash)>] ItemsResponse data, response status code and response headers
+    # @return [Array<(SingleSignOnTokenResponse, Fixnum, Hash)>] SingleSignOnTokenResponse data, response status code and response headers
     def sso_token_with_http_info(token_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SsoApi.sso_token ...'
@@ -233,7 +233,7 @@ module UltracartClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'ItemsResponse')
+        :return_type => 'SingleSignOnTokenResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SsoApi#sso_token\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
