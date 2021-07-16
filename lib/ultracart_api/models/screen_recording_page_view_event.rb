@@ -20,6 +20,8 @@ module UltracartClient
 
     attr_accessor :prior_page_view
 
+    attr_accessor :sub_text
+
     # Timestamp of the event
     attr_accessor :timestamp
 
@@ -31,6 +33,7 @@ module UltracartClient
         :'name' => :'name',
         :'params' => :'params',
         :'prior_page_view' => :'prior_page_view',
+        :'sub_text' => :'sub_text',
         :'timestamp' => :'timestamp',
         :'ts' => :'ts'
       }
@@ -42,6 +45,7 @@ module UltracartClient
         :'name' => :'String',
         :'params' => :'Array<ScreenRecordingPageViewEventParameter>',
         :'prior_page_view' => :'BOOLEAN',
+        :'sub_text' => :'String',
         :'timestamp' => :'String',
         :'ts' => :'Integer'
       }
@@ -67,6 +71,10 @@ module UltracartClient
 
       if attributes.has_key?(:'prior_page_view')
         self.prior_page_view = attributes[:'prior_page_view']
+      end
+
+      if attributes.has_key?(:'sub_text')
+        self.sub_text = attributes[:'sub_text']
       end
 
       if attributes.has_key?(:'timestamp')
@@ -99,6 +107,7 @@ module UltracartClient
           name == o.name &&
           params == o.params &&
           prior_page_view == o.prior_page_view &&
+          sub_text == o.sub_text &&
           timestamp == o.timestamp &&
           ts == o.ts
     end
@@ -112,7 +121,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, params, prior_page_view, timestamp, ts].hash
+      [name, params, prior_page_view, sub_text, timestamp, ts].hash
     end
 
     # Builds the object from hash
