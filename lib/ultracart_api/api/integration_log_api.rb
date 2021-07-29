@@ -160,6 +160,61 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Retrieve integration log summaries
+    # Retrieves a set of integration log summaries from the account based on a query object. 
+    # @param integration_log_summaries_query Integration log summaries query
+    # @param [Hash] opts the optional parameters
+    # @return [IntegrationLogSummaryQueryResponse]
+    def get_integration_log_summaries_query(integration_log_summaries_query, opts = {})
+      data, _status_code, _headers = get_integration_log_summaries_query_with_http_info(integration_log_summaries_query, opts)
+      data
+    end
+
+    # Retrieve integration log summaries
+    # Retrieves a set of integration log summaries from the account based on a query object. 
+    # @param integration_log_summaries_query Integration log summaries query
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(IntegrationLogSummaryQueryResponse, Fixnum, Hash)>] IntegrationLogSummaryQueryResponse data, response status code and response headers
+    def get_integration_log_summaries_query_with_http_info(integration_log_summaries_query, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: IntegrationLogApi.get_integration_log_summaries_query ...'
+      end
+      # verify the required parameter 'integration_log_summaries_query' is set
+      if @api_client.config.client_side_validation && integration_log_summaries_query.nil?
+        fail ArgumentError, "Missing the required parameter 'integration_log_summaries_query' when calling IntegrationLogApi.get_integration_log_summaries_query"
+      end
+      # resource path
+      local_var_path = '/integration_log/summary/query'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(integration_log_summaries_query)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'IntegrationLogSummaryQueryResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: IntegrationLogApi#get_integration_log_summaries_query\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Retrieve integration logs
     # Retrieves a set of integration logs from the account based on a query object. 
     # @param integration_log_query Integration log query
