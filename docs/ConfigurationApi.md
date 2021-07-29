@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 
 # **get_payments_configuration**
-> PaymentsConfiguration get_payments_configuration
+> PaymentsConfigurationResponse get_payments_configuration
 
 Retrieve payments configuration
 
@@ -153,7 +153,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**PaymentsConfiguration**](PaymentsConfiguration.md)
+[**PaymentsConfigurationResponse**](PaymentsConfigurationResponse.md)
 
 ### Authorization
 
@@ -167,7 +167,7 @@ This endpoint does not need any parameter.
 
 
 # **get_payments_rotating_gateway**
-> RotatingTransactionGateway get_payments_rotating_gateway(rtg_oid)
+> RotatingTransactionGatewayResponse get_payments_rotating_gateway(rtg_oid)
 
 Retrieve a rotating transaction gateway
 
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RotatingTransactionGateway**](RotatingTransactionGateway.md)
+[**RotatingTransactionGatewayResponse**](RotatingTransactionGatewayResponse.md)
 
 ### Authorization
 
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 
 
 # **get_payments_rotating_gateway_by_code**
-> RotatingTransactionGateway get_payments_rotating_gateway_by_code(code)
+> RotatingTransactionGatewayResponse get_payments_rotating_gateway_by_code(code)
 
 Retrieve a rotating transaction gateway by code
 
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RotatingTransactionGateway**](RotatingTransactionGateway.md)
+[**RotatingTransactionGatewayResponse**](RotatingTransactionGatewayResponse.md)
 
 ### Authorization
 
@@ -312,7 +312,7 @@ This endpoint does not need any parameter.
 
 
 # **get_payments_rtg_summaries**
-> RtgSummary get_payments_rtg_summaries
+> RtgSummaryResponse get_payments_rtg_summaries
 
 Retrieve a summary of rotating transaction gateways
 
@@ -343,7 +343,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**RtgSummary**](RtgSummary.md)
+[**RtgSummaryResponse**](RtgSummaryResponse.md)
 
 ### Authorization
 
@@ -402,7 +402,7 @@ This endpoint does not need any parameter.
 
 
 # **insert_rotating_transaction_gateway**
-> RotatingTransactionGateway insert_rotating_transaction_gateway(rotating_transaction_gateway)
+> RotatingTransactionGatewayResponse insert_rotating_transaction_gateway(rotating_transaction_gateway)
 
 Insert a rotating transaction gateway
 
@@ -438,7 +438,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RotatingTransactionGateway**](RotatingTransactionGateway.md)
+[**RotatingTransactionGatewayResponse**](RotatingTransactionGatewayResponse.md)
 
 ### Authorization
 
@@ -452,7 +452,7 @@ Name | Type | Description  | Notes
 
 
 # **migrate_to_rotating_transaction_gateway**
-> RotatingTransactionGateway migrate_to_rotating_transaction_gateway(code)
+> RotatingTransactionGatewayResponse migrate_to_rotating_transaction_gateway(code)
 
 Migrate a normal transaction gateway to a rotating transaction gateway
 
@@ -488,7 +488,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RotatingTransactionGateway**](RotatingTransactionGateway.md)
+[**RotatingTransactionGatewayResponse**](RotatingTransactionGatewayResponse.md)
 
 ### Authorization
 

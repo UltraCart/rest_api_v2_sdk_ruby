@@ -145,7 +145,7 @@ module UltracartClient
     # Retrieve payments configuration
     # Retrieves payments configuration for this account. 
     # @param [Hash] opts the optional parameters
-    # @return [PaymentsConfiguration]
+    # @return [PaymentsConfigurationResponse]
     def get_payments_configuration(opts = {})
       data, _status_code, _headers = get_payments_configuration_with_http_info(opts)
       data
@@ -154,7 +154,7 @@ module UltracartClient
     # Retrieve payments configuration
     # Retrieves payments configuration for this account. 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(PaymentsConfiguration, Fixnum, Hash)>] PaymentsConfiguration data, response status code and response headers
+    # @return [Array<(PaymentsConfigurationResponse, Fixnum, Hash)>] PaymentsConfigurationResponse data, response status code and response headers
     def get_payments_configuration_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ConfigurationApi.get_payments_configuration ...'
@@ -185,7 +185,7 @@ module UltracartClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'PaymentsConfiguration')
+        :return_type => 'PaymentsConfigurationResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConfigurationApi#get_payments_configuration\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -195,7 +195,7 @@ module UltracartClient
     # Retrieve a rotating transaction gateway 
     # @param rtg_oid The rtg_oid for the desired record.
     # @param [Hash] opts the optional parameters
-    # @return [RotatingTransactionGateway]
+    # @return [RotatingTransactionGatewayResponse]
     def get_payments_rotating_gateway(rtg_oid, opts = {})
       data, _status_code, _headers = get_payments_rotating_gateway_with_http_info(rtg_oid, opts)
       data
@@ -205,7 +205,7 @@ module UltracartClient
     # Retrieve a rotating transaction gateway 
     # @param rtg_oid The rtg_oid for the desired record.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(RotatingTransactionGateway, Fixnum, Hash)>] RotatingTransactionGateway data, response status code and response headers
+    # @return [Array<(RotatingTransactionGatewayResponse, Fixnum, Hash)>] RotatingTransactionGatewayResponse data, response status code and response headers
     def get_payments_rotating_gateway_with_http_info(rtg_oid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ConfigurationApi.get_payments_rotating_gateway ...'
@@ -240,7 +240,7 @@ module UltracartClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'RotatingTransactionGateway')
+        :return_type => 'RotatingTransactionGatewayResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConfigurationApi#get_payments_rotating_gateway\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -250,7 +250,7 @@ module UltracartClient
     # Retrieve a rotating transaction gateway by code 
     # @param code The code for the desired rotating transaction gateway.
     # @param [Hash] opts the optional parameters
-    # @return [RotatingTransactionGateway]
+    # @return [RotatingTransactionGatewayResponse]
     def get_payments_rotating_gateway_by_code(code, opts = {})
       data, _status_code, _headers = get_payments_rotating_gateway_by_code_with_http_info(code, opts)
       data
@@ -260,7 +260,7 @@ module UltracartClient
     # Retrieve a rotating transaction gateway by code 
     # @param code The code for the desired rotating transaction gateway.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(RotatingTransactionGateway, Fixnum, Hash)>] RotatingTransactionGateway data, response status code and response headers
+    # @return [Array<(RotatingTransactionGatewayResponse, Fixnum, Hash)>] RotatingTransactionGatewayResponse data, response status code and response headers
     def get_payments_rotating_gateway_by_code_with_http_info(code, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ConfigurationApi.get_payments_rotating_gateway_by_code ...'
@@ -295,7 +295,7 @@ module UltracartClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'RotatingTransactionGateway')
+        :return_type => 'RotatingTransactionGatewayResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConfigurationApi#get_payments_rotating_gateway_by_code\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -353,7 +353,7 @@ module UltracartClient
     # Retrieve a summary of rotating transaction gateways
     # Retrieve a summary of rotating transaction gateways 
     # @param [Hash] opts the optional parameters
-    # @return [RtgSummary]
+    # @return [RtgSummaryResponse]
     def get_payments_rtg_summaries(opts = {})
       data, _status_code, _headers = get_payments_rtg_summaries_with_http_info(opts)
       data
@@ -362,7 +362,7 @@ module UltracartClient
     # Retrieve a summary of rotating transaction gateways
     # Retrieve a summary of rotating transaction gateways 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(RtgSummary, Fixnum, Hash)>] RtgSummary data, response status code and response headers
+    # @return [Array<(RtgSummaryResponse, Fixnum, Hash)>] RtgSummaryResponse data, response status code and response headers
     def get_payments_rtg_summaries_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ConfigurationApi.get_payments_rtg_summaries ...'
@@ -393,7 +393,7 @@ module UltracartClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'RtgSummary')
+        :return_type => 'RtgSummaryResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConfigurationApi#get_payments_rtg_summaries\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -452,7 +452,7 @@ module UltracartClient
     # Insert a rotating transaction gateway 
     # @param rotating_transaction_gateway Rotating transaction gateway
     # @param [Hash] opts the optional parameters
-    # @return [RotatingTransactionGateway]
+    # @return [RotatingTransactionGatewayResponse]
     def insert_rotating_transaction_gateway(rotating_transaction_gateway, opts = {})
       data, _status_code, _headers = insert_rotating_transaction_gateway_with_http_info(rotating_transaction_gateway, opts)
       data
@@ -462,7 +462,7 @@ module UltracartClient
     # Insert a rotating transaction gateway 
     # @param rotating_transaction_gateway Rotating transaction gateway
     # @param [Hash] opts the optional parameters
-    # @return [Array<(RotatingTransactionGateway, Fixnum, Hash)>] RotatingTransactionGateway data, response status code and response headers
+    # @return [Array<(RotatingTransactionGatewayResponse, Fixnum, Hash)>] RotatingTransactionGatewayResponse data, response status code and response headers
     def insert_rotating_transaction_gateway_with_http_info(rotating_transaction_gateway, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ConfigurationApi.insert_rotating_transaction_gateway ...'
@@ -497,7 +497,7 @@ module UltracartClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'RotatingTransactionGateway')
+        :return_type => 'RotatingTransactionGatewayResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConfigurationApi#insert_rotating_transaction_gateway\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -507,7 +507,7 @@ module UltracartClient
     # Migrate a normal transaction gateway to a rotating transaction gateway 
     # @param code The short code for the new rotating transaction gateway
     # @param [Hash] opts the optional parameters
-    # @return [RotatingTransactionGateway]
+    # @return [RotatingTransactionGatewayResponse]
     def migrate_to_rotating_transaction_gateway(code, opts = {})
       data, _status_code, _headers = migrate_to_rotating_transaction_gateway_with_http_info(code, opts)
       data
@@ -517,7 +517,7 @@ module UltracartClient
     # Migrate a normal transaction gateway to a rotating transaction gateway 
     # @param code The short code for the new rotating transaction gateway
     # @param [Hash] opts the optional parameters
-    # @return [Array<(RotatingTransactionGateway, Fixnum, Hash)>] RotatingTransactionGateway data, response status code and response headers
+    # @return [Array<(RotatingTransactionGatewayResponse, Fixnum, Hash)>] RotatingTransactionGatewayResponse data, response status code and response headers
     def migrate_to_rotating_transaction_gateway_with_http_info(code, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ConfigurationApi.migrate_to_rotating_transaction_gateway ...'
@@ -552,7 +552,7 @@ module UltracartClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'RotatingTransactionGateway')
+        :return_type => 'RotatingTransactionGatewayResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConfigurationApi#migrate_to_rotating_transaction_gateway\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

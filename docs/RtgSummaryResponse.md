@@ -1,4 +1,4 @@
-# UltracartClient::RtgSummary
+# UltracartClient::RtgSummaryResponse
 
 ## Properties
 Name | Type | Description | Notes

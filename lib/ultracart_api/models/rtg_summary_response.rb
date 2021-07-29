@@ -13,7 +13,7 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class RtgSummary
+  class RtgSummaryResponse
     attr_accessor :gateways
 
     attr_accessor :info_message
