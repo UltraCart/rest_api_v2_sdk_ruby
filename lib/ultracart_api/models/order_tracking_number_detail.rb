@@ -16,9 +16,15 @@ module UltracartClient
   class OrderTrackingNumberDetail
     attr_accessor :city
 
+    # ISO 8601 timestamp that the event occurred
+    attr_accessor :event_dts
+
     attr_accessor :event_local_date
 
     attr_accessor :event_local_time
+
+    # Timezone the event occurred in.  Use this in conjunction with event_dts to format a local date/time.
+    attr_accessor :event_timezone_id
 
     attr_accessor :state
 
@@ -38,8 +44,10 @@ module UltracartClient
     def self.attribute_map
       {
         :'city' => :'city',
+        :'event_dts' => :'event_dts',
         :'event_local_date' => :'event_local_date',
         :'event_local_time' => :'event_local_time',
+        :'event_timezone_id' => :'event_timezone_id',
         :'state' => :'state',
         :'subtag' => :'subtag',
         :'subtag_message' => :'subtag_message',
@@ -54,8 +62,10 @@ module UltracartClient
     def self.swagger_types
       {
         :'city' => :'String',
+        :'event_dts' => :'String',
         :'event_local_date' => :'String',
         :'event_local_time' => :'String',
+        :'event_timezone_id' => :'String',
         :'state' => :'String',
         :'subtag' => :'String',
         :'subtag_message' => :'String',
@@ -78,12 +88,20 @@ module UltracartClient
         self.city = attributes[:'city']
       end
 
+      if attributes.has_key?(:'event_dts')
+        self.event_dts = attributes[:'event_dts']
+      end
+
       if attributes.has_key?(:'event_local_date')
         self.event_local_date = attributes[:'event_local_date']
       end
 
       if attributes.has_key?(:'event_local_time')
         self.event_local_time = attributes[:'event_local_time']
+      end
+
+      if attributes.has_key?(:'event_timezone_id')
+        self.event_timezone_id = attributes[:'event_timezone_id']
       end
 
       if attributes.has_key?(:'state')
@@ -134,8 +152,10 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           city == o.city &&
+          event_dts == o.event_dts &&
           event_local_date == o.event_local_date &&
           event_local_time == o.event_local_time &&
+          event_timezone_id == o.event_timezone_id &&
           state == o.state &&
           subtag == o.subtag &&
           subtag_message == o.subtag_message &&
@@ -154,7 +174,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [city, event_local_date, event_local_time, state, subtag, subtag_message, tag, tag_description, tag_icon, zip].hash
+      [city, event_dts, event_local_date, event_local_time, event_timezone_id, state, subtag, subtag_message, tag, tag_description, tag_icon, zip].hash
     end
 
     # Builds the object from hash
