@@ -134,13 +134,16 @@ module UltracartClient
     # Required field between 0 and 1 that dictates the percentage of traffic that should flow through this gateway
     attr_accessor :traffic_percentage
 
-    # If specified, limits the total daily dollar amount of trial orders
+    # If specified, limits the total daily count of trial orders
     attr_accessor :trial_daily_amount
 
-    # If specified, limits the total month count of trial orders
+    # If specified, limits the total daily dollar amount of trial orders
     attr_accessor :trial_daily_limit
 
     # If specified, limits the total month dollar amount of trial orders
+    attr_accessor :trial_monthly_amount
+
+    # If specified, limits the total month count of trial orders
     attr_accessor :trial_monthly_limit
 
     class EnumAttributeValidator
@@ -210,6 +213,7 @@ module UltracartClient
         :'traffic_percentage' => :'traffic_percentage',
         :'trial_daily_amount' => :'trial_daily_amount',
         :'trial_daily_limit' => :'trial_daily_limit',
+        :'trial_monthly_amount' => :'trial_monthly_amount',
         :'trial_monthly_limit' => :'trial_monthly_limit'
       }
     end
@@ -259,6 +263,7 @@ module UltracartClient
         :'traffic_percentage' => :'Float',
         :'trial_daily_amount' => :'Integer',
         :'trial_daily_limit' => :'Integer',
+        :'trial_monthly_amount' => :'Integer',
         :'trial_monthly_limit' => :'Integer'
       }
     end
@@ -453,6 +458,10 @@ module UltracartClient
         self.trial_daily_limit = attributes[:'trial_daily_limit']
       end
 
+      if attributes.has_key?(:'trial_monthly_amount')
+        self.trial_monthly_amount = attributes[:'trial_monthly_amount']
+      end
+
       if attributes.has_key?(:'trial_monthly_limit')
         self.trial_monthly_limit = attributes[:'trial_monthly_limit']
       end
@@ -542,6 +551,7 @@ module UltracartClient
           traffic_percentage == o.traffic_percentage &&
           trial_daily_amount == o.trial_daily_amount &&
           trial_daily_limit == o.trial_daily_limit &&
+          trial_monthly_amount == o.trial_monthly_amount &&
           trial_monthly_limit == o.trial_monthly_limit
     end
 
@@ -554,7 +564,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [additional_native_currency_codes, auto_order_cancel_unless_response_name, auto_order_cancel_unless_response_values, base_currency_code, cascade_code, cascade_codes, cascade_daily_auto_order_code, charge_appears_on_statement_as, code, current_daily, current_daily_auto_order, current_monthly, customer_service_email, customer_service_phone, day_of_month_restrictions, day_of_week_restrictions, deactivate_after_failures, end_date, gateways, maximum_daily, maximum_daily_auto_order, maximum_monthly, next_daily_auto_order_reset, next_daily_reset, next_monthly_reset, order_total, order_total_comparison, rebill_auto_orders_against_this_rtg_code, reserve_days, reserve_percentage, reserve_refunded, reserves_released_through, rotating_transaction_gateway_oid, selected_gateway_name, show_cascade_codes, show_merchant_account_profiles, start_date, status, theme_restrictions, traffic_percentage, trial_daily_amount, trial_daily_limit, trial_monthly_limit].hash
+      [additional_native_currency_codes, auto_order_cancel_unless_response_name, auto_order_cancel_unless_response_values, base_currency_code, cascade_code, cascade_codes, cascade_daily_auto_order_code, charge_appears_on_statement_as, code, current_daily, current_daily_auto_order, current_monthly, customer_service_email, customer_service_phone, day_of_month_restrictions, day_of_week_restrictions, deactivate_after_failures, end_date, gateways, maximum_daily, maximum_daily_auto_order, maximum_monthly, next_daily_auto_order_reset, next_daily_reset, next_monthly_reset, order_total, order_total_comparison, rebill_auto_orders_against_this_rtg_code, reserve_days, reserve_percentage, reserve_refunded, reserves_released_through, rotating_transaction_gateway_oid, selected_gateway_name, show_cascade_codes, show_merchant_account_profiles, start_date, status, theme_restrictions, traffic_percentage, trial_daily_amount, trial_daily_limit, trial_monthly_amount, trial_monthly_limit].hash
     end
 
     # Builds the object from hash
