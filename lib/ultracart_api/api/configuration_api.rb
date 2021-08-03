@@ -728,7 +728,7 @@ module UltracartClient
     # @param rtg_oid The rtg_oid to update.
     # @param rotating_transaction_gateway Rotating transaction gateway
     # @param [Hash] opts the optional parameters
-    # @return [RotatingTransactionGateway]
+    # @return [RotatingTransactionGatewayResponse]
     def update_rotating_transaction_gateway(rtg_oid, rotating_transaction_gateway, opts = {})
       data, _status_code, _headers = update_rotating_transaction_gateway_with_http_info(rtg_oid, rotating_transaction_gateway, opts)
       data
@@ -739,7 +739,7 @@ module UltracartClient
     # @param rtg_oid The rtg_oid to update.
     # @param rotating_transaction_gateway Rotating transaction gateway
     # @param [Hash] opts the optional parameters
-    # @return [Array<(RotatingTransactionGateway, Fixnum, Hash)>] RotatingTransactionGateway data, response status code and response headers
+    # @return [Array<(RotatingTransactionGatewayResponse, Fixnum, Hash)>] RotatingTransactionGatewayResponse data, response status code and response headers
     def update_rotating_transaction_gateway_with_http_info(rtg_oid, rotating_transaction_gateway, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ConfigurationApi.update_rotating_transaction_gateway ...'
@@ -778,7 +778,7 @@ module UltracartClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'RotatingTransactionGateway')
+        :return_type => 'RotatingTransactionGatewayResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConfigurationApi#update_rotating_transaction_gateway\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
