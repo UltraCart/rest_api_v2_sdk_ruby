@@ -29,6 +29,9 @@ module UltracartClient
     # The order ID assigned by the channel partner for this order
     attr_accessor :channel_partner_order_id
 
+    # Set to true to ignore invalid shipping method being specified.  Only applicable on inserting orders.
+    attr_accessor :ignore_invalid_shipping_method
+
     # Indicates this order should be placed in Account Receivable for later payment processing
     attr_accessor :no_realtime_payment_processing
 
@@ -52,6 +55,7 @@ module UltracartClient
         :'channel_partner_data' => :'channel_partner_data',
         :'channel_partner_oid' => :'channel_partner_oid',
         :'channel_partner_order_id' => :'channel_partner_order_id',
+        :'ignore_invalid_shipping_method' => :'ignore_invalid_shipping_method',
         :'no_realtime_payment_processing' => :'no_realtime_payment_processing',
         :'skip_payment_processing' => :'skip_payment_processing',
         :'store_completed' => :'store_completed',
@@ -68,6 +72,7 @@ module UltracartClient
         :'channel_partner_data' => :'String',
         :'channel_partner_oid' => :'Integer',
         :'channel_partner_order_id' => :'String',
+        :'ignore_invalid_shipping_method' => :'BOOLEAN',
         :'no_realtime_payment_processing' => :'BOOLEAN',
         :'skip_payment_processing' => :'BOOLEAN',
         :'store_completed' => :'BOOLEAN',
@@ -102,6 +107,10 @@ module UltracartClient
 
       if attributes.has_key?(:'channel_partner_order_id')
         self.channel_partner_order_id = attributes[:'channel_partner_order_id']
+      end
+
+      if attributes.has_key?(:'ignore_invalid_shipping_method')
+        self.ignore_invalid_shipping_method = attributes[:'ignore_invalid_shipping_method']
       end
 
       if attributes.has_key?(:'no_realtime_payment_processing')
@@ -148,6 +157,7 @@ module UltracartClient
           channel_partner_data == o.channel_partner_data &&
           channel_partner_oid == o.channel_partner_oid &&
           channel_partner_order_id == o.channel_partner_order_id &&
+          ignore_invalid_shipping_method == o.ignore_invalid_shipping_method &&
           no_realtime_payment_processing == o.no_realtime_payment_processing &&
           skip_payment_processing == o.skip_payment_processing &&
           store_completed == o.store_completed &&
@@ -164,7 +174,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [auto_approve_purchase_order, channel_partner_code, channel_partner_data, channel_partner_oid, channel_partner_order_id, no_realtime_payment_processing, skip_payment_processing, store_completed, store_if_payment_declines, treat_warnings_as_errors].hash
+      [auto_approve_purchase_order, channel_partner_code, channel_partner_data, channel_partner_oid, channel_partner_order_id, ignore_invalid_shipping_method, no_realtime_payment_processing, skip_payment_processing, store_completed, store_if_payment_declines, treat_warnings_as_errors].hash
     end
 
     # Builds the object from hash
