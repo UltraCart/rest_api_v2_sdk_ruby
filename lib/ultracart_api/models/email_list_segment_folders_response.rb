@@ -13,48 +13,37 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class PaymentsConfigurationCreditCard
-    attr_accessor :accept_credit_cards
+  class EmailListSegmentFoldersResponse
+    attr_accessor :error
 
-    attr_accessor :billed_by
+    attr_accessor :list_segment_folders
 
-    attr_accessor :charge_during_checkout
+    attr_accessor :metadata
 
-    attr_accessor :collect_cvv2
+    # Indicates if API call was successful
+    attr_accessor :success
 
-    attr_accessor :configured_gateways_details
-
-    attr_accessor :failed_attempts
-
-    attr_accessor :hide_connect_single_gateway
-
-    attr_accessor :send_customer_billing_update_on_decline
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_credit_cards' => :'acceptCreditCards',
-        :'billed_by' => :'billedBy',
-        :'charge_during_checkout' => :'chargeDuringCheckout',
-        :'collect_cvv2' => :'collectCvv2',
-        :'configured_gateways_details' => :'configuredGatewaysDetails',
-        :'failed_attempts' => :'failedAttempts',
-        :'hide_connect_single_gateway' => :'hideConnectSingleGateway',
-        :'send_customer_billing_update_on_decline' => :'sendCustomerBillingUpdateOnDecline'
+        :'error' => :'error',
+        :'list_segment_folders' => :'list_segment_folders',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'accept_credit_cards' => :'BOOLEAN',
-        :'billed_by' => :'String',
-        :'charge_during_checkout' => :'BOOLEAN',
-        :'collect_cvv2' => :'BOOLEAN',
-        :'configured_gateways_details' => :'String',
-        :'failed_attempts' => :'String',
-        :'hide_connect_single_gateway' => :'BOOLEAN',
-        :'send_customer_billing_update_on_decline' => :'BOOLEAN'
+        :'error' => :'Error',
+        :'list_segment_folders' => :'Array<EmailListSegmentFolder>',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'BOOLEAN',
+        :'warning' => :'Warning'
       }
     end
 
@@ -66,36 +55,26 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'acceptCreditCards')
-        self.accept_credit_cards = attributes[:'acceptCreditCards']
+      if attributes.has_key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.has_key?(:'billedBy')
-        self.billed_by = attributes[:'billedBy']
+      if attributes.has_key?(:'list_segment_folders')
+        if (value = attributes[:'list_segment_folders']).is_a?(Array)
+          self.list_segment_folders = value
+        end
       end
 
-      if attributes.has_key?(:'chargeDuringCheckout')
-        self.charge_during_checkout = attributes[:'chargeDuringCheckout']
+      if attributes.has_key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.has_key?(:'collectCvv2')
-        self.collect_cvv2 = attributes[:'collectCvv2']
+      if attributes.has_key?(:'success')
+        self.success = attributes[:'success']
       end
 
-      if attributes.has_key?(:'configuredGatewaysDetails')
-        self.configured_gateways_details = attributes[:'configuredGatewaysDetails']
-      end
-
-      if attributes.has_key?(:'failedAttempts')
-        self.failed_attempts = attributes[:'failedAttempts']
-      end
-
-      if attributes.has_key?(:'hideConnectSingleGateway')
-        self.hide_connect_single_gateway = attributes[:'hideConnectSingleGateway']
-      end
-
-      if attributes.has_key?(:'sendCustomerBillingUpdateOnDecline')
-        self.send_customer_billing_update_on_decline = attributes[:'sendCustomerBillingUpdateOnDecline']
+      if attributes.has_key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -117,14 +96,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          accept_credit_cards == o.accept_credit_cards &&
-          billed_by == o.billed_by &&
-          charge_during_checkout == o.charge_during_checkout &&
-          collect_cvv2 == o.collect_cvv2 &&
-          configured_gateways_details == o.configured_gateways_details &&
-          failed_attempts == o.failed_attempts &&
-          hide_connect_single_gateway == o.hide_connect_single_gateway &&
-          send_customer_billing_update_on_decline == o.send_customer_billing_update_on_decline
+          error == o.error &&
+          list_segment_folders == o.list_segment_folders &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -136,7 +112,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_credit_cards, billed_by, charge_during_checkout, collect_cvv2, configured_gateways_details, failed_attempts, hide_connect_single_gateway, send_customer_billing_update_on_decline].hash
+      [error, list_segment_folders, metadata, success, warning].hash
     end
 
     # Builds the object from hash

@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **configured_gateways_details** | **String** |  | [optional] 
 **failed_attempts** | **String** |  | [optional] 
 **hide_connect_single_gateway** | **BOOLEAN** |  | [optional] 
-**immediate_finalize_domains** | **String** |  | [optional] 
 **send_customer_billing_update_on_decline** | **BOOLEAN** |  | [optional] 
 
 

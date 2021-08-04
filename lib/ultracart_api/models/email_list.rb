@@ -26,6 +26,9 @@ module UltracartClient
     # Email list UUID
     attr_accessor :email_list_uuid
 
+    # List/Segment folder UUID
+    attr_accessor :esp_list_segment_folder_uuid
+
     # Count of members in this list
     attr_accessor :member_count
 
@@ -54,6 +57,7 @@ module UltracartClient
         :'created_dts' => :'created_dts',
         :'deleted' => :'deleted',
         :'email_list_uuid' => :'email_list_uuid',
+        :'esp_list_segment_folder_uuid' => :'esp_list_segment_folder_uuid',
         :'member_count' => :'member_count',
         :'merchant_id' => :'merchant_id',
         :'name' => :'name',
@@ -71,6 +75,7 @@ module UltracartClient
         :'created_dts' => :'String',
         :'deleted' => :'BOOLEAN',
         :'email_list_uuid' => :'String',
+        :'esp_list_segment_folder_uuid' => :'String',
         :'member_count' => :'Integer',
         :'merchant_id' => :'String',
         :'name' => :'String',
@@ -103,6 +108,10 @@ module UltracartClient
 
       if attributes.has_key?(:'email_list_uuid')
         self.email_list_uuid = attributes[:'email_list_uuid']
+      end
+
+      if attributes.has_key?(:'esp_list_segment_folder_uuid')
+        self.esp_list_segment_folder_uuid = attributes[:'esp_list_segment_folder_uuid']
       end
 
       if attributes.has_key?(:'member_count')
@@ -173,6 +182,7 @@ module UltracartClient
           created_dts == o.created_dts &&
           deleted == o.deleted &&
           email_list_uuid == o.email_list_uuid &&
+          esp_list_segment_folder_uuid == o.esp_list_segment_folder_uuid &&
           member_count == o.member_count &&
           merchant_id == o.merchant_id &&
           name == o.name &&
@@ -191,7 +201,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allow_csv_download, created_dts, deleted, email_list_uuid, member_count, merchant_id, name, public_description, public_list, storefront_oid, used_by].hash
+      [allow_csv_download, created_dts, deleted, email_list_uuid, esp_list_segment_folder_uuid, member_count, merchant_id, name, public_description, public_list, storefront_oid, used_by].hash
     end
 
     # Builds the object from hash

@@ -863,6 +863,65 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Delete email ListSegmentFolder
+    # @param storefront_oid 
+    # @param email_list_segment_folder_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [BaseResponse]
+    def delete_email_list_segment_folder(storefront_oid, email_list_segment_folder_uuid, opts = {})
+      data, _status_code, _headers = delete_email_list_segment_folder_with_http_info(storefront_oid, email_list_segment_folder_uuid, opts)
+      data
+    end
+
+    # Delete email ListSegmentFolder
+    # @param storefront_oid 
+    # @param email_list_segment_folder_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BaseResponse, Fixnum, Hash)>] BaseResponse data, response status code and response headers
+    def delete_email_list_segment_folder_with_http_info(storefront_oid, email_list_segment_folder_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.delete_email_list_segment_folder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.delete_email_list_segment_folder"
+      end
+      # verify the required parameter 'email_list_segment_folder_uuid' is set
+      if @api_client.config.client_side_validation && email_list_segment_folder_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'email_list_segment_folder_uuid' when calling StorefrontApi.delete_email_list_segment_folder"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/list_segment_folders/{email_list_segment_folder_uuid}'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'email_list_segment_folder_uuid' + '}', email_list_segment_folder_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'BaseResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#delete_email_list_segment_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Delete email postcard
     # @param storefront_oid 
     # @param commseq_postcard_uuid 
@@ -3561,6 +3620,118 @@ module UltracartClient
         :return_type => 'EmailListCustomersResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#get_email_list_customers\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get email campaign folder
+    # @param storefront_oid 
+    # @param email_list_segment_folder_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [EmailListSegmentFolderResponse]
+    def get_email_list_segment_folder(storefront_oid, email_list_segment_folder_uuid, opts = {})
+      data, _status_code, _headers = get_email_list_segment_folder_with_http_info(storefront_oid, email_list_segment_folder_uuid, opts)
+      data
+    end
+
+    # Get email campaign folder
+    # @param storefront_oid 
+    # @param email_list_segment_folder_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailListSegmentFolderResponse, Fixnum, Hash)>] EmailListSegmentFolderResponse data, response status code and response headers
+    def get_email_list_segment_folder_with_http_info(storefront_oid, email_list_segment_folder_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_email_list_segment_folder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_email_list_segment_folder"
+      end
+      # verify the required parameter 'email_list_segment_folder_uuid' is set
+      if @api_client.config.client_side_validation && email_list_segment_folder_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'email_list_segment_folder_uuid' when calling StorefrontApi.get_email_list_segment_folder"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/list_segment_folders/{email_list_segment_folder_uuid}'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'email_list_segment_folder_uuid' + '}', email_list_segment_folder_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailListSegmentFolderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_email_list_segment_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get email campaign folders
+    # @param storefront_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [EmailListSegmentFoldersResponse]
+    def get_email_list_segment_folders(storefront_oid, opts = {})
+      data, _status_code, _headers = get_email_list_segment_folders_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Get email campaign folders
+    # @param storefront_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailListSegmentFoldersResponse, Fixnum, Hash)>] EmailListSegmentFoldersResponse data, response status code and response headers
+    def get_email_list_segment_folders_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_email_list_segment_folders ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_email_list_segment_folders"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/list_segment_folders'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailListSegmentFoldersResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_email_list_segment_folders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6267,6 +6438,65 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Insert email campaign folder
+    # @param storefront_oid 
+    # @param email_list_segment_folder Email campaign folder
+    # @param [Hash] opts the optional parameters
+    # @return [EmailListSegmentFolderResponse]
+    def insert_email_list_segment_folder(storefront_oid, email_list_segment_folder, opts = {})
+      data, _status_code, _headers = insert_email_list_segment_folder_with_http_info(storefront_oid, email_list_segment_folder, opts)
+      data
+    end
+
+    # Insert email campaign folder
+    # @param storefront_oid 
+    # @param email_list_segment_folder Email campaign folder
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailListSegmentFolderResponse, Fixnum, Hash)>] EmailListSegmentFolderResponse data, response status code and response headers
+    def insert_email_list_segment_folder_with_http_info(storefront_oid, email_list_segment_folder, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.insert_email_list_segment_folder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.insert_email_list_segment_folder"
+      end
+      # verify the required parameter 'email_list_segment_folder' is set
+      if @api_client.config.client_side_validation && email_list_segment_folder.nil?
+        fail ArgumentError, "Missing the required parameter 'email_list_segment_folder' when calling StorefrontApi.insert_email_list_segment_folder"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/list_segment_folders'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(email_list_segment_folder)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailListSegmentFolderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#insert_email_list_segment_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Insert email postcard
     # @param storefront_oid 
     # @param email_commseq_postcard Email postcard
@@ -8125,6 +8355,71 @@ module UltracartClient
         :return_type => 'EmailListResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#update_email_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update email campaign folder
+    # @param storefront_oid 
+    # @param email_list_segment_folder_uuid 
+    # @param email_list_segment_folder Email campaign folder
+    # @param [Hash] opts the optional parameters
+    # @return [EmailListSegmentFolderResponse]
+    def update_email_list_segment_folder(storefront_oid, email_list_segment_folder_uuid, email_list_segment_folder, opts = {})
+      data, _status_code, _headers = update_email_list_segment_folder_with_http_info(storefront_oid, email_list_segment_folder_uuid, email_list_segment_folder, opts)
+      data
+    end
+
+    # Update email campaign folder
+    # @param storefront_oid 
+    # @param email_list_segment_folder_uuid 
+    # @param email_list_segment_folder Email campaign folder
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailListSegmentFolderResponse, Fixnum, Hash)>] EmailListSegmentFolderResponse data, response status code and response headers
+    def update_email_list_segment_folder_with_http_info(storefront_oid, email_list_segment_folder_uuid, email_list_segment_folder, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.update_email_list_segment_folder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.update_email_list_segment_folder"
+      end
+      # verify the required parameter 'email_list_segment_folder_uuid' is set
+      if @api_client.config.client_side_validation && email_list_segment_folder_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'email_list_segment_folder_uuid' when calling StorefrontApi.update_email_list_segment_folder"
+      end
+      # verify the required parameter 'email_list_segment_folder' is set
+      if @api_client.config.client_side_validation && email_list_segment_folder.nil?
+        fail ArgumentError, "Missing the required parameter 'email_list_segment_folder' when calling StorefrontApi.update_email_list_segment_folder"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/list_segment_folders/{email_list_segment_folder_uuid}'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'email_list_segment_folder_uuid' + '}', email_list_segment_folder_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(email_list_segment_folder)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailListSegmentFolderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#update_email_list_segment_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

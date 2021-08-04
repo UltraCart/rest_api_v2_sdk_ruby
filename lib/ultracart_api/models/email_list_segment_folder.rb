@@ -13,48 +13,41 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class PaymentsConfigurationCreditCard
-    attr_accessor :accept_credit_cards
+  class EmailListSegmentFolder
+    # Email list segment folder UUID
+    attr_accessor :esp_list_segment_folder_uuid
 
-    attr_accessor :billed_by
+    # Merchant ID
+    attr_accessor :merchant_id
 
-    attr_accessor :charge_during_checkout
+    # Name of email campaign folder
+    attr_accessor :name
 
-    attr_accessor :collect_cvv2
+    # Storefront oid
+    attr_accessor :storefront_oid
 
-    attr_accessor :configured_gateways_details
-
-    attr_accessor :failed_attempts
-
-    attr_accessor :hide_connect_single_gateway
-
-    attr_accessor :send_customer_billing_update_on_decline
+    # System generated folder
+    attr_accessor :system_generated
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_credit_cards' => :'acceptCreditCards',
-        :'billed_by' => :'billedBy',
-        :'charge_during_checkout' => :'chargeDuringCheckout',
-        :'collect_cvv2' => :'collectCvv2',
-        :'configured_gateways_details' => :'configuredGatewaysDetails',
-        :'failed_attempts' => :'failedAttempts',
-        :'hide_connect_single_gateway' => :'hideConnectSingleGateway',
-        :'send_customer_billing_update_on_decline' => :'sendCustomerBillingUpdateOnDecline'
+        :'esp_list_segment_folder_uuid' => :'esp_list_segment_folder_uuid',
+        :'merchant_id' => :'merchant_id',
+        :'name' => :'name',
+        :'storefront_oid' => :'storefront_oid',
+        :'system_generated' => :'system_generated'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'accept_credit_cards' => :'BOOLEAN',
-        :'billed_by' => :'String',
-        :'charge_during_checkout' => :'BOOLEAN',
-        :'collect_cvv2' => :'BOOLEAN',
-        :'configured_gateways_details' => :'String',
-        :'failed_attempts' => :'String',
-        :'hide_connect_single_gateway' => :'BOOLEAN',
-        :'send_customer_billing_update_on_decline' => :'BOOLEAN'
+        :'esp_list_segment_folder_uuid' => :'String',
+        :'merchant_id' => :'String',
+        :'name' => :'String',
+        :'storefront_oid' => :'Integer',
+        :'system_generated' => :'BOOLEAN'
       }
     end
 
@@ -66,36 +59,24 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'acceptCreditCards')
-        self.accept_credit_cards = attributes[:'acceptCreditCards']
+      if attributes.has_key?(:'esp_list_segment_folder_uuid')
+        self.esp_list_segment_folder_uuid = attributes[:'esp_list_segment_folder_uuid']
       end
 
-      if attributes.has_key?(:'billedBy')
-        self.billed_by = attributes[:'billedBy']
+      if attributes.has_key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
       end
 
-      if attributes.has_key?(:'chargeDuringCheckout')
-        self.charge_during_checkout = attributes[:'chargeDuringCheckout']
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'collectCvv2')
-        self.collect_cvv2 = attributes[:'collectCvv2']
+      if attributes.has_key?(:'storefront_oid')
+        self.storefront_oid = attributes[:'storefront_oid']
       end
 
-      if attributes.has_key?(:'configuredGatewaysDetails')
-        self.configured_gateways_details = attributes[:'configuredGatewaysDetails']
-      end
-
-      if attributes.has_key?(:'failedAttempts')
-        self.failed_attempts = attributes[:'failedAttempts']
-      end
-
-      if attributes.has_key?(:'hideConnectSingleGateway')
-        self.hide_connect_single_gateway = attributes[:'hideConnectSingleGateway']
-      end
-
-      if attributes.has_key?(:'sendCustomerBillingUpdateOnDecline')
-        self.send_customer_billing_update_on_decline = attributes[:'sendCustomerBillingUpdateOnDecline']
+      if attributes.has_key?(:'system_generated')
+        self.system_generated = attributes[:'system_generated']
       end
     end
 
@@ -103,13 +84,28 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@name.nil? && @name.to_s.length > 250
+        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 250.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@name.nil? && @name.to_s.length > 250
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if !name.nil? && name.to_s.length > 250
+        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 250.'
+      end
+
+      @name = name
     end
 
     # Checks equality by comparing each attribute.
@@ -117,14 +113,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          accept_credit_cards == o.accept_credit_cards &&
-          billed_by == o.billed_by &&
-          charge_during_checkout == o.charge_during_checkout &&
-          collect_cvv2 == o.collect_cvv2 &&
-          configured_gateways_details == o.configured_gateways_details &&
-          failed_attempts == o.failed_attempts &&
-          hide_connect_single_gateway == o.hide_connect_single_gateway &&
-          send_customer_billing_update_on_decline == o.send_customer_billing_update_on_decline
+          esp_list_segment_folder_uuid == o.esp_list_segment_folder_uuid &&
+          merchant_id == o.merchant_id &&
+          name == o.name &&
+          storefront_oid == o.storefront_oid &&
+          system_generated == o.system_generated
     end
 
     # @see the `==` method
@@ -136,7 +129,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_credit_cards, billed_by, charge_during_checkout, collect_cvv2, configured_gateways_details, failed_attempts, hide_connect_single_gateway, send_customer_billing_update_on_decline].hash
+      [esp_list_segment_folder_uuid, merchant_id, name, storefront_oid, system_generated].hash
     end
 
     # Builds the object from hash
