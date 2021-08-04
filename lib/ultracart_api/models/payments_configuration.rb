@@ -26,7 +26,11 @@ module UltracartClient
 
     attr_accessor :credit_card
 
+    attr_accessor :e_check
+
     attr_accessor :loan_hero
+
+    attr_accessor :money_order
 
     attr_accessor :pay_pal
 
@@ -55,7 +59,9 @@ module UltracartClient
         :'check' => :'check',
         :'cod' => :'cod',
         :'credit_card' => :'creditCard',
+        :'e_check' => :'eCheck',
         :'loan_hero' => :'loanHero',
+        :'money_order' => :'moneyOrder',
         :'pay_pal' => :'payPal',
         :'purchase_order' => :'purchaseOrder',
         :'quote_request' => :'quoteRequest',
@@ -77,7 +83,9 @@ module UltracartClient
         :'check' => :'PaymentsConfigurationCheck',
         :'cod' => :'PaymentsConfigurationCOD',
         :'credit_card' => :'PaymentsConfigurationCreditCard',
+        :'e_check' => :'PaymentsConfigurationEcheck',
         :'loan_hero' => :'PaymentsConfigurationLoanHero',
+        :'money_order' => :'PaymentsConfigurationMoneyOrder',
         :'pay_pal' => :'PaymentsConfigurationPayPal',
         :'purchase_order' => :'PaymentsConfigurationPurchaseOrder',
         :'quote_request' => :'PaymentsConfigurationQuoteRequest',
@@ -122,8 +130,16 @@ module UltracartClient
         self.credit_card = attributes[:'creditCard']
       end
 
+      if attributes.has_key?(:'eCheck')
+        self.e_check = attributes[:'eCheck']
+      end
+
       if attributes.has_key?(:'loanHero')
         self.loan_hero = attributes[:'loanHero']
+      end
+
+      if attributes.has_key?(:'moneyOrder')
+        self.money_order = attributes[:'moneyOrder']
       end
 
       if attributes.has_key?(:'payPal')
@@ -187,7 +203,9 @@ module UltracartClient
           check == o.check &&
           cod == o.cod &&
           credit_card == o.credit_card &&
+          e_check == o.e_check &&
           loan_hero == o.loan_hero &&
+          money_order == o.money_order &&
           pay_pal == o.pay_pal &&
           purchase_order == o.purchase_order &&
           quote_request == o.quote_request &&
@@ -208,7 +226,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affirm, amazon, cash, check, cod, credit_card, loan_hero, pay_pal, purchase_order, quote_request, sezzle, show_accounting_code, switch_to_sub_tab, switch_to_tab, we_pay, wire_transfer].hash
+      [affirm, amazon, cash, check, cod, credit_card, e_check, loan_hero, money_order, pay_pal, purchase_order, quote_request, sezzle, show_accounting_code, switch_to_sub_tab, switch_to_tab, we_pay, wire_transfer].hash
     end
 
     # Builds the object from hash

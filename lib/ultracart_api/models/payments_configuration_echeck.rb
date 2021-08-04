@@ -13,51 +13,21 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class PaymentsConfigurationCheck
-    attr_accessor :accept_check_orders
+  class PaymentsConfigurationEcheck
+    attr_accessor :accept_e_check
 
-    attr_accessor :check_accounting_code
+    attr_accessor :e_check_accounting_code
 
-    attr_accessor :check_deposit_to_account
-
-    attr_accessor :checks_payable_to
-
-    attr_accessor :mail_to_address1
-
-    attr_accessor :mail_to_address2
-
-    attr_accessor :mail_to_city
-
-    attr_accessor :mail_to_country
-
-    attr_accessor :mail_to_name
-
-    attr_accessor :mail_to_state
-
-    attr_accessor :mail_to_zip
-
-    attr_accessor :money_order_accounting_code
-
-    attr_accessor :money_order_deposit_to_account
+    attr_accessor :e_check_deposit_to_account
 
     attr_accessor :restrictions
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_check_orders' => :'acceptCheckOrders',
-        :'check_accounting_code' => :'checkAccountingCode',
-        :'check_deposit_to_account' => :'checkDepositToAccount',
-        :'checks_payable_to' => :'checksPayableTo',
-        :'mail_to_address1' => :'mailToAddress1',
-        :'mail_to_address2' => :'mailToAddress2',
-        :'mail_to_city' => :'mailToCity',
-        :'mail_to_country' => :'mailToCountry',
-        :'mail_to_name' => :'mailToName',
-        :'mail_to_state' => :'mailToState',
-        :'mail_to_zip' => :'mailToZip',
-        :'money_order_accounting_code' => :'moneyOrderAccountingCode',
-        :'money_order_deposit_to_account' => :'moneyOrderDepositToAccount',
+        :'accept_e_check' => :'acceptECheck',
+        :'e_check_accounting_code' => :'eCheckAccountingCode',
+        :'e_check_deposit_to_account' => :'eCheckDepositToAccount',
         :'restrictions' => :'restrictions'
       }
     end
@@ -65,19 +35,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'accept_check_orders' => :'BOOLEAN',
-        :'check_accounting_code' => :'String',
-        :'check_deposit_to_account' => :'String',
-        :'checks_payable_to' => :'String',
-        :'mail_to_address1' => :'String',
-        :'mail_to_address2' => :'String',
-        :'mail_to_city' => :'String',
-        :'mail_to_country' => :'String',
-        :'mail_to_name' => :'String',
-        :'mail_to_state' => :'String',
-        :'mail_to_zip' => :'String',
-        :'money_order_accounting_code' => :'String',
-        :'money_order_deposit_to_account' => :'String',
+        :'accept_e_check' => :'BOOLEAN',
+        :'e_check_accounting_code' => :'String',
+        :'e_check_deposit_to_account' => :'String',
         :'restrictions' => :'PaymentsConfigurationRestrictions'
       }
     end
@@ -90,56 +50,16 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'acceptCheckOrders')
-        self.accept_check_orders = attributes[:'acceptCheckOrders']
+      if attributes.has_key?(:'acceptECheck')
+        self.accept_e_check = attributes[:'acceptECheck']
       end
 
-      if attributes.has_key?(:'checkAccountingCode')
-        self.check_accounting_code = attributes[:'checkAccountingCode']
+      if attributes.has_key?(:'eCheckAccountingCode')
+        self.e_check_accounting_code = attributes[:'eCheckAccountingCode']
       end
 
-      if attributes.has_key?(:'checkDepositToAccount')
-        self.check_deposit_to_account = attributes[:'checkDepositToAccount']
-      end
-
-      if attributes.has_key?(:'checksPayableTo')
-        self.checks_payable_to = attributes[:'checksPayableTo']
-      end
-
-      if attributes.has_key?(:'mailToAddress1')
-        self.mail_to_address1 = attributes[:'mailToAddress1']
-      end
-
-      if attributes.has_key?(:'mailToAddress2')
-        self.mail_to_address2 = attributes[:'mailToAddress2']
-      end
-
-      if attributes.has_key?(:'mailToCity')
-        self.mail_to_city = attributes[:'mailToCity']
-      end
-
-      if attributes.has_key?(:'mailToCountry')
-        self.mail_to_country = attributes[:'mailToCountry']
-      end
-
-      if attributes.has_key?(:'mailToName')
-        self.mail_to_name = attributes[:'mailToName']
-      end
-
-      if attributes.has_key?(:'mailToState')
-        self.mail_to_state = attributes[:'mailToState']
-      end
-
-      if attributes.has_key?(:'mailToZip')
-        self.mail_to_zip = attributes[:'mailToZip']
-      end
-
-      if attributes.has_key?(:'moneyOrderAccountingCode')
-        self.money_order_accounting_code = attributes[:'moneyOrderAccountingCode']
-      end
-
-      if attributes.has_key?(:'moneyOrderDepositToAccount')
-        self.money_order_deposit_to_account = attributes[:'moneyOrderDepositToAccount']
+      if attributes.has_key?(:'eCheckDepositToAccount')
+        self.e_check_deposit_to_account = attributes[:'eCheckDepositToAccount']
       end
 
       if attributes.has_key?(:'restrictions')
@@ -165,19 +85,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          accept_check_orders == o.accept_check_orders &&
-          check_accounting_code == o.check_accounting_code &&
-          check_deposit_to_account == o.check_deposit_to_account &&
-          checks_payable_to == o.checks_payable_to &&
-          mail_to_address1 == o.mail_to_address1 &&
-          mail_to_address2 == o.mail_to_address2 &&
-          mail_to_city == o.mail_to_city &&
-          mail_to_country == o.mail_to_country &&
-          mail_to_name == o.mail_to_name &&
-          mail_to_state == o.mail_to_state &&
-          mail_to_zip == o.mail_to_zip &&
-          money_order_accounting_code == o.money_order_accounting_code &&
-          money_order_deposit_to_account == o.money_order_deposit_to_account &&
+          accept_e_check == o.accept_e_check &&
+          e_check_accounting_code == o.e_check_accounting_code &&
+          e_check_deposit_to_account == o.e_check_deposit_to_account &&
           restrictions == o.restrictions
     end
 
@@ -190,7 +100,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_check_orders, check_accounting_code, check_deposit_to_account, checks_payable_to, mail_to_address1, mail_to_address2, mail_to_city, mail_to_country, mail_to_name, mail_to_state, mail_to_zip, money_order_accounting_code, money_order_deposit_to_account, restrictions].hash
+      [accept_e_check, e_check_accounting_code, e_check_deposit_to_account, restrictions].hash
     end
 
     # Builds the object from hash
