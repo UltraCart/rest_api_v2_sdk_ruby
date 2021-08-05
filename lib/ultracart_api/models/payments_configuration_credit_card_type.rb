@@ -13,80 +13,88 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class PaymentsConfigurationCheck
-    # Master flag indicating this merchant accepts paper checks
-    attr_accessor :accept_check_orders
-
-    # Optional Quickbooks accounting code
+  class PaymentsConfigurationCreditCardType
+    # Optional field used for Quickbooks integrations to match this credit card with the corresponding payment type in Quickbooks
     attr_accessor :accounting_code
 
-    # This is who the customer makes the check out to
-    attr_accessor :checks_payable_to
+    # Internally used icon information for this card type
+    attr_accessor :card_type_icon
 
-    # Optional Quickbooks deposit to account
+    # Credit card type
+    attr_accessor :credit_card
+
+    # The name of the account to deposit funds
     attr_accessor :deposit_to_account
 
-    # MailTo address line 1
-    attr_accessor :mail_to_address1
+    # If true, this card type will be accepted during checkout
+    attr_accessor :enabled
 
-    # MailTo address line 2
-    attr_accessor :mail_to_address2
+    # Optional additional fee applied to order for this card
+    attr_accessor :processing_fee
 
-    # MailTo city
-    attr_accessor :mail_to_city
+    # Optional additional fee applied to order for this card
+    attr_accessor :processing_percentage
 
-    # MailTo country
-    attr_accessor :mail_to_country
+    # Optional field. If integrated with Quickbooks, this code will be used when informing Quickbooks about any surcharges applied to orders
+    attr_accessor :surcharge_accounting_code
 
-    # MailTo name
-    attr_accessor :mail_to_name
+    # An optional additional fee to charge the customer for using this card.
+    attr_accessor :transaction_fee
 
-    # MailTo postal code
-    attr_accessor :mail_to_postal_code
+    # An optional transaction percentage to charge the customer for using this card
+    attr_accessor :transaction_percentage
 
-    # MailTo store
-    attr_accessor :mail_to_store
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    attr_accessor :restrictions
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
 
-    # Test methods for this payment method
-    attr_accessor :test_methods
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_check_orders' => :'accept_check_orders',
         :'accounting_code' => :'accounting_code',
-        :'checks_payable_to' => :'checks_payable_to',
+        :'card_type_icon' => :'card_type_icon',
+        :'credit_card' => :'credit_card',
         :'deposit_to_account' => :'deposit_to_account',
-        :'mail_to_address1' => :'mail_to_address1',
-        :'mail_to_address2' => :'mail_to_address2',
-        :'mail_to_city' => :'mail_to_city',
-        :'mail_to_country' => :'mail_to_country',
-        :'mail_to_name' => :'mail_to_name',
-        :'mail_to_postal_code' => :'mail_to_postal_code',
-        :'mail_to_store' => :'mail_to_store',
-        :'restrictions' => :'restrictions',
-        :'test_methods' => :'test_methods'
+        :'enabled' => :'enabled',
+        :'processing_fee' => :'processing_fee',
+        :'processing_percentage' => :'processing_percentage',
+        :'surcharge_accounting_code' => :'surcharge_accounting_code',
+        :'transaction_fee' => :'transaction_fee',
+        :'transaction_percentage' => :'transaction_percentage'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'accept_check_orders' => :'BOOLEAN',
         :'accounting_code' => :'String',
-        :'checks_payable_to' => :'String',
+        :'card_type_icon' => :'String',
+        :'credit_card' => :'String',
         :'deposit_to_account' => :'String',
-        :'mail_to_address1' => :'String',
-        :'mail_to_address2' => :'String',
-        :'mail_to_city' => :'String',
-        :'mail_to_country' => :'String',
-        :'mail_to_name' => :'String',
-        :'mail_to_postal_code' => :'String',
-        :'mail_to_store' => :'String',
-        :'restrictions' => :'PaymentsConfigurationRestrictions',
-        :'test_methods' => :'Array<PaymentsConfigurationTestMethod>'
+        :'enabled' => :'BOOLEAN',
+        :'processing_fee' => :'String',
+        :'processing_percentage' => :'String',
+        :'surcharge_accounting_code' => :'String',
+        :'transaction_fee' => :'String',
+        :'transaction_percentage' => :'String'
       }
     end
 
@@ -98,58 +106,44 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'accept_check_orders')
-        self.accept_check_orders = attributes[:'accept_check_orders']
-      end
-
       if attributes.has_key?(:'accounting_code')
         self.accounting_code = attributes[:'accounting_code']
       end
 
-      if attributes.has_key?(:'checks_payable_to')
-        self.checks_payable_to = attributes[:'checks_payable_to']
+      if attributes.has_key?(:'card_type_icon')
+        self.card_type_icon = attributes[:'card_type_icon']
+      end
+
+      if attributes.has_key?(:'credit_card')
+        self.credit_card = attributes[:'credit_card']
       end
 
       if attributes.has_key?(:'deposit_to_account')
         self.deposit_to_account = attributes[:'deposit_to_account']
       end
 
-      if attributes.has_key?(:'mail_to_address1')
-        self.mail_to_address1 = attributes[:'mail_to_address1']
+      if attributes.has_key?(:'enabled')
+        self.enabled = attributes[:'enabled']
       end
 
-      if attributes.has_key?(:'mail_to_address2')
-        self.mail_to_address2 = attributes[:'mail_to_address2']
+      if attributes.has_key?(:'processing_fee')
+        self.processing_fee = attributes[:'processing_fee']
       end
 
-      if attributes.has_key?(:'mail_to_city')
-        self.mail_to_city = attributes[:'mail_to_city']
+      if attributes.has_key?(:'processing_percentage')
+        self.processing_percentage = attributes[:'processing_percentage']
       end
 
-      if attributes.has_key?(:'mail_to_country')
-        self.mail_to_country = attributes[:'mail_to_country']
+      if attributes.has_key?(:'surcharge_accounting_code')
+        self.surcharge_accounting_code = attributes[:'surcharge_accounting_code']
       end
 
-      if attributes.has_key?(:'mail_to_name')
-        self.mail_to_name = attributes[:'mail_to_name']
+      if attributes.has_key?(:'transaction_fee')
+        self.transaction_fee = attributes[:'transaction_fee']
       end
 
-      if attributes.has_key?(:'mail_to_postal_code')
-        self.mail_to_postal_code = attributes[:'mail_to_postal_code']
-      end
-
-      if attributes.has_key?(:'mail_to_store')
-        self.mail_to_store = attributes[:'mail_to_store']
-      end
-
-      if attributes.has_key?(:'restrictions')
-        self.restrictions = attributes[:'restrictions']
-      end
-
-      if attributes.has_key?(:'test_methods')
-        if (value = attributes[:'test_methods']).is_a?(Array)
-          self.test_methods = value
-        end
+      if attributes.has_key?(:'transaction_percentage')
+        self.transaction_percentage = attributes[:'transaction_percentage']
       end
     end
 
@@ -163,7 +157,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      credit_card_validator = EnumAttributeValidator.new('String', ['AMEX', 'Visa', 'Diners Club', 'Discover', 'JCB', 'MasterCard'])
+      return false unless credit_card_validator.valid?(@credit_card)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] credit_card Object to be assigned
+    def credit_card=(credit_card)
+      validator = EnumAttributeValidator.new('String', ['AMEX', 'Visa', 'Diners Club', 'Discover', 'JCB', 'MasterCard'])
+      unless validator.valid?(credit_card)
+        fail ArgumentError, 'invalid value for "credit_card", must be one of #{validator.allowable_values}.'
+      end
+      @credit_card = credit_card
     end
 
     # Checks equality by comparing each attribute.
@@ -171,19 +177,16 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          accept_check_orders == o.accept_check_orders &&
           accounting_code == o.accounting_code &&
-          checks_payable_to == o.checks_payable_to &&
+          card_type_icon == o.card_type_icon &&
+          credit_card == o.credit_card &&
           deposit_to_account == o.deposit_to_account &&
-          mail_to_address1 == o.mail_to_address1 &&
-          mail_to_address2 == o.mail_to_address2 &&
-          mail_to_city == o.mail_to_city &&
-          mail_to_country == o.mail_to_country &&
-          mail_to_name == o.mail_to_name &&
-          mail_to_postal_code == o.mail_to_postal_code &&
-          mail_to_store == o.mail_to_store &&
-          restrictions == o.restrictions &&
-          test_methods == o.test_methods
+          enabled == o.enabled &&
+          processing_fee == o.processing_fee &&
+          processing_percentage == o.processing_percentage &&
+          surcharge_accounting_code == o.surcharge_accounting_code &&
+          transaction_fee == o.transaction_fee &&
+          transaction_percentage == o.transaction_percentage
     end
 
     # @see the `==` method
@@ -195,7 +198,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_check_orders, accounting_code, checks_payable_to, deposit_to_account, mail_to_address1, mail_to_address2, mail_to_city, mail_to_country, mail_to_name, mail_to_postal_code, mail_to_store, restrictions, test_methods].hash
+      [accounting_code, card_type_icon, credit_card, deposit_to_account, enabled, processing_fee, processing_percentage, surcharge_accounting_code, transaction_fee, transaction_percentage].hash
     end
 
     # Builds the object from hash

@@ -74,10 +74,10 @@ module UltracartClient
         :'configured_gateway_details' => :'String',
         :'failed_attempts' => :'String',
         :'hide_connect_single_gateway' => :'BOOLEAN',
-        :'restrictions' => :'Object',
+        :'restrictions' => :'Array<PaymentsConfigurationRestrictions>',
         :'send_customer_billing_update_on_decline' => :'BOOLEAN',
-        :'supported_cards' => :'Object',
-        :'test_methods' => :'Object'
+        :'supported_cards' => :'Array<PaymentsConfigurationCreditCardType>',
+        :'test_methods' => :'Array<PaymentsConfigurationTestMethod>'
       }
     end
 
@@ -118,7 +118,9 @@ module UltracartClient
       end
 
       if attributes.has_key?(:'restrictions')
-        self.restrictions = attributes[:'restrictions']
+        if (value = attributes[:'restrictions']).is_a?(Array)
+          self.restrictions = value
+        end
       end
 
       if attributes.has_key?(:'send_customer_billing_update_on_decline')
@@ -126,11 +128,15 @@ module UltracartClient
       end
 
       if attributes.has_key?(:'supported_cards')
-        self.supported_cards = attributes[:'supported_cards']
+        if (value = attributes[:'supported_cards']).is_a?(Array)
+          self.supported_cards = value
+        end
       end
 
       if attributes.has_key?(:'test_methods')
-        self.test_methods = attributes[:'test_methods']
+        if (value = attributes[:'test_methods']).is_a?(Array)
+          self.test_methods = value
+        end
       end
     end
 

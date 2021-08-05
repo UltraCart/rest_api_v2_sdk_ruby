@@ -14,6 +14,8 @@ require 'date'
 
 module UltracartClient
   class PaymentsConfigurationRestrictions
+    attr_accessor :descriptions
+
     # Maximum subtotal
     attr_accessor :maximum_subtotal
 
@@ -50,9 +52,12 @@ module UltracartClient
     # US Territories restriction
     attr_accessor :restriction_us_territories
 
+    attr_accessor :themes
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'descriptions' => :'descriptions',
         :'maximum_subtotal' => :'maximum_subtotal',
         :'minimum_subtotal' => :'minimum_subtotal',
         :'payment_method' => :'payment_method',
@@ -64,13 +69,15 @@ module UltracartClient
         :'restriction_international_only' => :'restriction_international_only',
         :'restriction_po_box' => :'restriction_po_box',
         :'restriction_puerto_rico' => :'restriction_puerto_rico',
-        :'restriction_us_territories' => :'restriction_us_territories'
+        :'restriction_us_territories' => :'restriction_us_territories',
+        :'themes' => :'themes'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'descriptions' => :'Array<String>',
         :'maximum_subtotal' => :'String',
         :'minimum_subtotal' => :'String',
         :'payment_method' => :'String',
@@ -82,7 +89,8 @@ module UltracartClient
         :'restriction_international_only' => :'String',
         :'restriction_po_box' => :'String',
         :'restriction_puerto_rico' => :'String',
-        :'restriction_us_territories' => :'String'
+        :'restriction_us_territories' => :'String',
+        :'themes' => :'Array<PaymentsConfigurationRestrictionsTheme>'
       }
     end
 
@@ -93,6 +101,12 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'descriptions')
+        if (value = attributes[:'descriptions']).is_a?(Array)
+          self.descriptions = value
+        end
+      end
 
       if attributes.has_key?(:'maximum_subtotal')
         self.maximum_subtotal = attributes[:'maximum_subtotal']
@@ -141,6 +155,12 @@ module UltracartClient
       if attributes.has_key?(:'restriction_us_territories')
         self.restriction_us_territories = attributes[:'restriction_us_territories']
       end
+
+      if attributes.has_key?(:'themes')
+        if (value = attributes[:'themes']).is_a?(Array)
+          self.themes = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -161,6 +181,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          descriptions == o.descriptions &&
           maximum_subtotal == o.maximum_subtotal &&
           minimum_subtotal == o.minimum_subtotal &&
           payment_method == o.payment_method &&
@@ -172,7 +193,8 @@ module UltracartClient
           restriction_international_only == o.restriction_international_only &&
           restriction_po_box == o.restriction_po_box &&
           restriction_puerto_rico == o.restriction_puerto_rico &&
-          restriction_us_territories == o.restriction_us_territories
+          restriction_us_territories == o.restriction_us_territories &&
+          themes == o.themes
     end
 
     # @see the `==` method
@@ -184,7 +206,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [maximum_subtotal, minimum_subtotal, payment_method, restriction_alaska_hawaii, restriction_apo_fpo, restriction_canada, restriction_continental_us, restriction_domestic_only, restriction_international_only, restriction_po_box, restriction_puerto_rico, restriction_us_territories].hash
+      [descriptions, maximum_subtotal, minimum_subtotal, payment_method, restriction_alaska_hawaii, restriction_apo_fpo, restriction_canada, restriction_continental_us, restriction_domestic_only, restriction_international_only, restriction_po_box, restriction_puerto_rico, restriction_us_territories, themes].hash
     end
 
     # Builds the object from hash

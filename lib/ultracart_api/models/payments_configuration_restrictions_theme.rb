@@ -13,80 +13,28 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class PaymentsConfigurationCheck
-    # Master flag indicating this merchant accepts paper checks
-    attr_accessor :accept_check_orders
+  class PaymentsConfigurationRestrictionsTheme
+    attr_accessor :code
 
-    # Optional Quickbooks accounting code
-    attr_accessor :accounting_code
+    attr_accessor :restriction
 
-    # This is who the customer makes the check out to
-    attr_accessor :checks_payable_to
-
-    # Optional Quickbooks deposit to account
-    attr_accessor :deposit_to_account
-
-    # MailTo address line 1
-    attr_accessor :mail_to_address1
-
-    # MailTo address line 2
-    attr_accessor :mail_to_address2
-
-    # MailTo city
-    attr_accessor :mail_to_city
-
-    # MailTo country
-    attr_accessor :mail_to_country
-
-    # MailTo name
-    attr_accessor :mail_to_name
-
-    # MailTo postal code
-    attr_accessor :mail_to_postal_code
-
-    # MailTo store
-    attr_accessor :mail_to_store
-
-    attr_accessor :restrictions
-
-    # Test methods for this payment method
-    attr_accessor :test_methods
+    attr_accessor :store_front_host_name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_check_orders' => :'accept_check_orders',
-        :'accounting_code' => :'accounting_code',
-        :'checks_payable_to' => :'checks_payable_to',
-        :'deposit_to_account' => :'deposit_to_account',
-        :'mail_to_address1' => :'mail_to_address1',
-        :'mail_to_address2' => :'mail_to_address2',
-        :'mail_to_city' => :'mail_to_city',
-        :'mail_to_country' => :'mail_to_country',
-        :'mail_to_name' => :'mail_to_name',
-        :'mail_to_postal_code' => :'mail_to_postal_code',
-        :'mail_to_store' => :'mail_to_store',
-        :'restrictions' => :'restrictions',
-        :'test_methods' => :'test_methods'
+        :'code' => :'code',
+        :'restriction' => :'restriction',
+        :'store_front_host_name' => :'storeFrontHostName'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'accept_check_orders' => :'BOOLEAN',
-        :'accounting_code' => :'String',
-        :'checks_payable_to' => :'String',
-        :'deposit_to_account' => :'String',
-        :'mail_to_address1' => :'String',
-        :'mail_to_address2' => :'String',
-        :'mail_to_city' => :'String',
-        :'mail_to_country' => :'String',
-        :'mail_to_name' => :'String',
-        :'mail_to_postal_code' => :'String',
-        :'mail_to_store' => :'String',
-        :'restrictions' => :'PaymentsConfigurationRestrictions',
-        :'test_methods' => :'Array<PaymentsConfigurationTestMethod>'
+        :'code' => :'String',
+        :'restriction' => :'String',
+        :'store_front_host_name' => :'String'
       }
     end
 
@@ -98,58 +46,16 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'accept_check_orders')
-        self.accept_check_orders = attributes[:'accept_check_orders']
+      if attributes.has_key?(:'code')
+        self.code = attributes[:'code']
       end
 
-      if attributes.has_key?(:'accounting_code')
-        self.accounting_code = attributes[:'accounting_code']
+      if attributes.has_key?(:'restriction')
+        self.restriction = attributes[:'restriction']
       end
 
-      if attributes.has_key?(:'checks_payable_to')
-        self.checks_payable_to = attributes[:'checks_payable_to']
-      end
-
-      if attributes.has_key?(:'deposit_to_account')
-        self.deposit_to_account = attributes[:'deposit_to_account']
-      end
-
-      if attributes.has_key?(:'mail_to_address1')
-        self.mail_to_address1 = attributes[:'mail_to_address1']
-      end
-
-      if attributes.has_key?(:'mail_to_address2')
-        self.mail_to_address2 = attributes[:'mail_to_address2']
-      end
-
-      if attributes.has_key?(:'mail_to_city')
-        self.mail_to_city = attributes[:'mail_to_city']
-      end
-
-      if attributes.has_key?(:'mail_to_country')
-        self.mail_to_country = attributes[:'mail_to_country']
-      end
-
-      if attributes.has_key?(:'mail_to_name')
-        self.mail_to_name = attributes[:'mail_to_name']
-      end
-
-      if attributes.has_key?(:'mail_to_postal_code')
-        self.mail_to_postal_code = attributes[:'mail_to_postal_code']
-      end
-
-      if attributes.has_key?(:'mail_to_store')
-        self.mail_to_store = attributes[:'mail_to_store']
-      end
-
-      if attributes.has_key?(:'restrictions')
-        self.restrictions = attributes[:'restrictions']
-      end
-
-      if attributes.has_key?(:'test_methods')
-        if (value = attributes[:'test_methods']).is_a?(Array)
-          self.test_methods = value
-        end
+      if attributes.has_key?(:'storeFrontHostName')
+        self.store_front_host_name = attributes[:'storeFrontHostName']
       end
     end
 
@@ -171,19 +77,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          accept_check_orders == o.accept_check_orders &&
-          accounting_code == o.accounting_code &&
-          checks_payable_to == o.checks_payable_to &&
-          deposit_to_account == o.deposit_to_account &&
-          mail_to_address1 == o.mail_to_address1 &&
-          mail_to_address2 == o.mail_to_address2 &&
-          mail_to_city == o.mail_to_city &&
-          mail_to_country == o.mail_to_country &&
-          mail_to_name == o.mail_to_name &&
-          mail_to_postal_code == o.mail_to_postal_code &&
-          mail_to_store == o.mail_to_store &&
-          restrictions == o.restrictions &&
-          test_methods == o.test_methods
+          code == o.code &&
+          restriction == o.restriction &&
+          store_front_host_name == o.store_front_host_name
     end
 
     # @see the `==` method
@@ -195,7 +91,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_check_orders, accounting_code, checks_payable_to, deposit_to_account, mail_to_address1, mail_to_address2, mail_to_city, mail_to_country, mail_to_name, mail_to_postal_code, mail_to_store, restrictions, test_methods].hash
+      [code, restriction, store_front_host_name].hash
     end
 
     # Builds the object from hash

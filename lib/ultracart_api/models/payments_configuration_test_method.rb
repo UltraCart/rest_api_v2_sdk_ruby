@@ -13,32 +13,39 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class PaymentsConfigurationSezzle
-    # Master flag for this merchant accepting Sezzle payments
-    attr_accessor :accept_sezzle
+  class PaymentsConfigurationTestMethod
+    # Bank account number
+    attr_accessor :bank_account_number
 
-    # Optional Quickbooks code for this payment method
-    attr_accessor :accounting_code
+    # Bank routing number
+    attr_accessor :bank_routing_number
 
-    # Business ID
-    attr_accessor :business_id
+    # Credit card number
+    attr_accessor :credit_card_number
 
-    # Optional Quickbooks Deposit to Account value
-    attr_accessor :deposit_to_account
+    # The existing credit card number
+    attr_accessor :credit_card_number_existing
 
-    # Sezzle environment
-    attr_accessor :environment
+    # Description
+    attr_accessor :description
 
-    # List of environments possible
-    attr_accessor :environments
+    # Payment action
+    attr_accessor :payment_action
 
-    # Private API key
-    attr_accessor :private_api_key
+    # Payment method
+    attr_accessor :payment_method
 
-    # Public API key
-    attr_accessor :public_api_key
+    # Payment method test oid
+    attr_accessor :payment_method_test_oid
 
-    attr_accessor :restrictions
+    # Skip affiliate transaction
+    attr_accessor :skip_affiliate_transaction
+
+    # If true, skips recording any conversion pixels to avoid sending test orders to your analysis sites
+    attr_accessor :skip_conversion_pixels
+
+    # Skip fraud filter
+    attr_accessor :skip_fraud_filter
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -65,30 +72,34 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_sezzle' => :'accept_sezzle',
-        :'accounting_code' => :'accounting_code',
-        :'business_id' => :'business_id',
-        :'deposit_to_account' => :'deposit_to_account',
-        :'environment' => :'environment',
-        :'environments' => :'environments',
-        :'private_api_key' => :'private_api_key',
-        :'public_api_key' => :'public_api_key',
-        :'restrictions' => :'restrictions'
+        :'bank_account_number' => :'bank_account_number',
+        :'bank_routing_number' => :'bank_routing_number',
+        :'credit_card_number' => :'credit_card_number',
+        :'credit_card_number_existing' => :'credit_card_number_existing',
+        :'description' => :'description',
+        :'payment_action' => :'payment_action',
+        :'payment_method' => :'payment_method',
+        :'payment_method_test_oid' => :'payment_method_test_oid',
+        :'skip_affiliate_transaction' => :'skip_affiliate_transaction',
+        :'skip_conversion_pixels' => :'skip_conversion_pixels',
+        :'skip_fraud_filter' => :'skip_fraud_filter'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'accept_sezzle' => :'BOOLEAN',
-        :'accounting_code' => :'String',
-        :'business_id' => :'String',
-        :'deposit_to_account' => :'String',
-        :'environment' => :'String',
-        :'environments' => :'Array<String>',
-        :'private_api_key' => :'String',
-        :'public_api_key' => :'String',
-        :'restrictions' => :'PaymentsConfigurationRestrictions'
+        :'bank_account_number' => :'String',
+        :'bank_routing_number' => :'String',
+        :'credit_card_number' => :'String',
+        :'credit_card_number_existing' => :'String',
+        :'description' => :'String',
+        :'payment_action' => :'String',
+        :'payment_method' => :'String',
+        :'payment_method_test_oid' => :'Integer',
+        :'skip_affiliate_transaction' => :'BOOLEAN',
+        :'skip_conversion_pixels' => :'BOOLEAN',
+        :'skip_fraud_filter' => :'BOOLEAN'
       }
     end
 
@@ -100,42 +111,48 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'accept_sezzle')
-        self.accept_sezzle = attributes[:'accept_sezzle']
+      if attributes.has_key?(:'bank_account_number')
+        self.bank_account_number = attributes[:'bank_account_number']
       end
 
-      if attributes.has_key?(:'accounting_code')
-        self.accounting_code = attributes[:'accounting_code']
+      if attributes.has_key?(:'bank_routing_number')
+        self.bank_routing_number = attributes[:'bank_routing_number']
       end
 
-      if attributes.has_key?(:'business_id')
-        self.business_id = attributes[:'business_id']
+      if attributes.has_key?(:'credit_card_number')
+        self.credit_card_number = attributes[:'credit_card_number']
       end
 
-      if attributes.has_key?(:'deposit_to_account')
-        self.deposit_to_account = attributes[:'deposit_to_account']
+      if attributes.has_key?(:'credit_card_number_existing')
+        self.credit_card_number_existing = attributes[:'credit_card_number_existing']
       end
 
-      if attributes.has_key?(:'environment')
-        self.environment = attributes[:'environment']
+      if attributes.has_key?(:'description')
+        self.description = attributes[:'description']
       end
 
-      if attributes.has_key?(:'environments')
-        if (value = attributes[:'environments']).is_a?(Array)
-          self.environments = value
-        end
+      if attributes.has_key?(:'payment_action')
+        self.payment_action = attributes[:'payment_action']
       end
 
-      if attributes.has_key?(:'private_api_key')
-        self.private_api_key = attributes[:'private_api_key']
+      if attributes.has_key?(:'payment_method')
+        self.payment_method = attributes[:'payment_method']
       end
 
-      if attributes.has_key?(:'public_api_key')
-        self.public_api_key = attributes[:'public_api_key']
+      if attributes.has_key?(:'payment_method_test_oid')
+        self.payment_method_test_oid = attributes[:'payment_method_test_oid']
       end
 
-      if attributes.has_key?(:'restrictions')
-        self.restrictions = attributes[:'restrictions']
+      if attributes.has_key?(:'skip_affiliate_transaction')
+        self.skip_affiliate_transaction = attributes[:'skip_affiliate_transaction']
+      end
+
+      if attributes.has_key?(:'skip_conversion_pixels')
+        self.skip_conversion_pixels = attributes[:'skip_conversion_pixels']
+      end
+
+      if attributes.has_key?(:'skip_fraud_filter')
+        self.skip_fraud_filter = attributes[:'skip_fraud_filter']
       end
     end
 
@@ -149,19 +166,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      environment_validator = EnumAttributeValidator.new('String', ['Live', 'Sandbox'])
-      return false unless environment_validator.valid?(@environment)
+      payment_action_validator = EnumAttributeValidator.new('String', ['skip payment', 'skip pmt rej', 'skip pmt co', 'hold in ar'])
+      return false unless payment_action_validator.valid?(@payment_action)
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] environment Object to be assigned
-    def environment=(environment)
-      validator = EnumAttributeValidator.new('String', ['Live', 'Sandbox'])
-      unless validator.valid?(environment)
-        fail ArgumentError, 'invalid value for "environment", must be one of #{validator.allowable_values}.'
+    # @param [Object] payment_action Object to be assigned
+    def payment_action=(payment_action)
+      validator = EnumAttributeValidator.new('String', ['skip payment', 'skip pmt rej', 'skip pmt co', 'hold in ar'])
+      unless validator.valid?(payment_action)
+        fail ArgumentError, 'invalid value for "payment_action", must be one of #{validator.allowable_values}.'
       end
-      @environment = environment
+      @payment_action = payment_action
     end
 
     # Checks equality by comparing each attribute.
@@ -169,15 +186,17 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          accept_sezzle == o.accept_sezzle &&
-          accounting_code == o.accounting_code &&
-          business_id == o.business_id &&
-          deposit_to_account == o.deposit_to_account &&
-          environment == o.environment &&
-          environments == o.environments &&
-          private_api_key == o.private_api_key &&
-          public_api_key == o.public_api_key &&
-          restrictions == o.restrictions
+          bank_account_number == o.bank_account_number &&
+          bank_routing_number == o.bank_routing_number &&
+          credit_card_number == o.credit_card_number &&
+          credit_card_number_existing == o.credit_card_number_existing &&
+          description == o.description &&
+          payment_action == o.payment_action &&
+          payment_method == o.payment_method &&
+          payment_method_test_oid == o.payment_method_test_oid &&
+          skip_affiliate_transaction == o.skip_affiliate_transaction &&
+          skip_conversion_pixels == o.skip_conversion_pixels &&
+          skip_fraud_filter == o.skip_fraud_filter
     end
 
     # @see the `==` method
@@ -189,7 +208,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_sezzle, accounting_code, business_id, deposit_to_account, environment, environments, private_api_key, public_api_key, restrictions].hash
+      [bank_account_number, bank_routing_number, credit_card_number, credit_card_number_existing, description, payment_action, payment_method, payment_method_test_oid, skip_affiliate_transaction, skip_conversion_pixels, skip_fraud_filter].hash
     end
 
     # Builds the object from hash
