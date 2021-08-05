@@ -14,47 +14,70 @@ require 'date'
 
 module UltracartClient
   class PaymentsConfigurationCreditCard
-    attr_accessor :accept_credit_cards
+    # Master flag indicating whether this merchant accepts credit card payments
+    attr_accessor :accept_credit_card
 
+    # Description that appears on customer statements
     attr_accessor :billed_by
 
+    # If false, order will be accepted and placed into Accounts Receivable without charging card first
     attr_accessor :charge_during_checkout
 
+    # UltraCart will require customer to enter cvv if this is true
     attr_accessor :collect_cvv2
 
-    attr_accessor :configured_gateways_details
+    # Human readable description of the credit card gateway currently configured
+    attr_accessor :configured_gateway_details
 
+    # The number of failed attempts before the order is placed into Accounts Receivable for manual intervention
     attr_accessor :failed_attempts
 
+    # This internal flag aids the UI in determining which buttons to show.
     attr_accessor :hide_connect_single_gateway
 
+    # Restrictions for this payment method
+    attr_accessor :restrictions
+
+    # UltraCart will send customers emails to update their credit card if the card is declined
     attr_accessor :send_customer_billing_update_on_decline
+
+    # A list of credit cards the merchant wishes to accept.
+    attr_accessor :supported_cards
+
+    # An array of test methods for placing test orders.  The cards defined here may be real or fake, but any order placed with them will be marked as Test orders
+    attr_accessor :test_methods
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_credit_cards' => :'acceptCreditCards',
-        :'billed_by' => :'billedBy',
-        :'charge_during_checkout' => :'chargeDuringCheckout',
-        :'collect_cvv2' => :'collectCvv2',
-        :'configured_gateways_details' => :'configuredGatewaysDetails',
-        :'failed_attempts' => :'failedAttempts',
-        :'hide_connect_single_gateway' => :'hideConnectSingleGateway',
-        :'send_customer_billing_update_on_decline' => :'sendCustomerBillingUpdateOnDecline'
+        :'accept_credit_card' => :'accept_credit_card',
+        :'billed_by' => :'billed_by',
+        :'charge_during_checkout' => :'charge_during_checkout',
+        :'collect_cvv2' => :'collect_cvv2',
+        :'configured_gateway_details' => :'configured_gateway_details',
+        :'failed_attempts' => :'failed_attempts',
+        :'hide_connect_single_gateway' => :'hide_connect_single_gateway',
+        :'restrictions' => :'restrictions',
+        :'send_customer_billing_update_on_decline' => :'send_customer_billing_update_on_decline',
+        :'supported_cards' => :'supported_cards',
+        :'test_methods' => :'test_methods'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'accept_credit_cards' => :'BOOLEAN',
+        :'accept_credit_card' => :'BOOLEAN',
         :'billed_by' => :'String',
         :'charge_during_checkout' => :'BOOLEAN',
         :'collect_cvv2' => :'BOOLEAN',
-        :'configured_gateways_details' => :'String',
+        :'configured_gateway_details' => :'String',
         :'failed_attempts' => :'String',
         :'hide_connect_single_gateway' => :'BOOLEAN',
-        :'send_customer_billing_update_on_decline' => :'BOOLEAN'
+        :'restrictions' => :'Object',
+        :'send_customer_billing_update_on_decline' => :'BOOLEAN',
+        :'supported_cards' => :'Object',
+        :'test_methods' => :'Object'
       }
     end
 
@@ -66,36 +89,48 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'acceptCreditCards')
-        self.accept_credit_cards = attributes[:'acceptCreditCards']
+      if attributes.has_key?(:'accept_credit_card')
+        self.accept_credit_card = attributes[:'accept_credit_card']
       end
 
-      if attributes.has_key?(:'billedBy')
-        self.billed_by = attributes[:'billedBy']
+      if attributes.has_key?(:'billed_by')
+        self.billed_by = attributes[:'billed_by']
       end
 
-      if attributes.has_key?(:'chargeDuringCheckout')
-        self.charge_during_checkout = attributes[:'chargeDuringCheckout']
+      if attributes.has_key?(:'charge_during_checkout')
+        self.charge_during_checkout = attributes[:'charge_during_checkout']
       end
 
-      if attributes.has_key?(:'collectCvv2')
-        self.collect_cvv2 = attributes[:'collectCvv2']
+      if attributes.has_key?(:'collect_cvv2')
+        self.collect_cvv2 = attributes[:'collect_cvv2']
       end
 
-      if attributes.has_key?(:'configuredGatewaysDetails')
-        self.configured_gateways_details = attributes[:'configuredGatewaysDetails']
+      if attributes.has_key?(:'configured_gateway_details')
+        self.configured_gateway_details = attributes[:'configured_gateway_details']
       end
 
-      if attributes.has_key?(:'failedAttempts')
-        self.failed_attempts = attributes[:'failedAttempts']
+      if attributes.has_key?(:'failed_attempts')
+        self.failed_attempts = attributes[:'failed_attempts']
       end
 
-      if attributes.has_key?(:'hideConnectSingleGateway')
-        self.hide_connect_single_gateway = attributes[:'hideConnectSingleGateway']
+      if attributes.has_key?(:'hide_connect_single_gateway')
+        self.hide_connect_single_gateway = attributes[:'hide_connect_single_gateway']
       end
 
-      if attributes.has_key?(:'sendCustomerBillingUpdateOnDecline')
-        self.send_customer_billing_update_on_decline = attributes[:'sendCustomerBillingUpdateOnDecline']
+      if attributes.has_key?(:'restrictions')
+        self.restrictions = attributes[:'restrictions']
+      end
+
+      if attributes.has_key?(:'send_customer_billing_update_on_decline')
+        self.send_customer_billing_update_on_decline = attributes[:'send_customer_billing_update_on_decline']
+      end
+
+      if attributes.has_key?(:'supported_cards')
+        self.supported_cards = attributes[:'supported_cards']
+      end
+
+      if attributes.has_key?(:'test_methods')
+        self.test_methods = attributes[:'test_methods']
       end
     end
 
@@ -117,14 +152,17 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          accept_credit_cards == o.accept_credit_cards &&
+          accept_credit_card == o.accept_credit_card &&
           billed_by == o.billed_by &&
           charge_during_checkout == o.charge_during_checkout &&
           collect_cvv2 == o.collect_cvv2 &&
-          configured_gateways_details == o.configured_gateways_details &&
+          configured_gateway_details == o.configured_gateway_details &&
           failed_attempts == o.failed_attempts &&
           hide_connect_single_gateway == o.hide_connect_single_gateway &&
-          send_customer_billing_update_on_decline == o.send_customer_billing_update_on_decline
+          restrictions == o.restrictions &&
+          send_customer_billing_update_on_decline == o.send_customer_billing_update_on_decline &&
+          supported_cards == o.supported_cards &&
+          test_methods == o.test_methods
     end
 
     # @see the `==` method
@@ -136,7 +174,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_credit_cards, billed_by, charge_during_checkout, collect_cvv2, configured_gateways_details, failed_attempts, hide_connect_single_gateway, send_customer_billing_update_on_decline].hash
+      [accept_credit_card, billed_by, charge_during_checkout, collect_cvv2, configured_gateway_details, failed_attempts, hide_connect_single_gateway, restrictions, send_customer_billing_update_on_decline, supported_cards, test_methods].hash
     end
 
     # Builds the object from hash

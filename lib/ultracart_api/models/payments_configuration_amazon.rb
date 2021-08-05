@@ -14,33 +14,40 @@ require 'date'
 
 module UltracartClient
   class PaymentsConfigurationAmazon
+    # Master flag to determine if this merchant accepts Pay by Amazon
     attr_accessor :accept_amazon
 
-    attr_accessor :amazon_access_key_id
+    # Amazon access key ID
+    attr_accessor :access_key_id
 
-    attr_accessor :amazon_accounting_code
+    # Optional accounting code for use with Quickbooks integrations
+    attr_accessor :accounting_code
 
-    attr_accessor :amazon_deposit_to_account
-
+    # Amazon merchant ID
     attr_accessor :amazon_merchant_id
 
-    attr_accessor :amazon_sandbox
-
-    attr_accessor :amazon_secret_access_key
+    # Optional deposit to account field for use with Quickbooks integrations
+    attr_accessor :deposit_to_account
 
     attr_accessor :restrictions
+
+    # True if transactions should run against the Amazon sandbox.  Useful for testing not configurations
+    attr_accessor :sandbox
+
+    # Amazon secret access key
+    attr_accessor :secret_access_key
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_amazon' => :'acceptAmazon',
-        :'amazon_access_key_id' => :'amazonAccessKeyId',
-        :'amazon_accounting_code' => :'amazonAccountingCode',
-        :'amazon_deposit_to_account' => :'amazonDepositToAccount',
-        :'amazon_merchant_id' => :'amazonMerchantId',
-        :'amazon_sandbox' => :'amazonSandbox',
-        :'amazon_secret_access_key' => :'amazonSecretAccessKey',
-        :'restrictions' => :'restrictions'
+        :'accept_amazon' => :'accept_amazon',
+        :'access_key_id' => :'access_key_id',
+        :'accounting_code' => :'accounting_code',
+        :'amazon_merchant_id' => :'amazon_merchant_id',
+        :'deposit_to_account' => :'deposit_to_account',
+        :'restrictions' => :'restrictions',
+        :'sandbox' => :'sandbox',
+        :'secret_access_key' => :'secret_access_key'
       }
     end
 
@@ -48,13 +55,13 @@ module UltracartClient
     def self.swagger_types
       {
         :'accept_amazon' => :'BOOLEAN',
-        :'amazon_access_key_id' => :'String',
-        :'amazon_accounting_code' => :'String',
-        :'amazon_deposit_to_account' => :'String',
+        :'access_key_id' => :'String',
+        :'accounting_code' => :'String',
         :'amazon_merchant_id' => :'String',
-        :'amazon_sandbox' => :'BOOLEAN',
-        :'amazon_secret_access_key' => :'String',
-        :'restrictions' => :'PaymentsConfigurationRestrictions'
+        :'deposit_to_account' => :'String',
+        :'restrictions' => :'PaymentsConfigurationRestrictions',
+        :'sandbox' => :'BOOLEAN',
+        :'secret_access_key' => :'String'
       }
     end
 
@@ -66,36 +73,36 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'acceptAmazon')
-        self.accept_amazon = attributes[:'acceptAmazon']
+      if attributes.has_key?(:'accept_amazon')
+        self.accept_amazon = attributes[:'accept_amazon']
       end
 
-      if attributes.has_key?(:'amazonAccessKeyId')
-        self.amazon_access_key_id = attributes[:'amazonAccessKeyId']
+      if attributes.has_key?(:'access_key_id')
+        self.access_key_id = attributes[:'access_key_id']
       end
 
-      if attributes.has_key?(:'amazonAccountingCode')
-        self.amazon_accounting_code = attributes[:'amazonAccountingCode']
+      if attributes.has_key?(:'accounting_code')
+        self.accounting_code = attributes[:'accounting_code']
       end
 
-      if attributes.has_key?(:'amazonDepositToAccount')
-        self.amazon_deposit_to_account = attributes[:'amazonDepositToAccount']
+      if attributes.has_key?(:'amazon_merchant_id')
+        self.amazon_merchant_id = attributes[:'amazon_merchant_id']
       end
 
-      if attributes.has_key?(:'amazonMerchantId')
-        self.amazon_merchant_id = attributes[:'amazonMerchantId']
-      end
-
-      if attributes.has_key?(:'amazonSandbox')
-        self.amazon_sandbox = attributes[:'amazonSandbox']
-      end
-
-      if attributes.has_key?(:'amazonSecretAccessKey')
-        self.amazon_secret_access_key = attributes[:'amazonSecretAccessKey']
+      if attributes.has_key?(:'deposit_to_account')
+        self.deposit_to_account = attributes[:'deposit_to_account']
       end
 
       if attributes.has_key?(:'restrictions')
         self.restrictions = attributes[:'restrictions']
+      end
+
+      if attributes.has_key?(:'sandbox')
+        self.sandbox = attributes[:'sandbox']
+      end
+
+      if attributes.has_key?(:'secret_access_key')
+        self.secret_access_key = attributes[:'secret_access_key']
       end
     end
 
@@ -118,13 +125,13 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           accept_amazon == o.accept_amazon &&
-          amazon_access_key_id == o.amazon_access_key_id &&
-          amazon_accounting_code == o.amazon_accounting_code &&
-          amazon_deposit_to_account == o.amazon_deposit_to_account &&
+          access_key_id == o.access_key_id &&
+          accounting_code == o.accounting_code &&
           amazon_merchant_id == o.amazon_merchant_id &&
-          amazon_sandbox == o.amazon_sandbox &&
-          amazon_secret_access_key == o.amazon_secret_access_key &&
-          restrictions == o.restrictions
+          deposit_to_account == o.deposit_to_account &&
+          restrictions == o.restrictions &&
+          sandbox == o.sandbox &&
+          secret_access_key == o.secret_access_key
     end
 
     # @see the `==` method
@@ -136,7 +143,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_amazon, amazon_access_key_id, amazon_accounting_code, amazon_deposit_to_account, amazon_merchant_id, amazon_sandbox, amazon_secret_access_key, restrictions].hash
+      [accept_amazon, access_key_id, accounting_code, amazon_merchant_id, deposit_to_account, restrictions, sandbox, secret_access_key].hash
     end
 
     # Builds the object from hash

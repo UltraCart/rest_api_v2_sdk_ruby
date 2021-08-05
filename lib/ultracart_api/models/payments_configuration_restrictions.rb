@@ -14,45 +14,57 @@ require 'date'
 
 module UltracartClient
   class PaymentsConfigurationRestrictions
+    # Maximum subtotal
     attr_accessor :maximum_subtotal
 
+    # Minimum subtotal
     attr_accessor :minimum_subtotal
 
+    # Payment method
     attr_accessor :payment_method
 
+    # Alaska and Hawaii restriction
     attr_accessor :restriction_alaska_hawaii
 
+    # APO/FPO restriction
     attr_accessor :restriction_apo_fpo
 
+    # Canada restriction
     attr_accessor :restriction_canada
 
+    # Continental US restriction
     attr_accessor :restriction_continental_us
 
+    # Domestic only restriction
     attr_accessor :restriction_domestic_only
 
+    # International only restriction
     attr_accessor :restriction_international_only
 
+    # PO Box restriction
     attr_accessor :restriction_po_box
 
+    # Puerto Rico restriction
     attr_accessor :restriction_puerto_rico
 
+    # US Territories restriction
     attr_accessor :restriction_us_territories
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'maximum_subtotal' => :'maximumSubtotal',
-        :'minimum_subtotal' => :'minimumSubtotal',
-        :'payment_method' => :'paymentMethod',
-        :'restriction_alaska_hawaii' => :'restrictionAlaskaHawaii',
-        :'restriction_apo_fpo' => :'restrictionApoFpo',
-        :'restriction_canada' => :'restrictionCanada',
-        :'restriction_continental_us' => :'restrictionContinentalUS',
-        :'restriction_domestic_only' => :'restrictionDomesticOnly',
-        :'restriction_international_only' => :'restrictionInternationalOnly',
-        :'restriction_po_box' => :'restrictionPoBox',
-        :'restriction_puerto_rico' => :'restrictionPuertoRico',
-        :'restriction_us_territories' => :'restrictionUSTerritories'
+        :'maximum_subtotal' => :'maximum_subtotal',
+        :'minimum_subtotal' => :'minimum_subtotal',
+        :'payment_method' => :'payment_method',
+        :'restriction_alaska_hawaii' => :'restriction_alaska_hawaii',
+        :'restriction_apo_fpo' => :'restriction_apo_fpo',
+        :'restriction_canada' => :'restriction_canada',
+        :'restriction_continental_us' => :'restriction_continental_us',
+        :'restriction_domestic_only' => :'restriction_domestic_only',
+        :'restriction_international_only' => :'restriction_international_only',
+        :'restriction_po_box' => :'restriction_po_box',
+        :'restriction_puerto_rico' => :'restriction_puerto_rico',
+        :'restriction_us_territories' => :'restriction_us_territories'
       }
     end
 
@@ -82,52 +94,52 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'maximumSubtotal')
-        self.maximum_subtotal = attributes[:'maximumSubtotal']
+      if attributes.has_key?(:'maximum_subtotal')
+        self.maximum_subtotal = attributes[:'maximum_subtotal']
       end
 
-      if attributes.has_key?(:'minimumSubtotal')
-        self.minimum_subtotal = attributes[:'minimumSubtotal']
+      if attributes.has_key?(:'minimum_subtotal')
+        self.minimum_subtotal = attributes[:'minimum_subtotal']
       end
 
-      if attributes.has_key?(:'paymentMethod')
-        self.payment_method = attributes[:'paymentMethod']
+      if attributes.has_key?(:'payment_method')
+        self.payment_method = attributes[:'payment_method']
       end
 
-      if attributes.has_key?(:'restrictionAlaskaHawaii')
-        self.restriction_alaska_hawaii = attributes[:'restrictionAlaskaHawaii']
+      if attributes.has_key?(:'restriction_alaska_hawaii')
+        self.restriction_alaska_hawaii = attributes[:'restriction_alaska_hawaii']
       end
 
-      if attributes.has_key?(:'restrictionApoFpo')
-        self.restriction_apo_fpo = attributes[:'restrictionApoFpo']
+      if attributes.has_key?(:'restriction_apo_fpo')
+        self.restriction_apo_fpo = attributes[:'restriction_apo_fpo']
       end
 
-      if attributes.has_key?(:'restrictionCanada')
-        self.restriction_canada = attributes[:'restrictionCanada']
+      if attributes.has_key?(:'restriction_canada')
+        self.restriction_canada = attributes[:'restriction_canada']
       end
 
-      if attributes.has_key?(:'restrictionContinentalUS')
-        self.restriction_continental_us = attributes[:'restrictionContinentalUS']
+      if attributes.has_key?(:'restriction_continental_us')
+        self.restriction_continental_us = attributes[:'restriction_continental_us']
       end
 
-      if attributes.has_key?(:'restrictionDomesticOnly')
-        self.restriction_domestic_only = attributes[:'restrictionDomesticOnly']
+      if attributes.has_key?(:'restriction_domestic_only')
+        self.restriction_domestic_only = attributes[:'restriction_domestic_only']
       end
 
-      if attributes.has_key?(:'restrictionInternationalOnly')
-        self.restriction_international_only = attributes[:'restrictionInternationalOnly']
+      if attributes.has_key?(:'restriction_international_only')
+        self.restriction_international_only = attributes[:'restriction_international_only']
       end
 
-      if attributes.has_key?(:'restrictionPoBox')
-        self.restriction_po_box = attributes[:'restrictionPoBox']
+      if attributes.has_key?(:'restriction_po_box')
+        self.restriction_po_box = attributes[:'restriction_po_box']
       end
 
-      if attributes.has_key?(:'restrictionPuertoRico')
-        self.restriction_puerto_rico = attributes[:'restrictionPuertoRico']
+      if attributes.has_key?(:'restriction_puerto_rico')
+        self.restriction_puerto_rico = attributes[:'restriction_puerto_rico']
       end
 
-      if attributes.has_key?(:'restrictionUSTerritories')
-        self.restriction_us_territories = attributes[:'restrictionUSTerritories']
+      if attributes.has_key?(:'restriction_us_territories')
+        self.restriction_us_territories = attributes[:'restriction_us_territories']
       end
     end
 

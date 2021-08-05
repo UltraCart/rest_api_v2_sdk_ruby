@@ -14,32 +14,61 @@ require 'date'
 
 module UltracartClient
   class PaymentsConfigurationAffirm
+    # Master flag indicating this merchant accepts Affirm payments
     attr_accessor :accept_affirm
 
-    attr_accessor :affirm_accounting_code
+    # Optional Quickbooks code for this payment method
+    attr_accessor :accounting_code
 
-    attr_accessor :affirm_deposit_to_account
+    # Optional Quickbooks Deposit to Account value
+    attr_accessor :deposit_to_account
 
-    attr_accessor :affirm_environment
+    # Environment
+    attr_accessor :environment
 
-    attr_accessor :affirm_financial_product_key
+    # Financial product key
+    attr_accessor :financial_product_key
 
-    attr_accessor :affirm_private_api_key
+    # Private API key
+    attr_accessor :private_api_key
 
-    attr_accessor :affirm_public_api_key
+    # Public API key
+    attr_accessor :public_api_key
 
     attr_accessor :restrictions
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_affirm' => :'acceptAffirm',
-        :'affirm_accounting_code' => :'affirmAccountingCode',
-        :'affirm_deposit_to_account' => :'affirmDepositToAccount',
-        :'affirm_environment' => :'affirmEnvironment',
-        :'affirm_financial_product_key' => :'affirmFinancialProductKey',
-        :'affirm_private_api_key' => :'affirmPrivateApiKey',
-        :'affirm_public_api_key' => :'affirmPublicApiKey',
+        :'accept_affirm' => :'accept_affirm',
+        :'accounting_code' => :'accounting_code',
+        :'deposit_to_account' => :'deposit_to_account',
+        :'environment' => :'environment',
+        :'financial_product_key' => :'financial_product_key',
+        :'private_api_key' => :'private_api_key',
+        :'public_api_key' => :'public_api_key',
         :'restrictions' => :'restrictions'
       }
     end
@@ -48,12 +77,12 @@ module UltracartClient
     def self.swagger_types
       {
         :'accept_affirm' => :'BOOLEAN',
-        :'affirm_accounting_code' => :'String',
-        :'affirm_deposit_to_account' => :'String',
-        :'affirm_environment' => :'String',
-        :'affirm_financial_product_key' => :'String',
-        :'affirm_private_api_key' => :'String',
-        :'affirm_public_api_key' => :'String',
+        :'accounting_code' => :'String',
+        :'deposit_to_account' => :'String',
+        :'environment' => :'String',
+        :'financial_product_key' => :'String',
+        :'private_api_key' => :'String',
+        :'public_api_key' => :'String',
         :'restrictions' => :'PaymentsConfigurationRestrictions'
       }
     end
@@ -66,32 +95,32 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'acceptAffirm')
-        self.accept_affirm = attributes[:'acceptAffirm']
+      if attributes.has_key?(:'accept_affirm')
+        self.accept_affirm = attributes[:'accept_affirm']
       end
 
-      if attributes.has_key?(:'affirmAccountingCode')
-        self.affirm_accounting_code = attributes[:'affirmAccountingCode']
+      if attributes.has_key?(:'accounting_code')
+        self.accounting_code = attributes[:'accounting_code']
       end
 
-      if attributes.has_key?(:'affirmDepositToAccount')
-        self.affirm_deposit_to_account = attributes[:'affirmDepositToAccount']
+      if attributes.has_key?(:'deposit_to_account')
+        self.deposit_to_account = attributes[:'deposit_to_account']
       end
 
-      if attributes.has_key?(:'affirmEnvironment')
-        self.affirm_environment = attributes[:'affirmEnvironment']
+      if attributes.has_key?(:'environment')
+        self.environment = attributes[:'environment']
       end
 
-      if attributes.has_key?(:'affirmFinancialProductKey')
-        self.affirm_financial_product_key = attributes[:'affirmFinancialProductKey']
+      if attributes.has_key?(:'financial_product_key')
+        self.financial_product_key = attributes[:'financial_product_key']
       end
 
-      if attributes.has_key?(:'affirmPrivateApiKey')
-        self.affirm_private_api_key = attributes[:'affirmPrivateApiKey']
+      if attributes.has_key?(:'private_api_key')
+        self.private_api_key = attributes[:'private_api_key']
       end
 
-      if attributes.has_key?(:'affirmPublicApiKey')
-        self.affirm_public_api_key = attributes[:'affirmPublicApiKey']
+      if attributes.has_key?(:'public_api_key')
+        self.public_api_key = attributes[:'public_api_key']
       end
 
       if attributes.has_key?(:'restrictions')
@@ -109,7 +138,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      environment_validator = EnumAttributeValidator.new('String', ['Live', 'Sandbox'])
+      return false unless environment_validator.valid?(@environment)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] environment Object to be assigned
+    def environment=(environment)
+      validator = EnumAttributeValidator.new('String', ['Live', 'Sandbox'])
+      unless validator.valid?(environment)
+        fail ArgumentError, 'invalid value for "environment", must be one of #{validator.allowable_values}.'
+      end
+      @environment = environment
     end
 
     # Checks equality by comparing each attribute.
@@ -118,12 +159,12 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           accept_affirm == o.accept_affirm &&
-          affirm_accounting_code == o.affirm_accounting_code &&
-          affirm_deposit_to_account == o.affirm_deposit_to_account &&
-          affirm_environment == o.affirm_environment &&
-          affirm_financial_product_key == o.affirm_financial_product_key &&
-          affirm_private_api_key == o.affirm_private_api_key &&
-          affirm_public_api_key == o.affirm_public_api_key &&
+          accounting_code == o.accounting_code &&
+          deposit_to_account == o.deposit_to_account &&
+          environment == o.environment &&
+          financial_product_key == o.financial_product_key &&
+          private_api_key == o.private_api_key &&
+          public_api_key == o.public_api_key &&
           restrictions == o.restrictions
     end
 
@@ -136,7 +177,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_affirm, affirm_accounting_code, affirm_deposit_to_account, affirm_environment, affirm_financial_product_key, affirm_private_api_key, affirm_public_api_key, restrictions].hash
+      [accept_affirm, accounting_code, deposit_to_account, environment, financial_product_key, private_api_key, public_api_key, restrictions].hash
     end
 
     # Builds the object from hash

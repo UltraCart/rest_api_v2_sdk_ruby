@@ -3,13 +3,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accept_affirm** | **BOOLEAN** |  | [optional] 
-**affirm_accounting_code** | **String** |  | [optional] 
-**affirm_deposit_to_account** | **String** |  | [optional] 
-**affirm_environment** | **String** |  | [optional] 
-**affirm_financial_product_key** | **String** |  | [optional] 
-**affirm_private_api_key** | **String** |  | [optional] 
-**affirm_public_api_key** | **String** |  | [optional] 
+**accept_affirm** | **BOOLEAN** | Master flag indicating this merchant accepts Affirm payments | [optional] 
+**accounting_code** | **String** | Optional Quickbooks code for this payment method | [optional] 
+**deposit_to_account** | **String** | Optional Quickbooks Deposit to Account value | [optional] 
+**environment** | **String** | Environment | [optional] 
+**financial_product_key** | **String** | Financial product key | [optional] 
+**private_api_key** | **String** | Private API key | [optional] 
+**public_api_key** | **String** | Public API key | [optional] 
 **restrictions** | [**PaymentsConfigurationRestrictions**](PaymentsConfigurationRestrictions.md) |  | [optional] 
 
 

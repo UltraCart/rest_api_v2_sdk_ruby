@@ -14,24 +14,28 @@ require 'date'
 
 module UltracartClient
   class PaymentsConfigurationLoanHero
+    # Master flag indicating this merchant accepts Loan Hero
     attr_accessor :accept_loan_hero
 
-    attr_accessor :loan_hero_accounting_code
+    # Optional Quickbooks accounting code
+    attr_accessor :accounting_code
 
-    attr_accessor :loan_hero_deposit_to_account
+    # Optional Quickbooks deposit to account
+    attr_accessor :deposit_to_account
 
     attr_accessor :restrictions
 
+    # Internal field to aid UI
     attr_accessor :show_loan_hero
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_loan_hero' => :'acceptLoanHero',
-        :'loan_hero_accounting_code' => :'loanHeroAccountingCode',
-        :'loan_hero_deposit_to_account' => :'loanHeroDepositToAccount',
+        :'accept_loan_hero' => :'accept_loan_hero',
+        :'accounting_code' => :'accounting_code',
+        :'deposit_to_account' => :'deposit_to_account',
         :'restrictions' => :'restrictions',
-        :'show_loan_hero' => :'showLoanHero'
+        :'show_loan_hero' => :'show_loan_hero'
       }
     end
 
@@ -39,8 +43,8 @@ module UltracartClient
     def self.swagger_types
       {
         :'accept_loan_hero' => :'BOOLEAN',
-        :'loan_hero_accounting_code' => :'String',
-        :'loan_hero_deposit_to_account' => :'String',
+        :'accounting_code' => :'String',
+        :'deposit_to_account' => :'String',
         :'restrictions' => :'PaymentsConfigurationRestrictions',
         :'show_loan_hero' => :'BOOLEAN'
       }
@@ -54,24 +58,24 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'acceptLoanHero')
-        self.accept_loan_hero = attributes[:'acceptLoanHero']
+      if attributes.has_key?(:'accept_loan_hero')
+        self.accept_loan_hero = attributes[:'accept_loan_hero']
       end
 
-      if attributes.has_key?(:'loanHeroAccountingCode')
-        self.loan_hero_accounting_code = attributes[:'loanHeroAccountingCode']
+      if attributes.has_key?(:'accounting_code')
+        self.accounting_code = attributes[:'accounting_code']
       end
 
-      if attributes.has_key?(:'loanHeroDepositToAccount')
-        self.loan_hero_deposit_to_account = attributes[:'loanHeroDepositToAccount']
+      if attributes.has_key?(:'deposit_to_account')
+        self.deposit_to_account = attributes[:'deposit_to_account']
       end
 
       if attributes.has_key?(:'restrictions')
         self.restrictions = attributes[:'restrictions']
       end
 
-      if attributes.has_key?(:'showLoanHero')
-        self.show_loan_hero = attributes[:'showLoanHero']
+      if attributes.has_key?(:'show_loan_hero')
+        self.show_loan_hero = attributes[:'show_loan_hero']
       end
     end
 
@@ -94,8 +98,8 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           accept_loan_hero == o.accept_loan_hero &&
-          loan_hero_accounting_code == o.loan_hero_accounting_code &&
-          loan_hero_deposit_to_account == o.loan_hero_deposit_to_account &&
+          accounting_code == o.accounting_code &&
+          deposit_to_account == o.deposit_to_account &&
           restrictions == o.restrictions &&
           show_loan_hero == o.show_loan_hero
     end
@@ -109,7 +113,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_loan_hero, loan_hero_accounting_code, loan_hero_deposit_to_account, restrictions, show_loan_hero].hash
+      [accept_loan_hero, accounting_code, deposit_to_account, restrictions, show_loan_hero].hash
     end
 
     # Builds the object from hash

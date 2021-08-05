@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accept_e_check** | **BOOLEAN** |  | [optional] 
-**e_check_accounting_code** | **String** |  | [optional] 
-**e_check_deposit_to_account** | **String** |  | [optional] 
+**accept_echeck** | **BOOLEAN** | Master flag indicating this merchant accepts eChecks | [optional] 
+**accounting_code** | **String** | Optional Quickbooks accounting code | [optional] 
+**deposit_to_account** | **String** | Optional Quickbooks deposit to account | [optional] 
 **restrictions** | [**PaymentsConfigurationRestrictions**](PaymentsConfigurationRestrictions.md) |  | [optional] 
 
 

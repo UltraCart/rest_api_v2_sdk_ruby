@@ -14,27 +14,32 @@ require 'date'
 
 module UltracartClient
   class PaymentsConfigurationCOD
+    # Master flag indicating this merchant accepts COD
     attr_accessor :accept_cod
 
-    attr_accessor :cod_approved_customers_only
-
-    attr_accessor :cod_surcharge_accounting_code
-
-    attr_accessor :cod_surcharge_fee
-
-    attr_accessor :cod_surcharge_perc
+    # If true, only approved customers may pay with COD
+    attr_accessor :approved_customers_only
 
     attr_accessor :restrictions
+
+    # Optional field, if surcharge is set, this is the accounting code the surcharge is tagged with when sent to Quickbooks
+    attr_accessor :surcharge_accounting_code
+
+    # Additional cost for using COD
+    attr_accessor :surcharge_fee
+
+    # Additional percentage cost for using COD
+    attr_accessor :surcharge_percentage
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_cod' => :'acceptCod',
-        :'cod_approved_customers_only' => :'codApprovedCustomersOnly',
-        :'cod_surcharge_accounting_code' => :'codSurchargeAccountingCode',
-        :'cod_surcharge_fee' => :'codSurchargeFee',
-        :'cod_surcharge_perc' => :'codSurchargePerc',
-        :'restrictions' => :'restrictions'
+        :'accept_cod' => :'accept_cod',
+        :'approved_customers_only' => :'approved_customers_only',
+        :'restrictions' => :'restrictions',
+        :'surcharge_accounting_code' => :'surcharge_accounting_code',
+        :'surcharge_fee' => :'surcharge_fee',
+        :'surcharge_percentage' => :'surcharge_percentage'
       }
     end
 
@@ -42,11 +47,11 @@ module UltracartClient
     def self.swagger_types
       {
         :'accept_cod' => :'BOOLEAN',
-        :'cod_approved_customers_only' => :'BOOLEAN',
-        :'cod_surcharge_accounting_code' => :'String',
-        :'cod_surcharge_fee' => :'String',
-        :'cod_surcharge_perc' => :'String',
-        :'restrictions' => :'PaymentsConfigurationRestrictions'
+        :'approved_customers_only' => :'BOOLEAN',
+        :'restrictions' => :'PaymentsConfigurationRestrictions',
+        :'surcharge_accounting_code' => :'String',
+        :'surcharge_fee' => :'String',
+        :'surcharge_percentage' => :'String'
       }
     end
 
@@ -58,28 +63,28 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'acceptCod')
-        self.accept_cod = attributes[:'acceptCod']
+      if attributes.has_key?(:'accept_cod')
+        self.accept_cod = attributes[:'accept_cod']
       end
 
-      if attributes.has_key?(:'codApprovedCustomersOnly')
-        self.cod_approved_customers_only = attributes[:'codApprovedCustomersOnly']
-      end
-
-      if attributes.has_key?(:'codSurchargeAccountingCode')
-        self.cod_surcharge_accounting_code = attributes[:'codSurchargeAccountingCode']
-      end
-
-      if attributes.has_key?(:'codSurchargeFee')
-        self.cod_surcharge_fee = attributes[:'codSurchargeFee']
-      end
-
-      if attributes.has_key?(:'codSurchargePerc')
-        self.cod_surcharge_perc = attributes[:'codSurchargePerc']
+      if attributes.has_key?(:'approved_customers_only')
+        self.approved_customers_only = attributes[:'approved_customers_only']
       end
 
       if attributes.has_key?(:'restrictions')
         self.restrictions = attributes[:'restrictions']
+      end
+
+      if attributes.has_key?(:'surcharge_accounting_code')
+        self.surcharge_accounting_code = attributes[:'surcharge_accounting_code']
+      end
+
+      if attributes.has_key?(:'surcharge_fee')
+        self.surcharge_fee = attributes[:'surcharge_fee']
+      end
+
+      if attributes.has_key?(:'surcharge_percentage')
+        self.surcharge_percentage = attributes[:'surcharge_percentage']
       end
     end
 
@@ -102,11 +107,11 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           accept_cod == o.accept_cod &&
-          cod_approved_customers_only == o.cod_approved_customers_only &&
-          cod_surcharge_accounting_code == o.cod_surcharge_accounting_code &&
-          cod_surcharge_fee == o.cod_surcharge_fee &&
-          cod_surcharge_perc == o.cod_surcharge_perc &&
-          restrictions == o.restrictions
+          approved_customers_only == o.approved_customers_only &&
+          restrictions == o.restrictions &&
+          surcharge_accounting_code == o.surcharge_accounting_code &&
+          surcharge_fee == o.surcharge_fee &&
+          surcharge_percentage == o.surcharge_percentage
     end
 
     # @see the `==` method
@@ -118,7 +123,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_cod, cod_approved_customers_only, cod_surcharge_accounting_code, cod_surcharge_fee, cod_surcharge_perc, restrictions].hash
+      [accept_cod, approved_customers_only, restrictions, surcharge_accounting_code, surcharge_fee, surcharge_percentage].hash
     end
 
     # Builds the object from hash

@@ -26,13 +26,13 @@ module UltracartClient
 
     attr_accessor :credit_card
 
-    attr_accessor :e_check
+    attr_accessor :echeck
 
     attr_accessor :loan_hero
 
     attr_accessor :money_order
 
-    attr_accessor :pay_pal
+    attr_accessor :paypal
 
     attr_accessor :purchase_order
 
@@ -40,13 +40,14 @@ module UltracartClient
 
     attr_accessor :sezzle
 
+    # Internal flag used to determine if accounting codes should be shown on the screen or not.  This flag is true if the merchant has a Quickbooks integration configured.
     attr_accessor :show_accounting_code
 
     attr_accessor :switch_to_sub_tab
 
     attr_accessor :switch_to_tab
 
-    attr_accessor :we_pay
+    attr_accessor :ultracart_payments_wepay
 
     attr_accessor :wire_transfer
 
@@ -58,19 +59,19 @@ module UltracartClient
         :'cash' => :'cash',
         :'check' => :'check',
         :'cod' => :'cod',
-        :'credit_card' => :'creditCard',
-        :'e_check' => :'eCheck',
-        :'loan_hero' => :'loanHero',
-        :'money_order' => :'moneyOrder',
-        :'pay_pal' => :'payPal',
-        :'purchase_order' => :'purchaseOrder',
-        :'quote_request' => :'quoteRequest',
+        :'credit_card' => :'credit_card',
+        :'echeck' => :'echeck',
+        :'loan_hero' => :'loan_hero',
+        :'money_order' => :'money_order',
+        :'paypal' => :'paypal',
+        :'purchase_order' => :'purchase_order',
+        :'quote_request' => :'quote_request',
         :'sezzle' => :'sezzle',
-        :'show_accounting_code' => :'showAccountingCode',
+        :'show_accounting_code' => :'show_accounting_code',
         :'switch_to_sub_tab' => :'switchToSubTab',
         :'switch_to_tab' => :'switchToTab',
-        :'we_pay' => :'wePay',
-        :'wire_transfer' => :'wireTransfer'
+        :'ultracart_payments_wepay' => :'ultracart_payments_wepay',
+        :'wire_transfer' => :'wire_transfer'
       }
     end
 
@@ -83,17 +84,17 @@ module UltracartClient
         :'check' => :'PaymentsConfigurationCheck',
         :'cod' => :'PaymentsConfigurationCOD',
         :'credit_card' => :'PaymentsConfigurationCreditCard',
-        :'e_check' => :'PaymentsConfigurationEcheck',
+        :'echeck' => :'PaymentsConfigurationEcheck',
         :'loan_hero' => :'PaymentsConfigurationLoanHero',
         :'money_order' => :'PaymentsConfigurationMoneyOrder',
-        :'pay_pal' => :'PaymentsConfigurationPayPal',
+        :'paypal' => :'PaymentsConfigurationPayPal',
         :'purchase_order' => :'PaymentsConfigurationPurchaseOrder',
         :'quote_request' => :'PaymentsConfigurationQuoteRequest',
         :'sezzle' => :'PaymentsConfigurationSezzle',
         :'show_accounting_code' => :'BOOLEAN',
         :'switch_to_sub_tab' => :'String',
         :'switch_to_tab' => :'String',
-        :'we_pay' => :'PaymentsConfigurationWePay',
+        :'ultracart_payments_wepay' => :'PaymentsConfigurationWePay',
         :'wire_transfer' => :'PaymentsConfigurationWireTransfer'
       }
     end
@@ -126,40 +127,40 @@ module UltracartClient
         self.cod = attributes[:'cod']
       end
 
-      if attributes.has_key?(:'creditCard')
-        self.credit_card = attributes[:'creditCard']
+      if attributes.has_key?(:'credit_card')
+        self.credit_card = attributes[:'credit_card']
       end
 
-      if attributes.has_key?(:'eCheck')
-        self.e_check = attributes[:'eCheck']
+      if attributes.has_key?(:'echeck')
+        self.echeck = attributes[:'echeck']
       end
 
-      if attributes.has_key?(:'loanHero')
-        self.loan_hero = attributes[:'loanHero']
+      if attributes.has_key?(:'loan_hero')
+        self.loan_hero = attributes[:'loan_hero']
       end
 
-      if attributes.has_key?(:'moneyOrder')
-        self.money_order = attributes[:'moneyOrder']
+      if attributes.has_key?(:'money_order')
+        self.money_order = attributes[:'money_order']
       end
 
-      if attributes.has_key?(:'payPal')
-        self.pay_pal = attributes[:'payPal']
+      if attributes.has_key?(:'paypal')
+        self.paypal = attributes[:'paypal']
       end
 
-      if attributes.has_key?(:'purchaseOrder')
-        self.purchase_order = attributes[:'purchaseOrder']
+      if attributes.has_key?(:'purchase_order')
+        self.purchase_order = attributes[:'purchase_order']
       end
 
-      if attributes.has_key?(:'quoteRequest')
-        self.quote_request = attributes[:'quoteRequest']
+      if attributes.has_key?(:'quote_request')
+        self.quote_request = attributes[:'quote_request']
       end
 
       if attributes.has_key?(:'sezzle')
         self.sezzle = attributes[:'sezzle']
       end
 
-      if attributes.has_key?(:'showAccountingCode')
-        self.show_accounting_code = attributes[:'showAccountingCode']
+      if attributes.has_key?(:'show_accounting_code')
+        self.show_accounting_code = attributes[:'show_accounting_code']
       end
 
       if attributes.has_key?(:'switchToSubTab')
@@ -170,12 +171,12 @@ module UltracartClient
         self.switch_to_tab = attributes[:'switchToTab']
       end
 
-      if attributes.has_key?(:'wePay')
-        self.we_pay = attributes[:'wePay']
+      if attributes.has_key?(:'ultracart_payments_wepay')
+        self.ultracart_payments_wepay = attributes[:'ultracart_payments_wepay']
       end
 
-      if attributes.has_key?(:'wireTransfer')
-        self.wire_transfer = attributes[:'wireTransfer']
+      if attributes.has_key?(:'wire_transfer')
+        self.wire_transfer = attributes[:'wire_transfer']
       end
     end
 
@@ -203,17 +204,17 @@ module UltracartClient
           check == o.check &&
           cod == o.cod &&
           credit_card == o.credit_card &&
-          e_check == o.e_check &&
+          echeck == o.echeck &&
           loan_hero == o.loan_hero &&
           money_order == o.money_order &&
-          pay_pal == o.pay_pal &&
+          paypal == o.paypal &&
           purchase_order == o.purchase_order &&
           quote_request == o.quote_request &&
           sezzle == o.sezzle &&
           show_accounting_code == o.show_accounting_code &&
           switch_to_sub_tab == o.switch_to_sub_tab &&
           switch_to_tab == o.switch_to_tab &&
-          we_pay == o.we_pay &&
+          ultracart_payments_wepay == o.ultracart_payments_wepay &&
           wire_transfer == o.wire_transfer
     end
 
@@ -226,7 +227,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affirm, amazon, cash, check, cod, credit_card, e_check, loan_hero, money_order, pay_pal, purchase_order, quote_request, sezzle, show_accounting_code, switch_to_sub_tab, switch_to_tab, we_pay, wire_transfer].hash
+      [affirm, amazon, cash, check, cod, credit_card, echeck, loan_hero, money_order, paypal, purchase_order, quote_request, sezzle, show_accounting_code, switch_to_sub_tab, switch_to_tab, ultracart_payments_wepay, wire_transfer].hash
     end
 
     # Builds the object from hash

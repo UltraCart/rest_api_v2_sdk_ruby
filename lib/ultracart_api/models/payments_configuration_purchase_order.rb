@@ -14,20 +14,23 @@ require 'date'
 
 module UltracartClient
   class PaymentsConfigurationPurchaseOrder
+    # Master flag indicating this merchant accepts purchase orders
     attr_accessor :accept_purchase_orders
 
-    attr_accessor :purchase_order_approved_customers_only
+    # If true, only approved customers may pay with a purchase order
+    attr_accessor :approved_customers_only
 
-    attr_accessor :purchase_order_prevent_duplicate_number
+    # If true, customers may not use duplicate PO numbers for any order
+    attr_accessor :prevent_duplicate_number
 
     attr_accessor :restrictions
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_purchase_orders' => :'acceptPurchaseOrders',
-        :'purchase_order_approved_customers_only' => :'purchaseOrderApprovedCustomersOnly',
-        :'purchase_order_prevent_duplicate_number' => :'purchaseOrderPreventDuplicateNumber',
+        :'accept_purchase_orders' => :'accept_purchase_orders',
+        :'approved_customers_only' => :'approved_customers_only',
+        :'prevent_duplicate_number' => :'prevent_duplicate_number',
         :'restrictions' => :'restrictions'
       }
     end
@@ -36,8 +39,8 @@ module UltracartClient
     def self.swagger_types
       {
         :'accept_purchase_orders' => :'BOOLEAN',
-        :'purchase_order_approved_customers_only' => :'BOOLEAN',
-        :'purchase_order_prevent_duplicate_number' => :'BOOLEAN',
+        :'approved_customers_only' => :'BOOLEAN',
+        :'prevent_duplicate_number' => :'BOOLEAN',
         :'restrictions' => :'PaymentsConfigurationRestrictions'
       }
     end
@@ -50,16 +53,16 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'acceptPurchaseOrders')
-        self.accept_purchase_orders = attributes[:'acceptPurchaseOrders']
+      if attributes.has_key?(:'accept_purchase_orders')
+        self.accept_purchase_orders = attributes[:'accept_purchase_orders']
       end
 
-      if attributes.has_key?(:'purchaseOrderApprovedCustomersOnly')
-        self.purchase_order_approved_customers_only = attributes[:'purchaseOrderApprovedCustomersOnly']
+      if attributes.has_key?(:'approved_customers_only')
+        self.approved_customers_only = attributes[:'approved_customers_only']
       end
 
-      if attributes.has_key?(:'purchaseOrderPreventDuplicateNumber')
-        self.purchase_order_prevent_duplicate_number = attributes[:'purchaseOrderPreventDuplicateNumber']
+      if attributes.has_key?(:'prevent_duplicate_number')
+        self.prevent_duplicate_number = attributes[:'prevent_duplicate_number']
       end
 
       if attributes.has_key?(:'restrictions')
@@ -86,8 +89,8 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           accept_purchase_orders == o.accept_purchase_orders &&
-          purchase_order_approved_customers_only == o.purchase_order_approved_customers_only &&
-          purchase_order_prevent_duplicate_number == o.purchase_order_prevent_duplicate_number &&
+          approved_customers_only == o.approved_customers_only &&
+          prevent_duplicate_number == o.prevent_duplicate_number &&
           restrictions == o.restrictions
     end
 
@@ -100,7 +103,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_purchase_orders, purchase_order_approved_customers_only, purchase_order_prevent_duplicate_number, restrictions].hash
+      [accept_purchase_orders, approved_customers_only, prevent_duplicate_number, restrictions].hash
     end
 
     # Builds the object from hash

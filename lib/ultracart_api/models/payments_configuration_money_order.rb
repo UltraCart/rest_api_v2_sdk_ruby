@@ -14,14 +14,23 @@ require 'date'
 
 module UltracartClient
   class PaymentsConfigurationMoneyOrder
+    # Master flag for this merchant accepting money orders
     attr_accessor :accept_money_orders
+
+    # Optional Quickbooks accounting code
+    attr_accessor :accounting_code
+
+    # Optional Quickbooks deposit to account
+    attr_accessor :deposit_to_account
 
     attr_accessor :restrictions
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_money_orders' => :'acceptMoneyOrders',
+        :'accept_money_orders' => :'accept_money_orders',
+        :'accounting_code' => :'accounting_code',
+        :'deposit_to_account' => :'deposit_to_account',
         :'restrictions' => :'restrictions'
       }
     end
@@ -30,6 +39,8 @@ module UltracartClient
     def self.swagger_types
       {
         :'accept_money_orders' => :'BOOLEAN',
+        :'accounting_code' => :'String',
+        :'deposit_to_account' => :'String',
         :'restrictions' => :'PaymentsConfigurationRestrictions'
       }
     end
@@ -42,8 +53,16 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'acceptMoneyOrders')
-        self.accept_money_orders = attributes[:'acceptMoneyOrders']
+      if attributes.has_key?(:'accept_money_orders')
+        self.accept_money_orders = attributes[:'accept_money_orders']
+      end
+
+      if attributes.has_key?(:'accounting_code')
+        self.accounting_code = attributes[:'accounting_code']
+      end
+
+      if attributes.has_key?(:'deposit_to_account')
+        self.deposit_to_account = attributes[:'deposit_to_account']
       end
 
       if attributes.has_key?(:'restrictions')
@@ -70,6 +89,8 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           accept_money_orders == o.accept_money_orders &&
+          accounting_code == o.accounting_code &&
+          deposit_to_account == o.deposit_to_account &&
           restrictions == o.restrictions
     end
 
@@ -82,7 +103,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_money_orders, restrictions].hash
+      [accept_money_orders, accounting_code, deposit_to_account, restrictions].hash
     end
 
     # Builds the object from hash

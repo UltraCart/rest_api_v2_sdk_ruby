@@ -14,6 +14,7 @@ require 'date'
 
 module UltracartClient
   class PaymentsConfigurationCash
+    # Master flag indicating this merchant accepts cash
     attr_accessor :accept_cash
 
     attr_accessor :restrictions
@@ -21,7 +22,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_cash' => :'acceptCash',
+        :'accept_cash' => :'accept_cash',
         :'restrictions' => :'restrictions'
       }
     end
@@ -42,8 +43,8 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'acceptCash')
-        self.accept_cash = attributes[:'acceptCash']
+      if attributes.has_key?(:'accept_cash')
+        self.accept_cash = attributes[:'accept_cash']
       end
 
       if attributes.has_key?(:'restrictions')

@@ -14,17 +14,19 @@ require 'date'
 
 module UltracartClient
   class PaymentsConfigurationQuoteRequest
+    # Master flag indicating this merchant accepts quote requests
     attr_accessor :accept_quote_requests
 
-    attr_accessor :quote_request_approved_customers_only
+    # If true, only approved customers may use quote requests
+    attr_accessor :approved_customers_only
 
     attr_accessor :restrictions
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_quote_requests' => :'acceptQuoteRequests',
-        :'quote_request_approved_customers_only' => :'quoteRequestApprovedCustomersOnly',
+        :'accept_quote_requests' => :'accept_quote_requests',
+        :'approved_customers_only' => :'approved_customers_only',
         :'restrictions' => :'restrictions'
       }
     end
@@ -33,7 +35,7 @@ module UltracartClient
     def self.swagger_types
       {
         :'accept_quote_requests' => :'BOOLEAN',
-        :'quote_request_approved_customers_only' => :'BOOLEAN',
+        :'approved_customers_only' => :'BOOLEAN',
         :'restrictions' => :'PaymentsConfigurationRestrictions'
       }
     end
@@ -46,12 +48,12 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'acceptQuoteRequests')
-        self.accept_quote_requests = attributes[:'acceptQuoteRequests']
+      if attributes.has_key?(:'accept_quote_requests')
+        self.accept_quote_requests = attributes[:'accept_quote_requests']
       end
 
-      if attributes.has_key?(:'quoteRequestApprovedCustomersOnly')
-        self.quote_request_approved_customers_only = attributes[:'quoteRequestApprovedCustomersOnly']
+      if attributes.has_key?(:'approved_customers_only')
+        self.approved_customers_only = attributes[:'approved_customers_only']
       end
 
       if attributes.has_key?(:'restrictions')
@@ -78,7 +80,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           accept_quote_requests == o.accept_quote_requests &&
-          quote_request_approved_customers_only == o.quote_request_approved_customers_only &&
+          approved_customers_only == o.approved_customers_only &&
           restrictions == o.restrictions
     end
 
@@ -91,7 +93,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_quote_requests, quote_request_approved_customers_only, restrictions].hash
+      [accept_quote_requests, approved_customers_only, restrictions].hash
     end
 
     # Builds the object from hash

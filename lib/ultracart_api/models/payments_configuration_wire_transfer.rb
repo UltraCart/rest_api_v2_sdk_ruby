@@ -14,42 +14,52 @@ require 'date'
 
 module UltracartClient
   class PaymentsConfigurationWireTransfer
+    # Master flag indicating this merchant accepts wire transfers
     attr_accessor :accept_wire_transfer
+
+    # account_number
+    attr_accessor :account_number
+
+    # Optional Quickbooks accounting code
+    attr_accessor :accounting_code
+
+    # Bank address
+    attr_accessor :bank_address
+
+    # Optional Quickbooks deposit to account
+    attr_accessor :deposit_to_account
+
+    # Intermediate routing number
+    attr_accessor :intermediate_routing_number
 
     attr_accessor :restrictions
 
-    attr_accessor :wire_transfer_accounting_code
+    # Routing number
+    attr_accessor :routing_number
 
-    attr_accessor :wire_transfer_account_number
+    # If a surcharge is present and this merchant is integrated with Quickbooks, this is the accounting code for the surcharge amount
+    attr_accessor :surcharge_accounting_code
 
-    attr_accessor :wire_transfer_bank_address
+    # surcharge_fee
+    attr_accessor :surcharge_fee
 
-    attr_accessor :wire_transfer_deposit_to_account
-
-    attr_accessor :wire_transfer_intermediate_routing_number
-
-    attr_accessor :wire_transfer_routing_number
-
-    attr_accessor :wire_transfer_surcharge_accounting_code
-
-    attr_accessor :wire_transfer_surcharge_fee
-
-    attr_accessor :wire_transfer_surcharge_perc
+    # surcharge_percentage
+    attr_accessor :surcharge_percentage
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_wire_transfer' => :'acceptWireTransfer',
+        :'accept_wire_transfer' => :'accept_wire_transfer',
+        :'account_number' => :'account_number',
+        :'accounting_code' => :'accounting_code',
+        :'bank_address' => :'bank_address',
+        :'deposit_to_account' => :'deposit_to_account',
+        :'intermediate_routing_number' => :'intermediate_routing_number',
         :'restrictions' => :'restrictions',
-        :'wire_transfer_accounting_code' => :'wireTransferAccountingCode',
-        :'wire_transfer_account_number' => :'wireTransferAccountNumber',
-        :'wire_transfer_bank_address' => :'wireTransferBankAddress',
-        :'wire_transfer_deposit_to_account' => :'wireTransferDepositToAccount',
-        :'wire_transfer_intermediate_routing_number' => :'wireTransferIntermediateRoutingNumber',
-        :'wire_transfer_routing_number' => :'wireTransferRoutingNumber',
-        :'wire_transfer_surcharge_accounting_code' => :'wireTransferSurchargeAccountingCode',
-        :'wire_transfer_surcharge_fee' => :'wireTransferSurchargeFee',
-        :'wire_transfer_surcharge_perc' => :'wireTransferSurchargePerc'
+        :'routing_number' => :'routing_number',
+        :'surcharge_accounting_code' => :'surcharge_accounting_code',
+        :'surcharge_fee' => :'surcharge_fee',
+        :'surcharge_percentage' => :'surcharge_percentage'
       }
     end
 
@@ -57,16 +67,16 @@ module UltracartClient
     def self.swagger_types
       {
         :'accept_wire_transfer' => :'BOOLEAN',
+        :'account_number' => :'String',
+        :'accounting_code' => :'String',
+        :'bank_address' => :'String',
+        :'deposit_to_account' => :'String',
+        :'intermediate_routing_number' => :'String',
         :'restrictions' => :'PaymentsConfigurationRestrictions',
-        :'wire_transfer_accounting_code' => :'String',
-        :'wire_transfer_account_number' => :'String',
-        :'wire_transfer_bank_address' => :'String',
-        :'wire_transfer_deposit_to_account' => :'String',
-        :'wire_transfer_intermediate_routing_number' => :'String',
-        :'wire_transfer_routing_number' => :'String',
-        :'wire_transfer_surcharge_accounting_code' => :'String',
-        :'wire_transfer_surcharge_fee' => :'String',
-        :'wire_transfer_surcharge_perc' => :'String'
+        :'routing_number' => :'String',
+        :'surcharge_accounting_code' => :'String',
+        :'surcharge_fee' => :'String',
+        :'surcharge_percentage' => :'String'
       }
     end
 
@@ -78,48 +88,48 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'acceptWireTransfer')
-        self.accept_wire_transfer = attributes[:'acceptWireTransfer']
+      if attributes.has_key?(:'accept_wire_transfer')
+        self.accept_wire_transfer = attributes[:'accept_wire_transfer']
+      end
+
+      if attributes.has_key?(:'account_number')
+        self.account_number = attributes[:'account_number']
+      end
+
+      if attributes.has_key?(:'accounting_code')
+        self.accounting_code = attributes[:'accounting_code']
+      end
+
+      if attributes.has_key?(:'bank_address')
+        self.bank_address = attributes[:'bank_address']
+      end
+
+      if attributes.has_key?(:'deposit_to_account')
+        self.deposit_to_account = attributes[:'deposit_to_account']
+      end
+
+      if attributes.has_key?(:'intermediate_routing_number')
+        self.intermediate_routing_number = attributes[:'intermediate_routing_number']
       end
 
       if attributes.has_key?(:'restrictions')
         self.restrictions = attributes[:'restrictions']
       end
 
-      if attributes.has_key?(:'wireTransferAccountingCode')
-        self.wire_transfer_accounting_code = attributes[:'wireTransferAccountingCode']
+      if attributes.has_key?(:'routing_number')
+        self.routing_number = attributes[:'routing_number']
       end
 
-      if attributes.has_key?(:'wireTransferAccountNumber')
-        self.wire_transfer_account_number = attributes[:'wireTransferAccountNumber']
+      if attributes.has_key?(:'surcharge_accounting_code')
+        self.surcharge_accounting_code = attributes[:'surcharge_accounting_code']
       end
 
-      if attributes.has_key?(:'wireTransferBankAddress')
-        self.wire_transfer_bank_address = attributes[:'wireTransferBankAddress']
+      if attributes.has_key?(:'surcharge_fee')
+        self.surcharge_fee = attributes[:'surcharge_fee']
       end
 
-      if attributes.has_key?(:'wireTransferDepositToAccount')
-        self.wire_transfer_deposit_to_account = attributes[:'wireTransferDepositToAccount']
-      end
-
-      if attributes.has_key?(:'wireTransferIntermediateRoutingNumber')
-        self.wire_transfer_intermediate_routing_number = attributes[:'wireTransferIntermediateRoutingNumber']
-      end
-
-      if attributes.has_key?(:'wireTransferRoutingNumber')
-        self.wire_transfer_routing_number = attributes[:'wireTransferRoutingNumber']
-      end
-
-      if attributes.has_key?(:'wireTransferSurchargeAccountingCode')
-        self.wire_transfer_surcharge_accounting_code = attributes[:'wireTransferSurchargeAccountingCode']
-      end
-
-      if attributes.has_key?(:'wireTransferSurchargeFee')
-        self.wire_transfer_surcharge_fee = attributes[:'wireTransferSurchargeFee']
-      end
-
-      if attributes.has_key?(:'wireTransferSurchargePerc')
-        self.wire_transfer_surcharge_perc = attributes[:'wireTransferSurchargePerc']
+      if attributes.has_key?(:'surcharge_percentage')
+        self.surcharge_percentage = attributes[:'surcharge_percentage']
       end
     end
 
@@ -142,16 +152,16 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           accept_wire_transfer == o.accept_wire_transfer &&
+          account_number == o.account_number &&
+          accounting_code == o.accounting_code &&
+          bank_address == o.bank_address &&
+          deposit_to_account == o.deposit_to_account &&
+          intermediate_routing_number == o.intermediate_routing_number &&
           restrictions == o.restrictions &&
-          wire_transfer_accounting_code == o.wire_transfer_accounting_code &&
-          wire_transfer_account_number == o.wire_transfer_account_number &&
-          wire_transfer_bank_address == o.wire_transfer_bank_address &&
-          wire_transfer_deposit_to_account == o.wire_transfer_deposit_to_account &&
-          wire_transfer_intermediate_routing_number == o.wire_transfer_intermediate_routing_number &&
-          wire_transfer_routing_number == o.wire_transfer_routing_number &&
-          wire_transfer_surcharge_accounting_code == o.wire_transfer_surcharge_accounting_code &&
-          wire_transfer_surcharge_fee == o.wire_transfer_surcharge_fee &&
-          wire_transfer_surcharge_perc == o.wire_transfer_surcharge_perc
+          routing_number == o.routing_number &&
+          surcharge_accounting_code == o.surcharge_accounting_code &&
+          surcharge_fee == o.surcharge_fee &&
+          surcharge_percentage == o.surcharge_percentage
     end
 
     # @see the `==` method
@@ -163,7 +173,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_wire_transfer, restrictions, wire_transfer_accounting_code, wire_transfer_account_number, wire_transfer_bank_address, wire_transfer_deposit_to_account, wire_transfer_intermediate_routing_number, wire_transfer_routing_number, wire_transfer_surcharge_accounting_code, wire_transfer_surcharge_fee, wire_transfer_surcharge_perc].hash
+      [accept_wire_transfer, account_number, accounting_code, bank_address, deposit_to_account, intermediate_routing_number, restrictions, routing_number, surcharge_accounting_code, surcharge_fee, surcharge_percentage].hash
     end
 
     # Builds the object from hash

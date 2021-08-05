@@ -3,13 +3,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accept_amazon** | **BOOLEAN** |  | [optional] 
-**amazon_access_key_id** | **String** |  | [optional] 
-**amazon_accounting_code** | **String** |  | [optional] 
-**amazon_deposit_to_account** | **String** |  | [optional] 
-**amazon_merchant_id** | **String** |  | [optional] 
-**amazon_sandbox** | **BOOLEAN** |  | [optional] 
-**amazon_secret_access_key** | **String** |  | [optional] 
+**accept_amazon** | **BOOLEAN** | Master flag to determine if this merchant accepts Pay by Amazon | [optional] 
+**access_key_id** | **String** | Amazon access key ID | [optional] 
+**accounting_code** | **String** | Optional accounting code for use with Quickbooks integrations | [optional] 
+**amazon_merchant_id** | **String** | Amazon merchant ID | [optional] 
+**deposit_to_account** | **String** | Optional deposit to account field for use with Quickbooks integrations | [optional] 
 **restrictions** | [**PaymentsConfigurationRestrictions**](PaymentsConfigurationRestrictions.md) |  | [optional] 
+**sandbox** | **BOOLEAN** | True if transactions should run against the Amazon sandbox.  Useful for testing not configurations | [optional] 
+**secret_access_key** | **String** | Amazon secret access key | [optional] 
 
 

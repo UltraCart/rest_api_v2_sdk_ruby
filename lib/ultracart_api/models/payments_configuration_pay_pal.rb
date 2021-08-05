@@ -14,131 +14,181 @@ require 'date'
 
 module UltracartClient
   class PaymentsConfigurationPayPal
-    attr_accessor :accept_pay_pal
+    # Master flag that determine if PayPal is an active payment for this account
+    attr_accessor :accept_paypal
 
-    attr_accessor :paypal_accounting_code
+    # Optional accounting code that is set to Quickbooks when an order uses this payment method.
+    attr_accessor :accounting_code
 
-    attr_accessor :paypal_api_password
+    # PayPal API password
+    attr_accessor :api_password
 
-    attr_accessor :paypal_api_user_name
+    # PayPal API username
+    attr_accessor :api_username
 
-    attr_accessor :paypal_certificate_on_file
+    # (Legacy) true if there is a PayPal certificate already on file. Used to manage the internal UI
+    attr_accessor :certificate_on_file
 
-    attr_accessor :paypal_deposit_to_account
+    # The account to deposit funds
+    attr_accessor :deposit_to_account
 
-    attr_accessor :paypal_email
+    # The main PayPal email address
+    attr_accessor :email
 
-    attr_accessor :paypal_environment
+    # PayPal configuration, live or sandbox
+    attr_accessor :environment
 
-    attr_accessor :paypal_header_image_url
+    # The URL for the PayPal header
+    attr_accessor :header_image_url
 
-    attr_accessor :paypal_hide_bill_me_later
+    # True if the Bill Me Later button should be hidden during checkout
+    attr_accessor :hide_bill_me_later
 
-    attr_accessor :paypal_hide_express_checkout_on_view_cart
+    # True if the PayPal express checkout button should be hidden on the view cart page.  This will force the customer to enter address information before being able to checkout with PayPal
+    attr_accessor :hide_express_checkout_on_view_cart
 
-    attr_accessor :paypal_hide_for_unshipped_orders
+    # True if PayPal should be hidden for orders with no shippable product, such as digital orders
+    attr_accessor :hide_for_unshipped_orders
 
-    attr_accessor :paypal_hold_in_ar
+    # If true, PayPal orders are held in Accounts Receivable for review
+    attr_accessor :hold_in_ar
 
-    attr_accessor :paypal_landing_page
+    # PayPal landing page
+    attr_accessor :landing_page
 
-    attr_accessor :paypal_mode
+    # The PayPal mode
+    attr_accessor :mode
 
-    attr_accessor :paypal_private_key_password
+    # PayPal API private key password
+    attr_accessor :private_key_password
 
-    attr_accessor :paypal_processing_fee
+    # Optional additional fee to charge if PayPal is used.  It is rare for this to be used.
+    attr_accessor :processing_fee
 
-    attr_accessor :paypal_processing_perc
+    # The processing percentage charged by PayPal
+    attr_accessor :processing_percentage
 
-    attr_accessor :paypal_send_recurring
-
-    attr_accessor :paypal_show_card_logos_not_directly_supported
-
-    attr_accessor :paypal_show_signature
-
-    attr_accessor :paypal_signature
-
-    attr_accessor :paypal_solution_type
-
-    attr_accessor :paypal_summary_email
-
-    attr_accessor :paypal_summary_mode
-
-    attr_accessor :paypal_zero_dollar_penny
-
-    attr_accessor :push_pay_pal
+    # True if the internal UI should recommend opening a PayPal account
+    attr_accessor :push_paypal
 
     attr_accessor :restrictions
 
-    attr_accessor :short_pay_pal_marketing_text
+    # True if UltraCart should send recurring orders to PayPal.  There are restrictions to what PayPal will accept for recurring orders.  Be careful.
+    attr_accessor :send_recurring
+
+    # Short marketing text
+    attr_accessor :short_paypal_marketing_text
+
+    # internal ui flag
+    attr_accessor :show_card_logos_not_directly_supported
+
+    # Internal flag used to manage UI
+    attr_accessor :show_signature
+
+    # PayPal signature
+    attr_accessor :signature
+
+    # PayPal solution type
+    attr_accessor :solution_type
+
+    # The email where PayPal summaries should be sent
+    attr_accessor :summary_email
+
+    # Description of what mode PayPal is operating
+    attr_accessor :summary_mode
+
+    # Send free items to PayPal as one cent items and subtract this penny from shipping.  PayPal does not allow the sale of free items.
+    attr_accessor :zero_dollar_penny
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_pay_pal' => :'acceptPayPal',
-        :'paypal_accounting_code' => :'paypalAccountingCode',
-        :'paypal_api_password' => :'paypalApiPassword',
-        :'paypal_api_user_name' => :'paypalApiUserName',
-        :'paypal_certificate_on_file' => :'paypalCertificateOnFile',
-        :'paypal_deposit_to_account' => :'paypalDepositToAccount',
-        :'paypal_email' => :'paypalEmail',
-        :'paypal_environment' => :'paypalEnvironment',
-        :'paypal_header_image_url' => :'paypalHeaderImageUrl',
-        :'paypal_hide_bill_me_later' => :'paypalHideBillMeLater',
-        :'paypal_hide_express_checkout_on_view_cart' => :'paypalHideExpressCheckoutOnViewCart',
-        :'paypal_hide_for_unshipped_orders' => :'paypalHideForUnshippedOrders',
-        :'paypal_hold_in_ar' => :'paypalHoldInAR',
-        :'paypal_landing_page' => :'paypalLandingPage',
-        :'paypal_mode' => :'paypalMode',
-        :'paypal_private_key_password' => :'paypalPrivateKeyPassword',
-        :'paypal_processing_fee' => :'paypalProcessingFee',
-        :'paypal_processing_perc' => :'paypalProcessingPerc',
-        :'paypal_send_recurring' => :'paypalSendRecurring',
-        :'paypal_show_card_logos_not_directly_supported' => :'paypalShowCardLogosNotDirectlySupported',
-        :'paypal_show_signature' => :'paypalShowSignature',
-        :'paypal_signature' => :'paypalSignature',
-        :'paypal_solution_type' => :'paypalSolutionType',
-        :'paypal_summary_email' => :'paypalSummaryEmail',
-        :'paypal_summary_mode' => :'paypalSummaryMode',
-        :'paypal_zero_dollar_penny' => :'paypalZeroDollarPenny',
-        :'push_pay_pal' => :'pushPayPal',
+        :'accept_paypal' => :'accept_paypal',
+        :'accounting_code' => :'accounting_code',
+        :'api_password' => :'api_password',
+        :'api_username' => :'api_username',
+        :'certificate_on_file' => :'certificate_on_file',
+        :'deposit_to_account' => :'deposit_to_account',
+        :'email' => :'email',
+        :'environment' => :'environment',
+        :'header_image_url' => :'header_image_url',
+        :'hide_bill_me_later' => :'hide_bill_me_later',
+        :'hide_express_checkout_on_view_cart' => :'hide_express_checkout_on_view_cart',
+        :'hide_for_unshipped_orders' => :'hide_for_unshipped_orders',
+        :'hold_in_ar' => :'hold_in_ar',
+        :'landing_page' => :'landing_page',
+        :'mode' => :'mode',
+        :'private_key_password' => :'private_key_password',
+        :'processing_fee' => :'processing_fee',
+        :'processing_percentage' => :'processing_percentage',
+        :'push_paypal' => :'push_paypal',
         :'restrictions' => :'restrictions',
-        :'short_pay_pal_marketing_text' => :'shortPayPalMarketingText'
+        :'send_recurring' => :'send_recurring',
+        :'short_paypal_marketing_text' => :'short_paypal_marketing_text',
+        :'show_card_logos_not_directly_supported' => :'show_card_logos_not_directly_supported',
+        :'show_signature' => :'show_signature',
+        :'signature' => :'signature',
+        :'solution_type' => :'solution_type',
+        :'summary_email' => :'summary_email',
+        :'summary_mode' => :'summary_mode',
+        :'zero_dollar_penny' => :'zero_dollar_penny'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'accept_pay_pal' => :'BOOLEAN',
-        :'paypal_accounting_code' => :'String',
-        :'paypal_api_password' => :'String',
-        :'paypal_api_user_name' => :'String',
-        :'paypal_certificate_on_file' => :'BOOLEAN',
-        :'paypal_deposit_to_account' => :'String',
-        :'paypal_email' => :'String',
-        :'paypal_environment' => :'String',
-        :'paypal_header_image_url' => :'String',
-        :'paypal_hide_bill_me_later' => :'BOOLEAN',
-        :'paypal_hide_express_checkout_on_view_cart' => :'BOOLEAN',
-        :'paypal_hide_for_unshipped_orders' => :'BOOLEAN',
-        :'paypal_hold_in_ar' => :'BOOLEAN',
-        :'paypal_landing_page' => :'String',
-        :'paypal_mode' => :'String',
-        :'paypal_private_key_password' => :'String',
-        :'paypal_processing_fee' => :'String',
-        :'paypal_processing_perc' => :'String',
-        :'paypal_send_recurring' => :'String',
-        :'paypal_show_card_logos_not_directly_supported' => :'BOOLEAN',
-        :'paypal_show_signature' => :'BOOLEAN',
-        :'paypal_signature' => :'String',
-        :'paypal_solution_type' => :'String',
-        :'paypal_summary_email' => :'String',
-        :'paypal_summary_mode' => :'String',
-        :'paypal_zero_dollar_penny' => :'BOOLEAN',
-        :'push_pay_pal' => :'BOOLEAN',
+        :'accept_paypal' => :'BOOLEAN',
+        :'accounting_code' => :'String',
+        :'api_password' => :'String',
+        :'api_username' => :'String',
+        :'certificate_on_file' => :'BOOLEAN',
+        :'deposit_to_account' => :'String',
+        :'email' => :'String',
+        :'environment' => :'String',
+        :'header_image_url' => :'String',
+        :'hide_bill_me_later' => :'BOOLEAN',
+        :'hide_express_checkout_on_view_cart' => :'BOOLEAN',
+        :'hide_for_unshipped_orders' => :'BOOLEAN',
+        :'hold_in_ar' => :'BOOLEAN',
+        :'landing_page' => :'String',
+        :'mode' => :'String',
+        :'private_key_password' => :'String',
+        :'processing_fee' => :'String',
+        :'processing_percentage' => :'String',
+        :'push_paypal' => :'BOOLEAN',
         :'restrictions' => :'PaymentsConfigurationRestrictions',
-        :'short_pay_pal_marketing_text' => :'BOOLEAN'
+        :'send_recurring' => :'BOOLEAN',
+        :'short_paypal_marketing_text' => :'BOOLEAN',
+        :'show_card_logos_not_directly_supported' => :'BOOLEAN',
+        :'show_signature' => :'BOOLEAN',
+        :'signature' => :'String',
+        :'solution_type' => :'String',
+        :'summary_email' => :'String',
+        :'summary_mode' => :'String',
+        :'zero_dollar_penny' => :'BOOLEAN'
       }
     end
 
@@ -150,120 +200,120 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'acceptPayPal')
-        self.accept_pay_pal = attributes[:'acceptPayPal']
+      if attributes.has_key?(:'accept_paypal')
+        self.accept_paypal = attributes[:'accept_paypal']
       end
 
-      if attributes.has_key?(:'paypalAccountingCode')
-        self.paypal_accounting_code = attributes[:'paypalAccountingCode']
+      if attributes.has_key?(:'accounting_code')
+        self.accounting_code = attributes[:'accounting_code']
       end
 
-      if attributes.has_key?(:'paypalApiPassword')
-        self.paypal_api_password = attributes[:'paypalApiPassword']
+      if attributes.has_key?(:'api_password')
+        self.api_password = attributes[:'api_password']
       end
 
-      if attributes.has_key?(:'paypalApiUserName')
-        self.paypal_api_user_name = attributes[:'paypalApiUserName']
+      if attributes.has_key?(:'api_username')
+        self.api_username = attributes[:'api_username']
       end
 
-      if attributes.has_key?(:'paypalCertificateOnFile')
-        self.paypal_certificate_on_file = attributes[:'paypalCertificateOnFile']
+      if attributes.has_key?(:'certificate_on_file')
+        self.certificate_on_file = attributes[:'certificate_on_file']
       end
 
-      if attributes.has_key?(:'paypalDepositToAccount')
-        self.paypal_deposit_to_account = attributes[:'paypalDepositToAccount']
+      if attributes.has_key?(:'deposit_to_account')
+        self.deposit_to_account = attributes[:'deposit_to_account']
       end
 
-      if attributes.has_key?(:'paypalEmail')
-        self.paypal_email = attributes[:'paypalEmail']
+      if attributes.has_key?(:'email')
+        self.email = attributes[:'email']
       end
 
-      if attributes.has_key?(:'paypalEnvironment')
-        self.paypal_environment = attributes[:'paypalEnvironment']
+      if attributes.has_key?(:'environment')
+        self.environment = attributes[:'environment']
       end
 
-      if attributes.has_key?(:'paypalHeaderImageUrl')
-        self.paypal_header_image_url = attributes[:'paypalHeaderImageUrl']
+      if attributes.has_key?(:'header_image_url')
+        self.header_image_url = attributes[:'header_image_url']
       end
 
-      if attributes.has_key?(:'paypalHideBillMeLater')
-        self.paypal_hide_bill_me_later = attributes[:'paypalHideBillMeLater']
+      if attributes.has_key?(:'hide_bill_me_later')
+        self.hide_bill_me_later = attributes[:'hide_bill_me_later']
       end
 
-      if attributes.has_key?(:'paypalHideExpressCheckoutOnViewCart')
-        self.paypal_hide_express_checkout_on_view_cart = attributes[:'paypalHideExpressCheckoutOnViewCart']
+      if attributes.has_key?(:'hide_express_checkout_on_view_cart')
+        self.hide_express_checkout_on_view_cart = attributes[:'hide_express_checkout_on_view_cart']
       end
 
-      if attributes.has_key?(:'paypalHideForUnshippedOrders')
-        self.paypal_hide_for_unshipped_orders = attributes[:'paypalHideForUnshippedOrders']
+      if attributes.has_key?(:'hide_for_unshipped_orders')
+        self.hide_for_unshipped_orders = attributes[:'hide_for_unshipped_orders']
       end
 
-      if attributes.has_key?(:'paypalHoldInAR')
-        self.paypal_hold_in_ar = attributes[:'paypalHoldInAR']
+      if attributes.has_key?(:'hold_in_ar')
+        self.hold_in_ar = attributes[:'hold_in_ar']
       end
 
-      if attributes.has_key?(:'paypalLandingPage')
-        self.paypal_landing_page = attributes[:'paypalLandingPage']
+      if attributes.has_key?(:'landing_page')
+        self.landing_page = attributes[:'landing_page']
       end
 
-      if attributes.has_key?(:'paypalMode')
-        self.paypal_mode = attributes[:'paypalMode']
+      if attributes.has_key?(:'mode')
+        self.mode = attributes[:'mode']
       end
 
-      if attributes.has_key?(:'paypalPrivateKeyPassword')
-        self.paypal_private_key_password = attributes[:'paypalPrivateKeyPassword']
+      if attributes.has_key?(:'private_key_password')
+        self.private_key_password = attributes[:'private_key_password']
       end
 
-      if attributes.has_key?(:'paypalProcessingFee')
-        self.paypal_processing_fee = attributes[:'paypalProcessingFee']
+      if attributes.has_key?(:'processing_fee')
+        self.processing_fee = attributes[:'processing_fee']
       end
 
-      if attributes.has_key?(:'paypalProcessingPerc')
-        self.paypal_processing_perc = attributes[:'paypalProcessingPerc']
+      if attributes.has_key?(:'processing_percentage')
+        self.processing_percentage = attributes[:'processing_percentage']
       end
 
-      if attributes.has_key?(:'paypalSendRecurring')
-        self.paypal_send_recurring = attributes[:'paypalSendRecurring']
-      end
-
-      if attributes.has_key?(:'paypalShowCardLogosNotDirectlySupported')
-        self.paypal_show_card_logos_not_directly_supported = attributes[:'paypalShowCardLogosNotDirectlySupported']
-      end
-
-      if attributes.has_key?(:'paypalShowSignature')
-        self.paypal_show_signature = attributes[:'paypalShowSignature']
-      end
-
-      if attributes.has_key?(:'paypalSignature')
-        self.paypal_signature = attributes[:'paypalSignature']
-      end
-
-      if attributes.has_key?(:'paypalSolutionType')
-        self.paypal_solution_type = attributes[:'paypalSolutionType']
-      end
-
-      if attributes.has_key?(:'paypalSummaryEmail')
-        self.paypal_summary_email = attributes[:'paypalSummaryEmail']
-      end
-
-      if attributes.has_key?(:'paypalSummaryMode')
-        self.paypal_summary_mode = attributes[:'paypalSummaryMode']
-      end
-
-      if attributes.has_key?(:'paypalZeroDollarPenny')
-        self.paypal_zero_dollar_penny = attributes[:'paypalZeroDollarPenny']
-      end
-
-      if attributes.has_key?(:'pushPayPal')
-        self.push_pay_pal = attributes[:'pushPayPal']
+      if attributes.has_key?(:'push_paypal')
+        self.push_paypal = attributes[:'push_paypal']
       end
 
       if attributes.has_key?(:'restrictions')
         self.restrictions = attributes[:'restrictions']
       end
 
-      if attributes.has_key?(:'shortPayPalMarketingText')
-        self.short_pay_pal_marketing_text = attributes[:'shortPayPalMarketingText']
+      if attributes.has_key?(:'send_recurring')
+        self.send_recurring = attributes[:'send_recurring']
+      end
+
+      if attributes.has_key?(:'short_paypal_marketing_text')
+        self.short_paypal_marketing_text = attributes[:'short_paypal_marketing_text']
+      end
+
+      if attributes.has_key?(:'show_card_logos_not_directly_supported')
+        self.show_card_logos_not_directly_supported = attributes[:'show_card_logos_not_directly_supported']
+      end
+
+      if attributes.has_key?(:'show_signature')
+        self.show_signature = attributes[:'show_signature']
+      end
+
+      if attributes.has_key?(:'signature')
+        self.signature = attributes[:'signature']
+      end
+
+      if attributes.has_key?(:'solution_type')
+        self.solution_type = attributes[:'solution_type']
+      end
+
+      if attributes.has_key?(:'summary_email')
+        self.summary_email = attributes[:'summary_email']
+      end
+
+      if attributes.has_key?(:'summary_mode')
+        self.summary_mode = attributes[:'summary_mode']
+      end
+
+      if attributes.has_key?(:'zero_dollar_penny')
+        self.zero_dollar_penny = attributes[:'zero_dollar_penny']
       end
     end
 
@@ -277,7 +327,55 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      environment_validator = EnumAttributeValidator.new('String', ['Live', 'Sandbox'])
+      return false unless environment_validator.valid?(@environment)
+      landing_page_validator = EnumAttributeValidator.new('String', ['Billing', 'Login'])
+      return false unless landing_page_validator.valid?(@landing_page)
+      mode_validator = EnumAttributeValidator.new('String', ['WPPECO', 'WPPECDP'])
+      return false unless mode_validator.valid?(@mode)
+      solution_type_validator = EnumAttributeValidator.new('String', ['Sole', 'Mark'])
+      return false unless solution_type_validator.valid?(@solution_type)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] environment Object to be assigned
+    def environment=(environment)
+      validator = EnumAttributeValidator.new('String', ['Live', 'Sandbox'])
+      unless validator.valid?(environment)
+        fail ArgumentError, 'invalid value for "environment", must be one of #{validator.allowable_values}.'
+      end
+      @environment = environment
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] landing_page Object to be assigned
+    def landing_page=(landing_page)
+      validator = EnumAttributeValidator.new('String', ['Billing', 'Login'])
+      unless validator.valid?(landing_page)
+        fail ArgumentError, 'invalid value for "landing_page", must be one of #{validator.allowable_values}.'
+      end
+      @landing_page = landing_page
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] mode Object to be assigned
+    def mode=(mode)
+      validator = EnumAttributeValidator.new('String', ['WPPECO', 'WPPECDP'])
+      unless validator.valid?(mode)
+        fail ArgumentError, 'invalid value for "mode", must be one of #{validator.allowable_values}.'
+      end
+      @mode = mode
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] solution_type Object to be assigned
+    def solution_type=(solution_type)
+      validator = EnumAttributeValidator.new('String', ['Sole', 'Mark'])
+      unless validator.valid?(solution_type)
+        fail ArgumentError, 'invalid value for "solution_type", must be one of #{validator.allowable_values}.'
+      end
+      @solution_type = solution_type
     end
 
     # Checks equality by comparing each attribute.
@@ -285,35 +383,35 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          accept_pay_pal == o.accept_pay_pal &&
-          paypal_accounting_code == o.paypal_accounting_code &&
-          paypal_api_password == o.paypal_api_password &&
-          paypal_api_user_name == o.paypal_api_user_name &&
-          paypal_certificate_on_file == o.paypal_certificate_on_file &&
-          paypal_deposit_to_account == o.paypal_deposit_to_account &&
-          paypal_email == o.paypal_email &&
-          paypal_environment == o.paypal_environment &&
-          paypal_header_image_url == o.paypal_header_image_url &&
-          paypal_hide_bill_me_later == o.paypal_hide_bill_me_later &&
-          paypal_hide_express_checkout_on_view_cart == o.paypal_hide_express_checkout_on_view_cart &&
-          paypal_hide_for_unshipped_orders == o.paypal_hide_for_unshipped_orders &&
-          paypal_hold_in_ar == o.paypal_hold_in_ar &&
-          paypal_landing_page == o.paypal_landing_page &&
-          paypal_mode == o.paypal_mode &&
-          paypal_private_key_password == o.paypal_private_key_password &&
-          paypal_processing_fee == o.paypal_processing_fee &&
-          paypal_processing_perc == o.paypal_processing_perc &&
-          paypal_send_recurring == o.paypal_send_recurring &&
-          paypal_show_card_logos_not_directly_supported == o.paypal_show_card_logos_not_directly_supported &&
-          paypal_show_signature == o.paypal_show_signature &&
-          paypal_signature == o.paypal_signature &&
-          paypal_solution_type == o.paypal_solution_type &&
-          paypal_summary_email == o.paypal_summary_email &&
-          paypal_summary_mode == o.paypal_summary_mode &&
-          paypal_zero_dollar_penny == o.paypal_zero_dollar_penny &&
-          push_pay_pal == o.push_pay_pal &&
+          accept_paypal == o.accept_paypal &&
+          accounting_code == o.accounting_code &&
+          api_password == o.api_password &&
+          api_username == o.api_username &&
+          certificate_on_file == o.certificate_on_file &&
+          deposit_to_account == o.deposit_to_account &&
+          email == o.email &&
+          environment == o.environment &&
+          header_image_url == o.header_image_url &&
+          hide_bill_me_later == o.hide_bill_me_later &&
+          hide_express_checkout_on_view_cart == o.hide_express_checkout_on_view_cart &&
+          hide_for_unshipped_orders == o.hide_for_unshipped_orders &&
+          hold_in_ar == o.hold_in_ar &&
+          landing_page == o.landing_page &&
+          mode == o.mode &&
+          private_key_password == o.private_key_password &&
+          processing_fee == o.processing_fee &&
+          processing_percentage == o.processing_percentage &&
+          push_paypal == o.push_paypal &&
           restrictions == o.restrictions &&
-          short_pay_pal_marketing_text == o.short_pay_pal_marketing_text
+          send_recurring == o.send_recurring &&
+          short_paypal_marketing_text == o.short_paypal_marketing_text &&
+          show_card_logos_not_directly_supported == o.show_card_logos_not_directly_supported &&
+          show_signature == o.show_signature &&
+          signature == o.signature &&
+          solution_type == o.solution_type &&
+          summary_email == o.summary_email &&
+          summary_mode == o.summary_mode &&
+          zero_dollar_penny == o.zero_dollar_penny
     end
 
     # @see the `==` method
@@ -325,7 +423,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_pay_pal, paypal_accounting_code, paypal_api_password, paypal_api_user_name, paypal_certificate_on_file, paypal_deposit_to_account, paypal_email, paypal_environment, paypal_header_image_url, paypal_hide_bill_me_later, paypal_hide_express_checkout_on_view_cart, paypal_hide_for_unshipped_orders, paypal_hold_in_ar, paypal_landing_page, paypal_mode, paypal_private_key_password, paypal_processing_fee, paypal_processing_perc, paypal_send_recurring, paypal_show_card_logos_not_directly_supported, paypal_show_signature, paypal_signature, paypal_solution_type, paypal_summary_email, paypal_summary_mode, paypal_zero_dollar_penny, push_pay_pal, restrictions, short_pay_pal_marketing_text].hash
+      [accept_paypal, accounting_code, api_password, api_username, certificate_on_file, deposit_to_account, email, environment, header_image_url, hide_bill_me_later, hide_express_checkout_on_view_cart, hide_for_unshipped_orders, hold_in_ar, landing_page, mode, private_key_password, processing_fee, processing_percentage, push_paypal, restrictions, send_recurring, short_paypal_marketing_text, show_card_logos_not_directly_supported, show_signature, signature, solution_type, summary_email, summary_mode, zero_dollar_penny].hash
     end
 
     # Builds the object from hash

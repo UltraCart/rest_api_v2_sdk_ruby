@@ -14,20 +14,23 @@ require 'date'
 
 module UltracartClient
   class PaymentsConfigurationEcheck
-    attr_accessor :accept_e_check
+    # Master flag indicating this merchant accepts eChecks
+    attr_accessor :accept_echeck
 
-    attr_accessor :e_check_accounting_code
+    # Optional Quickbooks accounting code
+    attr_accessor :accounting_code
 
-    attr_accessor :e_check_deposit_to_account
+    # Optional Quickbooks deposit to account
+    attr_accessor :deposit_to_account
 
     attr_accessor :restrictions
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_e_check' => :'acceptECheck',
-        :'e_check_accounting_code' => :'eCheckAccountingCode',
-        :'e_check_deposit_to_account' => :'eCheckDepositToAccount',
+        :'accept_echeck' => :'accept_echeck',
+        :'accounting_code' => :'accounting_code',
+        :'deposit_to_account' => :'deposit_to_account',
         :'restrictions' => :'restrictions'
       }
     end
@@ -35,9 +38,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'accept_e_check' => :'BOOLEAN',
-        :'e_check_accounting_code' => :'String',
-        :'e_check_deposit_to_account' => :'String',
+        :'accept_echeck' => :'BOOLEAN',
+        :'accounting_code' => :'String',
+        :'deposit_to_account' => :'String',
         :'restrictions' => :'PaymentsConfigurationRestrictions'
       }
     end
@@ -50,16 +53,16 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'acceptECheck')
-        self.accept_e_check = attributes[:'acceptECheck']
+      if attributes.has_key?(:'accept_echeck')
+        self.accept_echeck = attributes[:'accept_echeck']
       end
 
-      if attributes.has_key?(:'eCheckAccountingCode')
-        self.e_check_accounting_code = attributes[:'eCheckAccountingCode']
+      if attributes.has_key?(:'accounting_code')
+        self.accounting_code = attributes[:'accounting_code']
       end
 
-      if attributes.has_key?(:'eCheckDepositToAccount')
-        self.e_check_deposit_to_account = attributes[:'eCheckDepositToAccount']
+      if attributes.has_key?(:'deposit_to_account')
+        self.deposit_to_account = attributes[:'deposit_to_account']
       end
 
       if attributes.has_key?(:'restrictions')
@@ -85,9 +88,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          accept_e_check == o.accept_e_check &&
-          e_check_accounting_code == o.e_check_accounting_code &&
-          e_check_deposit_to_account == o.e_check_deposit_to_account &&
+          accept_echeck == o.accept_echeck &&
+          accounting_code == o.accounting_code &&
+          deposit_to_account == o.deposit_to_account &&
           restrictions == o.restrictions
     end
 
@@ -100,7 +103,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_e_check, e_check_accounting_code, e_check_deposit_to_account, restrictions].hash
+      [accept_echeck, accounting_code, deposit_to_account, restrictions].hash
     end
 
     # Builds the object from hash

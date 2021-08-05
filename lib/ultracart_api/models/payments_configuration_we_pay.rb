@@ -14,93 +14,119 @@ require 'date'
 
 module UltracartClient
   class PaymentsConfigurationWePay
+    # Master flag indicating this merchant accepts UltraCart Payments WePay
     attr_accessor :accept_wepay
 
-    attr_accessor :hide_credit_cards_non_ultra_cart_payments
+    # URI for updating the WePay account
+    attr_accessor :account_update_uri
 
-    attr_accessor :hide_surcharge_content
+    # Address line 1
+    attr_accessor :address1
+
+    # Address line 2
+    attr_accessor :address2
+
+    # For Canadian merchants, true if they wish to accept debit cards
+    attr_accessor :canada_accept_debit_cards
+
+    # City
+    attr_accessor :city
+
+    # Company
+    attr_accessor :company
+
+    # Company description
+    attr_accessor :company_description
+
+    # Console hostname
+    attr_accessor :console_hostname
+
+    # Country
+    attr_accessor :country
+
+    # Base currency for transactions
+    attr_accessor :currency
+
+    # Expected Revenue
+    attr_accessor :expected_revenue
+
+    # Internal flag to aid UI
+    attr_accessor :hide_credit_card_non_ultracart_payments
+
+    # Internal flag to aid UI
+    attr_accessor :hide_surcharge_amount
+
+    # Industry
+    attr_accessor :industry
+
+    # Owner email
+    attr_accessor :owner_email
+
+    # Owner name
+    attr_accessor :owner_name
+
+    # Owner phone
+    attr_accessor :owner_phone
+
+    # Postal code
+    attr_accessor :postal_code
 
     attr_accessor :remove_pay_pal_pro
 
     attr_accessor :restrictions
 
-    attr_accessor :short_pay_pal_marketing_text
+    # Internal UI aid
+    attr_accessor :short_paypal_marketing_text
 
-    attr_accessor :show_ultra_cart_payments_disabled
+    # Internal flag to aid UI
+    attr_accessor :show_ultracart_payments_disabled
 
-    attr_accessor :show_ultra_cart_payments_intro
+    # Internal flag to aid UI
+    attr_accessor :show_ultracart_payments_intro
 
-    attr_accessor :show_ultra_cart_payments_verification
+    # Internal flag to aid UI
+    attr_accessor :show_ultracart_payments_verification
 
-    attr_accessor :show_ultra_cart_payments_verified
+    # Internal flag to aid UI
+    attr_accessor :show_ultracart_payments_verified
 
-    attr_accessor :wepay_account_update_uri
+    # State
+    attr_accessor :state
 
-    attr_accessor :wepay_address1
-
-    attr_accessor :wepay_address2
-
-    attr_accessor :wepay_canada_accept_debit_cards
-
-    attr_accessor :wepay_city
-
-    attr_accessor :wepay_company
-
-    attr_accessor :wepay_company_description
-
-    attr_accessor :wepay_console_hostname
-
-    attr_accessor :wepay_country
-
-    attr_accessor :wepay_currency
-
-    attr_accessor :wepay_expected_revenue
-
-    attr_accessor :wepay_industry
-
-    attr_accessor :wepay_owner_email
-
-    attr_accessor :wepay_owner_name
-
-    attr_accessor :wepay_owner_phone
-
-    attr_accessor :wepay_state
-
-    attr_accessor :wepay_website_url
-
-    attr_accessor :wepay_zip
+    # Website URL
+    attr_accessor :website_url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accept_wepay' => :'acceptWepay',
-        :'hide_credit_cards_non_ultra_cart_payments' => :'hideCreditCardsNonUltraCartPayments',
-        :'hide_surcharge_content' => :'hideSurchargeContent',
+        :'accept_wepay' => :'accept_wepay',
+        :'account_update_uri' => :'account_update_uri',
+        :'address1' => :'address1',
+        :'address2' => :'address2',
+        :'canada_accept_debit_cards' => :'canada_accept_debit_cards',
+        :'city' => :'city',
+        :'company' => :'company',
+        :'company_description' => :'company_description',
+        :'console_hostname' => :'console_hostname',
+        :'country' => :'country',
+        :'currency' => :'currency',
+        :'expected_revenue' => :'expected_revenue',
+        :'hide_credit_card_non_ultracart_payments' => :'hide_credit_card_non_ultracart_payments',
+        :'hide_surcharge_amount' => :'hide_surcharge_amount',
+        :'industry' => :'industry',
+        :'owner_email' => :'owner_email',
+        :'owner_name' => :'owner_name',
+        :'owner_phone' => :'owner_phone',
+        :'postal_code' => :'postal_code',
         :'remove_pay_pal_pro' => :'removePayPalPro',
         :'restrictions' => :'restrictions',
-        :'short_pay_pal_marketing_text' => :'shortPayPalMarketingText',
-        :'show_ultra_cart_payments_disabled' => :'showUltraCartPaymentsDisabled',
-        :'show_ultra_cart_payments_intro' => :'showUltraCartPaymentsIntro',
-        :'show_ultra_cart_payments_verification' => :'showUltraCartPaymentsVerification',
-        :'show_ultra_cart_payments_verified' => :'showUltraCartPaymentsVerified',
-        :'wepay_account_update_uri' => :'wepayAccountUpdateUri',
-        :'wepay_address1' => :'wepayAddress1',
-        :'wepay_address2' => :'wepayAddress2',
-        :'wepay_canada_accept_debit_cards' => :'wepayCanadaAcceptDebitCards',
-        :'wepay_city' => :'wepayCity',
-        :'wepay_company' => :'wepayCompany',
-        :'wepay_company_description' => :'wepayCompanyDescription',
-        :'wepay_console_hostname' => :'wepayConsoleHostname',
-        :'wepay_country' => :'wepayCountry',
-        :'wepay_currency' => :'wepayCurrency',
-        :'wepay_expected_revenue' => :'wepayExpectedRevenue',
-        :'wepay_industry' => :'wepayIndustry',
-        :'wepay_owner_email' => :'wepayOwnerEmail',
-        :'wepay_owner_name' => :'wepayOwnerName',
-        :'wepay_owner_phone' => :'wepayOwnerPhone',
-        :'wepay_state' => :'wepayState',
-        :'wepay_website_url' => :'wepayWebsiteUrl',
-        :'wepay_zip' => :'wepayZip'
+        :'short_paypal_marketing_text' => :'short_paypal_marketing_text',
+        :'show_ultracart_payments_disabled' => :'show_ultracart_payments_disabled',
+        :'show_ultracart_payments_intro' => :'show_ultracart_payments_intro',
+        :'show_ultracart_payments_verification' => :'show_ultracart_payments_verification',
+        :'show_ultracart_payments_verified' => :'show_ultracart_payments_verified',
+        :'state' => :'state',
+        :'website_url' => :'website_url'
       }
     end
 
@@ -108,33 +134,33 @@ module UltracartClient
     def self.swagger_types
       {
         :'accept_wepay' => :'BOOLEAN',
-        :'hide_credit_cards_non_ultra_cart_payments' => :'BOOLEAN',
-        :'hide_surcharge_content' => :'BOOLEAN',
+        :'account_update_uri' => :'String',
+        :'address1' => :'String',
+        :'address2' => :'String',
+        :'canada_accept_debit_cards' => :'BOOLEAN',
+        :'city' => :'String',
+        :'company' => :'String',
+        :'company_description' => :'String',
+        :'console_hostname' => :'String',
+        :'country' => :'String',
+        :'currency' => :'String',
+        :'expected_revenue' => :'String',
+        :'hide_credit_card_non_ultracart_payments' => :'BOOLEAN',
+        :'hide_surcharge_amount' => :'BOOLEAN',
+        :'industry' => :'String',
+        :'owner_email' => :'String',
+        :'owner_name' => :'String',
+        :'owner_phone' => :'String',
+        :'postal_code' => :'String',
         :'remove_pay_pal_pro' => :'BOOLEAN',
         :'restrictions' => :'PaymentsConfigurationRestrictions',
-        :'short_pay_pal_marketing_text' => :'BOOLEAN',
-        :'show_ultra_cart_payments_disabled' => :'BOOLEAN',
-        :'show_ultra_cart_payments_intro' => :'BOOLEAN',
-        :'show_ultra_cart_payments_verification' => :'BOOLEAN',
-        :'show_ultra_cart_payments_verified' => :'BOOLEAN',
-        :'wepay_account_update_uri' => :'String',
-        :'wepay_address1' => :'String',
-        :'wepay_address2' => :'String',
-        :'wepay_canada_accept_debit_cards' => :'BOOLEAN',
-        :'wepay_city' => :'String',
-        :'wepay_company' => :'String',
-        :'wepay_company_description' => :'String',
-        :'wepay_console_hostname' => :'String',
-        :'wepay_country' => :'String',
-        :'wepay_currency' => :'String',
-        :'wepay_expected_revenue' => :'String',
-        :'wepay_industry' => :'String',
-        :'wepay_owner_email' => :'String',
-        :'wepay_owner_name' => :'String',
-        :'wepay_owner_phone' => :'String',
-        :'wepay_state' => :'String',
-        :'wepay_website_url' => :'String',
-        :'wepay_zip' => :'String'
+        :'short_paypal_marketing_text' => :'BOOLEAN',
+        :'show_ultracart_payments_disabled' => :'BOOLEAN',
+        :'show_ultracart_payments_intro' => :'BOOLEAN',
+        :'show_ultracart_payments_verification' => :'BOOLEAN',
+        :'show_ultracart_payments_verified' => :'BOOLEAN',
+        :'state' => :'String',
+        :'website_url' => :'String'
       }
     end
 
@@ -146,16 +172,80 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'acceptWepay')
-        self.accept_wepay = attributes[:'acceptWepay']
+      if attributes.has_key?(:'accept_wepay')
+        self.accept_wepay = attributes[:'accept_wepay']
       end
 
-      if attributes.has_key?(:'hideCreditCardsNonUltraCartPayments')
-        self.hide_credit_cards_non_ultra_cart_payments = attributes[:'hideCreditCardsNonUltraCartPayments']
+      if attributes.has_key?(:'account_update_uri')
+        self.account_update_uri = attributes[:'account_update_uri']
       end
 
-      if attributes.has_key?(:'hideSurchargeContent')
-        self.hide_surcharge_content = attributes[:'hideSurchargeContent']
+      if attributes.has_key?(:'address1')
+        self.address1 = attributes[:'address1']
+      end
+
+      if attributes.has_key?(:'address2')
+        self.address2 = attributes[:'address2']
+      end
+
+      if attributes.has_key?(:'canada_accept_debit_cards')
+        self.canada_accept_debit_cards = attributes[:'canada_accept_debit_cards']
+      end
+
+      if attributes.has_key?(:'city')
+        self.city = attributes[:'city']
+      end
+
+      if attributes.has_key?(:'company')
+        self.company = attributes[:'company']
+      end
+
+      if attributes.has_key?(:'company_description')
+        self.company_description = attributes[:'company_description']
+      end
+
+      if attributes.has_key?(:'console_hostname')
+        self.console_hostname = attributes[:'console_hostname']
+      end
+
+      if attributes.has_key?(:'country')
+        self.country = attributes[:'country']
+      end
+
+      if attributes.has_key?(:'currency')
+        self.currency = attributes[:'currency']
+      end
+
+      if attributes.has_key?(:'expected_revenue')
+        self.expected_revenue = attributes[:'expected_revenue']
+      end
+
+      if attributes.has_key?(:'hide_credit_card_non_ultracart_payments')
+        self.hide_credit_card_non_ultracart_payments = attributes[:'hide_credit_card_non_ultracart_payments']
+      end
+
+      if attributes.has_key?(:'hide_surcharge_amount')
+        self.hide_surcharge_amount = attributes[:'hide_surcharge_amount']
+      end
+
+      if attributes.has_key?(:'industry')
+        self.industry = attributes[:'industry']
+      end
+
+      if attributes.has_key?(:'owner_email')
+        self.owner_email = attributes[:'owner_email']
+      end
+
+      if attributes.has_key?(:'owner_name')
+        self.owner_name = attributes[:'owner_name']
+      end
+
+      if attributes.has_key?(:'owner_phone')
+        self.owner_phone = attributes[:'owner_phone']
+      end
+
+      if attributes.has_key?(:'postal_code')
+        self.postal_code = attributes[:'postal_code']
       end
 
       if attributes.has_key?(:'removePayPalPro')
@@ -166,96 +256,32 @@ module UltracartClient
         self.restrictions = attributes[:'restrictions']
       end
 
-      if attributes.has_key?(:'shortPayPalMarketingText')
-        self.short_pay_pal_marketing_text = attributes[:'shortPayPalMarketingText']
+      if attributes.has_key?(:'short_paypal_marketing_text')
+        self.short_paypal_marketing_text = attributes[:'short_paypal_marketing_text']
       end
 
-      if attributes.has_key?(:'showUltraCartPaymentsDisabled')
-        self.show_ultra_cart_payments_disabled = attributes[:'showUltraCartPaymentsDisabled']
+      if attributes.has_key?(:'show_ultracart_payments_disabled')
+        self.show_ultracart_payments_disabled = attributes[:'show_ultracart_payments_disabled']
       end
 
-      if attributes.has_key?(:'showUltraCartPaymentsIntro')
-        self.show_ultra_cart_payments_intro = attributes[:'showUltraCartPaymentsIntro']
+      if attributes.has_key?(:'show_ultracart_payments_intro')
+        self.show_ultracart_payments_intro = attributes[:'show_ultracart_payments_intro']
       end
 
-      if attributes.has_key?(:'showUltraCartPaymentsVerification')
-        self.show_ultra_cart_payments_verification = attributes[:'showUltraCartPaymentsVerification']
+      if attributes.has_key?(:'show_ultracart_payments_verification')
+        self.show_ultracart_payments_verification = attributes[:'show_ultracart_payments_verification']
       end
 
-      if attributes.has_key?(:'showUltraCartPaymentsVerified')
-        self.show_ultra_cart_payments_verified = attributes[:'showUltraCartPaymentsVerified']
+      if attributes.has_key?(:'show_ultracart_payments_verified')
+        self.show_ultracart_payments_verified = attributes[:'show_ultracart_payments_verified']
       end
 
-      if attributes.has_key?(:'wepayAccountUpdateUri')
-        self.wepay_account_update_uri = attributes[:'wepayAccountUpdateUri']
+      if attributes.has_key?(:'state')
+        self.state = attributes[:'state']
       end
 
-      if attributes.has_key?(:'wepayAddress1')
-        self.wepay_address1 = attributes[:'wepayAddress1']
-      end
-
-      if attributes.has_key?(:'wepayAddress2')
-        self.wepay_address2 = attributes[:'wepayAddress2']
-      end
-
-      if attributes.has_key?(:'wepayCanadaAcceptDebitCards')
-        self.wepay_canada_accept_debit_cards = attributes[:'wepayCanadaAcceptDebitCards']
-      end
-
-      if attributes.has_key?(:'wepayCity')
-        self.wepay_city = attributes[:'wepayCity']
-      end
-
-      if attributes.has_key?(:'wepayCompany')
-        self.wepay_company = attributes[:'wepayCompany']
-      end
-
-      if attributes.has_key?(:'wepayCompanyDescription')
-        self.wepay_company_description = attributes[:'wepayCompanyDescription']
-      end
-
-      if attributes.has_key?(:'wepayConsoleHostname')
-        self.wepay_console_hostname = attributes[:'wepayConsoleHostname']
-      end
-
-      if attributes.has_key?(:'wepayCountry')
-        self.wepay_country = attributes[:'wepayCountry']
-      end
-
-      if attributes.has_key?(:'wepayCurrency')
-        self.wepay_currency = attributes[:'wepayCurrency']
-      end
-
-      if attributes.has_key?(:'wepayExpectedRevenue')
-        self.wepay_expected_revenue = attributes[:'wepayExpectedRevenue']
-      end
-
-      if attributes.has_key?(:'wepayIndustry')
-        self.wepay_industry = attributes[:'wepayIndustry']
-      end
-
-      if attributes.has_key?(:'wepayOwnerEmail')
-        self.wepay_owner_email = attributes[:'wepayOwnerEmail']
-      end
-
-      if attributes.has_key?(:'wepayOwnerName')
-        self.wepay_owner_name = attributes[:'wepayOwnerName']
-      end
-
-      if attributes.has_key?(:'wepayOwnerPhone')
-        self.wepay_owner_phone = attributes[:'wepayOwnerPhone']
-      end
-
-      if attributes.has_key?(:'wepayState')
-        self.wepay_state = attributes[:'wepayState']
-      end
-
-      if attributes.has_key?(:'wepayWebsiteUrl')
-        self.wepay_website_url = attributes[:'wepayWebsiteUrl']
-      end
-
-      if attributes.has_key?(:'wepayZip')
-        self.wepay_zip = attributes[:'wepayZip']
+      if attributes.has_key?(:'website_url')
+        self.website_url = attributes[:'website_url']
       end
     end
 
@@ -278,33 +304,33 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           accept_wepay == o.accept_wepay &&
-          hide_credit_cards_non_ultra_cart_payments == o.hide_credit_cards_non_ultra_cart_payments &&
-          hide_surcharge_content == o.hide_surcharge_content &&
+          account_update_uri == o.account_update_uri &&
+          address1 == o.address1 &&
+          address2 == o.address2 &&
+          canada_accept_debit_cards == o.canada_accept_debit_cards &&
+          city == o.city &&
+          company == o.company &&
+          company_description == o.company_description &&
+          console_hostname == o.console_hostname &&
+          country == o.country &&
+          currency == o.currency &&
+          expected_revenue == o.expected_revenue &&
+          hide_credit_card_non_ultracart_payments == o.hide_credit_card_non_ultracart_payments &&
+          hide_surcharge_amount == o.hide_surcharge_amount &&
+          industry == o.industry &&
+          owner_email == o.owner_email &&
+          owner_name == o.owner_name &&
+          owner_phone == o.owner_phone &&
+          postal_code == o.postal_code &&
           remove_pay_pal_pro == o.remove_pay_pal_pro &&
           restrictions == o.restrictions &&
-          short_pay_pal_marketing_text == o.short_pay_pal_marketing_text &&
-          show_ultra_cart_payments_disabled == o.show_ultra_cart_payments_disabled &&
-          show_ultra_cart_payments_intro == o.show_ultra_cart_payments_intro &&
-          show_ultra_cart_payments_verification == o.show_ultra_cart_payments_verification &&
-          show_ultra_cart_payments_verified == o.show_ultra_cart_payments_verified &&
-          wepay_account_update_uri == o.wepay_account_update_uri &&
-          wepay_address1 == o.wepay_address1 &&
-          wepay_address2 == o.wepay_address2 &&
-          wepay_canada_accept_debit_cards == o.wepay_canada_accept_debit_cards &&
-          wepay_city == o.wepay_city &&
-          wepay_company == o.wepay_company &&
-          wepay_company_description == o.wepay_company_description &&
-          wepay_console_hostname == o.wepay_console_hostname &&
-          wepay_country == o.wepay_country &&
-          wepay_currency == o.wepay_currency &&
-          wepay_expected_revenue == o.wepay_expected_revenue &&
-          wepay_industry == o.wepay_industry &&
-          wepay_owner_email == o.wepay_owner_email &&
-          wepay_owner_name == o.wepay_owner_name &&
-          wepay_owner_phone == o.wepay_owner_phone &&
-          wepay_state == o.wepay_state &&
-          wepay_website_url == o.wepay_website_url &&
-          wepay_zip == o.wepay_zip
+          short_paypal_marketing_text == o.short_paypal_marketing_text &&
+          show_ultracart_payments_disabled == o.show_ultracart_payments_disabled &&
+          show_ultracart_payments_intro == o.show_ultracart_payments_intro &&
+          show_ultracart_payments_verification == o.show_ultracart_payments_verification &&
+          show_ultracart_payments_verified == o.show_ultracart_payments_verified &&
+          state == o.state &&
+          website_url == o.website_url
     end
 
     # @see the `==` method
@@ -316,7 +342,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_wepay, hide_credit_cards_non_ultra_cart_payments, hide_surcharge_content, remove_pay_pal_pro, restrictions, short_pay_pal_marketing_text, show_ultra_cart_payments_disabled, show_ultra_cart_payments_intro, show_ultra_cart_payments_verification, show_ultra_cart_payments_verified, wepay_account_update_uri, wepay_address1, wepay_address2, wepay_canada_accept_debit_cards, wepay_city, wepay_company, wepay_company_description, wepay_console_hostname, wepay_country, wepay_currency, wepay_expected_revenue, wepay_industry, wepay_owner_email, wepay_owner_name, wepay_owner_phone, wepay_state, wepay_website_url, wepay_zip].hash
+      [accept_wepay, account_update_uri, address1, address2, canada_accept_debit_cards, city, company, company_description, console_hostname, country, currency, expected_revenue, hide_credit_card_non_ultracart_payments, hide_surcharge_amount, industry, owner_email, owner_name, owner_phone, postal_code, remove_pay_pal_pro, restrictions, short_paypal_marketing_text, show_ultracart_payments_disabled, show_ultracart_payments_intro, show_ultracart_payments_verification, show_ultracart_payments_verified, state, website_url].hash
     end
 
     # Builds the object from hash
