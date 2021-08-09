@@ -72,7 +72,7 @@ module UltracartClient
         :'charge_during_checkout' => :'BOOLEAN',
         :'collect_cvv2' => :'BOOLEAN',
         :'configured_gateway_details' => :'String',
-        :'failed_attempts' => :'String',
+        :'failed_attempts' => :'Integer',
         :'hide_connect_single_gateway' => :'BOOLEAN',
         :'restrictions' => :'Array<PaymentsConfigurationRestrictions>',
         :'send_customer_billing_update_on_decline' => :'BOOLEAN',

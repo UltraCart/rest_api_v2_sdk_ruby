@@ -78,8 +78,8 @@ module UltracartClient
     def self.swagger_types
       {
         :'descriptions' => :'Array<String>',
-        :'maximum_subtotal' => :'String',
-        :'minimum_subtotal' => :'String',
+        :'maximum_subtotal' => :'Float',
+        :'minimum_subtotal' => :'Float',
         :'payment_method' => :'String',
         :'restriction_alaska_hawaii' => :'String',
         :'restriction_apo_fpo' => :'String',
