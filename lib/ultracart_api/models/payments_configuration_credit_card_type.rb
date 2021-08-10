@@ -90,11 +90,11 @@ module UltracartClient
         :'credit_card' => :'String',
         :'deposit_to_account' => :'String',
         :'enabled' => :'BOOLEAN',
-        :'processing_fee' => :'String',
-        :'processing_percentage' => :'String',
+        :'processing_fee' => :'Float',
+        :'processing_percentage' => :'Float',
         :'surcharge_accounting_code' => :'String',
-        :'transaction_fee' => :'String',
-        :'transaction_percentage' => :'String'
+        :'transaction_fee' => :'Float',
+        :'transaction_percentage' => :'Float'
       }
     end
 
