@@ -7661,6 +7661,65 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Send webhook test
+    # @param storefront_oid 
+    # @param email_commseq_webhook_test_request Email commseq webhook test request
+    # @param [Hash] opts the optional parameters
+    # @return [EmailCommseqEmailSendTestResponse]
+    def send_webhook_test(storefront_oid, email_commseq_webhook_test_request, opts = {})
+      data, _status_code, _headers = send_webhook_test_with_http_info(storefront_oid, email_commseq_webhook_test_request, opts)
+      data
+    end
+
+    # Send webhook test
+    # @param storefront_oid 
+    # @param email_commseq_webhook_test_request Email commseq webhook test request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailCommseqEmailSendTestResponse, Fixnum, Hash)>] EmailCommseqEmailSendTestResponse data, response status code and response headers
+    def send_webhook_test_with_http_info(storefront_oid, email_commseq_webhook_test_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.send_webhook_test ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.send_webhook_test"
+      end
+      # verify the required parameter 'email_commseq_webhook_test_request' is set
+      if @api_client.config.client_side_validation && email_commseq_webhook_test_request.nil?
+        fail ArgumentError, "Missing the required parameter 'email_commseq_webhook_test_request' when calling StorefrontApi.send_webhook_test"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/webhooks/test'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(email_commseq_webhook_test_request)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailCommseqEmailSendTestResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#send_webhook_test\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Start email campaign
     # @param storefront_oid 
     # @param email_campaign_uuid 
