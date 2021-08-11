@@ -75,8 +75,8 @@ module UltracartClient
         :'restrictions' => :'PaymentsConfigurationRestrictions',
         :'routing_number' => :'String',
         :'surcharge_accounting_code' => :'String',
-        :'surcharge_fee' => :'String',
-        :'surcharge_percentage' => :'String'
+        :'surcharge_fee' => :'Float',
+        :'surcharge_percentage' => :'Float'
       }
     end
 

@@ -38,7 +38,7 @@ module UltracartClient
     # Indicates this order was already paid for via a channel purchase and no payment collection should be attempted
     attr_accessor :skip_payment_processing
 
-    # Instructs UltraCart to skip shipping department and mark this order as fully complete.  Set this flag if you have already shipped product for this order.
+    # Instructs UltraCart to skip shipping department and mark this order as fully complete.  This flag defaults to true.  Set this flag to false to shipped product for this order.
     attr_accessor :store_completed
 
     # If true, any failed payment will place the order in Accounts Receivable rather than rejecting it.
