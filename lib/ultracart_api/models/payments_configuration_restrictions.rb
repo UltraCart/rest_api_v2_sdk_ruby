@@ -54,6 +54,28 @@ module UltracartClient
 
     attr_accessor :themes
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -173,7 +195,115 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      restriction_alaska_hawaii_validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      return false unless restriction_alaska_hawaii_validator.valid?(@restriction_alaska_hawaii)
+      restriction_apo_fpo_validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      return false unless restriction_apo_fpo_validator.valid?(@restriction_apo_fpo)
+      restriction_canada_validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      return false unless restriction_canada_validator.valid?(@restriction_canada)
+      restriction_continental_us_validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      return false unless restriction_continental_us_validator.valid?(@restriction_continental_us)
+      restriction_domestic_only_validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      return false unless restriction_domestic_only_validator.valid?(@restriction_domestic_only)
+      restriction_international_only_validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      return false unless restriction_international_only_validator.valid?(@restriction_international_only)
+      restriction_po_box_validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      return false unless restriction_po_box_validator.valid?(@restriction_po_box)
+      restriction_puerto_rico_validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      return false unless restriction_puerto_rico_validator.valid?(@restriction_puerto_rico)
+      restriction_us_territories_validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      return false unless restriction_us_territories_validator.valid?(@restriction_us_territories)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] restriction_alaska_hawaii Object to be assigned
+    def restriction_alaska_hawaii=(restriction_alaska_hawaii)
+      validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      unless validator.valid?(restriction_alaska_hawaii)
+        fail ArgumentError, 'invalid value for "restriction_alaska_hawaii", must be one of #{validator.allowable_values}.'
+      end
+      @restriction_alaska_hawaii = restriction_alaska_hawaii
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] restriction_apo_fpo Object to be assigned
+    def restriction_apo_fpo=(restriction_apo_fpo)
+      validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      unless validator.valid?(restriction_apo_fpo)
+        fail ArgumentError, 'invalid value for "restriction_apo_fpo", must be one of #{validator.allowable_values}.'
+      end
+      @restriction_apo_fpo = restriction_apo_fpo
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] restriction_canada Object to be assigned
+    def restriction_canada=(restriction_canada)
+      validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      unless validator.valid?(restriction_canada)
+        fail ArgumentError, 'invalid value for "restriction_canada", must be one of #{validator.allowable_values}.'
+      end
+      @restriction_canada = restriction_canada
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] restriction_continental_us Object to be assigned
+    def restriction_continental_us=(restriction_continental_us)
+      validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      unless validator.valid?(restriction_continental_us)
+        fail ArgumentError, 'invalid value for "restriction_continental_us", must be one of #{validator.allowable_values}.'
+      end
+      @restriction_continental_us = restriction_continental_us
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] restriction_domestic_only Object to be assigned
+    def restriction_domestic_only=(restriction_domestic_only)
+      validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      unless validator.valid?(restriction_domestic_only)
+        fail ArgumentError, 'invalid value for "restriction_domestic_only", must be one of #{validator.allowable_values}.'
+      end
+      @restriction_domestic_only = restriction_domestic_only
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] restriction_international_only Object to be assigned
+    def restriction_international_only=(restriction_international_only)
+      validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      unless validator.valid?(restriction_international_only)
+        fail ArgumentError, 'invalid value for "restriction_international_only", must be one of #{validator.allowable_values}.'
+      end
+      @restriction_international_only = restriction_international_only
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] restriction_po_box Object to be assigned
+    def restriction_po_box=(restriction_po_box)
+      validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      unless validator.valid?(restriction_po_box)
+        fail ArgumentError, 'invalid value for "restriction_po_box", must be one of #{validator.allowable_values}.'
+      end
+      @restriction_po_box = restriction_po_box
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] restriction_puerto_rico Object to be assigned
+    def restriction_puerto_rico=(restriction_puerto_rico)
+      validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      unless validator.valid?(restriction_puerto_rico)
+        fail ArgumentError, 'invalid value for "restriction_puerto_rico", must be one of #{validator.allowable_values}.'
+      end
+      @restriction_puerto_rico = restriction_puerto_rico
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] restriction_us_territories Object to be assigned
+    def restriction_us_territories=(restriction_us_territories)
+      validator = EnumAttributeValidator.new('String', ['invalid', 'invalidOnly', 'valid'])
+      unless validator.valid?(restriction_us_territories)
+        fail ArgumentError, 'invalid value for "restriction_us_territories", must be one of #{validator.allowable_values}.'
+      end
+      @restriction_us_territories = restriction_us_territories
     end
 
     # Checks equality by comparing each attribute.

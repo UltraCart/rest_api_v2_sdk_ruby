@@ -35,6 +35,8 @@ module UltracartClient
     # Optional additional fee applied to order for this card
     attr_accessor :processing_percentage
 
+    attr_accessor :restrictions
+
     # Optional field. If integrated with Quickbooks, this code will be used when informing Quickbooks about any surcharges applied to orders
     attr_accessor :surcharge_accounting_code
 
@@ -76,6 +78,7 @@ module UltracartClient
         :'enabled' => :'enabled',
         :'processing_fee' => :'processing_fee',
         :'processing_percentage' => :'processing_percentage',
+        :'restrictions' => :'restrictions',
         :'surcharge_accounting_code' => :'surcharge_accounting_code',
         :'transaction_fee' => :'transaction_fee',
         :'transaction_percentage' => :'transaction_percentage'
@@ -92,6 +95,7 @@ module UltracartClient
         :'enabled' => :'BOOLEAN',
         :'processing_fee' => :'Float',
         :'processing_percentage' => :'Float',
+        :'restrictions' => :'PaymentsConfigurationRestrictions',
         :'surcharge_accounting_code' => :'String',
         :'transaction_fee' => :'Float',
         :'transaction_percentage' => :'Float'
@@ -132,6 +136,10 @@ module UltracartClient
 
       if attributes.has_key?(:'processing_percentage')
         self.processing_percentage = attributes[:'processing_percentage']
+      end
+
+      if attributes.has_key?(:'restrictions')
+        self.restrictions = attributes[:'restrictions']
       end
 
       if attributes.has_key?(:'surcharge_accounting_code')
@@ -184,6 +192,7 @@ module UltracartClient
           enabled == o.enabled &&
           processing_fee == o.processing_fee &&
           processing_percentage == o.processing_percentage &&
+          restrictions == o.restrictions &&
           surcharge_accounting_code == o.surcharge_accounting_code &&
           transaction_fee == o.transaction_fee &&
           transaction_percentage == o.transaction_percentage
@@ -198,7 +207,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accounting_code, card_type_icon, credit_card, deposit_to_account, enabled, processing_fee, processing_percentage, surcharge_accounting_code, transaction_fee, transaction_percentage].hash
+      [accounting_code, card_type_icon, credit_card, deposit_to_account, enabled, processing_fee, processing_percentage, restrictions, surcharge_accounting_code, transaction_fee, transaction_percentage].hash
     end
 
     # Builds the object from hash

@@ -35,9 +35,6 @@ module UltracartClient
     # This internal flag aids the UI in determining which buttons to show.
     attr_accessor :hide_connect_single_gateway
 
-    # Restrictions for this payment method
-    attr_accessor :restrictions
-
     # UltraCart will send customers emails to update their credit card if the card is declined
     attr_accessor :send_customer_billing_update_on_decline
 
@@ -57,7 +54,6 @@ module UltracartClient
         :'configured_gateway_details' => :'configured_gateway_details',
         :'failed_attempts' => :'failed_attempts',
         :'hide_connect_single_gateway' => :'hide_connect_single_gateway',
-        :'restrictions' => :'restrictions',
         :'send_customer_billing_update_on_decline' => :'send_customer_billing_update_on_decline',
         :'supported_cards' => :'supported_cards',
         :'test_methods' => :'test_methods'
@@ -74,7 +70,6 @@ module UltracartClient
         :'configured_gateway_details' => :'String',
         :'failed_attempts' => :'Integer',
         :'hide_connect_single_gateway' => :'BOOLEAN',
-        :'restrictions' => :'Array<PaymentsConfigurationRestrictions>',
         :'send_customer_billing_update_on_decline' => :'BOOLEAN',
         :'supported_cards' => :'Array<PaymentsConfigurationCreditCardType>',
         :'test_methods' => :'Array<PaymentsConfigurationTestMethod>'
@@ -115,12 +110,6 @@ module UltracartClient
 
       if attributes.has_key?(:'hide_connect_single_gateway')
         self.hide_connect_single_gateway = attributes[:'hide_connect_single_gateway']
-      end
-
-      if attributes.has_key?(:'restrictions')
-        if (value = attributes[:'restrictions']).is_a?(Array)
-          self.restrictions = value
-        end
       end
 
       if attributes.has_key?(:'send_customer_billing_update_on_decline')
@@ -165,7 +154,6 @@ module UltracartClient
           configured_gateway_details == o.configured_gateway_details &&
           failed_attempts == o.failed_attempts &&
           hide_connect_single_gateway == o.hide_connect_single_gateway &&
-          restrictions == o.restrictions &&
           send_customer_billing_update_on_decline == o.send_customer_billing_update_on_decline &&
           supported_cards == o.supported_cards &&
           test_methods == o.test_methods
@@ -180,7 +168,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_credit_card, billed_by, charge_during_checkout, collect_cvv2, configured_gateway_details, failed_attempts, hide_connect_single_gateway, restrictions, send_customer_billing_update_on_decline, supported_cards, test_methods].hash
+      [accept_credit_card, billed_by, charge_during_checkout, collect_cvv2, configured_gateway_details, failed_attempts, hide_connect_single_gateway, send_customer_billing_update_on_decline, supported_cards, test_methods].hash
     end
 
     # Builds the object from hash

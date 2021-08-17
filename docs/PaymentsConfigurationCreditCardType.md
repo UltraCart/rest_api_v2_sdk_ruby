@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **enabled** | **BOOLEAN** | If true, this card type will be accepted during checkout | [optional] 
 **processing_fee** | **Float** | Optional additional fee applied to order for this card | [optional] 
 **processing_percentage** | **Float** | Optional additional fee applied to order for this card | [optional] 
+**restrictions** | [**PaymentsConfigurationRestrictions**](PaymentsConfigurationRestrictions.md) |  | [optional] 
 **surcharge_accounting_code** | **String** | Optional field. If integrated with Quickbooks, this code will be used when informing Quickbooks about any surcharges applied to orders | [optional] 
 **transaction_fee** | **Float** | An optional additional fee to charge the customer for using this card. | [optional] 
 **transaction_percentage** | **Float** | An optional transaction percentage to charge the customer for using this card | [optional] 

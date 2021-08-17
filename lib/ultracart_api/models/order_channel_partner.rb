@@ -26,7 +26,7 @@ module UltracartClient
     # Channel partner object identifier, read-only and available on existing channel orders only.
     attr_accessor :channel_partner_oid
 
-    # The order ID assigned by the channel partner for this order
+    # The order ID assigned by the channel partner for this order.
     attr_accessor :channel_partner_order_id
 
     # Set to true to ignore invalid shipping method being specified.  Only applicable on inserting orders.
@@ -138,13 +138,28 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@channel_partner_order_id.nil? && @channel_partner_order_id.to_s.length > 50
+        invalid_properties.push('invalid value for "channel_partner_order_id", the character length must be smaller than or equal to 50.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@channel_partner_order_id.nil? && @channel_partner_order_id.to_s.length > 50
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] channel_partner_order_id Value to be assigned
+    def channel_partner_order_id=(channel_partner_order_id)
+      if !channel_partner_order_id.nil? && channel_partner_order_id.to_s.length > 50
+        fail ArgumentError, 'invalid value for "channel_partner_order_id", the character length must be smaller than or equal to 50.'
+      end
+
+      @channel_partner_order_id = channel_partner_order_id
     end
 
     # Checks equality by comparing each attribute.
