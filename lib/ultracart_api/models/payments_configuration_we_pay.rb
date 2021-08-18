@@ -44,6 +44,9 @@ module UltracartClient
     # Country
     attr_accessor :country
 
+    # WePay credit card rate
+    attr_accessor :credit_card_rate
+
     # Base currency for transactions
     attr_accessor :currency
 
@@ -109,6 +112,7 @@ module UltracartClient
         :'company_description' => :'company_description',
         :'console_hostname' => :'console_hostname',
         :'country' => :'country',
+        :'credit_card_rate' => :'credit_card_rate',
         :'currency' => :'currency',
         :'expected_revenue' => :'expected_revenue',
         :'hide_credit_card_non_ultracart_payments' => :'hide_credit_card_non_ultracart_payments',
@@ -143,6 +147,7 @@ module UltracartClient
         :'company_description' => :'String',
         :'console_hostname' => :'String',
         :'country' => :'String',
+        :'credit_card_rate' => :'String',
         :'currency' => :'String',
         :'expected_revenue' => :'String',
         :'hide_credit_card_non_ultracart_payments' => :'BOOLEAN',
@@ -210,6 +215,10 @@ module UltracartClient
 
       if attributes.has_key?(:'country')
         self.country = attributes[:'country']
+      end
+
+      if attributes.has_key?(:'credit_card_rate')
+        self.credit_card_rate = attributes[:'credit_card_rate']
       end
 
       if attributes.has_key?(:'currency')
@@ -313,6 +322,7 @@ module UltracartClient
           company_description == o.company_description &&
           console_hostname == o.console_hostname &&
           country == o.country &&
+          credit_card_rate == o.credit_card_rate &&
           currency == o.currency &&
           expected_revenue == o.expected_revenue &&
           hide_credit_card_non_ultracart_payments == o.hide_credit_card_non_ultracart_payments &&
@@ -342,7 +352,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_wepay, account_update_uri, address1, address2, canada_accept_debit_cards, city, company, company_description, console_hostname, country, currency, expected_revenue, hide_credit_card_non_ultracart_payments, hide_surcharge_amount, industry, owner_email, owner_name, owner_phone, postal_code, remove_pay_pal_pro, restrictions, short_paypal_marketing_text, show_ultracart_payments_disabled, show_ultracart_payments_intro, show_ultracart_payments_verification, show_ultracart_payments_verified, state, website_url].hash
+      [accept_wepay, account_update_uri, address1, address2, canada_accept_debit_cards, city, company, company_description, console_hostname, country, credit_card_rate, currency, expected_revenue, hide_credit_card_non_ultracart_payments, hide_surcharge_amount, industry, owner_email, owner_name, owner_phone, postal_code, remove_pay_pal_pro, restrictions, short_paypal_marketing_text, show_ultracart_payments_disabled, show_ultracart_payments_intro, show_ultracart_payments_verification, show_ultracart_payments_verified, state, website_url].hash
     end
 
     # Builds the object from hash
