@@ -137,7 +137,7 @@ module UltracartClient
     # If true, this coupon can be used with ANY other coupon regardless of the other coupons configuration
     attr_accessor :super_coupon
 
-    attr_accessor :tiered_amount_off_item
+    attr_accessor :tiered_amount_off_items
 
     attr_accessor :tiered_amount_off_subtotal
 
@@ -206,7 +206,7 @@ module UltracartClient
         :'restrict_by_storefronts' => :'restrict_by_storefronts',
         :'start_dts' => :'start_dts',
         :'super_coupon' => :'super_coupon',
-        :'tiered_amount_off_item' => :'tiered_amount_off_item',
+        :'tiered_amount_off_items' => :'tiered_amount_off_items',
         :'tiered_amount_off_subtotal' => :'tiered_amount_off_subtotal',
         :'tiered_percent_off_items' => :'tiered_percent_off_items',
         :'tiered_percent_off_shipping' => :'tiered_percent_off_shipping',
@@ -271,7 +271,7 @@ module UltracartClient
         :'restrict_by_storefronts' => :'Array<CouponRestriction>',
         :'start_dts' => :'String',
         :'super_coupon' => :'BOOLEAN',
-        :'tiered_amount_off_item' => :'CouponTieredAmountOffItem',
+        :'tiered_amount_off_items' => :'CouponTieredAmountOffItems',
         :'tiered_amount_off_subtotal' => :'CouponTieredAmountOffSubtotal',
         :'tiered_percent_off_items' => :'CouponTieredPercentOffItems',
         :'tiered_percent_off_shipping' => :'CouponTieredPercentOffShipping',
@@ -506,8 +506,8 @@ module UltracartClient
         self.super_coupon = attributes[:'super_coupon']
       end
 
-      if attributes.has_key?(:'tiered_amount_off_item')
-        self.tiered_amount_off_item = attributes[:'tiered_amount_off_item']
+      if attributes.has_key?(:'tiered_amount_off_items')
+        self.tiered_amount_off_items = attributes[:'tiered_amount_off_items']
       end
 
       if attributes.has_key?(:'tiered_amount_off_subtotal')
@@ -692,7 +692,7 @@ module UltracartClient
           restrict_by_storefronts == o.restrict_by_storefronts &&
           start_dts == o.start_dts &&
           super_coupon == o.super_coupon &&
-          tiered_amount_off_item == o.tiered_amount_off_item &&
+          tiered_amount_off_items == o.tiered_amount_off_items &&
           tiered_amount_off_subtotal == o.tiered_amount_off_subtotal &&
           tiered_percent_off_items == o.tiered_percent_off_items &&
           tiered_percent_off_shipping == o.tiered_percent_off_shipping &&
@@ -709,7 +709,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affiliate_oid, allow_multiple_one_time_codes, amount_off_items, amount_off_shipping, amount_off_shipping_with_items_purchase, amount_off_subtotal, amount_off_subtotal_and_free_shipping, amount_off_subtotal_and_shipping, amount_off_subtotal_with_block_purchase, amount_off_subtotal_with_items_purchase, amount_off_subtotal_with_purchase, automatically_apply_coupon_codes, buy_one_get_one, calculated_description, can_be_used_with_other_coupons, coupon_oid, coupon_type, description, discount_item_with_item_purchase, discount_items, expiration_dts, free_item_and_shipping_with_subtotal, free_item_with_item_purchase, free_item_with_subtotal, free_items_with_item_purchase, free_items_with_mixmatch_purchase, free_shipping, free_shipping_specific_items, free_shipping_with_items_purchase, free_shipping_with_subtotal, hide_from_customer, merchant_code, merchant_notes, multiple_amounts_off_items, no_discount, percent_off_item_with_items_quantity_purchase, percent_off_items, percent_off_items_and_free_shipping, percent_off_items_with_items_purchase, percent_off_msrp_items, percent_off_retail_price_items, percent_off_shipping, percent_off_subtotal, percent_off_subtotal_and_free_shipping, percent_off_subtotal_limit, percent_off_subtotal_with_items_purchase, percent_off_subtotal_with_subtotal, quickbooks_code, restrict_by_postal_codes, restrict_by_screen_branding_theme_codes, restrict_by_storefronts, start_dts, super_coupon, tiered_amount_off_item, tiered_amount_off_subtotal, tiered_percent_off_items, tiered_percent_off_shipping, tiered_percent_off_subtotal, usable_by].hash
+      [affiliate_oid, allow_multiple_one_time_codes, amount_off_items, amount_off_shipping, amount_off_shipping_with_items_purchase, amount_off_subtotal, amount_off_subtotal_and_free_shipping, amount_off_subtotal_and_shipping, amount_off_subtotal_with_block_purchase, amount_off_subtotal_with_items_purchase, amount_off_subtotal_with_purchase, automatically_apply_coupon_codes, buy_one_get_one, calculated_description, can_be_used_with_other_coupons, coupon_oid, coupon_type, description, discount_item_with_item_purchase, discount_items, expiration_dts, free_item_and_shipping_with_subtotal, free_item_with_item_purchase, free_item_with_subtotal, free_items_with_item_purchase, free_items_with_mixmatch_purchase, free_shipping, free_shipping_specific_items, free_shipping_with_items_purchase, free_shipping_with_subtotal, hide_from_customer, merchant_code, merchant_notes, multiple_amounts_off_items, no_discount, percent_off_item_with_items_quantity_purchase, percent_off_items, percent_off_items_and_free_shipping, percent_off_items_with_items_purchase, percent_off_msrp_items, percent_off_retail_price_items, percent_off_shipping, percent_off_subtotal, percent_off_subtotal_and_free_shipping, percent_off_subtotal_limit, percent_off_subtotal_with_items_purchase, percent_off_subtotal_with_subtotal, quickbooks_code, restrict_by_postal_codes, restrict_by_screen_branding_theme_codes, restrict_by_storefronts, start_dts, super_coupon, tiered_amount_off_items, tiered_amount_off_subtotal, tiered_percent_off_items, tiered_percent_off_shipping, tiered_percent_off_subtotal, usable_by].hash
     end
 
     # Builds the object from hash

@@ -13,9 +13,9 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class CouponTieredAmountOffItem
-    # The item being discounted by this coupon.
-    attr_accessor :item
+  class CouponTieredAmountOffItems
+    # The items being discounted by this coupon.
+    attr_accessor :items
 
     # The maximum number of discounted items.
     attr_accessor :limit
@@ -26,7 +26,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'item' => :'item',
+        :'items' => :'items',
         :'limit' => :'limit',
         :'tiers' => :'tiers'
       }
@@ -35,7 +35,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'item' => :'String',
+        :'items' => :'Array<String>',
         :'limit' => :'Float',
         :'tiers' => :'Array<CouponTierQuantityAmount>'
       }
@@ -49,8 +49,10 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'item')
-        self.item = attributes[:'item']
+      if attributes.has_key?(:'items')
+        if (value = attributes[:'items']).is_a?(Array)
+          self.items = value
+        end
       end
 
       if attributes.has_key?(:'limit')
@@ -82,7 +84,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          item == o.item &&
+          items == o.items &&
           limit == o.limit &&
           tiers == o.tiers
     end
@@ -96,7 +98,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [item, limit, tiers].hash
+      [items, limit, tiers].hash
     end
 
     # Builds the object from hash
