@@ -26,6 +26,8 @@ module UltracartClient
 
     attr_accessor :referrer_raw
 
+    attr_accessor :return_filter_values
+
     attr_accessor :time_on_page
 
     attr_accessor :url
@@ -39,6 +41,7 @@ module UltracartClient
         :'referrer' => :'referrer',
         :'referrer_params' => :'referrer_params',
         :'referrer_raw' => :'referrer_raw',
+        :'return_filter_values' => :'return_filter_values',
         :'time_on_page' => :'time_on_page',
         :'url' => :'url'
       }
@@ -53,6 +56,7 @@ module UltracartClient
         :'referrer' => :'ScreenRecordingFilterStringSearch',
         :'referrer_params' => :'Array<ScreenRecordingFilterPageViewReferrerParam>',
         :'referrer_raw' => :'ScreenRecordingFilterStringSearch',
+        :'return_filter_values' => :'Array<String>',
         :'time_on_page' => :'ScreenRecordingFilterRangeInteger',
         :'url' => :'ScreenRecordingFilterStringSearch'
       }
@@ -96,6 +100,12 @@ module UltracartClient
         self.referrer_raw = attributes[:'referrer_raw']
       end
 
+      if attributes.has_key?(:'return_filter_values')
+        if (value = attributes[:'return_filter_values']).is_a?(Array)
+          self.return_filter_values = value
+        end
+      end
+
       if attributes.has_key?(:'time_on_page')
         self.time_on_page = attributes[:'time_on_page']
       end
@@ -129,6 +139,7 @@ module UltracartClient
           referrer == o.referrer &&
           referrer_params == o.referrer_params &&
           referrer_raw == o.referrer_raw &&
+          return_filter_values == o.return_filter_values &&
           time_on_page == o.time_on_page &&
           url == o.url
     end
@@ -142,7 +153,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [domain, events, params, referrer, referrer_params, referrer_raw, time_on_page, url].hash
+      [domain, events, params, referrer, referrer_params, referrer_raw, return_filter_values, time_on_page, url].hash
     end
 
     # Builds the object from hash

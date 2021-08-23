@@ -60,6 +60,8 @@ module UltracartClient
 
     attr_accessor :referrer_domain
 
+    attr_accessor :return_filter_values
+
     attr_accessor :screen_recording_uuids
 
     attr_accessor :screen_sizes
@@ -120,6 +122,7 @@ module UltracartClient
         :'placed_order' => :'placed_order',
         :'preferred_language' => :'preferred_language',
         :'referrer_domain' => :'referrer_domain',
+        :'return_filter_values' => :'return_filter_values',
         :'screen_recording_uuids' => :'screen_recording_uuids',
         :'screen_sizes' => :'screen_sizes',
         :'skip_filter_values' => :'skip_filter_values',
@@ -166,6 +169,7 @@ module UltracartClient
         :'placed_order' => :'BOOLEAN',
         :'preferred_language' => :'ScreenRecordingFilterStringSearch',
         :'referrer_domain' => :'String',
+        :'return_filter_values' => :'Array<String>',
         :'screen_recording_uuids' => :'Array<String>',
         :'screen_sizes' => :'Array<String>',
         :'skip_filter_values' => :'BOOLEAN',
@@ -288,6 +292,12 @@ module UltracartClient
         self.referrer_domain = attributes[:'referrer_domain']
       end
 
+      if attributes.has_key?(:'return_filter_values')
+        if (value = attributes[:'return_filter_values']).is_a?(Array)
+          self.return_filter_values = value
+        end
+      end
+
       if attributes.has_key?(:'screen_recording_uuids')
         if (value = attributes[:'screen_recording_uuids']).is_a?(Array)
           self.screen_recording_uuids = value
@@ -404,6 +414,7 @@ module UltracartClient
           placed_order == o.placed_order &&
           preferred_language == o.preferred_language &&
           referrer_domain == o.referrer_domain &&
+          return_filter_values == o.return_filter_values &&
           screen_recording_uuids == o.screen_recording_uuids &&
           screen_sizes == o.screen_sizes &&
           skip_filter_values == o.skip_filter_values &&
@@ -432,7 +443,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affiliate_email, affiliate_id, communications_campaign_name, communications_email_subject, communications_flow_name, email, email_domain, email_identified, end_timestamp, esp_customer_uuid, favorite, geolocation, geolocation_country, geolocation_state, language_iso_code, last_x_days, max_filter_values, order_id, page_view_count, page_views, placed_order, preferred_language, referrer_domain, screen_recording_uuids, screen_sizes, skip_filter_values, skip_hits, start_timestamp, tags, time_on_site, user_agent_device_name, user_agent_name, user_agent_original, user_agent_os_name, user_agent_os_version, user_ip, utm_campaign, utm_source, visitor_number, watched].hash
+      [affiliate_email, affiliate_id, communications_campaign_name, communications_email_subject, communications_flow_name, email, email_domain, email_identified, end_timestamp, esp_customer_uuid, favorite, geolocation, geolocation_country, geolocation_state, language_iso_code, last_x_days, max_filter_values, order_id, page_view_count, page_views, placed_order, preferred_language, referrer_domain, return_filter_values, screen_recording_uuids, screen_sizes, skip_filter_values, skip_hits, start_timestamp, tags, time_on_site, user_agent_device_name, user_agent_name, user_agent_original, user_agent_os_name, user_agent_os_version, user_ip, utm_campaign, utm_source, visitor_number, watched].hash
     end
 
     # Builds the object from hash
