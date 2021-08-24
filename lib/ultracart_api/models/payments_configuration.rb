@@ -28,6 +28,8 @@ module UltracartClient
 
     attr_accessor :echeck
 
+    attr_accessor :insurance
+
     attr_accessor :loan_hero
 
     attr_accessor :money_order
@@ -61,6 +63,7 @@ module UltracartClient
         :'cod' => :'cod',
         :'credit_card' => :'credit_card',
         :'echeck' => :'echeck',
+        :'insurance' => :'insurance',
         :'loan_hero' => :'loan_hero',
         :'money_order' => :'money_order',
         :'paypal' => :'paypal',
@@ -85,6 +88,7 @@ module UltracartClient
         :'cod' => :'PaymentsConfigurationCOD',
         :'credit_card' => :'PaymentsConfigurationCreditCard',
         :'echeck' => :'PaymentsConfigurationEcheck',
+        :'insurance' => :'PaymentsConfigurationInsurance',
         :'loan_hero' => :'PaymentsConfigurationLoanHero',
         :'money_order' => :'PaymentsConfigurationMoneyOrder',
         :'paypal' => :'PaymentsConfigurationPayPal',
@@ -133,6 +137,10 @@ module UltracartClient
 
       if attributes.has_key?(:'echeck')
         self.echeck = attributes[:'echeck']
+      end
+
+      if attributes.has_key?(:'insurance')
+        self.insurance = attributes[:'insurance']
       end
 
       if attributes.has_key?(:'loan_hero')
@@ -205,6 +213,7 @@ module UltracartClient
           cod == o.cod &&
           credit_card == o.credit_card &&
           echeck == o.echeck &&
+          insurance == o.insurance &&
           loan_hero == o.loan_hero &&
           money_order == o.money_order &&
           paypal == o.paypal &&
@@ -227,7 +236,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affirm, amazon, cash, check, cod, credit_card, echeck, loan_hero, money_order, paypal, purchase_order, quote_request, sezzle, show_accounting_code, switch_to_sub_tab, switch_to_tab, ultracart_payments_wepay, wire_transfer].hash
+      [affirm, amazon, cash, check, cod, credit_card, echeck, insurance, loan_hero, money_order, paypal, purchase_order, quote_request, sezzle, show_accounting_code, switch_to_sub_tab, switch_to_tab, ultracart_payments_wepay, wire_transfer].hash
     end
 
     # Builds the object from hash

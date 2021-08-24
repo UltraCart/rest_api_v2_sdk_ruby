@@ -23,6 +23,8 @@ module UltracartClient
     # True if order has been held for fraud review
     attr_accessor :hold_for_fraud_review
 
+    attr_accessor :insurance
+
     # Date/time that the payment was successfully processed, for new orders, this field is only considered if channel_partner.skip_payment_processing is true
     attr_accessor :payment_dts
 
@@ -89,6 +91,7 @@ module UltracartClient
         :'credit_card' => :'credit_card',
         :'echeck' => :'echeck',
         :'hold_for_fraud_review' => :'hold_for_fraud_review',
+        :'insurance' => :'insurance',
         :'payment_dts' => :'payment_dts',
         :'payment_method' => :'payment_method',
         :'payment_method_accounting_code' => :'payment_method_accounting_code',
@@ -112,6 +115,7 @@ module UltracartClient
         :'credit_card' => :'OrderPaymentCreditCard',
         :'echeck' => :'OrderPaymentECheck',
         :'hold_for_fraud_review' => :'BOOLEAN',
+        :'insurance' => :'OrderPaymentInsurance',
         :'payment_dts' => :'String',
         :'payment_method' => :'String',
         :'payment_method_accounting_code' => :'String',
@@ -150,6 +154,10 @@ module UltracartClient
 
       if attributes.has_key?(:'hold_for_fraud_review')
         self.hold_for_fraud_review = attributes[:'hold_for_fraud_review']
+      end
+
+      if attributes.has_key?(:'insurance')
+        self.insurance = attributes[:'insurance']
       end
 
       if attributes.has_key?(:'payment_dts')
@@ -217,7 +225,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      payment_method_validator = EnumAttributeValidator.new('String', ['Affirm', 'Amazon', 'Amazon SC', 'Cash', 'Check', 'COD', 'Credit Card', 'eBay', 'eCheck', 'LoanHero', 'Money Order', 'PayPal', 'Purchase Order', 'Quote Request', 'Unknown', 'Wire Transfer', 'Walmart'])
+      payment_method_validator = EnumAttributeValidator.new('String', ['Affirm', 'Amazon', 'Amazon SC', 'Cash', 'Check', 'COD', 'Credit Card', 'eBay', 'eCheck', 'Insurance', 'LoanHero', 'Money Order', 'PayPal', 'Purchase Order', 'Quote Request', 'Unknown', 'Wire Transfer', 'Walmart'])
       return false unless payment_method_validator.valid?(@payment_method)
       payment_status_validator = EnumAttributeValidator.new('String', ['Unprocessed', 'Authorized', 'Capture Failed', 'Processed', 'Declined', 'Voided', 'Refunded', 'Skipped'])
       return false unless payment_status_validator.valid?(@payment_status)
@@ -227,7 +235,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] payment_method Object to be assigned
     def payment_method=(payment_method)
-      validator = EnumAttributeValidator.new('String', ['Affirm', 'Amazon', 'Amazon SC', 'Cash', 'Check', 'COD', 'Credit Card', 'eBay', 'eCheck', 'LoanHero', 'Money Order', 'PayPal', 'Purchase Order', 'Quote Request', 'Unknown', 'Wire Transfer', 'Walmart'])
+      validator = EnumAttributeValidator.new('String', ['Affirm', 'Amazon', 'Amazon SC', 'Cash', 'Check', 'COD', 'Credit Card', 'eBay', 'eCheck', 'Insurance', 'LoanHero', 'Money Order', 'PayPal', 'Purchase Order', 'Quote Request', 'Unknown', 'Wire Transfer', 'Walmart'])
       unless validator.valid?(payment_method)
         fail ArgumentError, 'invalid value for "payment_method", must be one of #{validator.allowable_values}.'
       end
@@ -253,6 +261,7 @@ module UltracartClient
           credit_card == o.credit_card &&
           echeck == o.echeck &&
           hold_for_fraud_review == o.hold_for_fraud_review &&
+          insurance == o.insurance &&
           payment_dts == o.payment_dts &&
           payment_method == o.payment_method &&
           payment_method_accounting_code == o.payment_method_accounting_code &&
@@ -277,7 +286,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [check, credit_card, echeck, hold_for_fraud_review, payment_dts, payment_method, payment_method_accounting_code, payment_method_deposit_to_account, payment_status, purchase_order, rotating_transaction_gateway_code, surcharge, surcharge_accounting_code, surcharge_transaction_fee, surcharge_transaction_percentage, test_order, transactions].hash
+      [check, credit_card, echeck, hold_for_fraud_review, insurance, payment_dts, payment_method, payment_method_accounting_code, payment_method_deposit_to_account, payment_status, purchase_order, rotating_transaction_gateway_code, surcharge, surcharge_accounting_code, surcharge_transaction_fee, surcharge_transaction_percentage, test_order, transactions].hash
     end
 
     # Builds the object from hash

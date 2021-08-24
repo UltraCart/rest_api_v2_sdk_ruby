@@ -20,13 +20,21 @@ module UltracartClient
 
     attr_accessor :communications_campaign_name
 
+    attr_accessor :communications_campaign_name_filter
+
     attr_accessor :communications_email_subject
 
+    attr_accessor :communications_email_subject_filter
+
     attr_accessor :communications_flow_name
+
+    attr_accessor :communications_flow_name_filter
 
     attr_accessor :email
 
     attr_accessor :email_domain
+
+    attr_accessor :email_domain_filter
 
     attr_accessor :email_identified
 
@@ -40,9 +48,15 @@ module UltracartClient
 
     attr_accessor :geolocation_country
 
+    attr_accessor :geolocation_country_filter
+
     attr_accessor :geolocation_state
 
+    attr_accessor :geolocation_state_filter
+
     attr_accessor :language_iso_code
+
+    attr_accessor :language_iso_code_filter
 
     attr_accessor :last_x_days
 
@@ -58,15 +72,19 @@ module UltracartClient
 
     attr_accessor :preferred_language
 
+    attr_accessor :preferred_language_filter
+
     attr_accessor :referrer_domain
 
-    attr_accessor :return_filter_values
+    attr_accessor :referrer_domain_filter
 
     attr_accessor :screen_recording_uuids
 
     attr_accessor :screen_sizes
 
     attr_accessor :skip_filter_values
+
+    attr_accessor :skip_histogram
 
     attr_accessor :skip_hits
 
@@ -76,11 +94,27 @@ module UltracartClient
 
     attr_accessor :time_on_site
 
+    attr_accessor :time_on_site_max_filter
+
+    attr_accessor :time_on_site_min_filter
+
+    attr_accessor :url_filter
+
     attr_accessor :user_agent_device_name
+
+    attr_accessor :user_agent_device_name_filter
+
+    attr_accessor :user_agent_device_os_name_filter
+
+    attr_accessor :user_agent_device_os_version_filter
 
     attr_accessor :user_agent_name
 
+    attr_accessor :user_agent_name_filter
+
     attr_accessor :user_agent_original
+
+    attr_accessor :user_agent_original_filter
 
     attr_accessor :user_agent_os_name
 
@@ -90,7 +124,11 @@ module UltracartClient
 
     attr_accessor :utm_campaign
 
+    attr_accessor :utm_campaign_filter
+
     attr_accessor :utm_source
+
+    attr_accessor :utm_source_filter
 
     attr_accessor :visitor_number
 
@@ -102,18 +140,25 @@ module UltracartClient
         :'affiliate_email' => :'affiliate_email',
         :'affiliate_id' => :'affiliate_id',
         :'communications_campaign_name' => :'communications_campaign_name',
+        :'communications_campaign_name_filter' => :'communications_campaign_name_filter',
         :'communications_email_subject' => :'communications_email_subject',
+        :'communications_email_subject_filter' => :'communications_email_subject_filter',
         :'communications_flow_name' => :'communications_flow_name',
+        :'communications_flow_name_filter' => :'communications_flow_name_filter',
         :'email' => :'email',
         :'email_domain' => :'email_domain',
+        :'email_domain_filter' => :'email_domain_filter',
         :'email_identified' => :'email_identified',
         :'end_timestamp' => :'end_timestamp',
         :'esp_customer_uuid' => :'esp_customer_uuid',
         :'favorite' => :'favorite',
         :'geolocation' => :'geolocation',
         :'geolocation_country' => :'geolocation_country',
+        :'geolocation_country_filter' => :'geolocation_country_filter',
         :'geolocation_state' => :'geolocation_state',
+        :'geolocation_state_filter' => :'geolocation_state_filter',
         :'language_iso_code' => :'language_iso_code',
+        :'language_iso_code_filter' => :'language_iso_code_filter',
         :'last_x_days' => :'last_x_days',
         :'max_filter_values' => :'max_filter_values',
         :'order_id' => :'order_id',
@@ -121,23 +166,35 @@ module UltracartClient
         :'page_views' => :'page_views',
         :'placed_order' => :'placed_order',
         :'preferred_language' => :'preferred_language',
+        :'preferred_language_filter' => :'preferred_language_filter',
         :'referrer_domain' => :'referrer_domain',
-        :'return_filter_values' => :'return_filter_values',
+        :'referrer_domain_filter' => :'referrer_domain_filter',
         :'screen_recording_uuids' => :'screen_recording_uuids',
         :'screen_sizes' => :'screen_sizes',
         :'skip_filter_values' => :'skip_filter_values',
+        :'skip_histogram' => :'skip_histogram',
         :'skip_hits' => :'skip_hits',
         :'start_timestamp' => :'start_timestamp',
         :'tags' => :'tags',
         :'time_on_site' => :'time_on_site',
+        :'time_on_site_max_filter' => :'time_on_site_max_filter',
+        :'time_on_site_min_filter' => :'time_on_site_min_filter',
+        :'url_filter' => :'url_filter',
         :'user_agent_device_name' => :'user_agent_device_name',
+        :'user_agent_device_name_filter' => :'user_agent_device_name_filter',
+        :'user_agent_device_os_name_filter' => :'user_agent_device_os_name_filter',
+        :'user_agent_device_os_version_filter' => :'user_agent_device_os_version_filter',
         :'user_agent_name' => :'user_agent_name',
+        :'user_agent_name_filter' => :'user_agent_name_filter',
         :'user_agent_original' => :'user_agent_original',
+        :'user_agent_original_filter' => :'user_agent_original_filter',
         :'user_agent_os_name' => :'user_agent_os_name',
         :'user_agent_os_version' => :'user_agent_os_version',
         :'user_ip' => :'user_ip',
         :'utm_campaign' => :'utm_campaign',
+        :'utm_campaign_filter' => :'utm_campaign_filter',
         :'utm_source' => :'utm_source',
+        :'utm_source_filter' => :'utm_source_filter',
         :'visitor_number' => :'visitor_number',
         :'watched' => :'watched'
       }
@@ -149,18 +206,25 @@ module UltracartClient
         :'affiliate_email' => :'String',
         :'affiliate_id' => :'Integer',
         :'communications_campaign_name' => :'String',
+        :'communications_campaign_name_filter' => :'BOOLEAN',
         :'communications_email_subject' => :'String',
+        :'communications_email_subject_filter' => :'BOOLEAN',
         :'communications_flow_name' => :'String',
+        :'communications_flow_name_filter' => :'BOOLEAN',
         :'email' => :'ScreenRecordingFilterStringSearch',
         :'email_domain' => :'String',
+        :'email_domain_filter' => :'BOOLEAN',
         :'email_identified' => :'BOOLEAN',
         :'end_timestamp' => :'ScreenRecordingFilterRangeDate',
         :'esp_customer_uuid' => :'String',
         :'favorite' => :'BOOLEAN',
         :'geolocation' => :'ScreenRecordingFilterGeoDistance',
         :'geolocation_country' => :'ScreenRecordingFilterStringSearch',
+        :'geolocation_country_filter' => :'BOOLEAN',
         :'geolocation_state' => :'ScreenRecordingFilterStringSearch',
+        :'geolocation_state_filter' => :'BOOLEAN',
         :'language_iso_code' => :'ScreenRecordingFilterStringSearch',
+        :'language_iso_code_filter' => :'BOOLEAN',
         :'last_x_days' => :'Integer',
         :'max_filter_values' => :'Integer',
         :'order_id' => :'ScreenRecordingFilterStringSearch',
@@ -168,23 +232,35 @@ module UltracartClient
         :'page_views' => :'Array<ScreenRecordingFilterPageView>',
         :'placed_order' => :'BOOLEAN',
         :'preferred_language' => :'ScreenRecordingFilterStringSearch',
+        :'preferred_language_filter' => :'BOOLEAN',
         :'referrer_domain' => :'String',
-        :'return_filter_values' => :'Array<String>',
+        :'referrer_domain_filter' => :'BOOLEAN',
         :'screen_recording_uuids' => :'Array<String>',
         :'screen_sizes' => :'Array<String>',
         :'skip_filter_values' => :'BOOLEAN',
+        :'skip_histogram' => :'BOOLEAN',
         :'skip_hits' => :'BOOLEAN',
         :'start_timestamp' => :'ScreenRecordingFilterRangeDate',
         :'tags' => :'Array<String>',
         :'time_on_site' => :'ScreenRecordingFilterRangeInteger',
+        :'time_on_site_max_filter' => :'BOOLEAN',
+        :'time_on_site_min_filter' => :'BOOLEAN',
+        :'url_filter' => :'BOOLEAN',
         :'user_agent_device_name' => :'String',
+        :'user_agent_device_name_filter' => :'BOOLEAN',
+        :'user_agent_device_os_name_filter' => :'BOOLEAN',
+        :'user_agent_device_os_version_filter' => :'BOOLEAN',
         :'user_agent_name' => :'String',
+        :'user_agent_name_filter' => :'BOOLEAN',
         :'user_agent_original' => :'ScreenRecordingFilterStringSearch',
+        :'user_agent_original_filter' => :'BOOLEAN',
         :'user_agent_os_name' => :'String',
         :'user_agent_os_version' => :'String',
         :'user_ip' => :'ScreenRecordingFilterIpSearch',
         :'utm_campaign' => :'String',
+        :'utm_campaign_filter' => :'BOOLEAN',
         :'utm_source' => :'String',
+        :'utm_source_filter' => :'BOOLEAN',
         :'visitor_number' => :'Integer',
         :'watched' => :'BOOLEAN'
       }
@@ -210,12 +286,24 @@ module UltracartClient
         self.communications_campaign_name = attributes[:'communications_campaign_name']
       end
 
+      if attributes.has_key?(:'communications_campaign_name_filter')
+        self.communications_campaign_name_filter = attributes[:'communications_campaign_name_filter']
+      end
+
       if attributes.has_key?(:'communications_email_subject')
         self.communications_email_subject = attributes[:'communications_email_subject']
       end
 
+      if attributes.has_key?(:'communications_email_subject_filter')
+        self.communications_email_subject_filter = attributes[:'communications_email_subject_filter']
+      end
+
       if attributes.has_key?(:'communications_flow_name')
         self.communications_flow_name = attributes[:'communications_flow_name']
+      end
+
+      if attributes.has_key?(:'communications_flow_name_filter')
+        self.communications_flow_name_filter = attributes[:'communications_flow_name_filter']
       end
 
       if attributes.has_key?(:'email')
@@ -224,6 +312,10 @@ module UltracartClient
 
       if attributes.has_key?(:'email_domain')
         self.email_domain = attributes[:'email_domain']
+      end
+
+      if attributes.has_key?(:'email_domain_filter')
+        self.email_domain_filter = attributes[:'email_domain_filter']
       end
 
       if attributes.has_key?(:'email_identified')
@@ -250,12 +342,24 @@ module UltracartClient
         self.geolocation_country = attributes[:'geolocation_country']
       end
 
+      if attributes.has_key?(:'geolocation_country_filter')
+        self.geolocation_country_filter = attributes[:'geolocation_country_filter']
+      end
+
       if attributes.has_key?(:'geolocation_state')
         self.geolocation_state = attributes[:'geolocation_state']
       end
 
+      if attributes.has_key?(:'geolocation_state_filter')
+        self.geolocation_state_filter = attributes[:'geolocation_state_filter']
+      end
+
       if attributes.has_key?(:'language_iso_code')
         self.language_iso_code = attributes[:'language_iso_code']
+      end
+
+      if attributes.has_key?(:'language_iso_code_filter')
+        self.language_iso_code_filter = attributes[:'language_iso_code_filter']
       end
 
       if attributes.has_key?(:'last_x_days')
@@ -288,14 +392,16 @@ module UltracartClient
         self.preferred_language = attributes[:'preferred_language']
       end
 
+      if attributes.has_key?(:'preferred_language_filter')
+        self.preferred_language_filter = attributes[:'preferred_language_filter']
+      end
+
       if attributes.has_key?(:'referrer_domain')
         self.referrer_domain = attributes[:'referrer_domain']
       end
 
-      if attributes.has_key?(:'return_filter_values')
-        if (value = attributes[:'return_filter_values']).is_a?(Array)
-          self.return_filter_values = value
-        end
+      if attributes.has_key?(:'referrer_domain_filter')
+        self.referrer_domain_filter = attributes[:'referrer_domain_filter']
       end
 
       if attributes.has_key?(:'screen_recording_uuids')
@@ -312,6 +418,10 @@ module UltracartClient
 
       if attributes.has_key?(:'skip_filter_values')
         self.skip_filter_values = attributes[:'skip_filter_values']
+      end
+
+      if attributes.has_key?(:'skip_histogram')
+        self.skip_histogram = attributes[:'skip_histogram']
       end
 
       if attributes.has_key?(:'skip_hits')
@@ -332,16 +442,48 @@ module UltracartClient
         self.time_on_site = attributes[:'time_on_site']
       end
 
+      if attributes.has_key?(:'time_on_site_max_filter')
+        self.time_on_site_max_filter = attributes[:'time_on_site_max_filter']
+      end
+
+      if attributes.has_key?(:'time_on_site_min_filter')
+        self.time_on_site_min_filter = attributes[:'time_on_site_min_filter']
+      end
+
+      if attributes.has_key?(:'url_filter')
+        self.url_filter = attributes[:'url_filter']
+      end
+
       if attributes.has_key?(:'user_agent_device_name')
         self.user_agent_device_name = attributes[:'user_agent_device_name']
+      end
+
+      if attributes.has_key?(:'user_agent_device_name_filter')
+        self.user_agent_device_name_filter = attributes[:'user_agent_device_name_filter']
+      end
+
+      if attributes.has_key?(:'user_agent_device_os_name_filter')
+        self.user_agent_device_os_name_filter = attributes[:'user_agent_device_os_name_filter']
+      end
+
+      if attributes.has_key?(:'user_agent_device_os_version_filter')
+        self.user_agent_device_os_version_filter = attributes[:'user_agent_device_os_version_filter']
       end
 
       if attributes.has_key?(:'user_agent_name')
         self.user_agent_name = attributes[:'user_agent_name']
       end
 
+      if attributes.has_key?(:'user_agent_name_filter')
+        self.user_agent_name_filter = attributes[:'user_agent_name_filter']
+      end
+
       if attributes.has_key?(:'user_agent_original')
         self.user_agent_original = attributes[:'user_agent_original']
+      end
+
+      if attributes.has_key?(:'user_agent_original_filter')
+        self.user_agent_original_filter = attributes[:'user_agent_original_filter']
       end
 
       if attributes.has_key?(:'user_agent_os_name')
@@ -360,8 +502,16 @@ module UltracartClient
         self.utm_campaign = attributes[:'utm_campaign']
       end
 
+      if attributes.has_key?(:'utm_campaign_filter')
+        self.utm_campaign_filter = attributes[:'utm_campaign_filter']
+      end
+
       if attributes.has_key?(:'utm_source')
         self.utm_source = attributes[:'utm_source']
+      end
+
+      if attributes.has_key?(:'utm_source_filter')
+        self.utm_source_filter = attributes[:'utm_source_filter']
       end
 
       if attributes.has_key?(:'visitor_number')
@@ -394,18 +544,25 @@ module UltracartClient
           affiliate_email == o.affiliate_email &&
           affiliate_id == o.affiliate_id &&
           communications_campaign_name == o.communications_campaign_name &&
+          communications_campaign_name_filter == o.communications_campaign_name_filter &&
           communications_email_subject == o.communications_email_subject &&
+          communications_email_subject_filter == o.communications_email_subject_filter &&
           communications_flow_name == o.communications_flow_name &&
+          communications_flow_name_filter == o.communications_flow_name_filter &&
           email == o.email &&
           email_domain == o.email_domain &&
+          email_domain_filter == o.email_domain_filter &&
           email_identified == o.email_identified &&
           end_timestamp == o.end_timestamp &&
           esp_customer_uuid == o.esp_customer_uuid &&
           favorite == o.favorite &&
           geolocation == o.geolocation &&
           geolocation_country == o.geolocation_country &&
+          geolocation_country_filter == o.geolocation_country_filter &&
           geolocation_state == o.geolocation_state &&
+          geolocation_state_filter == o.geolocation_state_filter &&
           language_iso_code == o.language_iso_code &&
+          language_iso_code_filter == o.language_iso_code_filter &&
           last_x_days == o.last_x_days &&
           max_filter_values == o.max_filter_values &&
           order_id == o.order_id &&
@@ -413,23 +570,35 @@ module UltracartClient
           page_views == o.page_views &&
           placed_order == o.placed_order &&
           preferred_language == o.preferred_language &&
+          preferred_language_filter == o.preferred_language_filter &&
           referrer_domain == o.referrer_domain &&
-          return_filter_values == o.return_filter_values &&
+          referrer_domain_filter == o.referrer_domain_filter &&
           screen_recording_uuids == o.screen_recording_uuids &&
           screen_sizes == o.screen_sizes &&
           skip_filter_values == o.skip_filter_values &&
+          skip_histogram == o.skip_histogram &&
           skip_hits == o.skip_hits &&
           start_timestamp == o.start_timestamp &&
           tags == o.tags &&
           time_on_site == o.time_on_site &&
+          time_on_site_max_filter == o.time_on_site_max_filter &&
+          time_on_site_min_filter == o.time_on_site_min_filter &&
+          url_filter == o.url_filter &&
           user_agent_device_name == o.user_agent_device_name &&
+          user_agent_device_name_filter == o.user_agent_device_name_filter &&
+          user_agent_device_os_name_filter == o.user_agent_device_os_name_filter &&
+          user_agent_device_os_version_filter == o.user_agent_device_os_version_filter &&
           user_agent_name == o.user_agent_name &&
+          user_agent_name_filter == o.user_agent_name_filter &&
           user_agent_original == o.user_agent_original &&
+          user_agent_original_filter == o.user_agent_original_filter &&
           user_agent_os_name == o.user_agent_os_name &&
           user_agent_os_version == o.user_agent_os_version &&
           user_ip == o.user_ip &&
           utm_campaign == o.utm_campaign &&
+          utm_campaign_filter == o.utm_campaign_filter &&
           utm_source == o.utm_source &&
+          utm_source_filter == o.utm_source_filter &&
           visitor_number == o.visitor_number &&
           watched == o.watched
     end
@@ -443,7 +612,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affiliate_email, affiliate_id, communications_campaign_name, communications_email_subject, communications_flow_name, email, email_domain, email_identified, end_timestamp, esp_customer_uuid, favorite, geolocation, geolocation_country, geolocation_state, language_iso_code, last_x_days, max_filter_values, order_id, page_view_count, page_views, placed_order, preferred_language, referrer_domain, return_filter_values, screen_recording_uuids, screen_sizes, skip_filter_values, skip_hits, start_timestamp, tags, time_on_site, user_agent_device_name, user_agent_name, user_agent_original, user_agent_os_name, user_agent_os_version, user_ip, utm_campaign, utm_source, visitor_number, watched].hash
+      [affiliate_email, affiliate_id, communications_campaign_name, communications_campaign_name_filter, communications_email_subject, communications_email_subject_filter, communications_flow_name, communications_flow_name_filter, email, email_domain, email_domain_filter, email_identified, end_timestamp, esp_customer_uuid, favorite, geolocation, geolocation_country, geolocation_country_filter, geolocation_state, geolocation_state_filter, language_iso_code, language_iso_code_filter, last_x_days, max_filter_values, order_id, page_view_count, page_views, placed_order, preferred_language, preferred_language_filter, referrer_domain, referrer_domain_filter, screen_recording_uuids, screen_sizes, skip_filter_values, skip_histogram, skip_hits, start_timestamp, tags, time_on_site, time_on_site_max_filter, time_on_site_min_filter, url_filter, user_agent_device_name, user_agent_device_name_filter, user_agent_device_os_name_filter, user_agent_device_os_version_filter, user_agent_name, user_agent_name_filter, user_agent_original, user_agent_original_filter, user_agent_os_name, user_agent_os_version, user_ip, utm_campaign, utm_campaign_filter, utm_source, utm_source_filter, visitor_number, watched].hash
     end
 
     # Builds the object from hash

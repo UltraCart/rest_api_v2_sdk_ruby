@@ -16,7 +16,19 @@ module UltracartClient
   class ScreenRecordingFilterPageView
     attr_accessor :domain
 
+    attr_accessor :domain_filter
+
+    attr_accessor :event_name_filter
+
+    attr_accessor :event_param_name_filter
+
+    attr_accessor :event_param_value_filter
+
     attr_accessor :events
+
+    attr_accessor :param_name_filter
+
+    attr_accessor :param_value_filter
 
     attr_accessor :params
 
@@ -26,24 +38,36 @@ module UltracartClient
 
     attr_accessor :referrer_raw
 
-    attr_accessor :return_filter_values
-
     attr_accessor :time_on_page
 
+    attr_accessor :time_on_page_max_filter
+
+    attr_accessor :time_on_page_min_filter
+
     attr_accessor :url
+
+    attr_accessor :url_filter
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'domain' => :'domain',
+        :'domain_filter' => :'domain_filter',
+        :'event_name_filter' => :'event_name_filter',
+        :'event_param_name_filter' => :'event_param_name_filter',
+        :'event_param_value_filter' => :'event_param_value_filter',
         :'events' => :'events',
+        :'param_name_filter' => :'param_name_filter',
+        :'param_value_filter' => :'param_value_filter',
         :'params' => :'params',
         :'referrer' => :'referrer',
         :'referrer_params' => :'referrer_params',
         :'referrer_raw' => :'referrer_raw',
-        :'return_filter_values' => :'return_filter_values',
         :'time_on_page' => :'time_on_page',
-        :'url' => :'url'
+        :'time_on_page_max_filter' => :'time_on_page_max_filter',
+        :'time_on_page_min_filter' => :'time_on_page_min_filter',
+        :'url' => :'url',
+        :'url_filter' => :'url_filter'
       }
     end
 
@@ -51,14 +75,22 @@ module UltracartClient
     def self.swagger_types
       {
         :'domain' => :'ScreenRecordingFilterStringSearch',
+        :'domain_filter' => :'BOOLEAN',
+        :'event_name_filter' => :'BOOLEAN',
+        :'event_param_name_filter' => :'BOOLEAN',
+        :'event_param_value_filter' => :'BOOLEAN',
         :'events' => :'Array<ScreenRecordingFilterPageViewEvent>',
+        :'param_name_filter' => :'BOOLEAN',
+        :'param_value_filter' => :'BOOLEAN',
         :'params' => :'Array<ScreenRecordingFilterPageViewParam>',
         :'referrer' => :'ScreenRecordingFilterStringSearch',
         :'referrer_params' => :'Array<ScreenRecordingFilterPageViewReferrerParam>',
         :'referrer_raw' => :'ScreenRecordingFilterStringSearch',
-        :'return_filter_values' => :'Array<String>',
         :'time_on_page' => :'ScreenRecordingFilterRangeInteger',
-        :'url' => :'ScreenRecordingFilterStringSearch'
+        :'time_on_page_max_filter' => :'BOOLEAN',
+        :'time_on_page_min_filter' => :'BOOLEAN',
+        :'url' => :'ScreenRecordingFilterStringSearch',
+        :'url_filter' => :'BOOLEAN'
       }
     end
 
@@ -74,10 +106,34 @@ module UltracartClient
         self.domain = attributes[:'domain']
       end
 
+      if attributes.has_key?(:'domain_filter')
+        self.domain_filter = attributes[:'domain_filter']
+      end
+
+      if attributes.has_key?(:'event_name_filter')
+        self.event_name_filter = attributes[:'event_name_filter']
+      end
+
+      if attributes.has_key?(:'event_param_name_filter')
+        self.event_param_name_filter = attributes[:'event_param_name_filter']
+      end
+
+      if attributes.has_key?(:'event_param_value_filter')
+        self.event_param_value_filter = attributes[:'event_param_value_filter']
+      end
+
       if attributes.has_key?(:'events')
         if (value = attributes[:'events']).is_a?(Array)
           self.events = value
         end
+      end
+
+      if attributes.has_key?(:'param_name_filter')
+        self.param_name_filter = attributes[:'param_name_filter']
+      end
+
+      if attributes.has_key?(:'param_value_filter')
+        self.param_value_filter = attributes[:'param_value_filter']
       end
 
       if attributes.has_key?(:'params')
@@ -100,18 +156,24 @@ module UltracartClient
         self.referrer_raw = attributes[:'referrer_raw']
       end
 
-      if attributes.has_key?(:'return_filter_values')
-        if (value = attributes[:'return_filter_values']).is_a?(Array)
-          self.return_filter_values = value
-        end
-      end
-
       if attributes.has_key?(:'time_on_page')
         self.time_on_page = attributes[:'time_on_page']
       end
 
+      if attributes.has_key?(:'time_on_page_max_filter')
+        self.time_on_page_max_filter = attributes[:'time_on_page_max_filter']
+      end
+
+      if attributes.has_key?(:'time_on_page_min_filter')
+        self.time_on_page_min_filter = attributes[:'time_on_page_min_filter']
+      end
+
       if attributes.has_key?(:'url')
         self.url = attributes[:'url']
+      end
+
+      if attributes.has_key?(:'url_filter')
+        self.url_filter = attributes[:'url_filter']
       end
     end
 
@@ -134,14 +196,22 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           domain == o.domain &&
+          domain_filter == o.domain_filter &&
+          event_name_filter == o.event_name_filter &&
+          event_param_name_filter == o.event_param_name_filter &&
+          event_param_value_filter == o.event_param_value_filter &&
           events == o.events &&
+          param_name_filter == o.param_name_filter &&
+          param_value_filter == o.param_value_filter &&
           params == o.params &&
           referrer == o.referrer &&
           referrer_params == o.referrer_params &&
           referrer_raw == o.referrer_raw &&
-          return_filter_values == o.return_filter_values &&
           time_on_page == o.time_on_page &&
-          url == o.url
+          time_on_page_max_filter == o.time_on_page_max_filter &&
+          time_on_page_min_filter == o.time_on_page_min_filter &&
+          url == o.url &&
+          url_filter == o.url_filter
     end
 
     # @see the `==` method
@@ -153,7 +223,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [domain, events, params, referrer, referrer_params, referrer_raw, return_filter_values, time_on_page, url].hash
+      [domain, domain_filter, event_name_filter, event_param_name_filter, event_param_value_filter, events, param_name_filter, param_value_filter, params, referrer, referrer_params, referrer_raw, time_on_page, time_on_page_max_filter, time_on_page_min_filter, url, url_filter].hash
     end
 
     # Builds the object from hash
