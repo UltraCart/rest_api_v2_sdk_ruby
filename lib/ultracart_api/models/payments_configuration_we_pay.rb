@@ -74,8 +74,6 @@ module UltracartClient
     # Postal code
     attr_accessor :postal_code
 
-    attr_accessor :remove_pay_pal_pro
-
     attr_accessor :restrictions
 
     # Internal UI aid
@@ -122,7 +120,6 @@ module UltracartClient
         :'owner_name' => :'owner_name',
         :'owner_phone' => :'owner_phone',
         :'postal_code' => :'postal_code',
-        :'remove_pay_pal_pro' => :'removePayPalPro',
         :'restrictions' => :'restrictions',
         :'short_paypal_marketing_text' => :'short_paypal_marketing_text',
         :'show_ultracart_payments_disabled' => :'show_ultracart_payments_disabled',
@@ -157,7 +154,6 @@ module UltracartClient
         :'owner_name' => :'String',
         :'owner_phone' => :'String',
         :'postal_code' => :'String',
-        :'remove_pay_pal_pro' => :'BOOLEAN',
         :'restrictions' => :'PaymentsConfigurationRestrictions',
         :'short_paypal_marketing_text' => :'BOOLEAN',
         :'show_ultracart_payments_disabled' => :'BOOLEAN',
@@ -257,10 +253,6 @@ module UltracartClient
         self.postal_code = attributes[:'postal_code']
       end
 
-      if attributes.has_key?(:'removePayPalPro')
-        self.remove_pay_pal_pro = attributes[:'removePayPalPro']
-      end
-
       if attributes.has_key?(:'restrictions')
         self.restrictions = attributes[:'restrictions']
       end
@@ -332,7 +324,6 @@ module UltracartClient
           owner_name == o.owner_name &&
           owner_phone == o.owner_phone &&
           postal_code == o.postal_code &&
-          remove_pay_pal_pro == o.remove_pay_pal_pro &&
           restrictions == o.restrictions &&
           short_paypal_marketing_text == o.short_paypal_marketing_text &&
           show_ultracart_payments_disabled == o.show_ultracart_payments_disabled &&
@@ -352,7 +343,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_wepay, account_update_uri, address1, address2, canada_accept_debit_cards, city, company, company_description, console_hostname, country, credit_card_rate, currency, expected_revenue, hide_credit_card_non_ultracart_payments, hide_surcharge_amount, industry, owner_email, owner_name, owner_phone, postal_code, remove_pay_pal_pro, restrictions, short_paypal_marketing_text, show_ultracart_payments_disabled, show_ultracart_payments_intro, show_ultracart_payments_verification, show_ultracart_payments_verified, state, website_url].hash
+      [accept_wepay, account_update_uri, address1, address2, canada_accept_debit_cards, city, company, company_description, console_hostname, country, credit_card_rate, currency, expected_revenue, hide_credit_card_non_ultracart_payments, hide_surcharge_amount, industry, owner_email, owner_name, owner_phone, postal_code, restrictions, short_paypal_marketing_text, show_ultracart_payments_disabled, show_ultracart_payments_intro, show_ultracart_payments_verification, show_ultracart_payments_verified, state, website_url].hash
     end
 
     # Builds the object from hash

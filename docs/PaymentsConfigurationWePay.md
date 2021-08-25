@@ -23,7 +23,6 @@ Name | Type | Description | Notes
 **owner_name** | **String** | Owner name | [optional] 
 **owner_phone** | **String** | Owner phone | [optional] 
 **postal_code** | **String** | Postal code | [optional] 
-**remove_pay_pal_pro** | **BOOLEAN** |  | [optional] 
 **restrictions** | [**PaymentsConfigurationRestrictions**](PaymentsConfigurationRestrictions.md) |  | [optional] 
 **short_paypal_marketing_text** | **BOOLEAN** | Internal UI aid | [optional] 
 **show_ultracart_payments_disabled** | **BOOLEAN** | Internal flag to aid UI | [optional] 

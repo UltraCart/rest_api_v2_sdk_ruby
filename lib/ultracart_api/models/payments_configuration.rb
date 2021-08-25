@@ -45,10 +45,6 @@ module UltracartClient
     # Internal flag used to determine if accounting codes should be shown on the screen or not.  This flag is true if the merchant has a Quickbooks integration configured.
     attr_accessor :show_accounting_code
 
-    attr_accessor :switch_to_sub_tab
-
-    attr_accessor :switch_to_tab
-
     attr_accessor :ultracart_payments_wepay
 
     attr_accessor :wire_transfer
@@ -71,8 +67,6 @@ module UltracartClient
         :'quote_request' => :'quote_request',
         :'sezzle' => :'sezzle',
         :'show_accounting_code' => :'show_accounting_code',
-        :'switch_to_sub_tab' => :'switchToSubTab',
-        :'switch_to_tab' => :'switchToTab',
         :'ultracart_payments_wepay' => :'ultracart_payments_wepay',
         :'wire_transfer' => :'wire_transfer'
       }
@@ -96,8 +90,6 @@ module UltracartClient
         :'quote_request' => :'PaymentsConfigurationQuoteRequest',
         :'sezzle' => :'PaymentsConfigurationSezzle',
         :'show_accounting_code' => :'BOOLEAN',
-        :'switch_to_sub_tab' => :'String',
-        :'switch_to_tab' => :'String',
         :'ultracart_payments_wepay' => :'PaymentsConfigurationWePay',
         :'wire_transfer' => :'PaymentsConfigurationWireTransfer'
       }
@@ -171,14 +163,6 @@ module UltracartClient
         self.show_accounting_code = attributes[:'show_accounting_code']
       end
 
-      if attributes.has_key?(:'switchToSubTab')
-        self.switch_to_sub_tab = attributes[:'switchToSubTab']
-      end
-
-      if attributes.has_key?(:'switchToTab')
-        self.switch_to_tab = attributes[:'switchToTab']
-      end
-
       if attributes.has_key?(:'ultracart_payments_wepay')
         self.ultracart_payments_wepay = attributes[:'ultracart_payments_wepay']
       end
@@ -221,8 +205,6 @@ module UltracartClient
           quote_request == o.quote_request &&
           sezzle == o.sezzle &&
           show_accounting_code == o.show_accounting_code &&
-          switch_to_sub_tab == o.switch_to_sub_tab &&
-          switch_to_tab == o.switch_to_tab &&
           ultracart_payments_wepay == o.ultracart_payments_wepay &&
           wire_transfer == o.wire_transfer
     end
@@ -236,7 +218,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affirm, amazon, cash, check, cod, credit_card, echeck, insurance, loan_hero, money_order, paypal, purchase_order, quote_request, sezzle, show_accounting_code, switch_to_sub_tab, switch_to_tab, ultracart_payments_wepay, wire_transfer].hash
+      [affirm, amazon, cash, check, cod, credit_card, echeck, insurance, loan_hero, money_order, paypal, purchase_order, quote_request, sezzle, show_accounting_code, ultracart_payments_wepay, wire_transfer].hash
     end
 
     # Builds the object from hash
