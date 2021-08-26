@@ -29,13 +29,35 @@ module UltracartClient
     # Optional deposit to account field for use with Quickbooks integrations
     attr_accessor :deposit_to_account
 
-    attr_accessor :restrictions
+    # Environment
+    attr_accessor :environment
 
-    # True if transactions should run against the Amazon sandbox.  Useful for testing not configurations
-    attr_accessor :sandbox
+    attr_accessor :restrictions
 
     # Amazon secret access key
     attr_accessor :secret_access_key
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -45,8 +67,8 @@ module UltracartClient
         :'accounting_code' => :'accounting_code',
         :'amazon_merchant_id' => :'amazon_merchant_id',
         :'deposit_to_account' => :'deposit_to_account',
+        :'environment' => :'environment',
         :'restrictions' => :'restrictions',
-        :'sandbox' => :'sandbox',
         :'secret_access_key' => :'secret_access_key'
       }
     end
@@ -59,8 +81,8 @@ module UltracartClient
         :'accounting_code' => :'String',
         :'amazon_merchant_id' => :'String',
         :'deposit_to_account' => :'String',
+        :'environment' => :'String',
         :'restrictions' => :'PaymentsConfigurationRestrictions',
-        :'sandbox' => :'BOOLEAN',
         :'secret_access_key' => :'String'
       }
     end
@@ -93,12 +115,12 @@ module UltracartClient
         self.deposit_to_account = attributes[:'deposit_to_account']
       end
 
-      if attributes.has_key?(:'restrictions')
-        self.restrictions = attributes[:'restrictions']
+      if attributes.has_key?(:'environment')
+        self.environment = attributes[:'environment']
       end
 
-      if attributes.has_key?(:'sandbox')
-        self.sandbox = attributes[:'sandbox']
+      if attributes.has_key?(:'restrictions')
+        self.restrictions = attributes[:'restrictions']
       end
 
       if attributes.has_key?(:'secret_access_key')
@@ -116,7 +138,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      environment_validator = EnumAttributeValidator.new('String', ['Live', 'Sandbox'])
+      return false unless environment_validator.valid?(@environment)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] environment Object to be assigned
+    def environment=(environment)
+      validator = EnumAttributeValidator.new('String', ['Live', 'Sandbox'])
+      unless validator.valid?(environment)
+        fail ArgumentError, 'invalid value for "environment", must be one of #{validator.allowable_values}.'
+      end
+      @environment = environment
     end
 
     # Checks equality by comparing each attribute.
@@ -129,8 +163,8 @@ module UltracartClient
           accounting_code == o.accounting_code &&
           amazon_merchant_id == o.amazon_merchant_id &&
           deposit_to_account == o.deposit_to_account &&
+          environment == o.environment &&
           restrictions == o.restrictions &&
-          sandbox == o.sandbox &&
           secret_access_key == o.secret_access_key
     end
 
@@ -143,7 +177,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_amazon, access_key_id, accounting_code, amazon_merchant_id, deposit_to_account, restrictions, sandbox, secret_access_key].hash
+      [accept_amazon, access_key_id, accounting_code, amazon_merchant_id, deposit_to_account, environment, restrictions, secret_access_key].hash
     end
 
     # Builds the object from hash

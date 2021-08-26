@@ -29,9 +29,6 @@ module UltracartClient
     # Sezzle environment
     attr_accessor :environment
 
-    # List of environments possible
-    attr_accessor :environments
-
     # Private API key
     attr_accessor :private_api_key
 
@@ -70,7 +67,6 @@ module UltracartClient
         :'business_id' => :'business_id',
         :'deposit_to_account' => :'deposit_to_account',
         :'environment' => :'environment',
-        :'environments' => :'environments',
         :'private_api_key' => :'private_api_key',
         :'public_api_key' => :'public_api_key',
         :'restrictions' => :'restrictions'
@@ -85,7 +81,6 @@ module UltracartClient
         :'business_id' => :'String',
         :'deposit_to_account' => :'String',
         :'environment' => :'String',
-        :'environments' => :'Array<String>',
         :'private_api_key' => :'String',
         :'public_api_key' => :'String',
         :'restrictions' => :'PaymentsConfigurationRestrictions'
@@ -118,12 +113,6 @@ module UltracartClient
 
       if attributes.has_key?(:'environment')
         self.environment = attributes[:'environment']
-      end
-
-      if attributes.has_key?(:'environments')
-        if (value = attributes[:'environments']).is_a?(Array)
-          self.environments = value
-        end
       end
 
       if attributes.has_key?(:'private_api_key')
@@ -174,7 +163,6 @@ module UltracartClient
           business_id == o.business_id &&
           deposit_to_account == o.deposit_to_account &&
           environment == o.environment &&
-          environments == o.environments &&
           private_api_key == o.private_api_key &&
           public_api_key == o.public_api_key &&
           restrictions == o.restrictions
@@ -189,7 +177,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_sezzle, accounting_code, business_id, deposit_to_account, environment, environments, private_api_key, public_api_key, restrictions].hash
+      [accept_sezzle, accounting_code, business_id, deposit_to_account, environment, private_api_key, public_api_key, restrictions].hash
     end
 
     # Builds the object from hash
