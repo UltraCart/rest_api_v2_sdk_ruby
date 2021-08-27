@@ -20,11 +20,19 @@ module UltracartClient
     # email
     attr_accessor :email
 
+    # First name
+    attr_accessor :first_name
+
+    # Last name
+    attr_accessor :last_name
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'affiliate_oid' => :'affiliate_oid',
-        :'email' => :'email'
+        :'email' => :'email',
+        :'first_name' => :'first_name',
+        :'last_name' => :'last_name'
       }
     end
 
@@ -32,7 +40,9 @@ module UltracartClient
     def self.swagger_types
       {
         :'affiliate_oid' => :'Integer',
-        :'email' => :'String'
+        :'email' => :'String',
+        :'first_name' => :'String',
+        :'last_name' => :'String'
       }
     end
 
@@ -50,6 +60,14 @@ module UltracartClient
 
       if attributes.has_key?(:'email')
         self.email = attributes[:'email']
+      end
+
+      if attributes.has_key?(:'first_name')
+        self.first_name = attributes[:'first_name']
+      end
+
+      if attributes.has_key?(:'last_name')
+        self.last_name = attributes[:'last_name']
       end
     end
 
@@ -72,7 +90,9 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           affiliate_oid == o.affiliate_oid &&
-          email == o.email
+          email == o.email &&
+          first_name == o.first_name &&
+          last_name == o.last_name
     end
 
     # @see the `==` method
@@ -84,7 +104,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affiliate_oid, email].hash
+      [affiliate_oid, email, first_name, last_name].hash
     end
 
     # Builds the object from hash
