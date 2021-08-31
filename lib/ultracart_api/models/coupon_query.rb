@@ -35,6 +35,9 @@ module UltracartClient
     # Merchant code is a unique character string for this coupon.
     attr_accessor :merchant_code
 
+    # Merchant code description used for searching
+    attr_accessor :merchant_code_or_description
+
     # Start date begin
     attr_accessor :start_dts_begin
 
@@ -51,6 +54,7 @@ module UltracartClient
         :'expiration_dts_begin' => :'expiration_dts_begin',
         :'expiration_dts_end' => :'expiration_dts_end',
         :'merchant_code' => :'merchant_code',
+        :'merchant_code_or_description' => :'merchant_code_or_description',
         :'start_dts_begin' => :'start_dts_begin',
         :'start_dts_end' => :'start_dts_end'
       }
@@ -66,6 +70,7 @@ module UltracartClient
         :'expiration_dts_begin' => :'String',
         :'expiration_dts_end' => :'String',
         :'merchant_code' => :'String',
+        :'merchant_code_or_description' => :'String',
         :'start_dts_begin' => :'String',
         :'start_dts_end' => :'String'
       }
@@ -107,6 +112,10 @@ module UltracartClient
         self.merchant_code = attributes[:'merchant_code']
       end
 
+      if attributes.has_key?(:'merchant_code_or_description')
+        self.merchant_code_or_description = attributes[:'merchant_code_or_description']
+      end
+
       if attributes.has_key?(:'start_dts_begin')
         self.start_dts_begin = attributes[:'start_dts_begin']
       end
@@ -141,6 +150,7 @@ module UltracartClient
           expiration_dts_begin == o.expiration_dts_begin &&
           expiration_dts_end == o.expiration_dts_end &&
           merchant_code == o.merchant_code &&
+          merchant_code_or_description == o.merchant_code_or_description &&
           start_dts_begin == o.start_dts_begin &&
           start_dts_end == o.start_dts_end
     end
@@ -154,7 +164,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affiliate_oid, coupon_type, description, exclude_expired, expiration_dts_begin, expiration_dts_end, merchant_code, start_dts_begin, start_dts_end].hash
+      [affiliate_oid, coupon_type, description, exclude_expired, expiration_dts_begin, expiration_dts_end, merchant_code, merchant_code_or_description, start_dts_begin, start_dts_end].hash
     end
 
     # Builds the object from hash
