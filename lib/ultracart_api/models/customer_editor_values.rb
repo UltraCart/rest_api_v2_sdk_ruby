@@ -35,6 +35,9 @@ module UltracartClient
     # sales_rep_codes
     attr_accessor :sales_rep_codes
 
+    # state_optional_countries
+    attr_accessor :state_optional_countries
+
     # terms
     attr_accessor :terms
 
@@ -48,6 +51,7 @@ module UltracartClient
         :'countries' => :'countries',
         :'qb_classes' => :'qb_classes',
         :'sales_rep_codes' => :'sales_rep_codes',
+        :'state_optional_countries' => :'state_optional_countries',
         :'terms' => :'terms'
       }
     end
@@ -62,6 +66,7 @@ module UltracartClient
         :'countries' => :'Array<Country>',
         :'qb_classes' => :'Array<String>',
         :'sales_rep_codes' => :'Array<String>',
+        :'state_optional_countries' => :'Array<Country>',
         :'terms' => :'Array<String>'
       }
     end
@@ -116,6 +121,12 @@ module UltracartClient
         end
       end
 
+      if attributes.has_key?(:'state_optional_countries')
+        if (value = attributes[:'state_optional_countries']).is_a?(Array)
+          self.state_optional_countries = value
+        end
+      end
+
       if attributes.has_key?(:'terms')
         if (value = attributes[:'terms']).is_a?(Array)
           self.terms = value
@@ -148,6 +159,7 @@ module UltracartClient
           countries == o.countries &&
           qb_classes == o.qb_classes &&
           sales_rep_codes == o.sales_rep_codes &&
+          state_optional_countries == o.state_optional_countries &&
           terms == o.terms
     end
 
@@ -160,7 +172,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affiliates, card_exp_months, card_exp_years, card_types, countries, qb_classes, sales_rep_codes, terms].hash
+      [affiliates, card_exp_months, card_exp_years, card_types, countries, qb_classes, sales_rep_codes, state_optional_countries, terms].hash
     end
 
     # Builds the object from hash
