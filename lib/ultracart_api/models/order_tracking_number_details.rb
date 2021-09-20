@@ -20,6 +20,8 @@ module UltracartClient
 
     attr_accessor :details
 
+    attr_accessor :easypost_tracker_id
+
     attr_accessor :expected_delivery_date
 
     attr_accessor :expected_delivery_date_formatted
@@ -54,6 +56,7 @@ module UltracartClient
         :'actual_delivery_date' => :'actual_delivery_date',
         :'actual_delivery_date_formatted' => :'actual_delivery_date_formatted',
         :'details' => :'details',
+        :'easypost_tracker_id' => :'easypost_tracker_id',
         :'expected_delivery_date' => :'expected_delivery_date',
         :'expected_delivery_date_formatted' => :'expected_delivery_date_formatted',
         :'map_url' => :'map_url',
@@ -77,6 +80,7 @@ module UltracartClient
         :'actual_delivery_date' => :'String',
         :'actual_delivery_date_formatted' => :'String',
         :'details' => :'Array<OrderTrackingNumberDetail>',
+        :'easypost_tracker_id' => :'String',
         :'expected_delivery_date' => :'String',
         :'expected_delivery_date_formatted' => :'String',
         :'map_url' => :'String',
@@ -114,6 +118,10 @@ module UltracartClient
         if (value = attributes[:'details']).is_a?(Array)
           self.details = value
         end
+      end
+
+      if attributes.has_key?(:'easypost_tracker_id')
+        self.easypost_tracker_id = attributes[:'easypost_tracker_id']
       end
 
       if attributes.has_key?(:'expected_delivery_date')
@@ -194,6 +202,7 @@ module UltracartClient
           actual_delivery_date == o.actual_delivery_date &&
           actual_delivery_date_formatted == o.actual_delivery_date_formatted &&
           details == o.details &&
+          easypost_tracker_id == o.easypost_tracker_id &&
           expected_delivery_date == o.expected_delivery_date &&
           expected_delivery_date_formatted == o.expected_delivery_date_formatted &&
           map_url == o.map_url &&
@@ -219,7 +228,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [actual_delivery_date, actual_delivery_date_formatted, details, expected_delivery_date, expected_delivery_date_formatted, map_url, order_placed_date, order_placed_date_formatted, payment_processed_date, payment_processed_date_formatted, shipped_date, shipped_date_formatted, shipping_method, status, status_description, tracking_number, tracking_url].hash
+      [actual_delivery_date, actual_delivery_date_formatted, details, easypost_tracker_id, expected_delivery_date, expected_delivery_date_formatted, map_url, order_placed_date, order_placed_date_formatted, payment_processed_date, payment_processed_date_formatted, shipped_date, shipped_date_formatted, shipping_method, status, status_description, tracking_number, tracking_url].hash
     end
 
     # Builds the object from hash
