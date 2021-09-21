@@ -49,9 +49,6 @@ module UltracartClient
 
     attr_accessor :restrictions
 
-    # Test methods for this payment method
-    attr_accessor :test_methods
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -66,8 +63,7 @@ module UltracartClient
         :'mail_to_name' => :'mail_to_name',
         :'mail_to_postal_code' => :'mail_to_postal_code',
         :'mail_to_store' => :'mail_to_store',
-        :'restrictions' => :'restrictions',
-        :'test_methods' => :'test_methods'
+        :'restrictions' => :'restrictions'
       }
     end
 
@@ -85,8 +81,7 @@ module UltracartClient
         :'mail_to_name' => :'String',
         :'mail_to_postal_code' => :'String',
         :'mail_to_store' => :'String',
-        :'restrictions' => :'PaymentsConfigurationRestrictions',
-        :'test_methods' => :'Array<PaymentsConfigurationTestMethod>'
+        :'restrictions' => :'PaymentsConfigurationRestrictions'
       }
     end
 
@@ -145,12 +140,6 @@ module UltracartClient
       if attributes.has_key?(:'restrictions')
         self.restrictions = attributes[:'restrictions']
       end
-
-      if attributes.has_key?(:'test_methods')
-        if (value = attributes[:'test_methods']).is_a?(Array)
-          self.test_methods = value
-        end
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -182,8 +171,7 @@ module UltracartClient
           mail_to_name == o.mail_to_name &&
           mail_to_postal_code == o.mail_to_postal_code &&
           mail_to_store == o.mail_to_store &&
-          restrictions == o.restrictions &&
-          test_methods == o.test_methods
+          restrictions == o.restrictions
     end
 
     # @see the `==` method
@@ -195,7 +183,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_check_orders, accounting_code, checks_payable_to, deposit_to_account, mail_to_address1, mail_to_address2, mail_to_city, mail_to_country, mail_to_name, mail_to_postal_code, mail_to_store, restrictions, test_methods].hash
+      [accept_check_orders, accounting_code, checks_payable_to, deposit_to_account, mail_to_address1, mail_to_address2, mail_to_city, mail_to_country, mail_to_name, mail_to_postal_code, mail_to_store, restrictions].hash
     end
 
     # Builds the object from hash

@@ -25,13 +25,17 @@ module UltracartClient
 
     attr_accessor :restrictions
 
+    # Test methods for this payment method
+    attr_accessor :test_methods
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'accept_echeck' => :'accept_echeck',
         :'accounting_code' => :'accounting_code',
         :'deposit_to_account' => :'deposit_to_account',
-        :'restrictions' => :'restrictions'
+        :'restrictions' => :'restrictions',
+        :'test_methods' => :'test_methods'
       }
     end
 
@@ -41,7 +45,8 @@ module UltracartClient
         :'accept_echeck' => :'BOOLEAN',
         :'accounting_code' => :'String',
         :'deposit_to_account' => :'String',
-        :'restrictions' => :'PaymentsConfigurationRestrictions'
+        :'restrictions' => :'PaymentsConfigurationRestrictions',
+        :'test_methods' => :'Array<PaymentsConfigurationTestMethod>'
       }
     end
 
@@ -68,6 +73,12 @@ module UltracartClient
       if attributes.has_key?(:'restrictions')
         self.restrictions = attributes[:'restrictions']
       end
+
+      if attributes.has_key?(:'test_methods')
+        if (value = attributes[:'test_methods']).is_a?(Array)
+          self.test_methods = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -91,7 +102,8 @@ module UltracartClient
           accept_echeck == o.accept_echeck &&
           accounting_code == o.accounting_code &&
           deposit_to_account == o.deposit_to_account &&
-          restrictions == o.restrictions
+          restrictions == o.restrictions &&
+          test_methods == o.test_methods
     end
 
     # @see the `==` method
@@ -103,7 +115,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accept_echeck, accounting_code, deposit_to_account, restrictions].hash
+      [accept_echeck, accounting_code, deposit_to_account, restrictions, test_methods].hash
     end
 
     # Builds the object from hash
