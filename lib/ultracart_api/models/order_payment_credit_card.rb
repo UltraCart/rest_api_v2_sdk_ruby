@@ -35,7 +35,7 @@ module UltracartClient
     # Card number (masked to last 4)
     attr_accessor :card_number
 
-    # Card number token from hosted fields used to update the cart number
+    # Card number token from hosted fields used to update the card number
     attr_accessor :card_number_token
 
     # True if the card has been truncated

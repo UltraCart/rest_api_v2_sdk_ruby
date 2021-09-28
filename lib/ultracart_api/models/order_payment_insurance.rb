@@ -20,11 +20,15 @@ module UltracartClient
     # claim id
     attr_accessor :claim_id
 
+    # refund claim id
+    attr_accessor :refund_claim_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'application_id' => :'application_id',
-        :'claim_id' => :'claim_id'
+        :'claim_id' => :'claim_id',
+        :'refund_claim_id' => :'refund_claim_id'
       }
     end
 
@@ -32,7 +36,8 @@ module UltracartClient
     def self.swagger_types
       {
         :'application_id' => :'String',
-        :'claim_id' => :'String'
+        :'claim_id' => :'String',
+        :'refund_claim_id' => :'String'
       }
     end
 
@@ -50,6 +55,10 @@ module UltracartClient
 
       if attributes.has_key?(:'claim_id')
         self.claim_id = attributes[:'claim_id']
+      end
+
+      if attributes.has_key?(:'refund_claim_id')
+        self.refund_claim_id = attributes[:'refund_claim_id']
       end
     end
 
@@ -72,7 +81,8 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           application_id == o.application_id &&
-          claim_id == o.claim_id
+          claim_id == o.claim_id &&
+          refund_claim_id == o.refund_claim_id
     end
 
     # @see the `==` method
@@ -84,7 +94,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [application_id, claim_id].hash
+      [application_id, claim_id, refund_claim_id].hash
     end
 
     # Builds the object from hash
