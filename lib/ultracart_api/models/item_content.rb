@@ -26,6 +26,9 @@ module UltracartClient
     # Exclude from search
     attr_accessor :exclude_from_search
 
+    # Exclude from the sitemap for the StoreFront
+    attr_accessor :exclude_from_sitemap
+
     # Exclude from the top sellers list in the StoreFront
     attr_accessor :exclude_from_top_sellers
 
@@ -57,6 +60,7 @@ module UltracartClient
         :'attributes' => :'attributes',
         :'custom_thank_you_url' => :'custom_thank_you_url',
         :'exclude_from_search' => :'exclude_from_search',
+        :'exclude_from_sitemap' => :'exclude_from_sitemap',
         :'exclude_from_top_sellers' => :'exclude_from_top_sellers',
         :'extended_description' => :'extended_description',
         :'extended_description_translated_text_instance_oid' => :'extended_description_translated_text_instance_oid',
@@ -75,6 +79,7 @@ module UltracartClient
         :'attributes' => :'Array<ItemContentAttribute>',
         :'custom_thank_you_url' => :'String',
         :'exclude_from_search' => :'BOOLEAN',
+        :'exclude_from_sitemap' => :'BOOLEAN',
         :'exclude_from_top_sellers' => :'BOOLEAN',
         :'extended_description' => :'String',
         :'extended_description_translated_text_instance_oid' => :'Integer',
@@ -112,6 +117,10 @@ module UltracartClient
 
       if attributes.has_key?(:'exclude_from_search')
         self.exclude_from_search = attributes[:'exclude_from_search']
+      end
+
+      if attributes.has_key?(:'exclude_from_sitemap')
+        self.exclude_from_sitemap = attributes[:'exclude_from_sitemap']
       end
 
       if attributes.has_key?(:'exclude_from_top_sellers')
@@ -186,6 +195,7 @@ module UltracartClient
           attributes == o.attributes &&
           custom_thank_you_url == o.custom_thank_you_url &&
           exclude_from_search == o.exclude_from_search &&
+          exclude_from_sitemap == o.exclude_from_sitemap &&
           exclude_from_top_sellers == o.exclude_from_top_sellers &&
           extended_description == o.extended_description &&
           extended_description_translated_text_instance_oid == o.extended_description_translated_text_instance_oid &&
@@ -205,7 +215,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [assignments, attributes, custom_thank_you_url, exclude_from_search, exclude_from_top_sellers, extended_description, extended_description_translated_text_instance_oid, multimedia, new_item, new_item_end, new_item_start, view_url].hash
+      [assignments, attributes, custom_thank_you_url, exclude_from_search, exclude_from_sitemap, exclude_from_top_sellers, extended_description, extended_description_translated_text_instance_oid, multimedia, new_item, new_item_end, new_item_start, view_url].hash
     end
 
     # Builds the object from hash

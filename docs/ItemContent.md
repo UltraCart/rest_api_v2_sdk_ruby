@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **attributes** | [**Array&lt;ItemContentAttribute&gt;**](ItemContentAttribute.md) | StoreFront attributes | [optional] 
 **custom_thank_you_url** | **String** | Custom Thank You URL | [optional] 
 **exclude_from_search** | **BOOLEAN** | Exclude from search | [optional] 
+**exclude_from_sitemap** | **BOOLEAN** | Exclude from the sitemap for the StoreFront | [optional] 
 **exclude_from_top_sellers** | **BOOLEAN** | Exclude from the top sellers list in the StoreFront | [optional] 
 **extended_description** | **String** | Extended description (max 10000 characters) | [optional] 
 **extended_description_translated_text_instance_oid** | **Integer** | Extneded description text translation instance identifier | [optional] 
