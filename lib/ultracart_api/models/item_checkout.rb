@@ -20,6 +20,9 @@ module UltracartClient
     # Terms for purchasing this item
     attr_accessor :terms
 
+    # Terms only apply if the item is on auto order
+    attr_accessor :terms_if_auto_order
+
     # Terms translated text instance identifier
     attr_accessor :terms_translated_text_instance_oid
 
@@ -28,6 +31,7 @@ module UltracartClient
       {
         :'suppress_buysafe' => :'suppress_buysafe',
         :'terms' => :'terms',
+        :'terms_if_auto_order' => :'terms_if_auto_order',
         :'terms_translated_text_instance_oid' => :'terms_translated_text_instance_oid'
       }
     end
@@ -37,6 +41,7 @@ module UltracartClient
       {
         :'suppress_buysafe' => :'BOOLEAN',
         :'terms' => :'String',
+        :'terms_if_auto_order' => :'BOOLEAN',
         :'terms_translated_text_instance_oid' => :'Integer'
       }
     end
@@ -55,6 +60,10 @@ module UltracartClient
 
       if attributes.has_key?(:'terms')
         self.terms = attributes[:'terms']
+      end
+
+      if attributes.has_key?(:'terms_if_auto_order')
+        self.terms_if_auto_order = attributes[:'terms_if_auto_order']
       end
 
       if attributes.has_key?(:'terms_translated_text_instance_oid')
@@ -97,6 +106,7 @@ module UltracartClient
       self.class == o.class &&
           suppress_buysafe == o.suppress_buysafe &&
           terms == o.terms &&
+          terms_if_auto_order == o.terms_if_auto_order &&
           terms_translated_text_instance_oid == o.terms_translated_text_instance_oid
     end
 
@@ -109,7 +119,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [suppress_buysafe, terms, terms_translated_text_instance_oid].hash
+      [suppress_buysafe, terms, terms_if_auto_order, terms_translated_text_instance_oid].hash
     end
 
     # Builds the object from hash
