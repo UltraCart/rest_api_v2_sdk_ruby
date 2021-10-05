@@ -48,6 +48,9 @@ module UltracartClient
 
     attr_accessor :enrollment123
 
+    # Fulfillment Add-ons
+    attr_accessor :fulfillment_addons
+
     attr_accessor :gift_certificate
 
     attr_accessor :google_product_search
@@ -151,6 +154,7 @@ module UltracartClient
         :'ebay' => :'ebay',
         :'email_notifications' => :'email_notifications',
         :'enrollment123' => :'enrollment123',
+        :'fulfillment_addons' => :'fulfillment_addons',
         :'gift_certificate' => :'gift_certificate',
         :'google_product_search' => :'google_product_search',
         :'identifiers' => :'identifiers',
@@ -207,6 +211,7 @@ module UltracartClient
         :'ebay' => :'ItemEbay',
         :'email_notifications' => :'ItemEmailNotifications',
         :'enrollment123' => :'ItemEnrollment123',
+        :'fulfillment_addons' => :'Array<ItemFulfillmentAddon>',
         :'gift_certificate' => :'ItemGiftCertificate',
         :'google_product_search' => :'ItemGoogleProductSearch',
         :'identifiers' => :'ItemIdentifiers',
@@ -313,6 +318,12 @@ module UltracartClient
 
       if attributes.has_key?(:'enrollment123')
         self.enrollment123 = attributes[:'enrollment123']
+      end
+
+      if attributes.has_key?(:'fulfillment_addons')
+        if (value = attributes[:'fulfillment_addons']).is_a?(Array)
+          self.fulfillment_addons = value
+        end
       end
 
       if attributes.has_key?(:'gift_certificate')
@@ -544,6 +555,7 @@ module UltracartClient
           ebay == o.ebay &&
           email_notifications == o.email_notifications &&
           enrollment123 == o.enrollment123 &&
+          fulfillment_addons == o.fulfillment_addons &&
           gift_certificate == o.gift_certificate &&
           google_product_search == o.google_product_search &&
           identifiers == o.identifiers &&
@@ -590,7 +602,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accounting, amember, auto_order, ccbill, channel_partner_item_mappings, chargeback, checkout, content, creation_dts, description, description_translated_text_instance_oid, digital_delivery, ebay, email_notifications, enrollment123, gift_certificate, google_product_search, identifiers, inactive, instant_payment_notifications, internal, kit, kit_component_only, kit_definition, last_modified_dts, merchant_id, merchant_item_id, merchant_item_oid, options, parent_category_id, parent_category_path, payment_processing, physical, pricing, properties, realtime_pricing, recommend_replenishment_days, related, reporting, restriction, revguard, reviews, salesforce, shipping, tags, tax, third_party_email_marketing, variant_items, variations, wishlist_member].hash
+      [accounting, amember, auto_order, ccbill, channel_partner_item_mappings, chargeback, checkout, content, creation_dts, description, description_translated_text_instance_oid, digital_delivery, ebay, email_notifications, enrollment123, fulfillment_addons, gift_certificate, google_product_search, identifiers, inactive, instant_payment_notifications, internal, kit, kit_component_only, kit_definition, last_modified_dts, merchant_id, merchant_item_id, merchant_item_oid, options, parent_category_id, parent_category_path, payment_processing, physical, pricing, properties, realtime_pricing, recommend_replenishment_days, related, reporting, restriction, revguard, reviews, salesforce, shipping, tags, tax, third_party_email_marketing, variant_items, variations, wishlist_member].hash
     end
 
     # Builds the object from hash
