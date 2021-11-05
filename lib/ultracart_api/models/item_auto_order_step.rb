@@ -56,7 +56,7 @@ module UltracartClient
     # Email list identifier to subscribe the customer to when this rebill occurs
     attr_accessor :subscribe_email_list_oid
 
-    # Type of step (item or pause)
+    # Type of step (item, kit only, loop or pause)
     attr_accessor :type
 
     class EnumAttributeValidator
@@ -211,7 +211,7 @@ module UltracartClient
     # @return true if the model is valid
     def valid?
       return false if !@recurring_merchant_item_id.nil? && @recurring_merchant_item_id.to_s.length > 20
-      type_validator = EnumAttributeValidator.new('String', ['item', 'pause'])
+      type_validator = EnumAttributeValidator.new('String', ['item', 'pause', 'loop', 'kit only'])
       return false unless type_validator.valid?(@type)
       true
     end
@@ -229,7 +229,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ['item', 'pause'])
+      validator = EnumAttributeValidator.new('String', ['item', 'pause', 'loop', 'kit only'])
       unless validator.valid?(type)
         fail ArgumentError, 'invalid value for "type", must be one of #{validator.allowable_values}.'
       end

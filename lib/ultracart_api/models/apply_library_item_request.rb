@@ -20,6 +20,9 @@ module UltracartClient
     # Library item oid that you wish to apply to the given StoreFront
     attr_accessor :library_item_oid
 
+    # The postcard uuid you wish to apply to a given StoreFront.
+    attr_accessor :postcard_uuid
+
     # StoreFront oid where content originates necessary for tracking down relative assets
     attr_accessor :storefront_oid
 
@@ -28,6 +31,7 @@ module UltracartClient
       {
         :'email_uuid' => :'email_uuid',
         :'library_item_oid' => :'library_item_oid',
+        :'postcard_uuid' => :'postcard_uuid',
         :'storefront_oid' => :'storefront_oid'
       }
     end
@@ -37,6 +41,7 @@ module UltracartClient
       {
         :'email_uuid' => :'String',
         :'library_item_oid' => :'Integer',
+        :'postcard_uuid' => :'String',
         :'storefront_oid' => :'Integer'
       }
     end
@@ -55,6 +60,10 @@ module UltracartClient
 
       if attributes.has_key?(:'library_item_oid')
         self.library_item_oid = attributes[:'library_item_oid']
+      end
+
+      if attributes.has_key?(:'postcard_uuid')
+        self.postcard_uuid = attributes[:'postcard_uuid']
       end
 
       if attributes.has_key?(:'storefront_oid')
@@ -82,6 +91,7 @@ module UltracartClient
       self.class == o.class &&
           email_uuid == o.email_uuid &&
           library_item_oid == o.library_item_oid &&
+          postcard_uuid == o.postcard_uuid &&
           storefront_oid == o.storefront_oid
     end
 
@@ -94,7 +104,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [email_uuid, library_item_oid, storefront_oid].hash
+      [email_uuid, library_item_oid, postcard_uuid, storefront_oid].hash
     end
 
     # Builds the object from hash

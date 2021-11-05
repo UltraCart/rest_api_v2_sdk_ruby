@@ -17,6 +17,9 @@ module UltracartClient
     # Unique object identifier for the click associated with this ledger entry
     attr_accessor :affiliate_click_oid
 
+    # Affiliate ledger object ID associated with this ledger
+    attr_accessor :affiliate_ledger_oid
+
     # Unique object identifier for the link that this click is associated with
     attr_accessor :affiliate_link_oid
 
@@ -91,6 +94,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'affiliate_click_oid' => :'affiliate_click_oid',
+        :'affiliate_ledger_oid' => :'affiliate_ledger_oid',
         :'affiliate_link_oid' => :'affiliate_link_oid',
         :'affiliate_oid' => :'affiliate_oid',
         :'assigned_by_user' => :'assigned_by_user',
@@ -115,6 +119,7 @@ module UltracartClient
     def self.swagger_types
       {
         :'affiliate_click_oid' => :'Integer',
+        :'affiliate_ledger_oid' => :'Integer',
         :'affiliate_link_oid' => :'Integer',
         :'affiliate_oid' => :'Integer',
         :'assigned_by_user' => :'String',
@@ -125,12 +130,12 @@ module UltracartClient
         :'order_id' => :'String',
         :'original_transaction_dts' => :'String',
         :'sub_id' => :'String',
-        :'tier_number' => :'String',
+        :'tier_number' => :'Integer',
         :'transaction_amount' => :'Float',
         :'transaction_amount_paid' => :'Float',
         :'transaction_dts' => :'String',
         :'transaction_memo' => :'String',
-        :'transaction_percentage' => :'String',
+        :'transaction_percentage' => :'Float',
         :'transaction_state' => :'String'
       }
     end
@@ -145,6 +150,10 @@ module UltracartClient
 
       if attributes.has_key?(:'affiliate_click_oid')
         self.affiliate_click_oid = attributes[:'affiliate_click_oid']
+      end
+
+      if attributes.has_key?(:'affiliate_ledger_oid')
+        self.affiliate_ledger_oid = attributes[:'affiliate_ledger_oid']
       end
 
       if attributes.has_key?(:'affiliate_link_oid')
@@ -247,6 +256,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           affiliate_click_oid == o.affiliate_click_oid &&
+          affiliate_ledger_oid == o.affiliate_ledger_oid &&
           affiliate_link_oid == o.affiliate_link_oid &&
           affiliate_oid == o.affiliate_oid &&
           assigned_by_user == o.assigned_by_user &&
@@ -275,7 +285,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affiliate_click_oid, affiliate_link_oid, affiliate_oid, assigned_by_user, click, item_id, link, order, order_id, original_transaction_dts, sub_id, tier_number, transaction_amount, transaction_amount_paid, transaction_dts, transaction_memo, transaction_percentage, transaction_state].hash
+      [affiliate_click_oid, affiliate_ledger_oid, affiliate_link_oid, affiliate_oid, assigned_by_user, click, item_id, link, order, order_id, original_transaction_dts, sub_id, tier_number, transaction_amount, transaction_amount_paid, transaction_dts, transaction_memo, transaction_percentage, transaction_state].hash
     end
 
     # Builds the object from hash

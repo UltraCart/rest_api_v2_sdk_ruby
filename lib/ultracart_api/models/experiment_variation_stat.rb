@@ -13,71 +13,71 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class AddLibraryItemRequest
-    # Attributes associated with the library item to contain additional configuration.
-    attr_accessor :attributes
+  class ExperimentVariationStat
+    # Total add to cart count for this variation
+    attr_accessor :add_to_cart_count
 
-    # Cjson to be added to library
-    attr_accessor :cjson
+    # Total bounce count for this variation
+    attr_accessor :bounce_count
 
-    # flow, campaign, cjson, email, transactional_email, postcard or upsell
-    attr_accessor :content_type
+    # Total number of seconds spent on the site for this variation
+    attr_accessor :duration_seconds_sum
 
-    # description of library item
-    attr_accessor :description
+    # Total event count for this variation
+    attr_accessor :event_count
 
-    # Required if content_type is transactional_email. This is the name of the email template (html, not text).  This name should have a .vm file extension.  An example is auto_order_cancel_html.vm
-    attr_accessor :email_name
+    # Total initiate checkout count for this variation
+    attr_accessor :initiate_checkout_count
 
-    # Required if content_type is transactional_email. This is the full path to the email template stored in the file system.  This defines which StoreFront contains the desired email template.  An example is /themes/Elements/core/emails/auto_order_cancel_html.vm
-    attr_accessor :email_path
+    # Total order count for this variation
+    attr_accessor :order_count
 
-    # Screenshot urls for display
-    attr_accessor :screenshots
+    # Total order item count for this variation
+    attr_accessor :order_item_count
 
-    # StoreFront oid where content originates necessary for tracking down relative assets
-    attr_accessor :storefront_oid
+    # Total page view count for this variation
+    attr_accessor :page_view_count
 
-    # title of library item, usually the name of the flow or campaign, or description of cjson
-    attr_accessor :title
+    # Total revenue for this variation
+    attr_accessor :revenue
 
-    # Required if content_type is upsell. This is object identifier of a StoreFront Upsell Offer.
-    attr_accessor :upsell_offer_oid
+    # Total sessions for this variation
+    attr_accessor :session_count
 
-    # UUID of communication flow, campaign, email, postcard, or null if this item is something else. transactional_email do not have a uuid because they are singleton objects within a storefront and easily identifiable by name
-    attr_accessor :uuid
+    # Date/time that the statistic was created
+    attr_accessor :stat_dts
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'attributes' => :'attributes',
-        :'cjson' => :'cjson',
-        :'content_type' => :'content_type',
-        :'description' => :'description',
-        :'email_name' => :'email_name',
-        :'email_path' => :'email_path',
-        :'screenshots' => :'screenshots',
-        :'storefront_oid' => :'storefront_oid',
-        :'title' => :'title',
-        :'upsell_offer_oid' => :'upsell_offer_oid',
-        :'uuid' => :'uuid'
+        :'add_to_cart_count' => :'add_to_cart_count',
+        :'bounce_count' => :'bounce_count',
+        :'duration_seconds_sum' => :'duration_seconds_sum',
+        :'event_count' => :'event_count',
+        :'initiate_checkout_count' => :'initiate_checkout_count',
+        :'order_count' => :'order_count',
+        :'order_item_count' => :'order_item_count',
+        :'page_view_count' => :'page_view_count',
+        :'revenue' => :'revenue',
+        :'session_count' => :'session_count',
+        :'stat_dts' => :'stat_dts'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'attributes' => :'Array<LibraryItemAttribute>',
-        :'cjson' => :'String',
-        :'content_type' => :'String',
-        :'description' => :'String',
-        :'email_name' => :'String',
-        :'email_path' => :'String',
-        :'screenshots' => :'Array<LibraryItemScreenshot>',
-        :'storefront_oid' => :'Integer',
-        :'title' => :'String',
-        :'upsell_offer_oid' => :'Integer',
-        :'uuid' => :'String'
+        :'add_to_cart_count' => :'Integer',
+        :'bounce_count' => :'Integer',
+        :'duration_seconds_sum' => :'Integer',
+        :'event_count' => :'Integer',
+        :'initiate_checkout_count' => :'Integer',
+        :'order_count' => :'Integer',
+        :'order_item_count' => :'Integer',
+        :'page_view_count' => :'Integer',
+        :'revenue' => :'Float',
+        :'session_count' => :'Integer',
+        :'stat_dts' => :'String'
       }
     end
 
@@ -89,52 +89,48 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'attributes')
-        if (value = attributes[:'attributes']).is_a?(Array)
-          self.attributes = value
-        end
+      if attributes.has_key?(:'add_to_cart_count')
+        self.add_to_cart_count = attributes[:'add_to_cart_count']
       end
 
-      if attributes.has_key?(:'cjson')
-        self.cjson = attributes[:'cjson']
+      if attributes.has_key?(:'bounce_count')
+        self.bounce_count = attributes[:'bounce_count']
       end
 
-      if attributes.has_key?(:'content_type')
-        self.content_type = attributes[:'content_type']
+      if attributes.has_key?(:'duration_seconds_sum')
+        self.duration_seconds_sum = attributes[:'duration_seconds_sum']
       end
 
-      if attributes.has_key?(:'description')
-        self.description = attributes[:'description']
+      if attributes.has_key?(:'event_count')
+        self.event_count = attributes[:'event_count']
       end
 
-      if attributes.has_key?(:'email_name')
-        self.email_name = attributes[:'email_name']
+      if attributes.has_key?(:'initiate_checkout_count')
+        self.initiate_checkout_count = attributes[:'initiate_checkout_count']
       end
 
-      if attributes.has_key?(:'email_path')
-        self.email_path = attributes[:'email_path']
+      if attributes.has_key?(:'order_count')
+        self.order_count = attributes[:'order_count']
       end
 
-      if attributes.has_key?(:'screenshots')
-        if (value = attributes[:'screenshots']).is_a?(Array)
-          self.screenshots = value
-        end
+      if attributes.has_key?(:'order_item_count')
+        self.order_item_count = attributes[:'order_item_count']
       end
 
-      if attributes.has_key?(:'storefront_oid')
-        self.storefront_oid = attributes[:'storefront_oid']
+      if attributes.has_key?(:'page_view_count')
+        self.page_view_count = attributes[:'page_view_count']
       end
 
-      if attributes.has_key?(:'title')
-        self.title = attributes[:'title']
+      if attributes.has_key?(:'revenue')
+        self.revenue = attributes[:'revenue']
       end
 
-      if attributes.has_key?(:'upsell_offer_oid')
-        self.upsell_offer_oid = attributes[:'upsell_offer_oid']
+      if attributes.has_key?(:'session_count')
+        self.session_count = attributes[:'session_count']
       end
 
-      if attributes.has_key?(:'uuid')
-        self.uuid = attributes[:'uuid']
+      if attributes.has_key?(:'stat_dts')
+        self.stat_dts = attributes[:'stat_dts']
       end
     end
 
@@ -156,17 +152,17 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          attributes == o.attributes &&
-          cjson == o.cjson &&
-          content_type == o.content_type &&
-          description == o.description &&
-          email_name == o.email_name &&
-          email_path == o.email_path &&
-          screenshots == o.screenshots &&
-          storefront_oid == o.storefront_oid &&
-          title == o.title &&
-          upsell_offer_oid == o.upsell_offer_oid &&
-          uuid == o.uuid
+          add_to_cart_count == o.add_to_cart_count &&
+          bounce_count == o.bounce_count &&
+          duration_seconds_sum == o.duration_seconds_sum &&
+          event_count == o.event_count &&
+          initiate_checkout_count == o.initiate_checkout_count &&
+          order_count == o.order_count &&
+          order_item_count == o.order_item_count &&
+          page_view_count == o.page_view_count &&
+          revenue == o.revenue &&
+          session_count == o.session_count &&
+          stat_dts == o.stat_dts
     end
 
     # @see the `==` method
@@ -178,7 +174,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [attributes, cjson, content_type, description, email_name, email_path, screenshots, storefront_oid, title, upsell_offer_oid, uuid].hash
+      [add_to_cart_count, bounce_count, duration_seconds_sum, event_count, initiate_checkout_count, order_count, order_item_count, page_view_count, revenue, session_count, stat_dts].hash
     end
 
     # Builds the object from hash

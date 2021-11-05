@@ -32,6 +32,9 @@ module UltracartClient
     # Conversion rate for this variation
     attr_accessor :conversion_rate
 
+    # Array of daily statistics for this variation
+    attr_accessor :daily_statistics
+
     # Total number of seconds spent on the site for this variation
     attr_accessor :duration_seconds_sum
 
@@ -43,6 +46,9 @@ module UltracartClient
 
     # Total order count for this variation
     attr_accessor :order_count
+
+    # Total order item count for this variation
+    attr_accessor :order_item_count
 
     # Percentage of the traffic the variation originally started out with
     attr_accessor :original_traffic_percentage
@@ -80,10 +86,12 @@ module UltracartClient
         :'average_order_value' => :'average_order_value',
         :'bounce_count' => :'bounce_count',
         :'conversion_rate' => :'conversion_rate',
+        :'daily_statistics' => :'daily_statistics',
         :'duration_seconds_sum' => :'duration_seconds_sum',
         :'event_count' => :'event_count',
         :'initiate_checkout_count' => :'initiate_checkout_count',
         :'order_count' => :'order_count',
+        :'order_item_count' => :'order_item_count',
         :'original_traffic_percentage' => :'original_traffic_percentage',
         :'page_view_count' => :'page_view_count',
         :'revenue' => :'revenue',
@@ -105,10 +113,12 @@ module UltracartClient
         :'average_order_value' => :'Float',
         :'bounce_count' => :'Integer',
         :'conversion_rate' => :'Float',
+        :'daily_statistics' => :'Array<ExperimentVariationStat>',
         :'duration_seconds_sum' => :'Integer',
         :'event_count' => :'Integer',
         :'initiate_checkout_count' => :'Integer',
         :'order_count' => :'Integer',
+        :'order_item_count' => :'Integer',
         :'original_traffic_percentage' => :'Float',
         :'page_view_count' => :'Integer',
         :'revenue' => :'Float',
@@ -153,6 +163,12 @@ module UltracartClient
         self.conversion_rate = attributes[:'conversion_rate']
       end
 
+      if attributes.has_key?(:'daily_statistics')
+        if (value = attributes[:'daily_statistics']).is_a?(Array)
+          self.daily_statistics = value
+        end
+      end
+
       if attributes.has_key?(:'duration_seconds_sum')
         self.duration_seconds_sum = attributes[:'duration_seconds_sum']
       end
@@ -167,6 +183,10 @@ module UltracartClient
 
       if attributes.has_key?(:'order_count')
         self.order_count = attributes[:'order_count']
+      end
+
+      if attributes.has_key?(:'order_item_count')
+        self.order_item_count = attributes[:'order_item_count']
       end
 
       if attributes.has_key?(:'original_traffic_percentage')
@@ -230,10 +250,12 @@ module UltracartClient
           average_order_value == o.average_order_value &&
           bounce_count == o.bounce_count &&
           conversion_rate == o.conversion_rate &&
+          daily_statistics == o.daily_statistics &&
           duration_seconds_sum == o.duration_seconds_sum &&
           event_count == o.event_count &&
           initiate_checkout_count == o.initiate_checkout_count &&
           order_count == o.order_count &&
+          order_item_count == o.order_item_count &&
           original_traffic_percentage == o.original_traffic_percentage &&
           page_view_count == o.page_view_count &&
           revenue == o.revenue &&
@@ -254,7 +276,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [add_to_cart_count, average_duration_seconds, average_objective_per_session, average_order_value, bounce_count, conversion_rate, duration_seconds_sum, event_count, initiate_checkout_count, order_count, original_traffic_percentage, page_view_count, revenue, session_count, traffic_percentage, url, variation_name, variation_number, winner].hash
+      [add_to_cart_count, average_duration_seconds, average_objective_per_session, average_order_value, bounce_count, conversion_rate, daily_statistics, duration_seconds_sum, event_count, initiate_checkout_count, order_count, order_item_count, original_traffic_percentage, page_view_count, revenue, session_count, traffic_percentage, url, variation_name, variation_number, winner].hash
     end
 
     # Builds the object from hash

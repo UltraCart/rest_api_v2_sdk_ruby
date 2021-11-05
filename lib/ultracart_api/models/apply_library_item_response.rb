@@ -20,7 +20,7 @@ module UltracartClient
     # Cjson from library item, only populated if this library item was a cjson snippet or marketing email (not transactional)
     attr_accessor :cjson
 
-    # flow, campaign, cjson, upsell, transactional_email or email
+    # flow, campaign, cjson, upsell, postcard, transactional_email or email
     attr_accessor :content_type
 
     # If a marketing email was applied, this is the path to the template encapsulating the cjson.  This is needed for the UltraCart UI.

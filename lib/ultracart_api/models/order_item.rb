@@ -151,9 +151,6 @@ module UltracartClient
 
     attr_accessor :total_refunded
 
-    # Tracking number, if null or missing, use order level tracking number(s). Used if there are multiple shipments for one order
-    attr_accessor :tracking_number
-
     # Date/time that this item was transmitted to the distribution center
     attr_accessor :transmitted_to_distribution_center_dts
 
@@ -218,7 +215,6 @@ module UltracartClient
         :'taxable_cost' => :'taxable_cost',
         :'total_cost_with_discount' => :'total_cost_with_discount',
         :'total_refunded' => :'total_refunded',
-        :'tracking_number' => :'tracking_number',
         :'transmitted_to_distribution_center_dts' => :'transmitted_to_distribution_center_dts',
         :'unit_cost_with_discount' => :'unit_cost_with_discount',
         :'upsell' => :'upsell',
@@ -279,7 +275,6 @@ module UltracartClient
         :'taxable_cost' => :'Currency',
         :'total_cost_with_discount' => :'Currency',
         :'total_refunded' => :'Currency',
-        :'tracking_number' => :'String',
         :'transmitted_to_distribution_center_dts' => :'String',
         :'unit_cost_with_discount' => :'Currency',
         :'upsell' => :'BOOLEAN',
@@ -500,10 +495,6 @@ module UltracartClient
         self.total_refunded = attributes[:'total_refunded']
       end
 
-      if attributes.has_key?(:'tracking_number')
-        self.tracking_number = attributes[:'tracking_number']
-      end
-
       if attributes.has_key?(:'transmitted_to_distribution_center_dts')
         self.transmitted_to_distribution_center_dts = attributes[:'transmitted_to_distribution_center_dts']
       end
@@ -682,7 +673,6 @@ module UltracartClient
           taxable_cost == o.taxable_cost &&
           total_cost_with_discount == o.total_cost_with_discount &&
           total_refunded == o.total_refunded &&
-          tracking_number == o.tracking_number &&
           transmitted_to_distribution_center_dts == o.transmitted_to_distribution_center_dts &&
           unit_cost_with_discount == o.unit_cost_with_discount &&
           upsell == o.upsell &&
@@ -699,7 +689,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accounting_code, activation_codes, arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, barcode, channel_partner_item_id, cogs, component_unit_value, cost, country_code_of_origin, customs_description, description, discount, discount_quantity, discount_shipping_weight, distribution_center_code, edi, exclude_coupon, free_shipping, hazmat, height, item_reference_oid, kit, kit_component, length, manufacturer_sku, max_days_time_in_transit, merchant_item_id, mix_and_match_group_name, mix_and_match_group_oid, no_shipping_discount, options, packed_by_user, perishable_class, pricing_tier_name, properties, quantity, quantity_refunded, quickbooks_class, ship_separately, shipped_by_user, shipped_dts, special_product_type, tags, tax_free, taxable_cost, total_cost_with_discount, total_refunded, tracking_number, transmitted_to_distribution_center_dts, unit_cost_with_discount, upsell, weight, width].hash
+      [accounting_code, activation_codes, arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, barcode, channel_partner_item_id, cogs, component_unit_value, cost, country_code_of_origin, customs_description, description, discount, discount_quantity, discount_shipping_weight, distribution_center_code, edi, exclude_coupon, free_shipping, hazmat, height, item_reference_oid, kit, kit_component, length, manufacturer_sku, max_days_time_in_transit, merchant_item_id, mix_and_match_group_name, mix_and_match_group_oid, no_shipping_discount, options, packed_by_user, perishable_class, pricing_tier_name, properties, quantity, quantity_refunded, quickbooks_class, ship_separately, shipped_by_user, shipped_dts, special_product_type, tags, tax_free, taxable_cost, total_cost_with_discount, total_refunded, transmitted_to_distribution_center_dts, unit_cost_with_discount, upsell, weight, width].hash
     end
 
     # Builds the object from hash

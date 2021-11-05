@@ -17,6 +17,6 @@ Name | Type | Description | Notes
 **schedule** | **String** | Frequency of the rebill | [optional] 
 **subscribe_email_list_name** | **String** | Email list name to subscribe the customer to when the rebill occurs | [optional] 
 **subscribe_email_list_oid** | **Integer** | Email list identifier to subscribe the customer to when this rebill occurs | [optional] 
-**type** | **String** | Type of step (item or pause) | [optional] 
+**type** | **String** | Type of step (item, kit only, loop or pause) | [optional] 
 
 
