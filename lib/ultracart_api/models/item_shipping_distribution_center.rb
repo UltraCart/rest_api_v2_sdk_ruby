@@ -23,6 +23,9 @@ module UltracartClient
     # Available to allocate
     attr_accessor :available_to_allocate
 
+    # Cost of goods sold override at the distribution center level
+    attr_accessor :cogs
+
     # Desired inventory level
     attr_accessor :desired_inventory_level
 
@@ -59,6 +62,7 @@ module UltracartClient
         :'allocated_to_placed_orders' => :'allocated_to_placed_orders',
         :'allocated_to_shopping_carts' => :'allocated_to_shopping_carts',
         :'available_to_allocate' => :'available_to_allocate',
+        :'cogs' => :'cogs',
         :'desired_inventory_level' => :'desired_inventory_level',
         :'distribution_center_code' => :'distribution_center_code',
         :'distribution_center_oid' => :'distribution_center_oid',
@@ -78,6 +82,7 @@ module UltracartClient
         :'allocated_to_placed_orders' => :'Float',
         :'allocated_to_shopping_carts' => :'Float',
         :'available_to_allocate' => :'Float',
+        :'cogs' => :'Float',
         :'desired_inventory_level' => :'Float',
         :'distribution_center_code' => :'String',
         :'distribution_center_oid' => :'Integer',
@@ -109,6 +114,10 @@ module UltracartClient
 
       if attributes.has_key?(:'available_to_allocate')
         self.available_to_allocate = attributes[:'available_to_allocate']
+      end
+
+      if attributes.has_key?(:'cogs')
+        self.cogs = attributes[:'cogs']
       end
 
       if attributes.has_key?(:'desired_inventory_level')
@@ -203,6 +212,7 @@ module UltracartClient
           allocated_to_placed_orders == o.allocated_to_placed_orders &&
           allocated_to_shopping_carts == o.allocated_to_shopping_carts &&
           available_to_allocate == o.available_to_allocate &&
+          cogs == o.cogs &&
           desired_inventory_level == o.desired_inventory_level &&
           distribution_center_code == o.distribution_center_code &&
           distribution_center_oid == o.distribution_center_oid &&
@@ -224,7 +234,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allocated_to_placed_orders, allocated_to_shopping_carts, available_to_allocate, desired_inventory_level, distribution_center_code, distribution_center_oid, eta, handles, inventory_level, maximum_backorder, reorder_inventory_level, sku, stock_picking_location].hash
+      [allocated_to_placed_orders, allocated_to_shopping_carts, available_to_allocate, cogs, desired_inventory_level, distribution_center_code, distribution_center_oid, eta, handles, inventory_level, maximum_backorder, reorder_inventory_level, sku, stock_picking_location].hash
     end
 
     # Builds the object from hash

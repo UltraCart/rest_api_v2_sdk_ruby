@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **allocated_to_placed_orders** | **Float** | Allocated to placed orders | [optional] 
 **allocated_to_shopping_carts** | **Float** | Allocated to shopping carts | [optional] 
 **available_to_allocate** | **Float** | Available to allocate | [optional] 
+**cogs** | **Float** | Cost of goods sold override at the distribution center level | [optional] 
 **desired_inventory_level** | **Float** | Desired inventory level | [optional] 
 **distribution_center_code** | **String** | Distribution center code | [optional] 
 **distribution_center_oid** | **Integer** | Distribution center object identifier | [optional] 
