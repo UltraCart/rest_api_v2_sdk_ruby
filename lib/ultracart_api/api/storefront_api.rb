@@ -563,6 +563,59 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Create Twilio account
+    # @param twilio Twilio
+    # @param [Hash] opts the optional parameters
+    # @return [TwilioResponse]
+    def create_twilio_account(twilio, opts = {})
+      data, _status_code, _headers = create_twilio_account_with_http_info(twilio, opts)
+      data
+    end
+
+    # Create Twilio account
+    # @param twilio Twilio
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(TwilioResponse, Fixnum, Hash)>] TwilioResponse data, response status code and response headers
+    def create_twilio_account_with_http_info(twilio, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.create_twilio_account ...'
+      end
+      # verify the required parameter 'twilio' is set
+      if @api_client.config.client_side_validation && twilio.nil?
+        fail ArgumentError, "Missing the required parameter 'twilio' when calling StorefrontApi.create_twilio_account"
+      end
+      # resource path
+      local_var_path = '/storefront/twilio/accounts'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(twilio)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'TwilioResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#create_twilio_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Delete email campaignFolder
     # @param storefront_oid 
     # @param email_campaign_folder_uuid 
@@ -1311,6 +1364,59 @@ module UltracartClient
         :auth_names => auth_names)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#delete_screen_recording_segment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # delete Twilio account
+    # @param esp_twilio_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [BaseResponse]
+    def delete_twilio_account(esp_twilio_uuid, opts = {})
+      data, _status_code, _headers = delete_twilio_account_with_http_info(esp_twilio_uuid, opts)
+      data
+    end
+
+    # delete Twilio account
+    # @param esp_twilio_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BaseResponse, Fixnum, Hash)>] BaseResponse data, response status code and response headers
+    def delete_twilio_account_with_http_info(esp_twilio_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.delete_twilio_account ...'
+      end
+      # verify the required parameter 'esp_twilio_uuid' is set
+      if @api_client.config.client_side_validation && esp_twilio_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'esp_twilio_uuid' when calling StorefrontApi.delete_twilio_account"
+      end
+      # resource path
+      local_var_path = '/storefront/twilio/accounts/{esp_twilio_uuid}'.sub('{' + 'esp_twilio_uuid' + '}', esp_twilio_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'BaseResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#delete_twilio_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5967,6 +6073,106 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Get Twilio account
+    # @param esp_twilio_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [TwilioResponse]
+    def get_twilio_account(esp_twilio_uuid, opts = {})
+      data, _status_code, _headers = get_twilio_account_with_http_info(esp_twilio_uuid, opts)
+      data
+    end
+
+    # Get Twilio account
+    # @param esp_twilio_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(TwilioResponse, Fixnum, Hash)>] TwilioResponse data, response status code and response headers
+    def get_twilio_account_with_http_info(esp_twilio_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_twilio_account ...'
+      end
+      # verify the required parameter 'esp_twilio_uuid' is set
+      if @api_client.config.client_side_validation && esp_twilio_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'esp_twilio_uuid' when calling StorefrontApi.get_twilio_account"
+      end
+      # resource path
+      local_var_path = '/storefront/twilio/accounts/{esp_twilio_uuid}'.sub('{' + 'esp_twilio_uuid' + '}', esp_twilio_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'TwilioResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_twilio_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get all Twilio accounts
+    # @param [Hash] opts the optional parameters
+    # @return [TwiliosResponse]
+    def get_twilio_accounts(opts = {})
+      data, _status_code, _headers = get_twilio_accounts_with_http_info(opts)
+      data
+    end
+
+    # Get all Twilio accounts
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(TwiliosResponse, Fixnum, Hash)>] TwiliosResponse data, response status code and response headers
+    def get_twilio_accounts_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_twilio_accounts ...'
+      end
+      # resource path
+      local_var_path = '/storefront/twilio/accounts'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'TwiliosResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_twilio_accounts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Globally unsubscribe a customer
     # @param storefront_oid 
     # @param unsubscribe Unsubscribe
@@ -9233,6 +9439,65 @@ module UltracartClient
         :return_type => 'TransactionEmailResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#update_transaction_email\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update Twilio account
+    # @param esp_twilio_uuid 
+    # @param twilio Twilio
+    # @param [Hash] opts the optional parameters
+    # @return [TwilioResponse]
+    def update_twilio_account(esp_twilio_uuid, twilio, opts = {})
+      data, _status_code, _headers = update_twilio_account_with_http_info(esp_twilio_uuid, twilio, opts)
+      data
+    end
+
+    # Update Twilio account
+    # @param esp_twilio_uuid 
+    # @param twilio Twilio
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(TwilioResponse, Fixnum, Hash)>] TwilioResponse data, response status code and response headers
+    def update_twilio_account_with_http_info(esp_twilio_uuid, twilio, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.update_twilio_account ...'
+      end
+      # verify the required parameter 'esp_twilio_uuid' is set
+      if @api_client.config.client_side_validation && esp_twilio_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'esp_twilio_uuid' when calling StorefrontApi.update_twilio_account"
+      end
+      # verify the required parameter 'twilio' is set
+      if @api_client.config.client_side_validation && twilio.nil?
+        fail ArgumentError, "Missing the required parameter 'twilio' when calling StorefrontApi.update_twilio_account"
+      end
+      # resource path
+      local_var_path = '/storefront/twilio/accounts/{esp_twilio_uuid}'.sub('{' + 'esp_twilio_uuid' + '}', esp_twilio_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(twilio)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'TwilioResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#update_twilio_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
