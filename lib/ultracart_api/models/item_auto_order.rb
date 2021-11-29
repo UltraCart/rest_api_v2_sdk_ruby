@@ -32,6 +32,9 @@ module UltracartClient
     # True if the rebill processing of this item is paused
     attr_accessor :auto_order_paused
 
+    # Minimum number of months before expiration for the card.  Overrides the account level setting if higher.  Set to zero to disable.
+    attr_accessor :auto_order_prohibit_expiring_cards
+
     # The user selectable schedules that are available
     attr_accessor :auto_order_schedules
 
@@ -71,6 +74,7 @@ module UltracartClient
         :'auto_order_cancel_item_oid' => :'auto_order_cancel_item_oid',
         :'auto_order_downgrade_items' => :'auto_order_downgrade_items',
         :'auto_order_paused' => :'auto_order_paused',
+        :'auto_order_prohibit_expiring_cards' => :'auto_order_prohibit_expiring_cards',
         :'auto_order_schedules' => :'auto_order_schedules',
         :'auto_order_upgrade_items' => :'auto_order_upgrade_items',
         :'auto_order_upsell' => :'auto_order_upsell',
@@ -93,6 +97,7 @@ module UltracartClient
         :'auto_order_cancel_item_oid' => :'Integer',
         :'auto_order_downgrade_items' => :'Array<String>',
         :'auto_order_paused' => :'BOOLEAN',
+        :'auto_order_prohibit_expiring_cards' => :'Integer',
         :'auto_order_schedules' => :'Array<String>',
         :'auto_order_upgrade_items' => :'Array<String>',
         :'auto_order_upsell' => :'BOOLEAN',
@@ -138,6 +143,10 @@ module UltracartClient
 
       if attributes.has_key?(:'auto_order_paused')
         self.auto_order_paused = attributes[:'auto_order_paused']
+      end
+
+      if attributes.has_key?(:'auto_order_prohibit_expiring_cards')
+        self.auto_order_prohibit_expiring_cards = attributes[:'auto_order_prohibit_expiring_cards']
       end
 
       if attributes.has_key?(:'auto_order_schedules')
@@ -226,6 +235,7 @@ module UltracartClient
           auto_order_cancel_item_oid == o.auto_order_cancel_item_oid &&
           auto_order_downgrade_items == o.auto_order_downgrade_items &&
           auto_order_paused == o.auto_order_paused &&
+          auto_order_prohibit_expiring_cards == o.auto_order_prohibit_expiring_cards &&
           auto_order_schedules == o.auto_order_schedules &&
           auto_order_upgrade_items == o.auto_order_upgrade_items &&
           auto_order_upsell == o.auto_order_upsell &&
@@ -247,7 +257,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [auth_future_amount, auth_test_amount, auto_order_cancel_item_id, auto_order_cancel_item_oid, auto_order_downgrade_items, auto_order_paused, auto_order_schedules, auto_order_upgrade_items, auto_order_upsell, auto_order_upsell_no_easy_cancel, auto_order_upsell_one_per_customer, auto_orderable, cancel_other_auto_orders, free_shipping_auto_order, refund_other_auto_orders, steps].hash
+      [auth_future_amount, auth_test_amount, auto_order_cancel_item_id, auto_order_cancel_item_oid, auto_order_downgrade_items, auto_order_paused, auto_order_prohibit_expiring_cards, auto_order_schedules, auto_order_upgrade_items, auto_order_upsell, auto_order_upsell_no_easy_cancel, auto_order_upsell_one_per_customer, auto_orderable, cancel_other_auto_orders, free_shipping_auto_order, refund_other_auto_orders, steps].hash
     end
 
     # Builds the object from hash
