@@ -18,6 +18,9 @@ module UltracartClient
 
     attr_accessor :error
 
+    # Items invalid for coupons.  These will display as warnings within the UI.
+    attr_accessor :items_invalid_for_coupons
+
     attr_accessor :metadata
 
     # Indicates if API call was successful
@@ -30,6 +33,7 @@ module UltracartClient
       {
         :'coupon' => :'coupon',
         :'error' => :'error',
+        :'items_invalid_for_coupons' => :'items_invalid_for_coupons',
         :'metadata' => :'metadata',
         :'success' => :'success',
         :'warning' => :'warning'
@@ -41,6 +45,7 @@ module UltracartClient
       {
         :'coupon' => :'Coupon',
         :'error' => :'Error',
+        :'items_invalid_for_coupons' => :'Array<String>',
         :'metadata' => :'ResponseMetadata',
         :'success' => :'BOOLEAN',
         :'warning' => :'Warning'
@@ -61,6 +66,12 @@ module UltracartClient
 
       if attributes.has_key?(:'error')
         self.error = attributes[:'error']
+      end
+
+      if attributes.has_key?(:'items_invalid_for_coupons')
+        if (value = attributes[:'items_invalid_for_coupons']).is_a?(Array)
+          self.items_invalid_for_coupons = value
+        end
       end
 
       if attributes.has_key?(:'metadata')
@@ -96,6 +107,7 @@ module UltracartClient
       self.class == o.class &&
           coupon == o.coupon &&
           error == o.error &&
+          items_invalid_for_coupons == o.items_invalid_for_coupons &&
           metadata == o.metadata &&
           success == o.success &&
           warning == o.warning
@@ -110,7 +122,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [coupon, error, metadata, success, warning].hash
+      [coupon, error, items_invalid_for_coupons, metadata, success, warning].hash
     end
 
     # Builds the object from hash
