@@ -44,6 +44,9 @@ module UltracartClient
     # Evening phone
     attr_accessor :evening_phone
 
+    # Evening phone (E164 format)
+    attr_accessor :evening_phone_e164
+
     # First name
     attr_accessor :first_name
 
@@ -72,6 +75,7 @@ module UltracartClient
         :'day_phone_e164' => :'day_phone_e164',
         :'email' => :'email',
         :'evening_phone' => :'evening_phone',
+        :'evening_phone_e164' => :'evening_phone_e164',
         :'first_name' => :'first_name',
         :'last_name' => :'last_name',
         :'postal_code' => :'postal_code',
@@ -93,6 +97,7 @@ module UltracartClient
         :'day_phone_e164' => :'String',
         :'email' => :'String',
         :'evening_phone' => :'String',
+        :'evening_phone_e164' => :'String',
         :'first_name' => :'String',
         :'last_name' => :'String',
         :'postal_code' => :'String',
@@ -149,6 +154,10 @@ module UltracartClient
 
       if attributes.has_key?(:'evening_phone')
         self.evening_phone = attributes[:'evening_phone']
+      end
+
+      if attributes.has_key?(:'evening_phone_e164')
+        self.evening_phone_e164 = attributes[:'evening_phone_e164']
       end
 
       if attributes.has_key?(:'first_name')
@@ -212,6 +221,10 @@ module UltracartClient
         invalid_properties.push('invalid value for "evening_phone", the character length must be smaller than or equal to 25.')
       end
 
+      if !@evening_phone_e164.nil? && @evening_phone_e164.to_s.length > 25
+        invalid_properties.push('invalid value for "evening_phone_e164", the character length must be smaller than or equal to 25.')
+      end
+
       if !@first_name.nil? && @first_name.to_s.length > 30
         invalid_properties.push('invalid value for "first_name", the character length must be smaller than or equal to 30.')
       end
@@ -247,6 +260,7 @@ module UltracartClient
       return false if !@day_phone_e164.nil? && @day_phone_e164.to_s.length > 25
       return false if !@email.nil? && @email.to_s.length > 100
       return false if !@evening_phone.nil? && @evening_phone.to_s.length > 25
+      return false if !@evening_phone_e164.nil? && @evening_phone_e164.to_s.length > 25
       return false if !@first_name.nil? && @first_name.to_s.length > 30
       return false if !@last_name.nil? && @last_name.to_s.length > 30
       return false if !@postal_code.nil? && @postal_code.to_s.length > 20
@@ -346,6 +360,16 @@ module UltracartClient
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] evening_phone_e164 Value to be assigned
+    def evening_phone_e164=(evening_phone_e164)
+      if !evening_phone_e164.nil? && evening_phone_e164.to_s.length > 25
+        fail ArgumentError, 'invalid value for "evening_phone_e164", the character length must be smaller than or equal to 25.'
+      end
+
+      @evening_phone_e164 = evening_phone_e164
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] first_name Value to be assigned
     def first_name=(first_name)
       if !first_name.nil? && first_name.to_s.length > 30
@@ -410,6 +434,7 @@ module UltracartClient
           day_phone_e164 == o.day_phone_e164 &&
           email == o.email &&
           evening_phone == o.evening_phone &&
+          evening_phone_e164 == o.evening_phone_e164 &&
           first_name == o.first_name &&
           last_name == o.last_name &&
           postal_code == o.postal_code &&
@@ -426,7 +451,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [address1, address2, cc_emails, city, company, country_code, day_phone, day_phone_e164, email, evening_phone, first_name, last_name, postal_code, state_region, title].hash
+      [address1, address2, cc_emails, city, company, country_code, day_phone, day_phone_e164, email, evening_phone, evening_phone_e164, first_name, last_name, postal_code, state_region, title].hash
     end
 
     # Builds the object from hash
