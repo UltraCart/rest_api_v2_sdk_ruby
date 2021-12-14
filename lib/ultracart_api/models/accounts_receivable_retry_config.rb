@@ -20,6 +20,9 @@ module UltracartClient
     # True if this account has linked accounts that it can process.
     attr_accessor :allow_process_linked_accounts
 
+    # If true also cancel the auto order if the order is rejected at the end
+    attr_accessor :cancel_auto_order
+
     # The current service plan that the account is on.
     attr_accessor :current_service_plan
 
@@ -61,6 +64,7 @@ module UltracartClient
       {
         :'active' => :'active',
         :'allow_process_linked_accounts' => :'allow_process_linked_accounts',
+        :'cancel_auto_order' => :'cancel_auto_order',
         :'current_service_plan' => :'current_service_plan',
         :'daily_activity_list' => :'daily_activity_list',
         :'managed_by_linked_account_merchant_id' => :'managed_by_linked_account_merchant_id',
@@ -81,6 +85,7 @@ module UltracartClient
       {
         :'active' => :'BOOLEAN',
         :'allow_process_linked_accounts' => :'BOOLEAN',
+        :'cancel_auto_order' => :'BOOLEAN',
         :'current_service_plan' => :'String',
         :'daily_activity_list' => :'Array<AccountsReceivableRetryDayActivity>',
         :'managed_by_linked_account_merchant_id' => :'BOOLEAN',
@@ -110,6 +115,10 @@ module UltracartClient
 
       if attributes.has_key?(:'allow_process_linked_accounts')
         self.allow_process_linked_accounts = attributes[:'allow_process_linked_accounts']
+      end
+
+      if attributes.has_key?(:'cancel_auto_order')
+        self.cancel_auto_order = attributes[:'cancel_auto_order']
       end
 
       if attributes.has_key?(:'current_service_plan')
@@ -185,6 +194,7 @@ module UltracartClient
       self.class == o.class &&
           active == o.active &&
           allow_process_linked_accounts == o.allow_process_linked_accounts &&
+          cancel_auto_order == o.cancel_auto_order &&
           current_service_plan == o.current_service_plan &&
           daily_activity_list == o.daily_activity_list &&
           managed_by_linked_account_merchant_id == o.managed_by_linked_account_merchant_id &&
@@ -208,7 +218,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [active, allow_process_linked_accounts, current_service_plan, daily_activity_list, managed_by_linked_account_merchant_id, merchant_id, notify_emails, notify_rejections, notify_successes, process_linked_accounts, processing_percentage, reject_at_end, trial_mode, trial_mode_expiration_dts].hash
+      [active, allow_process_linked_accounts, cancel_auto_order, current_service_plan, daily_activity_list, managed_by_linked_account_merchant_id, merchant_id, notify_emails, notify_rejections, notify_successes, process_linked_accounts, processing_percentage, reject_at_end, trial_mode, trial_mode_expiration_dts].hash
     end
 
     # Builds the object from hash
