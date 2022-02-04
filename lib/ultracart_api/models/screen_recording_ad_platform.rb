@@ -32,6 +32,9 @@ module UltracartClient
     # Bing Click Id (Parameter
     attr_accessor :msclkid
 
+    # TikTok Click Id (Parameter
+    attr_accessor :ttclid
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -40,7 +43,8 @@ module UltracartClient
         :'fbp' => :'fbp',
         :'gacid' => :'gacid',
         :'glcid' => :'glcid',
-        :'msclkid' => :'msclkid'
+        :'msclkid' => :'msclkid',
+        :'ttclid' => :'ttclid'
       }
     end
 
@@ -52,7 +56,8 @@ module UltracartClient
         :'fbp' => :'String',
         :'gacid' => :'String',
         :'glcid' => :'String',
-        :'msclkid' => :'String'
+        :'msclkid' => :'String',
+        :'ttclid' => :'String'
       }
     end
 
@@ -87,6 +92,10 @@ module UltracartClient
       if attributes.has_key?(:'msclkid')
         self.msclkid = attributes[:'msclkid']
       end
+
+      if attributes.has_key?(:'ttclid')
+        self.ttclid = attributes[:'ttclid']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -112,7 +121,8 @@ module UltracartClient
           fbp == o.fbp &&
           gacid == o.gacid &&
           glcid == o.glcid &&
-          msclkid == o.msclkid
+          msclkid == o.msclkid &&
+          ttclid == o.ttclid
     end
 
     # @see the `==` method
@@ -124,7 +134,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [fbc, fbclid, fbp, gacid, glcid, msclkid].hash
+      [fbc, fbclid, fbp, gacid, glcid, msclkid, ttclid].hash
     end
 
     # Builds the object from hash

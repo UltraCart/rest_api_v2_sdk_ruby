@@ -20,6 +20,9 @@ module UltracartClient
     # claim id
     attr_accessor :claim_id
 
+    # insurance type
+    attr_accessor :insurance_type
+
     # refund claim id
     attr_accessor :refund_claim_id
 
@@ -28,6 +31,7 @@ module UltracartClient
       {
         :'application_id' => :'application_id',
         :'claim_id' => :'claim_id',
+        :'insurance_type' => :'insurance_type',
         :'refund_claim_id' => :'refund_claim_id'
       }
     end
@@ -37,6 +41,7 @@ module UltracartClient
       {
         :'application_id' => :'String',
         :'claim_id' => :'String',
+        :'insurance_type' => :'String',
         :'refund_claim_id' => :'String'
       }
     end
@@ -55,6 +60,10 @@ module UltracartClient
 
       if attributes.has_key?(:'claim_id')
         self.claim_id = attributes[:'claim_id']
+      end
+
+      if attributes.has_key?(:'insurance_type')
+        self.insurance_type = attributes[:'insurance_type']
       end
 
       if attributes.has_key?(:'refund_claim_id')
@@ -82,6 +91,7 @@ module UltracartClient
       self.class == o.class &&
           application_id == o.application_id &&
           claim_id == o.claim_id &&
+          insurance_type == o.insurance_type &&
           refund_claim_id == o.refund_claim_id
     end
 
@@ -94,7 +104,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [application_id, claim_id, refund_claim_id].hash
+      [application_id, claim_id, insurance_type, refund_claim_id].hash
     end
 
     # Builds the object from hash
