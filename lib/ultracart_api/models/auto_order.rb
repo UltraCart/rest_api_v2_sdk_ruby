@@ -53,6 +53,9 @@ module UltracartClient
     # The items that are setup to rebill
     attr_accessor :items
 
+    # Logs associated with this auto order
+    attr_accessor :logs
+
     # The next time that the auto order will be attempted for processing
     attr_accessor :next_attempt
 
@@ -111,6 +114,7 @@ module UltracartClient
         :'enabled' => :'enabled',
         :'failure_reason' => :'failure_reason',
         :'items' => :'items',
+        :'logs' => :'logs',
         :'next_attempt' => :'next_attempt',
         :'original_order' => :'original_order',
         :'original_order_id' => :'original_order_id',
@@ -137,6 +141,7 @@ module UltracartClient
         :'enabled' => :'BOOLEAN',
         :'failure_reason' => :'String',
         :'items' => :'Array<AutoOrderItem>',
+        :'logs' => :'Array<AutoOrderLog>',
         :'next_attempt' => :'String',
         :'original_order' => :'Order',
         :'original_order_id' => :'String',
@@ -206,6 +211,12 @@ module UltracartClient
       if attributes.has_key?(:'items')
         if (value = attributes[:'items']).is_a?(Array)
           self.items = value
+        end
+      end
+
+      if attributes.has_key?(:'logs')
+        if (value = attributes[:'logs']).is_a?(Array)
+          self.logs = value
         end
       end
 
@@ -283,6 +294,7 @@ module UltracartClient
           enabled == o.enabled &&
           failure_reason == o.failure_reason &&
           items == o.items &&
+          logs == o.logs &&
           next_attempt == o.next_attempt &&
           original_order == o.original_order &&
           original_order_id == o.original_order_id &&
@@ -301,7 +313,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [auto_order_code, auto_order_oid, cancel_after_next_x_orders, cancel_downgrade, cancel_upgrade, canceled_by_user, canceled_dts, completed, credit_card_attempt, disabled_dts, enabled, failure_reason, items, next_attempt, original_order, original_order_id, override_affiliate_id, rebill_orders, rotating_transaction_gateway_code, status].hash
+      [auto_order_code, auto_order_oid, cancel_after_next_x_orders, cancel_downgrade, cancel_upgrade, canceled_by_user, canceled_dts, completed, credit_card_attempt, disabled_dts, enabled, failure_reason, items, logs, next_attempt, original_order, original_order_id, override_affiliate_id, rebill_orders, rotating_transaction_gateway_code, status].hash
     end
 
     # Builds the object from hash
