@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **delete_customer**
-> CustomerResponse delete_customer(customer_profile_oid)
+> delete_customer(customer_profile_oid)
 
 Delete a customer
 
@@ -41,8 +41,7 @@ customer_profile_oid = 56 # Integer | The customer_profile_oid to delete.
 
 begin
   #Delete a customer
-  result = api_instance.delete_customer(customer_profile_oid)
-  p result
+  api_instance.delete_customer(customer_profile_oid)
 rescue UltracartClient::ApiError => e
   puts "Exception when calling CustomerApi->delete_customer: #{e}"
 end
@@ -56,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CustomerResponse**](CustomerResponse.md)
+nil (empty response body)
 
 ### Authorization
 

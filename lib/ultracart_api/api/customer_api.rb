@@ -36,17 +36,17 @@ module UltracartClient
     # Delete a customer on the UltraCart account. 
     # @param customer_profile_oid The customer_profile_oid to delete.
     # @param [Hash] opts the optional parameters
-    # @return [CustomerResponse]
+    # @return [nil]
     def delete_customer(customer_profile_oid, opts = {})
-      data, _status_code, _headers = delete_customer_with_http_info(customer_profile_oid, opts)
-      data
+      delete_customer_with_http_info(customer_profile_oid, opts)
+      nil
     end
 
     # Delete a customer
     # Delete a customer on the UltraCart account. 
     # @param customer_profile_oid The customer_profile_oid to delete.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(CustomerResponse, Fixnum, Hash)>] CustomerResponse data, response status code and response headers
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_customer_with_http_info(customer_profile_oid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CustomerApi.delete_customer ...'
@@ -80,8 +80,7 @@ module UltracartClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'CustomerResponse')
+        :auth_names => auth_names)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CustomerApi#delete_customer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **order_item_count** | **Integer** | Total order item count for this variation | [optional] 
 **original_traffic_percentage** | **Float** | Percentage of the traffic the variation originally started out with | [optional] 
 **page_view_count** | **Integer** | Total page view count for this variation | [optional] 
+**paused** | **BOOLEAN** | True if traffic should be paused to this variation | [optional] 
 **revenue** | **Float** | Total revenue for this variation | [optional] 
 **session_count** | **Integer** | Total sessions for this variation | [optional] 
 **traffic_percentage** | **Float** | Percentage of the traffic this variation is currently receiving | [optional] 
