@@ -17,6 +17,9 @@ module UltracartClient
     # Initial amount of this gift certificate.
     attr_accessor :amount
 
+    # The email address (customer/owner) associated with this gift certificate.
+    attr_accessor :email
+
     # Expiration date time.
     attr_accessor :expiration_dts
 
@@ -30,6 +33,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'amount' => :'amount',
+        :'email' => :'email',
         :'expiration_dts' => :'expiration_dts',
         :'initial_ledger_description' => :'initial_ledger_description',
         :'merchant_note' => :'merchant_note'
@@ -40,6 +44,7 @@ module UltracartClient
     def self.swagger_types
       {
         :'amount' => :'Float',
+        :'email' => :'String',
         :'expiration_dts' => :'String',
         :'initial_ledger_description' => :'String',
         :'merchant_note' => :'String'
@@ -56,6 +61,10 @@ module UltracartClient
 
       if attributes.has_key?(:'amount')
         self.amount = attributes[:'amount']
+      end
+
+      if attributes.has_key?(:'email')
+        self.email = attributes[:'email']
       end
 
       if attributes.has_key?(:'expiration_dts')
@@ -90,6 +99,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           amount == o.amount &&
+          email == o.email &&
           expiration_dts == o.expiration_dts &&
           initial_ledger_description == o.initial_ledger_description &&
           merchant_note == o.merchant_note
@@ -104,7 +114,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [amount, expiration_dts, initial_ledger_description, merchant_note].hash
+      [amount, email, expiration_dts, initial_ledger_description, merchant_note].hash
     end
 
     # Builds the object from hash
