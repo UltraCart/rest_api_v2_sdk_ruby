@@ -129,6 +129,7 @@ require 'ultracart_api/models/coupon_amount_off_subtotal_free_shipping_with_purc
 require 'ultracart_api/models/coupon_amount_off_subtotal_with_block_purchase'
 require 'ultracart_api/models/coupon_amount_off_subtotal_with_items_purchase'
 require 'ultracart_api/models/coupon_amount_off_subtotal_with_purchase'
+require 'ultracart_api/models/coupon_amount_shipping_with_subtotal'
 require 'ultracart_api/models/coupon_auto_apply_condition'
 require 'ultracart_api/models/coupon_auto_apply_conditions'
 require 'ultracart_api/models/coupon_automatically_apply_coupon_codes'
