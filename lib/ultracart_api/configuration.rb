@@ -10,7 +10,7 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 
 =end
 
-require 'cgi'
+require 'addressable/uri'
 
 module UltracartClient
   class Configuration
@@ -181,7 +181,7 @@ module UltracartClient
 
     def base_url
       url = "#{scheme}://#{[host, base_path].join('/').gsub(/\/+/, '/')}".sub(/\/+\z/, '')
-      CGI.escape(url)
+      Addressable::URI.encode(url)
     end
 
     # Gets API key (with prefix if set).

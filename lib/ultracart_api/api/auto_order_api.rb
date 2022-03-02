@@ -10,7 +10,7 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 
 =end
 
-require 'cgi'
+require 'addressable/uri'
 
 module UltracartClient
   class AutoOrderApi
