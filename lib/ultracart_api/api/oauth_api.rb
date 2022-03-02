@@ -10,7 +10,7 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 
 =end
 
-require 'uri'
+require 'cgi'
 
 module UltracartClient
   class OauthApi
