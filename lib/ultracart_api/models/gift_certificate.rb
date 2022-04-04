@@ -20,6 +20,9 @@ module UltracartClient
     # The code used by the customer to purchase against this gift certificate.
     attr_accessor :code
 
+    # This is the customer profile oid associated with this internally managed gift certificate.
+    attr_accessor :customer_profile_oid
+
     # True if this gift certificate was deleted.
     attr_accessor :deleted
 
@@ -31,6 +34,9 @@ module UltracartClient
 
     # Gift certificate oid.
     attr_accessor :gift_certificate_oid
+
+    # This is an internally managed gift certificate associated with the loyalty cash rewards program.
+    attr_accessor :internal
 
     # A list of all ledger activity for this gift certificate.
     attr_accessor :ledger_entries
@@ -55,10 +61,12 @@ module UltracartClient
       {
         :'activated' => :'activated',
         :'code' => :'code',
+        :'customer_profile_oid' => :'customer_profile_oid',
         :'deleted' => :'deleted',
         :'email' => :'email',
         :'expiration_dts' => :'expiration_dts',
         :'gift_certificate_oid' => :'gift_certificate_oid',
+        :'internal' => :'internal',
         :'ledger_entries' => :'ledger_entries',
         :'merchant_id' => :'merchant_id',
         :'merchant_note' => :'merchant_note',
@@ -73,10 +81,12 @@ module UltracartClient
       {
         :'activated' => :'BOOLEAN',
         :'code' => :'String',
+        :'customer_profile_oid' => :'Integer',
         :'deleted' => :'BOOLEAN',
         :'email' => :'String',
         :'expiration_dts' => :'String',
         :'gift_certificate_oid' => :'Integer',
+        :'internal' => :'BOOLEAN',
         :'ledger_entries' => :'Array<GiftCertificateLedgerEntry>',
         :'merchant_id' => :'String',
         :'merchant_note' => :'String',
@@ -102,6 +112,10 @@ module UltracartClient
         self.code = attributes[:'code']
       end
 
+      if attributes.has_key?(:'customer_profile_oid')
+        self.customer_profile_oid = attributes[:'customer_profile_oid']
+      end
+
       if attributes.has_key?(:'deleted')
         self.deleted = attributes[:'deleted']
       end
@@ -116,6 +130,10 @@ module UltracartClient
 
       if attributes.has_key?(:'gift_certificate_oid')
         self.gift_certificate_oid = attributes[:'gift_certificate_oid']
+      end
+
+      if attributes.has_key?(:'internal')
+        self.internal = attributes[:'internal']
       end
 
       if attributes.has_key?(:'ledger_entries')
@@ -149,13 +167,28 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@email.nil? && @email.to_s.length > 100
+        invalid_properties.push('invalid value for "email", the character length must be smaller than or equal to 100.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@email.nil? && @email.to_s.length > 100
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] email Value to be assigned
+    def email=(email)
+      if !email.nil? && email.to_s.length > 100
+        fail ArgumentError, 'invalid value for "email", the character length must be smaller than or equal to 100.'
+      end
+
+      @email = email
     end
 
     # Checks equality by comparing each attribute.
@@ -165,10 +198,12 @@ module UltracartClient
       self.class == o.class &&
           activated == o.activated &&
           code == o.code &&
+          customer_profile_oid == o.customer_profile_oid &&
           deleted == o.deleted &&
           email == o.email &&
           expiration_dts == o.expiration_dts &&
           gift_certificate_oid == o.gift_certificate_oid &&
+          internal == o.internal &&
           ledger_entries == o.ledger_entries &&
           merchant_id == o.merchant_id &&
           merchant_note == o.merchant_note &&
@@ -186,7 +221,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [activated, code, deleted, email, expiration_dts, gift_certificate_oid, ledger_entries, merchant_id, merchant_note, original_balance, reference_order_id, remaining_balance].hash
+      [activated, code, customer_profile_oid, deleted, email, expiration_dts, gift_certificate_oid, internal, ledger_entries, merchant_id, merchant_note, original_balance, reference_order_id, remaining_balance].hash
     end
 
     # Builds the object from hash

@@ -13,58 +13,36 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ItemTax
-    # Exemptions
-    attr_accessor :exemptions
+  class BrowserOS
+    attr_accessor :family
 
-    # True if tax free
-    attr_accessor :tax_free
+    attr_accessor :major
 
-    # Tax product type
-    attr_accessor :tax_product_type
+    attr_accessor :minor
 
-    # Taxable cost if different than regular cost
-    attr_accessor :taxable_cost
+    attr_accessor :patch
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :patch_minor
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'exemptions' => :'exemptions',
-        :'tax_free' => :'tax_free',
-        :'tax_product_type' => :'tax_product_type',
-        :'taxable_cost' => :'taxable_cost'
+        :'family' => :'family',
+        :'major' => :'major',
+        :'minor' => :'minor',
+        :'patch' => :'patch',
+        :'patch_minor' => :'patch_minor'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'exemptions' => :'Array<ItemTaxExemption>',
-        :'tax_free' => :'BOOLEAN',
-        :'tax_product_type' => :'String',
-        :'taxable_cost' => :'Float'
+        :'family' => :'String',
+        :'major' => :'String',
+        :'minor' => :'String',
+        :'patch' => :'String',
+        :'patch_minor' => :'String'
       }
     end
 
@@ -76,22 +54,24 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'exemptions')
-        if (value = attributes[:'exemptions']).is_a?(Array)
-          self.exemptions = value
-        end
+      if attributes.has_key?(:'family')
+        self.family = attributes[:'family']
       end
 
-      if attributes.has_key?(:'tax_free')
-        self.tax_free = attributes[:'tax_free']
+      if attributes.has_key?(:'major')
+        self.major = attributes[:'major']
       end
 
-      if attributes.has_key?(:'tax_product_type')
-        self.tax_product_type = attributes[:'tax_product_type']
+      if attributes.has_key?(:'minor')
+        self.minor = attributes[:'minor']
       end
 
-      if attributes.has_key?(:'taxable_cost')
-        self.taxable_cost = attributes[:'taxable_cost']
+      if attributes.has_key?(:'patch')
+        self.patch = attributes[:'patch']
+      end
+
+      if attributes.has_key?(:'patch_minor')
+        self.patch_minor = attributes[:'patch_minor']
       end
     end
 
@@ -105,19 +85,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      tax_product_type_validator = EnumAttributeValidator.new('String', ['', 'digital', 'physical', 'service'])
-      return false unless tax_product_type_validator.valid?(@tax_product_type)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] tax_product_type Object to be assigned
-    def tax_product_type=(tax_product_type)
-      validator = EnumAttributeValidator.new('String', ['', 'digital', 'physical', 'service'])
-      unless validator.valid?(tax_product_type)
-        fail ArgumentError, 'invalid value for "tax_product_type", must be one of #{validator.allowable_values}.'
-      end
-      @tax_product_type = tax_product_type
     end
 
     # Checks equality by comparing each attribute.
@@ -125,10 +93,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          exemptions == o.exemptions &&
-          tax_free == o.tax_free &&
-          tax_product_type == o.tax_product_type &&
-          taxable_cost == o.taxable_cost
+          family == o.family &&
+          major == o.major &&
+          minor == o.minor &&
+          patch == o.patch &&
+          patch_minor == o.patch_minor
     end
 
     # @see the `==` method
@@ -140,7 +109,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [exemptions, tax_free, tax_product_type, taxable_cost].hash
+      [family, major, minor, patch, patch_minor].hash
     end
 
     # Builds the object from hash

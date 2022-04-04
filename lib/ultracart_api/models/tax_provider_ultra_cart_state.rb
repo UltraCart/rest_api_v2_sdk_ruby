@@ -17,6 +17,15 @@ module UltracartClient
     # True if this state taxes are managed by UltraCart
     attr_accessor :enabled
 
+    # True if digital items are exempt from sales tax in this state.
+    attr_accessor :exempt_digital_items
+
+    # True if physical items are exempt from sales tax in this state.
+    attr_accessor :exempt_physical_items
+
+    # True if service items are exempt from sales tax in this state.
+    attr_accessor :exempt_service_items
+
     # State Code (2 digits)
     attr_accessor :state_code
 
@@ -39,6 +48,9 @@ module UltracartClient
     def self.attribute_map
       {
         :'enabled' => :'enabled',
+        :'exempt_digital_items' => :'exempt_digital_items',
+        :'exempt_physical_items' => :'exempt_physical_items',
+        :'exempt_service_items' => :'exempt_service_items',
         :'state_code' => :'state_code',
         :'state_name' => :'state_name',
         :'tax_gift_charge' => :'tax_gift_charge',
@@ -52,6 +64,9 @@ module UltracartClient
     def self.swagger_types
       {
         :'enabled' => :'BOOLEAN',
+        :'exempt_digital_items' => :'BOOLEAN',
+        :'exempt_physical_items' => :'BOOLEAN',
+        :'exempt_service_items' => :'BOOLEAN',
         :'state_code' => :'String',
         :'state_name' => :'String',
         :'tax_gift_charge' => :'BOOLEAN',
@@ -71,6 +86,18 @@ module UltracartClient
 
       if attributes.has_key?(:'enabled')
         self.enabled = attributes[:'enabled']
+      end
+
+      if attributes.has_key?(:'exempt_digital_items')
+        self.exempt_digital_items = attributes[:'exempt_digital_items']
+      end
+
+      if attributes.has_key?(:'exempt_physical_items')
+        self.exempt_physical_items = attributes[:'exempt_physical_items']
+      end
+
+      if attributes.has_key?(:'exempt_service_items')
+        self.exempt_service_items = attributes[:'exempt_service_items']
       end
 
       if attributes.has_key?(:'state_code')
@@ -117,6 +144,9 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           enabled == o.enabled &&
+          exempt_digital_items == o.exempt_digital_items &&
+          exempt_physical_items == o.exempt_physical_items &&
+          exempt_service_items == o.exempt_service_items &&
           state_code == o.state_code &&
           state_name == o.state_name &&
           tax_gift_charge == o.tax_gift_charge &&
@@ -134,7 +164,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [enabled, state_code, state_name, tax_gift_charge, tax_gift_wrap, tax_rate_formatted, tax_shipping].hash
+      [enabled, exempt_digital_items, exempt_physical_items, exempt_service_items, state_code, state_name, tax_gift_charge, tax_gift_wrap, tax_rate_formatted, tax_shipping].hash
     end
 
     # Builds the object from hash

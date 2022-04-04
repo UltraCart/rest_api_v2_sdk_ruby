@@ -16,6 +16,9 @@ module UltracartClient
   class Cart
     attr_accessor :affiliate
 
+    # The affiliate network pixel identifier associated with the cart
+    attr_accessor :affiliate_network_pixel_oid
+
     # The ISO-4217 three letter base currency code of the account
     attr_accessor :base_currency_code
 
@@ -78,6 +81,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'affiliate' => :'affiliate',
+        :'affiliate_network_pixel_oid' => :'affiliate_network_pixel_oid',
         :'base_currency_code' => :'base_currency_code',
         :'billing' => :'billing',
         :'buysafe' => :'buysafe',
@@ -109,6 +113,7 @@ module UltracartClient
     def self.swagger_types
       {
         :'affiliate' => :'CartAffiliate',
+        :'affiliate_network_pixel_oid' => :'Integer',
         :'base_currency_code' => :'String',
         :'billing' => :'CartBilling',
         :'buysafe' => :'CartBuysafe',
@@ -146,6 +151,10 @@ module UltracartClient
 
       if attributes.has_key?(:'affiliate')
         self.affiliate = attributes[:'affiliate']
+      end
+
+      if attributes.has_key?(:'affiliate_network_pixel_oid')
+        self.affiliate_network_pixel_oid = attributes[:'affiliate_network_pixel_oid']
       end
 
       if attributes.has_key?(:'base_currency_code')
@@ -315,6 +324,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           affiliate == o.affiliate &&
+          affiliate_network_pixel_oid == o.affiliate_network_pixel_oid &&
           base_currency_code == o.base_currency_code &&
           billing == o.billing &&
           buysafe == o.buysafe &&
@@ -350,7 +360,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affiliate, base_currency_code, billing, buysafe, cart_id, checkout, coupons, currency_code, currency_conversion, customer_profile, exchange_rate, gift, gift_certificate, items, language_iso_code, logged_in, marketing, merchant_id, payment, properties, settings, shipping, summary, taxes, upsell_after].hash
+      [affiliate, affiliate_network_pixel_oid, base_currency_code, billing, buysafe, cart_id, checkout, coupons, currency_code, currency_conversion, customer_profile, exchange_rate, gift, gift_certificate, items, language_iso_code, logged_in, marketing, merchant_id, payment, properties, settings, shipping, summary, taxes, upsell_after].hash
     end
 
     # Builds the object from hash

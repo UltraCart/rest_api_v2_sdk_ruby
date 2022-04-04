@@ -20,6 +20,9 @@ module UltracartClient
     # Cjson to be added to library
     attr_accessor :cjson
 
+    # Additional Cjson to be added to library, notably for the postcard which has a front and back.
+    attr_accessor :cjson2
+
     # flow, campaign, cjson, email, transactional_email, postcard or upsell
     attr_accessor :content_type
 
@@ -52,6 +55,7 @@ module UltracartClient
       {
         :'attributes' => :'attributes',
         :'cjson' => :'cjson',
+        :'cjson2' => :'cjson2',
         :'content_type' => :'content_type',
         :'description' => :'description',
         :'email_name' => :'email_name',
@@ -69,6 +73,7 @@ module UltracartClient
       {
         :'attributes' => :'Array<LibraryItemAttribute>',
         :'cjson' => :'String',
+        :'cjson2' => :'String',
         :'content_type' => :'String',
         :'description' => :'String',
         :'email_name' => :'String',
@@ -97,6 +102,10 @@ module UltracartClient
 
       if attributes.has_key?(:'cjson')
         self.cjson = attributes[:'cjson']
+      end
+
+      if attributes.has_key?(:'cjson2')
+        self.cjson2 = attributes[:'cjson2']
       end
 
       if attributes.has_key?(:'content_type')
@@ -158,6 +167,7 @@ module UltracartClient
       self.class == o.class &&
           attributes == o.attributes &&
           cjson == o.cjson &&
+          cjson2 == o.cjson2 &&
           content_type == o.content_type &&
           description == o.description &&
           email_name == o.email_name &&
@@ -178,7 +188,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [attributes, cjson, content_type, description, email_name, email_path, screenshots, storefront_oid, title, upsell_offer_oid, uuid].hash
+      [attributes, cjson, cjson2, content_type, description, email_name, email_path, screenshots, storefront_oid, title, upsell_offer_oid, uuid].hash
     end
 
     # Builds the object from hash

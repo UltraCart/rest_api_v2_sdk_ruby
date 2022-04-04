@@ -177,13 +177,28 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@email.nil? && @email.to_s.length > 150
+        invalid_properties.push('invalid value for "email", the character length must be smaller than or equal to 150.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@email.nil? && @email.to_s.length > 150
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] email Value to be assigned
+    def email=(email)
+      if !email.nil? && email.to_s.length > 150
+        fail ArgumentError, 'invalid value for "email", the character length must be smaller than or equal to 150.'
+      end
+
+      @email = email
     end
 
     # Checks equality by comparing each attribute.

@@ -48,8 +48,8 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@tag_value.nil? && @tag_value.to_s.length > 100
-        invalid_properties.push('invalid value for "tag_value", the character length must be smaller than or equal to 100.')
+      if !@tag_value.nil? && @tag_value.to_s.length > 250
+        invalid_properties.push('invalid value for "tag_value", the character length must be smaller than or equal to 250.')
       end
 
       invalid_properties
@@ -58,15 +58,15 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@tag_value.nil? && @tag_value.to_s.length > 100
+      return false if !@tag_value.nil? && @tag_value.to_s.length > 250
       true
     end
 
     # Custom attribute writer method with validation
     # @param [Object] tag_value Value to be assigned
     def tag_value=(tag_value)
-      if !tag_value.nil? && tag_value.to_s.length > 100
-        fail ArgumentError, 'invalid value for "tag_value", the character length must be smaller than or equal to 100.'
+      if !tag_value.nil? && tag_value.to_s.length > 250
+        fail ArgumentError, 'invalid value for "tag_value", the character length must be smaller than or equal to 250.'
       end
 
       @tag_value = tag_value

@@ -145,6 +145,9 @@ module UltracartClient
     # True if the item is tax free
     attr_accessor :tax_free
 
+    # Type of product for tax purposes (self or UltraCart Managed taxes)
+    attr_accessor :tax_product_type
+
     attr_accessor :taxable_cost
 
     attr_accessor :total_cost_with_discount
@@ -162,6 +165,28 @@ module UltracartClient
     attr_accessor :weight
 
     attr_accessor :width
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -212,6 +237,7 @@ module UltracartClient
         :'special_product_type' => :'special_product_type',
         :'tags' => :'tags',
         :'tax_free' => :'tax_free',
+        :'tax_product_type' => :'tax_product_type',
         :'taxable_cost' => :'taxable_cost',
         :'total_cost_with_discount' => :'total_cost_with_discount',
         :'total_refunded' => :'total_refunded',
@@ -272,6 +298,7 @@ module UltracartClient
         :'special_product_type' => :'String',
         :'tags' => :'Array<OrderItemTag>',
         :'tax_free' => :'BOOLEAN',
+        :'tax_product_type' => :'String',
         :'taxable_cost' => :'Currency',
         :'total_cost_with_discount' => :'Currency',
         :'total_refunded' => :'Currency',
@@ -483,6 +510,10 @@ module UltracartClient
         self.tax_free = attributes[:'tax_free']
       end
 
+      if attributes.has_key?(:'tax_product_type')
+        self.tax_product_type = attributes[:'tax_product_type']
+      end
+
       if attributes.has_key?(:'taxable_cost')
         self.taxable_cost = attributes[:'taxable_cost']
       end
@@ -556,6 +587,8 @@ module UltracartClient
       return false if !@merchant_item_id.nil? && @merchant_item_id.to_s.length > 20
       return false if !@perishable_class.nil? && @perishable_class.to_s.length > 50
       return false if !@quickbooks_class.nil? && @quickbooks_class.to_s.length > 31
+      tax_product_type_validator = EnumAttributeValidator.new('String', ['', 'digital', 'physical', 'service'])
+      return false unless tax_product_type_validator.valid?(@tax_product_type)
       true
     end
 
@@ -619,6 +652,16 @@ module UltracartClient
       @quickbooks_class = quickbooks_class
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] tax_product_type Object to be assigned
+    def tax_product_type=(tax_product_type)
+      validator = EnumAttributeValidator.new('String', ['', 'digital', 'physical', 'service'])
+      unless validator.valid?(tax_product_type)
+        fail ArgumentError, 'invalid value for "tax_product_type", must be one of #{validator.allowable_values}.'
+      end
+      @tax_product_type = tax_product_type
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -670,6 +713,7 @@ module UltracartClient
           special_product_type == o.special_product_type &&
           tags == o.tags &&
           tax_free == o.tax_free &&
+          tax_product_type == o.tax_product_type &&
           taxable_cost == o.taxable_cost &&
           total_cost_with_discount == o.total_cost_with_discount &&
           total_refunded == o.total_refunded &&
@@ -689,7 +733,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accounting_code, activation_codes, arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, barcode, channel_partner_item_id, cogs, component_unit_value, cost, country_code_of_origin, customs_description, description, discount, discount_quantity, discount_shipping_weight, distribution_center_code, edi, exclude_coupon, free_shipping, hazmat, height, item_reference_oid, kit, kit_component, length, manufacturer_sku, max_days_time_in_transit, merchant_item_id, mix_and_match_group_name, mix_and_match_group_oid, no_shipping_discount, options, packed_by_user, perishable_class, pricing_tier_name, properties, quantity, quantity_refunded, quickbooks_class, ship_separately, shipped_by_user, shipped_dts, special_product_type, tags, tax_free, taxable_cost, total_cost_with_discount, total_refunded, transmitted_to_distribution_center_dts, unit_cost_with_discount, upsell, weight, width].hash
+      [accounting_code, activation_codes, arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, barcode, channel_partner_item_id, cogs, component_unit_value, cost, country_code_of_origin, customs_description, description, discount, discount_quantity, discount_shipping_weight, distribution_center_code, edi, exclude_coupon, free_shipping, hazmat, height, item_reference_oid, kit, kit_component, length, manufacturer_sku, max_days_time_in_transit, merchant_item_id, mix_and_match_group_name, mix_and_match_group_oid, no_shipping_discount, options, packed_by_user, perishable_class, pricing_tier_name, properties, quantity, quantity_refunded, quickbooks_class, ship_separately, shipped_by_user, shipped_dts, special_product_type, tags, tax_free, tax_product_type, taxable_cost, total_cost_with_discount, total_refunded, transmitted_to_distribution_center_dts, unit_cost_with_discount, upsell, weight, width].hash
     end
 
     # Builds the object from hash

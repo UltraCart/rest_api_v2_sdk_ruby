@@ -14,6 +14,8 @@ require 'date'
 
 module UltracartClient
   class OrderCheckout
+    attr_accessor :browser
+
     # Comments from the customer.  Rarely used on the single page checkout.
     attr_accessor :comments
 
@@ -44,6 +46,9 @@ module UltracartClient
     # Screen branding theme code associated with the order (legacy checkout)
     attr_accessor :screen_branding_theme_code
 
+    # Screen size small, medium or large
+    attr_accessor :screen_size
+
     # StoreFront host name associated with the order
     attr_accessor :storefront_host_name
 
@@ -53,6 +58,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'browser' => :'browser',
         :'comments' => :'comments',
         :'custom_field1' => :'custom_field1',
         :'custom_field2' => :'custom_field2',
@@ -63,6 +69,7 @@ module UltracartClient
         :'custom_field7' => :'custom_field7',
         :'customer_ip_address' => :'customer_ip_address',
         :'screen_branding_theme_code' => :'screen_branding_theme_code',
+        :'screen_size' => :'screen_size',
         :'storefront_host_name' => :'storefront_host_name',
         :'upsell_path_code' => :'upsell_path_code'
       }
@@ -71,6 +78,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'browser' => :'Browser',
         :'comments' => :'String',
         :'custom_field1' => :'String',
         :'custom_field2' => :'String',
@@ -81,6 +89,7 @@ module UltracartClient
         :'custom_field7' => :'String',
         :'customer_ip_address' => :'String',
         :'screen_branding_theme_code' => :'String',
+        :'screen_size' => :'String',
         :'storefront_host_name' => :'String',
         :'upsell_path_code' => :'String'
       }
@@ -93,6 +102,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'browser')
+        self.browser = attributes[:'browser']
+      end
 
       if attributes.has_key?(:'comments')
         self.comments = attributes[:'comments']
@@ -132,6 +145,10 @@ module UltracartClient
 
       if attributes.has_key?(:'screen_branding_theme_code')
         self.screen_branding_theme_code = attributes[:'screen_branding_theme_code']
+      end
+
+      if attributes.has_key?(:'screen_size')
+        self.screen_size = attributes[:'screen_size']
       end
 
       if attributes.has_key?(:'storefront_host_name')
@@ -281,6 +298,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          browser == o.browser &&
           comments == o.comments &&
           custom_field1 == o.custom_field1 &&
           custom_field2 == o.custom_field2 &&
@@ -291,6 +309,7 @@ module UltracartClient
           custom_field7 == o.custom_field7 &&
           customer_ip_address == o.customer_ip_address &&
           screen_branding_theme_code == o.screen_branding_theme_code &&
+          screen_size == o.screen_size &&
           storefront_host_name == o.storefront_host_name &&
           upsell_path_code == o.upsell_path_code
     end
@@ -304,7 +323,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [comments, custom_field1, custom_field2, custom_field3, custom_field4, custom_field5, custom_field6, custom_field7, customer_ip_address, screen_branding_theme_code, storefront_host_name, upsell_path_code].hash
+      [browser, comments, custom_field1, custom_field2, custom_field3, custom_field4, custom_field5, custom_field6, custom_field7, customer_ip_address, screen_branding_theme_code, screen_size, storefront_host_name, upsell_path_code].hash
     end
 
     # Builds the object from hash

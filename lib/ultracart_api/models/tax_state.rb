@@ -35,6 +35,15 @@ module UltracartClient
     # Flag instructing engine to not collect state tax for this state
     attr_accessor :dont_collect_state
 
+    # True if digital items are exempt from sales tax in this state.
+    attr_accessor :exempt_digital_items
+
+    # True if physical items are exempt from sales tax in this state.
+    attr_accessor :exempt_physical_items
+
+    # True if service items are exempt from sales tax in this state.
+    attr_accessor :exempt_service_items
+
     # State code
     attr_accessor :state_code
 
@@ -69,6 +78,9 @@ module UltracartClient
         :'dont_collect_county' => :'dont_collect_county',
         :'dont_collect_postal_code' => :'dont_collect_postal_code',
         :'dont_collect_state' => :'dont_collect_state',
+        :'exempt_digital_items' => :'exempt_digital_items',
+        :'exempt_physical_items' => :'exempt_physical_items',
+        :'exempt_service_items' => :'exempt_service_items',
         :'state_code' => :'state_code',
         :'state_oid' => :'state_oid',
         :'tax_gift_charge' => :'tax_gift_charge',
@@ -90,6 +102,9 @@ module UltracartClient
         :'dont_collect_county' => :'BOOLEAN',
         :'dont_collect_postal_code' => :'BOOLEAN',
         :'dont_collect_state' => :'BOOLEAN',
+        :'exempt_digital_items' => :'BOOLEAN',
+        :'exempt_physical_items' => :'BOOLEAN',
+        :'exempt_service_items' => :'BOOLEAN',
         :'state_code' => :'String',
         :'state_oid' => :'Integer',
         :'tax_gift_charge' => :'BOOLEAN',
@@ -137,6 +152,18 @@ module UltracartClient
 
       if attributes.has_key?(:'dont_collect_state')
         self.dont_collect_state = attributes[:'dont_collect_state']
+      end
+
+      if attributes.has_key?(:'exempt_digital_items')
+        self.exempt_digital_items = attributes[:'exempt_digital_items']
+      end
+
+      if attributes.has_key?(:'exempt_physical_items')
+        self.exempt_physical_items = attributes[:'exempt_physical_items']
+      end
+
+      if attributes.has_key?(:'exempt_service_items')
+        self.exempt_service_items = attributes[:'exempt_service_items']
       end
 
       if attributes.has_key?(:'state_code')
@@ -197,6 +224,9 @@ module UltracartClient
           dont_collect_county == o.dont_collect_county &&
           dont_collect_postal_code == o.dont_collect_postal_code &&
           dont_collect_state == o.dont_collect_state &&
+          exempt_digital_items == o.exempt_digital_items &&
+          exempt_physical_items == o.exempt_physical_items &&
+          exempt_service_items == o.exempt_service_items &&
           state_code == o.state_code &&
           state_oid == o.state_oid &&
           tax_gift_charge == o.tax_gift_charge &&
@@ -216,7 +246,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accounting_code, counties, country_oid, dont_collect_city, dont_collect_county, dont_collect_postal_code, dont_collect_state, state_code, state_oid, tax_gift_charge, tax_gift_wrap, tax_rate, tax_rate_formatted, tax_shipping, use_ultracart_managed_rates].hash
+      [accounting_code, counties, country_oid, dont_collect_city, dont_collect_county, dont_collect_postal_code, dont_collect_state, exempt_digital_items, exempt_physical_items, exempt_service_items, state_code, state_oid, tax_gift_charge, tax_gift_wrap, tax_rate, tax_rate_formatted, tax_shipping, use_ultracart_managed_rates].hash
     end
 
     # Builds the object from hash

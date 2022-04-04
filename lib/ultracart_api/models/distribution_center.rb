@@ -112,6 +112,9 @@ module UltracartClient
     # State of the distribution center
     attr_accessor :state
 
+    # True if monetary amounts should be zeroed before transmission
+    attr_accessor :transmit_blank_costs
+
     # Transport mechanism for this distribution center
     attr_accessor :transport
 
@@ -151,6 +154,7 @@ module UltracartClient
         :'shipment_cutoff_time_tuesday' => :'shipment_cutoff_time_tuesday',
         :'shipment_cutoff_time_wednesday' => :'shipment_cutoff_time_wednesday',
         :'state' => :'state',
+        :'transmit_blank_costs' => :'transmit_blank_costs',
         :'transport' => :'transport'
       }
     end
@@ -191,6 +195,7 @@ module UltracartClient
         :'shipment_cutoff_time_tuesday' => :'String',
         :'shipment_cutoff_time_wednesday' => :'String',
         :'state' => :'String',
+        :'transmit_blank_costs' => :'BOOLEAN',
         :'transport' => :'String'
       }
     end
@@ -335,6 +340,10 @@ module UltracartClient
         self.state = attributes[:'state']
       end
 
+      if attributes.has_key?(:'transmit_blank_costs')
+        self.transmit_blank_costs = attributes[:'transmit_blank_costs']
+      end
+
       if attributes.has_key?(:'transport')
         self.transport = attributes[:'transport']
       end
@@ -391,6 +400,7 @@ module UltracartClient
           shipment_cutoff_time_tuesday == o.shipment_cutoff_time_tuesday &&
           shipment_cutoff_time_wednesday == o.shipment_cutoff_time_wednesday &&
           state == o.state &&
+          transmit_blank_costs == o.transmit_blank_costs &&
           transport == o.transport
     end
 
@@ -403,7 +413,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [address1, address2, city, code, country_code, default_center, default_handles_all_items, distribution_center_oid, duns, estimate_from_distribution_center_oid, ftp_password, hold_before_shipment_minutes, hold_before_transmission, hold_auto_order_before_shipment_minutes, latitude, longitude, name, no_customer_direct_shipments, no_split_shipment, postal_code, process_days, process_inventory_start_time, process_inventory_stop_time, require_asn, send_kit_instead_of_components, shipment_cutoff_time_friday, shipment_cutoff_time_monday, shipment_cutoff_time_saturday, shipment_cutoff_time_sunday, shipment_cutoff_time_thursday, shipment_cutoff_time_tuesday, shipment_cutoff_time_wednesday, state, transport].hash
+      [address1, address2, city, code, country_code, default_center, default_handles_all_items, distribution_center_oid, duns, estimate_from_distribution_center_oid, ftp_password, hold_before_shipment_minutes, hold_before_transmission, hold_auto_order_before_shipment_minutes, latitude, longitude, name, no_customer_direct_shipments, no_split_shipment, postal_code, process_days, process_inventory_start_time, process_inventory_stop_time, require_asn, send_kit_instead_of_components, shipment_cutoff_time_friday, shipment_cutoff_time_monday, shipment_cutoff_time_saturday, shipment_cutoff_time_sunday, shipment_cutoff_time_thursday, shipment_cutoff_time_tuesday, shipment_cutoff_time_wednesday, state, transmit_blank_costs, transport].hash
     end
 
     # Builds the object from hash
