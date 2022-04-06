@@ -7045,7 +7045,7 @@ Name | Type | Description  | Notes
 
 
 # **send_webhook_test**
-> EmailCommseqEmailSendTestResponse send_webhook_test(storefront_oid, email_commseq_webhook_test_request)
+> EmailCommseqWebhookSendTestResponse send_webhook_test(storefront_oid, email_commseq_webhook_test_request)
 
 Send webhook test
 
@@ -7082,7 +7082,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EmailCommseqEmailSendTestResponse**](EmailCommseqEmailSendTestResponse.md)
+[**EmailCommseqWebhookSendTestResponse**](EmailCommseqWebhookSendTestResponse.md)
 
 ### Authorization
 

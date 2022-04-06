@@ -7871,7 +7871,7 @@ module UltracartClient
     # @param storefront_oid 
     # @param email_commseq_webhook_test_request Email commseq webhook test request
     # @param [Hash] opts the optional parameters
-    # @return [EmailCommseqEmailSendTestResponse]
+    # @return [EmailCommseqWebhookSendTestResponse]
     def send_webhook_test(storefront_oid, email_commseq_webhook_test_request, opts = {})
       data, _status_code, _headers = send_webhook_test_with_http_info(storefront_oid, email_commseq_webhook_test_request, opts)
       data
@@ -7881,7 +7881,7 @@ module UltracartClient
     # @param storefront_oid 
     # @param email_commseq_webhook_test_request Email commseq webhook test request
     # @param [Hash] opts the optional parameters
-    # @return [Array<(EmailCommseqEmailSendTestResponse, Fixnum, Hash)>] EmailCommseqEmailSendTestResponse data, response status code and response headers
+    # @return [Array<(EmailCommseqWebhookSendTestResponse, Fixnum, Hash)>] EmailCommseqWebhookSendTestResponse data, response status code and response headers
     def send_webhook_test_with_http_info(storefront_oid, email_commseq_webhook_test_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StorefrontApi.send_webhook_test ...'
@@ -7920,7 +7920,7 @@ module UltracartClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'EmailCommseqEmailSendTestResponse')
+        :return_type => 'EmailCommseqWebhookSendTestResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#send_webhook_test\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

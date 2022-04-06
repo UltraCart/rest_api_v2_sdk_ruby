@@ -44,29 +44,11 @@ module UltracartClient
     # Postcard front container uuid
     attr_accessor :postcard_front_container_uuid
 
-    # URL to screenshot (back) in large form factor full page
-    attr_accessor :screenshot_back_large_full_url
+    # URL for front screenshot
+    attr_accessor :screenshot_front_url
 
-    # URL to screenshot (back) in large form factor viewport
-    attr_accessor :screenshot_back_large_viewport_url
-
-    # URL to screenshot (back) in small form factor full page
-    attr_accessor :screenshot_back_small_full_url
-
-    # URL to screenshot (back) in small form factor viewport
-    attr_accessor :screenshot_back_small_viewport_url
-
-    # URL to screenshot in large form factor full page
-    attr_accessor :screenshot_large_full_url
-
-    # URL to screenshot in large form factor viewport
-    attr_accessor :screenshot_large_viewport_url
-
-    # URL to screenshot in small form factor full page
+    # URL for back screenshot
     attr_accessor :screenshot_small_full_url
-
-    # URL to screenshot in small form factor viewport
-    attr_accessor :screenshot_small_viewport_url
 
     # Storefront oid
     attr_accessor :storefront_oid
@@ -84,14 +66,8 @@ module UltracartClient
         :'postcard_container_cjson_last_modified_dts' => :'postcard_container_cjson_last_modified_dts',
         :'postcard_front_container_cjson' => :'postcard_front_container_cjson',
         :'postcard_front_container_uuid' => :'postcard_front_container_uuid',
-        :'screenshot_back_large_full_url' => :'screenshot_back_large_full_url',
-        :'screenshot_back_large_viewport_url' => :'screenshot_back_large_viewport_url',
-        :'screenshot_back_small_full_url' => :'screenshot_back_small_full_url',
-        :'screenshot_back_small_viewport_url' => :'screenshot_back_small_viewport_url',
-        :'screenshot_large_full_url' => :'screenshot_large_full_url',
-        :'screenshot_large_viewport_url' => :'screenshot_large_viewport_url',
+        :'screenshot_front_url' => :'screenshot_front_url',
         :'screenshot_small_full_url' => :'screenshot_small_full_url',
-        :'screenshot_small_viewport_url' => :'screenshot_small_viewport_url',
         :'storefront_oid' => :'storefront_oid'
       }
     end
@@ -109,14 +85,8 @@ module UltracartClient
         :'postcard_container_cjson_last_modified_dts' => :'String',
         :'postcard_front_container_cjson' => :'String',
         :'postcard_front_container_uuid' => :'String',
-        :'screenshot_back_large_full_url' => :'String',
-        :'screenshot_back_large_viewport_url' => :'String',
-        :'screenshot_back_small_full_url' => :'String',
-        :'screenshot_back_small_viewport_url' => :'String',
-        :'screenshot_large_full_url' => :'String',
-        :'screenshot_large_viewport_url' => :'String',
+        :'screenshot_front_url' => :'String',
         :'screenshot_small_full_url' => :'String',
-        :'screenshot_small_viewport_url' => :'String',
         :'storefront_oid' => :'Integer'
       }
     end
@@ -169,36 +139,12 @@ module UltracartClient
         self.postcard_front_container_uuid = attributes[:'postcard_front_container_uuid']
       end
 
-      if attributes.has_key?(:'screenshot_back_large_full_url')
-        self.screenshot_back_large_full_url = attributes[:'screenshot_back_large_full_url']
-      end
-
-      if attributes.has_key?(:'screenshot_back_large_viewport_url')
-        self.screenshot_back_large_viewport_url = attributes[:'screenshot_back_large_viewport_url']
-      end
-
-      if attributes.has_key?(:'screenshot_back_small_full_url')
-        self.screenshot_back_small_full_url = attributes[:'screenshot_back_small_full_url']
-      end
-
-      if attributes.has_key?(:'screenshot_back_small_viewport_url')
-        self.screenshot_back_small_viewport_url = attributes[:'screenshot_back_small_viewport_url']
-      end
-
-      if attributes.has_key?(:'screenshot_large_full_url')
-        self.screenshot_large_full_url = attributes[:'screenshot_large_full_url']
-      end
-
-      if attributes.has_key?(:'screenshot_large_viewport_url')
-        self.screenshot_large_viewport_url = attributes[:'screenshot_large_viewport_url']
+      if attributes.has_key?(:'screenshot_front_url')
+        self.screenshot_front_url = attributes[:'screenshot_front_url']
       end
 
       if attributes.has_key?(:'screenshot_small_full_url')
         self.screenshot_small_full_url = attributes[:'screenshot_small_full_url']
-      end
-
-      if attributes.has_key?(:'screenshot_small_viewport_url')
-        self.screenshot_small_viewport_url = attributes[:'screenshot_small_viewport_url']
       end
 
       if attributes.has_key?(:'storefront_oid')
@@ -234,14 +180,8 @@ module UltracartClient
           postcard_container_cjson_last_modified_dts == o.postcard_container_cjson_last_modified_dts &&
           postcard_front_container_cjson == o.postcard_front_container_cjson &&
           postcard_front_container_uuid == o.postcard_front_container_uuid &&
-          screenshot_back_large_full_url == o.screenshot_back_large_full_url &&
-          screenshot_back_large_viewport_url == o.screenshot_back_large_viewport_url &&
-          screenshot_back_small_full_url == o.screenshot_back_small_full_url &&
-          screenshot_back_small_viewport_url == o.screenshot_back_small_viewport_url &&
-          screenshot_large_full_url == o.screenshot_large_full_url &&
-          screenshot_large_viewport_url == o.screenshot_large_viewport_url &&
+          screenshot_front_url == o.screenshot_front_url &&
           screenshot_small_full_url == o.screenshot_small_full_url &&
-          screenshot_small_viewport_url == o.screenshot_small_viewport_url &&
           storefront_oid == o.storefront_oid
     end
 
@@ -254,7 +194,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [deleted, edited_by_user, email_communication_sequence_postcard_uuid, filter_profile_equation_json, merchant_id, postcard_back_container_cjson, postcard_back_container_uuid, postcard_container_cjson_last_modified_dts, postcard_front_container_cjson, postcard_front_container_uuid, screenshot_back_large_full_url, screenshot_back_large_viewport_url, screenshot_back_small_full_url, screenshot_back_small_viewport_url, screenshot_large_full_url, screenshot_large_viewport_url, screenshot_small_full_url, screenshot_small_viewport_url, storefront_oid].hash
+      [deleted, edited_by_user, email_communication_sequence_postcard_uuid, filter_profile_equation_json, merchant_id, postcard_back_container_cjson, postcard_back_container_uuid, postcard_container_cjson_last_modified_dts, postcard_front_container_cjson, postcard_front_container_uuid, screenshot_front_url, screenshot_small_full_url, storefront_oid].hash
     end
 
     # Builds the object from hash

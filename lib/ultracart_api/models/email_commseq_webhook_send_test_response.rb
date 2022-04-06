@@ -13,71 +13,48 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class AddLibraryItemRequest
-    # Attributes associated with the library item to contain additional configuration.
-    attr_accessor :attributes
+  class EmailCommseqWebhookSendTestResponse
+    attr_accessor :error
 
-    # Cjson to be added to library
-    attr_accessor :cjson
+    attr_accessor :metadata
 
-    # flow, campaign, cjson, email, transactional_email, postcard or upsell
-    attr_accessor :content_type
+    # HTTP Request
+    attr_accessor :request
 
-    # description of library item
-    attr_accessor :description
+    # HTTP Response
+    attr_accessor :response
 
-    # Required if content_type is transactional_email. This is the name of the email template (html, not text).  This name should have a .vm file extension.  An example is auto_order_cancel_html.vm
-    attr_accessor :email_name
+    # HTTP Status Code
+    attr_accessor :status_code
 
-    # Required if content_type is transactional_email. This is the full path to the email template stored in the file system.  This defines which StoreFront contains the desired email template.  An example is /themes/Elements/core/emails/auto_order_cancel_html.vm
-    attr_accessor :email_path
+    # Indicates if API call was successful
+    attr_accessor :success
 
-    # Screenshot urls for display
-    attr_accessor :screenshots
-
-    # StoreFront oid where content originates necessary for tracking down relative assets
-    attr_accessor :storefront_oid
-
-    # title of library item, usually the name of the flow or campaign, or description of cjson
-    attr_accessor :title
-
-    # Required if content_type is upsell. This is object identifier of a StoreFront Upsell Offer.
-    attr_accessor :upsell_offer_oid
-
-    # UUID of communication flow, campaign, email, postcard, or null if this item is something else. transactional_email do not have a uuid because they are singleton objects within a storefront and easily identifiable by name
-    attr_accessor :uuid
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'attributes' => :'attributes',
-        :'cjson' => :'cjson',
-        :'content_type' => :'content_type',
-        :'description' => :'description',
-        :'email_name' => :'email_name',
-        :'email_path' => :'email_path',
-        :'screenshots' => :'screenshots',
-        :'storefront_oid' => :'storefront_oid',
-        :'title' => :'title',
-        :'upsell_offer_oid' => :'upsell_offer_oid',
-        :'uuid' => :'uuid'
+        :'error' => :'error',
+        :'metadata' => :'metadata',
+        :'request' => :'request',
+        :'response' => :'response',
+        :'status_code' => :'status_code',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'attributes' => :'Array<LibraryItemAttribute>',
-        :'cjson' => :'String',
-        :'content_type' => :'String',
-        :'description' => :'String',
-        :'email_name' => :'String',
-        :'email_path' => :'String',
-        :'screenshots' => :'Array<LibraryItemScreenshot>',
-        :'storefront_oid' => :'Integer',
-        :'title' => :'String',
-        :'upsell_offer_oid' => :'Integer',
-        :'uuid' => :'String'
+        :'error' => :'Error',
+        :'metadata' => :'ResponseMetadata',
+        :'request' => :'String',
+        :'response' => :'String',
+        :'status_code' => :'Integer',
+        :'success' => :'BOOLEAN',
+        :'warning' => :'Warning'
       }
     end
 
@@ -89,52 +66,32 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'attributes')
-        if (value = attributes[:'attributes']).is_a?(Array)
-          self.attributes = value
-        end
+      if attributes.has_key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.has_key?(:'cjson')
-        self.cjson = attributes[:'cjson']
+      if attributes.has_key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.has_key?(:'content_type')
-        self.content_type = attributes[:'content_type']
+      if attributes.has_key?(:'request')
+        self.request = attributes[:'request']
       end
 
-      if attributes.has_key?(:'description')
-        self.description = attributes[:'description']
+      if attributes.has_key?(:'response')
+        self.response = attributes[:'response']
       end
 
-      if attributes.has_key?(:'email_name')
-        self.email_name = attributes[:'email_name']
+      if attributes.has_key?(:'status_code')
+        self.status_code = attributes[:'status_code']
       end
 
-      if attributes.has_key?(:'email_path')
-        self.email_path = attributes[:'email_path']
+      if attributes.has_key?(:'success')
+        self.success = attributes[:'success']
       end
 
-      if attributes.has_key?(:'screenshots')
-        if (value = attributes[:'screenshots']).is_a?(Array)
-          self.screenshots = value
-        end
-      end
-
-      if attributes.has_key?(:'storefront_oid')
-        self.storefront_oid = attributes[:'storefront_oid']
-      end
-
-      if attributes.has_key?(:'title')
-        self.title = attributes[:'title']
-      end
-
-      if attributes.has_key?(:'upsell_offer_oid')
-        self.upsell_offer_oid = attributes[:'upsell_offer_oid']
-      end
-
-      if attributes.has_key?(:'uuid')
-        self.uuid = attributes[:'uuid']
+      if attributes.has_key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -156,17 +113,13 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          attributes == o.attributes &&
-          cjson == o.cjson &&
-          content_type == o.content_type &&
-          description == o.description &&
-          email_name == o.email_name &&
-          email_path == o.email_path &&
-          screenshots == o.screenshots &&
-          storefront_oid == o.storefront_oid &&
-          title == o.title &&
-          upsell_offer_oid == o.upsell_offer_oid &&
-          uuid == o.uuid
+          error == o.error &&
+          metadata == o.metadata &&
+          request == o.request &&
+          response == o.response &&
+          status_code == o.status_code &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -178,7 +131,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [attributes, cjson, content_type, description, email_name, email_path, screenshots, storefront_oid, title, upsell_offer_oid, uuid].hash
+      [error, metadata, request, response, status_code, success, warning].hash
     end
 
     # Builds the object from hash
