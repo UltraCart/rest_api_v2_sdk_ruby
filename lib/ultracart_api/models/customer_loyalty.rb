@@ -17,6 +17,12 @@ module UltracartClient
     # Current Points
     attr_accessor :current_points
 
+    # Loyalty Cashback / Store credit balance (internal gift certificate balance)
+    attr_accessor :internal_gift_certificate_balance
+
+    # Internal gift certificate oid used to tracking loyalty cashback / store credit.
+    attr_accessor :internal_gift_certificate_oid
+
     # Ledger entries
     attr_accessor :ledger_entries
 
@@ -30,6 +36,8 @@ module UltracartClient
     def self.attribute_map
       {
         :'current_points' => :'current_points',
+        :'internal_gift_certificate_balance' => :'internal_gift_certificate_balance',
+        :'internal_gift_certificate_oid' => :'internal_gift_certificate_oid',
         :'ledger_entries' => :'ledger_entries',
         :'pending_points' => :'pending_points',
         :'redemptions' => :'redemptions'
@@ -40,6 +48,8 @@ module UltracartClient
     def self.swagger_types
       {
         :'current_points' => :'Integer',
+        :'internal_gift_certificate_balance' => :'String',
+        :'internal_gift_certificate_oid' => :'Integer',
         :'ledger_entries' => :'Array<CustomerLoyaltyLedger>',
         :'pending_points' => :'Integer',
         :'redemptions' => :'Array<CustomerLoyaltyRedemption>'
@@ -56,6 +66,14 @@ module UltracartClient
 
       if attributes.has_key?(:'current_points')
         self.current_points = attributes[:'current_points']
+      end
+
+      if attributes.has_key?(:'internal_gift_certificate_balance')
+        self.internal_gift_certificate_balance = attributes[:'internal_gift_certificate_balance']
+      end
+
+      if attributes.has_key?(:'internal_gift_certificate_oid')
+        self.internal_gift_certificate_oid = attributes[:'internal_gift_certificate_oid']
       end
 
       if attributes.has_key?(:'ledger_entries')
@@ -94,6 +112,8 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           current_points == o.current_points &&
+          internal_gift_certificate_balance == o.internal_gift_certificate_balance &&
+          internal_gift_certificate_oid == o.internal_gift_certificate_oid &&
           ledger_entries == o.ledger_entries &&
           pending_points == o.pending_points &&
           redemptions == o.redemptions
@@ -108,7 +128,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [current_points, ledger_entries, pending_points, redemptions].hash
+      [current_points, internal_gift_certificate_balance, internal_gift_certificate_oid, ledger_entries, pending_points, redemptions].hash
     end
 
     # Builds the object from hash

@@ -30,6 +30,8 @@ module UltracartClient
 
     attr_accessor :provider
 
+    attr_accessor :spf
+
     attr_accessor :start_dkim_dts
 
     attr_accessor :start_identity_dts
@@ -47,6 +49,7 @@ module UltracartClient
         :'identity_status' => :'identity_status',
         :'merchant_id' => :'merchant_id',
         :'provider' => :'provider',
+        :'spf' => :'spf',
         :'start_dkim_dts' => :'start_dkim_dts',
         :'start_identity_dts' => :'start_identity_dts',
         :'verification' => :'verification'
@@ -64,6 +67,7 @@ module UltracartClient
         :'identity_status' => :'String',
         :'merchant_id' => :'String',
         :'provider' => :'String',
+        :'spf' => :'VerificationRecord',
         :'start_dkim_dts' => :'String',
         :'start_identity_dts' => :'String',
         :'verification' => :'VerificationRecord'
@@ -112,6 +116,10 @@ module UltracartClient
         self.provider = attributes[:'provider']
       end
 
+      if attributes.has_key?(:'spf')
+        self.spf = attributes[:'spf']
+      end
+
       if attributes.has_key?(:'start_dkim_dts')
         self.start_dkim_dts = attributes[:'start_dkim_dts']
       end
@@ -151,6 +159,7 @@ module UltracartClient
           identity_status == o.identity_status &&
           merchant_id == o.merchant_id &&
           provider == o.provider &&
+          spf == o.spf &&
           start_dkim_dts == o.start_dkim_dts &&
           start_identity_dts == o.start_identity_dts &&
           verification == o.verification
@@ -165,7 +174,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [comment, dkim, dkim_status, domain, esp_domain_uuid, identity_status, merchant_id, provider, start_dkim_dts, start_identity_dts, verification].hash
+      [comment, dkim, dkim_status, domain, esp_domain_uuid, identity_status, merchant_id, provider, spf, start_dkim_dts, start_identity_dts, verification].hash
     end
 
     # Builds the object from hash
