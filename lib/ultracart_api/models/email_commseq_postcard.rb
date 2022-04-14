@@ -44,11 +44,11 @@ module UltracartClient
     # Postcard front container uuid
     attr_accessor :postcard_front_container_uuid
 
-    # URL for front screenshot
-    attr_accessor :screenshot_front_url
+    # URL to screenshot of the back of the postcard
+    attr_accessor :screenshot_back_url
 
-    # URL for back screenshot
-    attr_accessor :screenshot_small_full_url
+    # URL to screenshot of the front of the postcard
+    attr_accessor :screenshot_front_url
 
     # Storefront oid
     attr_accessor :storefront_oid
@@ -66,8 +66,8 @@ module UltracartClient
         :'postcard_container_cjson_last_modified_dts' => :'postcard_container_cjson_last_modified_dts',
         :'postcard_front_container_cjson' => :'postcard_front_container_cjson',
         :'postcard_front_container_uuid' => :'postcard_front_container_uuid',
+        :'screenshot_back_url' => :'screenshot_back_url',
         :'screenshot_front_url' => :'screenshot_front_url',
-        :'screenshot_small_full_url' => :'screenshot_small_full_url',
         :'storefront_oid' => :'storefront_oid'
       }
     end
@@ -85,8 +85,8 @@ module UltracartClient
         :'postcard_container_cjson_last_modified_dts' => :'String',
         :'postcard_front_container_cjson' => :'String',
         :'postcard_front_container_uuid' => :'String',
+        :'screenshot_back_url' => :'String',
         :'screenshot_front_url' => :'String',
-        :'screenshot_small_full_url' => :'String',
         :'storefront_oid' => :'Integer'
       }
     end
@@ -139,12 +139,12 @@ module UltracartClient
         self.postcard_front_container_uuid = attributes[:'postcard_front_container_uuid']
       end
 
-      if attributes.has_key?(:'screenshot_front_url')
-        self.screenshot_front_url = attributes[:'screenshot_front_url']
+      if attributes.has_key?(:'screenshot_back_url')
+        self.screenshot_back_url = attributes[:'screenshot_back_url']
       end
 
-      if attributes.has_key?(:'screenshot_small_full_url')
-        self.screenshot_small_full_url = attributes[:'screenshot_small_full_url']
+      if attributes.has_key?(:'screenshot_front_url')
+        self.screenshot_front_url = attributes[:'screenshot_front_url']
       end
 
       if attributes.has_key?(:'storefront_oid')
@@ -180,8 +180,8 @@ module UltracartClient
           postcard_container_cjson_last_modified_dts == o.postcard_container_cjson_last_modified_dts &&
           postcard_front_container_cjson == o.postcard_front_container_cjson &&
           postcard_front_container_uuid == o.postcard_front_container_uuid &&
+          screenshot_back_url == o.screenshot_back_url &&
           screenshot_front_url == o.screenshot_front_url &&
-          screenshot_small_full_url == o.screenshot_small_full_url &&
           storefront_oid == o.storefront_oid
     end
 
@@ -194,7 +194,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [deleted, edited_by_user, email_communication_sequence_postcard_uuid, filter_profile_equation_json, merchant_id, postcard_back_container_cjson, postcard_back_container_uuid, postcard_container_cjson_last_modified_dts, postcard_front_container_cjson, postcard_front_container_uuid, screenshot_front_url, screenshot_small_full_url, storefront_oid].hash
+      [deleted, edited_by_user, email_communication_sequence_postcard_uuid, filter_profile_equation_json, merchant_id, postcard_back_container_cjson, postcard_back_container_uuid, postcard_container_cjson_last_modified_dts, postcard_front_container_cjson, postcard_front_container_uuid, screenshot_back_url, screenshot_front_url, storefront_oid].hash
     end
 
     # Builds the object from hash
