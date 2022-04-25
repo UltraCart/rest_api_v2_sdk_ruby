@@ -11,5 +11,5 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 =end
 
 module UltracartClient
-  VERSION = '3.9.5'
+  VERSION = '3.9.6'
 end

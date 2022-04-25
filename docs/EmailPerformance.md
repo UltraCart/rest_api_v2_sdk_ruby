@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **customer_histogram** | [**EmailPerformanceCustomerHistogram**](EmailPerformanceCustomerHistogram.md) |  | [optional] 
 **daily_stats** | [**Array&lt;EmailPerformanceDaily&gt;**](EmailPerformanceDaily.md) | Daily statistics used for charting | [optional] 
 **delivered_count** | **Integer** | Delivered count | [optional] 
+**loyalty_program_type** | **String** | Loyalty Program Type | [optional] 
 **max_active_customers** | **Integer** | Maximum active customers allowed under their billing plan | [optional] 
 **max_emails_per_day** | **Integer** | Max emails per day | [optional] 
 **max_emails_per_hour** | **Integer** | Max emails per hour | [optional] 

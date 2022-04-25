@@ -37,6 +37,9 @@ module UltracartClient
     # Delivered count
     attr_accessor :delivered_count
 
+    # Loyalty Program Type
+    attr_accessor :loyalty_program_type
+
     # Maximum active customers allowed under their billing plan
     attr_accessor :max_active_customers
 
@@ -79,6 +82,28 @@ module UltracartClient
     # Total transactions emails sent
     attr_accessor :transactional_send_count
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -90,6 +115,7 @@ module UltracartClient
         :'customer_histogram' => :'customer_histogram',
         :'daily_stats' => :'daily_stats',
         :'delivered_count' => :'delivered_count',
+        :'loyalty_program_type' => :'loyalty_program_type',
         :'max_active_customers' => :'max_active_customers',
         :'max_emails_per_day' => :'max_emails_per_day',
         :'max_emails_per_hour' => :'max_emails_per_hour',
@@ -118,6 +144,7 @@ module UltracartClient
         :'customer_histogram' => :'EmailPerformanceCustomerHistogram',
         :'daily_stats' => :'Array<EmailPerformanceDaily>',
         :'delivered_count' => :'Integer',
+        :'loyalty_program_type' => :'String',
         :'max_active_customers' => :'Integer',
         :'max_emails_per_day' => :'Integer',
         :'max_emails_per_hour' => :'Integer',
@@ -175,6 +202,10 @@ module UltracartClient
 
       if attributes.has_key?(:'delivered_count')
         self.delivered_count = attributes[:'delivered_count']
+      end
+
+      if attributes.has_key?(:'loyalty_program_type')
+        self.loyalty_program_type = attributes[:'loyalty_program_type']
       end
 
       if attributes.has_key?(:'max_active_customers')
@@ -244,7 +275,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      loyalty_program_type_validator = EnumAttributeValidator.new('String', ['disabled', 'points', 'cashback'])
+      return false unless loyalty_program_type_validator.valid?(@loyalty_program_type)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] loyalty_program_type Object to be assigned
+    def loyalty_program_type=(loyalty_program_type)
+      validator = EnumAttributeValidator.new('String', ['disabled', 'points', 'cashback'])
+      unless validator.valid?(loyalty_program_type)
+        fail ArgumentError, 'invalid value for "loyalty_program_type", must be one of #{validator.allowable_values}.'
+      end
+      @loyalty_program_type = loyalty_program_type
     end
 
     # Checks equality by comparing each attribute.
@@ -260,6 +303,7 @@ module UltracartClient
           customer_histogram == o.customer_histogram &&
           daily_stats == o.daily_stats &&
           delivered_count == o.delivered_count &&
+          loyalty_program_type == o.loyalty_program_type &&
           max_active_customers == o.max_active_customers &&
           max_emails_per_day == o.max_emails_per_day &&
           max_emails_per_hour == o.max_emails_per_hour &&
@@ -285,7 +329,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [active_customers, actual_customers, bounce_count, bounce_percentage, bounce_percentage_formatted, customer_histogram, daily_stats, delivered_count, max_active_customers, max_emails_per_day, max_emails_per_hour, max_emails_per_month, paused_for_spam, revenue, sent_emails_per_day, sent_emails_per_hour, sent_emails_per_month, sequence_send_count, spam_count, spam_percentage, spam_percentage_formatted, transactional_send_count].hash
+      [active_customers, actual_customers, bounce_count, bounce_percentage, bounce_percentage_formatted, customer_histogram, daily_stats, delivered_count, loyalty_program_type, max_active_customers, max_emails_per_day, max_emails_per_hour, max_emails_per_month, paused_for_spam, revenue, sent_emails_per_day, sent_emails_per_hour, sent_emails_per_month, sequence_send_count, spam_count, spam_percentage, spam_percentage_formatted, transactional_send_count].hash
     end
 
     # Builds the object from hash

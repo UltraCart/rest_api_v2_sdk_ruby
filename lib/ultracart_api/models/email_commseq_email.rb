@@ -44,6 +44,9 @@ module UltracartClient
     # If this item was ever added to the Code Library, this is the oid for that library item, or 0 if never added before.  This value is used to determine if a library item should be inserted or updated.
     attr_accessor :library_item_oid
 
+    # True if email links should contain magic link tokens to log the customer in automatically
+    attr_accessor :magic_link
+
     # Merchant ID
     attr_accessor :merchant_id
 
@@ -102,6 +105,7 @@ module UltracartClient
         :'filter_profile_equation_json' => :'filter_profile_equation_json',
         :'individually_render' => :'individually_render',
         :'library_item_oid' => :'library_item_oid',
+        :'magic_link' => :'magic_link',
         :'merchant_id' => :'merchant_id',
         :'pending_review' => :'pending_review',
         :'preview_text' => :'preview_text',
@@ -133,6 +137,7 @@ module UltracartClient
         :'filter_profile_equation_json' => :'String',
         :'individually_render' => :'BOOLEAN',
         :'library_item_oid' => :'Integer',
+        :'magic_link' => :'BOOLEAN',
         :'merchant_id' => :'String',
         :'pending_review' => :'BOOLEAN',
         :'preview_text' => :'String',
@@ -197,6 +202,10 @@ module UltracartClient
 
       if attributes.has_key?(:'library_item_oid')
         self.library_item_oid = attributes[:'library_item_oid']
+      end
+
+      if attributes.has_key?(:'magic_link')
+        self.magic_link = attributes[:'magic_link']
       end
 
       if attributes.has_key?(:'merchant_id')
@@ -288,6 +297,7 @@ module UltracartClient
           filter_profile_equation_json == o.filter_profile_equation_json &&
           individually_render == o.individually_render &&
           library_item_oid == o.library_item_oid &&
+          magic_link == o.magic_link &&
           merchant_id == o.merchant_id &&
           pending_review == o.pending_review &&
           preview_text == o.preview_text &&
@@ -314,7 +324,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [deleted, edited_by_user, email_communication_sequence_email_uuid, email_communication_sequence_uuid, email_container_cjson, email_container_cjson_last_modified_dts, email_template_vm_path, filter_profile_equation_json, individually_render, library_item_oid, merchant_id, pending_review, preview_text, rejected, requires_review, screenshot_large_full_url, screenshot_large_viewport_url, screenshot_small_full_url, screenshot_small_viewport_url, smart_sending, storefront_oid, subject, suspended_for_spam, transactional_email, version].hash
+      [deleted, edited_by_user, email_communication_sequence_email_uuid, email_communication_sequence_uuid, email_container_cjson, email_container_cjson_last_modified_dts, email_template_vm_path, filter_profile_equation_json, individually_render, library_item_oid, magic_link, merchant_id, pending_review, preview_text, rejected, requires_review, screenshot_large_full_url, screenshot_large_viewport_url, screenshot_small_full_url, screenshot_small_viewport_url, smart_sending, storefront_oid, subject, suspended_for_spam, transactional_email, version].hash
     end
 
     # Builds the object from hash

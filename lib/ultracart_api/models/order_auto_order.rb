@@ -26,6 +26,9 @@ module UltracartClient
     # True if the auto order was canceled because the customer purchased a downgrade item
     attr_accessor :cancel_downgrade
 
+    # The reason this auto order was canceled by either merchant or customer
+    attr_accessor :cancel_reason
+
     # True if the auto order was canceled because the customer purchased an upgrade item
     attr_accessor :cancel_upgrade
 
@@ -100,6 +103,7 @@ module UltracartClient
         :'auto_order_oid' => :'auto_order_oid',
         :'cancel_after_next_x_orders' => :'cancel_after_next_x_orders',
         :'cancel_downgrade' => :'cancel_downgrade',
+        :'cancel_reason' => :'cancel_reason',
         :'cancel_upgrade' => :'cancel_upgrade',
         :'canceled_by_user' => :'canceled_by_user',
         :'canceled_dts' => :'canceled_dts',
@@ -125,6 +129,7 @@ module UltracartClient
         :'auto_order_oid' => :'Integer',
         :'cancel_after_next_x_orders' => :'Integer',
         :'cancel_downgrade' => :'BOOLEAN',
+        :'cancel_reason' => :'String',
         :'cancel_upgrade' => :'BOOLEAN',
         :'canceled_by_user' => :'String',
         :'canceled_dts' => :'String',
@@ -165,6 +170,10 @@ module UltracartClient
 
       if attributes.has_key?(:'cancel_downgrade')
         self.cancel_downgrade = attributes[:'cancel_downgrade']
+      end
+
+      if attributes.has_key?(:'cancel_reason')
+        self.cancel_reason = attributes[:'cancel_reason']
       end
 
       if attributes.has_key?(:'cancel_upgrade')
@@ -266,6 +275,7 @@ module UltracartClient
           auto_order_oid == o.auto_order_oid &&
           cancel_after_next_x_orders == o.cancel_after_next_x_orders &&
           cancel_downgrade == o.cancel_downgrade &&
+          cancel_reason == o.cancel_reason &&
           cancel_upgrade == o.cancel_upgrade &&
           canceled_by_user == o.canceled_by_user &&
           canceled_dts == o.canceled_dts &&
@@ -292,7 +302,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [auto_order_code, auto_order_oid, cancel_after_next_x_orders, cancel_downgrade, cancel_upgrade, canceled_by_user, canceled_dts, completed, credit_card_attempt, disabled_dts, enabled, failure_reason, items, next_attempt, original_order_id, override_affiliate_id, rebill_orders, rotating_transaction_gateway_code, status].hash
+      [auto_order_code, auto_order_oid, cancel_after_next_x_orders, cancel_downgrade, cancel_reason, cancel_upgrade, canceled_by_user, canceled_dts, completed, credit_card_attempt, disabled_dts, enabled, failure_reason, items, next_attempt, original_order_id, override_affiliate_id, rebill_orders, rotating_transaction_gateway_code, status].hash
     end
 
     # Builds the object from hash
