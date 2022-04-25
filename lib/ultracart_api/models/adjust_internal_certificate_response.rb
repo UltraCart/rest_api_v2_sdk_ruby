@@ -13,50 +13,43 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class CustomerLoyalty
-    # Current points
-    attr_accessor :current_points
+  class AdjustInternalCertificateResponse
+    # The adjustment amount
+    attr_accessor :adjustment_amount
 
-    attr_accessor :internal_gift_certificate
+    # The balance amount after the adjustment was made
+    attr_accessor :balance_amount
 
-    # Loyalty Cashback / Store credit balance (internal gift certificate balance)
-    attr_accessor :internal_gift_certificate_balance
+    attr_accessor :error
 
-    # Internal gift certificate oid used to tracking loyalty cashback / store credit.
-    attr_accessor :internal_gift_certificate_oid
+    attr_accessor :metadata
 
-    # Ledger entries
-    attr_accessor :ledger_entries
+    # Indicates if API call was successful
+    attr_accessor :success
 
-    # Pending Points
-    attr_accessor :pending_points
-
-    # Redemptions
-    attr_accessor :redemptions
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'current_points' => :'current_points',
-        :'internal_gift_certificate' => :'internal_gift_certificate',
-        :'internal_gift_certificate_balance' => :'internal_gift_certificate_balance',
-        :'internal_gift_certificate_oid' => :'internal_gift_certificate_oid',
-        :'ledger_entries' => :'ledger_entries',
-        :'pending_points' => :'pending_points',
-        :'redemptions' => :'redemptions'
+        :'adjustment_amount' => :'adjustment_amount',
+        :'balance_amount' => :'balance_amount',
+        :'error' => :'error',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'current_points' => :'Integer',
-        :'internal_gift_certificate' => :'GiftCertificate',
-        :'internal_gift_certificate_balance' => :'String',
-        :'internal_gift_certificate_oid' => :'Integer',
-        :'ledger_entries' => :'Array<CustomerLoyaltyLedger>',
-        :'pending_points' => :'Integer',
-        :'redemptions' => :'Array<CustomerLoyaltyRedemption>'
+        :'adjustment_amount' => :'Float',
+        :'balance_amount' => :'Float',
+        :'error' => :'Error',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'BOOLEAN',
+        :'warning' => :'Warning'
       }
     end
 
@@ -68,36 +61,28 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'current_points')
-        self.current_points = attributes[:'current_points']
+      if attributes.has_key?(:'adjustment_amount')
+        self.adjustment_amount = attributes[:'adjustment_amount']
       end
 
-      if attributes.has_key?(:'internal_gift_certificate')
-        self.internal_gift_certificate = attributes[:'internal_gift_certificate']
+      if attributes.has_key?(:'balance_amount')
+        self.balance_amount = attributes[:'balance_amount']
       end
 
-      if attributes.has_key?(:'internal_gift_certificate_balance')
-        self.internal_gift_certificate_balance = attributes[:'internal_gift_certificate_balance']
+      if attributes.has_key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.has_key?(:'internal_gift_certificate_oid')
-        self.internal_gift_certificate_oid = attributes[:'internal_gift_certificate_oid']
+      if attributes.has_key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.has_key?(:'ledger_entries')
-        if (value = attributes[:'ledger_entries']).is_a?(Array)
-          self.ledger_entries = value
-        end
+      if attributes.has_key?(:'success')
+        self.success = attributes[:'success']
       end
 
-      if attributes.has_key?(:'pending_points')
-        self.pending_points = attributes[:'pending_points']
-      end
-
-      if attributes.has_key?(:'redemptions')
-        if (value = attributes[:'redemptions']).is_a?(Array)
-          self.redemptions = value
-        end
+      if attributes.has_key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -119,13 +104,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          current_points == o.current_points &&
-          internal_gift_certificate == o.internal_gift_certificate &&
-          internal_gift_certificate_balance == o.internal_gift_certificate_balance &&
-          internal_gift_certificate_oid == o.internal_gift_certificate_oid &&
-          ledger_entries == o.ledger_entries &&
-          pending_points == o.pending_points &&
-          redemptions == o.redemptions
+          adjustment_amount == o.adjustment_amount &&
+          balance_amount == o.balance_amount &&
+          error == o.error &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -137,7 +121,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [current_points, internal_gift_certificate, internal_gift_certificate_balance, internal_gift_certificate_oid, ledger_entries, pending_points, redemptions].hash
+      [adjustment_amount, balance_amount, error, metadata, success, warning].hash
     end
 
     # Builds the object from hash

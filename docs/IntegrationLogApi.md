@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_integration_log**](IntegrationLogApi.md#get_integration_log) | **GET** /integration_log/query/{pk}/{sk} | Retrieve an integration log
 [**get_integration_log_file**](IntegrationLogApi.md#get_integration_log_file) | **GET** /integration_log/query/{pk}/{sk}/{uuid} | Retrieve an integration log file
+[**get_integration_log_file_pdf**](IntegrationLogApi.md#get_integration_log_file_pdf) | **GET** /integration_log/query/{pk}/{sk}/{uuid}/pdf | Retrieve an integration log file converted to PDF
 [**get_integration_log_summaries_query**](IntegrationLogApi.md#get_integration_log_summaries_query) | **POST** /integration_log/summary/query | Retrieve integration log summaries
 [**get_integration_logs_query**](IntegrationLogApi.md#get_integration_logs_query) | **POST** /integration_log/query | Retrieve integration logs
 
@@ -93,6 +94,62 @@ begin
   p result
 rescue UltracartClient::ApiError => e
   puts "Exception when calling IntegrationLogApi->get_integration_log_file: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pk** | **String**|  | 
+ **sk** | **String**|  | 
+ **uuid** | **String**|  | 
+
+### Return type
+
+**File**
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/octet-stream
+
+
+
+# **get_integration_log_file_pdf**
+> File get_integration_log_file_pdf(pk, sk, uuid)
+
+Retrieve an integration log file converted to PDF
+
+Retrieve an integration log file from the account based identifiers 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::IntegrationLogApi.new_using_api_key(simple_key, false, false)
+
+
+pk = 'pk_example' # String | 
+
+sk = 'sk_example' # String | 
+
+uuid = 'uuid_example' # String | 
+
+
+begin
+  #Retrieve an integration log file converted to PDF
+  result = api_instance.get_integration_log_file_pdf(pk, sk, uuid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling IntegrationLogApi->get_integration_log_file_pdf: #{e}"
 end
 ```
 

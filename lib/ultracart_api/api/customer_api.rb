@@ -32,6 +32,67 @@ module UltracartClient
       UltracartClient::CustomerApi.new(api_client)
     end
 
+    # Updates the cashback balance for a customer by updating the internal gift certificate used, creating the gift certificate if needed.
+    # Updates the cashback balance for a customer by updating the internal gift certificate used, creating the gift certificate if needed. 
+    # @param customer_profile_oid The customer profile oid
+    # @param adjust_internal_certificate_request adjustInternalCertificateRequest
+    # @param [Hash] opts the optional parameters
+    # @return [AdjustInternalCertificateResponse]
+    def adjust_internal_certificate(customer_profile_oid, adjust_internal_certificate_request, opts = {})
+      data, _status_code, _headers = adjust_internal_certificate_with_http_info(customer_profile_oid, adjust_internal_certificate_request, opts)
+      data
+    end
+
+    # Updates the cashback balance for a customer by updating the internal gift certificate used, creating the gift certificate if needed.
+    # Updates the cashback balance for a customer by updating the internal gift certificate used, creating the gift certificate if needed. 
+    # @param customer_profile_oid The customer profile oid
+    # @param adjust_internal_certificate_request adjustInternalCertificateRequest
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdjustInternalCertificateResponse, Fixnum, Hash)>] AdjustInternalCertificateResponse data, response status code and response headers
+    def adjust_internal_certificate_with_http_info(customer_profile_oid, adjust_internal_certificate_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.adjust_internal_certificate ...'
+      end
+      # verify the required parameter 'customer_profile_oid' is set
+      if @api_client.config.client_side_validation && customer_profile_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.adjust_internal_certificate"
+      end
+      # verify the required parameter 'adjust_internal_certificate_request' is set
+      if @api_client.config.client_side_validation && adjust_internal_certificate_request.nil?
+        fail ArgumentError, "Missing the required parameter 'adjust_internal_certificate_request' when calling CustomerApi.adjust_internal_certificate"
+      end
+      # resource path
+      local_var_path = '/customer/customers/{customer_profile_oid}/adjust_cashback_balance'.sub('{' + 'customer_profile_oid' + '}', customer_profile_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(adjust_internal_certificate_request)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AdjustInternalCertificateResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#adjust_internal_certificate\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Delete a customer
     # Delete a customer on the UltraCart account. 
     # @param customer_profile_oid The customer_profile_oid to delete.

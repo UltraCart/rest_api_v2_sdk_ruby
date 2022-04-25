@@ -13,50 +13,46 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class CustomerLoyalty
-    # Current points
-    attr_accessor :current_points
+  class AdjustInternalCertificateRequest
+    # The adjustment amount
+    attr_accessor :adjustment_amount
 
-    attr_accessor :internal_gift_certificate
+    # Description of this adjustment, 50 characters max
+    attr_accessor :description
 
-    # Loyalty Cashback / Store credit balance (internal gift certificate balance)
-    attr_accessor :internal_gift_certificate_balance
+    # Optional timestamp for the adjustment, defaults to current time
+    attr_accessor :entry_dts
 
-    # Internal gift certificate oid used to tracking loyalty cashback / store credit.
-    attr_accessor :internal_gift_certificate_oid
+    # Optional expiration days from the entry_dts when these adjustment becomes worthless
+    attr_accessor :expiration_days
 
-    # Ledger entries
-    attr_accessor :ledger_entries
+    # Optional order id if this adjustment is related to a particular order
+    attr_accessor :order_id
 
-    # Pending Points
-    attr_accessor :pending_points
-
-    # Redemptions
-    attr_accessor :redemptions
+    # Optional days required for this adjustment to vest
+    attr_accessor :vesting_days
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'current_points' => :'current_points',
-        :'internal_gift_certificate' => :'internal_gift_certificate',
-        :'internal_gift_certificate_balance' => :'internal_gift_certificate_balance',
-        :'internal_gift_certificate_oid' => :'internal_gift_certificate_oid',
-        :'ledger_entries' => :'ledger_entries',
-        :'pending_points' => :'pending_points',
-        :'redemptions' => :'redemptions'
+        :'adjustment_amount' => :'adjustment_amount',
+        :'description' => :'description',
+        :'entry_dts' => :'entry_dts',
+        :'expiration_days' => :'expiration_days',
+        :'order_id' => :'order_id',
+        :'vesting_days' => :'vesting_days'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'current_points' => :'Integer',
-        :'internal_gift_certificate' => :'GiftCertificate',
-        :'internal_gift_certificate_balance' => :'String',
-        :'internal_gift_certificate_oid' => :'Integer',
-        :'ledger_entries' => :'Array<CustomerLoyaltyLedger>',
-        :'pending_points' => :'Integer',
-        :'redemptions' => :'Array<CustomerLoyaltyRedemption>'
+        :'adjustment_amount' => :'Float',
+        :'description' => :'String',
+        :'entry_dts' => :'String',
+        :'expiration_days' => :'Integer',
+        :'order_id' => :'String',
+        :'vesting_days' => :'Integer'
       }
     end
 
@@ -68,36 +64,28 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'current_points')
-        self.current_points = attributes[:'current_points']
+      if attributes.has_key?(:'adjustment_amount')
+        self.adjustment_amount = attributes[:'adjustment_amount']
       end
 
-      if attributes.has_key?(:'internal_gift_certificate')
-        self.internal_gift_certificate = attributes[:'internal_gift_certificate']
+      if attributes.has_key?(:'description')
+        self.description = attributes[:'description']
       end
 
-      if attributes.has_key?(:'internal_gift_certificate_balance')
-        self.internal_gift_certificate_balance = attributes[:'internal_gift_certificate_balance']
+      if attributes.has_key?(:'entry_dts')
+        self.entry_dts = attributes[:'entry_dts']
       end
 
-      if attributes.has_key?(:'internal_gift_certificate_oid')
-        self.internal_gift_certificate_oid = attributes[:'internal_gift_certificate_oid']
+      if attributes.has_key?(:'expiration_days')
+        self.expiration_days = attributes[:'expiration_days']
       end
 
-      if attributes.has_key?(:'ledger_entries')
-        if (value = attributes[:'ledger_entries']).is_a?(Array)
-          self.ledger_entries = value
-        end
+      if attributes.has_key?(:'order_id')
+        self.order_id = attributes[:'order_id']
       end
 
-      if attributes.has_key?(:'pending_points')
-        self.pending_points = attributes[:'pending_points']
-      end
-
-      if attributes.has_key?(:'redemptions')
-        if (value = attributes[:'redemptions']).is_a?(Array)
-          self.redemptions = value
-        end
+      if attributes.has_key?(:'vesting_days')
+        self.vesting_days = attributes[:'vesting_days']
       end
     end
 
@@ -119,13 +107,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          current_points == o.current_points &&
-          internal_gift_certificate == o.internal_gift_certificate &&
-          internal_gift_certificate_balance == o.internal_gift_certificate_balance &&
-          internal_gift_certificate_oid == o.internal_gift_certificate_oid &&
-          ledger_entries == o.ledger_entries &&
-          pending_points == o.pending_points &&
-          redemptions == o.redemptions
+          adjustment_amount == o.adjustment_amount &&
+          description == o.description &&
+          entry_dts == o.entry_dts &&
+          expiration_days == o.expiration_days &&
+          order_id == o.order_id &&
+          vesting_days == o.vesting_days
     end
 
     # @see the `==` method
@@ -137,7 +124,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [current_points, internal_gift_certificate, internal_gift_certificate_balance, internal_gift_certificate_oid, ledger_entries, pending_points, redemptions].hash
+      [adjustment_amount, description, entry_dts, expiration_days, order_id, vesting_days].hash
     end
 
     # Builds the object from hash
