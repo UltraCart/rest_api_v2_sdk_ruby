@@ -202,6 +202,64 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Duplicate an order
+    # Perform a duplicate of the specified order_id and return a new order located in Accounts Receivable. 
+    # @param order_id The order id to duplicate.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [OrderResponse]
+    def duplicate_order(order_id, opts = {})
+      data, _status_code, _headers = duplicate_order_with_http_info(order_id, opts)
+      data
+    end
+
+    # Duplicate an order
+    # Perform a duplicate of the specified order_id and return a new order located in Accounts Receivable. 
+    # @param order_id The order id to duplicate.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(OrderResponse, Fixnum, Hash)>] OrderResponse data, response status code and response headers
+    def duplicate_order_with_http_info(order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.duplicate_order ...'
+      end
+      # verify the required parameter 'order_id' is set
+      if @api_client.config.client_side_validation && order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.duplicate_order"
+      end
+      # resource path
+      local_var_path = '/order/orders/{order_id}/duplicate'.sub('{' + 'order_id' + '}', order_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'OrderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#duplicate_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Format order
     # Format the order for display at text or html 
     # @param order_id The order id to format
