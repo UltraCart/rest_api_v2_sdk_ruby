@@ -13,81 +13,43 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class CartSettingsShippingEstimate
-    # True if this method allows the customer to use their own shipper account number
-    attr_accessor :allow_3rd_party_billing
+  class ChannelPartnerImportResponse
+    attr_accessor :error
 
-    # Comment to display to the customer about this method
-    attr_accessor :comment
+    # Array of errors if errors occurred
+    attr_accessor :import_errors
 
-    attr_accessor :cost
+    # Array of warnings if warnings occurred
+    attr_accessor :import_warnings
 
-    attr_accessor :cost_before_discount
+    attr_accessor :metadata
 
-    # True if this is the default method
-    attr_accessor :default_method
+    # Indicates if API call was successful
+    attr_accessor :success
 
-    attr_accessor :discount
-
-    # True if this method is discounted because of a coupon
-    attr_accessor :discounted
-
-    # The name to display to the customer
-    attr_accessor :display_name
-
-    # Date of the estimated delivery (or range)
-    attr_accessor :estimated_delivery
-
-    # True if a lift gate option for this method should be offered to the customer
-    attr_accessor :lift_gate_option
-
-    # Shipping method name
-    attr_accessor :name
-
-    # True if this shipping method requires customers to physically pickup product themselves
-    attr_accessor :pickup
-
-    attr_accessor :tax
-
-    attr_accessor :total_tax
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'allow_3rd_party_billing' => :'allow_3rd_party_billing',
-        :'comment' => :'comment',
-        :'cost' => :'cost',
-        :'cost_before_discount' => :'cost_before_discount',
-        :'default_method' => :'default_method',
-        :'discount' => :'discount',
-        :'discounted' => :'discounted',
-        :'display_name' => :'display_name',
-        :'estimated_delivery' => :'estimated_delivery',
-        :'lift_gate_option' => :'lift_gate_option',
-        :'name' => :'name',
-        :'pickup' => :'pickup',
-        :'tax' => :'tax',
-        :'total_tax' => :'total_tax'
+        :'error' => :'error',
+        :'import_errors' => :'import_errors',
+        :'import_warnings' => :'import_warnings',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'allow_3rd_party_billing' => :'BOOLEAN',
-        :'comment' => :'String',
-        :'cost' => :'Currency',
-        :'cost_before_discount' => :'Currency',
-        :'default_method' => :'BOOLEAN',
-        :'discount' => :'Currency',
-        :'discounted' => :'BOOLEAN',
-        :'display_name' => :'String',
-        :'estimated_delivery' => :'String',
-        :'lift_gate_option' => :'BOOLEAN',
-        :'name' => :'String',
-        :'pickup' => :'BOOLEAN',
-        :'tax' => :'Currency',
-        :'total_tax' => :'Currency'
+        :'error' => :'Error',
+        :'import_errors' => :'Array<String>',
+        :'import_warnings' => :'Array<String>',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'BOOLEAN',
+        :'warning' => :'Warning'
       }
     end
 
@@ -99,60 +61,32 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'allow_3rd_party_billing')
-        self.allow_3rd_party_billing = attributes[:'allow_3rd_party_billing']
+      if attributes.has_key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.has_key?(:'comment')
-        self.comment = attributes[:'comment']
+      if attributes.has_key?(:'import_errors')
+        if (value = attributes[:'import_errors']).is_a?(Array)
+          self.import_errors = value
+        end
       end
 
-      if attributes.has_key?(:'cost')
-        self.cost = attributes[:'cost']
+      if attributes.has_key?(:'import_warnings')
+        if (value = attributes[:'import_warnings']).is_a?(Array)
+          self.import_warnings = value
+        end
       end
 
-      if attributes.has_key?(:'cost_before_discount')
-        self.cost_before_discount = attributes[:'cost_before_discount']
+      if attributes.has_key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.has_key?(:'default_method')
-        self.default_method = attributes[:'default_method']
+      if attributes.has_key?(:'success')
+        self.success = attributes[:'success']
       end
 
-      if attributes.has_key?(:'discount')
-        self.discount = attributes[:'discount']
-      end
-
-      if attributes.has_key?(:'discounted')
-        self.discounted = attributes[:'discounted']
-      end
-
-      if attributes.has_key?(:'display_name')
-        self.display_name = attributes[:'display_name']
-      end
-
-      if attributes.has_key?(:'estimated_delivery')
-        self.estimated_delivery = attributes[:'estimated_delivery']
-      end
-
-      if attributes.has_key?(:'lift_gate_option')
-        self.lift_gate_option = attributes[:'lift_gate_option']
-      end
-
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'pickup')
-        self.pickup = attributes[:'pickup']
-      end
-
-      if attributes.has_key?(:'tax')
-        self.tax = attributes[:'tax']
-      end
-
-      if attributes.has_key?(:'total_tax')
-        self.total_tax = attributes[:'total_tax']
+      if attributes.has_key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -174,20 +108,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          allow_3rd_party_billing == o.allow_3rd_party_billing &&
-          comment == o.comment &&
-          cost == o.cost &&
-          cost_before_discount == o.cost_before_discount &&
-          default_method == o.default_method &&
-          discount == o.discount &&
-          discounted == o.discounted &&
-          display_name == o.display_name &&
-          estimated_delivery == o.estimated_delivery &&
-          lift_gate_option == o.lift_gate_option &&
-          name == o.name &&
-          pickup == o.pickup &&
-          tax == o.tax &&
-          total_tax == o.total_tax
+          error == o.error &&
+          import_errors == o.import_errors &&
+          import_warnings == o.import_warnings &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -199,7 +125,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allow_3rd_party_billing, comment, cost, cost_before_discount, default_method, discount, discounted, display_name, estimated_delivery, lift_gate_option, name, pickup, tax, total_tax].hash
+      [error, import_errors, import_warnings, metadata, success, warning].hash
     end
 
     # Builds the object from hash

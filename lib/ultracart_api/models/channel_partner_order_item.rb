@@ -13,81 +13,73 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class CartSettingsShippingEstimate
-    # True if this method allows the customer to use their own shipper account number
-    attr_accessor :allow_3rd_party_billing
+  class ChannelPartnerOrderItem
+    # Arbitrary unit cost for this item that differs from the listed price
+    attr_accessor :arbitrary_unit_cost
 
-    # Comment to display to the customer about this method
-    attr_accessor :comment
+    # Optional date/time of the last rebill if this item is part of an auto (recurring) order
+    attr_accessor :auto_order_last_rebill_dts
 
-    attr_accessor :cost
+    # The frequency schedule for this item if this item is part of an auto (recurring) order
+    attr_accessor :auto_order_schedule
 
-    attr_accessor :cost_before_discount
+    # Item ID
+    attr_accessor :merchant_item_id
 
-    # True if this is the default method
-    attr_accessor :default_method
+    # Item options
+    attr_accessor :options
 
-    attr_accessor :discount
+    # Quantity
+    attr_accessor :quantity
 
-    # True if this method is discounted because of a coupon
-    attr_accessor :discounted
+    # True if this item was an upsell item.
+    attr_accessor :upsell
 
-    # The name to display to the customer
-    attr_accessor :display_name
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    # Date of the estimated delivery (or range)
-    attr_accessor :estimated_delivery
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
 
-    # True if a lift gate option for this method should be offered to the customer
-    attr_accessor :lift_gate_option
-
-    # Shipping method name
-    attr_accessor :name
-
-    # True if this shipping method requires customers to physically pickup product themselves
-    attr_accessor :pickup
-
-    attr_accessor :tax
-
-    attr_accessor :total_tax
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'allow_3rd_party_billing' => :'allow_3rd_party_billing',
-        :'comment' => :'comment',
-        :'cost' => :'cost',
-        :'cost_before_discount' => :'cost_before_discount',
-        :'default_method' => :'default_method',
-        :'discount' => :'discount',
-        :'discounted' => :'discounted',
-        :'display_name' => :'display_name',
-        :'estimated_delivery' => :'estimated_delivery',
-        :'lift_gate_option' => :'lift_gate_option',
-        :'name' => :'name',
-        :'pickup' => :'pickup',
-        :'tax' => :'tax',
-        :'total_tax' => :'total_tax'
+        :'arbitrary_unit_cost' => :'arbitrary_unit_cost',
+        :'auto_order_last_rebill_dts' => :'auto_order_last_rebill_dts',
+        :'auto_order_schedule' => :'auto_order_schedule',
+        :'merchant_item_id' => :'merchant_item_id',
+        :'options' => :'options',
+        :'quantity' => :'quantity',
+        :'upsell' => :'upsell'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'allow_3rd_party_billing' => :'BOOLEAN',
-        :'comment' => :'String',
-        :'cost' => :'Currency',
-        :'cost_before_discount' => :'Currency',
-        :'default_method' => :'BOOLEAN',
-        :'discount' => :'Currency',
-        :'discounted' => :'BOOLEAN',
-        :'display_name' => :'String',
-        :'estimated_delivery' => :'String',
-        :'lift_gate_option' => :'BOOLEAN',
-        :'name' => :'String',
-        :'pickup' => :'BOOLEAN',
-        :'tax' => :'Currency',
-        :'total_tax' => :'Currency'
+        :'arbitrary_unit_cost' => :'Float',
+        :'auto_order_last_rebill_dts' => :'String',
+        :'auto_order_schedule' => :'String',
+        :'merchant_item_id' => :'String',
+        :'options' => :'Array<ChannelPartnerOrderItemOption>',
+        :'quantity' => :'Float',
+        :'upsell' => :'BOOLEAN'
       }
     end
 
@@ -99,60 +91,34 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'allow_3rd_party_billing')
-        self.allow_3rd_party_billing = attributes[:'allow_3rd_party_billing']
+      if attributes.has_key?(:'arbitrary_unit_cost')
+        self.arbitrary_unit_cost = attributes[:'arbitrary_unit_cost']
       end
 
-      if attributes.has_key?(:'comment')
-        self.comment = attributes[:'comment']
+      if attributes.has_key?(:'auto_order_last_rebill_dts')
+        self.auto_order_last_rebill_dts = attributes[:'auto_order_last_rebill_dts']
       end
 
-      if attributes.has_key?(:'cost')
-        self.cost = attributes[:'cost']
+      if attributes.has_key?(:'auto_order_schedule')
+        self.auto_order_schedule = attributes[:'auto_order_schedule']
       end
 
-      if attributes.has_key?(:'cost_before_discount')
-        self.cost_before_discount = attributes[:'cost_before_discount']
+      if attributes.has_key?(:'merchant_item_id')
+        self.merchant_item_id = attributes[:'merchant_item_id']
       end
 
-      if attributes.has_key?(:'default_method')
-        self.default_method = attributes[:'default_method']
+      if attributes.has_key?(:'options')
+        if (value = attributes[:'options']).is_a?(Array)
+          self.options = value
+        end
       end
 
-      if attributes.has_key?(:'discount')
-        self.discount = attributes[:'discount']
+      if attributes.has_key?(:'quantity')
+        self.quantity = attributes[:'quantity']
       end
 
-      if attributes.has_key?(:'discounted')
-        self.discounted = attributes[:'discounted']
-      end
-
-      if attributes.has_key?(:'display_name')
-        self.display_name = attributes[:'display_name']
-      end
-
-      if attributes.has_key?(:'estimated_delivery')
-        self.estimated_delivery = attributes[:'estimated_delivery']
-      end
-
-      if attributes.has_key?(:'lift_gate_option')
-        self.lift_gate_option = attributes[:'lift_gate_option']
-      end
-
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'pickup')
-        self.pickup = attributes[:'pickup']
-      end
-
-      if attributes.has_key?(:'tax')
-        self.tax = attributes[:'tax']
-      end
-
-      if attributes.has_key?(:'total_tax')
-        self.total_tax = attributes[:'total_tax']
+      if attributes.has_key?(:'upsell')
+        self.upsell = attributes[:'upsell']
       end
     end
 
@@ -160,13 +126,40 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@merchant_item_id.nil? && @merchant_item_id.to_s.length > 20
+        invalid_properties.push('invalid value for "merchant_item_id", the character length must be smaller than or equal to 20.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      auto_order_schedule_validator = EnumAttributeValidator.new('String', ['Weekly', 'Every 10 Days', 'Biweekly', 'Every 24 Days', 'Every 28 Days', 'Monthly', 'Every 45 Days', 'Every 2 Months', 'Every 3 Months', 'Every 4 Months', 'Every 6 Months', 'Yearly'])
+      return false unless auto_order_schedule_validator.valid?(@auto_order_schedule)
+      return false if !@merchant_item_id.nil? && @merchant_item_id.to_s.length > 20
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] auto_order_schedule Object to be assigned
+    def auto_order_schedule=(auto_order_schedule)
+      validator = EnumAttributeValidator.new('String', ['Weekly', 'Every 10 Days', 'Biweekly', 'Every 24 Days', 'Every 28 Days', 'Monthly', 'Every 45 Days', 'Every 2 Months', 'Every 3 Months', 'Every 4 Months', 'Every 6 Months', 'Yearly'])
+      unless validator.valid?(auto_order_schedule)
+        fail ArgumentError, 'invalid value for "auto_order_schedule", must be one of #{validator.allowable_values}.'
+      end
+      @auto_order_schedule = auto_order_schedule
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] merchant_item_id Value to be assigned
+    def merchant_item_id=(merchant_item_id)
+      if !merchant_item_id.nil? && merchant_item_id.to_s.length > 20
+        fail ArgumentError, 'invalid value for "merchant_item_id", the character length must be smaller than or equal to 20.'
+      end
+
+      @merchant_item_id = merchant_item_id
     end
 
     # Checks equality by comparing each attribute.
@@ -174,20 +167,13 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          allow_3rd_party_billing == o.allow_3rd_party_billing &&
-          comment == o.comment &&
-          cost == o.cost &&
-          cost_before_discount == o.cost_before_discount &&
-          default_method == o.default_method &&
-          discount == o.discount &&
-          discounted == o.discounted &&
-          display_name == o.display_name &&
-          estimated_delivery == o.estimated_delivery &&
-          lift_gate_option == o.lift_gate_option &&
-          name == o.name &&
-          pickup == o.pickup &&
-          tax == o.tax &&
-          total_tax == o.total_tax
+          arbitrary_unit_cost == o.arbitrary_unit_cost &&
+          auto_order_last_rebill_dts == o.auto_order_last_rebill_dts &&
+          auto_order_schedule == o.auto_order_schedule &&
+          merchant_item_id == o.merchant_item_id &&
+          options == o.options &&
+          quantity == o.quantity &&
+          upsell == o.upsell
     end
 
     # @see the `==` method
@@ -199,7 +185,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allow_3rd_party_billing, comment, cost, cost_before_discount, default_method, discount, discounted, display_name, estimated_delivery, lift_gate_option, name, pickup, tax, total_tax].hash
+      [arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, merchant_item_id, options, quantity, upsell].hash
     end
 
     # Builds the object from hash
