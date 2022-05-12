@@ -24,6 +24,9 @@ module UltracartClient
 
     attr_accessor :metadata
 
+    # The order id of the newly imported order if successful
+    attr_accessor :order_id
+
     # Indicates if API call was successful
     attr_accessor :success
 
@@ -36,6 +39,7 @@ module UltracartClient
         :'import_errors' => :'import_errors',
         :'import_warnings' => :'import_warnings',
         :'metadata' => :'metadata',
+        :'order_id' => :'order_id',
         :'success' => :'success',
         :'warning' => :'warning'
       }
@@ -48,6 +52,7 @@ module UltracartClient
         :'import_errors' => :'Array<String>',
         :'import_warnings' => :'Array<String>',
         :'metadata' => :'ResponseMetadata',
+        :'order_id' => :'String',
         :'success' => :'BOOLEAN',
         :'warning' => :'Warning'
       }
@@ -81,6 +86,10 @@ module UltracartClient
         self.metadata = attributes[:'metadata']
       end
 
+      if attributes.has_key?(:'order_id')
+        self.order_id = attributes[:'order_id']
+      end
+
       if attributes.has_key?(:'success')
         self.success = attributes[:'success']
       end
@@ -112,6 +121,7 @@ module UltracartClient
           import_errors == o.import_errors &&
           import_warnings == o.import_warnings &&
           metadata == o.metadata &&
+          order_id == o.order_id &&
           success == o.success &&
           warning == o.warning
     end
@@ -125,7 +135,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [error, import_errors, import_warnings, metadata, success, warning].hash
+      [error, import_errors, import_warnings, metadata, order_id, success, warning].hash
     end
 
     # Builds the object from hash
