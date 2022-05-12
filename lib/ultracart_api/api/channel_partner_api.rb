@@ -92,8 +92,8 @@ module UltracartClient
     # @param order_id The UltraCart order id to delete.
     # @param [Hash] opts the optional parameters
     # @return [ChannelPartnerCancelResponse]
-    def cancel_order_by_channel_ultra_cart_order_id(order_id, opts = {})
-      data, _status_code, _headers = cancel_order_by_channel_ultra_cart_order_id_with_http_info(order_id, opts)
+    def cancel_order_by_ultra_cart_order_id(order_id, opts = {})
+      data, _status_code, _headers = cancel_order_by_ultra_cart_order_id_with_http_info(order_id, opts)
       data
     end
 
@@ -102,13 +102,13 @@ module UltracartClient
     # @param order_id The UltraCart order id to delete.
     # @param [Hash] opts the optional parameters
     # @return [Array<(ChannelPartnerCancelResponse, Fixnum, Hash)>] ChannelPartnerCancelResponse data, response status code and response headers
-    def cancel_order_by_channel_ultra_cart_order_id_with_http_info(order_id, opts = {})
+    def cancel_order_by_ultra_cart_order_id_with_http_info(order_id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ChannelPartnerApi.cancel_order_by_channel_ultra_cart_order_id ...'
+        @api_client.config.logger.debug 'Calling API: ChannelPartnerApi.cancel_order_by_ultra_cart_order_id ...'
       end
       # verify the required parameter 'order_id' is set
       if @api_client.config.client_side_validation && order_id.nil?
-        fail ArgumentError, "Missing the required parameter 'order_id' when calling ChannelPartnerApi.cancel_order_by_channel_ultra_cart_order_id"
+        fail ArgumentError, "Missing the required parameter 'order_id' when calling ChannelPartnerApi.cancel_order_by_ultra_cart_order_id"
       end
       # resource path
       local_var_path = '/channel_partner/cancel/by_ultracart_order_id/{order_id}'.sub('{' + 'order_id' + '}', order_id.to_s)
@@ -138,7 +138,7 @@ module UltracartClient
         :auth_names => auth_names,
         :return_type => 'ChannelPartnerCancelResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ChannelPartnerApi#cancel_order_by_channel_ultra_cart_order_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ChannelPartnerApi#cancel_order_by_ultra_cart_order_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

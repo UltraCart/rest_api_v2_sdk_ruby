@@ -5,7 +5,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**cancel_order_by_channel_partner_order_id**](ChannelPartnerApi.md#cancel_order_by_channel_partner_order_id) | **DELETE** /channel_partner/cancel/by_channel_partner_order_id/{order_id} | Cancel channel partner order by channel partner order id
-[**cancel_order_by_channel_ultra_cart_order_id**](ChannelPartnerApi.md#cancel_order_by_channel_ultra_cart_order_id) | **DELETE** /channel_partner/cancel/by_ultracart_order_id/{order_id} | Cancel channel partner order by UltraCart order id
+[**cancel_order_by_ultra_cart_order_id**](ChannelPartnerApi.md#cancel_order_by_ultra_cart_order_id) | **DELETE** /channel_partner/cancel/by_ultracart_order_id/{order_id} | Cancel channel partner order by UltraCart order id
 [**estimate_shipping_for_channel_partner_order**](ChannelPartnerApi.md#estimate_shipping_for_channel_partner_order) | **POST** /channel_partner/estimate_shipping | Estimate shipping for channel partner order
 [**import_channel_partner_order**](ChannelPartnerApi.md#import_channel_partner_order) | **POST** /channel_partner/import | Insert channel partner order
 
@@ -60,8 +60,8 @@ Name | Type | Description  | Notes
 
 
 
-# **cancel_order_by_channel_ultra_cart_order_id**
-> ChannelPartnerCancelResponse cancel_order_by_channel_ultra_cart_order_id(order_id)
+# **cancel_order_by_ultra_cart_order_id**
+> ChannelPartnerCancelResponse cancel_order_by_ultra_cart_order_id(order_id)
 
 Cancel channel partner order by UltraCart order id
 
@@ -82,10 +82,10 @@ order_id = 'order_id_example' # String | The UltraCart order id to delete.
 
 begin
   #Cancel channel partner order by UltraCart order id
-  result = api_instance.cancel_order_by_channel_ultra_cart_order_id(order_id)
+  result = api_instance.cancel_order_by_ultra_cart_order_id(order_id)
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling ChannelPartnerApi->cancel_order_by_channel_ultra_cart_order_id: #{e}"
+  puts "Exception when calling ChannelPartnerApi->cancel_order_by_ultra_cart_order_id: #{e}"
 end
 ```
 
