@@ -27,7 +27,7 @@ module UltracartClient
     attr_accessor :filter_distribution_center_oid
 
     # The container oid to filter items to.
-    attr_accessor :filter_to_items_in_contact_oid
+    attr_accessor :filter_to_items_in_container_oid
 
     # The desired format.
     attr_accessor :format
@@ -91,7 +91,7 @@ module UltracartClient
         :'dont_link_email_to_search' => :'dont_link_email_to_search',
         :'email_as_link' => :'email_as_link',
         :'filter_distribution_center_oid' => :'filter_distribution_center_oid',
-        :'filter_to_items_in_contact_oid' => :'filter_to_items_in_contact_oid',
+        :'filter_to_items_in_container_oid' => :'filter_to_items_in_container_oid',
         :'format' => :'format',
         :'hide_bill_to_address' => :'hide_bill_to_address',
         :'hide_price_information' => :'hide_price_information',
@@ -113,7 +113,7 @@ module UltracartClient
         :'dont_link_email_to_search' => :'BOOLEAN',
         :'email_as_link' => :'BOOLEAN',
         :'filter_distribution_center_oid' => :'Integer',
-        :'filter_to_items_in_contact_oid' => :'Integer',
+        :'filter_to_items_in_container_oid' => :'Integer',
         :'format' => :'String',
         :'hide_bill_to_address' => :'BOOLEAN',
         :'hide_price_information' => :'BOOLEAN',
@@ -152,8 +152,8 @@ module UltracartClient
         self.filter_distribution_center_oid = attributes[:'filter_distribution_center_oid']
       end
 
-      if attributes.has_key?(:'filter_to_items_in_contact_oid')
-        self.filter_to_items_in_contact_oid = attributes[:'filter_to_items_in_contact_oid']
+      if attributes.has_key?(:'filter_to_items_in_container_oid')
+        self.filter_to_items_in_container_oid = attributes[:'filter_to_items_in_container_oid']
       end
 
       if attributes.has_key?(:'format')
@@ -235,7 +235,7 @@ module UltracartClient
           dont_link_email_to_search == o.dont_link_email_to_search &&
           email_as_link == o.email_as_link &&
           filter_distribution_center_oid == o.filter_distribution_center_oid &&
-          filter_to_items_in_contact_oid == o.filter_to_items_in_contact_oid &&
+          filter_to_items_in_container_oid == o.filter_to_items_in_container_oid &&
           format == o.format &&
           hide_bill_to_address == o.hide_bill_to_address &&
           hide_price_information == o.hide_price_information &&
@@ -258,7 +258,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [context, dont_link_email_to_search, email_as_link, filter_distribution_center_oid, filter_to_items_in_contact_oid, format, hide_bill_to_address, hide_price_information, link_file_attachments, show_contact_info, show_in_merchant_currency, show_internal_information, show_merchant_notes, show_non_sensitive_payment_info, show_payment_info, translate].hash
+      [context, dont_link_email_to_search, email_as_link, filter_distribution_center_oid, filter_to_items_in_container_oid, format, hide_bill_to_address, hide_price_information, link_file_attachments, show_contact_info, show_in_merchant_currency, show_internal_information, show_merchant_notes, show_non_sensitive_payment_info, show_payment_info, translate].hash
     end
 
     # Builds the object from hash

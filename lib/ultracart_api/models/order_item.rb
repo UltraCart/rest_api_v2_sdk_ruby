@@ -136,6 +136,9 @@ module UltracartClient
     # Date/time that this item was marked shipped
     attr_accessor :shipped_dts
 
+    # Shipping status for this item.  This is the replacement for the old order level shipping status.
+    attr_accessor :shipping_status
+
     # Special product type (USPS Media Mail)
     attr_accessor :special_product_type
 
@@ -234,6 +237,7 @@ module UltracartClient
         :'ship_separately' => :'ship_separately',
         :'shipped_by_user' => :'shipped_by_user',
         :'shipped_dts' => :'shipped_dts',
+        :'shipping_status' => :'shipping_status',
         :'special_product_type' => :'special_product_type',
         :'tags' => :'tags',
         :'tax_free' => :'tax_free',
@@ -295,6 +299,7 @@ module UltracartClient
         :'ship_separately' => :'BOOLEAN',
         :'shipped_by_user' => :'String',
         :'shipped_dts' => :'String',
+        :'shipping_status' => :'String',
         :'special_product_type' => :'String',
         :'tags' => :'Array<OrderItemTag>',
         :'tax_free' => :'BOOLEAN',
@@ -494,6 +499,10 @@ module UltracartClient
 
       if attributes.has_key?(:'shipped_dts')
         self.shipped_dts = attributes[:'shipped_dts']
+      end
+
+      if attributes.has_key?(:'shipping_status')
+        self.shipping_status = attributes[:'shipping_status']
       end
 
       if attributes.has_key?(:'special_product_type')
@@ -710,6 +719,7 @@ module UltracartClient
           ship_separately == o.ship_separately &&
           shipped_by_user == o.shipped_by_user &&
           shipped_dts == o.shipped_dts &&
+          shipping_status == o.shipping_status &&
           special_product_type == o.special_product_type &&
           tags == o.tags &&
           tax_free == o.tax_free &&
@@ -733,7 +743,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [accounting_code, activation_codes, arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, barcode, channel_partner_item_id, cogs, component_unit_value, cost, country_code_of_origin, customs_description, description, discount, discount_quantity, discount_shipping_weight, distribution_center_code, edi, exclude_coupon, free_shipping, hazmat, height, item_reference_oid, kit, kit_component, length, manufacturer_sku, max_days_time_in_transit, merchant_item_id, mix_and_match_group_name, mix_and_match_group_oid, no_shipping_discount, options, packed_by_user, perishable_class, pricing_tier_name, properties, quantity, quantity_refunded, quickbooks_class, ship_separately, shipped_by_user, shipped_dts, special_product_type, tags, tax_free, tax_product_type, taxable_cost, total_cost_with_discount, total_refunded, transmitted_to_distribution_center_dts, unit_cost_with_discount, upsell, weight, width].hash
+      [accounting_code, activation_codes, arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, barcode, channel_partner_item_id, cogs, component_unit_value, cost, country_code_of_origin, customs_description, description, discount, discount_quantity, discount_shipping_weight, distribution_center_code, edi, exclude_coupon, free_shipping, hazmat, height, item_reference_oid, kit, kit_component, length, manufacturer_sku, max_days_time_in_transit, merchant_item_id, mix_and_match_group_name, mix_and_match_group_oid, no_shipping_discount, options, packed_by_user, perishable_class, pricing_tier_name, properties, quantity, quantity_refunded, quickbooks_class, ship_separately, shipped_by_user, shipped_dts, shipping_status, special_product_type, tags, tax_free, tax_product_type, taxable_cost, total_cost_with_discount, total_refunded, transmitted_to_distribution_center_dts, unit_cost_with_discount, upsell, weight, width].hash
     end
 
     # Builds the object from hash

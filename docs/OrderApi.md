@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
 
 
 # **generate_packing_slip_all_dc**
-> OrdersResponse generate_packing_slip_all_dc(order_id)
+> OrderPackingSlipResponse generate_packing_slip_all_dc(order_id)
 
 Generate a packing slip for this order across all distribution centers.
 
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrdersResponse**](OrdersResponse.md)
+[**OrderPackingSlipResponse**](OrderPackingSlipResponse.md)
 
 ### Authorization
 
@@ -389,7 +389,7 @@ Name | Type | Description  | Notes
 
 
 # **generate_packing_slip_specific_dc**
-> OrdersResponse generate_packing_slip_specific_dc(distribution_center_code, order_id)
+> OrderPackingSlipResponse generate_packing_slip_specific_dc(distribution_center_code, order_id)
 
 Generate a packing slip for this order for the given distribution center.
 
@@ -428,7 +428,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrdersResponse**](OrdersResponse.md)
+[**OrderPackingSlipResponse**](OrderPackingSlipResponse.md)
 
 ### Authorization
 

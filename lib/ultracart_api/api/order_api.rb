@@ -380,7 +380,7 @@ module UltracartClient
     # The packing slip PDF that is returned is base 64 encoded 
     # @param order_id Order ID
     # @param [Hash] opts the optional parameters
-    # @return [OrdersResponse]
+    # @return [OrderPackingSlipResponse]
     def generate_packing_slip_all_dc(order_id, opts = {})
       data, _status_code, _headers = generate_packing_slip_all_dc_with_http_info(order_id, opts)
       data
@@ -390,7 +390,7 @@ module UltracartClient
     # The packing slip PDF that is returned is base 64 encoded 
     # @param order_id Order ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(OrdersResponse, Fixnum, Hash)>] OrdersResponse data, response status code and response headers
+    # @return [Array<(OrderPackingSlipResponse, Fixnum, Hash)>] OrderPackingSlipResponse data, response status code and response headers
     def generate_packing_slip_all_dc_with_http_info(order_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OrderApi.generate_packing_slip_all_dc ...'
@@ -425,7 +425,7 @@ module UltracartClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'OrdersResponse')
+        :return_type => 'OrderPackingSlipResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: OrderApi#generate_packing_slip_all_dc\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -436,7 +436,7 @@ module UltracartClient
     # @param distribution_center_code Distribution center code
     # @param order_id Order ID
     # @param [Hash] opts the optional parameters
-    # @return [OrdersResponse]
+    # @return [OrderPackingSlipResponse]
     def generate_packing_slip_specific_dc(distribution_center_code, order_id, opts = {})
       data, _status_code, _headers = generate_packing_slip_specific_dc_with_http_info(distribution_center_code, order_id, opts)
       data
@@ -447,7 +447,7 @@ module UltracartClient
     # @param distribution_center_code Distribution center code
     # @param order_id Order ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(OrdersResponse, Fixnum, Hash)>] OrdersResponse data, response status code and response headers
+    # @return [Array<(OrderPackingSlipResponse, Fixnum, Hash)>] OrderPackingSlipResponse data, response status code and response headers
     def generate_packing_slip_specific_dc_with_http_info(distribution_center_code, order_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OrderApi.generate_packing_slip_specific_dc ...'
@@ -486,7 +486,7 @@ module UltracartClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'OrdersResponse')
+        :return_type => 'OrderPackingSlipResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: OrderApi#generate_packing_slip_specific_dc\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
