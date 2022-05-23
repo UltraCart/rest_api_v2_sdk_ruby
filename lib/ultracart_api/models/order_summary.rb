@@ -22,6 +22,10 @@ module UltracartClient
 
     attr_accessor :arbitrary_shipping_handling_total
 
+    attr_accessor :internal_gift_certificate_amount
+
+    attr_accessor :internal_gift_certificate_refunded
+
     attr_accessor :other_refunded
 
     attr_accessor :shipping_handling_refunded
@@ -57,6 +61,8 @@ module UltracartClient
         :'actual_payment_processing' => :'actual_payment_processing',
         :'actual_shipping' => :'actual_shipping',
         :'arbitrary_shipping_handling_total' => :'arbitrary_shipping_handling_total',
+        :'internal_gift_certificate_amount' => :'internal_gift_certificate_amount',
+        :'internal_gift_certificate_refunded' => :'internal_gift_certificate_refunded',
         :'other_refunded' => :'other_refunded',
         :'shipping_handling_refunded' => :'shipping_handling_refunded',
         :'shipping_handling_total' => :'shipping_handling_total',
@@ -81,6 +87,8 @@ module UltracartClient
         :'actual_payment_processing' => :'Currency',
         :'actual_shipping' => :'Currency',
         :'arbitrary_shipping_handling_total' => :'Currency',
+        :'internal_gift_certificate_amount' => :'Currency',
+        :'internal_gift_certificate_refunded' => :'Currency',
         :'other_refunded' => :'Currency',
         :'shipping_handling_refunded' => :'Currency',
         :'shipping_handling_total' => :'Currency',
@@ -120,6 +128,14 @@ module UltracartClient
 
       if attributes.has_key?(:'arbitrary_shipping_handling_total')
         self.arbitrary_shipping_handling_total = attributes[:'arbitrary_shipping_handling_total']
+      end
+
+      if attributes.has_key?(:'internal_gift_certificate_amount')
+        self.internal_gift_certificate_amount = attributes[:'internal_gift_certificate_amount']
+      end
+
+      if attributes.has_key?(:'internal_gift_certificate_refunded')
+        self.internal_gift_certificate_refunded = attributes[:'internal_gift_certificate_refunded']
       end
 
       if attributes.has_key?(:'other_refunded')
@@ -201,6 +217,8 @@ module UltracartClient
           actual_payment_processing == o.actual_payment_processing &&
           actual_shipping == o.actual_shipping &&
           arbitrary_shipping_handling_total == o.arbitrary_shipping_handling_total &&
+          internal_gift_certificate_amount == o.internal_gift_certificate_amount &&
+          internal_gift_certificate_refunded == o.internal_gift_certificate_refunded &&
           other_refunded == o.other_refunded &&
           shipping_handling_refunded == o.shipping_handling_refunded &&
           shipping_handling_total == o.shipping_handling_total &&
@@ -226,7 +244,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [actual_fulfillment, actual_payment_processing, actual_shipping, arbitrary_shipping_handling_total, other_refunded, shipping_handling_refunded, shipping_handling_total, shipping_handling_total_discount, subtotal, subtotal_discount, subtotal_discount_refunded, subtotal_refunded, tax, tax_refunded, taxable_subtotal, taxable_subtotal_discount, total, total_refunded].hash
+      [actual_fulfillment, actual_payment_processing, actual_shipping, arbitrary_shipping_handling_total, internal_gift_certificate_amount, internal_gift_certificate_refunded, other_refunded, shipping_handling_refunded, shipping_handling_total, shipping_handling_total_discount, subtotal, subtotal_discount, subtotal_discount_refunded, subtotal_refunded, tax, tax_refunded, taxable_subtotal, taxable_subtotal_discount, total, total_refunded].hash
     end
 
     # Builds the object from hash

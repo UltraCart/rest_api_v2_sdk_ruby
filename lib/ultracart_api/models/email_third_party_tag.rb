@@ -13,71 +13,26 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class EmailThirdPartyProvider
-    # URL to the settings screen to connect.  Null if the provider is already connected.
-    attr_accessor :connect_url
-
-    # list_count
-    attr_accessor :list_count
-
-    # lists
-    attr_accessor :lists
-
-    # logo_url
-    attr_accessor :logo_url
+  class EmailThirdPartyTag
+    # id
+    attr_accessor :id
 
     # name
     attr_accessor :name
 
-    # True if this provider can support adding tags
-    attr_accessor :supports_add_tags
-
-    # True if this provider can support list subscribe
-    attr_accessor :supports_list_subscribe
-
-    # True if this provider can support list unsubscribe
-    attr_accessor :supports_list_unsubscribe
-
-    # True if this provider can support remove tags
-    attr_accessor :supports_remove_tags
-
-    # tag_count
-    attr_accessor :tag_count
-
-    # tags
-    attr_accessor :tags
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'connect_url' => :'connect_url',
-        :'list_count' => :'list_count',
-        :'lists' => :'lists',
-        :'logo_url' => :'logo_url',
-        :'name' => :'name',
-        :'supports_add_tags' => :'supports_add_tags',
-        :'supports_list_subscribe' => :'supports_list_subscribe',
-        :'supports_list_unsubscribe' => :'supports_list_unsubscribe',
-        :'supports_remove_tags' => :'supports_remove_tags',
-        :'tag_count' => :'tag_count',
-        :'tags' => :'tags'
+        :'id' => :'id',
+        :'name' => :'name'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'connect_url' => :'String',
-        :'list_count' => :'Integer',
-        :'lists' => :'Array<EmailThirdPartyList>',
-        :'logo_url' => :'String',
-        :'name' => :'String',
-        :'supports_add_tags' => :'BOOLEAN',
-        :'supports_list_subscribe' => :'BOOLEAN',
-        :'supports_list_unsubscribe' => :'BOOLEAN',
-        :'supports_remove_tags' => :'BOOLEAN',
-        :'tag_count' => :'Integer',
-        :'tags' => :'Array<EmailThirdPartyTag>'
+        :'id' => :'String',
+        :'name' => :'String'
       }
     end
 
@@ -89,52 +44,12 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'connect_url')
-        self.connect_url = attributes[:'connect_url']
-      end
-
-      if attributes.has_key?(:'list_count')
-        self.list_count = attributes[:'list_count']
-      end
-
-      if attributes.has_key?(:'lists')
-        if (value = attributes[:'lists']).is_a?(Array)
-          self.lists = value
-        end
-      end
-
-      if attributes.has_key?(:'logo_url')
-        self.logo_url = attributes[:'logo_url']
+      if attributes.has_key?(:'id')
+        self.id = attributes[:'id']
       end
 
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'supports_add_tags')
-        self.supports_add_tags = attributes[:'supports_add_tags']
-      end
-
-      if attributes.has_key?(:'supports_list_subscribe')
-        self.supports_list_subscribe = attributes[:'supports_list_subscribe']
-      end
-
-      if attributes.has_key?(:'supports_list_unsubscribe')
-        self.supports_list_unsubscribe = attributes[:'supports_list_unsubscribe']
-      end
-
-      if attributes.has_key?(:'supports_remove_tags')
-        self.supports_remove_tags = attributes[:'supports_remove_tags']
-      end
-
-      if attributes.has_key?(:'tag_count')
-        self.tag_count = attributes[:'tag_count']
-      end
-
-      if attributes.has_key?(:'tags')
-        if (value = attributes[:'tags']).is_a?(Array)
-          self.tags = value
-        end
       end
     end
 
@@ -156,17 +71,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          connect_url == o.connect_url &&
-          list_count == o.list_count &&
-          lists == o.lists &&
-          logo_url == o.logo_url &&
-          name == o.name &&
-          supports_add_tags == o.supports_add_tags &&
-          supports_list_subscribe == o.supports_list_subscribe &&
-          supports_list_unsubscribe == o.supports_list_unsubscribe &&
-          supports_remove_tags == o.supports_remove_tags &&
-          tag_count == o.tag_count &&
-          tags == o.tags
+          id == o.id &&
+          name == o.name
     end
 
     # @see the `==` method
@@ -178,7 +84,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [connect_url, list_count, lists, logo_url, name, supports_add_tags, supports_list_subscribe, supports_list_unsubscribe, supports_remove_tags, tag_count, tags].hash
+      [id, name].hash
     end
 
     # Builds the object from hash
