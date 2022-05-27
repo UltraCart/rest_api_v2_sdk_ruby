@@ -32,6 +32,67 @@ module UltracartClient
       UltracartClient::CustomerApi.new(api_client)
     end
 
+    # Adds store credit to a customer
+    # Adds store credit to a customer 
+    # @param customer_profile_oid The customer oid to credit.
+    # @param store_credit_request Store credit to add
+    # @param [Hash] opts the optional parameters
+    # @return [BaseResponse]
+    def add_customer_store_credit(customer_profile_oid, store_credit_request, opts = {})
+      data, _status_code, _headers = add_customer_store_credit_with_http_info(customer_profile_oid, store_credit_request, opts)
+      data
+    end
+
+    # Adds store credit to a customer
+    # Adds store credit to a customer 
+    # @param customer_profile_oid The customer oid to credit.
+    # @param store_credit_request Store credit to add
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BaseResponse, Fixnum, Hash)>] BaseResponse data, response status code and response headers
+    def add_customer_store_credit_with_http_info(customer_profile_oid, store_credit_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.add_customer_store_credit ...'
+      end
+      # verify the required parameter 'customer_profile_oid' is set
+      if @api_client.config.client_side_validation && customer_profile_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.add_customer_store_credit"
+      end
+      # verify the required parameter 'store_credit_request' is set
+      if @api_client.config.client_side_validation && store_credit_request.nil?
+        fail ArgumentError, "Missing the required parameter 'store_credit_request' when calling CustomerApi.add_customer_store_credit"
+      end
+      # resource path
+      local_var_path = '/customer/customers/{customer_profile_oid}/store_credit'.sub('{' + 'customer_profile_oid' + '}', customer_profile_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(store_credit_request)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'BaseResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#add_customer_store_credit\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Updates the cashback balance for a customer by updating the internal gift certificate used, creating the gift certificate if needed.
     # Updates the cashback balance for a customer by updating the internal gift certificate used, creating the gift certificate if needed. 
     # @param customer_profile_oid The customer profile oid
@@ -358,6 +419,61 @@ module UltracartClient
         :return_type => 'EmailListsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CustomerApi#get_customer_email_lists\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Retrieve the customer store credit accumulated through loyalty programs
+    # Retrieve the customer store credit accumulated through loyalty programs 
+    # @param customer_profile_oid The customer oid to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @return [CustomerStoreCreditResponse]
+    def get_customer_store_credit(customer_profile_oid, opts = {})
+      data, _status_code, _headers = get_customer_store_credit_with_http_info(customer_profile_oid, opts)
+      data
+    end
+
+    # Retrieve the customer store credit accumulated through loyalty programs
+    # Retrieve the customer store credit accumulated through loyalty programs 
+    # @param customer_profile_oid The customer oid to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomerStoreCreditResponse, Fixnum, Hash)>] CustomerStoreCreditResponse data, response status code and response headers
+    def get_customer_store_credit_with_http_info(customer_profile_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.get_customer_store_credit ...'
+      end
+      # verify the required parameter 'customer_profile_oid' is set
+      if @api_client.config.client_side_validation && customer_profile_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.get_customer_store_credit"
+      end
+      # resource path
+      local_var_path = '/customer/customers/{customer_profile_oid}/store_credit'.sub('{' + 'customer_profile_oid' + '}', customer_profile_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CustomerStoreCreditResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#get_customer_store_credit\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

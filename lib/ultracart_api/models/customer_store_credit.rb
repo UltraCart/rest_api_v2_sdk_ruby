@@ -13,66 +13,40 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class CustomerEditorValues
-    # affiliates
-    attr_accessor :affiliates
+  class CustomerStoreCredit
+    attr_accessor :available
 
-    # card_exp_months
-    attr_accessor :card_exp_months
+    attr_accessor :expiring
 
-    # card_exp_years
-    attr_accessor :card_exp_years
+    attr_accessor :future_ledgers
 
-    # card_types
-    attr_accessor :card_types
+    attr_accessor :past_ledgers
 
-    # countries
-    attr_accessor :countries
+    attr_accessor :total
 
-    # loyalty_program_type
-    attr_accessor :loyalty_program_type
-
-    # qb_classes
-    attr_accessor :qb_classes
-
-    # sales_rep_codes
-    attr_accessor :sales_rep_codes
-
-    # state_optional_countries
-    attr_accessor :state_optional_countries
-
-    # terms
-    attr_accessor :terms
+    attr_accessor :vesting
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'affiliates' => :'affiliates',
-        :'card_exp_months' => :'card_exp_months',
-        :'card_exp_years' => :'card_exp_years',
-        :'card_types' => :'card_types',
-        :'countries' => :'countries',
-        :'loyalty_program_type' => :'loyalty_program_type',
-        :'qb_classes' => :'qb_classes',
-        :'sales_rep_codes' => :'sales_rep_codes',
-        :'state_optional_countries' => :'state_optional_countries',
-        :'terms' => :'terms'
+        :'available' => :'available',
+        :'expiring' => :'expiring',
+        :'future_ledgers' => :'futureLedgers',
+        :'past_ledgers' => :'pastLedgers',
+        :'total' => :'total',
+        :'vesting' => :'vesting'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'affiliates' => :'Array<CustomerAffiliate>',
-        :'card_exp_months' => :'Array<String>',
-        :'card_exp_years' => :'Array<String>',
-        :'card_types' => :'Array<String>',
-        :'countries' => :'Array<Country>',
-        :'loyalty_program_type' => :'String',
-        :'qb_classes' => :'Array<String>',
-        :'sales_rep_codes' => :'Array<String>',
-        :'state_optional_countries' => :'Array<Country>',
-        :'terms' => :'Array<String>'
+        :'available' => :'Float',
+        :'expiring' => :'Float',
+        :'future_ledgers' => :'Array<CustomerStoreCreditLedgerEntry>',
+        :'past_ledgers' => :'Array<CustomerStoreCreditLedgerEntry>',
+        :'total' => :'Float',
+        :'vesting' => :'Float'
       }
     end
 
@@ -84,62 +58,32 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'affiliates')
-        if (value = attributes[:'affiliates']).is_a?(Array)
-          self.affiliates = value
+      if attributes.has_key?(:'available')
+        self.available = attributes[:'available']
+      end
+
+      if attributes.has_key?(:'expiring')
+        self.expiring = attributes[:'expiring']
+      end
+
+      if attributes.has_key?(:'futureLedgers')
+        if (value = attributes[:'futureLedgers']).is_a?(Array)
+          self.future_ledgers = value
         end
       end
 
-      if attributes.has_key?(:'card_exp_months')
-        if (value = attributes[:'card_exp_months']).is_a?(Array)
-          self.card_exp_months = value
+      if attributes.has_key?(:'pastLedgers')
+        if (value = attributes[:'pastLedgers']).is_a?(Array)
+          self.past_ledgers = value
         end
       end
 
-      if attributes.has_key?(:'card_exp_years')
-        if (value = attributes[:'card_exp_years']).is_a?(Array)
-          self.card_exp_years = value
-        end
+      if attributes.has_key?(:'total')
+        self.total = attributes[:'total']
       end
 
-      if attributes.has_key?(:'card_types')
-        if (value = attributes[:'card_types']).is_a?(Array)
-          self.card_types = value
-        end
-      end
-
-      if attributes.has_key?(:'countries')
-        if (value = attributes[:'countries']).is_a?(Array)
-          self.countries = value
-        end
-      end
-
-      if attributes.has_key?(:'loyalty_program_type')
-        self.loyalty_program_type = attributes[:'loyalty_program_type']
-      end
-
-      if attributes.has_key?(:'qb_classes')
-        if (value = attributes[:'qb_classes']).is_a?(Array)
-          self.qb_classes = value
-        end
-      end
-
-      if attributes.has_key?(:'sales_rep_codes')
-        if (value = attributes[:'sales_rep_codes']).is_a?(Array)
-          self.sales_rep_codes = value
-        end
-      end
-
-      if attributes.has_key?(:'state_optional_countries')
-        if (value = attributes[:'state_optional_countries']).is_a?(Array)
-          self.state_optional_countries = value
-        end
-      end
-
-      if attributes.has_key?(:'terms')
-        if (value = attributes[:'terms']).is_a?(Array)
-          self.terms = value
-        end
+      if attributes.has_key?(:'vesting')
+        self.vesting = attributes[:'vesting']
       end
     end
 
@@ -161,16 +105,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          affiliates == o.affiliates &&
-          card_exp_months == o.card_exp_months &&
-          card_exp_years == o.card_exp_years &&
-          card_types == o.card_types &&
-          countries == o.countries &&
-          loyalty_program_type == o.loyalty_program_type &&
-          qb_classes == o.qb_classes &&
-          sales_rep_codes == o.sales_rep_codes &&
-          state_optional_countries == o.state_optional_countries &&
-          terms == o.terms
+          available == o.available &&
+          expiring == o.expiring &&
+          future_ledgers == o.future_ledgers &&
+          past_ledgers == o.past_ledgers &&
+          total == o.total &&
+          vesting == o.vesting
     end
 
     # @see the `==` method
@@ -182,7 +122,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affiliates, card_exp_months, card_exp_years, card_types, countries, loyalty_program_type, qb_classes, sales_rep_codes, state_optional_countries, terms].hash
+      [available, expiring, future_ledgers, past_ledgers, total, vesting].hash
     end
 
     # Builds the object from hash
