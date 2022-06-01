@@ -14,16 +14,22 @@ require 'date'
 
 module UltracartClient
   class CustomerStoreCredit
+    # Available store credit which is defined as unused and vested
     attr_accessor :available
 
+    # Amount of store credit expiring within 30 days
     attr_accessor :expiring
 
+    # Array of future ledger entries including expiring entries
     attr_accessor :future_ledgers
 
+    # Array of past ledger entries including accrual, usage, and expiring entries
     attr_accessor :past_ledgers
 
+    # Total lifetime store credit for this customer.
     attr_accessor :total
 
+    # Amount of store credit vesting
     attr_accessor :vesting
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -31,8 +37,8 @@ module UltracartClient
       {
         :'available' => :'available',
         :'expiring' => :'expiring',
-        :'future_ledgers' => :'futureLedgers',
-        :'past_ledgers' => :'pastLedgers',
+        :'future_ledgers' => :'future_ledgers',
+        :'past_ledgers' => :'past_ledgers',
         :'total' => :'total',
         :'vesting' => :'vesting'
       }
@@ -66,14 +72,14 @@ module UltracartClient
         self.expiring = attributes[:'expiring']
       end
 
-      if attributes.has_key?(:'futureLedgers')
-        if (value = attributes[:'futureLedgers']).is_a?(Array)
+      if attributes.has_key?(:'future_ledgers')
+        if (value = attributes[:'future_ledgers']).is_a?(Array)
           self.future_ledgers = value
         end
       end
 
-      if attributes.has_key?(:'pastLedgers')
-        if (value = attributes[:'pastLedgers']).is_a?(Array)
+      if attributes.has_key?(:'past_ledgers')
+        if (value = attributes[:'past_ledgers']).is_a?(Array)
           self.past_ledgers = value
         end
       end
