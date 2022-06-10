@@ -56,6 +56,18 @@ module UltracartClient
     # Storefront oid
     attr_accessor :storefront_oid
 
+    # Third party provider tags to add when a customer joins the segment.
+    attr_accessor :thirdparty_join_add_tags
+
+    # Third party provider tags to remove when a customer joins the segment.
+    attr_accessor :thirdparty_join_remove_tags
+
+    # Third party provider tags to add when a customer leaves the segment.
+    attr_accessor :thirdparty_leave_add_tags
+
+    # Third party provider tags to remove when a customer leaves the segment.
+    attr_accessor :thirdparty_leave_remove_tags
+
     # List id of third party provider to sync with.
     attr_accessor :thirdparty_list_id
 
@@ -82,6 +94,10 @@ module UltracartClient
         :'rank_json' => :'rank_json',
         :'rebuild_required' => :'rebuild_required',
         :'storefront_oid' => :'storefront_oid',
+        :'thirdparty_join_add_tags' => :'thirdparty_join_add_tags',
+        :'thirdparty_join_remove_tags' => :'thirdparty_join_remove_tags',
+        :'thirdparty_leave_add_tags' => :'thirdparty_leave_add_tags',
+        :'thirdparty_leave_remove_tags' => :'thirdparty_leave_remove_tags',
         :'thirdparty_list_id' => :'thirdparty_list_id',
         :'thirdparty_provider_name' => :'thirdparty_provider_name',
         :'used_by' => :'used_by'
@@ -105,6 +121,10 @@ module UltracartClient
         :'rank_json' => :'String',
         :'rebuild_required' => :'BOOLEAN',
         :'storefront_oid' => :'Integer',
+        :'thirdparty_join_add_tags' => :'Array<String>',
+        :'thirdparty_join_remove_tags' => :'Array<String>',
+        :'thirdparty_leave_add_tags' => :'Array<String>',
+        :'thirdparty_leave_remove_tags' => :'Array<String>',
         :'thirdparty_list_id' => :'String',
         :'thirdparty_provider_name' => :'String',
         :'used_by' => :'Array<EmailListSegmentUsedBy>'
@@ -175,6 +195,30 @@ module UltracartClient
         self.storefront_oid = attributes[:'storefront_oid']
       end
 
+      if attributes.has_key?(:'thirdparty_join_add_tags')
+        if (value = attributes[:'thirdparty_join_add_tags']).is_a?(Array)
+          self.thirdparty_join_add_tags = value
+        end
+      end
+
+      if attributes.has_key?(:'thirdparty_join_remove_tags')
+        if (value = attributes[:'thirdparty_join_remove_tags']).is_a?(Array)
+          self.thirdparty_join_remove_tags = value
+        end
+      end
+
+      if attributes.has_key?(:'thirdparty_leave_add_tags')
+        if (value = attributes[:'thirdparty_leave_add_tags']).is_a?(Array)
+          self.thirdparty_leave_add_tags = value
+        end
+      end
+
+      if attributes.has_key?(:'thirdparty_leave_remove_tags')
+        if (value = attributes[:'thirdparty_leave_remove_tags']).is_a?(Array)
+          self.thirdparty_leave_remove_tags = value
+        end
+      end
+
       if attributes.has_key?(:'thirdparty_list_id')
         self.thirdparty_list_id = attributes[:'thirdparty_list_id']
       end
@@ -237,6 +281,10 @@ module UltracartClient
           rank_json == o.rank_json &&
           rebuild_required == o.rebuild_required &&
           storefront_oid == o.storefront_oid &&
+          thirdparty_join_add_tags == o.thirdparty_join_add_tags &&
+          thirdparty_join_remove_tags == o.thirdparty_join_remove_tags &&
+          thirdparty_leave_add_tags == o.thirdparty_leave_add_tags &&
+          thirdparty_leave_remove_tags == o.thirdparty_leave_remove_tags &&
           thirdparty_list_id == o.thirdparty_list_id &&
           thirdparty_provider_name == o.thirdparty_provider_name &&
           used_by == o.used_by
@@ -251,7 +299,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allow_csv_download, allow_facebook_audiences, created_dts, deleted, email_segment_uuid, esp_list_segment_folder_uuid, facebook_custom_audience, filter_profile_equation_json, member_count, merchant_id, name, rank_json, rebuild_required, storefront_oid, thirdparty_list_id, thirdparty_provider_name, used_by].hash
+      [allow_csv_download, allow_facebook_audiences, created_dts, deleted, email_segment_uuid, esp_list_segment_folder_uuid, facebook_custom_audience, filter_profile_equation_json, member_count, merchant_id, name, rank_json, rebuild_required, storefront_oid, thirdparty_join_add_tags, thirdparty_join_remove_tags, thirdparty_leave_add_tags, thirdparty_leave_remove_tags, thirdparty_list_id, thirdparty_provider_name, used_by].hash
     end
 
     # Builds the object from hash
