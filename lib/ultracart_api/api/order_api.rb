@@ -742,18 +742,6 @@ module UltracartClient
     # @option opts [String] :current_stage Current Stage
     # @option opts [String] :channel_partner_code Channel Partner Code
     # @option opts [String] :channel_partner_order_id Channel Partner Order ID
-    # @option opts [Integer] :customer_profile_oid 
-    # @option opts [String] :refund_date_begin 
-    # @option opts [String] :refund_date_end 
-    # @option opts [String] :custom_field_1 
-    # @option opts [String] :custom_field_2 
-    # @option opts [String] :custom_field_3 
-    # @option opts [String] :custom_field_4 
-    # @option opts [String] :custom_field_5 
-    # @option opts [String] :custom_field_6 
-    # @option opts [String] :custom_field_7 
-    # @option opts [String] :ship_on_date_begin 
-    # @option opts [String] :ship_on_date_end 
     # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Maximum 200) (default to 100)
     # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
     # @option opts [String] :_sort The sort order of the orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
@@ -794,18 +782,6 @@ module UltracartClient
     # @option opts [String] :current_stage Current Stage
     # @option opts [String] :channel_partner_code Channel Partner Code
     # @option opts [String] :channel_partner_order_id Channel Partner Order ID
-    # @option opts [Integer] :customer_profile_oid 
-    # @option opts [String] :refund_date_begin 
-    # @option opts [String] :refund_date_end 
-    # @option opts [String] :custom_field_1 
-    # @option opts [String] :custom_field_2 
-    # @option opts [String] :custom_field_3 
-    # @option opts [String] :custom_field_4 
-    # @option opts [String] :custom_field_5 
-    # @option opts [String] :custom_field_6 
-    # @option opts [String] :custom_field_7 
-    # @option opts [String] :ship_on_date_begin 
-    # @option opts [String] :ship_on_date_end 
     # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Maximum 200)
     # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
     # @option opts [String] :_sort The sort order of the orders.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
@@ -847,18 +823,6 @@ module UltracartClient
       query_params[:'current_stage'] = opts[:'current_stage'] if !opts[:'current_stage'].nil?
       query_params[:'channel_partner_code'] = opts[:'channel_partner_code'] if !opts[:'channel_partner_code'].nil?
       query_params[:'channel_partner_order_id'] = opts[:'channel_partner_order_id'] if !opts[:'channel_partner_order_id'].nil?
-      query_params[:'customer_profile_oid'] = opts[:'customer_profile_oid'] if !opts[:'customer_profile_oid'].nil?
-      query_params[:'Refund Date Begin'] = opts[:'refund_date_begin'] if !opts[:'refund_date_begin'].nil?
-      query_params[:'Refund Date End'] = opts[:'refund_date_end'] if !opts[:'refund_date_end'].nil?
-      query_params[:'Custom Field 1'] = opts[:'custom_field_1'] if !opts[:'custom_field_1'].nil?
-      query_params[:'Custom Field 2'] = opts[:'custom_field_2'] if !opts[:'custom_field_2'].nil?
-      query_params[:'Custom Field 3'] = opts[:'custom_field_3'] if !opts[:'custom_field_3'].nil?
-      query_params[:'Custom Field 4'] = opts[:'custom_field_4'] if !opts[:'custom_field_4'].nil?
-      query_params[:'Custom Field 5'] = opts[:'custom_field_5'] if !opts[:'custom_field_5'].nil?
-      query_params[:'Custom Field 6'] = opts[:'custom_field_6'] if !opts[:'custom_field_6'].nil?
-      query_params[:'Custom Field 7'] = opts[:'custom_field_7'] if !opts[:'custom_field_7'].nil?
-      query_params[:'ship_on_date_begin'] = opts[:'ship_on_date_begin'] if !opts[:'ship_on_date_begin'].nil?
-      query_params[:'ship_on_date_end'] = opts[:'ship_on_date_end'] if !opts[:'ship_on_date_end'].nil?
       query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
       query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
       query_params[:'_sort'] = opts[:'_sort'] if !opts[:'_sort'].nil?

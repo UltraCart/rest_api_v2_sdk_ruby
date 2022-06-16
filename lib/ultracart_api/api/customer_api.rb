@@ -857,6 +857,59 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Searches for all matching values (using POST)
+    # @param lookup_request LookupRequest
+    # @param [Hash] opts the optional parameters
+    # @return [LookupResponse]
+    def search(lookup_request, opts = {})
+      data, _status_code, _headers = search_with_http_info(lookup_request, opts)
+      data
+    end
+
+    # Searches for all matching values (using POST)
+    # @param lookup_request LookupRequest
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LookupResponse, Fixnum, Hash)>] LookupResponse data, response status code and response headers
+    def search_with_http_info(lookup_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.search ...'
+      end
+      # verify the required parameter 'lookup_request' is set
+      if @api_client.config.client_side_validation && lookup_request.nil?
+        fail ArgumentError, "Missing the required parameter 'lookup_request' when calling CustomerApi.search"
+      end
+      # resource path
+      local_var_path = '/customer/search'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(lookup_request)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'LookupResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#search\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Update a customer
     # Update a customer on the UltraCart account. 
     # @param customer Customer to update
