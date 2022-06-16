@@ -13,68 +13,20 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class EmailDomain
-    attr_accessor :comment
-
-    attr_accessor :dkim
-
-    attr_accessor :dkim_status
-
-    attr_accessor :domain
-
-    attr_accessor :esp_domain_uuid
-
-    attr_accessor :identity_status
-
-    attr_accessor :mailgun
-
-    attr_accessor :merchant_id
-
-    attr_accessor :provider
-
-    attr_accessor :spf
-
-    attr_accessor :start_dkim_dts
-
-    attr_accessor :start_identity_dts
-
-    attr_accessor :verification
+  class Mailgun
+    attr_accessor :api_key
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'comment' => :'comment',
-        :'dkim' => :'dkim',
-        :'dkim_status' => :'dkim_status',
-        :'domain' => :'domain',
-        :'esp_domain_uuid' => :'esp_domain_uuid',
-        :'identity_status' => :'identity_status',
-        :'mailgun' => :'mailgun',
-        :'merchant_id' => :'merchant_id',
-        :'provider' => :'provider',
-        :'spf' => :'spf',
-        :'start_dkim_dts' => :'start_dkim_dts',
-        :'start_identity_dts' => :'start_identity_dts',
-        :'verification' => :'verification'
+        :'api_key' => :'api_key'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'comment' => :'String',
-        :'dkim' => :'Array<VerificationRecord>',
-        :'dkim_status' => :'String',
-        :'domain' => :'String',
-        :'esp_domain_uuid' => :'String',
-        :'identity_status' => :'String',
-        :'mailgun' => :'Mailgun',
-        :'merchant_id' => :'String',
-        :'provider' => :'String',
-        :'spf' => :'VerificationRecord',
-        :'start_dkim_dts' => :'String',
-        :'start_identity_dts' => :'String',
-        :'verification' => :'VerificationRecord'
+        :'api_key' => :'String'
       }
     end
 
@@ -86,58 +38,8 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'comment')
-        self.comment = attributes[:'comment']
-      end
-
-      if attributes.has_key?(:'dkim')
-        if (value = attributes[:'dkim']).is_a?(Array)
-          self.dkim = value
-        end
-      end
-
-      if attributes.has_key?(:'dkim_status')
-        self.dkim_status = attributes[:'dkim_status']
-      end
-
-      if attributes.has_key?(:'domain')
-        self.domain = attributes[:'domain']
-      end
-
-      if attributes.has_key?(:'esp_domain_uuid')
-        self.esp_domain_uuid = attributes[:'esp_domain_uuid']
-      end
-
-      if attributes.has_key?(:'identity_status')
-        self.identity_status = attributes[:'identity_status']
-      end
-
-      if attributes.has_key?(:'mailgun')
-        self.mailgun = attributes[:'mailgun']
-      end
-
-      if attributes.has_key?(:'merchant_id')
-        self.merchant_id = attributes[:'merchant_id']
-      end
-
-      if attributes.has_key?(:'provider')
-        self.provider = attributes[:'provider']
-      end
-
-      if attributes.has_key?(:'spf')
-        self.spf = attributes[:'spf']
-      end
-
-      if attributes.has_key?(:'start_dkim_dts')
-        self.start_dkim_dts = attributes[:'start_dkim_dts']
-      end
-
-      if attributes.has_key?(:'start_identity_dts')
-        self.start_identity_dts = attributes[:'start_identity_dts']
-      end
-
-      if attributes.has_key?(:'verification')
-        self.verification = attributes[:'verification']
+      if attributes.has_key?(:'api_key')
+        self.api_key = attributes[:'api_key']
       end
     end
 
@@ -159,19 +61,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          comment == o.comment &&
-          dkim == o.dkim &&
-          dkim_status == o.dkim_status &&
-          domain == o.domain &&
-          esp_domain_uuid == o.esp_domain_uuid &&
-          identity_status == o.identity_status &&
-          mailgun == o.mailgun &&
-          merchant_id == o.merchant_id &&
-          provider == o.provider &&
-          spf == o.spf &&
-          start_dkim_dts == o.start_dkim_dts &&
-          start_identity_dts == o.start_identity_dts &&
-          verification == o.verification
+          api_key == o.api_key
     end
 
     # @see the `==` method
@@ -183,7 +73,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [comment, dkim, dkim_status, domain, esp_domain_uuid, identity_status, mailgun, merchant_id, provider, spf, start_dkim_dts, start_identity_dts, verification].hash
+      [api_key].hash
     end
 
     # Builds the object from hash

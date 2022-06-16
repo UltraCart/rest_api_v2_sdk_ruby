@@ -563,6 +563,59 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Create email sending domain for various providers
+    # @param email_domain EmailDomain
+    # @param [Hash] opts the optional parameters
+    # @return [EmailSendingDomainResponse]
+    def create_email_sending_domain2(email_domain, opts = {})
+      data, _status_code, _headers = create_email_sending_domain2_with_http_info(email_domain, opts)
+      data
+    end
+
+    # Create email sending domain for various providers
+    # @param email_domain EmailDomain
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailSendingDomainResponse, Fixnum, Hash)>] EmailSendingDomainResponse data, response status code and response headers
+    def create_email_sending_domain2_with_http_info(email_domain, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.create_email_sending_domain2 ...'
+      end
+      # verify the required parameter 'email_domain' is set
+      if @api_client.config.client_side_validation && email_domain.nil?
+        fail ArgumentError, "Missing the required parameter 'email_domain' when calling StorefrontApi.create_email_sending_domain2"
+      end
+      # resource path
+      local_var_path = '/storefront/email/sending_domains'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(email_domain)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailSendingDomainResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#create_email_sending_domain2\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Create Twilio account
     # @param twilio Twilio
     # @param [Hash] opts the optional parameters
@@ -8933,6 +8986,65 @@ module UltracartClient
         :return_type => 'EmailSegmentResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#update_email_segment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update email sending domain
+    # @param domain 
+    # @param email_domain EmailDomain
+    # @param [Hash] opts the optional parameters
+    # @return [EmailSendingDomainResponse]
+    def update_email_sending_domain(domain, email_domain, opts = {})
+      data, _status_code, _headers = update_email_sending_domain_with_http_info(domain, email_domain, opts)
+      data
+    end
+
+    # Update email sending domain
+    # @param domain 
+    # @param email_domain EmailDomain
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailSendingDomainResponse, Fixnum, Hash)>] EmailSendingDomainResponse data, response status code and response headers
+    def update_email_sending_domain_with_http_info(domain, email_domain, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.update_email_sending_domain ...'
+      end
+      # verify the required parameter 'domain' is set
+      if @api_client.config.client_side_validation && domain.nil?
+        fail ArgumentError, "Missing the required parameter 'domain' when calling StorefrontApi.update_email_sending_domain"
+      end
+      # verify the required parameter 'email_domain' is set
+      if @api_client.config.client_side_validation && email_domain.nil?
+        fail ArgumentError, "Missing the required parameter 'email_domain' when calling StorefrontApi.update_email_sending_domain"
+      end
+      # resource path
+      local_var_path = '/storefront/email/sending_domains/{domain}'.sub('{' + 'domain' + '}', domain.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(email_domain)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailSendingDomainResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#update_email_sending_domain\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
