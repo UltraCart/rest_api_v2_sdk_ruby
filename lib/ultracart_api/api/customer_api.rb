@@ -861,8 +861,8 @@ module UltracartClient
     # @param lookup_request LookupRequest
     # @param [Hash] opts the optional parameters
     # @return [LookupResponse]
-    def search(lookup_request, opts = {})
-      data, _status_code, _headers = search_with_http_info(lookup_request, opts)
+    def search_customer_profile_values(lookup_request, opts = {})
+      data, _status_code, _headers = search_customer_profile_values_with_http_info(lookup_request, opts)
       data
     end
 
@@ -870,13 +870,13 @@ module UltracartClient
     # @param lookup_request LookupRequest
     # @param [Hash] opts the optional parameters
     # @return [Array<(LookupResponse, Fixnum, Hash)>] LookupResponse data, response status code and response headers
-    def search_with_http_info(lookup_request, opts = {})
+    def search_customer_profile_values_with_http_info(lookup_request, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: CustomerApi.search ...'
+        @api_client.config.logger.debug 'Calling API: CustomerApi.search_customer_profile_values ...'
       end
       # verify the required parameter 'lookup_request' is set
       if @api_client.config.client_side_validation && lookup_request.nil?
-        fail ArgumentError, "Missing the required parameter 'lookup_request' when calling CustomerApi.search"
+        fail ArgumentError, "Missing the required parameter 'lookup_request' when calling CustomerApi.search_customer_profile_values"
       end
       # resource path
       local_var_path = '/customer/search'
@@ -906,7 +906,7 @@ module UltracartClient
         :auth_names => auth_names,
         :return_type => 'LookupResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CustomerApi#search\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: CustomerApi#search_customer_profile_values\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
