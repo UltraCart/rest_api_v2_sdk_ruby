@@ -1,10 +1,22 @@
 # UltracartClient::CouponTierQuantityPercent
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**discount_percent** | **Float** | The percent of discount per item. | [optional] 
-**item_quantity** | **Integer** | The quantity of item purchased (in units) | [optional] 
-**quickbooks_code** | **String** | Quickbooks accounting code. | [optional] 
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **discount_percent** | **Float** | The percent of discount per item. | [optional] |
+| **item_quantity** | **Integer** | The quantity of item purchased (in units) | [optional] |
+| **quickbooks_code** | **String** | Quickbooks accounting code. | [optional] |
+
+## Example
+
+```ruby
+require 'ultracart_api'
+
+instance = UltracartClient::CouponTierQuantityPercent.new(
+  discount_percent: null,
+  item_quantity: null,
+  quickbooks_code: null
+)
+```
 

@@ -2,64 +2,88 @@
 
 All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**add_customer_store_credit**](CustomerApi.md#add_customer_store_credit) | **POST** /customer/customers/{customer_profile_oid}/store_credit | Adds store credit to a customer
-[**adjust_internal_certificate**](CustomerApi.md#adjust_internal_certificate) | **POST** /customer/customers/{customer_profile_oid}/adjust_cashback_balance | Updates the cashback balance for a customer by updating the internal gift certificate used, creating the gift certificate if needed.
-[**delete_customer**](CustomerApi.md#delete_customer) | **DELETE** /customer/customers/{customer_profile_oid} | Delete a customer
-[**get_customer**](CustomerApi.md#get_customer) | **GET** /customer/customers/{customer_profile_oid} | Retrieve a customer
-[**get_customer_by_email**](CustomerApi.md#get_customer_by_email) | **GET** /customer/customers/by_email/{email} | Retrieve a customer by Email
-[**get_customer_editor_values**](CustomerApi.md#get_customer_editor_values) | **GET** /customer/editor_values | Retrieve values needed for a customer profile editor
-[**get_customer_email_lists**](CustomerApi.md#get_customer_email_lists) | **GET** /customer/email_lists | Retrieve all email lists across all storefronts
-[**get_customer_store_credit**](CustomerApi.md#get_customer_store_credit) | **GET** /customer/customers/{customer_profile_oid}/store_credit | Retrieve the customer store credit accumulated through loyalty programs
-[**get_customers**](CustomerApi.md#get_customers) | **GET** /customer/customers | Retrieve customers
-[**get_customers_by_query**](CustomerApi.md#get_customers_by_query) | **POST** /customer/customers/query | Retrieve customers by query
-[**get_customers_for_data_tables**](CustomerApi.md#get_customers_for_data_tables) | **POST** /customer/customers/dataTables | Retrieve customers for DataTables plugin
-[**get_email_verification_token**](CustomerApi.md#get_email_verification_token) | **POST** /customer/customers/email_verify/get_token | Create a token that can be used to verify a customer email address
-[**insert_customer**](CustomerApi.md#insert_customer) | **POST** /customer/customers | Insert a customer
-[**search_customer_profile_values**](CustomerApi.md#search_customer_profile_values) | **POST** /customer/search | Searches for all matching values (using POST)
-[**update_customer**](CustomerApi.md#update_customer) | **PUT** /customer/customers/{customer_profile_oid} | Update a customer
-[**update_customer_email_lists**](CustomerApi.md#update_customer_email_lists) | **POST** /customer/customers/{customer_profile_oid}/email_lists | Update email list subscriptions for a customer
-[**validate_email_verification_token**](CustomerApi.md#validate_email_verification_token) | **POST** /customer/customers/email_verify/validate_token | Validate a token that can be used to verify a customer email address
+| Method | HTTP request | Description |
+| ------ | ------------ | ----------- |
+| [**add_customer_store_credit**](CustomerApi.md#add_customer_store_credit) | **POST** /customer/customers/{customer_profile_oid}/store_credit | Adds store credit to a customer |
+| [**adjust_internal_certificate**](CustomerApi.md#adjust_internal_certificate) | **POST** /customer/customers/{customer_profile_oid}/adjust_cashback_balance | Updates the cashback balance for a customer by updating the internal gift certificate used, creating the gift certificate if needed. |
+| [**delete_customer**](CustomerApi.md#delete_customer) | **DELETE** /customer/customers/{customer_profile_oid} | Delete a customer |
+| [**get_customer**](CustomerApi.md#get_customer) | **GET** /customer/customers/{customer_profile_oid} | Retrieve a customer |
+| [**get_customer_by_email**](CustomerApi.md#get_customer_by_email) | **GET** /customer/customers/by_email/{email} | Retrieve a customer by Email |
+| [**get_customer_editor_values**](CustomerApi.md#get_customer_editor_values) | **GET** /customer/editor_values | Retrieve values needed for a customer profile editor |
+| [**get_customer_email_lists**](CustomerApi.md#get_customer_email_lists) | **GET** /customer/email_lists | Retrieve all email lists across all storefronts |
+| [**get_customer_store_credit**](CustomerApi.md#get_customer_store_credit) | **GET** /customer/customers/{customer_profile_oid}/store_credit | Retrieve the customer store credit accumulated through loyalty programs |
+| [**get_customers**](CustomerApi.md#get_customers) | **GET** /customer/customers | Retrieve customers |
+| [**get_customers_by_query**](CustomerApi.md#get_customers_by_query) | **POST** /customer/customers/query | Retrieve customers by query |
+| [**get_customers_for_data_tables**](CustomerApi.md#get_customers_for_data_tables) | **POST** /customer/customers/dataTables | Retrieve customers for DataTables plugin |
+| [**get_email_verification_token**](CustomerApi.md#get_email_verification_token) | **POST** /customer/customers/email_verify/get_token | Create a token that can be used to verify a customer email address |
+| [**insert_customer**](CustomerApi.md#insert_customer) | **POST** /customer/customers | Insert a customer |
+| [**search_customer_profile_values**](CustomerApi.md#search_customer_profile_values) | **POST** /customer/search | Searches for all matching values (using POST) |
+| [**update_customer**](CustomerApi.md#update_customer) | **PUT** /customer/customers/{customer_profile_oid} | Update a customer |
+| [**update_customer_email_lists**](CustomerApi.md#update_customer_email_lists) | **POST** /customer/customers/{customer_profile_oid}/email_lists | Update email list subscriptions for a customer |
+| [**validate_email_verification_token**](CustomerApi.md#validate_email_verification_token) | **POST** /customer/customers/email_verify/validate_token | Validate a token that can be used to verify a customer email address |
 
 
-# **add_customer_store_credit**
-> BaseResponse add_customer_store_credit(customer_profile_oid, store_credit_request)
+## add_customer_store_credit
+
+> <BaseResponse> add_customer_store_credit(customer_profile_oid, store_credit_request)
 
 Adds store credit to a customer
 
 Adds store credit to a customer 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
-
+api_instance = UltracartClient::CustomerApi.new
 customer_profile_oid = 56 # Integer | The customer oid to credit.
-
 store_credit_request = UltracartClient::CustomerStoreCreditAddRequest.new # CustomerStoreCreditAddRequest | Store credit to add
 
-
 begin
-  #Adds store credit to a customer
+  # Adds store credit to a customer
   result = api_instance.add_customer_store_credit(customer_profile_oid, store_credit_request)
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling CustomerApi->add_customer_store_credit: #{e}"
+  puts "Error when calling CustomerApi->add_customer_store_credit: #{e}"
+end
+```
+
+#### Using the add_customer_store_credit_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<BaseResponse>, Integer, Hash)> add_customer_store_credit_with_http_info(customer_profile_oid, store_credit_request)
+
+```ruby
+begin
+  # Adds store credit to a customer
+  data, status_code, headers = api_instance.add_customer_store_credit_with_http_info(customer_profile_oid, store_credit_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <BaseResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->add_customer_store_credit_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customer_profile_oid** | **Integer**| The customer oid to credit. | 
- **store_credit_request** | [**CustomerStoreCreditAddRequest**](CustomerStoreCreditAddRequest.md)| Store credit to add | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer_profile_oid** | **Integer** | The customer oid to credit. |  |
+| **store_credit_request** | [**CustomerStoreCreditAddRequest**](CustomerStoreCreditAddRequest.md) | Store credit to add |  |
 
 ### Return type
 
@@ -71,48 +95,71 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json; charset=UTF-8
- - **Accept**: application/json
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
 
 
+## adjust_internal_certificate
 
-# **adjust_internal_certificate**
-> AdjustInternalCertificateResponse adjust_internal_certificate(customer_profile_oid, adjust_internal_certificate_request)
+> <AdjustInternalCertificateResponse> adjust_internal_certificate(customer_profile_oid, adjust_internal_certificate_request)
 
 Updates the cashback balance for a customer by updating the internal gift certificate used, creating the gift certificate if needed.
 
 Updates the cashback balance for a customer by updating the internal gift certificate used, creating the gift certificate if needed. 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
-
+api_instance = UltracartClient::CustomerApi.new
 customer_profile_oid = 56 # Integer | The customer profile oid
-
 adjust_internal_certificate_request = UltracartClient::AdjustInternalCertificateRequest.new # AdjustInternalCertificateRequest | adjustInternalCertificateRequest
 
-
 begin
-  #Updates the cashback balance for a customer by updating the internal gift certificate used, creating the gift certificate if needed.
+  # Updates the cashback balance for a customer by updating the internal gift certificate used, creating the gift certificate if needed.
   result = api_instance.adjust_internal_certificate(customer_profile_oid, adjust_internal_certificate_request)
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling CustomerApi->adjust_internal_certificate: #{e}"
+  puts "Error when calling CustomerApi->adjust_internal_certificate: #{e}"
+end
+```
+
+#### Using the adjust_internal_certificate_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdjustInternalCertificateResponse>, Integer, Hash)> adjust_internal_certificate_with_http_info(customer_profile_oid, adjust_internal_certificate_request)
+
+```ruby
+begin
+  # Updates the cashback balance for a customer by updating the internal gift certificate used, creating the gift certificate if needed.
+  data, status_code, headers = api_instance.adjust_internal_certificate_with_http_info(customer_profile_oid, adjust_internal_certificate_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdjustInternalCertificateResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->adjust_internal_certificate_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customer_profile_oid** | **Integer**| The customer profile oid | 
- **adjust_internal_certificate_request** | [**AdjustInternalCertificateRequest**](AdjustInternalCertificateRequest.md)| adjustInternalCertificateRequest | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer_profile_oid** | **Integer** | The customer profile oid |  |
+| **adjust_internal_certificate_request** | [**AdjustInternalCertificateRequest**](AdjustInternalCertificateRequest.md) | adjustInternalCertificateRequest |  |
 
 ### Return type
 
@@ -124,44 +171,68 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json; charset=UTF-8
- - **Accept**: application/json
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
 
 
+## delete_customer
 
-# **delete_customer**
 > delete_customer(customer_profile_oid)
 
 Delete a customer
 
 Delete a customer on the UltraCart account. 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
-
+api_instance = UltracartClient::CustomerApi.new
 customer_profile_oid = 56 # Integer | The customer_profile_oid to delete.
 
-
 begin
-  #Delete a customer
+  # Delete a customer
   api_instance.delete_customer(customer_profile_oid)
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling CustomerApi->delete_customer: #{e}"
+  puts "Error when calling CustomerApi->delete_customer: #{e}"
+end
+```
+
+#### Using the delete_customer_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_customer_with_http_info(customer_profile_oid)
+
+```ruby
+begin
+  # Delete a customer
+  data, status_code, headers = api_instance.delete_customer_with_http_info(customer_profile_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->delete_customer_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customer_profile_oid** | **Integer**| The customer_profile_oid to delete. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer_profile_oid** | **Integer** | The customer_profile_oid to delete. |  |
 
 ### Return type
 
@@ -173,49 +244,73 @@ nil (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json; charset=UTF-8
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_customer
 
-# **get_customer**
-> CustomerResponse get_customer(customer_profile_oid, opts)
+> <CustomerResponse> get_customer(customer_profile_oid, opts)
 
 Retrieve a customer
 
 Retrieves a single customer using the specified customer profile oid. 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
-
+api_instance = UltracartClient::CustomerApi.new
 customer_profile_oid = 56 # Integer | The customer oid to retrieve.
-
-opts = { 
+opts = {
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
-  #Retrieve a customer
+  # Retrieve a customer
   result = api_instance.get_customer(customer_profile_oid, opts)
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling CustomerApi->get_customer: #{e}"
+  puts "Error when calling CustomerApi->get_customer: #{e}"
+end
+```
+
+#### Using the get_customer_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomerResponse>, Integer, Hash)> get_customer_with_http_info(customer_profile_oid, opts)
+
+```ruby
+begin
+  # Retrieve a customer
+  data, status_code, headers = api_instance.get_customer_with_http_info(customer_profile_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomerResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->get_customer_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customer_profile_oid** | **Integer**| The customer oid to retrieve. | 
- **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer_profile_oid** | **Integer** | The customer oid to retrieve. |  |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
 
 ### Return type
 
@@ -227,49 +322,73 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_customer_by_email
 
-# **get_customer_by_email**
-> CustomerResponse get_customer_by_email(email, opts)
+> <CustomerResponse> get_customer_by_email(email, opts)
 
 Retrieve a customer by Email
 
 Retrieves a single customer using the specified customer email address. 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
-
+api_instance = UltracartClient::CustomerApi.new
 email = 'email_example' # String | The email address of the customer to retrieve.
-
-opts = { 
+opts = {
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
-  #Retrieve a customer by Email
+  # Retrieve a customer by Email
   result = api_instance.get_customer_by_email(email, opts)
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling CustomerApi->get_customer_by_email: #{e}"
+  puts "Error when calling CustomerApi->get_customer_by_email: #{e}"
+end
+```
+
+#### Using the get_customer_by_email_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomerResponse>, Integer, Hash)> get_customer_by_email_with_http_info(email, opts)
+
+```ruby
+begin
+  # Retrieve a customer by Email
+  data, status_code, headers = api_instance.get_customer_by_email_with_http_info(email, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomerResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->get_customer_by_email_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **String**| The email address of the customer to retrieve. | 
- **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **email** | **String** | The email address of the customer to retrieve. |  |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
 
 ### Return type
 
@@ -281,39 +400,65 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_customer_editor_values
 
-# **get_customer_editor_values**
-> CustomerEditorValues get_customer_editor_values
+> <CustomerEditorValues> get_customer_editor_values
 
 Retrieve values needed for a customer profile editor
 
 Retrieve values needed for a customer profile editor. 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
-
+api_instance = UltracartClient::CustomerApi.new
 
 begin
-  #Retrieve values needed for a customer profile editor
+  # Retrieve values needed for a customer profile editor
   result = api_instance.get_customer_editor_values
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling CustomerApi->get_customer_editor_values: #{e}"
+  puts "Error when calling CustomerApi->get_customer_editor_values: #{e}"
+end
+```
+
+#### Using the get_customer_editor_values_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomerEditorValues>, Integer, Hash)> get_customer_editor_values_with_http_info
+
+```ruby
+begin
+  # Retrieve values needed for a customer profile editor
+  data, status_code, headers = api_instance.get_customer_editor_values_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomerEditorValues>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->get_customer_editor_values_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -326,39 +471,65 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_customer_email_lists
 
-# **get_customer_email_lists**
-> EmailListsResponse get_customer_email_lists
+> <EmailListsResponse> get_customer_email_lists
 
 Retrieve all email lists across all storefronts
 
 Retrieve all email lists across all storefronts 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
-
+api_instance = UltracartClient::CustomerApi.new
 
 begin
-  #Retrieve all email lists across all storefronts
+  # Retrieve all email lists across all storefronts
   result = api_instance.get_customer_email_lists
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling CustomerApi->get_customer_email_lists: #{e}"
+  puts "Error when calling CustomerApi->get_customer_email_lists: #{e}"
+end
+```
+
+#### Using the get_customer_email_lists_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmailListsResponse>, Integer, Hash)> get_customer_email_lists_with_http_info
+
+```ruby
+begin
+  # Retrieve all email lists across all storefronts
+  data, status_code, headers = api_instance.get_customer_email_lists_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmailListsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->get_customer_email_lists_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -371,45 +542,69 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_customer_store_credit
 
-# **get_customer_store_credit**
-> CustomerStoreCreditResponse get_customer_store_credit(customer_profile_oid)
+> <CustomerStoreCreditResponse> get_customer_store_credit(customer_profile_oid)
 
 Retrieve the customer store credit accumulated through loyalty programs
 
 Retrieve the customer store credit accumulated through loyalty programs 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
-
+api_instance = UltracartClient::CustomerApi.new
 customer_profile_oid = 56 # Integer | The customer oid to retrieve.
 
-
 begin
-  #Retrieve the customer store credit accumulated through loyalty programs
+  # Retrieve the customer store credit accumulated through loyalty programs
   result = api_instance.get_customer_store_credit(customer_profile_oid)
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling CustomerApi->get_customer_store_credit: #{e}"
+  puts "Error when calling CustomerApi->get_customer_store_credit: #{e}"
+end
+```
+
+#### Using the get_customer_store_credit_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomerStoreCreditResponse>, Integer, Hash)> get_customer_store_credit_with_http_info(customer_profile_oid)
+
+```ruby
+begin
+  # Retrieve the customer store credit accumulated through loyalty programs
+  data, status_code, headers = api_instance.get_customer_store_credit_with_http_info(customer_profile_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomerStoreCreditResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->get_customer_store_credit_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customer_profile_oid** | **Integer**| The customer oid to retrieve. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer_profile_oid** | **Integer** | The customer oid to retrieve. |  |
 
 ### Return type
 
@@ -421,29 +616,36 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_customers
 
-# **get_customers**
-> CustomersResponse get_customers(opts)
+> <CustomersResponse> get_customers(opts)
 
 Retrieve customers
 
 Retrieves customers from the account.  If no parameters are specified, all customers will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
-
-opts = { 
+api_instance = UltracartClient::CustomerApi.new
+opts = {
   email: 'email_example', # String | Email
   qb_class: 'qb_class_example', # String | Quickbooks class
   quickbooks_code: 'quickbooks_code_example', # String | Quickbooks code
@@ -471,58 +673,76 @@ opts = {
   shipping_evening_phone: 'shipping_evening_phone_example', # String | Shipping evening phone
   pricing_tier_oid: 56, # Integer | Pricing tier oid
   pricing_tier_name: 'pricing_tier_name_example', # String | Pricing tier name
-  _limit: 100, # Integer | The maximum number of records to return on this one API call. (Max 200)
-  _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
+  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Max 200)
+  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
   _since: '_since_example', # String | Fetch customers that have been created/modified since this date/time.
   _sort: '_sort_example', # String | The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
-  #Retrieve customers
+  # Retrieve customers
   result = api_instance.get_customers(opts)
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling CustomerApi->get_customers: #{e}"
+  puts "Error when calling CustomerApi->get_customers: #{e}"
+end
+```
+
+#### Using the get_customers_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomersResponse>, Integer, Hash)> get_customers_with_http_info(opts)
+
+```ruby
+begin
+  # Retrieve customers
+  data, status_code, headers = api_instance.get_customers_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomersResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->get_customers_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **String**| Email | [optional] 
- **qb_class** | **String**| Quickbooks class | [optional] 
- **quickbooks_code** | **String**| Quickbooks code | [optional] 
- **last_modified_dts_start** | **String**| Last modified date start | [optional] 
- **last_modified_dts_end** | **String**| Last modified date end | [optional] 
- **signup_dts_start** | **String**| Signup date start | [optional] 
- **signup_dts_end** | **String**| Signup date end | [optional] 
- **billing_first_name** | **String**| Billing first name | [optional] 
- **billing_last_name** | **String**| Billing last name | [optional] 
- **billing_company** | **String**| Billing company | [optional] 
- **billing_city** | **String**| Billing city | [optional] 
- **billing_state** | **String**| Billing state | [optional] 
- **billing_postal_code** | **String**| Billing postal code | [optional] 
- **billing_country_code** | **String**| Billing country code | [optional] 
- **billing_day_phone** | **String**| Billing day phone | [optional] 
- **billing_evening_phone** | **String**| Billing evening phone | [optional] 
- **shipping_first_name** | **String**| Shipping first name | [optional] 
- **shipping_last_name** | **String**| Shipping last name | [optional] 
- **shipping_company** | **String**| Shipping company | [optional] 
- **shipping_city** | **String**| Shipping city | [optional] 
- **shipping_state** | **String**| Shipping state | [optional] 
- **shipping_postal_code** | **String**| Shipping postal code | [optional] 
- **shipping_country_code** | **String**| Shipping country code | [optional] 
- **shipping_day_phone** | **String**| Shipping day phone | [optional] 
- **shipping_evening_phone** | **String**| Shipping evening phone | [optional] 
- **pricing_tier_oid** | **Integer**| Pricing tier oid | [optional] 
- **pricing_tier_name** | **String**| Pricing tier name | [optional] 
- **_limit** | **Integer**| The maximum number of records to return on this one API call. (Max 200) | [optional] [default to 100]
- **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] [default to 0]
- **_since** | **String**| Fetch customers that have been created/modified since this date/time. | [optional] 
- **_sort** | **String**| The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] 
- **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **email** | **String** | Email | [optional] |
+| **qb_class** | **String** | Quickbooks class | [optional] |
+| **quickbooks_code** | **String** | Quickbooks code | [optional] |
+| **last_modified_dts_start** | **String** | Last modified date start | [optional] |
+| **last_modified_dts_end** | **String** | Last modified date end | [optional] |
+| **signup_dts_start** | **String** | Signup date start | [optional] |
+| **signup_dts_end** | **String** | Signup date end | [optional] |
+| **billing_first_name** | **String** | Billing first name | [optional] |
+| **billing_last_name** | **String** | Billing last name | [optional] |
+| **billing_company** | **String** | Billing company | [optional] |
+| **billing_city** | **String** | Billing city | [optional] |
+| **billing_state** | **String** | Billing state | [optional] |
+| **billing_postal_code** | **String** | Billing postal code | [optional] |
+| **billing_country_code** | **String** | Billing country code | [optional] |
+| **billing_day_phone** | **String** | Billing day phone | [optional] |
+| **billing_evening_phone** | **String** | Billing evening phone | [optional] |
+| **shipping_first_name** | **String** | Shipping first name | [optional] |
+| **shipping_last_name** | **String** | Shipping last name | [optional] |
+| **shipping_company** | **String** | Shipping company | [optional] |
+| **shipping_city** | **String** | Shipping city | [optional] |
+| **shipping_state** | **String** | Shipping state | [optional] |
+| **shipping_postal_code** | **String** | Shipping postal code | [optional] |
+| **shipping_country_code** | **String** | Shipping country code | [optional] |
+| **shipping_day_phone** | **String** | Shipping day phone | [optional] |
+| **shipping_evening_phone** | **String** | Shipping evening phone | [optional] |
+| **pricing_tier_oid** | **Integer** | Pricing tier oid | [optional] |
+| **pricing_tier_name** | **String** | Pricing tier name | [optional] |
+| **_limit** | **Integer** | The maximum number of records to return on this one API call. (Max 200) | [optional][default to 100] |
+| **_offset** | **Integer** | Pagination of the record set.  Offset is a zero based index. | [optional][default to 0] |
+| **_since** | **String** | Fetch customers that have been created/modified since this date/time. | [optional] |
+| **_sort** | **String** | The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
 
 ### Return type
 
@@ -534,57 +754,81 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_customers_by_query
 
-# **get_customers_by_query**
-> CustomersResponse get_customers_by_query(customer_query, opts)
+> <CustomersResponse> get_customers_by_query(customer_query, opts)
 
 Retrieve customers by query
 
 Retrieves customers from the account.  If no parameters are specified, all customers will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
-
+api_instance = UltracartClient::CustomerApi.new
 customer_query = UltracartClient::CustomerQuery.new # CustomerQuery | Customer query
-
-opts = { 
-  _limit: 100, # Integer | The maximum number of records to return on this one API call. (Max 200)
-  _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
+opts = {
+  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Max 200)
+  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
   _since: '_since_example', # String | Fetch customers that have been created/modified since this date/time.
   _sort: '_sort_example', # String | The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
-  #Retrieve customers by query
+  # Retrieve customers by query
   result = api_instance.get_customers_by_query(customer_query, opts)
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling CustomerApi->get_customers_by_query: #{e}"
+  puts "Error when calling CustomerApi->get_customers_by_query: #{e}"
+end
+```
+
+#### Using the get_customers_by_query_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomersResponse>, Integer, Hash)> get_customers_by_query_with_http_info(customer_query, opts)
+
+```ruby
+begin
+  # Retrieve customers by query
+  data, status_code, headers = api_instance.get_customers_by_query_with_http_info(customer_query, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomersResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->get_customers_by_query_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customer_query** | [**CustomerQuery**](CustomerQuery.md)| Customer query | 
- **_limit** | **Integer**| The maximum number of records to return on this one API call. (Max 200) | [optional] [default to 100]
- **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] [default to 0]
- **_since** | **String**| Fetch customers that have been created/modified since this date/time. | [optional] 
- **_sort** | **String**| The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] 
- **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer_query** | [**CustomerQuery**](CustomerQuery.md) | Customer query |  |
+| **_limit** | **Integer** | The maximum number of records to return on this one API call. (Max 200) | [optional][default to 100] |
+| **_offset** | **Integer** | Pagination of the record set.  Offset is a zero based index. | [optional][default to 0] |
+| **_since** | **String** | Fetch customers that have been created/modified since this date/time. | [optional] |
+| **_sort** | **String** | The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
 
 ### Return type
 
@@ -596,46 +840,71 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## get_customers_for_data_tables
 
-# **get_customers_for_data_tables**
-> DataTablesServerSideResponse get_customers_for_data_tables(opts)
+> <DataTablesServerSideResponse> get_customers_for_data_tables(opts)
 
 Retrieve customers for DataTables plugin
 
 Retrieves customers from the account.  If no searches are specified, all customers will be returned. 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
-
-opts = { 
+api_instance = UltracartClient::CustomerApi.new
+opts = {
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
-  #Retrieve customers for DataTables plugin
+  # Retrieve customers for DataTables plugin
   result = api_instance.get_customers_for_data_tables(opts)
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling CustomerApi->get_customers_for_data_tables: #{e}"
+  puts "Error when calling CustomerApi->get_customers_for_data_tables: #{e}"
+end
+```
+
+#### Using the get_customers_for_data_tables_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DataTablesServerSideResponse>, Integer, Hash)> get_customers_for_data_tables_with_http_info(opts)
+
+```ruby
+begin
+  # Retrieve customers for DataTables plugin
+  data, status_code, headers = api_instance.get_customers_for_data_tables_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DataTablesServerSideResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->get_customers_for_data_tables_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
 
 ### Return type
 
@@ -647,45 +916,69 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_email_verification_token
 
-# **get_email_verification_token**
-> EmailVerifyTokenResponse get_email_verification_token(token_request)
+> <EmailVerifyTokenResponse> get_email_verification_token(token_request)
 
 Create a token that can be used to verify a customer email address
 
 Create a token that can be used to verify a customer email address.  The implementation of how a customer interacts with this token is left to the merchant. 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
-
+api_instance = UltracartClient::CustomerApi.new
 token_request = UltracartClient::EmailVerifyTokenRequest.new # EmailVerifyTokenRequest | Token request
 
-
 begin
-  #Create a token that can be used to verify a customer email address
+  # Create a token that can be used to verify a customer email address
   result = api_instance.get_email_verification_token(token_request)
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling CustomerApi->get_email_verification_token: #{e}"
+  puts "Error when calling CustomerApi->get_email_verification_token: #{e}"
+end
+```
+
+#### Using the get_email_verification_token_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmailVerifyTokenResponse>, Integer, Hash)> get_email_verification_token_with_http_info(token_request)
+
+```ruby
+begin
+  # Create a token that can be used to verify a customer email address
+  data, status_code, headers = api_instance.get_email_verification_token_with_http_info(token_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmailVerifyTokenResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->get_email_verification_token_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **token_request** | [**EmailVerifyTokenRequest**](EmailVerifyTokenRequest.md)| Token request | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **token_request** | [**EmailVerifyTokenRequest**](EmailVerifyTokenRequest.md) | Token request |  |
 
 ### Return type
 
@@ -697,49 +990,73 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## insert_customer
 
-# **insert_customer**
-> CustomerResponse insert_customer(customer, opts)
+> <CustomerResponse> insert_customer(customer, opts)
 
 Insert a customer
 
 Insert a customer on the UltraCart account. 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
-
+api_instance = UltracartClient::CustomerApi.new
 customer = UltracartClient::Customer.new # Customer | Customer to insert
-
-opts = { 
+opts = {
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
-  #Insert a customer
+  # Insert a customer
   result = api_instance.insert_customer(customer, opts)
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling CustomerApi->insert_customer: #{e}"
+  puts "Error when calling CustomerApi->insert_customer: #{e}"
+end
+```
+
+#### Using the insert_customer_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomerResponse>, Integer, Hash)> insert_customer_with_http_info(customer, opts)
+
+```ruby
+begin
+  # Insert a customer
+  data, status_code, headers = api_instance.insert_customer_with_http_info(customer, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomerResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->insert_customer_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customer** | [**Customer**](Customer.md)| Customer to insert | 
- **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer** | [**Customer**](Customer.md) | Customer to insert |  |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
 
 ### Return type
 
@@ -751,43 +1068,72 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json; charset=UTF-8
- - **Accept**: application/json
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
 
 
+## search_customer_profile_values
 
-# **search_customer_profile_values**
-> LookupResponse search_customer_profile_values(lookup_request)
+> <LookupResponse> search_customer_profile_values(lookup_request)
 
 Searches for all matching values (using POST)
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['ultraCartBrowserApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartBrowserApiKey'] = 'Bearer'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
+api_instance = UltracartClient::CustomerApi.new
 lookup_request = UltracartClient::LookupRequest.new # LookupRequest | LookupRequest
 
-
 begin
-  #Searches for all matching values (using POST)
+  # Searches for all matching values (using POST)
   result = api_instance.search_customer_profile_values(lookup_request)
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling CustomerApi->search_customer_profile_values: #{e}"
+  puts "Error when calling CustomerApi->search_customer_profile_values: #{e}"
+end
+```
+
+#### Using the search_customer_profile_values_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LookupResponse>, Integer, Hash)> search_customer_profile_values_with_http_info(lookup_request)
+
+```ruby
+begin
+  # Searches for all matching values (using POST)
+  data, status_code, headers = api_instance.search_customer_profile_values_with_http_info(lookup_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LookupResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->search_customer_profile_values_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **lookup_request** | [**LookupRequest**](LookupRequest.md)| LookupRequest | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lookup_request** | [**LookupRequest**](LookupRequest.md) | LookupRequest |  |
 
 ### Return type
 
@@ -799,52 +1145,75 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## update_customer
 
-# **update_customer**
-> CustomerResponse update_customer(customer, customer_profile_oid, opts)
+> <CustomerResponse> update_customer(customer_profile_oid, customer, opts)
 
 Update a customer
 
 Update a customer on the UltraCart account. 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
-
-customer = UltracartClient::Customer.new # Customer | Customer to update
-
+api_instance = UltracartClient::CustomerApi.new
 customer_profile_oid = 56 # Integer | The customer_profile_oid to update.
-
-opts = { 
+customer = UltracartClient::Customer.new # Customer | Customer to update
+opts = {
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
 begin
-  #Update a customer
-  result = api_instance.update_customer(customer, customer_profile_oid, opts)
+  # Update a customer
+  result = api_instance.update_customer(customer_profile_oid, customer, opts)
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling CustomerApi->update_customer: #{e}"
+  puts "Error when calling CustomerApi->update_customer: #{e}"
+end
+```
+
+#### Using the update_customer_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomerResponse>, Integer, Hash)> update_customer_with_http_info(customer_profile_oid, customer, opts)
+
+```ruby
+begin
+  # Update a customer
+  data, status_code, headers = api_instance.update_customer_with_http_info(customer_profile_oid, customer, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomerResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->update_customer_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customer** | [**Customer**](Customer.md)| Customer to update | 
- **customer_profile_oid** | **Integer**| The customer_profile_oid to update. | 
- **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer_profile_oid** | **Integer** | The customer_profile_oid to update. |  |
+| **customer** | [**Customer**](Customer.md) | Customer to update |  |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
 
 ### Return type
 
@@ -856,48 +1225,71 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json; charset=UTF-8
- - **Accept**: application/json
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
 
 
+## update_customer_email_lists
 
-# **update_customer_email_lists**
-> CustomerEmailListChanges update_customer_email_lists(customer_profile_oid, list_changes)
+> <CustomerEmailListChanges> update_customer_email_lists(customer_profile_oid, list_changes)
 
 Update email list subscriptions for a customer
 
 Update email list subscriptions for a customer 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
-
+api_instance = UltracartClient::CustomerApi.new
 customer_profile_oid = 56 # Integer | The customer profile oid
-
 list_changes = UltracartClient::CustomerEmailListChanges.new # CustomerEmailListChanges | List changes
 
-
 begin
-  #Update email list subscriptions for a customer
+  # Update email list subscriptions for a customer
   result = api_instance.update_customer_email_lists(customer_profile_oid, list_changes)
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling CustomerApi->update_customer_email_lists: #{e}"
+  puts "Error when calling CustomerApi->update_customer_email_lists: #{e}"
+end
+```
+
+#### Using the update_customer_email_lists_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomerEmailListChanges>, Integer, Hash)> update_customer_email_lists_with_http_info(customer_profile_oid, list_changes)
+
+```ruby
+begin
+  # Update email list subscriptions for a customer
+  data, status_code, headers = api_instance.update_customer_email_lists_with_http_info(customer_profile_oid, list_changes)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomerEmailListChanges>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->update_customer_email_lists_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **customer_profile_oid** | **Integer**| The customer profile oid | 
- **list_changes** | [**CustomerEmailListChanges**](CustomerEmailListChanges.md)| List changes | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer_profile_oid** | **Integer** | The customer profile oid |  |
+| **list_changes** | [**CustomerEmailListChanges**](CustomerEmailListChanges.md) | List changes |  |
 
 ### Return type
 
@@ -909,45 +1301,69 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json; charset=UTF-8
- - **Accept**: application/json
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
 
 
+## validate_email_verification_token
 
-# **validate_email_verification_token**
-> EmailVerifyTokenValidateResponse validate_email_verification_token(validation_request)
+> <EmailVerifyTokenValidateResponse> validate_email_verification_token(validation_request)
 
 Validate a token that can be used to verify a customer email address
 
 Validate a token that can be used to verify a customer email address.  The implementation of how a customer interacts with this token is left to the merchant. 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
-
+api_instance = UltracartClient::CustomerApi.new
 validation_request = UltracartClient::EmailVerifyTokenValidateRequest.new # EmailVerifyTokenValidateRequest | Token validation request
 
-
 begin
-  #Validate a token that can be used to verify a customer email address
+  # Validate a token that can be used to verify a customer email address
   result = api_instance.validate_email_verification_token(validation_request)
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling CustomerApi->validate_email_verification_token: #{e}"
+  puts "Error when calling CustomerApi->validate_email_verification_token: #{e}"
+end
+```
+
+#### Using the validate_email_verification_token_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmailVerifyTokenValidateResponse>, Integer, Hash)> validate_email_verification_token_with_http_info(validation_request)
+
+```ruby
+begin
+  # Validate a token that can be used to verify a customer email address
+  data, status_code, headers = api_instance.validate_email_verification_token_with_http_info(validation_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmailVerifyTokenValidateResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->validate_email_verification_token_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **validation_request** | [**EmailVerifyTokenValidateRequest**](EmailVerifyTokenValidateRequest.md)| Token validation request | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **validation_request** | [**EmailVerifyTokenValidateRequest**](EmailVerifyTokenValidateRequest.md) | Token validation request |  |
 
 ### Return type
 
@@ -959,8 +1375,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
+- **Content-Type**: application/json
+- **Accept**: application/json
 

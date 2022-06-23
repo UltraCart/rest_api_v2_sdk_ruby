@@ -1,8 +1,18 @@
 # UltracartClient::SelfConfig
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**tax_billing** | **BOOLEAN** | True if sales tax should be collected based on billing address instead of shipping address | [optional] 
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **tax_billing** | **Boolean** | True if sales tax should be collected based on billing address instead of shipping address | [optional] |
+
+## Example
+
+```ruby
+require 'ultracart_api'
+
+instance = UltracartClient::SelfConfig.new(
+  tax_billing: null
+)
+```
 

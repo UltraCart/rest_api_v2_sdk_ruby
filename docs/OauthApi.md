@@ -2,57 +2,86 @@
 
 All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**oauth_access_token**](OauthApi.md#oauth_access_token) | **POST** /oauth/token | Exchange authorization code for access token.
-[**oauth_revoke**](OauthApi.md#oauth_revoke) | **POST** /oauth/revoke | Revoke this OAuth application.
+| Method | HTTP request | Description |
+| ------ | ------------ | ----------- |
+| [**oauth_access_token**](OauthApi.md#oauth_access_token) | **POST** /oauth/token | Exchange authorization code for access token. |
+| [**oauth_revoke**](OauthApi.md#oauth_revoke) | **POST** /oauth/revoke | Revoke this OAuth application. |
 
 
-# **oauth_access_token**
-> OauthTokenResponse oauth_access_token(client_id, grant_type, opts)
+## oauth_access_token
+
+> <OauthTokenResponse> oauth_access_token(client_id, grant_type, opts)
 
 Exchange authorization code for access token.
 
 The final leg in the OAuth process which exchanges the specified access token for the access code needed to make API calls. 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['ultraCartBrowserApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartBrowserApiKey'] = 'Bearer'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::OauthApi.new_using_api_key(simple_key, false, false)
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
+api_instance = UltracartClient::OauthApi.new
 client_id = 'client_id_example' # String | The OAuth application client_id.
-
 grant_type = 'grant_type_example' # String | Type of grant
-
-opts = { 
+opts = {
   code: 'code_example', # String | Authorization code received back from the browser redirect
   redirect_uri: 'redirect_uri_example', # String | The URI that you redirect the browser to to start the authorization process
   refresh_token: 'refresh_token_example' # String | The refresh token received during the original grant_type=authorization_code that can be used to return a new access token
 }
 
 begin
-  #Exchange authorization code for access token.
+  # Exchange authorization code for access token.
   result = api_instance.oauth_access_token(client_id, grant_type, opts)
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling OauthApi->oauth_access_token: #{e}"
+  puts "Error when calling OauthApi->oauth_access_token: #{e}"
+end
+```
+
+#### Using the oauth_access_token_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OauthTokenResponse>, Integer, Hash)> oauth_access_token_with_http_info(client_id, grant_type, opts)
+
+```ruby
+begin
+  # Exchange authorization code for access token.
+  data, status_code, headers = api_instance.oauth_access_token_with_http_info(client_id, grant_type, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OauthTokenResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OauthApi->oauth_access_token_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **client_id** | **String**| The OAuth application client_id. | 
- **grant_type** | **String**| Type of grant | 
- **code** | **String**| Authorization code received back from the browser redirect | [optional] 
- **redirect_uri** | **String**| The URI that you redirect the browser to to start the authorization process | [optional] 
- **refresh_token** | **String**| The refresh token received during the original grant_type&#x3D;authorization_code that can be used to return a new access token | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **client_id** | **String** | The OAuth application client_id. |  |
+| **grant_type** | **String** | Type of grant |  |
+| **code** | **String** | Authorization code received back from the browser redirect | [optional] |
+| **redirect_uri** | **String** | The URI that you redirect the browser to to start the authorization process | [optional] |
+| **refresh_token** | **String** | The refresh token received during the original grant_type&#x3D;authorization_code that can be used to return a new access token | [optional] |
 
 ### Return type
 
@@ -64,48 +93,76 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: application/json
+- **Content-Type**: application/x-www-form-urlencoded
+- **Accept**: application/json
 
 
+## oauth_revoke
 
-# **oauth_revoke**
-> OauthRevokeSuccessResponse oauth_revoke(client_id, token)
+> <OauthRevokeSuccessResponse> oauth_revoke(client_id, token)
 
 Revoke this OAuth application.
 
 Revokes the OAuth application associated with the specified client_id and token. 
 
-### Example
+### Examples
+
 ```ruby
-# load the gem
+require 'time'
 require 'ultracart_api'
+# setup authorization
+UltracartClient.configure do |config|
+  # Configure API key authorization: ultraCartBrowserApiKey
+  config.api_key['ultraCartBrowserApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartBrowserApiKey'] = 'Bearer'
 
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::OauthApi.new_using_api_key(simple_key, false, false)
+  # Configure OAuth2 access token for authorization: ultraCartOauth
+  config.access_token = 'YOUR ACCESS TOKEN'
 
+  # Configure API key authorization: ultraCartSimpleApiKey
+  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
+end
 
+api_instance = UltracartClient::OauthApi.new
 client_id = 'client_id_example' # String | The OAuth application client_id.
-
 token = 'token_example' # String | The OAuth access token that is to be revoked..
 
-
 begin
-  #Revoke this OAuth application.
+  # Revoke this OAuth application.
   result = api_instance.oauth_revoke(client_id, token)
   p result
 rescue UltracartClient::ApiError => e
-  puts "Exception when calling OauthApi->oauth_revoke: #{e}"
+  puts "Error when calling OauthApi->oauth_revoke: #{e}"
+end
+```
+
+#### Using the oauth_revoke_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OauthRevokeSuccessResponse>, Integer, Hash)> oauth_revoke_with_http_info(client_id, token)
+
+```ruby
+begin
+  # Revoke this OAuth application.
+  data, status_code, headers = api_instance.oauth_revoke_with_http_info(client_id, token)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OauthRevokeSuccessResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OauthApi->oauth_revoke_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **client_id** | **String**| The OAuth application client_id. | 
- **token** | **String**| The OAuth access token that is to be revoked.. | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **client_id** | **String** | The OAuth application client_id. |  |
+| **token** | **String** | The OAuth access token that is to be revoked.. |  |
 
 ### Return type
 
@@ -117,8 +174,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: application/json
-
-
+- **Content-Type**: application/x-www-form-urlencoded
+- **Accept**: application/json
 

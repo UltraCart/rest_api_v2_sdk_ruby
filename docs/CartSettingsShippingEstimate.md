@@ -1,21 +1,44 @@
 # UltracartClient::CartSettingsShippingEstimate
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**allow_3rd_party_billing** | **BOOLEAN** | True if this method allows the customer to use their own shipper account number | [optional] 
-**comment** | **String** | Comment to display to the customer about this method | [optional] 
-**cost** | [**Currency**](Currency.md) |  | [optional] 
-**cost_before_discount** | [**Currency**](Currency.md) |  | [optional] 
-**default_method** | **BOOLEAN** | True if this is the default method | [optional] 
-**discount** | [**Currency**](Currency.md) |  | [optional] 
-**discounted** | **BOOLEAN** | True if this method is discounted because of a coupon | [optional] 
-**display_name** | **String** | The name to display to the customer | [optional] 
-**estimated_delivery** | **String** | Date of the estimated delivery (or range) | [optional] 
-**lift_gate_option** | **BOOLEAN** | True if a lift gate option for this method should be offered to the customer | [optional] 
-**name** | **String** | Shipping method name | [optional] 
-**pickup** | **BOOLEAN** | True if this shipping method requires customers to physically pickup product themselves | [optional] 
-**tax** | [**Currency**](Currency.md) |  | [optional] 
-**total_tax** | [**Currency**](Currency.md) |  | [optional] 
 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **allow_3rd_party_billing** | **Boolean** | True if this method allows the customer to use their own shipper account number | [optional] |
+| **comment** | **String** | Comment to display to the customer about this method | [optional] |
+| **cost** | [**Currency**](Currency.md) |  | [optional] |
+| **cost_before_discount** | [**Currency**](Currency.md) |  | [optional] |
+| **default_method** | **Boolean** | True if this is the default method | [optional] |
+| **discount** | [**Currency**](Currency.md) |  | [optional] |
+| **discounted** | **Boolean** | True if this method is discounted because of a coupon | [optional] |
+| **display_name** | **String** | The name to display to the customer | [optional] |
+| **estimated_delivery** | **String** | Date of the estimated delivery (or range) | [optional] |
+| **lift_gate_option** | **Boolean** | True if a lift gate option for this method should be offered to the customer | [optional] |
+| **name** | **String** | Shipping method name | [optional] |
+| **pickup** | **Boolean** | True if this shipping method requires customers to physically pickup product themselves | [optional] |
+| **tax** | [**Currency**](Currency.md) |  | [optional] |
+| **total_tax** | [**Currency**](Currency.md) |  | [optional] |
+
+## Example
+
+```ruby
+require 'ultracart_api'
+
+instance = UltracartClient::CartSettingsShippingEstimate.new(
+  allow_3rd_party_billing: null,
+  comment: null,
+  cost: null,
+  cost_before_discount: null,
+  default_method: null,
+  discount: null,
+  discounted: null,
+  display_name: null,
+  estimated_delivery: null,
+  lift_gate_option: null,
+  name: null,
+  pickup: null,
+  tax: null,
+  total_tax: null
+)
+```
 
