@@ -13,26 +13,37 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class RtgDayOfMonthRestriction
-    # The day of the month. 1 equals the first day of the month, 31 is the last possible value.
-    attr_accessor :day_of_month
+  class ChannelPartnerEstimateTaxResponse
+    attr_accessor :arbitrary_tax
 
-    # True if this rotating gateway is allowed to operate on this day of month.  If no days are selected, all days are allowed.
-    attr_accessor :selected
+    attr_accessor :error
+
+    attr_accessor :metadata
+
+    # Indicates if API call was successful
+    attr_accessor :success
+
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'day_of_month' => :'day_of_month',
-        :'selected' => :'selected'
+        :'arbitrary_tax' => :'arbitrary_tax',
+        :'error' => :'error',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'day_of_month' => :'Integer',
-        :'selected' => :'BOOLEAN'
+        :'arbitrary_tax' => :'Float',
+        :'error' => :'Error',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'BOOLEAN',
+        :'warning' => :'Warning'
       }
     end
 
@@ -44,12 +55,24 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'day_of_month')
-        self.day_of_month = attributes[:'day_of_month']
+      if attributes.has_key?(:'arbitrary_tax')
+        self.arbitrary_tax = attributes[:'arbitrary_tax']
       end
 
-      if attributes.has_key?(:'selected')
-        self.selected = attributes[:'selected']
+      if attributes.has_key?(:'error')
+        self.error = attributes[:'error']
+      end
+
+      if attributes.has_key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.has_key?(:'success')
+        self.success = attributes[:'success']
+      end
+
+      if attributes.has_key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -71,8 +94,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          day_of_month == o.day_of_month &&
-          selected == o.selected
+          arbitrary_tax == o.arbitrary_tax &&
+          error == o.error &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -84,7 +110,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [day_of_month, selected].hash
+      [arbitrary_tax, error, metadata, success, warning].hash
     end
 
     # Builds the object from hash

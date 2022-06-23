@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**cancel_order_by_channel_partner_order_id**](ChannelPartnerApi.md#cancel_order_by_channel_partner_order_id) | **DELETE** /channel_partner/cancel/by_channel_partner_order_id/{order_id} | Cancel channel partner order by channel partner order id
 [**cancel_order_by_ultra_cart_order_id**](ChannelPartnerApi.md#cancel_order_by_ultra_cart_order_id) | **DELETE** /channel_partner/cancel/by_ultracart_order_id/{order_id} | Cancel channel partner order by UltraCart order id
 [**estimate_shipping_for_channel_partner_order**](ChannelPartnerApi.md#estimate_shipping_for_channel_partner_order) | **POST** /channel_partner/estimate_shipping | Estimate shipping for channel partner order
+[**estimate_tax_for_channel_partner_order**](ChannelPartnerApi.md#estimate_tax_for_channel_partner_order) | **POST** /channel_partner/estimate_tax | Estimate tax for channel partner order
 [**import_channel_partner_order**](ChannelPartnerApi.md#import_channel_partner_order) | **POST** /channel_partner/import | Insert channel partner order
 
 
@@ -148,6 +149,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ChannelPartnerEstimateShippingResponse**](ChannelPartnerEstimateShippingResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
+ - **Accept**: application/json
+
+
+
+# **estimate_tax_for_channel_partner_order**
+> ChannelPartnerEstimateTaxResponse estimate_tax_for_channel_partner_order(channel_partner_order)
+
+Estimate tax for channel partner order
+
+Estimate tax for order from a channel partner. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ChannelPartnerApi.new_using_api_key(simple_key, false, false)
+
+
+channel_partner_order = UltracartClient::ChannelPartnerOrder.new # ChannelPartnerOrder | Order needing tax estimate
+
+
+begin
+  #Estimate tax for channel partner order
+  result = api_instance.estimate_tax_for_channel_partner_order(channel_partner_order)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ChannelPartnerApi->estimate_tax_for_channel_partner_order: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **channel_partner_order** | [**ChannelPartnerOrder**](ChannelPartnerOrder.md)| Order needing tax estimate | 
+
+### Return type
+
+[**ChannelPartnerEstimateTaxResponse**](ChannelPartnerEstimateTaxResponse.md)
 
 ### Authorization
 

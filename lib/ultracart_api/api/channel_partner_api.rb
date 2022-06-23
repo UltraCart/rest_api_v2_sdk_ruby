@@ -197,6 +197,61 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Estimate tax for channel partner order
+    # Estimate tax for order from a channel partner. 
+    # @param channel_partner_order Order needing tax estimate
+    # @param [Hash] opts the optional parameters
+    # @return [ChannelPartnerEstimateTaxResponse]
+    def estimate_tax_for_channel_partner_order(channel_partner_order, opts = {})
+      data, _status_code, _headers = estimate_tax_for_channel_partner_order_with_http_info(channel_partner_order, opts)
+      data
+    end
+
+    # Estimate tax for channel partner order
+    # Estimate tax for order from a channel partner. 
+    # @param channel_partner_order Order needing tax estimate
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ChannelPartnerEstimateTaxResponse, Fixnum, Hash)>] ChannelPartnerEstimateTaxResponse data, response status code and response headers
+    def estimate_tax_for_channel_partner_order_with_http_info(channel_partner_order, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ChannelPartnerApi.estimate_tax_for_channel_partner_order ...'
+      end
+      # verify the required parameter 'channel_partner_order' is set
+      if @api_client.config.client_side_validation && channel_partner_order.nil?
+        fail ArgumentError, "Missing the required parameter 'channel_partner_order' when calling ChannelPartnerApi.estimate_tax_for_channel_partner_order"
+      end
+      # resource path
+      local_var_path = '/channel_partner/estimate_tax'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(channel_partner_order)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ChannelPartnerEstimateTaxResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ChannelPartnerApi#estimate_tax_for_channel_partner_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Insert channel partner order
     # Insert order from a channel partner. 
     # @param channel_partner_order Order to insert
