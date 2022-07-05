@@ -38,18 +38,15 @@ Delete a coupon on the UltraCart account.
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 coupon_oid = 56 # Integer | The coupon_oid to delete.
 
 begin
@@ -111,18 +108,15 @@ Delete coupons on the UltraCart account.
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 coupon_delete_request = UltracartClient::CouponDeletesRequest.new # CouponDeletesRequest | Coupon oids to delete
 
 begin
@@ -184,18 +178,15 @@ Delete coupons on the UltraCart account.
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 coupon_delete_request = UltracartClient::CouponDeletesRequest.new # CouponDeletesRequest | Coupon oids to delete
 
 begin
@@ -257,18 +248,15 @@ Determines if a coupon merchant code already exists.
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 merchant_code = 'merchant_code_example' # String | The coupon merchant code to examine.
 
 begin
@@ -331,18 +319,15 @@ Generate one time codes for a coupon
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 coupon_oid = 56 # Integer | The coupon oid to generate codes.
 coupon_codes_request = UltracartClient::CouponCodesRequest.new # CouponCodesRequest | Coupon code generation parameters
 
@@ -407,18 +392,15 @@ Generate one time codes by merchant code
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 merchant_code = 'merchant_code_example' # String | The merchant code to generate one time codes.
 coupon_codes_request = UltracartClient::CouponCodesRequest.new # CouponCodesRequest | Coupon code generation parameters
 
@@ -483,18 +465,15 @@ Retrieve auto apply rules and conditions
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 
 begin
   # Retrieve auto apply rules and conditions
@@ -554,18 +533,15 @@ Retrieves a single coupon using the specified coupon profile oid.
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 coupon_oid = 56 # Integer | The coupon oid to retrieve.
 opts = {
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -632,18 +608,15 @@ Retrieves a single coupon using the specified merchant code.
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 merchant_code = 'merchant_code_example' # String | The coupon merchant code to retrieve.
 opts = {
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -710,18 +683,15 @@ Retrieves coupons for this account.  If no parameters are specified, all coupons
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 opts = {
   merchant_code: 'merchant_code_example', # String | Merchant code
   description: 'description_example', # String | Description
@@ -810,18 +780,15 @@ Retrieves coupons from the account.  If no parameters are specified, all coupons
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 coupon_query = UltracartClient::CouponQuery.new # CouponQuery | Coupon query
 opts = {
   _limit: 56, # Integer | The maximum number of records to return on this one API call. (Max 200)
@@ -894,18 +861,15 @@ Retrieve values needed for a coupon editor
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 
 begin
   # Retrieve values needed for a coupon editor
@@ -965,18 +929,15 @@ Insert a coupon on the UltraCart account.
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 coupon = UltracartClient::Coupon.new # Coupon | Coupon to insert
 opts = {
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -1043,18 +1004,15 @@ Insert multiple coupon on the UltraCart account.
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 coupons_request = UltracartClient::CouponsRequest.new # CouponsRequest | Coupons to insert (maximum 50)
 opts = {
   _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
@@ -1123,18 +1081,15 @@ Searches for items to display within a coupon editor and assign to coupons
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 opts = {
   s: 's_example', # String | 
   m: 56 # Integer | 
@@ -1201,18 +1156,15 @@ Update auto apply rules and conditions
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 conditions = UltracartClient::CouponAutoApplyConditions.new # CouponAutoApplyConditions | Conditions
 
 begin
@@ -1274,18 +1226,15 @@ Update a coupon on the UltraCart account.
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 coupon_oid = 56 # Integer | The coupon_oid to update.
 coupon = UltracartClient::Coupon.new # Coupon | Coupon to update
 opts = {
@@ -1354,18 +1303,15 @@ Update multiple coupon on the UltraCart account.
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 coupons_request = UltracartClient::CouponsRequest.new # CouponsRequest | Coupons to update (synchronous maximum 50 / asynchronous maximum 100)
 opts = {
   _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
@@ -1436,18 +1382,15 @@ Upload one-time codes for a coupon
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::CouponApi.new
+api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 coupon_oid = 56 # Integer | The coupon oid to associate with the provided one-time codes.
 upload_coupon_codes_request = UltracartClient::UploadCouponCodesRequest.new # UploadCouponCodesRequest | One-time coupon codes
 

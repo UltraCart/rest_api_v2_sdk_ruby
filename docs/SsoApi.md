@@ -23,18 +23,15 @@ This is the equivalent of logging out of the single sign on session
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::SsoApi.new
+api = UltracartClient::SsoApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 
 begin
   # Get single sign on session user
@@ -94,18 +91,15 @@ Starts the process of authorizing a single sign on session.
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::SsoApi.new
+api = UltracartClient::SsoApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 authorization_request = UltracartClient::SingleSignOnAuthorizeRequest.new # SingleSignOnAuthorizeRequest | Authorization request
 
 begin
@@ -168,18 +162,15 @@ This is the equivalent of logging out of the single sign on session
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::SsoApi.new
+api = UltracartClient::SsoApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 
 begin
   # Revoke single sign on session
@@ -238,18 +229,15 @@ Called by your application after receiving the code back on the redirect URI to 
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::SsoApi.new
+api = UltracartClient::SsoApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 token_request = UltracartClient::SingleSignOnTokenRequest.new # SingleSignOnTokenRequest | Token request
 
 begin

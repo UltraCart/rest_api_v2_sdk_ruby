@@ -42,18 +42,15 @@ Adjusts an order total.  Adjusts individual items appropriately and considers ta
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_id = 'order_id_example' # String | The order id to cancel.
 desired_total = 'desired_total_example' # String | The desired total with no formatting. example 123.45
 
@@ -118,18 +115,15 @@ Cancel an order on the UltraCart account.  If the success flag is false, then co
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_id = 'order_id_example' # String | The order id to cancel.
 
 begin
@@ -192,18 +186,15 @@ Delete an order on the UltraCart account.
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_id = 'order_id_example' # String | The order id to delete.
 
 begin
@@ -265,18 +256,15 @@ Perform a duplicate of the specified order_id and return a new order located in 
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_id = 'order_id_example' # String | The order id to duplicate.
 opts = {
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -343,18 +331,15 @@ Format the order for display at text or html
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_id = 'order_id_example' # String | The order id to format
 format_options = UltracartClient::OrderFormat.new # OrderFormat | Format options
 
@@ -419,18 +404,15 @@ Retrieves a single order token for a given order id.  The token can be used with
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_id = 'order_id_example' # String | The order id to generate a token for.
 
 begin
@@ -493,18 +475,15 @@ The packing slip PDF that is returned is base 64 encoded
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_id = 'order_id_example' # String | Order ID
 
 begin
@@ -567,18 +546,15 @@ The packing slip PDF that is returned is base 64 encoded
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 distribution_center_code = 'distribution_center_code_example' # String | Distribution center code
 order_id = 'order_id_example' # String | Order ID
 
@@ -643,18 +619,15 @@ Retrieve A/R Retry Configuration. This is primarily an internal API call.  It is
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 
 begin
   # Retrieve A/R Retry Configuration
@@ -714,18 +687,15 @@ Retrieve A/R Retry Statistics. This is primarily an internal API call.  It is do
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 opts = {
   from: 'from_example', # String | 
   to: 'to_example' # String | 
@@ -792,18 +762,15 @@ Retrieves a single order using the specified order id.
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_id = 'order_id_example' # String | The order id to retrieve.
 opts = {
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -870,18 +837,15 @@ Retrieves a single order using the specified order token.
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_by_token_query = UltracartClient::OrderByTokenQuery.new # OrderByTokenQuery | Order by token query
 opts = {
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -948,18 +912,15 @@ Retrieves a group of orders from the account.  If no parameters are specified, t
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 opts = {
   order_id: 'order_id_example', # String | Order Id
   payment_method: 'payment_method_example', # String | Payment Method
@@ -1084,18 +1045,15 @@ Retrieves a group of orders from the account based on an array of order ids.  If
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_batch = UltracartClient::OrderQueryBatch.new # OrderQueryBatch | Order batch
 opts = {
   _expand: '_expand_example' # String | The object expansion to perform on the result.
@@ -1162,18 +1120,15 @@ Retrieves a group of orders from the account based on a query object.  If no par
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_query = UltracartClient::OrderQuery.new # OrderQuery | Order query
 opts = {
   _limit: 56, # Integer | The maximum number of records to return on this one API call. (Maximum 200)
@@ -1246,18 +1201,15 @@ Inserts a new order on the UltraCart account.  This is probably NOT the method y
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order = UltracartClient::Order.new # Order | Order to insert
 opts = {
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
@@ -1324,18 +1276,15 @@ Process payment on order
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_id = 'order_id_example' # String | The order id to process payment on
 process_payment_request = UltracartClient::OrderProcessPaymentRequest.new # OrderProcessPaymentRequest | Process payment parameters
 
@@ -1400,18 +1349,15 @@ Perform a refund operation on an order and then update the order if successful
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_id = 'order_id_example' # String | The order id to refund.
 order = UltracartClient::Order.new # Order | Order to refund
 opts = {
@@ -1490,18 +1436,15 @@ Create a replacement order based upon a previous order
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_id = 'order_id_example' # String | The order id to generate a replacement for.
 replacement = UltracartClient::OrderReplacement.new # OrderReplacement | Replacement order details
 
@@ -1566,18 +1509,15 @@ Resend the receipt for an order on the UltraCart account.
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_id = 'order_id_example' # String | The order id to resend the receipt for.
 
 begin
@@ -1640,18 +1580,15 @@ Resend shipment confirmation for an order on the UltraCart account.
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_id = 'order_id_example' # String | The order id to resend the shipment notification for.
 
 begin
@@ -1714,18 +1651,15 @@ Update A/R Retry Configuration.  This is primarily an internal API call.  It is 
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 retry_config = UltracartClient::AccountsReceivableRetryConfig.new # AccountsReceivableRetryConfig | AccountsReceivableRetryConfig object
 
 begin
@@ -1788,18 +1722,15 @@ Update a new order on the UltraCart account.  This is probably NOT the method yo
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-api_instance = UltracartClient::OrderApi.new
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_id = 'order_id_example' # String | The order id to update.
 order = UltracartClient::Order.new # Order | Order to update
 opts = {

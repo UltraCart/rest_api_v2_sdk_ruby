@@ -21,23 +21,15 @@ The final leg in the OAuth process which exchanges the specified access token fo
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure API key authorization: ultraCartBrowserApiKey
-  config.api_key['ultraCartBrowserApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartBrowserApiKey'] = 'Bearer'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
-
-api_instance = UltracartClient::OauthApi.new
+api = UltracartClient::OauthApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 client_id = 'client_id_example' # String | The OAuth application client_id.
 grant_type = 'grant_type_example' # String | Type of grant
 opts = {
@@ -110,23 +102,15 @@ Revokes the OAuth application associated with the specified client_id and token.
 ```ruby
 require 'time'
 require 'ultracart_api'
-# setup authorization
-UltracartClient.configure do |config|
-  # Configure API key authorization: ultraCartBrowserApiKey
-  config.api_key['ultraCartBrowserApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartBrowserApiKey'] = 'Bearer'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-  # Configure OAuth2 access token for authorization: ultraCartOauth
-  config.access_token = 'YOUR ACCESS TOKEN'
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
 
-  # Configure API key authorization: ultraCartSimpleApiKey
-  config.api_key['ultraCartSimpleApiKey'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['ultraCartSimpleApiKey'] = 'Bearer'
-end
-
-api_instance = UltracartClient::OauthApi.new
+api = UltracartClient::OauthApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 client_id = 'client_id_example' # String | The OAuth application client_id.
 token = 'token_example' # String | The OAuth access token that is to be revoked..
 
