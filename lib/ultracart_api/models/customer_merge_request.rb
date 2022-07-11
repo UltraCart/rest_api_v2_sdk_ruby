@@ -13,48 +13,26 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class CustomerActivity
-    attr_accessor :activities
+  class CustomerMergeRequest
+    # Customer profile oid to merge
+    attr_accessor :customer_profile_oid
 
-    attr_accessor :global_unsubscribed
-
-    attr_accessor :global_unsubscribed_dts
-
-    attr_accessor :memberships
-
-    attr_accessor :metrics
-
-    attr_accessor :properties_list
-
-    attr_accessor :spam_complaint
-
-    attr_accessor :spam_complaint_dts
+    # Email of the customer profile to merge
+    attr_accessor :email
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'activities' => :'activities',
-        :'global_unsubscribed' => :'global_unsubscribed',
-        :'global_unsubscribed_dts' => :'global_unsubscribed_dts',
-        :'memberships' => :'memberships',
-        :'metrics' => :'metrics',
-        :'properties_list' => :'properties_list',
-        :'spam_complaint' => :'spam_complaint',
-        :'spam_complaint_dts' => :'spam_complaint_dts'
+        :'customer_profile_oid' => :'customer_profile_oid',
+        :'email' => :'email'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'activities' => :'Array<Activity>',
-        :'global_unsubscribed' => :'BOOLEAN',
-        :'global_unsubscribed_dts' => :'String',
-        :'memberships' => :'Array<ListSegmentMembership>',
-        :'metrics' => :'Array<Metric>',
-        :'properties_list' => :'Array<Property>',
-        :'spam_complaint' => :'BOOLEAN',
-        :'spam_complaint_dts' => :'String'
+        :'customer_profile_oid' => :'Integer',
+        :'email' => :'String'
       }
     end
 
@@ -66,44 +44,12 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'activities')
-        if (value = attributes[:'activities']).is_a?(Array)
-          self.activities = value
-        end
+      if attributes.has_key?(:'customer_profile_oid')
+        self.customer_profile_oid = attributes[:'customer_profile_oid']
       end
 
-      if attributes.has_key?(:'global_unsubscribed')
-        self.global_unsubscribed = attributes[:'global_unsubscribed']
-      end
-
-      if attributes.has_key?(:'global_unsubscribed_dts')
-        self.global_unsubscribed_dts = attributes[:'global_unsubscribed_dts']
-      end
-
-      if attributes.has_key?(:'memberships')
-        if (value = attributes[:'memberships']).is_a?(Array)
-          self.memberships = value
-        end
-      end
-
-      if attributes.has_key?(:'metrics')
-        if (value = attributes[:'metrics']).is_a?(Array)
-          self.metrics = value
-        end
-      end
-
-      if attributes.has_key?(:'properties_list')
-        if (value = attributes[:'properties_list']).is_a?(Array)
-          self.properties_list = value
-        end
-      end
-
-      if attributes.has_key?(:'spam_complaint')
-        self.spam_complaint = attributes[:'spam_complaint']
-      end
-
-      if attributes.has_key?(:'spam_complaint_dts')
-        self.spam_complaint_dts = attributes[:'spam_complaint_dts']
+      if attributes.has_key?(:'email')
+        self.email = attributes[:'email']
       end
     end
 
@@ -125,14 +71,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          activities == o.activities &&
-          global_unsubscribed == o.global_unsubscribed &&
-          global_unsubscribed_dts == o.global_unsubscribed_dts &&
-          memberships == o.memberships &&
-          metrics == o.metrics &&
-          properties_list == o.properties_list &&
-          spam_complaint == o.spam_complaint &&
-          spam_complaint_dts == o.spam_complaint_dts
+          customer_profile_oid == o.customer_profile_oid &&
+          email == o.email
     end
 
     # @see the `==` method
@@ -144,7 +84,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [activities, global_unsubscribed, global_unsubscribed_dts, memberships, metrics, properties_list, spam_complaint, spam_complaint_dts].hash
+      [customer_profile_oid, email].hash
     end
 
     # Builds the object from hash
