@@ -205,6 +205,7 @@ docs/CustomerEmailListChanges.md
 docs/CustomerLoyalty.md
 docs/CustomerLoyaltyLedger.md
 docs/CustomerLoyaltyRedemption.md
+docs/CustomerMergeRequest.md
 docs/CustomerOrdersSummary.md
 docs/CustomerPricingTier.md
 docs/CustomerPrivacy.md
@@ -871,6 +872,7 @@ lib/ultracart_api/models/customer_email_list_changes.rb
 lib/ultracart_api/models/customer_loyalty.rb
 lib/ultracart_api/models/customer_loyalty_ledger.rb
 lib/ultracart_api/models/customer_loyalty_redemption.rb
+lib/ultracart_api/models/customer_merge_request.rb
 lib/ultracart_api/models/customer_orders_summary.rb
 lib/ultracart_api/models/customer_pricing_tier.rb
 lib/ultracart_api/models/customer_privacy.rb

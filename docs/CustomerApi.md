@@ -17,6 +17,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_customers_for_data_tables**](CustomerApi.md#get_customers_for_data_tables) | **POST** /customer/customers/dataTables | Retrieve customers for DataTables plugin |
 | [**get_email_verification_token**](CustomerApi.md#get_email_verification_token) | **POST** /customer/customers/email_verify/get_token | Create a token that can be used to verify a customer email address |
 | [**insert_customer**](CustomerApi.md#insert_customer) | **POST** /customer/customers | Insert a customer |
+| [**merge_customer**](CustomerApi.md#merge_customer) | **PUT** /customer/customers/{customer_profile_oid}/merge | Merge customer into this customer |
 | [**search_customer_profile_values**](CustomerApi.md#search_customer_profile_values) | **POST** /customer/search | Searches for all matching values (using POST) |
 | [**update_customer**](CustomerApi.md#update_customer) | **PUT** /customer/customers/{customer_profile_oid} | Update a customer |
 | [**update_customer_email_lists**](CustomerApi.md#update_customer_email_lists) | **POST** /customer/customers/{customer_profile_oid}/email_lists | Update email list subscriptions for a customer |
@@ -1022,6 +1023,82 @@ end
 ### Return type
 
 [**CustomerResponse**](CustomerResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## merge_customer
+
+> merge_customer(customer_profile_oid, customer, opts)
+
+Merge customer into this customer
+
+Merge customer into this customer. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::CustomerApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+customer_profile_oid = 56 # Integer | The customer_profile_oid to update.
+customer = UltracartClient::CustomerMergeRequest.new # CustomerMergeRequest | Customer to merge into this profile.
+opts = {
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
+}
+
+begin
+  # Merge customer into this customer
+  api_instance.merge_customer(customer_profile_oid, customer, opts)
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->merge_customer: #{e}"
+end
+```
+
+#### Using the merge_customer_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> merge_customer_with_http_info(customer_profile_oid, customer, opts)
+
+```ruby
+begin
+  # Merge customer into this customer
+  data, status_code, headers = api_instance.merge_customer_with_http_info(customer_profile_oid, customer, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->merge_customer_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer_profile_oid** | **Integer** | The customer_profile_oid to update. |  |
+| **customer** | [**CustomerMergeRequest**](CustomerMergeRequest.md) | Customer to merge into this profile. |  |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
