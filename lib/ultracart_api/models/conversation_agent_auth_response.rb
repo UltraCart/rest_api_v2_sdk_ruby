@@ -14,34 +14,19 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class Activity
-    attr_accessor :action
+  class ConversationAgentAuthResponse
+    attr_accessor :conversation_participant_arn
 
-    attr_accessor :channel
+    attr_accessor :jwt
 
-    attr_accessor :metric
-
-    attr_accessor :storefront_oid
-
-    attr_accessor :subject
-
-    attr_accessor :ts
-
-    attr_accessor :type
-
-    attr_accessor :uuid
+    attr_accessor :websocket_url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'action' => :'action',
-        :'channel' => :'channel',
-        :'metric' => :'metric',
-        :'storefront_oid' => :'storefront_oid',
-        :'subject' => :'subject',
-        :'ts' => :'ts',
-        :'type' => :'type',
-        :'uuid' => :'uuid'
+        :'conversation_participant_arn' => :'conversation_participant_arn',
+        :'jwt' => :'jwt',
+        :'websocket_url' => :'websocket_url'
       }
     end
 
@@ -53,14 +38,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'action' => :'String',
-        :'channel' => :'String',
-        :'metric' => :'String',
-        :'storefront_oid' => :'Integer',
-        :'subject' => :'String',
-        :'ts' => :'Integer',
-        :'type' => :'String',
-        :'uuid' => :'String'
+        :'conversation_participant_arn' => :'String',
+        :'jwt' => :'String',
+        :'websocket_url' => :'String'
       }
     end
 
@@ -74,47 +54,27 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::Activity` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationAgentAuthResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::Activity`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationAgentAuthResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'action')
-        self.action = attributes[:'action']
+      if attributes.key?(:'conversation_participant_arn')
+        self.conversation_participant_arn = attributes[:'conversation_participant_arn']
       end
 
-      if attributes.key?(:'channel')
-        self.channel = attributes[:'channel']
+      if attributes.key?(:'jwt')
+        self.jwt = attributes[:'jwt']
       end
 
-      if attributes.key?(:'metric')
-        self.metric = attributes[:'metric']
-      end
-
-      if attributes.key?(:'storefront_oid')
-        self.storefront_oid = attributes[:'storefront_oid']
-      end
-
-      if attributes.key?(:'subject')
-        self.subject = attributes[:'subject']
-      end
-
-      if attributes.key?(:'ts')
-        self.ts = attributes[:'ts']
-      end
-
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
-      end
-
-      if attributes.key?(:'uuid')
-        self.uuid = attributes[:'uuid']
+      if attributes.key?(:'websocket_url')
+        self.websocket_url = attributes[:'websocket_url']
       end
     end
 
@@ -136,14 +96,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          action == o.action &&
-          channel == o.channel &&
-          metric == o.metric &&
-          storefront_oid == o.storefront_oid &&
-          subject == o.subject &&
-          ts == o.ts &&
-          type == o.type &&
-          uuid == o.uuid
+          conversation_participant_arn == o.conversation_participant_arn &&
+          jwt == o.jwt &&
+          websocket_url == o.websocket_url
     end
 
     # @see the `==` method
@@ -155,7 +110,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, channel, metric, storefront_oid, subject, ts, type, uuid].hash
+      [conversation_participant_arn, jwt, websocket_url].hash
     end
 
     # Builds the object from hash

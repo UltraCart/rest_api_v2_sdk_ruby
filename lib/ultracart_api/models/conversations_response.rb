@@ -14,34 +14,26 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class Activity
-    attr_accessor :action
+  class ConversationsResponse
+    attr_accessor :conversations
 
-    attr_accessor :channel
+    attr_accessor :error
 
-    attr_accessor :metric
+    attr_accessor :metadata
 
-    attr_accessor :storefront_oid
+    # Indicates if API call was successful
+    attr_accessor :success
 
-    attr_accessor :subject
-
-    attr_accessor :ts
-
-    attr_accessor :type
-
-    attr_accessor :uuid
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'action' => :'action',
-        :'channel' => :'channel',
-        :'metric' => :'metric',
-        :'storefront_oid' => :'storefront_oid',
-        :'subject' => :'subject',
-        :'ts' => :'ts',
-        :'type' => :'type',
-        :'uuid' => :'uuid'
+        :'conversations' => :'conversations',
+        :'error' => :'error',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
@@ -53,14 +45,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'action' => :'String',
-        :'channel' => :'String',
-        :'metric' => :'String',
-        :'storefront_oid' => :'Integer',
-        :'subject' => :'String',
-        :'ts' => :'Integer',
-        :'type' => :'String',
-        :'uuid' => :'String'
+        :'conversations' => :'Array<ConversationSummary>',
+        :'error' => :'Error',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'Boolean',
+        :'warning' => :'Warning'
       }
     end
 
@@ -74,47 +63,37 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::Activity` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationsResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::Activity`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationsResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'action')
-        self.action = attributes[:'action']
+      if attributes.key?(:'conversations')
+        if (value = attributes[:'conversations']).is_a?(Array)
+          self.conversations = value
+        end
       end
 
-      if attributes.key?(:'channel')
-        self.channel = attributes[:'channel']
+      if attributes.key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.key?(:'metric')
-        self.metric = attributes[:'metric']
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.key?(:'storefront_oid')
-        self.storefront_oid = attributes[:'storefront_oid']
+      if attributes.key?(:'success')
+        self.success = attributes[:'success']
       end
 
-      if attributes.key?(:'subject')
-        self.subject = attributes[:'subject']
-      end
-
-      if attributes.key?(:'ts')
-        self.ts = attributes[:'ts']
-      end
-
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
-      end
-
-      if attributes.key?(:'uuid')
-        self.uuid = attributes[:'uuid']
+      if attributes.key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -136,14 +115,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          action == o.action &&
-          channel == o.channel &&
-          metric == o.metric &&
-          storefront_oid == o.storefront_oid &&
-          subject == o.subject &&
-          ts == o.ts &&
-          type == o.type &&
-          uuid == o.uuid
+          conversations == o.conversations &&
+          error == o.error &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -155,7 +131,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, channel, metric, storefront_oid, subject, ts, type, uuid].hash
+      [conversations, error, metadata, success, warning].hash
     end
 
     # Builds the object from hash
