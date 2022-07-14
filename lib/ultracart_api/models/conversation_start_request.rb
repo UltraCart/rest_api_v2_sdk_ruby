@@ -13,48 +13,24 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class Activity
-    attr_accessor :action
+  class ConversationStartRequest
+    attr_accessor :add_conversation_participant_arns
 
-    attr_accessor :channel
-
-    attr_accessor :metric
-
-    attr_accessor :storefront_oid
-
-    attr_accessor :subject
-
-    attr_accessor :ts
-
-    attr_accessor :type
-
-    attr_accessor :uuid
+    attr_accessor :conversation_arn
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'action' => :'action',
-        :'channel' => :'channel',
-        :'metric' => :'metric',
-        :'storefront_oid' => :'storefront_oid',
-        :'subject' => :'subject',
-        :'ts' => :'ts',
-        :'type' => :'type',
-        :'uuid' => :'uuid'
+        :'add_conversation_participant_arns' => :'add_conversation_participant_arns',
+        :'conversation_arn' => :'conversation_arn'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'action' => :'String',
-        :'channel' => :'String',
-        :'metric' => :'String',
-        :'storefront_oid' => :'Integer',
-        :'subject' => :'String',
-        :'ts' => :'Integer',
-        :'type' => :'String',
-        :'uuid' => :'String'
+        :'add_conversation_participant_arns' => :'Array<String>',
+        :'conversation_arn' => :'String'
       }
     end
 
@@ -66,36 +42,14 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'action')
-        self.action = attributes[:'action']
+      if attributes.has_key?(:'add_conversation_participant_arns')
+        if (value = attributes[:'add_conversation_participant_arns']).is_a?(Array)
+          self.add_conversation_participant_arns = value
+        end
       end
 
-      if attributes.has_key?(:'channel')
-        self.channel = attributes[:'channel']
-      end
-
-      if attributes.has_key?(:'metric')
-        self.metric = attributes[:'metric']
-      end
-
-      if attributes.has_key?(:'storefront_oid')
-        self.storefront_oid = attributes[:'storefront_oid']
-      end
-
-      if attributes.has_key?(:'subject')
-        self.subject = attributes[:'subject']
-      end
-
-      if attributes.has_key?(:'ts')
-        self.ts = attributes[:'ts']
-      end
-
-      if attributes.has_key?(:'type')
-        self.type = attributes[:'type']
-      end
-
-      if attributes.has_key?(:'uuid')
-        self.uuid = attributes[:'uuid']
+      if attributes.has_key?(:'conversation_arn')
+        self.conversation_arn = attributes[:'conversation_arn']
       end
     end
 
@@ -117,14 +71,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          action == o.action &&
-          channel == o.channel &&
-          metric == o.metric &&
-          storefront_oid == o.storefront_oid &&
-          subject == o.subject &&
-          ts == o.ts &&
-          type == o.type &&
-          uuid == o.uuid
+          add_conversation_participant_arns == o.add_conversation_participant_arns &&
+          conversation_arn == o.conversation_arn
     end
 
     # @see the `==` method
@@ -136,7 +84,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [action, channel, metric, storefront_oid, subject, ts, type, uuid].hash
+      [add_conversation_participant_arns, conversation_arn].hash
     end
 
     # Builds the object from hash
