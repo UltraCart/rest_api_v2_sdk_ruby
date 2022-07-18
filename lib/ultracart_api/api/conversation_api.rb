@@ -154,6 +154,70 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get a presigned conersation multimedia upload URL
+    # Get a presigned conersation multimedia upload URL 
+    # @param extension [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def get_conversation_multimedia_upload_url(extension, opts = {})
+      get_conversation_multimedia_upload_url_with_http_info(extension, opts)
+      nil
+    end
+
+    # Get a presigned conersation multimedia upload URL
+    # Get a presigned conersation multimedia upload URL 
+    # @param extension [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def get_conversation_multimedia_upload_url_with_http_info(extension, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_conversation_multimedia_upload_url ...'
+      end
+      # verify the required parameter 'extension' is set
+      if @api_client.config.client_side_validation && extension.nil?
+        fail ArgumentError, "Missing the required parameter 'extension' when calling ConversationApi.get_conversation_multimedia_upload_url"
+      end
+      # resource path
+      local_var_path = '/conversation/upload_url/{extension}'.sub('{' + 'extension' + '}', CGI.escape(extension.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_conversation_multimedia_upload_url",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_conversation_multimedia_upload_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a list of conversation summaries newest to oldest
     # Retrieve a list of conversation summaries that are ordered newest to oldest, include the most recent message and whether its been read. 
     # @param [Hash] opts the optional parameters

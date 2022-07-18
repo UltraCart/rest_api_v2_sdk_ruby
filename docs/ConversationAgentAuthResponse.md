@@ -6,6 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **conversation_participant_arn** | **String** |  | [optional] |
 | **jwt** | **String** |  | [optional] |
+| **merchant_id** | **String** |  | [optional] |
+| **twilio_phone_numbers** | **Array&lt;String&gt;** |  | [optional] |
 | **websocket_url** | **String** |  | [optional] |
 
 ## Example
@@ -16,6 +18,8 @@ require 'ultracart_api'
 instance = UltracartClient::ConversationAgentAuthResponse.new(
   conversation_participant_arn: null,
   jwt: null,
+  merchant_id: null,
+  twilio_phone_numbers: null,
   websocket_url: null
 )
 ```
