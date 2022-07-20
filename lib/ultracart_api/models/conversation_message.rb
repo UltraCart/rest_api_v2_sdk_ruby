@@ -25,6 +25,8 @@ module UltracartClient
     # Message date/time
     attr_accessor :message_dts
 
+    attr_accessor :transport_statuses
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -32,7 +34,8 @@ module UltracartClient
         :'author_conversation_participant_name' => :'author_conversation_participant_name',
         :'body' => :'body',
         :'media_urls' => :'media_urls',
-        :'message_dts' => :'message_dts'
+        :'message_dts' => :'message_dts',
+        :'transport_statuses' => :'transport_statuses'
       }
     end
 
@@ -43,7 +46,8 @@ module UltracartClient
         :'author_conversation_participant_name' => :'String',
         :'body' => :'String',
         :'media_urls' => :'Array<String>',
-        :'message_dts' => :'String'
+        :'message_dts' => :'String',
+        :'transport_statuses' => :'Array<ConversationMessageTransportStatus>'
       }
     end
 
@@ -76,6 +80,12 @@ module UltracartClient
       if attributes.has_key?(:'message_dts')
         self.message_dts = attributes[:'message_dts']
       end
+
+      if attributes.has_key?(:'transport_statuses')
+        if (value = attributes[:'transport_statuses']).is_a?(Array)
+          self.transport_statuses = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -100,7 +110,8 @@ module UltracartClient
           author_conversation_participant_name == o.author_conversation_participant_name &&
           body == o.body &&
           media_urls == o.media_urls &&
-          message_dts == o.message_dts
+          message_dts == o.message_dts &&
+          transport_statuses == o.transport_statuses
     end
 
     # @see the `==` method
@@ -112,7 +123,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [author_conversation_participant_arn, author_conversation_participant_name, body, media_urls, message_dts].hash
+      [author_conversation_participant_arn, author_conversation_participant_name, body, media_urls, message_dts, transport_statuses].hash
     end
 
     # Builds the object from hash
