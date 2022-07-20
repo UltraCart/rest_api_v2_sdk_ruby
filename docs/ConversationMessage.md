@@ -9,6 +9,7 @@
 | **body** | **String** |  | [optional] |
 | **media_urls** | **Array&lt;String&gt;** |  | [optional] |
 | **message_dts** | **String** | Message date/time | [optional] |
+| **transport_statuses** | [**Array&lt;ConversationMessageTransportStatus&gt;**](ConversationMessageTransportStatus.md) |  | [optional] |
 
 ## Example
 
@@ -20,7 +21,8 @@ instance = UltracartClient::ConversationMessage.new(
   author_conversation_participant_name: null,
   body: null,
   media_urls: null,
-  message_dts: null
+  message_dts: null,
+  transport_statuses: null
 )
 ```
 

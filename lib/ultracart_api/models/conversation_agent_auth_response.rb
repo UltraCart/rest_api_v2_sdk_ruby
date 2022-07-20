@@ -17,6 +17,8 @@ module UltracartClient
   class ConversationAgentAuthResponse
     attr_accessor :conversation_participant_arn
 
+    attr_accessor :conversation_participant_name
+
     attr_accessor :jwt
 
     attr_accessor :merchant_id
@@ -29,6 +31,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'conversation_participant_arn' => :'conversation_participant_arn',
+        :'conversation_participant_name' => :'conversation_participant_name',
         :'jwt' => :'jwt',
         :'merchant_id' => :'merchant_id',
         :'twilio_phone_numbers' => :'twilio_phone_numbers',
@@ -45,6 +48,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'conversation_participant_arn' => :'String',
+        :'conversation_participant_name' => :'String',
         :'jwt' => :'String',
         :'merchant_id' => :'String',
         :'twilio_phone_numbers' => :'Array<String>',
@@ -75,6 +79,10 @@ module UltracartClient
 
       if attributes.key?(:'conversation_participant_arn')
         self.conversation_participant_arn = attributes[:'conversation_participant_arn']
+      end
+
+      if attributes.key?(:'conversation_participant_name')
+        self.conversation_participant_name = attributes[:'conversation_participant_name']
       end
 
       if attributes.key?(:'jwt')
@@ -115,6 +123,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           conversation_participant_arn == o.conversation_participant_arn &&
+          conversation_participant_name == o.conversation_participant_name &&
           jwt == o.jwt &&
           merchant_id == o.merchant_id &&
           twilio_phone_numbers == o.twilio_phone_numbers &&
@@ -130,7 +139,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_participant_arn, jwt, merchant_id, twilio_phone_numbers, websocket_url].hash
+      [conversation_participant_arn, conversation_participant_name, jwt, merchant_id, twilio_phone_numbers, websocket_url].hash
     end
 
     # Builds the object from hash

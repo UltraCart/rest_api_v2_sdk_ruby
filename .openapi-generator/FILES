@@ -130,6 +130,7 @@ docs/Conversation.md
 docs/ConversationAgentAuthResponse.md
 docs/ConversationApi.md
 docs/ConversationMessage.md
+docs/ConversationMessageTransportStatus.md
 docs/ConversationParticipant.md
 docs/ConversationStartRequest.md
 docs/ConversationStartResponse.md
@@ -808,6 +809,7 @@ lib/ultracart_api/models/city_state_zip.rb
 lib/ultracart_api/models/conversation.rb
 lib/ultracart_api/models/conversation_agent_auth_response.rb
 lib/ultracart_api/models/conversation_message.rb
+lib/ultracart_api/models/conversation_message_transport_status.rb
 lib/ultracart_api/models/conversation_participant.rb
 lib/ultracart_api/models/conversation_start_request.rb
 lib/ultracart_api/models/conversation_start_response.rb
