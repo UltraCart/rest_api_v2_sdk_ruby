@@ -1,10 +1,10 @@
-# UltracartClient::ConversationAgentAuthResponse
+# UltracartClient::ConversationResponse
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **agent_auth** | [**ConversationAgentAuth**](ConversationAgentAuth.md) |  | [optional] |
+| **conversation** | [**Conversation**](Conversation.md) |  | [optional] |
 | **error** | [**Error**](Error.md) |  | [optional] |
 | **metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] |
 | **success** | **Boolean** | Indicates if API call was successful | [optional] |
@@ -15,8 +15,8 @@
 ```ruby
 require 'ultracart_api'
 
-instance = UltracartClient::ConversationAgentAuthResponse.new(
-  agent_auth: null,
+instance = UltracartClient::ConversationResponse.new(
+  conversation: null,
   error: null,
   metadata: null,
   success: null,

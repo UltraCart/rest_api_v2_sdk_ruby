@@ -127,11 +127,13 @@ docs/CheckoutSetupBrowserKeyResponse.md
 docs/CheckoutStateProvinceResponse.md
 docs/CityStateZip.md
 docs/Conversation.md
+docs/ConversationAgentAuth.md
 docs/ConversationAgentAuthResponse.md
 docs/ConversationApi.md
 docs/ConversationMessage.md
 docs/ConversationMessageTransportStatus.md
 docs/ConversationParticipant.md
+docs/ConversationResponse.md
 docs/ConversationStartRequest.md
 docs/ConversationStartResponse.md
 docs/ConversationSummary.md
@@ -807,10 +809,12 @@ lib/ultracart_api/models/checkout_setup_browser_key_response.rb
 lib/ultracart_api/models/checkout_state_province_response.rb
 lib/ultracart_api/models/city_state_zip.rb
 lib/ultracart_api/models/conversation.rb
+lib/ultracart_api/models/conversation_agent_auth.rb
 lib/ultracart_api/models/conversation_agent_auth_response.rb
 lib/ultracart_api/models/conversation_message.rb
 lib/ultracart_api/models/conversation_message_transport_status.rb
 lib/ultracart_api/models/conversation_participant.rb
+lib/ultracart_api/models/conversation_response.rb
 lib/ultracart_api/models/conversation_start_request.rb
 lib/ultracart_api/models/conversation_start_response.rb
 lib/ultracart_api/models/conversation_summary.rb

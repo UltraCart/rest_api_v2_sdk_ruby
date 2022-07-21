@@ -83,7 +83,7 @@ This endpoint does not need any parameter.
 
 ## get_conversation
 
-> <Conversation> get_conversation(conversation_uuid)
+> <ConversationResponse> get_conversation(conversation_uuid)
 
 Retrieve a conversation
 
@@ -118,7 +118,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Conversation>, Integer, Hash)> get_conversation_with_http_info(conversation_uuid)
+> <Array(<ConversationResponse>, Integer, Hash)> get_conversation_with_http_info(conversation_uuid)
 
 ```ruby
 begin
@@ -126,7 +126,7 @@ begin
   data, status_code, headers = api_instance.get_conversation_with_http_info(conversation_uuid)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Conversation>
+  p data # => <ConversationResponse>
 rescue UltracartClient::ApiError => e
   puts "Error when calling ConversationApi->get_conversation_with_http_info: #{e}"
 end
@@ -140,7 +140,7 @@ end
 
 ### Return type
 
-[**Conversation**](Conversation.md)
+[**ConversationResponse**](ConversationResponse.md)
 
 ### Authorization
 

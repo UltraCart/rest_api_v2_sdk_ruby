@@ -45,7 +45,7 @@ module UltracartClient
     # Postcard front container uuid
     attr_accessor :postcard_front_container_uuid
 
-    # URL to screenshot of the back of the postcard
+    # URL to screenshot of the front of the postcard
     attr_accessor :screenshot_back_url
 
     # URL to screenshot of the front of the postcard

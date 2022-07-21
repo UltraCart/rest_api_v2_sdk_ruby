@@ -14,13 +14,28 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationStartResponse
-    attr_accessor :conversation
+  class ConversationAgentAuth
+    attr_accessor :conversation_participant_arn
+
+    attr_accessor :conversation_participant_name
+
+    attr_accessor :jwt
+
+    attr_accessor :merchant_id
+
+    attr_accessor :twilio_phone_numbers
+
+    attr_accessor :websocket_url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'conversation' => :'conversation'
+        :'conversation_participant_arn' => :'conversation_participant_arn',
+        :'conversation_participant_name' => :'conversation_participant_name',
+        :'jwt' => :'jwt',
+        :'merchant_id' => :'merchant_id',
+        :'twilio_phone_numbers' => :'twilio_phone_numbers',
+        :'websocket_url' => :'websocket_url'
       }
     end
 
@@ -32,7 +47,12 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'conversation' => :'Conversation'
+        :'conversation_participant_arn' => :'String',
+        :'conversation_participant_name' => :'String',
+        :'jwt' => :'String',
+        :'merchant_id' => :'String',
+        :'twilio_phone_numbers' => :'Array<String>',
+        :'websocket_url' => :'String'
       }
     end
 
@@ -46,19 +66,41 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationStartResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationAgentAuth` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationStartResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationAgentAuth`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'conversation')
-        self.conversation = attributes[:'conversation']
+      if attributes.key?(:'conversation_participant_arn')
+        self.conversation_participant_arn = attributes[:'conversation_participant_arn']
+      end
+
+      if attributes.key?(:'conversation_participant_name')
+        self.conversation_participant_name = attributes[:'conversation_participant_name']
+      end
+
+      if attributes.key?(:'jwt')
+        self.jwt = attributes[:'jwt']
+      end
+
+      if attributes.key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
+      end
+
+      if attributes.key?(:'twilio_phone_numbers')
+        if (value = attributes[:'twilio_phone_numbers']).is_a?(Array)
+          self.twilio_phone_numbers = value
+        end
+      end
+
+      if attributes.key?(:'websocket_url')
+        self.websocket_url = attributes[:'websocket_url']
       end
     end
 
@@ -80,7 +122,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          conversation == o.conversation
+          conversation_participant_arn == o.conversation_participant_arn &&
+          conversation_participant_name == o.conversation_participant_name &&
+          jwt == o.jwt &&
+          merchant_id == o.merchant_id &&
+          twilio_phone_numbers == o.twilio_phone_numbers &&
+          websocket_url == o.websocket_url
     end
 
     # @see the `==` method
@@ -92,7 +139,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation].hash
+      [conversation_participant_arn, conversation_participant_name, jwt, merchant_id, twilio_phone_numbers, websocket_url].hash
     end
 
     # Builds the object from hash

@@ -14,13 +14,26 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationStartResponse
+  class ConversationResponse
     attr_accessor :conversation
+
+    attr_accessor :error
+
+    attr_accessor :metadata
+
+    # Indicates if API call was successful
+    attr_accessor :success
+
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'conversation' => :'conversation'
+        :'conversation' => :'conversation',
+        :'error' => :'error',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
@@ -32,7 +45,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'conversation' => :'Conversation'
+        :'conversation' => :'Conversation',
+        :'error' => :'Error',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'Boolean',
+        :'warning' => :'Warning'
       }
     end
 
@@ -46,19 +63,35 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationStartResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationStartResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
       if attributes.key?(:'conversation')
         self.conversation = attributes[:'conversation']
+      end
+
+      if attributes.key?(:'error')
+        self.error = attributes[:'error']
+      end
+
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.key?(:'success')
+        self.success = attributes[:'success']
+      end
+
+      if attributes.key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -80,7 +113,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          conversation == o.conversation
+          conversation == o.conversation &&
+          error == o.error &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -92,7 +129,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation].hash
+      [conversation, error, metadata, success, warning].hash
     end
 
     # Builds the object from hash

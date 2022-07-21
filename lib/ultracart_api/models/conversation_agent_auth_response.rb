@@ -15,27 +15,25 @@ require 'time'
 
 module UltracartClient
   class ConversationAgentAuthResponse
-    attr_accessor :conversation_participant_arn
+    attr_accessor :agent_auth
 
-    attr_accessor :conversation_participant_name
+    attr_accessor :error
 
-    attr_accessor :jwt
+    attr_accessor :metadata
 
-    attr_accessor :merchant_id
+    # Indicates if API call was successful
+    attr_accessor :success
 
-    attr_accessor :twilio_phone_numbers
-
-    attr_accessor :websocket_url
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'conversation_participant_arn' => :'conversation_participant_arn',
-        :'conversation_participant_name' => :'conversation_participant_name',
-        :'jwt' => :'jwt',
-        :'merchant_id' => :'merchant_id',
-        :'twilio_phone_numbers' => :'twilio_phone_numbers',
-        :'websocket_url' => :'websocket_url'
+        :'agent_auth' => :'agent_auth',
+        :'error' => :'error',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
@@ -47,12 +45,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'conversation_participant_arn' => :'String',
-        :'conversation_participant_name' => :'String',
-        :'jwt' => :'String',
-        :'merchant_id' => :'String',
-        :'twilio_phone_numbers' => :'Array<String>',
-        :'websocket_url' => :'String'
+        :'agent_auth' => :'ConversationAgentAuth',
+        :'error' => :'Error',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'Boolean',
+        :'warning' => :'Warning'
       }
     end
 
@@ -77,30 +74,24 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'conversation_participant_arn')
-        self.conversation_participant_arn = attributes[:'conversation_participant_arn']
+      if attributes.key?(:'agent_auth')
+        self.agent_auth = attributes[:'agent_auth']
       end
 
-      if attributes.key?(:'conversation_participant_name')
-        self.conversation_participant_name = attributes[:'conversation_participant_name']
+      if attributes.key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.key?(:'jwt')
-        self.jwt = attributes[:'jwt']
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.key?(:'merchant_id')
-        self.merchant_id = attributes[:'merchant_id']
+      if attributes.key?(:'success')
+        self.success = attributes[:'success']
       end
 
-      if attributes.key?(:'twilio_phone_numbers')
-        if (value = attributes[:'twilio_phone_numbers']).is_a?(Array)
-          self.twilio_phone_numbers = value
-        end
-      end
-
-      if attributes.key?(:'websocket_url')
-        self.websocket_url = attributes[:'websocket_url']
+      if attributes.key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -122,12 +113,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          conversation_participant_arn == o.conversation_participant_arn &&
-          conversation_participant_name == o.conversation_participant_name &&
-          jwt == o.jwt &&
-          merchant_id == o.merchant_id &&
-          twilio_phone_numbers == o.twilio_phone_numbers &&
-          websocket_url == o.websocket_url
+          agent_auth == o.agent_auth &&
+          error == o.error &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -139,7 +129,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_participant_arn, conversation_participant_name, jwt, merchant_id, twilio_phone_numbers, websocket_url].hash
+      [agent_auth, error, metadata, success, warning].hash
     end
 
     # Builds the object from hash
