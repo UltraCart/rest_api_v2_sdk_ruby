@@ -132,6 +132,8 @@ docs/ConversationAgentAuthResponse.md
 docs/ConversationApi.md
 docs/ConversationMessage.md
 docs/ConversationMessageTransportStatus.md
+docs/ConversationMultimediaUploadUrl.md
+docs/ConversationMultimediaUploadUrlResponse.md
 docs/ConversationParticipant.md
 docs/ConversationResponse.md
 docs/ConversationStartRequest.md
@@ -813,6 +815,8 @@ lib/ultracart_api/models/conversation_agent_auth.rb
 lib/ultracart_api/models/conversation_agent_auth_response.rb
 lib/ultracart_api/models/conversation_message.rb
 lib/ultracart_api/models/conversation_message_transport_status.rb
+lib/ultracart_api/models/conversation_multimedia_upload_url.rb
+lib/ultracart_api/models/conversation_multimedia_upload_url_response.rb
 lib/ultracart_api/models/conversation_participant.rb
 lib/ultracart_api/models/conversation_response.rb
 lib/ultracart_api/models/conversation_start_request.rb

@@ -154,7 +154,7 @@ end
 
 ## get_conversation_multimedia_upload_url
 
-> get_conversation_multimedia_upload_url(extension)
+> <ConversationMultimediaUploadUrlResponse> get_conversation_multimedia_upload_url(extension)
 
 Get a presigned conersation multimedia upload URL
 
@@ -178,7 +178,8 @@ extension = 'extension_example' # String |
 
 begin
   # Get a presigned conersation multimedia upload URL
-  api_instance.get_conversation_multimedia_upload_url(extension)
+  result = api_instance.get_conversation_multimedia_upload_url(extension)
+  p result
 rescue UltracartClient::ApiError => e
   puts "Error when calling ConversationApi->get_conversation_multimedia_upload_url: #{e}"
 end
@@ -186,9 +187,9 @@ end
 
 #### Using the get_conversation_multimedia_upload_url_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> get_conversation_multimedia_upload_url_with_http_info(extension)
+> <Array(<ConversationMultimediaUploadUrlResponse>, Integer, Hash)> get_conversation_multimedia_upload_url_with_http_info(extension)
 
 ```ruby
 begin
@@ -196,7 +197,7 @@ begin
   data, status_code, headers = api_instance.get_conversation_multimedia_upload_url_with_http_info(extension)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <ConversationMultimediaUploadUrlResponse>
 rescue UltracartClient::ApiError => e
   puts "Error when calling ConversationApi->get_conversation_multimedia_upload_url_with_http_info: #{e}"
 end
@@ -210,7 +211,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**ConversationMultimediaUploadUrlResponse**](ConversationMultimediaUploadUrlResponse.md)
 
 ### Authorization
 
