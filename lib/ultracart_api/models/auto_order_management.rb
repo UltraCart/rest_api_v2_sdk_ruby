@@ -14,19 +14,14 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationStartRequest
-    attr_accessor :add_conversation_participant_arns
-
-    attr_accessor :conversation_arn
-
-    attr_accessor :conversation_webchat_queue_uuid
+  class AutoOrderManagement
+    # URL where the customer can go to update their billing information.
+    attr_accessor :update_billing_url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'add_conversation_participant_arns' => :'add_conversation_participant_arns',
-        :'conversation_arn' => :'conversation_arn',
-        :'conversation_webchat_queue_uuid' => :'conversation_webchat_queue_uuid'
+        :'update_billing_url' => :'update_billing_url'
       }
     end
 
@@ -38,9 +33,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'add_conversation_participant_arns' => :'Array<String>',
-        :'conversation_arn' => :'String',
-        :'conversation_webchat_queue_uuid' => :'String'
+        :'update_billing_url' => :'String'
       }
     end
 
@@ -54,29 +47,19 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationStartRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::AutoOrderManagement` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationStartRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::AutoOrderManagement`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'add_conversation_participant_arns')
-        if (value = attributes[:'add_conversation_participant_arns']).is_a?(Array)
-          self.add_conversation_participant_arns = value
-        end
-      end
-
-      if attributes.key?(:'conversation_arn')
-        self.conversation_arn = attributes[:'conversation_arn']
-      end
-
-      if attributes.key?(:'conversation_webchat_queue_uuid')
-        self.conversation_webchat_queue_uuid = attributes[:'conversation_webchat_queue_uuid']
+      if attributes.key?(:'update_billing_url')
+        self.update_billing_url = attributes[:'update_billing_url']
       end
     end
 
@@ -98,9 +81,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          add_conversation_participant_arns == o.add_conversation_participant_arns &&
-          conversation_arn == o.conversation_arn &&
-          conversation_webchat_queue_uuid == o.conversation_webchat_queue_uuid
+          update_billing_url == o.update_billing_url
     end
 
     # @see the `==` method
@@ -112,7 +93,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_conversation_participant_arns, conversation_arn, conversation_webchat_queue_uuid].hash
+      [update_billing_url].hash
     end
 
     # Builds the object from hash

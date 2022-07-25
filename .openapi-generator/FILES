@@ -34,6 +34,7 @@ docs/AutoOrderItemFutureSchedule.md
 docs/AutoOrderItemOption.md
 docs/AutoOrderItemSimpleSchedule.md
 docs/AutoOrderLog.md
+docs/AutoOrderManagement.md
 docs/AutoOrderQuery.md
 docs/AutoOrderQueryBatch.md
 docs/AutoOrderResponse.md
@@ -139,6 +140,7 @@ docs/ConversationResponse.md
 docs/ConversationStartRequest.md
 docs/ConversationStartResponse.md
 docs/ConversationSummary.md
+docs/ConversationWebsocketMessage.md
 docs/ConversationsResponse.md
 docs/CountriesResponse.md
 docs/Country.md
@@ -721,6 +723,7 @@ lib/ultracart_api/models/auto_order_item_future_schedule.rb
 lib/ultracart_api/models/auto_order_item_option.rb
 lib/ultracart_api/models/auto_order_item_simple_schedule.rb
 lib/ultracart_api/models/auto_order_log.rb
+lib/ultracart_api/models/auto_order_management.rb
 lib/ultracart_api/models/auto_order_query.rb
 lib/ultracart_api/models/auto_order_query_batch.rb
 lib/ultracart_api/models/auto_order_response.rb
@@ -822,6 +825,7 @@ lib/ultracart_api/models/conversation_response.rb
 lib/ultracart_api/models/conversation_start_request.rb
 lib/ultracart_api/models/conversation_start_response.rb
 lib/ultracart_api/models/conversation_summary.rb
+lib/ultracart_api/models/conversation_websocket_message.rb
 lib/ultracart_api/models/conversations_response.rb
 lib/ultracart_api/models/countries_response.rb
 lib/ultracart_api/models/country.rb

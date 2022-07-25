@@ -14,62 +14,62 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class EmailCommseqPostcard
-    # Deleted
-    attr_accessor :deleted
+  class ConversationWebsocketMessage
+    # Conversation UUID if the websocket message is tied to a specific conversation
+    attr_accessor :conversation_uuid
 
-    # Edited by user
-    attr_accessor :edited_by_user
+    attr_accessor :event_conversation_closed
 
-    # communication sequence postcard uuid
-    attr_accessor :email_communication_sequence_postcard_uuid
+    attr_accessor :event_new_conversation
 
-    # Filter profile equation json
-    attr_accessor :filter_profile_equation_json
+    attr_accessor :event_new_message
 
-    # Merchant ID
-    attr_accessor :merchant_id
+    attr_accessor :event_queue_position
 
-    # Postcard back container cjson
-    attr_accessor :postcard_back_container_cjson
+    # Type of event
+    attr_accessor :event_type
 
-    # Postcard back container uuid
-    attr_accessor :postcard_back_container_uuid
+    attr_accessor :event_updated_message
 
-    # Timestamp the last time the container was modified.
-    attr_accessor :postcard_container_cjson_last_modified_dts
+    attr_accessor :message
 
-    # Postcard front container cjson
-    attr_accessor :postcard_front_container_cjson
+    # Type of message
+    attr_accessor :type
 
-    # Postcard front container uuid
-    attr_accessor :postcard_front_container_uuid
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    # URL to screenshot of the back of the postcard
-    attr_accessor :screenshot_back_url
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
 
-    # URL to screenshot of the front of the postcard
-    attr_accessor :screenshot_front_url
-
-    # Storefront oid
-    attr_accessor :storefront_oid
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'deleted' => :'deleted',
-        :'edited_by_user' => :'edited_by_user',
-        :'email_communication_sequence_postcard_uuid' => :'email_communication_sequence_postcard_uuid',
-        :'filter_profile_equation_json' => :'filter_profile_equation_json',
-        :'merchant_id' => :'merchant_id',
-        :'postcard_back_container_cjson' => :'postcard_back_container_cjson',
-        :'postcard_back_container_uuid' => :'postcard_back_container_uuid',
-        :'postcard_container_cjson_last_modified_dts' => :'postcard_container_cjson_last_modified_dts',
-        :'postcard_front_container_cjson' => :'postcard_front_container_cjson',
-        :'postcard_front_container_uuid' => :'postcard_front_container_uuid',
-        :'screenshot_back_url' => :'screenshot_back_url',
-        :'screenshot_front_url' => :'screenshot_front_url',
-        :'storefront_oid' => :'storefront_oid'
+        :'conversation_uuid' => :'conversation_uuid',
+        :'event_conversation_closed' => :'event_conversation_closed',
+        :'event_new_conversation' => :'event_new_conversation',
+        :'event_new_message' => :'event_new_message',
+        :'event_queue_position' => :'event_queue_position',
+        :'event_type' => :'event_type',
+        :'event_updated_message' => :'event_updated_message',
+        :'message' => :'message',
+        :'type' => :'type'
       }
     end
 
@@ -81,19 +81,15 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'deleted' => :'Boolean',
-        :'edited_by_user' => :'String',
-        :'email_communication_sequence_postcard_uuid' => :'String',
-        :'filter_profile_equation_json' => :'String',
-        :'merchant_id' => :'String',
-        :'postcard_back_container_cjson' => :'String',
-        :'postcard_back_container_uuid' => :'String',
-        :'postcard_container_cjson_last_modified_dts' => :'String',
-        :'postcard_front_container_cjson' => :'String',
-        :'postcard_front_container_uuid' => :'String',
-        :'screenshot_back_url' => :'String',
-        :'screenshot_front_url' => :'String',
-        :'storefront_oid' => :'Integer'
+        :'conversation_uuid' => :'String',
+        :'event_conversation_closed' => :'Conversation',
+        :'event_new_conversation' => :'Conversation',
+        :'event_new_message' => :'ConversationMessage',
+        :'event_queue_position' => :'Object',
+        :'event_type' => :'String',
+        :'event_updated_message' => :'ConversationMessage',
+        :'message' => :'ConversationMessage',
+        :'type' => :'String'
       }
     end
 
@@ -107,67 +103,51 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::EmailCommseqPostcard` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationWebsocketMessage` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::EmailCommseqPostcard`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationWebsocketMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'deleted')
-        self.deleted = attributes[:'deleted']
+      if attributes.key?(:'conversation_uuid')
+        self.conversation_uuid = attributes[:'conversation_uuid']
       end
 
-      if attributes.key?(:'edited_by_user')
-        self.edited_by_user = attributes[:'edited_by_user']
+      if attributes.key?(:'event_conversation_closed')
+        self.event_conversation_closed = attributes[:'event_conversation_closed']
       end
 
-      if attributes.key?(:'email_communication_sequence_postcard_uuid')
-        self.email_communication_sequence_postcard_uuid = attributes[:'email_communication_sequence_postcard_uuid']
+      if attributes.key?(:'event_new_conversation')
+        self.event_new_conversation = attributes[:'event_new_conversation']
       end
 
-      if attributes.key?(:'filter_profile_equation_json')
-        self.filter_profile_equation_json = attributes[:'filter_profile_equation_json']
+      if attributes.key?(:'event_new_message')
+        self.event_new_message = attributes[:'event_new_message']
       end
 
-      if attributes.key?(:'merchant_id')
-        self.merchant_id = attributes[:'merchant_id']
+      if attributes.key?(:'event_queue_position')
+        self.event_queue_position = attributes[:'event_queue_position']
       end
 
-      if attributes.key?(:'postcard_back_container_cjson')
-        self.postcard_back_container_cjson = attributes[:'postcard_back_container_cjson']
+      if attributes.key?(:'event_type')
+        self.event_type = attributes[:'event_type']
       end
 
-      if attributes.key?(:'postcard_back_container_uuid')
-        self.postcard_back_container_uuid = attributes[:'postcard_back_container_uuid']
+      if attributes.key?(:'event_updated_message')
+        self.event_updated_message = attributes[:'event_updated_message']
       end
 
-      if attributes.key?(:'postcard_container_cjson_last_modified_dts')
-        self.postcard_container_cjson_last_modified_dts = attributes[:'postcard_container_cjson_last_modified_dts']
+      if attributes.key?(:'message')
+        self.message = attributes[:'message']
       end
 
-      if attributes.key?(:'postcard_front_container_cjson')
-        self.postcard_front_container_cjson = attributes[:'postcard_front_container_cjson']
-      end
-
-      if attributes.key?(:'postcard_front_container_uuid')
-        self.postcard_front_container_uuid = attributes[:'postcard_front_container_uuid']
-      end
-
-      if attributes.key?(:'screenshot_back_url')
-        self.screenshot_back_url = attributes[:'screenshot_back_url']
-      end
-
-      if attributes.key?(:'screenshot_front_url')
-        self.screenshot_front_url = attributes[:'screenshot_front_url']
-      end
-
-      if attributes.key?(:'storefront_oid')
-        self.storefront_oid = attributes[:'storefront_oid']
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
       end
     end
 
@@ -181,7 +161,31 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      event_type_validator = EnumAttributeValidator.new('String', ["queue position", "webchat start conversation", "conversation closed", "new conversation", "new message", "updated message"])
+      return false unless event_type_validator.valid?(@event_type)
+      type_validator = EnumAttributeValidator.new('String', ["message", "event", "ping"])
+      return false unless type_validator.valid?(@type)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] event_type Object to be assigned
+    def event_type=(event_type)
+      validator = EnumAttributeValidator.new('String', ["queue position", "webchat start conversation", "conversation closed", "new conversation", "new message", "updated message"])
+      unless validator.valid?(event_type)
+        fail ArgumentError, "invalid value for \"event_type\", must be one of #{validator.allowable_values}."
+      end
+      @event_type = event_type
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] type Object to be assigned
+    def type=(type)
+      validator = EnumAttributeValidator.new('String', ["message", "event", "ping"])
+      unless validator.valid?(type)
+        fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
+      end
+      @type = type
     end
 
     # Checks equality by comparing each attribute.
@@ -189,19 +193,15 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          deleted == o.deleted &&
-          edited_by_user == o.edited_by_user &&
-          email_communication_sequence_postcard_uuid == o.email_communication_sequence_postcard_uuid &&
-          filter_profile_equation_json == o.filter_profile_equation_json &&
-          merchant_id == o.merchant_id &&
-          postcard_back_container_cjson == o.postcard_back_container_cjson &&
-          postcard_back_container_uuid == o.postcard_back_container_uuid &&
-          postcard_container_cjson_last_modified_dts == o.postcard_container_cjson_last_modified_dts &&
-          postcard_front_container_cjson == o.postcard_front_container_cjson &&
-          postcard_front_container_uuid == o.postcard_front_container_uuid &&
-          screenshot_back_url == o.screenshot_back_url &&
-          screenshot_front_url == o.screenshot_front_url &&
-          storefront_oid == o.storefront_oid
+          conversation_uuid == o.conversation_uuid &&
+          event_conversation_closed == o.event_conversation_closed &&
+          event_new_conversation == o.event_new_conversation &&
+          event_new_message == o.event_new_message &&
+          event_queue_position == o.event_queue_position &&
+          event_type == o.event_type &&
+          event_updated_message == o.event_updated_message &&
+          message == o.message &&
+          type == o.type
     end
 
     # @see the `==` method
@@ -213,7 +213,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [deleted, edited_by_user, email_communication_sequence_postcard_uuid, filter_profile_equation_json, merchant_id, postcard_back_container_cjson, postcard_back_container_uuid, postcard_container_cjson_last_modified_dts, postcard_front_container_cjson, postcard_front_container_uuid, screenshot_back_url, screenshot_front_url, storefront_oid].hash
+      [conversation_uuid, event_conversation_closed, event_new_conversation, event_new_message, event_queue_position, event_type, event_updated_message, message, type].hash
     end
 
     # Builds the object from hash
