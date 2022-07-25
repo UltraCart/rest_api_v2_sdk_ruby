@@ -76,9 +76,9 @@ module UltracartClient
     def self.swagger_types
       {
         :'conversation_uuid' => :'String',
-        :'event_conversation_closed' => :'Conversation',
-        :'event_new_conversation' => :'Conversation',
-        :'event_new_message' => :'Conversation',
+        :'event_conversation_closed' => :'ConversationSummary',
+        :'event_new_conversation' => :'ConversationSummary',
+        :'event_new_message' => :'ConversationSummary',
         :'event_queue_position' => :'ConversationEventQueuePosition',
         :'event_type' => :'String',
         :'event_updated_message' => :'ConversationMessage',

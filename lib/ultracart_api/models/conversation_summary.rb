@@ -14,6 +14,8 @@ require 'date'
 
 module UltracartClient
   class ConversationSummary
+    attr_accessor :closed
+
     attr_accessor :conversation_arn
 
     attr_accessor :conversation_uuid
@@ -36,6 +38,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'closed' => :'closed',
         :'conversation_arn' => :'conversation_arn',
         :'conversation_uuid' => :'conversation_uuid',
         :'last_conversation_message_body' => :'last_conversation_message_body',
@@ -51,6 +54,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'closed' => :'BOOLEAN',
         :'conversation_arn' => :'String',
         :'conversation_uuid' => :'String',
         :'last_conversation_message_body' => :'String',
@@ -70,6 +74,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'closed')
+        self.closed = attributes[:'closed']
+      end
 
       if attributes.has_key?(:'conversation_arn')
         self.conversation_arn = attributes[:'conversation_arn']
@@ -126,6 +134,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          closed == o.closed &&
           conversation_arn == o.conversation_arn &&
           conversation_uuid == o.conversation_uuid &&
           last_conversation_message_body == o.last_conversation_message_body &&
@@ -146,7 +155,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_arn, conversation_uuid, last_conversation_message_body, last_conversation_participant_arn, last_conversation_participant_name, last_message_dts, merchant_id, message_count, unread_messages].hash
+      [closed, conversation_arn, conversation_uuid, last_conversation_message_body, last_conversation_participant_arn, last_conversation_participant_name, last_message_dts, merchant_id, message_count, unread_messages].hash
     end
 
     # Builds the object from hash

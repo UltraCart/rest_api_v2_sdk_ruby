@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**closed** | **BOOLEAN** |  | [optional] 
 **conversation_arn** | **String** |  | [optional] 
 **conversation_uuid** | **String** |  | [optional] 
 **last_conversation_message_body** | **String** |  | [optional] 

@@ -14,6 +14,8 @@ require 'date'
 
 module UltracartClient
   class Conversation
+    attr_accessor :closed
+
     attr_accessor :conversation_arn
 
     attr_accessor :conversation_uuid
@@ -27,6 +29,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'closed' => :'closed',
         :'conversation_arn' => :'conversation_arn',
         :'conversation_uuid' => :'conversation_uuid',
         :'merchant_id' => :'merchant_id',
@@ -38,6 +41,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'closed' => :'BOOLEAN',
         :'conversation_arn' => :'String',
         :'conversation_uuid' => :'String',
         :'merchant_id' => :'String',
@@ -53,6 +57,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'closed')
+        self.closed = attributes[:'closed']
+      end
 
       if attributes.has_key?(:'conversation_arn')
         self.conversation_arn = attributes[:'conversation_arn']
@@ -97,6 +105,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          closed == o.closed &&
           conversation_arn == o.conversation_arn &&
           conversation_uuid == o.conversation_uuid &&
           merchant_id == o.merchant_id &&
@@ -113,7 +122,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_arn, conversation_uuid, merchant_id, messages, participants].hash
+      [closed, conversation_arn, conversation_uuid, merchant_id, messages, participants].hash
     end
 
     # Builds the object from hash
