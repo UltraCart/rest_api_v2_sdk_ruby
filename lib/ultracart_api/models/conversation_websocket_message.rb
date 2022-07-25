@@ -13,37 +13,77 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ConversationAgentAuthResponse
-    attr_accessor :agent_auth
+  class ConversationWebsocketMessage
+    # Conversation UUID if the websocket message is tied to a specific conversation
+    attr_accessor :conversation_uuid
 
-    attr_accessor :error
+    attr_accessor :event_conversation_closed
 
-    attr_accessor :metadata
+    attr_accessor :event_new_conversation
 
-    # Indicates if API call was successful
-    attr_accessor :success
+    attr_accessor :event_new_message
 
-    attr_accessor :warning
+    attr_accessor :event_queue_position
+
+    # Type of event
+    attr_accessor :event_type
+
+    attr_accessor :event_updated_message
+
+    attr_accessor :message
+
+    # Type of message
+    attr_accessor :type
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'agent_auth' => :'agent_auth',
-        :'error' => :'error',
-        :'metadata' => :'metadata',
-        :'success' => :'success',
-        :'warning' => :'warning'
+        :'conversation_uuid' => :'conversation_uuid',
+        :'event_conversation_closed' => :'event_conversation_closed',
+        :'event_new_conversation' => :'event_new_conversation',
+        :'event_new_message' => :'event_new_message',
+        :'event_queue_position' => :'event_queue_position',
+        :'event_type' => :'event_type',
+        :'event_updated_message' => :'event_updated_message',
+        :'message' => :'message',
+        :'type' => :'type'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'agent_auth' => :'ConversationAgentAuth',
-        :'error' => :'Error',
-        :'metadata' => :'ResponseMetadata',
-        :'success' => :'BOOLEAN',
-        :'warning' => :'Warning'
+        :'conversation_uuid' => :'String',
+        :'event_conversation_closed' => :'Conversation',
+        :'event_new_conversation' => :'Conversation',
+        :'event_new_message' => :'ConversationMessage',
+        :'event_queue_position' => :'ConversationEventQueuePosition',
+        :'event_type' => :'String',
+        :'event_updated_message' => :'ConversationMessage',
+        :'message' => :'ConversationMessage',
+        :'type' => :'String'
       }
     end
 
@@ -55,24 +95,40 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'agent_auth')
-        self.agent_auth = attributes[:'agent_auth']
+      if attributes.has_key?(:'conversation_uuid')
+        self.conversation_uuid = attributes[:'conversation_uuid']
       end
 
-      if attributes.has_key?(:'error')
-        self.error = attributes[:'error']
+      if attributes.has_key?(:'event_conversation_closed')
+        self.event_conversation_closed = attributes[:'event_conversation_closed']
       end
 
-      if attributes.has_key?(:'metadata')
-        self.metadata = attributes[:'metadata']
+      if attributes.has_key?(:'event_new_conversation')
+        self.event_new_conversation = attributes[:'event_new_conversation']
       end
 
-      if attributes.has_key?(:'success')
-        self.success = attributes[:'success']
+      if attributes.has_key?(:'event_new_message')
+        self.event_new_message = attributes[:'event_new_message']
       end
 
-      if attributes.has_key?(:'warning')
-        self.warning = attributes[:'warning']
+      if attributes.has_key?(:'event_queue_position')
+        self.event_queue_position = attributes[:'event_queue_position']
+      end
+
+      if attributes.has_key?(:'event_type')
+        self.event_type = attributes[:'event_type']
+      end
+
+      if attributes.has_key?(:'event_updated_message')
+        self.event_updated_message = attributes[:'event_updated_message']
+      end
+
+      if attributes.has_key?(:'message')
+        self.message = attributes[:'message']
+      end
+
+      if attributes.has_key?(:'type')
+        self.type = attributes[:'type']
       end
     end
 
@@ -86,7 +142,31 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      event_type_validator = EnumAttributeValidator.new('String', ['queue position', 'webchat start conversation', 'conversation closed', 'new conversation', 'new message', 'updated message'])
+      return false unless event_type_validator.valid?(@event_type)
+      type_validator = EnumAttributeValidator.new('String', ['message', 'event', 'ping'])
+      return false unless type_validator.valid?(@type)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] event_type Object to be assigned
+    def event_type=(event_type)
+      validator = EnumAttributeValidator.new('String', ['queue position', 'webchat start conversation', 'conversation closed', 'new conversation', 'new message', 'updated message'])
+      unless validator.valid?(event_type)
+        fail ArgumentError, 'invalid value for "event_type", must be one of #{validator.allowable_values}.'
+      end
+      @event_type = event_type
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] type Object to be assigned
+    def type=(type)
+      validator = EnumAttributeValidator.new('String', ['message', 'event', 'ping'])
+      unless validator.valid?(type)
+        fail ArgumentError, 'invalid value for "type", must be one of #{validator.allowable_values}.'
+      end
+      @type = type
     end
 
     # Checks equality by comparing each attribute.
@@ -94,11 +174,15 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          agent_auth == o.agent_auth &&
-          error == o.error &&
-          metadata == o.metadata &&
-          success == o.success &&
-          warning == o.warning
+          conversation_uuid == o.conversation_uuid &&
+          event_conversation_closed == o.event_conversation_closed &&
+          event_new_conversation == o.event_new_conversation &&
+          event_new_message == o.event_new_message &&
+          event_queue_position == o.event_queue_position &&
+          event_type == o.event_type &&
+          event_updated_message == o.event_updated_message &&
+          message == o.message &&
+          type == o.type
     end
 
     # @see the `==` method
@@ -110,7 +194,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [agent_auth, error, metadata, success, warning].hash
+      [conversation_uuid, event_conversation_closed, event_new_conversation, event_new_message, event_queue_position, event_type, event_updated_message, message, type].hash
     end
 
     # Builds the object from hash

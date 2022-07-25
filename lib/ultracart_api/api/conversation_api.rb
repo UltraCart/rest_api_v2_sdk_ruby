@@ -85,7 +85,7 @@ module UltracartClient
     # Retrieve a conversation including the participants and messages 
     # @param conversation_uuid 
     # @param [Hash] opts the optional parameters
-    # @return [Conversation]
+    # @return [ConversationResponse]
     def get_conversation(conversation_uuid, opts = {})
       data, _status_code, _headers = get_conversation_with_http_info(conversation_uuid, opts)
       data
@@ -95,7 +95,7 @@ module UltracartClient
     # Retrieve a conversation including the participants and messages 
     # @param conversation_uuid 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Conversation, Fixnum, Hash)>] Conversation data, response status code and response headers
+    # @return [Array<(ConversationResponse, Fixnum, Hash)>] ConversationResponse data, response status code and response headers
     def get_conversation_with_http_info(conversation_uuid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ConversationApi.get_conversation ...'
@@ -130,7 +130,7 @@ module UltracartClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Conversation')
+        :return_type => 'ConversationResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#get_conversation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -140,17 +140,17 @@ module UltracartClient
     # Get a presigned conersation multimedia upload URL 
     # @param extension 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [ConversationMultimediaUploadUrlResponse]
     def get_conversation_multimedia_upload_url(extension, opts = {})
-      get_conversation_multimedia_upload_url_with_http_info(extension, opts)
-      nil
+      data, _status_code, _headers = get_conversation_multimedia_upload_url_with_http_info(extension, opts)
+      data
     end
 
     # Get a presigned conersation multimedia upload URL
     # Get a presigned conersation multimedia upload URL 
     # @param extension 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(ConversationMultimediaUploadUrlResponse, Fixnum, Hash)>] ConversationMultimediaUploadUrlResponse data, response status code and response headers
     def get_conversation_multimedia_upload_url_with_http_info(extension, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ConversationApi.get_conversation_multimedia_upload_url ...'
@@ -184,7 +184,8 @@ module UltracartClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'ConversationMultimediaUploadUrlResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#get_conversation_multimedia_upload_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

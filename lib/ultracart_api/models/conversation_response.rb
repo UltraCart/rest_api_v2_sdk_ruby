@@ -13,28 +13,37 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ConversationStartRequest
-    attr_accessor :add_conversation_participant_arns
+  class ConversationResponse
+    attr_accessor :conversation
 
-    attr_accessor :conversation_arn
+    attr_accessor :error
 
-    attr_accessor :conversation_webchat_queue_uuid
+    attr_accessor :metadata
+
+    # Indicates if API call was successful
+    attr_accessor :success
+
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'add_conversation_participant_arns' => :'add_conversation_participant_arns',
-        :'conversation_arn' => :'conversation_arn',
-        :'conversation_webchat_queue_uuid' => :'conversation_webchat_queue_uuid'
+        :'conversation' => :'conversation',
+        :'error' => :'error',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'add_conversation_participant_arns' => :'Array<String>',
-        :'conversation_arn' => :'String',
-        :'conversation_webchat_queue_uuid' => :'String'
+        :'conversation' => :'Conversation',
+        :'error' => :'Error',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'BOOLEAN',
+        :'warning' => :'Warning'
       }
     end
 
@@ -46,18 +55,24 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'add_conversation_participant_arns')
-        if (value = attributes[:'add_conversation_participant_arns']).is_a?(Array)
-          self.add_conversation_participant_arns = value
-        end
+      if attributes.has_key?(:'conversation')
+        self.conversation = attributes[:'conversation']
       end
 
-      if attributes.has_key?(:'conversation_arn')
-        self.conversation_arn = attributes[:'conversation_arn']
+      if attributes.has_key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.has_key?(:'conversation_webchat_queue_uuid')
-        self.conversation_webchat_queue_uuid = attributes[:'conversation_webchat_queue_uuid']
+      if attributes.has_key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.has_key?(:'success')
+        self.success = attributes[:'success']
+      end
+
+      if attributes.has_key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -79,9 +94,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          add_conversation_participant_arns == o.add_conversation_participant_arns &&
-          conversation_arn == o.conversation_arn &&
-          conversation_webchat_queue_uuid == o.conversation_webchat_queue_uuid
+          conversation == o.conversation &&
+          error == o.error &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -93,7 +110,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [add_conversation_participant_arns, conversation_arn, conversation_webchat_queue_uuid].hash
+      [conversation, error, metadata, success, warning].hash
     end
 
     # Builds the object from hash

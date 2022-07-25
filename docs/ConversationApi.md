@@ -59,7 +59,7 @@ This endpoint does not need any parameter.
 
 
 # **get_conversation**
-> Conversation get_conversation(conversation_uuid)
+> ConversationResponse get_conversation(conversation_uuid)
 
 Retrieve a conversation
 
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Conversation**](Conversation.md)
+[**ConversationResponse**](ConversationResponse.md)
 
 ### Authorization
 
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 
 
 # **get_conversation_multimedia_upload_url**
-> get_conversation_multimedia_upload_url(extension)
+> ConversationMultimediaUploadUrlResponse get_conversation_multimedia_upload_url(extension)
 
 Get a presigned conersation multimedia upload URL
 
@@ -130,7 +130,8 @@ extension = 'extension_example' # String |
 
 begin
   #Get a presigned conersation multimedia upload URL
-  api_instance.get_conversation_multimedia_upload_url(extension)
+  result = api_instance.get_conversation_multimedia_upload_url(extension)
+  p result
 rescue UltracartClient::ApiError => e
   puts "Exception when calling ConversationApi->get_conversation_multimedia_upload_url: #{e}"
 end
@@ -144,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**ConversationMultimediaUploadUrlResponse**](ConversationMultimediaUploadUrlResponse.md)
 
 ### Authorization
 

@@ -13,28 +13,40 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ConversationStartRequest
-    attr_accessor :add_conversation_participant_arns
+  class ConversationAgentAuth
+    attr_accessor :conversation_participant_arn
 
-    attr_accessor :conversation_arn
+    attr_accessor :conversation_participant_name
 
-    attr_accessor :conversation_webchat_queue_uuid
+    attr_accessor :jwt
+
+    attr_accessor :merchant_id
+
+    attr_accessor :twilio_phone_numbers
+
+    attr_accessor :websocket_url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'add_conversation_participant_arns' => :'add_conversation_participant_arns',
-        :'conversation_arn' => :'conversation_arn',
-        :'conversation_webchat_queue_uuid' => :'conversation_webchat_queue_uuid'
+        :'conversation_participant_arn' => :'conversation_participant_arn',
+        :'conversation_participant_name' => :'conversation_participant_name',
+        :'jwt' => :'jwt',
+        :'merchant_id' => :'merchant_id',
+        :'twilio_phone_numbers' => :'twilio_phone_numbers',
+        :'websocket_url' => :'websocket_url'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'add_conversation_participant_arns' => :'Array<String>',
-        :'conversation_arn' => :'String',
-        :'conversation_webchat_queue_uuid' => :'String'
+        :'conversation_participant_arn' => :'String',
+        :'conversation_participant_name' => :'String',
+        :'jwt' => :'String',
+        :'merchant_id' => :'String',
+        :'twilio_phone_numbers' => :'Array<String>',
+        :'websocket_url' => :'String'
       }
     end
 
@@ -46,18 +58,30 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'add_conversation_participant_arns')
-        if (value = attributes[:'add_conversation_participant_arns']).is_a?(Array)
-          self.add_conversation_participant_arns = value
+      if attributes.has_key?(:'conversation_participant_arn')
+        self.conversation_participant_arn = attributes[:'conversation_participant_arn']
+      end
+
+      if attributes.has_key?(:'conversation_participant_name')
+        self.conversation_participant_name = attributes[:'conversation_participant_name']
+      end
+
+      if attributes.has_key?(:'jwt')
+        self.jwt = attributes[:'jwt']
+      end
+
+      if attributes.has_key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
+      end
+
+      if attributes.has_key?(:'twilio_phone_numbers')
+        if (value = attributes[:'twilio_phone_numbers']).is_a?(Array)
+          self.twilio_phone_numbers = value
         end
       end
 
-      if attributes.has_key?(:'conversation_arn')
-        self.conversation_arn = attributes[:'conversation_arn']
-      end
-
-      if attributes.has_key?(:'conversation_webchat_queue_uuid')
-        self.conversation_webchat_queue_uuid = attributes[:'conversation_webchat_queue_uuid']
+      if attributes.has_key?(:'websocket_url')
+        self.websocket_url = attributes[:'websocket_url']
       end
     end
 
@@ -79,9 +103,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          add_conversation_participant_arns == o.add_conversation_participant_arns &&
-          conversation_arn == o.conversation_arn &&
-          conversation_webchat_queue_uuid == o.conversation_webchat_queue_uuid
+          conversation_participant_arn == o.conversation_participant_arn &&
+          conversation_participant_name == o.conversation_participant_name &&
+          jwt == o.jwt &&
+          merchant_id == o.merchant_id &&
+          twilio_phone_numbers == o.twilio_phone_numbers &&
+          websocket_url == o.websocket_url
     end
 
     # @see the `==` method
@@ -93,7 +120,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [add_conversation_participant_arns, conversation_arn, conversation_webchat_queue_uuid].hash
+      [conversation_participant_arn, conversation_participant_name, jwt, merchant_id, twilio_phone_numbers, websocket_url].hash
     end
 
     # Builds the object from hash
