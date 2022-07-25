@@ -14,15 +14,25 @@ require 'date'
 
 module UltracartClient
   class ConversationEventQueuePosition
+    # True if agents are logged into the queue
+    attr_accessor :available
+
+    # Position in the queue.  Value will be -1 if they cant be found in the queue.
+    attr_accessor :position
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'available' => :'available',
+        :'position' => :'position'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'available' => :'BOOLEAN',
+        :'position' => :'Integer'
       }
     end
 
@@ -33,6 +43,14 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'available')
+        self.available = attributes[:'available']
+      end
+
+      if attributes.has_key?(:'position')
+        self.position = attributes[:'position']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -52,7 +70,9 @@ module UltracartClient
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
-      self.class == o.class
+      self.class == o.class &&
+          available == o.available &&
+          position == o.position
     end
 
     # @see the `==` method
@@ -64,7 +84,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [].hash
+      [available, position].hash
     end
 
     # Builds the object from hash
