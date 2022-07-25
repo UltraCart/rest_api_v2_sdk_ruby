@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **closed** | **Boolean** |  | [optional] |
 | **conversation_arn** | **String** |  | [optional] |
 | **conversation_uuid** | **String** |  | [optional] |
 | **merchant_id** | **String** |  | [optional] |
@@ -16,6 +17,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::Conversation.new(
+  closed: null,
   conversation_arn: null,
   conversation_uuid: null,
   merchant_id: null,

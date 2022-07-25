@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **closed** | **Boolean** |  | [optional] |
 | **conversation_arn** | **String** |  | [optional] |
 | **conversation_uuid** | **String** |  | [optional] |
 | **last_conversation_message_body** | **String** |  | [optional] |
@@ -20,6 +21,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::ConversationSummary.new(
+  closed: null,
   conversation_arn: null,
   conversation_uuid: null,
   last_conversation_message_body: null,
