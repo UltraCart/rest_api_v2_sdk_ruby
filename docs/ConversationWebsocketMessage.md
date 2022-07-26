@@ -9,6 +9,7 @@
 | **event_new_conversation** | [**ConversationSummary**](ConversationSummary.md) |  | [optional] |
 | **event_new_message** | [**ConversationSummary**](ConversationSummary.md) |  | [optional] |
 | **event_queue_position** | [**ConversationEventQueuePosition**](ConversationEventQueuePosition.md) |  | [optional] |
+| **event_queue_status_update** | [**ConversationWebchatQueueStatus**](ConversationWebchatQueueStatus.md) |  | [optional] |
 | **event_type** | **String** | Type of event | [optional] |
 | **event_updated_message** | [**ConversationMessage**](ConversationMessage.md) |  | [optional] |
 | **message** | [**ConversationMessage**](ConversationMessage.md) |  | [optional] |
@@ -25,6 +26,7 @@ instance = UltracartClient::ConversationWebsocketMessage.new(
   event_new_conversation: null,
   event_new_message: null,
   event_queue_position: null,
+  event_queue_status_update: null,
   event_type: null,
   event_updated_message: null,
   message: null,

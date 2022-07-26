@@ -14,65 +14,44 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationWebsocketMessage
-    # Conversation UUID if the websocket message is tied to a specific conversation
-    attr_accessor :conversation_uuid
+  class ConversationWebchatQueueStatus
+    attr_accessor :agent_available_count
 
-    attr_accessor :event_conversation_closed
+    attr_accessor :agent_busy_count
 
-    attr_accessor :event_new_conversation
+    attr_accessor :agent_count
 
-    attr_accessor :event_new_message
+    attr_accessor :agent_unavailable_count
 
-    attr_accessor :event_queue_position
+    attr_accessor :agents
 
-    attr_accessor :event_queue_status_update
+    attr_accessor :customer_abandon_count
 
-    # Type of event
-    attr_accessor :event_type
+    attr_accessor :customer_active_count
 
-    attr_accessor :event_updated_message
+    attr_accessor :customer_waiting_count
 
-    attr_accessor :message
+    # Date/time that the oldest person joined the queue
+    attr_accessor :customer_waiting_join_dts
 
-    # Type of message
-    attr_accessor :type
+    attr_accessor :queue_entries
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :queue_name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'conversation_uuid' => :'conversation_uuid',
-        :'event_conversation_closed' => :'event_conversation_closed',
-        :'event_new_conversation' => :'event_new_conversation',
-        :'event_new_message' => :'event_new_message',
-        :'event_queue_position' => :'event_queue_position',
-        :'event_queue_status_update' => :'event_queue_status_update',
-        :'event_type' => :'event_type',
-        :'event_updated_message' => :'event_updated_message',
-        :'message' => :'message',
-        :'type' => :'type'
+        :'agent_available_count' => :'agent_available_count',
+        :'agent_busy_count' => :'agent_busy_count',
+        :'agent_count' => :'agent_count',
+        :'agent_unavailable_count' => :'agent_unavailable_count',
+        :'agents' => :'agents',
+        :'customer_abandon_count' => :'customer_abandon_count',
+        :'customer_active_count' => :'customer_active_count',
+        :'customer_waiting_count' => :'customer_waiting_count',
+        :'customer_waiting_join_dts' => :'customer_waiting_join_dts',
+        :'queue_entries' => :'queue_entries',
+        :'queue_name' => :'queue_name'
       }
     end
 
@@ -84,16 +63,17 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'conversation_uuid' => :'String',
-        :'event_conversation_closed' => :'ConversationSummary',
-        :'event_new_conversation' => :'ConversationSummary',
-        :'event_new_message' => :'ConversationSummary',
-        :'event_queue_position' => :'ConversationEventQueuePosition',
-        :'event_queue_status_update' => :'ConversationWebchatQueueStatus',
-        :'event_type' => :'String',
-        :'event_updated_message' => :'ConversationMessage',
-        :'message' => :'ConversationMessage',
-        :'type' => :'String'
+        :'agent_available_count' => :'Integer',
+        :'agent_busy_count' => :'Integer',
+        :'agent_count' => :'Integer',
+        :'agent_unavailable_count' => :'Integer',
+        :'agents' => :'Array<ConversationWebchatQueueStatusAgent>',
+        :'customer_abandon_count' => :'Integer',
+        :'customer_active_count' => :'Integer',
+        :'customer_waiting_count' => :'Integer',
+        :'customer_waiting_join_dts' => :'String',
+        :'queue_entries' => :'Array<ConversationWebchatQueueStatusQueueEntry>',
+        :'queue_name' => :'String'
       }
     end
 
@@ -107,55 +87,63 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationWebsocketMessage` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationWebchatQueueStatus` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationWebsocketMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationWebchatQueueStatus`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'conversation_uuid')
-        self.conversation_uuid = attributes[:'conversation_uuid']
+      if attributes.key?(:'agent_available_count')
+        self.agent_available_count = attributes[:'agent_available_count']
       end
 
-      if attributes.key?(:'event_conversation_closed')
-        self.event_conversation_closed = attributes[:'event_conversation_closed']
+      if attributes.key?(:'agent_busy_count')
+        self.agent_busy_count = attributes[:'agent_busy_count']
       end
 
-      if attributes.key?(:'event_new_conversation')
-        self.event_new_conversation = attributes[:'event_new_conversation']
+      if attributes.key?(:'agent_count')
+        self.agent_count = attributes[:'agent_count']
       end
 
-      if attributes.key?(:'event_new_message')
-        self.event_new_message = attributes[:'event_new_message']
+      if attributes.key?(:'agent_unavailable_count')
+        self.agent_unavailable_count = attributes[:'agent_unavailable_count']
       end
 
-      if attributes.key?(:'event_queue_position')
-        self.event_queue_position = attributes[:'event_queue_position']
+      if attributes.key?(:'agents')
+        if (value = attributes[:'agents']).is_a?(Array)
+          self.agents = value
+        end
       end
 
-      if attributes.key?(:'event_queue_status_update')
-        self.event_queue_status_update = attributes[:'event_queue_status_update']
+      if attributes.key?(:'customer_abandon_count')
+        self.customer_abandon_count = attributes[:'customer_abandon_count']
       end
 
-      if attributes.key?(:'event_type')
-        self.event_type = attributes[:'event_type']
+      if attributes.key?(:'customer_active_count')
+        self.customer_active_count = attributes[:'customer_active_count']
       end
 
-      if attributes.key?(:'event_updated_message')
-        self.event_updated_message = attributes[:'event_updated_message']
+      if attributes.key?(:'customer_waiting_count')
+        self.customer_waiting_count = attributes[:'customer_waiting_count']
       end
 
-      if attributes.key?(:'message')
-        self.message = attributes[:'message']
+      if attributes.key?(:'customer_waiting_join_dts')
+        self.customer_waiting_join_dts = attributes[:'customer_waiting_join_dts']
       end
 
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
+      if attributes.key?(:'queue_entries')
+        if (value = attributes[:'queue_entries']).is_a?(Array)
+          self.queue_entries = value
+        end
+      end
+
+      if attributes.key?(:'queue_name')
+        self.queue_name = attributes[:'queue_name']
       end
     end
 
@@ -169,31 +157,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      event_type_validator = EnumAttributeValidator.new('String', ["queue position", "webchat start conversation", "conversation closed", "new conversation", "new message", "updated message", "queue status update"])
-      return false unless event_type_validator.valid?(@event_type)
-      type_validator = EnumAttributeValidator.new('String', ["message", "event", "ping"])
-      return false unless type_validator.valid?(@type)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] event_type Object to be assigned
-    def event_type=(event_type)
-      validator = EnumAttributeValidator.new('String', ["queue position", "webchat start conversation", "conversation closed", "new conversation", "new message", "updated message", "queue status update"])
-      unless validator.valid?(event_type)
-        fail ArgumentError, "invalid value for \"event_type\", must be one of #{validator.allowable_values}."
-      end
-      @event_type = event_type
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["message", "event", "ping"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
-      end
-      @type = type
     end
 
     # Checks equality by comparing each attribute.
@@ -201,16 +165,17 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          conversation_uuid == o.conversation_uuid &&
-          event_conversation_closed == o.event_conversation_closed &&
-          event_new_conversation == o.event_new_conversation &&
-          event_new_message == o.event_new_message &&
-          event_queue_position == o.event_queue_position &&
-          event_queue_status_update == o.event_queue_status_update &&
-          event_type == o.event_type &&
-          event_updated_message == o.event_updated_message &&
-          message == o.message &&
-          type == o.type
+          agent_available_count == o.agent_available_count &&
+          agent_busy_count == o.agent_busy_count &&
+          agent_count == o.agent_count &&
+          agent_unavailable_count == o.agent_unavailable_count &&
+          agents == o.agents &&
+          customer_abandon_count == o.customer_abandon_count &&
+          customer_active_count == o.customer_active_count &&
+          customer_waiting_count == o.customer_waiting_count &&
+          customer_waiting_join_dts == o.customer_waiting_join_dts &&
+          queue_entries == o.queue_entries &&
+          queue_name == o.queue_name
     end
 
     # @see the `==` method
@@ -222,7 +187,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_uuid, event_conversation_closed, event_new_conversation, event_new_message, event_queue_position, event_queue_status_update, event_type, event_updated_message, message, type].hash
+      [agent_available_count, agent_busy_count, agent_count, agent_unavailable_count, agents, customer_abandon_count, customer_active_count, customer_waiting_count, customer_waiting_join_dts, queue_entries, queue_name].hash
     end
 
     # Builds the object from hash
