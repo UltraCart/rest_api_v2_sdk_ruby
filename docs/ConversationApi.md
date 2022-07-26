@@ -7,10 +7,12 @@ Method | HTTP request | Description
 [**get_agent_websocket_authorization**](ConversationApi.md#get_agent_websocket_authorization) | **PUT** /conversation/agent/auth | Get agent websocket authorization
 [**get_conversation**](ConversationApi.md#get_conversation) | **GET** /conversation/conversations/{conversation_uuid} | Retrieve a conversation
 [**get_conversation_multimedia_upload_url**](ConversationApi.md#get_conversation_multimedia_upload_url) | **GET** /conversation/upload_url/{extension} | Get a presigned conersation multimedia upload URL
+[**get_conversation_webchat_queue_statuses**](ConversationApi.md#get_conversation_webchat_queue_statuses) | **GET** /conversation/conversations/queues/statuses | Retrieve a conversation webchat queue statuses
 [**get_conversations**](ConversationApi.md#get_conversations) | **GET** /conversation/conversations | Retrieve a list of conversation summaries newest to oldest
 [**join_conversation**](ConversationApi.md#join_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/join | Join a conversation
 [**leave_conversation**](ConversationApi.md#leave_conversation) | **DELETE** /conversation/conversations/{conversation_uuid}/leave | Leave a conversation
 [**start_conversation**](ConversationApi.md#start_conversation) | **PUT** /conversation/conversations | Start a conversation
+[**update_conversation_webchat_queue_status**](ConversationApi.md#update_conversation_webchat_queue_status) | **PUT** /conversation/conversations/queues/{queue_name}/status | Update status within the queue
 
 
 # **get_agent_websocket_authorization**
@@ -146,6 +148,51 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ConversationMultimediaUploadUrlResponse**](ConversationMultimediaUploadUrlResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_conversation_webchat_queue_statuses**
+> ConversationWebchatQueueStatusesResponse get_conversation_webchat_queue_statuses
+
+Retrieve a conversation webchat queue statuses
+
+Retrieve a conversation webchat queue statuses including agent status and queue entries 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+
+begin
+  #Retrieve a conversation webchat queue statuses
+  result = api_instance.get_conversation_webchat_queue_statuses
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->get_conversation_webchat_queue_statuses: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationWebchatQueueStatusesResponse**](ConversationWebchatQueueStatusesResponse.md)
 
 ### Authorization
 
@@ -347,6 +394,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ConversationStartResponse**](ConversationStartResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_conversation_webchat_queue_status**
+> update_conversation_webchat_queue_status(queue_name, status_request)
+
+Update status within the queue
+
+Update status within the queue 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+queue_name = 'queue_name_example' # String | 
+
+status_request = UltracartClient::ConversationWebchatQueueStatusUpdateRequest.new # ConversationWebchatQueueStatusUpdateRequest | Status request
+
+
+begin
+  #Update status within the queue
+  api_instance.update_conversation_webchat_queue_status(queue_name, status_request)
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->update_conversation_webchat_queue_status: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **queue_name** | **String**|  | 
+ **status_request** | [**ConversationWebchatQueueStatusUpdateRequest**](ConversationWebchatQueueStatusUpdateRequest.md)| Status request | 
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
