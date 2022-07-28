@@ -21,6 +21,8 @@ module UltracartClient
 
     attr_accessor :conversation_webchat_queue_uuid
 
+    attr_accessor :email
+
     # Date/time the customer joined the queue
     attr_accessor :join_dts
 
@@ -32,6 +34,7 @@ module UltracartClient
         :'conversation_participant_arn' => :'conversation_participant_arn',
         :'conversation_participant_name' => :'conversation_participant_name',
         :'conversation_webchat_queue_uuid' => :'conversation_webchat_queue_uuid',
+        :'email' => :'email',
         :'join_dts' => :'join_dts',
         :'question' => :'question'
       }
@@ -48,6 +51,7 @@ module UltracartClient
         :'conversation_participant_arn' => :'String',
         :'conversation_participant_name' => :'String',
         :'conversation_webchat_queue_uuid' => :'String',
+        :'email' => :'String',
         :'join_dts' => :'String',
         :'question' => :'String'
       }
@@ -86,6 +90,10 @@ module UltracartClient
         self.conversation_webchat_queue_uuid = attributes[:'conversation_webchat_queue_uuid']
       end
 
+      if attributes.key?(:'email')
+        self.email = attributes[:'email']
+      end
+
       if attributes.key?(:'join_dts')
         self.join_dts = attributes[:'join_dts']
       end
@@ -116,6 +124,7 @@ module UltracartClient
           conversation_participant_arn == o.conversation_participant_arn &&
           conversation_participant_name == o.conversation_participant_name &&
           conversation_webchat_queue_uuid == o.conversation_webchat_queue_uuid &&
+          email == o.email &&
           join_dts == o.join_dts &&
           question == o.question
     end
@@ -129,7 +138,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_participant_arn, conversation_participant_name, conversation_webchat_queue_uuid, join_dts, question].hash
+      [conversation_participant_arn, conversation_participant_name, conversation_webchat_queue_uuid, email, join_dts, question].hash
     end
 
     # Builds the object from hash

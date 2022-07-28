@@ -14,6 +14,7 @@
 | **customer_average_abandon_time_seconds** | **Integer** |  | [optional] |
 | **customer_average_chat_time_seconds** | **Integer** |  | [optional] |
 | **customer_average_hold_time_seconds** | **Integer** |  | [optional] |
+| **customer_chat_count** | **Integer** |  | [optional] |
 | **customer_waiting_count** | **Integer** |  | [optional] |
 | **customer_waiting_join_dts** | **String** | Date/time that the oldest person joined the queue | [optional] |
 | **queue_entries** | [**Array&lt;ConversationWebchatQueueStatusQueueEntry&gt;**](ConversationWebchatQueueStatusQueueEntry.md) |  | [optional] |
@@ -35,6 +36,7 @@ instance = UltracartClient::ConversationWebchatQueueStatus.new(
   customer_average_abandon_time_seconds: null,
   customer_average_chat_time_seconds: null,
   customer_average_hold_time_seconds: null,
+  customer_chat_count: null,
   customer_waiting_count: null,
   customer_waiting_join_dts: null,
   queue_entries: null,
