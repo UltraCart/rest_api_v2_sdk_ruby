@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **customer_average_abandon_time_seconds** | **Integer** |  | [optional] 
 **customer_average_chat_time_seconds** | **Integer** |  | [optional] 
 **customer_average_hold_time_seconds** | **Integer** |  | [optional] 
+**customer_chat_count** | **Integer** |  | [optional] 
 **customer_waiting_count** | **Integer** |  | [optional] 
 **customer_waiting_join_dts** | **String** | Date/time that the oldest person joined the queue | [optional] 
 **queue_entries** | [**Array&lt;ConversationWebchatQueueStatusQueueEntry&gt;**](ConversationWebchatQueueStatusQueueEntry.md) |  | [optional] 
