@@ -24,13 +24,16 @@ module UltracartClient
     # Date/time the customer joined the queue
     attr_accessor :join_dts
 
+    attr_accessor :question
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'conversation_participant_arn' => :'conversation_participant_arn',
         :'conversation_participant_name' => :'conversation_participant_name',
         :'conversation_webchat_queue_uuid' => :'conversation_webchat_queue_uuid',
-        :'join_dts' => :'join_dts'
+        :'join_dts' => :'join_dts',
+        :'question' => :'question'
       }
     end
 
@@ -45,7 +48,8 @@ module UltracartClient
         :'conversation_participant_arn' => :'String',
         :'conversation_participant_name' => :'String',
         :'conversation_webchat_queue_uuid' => :'String',
-        :'join_dts' => :'String'
+        :'join_dts' => :'String',
+        :'question' => :'String'
       }
     end
 
@@ -85,6 +89,10 @@ module UltracartClient
       if attributes.key?(:'join_dts')
         self.join_dts = attributes[:'join_dts']
       end
+
+      if attributes.key?(:'question')
+        self.question = attributes[:'question']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -108,7 +116,8 @@ module UltracartClient
           conversation_participant_arn == o.conversation_participant_arn &&
           conversation_participant_name == o.conversation_participant_name &&
           conversation_webchat_queue_uuid == o.conversation_webchat_queue_uuid &&
-          join_dts == o.join_dts
+          join_dts == o.join_dts &&
+          question == o.question
     end
 
     # @see the `==` method
@@ -120,7 +129,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_participant_arn, conversation_participant_name, conversation_webchat_queue_uuid, join_dts].hash
+      [conversation_participant_arn, conversation_participant_name, conversation_webchat_queue_uuid, join_dts, question].hash
     end
 
     # Builds the object from hash

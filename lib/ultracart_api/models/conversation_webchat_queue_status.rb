@@ -29,6 +29,12 @@ module UltracartClient
 
     attr_accessor :customer_active_count
 
+    attr_accessor :customer_average_abandon_time_seconds
+
+    attr_accessor :customer_average_chat_time_seconds
+
+    attr_accessor :customer_average_hold_time_seconds
+
     attr_accessor :customer_waiting_count
 
     # Date/time that the oldest person joined the queue
@@ -48,6 +54,9 @@ module UltracartClient
         :'agents' => :'agents',
         :'customer_abandon_count' => :'customer_abandon_count',
         :'customer_active_count' => :'customer_active_count',
+        :'customer_average_abandon_time_seconds' => :'customer_average_abandon_time_seconds',
+        :'customer_average_chat_time_seconds' => :'customer_average_chat_time_seconds',
+        :'customer_average_hold_time_seconds' => :'customer_average_hold_time_seconds',
         :'customer_waiting_count' => :'customer_waiting_count',
         :'customer_waiting_join_dts' => :'customer_waiting_join_dts',
         :'queue_entries' => :'queue_entries',
@@ -70,6 +79,9 @@ module UltracartClient
         :'agents' => :'Array<ConversationWebchatQueueStatusAgent>',
         :'customer_abandon_count' => :'Integer',
         :'customer_active_count' => :'Integer',
+        :'customer_average_abandon_time_seconds' => :'Integer',
+        :'customer_average_chat_time_seconds' => :'Integer',
+        :'customer_average_hold_time_seconds' => :'Integer',
         :'customer_waiting_count' => :'Integer',
         :'customer_waiting_join_dts' => :'String',
         :'queue_entries' => :'Array<ConversationWebchatQueueStatusQueueEntry>',
@@ -128,6 +140,18 @@ module UltracartClient
         self.customer_active_count = attributes[:'customer_active_count']
       end
 
+      if attributes.key?(:'customer_average_abandon_time_seconds')
+        self.customer_average_abandon_time_seconds = attributes[:'customer_average_abandon_time_seconds']
+      end
+
+      if attributes.key?(:'customer_average_chat_time_seconds')
+        self.customer_average_chat_time_seconds = attributes[:'customer_average_chat_time_seconds']
+      end
+
+      if attributes.key?(:'customer_average_hold_time_seconds')
+        self.customer_average_hold_time_seconds = attributes[:'customer_average_hold_time_seconds']
+      end
+
       if attributes.key?(:'customer_waiting_count')
         self.customer_waiting_count = attributes[:'customer_waiting_count']
       end
@@ -172,6 +196,9 @@ module UltracartClient
           agents == o.agents &&
           customer_abandon_count == o.customer_abandon_count &&
           customer_active_count == o.customer_active_count &&
+          customer_average_abandon_time_seconds == o.customer_average_abandon_time_seconds &&
+          customer_average_chat_time_seconds == o.customer_average_chat_time_seconds &&
+          customer_average_hold_time_seconds == o.customer_average_hold_time_seconds &&
           customer_waiting_count == o.customer_waiting_count &&
           customer_waiting_join_dts == o.customer_waiting_join_dts &&
           queue_entries == o.queue_entries &&
@@ -187,7 +214,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [agent_available_count, agent_busy_count, agent_count, agent_unavailable_count, agents, customer_abandon_count, customer_active_count, customer_waiting_count, customer_waiting_join_dts, queue_entries, queue_name].hash
+      [agent_available_count, agent_busy_count, agent_count, agent_unavailable_count, agents, customer_abandon_count, customer_active_count, customer_average_abandon_time_seconds, customer_average_chat_time_seconds, customer_average_hold_time_seconds, customer_waiting_count, customer_waiting_join_dts, queue_entries, queue_name].hash
     end
 
     # Builds the object from hash
