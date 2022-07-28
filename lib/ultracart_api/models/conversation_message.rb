@@ -27,6 +27,8 @@ module UltracartClient
 
     attr_accessor :transport_statuses
 
+    attr_accessor :upload_keys
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -35,7 +37,8 @@ module UltracartClient
         :'body' => :'body',
         :'media_urls' => :'media_urls',
         :'message_dts' => :'message_dts',
-        :'transport_statuses' => :'transport_statuses'
+        :'transport_statuses' => :'transport_statuses',
+        :'upload_keys' => :'upload_keys'
       }
     end
 
@@ -47,7 +50,8 @@ module UltracartClient
         :'body' => :'String',
         :'media_urls' => :'Array<String>',
         :'message_dts' => :'String',
-        :'transport_statuses' => :'Array<ConversationMessageTransportStatus>'
+        :'transport_statuses' => :'Array<ConversationMessageTransportStatus>',
+        :'upload_keys' => :'Array<String>'
       }
     end
 
@@ -86,6 +90,12 @@ module UltracartClient
           self.transport_statuses = value
         end
       end
+
+      if attributes.has_key?(:'upload_keys')
+        if (value = attributes[:'upload_keys']).is_a?(Array)
+          self.upload_keys = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -111,7 +121,8 @@ module UltracartClient
           body == o.body &&
           media_urls == o.media_urls &&
           message_dts == o.message_dts &&
-          transport_statuses == o.transport_statuses
+          transport_statuses == o.transport_statuses &&
+          upload_keys == o.upload_keys
     end
 
     # @see the `==` method
@@ -123,7 +134,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [author_conversation_participant_arn, author_conversation_participant_name, body, media_urls, message_dts, transport_statuses].hash
+      [author_conversation_participant_arn, author_conversation_participant_name, body, media_urls, message_dts, transport_statuses, upload_keys].hash
     end
 
     # Builds the object from hash
