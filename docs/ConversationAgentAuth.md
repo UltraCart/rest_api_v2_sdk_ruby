@@ -8,7 +8,7 @@
 | **conversation_participant_name** | **String** |  | [optional] |
 | **jwt** | **String** |  | [optional] |
 | **merchant_id** | **String** |  | [optional] |
-| **twilio_phone_numbers** | **Array&lt;String&gt;** |  | [optional] |
+| **twilio_accounts** | [**Array&lt;ConversationTwilioAccount&gt;**](ConversationTwilioAccount.md) |  | [optional] |
 | **websocket_url** | **String** |  | [optional] |
 
 ## Example
@@ -21,7 +21,7 @@ instance = UltracartClient::ConversationAgentAuth.new(
   conversation_participant_name: null,
   jwt: null,
   merchant_id: null,
-  twilio_phone_numbers: null,
+  twilio_accounts: null,
   websocket_url: null
 )
 ```

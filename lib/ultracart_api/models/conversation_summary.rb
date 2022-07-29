@@ -34,7 +34,12 @@ module UltracartClient
 
     attr_accessor :message_count
 
+    # Start of the conversation date/time
+    attr_accessor :start_dts
+
     attr_accessor :unread_messages
+
+    attr_accessor :visible
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -48,7 +53,9 @@ module UltracartClient
         :'last_message_dts' => :'last_message_dts',
         :'merchant_id' => :'merchant_id',
         :'message_count' => :'message_count',
-        :'unread_messages' => :'unread_messages'
+        :'start_dts' => :'start_dts',
+        :'unread_messages' => :'unread_messages',
+        :'visible' => :'visible'
       }
     end
 
@@ -69,7 +76,9 @@ module UltracartClient
         :'last_message_dts' => :'String',
         :'merchant_id' => :'String',
         :'message_count' => :'Integer',
-        :'unread_messages' => :'Boolean'
+        :'start_dts' => :'String',
+        :'unread_messages' => :'Boolean',
+        :'visible' => :'Boolean'
       }
     end
 
@@ -130,8 +139,16 @@ module UltracartClient
         self.message_count = attributes[:'message_count']
       end
 
+      if attributes.key?(:'start_dts')
+        self.start_dts = attributes[:'start_dts']
+      end
+
       if attributes.key?(:'unread_messages')
         self.unread_messages = attributes[:'unread_messages']
+      end
+
+      if attributes.key?(:'visible')
+        self.visible = attributes[:'visible']
       end
     end
 
@@ -162,7 +179,9 @@ module UltracartClient
           last_message_dts == o.last_message_dts &&
           merchant_id == o.merchant_id &&
           message_count == o.message_count &&
-          unread_messages == o.unread_messages
+          start_dts == o.start_dts &&
+          unread_messages == o.unread_messages &&
+          visible == o.visible
     end
 
     # @see the `==` method
@@ -174,7 +193,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [closed, conversation_arn, conversation_uuid, last_conversation_message_body, last_conversation_participant_arn, last_conversation_participant_name, last_message_dts, merchant_id, message_count, unread_messages].hash
+      [closed, conversation_arn, conversation_uuid, last_conversation_message_body, last_conversation_participant_arn, last_conversation_participant_name, last_message_dts, merchant_id, message_count, start_dts, unread_messages, visible].hash
     end
 
     # Builds the object from hash

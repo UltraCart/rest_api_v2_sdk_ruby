@@ -23,7 +23,7 @@ module UltracartClient
 
     attr_accessor :merchant_id
 
-    attr_accessor :twilio_phone_numbers
+    attr_accessor :twilio_accounts
 
     attr_accessor :websocket_url
 
@@ -34,7 +34,7 @@ module UltracartClient
         :'conversation_participant_name' => :'conversation_participant_name',
         :'jwt' => :'jwt',
         :'merchant_id' => :'merchant_id',
-        :'twilio_phone_numbers' => :'twilio_phone_numbers',
+        :'twilio_accounts' => :'twilio_accounts',
         :'websocket_url' => :'websocket_url'
       }
     end
@@ -51,7 +51,7 @@ module UltracartClient
         :'conversation_participant_name' => :'String',
         :'jwt' => :'String',
         :'merchant_id' => :'String',
-        :'twilio_phone_numbers' => :'Array<String>',
+        :'twilio_accounts' => :'Array<ConversationTwilioAccount>',
         :'websocket_url' => :'String'
       }
     end
@@ -93,9 +93,9 @@ module UltracartClient
         self.merchant_id = attributes[:'merchant_id']
       end
 
-      if attributes.key?(:'twilio_phone_numbers')
-        if (value = attributes[:'twilio_phone_numbers']).is_a?(Array)
-          self.twilio_phone_numbers = value
+      if attributes.key?(:'twilio_accounts')
+        if (value = attributes[:'twilio_accounts']).is_a?(Array)
+          self.twilio_accounts = value
         end
       end
 
@@ -126,7 +126,7 @@ module UltracartClient
           conversation_participant_name == o.conversation_participant_name &&
           jwt == o.jwt &&
           merchant_id == o.merchant_id &&
-          twilio_phone_numbers == o.twilio_phone_numbers &&
+          twilio_accounts == o.twilio_accounts &&
           websocket_url == o.websocket_url
     end
 
@@ -139,7 +139,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_participant_arn, conversation_participant_name, jwt, merchant_id, twilio_phone_numbers, websocket_url].hash
+      [conversation_participant_arn, conversation_participant_name, jwt, merchant_id, twilio_accounts, websocket_url].hash
     end
 
     # Builds the object from hash

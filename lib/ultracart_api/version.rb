@@ -11,5 +11,5 @@ OpenAPI Generator version: 6.0.1-SNAPSHOT
 =end
 
 module UltracartClient
-  VERSION = '4.0.45.rc'
+  VERSION = '4.0.46.rc'
 end

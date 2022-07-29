@@ -14,35 +14,16 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationMessage
-    attr_accessor :author_conversation_participant_arn
+  class ConversationTwilioAccount
+    attr_accessor :merchant_id
 
-    attr_accessor :author_conversation_participant_name
-
-    attr_accessor :body
-
-    attr_accessor :client_message_id
-
-    attr_accessor :media_urls
-
-    # Message date/time
-    attr_accessor :message_dts
-
-    attr_accessor :transport_statuses
-
-    attr_accessor :upload_keys
+    attr_accessor :twilio_phone_numbers
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'author_conversation_participant_arn' => :'author_conversation_participant_arn',
-        :'author_conversation_participant_name' => :'author_conversation_participant_name',
-        :'body' => :'body',
-        :'client_message_id' => :'client_message_id',
-        :'media_urls' => :'media_urls',
-        :'message_dts' => :'message_dts',
-        :'transport_statuses' => :'transport_statuses',
-        :'upload_keys' => :'upload_keys'
+        :'merchant_id' => :'merchant_id',
+        :'twilio_phone_numbers' => :'twilio_phone_numbers'
       }
     end
 
@@ -54,14 +35,8 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'author_conversation_participant_arn' => :'String',
-        :'author_conversation_participant_name' => :'String',
-        :'body' => :'String',
-        :'client_message_id' => :'String',
-        :'media_urls' => :'Array<String>',
-        :'message_dts' => :'String',
-        :'transport_statuses' => :'Array<ConversationMessageTransportStatus>',
-        :'upload_keys' => :'Array<String>'
+        :'merchant_id' => :'String',
+        :'twilio_phone_numbers' => :'Array<String>'
       }
     end
 
@@ -75,52 +50,24 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationMessage` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationTwilioAccount` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationTwilioAccount`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'author_conversation_participant_arn')
-        self.author_conversation_participant_arn = attributes[:'author_conversation_participant_arn']
+      if attributes.key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
       end
 
-      if attributes.key?(:'author_conversation_participant_name')
-        self.author_conversation_participant_name = attributes[:'author_conversation_participant_name']
-      end
-
-      if attributes.key?(:'body')
-        self.body = attributes[:'body']
-      end
-
-      if attributes.key?(:'client_message_id')
-        self.client_message_id = attributes[:'client_message_id']
-      end
-
-      if attributes.key?(:'media_urls')
-        if (value = attributes[:'media_urls']).is_a?(Array)
-          self.media_urls = value
-        end
-      end
-
-      if attributes.key?(:'message_dts')
-        self.message_dts = attributes[:'message_dts']
-      end
-
-      if attributes.key?(:'transport_statuses')
-        if (value = attributes[:'transport_statuses']).is_a?(Array)
-          self.transport_statuses = value
-        end
-      end
-
-      if attributes.key?(:'upload_keys')
-        if (value = attributes[:'upload_keys']).is_a?(Array)
-          self.upload_keys = value
+      if attributes.key?(:'twilio_phone_numbers')
+        if (value = attributes[:'twilio_phone_numbers']).is_a?(Array)
+          self.twilio_phone_numbers = value
         end
       end
     end
@@ -143,14 +90,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          author_conversation_participant_arn == o.author_conversation_participant_arn &&
-          author_conversation_participant_name == o.author_conversation_participant_name &&
-          body == o.body &&
-          client_message_id == o.client_message_id &&
-          media_urls == o.media_urls &&
-          message_dts == o.message_dts &&
-          transport_statuses == o.transport_statuses &&
-          upload_keys == o.upload_keys
+          merchant_id == o.merchant_id &&
+          twilio_phone_numbers == o.twilio_phone_numbers
     end
 
     # @see the `==` method
@@ -162,7 +103,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [author_conversation_participant_arn, author_conversation_participant_name, body, client_message_id, media_urls, message_dts, transport_statuses, upload_keys].hash
+      [merchant_id, twilio_phone_numbers].hash
     end
 
     # Builds the object from hash

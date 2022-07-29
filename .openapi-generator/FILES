@@ -141,6 +141,7 @@ docs/ConversationResponse.md
 docs/ConversationStartRequest.md
 docs/ConversationStartResponse.md
 docs/ConversationSummary.md
+docs/ConversationTwilioAccount.md
 docs/ConversationWebchatQueueStatus.md
 docs/ConversationWebchatQueueStatusAgent.md
 docs/ConversationWebchatQueueStatusQueueEntry.md
@@ -832,6 +833,7 @@ lib/ultracart_api/models/conversation_response.rb
 lib/ultracart_api/models/conversation_start_request.rb
 lib/ultracart_api/models/conversation_start_response.rb
 lib/ultracart_api/models/conversation_summary.rb
+lib/ultracart_api/models/conversation_twilio_account.rb
 lib/ultracart_api/models/conversation_webchat_queue_status.rb
 lib/ultracart_api/models/conversation_webchat_queue_status_agent.rb
 lib/ultracart_api/models/conversation_webchat_queue_status_queue_entry.rb
