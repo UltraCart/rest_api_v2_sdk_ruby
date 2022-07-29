@@ -20,6 +20,8 @@ module UltracartClient
 
     attr_accessor :body
 
+    attr_accessor :client_message_id
+
     attr_accessor :media_urls
 
     # Message date/time
@@ -35,6 +37,7 @@ module UltracartClient
         :'author_conversation_participant_arn' => :'author_conversation_participant_arn',
         :'author_conversation_participant_name' => :'author_conversation_participant_name',
         :'body' => :'body',
+        :'client_message_id' => :'client_message_id',
         :'media_urls' => :'media_urls',
         :'message_dts' => :'message_dts',
         :'transport_statuses' => :'transport_statuses',
@@ -48,6 +51,7 @@ module UltracartClient
         :'author_conversation_participant_arn' => :'String',
         :'author_conversation_participant_name' => :'String',
         :'body' => :'String',
+        :'client_message_id' => :'String',
         :'media_urls' => :'Array<String>',
         :'message_dts' => :'String',
         :'transport_statuses' => :'Array<ConversationMessageTransportStatus>',
@@ -73,6 +77,10 @@ module UltracartClient
 
       if attributes.has_key?(:'body')
         self.body = attributes[:'body']
+      end
+
+      if attributes.has_key?(:'client_message_id')
+        self.client_message_id = attributes[:'client_message_id']
       end
 
       if attributes.has_key?(:'media_urls')
@@ -119,6 +127,7 @@ module UltracartClient
           author_conversation_participant_arn == o.author_conversation_participant_arn &&
           author_conversation_participant_name == o.author_conversation_participant_name &&
           body == o.body &&
+          client_message_id == o.client_message_id &&
           media_urls == o.media_urls &&
           message_dts == o.message_dts &&
           transport_statuses == o.transport_statuses &&
@@ -134,7 +143,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [author_conversation_participant_arn, author_conversation_participant_name, body, media_urls, message_dts, transport_statuses, upload_keys].hash
+      [author_conversation_participant_arn, author_conversation_participant_name, body, client_message_id, media_urls, message_dts, transport_statuses, upload_keys].hash
     end
 
     # Builds the object from hash
