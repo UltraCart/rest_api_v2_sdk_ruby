@@ -29,7 +29,32 @@ module UltracartClient
 
     attr_accessor :transport_statuses
 
+    # Message type
+    attr_accessor :type
+
     attr_accessor :upload_keys
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -41,6 +66,7 @@ module UltracartClient
         :'media_urls' => :'media_urls',
         :'message_dts' => :'message_dts',
         :'transport_statuses' => :'transport_statuses',
+        :'type' => :'type',
         :'upload_keys' => :'upload_keys'
       }
     end
@@ -55,6 +81,7 @@ module UltracartClient
         :'media_urls' => :'Array<String>',
         :'message_dts' => :'String',
         :'transport_statuses' => :'Array<ConversationMessageTransportStatus>',
+        :'type' => :'String',
         :'upload_keys' => :'Array<String>'
       }
     end
@@ -99,6 +126,10 @@ module UltracartClient
         end
       end
 
+      if attributes.has_key?(:'type')
+        self.type = attributes[:'type']
+      end
+
       if attributes.has_key?(:'upload_keys')
         if (value = attributes[:'upload_keys']).is_a?(Array)
           self.upload_keys = value
@@ -116,7 +147,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      type_validator = EnumAttributeValidator.new('String', ['message', 'notice'])
+      return false unless type_validator.valid?(@type)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] type Object to be assigned
+    def type=(type)
+      validator = EnumAttributeValidator.new('String', ['message', 'notice'])
+      unless validator.valid?(type)
+        fail ArgumentError, 'invalid value for "type", must be one of #{validator.allowable_values}.'
+      end
+      @type = type
     end
 
     # Checks equality by comparing each attribute.
@@ -131,6 +174,7 @@ module UltracartClient
           media_urls == o.media_urls &&
           message_dts == o.message_dts &&
           transport_statuses == o.transport_statuses &&
+          type == o.type &&
           upload_keys == o.upload_keys
     end
 
@@ -143,7 +187,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [author_conversation_participant_arn, author_conversation_participant_name, body, client_message_id, media_urls, message_dts, transport_statuses, upload_keys].hash
+      [author_conversation_participant_arn, author_conversation_participant_name, body, client_message_id, media_urls, message_dts, transport_statuses, type, upload_keys].hash
     end
 
     # Builds the object from hash

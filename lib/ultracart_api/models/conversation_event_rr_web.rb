@@ -13,30 +13,20 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ConversationWebsocketMessage
-    # Conversation UUID if the websocket message is tied to a specific conversation
-    attr_accessor :conversation_uuid
+  class ConversationEventRRWeb
+    attr_accessor :data
 
-    attr_accessor :event_conversation_closed
+    attr_accessor :data_part
 
-    attr_accessor :event_new_conversation
+    attr_accessor :data_sha256
 
-    attr_accessor :event_new_message
+    attr_accessor :data_total_parts
 
-    attr_accessor :event_queue_position
+    attr_accessor :data_total_sha256
 
-    attr_accessor :event_queue_status_update
-
-    attr_accessor :event_rrweb
+    attr_accessor :event_index
 
     # Type of event
-    attr_accessor :event_type
-
-    attr_accessor :event_updated_message
-
-    attr_accessor :message
-
-    # Type of message
     attr_accessor :type
 
     class EnumAttributeValidator
@@ -64,16 +54,12 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'conversation_uuid' => :'conversation_uuid',
-        :'event_conversation_closed' => :'event_conversation_closed',
-        :'event_new_conversation' => :'event_new_conversation',
-        :'event_new_message' => :'event_new_message',
-        :'event_queue_position' => :'event_queue_position',
-        :'event_queue_status_update' => :'event_queue_status_update',
-        :'event_rrweb' => :'event_rrweb',
-        :'event_type' => :'event_type',
-        :'event_updated_message' => :'event_updated_message',
-        :'message' => :'message',
+        :'data' => :'data',
+        :'data_part' => :'data_part',
+        :'data_sha256' => :'data_sha256',
+        :'data_total_parts' => :'data_total_parts',
+        :'data_total_sha256' => :'data_total_sha256',
+        :'event_index' => :'event_index',
         :'type' => :'type'
       }
     end
@@ -81,16 +67,12 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'conversation_uuid' => :'String',
-        :'event_conversation_closed' => :'ConversationSummary',
-        :'event_new_conversation' => :'ConversationSummary',
-        :'event_new_message' => :'ConversationSummary',
-        :'event_queue_position' => :'ConversationEventQueuePosition',
-        :'event_queue_status_update' => :'ConversationWebchatQueueStatus',
-        :'event_rrweb' => :'ConversationEventRRWeb',
-        :'event_type' => :'String',
-        :'event_updated_message' => :'ConversationMessage',
-        :'message' => :'ConversationMessage',
+        :'data' => :'String',
+        :'data_part' => :'Integer',
+        :'data_sha256' => :'String',
+        :'data_total_parts' => :'Integer',
+        :'data_total_sha256' => :'String',
+        :'event_index' => :'Integer',
         :'type' => :'String'
       }
     end
@@ -103,44 +85,28 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'conversation_uuid')
-        self.conversation_uuid = attributes[:'conversation_uuid']
+      if attributes.has_key?(:'data')
+        self.data = attributes[:'data']
       end
 
-      if attributes.has_key?(:'event_conversation_closed')
-        self.event_conversation_closed = attributes[:'event_conversation_closed']
+      if attributes.has_key?(:'data_part')
+        self.data_part = attributes[:'data_part']
       end
 
-      if attributes.has_key?(:'event_new_conversation')
-        self.event_new_conversation = attributes[:'event_new_conversation']
+      if attributes.has_key?(:'data_sha256')
+        self.data_sha256 = attributes[:'data_sha256']
       end
 
-      if attributes.has_key?(:'event_new_message')
-        self.event_new_message = attributes[:'event_new_message']
+      if attributes.has_key?(:'data_total_parts')
+        self.data_total_parts = attributes[:'data_total_parts']
       end
 
-      if attributes.has_key?(:'event_queue_position')
-        self.event_queue_position = attributes[:'event_queue_position']
+      if attributes.has_key?(:'data_total_sha256')
+        self.data_total_sha256 = attributes[:'data_total_sha256']
       end
 
-      if attributes.has_key?(:'event_queue_status_update')
-        self.event_queue_status_update = attributes[:'event_queue_status_update']
-      end
-
-      if attributes.has_key?(:'event_rrweb')
-        self.event_rrweb = attributes[:'event_rrweb']
-      end
-
-      if attributes.has_key?(:'event_type')
-        self.event_type = attributes[:'event_type']
-      end
-
-      if attributes.has_key?(:'event_updated_message')
-        self.event_updated_message = attributes[:'event_updated_message']
-      end
-
-      if attributes.has_key?(:'message')
-        self.message = attributes[:'message']
+      if attributes.has_key?(:'event_index')
+        self.event_index = attributes[:'event_index']
       end
 
       if attributes.has_key?(:'type')
@@ -158,27 +124,15 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      event_type_validator = EnumAttributeValidator.new('String', ['queue position', 'webchat start conversation', 'conversation closed', 'new conversation', 'new message', 'updated message', 'queue status update', 'rrweb'])
-      return false unless event_type_validator.valid?(@event_type)
-      type_validator = EnumAttributeValidator.new('String', ['message', 'event', 'ping', 'check queue position'])
+      type_validator = EnumAttributeValidator.new('String', ['init', 'events'])
       return false unless type_validator.valid?(@type)
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] event_type Object to be assigned
-    def event_type=(event_type)
-      validator = EnumAttributeValidator.new('String', ['queue position', 'webchat start conversation', 'conversation closed', 'new conversation', 'new message', 'updated message', 'queue status update', 'rrweb'])
-      unless validator.valid?(event_type)
-        fail ArgumentError, 'invalid value for "event_type", must be one of #{validator.allowable_values}.'
-      end
-      @event_type = event_type
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ['message', 'event', 'ping', 'check queue position'])
+      validator = EnumAttributeValidator.new('String', ['init', 'events'])
       unless validator.valid?(type)
         fail ArgumentError, 'invalid value for "type", must be one of #{validator.allowable_values}.'
       end
@@ -190,16 +144,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          conversation_uuid == o.conversation_uuid &&
-          event_conversation_closed == o.event_conversation_closed &&
-          event_new_conversation == o.event_new_conversation &&
-          event_new_message == o.event_new_message &&
-          event_queue_position == o.event_queue_position &&
-          event_queue_status_update == o.event_queue_status_update &&
-          event_rrweb == o.event_rrweb &&
-          event_type == o.event_type &&
-          event_updated_message == o.event_updated_message &&
-          message == o.message &&
+          data == o.data &&
+          data_part == o.data_part &&
+          data_sha256 == o.data_sha256 &&
+          data_total_parts == o.data_total_parts &&
+          data_total_sha256 == o.data_total_sha256 &&
+          event_index == o.event_index &&
           type == o.type
     end
 
@@ -212,7 +162,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_uuid, event_conversation_closed, event_new_conversation, event_new_message, event_queue_position, event_queue_status_update, event_rrweb, event_type, event_updated_message, message, type].hash
+      [data, data_part, data_sha256, data_total_parts, data_total_sha256, event_index, type].hash
     end
 
     # Builds the object from hash
