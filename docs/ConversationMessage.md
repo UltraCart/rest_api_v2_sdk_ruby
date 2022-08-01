@@ -11,6 +11,7 @@
 | **media_urls** | **Array&lt;String&gt;** |  | [optional] |
 | **message_dts** | **String** | Message date/time | [optional] |
 | **transport_statuses** | [**Array&lt;ConversationMessageTransportStatus&gt;**](ConversationMessageTransportStatus.md) |  | [optional] |
+| **type** | **String** | Message type | [optional] |
 | **upload_keys** | **Array&lt;String&gt;** |  | [optional] |
 
 ## Example
@@ -26,6 +27,7 @@ instance = UltracartClient::ConversationMessage.new(
   media_urls: null,
   message_dts: null,
   transport_statuses: null,
+  type: null,
   upload_keys: null
 )
 ```

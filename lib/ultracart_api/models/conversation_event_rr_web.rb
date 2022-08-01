@@ -14,26 +14,21 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationMessage
-    attr_accessor :author_conversation_participant_arn
+  class ConversationEventRRWeb
+    attr_accessor :data
 
-    attr_accessor :author_conversation_participant_name
+    attr_accessor :data_part
 
-    attr_accessor :body
+    attr_accessor :data_sha256
 
-    attr_accessor :client_message_id
+    attr_accessor :data_total_parts
 
-    attr_accessor :media_urls
+    attr_accessor :data_total_sha256
 
-    # Message date/time
-    attr_accessor :message_dts
+    attr_accessor :event_index
 
-    attr_accessor :transport_statuses
-
-    # Message type
+    # Type of event
     attr_accessor :type
-
-    attr_accessor :upload_keys
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -60,15 +55,13 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'author_conversation_participant_arn' => :'author_conversation_participant_arn',
-        :'author_conversation_participant_name' => :'author_conversation_participant_name',
-        :'body' => :'body',
-        :'client_message_id' => :'client_message_id',
-        :'media_urls' => :'media_urls',
-        :'message_dts' => :'message_dts',
-        :'transport_statuses' => :'transport_statuses',
-        :'type' => :'type',
-        :'upload_keys' => :'upload_keys'
+        :'data' => :'data',
+        :'data_part' => :'data_part',
+        :'data_sha256' => :'data_sha256',
+        :'data_total_parts' => :'data_total_parts',
+        :'data_total_sha256' => :'data_total_sha256',
+        :'event_index' => :'event_index',
+        :'type' => :'type'
       }
     end
 
@@ -80,15 +73,13 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'author_conversation_participant_arn' => :'String',
-        :'author_conversation_participant_name' => :'String',
-        :'body' => :'String',
-        :'client_message_id' => :'String',
-        :'media_urls' => :'Array<String>',
-        :'message_dts' => :'String',
-        :'transport_statuses' => :'Array<ConversationMessageTransportStatus>',
-        :'type' => :'String',
-        :'upload_keys' => :'Array<String>'
+        :'data' => :'String',
+        :'data_part' => :'Integer',
+        :'data_sha256' => :'String',
+        :'data_total_parts' => :'Integer',
+        :'data_total_sha256' => :'String',
+        :'event_index' => :'Integer',
+        :'type' => :'String'
       }
     end
 
@@ -102,57 +93,43 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationMessage` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationEventRRWeb` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationEventRRWeb`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'author_conversation_participant_arn')
-        self.author_conversation_participant_arn = attributes[:'author_conversation_participant_arn']
+      if attributes.key?(:'data')
+        self.data = attributes[:'data']
       end
 
-      if attributes.key?(:'author_conversation_participant_name')
-        self.author_conversation_participant_name = attributes[:'author_conversation_participant_name']
+      if attributes.key?(:'data_part')
+        self.data_part = attributes[:'data_part']
       end
 
-      if attributes.key?(:'body')
-        self.body = attributes[:'body']
+      if attributes.key?(:'data_sha256')
+        self.data_sha256 = attributes[:'data_sha256']
       end
 
-      if attributes.key?(:'client_message_id')
-        self.client_message_id = attributes[:'client_message_id']
+      if attributes.key?(:'data_total_parts')
+        self.data_total_parts = attributes[:'data_total_parts']
       end
 
-      if attributes.key?(:'media_urls')
-        if (value = attributes[:'media_urls']).is_a?(Array)
-          self.media_urls = value
-        end
+      if attributes.key?(:'data_total_sha256')
+        self.data_total_sha256 = attributes[:'data_total_sha256']
       end
 
-      if attributes.key?(:'message_dts')
-        self.message_dts = attributes[:'message_dts']
-      end
-
-      if attributes.key?(:'transport_statuses')
-        if (value = attributes[:'transport_statuses']).is_a?(Array)
-          self.transport_statuses = value
-        end
+      if attributes.key?(:'event_index')
+        self.event_index = attributes[:'event_index']
       end
 
       if attributes.key?(:'type')
         self.type = attributes[:'type']
-      end
-
-      if attributes.key?(:'upload_keys')
-        if (value = attributes[:'upload_keys']).is_a?(Array)
-          self.upload_keys = value
-        end
       end
     end
 
@@ -166,7 +143,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      type_validator = EnumAttributeValidator.new('String', ["message", "notice"])
+      type_validator = EnumAttributeValidator.new('String', ["init", "events"])
       return false unless type_validator.valid?(@type)
       true
     end
@@ -174,7 +151,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ["message", "notice"])
+      validator = EnumAttributeValidator.new('String', ["init", "events"])
       unless validator.valid?(type)
         fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
       end
@@ -186,15 +163,13 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          author_conversation_participant_arn == o.author_conversation_participant_arn &&
-          author_conversation_participant_name == o.author_conversation_participant_name &&
-          body == o.body &&
-          client_message_id == o.client_message_id &&
-          media_urls == o.media_urls &&
-          message_dts == o.message_dts &&
-          transport_statuses == o.transport_statuses &&
-          type == o.type &&
-          upload_keys == o.upload_keys
+          data == o.data &&
+          data_part == o.data_part &&
+          data_sha256 == o.data_sha256 &&
+          data_total_parts == o.data_total_parts &&
+          data_total_sha256 == o.data_total_sha256 &&
+          event_index == o.event_index &&
+          type == o.type
     end
 
     # @see the `==` method
@@ -206,7 +181,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [author_conversation_participant_arn, author_conversation_participant_name, body, client_message_id, media_urls, message_dts, transport_statuses, type, upload_keys].hash
+      [data, data_part, data_sha256, data_total_parts, data_total_sha256, event_index, type].hash
     end
 
     # Builds the object from hash
