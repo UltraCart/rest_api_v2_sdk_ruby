@@ -32,6 +32,8 @@ module UltracartClient
     # Type of event
     attr_accessor :event_type
 
+    attr_accessor :event_typing
+
     attr_accessor :event_updated_message
 
     attr_accessor :message
@@ -72,6 +74,7 @@ module UltracartClient
         :'event_queue_status_update' => :'event_queue_status_update',
         :'event_rrweb' => :'event_rrweb',
         :'event_type' => :'event_type',
+        :'event_typing' => :'event_typing',
         :'event_updated_message' => :'event_updated_message',
         :'message' => :'message',
         :'type' => :'type'
@@ -89,6 +92,7 @@ module UltracartClient
         :'event_queue_status_update' => :'ConversationWebchatQueueStatus',
         :'event_rrweb' => :'ConversationEventRRWeb',
         :'event_type' => :'String',
+        :'event_typing' => :'ConversationEventTyping',
         :'event_updated_message' => :'ConversationMessage',
         :'message' => :'ConversationMessage',
         :'type' => :'String'
@@ -133,6 +137,10 @@ module UltracartClient
 
       if attributes.has_key?(:'event_type')
         self.event_type = attributes[:'event_type']
+      end
+
+      if attributes.has_key?(:'event_typing')
+        self.event_typing = attributes[:'event_typing']
       end
 
       if attributes.has_key?(:'event_updated_message')
@@ -198,6 +206,7 @@ module UltracartClient
           event_queue_status_update == o.event_queue_status_update &&
           event_rrweb == o.event_rrweb &&
           event_type == o.event_type &&
+          event_typing == o.event_typing &&
           event_updated_message == o.event_updated_message &&
           message == o.message &&
           type == o.type
@@ -212,7 +221,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_uuid, event_conversation_closed, event_new_conversation, event_new_message, event_queue_position, event_queue_status_update, event_rrweb, event_type, event_updated_message, message, type].hash
+      [conversation_uuid, event_conversation_closed, event_new_conversation, event_new_message, event_queue_position, event_queue_status_update, event_rrweb, event_type, event_typing, event_updated_message, message, type].hash
     end
 
     # Builds the object from hash
