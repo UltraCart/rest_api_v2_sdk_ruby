@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **last_message_dts** | **String** | Last message date/time | [optional] 
 **merchant_id** | **String** |  | [optional] 
 **message_count** | **Integer** |  | [optional] 
+**participants** | [**Array&lt;ConversationParticipant&gt;**](ConversationParticipant.md) |  | [optional] 
 **start_dts** | **String** | Start of the conversation date/time | [optional] 
 **unread_messages** | **BOOLEAN** |  | [optional] 
 **visible** | **BOOLEAN** |  | [optional] 
