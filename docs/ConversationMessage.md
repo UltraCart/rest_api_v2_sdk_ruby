@@ -8,7 +8,9 @@
 | **author_conversation_participant_name** | **String** |  | [optional] |
 | **body** | **String** |  | [optional] |
 | **client_message_id** | **String** |  | [optional] |
+| **conversation_message_uuid** | **String** |  | [optional] |
 | **media_urls** | **Array&lt;String&gt;** |  | [optional] |
+| **merchant_id** | **String** |  | [optional] |
 | **message_dts** | **String** | Message date/time | [optional] |
 | **transport_statuses** | [**Array&lt;ConversationMessageTransportStatus&gt;**](ConversationMessageTransportStatus.md) |  | [optional] |
 | **type** | **String** | Message type | [optional] |
@@ -24,7 +26,9 @@ instance = UltracartClient::ConversationMessage.new(
   author_conversation_participant_name: null,
   body: null,
   client_message_id: null,
+  conversation_message_uuid: null,
   media_urls: null,
+  merchant_id: null,
   message_dts: null,
   transport_statuses: null,
   type: null,
