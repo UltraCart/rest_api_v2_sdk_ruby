@@ -7,9 +7,18 @@
 | **closed** | **Boolean** |  | [optional] |
 | **conversation_arn** | **String** |  | [optional] |
 | **conversation_uuid** | **String** |  | [optional] |
+| **last_conversation_message_body** | **String** |  | [optional] |
+| **last_conversation_participant_arn** | **String** |  | [optional] |
+| **last_conversation_participant_name** | **String** |  | [optional] |
+| **last_message_dts** | **String** | Last message date/time | [optional] |
+| **medium** | **String** | The communication medium of the customer. | [optional] |
 | **merchant_id** | **String** |  | [optional] |
+| **message_count** | **Integer** |  | [optional] |
 | **messages** | [**Array&lt;ConversationMessage&gt;**](ConversationMessage.md) |  | [optional] |
 | **participants** | [**Array&lt;ConversationParticipant&gt;**](ConversationParticipant.md) |  | [optional] |
+| **start_dts** | **String** | Start of the conversation date/time | [optional] |
+| **unread_messages** | **Boolean** |  | [optional] |
+| **visible** | **Boolean** |  | [optional] |
 
 ## Example
 
@@ -20,9 +29,18 @@ instance = UltracartClient::Conversation.new(
   closed: null,
   conversation_arn: null,
   conversation_uuid: null,
+  last_conversation_message_body: null,
+  last_conversation_participant_arn: null,
+  last_conversation_participant_name: null,
+  last_message_dts: null,
+  medium: null,
   merchant_id: null,
+  message_count: null,
   messages: null,
-  participants: null
+  participants: null,
+  start_dts: null,
+  unread_messages: null,
+  visible: null
 )
 ```
 

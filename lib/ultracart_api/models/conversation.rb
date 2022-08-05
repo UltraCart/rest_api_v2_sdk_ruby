@@ -21,11 +21,54 @@ module UltracartClient
 
     attr_accessor :conversation_uuid
 
+    attr_accessor :last_conversation_message_body
+
+    attr_accessor :last_conversation_participant_arn
+
+    attr_accessor :last_conversation_participant_name
+
+    # Last message date/time
+    attr_accessor :last_message_dts
+
+    # The communication medium of the customer.
+    attr_accessor :medium
+
     attr_accessor :merchant_id
+
+    attr_accessor :message_count
 
     attr_accessor :messages
 
     attr_accessor :participants
+
+    # Start of the conversation date/time
+    attr_accessor :start_dts
+
+    attr_accessor :unread_messages
+
+    attr_accessor :visible
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -33,9 +76,18 @@ module UltracartClient
         :'closed' => :'closed',
         :'conversation_arn' => :'conversation_arn',
         :'conversation_uuid' => :'conversation_uuid',
+        :'last_conversation_message_body' => :'last_conversation_message_body',
+        :'last_conversation_participant_arn' => :'last_conversation_participant_arn',
+        :'last_conversation_participant_name' => :'last_conversation_participant_name',
+        :'last_message_dts' => :'last_message_dts',
+        :'medium' => :'medium',
         :'merchant_id' => :'merchant_id',
+        :'message_count' => :'message_count',
         :'messages' => :'messages',
-        :'participants' => :'participants'
+        :'participants' => :'participants',
+        :'start_dts' => :'start_dts',
+        :'unread_messages' => :'unread_messages',
+        :'visible' => :'visible'
       }
     end
 
@@ -50,9 +102,18 @@ module UltracartClient
         :'closed' => :'Boolean',
         :'conversation_arn' => :'String',
         :'conversation_uuid' => :'String',
+        :'last_conversation_message_body' => :'String',
+        :'last_conversation_participant_arn' => :'String',
+        :'last_conversation_participant_name' => :'String',
+        :'last_message_dts' => :'String',
+        :'medium' => :'String',
         :'merchant_id' => :'String',
+        :'message_count' => :'Integer',
         :'messages' => :'Array<ConversationMessage>',
-        :'participants' => :'Array<ConversationParticipant>'
+        :'participants' => :'Array<ConversationParticipant>',
+        :'start_dts' => :'String',
+        :'unread_messages' => :'Boolean',
+        :'visible' => :'Boolean'
       }
     end
 
@@ -89,8 +150,32 @@ module UltracartClient
         self.conversation_uuid = attributes[:'conversation_uuid']
       end
 
+      if attributes.key?(:'last_conversation_message_body')
+        self.last_conversation_message_body = attributes[:'last_conversation_message_body']
+      end
+
+      if attributes.key?(:'last_conversation_participant_arn')
+        self.last_conversation_participant_arn = attributes[:'last_conversation_participant_arn']
+      end
+
+      if attributes.key?(:'last_conversation_participant_name')
+        self.last_conversation_participant_name = attributes[:'last_conversation_participant_name']
+      end
+
+      if attributes.key?(:'last_message_dts')
+        self.last_message_dts = attributes[:'last_message_dts']
+      end
+
+      if attributes.key?(:'medium')
+        self.medium = attributes[:'medium']
+      end
+
       if attributes.key?(:'merchant_id')
         self.merchant_id = attributes[:'merchant_id']
+      end
+
+      if attributes.key?(:'message_count')
+        self.message_count = attributes[:'message_count']
       end
 
       if attributes.key?(:'messages')
@@ -104,6 +189,18 @@ module UltracartClient
           self.participants = value
         end
       end
+
+      if attributes.key?(:'start_dts')
+        self.start_dts = attributes[:'start_dts']
+      end
+
+      if attributes.key?(:'unread_messages')
+        self.unread_messages = attributes[:'unread_messages']
+      end
+
+      if attributes.key?(:'visible')
+        self.visible = attributes[:'visible']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -116,7 +213,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      medium_validator = EnumAttributeValidator.new('String', ["sms", "websocket"])
+      return false unless medium_validator.valid?(@medium)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] medium Object to be assigned
+    def medium=(medium)
+      validator = EnumAttributeValidator.new('String', ["sms", "websocket"])
+      unless validator.valid?(medium)
+        fail ArgumentError, "invalid value for \"medium\", must be one of #{validator.allowable_values}."
+      end
+      @medium = medium
     end
 
     # Checks equality by comparing each attribute.
@@ -127,9 +236,18 @@ module UltracartClient
           closed == o.closed &&
           conversation_arn == o.conversation_arn &&
           conversation_uuid == o.conversation_uuid &&
+          last_conversation_message_body == o.last_conversation_message_body &&
+          last_conversation_participant_arn == o.last_conversation_participant_arn &&
+          last_conversation_participant_name == o.last_conversation_participant_name &&
+          last_message_dts == o.last_message_dts &&
+          medium == o.medium &&
           merchant_id == o.merchant_id &&
+          message_count == o.message_count &&
           messages == o.messages &&
-          participants == o.participants
+          participants == o.participants &&
+          start_dts == o.start_dts &&
+          unread_messages == o.unread_messages &&
+          visible == o.visible
     end
 
     # @see the `==` method
@@ -141,7 +259,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [closed, conversation_arn, conversation_uuid, merchant_id, messages, participants].hash
+      [closed, conversation_arn, conversation_uuid, last_conversation_message_body, last_conversation_participant_arn, last_conversation_participant_name, last_message_dts, medium, merchant_id, message_count, messages, participants, start_dts, unread_messages, visible].hash
     end
 
     # Builds the object from hash

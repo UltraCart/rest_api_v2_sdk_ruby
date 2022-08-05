@@ -316,6 +316,7 @@ require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/
 
 api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 opts = {
+  medium: 'medium_example', # String | 
   _limit: 56, # Integer | The maximum number of records to return on this one API call. (Max 200)
   _offset: 56 # Integer | Pagination of the record set.  Offset is a zero based index.
 }
@@ -351,6 +352,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **medium** | **String** |  | [optional] |
 | **_limit** | **Integer** | The maximum number of records to return on this one API call. (Max 200) | [optional][default to 100] |
 | **_offset** | **Integer** | Pagination of the record set.  Offset is a zero based index. | [optional][default to 0] |
 
