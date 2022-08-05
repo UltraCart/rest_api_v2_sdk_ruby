@@ -22,7 +22,11 @@ module UltracartClient
 
     attr_accessor :client_message_id
 
+    attr_accessor :conversation_message_uuid
+
     attr_accessor :media_urls
+
+    attr_accessor :merchant_id
 
     # Message date/time
     attr_accessor :message_dts
@@ -63,7 +67,9 @@ module UltracartClient
         :'author_conversation_participant_name' => :'author_conversation_participant_name',
         :'body' => :'body',
         :'client_message_id' => :'client_message_id',
+        :'conversation_message_uuid' => :'conversation_message_uuid',
         :'media_urls' => :'media_urls',
+        :'merchant_id' => :'merchant_id',
         :'message_dts' => :'message_dts',
         :'transport_statuses' => :'transport_statuses',
         :'type' => :'type',
@@ -78,7 +84,9 @@ module UltracartClient
         :'author_conversation_participant_name' => :'String',
         :'body' => :'String',
         :'client_message_id' => :'String',
+        :'conversation_message_uuid' => :'String',
         :'media_urls' => :'Array<String>',
+        :'merchant_id' => :'String',
         :'message_dts' => :'String',
         :'transport_statuses' => :'Array<ConversationMessageTransportStatus>',
         :'type' => :'String',
@@ -110,10 +118,18 @@ module UltracartClient
         self.client_message_id = attributes[:'client_message_id']
       end
 
+      if attributes.has_key?(:'conversation_message_uuid')
+        self.conversation_message_uuid = attributes[:'conversation_message_uuid']
+      end
+
       if attributes.has_key?(:'media_urls')
         if (value = attributes[:'media_urls']).is_a?(Array)
           self.media_urls = value
         end
+      end
+
+      if attributes.has_key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
       end
 
       if attributes.has_key?(:'message_dts')
@@ -171,7 +187,9 @@ module UltracartClient
           author_conversation_participant_name == o.author_conversation_participant_name &&
           body == o.body &&
           client_message_id == o.client_message_id &&
+          conversation_message_uuid == o.conversation_message_uuid &&
           media_urls == o.media_urls &&
+          merchant_id == o.merchant_id &&
           message_dts == o.message_dts &&
           transport_statuses == o.transport_statuses &&
           type == o.type &&
@@ -187,7 +205,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [author_conversation_participant_arn, author_conversation_participant_name, body, client_message_id, media_urls, message_dts, transport_statuses, type, upload_keys].hash
+      [author_conversation_participant_arn, author_conversation_participant_name, body, client_message_id, conversation_message_uuid, media_urls, merchant_id, message_dts, transport_statuses, type, upload_keys].hash
     end
 
     # Builds the object from hash
