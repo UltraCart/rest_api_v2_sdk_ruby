@@ -262,7 +262,7 @@ module UltracartClient
         :'merchant_code' => :'String',
         :'merchant_notes' => :'String',
         :'multiple_amounts_off_items' => :'CouponMultipleAmountsOffItems',
-        :'no_discount' => :'Object',
+        :'no_discount' => :'CouponNoDiscount',
         :'percent_off_item_with_items_quantity_purchase' => :'CouponPercentOffItemWithItemsQuantityPurchase',
         :'percent_off_items' => :'CouponPercentOffItems',
         :'percent_off_items_and_free_shipping' => :'CouponPercentOffItemsAndFreeShipping',

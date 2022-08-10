@@ -11,6 +11,7 @@
 | **last_message_dts** | **String** | Last message date/time | [optional] |
 | **left_dts** | **String** | Left conversation date/time | [optional] |
 | **status** | **String** |  | [optional] |
+| **unread_messages** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = UltracartClient::ConversationParticipant.new(
   joined_dts: null,
   last_message_dts: null,
   left_dts: null,
-  status: null
+  status: null,
+  unread_messages: null
 )
 ```
 

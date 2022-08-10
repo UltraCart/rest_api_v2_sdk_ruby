@@ -17,7 +17,30 @@ module UltracartClient
   class ConversationMessageTransportStatus
     attr_accessor :conversation_participant_arn
 
+    # The status of the message transport
     attr_accessor :status
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -80,7 +103,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      status_validator = EnumAttributeValidator.new('String', ["accepted", "scheduled", "queued", "sending", "sent", "read", "TWILIO_CREDENTIALS_MISSING", "SENT_TO_TWILIO", "TWILIO_ERROR", "SENT_TO_PINPOINT", "PINPOINT_ERROR"])
+      return false unless status_validator.valid?(@status)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] status Object to be assigned
+    def status=(status)
+      validator = EnumAttributeValidator.new('String', ["accepted", "scheduled", "queued", "sending", "sent", "read", "TWILIO_CREDENTIALS_MISSING", "SENT_TO_TWILIO", "TWILIO_ERROR", "SENT_TO_PINPOINT", "PINPOINT_ERROR"])
+      unless validator.valid?(status)
+        fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
+      end
+      @status = status
     end
 
     # Checks equality by comparing each attribute.

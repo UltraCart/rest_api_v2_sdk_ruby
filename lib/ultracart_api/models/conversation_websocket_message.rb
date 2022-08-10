@@ -30,6 +30,8 @@ module UltracartClient
 
     attr_accessor :event_queue_status_update
 
+    attr_accessor :event_read_message
+
     attr_accessor :event_rrweb
 
     # Type of event
@@ -76,6 +78,7 @@ module UltracartClient
         :'event_participant_update' => :'event_participant_update',
         :'event_queue_position' => :'event_queue_position',
         :'event_queue_status_update' => :'event_queue_status_update',
+        :'event_read_message' => :'event_read_message',
         :'event_rrweb' => :'event_rrweb',
         :'event_type' => :'event_type',
         :'event_typing' => :'event_typing',
@@ -100,6 +103,7 @@ module UltracartClient
         :'event_participant_update' => :'ConversationSummary',
         :'event_queue_position' => :'ConversationEventQueuePosition',
         :'event_queue_status_update' => :'ConversationWebchatQueueStatus',
+        :'event_read_message' => :'ConversationEventReadMessage',
         :'event_rrweb' => :'ConversationEventRRWeb',
         :'event_type' => :'String',
         :'event_typing' => :'ConversationEventTyping',
@@ -158,6 +162,10 @@ module UltracartClient
         self.event_queue_status_update = attributes[:'event_queue_status_update']
       end
 
+      if attributes.key?(:'event_read_message')
+        self.event_read_message = attributes[:'event_read_message']
+      end
+
       if attributes.key?(:'event_rrweb')
         self.event_rrweb = attributes[:'event_rrweb']
       end
@@ -193,7 +201,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      event_type_validator = EnumAttributeValidator.new('String', ["queue position", "webchat start conversation", "conversation closed", "new conversation", "new message", "updated message", "queue status update", "rrweb", "participant update"])
+      event_type_validator = EnumAttributeValidator.new('String', ["queue position", "webchat start conversation", "conversation closed", "new conversation", "new message", "updated message", "queue status update", "rrweb", "participant update", "read message"])
       return false unless event_type_validator.valid?(@event_type)
       type_validator = EnumAttributeValidator.new('String', ["message", "event", "ping", "check queue position"])
       return false unless type_validator.valid?(@type)
@@ -203,7 +211,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] event_type Object to be assigned
     def event_type=(event_type)
-      validator = EnumAttributeValidator.new('String', ["queue position", "webchat start conversation", "conversation closed", "new conversation", "new message", "updated message", "queue status update", "rrweb", "participant update"])
+      validator = EnumAttributeValidator.new('String', ["queue position", "webchat start conversation", "conversation closed", "new conversation", "new message", "updated message", "queue status update", "rrweb", "participant update", "read message"])
       unless validator.valid?(event_type)
         fail ArgumentError, "invalid value for \"event_type\", must be one of #{validator.allowable_values}."
       end
@@ -232,6 +240,7 @@ module UltracartClient
           event_participant_update == o.event_participant_update &&
           event_queue_position == o.event_queue_position &&
           event_queue_status_update == o.event_queue_status_update &&
+          event_read_message == o.event_read_message &&
           event_rrweb == o.event_rrweb &&
           event_type == o.event_type &&
           event_typing == o.event_typing &&
@@ -249,7 +258,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_uuid, event_conversation_closed, event_new_conversation, event_new_message, event_participant_update, event_queue_position, event_queue_status_update, event_rrweb, event_type, event_typing, event_updated_message, message, type].hash
+      [conversation_uuid, event_conversation_closed, event_new_conversation, event_new_message, event_participant_update, event_queue_position, event_queue_status_update, event_read_message, event_rrweb, event_type, event_typing, event_updated_message, message, type].hash
     end
 
     # Builds the object from hash

@@ -14,37 +14,20 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationParticipant
-    attr_accessor :conversation_participant_arn
+  class ConversationEventReadMessage
+    attr_accessor :conversation_message_uuid
 
-    attr_accessor :conversation_participant_name
+    # Message date/time
+    attr_accessor :message_dts
 
-    attr_accessor :conversation_participant_uuid
-
-    # Joined conversation date/time
-    attr_accessor :joined_dts
-
-    # Last message date/time
-    attr_accessor :last_message_dts
-
-    # Left conversation date/time
-    attr_accessor :left_dts
-
-    attr_accessor :status
-
-    attr_accessor :unread_messages
+    attr_accessor :message_epoch
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'conversation_participant_arn' => :'conversation_participant_arn',
-        :'conversation_participant_name' => :'conversation_participant_name',
-        :'conversation_participant_uuid' => :'conversation_participant_uuid',
-        :'joined_dts' => :'joined_dts',
-        :'last_message_dts' => :'last_message_dts',
-        :'left_dts' => :'left_dts',
-        :'status' => :'status',
-        :'unread_messages' => :'unread_messages'
+        :'conversation_message_uuid' => :'conversation_message_uuid',
+        :'message_dts' => :'message_dts',
+        :'message_epoch' => :'message_epoch'
       }
     end
 
@@ -56,14 +39,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'conversation_participant_arn' => :'String',
-        :'conversation_participant_name' => :'String',
-        :'conversation_participant_uuid' => :'String',
-        :'joined_dts' => :'String',
-        :'last_message_dts' => :'String',
-        :'left_dts' => :'String',
-        :'status' => :'String',
-        :'unread_messages' => :'Integer'
+        :'conversation_message_uuid' => :'String',
+        :'message_dts' => :'String',
+        :'message_epoch' => :'Integer'
       }
     end
 
@@ -77,47 +55,27 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationParticipant` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationEventReadMessage` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationParticipant`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationEventReadMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'conversation_participant_arn')
-        self.conversation_participant_arn = attributes[:'conversation_participant_arn']
+      if attributes.key?(:'conversation_message_uuid')
+        self.conversation_message_uuid = attributes[:'conversation_message_uuid']
       end
 
-      if attributes.key?(:'conversation_participant_name')
-        self.conversation_participant_name = attributes[:'conversation_participant_name']
+      if attributes.key?(:'message_dts')
+        self.message_dts = attributes[:'message_dts']
       end
 
-      if attributes.key?(:'conversation_participant_uuid')
-        self.conversation_participant_uuid = attributes[:'conversation_participant_uuid']
-      end
-
-      if attributes.key?(:'joined_dts')
-        self.joined_dts = attributes[:'joined_dts']
-      end
-
-      if attributes.key?(:'last_message_dts')
-        self.last_message_dts = attributes[:'last_message_dts']
-      end
-
-      if attributes.key?(:'left_dts')
-        self.left_dts = attributes[:'left_dts']
-      end
-
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
-      end
-
-      if attributes.key?(:'unread_messages')
-        self.unread_messages = attributes[:'unread_messages']
+      if attributes.key?(:'message_epoch')
+        self.message_epoch = attributes[:'message_epoch']
       end
     end
 
@@ -139,14 +97,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          conversation_participant_arn == o.conversation_participant_arn &&
-          conversation_participant_name == o.conversation_participant_name &&
-          conversation_participant_uuid == o.conversation_participant_uuid &&
-          joined_dts == o.joined_dts &&
-          last_message_dts == o.last_message_dts &&
-          left_dts == o.left_dts &&
-          status == o.status &&
-          unread_messages == o.unread_messages
+          conversation_message_uuid == o.conversation_message_uuid &&
+          message_dts == o.message_dts &&
+          message_epoch == o.message_epoch
     end
 
     # @see the `==` method
@@ -158,7 +111,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_participant_arn, conversation_participant_name, conversation_participant_uuid, joined_dts, last_message_dts, left_dts, status, unread_messages].hash
+      [conversation_message_uuid, message_dts, message_epoch].hash
     end
 
     # Builds the object from hash
