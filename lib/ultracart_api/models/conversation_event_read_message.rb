@@ -13,47 +13,29 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ConversationMessageTransportStatus
-    attr_accessor :conversation_participant_arn
+  class ConversationEventReadMessage
+    attr_accessor :conversation_message_uuid
 
-    # The status of the message transport
-    attr_accessor :status
+    # Message date/time
+    attr_accessor :message_dts
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :message_epoch
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'conversation_participant_arn' => :'conversation_participant_arn',
-        :'status' => :'status'
+        :'conversation_message_uuid' => :'conversation_message_uuid',
+        :'message_dts' => :'message_dts',
+        :'message_epoch' => :'message_epoch'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'conversation_participant_arn' => :'String',
-        :'status' => :'String'
+        :'conversation_message_uuid' => :'String',
+        :'message_dts' => :'String',
+        :'message_epoch' => :'Integer'
       }
     end
 
@@ -65,12 +47,16 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'conversation_participant_arn')
-        self.conversation_participant_arn = attributes[:'conversation_participant_arn']
+      if attributes.has_key?(:'conversation_message_uuid')
+        self.conversation_message_uuid = attributes[:'conversation_message_uuid']
       end
 
-      if attributes.has_key?(:'status')
-        self.status = attributes[:'status']
+      if attributes.has_key?(:'message_dts')
+        self.message_dts = attributes[:'message_dts']
+      end
+
+      if attributes.has_key?(:'message_epoch')
+        self.message_epoch = attributes[:'message_epoch']
       end
     end
 
@@ -84,19 +70,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      status_validator = EnumAttributeValidator.new('String', ['accepted', 'scheduled', 'queued', 'sending', 'sent', 'read', 'TWILIO_CREDENTIALS_MISSING', 'SENT_TO_TWILIO', 'TWILIO_ERROR', 'SENT_TO_PINPOINT', 'PINPOINT_ERROR'])
-      return false unless status_validator.valid?(@status)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] status Object to be assigned
-    def status=(status)
-      validator = EnumAttributeValidator.new('String', ['accepted', 'scheduled', 'queued', 'sending', 'sent', 'read', 'TWILIO_CREDENTIALS_MISSING', 'SENT_TO_TWILIO', 'TWILIO_ERROR', 'SENT_TO_PINPOINT', 'PINPOINT_ERROR'])
-      unless validator.valid?(status)
-        fail ArgumentError, 'invalid value for "status", must be one of #{validator.allowable_values}.'
-      end
-      @status = status
     end
 
     # Checks equality by comparing each attribute.
@@ -104,8 +78,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          conversation_participant_arn == o.conversation_participant_arn &&
-          status == o.status
+          conversation_message_uuid == o.conversation_message_uuid &&
+          message_dts == o.message_dts &&
+          message_epoch == o.message_epoch
     end
 
     # @see the `==` method
@@ -117,7 +92,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_participant_arn, status].hash
+      [conversation_message_uuid, message_dts, message_epoch].hash
     end
 
     # Builds the object from hash

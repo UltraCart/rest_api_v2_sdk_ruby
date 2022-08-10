@@ -31,6 +31,8 @@ module UltracartClient
 
     attr_accessor :status
 
+    attr_accessor :unread_messages
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -40,7 +42,8 @@ module UltracartClient
         :'joined_dts' => :'joined_dts',
         :'last_message_dts' => :'last_message_dts',
         :'left_dts' => :'left_dts',
-        :'status' => :'status'
+        :'status' => :'status',
+        :'unread_messages' => :'unread_messages'
       }
     end
 
@@ -53,7 +56,8 @@ module UltracartClient
         :'joined_dts' => :'String',
         :'last_message_dts' => :'String',
         :'left_dts' => :'String',
-        :'status' => :'String'
+        :'status' => :'String',
+        :'unread_messages' => :'Integer'
       }
     end
 
@@ -92,6 +96,10 @@ module UltracartClient
       if attributes.has_key?(:'status')
         self.status = attributes[:'status']
       end
+
+      if attributes.has_key?(:'unread_messages')
+        self.unread_messages = attributes[:'unread_messages']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -118,7 +126,8 @@ module UltracartClient
           joined_dts == o.joined_dts &&
           last_message_dts == o.last_message_dts &&
           left_dts == o.left_dts &&
-          status == o.status
+          status == o.status &&
+          unread_messages == o.unread_messages
     end
 
     # @see the `==` method
@@ -130,7 +139,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_participant_arn, conversation_participant_name, conversation_participant_uuid, joined_dts, last_message_dts, left_dts, status].hash
+      [conversation_participant_arn, conversation_participant_name, conversation_participant_uuid, joined_dts, last_message_dts, left_dts, status, unread_messages].hash
     end
 
     # Builds the object from hash
