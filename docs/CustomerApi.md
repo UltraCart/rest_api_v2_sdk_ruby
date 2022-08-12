@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**get_customers_by_query**](CustomerApi.md#get_customers_by_query) | **POST** /customer/customers/query | Retrieve customers by query
 [**get_customers_for_data_tables**](CustomerApi.md#get_customers_for_data_tables) | **POST** /customer/customers/dataTables | Retrieve customers for DataTables plugin
 [**get_email_verification_token**](CustomerApi.md#get_email_verification_token) | **POST** /customer/customers/email_verify/get_token | Create a token that can be used to verify a customer email address
+[**get_magic_link**](CustomerApi.md#get_magic_link) | **PUT** /customer/customers/{customer_profile_oid}/magic_link/{storefront_host_name} | getMagicLink
 [**insert_customer**](CustomerApi.md#insert_customer) | **POST** /customer/customers | Insert a customer
 [**merge_customer**](CustomerApi.md#merge_customer) | **PUT** /customer/customers/{customer_profile_oid}/merge | Merge customer into this customer
 [**search_customer_profile_values**](CustomerApi.md#search_customer_profile_values) | **POST** /customer/search | Searches for all matching values (using POST)
@@ -699,6 +700,59 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_magic_link**
+> CustomerMagicLinkResponse get_magic_link(customer_profile_oid, storefront_host_name)
+
+getMagicLink
+
+Retrieves a magic link to allow a merchant to login as a customer.  This method is a PUT call intentionally. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::CustomerApi.new_using_api_key(simple_key, false, false)
+
+
+customer_profile_oid = 56 # Integer | The customer_profile_oid of the customer.
+
+storefront_host_name = 'storefront_host_name_example' # String | The storefront to log into.
+
+
+begin
+  #getMagicLink
+  result = api_instance.get_magic_link(customer_profile_oid, storefront_host_name)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling CustomerApi->get_magic_link: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customer_profile_oid** | **Integer**| The customer_profile_oid of the customer. | 
+ **storefront_host_name** | **String**| The storefront to log into. | 
+
+### Return type
+
+[**CustomerMagicLinkResponse**](CustomerMagicLinkResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
  - **Accept**: application/json
 
 
