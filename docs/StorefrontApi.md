@@ -105,6 +105,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_screen_recordings_by_query**](StorefrontApi.md#get_screen_recordings_by_query) | **POST** /storefront/{storefront_oid}/screen_recordings/query | Query screen recordings |
 | [**get_screen_recordings_by_segment**](StorefrontApi.md#get_screen_recordings_by_segment) | **POST** /storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid}/query | Get screen recordings by segment |
 | [**get_store_front_pricing_tiers**](StorefrontApi.md#get_store_front_pricing_tiers) | **GET** /storefront/pricing_tiers | Retrieve pricing tiers |
+| [**get_store_fronts**](StorefrontApi.md#get_store_fronts) | **GET** /storefront/ | Get storefronts (internal use only for security reasons) |
 | [**get_thumbnail_parameters**](StorefrontApi.md#get_thumbnail_parameters) | **POST** /storefront/thumbnailParameters | Get thumbnail parameters |
 | [**get_transaction_email**](StorefrontApi.md#get_transaction_email) | **GET** /storefront/{storefront_oid}/transaction_email/list/{email_id} | Gets a transaction email object |
 | [**get_transaction_email_list**](StorefrontApi.md#get_transaction_email_list) | **GET** /storefront/{storefront_oid}/transaction_email/list | Gets a list of transaction email names |
@@ -7373,6 +7374,72 @@ end
 ### Authorization
 
 [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_store_fronts
+
+> <StoreFrontsResponse> get_store_fronts
+
+Get storefronts (internal use only for security reasons)
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+
+begin
+  # Get storefronts (internal use only for security reasons)
+  result = api_instance.get_store_fronts
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->get_store_fronts: #{e}"
+end
+```
+
+#### Using the get_store_fronts_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<StoreFrontsResponse>, Integer, Hash)> get_store_fronts_with_http_info
+
+```ruby
+begin
+  # Get storefronts (internal use only for security reasons)
+  data, status_code, headers = api_instance.get_store_fronts_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <StoreFrontsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->get_store_fronts_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**StoreFrontsResponse**](StoreFrontsResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
 
 ### HTTP request headers
 

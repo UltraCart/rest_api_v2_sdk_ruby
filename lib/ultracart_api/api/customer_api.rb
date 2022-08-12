@@ -928,6 +928,76 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # getMagicLink
+    # Retrieves a magic link to allow a merchant to login as a customer.  This method is a PUT call intentionally. 
+    # @param customer_profile_oid [Integer] The customer_profile_oid of the customer.
+    # @param storefront_host_name [String] The storefront to log into.
+    # @param [Hash] opts the optional parameters
+    # @return [CustomerMagicLinkResponse]
+    def get_magic_link(customer_profile_oid, storefront_host_name, opts = {})
+      data, _status_code, _headers = get_magic_link_with_http_info(customer_profile_oid, storefront_host_name, opts)
+      data
+    end
+
+    # getMagicLink
+    # Retrieves a magic link to allow a merchant to login as a customer.  This method is a PUT call intentionally. 
+    # @param customer_profile_oid [Integer] The customer_profile_oid of the customer.
+    # @param storefront_host_name [String] The storefront to log into.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomerMagicLinkResponse, Integer, Hash)>] CustomerMagicLinkResponse data, response status code and response headers
+    def get_magic_link_with_http_info(customer_profile_oid, storefront_host_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.get_magic_link ...'
+      end
+      # verify the required parameter 'customer_profile_oid' is set
+      if @api_client.config.client_side_validation && customer_profile_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.get_magic_link"
+      end
+      # verify the required parameter 'storefront_host_name' is set
+      if @api_client.config.client_side_validation && storefront_host_name.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_host_name' when calling CustomerApi.get_magic_link"
+      end
+      # resource path
+      local_var_path = '/customer/customers/{customer_profile_oid}/magic_link/{storefront_host_name}'.sub('{' + 'customer_profile_oid' + '}', CGI.escape(customer_profile_oid.to_s)).sub('{' + 'storefront_host_name' + '}', CGI.escape(storefront_host_name.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CustomerMagicLinkResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"CustomerApi.get_magic_link",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#get_magic_link\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Insert a customer
     # Insert a customer on the UltraCart account. 
     # @param customer [Customer] Customer to insert

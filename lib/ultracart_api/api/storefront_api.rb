@@ -6894,6 +6894,62 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get storefronts (internal use only for security reasons)
+    # @param [Hash] opts the optional parameters
+    # @return [StoreFrontsResponse]
+    def get_store_fronts(opts = {})
+      data, _status_code, _headers = get_store_fronts_with_http_info(opts)
+      data
+    end
+
+    # Get storefronts (internal use only for security reasons)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(StoreFrontsResponse, Integer, Hash)>] StoreFrontsResponse data, response status code and response headers
+    def get_store_fronts_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_store_fronts ...'
+      end
+      # resource path
+      local_var_path = '/storefront/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'StoreFrontsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"StorefrontApi.get_store_fronts",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_store_fronts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get thumbnail parameters
     # @param thumbnail_parameters [ThumbnailParametersRequest] Thumbnail Parameters
     # @param [Hash] opts the optional parameters

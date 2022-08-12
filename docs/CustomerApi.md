@@ -16,6 +16,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_customers_by_query**](CustomerApi.md#get_customers_by_query) | **POST** /customer/customers/query | Retrieve customers by query |
 | [**get_customers_for_data_tables**](CustomerApi.md#get_customers_for_data_tables) | **POST** /customer/customers/dataTables | Retrieve customers for DataTables plugin |
 | [**get_email_verification_token**](CustomerApi.md#get_email_verification_token) | **POST** /customer/customers/email_verify/get_token | Create a token that can be used to verify a customer email address |
+| [**get_magic_link**](CustomerApi.md#get_magic_link) | **PUT** /customer/customers/{customer_profile_oid}/magic_link/{storefront_host_name} | getMagicLink |
 | [**insert_customer**](CustomerApi.md#insert_customer) | **POST** /customer/customers | Insert a customer |
 | [**merge_customer**](CustomerApi.md#merge_customer) | **PUT** /customer/customers/{customer_profile_oid}/merge | Merge customer into this customer |
 | [**search_customer_profile_values**](CustomerApi.md#search_customer_profile_values) | **POST** /customer/search | Searches for all matching values (using POST) |
@@ -956,6 +957,79 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_magic_link
+
+> <CustomerMagicLinkResponse> get_magic_link(customer_profile_oid, storefront_host_name)
+
+getMagicLink
+
+Retrieves a magic link to allow a merchant to login as a customer.  This method is a PUT call intentionally. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::CustomerApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+customer_profile_oid = 56 # Integer | The customer_profile_oid of the customer.
+storefront_host_name = 'storefront_host_name_example' # String | The storefront to log into.
+
+begin
+  # getMagicLink
+  result = api_instance.get_magic_link(customer_profile_oid, storefront_host_name)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->get_magic_link: #{e}"
+end
+```
+
+#### Using the get_magic_link_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomerMagicLinkResponse>, Integer, Hash)> get_magic_link_with_http_info(customer_profile_oid, storefront_host_name)
+
+```ruby
+begin
+  # getMagicLink
+  data, status_code, headers = api_instance.get_magic_link_with_http_info(customer_profile_oid, storefront_host_name)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomerMagicLinkResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->get_magic_link_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer_profile_oid** | **Integer** | The customer_profile_oid of the customer. |  |
+| **storefront_host_name** | **String** | The storefront to log into. |  |
+
+### Return type
+
+[**CustomerMagicLinkResponse**](CustomerMagicLinkResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
