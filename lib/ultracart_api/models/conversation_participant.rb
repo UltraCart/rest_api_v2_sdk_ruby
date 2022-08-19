@@ -29,6 +29,8 @@ module UltracartClient
     # Left conversation date/time
     attr_accessor :left_dts
 
+    attr_accessor :profile_image_url
+
     attr_accessor :status
 
     attr_accessor :unread_messages
@@ -42,6 +44,7 @@ module UltracartClient
         :'joined_dts' => :'joined_dts',
         :'last_message_dts' => :'last_message_dts',
         :'left_dts' => :'left_dts',
+        :'profile_image_url' => :'profile_image_url',
         :'status' => :'status',
         :'unread_messages' => :'unread_messages'
       }
@@ -56,6 +59,7 @@ module UltracartClient
         :'joined_dts' => :'String',
         :'last_message_dts' => :'String',
         :'left_dts' => :'String',
+        :'profile_image_url' => :'String',
         :'status' => :'String',
         :'unread_messages' => :'Integer'
       }
@@ -93,6 +97,10 @@ module UltracartClient
         self.left_dts = attributes[:'left_dts']
       end
 
+      if attributes.has_key?(:'profile_image_url')
+        self.profile_image_url = attributes[:'profile_image_url']
+      end
+
       if attributes.has_key?(:'status')
         self.status = attributes[:'status']
       end
@@ -126,6 +134,7 @@ module UltracartClient
           joined_dts == o.joined_dts &&
           last_message_dts == o.last_message_dts &&
           left_dts == o.left_dts &&
+          profile_image_url == o.profile_image_url &&
           status == o.status &&
           unread_messages == o.unread_messages
     end
@@ -139,7 +148,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_participant_arn, conversation_participant_name, conversation_participant_uuid, joined_dts, last_message_dts, left_dts, status, unread_messages].hash
+      [conversation_participant_arn, conversation_participant_name, conversation_participant_uuid, joined_dts, last_message_dts, left_dts, profile_image_url, status, unread_messages].hash
     end
 
     # Builds the object from hash

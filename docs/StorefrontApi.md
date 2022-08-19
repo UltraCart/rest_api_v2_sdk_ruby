@@ -105,7 +105,7 @@ Method | HTTP request | Description
 [**get_screen_recordings_by_query**](StorefrontApi.md#get_screen_recordings_by_query) | **POST** /storefront/{storefront_oid}/screen_recordings/query | Query screen recordings
 [**get_screen_recordings_by_segment**](StorefrontApi.md#get_screen_recordings_by_segment) | **POST** /storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid}/query | Get screen recordings by segment
 [**get_store_front_pricing_tiers**](StorefrontApi.md#get_store_front_pricing_tiers) | **GET** /storefront/pricing_tiers | Retrieve pricing tiers
-[**get_store_fronts**](StorefrontApi.md#get_store_fronts) | **GET** /storefront/ | Get storefronts (internal use only for security reasons)
+[**get_store_fronts**](StorefrontApi.md#get_store_fronts) | **GET** /storefront | Get storefronts (internal use only for security reasons)
 [**get_thumbnail_parameters**](StorefrontApi.md#get_thumbnail_parameters) | **POST** /storefront/thumbnailParameters | Get thumbnail parameters
 [**get_transaction_email**](StorefrontApi.md#get_transaction_email) | **GET** /storefront/{storefront_oid}/transaction_email/list/{email_id} | Gets a transaction email object
 [**get_transaction_email_list**](StorefrontApi.md#get_transaction_email_list) | **GET** /storefront/{storefront_oid}/transaction_email/list | Gets a list of transaction email names

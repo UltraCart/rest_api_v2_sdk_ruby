@@ -14,6 +14,7 @@ require 'date'
 
 module UltracartClient
   class ConversationWebchatQueueStatusAgent
+    # Status of the agent
     attr_accessor :agent_status
 
     attr_accessor :conversation_participant_arn
@@ -25,6 +26,31 @@ module UltracartClient
 
     attr_accessor :next_round_robin
 
+    # Profile image URL
+    attr_accessor :profile_image_url
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -32,7 +58,8 @@ module UltracartClient
         :'conversation_participant_arn' => :'conversation_participant_arn',
         :'conversation_participant_name' => :'conversation_participant_name',
         :'last_chat_dts' => :'last_chat_dts',
-        :'next_round_robin' => :'next_round_robin'
+        :'next_round_robin' => :'next_round_robin',
+        :'profile_image_url' => :'profile_image_url'
       }
     end
 
@@ -43,7 +70,8 @@ module UltracartClient
         :'conversation_participant_arn' => :'String',
         :'conversation_participant_name' => :'String',
         :'last_chat_dts' => :'String',
-        :'next_round_robin' => :'BOOLEAN'
+        :'next_round_robin' => :'BOOLEAN',
+        :'profile_image_url' => :'String'
       }
     end
 
@@ -74,6 +102,10 @@ module UltracartClient
       if attributes.has_key?(:'next_round_robin')
         self.next_round_robin = attributes[:'next_round_robin']
       end
+
+      if attributes.has_key?(:'profile_image_url')
+        self.profile_image_url = attributes[:'profile_image_url']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -86,7 +118,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      agent_status_validator = EnumAttributeValidator.new('String', ['available', 'busy', 'unavailable'])
+      return false unless agent_status_validator.valid?(@agent_status)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] agent_status Object to be assigned
+    def agent_status=(agent_status)
+      validator = EnumAttributeValidator.new('String', ['available', 'busy', 'unavailable'])
+      unless validator.valid?(agent_status)
+        fail ArgumentError, 'invalid value for "agent_status", must be one of #{validator.allowable_values}.'
+      end
+      @agent_status = agent_status
     end
 
     # Checks equality by comparing each attribute.
@@ -98,7 +142,8 @@ module UltracartClient
           conversation_participant_arn == o.conversation_participant_arn &&
           conversation_participant_name == o.conversation_participant_name &&
           last_chat_dts == o.last_chat_dts &&
-          next_round_robin == o.next_round_robin
+          next_round_robin == o.next_round_robin &&
+          profile_image_url == o.profile_image_url
     end
 
     # @see the `==` method
@@ -110,7 +155,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [agent_status, conversation_participant_arn, conversation_participant_name, last_chat_dts, next_round_robin].hash
+      [agent_status, conversation_participant_arn, conversation_participant_name, last_chat_dts, next_round_robin, profile_image_url].hash
     end
 
     # Builds the object from hash
