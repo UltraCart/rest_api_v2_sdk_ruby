@@ -6910,7 +6910,7 @@ module UltracartClient
         @api_client.config.logger.debug 'Calling API: StorefrontApi.get_store_fronts ...'
       end
       # resource path
-      local_var_path = '/storefront/'
+      local_var_path = '/storefront'
 
       # query parameters
       query_params = opts[:query_params] || {}

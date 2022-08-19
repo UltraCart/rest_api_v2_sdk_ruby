@@ -18,6 +18,9 @@ module UltracartClient
     # The advertising source the customer indicated
     attr_accessor :advertising_source
 
+    # True if the customer agrees to receiving marketing SMS messages
+    attr_accessor :cell_phone_opt_in
+
     # True if the customer agrees to receiving marketing emails
     attr_accessor :mailing_list_opt_in
 
@@ -25,6 +28,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'advertising_source' => :'advertising_source',
+        :'cell_phone_opt_in' => :'cell_phone_opt_in',
         :'mailing_list_opt_in' => :'mailing_list_opt_in'
       }
     end
@@ -38,6 +42,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'advertising_source' => :'String',
+        :'cell_phone_opt_in' => :'Boolean',
         :'mailing_list_opt_in' => :'Boolean'
       }
     end
@@ -67,6 +72,10 @@ module UltracartClient
         self.advertising_source = attributes[:'advertising_source']
       end
 
+      if attributes.key?(:'cell_phone_opt_in')
+        self.cell_phone_opt_in = attributes[:'cell_phone_opt_in']
+      end
+
       if attributes.key?(:'mailing_list_opt_in')
         self.mailing_list_opt_in = attributes[:'mailing_list_opt_in']
       end
@@ -91,6 +100,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           advertising_source == o.advertising_source &&
+          cell_phone_opt_in == o.cell_phone_opt_in &&
           mailing_list_opt_in == o.mailing_list_opt_in
     end
 
@@ -103,7 +113,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [advertising_source, mailing_list_opt_in].hash
+      [advertising_source, cell_phone_opt_in, mailing_list_opt_in].hash
     end
 
     # Builds the object from hash
