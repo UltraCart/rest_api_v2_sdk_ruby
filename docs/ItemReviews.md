@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **has_approved_review** | **BOOLEAN** | True if the item has an approved review | [optional] 
 **has_review** | **BOOLEAN** | True if the item has a review | [optional] 
+**individual_reviews** | [**Array&lt;ItemReview&gt;**](ItemReview.md) |  | [optional] 
 **review_count** | **Integer** | Number of approved reviews | [optional] 
 **review_overall** | **Float** | Overall score of reviews | [optional] 
 **review_template_name** | **String** | Review template name | [optional] 

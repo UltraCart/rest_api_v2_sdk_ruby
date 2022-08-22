@@ -20,6 +20,8 @@ module UltracartClient
     # True if the item has a review
     attr_accessor :has_review
 
+    attr_accessor :individual_reviews
+
     # Number of approved reviews
     attr_accessor :review_count
 
@@ -46,6 +48,7 @@ module UltracartClient
       {
         :'has_approved_review' => :'has_approved_review',
         :'has_review' => :'has_review',
+        :'individual_reviews' => :'individual_reviews',
         :'review_count' => :'review_count',
         :'review_overall' => :'review_overall',
         :'review_template_name' => :'review_template_name',
@@ -61,6 +64,7 @@ module UltracartClient
       {
         :'has_approved_review' => :'BOOLEAN',
         :'has_review' => :'BOOLEAN',
+        :'individual_reviews' => :'Array<ItemReview>',
         :'review_count' => :'Integer',
         :'review_overall' => :'Float',
         :'review_template_name' => :'String',
@@ -85,6 +89,12 @@ module UltracartClient
 
       if attributes.has_key?(:'has_review')
         self.has_review = attributes[:'has_review']
+      end
+
+      if attributes.has_key?(:'individual_reviews')
+        if (value = attributes[:'individual_reviews']).is_a?(Array)
+          self.individual_reviews = value
+        end
       end
 
       if attributes.has_key?(:'review_count')
@@ -136,6 +146,7 @@ module UltracartClient
       self.class == o.class &&
           has_approved_review == o.has_approved_review &&
           has_review == o.has_review &&
+          individual_reviews == o.individual_reviews &&
           review_count == o.review_count &&
           review_overall == o.review_overall &&
           review_template_name == o.review_template_name &&
@@ -154,7 +165,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [has_approved_review, has_review, review_count, review_overall, review_template_name, review_template_oid, reviewable, share_reviews_with_merchant_item_id, share_reviews_with_merchant_item_oid].hash
+      [has_approved_review, has_review, individual_reviews, review_count, review_overall, review_template_name, review_template_oid, reviewable, share_reviews_with_merchant_item_id, share_reviews_with_merchant_item_oid].hash
     end
 
     # Builds the object from hash
