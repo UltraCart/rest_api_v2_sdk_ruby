@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **has_approved_review** | **Boolean** | True if the item has an approved review | [optional] |
 | **has_review** | **Boolean** | True if the item has a review | [optional] |
+| **individual_reviews** | [**Array&lt;ItemReview&gt;**](ItemReview.md) |  | [optional] |
 | **review_count** | **Integer** | Number of approved reviews | [optional] |
 | **review_overall** | **Float** | Overall score of reviews | [optional] |
 | **review_template_name** | **String** | Review template name | [optional] |
@@ -22,6 +23,7 @@ require 'ultracart_api'
 instance = UltracartClient::ItemReviews.new(
   has_approved_review: null,
   has_review: null,
+  individual_reviews: null,
   review_count: null,
   review_overall: null,
   review_template_name: null,
