@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **paused** | **BOOLEAN** | True if traffic should be paused to this variation | [optional] 
 **revenue** | **Float** | Total revenue for this variation | [optional] 
 **session_count** | **Integer** | Total sessions for this variation | [optional] 
+**sms_opt_ins** | **Integer** | SMS Opt Ins for this variation | [optional] 
 **traffic_percentage** | **Float** | Percentage of the traffic this variation is currently receiving | [optional] 
 **url** | **String** | Url of the variation if this experiment is a url experiment. | [optional] 
 **variation_name** | **String** | Name of the variation | [optional] 

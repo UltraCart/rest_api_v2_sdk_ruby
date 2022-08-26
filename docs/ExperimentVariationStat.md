@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **page_view_count** | **Integer** | Total page view count for this variation | [optional] 
 **revenue** | **Float** | Total revenue for this variation | [optional] 
 **session_count** | **Integer** | Total sessions for this variation | [optional] 
+**sms_opt_in_count** | **Integer** | Total SMS opt in count for this variation | [optional] 
 **stat_dts** | **String** | Date/time that the statistic was created | [optional] 
 
 

@@ -44,6 +44,9 @@ module UltracartClient
     # Total sessions for this variation
     attr_accessor :session_count
 
+    # Total SMS opt in count for this variation
+    attr_accessor :sms_opt_in_count
+
     # Date/time that the statistic was created
     attr_accessor :stat_dts
 
@@ -60,6 +63,7 @@ module UltracartClient
         :'page_view_count' => :'page_view_count',
         :'revenue' => :'revenue',
         :'session_count' => :'session_count',
+        :'sms_opt_in_count' => :'sms_opt_in_count',
         :'stat_dts' => :'stat_dts'
       }
     end
@@ -77,6 +81,7 @@ module UltracartClient
         :'page_view_count' => :'Integer',
         :'revenue' => :'Float',
         :'session_count' => :'Integer',
+        :'sms_opt_in_count' => :'Integer',
         :'stat_dts' => :'String'
       }
     end
@@ -129,6 +134,10 @@ module UltracartClient
         self.session_count = attributes[:'session_count']
       end
 
+      if attributes.has_key?(:'sms_opt_in_count')
+        self.sms_opt_in_count = attributes[:'sms_opt_in_count']
+      end
+
       if attributes.has_key?(:'stat_dts')
         self.stat_dts = attributes[:'stat_dts']
       end
@@ -162,6 +171,7 @@ module UltracartClient
           page_view_count == o.page_view_count &&
           revenue == o.revenue &&
           session_count == o.session_count &&
+          sms_opt_in_count == o.sms_opt_in_count &&
           stat_dts == o.stat_dts
     end
 
@@ -174,7 +184,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [add_to_cart_count, bounce_count, duration_seconds_sum, event_count, initiate_checkout_count, order_count, order_item_count, page_view_count, revenue, session_count, stat_dts].hash
+      [add_to_cart_count, bounce_count, duration_seconds_sum, event_count, initiate_checkout_count, order_count, order_item_count, page_view_count, revenue, session_count, sms_opt_in_count, stat_dts].hash
     end
 
     # Builds the object from hash

@@ -14,11 +14,19 @@ require 'date'
 
 module UltracartClient
   class EmailCommseqSequenceTestRequest
+    attr_accessor :address_1
+
+    attr_accessor :address_2
+
     attr_accessor :cart_id
 
     attr_accessor :cart_item_ids
 
+    attr_accessor :city
+
     attr_accessor :esp_commseq_uuid
+
+    attr_accessor :mail_card
 
     attr_accessor :name
 
@@ -26,35 +34,51 @@ module UltracartClient
 
     attr_accessor :please_review
 
+    attr_accessor :postal_code
+
     attr_accessor :send_to_email
 
     attr_accessor :send_to_logged_in_user
 
+    attr_accessor :state
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'address_1' => :'address_1',
+        :'address_2' => :'address_2',
         :'cart_id' => :'cart_id',
         :'cart_item_ids' => :'cart_item_ids',
+        :'city' => :'city',
         :'esp_commseq_uuid' => :'esp_commseq_uuid',
+        :'mail_card' => :'mail_card',
         :'name' => :'name',
         :'order_id' => :'order_id',
         :'please_review' => :'please_review',
+        :'postal_code' => :'postal_code',
         :'send_to_email' => :'send_to_email',
-        :'send_to_logged_in_user' => :'send_to_logged_in_user'
+        :'send_to_logged_in_user' => :'send_to_logged_in_user',
+        :'state' => :'state'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'address_1' => :'String',
+        :'address_2' => :'String',
         :'cart_id' => :'String',
         :'cart_item_ids' => :'Array<String>',
+        :'city' => :'String',
         :'esp_commseq_uuid' => :'String',
+        :'mail_card' => :'BOOLEAN',
         :'name' => :'String',
         :'order_id' => :'String',
         :'please_review' => :'BOOLEAN',
+        :'postal_code' => :'String',
         :'send_to_email' => :'String',
-        :'send_to_logged_in_user' => :'BOOLEAN'
+        :'send_to_logged_in_user' => :'BOOLEAN',
+        :'state' => :'String'
       }
     end
 
@@ -66,6 +90,14 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
+      if attributes.has_key?(:'address_1')
+        self.address_1 = attributes[:'address_1']
+      end
+
+      if attributes.has_key?(:'address_2')
+        self.address_2 = attributes[:'address_2']
+      end
+
       if attributes.has_key?(:'cart_id')
         self.cart_id = attributes[:'cart_id']
       end
@@ -76,8 +108,16 @@ module UltracartClient
         end
       end
 
+      if attributes.has_key?(:'city')
+        self.city = attributes[:'city']
+      end
+
       if attributes.has_key?(:'esp_commseq_uuid')
         self.esp_commseq_uuid = attributes[:'esp_commseq_uuid']
+      end
+
+      if attributes.has_key?(:'mail_card')
+        self.mail_card = attributes[:'mail_card']
       end
 
       if attributes.has_key?(:'name')
@@ -92,12 +132,20 @@ module UltracartClient
         self.please_review = attributes[:'please_review']
       end
 
+      if attributes.has_key?(:'postal_code')
+        self.postal_code = attributes[:'postal_code']
+      end
+
       if attributes.has_key?(:'send_to_email')
         self.send_to_email = attributes[:'send_to_email']
       end
 
       if attributes.has_key?(:'send_to_logged_in_user')
         self.send_to_logged_in_user = attributes[:'send_to_logged_in_user']
+      end
+
+      if attributes.has_key?(:'state')
+        self.state = attributes[:'state']
       end
     end
 
@@ -119,14 +167,20 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          address_1 == o.address_1 &&
+          address_2 == o.address_2 &&
           cart_id == o.cart_id &&
           cart_item_ids == o.cart_item_ids &&
+          city == o.city &&
           esp_commseq_uuid == o.esp_commseq_uuid &&
+          mail_card == o.mail_card &&
           name == o.name &&
           order_id == o.order_id &&
           please_review == o.please_review &&
+          postal_code == o.postal_code &&
           send_to_email == o.send_to_email &&
-          send_to_logged_in_user == o.send_to_logged_in_user
+          send_to_logged_in_user == o.send_to_logged_in_user &&
+          state == o.state
     end
 
     # @see the `==` method
@@ -138,7 +192,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [cart_id, cart_item_ids, esp_commseq_uuid, name, order_id, please_review, send_to_email, send_to_logged_in_user].hash
+      [address_1, address_2, cart_id, cart_item_ids, city, esp_commseq_uuid, mail_card, name, order_id, please_review, postal_code, send_to_email, send_to_logged_in_user, state].hash
     end
 
     # Builds the object from hash
