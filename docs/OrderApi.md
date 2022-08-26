@@ -1366,6 +1366,7 @@ opts = {
   auto_order_cancel: true, # Boolean | Cancel associated auto orders
   manual_refund: true, # Boolean | Consider a manual refund done externally
   reverse_affiliate_transactions: true, # Boolean | Reverse affiliate transactions
+  issue_store_credit: true, # Boolean | Issue a store credit instead of refunding the original payment method, loyalty must be configured on merchant account
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
@@ -1407,6 +1408,7 @@ end
 | **auto_order_cancel** | **Boolean** | Cancel associated auto orders | [optional][default to false] |
 | **manual_refund** | **Boolean** | Consider a manual refund done externally | [optional][default to false] |
 | **reverse_affiliate_transactions** | **Boolean** | Reverse affiliate transactions | [optional][default to true] |
+| **issue_store_credit** | **Boolean** | Issue a store credit instead of refunding the original payment method, loyalty must be configured on merchant account | [optional][default to false] |
 | **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
 
 ### Return type

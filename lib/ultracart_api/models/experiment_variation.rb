@@ -66,6 +66,9 @@ module UltracartClient
     # Total sessions for this variation
     attr_accessor :session_count
 
+    # SMS Opt Ins for this variation
+    attr_accessor :sms_opt_ins
+
     # Percentage of the traffic this variation is currently receiving
     attr_accessor :traffic_percentage
 
@@ -101,6 +104,7 @@ module UltracartClient
         :'paused' => :'paused',
         :'revenue' => :'revenue',
         :'session_count' => :'session_count',
+        :'sms_opt_ins' => :'sms_opt_ins',
         :'traffic_percentage' => :'traffic_percentage',
         :'url' => :'url',
         :'variation_name' => :'variation_name',
@@ -134,6 +138,7 @@ module UltracartClient
         :'paused' => :'Boolean',
         :'revenue' => :'Float',
         :'session_count' => :'Integer',
+        :'sms_opt_ins' => :'Integer',
         :'traffic_percentage' => :'Float',
         :'url' => :'String',
         :'variation_name' => :'String',
@@ -233,6 +238,10 @@ module UltracartClient
         self.session_count = attributes[:'session_count']
       end
 
+      if attributes.key?(:'sms_opt_ins')
+        self.sms_opt_ins = attributes[:'sms_opt_ins']
+      end
+
       if attributes.key?(:'traffic_percentage')
         self.traffic_percentage = attributes[:'traffic_percentage']
       end
@@ -289,6 +298,7 @@ module UltracartClient
           paused == o.paused &&
           revenue == o.revenue &&
           session_count == o.session_count &&
+          sms_opt_ins == o.sms_opt_ins &&
           traffic_percentage == o.traffic_percentage &&
           url == o.url &&
           variation_name == o.variation_name &&
@@ -305,7 +315,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_to_cart_count, average_duration_seconds, average_objective_per_session, average_order_value, bounce_count, conversion_rate, daily_statistics, duration_seconds_sum, event_count, initiate_checkout_count, order_count, order_item_count, original_traffic_percentage, page_view_count, paused, revenue, session_count, traffic_percentage, url, variation_name, variation_number, winner].hash
+      [add_to_cart_count, average_duration_seconds, average_objective_per_session, average_order_value, bounce_count, conversion_rate, daily_statistics, duration_seconds_sum, event_count, initiate_checkout_count, order_count, order_item_count, original_traffic_percentage, page_view_count, paused, revenue, session_count, sms_opt_ins, traffic_percentage, url, variation_name, variation_number, winner].hash
     end
 
     # Builds the object from hash
