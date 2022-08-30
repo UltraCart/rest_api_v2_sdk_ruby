@@ -77,6 +77,12 @@ module UltracartClient
     # URL to a large full length screenshot
     attr_accessor :screenshot_large_full_url
 
+    # Twilio Account UUID.  Null for none
+    attr_accessor :sms_esp_twilio_uuid
+
+    # Twilio SMS Phone Number.  Null for none
+    attr_accessor :sms_phone_number
+
     # Status of the campaign of draft, archived, and sent
     attr_accessor :status
 
@@ -110,6 +116,8 @@ module UltracartClient
         :'revenue_per_customer_formatted' => :'revenue_per_customer_formatted',
         :'scheduled_dts' => :'scheduled_dts',
         :'screenshot_large_full_url' => :'screenshot_large_full_url',
+        :'sms_esp_twilio_uuid' => :'sms_esp_twilio_uuid',
+        :'sms_phone_number' => :'sms_phone_number',
         :'status' => :'status',
         :'status_dts' => :'status_dts',
         :'storefront_oid' => :'storefront_oid'
@@ -140,6 +148,8 @@ module UltracartClient
         :'revenue_per_customer_formatted' => :'String',
         :'scheduled_dts' => :'String',
         :'screenshot_large_full_url' => :'String',
+        :'sms_esp_twilio_uuid' => :'String',
+        :'sms_phone_number' => :'String',
         :'status' => :'String',
         :'status_dts' => :'String',
         :'storefront_oid' => :'Integer'
@@ -240,6 +250,14 @@ module UltracartClient
         self.screenshot_large_full_url = attributes[:'screenshot_large_full_url']
       end
 
+      if attributes.has_key?(:'sms_esp_twilio_uuid')
+        self.sms_esp_twilio_uuid = attributes[:'sms_esp_twilio_uuid']
+      end
+
+      if attributes.has_key?(:'sms_phone_number')
+        self.sms_phone_number = attributes[:'sms_phone_number']
+      end
+
       if attributes.has_key?(:'status')
         self.status = attributes[:'status']
       end
@@ -307,6 +325,8 @@ module UltracartClient
           revenue_per_customer_formatted == o.revenue_per_customer_formatted &&
           scheduled_dts == o.scheduled_dts &&
           screenshot_large_full_url == o.screenshot_large_full_url &&
+          sms_esp_twilio_uuid == o.sms_esp_twilio_uuid &&
+          sms_phone_number == o.sms_phone_number &&
           status == o.status &&
           status_dts == o.status_dts &&
           storefront_oid == o.storefront_oid
@@ -321,7 +341,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [click_rate_formatted, created_dts, deleted, email_campaign_uuid, email_communication_sequence_uuid, end_once_customer_purchases, end_once_customer_purchases_anywhere, esp_campaign_folder_uuid, esp_domain_user, esp_domain_uuid, esp_friendly_name, library_item_oid, memberships, merchant_id, name, open_rate_formatted, prevent_sending_due_to_spam, revenue_formatted, revenue_per_customer_formatted, scheduled_dts, screenshot_large_full_url, status, status_dts, storefront_oid].hash
+      [click_rate_formatted, created_dts, deleted, email_campaign_uuid, email_communication_sequence_uuid, end_once_customer_purchases, end_once_customer_purchases_anywhere, esp_campaign_folder_uuid, esp_domain_user, esp_domain_uuid, esp_friendly_name, library_item_oid, memberships, merchant_id, name, open_rate_formatted, prevent_sending_due_to_spam, revenue_formatted, revenue_per_customer_formatted, scheduled_dts, screenshot_large_full_url, sms_esp_twilio_uuid, sms_phone_number, status, status_dts, storefront_oid].hash
     end
 
     # Builds the object from hash
