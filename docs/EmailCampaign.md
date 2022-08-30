@@ -25,6 +25,8 @@
 | **revenue_per_customer_formatted** | **String** | Revenue per customer associated with campaign | [optional] |
 | **scheduled_dts** | **String** | Scheduled date | [optional] |
 | **screenshot_large_full_url** | **String** | URL to a large full length screenshot | [optional] |
+| **sms_esp_twilio_uuid** | **String** | Twilio Account UUID.  Null for none | [optional] |
+| **sms_phone_number** | **String** | Twilio SMS Phone Number.  Null for none | [optional] |
 | **status** | **String** | Status of the campaign of draft, archived, and sent | [optional] |
 | **status_dts** | **String** | Timestamp when the last status change happened | [optional] |
 | **storefront_oid** | **Integer** | Storefront oid | [optional] |
@@ -56,6 +58,8 @@ instance = UltracartClient::EmailCampaign.new(
   revenue_per_customer_formatted: null,
   scheduled_dts: null,
   screenshot_large_full_url: null,
+  sms_esp_twilio_uuid: null,
+  sms_phone_number: null,
   status: null,
   status_dts: null,
   storefront_oid: null

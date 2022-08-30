@@ -33,6 +33,10 @@ module UltracartClient
 
     attr_accessor :postcard_from_state
 
+    attr_accessor :sms_esp_twilio_uuid
+
+    attr_accessor :sms_phone_number
+
     attr_accessor :transactional_esp_domain_user
 
     attr_accessor :transactional_esp_domain_uuid
@@ -51,6 +55,8 @@ module UltracartClient
         :'postcard_from_name' => :'postcard_from_name',
         :'postcard_from_postal_code' => :'postcard_from_postal_code',
         :'postcard_from_state' => :'postcard_from_state',
+        :'sms_esp_twilio_uuid' => :'sms_esp_twilio_uuid',
+        :'sms_phone_number' => :'sms_phone_number',
         :'transactional_esp_domain_user' => :'transactional_esp_domain_user',
         :'transactional_esp_domain_uuid' => :'transactional_esp_domain_uuid',
         :'transactional_esp_friendly_name' => :'transactional_esp_friendly_name'
@@ -74,6 +80,8 @@ module UltracartClient
         :'postcard_from_name' => :'String',
         :'postcard_from_postal_code' => :'String',
         :'postcard_from_state' => :'String',
+        :'sms_esp_twilio_uuid' => :'String',
+        :'sms_phone_number' => :'String',
         :'transactional_esp_domain_user' => :'String',
         :'transactional_esp_domain_uuid' => :'String',
         :'transactional_esp_friendly_name' => :'String'
@@ -137,6 +145,14 @@ module UltracartClient
         self.postcard_from_state = attributes[:'postcard_from_state']
       end
 
+      if attributes.key?(:'sms_esp_twilio_uuid')
+        self.sms_esp_twilio_uuid = attributes[:'sms_esp_twilio_uuid']
+      end
+
+      if attributes.key?(:'sms_phone_number')
+        self.sms_phone_number = attributes[:'sms_phone_number']
+      end
+
       if attributes.key?(:'transactional_esp_domain_user')
         self.transactional_esp_domain_user = attributes[:'transactional_esp_domain_user']
       end
@@ -177,6 +193,8 @@ module UltracartClient
           postcard_from_name == o.postcard_from_name &&
           postcard_from_postal_code == o.postcard_from_postal_code &&
           postcard_from_state == o.postcard_from_state &&
+          sms_esp_twilio_uuid == o.sms_esp_twilio_uuid &&
+          sms_phone_number == o.sms_phone_number &&
           transactional_esp_domain_user == o.transactional_esp_domain_user &&
           transactional_esp_domain_uuid == o.transactional_esp_domain_uuid &&
           transactional_esp_friendly_name == o.transactional_esp_friendly_name
@@ -191,7 +209,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [marketing_esp_domain_user, marketing_esp_domain_uuid, marketing_esp_friendly_name, postcard_from_address1, postcard_from_address2, postcard_from_city, postcard_from_name, postcard_from_postal_code, postcard_from_state, transactional_esp_domain_user, transactional_esp_domain_uuid, transactional_esp_friendly_name].hash
+      [marketing_esp_domain_user, marketing_esp_domain_uuid, marketing_esp_friendly_name, postcard_from_address1, postcard_from_address2, postcard_from_city, postcard_from_name, postcard_from_postal_code, postcard_from_state, sms_esp_twilio_uuid, sms_phone_number, transactional_esp_domain_user, transactional_esp_domain_uuid, transactional_esp_friendly_name].hash
     end
 
     # Builds the object from hash

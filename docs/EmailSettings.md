@@ -13,6 +13,8 @@
 | **postcard_from_name** | **String** |  | [optional] |
 | **postcard_from_postal_code** | **String** |  | [optional] |
 | **postcard_from_state** | **String** |  | [optional] |
+| **sms_esp_twilio_uuid** | **String** |  | [optional] |
+| **sms_phone_number** | **String** |  | [optional] |
 | **transactional_esp_domain_user** | **String** |  | [optional] |
 | **transactional_esp_domain_uuid** | **String** |  | [optional] |
 | **transactional_esp_friendly_name** | **String** |  | [optional] |
@@ -32,6 +34,8 @@ instance = UltracartClient::EmailSettings.new(
   postcard_from_name: null,
   postcard_from_postal_code: null,
   postcard_from_state: null,
+  sms_esp_twilio_uuid: null,
+  sms_phone_number: null,
   transactional_esp_domain_user: null,
   transactional_esp_domain_uuid: null,
   transactional_esp_friendly_name: null
