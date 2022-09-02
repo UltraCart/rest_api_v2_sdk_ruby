@@ -29,6 +29,9 @@ module UltracartClient
     # countries
     attr_accessor :countries
 
+    # loyalty_ledger_descriptions
+    attr_accessor :loyalty_ledger_descriptions
+
     # loyalty_program_type
     attr_accessor :loyalty_program_type
 
@@ -52,6 +55,7 @@ module UltracartClient
         :'card_exp_years' => :'card_exp_years',
         :'card_types' => :'card_types',
         :'countries' => :'countries',
+        :'loyalty_ledger_descriptions' => :'loyalty_ledger_descriptions',
         :'loyalty_program_type' => :'loyalty_program_type',
         :'qb_classes' => :'qb_classes',
         :'sales_rep_codes' => :'sales_rep_codes',
@@ -68,6 +72,7 @@ module UltracartClient
         :'card_exp_years' => :'Array<String>',
         :'card_types' => :'Array<String>',
         :'countries' => :'Array<Country>',
+        :'loyalty_ledger_descriptions' => :'Array<String>',
         :'loyalty_program_type' => :'String',
         :'qb_classes' => :'Array<String>',
         :'sales_rep_codes' => :'Array<String>',
@@ -111,6 +116,12 @@ module UltracartClient
       if attributes.has_key?(:'countries')
         if (value = attributes[:'countries']).is_a?(Array)
           self.countries = value
+        end
+      end
+
+      if attributes.has_key?(:'loyalty_ledger_descriptions')
+        if (value = attributes[:'loyalty_ledger_descriptions']).is_a?(Array)
+          self.loyalty_ledger_descriptions = value
         end
       end
 
@@ -166,6 +177,7 @@ module UltracartClient
           card_exp_years == o.card_exp_years &&
           card_types == o.card_types &&
           countries == o.countries &&
+          loyalty_ledger_descriptions == o.loyalty_ledger_descriptions &&
           loyalty_program_type == o.loyalty_program_type &&
           qb_classes == o.qb_classes &&
           sales_rep_codes == o.sales_rep_codes &&
@@ -182,7 +194,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affiliates, card_exp_months, card_exp_years, card_types, countries, loyalty_program_type, qb_classes, sales_rep_codes, state_optional_countries, terms].hash
+      [affiliates, card_exp_months, card_exp_years, card_types, countries, loyalty_ledger_descriptions, loyalty_program_type, qb_classes, sales_rep_codes, state_optional_countries, terms].hash
     end
 
     # Builds the object from hash

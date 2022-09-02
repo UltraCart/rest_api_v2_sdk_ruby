@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **card_exp_years** | **Array&lt;String&gt;** | card_exp_years | [optional] 
 **card_types** | **Array&lt;String&gt;** | card_types | [optional] 
 **countries** | [**Array&lt;Country&gt;**](Country.md) | countries | [optional] 
+**loyalty_ledger_descriptions** | **Array&lt;String&gt;** | loyalty_ledger_descriptions | [optional] 
 **loyalty_program_type** | **String** | loyalty_program_type | [optional] 
 **qb_classes** | **Array&lt;String&gt;** | qb_classes | [optional] 
 **sales_rep_codes** | **Array&lt;String&gt;** | sales_rep_codes | [optional] 
