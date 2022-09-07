@@ -569,6 +569,8 @@ docs/RegisterAffiliateClickRequest.md
 docs/RegisterAffiliateClickResponse.md
 docs/ResponseMetadata.md
 docs/ResultSet.md
+docs/RulerValidationRequest.md
+docs/RulerValidationResponse.md
 docs/ScreenRecording.md
 docs/ScreenRecordingAdPlatform.md
 docs/ScreenRecordingFilter.md
@@ -1263,6 +1265,8 @@ lib/ultracart_api/models/register_affiliate_click_request.rb
 lib/ultracart_api/models/register_affiliate_click_response.rb
 lib/ultracart_api/models/response_metadata.rb
 lib/ultracart_api/models/result_set.rb
+lib/ultracart_api/models/ruler_validation_request.rb
+lib/ultracart_api/models/ruler_validation_response.rb
 lib/ultracart_api/models/screen_recording.rb
 lib/ultracart_api/models/screen_recording_ad_platform.rb
 lib/ultracart_api/models/screen_recording_filter.rb

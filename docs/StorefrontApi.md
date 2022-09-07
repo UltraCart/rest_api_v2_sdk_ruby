@@ -168,6 +168,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**update_screen_recording_tags**](StorefrontApi.md#update_screen_recording_tags) | **POST** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/tags | Update tags on a screen recording |
 | [**update_transaction_email**](StorefrontApi.md#update_transaction_email) | **PUT** /storefront/{storefront_oid}/transaction_email/list/{email_id} | Updates a transaction email object |
 | [**update_twilio_account**](StorefrontApi.md#update_twilio_account) | **PUT** /storefront/twilio/accounts/{esp_twilio_uuid} | Update Twilio account |
+| [**validate_ruler**](StorefrontApi.md#validate_ruler) | **POST** /storefront/ruler/validate | Validate AWS Event Ruler |
 
 
 ## add_to_library
@@ -11923,6 +11924,75 @@ end
 ### Return type
 
 [**TwilioResponse**](TwilioResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## validate_ruler
+
+> <RulerValidationResponse> validate_ruler(ruler_validate_request)
+
+Validate AWS Event Ruler
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+ruler_validate_request = UltracartClient::RulerValidationRequest.new # RulerValidationRequest | Ruler Validate Request
+
+begin
+  # Validate AWS Event Ruler
+  result = api_instance.validate_ruler(ruler_validate_request)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->validate_ruler: #{e}"
+end
+```
+
+#### Using the validate_ruler_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RulerValidationResponse>, Integer, Hash)> validate_ruler_with_http_info(ruler_validate_request)
+
+```ruby
+begin
+  # Validate AWS Event Ruler
+  data, status_code, headers = api_instance.validate_ruler_with_http_info(ruler_validate_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RulerValidationResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->validate_ruler_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ruler_validate_request** | [**RulerValidationRequest**](RulerValidationRequest.md) | Ruler Validate Request |  |
+
+### Return type
+
+[**RulerValidationResponse**](RulerValidationResponse.md)
 
 ### Authorization
 
