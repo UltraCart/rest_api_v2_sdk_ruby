@@ -332,6 +332,8 @@ docs/EmailPlan.md
 docs/EmailPlanAdditional.md
 docs/EmailPlanResponse.md
 docs/EmailPostcardStat.md
+docs/EmailPostcardTracking.md
+docs/EmailPostcardTrackingResponse.md
 docs/EmailSegment.md
 docs/EmailSegmentArchiveResponse.md
 docs/EmailSegmentCustomer.md
@@ -1034,6 +1036,8 @@ lib/ultracart_api/models/email_plan.rb
 lib/ultracart_api/models/email_plan_additional.rb
 lib/ultracart_api/models/email_plan_response.rb
 lib/ultracart_api/models/email_postcard_stat.rb
+lib/ultracart_api/models/email_postcard_tracking.rb
+lib/ultracart_api/models/email_postcard_tracking_response.rb
 lib/ultracart_api/models/email_segment.rb
 lib/ultracart_api/models/email_segment_archive_response.rb
 lib/ultracart_api/models/email_segment_customer.rb
