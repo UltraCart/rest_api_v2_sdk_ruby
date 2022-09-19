@@ -4,8 +4,10 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**get_agent_keep_alive**](ConversationApi.md#get_agent_keep_alive) | **GET** /conversation/agent/keepalive | Agent keep alive
 [**get_agent_websocket_authorization**](ConversationApi.md#get_agent_websocket_authorization) | **PUT** /conversation/agent/auth | Get agent websocket authorization
 [**get_conversation**](ConversationApi.md#get_conversation) | **GET** /conversation/conversations/{conversation_uuid} | Retrieve a conversation
+[**get_conversation_messages**](ConversationApi.md#get_conversation_messages) | **GET** /conversation/conversations/{conversation_uuid}/messages/{since} | Retrieve conversation messages
 [**get_conversation_multimedia_upload_url**](ConversationApi.md#get_conversation_multimedia_upload_url) | **GET** /conversation/upload_url/{extension} | Get a presigned conersation multimedia upload URL
 [**get_conversation_webchat_queue_statuses**](ConversationApi.md#get_conversation_webchat_queue_statuses) | **GET** /conversation/conversations/queues/statuses | Retrieve a conversation webchat queue statuses
 [**get_conversations**](ConversationApi.md#get_conversations) | **GET** /conversation/conversations | Retrieve a list of conversation summaries newest to oldest
@@ -13,6 +15,50 @@ Method | HTTP request | Description
 [**leave_conversation**](ConversationApi.md#leave_conversation) | **DELETE** /conversation/conversations/{conversation_uuid}/leave | Leave a conversation
 [**start_conversation**](ConversationApi.md#start_conversation) | **PUT** /conversation/conversations | Start a conversation
 [**update_conversation_webchat_queue_status**](ConversationApi.md#update_conversation_webchat_queue_status) | **PUT** /conversation/conversations/queues/{queue_name}/status | Update status within the queue
+
+
+# **get_agent_keep_alive**
+> get_agent_keep_alive
+
+Agent keep alive
+
+Called periodically by the conversation API to keep the session alive. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+
+begin
+  #Agent keep alive
+  api_instance.get_agent_keep_alive
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->get_agent_keep_alive: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 
 
 # **get_agent_websocket_authorization**
@@ -61,7 +107,7 @@ This endpoint does not need any parameter.
 
 
 # **get_conversation**
-> ConversationResponse get_conversation(conversation_uuid)
+> ConversationResponse get_conversation(conversation_uuid, opts)
 
 Retrieve a conversation
 
@@ -79,10 +125,13 @@ api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, fa
 
 conversation_uuid = 'conversation_uuid_example' # String | 
 
+opts = { 
+  limit: 56 # Integer | 
+}
 
 begin
   #Retrieve a conversation
-  result = api_instance.get_conversation(conversation_uuid)
+  result = api_instance.get_conversation(conversation_uuid, opts)
   p result
 rescue UltracartClient::ApiError => e
   puts "Exception when calling ConversationApi->get_conversation: #{e}"
@@ -94,10 +143,68 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **conversation_uuid** | **String**|  | 
+ **limit** | **Integer**|  | [optional] 
 
 ### Return type
 
 [**ConversationResponse**](ConversationResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_conversation_messages**
+> ConversationMessagesResponse get_conversation_messages(conversation_uuid, since, opts)
+
+Retrieve conversation messages
+
+Retrieve conversation messages since a particular time 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+conversation_uuid = 'conversation_uuid_example' # String | 
+
+since = 789 # Integer | 
+
+opts = { 
+  limit: 56 # Integer | 
+}
+
+begin
+  #Retrieve conversation messages
+  result = api_instance.get_conversation_messages(conversation_uuid, since, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->get_conversation_messages: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conversation_uuid** | **String**|  | 
+ **since** | **Integer**|  | 
+ **limit** | **Integer**|  | [optional] 
+
+### Return type
+
+[**ConversationMessagesResponse**](ConversationMessagesResponse.md)
 
 ### Authorization
 
