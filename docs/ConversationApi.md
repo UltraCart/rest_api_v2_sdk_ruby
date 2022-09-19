@@ -4,8 +4,10 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**get_agent_keep_alive**](ConversationApi.md#get_agent_keep_alive) | **GET** /conversation/agent/keepalive | Agent keep alive |
 | [**get_agent_websocket_authorization**](ConversationApi.md#get_agent_websocket_authorization) | **PUT** /conversation/agent/auth | Get agent websocket authorization |
 | [**get_conversation**](ConversationApi.md#get_conversation) | **GET** /conversation/conversations/{conversation_uuid} | Retrieve a conversation |
+| [**get_conversation_messages**](ConversationApi.md#get_conversation_messages) | **GET** /conversation/conversations/{conversation_uuid}/messages/{since} | Retrieve conversation messages |
 | [**get_conversation_multimedia_upload_url**](ConversationApi.md#get_conversation_multimedia_upload_url) | **GET** /conversation/upload_url/{extension} | Get a presigned conersation multimedia upload URL |
 | [**get_conversation_webchat_queue_statuses**](ConversationApi.md#get_conversation_webchat_queue_statuses) | **GET** /conversation/conversations/queues/statuses | Retrieve a conversation webchat queue statuses |
 | [**get_conversations**](ConversationApi.md#get_conversations) | **GET** /conversation/conversations | Retrieve a list of conversation summaries newest to oldest |
@@ -13,6 +15,73 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**leave_conversation**](ConversationApi.md#leave_conversation) | **DELETE** /conversation/conversations/{conversation_uuid}/leave | Leave a conversation |
 | [**start_conversation**](ConversationApi.md#start_conversation) | **PUT** /conversation/conversations | Start a conversation |
 | [**update_conversation_webchat_queue_status**](ConversationApi.md#update_conversation_webchat_queue_status) | **PUT** /conversation/conversations/queues/{queue_name}/status | Update status within the queue |
+
+
+## get_agent_keep_alive
+
+> get_agent_keep_alive
+
+Agent keep alive
+
+Called periodically by the conversation API to keep the session alive. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+
+begin
+  # Agent keep alive
+  api_instance.get_agent_keep_alive
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_keep_alive: #{e}"
+end
+```
+
+#### Using the get_agent_keep_alive_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> get_agent_keep_alive_with_http_info
+
+```ruby
+begin
+  # Agent keep alive
+  data, status_code, headers = api_instance.get_agent_keep_alive_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_keep_alive_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## get_agent_websocket_authorization
@@ -85,7 +154,7 @@ This endpoint does not need any parameter.
 
 ## get_conversation
 
-> <ConversationResponse> get_conversation(conversation_uuid)
+> <ConversationResponse> get_conversation(conversation_uuid, opts)
 
 Retrieve a conversation
 
@@ -106,10 +175,13 @@ require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/
 
 api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 conversation_uuid = 'conversation_uuid_example' # String | 
+opts = {
+  limit: 56 # Integer | 
+}
 
 begin
   # Retrieve a conversation
-  result = api_instance.get_conversation(conversation_uuid)
+  result = api_instance.get_conversation(conversation_uuid, opts)
   p result
 rescue UltracartClient::ApiError => e
   puts "Error when calling ConversationApi->get_conversation: #{e}"
@@ -120,12 +192,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ConversationResponse>, Integer, Hash)> get_conversation_with_http_info(conversation_uuid)
+> <Array(<ConversationResponse>, Integer, Hash)> get_conversation_with_http_info(conversation_uuid, opts)
 
 ```ruby
 begin
   # Retrieve a conversation
-  data, status_code, headers = api_instance.get_conversation_with_http_info(conversation_uuid)
+  data, status_code, headers = api_instance.get_conversation_with_http_info(conversation_uuid, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ConversationResponse>
@@ -139,10 +211,88 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **conversation_uuid** | **String** |  |  |
+| **limit** | **Integer** |  | [optional] |
 
 ### Return type
 
 [**ConversationResponse**](ConversationResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_messages
+
+> <ConversationMessagesResponse> get_conversation_messages(conversation_uuid, since, opts)
+
+Retrieve conversation messages
+
+Retrieve conversation messages since a particular time 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+conversation_uuid = 'conversation_uuid_example' # String | 
+since = 789 # Integer | 
+opts = {
+  limit: 56 # Integer | 
+}
+
+begin
+  # Retrieve conversation messages
+  result = api_instance.get_conversation_messages(conversation_uuid, since, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_messages: #{e}"
+end
+```
+
+#### Using the get_conversation_messages_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationMessagesResponse>, Integer, Hash)> get_conversation_messages_with_http_info(conversation_uuid, since, opts)
+
+```ruby
+begin
+  # Retrieve conversation messages
+  data, status_code, headers = api_instance.get_conversation_messages_with_http_info(conversation_uuid, since, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationMessagesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_messages_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_uuid** | **String** |  |  |
+| **since** | **Integer** |  |  |
+| **limit** | **Integer** |  | [optional] |
+
+### Return type
+
+[**ConversationMessagesResponse**](ConversationMessagesResponse.md)
 
 ### Authorization
 

@@ -32,6 +32,64 @@ module UltracartClient
       UltracartClient::ConversationApi.new(api_client)
     end
 
+    # Agent keep alive
+    # Called periodically by the conversation API to keep the session alive. 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def get_agent_keep_alive(opts = {})
+      get_agent_keep_alive_with_http_info(opts)
+      nil
+    end
+
+    # Agent keep alive
+    # Called periodically by the conversation API to keep the session alive. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def get_agent_keep_alive_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_agent_keep_alive ...'
+      end
+      # resource path
+      local_var_path = '/conversation/agent/keepalive'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_agent_keep_alive",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_agent_keep_alive\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get agent websocket authorization
     # Retrieve a JWT to authorize an agent to make a websocket connection. 
     # @param [Hash] opts the optional parameters
@@ -94,6 +152,7 @@ module UltracartClient
     # Retrieve a conversation including the participants and messages 
     # @param conversation_uuid [String] 
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit 
     # @return [ConversationResponse]
     def get_conversation(conversation_uuid, opts = {})
       data, _status_code, _headers = get_conversation_with_http_info(conversation_uuid, opts)
@@ -104,6 +163,7 @@ module UltracartClient
     # Retrieve a conversation including the participants and messages 
     # @param conversation_uuid [String] 
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit 
     # @return [Array<(ConversationResponse, Integer, Hash)>] ConversationResponse data, response status code and response headers
     def get_conversation_with_http_info(conversation_uuid, opts = {})
       if @api_client.config.debugging
@@ -118,6 +178,7 @@ module UltracartClient
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -150,6 +211,79 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#get_conversation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve conversation messages
+    # Retrieve conversation messages since a particular time 
+    # @param conversation_uuid [String] 
+    # @param since [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit 
+    # @return [ConversationMessagesResponse]
+    def get_conversation_messages(conversation_uuid, since, opts = {})
+      data, _status_code, _headers = get_conversation_messages_with_http_info(conversation_uuid, since, opts)
+      data
+    end
+
+    # Retrieve conversation messages
+    # Retrieve conversation messages since a particular time 
+    # @param conversation_uuid [String] 
+    # @param since [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit 
+    # @return [Array<(ConversationMessagesResponse, Integer, Hash)>] ConversationMessagesResponse data, response status code and response headers
+    def get_conversation_messages_with_http_info(conversation_uuid, since, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_conversation_messages ...'
+      end
+      # verify the required parameter 'conversation_uuid' is set
+      if @api_client.config.client_side_validation && conversation_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_uuid' when calling ConversationApi.get_conversation_messages"
+      end
+      # verify the required parameter 'since' is set
+      if @api_client.config.client_side_validation && since.nil?
+        fail ArgumentError, "Missing the required parameter 'since' when calling ConversationApi.get_conversation_messages"
+      end
+      # resource path
+      local_var_path = '/conversation/conversations/{conversation_uuid}/messages/{since}'.sub('{' + 'conversation_uuid' + '}', CGI.escape(conversation_uuid.to_s)).sub('{' + 'since' + '}', CGI.escape(since.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationMessagesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_conversation_messages",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_conversation_messages\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
