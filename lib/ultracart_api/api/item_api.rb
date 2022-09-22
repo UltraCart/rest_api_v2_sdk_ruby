@@ -32,6 +32,70 @@ module UltracartClient
       UltracartClient::ItemApi.new(api_client)
     end
 
+    # Delete a digital item, which is a file within the digital library, not an actual merchant item
+    # Delete a digital item on the UltraCart account. 
+    # @param digital_item_oid [Integer] The digital item oid to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_digital_item(digital_item_oid, opts = {})
+      delete_digital_item_with_http_info(digital_item_oid, opts)
+      nil
+    end
+
+    # Delete a digital item, which is a file within the digital library, not an actual merchant item
+    # Delete a digital item on the UltraCart account. 
+    # @param digital_item_oid [Integer] The digital item oid to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_digital_item_with_http_info(digital_item_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ItemApi.delete_digital_item ...'
+      end
+      # verify the required parameter 'digital_item_oid' is set
+      if @api_client.config.client_side_validation && digital_item_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'digital_item_oid' when calling ItemApi.delete_digital_item"
+      end
+      # resource path
+      local_var_path = '/item/digital_library/{digital_item_oid}'.sub('{' + 'digital_item_oid' + '}', CGI.escape(digital_item_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ItemApi.delete_digital_item",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ItemApi#delete_digital_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete an item
     # Delete an item on the UltraCart account. 
     # @param merchant_item_oid [Integer] The item oid to delete.
@@ -92,6 +156,164 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ItemApi#delete_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a digital item from the digital library, which are digital files that may be attached to normal items
+    # Retrieves a digital item (file information) from the account.  Be aware that these are not normal items that can be added to a shopping cart. Rather, they are digital files that may be associated with normal items. 
+    # @param digital_item_oid [Integer] The digital item oid to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Default 100, Max 2000) (default to 100)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
+    # @option opts [String] :_since Fetch items that have been created/modified since this date/time.
+    # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [Boolean] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+    # @return [ItemDigitalItemResponse]
+    def get_digital_item(digital_item_oid, opts = {})
+      data, _status_code, _headers = get_digital_item_with_http_info(digital_item_oid, opts)
+      data
+    end
+
+    # Retrieve a digital item from the digital library, which are digital files that may be attached to normal items
+    # Retrieves a digital item (file information) from the account.  Be aware that these are not normal items that can be added to a shopping cart. Rather, they are digital files that may be associated with normal items. 
+    # @param digital_item_oid [Integer] The digital item oid to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Default 100, Max 2000) (default to 100)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
+    # @option opts [String] :_since Fetch items that have been created/modified since this date/time.
+    # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [Boolean] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+    # @return [Array<(ItemDigitalItemResponse, Integer, Hash)>] ItemDigitalItemResponse data, response status code and response headers
+    def get_digital_item_with_http_info(digital_item_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ItemApi.get_digital_item ...'
+      end
+      # verify the required parameter 'digital_item_oid' is set
+      if @api_client.config.client_side_validation && digital_item_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'digital_item_oid' when calling ItemApi.get_digital_item"
+      end
+      # resource path
+      local_var_path = '/item/digital_library/{digital_item_oid}'.sub('{' + 'digital_item_oid' + '}', CGI.escape(digital_item_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
+      query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
+      query_params[:'_since'] = opts[:'_since'] if !opts[:'_since'].nil?
+      query_params[:'_sort'] = opts[:'_sort'] if !opts[:'_sort'].nil?
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+      query_params[:'_placeholders'] = opts[:'_placeholders'] if !opts[:'_placeholders'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ItemDigitalItemResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ItemApi.get_digital_item",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ItemApi#get_digital_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve digital items from the digital library which are digital files that may be attached to normal items
+    # Retrieves a group of digital items (file information) from the account.  If no parameters are specified, all digital items will be returned.  Be aware that these are not normal items that can be added to a shopping cart. Rather, they are digital files that may be associated with normal items.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Default 100, Max 2000) (default to 100)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
+    # @option opts [String] :_since Fetch items that have been created/modified since this date/time.
+    # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [Boolean] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+    # @return [ItemDigitalItemsResponse]
+    def get_digital_items(opts = {})
+      data, _status_code, _headers = get_digital_items_with_http_info(opts)
+      data
+    end
+
+    # Retrieve digital items from the digital library which are digital files that may be attached to normal items
+    # Retrieves a group of digital items (file information) from the account.  If no parameters are specified, all digital items will be returned.  Be aware that these are not normal items that can be added to a shopping cart. Rather, they are digital files that may be associated with normal items.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Default 100, Max 2000) (default to 100)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
+    # @option opts [String] :_since Fetch items that have been created/modified since this date/time.
+    # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [Boolean] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+    # @return [Array<(ItemDigitalItemsResponse, Integer, Hash)>] ItemDigitalItemsResponse data, response status code and response headers
+    def get_digital_items_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ItemApi.get_digital_items ...'
+      end
+      # resource path
+      local_var_path = '/item/digital_library'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
+      query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
+      query_params[:'_since'] = opts[:'_since'] if !opts[:'_since'].nil?
+      query_params[:'_sort'] = opts[:'_sort'] if !opts[:'_sort'].nil?
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+      query_params[:'_placeholders'] = opts[:'_placeholders'] if !opts[:'_placeholders'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ItemDigitalItemsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ItemApi.get_digital_items",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ItemApi#get_digital_items\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -379,6 +601,75 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Create a file within the digital library
+    # Create a file within the digital library.  This does not create an item, but makes this digital file available and selectable as part (or all) of an item. 
+    # @param digital_item [ItemDigitalItem] Digital item to create
+    # @param [Hash] opts the optional parameters
+    # @return [ItemDigitalItemResponse]
+    def insert_digital_item(digital_item, opts = {})
+      data, _status_code, _headers = insert_digital_item_with_http_info(digital_item, opts)
+      data
+    end
+
+    # Create a file within the digital library
+    # Create a file within the digital library.  This does not create an item, but makes this digital file available and selectable as part (or all) of an item. 
+    # @param digital_item [ItemDigitalItem] Digital item to create
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ItemDigitalItemResponse, Integer, Hash)>] ItemDigitalItemResponse data, response status code and response headers
+    def insert_digital_item_with_http_info(digital_item, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ItemApi.insert_digital_item ...'
+      end
+      # verify the required parameter 'digital_item' is set
+      if @api_client.config.client_side_validation && digital_item.nil?
+        fail ArgumentError, "Missing the required parameter 'digital_item' when calling ItemApi.insert_digital_item"
+      end
+      # resource path
+      local_var_path = '/item/digital_library'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(digital_item)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ItemDigitalItemResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ItemApi.insert_digital_item",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ItemApi#insert_digital_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create an item
     # Create a new item on the UltraCart account. 
     # @param item [Item] Item to create
@@ -450,6 +741,81 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ItemApi#insert_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Updates a file within the digital library
+    # Updates a file within the digital library.  This does not update an item, but updates a digital file available and selectable as part (or all) of an item. 
+    # @param digital_item_oid [Integer] The digital item oid to update.
+    # @param digital_item [ItemDigitalItem] Digital item to update
+    # @param [Hash] opts the optional parameters
+    # @return [ItemDigitalItemResponse]
+    def update_digital_item(digital_item_oid, digital_item, opts = {})
+      data, _status_code, _headers = update_digital_item_with_http_info(digital_item_oid, digital_item, opts)
+      data
+    end
+
+    # Updates a file within the digital library
+    # Updates a file within the digital library.  This does not update an item, but updates a digital file available and selectable as part (or all) of an item. 
+    # @param digital_item_oid [Integer] The digital item oid to update.
+    # @param digital_item [ItemDigitalItem] Digital item to update
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ItemDigitalItemResponse, Integer, Hash)>] ItemDigitalItemResponse data, response status code and response headers
+    def update_digital_item_with_http_info(digital_item_oid, digital_item, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ItemApi.update_digital_item ...'
+      end
+      # verify the required parameter 'digital_item_oid' is set
+      if @api_client.config.client_side_validation && digital_item_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'digital_item_oid' when calling ItemApi.update_digital_item"
+      end
+      # verify the required parameter 'digital_item' is set
+      if @api_client.config.client_side_validation && digital_item.nil?
+        fail ArgumentError, "Missing the required parameter 'digital_item' when calling ItemApi.update_digital_item"
+      end
+      # resource path
+      local_var_path = '/item/digital_library/{digital_item_oid}'.sub('{' + 'digital_item_oid' + '}', CGI.escape(digital_item_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(digital_item)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ItemDigitalItemResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ItemApi.update_digital_item",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ItemApi#update_digital_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

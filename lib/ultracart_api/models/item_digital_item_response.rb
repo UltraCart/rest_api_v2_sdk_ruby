@@ -14,45 +14,26 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ItemDigitalItem
-    # Click wrap agreement is presented to the customer before they can purchase your product.
-    attr_accessor :click_wrap_agreement
+  class ItemDigitalItemResponse
+    attr_accessor :digital_item
 
-    # File creation date
-    attr_accessor :creation_dts
+    attr_accessor :error
 
-    # Description of the digital item
-    attr_accessor :description
+    attr_accessor :metadata
 
-    # The Digital item oid is a primary key used internally by UltraCart.  You should not set or change this value.  Doing so will have no effect.
-    attr_accessor :digital_item_oid
+    # Indicates if API call was successful
+    attr_accessor :success
 
-    # File size
-    attr_accessor :file_size
-
-    # This url is sourced to create or update a digital file in your digital library.  It is only considered during an insert or update operation.
-    attr_accessor :import_from_url
-
-    # Mime type associated with the file
-    attr_accessor :mime_type
-
-    # Original filename
-    attr_accessor :original_filename
-
-    attr_accessor :pdf_meta
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'click_wrap_agreement' => :'click_wrap_agreement',
-        :'creation_dts' => :'creation_dts',
-        :'description' => :'description',
-        :'digital_item_oid' => :'digital_item_oid',
-        :'file_size' => :'file_size',
-        :'import_from_url' => :'import_from_url',
-        :'mime_type' => :'mime_type',
-        :'original_filename' => :'original_filename',
-        :'pdf_meta' => :'pdf_meta'
+        :'digital_item' => :'digital_item',
+        :'error' => :'error',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
@@ -64,15 +45,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'click_wrap_agreement' => :'String',
-        :'creation_dts' => :'String',
-        :'description' => :'String',
-        :'digital_item_oid' => :'Integer',
-        :'file_size' => :'Integer',
-        :'import_from_url' => :'String',
-        :'mime_type' => :'String',
-        :'original_filename' => :'String',
-        :'pdf_meta' => :'ItemDigitalItemPdfMeta'
+        :'digital_item' => :'ItemDigitalItem',
+        :'error' => :'Error',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'Boolean',
+        :'warning' => :'Warning'
       }
     end
 
@@ -86,51 +63,35 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ItemDigitalItem` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ItemDigitalItemResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ItemDigitalItem`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ItemDigitalItemResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'click_wrap_agreement')
-        self.click_wrap_agreement = attributes[:'click_wrap_agreement']
+      if attributes.key?(:'digital_item')
+        self.digital_item = attributes[:'digital_item']
       end
 
-      if attributes.key?(:'creation_dts')
-        self.creation_dts = attributes[:'creation_dts']
+      if attributes.key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.key?(:'digital_item_oid')
-        self.digital_item_oid = attributes[:'digital_item_oid']
+      if attributes.key?(:'success')
+        self.success = attributes[:'success']
       end
 
-      if attributes.key?(:'file_size')
-        self.file_size = attributes[:'file_size']
-      end
-
-      if attributes.key?(:'import_from_url')
-        self.import_from_url = attributes[:'import_from_url']
-      end
-
-      if attributes.key?(:'mime_type')
-        self.mime_type = attributes[:'mime_type']
-      end
-
-      if attributes.key?(:'original_filename')
-        self.original_filename = attributes[:'original_filename']
-      end
-
-      if attributes.key?(:'pdf_meta')
-        self.pdf_meta = attributes[:'pdf_meta']
+      if attributes.key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -138,58 +99,13 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@description.nil? && @description.to_s.length > 200
-        invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 200.')
-      end
-
-      if !@mime_type.nil? && @mime_type.to_s.length > 100
-        invalid_properties.push('invalid value for "mime_type", the character length must be smaller than or equal to 100.')
-      end
-
-      if !@original_filename.nil? && @original_filename.to_s.length > 250
-        invalid_properties.push('invalid value for "original_filename", the character length must be smaller than or equal to 250.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@description.nil? && @description.to_s.length > 200
-      return false if !@mime_type.nil? && @mime_type.to_s.length > 100
-      return false if !@original_filename.nil? && @original_filename.to_s.length > 250
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] description Value to be assigned
-    def description=(description)
-      if !description.nil? && description.to_s.length > 200
-        fail ArgumentError, 'invalid value for "description", the character length must be smaller than or equal to 200.'
-      end
-
-      @description = description
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] mime_type Value to be assigned
-    def mime_type=(mime_type)
-      if !mime_type.nil? && mime_type.to_s.length > 100
-        fail ArgumentError, 'invalid value for "mime_type", the character length must be smaller than or equal to 100.'
-      end
-
-      @mime_type = mime_type
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] original_filename Value to be assigned
-    def original_filename=(original_filename)
-      if !original_filename.nil? && original_filename.to_s.length > 250
-        fail ArgumentError, 'invalid value for "original_filename", the character length must be smaller than or equal to 250.'
-      end
-
-      @original_filename = original_filename
     end
 
     # Checks equality by comparing each attribute.
@@ -197,15 +113,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          click_wrap_agreement == o.click_wrap_agreement &&
-          creation_dts == o.creation_dts &&
-          description == o.description &&
-          digital_item_oid == o.digital_item_oid &&
-          file_size == o.file_size &&
-          import_from_url == o.import_from_url &&
-          mime_type == o.mime_type &&
-          original_filename == o.original_filename &&
-          pdf_meta == o.pdf_meta
+          digital_item == o.digital_item &&
+          error == o.error &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -217,7 +129,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [click_wrap_agreement, creation_dts, description, digital_item_oid, file_size, import_from_url, mime_type, original_filename, pdf_meta].hash
+      [digital_item, error, metadata, success, warning].hash
     end
 
     # Builds the object from hash

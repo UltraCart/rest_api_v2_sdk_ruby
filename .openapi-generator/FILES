@@ -425,6 +425,9 @@ docs/ItemContentMultimedia.md
 docs/ItemContentMultimediaThumbnail.md
 docs/ItemDigitalDelivery.md
 docs/ItemDigitalItem.md
+docs/ItemDigitalItemPdfMeta.md
+docs/ItemDigitalItemResponse.md
+docs/ItemDigitalItemsResponse.md
 docs/ItemEbay.md
 docs/ItemEbayCategorySpecific.md
 docs/ItemEbayMarketListing.md
@@ -1126,6 +1129,9 @@ lib/ultracart_api/models/item_content_multimedia.rb
 lib/ultracart_api/models/item_content_multimedia_thumbnail.rb
 lib/ultracart_api/models/item_digital_delivery.rb
 lib/ultracart_api/models/item_digital_item.rb
+lib/ultracart_api/models/item_digital_item_pdf_meta.rb
+lib/ultracart_api/models/item_digital_item_response.rb
+lib/ultracart_api/models/item_digital_items_response.rb
 lib/ultracart_api/models/item_ebay.rb
 lib/ultracart_api/models/item_ebay_category_specific.rb
 lib/ultracart_api/models/item_ebay_market_listing.rb
