@@ -13,60 +13,71 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ItemDigitalItem
-    # Click wrap agreement is presented to the customer before they can purchase your product.
-    attr_accessor :click_wrap_agreement
+  class ItemDigitalItemPdfMeta
+    # Assembly allowed
+    attr_accessor :assembly_allowed
 
-    # File creation date
-    attr_accessor :creation_dts
+    # Copy/Paste is allowed
+    attr_accessor :copy_allowed
 
-    # Description of the digital item
-    attr_accessor :description
+    # A custom footer for each pdf page
+    attr_accessor :custom_footer
 
-    # The Digital item oid is a primary key used internally by UltraCart.  You should not set or change this value.  Doing so will have no effect.
-    attr_accessor :digital_item_oid
+    # A custom header for each pdf page
+    attr_accessor :custom_header
 
-    # File size
-    attr_accessor :file_size
+    # Degraded printing allowed
+    attr_accessor :degraded_printing_allowed
 
-    # This url is sourced to create or update a digital file in your digital library.  It is only considered during an insert or update operation.
-    attr_accessor :import_from_url
+    # Fillin is allowed
+    attr_accessor :fillin_allowed
 
-    # Mime type associated with the file
-    attr_accessor :mime_type
+    # Modifying annotations is allowed
+    attr_accessor :modify_annotations_allowed
 
-    # Original filename
-    attr_accessor :original_filename
+    # Modifying contents is allowed
+    attr_accessor :modify_contents_allowed
 
-    attr_accessor :pdf_meta
+    # Printing is allowed
+    attr_accessor :printing_allowed
+
+    # Screen readers are allowed
+    attr_accessor :screen_readers_allowed
+
+    # PDF is tagged
+    attr_accessor :tagged
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'click_wrap_agreement' => :'click_wrap_agreement',
-        :'creation_dts' => :'creation_dts',
-        :'description' => :'description',
-        :'digital_item_oid' => :'digital_item_oid',
-        :'file_size' => :'file_size',
-        :'import_from_url' => :'import_from_url',
-        :'mime_type' => :'mime_type',
-        :'original_filename' => :'original_filename',
-        :'pdf_meta' => :'pdf_meta'
+        :'assembly_allowed' => :'assembly_allowed',
+        :'copy_allowed' => :'copy_allowed',
+        :'custom_footer' => :'custom_footer',
+        :'custom_header' => :'custom_header',
+        :'degraded_printing_allowed' => :'degraded_printing_allowed',
+        :'fillin_allowed' => :'fillin_allowed',
+        :'modify_annotations_allowed' => :'modify_annotations_allowed',
+        :'modify_contents_allowed' => :'modify_contents_allowed',
+        :'printing_allowed' => :'printing_allowed',
+        :'screen_readers_allowed' => :'screen_readers_allowed',
+        :'tagged' => :'tagged'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'click_wrap_agreement' => :'String',
-        :'creation_dts' => :'String',
-        :'description' => :'String',
-        :'digital_item_oid' => :'Integer',
-        :'file_size' => :'Integer',
-        :'import_from_url' => :'String',
-        :'mime_type' => :'String',
-        :'original_filename' => :'String',
-        :'pdf_meta' => :'ItemDigitalItemPdfMeta'
+        :'assembly_allowed' => :'BOOLEAN',
+        :'copy_allowed' => :'BOOLEAN',
+        :'custom_footer' => :'String',
+        :'custom_header' => :'String',
+        :'degraded_printing_allowed' => :'BOOLEAN',
+        :'fillin_allowed' => :'BOOLEAN',
+        :'modify_annotations_allowed' => :'BOOLEAN',
+        :'modify_contents_allowed' => :'BOOLEAN',
+        :'printing_allowed' => :'BOOLEAN',
+        :'screen_readers_allowed' => :'BOOLEAN',
+        :'tagged' => :'BOOLEAN'
       }
     end
 
@@ -78,40 +89,48 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'click_wrap_agreement')
-        self.click_wrap_agreement = attributes[:'click_wrap_agreement']
+      if attributes.has_key?(:'assembly_allowed')
+        self.assembly_allowed = attributes[:'assembly_allowed']
       end
 
-      if attributes.has_key?(:'creation_dts')
-        self.creation_dts = attributes[:'creation_dts']
+      if attributes.has_key?(:'copy_allowed')
+        self.copy_allowed = attributes[:'copy_allowed']
       end
 
-      if attributes.has_key?(:'description')
-        self.description = attributes[:'description']
+      if attributes.has_key?(:'custom_footer')
+        self.custom_footer = attributes[:'custom_footer']
       end
 
-      if attributes.has_key?(:'digital_item_oid')
-        self.digital_item_oid = attributes[:'digital_item_oid']
+      if attributes.has_key?(:'custom_header')
+        self.custom_header = attributes[:'custom_header']
       end
 
-      if attributes.has_key?(:'file_size')
-        self.file_size = attributes[:'file_size']
+      if attributes.has_key?(:'degraded_printing_allowed')
+        self.degraded_printing_allowed = attributes[:'degraded_printing_allowed']
       end
 
-      if attributes.has_key?(:'import_from_url')
-        self.import_from_url = attributes[:'import_from_url']
+      if attributes.has_key?(:'fillin_allowed')
+        self.fillin_allowed = attributes[:'fillin_allowed']
       end
 
-      if attributes.has_key?(:'mime_type')
-        self.mime_type = attributes[:'mime_type']
+      if attributes.has_key?(:'modify_annotations_allowed')
+        self.modify_annotations_allowed = attributes[:'modify_annotations_allowed']
       end
 
-      if attributes.has_key?(:'original_filename')
-        self.original_filename = attributes[:'original_filename']
+      if attributes.has_key?(:'modify_contents_allowed')
+        self.modify_contents_allowed = attributes[:'modify_contents_allowed']
       end
 
-      if attributes.has_key?(:'pdf_meta')
-        self.pdf_meta = attributes[:'pdf_meta']
+      if attributes.has_key?(:'printing_allowed')
+        self.printing_allowed = attributes[:'printing_allowed']
+      end
+
+      if attributes.has_key?(:'screen_readers_allowed')
+        self.screen_readers_allowed = attributes[:'screen_readers_allowed']
+      end
+
+      if attributes.has_key?(:'tagged')
+        self.tagged = attributes[:'tagged']
       end
     end
 
@@ -119,16 +138,12 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@description.nil? && @description.to_s.length > 200
-        invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 200.')
+      if !@custom_footer.nil? && @custom_footer.to_s.length > 8000
+        invalid_properties.push('invalid value for "custom_footer", the character length must be smaller than or equal to 8000.')
       end
 
-      if !@mime_type.nil? && @mime_type.to_s.length > 100
-        invalid_properties.push('invalid value for "mime_type", the character length must be smaller than or equal to 100.')
-      end
-
-      if !@original_filename.nil? && @original_filename.to_s.length > 250
-        invalid_properties.push('invalid value for "original_filename", the character length must be smaller than or equal to 250.')
+      if !@custom_header.nil? && @custom_header.to_s.length > 8000
+        invalid_properties.push('invalid value for "custom_header", the character length must be smaller than or equal to 8000.')
       end
 
       invalid_properties
@@ -137,40 +152,29 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@description.nil? && @description.to_s.length > 200
-      return false if !@mime_type.nil? && @mime_type.to_s.length > 100
-      return false if !@original_filename.nil? && @original_filename.to_s.length > 250
+      return false if !@custom_footer.nil? && @custom_footer.to_s.length > 8000
+      return false if !@custom_header.nil? && @custom_header.to_s.length > 8000
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] description Value to be assigned
-    def description=(description)
-      if !description.nil? && description.to_s.length > 200
-        fail ArgumentError, 'invalid value for "description", the character length must be smaller than or equal to 200.'
+    # @param [Object] custom_footer Value to be assigned
+    def custom_footer=(custom_footer)
+      if !custom_footer.nil? && custom_footer.to_s.length > 8000
+        fail ArgumentError, 'invalid value for "custom_footer", the character length must be smaller than or equal to 8000.'
       end
 
-      @description = description
+      @custom_footer = custom_footer
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] mime_type Value to be assigned
-    def mime_type=(mime_type)
-      if !mime_type.nil? && mime_type.to_s.length > 100
-        fail ArgumentError, 'invalid value for "mime_type", the character length must be smaller than or equal to 100.'
+    # @param [Object] custom_header Value to be assigned
+    def custom_header=(custom_header)
+      if !custom_header.nil? && custom_header.to_s.length > 8000
+        fail ArgumentError, 'invalid value for "custom_header", the character length must be smaller than or equal to 8000.'
       end
 
-      @mime_type = mime_type
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] original_filename Value to be assigned
-    def original_filename=(original_filename)
-      if !original_filename.nil? && original_filename.to_s.length > 250
-        fail ArgumentError, 'invalid value for "original_filename", the character length must be smaller than or equal to 250.'
-      end
-
-      @original_filename = original_filename
+      @custom_header = custom_header
     end
 
     # Checks equality by comparing each attribute.
@@ -178,15 +182,17 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          click_wrap_agreement == o.click_wrap_agreement &&
-          creation_dts == o.creation_dts &&
-          description == o.description &&
-          digital_item_oid == o.digital_item_oid &&
-          file_size == o.file_size &&
-          import_from_url == o.import_from_url &&
-          mime_type == o.mime_type &&
-          original_filename == o.original_filename &&
-          pdf_meta == o.pdf_meta
+          assembly_allowed == o.assembly_allowed &&
+          copy_allowed == o.copy_allowed &&
+          custom_footer == o.custom_footer &&
+          custom_header == o.custom_header &&
+          degraded_printing_allowed == o.degraded_printing_allowed &&
+          fillin_allowed == o.fillin_allowed &&
+          modify_annotations_allowed == o.modify_annotations_allowed &&
+          modify_contents_allowed == o.modify_contents_allowed &&
+          printing_allowed == o.printing_allowed &&
+          screen_readers_allowed == o.screen_readers_allowed &&
+          tagged == o.tagged
     end
 
     # @see the `==` method
@@ -198,7 +204,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [click_wrap_agreement, creation_dts, description, digital_item_oid, file_size, import_from_url, mime_type, original_filename, pdf_meta].hash
+      [assembly_allowed, copy_allowed, custom_footer, custom_header, degraded_printing_allowed, fillin_allowed, modify_annotations_allowed, modify_contents_allowed, printing_allowed, screen_readers_allowed, tagged].hash
     end
 
     # Builds the object from hash
