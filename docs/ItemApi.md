@@ -119,7 +119,7 @@ nil (empty response body)
 
 
 # **get_digital_item**
-> ItemDigitalItemResponse get_digital_item(digital_item_oid, opts)
+> ItemDigitalItemResponse get_digital_item(digital_item_oid)
 
 Retrieve a digital item from the digital library, which are digital files that may be attached to normal items
 
@@ -137,18 +137,10 @@ api_instance = UltracartClient::ItemApi.new_using_api_key(simple_key, false, fal
 
 digital_item_oid = 56 # Integer | The digital item oid to retrieve.
 
-opts = { 
-  _limit: 100, # Integer | The maximum number of records to return on this one API call. (Default 100, Max 2000)
-  _offset: 0, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _since: '_since_example', # String | Fetch items that have been created/modified since this date/time.
-  _sort: '_sort_example', # String | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
-  _placeholders: true # BOOLEAN | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-}
 
 begin
   #Retrieve a digital item from the digital library, which are digital files that may be attached to normal items
-  result = api_instance.get_digital_item(digital_item_oid, opts)
+  result = api_instance.get_digital_item(digital_item_oid)
   p result
 rescue UltracartClient::ApiError => e
   puts "Exception when calling ItemApi->get_digital_item: #{e}"
@@ -160,12 +152,6 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **digital_item_oid** | **Integer**| The digital item oid to retrieve. | 
- **_limit** | **Integer**| The maximum number of records to return on this one API call. (Default 100, Max 2000) | [optional] [default to 100]
- **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] [default to 0]
- **_since** | **String**| Fetch items that have been created/modified since this date/time. | [optional] 
- **_sort** | **String**| The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] 
- **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
- **_placeholders** | **BOOLEAN**| Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] 
 
 ### Return type
 

@@ -144,12 +144,6 @@ module UltracartClient
     # Retrieves a digital item (file information) from the account.  Be aware that these are not normal items that can be added to a shopping cart. Rather, they are digital files that may be associated with normal items. 
     # @param digital_item_oid The digital item oid to retrieve.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Default 100, Max 2000) (default to 100)
-    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
-    # @option opts [String] :_since Fetch items that have been created/modified since this date/time.
-    # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [ItemDigitalItemResponse]
     def get_digital_item(digital_item_oid, opts = {})
       data, _status_code, _headers = get_digital_item_with_http_info(digital_item_oid, opts)
@@ -160,12 +154,6 @@ module UltracartClient
     # Retrieves a digital item (file information) from the account.  Be aware that these are not normal items that can be added to a shopping cart. Rather, they are digital files that may be associated with normal items. 
     # @param digital_item_oid The digital item oid to retrieve.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Default 100, Max 2000)
-    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
-    # @option opts [String] :_since Fetch items that have been created/modified since this date/time.
-    # @option opts [String] :_sort The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
-    # @option opts [BOOLEAN] :_placeholders Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
     # @return [Array<(ItemDigitalItemResponse, Fixnum, Hash)>] ItemDigitalItemResponse data, response status code and response headers
     def get_digital_item_with_http_info(digital_item_oid, opts = {})
       if @api_client.config.debugging
@@ -180,12 +168,6 @@ module UltracartClient
 
       # query parameters
       query_params = {}
-      query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
-      query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
-      query_params[:'_since'] = opts[:'_since'] if !opts[:'_since'].nil?
-      query_params[:'_sort'] = opts[:'_sort'] if !opts[:'_sort'].nil?
-      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
-      query_params[:'_placeholders'] = opts[:'_placeholders'] if !opts[:'_placeholders'].nil?
 
       # header parameters
       header_params = {}
