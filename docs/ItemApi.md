@@ -162,7 +162,7 @@ nil (empty response body)
 
 ## get_digital_item
 
-> <ItemDigitalItemResponse> get_digital_item(digital_item_oid, opts)
+> <ItemDigitalItemResponse> get_digital_item(digital_item_oid)
 
 Retrieve a digital item from the digital library, which are digital files that may be attached to normal items
 
@@ -183,18 +183,10 @@ require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/
 
 api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 digital_item_oid = 56 # Integer | The digital item oid to retrieve.
-opts = {
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Default 100, Max 2000)
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _since: '_since_example', # String | Fetch items that have been created/modified since this date/time.
-  _sort: '_sort_example', # String | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
-  _placeholders: true # Boolean | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-}
 
 begin
   # Retrieve a digital item from the digital library, which are digital files that may be attached to normal items
-  result = api_instance.get_digital_item(digital_item_oid, opts)
+  result = api_instance.get_digital_item(digital_item_oid)
   p result
 rescue UltracartClient::ApiError => e
   puts "Error when calling ItemApi->get_digital_item: #{e}"
@@ -205,12 +197,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ItemDigitalItemResponse>, Integer, Hash)> get_digital_item_with_http_info(digital_item_oid, opts)
+> <Array(<ItemDigitalItemResponse>, Integer, Hash)> get_digital_item_with_http_info(digital_item_oid)
 
 ```ruby
 begin
   # Retrieve a digital item from the digital library, which are digital files that may be attached to normal items
-  data, status_code, headers = api_instance.get_digital_item_with_http_info(digital_item_oid, opts)
+  data, status_code, headers = api_instance.get_digital_item_with_http_info(digital_item_oid)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ItemDigitalItemResponse>
@@ -224,12 +216,6 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **digital_item_oid** | **Integer** | The digital item oid to retrieve. |  |
-| **_limit** | **Integer** | The maximum number of records to return on this one API call. (Default 100, Max 2000) | [optional][default to 100] |
-| **_offset** | **Integer** | Pagination of the record set.  Offset is a zero based index. | [optional][default to 0] |
-| **_since** | **String** | Fetch items that have been created/modified since this date/time. | [optional] |
-| **_sort** | **String** | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] |
-| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
-| **_placeholders** | **Boolean** | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] |
 
 ### Return type
 
