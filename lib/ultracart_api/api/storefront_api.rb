@@ -510,6 +510,121 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Create file manager directory for admin panel
+    # @param id 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name 
+    # @option opts [Integer] :parent_storefront_fs_directory_oid 
+    # @return [FileManagerPage]
+    def create_admin_panel_fs_directory(id, opts = {})
+      data, _status_code, _headers = create_admin_panel_fs_directory_with_http_info(id, opts)
+      data
+    end
+
+    # Create file manager directory for admin panel
+    # @param id 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name 
+    # @option opts [Integer] :parent_storefront_fs_directory_oid 
+    # @return [Array<(FileManagerPage, Fixnum, Hash)>] FileManagerPage data, response status code and response headers
+    def create_admin_panel_fs_directory_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.create_admin_panel_fs_directory ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling StorefrontApi.create_admin_panel_fs_directory"
+      end
+      # resource path
+      local_var_path = '/storefront/{id}/adminPanel/fs/dir'.sub('{' + 'id' + '}', id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'parent_storefront_fs_directory_oid'] = opts[:'parent_storefront_fs_directory_oid'] if !opts[:'parent_storefront_fs_directory_oid'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FileManagerPage')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#create_admin_panel_fs_directory\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Upload file manager file for admin panel
+    # @param id 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :parent_storefront_fs_directory_oid 
+    # @return [FileManagerPage]
+    def create_admin_panel_fs_file_upload(id, opts = {})
+      data, _status_code, _headers = create_admin_panel_fs_file_upload_with_http_info(id, opts)
+      data
+    end
+
+    # Upload file manager file for admin panel
+    # @param id 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :parent_storefront_fs_directory_oid 
+    # @return [Array<(FileManagerPage, Fixnum, Hash)>] FileManagerPage data, response status code and response headers
+    def create_admin_panel_fs_file_upload_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.create_admin_panel_fs_file_upload ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling StorefrontApi.create_admin_panel_fs_file_upload"
+      end
+      # resource path
+      local_var_path = '/storefront/{id}/adminPanel/fs/file'.sub('{' + 'id' + '}', id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'parent_storefront_fs_directory_oid'] = opts[:'parent_storefront_fs_directory_oid'] if !opts[:'parent_storefront_fs_directory_oid'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FileManagerPage')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#create_admin_panel_fs_file_upload\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Create email campaign
     # @param domain 
     # @param [Hash] opts the optional parameters
@@ -666,6 +781,65 @@ module UltracartClient
         :return_type => 'TwilioResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#create_twilio_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Delete file manager directory for admin panel
+    # @param id 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :parent_storefront_fs_directory_oid 
+    # @option opts [Integer] :storefront_fs_file_oid 
+    # @return [FileManagerPage]
+    def delete_admin_panel_fs_file(id, opts = {})
+      data, _status_code, _headers = delete_admin_panel_fs_file_with_http_info(id, opts)
+      data
+    end
+
+    # Delete file manager directory for admin panel
+    # @param id 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :parent_storefront_fs_directory_oid 
+    # @option opts [Integer] :storefront_fs_file_oid 
+    # @return [Array<(FileManagerPage, Fixnum, Hash)>] FileManagerPage data, response status code and response headers
+    def delete_admin_panel_fs_file_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.delete_admin_panel_fs_file ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling StorefrontApi.delete_admin_panel_fs_file"
+      end
+      # resource path
+      local_var_path = '/storefront/{id}/adminPanel/fs/file'.sub('{' + 'id' + '}', id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'parent_storefront_fs_directory_oid'] = opts[:'parent_storefront_fs_directory_oid'] if !opts[:'parent_storefront_fs_directory_oid'].nil?
+      query_params[:'storefront_fs_file_oid'] = opts[:'storefront_fs_file_oid'] if !opts[:'storefront_fs_file_oid'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FileManagerPage')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#delete_admin_panel_fs_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1642,6 +1816,68 @@ module UltracartClient
         :return_type => 'GeocodeResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#geocode_address\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get file manager directory for admin panel
+    # @param id 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :path 
+    # @option opts [Integer] :storefront_fs_directory_oid 
+    # @option opts [Integer] :storefront_theme_oid 
+    # @return [FileManagerPage]
+    def get_admin_panel_fs_directory(id, opts = {})
+      data, _status_code, _headers = get_admin_panel_fs_directory_with_http_info(id, opts)
+      data
+    end
+
+    # Get file manager directory for admin panel
+    # @param id 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :path 
+    # @option opts [Integer] :storefront_fs_directory_oid 
+    # @option opts [Integer] :storefront_theme_oid 
+    # @return [Array<(FileManagerPage, Fixnum, Hash)>] FileManagerPage data, response status code and response headers
+    def get_admin_panel_fs_directory_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_admin_panel_fs_directory ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling StorefrontApi.get_admin_panel_fs_directory"
+      end
+      # resource path
+      local_var_path = '/storefront/{id}/adminPanel/fs/dir'.sub('{' + 'id' + '}', id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'path'] = opts[:'path'] if !opts[:'path'].nil?
+      query_params[:'storefront_fs_directory_oid'] = opts[:'storefront_fs_directory_oid'] if !opts[:'storefront_fs_directory_oid'].nil?
+      query_params[:'storefront_theme_oid'] = opts[:'storefront_theme_oid'] if !opts[:'storefront_theme_oid'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'FileManagerPage')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_admin_panel_fs_directory\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
