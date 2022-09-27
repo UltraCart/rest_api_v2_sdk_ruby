@@ -12,9 +12,12 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**check_download_email_segment**](StorefrontApi.md#check_download_email_segment) | **POST** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/downloadPrepare/{email_segment_rebuild_uuid} | Check download of email segment |
 | [**clone_email_campaign**](StorefrontApi.md#clone_email_campaign) | **POST** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid}/clone | Clone email campaign |
 | [**clone_email_flow**](StorefrontApi.md#clone_email_flow) | **POST** /storefront/{storefront_oid}/email/flows/{email_flow_uuid}/clone | Clone email flow |
+| [**create_admin_panel_fs_directory**](StorefrontApi.md#create_admin_panel_fs_directory) | **POST** /storefront/{id}/adminPanel/fs/dir | Create file manager directory for admin panel |
+| [**create_admin_panel_fs_file_upload**](StorefrontApi.md#create_admin_panel_fs_file_upload) | **POST** /storefront/{id}/adminPanel/fs/file | Upload file manager file for admin panel |
 | [**create_email_sending_domain**](StorefrontApi.md#create_email_sending_domain) | **POST** /storefront/email/sending_domains/{domain}/create | Create email campaign |
 | [**create_email_sending_domain2**](StorefrontApi.md#create_email_sending_domain2) | **POST** /storefront/email/sending_domains | Create email sending domain for various providers |
 | [**create_twilio_account**](StorefrontApi.md#create_twilio_account) | **POST** /storefront/twilio/accounts | Create Twilio account |
+| [**delete_admin_panel_fs_file**](StorefrontApi.md#delete_admin_panel_fs_file) | **DELETE** /storefront/{id}/adminPanel/fs/file | Delete file manager directory for admin panel |
 | [**delete_email_campaign_folder**](StorefrontApi.md#delete_email_campaign_folder) | **DELETE** /storefront/{storefront_oid}/email/campaign_folders/{email_campaign_folder_uuid} | Delete email campaignFolder |
 | [**delete_email_commseq_stat**](StorefrontApi.md#delete_email_commseq_stat) | **DELETE** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/stat | Delete communication sequence stats |
 | [**delete_email_email**](StorefrontApi.md#delete_email_email) | **DELETE** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid} | Delete email email |
@@ -32,6 +35,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**duplicate_library_item**](StorefrontApi.md#duplicate_library_item) | **POST** /storefront/code_library/{library_item_oid}/duplicate | Duplicate library item. |
 | [**favorite_screen_recording**](StorefrontApi.md#favorite_screen_recording) | **POST** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/favorite | Update favorite flag on screen recording |
 | [**geocode_address**](StorefrontApi.md#geocode_address) | **POST** /storefront/{storefront_oid}/email/geocode | Obtain lat/long for an address |
+| [**get_admin_panel_fs_directory**](StorefrontApi.md#get_admin_panel_fs_directory) | **GET** /storefront/{id}/adminPanel/fs/dir | Get file manager directory for admin panel |
 | [**get_countries**](StorefrontApi.md#get_countries) | **GET** /storefront/{storefront_oid}/email/countries | Get countries |
 | [**get_editor_token**](StorefrontApi.md#get_editor_token) | **GET** /storefront/{storefront_oid}/editor_token | Gets editor token |
 | [**get_email_base_templates**](StorefrontApi.md#get_email_base_templates) | **GET** /storefront/{storefront_oid}/email/baseTemplates | Get email communication base templates |
@@ -748,6 +752,154 @@ end
 - **Accept**: application/json
 
 
+## create_admin_panel_fs_directory
+
+> <FileManagerPage> create_admin_panel_fs_directory(id, opts)
+
+Create file manager directory for admin panel
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+id = 56 # Integer | 
+opts = {
+  name: 'name_example', # String | 
+  parent_storefront_fs_directory_oid: 56 # Integer | 
+}
+
+begin
+  # Create file manager directory for admin panel
+  result = api_instance.create_admin_panel_fs_directory(id, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->create_admin_panel_fs_directory: #{e}"
+end
+```
+
+#### Using the create_admin_panel_fs_directory_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FileManagerPage>, Integer, Hash)> create_admin_panel_fs_directory_with_http_info(id, opts)
+
+```ruby
+begin
+  # Create file manager directory for admin panel
+  data, status_code, headers = api_instance.create_admin_panel_fs_directory_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FileManagerPage>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->create_admin_panel_fs_directory_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **name** | **String** |  | [optional] |
+| **parent_storefront_fs_directory_oid** | **Integer** |  | [optional] |
+
+### Return type
+
+[**FileManagerPage**](FileManagerPage.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## create_admin_panel_fs_file_upload
+
+> <FileManagerPage> create_admin_panel_fs_file_upload(id, opts)
+
+Upload file manager file for admin panel
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+id = 56 # Integer | 
+opts = {
+  parent_storefront_fs_directory_oid: 56 # Integer | 
+}
+
+begin
+  # Upload file manager file for admin panel
+  result = api_instance.create_admin_panel_fs_file_upload(id, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->create_admin_panel_fs_file_upload: #{e}"
+end
+```
+
+#### Using the create_admin_panel_fs_file_upload_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FileManagerPage>, Integer, Hash)> create_admin_panel_fs_file_upload_with_http_info(id, opts)
+
+```ruby
+begin
+  # Upload file manager file for admin panel
+  data, status_code, headers = api_instance.create_admin_panel_fs_file_upload_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FileManagerPage>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->create_admin_panel_fs_file_upload_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **parent_storefront_fs_directory_oid** | **Integer** |  | [optional] |
+
+### Return type
+
+[**FileManagerPage**](FileManagerPage.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## create_email_sending_domain
 
 > <EmailSendingDomainResponse> create_email_sending_domain(domain)
@@ -952,6 +1104,81 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## delete_admin_panel_fs_file
+
+> <FileManagerPage> delete_admin_panel_fs_file(id, opts)
+
+Delete file manager directory for admin panel
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+id = 56 # Integer | 
+opts = {
+  parent_storefront_fs_directory_oid: 56, # Integer | 
+  storefront_fs_file_oid: 56 # Integer | 
+}
+
+begin
+  # Delete file manager directory for admin panel
+  result = api_instance.delete_admin_panel_fs_file(id, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->delete_admin_panel_fs_file: #{e}"
+end
+```
+
+#### Using the delete_admin_panel_fs_file_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FileManagerPage>, Integer, Hash)> delete_admin_panel_fs_file_with_http_info(id, opts)
+
+```ruby
+begin
+  # Delete file manager directory for admin panel
+  data, status_code, headers = api_instance.delete_admin_panel_fs_file_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FileManagerPage>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->delete_admin_panel_fs_file_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **parent_storefront_fs_directory_oid** | **Integer** |  | [optional] |
+| **storefront_fs_file_oid** | **Integer** |  | [optional] |
+
+### Return type
+
+[**FileManagerPage**](FileManagerPage.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -2148,6 +2375,83 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_admin_panel_fs_directory
+
+> <FileManagerPage> get_admin_panel_fs_directory(id, opts)
+
+Get file manager directory for admin panel
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+id = 56 # Integer | 
+opts = {
+  path: 'path_example', # String | 
+  storefront_fs_directory_oid: 56, # Integer | 
+  storefront_theme_oid: 56 # Integer | 
+}
+
+begin
+  # Get file manager directory for admin panel
+  result = api_instance.get_admin_panel_fs_directory(id, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->get_admin_panel_fs_directory: #{e}"
+end
+```
+
+#### Using the get_admin_panel_fs_directory_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FileManagerPage>, Integer, Hash)> get_admin_panel_fs_directory_with_http_info(id, opts)
+
+```ruby
+begin
+  # Get file manager directory for admin panel
+  data, status_code, headers = api_instance.get_admin_panel_fs_directory_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FileManagerPage>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->get_admin_panel_fs_directory_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** |  |  |
+| **path** | **String** |  | [optional] |
+| **storefront_fs_directory_oid** | **Integer** |  | [optional] |
+| **storefront_theme_oid** | **Integer** |  | [optional] |
+
+### Return type
+
+[**FileManagerPage**](FileManagerPage.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 

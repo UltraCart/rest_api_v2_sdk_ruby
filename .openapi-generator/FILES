@@ -375,6 +375,7 @@ docs/ExperimentResponse.md
 docs/ExperimentVariation.md
 docs/ExperimentVariationStat.md
 docs/ExperimentsResponse.md
+docs/FileManagerPage.md
 docs/FulfillmentApi.md
 docs/FulfillmentInventory.md
 docs/FulfillmentShipment.md
@@ -1083,6 +1084,7 @@ lib/ultracart_api/models/experiment_response.rb
 lib/ultracart_api/models/experiment_variation.rb
 lib/ultracart_api/models/experiment_variation_stat.rb
 lib/ultracart_api/models/experiments_response.rb
+lib/ultracart_api/models/file_manager_page.rb
 lib/ultracart_api/models/fulfillment_inventory.rb
 lib/ultracart_api/models/fulfillment_shipment.rb
 lib/ultracart_api/models/geo_point.rb

@@ -12,6 +12,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_item_by_merchant_item_id**](ItemApi.md#get_item_by_merchant_item_id) | **GET** /item/items/merchant_item_id/{merchant_item_id} | Retrieve an item by item id |
 | [**get_items**](ItemApi.md#get_items) | **GET** /item/items | Retrieve items |
 | [**get_pricing_tiers**](ItemApi.md#get_pricing_tiers) | **GET** /item/pricing_tiers | Retrieve pricing tiers |
+| [**get_unassociated_digital_items**](ItemApi.md#get_unassociated_digital_items) | **GET** /item/digital_library/unassociated | Retrieve digital items from the digital library (which are digital files that may be attached to normal items) not yet associated with actual items |
 | [**insert_digital_item**](ItemApi.md#insert_digital_item) | **POST** /item/digital_library | Create a file within the digital library |
 | [**insert_item**](ItemApi.md#insert_item) | **POST** /item/items | Create an item |
 | [**update_digital_item**](ItemApi.md#update_digital_item) | **PUT** /item/digital_library/{digital_item_oid} | Updates a file within the digital library |
@@ -617,6 +618,89 @@ end
 ### Return type
 
 [**PricingTiersResponse**](PricingTiersResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_unassociated_digital_items
+
+> <ItemDigitalItemsResponse> get_unassociated_digital_items(opts)
+
+Retrieve digital items from the digital library (which are digital files that may be attached to normal items) not yet associated with actual items
+
+Retrieves a group of digital items (file information) from the account that are not yet associated with any actual items.  If no parameters are specified, all digital items will be returned.  Be aware that these are not normal items that can be added to a shopping cart. Rather, they are digital files that may be associated with normal items.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+opts = {
+  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Default 100, Max 2000)
+  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
+  _since: '_since_example', # String | Fetch items that have been created/modified since this date/time.
+  _sort: '_sort_example', # String | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
+  _placeholders: true # Boolean | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+}
+
+begin
+  # Retrieve digital items from the digital library (which are digital files that may be attached to normal items) not yet associated with actual items
+  result = api_instance.get_unassociated_digital_items(opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->get_unassociated_digital_items: #{e}"
+end
+```
+
+#### Using the get_unassociated_digital_items_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ItemDigitalItemsResponse>, Integer, Hash)> get_unassociated_digital_items_with_http_info(opts)
+
+```ruby
+begin
+  # Retrieve digital items from the digital library (which are digital files that may be attached to normal items) not yet associated with actual items
+  data, status_code, headers = api_instance.get_unassociated_digital_items_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ItemDigitalItemsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->get_unassociated_digital_items_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **_limit** | **Integer** | The maximum number of records to return on this one API call. (Default 100, Max 2000) | [optional][default to 100] |
+| **_offset** | **Integer** | Pagination of the record set.  Offset is a zero based index. | [optional][default to 0] |
+| **_since** | **String** | Fetch items that have been created/modified since this date/time. | [optional] |
+| **_sort** | **String** | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
+| **_placeholders** | **Boolean** | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] |
+
+### Return type
+
+[**ItemDigitalItemsResponse**](ItemDigitalItemsResponse.md)
 
 ### Authorization
 
