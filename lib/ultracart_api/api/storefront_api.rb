@@ -731,7 +731,7 @@ module UltracartClient
     # @param [Hash] opts the optional parameters
     # @option opts [String] :name 
     # @option opts [Integer] :parent_storefront_fs_directory_oid 
-    # @return [FileManagerPage]
+    # @return [FileManagerPageResponse]
     def create_fs_directory(id, opts = {})
       data, _status_code, _headers = create_fs_directory_with_http_info(id, opts)
       data
@@ -742,7 +742,7 @@ module UltracartClient
     # @param [Hash] opts the optional parameters
     # @option opts [String] :name 
     # @option opts [Integer] :parent_storefront_fs_directory_oid 
-    # @return [Array<(FileManagerPage, Integer, Hash)>] FileManagerPage data, response status code and response headers
+    # @return [Array<(FileManagerPageResponse, Integer, Hash)>] FileManagerPageResponse data, response status code and response headers
     def create_fs_directory_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StorefrontApi.create_fs_directory ...'
@@ -772,7 +772,7 @@ module UltracartClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'FileManagerPage'
+      return_type = opts[:debug_return_type] || 'FileManagerPageResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
@@ -1478,7 +1478,7 @@ module UltracartClient
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :parent_storefront_fs_directory_oid 
     # @option opts [Integer] :storefront_fs_file_oid 
-    # @return [FileManagerPage]
+    # @return [FileManagerPageResponse]
     def delete_fs_file(id, opts = {})
       data, _status_code, _headers = delete_fs_file_with_http_info(id, opts)
       data
@@ -1489,7 +1489,7 @@ module UltracartClient
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :parent_storefront_fs_directory_oid 
     # @option opts [Integer] :storefront_fs_file_oid 
-    # @return [Array<(FileManagerPage, Integer, Hash)>] FileManagerPage data, response status code and response headers
+    # @return [Array<(FileManagerPageResponse, Integer, Hash)>] FileManagerPageResponse data, response status code and response headers
     def delete_fs_file_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StorefrontApi.delete_fs_file ...'
@@ -1519,7 +1519,7 @@ module UltracartClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'FileManagerPage'
+      return_type = opts[:debug_return_type] || 'FileManagerPageResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
@@ -5999,7 +5999,7 @@ module UltracartClient
     # @option opts [String] :path 
     # @option opts [Integer] :storefront_fs_directory_oid 
     # @option opts [Integer] :storefront_theme_oid 
-    # @return [FileManagerPage]
+    # @return [FileManagerPageResponse]
     def get_fs_directory(id, opts = {})
       data, _status_code, _headers = get_fs_directory_with_http_info(id, opts)
       data
@@ -6011,7 +6011,7 @@ module UltracartClient
     # @option opts [String] :path 
     # @option opts [Integer] :storefront_fs_directory_oid 
     # @option opts [Integer] :storefront_theme_oid 
-    # @return [Array<(FileManagerPage, Integer, Hash)>] FileManagerPage data, response status code and response headers
+    # @return [Array<(FileManagerPageResponse, Integer, Hash)>] FileManagerPageResponse data, response status code and response headers
     def get_fs_directory_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StorefrontApi.get_fs_directory ...'
@@ -6042,7 +6042,7 @@ module UltracartClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'FileManagerPage'
+      return_type = opts[:debug_return_type] || 'FileManagerPageResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']

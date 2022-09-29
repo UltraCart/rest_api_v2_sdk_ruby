@@ -893,7 +893,7 @@ end
 
 ## create_fs_directory
 
-> <FileManagerPage> create_fs_directory(id, opts)
+> <FileManagerPageResponse> create_fs_directory(id, opts)
 
 Create file manager directory
 
@@ -930,7 +930,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<FileManagerPage>, Integer, Hash)> create_fs_directory_with_http_info(id, opts)
+> <Array(<FileManagerPageResponse>, Integer, Hash)> create_fs_directory_with_http_info(id, opts)
 
 ```ruby
 begin
@@ -938,7 +938,7 @@ begin
   data, status_code, headers = api_instance.create_fs_directory_with_http_info(id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <FileManagerPage>
+  p data # => <FileManagerPageResponse>
 rescue UltracartClient::ApiError => e
   puts "Error when calling StorefrontApi->create_fs_directory_with_http_info: #{e}"
 end
@@ -954,7 +954,7 @@ end
 
 ### Return type
 
-[**FileManagerPage**](FileManagerPage.md)
+[**FileManagerPageResponse**](FileManagerPageResponse.md)
 
 ### Authorization
 
@@ -1674,7 +1674,7 @@ nil (empty response body)
 
 ## delete_fs_file
 
-> <FileManagerPage> delete_fs_file(id, opts)
+> <FileManagerPageResponse> delete_fs_file(id, opts)
 
 Delete file manager directory
 
@@ -1711,7 +1711,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<FileManagerPage>, Integer, Hash)> delete_fs_file_with_http_info(id, opts)
+> <Array(<FileManagerPageResponse>, Integer, Hash)> delete_fs_file_with_http_info(id, opts)
 
 ```ruby
 begin
@@ -1719,7 +1719,7 @@ begin
   data, status_code, headers = api_instance.delete_fs_file_with_http_info(id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <FileManagerPage>
+  p data # => <FileManagerPageResponse>
 rescue UltracartClient::ApiError => e
   puts "Error when calling StorefrontApi->delete_fs_file_with_http_info: #{e}"
 end
@@ -1735,7 +1735,7 @@ end
 
 ### Return type
 
-[**FileManagerPage**](FileManagerPage.md)
+[**FileManagerPageResponse**](FileManagerPageResponse.md)
 
 ### Authorization
 
@@ -6436,7 +6436,7 @@ end
 
 ## get_fs_directory
 
-> <FileManagerPage> get_fs_directory(id, opts)
+> <FileManagerPageResponse> get_fs_directory(id, opts)
 
 Get file manager directory
 
@@ -6474,7 +6474,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<FileManagerPage>, Integer, Hash)> get_fs_directory_with_http_info(id, opts)
+> <Array(<FileManagerPageResponse>, Integer, Hash)> get_fs_directory_with_http_info(id, opts)
 
 ```ruby
 begin
@@ -6482,7 +6482,7 @@ begin
   data, status_code, headers = api_instance.get_fs_directory_with_http_info(id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <FileManagerPage>
+  p data # => <FileManagerPageResponse>
 rescue UltracartClient::ApiError => e
   puts "Error when calling StorefrontApi->get_fs_directory_with_http_info: #{e}"
 end
@@ -6499,7 +6499,7 @@ end
 
 ### Return type
 
-[**FileManagerPage**](FileManagerPage.md)
+[**FileManagerPageResponse**](FileManagerPageResponse.md)
 
 ### Authorization
 
