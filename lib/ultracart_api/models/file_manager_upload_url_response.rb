@@ -14,34 +14,26 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class FileManagerPage
-    attr_accessor :current_storefront_fs_directory_oid
+  class FileManagerUploadUrlResponse
+    attr_accessor :error
 
-    attr_accessor :directories
+    attr_accessor :key
 
-    attr_accessor :files
+    attr_accessor :metadata
 
-    attr_accessor :hostname
+    # Indicates if API call was successful
+    attr_accessor :success
 
-    attr_accessor :parent_storefront_fs_directory_oid
-
-    attr_accessor :path
-
-    attr_accessor :path_list
-
-    attr_accessor :storefront_oid
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'current_storefront_fs_directory_oid' => :'current_storefront_fs_directory_oid',
-        :'directories' => :'directories',
-        :'files' => :'files',
-        :'hostname' => :'hostname',
-        :'parent_storefront_fs_directory_oid' => :'parent_storefront_fs_directory_oid',
-        :'path' => :'path',
-        :'path_list' => :'path_list',
-        :'storefront_oid' => :'storefront_oid'
+        :'error' => :'error',
+        :'key' => :'key',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
@@ -53,14 +45,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'current_storefront_fs_directory_oid' => :'Integer',
-        :'directories' => :'Array<FileManagerDirectory>',
-        :'files' => :'Array<FileManagerFile>',
-        :'hostname' => :'String',
-        :'parent_storefront_fs_directory_oid' => :'Integer',
-        :'path' => :'String',
-        :'path_list' => :'Array<FileManagerDirectory>',
-        :'storefront_oid' => :'Integer'
+        :'error' => :'Error',
+        :'key' => :'String',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'Boolean',
+        :'warning' => :'Warning'
       }
     end
 
@@ -74,53 +63,35 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::FileManagerPage` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::FileManagerUploadUrlResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::FileManagerPage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::FileManagerUploadUrlResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'current_storefront_fs_directory_oid')
-        self.current_storefront_fs_directory_oid = attributes[:'current_storefront_fs_directory_oid']
+      if attributes.key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.key?(:'directories')
-        if (value = attributes[:'directories']).is_a?(Array)
-          self.directories = value
-        end
+      if attributes.key?(:'key')
+        self.key = attributes[:'key']
       end
 
-      if attributes.key?(:'files')
-        if (value = attributes[:'files']).is_a?(Array)
-          self.files = value
-        end
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.key?(:'hostname')
-        self.hostname = attributes[:'hostname']
+      if attributes.key?(:'success')
+        self.success = attributes[:'success']
       end
 
-      if attributes.key?(:'parent_storefront_fs_directory_oid')
-        self.parent_storefront_fs_directory_oid = attributes[:'parent_storefront_fs_directory_oid']
-      end
-
-      if attributes.key?(:'path')
-        self.path = attributes[:'path']
-      end
-
-      if attributes.key?(:'path_list')
-        if (value = attributes[:'path_list']).is_a?(Array)
-          self.path_list = value
-        end
-      end
-
-      if attributes.key?(:'storefront_oid')
-        self.storefront_oid = attributes[:'storefront_oid']
+      if attributes.key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -142,14 +113,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          current_storefront_fs_directory_oid == o.current_storefront_fs_directory_oid &&
-          directories == o.directories &&
-          files == o.files &&
-          hostname == o.hostname &&
-          parent_storefront_fs_directory_oid == o.parent_storefront_fs_directory_oid &&
-          path == o.path &&
-          path_list == o.path_list &&
-          storefront_oid == o.storefront_oid
+          error == o.error &&
+          key == o.key &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -161,7 +129,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [current_storefront_fs_directory_oid, directories, files, hostname, parent_storefront_fs_directory_oid, path, path_list, storefront_oid].hash
+      [error, key, metadata, success, warning].hash
     end
 
     # Builds the object from hash

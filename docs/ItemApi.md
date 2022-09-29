@@ -8,6 +8,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**delete_item**](ItemApi.md#delete_item) | **DELETE** /item/items/{merchant_item_oid} | Delete an item |
 | [**get_digital_item**](ItemApi.md#get_digital_item) | **GET** /item/digital_library/{digital_item_oid} | Retrieve a digital item from the digital library, which are digital files that may be attached to normal items |
 | [**get_digital_items**](ItemApi.md#get_digital_items) | **GET** /item/digital_library | Retrieve digital items from the digital library which are digital files that may be attached to normal items |
+| [**get_digital_items_by_external_id**](ItemApi.md#get_digital_items_by_external_id) | **GET** /item/digital_library/by_external/{external_id} | Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id |
 | [**get_item**](ItemApi.md#get_item) | **GET** /item/items/{merchant_item_oid} | Retrieve an item |
 | [**get_item_by_merchant_item_id**](ItemApi.md#get_item_by_merchant_item_id) | **GET** /item/items/merchant_item_id/{merchant_item_id} | Retrieve an item by item id |
 | [**get_items**](ItemApi.md#get_items) | **GET** /item/items | Retrieve items |
@@ -300,6 +301,77 @@ end
 | **_sort** | **String** | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] |
 | **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
 | **_placeholders** | **Boolean** | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] |
+
+### Return type
+
+[**ItemDigitalItemsResponse**](ItemDigitalItemsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_digital_items_by_external_id
+
+> <ItemDigitalItemsResponse> get_digital_items_by_external_id(external_id)
+
+Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id
+
+Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id.  Be aware that these are not normal items that can be added to a shopping cart. Rather, they are digital files that may be associated with normal items. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+external_id = 'external_id_example' # String | The external id to match against.
+
+begin
+  # Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id
+  result = api_instance.get_digital_items_by_external_id(external_id)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->get_digital_items_by_external_id: #{e}"
+end
+```
+
+#### Using the get_digital_items_by_external_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ItemDigitalItemsResponse>, Integer, Hash)> get_digital_items_by_external_id_with_http_info(external_id)
+
+```ruby
+begin
+  # Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id
+  data, status_code, headers = api_instance.get_digital_items_by_external_id_with_http_info(external_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ItemDigitalItemsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->get_digital_items_by_external_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **external_id** | **String** | The external id to match against. |  |
 
 ### Return type
 

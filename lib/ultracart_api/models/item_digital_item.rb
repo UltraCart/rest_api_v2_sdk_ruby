@@ -27,6 +27,9 @@ module UltracartClient
     # The Digital item oid is a primary key used internally by UltraCart.  You should not set or change this value.  Doing so will have no effect.
     attr_accessor :digital_item_oid
 
+    # External Id useful for syncing with a remote filesystem, this may be an MD5 hash or whatever suits your needs.
+    attr_accessor :external_id
+
     # File size
     attr_accessor :file_size
 
@@ -48,6 +51,7 @@ module UltracartClient
         :'creation_dts' => :'creation_dts',
         :'description' => :'description',
         :'digital_item_oid' => :'digital_item_oid',
+        :'external_id' => :'external_id',
         :'file_size' => :'file_size',
         :'import_from_url' => :'import_from_url',
         :'mime_type' => :'mime_type',
@@ -68,6 +72,7 @@ module UltracartClient
         :'creation_dts' => :'String',
         :'description' => :'String',
         :'digital_item_oid' => :'Integer',
+        :'external_id' => :'String',
         :'file_size' => :'Integer',
         :'import_from_url' => :'String',
         :'mime_type' => :'String',
@@ -113,6 +118,10 @@ module UltracartClient
         self.digital_item_oid = attributes[:'digital_item_oid']
       end
 
+      if attributes.key?(:'external_id')
+        self.external_id = attributes[:'external_id']
+      end
+
       if attributes.key?(:'file_size')
         self.file_size = attributes[:'file_size']
       end
@@ -142,6 +151,10 @@ module UltracartClient
         invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 200.')
       end
 
+      if !@external_id.nil? && @external_id.to_s.length > 100
+        invalid_properties.push('invalid value for "external_id", the character length must be smaller than or equal to 100.')
+      end
+
       if !@mime_type.nil? && @mime_type.to_s.length > 100
         invalid_properties.push('invalid value for "mime_type", the character length must be smaller than or equal to 100.')
       end
@@ -157,6 +170,7 @@ module UltracartClient
     # @return true if the model is valid
     def valid?
       return false if !@description.nil? && @description.to_s.length > 200
+      return false if !@external_id.nil? && @external_id.to_s.length > 100
       return false if !@mime_type.nil? && @mime_type.to_s.length > 100
       return false if !@original_filename.nil? && @original_filename.to_s.length > 250
       true
@@ -170,6 +184,16 @@ module UltracartClient
       end
 
       @description = description
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] external_id Value to be assigned
+    def external_id=(external_id)
+      if !external_id.nil? && external_id.to_s.length > 100
+        fail ArgumentError, 'invalid value for "external_id", the character length must be smaller than or equal to 100.'
+      end
+
+      @external_id = external_id
     end
 
     # Custom attribute writer method with validation
@@ -201,6 +225,7 @@ module UltracartClient
           creation_dts == o.creation_dts &&
           description == o.description &&
           digital_item_oid == o.digital_item_oid &&
+          external_id == o.external_id &&
           file_size == o.file_size &&
           import_from_url == o.import_from_url &&
           mime_type == o.mime_type &&
@@ -217,7 +242,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [click_wrap_agreement, creation_dts, description, digital_item_oid, file_size, import_from_url, mime_type, original_filename, pdf_meta].hash
+      [click_wrap_agreement, creation_dts, description, digital_item_oid, external_id, file_size, import_from_url, mime_type, original_filename, pdf_meta].hash
     end
 
     # Builds the object from hash

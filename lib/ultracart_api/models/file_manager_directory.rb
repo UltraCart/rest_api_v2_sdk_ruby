@@ -14,34 +14,49 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class FileManagerPage
-    attr_accessor :current_storefront_fs_directory_oid
+  class FileManagerDirectory
+    attr_accessor :active_theme_directory
 
-    attr_accessor :directories
-
-    attr_accessor :files
+    attr_accessor :favorite
 
     attr_accessor :hostname
 
+    attr_accessor :icon
+
+    attr_accessor :last_modified
+
+    attr_accessor :name
+
     attr_accessor :parent_storefront_fs_directory_oid
 
-    attr_accessor :path
+    attr_accessor :part_of_active_theme
 
-    attr_accessor :path_list
+    attr_accessor :selected
+
+    attr_accessor :storefront_fs_directory_oid
+
+    attr_accessor :storefront_fs_file_oid
 
     attr_accessor :storefront_oid
+
+    attr_accessor :type
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'current_storefront_fs_directory_oid' => :'current_storefront_fs_directory_oid',
-        :'directories' => :'directories',
-        :'files' => :'files',
+        :'active_theme_directory' => :'active_theme_directory',
+        :'favorite' => :'favorite',
         :'hostname' => :'hostname',
+        :'icon' => :'icon',
+        :'last_modified' => :'last_modified',
+        :'name' => :'name',
         :'parent_storefront_fs_directory_oid' => :'parent_storefront_fs_directory_oid',
-        :'path' => :'path',
-        :'path_list' => :'path_list',
-        :'storefront_oid' => :'storefront_oid'
+        :'part_of_active_theme' => :'part_of_active_theme',
+        :'selected' => :'selected',
+        :'storefront_fs_directory_oid' => :'storefront_fs_directory_oid',
+        :'storefront_fs_file_oid' => :'storefront_fs_file_oid',
+        :'storefront_oid' => :'storefront_oid',
+        :'type' => :'type'
       }
     end
 
@@ -53,14 +68,19 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'current_storefront_fs_directory_oid' => :'Integer',
-        :'directories' => :'Array<FileManagerDirectory>',
-        :'files' => :'Array<FileManagerFile>',
+        :'active_theme_directory' => :'Boolean',
+        :'favorite' => :'Boolean',
         :'hostname' => :'String',
+        :'icon' => :'String',
+        :'last_modified' => :'String',
+        :'name' => :'String',
         :'parent_storefront_fs_directory_oid' => :'Integer',
-        :'path' => :'String',
-        :'path_list' => :'Array<FileManagerDirectory>',
-        :'storefront_oid' => :'Integer'
+        :'part_of_active_theme' => :'Boolean',
+        :'selected' => :'Boolean',
+        :'storefront_fs_directory_oid' => :'Integer',
+        :'storefront_fs_file_oid' => :'Integer',
+        :'storefront_oid' => :'Integer',
+        :'type' => :'String'
       }
     end
 
@@ -74,53 +94,67 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::FileManagerPage` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::FileManagerDirectory` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::FileManagerPage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::FileManagerDirectory`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'current_storefront_fs_directory_oid')
-        self.current_storefront_fs_directory_oid = attributes[:'current_storefront_fs_directory_oid']
+      if attributes.key?(:'active_theme_directory')
+        self.active_theme_directory = attributes[:'active_theme_directory']
       end
 
-      if attributes.key?(:'directories')
-        if (value = attributes[:'directories']).is_a?(Array)
-          self.directories = value
-        end
-      end
-
-      if attributes.key?(:'files')
-        if (value = attributes[:'files']).is_a?(Array)
-          self.files = value
-        end
+      if attributes.key?(:'favorite')
+        self.favorite = attributes[:'favorite']
       end
 
       if attributes.key?(:'hostname')
         self.hostname = attributes[:'hostname']
       end
 
+      if attributes.key?(:'icon')
+        self.icon = attributes[:'icon']
+      end
+
+      if attributes.key?(:'last_modified')
+        self.last_modified = attributes[:'last_modified']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
       if attributes.key?(:'parent_storefront_fs_directory_oid')
         self.parent_storefront_fs_directory_oid = attributes[:'parent_storefront_fs_directory_oid']
       end
 
-      if attributes.key?(:'path')
-        self.path = attributes[:'path']
+      if attributes.key?(:'part_of_active_theme')
+        self.part_of_active_theme = attributes[:'part_of_active_theme']
       end
 
-      if attributes.key?(:'path_list')
-        if (value = attributes[:'path_list']).is_a?(Array)
-          self.path_list = value
-        end
+      if attributes.key?(:'selected')
+        self.selected = attributes[:'selected']
+      end
+
+      if attributes.key?(:'storefront_fs_directory_oid')
+        self.storefront_fs_directory_oid = attributes[:'storefront_fs_directory_oid']
+      end
+
+      if attributes.key?(:'storefront_fs_file_oid')
+        self.storefront_fs_file_oid = attributes[:'storefront_fs_file_oid']
       end
 
       if attributes.key?(:'storefront_oid')
         self.storefront_oid = attributes[:'storefront_oid']
+      end
+
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
       end
     end
 
@@ -142,14 +176,19 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          current_storefront_fs_directory_oid == o.current_storefront_fs_directory_oid &&
-          directories == o.directories &&
-          files == o.files &&
+          active_theme_directory == o.active_theme_directory &&
+          favorite == o.favorite &&
           hostname == o.hostname &&
+          icon == o.icon &&
+          last_modified == o.last_modified &&
+          name == o.name &&
           parent_storefront_fs_directory_oid == o.parent_storefront_fs_directory_oid &&
-          path == o.path &&
-          path_list == o.path_list &&
-          storefront_oid == o.storefront_oid
+          part_of_active_theme == o.part_of_active_theme &&
+          selected == o.selected &&
+          storefront_fs_directory_oid == o.storefront_fs_directory_oid &&
+          storefront_fs_file_oid == o.storefront_fs_file_oid &&
+          storefront_oid == o.storefront_oid &&
+          type == o.type
     end
 
     # @see the `==` method
@@ -161,7 +200,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [current_storefront_fs_directory_oid, directories, files, hostname, parent_storefront_fs_directory_oid, path, path_list, storefront_oid].hash
+      [active_theme_directory, favorite, hostname, icon, last_modified, name, parent_storefront_fs_directory_oid, part_of_active_theme, selected, storefront_fs_directory_oid, storefront_fs_file_oid, storefront_oid, type].hash
     end
 
     # Builds the object from hash

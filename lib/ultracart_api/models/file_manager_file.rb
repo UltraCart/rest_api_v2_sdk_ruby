@@ -14,34 +14,67 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class FileManagerPage
-    attr_accessor :current_storefront_fs_directory_oid
-
-    attr_accessor :directories
-
-    attr_accessor :files
+  class FileManagerFile
+    attr_accessor :favorite
 
     attr_accessor :hostname
 
+    attr_accessor :i18n_violation
+
+    attr_accessor :icon
+
+    attr_accessor :internal_version
+
+    attr_accessor :last_modified
+
+    attr_accessor :merge_conflict
+
+    attr_accessor :name
+
     attr_accessor :parent_storefront_fs_directory_oid
+
+    attr_accessor :part_of_active_theme
 
     attr_accessor :path
 
-    attr_accessor :path_list
+    attr_accessor :raw_size
+
+    attr_accessor :selected
+
+    attr_accessor :size
+
+    attr_accessor :storefront_fs_directory_oid
+
+    attr_accessor :storefront_fs_file_oid
 
     attr_accessor :storefront_oid
+
+    attr_accessor :type
+
+    attr_accessor :valid_velocity
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'current_storefront_fs_directory_oid' => :'current_storefront_fs_directory_oid',
-        :'directories' => :'directories',
-        :'files' => :'files',
+        :'favorite' => :'favorite',
         :'hostname' => :'hostname',
+        :'i18n_violation' => :'i18n_violation',
+        :'icon' => :'icon',
+        :'internal_version' => :'internal_version',
+        :'last_modified' => :'last_modified',
+        :'merge_conflict' => :'merge_conflict',
+        :'name' => :'name',
         :'parent_storefront_fs_directory_oid' => :'parent_storefront_fs_directory_oid',
+        :'part_of_active_theme' => :'part_of_active_theme',
         :'path' => :'path',
-        :'path_list' => :'path_list',
-        :'storefront_oid' => :'storefront_oid'
+        :'raw_size' => :'raw_size',
+        :'selected' => :'selected',
+        :'size' => :'size',
+        :'storefront_fs_directory_oid' => :'storefront_fs_directory_oid',
+        :'storefront_fs_file_oid' => :'storefront_fs_file_oid',
+        :'storefront_oid' => :'storefront_oid',
+        :'type' => :'type',
+        :'valid_velocity' => :'valid_velocity'
       }
     end
 
@@ -53,14 +86,25 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'current_storefront_fs_directory_oid' => :'Integer',
-        :'directories' => :'Array<FileManagerDirectory>',
-        :'files' => :'Array<FileManagerFile>',
+        :'favorite' => :'Boolean',
         :'hostname' => :'String',
+        :'i18n_violation' => :'Boolean',
+        :'icon' => :'String',
+        :'internal_version' => :'Integer',
+        :'last_modified' => :'String',
+        :'merge_conflict' => :'Boolean',
+        :'name' => :'String',
         :'parent_storefront_fs_directory_oid' => :'Integer',
+        :'part_of_active_theme' => :'Boolean',
         :'path' => :'String',
-        :'path_list' => :'Array<FileManagerDirectory>',
-        :'storefront_oid' => :'Integer'
+        :'raw_size' => :'Integer',
+        :'selected' => :'Boolean',
+        :'size' => :'String',
+        :'storefront_fs_directory_oid' => :'Integer',
+        :'storefront_fs_file_oid' => :'Integer',
+        :'storefront_oid' => :'Integer',
+        :'type' => :'String',
+        :'valid_velocity' => :'String'
       }
     end
 
@@ -74,53 +118,91 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::FileManagerPage` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::FileManagerFile` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::FileManagerPage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::FileManagerFile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'current_storefront_fs_directory_oid')
-        self.current_storefront_fs_directory_oid = attributes[:'current_storefront_fs_directory_oid']
-      end
-
-      if attributes.key?(:'directories')
-        if (value = attributes[:'directories']).is_a?(Array)
-          self.directories = value
-        end
-      end
-
-      if attributes.key?(:'files')
-        if (value = attributes[:'files']).is_a?(Array)
-          self.files = value
-        end
+      if attributes.key?(:'favorite')
+        self.favorite = attributes[:'favorite']
       end
 
       if attributes.key?(:'hostname')
         self.hostname = attributes[:'hostname']
       end
 
+      if attributes.key?(:'i18n_violation')
+        self.i18n_violation = attributes[:'i18n_violation']
+      end
+
+      if attributes.key?(:'icon')
+        self.icon = attributes[:'icon']
+      end
+
+      if attributes.key?(:'internal_version')
+        self.internal_version = attributes[:'internal_version']
+      end
+
+      if attributes.key?(:'last_modified')
+        self.last_modified = attributes[:'last_modified']
+      end
+
+      if attributes.key?(:'merge_conflict')
+        self.merge_conflict = attributes[:'merge_conflict']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
       if attributes.key?(:'parent_storefront_fs_directory_oid')
         self.parent_storefront_fs_directory_oid = attributes[:'parent_storefront_fs_directory_oid']
+      end
+
+      if attributes.key?(:'part_of_active_theme')
+        self.part_of_active_theme = attributes[:'part_of_active_theme']
       end
 
       if attributes.key?(:'path')
         self.path = attributes[:'path']
       end
 
-      if attributes.key?(:'path_list')
-        if (value = attributes[:'path_list']).is_a?(Array)
-          self.path_list = value
-        end
+      if attributes.key?(:'raw_size')
+        self.raw_size = attributes[:'raw_size']
+      end
+
+      if attributes.key?(:'selected')
+        self.selected = attributes[:'selected']
+      end
+
+      if attributes.key?(:'size')
+        self.size = attributes[:'size']
+      end
+
+      if attributes.key?(:'storefront_fs_directory_oid')
+        self.storefront_fs_directory_oid = attributes[:'storefront_fs_directory_oid']
+      end
+
+      if attributes.key?(:'storefront_fs_file_oid')
+        self.storefront_fs_file_oid = attributes[:'storefront_fs_file_oid']
       end
 
       if attributes.key?(:'storefront_oid')
         self.storefront_oid = attributes[:'storefront_oid']
+      end
+
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      end
+
+      if attributes.key?(:'valid_velocity')
+        self.valid_velocity = attributes[:'valid_velocity']
       end
     end
 
@@ -142,14 +224,25 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          current_storefront_fs_directory_oid == o.current_storefront_fs_directory_oid &&
-          directories == o.directories &&
-          files == o.files &&
+          favorite == o.favorite &&
           hostname == o.hostname &&
+          i18n_violation == o.i18n_violation &&
+          icon == o.icon &&
+          internal_version == o.internal_version &&
+          last_modified == o.last_modified &&
+          merge_conflict == o.merge_conflict &&
+          name == o.name &&
           parent_storefront_fs_directory_oid == o.parent_storefront_fs_directory_oid &&
+          part_of_active_theme == o.part_of_active_theme &&
           path == o.path &&
-          path_list == o.path_list &&
-          storefront_oid == o.storefront_oid
+          raw_size == o.raw_size &&
+          selected == o.selected &&
+          size == o.size &&
+          storefront_fs_directory_oid == o.storefront_fs_directory_oid &&
+          storefront_fs_file_oid == o.storefront_fs_file_oid &&
+          storefront_oid == o.storefront_oid &&
+          type == o.type &&
+          valid_velocity == o.valid_velocity
     end
 
     # @see the `==` method
@@ -161,7 +254,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [current_storefront_fs_directory_oid, directories, files, hostname, parent_storefront_fs_directory_oid, path, path_list, storefront_oid].hash
+      [favorite, hostname, i18n_violation, icon, internal_version, last_modified, merge_conflict, name, parent_storefront_fs_directory_oid, part_of_active_theme, path, raw_size, selected, size, storefront_fs_directory_oid, storefront_fs_file_oid, storefront_oid, type, valid_velocity].hash
     end
 
     # Builds the object from hash
