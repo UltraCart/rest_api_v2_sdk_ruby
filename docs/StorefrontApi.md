@@ -690,7 +690,7 @@ Name | Type | Description  | Notes
 
 
 # **create_fs_directory**
-> FileManagerPage create_fs_directory(id, opts)
+> FileManagerPageResponse create_fs_directory(id, opts)
 
 Create file manager directory
 
@@ -730,7 +730,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FileManagerPage**](FileManagerPage.md)
+[**FileManagerPageResponse**](FileManagerPageResponse.md)
 
 ### Authorization
 
@@ -1249,7 +1249,7 @@ nil (empty response body)
 
 
 # **delete_fs_file**
-> FileManagerPage delete_fs_file(id, opts)
+> FileManagerPageResponse delete_fs_file(id, opts)
 
 Delete file manager directory
 
@@ -1289,7 +1289,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FileManagerPage**](FileManagerPage.md)
+[**FileManagerPageResponse**](FileManagerPageResponse.md)
 
 ### Authorization
 
@@ -4648,7 +4648,7 @@ Name | Type | Description  | Notes
 
 
 # **get_fs_directory**
-> FileManagerPage get_fs_directory(id, opts)
+> FileManagerPageResponse get_fs_directory(id, opts)
 
 Get file manager directory
 
@@ -4690,7 +4690,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FileManagerPage**](FileManagerPage.md)
+[**FileManagerPageResponse**](FileManagerPageResponse.md)
 
 ### Authorization
 
