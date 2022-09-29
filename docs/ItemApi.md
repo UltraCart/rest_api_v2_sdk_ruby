@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**delete_item**](ItemApi.md#delete_item) | **DELETE** /item/items/{merchant_item_oid} | Delete an item
 [**get_digital_item**](ItemApi.md#get_digital_item) | **GET** /item/digital_library/{digital_item_oid} | Retrieve a digital item from the digital library, which are digital files that may be attached to normal items
 [**get_digital_items**](ItemApi.md#get_digital_items) | **GET** /item/digital_library | Retrieve digital items from the digital library which are digital files that may be attached to normal items
+[**get_digital_items_by_external_id**](ItemApi.md#get_digital_items_by_external_id) | **GET** /item/digital_library/by_external/{external_id} | Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id
 [**get_item**](ItemApi.md#get_item) | **GET** /item/items/{merchant_item_oid} | Retrieve an item
 [**get_item_by_merchant_item_id**](ItemApi.md#get_item_by_merchant_item_id) | **GET** /item/items/merchant_item_id/{merchant_item_id} | Retrieve an item by item id
 [**get_items**](ItemApi.md#get_items) | **GET** /item/items | Retrieve items
@@ -214,6 +215,56 @@ Name | Type | Description  | Notes
  **_sort** | **String**| The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending. | [optional] 
  **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
  **_placeholders** | **BOOLEAN**| Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] 
+
+### Return type
+
+[**ItemDigitalItemsResponse**](ItemDigitalItemsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_digital_items_by_external_id**
+> ItemDigitalItemsResponse get_digital_items_by_external_id(external_id)
+
+Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id
+
+Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id.  Be aware that these are not normal items that can be added to a shopping cart. Rather, they are digital files that may be associated with normal items. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ItemApi.new_using_api_key(simple_key, false, false)
+
+
+external_id = 'external_id_example' # String | The external id to match against.
+
+
+begin
+  #Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id
+  result = api_instance.get_digital_items_by_external_id(external_id)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ItemApi->get_digital_items_by_external_id: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **external_id** | **String**| The external id to match against. | 
 
 ### Return type
 

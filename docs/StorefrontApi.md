@@ -12,12 +12,10 @@ Method | HTTP request | Description
 [**check_download_email_segment**](StorefrontApi.md#check_download_email_segment) | **POST** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/downloadPrepare/{email_segment_rebuild_uuid} | Check download of email segment
 [**clone_email_campaign**](StorefrontApi.md#clone_email_campaign) | **POST** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid}/clone | Clone email campaign
 [**clone_email_flow**](StorefrontApi.md#clone_email_flow) | **POST** /storefront/{storefront_oid}/email/flows/{email_flow_uuid}/clone | Clone email flow
-[**create_admin_panel_fs_directory**](StorefrontApi.md#create_admin_panel_fs_directory) | **POST** /storefront/{id}/adminPanel/fs/dir | Create file manager directory for admin panel
-[**create_admin_panel_fs_file_upload**](StorefrontApi.md#create_admin_panel_fs_file_upload) | **POST** /storefront/{id}/adminPanel/fs/file | Upload file manager file for admin panel
 [**create_email_sending_domain**](StorefrontApi.md#create_email_sending_domain) | **POST** /storefront/email/sending_domains/{domain}/create | Create email campaign
 [**create_email_sending_domain2**](StorefrontApi.md#create_email_sending_domain2) | **POST** /storefront/email/sending_domains | Create email sending domain for various providers
+[**create_fs_directory**](StorefrontApi.md#create_fs_directory) | **POST** /storefront/{id}/fs/dir | Create file manager directory
 [**create_twilio_account**](StorefrontApi.md#create_twilio_account) | **POST** /storefront/twilio/accounts | Create Twilio account
-[**delete_admin_panel_fs_file**](StorefrontApi.md#delete_admin_panel_fs_file) | **DELETE** /storefront/{id}/adminPanel/fs/file | Delete file manager directory for admin panel
 [**delete_email_campaign_folder**](StorefrontApi.md#delete_email_campaign_folder) | **DELETE** /storefront/{storefront_oid}/email/campaign_folders/{email_campaign_folder_uuid} | Delete email campaignFolder
 [**delete_email_commseq_stat**](StorefrontApi.md#delete_email_commseq_stat) | **DELETE** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/stat | Delete communication sequence stats
 [**delete_email_email**](StorefrontApi.md#delete_email_email) | **DELETE** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid} | Delete email email
@@ -27,6 +25,7 @@ Method | HTTP request | Description
 [**delete_email_postcard**](StorefrontApi.md#delete_email_postcard) | **DELETE** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid} | Delete email postcard
 [**delete_email_sending_domain**](StorefrontApi.md#delete_email_sending_domain) | **DELETE** /storefront/email/sending_domains/{domain} | delete email campaign
 [**delete_experiment**](StorefrontApi.md#delete_experiment) | **DELETE** /storefront/{storefront_oid}/experiments/{storefront_experiment_oid} | Delete experiment
+[**delete_fs_file**](StorefrontApi.md#delete_fs_file) | **DELETE** /storefront/{id}/fs/file | Delete file manager directory
 [**delete_heatmap**](StorefrontApi.md#delete_heatmap) | **DELETE** /storefront/{storefront_oid}/screen_recordings/heatmap | Delete screen recording heatmap
 [**delete_library_item**](StorefrontApi.md#delete_library_item) | **DELETE** /storefront/code_library/{library_item_oid} | Delete library item
 [**delete_library_item_published_versions**](StorefrontApi.md#delete_library_item_published_versions) | **DELETE** /storefront/code_library/{library_item_oid}/published_versions | Delete all published versions for a library item, including anything in review.
@@ -35,7 +34,6 @@ Method | HTTP request | Description
 [**duplicate_library_item**](StorefrontApi.md#duplicate_library_item) | **POST** /storefront/code_library/{library_item_oid}/duplicate | Duplicate library item.
 [**favorite_screen_recording**](StorefrontApi.md#favorite_screen_recording) | **POST** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/favorite | Update favorite flag on screen recording
 [**geocode_address**](StorefrontApi.md#geocode_address) | **POST** /storefront/{storefront_oid}/email/geocode | Obtain lat/long for an address
-[**get_admin_panel_fs_directory**](StorefrontApi.md#get_admin_panel_fs_directory) | **GET** /storefront/{id}/adminPanel/fs/dir | Get file manager directory for admin panel
 [**get_countries**](StorefrontApi.md#get_countries) | **GET** /storefront/{storefront_oid}/email/countries | Get countries
 [**get_editor_token**](StorefrontApi.md#get_editor_token) | **GET** /storefront/{storefront_oid}/editor_token | Gets editor token
 [**get_email_base_templates**](StorefrontApi.md#get_email_base_templates) | **GET** /storefront/{storefront_oid}/email/baseTemplates | Get email communication base templates
@@ -94,6 +92,7 @@ Method | HTTP request | Description
 [**get_email_templates**](StorefrontApi.md#get_email_templates) | **GET** /storefront/{storefront_oid}/email/templates | Get email templates
 [**get_email_third_party_providers**](StorefrontApi.md#get_email_third_party_providers) | **GET** /storefront/{storefront_oid}/email/third_party_providers | Get a list of third party email providers
 [**get_experiments**](StorefrontApi.md#get_experiments) | **GET** /storefront/{storefront_oid}/experiments | Get experiments
+[**get_fs_directory**](StorefrontApi.md#get_fs_directory) | **GET** /storefront/{id}/fs/dir | Get file manager directory
 [**get_heatmap**](StorefrontApi.md#get_heatmap) | **POST** /storefront/{storefront_oid}/screen_recordings/heatmap | Get screen recording heatmap
 [**get_heatmap_index**](StorefrontApi.md#get_heatmap_index) | **POST** /storefront/{storefront_oid}/screen_recordings/heatmap/index | Get screen recording heatmap index
 [**get_histogram_property_names**](StorefrontApi.md#get_histogram_property_names) | **GET** /storefront/{storefront_oid}/email/histogram/property_names | Get histogram property names
@@ -117,6 +116,7 @@ Method | HTTP request | Description
 [**get_transaction_email_screenshots**](StorefrontApi.md#get_transaction_email_screenshots) | **GET** /storefront/{storefront_oid}/transaction_email/list/{email_id}/screenshots | Get transactional email screenshots
 [**get_twilio_account**](StorefrontApi.md#get_twilio_account) | **GET** /storefront/twilio/accounts/{esp_twilio_uuid} | Get Twilio account
 [**get_twilio_accounts**](StorefrontApi.md#get_twilio_accounts) | **GET** /storefront/twilio/accounts | Get all Twilio accounts
+[**get_upload_fs_file_url**](StorefrontApi.md#get_upload_fs_file_url) | **GET** /storefront/{id}/fs/upload_url/{extension} | Retrieves a S3 url where a file may be uploaded. Once uploaded, use uploadFsFile to trigger the server into reading the S3 bucket and retrieving the file.
 [**global_unsubscribe**](StorefrontApi.md#global_unsubscribe) | **POST** /storefront/{storefront_oid}/email/globalUnsubscribe | Globally unsubscribe a customer
 [**import_email_third_party_provider_list**](StorefrontApi.md#import_email_third_party_provider_list) | **POST** /storefront/{storefront_oid}/email/third_party_providers/import | Import a third party provider list
 [**insert_email_campaign**](StorefrontApi.md#insert_email_campaign) | **POST** /storefront/{storefront_oid}/email/campaigns | Insert email campaign
@@ -173,6 +173,7 @@ Method | HTTP request | Description
 [**update_screen_recording_tags**](StorefrontApi.md#update_screen_recording_tags) | **POST** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/tags | Update tags on a screen recording
 [**update_transaction_email**](StorefrontApi.md#update_transaction_email) | **PUT** /storefront/{storefront_oid}/transaction_email/list/{email_id} | Updates a transaction email object
 [**update_twilio_account**](StorefrontApi.md#update_twilio_account) | **PUT** /storefront/twilio/accounts/{esp_twilio_uuid} | Update Twilio account
+[**upload_fs_file**](StorefrontApi.md#upload_fs_file) | **POST** /storefront/{id}/fs/upload | This is the last step in uploading a file after 1) calling getUploadFsFileUrl and 2) uploading a file to the provided url, then finally 3) calling this method and providing the key to trigger the server into reading the S3 bucket and retrieving the file.
 [**validate_ruler**](StorefrontApi.md#validate_ruler) | **POST** /storefront/ruler/validate | Validate AWS Event Ruler
 
 
@@ -592,112 +593,6 @@ Name | Type | Description  | Notes
 
 
 
-# **create_admin_panel_fs_directory**
-> FileManagerPage create_admin_panel_fs_directory(id, opts)
-
-Create file manager directory for admin panel
-
-### Example
-```ruby
-# load the gem
-require 'ultracart_api'
-
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::StorefrontApi.new_using_api_key(simple_key, false, false)
-
-
-id = 56 # Integer | 
-
-opts = { 
-  name: 'name_example', # String | 
-  parent_storefront_fs_directory_oid: 56 # Integer | 
-}
-
-begin
-  #Create file manager directory for admin panel
-  result = api_instance.create_admin_panel_fs_directory(id, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Exception when calling StorefrontApi->create_admin_panel_fs_directory: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **Integer**|  | 
- **name** | **String**|  | [optional] 
- **parent_storefront_fs_directory_oid** | **Integer**|  | [optional] 
-
-### Return type
-
-[**FileManagerPage**](FileManagerPage.md)
-
-### Authorization
-
-[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **create_admin_panel_fs_file_upload**
-> FileManagerPage create_admin_panel_fs_file_upload(id, opts)
-
-Upload file manager file for admin panel
-
-### Example
-```ruby
-# load the gem
-require 'ultracart_api'
-
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::StorefrontApi.new_using_api_key(simple_key, false, false)
-
-
-id = 56 # Integer | 
-
-opts = { 
-  parent_storefront_fs_directory_oid: 56 # Integer | 
-}
-
-begin
-  #Upload file manager file for admin panel
-  result = api_instance.create_admin_panel_fs_file_upload(id, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Exception when calling StorefrontApi->create_admin_panel_fs_file_upload: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **Integer**|  | 
- **parent_storefront_fs_directory_oid** | **Integer**|  | [optional] 
-
-### Return type
-
-[**FileManagerPage**](FileManagerPage.md)
-
-### Authorization
-
-[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-
-
 # **create_email_sending_domain**
 > EmailSendingDomainResponse create_email_sending_domain(domain)
 
@@ -794,6 +689,60 @@ Name | Type | Description  | Notes
 
 
 
+# **create_fs_directory**
+> FileManagerPage create_fs_directory(id, opts)
+
+Create file manager directory
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::StorefrontApi.new_using_api_key(simple_key, false, false)
+
+
+id = 56 # Integer | 
+
+opts = { 
+  name: 'name_example', # String | 
+  parent_storefront_fs_directory_oid: 56 # Integer | 
+}
+
+begin
+  #Create file manager directory
+  result = api_instance.create_fs_directory(id, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling StorefrontApi->create_fs_directory: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**|  | 
+ **name** | **String**|  | [optional] 
+ **parent_storefront_fs_directory_oid** | **Integer**|  | [optional] 
+
+### Return type
+
+[**FileManagerPage**](FileManagerPage.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **create_twilio_account**
 > TwilioResponse create_twilio_account(twilio)
 
@@ -830,60 +779,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TwilioResponse**](TwilioResponse.md)
-
-### Authorization
-
-[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **delete_admin_panel_fs_file**
-> FileManagerPage delete_admin_panel_fs_file(id, opts)
-
-Delete file manager directory for admin panel
-
-### Example
-```ruby
-# load the gem
-require 'ultracart_api'
-
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::StorefrontApi.new_using_api_key(simple_key, false, false)
-
-
-id = 56 # Integer | 
-
-opts = { 
-  parent_storefront_fs_directory_oid: 56, # Integer | 
-  storefront_fs_file_oid: 56 # Integer | 
-}
-
-begin
-  #Delete file manager directory for admin panel
-  result = api_instance.delete_admin_panel_fs_file(id, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Exception when calling StorefrontApi->delete_admin_panel_fs_file: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **Integer**|  | 
- **parent_storefront_fs_directory_oid** | **Integer**|  | [optional] 
- **storefront_fs_file_oid** | **Integer**|  | [optional] 
-
-### Return type
-
-[**FileManagerPage**](FileManagerPage.md)
 
 ### Authorization
 
@@ -1353,6 +1248,60 @@ nil (empty response body)
 
 
 
+# **delete_fs_file**
+> FileManagerPage delete_fs_file(id, opts)
+
+Delete file manager directory
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::StorefrontApi.new_using_api_key(simple_key, false, false)
+
+
+id = 56 # Integer | 
+
+opts = { 
+  parent_storefront_fs_directory_oid: 56, # Integer | 
+  storefront_fs_file_oid: 56 # Integer | 
+}
+
+begin
+  #Delete file manager directory
+  result = api_instance.delete_fs_file(id, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling StorefrontApi->delete_fs_file: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**|  | 
+ **parent_storefront_fs_directory_oid** | **Integer**|  | [optional] 
+ **storefront_fs_file_oid** | **Integer**|  | [optional] 
+
+### Return type
+
+[**FileManagerPage**](FileManagerPage.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **delete_heatmap**
 > delete_heatmap(storefront_oid, query)
 
@@ -1736,62 +1685,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GeocodeResponse**](GeocodeResponse.md)
-
-### Authorization
-
-[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **get_admin_panel_fs_directory**
-> FileManagerPage get_admin_panel_fs_directory(id, opts)
-
-Get file manager directory for admin panel
-
-### Example
-```ruby
-# load the gem
-require 'ultracart_api'
-
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::StorefrontApi.new_using_api_key(simple_key, false, false)
-
-
-id = 56 # Integer | 
-
-opts = { 
-  path: 'path_example', # String | 
-  storefront_fs_directory_oid: 56, # Integer | 
-  storefront_theme_oid: 56 # Integer | 
-}
-
-begin
-  #Get file manager directory for admin panel
-  result = api_instance.get_admin_panel_fs_directory(id, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Exception when calling StorefrontApi->get_admin_panel_fs_directory: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **Integer**|  | 
- **path** | **String**|  | [optional] 
- **storefront_fs_directory_oid** | **Integer**|  | [optional] 
- **storefront_theme_oid** | **Integer**|  | [optional] 
-
-### Return type
-
-[**FileManagerPage**](FileManagerPage.md)
 
 ### Authorization
 
@@ -4754,6 +4647,62 @@ Name | Type | Description  | Notes
 
 
 
+# **get_fs_directory**
+> FileManagerPage get_fs_directory(id, opts)
+
+Get file manager directory
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::StorefrontApi.new_using_api_key(simple_key, false, false)
+
+
+id = 56 # Integer | 
+
+opts = { 
+  path: 'path_example', # String | 
+  storefront_fs_directory_oid: 56, # Integer | 
+  storefront_theme_oid: 56 # Integer | 
+}
+
+begin
+  #Get file manager directory
+  result = api_instance.get_fs_directory(id, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling StorefrontApi->get_fs_directory: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**|  | 
+ **path** | **String**|  | [optional] 
+ **storefront_fs_directory_oid** | **Integer**|  | [optional] 
+ **storefront_theme_oid** | **Integer**|  | [optional] 
+
+### Return type
+
+[**FileManagerPage**](FileManagerPage.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **get_heatmap**
 > ScreenRecordingHeatmapResponse get_heatmap(storefront_oid, query)
 
@@ -5922,6 +5871,57 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**TwiliosResponse**](TwiliosResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_upload_fs_file_url**
+> FileManagerUploadUrlResponse get_upload_fs_file_url(id, extension)
+
+Retrieves a S3 url where a file may be uploaded. Once uploaded, use uploadFsFile to trigger the server into reading the S3 bucket and retrieving the file.
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::StorefrontApi.new_using_api_key(simple_key, false, false)
+
+
+id = 56 # Integer | 
+
+extension = 'extension_example' # String | 
+
+
+begin
+  #Retrieves a S3 url where a file may be uploaded. Once uploaded, use uploadFsFile to trigger the server into reading the S3 bucket and retrieving the file.
+  result = api_instance.get_upload_fs_file_url(id, extension)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling StorefrontApi->get_upload_fs_file_url: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**|  | 
+ **extension** | **String**|  | 
+
+### Return type
+
+[**FileManagerUploadUrlResponse**](FileManagerUploadUrlResponse.md)
 
 ### Authorization
 
@@ -8883,6 +8883,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TwilioResponse**](TwilioResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **upload_fs_file**
+> upload_fs_file(id, upload_request)
+
+This is the last step in uploading a file after 1) calling getUploadFsFileUrl and 2) uploading a file to the provided url, then finally 3) calling this method and providing the key to trigger the server into reading the S3 bucket and retrieving the file.
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::StorefrontApi.new_using_api_key(simple_key, false, false)
+
+
+id = 56 # Integer | 
+
+upload_request = UltracartClient::FileManagerUploadRequest.new # FileManagerUploadRequest | UploadRequest
+
+
+begin
+  #This is the last step in uploading a file after 1) calling getUploadFsFileUrl and 2) uploading a file to the provided url, then finally 3) calling this method and providing the key to trigger the server into reading the S3 bucket and retrieving the file.
+  api_instance.upload_fs_file(id, upload_request)
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling StorefrontApi->upload_fs_file: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**|  | 
+ **upload_request** | [**FileManagerUploadRequest**](FileManagerUploadRequest.md)| UploadRequest | 
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 

@@ -13,48 +13,92 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class FileManagerPage
-    attr_accessor :current_storefront_fs_directory_oid
-
-    attr_accessor :directories
-
-    attr_accessor :files
+  class FileManagerFile
+    attr_accessor :favorite
 
     attr_accessor :hostname
 
+    attr_accessor :i18n_violation
+
+    attr_accessor :icon
+
+    attr_accessor :internal_version
+
+    attr_accessor :last_modified
+
+    attr_accessor :merge_conflict
+
+    attr_accessor :name
+
     attr_accessor :parent_storefront_fs_directory_oid
+
+    attr_accessor :part_of_active_theme
 
     attr_accessor :path
 
-    attr_accessor :path_list
+    attr_accessor :raw_size
+
+    attr_accessor :selected
+
+    attr_accessor :size
+
+    attr_accessor :storefront_fs_directory_oid
+
+    attr_accessor :storefront_fs_file_oid
 
     attr_accessor :storefront_oid
+
+    attr_accessor :type
+
+    attr_accessor :valid_velocity
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'current_storefront_fs_directory_oid' => :'current_storefront_fs_directory_oid',
-        :'directories' => :'directories',
-        :'files' => :'files',
+        :'favorite' => :'favorite',
         :'hostname' => :'hostname',
+        :'i18n_violation' => :'i18n_violation',
+        :'icon' => :'icon',
+        :'internal_version' => :'internal_version',
+        :'last_modified' => :'last_modified',
+        :'merge_conflict' => :'merge_conflict',
+        :'name' => :'name',
         :'parent_storefront_fs_directory_oid' => :'parent_storefront_fs_directory_oid',
+        :'part_of_active_theme' => :'part_of_active_theme',
         :'path' => :'path',
-        :'path_list' => :'path_list',
-        :'storefront_oid' => :'storefront_oid'
+        :'raw_size' => :'raw_size',
+        :'selected' => :'selected',
+        :'size' => :'size',
+        :'storefront_fs_directory_oid' => :'storefront_fs_directory_oid',
+        :'storefront_fs_file_oid' => :'storefront_fs_file_oid',
+        :'storefront_oid' => :'storefront_oid',
+        :'type' => :'type',
+        :'valid_velocity' => :'valid_velocity'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'current_storefront_fs_directory_oid' => :'Integer',
-        :'directories' => :'Array<FileManagerDirectory>',
-        :'files' => :'Array<FileManagerFile>',
+        :'favorite' => :'BOOLEAN',
         :'hostname' => :'String',
+        :'i18n_violation' => :'BOOLEAN',
+        :'icon' => :'String',
+        :'internal_version' => :'Integer',
+        :'last_modified' => :'String',
+        :'merge_conflict' => :'BOOLEAN',
+        :'name' => :'String',
         :'parent_storefront_fs_directory_oid' => :'Integer',
+        :'part_of_active_theme' => :'BOOLEAN',
         :'path' => :'String',
-        :'path_list' => :'Array<FileManagerDirectory>',
-        :'storefront_oid' => :'Integer'
+        :'raw_size' => :'Integer',
+        :'selected' => :'BOOLEAN',
+        :'size' => :'String',
+        :'storefront_fs_directory_oid' => :'Integer',
+        :'storefront_fs_file_oid' => :'Integer',
+        :'storefront_oid' => :'Integer',
+        :'type' => :'String',
+        :'valid_velocity' => :'String'
       }
     end
 
@@ -66,42 +110,80 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'current_storefront_fs_directory_oid')
-        self.current_storefront_fs_directory_oid = attributes[:'current_storefront_fs_directory_oid']
-      end
-
-      if attributes.has_key?(:'directories')
-        if (value = attributes[:'directories']).is_a?(Array)
-          self.directories = value
-        end
-      end
-
-      if attributes.has_key?(:'files')
-        if (value = attributes[:'files']).is_a?(Array)
-          self.files = value
-        end
+      if attributes.has_key?(:'favorite')
+        self.favorite = attributes[:'favorite']
       end
 
       if attributes.has_key?(:'hostname')
         self.hostname = attributes[:'hostname']
       end
 
+      if attributes.has_key?(:'i18n_violation')
+        self.i18n_violation = attributes[:'i18n_violation']
+      end
+
+      if attributes.has_key?(:'icon')
+        self.icon = attributes[:'icon']
+      end
+
+      if attributes.has_key?(:'internal_version')
+        self.internal_version = attributes[:'internal_version']
+      end
+
+      if attributes.has_key?(:'last_modified')
+        self.last_modified = attributes[:'last_modified']
+      end
+
+      if attributes.has_key?(:'merge_conflict')
+        self.merge_conflict = attributes[:'merge_conflict']
+      end
+
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
+      end
+
       if attributes.has_key?(:'parent_storefront_fs_directory_oid')
         self.parent_storefront_fs_directory_oid = attributes[:'parent_storefront_fs_directory_oid']
+      end
+
+      if attributes.has_key?(:'part_of_active_theme')
+        self.part_of_active_theme = attributes[:'part_of_active_theme']
       end
 
       if attributes.has_key?(:'path')
         self.path = attributes[:'path']
       end
 
-      if attributes.has_key?(:'path_list')
-        if (value = attributes[:'path_list']).is_a?(Array)
-          self.path_list = value
-        end
+      if attributes.has_key?(:'raw_size')
+        self.raw_size = attributes[:'raw_size']
+      end
+
+      if attributes.has_key?(:'selected')
+        self.selected = attributes[:'selected']
+      end
+
+      if attributes.has_key?(:'size')
+        self.size = attributes[:'size']
+      end
+
+      if attributes.has_key?(:'storefront_fs_directory_oid')
+        self.storefront_fs_directory_oid = attributes[:'storefront_fs_directory_oid']
+      end
+
+      if attributes.has_key?(:'storefront_fs_file_oid')
+        self.storefront_fs_file_oid = attributes[:'storefront_fs_file_oid']
       end
 
       if attributes.has_key?(:'storefront_oid')
         self.storefront_oid = attributes[:'storefront_oid']
+      end
+
+      if attributes.has_key?(:'type')
+        self.type = attributes[:'type']
+      end
+
+      if attributes.has_key?(:'valid_velocity')
+        self.valid_velocity = attributes[:'valid_velocity']
       end
     end
 
@@ -123,14 +205,25 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          current_storefront_fs_directory_oid == o.current_storefront_fs_directory_oid &&
-          directories == o.directories &&
-          files == o.files &&
+          favorite == o.favorite &&
           hostname == o.hostname &&
+          i18n_violation == o.i18n_violation &&
+          icon == o.icon &&
+          internal_version == o.internal_version &&
+          last_modified == o.last_modified &&
+          merge_conflict == o.merge_conflict &&
+          name == o.name &&
           parent_storefront_fs_directory_oid == o.parent_storefront_fs_directory_oid &&
+          part_of_active_theme == o.part_of_active_theme &&
           path == o.path &&
-          path_list == o.path_list &&
-          storefront_oid == o.storefront_oid
+          raw_size == o.raw_size &&
+          selected == o.selected &&
+          size == o.size &&
+          storefront_fs_directory_oid == o.storefront_fs_directory_oid &&
+          storefront_fs_file_oid == o.storefront_fs_file_oid &&
+          storefront_oid == o.storefront_oid &&
+          type == o.type &&
+          valid_velocity == o.valid_velocity
     end
 
     # @see the `==` method
@@ -142,7 +235,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [current_storefront_fs_directory_oid, directories, files, hostname, parent_storefront_fs_directory_oid, path, path_list, storefront_oid].hash
+      [favorite, hostname, i18n_violation, icon, internal_version, last_modified, merge_conflict, name, parent_storefront_fs_directory_oid, part_of_active_theme, path, raw_size, selected, size, storefront_fs_directory_oid, storefront_fs_file_oid, storefront_oid, type, valid_velocity].hash
     end
 
     # Builds the object from hash

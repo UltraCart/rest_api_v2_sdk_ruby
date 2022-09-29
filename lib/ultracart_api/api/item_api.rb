@@ -262,6 +262,61 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id
+    # Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id.  Be aware that these are not normal items that can be added to a shopping cart. Rather, they are digital files that may be associated with normal items. 
+    # @param external_id The external id to match against.
+    # @param [Hash] opts the optional parameters
+    # @return [ItemDigitalItemsResponse]
+    def get_digital_items_by_external_id(external_id, opts = {})
+      data, _status_code, _headers = get_digital_items_by_external_id_with_http_info(external_id, opts)
+      data
+    end
+
+    # Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id
+    # Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id.  Be aware that these are not normal items that can be added to a shopping cart. Rather, they are digital files that may be associated with normal items. 
+    # @param external_id The external id to match against.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ItemDigitalItemsResponse, Fixnum, Hash)>] ItemDigitalItemsResponse data, response status code and response headers
+    def get_digital_items_by_external_id_with_http_info(external_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ItemApi.get_digital_items_by_external_id ...'
+      end
+      # verify the required parameter 'external_id' is set
+      if @api_client.config.client_side_validation && external_id.nil?
+        fail ArgumentError, "Missing the required parameter 'external_id' when calling ItemApi.get_digital_items_by_external_id"
+      end
+      # resource path
+      local_var_path = '/item/digital_library/by_external/{external_id}'.sub('{' + 'external_id' + '}', external_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ItemDigitalItemsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ItemApi#get_digital_items_by_external_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Retrieve an item
     # Retrieves a single item using the specified item oid. 
     # @param merchant_item_oid The item oid to retrieve.
