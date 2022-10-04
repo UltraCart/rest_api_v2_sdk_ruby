@@ -8,6 +8,7 @@
 | **key** | **String** |  | [optional] |
 | **metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] |
 | **success** | **Boolean** | Indicates if API call was successful | [optional] |
+| **url** | **String** |  | [optional] |
 | **warning** | [**Warning**](Warning.md) |  | [optional] |
 
 ## Example
@@ -20,6 +21,7 @@ instance = UltracartClient::FileManagerUploadUrlResponse.new(
   key: null,
   metadata: null,
   success: null,
+  url: null,
   warning: null
 )
 ```

@@ -24,6 +24,8 @@ module UltracartClient
     # Indicates if API call was successful
     attr_accessor :success
 
+    attr_accessor :url
+
     attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -33,6 +35,7 @@ module UltracartClient
         :'key' => :'key',
         :'metadata' => :'metadata',
         :'success' => :'success',
+        :'url' => :'url',
         :'warning' => :'warning'
       }
     end
@@ -49,6 +52,7 @@ module UltracartClient
         :'key' => :'String',
         :'metadata' => :'ResponseMetadata',
         :'success' => :'Boolean',
+        :'url' => :'String',
         :'warning' => :'Warning'
       }
     end
@@ -90,6 +94,10 @@ module UltracartClient
         self.success = attributes[:'success']
       end
 
+      if attributes.key?(:'url')
+        self.url = attributes[:'url']
+      end
+
       if attributes.key?(:'warning')
         self.warning = attributes[:'warning']
       end
@@ -117,6 +125,7 @@ module UltracartClient
           key == o.key &&
           metadata == o.metadata &&
           success == o.success &&
+          url == o.url &&
           warning == o.warning
     end
 
@@ -129,7 +138,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [error, key, metadata, success, warning].hash
+      [error, key, metadata, success, url, warning].hash
     end
 
     # Builds the object from hash

@@ -24,6 +24,12 @@ module UltracartClient
     # CC emails.  Multiple allowed, but total length of all emails can not exceed 100 characters.
     attr_accessor :cc_emails
 
+    # Cell phone
+    attr_accessor :cell_phone
+
+    # Cell phone (E164 format)
+    attr_accessor :cell_phone_e164
+
     # City
     attr_accessor :city
 
@@ -66,6 +72,8 @@ module UltracartClient
         :'address1' => :'address1',
         :'address2' => :'address2',
         :'cc_emails' => :'cc_emails',
+        :'cell_phone' => :'cell_phone',
+        :'cell_phone_e164' => :'cell_phone_e164',
         :'city' => :'city',
         :'company' => :'company',
         :'country_code' => :'country_code',
@@ -92,6 +100,8 @@ module UltracartClient
         :'address1' => :'String',
         :'address2' => :'String',
         :'cc_emails' => :'Array<String>',
+        :'cell_phone' => :'String',
+        :'cell_phone_e164' => :'String',
         :'city' => :'String',
         :'company' => :'String',
         :'country_code' => :'String',
@@ -140,6 +150,14 @@ module UltracartClient
         if (value = attributes[:'cc_emails']).is_a?(Array)
           self.cc_emails = value
         end
+      end
+
+      if attributes.key?(:'cell_phone')
+        self.cell_phone = attributes[:'cell_phone']
+      end
+
+      if attributes.key?(:'cell_phone_e164')
+        self.cell_phone_e164 = attributes[:'cell_phone_e164']
       end
 
       if attributes.key?(:'city')
@@ -203,6 +221,14 @@ module UltracartClient
         invalid_properties.push('invalid value for "address2", the character length must be smaller than or equal to 50.')
       end
 
+      if !@cell_phone.nil? && @cell_phone.to_s.length > 25
+        invalid_properties.push('invalid value for "cell_phone", the character length must be smaller than or equal to 25.')
+      end
+
+      if !@cell_phone_e164.nil? && @cell_phone_e164.to_s.length > 25
+        invalid_properties.push('invalid value for "cell_phone_e164", the character length must be smaller than or equal to 25.')
+      end
+
       if !@city.nil? && @city.to_s.length > 32
         invalid_properties.push('invalid value for "city", the character length must be smaller than or equal to 32.')
       end
@@ -259,6 +285,8 @@ module UltracartClient
     def valid?
       return false if !@address1.nil? && @address1.to_s.length > 50
       return false if !@address2.nil? && @address2.to_s.length > 50
+      return false if !@cell_phone.nil? && @cell_phone.to_s.length > 25
+      return false if !@cell_phone_e164.nil? && @cell_phone_e164.to_s.length > 25
       return false if !@city.nil? && @city.to_s.length > 32
       return false if !@company.nil? && @company.to_s.length > 50
       return false if !@country_code.nil? && @country_code.to_s.length > 2
@@ -292,6 +320,26 @@ module UltracartClient
       end
 
       @address2 = address2
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] cell_phone Value to be assigned
+    def cell_phone=(cell_phone)
+      if !cell_phone.nil? && cell_phone.to_s.length > 25
+        fail ArgumentError, 'invalid value for "cell_phone", the character length must be smaller than or equal to 25.'
+      end
+
+      @cell_phone = cell_phone
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] cell_phone_e164 Value to be assigned
+    def cell_phone_e164=(cell_phone_e164)
+      if !cell_phone_e164.nil? && cell_phone_e164.to_s.length > 25
+        fail ArgumentError, 'invalid value for "cell_phone_e164", the character length must be smaller than or equal to 25.'
+      end
+
+      @cell_phone_e164 = cell_phone_e164
     end
 
     # Custom attribute writer method with validation
@@ -422,6 +470,8 @@ module UltracartClient
           address1 == o.address1 &&
           address2 == o.address2 &&
           cc_emails == o.cc_emails &&
+          cell_phone == o.cell_phone &&
+          cell_phone_e164 == o.cell_phone_e164 &&
           city == o.city &&
           company == o.company &&
           country_code == o.country_code &&
@@ -445,7 +495,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [address1, address2, cc_emails, city, company, country_code, day_phone, email, email_confirm, evening_phone, first_name, last_name, postal_code, state_region, title].hash
+      [address1, address2, cc_emails, cell_phone, cell_phone_e164, city, company, country_code, day_phone, email, email_confirm, evening_phone, first_name, last_name, postal_code, state_region, title].hash
     end
 
     # Builds the object from hash
