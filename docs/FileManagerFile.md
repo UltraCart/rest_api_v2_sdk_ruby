@@ -21,6 +21,9 @@
 | **storefront_fs_directory_oid** | **Integer** |  | [optional] |
 | **storefront_fs_file_oid** | **Integer** |  | [optional] |
 | **storefront_oid** | **Integer** |  | [optional] |
+| **thumbnail_16_url** | **String** | CDN thumbnail 16x16 size | [optional] |
+| **thumbnail_32_url** | **String** | CDN thumbnail 32x32 size | [optional] |
+| **thumbnail_64_url** | **String** | CDN thumbnail 64x64 size | [optional] |
 | **type** | **String** |  | [optional] |
 | **valid_velocity** | **String** |  | [optional] |
 
@@ -47,6 +50,9 @@ instance = UltracartClient::FileManagerFile.new(
   storefront_fs_directory_oid: null,
   storefront_fs_file_oid: null,
   storefront_oid: null,
+  thumbnail_16_url: null,
+  thumbnail_32_url: null,
+  thumbnail_64_url: null,
   type: null,
   valid_velocity: null
 )

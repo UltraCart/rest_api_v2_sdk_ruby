@@ -49,6 +49,15 @@ module UltracartClient
 
     attr_accessor :storefront_oid
 
+    # CDN thumbnail 16x16 size
+    attr_accessor :thumbnail_16_url
+
+    # CDN thumbnail 32x32 size
+    attr_accessor :thumbnail_32_url
+
+    # CDN thumbnail 64x64 size
+    attr_accessor :thumbnail_64_url
+
     attr_accessor :type
 
     attr_accessor :valid_velocity
@@ -73,6 +82,9 @@ module UltracartClient
         :'storefront_fs_directory_oid' => :'storefront_fs_directory_oid',
         :'storefront_fs_file_oid' => :'storefront_fs_file_oid',
         :'storefront_oid' => :'storefront_oid',
+        :'thumbnail_16_url' => :'thumbnail_16_url',
+        :'thumbnail_32_url' => :'thumbnail_32_url',
+        :'thumbnail_64_url' => :'thumbnail_64_url',
         :'type' => :'type',
         :'valid_velocity' => :'valid_velocity'
       }
@@ -103,6 +115,9 @@ module UltracartClient
         :'storefront_fs_directory_oid' => :'Integer',
         :'storefront_fs_file_oid' => :'Integer',
         :'storefront_oid' => :'Integer',
+        :'thumbnail_16_url' => :'String',
+        :'thumbnail_32_url' => :'String',
+        :'thumbnail_64_url' => :'String',
         :'type' => :'String',
         :'valid_velocity' => :'String'
       }
@@ -197,6 +212,18 @@ module UltracartClient
         self.storefront_oid = attributes[:'storefront_oid']
       end
 
+      if attributes.key?(:'thumbnail_16_url')
+        self.thumbnail_16_url = attributes[:'thumbnail_16_url']
+      end
+
+      if attributes.key?(:'thumbnail_32_url')
+        self.thumbnail_32_url = attributes[:'thumbnail_32_url']
+      end
+
+      if attributes.key?(:'thumbnail_64_url')
+        self.thumbnail_64_url = attributes[:'thumbnail_64_url']
+      end
+
       if attributes.key?(:'type')
         self.type = attributes[:'type']
       end
@@ -241,6 +268,9 @@ module UltracartClient
           storefront_fs_directory_oid == o.storefront_fs_directory_oid &&
           storefront_fs_file_oid == o.storefront_fs_file_oid &&
           storefront_oid == o.storefront_oid &&
+          thumbnail_16_url == o.thumbnail_16_url &&
+          thumbnail_32_url == o.thumbnail_32_url &&
+          thumbnail_64_url == o.thumbnail_64_url &&
           type == o.type &&
           valid_velocity == o.valid_velocity
     end
@@ -254,7 +284,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [favorite, hostname, i18n_violation, icon, internal_version, last_modified, merge_conflict, name, parent_storefront_fs_directory_oid, part_of_active_theme, path, raw_size, selected, size, storefront_fs_directory_oid, storefront_fs_file_oid, storefront_oid, type, valid_velocity].hash
+      [favorite, hostname, i18n_violation, icon, internal_version, last_modified, merge_conflict, name, parent_storefront_fs_directory_oid, part_of_active_theme, path, raw_size, selected, size, storefront_fs_directory_oid, storefront_fs_file_oid, storefront_oid, thumbnail_16_url, thumbnail_32_url, thumbnail_64_url, type, valid_velocity].hash
     end
 
     # Builds the object from hash
