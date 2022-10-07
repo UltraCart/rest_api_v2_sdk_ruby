@@ -32,6 +32,7 @@
 | **last_modified_dts** | **String** | Last modified date | [optional] |
 | **loyalty** | [**CustomerLoyalty**](CustomerLoyalty.md) |  | [optional] |
 | **maximum_item_count** | **Integer** | Maximum item count | [optional] |
+| **merchant_id** | **String** | Merchant ID | [optional] |
 | **minimum_item_count** | **Integer** | Minimum item count | [optional] |
 | **minimum_subtotal** | **Float** | Minimum subtotal | [optional] |
 | **no_coupons** | **Boolean** | No coupons | [optional] |
@@ -98,6 +99,7 @@ instance = UltracartClient::Customer.new(
   last_modified_dts: null,
   loyalty: null,
   maximum_item_count: null,
+  merchant_id: null,
   minimum_item_count: null,
   minimum_subtotal: null,
   no_coupons: null,
