@@ -29,7 +29,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'digital_items' => :'digitalItems',
+        :'digital_items' => :'digital_items',
         :'error' => :'error',
         :'metadata' => :'metadata',
         :'success' => :'success',
@@ -56,8 +56,8 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'digitalItems')
-        if (value = attributes[:'digitalItems']).is_a?(Array)
+      if attributes.has_key?(:'digital_items')
+        if (value = attributes[:'digital_items']).is_a?(Array)
           self.digital_items = value
         end
       end

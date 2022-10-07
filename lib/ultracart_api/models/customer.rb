@@ -96,6 +96,9 @@ module UltracartClient
     # Maximum item count
     attr_accessor :maximum_item_count
 
+    # Merchant ID
+    attr_accessor :merchant_id
+
     # Minimum item count
     attr_accessor :minimum_item_count
 
@@ -215,6 +218,7 @@ module UltracartClient
         :'last_modified_dts' => :'last_modified_dts',
         :'loyalty' => :'loyalty',
         :'maximum_item_count' => :'maximum_item_count',
+        :'merchant_id' => :'merchant_id',
         :'minimum_item_count' => :'minimum_item_count',
         :'minimum_subtotal' => :'minimum_subtotal',
         :'no_coupons' => :'no_coupons',
@@ -280,6 +284,7 @@ module UltracartClient
         :'last_modified_dts' => :'String',
         :'loyalty' => :'CustomerLoyalty',
         :'maximum_item_count' => :'Integer',
+        :'merchant_id' => :'String',
         :'minimum_item_count' => :'Integer',
         :'minimum_subtotal' => :'Float',
         :'no_coupons' => :'BOOLEAN',
@@ -440,6 +445,10 @@ module UltracartClient
 
       if attributes.has_key?(:'maximum_item_count')
         self.maximum_item_count = attributes[:'maximum_item_count']
+      end
+
+      if attributes.has_key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
       end
 
       if attributes.has_key?(:'minimum_item_count')
@@ -790,6 +799,7 @@ module UltracartClient
           last_modified_dts == o.last_modified_dts &&
           loyalty == o.loyalty &&
           maximum_item_count == o.maximum_item_count &&
+          merchant_id == o.merchant_id &&
           minimum_item_count == o.minimum_item_count &&
           minimum_subtotal == o.minimum_subtotal &&
           no_coupons == o.no_coupons &&
@@ -832,7 +842,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [activity, affiliate_oid, allow_3rd_party_billing, allow_cod, allow_drop_shipping, allow_purchase_order, allow_quote_request, allow_selection_of_address_type, attachments, auto_approve_cod, auto_approve_purchase_order, automatic_merchant_notes, billing, business_notes, cards, cc_emails, customer_profile_oid, dhl_account_number, dhl_duty_account_number, email, exempt_shipping_handling_charge, fedex_account_number, free_shipping, free_shipping_minimum, last_modified_by, last_modified_dts, loyalty, maximum_item_count, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, orders, orders_summary, password, pricing_tiers, privacy, qb_class, qb_code, quotes, quotes_summary, referral_source, reviewer, sales_rep_code, send_signup_notification, shipping, signup_dts, software_entitlements, suppress_buysafe, tags, tax_codes, tax_exempt, tax_id, terms, track_separately, unapproved, ups_account_number, website_url].hash
+      [activity, affiliate_oid, allow_3rd_party_billing, allow_cod, allow_drop_shipping, allow_purchase_order, allow_quote_request, allow_selection_of_address_type, attachments, auto_approve_cod, auto_approve_purchase_order, automatic_merchant_notes, billing, business_notes, cards, cc_emails, customer_profile_oid, dhl_account_number, dhl_duty_account_number, email, exempt_shipping_handling_charge, fedex_account_number, free_shipping, free_shipping_minimum, last_modified_by, last_modified_dts, loyalty, maximum_item_count, merchant_id, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, orders, orders_summary, password, pricing_tiers, privacy, qb_class, qb_code, quotes, quotes_summary, referral_source, reviewer, sales_rep_code, send_signup_notification, shipping, signup_dts, software_entitlements, suppress_buysafe, tags, tax_codes, tax_exempt, tax_id, terms, track_separately, unapproved, ups_account_number, website_url].hash
     end
 
     # Builds the object from hash
