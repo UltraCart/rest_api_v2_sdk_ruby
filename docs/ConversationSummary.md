@@ -10,6 +10,7 @@
 | **last_conversation_message_body** | **String** |  | [optional] |
 | **last_conversation_participant_arn** | **String** |  | [optional] |
 | **last_conversation_participant_name** | **String** |  | [optional] |
+| **last_interactive_message_dts** | **String** | Last interactive message date/time | [optional] |
 | **last_message_dts** | **String** | Last message date/time | [optional] |
 | **medium** | **String** | The communication medium of the customer. | [optional] |
 | **merchant_id** | **String** |  | [optional] |
@@ -31,6 +32,7 @@ instance = UltracartClient::ConversationSummary.new(
   last_conversation_message_body: null,
   last_conversation_participant_arn: null,
   last_conversation_participant_name: null,
+  last_interactive_message_dts: null,
   last_message_dts: null,
   medium: null,
   merchant_id: null,
