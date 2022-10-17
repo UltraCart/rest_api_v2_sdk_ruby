@@ -26,6 +26,9 @@ module UltracartClient
 
     attr_accessor :last_conversation_participant_name
 
+    # Last interactive message date/time
+    attr_accessor :last_interactive_message_dts
+
     # Last message date/time
     attr_accessor :last_message_dts
 
@@ -76,6 +79,7 @@ module UltracartClient
         :'last_conversation_message_body' => :'last_conversation_message_body',
         :'last_conversation_participant_arn' => :'last_conversation_participant_arn',
         :'last_conversation_participant_name' => :'last_conversation_participant_name',
+        :'last_interactive_message_dts' => :'last_interactive_message_dts',
         :'last_message_dts' => :'last_message_dts',
         :'medium' => :'medium',
         :'merchant_id' => :'merchant_id',
@@ -96,6 +100,7 @@ module UltracartClient
         :'last_conversation_message_body' => :'String',
         :'last_conversation_participant_arn' => :'String',
         :'last_conversation_participant_name' => :'String',
+        :'last_interactive_message_dts' => :'String',
         :'last_message_dts' => :'String',
         :'medium' => :'String',
         :'merchant_id' => :'String',
@@ -137,6 +142,10 @@ module UltracartClient
 
       if attributes.has_key?(:'last_conversation_participant_name')
         self.last_conversation_participant_name = attributes[:'last_conversation_participant_name']
+      end
+
+      if attributes.has_key?(:'last_interactive_message_dts')
+        self.last_interactive_message_dts = attributes[:'last_interactive_message_dts']
       end
 
       if attributes.has_key?(:'last_message_dts')
@@ -210,6 +219,7 @@ module UltracartClient
           last_conversation_message_body == o.last_conversation_message_body &&
           last_conversation_participant_arn == o.last_conversation_participant_arn &&
           last_conversation_participant_name == o.last_conversation_participant_name &&
+          last_interactive_message_dts == o.last_interactive_message_dts &&
           last_message_dts == o.last_message_dts &&
           medium == o.medium &&
           merchant_id == o.merchant_id &&
@@ -229,7 +239,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [closed, conversation_arn, conversation_uuid, last_conversation_message_body, last_conversation_participant_arn, last_conversation_participant_name, last_message_dts, medium, merchant_id, message_count, participants, start_dts, unread_messages, visible].hash
+      [closed, conversation_arn, conversation_uuid, last_conversation_message_body, last_conversation_participant_arn, last_conversation_participant_name, last_interactive_message_dts, last_message_dts, medium, merchant_id, message_count, participants, start_dts, unread_messages, visible].hash
     end
 
     # Builds the object from hash

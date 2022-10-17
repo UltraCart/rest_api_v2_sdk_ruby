@@ -331,6 +331,7 @@ api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, fa
 
 opts = { 
   medium: 'medium_example', # String | 
+  before: 'before_example', # String | 
   _limit: 100, # Integer | The maximum number of records to return on this one API call. (Max 200)
   _offset: 0 # Integer | Pagination of the record set.  Offset is a zero based index.
 }
@@ -349,6 +350,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **medium** | **String**|  | [optional] 
+ **before** | **String**|  | [optional] 
  **_limit** | **Integer**| The maximum number of records to return on this one API call. (Max 200) | [optional] [default to 100]
  **_offset** | **Integer**| Pagination of the record set.  Offset is a zero based index. | [optional] [default to 0]
 

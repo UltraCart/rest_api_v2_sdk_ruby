@@ -359,6 +359,7 @@ module UltracartClient
     # Retrieve a list of conversation summaries that are ordered newest to oldest, include the most recent message and whether its been read. 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :medium 
+    # @option opts [String] :before 
     # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Max 200) (default to 100)
     # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
     # @return [ConversationsResponse]
@@ -371,6 +372,7 @@ module UltracartClient
     # Retrieve a list of conversation summaries that are ordered newest to oldest, include the most recent message and whether its been read. 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :medium 
+    # @option opts [String] :before 
     # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Max 200)
     # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
     # @return [Array<(ConversationsResponse, Fixnum, Hash)>] ConversationsResponse data, response status code and response headers
@@ -384,6 +386,7 @@ module UltracartClient
       # query parameters
       query_params = {}
       query_params[:'medium'] = opts[:'medium'] if !opts[:'medium'].nil?
+      query_params[:'before'] = opts[:'before'] if !opts[:'before'].nil?
       query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
       query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
 
