@@ -15,6 +15,7 @@
 | **order_id** | **String** |  | [optional] |
 | **please_review** | **Boolean** |  | [optional] |
 | **postal_code** | **String** |  | [optional] |
+| **send_to_cellphone_e164** | **String** |  | [optional] |
 | **send_to_email** | **String** |  | [optional] |
 | **send_to_logged_in_user** | **Boolean** |  | [optional] |
 | **state** | **String** |  | [optional] |
@@ -36,6 +37,7 @@ instance = UltracartClient::EmailCommseqSequenceTestRequest.new(
   order_id: null,
   please_review: null,
   postal_code: null,
+  send_to_cellphone_e164: null,
   send_to_email: null,
   send_to_logged_in_user: null,
   state: null

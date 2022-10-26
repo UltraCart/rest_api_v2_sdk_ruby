@@ -280,6 +280,8 @@ docs/EmailCommseqPostcardsResponse.md
 docs/EmailCommseqResponse.md
 docs/EmailCommseqSequenceTestRequest.md
 docs/EmailCommseqSequenceTestResponse.md
+docs/EmailCommseqSmsSendTestRequest.md
+docs/EmailCommseqSmsSendTestResponse.md
 docs/EmailCommseqStat.md
 docs/EmailCommseqStatResponse.md
 docs/EmailCommseqStep.md
@@ -994,6 +996,8 @@ lib/ultracart_api/models/email_commseq_postcards_response.rb
 lib/ultracart_api/models/email_commseq_response.rb
 lib/ultracart_api/models/email_commseq_sequence_test_request.rb
 lib/ultracart_api/models/email_commseq_sequence_test_response.rb
+lib/ultracart_api/models/email_commseq_sms_send_test_request.rb
+lib/ultracart_api/models/email_commseq_sms_send_test_response.rb
 lib/ultracart_api/models/email_commseq_stat.rb
 lib/ultracart_api/models/email_commseq_stat_response.rb
 lib/ultracart_api/models/email_commseq_step.rb
