@@ -13,76 +13,41 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class EmailCommseqSequenceTestRequest
-    attr_accessor :address_1
+  class EmailCommseqSmsSendTestResponse
+    attr_accessor :body
 
-    attr_accessor :address_2
+    attr_accessor :error
 
-    attr_accessor :cart_id
+    attr_accessor :media_urls
 
-    attr_accessor :cart_item_ids
+    attr_accessor :metadata
 
-    attr_accessor :city
+    # Indicates if API call was successful
+    attr_accessor :success
 
-    attr_accessor :esp_commseq_uuid
-
-    attr_accessor :mail_card
-
-    attr_accessor :name
-
-    attr_accessor :order_id
-
-    attr_accessor :please_review
-
-    attr_accessor :postal_code
-
-    attr_accessor :send_to_cellphone_e164
-
-    attr_accessor :send_to_email
-
-    attr_accessor :send_to_logged_in_user
-
-    attr_accessor :state
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'address_1' => :'address_1',
-        :'address_2' => :'address_2',
-        :'cart_id' => :'cart_id',
-        :'cart_item_ids' => :'cart_item_ids',
-        :'city' => :'city',
-        :'esp_commseq_uuid' => :'esp_commseq_uuid',
-        :'mail_card' => :'mail_card',
-        :'name' => :'name',
-        :'order_id' => :'order_id',
-        :'please_review' => :'please_review',
-        :'postal_code' => :'postal_code',
-        :'send_to_cellphone_e164' => :'send_to_cellphone_e164',
-        :'send_to_email' => :'send_to_email',
-        :'send_to_logged_in_user' => :'send_to_logged_in_user',
-        :'state' => :'state'
+        :'body' => :'body',
+        :'error' => :'error',
+        :'media_urls' => :'media_urls',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'address_1' => :'String',
-        :'address_2' => :'String',
-        :'cart_id' => :'String',
-        :'cart_item_ids' => :'Array<String>',
-        :'city' => :'String',
-        :'esp_commseq_uuid' => :'String',
-        :'mail_card' => :'BOOLEAN',
-        :'name' => :'String',
-        :'order_id' => :'String',
-        :'please_review' => :'BOOLEAN',
-        :'postal_code' => :'String',
-        :'send_to_cellphone_e164' => :'String',
-        :'send_to_email' => :'String',
-        :'send_to_logged_in_user' => :'BOOLEAN',
-        :'state' => :'String'
+        :'body' => :'String',
+        :'error' => :'Error',
+        :'media_urls' => :'Array<String>',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'BOOLEAN',
+        :'warning' => :'Warning'
       }
     end
 
@@ -94,66 +59,30 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'address_1')
-        self.address_1 = attributes[:'address_1']
+      if attributes.has_key?(:'body')
+        self.body = attributes[:'body']
       end
 
-      if attributes.has_key?(:'address_2')
-        self.address_2 = attributes[:'address_2']
+      if attributes.has_key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.has_key?(:'cart_id')
-        self.cart_id = attributes[:'cart_id']
-      end
-
-      if attributes.has_key?(:'cart_item_ids')
-        if (value = attributes[:'cart_item_ids']).is_a?(Array)
-          self.cart_item_ids = value
+      if attributes.has_key?(:'media_urls')
+        if (value = attributes[:'media_urls']).is_a?(Array)
+          self.media_urls = value
         end
       end
 
-      if attributes.has_key?(:'city')
-        self.city = attributes[:'city']
+      if attributes.has_key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.has_key?(:'esp_commseq_uuid')
-        self.esp_commseq_uuid = attributes[:'esp_commseq_uuid']
+      if attributes.has_key?(:'success')
+        self.success = attributes[:'success']
       end
 
-      if attributes.has_key?(:'mail_card')
-        self.mail_card = attributes[:'mail_card']
-      end
-
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'order_id')
-        self.order_id = attributes[:'order_id']
-      end
-
-      if attributes.has_key?(:'please_review')
-        self.please_review = attributes[:'please_review']
-      end
-
-      if attributes.has_key?(:'postal_code')
-        self.postal_code = attributes[:'postal_code']
-      end
-
-      if attributes.has_key?(:'send_to_cellphone_e164')
-        self.send_to_cellphone_e164 = attributes[:'send_to_cellphone_e164']
-      end
-
-      if attributes.has_key?(:'send_to_email')
-        self.send_to_email = attributes[:'send_to_email']
-      end
-
-      if attributes.has_key?(:'send_to_logged_in_user')
-        self.send_to_logged_in_user = attributes[:'send_to_logged_in_user']
-      end
-
-      if attributes.has_key?(:'state')
-        self.state = attributes[:'state']
+      if attributes.has_key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -175,21 +104,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          address_1 == o.address_1 &&
-          address_2 == o.address_2 &&
-          cart_id == o.cart_id &&
-          cart_item_ids == o.cart_item_ids &&
-          city == o.city &&
-          esp_commseq_uuid == o.esp_commseq_uuid &&
-          mail_card == o.mail_card &&
-          name == o.name &&
-          order_id == o.order_id &&
-          please_review == o.please_review &&
-          postal_code == o.postal_code &&
-          send_to_cellphone_e164 == o.send_to_cellphone_e164 &&
-          send_to_email == o.send_to_email &&
-          send_to_logged_in_user == o.send_to_logged_in_user &&
-          state == o.state
+          body == o.body &&
+          error == o.error &&
+          media_urls == o.media_urls &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -201,7 +121,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [address_1, address_2, cart_id, cart_item_ids, city, esp_commseq_uuid, mail_card, name, order_id, please_review, postal_code, send_to_cellphone_e164, send_to_email, send_to_logged_in_user, state].hash
+      [body, error, media_urls, metadata, success, warning].hash
     end
 
     # Builds the object from hash

@@ -145,6 +145,7 @@ Method | HTTP request | Description
 [**search_shared_items**](StorefrontApi.md#search_shared_items) | **POST** /storefront/code_library/search_shared | Retrieve library items
 [**send_email_test**](StorefrontApi.md#send_email_test) | **POST** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid}/test | Send email test
 [**send_postcard_test**](StorefrontApi.md#send_postcard_test) | **POST** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid}/test | Send postcard test
+[**send_sms_test**](StorefrontApi.md#send_sms_test) | **POST** /storefront/{storefront_oid}/email/sms/{commseq_uuid}/{commseq_step_uuid}/test | Send SMS test
 [**send_webhook_test**](StorefrontApi.md#send_webhook_test) | **POST** /storefront/{storefront_oid}/email/webhooks/test | Send webhook test
 [**sequence_test**](StorefrontApi.md#sequence_test) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/test | Sequence test
 [**start_email_campaign**](StorefrontApi.md#start_email_campaign) | **PUT** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid}/start | Start email campaign
@@ -7400,6 +7401,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EmailCommseqPostcardSendTestResponse**](EmailCommseqPostcardSendTestResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **send_sms_test**
+> EmailCommseqSmsSendTestResponse send_sms_test(storefront_oid, commseq_uuid, commseq_step_uuid, email_commseq_sms_test_request)
+
+Send SMS test
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::StorefrontApi.new_using_api_key(simple_key, false, false)
+
+
+storefront_oid = 56 # Integer | 
+
+commseq_uuid = 'commseq_uuid_example' # String | 
+
+commseq_step_uuid = 'commseq_step_uuid_example' # String | 
+
+email_commseq_sms_test_request = UltracartClient::EmailCommseqSmsSendTestRequest.new # EmailCommseqSmsSendTestRequest | Email commseq sms test request
+
+
+begin
+  #Send SMS test
+  result = api_instance.send_sms_test(storefront_oid, commseq_uuid, commseq_step_uuid, email_commseq_sms_test_request)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling StorefrontApi->send_sms_test: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **commseq_uuid** | **String**|  | 
+ **commseq_step_uuid** | **String**|  | 
+ **email_commseq_sms_test_request** | [**EmailCommseqSmsSendTestRequest**](EmailCommseqSmsSendTestRequest.md)| Email commseq sms test request | 
+
+### Return type
+
+[**EmailCommseqSmsSendTestResponse**](EmailCommseqSmsSendTestResponse.md)
 
 ### Authorization
 
