@@ -34,6 +34,8 @@ module UltracartClient
 
     attr_accessor :status
 
+    attr_accessor :timezone
+
     attr_accessor :unread_messages
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -47,6 +49,7 @@ module UltracartClient
         :'left_dts' => :'left_dts',
         :'profile_image_url' => :'profile_image_url',
         :'status' => :'status',
+        :'timezone' => :'timezone',
         :'unread_messages' => :'unread_messages'
       }
     end
@@ -67,6 +70,7 @@ module UltracartClient
         :'left_dts' => :'String',
         :'profile_image_url' => :'String',
         :'status' => :'String',
+        :'timezone' => :'String',
         :'unread_messages' => :'Integer'
       }
     end
@@ -124,6 +128,10 @@ module UltracartClient
         self.status = attributes[:'status']
       end
 
+      if attributes.key?(:'timezone')
+        self.timezone = attributes[:'timezone']
+      end
+
       if attributes.key?(:'unread_messages')
         self.unread_messages = attributes[:'unread_messages']
       end
@@ -155,6 +163,7 @@ module UltracartClient
           left_dts == o.left_dts &&
           profile_image_url == o.profile_image_url &&
           status == o.status &&
+          timezone == o.timezone &&
           unread_messages == o.unread_messages
     end
 
@@ -167,7 +176,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_participant_arn, conversation_participant_name, conversation_participant_uuid, joined_dts, last_message_dts, left_dts, profile_image_url, status, unread_messages].hash
+      [conversation_participant_arn, conversation_participant_name, conversation_participant_uuid, joined_dts, last_message_dts, left_dts, profile_image_url, status, timezone, unread_messages].hash
     end
 
     # Builds the object from hash

@@ -15,7 +15,10 @@ require 'time'
 
 module UltracartClient
   class EmailStepStat
-    # conversion count (left/default side)
+    # click count formatted (left side)
+    attr_accessor :left_click_count_formatted
+
+    # click count (left side)
     attr_accessor :left_conversion_count
 
     # conversion count formatted (left/default side)
@@ -26,6 +29,12 @@ module UltracartClient
 
     # customer count formatted (left/default side)
     attr_accessor :left_customer_count_formatted
+
+    # delivered count (left side)
+    attr_accessor :left_delivered_count
+
+    # delivered count formatted (left side)
+    attr_accessor :left_delivered_count_formatted
 
     # order count (left/default side)
     attr_accessor :left_order_count
@@ -44,6 +53,24 @@ module UltracartClient
 
     # revenue formatted (left/default side)
     attr_accessor :left_revenue_formatted
+
+    # send count (left side)
+    attr_accessor :left_send_count
+
+    # send count formatted (left side)
+    attr_accessor :left_send_count_formatted
+
+    # conversion count (left side)
+    attr_accessor :left_skipped_count
+
+    # skipped count formatted (left side)
+    attr_accessor :left_skipped_count_formatted
+
+    # unsubscribe count (left side)
+    attr_accessor :left_unsubscribe_count
+
+    # unsubscribe count formatted (left side)
+    attr_accessor :left_unsubscribe_count_formatted
 
     # conversion count (right side)
     attr_accessor :right_conversion_count
@@ -78,16 +105,25 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'left_click_count_formatted' => :'left_click_count_formatted',
         :'left_conversion_count' => :'left_conversion_count',
         :'left_conversion_count_formatted' => :'left_conversion_count_formatted',
         :'left_customer_count' => :'left_customer_count',
         :'left_customer_count_formatted' => :'left_customer_count_formatted',
+        :'left_delivered_count' => :'left_delivered_count',
+        :'left_delivered_count_formatted' => :'left_delivered_count_formatted',
         :'left_order_count' => :'left_order_count',
         :'left_order_count_formatted' => :'left_order_count_formatted',
         :'left_profit' => :'left_profit',
         :'left_profit_formatted' => :'left_profit_formatted',
         :'left_revenue' => :'left_revenue',
         :'left_revenue_formatted' => :'left_revenue_formatted',
+        :'left_send_count' => :'left_send_count',
+        :'left_send_count_formatted' => :'left_send_count_formatted',
+        :'left_skipped_count' => :'left_skipped_count',
+        :'left_skipped_count_formatted' => :'left_skipped_count_formatted',
+        :'left_unsubscribe_count' => :'left_unsubscribe_count',
+        :'left_unsubscribe_count_formatted' => :'left_unsubscribe_count_formatted',
         :'right_conversion_count' => :'right_conversion_count',
         :'right_conversion_count_formatted' => :'right_conversion_count_formatted',
         :'right_customer_count' => :'right_customer_count',
@@ -109,16 +145,25 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'left_click_count_formatted' => :'String',
         :'left_conversion_count' => :'Integer',
         :'left_conversion_count_formatted' => :'String',
         :'left_customer_count' => :'Integer',
         :'left_customer_count_formatted' => :'String',
+        :'left_delivered_count' => :'Integer',
+        :'left_delivered_count_formatted' => :'String',
         :'left_order_count' => :'Integer',
         :'left_order_count_formatted' => :'String',
         :'left_profit' => :'Float',
         :'left_profit_formatted' => :'String',
         :'left_revenue' => :'Float',
         :'left_revenue_formatted' => :'String',
+        :'left_send_count' => :'Integer',
+        :'left_send_count_formatted' => :'String',
+        :'left_skipped_count' => :'Integer',
+        :'left_skipped_count_formatted' => :'String',
+        :'left_unsubscribe_count' => :'Integer',
+        :'left_unsubscribe_count_formatted' => :'String',
         :'right_conversion_count' => :'Integer',
         :'right_conversion_count_formatted' => :'String',
         :'right_customer_count' => :'Integer',
@@ -153,6 +198,10 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'left_click_count_formatted')
+        self.left_click_count_formatted = attributes[:'left_click_count_formatted']
+      end
+
       if attributes.key?(:'left_conversion_count')
         self.left_conversion_count = attributes[:'left_conversion_count']
       end
@@ -167,6 +216,14 @@ module UltracartClient
 
       if attributes.key?(:'left_customer_count_formatted')
         self.left_customer_count_formatted = attributes[:'left_customer_count_formatted']
+      end
+
+      if attributes.key?(:'left_delivered_count')
+        self.left_delivered_count = attributes[:'left_delivered_count']
+      end
+
+      if attributes.key?(:'left_delivered_count_formatted')
+        self.left_delivered_count_formatted = attributes[:'left_delivered_count_formatted']
       end
 
       if attributes.key?(:'left_order_count')
@@ -191,6 +248,30 @@ module UltracartClient
 
       if attributes.key?(:'left_revenue_formatted')
         self.left_revenue_formatted = attributes[:'left_revenue_formatted']
+      end
+
+      if attributes.key?(:'left_send_count')
+        self.left_send_count = attributes[:'left_send_count']
+      end
+
+      if attributes.key?(:'left_send_count_formatted')
+        self.left_send_count_formatted = attributes[:'left_send_count_formatted']
+      end
+
+      if attributes.key?(:'left_skipped_count')
+        self.left_skipped_count = attributes[:'left_skipped_count']
+      end
+
+      if attributes.key?(:'left_skipped_count_formatted')
+        self.left_skipped_count_formatted = attributes[:'left_skipped_count_formatted']
+      end
+
+      if attributes.key?(:'left_unsubscribe_count')
+        self.left_unsubscribe_count = attributes[:'left_unsubscribe_count']
+      end
+
+      if attributes.key?(:'left_unsubscribe_count_formatted')
+        self.left_unsubscribe_count_formatted = attributes[:'left_unsubscribe_count_formatted']
       end
 
       if attributes.key?(:'right_conversion_count')
@@ -252,16 +333,25 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          left_click_count_formatted == o.left_click_count_formatted &&
           left_conversion_count == o.left_conversion_count &&
           left_conversion_count_formatted == o.left_conversion_count_formatted &&
           left_customer_count == o.left_customer_count &&
           left_customer_count_formatted == o.left_customer_count_formatted &&
+          left_delivered_count == o.left_delivered_count &&
+          left_delivered_count_formatted == o.left_delivered_count_formatted &&
           left_order_count == o.left_order_count &&
           left_order_count_formatted == o.left_order_count_formatted &&
           left_profit == o.left_profit &&
           left_profit_formatted == o.left_profit_formatted &&
           left_revenue == o.left_revenue &&
           left_revenue_formatted == o.left_revenue_formatted &&
+          left_send_count == o.left_send_count &&
+          left_send_count_formatted == o.left_send_count_formatted &&
+          left_skipped_count == o.left_skipped_count &&
+          left_skipped_count_formatted == o.left_skipped_count_formatted &&
+          left_unsubscribe_count == o.left_unsubscribe_count &&
+          left_unsubscribe_count_formatted == o.left_unsubscribe_count_formatted &&
           right_conversion_count == o.right_conversion_count &&
           right_conversion_count_formatted == o.right_conversion_count_formatted &&
           right_customer_count == o.right_customer_count &&
@@ -283,7 +373,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [left_conversion_count, left_conversion_count_formatted, left_customer_count, left_customer_count_formatted, left_order_count, left_order_count_formatted, left_profit, left_profit_formatted, left_revenue, left_revenue_formatted, right_conversion_count, right_conversion_count_formatted, right_customer_count, right_customer_count_formatted, right_order_count, right_order_count_formatted, right_profit, right_profit_formatted, right_revenue, right_revenue_formatted].hash
+      [left_click_count_formatted, left_conversion_count, left_conversion_count_formatted, left_customer_count, left_customer_count_formatted, left_delivered_count, left_delivered_count_formatted, left_order_count, left_order_count_formatted, left_profit, left_profit_formatted, left_revenue, left_revenue_formatted, left_send_count, left_send_count_formatted, left_skipped_count, left_skipped_count_formatted, left_unsubscribe_count, left_unsubscribe_count_formatted, right_conversion_count, right_conversion_count_formatted, right_customer_count, right_customer_count_formatted, right_order_count, right_order_count_formatted, right_profit, right_profit_formatted, right_revenue, right_revenue_formatted].hash
     end
 
     # Builds the object from hash

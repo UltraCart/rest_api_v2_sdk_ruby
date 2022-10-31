@@ -12,6 +12,7 @@
 | **left_dts** | **String** | Left conversation date/time | [optional] |
 | **profile_image_url** | **String** |  | [optional] |
 | **status** | **String** |  | [optional] |
+| **timezone** | **String** |  | [optional] |
 | **unread_messages** | **Integer** |  | [optional] |
 
 ## Example
@@ -28,6 +29,7 @@ instance = UltracartClient::ConversationParticipant.new(
   left_dts: null,
   profile_image_url: null,
   status: null,
+  timezone: null,
   unread_messages: null
 )
 ```
