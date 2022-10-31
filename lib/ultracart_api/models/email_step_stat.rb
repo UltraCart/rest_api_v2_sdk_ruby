@@ -14,10 +14,13 @@ require 'date'
 
 module UltracartClient
   class EmailStepStat
+    # click count (left side)
+    attr_accessor :left_click_count
+
     # click count formatted (left side)
     attr_accessor :left_click_count_formatted
 
-    # click count (left side)
+    # conversion count (left/default side)
     attr_accessor :left_conversion_count
 
     # conversion count formatted (left/default side)
@@ -104,6 +107,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'left_click_count' => :'left_click_count',
         :'left_click_count_formatted' => :'left_click_count_formatted',
         :'left_conversion_count' => :'left_conversion_count',
         :'left_conversion_count_formatted' => :'left_conversion_count_formatted',
@@ -139,6 +143,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'left_click_count' => :'Integer',
         :'left_click_count_formatted' => :'String',
         :'left_conversion_count' => :'Integer',
         :'left_conversion_count_formatted' => :'String',
@@ -178,6 +183,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'left_click_count')
+        self.left_click_count = attributes[:'left_click_count']
+      end
 
       if attributes.has_key?(:'left_click_count_formatted')
         self.left_click_count_formatted = attributes[:'left_click_count_formatted']
@@ -314,6 +323,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          left_click_count == o.left_click_count &&
           left_click_count_formatted == o.left_click_count_formatted &&
           left_conversion_count == o.left_conversion_count &&
           left_conversion_count_formatted == o.left_conversion_count_formatted &&
@@ -354,7 +364,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [left_click_count_formatted, left_conversion_count, left_conversion_count_formatted, left_customer_count, left_customer_count_formatted, left_delivered_count, left_delivered_count_formatted, left_order_count, left_order_count_formatted, left_profit, left_profit_formatted, left_revenue, left_revenue_formatted, left_send_count, left_send_count_formatted, left_skipped_count, left_skipped_count_formatted, left_unsubscribe_count, left_unsubscribe_count_formatted, right_conversion_count, right_conversion_count_formatted, right_customer_count, right_customer_count_formatted, right_order_count, right_order_count_formatted, right_profit, right_profit_formatted, right_revenue, right_revenue_formatted].hash
+      [left_click_count, left_click_count_formatted, left_conversion_count, left_conversion_count_formatted, left_customer_count, left_customer_count_formatted, left_delivered_count, left_delivered_count_formatted, left_order_count, left_order_count_formatted, left_profit, left_profit_formatted, left_revenue, left_revenue_formatted, left_send_count, left_send_count_formatted, left_skipped_count, left_skipped_count_formatted, left_unsubscribe_count, left_unsubscribe_count_formatted, right_conversion_count, right_conversion_count_formatted, right_customer_count, right_customer_count_formatted, right_order_count, right_order_count_formatted, right_profit, right_profit_formatted, right_revenue, right_revenue_formatted].hash
     end
 
     # Builds the object from hash
