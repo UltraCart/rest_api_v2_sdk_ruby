@@ -4,8 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **left_click_count** | **Integer** | click count (left side) | [optional] |
 | **left_click_count_formatted** | **String** | click count formatted (left side) | [optional] |
-| **left_conversion_count** | **Integer** | click count (left side) | [optional] |
+| **left_conversion_count** | **Integer** | conversion count (left/default side) | [optional] |
 | **left_conversion_count_formatted** | **String** | conversion count formatted (left/default side) | [optional] |
 | **left_customer_count** | **Integer** | customer count (left/default side) | [optional] |
 | **left_customer_count_formatted** | **String** | customer count formatted (left/default side) | [optional] |
@@ -40,6 +41,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::EmailStepStat.new(
+  left_click_count: null,
   left_click_count_formatted: null,
   left_conversion_count: null,
   left_conversion_count_formatted: null,
