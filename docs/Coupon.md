@@ -63,6 +63,7 @@
 | **tiered_percent_off_items** | [**CouponTieredPercentOffItems**](CouponTieredPercentOffItems.md) |  | [optional] |
 | **tiered_percent_off_shipping** | [**CouponTieredPercentOffShipping**](CouponTieredPercentOffShipping.md) |  | [optional] |
 | **tiered_percent_off_subtotal** | [**CouponTieredPercentOffSubtotal**](CouponTieredPercentOffSubtotal.md) |  | [optional] |
+| **tiered_percent_off_subtotal_based_on_msrp** | [**CouponTieredPercentOffSubtotalBasedOnMSRP**](CouponTieredPercentOffSubtotalBasedOnMSRP.md) |  | [optional] |
 | **usable_by** | **String** | Who may use this coupon. | [optional] |
 
 ## Example
@@ -130,6 +131,7 @@ instance = UltracartClient::Coupon.new(
   tiered_percent_off_items: null,
   tiered_percent_off_shipping: null,
   tiered_percent_off_subtotal: null,
+  tiered_percent_off_subtotal_based_on_msrp: null,
   usable_by: null
 )
 ```
