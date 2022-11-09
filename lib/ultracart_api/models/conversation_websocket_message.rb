@@ -201,7 +201,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      event_type_validator = EnumAttributeValidator.new('String', ["queue position", "webchat start conversation", "conversation closed", "new conversation", "new message", "updated message", "queue status update", "rrweb", "participant update", "read message"])
+      event_type_validator = EnumAttributeValidator.new('String', ["queue position", "webchat start conversation", "conversation closed", "new conversation", "new message", "updated message", "queue status update", "rrweb", "participant update", "read message", "typing"])
       return false unless event_type_validator.valid?(@event_type)
       type_validator = EnumAttributeValidator.new('String', ["message", "event", "ping", "check queue position"])
       return false unless type_validator.valid?(@type)
@@ -211,7 +211,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] event_type Object to be assigned
     def event_type=(event_type)
-      validator = EnumAttributeValidator.new('String', ["queue position", "webchat start conversation", "conversation closed", "new conversation", "new message", "updated message", "queue status update", "rrweb", "participant update", "read message"])
+      validator = EnumAttributeValidator.new('String', ["queue position", "webchat start conversation", "conversation closed", "new conversation", "new message", "updated message", "queue status update", "rrweb", "participant update", "read message", "typing"])
       unless validator.valid?(event_type)
         fail ArgumentError, "invalid value for \"event_type\", must be one of #{validator.allowable_values}."
       end

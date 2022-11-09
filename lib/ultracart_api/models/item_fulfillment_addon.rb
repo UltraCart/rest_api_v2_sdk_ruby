@@ -21,7 +21,10 @@ module UltracartClient
     # Add Item object identifier
     attr_accessor :add_item_oid
 
-    # Quantity
+    # Initial Order Only
+    attr_accessor :initial_order_only
+
+    # Once Per Order
     attr_accessor :once_per_order
 
     # Quantity
@@ -32,6 +35,7 @@ module UltracartClient
       {
         :'add_item_id' => :'add_item_id',
         :'add_item_oid' => :'add_item_oid',
+        :'initial_order_only' => :'initial_order_only',
         :'once_per_order' => :'once_per_order',
         :'quantity' => :'quantity'
       }
@@ -47,6 +51,7 @@ module UltracartClient
       {
         :'add_item_id' => :'String',
         :'add_item_oid' => :'Integer',
+        :'initial_order_only' => :'Boolean',
         :'once_per_order' => :'Boolean',
         :'quantity' => :'Integer'
       }
@@ -81,6 +86,10 @@ module UltracartClient
         self.add_item_oid = attributes[:'add_item_oid']
       end
 
+      if attributes.key?(:'initial_order_only')
+        self.initial_order_only = attributes[:'initial_order_only']
+      end
+
       if attributes.key?(:'once_per_order')
         self.once_per_order = attributes[:'once_per_order']
       end
@@ -110,6 +119,7 @@ module UltracartClient
       self.class == o.class &&
           add_item_id == o.add_item_id &&
           add_item_oid == o.add_item_oid &&
+          initial_order_only == o.initial_order_only &&
           once_per_order == o.once_per_order &&
           quantity == o.quantity
     end
@@ -123,7 +133,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_item_id, add_item_oid, once_per_order, quantity].hash
+      [add_item_id, add_item_oid, initial_order_only, once_per_order, quantity].hash
     end
 
     # Builds the object from hash
