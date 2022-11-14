@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**agent_status** | **String** |  | [optional] 
+**agent_status** | **String** | Status of the agent | [optional] 
 
 

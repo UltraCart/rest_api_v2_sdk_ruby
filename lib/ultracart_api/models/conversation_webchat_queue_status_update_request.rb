@@ -14,7 +14,30 @@ require 'date'
 
 module UltracartClient
   class ConversationWebchatQueueStatusUpdateRequest
+    # Status of the agent
     attr_accessor :agent_status
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -53,7 +76,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      agent_status_validator = EnumAttributeValidator.new('String', ['available', 'busy', 'unavailable'])
+      return false unless agent_status_validator.valid?(@agent_status)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] agent_status Object to be assigned
+    def agent_status=(agent_status)
+      validator = EnumAttributeValidator.new('String', ['available', 'busy', 'unavailable'])
+      unless validator.valid?(agent_status)
+        fail ArgumentError, 'invalid value for "agent_status", must be one of #{validator.allowable_values}.'
+      end
+      @agent_status = agent_status
     end
 
     # Checks equality by comparing each attribute.
