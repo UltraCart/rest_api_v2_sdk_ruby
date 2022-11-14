@@ -32,6 +32,9 @@ module UltracartClient
     # Basic authentication user name
     attr_accessor :basic_username
 
+    # Compress events with GZIP then base 64 encode them as a string
+    attr_accessor :compress_events
+
     # The number of consecutive failures that have occurred trying to deliver notifications to the target server
     attr_accessor :consecutive_failures
 
@@ -99,6 +102,7 @@ module UltracartClient
         :'authentication_type' => :'authentication_type',
         :'basic_password' => :'basic_password',
         :'basic_username' => :'basic_username',
+        :'compress_events' => :'compress_events',
         :'consecutive_failures' => :'consecutive_failures',
         :'disabled' => :'disabled',
         :'event_categories' => :'event_categories',
@@ -128,6 +132,7 @@ module UltracartClient
         :'authentication_type' => :'String',
         :'basic_password' => :'String',
         :'basic_username' => :'String',
+        :'compress_events' => :'Boolean',
         :'consecutive_failures' => :'Integer',
         :'disabled' => :'Boolean',
         :'event_categories' => :'Array<WebhookEventCategory>',
@@ -186,6 +191,10 @@ module UltracartClient
 
       if attributes.key?(:'basic_username')
         self.basic_username = attributes[:'basic_username']
+      end
+
+      if attributes.key?(:'compress_events')
+        self.compress_events = attributes[:'compress_events']
       end
 
       if attributes.key?(:'consecutive_failures')
@@ -287,6 +296,7 @@ module UltracartClient
           authentication_type == o.authentication_type &&
           basic_password == o.basic_password &&
           basic_username == o.basic_username &&
+          compress_events == o.compress_events &&
           consecutive_failures == o.consecutive_failures &&
           disabled == o.disabled &&
           event_categories == o.event_categories &&
@@ -310,7 +320,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [api_user_oid, api_version, application_profile, authentication_type, basic_password, basic_username, consecutive_failures, disabled, event_categories, iam_access_key, iam_secret_key, maximum_events, maximum_size, merchant_id, next_retry_after, pending, webhook_oid, webhook_url].hash
+      [api_user_oid, api_version, application_profile, authentication_type, basic_password, basic_username, compress_events, consecutive_failures, disabled, event_categories, iam_access_key, iam_secret_key, maximum_events, maximum_size, merchant_id, next_retry_after, pending, webhook_oid, webhook_url].hash
     end
 
     # Builds the object from hash
