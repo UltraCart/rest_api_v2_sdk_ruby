@@ -13,38 +13,20 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class OrderRefundableResponse
-    attr_accessor :error
-
-    attr_accessor :metadata
-
-    # Whether the order is refundable or not.  Null should be interpreted as false.
-    attr_accessor :refundable
-
-    # Indicates if API call was successful
-    attr_accessor :success
-
-    attr_accessor :warning
+  class ConversationEventAddItem
+    attr_accessor :item_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'error' => :'error',
-        :'metadata' => :'metadata',
-        :'refundable' => :'refundable',
-        :'success' => :'success',
-        :'warning' => :'warning'
+        :'item_id' => :'item_id'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'error' => :'Error',
-        :'metadata' => :'ResponseMetadata',
-        :'refundable' => :'BOOLEAN',
-        :'success' => :'BOOLEAN',
-        :'warning' => :'Warning'
+        :'item_id' => :'String'
       }
     end
 
@@ -56,24 +38,8 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'error')
-        self.error = attributes[:'error']
-      end
-
-      if attributes.has_key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.has_key?(:'refundable')
-        self.refundable = attributes[:'refundable']
-      end
-
-      if attributes.has_key?(:'success')
-        self.success = attributes[:'success']
-      end
-
-      if attributes.has_key?(:'warning')
-        self.warning = attributes[:'warning']
+      if attributes.has_key?(:'item_id')
+        self.item_id = attributes[:'item_id']
       end
     end
 
@@ -95,11 +61,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          error == o.error &&
-          metadata == o.metadata &&
-          refundable == o.refundable &&
-          success == o.success &&
-          warning == o.warning
+          item_id == o.item_id
     end
 
     # @see the `==` method
@@ -111,7 +73,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [error, metadata, refundable, success, warning].hash
+      [item_id].hash
     end
 
     # Builds the object from hash

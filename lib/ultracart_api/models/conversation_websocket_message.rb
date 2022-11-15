@@ -17,6 +17,10 @@ module UltracartClient
     # Conversation UUID if the websocket message is tied to a specific conversation
     attr_accessor :conversation_uuid
 
+    attr_accessor :event_add_coupon
+
+    attr_accessor :event_add_item
+
     attr_accessor :event_conversation_closed
 
     attr_accessor :event_new_conversation
@@ -71,6 +75,8 @@ module UltracartClient
     def self.attribute_map
       {
         :'conversation_uuid' => :'conversation_uuid',
+        :'event_add_coupon' => :'event_add_coupon',
+        :'event_add_item' => :'event_add_item',
         :'event_conversation_closed' => :'event_conversation_closed',
         :'event_new_conversation' => :'event_new_conversation',
         :'event_new_message' => :'event_new_message',
@@ -91,6 +97,8 @@ module UltracartClient
     def self.swagger_types
       {
         :'conversation_uuid' => :'String',
+        :'event_add_coupon' => :'ConversationEventAddCoupon',
+        :'event_add_item' => :'ConversationEventAddItem',
         :'event_conversation_closed' => :'ConversationSummary',
         :'event_new_conversation' => :'ConversationSummary',
         :'event_new_message' => :'ConversationSummary',
@@ -117,6 +125,14 @@ module UltracartClient
 
       if attributes.has_key?(:'conversation_uuid')
         self.conversation_uuid = attributes[:'conversation_uuid']
+      end
+
+      if attributes.has_key?(:'event_add_coupon')
+        self.event_add_coupon = attributes[:'event_add_coupon']
+      end
+
+      if attributes.has_key?(:'event_add_item')
+        self.event_add_item = attributes[:'event_add_item']
       end
 
       if attributes.has_key?(:'event_conversation_closed')
@@ -182,7 +198,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      event_type_validator = EnumAttributeValidator.new('String', ['queue position', 'webchat start conversation', 'conversation closed', 'new conversation', 'new message', 'updated message', 'queue status update', 'rrweb', 'participant update', 'read message', 'typing'])
+      event_type_validator = EnumAttributeValidator.new('String', ['queue position', 'webchat start conversation', 'conversation closed', 'new conversation', 'new message', 'updated message', 'queue status update', 'rrweb', 'participant update', 'read message', 'typing', 'add coupon', 'add item'])
       return false unless event_type_validator.valid?(@event_type)
       type_validator = EnumAttributeValidator.new('String', ['message', 'event', 'ping', 'check queue position'])
       return false unless type_validator.valid?(@type)
@@ -192,7 +208,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] event_type Object to be assigned
     def event_type=(event_type)
-      validator = EnumAttributeValidator.new('String', ['queue position', 'webchat start conversation', 'conversation closed', 'new conversation', 'new message', 'updated message', 'queue status update', 'rrweb', 'participant update', 'read message', 'typing'])
+      validator = EnumAttributeValidator.new('String', ['queue position', 'webchat start conversation', 'conversation closed', 'new conversation', 'new message', 'updated message', 'queue status update', 'rrweb', 'participant update', 'read message', 'typing', 'add coupon', 'add item'])
       unless validator.valid?(event_type)
         fail ArgumentError, 'invalid value for "event_type", must be one of #{validator.allowable_values}.'
       end
@@ -215,6 +231,8 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           conversation_uuid == o.conversation_uuid &&
+          event_add_coupon == o.event_add_coupon &&
+          event_add_item == o.event_add_item &&
           event_conversation_closed == o.event_conversation_closed &&
           event_new_conversation == o.event_new_conversation &&
           event_new_message == o.event_new_message &&
@@ -239,7 +257,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_uuid, event_conversation_closed, event_new_conversation, event_new_message, event_participant_update, event_queue_position, event_queue_status_update, event_read_message, event_rrweb, event_type, event_typing, event_updated_message, message, type].hash
+      [conversation_uuid, event_add_coupon, event_add_item, event_conversation_closed, event_new_conversation, event_new_message, event_participant_update, event_queue_position, event_queue_status_update, event_read_message, event_rrweb, event_type, event_typing, event_updated_message, message, type].hash
     end
 
     # Builds the object from hash
