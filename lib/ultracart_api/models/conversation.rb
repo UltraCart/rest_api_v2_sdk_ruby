@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class Conversation
+    # The base language iso code for the StoreFront that everything is translated into
+    attr_accessor :base_language_iso_code
+
     attr_accessor :closed
 
     attr_accessor :conversation_arn
@@ -76,6 +79,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'base_language_iso_code' => :'base_language_iso_code',
         :'closed' => :'closed',
         :'conversation_arn' => :'conversation_arn',
         :'conversation_uuid' => :'conversation_uuid',
@@ -103,6 +107,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'base_language_iso_code' => :'String',
         :'closed' => :'Boolean',
         :'conversation_arn' => :'String',
         :'conversation_uuid' => :'String',
@@ -142,6 +147,10 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'base_language_iso_code')
+        self.base_language_iso_code = attributes[:'base_language_iso_code']
+      end
 
       if attributes.key?(:'closed')
         self.closed = attributes[:'closed']
@@ -242,6 +251,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          base_language_iso_code == o.base_language_iso_code &&
           closed == o.closed &&
           conversation_arn == o.conversation_arn &&
           conversation_uuid == o.conversation_uuid &&
@@ -269,7 +279,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [closed, conversation_arn, conversation_uuid, last_conversation_message_body, last_conversation_participant_arn, last_conversation_participant_name, last_interactive_message_dts, last_message_dts, medium, merchant_id, message_count, messages, participants, start_dts, unread_messages, visible].hash
+      [base_language_iso_code, closed, conversation_arn, conversation_uuid, last_conversation_message_body, last_conversation_participant_arn, last_conversation_participant_name, last_interactive_message_dts, last_message_dts, medium, merchant_id, message_count, messages, participants, start_dts, unread_messages, visible].hash
     end
 
     # Builds the object from hash

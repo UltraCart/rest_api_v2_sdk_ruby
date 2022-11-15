@@ -44,8 +44,14 @@ module UltracartClient
     # Query string that was on the referrer URL.
     attr_accessor :referrer_query_string
 
+    # Screen recording UUID
+    attr_accessor :screen_recording_uuid
+
     # Sub ID value passed on the click
     attr_accessor :sub_id
+
+    # UC Analytics Identifier
+    attr_accessor :ucacid
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -60,7 +66,9 @@ module UltracartClient
         :'link' => :'link',
         :'referrer' => :'referrer',
         :'referrer_query_string' => :'referrer_query_string',
-        :'sub_id' => :'sub_id'
+        :'screen_recording_uuid' => :'screen_recording_uuid',
+        :'sub_id' => :'sub_id',
+        :'ucacid' => :'ucacid'
       }
     end
 
@@ -82,7 +90,9 @@ module UltracartClient
         :'link' => :'AffiliateLink',
         :'referrer' => :'String',
         :'referrer_query_string' => :'String',
-        :'sub_id' => :'String'
+        :'screen_recording_uuid' => :'String',
+        :'sub_id' => :'String',
+        :'ucacid' => :'String'
       }
     end
 
@@ -147,8 +157,16 @@ module UltracartClient
         self.referrer_query_string = attributes[:'referrer_query_string']
       end
 
+      if attributes.key?(:'screen_recording_uuid')
+        self.screen_recording_uuid = attributes[:'screen_recording_uuid']
+      end
+
       if attributes.key?(:'sub_id')
         self.sub_id = attributes[:'sub_id']
+      end
+
+      if attributes.key?(:'ucacid')
+        self.ucacid = attributes[:'ucacid']
       end
     end
 
@@ -180,7 +198,9 @@ module UltracartClient
           link == o.link &&
           referrer == o.referrer &&
           referrer_query_string == o.referrer_query_string &&
-          sub_id == o.sub_id
+          screen_recording_uuid == o.screen_recording_uuid &&
+          sub_id == o.sub_id &&
+          ucacid == o.ucacid
     end
 
     # @see the `==` method
@@ -192,7 +212,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [affiliate_click_oid, affiliate_link_oid, affiliate_oid, click_dts, ip_address, landing_page, landing_page_query_string, link, referrer, referrer_query_string, sub_id].hash
+      [affiliate_click_oid, affiliate_link_oid, affiliate_oid, click_dts, ip_address, landing_page, landing_page_query_string, link, referrer, referrer_query_string, screen_recording_uuid, sub_id, ucacid].hash
     end
 
     # Builds the object from hash

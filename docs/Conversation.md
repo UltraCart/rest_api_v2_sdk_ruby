@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **base_language_iso_code** | **String** | The base language iso code for the StoreFront that everything is translated into | [optional] |
 | **closed** | **Boolean** |  | [optional] |
 | **conversation_arn** | **String** |  | [optional] |
 | **conversation_uuid** | **String** |  | [optional] |
@@ -27,6 +28,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::Conversation.new(
+  base_language_iso_code: null,
   closed: null,
   conversation_arn: null,
   conversation_uuid: null,

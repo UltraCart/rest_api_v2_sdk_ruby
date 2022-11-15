@@ -14,7 +14,9 @@
 | **link** | [**AffiliateLink**](AffiliateLink.md) |  | [optional] |
 | **referrer** | **String** | URL that referred the click (Browser Header Referer) | [optional] |
 | **referrer_query_string** | **String** | Query string that was on the referrer URL. | [optional] |
+| **screen_recording_uuid** | **String** | Screen recording UUID | [optional] |
 | **sub_id** | **String** | Sub ID value passed on the click | [optional] |
+| **ucacid** | **String** | UC Analytics Identifier | [optional] |
 
 ## Example
 
@@ -32,7 +34,9 @@ instance = UltracartClient::AffiliateClick.new(
   link: null,
   referrer: null,
   referrer_query_string: null,
-  sub_id: null
+  screen_recording_uuid: null,
+  sub_id: null,
+  ucacid: null
 )
 ```
 
