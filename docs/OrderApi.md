@@ -20,6 +20,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_orders_batch**](OrderApi.md#get_orders_batch) | **POST** /order/orders/batch | Retrieve order batch |
 | [**get_orders_by_query**](OrderApi.md#get_orders_by_query) | **POST** /order/orders/query | Retrieve orders by query |
 | [**insert_order**](OrderApi.md#insert_order) | **POST** /order/orders | Insert an order |
+| [**is_refundable_order**](OrderApi.md#is_refundable_order) | **GET** /order/orders/{order_id}/refundable | Determine if an order can be refunded |
 | [**process_payment**](OrderApi.md#process_payment) | **POST** /order/orders/{order_id}/process_payment | Process payment |
 | [**refund_order**](OrderApi.md#refund_order) | **PUT** /order/orders/{order_id}/refund | Refund an order |
 | [**replacement**](OrderApi.md#replacement) | **POST** /order/orders/{order_id}/replacement | Replacement order |
@@ -1260,6 +1261,77 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## is_refundable_order
+
+> <OrderRefundableResponse> is_refundable_order(order_id)
+
+Determine if an order can be refunded
+
+Determine if an order can be refunded based upon payment method and age 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+order_id = 'order_id_example' # String | The order id to check for refundable order.
+
+begin
+  # Determine if an order can be refunded
+  result = api_instance.is_refundable_order(order_id)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->is_refundable_order: #{e}"
+end
+```
+
+#### Using the is_refundable_order_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OrderRefundableResponse>, Integer, Hash)> is_refundable_order_with_http_info(order_id)
+
+```ruby
+begin
+  # Determine if an order can be refunded
+  data, status_code, headers = api_instance.is_refundable_order_with_http_info(order_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OrderRefundableResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->is_refundable_order_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **order_id** | **String** | The order id to check for refundable order. |  |
+
+### Return type
+
+[**OrderRefundableResponse**](OrderRefundableResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
