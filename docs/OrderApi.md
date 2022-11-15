@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**get_orders_batch**](OrderApi.md#get_orders_batch) | **POST** /order/orders/batch | Retrieve order batch
 [**get_orders_by_query**](OrderApi.md#get_orders_by_query) | **POST** /order/orders/query | Retrieve orders by query
 [**insert_order**](OrderApi.md#insert_order) | **POST** /order/orders | Insert an order
+[**is_refundable_order**](OrderApi.md#is_refundable_order) | **GET** /order/orders/{order_id}/refundable | Determine if an order can be refunded
 [**process_payment**](OrderApi.md#process_payment) | **POST** /order/orders/{order_id}/process_payment | Process payment
 [**refund_order**](OrderApi.md#refund_order) | **PUT** /order/orders/{order_id}/refund | Refund an order
 [**replacement**](OrderApi.md#replacement) | **POST** /order/orders/{order_id}/replacement | Replacement order
@@ -914,6 +915,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OrderResponse**](OrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
+ - **Accept**: application/json
+
+
+
+# **is_refundable_order**
+> OrderRefundableResponse is_refundable_order(order_id)
+
+Determine if an order can be refunded
+
+Determine if an order can be refunded based upon payment method and age 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
+
+
+order_id = 'order_id_example' # String | The order id to check for refundable order.
+
+
+begin
+  #Determine if an order can be refunded
+  result = api_instance.is_refundable_order(order_id)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling OrderApi->is_refundable_order: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **String**| The order id to check for refundable order. | 
+
+### Return type
+
+[**OrderRefundableResponse**](OrderRefundableResponse.md)
 
 ### Authorization
 
