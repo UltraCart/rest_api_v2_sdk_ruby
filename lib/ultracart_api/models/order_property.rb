@@ -98,8 +98,8 @@ module UltracartClient
         invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 100.')
       end
 
-      if !@value.nil? && @value.to_s.length > 10000
-        invalid_properties.push('invalid value for "value", the character length must be smaller than or equal to 10000.')
+      if !@value.nil? && @value.to_s.length > 5000
+        invalid_properties.push('invalid value for "value", the character length must be smaller than or equal to 5000.')
       end
 
       invalid_properties
@@ -109,7 +109,7 @@ module UltracartClient
     # @return true if the model is valid
     def valid?
       return false if !@name.nil? && @name.to_s.length > 100
-      return false if !@value.nil? && @value.to_s.length > 10000
+      return false if !@value.nil? && @value.to_s.length > 5000
       true
     end
 
@@ -126,8 +126,8 @@ module UltracartClient
     # Custom attribute writer method with validation
     # @param [Object] value Value to be assigned
     def value=(value)
-      if !value.nil? && value.to_s.length > 10000
-        fail ArgumentError, 'invalid value for "value", the character length must be smaller than or equal to 10000.'
+      if !value.nil? && value.to_s.length > 5000
+        fail ArgumentError, 'invalid value for "value", the character length must be smaller than or equal to 5000.'
       end
 
       @value = value
