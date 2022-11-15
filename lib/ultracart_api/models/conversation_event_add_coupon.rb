@@ -14,27 +14,13 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class OrderRefundableResponse
-    attr_accessor :error
-
-    attr_accessor :metadata
-
-    # Whether the order is refundable or not.  Null should be interpreted as false.
-    attr_accessor :refundable
-
-    # Indicates if API call was successful
-    attr_accessor :success
-
-    attr_accessor :warning
+  class ConversationEventAddCoupon
+    attr_accessor :coupon_code
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'error' => :'error',
-        :'metadata' => :'metadata',
-        :'refundable' => :'refundable',
-        :'success' => :'success',
-        :'warning' => :'warning'
+        :'coupon_code' => :'coupon_code'
       }
     end
 
@@ -46,11 +32,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'error' => :'Error',
-        :'metadata' => :'ResponseMetadata',
-        :'refundable' => :'Boolean',
-        :'success' => :'Boolean',
-        :'warning' => :'Warning'
+        :'coupon_code' => :'String'
       }
     end
 
@@ -64,35 +46,19 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::OrderRefundableResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationEventAddCoupon` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::OrderRefundableResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationEventAddCoupon`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'error')
-        self.error = attributes[:'error']
-      end
-
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.key?(:'refundable')
-        self.refundable = attributes[:'refundable']
-      end
-
-      if attributes.key?(:'success')
-        self.success = attributes[:'success']
-      end
-
-      if attributes.key?(:'warning')
-        self.warning = attributes[:'warning']
+      if attributes.key?(:'coupon_code')
+        self.coupon_code = attributes[:'coupon_code']
       end
     end
 
@@ -114,11 +80,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          error == o.error &&
-          metadata == o.metadata &&
-          refundable == o.refundable &&
-          success == o.success &&
-          warning == o.warning
+          coupon_code == o.coupon_code
     end
 
     # @see the `==` method
@@ -130,7 +92,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [error, metadata, refundable, success, warning].hash
+      [coupon_code].hash
     end
 
     # Builds the object from hash
