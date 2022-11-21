@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**get_agent_keep_alive**](ConversationApi.md#get_agent_keep_alive) | **GET** /conversation/agent/keepalive | Agent keep alive
 [**get_agent_websocket_authorization**](ConversationApi.md#get_agent_websocket_authorization) | **PUT** /conversation/agent/auth | Get agent websocket authorization
 [**get_conversation**](ConversationApi.md#get_conversation) | **GET** /conversation/conversations/{conversation_uuid} | Retrieve a conversation
+[**get_conversation_context**](ConversationApi.md#get_conversation_context) | **PUT** /conversation/conversations/{conversation_uuid}/context | Get a webchat conversation context
 [**get_conversation_messages**](ConversationApi.md#get_conversation_messages) | **GET** /conversation/conversations/{conversation_uuid}/messages/{since} | Retrieve conversation messages
 [**get_conversation_multimedia_upload_url**](ConversationApi.md#get_conversation_multimedia_upload_url) | **GET** /conversation/upload_url/{extension} | Get a presigned conersation multimedia upload URL
 [**get_conversation_webchat_queue_statuses**](ConversationApi.md#get_conversation_webchat_queue_statuses) | **GET** /conversation/conversations/queues/statuses | Retrieve a conversation webchat queue statuses
@@ -148,6 +149,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ConversationResponse**](ConversationResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_conversation_context**
+> ConversationWebchatContext get_conversation_context(conversation_uuid)
+
+Get a webchat conversation context
+
+Get a webchat conversation context 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+conversation_uuid = 'conversation_uuid_example' # String | 
+
+
+begin
+  #Get a webchat conversation context
+  result = api_instance.get_conversation_context(conversation_uuid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->get_conversation_context: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conversation_uuid** | **String**|  | 
+
+### Return type
+
+[**ConversationWebchatContext**](ConversationWebchatContext.md)
 
 ### Authorization
 
