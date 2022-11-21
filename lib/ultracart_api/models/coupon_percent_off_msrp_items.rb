@@ -26,13 +26,21 @@ module UltracartClient
     # The (optional) maximum quantity of discounted items.
     attr_accessor :limit
 
+    # The (optional) minimum cumulative msrp of qualifying items.
+    attr_accessor :minimum_cumulative_msrp
+
+    # The (optional) minimum subtotal of qualifying items.
+    attr_accessor :minimum_subtotal
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'discount_percent' => :'discount_percent',
         :'excluded_items' => :'excluded_items',
         :'items' => :'items',
-        :'limit' => :'limit'
+        :'limit' => :'limit',
+        :'minimum_cumulative_msrp' => :'minimum_cumulative_msrp',
+        :'minimum_subtotal' => :'minimum_subtotal'
       }
     end
 
@@ -42,7 +50,9 @@ module UltracartClient
         :'discount_percent' => :'Float',
         :'excluded_items' => :'Array<String>',
         :'items' => :'Array<String>',
-        :'limit' => :'Integer'
+        :'limit' => :'Integer',
+        :'minimum_cumulative_msrp' => :'Float',
+        :'minimum_subtotal' => :'Float'
       }
     end
 
@@ -73,6 +83,14 @@ module UltracartClient
       if attributes.has_key?(:'limit')
         self.limit = attributes[:'limit']
       end
+
+      if attributes.has_key?(:'minimum_cumulative_msrp')
+        self.minimum_cumulative_msrp = attributes[:'minimum_cumulative_msrp']
+      end
+
+      if attributes.has_key?(:'minimum_subtotal')
+        self.minimum_subtotal = attributes[:'minimum_subtotal']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -96,7 +114,9 @@ module UltracartClient
           discount_percent == o.discount_percent &&
           excluded_items == o.excluded_items &&
           items == o.items &&
-          limit == o.limit
+          limit == o.limit &&
+          minimum_cumulative_msrp == o.minimum_cumulative_msrp &&
+          minimum_subtotal == o.minimum_subtotal
     end
 
     # @see the `==` method
@@ -108,7 +128,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [discount_percent, excluded_items, items, limit].hash
+      [discount_percent, excluded_items, items, limit, minimum_cumulative_msrp, minimum_subtotal].hash
     end
 
     # Builds the object from hash
