@@ -14,11 +14,17 @@ require 'date'
 
 module UltracartClient
   class ConversationEventAddCoupon
+    attr_accessor :agent_arn
+
+    attr_accessor :agent_name
+
     attr_accessor :coupon_code
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'agent_arn' => :'agent_arn',
+        :'agent_name' => :'agent_name',
         :'coupon_code' => :'coupon_code'
       }
     end
@@ -26,6 +32,8 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'agent_arn' => :'String',
+        :'agent_name' => :'String',
         :'coupon_code' => :'String'
       }
     end
@@ -37,6 +45,14 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'agent_arn')
+        self.agent_arn = attributes[:'agent_arn']
+      end
+
+      if attributes.has_key?(:'agent_name')
+        self.agent_name = attributes[:'agent_name']
+      end
 
       if attributes.has_key?(:'coupon_code')
         self.coupon_code = attributes[:'coupon_code']
@@ -61,6 +77,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          agent_arn == o.agent_arn &&
+          agent_name == o.agent_name &&
           coupon_code == o.coupon_code
     end
 
@@ -73,7 +91,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [coupon_code].hash
+      [agent_arn, agent_name, coupon_code].hash
     end
 
     # Builds the object from hash

@@ -13,48 +13,28 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class Weight
-    # Unit of measure
-    attr_accessor :uom
+  class ConversationEventWebchatContext
+    attr_accessor :cart_id
 
-    # Weight
-    attr_accessor :value
+    attr_accessor :ucacid
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'uom' => :'uom',
-        :'value' => :'value'
+        :'cart_id' => :'cart_id',
+        :'ucacid' => :'ucacid',
+        :'url' => :'url'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'uom' => :'String',
-        :'value' => :'Float'
+        :'cart_id' => :'String',
+        :'ucacid' => :'String',
+        :'url' => :'String'
       }
     end
 
@@ -66,12 +46,16 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'uom')
-        self.uom = attributes[:'uom']
+      if attributes.has_key?(:'cart_id')
+        self.cart_id = attributes[:'cart_id']
       end
 
-      if attributes.has_key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.has_key?(:'ucacid')
+        self.ucacid = attributes[:'ucacid']
+      end
+
+      if attributes.has_key?(:'url')
+        self.url = attributes[:'url']
       end
     end
 
@@ -85,19 +69,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      uom_validator = EnumAttributeValidator.new('String', ['KG', 'G', 'LB', 'OZ'])
-      return false unless uom_validator.valid?(@uom)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] uom Object to be assigned
-    def uom=(uom)
-      validator = EnumAttributeValidator.new('String', ['KG', 'G', 'LB', 'OZ'])
-      unless validator.valid?(uom)
-        fail ArgumentError, 'invalid value for "uom", must be one of #{validator.allowable_values}.'
-      end
-      @uom = uom
     end
 
     # Checks equality by comparing each attribute.
@@ -105,8 +77,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          uom == o.uom &&
-          value == o.value
+          cart_id == o.cart_id &&
+          ucacid == o.ucacid &&
+          url == o.url
     end
 
     # @see the `==` method
@@ -118,7 +91,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [uom, value].hash
+      [cart_id, ucacid, url].hash
     end
 
     # Builds the object from hash

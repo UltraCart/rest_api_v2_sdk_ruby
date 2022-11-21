@@ -14,19 +14,27 @@ require 'date'
 
 module UltracartClient
   class ConversationEventAddItem
-    attr_accessor :item_id
+    attr_accessor :agent_arn
+
+    attr_accessor :agent_name
+
+    attr_accessor :items
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'item_id' => :'item_id'
+        :'agent_arn' => :'agent_arn',
+        :'agent_name' => :'agent_name',
+        :'items' => :'items'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'item_id' => :'String'
+        :'agent_arn' => :'String',
+        :'agent_name' => :'String',
+        :'items' => :'Array<CartItem>'
       }
     end
 
@@ -38,8 +46,18 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'item_id')
-        self.item_id = attributes[:'item_id']
+      if attributes.has_key?(:'agent_arn')
+        self.agent_arn = attributes[:'agent_arn']
+      end
+
+      if attributes.has_key?(:'agent_name')
+        self.agent_name = attributes[:'agent_name']
+      end
+
+      if attributes.has_key?(:'items')
+        if (value = attributes[:'items']).is_a?(Array)
+          self.items = value
+        end
       end
     end
 
@@ -61,7 +79,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          item_id == o.item_id
+          agent_arn == o.agent_arn &&
+          agent_name == o.agent_name &&
+          items == o.items
     end
 
     # @see the `==` method
@@ -73,7 +93,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [item_id].hash
+      [agent_arn, agent_name, items].hash
     end
 
     # Builds the object from hash
