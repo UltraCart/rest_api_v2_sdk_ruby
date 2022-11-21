@@ -14,19 +14,19 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationEventAddItem
-    attr_accessor :agent_arn
+  class ConversationEventWebchatContext
+    attr_accessor :cart_id
 
-    attr_accessor :agent_name
+    attr_accessor :ucacid
 
-    attr_accessor :items
+    attr_accessor :url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'agent_arn' => :'agent_arn',
-        :'agent_name' => :'agent_name',
-        :'items' => :'items'
+        :'cart_id' => :'cart_id',
+        :'ucacid' => :'ucacid',
+        :'url' => :'url'
       }
     end
 
@@ -38,9 +38,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'agent_arn' => :'String',
-        :'agent_name' => :'String',
-        :'items' => :'Array<CartItem>'
+        :'cart_id' => :'String',
+        :'ucacid' => :'String',
+        :'url' => :'String'
       }
     end
 
@@ -54,29 +54,27 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationEventAddItem` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationEventWebchatContext` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationEventAddItem`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationEventWebchatContext`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'agent_arn')
-        self.agent_arn = attributes[:'agent_arn']
+      if attributes.key?(:'cart_id')
+        self.cart_id = attributes[:'cart_id']
       end
 
-      if attributes.key?(:'agent_name')
-        self.agent_name = attributes[:'agent_name']
+      if attributes.key?(:'ucacid')
+        self.ucacid = attributes[:'ucacid']
       end
 
-      if attributes.key?(:'items')
-        if (value = attributes[:'items']).is_a?(Array)
-          self.items = value
-        end
+      if attributes.key?(:'url')
+        self.url = attributes[:'url']
       end
     end
 
@@ -98,9 +96,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          agent_arn == o.agent_arn &&
-          agent_name == o.agent_name &&
-          items == o.items
+          cart_id == o.cart_id &&
+          ucacid == o.ucacid &&
+          url == o.url
     end
 
     # @see the `==` method
@@ -112,7 +110,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [agent_arn, agent_name, items].hash
+      [cart_id, ucacid, url].hash
     end
 
     # Builds the object from hash

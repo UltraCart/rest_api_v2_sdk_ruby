@@ -104,7 +104,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      uom_validator = EnumAttributeValidator.new('String', ["KG", "LB", "OZ"])
+      uom_validator = EnumAttributeValidator.new('String', ["KG", "G", "LB", "OZ"])
       return false unless uom_validator.valid?(@uom)
       true
     end
@@ -112,7 +112,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] uom Object to be assigned
     def uom=(uom)
-      validator = EnumAttributeValidator.new('String', ["KG", "LB", "OZ"])
+      validator = EnumAttributeValidator.new('String', ["KG", "G", "LB", "OZ"])
       unless validator.valid?(uom)
         fail ArgumentError, "invalid value for \"uom\", must be one of #{validator.allowable_values}."
       end

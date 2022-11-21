@@ -137,6 +137,7 @@ docs/ConversationEventQueuePosition.md
 docs/ConversationEventRRWeb.md
 docs/ConversationEventReadMessage.md
 docs/ConversationEventTyping.md
+docs/ConversationEventWebchatContext.md
 docs/ConversationMessage.md
 docs/ConversationMessageTransportStatus.md
 docs/ConversationMessagesResponse.md
@@ -859,6 +860,7 @@ lib/ultracart_api/models/conversation_event_queue_position.rb
 lib/ultracart_api/models/conversation_event_read_message.rb
 lib/ultracart_api/models/conversation_event_rr_web.rb
 lib/ultracart_api/models/conversation_event_typing.rb
+lib/ultracart_api/models/conversation_event_webchat_context.rb
 lib/ultracart_api/models/conversation_message.rb
 lib/ultracart_api/models/conversation_message_transport_status.rb
 lib/ultracart_api/models/conversation_messages_response.rb

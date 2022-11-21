@@ -4,7 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **item_id** | **String** |  | [optional] |
+| **agent_arn** | **String** |  | [optional] |
+| **agent_name** | **String** |  | [optional] |
+| **items** | [**Array&lt;CartItem&gt;**](CartItem.md) |  | [optional] |
 
 ## Example
 
@@ -12,7 +14,9 @@
 require 'ultracart_api'
 
 instance = UltracartClient::ConversationEventAddItem.new(
-  item_id: null
+  agent_arn: null,
+  agent_name: null,
+  items: null
 )
 ```
 
