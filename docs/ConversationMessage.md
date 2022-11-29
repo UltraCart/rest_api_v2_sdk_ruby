@@ -9,6 +9,7 @@
 | **body** | **String** |  | [optional] |
 | **client_message_id** | **String** |  | [optional] |
 | **conversation_message_uuid** | **String** |  | [optional] |
+| **delay_until_dts** | **String** | Delay message transmission until date/time | [optional] |
 | **media_urls** | **Array&lt;String&gt;** |  | [optional] |
 | **merchant_id** | **String** |  | [optional] |
 | **message_dts** | **String** | Message date/time | [optional] |
@@ -28,6 +29,7 @@ instance = UltracartClient::ConversationMessage.new(
   body: null,
   client_message_id: null,
   conversation_message_uuid: null,
+  delay_until_dts: null,
   media_urls: null,
   merchant_id: null,
   message_dts: null,
