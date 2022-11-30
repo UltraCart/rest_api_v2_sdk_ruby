@@ -14,9 +14,13 @@ require 'date'
 
 module UltracartClient
   class ConversationWebchatContext
+    attr_accessor :auto_orders
+
     attr_accessor :cart
 
     attr_accessor :current_url
+
+    attr_accessor :orders
 
     attr_accessor :page_view
 
@@ -27,8 +31,10 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'auto_orders' => :'auto_orders',
         :'cart' => :'cart',
         :'current_url' => :'current_url',
+        :'orders' => :'orders',
         :'page_view' => :'page_view',
         :'session_start' => :'session_start',
         :'session_utm' => :'session_utm'
@@ -38,8 +44,10 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'auto_orders' => :'Array<AutoOrder>',
         :'cart' => :'Cart',
         :'current_url' => :'String',
+        :'orders' => :'Array<Order>',
         :'page_view' => :'Array<HitPageView>',
         :'session_start' => :'HitSessionStart',
         :'session_utm' => :'HitSessionUtm'
@@ -54,12 +62,24 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
+      if attributes.has_key?(:'auto_orders')
+        if (value = attributes[:'auto_orders']).is_a?(Array)
+          self.auto_orders = value
+        end
+      end
+
       if attributes.has_key?(:'cart')
         self.cart = attributes[:'cart']
       end
 
       if attributes.has_key?(:'current_url')
         self.current_url = attributes[:'current_url']
+      end
+
+      if attributes.has_key?(:'orders')
+        if (value = attributes[:'orders']).is_a?(Array)
+          self.orders = value
+        end
       end
 
       if attributes.has_key?(:'page_view')
@@ -95,8 +115,10 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          auto_orders == o.auto_orders &&
           cart == o.cart &&
           current_url == o.current_url &&
+          orders == o.orders &&
           page_view == o.page_view &&
           session_start == o.session_start &&
           session_utm == o.session_utm
@@ -111,7 +133,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [cart, current_url, page_view, session_start, session_utm].hash
+      [auto_orders, cart, current_url, orders, page_view, session_start, session_utm].hash
     end
 
     # Builds the object from hash
