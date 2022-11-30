@@ -75,6 +75,9 @@ module UltracartClient
 
     attr_accessor :height
 
+    # Index of the item on the order (one based index)
+    attr_accessor :item_index
+
     # Item reference object identifier used to linked to auto order item record
     attr_accessor :item_reference_oid
 
@@ -109,6 +112,12 @@ module UltracartClient
 
     # Packed by user
     attr_accessor :packed_by_user
+
+    # If this item is a kit component, this is the item index of the parent item (kit)
+    attr_accessor :parent_item_index
+
+    # If this item is a kit component, this is the item id of the parent item (kit)
+    attr_accessor :parent_merchant_item_id
 
     # Perishable class of the item
     attr_accessor :perishable_class
@@ -217,6 +226,7 @@ module UltracartClient
         :'free_shipping' => :'free_shipping',
         :'hazmat' => :'hazmat',
         :'height' => :'height',
+        :'item_index' => :'item_index',
         :'item_reference_oid' => :'item_reference_oid',
         :'kit' => :'kit',
         :'kit_component' => :'kit_component',
@@ -229,6 +239,8 @@ module UltracartClient
         :'no_shipping_discount' => :'no_shipping_discount',
         :'options' => :'options',
         :'packed_by_user' => :'packed_by_user',
+        :'parent_item_index' => :'parent_item_index',
+        :'parent_merchant_item_id' => :'parent_merchant_item_id',
         :'perishable_class' => :'perishable_class',
         :'pricing_tier_name' => :'pricing_tier_name',
         :'properties' => :'properties',
@@ -284,6 +296,7 @@ module UltracartClient
         :'free_shipping' => :'Boolean',
         :'hazmat' => :'Boolean',
         :'height' => :'Distance',
+        :'item_index' => :'Integer',
         :'item_reference_oid' => :'Integer',
         :'kit' => :'Boolean',
         :'kit_component' => :'Boolean',
@@ -296,6 +309,8 @@ module UltracartClient
         :'no_shipping_discount' => :'Boolean',
         :'options' => :'Array<OrderItemOption>',
         :'packed_by_user' => :'String',
+        :'parent_item_index' => :'Integer',
+        :'parent_merchant_item_id' => :'String',
         :'perishable_class' => :'String',
         :'pricing_tier_name' => :'String',
         :'properties' => :'Array<OrderItemProperty>',
@@ -432,6 +447,10 @@ module UltracartClient
         self.height = attributes[:'height']
       end
 
+      if attributes.key?(:'item_index')
+        self.item_index = attributes[:'item_index']
+      end
+
       if attributes.key?(:'item_reference_oid')
         self.item_reference_oid = attributes[:'item_reference_oid']
       end
@@ -480,6 +499,14 @@ module UltracartClient
 
       if attributes.key?(:'packed_by_user')
         self.packed_by_user = attributes[:'packed_by_user']
+      end
+
+      if attributes.key?(:'parent_item_index')
+        self.parent_item_index = attributes[:'parent_item_index']
+      end
+
+      if attributes.key?(:'parent_merchant_item_id')
+        self.parent_merchant_item_id = attributes[:'parent_merchant_item_id']
       end
 
       if attributes.key?(:'perishable_class')
@@ -595,6 +622,10 @@ module UltracartClient
         invalid_properties.push('invalid value for "merchant_item_id", the character length must be smaller than or equal to 20.')
       end
 
+      if !@parent_merchant_item_id.nil? && @parent_merchant_item_id.to_s.length > 20
+        invalid_properties.push('invalid value for "parent_merchant_item_id", the character length must be smaller than or equal to 20.')
+      end
+
       if !@perishable_class.nil? && @perishable_class.to_s.length > 50
         invalid_properties.push('invalid value for "perishable_class", the character length must be smaller than or equal to 50.')
       end
@@ -613,6 +644,7 @@ module UltracartClient
       return false if !@country_code_of_origin.nil? && @country_code_of_origin.to_s.length > 2
       return false if !@description.nil? && @description.to_s.length > 2000
       return false if !@merchant_item_id.nil? && @merchant_item_id.to_s.length > 20
+      return false if !@parent_merchant_item_id.nil? && @parent_merchant_item_id.to_s.length > 20
       return false if !@perishable_class.nil? && @perishable_class.to_s.length > 50
       return false if !@quickbooks_class.nil? && @quickbooks_class.to_s.length > 31
       tax_product_type_validator = EnumAttributeValidator.new('String', ["", "digital", "physical", "service"])
@@ -658,6 +690,16 @@ module UltracartClient
       end
 
       @merchant_item_id = merchant_item_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] parent_merchant_item_id Value to be assigned
+    def parent_merchant_item_id=(parent_merchant_item_id)
+      if !parent_merchant_item_id.nil? && parent_merchant_item_id.to_s.length > 20
+        fail ArgumentError, 'invalid value for "parent_merchant_item_id", the character length must be smaller than or equal to 20.'
+      end
+
+      @parent_merchant_item_id = parent_merchant_item_id
     end
 
     # Custom attribute writer method with validation
@@ -717,6 +759,7 @@ module UltracartClient
           free_shipping == o.free_shipping &&
           hazmat == o.hazmat &&
           height == o.height &&
+          item_index == o.item_index &&
           item_reference_oid == o.item_reference_oid &&
           kit == o.kit &&
           kit_component == o.kit_component &&
@@ -729,6 +772,8 @@ module UltracartClient
           no_shipping_discount == o.no_shipping_discount &&
           options == o.options &&
           packed_by_user == o.packed_by_user &&
+          parent_item_index == o.parent_item_index &&
+          parent_merchant_item_id == o.parent_merchant_item_id &&
           perishable_class == o.perishable_class &&
           pricing_tier_name == o.pricing_tier_name &&
           properties == o.properties &&
@@ -762,7 +807,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accounting_code, activation_codes, arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, barcode, channel_partner_item_id, cogs, component_unit_value, cost, country_code_of_origin, customs_description, description, discount, discount_quantity, discount_shipping_weight, distribution_center_code, edi, exclude_coupon, free_shipping, hazmat, height, item_reference_oid, kit, kit_component, length, manufacturer_sku, max_days_time_in_transit, merchant_item_id, mix_and_match_group_name, mix_and_match_group_oid, no_shipping_discount, options, packed_by_user, perishable_class, pricing_tier_name, properties, quantity, quantity_refunded, quickbooks_class, ship_separately, shipped_by_user, shipped_dts, shipping_status, special_product_type, tags, tax_free, tax_product_type, taxable_cost, total_cost_with_discount, total_refunded, transmitted_to_distribution_center_dts, unit_cost_with_discount, upsell, weight, width].hash
+      [accounting_code, activation_codes, arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, barcode, channel_partner_item_id, cogs, component_unit_value, cost, country_code_of_origin, customs_description, description, discount, discount_quantity, discount_shipping_weight, distribution_center_code, edi, exclude_coupon, free_shipping, hazmat, height, item_index, item_reference_oid, kit, kit_component, length, manufacturer_sku, max_days_time_in_transit, merchant_item_id, mix_and_match_group_name, mix_and_match_group_oid, no_shipping_discount, options, packed_by_user, parent_item_index, parent_merchant_item_id, perishable_class, pricing_tier_name, properties, quantity, quantity_refunded, quickbooks_class, ship_separately, shipped_by_user, shipped_dts, shipping_status, special_product_type, tags, tax_free, tax_product_type, taxable_cost, total_cost_with_discount, total_refunded, transmitted_to_distribution_center_dts, unit_cost_with_discount, upsell, weight, width].hash
     end
 
     # Builds the object from hash

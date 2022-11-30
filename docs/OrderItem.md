@@ -26,6 +26,7 @@
 | **free_shipping** | **Boolean** | True if the item receives free shipping | [optional] |
 | **hazmat** | **Boolean** | Hazardous materials indicator | [optional] |
 | **height** | [**Distance**](Distance.md) |  | [optional] |
+| **item_index** | **Integer** | Index of the item on the order (one based index) | [optional] |
 | **item_reference_oid** | **Integer** | Item reference object identifier used to linked to auto order item record | [optional] |
 | **kit** | **Boolean** | True if this item is a kit | [optional] |
 | **kit_component** | **Boolean** | True if this item is a kit component | [optional] |
@@ -38,6 +39,8 @@
 | **no_shipping_discount** | **Boolean** | True if this item is excluded from shipping discounts | [optional] |
 | **options** | [**Array&lt;OrderItemOption&gt;**](OrderItemOption.md) | Options | [optional] |
 | **packed_by_user** | **String** | Packed by user | [optional] |
+| **parent_item_index** | **Integer** | If this item is a kit component, this is the item index of the parent item (kit) | [optional] |
+| **parent_merchant_item_id** | **String** | If this item is a kit component, this is the item id of the parent item (kit) | [optional] |
 | **perishable_class** | **String** | Perishable class of the item | [optional] |
 | **pricing_tier_name** | **String** | Pricing tier that granted the particular price for this item if the customer profile had pricing tiers assigned | [optional] |
 | **properties** | [**Array&lt;OrderItemProperty&gt;**](OrderItemProperty.md) | Properties | [optional] |
@@ -89,6 +92,7 @@ instance = UltracartClient::OrderItem.new(
   free_shipping: null,
   hazmat: null,
   height: null,
+  item_index: null,
   item_reference_oid: null,
   kit: null,
   kit_component: null,
@@ -101,6 +105,8 @@ instance = UltracartClient::OrderItem.new(
   no_shipping_discount: null,
   options: null,
   packed_by_user: null,
+  parent_item_index: null,
+  parent_merchant_item_id: null,
   perishable_class: null,
   pricing_tier_name: null,
   properties: null,
