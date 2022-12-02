@@ -20,6 +20,9 @@ module UltracartClient
 
     attr_accessor :conversation_uuid
 
+    # Date/time of the first customer message that is unresponded to.
+    attr_accessor :customer_first_message_unresponded_to_dts
+
     attr_accessor :last_conversation_message_body
 
     attr_accessor :last_conversation_participant_arn
@@ -76,6 +79,7 @@ module UltracartClient
         :'closed' => :'closed',
         :'conversation_arn' => :'conversation_arn',
         :'conversation_uuid' => :'conversation_uuid',
+        :'customer_first_message_unresponded_to_dts' => :'customer_first_message_unresponded_to_dts',
         :'last_conversation_message_body' => :'last_conversation_message_body',
         :'last_conversation_participant_arn' => :'last_conversation_participant_arn',
         :'last_conversation_participant_name' => :'last_conversation_participant_name',
@@ -97,6 +101,7 @@ module UltracartClient
         :'closed' => :'BOOLEAN',
         :'conversation_arn' => :'String',
         :'conversation_uuid' => :'String',
+        :'customer_first_message_unresponded_to_dts' => :'String',
         :'last_conversation_message_body' => :'String',
         :'last_conversation_participant_arn' => :'String',
         :'last_conversation_participant_name' => :'String',
@@ -130,6 +135,10 @@ module UltracartClient
 
       if attributes.has_key?(:'conversation_uuid')
         self.conversation_uuid = attributes[:'conversation_uuid']
+      end
+
+      if attributes.has_key?(:'customer_first_message_unresponded_to_dts')
+        self.customer_first_message_unresponded_to_dts = attributes[:'customer_first_message_unresponded_to_dts']
       end
 
       if attributes.has_key?(:'last_conversation_message_body')
@@ -216,6 +225,7 @@ module UltracartClient
           closed == o.closed &&
           conversation_arn == o.conversation_arn &&
           conversation_uuid == o.conversation_uuid &&
+          customer_first_message_unresponded_to_dts == o.customer_first_message_unresponded_to_dts &&
           last_conversation_message_body == o.last_conversation_message_body &&
           last_conversation_participant_arn == o.last_conversation_participant_arn &&
           last_conversation_participant_name == o.last_conversation_participant_name &&
@@ -239,7 +249,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [closed, conversation_arn, conversation_uuid, last_conversation_message_body, last_conversation_participant_arn, last_conversation_participant_name, last_interactive_message_dts, last_message_dts, medium, merchant_id, message_count, participants, start_dts, unread_messages, visible].hash
+      [closed, conversation_arn, conversation_uuid, customer_first_message_unresponded_to_dts, last_conversation_message_body, last_conversation_participant_arn, last_conversation_participant_name, last_interactive_message_dts, last_message_dts, medium, merchant_id, message_count, participants, start_dts, unread_messages, visible].hash
     end
 
     # Builds the object from hash
