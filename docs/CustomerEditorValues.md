@@ -9,6 +9,7 @@
 | **card_exp_years** | **Array&lt;String&gt;** | card_exp_years | [optional] |
 | **card_types** | **Array&lt;String&gt;** | card_types | [optional] |
 | **countries** | [**Array&lt;Country&gt;**](Country.md) | countries | [optional] |
+| **edi_channel_partners** | [**Array&lt;ChannelPartner&gt;**](ChannelPartner.md) | EDI channel partners | [optional] |
 | **loyalty_ledger_descriptions** | **Array&lt;String&gt;** | loyalty_ledger_descriptions | [optional] |
 | **loyalty_program_type** | **String** | loyalty_program_type | [optional] |
 | **qb_classes** | **Array&lt;String&gt;** | qb_classes | [optional] |
@@ -27,6 +28,7 @@ instance = UltracartClient::CustomerEditorValues.new(
   card_exp_years: null,
   card_types: null,
   countries: null,
+  edi_channel_partners: null,
   loyalty_ledger_descriptions: null,
   loyalty_program_type: null,
   qb_classes: null,

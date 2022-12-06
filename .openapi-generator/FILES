@@ -104,6 +104,7 @@ docs/CartTaxes.md
 docs/CartUpsellAfter.md
 docs/CartValidationRequest.md
 docs/CartValidationResponse.md
+docs/ChannelPartner.md
 docs/ChannelPartnerApi.md
 docs/ChannelPartnerCancelResponse.md
 docs/ChannelPartnerEstimateShippingResponse.md
@@ -232,6 +233,7 @@ docs/CustomerApi.md
 docs/CustomerAttachment.md
 docs/CustomerBilling.md
 docs/CustomerCard.md
+docs/CustomerEDI.md
 docs/CustomerEditorValues.md
 docs/CustomerEmail.md
 docs/CustomerEmailListChanges.md
@@ -836,6 +838,7 @@ lib/ultracart_api/models/cart_taxes.rb
 lib/ultracart_api/models/cart_upsell_after.rb
 lib/ultracart_api/models/cart_validation_request.rb
 lib/ultracart_api/models/cart_validation_response.rb
+lib/ultracart_api/models/channel_partner.rb
 lib/ultracart_api/models/channel_partner_cancel_response.rb
 lib/ultracart_api/models/channel_partner_estimate_shipping_response.rb
 lib/ultracart_api/models/channel_partner_estimate_tax_response.rb
@@ -958,6 +961,7 @@ lib/ultracart_api/models/customer_affiliate.rb
 lib/ultracart_api/models/customer_attachment.rb
 lib/ultracart_api/models/customer_billing.rb
 lib/ultracart_api/models/customer_card.rb
+lib/ultracart_api/models/customer_edi.rb
 lib/ultracart_api/models/customer_editor_values.rb
 lib/ultracart_api/models/customer_email.rb
 lib/ultracart_api/models/customer_email_list_changes.rb

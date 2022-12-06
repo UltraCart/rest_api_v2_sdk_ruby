@@ -14,58 +14,22 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class CustomerEditorValues
-    # affiliates
-    attr_accessor :affiliates
+  class CustomerEDI
+    # EDI channel partner this customer profile is associated with
+    attr_accessor :channel_partner_oid
 
-    # card_exp_months
-    attr_accessor :card_exp_months
+    # The EDI distribution center number associated with this customer profile.
+    attr_accessor :distribution_center_number
 
-    # card_exp_years
-    attr_accessor :card_exp_years
-
-    # card_types
-    attr_accessor :card_types
-
-    # countries
-    attr_accessor :countries
-
-    # EDI channel partners
-    attr_accessor :edi_channel_partners
-
-    # loyalty_ledger_descriptions
-    attr_accessor :loyalty_ledger_descriptions
-
-    # loyalty_program_type
-    attr_accessor :loyalty_program_type
-
-    # qb_classes
-    attr_accessor :qb_classes
-
-    # sales_rep_codes
-    attr_accessor :sales_rep_codes
-
-    # state_optional_countries
-    attr_accessor :state_optional_countries
-
-    # terms
-    attr_accessor :terms
+    # The EDI store number associated with this customer profile.
+    attr_accessor :store_number
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'affiliates' => :'affiliates',
-        :'card_exp_months' => :'card_exp_months',
-        :'card_exp_years' => :'card_exp_years',
-        :'card_types' => :'card_types',
-        :'countries' => :'countries',
-        :'edi_channel_partners' => :'edi_channel_partners',
-        :'loyalty_ledger_descriptions' => :'loyalty_ledger_descriptions',
-        :'loyalty_program_type' => :'loyalty_program_type',
-        :'qb_classes' => :'qb_classes',
-        :'sales_rep_codes' => :'sales_rep_codes',
-        :'state_optional_countries' => :'state_optional_countries',
-        :'terms' => :'terms'
+        :'channel_partner_oid' => :'channel_partner_oid',
+        :'distribution_center_number' => :'distribution_center_number',
+        :'store_number' => :'store_number'
       }
     end
 
@@ -77,18 +41,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'affiliates' => :'Array<CustomerAffiliate>',
-        :'card_exp_months' => :'Array<String>',
-        :'card_exp_years' => :'Array<String>',
-        :'card_types' => :'Array<String>',
-        :'countries' => :'Array<Country>',
-        :'edi_channel_partners' => :'Array<ChannelPartner>',
-        :'loyalty_ledger_descriptions' => :'Array<String>',
-        :'loyalty_program_type' => :'String',
-        :'qb_classes' => :'Array<String>',
-        :'sales_rep_codes' => :'Array<String>',
-        :'state_optional_countries' => :'Array<Country>',
-        :'terms' => :'Array<String>'
+        :'channel_partner_oid' => :'Integer',
+        :'distribution_center_number' => :'String',
+        :'store_number' => :'String'
       }
     end
 
@@ -102,85 +57,27 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::CustomerEditorValues` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::CustomerEDI` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::CustomerEditorValues`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::CustomerEDI`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'affiliates')
-        if (value = attributes[:'affiliates']).is_a?(Array)
-          self.affiliates = value
-        end
+      if attributes.key?(:'channel_partner_oid')
+        self.channel_partner_oid = attributes[:'channel_partner_oid']
       end
 
-      if attributes.key?(:'card_exp_months')
-        if (value = attributes[:'card_exp_months']).is_a?(Array)
-          self.card_exp_months = value
-        end
+      if attributes.key?(:'distribution_center_number')
+        self.distribution_center_number = attributes[:'distribution_center_number']
       end
 
-      if attributes.key?(:'card_exp_years')
-        if (value = attributes[:'card_exp_years']).is_a?(Array)
-          self.card_exp_years = value
-        end
-      end
-
-      if attributes.key?(:'card_types')
-        if (value = attributes[:'card_types']).is_a?(Array)
-          self.card_types = value
-        end
-      end
-
-      if attributes.key?(:'countries')
-        if (value = attributes[:'countries']).is_a?(Array)
-          self.countries = value
-        end
-      end
-
-      if attributes.key?(:'edi_channel_partners')
-        if (value = attributes[:'edi_channel_partners']).is_a?(Array)
-          self.edi_channel_partners = value
-        end
-      end
-
-      if attributes.key?(:'loyalty_ledger_descriptions')
-        if (value = attributes[:'loyalty_ledger_descriptions']).is_a?(Array)
-          self.loyalty_ledger_descriptions = value
-        end
-      end
-
-      if attributes.key?(:'loyalty_program_type')
-        self.loyalty_program_type = attributes[:'loyalty_program_type']
-      end
-
-      if attributes.key?(:'qb_classes')
-        if (value = attributes[:'qb_classes']).is_a?(Array)
-          self.qb_classes = value
-        end
-      end
-
-      if attributes.key?(:'sales_rep_codes')
-        if (value = attributes[:'sales_rep_codes']).is_a?(Array)
-          self.sales_rep_codes = value
-        end
-      end
-
-      if attributes.key?(:'state_optional_countries')
-        if (value = attributes[:'state_optional_countries']).is_a?(Array)
-          self.state_optional_countries = value
-        end
-      end
-
-      if attributes.key?(:'terms')
-        if (value = attributes[:'terms']).is_a?(Array)
-          self.terms = value
-        end
+      if attributes.key?(:'store_number')
+        self.store_number = attributes[:'store_number']
       end
     end
 
@@ -202,18 +99,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          affiliates == o.affiliates &&
-          card_exp_months == o.card_exp_months &&
-          card_exp_years == o.card_exp_years &&
-          card_types == o.card_types &&
-          countries == o.countries &&
-          edi_channel_partners == o.edi_channel_partners &&
-          loyalty_ledger_descriptions == o.loyalty_ledger_descriptions &&
-          loyalty_program_type == o.loyalty_program_type &&
-          qb_classes == o.qb_classes &&
-          sales_rep_codes == o.sales_rep_codes &&
-          state_optional_countries == o.state_optional_countries &&
-          terms == o.terms
+          channel_partner_oid == o.channel_partner_oid &&
+          distribution_center_number == o.distribution_center_number &&
+          store_number == o.store_number
     end
 
     # @see the `==` method
@@ -225,7 +113,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [affiliates, card_exp_months, card_exp_years, card_types, countries, edi_channel_partners, loyalty_ledger_descriptions, loyalty_program_type, qb_classes, sales_rep_codes, state_optional_countries, terms].hash
+      [channel_partner_oid, distribution_center_number, store_number].hash
     end
 
     # Builds the object from hash
