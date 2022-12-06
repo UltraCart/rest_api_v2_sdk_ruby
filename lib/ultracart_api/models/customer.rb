@@ -70,6 +70,8 @@ module UltracartClient
     # DHL duty account number
     attr_accessor :dhl_duty_account_number
 
+    attr_accessor :edi
+
     # Email address of this customer profile
     attr_accessor :email
 
@@ -209,6 +211,7 @@ module UltracartClient
         :'customer_profile_oid' => :'customer_profile_oid',
         :'dhl_account_number' => :'dhl_account_number',
         :'dhl_duty_account_number' => :'dhl_duty_account_number',
+        :'edi' => :'edi',
         :'email' => :'email',
         :'exempt_shipping_handling_charge' => :'exempt_shipping_handling_charge',
         :'fedex_account_number' => :'fedex_account_number',
@@ -275,6 +278,7 @@ module UltracartClient
         :'customer_profile_oid' => :'Integer',
         :'dhl_account_number' => :'String',
         :'dhl_duty_account_number' => :'String',
+        :'edi' => :'CustomerEDI',
         :'email' => :'String',
         :'exempt_shipping_handling_charge' => :'BOOLEAN',
         :'fedex_account_number' => :'String',
@@ -409,6 +413,10 @@ module UltracartClient
 
       if attributes.has_key?(:'dhl_duty_account_number')
         self.dhl_duty_account_number = attributes[:'dhl_duty_account_number']
+      end
+
+      if attributes.has_key?(:'edi')
+        self.edi = attributes[:'edi']
       end
 
       if attributes.has_key?(:'email')
@@ -790,6 +798,7 @@ module UltracartClient
           customer_profile_oid == o.customer_profile_oid &&
           dhl_account_number == o.dhl_account_number &&
           dhl_duty_account_number == o.dhl_duty_account_number &&
+          edi == o.edi &&
           email == o.email &&
           exempt_shipping_handling_charge == o.exempt_shipping_handling_charge &&
           fedex_account_number == o.fedex_account_number &&
@@ -842,7 +851,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [activity, affiliate_oid, allow_3rd_party_billing, allow_cod, allow_drop_shipping, allow_purchase_order, allow_quote_request, allow_selection_of_address_type, attachments, auto_approve_cod, auto_approve_purchase_order, automatic_merchant_notes, billing, business_notes, cards, cc_emails, customer_profile_oid, dhl_account_number, dhl_duty_account_number, email, exempt_shipping_handling_charge, fedex_account_number, free_shipping, free_shipping_minimum, last_modified_by, last_modified_dts, loyalty, maximum_item_count, merchant_id, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, orders, orders_summary, password, pricing_tiers, privacy, qb_class, qb_code, quotes, quotes_summary, referral_source, reviewer, sales_rep_code, send_signup_notification, shipping, signup_dts, software_entitlements, suppress_buysafe, tags, tax_codes, tax_exempt, tax_id, terms, track_separately, unapproved, ups_account_number, website_url].hash
+      [activity, affiliate_oid, allow_3rd_party_billing, allow_cod, allow_drop_shipping, allow_purchase_order, allow_quote_request, allow_selection_of_address_type, attachments, auto_approve_cod, auto_approve_purchase_order, automatic_merchant_notes, billing, business_notes, cards, cc_emails, customer_profile_oid, dhl_account_number, dhl_duty_account_number, edi, email, exempt_shipping_handling_charge, fedex_account_number, free_shipping, free_shipping_minimum, last_modified_by, last_modified_dts, loyalty, maximum_item_count, merchant_id, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, orders, orders_summary, password, pricing_tiers, privacy, qb_class, qb_code, quotes, quotes_summary, referral_source, reviewer, sales_rep_code, send_signup_notification, shipping, signup_dts, software_entitlements, suppress_buysafe, tags, tax_codes, tax_exempt, tax_id, terms, track_separately, unapproved, ups_account_number, website_url].hash
     end
 
     # Builds the object from hash
