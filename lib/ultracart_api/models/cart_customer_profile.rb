@@ -48,7 +48,7 @@ module UltracartClient
     # True if this profile always qualifies for free shipping
     attr_accessor :free_shipping
 
-    # The minimum aount that this profile has to purchase to qualify for free shipping
+    # The minimum amount that this profile has to purchase to qualify for free shipping
     attr_accessor :free_shipping_minimum
 
     # Maximum item count this profile can purchase
@@ -74,6 +74,9 @@ module UltracartClient
 
     # Shipping addresses on file for this profile
     attr_accessor :shipping_addresses
+
+    # Signup date
+    attr_accessor :signup_dts
 
     # True if this profile is exempt from sales tax
     attr_accessor :tax_exempt
@@ -104,6 +107,7 @@ module UltracartClient
         :'no_realtime_charge' => :'no_realtime_charge',
         :'pricing_tiers' => :'pricing_tiers',
         :'shipping_addresses' => :'shipping_addresses',
+        :'signup_dts' => :'signup_dts',
         :'tax_exempt' => :'tax_exempt',
         :'ups_account_number' => :'ups_account_number'
       }
@@ -137,6 +141,7 @@ module UltracartClient
         :'no_realtime_charge' => :'Boolean',
         :'pricing_tiers' => :'Array<String>',
         :'shipping_addresses' => :'Array<CartCustomerProfileAddress>',
+        :'signup_dts' => :'String',
         :'tax_exempt' => :'Boolean',
         :'ups_account_number' => :'String'
       }
@@ -251,6 +256,10 @@ module UltracartClient
         end
       end
 
+      if attributes.key?(:'signup_dts')
+        self.signup_dts = attributes[:'signup_dts']
+      end
+
       if attributes.key?(:'tax_exempt')
         self.tax_exempt = attributes[:'tax_exempt']
       end
@@ -298,6 +307,7 @@ module UltracartClient
           no_realtime_charge == o.no_realtime_charge &&
           pricing_tiers == o.pricing_tiers &&
           shipping_addresses == o.shipping_addresses &&
+          signup_dts == o.signup_dts &&
           tax_exempt == o.tax_exempt &&
           ups_account_number == o.ups_account_number
     end
@@ -311,7 +321,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allow_3rd_party_billing, allow_cod, allow_purchase_order, billing_addresses, credit_cards, customer_profile_oid, dhl_account_number, dhl_duty_account_number, email, fedex_account_number, free_shipping, free_shipping_minimum, maximum_item_count, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, pricing_tiers, shipping_addresses, tax_exempt, ups_account_number].hash
+      [allow_3rd_party_billing, allow_cod, allow_purchase_order, billing_addresses, credit_cards, customer_profile_oid, dhl_account_number, dhl_duty_account_number, email, fedex_account_number, free_shipping, free_shipping_minimum, maximum_item_count, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, pricing_tiers, shipping_addresses, signup_dts, tax_exempt, ups_account_number].hash
     end
 
     # Builds the object from hash

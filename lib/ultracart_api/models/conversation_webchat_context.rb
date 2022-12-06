@@ -27,6 +27,9 @@ module UltracartClient
 
     attr_accessor :session_start
 
+    # Date/time that the session was started (if known)
+    attr_accessor :session_start_dts
+
     attr_accessor :session_utm
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -38,6 +41,7 @@ module UltracartClient
         :'orders' => :'orders',
         :'page_view' => :'page_view',
         :'session_start' => :'session_start',
+        :'session_start_dts' => :'session_start_dts',
         :'session_utm' => :'session_utm'
       }
     end
@@ -56,6 +60,7 @@ module UltracartClient
         :'orders' => :'Array<Order>',
         :'page_view' => :'Array<HitPageView>',
         :'session_start' => :'HitSessionStart',
+        :'session_start_dts' => :'String',
         :'session_utm' => :'HitSessionUtm'
       }
     end
@@ -111,6 +116,10 @@ module UltracartClient
         self.session_start = attributes[:'session_start']
       end
 
+      if attributes.key?(:'session_start_dts')
+        self.session_start_dts = attributes[:'session_start_dts']
+      end
+
       if attributes.key?(:'session_utm')
         self.session_utm = attributes[:'session_utm']
       end
@@ -140,6 +149,7 @@ module UltracartClient
           orders == o.orders &&
           page_view == o.page_view &&
           session_start == o.session_start &&
+          session_start_dts == o.session_start_dts &&
           session_utm == o.session_utm
     end
 
@@ -152,7 +162,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_orders, cart, current_url, orders, page_view, session_start, session_utm].hash
+      [auto_orders, cart, current_url, orders, page_view, session_start, session_start_dts, session_utm].hash
     end
 
     # Builds the object from hash
