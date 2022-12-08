@@ -16,6 +16,7 @@
 | **merchant_id** | **String** | Merchant ID | [optional] |
 | **name** | **String** | Name of email segment | [optional] |
 | **rank_json** | **String** | Rank settings json | [optional] |
+| **rebuild_percentage** | **Float** | Percentage of completion for a rebuild.  The value range will be 0-1.  Multiply by 100 to format for display. | [optional] |
 | **rebuild_required** | **Boolean** | True if a rebuild is required because some part of the segment has changed | [optional] |
 | **storefront_oid** | **Integer** | Storefront oid | [optional] |
 | **thirdparty_join_add_tags** | **Array&lt;String&gt;** | Third party provider tags to add when a customer joins the segment. | [optional] |
@@ -44,6 +45,7 @@ instance = UltracartClient::EmailSegment.new(
   merchant_id: null,
   name: null,
   rank_json: null,
+  rebuild_percentage: null,
   rebuild_required: null,
   storefront_oid: null,
   thirdparty_join_add_tags: null,
