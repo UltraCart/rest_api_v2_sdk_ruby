@@ -7,15 +7,19 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_agent_keep_alive**](ConversationApi.md#get_agent_keep_alive) | **GET** /conversation/agent/keepalive | Agent keep alive |
 | [**get_agent_websocket_authorization**](ConversationApi.md#get_agent_websocket_authorization) | **PUT** /conversation/agent/auth | Get agent websocket authorization |
 | [**get_conversation**](ConversationApi.md#get_conversation) | **GET** /conversation/conversations/{conversation_uuid} | Retrieve a conversation |
+| [**get_conversation_canned_messages**](ConversationApi.md#get_conversation_canned_messages) | **GET** /conversation/canned_messages | Retrieve a list of canned messages ordered by short_code |
 | [**get_conversation_context**](ConversationApi.md#get_conversation_context) | **PUT** /conversation/conversations/{conversation_uuid}/context | Get a webchat conversation context |
 | [**get_conversation_messages**](ConversationApi.md#get_conversation_messages) | **GET** /conversation/conversations/{conversation_uuid}/messages/{since} | Retrieve conversation messages |
 | [**get_conversation_multimedia_upload_url**](ConversationApi.md#get_conversation_multimedia_upload_url) | **GET** /conversation/upload_url/{extension} | Get a presigned conersation multimedia upload URL |
 | [**get_conversation_webchat_queue_statuses**](ConversationApi.md#get_conversation_webchat_queue_statuses) | **GET** /conversation/conversations/queues/statuses | Retrieve a conversation webchat queue statuses |
 | [**get_conversations**](ConversationApi.md#get_conversations) | **GET** /conversation/conversations | Retrieve a list of conversation summaries newest to oldest |
+| [**insert_conversation_canned_message**](ConversationApi.md#insert_conversation_canned_message) | **POST** /conversation/canned_messages | Insert a canned message |
 | [**join_conversation**](ConversationApi.md#join_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/join | Join a conversation |
 | [**leave_conversation**](ConversationApi.md#leave_conversation) | **DELETE** /conversation/conversations/{conversation_uuid}/leave | Leave a conversation |
 | [**mark_read_conversation**](ConversationApi.md#mark_read_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/markread | Mark a conversation as read |
+| [**search_conversation_canned_messages**](ConversationApi.md#search_conversation_canned_messages) | **POST** /conversation/canned_messages/search | Search for canned messages by short_code |
 | [**start_conversation**](ConversationApi.md#start_conversation) | **PUT** /conversation/conversations | Start a conversation |
+| [**update_conversation_canned_message**](ConversationApi.md#update_conversation_canned_message) | **PUT** /conversation/canned_messages/{conversation_canned_message_oid} | Update a canned message |
 | [**update_conversation_webchat_queue_status**](ConversationApi.md#update_conversation_webchat_queue_status) | **PUT** /conversation/conversations/queues/{queue_name}/status | Update status within the queue |
 
 
@@ -218,6 +222,74 @@ end
 ### Return type
 
 [**ConversationResponse**](ConversationResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_canned_messages
+
+> <ConversationCannedMessagesResponse> get_conversation_canned_messages
+
+Retrieve a list of canned messages ordered by short_code
+
+Retrieve a list of canned messages ordered by short_code 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+
+begin
+  # Retrieve a list of canned messages ordered by short_code
+  result = api_instance.get_conversation_canned_messages
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_canned_messages: #{e}"
+end
+```
+
+#### Using the get_conversation_canned_messages_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationCannedMessagesResponse>, Integer, Hash)> get_conversation_canned_messages_with_http_info
+
+```ruby
+begin
+  # Retrieve a list of canned messages ordered by short_code
+  data, status_code, headers = api_instance.get_conversation_canned_messages_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationCannedMessagesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_canned_messages_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationCannedMessagesResponse**](ConversationCannedMessagesResponse.md)
 
 ### Authorization
 
@@ -595,6 +667,77 @@ end
 - **Accept**: application/json
 
 
+## insert_conversation_canned_message
+
+> <ConversationCannedMessageResponse> insert_conversation_canned_message(canned_message)
+
+Insert a canned message
+
+Insert a canned message 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+canned_message = UltracartClient::ConversationCannedMessage.new # ConversationCannedMessage | Canned message
+
+begin
+  # Insert a canned message
+  result = api_instance.insert_conversation_canned_message(canned_message)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_conversation_canned_message: #{e}"
+end
+```
+
+#### Using the insert_conversation_canned_message_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationCannedMessageResponse>, Integer, Hash)> insert_conversation_canned_message_with_http_info(canned_message)
+
+```ruby
+begin
+  # Insert a canned message
+  data, status_code, headers = api_instance.insert_conversation_canned_message_with_http_info(canned_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationCannedMessageResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_conversation_canned_message_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **canned_message** | [**ConversationCannedMessage**](ConversationCannedMessage.md) | Canned message |  |
+
+### Return type
+
+[**ConversationCannedMessageResponse**](ConversationCannedMessageResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## join_conversation
 
 > join_conversation(conversation_uuid)
@@ -805,6 +948,77 @@ nil (empty response body)
 - **Accept**: application/json
 
 
+## search_conversation_canned_messages
+
+> <ConversationCannedMessagesResponse> search_conversation_canned_messages(search_request)
+
+Search for canned messages by short_code
+
+Search for canned messages by short_code 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+search_request = UltracartClient::ConversationCannedMessagesSearch.new # ConversationCannedMessagesSearch | Search request
+
+begin
+  # Search for canned messages by short_code
+  result = api_instance.search_conversation_canned_messages(search_request)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->search_conversation_canned_messages: #{e}"
+end
+```
+
+#### Using the search_conversation_canned_messages_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationCannedMessagesResponse>, Integer, Hash)> search_conversation_canned_messages_with_http_info(search_request)
+
+```ruby
+begin
+  # Search for canned messages by short_code
+  data, status_code, headers = api_instance.search_conversation_canned_messages_with_http_info(search_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationCannedMessagesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->search_conversation_canned_messages_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **search_request** | [**ConversationCannedMessagesSearch**](ConversationCannedMessagesSearch.md) | Search request |  |
+
+### Return type
+
+[**ConversationCannedMessagesResponse**](ConversationCannedMessagesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## start_conversation
 
 > <ConversationStartResponse> start_conversation(start_request)
@@ -865,6 +1079,79 @@ end
 ### Return type
 
 [**ConversationStartResponse**](ConversationStartResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_conversation_canned_message
+
+> <ConversationCannedMessageResponse> update_conversation_canned_message(conversation_canned_message_oid, canned_message)
+
+Update a canned message
+
+Update a canned message 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+conversation_canned_message_oid = 56 # Integer | 
+canned_message = UltracartClient::ConversationCannedMessage.new # ConversationCannedMessage | Canned message
+
+begin
+  # Update a canned message
+  result = api_instance.update_conversation_canned_message(conversation_canned_message_oid, canned_message)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_conversation_canned_message: #{e}"
+end
+```
+
+#### Using the update_conversation_canned_message_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationCannedMessageResponse>, Integer, Hash)> update_conversation_canned_message_with_http_info(conversation_canned_message_oid, canned_message)
+
+```ruby
+begin
+  # Update a canned message
+  data, status_code, headers = api_instance.update_conversation_canned_message_with_http_info(conversation_canned_message_oid, canned_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationCannedMessageResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_conversation_canned_message_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_canned_message_oid** | **Integer** |  |  |
+| **canned_message** | [**ConversationCannedMessage**](ConversationCannedMessage.md) | Canned message |  |
+
+### Return type
+
+[**ConversationCannedMessageResponse**](ConversationCannedMessageResponse.md)
 
 ### Authorization
 

@@ -132,6 +132,10 @@ docs/Conversation.md
 docs/ConversationAgentAuth.md
 docs/ConversationAgentAuthResponse.md
 docs/ConversationApi.md
+docs/ConversationCannedMessage.md
+docs/ConversationCannedMessageResponse.md
+docs/ConversationCannedMessagesResponse.md
+docs/ConversationCannedMessagesSearch.md
 docs/ConversationEventAddCoupon.md
 docs/ConversationEventAddItem.md
 docs/ConversationEventQueuePosition.md
@@ -862,6 +866,10 @@ lib/ultracart_api/models/city_state_zip.rb
 lib/ultracart_api/models/conversation.rb
 lib/ultracart_api/models/conversation_agent_auth.rb
 lib/ultracart_api/models/conversation_agent_auth_response.rb
+lib/ultracart_api/models/conversation_canned_message.rb
+lib/ultracart_api/models/conversation_canned_message_response.rb
+lib/ultracart_api/models/conversation_canned_messages_response.rb
+lib/ultracart_api/models/conversation_canned_messages_search.rb
 lib/ultracart_api/models/conversation_event_add_coupon.rb
 lib/ultracart_api/models/conversation_event_add_item.rb
 lib/ultracart_api/models/conversation_event_queue_position.rb

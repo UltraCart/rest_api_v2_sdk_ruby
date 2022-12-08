@@ -215,6 +215,64 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Retrieve a list of canned messages ordered by short_code
+    # Retrieve a list of canned messages ordered by short_code 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationCannedMessagesResponse]
+    def get_conversation_canned_messages(opts = {})
+      data, _status_code, _headers = get_conversation_canned_messages_with_http_info(opts)
+      data
+    end
+
+    # Retrieve a list of canned messages ordered by short_code
+    # Retrieve a list of canned messages ordered by short_code 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationCannedMessagesResponse, Integer, Hash)>] ConversationCannedMessagesResponse data, response status code and response headers
+    def get_conversation_canned_messages_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_conversation_canned_messages ...'
+      end
+      # resource path
+      local_var_path = '/conversation/canned_messages'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationCannedMessagesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_conversation_canned_messages",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_conversation_canned_messages\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get a webchat conversation context
     # Get a webchat conversation context 
     # @param conversation_uuid [String] 
@@ -544,6 +602,75 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Insert a canned message
+    # Insert a canned message 
+    # @param canned_message [ConversationCannedMessage] Canned message
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationCannedMessageResponse]
+    def insert_conversation_canned_message(canned_message, opts = {})
+      data, _status_code, _headers = insert_conversation_canned_message_with_http_info(canned_message, opts)
+      data
+    end
+
+    # Insert a canned message
+    # Insert a canned message 
+    # @param canned_message [ConversationCannedMessage] Canned message
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationCannedMessageResponse, Integer, Hash)>] ConversationCannedMessageResponse data, response status code and response headers
+    def insert_conversation_canned_message_with_http_info(canned_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.insert_conversation_canned_message ...'
+      end
+      # verify the required parameter 'canned_message' is set
+      if @api_client.config.client_side_validation && canned_message.nil?
+        fail ArgumentError, "Missing the required parameter 'canned_message' when calling ConversationApi.insert_conversation_canned_message"
+      end
+      # resource path
+      local_var_path = '/conversation/canned_messages'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(canned_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationCannedMessageResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.insert_conversation_canned_message",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#insert_conversation_canned_message\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Join a conversation
     # Join a conversation 
     # @param conversation_uuid [String] 
@@ -736,6 +863,75 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Search for canned messages by short_code
+    # Search for canned messages by short_code 
+    # @param search_request [ConversationCannedMessagesSearch] Search request
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationCannedMessagesResponse]
+    def search_conversation_canned_messages(search_request, opts = {})
+      data, _status_code, _headers = search_conversation_canned_messages_with_http_info(search_request, opts)
+      data
+    end
+
+    # Search for canned messages by short_code
+    # Search for canned messages by short_code 
+    # @param search_request [ConversationCannedMessagesSearch] Search request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationCannedMessagesResponse, Integer, Hash)>] ConversationCannedMessagesResponse data, response status code and response headers
+    def search_conversation_canned_messages_with_http_info(search_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.search_conversation_canned_messages ...'
+      end
+      # verify the required parameter 'search_request' is set
+      if @api_client.config.client_side_validation && search_request.nil?
+        fail ArgumentError, "Missing the required parameter 'search_request' when calling ConversationApi.search_conversation_canned_messages"
+      end
+      # resource path
+      local_var_path = '/conversation/canned_messages/search'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(search_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationCannedMessagesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.search_conversation_canned_messages",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#search_conversation_canned_messages\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Start a conversation
     # Start a new conversation 
     # @param start_request [ConversationStartRequest] Start request
@@ -801,6 +997,81 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#start_conversation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a canned message
+    # Update a canned message 
+    # @param conversation_canned_message_oid [Integer] 
+    # @param canned_message [ConversationCannedMessage] Canned message
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationCannedMessageResponse]
+    def update_conversation_canned_message(conversation_canned_message_oid, canned_message, opts = {})
+      data, _status_code, _headers = update_conversation_canned_message_with_http_info(conversation_canned_message_oid, canned_message, opts)
+      data
+    end
+
+    # Update a canned message
+    # Update a canned message 
+    # @param conversation_canned_message_oid [Integer] 
+    # @param canned_message [ConversationCannedMessage] Canned message
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationCannedMessageResponse, Integer, Hash)>] ConversationCannedMessageResponse data, response status code and response headers
+    def update_conversation_canned_message_with_http_info(conversation_canned_message_oid, canned_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.update_conversation_canned_message ...'
+      end
+      # verify the required parameter 'conversation_canned_message_oid' is set
+      if @api_client.config.client_side_validation && conversation_canned_message_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_canned_message_oid' when calling ConversationApi.update_conversation_canned_message"
+      end
+      # verify the required parameter 'canned_message' is set
+      if @api_client.config.client_side_validation && canned_message.nil?
+        fail ArgumentError, "Missing the required parameter 'canned_message' when calling ConversationApi.update_conversation_canned_message"
+      end
+      # resource path
+      local_var_path = '/conversation/canned_messages/{conversation_canned_message_oid}'.sub('{' + 'conversation_canned_message_oid' + '}', CGI.escape(conversation_canned_message_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(canned_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationCannedMessageResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.update_conversation_canned_message",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#update_conversation_canned_message\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
