@@ -13,63 +13,24 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ConversationParticipant
-    attr_accessor :conversation_participant_arn
-
-    attr_accessor :conversation_participant_name
-
-    attr_accessor :conversation_participant_uuid
-
-    # Joined conversation date/time
-    attr_accessor :joined_dts
+  class ConversationMessageTranslation
+    attr_accessor :body
 
     attr_accessor :language_iso_code
-
-    # Last message date/time
-    attr_accessor :last_message_dts
-
-    # Left conversation date/time
-    attr_accessor :left_dts
-
-    attr_accessor :profile_image_url
-
-    attr_accessor :status
-
-    attr_accessor :timezone
-
-    attr_accessor :unread_messages
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'conversation_participant_arn' => :'conversation_participant_arn',
-        :'conversation_participant_name' => :'conversation_participant_name',
-        :'conversation_participant_uuid' => :'conversation_participant_uuid',
-        :'joined_dts' => :'joined_dts',
-        :'language_iso_code' => :'language_iso_code',
-        :'last_message_dts' => :'last_message_dts',
-        :'left_dts' => :'left_dts',
-        :'profile_image_url' => :'profile_image_url',
-        :'status' => :'status',
-        :'timezone' => :'timezone',
-        :'unread_messages' => :'unread_messages'
+        :'body' => :'body',
+        :'language_iso_code' => :'language_iso_code'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'conversation_participant_arn' => :'String',
-        :'conversation_participant_name' => :'String',
-        :'conversation_participant_uuid' => :'String',
-        :'joined_dts' => :'String',
-        :'language_iso_code' => :'String',
-        :'last_message_dts' => :'String',
-        :'left_dts' => :'String',
-        :'profile_image_url' => :'String',
-        :'status' => :'String',
-        :'timezone' => :'String',
-        :'unread_messages' => :'Integer'
+        :'body' => :'String',
+        :'language_iso_code' => :'String'
       }
     end
 
@@ -81,48 +42,12 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'conversation_participant_arn')
-        self.conversation_participant_arn = attributes[:'conversation_participant_arn']
-      end
-
-      if attributes.has_key?(:'conversation_participant_name')
-        self.conversation_participant_name = attributes[:'conversation_participant_name']
-      end
-
-      if attributes.has_key?(:'conversation_participant_uuid')
-        self.conversation_participant_uuid = attributes[:'conversation_participant_uuid']
-      end
-
-      if attributes.has_key?(:'joined_dts')
-        self.joined_dts = attributes[:'joined_dts']
+      if attributes.has_key?(:'body')
+        self.body = attributes[:'body']
       end
 
       if attributes.has_key?(:'language_iso_code')
         self.language_iso_code = attributes[:'language_iso_code']
-      end
-
-      if attributes.has_key?(:'last_message_dts')
-        self.last_message_dts = attributes[:'last_message_dts']
-      end
-
-      if attributes.has_key?(:'left_dts')
-        self.left_dts = attributes[:'left_dts']
-      end
-
-      if attributes.has_key?(:'profile_image_url')
-        self.profile_image_url = attributes[:'profile_image_url']
-      end
-
-      if attributes.has_key?(:'status')
-        self.status = attributes[:'status']
-      end
-
-      if attributes.has_key?(:'timezone')
-        self.timezone = attributes[:'timezone']
-      end
-
-      if attributes.has_key?(:'unread_messages')
-        self.unread_messages = attributes[:'unread_messages']
       end
     end
 
@@ -144,17 +69,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          conversation_participant_arn == o.conversation_participant_arn &&
-          conversation_participant_name == o.conversation_participant_name &&
-          conversation_participant_uuid == o.conversation_participant_uuid &&
-          joined_dts == o.joined_dts &&
-          language_iso_code == o.language_iso_code &&
-          last_message_dts == o.last_message_dts &&
-          left_dts == o.left_dts &&
-          profile_image_url == o.profile_image_url &&
-          status == o.status &&
-          timezone == o.timezone &&
-          unread_messages == o.unread_messages
+          body == o.body &&
+          language_iso_code == o.language_iso_code
     end
 
     # @see the `==` method
@@ -166,7 +82,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_participant_arn, conversation_participant_name, conversation_participant_uuid, joined_dts, language_iso_code, last_message_dts, left_dts, profile_image_url, status, timezone, unread_messages].hash
+      [body, language_iso_code].hash
     end
 
     # Builds the object from hash

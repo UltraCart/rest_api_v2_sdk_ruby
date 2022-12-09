@@ -18,7 +18,7 @@ module UltracartClient
 
     attr_accessor :conversation_canned_message_oid
 
-    attr_accessor :conversation_webchat_queue_uuids
+    attr_accessor :conversation_department_oids
 
     attr_accessor :short_code
 
@@ -27,7 +27,7 @@ module UltracartClient
       {
         :'canned_message' => :'canned_message',
         :'conversation_canned_message_oid' => :'conversation_canned_message_oid',
-        :'conversation_webchat_queue_uuids' => :'conversation_webchat_queue_uuids',
+        :'conversation_department_oids' => :'conversation_department_oids',
         :'short_code' => :'short_code'
       }
     end
@@ -37,7 +37,7 @@ module UltracartClient
       {
         :'canned_message' => :'String',
         :'conversation_canned_message_oid' => :'Integer',
-        :'conversation_webchat_queue_uuids' => :'Array<String>',
+        :'conversation_department_oids' => :'Array<String>',
         :'short_code' => :'String'
       }
     end
@@ -58,9 +58,9 @@ module UltracartClient
         self.conversation_canned_message_oid = attributes[:'conversation_canned_message_oid']
       end
 
-      if attributes.has_key?(:'conversation_webchat_queue_uuids')
-        if (value = attributes[:'conversation_webchat_queue_uuids']).is_a?(Array)
-          self.conversation_webchat_queue_uuids = value
+      if attributes.has_key?(:'conversation_department_oids')
+        if (value = attributes[:'conversation_department_oids']).is_a?(Array)
+          self.conversation_department_oids = value
         end
       end
 
@@ -89,7 +89,7 @@ module UltracartClient
       self.class == o.class &&
           canned_message == o.canned_message &&
           conversation_canned_message_oid == o.conversation_canned_message_oid &&
-          conversation_webchat_queue_uuids == o.conversation_webchat_queue_uuids &&
+          conversation_department_oids == o.conversation_department_oids &&
           short_code == o.short_code
     end
 
@@ -102,7 +102,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [canned_message, conversation_canned_message_oid, conversation_webchat_queue_uuids, short_code].hash
+      [canned_message, conversation_canned_message_oid, conversation_department_oids, short_code].hash
     end
 
     # Builds the object from hash

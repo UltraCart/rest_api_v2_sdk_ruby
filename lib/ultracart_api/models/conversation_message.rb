@@ -27,6 +27,8 @@ module UltracartClient
     # Delay message transmission until date/time
     attr_accessor :delay_until_dts
 
+    attr_accessor :language_iso_code
+
     attr_accessor :media_urls
 
     attr_accessor :merchant_id
@@ -36,6 +38,8 @@ module UltracartClient
 
     # Message epoch milliseconds
     attr_accessor :message_epoch
+
+    attr_accessor :translations
 
     attr_accessor :transport_statuses
 
@@ -75,10 +79,12 @@ module UltracartClient
         :'client_message_id' => :'client_message_id',
         :'conversation_message_uuid' => :'conversation_message_uuid',
         :'delay_until_dts' => :'delay_until_dts',
+        :'language_iso_code' => :'language_iso_code',
         :'media_urls' => :'media_urls',
         :'merchant_id' => :'merchant_id',
         :'message_dts' => :'message_dts',
         :'message_epoch' => :'message_epoch',
+        :'translations' => :'translations',
         :'transport_statuses' => :'transport_statuses',
         :'type' => :'type',
         :'upload_keys' => :'upload_keys'
@@ -94,10 +100,12 @@ module UltracartClient
         :'client_message_id' => :'String',
         :'conversation_message_uuid' => :'String',
         :'delay_until_dts' => :'String',
+        :'language_iso_code' => :'String',
         :'media_urls' => :'Array<String>',
         :'merchant_id' => :'String',
         :'message_dts' => :'String',
         :'message_epoch' => :'Integer',
+        :'translations' => :'Array<ConversationMessageTranslation>',
         :'transport_statuses' => :'Array<ConversationMessageTransportStatus>',
         :'type' => :'String',
         :'upload_keys' => :'Array<String>'
@@ -136,6 +144,10 @@ module UltracartClient
         self.delay_until_dts = attributes[:'delay_until_dts']
       end
 
+      if attributes.has_key?(:'language_iso_code')
+        self.language_iso_code = attributes[:'language_iso_code']
+      end
+
       if attributes.has_key?(:'media_urls')
         if (value = attributes[:'media_urls']).is_a?(Array)
           self.media_urls = value
@@ -152,6 +164,12 @@ module UltracartClient
 
       if attributes.has_key?(:'message_epoch')
         self.message_epoch = attributes[:'message_epoch']
+      end
+
+      if attributes.has_key?(:'translations')
+        if (value = attributes[:'translations']).is_a?(Array)
+          self.translations = value
+        end
       end
 
       if attributes.has_key?(:'transport_statuses')
@@ -207,10 +225,12 @@ module UltracartClient
           client_message_id == o.client_message_id &&
           conversation_message_uuid == o.conversation_message_uuid &&
           delay_until_dts == o.delay_until_dts &&
+          language_iso_code == o.language_iso_code &&
           media_urls == o.media_urls &&
           merchant_id == o.merchant_id &&
           message_dts == o.message_dts &&
           message_epoch == o.message_epoch &&
+          translations == o.translations &&
           transport_statuses == o.transport_statuses &&
           type == o.type &&
           upload_keys == o.upload_keys
@@ -225,7 +245,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [author_conversation_participant_arn, author_conversation_participant_name, body, client_message_id, conversation_message_uuid, delay_until_dts, media_urls, merchant_id, message_dts, message_epoch, transport_statuses, type, upload_keys].hash
+      [author_conversation_participant_arn, author_conversation_participant_name, body, client_message_id, conversation_message_uuid, delay_until_dts, language_iso_code, media_urls, merchant_id, message_dts, message_epoch, translations, transport_statuses, type, upload_keys].hash
     end
 
     # Builds the object from hash
