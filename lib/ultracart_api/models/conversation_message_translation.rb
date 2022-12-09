@@ -14,22 +14,16 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationCannedMessage
-    attr_accessor :canned_message
+  class ConversationMessageTranslation
+    attr_accessor :body
 
-    attr_accessor :conversation_canned_message_oid
-
-    attr_accessor :conversation_department_oids
-
-    attr_accessor :short_code
+    attr_accessor :language_iso_code
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'canned_message' => :'canned_message',
-        :'conversation_canned_message_oid' => :'conversation_canned_message_oid',
-        :'conversation_department_oids' => :'conversation_department_oids',
-        :'short_code' => :'short_code'
+        :'body' => :'body',
+        :'language_iso_code' => :'language_iso_code'
       }
     end
 
@@ -41,10 +35,8 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'canned_message' => :'String',
-        :'conversation_canned_message_oid' => :'Integer',
-        :'conversation_department_oids' => :'Array<String>',
-        :'short_code' => :'String'
+        :'body' => :'String',
+        :'language_iso_code' => :'String'
       }
     end
 
@@ -58,33 +50,23 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationCannedMessage` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationMessageTranslation` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationCannedMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationMessageTranslation`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'canned_message')
-        self.canned_message = attributes[:'canned_message']
+      if attributes.key?(:'body')
+        self.body = attributes[:'body']
       end
 
-      if attributes.key?(:'conversation_canned_message_oid')
-        self.conversation_canned_message_oid = attributes[:'conversation_canned_message_oid']
-      end
-
-      if attributes.key?(:'conversation_department_oids')
-        if (value = attributes[:'conversation_department_oids']).is_a?(Array)
-          self.conversation_department_oids = value
-        end
-      end
-
-      if attributes.key?(:'short_code')
-        self.short_code = attributes[:'short_code']
+      if attributes.key?(:'language_iso_code')
+        self.language_iso_code = attributes[:'language_iso_code']
       end
     end
 
@@ -106,10 +88,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          canned_message == o.canned_message &&
-          conversation_canned_message_oid == o.conversation_canned_message_oid &&
-          conversation_department_oids == o.conversation_department_oids &&
-          short_code == o.short_code
+          body == o.body &&
+          language_iso_code == o.language_iso_code
     end
 
     # @see the `==` method
@@ -121,7 +101,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [canned_message, conversation_canned_message_oid, conversation_department_oids, short_code].hash
+      [body, language_iso_code].hash
     end
 
     # Builds the object from hash

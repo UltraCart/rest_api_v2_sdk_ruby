@@ -24,6 +24,8 @@ module UltracartClient
     # Joined conversation date/time
     attr_accessor :joined_dts
 
+    attr_accessor :language_iso_code
+
     # Last message date/time
     attr_accessor :last_message_dts
 
@@ -45,6 +47,7 @@ module UltracartClient
         :'conversation_participant_name' => :'conversation_participant_name',
         :'conversation_participant_uuid' => :'conversation_participant_uuid',
         :'joined_dts' => :'joined_dts',
+        :'language_iso_code' => :'language_iso_code',
         :'last_message_dts' => :'last_message_dts',
         :'left_dts' => :'left_dts',
         :'profile_image_url' => :'profile_image_url',
@@ -66,6 +69,7 @@ module UltracartClient
         :'conversation_participant_name' => :'String',
         :'conversation_participant_uuid' => :'String',
         :'joined_dts' => :'String',
+        :'language_iso_code' => :'String',
         :'last_message_dts' => :'String',
         :'left_dts' => :'String',
         :'profile_image_url' => :'String',
@@ -110,6 +114,10 @@ module UltracartClient
 
       if attributes.key?(:'joined_dts')
         self.joined_dts = attributes[:'joined_dts']
+      end
+
+      if attributes.key?(:'language_iso_code')
+        self.language_iso_code = attributes[:'language_iso_code']
       end
 
       if attributes.key?(:'last_message_dts')
@@ -159,6 +167,7 @@ module UltracartClient
           conversation_participant_name == o.conversation_participant_name &&
           conversation_participant_uuid == o.conversation_participant_uuid &&
           joined_dts == o.joined_dts &&
+          language_iso_code == o.language_iso_code &&
           last_message_dts == o.last_message_dts &&
           left_dts == o.left_dts &&
           profile_image_url == o.profile_image_url &&
@@ -176,7 +185,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_participant_arn, conversation_participant_name, conversation_participant_uuid, joined_dts, last_message_dts, left_dts, profile_image_url, status, timezone, unread_messages].hash
+      [conversation_participant_arn, conversation_participant_name, conversation_participant_uuid, joined_dts, language_iso_code, last_message_dts, left_dts, profile_image_url, status, timezone, unread_messages].hash
     end
 
     # Builds the object from hash
