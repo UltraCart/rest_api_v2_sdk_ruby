@@ -13,71 +13,44 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ConversationParticipant
-    attr_accessor :conversation_participant_arn
+  class ConversationEngagement
+    attr_accessor :conversation_engagement_oid
 
-    attr_accessor :conversation_participant_name
+    attr_accessor :customer_greeting
 
-    attr_accessor :conversation_participant_uuid
+    attr_accessor :department_oids
 
-    attr_accessor :email
+    attr_accessor :engagement_name
 
-    # Joined conversation date/time
-    attr_accessor :joined_dts
+    attr_accessor :equation
 
-    attr_accessor :language_iso_code
+    attr_accessor :time_on_page
 
-    # Last message date/time
-    attr_accessor :last_message_dts
-
-    # Left conversation date/time
-    attr_accessor :left_dts
-
-    attr_accessor :profile_image_url
-
-    attr_accessor :sms_phone_number
-
-    attr_accessor :status
-
-    attr_accessor :timezone
-
-    attr_accessor :unread_messages
+    attr_accessor :visitor_type
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'conversation_participant_arn' => :'conversation_participant_arn',
-        :'conversation_participant_name' => :'conversation_participant_name',
-        :'conversation_participant_uuid' => :'conversation_participant_uuid',
-        :'email' => :'email',
-        :'joined_dts' => :'joined_dts',
-        :'language_iso_code' => :'language_iso_code',
-        :'last_message_dts' => :'last_message_dts',
-        :'left_dts' => :'left_dts',
-        :'profile_image_url' => :'profile_image_url',
-        :'sms_phone_number' => :'sms_phone_number',
-        :'status' => :'status',
-        :'timezone' => :'timezone',
-        :'unread_messages' => :'unread_messages'
+        :'conversation_engagement_oid' => :'conversation_engagement_oid',
+        :'customer_greeting' => :'customer_greeting',
+        :'department_oids' => :'department_oids',
+        :'engagement_name' => :'engagement_name',
+        :'equation' => :'equation',
+        :'time_on_page' => :'time_on_page',
+        :'visitor_type' => :'visitor_type'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'conversation_participant_arn' => :'String',
-        :'conversation_participant_name' => :'String',
-        :'conversation_participant_uuid' => :'String',
-        :'email' => :'String',
-        :'joined_dts' => :'String',
-        :'language_iso_code' => :'String',
-        :'last_message_dts' => :'String',
-        :'left_dts' => :'String',
-        :'profile_image_url' => :'String',
-        :'sms_phone_number' => :'String',
-        :'status' => :'String',
-        :'timezone' => :'String',
-        :'unread_messages' => :'Integer'
+        :'conversation_engagement_oid' => :'Integer',
+        :'customer_greeting' => :'String',
+        :'department_oids' => :'Array<Integer>',
+        :'engagement_name' => :'String',
+        :'equation' => :'ConversationEngagementEquation',
+        :'time_on_page' => :'Integer',
+        :'visitor_type' => :'String'
       }
     end
 
@@ -89,56 +62,34 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'conversation_participant_arn')
-        self.conversation_participant_arn = attributes[:'conversation_participant_arn']
+      if attributes.has_key?(:'conversation_engagement_oid')
+        self.conversation_engagement_oid = attributes[:'conversation_engagement_oid']
       end
 
-      if attributes.has_key?(:'conversation_participant_name')
-        self.conversation_participant_name = attributes[:'conversation_participant_name']
+      if attributes.has_key?(:'customer_greeting')
+        self.customer_greeting = attributes[:'customer_greeting']
       end
 
-      if attributes.has_key?(:'conversation_participant_uuid')
-        self.conversation_participant_uuid = attributes[:'conversation_participant_uuid']
+      if attributes.has_key?(:'department_oids')
+        if (value = attributes[:'department_oids']).is_a?(Array)
+          self.department_oids = value
+        end
       end
 
-      if attributes.has_key?(:'email')
-        self.email = attributes[:'email']
+      if attributes.has_key?(:'engagement_name')
+        self.engagement_name = attributes[:'engagement_name']
       end
 
-      if attributes.has_key?(:'joined_dts')
-        self.joined_dts = attributes[:'joined_dts']
+      if attributes.has_key?(:'equation')
+        self.equation = attributes[:'equation']
       end
 
-      if attributes.has_key?(:'language_iso_code')
-        self.language_iso_code = attributes[:'language_iso_code']
+      if attributes.has_key?(:'time_on_page')
+        self.time_on_page = attributes[:'time_on_page']
       end
 
-      if attributes.has_key?(:'last_message_dts')
-        self.last_message_dts = attributes[:'last_message_dts']
-      end
-
-      if attributes.has_key?(:'left_dts')
-        self.left_dts = attributes[:'left_dts']
-      end
-
-      if attributes.has_key?(:'profile_image_url')
-        self.profile_image_url = attributes[:'profile_image_url']
-      end
-
-      if attributes.has_key?(:'sms_phone_number')
-        self.sms_phone_number = attributes[:'sms_phone_number']
-      end
-
-      if attributes.has_key?(:'status')
-        self.status = attributes[:'status']
-      end
-
-      if attributes.has_key?(:'timezone')
-        self.timezone = attributes[:'timezone']
-      end
-
-      if attributes.has_key?(:'unread_messages')
-        self.unread_messages = attributes[:'unread_messages']
+      if attributes.has_key?(:'visitor_type')
+        self.visitor_type = attributes[:'visitor_type']
       end
     end
 
@@ -160,19 +111,13 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          conversation_participant_arn == o.conversation_participant_arn &&
-          conversation_participant_name == o.conversation_participant_name &&
-          conversation_participant_uuid == o.conversation_participant_uuid &&
-          email == o.email &&
-          joined_dts == o.joined_dts &&
-          language_iso_code == o.language_iso_code &&
-          last_message_dts == o.last_message_dts &&
-          left_dts == o.left_dts &&
-          profile_image_url == o.profile_image_url &&
-          sms_phone_number == o.sms_phone_number &&
-          status == o.status &&
-          timezone == o.timezone &&
-          unread_messages == o.unread_messages
+          conversation_engagement_oid == o.conversation_engagement_oid &&
+          customer_greeting == o.customer_greeting &&
+          department_oids == o.department_oids &&
+          engagement_name == o.engagement_name &&
+          equation == o.equation &&
+          time_on_page == o.time_on_page &&
+          visitor_type == o.visitor_type
     end
 
     # @see the `==` method
@@ -184,7 +129,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_participant_arn, conversation_participant_name, conversation_participant_uuid, email, joined_dts, language_iso_code, last_message_dts, left_dts, profile_image_url, sms_phone_number, status, timezone, unread_messages].hash
+      [conversation_engagement_oid, customer_greeting, department_oids, engagement_name, equation, time_on_page, visitor_type].hash
     end
 
     # Builds the object from hash

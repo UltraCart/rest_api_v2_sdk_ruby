@@ -37,7 +37,7 @@ module UltracartClient
       {
         :'canned_message' => :'String',
         :'conversation_canned_message_oid' => :'Integer',
-        :'conversation_department_oids' => :'Array<String>',
+        :'conversation_department_oids' => :'Array<Integer>',
         :'short_code' => :'String'
       }
     end

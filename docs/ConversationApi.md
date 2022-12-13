@@ -9,17 +9,23 @@ Method | HTTP request | Description
 [**get_conversation**](ConversationApi.md#get_conversation) | **GET** /conversation/conversations/{conversation_uuid} | Retrieve a conversation
 [**get_conversation_canned_messages**](ConversationApi.md#get_conversation_canned_messages) | **GET** /conversation/canned_messages | Retrieve a list of canned messages ordered by short_code
 [**get_conversation_context**](ConversationApi.md#get_conversation_context) | **PUT** /conversation/conversations/{conversation_uuid}/context | Get a webchat conversation context
+[**get_conversation_departments**](ConversationApi.md#get_conversation_departments) | **GET** /conversation/departments | Retrieve a list of departments ordered by name
+[**get_conversation_engagements**](ConversationApi.md#get_conversation_engagements) | **GET** /conversation/engagements | Retrieve a list of engagements ordered by name
 [**get_conversation_messages**](ConversationApi.md#get_conversation_messages) | **GET** /conversation/conversations/{conversation_uuid}/messages/{since} | Retrieve conversation messages
 [**get_conversation_multimedia_upload_url**](ConversationApi.md#get_conversation_multimedia_upload_url) | **GET** /conversation/upload_url/{extension} | Get a presigned conersation multimedia upload URL
 [**get_conversation_webchat_queue_statuses**](ConversationApi.md#get_conversation_webchat_queue_statuses) | **GET** /conversation/conversations/queues/statuses | Retrieve a conversation webchat queue statuses
 [**get_conversations**](ConversationApi.md#get_conversations) | **GET** /conversation/conversations | Retrieve a list of conversation summaries newest to oldest
 [**insert_conversation_canned_message**](ConversationApi.md#insert_conversation_canned_message) | **POST** /conversation/canned_messages | Insert a canned message
+[**insert_conversation_department**](ConversationApi.md#insert_conversation_department) | **POST** /conversation/departments | Insert a department
+[**insert_conversation_engagement**](ConversationApi.md#insert_conversation_engagement) | **POST** /conversation/engagements | Insert a engagement
 [**join_conversation**](ConversationApi.md#join_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/join | Join a conversation
 [**leave_conversation**](ConversationApi.md#leave_conversation) | **DELETE** /conversation/conversations/{conversation_uuid}/leave | Leave a conversation
 [**mark_read_conversation**](ConversationApi.md#mark_read_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/markread | Mark a conversation as read
 [**search_conversation_canned_messages**](ConversationApi.md#search_conversation_canned_messages) | **POST** /conversation/canned_messages/search | Search for canned messages by short_code
 [**start_conversation**](ConversationApi.md#start_conversation) | **PUT** /conversation/conversations | Start a conversation
 [**update_conversation_canned_message**](ConversationApi.md#update_conversation_canned_message) | **PUT** /conversation/canned_messages/{conversation_canned_message_oid} | Update a canned message
+[**update_conversation_department**](ConversationApi.md#update_conversation_department) | **PUT** /conversation/departments/{conversation_department_oid} | Update a department
+[**update_conversation_engagement**](ConversationApi.md#update_conversation_engagement) | **PUT** /conversation/engagements/{conversation_engagement_oid} | Update a engagement
 [**update_conversation_webchat_queue_status**](ConversationApi.md#update_conversation_webchat_queue_status) | **PUT** /conversation/conversations/queues/{queue_name}/status | Update status within the queue
 
 
@@ -249,6 +255,96 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ConversationWebchatContext**](ConversationWebchatContext.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_conversation_departments**
+> ConversationDepartmentsResponse get_conversation_departments
+
+Retrieve a list of departments ordered by name
+
+Retrieve a list of departments ordered by name 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+
+begin
+  #Retrieve a list of departments ordered by name
+  result = api_instance.get_conversation_departments
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->get_conversation_departments: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationDepartmentsResponse**](ConversationDepartmentsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_conversation_engagements**
+> ConversationEngagementsResponse get_conversation_engagements
+
+Retrieve a list of engagements ordered by name
+
+Retrieve a list of engagements ordered by name 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+
+begin
+  #Retrieve a list of engagements ordered by name
+  result = api_instance.get_conversation_engagements
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->get_conversation_engagements: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationEngagementsResponse**](ConversationEngagementsResponse.md)
 
 ### Authorization
 
@@ -520,8 +616,108 @@ Name | Type | Description  | Notes
 
 
 
+# **insert_conversation_department**
+> ConversationDepartmentResponse insert_conversation_department(department)
+
+Insert a department
+
+Insert a department 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+department = UltracartClient::ConversationDepartment.new # ConversationDepartment | Department
+
+
+begin
+  #Insert a department
+  result = api_instance.insert_conversation_department(department)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->insert_conversation_department: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **department** | [**ConversationDepartment**](ConversationDepartment.md)| Department | 
+
+### Return type
+
+[**ConversationDepartmentResponse**](ConversationDepartmentResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **insert_conversation_engagement**
+> ConversationEngagementResponse insert_conversation_engagement(engagement)
+
+Insert a engagement
+
+Insert a engagement 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+engagement = UltracartClient::ConversationEngagement.new # ConversationEngagement | Engagement
+
+
+begin
+  #Insert a engagement
+  result = api_instance.insert_conversation_engagement(engagement)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->insert_conversation_engagement: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **engagement** | [**ConversationEngagement**](ConversationEngagement.md)| Engagement | 
+
+### Return type
+
+[**ConversationEngagementResponse**](ConversationEngagementResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **join_conversation**
-> join_conversation(conversation_uuid)
+> join_conversation(conversation_uuid, opts)
 
 Join a conversation
 
@@ -539,10 +735,13 @@ api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, fa
 
 conversation_uuid = 'conversation_uuid_example' # String | 
 
+opts = { 
+  join_request: UltracartClient::ConversationJoinRequest.new # ConversationJoinRequest | Join request
+}
 
 begin
   #Join a conversation
-  api_instance.join_conversation(conversation_uuid)
+  api_instance.join_conversation(conversation_uuid, opts)
 rescue UltracartClient::ApiError => e
   puts "Exception when calling ConversationApi->join_conversation: #{e}"
 end
@@ -553,6 +752,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **conversation_uuid** | **String**|  | 
+ **join_request** | [**ConversationJoinRequest**](ConversationJoinRequest.md)| Join request | [optional] 
 
 ### Return type
 
@@ -808,6 +1008,112 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ConversationCannedMessageResponse**](ConversationCannedMessageResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_conversation_department**
+> ConversationDepartmentResponse update_conversation_department(conversation_department_oid, department)
+
+Update a department
+
+Update a department 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+conversation_department_oid = 56 # Integer | 
+
+department = UltracartClient::ConversationDepartment.new # ConversationDepartment | Department
+
+
+begin
+  #Update a department
+  result = api_instance.update_conversation_department(conversation_department_oid, department)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->update_conversation_department: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conversation_department_oid** | **Integer**|  | 
+ **department** | [**ConversationDepartment**](ConversationDepartment.md)| Department | 
+
+### Return type
+
+[**ConversationDepartmentResponse**](ConversationDepartmentResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_conversation_engagement**
+> ConversationEngagementResponse update_conversation_engagement(conversation_engagement_oid, engagement)
+
+Update a engagement
+
+Update a engagement 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+conversation_engagement_oid = 56 # Integer | 
+
+engagement = UltracartClient::ConversationEngagement.new # ConversationEngagement | Engagement
+
+
+begin
+  #Update a engagement
+  result = api_instance.update_conversation_engagement(conversation_engagement_oid, engagement)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->update_conversation_engagement: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conversation_engagement_oid** | **Integer**|  | 
+ **engagement** | [**ConversationEngagement**](ConversationEngagement.md)| Engagement | 
+
+### Return type
+
+[**ConversationEngagementResponse**](ConversationEngagementResponse.md)
 
 ### Authorization
 

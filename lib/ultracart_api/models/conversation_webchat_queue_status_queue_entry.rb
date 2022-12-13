@@ -25,6 +25,8 @@ module UltracartClient
     # Date/time the customer joined the queue
     attr_accessor :join_dts
 
+    attr_accessor :participant_language_iso_code
+
     attr_accessor :question
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -35,6 +37,7 @@ module UltracartClient
         :'conversation_webchat_queue_uuid' => :'conversation_webchat_queue_uuid',
         :'email' => :'email',
         :'join_dts' => :'join_dts',
+        :'participant_language_iso_code' => :'participant_language_iso_code',
         :'question' => :'question'
       }
     end
@@ -47,6 +50,7 @@ module UltracartClient
         :'conversation_webchat_queue_uuid' => :'String',
         :'email' => :'String',
         :'join_dts' => :'String',
+        :'participant_language_iso_code' => :'String',
         :'question' => :'String'
       }
     end
@@ -79,6 +83,10 @@ module UltracartClient
         self.join_dts = attributes[:'join_dts']
       end
 
+      if attributes.has_key?(:'participant_language_iso_code')
+        self.participant_language_iso_code = attributes[:'participant_language_iso_code']
+      end
+
       if attributes.has_key?(:'question')
         self.question = attributes[:'question']
       end
@@ -107,6 +115,7 @@ module UltracartClient
           conversation_webchat_queue_uuid == o.conversation_webchat_queue_uuid &&
           email == o.email &&
           join_dts == o.join_dts &&
+          participant_language_iso_code == o.participant_language_iso_code &&
           question == o.question
     end
 
@@ -119,7 +128,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_participant_arn, conversation_participant_name, conversation_webchat_queue_uuid, email, join_dts, question].hash
+      [conversation_participant_arn, conversation_participant_name, conversation_webchat_queue_uuid, email, join_dts, participant_language_iso_code, question].hash
     end
 
     # Builds the object from hash

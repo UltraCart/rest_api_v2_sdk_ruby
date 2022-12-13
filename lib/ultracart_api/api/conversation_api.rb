@@ -291,6 +291,104 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Retrieve a list of departments ordered by name
+    # Retrieve a list of departments ordered by name 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationDepartmentsResponse]
+    def get_conversation_departments(opts = {})
+      data, _status_code, _headers = get_conversation_departments_with_http_info(opts)
+      data
+    end
+
+    # Retrieve a list of departments ordered by name
+    # Retrieve a list of departments ordered by name 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationDepartmentsResponse, Fixnum, Hash)>] ConversationDepartmentsResponse data, response status code and response headers
+    def get_conversation_departments_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_conversation_departments ...'
+      end
+      # resource path
+      local_var_path = '/conversation/departments'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ConversationDepartmentsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_conversation_departments\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Retrieve a list of engagements ordered by name
+    # Retrieve a list of engagements ordered by name 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationEngagementsResponse]
+    def get_conversation_engagements(opts = {})
+      data, _status_code, _headers = get_conversation_engagements_with_http_info(opts)
+      data
+    end
+
+    # Retrieve a list of engagements ordered by name
+    # Retrieve a list of engagements ordered by name 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationEngagementsResponse, Fixnum, Hash)>] ConversationEngagementsResponse data, response status code and response headers
+    def get_conversation_engagements_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_conversation_engagements ...'
+      end
+      # resource path
+      local_var_path = '/conversation/engagements'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ConversationEngagementsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_conversation_engagements\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Retrieve conversation messages
     # Retrieve conversation messages since a particular time 
     # @param conversation_uuid 
@@ -575,10 +673,121 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Insert a department
+    # Insert a department 
+    # @param department Department
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationDepartmentResponse]
+    def insert_conversation_department(department, opts = {})
+      data, _status_code, _headers = insert_conversation_department_with_http_info(department, opts)
+      data
+    end
+
+    # Insert a department
+    # Insert a department 
+    # @param department Department
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationDepartmentResponse, Fixnum, Hash)>] ConversationDepartmentResponse data, response status code and response headers
+    def insert_conversation_department_with_http_info(department, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.insert_conversation_department ...'
+      end
+      # verify the required parameter 'department' is set
+      if @api_client.config.client_side_validation && department.nil?
+        fail ArgumentError, "Missing the required parameter 'department' when calling ConversationApi.insert_conversation_department"
+      end
+      # resource path
+      local_var_path = '/conversation/departments'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(department)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ConversationDepartmentResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#insert_conversation_department\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Insert a engagement
+    # Insert a engagement 
+    # @param engagement Engagement
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationEngagementResponse]
+    def insert_conversation_engagement(engagement, opts = {})
+      data, _status_code, _headers = insert_conversation_engagement_with_http_info(engagement, opts)
+      data
+    end
+
+    # Insert a engagement
+    # Insert a engagement 
+    # @param engagement Engagement
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationEngagementResponse, Fixnum, Hash)>] ConversationEngagementResponse data, response status code and response headers
+    def insert_conversation_engagement_with_http_info(engagement, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.insert_conversation_engagement ...'
+      end
+      # verify the required parameter 'engagement' is set
+      if @api_client.config.client_side_validation && engagement.nil?
+        fail ArgumentError, "Missing the required parameter 'engagement' when calling ConversationApi.insert_conversation_engagement"
+      end
+      # resource path
+      local_var_path = '/conversation/engagements'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(engagement)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ConversationEngagementResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#insert_conversation_engagement\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Join a conversation
     # Join a conversation 
     # @param conversation_uuid 
     # @param [Hash] opts the optional parameters
+    # @option opts [ConversationJoinRequest] :join_request Join request
     # @return [nil]
     def join_conversation(conversation_uuid, opts = {})
       join_conversation_with_http_info(conversation_uuid, opts)
@@ -589,6 +798,7 @@ module UltracartClient
     # Join a conversation 
     # @param conversation_uuid 
     # @param [Hash] opts the optional parameters
+    # @option opts [ConversationJoinRequest] :join_request Join request
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def join_conversation_with_http_info(conversation_uuid, opts = {})
       if @api_client.config.debugging
@@ -616,7 +826,7 @@ module UltracartClient
       form_params = {}
 
       # http body (model)
-      post_body = nil
+      post_body = @api_client.object_to_http_body(opts[:'join_request'])
       auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,
@@ -905,6 +1115,128 @@ module UltracartClient
         :return_type => 'ConversationCannedMessageResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#update_conversation_canned_message\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update a department
+    # Update a department 
+    # @param conversation_department_oid 
+    # @param department Department
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationDepartmentResponse]
+    def update_conversation_department(conversation_department_oid, department, opts = {})
+      data, _status_code, _headers = update_conversation_department_with_http_info(conversation_department_oid, department, opts)
+      data
+    end
+
+    # Update a department
+    # Update a department 
+    # @param conversation_department_oid 
+    # @param department Department
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationDepartmentResponse, Fixnum, Hash)>] ConversationDepartmentResponse data, response status code and response headers
+    def update_conversation_department_with_http_info(conversation_department_oid, department, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.update_conversation_department ...'
+      end
+      # verify the required parameter 'conversation_department_oid' is set
+      if @api_client.config.client_side_validation && conversation_department_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_department_oid' when calling ConversationApi.update_conversation_department"
+      end
+      # verify the required parameter 'department' is set
+      if @api_client.config.client_side_validation && department.nil?
+        fail ArgumentError, "Missing the required parameter 'department' when calling ConversationApi.update_conversation_department"
+      end
+      # resource path
+      local_var_path = '/conversation/departments/{conversation_department_oid}'.sub('{' + 'conversation_department_oid' + '}', conversation_department_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(department)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ConversationDepartmentResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#update_conversation_department\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update a engagement
+    # Update a engagement 
+    # @param conversation_engagement_oid 
+    # @param engagement Engagement
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationEngagementResponse]
+    def update_conversation_engagement(conversation_engagement_oid, engagement, opts = {})
+      data, _status_code, _headers = update_conversation_engagement_with_http_info(conversation_engagement_oid, engagement, opts)
+      data
+    end
+
+    # Update a engagement
+    # Update a engagement 
+    # @param conversation_engagement_oid 
+    # @param engagement Engagement
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationEngagementResponse, Fixnum, Hash)>] ConversationEngagementResponse data, response status code and response headers
+    def update_conversation_engagement_with_http_info(conversation_engagement_oid, engagement, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.update_conversation_engagement ...'
+      end
+      # verify the required parameter 'conversation_engagement_oid' is set
+      if @api_client.config.client_side_validation && conversation_engagement_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_engagement_oid' when calling ConversationApi.update_conversation_engagement"
+      end
+      # verify the required parameter 'engagement' is set
+      if @api_client.config.client_side_validation && engagement.nil?
+        fail ArgumentError, "Missing the required parameter 'engagement' when calling ConversationApi.update_conversation_engagement"
+      end
+      # resource path
+      local_var_path = '/conversation/engagements/{conversation_engagement_oid}'.sub('{' + 'conversation_engagement_oid' + '}', conversation_engagement_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(engagement)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ConversationEngagementResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#update_conversation_engagement\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
