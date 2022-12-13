@@ -14,52 +14,26 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationParticipant
-    attr_accessor :conversation_participant_arn
+  class ConversationEngagementsResponse
+    attr_accessor :conversation_engagements
 
-    attr_accessor :conversation_participant_name
+    attr_accessor :error
 
-    attr_accessor :conversation_participant_uuid
+    attr_accessor :metadata
 
-    attr_accessor :email
+    # Indicates if API call was successful
+    attr_accessor :success
 
-    # Joined conversation date/time
-    attr_accessor :joined_dts
-
-    attr_accessor :language_iso_code
-
-    # Last message date/time
-    attr_accessor :last_message_dts
-
-    # Left conversation date/time
-    attr_accessor :left_dts
-
-    attr_accessor :profile_image_url
-
-    attr_accessor :sms_phone_number
-
-    attr_accessor :status
-
-    attr_accessor :timezone
-
-    attr_accessor :unread_messages
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'conversation_participant_arn' => :'conversation_participant_arn',
-        :'conversation_participant_name' => :'conversation_participant_name',
-        :'conversation_participant_uuid' => :'conversation_participant_uuid',
-        :'email' => :'email',
-        :'joined_dts' => :'joined_dts',
-        :'language_iso_code' => :'language_iso_code',
-        :'last_message_dts' => :'last_message_dts',
-        :'left_dts' => :'left_dts',
-        :'profile_image_url' => :'profile_image_url',
-        :'sms_phone_number' => :'sms_phone_number',
-        :'status' => :'status',
-        :'timezone' => :'timezone',
-        :'unread_messages' => :'unread_messages'
+        :'conversation_engagements' => :'conversation_engagements',
+        :'error' => :'error',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
@@ -71,19 +45,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'conversation_participant_arn' => :'String',
-        :'conversation_participant_name' => :'String',
-        :'conversation_participant_uuid' => :'String',
-        :'email' => :'String',
-        :'joined_dts' => :'String',
-        :'language_iso_code' => :'String',
-        :'last_message_dts' => :'String',
-        :'left_dts' => :'String',
-        :'profile_image_url' => :'String',
-        :'sms_phone_number' => :'String',
-        :'status' => :'String',
-        :'timezone' => :'String',
-        :'unread_messages' => :'Integer'
+        :'conversation_engagements' => :'Array<ConversationEngagement>',
+        :'error' => :'Error',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'Boolean',
+        :'warning' => :'Warning'
       }
     end
 
@@ -97,67 +63,37 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationParticipant` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationEngagementsResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationParticipant`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationEngagementsResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'conversation_participant_arn')
-        self.conversation_participant_arn = attributes[:'conversation_participant_arn']
+      if attributes.key?(:'conversation_engagements')
+        if (value = attributes[:'conversation_engagements']).is_a?(Array)
+          self.conversation_engagements = value
+        end
       end
 
-      if attributes.key?(:'conversation_participant_name')
-        self.conversation_participant_name = attributes[:'conversation_participant_name']
+      if attributes.key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.key?(:'conversation_participant_uuid')
-        self.conversation_participant_uuid = attributes[:'conversation_participant_uuid']
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.key?(:'email')
-        self.email = attributes[:'email']
+      if attributes.key?(:'success')
+        self.success = attributes[:'success']
       end
 
-      if attributes.key?(:'joined_dts')
-        self.joined_dts = attributes[:'joined_dts']
-      end
-
-      if attributes.key?(:'language_iso_code')
-        self.language_iso_code = attributes[:'language_iso_code']
-      end
-
-      if attributes.key?(:'last_message_dts')
-        self.last_message_dts = attributes[:'last_message_dts']
-      end
-
-      if attributes.key?(:'left_dts')
-        self.left_dts = attributes[:'left_dts']
-      end
-
-      if attributes.key?(:'profile_image_url')
-        self.profile_image_url = attributes[:'profile_image_url']
-      end
-
-      if attributes.key?(:'sms_phone_number')
-        self.sms_phone_number = attributes[:'sms_phone_number']
-      end
-
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
-      end
-
-      if attributes.key?(:'timezone')
-        self.timezone = attributes[:'timezone']
-      end
-
-      if attributes.key?(:'unread_messages')
-        self.unread_messages = attributes[:'unread_messages']
+      if attributes.key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -179,19 +115,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          conversation_participant_arn == o.conversation_participant_arn &&
-          conversation_participant_name == o.conversation_participant_name &&
-          conversation_participant_uuid == o.conversation_participant_uuid &&
-          email == o.email &&
-          joined_dts == o.joined_dts &&
-          language_iso_code == o.language_iso_code &&
-          last_message_dts == o.last_message_dts &&
-          left_dts == o.left_dts &&
-          profile_image_url == o.profile_image_url &&
-          sms_phone_number == o.sms_phone_number &&
-          status == o.status &&
-          timezone == o.timezone &&
-          unread_messages == o.unread_messages
+          conversation_engagements == o.conversation_engagements &&
+          error == o.error &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -203,7 +131,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_participant_arn, conversation_participant_name, conversation_participant_uuid, email, joined_dts, language_iso_code, last_message_dts, left_dts, profile_image_url, sms_phone_number, status, timezone, unread_messages].hash
+      [conversation_engagements, error, metadata, success, warning].hash
     end
 
     # Builds the object from hash

@@ -136,6 +136,12 @@ docs/ConversationCannedMessage.md
 docs/ConversationCannedMessageResponse.md
 docs/ConversationCannedMessagesResponse.md
 docs/ConversationCannedMessagesSearch.md
+docs/ConversationDepartment.md
+docs/ConversationDepartmentResponse.md
+docs/ConversationDepartmentsResponse.md
+docs/ConversationEngagement.md
+docs/ConversationEngagementResponse.md
+docs/ConversationEngagementsResponse.md
 docs/ConversationEventAddCoupon.md
 docs/ConversationEventAddItem.md
 docs/ConversationEventQueuePosition.md
@@ -143,6 +149,7 @@ docs/ConversationEventRRWeb.md
 docs/ConversationEventReadMessage.md
 docs/ConversationEventTyping.md
 docs/ConversationEventWebchatContext.md
+docs/ConversationJoinRequest.md
 docs/ConversationMessage.md
 docs/ConversationMessageTranslation.md
 docs/ConversationMessageTransportStatus.md
@@ -871,6 +878,12 @@ lib/ultracart_api/models/conversation_canned_message.rb
 lib/ultracart_api/models/conversation_canned_message_response.rb
 lib/ultracart_api/models/conversation_canned_messages_response.rb
 lib/ultracart_api/models/conversation_canned_messages_search.rb
+lib/ultracart_api/models/conversation_department.rb
+lib/ultracart_api/models/conversation_department_response.rb
+lib/ultracart_api/models/conversation_departments_response.rb
+lib/ultracart_api/models/conversation_engagement.rb
+lib/ultracart_api/models/conversation_engagement_response.rb
+lib/ultracart_api/models/conversation_engagements_response.rb
 lib/ultracart_api/models/conversation_event_add_coupon.rb
 lib/ultracart_api/models/conversation_event_add_item.rb
 lib/ultracart_api/models/conversation_event_queue_position.rb
@@ -878,6 +891,7 @@ lib/ultracart_api/models/conversation_event_read_message.rb
 lib/ultracart_api/models/conversation_event_rr_web.rb
 lib/ultracart_api/models/conversation_event_typing.rb
 lib/ultracart_api/models/conversation_event_webchat_context.rb
+lib/ultracart_api/models/conversation_join_request.rb
 lib/ultracart_api/models/conversation_message.rb
 lib/ultracart_api/models/conversation_message_translation.rb
 lib/ultracart_api/models/conversation_message_transport_status.rb
