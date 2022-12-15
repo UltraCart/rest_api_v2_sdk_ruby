@@ -15,6 +15,12 @@ require 'time'
 
 module UltracartClient
   class ConversationSearchRequest
+    # End of the range
+    attr_accessor :date_end
+
+    # Start of the range
+    attr_accessor :date_start
+
     attr_accessor :email_filter
 
     attr_accessor :language_filter
@@ -38,6 +44,8 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'date_end' => :'date_end',
+        :'date_start' => :'date_start',
         :'email_filter' => :'email_filter',
         :'language_filter' => :'language_filter',
         :'medium_filter' => :'medium_filter',
@@ -59,6 +67,8 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'date_end' => :'String',
+        :'date_start' => :'String',
         :'email_filter' => :'String',
         :'language_filter' => :'String',
         :'medium_filter' => :'String',
@@ -92,6 +102,14 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'date_end')
+        self.date_end = attributes[:'date_end']
+      end
+
+      if attributes.key?(:'date_start')
+        self.date_start = attributes[:'date_start']
+      end
 
       if attributes.key?(:'email_filter')
         self.email_filter = attributes[:'email_filter']
@@ -152,6 +170,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          date_end == o.date_end &&
+          date_start == o.date_start &&
           email_filter == o.email_filter &&
           language_filter == o.language_filter &&
           medium_filter == o.medium_filter &&
@@ -173,7 +193,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [email_filter, language_filter, medium_filter, order_by_newest, order_by_oldest, range_begin, range_end, sms_phone_number_filter, text_search, visible_filter].hash
+      [date_end, date_start, email_filter, language_filter, medium_filter, order_by_newest, order_by_oldest, range_begin, range_end, sms_phone_number_filter, text_search, visible_filter].hash
     end
 
     # Builds the object from hash

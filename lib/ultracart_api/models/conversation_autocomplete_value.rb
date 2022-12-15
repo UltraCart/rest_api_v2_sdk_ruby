@@ -14,32 +14,16 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationAutocompleteResponse
-    attr_accessor :error
+  class ConversationAutocompleteValue
+    attr_accessor :description
 
-    attr_accessor :field
-
-    attr_accessor :metadata
-
-    attr_accessor :results
-
-    # Indicates if API call was successful
-    attr_accessor :success
-
-    attr_accessor :term
-
-    attr_accessor :warning
+    attr_accessor :value
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'error' => :'error',
-        :'field' => :'field',
-        :'metadata' => :'metadata',
-        :'results' => :'results',
-        :'success' => :'success',
-        :'term' => :'term',
-        :'warning' => :'warning'
+        :'description' => :'description',
+        :'value' => :'value'
       }
     end
 
@@ -51,13 +35,8 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'error' => :'Error',
-        :'field' => :'String',
-        :'metadata' => :'ResponseMetadata',
-        :'results' => :'Array<ConversationAutocompleteValue>',
-        :'success' => :'Boolean',
-        :'term' => :'String',
-        :'warning' => :'Warning'
+        :'description' => :'String',
+        :'value' => :'String'
       }
     end
 
@@ -71,45 +50,23 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationAutocompleteResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationAutocompleteValue` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationAutocompleteResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationAutocompleteValue`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'error')
-        self.error = attributes[:'error']
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
-      if attributes.key?(:'field')
-        self.field = attributes[:'field']
-      end
-
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.key?(:'results')
-        if (value = attributes[:'results']).is_a?(Array)
-          self.results = value
-        end
-      end
-
-      if attributes.key?(:'success')
-        self.success = attributes[:'success']
-      end
-
-      if attributes.key?(:'term')
-        self.term = attributes[:'term']
-      end
-
-      if attributes.key?(:'warning')
-        self.warning = attributes[:'warning']
+      if attributes.key?(:'value')
+        self.value = attributes[:'value']
       end
     end
 
@@ -131,13 +88,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          error == o.error &&
-          field == o.field &&
-          metadata == o.metadata &&
-          results == o.results &&
-          success == o.success &&
-          term == o.term &&
-          warning == o.warning
+          description == o.description &&
+          value == o.value
     end
 
     # @see the `==` method
@@ -149,7 +101,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [error, field, metadata, results, success, term, warning].hash
+      [description, value].hash
     end
 
     # Builds the object from hash

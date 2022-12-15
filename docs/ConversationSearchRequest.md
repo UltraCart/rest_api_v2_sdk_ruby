@@ -4,6 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **date_end** | **String** | End of the range | [optional] |
+| **date_start** | **String** | Start of the range | [optional] |
 | **email_filter** | **String** |  | [optional] |
 | **language_filter** | **String** |  | [optional] |
 | **medium_filter** | **String** |  | [optional] |
@@ -21,6 +23,8 @@
 require 'ultracart_api'
 
 instance = UltracartClient::ConversationSearchRequest.new(
+  date_end: null,
+  date_start: null,
   email_filter: null,
   language_filter: null,
   medium_filter: null,

@@ -7,7 +7,7 @@
 | **error** | [**Error**](Error.md) |  | [optional] |
 | **field** | **String** |  | [optional] |
 | **metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] |
-| **results** | **Array&lt;String&gt;** |  | [optional] |
+| **results** | [**Array&lt;ConversationAutocompleteValue&gt;**](ConversationAutocompleteValue.md) |  | [optional] |
 | **success** | **Boolean** | Indicates if API call was successful | [optional] |
 | **term** | **String** |  | [optional] |
 | **warning** | [**Warning**](Warning.md) |  | [optional] |
