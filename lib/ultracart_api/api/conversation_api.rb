@@ -618,6 +618,116 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Retrieve a list of matching terms for a search field
+    # Retrieve a list of matching terms for a search field 
+    # @param autocomplete_request Autocomplete Request
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationAutocompleteResponse]
+    def get_conversations_autocomplete(autocomplete_request, opts = {})
+      data, _status_code, _headers = get_conversations_autocomplete_with_http_info(autocomplete_request, opts)
+      data
+    end
+
+    # Retrieve a list of matching terms for a search field
+    # Retrieve a list of matching terms for a search field 
+    # @param autocomplete_request Autocomplete Request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationAutocompleteResponse, Fixnum, Hash)>] ConversationAutocompleteResponse data, response status code and response headers
+    def get_conversations_autocomplete_with_http_info(autocomplete_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_conversations_autocomplete ...'
+      end
+      # verify the required parameter 'autocomplete_request' is set
+      if @api_client.config.client_side_validation && autocomplete_request.nil?
+        fail ArgumentError, "Missing the required parameter 'autocomplete_request' when calling ConversationApi.get_conversations_autocomplete"
+      end
+      # resource path
+      local_var_path = '/conversation/conversations/autocomplete'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(autocomplete_request)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ConversationAutocompleteResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_conversations_autocomplete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Search conversations
+    # Search conversations 
+    # @param search_request Search Request
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationSearchResponse]
+    def get_conversations_search(search_request, opts = {})
+      data, _status_code, _headers = get_conversations_search_with_http_info(search_request, opts)
+      data
+    end
+
+    # Search conversations
+    # Search conversations 
+    # @param search_request Search Request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationSearchResponse, Fixnum, Hash)>] ConversationSearchResponse data, response status code and response headers
+    def get_conversations_search_with_http_info(search_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_conversations_search ...'
+      end
+      # verify the required parameter 'search_request' is set
+      if @api_client.config.client_side_validation && search_request.nil?
+        fail ArgumentError, "Missing the required parameter 'search_request' when calling ConversationApi.get_conversations_search"
+      end
+      # resource path
+      local_var_path = '/conversation/conversations/search'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(search_request)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ConversationSearchResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_conversations_search\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Insert a canned message
     # Insert a canned message 
     # @param canned_message Canned message
