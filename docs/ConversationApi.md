@@ -15,6 +15,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_conversation_multimedia_upload_url**](ConversationApi.md#get_conversation_multimedia_upload_url) | **GET** /conversation/upload_url/{extension} | Get a presigned conersation multimedia upload URL |
 | [**get_conversation_webchat_queue_statuses**](ConversationApi.md#get_conversation_webchat_queue_statuses) | **GET** /conversation/conversations/queues/statuses | Retrieve a conversation webchat queue statuses |
 | [**get_conversations**](ConversationApi.md#get_conversations) | **GET** /conversation/conversations | Retrieve a list of conversation summaries newest to oldest |
+| [**get_conversations_autocomplete**](ConversationApi.md#get_conversations_autocomplete) | **POST** /conversation/conversations/autocomplete | Retrieve a list of matching terms for a search field |
+| [**get_conversations_search**](ConversationApi.md#get_conversations_search) | **POST** /conversation/conversations/search | Search conversations |
 | [**insert_conversation_canned_message**](ConversationApi.md#insert_conversation_canned_message) | **POST** /conversation/canned_messages | Insert a canned message |
 | [**insert_conversation_department**](ConversationApi.md#insert_conversation_department) | **POST** /conversation/departments | Insert a department |
 | [**insert_conversation_engagement**](ConversationApi.md#insert_conversation_engagement) | **POST** /conversation/engagements | Insert a engagement |
@@ -806,6 +808,148 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversations_autocomplete
+
+> <ConversationAutocompleteResponse> get_conversations_autocomplete(autocomplete_request)
+
+Retrieve a list of matching terms for a search field
+
+Retrieve a list of matching terms for a search field 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+autocomplete_request = UltracartClient::ConversationAutocompleteRequest.new # ConversationAutocompleteRequest | Autocomplete Request
+
+begin
+  # Retrieve a list of matching terms for a search field
+  result = api_instance.get_conversations_autocomplete(autocomplete_request)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversations_autocomplete: #{e}"
+end
+```
+
+#### Using the get_conversations_autocomplete_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAutocompleteResponse>, Integer, Hash)> get_conversations_autocomplete_with_http_info(autocomplete_request)
+
+```ruby
+begin
+  # Retrieve a list of matching terms for a search field
+  data, status_code, headers = api_instance.get_conversations_autocomplete_with_http_info(autocomplete_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAutocompleteResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversations_autocomplete_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **autocomplete_request** | [**ConversationAutocompleteRequest**](ConversationAutocompleteRequest.md) | Autocomplete Request |  |
+
+### Return type
+
+[**ConversationAutocompleteResponse**](ConversationAutocompleteResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_conversations_search
+
+> <ConversationSearchResponse> get_conversations_search(search_request)
+
+Search conversations
+
+Search conversations 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+search_request = UltracartClient::ConversationSearchRequest.new # ConversationSearchRequest | Search Request
+
+begin
+  # Search conversations
+  result = api_instance.get_conversations_search(search_request)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversations_search: #{e}"
+end
+```
+
+#### Using the get_conversations_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationSearchResponse>, Integer, Hash)> get_conversations_search_with_http_info(search_request)
+
+```ruby
+begin
+  # Search conversations
+  data, status_code, headers = api_instance.get_conversations_search_with_http_info(search_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationSearchResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversations_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **search_request** | [**ConversationSearchRequest**](ConversationSearchRequest.md) | Search Request |  |
+
+### Return type
+
+[**ConversationSearchResponse**](ConversationSearchResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

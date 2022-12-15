@@ -132,6 +132,8 @@ docs/Conversation.md
 docs/ConversationAgentAuth.md
 docs/ConversationAgentAuthResponse.md
 docs/ConversationApi.md
+docs/ConversationAutocompleteRequest.md
+docs/ConversationAutocompleteResponse.md
 docs/ConversationCannedMessage.md
 docs/ConversationCannedMessageResponse.md
 docs/ConversationCannedMessagesResponse.md
@@ -158,6 +160,8 @@ docs/ConversationMultimediaUploadUrl.md
 docs/ConversationMultimediaUploadUrlResponse.md
 docs/ConversationParticipant.md
 docs/ConversationResponse.md
+docs/ConversationSearchRequest.md
+docs/ConversationSearchResponse.md
 docs/ConversationStartRequest.md
 docs/ConversationStartResponse.md
 docs/ConversationSummary.md
@@ -874,6 +878,8 @@ lib/ultracart_api/models/city_state_zip.rb
 lib/ultracart_api/models/conversation.rb
 lib/ultracart_api/models/conversation_agent_auth.rb
 lib/ultracart_api/models/conversation_agent_auth_response.rb
+lib/ultracart_api/models/conversation_autocomplete_request.rb
+lib/ultracart_api/models/conversation_autocomplete_response.rb
 lib/ultracart_api/models/conversation_canned_message.rb
 lib/ultracart_api/models/conversation_canned_message_response.rb
 lib/ultracart_api/models/conversation_canned_messages_response.rb
@@ -900,6 +906,8 @@ lib/ultracart_api/models/conversation_multimedia_upload_url.rb
 lib/ultracart_api/models/conversation_multimedia_upload_url_response.rb
 lib/ultracart_api/models/conversation_participant.rb
 lib/ultracart_api/models/conversation_response.rb
+lib/ultracart_api/models/conversation_search_request.rb
+lib/ultracart_api/models/conversation_search_response.rb
 lib/ultracart_api/models/conversation_start_request.rb
 lib/ultracart_api/models/conversation_start_response.rb
 lib/ultracart_api/models/conversation_summary.rb
