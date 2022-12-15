@@ -13,66 +13,24 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ConversationSearchRequest
-    # End of the range
-    attr_accessor :date_end
+  class ConversationAutocompleteValue
+    attr_accessor :description
 
-    # Start of the range
-    attr_accessor :date_start
-
-    attr_accessor :email_filter
-
-    attr_accessor :language_filter
-
-    attr_accessor :medium_filter
-
-    attr_accessor :order_by_newest
-
-    attr_accessor :order_by_oldest
-
-    attr_accessor :range_begin
-
-    attr_accessor :range_end
-
-    attr_accessor :sms_phone_number_filter
-
-    attr_accessor :text_search
-
-    attr_accessor :visible_filter
+    attr_accessor :value
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'date_end' => :'date_end',
-        :'date_start' => :'date_start',
-        :'email_filter' => :'email_filter',
-        :'language_filter' => :'language_filter',
-        :'medium_filter' => :'medium_filter',
-        :'order_by_newest' => :'order_by_newest',
-        :'order_by_oldest' => :'order_by_oldest',
-        :'range_begin' => :'range_begin',
-        :'range_end' => :'range_end',
-        :'sms_phone_number_filter' => :'sms_phone_number_filter',
-        :'text_search' => :'text_search',
-        :'visible_filter' => :'visible_filter'
+        :'description' => :'description',
+        :'value' => :'value'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'date_end' => :'String',
-        :'date_start' => :'String',
-        :'email_filter' => :'String',
-        :'language_filter' => :'String',
-        :'medium_filter' => :'String',
-        :'order_by_newest' => :'BOOLEAN',
-        :'order_by_oldest' => :'BOOLEAN',
-        :'range_begin' => :'Integer',
-        :'range_end' => :'Integer',
-        :'sms_phone_number_filter' => :'String',
-        :'text_search' => :'String',
-        :'visible_filter' => :'BOOLEAN'
+        :'description' => :'String',
+        :'value' => :'String'
       }
     end
 
@@ -84,52 +42,12 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'date_end')
-        self.date_end = attributes[:'date_end']
+      if attributes.has_key?(:'description')
+        self.description = attributes[:'description']
       end
 
-      if attributes.has_key?(:'date_start')
-        self.date_start = attributes[:'date_start']
-      end
-
-      if attributes.has_key?(:'email_filter')
-        self.email_filter = attributes[:'email_filter']
-      end
-
-      if attributes.has_key?(:'language_filter')
-        self.language_filter = attributes[:'language_filter']
-      end
-
-      if attributes.has_key?(:'medium_filter')
-        self.medium_filter = attributes[:'medium_filter']
-      end
-
-      if attributes.has_key?(:'order_by_newest')
-        self.order_by_newest = attributes[:'order_by_newest']
-      end
-
-      if attributes.has_key?(:'order_by_oldest')
-        self.order_by_oldest = attributes[:'order_by_oldest']
-      end
-
-      if attributes.has_key?(:'range_begin')
-        self.range_begin = attributes[:'range_begin']
-      end
-
-      if attributes.has_key?(:'range_end')
-        self.range_end = attributes[:'range_end']
-      end
-
-      if attributes.has_key?(:'sms_phone_number_filter')
-        self.sms_phone_number_filter = attributes[:'sms_phone_number_filter']
-      end
-
-      if attributes.has_key?(:'text_search')
-        self.text_search = attributes[:'text_search']
-      end
-
-      if attributes.has_key?(:'visible_filter')
-        self.visible_filter = attributes[:'visible_filter']
+      if attributes.has_key?(:'value')
+        self.value = attributes[:'value']
       end
     end
 
@@ -151,18 +69,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          date_end == o.date_end &&
-          date_start == o.date_start &&
-          email_filter == o.email_filter &&
-          language_filter == o.language_filter &&
-          medium_filter == o.medium_filter &&
-          order_by_newest == o.order_by_newest &&
-          order_by_oldest == o.order_by_oldest &&
-          range_begin == o.range_begin &&
-          range_end == o.range_end &&
-          sms_phone_number_filter == o.sms_phone_number_filter &&
-          text_search == o.text_search &&
-          visible_filter == o.visible_filter
+          description == o.description &&
+          value == o.value
     end
 
     # @see the `==` method
@@ -174,7 +82,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [date_end, date_start, email_filter, language_filter, medium_filter, order_by_newest, order_by_oldest, range_begin, range_end, sms_phone_number_filter, text_search, visible_filter].hash
+      [description, value].hash
     end
 
     # Builds the object from hash

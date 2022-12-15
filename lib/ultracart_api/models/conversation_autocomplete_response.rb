@@ -48,7 +48,7 @@ module UltracartClient
         :'error' => :'Error',
         :'field' => :'String',
         :'metadata' => :'ResponseMetadata',
-        :'results' => :'Array<String>',
+        :'results' => :'Array<ConversationAutocompleteValue>',
         :'success' => :'BOOLEAN',
         :'term' => :'String',
         :'warning' => :'Warning'
