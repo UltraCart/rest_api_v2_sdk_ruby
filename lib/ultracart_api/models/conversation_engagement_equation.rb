@@ -14,54 +14,13 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationEngagement
-    attr_accessor :conversation_engagement_oid
-
-    attr_accessor :customer_greeting
-
-    attr_accessor :department_oids
-
-    attr_accessor :engagement_name
-
-    attr_accessor :equation
-
-    attr_accessor :time_on_page
-
-    # The type of visitor
-    attr_accessor :visitor_type
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+  class ConversationEngagementEquation
+    attr_accessor :groups
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'conversation_engagement_oid' => :'conversation_engagement_oid',
-        :'customer_greeting' => :'customer_greeting',
-        :'department_oids' => :'department_oids',
-        :'engagement_name' => :'engagement_name',
-        :'equation' => :'equation',
-        :'time_on_page' => :'time_on_page',
-        :'visitor_type' => :'visitor_type'
+        :'groups' => :'groups'
       }
     end
 
@@ -73,13 +32,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'conversation_engagement_oid' => :'Integer',
-        :'customer_greeting' => :'String',
-        :'department_oids' => :'Array<Integer>',
-        :'engagement_name' => :'String',
-        :'equation' => :'ConversationEngagementEquation',
-        :'time_on_page' => :'Integer',
-        :'visitor_type' => :'String'
+        :'groups' => :'Array<ConversationEngagementEquationGroup>'
       }
     end
 
@@ -93,45 +46,21 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationEngagement` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationEngagementEquation` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationEngagement`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationEngagementEquation`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'conversation_engagement_oid')
-        self.conversation_engagement_oid = attributes[:'conversation_engagement_oid']
-      end
-
-      if attributes.key?(:'customer_greeting')
-        self.customer_greeting = attributes[:'customer_greeting']
-      end
-
-      if attributes.key?(:'department_oids')
-        if (value = attributes[:'department_oids']).is_a?(Array)
-          self.department_oids = value
+      if attributes.key?(:'groups')
+        if (value = attributes[:'groups']).is_a?(Array)
+          self.groups = value
         end
-      end
-
-      if attributes.key?(:'engagement_name')
-        self.engagement_name = attributes[:'engagement_name']
-      end
-
-      if attributes.key?(:'equation')
-        self.equation = attributes[:'equation']
-      end
-
-      if attributes.key?(:'time_on_page')
-        self.time_on_page = attributes[:'time_on_page']
-      end
-
-      if attributes.key?(:'visitor_type')
-        self.visitor_type = attributes[:'visitor_type']
       end
     end
 
@@ -145,19 +74,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      visitor_type_validator = EnumAttributeValidator.new('String', ["all", "first time", "returning"])
-      return false unless visitor_type_validator.valid?(@visitor_type)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] visitor_type Object to be assigned
-    def visitor_type=(visitor_type)
-      validator = EnumAttributeValidator.new('String', ["all", "first time", "returning"])
-      unless validator.valid?(visitor_type)
-        fail ArgumentError, "invalid value for \"visitor_type\", must be one of #{validator.allowable_values}."
-      end
-      @visitor_type = visitor_type
     end
 
     # Checks equality by comparing each attribute.
@@ -165,13 +82,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          conversation_engagement_oid == o.conversation_engagement_oid &&
-          customer_greeting == o.customer_greeting &&
-          department_oids == o.department_oids &&
-          engagement_name == o.engagement_name &&
-          equation == o.equation &&
-          time_on_page == o.time_on_page &&
-          visitor_type == o.visitor_type
+          groups == o.groups
     end
 
     # @see the `==` method
@@ -183,7 +94,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_engagement_oid, customer_greeting, department_oids, engagement_name, equation, time_on_page, visitor_type].hash
+      [groups].hash
     end
 
     # Builds the object from hash

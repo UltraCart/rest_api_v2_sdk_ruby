@@ -143,6 +143,9 @@ docs/ConversationDepartment.md
 docs/ConversationDepartmentResponse.md
 docs/ConversationDepartmentsResponse.md
 docs/ConversationEngagement.md
+docs/ConversationEngagementEquation.md
+docs/ConversationEngagementEquationFunction.md
+docs/ConversationEngagementEquationGroup.md
 docs/ConversationEngagementResponse.md
 docs/ConversationEngagementsResponse.md
 docs/ConversationEventAddCoupon.md
@@ -890,6 +893,9 @@ lib/ultracart_api/models/conversation_department.rb
 lib/ultracart_api/models/conversation_department_response.rb
 lib/ultracart_api/models/conversation_departments_response.rb
 lib/ultracart_api/models/conversation_engagement.rb
+lib/ultracart_api/models/conversation_engagement_equation.rb
+lib/ultracart_api/models/conversation_engagement_equation_function.rb
+lib/ultracart_api/models/conversation_engagement_equation_group.rb
 lib/ultracart_api/models/conversation_engagement_response.rb
 lib/ultracart_api/models/conversation_engagements_response.rb
 lib/ultracart_api/models/conversation_event_add_coupon.rb
