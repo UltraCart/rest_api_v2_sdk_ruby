@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **engagement_name** | **String** |  | [optional] 
 **equation** | [**ConversationEngagementEquation**](ConversationEngagementEquation.md) |  | [optional] 
 **time_on_page** | **Integer** |  | [optional] 
-**visitor_type** | **String** |  | [optional] 
+**visitor_type** | **String** | The type of visitor | [optional] 
 
 

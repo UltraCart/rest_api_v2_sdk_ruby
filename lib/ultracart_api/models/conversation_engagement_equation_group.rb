@@ -13,20 +13,20 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ConversationEngagementEquation
-    attr_accessor :groups
+  class ConversationEngagementEquationGroup
+    attr_accessor :functions
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'groups' => :'groups'
+        :'functions' => :'functions'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'groups' => :'Array<ConversationEngagementEquationGroup>'
+        :'functions' => :'Array<ConversationEngagementEquationFunction>'
       }
     end
 
@@ -38,9 +38,9 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'groups')
-        if (value = attributes[:'groups']).is_a?(Array)
-          self.groups = value
+      if attributes.has_key?(:'functions')
+        if (value = attributes[:'functions']).is_a?(Array)
+          self.functions = value
         end
       end
     end
@@ -63,7 +63,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          groups == o.groups
+          functions == o.functions
     end
 
     # @see the `==` method
@@ -75,7 +75,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [groups].hash
+      [functions].hash
     end
 
     # Builds the object from hash
