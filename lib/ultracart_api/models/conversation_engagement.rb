@@ -15,6 +15,8 @@ require 'time'
 
 module UltracartClient
   class ConversationEngagement
+    attr_accessor :active
+
     attr_accessor :conversation_engagement_oid
 
     attr_accessor :customer_greeting
@@ -55,6 +57,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'active' => :'active',
         :'conversation_engagement_oid' => :'conversation_engagement_oid',
         :'customer_greeting' => :'customer_greeting',
         :'department_oids' => :'department_oids',
@@ -73,6 +76,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'active' => :'Boolean',
         :'conversation_engagement_oid' => :'Integer',
         :'customer_greeting' => :'String',
         :'department_oids' => :'Array<Integer>',
@@ -103,6 +107,10 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'active')
+        self.active = attributes[:'active']
+      end
 
       if attributes.key?(:'conversation_engagement_oid')
         self.conversation_engagement_oid = attributes[:'conversation_engagement_oid']
@@ -165,6 +173,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          active == o.active &&
           conversation_engagement_oid == o.conversation_engagement_oid &&
           customer_greeting == o.customer_greeting &&
           department_oids == o.department_oids &&
@@ -183,7 +192,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_engagement_oid, customer_greeting, department_oids, engagement_name, equation, time_on_page, visitor_type].hash
+      [active, conversation_engagement_oid, customer_greeting, department_oids, engagement_name, equation, time_on_page, visitor_type].hash
     end
 
     # Builds the object from hash

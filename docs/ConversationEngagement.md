@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **active** | **Boolean** |  | [optional] |
 | **conversation_engagement_oid** | **Integer** |  | [optional] |
 | **customer_greeting** | **String** |  | [optional] |
 | **department_oids** | **Array&lt;Integer&gt;** |  | [optional] |
@@ -18,6 +19,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::ConversationEngagement.new(
+  active: null,
   conversation_engagement_oid: null,
   customer_greeting: null,
   department_oids: null,

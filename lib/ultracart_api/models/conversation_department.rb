@@ -17,8 +17,6 @@ module UltracartClient
   class ConversationDepartment
     attr_accessor :conversation_department_oid
 
-    attr_accessor :delete_me
-
     attr_accessor :department_name
 
     attr_accessor :merchant_id
@@ -29,7 +27,6 @@ module UltracartClient
     def self.attribute_map
       {
         :'conversation_department_oid' => :'conversation_department_oid',
-        :'delete_me' => :'delete_me',
         :'department_name' => :'department_name',
         :'merchant_id' => :'merchant_id',
         :'settings' => :'settings'
@@ -45,7 +42,6 @@ module UltracartClient
     def self.openapi_types
       {
         :'conversation_department_oid' => :'Integer',
-        :'delete_me' => :'Boolean',
         :'department_name' => :'String',
         :'merchant_id' => :'String',
         :'settings' => :'Object'
@@ -75,10 +71,6 @@ module UltracartClient
 
       if attributes.key?(:'conversation_department_oid')
         self.conversation_department_oid = attributes[:'conversation_department_oid']
-      end
-
-      if attributes.key?(:'delete_me')
-        self.delete_me = attributes[:'delete_me']
       end
 
       if attributes.key?(:'department_name')
@@ -113,7 +105,6 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           conversation_department_oid == o.conversation_department_oid &&
-          delete_me == o.delete_me &&
           department_name == o.department_name &&
           merchant_id == o.merchant_id &&
           settings == o.settings
@@ -128,7 +119,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_department_oid, delete_me, department_name, merchant_id, settings].hash
+      [conversation_department_oid, department_name, merchant_id, settings].hash
     end
 
     # Builds the object from hash
