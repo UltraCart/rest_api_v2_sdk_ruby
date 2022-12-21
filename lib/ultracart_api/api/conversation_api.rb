@@ -32,6 +32,168 @@ module UltracartClient
       UltracartClient::ConversationApi.new(api_client)
     end
 
+    # Delete a conversation canned message
+    # Delete a conversation canned message 
+    # @param conversation_canned_message_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_conversation_canned_message(conversation_canned_message_oid, opts = {})
+      delete_conversation_canned_message_with_http_info(conversation_canned_message_oid, opts)
+      nil
+    end
+
+    # Delete a conversation canned message
+    # Delete a conversation canned message 
+    # @param conversation_canned_message_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def delete_conversation_canned_message_with_http_info(conversation_canned_message_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.delete_conversation_canned_message ...'
+      end
+      # verify the required parameter 'conversation_canned_message_oid' is set
+      if @api_client.config.client_side_validation && conversation_canned_message_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_canned_message_oid' when calling ConversationApi.delete_conversation_canned_message"
+      end
+      # resource path
+      local_var_path = '/conversation/canned_messages/{conversation_canned_message_oid}'.sub('{' + 'conversation_canned_message_oid' + '}', conversation_canned_message_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#delete_conversation_canned_message\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Delete a conversation department
+    # Delete a conversation department 
+    # @param conversation_department_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_department(conversation_department_oid, opts = {})
+      delete_department_with_http_info(conversation_department_oid, opts)
+      nil
+    end
+
+    # Delete a conversation department
+    # Delete a conversation department 
+    # @param conversation_department_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def delete_department_with_http_info(conversation_department_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.delete_department ...'
+      end
+      # verify the required parameter 'conversation_department_oid' is set
+      if @api_client.config.client_side_validation && conversation_department_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_department_oid' when calling ConversationApi.delete_department"
+      end
+      # resource path
+      local_var_path = '/conversation/departments/{conversation_department_oid}'.sub('{' + 'conversation_department_oid' + '}', conversation_department_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#delete_department\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Delete a conversation engagement
+    # Delete a conversation engagement 
+    # @param conversation_engagement_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_engagement(conversation_engagement_oid, opts = {})
+      delete_engagement_with_http_info(conversation_engagement_oid, opts)
+      nil
+    end
+
+    # Delete a conversation engagement
+    # Delete a conversation engagement 
+    # @param conversation_engagement_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def delete_engagement_with_http_info(conversation_engagement_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.delete_engagement ...'
+      end
+      # verify the required parameter 'conversation_engagement_oid' is set
+      if @api_client.config.client_side_validation && conversation_engagement_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_engagement_oid' when calling ConversationApi.delete_engagement"
+      end
+      # resource path
+      local_var_path = '/conversation/engagements/{conversation_engagement_oid}'.sub('{' + 'conversation_engagement_oid' + '}', conversation_engagement_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#delete_engagement\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Agent keep alive
     # Called periodically by the conversation API to keep the session alive. 
     # @param [Hash] opts the optional parameters

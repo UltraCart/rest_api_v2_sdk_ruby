@@ -4,6 +4,9 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**delete_conversation_canned_message**](ConversationApi.md#delete_conversation_canned_message) | **DELETE** /conversation/canned_messages/{conversation_canned_message_oid} | Delete a conversation canned message
+[**delete_department**](ConversationApi.md#delete_department) | **DELETE** /conversation/departments/{conversation_department_oid} | Delete a conversation department
+[**delete_engagement**](ConversationApi.md#delete_engagement) | **DELETE** /conversation/engagements/{conversation_engagement_oid} | Delete a conversation engagement
 [**get_agent_keep_alive**](ConversationApi.md#get_agent_keep_alive) | **GET** /conversation/agent/keepalive | Agent keep alive
 [**get_agent_websocket_authorization**](ConversationApi.md#get_agent_websocket_authorization) | **PUT** /conversation/agent/auth | Get agent websocket authorization
 [**get_conversation**](ConversationApi.md#get_conversation) | **GET** /conversation/conversations/{conversation_uuid} | Retrieve a conversation
@@ -29,6 +32,153 @@ Method | HTTP request | Description
 [**update_conversation_department**](ConversationApi.md#update_conversation_department) | **PUT** /conversation/departments/{conversation_department_oid} | Update a department
 [**update_conversation_engagement**](ConversationApi.md#update_conversation_engagement) | **PUT** /conversation/engagements/{conversation_engagement_oid} | Update a engagement
 [**update_conversation_webchat_queue_status**](ConversationApi.md#update_conversation_webchat_queue_status) | **PUT** /conversation/conversations/queues/{queue_name}/status | Update status within the queue
+
+
+# **delete_conversation_canned_message**
+> delete_conversation_canned_message(conversation_canned_message_oid)
+
+Delete a conversation canned message
+
+Delete a conversation canned message 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+conversation_canned_message_oid = 56 # Integer | 
+
+
+begin
+  #Delete a conversation canned message
+  api_instance.delete_conversation_canned_message(conversation_canned_message_oid)
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->delete_conversation_canned_message: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conversation_canned_message_oid** | **Integer**|  | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **delete_department**
+> delete_department(conversation_department_oid)
+
+Delete a conversation department
+
+Delete a conversation department 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+conversation_department_oid = 56 # Integer | 
+
+
+begin
+  #Delete a conversation department
+  api_instance.delete_department(conversation_department_oid)
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->delete_department: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conversation_department_oid** | **Integer**|  | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **delete_engagement**
+> delete_engagement(conversation_engagement_oid)
+
+Delete a conversation engagement
+
+Delete a conversation engagement 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+conversation_engagement_oid = 56 # Integer | 
+
+
+begin
+  #Delete a conversation engagement
+  api_instance.delete_engagement(conversation_engagement_oid)
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->delete_engagement: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conversation_engagement_oid** | **Integer**|  | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 
 
 # **get_agent_keep_alive**

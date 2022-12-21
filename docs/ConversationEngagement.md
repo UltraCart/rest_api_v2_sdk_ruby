@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**active** | **BOOLEAN** |  | [optional] 
 **conversation_engagement_oid** | **Integer** |  | [optional] 
 **customer_greeting** | **String** |  | [optional] 
 **department_oids** | **Array&lt;Integer&gt;** |  | [optional] 
