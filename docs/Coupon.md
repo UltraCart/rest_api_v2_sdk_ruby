@@ -38,8 +38,12 @@
 | **hide_from_customer** | **Boolean** | Hide coupon from customer during checkout.  Often used when coupons are automatic discounting mechanisms. | [optional] |
 | **merchant_code** | **String** | Merchant code of coupon up to 20 characters. | [optional] |
 | **merchant_notes** | **String** | Internal notes about this coupon.  These are not visible to customer. | [optional] |
+| **more_loyalty_cashback** | [**CouponMoreLoyaltyCashback**](CouponMoreLoyaltyCashback.md) |  | [optional] |
+| **more_loyalty_points** | [**CouponMoreLoyaltyPoints**](CouponMoreLoyaltyPoints.md) |  | [optional] |
 | **multiple_amounts_off_items** | [**CouponMultipleAmountsOffItems**](CouponMultipleAmountsOffItems.md) |  | [optional] |
 | **no_discount** | [**CouponNoDiscount**](CouponNoDiscount.md) |  | [optional] |
+| **percent_more_loyalty_cashback** | [**CouponPercentMoreLoyaltyCashback**](CouponPercentMoreLoyaltyCashback.md) |  | [optional] |
+| **percent_more_loyalty_points** | [**CouponPercentMoreLoyaltyPoints**](CouponPercentMoreLoyaltyPoints.md) |  | [optional] |
 | **percent_off_item_with_items_quantity_purchase** | [**CouponPercentOffItemWithItemsQuantityPurchase**](CouponPercentOffItemWithItemsQuantityPurchase.md) |  | [optional] |
 | **percent_off_items** | [**CouponPercentOffItems**](CouponPercentOffItems.md) |  | [optional] |
 | **percent_off_items_and_free_shipping** | [**CouponPercentOffItemsAndFreeShipping**](CouponPercentOffItemsAndFreeShipping.md) |  | [optional] |
@@ -106,8 +110,12 @@ instance = UltracartClient::Coupon.new(
   hide_from_customer: null,
   merchant_code: null,
   merchant_notes: null,
+  more_loyalty_cashback: null,
+  more_loyalty_points: null,
   multiple_amounts_off_items: null,
   no_discount: null,
+  percent_more_loyalty_cashback: null,
+  percent_more_loyalty_points: null,
   percent_off_item_with_items_quantity_purchase: null,
   percent_off_items: null,
   percent_off_items_and_free_shipping: null,
