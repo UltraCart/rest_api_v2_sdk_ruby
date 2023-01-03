@@ -589,6 +589,7 @@ docs/OrderPaymentInsurance.md
 docs/OrderPaymentPurchaseOrder.md
 docs/OrderPaymentTransaction.md
 docs/OrderPaymentTransactionDetail.md
+docs/OrderPointOfSale.md
 docs/OrderProcessPaymentRequest.md
 docs/OrderProcessPaymentResponse.md
 docs/OrderProperty.md
@@ -610,6 +611,9 @@ docs/OrderTrackingNumberDetail.md
 docs/OrderTrackingNumberDetails.md
 docs/OrdersResponse.md
 docs/Permission.md
+docs/PointOfSaleLocation.md
+docs/PointOfSaleReader.md
+docs/PointOfSaleRegister.md
 docs/PricingTier.md
 docs/PricingTierNotification.md
 docs/PricingTiersResponse.md
@@ -1335,6 +1339,7 @@ lib/ultracart_api/models/order_payment_insurance.rb
 lib/ultracart_api/models/order_payment_purchase_order.rb
 lib/ultracart_api/models/order_payment_transaction.rb
 lib/ultracart_api/models/order_payment_transaction_detail.rb
+lib/ultracart_api/models/order_point_of_sale.rb
 lib/ultracart_api/models/order_process_payment_request.rb
 lib/ultracart_api/models/order_process_payment_response.rb
 lib/ultracart_api/models/order_property.rb
@@ -1356,6 +1361,9 @@ lib/ultracart_api/models/order_tracking_number_detail.rb
 lib/ultracart_api/models/order_tracking_number_details.rb
 lib/ultracart_api/models/orders_response.rb
 lib/ultracart_api/models/permission.rb
+lib/ultracart_api/models/point_of_sale_location.rb
+lib/ultracart_api/models/point_of_sale_reader.rb
+lib/ultracart_api/models/point_of_sale_register.rb
 lib/ultracart_api/models/pricing_tier.rb
 lib/ultracart_api/models/pricing_tier_notification.rb
 lib/ultracart_api/models/pricing_tiers_response.rb

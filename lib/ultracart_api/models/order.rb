@@ -75,6 +75,8 @@ module UltracartClient
 
     attr_accessor :payment
 
+    attr_accessor :point_of_sale
+
     # Properties, available only through update, not through insert due to the nature of how properties are handled internally
     attr_accessor :properties
 
@@ -147,6 +149,7 @@ module UltracartClient
         :'merchant_id' => :'merchant_id',
         :'order_id' => :'order_id',
         :'payment' => :'payment',
+        :'point_of_sale' => :'point_of_sale',
         :'properties' => :'properties',
         :'quote' => :'quote',
         :'refund_dts' => :'refund_dts',
@@ -192,6 +195,7 @@ module UltracartClient
         :'merchant_id' => :'String',
         :'order_id' => :'String',
         :'payment' => :'OrderPayment',
+        :'point_of_sale' => :'OrderPointOfSale',
         :'properties' => :'Array<OrderProperty>',
         :'quote' => :'OrderQuote',
         :'refund_dts' => :'String',
@@ -331,6 +335,10 @@ module UltracartClient
         self.payment = attributes[:'payment']
       end
 
+      if attributes.key?(:'point_of_sale')
+        self.point_of_sale = attributes[:'point_of_sale']
+      end
+
       if attributes.key?(:'properties')
         if (value = attributes[:'properties']).is_a?(Array)
           self.properties = value
@@ -457,6 +465,7 @@ module UltracartClient
           merchant_id == o.merchant_id &&
           order_id == o.order_id &&
           payment == o.payment &&
+          point_of_sale == o.point_of_sale &&
           properties == o.properties &&
           quote == o.quote &&
           refund_dts == o.refund_dts &&
@@ -477,7 +486,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [affiliates, auto_order, billing, buysafe, channel_partner, checkout, coupons, creation_dts, currency_code, current_stage, customer_profile, digital_order, edi, exchange_rate, fraud_score, gift, gift_certificate, internal, items, language_iso_code, linked_shipment, marketing, merchant_id, order_id, payment, properties, quote, refund_dts, reject_dts, salesforce, shipping, summary, tags, taxes].hash
+      [affiliates, auto_order, billing, buysafe, channel_partner, checkout, coupons, creation_dts, currency_code, current_stage, customer_profile, digital_order, edi, exchange_rate, fraud_score, gift, gift_certificate, internal, items, language_iso_code, linked_shipment, marketing, merchant_id, order_id, payment, point_of_sale, properties, quote, refund_dts, reject_dts, salesforce, shipping, summary, tags, taxes].hash
     end
 
     # Builds the object from hash
