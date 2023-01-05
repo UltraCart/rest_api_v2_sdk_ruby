@@ -20,6 +20,7 @@
 | **esp_friendly_name** | **String** | Friendly name of the sending email | [optional] |
 | **filter_profile_equation_json** | **String** | File profile equation json | [optional] |
 | **library_item_oid** | **Integer** | If this item was ever added to the Code Library, this is the oid for that library item, or 0 if never added before.  This value is used to determine if a library item should be inserted or updated. | [optional] |
+| **maximum_enrolled** | **Boolean** | The number of maximum customers for the plan are currently enrolled in this flow. | [optional] |
 | **merchant_id** | **String** | Merchant ID | [optional] |
 | **name** | **String** | Name of email flow | [optional] |
 | **open_rate_formatted** | **String** | Open rate of emails, formatted | [optional] |
@@ -57,6 +58,7 @@ instance = UltracartClient::EmailFlow.new(
   esp_friendly_name: null,
   filter_profile_equation_json: null,
   library_item_oid: null,
+  maximum_enrolled: null,
   merchant_id: null,
   name: null,
   open_rate_formatted: null,
