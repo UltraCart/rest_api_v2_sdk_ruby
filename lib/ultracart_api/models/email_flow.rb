@@ -62,6 +62,9 @@ module UltracartClient
     # If this item was ever added to the Code Library, this is the oid for that library item, or 0 if never added before.  This value is used to determine if a library item should be inserted or updated.
     attr_accessor :library_item_oid
 
+    # The number of maximum customers for the plan are currently enrolled in this flow.
+    attr_accessor :maximum_enrolled
+
     # Merchant ID
     attr_accessor :merchant_id
 
@@ -123,6 +126,7 @@ module UltracartClient
         :'esp_friendly_name' => :'esp_friendly_name',
         :'filter_profile_equation_json' => :'filter_profile_equation_json',
         :'library_item_oid' => :'library_item_oid',
+        :'maximum_enrolled' => :'maximum_enrolled',
         :'merchant_id' => :'merchant_id',
         :'name' => :'name',
         :'open_rate_formatted' => :'open_rate_formatted',
@@ -159,6 +163,7 @@ module UltracartClient
         :'esp_friendly_name' => :'String',
         :'filter_profile_equation_json' => :'String',
         :'library_item_oid' => :'Integer',
+        :'maximum_enrolled' => :'BOOLEAN',
         :'merchant_id' => :'String',
         :'name' => :'String',
         :'open_rate_formatted' => :'String',
@@ -246,6 +251,10 @@ module UltracartClient
 
       if attributes.has_key?(:'library_item_oid')
         self.library_item_oid = attributes[:'library_item_oid']
+      end
+
+      if attributes.has_key?(:'maximum_enrolled')
+        self.maximum_enrolled = attributes[:'maximum_enrolled']
       end
 
       if attributes.has_key?(:'merchant_id')
@@ -354,6 +363,7 @@ module UltracartClient
           esp_friendly_name == o.esp_friendly_name &&
           filter_profile_equation_json == o.filter_profile_equation_json &&
           library_item_oid == o.library_item_oid &&
+          maximum_enrolled == o.maximum_enrolled &&
           merchant_id == o.merchant_id &&
           name == o.name &&
           open_rate_formatted == o.open_rate_formatted &&
@@ -379,7 +389,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allow_multiple_concurrent_enrollments, back_populating, click_rate_formatted, created_dts, deleted, email_communication_sequence_uuid, email_flow_uuid, end_once_customer_purchases, end_once_customer_purchases_anywhere, enrolled_customers, esp_domain_user, esp_domain_uuid, esp_flow_folder_uuid, esp_friendly_name, filter_profile_equation_json, library_item_oid, merchant_id, name, open_rate_formatted, revenue_formatted, revenue_per_customer_formatted, screenshot_large_full_url, sms_esp_twilio_uuid, sms_phone_number, status, status_dts, storefront_oid, trigger_parameter, trigger_parameter_name, trigger_type].hash
+      [allow_multiple_concurrent_enrollments, back_populating, click_rate_formatted, created_dts, deleted, email_communication_sequence_uuid, email_flow_uuid, end_once_customer_purchases, end_once_customer_purchases_anywhere, enrolled_customers, esp_domain_user, esp_domain_uuid, esp_flow_folder_uuid, esp_friendly_name, filter_profile_equation_json, library_item_oid, maximum_enrolled, merchant_id, name, open_rate_formatted, revenue_formatted, revenue_per_customer_formatted, screenshot_large_full_url, sms_esp_twilio_uuid, sms_phone_number, status, status_dts, storefront_oid, trigger_parameter, trigger_parameter_name, trigger_type].hash
     end
 
     # Builds the object from hash
