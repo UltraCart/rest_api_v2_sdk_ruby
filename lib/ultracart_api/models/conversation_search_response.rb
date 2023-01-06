@@ -18,6 +18,8 @@ module UltracartClient
 
     attr_accessor :range_end
 
+    attr_accessor :records
+
     attr_accessor :total
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -25,6 +27,7 @@ module UltracartClient
       {
         :'range_begin' => :'range_begin',
         :'range_end' => :'range_end',
+        :'records' => :'records',
         :'total' => :'total'
       }
     end
@@ -34,6 +37,7 @@ module UltracartClient
       {
         :'range_begin' => :'Integer',
         :'range_end' => :'Integer',
+        :'records' => :'Array<Conversation>',
         :'total' => :'Integer'
       }
     end
@@ -52,6 +56,12 @@ module UltracartClient
 
       if attributes.has_key?(:'range_end')
         self.range_end = attributes[:'range_end']
+      end
+
+      if attributes.has_key?(:'records')
+        if (value = attributes[:'records']).is_a?(Array)
+          self.records = value
+        end
       end
 
       if attributes.has_key?(:'total')
@@ -79,6 +89,7 @@ module UltracartClient
       self.class == o.class &&
           range_begin == o.range_begin &&
           range_end == o.range_end &&
+          records == o.records &&
           total == o.total
     end
 
@@ -91,7 +102,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [range_begin, range_end, total].hash
+      [range_begin, range_end, records, total].hash
     end
 
     # Builds the object from hash
