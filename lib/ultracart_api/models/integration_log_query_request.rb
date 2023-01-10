@@ -16,6 +16,10 @@ module UltracartClient
   class IntegrationLogQueryRequest
     attr_accessor :action
 
+    attr_accessor :auto_order_ids
+
+    attr_accessor :auto_order_oids
+
     attr_accessor :direction
 
     attr_accessor :email
@@ -46,6 +50,8 @@ module UltracartClient
     def self.attribute_map
       {
         :'action' => :'action',
+        :'auto_order_ids' => :'auto_order_ids',
+        :'auto_order_oids' => :'auto_order_oids',
         :'direction' => :'direction',
         :'email' => :'email',
         :'file_names' => :'file_names',
@@ -65,6 +71,8 @@ module UltracartClient
     def self.swagger_types
       {
         :'action' => :'String',
+        :'auto_order_ids' => :'Array<String>',
+        :'auto_order_oids' => :'Array<Integer>',
         :'direction' => :'String',
         :'email' => :'String',
         :'file_names' => :'Array<String>',
@@ -90,6 +98,18 @@ module UltracartClient
 
       if attributes.has_key?(:'action')
         self.action = attributes[:'action']
+      end
+
+      if attributes.has_key?(:'auto_order_ids')
+        if (value = attributes[:'auto_order_ids']).is_a?(Array)
+          self.auto_order_ids = value
+        end
+      end
+
+      if attributes.has_key?(:'auto_order_oids')
+        if (value = attributes[:'auto_order_oids']).is_a?(Array)
+          self.auto_order_oids = value
+        end
       end
 
       if attributes.has_key?(:'direction')
@@ -164,6 +184,8 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           action == o.action &&
+          auto_order_ids == o.auto_order_ids &&
+          auto_order_oids == o.auto_order_oids &&
           direction == o.direction &&
           email == o.email &&
           file_names == o.file_names &&
@@ -187,7 +209,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [action, direction, email, file_names, item_id, item_ipn_oid, log_dts_begin, log_dts_end, log_type, logger_id, logger_name, order_ids, status].hash
+      [action, auto_order_ids, auto_order_oids, direction, email, file_names, item_id, item_ipn_oid, log_dts_begin, log_dts_end, log_type, logger_id, logger_name, order_ids, status].hash
     end
 
     # Builds the object from hash

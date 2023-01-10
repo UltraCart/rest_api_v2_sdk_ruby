@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **action** | **String** |  | [optional] 
+**auto_order_oids** | **Array&lt;Integer&gt;** |  | [optional] 
 **direction** | **String** |  | [optional] 
 **email** | **String** |  | [optional] 
 **files** | [**Array&lt;IntegrationLogFile&gt;**](IntegrationLogFile.md) |  | [optional] 

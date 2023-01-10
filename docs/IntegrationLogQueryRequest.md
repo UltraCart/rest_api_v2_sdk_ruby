@@ -4,6 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **action** | **String** |  | [optional] 
+**auto_order_ids** | **Array&lt;String&gt;** |  | [optional] 
+**auto_order_oids** | **Array&lt;Integer&gt;** |  | [optional] 
 **direction** | **String** |  | [optional] 
 **email** | **String** |  | [optional] 
 **file_names** | **Array&lt;String&gt;** |  | [optional] 
