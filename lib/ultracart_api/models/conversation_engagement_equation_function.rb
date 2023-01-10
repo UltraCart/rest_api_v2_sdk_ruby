@@ -217,7 +217,7 @@ module UltracartClient
       return false unless number_of_viewed_pages_logic_validator.valid?(@number_of_viewed_pages_logic)
       referring_website_logic_validator = EnumAttributeValidator.new('String', ["contains", "does not contain", "is exactly", "is not"])
       return false unless referring_website_logic_validator.valid?(@referring_website_logic)
-      type_validator = EnumAttributeValidator.new('String', ["current page url", "customer's location", "customer's browsing time", "number of viewed pages", "referring website address", "any page from session"])
+      type_validator = EnumAttributeValidator.new('String', ["current page url", "customers location", "customers browsing time", "number of viewed pages", "referring website address", "any page from session"])
       return false unless type_validator.valid?(@type)
       true
     end
@@ -285,7 +285,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ["current page url", "customer's location", "customer's browsing time", "number of viewed pages", "referring website address", "any page from session"])
+      validator = EnumAttributeValidator.new('String', ["current page url", "customers location", "customers browsing time", "number of viewed pages", "referring website address", "any page from session"])
       unless validator.valid?(type)
         fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
       end
