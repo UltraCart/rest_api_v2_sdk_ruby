@@ -10,6 +10,7 @@
 | **direction** | **String** |  | [optional] |
 | **email** | **String** |  | [optional] |
 | **file_names** | **Array&lt;String&gt;** |  | [optional] |
+| **integration_log_oid** | **Integer** |  | [optional] |
 | **item_id** | **String** |  | [optional] |
 | **item_ipn_oid** | **Integer** |  | [optional] |
 | **log_dts_begin** | **String** | Log date/time begin | [optional] |
@@ -32,6 +33,7 @@ instance = UltracartClient::IntegrationLogQueryRequest.new(
   direction: null,
   email: null,
   file_names: null,
+  integration_log_oid: null,
   item_id: null,
   item_ipn_oid: null,
   log_dts_begin: null,

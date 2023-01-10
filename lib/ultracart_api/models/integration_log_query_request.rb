@@ -27,6 +27,8 @@ module UltracartClient
 
     attr_accessor :file_names
 
+    attr_accessor :integration_log_oid
+
     attr_accessor :item_id
 
     attr_accessor :item_ipn_oid
@@ -56,6 +58,7 @@ module UltracartClient
         :'direction' => :'direction',
         :'email' => :'email',
         :'file_names' => :'file_names',
+        :'integration_log_oid' => :'integration_log_oid',
         :'item_id' => :'item_id',
         :'item_ipn_oid' => :'item_ipn_oid',
         :'log_dts_begin' => :'log_dts_begin',
@@ -82,6 +85,7 @@ module UltracartClient
         :'direction' => :'String',
         :'email' => :'String',
         :'file_names' => :'Array<String>',
+        :'integration_log_oid' => :'Integer',
         :'item_id' => :'String',
         :'item_ipn_oid' => :'Integer',
         :'log_dts_begin' => :'String',
@@ -143,6 +147,10 @@ module UltracartClient
         if (value = attributes[:'file_names']).is_a?(Array)
           self.file_names = value
         end
+      end
+
+      if attributes.key?(:'integration_log_oid')
+        self.integration_log_oid = attributes[:'integration_log_oid']
       end
 
       if attributes.key?(:'item_id')
@@ -208,6 +216,7 @@ module UltracartClient
           direction == o.direction &&
           email == o.email &&
           file_names == o.file_names &&
+          integration_log_oid == o.integration_log_oid &&
           item_id == o.item_id &&
           item_ipn_oid == o.item_ipn_oid &&
           log_dts_begin == o.log_dts_begin &&
@@ -228,7 +237,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, auto_order_ids, auto_order_oids, direction, email, file_names, item_id, item_ipn_oid, log_dts_begin, log_dts_end, log_type, logger_id, logger_name, order_ids, status].hash
+      [action, auto_order_ids, auto_order_oids, direction, email, file_names, integration_log_oid, item_id, item_ipn_oid, log_dts_begin, log_dts_end, log_type, logger_id, logger_name, order_ids, status].hash
     end
 
     # Builds the object from hash
