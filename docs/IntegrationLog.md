@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **action** | **String** |  | [optional] |
+| **auto_order_oids** | **Array&lt;Integer&gt;** |  | [optional] |
 | **direction** | **String** |  | [optional] |
 | **email** | **String** |  | [optional] |
 | **files** | [**Array&lt;IntegrationLogFile&gt;**](IntegrationLogFile.md) |  | [optional] |
@@ -30,6 +31,7 @@ require 'ultracart_api'
 
 instance = UltracartClient::IntegrationLog.new(
   action: null,
+  auto_order_oids: null,
   direction: null,
   email: null,
   files: null,

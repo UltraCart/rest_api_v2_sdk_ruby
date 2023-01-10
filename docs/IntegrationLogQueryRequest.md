@@ -5,6 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **action** | **String** |  | [optional] |
+| **auto_order_ids** | **Array&lt;String&gt;** |  | [optional] |
+| **auto_order_oids** | **Array&lt;Integer&gt;** |  | [optional] |
 | **direction** | **String** |  | [optional] |
 | **email** | **String** |  | [optional] |
 | **file_names** | **Array&lt;String&gt;** |  | [optional] |
@@ -25,6 +27,8 @@ require 'ultracart_api'
 
 instance = UltracartClient::IntegrationLogQueryRequest.new(
   action: null,
+  auto_order_ids: null,
+  auto_order_oids: null,
   direction: null,
   email: null,
   file_names: null,

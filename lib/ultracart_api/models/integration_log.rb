@@ -17,6 +17,8 @@ module UltracartClient
   class IntegrationLog
     attr_accessor :action
 
+    attr_accessor :auto_order_oids
+
     attr_accessor :direction
 
     attr_accessor :email
@@ -56,6 +58,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'action' => :'action',
+        :'auto_order_oids' => :'auto_order_oids',
         :'direction' => :'direction',
         :'email' => :'email',
         :'files' => :'files',
@@ -85,6 +88,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'action' => :'String',
+        :'auto_order_oids' => :'Array<Integer>',
         :'direction' => :'String',
         :'email' => :'String',
         :'files' => :'Array<IntegrationLogFile>',
@@ -128,6 +132,12 @@ module UltracartClient
 
       if attributes.key?(:'action')
         self.action = attributes[:'action']
+      end
+
+      if attributes.key?(:'auto_order_oids')
+        if (value = attributes[:'auto_order_oids']).is_a?(Array)
+          self.auto_order_oids = value
+        end
       end
 
       if attributes.key?(:'direction')
@@ -224,6 +234,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           action == o.action &&
+          auto_order_oids == o.auto_order_oids &&
           direction == o.direction &&
           email == o.email &&
           files == o.files &&
@@ -252,7 +263,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, direction, email, files, integration_log_oid, item_id, item_ipn_oid, log_dts, log_type, logger_id, logger_name, logs, omit_log_map, order_ids, pk, sk, status, status_code].hash
+      [action, auto_order_oids, direction, email, files, integration_log_oid, item_id, item_ipn_oid, log_dts, log_type, logger_id, logger_name, logs, omit_log_map, order_ids, pk, sk, status, status_code].hash
     end
 
     # Builds the object from hash
