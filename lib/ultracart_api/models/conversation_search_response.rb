@@ -43,7 +43,7 @@ module UltracartClient
       {
         :'range_begin' => :'Integer',
         :'range_end' => :'Integer',
-        :'records' => :'Array<Conversation>',
+        :'records' => :'Array<ConversationSummary>',
         :'total' => :'Integer'
       }
     end
