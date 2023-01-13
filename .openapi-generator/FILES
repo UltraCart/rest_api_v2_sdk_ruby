@@ -115,7 +115,11 @@ docs/ChannelPartnerOrderItem.md
 docs/ChannelPartnerOrderItemOption.md
 docs/ChannelPartnerOrderTransaction.md
 docs/ChannelPartnerOrderTransactionDetail.md
+docs/ChannelPartnerShipToPreference.md
+docs/ChannelPartnerShipToPreferenceResponse.md
+docs/ChannelPartnerShipToPreferencesResponse.md
 docs/ChannelPartnerShippingEstimate.md
+docs/ChannelPartnersResponse.md
 docs/ChargebackApi.md
 docs/ChargebackDispute.md
 docs/ChargebackDisputeResponse.md
@@ -876,7 +880,11 @@ lib/ultracart_api/models/channel_partner_order_item.rb
 lib/ultracart_api/models/channel_partner_order_item_option.rb
 lib/ultracart_api/models/channel_partner_order_transaction.rb
 lib/ultracart_api/models/channel_partner_order_transaction_detail.rb
+lib/ultracart_api/models/channel_partner_ship_to_preference.rb
+lib/ultracart_api/models/channel_partner_ship_to_preference_response.rb
+lib/ultracart_api/models/channel_partner_ship_to_preferences_response.rb
 lib/ultracart_api/models/channel_partner_shipping_estimate.rb
+lib/ultracart_api/models/channel_partners_response.rb
 lib/ultracart_api/models/chargeback_dispute.rb
 lib/ultracart_api/models/chargeback_dispute_response.rb
 lib/ultracart_api/models/chargeback_disputes_response.rb

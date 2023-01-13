@@ -6,9 +6,15 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | ------ | ------------ | ----------- |
 | [**cancel_order_by_channel_partner_order_id**](ChannelPartnerApi.md#cancel_order_by_channel_partner_order_id) | **DELETE** /channel_partner/cancel/by_channel_partner_order_id/{order_id} | Cancel channel partner order by channel partner order id |
 | [**cancel_order_by_ultra_cart_order_id**](ChannelPartnerApi.md#cancel_order_by_ultra_cart_order_id) | **DELETE** /channel_partner/cancel/by_ultracart_order_id/{order_id} | Cancel channel partner order by UltraCart order id |
+| [**delete_channel_partner_ship_to_preference**](ChannelPartnerApi.md#delete_channel_partner_ship_to_preference) | **DELETE** /channel_partner/channel_partners/{channel_partner_oid}/ship_to_preferences/{channel_partner_ship_to_preference_oid} | Delete a ship to preference record for the channel partner. |
 | [**estimate_shipping_for_channel_partner_order**](ChannelPartnerApi.md#estimate_shipping_for_channel_partner_order) | **POST** /channel_partner/estimate_shipping | Estimate shipping for channel partner order |
 | [**estimate_tax_for_channel_partner_order**](ChannelPartnerApi.md#estimate_tax_for_channel_partner_order) | **POST** /channel_partner/estimate_tax | Estimate tax for channel partner order |
+| [**get_channel_partner_ship_to_preference**](ChannelPartnerApi.md#get_channel_partner_ship_to_preference) | **GET** /channel_partner/channel_partners/{channel_partner_oid}/ship_to_preferences/{channel_partner_ship_to_preference_oid} | Retrieve the ship to preference associated with the channel partner and the specific id. |
+| [**get_channel_partner_ship_to_preferences**](ChannelPartnerApi.md#get_channel_partner_ship_to_preferences) | **GET** /channel_partner/channel_partners/{channel_partner_oid}/ship_to_preferences | Retrieve the ship to preferences associated with the channel partner. |
+| [**get_channel_partners**](ChannelPartnerApi.md#get_channel_partners) | **GET** /channel_partner/channel_partners | Retrieve the channel partners configured on the account. |
 | [**import_channel_partner_order**](ChannelPartnerApi.md#import_channel_partner_order) | **POST** /channel_partner/import | Insert channel partner order |
+| [**insert_channel_partner_ship_to_preference**](ChannelPartnerApi.md#insert_channel_partner_ship_to_preference) | **POST** /channel_partner/channel_partners/{channel_partner_oid}/ship_to_preferences | Insert a ship to preference record for the channel partner. |
+| [**update_channel_partner_ship_to_preference**](ChannelPartnerApi.md#update_channel_partner_ship_to_preference) | **PUT** /channel_partner/channel_partners/{channel_partner_oid}/ship_to_preferences/{channel_partner_ship_to_preference_oid} | Update a ship to preference record for the channel partner. |
 
 
 ## cancel_order_by_channel_partner_order_id
@@ -142,6 +148,78 @@ end
 ### Return type
 
 [**ChannelPartnerCancelResponse**](ChannelPartnerCancelResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_channel_partner_ship_to_preference
+
+> delete_channel_partner_ship_to_preference(channel_partner_oid, channel_partner_ship_to_preference_oid)
+
+Delete a ship to preference record for the channel partner.
+
+Delete a ship to preference record for the channel partner. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ChannelPartnerApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+channel_partner_oid = 56 # Integer | 
+channel_partner_ship_to_preference_oid = 56 # Integer | 
+
+begin
+  # Delete a ship to preference record for the channel partner.
+  api_instance.delete_channel_partner_ship_to_preference(channel_partner_oid, channel_partner_ship_to_preference_oid)
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ChannelPartnerApi->delete_channel_partner_ship_to_preference: #{e}"
+end
+```
+
+#### Using the delete_channel_partner_ship_to_preference_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_channel_partner_ship_to_preference_with_http_info(channel_partner_oid, channel_partner_ship_to_preference_oid)
+
+```ruby
+begin
+  # Delete a ship to preference record for the channel partner.
+  data, status_code, headers = api_instance.delete_channel_partner_ship_to_preference_with_http_info(channel_partner_oid, channel_partner_ship_to_preference_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ChannelPartnerApi->delete_channel_partner_ship_to_preference_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **channel_partner_oid** | **Integer** |  |  |
+| **channel_partner_ship_to_preference_oid** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
@@ -295,6 +373,218 @@ end
 - **Accept**: application/json
 
 
+## get_channel_partner_ship_to_preference
+
+> <ChannelPartnerShipToPreferenceResponse> get_channel_partner_ship_to_preference(channel_partner_oid, channel_partner_ship_to_preference_oid)
+
+Retrieve the ship to preference associated with the channel partner and the specific id.
+
+Retrieve the ship to preference associated with the channel partner and the specific id. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ChannelPartnerApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+channel_partner_oid = 56 # Integer | 
+channel_partner_ship_to_preference_oid = 56 # Integer | 
+
+begin
+  # Retrieve the ship to preference associated with the channel partner and the specific id.
+  result = api_instance.get_channel_partner_ship_to_preference(channel_partner_oid, channel_partner_ship_to_preference_oid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ChannelPartnerApi->get_channel_partner_ship_to_preference: #{e}"
+end
+```
+
+#### Using the get_channel_partner_ship_to_preference_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ChannelPartnerShipToPreferenceResponse>, Integer, Hash)> get_channel_partner_ship_to_preference_with_http_info(channel_partner_oid, channel_partner_ship_to_preference_oid)
+
+```ruby
+begin
+  # Retrieve the ship to preference associated with the channel partner and the specific id.
+  data, status_code, headers = api_instance.get_channel_partner_ship_to_preference_with_http_info(channel_partner_oid, channel_partner_ship_to_preference_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ChannelPartnerShipToPreferenceResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ChannelPartnerApi->get_channel_partner_ship_to_preference_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **channel_partner_oid** | **Integer** |  |  |
+| **channel_partner_ship_to_preference_oid** | **Integer** |  |  |
+
+### Return type
+
+[**ChannelPartnerShipToPreferenceResponse**](ChannelPartnerShipToPreferenceResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_channel_partner_ship_to_preferences
+
+> <ChannelPartnerShipToPreferencesResponse> get_channel_partner_ship_to_preferences(channel_partner_oid)
+
+Retrieve the ship to preferences associated with the channel partner.
+
+Retrieve the ship to preferences associated with the channel partner. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ChannelPartnerApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+channel_partner_oid = 56 # Integer | 
+
+begin
+  # Retrieve the ship to preferences associated with the channel partner.
+  result = api_instance.get_channel_partner_ship_to_preferences(channel_partner_oid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ChannelPartnerApi->get_channel_partner_ship_to_preferences: #{e}"
+end
+```
+
+#### Using the get_channel_partner_ship_to_preferences_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ChannelPartnerShipToPreferencesResponse>, Integer, Hash)> get_channel_partner_ship_to_preferences_with_http_info(channel_partner_oid)
+
+```ruby
+begin
+  # Retrieve the ship to preferences associated with the channel partner.
+  data, status_code, headers = api_instance.get_channel_partner_ship_to_preferences_with_http_info(channel_partner_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ChannelPartnerShipToPreferencesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ChannelPartnerApi->get_channel_partner_ship_to_preferences_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **channel_partner_oid** | **Integer** |  |  |
+
+### Return type
+
+[**ChannelPartnerShipToPreferencesResponse**](ChannelPartnerShipToPreferencesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_channel_partners
+
+> <ChannelPartnersResponse> get_channel_partners
+
+Retrieve the channel partners configured on the account.
+
+Retrieve the channel partners configured on the account. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ChannelPartnerApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+
+begin
+  # Retrieve the channel partners configured on the account.
+  result = api_instance.get_channel_partners
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ChannelPartnerApi->get_channel_partners: #{e}"
+end
+```
+
+#### Using the get_channel_partners_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ChannelPartnersResponse>, Integer, Hash)> get_channel_partners_with_http_info
+
+```ruby
+begin
+  # Retrieve the channel partners configured on the account.
+  data, status_code, headers = api_instance.get_channel_partners_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ChannelPartnersResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ChannelPartnerApi->get_channel_partners_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ChannelPartnersResponse**](ChannelPartnersResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## import_channel_partner_order
 
 > <ChannelPartnerImportResponse> import_channel_partner_order(channel_partner_order)
@@ -363,5 +653,153 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## insert_channel_partner_ship_to_preference
+
+> <ChannelPartnerShipToPreferenceResponse> insert_channel_partner_ship_to_preference(channel_partner_oid, ship_to_preference)
+
+Insert a ship to preference record for the channel partner.
+
+Insert a ship to preference record for the channel partner. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ChannelPartnerApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+channel_partner_oid = 56 # Integer | 
+ship_to_preference = UltracartClient::ChannelPartnerShipToPreference.new # ChannelPartnerShipToPreference | Ship to preference to create
+
+begin
+  # Insert a ship to preference record for the channel partner.
+  result = api_instance.insert_channel_partner_ship_to_preference(channel_partner_oid, ship_to_preference)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ChannelPartnerApi->insert_channel_partner_ship_to_preference: #{e}"
+end
+```
+
+#### Using the insert_channel_partner_ship_to_preference_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ChannelPartnerShipToPreferenceResponse>, Integer, Hash)> insert_channel_partner_ship_to_preference_with_http_info(channel_partner_oid, ship_to_preference)
+
+```ruby
+begin
+  # Insert a ship to preference record for the channel partner.
+  data, status_code, headers = api_instance.insert_channel_partner_ship_to_preference_with_http_info(channel_partner_oid, ship_to_preference)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ChannelPartnerShipToPreferenceResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ChannelPartnerApi->insert_channel_partner_ship_to_preference_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **channel_partner_oid** | **Integer** |  |  |
+| **ship_to_preference** | [**ChannelPartnerShipToPreference**](ChannelPartnerShipToPreference.md) | Ship to preference to create |  |
+
+### Return type
+
+[**ChannelPartnerShipToPreferenceResponse**](ChannelPartnerShipToPreferenceResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_channel_partner_ship_to_preference
+
+> <ChannelPartnerShipToPreferenceResponse> update_channel_partner_ship_to_preference(channel_partner_oid, channel_partner_ship_to_preference_oid, ship_to_preference)
+
+Update a ship to preference record for the channel partner.
+
+Update a ship to preference record for the channel partner. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ChannelPartnerApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+channel_partner_oid = 56 # Integer | 
+channel_partner_ship_to_preference_oid = 56 # Integer | 
+ship_to_preference = UltracartClient::ChannelPartnerShipToPreference.new # ChannelPartnerShipToPreference | Ship to preference to create
+
+begin
+  # Update a ship to preference record for the channel partner.
+  result = api_instance.update_channel_partner_ship_to_preference(channel_partner_oid, channel_partner_ship_to_preference_oid, ship_to_preference)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ChannelPartnerApi->update_channel_partner_ship_to_preference: #{e}"
+end
+```
+
+#### Using the update_channel_partner_ship_to_preference_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ChannelPartnerShipToPreferenceResponse>, Integer, Hash)> update_channel_partner_ship_to_preference_with_http_info(channel_partner_oid, channel_partner_ship_to_preference_oid, ship_to_preference)
+
+```ruby
+begin
+  # Update a ship to preference record for the channel partner.
+  data, status_code, headers = api_instance.update_channel_partner_ship_to_preference_with_http_info(channel_partner_oid, channel_partner_ship_to_preference_oid, ship_to_preference)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ChannelPartnerShipToPreferenceResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ChannelPartnerApi->update_channel_partner_ship_to_preference_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **channel_partner_oid** | **Integer** |  |  |
+| **channel_partner_ship_to_preference_oid** | **Integer** |  |  |
+| **ship_to_preference** | [**ChannelPartnerShipToPreference**](ChannelPartnerShipToPreference.md) | Ship to preference to create |  |
+
+### Return type
+
+[**ChannelPartnerShipToPreferenceResponse**](ChannelPartnerShipToPreferenceResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
