@@ -142,6 +142,66 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Delete a ship to preference record for the channel partner.
+    # Delete a ship to preference record for the channel partner. 
+    # @param channel_partner_oid 
+    # @param channel_partner_ship_to_preference_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_channel_partner_ship_to_preference(channel_partner_oid, channel_partner_ship_to_preference_oid, opts = {})
+      delete_channel_partner_ship_to_preference_with_http_info(channel_partner_oid, channel_partner_ship_to_preference_oid, opts)
+      nil
+    end
+
+    # Delete a ship to preference record for the channel partner.
+    # Delete a ship to preference record for the channel partner. 
+    # @param channel_partner_oid 
+    # @param channel_partner_ship_to_preference_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def delete_channel_partner_ship_to_preference_with_http_info(channel_partner_oid, channel_partner_ship_to_preference_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ChannelPartnerApi.delete_channel_partner_ship_to_preference ...'
+      end
+      # verify the required parameter 'channel_partner_oid' is set
+      if @api_client.config.client_side_validation && channel_partner_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'channel_partner_oid' when calling ChannelPartnerApi.delete_channel_partner_ship_to_preference"
+      end
+      # verify the required parameter 'channel_partner_ship_to_preference_oid' is set
+      if @api_client.config.client_side_validation && channel_partner_ship_to_preference_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'channel_partner_ship_to_preference_oid' when calling ChannelPartnerApi.delete_channel_partner_ship_to_preference"
+      end
+      # resource path
+      local_var_path = '/channel_partner/channel_partners/{channel_partner_oid}/ship_to_preferences/{channel_partner_ship_to_preference_oid}'.sub('{' + 'channel_partner_oid' + '}', channel_partner_oid.to_s).sub('{' + 'channel_partner_ship_to_preference_oid' + '}', channel_partner_ship_to_preference_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ChannelPartnerApi#delete_channel_partner_ship_to_preference\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Estimate shipping for channel partner order
     # Estimate shipping for order from a channel partner. 
     # @param channel_partner_order Order needing shipping estimate
@@ -252,6 +312,171 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Retrieve the ship to preference associated with the channel partner and the specific id.
+    # Retrieve the ship to preference associated with the channel partner and the specific id. 
+    # @param channel_partner_oid 
+    # @param channel_partner_ship_to_preference_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [ChannelPartnerShipToPreferenceResponse]
+    def get_channel_partner_ship_to_preference(channel_partner_oid, channel_partner_ship_to_preference_oid, opts = {})
+      data, _status_code, _headers = get_channel_partner_ship_to_preference_with_http_info(channel_partner_oid, channel_partner_ship_to_preference_oid, opts)
+      data
+    end
+
+    # Retrieve the ship to preference associated with the channel partner and the specific id.
+    # Retrieve the ship to preference associated with the channel partner and the specific id. 
+    # @param channel_partner_oid 
+    # @param channel_partner_ship_to_preference_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ChannelPartnerShipToPreferenceResponse, Fixnum, Hash)>] ChannelPartnerShipToPreferenceResponse data, response status code and response headers
+    def get_channel_partner_ship_to_preference_with_http_info(channel_partner_oid, channel_partner_ship_to_preference_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ChannelPartnerApi.get_channel_partner_ship_to_preference ...'
+      end
+      # verify the required parameter 'channel_partner_oid' is set
+      if @api_client.config.client_side_validation && channel_partner_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'channel_partner_oid' when calling ChannelPartnerApi.get_channel_partner_ship_to_preference"
+      end
+      # verify the required parameter 'channel_partner_ship_to_preference_oid' is set
+      if @api_client.config.client_side_validation && channel_partner_ship_to_preference_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'channel_partner_ship_to_preference_oid' when calling ChannelPartnerApi.get_channel_partner_ship_to_preference"
+      end
+      # resource path
+      local_var_path = '/channel_partner/channel_partners/{channel_partner_oid}/ship_to_preferences/{channel_partner_ship_to_preference_oid}'.sub('{' + 'channel_partner_oid' + '}', channel_partner_oid.to_s).sub('{' + 'channel_partner_ship_to_preference_oid' + '}', channel_partner_ship_to_preference_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ChannelPartnerShipToPreferenceResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ChannelPartnerApi#get_channel_partner_ship_to_preference\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Retrieve the ship to preferences associated with the channel partner.
+    # Retrieve the ship to preferences associated with the channel partner. 
+    # @param channel_partner_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [ChannelPartnerShipToPreferencesResponse]
+    def get_channel_partner_ship_to_preferences(channel_partner_oid, opts = {})
+      data, _status_code, _headers = get_channel_partner_ship_to_preferences_with_http_info(channel_partner_oid, opts)
+      data
+    end
+
+    # Retrieve the ship to preferences associated with the channel partner.
+    # Retrieve the ship to preferences associated with the channel partner. 
+    # @param channel_partner_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ChannelPartnerShipToPreferencesResponse, Fixnum, Hash)>] ChannelPartnerShipToPreferencesResponse data, response status code and response headers
+    def get_channel_partner_ship_to_preferences_with_http_info(channel_partner_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ChannelPartnerApi.get_channel_partner_ship_to_preferences ...'
+      end
+      # verify the required parameter 'channel_partner_oid' is set
+      if @api_client.config.client_side_validation && channel_partner_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'channel_partner_oid' when calling ChannelPartnerApi.get_channel_partner_ship_to_preferences"
+      end
+      # resource path
+      local_var_path = '/channel_partner/channel_partners/{channel_partner_oid}/ship_to_preferences'.sub('{' + 'channel_partner_oid' + '}', channel_partner_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ChannelPartnerShipToPreferencesResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ChannelPartnerApi#get_channel_partner_ship_to_preferences\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Retrieve the channel partners configured on the account.
+    # Retrieve the channel partners configured on the account. 
+    # @param [Hash] opts the optional parameters
+    # @return [ChannelPartnersResponse]
+    def get_channel_partners(opts = {})
+      data, _status_code, _headers = get_channel_partners_with_http_info(opts)
+      data
+    end
+
+    # Retrieve the channel partners configured on the account.
+    # Retrieve the channel partners configured on the account. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ChannelPartnersResponse, Fixnum, Hash)>] ChannelPartnersResponse data, response status code and response headers
+    def get_channel_partners_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ChannelPartnerApi.get_channel_partners ...'
+      end
+      # resource path
+      local_var_path = '/channel_partner/channel_partners'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ChannelPartnersResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ChannelPartnerApi#get_channel_partners\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Insert channel partner order
     # Insert order from a channel partner. 
     # @param channel_partner_order Order to insert
@@ -304,6 +529,134 @@ module UltracartClient
         :return_type => 'ChannelPartnerImportResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ChannelPartnerApi#import_channel_partner_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Insert a ship to preference record for the channel partner.
+    # Insert a ship to preference record for the channel partner. 
+    # @param channel_partner_oid 
+    # @param ship_to_preference Ship to preference to create
+    # @param [Hash] opts the optional parameters
+    # @return [ChannelPartnerShipToPreferenceResponse]
+    def insert_channel_partner_ship_to_preference(channel_partner_oid, ship_to_preference, opts = {})
+      data, _status_code, _headers = insert_channel_partner_ship_to_preference_with_http_info(channel_partner_oid, ship_to_preference, opts)
+      data
+    end
+
+    # Insert a ship to preference record for the channel partner.
+    # Insert a ship to preference record for the channel partner. 
+    # @param channel_partner_oid 
+    # @param ship_to_preference Ship to preference to create
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ChannelPartnerShipToPreferenceResponse, Fixnum, Hash)>] ChannelPartnerShipToPreferenceResponse data, response status code and response headers
+    def insert_channel_partner_ship_to_preference_with_http_info(channel_partner_oid, ship_to_preference, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ChannelPartnerApi.insert_channel_partner_ship_to_preference ...'
+      end
+      # verify the required parameter 'channel_partner_oid' is set
+      if @api_client.config.client_side_validation && channel_partner_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'channel_partner_oid' when calling ChannelPartnerApi.insert_channel_partner_ship_to_preference"
+      end
+      # verify the required parameter 'ship_to_preference' is set
+      if @api_client.config.client_side_validation && ship_to_preference.nil?
+        fail ArgumentError, "Missing the required parameter 'ship_to_preference' when calling ChannelPartnerApi.insert_channel_partner_ship_to_preference"
+      end
+      # resource path
+      local_var_path = '/channel_partner/channel_partners/{channel_partner_oid}/ship_to_preferences'.sub('{' + 'channel_partner_oid' + '}', channel_partner_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(ship_to_preference)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ChannelPartnerShipToPreferenceResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ChannelPartnerApi#insert_channel_partner_ship_to_preference\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update a ship to preference record for the channel partner.
+    # Update a ship to preference record for the channel partner. 
+    # @param channel_partner_oid 
+    # @param channel_partner_ship_to_preference_oid 
+    # @param ship_to_preference Ship to preference to create
+    # @param [Hash] opts the optional parameters
+    # @return [ChannelPartnerShipToPreferenceResponse]
+    def update_channel_partner_ship_to_preference(channel_partner_oid, channel_partner_ship_to_preference_oid, ship_to_preference, opts = {})
+      data, _status_code, _headers = update_channel_partner_ship_to_preference_with_http_info(channel_partner_oid, channel_partner_ship_to_preference_oid, ship_to_preference, opts)
+      data
+    end
+
+    # Update a ship to preference record for the channel partner.
+    # Update a ship to preference record for the channel partner. 
+    # @param channel_partner_oid 
+    # @param channel_partner_ship_to_preference_oid 
+    # @param ship_to_preference Ship to preference to create
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ChannelPartnerShipToPreferenceResponse, Fixnum, Hash)>] ChannelPartnerShipToPreferenceResponse data, response status code and response headers
+    def update_channel_partner_ship_to_preference_with_http_info(channel_partner_oid, channel_partner_ship_to_preference_oid, ship_to_preference, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ChannelPartnerApi.update_channel_partner_ship_to_preference ...'
+      end
+      # verify the required parameter 'channel_partner_oid' is set
+      if @api_client.config.client_side_validation && channel_partner_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'channel_partner_oid' when calling ChannelPartnerApi.update_channel_partner_ship_to_preference"
+      end
+      # verify the required parameter 'channel_partner_ship_to_preference_oid' is set
+      if @api_client.config.client_side_validation && channel_partner_ship_to_preference_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'channel_partner_ship_to_preference_oid' when calling ChannelPartnerApi.update_channel_partner_ship_to_preference"
+      end
+      # verify the required parameter 'ship_to_preference' is set
+      if @api_client.config.client_side_validation && ship_to_preference.nil?
+        fail ArgumentError, "Missing the required parameter 'ship_to_preference' when calling ChannelPartnerApi.update_channel_partner_ship_to_preference"
+      end
+      # resource path
+      local_var_path = '/channel_partner/channel_partners/{channel_partner_oid}/ship_to_preferences/{channel_partner_ship_to_preference_oid}'.sub('{' + 'channel_partner_oid' + '}', channel_partner_oid.to_s).sub('{' + 'channel_partner_ship_to_preference_oid' + '}', channel_partner_ship_to_preference_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(ship_to_preference)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ChannelPartnerShipToPreferenceResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ChannelPartnerApi#update_channel_partner_ship_to_preference\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
