@@ -29,6 +29,9 @@ module UltracartClient
     # The distribution center code where inventory is reduced from for this sale.
     attr_accessor :distribution_center_code
 
+    # External Id useful for syncing with a remote filesystem, this may be an MD5 hash or whatever suits your needs.
+    attr_accessor :external_id
+
     # Merchant ID that owns this location
     attr_accessor :merchant_id
 
@@ -49,6 +52,7 @@ module UltracartClient
         :'city' => :'city',
         :'country' => :'country',
         :'distribution_center_code' => :'distribution_center_code',
+        :'external_id' => :'external_id',
         :'merchant_id' => :'merchant_id',
         :'pos_location_oid' => :'pos_location_oid',
         :'postal_code' => :'postal_code',
@@ -64,6 +68,7 @@ module UltracartClient
         :'city' => :'String',
         :'country' => :'String',
         :'distribution_center_code' => :'String',
+        :'external_id' => :'String',
         :'merchant_id' => :'String',
         :'pos_location_oid' => :'Integer',
         :'postal_code' => :'String',
@@ -99,6 +104,10 @@ module UltracartClient
         self.distribution_center_code = attributes[:'distribution_center_code']
       end
 
+      if attributes.has_key?(:'external_id')
+        self.external_id = attributes[:'external_id']
+      end
+
       if attributes.has_key?(:'merchant_id')
         self.merchant_id = attributes[:'merchant_id']
       end
@@ -120,13 +129,28 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@external_id.nil? && @external_id.to_s.length > 100
+        invalid_properties.push('invalid value for "external_id", the character length must be smaller than or equal to 100.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@external_id.nil? && @external_id.to_s.length > 100
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] external_id Value to be assigned
+    def external_id=(external_id)
+      if !external_id.nil? && external_id.to_s.length > 100
+        fail ArgumentError, 'invalid value for "external_id", the character length must be smaller than or equal to 100.'
+      end
+
+      @external_id = external_id
     end
 
     # Checks equality by comparing each attribute.
@@ -139,6 +163,7 @@ module UltracartClient
           city == o.city &&
           country == o.country &&
           distribution_center_code == o.distribution_center_code &&
+          external_id == o.external_id &&
           merchant_id == o.merchant_id &&
           pos_location_oid == o.pos_location_oid &&
           postal_code == o.postal_code &&
@@ -154,7 +179,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [adddress2, address1, city, country, distribution_center_code, merchant_id, pos_location_oid, postal_code, state_province].hash
+      [adddress2, address1, city, country, distribution_center_code, external_id, merchant_id, pos_location_oid, postal_code, state_province].hash
     end
 
     # Builds the object from hash
