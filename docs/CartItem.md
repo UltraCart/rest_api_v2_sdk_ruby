@@ -24,6 +24,7 @@
 | **phsyical** | [**CartItemPhysical**](CartItemPhysical.md) |  | [optional] |
 | **position** | **Integer** | Position of the item in the cart | [optional] |
 | **preorder** | **Boolean** | True if this item is on pre-order | [optional] |
+| **properties** | [**Array&lt;CartItemProperty&gt;**](CartItemProperty.md) | Properties associated with the item | [optional] |
 | **quantity** | **Float** | quantity | [optional] |
 | **schedules** | **Array&lt;String&gt;** | Customer selectable auto order schedules | [optional] |
 | **total_cost** | [**Currency**](Currency.md) |  | [optional] |
@@ -60,6 +61,7 @@ instance = UltracartClient::CartItem.new(
   phsyical: null,
   position: null,
   preorder: null,
+  properties: null,
   quantity: null,
   schedules: null,
   total_cost: null,

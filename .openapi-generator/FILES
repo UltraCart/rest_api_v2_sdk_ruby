@@ -69,6 +69,7 @@ docs/CartItemMultimediaThumbnail.md
 docs/CartItemOption.md
 docs/CartItemOptionValue.md
 docs/CartItemPhysical.md
+docs/CartItemProperty.md
 docs/CartItemVariationSelection.md
 docs/CartKitComponentOption.md
 docs/CartMarketing.md
@@ -835,6 +836,7 @@ lib/ultracart_api/models/cart_item_multimedia_thumbnail.rb
 lib/ultracart_api/models/cart_item_option.rb
 lib/ultracart_api/models/cart_item_option_value.rb
 lib/ultracart_api/models/cart_item_physical.rb
+lib/ultracart_api/models/cart_item_property.rb
 lib/ultracart_api/models/cart_item_variation_selection.rb
 lib/ultracart_api/models/cart_kit_component_option.rb
 lib/ultracart_api/models/cart_marketing.rb
