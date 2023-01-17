@@ -70,6 +70,9 @@ module UltracartClient
     # True if this item is on pre-order
     attr_accessor :preorder
 
+    # Properties associated with the item
+    attr_accessor :properties
+
     # quantity
     attr_accessor :quantity
 
@@ -116,6 +119,7 @@ module UltracartClient
         :'phsyical' => :'phsyical',
         :'position' => :'position',
         :'preorder' => :'preorder',
+        :'properties' => :'properties',
         :'quantity' => :'quantity',
         :'schedules' => :'schedules',
         :'total_cost' => :'total_cost',
@@ -151,6 +155,7 @@ module UltracartClient
         :'phsyical' => :'CartItemPhysical',
         :'position' => :'Integer',
         :'preorder' => :'BOOLEAN',
+        :'properties' => :'Array<CartItemProperty>',
         :'quantity' => :'Float',
         :'schedules' => :'Array<String>',
         :'total_cost' => :'Currency',
@@ -259,6 +264,12 @@ module UltracartClient
         self.preorder = attributes[:'preorder']
       end
 
+      if attributes.has_key?(:'properties')
+        if (value = attributes[:'properties']).is_a?(Array)
+          self.properties = value
+        end
+      end
+
       if attributes.has_key?(:'quantity')
         self.quantity = attributes[:'quantity']
       end
@@ -338,6 +349,7 @@ module UltracartClient
           phsyical == o.phsyical &&
           position == o.position &&
           preorder == o.preorder &&
+          properties == o.properties &&
           quantity == o.quantity &&
           schedules == o.schedules &&
           total_cost == o.total_cost &&
@@ -358,7 +370,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [arbitrary_unit_cost, attributes, auto_order_schedule, default_image_url, default_thumbnail_url, description, discount, extended_description, item_id, item_oid, kit, kit_component_options, manufacturer_suggested_retail_price, maximum_quantity, minimum_quantity, multimedia, options, phsyical, position, preorder, quantity, schedules, total_cost, total_cost_with_discount, unit_cost, unit_cost_with_discount, upsell, variations, view_url].hash
+      [arbitrary_unit_cost, attributes, auto_order_schedule, default_image_url, default_thumbnail_url, description, discount, extended_description, item_id, item_oid, kit, kit_component_options, manufacturer_suggested_retail_price, maximum_quantity, minimum_quantity, multimedia, options, phsyical, position, preorder, properties, quantity, schedules, total_cost, total_cost_with_discount, unit_cost, unit_cost_with_discount, upsell, variations, view_url].hash
     end
 
     # Builds the object from hash
