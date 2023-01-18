@@ -19,6 +19,8 @@ module UltracartClient
 
     attr_accessor :department_name
 
+    attr_accessor :members
+
     attr_accessor :merchant_id
 
     attr_accessor :settings
@@ -28,6 +30,7 @@ module UltracartClient
       {
         :'conversation_department_oid' => :'conversation_department_oid',
         :'department_name' => :'department_name',
+        :'members' => :'members',
         :'merchant_id' => :'merchant_id',
         :'settings' => :'settings'
       }
@@ -43,6 +46,7 @@ module UltracartClient
       {
         :'conversation_department_oid' => :'Integer',
         :'department_name' => :'String',
+        :'members' => :'Array<ConversationDepartmentMember>',
         :'merchant_id' => :'String',
         :'settings' => :'Object'
       }
@@ -77,6 +81,12 @@ module UltracartClient
         self.department_name = attributes[:'department_name']
       end
 
+      if attributes.key?(:'members')
+        if (value = attributes[:'members']).is_a?(Array)
+          self.members = value
+        end
+      end
+
       if attributes.key?(:'merchant_id')
         self.merchant_id = attributes[:'merchant_id']
       end
@@ -106,6 +116,7 @@ module UltracartClient
       self.class == o.class &&
           conversation_department_oid == o.conversation_department_oid &&
           department_name == o.department_name &&
+          members == o.members &&
           merchant_id == o.merchant_id &&
           settings == o.settings
     end
@@ -119,7 +130,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_department_oid, department_name, merchant_id, settings].hash
+      [conversation_department_oid, department_name, members, merchant_id, settings].hash
     end
 
     # Builds the object from hash

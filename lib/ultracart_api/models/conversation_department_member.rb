@@ -14,29 +14,19 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationDepartmentsResponse
-    attr_accessor :conversation_departments
+  class ConversationDepartmentMember
+    attr_accessor :member
 
-    attr_accessor :error
+    attr_accessor :name
 
-    attr_accessor :metadata
-
-    attr_accessor :read_only
-
-    # Indicates if API call was successful
-    attr_accessor :success
-
-    attr_accessor :warning
+    attr_accessor :user_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'conversation_departments' => :'conversation_departments',
-        :'error' => :'error',
-        :'metadata' => :'metadata',
-        :'read_only' => :'read_only',
-        :'success' => :'success',
-        :'warning' => :'warning'
+        :'member' => :'member',
+        :'name' => :'name',
+        :'user_id' => :'user_id'
       }
     end
 
@@ -48,12 +38,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'conversation_departments' => :'Array<ConversationDepartment>',
-        :'error' => :'Error',
-        :'metadata' => :'ResponseMetadata',
-        :'read_only' => :'Boolean',
-        :'success' => :'Boolean',
-        :'warning' => :'Warning'
+        :'member' => :'Boolean',
+        :'name' => :'String',
+        :'user_id' => :'Integer'
       }
     end
 
@@ -67,41 +54,27 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationDepartmentsResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationDepartmentMember` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationDepartmentsResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationDepartmentMember`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'conversation_departments')
-        if (value = attributes[:'conversation_departments']).is_a?(Array)
-          self.conversation_departments = value
-        end
+      if attributes.key?(:'member')
+        self.member = attributes[:'member']
       end
 
-      if attributes.key?(:'error')
-        self.error = attributes[:'error']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.key?(:'read_only')
-        self.read_only = attributes[:'read_only']
-      end
-
-      if attributes.key?(:'success')
-        self.success = attributes[:'success']
-      end
-
-      if attributes.key?(:'warning')
-        self.warning = attributes[:'warning']
+      if attributes.key?(:'user_id')
+        self.user_id = attributes[:'user_id']
       end
     end
 
@@ -123,12 +96,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          conversation_departments == o.conversation_departments &&
-          error == o.error &&
-          metadata == o.metadata &&
-          read_only == o.read_only &&
-          success == o.success &&
-          warning == o.warning
+          member == o.member &&
+          name == o.name &&
+          user_id == o.user_id
     end
 
     # @see the `==` method
@@ -140,7 +110,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_departments, error, metadata, read_only, success, warning].hash
+      [member, name, user_id].hash
     end
 
     # Builds the object from hash
