@@ -24,6 +24,9 @@ module UltracartClient
     # Object identifier for the ship to preference
     attr_accessor :channel_partner_ship_to_preference_oid
 
+    # A description that is meaningful to the merchant.
+    attr_accessor :description
+
     # The merchant id that owns the channel partner
     attr_accessor :merchant_id
 
@@ -39,6 +42,7 @@ module UltracartClient
         :'additional_kit_component_item_ids' => :'additional_kit_component_item_ids',
         :'channel_partner_oid' => :'channel_partner_oid',
         :'channel_partner_ship_to_preference_oid' => :'channel_partner_ship_to_preference_oid',
+        :'description' => :'description',
         :'merchant_id' => :'merchant_id',
         :'return_policy' => :'return_policy',
         :'ship_to_edi_code' => :'ship_to_edi_code'
@@ -56,6 +60,7 @@ module UltracartClient
         :'additional_kit_component_item_ids' => :'Array<String>',
         :'channel_partner_oid' => :'Integer',
         :'channel_partner_ship_to_preference_oid' => :'Integer',
+        :'description' => :'String',
         :'merchant_id' => :'String',
         :'return_policy' => :'String',
         :'ship_to_edi_code' => :'String'
@@ -97,6 +102,10 @@ module UltracartClient
         self.channel_partner_ship_to_preference_oid = attributes[:'channel_partner_ship_to_preference_oid']
       end
 
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
       if attributes.key?(:'merchant_id')
         self.merchant_id = attributes[:'merchant_id']
       end
@@ -114,13 +123,28 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@description.nil? && @description.to_s.length > 100
+        invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 100.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@description.nil? && @description.to_s.length > 100
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+      if !description.nil? && description.to_s.length > 100
+        fail ArgumentError, 'invalid value for "description", the character length must be smaller than or equal to 100.'
+      end
+
+      @description = description
     end
 
     # Checks equality by comparing each attribute.
@@ -131,6 +155,7 @@ module UltracartClient
           additional_kit_component_item_ids == o.additional_kit_component_item_ids &&
           channel_partner_oid == o.channel_partner_oid &&
           channel_partner_ship_to_preference_oid == o.channel_partner_ship_to_preference_oid &&
+          description == o.description &&
           merchant_id == o.merchant_id &&
           return_policy == o.return_policy &&
           ship_to_edi_code == o.ship_to_edi_code
@@ -145,7 +170,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [additional_kit_component_item_ids, channel_partner_oid, channel_partner_ship_to_preference_oid, merchant_id, return_policy, ship_to_edi_code].hash
+      [additional_kit_component_item_ids, channel_partner_oid, channel_partner_ship_to_preference_oid, description, merchant_id, return_policy, ship_to_edi_code].hash
     end
 
     # Builds the object from hash
