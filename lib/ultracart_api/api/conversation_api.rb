@@ -529,6 +529,64 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Retrieve a list of possible department members
+    # Retrieve a list of possible department members 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationDepartmentMembersResponse]
+    def get_conversation_department_member_list(opts = {})
+      data, _status_code, _headers = get_conversation_department_member_list_with_http_info(opts)
+      data
+    end
+
+    # Retrieve a list of possible department members
+    # Retrieve a list of possible department members 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationDepartmentMembersResponse, Integer, Hash)>] ConversationDepartmentMembersResponse data, response status code and response headers
+    def get_conversation_department_member_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_conversation_department_member_list ...'
+      end
+      # resource path
+      local_var_path = '/conversation/department_members'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationDepartmentMembersResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_conversation_department_member_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_conversation_department_member_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a list of departments ordered by name
     # Retrieve a list of departments ordered by name 
     # @param [Hash] opts the optional parameters
