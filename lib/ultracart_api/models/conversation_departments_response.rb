@@ -20,6 +20,8 @@ module UltracartClient
 
     attr_accessor :metadata
 
+    attr_accessor :read_only
+
     # Indicates if API call was successful
     attr_accessor :success
 
@@ -31,6 +33,7 @@ module UltracartClient
         :'conversation_departments' => :'conversation_departments',
         :'error' => :'error',
         :'metadata' => :'metadata',
+        :'read_only' => :'read_only',
         :'success' => :'success',
         :'warning' => :'warning'
       }
@@ -42,6 +45,7 @@ module UltracartClient
         :'conversation_departments' => :'Array<ConversationDepartment>',
         :'error' => :'Error',
         :'metadata' => :'ResponseMetadata',
+        :'read_only' => :'BOOLEAN',
         :'success' => :'BOOLEAN',
         :'warning' => :'Warning'
       }
@@ -67,6 +71,10 @@ module UltracartClient
 
       if attributes.has_key?(:'metadata')
         self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.has_key?(:'read_only')
+        self.read_only = attributes[:'read_only']
       end
 
       if attributes.has_key?(:'success')
@@ -99,6 +107,7 @@ module UltracartClient
           conversation_departments == o.conversation_departments &&
           error == o.error &&
           metadata == o.metadata &&
+          read_only == o.read_only &&
           success == o.success &&
           warning == o.warning
     end
@@ -112,7 +121,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_departments, error, metadata, success, warning].hash
+      [conversation_departments, error, metadata, read_only, success, warning].hash
     end
 
     # Builds the object from hash

@@ -13,36 +13,28 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ConversationDepartment
-    attr_accessor :conversation_department_oid
+  class ConversationDepartmentMember
+    attr_accessor :member
 
-    attr_accessor :department_name
+    attr_accessor :name
 
-    attr_accessor :members
-
-    attr_accessor :merchant_id
-
-    attr_accessor :settings
+    attr_accessor :user_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'conversation_department_oid' => :'conversation_department_oid',
-        :'department_name' => :'department_name',
-        :'members' => :'members',
-        :'merchant_id' => :'merchant_id',
-        :'settings' => :'settings'
+        :'member' => :'member',
+        :'name' => :'name',
+        :'user_id' => :'user_id'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'conversation_department_oid' => :'Integer',
-        :'department_name' => :'String',
-        :'members' => :'Array<ConversationDepartmentMember>',
-        :'merchant_id' => :'String',
-        :'settings' => :'ConversationDepartmentSettings'
+        :'member' => :'BOOLEAN',
+        :'name' => :'String',
+        :'user_id' => :'Integer'
       }
     end
 
@@ -54,26 +46,16 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'conversation_department_oid')
-        self.conversation_department_oid = attributes[:'conversation_department_oid']
+      if attributes.has_key?(:'member')
+        self.member = attributes[:'member']
       end
 
-      if attributes.has_key?(:'department_name')
-        self.department_name = attributes[:'department_name']
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'members')
-        if (value = attributes[:'members']).is_a?(Array)
-          self.members = value
-        end
-      end
-
-      if attributes.has_key?(:'merchant_id')
-        self.merchant_id = attributes[:'merchant_id']
-      end
-
-      if attributes.has_key?(:'settings')
-        self.settings = attributes[:'settings']
+      if attributes.has_key?(:'user_id')
+        self.user_id = attributes[:'user_id']
       end
     end
 
@@ -95,11 +77,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          conversation_department_oid == o.conversation_department_oid &&
-          department_name == o.department_name &&
-          members == o.members &&
-          merchant_id == o.merchant_id &&
-          settings == o.settings
+          member == o.member &&
+          name == o.name &&
+          user_id == o.user_id
     end
 
     # @see the `==` method
@@ -111,7 +91,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_department_oid, department_name, members, merchant_id, settings].hash
+      [member, name, user_id].hash
     end
 
     # Builds the object from hash
