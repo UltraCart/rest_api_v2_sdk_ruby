@@ -13,12 +13,12 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ConversationDepartmentsResponse
-    attr_accessor :conversation_departments
-
+  class ConversationPermissionsResponse
     attr_accessor :error
 
     attr_accessor :metadata
+
+    attr_accessor :permissions
 
     # Indicates if API call was successful
     attr_accessor :success
@@ -28,9 +28,9 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'conversation_departments' => :'conversation_departments',
         :'error' => :'error',
         :'metadata' => :'metadata',
+        :'permissions' => :'permissions',
         :'success' => :'success',
         :'warning' => :'warning'
       }
@@ -39,9 +39,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'conversation_departments' => :'Array<ConversationDepartment>',
         :'error' => :'Error',
         :'metadata' => :'ResponseMetadata',
+        :'permissions' => :'ConversationPermissions',
         :'success' => :'BOOLEAN',
         :'warning' => :'Warning'
       }
@@ -55,18 +55,16 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'conversation_departments')
-        if (value = attributes[:'conversation_departments']).is_a?(Array)
-          self.conversation_departments = value
-        end
-      end
-
       if attributes.has_key?(:'error')
         self.error = attributes[:'error']
       end
 
       if attributes.has_key?(:'metadata')
         self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.has_key?(:'permissions')
+        self.permissions = attributes[:'permissions']
       end
 
       if attributes.has_key?(:'success')
@@ -96,9 +94,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          conversation_departments == o.conversation_departments &&
           error == o.error &&
           metadata == o.metadata &&
+          permissions == o.permissions &&
           success == o.success &&
           warning == o.warning
     end
@@ -112,7 +110,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_departments, error, metadata, success, warning].hash
+      [error, metadata, permissions, success, warning].hash
     end
 
     # Builds the object from hash
