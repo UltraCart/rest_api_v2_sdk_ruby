@@ -1,12 +1,12 @@
-# UltracartClient::ConversationDepartmentsResponse
+# UltracartClient::ConversationPermissionsResponse
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **conversation_departments** | [**Array&lt;ConversationDepartment&gt;**](ConversationDepartment.md) |  | [optional] |
 | **error** | [**Error**](Error.md) |  | [optional] |
 | **metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] |
+| **permissions** | [**ConversationPermissions**](ConversationPermissions.md) |  | [optional] |
 | **success** | **Boolean** | Indicates if API call was successful | [optional] |
 | **warning** | [**Warning**](Warning.md) |  | [optional] |
 
@@ -15,10 +15,10 @@
 ```ruby
 require 'ultracart_api'
 
-instance = UltracartClient::ConversationDepartmentsResponse.new(
-  conversation_departments: null,
+instance = UltracartClient::ConversationPermissionsResponse.new(
   error: null,
   metadata: null,
+  permissions: null,
   success: null,
   warning: null
 )

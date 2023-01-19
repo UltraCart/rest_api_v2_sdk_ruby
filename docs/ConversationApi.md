@@ -17,6 +17,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_conversation_engagements**](ConversationApi.md#get_conversation_engagements) | **GET** /conversation/engagements | Retrieve a list of engagements ordered by name |
 | [**get_conversation_messages**](ConversationApi.md#get_conversation_messages) | **GET** /conversation/conversations/{conversation_uuid}/messages/{since} | Retrieve conversation messages |
 | [**get_conversation_multimedia_upload_url**](ConversationApi.md#get_conversation_multimedia_upload_url) | **GET** /conversation/upload_url/{extension} | Get a presigned conersation multimedia upload URL |
+| [**get_conversation_permissions**](ConversationApi.md#get_conversation_permissions) | **GET** /conversation/permissions | Retrieve conversation permissions |
 | [**get_conversation_webchat_queue_statuses**](ConversationApi.md#get_conversation_webchat_queue_statuses) | **GET** /conversation/conversations/queues/statuses | Retrieve a conversation webchat queue statuses |
 | [**get_conversations**](ConversationApi.md#get_conversations) | **GET** /conversation/conversations | Retrieve a list of conversation summaries newest to oldest |
 | [**get_conversations_autocomplete**](ConversationApi.md#get_conversations_autocomplete) | **POST** /conversation/conversations/autocomplete | Retrieve a list of matching terms for a search field |
@@ -935,6 +936,74 @@ end
 ### Return type
 
 [**ConversationMultimediaUploadUrlResponse**](ConversationMultimediaUploadUrlResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_permissions
+
+> <ConversationPermissionsResponse> get_conversation_permissions
+
+Retrieve conversation permissions
+
+Retrieve conversation permissions 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+
+begin
+  # Retrieve conversation permissions
+  result = api_instance.get_conversation_permissions
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_permissions: #{e}"
+end
+```
+
+#### Using the get_conversation_permissions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPermissionsResponse>, Integer, Hash)> get_conversation_permissions_with_http_info
+
+```ruby
+begin
+  # Retrieve conversation permissions
+  data, status_code, headers = api_instance.get_conversation_permissions_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPermissionsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_permissions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPermissionsResponse**](ConversationPermissionsResponse.md)
 
 ### Authorization
 
