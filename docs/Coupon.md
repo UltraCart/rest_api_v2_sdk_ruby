@@ -60,6 +60,7 @@
 | **restrict_by_postal_codes** | **Array&lt;String&gt;** | Optional list of postal codes which restrict a coupon to within these postal codes. | [optional] |
 | **restrict_by_screen_branding_theme_codes** | [**Array&lt;CouponRestriction&gt;**](CouponRestriction.md) | Optional list of legacy screen branding theme codes to limit coupon use to only those themes. | [optional] |
 | **restrict_by_storefronts** | [**Array&lt;CouponRestriction&gt;**](CouponRestriction.md) | Optional list of storefronts to limit coupon use to only those storefronts. | [optional] |
+| **skip_on_rebill** | **Boolean** | Skip this coupon when it is on a rebill of an auto order. | [optional] |
 | **start_dts** | **String** | Date/time when coupon is valid | [optional] |
 | **super_coupon** | **Boolean** | If true, this coupon can be used with ANY other coupon regardless of the other coupons configuration | [optional] |
 | **tiered_amount_off_items** | [**CouponTieredAmountOffItems**](CouponTieredAmountOffItems.md) |  | [optional] |
@@ -132,6 +133,7 @@ instance = UltracartClient::Coupon.new(
   restrict_by_postal_codes: null,
   restrict_by_screen_branding_theme_codes: null,
   restrict_by_storefronts: null,
+  skip_on_rebill: null,
   start_dts: null,
   super_coupon: null,
   tiered_amount_off_items: null,
