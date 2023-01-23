@@ -14,34 +14,26 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class OrderInternal
-    # True if the order has been exported to QuickBooks. If QuickBooks is not configured, then this will already be true
-    attr_accessor :exported_to_accounting
+  class OrderTransactionalMerchantNote
+    # IP Address
+    attr_accessor :ip_address
 
-    # Merchant notes.  Full notes in non-transactional mode.  Just used to write a new merchant note when transaction merchant notes enabled.
-    attr_accessor :merchant_notes
+    # note
+    attr_accessor :note
 
-    # If placed via the BEOE, this is the user that placed the order
-    attr_accessor :placed_by_user
+    # Timestamp when the note was added
+    attr_accessor :note_dts
 
-    # User that issued the refund
-    attr_accessor :refund_by_user
-
-    # Sales rep code associated with the order
-    attr_accessor :sales_rep_code
-
-    # Transactional merchant notes
-    attr_accessor :transactional_merchant_notes
+    # User that wrote the merchant note
+    attr_accessor :user
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'exported_to_accounting' => :'exported_to_accounting',
-        :'merchant_notes' => :'merchant_notes',
-        :'placed_by_user' => :'placed_by_user',
-        :'refund_by_user' => :'refund_by_user',
-        :'sales_rep_code' => :'sales_rep_code',
-        :'transactional_merchant_notes' => :'transactional_merchant_notes'
+        :'ip_address' => :'ip_address',
+        :'note' => :'note',
+        :'note_dts' => :'note_dts',
+        :'user' => :'user'
       }
     end
 
@@ -53,12 +45,10 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'exported_to_accounting' => :'Boolean',
-        :'merchant_notes' => :'String',
-        :'placed_by_user' => :'String',
-        :'refund_by_user' => :'String',
-        :'sales_rep_code' => :'String',
-        :'transactional_merchant_notes' => :'Array<OrderTransactionalMerchantNote>'
+        :'ip_address' => :'String',
+        :'note' => :'String',
+        :'note_dts' => :'String',
+        :'user' => :'String'
       }
     end
 
@@ -72,41 +62,31 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::OrderInternal` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::OrderTransactionalMerchantNote` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::OrderInternal`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::OrderTransactionalMerchantNote`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'exported_to_accounting')
-        self.exported_to_accounting = attributes[:'exported_to_accounting']
+      if attributes.key?(:'ip_address')
+        self.ip_address = attributes[:'ip_address']
       end
 
-      if attributes.key?(:'merchant_notes')
-        self.merchant_notes = attributes[:'merchant_notes']
+      if attributes.key?(:'note')
+        self.note = attributes[:'note']
       end
 
-      if attributes.key?(:'placed_by_user')
-        self.placed_by_user = attributes[:'placed_by_user']
+      if attributes.key?(:'note_dts')
+        self.note_dts = attributes[:'note_dts']
       end
 
-      if attributes.key?(:'refund_by_user')
-        self.refund_by_user = attributes[:'refund_by_user']
-      end
-
-      if attributes.key?(:'sales_rep_code')
-        self.sales_rep_code = attributes[:'sales_rep_code']
-      end
-
-      if attributes.key?(:'transactional_merchant_notes')
-        if (value = attributes[:'transactional_merchant_notes']).is_a?(Array)
-          self.transactional_merchant_notes = value
-        end
+      if attributes.key?(:'user')
+        self.user = attributes[:'user']
       end
     end
 
@@ -114,28 +94,13 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@sales_rep_code.nil? && @sales_rep_code.to_s.length > 10
-        invalid_properties.push('invalid value for "sales_rep_code", the character length must be smaller than or equal to 10.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@sales_rep_code.nil? && @sales_rep_code.to_s.length > 10
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] sales_rep_code Value to be assigned
-    def sales_rep_code=(sales_rep_code)
-      if !sales_rep_code.nil? && sales_rep_code.to_s.length > 10
-        fail ArgumentError, 'invalid value for "sales_rep_code", the character length must be smaller than or equal to 10.'
-      end
-
-      @sales_rep_code = sales_rep_code
     end
 
     # Checks equality by comparing each attribute.
@@ -143,12 +108,10 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          exported_to_accounting == o.exported_to_accounting &&
-          merchant_notes == o.merchant_notes &&
-          placed_by_user == o.placed_by_user &&
-          refund_by_user == o.refund_by_user &&
-          sales_rep_code == o.sales_rep_code &&
-          transactional_merchant_notes == o.transactional_merchant_notes
+          ip_address == o.ip_address &&
+          note == o.note &&
+          note_dts == o.note_dts &&
+          user == o.user
     end
 
     # @see the `==` method
@@ -160,7 +123,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [exported_to_accounting, merchant_notes, placed_by_user, refund_by_user, sales_rep_code, transactional_merchant_notes].hash
+      [ip_address, note, note_dts, user].hash
     end
 
     # Builds the object from hash
