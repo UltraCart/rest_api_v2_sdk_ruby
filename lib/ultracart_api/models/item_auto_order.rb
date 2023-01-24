@@ -21,11 +21,20 @@ module UltracartClient
     # Amount to try and test authorize
     attr_accessor :auth_test_amount
 
+    # If true, the cost of the cancel item will be the remaining balance of the minimum rebill or lifetime value
+    attr_accessor :auto_order_cancel_charge_minimum_balance
+
     # Item id to attempt charging the customer for if they cancel
     attr_accessor :auto_order_cancel_item_id
 
     # Item object identifier to attempt charging the customer for if they cancel
     attr_accessor :auto_order_cancel_item_oid
+
+    # The minimum life time value that must be paid in order to not be charged the cancellation item.
+    attr_accessor :auto_order_cancel_minimum_life_time_value
+
+    # The minimum rebill value that must be paid in order to not be charged the cancellation item.
+    attr_accessor :auto_order_cancel_minimum_rebill_value
 
     # List of downgrade items presented to customer service representatives
     attr_accessor :auto_order_downgrade_items
@@ -71,8 +80,11 @@ module UltracartClient
       {
         :'auth_future_amount' => :'auth_future_amount',
         :'auth_test_amount' => :'auth_test_amount',
+        :'auto_order_cancel_charge_minimum_balance' => :'auto_order_cancel_charge_minimum_balance',
         :'auto_order_cancel_item_id' => :'auto_order_cancel_item_id',
         :'auto_order_cancel_item_oid' => :'auto_order_cancel_item_oid',
+        :'auto_order_cancel_minimum_life_time_value' => :'auto_order_cancel_minimum_life_time_value',
+        :'auto_order_cancel_minimum_rebill_value' => :'auto_order_cancel_minimum_rebill_value',
         :'auto_order_downgrade_items' => :'auto_order_downgrade_items',
         :'auto_order_paused' => :'auto_order_paused',
         :'auto_order_prohibit_expiring_cards' => :'auto_order_prohibit_expiring_cards',
@@ -99,8 +111,11 @@ module UltracartClient
       {
         :'auth_future_amount' => :'Float',
         :'auth_test_amount' => :'Float',
+        :'auto_order_cancel_charge_minimum_balance' => :'Boolean',
         :'auto_order_cancel_item_id' => :'String',
         :'auto_order_cancel_item_oid' => :'Integer',
+        :'auto_order_cancel_minimum_life_time_value' => :'Float',
+        :'auto_order_cancel_minimum_rebill_value' => :'Float',
         :'auto_order_downgrade_items' => :'Array<String>',
         :'auto_order_paused' => :'Boolean',
         :'auto_order_prohibit_expiring_cards' => :'Integer',
@@ -146,12 +161,24 @@ module UltracartClient
         self.auth_test_amount = attributes[:'auth_test_amount']
       end
 
+      if attributes.key?(:'auto_order_cancel_charge_minimum_balance')
+        self.auto_order_cancel_charge_minimum_balance = attributes[:'auto_order_cancel_charge_minimum_balance']
+      end
+
       if attributes.key?(:'auto_order_cancel_item_id')
         self.auto_order_cancel_item_id = attributes[:'auto_order_cancel_item_id']
       end
 
       if attributes.key?(:'auto_order_cancel_item_oid')
         self.auto_order_cancel_item_oid = attributes[:'auto_order_cancel_item_oid']
+      end
+
+      if attributes.key?(:'auto_order_cancel_minimum_life_time_value')
+        self.auto_order_cancel_minimum_life_time_value = attributes[:'auto_order_cancel_minimum_life_time_value']
+      end
+
+      if attributes.key?(:'auto_order_cancel_minimum_rebill_value')
+        self.auto_order_cancel_minimum_rebill_value = attributes[:'auto_order_cancel_minimum_rebill_value']
       end
 
       if attributes.key?(:'auto_order_downgrade_items')
@@ -250,8 +277,11 @@ module UltracartClient
       self.class == o.class &&
           auth_future_amount == o.auth_future_amount &&
           auth_test_amount == o.auth_test_amount &&
+          auto_order_cancel_charge_minimum_balance == o.auto_order_cancel_charge_minimum_balance &&
           auto_order_cancel_item_id == o.auto_order_cancel_item_id &&
           auto_order_cancel_item_oid == o.auto_order_cancel_item_oid &&
+          auto_order_cancel_minimum_life_time_value == o.auto_order_cancel_minimum_life_time_value &&
+          auto_order_cancel_minimum_rebill_value == o.auto_order_cancel_minimum_rebill_value &&
           auto_order_downgrade_items == o.auto_order_downgrade_items &&
           auto_order_paused == o.auto_order_paused &&
           auto_order_prohibit_expiring_cards == o.auto_order_prohibit_expiring_cards &&
@@ -276,7 +306,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auth_future_amount, auth_test_amount, auto_order_cancel_item_id, auto_order_cancel_item_oid, auto_order_downgrade_items, auto_order_paused, auto_order_prohibit_expiring_cards, auto_order_schedules, auto_order_upgrade_items, auto_order_upsell, auto_order_upsell_no_easy_cancel, auto_order_upsell_one_per_customer, auto_orderable, cancel_other_auto_orders, free_shipping_auto_order, refund_other_auto_orders, steps].hash
+      [auth_future_amount, auth_test_amount, auto_order_cancel_charge_minimum_balance, auto_order_cancel_item_id, auto_order_cancel_item_oid, auto_order_cancel_minimum_life_time_value, auto_order_cancel_minimum_rebill_value, auto_order_downgrade_items, auto_order_paused, auto_order_prohibit_expiring_cards, auto_order_schedules, auto_order_upgrade_items, auto_order_upsell, auto_order_upsell_no_easy_cancel, auto_order_upsell_one_per_customer, auto_orderable, cancel_other_auto_orders, free_shipping_auto_order, refund_other_auto_orders, steps].hash
     end
 
     # Builds the object from hash

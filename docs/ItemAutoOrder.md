@@ -6,8 +6,11 @@
 | ---- | ---- | ----------- | ----- |
 | **auth_future_amount** | **Float** | Amount to try and authorize for the future rebill | [optional] |
 | **auth_test_amount** | **Float** | Amount to try and test authorize | [optional] |
+| **auto_order_cancel_charge_minimum_balance** | **Boolean** | If true, the cost of the cancel item will be the remaining balance of the minimum rebill or lifetime value | [optional] |
 | **auto_order_cancel_item_id** | **String** | Item id to attempt charging the customer for if they cancel | [optional] |
 | **auto_order_cancel_item_oid** | **Integer** | Item object identifier to attempt charging the customer for if they cancel | [optional] |
+| **auto_order_cancel_minimum_life_time_value** | **Float** | The minimum life time value that must be paid in order to not be charged the cancellation item. | [optional] |
+| **auto_order_cancel_minimum_rebill_value** | **Float** | The minimum rebill value that must be paid in order to not be charged the cancellation item. | [optional] |
 | **auto_order_downgrade_items** | **Array&lt;String&gt;** | List of downgrade items presented to customer service representatives | [optional] |
 | **auto_order_paused** | **Boolean** | True if the rebill processing of this item is paused | [optional] |
 | **auto_order_prohibit_expiring_cards** | **Integer** | Minimum number of months before expiration for the card.  Overrides the account level setting if higher.  Set to zero to disable. | [optional] |
@@ -30,8 +33,11 @@ require 'ultracart_api'
 instance = UltracartClient::ItemAutoOrder.new(
   auth_future_amount: null,
   auth_test_amount: null,
+  auto_order_cancel_charge_minimum_balance: null,
   auto_order_cancel_item_id: null,
   auto_order_cancel_item_oid: null,
+  auto_order_cancel_minimum_life_time_value: null,
+  auto_order_cancel_minimum_rebill_value: null,
   auto_order_downgrade_items: null,
   auto_order_paused: null,
   auto_order_prohibit_expiring_cards: null,
