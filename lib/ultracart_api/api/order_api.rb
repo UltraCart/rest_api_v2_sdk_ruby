@@ -321,6 +321,61 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Generate an invoice for this order.
+    # The invoice PDF that is returned is base 64 encoded 
+    # @param order_id Order ID
+    # @param [Hash] opts the optional parameters
+    # @return [OrderInvoiceResponse]
+    def generate_invoice(order_id, opts = {})
+      data, _status_code, _headers = generate_invoice_with_http_info(order_id, opts)
+      data
+    end
+
+    # Generate an invoice for this order.
+    # The invoice PDF that is returned is base 64 encoded 
+    # @param order_id Order ID
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OrderInvoiceResponse, Fixnum, Hash)>] OrderInvoiceResponse data, response status code and response headers
+    def generate_invoice_with_http_info(order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.generate_invoice ...'
+      end
+      # verify the required parameter 'order_id' is set
+      if @api_client.config.client_side_validation && order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.generate_invoice"
+      end
+      # resource path
+      local_var_path = '/order/orders/{order_id}/invoice'.sub('{' + 'order_id' + '}', order_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'OrderInvoiceResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#generate_invoice\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Generate an order token for a given order id
     # Retrieves a single order token for a given order id.  The token can be used with the getOrderByToken API. 
     # @param order_id The order id to generate a token for.
