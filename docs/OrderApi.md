@@ -9,6 +9,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**delete_order**](OrderApi.md#delete_order) | **DELETE** /order/orders/{order_id} | Delete an order |
 | [**duplicate_order**](OrderApi.md#duplicate_order) | **POST** /order/orders/{order_id}/duplicate | Duplicate an order |
 | [**format**](OrderApi.md#format) | **POST** /order/orders/{order_id}/format | Format order |
+| [**generate_invoice**](OrderApi.md#generate_invoice) | **GET** /order/orders/{order_id}/invoice | Generate an invoice for this order. |
 | [**generate_order_token**](OrderApi.md#generate_order_token) | **GET** /order/orders/token/{order_id} | Generate an order token for a given order id |
 | [**generate_packing_slip_all_dc**](OrderApi.md#generate_packing_slip_all_dc) | **GET** /order/orders/{order_id}/packing_slip | Generate a packing slip for this order across all distribution centers. |
 | [**generate_packing_slip_specific_dc**](OrderApi.md#generate_packing_slip_specific_dc) | **GET** /order/orders/{order_id}/packing_slip/{distribution_center_code} | Generate a packing slip for this order for the given distribution center. |
@@ -389,6 +390,77 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## generate_invoice
+
+> <OrderInvoiceResponse> generate_invoice(order_id)
+
+Generate an invoice for this order.
+
+The invoice PDF that is returned is base 64 encoded 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+order_id = 'order_id_example' # String | Order ID
+
+begin
+  # Generate an invoice for this order.
+  result = api_instance.generate_invoice(order_id)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->generate_invoice: #{e}"
+end
+```
+
+#### Using the generate_invoice_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OrderInvoiceResponse>, Integer, Hash)> generate_invoice_with_http_info(order_id)
+
+```ruby
+begin
+  # Generate an invoice for this order.
+  data, status_code, headers = api_instance.generate_invoice_with_http_info(order_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OrderInvoiceResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->generate_invoice_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **order_id** | **String** | Order ID |  |
+
+### Return type
+
+[**OrderInvoiceResponse**](OrderInvoiceResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
