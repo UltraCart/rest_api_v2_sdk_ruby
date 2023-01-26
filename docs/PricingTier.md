@@ -17,6 +17,7 @@
 | **default_tier** | **Boolean** | Default tier | [optional] |
 | **display_on_wholesale_signup** | **Boolean** | Display on wholesale signup | [optional] |
 | **exclude_from_free_promotion** | **Boolean** | Exclude from free promotion | [optional] |
+| **exempt_loyalty_rewards** | **Boolean** | Exempt from Loyalty Rewards | [optional] |
 | **exempt_shipping_handling_charge** | **Boolean** | Exempt shipping handling charge | [optional] |
 | **free_shipping** | **Boolean** | Free shipping | [optional] |
 | **free_shipping_minimum** | **Float** | Free shipping minimum | [optional] |
@@ -55,6 +56,7 @@ instance = UltracartClient::PricingTier.new(
   default_tier: null,
   display_on_wholesale_signup: null,
   exclude_from_free_promotion: null,
+  exempt_loyalty_rewards: null,
   exempt_shipping_handling_charge: null,
   free_shipping: null,
   free_shipping_minimum: null,

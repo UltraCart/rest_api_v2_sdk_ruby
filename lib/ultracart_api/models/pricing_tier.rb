@@ -53,6 +53,9 @@ module UltracartClient
     # Exclude from free promotion
     attr_accessor :exclude_from_free_promotion
 
+    # Exempt from Loyalty Rewards
+    attr_accessor :exempt_loyalty_rewards
+
     # Exempt shipping handling charge
     attr_accessor :exempt_shipping_handling_charge
 
@@ -122,6 +125,7 @@ module UltracartClient
         :'default_tier' => :'default_tier',
         :'display_on_wholesale_signup' => :'display_on_wholesale_signup',
         :'exclude_from_free_promotion' => :'exclude_from_free_promotion',
+        :'exempt_loyalty_rewards' => :'exempt_loyalty_rewards',
         :'exempt_shipping_handling_charge' => :'exempt_shipping_handling_charge',
         :'free_shipping' => :'free_shipping',
         :'free_shipping_minimum' => :'free_shipping_minimum',
@@ -164,6 +168,7 @@ module UltracartClient
         :'default_tier' => :'Boolean',
         :'display_on_wholesale_signup' => :'Boolean',
         :'exclude_from_free_promotion' => :'Boolean',
+        :'exempt_loyalty_rewards' => :'Boolean',
         :'exempt_shipping_handling_charge' => :'Boolean',
         :'free_shipping' => :'Boolean',
         :'free_shipping_minimum' => :'Float',
@@ -256,6 +261,10 @@ module UltracartClient
 
       if attributes.key?(:'exclude_from_free_promotion')
         self.exclude_from_free_promotion = attributes[:'exclude_from_free_promotion']
+      end
+
+      if attributes.key?(:'exempt_loyalty_rewards')
+        self.exempt_loyalty_rewards = attributes[:'exempt_loyalty_rewards']
       end
 
       if attributes.key?(:'exempt_shipping_handling_charge')
@@ -377,6 +386,7 @@ module UltracartClient
           default_tier == o.default_tier &&
           display_on_wholesale_signup == o.display_on_wholesale_signup &&
           exclude_from_free_promotion == o.exclude_from_free_promotion &&
+          exempt_loyalty_rewards == o.exempt_loyalty_rewards &&
           exempt_shipping_handling_charge == o.exempt_shipping_handling_charge &&
           free_shipping == o.free_shipping &&
           free_shipping_minimum == o.free_shipping_minimum &&
@@ -406,7 +416,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allow_3rd_party_billing, allow_cod, allow_purchase_order, allow_quote_request, approval_notification, auto_approve_cod, auto_approve_purchase_order, default_on_wholesale_signup, default_percentage_discount, default_shipping_method_oid, default_tier, display_on_wholesale_signup, exclude_from_free_promotion, exempt_shipping_handling_charge, free_shipping, free_shipping_minimum, maximum_item_count, minimum_item_count, minimum_subtotal, name, no_coupons, no_free_shipping, no_realtime_charge, not_valid_when_coupon_present, pricing_tier_oid, realtime_percentage_discount, signup_notification, suppress_buysafe, suppress_mailing_list, tax_exempt, track_separately].hash
+      [allow_3rd_party_billing, allow_cod, allow_purchase_order, allow_quote_request, approval_notification, auto_approve_cod, auto_approve_purchase_order, default_on_wholesale_signup, default_percentage_discount, default_shipping_method_oid, default_tier, display_on_wholesale_signup, exclude_from_free_promotion, exempt_loyalty_rewards, exempt_shipping_handling_charge, free_shipping, free_shipping_minimum, maximum_item_count, minimum_item_count, minimum_subtotal, name, no_coupons, no_free_shipping, no_realtime_charge, not_valid_when_coupon_present, pricing_tier_oid, realtime_percentage_discount, signup_notification, suppress_buysafe, suppress_mailing_list, tax_exempt, track_separately].hash
     end
 
     # Builds the object from hash
