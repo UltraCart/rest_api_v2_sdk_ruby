@@ -8,6 +8,7 @@
 | **event_add_coupon** | [**ConversationEventAddCoupon**](ConversationEventAddCoupon.md) |  | [optional] |
 | **event_add_item** | [**ConversationEventAddItem**](ConversationEventAddItem.md) |  | [optional] |
 | **event_conversation_closed** | [**ConversationSummary**](ConversationSummary.md) |  | [optional] |
+| **event_engage_customer** | [**ConversationWebchatQueueStatusQueueEntry**](ConversationWebchatQueueStatusQueueEntry.md) |  | [optional] |
 | **event_new_conversation** | [**ConversationSummary**](ConversationSummary.md) |  | [optional] |
 | **event_new_message** | [**ConversationSummary**](ConversationSummary.md) |  | [optional] |
 | **event_participant_join** | [**ConversationSummary**](ConversationSummary.md) |  | [optional] |
@@ -36,6 +37,7 @@ instance = UltracartClient::ConversationWebsocketMessage.new(
   event_add_coupon: null,
   event_add_item: null,
   event_conversation_closed: null,
+  event_engage_customer: null,
   event_new_conversation: null,
   event_new_message: null,
   event_participant_join: null,
