@@ -23,6 +23,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_conversations**](ConversationApi.md#get_conversations) | **GET** /conversation/conversations | Retrieve a list of conversation summaries newest to oldest |
 | [**get_conversations_autocomplete**](ConversationApi.md#get_conversations_autocomplete) | **POST** /conversation/conversations/autocomplete | Retrieve a list of matching terms for a search field |
 | [**get_conversations_search**](ConversationApi.md#get_conversations_search) | **POST** /conversation/conversations/search | Search conversations |
+| [**get_locations_for_engagement**](ConversationApi.md#get_locations_for_engagement) | **POST** /conversation/locations | Get location data for engagement configuration |
 | [**insert_conversation_canned_message**](ConversationApi.md#insert_conversation_canned_message) | **POST** /conversation/canned_messages | Insert a canned message |
 | [**insert_conversation_department**](ConversationApi.md#insert_conversation_department) | **POST** /conversation/departments | Insert a department |
 | [**insert_conversation_engagement**](ConversationApi.md#insert_conversation_engagement) | **POST** /conversation/engagements | Insert a engagement |
@@ -1373,6 +1374,74 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_locations_for_engagement
+
+> <ConversationLocationsResponse> get_locations_for_engagement
+
+Get location data for engagement configuration
+
+Get location data for engagement configuration 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+
+begin
+  # Get location data for engagement configuration
+  result = api_instance.get_locations_for_engagement
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_locations_for_engagement: #{e}"
+end
+```
+
+#### Using the get_locations_for_engagement_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationLocationsResponse>, Integer, Hash)> get_locations_for_engagement_with_http_info
+
+```ruby
+begin
+  # Get location data for engagement configuration
+  data, status_code, headers = api_instance.get_locations_for_engagement_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationLocationsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_locations_for_engagement_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationLocationsResponse**](ConversationLocationsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
