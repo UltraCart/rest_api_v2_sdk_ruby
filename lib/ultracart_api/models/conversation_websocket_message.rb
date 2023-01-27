@@ -23,6 +23,8 @@ module UltracartClient
 
     attr_accessor :event_conversation_closed
 
+    attr_accessor :event_engage_customer
+
     attr_accessor :event_new_conversation
 
     attr_accessor :event_new_message
@@ -88,6 +90,7 @@ module UltracartClient
         :'event_add_coupon' => :'event_add_coupon',
         :'event_add_item' => :'event_add_item',
         :'event_conversation_closed' => :'event_conversation_closed',
+        :'event_engage_customer' => :'event_engage_customer',
         :'event_new_conversation' => :'event_new_conversation',
         :'event_new_message' => :'event_new_message',
         :'event_participant_join' => :'event_participant_join',
@@ -115,6 +118,7 @@ module UltracartClient
         :'event_add_coupon' => :'ConversationEventAddCoupon',
         :'event_add_item' => :'ConversationEventAddItem',
         :'event_conversation_closed' => :'ConversationSummary',
+        :'event_engage_customer' => :'ConversationWebchatQueueStatusQueueEntry',
         :'event_new_conversation' => :'ConversationSummary',
         :'event_new_message' => :'ConversationSummary',
         :'event_participant_join' => :'ConversationSummary',
@@ -157,6 +161,10 @@ module UltracartClient
 
       if attributes.has_key?(:'event_conversation_closed')
         self.event_conversation_closed = attributes[:'event_conversation_closed']
+      end
+
+      if attributes.has_key?(:'event_engage_customer')
+        self.event_engage_customer = attributes[:'event_engage_customer']
       end
 
       if attributes.has_key?(:'event_new_conversation')
@@ -274,6 +282,7 @@ module UltracartClient
           event_add_coupon == o.event_add_coupon &&
           event_add_item == o.event_add_item &&
           event_conversation_closed == o.event_conversation_closed &&
+          event_engage_customer == o.event_engage_customer &&
           event_new_conversation == o.event_new_conversation &&
           event_new_message == o.event_new_message &&
           event_participant_join == o.event_participant_join &&
@@ -302,7 +311,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_uuid, event_add_coupon, event_add_item, event_conversation_closed, event_new_conversation, event_new_message, event_participant_join, event_participant_join_participant, event_participant_left, event_participant_left_participant, event_participant_update, event_queue_position, event_queue_status_update, event_read_message, event_rrweb, event_type, event_typing, event_updated_message, event_webchat_context, message, type].hash
+      [conversation_uuid, event_add_coupon, event_add_item, event_conversation_closed, event_engage_customer, event_new_conversation, event_new_message, event_participant_join, event_participant_join_participant, event_participant_left, event_participant_left_participant, event_participant_update, event_queue_position, event_queue_status_update, event_read_message, event_rrweb, event_type, event_typing, event_updated_message, event_webchat_context, message, type].hash
     end
 
     # Builds the object from hash
