@@ -8,6 +8,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**delete_department**](ConversationApi.md#delete_department) | **DELETE** /conversation/departments/{conversation_department_oid} | Delete a conversation department |
 | [**delete_engagement**](ConversationApi.md#delete_engagement) | **DELETE** /conversation/engagements/{conversation_engagement_oid} | Delete a conversation engagement |
 | [**get_agent_keep_alive**](ConversationApi.md#get_agent_keep_alive) | **GET** /conversation/agent/keepalive | Agent keep alive |
+| [**get_agent_profile**](ConversationApi.md#get_agent_profile) | **GET** /conversation/agent/profile | Get agent profile |
 | [**get_agent_websocket_authorization**](ConversationApi.md#get_agent_websocket_authorization) | **PUT** /conversation/agent/auth | Get agent websocket authorization |
 | [**get_conversation**](ConversationApi.md#get_conversation) | **GET** /conversation/conversations/{conversation_uuid} | Retrieve a conversation |
 | [**get_conversation_canned_messages**](ConversationApi.md#get_conversation_canned_messages) | **GET** /conversation/canned_messages | Retrieve a list of canned messages ordered by short_code |
@@ -32,6 +33,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**mark_read_conversation**](ConversationApi.md#mark_read_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/markread | Mark a conversation as read |
 | [**search_conversation_canned_messages**](ConversationApi.md#search_conversation_canned_messages) | **POST** /conversation/canned_messages/search | Search for canned messages by short_code |
 | [**start_conversation**](ConversationApi.md#start_conversation) | **PUT** /conversation/conversations | Start a conversation |
+| [**update_agent_profile**](ConversationApi.md#update_agent_profile) | **PUT** /conversation/agent/profile | Update agent profile |
 | [**update_conversation_canned_message**](ConversationApi.md#update_conversation_canned_message) | **PUT** /conversation/canned_messages/{conversation_canned_message_oid} | Update a canned message |
 | [**update_conversation_department**](ConversationApi.md#update_conversation_department) | **PUT** /conversation/departments/{conversation_department_oid} | Update a department |
 | [**update_conversation_engagement**](ConversationApi.md#update_conversation_engagement) | **PUT** /conversation/engagements/{conversation_engagement_oid} | Update a engagement |
@@ -304,6 +306,74 @@ This endpoint does not need any parameter.
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_agent_profile
+
+> <ConversationAgentProfileResponse> get_agent_profile
+
+Get agent profile
+
+Retrieve the agents profile 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+
+begin
+  # Get agent profile
+  result = api_instance.get_agent_profile
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_profile: #{e}"
+end
+```
+
+#### Using the get_agent_profile_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAgentProfileResponse>, Integer, Hash)> get_agent_profile_with_http_info
+
+```ruby
+begin
+  # Get agent profile
+  data, status_code, headers = api_instance.get_agent_profile_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAgentProfileResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_profile_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationAgentProfileResponse**](ConversationAgentProfileResponse.md)
 
 ### Authorization
 
@@ -2003,6 +2073,77 @@ end
 ### Return type
 
 [**ConversationStartResponse**](ConversationStartResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_agent_profile
+
+> <ConversationAgentProfileResponse> update_agent_profile(profile_request)
+
+Update agent profile
+
+Update agent profile 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+profile_request = UltracartClient::ConversationAgentProfile.new # ConversationAgentProfile | Profile request
+
+begin
+  # Update agent profile
+  result = api_instance.update_agent_profile(profile_request)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_agent_profile: #{e}"
+end
+```
+
+#### Using the update_agent_profile_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAgentProfileResponse>, Integer, Hash)> update_agent_profile_with_http_info(profile_request)
+
+```ruby
+begin
+  # Update agent profile
+  data, status_code, headers = api_instance.update_agent_profile_with_http_info(profile_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAgentProfileResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_agent_profile_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **profile_request** | [**ConversationAgentProfile**](ConversationAgentProfile.md) | Profile request |  |
+
+### Return type
+
+[**ConversationAgentProfileResponse**](ConversationAgentProfileResponse.md)
 
 ### Authorization
 

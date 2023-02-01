@@ -136,6 +136,8 @@ docs/CityStateZip.md
 docs/Conversation.md
 docs/ConversationAgentAuth.md
 docs/ConversationAgentAuthResponse.md
+docs/ConversationAgentProfile.md
+docs/ConversationAgentProfileResponse.md
 docs/ConversationApi.md
 docs/ConversationAutocompleteRequest.md
 docs/ConversationAutocompleteResponse.md
@@ -909,6 +911,8 @@ lib/ultracart_api/models/city_state_zip.rb
 lib/ultracart_api/models/conversation.rb
 lib/ultracart_api/models/conversation_agent_auth.rb
 lib/ultracart_api/models/conversation_agent_auth_response.rb
+lib/ultracart_api/models/conversation_agent_profile.rb
+lib/ultracart_api/models/conversation_agent_profile_response.rb
 lib/ultracart_api/models/conversation_autocomplete_request.rb
 lib/ultracart_api/models/conversation_autocomplete_response.rb
 lib/ultracart_api/models/conversation_autocomplete_value.rb

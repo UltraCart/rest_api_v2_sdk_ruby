@@ -282,6 +282,64 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get agent profile
+    # Retrieve the agents profile 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationAgentProfileResponse]
+    def get_agent_profile(opts = {})
+      data, _status_code, _headers = get_agent_profile_with_http_info(opts)
+      data
+    end
+
+    # Get agent profile
+    # Retrieve the agents profile 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationAgentProfileResponse, Integer, Hash)>] ConversationAgentProfileResponse data, response status code and response headers
+    def get_agent_profile_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_agent_profile ...'
+      end
+      # resource path
+      local_var_path = '/conversation/agent/profile'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationAgentProfileResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_agent_profile",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_agent_profile\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get agent websocket authorization
     # Retrieve a JWT to authorize an agent to make a websocket connection. 
     # @param [Hash] opts the optional parameters
@@ -1826,6 +1884,75 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#start_conversation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update agent profile
+    # Update agent profile 
+    # @param profile_request [ConversationAgentProfile] Profile request
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationAgentProfileResponse]
+    def update_agent_profile(profile_request, opts = {})
+      data, _status_code, _headers = update_agent_profile_with_http_info(profile_request, opts)
+      data
+    end
+
+    # Update agent profile
+    # Update agent profile 
+    # @param profile_request [ConversationAgentProfile] Profile request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationAgentProfileResponse, Integer, Hash)>] ConversationAgentProfileResponse data, response status code and response headers
+    def update_agent_profile_with_http_info(profile_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.update_agent_profile ...'
+      end
+      # verify the required parameter 'profile_request' is set
+      if @api_client.config.client_side_validation && profile_request.nil?
+        fail ArgumentError, "Missing the required parameter 'profile_request' when calling ConversationApi.update_agent_profile"
+      end
+      # resource path
+      local_var_path = '/conversation/agent/profile'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(profile_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationAgentProfileResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.update_agent_profile",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#update_agent_profile\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
