@@ -14,6 +14,9 @@ require 'date'
 
 module UltracartClient
   class ConversationWebsocketMessage
+    # Conversation ARN
+    attr_accessor :conversation_arn
+
     # Conversation UUID if the websocket message is tied to a specific conversation
     attr_accessor :conversation_uuid
 
@@ -86,6 +89,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'conversation_arn' => :'conversation_arn',
         :'conversation_uuid' => :'conversation_uuid',
         :'event_add_coupon' => :'event_add_coupon',
         :'event_add_item' => :'event_add_item',
@@ -114,6 +118,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'conversation_arn' => :'String',
         :'conversation_uuid' => :'String',
         :'event_add_coupon' => :'ConversationEventAddCoupon',
         :'event_add_item' => :'ConversationEventAddItem',
@@ -146,6 +151,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'conversation_arn')
+        self.conversation_arn = attributes[:'conversation_arn']
+      end
 
       if attributes.has_key?(:'conversation_uuid')
         self.conversation_uuid = attributes[:'conversation_uuid']
@@ -278,6 +287,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          conversation_arn == o.conversation_arn &&
           conversation_uuid == o.conversation_uuid &&
           event_add_coupon == o.event_add_coupon &&
           event_add_item == o.event_add_item &&
@@ -311,7 +321,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_uuid, event_add_coupon, event_add_item, event_conversation_closed, event_engage_customer, event_new_conversation, event_new_message, event_participant_join, event_participant_join_participant, event_participant_left, event_participant_left_participant, event_participant_update, event_queue_position, event_queue_status_update, event_read_message, event_rrweb, event_type, event_typing, event_updated_message, event_webchat_context, message, type].hash
+      [conversation_arn, conversation_uuid, event_add_coupon, event_add_item, event_conversation_closed, event_engage_customer, event_new_conversation, event_new_message, event_participant_join, event_participant_join_participant, event_participant_left, event_participant_left_participant, event_participant_update, event_queue_position, event_queue_status_update, event_read_message, event_rrweb, event_type, event_typing, event_updated_message, event_webchat_context, message, type].hash
     end
 
     # Builds the object from hash
