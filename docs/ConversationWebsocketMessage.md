@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **conversation_arn** | **String** | Conversation ARN | [optional] |
 | **conversation_uuid** | **String** | Conversation UUID if the websocket message is tied to a specific conversation | [optional] |
 | **event_add_coupon** | [**ConversationEventAddCoupon**](ConversationEventAddCoupon.md) |  | [optional] |
 | **event_add_item** | [**ConversationEventAddItem**](ConversationEventAddItem.md) |  | [optional] |
@@ -33,6 +34,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::ConversationWebsocketMessage.new(
+  conversation_arn: null,
   conversation_uuid: null,
   event_add_coupon: null,
   event_add_item: null,
