@@ -30,6 +30,8 @@ module UltracartClient
 
     attr_accessor :question
 
+    attr_accessor :queue_name
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -39,7 +41,8 @@ module UltracartClient
         :'email' => :'email',
         :'join_dts' => :'join_dts',
         :'participant_language_iso_code' => :'participant_language_iso_code',
-        :'question' => :'question'
+        :'question' => :'question',
+        :'queue_name' => :'queue_name'
       }
     end
 
@@ -57,7 +60,8 @@ module UltracartClient
         :'email' => :'String',
         :'join_dts' => :'String',
         :'participant_language_iso_code' => :'String',
-        :'question' => :'String'
+        :'question' => :'String',
+        :'queue_name' => :'String'
       }
     end
 
@@ -109,6 +113,10 @@ module UltracartClient
       if attributes.key?(:'question')
         self.question = attributes[:'question']
       end
+
+      if attributes.key?(:'queue_name')
+        self.queue_name = attributes[:'queue_name']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -135,7 +143,8 @@ module UltracartClient
           email == o.email &&
           join_dts == o.join_dts &&
           participant_language_iso_code == o.participant_language_iso_code &&
-          question == o.question
+          question == o.question &&
+          queue_name == o.queue_name
     end
 
     # @see the `==` method
@@ -147,7 +156,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_participant_arn, conversation_participant_name, conversation_webchat_queue_uuid, email, join_dts, participant_language_iso_code, question].hash
+      [conversation_participant_arn, conversation_participant_name, conversation_webchat_queue_uuid, email, join_dts, participant_language_iso_code, question, queue_name].hash
     end
 
     # Builds the object from hash

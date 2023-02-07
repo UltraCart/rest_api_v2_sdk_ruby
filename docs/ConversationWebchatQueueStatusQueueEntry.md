@@ -11,6 +11,7 @@
 | **join_dts** | **String** | Date/time the customer joined the queue | [optional] |
 | **participant_language_iso_code** | **String** |  | [optional] |
 | **question** | **String** |  | [optional] |
+| **queue_name** | **String** |  | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = UltracartClient::ConversationWebchatQueueStatusQueueEntry.new(
   email: null,
   join_dts: null,
   participant_language_iso_code: null,
-  question: null
+  question: null,
+  queue_name: null
 )
 ```
 
