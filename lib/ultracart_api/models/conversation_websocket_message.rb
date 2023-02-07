@@ -42,6 +42,8 @@ module UltracartClient
 
     attr_accessor :event_participant_update
 
+    attr_accessor :event_queue_new_member
+
     attr_accessor :event_queue_position
 
     attr_accessor :event_queue_status_update
@@ -102,6 +104,7 @@ module UltracartClient
         :'event_participant_left' => :'event_participant_left',
         :'event_participant_left_participant' => :'event_participant_left_participant',
         :'event_participant_update' => :'event_participant_update',
+        :'event_queue_new_member' => :'event_queue_new_member',
         :'event_queue_position' => :'event_queue_position',
         :'event_queue_status_update' => :'event_queue_status_update',
         :'event_read_message' => :'event_read_message',
@@ -131,6 +134,7 @@ module UltracartClient
         :'event_participant_left' => :'ConversationSummary',
         :'event_participant_left_participant' => :'ConversationParticipant',
         :'event_participant_update' => :'ConversationSummary',
+        :'event_queue_new_member' => :'ConversationWebchatQueueStatusQueueEntry',
         :'event_queue_position' => :'ConversationEventQueuePosition',
         :'event_queue_status_update' => :'ConversationWebchatQueueStatus',
         :'event_read_message' => :'ConversationEventReadMessage',
@@ -204,6 +208,10 @@ module UltracartClient
         self.event_participant_update = attributes[:'event_participant_update']
       end
 
+      if attributes.has_key?(:'event_queue_new_member')
+        self.event_queue_new_member = attributes[:'event_queue_new_member']
+      end
+
       if attributes.has_key?(:'event_queue_position')
         self.event_queue_position = attributes[:'event_queue_position']
       end
@@ -255,7 +263,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      event_type_validator = EnumAttributeValidator.new('String', ['queue position', 'webchat start conversation', 'conversation closed', 'new conversation', 'new message', 'updated message', 'queue status update', 'rrweb', 'participant update', 'participant join', 'participant left', 'read message', 'typing', 'add coupon', 'add item', 'webchat context', 'engage customer'])
+      event_type_validator = EnumAttributeValidator.new('String', ['queue position', 'webchat start conversation', 'conversation closed', 'new conversation', 'new message', 'updated message', 'queue status update', 'rrweb', 'participant update', 'participant join', 'participant left', 'read message', 'typing', 'add coupon', 'add item', 'webchat context', 'engage customer', 'queue new member'])
       return false unless event_type_validator.valid?(@event_type)
       type_validator = EnumAttributeValidator.new('String', ['message', 'event', 'ping', 'check queue position'])
       return false unless type_validator.valid?(@type)
@@ -265,7 +273,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] event_type Object to be assigned
     def event_type=(event_type)
-      validator = EnumAttributeValidator.new('String', ['queue position', 'webchat start conversation', 'conversation closed', 'new conversation', 'new message', 'updated message', 'queue status update', 'rrweb', 'participant update', 'participant join', 'participant left', 'read message', 'typing', 'add coupon', 'add item', 'webchat context', 'engage customer'])
+      validator = EnumAttributeValidator.new('String', ['queue position', 'webchat start conversation', 'conversation closed', 'new conversation', 'new message', 'updated message', 'queue status update', 'rrweb', 'participant update', 'participant join', 'participant left', 'read message', 'typing', 'add coupon', 'add item', 'webchat context', 'engage customer', 'queue new member'])
       unless validator.valid?(event_type)
         fail ArgumentError, 'invalid value for "event_type", must be one of #{validator.allowable_values}.'
       end
@@ -300,6 +308,7 @@ module UltracartClient
           event_participant_left == o.event_participant_left &&
           event_participant_left_participant == o.event_participant_left_participant &&
           event_participant_update == o.event_participant_update &&
+          event_queue_new_member == o.event_queue_new_member &&
           event_queue_position == o.event_queue_position &&
           event_queue_status_update == o.event_queue_status_update &&
           event_read_message == o.event_read_message &&
@@ -321,7 +330,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_arn, conversation_uuid, event_add_coupon, event_add_item, event_conversation_closed, event_engage_customer, event_new_conversation, event_new_message, event_participant_join, event_participant_join_participant, event_participant_left, event_participant_left_participant, event_participant_update, event_queue_position, event_queue_status_update, event_read_message, event_rrweb, event_type, event_typing, event_updated_message, event_webchat_context, message, type].hash
+      [conversation_arn, conversation_uuid, event_add_coupon, event_add_item, event_conversation_closed, event_engage_customer, event_new_conversation, event_new_message, event_participant_join, event_participant_join_participant, event_participant_left, event_participant_left_participant, event_participant_update, event_queue_new_member, event_queue_position, event_queue_status_update, event_read_message, event_rrweb, event_type, event_typing, event_updated_message, event_webchat_context, message, type].hash
     end
 
     # Builds the object from hash
