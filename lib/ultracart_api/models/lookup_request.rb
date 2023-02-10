@@ -21,6 +21,8 @@ module UltracartClient
 
     attr_accessor :max_hits
 
+    attr_accessor :storefront_host_name
+
     attr_accessor :storefront_oid
 
     attr_accessor :subcategory
@@ -31,6 +33,7 @@ module UltracartClient
         :'category' => :'category',
         :'matches' => :'matches',
         :'max_hits' => :'max_hits',
+        :'storefront_host_name' => :'storefront_host_name',
         :'storefront_oid' => :'storefront_oid',
         :'subcategory' => :'subcategory'
       }
@@ -47,6 +50,7 @@ module UltracartClient
         :'category' => :'String',
         :'matches' => :'String',
         :'max_hits' => :'Integer',
+        :'storefront_host_name' => :'String',
         :'storefront_oid' => :'Integer',
         :'subcategory' => :'String'
       }
@@ -85,6 +89,10 @@ module UltracartClient
         self.max_hits = attributes[:'max_hits']
       end
 
+      if attributes.key?(:'storefront_host_name')
+        self.storefront_host_name = attributes[:'storefront_host_name']
+      end
+
       if attributes.key?(:'storefront_oid')
         self.storefront_oid = attributes[:'storefront_oid']
       end
@@ -115,6 +123,7 @@ module UltracartClient
           category == o.category &&
           matches == o.matches &&
           max_hits == o.max_hits &&
+          storefront_host_name == o.storefront_host_name &&
           storefront_oid == o.storefront_oid &&
           subcategory == o.subcategory
     end
@@ -128,7 +137,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [category, matches, max_hits, storefront_oid, subcategory].hash
+      [category, matches, max_hits, storefront_host_name, storefront_oid, subcategory].hash
     end
 
     # Builds the object from hash
