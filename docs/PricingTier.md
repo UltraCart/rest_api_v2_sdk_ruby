@@ -31,6 +31,7 @@
 | **not_valid_when_coupon_present** | **Boolean** | Not valid when coupon present | [optional] |
 | **pricing_tier_oid** | **Integer** | Pricing Tier Oid | [optional] |
 | **realtime_percentage_discount** | **Float** | Realtime percentage discount | [optional] |
+| **restrict_to_distribution_center_oid** | **Integer** | Restrict inventory to this distribution center oid | [optional] |
 | **signup_notification** | [**PricingTierNotification**](PricingTierNotification.md) |  | [optional] |
 | **suppress_buysafe** | **Boolean** | Suppress buySAFE (deprecated) | [optional] |
 | **suppress_mailing_list** | **Boolean** | Suppress mailing list | [optional] |
@@ -70,6 +71,7 @@ instance = UltracartClient::PricingTier.new(
   not_valid_when_coupon_present: null,
   pricing_tier_oid: null,
   realtime_percentage_discount: null,
+  restrict_to_distribution_center_oid: null,
   signup_notification: null,
   suppress_buysafe: null,
   suppress_mailing_list: null,
