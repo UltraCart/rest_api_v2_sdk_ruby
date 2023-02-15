@@ -94,6 +94,9 @@ module UltracartClient
     # Realtime percentage discount
     attr_accessor :realtime_percentage_discount
 
+    # Restrict inventory to this distribution center oid
+    attr_accessor :restrict_to_distribution_center_oid
+
     attr_accessor :signup_notification
 
     # Suppress buySAFE (deprecated)
@@ -138,6 +141,7 @@ module UltracartClient
         :'not_valid_when_coupon_present' => :'not_valid_when_coupon_present',
         :'pricing_tier_oid' => :'pricing_tier_oid',
         :'realtime_percentage_discount' => :'realtime_percentage_discount',
+        :'restrict_to_distribution_center_oid' => :'restrict_to_distribution_center_oid',
         :'signup_notification' => :'signup_notification',
         :'suppress_buysafe' => :'suppress_buysafe',
         :'suppress_mailing_list' => :'suppress_mailing_list',
@@ -176,6 +180,7 @@ module UltracartClient
         :'not_valid_when_coupon_present' => :'BOOLEAN',
         :'pricing_tier_oid' => :'Integer',
         :'realtime_percentage_discount' => :'Float',
+        :'restrict_to_distribution_center_oid' => :'Integer',
         :'signup_notification' => :'PricingTierNotification',
         :'suppress_buysafe' => :'BOOLEAN',
         :'suppress_mailing_list' => :'BOOLEAN',
@@ -300,6 +305,10 @@ module UltracartClient
         self.realtime_percentage_discount = attributes[:'realtime_percentage_discount']
       end
 
+      if attributes.has_key?(:'restrict_to_distribution_center_oid')
+        self.restrict_to_distribution_center_oid = attributes[:'restrict_to_distribution_center_oid']
+      end
+
       if attributes.has_key?(:'signup_notification')
         self.signup_notification = attributes[:'signup_notification']
       end
@@ -381,6 +390,7 @@ module UltracartClient
           not_valid_when_coupon_present == o.not_valid_when_coupon_present &&
           pricing_tier_oid == o.pricing_tier_oid &&
           realtime_percentage_discount == o.realtime_percentage_discount &&
+          restrict_to_distribution_center_oid == o.restrict_to_distribution_center_oid &&
           signup_notification == o.signup_notification &&
           suppress_buysafe == o.suppress_buysafe &&
           suppress_mailing_list == o.suppress_mailing_list &&
@@ -397,7 +407,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allow_3rd_party_billing, allow_cod, allow_purchase_order, allow_quote_request, approval_notification, auto_approve_cod, auto_approve_purchase_order, default_on_wholesale_signup, default_percentage_discount, default_shipping_method_oid, default_tier, display_on_wholesale_signup, exclude_from_free_promotion, exempt_loyalty_rewards, exempt_shipping_handling_charge, free_shipping, free_shipping_minimum, maximum_item_count, minimum_item_count, minimum_subtotal, name, no_coupons, no_free_shipping, no_realtime_charge, not_valid_when_coupon_present, pricing_tier_oid, realtime_percentage_discount, signup_notification, suppress_buysafe, suppress_mailing_list, tax_exempt, track_separately].hash
+      [allow_3rd_party_billing, allow_cod, allow_purchase_order, allow_quote_request, approval_notification, auto_approve_cod, auto_approve_purchase_order, default_on_wholesale_signup, default_percentage_discount, default_shipping_method_oid, default_tier, display_on_wholesale_signup, exclude_from_free_promotion, exempt_loyalty_rewards, exempt_shipping_handling_charge, free_shipping, free_shipping_minimum, maximum_item_count, minimum_item_count, minimum_subtotal, name, no_coupons, no_free_shipping, no_realtime_charge, not_valid_when_coupon_present, pricing_tier_oid, realtime_percentage_discount, restrict_to_distribution_center_oid, signup_notification, suppress_buysafe, suppress_mailing_list, tax_exempt, track_separately].hash
     end
 
     # Builds the object from hash

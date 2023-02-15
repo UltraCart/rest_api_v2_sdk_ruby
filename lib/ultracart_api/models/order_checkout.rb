@@ -22,6 +22,9 @@ module UltracartClient
     # Custom field 1
     attr_accessor :custom_field1
 
+    # Custom field 10
+    attr_accessor :custom_field10
+
     # Custom field 2
     attr_accessor :custom_field2
 
@@ -39,6 +42,12 @@ module UltracartClient
 
     # Custom field 7
     attr_accessor :custom_field7
+
+    # Custom field 8
+    attr_accessor :custom_field8
+
+    # Custom field 9
+    attr_accessor :custom_field9
 
     # IP address of the customer when placing the order
     attr_accessor :customer_ip_address
@@ -61,12 +70,15 @@ module UltracartClient
         :'browser' => :'browser',
         :'comments' => :'comments',
         :'custom_field1' => :'custom_field1',
+        :'custom_field10' => :'custom_field10',
         :'custom_field2' => :'custom_field2',
         :'custom_field3' => :'custom_field3',
         :'custom_field4' => :'custom_field4',
         :'custom_field5' => :'custom_field5',
         :'custom_field6' => :'custom_field6',
         :'custom_field7' => :'custom_field7',
+        :'custom_field8' => :'custom_field8',
+        :'custom_field9' => :'custom_field9',
         :'customer_ip_address' => :'customer_ip_address',
         :'screen_branding_theme_code' => :'screen_branding_theme_code',
         :'screen_size' => :'screen_size',
@@ -81,12 +93,15 @@ module UltracartClient
         :'browser' => :'Browser',
         :'comments' => :'String',
         :'custom_field1' => :'String',
+        :'custom_field10' => :'String',
         :'custom_field2' => :'String',
         :'custom_field3' => :'String',
         :'custom_field4' => :'String',
         :'custom_field5' => :'String',
         :'custom_field6' => :'String',
         :'custom_field7' => :'String',
+        :'custom_field8' => :'String',
+        :'custom_field9' => :'String',
         :'customer_ip_address' => :'String',
         :'screen_branding_theme_code' => :'String',
         :'screen_size' => :'String',
@@ -115,6 +130,10 @@ module UltracartClient
         self.custom_field1 = attributes[:'custom_field1']
       end
 
+      if attributes.has_key?(:'custom_field10')
+        self.custom_field10 = attributes[:'custom_field10']
+      end
+
       if attributes.has_key?(:'custom_field2')
         self.custom_field2 = attributes[:'custom_field2']
       end
@@ -137,6 +156,14 @@ module UltracartClient
 
       if attributes.has_key?(:'custom_field7')
         self.custom_field7 = attributes[:'custom_field7']
+      end
+
+      if attributes.has_key?(:'custom_field8')
+        self.custom_field8 = attributes[:'custom_field8']
+      end
+
+      if attributes.has_key?(:'custom_field9')
+        self.custom_field9 = attributes[:'custom_field9']
       end
 
       if attributes.has_key?(:'customer_ip_address')
@@ -168,6 +195,10 @@ module UltracartClient
         invalid_properties.push('invalid value for "custom_field1", the character length must be smaller than or equal to 50.')
       end
 
+      if !@custom_field10.nil? && @custom_field10.to_s.length > 200
+        invalid_properties.push('invalid value for "custom_field10", the character length must be smaller than or equal to 200.')
+      end
+
       if !@custom_field2.nil? && @custom_field2.to_s.length > 50
         invalid_properties.push('invalid value for "custom_field2", the character length must be smaller than or equal to 50.')
       end
@@ -192,6 +223,14 @@ module UltracartClient
         invalid_properties.push('invalid value for "custom_field7", the character length must be smaller than or equal to 50.')
       end
 
+      if !@custom_field8.nil? && @custom_field8.to_s.length > 200
+        invalid_properties.push('invalid value for "custom_field8", the character length must be smaller than or equal to 200.')
+      end
+
+      if !@custom_field9.nil? && @custom_field9.to_s.length > 200
+        invalid_properties.push('invalid value for "custom_field9", the character length must be smaller than or equal to 200.')
+      end
+
       if !@screen_branding_theme_code.nil? && @screen_branding_theme_code.to_s.length > 10
         invalid_properties.push('invalid value for "screen_branding_theme_code", the character length must be smaller than or equal to 10.')
       end
@@ -203,12 +242,15 @@ module UltracartClient
     # @return true if the model is valid
     def valid?
       return false if !@custom_field1.nil? && @custom_field1.to_s.length > 50
+      return false if !@custom_field10.nil? && @custom_field10.to_s.length > 200
       return false if !@custom_field2.nil? && @custom_field2.to_s.length > 50
       return false if !@custom_field3.nil? && @custom_field3.to_s.length > 50
       return false if !@custom_field4.nil? && @custom_field4.to_s.length > 50
       return false if !@custom_field5.nil? && @custom_field5.to_s.length > 75
       return false if !@custom_field6.nil? && @custom_field6.to_s.length > 50
       return false if !@custom_field7.nil? && @custom_field7.to_s.length > 50
+      return false if !@custom_field8.nil? && @custom_field8.to_s.length > 200
+      return false if !@custom_field9.nil? && @custom_field9.to_s.length > 200
       return false if !@screen_branding_theme_code.nil? && @screen_branding_theme_code.to_s.length > 10
       true
     end
@@ -221,6 +263,16 @@ module UltracartClient
       end
 
       @custom_field1 = custom_field1
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] custom_field10 Value to be assigned
+    def custom_field10=(custom_field10)
+      if !custom_field10.nil? && custom_field10.to_s.length > 200
+        fail ArgumentError, 'invalid value for "custom_field10", the character length must be smaller than or equal to 200.'
+      end
+
+      @custom_field10 = custom_field10
     end
 
     # Custom attribute writer method with validation
@@ -284,6 +336,26 @@ module UltracartClient
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] custom_field8 Value to be assigned
+    def custom_field8=(custom_field8)
+      if !custom_field8.nil? && custom_field8.to_s.length > 200
+        fail ArgumentError, 'invalid value for "custom_field8", the character length must be smaller than or equal to 200.'
+      end
+
+      @custom_field8 = custom_field8
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] custom_field9 Value to be assigned
+    def custom_field9=(custom_field9)
+      if !custom_field9.nil? && custom_field9.to_s.length > 200
+        fail ArgumentError, 'invalid value for "custom_field9", the character length must be smaller than or equal to 200.'
+      end
+
+      @custom_field9 = custom_field9
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] screen_branding_theme_code Value to be assigned
     def screen_branding_theme_code=(screen_branding_theme_code)
       if !screen_branding_theme_code.nil? && screen_branding_theme_code.to_s.length > 10
@@ -301,12 +373,15 @@ module UltracartClient
           browser == o.browser &&
           comments == o.comments &&
           custom_field1 == o.custom_field1 &&
+          custom_field10 == o.custom_field10 &&
           custom_field2 == o.custom_field2 &&
           custom_field3 == o.custom_field3 &&
           custom_field4 == o.custom_field4 &&
           custom_field5 == o.custom_field5 &&
           custom_field6 == o.custom_field6 &&
           custom_field7 == o.custom_field7 &&
+          custom_field8 == o.custom_field8 &&
+          custom_field9 == o.custom_field9 &&
           customer_ip_address == o.customer_ip_address &&
           screen_branding_theme_code == o.screen_branding_theme_code &&
           screen_size == o.screen_size &&
@@ -323,7 +398,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [browser, comments, custom_field1, custom_field2, custom_field3, custom_field4, custom_field5, custom_field6, custom_field7, customer_ip_address, screen_branding_theme_code, screen_size, storefront_host_name, upsell_path_code].hash
+      [browser, comments, custom_field1, custom_field10, custom_field2, custom_field3, custom_field4, custom_field5, custom_field6, custom_field7, custom_field8, custom_field9, customer_ip_address, screen_branding_theme_code, screen_size, storefront_host_name, upsell_path_code].hash
     end
 
     # Builds the object from hash

@@ -98,6 +98,9 @@ module UltracartClient
 
     attr_accessor :taxes
 
+    # UTM clicks.  The zero index is the most recent (last) UTM click
+    attr_accessor :utms
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -157,7 +160,8 @@ module UltracartClient
         :'shipping' => :'shipping',
         :'summary' => :'summary',
         :'tags' => :'Tags',
-        :'taxes' => :'taxes'
+        :'taxes' => :'taxes',
+        :'utms' => :'utms'
       }
     end
 
@@ -198,7 +202,8 @@ module UltracartClient
         :'shipping' => :'OrderShipping',
         :'summary' => :'OrderSummary',
         :'tags' => :'Array<OrderTag>',
-        :'taxes' => :'OrderTaxes'
+        :'taxes' => :'OrderTaxes',
+        :'utms' => :'Array<OrderUtm>'
       }
     end
 
@@ -359,6 +364,12 @@ module UltracartClient
       if attributes.has_key?(:'taxes')
         self.taxes = attributes[:'taxes']
       end
+
+      if attributes.has_key?(:'utms')
+        if (value = attributes[:'utms']).is_a?(Array)
+          self.utms = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -455,7 +466,8 @@ module UltracartClient
           shipping == o.shipping &&
           summary == o.summary &&
           tags == o.tags &&
-          taxes == o.taxes
+          taxes == o.taxes &&
+          utms == o.utms
     end
 
     # @see the `==` method
@@ -467,7 +479,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affiliates, auto_order, billing, buysafe, channel_partner, checkout, coupons, creation_dts, currency_code, current_stage, customer_profile, digital_order, edi, exchange_rate, fraud_score, gift, gift_certificate, internal, items, language_iso_code, linked_shipment, marketing, merchant_id, order_id, payment, point_of_sale, properties, quote, refund_dts, reject_dts, salesforce, shipping, summary, tags, taxes].hash
+      [affiliates, auto_order, billing, buysafe, channel_partner, checkout, coupons, creation_dts, currency_code, current_stage, customer_profile, digital_order, edi, exchange_rate, fraud_score, gift, gift_certificate, internal, items, language_iso_code, linked_shipment, marketing, merchant_id, order_id, payment, point_of_sale, properties, quote, refund_dts, reject_dts, salesforce, shipping, summary, tags, taxes, utms].hash
     end
 
     # Builds the object from hash

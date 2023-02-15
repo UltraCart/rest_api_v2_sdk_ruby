@@ -38,5 +38,6 @@ Name | Type | Description | Notes
 **summary** | [**OrderSummary**](OrderSummary.md) |  | [optional] 
 **tags** | [**Array&lt;OrderTag&gt;**](OrderTag.md) | tags, available only through update, not through insert due to the nature of how tags are handled internally | [optional] 
 **taxes** | [**OrderTaxes**](OrderTaxes.md) |  | [optional] 
+**utms** | [**Array&lt;OrderUtm&gt;**](OrderUtm.md) | UTM clicks.  The zero index is the most recent (last) UTM click | [optional] 
 
 
