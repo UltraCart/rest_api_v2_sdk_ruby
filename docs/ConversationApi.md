@@ -32,6 +32,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**leave_conversation**](ConversationApi.md#leave_conversation) | **DELETE** /conversation/conversations/{conversation_uuid}/leave | Leave a conversation |
 | [**mark_read_conversation**](ConversationApi.md#mark_read_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/markread | Mark a conversation as read |
 | [**search_conversation_canned_messages**](ConversationApi.md#search_conversation_canned_messages) | **POST** /conversation/canned_messages/search | Search for canned messages by short_code |
+| [**sms_unsubscribe_conversation**](ConversationApi.md#sms_unsubscribe_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/sms_unsubscribe | Unsubscribe any SMS participants in this conversation |
 | [**start_conversation**](ConversationApi.md#start_conversation) | **PUT** /conversation/conversations | Start a conversation |
 | [**update_agent_profile**](ConversationApi.md#update_agent_profile) | **PUT** /conversation/agent/profile | Update agent profile |
 | [**update_conversation_canned_message**](ConversationApi.md#update_conversation_canned_message) | **PUT** /conversation/canned_messages/{conversation_canned_message_oid} | Update a canned message |
@@ -2010,6 +2011,76 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## sms_unsubscribe_conversation
+
+> sms_unsubscribe_conversation(conversation_uuid)
+
+Unsubscribe any SMS participants in this conversation
+
+Unsubscribe any SMS participants in this conversation 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+conversation_uuid = 'conversation_uuid_example' # String | 
+
+begin
+  # Unsubscribe any SMS participants in this conversation
+  api_instance.sms_unsubscribe_conversation(conversation_uuid)
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->sms_unsubscribe_conversation: #{e}"
+end
+```
+
+#### Using the sms_unsubscribe_conversation_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> sms_unsubscribe_conversation_with_http_info(conversation_uuid)
+
+```ruby
+begin
+  # Unsubscribe any SMS participants in this conversation
+  data, status_code, headers = api_instance.sms_unsubscribe_conversation_with_http_info(conversation_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->sms_unsubscribe_conversation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_uuid** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
