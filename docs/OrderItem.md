@@ -47,6 +47,8 @@
 | **quantity** | **Float** | Quantity | [optional] |
 | **quantity_refunded** | **Float** | Quantity refunded on this item (read only except refund operation) | [optional] |
 | **quickbooks_class** | **String** | QuickBooks class | [optional] |
+| **refund_reason** | **String** | Refund reason code.  This can only be written during a refund operation otherwise this field is read only. | [optional] |
+| **return_reason** | **String** | Return reason code.  This can only be written during a refund operation otherwise this field is read only. | [optional] |
 | **ship_separately** | **Boolean** | True if this item ships in a separate box | [optional] |
 | **shipped_by_user** | **String** | Shipped by user | [optional] |
 | **shipped_dts** | **String** | Date/time that this item was marked shipped | [optional] |
@@ -113,6 +115,8 @@ instance = UltracartClient::OrderItem.new(
   quantity: null,
   quantity_refunded: null,
   quickbooks_class: null,
+  refund_reason: null,
+  return_reason: null,
   ship_separately: null,
   shipped_by_user: null,
   shipped_dts: null,

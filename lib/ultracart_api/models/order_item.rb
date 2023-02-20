@@ -137,6 +137,12 @@ module UltracartClient
     # QuickBooks class
     attr_accessor :quickbooks_class
 
+    # Refund reason code.  This can only be written during a refund operation otherwise this field is read only.
+    attr_accessor :refund_reason
+
+    # Return reason code.  This can only be written during a refund operation otherwise this field is read only.
+    attr_accessor :return_reason
+
     # True if this item ships in a separate box
     attr_accessor :ship_separately
 
@@ -247,6 +253,8 @@ module UltracartClient
         :'quantity' => :'quantity',
         :'quantity_refunded' => :'quantity_refunded',
         :'quickbooks_class' => :'quickbooks_class',
+        :'refund_reason' => :'refund_reason',
+        :'return_reason' => :'return_reason',
         :'ship_separately' => :'ship_separately',
         :'shipped_by_user' => :'shipped_by_user',
         :'shipped_dts' => :'shipped_dts',
@@ -317,6 +325,8 @@ module UltracartClient
         :'quantity' => :'Float',
         :'quantity_refunded' => :'Float',
         :'quickbooks_class' => :'String',
+        :'refund_reason' => :'String',
+        :'return_reason' => :'String',
         :'ship_separately' => :'Boolean',
         :'shipped_by_user' => :'String',
         :'shipped_dts' => :'String',
@@ -533,6 +543,14 @@ module UltracartClient
 
       if attributes.key?(:'quickbooks_class')
         self.quickbooks_class = attributes[:'quickbooks_class']
+      end
+
+      if attributes.key?(:'refund_reason')
+        self.refund_reason = attributes[:'refund_reason']
+      end
+
+      if attributes.key?(:'return_reason')
+        self.return_reason = attributes[:'return_reason']
       end
 
       if attributes.key?(:'ship_separately')
@@ -780,6 +798,8 @@ module UltracartClient
           quantity == o.quantity &&
           quantity_refunded == o.quantity_refunded &&
           quickbooks_class == o.quickbooks_class &&
+          refund_reason == o.refund_reason &&
+          return_reason == o.return_reason &&
           ship_separately == o.ship_separately &&
           shipped_by_user == o.shipped_by_user &&
           shipped_dts == o.shipped_dts &&
@@ -807,7 +827,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accounting_code, activation_codes, arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, barcode, channel_partner_item_id, cogs, component_unit_value, cost, country_code_of_origin, customs_description, description, discount, discount_quantity, discount_shipping_weight, distribution_center_code, edi, exclude_coupon, free_shipping, hazmat, height, item_index, item_reference_oid, kit, kit_component, length, manufacturer_sku, max_days_time_in_transit, merchant_item_id, mix_and_match_group_name, mix_and_match_group_oid, no_shipping_discount, options, packed_by_user, parent_item_index, parent_merchant_item_id, perishable_class, pricing_tier_name, properties, quantity, quantity_refunded, quickbooks_class, ship_separately, shipped_by_user, shipped_dts, shipping_status, special_product_type, tags, tax_free, tax_product_type, taxable_cost, total_cost_with_discount, total_refunded, transmitted_to_distribution_center_dts, unit_cost_with_discount, upsell, weight, width].hash
+      [accounting_code, activation_codes, arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, barcode, channel_partner_item_id, cogs, component_unit_value, cost, country_code_of_origin, customs_description, description, discount, discount_quantity, discount_shipping_weight, distribution_center_code, edi, exclude_coupon, free_shipping, hazmat, height, item_index, item_reference_oid, kit, kit_component, length, manufacturer_sku, max_days_time_in_transit, merchant_item_id, mix_and_match_group_name, mix_and_match_group_oid, no_shipping_discount, options, packed_by_user, parent_item_index, parent_merchant_item_id, perishable_class, pricing_tier_name, properties, quantity, quantity_refunded, quickbooks_class, refund_reason, return_reason, ship_separately, shipped_by_user, shipped_dts, shipping_status, special_product_type, tags, tax_free, tax_product_type, taxable_cost, total_cost_with_discount, total_refunded, transmitted_to_distribution_center_dts, unit_cost_with_discount, upsell, weight, width].hash
     end
 
     # Builds the object from hash

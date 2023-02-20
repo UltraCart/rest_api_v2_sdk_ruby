@@ -33,7 +33,9 @@
 | **properties** | [**Array&lt;OrderProperty&gt;**](OrderProperty.md) | Properties, available only through update, not through insert due to the nature of how properties are handled internally | [optional] |
 | **quote** | [**OrderQuote**](OrderQuote.md) |  | [optional] |
 | **refund_dts** | **String** | If the order was refunded, the date/time that the last refund occurred | [optional] |
+| **refund_reason** | **String** | Refund reason code.  This can only be written during a refund operation otherwise this field is read only. | [optional] |
 | **reject_dts** | **String** | If the order was rejected, the date/time that the rejection occurred | [optional] |
+| **reject_reason** | **String** | Reject reason code.  This can only be written during a reject operation otherwise this field is read only. | [optional] |
 | **salesforce** | [**OrderSalesforce**](OrderSalesforce.md) |  | [optional] |
 | **shipping** | [**OrderShipping**](OrderShipping.md) |  | [optional] |
 | **summary** | [**OrderSummary**](OrderSummary.md) |  | [optional] |
@@ -76,7 +78,9 @@ instance = UltracartClient::Order.new(
   properties: null,
   quote: null,
   refund_dts: null,
+  refund_reason: null,
   reject_dts: null,
+  reject_reason: null,
   salesforce: null,
   shipping: null,
   summary: null,

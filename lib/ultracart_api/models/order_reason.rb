@@ -14,51 +14,22 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class OrderRefundableResponse
-    attr_accessor :error
+  class OrderReason
+    # Default reason
+    attr_accessor :default_reason
 
-    # True if the item level refund reason is required
-    attr_accessor :item_level_refund_reason_required
+    # Reason description.  This is the friendly description of the reason that should be displayed to the user.
+    attr_accessor :description
 
-    # Reason codes available at the item level.
-    attr_accessor :item_level_refund_reasons
-
-    # Return codes available at the item level.
-    attr_accessor :item_level_return_reasons
-
-    attr_accessor :metadata
-
-    # True if the order level refund reason is required
-    attr_accessor :order_level_refund_reason_required
-
-    # Reason codes available at the order level.
-    attr_accessor :order_level_refund_reasons
-
-    # Reject codes available at the order level.
-    attr_accessor :order_level_reject_reasons
-
-    # Whether the order is refundable or not.  Null should be interpreted as false.
-    attr_accessor :refundable
-
-    # Indicates if API call was successful
-    attr_accessor :success
-
-    attr_accessor :warning
+    # Reason value.  This is what should be submitted with a refund operation.
+    attr_accessor :value
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'error' => :'error',
-        :'item_level_refund_reason_required' => :'item_level_refund_reason_required',
-        :'item_level_refund_reasons' => :'item_level_refund_reasons',
-        :'item_level_return_reasons' => :'item_level_return_reasons',
-        :'metadata' => :'metadata',
-        :'order_level_refund_reason_required' => :'order_level_refund_reason_required',
-        :'order_level_refund_reasons' => :'order_level_refund_reasons',
-        :'order_level_reject_reasons' => :'order_level_reject_reasons',
-        :'refundable' => :'refundable',
-        :'success' => :'success',
-        :'warning' => :'warning'
+        :'default_reason' => :'default_reason',
+        :'description' => :'description',
+        :'value' => :'value'
       }
     end
 
@@ -70,17 +41,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'error' => :'Error',
-        :'item_level_refund_reason_required' => :'Boolean',
-        :'item_level_refund_reasons' => :'Array<OrderReason>',
-        :'item_level_return_reasons' => :'Array<OrderReason>',
-        :'metadata' => :'ResponseMetadata',
-        :'order_level_refund_reason_required' => :'Boolean',
-        :'order_level_refund_reasons' => :'Array<OrderReason>',
-        :'order_level_reject_reasons' => :'Array<OrderReason>',
-        :'refundable' => :'Boolean',
-        :'success' => :'Boolean',
-        :'warning' => :'Warning'
+        :'default_reason' => :'Boolean',
+        :'description' => :'String',
+        :'value' => :'String'
       }
     end
 
@@ -94,67 +57,27 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::OrderRefundableResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::OrderReason` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::OrderRefundableResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::OrderReason`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'error')
-        self.error = attributes[:'error']
+      if attributes.key?(:'default_reason')
+        self.default_reason = attributes[:'default_reason']
       end
 
-      if attributes.key?(:'item_level_refund_reason_required')
-        self.item_level_refund_reason_required = attributes[:'item_level_refund_reason_required']
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
-      if attributes.key?(:'item_level_refund_reasons')
-        if (value = attributes[:'item_level_refund_reasons']).is_a?(Array)
-          self.item_level_refund_reasons = value
-        end
-      end
-
-      if attributes.key?(:'item_level_return_reasons')
-        if (value = attributes[:'item_level_return_reasons']).is_a?(Array)
-          self.item_level_return_reasons = value
-        end
-      end
-
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.key?(:'order_level_refund_reason_required')
-        self.order_level_refund_reason_required = attributes[:'order_level_refund_reason_required']
-      end
-
-      if attributes.key?(:'order_level_refund_reasons')
-        if (value = attributes[:'order_level_refund_reasons']).is_a?(Array)
-          self.order_level_refund_reasons = value
-        end
-      end
-
-      if attributes.key?(:'order_level_reject_reasons')
-        if (value = attributes[:'order_level_reject_reasons']).is_a?(Array)
-          self.order_level_reject_reasons = value
-        end
-      end
-
-      if attributes.key?(:'refundable')
-        self.refundable = attributes[:'refundable']
-      end
-
-      if attributes.key?(:'success')
-        self.success = attributes[:'success']
-      end
-
-      if attributes.key?(:'warning')
-        self.warning = attributes[:'warning']
+      if attributes.key?(:'value')
+        self.value = attributes[:'value']
       end
     end
 
@@ -176,17 +99,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          error == o.error &&
-          item_level_refund_reason_required == o.item_level_refund_reason_required &&
-          item_level_refund_reasons == o.item_level_refund_reasons &&
-          item_level_return_reasons == o.item_level_return_reasons &&
-          metadata == o.metadata &&
-          order_level_refund_reason_required == o.order_level_refund_reason_required &&
-          order_level_refund_reasons == o.order_level_refund_reasons &&
-          order_level_reject_reasons == o.order_level_reject_reasons &&
-          refundable == o.refundable &&
-          success == o.success &&
-          warning == o.warning
+          default_reason == o.default_reason &&
+          description == o.description &&
+          value == o.value
     end
 
     # @see the `==` method
@@ -198,7 +113,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [error, item_level_refund_reason_required, item_level_refund_reasons, item_level_return_reasons, metadata, order_level_refund_reason_required, order_level_refund_reasons, order_level_reject_reasons, refundable, success, warning].hash
+      [default_reason, description, value].hash
     end
 
     # Builds the object from hash

@@ -85,8 +85,14 @@ module UltracartClient
     # If the order was refunded, the date/time that the last refund occurred
     attr_accessor :refund_dts
 
+    # Refund reason code.  This can only be written during a refund operation otherwise this field is read only.
+    attr_accessor :refund_reason
+
     # If the order was rejected, the date/time that the rejection occurred
     attr_accessor :reject_dts
+
+    # Reject reason code.  This can only be written during a reject operation otherwise this field is read only.
+    attr_accessor :reject_reason
 
     attr_accessor :salesforce
 
@@ -156,7 +162,9 @@ module UltracartClient
         :'properties' => :'properties',
         :'quote' => :'quote',
         :'refund_dts' => :'refund_dts',
+        :'refund_reason' => :'refund_reason',
         :'reject_dts' => :'reject_dts',
+        :'reject_reason' => :'reject_reason',
         :'salesforce' => :'salesforce',
         :'shipping' => :'shipping',
         :'summary' => :'summary',
@@ -203,7 +211,9 @@ module UltracartClient
         :'properties' => :'Array<OrderProperty>',
         :'quote' => :'OrderQuote',
         :'refund_dts' => :'String',
+        :'refund_reason' => :'String',
         :'reject_dts' => :'String',
+        :'reject_reason' => :'String',
         :'salesforce' => :'OrderSalesforce',
         :'shipping' => :'OrderShipping',
         :'summary' => :'OrderSummary',
@@ -358,8 +368,16 @@ module UltracartClient
         self.refund_dts = attributes[:'refund_dts']
       end
 
+      if attributes.key?(:'refund_reason')
+        self.refund_reason = attributes[:'refund_reason']
+      end
+
       if attributes.key?(:'reject_dts')
         self.reject_dts = attributes[:'reject_dts']
+      end
+
+      if attributes.key?(:'reject_reason')
+        self.reject_reason = attributes[:'reject_reason']
       end
 
       if attributes.key?(:'salesforce')
@@ -480,7 +498,9 @@ module UltracartClient
           properties == o.properties &&
           quote == o.quote &&
           refund_dts == o.refund_dts &&
+          refund_reason == o.refund_reason &&
           reject_dts == o.reject_dts &&
+          reject_reason == o.reject_reason &&
           salesforce == o.salesforce &&
           shipping == o.shipping &&
           summary == o.summary &&
@@ -498,7 +518,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [affiliates, auto_order, billing, buysafe, channel_partner, checkout, coupons, creation_dts, currency_code, current_stage, customer_profile, digital_order, edi, exchange_rate, fraud_score, gift, gift_certificate, internal, items, language_iso_code, linked_shipment, marketing, merchant_id, order_id, payment, point_of_sale, properties, quote, refund_dts, reject_dts, salesforce, shipping, summary, tags, taxes, utms].hash
+      [affiliates, auto_order, billing, buysafe, channel_partner, checkout, coupons, creation_dts, currency_code, current_stage, customer_profile, digital_order, edi, exchange_rate, fraud_score, gift, gift_certificate, internal, items, language_iso_code, linked_shipment, marketing, merchant_id, order_id, payment, point_of_sale, properties, quote, refund_dts, refund_reason, reject_dts, reject_reason, salesforce, shipping, summary, tags, taxes, utms].hash
     end
 
     # Builds the object from hash

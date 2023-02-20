@@ -611,6 +611,7 @@ docs/OrderProperty.md
 docs/OrderQuery.md
 docs/OrderQueryBatch.md
 docs/OrderQuote.md
+docs/OrderReason.md
 docs/OrderRefundableResponse.md
 docs/OrderReplacement.md
 docs/OrderReplacementItem.md
@@ -1378,6 +1379,7 @@ lib/ultracart_api/models/order_property.rb
 lib/ultracart_api/models/order_query.rb
 lib/ultracart_api/models/order_query_batch.rb
 lib/ultracart_api/models/order_quote.rb
+lib/ultracart_api/models/order_reason.rb
 lib/ultracart_api/models/order_refundable_response.rb
 lib/ultracart_api/models/order_replacement.rb
 lib/ultracart_api/models/order_replacement_item.rb
