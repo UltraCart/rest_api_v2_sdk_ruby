@@ -21,6 +21,8 @@ module UltracartClient
 
     attr_accessor :customer_greeting
 
+    attr_accessor :customer_initiated
+
     attr_accessor :department_oids
 
     attr_accessor :engagement_name
@@ -60,6 +62,7 @@ module UltracartClient
         :'active' => :'active',
         :'conversation_engagement_oid' => :'conversation_engagement_oid',
         :'customer_greeting' => :'customer_greeting',
+        :'customer_initiated' => :'customer_initiated',
         :'department_oids' => :'department_oids',
         :'engagement_name' => :'engagement_name',
         :'equation' => :'equation',
@@ -79,6 +82,7 @@ module UltracartClient
         :'active' => :'Boolean',
         :'conversation_engagement_oid' => :'Integer',
         :'customer_greeting' => :'String',
+        :'customer_initiated' => :'Boolean',
         :'department_oids' => :'Array<Integer>',
         :'engagement_name' => :'String',
         :'equation' => :'ConversationEngagementEquation',
@@ -118,6 +122,10 @@ module UltracartClient
 
       if attributes.key?(:'customer_greeting')
         self.customer_greeting = attributes[:'customer_greeting']
+      end
+
+      if attributes.key?(:'customer_initiated')
+        self.customer_initiated = attributes[:'customer_initiated']
       end
 
       if attributes.key?(:'department_oids')
@@ -176,6 +184,7 @@ module UltracartClient
           active == o.active &&
           conversation_engagement_oid == o.conversation_engagement_oid &&
           customer_greeting == o.customer_greeting &&
+          customer_initiated == o.customer_initiated &&
           department_oids == o.department_oids &&
           engagement_name == o.engagement_name &&
           equation == o.equation &&
@@ -192,7 +201,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [active, conversation_engagement_oid, customer_greeting, department_oids, engagement_name, equation, time_on_page, visitor_type].hash
+      [active, conversation_engagement_oid, customer_greeting, customer_initiated, department_oids, engagement_name, equation, time_on_page, visitor_type].hash
     end
 
     # Builds the object from hash
