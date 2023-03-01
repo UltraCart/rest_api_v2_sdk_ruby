@@ -50,6 +50,8 @@ module UltracartClient
 
     attr_accessor :participants
 
+    attr_accessor :sentiment
+
     # Start of the conversation date/time
     attr_accessor :start_dts
 
@@ -97,6 +99,7 @@ module UltracartClient
         :'message_count' => :'message_count',
         :'messages' => :'messages',
         :'participants' => :'participants',
+        :'sentiment' => :'sentiment',
         :'start_dts' => :'start_dts',
         :'unread_messages' => :'unread_messages',
         :'visible' => :'visible'
@@ -126,6 +129,7 @@ module UltracartClient
         :'message_count' => :'Integer',
         :'messages' => :'Array<ConversationMessage>',
         :'participants' => :'Array<ConversationParticipant>',
+        :'sentiment' => :'ConversationSentiment',
         :'start_dts' => :'String',
         :'unread_messages' => :'Boolean',
         :'visible' => :'Boolean'
@@ -217,6 +221,10 @@ module UltracartClient
         end
       end
 
+      if attributes.key?(:'sentiment')
+        self.sentiment = attributes[:'sentiment']
+      end
+
       if attributes.key?(:'start_dts')
         self.start_dts = attributes[:'start_dts']
       end
@@ -275,6 +283,7 @@ module UltracartClient
           message_count == o.message_count &&
           messages == o.messages &&
           participants == o.participants &&
+          sentiment == o.sentiment &&
           start_dts == o.start_dts &&
           unread_messages == o.unread_messages &&
           visible == o.visible
@@ -289,7 +298,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [base_language_iso_code, closed, conversation_arn, conversation_uuid, customer_first_message_unresponded_to_dts, last_conversation_message_body, last_conversation_participant_arn, last_conversation_participant_name, last_interactive_message_dts, last_message_dts, medium, merchant_id, message_count, messages, participants, start_dts, unread_messages, visible].hash
+      [base_language_iso_code, closed, conversation_arn, conversation_uuid, customer_first_message_unresponded_to_dts, last_conversation_message_body, last_conversation_participant_arn, last_conversation_participant_name, last_interactive_message_dts, last_message_dts, medium, merchant_id, message_count, messages, participants, sentiment, start_dts, unread_messages, visible].hash
     end
 
     # Builds the object from hash

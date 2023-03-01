@@ -17,6 +17,7 @@
 | **merchant_id** | **String** |  | [optional] |
 | **message_count** | **Integer** |  | [optional] |
 | **participants** | [**Array&lt;ConversationParticipant&gt;**](ConversationParticipant.md) |  | [optional] |
+| **sentiment** | [**ConversationSentiment**](ConversationSentiment.md) |  | [optional] |
 | **start_dts** | **String** | Start of the conversation date/time | [optional] |
 | **unread_messages** | **Boolean** |  | [optional] |
 | **visible** | **Boolean** |  | [optional] |
@@ -40,6 +41,7 @@ instance = UltracartClient::ConversationSummary.new(
   merchant_id: null,
   message_count: null,
   participants: null,
+  sentiment: null,
   start_dts: null,
   unread_messages: null,
   visible: null
