@@ -767,6 +767,61 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Retrieve EDI documents associated with this order.
+    # Retrieve EDI documents associated with this order. 
+    # @param order_id The order id to retrieve EDI documents for.
+    # @param [Hash] opts the optional parameters
+    # @return [OrderEdiDocumentsResponse]
+    def get_order_edi_documents(order_id, opts = {})
+      data, _status_code, _headers = get_order_edi_documents_with_http_info(order_id, opts)
+      data
+    end
+
+    # Retrieve EDI documents associated with this order.
+    # Retrieve EDI documents associated with this order. 
+    # @param order_id The order id to retrieve EDI documents for.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OrderEdiDocumentsResponse, Fixnum, Hash)>] OrderEdiDocumentsResponse data, response status code and response headers
+    def get_order_edi_documents_with_http_info(order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.get_order_edi_documents ...'
+      end
+      # verify the required parameter 'order_id' is set
+      if @api_client.config.client_side_validation && order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.get_order_edi_documents"
+      end
+      # resource path
+      local_var_path = '/order/orders/{order_id}/edi'.sub('{' + 'order_id' + '}', order_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'OrderEdiDocumentsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#get_order_edi_documents\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Retrieve orders
     # Retrieves a group of orders from the account.  If no parameters are specified, the API call will fail with a bad request error.  Always specify some parameters to limit the scope of the orders returned to ones you are truly interested in.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
     # @param [Hash] opts the optional parameters
