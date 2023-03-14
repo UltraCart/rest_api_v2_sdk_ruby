@@ -579,6 +579,8 @@ docs/OrderCoupon.md
 docs/OrderDigitalItem.md
 docs/OrderDigitalOrder.md
 docs/OrderEdi.md
+docs/OrderEdiDocument.md
+docs/OrderEdiDocumentsResponse.md
 docs/OrderFormat.md
 docs/OrderFormatResponse.md
 docs/OrderFraudScore.md
@@ -1348,6 +1350,8 @@ lib/ultracart_api/models/order_coupon.rb
 lib/ultracart_api/models/order_digital_item.rb
 lib/ultracart_api/models/order_digital_order.rb
 lib/ultracart_api/models/order_edi.rb
+lib/ultracart_api/models/order_edi_document.rb
+lib/ultracart_api/models/order_edi_documents_response.rb
 lib/ultracart_api/models/order_format.rb
 lib/ultracart_api/models/order_format_response.rb
 lib/ultracart_api/models/order_fraud_score.rb

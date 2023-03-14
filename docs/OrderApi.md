@@ -17,6 +17,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_accounts_receivable_retry_stats**](OrderApi.md#get_accounts_receivable_retry_stats) | **GET** /order/accountsReceivableRetryConfig/stats | Retrieve A/R Retry Statistics |
 | [**get_order**](OrderApi.md#get_order) | **GET** /order/orders/{order_id} | Retrieve an order |
 | [**get_order_by_token**](OrderApi.md#get_order_by_token) | **POST** /order/orders/token | Retrieve an order using a token |
+| [**get_order_edi_documents**](OrderApi.md#get_order_edi_documents) | **GET** /order/orders/{order_id}/edi | Retrieve EDI documents associated with this order. |
 | [**get_orders**](OrderApi.md#get_orders) | **GET** /order/orders | Retrieve orders |
 | [**get_orders_batch**](OrderApi.md#get_orders_batch) | **POST** /order/orders/batch | Retrieve order batch |
 | [**get_orders_by_query**](OrderApi.md#get_orders_by_query) | **POST** /order/orders/query | Retrieve orders by query |
@@ -969,6 +970,77 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_order_edi_documents
+
+> <OrderEdiDocumentsResponse> get_order_edi_documents(order_id)
+
+Retrieve EDI documents associated with this order.
+
+Retrieve EDI documents associated with this order. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+order_id = 'order_id_example' # String | The order id to retrieve EDI documents for.
+
+begin
+  # Retrieve EDI documents associated with this order.
+  result = api_instance.get_order_edi_documents(order_id)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->get_order_edi_documents: #{e}"
+end
+```
+
+#### Using the get_order_edi_documents_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OrderEdiDocumentsResponse>, Integer, Hash)> get_order_edi_documents_with_http_info(order_id)
+
+```ruby
+begin
+  # Retrieve EDI documents associated with this order.
+  data, status_code, headers = api_instance.get_order_edi_documents_with_http_info(order_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OrderEdiDocumentsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->get_order_edi_documents_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **order_id** | **String** | The order id to retrieve EDI documents for. |  |
+
+### Return type
+
+[**OrderEdiDocumentsResponse**](OrderEdiDocumentsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
