@@ -654,6 +654,7 @@ docs/ReportDataSetQuery.md
 docs/ReportDataSetResponse.md
 docs/ReportDataSetRow.md
 docs/ReportDataSetSchema.md
+docs/ReportDataSetSummary.md
 docs/ReportDataSource.md
 docs/ReportDataSourceSchema.md
 docs/ReportExecuteQueriesRequest.md
@@ -664,6 +665,7 @@ docs/ReportPageVisualization.md
 docs/ReportPageVisualizationDimension.md
 docs/ReportPageVisualizationMetric.md
 docs/ReportResponse.md
+docs/ReportWebsocketEvent.md
 docs/ReportsResponse.md
 docs/ResponseMetadata.md
 docs/ResultSet.md
@@ -1448,6 +1450,7 @@ lib/ultracart_api/models/report_data_set_query.rb
 lib/ultracart_api/models/report_data_set_response.rb
 lib/ultracart_api/models/report_data_set_row.rb
 lib/ultracart_api/models/report_data_set_schema.rb
+lib/ultracart_api/models/report_data_set_summary.rb
 lib/ultracart_api/models/report_data_source.rb
 lib/ultracart_api/models/report_data_source_schema.rb
 lib/ultracart_api/models/report_execute_queries_request.rb
@@ -1458,6 +1461,7 @@ lib/ultracart_api/models/report_page_visualization.rb
 lib/ultracart_api/models/report_page_visualization_dimension.rb
 lib/ultracart_api/models/report_page_visualization_metric.rb
 lib/ultracart_api/models/report_response.rb
+lib/ultracart_api/models/report_websocket_event.rb
 lib/ultracart_api/models/reports_response.rb
 lib/ultracart_api/models/response_metadata.rb
 lib/ultracart_api/models/result_set.rb
