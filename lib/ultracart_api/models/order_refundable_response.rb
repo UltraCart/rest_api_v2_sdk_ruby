@@ -25,6 +25,9 @@ module UltracartClient
     # Return codes available at the item level.
     attr_accessor :item_level_return_reasons
 
+    # If true, this refund will have to be manually done because of additional charges with the virtual terminal were made
+    attr_accessor :manual_because_multiple_charges
+
     attr_accessor :metadata
 
     # True if the order level refund reason is required
@@ -51,6 +54,7 @@ module UltracartClient
         :'item_level_refund_reason_required' => :'item_level_refund_reason_required',
         :'item_level_refund_reasons' => :'item_level_refund_reasons',
         :'item_level_return_reasons' => :'item_level_return_reasons',
+        :'manual_because_multiple_charges' => :'manual_because_multiple_charges',
         :'metadata' => :'metadata',
         :'order_level_refund_reason_required' => :'order_level_refund_reason_required',
         :'order_level_refund_reasons' => :'order_level_refund_reasons',
@@ -68,6 +72,7 @@ module UltracartClient
         :'item_level_refund_reason_required' => :'BOOLEAN',
         :'item_level_refund_reasons' => :'Array<OrderReason>',
         :'item_level_return_reasons' => :'Array<OrderReason>',
+        :'manual_because_multiple_charges' => :'BOOLEAN',
         :'metadata' => :'ResponseMetadata',
         :'order_level_refund_reason_required' => :'BOOLEAN',
         :'order_level_refund_reasons' => :'Array<OrderReason>',
@@ -104,6 +109,10 @@ module UltracartClient
         if (value = attributes[:'item_level_return_reasons']).is_a?(Array)
           self.item_level_return_reasons = value
         end
+      end
+
+      if attributes.has_key?(:'manual_because_multiple_charges')
+        self.manual_because_multiple_charges = attributes[:'manual_because_multiple_charges']
       end
 
       if attributes.has_key?(:'metadata')
@@ -161,6 +170,7 @@ module UltracartClient
           item_level_refund_reason_required == o.item_level_refund_reason_required &&
           item_level_refund_reasons == o.item_level_refund_reasons &&
           item_level_return_reasons == o.item_level_return_reasons &&
+          manual_because_multiple_charges == o.manual_because_multiple_charges &&
           metadata == o.metadata &&
           order_level_refund_reason_required == o.order_level_refund_reason_required &&
           order_level_refund_reasons == o.order_level_refund_reasons &&
@@ -179,7 +189,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [error, item_level_refund_reason_required, item_level_refund_reasons, item_level_return_reasons, metadata, order_level_refund_reason_required, order_level_refund_reasons, order_level_reject_reasons, refundable, success, warning].hash
+      [error, item_level_refund_reason_required, item_level_refund_reasons, item_level_return_reasons, manual_because_multiple_charges, metadata, order_level_refund_reason_required, order_level_refund_reasons, order_level_reject_reasons, refundable, success, warning].hash
     end
 
     # Builds the object from hash

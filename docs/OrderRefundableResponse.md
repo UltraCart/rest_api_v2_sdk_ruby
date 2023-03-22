@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **item_level_refund_reason_required** | **BOOLEAN** | True if the item level refund reason is required | [optional] 
 **item_level_refund_reasons** | [**Array&lt;OrderReason&gt;**](OrderReason.md) | Reason codes available at the item level. | [optional] 
 **item_level_return_reasons** | [**Array&lt;OrderReason&gt;**](OrderReason.md) | Return codes available at the item level. | [optional] 
+**manual_because_multiple_charges** | **BOOLEAN** | If true, this refund will have to be manually done because of additional charges with the virtual terminal were made | [optional] 
 **metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] 
 **order_level_refund_reason_required** | **BOOLEAN** | True if the order level refund reason is required | [optional] 
 **order_level_refund_reasons** | [**Array&lt;OrderReason&gt;**](OrderReason.md) | Reason codes available at the order level. | [optional] 
