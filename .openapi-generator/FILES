@@ -654,7 +654,6 @@ docs/ReportDataSetQuery.md
 docs/ReportDataSetResponse.md
 docs/ReportDataSetRow.md
 docs/ReportDataSetSchema.md
-docs/ReportDataSetSummary.md
 docs/ReportDataSource.md
 docs/ReportDataSourceSchema.md
 docs/ReportExecuteQueriesRequest.md
@@ -1450,7 +1449,6 @@ lib/ultracart_api/models/report_data_set_query.rb
 lib/ultracart_api/models/report_data_set_response.rb
 lib/ultracart_api/models/report_data_set_row.rb
 lib/ultracart_api/models/report_data_set_schema.rb
-lib/ultracart_api/models/report_data_set_summary.rb
 lib/ultracart_api/models/report_data_source.rb
 lib/ultracart_api/models/report_data_source_schema.rb
 lib/ultracart_api/models/report_execute_queries_request.rb

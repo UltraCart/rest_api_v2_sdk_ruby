@@ -14,7 +14,12 @@
 | **notes** | **String** | Notes about the experiment | [optional] |
 | **objective** | **String** | Objective that is being optimized | [optional] |
 | **objective_parameter** | **String** | Objective parameter (such as event name) that is being optimized | [optional] |
+| **openai_current_iteration** | **Integer** | The current iteration of the OpenAI related experiment | [optional] |
+| **openai_element_type** | **String** | The type of OpenAI element being experimented on | [optional] |
+| **openai_model** | **String** | The type of OpenAI model used | [optional] |
+| **openai_total_iterations** | **Integer** | The total number of iterations to perform on the experiment | [optional] |
 | **optimization_type** | **String** | Type of optimization | [optional] |
+| **p_value** | **Float** | Statistics p-value for the experiment | [optional] |
 | **session_count** | **Integer** | Total number of sessions in the experiment | [optional] |
 | **start_dts** | **String** | Start date/time | [optional] |
 | **status** | **String** | Status of the experiment | [optional] |
@@ -39,7 +44,12 @@ instance = UltracartClient::Experiment.new(
   notes: null,
   objective: null,
   objective_parameter: null,
+  openai_current_iteration: null,
+  openai_element_type: null,
+  openai_model: null,
+  openai_total_iterations: null,
   optimization_type: null,
+  p_value: null,
   session_count: null,
   start_dts: null,
   status: null,

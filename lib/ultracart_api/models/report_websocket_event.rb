@@ -59,7 +59,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'event_type' => :'String',
-        :'query_completion' => :'ReportDataSetSummary'
+        :'query_completion' => :'ReportDataSet'
       }
     end
 
