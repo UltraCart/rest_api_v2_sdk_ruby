@@ -44,8 +44,23 @@ module UltracartClient
     # Objective parameter (such as event name) that is being optimized
     attr_accessor :objective_parameter
 
+    # The current iteration of the OpenAI related experiment
+    attr_accessor :openai_current_iteration
+
+    # The type of OpenAI element being experimented on
+    attr_accessor :openai_element_type
+
+    # The type of OpenAI model used
+    attr_accessor :openai_model
+
+    # The total number of iterations to perform on the experiment
+    attr_accessor :openai_total_iterations
+
     # Type of optimization
     attr_accessor :optimization_type
+
+    # Statistics p-value for the experiment
+    attr_accessor :p_value
 
     # Total number of sessions in the experiment
     attr_accessor :session_count
@@ -103,7 +118,12 @@ module UltracartClient
         :'notes' => :'notes',
         :'objective' => :'objective',
         :'objective_parameter' => :'objective_parameter',
+        :'openai_current_iteration' => :'openai_current_iteration',
+        :'openai_element_type' => :'openai_element_type',
+        :'openai_model' => :'openai_model',
+        :'openai_total_iterations' => :'openai_total_iterations',
         :'optimization_type' => :'optimization_type',
+        :'p_value' => :'p_value',
         :'session_count' => :'session_count',
         :'start_dts' => :'start_dts',
         :'status' => :'status',
@@ -127,7 +147,12 @@ module UltracartClient
         :'notes' => :'String',
         :'objective' => :'String',
         :'objective_parameter' => :'String',
+        :'openai_current_iteration' => :'Integer',
+        :'openai_element_type' => :'String',
+        :'openai_model' => :'String',
+        :'openai_total_iterations' => :'Integer',
         :'optimization_type' => :'String',
+        :'p_value' => :'Float',
         :'session_count' => :'Integer',
         :'start_dts' => :'String',
         :'status' => :'String',
@@ -186,8 +211,28 @@ module UltracartClient
         self.objective_parameter = attributes[:'objective_parameter']
       end
 
+      if attributes.has_key?(:'openai_current_iteration')
+        self.openai_current_iteration = attributes[:'openai_current_iteration']
+      end
+
+      if attributes.has_key?(:'openai_element_type')
+        self.openai_element_type = attributes[:'openai_element_type']
+      end
+
+      if attributes.has_key?(:'openai_model')
+        self.openai_model = attributes[:'openai_model']
+      end
+
+      if attributes.has_key?(:'openai_total_iterations')
+        self.openai_total_iterations = attributes[:'openai_total_iterations']
+      end
+
       if attributes.has_key?(:'optimization_type')
         self.optimization_type = attributes[:'optimization_type']
+      end
+
+      if attributes.has_key?(:'p_value')
+        self.p_value = attributes[:'p_value']
       end
 
       if attributes.has_key?(:'session_count')
@@ -231,9 +276,21 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      openai_element_type_validator = EnumAttributeValidator.new('String', ['headline', 'text', 'textblock'])
+      return false unless openai_element_type_validator.valid?(@openai_element_type)
       status_validator = EnumAttributeValidator.new('String', ['Running', 'Ended', 'Deleted'])
       return false unless status_validator.valid?(@status)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] openai_element_type Object to be assigned
+    def openai_element_type=(openai_element_type)
+      validator = EnumAttributeValidator.new('String', ['headline', 'text', 'textblock'])
+      unless validator.valid?(openai_element_type)
+        fail ArgumentError, 'invalid value for "openai_element_type", must be one of #{validator.allowable_values}.'
+      end
+      @openai_element_type = openai_element_type
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -261,7 +318,12 @@ module UltracartClient
           notes == o.notes &&
           objective == o.objective &&
           objective_parameter == o.objective_parameter &&
+          openai_current_iteration == o.openai_current_iteration &&
+          openai_element_type == o.openai_element_type &&
+          openai_model == o.openai_model &&
+          openai_total_iterations == o.openai_total_iterations &&
           optimization_type == o.optimization_type &&
+          p_value == o.p_value &&
           session_count == o.session_count &&
           start_dts == o.start_dts &&
           status == o.status &&
@@ -280,7 +342,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [container_id, duration_days, end_dts, equal_weighting, experiment_type, id, name, notes, objective, objective_parameter, optimization_type, session_count, start_dts, status, storefront_experiment_oid, storefront_oid, uri, variations].hash
+      [container_id, duration_days, end_dts, equal_weighting, experiment_type, id, name, notes, objective, objective_parameter, openai_current_iteration, openai_element_type, openai_model, openai_total_iterations, optimization_type, p_value, session_count, start_dts, status, storefront_experiment_oid, storefront_oid, uri, variations].hash
     end
 
     # Builds the object from hash

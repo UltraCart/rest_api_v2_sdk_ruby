@@ -53,7 +53,7 @@ module UltracartClient
     def self.swagger_types
       {
         :'event_type' => :'String',
-        :'query_completion' => :'ReportDataSetSummary'
+        :'query_completion' => :'ReportDataSet'
       }
     end
 
