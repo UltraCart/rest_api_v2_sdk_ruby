@@ -86,6 +86,61 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Dry run the report queries
+    # Dry run the report queries 
+    # @param query_request Dry run request
+    # @param [Hash] opts the optional parameters
+    # @return [ReportDryRunQueriesResponse]
+    def dry_run_report_queries(query_request, opts = {})
+      data, _status_code, _headers = dry_run_report_queries_with_http_info(query_request, opts)
+      data
+    end
+
+    # Dry run the report queries
+    # Dry run the report queries 
+    # @param query_request Dry run request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ReportDryRunQueriesResponse, Fixnum, Hash)>] ReportDryRunQueriesResponse data, response status code and response headers
+    def dry_run_report_queries_with_http_info(query_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DatawarehouseApi.dry_run_report_queries ...'
+      end
+      # verify the required parameter 'query_request' is set
+      if @api_client.config.client_side_validation && query_request.nil?
+        fail ArgumentError, "Missing the required parameter 'query_request' when calling DatawarehouseApi.dry_run_report_queries"
+      end
+      # resource path
+      local_var_path = '/datawarehouse/reports/dryrun'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(query_request)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ReportDryRunQueriesResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DatawarehouseApi#dry_run_report_queries\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Execute the report queries
     # Execute the report queries 
     # @param query_request Query request
