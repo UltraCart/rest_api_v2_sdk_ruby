@@ -5,6 +5,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**delete_report**](DatawarehouseApi.md#delete_report) | **DELETE** /datawarehouse/reports/{report_oid} | Delete a report |
+| [**dry_run_report_queries**](DatawarehouseApi.md#dry_run_report_queries) | **PUT** /datawarehouse/reports/dryrun | Dry run the report queries |
 | [**execute_report_queries**](DatawarehouseApi.md#execute_report_queries) | **PUT** /datawarehouse/reports/execute | Execute the report queries |
 | [**get_report**](DatawarehouseApi.md#get_report) | **GET** /datawarehouse/reports/{report_oid} | Get a report |
 | [**get_report_data_set**](DatawarehouseApi.md#get_report_data_set) | **GET** /datawarehouse/reports/dataset/{dataset_uuid} | Get a report data set |
@@ -82,6 +83,77 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## dry_run_report_queries
+
+> <ReportDryRunQueriesResponse> dry_run_report_queries(query_request)
+
+Dry run the report queries
+
+Dry run the report queries 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::DatawarehouseApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+query_request = UltracartClient::ReportDryRunQueriesRequest.new # ReportDryRunQueriesRequest | Dry run request
+
+begin
+  # Dry run the report queries
+  result = api_instance.dry_run_report_queries(query_request)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling DatawarehouseApi->dry_run_report_queries: #{e}"
+end
+```
+
+#### Using the dry_run_report_queries_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ReportDryRunQueriesResponse>, Integer, Hash)> dry_run_report_queries_with_http_info(query_request)
+
+```ruby
+begin
+  # Dry run the report queries
+  data, status_code, headers = api_instance.dry_run_report_queries_with_http_info(query_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ReportDryRunQueriesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling DatawarehouseApi->dry_run_report_queries_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **query_request** | [**ReportDryRunQueriesRequest**](ReportDryRunQueriesRequest.md) | Dry run request |  |
+
+### Return type
+
+[**ReportDryRunQueriesResponse**](ReportDryRunQueriesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

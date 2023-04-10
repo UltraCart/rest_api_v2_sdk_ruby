@@ -54,6 +54,9 @@ module UltracartClient
     # If true, the order is rejected the day after the last configured activity day
     attr_accessor :reject_at_end
 
+    # Array of key/value pairs that when found in the response cause the rejection of the transaction.
+    attr_accessor :transaction_rejects
+
     # True if the account is currently in trial mode.  Set to false to exit trial mode.
     attr_accessor :trial_mode
 
@@ -76,6 +79,7 @@ module UltracartClient
         :'process_linked_accounts' => :'process_linked_accounts',
         :'processing_percentage' => :'processing_percentage',
         :'reject_at_end' => :'reject_at_end',
+        :'transaction_rejects' => :'transaction_rejects',
         :'trial_mode' => :'trial_mode',
         :'trial_mode_expiration_dts' => :'trial_mode_expiration_dts'
       }
@@ -102,6 +106,7 @@ module UltracartClient
         :'process_linked_accounts' => :'Boolean',
         :'processing_percentage' => :'String',
         :'reject_at_end' => :'Boolean',
+        :'transaction_rejects' => :'Array<AccountsReceivableRetryTransactionReject>',
         :'trial_mode' => :'Boolean',
         :'trial_mode_expiration_dts' => :'String'
       }
@@ -184,6 +189,12 @@ module UltracartClient
         self.reject_at_end = attributes[:'reject_at_end']
       end
 
+      if attributes.key?(:'transaction_rejects')
+        if (value = attributes[:'transaction_rejects']).is_a?(Array)
+          self.transaction_rejects = value
+        end
+      end
+
       if attributes.key?(:'trial_mode')
         self.trial_mode = attributes[:'trial_mode']
       end
@@ -224,6 +235,7 @@ module UltracartClient
           process_linked_accounts == o.process_linked_accounts &&
           processing_percentage == o.processing_percentage &&
           reject_at_end == o.reject_at_end &&
+          transaction_rejects == o.transaction_rejects &&
           trial_mode == o.trial_mode &&
           trial_mode_expiration_dts == o.trial_mode_expiration_dts
     end
@@ -237,7 +249,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [active, allow_process_linked_accounts, cancel_auto_order, current_service_plan, daily_activity_list, managed_by_linked_account_merchant_id, merchant_id, notify_emails, notify_rejections, notify_successes, process_linked_accounts, processing_percentage, reject_at_end, trial_mode, trial_mode_expiration_dts].hash
+      [active, allow_process_linked_accounts, cancel_auto_order, current_service_plan, daily_activity_list, managed_by_linked_account_merchant_id, merchant_id, notify_emails, notify_rejections, notify_successes, process_linked_accounts, processing_percentage, reject_at_end, transaction_rejects, trial_mode, trial_mode_expiration_dts].hash
     end
 
     # Builds the object from hash

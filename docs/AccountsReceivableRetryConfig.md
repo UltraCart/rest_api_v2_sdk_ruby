@@ -17,6 +17,7 @@
 | **process_linked_accounts** | **Boolean** | If true, all linked accounts are also processed using the same rules. | [optional] |
 | **processing_percentage** | **String** | The percentage rate charged for the service. | [optional] |
 | **reject_at_end** | **Boolean** | If true, the order is rejected the day after the last configured activity day | [optional] |
+| **transaction_rejects** | [**Array&lt;AccountsReceivableRetryTransactionReject&gt;**](AccountsReceivableRetryTransactionReject.md) | Array of key/value pairs that when found in the response cause the rejection of the transaction. | [optional] |
 | **trial_mode** | **Boolean** | True if the account is currently in trial mode.  Set to false to exit trial mode. | [optional] |
 | **trial_mode_expiration_dts** | **String** | The date when trial mode expires.  If this date is reached without exiting trial mode, the service will de-activate. | [optional] |
 
@@ -39,6 +40,7 @@ instance = UltracartClient::AccountsReceivableRetryConfig.new(
   process_linked_accounts: null,
   processing_percentage: null,
   reject_at_end: null,
+  transaction_rejects: null,
   trial_mode: null,
   trial_mode_expiration_dts: null
 )
