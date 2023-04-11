@@ -60,6 +60,9 @@ module UltracartClient
     # Type of optimization
     attr_accessor :optimization_type
 
+    # Estimated sessions needed to achieve P95
+    attr_accessor :p95_sessions_needed
+
     # Statistics p-value for the experiment
     attr_accessor :p_value
 
@@ -124,6 +127,7 @@ module UltracartClient
         :'openai_model' => :'openai_model',
         :'openai_total_iterations' => :'openai_total_iterations',
         :'optimization_type' => :'optimization_type',
+        :'p95_sessions_needed' => :'p95_sessions_needed',
         :'p_value' => :'p_value',
         :'session_count' => :'session_count',
         :'start_dts' => :'start_dts',
@@ -158,6 +162,7 @@ module UltracartClient
         :'openai_model' => :'String',
         :'openai_total_iterations' => :'Integer',
         :'optimization_type' => :'String',
+        :'p95_sessions_needed' => :'Integer',
         :'p_value' => :'Float',
         :'session_count' => :'Integer',
         :'start_dts' => :'String',
@@ -248,6 +253,10 @@ module UltracartClient
 
       if attributes.key?(:'optimization_type')
         self.optimization_type = attributes[:'optimization_type']
+      end
+
+      if attributes.key?(:'p95_sessions_needed')
+        self.p95_sessions_needed = attributes[:'p95_sessions_needed']
       end
 
       if attributes.key?(:'p_value')
@@ -342,6 +351,7 @@ module UltracartClient
           openai_model == o.openai_model &&
           openai_total_iterations == o.openai_total_iterations &&
           optimization_type == o.optimization_type &&
+          p95_sessions_needed == o.p95_sessions_needed &&
           p_value == o.p_value &&
           session_count == o.session_count &&
           start_dts == o.start_dts &&
@@ -361,7 +371,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [container_id, duration_days, end_dts, equal_weighting, experiment_type, id, name, notes, objective, objective_parameter, openai_current_iteration, openai_element_type, openai_model, openai_total_iterations, optimization_type, p_value, session_count, start_dts, status, storefront_experiment_oid, storefront_oid, uri, variations].hash
+      [container_id, duration_days, end_dts, equal_weighting, experiment_type, id, name, notes, objective, objective_parameter, openai_current_iteration, openai_element_type, openai_model, openai_total_iterations, optimization_type, p95_sessions_needed, p_value, session_count, start_dts, status, storefront_experiment_oid, storefront_oid, uri, variations].hash
     end
 
     # Builds the object from hash

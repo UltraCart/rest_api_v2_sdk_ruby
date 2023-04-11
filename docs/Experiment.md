@@ -19,6 +19,7 @@
 | **openai_model** | **String** | The type of OpenAI model used | [optional] |
 | **openai_total_iterations** | **Integer** | The total number of iterations to perform on the experiment | [optional] |
 | **optimization_type** | **String** | Type of optimization | [optional] |
+| **p95_sessions_needed** | **Integer** | Estimated sessions needed to achieve P95 | [optional] |
 | **p_value** | **Float** | Statistics p-value for the experiment | [optional] |
 | **session_count** | **Integer** | Total number of sessions in the experiment | [optional] |
 | **start_dts** | **String** | Start date/time | [optional] |
@@ -49,6 +50,7 @@ instance = UltracartClient::Experiment.new(
   openai_model: null,
   openai_total_iterations: null,
   optimization_type: null,
+  p95_sessions_needed: null,
   p_value: null,
   session_count: null,
   start_dts: null,
