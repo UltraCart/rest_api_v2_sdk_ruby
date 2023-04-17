@@ -7,6 +7,7 @@
 | **details** | [**Array&lt;OrderPaymentTransactionDetail&gt;**](OrderPaymentTransactionDetail.md) | Details | [optional] |
 | **successful** | **Boolean** | True if the transaction was successful | [optional] |
 | **transaction_gateway** | **String** | Transaction gateway | [optional] |
+| **transaction_id** | **Integer** | Transaction ID | [optional] |
 | **transaction_timestamp** | **String** | Transaction date/time | [optional] |
 
 ## Example
@@ -18,6 +19,7 @@ instance = UltracartClient::OrderPaymentTransaction.new(
   details: null,
   successful: null,
   transaction_gateway: null,
+  transaction_id: null,
   transaction_timestamp: null
 )
 ```
