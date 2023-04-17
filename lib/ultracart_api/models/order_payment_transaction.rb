@@ -23,6 +23,9 @@ module UltracartClient
     # Transaction gateway
     attr_accessor :transaction_gateway
 
+    # Transaction ID
+    attr_accessor :transaction_id
+
     # Transaction date/time
     attr_accessor :transaction_timestamp
 
@@ -32,6 +35,7 @@ module UltracartClient
         :'details' => :'details',
         :'successful' => :'successful',
         :'transaction_gateway' => :'transaction_gateway',
+        :'transaction_id' => :'transaction_id',
         :'transaction_timestamp' => :'transaction_timestamp'
       }
     end
@@ -42,6 +46,7 @@ module UltracartClient
         :'details' => :'Array<OrderPaymentTransactionDetail>',
         :'successful' => :'BOOLEAN',
         :'transaction_gateway' => :'String',
+        :'transaction_id' => :'Integer',
         :'transaction_timestamp' => :'String'
       }
     end
@@ -66,6 +71,10 @@ module UltracartClient
 
       if attributes.has_key?(:'transaction_gateway')
         self.transaction_gateway = attributes[:'transaction_gateway']
+      end
+
+      if attributes.has_key?(:'transaction_id')
+        self.transaction_id = attributes[:'transaction_id']
       end
 
       if attributes.has_key?(:'transaction_timestamp')
@@ -94,6 +103,7 @@ module UltracartClient
           details == o.details &&
           successful == o.successful &&
           transaction_gateway == o.transaction_gateway &&
+          transaction_id == o.transaction_id &&
           transaction_timestamp == o.transaction_timestamp
     end
 
@@ -106,7 +116,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [details, successful, transaction_gateway, transaction_timestamp].hash
+      [details, successful, transaction_gateway, transaction_id, transaction_timestamp].hash
     end
 
     # Builds the object from hash
