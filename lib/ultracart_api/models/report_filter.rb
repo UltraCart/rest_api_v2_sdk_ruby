@@ -15,10 +15,16 @@ require 'time'
 
 module UltracartClient
   class ReportFilter
+    # A JSON representation of the configuration for this visualization
+    attr_accessor :config
+
     # How this filter connects to the data sources and columns
     attr_accessor :connections
 
     attr_accessor :name
+
+    # A JSON representation of the style configuration for this visualization
+    attr_accessor :styles
 
     # The timezone that the date range is querying on.
     attr_accessor :timezone
@@ -57,8 +63,10 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'config' => :'config',
         :'connections' => :'connections',
         :'name' => :'name',
+        :'styles' => :'styles',
         :'timezone' => :'timezone',
         :'type' => :'type',
         :'uuid' => :'uuid',
@@ -74,8 +82,10 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'config' => :'String',
         :'connections' => :'Array<ReportFilterConnection>',
         :'name' => :'String',
+        :'styles' => :'String',
         :'timezone' => :'String',
         :'type' => :'String',
         :'uuid' => :'String',
@@ -104,6 +114,10 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'config')
+        self.config = attributes[:'config']
+      end
+
       if attributes.key?(:'connections')
         if (value = attributes[:'connections']).is_a?(Array)
           self.connections = value
@@ -112,6 +126,10 @@ module UltracartClient
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'styles')
+        self.styles = attributes[:'styles']
       end
 
       if attributes.key?(:'timezone')
@@ -163,8 +181,10 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          config == o.config &&
           connections == o.connections &&
           name == o.name &&
+          styles == o.styles &&
           timezone == o.timezone &&
           type == o.type &&
           uuid == o.uuid &&
@@ -180,7 +200,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [connections, name, timezone, type, uuid, values].hash
+      [config, connections, name, styles, timezone, type, uuid, values].hash
     end
 
     # Builds the object from hash

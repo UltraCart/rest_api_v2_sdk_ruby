@@ -8,7 +8,6 @@
 | **data_sources** | [**Array&lt;ReportDataSource&gt;**](ReportDataSource.md) |  | [optional] |
 | **default_dataset_id** | **String** |  | [optional] |
 | **default_project_id** | **String** |  | [optional] |
-| **filters** | [**Array&lt;ReportFilter&gt;**](ReportFilter.md) |  | [optional] |
 | **merchant_id** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **pages** | [**Array&lt;ReportPage&gt;**](ReportPage.md) |  | [optional] |
@@ -25,7 +24,6 @@ instance = UltracartClient::Report.new(
   data_sources: null,
   default_dataset_id: null,
   default_project_id: null,
-  filters: null,
   merchant_id: null,
   name: null,
   pages: null,
