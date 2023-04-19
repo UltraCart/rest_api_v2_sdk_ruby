@@ -14,28 +14,25 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ReportPage
-    attr_accessor :filters
+  class ReportPageFilter
+    # A JSON representation of the configuration for this visualization
+    attr_accessor :config
 
-    # Height of the report page in inches
-    attr_accessor :height
+    attr_accessor :name
 
-    attr_accessor :title
+    # A JSON representation of the style configuration for this visualization
+    attr_accessor :styles
 
-    # Visualizations on the report page.
-    attr_accessor :visualizations
-
-    # Width of the report page in inches
-    attr_accessor :width
+    # Unique UUID assigned to the filter.  Assists when returning values that the filter can use.
+    attr_accessor :uuid
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'filters' => :'filters',
-        :'height' => :'height',
-        :'title' => :'title',
-        :'visualizations' => :'visualizations',
-        :'width' => :'width'
+        :'config' => :'config',
+        :'name' => :'name',
+        :'styles' => :'styles',
+        :'uuid' => :'uuid'
       }
     end
 
@@ -47,11 +44,10 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'filters' => :'Array<ReportPageFilter>',
-        :'height' => :'Float',
-        :'title' => :'String',
-        :'visualizations' => :'Array<ReportPageVisualization>',
-        :'width' => :'Float'
+        :'config' => :'String',
+        :'name' => :'String',
+        :'styles' => :'String',
+        :'uuid' => :'String'
       }
     end
 
@@ -65,39 +61,31 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ReportPage` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ReportPageFilter` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ReportPage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ReportPageFilter`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'filters')
-        if (value = attributes[:'filters']).is_a?(Array)
-          self.filters = value
-        end
+      if attributes.key?(:'config')
+        self.config = attributes[:'config']
       end
 
-      if attributes.key?(:'height')
-        self.height = attributes[:'height']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'title')
-        self.title = attributes[:'title']
+      if attributes.key?(:'styles')
+        self.styles = attributes[:'styles']
       end
 
-      if attributes.key?(:'visualizations')
-        if (value = attributes[:'visualizations']).is_a?(Array)
-          self.visualizations = value
-        end
-      end
-
-      if attributes.key?(:'width')
-        self.width = attributes[:'width']
+      if attributes.key?(:'uuid')
+        self.uuid = attributes[:'uuid']
       end
     end
 
@@ -119,11 +107,10 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          filters == o.filters &&
-          height == o.height &&
-          title == o.title &&
-          visualizations == o.visualizations &&
-          width == o.width
+          config == o.config &&
+          name == o.name &&
+          styles == o.styles &&
+          uuid == o.uuid
     end
 
     # @see the `==` method
@@ -135,7 +122,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [filters, height, title, visualizations, width].hash
+      [config, name, styles, uuid].hash
     end
 
     # Builds the object from hash

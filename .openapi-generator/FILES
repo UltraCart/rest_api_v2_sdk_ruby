@@ -664,6 +664,7 @@ docs/ReportExecuteQueriesRequest.md
 docs/ReportFilter.md
 docs/ReportFilterConnection.md
 docs/ReportPage.md
+docs/ReportPageFilter.md
 docs/ReportPageVisualization.md
 docs/ReportPageVisualizationDimension.md
 docs/ReportPageVisualizationMetric.md
@@ -1463,6 +1464,7 @@ lib/ultracart_api/models/report_execute_queries_request.rb
 lib/ultracart_api/models/report_filter.rb
 lib/ultracart_api/models/report_filter_connection.rb
 lib/ultracart_api/models/report_page.rb
+lib/ultracart_api/models/report_page_filter.rb
 lib/ultracart_api/models/report_page_visualization.rb
 lib/ultracart_api/models/report_page_visualization_dimension.rb
 lib/ultracart_api/models/report_page_visualization_metric.rb
