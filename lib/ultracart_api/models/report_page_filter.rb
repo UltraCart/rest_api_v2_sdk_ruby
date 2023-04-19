@@ -13,39 +13,35 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ReportPage
-    attr_accessor :filters
+  class ReportPageFilter
+    # A JSON representation of the configuration for this visualization
+    attr_accessor :config
 
-    # Height of the report page in inches
-    attr_accessor :height
+    attr_accessor :name
 
-    attr_accessor :title
+    # A JSON representation of the style configuration for this visualization
+    attr_accessor :styles
 
-    # Visualizations on the report page.
-    attr_accessor :visualizations
-
-    # Width of the report page in inches
-    attr_accessor :width
+    # Unique UUID assigned to the filter.  Assists when returning values that the filter can use.
+    attr_accessor :uuid
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'filters' => :'filters',
-        :'height' => :'height',
-        :'title' => :'title',
-        :'visualizations' => :'visualizations',
-        :'width' => :'width'
+        :'config' => :'config',
+        :'name' => :'name',
+        :'styles' => :'styles',
+        :'uuid' => :'uuid'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'filters' => :'Array<ReportPageFilter>',
-        :'height' => :'Float',
-        :'title' => :'String',
-        :'visualizations' => :'Array<ReportPageVisualization>',
-        :'width' => :'Float'
+        :'config' => :'String',
+        :'name' => :'String',
+        :'styles' => :'String',
+        :'uuid' => :'String'
       }
     end
 
@@ -57,28 +53,20 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'filters')
-        if (value = attributes[:'filters']).is_a?(Array)
-          self.filters = value
-        end
+      if attributes.has_key?(:'config')
+        self.config = attributes[:'config']
       end
 
-      if attributes.has_key?(:'height')
-        self.height = attributes[:'height']
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'title')
-        self.title = attributes[:'title']
+      if attributes.has_key?(:'styles')
+        self.styles = attributes[:'styles']
       end
 
-      if attributes.has_key?(:'visualizations')
-        if (value = attributes[:'visualizations']).is_a?(Array)
-          self.visualizations = value
-        end
-      end
-
-      if attributes.has_key?(:'width')
-        self.width = attributes[:'width']
+      if attributes.has_key?(:'uuid')
+        self.uuid = attributes[:'uuid']
       end
     end
 
@@ -100,11 +88,10 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          filters == o.filters &&
-          height == o.height &&
-          title == o.title &&
-          visualizations == o.visualizations &&
-          width == o.width
+          config == o.config &&
+          name == o.name &&
+          styles == o.styles &&
+          uuid == o.uuid
     end
 
     # @see the `==` method
@@ -116,7 +103,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [filters, height, title, visualizations, width].hash
+      [config, name, styles, uuid].hash
     end
 
     # Builds the object from hash

@@ -22,6 +22,8 @@ module UltracartClient
 
     attr_accessor :default_project_id
 
+    attr_accessor :filters
+
     attr_accessor :merchant_id
 
     attr_accessor :name
@@ -63,6 +65,7 @@ module UltracartClient
         :'data_sources' => :'data_sources',
         :'default_dataset_id' => :'default_dataset_id',
         :'default_project_id' => :'default_project_id',
+        :'filters' => :'filters',
         :'merchant_id' => :'merchant_id',
         :'name' => :'name',
         :'pages' => :'pages',
@@ -78,6 +81,7 @@ module UltracartClient
         :'data_sources' => :'Array<ReportDataSource>',
         :'default_dataset_id' => :'String',
         :'default_project_id' => :'String',
+        :'filters' => :'Array<ReportFilter>',
         :'merchant_id' => :'String',
         :'name' => :'String',
         :'pages' => :'Array<ReportPage>',
@@ -110,6 +114,12 @@ module UltracartClient
 
       if attributes.has_key?(:'default_project_id')
         self.default_project_id = attributes[:'default_project_id']
+      end
+
+      if attributes.has_key?(:'filters')
+        if (value = attributes[:'filters']).is_a?(Array)
+          self.filters = value
+        end
       end
 
       if attributes.has_key?(:'merchant_id')
@@ -169,6 +179,7 @@ module UltracartClient
           data_sources == o.data_sources &&
           default_dataset_id == o.default_dataset_id &&
           default_project_id == o.default_project_id &&
+          filters == o.filters &&
           merchant_id == o.merchant_id &&
           name == o.name &&
           pages == o.pages &&
@@ -185,7 +196,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [active, data_sources, default_dataset_id, default_project_id, merchant_id, name, pages, report_oid, security_level].hash
+      [active, data_sources, default_dataset_id, default_project_id, filters, merchant_id, name, pages, report_oid, security_level].hash
     end
 
     # Builds the object from hash
