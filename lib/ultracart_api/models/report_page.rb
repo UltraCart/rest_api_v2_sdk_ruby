@@ -14,6 +14,8 @@ require 'date'
 
 module UltracartClient
   class ReportPage
+    attr_accessor :filters
+
     # Height of the report page in inches
     attr_accessor :height
 
@@ -28,6 +30,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'filters' => :'filters',
         :'height' => :'height',
         :'title' => :'title',
         :'visualizations' => :'visualizations',
@@ -38,6 +41,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'filters' => :'Array<ReportFilter>',
         :'height' => :'Float',
         :'title' => :'String',
         :'visualizations' => :'Array<ReportPageVisualization>',
@@ -52,6 +56,12 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'filters')
+        if (value = attributes[:'filters']).is_a?(Array)
+          self.filters = value
+        end
+      end
 
       if attributes.has_key?(:'height')
         self.height = attributes[:'height']
@@ -90,6 +100,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          filters == o.filters &&
           height == o.height &&
           title == o.title &&
           visualizations == o.visualizations &&
@@ -105,7 +116,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [height, title, visualizations, width].hash
+      [filters, height, title, visualizations, width].hash
     end
 
     # Builds the object from hash
