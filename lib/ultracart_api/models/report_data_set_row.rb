@@ -14,19 +14,19 @@ require 'date'
 
 module UltracartClient
   class ReportDataSetRow
-    attr_accessor :columns
+    attr_accessor :c
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'columns' => :'columns'
+        :'c' => :'c'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'columns' => :'Array<ReportDataSetColumn>'
+        :'c' => :'Array<ReportDataSetColumn>'
       }
     end
 
@@ -38,9 +38,9 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'columns')
-        if (value = attributes[:'columns']).is_a?(Array)
-          self.columns = value
+      if attributes.has_key?(:'c')
+        if (value = attributes[:'c']).is_a?(Array)
+          self.c = value
         end
       end
     end
@@ -63,7 +63,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          columns == o.columns
+          c == o.c
     end
 
     # @see the `==` method
@@ -75,7 +75,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [columns].hash
+      [c].hash
     end
 
     # Builds the object from hash

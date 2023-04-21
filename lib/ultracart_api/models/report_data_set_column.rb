@@ -14,19 +14,39 @@ require 'date'
 
 module UltracartClient
   class ReportDataSetColumn
-    attr_accessor :name
+    attr_accessor :_in
+
+    attr_accessor :n
+
+    attr_accessor :vd
+
+    attr_accessor :vdt
+
+    attr_accessor :vn
+
+    attr_accessor :vs
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name'
+        :'_in' => :'in',
+        :'n' => :'n',
+        :'vd' => :'vd',
+        :'vdt' => :'vdt',
+        :'vn' => :'vn',
+        :'vs' => :'vs'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'name' => :'String'
+        :'_in' => :'BOOLEAN',
+        :'n' => :'String',
+        :'vd' => :'String',
+        :'vdt' => :'String',
+        :'vn' => :'Float',
+        :'vs' => :'String'
       }
     end
 
@@ -38,8 +58,28 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'in')
+        self._in = attributes[:'in']
+      end
+
+      if attributes.has_key?(:'n')
+        self.n = attributes[:'n']
+      end
+
+      if attributes.has_key?(:'vd')
+        self.vd = attributes[:'vd']
+      end
+
+      if attributes.has_key?(:'vdt')
+        self.vdt = attributes[:'vdt']
+      end
+
+      if attributes.has_key?(:'vn')
+        self.vn = attributes[:'vn']
+      end
+
+      if attributes.has_key?(:'vs')
+        self.vs = attributes[:'vs']
       end
     end
 
@@ -61,7 +101,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name
+          _in == o._in &&
+          n == o.n &&
+          vd == o.vd &&
+          vdt == o.vdt &&
+          vn == o.vn &&
+          vs == o.vs
     end
 
     # @see the `==` method
@@ -73,7 +118,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name].hash
+      [_in, n, vd, vdt, vn, vs].hash
     end
 
     # Builds the object from hash
