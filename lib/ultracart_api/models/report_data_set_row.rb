@@ -15,12 +15,12 @@ require 'time'
 
 module UltracartClient
   class ReportDataSetRow
-    attr_accessor :columns
+    attr_accessor :c
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'columns' => :'columns'
+        :'c' => :'c'
       }
     end
 
@@ -32,7 +32,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'columns' => :'Array<ReportDataSetColumn>'
+        :'c' => :'Array<ReportDataSetColumn>'
       }
     end
 
@@ -57,9 +57,9 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'columns')
-        if (value = attributes[:'columns']).is_a?(Array)
-          self.columns = value
+      if attributes.key?(:'c')
+        if (value = attributes[:'c']).is_a?(Array)
+          self.c = value
         end
       end
     end
@@ -82,7 +82,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          columns == o.columns
+          c == o.c
     end
 
     # @see the `==` method
@@ -94,7 +94,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [columns].hash
+      [c].hash
     end
 
     # Builds the object from hash

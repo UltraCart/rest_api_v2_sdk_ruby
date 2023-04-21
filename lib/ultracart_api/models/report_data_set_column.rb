@@ -15,12 +15,27 @@ require 'time'
 
 module UltracartClient
   class ReportDataSetColumn
-    attr_accessor :name
+    attr_accessor :_in
+
+    attr_accessor :n
+
+    attr_accessor :vd
+
+    attr_accessor :vdt
+
+    attr_accessor :vn
+
+    attr_accessor :vs
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name'
+        :'_in' => :'in',
+        :'n' => :'n',
+        :'vd' => :'vd',
+        :'vdt' => :'vdt',
+        :'vn' => :'vn',
+        :'vs' => :'vs'
       }
     end
 
@@ -32,7 +47,12 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String'
+        :'_in' => :'Boolean',
+        :'n' => :'String',
+        :'vd' => :'String',
+        :'vdt' => :'String',
+        :'vn' => :'Float',
+        :'vs' => :'String'
       }
     end
 
@@ -57,8 +77,28 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'_in')
+        self._in = attributes[:'_in']
+      end
+
+      if attributes.key?(:'n')
+        self.n = attributes[:'n']
+      end
+
+      if attributes.key?(:'vd')
+        self.vd = attributes[:'vd']
+      end
+
+      if attributes.key?(:'vdt')
+        self.vdt = attributes[:'vdt']
+      end
+
+      if attributes.key?(:'vn')
+        self.vn = attributes[:'vn']
+      end
+
+      if attributes.key?(:'vs')
+        self.vs = attributes[:'vs']
       end
     end
 
@@ -80,7 +120,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name
+          _in == o._in &&
+          n == o.n &&
+          vd == o.vd &&
+          vdt == o.vdt &&
+          vn == o.vn &&
+          vs == o.vs
     end
 
     # @see the `==` method
@@ -92,7 +137,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name].hash
+      [_in, n, vd, vdt, vn, vs].hash
     end
 
     # Builds the object from hash

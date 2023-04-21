@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **columns** | [**Array&lt;ReportDataSetColumn&gt;**](ReportDataSetColumn.md) |  | [optional] |
+| **c** | [**Array&lt;ReportDataSetColumn&gt;**](ReportDataSetColumn.md) |  | [optional] |
 
 ## Example
 
@@ -12,7 +12,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::ReportDataSetRow.new(
-  columns: null
+  c: null
 )
 ```
 
