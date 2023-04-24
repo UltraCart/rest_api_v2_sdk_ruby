@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class ReportDataSourceSchema
+    # A JSON representation of the configuration for this visualization
+    attr_accessor :config
+
     # Whether or not this column can be used as a dimension within a visualization
     attr_accessor :dimension
 
@@ -48,6 +51,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'config' => :'config',
         :'dimension' => :'dimension',
         :'name' => :'name',
         :'type' => :'type'
@@ -62,6 +66,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'config' => :'String',
         :'dimension' => :'Boolean',
         :'name' => :'String',
         :'type' => :'String'
@@ -88,6 +93,10 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'config')
+        self.config = attributes[:'config']
+      end
 
       if attributes.key?(:'dimension')
         self.dimension = attributes[:'dimension']
@@ -132,6 +141,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          config == o.config &&
           dimension == o.dimension &&
           name == o.name &&
           type == o.type
@@ -146,7 +156,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [dimension, name, type].hash
+      [config, dimension, name, type].hash
     end
 
     # Builds the object from hash
