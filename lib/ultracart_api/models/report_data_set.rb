@@ -41,7 +41,7 @@ module UltracartClient
     # Merchant that owns this data set
     attr_accessor :merchant_id
 
-    # The size of the pages
+    # The total number of pages in the result set
     attr_accessor :page_count
 
     # The size of the pages

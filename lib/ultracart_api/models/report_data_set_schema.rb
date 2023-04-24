@@ -14,6 +14,9 @@ require 'date'
 
 module UltracartClient
   class ReportDataSetSchema
+    # A JSON representation of the configuration for this visualization
+    attr_accessor :config
+
     attr_accessor :name
 
     # Type of the column.
@@ -44,6 +47,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'config' => :'config',
         :'name' => :'name',
         :'type' => :'type'
       }
@@ -52,6 +56,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'config' => :'String',
         :'name' => :'String',
         :'type' => :'String'
       }
@@ -64,6 +69,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'config')
+        self.config = attributes[:'config']
+      end
 
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
@@ -104,6 +113,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          config == o.config &&
           name == o.name &&
           type == o.type
     end
@@ -117,7 +127,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, type].hash
+      [config, name, type].hash
     end
 
     # Builds the object from hash
