@@ -15,6 +15,7 @@
 | **card_number_truncated** | **Boolean** | True if the card has been truncated | [optional] |
 | **card_type** | **String** | Card type | [optional] |
 | **card_verification_number_token** | **String** | Card verification number token from hosted fields, only for import/insert of new orders, completely ignored for updates, and always null/empty for queries | [optional] |
+| **dual_vaulted** | [**OrderPaymentCreditCardDualVaulted**](OrderPaymentCreditCardDualVaulted.md) |  | [optional] |
 
 ## Example
 
@@ -32,7 +33,8 @@ instance = UltracartClient::OrderPaymentCreditCard.new(
   card_number_token: null,
   card_number_truncated: null,
   card_type: null,
-  card_verification_number_token: null
+  card_verification_number_token: null,
+  dual_vaulted: null
 )
 ```
 

@@ -604,6 +604,8 @@ docs/OrderPackingSlipResponse.md
 docs/OrderPayment.md
 docs/OrderPaymentCheck.md
 docs/OrderPaymentCreditCard.md
+docs/OrderPaymentCreditCardDualVaulted.md
+docs/OrderPaymentCreditCardDualVaultedProperty.md
 docs/OrderPaymentECheck.md
 docs/OrderPaymentInsurance.md
 docs/OrderPaymentPurchaseOrder.md
@@ -1404,6 +1406,8 @@ lib/ultracart_api/models/order_packing_slip_response.rb
 lib/ultracart_api/models/order_payment.rb
 lib/ultracart_api/models/order_payment_check.rb
 lib/ultracart_api/models/order_payment_credit_card.rb
+lib/ultracart_api/models/order_payment_credit_card_dual_vaulted.rb
+lib/ultracart_api/models/order_payment_credit_card_dual_vaulted_property.rb
 lib/ultracart_api/models/order_payment_e_check.rb
 lib/ultracart_api/models/order_payment_insurance.rb
 lib/ultracart_api/models/order_payment_purchase_order.rb
