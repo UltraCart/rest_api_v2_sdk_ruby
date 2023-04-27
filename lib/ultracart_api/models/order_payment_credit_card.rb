@@ -47,6 +47,8 @@ module UltracartClient
     # Card verification number token from hosted fields, only for import/insert of new orders, completely ignored for updates, and always null/empty for queries
     attr_accessor :card_verification_number_token
 
+    attr_accessor :dual_vaulted
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -82,7 +84,8 @@ module UltracartClient
         :'card_number_token' => :'card_number_token',
         :'card_number_truncated' => :'card_number_truncated',
         :'card_type' => :'card_type',
-        :'card_verification_number_token' => :'card_verification_number_token'
+        :'card_verification_number_token' => :'card_verification_number_token',
+        :'dual_vaulted' => :'dual_vaulted'
       }
     end
 
@@ -99,7 +102,8 @@ module UltracartClient
         :'card_number_token' => :'String',
         :'card_number_truncated' => :'BOOLEAN',
         :'card_type' => :'String',
-        :'card_verification_number_token' => :'String'
+        :'card_verification_number_token' => :'String',
+        :'dual_vaulted' => :'OrderPaymentCreditCardDualVaulted'
       }
     end
 
@@ -154,6 +158,10 @@ module UltracartClient
       if attributes.has_key?(:'card_verification_number_token')
         self.card_verification_number_token = attributes[:'card_verification_number_token']
       end
+
+      if attributes.has_key?(:'dual_vaulted')
+        self.dual_vaulted = attributes[:'dual_vaulted']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -196,7 +204,8 @@ module UltracartClient
           card_number_token == o.card_number_token &&
           card_number_truncated == o.card_number_truncated &&
           card_type == o.card_type &&
-          card_verification_number_token == o.card_verification_number_token
+          card_verification_number_token == o.card_verification_number_token &&
+          dual_vaulted == o.dual_vaulted
     end
 
     # @see the `==` method
@@ -208,7 +217,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [card_auth_ticket, card_authorization_amount, card_authorization_dts, card_authorization_reference_number, card_expiration_month, card_expiration_year, card_number, card_number_token, card_number_truncated, card_type, card_verification_number_token].hash
+      [card_auth_ticket, card_authorization_amount, card_authorization_dts, card_authorization_reference_number, card_expiration_month, card_expiration_year, card_number, card_number_token, card_number_truncated, card_type, card_verification_number_token, dual_vaulted].hash
     end
 
     # Builds the object from hash
