@@ -17,6 +17,9 @@ module UltracartClient
     # Cumulative order limit
     attr_accessor :cumulative_order_limit
 
+    # Exempt from Minimum Item Count
+    attr_accessor :exempt_from_minimum_item_count
+
     # Individual order limit
     attr_accessor :individual_order_limit
 
@@ -27,6 +30,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'cumulative_order_limit' => :'cumulative_order_limit',
+        :'exempt_from_minimum_item_count' => :'exempt_from_minimum_item_count',
         :'individual_order_limit' => :'individual_order_limit',
         :'multiple_quantity' => :'multiple_quantity'
       }
@@ -36,6 +40,7 @@ module UltracartClient
     def self.swagger_types
       {
         :'cumulative_order_limit' => :'Integer',
+        :'exempt_from_minimum_item_count' => :'BOOLEAN',
         :'individual_order_limit' => :'Integer',
         :'multiple_quantity' => :'Integer'
       }
@@ -51,6 +56,10 @@ module UltracartClient
 
       if attributes.has_key?(:'cumulative_order_limit')
         self.cumulative_order_limit = attributes[:'cumulative_order_limit']
+      end
+
+      if attributes.has_key?(:'exempt_from_minimum_item_count')
+        self.exempt_from_minimum_item_count = attributes[:'exempt_from_minimum_item_count']
       end
 
       if attributes.has_key?(:'individual_order_limit')
@@ -81,6 +90,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           cumulative_order_limit == o.cumulative_order_limit &&
+          exempt_from_minimum_item_count == o.exempt_from_minimum_item_count &&
           individual_order_limit == o.individual_order_limit &&
           multiple_quantity == o.multiple_quantity
     end
@@ -94,7 +104,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [cumulative_order_limit, individual_order_limit, multiple_quantity].hash
+      [cumulative_order_limit, exempt_from_minimum_item_count, individual_order_limit, multiple_quantity].hash
     end
 
     # Builds the object from hash
