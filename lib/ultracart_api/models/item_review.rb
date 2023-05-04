@@ -27,24 +27,34 @@ module UltracartClient
 
     attr_accessor :overall
 
+    # Rating Name 1
     attr_accessor :rating_name1
 
+    # Rating Name 10
     attr_accessor :rating_name10
 
+    # Rating Name 2
     attr_accessor :rating_name2
 
+    # Rating Name 3
     attr_accessor :rating_name3
 
+    # Rating Name 4
     attr_accessor :rating_name4
 
+    # Rating Name 5
     attr_accessor :rating_name5
 
+    # Rating Name 6
     attr_accessor :rating_name6
 
+    # Rating Name 7
     attr_accessor :rating_name7
 
+    # Rating Name 8
     attr_accessor :rating_name8
 
+    # Rating Name 9
     attr_accessor :rating_name9
 
     attr_accessor :rating_score1
@@ -71,24 +81,53 @@ module UltracartClient
 
     attr_accessor :recommend_to_friend
 
+    # Review
     attr_accessor :review
 
     attr_accessor :review_oid
 
+    # Nickname
     attr_accessor :reviewed_nickname
 
+    # Reviewer Email
     attr_accessor :reviewer_email
 
+    # Location
     attr_accessor :reviewer_location
 
+    # Status of the review
     attr_accessor :status
 
+    # Store Feedback
     attr_accessor :store_feedback
 
     # Date/time of review submission
     attr_accessor :submitted_dts
 
+    # Title
     attr_accessor :title
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -337,13 +376,265 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@rating_name1.nil? && @rating_name1.to_s.length > 100
+        invalid_properties.push('invalid value for "rating_name1", the character length must be smaller than or equal to 100.')
+      end
+
+      if !@rating_name10.nil? && @rating_name10.to_s.length > 100
+        invalid_properties.push('invalid value for "rating_name10", the character length must be smaller than or equal to 100.')
+      end
+
+      if !@rating_name2.nil? && @rating_name2.to_s.length > 100
+        invalid_properties.push('invalid value for "rating_name2", the character length must be smaller than or equal to 100.')
+      end
+
+      if !@rating_name3.nil? && @rating_name3.to_s.length > 100
+        invalid_properties.push('invalid value for "rating_name3", the character length must be smaller than or equal to 100.')
+      end
+
+      if !@rating_name4.nil? && @rating_name4.to_s.length > 100
+        invalid_properties.push('invalid value for "rating_name4", the character length must be smaller than or equal to 100.')
+      end
+
+      if !@rating_name5.nil? && @rating_name5.to_s.length > 100
+        invalid_properties.push('invalid value for "rating_name5", the character length must be smaller than or equal to 100.')
+      end
+
+      if !@rating_name6.nil? && @rating_name6.to_s.length > 100
+        invalid_properties.push('invalid value for "rating_name6", the character length must be smaller than or equal to 100.')
+      end
+
+      if !@rating_name7.nil? && @rating_name7.to_s.length > 100
+        invalid_properties.push('invalid value for "rating_name7", the character length must be smaller than or equal to 100.')
+      end
+
+      if !@rating_name8.nil? && @rating_name8.to_s.length > 100
+        invalid_properties.push('invalid value for "rating_name8", the character length must be smaller than or equal to 100.')
+      end
+
+      if !@rating_name9.nil? && @rating_name9.to_s.length > 100
+        invalid_properties.push('invalid value for "rating_name9", the character length must be smaller than or equal to 100.')
+      end
+
+      if !@review.nil? && @review.to_s.length > 10000
+        invalid_properties.push('invalid value for "review", the character length must be smaller than or equal to 10000.')
+      end
+
+      if !@reviewed_nickname.nil? && @reviewed_nickname.to_s.length > 25
+        invalid_properties.push('invalid value for "reviewed_nickname", the character length must be smaller than or equal to 25.')
+      end
+
+      if !@reviewer_email.nil? && @reviewer_email.to_s.length > 100
+        invalid_properties.push('invalid value for "reviewer_email", the character length must be smaller than or equal to 100.')
+      end
+
+      if !@reviewer_location.nil? && @reviewer_location.to_s.length > 25
+        invalid_properties.push('invalid value for "reviewer_location", the character length must be smaller than or equal to 25.')
+      end
+
+      if !@store_feedback.nil? && @store_feedback.to_s.length > 10000
+        invalid_properties.push('invalid value for "store_feedback", the character length must be smaller than or equal to 10000.')
+      end
+
+      if !@title.nil? && @title.to_s.length > 250
+        invalid_properties.push('invalid value for "title", the character length must be smaller than or equal to 250.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@rating_name1.nil? && @rating_name1.to_s.length > 100
+      return false if !@rating_name10.nil? && @rating_name10.to_s.length > 100
+      return false if !@rating_name2.nil? && @rating_name2.to_s.length > 100
+      return false if !@rating_name3.nil? && @rating_name3.to_s.length > 100
+      return false if !@rating_name4.nil? && @rating_name4.to_s.length > 100
+      return false if !@rating_name5.nil? && @rating_name5.to_s.length > 100
+      return false if !@rating_name6.nil? && @rating_name6.to_s.length > 100
+      return false if !@rating_name7.nil? && @rating_name7.to_s.length > 100
+      return false if !@rating_name8.nil? && @rating_name8.to_s.length > 100
+      return false if !@rating_name9.nil? && @rating_name9.to_s.length > 100
+      return false if !@review.nil? && @review.to_s.length > 10000
+      return false if !@reviewed_nickname.nil? && @reviewed_nickname.to_s.length > 25
+      return false if !@reviewer_email.nil? && @reviewer_email.to_s.length > 100
+      return false if !@reviewer_location.nil? && @reviewer_location.to_s.length > 25
+      status_validator = EnumAttributeValidator.new('String', ['approved', 'unapproved', 'rejected', 'multimedia processing'])
+      return false unless status_validator.valid?(@status)
+      return false if !@store_feedback.nil? && @store_feedback.to_s.length > 10000
+      return false if !@title.nil? && @title.to_s.length > 250
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] rating_name1 Value to be assigned
+    def rating_name1=(rating_name1)
+      if !rating_name1.nil? && rating_name1.to_s.length > 100
+        fail ArgumentError, 'invalid value for "rating_name1", the character length must be smaller than or equal to 100.'
+      end
+
+      @rating_name1 = rating_name1
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] rating_name10 Value to be assigned
+    def rating_name10=(rating_name10)
+      if !rating_name10.nil? && rating_name10.to_s.length > 100
+        fail ArgumentError, 'invalid value for "rating_name10", the character length must be smaller than or equal to 100.'
+      end
+
+      @rating_name10 = rating_name10
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] rating_name2 Value to be assigned
+    def rating_name2=(rating_name2)
+      if !rating_name2.nil? && rating_name2.to_s.length > 100
+        fail ArgumentError, 'invalid value for "rating_name2", the character length must be smaller than or equal to 100.'
+      end
+
+      @rating_name2 = rating_name2
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] rating_name3 Value to be assigned
+    def rating_name3=(rating_name3)
+      if !rating_name3.nil? && rating_name3.to_s.length > 100
+        fail ArgumentError, 'invalid value for "rating_name3", the character length must be smaller than or equal to 100.'
+      end
+
+      @rating_name3 = rating_name3
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] rating_name4 Value to be assigned
+    def rating_name4=(rating_name4)
+      if !rating_name4.nil? && rating_name4.to_s.length > 100
+        fail ArgumentError, 'invalid value for "rating_name4", the character length must be smaller than or equal to 100.'
+      end
+
+      @rating_name4 = rating_name4
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] rating_name5 Value to be assigned
+    def rating_name5=(rating_name5)
+      if !rating_name5.nil? && rating_name5.to_s.length > 100
+        fail ArgumentError, 'invalid value for "rating_name5", the character length must be smaller than or equal to 100.'
+      end
+
+      @rating_name5 = rating_name5
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] rating_name6 Value to be assigned
+    def rating_name6=(rating_name6)
+      if !rating_name6.nil? && rating_name6.to_s.length > 100
+        fail ArgumentError, 'invalid value for "rating_name6", the character length must be smaller than or equal to 100.'
+      end
+
+      @rating_name6 = rating_name6
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] rating_name7 Value to be assigned
+    def rating_name7=(rating_name7)
+      if !rating_name7.nil? && rating_name7.to_s.length > 100
+        fail ArgumentError, 'invalid value for "rating_name7", the character length must be smaller than or equal to 100.'
+      end
+
+      @rating_name7 = rating_name7
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] rating_name8 Value to be assigned
+    def rating_name8=(rating_name8)
+      if !rating_name8.nil? && rating_name8.to_s.length > 100
+        fail ArgumentError, 'invalid value for "rating_name8", the character length must be smaller than or equal to 100.'
+      end
+
+      @rating_name8 = rating_name8
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] rating_name9 Value to be assigned
+    def rating_name9=(rating_name9)
+      if !rating_name9.nil? && rating_name9.to_s.length > 100
+        fail ArgumentError, 'invalid value for "rating_name9", the character length must be smaller than or equal to 100.'
+      end
+
+      @rating_name9 = rating_name9
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] review Value to be assigned
+    def review=(review)
+      if !review.nil? && review.to_s.length > 10000
+        fail ArgumentError, 'invalid value for "review", the character length must be smaller than or equal to 10000.'
+      end
+
+      @review = review
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] reviewed_nickname Value to be assigned
+    def reviewed_nickname=(reviewed_nickname)
+      if !reviewed_nickname.nil? && reviewed_nickname.to_s.length > 25
+        fail ArgumentError, 'invalid value for "reviewed_nickname", the character length must be smaller than or equal to 25.'
+      end
+
+      @reviewed_nickname = reviewed_nickname
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] reviewer_email Value to be assigned
+    def reviewer_email=(reviewer_email)
+      if !reviewer_email.nil? && reviewer_email.to_s.length > 100
+        fail ArgumentError, 'invalid value for "reviewer_email", the character length must be smaller than or equal to 100.'
+      end
+
+      @reviewer_email = reviewer_email
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] reviewer_location Value to be assigned
+    def reviewer_location=(reviewer_location)
+      if !reviewer_location.nil? && reviewer_location.to_s.length > 25
+        fail ArgumentError, 'invalid value for "reviewer_location", the character length must be smaller than or equal to 25.'
+      end
+
+      @reviewer_location = reviewer_location
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] status Object to be assigned
+    def status=(status)
+      validator = EnumAttributeValidator.new('String', ['approved', 'unapproved', 'rejected', 'multimedia processing'])
+      unless validator.valid?(status)
+        fail ArgumentError, 'invalid value for "status", must be one of #{validator.allowable_values}.'
+      end
+      @status = status
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] store_feedback Value to be assigned
+    def store_feedback=(store_feedback)
+      if !store_feedback.nil? && store_feedback.to_s.length > 10000
+        fail ArgumentError, 'invalid value for "store_feedback", the character length must be smaller than or equal to 10000.'
+      end
+
+      @store_feedback = store_feedback
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] title Value to be assigned
+    def title=(title)
+      if !title.nil? && title.to_s.length > 250
+        fail ArgumentError, 'invalid value for "title", the character length must be smaller than or equal to 250.'
+      end
+
+      @title = title
     end
 
     # Checks equality by comparing each attribute.
