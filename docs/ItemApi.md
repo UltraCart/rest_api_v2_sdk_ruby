@@ -6,6 +6,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | ------ | ------------ | ----------- |
 | [**delete_digital_item**](ItemApi.md#delete_digital_item) | **DELETE** /item/digital_library/{digital_item_oid} | Delete a digital item, which is a file within the digital library, not an actual merchant item |
 | [**delete_item**](ItemApi.md#delete_item) | **DELETE** /item/items/{merchant_item_oid} | Delete an item |
+| [**delete_review**](ItemApi.md#delete_review) | **DELETE** /item/items/{merchant_item_oid}/reviews/{review_oid} | Delete a review |
 | [**get_digital_item**](ItemApi.md#get_digital_item) | **GET** /item/digital_library/{digital_item_oid} | Retrieve a digital item from the digital library, which are digital files that may be attached to normal items |
 | [**get_digital_items**](ItemApi.md#get_digital_items) | **GET** /item/digital_library | Retrieve digital items from the digital library which are digital files that may be attached to normal items |
 | [**get_digital_items_by_external_id**](ItemApi.md#get_digital_items_by_external_id) | **GET** /item/digital_library/by_external/{external_id} | Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id |
@@ -13,12 +14,16 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_item_by_merchant_item_id**](ItemApi.md#get_item_by_merchant_item_id) | **GET** /item/items/merchant_item_id/{merchant_item_id} | Retrieve an item by item id |
 | [**get_items**](ItemApi.md#get_items) | **GET** /item/items | Retrieve items |
 | [**get_pricing_tiers**](ItemApi.md#get_pricing_tiers) | **GET** /item/pricing_tiers | Retrieve pricing tiers |
+| [**get_review**](ItemApi.md#get_review) | **GET** /item/items/{merchant_item_oid}/reviews/{review_oid} | get a review |
+| [**get_reviews**](ItemApi.md#get_reviews) | **GET** /item/items/{merchant_item_oid}/reviews | get reviews for an item |
 | [**get_unassociated_digital_items**](ItemApi.md#get_unassociated_digital_items) | **GET** /item/digital_library/unassociated | Retrieve digital items from the digital library (which are digital files that may be attached to normal items) not yet associated with actual items |
 | [**insert_digital_item**](ItemApi.md#insert_digital_item) | **POST** /item/digital_library | Create a file within the digital library |
 | [**insert_item**](ItemApi.md#insert_item) | **POST** /item/items | Create an item |
+| [**insert_review**](ItemApi.md#insert_review) | **POST** /item/items/{merchant_item_oid}/reviews | Insert a review |
 | [**update_digital_item**](ItemApi.md#update_digital_item) | **PUT** /item/digital_library/{digital_item_oid} | Updates a file within the digital library |
 | [**update_item**](ItemApi.md#update_item) | **PUT** /item/items/{merchant_item_oid} | Update an item |
 | [**update_items**](ItemApi.md#update_items) | **PUT** /item/items/batch | Update multiple items |
+| [**update_review**](ItemApi.md#update_review) | **PUT** /item/items/{merchant_item_oid}/reviews/{review_oid} | Update a review |
 | [**upload_temporary_multimedia**](ItemApi.md#upload_temporary_multimedia) | **POST** /item/temp_multimedia | Upload an image to the temporary multimedia. |
 
 
@@ -147,6 +152,78 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **merchant_item_oid** | **Integer** | The item oid to delete. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_review
+
+> delete_review(review_oid, merchant_item_oid)
+
+Delete a review
+
+Delete an item review. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+review_oid = 56 # Integer | The review oid to delete.
+merchant_item_oid = 56 # Integer | The item oid the review is associated with.
+
+begin
+  # Delete a review
+  api_instance.delete_review(review_oid, merchant_item_oid)
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->delete_review: #{e}"
+end
+```
+
+#### Using the delete_review_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_review_with_http_info(review_oid, merchant_item_oid)
+
+```ruby
+begin
+  # Delete a review
+  data, status_code, headers = api_instance.delete_review_with_http_info(review_oid, merchant_item_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->delete_review_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **review_oid** | **Integer** | The review oid to delete. |  |
+| **merchant_item_oid** | **Integer** | The item oid the review is associated with. |  |
 
 ### Return type
 
@@ -701,6 +778,150 @@ end
 - **Accept**: application/json
 
 
+## get_review
+
+> <ItemReviewResponse> get_review(review_oid, merchant_item_oid)
+
+get a review
+
+Retrieve an item review. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+review_oid = 56 # Integer | The review oid to retrieve.
+merchant_item_oid = 56 # Integer | The item oid the review is associated with.
+
+begin
+  # get a review
+  result = api_instance.get_review(review_oid, merchant_item_oid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->get_review: #{e}"
+end
+```
+
+#### Using the get_review_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ItemReviewResponse>, Integer, Hash)> get_review_with_http_info(review_oid, merchant_item_oid)
+
+```ruby
+begin
+  # get a review
+  data, status_code, headers = api_instance.get_review_with_http_info(review_oid, merchant_item_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ItemReviewResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->get_review_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **review_oid** | **Integer** | The review oid to retrieve. |  |
+| **merchant_item_oid** | **Integer** | The item oid the review is associated with. |  |
+
+### Return type
+
+[**ItemReviewResponse**](ItemReviewResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_reviews
+
+> <ItemReviewsResponse> get_reviews(merchant_item_oid)
+
+get reviews for an item
+
+Retrieve item reviews. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+merchant_item_oid = 56 # Integer | The item oid the review is associated with.
+
+begin
+  # get reviews for an item
+  result = api_instance.get_reviews(merchant_item_oid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->get_reviews: #{e}"
+end
+```
+
+#### Using the get_reviews_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ItemReviewsResponse>, Integer, Hash)> get_reviews_with_http_info(merchant_item_oid)
+
+```ruby
+begin
+  # get reviews for an item
+  data, status_code, headers = api_instance.get_reviews_with_http_info(merchant_item_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ItemReviewsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->get_reviews_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **merchant_item_oid** | **Integer** | The item oid the review is associated with. |  |
+
+### Return type
+
+[**ItemReviewsResponse**](ItemReviewsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_unassociated_digital_items
 
 > <ItemDigitalItemsResponse> get_unassociated_digital_items(opts)
@@ -932,6 +1153,79 @@ end
 - **Accept**: application/json
 
 
+## insert_review
+
+> <ItemReviewResponse> insert_review(merchant_item_oid, review)
+
+Insert a review
+
+Insert a item review. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+merchant_item_oid = 56 # Integer | The item oid the review is associated with.
+review = UltracartClient::ItemReview.new # ItemReview | Review to insert
+
+begin
+  # Insert a review
+  result = api_instance.insert_review(merchant_item_oid, review)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->insert_review: #{e}"
+end
+```
+
+#### Using the insert_review_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ItemReviewResponse>, Integer, Hash)> insert_review_with_http_info(merchant_item_oid, review)
+
+```ruby
+begin
+  # Insert a review
+  data, status_code, headers = api_instance.insert_review_with_http_info(merchant_item_oid, review)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ItemReviewResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->insert_review_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **merchant_item_oid** | **Integer** | The item oid the review is associated with. |  |
+| **review** | [**ItemReview**](ItemReview.md) | Review to insert |  |
+
+### Return type
+
+[**ItemReviewResponse**](ItemReviewResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
 ## update_digital_item
 
 > <ItemDigitalItemResponse> update_digital_item(digital_item_oid, digital_item)
@@ -1152,6 +1446,81 @@ end
 ### Return type
 
 [**ItemsResponse**](ItemsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_review
+
+> <ItemReviewResponse> update_review(review_oid, merchant_item_oid, review)
+
+Update a review
+
+Update an item review. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+review_oid = 56 # Integer | The review oid to update.
+merchant_item_oid = 56 # Integer | The item oid the review is associated with.
+review = UltracartClient::ItemReview.new # ItemReview | Review to update
+
+begin
+  # Update a review
+  result = api_instance.update_review(review_oid, merchant_item_oid, review)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->update_review: #{e}"
+end
+```
+
+#### Using the update_review_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ItemReviewResponse>, Integer, Hash)> update_review_with_http_info(review_oid, merchant_item_oid, review)
+
+```ruby
+begin
+  # Update a review
+  data, status_code, headers = api_instance.update_review_with_http_info(review_oid, merchant_item_oid, review)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ItemReviewResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->update_review_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **review_oid** | **Integer** | The review oid to update. |  |
+| **merchant_item_oid** | **Integer** | The item oid the review is associated with. |  |
+| **review** | [**ItemReview**](ItemReview.md) | Review to update |  |
+
+### Return type
+
+[**ItemReviewResponse**](ItemReviewResponse.md)
 
 ### Authorization
 

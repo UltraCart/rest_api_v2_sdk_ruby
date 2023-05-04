@@ -160,6 +160,76 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Delete a review
+    # Delete an item review. 
+    # @param review_oid [Integer] The review oid to delete.
+    # @param merchant_item_oid [Integer] The item oid the review is associated with.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_review(review_oid, merchant_item_oid, opts = {})
+      delete_review_with_http_info(review_oid, merchant_item_oid, opts)
+      nil
+    end
+
+    # Delete a review
+    # Delete an item review. 
+    # @param review_oid [Integer] The review oid to delete.
+    # @param merchant_item_oid [Integer] The item oid the review is associated with.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_review_with_http_info(review_oid, merchant_item_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ItemApi.delete_review ...'
+      end
+      # verify the required parameter 'review_oid' is set
+      if @api_client.config.client_side_validation && review_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'review_oid' when calling ItemApi.delete_review"
+      end
+      # verify the required parameter 'merchant_item_oid' is set
+      if @api_client.config.client_side_validation && merchant_item_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'merchant_item_oid' when calling ItemApi.delete_review"
+      end
+      # resource path
+      local_var_path = '/item/items/{merchant_item_oid}/reviews/{review_oid}'.sub('{' + 'review_oid' + '}', CGI.escape(review_oid.to_s)).sub('{' + 'merchant_item_oid' + '}', CGI.escape(merchant_item_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ItemApi.delete_review",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ItemApi#delete_review\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a digital item from the digital library, which are digital files that may be attached to normal items
     # Retrieves a digital item (file information) from the account.  Be aware that these are not normal items that can be added to a shopping cart. Rather, they are digital files that may be associated with normal items. 
     # @param digital_item_oid [Integer] The digital item oid to retrieve.
@@ -647,6 +717,140 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # get a review
+    # Retrieve an item review. 
+    # @param review_oid [Integer] The review oid to retrieve.
+    # @param merchant_item_oid [Integer] The item oid the review is associated with.
+    # @param [Hash] opts the optional parameters
+    # @return [ItemReviewResponse]
+    def get_review(review_oid, merchant_item_oid, opts = {})
+      data, _status_code, _headers = get_review_with_http_info(review_oid, merchant_item_oid, opts)
+      data
+    end
+
+    # get a review
+    # Retrieve an item review. 
+    # @param review_oid [Integer] The review oid to retrieve.
+    # @param merchant_item_oid [Integer] The item oid the review is associated with.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ItemReviewResponse, Integer, Hash)>] ItemReviewResponse data, response status code and response headers
+    def get_review_with_http_info(review_oid, merchant_item_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ItemApi.get_review ...'
+      end
+      # verify the required parameter 'review_oid' is set
+      if @api_client.config.client_side_validation && review_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'review_oid' when calling ItemApi.get_review"
+      end
+      # verify the required parameter 'merchant_item_oid' is set
+      if @api_client.config.client_side_validation && merchant_item_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'merchant_item_oid' when calling ItemApi.get_review"
+      end
+      # resource path
+      local_var_path = '/item/items/{merchant_item_oid}/reviews/{review_oid}'.sub('{' + 'review_oid' + '}', CGI.escape(review_oid.to_s)).sub('{' + 'merchant_item_oid' + '}', CGI.escape(merchant_item_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ItemReviewResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ItemApi.get_review",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ItemApi#get_review\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # get reviews for an item
+    # Retrieve item reviews. 
+    # @param merchant_item_oid [Integer] The item oid the review is associated with.
+    # @param [Hash] opts the optional parameters
+    # @return [ItemReviewsResponse]
+    def get_reviews(merchant_item_oid, opts = {})
+      data, _status_code, _headers = get_reviews_with_http_info(merchant_item_oid, opts)
+      data
+    end
+
+    # get reviews for an item
+    # Retrieve item reviews. 
+    # @param merchant_item_oid [Integer] The item oid the review is associated with.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ItemReviewsResponse, Integer, Hash)>] ItemReviewsResponse data, response status code and response headers
+    def get_reviews_with_http_info(merchant_item_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ItemApi.get_reviews ...'
+      end
+      # verify the required parameter 'merchant_item_oid' is set
+      if @api_client.config.client_side_validation && merchant_item_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'merchant_item_oid' when calling ItemApi.get_reviews"
+      end
+      # resource path
+      local_var_path = '/item/items/{merchant_item_oid}/reviews'.sub('{' + 'merchant_item_oid' + '}', CGI.escape(merchant_item_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ItemReviewsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ItemApi.get_reviews",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ItemApi#get_reviews\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve digital items from the digital library (which are digital files that may be attached to normal items) not yet associated with actual items
     # Retrieves a group of digital items (file information) from the account that are not yet associated with any actual items.  If no parameters are specified, all digital items will be returned.  Be aware that these are not normal items that can be added to a shopping cart. Rather, they are digital files that may be associated with normal items.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
     # @param [Hash] opts the optional parameters
@@ -863,6 +1067,81 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ItemApi#insert_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Insert a review
+    # Insert a item review. 
+    # @param merchant_item_oid [Integer] The item oid the review is associated with.
+    # @param review [ItemReview] Review to insert
+    # @param [Hash] opts the optional parameters
+    # @return [ItemReviewResponse]
+    def insert_review(merchant_item_oid, review, opts = {})
+      data, _status_code, _headers = insert_review_with_http_info(merchant_item_oid, review, opts)
+      data
+    end
+
+    # Insert a review
+    # Insert a item review. 
+    # @param merchant_item_oid [Integer] The item oid the review is associated with.
+    # @param review [ItemReview] Review to insert
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ItemReviewResponse, Integer, Hash)>] ItemReviewResponse data, response status code and response headers
+    def insert_review_with_http_info(merchant_item_oid, review, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ItemApi.insert_review ...'
+      end
+      # verify the required parameter 'merchant_item_oid' is set
+      if @api_client.config.client_side_validation && merchant_item_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'merchant_item_oid' when calling ItemApi.insert_review"
+      end
+      # verify the required parameter 'review' is set
+      if @api_client.config.client_side_validation && review.nil?
+        fail ArgumentError, "Missing the required parameter 'review' when calling ItemApi.insert_review"
+      end
+      # resource path
+      local_var_path = '/item/items/{merchant_item_oid}/reviews'.sub('{' + 'merchant_item_oid' + '}', CGI.escape(merchant_item_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(review)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ItemReviewResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ItemApi.insert_review",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ItemApi#insert_review\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1097,6 +1376,87 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ItemApi#update_items\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a review
+    # Update an item review. 
+    # @param review_oid [Integer] The review oid to update.
+    # @param merchant_item_oid [Integer] The item oid the review is associated with.
+    # @param review [ItemReview] Review to update
+    # @param [Hash] opts the optional parameters
+    # @return [ItemReviewResponse]
+    def update_review(review_oid, merchant_item_oid, review, opts = {})
+      data, _status_code, _headers = update_review_with_http_info(review_oid, merchant_item_oid, review, opts)
+      data
+    end
+
+    # Update a review
+    # Update an item review. 
+    # @param review_oid [Integer] The review oid to update.
+    # @param merchant_item_oid [Integer] The item oid the review is associated with.
+    # @param review [ItemReview] Review to update
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ItemReviewResponse, Integer, Hash)>] ItemReviewResponse data, response status code and response headers
+    def update_review_with_http_info(review_oid, merchant_item_oid, review, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ItemApi.update_review ...'
+      end
+      # verify the required parameter 'review_oid' is set
+      if @api_client.config.client_side_validation && review_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'review_oid' when calling ItemApi.update_review"
+      end
+      # verify the required parameter 'merchant_item_oid' is set
+      if @api_client.config.client_side_validation && merchant_item_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'merchant_item_oid' when calling ItemApi.update_review"
+      end
+      # verify the required parameter 'review' is set
+      if @api_client.config.client_side_validation && review.nil?
+        fail ArgumentError, "Missing the required parameter 'review' when calling ItemApi.update_review"
+      end
+      # resource path
+      local_var_path = '/item/items/{merchant_item_oid}/reviews/{review_oid}'.sub('{' + 'review_oid' + '}', CGI.escape(review_oid.to_s)).sub('{' + 'merchant_item_oid' + '}', CGI.escape(merchant_item_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(review)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ItemReviewResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ItemApi.update_review",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ItemApi#update_review\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

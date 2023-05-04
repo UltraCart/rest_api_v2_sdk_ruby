@@ -523,7 +523,9 @@ docs/ItemRestriction.md
 docs/ItemRestrictionItem.md
 docs/ItemRevguard.md
 docs/ItemReview.md
+docs/ItemReviewResponse.md
 docs/ItemReviews.md
+docs/ItemReviewsResponse.md
 docs/ItemSalesforce.md
 docs/ItemShipping.md
 docs/ItemShippingCase.md
@@ -1327,7 +1329,9 @@ lib/ultracart_api/models/item_restriction.rb
 lib/ultracart_api/models/item_restriction_item.rb
 lib/ultracart_api/models/item_revguard.rb
 lib/ultracart_api/models/item_review.rb
+lib/ultracart_api/models/item_review_response.rb
 lib/ultracart_api/models/item_reviews.rb
+lib/ultracart_api/models/item_reviews_response.rb
 lib/ultracart_api/models/item_salesforce.rb
 lib/ultracart_api/models/item_shipping.rb
 lib/ultracart_api/models/item_shipping_case.rb
