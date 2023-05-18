@@ -27,13 +27,17 @@ module UltracartClient
     # Multiple quantity
     attr_accessor :multiple_quantity
 
+    # Payment method validity
+    attr_accessor :payment_method_validity
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'cumulative_order_limit' => :'cumulative_order_limit',
         :'exempt_from_minimum_item_count' => :'exempt_from_minimum_item_count',
         :'individual_order_limit' => :'individual_order_limit',
-        :'multiple_quantity' => :'multiple_quantity'
+        :'multiple_quantity' => :'multiple_quantity',
+        :'payment_method_validity' => :'payment_method_validity'
       }
     end
 
@@ -48,7 +52,8 @@ module UltracartClient
         :'cumulative_order_limit' => :'Integer',
         :'exempt_from_minimum_item_count' => :'Boolean',
         :'individual_order_limit' => :'Integer',
-        :'multiple_quantity' => :'Integer'
+        :'multiple_quantity' => :'Integer',
+        :'payment_method_validity' => :'Array<String>'
       }
     end
 
@@ -88,6 +93,12 @@ module UltracartClient
       if attributes.key?(:'multiple_quantity')
         self.multiple_quantity = attributes[:'multiple_quantity']
       end
+
+      if attributes.key?(:'payment_method_validity')
+        if (value = attributes[:'payment_method_validity']).is_a?(Array)
+          self.payment_method_validity = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -111,7 +122,8 @@ module UltracartClient
           cumulative_order_limit == o.cumulative_order_limit &&
           exempt_from_minimum_item_count == o.exempt_from_minimum_item_count &&
           individual_order_limit == o.individual_order_limit &&
-          multiple_quantity == o.multiple_quantity
+          multiple_quantity == o.multiple_quantity &&
+          payment_method_validity == o.payment_method_validity
     end
 
     # @see the `==` method
@@ -123,7 +135,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cumulative_order_limit, exempt_from_minimum_item_count, individual_order_limit, multiple_quantity].hash
+      [cumulative_order_limit, exempt_from_minimum_item_count, individual_order_limit, multiple_quantity, payment_method_validity].hash
     end
 
     # Builds the object from hash

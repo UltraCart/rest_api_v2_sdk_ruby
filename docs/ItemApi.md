@@ -14,8 +14,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_item_by_merchant_item_id**](ItemApi.md#get_item_by_merchant_item_id) | **GET** /item/items/merchant_item_id/{merchant_item_id} | Retrieve an item by item id |
 | [**get_items**](ItemApi.md#get_items) | **GET** /item/items | Retrieve items |
 | [**get_pricing_tiers**](ItemApi.md#get_pricing_tiers) | **GET** /item/pricing_tiers | Retrieve pricing tiers |
-| [**get_review**](ItemApi.md#get_review) | **GET** /item/items/{merchant_item_oid}/reviews/{review_oid} | get a review |
-| [**get_reviews**](ItemApi.md#get_reviews) | **GET** /item/items/{merchant_item_oid}/reviews | get reviews for an item |
+| [**get_review**](ItemApi.md#get_review) | **GET** /item/items/{merchant_item_oid}/reviews/{review_oid} | Get a review |
+| [**get_reviews**](ItemApi.md#get_reviews) | **GET** /item/items/{merchant_item_oid}/reviews | Get reviews for an item |
 | [**get_unassociated_digital_items**](ItemApi.md#get_unassociated_digital_items) | **GET** /item/digital_library/unassociated | Retrieve digital items from the digital library (which are digital files that may be attached to normal items) not yet associated with actual items |
 | [**insert_digital_item**](ItemApi.md#insert_digital_item) | **POST** /item/digital_library | Create a file within the digital library |
 | [**insert_item**](ItemApi.md#insert_item) | **POST** /item/items | Create an item |
@@ -782,7 +782,7 @@ end
 
 > <ItemReviewResponse> get_review(review_oid, merchant_item_oid)
 
-get a review
+Get a review
 
 Retrieve an item review. 
 
@@ -804,7 +804,7 @@ review_oid = 56 # Integer | The review oid to retrieve.
 merchant_item_oid = 56 # Integer | The item oid the review is associated with.
 
 begin
-  # get a review
+  # Get a review
   result = api_instance.get_review(review_oid, merchant_item_oid)
   p result
 rescue UltracartClient::ApiError => e
@@ -820,7 +820,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # get a review
+  # Get a review
   data, status_code, headers = api_instance.get_review_with_http_info(review_oid, merchant_item_oid)
   p status_code # => 2xx
   p headers # => { ... }
@@ -855,7 +855,7 @@ end
 
 > <ItemReviewsResponse> get_reviews(merchant_item_oid)
 
-get reviews for an item
+Get reviews for an item
 
 Retrieve item reviews. 
 
@@ -876,7 +876,7 @@ api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::
 merchant_item_oid = 56 # Integer | The item oid the review is associated with.
 
 begin
-  # get reviews for an item
+  # Get reviews for an item
   result = api_instance.get_reviews(merchant_item_oid)
   p result
 rescue UltracartClient::ApiError => e
@@ -892,7 +892,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # get reviews for an item
+  # Get reviews for an item
   data, status_code, headers = api_instance.get_reviews_with_http_info(merchant_item_oid)
   p status_code # => 2xx
   p headers # => { ... }

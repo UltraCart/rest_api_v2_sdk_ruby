@@ -11,6 +11,7 @@
 | **arbitrary_unit_cost** | **Float** | Arbitrary unit cost that rebills of this item should occur at | [optional] |
 | **arbitrary_unit_cost_remaining_orders** | **Integer** | The number of rebills to give the arbitrary unit cost on before reverting to normal pricing. | [optional] |
 | **auto_order_item_oid** | **Integer** | Primary key of AutoOrderItem | [optional] |
+| **first_order_dts** | **String** | Date/time of the first order of this item.  Null if item added to auto order and has not been rebilled yet. | [optional] |
 | **frequency** | **String** | Frequency of the rebill if not a fixed schedule | [optional] |
 | **future_schedules** | [**Array&lt;AutoOrderItemFutureSchedule&gt;**](AutoOrderItemFutureSchedule.md) | The future rebill schedule for this item up to the next ten rebills | [optional] |
 | **last_order_dts** | **String** | Date/time of the last order of this item | [optional] |
@@ -22,6 +23,7 @@
 | **options** | [**Array&lt;AutoOrderItemOption&gt;**](AutoOrderItemOption.md) | Options associated with this item | [optional] |
 | **original_item_id** | **String** | The original item id purchased.  This item controls scheduling.  If you wish to modify a schedule, for example, from monthly to yearly, change this item from your monthly item to your yearly item, and then change the next_shipment_dts to your desired date. | [optional] |
 | **original_quantity** | **Float** | The original quantity purchased | [optional] |
+| **paused** | **Boolean** | True if paused.  This field is an object instead of a primitive for backwards compatibility. | [optional] |
 | **paypal_payer_id** | **String** | The PayPal Payer ID tied to this item | [optional] |
 | **paypal_recurring_payment_profile_id** | **String** | The PayPal Profile ID tied to this item | [optional] |
 | **preshipment_notice_sent** | **Boolean** | True if the preshipment notice associated with the next rebill has been sent | [optional] |
@@ -42,6 +44,7 @@ instance = UltracartClient::AutoOrderItem.new(
   arbitrary_unit_cost: null,
   arbitrary_unit_cost_remaining_orders: null,
   auto_order_item_oid: null,
+  first_order_dts: null,
   frequency: null,
   future_schedules: null,
   last_order_dts: null,
@@ -53,6 +56,7 @@ instance = UltracartClient::AutoOrderItem.new(
   options: null,
   original_item_id: null,
   original_quantity: null,
+  paused: null,
   paypal_payer_id: null,
   paypal_recurring_payment_profile_id: null,
   preshipment_notice_sent: null,
