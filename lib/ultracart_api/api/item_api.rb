@@ -624,7 +624,7 @@ module UltracartClient
       end
       return data, status_code, headers
     end
-    # get a review
+    # Get a review
     # Retrieve an item review. 
     # @param review_oid The review oid to retrieve.
     # @param merchant_item_oid The item oid the review is associated with.
@@ -635,7 +635,7 @@ module UltracartClient
       data
     end
 
-    # get a review
+    # Get a review
     # Retrieve an item review. 
     # @param review_oid The review oid to retrieve.
     # @param merchant_item_oid The item oid the review is associated with.
@@ -685,7 +685,7 @@ module UltracartClient
       end
       return data, status_code, headers
     end
-    # get reviews for an item
+    # Get reviews for an item
     # Retrieve item reviews. 
     # @param merchant_item_oid The item oid the review is associated with.
     # @param [Hash] opts the optional parameters
@@ -695,7 +695,7 @@ module UltracartClient
       data
     end
 
-    # get reviews for an item
+    # Get reviews for an item
     # Retrieve item reviews. 
     # @param merchant_item_oid The item oid the review is associated with.
     # @param [Hash] opts the optional parameters

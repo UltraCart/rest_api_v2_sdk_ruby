@@ -35,6 +35,9 @@ module UltracartClient
     # Primary key of AutoOrderItem
     attr_accessor :auto_order_item_oid
 
+    # Date/time of the first order of this item.  Null if item added to auto order and has not been rebilled yet.
+    attr_accessor :first_order_dts
+
     # Frequency of the rebill if not a fixed schedule
     attr_accessor :frequency
 
@@ -67,6 +70,9 @@ module UltracartClient
 
     # The original quantity purchased
     attr_accessor :original_quantity
+
+    # True if paused.  This field is an object instead of a primitive for backwards compatibility.
+    attr_accessor :paused
 
     # The PayPal Payer ID tied to this item
     attr_accessor :paypal_payer_id
@@ -117,6 +123,7 @@ module UltracartClient
         :'arbitrary_unit_cost' => :'arbitrary_unit_cost',
         :'arbitrary_unit_cost_remaining_orders' => :'arbitrary_unit_cost_remaining_orders',
         :'auto_order_item_oid' => :'auto_order_item_oid',
+        :'first_order_dts' => :'first_order_dts',
         :'frequency' => :'frequency',
         :'future_schedules' => :'future_schedules',
         :'last_order_dts' => :'last_order_dts',
@@ -128,6 +135,7 @@ module UltracartClient
         :'options' => :'options',
         :'original_item_id' => :'original_item_id',
         :'original_quantity' => :'original_quantity',
+        :'paused' => :'paused',
         :'paypal_payer_id' => :'paypal_payer_id',
         :'paypal_recurring_payment_profile_id' => :'paypal_recurring_payment_profile_id',
         :'preshipment_notice_sent' => :'preshipment_notice_sent',
@@ -147,6 +155,7 @@ module UltracartClient
         :'arbitrary_unit_cost' => :'Float',
         :'arbitrary_unit_cost_remaining_orders' => :'Integer',
         :'auto_order_item_oid' => :'Integer',
+        :'first_order_dts' => :'String',
         :'frequency' => :'String',
         :'future_schedules' => :'Array<AutoOrderItemFutureSchedule>',
         :'last_order_dts' => :'String',
@@ -158,6 +167,7 @@ module UltracartClient
         :'options' => :'Array<AutoOrderItemOption>',
         :'original_item_id' => :'String',
         :'original_quantity' => :'Float',
+        :'paused' => :'BOOLEAN',
         :'paypal_payer_id' => :'String',
         :'paypal_recurring_payment_profile_id' => :'String',
         :'preshipment_notice_sent' => :'BOOLEAN',
@@ -201,6 +211,10 @@ module UltracartClient
 
       if attributes.has_key?(:'auto_order_item_oid')
         self.auto_order_item_oid = attributes[:'auto_order_item_oid']
+      end
+
+      if attributes.has_key?(:'first_order_dts')
+        self.first_order_dts = attributes[:'first_order_dts']
       end
 
       if attributes.has_key?(:'frequency')
@@ -249,6 +263,10 @@ module UltracartClient
 
       if attributes.has_key?(:'original_quantity')
         self.original_quantity = attributes[:'original_quantity']
+      end
+
+      if attributes.has_key?(:'paused')
+        self.paused = attributes[:'paused']
       end
 
       if attributes.has_key?(:'paypal_payer_id')
@@ -313,6 +331,7 @@ module UltracartClient
           arbitrary_unit_cost == o.arbitrary_unit_cost &&
           arbitrary_unit_cost_remaining_orders == o.arbitrary_unit_cost_remaining_orders &&
           auto_order_item_oid == o.auto_order_item_oid &&
+          first_order_dts == o.first_order_dts &&
           frequency == o.frequency &&
           future_schedules == o.future_schedules &&
           last_order_dts == o.last_order_dts &&
@@ -324,6 +343,7 @@ module UltracartClient
           options == o.options &&
           original_item_id == o.original_item_id &&
           original_quantity == o.original_quantity &&
+          paused == o.paused &&
           paypal_payer_id == o.paypal_payer_id &&
           paypal_recurring_payment_profile_id == o.paypal_recurring_payment_profile_id &&
           preshipment_notice_sent == o.preshipment_notice_sent &&
@@ -341,7 +361,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [arbitrary_item_id, arbitrary_percentage_discount, arbitrary_quantity, arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_remaining_orders, auto_order_item_oid, frequency, future_schedules, last_order_dts, life_time_value, next_preshipment_notice_dts, next_shipment_dts, no_order_after_dts, number_of_rebills, options, original_item_id, original_quantity, paypal_payer_id, paypal_recurring_payment_profile_id, preshipment_notice_sent, rebill_value, remaining_repeat_count, simple_schedule].hash
+      [arbitrary_item_id, arbitrary_percentage_discount, arbitrary_quantity, arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_remaining_orders, auto_order_item_oid, first_order_dts, frequency, future_schedules, last_order_dts, life_time_value, next_preshipment_notice_dts, next_shipment_dts, no_order_after_dts, number_of_rebills, options, original_item_id, original_quantity, paused, paypal_payer_id, paypal_recurring_payment_profile_id, preshipment_notice_sent, rebill_value, remaining_repeat_count, simple_schedule].hash
     end
 
     # Builds the object from hash

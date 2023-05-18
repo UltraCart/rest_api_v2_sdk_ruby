@@ -26,6 +26,8 @@ module UltracartClient
     # Error message if the query failed.
     attr_accessor :error_message
 
+    attr_accessor :executed_sql
+
     # An identifier that can be used to help match up the returned data set
     attr_accessor :for_object_id
 
@@ -87,6 +89,7 @@ module UltracartClient
         :'data_set_uuid' => :'data_set_uuid',
         :'destination_table_id' => :'destination_table_id',
         :'error_message' => :'error_message',
+        :'executed_sql' => :'executed_sql',
         :'for_object_id' => :'for_object_id',
         :'for_object_type' => :'for_object_type',
         :'initial_pages' => :'initial_pages',
@@ -108,6 +111,7 @@ module UltracartClient
         :'data_set_uuid' => :'String',
         :'destination_table_id' => :'String',
         :'error_message' => :'String',
+        :'executed_sql' => :'String',
         :'for_object_id' => :'String',
         :'for_object_type' => :'String',
         :'initial_pages' => :'Array<ReportDataSetPage>',
@@ -144,6 +148,10 @@ module UltracartClient
 
       if attributes.has_key?(:'error_message')
         self.error_message = attributes[:'error_message']
+      end
+
+      if attributes.has_key?(:'executed_sql')
+        self.executed_sql = attributes[:'executed_sql']
       end
 
       if attributes.has_key?(:'for_object_id')
@@ -229,6 +237,7 @@ module UltracartClient
           data_set_uuid == o.data_set_uuid &&
           destination_table_id == o.destination_table_id &&
           error_message == o.error_message &&
+          executed_sql == o.executed_sql &&
           for_object_id == o.for_object_id &&
           for_object_type == o.for_object_type &&
           initial_pages == o.initial_pages &&
@@ -251,7 +260,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [data_set_query_uuid, data_set_uuid, destination_table_id, error_message, for_object_id, for_object_type, initial_pages, max_results, merchant_id, page_count, page_size, schema, security_level, timezone, user_data].hash
+      [data_set_query_uuid, data_set_uuid, destination_table_id, error_message, executed_sql, for_object_id, for_object_type, initial_pages, max_results, merchant_id, page_count, page_size, schema, security_level, timezone, user_data].hash
     end
 
     # Builds the object from hash
