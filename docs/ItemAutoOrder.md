@@ -9,7 +9,9 @@
 | **auto_order_cancel_charge_minimum_balance** | **Boolean** | If true, the cost of the cancel item will be the remaining balance of the minimum rebill or lifetime value | [optional] |
 | **auto_order_cancel_item_id** | **String** | Item id to attempt charging the customer for if they cancel | [optional] |
 | **auto_order_cancel_item_oid** | **Integer** | Item object identifier to attempt charging the customer for if they cancel | [optional] |
+| **auto_order_cancel_minimum_life_time_count** | **Integer** | The minimum life time count that must be billed in order to not be charged the cancellation item. | [optional] |
 | **auto_order_cancel_minimum_life_time_value** | **Float** | The minimum life time value that must be paid in order to not be charged the cancellation item. | [optional] |
+| **auto_order_cancel_minimum_rebill_count** | **Integer** | The minimum rebill count that must be billed in order to not be charged the cancellation item. | [optional] |
 | **auto_order_cancel_minimum_rebill_value** | **Float** | The minimum rebill value that must be paid in order to not be charged the cancellation item. | [optional] |
 | **auto_order_downgrade_items** | **Array&lt;String&gt;** | List of downgrade items presented to customer service representatives | [optional] |
 | **auto_order_paused** | **Boolean** | True if the rebill processing of this item is paused | [optional] |
@@ -36,7 +38,9 @@ instance = UltracartClient::ItemAutoOrder.new(
   auto_order_cancel_charge_minimum_balance: null,
   auto_order_cancel_item_id: null,
   auto_order_cancel_item_oid: null,
+  auto_order_cancel_minimum_life_time_count: null,
   auto_order_cancel_minimum_life_time_value: null,
+  auto_order_cancel_minimum_rebill_count: null,
   auto_order_cancel_minimum_rebill_value: null,
   auto_order_downgrade_items: null,
   auto_order_paused: null,

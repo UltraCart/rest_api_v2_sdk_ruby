@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class AutoOrder
+    # Array of addon objects instructing which items to add to auto order and how many times they should be added.
+    attr_accessor :add_ons
+
     # Unique code assigned to this auto order
     attr_accessor :auto_order_code
 
@@ -107,6 +110,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'add_ons' => :'add_ons',
         :'auto_order_code' => :'auto_order_code',
         :'auto_order_oid' => :'auto_order_oid',
         :'cancel_after_next_x_orders' => :'cancel_after_next_x_orders',
@@ -141,6 +145,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'add_ons' => :'Array<AutoOrderAddonItem>',
         :'auto_order_code' => :'String',
         :'auto_order_oid' => :'Integer',
         :'cancel_after_next_x_orders' => :'Integer',
@@ -187,6 +192,12 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'add_ons')
+        if (value = attributes[:'add_ons']).is_a?(Array)
+          self.add_ons = value
+        end
+      end
 
       if attributes.key?(:'auto_order_code')
         self.auto_order_code = attributes[:'auto_order_code']
@@ -317,6 +328,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          add_ons == o.add_ons &&
           auto_order_code == o.auto_order_code &&
           auto_order_oid == o.auto_order_oid &&
           cancel_after_next_x_orders == o.cancel_after_next_x_orders &&
@@ -351,7 +363,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_order_code, auto_order_oid, cancel_after_next_x_orders, cancel_downgrade, cancel_reason, cancel_upgrade, canceled_by_user, canceled_dts, completed, credit_card_attempt, disabled_dts, enabled, failure_reason, items, logs, management, next_attempt, original_order, original_order_id, override_affiliate_id, rebill_orders, rotating_transaction_gateway_code, status].hash
+      [add_ons, auto_order_code, auto_order_oid, cancel_after_next_x_orders, cancel_downgrade, cancel_reason, cancel_upgrade, canceled_by_user, canceled_dts, completed, credit_card_attempt, disabled_dts, enabled, failure_reason, items, logs, management, next_attempt, original_order, original_order_id, override_affiliate_id, rebill_orders, rotating_transaction_gateway_code, status].hash
     end
 
     # Builds the object from hash

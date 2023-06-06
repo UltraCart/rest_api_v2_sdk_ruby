@@ -29,6 +29,8 @@ docs/ApiUserApplicationProfile.md
 docs/ApplyLibraryItemRequest.md
 docs/ApplyLibraryItemResponse.md
 docs/AutoOrder.md
+docs/AutoOrderAddonItem.md
+docs/AutoOrderAddonItemOption.md
 docs/AutoOrderApi.md
 docs/AutoOrderItem.md
 docs/AutoOrderItemFutureSchedule.md
@@ -847,6 +849,8 @@ lib/ultracart_api/models/api_user_application_profile.rb
 lib/ultracart_api/models/apply_library_item_request.rb
 lib/ultracart_api/models/apply_library_item_response.rb
 lib/ultracart_api/models/auto_order.rb
+lib/ultracart_api/models/auto_order_addon_item.rb
+lib/ultracart_api/models/auto_order_addon_item_option.rb
 lib/ultracart_api/models/auto_order_item.rb
 lib/ultracart_api/models/auto_order_item_future_schedule.rb
 lib/ultracart_api/models/auto_order_item_option.rb

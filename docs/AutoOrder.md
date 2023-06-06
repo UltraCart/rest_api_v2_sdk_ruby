@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **add_ons** | [**Array&lt;AutoOrderAddonItem&gt;**](AutoOrderAddonItem.md) | Array of addon objects instructing which items to add to auto order and how many times they should be added. | [optional] |
 | **auto_order_code** | **String** | Unique code assigned to this auto order | [optional] |
 | **auto_order_oid** | **Integer** | Auto order object identifier | [optional] |
 | **cancel_after_next_x_orders** | **Integer** | Cancel this auto order after X additional rebills | [optional] |
@@ -34,6 +35,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::AutoOrder.new(
+  add_ons: null,
   auto_order_code: null,
   auto_order_oid: null,
   cancel_after_next_x_orders: null,
