@@ -45,6 +45,7 @@ Name | Type | Description | Notes
 **privacy** | [**CustomerPrivacy**](CustomerPrivacy.md) |  | [optional] 
 **qb_class** | **String** | QuickBooks class to import this customer as | [optional] 
 **qb_code** | **String** | QuickBooks name to import this customer as | [optional] 
+**qb_tax_exemption_reason_code** | **Integer** | QuickBooks tax exemption reason code | [optional] 
 **quotes** | [**Array&lt;Order&gt;**](Order.md) | Quotes associated with this customer profile | [optional] 
 **quotes_summary** | [**CustomerQuotesSummary**](CustomerQuotesSummary.md) |  | [optional] 
 **referral_source** | **String** | Referral Source | [optional] 
