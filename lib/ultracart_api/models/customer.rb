@@ -136,6 +136,9 @@ module UltracartClient
     # QuickBooks name to import this customer as
     attr_accessor :qb_code
 
+    # QuickBooks tax exemption reason code
+    attr_accessor :qb_tax_exemption_reason_code
+
     # Quotes associated with this customer profile
     attr_accessor :quotes
 
@@ -235,6 +238,7 @@ module UltracartClient
         :'privacy' => :'privacy',
         :'qb_class' => :'qb_class',
         :'qb_code' => :'qb_code',
+        :'qb_tax_exemption_reason_code' => :'qb_tax_exemption_reason_code',
         :'quotes' => :'quotes',
         :'quotes_summary' => :'quotes_summary',
         :'referral_source' => :'referral_source',
@@ -307,6 +311,7 @@ module UltracartClient
         :'privacy' => :'CustomerPrivacy',
         :'qb_class' => :'String',
         :'qb_code' => :'String',
+        :'qb_tax_exemption_reason_code' => :'Integer',
         :'quotes' => :'Array<Order>',
         :'quotes_summary' => :'CustomerQuotesSummary',
         :'referral_source' => :'String',
@@ -528,6 +533,10 @@ module UltracartClient
 
       if attributes.key?(:'qb_code')
         self.qb_code = attributes[:'qb_code']
+      end
+
+      if attributes.key?(:'qb_tax_exemption_reason_code')
+        self.qb_tax_exemption_reason_code = attributes[:'qb_tax_exemption_reason_code']
       end
 
       if attributes.key?(:'quotes')
@@ -840,6 +849,7 @@ module UltracartClient
           privacy == o.privacy &&
           qb_class == o.qb_class &&
           qb_code == o.qb_code &&
+          qb_tax_exemption_reason_code == o.qb_tax_exemption_reason_code &&
           quotes == o.quotes &&
           quotes_summary == o.quotes_summary &&
           referral_source == o.referral_source &&
@@ -870,7 +880,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [activity, affiliate_oid, allow_3rd_party_billing, allow_cod, allow_drop_shipping, allow_purchase_order, allow_quote_request, allow_selection_of_address_type, attachments, auto_approve_cod, auto_approve_purchase_order, automatic_merchant_notes, billing, business_notes, cards, cc_emails, customer_profile_oid, dhl_account_number, dhl_duty_account_number, edi, email, exempt_shipping_handling_charge, fedex_account_number, free_shipping, free_shipping_minimum, last_modified_by, last_modified_dts, loyalty, maximum_item_count, merchant_id, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, orders, orders_summary, password, pricing_tiers, privacy, qb_class, qb_code, quotes, quotes_summary, referral_source, reviewer, sales_rep_code, send_signup_notification, shipping, signup_dts, software_entitlements, suppress_buysafe, tags, tax_codes, tax_exempt, tax_id, terms, track_separately, unapproved, ups_account_number, website_url].hash
+      [activity, affiliate_oid, allow_3rd_party_billing, allow_cod, allow_drop_shipping, allow_purchase_order, allow_quote_request, allow_selection_of_address_type, attachments, auto_approve_cod, auto_approve_purchase_order, automatic_merchant_notes, billing, business_notes, cards, cc_emails, customer_profile_oid, dhl_account_number, dhl_duty_account_number, edi, email, exempt_shipping_handling_charge, fedex_account_number, free_shipping, free_shipping_minimum, last_modified_by, last_modified_dts, loyalty, maximum_item_count, merchant_id, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, orders, orders_summary, password, pricing_tiers, privacy, qb_class, qb_code, qb_tax_exemption_reason_code, quotes, quotes_summary, referral_source, reviewer, sales_rep_code, send_signup_notification, shipping, signup_dts, software_entitlements, suppress_buysafe, tags, tax_codes, tax_exempt, tax_id, terms, track_separately, unapproved, ups_account_number, website_url].hash
     end
 
     # Builds the object from hash
