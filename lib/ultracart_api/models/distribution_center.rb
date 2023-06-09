@@ -70,6 +70,51 @@ module UltracartClient
     # True if this distribution center is not allowed to participate in a split shipment.
     attr_accessor :no_split_shipment
 
+    # The time (EST) after which pickups will not be available on Friday
+    attr_accessor :pickup_cutoff_time_friday
+
+    # The time (EST) after which pickups will not be available on Monday
+    attr_accessor :pickup_cutoff_time_monday
+
+    # The time (EST) after which pickups will not be available on Saturday
+    attr_accessor :pickup_cutoff_time_saturday
+
+    # The time (EST) after which pickups will not be available on Sunday
+    attr_accessor :pickup_cutoff_time_sunday
+
+    # The time (EST) after which pickups will not be available on Thursday
+    attr_accessor :pickup_cutoff_time_thursday
+
+    # The time (EST) after which pickups will not be available on Tuesday
+    attr_accessor :pickup_cutoff_time_tuesday
+
+    # The time (EST) after which pickups will not be available on Wednesday
+    attr_accessor :pickup_cutoff_time_wednesday
+
+    # The time (EST) after which pickups are available on Friday
+    attr_accessor :pickup_start_time_friday
+
+    # The time (EST) after which pickups are available on Monday
+    attr_accessor :pickup_start_time_monday
+
+    # The time (EST) after which pickups are available on Saturday
+    attr_accessor :pickup_start_time_saturday
+
+    # The time (EST) after which pickups are available on Sunday
+    attr_accessor :pickup_start_time_sunday
+
+    # The time (EST) after which pickups are available on Thursday
+    attr_accessor :pickup_start_time_thursday
+
+    # The time (EST) after which pickups are available on Tuesday
+    attr_accessor :pickup_start_time_tuesday
+
+    # The time (EST) after which pickups are available on Wednesday
+    attr_accessor :pickup_start_time_wednesday
+
+    # The IANA timezone for all pickup times
+    attr_accessor :pickup_tz
+
     # Postal code of the distribution center
     attr_accessor :postal_code
 
@@ -140,6 +185,21 @@ module UltracartClient
         :'name' => :'name',
         :'no_customer_direct_shipments' => :'no_customer_direct_shipments',
         :'no_split_shipment' => :'no_split_shipment',
+        :'pickup_cutoff_time_friday' => :'pickup_cutoff_time_friday',
+        :'pickup_cutoff_time_monday' => :'pickup_cutoff_time_monday',
+        :'pickup_cutoff_time_saturday' => :'pickup_cutoff_time_saturday',
+        :'pickup_cutoff_time_sunday' => :'pickup_cutoff_time_sunday',
+        :'pickup_cutoff_time_thursday' => :'pickup_cutoff_time_thursday',
+        :'pickup_cutoff_time_tuesday' => :'pickup_cutoff_time_tuesday',
+        :'pickup_cutoff_time_wednesday' => :'pickup_cutoff_time_wednesday',
+        :'pickup_start_time_friday' => :'pickup_start_time_friday',
+        :'pickup_start_time_monday' => :'pickup_start_time_monday',
+        :'pickup_start_time_saturday' => :'pickup_start_time_saturday',
+        :'pickup_start_time_sunday' => :'pickup_start_time_sunday',
+        :'pickup_start_time_thursday' => :'pickup_start_time_thursday',
+        :'pickup_start_time_tuesday' => :'pickup_start_time_tuesday',
+        :'pickup_start_time_wednesday' => :'pickup_start_time_wednesday',
+        :'pickup_tz' => :'pickup_tz',
         :'postal_code' => :'postal_code',
         :'process_days' => :'process_days',
         :'process_inventory_start_time' => :'process_inventory_start_time',
@@ -181,6 +241,21 @@ module UltracartClient
         :'name' => :'String',
         :'no_customer_direct_shipments' => :'BOOLEAN',
         :'no_split_shipment' => :'BOOLEAN',
+        :'pickup_cutoff_time_friday' => :'String',
+        :'pickup_cutoff_time_monday' => :'String',
+        :'pickup_cutoff_time_saturday' => :'String',
+        :'pickup_cutoff_time_sunday' => :'String',
+        :'pickup_cutoff_time_thursday' => :'String',
+        :'pickup_cutoff_time_tuesday' => :'String',
+        :'pickup_cutoff_time_wednesday' => :'String',
+        :'pickup_start_time_friday' => :'String',
+        :'pickup_start_time_monday' => :'String',
+        :'pickup_start_time_saturday' => :'String',
+        :'pickup_start_time_sunday' => :'String',
+        :'pickup_start_time_thursday' => :'String',
+        :'pickup_start_time_tuesday' => :'String',
+        :'pickup_start_time_wednesday' => :'String',
+        :'pickup_tz' => :'String',
         :'postal_code' => :'String',
         :'process_days' => :'Integer',
         :'process_inventory_start_time' => :'String',
@@ -282,6 +357,66 @@ module UltracartClient
 
       if attributes.has_key?(:'no_split_shipment')
         self.no_split_shipment = attributes[:'no_split_shipment']
+      end
+
+      if attributes.has_key?(:'pickup_cutoff_time_friday')
+        self.pickup_cutoff_time_friday = attributes[:'pickup_cutoff_time_friday']
+      end
+
+      if attributes.has_key?(:'pickup_cutoff_time_monday')
+        self.pickup_cutoff_time_monday = attributes[:'pickup_cutoff_time_monday']
+      end
+
+      if attributes.has_key?(:'pickup_cutoff_time_saturday')
+        self.pickup_cutoff_time_saturday = attributes[:'pickup_cutoff_time_saturday']
+      end
+
+      if attributes.has_key?(:'pickup_cutoff_time_sunday')
+        self.pickup_cutoff_time_sunday = attributes[:'pickup_cutoff_time_sunday']
+      end
+
+      if attributes.has_key?(:'pickup_cutoff_time_thursday')
+        self.pickup_cutoff_time_thursday = attributes[:'pickup_cutoff_time_thursday']
+      end
+
+      if attributes.has_key?(:'pickup_cutoff_time_tuesday')
+        self.pickup_cutoff_time_tuesday = attributes[:'pickup_cutoff_time_tuesday']
+      end
+
+      if attributes.has_key?(:'pickup_cutoff_time_wednesday')
+        self.pickup_cutoff_time_wednesday = attributes[:'pickup_cutoff_time_wednesday']
+      end
+
+      if attributes.has_key?(:'pickup_start_time_friday')
+        self.pickup_start_time_friday = attributes[:'pickup_start_time_friday']
+      end
+
+      if attributes.has_key?(:'pickup_start_time_monday')
+        self.pickup_start_time_monday = attributes[:'pickup_start_time_monday']
+      end
+
+      if attributes.has_key?(:'pickup_start_time_saturday')
+        self.pickup_start_time_saturday = attributes[:'pickup_start_time_saturday']
+      end
+
+      if attributes.has_key?(:'pickup_start_time_sunday')
+        self.pickup_start_time_sunday = attributes[:'pickup_start_time_sunday']
+      end
+
+      if attributes.has_key?(:'pickup_start_time_thursday')
+        self.pickup_start_time_thursday = attributes[:'pickup_start_time_thursday']
+      end
+
+      if attributes.has_key?(:'pickup_start_time_tuesday')
+        self.pickup_start_time_tuesday = attributes[:'pickup_start_time_tuesday']
+      end
+
+      if attributes.has_key?(:'pickup_start_time_wednesday')
+        self.pickup_start_time_wednesday = attributes[:'pickup_start_time_wednesday']
+      end
+
+      if attributes.has_key?(:'pickup_tz')
+        self.pickup_tz = attributes[:'pickup_tz']
       end
 
       if attributes.has_key?(:'postal_code')
@@ -386,6 +521,21 @@ module UltracartClient
           name == o.name &&
           no_customer_direct_shipments == o.no_customer_direct_shipments &&
           no_split_shipment == o.no_split_shipment &&
+          pickup_cutoff_time_friday == o.pickup_cutoff_time_friday &&
+          pickup_cutoff_time_monday == o.pickup_cutoff_time_monday &&
+          pickup_cutoff_time_saturday == o.pickup_cutoff_time_saturday &&
+          pickup_cutoff_time_sunday == o.pickup_cutoff_time_sunday &&
+          pickup_cutoff_time_thursday == o.pickup_cutoff_time_thursday &&
+          pickup_cutoff_time_tuesday == o.pickup_cutoff_time_tuesday &&
+          pickup_cutoff_time_wednesday == o.pickup_cutoff_time_wednesday &&
+          pickup_start_time_friday == o.pickup_start_time_friday &&
+          pickup_start_time_monday == o.pickup_start_time_monday &&
+          pickup_start_time_saturday == o.pickup_start_time_saturday &&
+          pickup_start_time_sunday == o.pickup_start_time_sunday &&
+          pickup_start_time_thursday == o.pickup_start_time_thursday &&
+          pickup_start_time_tuesday == o.pickup_start_time_tuesday &&
+          pickup_start_time_wednesday == o.pickup_start_time_wednesday &&
+          pickup_tz == o.pickup_tz &&
           postal_code == o.postal_code &&
           process_days == o.process_days &&
           process_inventory_start_time == o.process_inventory_start_time &&
@@ -413,7 +563,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [address1, address2, city, code, country_code, default_center, default_handles_all_items, distribution_center_oid, duns, estimate_from_distribution_center_oid, ftp_password, hold_before_shipment_minutes, hold_before_transmission, hold_auto_order_before_shipment_minutes, latitude, longitude, name, no_customer_direct_shipments, no_split_shipment, postal_code, process_days, process_inventory_start_time, process_inventory_stop_time, require_asn, send_kit_instead_of_components, shipment_cutoff_time_friday, shipment_cutoff_time_monday, shipment_cutoff_time_saturday, shipment_cutoff_time_sunday, shipment_cutoff_time_thursday, shipment_cutoff_time_tuesday, shipment_cutoff_time_wednesday, state, transmit_blank_costs, transport].hash
+      [address1, address2, city, code, country_code, default_center, default_handles_all_items, distribution_center_oid, duns, estimate_from_distribution_center_oid, ftp_password, hold_before_shipment_minutes, hold_before_transmission, hold_auto_order_before_shipment_minutes, latitude, longitude, name, no_customer_direct_shipments, no_split_shipment, pickup_cutoff_time_friday, pickup_cutoff_time_monday, pickup_cutoff_time_saturday, pickup_cutoff_time_sunday, pickup_cutoff_time_thursday, pickup_cutoff_time_tuesday, pickup_cutoff_time_wednesday, pickup_start_time_friday, pickup_start_time_monday, pickup_start_time_saturday, pickup_start_time_sunday, pickup_start_time_thursday, pickup_start_time_tuesday, pickup_start_time_wednesday, pickup_tz, postal_code, process_days, process_inventory_start_time, process_inventory_stop_time, require_asn, send_kit_instead_of_components, shipment_cutoff_time_friday, shipment_cutoff_time_monday, shipment_cutoff_time_saturday, shipment_cutoff_time_sunday, shipment_cutoff_time_thursday, shipment_cutoff_time_tuesday, shipment_cutoff_time_wednesday, state, transmit_blank_costs, transport].hash
     end
 
     # Builds the object from hash
