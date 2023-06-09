@@ -23,6 +23,21 @@
 | **name** | **String** | Name of this distribution center | [optional] |
 | **no_customer_direct_shipments** | **Boolean** | True if this distribution center does not handle customer direct shipments | [optional] |
 | **no_split_shipment** | **Boolean** | True if this distribution center is not allowed to participate in a split shipment. | [optional] |
+| **pickup_cutoff_time_friday** | **String** | The time (EST) after which pickups will not be available on Friday | [optional] |
+| **pickup_cutoff_time_monday** | **String** | The time (EST) after which pickups will not be available on Monday | [optional] |
+| **pickup_cutoff_time_saturday** | **String** | The time (EST) after which pickups will not be available on Saturday | [optional] |
+| **pickup_cutoff_time_sunday** | **String** | The time (EST) after which pickups will not be available on Sunday | [optional] |
+| **pickup_cutoff_time_thursday** | **String** | The time (EST) after which pickups will not be available on Thursday | [optional] |
+| **pickup_cutoff_time_tuesday** | **String** | The time (EST) after which pickups will not be available on Tuesday | [optional] |
+| **pickup_cutoff_time_wednesday** | **String** | The time (EST) after which pickups will not be available on Wednesday | [optional] |
+| **pickup_start_time_friday** | **String** | The time (EST) after which pickups are available on Friday | [optional] |
+| **pickup_start_time_monday** | **String** | The time (EST) after which pickups are available on Monday | [optional] |
+| **pickup_start_time_saturday** | **String** | The time (EST) after which pickups are available on Saturday | [optional] |
+| **pickup_start_time_sunday** | **String** | The time (EST) after which pickups are available on Sunday | [optional] |
+| **pickup_start_time_thursday** | **String** | The time (EST) after which pickups are available on Thursday | [optional] |
+| **pickup_start_time_tuesday** | **String** | The time (EST) after which pickups are available on Tuesday | [optional] |
+| **pickup_start_time_wednesday** | **String** | The time (EST) after which pickups are available on Wednesday | [optional] |
+| **pickup_tz** | **String** | The IANA timezone for all pickup times | [optional] |
 | **postal_code** | **String** | Postal code of the distribution center | [optional] |
 | **process_days** | **Integer** | The number of processing days required before an order ships | [optional] |
 | **process_inventory_start_time** | **String** | The time (EST) after which inventory updates will be processed | [optional] |
@@ -65,6 +80,21 @@ instance = UltracartClient::DistributionCenter.new(
   name: null,
   no_customer_direct_shipments: null,
   no_split_shipment: null,
+  pickup_cutoff_time_friday: null,
+  pickup_cutoff_time_monday: null,
+  pickup_cutoff_time_saturday: null,
+  pickup_cutoff_time_sunday: null,
+  pickup_cutoff_time_thursday: null,
+  pickup_cutoff_time_tuesday: null,
+  pickup_cutoff_time_wednesday: null,
+  pickup_start_time_friday: null,
+  pickup_start_time_monday: null,
+  pickup_start_time_saturday: null,
+  pickup_start_time_sunday: null,
+  pickup_start_time_thursday: null,
+  pickup_start_time_tuesday: null,
+  pickup_start_time_wednesday: null,
+  pickup_tz: null,
   postal_code: null,
   process_days: null,
   process_inventory_start_time: null,
