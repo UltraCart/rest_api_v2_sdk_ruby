@@ -50,6 +50,9 @@ module UltracartClient
     # The size of the pages
     attr_accessor :page_size
 
+    # Date/Time of the client submitted the request.  Can be used to resolve out of order query completion results
+    attr_accessor :request_dts
+
     # The schema associated with the data set.
     attr_accessor :schema
 
@@ -98,6 +101,7 @@ module UltracartClient
         :'merchant_id' => :'merchant_id',
         :'page_count' => :'page_count',
         :'page_size' => :'page_size',
+        :'request_dts' => :'request_dts',
         :'schema' => :'schema',
         :'security_level' => :'security_level',
         :'timezone' => :'timezone',
@@ -125,6 +129,7 @@ module UltracartClient
         :'merchant_id' => :'String',
         :'page_count' => :'Integer',
         :'page_size' => :'Integer',
+        :'request_dts' => :'String',
         :'schema' => :'Array<ReportDataSetSchema>',
         :'security_level' => :'String',
         :'timezone' => :'String',
@@ -203,6 +208,10 @@ module UltracartClient
         self.page_size = attributes[:'page_size']
       end
 
+      if attributes.key?(:'request_dts')
+        self.request_dts = attributes[:'request_dts']
+      end
+
       if attributes.key?(:'schema')
         if (value = attributes[:'schema']).is_a?(Array)
           self.schema = value
@@ -264,6 +273,7 @@ module UltracartClient
           merchant_id == o.merchant_id &&
           page_count == o.page_count &&
           page_size == o.page_size &&
+          request_dts == o.request_dts &&
           schema == o.schema &&
           security_level == o.security_level &&
           timezone == o.timezone &&
@@ -279,7 +289,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data_set_query_uuid, data_set_uuid, destination_table_id, error_message, executed_sql, for_object_id, for_object_type, initial_pages, max_results, merchant_id, page_count, page_size, schema, security_level, timezone, user_data].hash
+      [data_set_query_uuid, data_set_uuid, destination_table_id, error_message, executed_sql, for_object_id, for_object_type, initial_pages, max_results, merchant_id, page_count, page_size, request_dts, schema, security_level, timezone, user_data].hash
     end
 
     # Builds the object from hash

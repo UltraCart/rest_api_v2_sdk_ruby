@@ -10,6 +10,7 @@
 | **default_project_id** | **String** |  | [optional] |
 | **merchant_id** | **String** |  | [optional] |
 | **queries** | [**Array&lt;ReportDataSetQuery&gt;**](ReportDataSetQuery.md) | An array of queries that we want the lambda function to execute. | [optional] |
+| **request_dts** | **String** | Date/Time of the client submitted the request.  Can be used to resolve out of order query completion results | [optional] |
 | **security_level** | **String** | Security level to execute report under | [optional] |
 
 ## Example
@@ -24,6 +25,7 @@ instance = UltracartClient::ReportExecuteQueriesRequest.new(
   default_project_id: null,
   merchant_id: null,
   queries: null,
+  request_dts: null,
   security_level: null
 )
 ```
