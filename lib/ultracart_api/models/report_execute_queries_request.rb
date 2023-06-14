@@ -29,6 +29,9 @@ module UltracartClient
     # An array of queries that we want the lambda function to execute.
     attr_accessor :queries
 
+    # Date/Time of the client submitted the request.  Can be used to resolve out of order query completion results
+    attr_accessor :request_dts
+
     # Security level to execute report under
     attr_accessor :security_level
 
@@ -63,6 +66,7 @@ module UltracartClient
         :'default_project_id' => :'default_project_id',
         :'merchant_id' => :'merchant_id',
         :'queries' => :'queries',
+        :'request_dts' => :'request_dts',
         :'security_level' => :'security_level'
       }
     end
@@ -76,6 +80,7 @@ module UltracartClient
         :'default_project_id' => :'String',
         :'merchant_id' => :'String',
         :'queries' => :'Array<ReportDataSetQuery>',
+        :'request_dts' => :'String',
         :'security_level' => :'String'
       }
     end
@@ -112,6 +117,10 @@ module UltracartClient
         if (value = attributes[:'queries']).is_a?(Array)
           self.queries = value
         end
+      end
+
+      if attributes.has_key?(:'request_dts')
+        self.request_dts = attributes[:'request_dts']
       end
 
       if attributes.has_key?(:'security_level')
@@ -155,6 +164,7 @@ module UltracartClient
           default_project_id == o.default_project_id &&
           merchant_id == o.merchant_id &&
           queries == o.queries &&
+          request_dts == o.request_dts &&
           security_level == o.security_level
     end
 
@@ -167,7 +177,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [client_uuid, connection_id, default_dataset_id, default_project_id, merchant_id, queries, security_level].hash
+      [client_uuid, connection_id, default_dataset_id, default_project_id, merchant_id, queries, request_dts, security_level].hash
     end
 
     # Builds the object from hash
