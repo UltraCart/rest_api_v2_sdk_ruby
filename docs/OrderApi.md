@@ -107,7 +107,7 @@ end
 
 ## cancel_order
 
-> <BaseResponse> cancel_order(order_id)
+> <BaseResponse> cancel_order(order_id, opts)
 
 Cancel an order
 
@@ -128,10 +128,14 @@ require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/
 
 api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 order_id = 'order_id_example' # String | The order id to cancel.
+opts = {
+  lock_self_ship_orders: true, # Boolean | Flag to prevent a order shipping during a refund process
+  skip_refund_and_hold: true # Boolean | Skip refund and move order to Held Orders department
+}
 
 begin
   # Cancel an order
-  result = api_instance.cancel_order(order_id)
+  result = api_instance.cancel_order(order_id, opts)
   p result
 rescue UltracartClient::ApiError => e
   puts "Error when calling OrderApi->cancel_order: #{e}"
@@ -142,12 +146,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<BaseResponse>, Integer, Hash)> cancel_order_with_http_info(order_id)
+> <Array(<BaseResponse>, Integer, Hash)> cancel_order_with_http_info(order_id, opts)
 
 ```ruby
 begin
   # Cancel an order
-  data, status_code, headers = api_instance.cancel_order_with_http_info(order_id)
+  data, status_code, headers = api_instance.cancel_order_with_http_info(order_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <BaseResponse>
@@ -161,6 +165,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **order_id** | **String** | The order id to cancel. |  |
+| **lock_self_ship_orders** | **Boolean** | Flag to prevent a order shipping during a refund process | [optional] |
+| **skip_refund_and_hold** | **Boolean** | Skip refund and move order to Held Orders department | [optional] |
 
 ### Return type
 
