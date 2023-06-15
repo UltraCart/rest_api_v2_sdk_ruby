@@ -97,6 +97,8 @@ module UltracartClient
     # Cancel an order on the UltraCart account.  If the success flag is false, then consult the error message for why it failed. 
     # @param order_id The order id to cancel.
     # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :lock_self_ship_orders Flag to prevent a order shipping during a refund process
+    # @option opts [BOOLEAN] :skip_refund_and_hold Skip refund and move order to Held Orders department
     # @return [BaseResponse]
     def cancel_order(order_id, opts = {})
       data, _status_code, _headers = cancel_order_with_http_info(order_id, opts)
@@ -107,6 +109,8 @@ module UltracartClient
     # Cancel an order on the UltraCart account.  If the success flag is false, then consult the error message for why it failed. 
     # @param order_id The order id to cancel.
     # @param [Hash] opts the optional parameters
+    # @option opts [BOOLEAN] :lock_self_ship_orders Flag to prevent a order shipping during a refund process
+    # @option opts [BOOLEAN] :skip_refund_and_hold Skip refund and move order to Held Orders department
     # @return [Array<(BaseResponse, Fixnum, Hash)>] BaseResponse data, response status code and response headers
     def cancel_order_with_http_info(order_id, opts = {})
       if @api_client.config.debugging
@@ -121,6 +125,8 @@ module UltracartClient
 
       # query parameters
       query_params = {}
+      query_params[:'lock_self_ship_orders'] = opts[:'lock_self_ship_orders'] if !opts[:'lock_self_ship_orders'].nil?
+      query_params[:'skip_refund_and_hold'] = opts[:'skip_refund_and_hold'] if !opts[:'skip_refund_and_hold'].nil?
 
       # header parameters
       header_params = {}

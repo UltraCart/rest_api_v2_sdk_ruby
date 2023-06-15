@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 
 # **cancel_order**
-> BaseResponse cancel_order(order_id)
+> BaseResponse cancel_order(order_id, opts)
 
 Cancel an order
 
@@ -104,10 +104,14 @@ api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, fa
 
 order_id = 'order_id_example' # String | The order id to cancel.
 
+opts = { 
+  lock_self_ship_orders: true, # BOOLEAN | Flag to prevent a order shipping during a refund process
+  skip_refund_and_hold: true # BOOLEAN | Skip refund and move order to Held Orders department
+}
 
 begin
   #Cancel an order
-  result = api_instance.cancel_order(order_id)
+  result = api_instance.cancel_order(order_id, opts)
   p result
 rescue UltracartClient::ApiError => e
   puts "Exception when calling OrderApi->cancel_order: #{e}"
@@ -119,6 +123,8 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order_id** | **String**| The order id to cancel. | 
+ **lock_self_ship_orders** | **BOOLEAN**| Flag to prevent a order shipping during a refund process | [optional] 
+ **skip_refund_and_hold** | **BOOLEAN**| Skip refund and move order to Held Orders department | [optional] 
 
 ### Return type
 

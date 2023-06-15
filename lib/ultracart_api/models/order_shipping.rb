@@ -59,6 +59,9 @@ module UltracartClient
     # Lift gate requested (LTL shipping methods only)
     attr_accessor :lift_gate
 
+    # Date/time the order should be picked up locally.
+    attr_accessor :pickup_dts
+
     # Postal code
     attr_accessor :postal_code
 
@@ -121,6 +124,7 @@ module UltracartClient
         :'least_cost_route' => :'least_cost_route',
         :'least_cost_route_shipping_methods' => :'least_cost_route_shipping_methods',
         :'lift_gate' => :'lift_gate',
+        :'pickup_dts' => :'pickup_dts',
         :'postal_code' => :'postal_code',
         :'rma' => :'rma',
         :'ship_on_date' => :'ship_on_date',
@@ -157,6 +161,7 @@ module UltracartClient
         :'least_cost_route' => :'BOOLEAN',
         :'least_cost_route_shipping_methods' => :'Array<String>',
         :'lift_gate' => :'BOOLEAN',
+        :'pickup_dts' => :'String',
         :'postal_code' => :'String',
         :'rma' => :'String',
         :'ship_on_date' => :'String',
@@ -243,6 +248,10 @@ module UltracartClient
 
       if attributes.has_key?(:'lift_gate')
         self.lift_gate = attributes[:'lift_gate']
+      end
+
+      if attributes.has_key?(:'pickup_dts')
+        self.pickup_dts = attributes[:'pickup_dts']
       end
 
       if attributes.has_key?(:'postal_code')
@@ -598,6 +607,7 @@ module UltracartClient
           least_cost_route == o.least_cost_route &&
           least_cost_route_shipping_methods == o.least_cost_route_shipping_methods &&
           lift_gate == o.lift_gate &&
+          pickup_dts == o.pickup_dts &&
           postal_code == o.postal_code &&
           rma == o.rma &&
           ship_on_date == o.ship_on_date &&
@@ -624,7 +634,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [address1, address2, city, company, country_code, day_phone, day_phone_e164, delivery_date, evening_phone, evening_phone_e164, first_name, last_name, least_cost_route, least_cost_route_shipping_methods, lift_gate, postal_code, rma, ship_on_date, ship_to_residential, shipping_3rd_party_account_number, shipping_date, shipping_department_status, shipping_method, shipping_method_accounting_code, special_instructions, state_region, title, tracking_number_details, tracking_numbers, weight].hash
+      [address1, address2, city, company, country_code, day_phone, day_phone_e164, delivery_date, evening_phone, evening_phone_e164, first_name, last_name, least_cost_route, least_cost_route_shipping_methods, lift_gate, pickup_dts, postal_code, rma, ship_on_date, ship_to_residential, shipping_3rd_party_account_number, shipping_date, shipping_department_status, shipping_method, shipping_method_accounting_code, special_instructions, state_region, title, tracking_number_details, tracking_numbers, weight].hash
     end
 
     # Builds the object from hash
