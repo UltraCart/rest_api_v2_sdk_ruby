@@ -4,6 +4,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**establish_auto_order_by_reference_order_id**](AutoOrderApi.md#establish_auto_order_by_reference_order_id) | **POST** /auto_order/auto_orders/reference_order_id/{reference_order_id} | Establish an auto order by referencing a regular order id |
 | [**get_auto_order**](AutoOrderApi.md#get_auto_order) | **GET** /auto_order/auto_orders/{auto_order_oid} | Retrieve an auto order by oid |
 | [**get_auto_order_by_code**](AutoOrderApi.md#get_auto_order_by_code) | **GET** /auto_order/auto_orders/code/{auto_order_code} | Retrieve an auto order by code |
 | [**get_auto_order_by_reference_order_id**](AutoOrderApi.md#get_auto_order_by_reference_order_id) | **GET** /auto_order/auto_orders/reference_order_id/{reference_order_id} | Retrieve an auto order by order id |
@@ -12,6 +13,81 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_auto_orders_by_query**](AutoOrderApi.md#get_auto_orders_by_query) | **POST** /auto_order/auto_orders/query | Retrieve auto orders by query |
 | [**update_auto_order**](AutoOrderApi.md#update_auto_order) | **PUT** /auto_order/auto_orders/{auto_order_oid} | Update an auto order |
 | [**update_auto_orders_batch**](AutoOrderApi.md#update_auto_orders_batch) | **PUT** /auto_order/auto_orders/batch | Update multiple auto orders |
+
+
+## establish_auto_order_by_reference_order_id
+
+> <AutoOrderResponse> establish_auto_order_by_reference_order_id(reference_order_id, opts)
+
+Establish an auto order by referencing a regular order id
+
+Establish an auto order by referencing a regular order id.  The result will be an auto order without any items.  You should add the items and perform an update call.  Orders must be less than 60 days old and use a credit card payment. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::AutoOrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+reference_order_id = 'reference_order_id_example' # String | The order id to attach this auto order to
+opts = {
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
+}
+
+begin
+  # Establish an auto order by referencing a regular order id
+  result = api_instance.establish_auto_order_by_reference_order_id(reference_order_id, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling AutoOrderApi->establish_auto_order_by_reference_order_id: #{e}"
+end
+```
+
+#### Using the establish_auto_order_by_reference_order_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AutoOrderResponse>, Integer, Hash)> establish_auto_order_by_reference_order_id_with_http_info(reference_order_id, opts)
+
+```ruby
+begin
+  # Establish an auto order by referencing a regular order id
+  data, status_code, headers = api_instance.establish_auto_order_by_reference_order_id_with_http_info(reference_order_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AutoOrderResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling AutoOrderApi->establish_auto_order_by_reference_order_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **reference_order_id** | **String** | The order id to attach this auto order to |  |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
+
+### Return type
+
+[**AutoOrderResponse**](AutoOrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## get_auto_order
