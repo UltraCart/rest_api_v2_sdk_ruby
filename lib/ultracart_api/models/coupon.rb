@@ -166,6 +166,28 @@ module UltracartClient
     # Who may use this coupon.
     attr_accessor :usable_by
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -646,6 +668,8 @@ module UltracartClient
       return false if !@merchant_code.nil? && @merchant_code.to_s.length > 20
       return false if !@merchant_notes.nil? && @merchant_notes.to_s.length > 250
       return false if !@quickbooks_code.nil? && @quickbooks_code.to_s.length > 20
+      usable_by_validator = EnumAttributeValidator.new('String', ["Anyone", "UniqueCode", "OncePerCustomer", "OncePerNewCustomer", "OncePerNewCustomerForItem"])
+      return false unless usable_by_validator.valid?(@usable_by)
       return false if !@usable_by.nil? && @usable_by.to_s.length > 50
       true
     end
@@ -700,13 +724,13 @@ module UltracartClient
       @quickbooks_code = quickbooks_code
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] usable_by Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] usable_by Object to be assigned
     def usable_by=(usable_by)
-      if !usable_by.nil? && usable_by.to_s.length > 50
-        fail ArgumentError, 'invalid value for "usable_by", the character length must be smaller than or equal to 50.'
+      validator = EnumAttributeValidator.new('String', ["Anyone", "UniqueCode", "OncePerCustomer", "OncePerNewCustomer", "OncePerNewCustomerForItem"])
+      unless validator.valid?(usable_by)
+        fail ArgumentError, "invalid value for \"usable_by\", must be one of #{validator.allowable_values}."
       end
-
       @usable_by = usable_by
     end
 
