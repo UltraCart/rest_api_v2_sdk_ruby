@@ -32,6 +32,64 @@ module UltracartClient
       UltracartClient::AutoOrderApi.new(api_client)
     end
 
+    # Establish an auto order by referencing a regular order id
+    # Establish an auto order by referencing a regular order id.  The result will be an auto order without any items.  You should add the items and perform an update call.  Orders must be less than 60 days old and use a credit card payment. 
+    # @param reference_order_id The order id to attach this auto order to
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [AutoOrderResponse]
+    def establish_auto_order_by_reference_order_id(reference_order_id, opts = {})
+      data, _status_code, _headers = establish_auto_order_by_reference_order_id_with_http_info(reference_order_id, opts)
+      data
+    end
+
+    # Establish an auto order by referencing a regular order id
+    # Establish an auto order by referencing a regular order id.  The result will be an auto order without any items.  You should add the items and perform an update call.  Orders must be less than 60 days old and use a credit card payment. 
+    # @param reference_order_id The order id to attach this auto order to
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(AutoOrderResponse, Fixnum, Hash)>] AutoOrderResponse data, response status code and response headers
+    def establish_auto_order_by_reference_order_id_with_http_info(reference_order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AutoOrderApi.establish_auto_order_by_reference_order_id ...'
+      end
+      # verify the required parameter 'reference_order_id' is set
+      if @api_client.config.client_side_validation && reference_order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'reference_order_id' when calling AutoOrderApi.establish_auto_order_by_reference_order_id"
+      end
+      # resource path
+      local_var_path = '/auto_order/auto_orders/reference_order_id/{reference_order_id}'.sub('{' + 'reference_order_id' + '}', reference_order_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AutoOrderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AutoOrderApi#establish_auto_order_by_reference_order_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Retrieve an auto order by oid
     # Retrieves a single auto order using the specified auto order oid. 
     # @param auto_order_oid The auto order oid to retrieve.
