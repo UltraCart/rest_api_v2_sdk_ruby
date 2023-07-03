@@ -167,7 +167,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      type_validator = EnumAttributeValidator.new('String', ["score card", "line chart", "bar chart", "text", "table", "gauge"])
+      type_validator = EnumAttributeValidator.new('String', ["score card", "line chart", "bar chart", "text", "table", "gauge", "pie chart"])
       return false unless type_validator.valid?(@type)
       true
     end
@@ -175,7 +175,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ["score card", "line chart", "bar chart", "text", "table", "gauge"])
+      validator = EnumAttributeValidator.new('String', ["score card", "line chart", "bar chart", "text", "table", "gauge", "pie chart"])
       unless validator.valid?(type)
         fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
       end
