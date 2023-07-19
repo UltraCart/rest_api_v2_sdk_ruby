@@ -14,6 +14,9 @@ require 'date'
 
 module UltracartClient
   class ReportDataSource
+    # A unique identifier assigned to the data source.
+    attr_accessor :data_source_uuid
+
     attr_accessor :name
 
     attr_accessor :partition_date_column
@@ -30,6 +33,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'data_source_uuid' => :'data_source_uuid',
         :'name' => :'name',
         :'partition_date_column' => :'partition_date_column',
         :'partition_date_safety_days' => :'partition_date_safety_days',
@@ -42,6 +46,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'data_source_uuid' => :'String',
         :'name' => :'String',
         :'partition_date_column' => :'String',
         :'partition_date_safety_days' => :'Integer',
@@ -58,6 +63,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'data_source_uuid')
+        self.data_source_uuid = attributes[:'data_source_uuid']
+      end
 
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
@@ -104,6 +113,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          data_source_uuid == o.data_source_uuid &&
           name == o.name &&
           partition_date_column == o.partition_date_column &&
           partition_date_safety_days == o.partition_date_safety_days &&
@@ -121,7 +131,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, partition_date_column, partition_date_safety_days, partition_date_strategy, schema, sql].hash
+      [data_source_uuid, name, partition_date_column, partition_date_safety_days, partition_date_strategy, schema, sql].hash
     end
 
     # Builds the object from hash
