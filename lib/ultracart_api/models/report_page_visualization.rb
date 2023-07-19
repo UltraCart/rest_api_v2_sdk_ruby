@@ -19,6 +19,9 @@ module UltracartClient
 
     attr_accessor :data_source_name
 
+    # A unique identifier assigned to the data source.
+    attr_accessor :data_source_uuid
+
     attr_accessor :dimensions
 
     attr_accessor :metrics
@@ -64,6 +67,7 @@ module UltracartClient
       {
         :'config' => :'config',
         :'data_source_name' => :'data_source_name',
+        :'data_source_uuid' => :'data_source_uuid',
         :'dimensions' => :'dimensions',
         :'metrics' => :'metrics',
         :'name' => :'name',
@@ -79,6 +83,7 @@ module UltracartClient
       {
         :'config' => :'String',
         :'data_source_name' => :'String',
+        :'data_source_uuid' => :'String',
         :'dimensions' => :'Array<ReportPageVisualizationDimension>',
         :'metrics' => :'Array<ReportPageVisualizationMetric>',
         :'name' => :'String',
@@ -103,6 +108,10 @@ module UltracartClient
 
       if attributes.has_key?(:'data_source_name')
         self.data_source_name = attributes[:'data_source_name']
+      end
+
+      if attributes.has_key?(:'data_source_uuid')
+        self.data_source_uuid = attributes[:'data_source_uuid']
       end
 
       if attributes.has_key?(:'dimensions')
@@ -170,6 +179,7 @@ module UltracartClient
       self.class == o.class &&
           config == o.config &&
           data_source_name == o.data_source_name &&
+          data_source_uuid == o.data_source_uuid &&
           dimensions == o.dimensions &&
           metrics == o.metrics &&
           name == o.name &&
@@ -188,7 +198,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [config, data_source_name, dimensions, metrics, name, show_comparison, styles, type, visualization_uuid].hash
+      [config, data_source_name, data_source_uuid, dimensions, metrics, name, show_comparison, styles, type, visualization_uuid].hash
     end
 
     # Builds the object from hash
