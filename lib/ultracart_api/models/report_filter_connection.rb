@@ -18,11 +18,15 @@ module UltracartClient
 
     attr_accessor :data_source_name
 
+    # A unique identifier assigned to the data source.
+    attr_accessor :data_source_uuid
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'column' => :'column',
-        :'data_source_name' => :'data_source_name'
+        :'data_source_name' => :'data_source_name',
+        :'data_source_uuid' => :'data_source_uuid'
       }
     end
 
@@ -30,7 +34,8 @@ module UltracartClient
     def self.swagger_types
       {
         :'column' => :'String',
-        :'data_source_name' => :'String'
+        :'data_source_name' => :'String',
+        :'data_source_uuid' => :'String'
       }
     end
 
@@ -48,6 +53,10 @@ module UltracartClient
 
       if attributes.has_key?(:'data_source_name')
         self.data_source_name = attributes[:'data_source_name']
+      end
+
+      if attributes.has_key?(:'data_source_uuid')
+        self.data_source_uuid = attributes[:'data_source_uuid']
       end
     end
 
@@ -70,7 +79,8 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           column == o.column &&
-          data_source_name == o.data_source_name
+          data_source_name == o.data_source_name &&
+          data_source_uuid == o.data_source_uuid
     end
 
     # @see the `==` method
@@ -82,7 +92,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [column, data_source_name].hash
+      [column, data_source_name, data_source_uuid].hash
     end
 
     # Builds the object from hash
