@@ -24,6 +24,9 @@ module UltracartClient
     # Communication method of the channel partner
     attr_accessor :communication_method
 
+    # True if shipments should immediately process for this channel partner.
+    attr_accessor :dont_hold_shipment
+
     # True if the channel partner is inactive
     attr_accessor :inactive
 
@@ -42,6 +45,7 @@ module UltracartClient
         :'channel_partner_oid' => :'channel_partner_oid',
         :'code' => :'code',
         :'communication_method' => :'communication_method',
+        :'dont_hold_shipment' => :'dont_hold_shipment',
         :'inactive' => :'inactive',
         :'merchant_id' => :'merchant_id',
         :'name' => :'name',
@@ -60,6 +64,7 @@ module UltracartClient
         :'channel_partner_oid' => :'Integer',
         :'code' => :'String',
         :'communication_method' => :'String',
+        :'dont_hold_shipment' => :'Boolean',
         :'inactive' => :'Boolean',
         :'merchant_id' => :'String',
         :'name' => :'String',
@@ -100,6 +105,10 @@ module UltracartClient
         self.communication_method = attributes[:'communication_method']
       end
 
+      if attributes.key?(:'dont_hold_shipment')
+        self.dont_hold_shipment = attributes[:'dont_hold_shipment']
+      end
+
       if attributes.key?(:'inactive')
         self.inactive = attributes[:'inactive']
       end
@@ -138,6 +147,7 @@ module UltracartClient
           channel_partner_oid == o.channel_partner_oid &&
           code == o.code &&
           communication_method == o.communication_method &&
+          dont_hold_shipment == o.dont_hold_shipment &&
           inactive == o.inactive &&
           merchant_id == o.merchant_id &&
           name == o.name &&
@@ -153,7 +163,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [channel_partner_oid, code, communication_method, inactive, merchant_id, name, skip_customer_emails].hash
+      [channel_partner_oid, code, communication_method, dont_hold_shipment, inactive, merchant_id, name, skip_customer_emails].hash
     end
 
     # Builds the object from hash

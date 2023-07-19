@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **data_source_uuid** | **String** | A unique identifier assigned to the data source. | [optional] |
 | **name** | **String** |  | [optional] |
 | **partition_date_column** | **String** |  | [optional] |
 | **partition_date_safety_days** | **Integer** |  | [optional] |
@@ -17,6 +18,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::ReportDataSource.new(
+  data_source_uuid: null,
   name: null,
   partition_date_column: null,
   partition_date_safety_days: null,
