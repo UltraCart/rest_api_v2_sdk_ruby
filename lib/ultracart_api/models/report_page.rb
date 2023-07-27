@@ -20,6 +20,9 @@ module UltracartClient
     # Height of the report page in inches
     attr_accessor :height
 
+    # A JSON representation of the settings for this report
+    attr_accessor :settings
+
     attr_accessor :title
 
     # Visualizations on the report page.
@@ -33,6 +36,7 @@ module UltracartClient
       {
         :'filters' => :'filters',
         :'height' => :'height',
+        :'settings' => :'settings',
         :'title' => :'title',
         :'visualizations' => :'visualizations',
         :'width' => :'width'
@@ -49,6 +53,7 @@ module UltracartClient
       {
         :'filters' => :'Array<ReportPageFilter>',
         :'height' => :'Float',
+        :'settings' => :'String',
         :'title' => :'String',
         :'visualizations' => :'Array<ReportPageVisualization>',
         :'width' => :'Float'
@@ -86,6 +91,10 @@ module UltracartClient
         self.height = attributes[:'height']
       end
 
+      if attributes.key?(:'settings')
+        self.settings = attributes[:'settings']
+      end
+
       if attributes.key?(:'title')
         self.title = attributes[:'title']
       end
@@ -121,6 +130,7 @@ module UltracartClient
       self.class == o.class &&
           filters == o.filters &&
           height == o.height &&
+          settings == o.settings &&
           title == o.title &&
           visualizations == o.visualizations &&
           width == o.width
@@ -135,7 +145,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [filters, height, title, visualizations, width].hash
+      [filters, height, settings, title, visualizations, width].hash
     end
 
     # Builds the object from hash

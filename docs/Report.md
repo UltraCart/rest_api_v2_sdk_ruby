@@ -14,6 +14,7 @@
 | **pages** | [**Array&lt;ReportPage&gt;**](ReportPage.md) |  | [optional] |
 | **report_oid** | **Integer** | Object identifier for this report. | [optional] |
 | **security_level** | **String** | Security level to execute report under | [optional] |
+| **settings** | **String** | A JSON representation of the settings for this report | [optional] |
 
 ## Example
 
@@ -30,7 +31,8 @@ instance = UltracartClient::Report.new(
   name: null,
   pages: null,
   report_oid: null,
-  security_level: null
+  security_level: null,
+  settings: null
 )
 ```
 

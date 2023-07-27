@@ -37,6 +37,9 @@ module UltracartClient
     # Security level to execute report under
     attr_accessor :security_level
 
+    # A JSON representation of the settings for this report
+    attr_accessor :settings
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -71,7 +74,8 @@ module UltracartClient
         :'name' => :'name',
         :'pages' => :'pages',
         :'report_oid' => :'report_oid',
-        :'security_level' => :'security_level'
+        :'security_level' => :'security_level',
+        :'settings' => :'settings'
       }
     end
 
@@ -92,7 +96,8 @@ module UltracartClient
         :'name' => :'String',
         :'pages' => :'Array<ReportPage>',
         :'report_oid' => :'Integer',
-        :'security_level' => :'String'
+        :'security_level' => :'String',
+        :'settings' => :'String'
       }
     end
 
@@ -162,6 +167,10 @@ module UltracartClient
       if attributes.key?(:'security_level')
         self.security_level = attributes[:'security_level']
       end
+
+      if attributes.key?(:'settings')
+        self.settings = attributes[:'settings']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -203,7 +212,8 @@ module UltracartClient
           name == o.name &&
           pages == o.pages &&
           report_oid == o.report_oid &&
-          security_level == o.security_level
+          security_level == o.security_level &&
+          settings == o.settings
     end
 
     # @see the `==` method
@@ -215,7 +225,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [active, data_sources, default_dataset_id, default_project_id, filters, merchant_id, name, pages, report_oid, security_level].hash
+      [active, data_sources, default_dataset_id, default_project_id, filters, merchant_id, name, pages, report_oid, security_level, settings].hash
     end
 
     # Builds the object from hash
