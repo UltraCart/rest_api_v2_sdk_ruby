@@ -16,6 +16,7 @@
 | **postcard_from_name** | **String** |  | [optional] |
 | **postcard_from_postal_code** | **String** |  | [optional] |
 | **postcard_from_state** | **String** |  | [optional] |
+| **require_order_within_last** | **Integer** | Require order within last | [optional] |
 | **reviews_io_configured** | **Boolean** | True if the Reviews.io integration is configured | [optional] |
 | **sms_esp_twilio_uuid** | **String** |  | [optional] |
 | **sms_phone_number** | **String** |  | [optional] |
@@ -41,6 +42,7 @@ instance = UltracartClient::EmailSettings.new(
   postcard_from_name: null,
   postcard_from_postal_code: null,
   postcard_from_state: null,
+  require_order_within_last: null,
   reviews_io_configured: null,
   sms_esp_twilio_uuid: null,
   sms_phone_number: null,
