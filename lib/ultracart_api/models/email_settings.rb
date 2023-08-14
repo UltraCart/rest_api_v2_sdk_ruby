@@ -41,6 +41,9 @@ module UltracartClient
 
     attr_accessor :postcard_from_state
 
+    # Require order within last
+    attr_accessor :require_order_within_last
+
     # True if the Reviews.io integration is configured
     attr_accessor :reviews_io_configured
 
@@ -69,6 +72,7 @@ module UltracartClient
         :'postcard_from_name' => :'postcard_from_name',
         :'postcard_from_postal_code' => :'postcard_from_postal_code',
         :'postcard_from_state' => :'postcard_from_state',
+        :'require_order_within_last' => :'require_order_within_last',
         :'reviews_io_configured' => :'reviews_io_configured',
         :'sms_esp_twilio_uuid' => :'sms_esp_twilio_uuid',
         :'sms_phone_number' => :'sms_phone_number',
@@ -93,6 +97,7 @@ module UltracartClient
         :'postcard_from_name' => :'String',
         :'postcard_from_postal_code' => :'String',
         :'postcard_from_state' => :'String',
+        :'require_order_within_last' => :'Integer',
         :'reviews_io_configured' => :'BOOLEAN',
         :'sms_esp_twilio_uuid' => :'String',
         :'sms_phone_number' => :'String',
@@ -158,6 +163,10 @@ module UltracartClient
         self.postcard_from_state = attributes[:'postcard_from_state']
       end
 
+      if attributes.has_key?(:'require_order_within_last')
+        self.require_order_within_last = attributes[:'require_order_within_last']
+      end
+
       if attributes.has_key?(:'reviews_io_configured')
         self.reviews_io_configured = attributes[:'reviews_io_configured']
       end
@@ -213,6 +222,7 @@ module UltracartClient
           postcard_from_name == o.postcard_from_name &&
           postcard_from_postal_code == o.postcard_from_postal_code &&
           postcard_from_state == o.postcard_from_state &&
+          require_order_within_last == o.require_order_within_last &&
           reviews_io_configured == o.reviews_io_configured &&
           sms_esp_twilio_uuid == o.sms_esp_twilio_uuid &&
           sms_phone_number == o.sms_phone_number &&
@@ -230,7 +240,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [emails_per_day, emails_per_hour, emails_per_month, marketing_esp_domain_user, marketing_esp_domain_uuid, marketing_esp_friendly_name, postcard_from_address1, postcard_from_address2, postcard_from_city, postcard_from_name, postcard_from_postal_code, postcard_from_state, reviews_io_configured, sms_esp_twilio_uuid, sms_phone_number, transactional_esp_domain_user, transactional_esp_domain_uuid, transactional_esp_friendly_name].hash
+      [emails_per_day, emails_per_hour, emails_per_month, marketing_esp_domain_user, marketing_esp_domain_uuid, marketing_esp_friendly_name, postcard_from_address1, postcard_from_address2, postcard_from_city, postcard_from_name, postcard_from_postal_code, postcard_from_state, require_order_within_last, reviews_io_configured, sms_esp_twilio_uuid, sms_phone_number, transactional_esp_domain_user, transactional_esp_domain_uuid, transactional_esp_friendly_name].hash
     end
 
     # Builds the object from hash
