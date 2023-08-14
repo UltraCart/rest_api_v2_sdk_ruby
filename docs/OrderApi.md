@@ -30,6 +30,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**resend_shipment_confirmation**](OrderApi.md#resend_shipment_confirmation) | **POST** /order/orders/{order_id}/resend_shipment_confirmation | Resend shipment confirmation |
 | [**update_accounts_receivable_retry_config**](OrderApi.md#update_accounts_receivable_retry_config) | **POST** /order/accountsReceivableRetryConfig | Update A/R Retry Configuration |
 | [**update_order**](OrderApi.md#update_order) | **PUT** /order/orders/{order_id} | Update an order |
+| [**validate_order**](OrderApi.md#validate_order) | **POST** /order/validate | Validate |
 
 
 ## adjust_order_total
@@ -2007,5 +2008,76 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## validate_order
+
+> <OrderValidationResponse> validate_order(validation_request)
+
+Validate
+
+Validate the order for errors.  Specific checks can be passed to fine tune what is validated. Read and write permissions are required because the validate method may fix obvious address issues automatically which require update permission.This rest call makes use of the built-in translation of rest objects to UltraCart internal objects which also contains a multitude of validation checks that cannot be trapped.  Therefore any time this call is made, you should also trap api exceptions and examine their content because it may contain validation issues.  So check the response object and trap any exceptions. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+validation_request = UltracartClient::OrderValidationRequest.new # OrderValidationRequest | Validation request
+
+begin
+  # Validate
+  result = api_instance.validate_order(validation_request)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->validate_order: #{e}"
+end
+```
+
+#### Using the validate_order_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OrderValidationResponse>, Integer, Hash)> validate_order_with_http_info(validation_request)
+
+```ruby
+begin
+  # Validate
+  data, status_code, headers = api_instance.validate_order_with_http_info(validation_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OrderValidationResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->validate_order_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **validation_request** | [**OrderValidationRequest**](OrderValidationRequest.md) | Validation request |  |
+
+### Return type
+
+[**OrderValidationResponse**](OrderValidationResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

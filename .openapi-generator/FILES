@@ -638,6 +638,8 @@ docs/OrderTrackingNumberDetail.md
 docs/OrderTrackingNumberDetails.md
 docs/OrderTransactionalMerchantNote.md
 docs/OrderUtm.md
+docs/OrderValidationRequest.md
+docs/OrderValidationResponse.md
 docs/OrdersResponse.md
 docs/Permission.md
 docs/PointOfSaleLocation.md
@@ -1444,6 +1446,8 @@ lib/ultracart_api/models/order_tracking_number_detail.rb
 lib/ultracart_api/models/order_tracking_number_details.rb
 lib/ultracart_api/models/order_transactional_merchant_note.rb
 lib/ultracart_api/models/order_utm.rb
+lib/ultracart_api/models/order_validation_request.rb
+lib/ultracart_api/models/order_validation_response.rb
 lib/ultracart_api/models/orders_response.rb
 lib/ultracart_api/models/permission.rb
 lib/ultracart_api/models/point_of_sale_location.rb

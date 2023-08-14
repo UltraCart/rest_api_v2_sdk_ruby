@@ -1925,5 +1925,74 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+
+    # Validate
+    # Validate the order for errors.  Specific checks can be passed to fine tune what is validated. Read and write permissions are required because the validate method may fix obvious address issues automatically which require update permission.This rest call makes use of the built-in translation of rest objects to UltraCart internal objects which also contains a multitude of validation checks that cannot be trapped.  Therefore any time this call is made, you should also trap api exceptions and examine their content because it may contain validation issues.  So check the response object and trap any exceptions. 
+    # @param validation_request [OrderValidationRequest] Validation request
+    # @param [Hash] opts the optional parameters
+    # @return [OrderValidationResponse]
+    def validate_order(validation_request, opts = {})
+      data, _status_code, _headers = validate_order_with_http_info(validation_request, opts)
+      data
+    end
+
+    # Validate
+    # Validate the order for errors.  Specific checks can be passed to fine tune what is validated. Read and write permissions are required because the validate method may fix obvious address issues automatically which require update permission.This rest call makes use of the built-in translation of rest objects to UltraCart internal objects which also contains a multitude of validation checks that cannot be trapped.  Therefore any time this call is made, you should also trap api exceptions and examine their content because it may contain validation issues.  So check the response object and trap any exceptions. 
+    # @param validation_request [OrderValidationRequest] Validation request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OrderValidationResponse, Integer, Hash)>] OrderValidationResponse data, response status code and response headers
+    def validate_order_with_http_info(validation_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.validate_order ...'
+      end
+      # verify the required parameter 'validation_request' is set
+      if @api_client.config.client_side_validation && validation_request.nil?
+        fail ArgumentError, "Missing the required parameter 'validation_request' when calling OrderApi.validate_order"
+      end
+      # resource path
+      local_var_path = '/order/validate'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(validation_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OrderValidationResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"OrderApi.validate_order",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#validate_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
   end
 end

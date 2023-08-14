@@ -4,6 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **emails_per_day** | **Integer** | Emails per day allowed | [optional] |
+| **emails_per_hour** | **Integer** | Emails per hour allowed | [optional] |
+| **emails_per_month** | **Integer** | Emails per month allowed | [optional] |
 | **marketing_esp_domain_user** | **String** |  | [optional] |
 | **marketing_esp_domain_uuid** | **String** |  | [optional] |
 | **marketing_esp_friendly_name** | **String** |  | [optional] |
@@ -26,6 +29,9 @@
 require 'ultracart_api'
 
 instance = UltracartClient::EmailSettings.new(
+  emails_per_day: null,
+  emails_per_hour: null,
+  emails_per_month: null,
   marketing_esp_domain_user: null,
   marketing_esp_domain_uuid: null,
   marketing_esp_friendly_name: null,
