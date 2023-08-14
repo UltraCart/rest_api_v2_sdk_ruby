@@ -30,6 +30,7 @@ Method | HTTP request | Description
 [**resend_shipment_confirmation**](OrderApi.md#resend_shipment_confirmation) | **POST** /order/orders/{order_id}/resend_shipment_confirmation | Resend shipment confirmation
 [**update_accounts_receivable_retry_config**](OrderApi.md#update_accounts_receivable_retry_config) | **POST** /order/accountsReceivableRetryConfig | Update A/R Retry Configuration
 [**update_order**](OrderApi.md#update_order) | **PUT** /order/orders/{order_id} | Update an order
+[**validate_order**](OrderApi.md#validate_order) | **POST** /order/validate | Validate
 
 
 # **adjust_order_total**
@@ -1463,6 +1464,56 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json; charset=UTF-8
+ - **Accept**: application/json
+
+
+
+# **validate_order**
+> OrderValidationResponse validate_order(validation_request)
+
+Validate
+
+Validate the order for errors.  Specific checks can be passed to fine tune what is validated. Read and write permissions are required because the validate method may fix obvious address issues automatically which require update permission.This rest call makes use of the built-in translation of rest objects to UltraCart internal objects which also contains a multitude of validation checks that cannot be trapped.  Therefore any time this call is made, you should also trap api exceptions and examine their content because it may contain validation issues.  So check the response object and trap any exceptions. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
+
+
+validation_request = UltracartClient::OrderValidationRequest.new # OrderValidationRequest | Validation request
+
+
+begin
+  #Validate
+  result = api_instance.validate_order(validation_request)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling OrderApi->validate_order: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **validation_request** | [**OrderValidationRequest**](OrderValidationRequest.md)| Validation request | 
+
+### Return type
+
+[**OrderValidationResponse**](OrderValidationResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

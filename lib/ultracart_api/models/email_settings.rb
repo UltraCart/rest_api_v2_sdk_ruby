@@ -14,6 +14,15 @@ require 'date'
 
 module UltracartClient
   class EmailSettings
+    # Emails per day allowed
+    attr_accessor :emails_per_day
+
+    # Emails per hour allowed
+    attr_accessor :emails_per_hour
+
+    # Emails per month allowed
+    attr_accessor :emails_per_month
+
     attr_accessor :marketing_esp_domain_user
 
     attr_accessor :marketing_esp_domain_uuid
@@ -48,6 +57,9 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'emails_per_day' => :'emails_per_day',
+        :'emails_per_hour' => :'emails_per_hour',
+        :'emails_per_month' => :'emails_per_month',
         :'marketing_esp_domain_user' => :'marketing_esp_domain_user',
         :'marketing_esp_domain_uuid' => :'marketing_esp_domain_uuid',
         :'marketing_esp_friendly_name' => :'marketing_esp_friendly_name',
@@ -69,6 +81,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'emails_per_day' => :'Integer',
+        :'emails_per_hour' => :'Integer',
+        :'emails_per_month' => :'Integer',
         :'marketing_esp_domain_user' => :'String',
         :'marketing_esp_domain_uuid' => :'String',
         :'marketing_esp_friendly_name' => :'String',
@@ -94,6 +109,18 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'emails_per_day')
+        self.emails_per_day = attributes[:'emails_per_day']
+      end
+
+      if attributes.has_key?(:'emails_per_hour')
+        self.emails_per_hour = attributes[:'emails_per_hour']
+      end
+
+      if attributes.has_key?(:'emails_per_month')
+        self.emails_per_month = attributes[:'emails_per_month']
+      end
 
       if attributes.has_key?(:'marketing_esp_domain_user')
         self.marketing_esp_domain_user = attributes[:'marketing_esp_domain_user']
@@ -174,6 +201,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          emails_per_day == o.emails_per_day &&
+          emails_per_hour == o.emails_per_hour &&
+          emails_per_month == o.emails_per_month &&
           marketing_esp_domain_user == o.marketing_esp_domain_user &&
           marketing_esp_domain_uuid == o.marketing_esp_domain_uuid &&
           marketing_esp_friendly_name == o.marketing_esp_friendly_name &&
@@ -200,7 +230,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [marketing_esp_domain_user, marketing_esp_domain_uuid, marketing_esp_friendly_name, postcard_from_address1, postcard_from_address2, postcard_from_city, postcard_from_name, postcard_from_postal_code, postcard_from_state, reviews_io_configured, sms_esp_twilio_uuid, sms_phone_number, transactional_esp_domain_user, transactional_esp_domain_uuid, transactional_esp_friendly_name].hash
+      [emails_per_day, emails_per_hour, emails_per_month, marketing_esp_domain_user, marketing_esp_domain_uuid, marketing_esp_friendly_name, postcard_from_address1, postcard_from_address2, postcard_from_city, postcard_from_name, postcard_from_postal_code, postcard_from_state, reviews_io_configured, sms_esp_twilio_uuid, sms_phone_number, transactional_esp_domain_user, transactional_esp_domain_uuid, transactional_esp_friendly_name].hash
     end
 
     # Builds the object from hash
