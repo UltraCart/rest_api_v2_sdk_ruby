@@ -613,6 +613,7 @@ api = UltracartClient::AutoOrderApi.new_using_api_key(Constants::API_KEY, Consta
 auto_order_oid = 56 # Integer | The auto order oid to update.
 auto_order = UltracartClient::AutoOrder.new # AutoOrder | Auto order to update
 opts = {
+  validate_original_order: 'validate_original_order_example', # String | Validate original order before updating
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
 
@@ -649,6 +650,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **auto_order_oid** | **Integer** | The auto order oid to update. |  |
 | **auto_order** | [**AutoOrder**](AutoOrder.md) | Auto order to update |  |
+| **validate_original_order** | **String** | Validate original order before updating | [optional] |
 | **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
 
 ### Return type

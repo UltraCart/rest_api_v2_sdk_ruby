@@ -585,6 +585,7 @@ module UltracartClient
     # @param auto_order_oid [Integer] The auto order oid to update.
     # @param auto_order [AutoOrder] Auto order to update
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :validate_original_order Validate original order before updating
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [AutoOrderResponse]
     def update_auto_order(auto_order_oid, auto_order, opts = {})
@@ -597,6 +598,7 @@ module UltracartClient
     # @param auto_order_oid [Integer] The auto order oid to update.
     # @param auto_order [AutoOrder] Auto order to update
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :validate_original_order Validate original order before updating
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(AutoOrderResponse, Integer, Hash)>] AutoOrderResponse data, response status code and response headers
     def update_auto_order_with_http_info(auto_order_oid, auto_order, opts = {})
@@ -616,6 +618,7 @@ module UltracartClient
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'validate_original_order'] = opts[:'validate_original_order'] if !opts[:'validate_original_order'].nil?
       query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
 
       # header parameters
