@@ -28,6 +28,7 @@
 | **expiration_dts** | **String** | Date/time when coupon expires | [optional] |
 | **free_item_and_shipping_with_subtotal** | [**CouponFreeItemAndShippingWithSubtotal**](CouponFreeItemAndShippingWithSubtotal.md) |  | [optional] |
 | **free_item_with_item_purchase** | [**CouponFreeItemWithItemPurchase**](CouponFreeItemWithItemPurchase.md) |  | [optional] |
+| **free_item_with_item_purchase_and_free_shipping** | [**CouponFreeItemWithItemPurchaseAndFreeShipping**](CouponFreeItemWithItemPurchaseAndFreeShipping.md) |  | [optional] |
 | **free_item_with_subtotal** | [**CouponFreeItemWithSubtotal**](CouponFreeItemWithSubtotal.md) |  | [optional] |
 | **free_items_with_item_purchase** | [**CouponFreeItemsWithItemPurchase**](CouponFreeItemsWithItemPurchase.md) |  | [optional] |
 | **free_items_with_mixmatch_purchase** | [**CouponFreeItemsWithMixMatchPurchase**](CouponFreeItemsWithMixMatchPurchase.md) |  | [optional] |
@@ -101,6 +102,7 @@ instance = UltracartClient::Coupon.new(
   expiration_dts: null,
   free_item_and_shipping_with_subtotal: null,
   free_item_with_item_purchase: null,
+  free_item_with_item_purchase_and_free_shipping: null,
   free_item_with_subtotal: null,
   free_items_with_item_purchase: null,
   free_items_with_mixmatch_purchase: null,

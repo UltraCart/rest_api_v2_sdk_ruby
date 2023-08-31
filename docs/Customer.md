@@ -44,6 +44,7 @@
 | **password** | **String** | Password (may only be set, never read) | [optional] |
 | **pricing_tiers** | [**Array&lt;CustomerPricingTier&gt;**](CustomerPricingTier.md) | Pricing tiers for this customer | [optional] |
 | **privacy** | [**CustomerPrivacy**](CustomerPrivacy.md) |  | [optional] |
+| **properties** | [**Array&lt;CustomerProperty&gt;**](CustomerProperty.md) | Properties for this customer | [optional] |
 | **qb_class** | **String** | QuickBooks class to import this customer as | [optional] |
 | **qb_code** | **String** | QuickBooks name to import this customer as | [optional] |
 | **qb_tax_exemption_reason_code** | **Integer** | QuickBooks tax exemption reason code | [optional] |
@@ -113,6 +114,7 @@ instance = UltracartClient::Customer.new(
   password: null,
   pricing_tiers: null,
   privacy: null,
+  properties: null,
   qb_class: null,
   qb_code: null,
   qb_tax_exemption_reason_code: null,

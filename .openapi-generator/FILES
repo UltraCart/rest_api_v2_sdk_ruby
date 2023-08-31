@@ -223,6 +223,7 @@ docs/CouponEditorValues.md
 docs/CouponExistsResponse.md
 docs/CouponFreeItemAndShippingWithSubtotal.md
 docs/CouponFreeItemWithItemPurchase.md
+docs/CouponFreeItemWithItemPurchaseAndFreeShipping.md
 docs/CouponFreeItemWithSubtotal.md
 docs/CouponFreeItemsWithItemPurchase.md
 docs/CouponFreeItemsWithMixMatchPurchase.md
@@ -287,6 +288,7 @@ docs/CustomerMergeRequest.md
 docs/CustomerOrdersSummary.md
 docs/CustomerPricingTier.md
 docs/CustomerPrivacy.md
+docs/CustomerProperty.md
 docs/CustomerQuery.md
 docs/CustomerQuotesSummary.md
 docs/CustomerResponse.md
@@ -1039,6 +1041,7 @@ lib/ultracart_api/models/coupon_editor_values.rb
 lib/ultracart_api/models/coupon_exists_response.rb
 lib/ultracart_api/models/coupon_free_item_and_shipping_with_subtotal.rb
 lib/ultracart_api/models/coupon_free_item_with_item_purchase.rb
+lib/ultracart_api/models/coupon_free_item_with_item_purchase_and_free_shipping.rb
 lib/ultracart_api/models/coupon_free_item_with_subtotal.rb
 lib/ultracart_api/models/coupon_free_items_with_item_purchase.rb
 lib/ultracart_api/models/coupon_free_items_with_mix_match_purchase.rb
@@ -1102,6 +1105,7 @@ lib/ultracart_api/models/customer_merge_request.rb
 lib/ultracart_api/models/customer_orders_summary.rb
 lib/ultracart_api/models/customer_pricing_tier.rb
 lib/ultracart_api/models/customer_privacy.rb
+lib/ultracart_api/models/customer_property.rb
 lib/ultracart_api/models/customer_query.rb
 lib/ultracart_api/models/customer_quotes_summary.rb
 lib/ultracart_api/models/customer_response.rb
