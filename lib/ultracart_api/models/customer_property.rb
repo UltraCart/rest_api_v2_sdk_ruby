@@ -14,6 +14,9 @@ require 'date'
 
 module UltracartClient
   class CustomerProperty
+    # Customer profile property oid
+    attr_accessor :customer_profile_property_oid
+
     # The date/time that the property expires and is deleted
     attr_accessor :expiration_dts
 
@@ -26,6 +29,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'customer_profile_property_oid' => :'customer_profile_property_oid',
         :'expiration_dts' => :'expiration_dts',
         :'name' => :'name',
         :'value' => :'value'
@@ -35,6 +39,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'customer_profile_property_oid' => :'Integer',
         :'expiration_dts' => :'String',
         :'name' => :'String',
         :'value' => :'String'
@@ -48,6 +53,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'customer_profile_property_oid')
+        self.customer_profile_property_oid = attributes[:'customer_profile_property_oid']
+      end
 
       if attributes.has_key?(:'expiration_dts')
         self.expiration_dts = attributes[:'expiration_dts']
@@ -110,6 +119,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          customer_profile_property_oid == o.customer_profile_property_oid &&
           expiration_dts == o.expiration_dts &&
           name == o.name &&
           value == o.value
@@ -124,7 +134,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [expiration_dts, name, value].hash
+      [customer_profile_property_oid, expiration_dts, name, value].hash
     end
 
     # Builds the object from hash
