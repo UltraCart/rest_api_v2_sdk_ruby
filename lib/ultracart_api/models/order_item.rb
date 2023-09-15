@@ -32,6 +32,18 @@ module UltracartClient
     # Barcode
     attr_accessor :barcode
 
+    # Barcode - GTIN 12
+    attr_accessor :barcode_gtin12
+
+    # Barcode - GTIN 14
+    attr_accessor :barcode_gtin14
+
+    # Barcode - UPC 11
+    attr_accessor :barcode_upc11
+
+    # Barcode - UPC 12
+    attr_accessor :barcode_upc12
+
     # Channel partner item id if this order came through a channel partner and the channel partner item id was mapped to an internal item id
     attr_accessor :channel_partner_item_id
 
@@ -216,6 +228,10 @@ module UltracartClient
         :'auto_order_last_rebill_dts' => :'auto_order_last_rebill_dts',
         :'auto_order_schedule' => :'auto_order_schedule',
         :'barcode' => :'barcode',
+        :'barcode_gtin12' => :'barcode_gtin12',
+        :'barcode_gtin14' => :'barcode_gtin14',
+        :'barcode_upc11' => :'barcode_upc11',
+        :'barcode_upc12' => :'barcode_upc12',
         :'channel_partner_item_id' => :'channel_partner_item_id',
         :'cogs' => :'cogs',
         :'component_unit_value' => :'component_unit_value',
@@ -288,6 +304,10 @@ module UltracartClient
         :'auto_order_last_rebill_dts' => :'String',
         :'auto_order_schedule' => :'String',
         :'barcode' => :'String',
+        :'barcode_gtin12' => :'String',
+        :'barcode_gtin14' => :'String',
+        :'barcode_upc11' => :'String',
+        :'barcode_upc12' => :'String',
         :'channel_partner_item_id' => :'String',
         :'cogs' => :'Float',
         :'component_unit_value' => :'Float',
@@ -391,6 +411,22 @@ module UltracartClient
 
       if attributes.key?(:'barcode')
         self.barcode = attributes[:'barcode']
+      end
+
+      if attributes.key?(:'barcode_gtin12')
+        self.barcode_gtin12 = attributes[:'barcode_gtin12']
+      end
+
+      if attributes.key?(:'barcode_gtin14')
+        self.barcode_gtin14 = attributes[:'barcode_gtin14']
+      end
+
+      if attributes.key?(:'barcode_upc11')
+        self.barcode_upc11 = attributes[:'barcode_upc11']
+      end
+
+      if attributes.key?(:'barcode_upc12')
+        self.barcode_upc12 = attributes[:'barcode_upc12']
       end
 
       if attributes.key?(:'channel_partner_item_id')
@@ -624,6 +660,22 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@barcode_gtin12.nil? && @barcode_gtin12.to_s.length > 12
+        invalid_properties.push('invalid value for "barcode_gtin12", the character length must be smaller than or equal to 12.')
+      end
+
+      if !@barcode_gtin14.nil? && @barcode_gtin14.to_s.length > 14
+        invalid_properties.push('invalid value for "barcode_gtin14", the character length must be smaller than or equal to 14.')
+      end
+
+      if !@barcode_upc11.nil? && @barcode_upc11.to_s.length > 11
+        invalid_properties.push('invalid value for "barcode_upc11", the character length must be smaller than or equal to 11.')
+      end
+
+      if !@barcode_upc12.nil? && @barcode_upc12.to_s.length > 12
+        invalid_properties.push('invalid value for "barcode_upc12", the character length must be smaller than or equal to 12.')
+      end
+
       if !@channel_partner_item_id.nil? && @channel_partner_item_id.to_s.length > 30
         invalid_properties.push('invalid value for "channel_partner_item_id", the character length must be smaller than or equal to 30.')
       end
@@ -658,6 +710,10 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@barcode_gtin12.nil? && @barcode_gtin12.to_s.length > 12
+      return false if !@barcode_gtin14.nil? && @barcode_gtin14.to_s.length > 14
+      return false if !@barcode_upc11.nil? && @barcode_upc11.to_s.length > 11
+      return false if !@barcode_upc12.nil? && @barcode_upc12.to_s.length > 12
       return false if !@channel_partner_item_id.nil? && @channel_partner_item_id.to_s.length > 30
       return false if !@country_code_of_origin.nil? && @country_code_of_origin.to_s.length > 2
       return false if !@description.nil? && @description.to_s.length > 2000
@@ -668,6 +724,46 @@ module UltracartClient
       tax_product_type_validator = EnumAttributeValidator.new('String', ["", "digital", "physical", "service"])
       return false unless tax_product_type_validator.valid?(@tax_product_type)
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] barcode_gtin12 Value to be assigned
+    def barcode_gtin12=(barcode_gtin12)
+      if !barcode_gtin12.nil? && barcode_gtin12.to_s.length > 12
+        fail ArgumentError, 'invalid value for "barcode_gtin12", the character length must be smaller than or equal to 12.'
+      end
+
+      @barcode_gtin12 = barcode_gtin12
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] barcode_gtin14 Value to be assigned
+    def barcode_gtin14=(barcode_gtin14)
+      if !barcode_gtin14.nil? && barcode_gtin14.to_s.length > 14
+        fail ArgumentError, 'invalid value for "barcode_gtin14", the character length must be smaller than or equal to 14.'
+      end
+
+      @barcode_gtin14 = barcode_gtin14
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] barcode_upc11 Value to be assigned
+    def barcode_upc11=(barcode_upc11)
+      if !barcode_upc11.nil? && barcode_upc11.to_s.length > 11
+        fail ArgumentError, 'invalid value for "barcode_upc11", the character length must be smaller than or equal to 11.'
+      end
+
+      @barcode_upc11 = barcode_upc11
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] barcode_upc12 Value to be assigned
+    def barcode_upc12=(barcode_upc12)
+      if !barcode_upc12.nil? && barcode_upc12.to_s.length > 12
+        fail ArgumentError, 'invalid value for "barcode_upc12", the character length must be smaller than or equal to 12.'
+      end
+
+      @barcode_upc12 = barcode_upc12
     end
 
     # Custom attribute writer method with validation
@@ -761,6 +857,10 @@ module UltracartClient
           auto_order_last_rebill_dts == o.auto_order_last_rebill_dts &&
           auto_order_schedule == o.auto_order_schedule &&
           barcode == o.barcode &&
+          barcode_gtin12 == o.barcode_gtin12 &&
+          barcode_gtin14 == o.barcode_gtin14 &&
+          barcode_upc11 == o.barcode_upc11 &&
+          barcode_upc12 == o.barcode_upc12 &&
           channel_partner_item_id == o.channel_partner_item_id &&
           cogs == o.cogs &&
           component_unit_value == o.component_unit_value &&
@@ -827,7 +927,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accounting_code, activation_codes, arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, barcode, channel_partner_item_id, cogs, component_unit_value, cost, country_code_of_origin, customs_description, description, discount, discount_quantity, discount_shipping_weight, distribution_center_code, edi, exclude_coupon, free_shipping, hazmat, height, item_index, item_reference_oid, kit, kit_component, length, manufacturer_sku, max_days_time_in_transit, merchant_item_id, mix_and_match_group_name, mix_and_match_group_oid, no_shipping_discount, options, packed_by_user, parent_item_index, parent_merchant_item_id, perishable_class, pricing_tier_name, properties, quantity, quantity_refunded, quickbooks_class, refund_reason, return_reason, ship_separately, shipped_by_user, shipped_dts, shipping_status, special_product_type, tags, tax_free, tax_product_type, taxable_cost, total_cost_with_discount, total_refunded, transmitted_to_distribution_center_dts, unit_cost_with_discount, upsell, weight, width].hash
+      [accounting_code, activation_codes, arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, barcode, barcode_gtin12, barcode_gtin14, barcode_upc11, barcode_upc12, channel_partner_item_id, cogs, component_unit_value, cost, country_code_of_origin, customs_description, description, discount, discount_quantity, discount_shipping_weight, distribution_center_code, edi, exclude_coupon, free_shipping, hazmat, height, item_index, item_reference_oid, kit, kit_component, length, manufacturer_sku, max_days_time_in_transit, merchant_item_id, mix_and_match_group_name, mix_and_match_group_oid, no_shipping_discount, options, packed_by_user, parent_item_index, parent_merchant_item_id, perishable_class, pricing_tier_name, properties, quantity, quantity_refunded, quickbooks_class, refund_reason, return_reason, ship_separately, shipped_by_user, shipped_dts, shipping_status, special_product_type, tags, tax_free, tax_product_type, taxable_cost, total_cost_with_discount, total_refunded, transmitted_to_distribution_center_dts, unit_cost_with_discount, upsell, weight, width].hash
     end
 
     # Builds the object from hash

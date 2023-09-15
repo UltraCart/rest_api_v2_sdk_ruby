@@ -18,6 +18,18 @@ module UltracartClient
     # Barcode
     attr_accessor :barcode
 
+    # Barcode - GTIN 12
+    attr_accessor :barcode_gtin12
+
+    # Barcode - GTIN 14
+    attr_accessor :barcode_gtin14
+
+    # Barcode - UPC 11
+    attr_accessor :barcode_upc11
+
+    # Barcode - UPC 12
+    attr_accessor :barcode_upc12
+
     # Manufacturer Name
     attr_accessor :manufacturer_name
 
@@ -31,6 +43,10 @@ module UltracartClient
     def self.attribute_map
       {
         :'barcode' => :'barcode',
+        :'barcode_gtin12' => :'barcode_gtin12',
+        :'barcode_gtin14' => :'barcode_gtin14',
+        :'barcode_upc11' => :'barcode_upc11',
+        :'barcode_upc12' => :'barcode_upc12',
         :'manufacturer_name' => :'manufacturer_name',
         :'manufacturer_sku' => :'manufacturer_sku',
         :'unspsc' => :'unspsc'
@@ -46,6 +62,10 @@ module UltracartClient
     def self.openapi_types
       {
         :'barcode' => :'String',
+        :'barcode_gtin12' => :'String',
+        :'barcode_gtin14' => :'String',
+        :'barcode_upc11' => :'String',
+        :'barcode_upc12' => :'String',
         :'manufacturer_name' => :'String',
         :'manufacturer_sku' => :'String',
         :'unspsc' => :'String'
@@ -77,6 +97,22 @@ module UltracartClient
         self.barcode = attributes[:'barcode']
       end
 
+      if attributes.key?(:'barcode_gtin12')
+        self.barcode_gtin12 = attributes[:'barcode_gtin12']
+      end
+
+      if attributes.key?(:'barcode_gtin14')
+        self.barcode_gtin14 = attributes[:'barcode_gtin14']
+      end
+
+      if attributes.key?(:'barcode_upc11')
+        self.barcode_upc11 = attributes[:'barcode_upc11']
+      end
+
+      if attributes.key?(:'barcode_upc12')
+        self.barcode_upc12 = attributes[:'barcode_upc12']
+      end
+
       if attributes.key?(:'manufacturer_name')
         self.manufacturer_name = attributes[:'manufacturer_name']
       end
@@ -98,6 +134,22 @@ module UltracartClient
         invalid_properties.push('invalid value for "barcode", the character length must be smaller than or equal to 30.')
       end
 
+      if !@barcode_gtin12.nil? && @barcode_gtin12.to_s.length > 12
+        invalid_properties.push('invalid value for "barcode_gtin12", the character length must be smaller than or equal to 12.')
+      end
+
+      if !@barcode_gtin14.nil? && @barcode_gtin14.to_s.length > 14
+        invalid_properties.push('invalid value for "barcode_gtin14", the character length must be smaller than or equal to 14.')
+      end
+
+      if !@barcode_upc11.nil? && @barcode_upc11.to_s.length > 11
+        invalid_properties.push('invalid value for "barcode_upc11", the character length must be smaller than or equal to 11.')
+      end
+
+      if !@barcode_upc12.nil? && @barcode_upc12.to_s.length > 12
+        invalid_properties.push('invalid value for "barcode_upc12", the character length must be smaller than or equal to 12.')
+      end
+
       if !@manufacturer_name.nil? && @manufacturer_name.to_s.length > 50
         invalid_properties.push('invalid value for "manufacturer_name", the character length must be smaller than or equal to 50.')
       end
@@ -117,6 +169,10 @@ module UltracartClient
     # @return true if the model is valid
     def valid?
       return false if !@barcode.nil? && @barcode.to_s.length > 30
+      return false if !@barcode_gtin12.nil? && @barcode_gtin12.to_s.length > 12
+      return false if !@barcode_gtin14.nil? && @barcode_gtin14.to_s.length > 14
+      return false if !@barcode_upc11.nil? && @barcode_upc11.to_s.length > 11
+      return false if !@barcode_upc12.nil? && @barcode_upc12.to_s.length > 12
       return false if !@manufacturer_name.nil? && @manufacturer_name.to_s.length > 50
       return false if !@manufacturer_sku.nil? && @manufacturer_sku.to_s.length > 25
       return false if !@unspsc.nil? && @unspsc.to_s.length > 20
@@ -131,6 +187,46 @@ module UltracartClient
       end
 
       @barcode = barcode
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] barcode_gtin12 Value to be assigned
+    def barcode_gtin12=(barcode_gtin12)
+      if !barcode_gtin12.nil? && barcode_gtin12.to_s.length > 12
+        fail ArgumentError, 'invalid value for "barcode_gtin12", the character length must be smaller than or equal to 12.'
+      end
+
+      @barcode_gtin12 = barcode_gtin12
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] barcode_gtin14 Value to be assigned
+    def barcode_gtin14=(barcode_gtin14)
+      if !barcode_gtin14.nil? && barcode_gtin14.to_s.length > 14
+        fail ArgumentError, 'invalid value for "barcode_gtin14", the character length must be smaller than or equal to 14.'
+      end
+
+      @barcode_gtin14 = barcode_gtin14
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] barcode_upc11 Value to be assigned
+    def barcode_upc11=(barcode_upc11)
+      if !barcode_upc11.nil? && barcode_upc11.to_s.length > 11
+        fail ArgumentError, 'invalid value for "barcode_upc11", the character length must be smaller than or equal to 11.'
+      end
+
+      @barcode_upc11 = barcode_upc11
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] barcode_upc12 Value to be assigned
+    def barcode_upc12=(barcode_upc12)
+      if !barcode_upc12.nil? && barcode_upc12.to_s.length > 12
+        fail ArgumentError, 'invalid value for "barcode_upc12", the character length must be smaller than or equal to 12.'
+      end
+
+      @barcode_upc12 = barcode_upc12
     end
 
     # Custom attribute writer method with validation
@@ -169,6 +265,10 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           barcode == o.barcode &&
+          barcode_gtin12 == o.barcode_gtin12 &&
+          barcode_gtin14 == o.barcode_gtin14 &&
+          barcode_upc11 == o.barcode_upc11 &&
+          barcode_upc12 == o.barcode_upc12 &&
           manufacturer_name == o.manufacturer_name &&
           manufacturer_sku == o.manufacturer_sku &&
           unspsc == o.unspsc
@@ -183,7 +283,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [barcode, manufacturer_name, manufacturer_sku, unspsc].hash
+      [barcode, barcode_gtin12, barcode_gtin14, barcode_upc11, barcode_upc12, manufacturer_name, manufacturer_sku, unspsc].hash
     end
 
     # Builds the object from hash

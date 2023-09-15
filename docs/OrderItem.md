@@ -10,6 +10,10 @@
 | **auto_order_last_rebill_dts** | **String** | Date/time of the last rebill, used only during order insert to help project future rebills | [optional] |
 | **auto_order_schedule** | **String** | Auto order schedule, used only during inserts supplying the recurring schedule | [optional] |
 | **barcode** | **String** | Barcode | [optional] |
+| **barcode_gtin12** | **String** | Barcode - GTIN 12 | [optional] |
+| **barcode_gtin14** | **String** | Barcode - GTIN 14 | [optional] |
+| **barcode_upc11** | **String** | Barcode - UPC 11 | [optional] |
+| **barcode_upc12** | **String** | Barcode - UPC 12 | [optional] |
 | **channel_partner_item_id** | **String** | Channel partner item id if this order came through a channel partner and the channel partner item id was mapped to an internal item id | [optional] |
 | **cogs** | **Float** | Cost of goods sold | [optional] |
 | **component_unit_value** | **Float** | Value of the kit component item | [optional] |
@@ -78,6 +82,10 @@ instance = UltracartClient::OrderItem.new(
   auto_order_last_rebill_dts: null,
   auto_order_schedule: null,
   barcode: null,
+  barcode_gtin12: null,
+  barcode_gtin14: null,
+  barcode_upc11: null,
+  barcode_upc12: null,
   channel_partner_item_id: null,
   cogs: null,
   component_unit_value: null,
