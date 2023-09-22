@@ -662,6 +662,7 @@ docs/ReportDataSetColumn.md
 docs/ReportDataSetPage.md
 docs/ReportDataSetPageResponse.md
 docs/ReportDataSetQuery.md
+docs/ReportDataSetQueryOrderByColumn.md
 docs/ReportDataSetResponse.md
 docs/ReportDataSetRow.md
 docs/ReportDataSetSchema.md
@@ -1472,6 +1473,7 @@ lib/ultracart_api/models/report_data_set_column.rb
 lib/ultracart_api/models/report_data_set_page.rb
 lib/ultracart_api/models/report_data_set_page_response.rb
 lib/ultracart_api/models/report_data_set_query.rb
+lib/ultracart_api/models/report_data_set_query_order_by_column.rb
 lib/ultracart_api/models/report_data_set_response.rb
 lib/ultracart_api/models/report_data_set_row.rb
 lib/ultracart_api/models/report_data_set_schema.rb

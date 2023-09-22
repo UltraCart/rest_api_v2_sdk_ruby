@@ -12,6 +12,7 @@
 | **for_object_id** | **String** | An identifier that can be used to help match up the returned data set | [optional] |
 | **for_object_type** | **String** | The type of object this data set is for | [optional] |
 | **metrics** | [**Array&lt;ReportPageVisualizationMetric&gt;**](ReportPageVisualizationMetric.md) |  | [optional] |
+| **order_by_columns** | [**Array&lt;ReportDataSetQueryOrderByColumn&gt;**](ReportDataSetQueryOrderByColumn.md) | The columns to order by in the final result.  If not specified the dimensions will be used | [optional] |
 | **page_size** | **Integer** | Result set page size.  The default value is 200 records.  Max is 10000. | [optional] |
 | **selected_filters** | [**Array&lt;ReportFilter&gt;**](ReportFilter.md) |  | [optional] |
 | **skip_cache** | **Boolean** | True if the 15 minute cache should be skipped. | [optional] |
@@ -31,6 +32,7 @@ instance = UltracartClient::ReportDataSetQuery.new(
   for_object_id: null,
   for_object_type: null,
   metrics: null,
+  order_by_columns: null,
   page_size: null,
   selected_filters: null,
   skip_cache: null,
