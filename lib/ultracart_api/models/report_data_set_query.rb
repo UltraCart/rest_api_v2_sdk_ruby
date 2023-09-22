@@ -34,6 +34,9 @@ module UltracartClient
 
     attr_accessor :metrics
 
+    # The columns to order by in the final result.  If not specified the dimensions will be used
+    attr_accessor :order_by_columns
+
     # Result set page size.  The default value is 200 records.  Max is 10000.
     attr_accessor :page_size
 
@@ -78,6 +81,7 @@ module UltracartClient
         :'for_object_id' => :'for_object_id',
         :'for_object_type' => :'for_object_type',
         :'metrics' => :'metrics',
+        :'order_by_columns' => :'order_by_columns',
         :'page_size' => :'page_size',
         :'selected_filters' => :'selected_filters',
         :'skip_cache' => :'skip_cache',
@@ -96,6 +100,7 @@ module UltracartClient
         :'for_object_id' => :'String',
         :'for_object_type' => :'String',
         :'metrics' => :'Array<ReportPageVisualizationMetric>',
+        :'order_by_columns' => :'Array<ReportDataSetQueryOrderByColumn>',
         :'page_size' => :'Integer',
         :'selected_filters' => :'Array<ReportFilter>',
         :'skip_cache' => :'BOOLEAN',
@@ -144,6 +149,12 @@ module UltracartClient
       if attributes.has_key?(:'metrics')
         if (value = attributes[:'metrics']).is_a?(Array)
           self.metrics = value
+        end
+      end
+
+      if attributes.has_key?(:'order_by_columns')
+        if (value = attributes[:'order_by_columns']).is_a?(Array)
+          self.order_by_columns = value
         end
       end
 
@@ -204,6 +215,7 @@ module UltracartClient
           for_object_id == o.for_object_id &&
           for_object_type == o.for_object_type &&
           metrics == o.metrics &&
+          order_by_columns == o.order_by_columns &&
           page_size == o.page_size &&
           selected_filters == o.selected_filters &&
           skip_cache == o.skip_cache &&
@@ -219,7 +231,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [comparison_results, data_set_query_uuid, data_source, dimensions, filter, for_object_id, for_object_type, metrics, page_size, selected_filters, skip_cache, user_data].hash
+      [comparison_results, data_set_query_uuid, data_source, dimensions, filter, for_object_id, for_object_type, metrics, order_by_columns, page_size, selected_filters, skip_cache, user_data].hash
     end
 
     # Builds the object from hash
