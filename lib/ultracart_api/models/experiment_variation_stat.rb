@@ -32,6 +32,9 @@ module UltracartClient
     # Total order count for this variation
     attr_accessor :order_count
 
+    # Order ID thats converted on this variation
+    attr_accessor :order_ids
+
     # Total order item count for this variation
     attr_accessor :order_item_count
 
@@ -59,6 +62,7 @@ module UltracartClient
         :'event_count' => :'event_count',
         :'initiate_checkout_count' => :'initiate_checkout_count',
         :'order_count' => :'order_count',
+        :'order_ids' => :'order_ids',
         :'order_item_count' => :'order_item_count',
         :'page_view_count' => :'page_view_count',
         :'revenue' => :'revenue',
@@ -77,6 +81,7 @@ module UltracartClient
         :'event_count' => :'Integer',
         :'initiate_checkout_count' => :'Integer',
         :'order_count' => :'Integer',
+        :'order_ids' => :'Array<String>',
         :'order_item_count' => :'Integer',
         :'page_view_count' => :'Integer',
         :'revenue' => :'Float',
@@ -116,6 +121,12 @@ module UltracartClient
 
       if attributes.has_key?(:'order_count')
         self.order_count = attributes[:'order_count']
+      end
+
+      if attributes.has_key?(:'order_ids')
+        if (value = attributes[:'order_ids']).is_a?(Array)
+          self.order_ids = value
+        end
       end
 
       if attributes.has_key?(:'order_item_count')
@@ -167,6 +178,7 @@ module UltracartClient
           event_count == o.event_count &&
           initiate_checkout_count == o.initiate_checkout_count &&
           order_count == o.order_count &&
+          order_ids == o.order_ids &&
           order_item_count == o.order_item_count &&
           page_view_count == o.page_view_count &&
           revenue == o.revenue &&
@@ -184,7 +196,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [add_to_cart_count, bounce_count, duration_seconds_sum, event_count, initiate_checkout_count, order_count, order_item_count, page_view_count, revenue, session_count, sms_opt_in_count, stat_dts].hash
+      [add_to_cart_count, bounce_count, duration_seconds_sum, event_count, initiate_checkout_count, order_count, order_ids, order_item_count, page_view_count, revenue, session_count, sms_opt_in_count, stat_dts].hash
     end
 
     # Builds the object from hash

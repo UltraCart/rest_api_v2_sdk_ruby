@@ -102,7 +102,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      aggregation_validator = EnumAttributeValidator.new('String', ['sum', 'count', 'min', 'max', 'avg'])
+      aggregation_validator = EnumAttributeValidator.new('String', ['sum', 'count', 'min', 'max', 'avg', 'none'])
       return false unless aggregation_validator.valid?(@aggregation)
       true
     end
@@ -110,7 +110,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] aggregation Object to be assigned
     def aggregation=(aggregation)
-      validator = EnumAttributeValidator.new('String', ['sum', 'count', 'min', 'max', 'avg'])
+      validator = EnumAttributeValidator.new('String', ['sum', 'count', 'min', 'max', 'avg', 'none'])
       unless validator.valid?(aggregation)
         fail ArgumentError, 'invalid value for "aggregation", must be one of #{validator.allowable_values}.'
       end
