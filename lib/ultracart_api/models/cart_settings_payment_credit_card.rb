@@ -18,6 +18,9 @@ module UltracartClient
     # True if the credit card verification number should be collected
     attr_accessor :collect_credit_card_verification_number
 
+    # If this field is null or the total is greater than or equal to this value then collect the CVV2.
+    attr_accessor :collect_credit_card_verification_number_minimum
+
     # Available credit card types
     attr_accessor :credit_card_types
 
@@ -28,6 +31,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'collect_credit_card_verification_number' => :'collect_credit_card_verification_number',
+        :'collect_credit_card_verification_number_minimum' => :'collect_credit_card_verification_number_minimum',
         :'credit_card_types' => :'credit_card_types',
         :'hosted_fields_shopping_cart_token' => :'hosted_fields_shopping_cart_token'
       }
@@ -42,6 +46,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'collect_credit_card_verification_number' => :'Boolean',
+        :'collect_credit_card_verification_number_minimum' => :'Float',
         :'credit_card_types' => :'Array<String>',
         :'hosted_fields_shopping_cart_token' => :'String'
       }
@@ -70,6 +75,10 @@ module UltracartClient
 
       if attributes.key?(:'collect_credit_card_verification_number')
         self.collect_credit_card_verification_number = attributes[:'collect_credit_card_verification_number']
+      end
+
+      if attributes.key?(:'collect_credit_card_verification_number_minimum')
+        self.collect_credit_card_verification_number_minimum = attributes[:'collect_credit_card_verification_number_minimum']
       end
 
       if attributes.key?(:'credit_card_types')
@@ -102,6 +111,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           collect_credit_card_verification_number == o.collect_credit_card_verification_number &&
+          collect_credit_card_verification_number_minimum == o.collect_credit_card_verification_number_minimum &&
           credit_card_types == o.credit_card_types &&
           hosted_fields_shopping_cart_token == o.hosted_fields_shopping_cart_token
     end
@@ -115,7 +125,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [collect_credit_card_verification_number, credit_card_types, hosted_fields_shopping_cart_token].hash
+      [collect_credit_card_verification_number, collect_credit_card_verification_number_minimum, credit_card_types, hosted_fields_shopping_cart_token].hash
     end
 
     # Builds the object from hash
