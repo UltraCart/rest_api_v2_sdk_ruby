@@ -798,6 +798,19 @@ require 'ultracart_api/models/webhook_sample_request'
 require 'ultracart_api/models/webhook_sample_request_response'
 require 'ultracart_api/models/webhooks_response'
 require 'ultracart_api/models/weight'
+require 'ultracart_api/models/workflow_attachment'
+require 'ultracart_api/models/workflow_attachment_upload_url'
+require 'ultracart_api/models/workflow_attachment_upload_url_response'
+require 'ultracart_api/models/workflow_group'
+require 'ultracart_api/models/workflow_groups_response'
+require 'ultracart_api/models/workflow_note'
+require 'ultracart_api/models/workflow_task'
+require 'ultracart_api/models/workflow_task_history'
+require 'ultracart_api/models/workflow_task_response'
+require 'ultracart_api/models/workflow_tasks_request'
+require 'ultracart_api/models/workflow_tasks_response'
+require 'ultracart_api/models/workflow_user'
+require 'ultracart_api/models/workflow_users_response'
 
 # APIs
 require 'ultracart_api/api/affiliate_api'
@@ -820,6 +833,7 @@ require 'ultracart_api/api/storefront_api'
 require 'ultracart_api/api/tax_api'
 require 'ultracart_api/api/user_api'
 require 'ultracart_api/api/webhook_api'
+require 'ultracart_api/api/workflow_api'
 
 module UltracartClient
   class << self
