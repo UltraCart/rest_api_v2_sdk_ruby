@@ -18,7 +18,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_conversation_engagement**](ConversationApi.md#get_conversation_engagement) | **GET** /conversation/engagements/{conversation_engagement_oid} | Retrieve an engagement |
 | [**get_conversation_engagements**](ConversationApi.md#get_conversation_engagements) | **GET** /conversation/engagements | Retrieve a list of engagements ordered by name |
 | [**get_conversation_messages**](ConversationApi.md#get_conversation_messages) | **GET** /conversation/conversations/{conversation_uuid}/messages/{since} | Retrieve conversation messages |
-| [**get_conversation_multimedia_upload_url**](ConversationApi.md#get_conversation_multimedia_upload_url) | **GET** /conversation/upload_url/{extension} | Get a presigned conersation multimedia upload URL |
+| [**get_conversation_multimedia_upload_url**](ConversationApi.md#get_conversation_multimedia_upload_url) | **GET** /conversation/upload_url/{extension} | Get a presigned conversation multimedia upload URL |
 | [**get_conversation_permissions**](ConversationApi.md#get_conversation_permissions) | **GET** /conversation/permissions | Retrieve conversation permissions |
 | [**get_conversation_webchat_queue_statuses**](ConversationApi.md#get_conversation_webchat_queue_statuses) | **GET** /conversation/conversations/queues/statuses | Retrieve a conversation webchat queue statuses |
 | [**get_conversations**](ConversationApi.md#get_conversations) | **GET** /conversation/conversations | Retrieve a list of conversation summaries newest to oldest |
@@ -1024,9 +1024,9 @@ end
 
 > <ConversationMultimediaUploadUrlResponse> get_conversation_multimedia_upload_url(extension)
 
-Get a presigned conersation multimedia upload URL
+Get a presigned conversation multimedia upload URL
 
-Get a presigned conersation multimedia upload URL 
+Get a presigned conversation multimedia upload URL 
 
 ### Examples
 
@@ -1045,7 +1045,7 @@ api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Con
 extension = 'extension_example' # String | 
 
 begin
-  # Get a presigned conersation multimedia upload URL
+  # Get a presigned conversation multimedia upload URL
   result = api_instance.get_conversation_multimedia_upload_url(extension)
   p result
 rescue UltracartClient::ApiError => e
@@ -1061,7 +1061,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get a presigned conersation multimedia upload URL
+  # Get a presigned conversation multimedia upload URL
   data, status_code, headers = api_instance.get_conversation_multimedia_upload_url_with_http_info(extension)
   p status_code # => 2xx
   p headers # => { ... }
