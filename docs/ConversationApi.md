@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**get_conversation_engagement**](ConversationApi.md#get_conversation_engagement) | **GET** /conversation/engagements/{conversation_engagement_oid} | Retrieve an engagement
 [**get_conversation_engagements**](ConversationApi.md#get_conversation_engagements) | **GET** /conversation/engagements | Retrieve a list of engagements ordered by name
 [**get_conversation_messages**](ConversationApi.md#get_conversation_messages) | **GET** /conversation/conversations/{conversation_uuid}/messages/{since} | Retrieve conversation messages
-[**get_conversation_multimedia_upload_url**](ConversationApi.md#get_conversation_multimedia_upload_url) | **GET** /conversation/upload_url/{extension} | Get a presigned conersation multimedia upload URL
+[**get_conversation_multimedia_upload_url**](ConversationApi.md#get_conversation_multimedia_upload_url) | **GET** /conversation/upload_url/{extension} | Get a presigned conversation multimedia upload URL
 [**get_conversation_permissions**](ConversationApi.md#get_conversation_permissions) | **GET** /conversation/permissions | Retrieve conversation permissions
 [**get_conversation_webchat_queue_statuses**](ConversationApi.md#get_conversation_webchat_queue_statuses) | **GET** /conversation/conversations/queues/statuses | Retrieve a conversation webchat queue statuses
 [**get_conversations**](ConversationApi.md#get_conversations) | **GET** /conversation/conversations | Retrieve a list of conversation summaries newest to oldest
@@ -716,9 +716,9 @@ Name | Type | Description  | Notes
 # **get_conversation_multimedia_upload_url**
 > ConversationMultimediaUploadUrlResponse get_conversation_multimedia_upload_url(extension)
 
-Get a presigned conersation multimedia upload URL
+Get a presigned conversation multimedia upload URL
 
-Get a presigned conersation multimedia upload URL 
+Get a presigned conversation multimedia upload URL 
 
 ### Example
 ```ruby
@@ -734,7 +734,7 @@ extension = 'extension_example' # String |
 
 
 begin
-  #Get a presigned conersation multimedia upload URL
+  #Get a presigned conversation multimedia upload URL
   result = api_instance.get_conversation_multimedia_upload_url(extension)
   p result
 rescue UltracartClient::ApiError => e

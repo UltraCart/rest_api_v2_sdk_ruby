@@ -768,8 +768,8 @@ module UltracartClient
       end
       return data, status_code, headers
     end
-    # Get a presigned conersation multimedia upload URL
-    # Get a presigned conersation multimedia upload URL 
+    # Get a presigned conversation multimedia upload URL
+    # Get a presigned conversation multimedia upload URL 
     # @param extension 
     # @param [Hash] opts the optional parameters
     # @return [ConversationMultimediaUploadUrlResponse]
@@ -778,8 +778,8 @@ module UltracartClient
       data
     end
 
-    # Get a presigned conersation multimedia upload URL
-    # Get a presigned conersation multimedia upload URL 
+    # Get a presigned conversation multimedia upload URL
+    # Get a presigned conversation multimedia upload URL 
     # @param extension 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ConversationMultimediaUploadUrlResponse, Fixnum, Hash)>] ConversationMultimediaUploadUrlResponse data, response status code and response headers
