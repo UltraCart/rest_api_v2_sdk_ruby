@@ -33,7 +33,10 @@ module UltracartClient
     attr_accessor :created_dts_end
 
     # Date/time that the workflow task should delay until
-    attr_accessor :delay_until_dts
+    attr_accessor :delay_until_dts_begin
+
+    # Date/time that the workflow task should delay until
+    attr_accessor :delay_until_dts_end
 
     # Date/time that the workflow task is due
     attr_accessor :due_dts_begin
@@ -93,7 +96,8 @@ module UltracartClient
         :'created_by' => :'created_by',
         :'created_dts_begin' => :'created_dts_begin',
         :'created_dts_end' => :'created_dts_end',
-        :'delay_until_dts' => :'delay_until_dts',
+        :'delay_until_dts_begin' => :'delay_until_dts_begin',
+        :'delay_until_dts_end' => :'delay_until_dts_end',
         :'due_dts_begin' => :'due_dts_begin',
         :'due_dts_end' => :'due_dts_end',
         :'last_update_dts_begin' => :'last_update_dts_begin',
@@ -120,7 +124,8 @@ module UltracartClient
         :'created_by' => :'WorkflowUser',
         :'created_dts_begin' => :'String',
         :'created_dts_end' => :'String',
-        :'delay_until_dts' => :'String',
+        :'delay_until_dts_begin' => :'String',
+        :'delay_until_dts_end' => :'String',
         :'due_dts_begin' => :'String',
         :'due_dts_end' => :'String',
         :'last_update_dts_begin' => :'String',
@@ -178,8 +183,12 @@ module UltracartClient
         self.created_dts_end = attributes[:'created_dts_end']
       end
 
-      if attributes.key?(:'delay_until_dts')
-        self.delay_until_dts = attributes[:'delay_until_dts']
+      if attributes.key?(:'delay_until_dts_begin')
+        self.delay_until_dts_begin = attributes[:'delay_until_dts_begin']
+      end
+
+      if attributes.key?(:'delay_until_dts_end')
+        self.delay_until_dts_end = attributes[:'delay_until_dts_end']
       end
 
       if attributes.key?(:'due_dts_begin')
@@ -279,7 +288,8 @@ module UltracartClient
           created_by == o.created_by &&
           created_dts_begin == o.created_dts_begin &&
           created_dts_end == o.created_dts_end &&
-          delay_until_dts == o.delay_until_dts &&
+          delay_until_dts_begin == o.delay_until_dts_begin &&
+          delay_until_dts_end == o.delay_until_dts_end &&
           due_dts_begin == o.due_dts_begin &&
           due_dts_end == o.due_dts_end &&
           last_update_dts_begin == o.last_update_dts_begin &&
@@ -300,7 +310,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [assigned_to_group_id, assigned_to_me, assigned_to_user_id, created_by, created_dts_begin, created_dts_end, delay_until_dts, due_dts_begin, due_dts_end, last_update_dts_begin, last_update_dts_end, object_email, object_type, priority, status, unassigned].hash
+      [assigned_to_group_id, assigned_to_me, assigned_to_user_id, created_by, created_dts_begin, created_dts_end, delay_until_dts_begin, delay_until_dts_end, due_dts_begin, due_dts_end, last_update_dts_begin, last_update_dts_end, object_email, object_type, priority, status, unassigned].hash
     end
 
     # Builds the object from hash

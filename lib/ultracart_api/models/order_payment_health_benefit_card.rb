@@ -14,36 +14,34 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class CartPayment
-    attr_accessor :affirm
+  class OrderPaymentHealthBenefitCard
+    # Health benefit card expiration month (1-12)
+    attr_accessor :health_benefit_card_expiration_month
 
-    attr_accessor :amazon
+    # Health benefit card expiration year (Four digit year)
+    attr_accessor :health_benefit_card_expiration_year
 
-    attr_accessor :check
+    # Health benefit card number (masked to last 4)
+    attr_accessor :health_benefit_card_number
 
-    attr_accessor :credit_card
+    # Health benefit card number token from hosted fields used to update the health benefit card number
+    attr_accessor :health_benefit_card_number_token
 
-    attr_accessor :health_benefit_card
+    # True if the health benefit card has been truncated
+    attr_accessor :health_benefit_card_number_truncated
 
-    # Payment method
-    attr_accessor :payment_method
-
-    attr_accessor :purchase_order
-
-    # Rotating transaction gateway code
-    attr_accessor :rtg_code
+    # Health benefit card verification number token from hosted fields, only for import/insert of new orders, completely ignored for updates, and always null/empty for queries
+    attr_accessor :health_benefit_card_verification_number_token
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'affirm' => :'affirm',
-        :'amazon' => :'amazon',
-        :'check' => :'check',
-        :'credit_card' => :'credit_card',
-        :'health_benefit_card' => :'health_benefit_card',
-        :'payment_method' => :'payment_method',
-        :'purchase_order' => :'purchase_order',
-        :'rtg_code' => :'rtg_code'
+        :'health_benefit_card_expiration_month' => :'health_benefit_card_expiration_month',
+        :'health_benefit_card_expiration_year' => :'health_benefit_card_expiration_year',
+        :'health_benefit_card_number' => :'health_benefit_card_number',
+        :'health_benefit_card_number_token' => :'health_benefit_card_number_token',
+        :'health_benefit_card_number_truncated' => :'health_benefit_card_number_truncated',
+        :'health_benefit_card_verification_number_token' => :'health_benefit_card_verification_number_token'
       }
     end
 
@@ -55,14 +53,12 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'affirm' => :'CartPaymentAffirm',
-        :'amazon' => :'CartPaymentAmazon',
-        :'check' => :'CartPaymentCheck',
-        :'credit_card' => :'CartPaymentCreditCard',
-        :'health_benefit_card' => :'CartPaymentHealthBenefitCard',
-        :'payment_method' => :'String',
-        :'purchase_order' => :'CartPaymentPurchaseOrder',
-        :'rtg_code' => :'String'
+        :'health_benefit_card_expiration_month' => :'Integer',
+        :'health_benefit_card_expiration_year' => :'Integer',
+        :'health_benefit_card_number' => :'String',
+        :'health_benefit_card_number_token' => :'String',
+        :'health_benefit_card_number_truncated' => :'Boolean',
+        :'health_benefit_card_verification_number_token' => :'String'
       }
     end
 
@@ -76,47 +72,39 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::CartPayment` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::OrderPaymentHealthBenefitCard` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::CartPayment`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::OrderPaymentHealthBenefitCard`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'affirm')
-        self.affirm = attributes[:'affirm']
+      if attributes.key?(:'health_benefit_card_expiration_month')
+        self.health_benefit_card_expiration_month = attributes[:'health_benefit_card_expiration_month']
       end
 
-      if attributes.key?(:'amazon')
-        self.amazon = attributes[:'amazon']
+      if attributes.key?(:'health_benefit_card_expiration_year')
+        self.health_benefit_card_expiration_year = attributes[:'health_benefit_card_expiration_year']
       end
 
-      if attributes.key?(:'check')
-        self.check = attributes[:'check']
+      if attributes.key?(:'health_benefit_card_number')
+        self.health_benefit_card_number = attributes[:'health_benefit_card_number']
       end
 
-      if attributes.key?(:'credit_card')
-        self.credit_card = attributes[:'credit_card']
+      if attributes.key?(:'health_benefit_card_number_token')
+        self.health_benefit_card_number_token = attributes[:'health_benefit_card_number_token']
       end
 
-      if attributes.key?(:'health_benefit_card')
-        self.health_benefit_card = attributes[:'health_benefit_card']
+      if attributes.key?(:'health_benefit_card_number_truncated')
+        self.health_benefit_card_number_truncated = attributes[:'health_benefit_card_number_truncated']
       end
 
-      if attributes.key?(:'payment_method')
-        self.payment_method = attributes[:'payment_method']
-      end
-
-      if attributes.key?(:'purchase_order')
-        self.purchase_order = attributes[:'purchase_order']
-      end
-
-      if attributes.key?(:'rtg_code')
-        self.rtg_code = attributes[:'rtg_code']
+      if attributes.key?(:'health_benefit_card_verification_number_token')
+        self.health_benefit_card_verification_number_token = attributes[:'health_benefit_card_verification_number_token']
       end
     end
 
@@ -138,14 +126,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          affirm == o.affirm &&
-          amazon == o.amazon &&
-          check == o.check &&
-          credit_card == o.credit_card &&
-          health_benefit_card == o.health_benefit_card &&
-          payment_method == o.payment_method &&
-          purchase_order == o.purchase_order &&
-          rtg_code == o.rtg_code
+          health_benefit_card_expiration_month == o.health_benefit_card_expiration_month &&
+          health_benefit_card_expiration_year == o.health_benefit_card_expiration_year &&
+          health_benefit_card_number == o.health_benefit_card_number &&
+          health_benefit_card_number_token == o.health_benefit_card_number_token &&
+          health_benefit_card_number_truncated == o.health_benefit_card_number_truncated &&
+          health_benefit_card_verification_number_token == o.health_benefit_card_verification_number_token
     end
 
     # @see the `==` method
@@ -157,7 +143,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [affirm, amazon, check, credit_card, health_benefit_card, payment_method, purchase_order, rtg_code].hash
+      [health_benefit_card_expiration_month, health_benefit_card_expiration_year, health_benefit_card_number, health_benefit_card_number_token, health_benefit_card_number_truncated, health_benefit_card_verification_number_token].hash
     end
 
     # Builds the object from hash

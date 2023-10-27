@@ -10,7 +10,8 @@
 | **created_by** | [**WorkflowUser**](WorkflowUser.md) |  | [optional] |
 | **created_dts_begin** | **String** | Date/time that the workflow task was created | [optional] |
 | **created_dts_end** | **String** | Date/time that the workflow task was created | [optional] |
-| **delay_until_dts** | **String** | Date/time that the workflow task should delay until | [optional] |
+| **delay_until_dts_begin** | **String** | Date/time that the workflow task should delay until | [optional] |
+| **delay_until_dts_end** | **String** | Date/time that the workflow task should delay until | [optional] |
 | **due_dts_begin** | **String** | Date/time that the workflow task is due | [optional] |
 | **due_dts_end** | **String** | Date/time that the workflow task is due | [optional] |
 | **last_update_dts_begin** | **String** | Date/time that the workflow task was last updated | [optional] |
@@ -33,7 +34,8 @@ instance = UltracartClient::WorkflowTasksRequest.new(
   created_by: null,
   created_dts_begin: null,
   created_dts_end: null,
-  delay_until_dts: null,
+  delay_until_dts_begin: null,
+  delay_until_dts_end: null,
   due_dts_begin: null,
   due_dts_end: null,
   last_update_dts_begin: null,

@@ -21,6 +21,8 @@ module UltracartClient
 
     attr_accessor :echeck
 
+    attr_accessor :health_benefit_card
+
     # True if order has been held for fraud review
     attr_accessor :hold_for_fraud_review
 
@@ -91,6 +93,7 @@ module UltracartClient
         :'check' => :'check',
         :'credit_card' => :'credit_card',
         :'echeck' => :'echeck',
+        :'health_benefit_card' => :'health_benefit_card',
         :'hold_for_fraud_review' => :'hold_for_fraud_review',
         :'insurance' => :'insurance',
         :'payment_dts' => :'payment_dts',
@@ -120,6 +123,7 @@ module UltracartClient
         :'check' => :'OrderPaymentCheck',
         :'credit_card' => :'OrderPaymentCreditCard',
         :'echeck' => :'OrderPaymentECheck',
+        :'health_benefit_card' => :'OrderPaymentHealthBenefitCard',
         :'hold_for_fraud_review' => :'Boolean',
         :'insurance' => :'OrderPaymentInsurance',
         :'payment_dts' => :'String',
@@ -169,6 +173,10 @@ module UltracartClient
 
       if attributes.key?(:'echeck')
         self.echeck = attributes[:'echeck']
+      end
+
+      if attributes.key?(:'health_benefit_card')
+        self.health_benefit_card = attributes[:'health_benefit_card']
       end
 
       if attributes.key?(:'hold_for_fraud_review')
@@ -244,7 +252,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      payment_method_validator = EnumAttributeValidator.new('String', ["Affirm", "Amazon", "Amazon SC", "Cash", "Check", "COD", "Credit Card", "eBay", "eCheck", "Google Shopping", "Insurance", "LoanHero", "Money Order", "PayPal", "Purchase Order", "Quote Request", "Unknown", "Wire Transfer", "Walmart", "Shop.com", "Sezzle", "Venmo", "Apple Pay", "Google Pay"])
+      payment_method_validator = EnumAttributeValidator.new('String', ["Affirm", "Amazon", "Amazon SC", "Cash", "Check", "COD", "Credit Card", "eBay", "eCheck", "Google Shopping", "Insurance", "LoanHero", "Money Order", "PayPal", "Purchase Order", "Quote Request", "Unknown", "Wire Transfer", "Walmart", "Shop.com", "Sezzle", "Venmo", "Apple Pay", "Google Pay", "Health Benefit Card"])
       return false unless payment_method_validator.valid?(@payment_method)
       payment_status_validator = EnumAttributeValidator.new('String', ["Unprocessed", "Authorized", "Capture Failed", "Processed", "Declined", "Voided", "Refunded", "Skipped"])
       return false unless payment_status_validator.valid?(@payment_status)
@@ -254,7 +262,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] payment_method Object to be assigned
     def payment_method=(payment_method)
-      validator = EnumAttributeValidator.new('String', ["Affirm", "Amazon", "Amazon SC", "Cash", "Check", "COD", "Credit Card", "eBay", "eCheck", "Google Shopping", "Insurance", "LoanHero", "Money Order", "PayPal", "Purchase Order", "Quote Request", "Unknown", "Wire Transfer", "Walmart", "Shop.com", "Sezzle", "Venmo", "Apple Pay", "Google Pay"])
+      validator = EnumAttributeValidator.new('String', ["Affirm", "Amazon", "Amazon SC", "Cash", "Check", "COD", "Credit Card", "eBay", "eCheck", "Google Shopping", "Insurance", "LoanHero", "Money Order", "PayPal", "Purchase Order", "Quote Request", "Unknown", "Wire Transfer", "Walmart", "Shop.com", "Sezzle", "Venmo", "Apple Pay", "Google Pay", "Health Benefit Card"])
       unless validator.valid?(payment_method)
         fail ArgumentError, "invalid value for \"payment_method\", must be one of #{validator.allowable_values}."
       end
@@ -279,6 +287,7 @@ module UltracartClient
           check == o.check &&
           credit_card == o.credit_card &&
           echeck == o.echeck &&
+          health_benefit_card == o.health_benefit_card &&
           hold_for_fraud_review == o.hold_for_fraud_review &&
           insurance == o.insurance &&
           payment_dts == o.payment_dts &&
@@ -305,7 +314,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [check, credit_card, echeck, hold_for_fraud_review, insurance, payment_dts, payment_method, payment_method_accounting_code, payment_method_deposit_to_account, payment_status, purchase_order, rotating_transaction_gateway_code, surcharge, surcharge_accounting_code, surcharge_transaction_fee, surcharge_transaction_percentage, test_order, transactions].hash
+      [check, credit_card, echeck, health_benefit_card, hold_for_fraud_review, insurance, payment_dts, payment_method, payment_method_accounting_code, payment_method_deposit_to_account, payment_status, purchase_order, rotating_transaction_gateway_code, surcharge, surcharge_accounting_code, surcharge_transaction_fee, surcharge_transaction_percentage, test_order, transactions].hash
     end
 
     # Builds the object from hash
