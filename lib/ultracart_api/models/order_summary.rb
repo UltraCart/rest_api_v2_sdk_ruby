@@ -22,6 +22,10 @@ module UltracartClient
 
     attr_accessor :arbitrary_shipping_handling_total
 
+    attr_accessor :health_benefit_card_amount
+
+    attr_accessor :health_benefit_card_refunded
+
     attr_accessor :internal_gift_certificate_amount
 
     attr_accessor :internal_gift_certificate_refunded
@@ -61,6 +65,8 @@ module UltracartClient
         :'actual_payment_processing' => :'actual_payment_processing',
         :'actual_shipping' => :'actual_shipping',
         :'arbitrary_shipping_handling_total' => :'arbitrary_shipping_handling_total',
+        :'health_benefit_card_amount' => :'health_benefit_card_amount',
+        :'health_benefit_card_refunded' => :'health_benefit_card_refunded',
         :'internal_gift_certificate_amount' => :'internal_gift_certificate_amount',
         :'internal_gift_certificate_refunded' => :'internal_gift_certificate_refunded',
         :'other_refunded' => :'other_refunded',
@@ -87,6 +93,8 @@ module UltracartClient
         :'actual_payment_processing' => :'Currency',
         :'actual_shipping' => :'Currency',
         :'arbitrary_shipping_handling_total' => :'Currency',
+        :'health_benefit_card_amount' => :'Currency',
+        :'health_benefit_card_refunded' => :'Currency',
         :'internal_gift_certificate_amount' => :'Currency',
         :'internal_gift_certificate_refunded' => :'Currency',
         :'other_refunded' => :'Currency',
@@ -128,6 +136,14 @@ module UltracartClient
 
       if attributes.has_key?(:'arbitrary_shipping_handling_total')
         self.arbitrary_shipping_handling_total = attributes[:'arbitrary_shipping_handling_total']
+      end
+
+      if attributes.has_key?(:'health_benefit_card_amount')
+        self.health_benefit_card_amount = attributes[:'health_benefit_card_amount']
+      end
+
+      if attributes.has_key?(:'health_benefit_card_refunded')
+        self.health_benefit_card_refunded = attributes[:'health_benefit_card_refunded']
       end
 
       if attributes.has_key?(:'internal_gift_certificate_amount')
@@ -217,6 +233,8 @@ module UltracartClient
           actual_payment_processing == o.actual_payment_processing &&
           actual_shipping == o.actual_shipping &&
           arbitrary_shipping_handling_total == o.arbitrary_shipping_handling_total &&
+          health_benefit_card_amount == o.health_benefit_card_amount &&
+          health_benefit_card_refunded == o.health_benefit_card_refunded &&
           internal_gift_certificate_amount == o.internal_gift_certificate_amount &&
           internal_gift_certificate_refunded == o.internal_gift_certificate_refunded &&
           other_refunded == o.other_refunded &&
@@ -244,7 +262,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [actual_fulfillment, actual_payment_processing, actual_shipping, arbitrary_shipping_handling_total, internal_gift_certificate_amount, internal_gift_certificate_refunded, other_refunded, shipping_handling_refunded, shipping_handling_total, shipping_handling_total_discount, subtotal, subtotal_discount, subtotal_discount_refunded, subtotal_refunded, tax, tax_refunded, taxable_subtotal, taxable_subtotal_discount, total, total_refunded].hash
+      [actual_fulfillment, actual_payment_processing, actual_shipping, arbitrary_shipping_handling_total, health_benefit_card_amount, health_benefit_card_refunded, internal_gift_certificate_amount, internal_gift_certificate_refunded, other_refunded, shipping_handling_refunded, shipping_handling_total, shipping_handling_total_discount, subtotal, subtotal_discount, subtotal_discount_refunded, subtotal_refunded, tax, tax_refunded, taxable_subtotal, taxable_subtotal_discount, total, total_refunded].hash
     end
 
     # Builds the object from hash
