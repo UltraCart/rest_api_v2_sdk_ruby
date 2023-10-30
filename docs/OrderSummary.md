@@ -8,6 +8,8 @@
 | **actual_payment_processing** | [**Currency**](Currency.md) |  | [optional] |
 | **actual_shipping** | [**Currency**](Currency.md) |  | [optional] |
 | **arbitrary_shipping_handling_total** | [**Currency**](Currency.md) |  | [optional] |
+| **health_benefit_card_amount** | [**Currency**](Currency.md) |  | [optional] |
+| **health_benefit_card_refunded** | [**Currency**](Currency.md) |  | [optional] |
 | **internal_gift_certificate_amount** | [**Currency**](Currency.md) |  | [optional] |
 | **internal_gift_certificate_refunded** | [**Currency**](Currency.md) |  | [optional] |
 | **other_refunded** | [**Currency**](Currency.md) |  | [optional] |
@@ -35,6 +37,8 @@ instance = UltracartClient::OrderSummary.new(
   actual_payment_processing: null,
   actual_shipping: null,
   arbitrary_shipping_handling_total: null,
+  health_benefit_card_amount: null,
+  health_benefit_card_refunded: null,
   internal_gift_certificate_amount: null,
   internal_gift_certificate_refunded: null,
   other_refunded: null,
