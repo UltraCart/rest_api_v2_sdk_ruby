@@ -23,6 +23,7 @@
 | **customer_profile_oid** | **Integer** | Customer profile object identifier | [optional] |
 | **dhl_account_number** | **String** | DHL account number | [optional] |
 | **dhl_duty_account_number** | **String** | DHL duty account number | [optional] |
+| **do_not_send_mail** | **Boolean** | Do not send mail (null will not update) | [optional] |
 | **edi** | [**CustomerEDI**](CustomerEDI.md) |  | [optional] |
 | **email** | **String** | Email address of this customer profile | [optional] |
 | **exempt_shipping_handling_charge** | **Boolean** | Exempt shipping handling charge | [optional] |
@@ -93,6 +94,7 @@ instance = UltracartClient::Customer.new(
   customer_profile_oid: null,
   dhl_account_number: null,
   dhl_duty_account_number: null,
+  do_not_send_mail: null,
   edi: null,
   email: null,
   exempt_shipping_handling_charge: null,
