@@ -208,6 +208,67 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Delete a customer wishlist item
+    # Delete a customer wishlist item 
+    # @param customer_profile_oid The customer oid for this wishlist.
+    # @param customer_wishlist_item_oid The wishlist oid for this wishlist item to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [CustomerWishListItem]
+    def delete_wish_list_item(customer_profile_oid, customer_wishlist_item_oid, opts = {})
+      data, _status_code, _headers = delete_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid, opts)
+      data
+    end
+
+    # Delete a customer wishlist item
+    # Delete a customer wishlist item 
+    # @param customer_profile_oid The customer oid for this wishlist.
+    # @param customer_wishlist_item_oid The wishlist oid for this wishlist item to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomerWishListItem, Fixnum, Hash)>] CustomerWishListItem data, response status code and response headers
+    def delete_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.delete_wish_list_item ...'
+      end
+      # verify the required parameter 'customer_profile_oid' is set
+      if @api_client.config.client_side_validation && customer_profile_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.delete_wish_list_item"
+      end
+      # verify the required parameter 'customer_wishlist_item_oid' is set
+      if @api_client.config.client_side_validation && customer_wishlist_item_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'customer_wishlist_item_oid' when calling CustomerApi.delete_wish_list_item"
+      end
+      # resource path
+      local_var_path = '/customer/customers/{customer_profile_oid}/wishlist/{customer_wishlist_item_oid}'.sub('{' + 'customer_profile_oid' + '}', customer_profile_oid.to_s).sub('{' + 'customer_wishlist_item_oid' + '}', customer_wishlist_item_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CustomerWishListItem')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#delete_wish_list_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Retrieve a customer
     # Retrieves a single customer using the specified customer profile oid. 
     # @param customer_profile_oid The customer oid to retrieve.
@@ -474,6 +535,122 @@ module UltracartClient
         :return_type => 'CustomerStoreCreditResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CustomerApi#get_customer_store_credit\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Retrieve wishlist items for customer
+    # Retrieve wishlist items for customer. 
+    # @param customer_profile_oid The customer oid for this wishlist.
+    # @param [Hash] opts the optional parameters
+    # @return [CustomerWishListItemsResponse]
+    def get_customer_wish_list(customer_profile_oid, opts = {})
+      data, _status_code, _headers = get_customer_wish_list_with_http_info(customer_profile_oid, opts)
+      data
+    end
+
+    # Retrieve wishlist items for customer
+    # Retrieve wishlist items for customer. 
+    # @param customer_profile_oid The customer oid for this wishlist.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomerWishListItemsResponse, Fixnum, Hash)>] CustomerWishListItemsResponse data, response status code and response headers
+    def get_customer_wish_list_with_http_info(customer_profile_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.get_customer_wish_list ...'
+      end
+      # verify the required parameter 'customer_profile_oid' is set
+      if @api_client.config.client_side_validation && customer_profile_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.get_customer_wish_list"
+      end
+      # resource path
+      local_var_path = '/customer/customers/{customer_profile_oid}/wishlist'.sub('{' + 'customer_profile_oid' + '}', customer_profile_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CustomerWishListItemsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#get_customer_wish_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Retrieve wishlist item for customer
+    # Retrieve wishlist item for customer. 
+    # @param customer_profile_oid The customer oid for this wishlist.
+    # @param customer_wishlist_item_oid The wishlist oid for this wishlist item.
+    # @param [Hash] opts the optional parameters
+    # @return [CustomerWishListItemResponse]
+    def get_customer_wish_list_item(customer_profile_oid, customer_wishlist_item_oid, opts = {})
+      data, _status_code, _headers = get_customer_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid, opts)
+      data
+    end
+
+    # Retrieve wishlist item for customer
+    # Retrieve wishlist item for customer. 
+    # @param customer_profile_oid The customer oid for this wishlist.
+    # @param customer_wishlist_item_oid The wishlist oid for this wishlist item.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomerWishListItemResponse, Fixnum, Hash)>] CustomerWishListItemResponse data, response status code and response headers
+    def get_customer_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.get_customer_wish_list_item ...'
+      end
+      # verify the required parameter 'customer_profile_oid' is set
+      if @api_client.config.client_side_validation && customer_profile_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.get_customer_wish_list_item"
+      end
+      # verify the required parameter 'customer_wishlist_item_oid' is set
+      if @api_client.config.client_side_validation && customer_wishlist_item_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'customer_wishlist_item_oid' when calling CustomerApi.get_customer_wish_list_item"
+      end
+      # resource path
+      local_var_path = '/customer/customers/{customer_profile_oid}/wishlist/{customer_wishlist_item_oid}'.sub('{' + 'customer_profile_oid' + '}', customer_profile_oid.to_s).sub('{' + 'customer_wishlist_item_oid' + '}', customer_wishlist_item_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CustomerWishListItemResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#get_customer_wish_list_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -918,6 +1095,67 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Insert a customer wishlist item
+    # Insert a customer wishlist item 
+    # @param wishlist_item Wishlist item to insert
+    # @param customer_profile_oid The customer oid for this wishlist.
+    # @param [Hash] opts the optional parameters
+    # @return [CustomerWishListItem]
+    def insert_wish_list_item(wishlist_item, customer_profile_oid, opts = {})
+      data, _status_code, _headers = insert_wish_list_item_with_http_info(wishlist_item, customer_profile_oid, opts)
+      data
+    end
+
+    # Insert a customer wishlist item
+    # Insert a customer wishlist item 
+    # @param wishlist_item Wishlist item to insert
+    # @param customer_profile_oid The customer oid for this wishlist.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomerWishListItem, Fixnum, Hash)>] CustomerWishListItem data, response status code and response headers
+    def insert_wish_list_item_with_http_info(wishlist_item, customer_profile_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.insert_wish_list_item ...'
+      end
+      # verify the required parameter 'wishlist_item' is set
+      if @api_client.config.client_side_validation && wishlist_item.nil?
+        fail ArgumentError, "Missing the required parameter 'wishlist_item' when calling CustomerApi.insert_wish_list_item"
+      end
+      # verify the required parameter 'customer_profile_oid' is set
+      if @api_client.config.client_side_validation && customer_profile_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.insert_wish_list_item"
+      end
+      # resource path
+      local_var_path = '/customer/customers/{customer_profile_oid}/wishlist'.sub('{' + 'customer_profile_oid' + '}', customer_profile_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(wishlist_item)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CustomerWishListItem')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#insert_wish_list_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Merge customer into this customer
     # Merge customer into this customer. 
     # @param customer Customer to merge into this profile.
@@ -1156,6 +1394,73 @@ module UltracartClient
         :return_type => 'CustomerEmailListChanges')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CustomerApi#update_customer_email_lists\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update a customer wishlist item
+    # Update a customer wishlist item 
+    # @param wishlist_item Wishlist item to update
+    # @param customer_profile_oid The customer oid for this wishlist.
+    # @param customer_wishlist_item_oid The wishlist oid for this wishlist item.
+    # @param [Hash] opts the optional parameters
+    # @return [CustomerWishListItem]
+    def update_wish_list_item(wishlist_item, customer_profile_oid, customer_wishlist_item_oid, opts = {})
+      data, _status_code, _headers = update_wish_list_item_with_http_info(wishlist_item, customer_profile_oid, customer_wishlist_item_oid, opts)
+      data
+    end
+
+    # Update a customer wishlist item
+    # Update a customer wishlist item 
+    # @param wishlist_item Wishlist item to update
+    # @param customer_profile_oid The customer oid for this wishlist.
+    # @param customer_wishlist_item_oid The wishlist oid for this wishlist item.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomerWishListItem, Fixnum, Hash)>] CustomerWishListItem data, response status code and response headers
+    def update_wish_list_item_with_http_info(wishlist_item, customer_profile_oid, customer_wishlist_item_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.update_wish_list_item ...'
+      end
+      # verify the required parameter 'wishlist_item' is set
+      if @api_client.config.client_side_validation && wishlist_item.nil?
+        fail ArgumentError, "Missing the required parameter 'wishlist_item' when calling CustomerApi.update_wish_list_item"
+      end
+      # verify the required parameter 'customer_profile_oid' is set
+      if @api_client.config.client_side_validation && customer_profile_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.update_wish_list_item"
+      end
+      # verify the required parameter 'customer_wishlist_item_oid' is set
+      if @api_client.config.client_side_validation && customer_wishlist_item_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'customer_wishlist_item_oid' when calling CustomerApi.update_wish_list_item"
+      end
+      # resource path
+      local_var_path = '/customer/customers/{customer_profile_oid}/wishlist/{customer_wishlist_item_oid}'.sub('{' + 'customer_profile_oid' + '}', customer_profile_oid.to_s).sub('{' + 'customer_wishlist_item_oid' + '}', customer_wishlist_item_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(wishlist_item)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CustomerWishListItem')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#update_wish_list_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
