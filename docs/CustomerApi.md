@@ -7,21 +7,26 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**add_customer_store_credit**](CustomerApi.md#add_customer_store_credit) | **POST** /customer/customers/{customer_profile_oid}/store_credit | Adds store credit to a customer |
 | [**adjust_internal_certificate**](CustomerApi.md#adjust_internal_certificate) | **POST** /customer/customers/{customer_profile_oid}/adjust_cashback_balance | Updates the cashback balance for a customer by updating the internal gift certificate used, creating the gift certificate if needed. |
 | [**delete_customer**](CustomerApi.md#delete_customer) | **DELETE** /customer/customers/{customer_profile_oid} | Delete a customer |
+| [**delete_wish_list_item**](CustomerApi.md#delete_wish_list_item) | **DELETE** /customer/customers/{customer_profile_oid}/wishlist/{customer_wishlist_item_oid} | Delete a customer wishlist item |
 | [**get_customer**](CustomerApi.md#get_customer) | **GET** /customer/customers/{customer_profile_oid} | Retrieve a customer |
 | [**get_customer_by_email**](CustomerApi.md#get_customer_by_email) | **GET** /customer/customers/by_email/{email} | Retrieve a customer by Email |
 | [**get_customer_editor_values**](CustomerApi.md#get_customer_editor_values) | **GET** /customer/editor_values | Retrieve values needed for a customer profile editor |
 | [**get_customer_email_lists**](CustomerApi.md#get_customer_email_lists) | **GET** /customer/email_lists | Retrieve all email lists across all storefronts |
 | [**get_customer_store_credit**](CustomerApi.md#get_customer_store_credit) | **GET** /customer/customers/{customer_profile_oid}/store_credit | Retrieve the customer store credit accumulated through loyalty programs |
+| [**get_customer_wish_list**](CustomerApi.md#get_customer_wish_list) | **GET** /customer/customers/{customer_profile_oid}/wishlist | Retrieve wishlist items for customer |
+| [**get_customer_wish_list_item**](CustomerApi.md#get_customer_wish_list_item) | **GET** /customer/customers/{customer_profile_oid}/wishlist/{customer_wishlist_item_oid} | Retrieve wishlist item for customer |
 | [**get_customers**](CustomerApi.md#get_customers) | **GET** /customer/customers | Retrieve customers |
 | [**get_customers_by_query**](CustomerApi.md#get_customers_by_query) | **POST** /customer/customers/query | Retrieve customers by query |
 | [**get_customers_for_data_tables**](CustomerApi.md#get_customers_for_data_tables) | **POST** /customer/customers/dataTables | Retrieve customers for DataTables plugin |
 | [**get_email_verification_token**](CustomerApi.md#get_email_verification_token) | **POST** /customer/customers/email_verify/get_token | Create a token that can be used to verify a customer email address |
 | [**get_magic_link**](CustomerApi.md#get_magic_link) | **PUT** /customer/customers/{customer_profile_oid}/magic_link/{storefront_host_name} | getMagicLink |
 | [**insert_customer**](CustomerApi.md#insert_customer) | **POST** /customer/customers | Insert a customer |
+| [**insert_wish_list_item**](CustomerApi.md#insert_wish_list_item) | **POST** /customer/customers/{customer_profile_oid}/wishlist | Insert a customer wishlist item |
 | [**merge_customer**](CustomerApi.md#merge_customer) | **PUT** /customer/customers/{customer_profile_oid}/merge | Merge customer into this customer |
 | [**search_customer_profile_values**](CustomerApi.md#search_customer_profile_values) | **POST** /customer/search | Searches for all matching values (using POST) |
 | [**update_customer**](CustomerApi.md#update_customer) | **PUT** /customer/customers/{customer_profile_oid} | Update a customer |
 | [**update_customer_email_lists**](CustomerApi.md#update_customer_email_lists) | **POST** /customer/customers/{customer_profile_oid}/email_lists | Update email list subscriptions for a customer |
+| [**update_wish_list_item**](CustomerApi.md#update_wish_list_item) | **PUT** /customer/customers/{customer_profile_oid}/wishlist/{customer_wishlist_item_oid} | Update a customer wishlist item |
 | [**validate_email_verification_token**](CustomerApi.md#validate_email_verification_token) | **POST** /customer/customers/email_verify/validate_token | Validate a token that can be used to verify a customer email address |
 
 
@@ -230,6 +235,79 @@ end
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_wish_list_item
+
+> <CustomerWishListItem> delete_wish_list_item(customer_profile_oid, customer_wishlist_item_oid)
+
+Delete a customer wishlist item
+
+Delete a customer wishlist item 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::CustomerApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+customer_profile_oid = 56 # Integer | The customer oid for this wishlist.
+customer_wishlist_item_oid = 56 # Integer | The wishlist oid for this wishlist item to delete.
+
+begin
+  # Delete a customer wishlist item
+  result = api_instance.delete_wish_list_item(customer_profile_oid, customer_wishlist_item_oid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->delete_wish_list_item: #{e}"
+end
+```
+
+#### Using the delete_wish_list_item_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomerWishListItem>, Integer, Hash)> delete_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid)
+
+```ruby
+begin
+  # Delete a customer wishlist item
+  data, status_code, headers = api_instance.delete_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomerWishListItem>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->delete_wish_list_item_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer_profile_oid** | **Integer** | The customer oid for this wishlist. |  |
+| **customer_wishlist_item_oid** | **Integer** | The wishlist oid for this wishlist item to delete. |  |
+
+### Return type
+
+[**CustomerWishListItem**](CustomerWishListItem.md)
 
 ### Authorization
 
@@ -587,6 +665,150 @@ end
 ### Return type
 
 [**CustomerStoreCreditResponse**](CustomerStoreCreditResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_customer_wish_list
+
+> <CustomerWishListItemsResponse> get_customer_wish_list(customer_profile_oid)
+
+Retrieve wishlist items for customer
+
+Retrieve wishlist items for customer. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::CustomerApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+customer_profile_oid = 56 # Integer | The customer oid for this wishlist.
+
+begin
+  # Retrieve wishlist items for customer
+  result = api_instance.get_customer_wish_list(customer_profile_oid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->get_customer_wish_list: #{e}"
+end
+```
+
+#### Using the get_customer_wish_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomerWishListItemsResponse>, Integer, Hash)> get_customer_wish_list_with_http_info(customer_profile_oid)
+
+```ruby
+begin
+  # Retrieve wishlist items for customer
+  data, status_code, headers = api_instance.get_customer_wish_list_with_http_info(customer_profile_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomerWishListItemsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->get_customer_wish_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer_profile_oid** | **Integer** | The customer oid for this wishlist. |  |
+
+### Return type
+
+[**CustomerWishListItemsResponse**](CustomerWishListItemsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_customer_wish_list_item
+
+> <CustomerWishListItemResponse> get_customer_wish_list_item(customer_profile_oid, customer_wishlist_item_oid)
+
+Retrieve wishlist item for customer
+
+Retrieve wishlist item for customer. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::CustomerApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+customer_profile_oid = 56 # Integer | The customer oid for this wishlist.
+customer_wishlist_item_oid = 56 # Integer | The wishlist oid for this wishlist item.
+
+begin
+  # Retrieve wishlist item for customer
+  result = api_instance.get_customer_wish_list_item(customer_profile_oid, customer_wishlist_item_oid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->get_customer_wish_list_item: #{e}"
+end
+```
+
+#### Using the get_customer_wish_list_item_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomerWishListItemResponse>, Integer, Hash)> get_customer_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid)
+
+```ruby
+begin
+  # Retrieve wishlist item for customer
+  data, status_code, headers = api_instance.get_customer_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomerWishListItemResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->get_customer_wish_list_item_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer_profile_oid** | **Integer** | The customer oid for this wishlist. |  |
+| **customer_wishlist_item_oid** | **Integer** | The wishlist oid for this wishlist item. |  |
+
+### Return type
+
+[**CustomerWishListItemResponse**](CustomerWishListItemResponse.md)
 
 ### Authorization
 
@@ -1108,6 +1330,79 @@ end
 - **Accept**: application/json
 
 
+## insert_wish_list_item
+
+> <CustomerWishListItem> insert_wish_list_item(customer_profile_oid, wishlist_item)
+
+Insert a customer wishlist item
+
+Insert a customer wishlist item 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::CustomerApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+customer_profile_oid = 56 # Integer | The customer oid for this wishlist.
+wishlist_item = UltracartClient::CustomerWishListItem.new # CustomerWishListItem | Wishlist item to insert
+
+begin
+  # Insert a customer wishlist item
+  result = api_instance.insert_wish_list_item(customer_profile_oid, wishlist_item)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->insert_wish_list_item: #{e}"
+end
+```
+
+#### Using the insert_wish_list_item_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomerWishListItem>, Integer, Hash)> insert_wish_list_item_with_http_info(customer_profile_oid, wishlist_item)
+
+```ruby
+begin
+  # Insert a customer wishlist item
+  data, status_code, headers = api_instance.insert_wish_list_item_with_http_info(customer_profile_oid, wishlist_item)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomerWishListItem>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->insert_wish_list_item_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer_profile_oid** | **Integer** | The customer oid for this wishlist. |  |
+| **wishlist_item** | [**CustomerWishListItem**](CustomerWishListItem.md) | Wishlist item to insert |  |
+
+### Return type
+
+[**CustomerWishListItem**](CustomerWishListItem.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
 ## merge_customer
 
 > merge_customer(customer_profile_oid, customer, opts)
@@ -1392,6 +1687,81 @@ end
 ### Return type
 
 [**CustomerEmailListChanges**](CustomerEmailListChanges.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_wish_list_item
+
+> <CustomerWishListItem> update_wish_list_item(customer_profile_oid, customer_wishlist_item_oid, wishlist_item)
+
+Update a customer wishlist item
+
+Update a customer wishlist item 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::CustomerApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+customer_profile_oid = 56 # Integer | The customer oid for this wishlist.
+customer_wishlist_item_oid = 56 # Integer | The wishlist oid for this wishlist item.
+wishlist_item = UltracartClient::CustomerWishListItem.new # CustomerWishListItem | Wishlist item to update
+
+begin
+  # Update a customer wishlist item
+  result = api_instance.update_wish_list_item(customer_profile_oid, customer_wishlist_item_oid, wishlist_item)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->update_wish_list_item: #{e}"
+end
+```
+
+#### Using the update_wish_list_item_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomerWishListItem>, Integer, Hash)> update_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid, wishlist_item)
+
+```ruby
+begin
+  # Update a customer wishlist item
+  data, status_code, headers = api_instance.update_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid, wishlist_item)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomerWishListItem>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->update_wish_list_item_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer_profile_oid** | **Integer** | The customer oid for this wishlist. |  |
+| **customer_wishlist_item_oid** | **Integer** | The wishlist oid for this wishlist item. |  |
+| **wishlist_item** | [**CustomerWishListItem**](CustomerWishListItem.md) | Wishlist item to update |  |
+
+### Return type
+
+[**CustomerWishListItem**](CustomerWishListItem.md)
 
 ### Authorization
 

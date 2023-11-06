@@ -302,6 +302,9 @@ docs/CustomerStoreCreditLedgerEntry.md
 docs/CustomerStoreCreditResponse.md
 docs/CustomerTag.md
 docs/CustomerTaxCodes.md
+docs/CustomerWishListItem.md
+docs/CustomerWishListItemResponse.md
+docs/CustomerWishListItemsResponse.md
 docs/CustomersResponse.md
 docs/DataTablesServerSideResponse.md
 docs/DatawarehouseApi.md
@@ -1137,6 +1140,9 @@ lib/ultracart_api/models/customer_store_credit_ledger_entry.rb
 lib/ultracart_api/models/customer_store_credit_response.rb
 lib/ultracart_api/models/customer_tag.rb
 lib/ultracart_api/models/customer_tax_codes.rb
+lib/ultracart_api/models/customer_wish_list_item.rb
+lib/ultracart_api/models/customer_wish_list_item_response.rb
+lib/ultracart_api/models/customer_wish_list_items_response.rb
 lib/ultracart_api/models/customers_response.rb
 lib/ultracart_api/models/data_tables_server_side_response.rb
 lib/ultracart_api/models/distance.rb
