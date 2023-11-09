@@ -11,6 +11,8 @@
 | **managed_by** | **String** | Managed by (defaults to UltraCart) | [optional] |
 | **pause_days** | **Integer** | Number of days to pause | [optional] |
 | **pause_until_date** | **String** | Wait for this step to happen until the specified date | [optional] |
+| **pause_until_day_of_month** | **Integer** | Pause until a specific day of the month | [optional] |
+| **pause_until_minimum_delay_days** | **Integer** | Pause at least this many days between the last order and the calculated next day of month | [optional] |
 | **preshipment_notice_days** | **Integer** | If set, a pre-shipment notice is sent to the customer this many days in advance | [optional] |
 | **recurring_merchant_item_id** | **String** | Item id to rebill | [optional] |
 | **recurring_merchant_item_oid** | **Integer** | Item object identifier to rebill | [optional] |
@@ -33,6 +35,8 @@ instance = UltracartClient::ItemAutoOrderStep.new(
   managed_by: null,
   pause_days: null,
   pause_until_date: null,
+  pause_until_day_of_month: null,
+  pause_until_minimum_delay_days: null,
   preshipment_notice_days: null,
   recurring_merchant_item_id: null,
   recurring_merchant_item_oid: null,
