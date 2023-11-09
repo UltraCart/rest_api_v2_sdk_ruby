@@ -35,6 +35,12 @@ module UltracartClient
     # Wait for this step to happen until the specified date
     attr_accessor :pause_until_date
 
+    # Pause until a specific day of the month
+    attr_accessor :pause_until_day_of_month
+
+    # Pause at least this many days between the last order and the calculated next day of month
+    attr_accessor :pause_until_minimum_delay_days
+
     # If set, a pre-shipment notice is sent to the customer this many days in advance
     attr_accessor :preshipment_notice_days
 
@@ -91,6 +97,8 @@ module UltracartClient
         :'managed_by' => :'managed_by',
         :'pause_days' => :'pause_days',
         :'pause_until_date' => :'pause_until_date',
+        :'pause_until_day_of_month' => :'pause_until_day_of_month',
+        :'pause_until_minimum_delay_days' => :'pause_until_minimum_delay_days',
         :'preshipment_notice_days' => :'preshipment_notice_days',
         :'recurring_merchant_item_id' => :'recurring_merchant_item_id',
         :'recurring_merchant_item_oid' => :'recurring_merchant_item_oid',
@@ -112,6 +120,8 @@ module UltracartClient
         :'managed_by' => :'String',
         :'pause_days' => :'Integer',
         :'pause_until_date' => :'String',
+        :'pause_until_day_of_month' => :'Integer',
+        :'pause_until_minimum_delay_days' => :'Integer',
         :'preshipment_notice_days' => :'Integer',
         :'recurring_merchant_item_id' => :'String',
         :'recurring_merchant_item_oid' => :'Integer',
@@ -163,6 +173,14 @@ module UltracartClient
         self.pause_until_date = attributes[:'pause_until_date']
       end
 
+      if attributes.has_key?(:'pause_until_day_of_month')
+        self.pause_until_day_of_month = attributes[:'pause_until_day_of_month']
+      end
+
+      if attributes.has_key?(:'pause_until_minimum_delay_days')
+        self.pause_until_minimum_delay_days = attributes[:'pause_until_minimum_delay_days']
+      end
+
       if attributes.has_key?(:'preshipment_notice_days')
         self.preshipment_notice_days = attributes[:'preshipment_notice_days']
       end
@@ -211,7 +229,7 @@ module UltracartClient
     # @return true if the model is valid
     def valid?
       return false if !@recurring_merchant_item_id.nil? && @recurring_merchant_item_id.to_s.length > 20
-      type_validator = EnumAttributeValidator.new('String', ['item', 'pause', 'loop', 'kit only'])
+      type_validator = EnumAttributeValidator.new('String', ['item', 'pause', 'loop', 'kit only', 'pause until'])
       return false unless type_validator.valid?(@type)
       true
     end
@@ -229,7 +247,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ['item', 'pause', 'loop', 'kit only'])
+      validator = EnumAttributeValidator.new('String', ['item', 'pause', 'loop', 'kit only', 'pause until'])
       unless validator.valid?(type)
         fail ArgumentError, 'invalid value for "type", must be one of #{validator.allowable_values}.'
       end
@@ -248,6 +266,8 @@ module UltracartClient
           managed_by == o.managed_by &&
           pause_days == o.pause_days &&
           pause_until_date == o.pause_until_date &&
+          pause_until_day_of_month == o.pause_until_day_of_month &&
+          pause_until_minimum_delay_days == o.pause_until_minimum_delay_days &&
           preshipment_notice_days == o.preshipment_notice_days &&
           recurring_merchant_item_id == o.recurring_merchant_item_id &&
           recurring_merchant_item_oid == o.recurring_merchant_item_oid &&
@@ -267,7 +287,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_schedules, grandfather_pricing, managed_by, pause_days, pause_until_date, preshipment_notice_days, recurring_merchant_item_id, recurring_merchant_item_oid, repeat_count, schedule, subscribe_email_list_name, subscribe_email_list_oid, type].hash
+      [arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_schedules, grandfather_pricing, managed_by, pause_days, pause_until_date, pause_until_day_of_month, pause_until_minimum_delay_days, preshipment_notice_days, recurring_merchant_item_id, recurring_merchant_item_oid, repeat_count, schedule, subscribe_email_list_name, subscribe_email_list_oid, type].hash
     end
 
     # Builds the object from hash
