@@ -29,6 +29,9 @@ module UltracartClient
     # deprecated_themes
     attr_accessor :deprecated_themes
 
+    # Item tags
+    attr_accessor :item_tags
+
     # mix_and_match_names
     attr_accessor :mix_and_match_names
 
@@ -52,6 +55,7 @@ module UltracartClient
         :'coupon_types_for_display' => :'coupon_types_for_display',
         :'currency_codes' => :'currency_codes',
         :'deprecated_themes' => :'deprecated_themes',
+        :'item_tags' => :'item_tags',
         :'mix_and_match_names' => :'mix_and_match_names',
         :'shipping_methods' => :'shipping_methods',
         :'storefronts' => :'storefronts',
@@ -68,6 +72,7 @@ module UltracartClient
         :'coupon_types_for_display' => :'Array<CouponType>',
         :'currency_codes' => :'Array<String>',
         :'deprecated_themes' => :'Array<SimpleValue>',
+        :'item_tags' => :'Array<String>',
         :'mix_and_match_names' => :'Array<String>',
         :'shipping_methods' => :'Array<String>',
         :'storefronts' => :'Array<SimpleValue>',
@@ -111,6 +116,12 @@ module UltracartClient
       if attributes.has_key?(:'deprecated_themes')
         if (value = attributes[:'deprecated_themes']).is_a?(Array)
           self.deprecated_themes = value
+        end
+      end
+
+      if attributes.has_key?(:'item_tags')
+        if (value = attributes[:'item_tags']).is_a?(Array)
+          self.item_tags = value
         end
       end
 
@@ -168,6 +179,7 @@ module UltracartClient
           coupon_types_for_display == o.coupon_types_for_display &&
           currency_codes == o.currency_codes &&
           deprecated_themes == o.deprecated_themes &&
+          item_tags == o.item_tags &&
           mix_and_match_names == o.mix_and_match_names &&
           shipping_methods == o.shipping_methods &&
           storefronts == o.storefronts &&
@@ -184,7 +196,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affiliates, coupon_types, coupon_types_for_display, currency_codes, deprecated_themes, mix_and_match_names, shipping_methods, storefronts, usable_by, valid_with_other_coupons].hash
+      [affiliates, coupon_types, coupon_types_for_display, currency_codes, deprecated_themes, item_tags, mix_and_match_names, shipping_methods, storefronts, usable_by, valid_with_other_coupons].hash
     end
 
     # Builds the object from hash
