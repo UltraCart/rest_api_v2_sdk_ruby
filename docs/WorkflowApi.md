@@ -308,7 +308,7 @@ end
 
 ## get_workflow_task_by_object_type
 
-> <WorkflowTaskResponse> get_workflow_task_by_object_type(object_type, object_id)
+> <WorkflowTasksResponse> get_workflow_task_by_object_type(object_type, object_id)
 
 Retrieve a workflow task by object type and id
 
@@ -344,7 +344,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<WorkflowTaskResponse>, Integer, Hash)> get_workflow_task_by_object_type_with_http_info(object_type, object_id)
+> <Array(<WorkflowTasksResponse>, Integer, Hash)> get_workflow_task_by_object_type_with_http_info(object_type, object_id)
 
 ```ruby
 begin
@@ -352,7 +352,7 @@ begin
   data, status_code, headers = api_instance.get_workflow_task_by_object_type_with_http_info(object_type, object_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <WorkflowTaskResponse>
+  p data # => <WorkflowTasksResponse>
 rescue UltracartClient::ApiError => e
   puts "Error when calling WorkflowApi->get_workflow_task_by_object_type_with_http_info: #{e}"
 end
@@ -367,7 +367,7 @@ end
 
 ### Return type
 
-[**WorkflowTaskResponse**](WorkflowTaskResponse.md)
+[**WorkflowTasksResponse**](WorkflowTasksResponse.md)
 
 ### Authorization
 
