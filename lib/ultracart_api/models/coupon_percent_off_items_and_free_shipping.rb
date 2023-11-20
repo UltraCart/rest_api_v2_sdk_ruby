@@ -17,8 +17,14 @@ module UltracartClient
     # The percentage of subtotal discount
     attr_accessor :discount_percent
 
+    # A list of item tags which cannot be discounted.
+    attr_accessor :excluded_item_tags
+
     # A list of items which cannot be discounted.
     attr_accessor :excluded_items
+
+    # An optional list of item tags which will receive a discount.  If blank, discount applies to all items except excluded items.
+    attr_accessor :item_tags
 
     # An optional list of items which will receive a discount.  If blank, discount applies to all items except excluded items.
     attr_accessor :items
@@ -27,7 +33,9 @@ module UltracartClient
     def self.attribute_map
       {
         :'discount_percent' => :'discount_percent',
+        :'excluded_item_tags' => :'excluded_item_tags',
         :'excluded_items' => :'excluded_items',
+        :'item_tags' => :'item_tags',
         :'items' => :'items'
       }
     end
@@ -36,7 +44,9 @@ module UltracartClient
     def self.swagger_types
       {
         :'discount_percent' => :'Float',
+        :'excluded_item_tags' => :'Array<String>',
         :'excluded_items' => :'Array<String>',
+        :'item_tags' => :'Array<String>',
         :'items' => :'Array<String>'
       }
     end
@@ -53,9 +63,21 @@ module UltracartClient
         self.discount_percent = attributes[:'discount_percent']
       end
 
+      if attributes.has_key?(:'excluded_item_tags')
+        if (value = attributes[:'excluded_item_tags']).is_a?(Array)
+          self.excluded_item_tags = value
+        end
+      end
+
       if attributes.has_key?(:'excluded_items')
         if (value = attributes[:'excluded_items']).is_a?(Array)
           self.excluded_items = value
+        end
+      end
+
+      if attributes.has_key?(:'item_tags')
+        if (value = attributes[:'item_tags']).is_a?(Array)
+          self.item_tags = value
         end
       end
 
@@ -85,7 +107,9 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           discount_percent == o.discount_percent &&
+          excluded_item_tags == o.excluded_item_tags &&
           excluded_items == o.excluded_items &&
+          item_tags == o.item_tags &&
           items == o.items
     end
 
@@ -98,7 +122,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [discount_percent, excluded_items, items].hash
+      [discount_percent, excluded_item_tags, excluded_items, item_tags, items].hash
     end
 
     # Builds the object from hash
