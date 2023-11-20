@@ -518,8 +518,8 @@ module UltracartClient
         invalid_properties.push('invalid value for "category_description", the character length must be smaller than or equal to 1000.')
       end
 
-      if !@color.nil? && @color.to_s.length > 20
-        invalid_properties.push('invalid value for "color", the character length must be smaller than or equal to 20.')
+      if !@color.nil? && @color.to_s.length > 100
+        invalid_properties.push('invalid value for "color", the character length must be smaller than or equal to 100.')
       end
 
       if !@condition.nil? && @condition.to_s.length > 15
@@ -648,7 +648,7 @@ module UltracartClient
       return false if !@book_isbn.nil? && @book_isbn.to_s.length > 20
       return false if !@book_publisher.nil? && @book_publisher.to_s.length > 50
       return false if !@category_description.nil? && @category_description.to_s.length > 1000
-      return false if !@color.nil? && @color.to_s.length > 20
+      return false if !@color.nil? && @color.to_s.length > 100
       return false if !@condition.nil? && @condition.to_s.length > 15
       return false if !@custom_label0.nil? && @custom_label0.to_s.length > 50
       return false if !@custom_label1.nil? && @custom_label1.to_s.length > 50
@@ -802,8 +802,8 @@ module UltracartClient
     # Custom attribute writer method with validation
     # @param [Object] color Value to be assigned
     def color=(color)
-      if !color.nil? && color.to_s.length > 20
-        fail ArgumentError, 'invalid value for "color", the character length must be smaller than or equal to 20.'
+      if !color.nil? && color.to_s.length > 100
+        fail ArgumentError, 'invalid value for "color", the character length must be smaller than or equal to 100.'
       end
 
       @color = color

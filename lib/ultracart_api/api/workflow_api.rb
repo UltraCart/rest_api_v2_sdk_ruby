@@ -257,7 +257,7 @@ module UltracartClient
     # @param object_type 
     # @param object_id 
     # @param [Hash] opts the optional parameters
-    # @return [WorkflowTaskResponse]
+    # @return [WorkflowTasksResponse]
     def get_workflow_task_by_object_type(object_type, object_id, opts = {})
       data, _status_code, _headers = get_workflow_task_by_object_type_with_http_info(object_type, object_id, opts)
       data
@@ -268,7 +268,7 @@ module UltracartClient
     # @param object_type 
     # @param object_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(WorkflowTaskResponse, Fixnum, Hash)>] WorkflowTaskResponse data, response status code and response headers
+    # @return [Array<(WorkflowTasksResponse, Fixnum, Hash)>] WorkflowTasksResponse data, response status code and response headers
     def get_workflow_task_by_object_type_with_http_info(object_type, object_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WorkflowApi.get_workflow_task_by_object_type ...'
@@ -307,7 +307,7 @@ module UltracartClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'WorkflowTaskResponse')
+        :return_type => 'WorkflowTasksResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: WorkflowApi#get_workflow_task_by_object_type\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
