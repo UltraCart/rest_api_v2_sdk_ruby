@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class CouponTieredAmountOffItems
+    # An optional list of item tags which will receive a discount.  If blank, discount applies to all items except excluded items.
+    attr_accessor :item_tags
+
     # The items being discounted by this coupon.
     attr_accessor :items
 
@@ -27,6 +30,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'item_tags' => :'item_tags',
         :'items' => :'items',
         :'limit' => :'limit',
         :'tiers' => :'tiers'
@@ -41,6 +45,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'item_tags' => :'Array<String>',
         :'items' => :'Array<String>',
         :'limit' => :'Float',
         :'tiers' => :'Array<CouponTierQuantityAmount>'
@@ -67,6 +72,12 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'item_tags')
+        if (value = attributes[:'item_tags']).is_a?(Array)
+          self.item_tags = value
+        end
+      end
 
       if attributes.key?(:'items')
         if (value = attributes[:'items']).is_a?(Array)
@@ -103,6 +114,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          item_tags == o.item_tags &&
           items == o.items &&
           limit == o.limit &&
           tiers == o.tiers
@@ -117,7 +129,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [items, limit, tiers].hash
+      [item_tags, items, limit, tiers].hash
     end
 
     # Builds the object from hash
