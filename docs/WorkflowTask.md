@@ -23,6 +23,7 @@
 | **object_url** | **String** | Object URL | [optional] |
 | **priority** | **String** | Priority | [optional] |
 | **status** | **String** | Status of the workflow task | [optional] |
+| **task_context** | **String** | User friendly string of the task context | [optional] |
 | **task_details** | **String** | Task Details | [optional] |
 | **task_name** | **String** | Task Name | [optional] |
 | **workflow_task_uuid** | **String** | Workflow Task UUID | [optional] |
@@ -52,6 +53,7 @@ instance = UltracartClient::WorkflowTask.new(
   object_url: null,
   priority: null,
   status: null,
+  task_context: null,
   task_details: null,
   task_name: null,
   workflow_task_uuid: null
