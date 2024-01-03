@@ -21,6 +21,9 @@ module UltracartClient
     # Indicates if API call was successful
     attr_accessor :success
 
+    # User friendly string of the task context if querying for a specific object type/id
+    attr_accessor :task_context
+
     # tasks
     attr_accessor :tasks
 
@@ -32,6 +35,7 @@ module UltracartClient
         :'error' => :'error',
         :'metadata' => :'metadata',
         :'success' => :'success',
+        :'task_context' => :'task_context',
         :'tasks' => :'tasks',
         :'warning' => :'warning'
       }
@@ -43,6 +47,7 @@ module UltracartClient
         :'error' => :'Error',
         :'metadata' => :'ResponseMetadata',
         :'success' => :'BOOLEAN',
+        :'task_context' => :'String',
         :'tasks' => :'Array<WorkflowTask>',
         :'warning' => :'Warning'
       }
@@ -66,6 +71,10 @@ module UltracartClient
 
       if attributes.has_key?(:'success')
         self.success = attributes[:'success']
+      end
+
+      if attributes.has_key?(:'task_context')
+        self.task_context = attributes[:'task_context']
       end
 
       if attributes.has_key?(:'tasks')
@@ -100,6 +109,7 @@ module UltracartClient
           error == o.error &&
           metadata == o.metadata &&
           success == o.success &&
+          task_context == o.task_context &&
           tasks == o.tasks &&
           warning == o.warning
     end
@@ -113,7 +123,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [error, metadata, success, tasks, warning].hash
+      [error, metadata, success, task_context, tasks, warning].hash
     end
 
     # Builds the object from hash

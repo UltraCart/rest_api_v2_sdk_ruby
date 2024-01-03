@@ -70,6 +70,9 @@ module UltracartClient
     # Status of the workflow task
     attr_accessor :status
 
+    # User friendly string of the task context
+    attr_accessor :task_context
+
     # Task Details
     attr_accessor :task_details
 
@@ -123,6 +126,7 @@ module UltracartClient
         :'object_url' => :'object_url',
         :'priority' => :'priority',
         :'status' => :'status',
+        :'task_context' => :'task_context',
         :'task_details' => :'task_details',
         :'task_name' => :'task_name',
         :'workflow_task_uuid' => :'workflow_task_uuid'
@@ -151,6 +155,7 @@ module UltracartClient
         :'object_url' => :'String',
         :'priority' => :'String',
         :'status' => :'String',
+        :'task_context' => :'String',
         :'task_details' => :'String',
         :'task_name' => :'String',
         :'workflow_task_uuid' => :'String'
@@ -247,6 +252,10 @@ module UltracartClient
         self.status = attributes[:'status']
       end
 
+      if attributes.has_key?(:'task_context')
+        self.task_context = attributes[:'task_context']
+      end
+
       if attributes.has_key?(:'task_details')
         self.task_details = attributes[:'task_details']
       end
@@ -270,7 +279,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      object_type_validator = EnumAttributeValidator.new('String', ['order', 'auto order', 'item', 'customer profile'])
+      object_type_validator = EnumAttributeValidator.new('String', ['order', 'auto order', 'item', 'customer profile', 'storefront'])
       return false unless object_type_validator.valid?(@object_type)
       priority_validator = EnumAttributeValidator.new('String', ['1 - low', '2 - medium', '3 - high', '4 - critical'])
       return false unless priority_validator.valid?(@priority)
@@ -282,7 +291,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] object_type Object to be assigned
     def object_type=(object_type)
-      validator = EnumAttributeValidator.new('String', ['order', 'auto order', 'item', 'customer profile'])
+      validator = EnumAttributeValidator.new('String', ['order', 'auto order', 'item', 'customer profile', 'storefront'])
       unless validator.valid?(object_type)
         fail ArgumentError, 'invalid value for "object_type", must be one of #{validator.allowable_values}.'
       end
@@ -333,6 +342,7 @@ module UltracartClient
           object_url == o.object_url &&
           priority == o.priority &&
           status == o.status &&
+          task_context == o.task_context &&
           task_details == o.task_details &&
           task_name == o.task_name &&
           workflow_task_uuid == o.workflow_task_uuid
@@ -347,7 +357,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [assigned_to_group, assigned_to_group_id, assigned_to_user, assigned_to_user_id, attachments, created_by, created_dts, delay_until_dts, due_dts, histories, last_update_dts, merchant_id, notes, object_email, object_id, object_type, object_url, priority, status, task_details, task_name, workflow_task_uuid].hash
+      [assigned_to_group, assigned_to_group_id, assigned_to_user, assigned_to_user_id, attachments, created_by, created_dts, delay_until_dts, due_dts, histories, last_update_dts, merchant_id, notes, object_email, object_id, object_type, object_url, priority, status, task_context, task_details, task_name, workflow_task_uuid].hash
     end
 
     # Builds the object from hash

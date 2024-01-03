@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **object_url** | **String** | Object URL | [optional] 
 **priority** | **String** | Priority | [optional] 
 **status** | **String** | Status of the workflow task | [optional] 
+**task_context** | **String** | User friendly string of the task context | [optional] 
 **task_details** | **String** | Task Details | [optional] 
 **task_name** | **String** | Task Name | [optional] 
 **workflow_task_uuid** | **String** | Workflow Task UUID | [optional] 
