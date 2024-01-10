@@ -9,6 +9,8 @@
 | **arbitrary_tax_rate** | [**Currency**](Currency.md) |  | [optional] |
 | **arbitrary_taxable_subtotal** | [**Currency**](Currency.md) |  | [optional] |
 | **health_benefit_card_amount** | [**Currency**](Currency.md) |  | [optional] |
+| **health_benefit_card_balance** | [**Currency**](Currency.md) |  | [optional] |
+| **health_benefit_card_requirements** | **String** | Health benefit card requirements | [optional] |
 | **internal_gift_certificate_amount** | [**Currency**](Currency.md) |  | [optional] |
 | **shipping_handling** | [**Currency**](Currency.md) |  | [optional] |
 | **shipping_handling_discount** | [**Currency**](Currency.md) |  | [optional] |
@@ -34,6 +36,8 @@ instance = UltracartClient::CartSummary.new(
   arbitrary_tax_rate: null,
   arbitrary_taxable_subtotal: null,
   health_benefit_card_amount: null,
+  health_benefit_card_balance: null,
+  health_benefit_card_requirements: null,
   internal_gift_certificate_amount: null,
   shipping_handling: null,
   shipping_handling_discount: null,

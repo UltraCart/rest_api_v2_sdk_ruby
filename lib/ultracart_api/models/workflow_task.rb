@@ -38,6 +38,9 @@ module UltracartClient
     # Date/time that the workflow task should delay until
     attr_accessor :delay_until_dts
 
+    # Dependant Workflow Task UUID (must be completed before this task can be completed)
+    attr_accessor :dependant_workflow_task_uuid
+
     # Date/time that the workflow task is due
     attr_accessor :due_dts
 
@@ -68,8 +71,14 @@ module UltracartClient
     # Priority
     attr_accessor :priority
 
+    # Related Workflow Task UUID
+    attr_accessor :related_workflow_task_uuid
+
     # Status of the workflow task
     attr_accessor :status
+
+    # Tags
+    attr_accessor :tags
 
     # User friendly string of the task context
     attr_accessor :task_context
@@ -116,6 +125,7 @@ module UltracartClient
         :'created_by' => :'created_by',
         :'created_dts' => :'created_dts',
         :'delay_until_dts' => :'delay_until_dts',
+        :'dependant_workflow_task_uuid' => :'dependant_workflow_task_uuid',
         :'due_dts' => :'due_dts',
         :'histories' => :'histories',
         :'last_update_dts' => :'last_update_dts',
@@ -126,7 +136,9 @@ module UltracartClient
         :'object_type' => :'object_type',
         :'object_url' => :'object_url',
         :'priority' => :'priority',
+        :'related_workflow_task_uuid' => :'related_workflow_task_uuid',
         :'status' => :'status',
+        :'tags' => :'tags',
         :'task_context' => :'task_context',
         :'task_details' => :'task_details',
         :'task_name' => :'task_name',
@@ -150,6 +162,7 @@ module UltracartClient
         :'created_by' => :'WorkflowUser',
         :'created_dts' => :'String',
         :'delay_until_dts' => :'String',
+        :'dependant_workflow_task_uuid' => :'String',
         :'due_dts' => :'String',
         :'histories' => :'Array<WorkflowTaskHistory>',
         :'last_update_dts' => :'String',
@@ -160,7 +173,9 @@ module UltracartClient
         :'object_type' => :'String',
         :'object_url' => :'String',
         :'priority' => :'String',
+        :'related_workflow_task_uuid' => :'String',
         :'status' => :'String',
+        :'tags' => :'Array<String>',
         :'task_context' => :'String',
         :'task_details' => :'String',
         :'task_name' => :'String',
@@ -223,6 +238,10 @@ module UltracartClient
         self.delay_until_dts = attributes[:'delay_until_dts']
       end
 
+      if attributes.key?(:'dependant_workflow_task_uuid')
+        self.dependant_workflow_task_uuid = attributes[:'dependant_workflow_task_uuid']
+      end
+
       if attributes.key?(:'due_dts')
         self.due_dts = attributes[:'due_dts']
       end
@@ -267,8 +286,18 @@ module UltracartClient
         self.priority = attributes[:'priority']
       end
 
+      if attributes.key?(:'related_workflow_task_uuid')
+        self.related_workflow_task_uuid = attributes[:'related_workflow_task_uuid']
+      end
+
       if attributes.key?(:'status')
         self.status = attributes[:'status']
+      end
+
+      if attributes.key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
+        end
       end
 
       if attributes.key?(:'task_context')
@@ -350,6 +379,7 @@ module UltracartClient
           created_by == o.created_by &&
           created_dts == o.created_dts &&
           delay_until_dts == o.delay_until_dts &&
+          dependant_workflow_task_uuid == o.dependant_workflow_task_uuid &&
           due_dts == o.due_dts &&
           histories == o.histories &&
           last_update_dts == o.last_update_dts &&
@@ -360,7 +390,9 @@ module UltracartClient
           object_type == o.object_type &&
           object_url == o.object_url &&
           priority == o.priority &&
+          related_workflow_task_uuid == o.related_workflow_task_uuid &&
           status == o.status &&
+          tags == o.tags &&
           task_context == o.task_context &&
           task_details == o.task_details &&
           task_name == o.task_name &&
@@ -376,7 +408,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [assigned_to_group, assigned_to_group_id, assigned_to_user, assigned_to_user_id, attachments, created_by, created_dts, delay_until_dts, due_dts, histories, last_update_dts, merchant_id, notes, object_email, object_id, object_type, object_url, priority, status, task_context, task_details, task_name, workflow_task_uuid].hash
+      [assigned_to_group, assigned_to_group_id, assigned_to_user, assigned_to_user_id, attachments, created_by, created_dts, delay_until_dts, dependant_workflow_task_uuid, due_dts, histories, last_update_dts, merchant_id, notes, object_email, object_id, object_type, object_url, priority, related_workflow_task_uuid, status, tags, task_context, task_details, task_name, workflow_task_uuid].hash
     end
 
     # Builds the object from hash

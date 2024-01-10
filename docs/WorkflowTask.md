@@ -12,6 +12,7 @@
 | **created_by** | [**WorkflowUser**](WorkflowUser.md) |  | [optional] |
 | **created_dts** | **String** | Date/time that the workflow task was created | [optional] |
 | **delay_until_dts** | **String** | Date/time that the workflow task should delay until | [optional] |
+| **dependant_workflow_task_uuid** | **String** | Dependant Workflow Task UUID (must be completed before this task can be completed) | [optional] |
 | **due_dts** | **String** | Date/time that the workflow task is due | [optional] |
 | **histories** | [**Array&lt;WorkflowTaskHistory&gt;**](WorkflowTaskHistory.md) | Array of history records for the task | [optional] |
 | **last_update_dts** | **String** | Date/time that the workflow task was last updated | [optional] |
@@ -22,7 +23,9 @@
 | **object_type** | **String** | Object Type | [optional] |
 | **object_url** | **String** | Object URL | [optional] |
 | **priority** | **String** | Priority | [optional] |
+| **related_workflow_task_uuid** | **String** | Related Workflow Task UUID | [optional] |
 | **status** | **String** | Status of the workflow task | [optional] |
+| **tags** | **Array&lt;String&gt;** | Tags | [optional] |
 | **task_context** | **String** | User friendly string of the task context | [optional] |
 | **task_details** | **String** | Task Details | [optional] |
 | **task_name** | **String** | Task Name | [optional] |
@@ -42,6 +45,7 @@ instance = UltracartClient::WorkflowTask.new(
   created_by: null,
   created_dts: null,
   delay_until_dts: null,
+  dependant_workflow_task_uuid: null,
   due_dts: null,
   histories: null,
   last_update_dts: null,
@@ -52,7 +56,9 @@ instance = UltracartClient::WorkflowTask.new(
   object_type: null,
   object_url: null,
   priority: null,
+  related_workflow_task_uuid: null,
   status: null,
+  tags: null,
   task_context: null,
   task_details: null,
   task_name: null,
