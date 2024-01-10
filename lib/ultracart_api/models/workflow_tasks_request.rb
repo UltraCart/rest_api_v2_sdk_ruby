@@ -61,6 +61,9 @@ module UltracartClient
     # Status of the workflow task
     attr_accessor :status
 
+    # Tasks that are tagged with the specified tags
+    attr_accessor :tags
+
     # Tasks that are unassigned to a user or group
     attr_accessor :unassigned
 
@@ -105,6 +108,7 @@ module UltracartClient
         :'object_type' => :'object_type',
         :'priority' => :'priority',
         :'status' => :'status',
+        :'tags' => :'tags',
         :'unassigned' => :'unassigned'
       }
     end
@@ -128,6 +132,7 @@ module UltracartClient
         :'object_type' => :'String',
         :'priority' => :'String',
         :'status' => :'String',
+        :'tags' => :'Array<String>',
         :'unassigned' => :'BOOLEAN'
       }
     end
@@ -202,6 +207,12 @@ module UltracartClient
 
       if attributes.has_key?(:'status')
         self.status = attributes[:'status']
+      end
+
+      if attributes.has_key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
+        end
       end
 
       if attributes.has_key?(:'unassigned')
@@ -279,6 +290,7 @@ module UltracartClient
           object_type == o.object_type &&
           priority == o.priority &&
           status == o.status &&
+          tags == o.tags &&
           unassigned == o.unassigned
     end
 
@@ -291,7 +303,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [assigned_to_group_id, assigned_to_me, assigned_to_user_id, created_by, created_dts_begin, created_dts_end, delay_until_dts_begin, delay_until_dts_end, due_dts_begin, due_dts_end, last_update_dts_begin, last_update_dts_end, object_email, object_type, priority, status, unassigned].hash
+      [assigned_to_group_id, assigned_to_me, assigned_to_user_id, created_by, created_dts_begin, created_dts_end, delay_until_dts_begin, delay_until_dts_end, due_dts_begin, due_dts_end, last_update_dts_begin, last_update_dts_end, object_email, object_type, priority, status, tags, unassigned].hash
     end
 
     # Builds the object from hash
