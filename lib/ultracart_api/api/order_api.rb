@@ -1270,7 +1270,7 @@ module UltracartClient
       return data, status_code, headers
     end
     # Refund an order
-    # Perform a refund operation on an order and then update the order if successful 
+    # Perform a refund operation on an order and then update the order if successful.  All of the object properties ending in _refunded should be the TOTAL amount that should end up being refunded.  UltraCart will calculate the actual amount to refund based upon the prior refunds. 
     # @param order Order to refund
     # @param order_id The order id to refund.
     # @param [Hash] opts the optional parameters
@@ -1288,7 +1288,7 @@ module UltracartClient
     end
 
     # Refund an order
-    # Perform a refund operation on an order and then update the order if successful 
+    # Perform a refund operation on an order and then update the order if successful.  All of the object properties ending in _refunded should be the TOTAL amount that should end up being refunded.  UltraCart will calculate the actual amount to refund based upon the prior refunds. 
     # @param order Order to refund
     # @param order_id The order id to refund.
     # @param [Hash] opts the optional parameters

@@ -24,6 +24,11 @@ module UltracartClient
 
     attr_accessor :health_benefit_card_amount
 
+    attr_accessor :health_benefit_card_balance
+
+    # Health benefit card requirements
+    attr_accessor :health_benefit_card_requirements
+
     attr_accessor :internal_gift_certificate_amount
 
     attr_accessor :shipping_handling
@@ -58,6 +63,8 @@ module UltracartClient
         :'arbitrary_tax_rate' => :'arbitrary_tax_rate',
         :'arbitrary_taxable_subtotal' => :'arbitrary_taxable_subtotal',
         :'health_benefit_card_amount' => :'health_benefit_card_amount',
+        :'health_benefit_card_balance' => :'health_benefit_card_balance',
+        :'health_benefit_card_requirements' => :'health_benefit_card_requirements',
         :'internal_gift_certificate_amount' => :'internal_gift_certificate_amount',
         :'shipping_handling' => :'shipping_handling',
         :'shipping_handling_discount' => :'shipping_handling_discount',
@@ -82,6 +89,8 @@ module UltracartClient
         :'arbitrary_tax_rate' => :'Currency',
         :'arbitrary_taxable_subtotal' => :'Currency',
         :'health_benefit_card_amount' => :'Currency',
+        :'health_benefit_card_balance' => :'Currency',
+        :'health_benefit_card_requirements' => :'String',
         :'internal_gift_certificate_amount' => :'Currency',
         :'shipping_handling' => :'Currency',
         :'shipping_handling_discount' => :'Currency',
@@ -124,6 +133,14 @@ module UltracartClient
 
       if attributes.has_key?(:'health_benefit_card_amount')
         self.health_benefit_card_amount = attributes[:'health_benefit_card_amount']
+      end
+
+      if attributes.has_key?(:'health_benefit_card_balance')
+        self.health_benefit_card_balance = attributes[:'health_benefit_card_balance']
+      end
+
+      if attributes.has_key?(:'health_benefit_card_requirements')
+        self.health_benefit_card_requirements = attributes[:'health_benefit_card_requirements']
       end
 
       if attributes.has_key?(:'internal_gift_certificate_amount')
@@ -202,6 +219,8 @@ module UltracartClient
           arbitrary_tax_rate == o.arbitrary_tax_rate &&
           arbitrary_taxable_subtotal == o.arbitrary_taxable_subtotal &&
           health_benefit_card_amount == o.health_benefit_card_amount &&
+          health_benefit_card_balance == o.health_benefit_card_balance &&
+          health_benefit_card_requirements == o.health_benefit_card_requirements &&
           internal_gift_certificate_amount == o.internal_gift_certificate_amount &&
           shipping_handling == o.shipping_handling &&
           shipping_handling_discount == o.shipping_handling_discount &&
@@ -226,7 +245,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [arbitrary_shipping_handling_total, arbitrary_tax, arbitrary_tax_rate, arbitrary_taxable_subtotal, health_benefit_card_amount, internal_gift_certificate_amount, shipping_handling, shipping_handling_discount, shipping_handling_with_discount, subtotal, subtotal_discount, subtotal_with_discount, surcharge, tax, taxable_subtotal, taxable_subtotal_discount, taxable_subtotal_with_discount, total].hash
+      [arbitrary_shipping_handling_total, arbitrary_tax, arbitrary_tax_rate, arbitrary_taxable_subtotal, health_benefit_card_amount, health_benefit_card_balance, health_benefit_card_requirements, internal_gift_certificate_amount, shipping_handling, shipping_handling_discount, shipping_handling_with_discount, subtotal, subtotal_discount, subtotal_with_discount, surcharge, tax, taxable_subtotal, taxable_subtotal_discount, taxable_subtotal_with_discount, total].hash
     end
 
     # Builds the object from hash
