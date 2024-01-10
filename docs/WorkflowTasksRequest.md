@@ -20,6 +20,7 @@
 | **object_type** | **String** | Object Type | [optional] |
 | **priority** | **String** | Priority | [optional] |
 | **status** | **String** | Status of the workflow task | [optional] |
+| **tags** | **Array&lt;String&gt;** | Tasks that are tagged with the specified tags | [optional] |
 | **unassigned** | **Boolean** | Tasks that are unassigned to a user or group | [optional] |
 
 ## Example
@@ -44,6 +45,7 @@ instance = UltracartClient::WorkflowTasksRequest.new(
   object_type: null,
   priority: null,
   status: null,
+  tags: null,
   unassigned: null
 )
 ```
