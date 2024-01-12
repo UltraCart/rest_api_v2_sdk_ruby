@@ -71,6 +71,9 @@ module UltracartClient
     # Priority
     attr_accessor :priority
 
+    # Properties
+    attr_accessor :properties
+
     # Related Workflow Task UUID
     attr_accessor :related_workflow_task_uuid
 
@@ -136,6 +139,7 @@ module UltracartClient
         :'object_type' => :'object_type',
         :'object_url' => :'object_url',
         :'priority' => :'priority',
+        :'properties' => :'properties',
         :'related_workflow_task_uuid' => :'related_workflow_task_uuid',
         :'status' => :'status',
         :'tags' => :'tags',
@@ -173,6 +177,7 @@ module UltracartClient
         :'object_type' => :'String',
         :'object_url' => :'String',
         :'priority' => :'String',
+        :'properties' => :'Array<Property>',
         :'related_workflow_task_uuid' => :'String',
         :'status' => :'String',
         :'tags' => :'Array<String>',
@@ -286,6 +291,12 @@ module UltracartClient
         self.priority = attributes[:'priority']
       end
 
+      if attributes.key?(:'properties')
+        if (value = attributes[:'properties']).is_a?(Array)
+          self.properties = value
+        end
+      end
+
       if attributes.key?(:'related_workflow_task_uuid')
         self.related_workflow_task_uuid = attributes[:'related_workflow_task_uuid']
       end
@@ -390,6 +401,7 @@ module UltracartClient
           object_type == o.object_type &&
           object_url == o.object_url &&
           priority == o.priority &&
+          properties == o.properties &&
           related_workflow_task_uuid == o.related_workflow_task_uuid &&
           status == o.status &&
           tags == o.tags &&
@@ -408,7 +420,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [assigned_to_group, assigned_to_group_id, assigned_to_user, assigned_to_user_id, attachments, created_by, created_dts, delay_until_dts, dependant_workflow_task_uuid, due_dts, histories, last_update_dts, merchant_id, notes, object_email, object_id, object_type, object_url, priority, related_workflow_task_uuid, status, tags, task_context, task_details, task_name, workflow_task_uuid].hash
+      [assigned_to_group, assigned_to_group_id, assigned_to_user, assigned_to_user_id, attachments, created_by, created_dts, delay_until_dts, dependant_workflow_task_uuid, due_dts, histories, last_update_dts, merchant_id, notes, object_email, object_id, object_type, object_url, priority, properties, related_workflow_task_uuid, status, tags, task_context, task_details, task_name, workflow_task_uuid].hash
     end
 
     # Builds the object from hash
