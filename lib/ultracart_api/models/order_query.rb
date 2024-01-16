@@ -45,6 +45,9 @@ module UltracartClient
     # Custom field 1
     attr_accessor :custom_field_1
 
+    # Custom field 10
+    attr_accessor :custom_field_10
+
     # Custom field 2
     attr_accessor :custom_field_2
 
@@ -62,6 +65,12 @@ module UltracartClient
 
     # Custom field 7
     attr_accessor :custom_field_7
+
+    # Custom field 8
+    attr_accessor :custom_field_8
+
+    # Custom field 9
+    attr_accessor :custom_field_9
 
     # The customer profile to find associated orders for
     attr_accessor :customer_profile_oid
@@ -167,12 +176,15 @@ module UltracartClient
         :'creation_date_end' => :'creation_date_end',
         :'current_stage' => :'current_stage',
         :'custom_field_1' => :'custom_field_1',
+        :'custom_field_10' => :'custom_field_10',
         :'custom_field_2' => :'custom_field_2',
         :'custom_field_3' => :'custom_field_3',
         :'custom_field_4' => :'custom_field_4',
         :'custom_field_5' => :'custom_field_5',
         :'custom_field_6' => :'custom_field_6',
         :'custom_field_7' => :'custom_field_7',
+        :'custom_field_8' => :'custom_field_8',
+        :'custom_field_9' => :'custom_field_9',
         :'customer_profile_oid' => :'customer_profile_oid',
         :'email' => :'email',
         :'first_name' => :'first_name',
@@ -217,12 +229,15 @@ module UltracartClient
         :'creation_date_end' => :'String',
         :'current_stage' => :'String',
         :'custom_field_1' => :'String',
+        :'custom_field_10' => :'String',
         :'custom_field_2' => :'String',
         :'custom_field_3' => :'String',
         :'custom_field_4' => :'String',
         :'custom_field_5' => :'String',
         :'custom_field_6' => :'String',
         :'custom_field_7' => :'String',
+        :'custom_field_8' => :'String',
+        :'custom_field_9' => :'String',
         :'customer_profile_oid' => :'Integer',
         :'email' => :'String',
         :'first_name' => :'String',
@@ -310,6 +325,10 @@ module UltracartClient
         self.custom_field_1 = attributes[:'custom_field_1']
       end
 
+      if attributes.key?(:'custom_field_10')
+        self.custom_field_10 = attributes[:'custom_field_10']
+      end
+
       if attributes.key?(:'custom_field_2')
         self.custom_field_2 = attributes[:'custom_field_2']
       end
@@ -332,6 +351,14 @@ module UltracartClient
 
       if attributes.key?(:'custom_field_7')
         self.custom_field_7 = attributes[:'custom_field_7']
+      end
+
+      if attributes.key?(:'custom_field_8')
+        self.custom_field_8 = attributes[:'custom_field_8']
+      end
+
+      if attributes.key?(:'custom_field_9')
+        self.custom_field_9 = attributes[:'custom_field_9']
       end
 
       if attributes.key?(:'customer_profile_oid')
@@ -659,12 +686,15 @@ module UltracartClient
           creation_date_end == o.creation_date_end &&
           current_stage == o.current_stage &&
           custom_field_1 == o.custom_field_1 &&
+          custom_field_10 == o.custom_field_10 &&
           custom_field_2 == o.custom_field_2 &&
           custom_field_3 == o.custom_field_3 &&
           custom_field_4 == o.custom_field_4 &&
           custom_field_5 == o.custom_field_5 &&
           custom_field_6 == o.custom_field_6 &&
           custom_field_7 == o.custom_field_7 &&
+          custom_field_8 == o.custom_field_8 &&
+          custom_field_9 == o.custom_field_9 &&
           customer_profile_oid == o.customer_profile_oid &&
           email == o.email &&
           first_name == o.first_name &&
@@ -699,7 +729,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cc_email, channel_partner_code, channel_partner_order_id, city, company, country_code, creation_date_begin, creation_date_end, current_stage, custom_field_1, custom_field_2, custom_field_3, custom_field_4, custom_field_5, custom_field_6, custom_field_7, customer_profile_oid, email, first_name, item_id, last_name, order_id, payment_date_begin, payment_date_end, payment_method, phone, postal_code, purchase_order_number, refund_date_begin, refund_date_end, rma, screen_branding_theme_code, shipment_date_begin, shipment_date_end, shipped_on_date_begin, shipped_on_date_end, state_region, storefront_host_name, total].hash
+      [cc_email, channel_partner_code, channel_partner_order_id, city, company, country_code, creation_date_begin, creation_date_end, current_stage, custom_field_1, custom_field_10, custom_field_2, custom_field_3, custom_field_4, custom_field_5, custom_field_6, custom_field_7, custom_field_8, custom_field_9, customer_profile_oid, email, first_name, item_id, last_name, order_id, payment_date_begin, payment_date_end, payment_method, phone, postal_code, purchase_order_number, refund_date_begin, refund_date_end, rma, screen_branding_theme_code, shipment_date_begin, shipment_date_end, shipped_on_date_begin, shipped_on_date_end, state_region, storefront_host_name, total].hash
     end
 
     # Builds the object from hash
