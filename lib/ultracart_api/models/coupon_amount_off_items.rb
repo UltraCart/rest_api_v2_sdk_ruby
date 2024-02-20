@@ -20,6 +20,9 @@ module UltracartClient
     # The amount of shipping discount
     attr_accessor :discount_amount
 
+    # An optional list of item tags which will receive a discount.
+    attr_accessor :item_tags
+
     # A list of items which are eligible for the discount amount.
     attr_accessor :items
 
@@ -31,6 +34,7 @@ module UltracartClient
       {
         :'currency_code' => :'currency_code',
         :'discount_amount' => :'discount_amount',
+        :'item_tags' => :'item_tags',
         :'items' => :'items',
         :'limit' => :'limit'
       }
@@ -41,6 +45,7 @@ module UltracartClient
       {
         :'currency_code' => :'String',
         :'discount_amount' => :'Float',
+        :'item_tags' => :'Array<String>',
         :'items' => :'Array<String>',
         :'limit' => :'Integer'
       }
@@ -60,6 +65,12 @@ module UltracartClient
 
       if attributes.has_key?(:'discount_amount')
         self.discount_amount = attributes[:'discount_amount']
+      end
+
+      if attributes.has_key?(:'item_tags')
+        if (value = attributes[:'item_tags']).is_a?(Array)
+          self.item_tags = value
+        end
       end
 
       if attributes.has_key?(:'items')
@@ -108,6 +119,7 @@ module UltracartClient
       self.class == o.class &&
           currency_code == o.currency_code &&
           discount_amount == o.discount_amount &&
+          item_tags == o.item_tags &&
           items == o.items &&
           limit == o.limit
     end
@@ -121,7 +133,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [currency_code, discount_amount, items, limit].hash
+      [currency_code, discount_amount, item_tags, items, limit].hash
     end
 
     # Builds the object from hash

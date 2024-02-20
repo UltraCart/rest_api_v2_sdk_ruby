@@ -14,6 +14,9 @@ require 'date'
 
 module UltracartClient
   class CouponBuyOneGetOneLimit
+    # An optional list of item tags which will receive a discount.
+    attr_accessor :item_tags
+
     # An optional list of items of which one must be purchased to receive free quantity of the same item.
     attr_accessor :items
 
@@ -23,6 +26,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'item_tags' => :'item_tags',
         :'items' => :'items',
         :'limit' => :'limit'
       }
@@ -31,6 +35,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'item_tags' => :'Array<String>',
         :'items' => :'Array<String>',
         :'limit' => :'Integer'
       }
@@ -43,6 +48,12 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'item_tags')
+        if (value = attributes[:'item_tags']).is_a?(Array)
+          self.item_tags = value
+        end
+      end
 
       if attributes.has_key?(:'items')
         if (value = attributes[:'items']).is_a?(Array)
@@ -73,6 +84,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          item_tags == o.item_tags &&
           items == o.items &&
           limit == o.limit
     end
@@ -86,7 +98,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [items, limit].hash
+      [item_tags, items, limit].hash
     end
 
     # Builds the object from hash
