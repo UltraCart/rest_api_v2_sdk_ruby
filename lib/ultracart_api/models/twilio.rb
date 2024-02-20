@@ -17,19 +17,46 @@ module UltracartClient
   class Twilio
     attr_accessor :account_sid
 
+    attr_accessor :api_key_id
+
+    attr_accessor :api_key_name
+
+    attr_accessor :api_key_secret
+
     attr_accessor :auth_token
 
     attr_accessor :esp_twilio_uuid
 
+    attr_accessor :inbound_twiml_app_sid
+
+    attr_accessor :outbound_twiml_app_sid
+
     attr_accessor :phone_numbers
+
+    attr_accessor :private_key_pem
+
+    attr_accessor :public_key_pem
+
+    attr_accessor :public_key_sid
+
+    attr_accessor :twilio_workspace_sid
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'account_sid' => :'account_sid',
+        :'api_key_id' => :'api_key_id',
+        :'api_key_name' => :'api_key_name',
+        :'api_key_secret' => :'api_key_secret',
         :'auth_token' => :'auth_token',
         :'esp_twilio_uuid' => :'esp_twilio_uuid',
-        :'phone_numbers' => :'phone_numbers'
+        :'inbound_twiml_app_sid' => :'inbound_twiml_app_sid',
+        :'outbound_twiml_app_sid' => :'outbound_twiml_app_sid',
+        :'phone_numbers' => :'phone_numbers',
+        :'private_key_pem' => :'private_key_pem',
+        :'public_key_pem' => :'public_key_pem',
+        :'public_key_sid' => :'public_key_sid',
+        :'twilio_workspace_sid' => :'twilio_workspace_sid'
       }
     end
 
@@ -42,9 +69,18 @@ module UltracartClient
     def self.openapi_types
       {
         :'account_sid' => :'String',
+        :'api_key_id' => :'String',
+        :'api_key_name' => :'String',
+        :'api_key_secret' => :'String',
         :'auth_token' => :'String',
         :'esp_twilio_uuid' => :'String',
-        :'phone_numbers' => :'Array<String>'
+        :'inbound_twiml_app_sid' => :'String',
+        :'outbound_twiml_app_sid' => :'String',
+        :'phone_numbers' => :'Array<String>',
+        :'private_key_pem' => :'String',
+        :'public_key_pem' => :'String',
+        :'public_key_sid' => :'String',
+        :'twilio_workspace_sid' => :'String'
       }
     end
 
@@ -73,6 +109,18 @@ module UltracartClient
         self.account_sid = attributes[:'account_sid']
       end
 
+      if attributes.key?(:'api_key_id')
+        self.api_key_id = attributes[:'api_key_id']
+      end
+
+      if attributes.key?(:'api_key_name')
+        self.api_key_name = attributes[:'api_key_name']
+      end
+
+      if attributes.key?(:'api_key_secret')
+        self.api_key_secret = attributes[:'api_key_secret']
+      end
+
       if attributes.key?(:'auth_token')
         self.auth_token = attributes[:'auth_token']
       end
@@ -81,10 +129,34 @@ module UltracartClient
         self.esp_twilio_uuid = attributes[:'esp_twilio_uuid']
       end
 
+      if attributes.key?(:'inbound_twiml_app_sid')
+        self.inbound_twiml_app_sid = attributes[:'inbound_twiml_app_sid']
+      end
+
+      if attributes.key?(:'outbound_twiml_app_sid')
+        self.outbound_twiml_app_sid = attributes[:'outbound_twiml_app_sid']
+      end
+
       if attributes.key?(:'phone_numbers')
         if (value = attributes[:'phone_numbers']).is_a?(Array)
           self.phone_numbers = value
         end
+      end
+
+      if attributes.key?(:'private_key_pem')
+        self.private_key_pem = attributes[:'private_key_pem']
+      end
+
+      if attributes.key?(:'public_key_pem')
+        self.public_key_pem = attributes[:'public_key_pem']
+      end
+
+      if attributes.key?(:'public_key_sid')
+        self.public_key_sid = attributes[:'public_key_sid']
+      end
+
+      if attributes.key?(:'twilio_workspace_sid')
+        self.twilio_workspace_sid = attributes[:'twilio_workspace_sid']
       end
     end
 
@@ -107,9 +179,18 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           account_sid == o.account_sid &&
+          api_key_id == o.api_key_id &&
+          api_key_name == o.api_key_name &&
+          api_key_secret == o.api_key_secret &&
           auth_token == o.auth_token &&
           esp_twilio_uuid == o.esp_twilio_uuid &&
-          phone_numbers == o.phone_numbers
+          inbound_twiml_app_sid == o.inbound_twiml_app_sid &&
+          outbound_twiml_app_sid == o.outbound_twiml_app_sid &&
+          phone_numbers == o.phone_numbers &&
+          private_key_pem == o.private_key_pem &&
+          public_key_pem == o.public_key_pem &&
+          public_key_sid == o.public_key_sid &&
+          twilio_workspace_sid == o.twilio_workspace_sid
     end
 
     # @see the `==` method
@@ -121,7 +202,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_sid, auth_token, esp_twilio_uuid, phone_numbers].hash
+      [account_sid, api_key_id, api_key_name, api_key_secret, auth_token, esp_twilio_uuid, inbound_twiml_app_sid, outbound_twiml_app_sid, phone_numbers, private_key_pem, public_key_pem, public_key_sid, twilio_workspace_sid].hash
     end
 
     # Builds the object from hash

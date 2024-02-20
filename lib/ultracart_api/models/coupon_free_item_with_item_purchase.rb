@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class CouponFreeItemWithItemPurchase
+    # An optional list of item tags which will receive a discount of one of the required purchased items is purchased.
+    attr_accessor :item_tags
+
     # A list of free items which will receive a discount if one of the required purchase items is purchased.
     attr_accessor :items
 
@@ -27,13 +30,18 @@ module UltracartClient
     # Required items (at least one from the list) that must be purchased for coupon to be valid
     attr_accessor :required_purchase_items
 
+    # An optional list of item tags which are required to be purchased.
+    attr_accessor :required_purchase_items_tags
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'item_tags' => :'item_tags',
         :'items' => :'items',
         :'limit' => :'limit',
         :'match_required_purchase_item_to_free_item' => :'match_required_purchase_item_to_free_item',
-        :'required_purchase_items' => :'required_purchase_items'
+        :'required_purchase_items' => :'required_purchase_items',
+        :'required_purchase_items_tags' => :'required_purchase_items_tags'
       }
     end
 
@@ -45,10 +53,12 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'item_tags' => :'Array<String>',
         :'items' => :'Array<String>',
         :'limit' => :'Integer',
         :'match_required_purchase_item_to_free_item' => :'Boolean',
-        :'required_purchase_items' => :'Array<String>'
+        :'required_purchase_items' => :'Array<String>',
+        :'required_purchase_items_tags' => :'Array<String>'
       }
     end
 
@@ -73,6 +83,12 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'item_tags')
+        if (value = attributes[:'item_tags']).is_a?(Array)
+          self.item_tags = value
+        end
+      end
+
       if attributes.key?(:'items')
         if (value = attributes[:'items']).is_a?(Array)
           self.items = value
@@ -90,6 +106,12 @@ module UltracartClient
       if attributes.key?(:'required_purchase_items')
         if (value = attributes[:'required_purchase_items']).is_a?(Array)
           self.required_purchase_items = value
+        end
+      end
+
+      if attributes.key?(:'required_purchase_items_tags')
+        if (value = attributes[:'required_purchase_items_tags']).is_a?(Array)
+          self.required_purchase_items_tags = value
         end
       end
     end
@@ -112,10 +134,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          item_tags == o.item_tags &&
           items == o.items &&
           limit == o.limit &&
           match_required_purchase_item_to_free_item == o.match_required_purchase_item_to_free_item &&
-          required_purchase_items == o.required_purchase_items
+          required_purchase_items == o.required_purchase_items &&
+          required_purchase_items_tags == o.required_purchase_items_tags
     end
 
     # @see the `==` method
@@ -127,7 +151,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [items, limit, match_required_purchase_item_to_free_item, required_purchase_items].hash
+      [item_tags, items, limit, match_required_purchase_item_to_free_item, required_purchase_items, required_purchase_items_tags].hash
     end
 
     # Builds the object from hash
