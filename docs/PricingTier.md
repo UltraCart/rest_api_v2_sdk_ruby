@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **approval_notification** | [**PricingTierNotification**](PricingTierNotification.md) |  | [optional] 
 **auto_approve_cod** | **BOOLEAN** | Auto approve COD | [optional] 
 **auto_approve_purchase_order** | **BOOLEAN** | Auto approve purchase order | [optional] 
+**currency_code** | **String** | Any currency code specified on this pricing tier will force a shopping cart into that currency | [optional] 
 **default_on_wholesale_signup** | **BOOLEAN** | Default on wholesale signup | [optional] 
 **default_percentage_discount** | **Float** | Default percentage discount | [optional] 
 **default_shipping_method_oid** | **Integer** | Default shipping method oid | [optional] 

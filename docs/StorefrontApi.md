@@ -47,6 +47,7 @@ Method | HTTP request | Description
 [**get_email_commseq_email_stats**](StorefrontApi.md#get_email_commseq_email_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/emailStats | Get email communication sequence emails stats
 [**get_email_commseq_postcard_stats**](StorefrontApi.md#get_email_commseq_postcard_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/postcardStats | Get email communication sequence postcard stats
 [**get_email_commseq_postcard_tracking**](StorefrontApi.md#get_email_commseq_postcard_tracking) | **GET** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid}/tracking | Get email communication postcard tracking
+[**get_email_commseq_sms_stats**](StorefrontApi.md#get_email_commseq_sms_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/smsStats | Get email communication sequence sms stats
 [**get_email_commseq_stat_overall**](StorefrontApi.md#get_email_commseq_stat_overall) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/stat | Get communication sequence stats overall
 [**get_email_commseq_step_stats**](StorefrontApi.md#get_email_commseq_step_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/stepStats | Get email communication sequence step stats
 [**get_email_commseq_step_waiting**](StorefrontApi.md#get_email_commseq_step_waiting) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/waiting | Get email communication sequence customers waiting at each requested step
@@ -88,6 +89,7 @@ Method | HTTP request | Description
 [**get_email_sending_domain_status**](StorefrontApi.md#get_email_sending_domain_status) | **POST** /storefront/email/sending_domains/{domain}/status | Get email sending domain status
 [**get_email_sending_domains**](StorefrontApi.md#get_email_sending_domains) | **GET** /storefront/email/sending_domains | Get email sending domains
 [**get_email_settings**](StorefrontApi.md#get_email_settings) | **GET** /storefront/{storefront_oid}/email/settings | Get email settings
+[**get_email_sms_orders**](StorefrontApi.md#get_email_sms_orders) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/steps/{commseq_step_uuid}/sms/orders | Get email sms orders
 [**get_email_template**](StorefrontApi.md#get_email_template) | **GET** /storefront/{storefront_oid}/email/templates/{email_template_oid} | Get email template
 [**get_email_templates**](StorefrontApi.md#get_email_templates) | **GET** /storefront/{storefront_oid}/email/templates | Get email templates
 [**get_email_third_party_providers**](StorefrontApi.md#get_email_third_party_providers) | **GET** /storefront/{storefront_oid}/email/third_party_providers | Get a list of third party email providers
@@ -2356,6 +2358,60 @@ Name | Type | Description  | Notes
 
 
 
+# **get_email_commseq_sms_stats**
+> EmailStatSmsSummaryResponse get_email_commseq_sms_stats(storefront_oid, commseq_uuid, stats_request)
+
+Get email communication sequence sms stats
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::StorefrontApi.new_using_api_key(simple_key, false, false)
+
+
+storefront_oid = 56 # Integer | 
+
+commseq_uuid = 'commseq_uuid_example' # String | 
+
+stats_request = UltracartClient::EmailStatSmsSummaryRequest.new # EmailStatSmsSummaryRequest | StatsRequest
+
+
+begin
+  #Get email communication sequence sms stats
+  result = api_instance.get_email_commseq_sms_stats(storefront_oid, commseq_uuid, stats_request)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_commseq_sms_stats: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **commseq_uuid** | **String**|  | 
+ **stats_request** | [**EmailStatSmsSummaryRequest**](EmailStatSmsSummaryRequest.md)| StatsRequest | 
+
+### Return type
+
+[**EmailStatSmsSummaryResponse**](EmailStatSmsSummaryResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **get_email_commseq_stat_overall**
 > EmailCommseqStatResponse get_email_commseq_stat_overall(storefront_oid, commseq_uuid)
 
@@ -4437,6 +4493,64 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EmailSettingsResponse**](EmailSettingsResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_sms_orders**
+> EmailSmsOrdersResponse get_email_sms_orders(storefront_oid, commseq_uuid, commseq_step_uuid, opts)
+
+Get email sms orders
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::StorefrontApi.new_using_api_key(simple_key, false, false)
+
+
+storefront_oid = 56 # Integer | 
+
+commseq_uuid = 'commseq_uuid_example' # String | 
+
+commseq_step_uuid = 'commseq_step_uuid_example' # String | 
+
+opts = { 
+  days: 56 # Integer | 
+}
+
+begin
+  #Get email sms orders
+  result = api_instance.get_email_sms_orders(storefront_oid, commseq_uuid, commseq_step_uuid, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_sms_orders: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+ **commseq_uuid** | **String**|  | 
+ **commseq_step_uuid** | **String**|  | 
+ **days** | **Integer**|  | [optional] 
+
+### Return type
+
+[**EmailSmsOrdersResponse**](EmailSmsOrdersResponse.md)
 
 ### Authorization
 

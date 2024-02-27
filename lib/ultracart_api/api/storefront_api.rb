@@ -2516,6 +2516,71 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Get email communication sequence sms stats
+    # @param storefront_oid 
+    # @param commseq_uuid 
+    # @param stats_request StatsRequest
+    # @param [Hash] opts the optional parameters
+    # @return [EmailStatSmsSummaryResponse]
+    def get_email_commseq_sms_stats(storefront_oid, commseq_uuid, stats_request, opts = {})
+      data, _status_code, _headers = get_email_commseq_sms_stats_with_http_info(storefront_oid, commseq_uuid, stats_request, opts)
+      data
+    end
+
+    # Get email communication sequence sms stats
+    # @param storefront_oid 
+    # @param commseq_uuid 
+    # @param stats_request StatsRequest
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailStatSmsSummaryResponse, Fixnum, Hash)>] EmailStatSmsSummaryResponse data, response status code and response headers
+    def get_email_commseq_sms_stats_with_http_info(storefront_oid, commseq_uuid, stats_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_email_commseq_sms_stats ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_email_commseq_sms_stats"
+      end
+      # verify the required parameter 'commseq_uuid' is set
+      if @api_client.config.client_side_validation && commseq_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'commseq_uuid' when calling StorefrontApi.get_email_commseq_sms_stats"
+      end
+      # verify the required parameter 'stats_request' is set
+      if @api_client.config.client_side_validation && stats_request.nil?
+        fail ArgumentError, "Missing the required parameter 'stats_request' when calling StorefrontApi.get_email_commseq_sms_stats"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/smsStats'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'commseq_uuid' + '}', commseq_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(stats_request)
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailStatSmsSummaryResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_email_commseq_sms_stats\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Get communication sequence stats overall
     # @param storefront_oid 
     # @param commseq_uuid 
@@ -4905,6 +4970,74 @@ module UltracartClient
         :return_type => 'EmailSettingsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#get_email_settings\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get email sms orders
+    # @param storefront_oid 
+    # @param commseq_uuid 
+    # @param commseq_step_uuid 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :days 
+    # @return [EmailSmsOrdersResponse]
+    def get_email_sms_orders(storefront_oid, commseq_uuid, commseq_step_uuid, opts = {})
+      data, _status_code, _headers = get_email_sms_orders_with_http_info(storefront_oid, commseq_uuid, commseq_step_uuid, opts)
+      data
+    end
+
+    # Get email sms orders
+    # @param storefront_oid 
+    # @param commseq_uuid 
+    # @param commseq_step_uuid 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :days 
+    # @return [Array<(EmailSmsOrdersResponse, Fixnum, Hash)>] EmailSmsOrdersResponse data, response status code and response headers
+    def get_email_sms_orders_with_http_info(storefront_oid, commseq_uuid, commseq_step_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_email_sms_orders ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_email_sms_orders"
+      end
+      # verify the required parameter 'commseq_uuid' is set
+      if @api_client.config.client_side_validation && commseq_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'commseq_uuid' when calling StorefrontApi.get_email_sms_orders"
+      end
+      # verify the required parameter 'commseq_step_uuid' is set
+      if @api_client.config.client_side_validation && commseq_step_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'commseq_step_uuid' when calling StorefrontApi.get_email_sms_orders"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/steps/{commseq_step_uuid}/sms/orders'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'commseq_uuid' + '}', commseq_uuid.to_s).sub('{' + 'commseq_step_uuid' + '}', commseq_step_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'days'] = opts[:'days'] if !opts[:'days'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'EmailSmsOrdersResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_email_sms_orders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
