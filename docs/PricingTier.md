@@ -11,6 +11,7 @@
 | **approval_notification** | [**PricingTierNotification**](PricingTierNotification.md) |  | [optional] |
 | **auto_approve_cod** | **Boolean** | Auto approve COD | [optional] |
 | **auto_approve_purchase_order** | **Boolean** | Auto approve purchase order | [optional] |
+| **currency_code** | **String** | Any currency code specified on this pricing tier will force a shopping cart into that currency | [optional] |
 | **default_on_wholesale_signup** | **Boolean** | Default on wholesale signup | [optional] |
 | **default_percentage_discount** | **Float** | Default percentage discount | [optional] |
 | **default_shipping_method_oid** | **Integer** | Default shipping method oid | [optional] |
@@ -51,6 +52,7 @@ instance = UltracartClient::PricingTier.new(
   approval_notification: null,
   auto_approve_cod: null,
   auto_approve_purchase_order: null,
+  currency_code: null,
   default_on_wholesale_signup: null,
   default_percentage_discount: null,
   default_shipping_method_oid: null,

@@ -35,6 +35,9 @@ module UltracartClient
     # Auto approve purchase order
     attr_accessor :auto_approve_purchase_order
 
+    # Any currency code specified on this pricing tier will force a shopping cart into that currency
+    attr_accessor :currency_code
+
     # Default on wholesale signup
     attr_accessor :default_on_wholesale_signup
 
@@ -122,6 +125,7 @@ module UltracartClient
         :'approval_notification' => :'approval_notification',
         :'auto_approve_cod' => :'auto_approve_cod',
         :'auto_approve_purchase_order' => :'auto_approve_purchase_order',
+        :'currency_code' => :'currency_code',
         :'default_on_wholesale_signup' => :'default_on_wholesale_signup',
         :'default_percentage_discount' => :'default_percentage_discount',
         :'default_shipping_method_oid' => :'default_shipping_method_oid',
@@ -166,6 +170,7 @@ module UltracartClient
         :'approval_notification' => :'PricingTierNotification',
         :'auto_approve_cod' => :'Boolean',
         :'auto_approve_purchase_order' => :'Boolean',
+        :'currency_code' => :'String',
         :'default_on_wholesale_signup' => :'Boolean',
         :'default_percentage_discount' => :'Float',
         :'default_shipping_method_oid' => :'Integer',
@@ -242,6 +247,10 @@ module UltracartClient
 
       if attributes.key?(:'auto_approve_purchase_order')
         self.auto_approve_purchase_order = attributes[:'auto_approve_purchase_order']
+      end
+
+      if attributes.key?(:'currency_code')
+        self.currency_code = attributes[:'currency_code']
       end
 
       if attributes.key?(:'default_on_wholesale_signup')
@@ -389,6 +398,7 @@ module UltracartClient
           approval_notification == o.approval_notification &&
           auto_approve_cod == o.auto_approve_cod &&
           auto_approve_purchase_order == o.auto_approve_purchase_order &&
+          currency_code == o.currency_code &&
           default_on_wholesale_signup == o.default_on_wholesale_signup &&
           default_percentage_discount == o.default_percentage_discount &&
           default_shipping_method_oid == o.default_shipping_method_oid &&
@@ -426,7 +436,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allow_3rd_party_billing, allow_cod, allow_purchase_order, allow_quote_request, approval_notification, auto_approve_cod, auto_approve_purchase_order, default_on_wholesale_signup, default_percentage_discount, default_shipping_method_oid, default_tier, display_on_wholesale_signup, exclude_from_free_promotion, exempt_loyalty_rewards, exempt_shipping_handling_charge, free_shipping, free_shipping_minimum, maximum_item_count, minimum_item_count, minimum_subtotal, name, no_coupons, no_free_shipping, no_realtime_charge, not_valid_when_coupon_present, pricing_tier_oid, realtime_percentage_discount, restrict_to_distribution_center_oid, signup_notification, suppress_buysafe, suppress_mailing_list, tax_exempt, track_separately].hash
+      [allow_3rd_party_billing, allow_cod, allow_purchase_order, allow_quote_request, approval_notification, auto_approve_cod, auto_approve_purchase_order, currency_code, default_on_wholesale_signup, default_percentage_discount, default_shipping_method_oid, default_tier, display_on_wholesale_signup, exclude_from_free_promotion, exempt_loyalty_rewards, exempt_shipping_handling_charge, free_shipping, free_shipping_minimum, maximum_item_count, minimum_item_count, minimum_subtotal, name, no_coupons, no_free_shipping, no_realtime_charge, not_valid_when_coupon_present, pricing_tier_oid, realtime_percentage_discount, restrict_to_distribution_center_oid, signup_notification, suppress_buysafe, suppress_mailing_list, tax_exempt, track_separately].hash
     end
 
     # Builds the object from hash
