@@ -10,6 +10,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_workflow_task**](WorkflowApi.md#get_workflow_task) | **GET** /workflow/tasks/{task_uuid} | Retrieve a workflow task |
 | [**get_workflow_task_attachment_upload_url**](WorkflowApi.md#get_workflow_task_attachment_upload_url) | **GET** /workflow/tasks/attachments/{extension} | Get a presigned workflow task attachment upload URL |
 | [**get_workflow_task_by_object_type**](WorkflowApi.md#get_workflow_task_by_object_type) | **GET** /workflow/tasks/by/{object_type}/{object_id} | Retrieve a workflow task by object type and id |
+| [**get_workflow_task_tags**](WorkflowApi.md#get_workflow_task_tags) | **GET** /workflow/tasks/tags | Get a list of existing workflow task tags |
 | [**get_workflow_tasks**](WorkflowApi.md#get_workflow_tasks) | **POST** /workflow/tasks/search | Search workflow tasks |
 | [**insert_workflow_task**](WorkflowApi.md#insert_workflow_task) | **POST** /workflow/tasks | Insert a workflow task |
 | [**update_workflow_task**](WorkflowApi.md#update_workflow_task) | **PUT** /workflow/tasks/{task_uuid} | Update a workflow task |
@@ -437,6 +438,74 @@ end
 ### Return type
 
 [**WorkflowTasksResponse**](WorkflowTasksResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_workflow_task_tags
+
+> <WorkflowTaskTagsResponse> get_workflow_task_tags
+
+Get a list of existing workflow task tags
+
+Retrieves a unique list of all the existing workflow task tags. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::WorkflowApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+
+begin
+  # Get a list of existing workflow task tags
+  result = api_instance.get_workflow_task_tags
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling WorkflowApi->get_workflow_task_tags: #{e}"
+end
+```
+
+#### Using the get_workflow_task_tags_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<WorkflowTaskTagsResponse>, Integer, Hash)> get_workflow_task_tags_with_http_info
+
+```ruby
+begin
+  # Get a list of existing workflow task tags
+  data, status_code, headers = api_instance.get_workflow_task_tags_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <WorkflowTaskTagsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling WorkflowApi->get_workflow_task_tags_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**WorkflowTaskTagsResponse**](WorkflowTaskTagsResponse.md)
 
 ### Authorization
 

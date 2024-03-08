@@ -416,6 +416,64 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get a list of existing workflow task tags
+    # Retrieves a unique list of all the existing workflow task tags. 
+    # @param [Hash] opts the optional parameters
+    # @return [WorkflowTaskTagsResponse]
+    def get_workflow_task_tags(opts = {})
+      data, _status_code, _headers = get_workflow_task_tags_with_http_info(opts)
+      data
+    end
+
+    # Get a list of existing workflow task tags
+    # Retrieves a unique list of all the existing workflow task tags. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(WorkflowTaskTagsResponse, Integer, Hash)>] WorkflowTaskTagsResponse data, response status code and response headers
+    def get_workflow_task_tags_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: WorkflowApi.get_workflow_task_tags ...'
+      end
+      # resource path
+      local_var_path = '/workflow/tasks/tags'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'WorkflowTaskTagsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"WorkflowApi.get_workflow_task_tags",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: WorkflowApi#get_workflow_task_tags\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Search workflow tasks
     # Retrieves a set of workflow tasks from the account based on a query object. 
     # @param workflow_tasks_query [WorkflowTasksRequest] Workflow tasks query
