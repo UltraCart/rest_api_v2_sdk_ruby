@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**get_workflow_task**](WorkflowApi.md#get_workflow_task) | **GET** /workflow/tasks/{task_uuid} | Retrieve a workflow task
 [**get_workflow_task_attachment_upload_url**](WorkflowApi.md#get_workflow_task_attachment_upload_url) | **GET** /workflow/tasks/attachments/{extension} | Get a presigned workflow task attachment upload URL
 [**get_workflow_task_by_object_type**](WorkflowApi.md#get_workflow_task_by_object_type) | **GET** /workflow/tasks/by/{object_type}/{object_id} | Retrieve a workflow task by object type and id
+[**get_workflow_task_tags**](WorkflowApi.md#get_workflow_task_tags) | **GET** /workflow/tasks/tags | Get a list of existing workflow task tags
 [**get_workflow_tasks**](WorkflowApi.md#get_workflow_tasks) | **POST** /workflow/tasks/search | Search workflow tasks
 [**insert_workflow_task**](WorkflowApi.md#insert_workflow_task) | **POST** /workflow/tasks | Insert a workflow task
 [**update_workflow_task**](WorkflowApi.md#update_workflow_task) | **PUT** /workflow/tasks/{task_uuid} | Update a workflow task
@@ -307,6 +308,51 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**WorkflowTasksResponse**](WorkflowTasksResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_workflow_task_tags**
+> WorkflowTaskTagsResponse get_workflow_task_tags
+
+Get a list of existing workflow task tags
+
+Retrieves a unique list of all the existing workflow task tags. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::WorkflowApi.new_using_api_key(simple_key, false, false)
+
+
+
+begin
+  #Get a list of existing workflow task tags
+  result = api_instance.get_workflow_task_tags
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling WorkflowApi->get_workflow_task_tags: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**WorkflowTaskTagsResponse**](WorkflowTaskTagsResponse.md)
 
 ### Authorization
 
