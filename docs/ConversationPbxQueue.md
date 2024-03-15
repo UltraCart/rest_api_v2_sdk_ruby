@@ -22,6 +22,8 @@
 | **twilio_taskrouter_workflow_sid** | **String** | Twilio taskrouter workflow sid | [optional] |
 | **twilio_workspace_queue_sid** | **String** | Twilio workspace queue sid | [optional] |
 | **voicemail** | **Boolean** | If true, this queue has a voicemail associated with it | [optional] |
+| **wait_critical_seconds** | **Integer** | Wait time in seconds before critical | [optional] |
+| **wait_warning_seconds** | **Integer** | Wait time in seconds before warning | [optional] |
 
 ## Example
 
@@ -46,7 +48,9 @@ instance = UltracartClient::ConversationPbxQueue.new(
   say_voice: null,
   twilio_taskrouter_workflow_sid: null,
   twilio_workspace_queue_sid: null,
-  voicemail: null
+  voicemail: null,
+  wait_critical_seconds: null,
+  wait_warning_seconds: null
 )
 ```
 

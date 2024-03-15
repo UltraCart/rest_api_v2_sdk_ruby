@@ -847,6 +847,8 @@ docs/WebhookSampleRequest.md
 docs/WebhookSampleRequestResponse.md
 docs/WebhooksResponse.md
 docs/Weight.md
+docs/WorkflowAgentAuth.md
+docs/WorkflowAgentAuthResponse.md
 docs/WorkflowApi.md
 docs/WorkflowAttachment.md
 docs/WorkflowAttachmentUploadUrl.md
@@ -1711,6 +1713,8 @@ lib/ultracart_api/models/webhook_sample_request.rb
 lib/ultracart_api/models/webhook_sample_request_response.rb
 lib/ultracart_api/models/webhooks_response.rb
 lib/ultracart_api/models/weight.rb
+lib/ultracart_api/models/workflow_agent_auth.rb
+lib/ultracart_api/models/workflow_agent_auth_response.rb
 lib/ultracart_api/models/workflow_attachment.rb
 lib/ultracart_api/models/workflow_attachment_upload_url.rb
 lib/ultracart_api/models/workflow_attachment_upload_url_response.rb
