@@ -67,6 +67,12 @@ module UltracartClient
     # If true, this queue has a voicemail associated with it
     attr_accessor :voicemail
 
+    # Wait time in seconds before critical
+    attr_accessor :wait_critical_seconds
+
+    # Wait time in seconds before warning
+    attr_accessor :wait_warning_seconds
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -87,7 +93,9 @@ module UltracartClient
         :'say_voice' => :'say_voice',
         :'twilio_taskrouter_workflow_sid' => :'twilio_taskrouter_workflow_sid',
         :'twilio_workspace_queue_sid' => :'twilio_workspace_queue_sid',
-        :'voicemail' => :'voicemail'
+        :'voicemail' => :'voicemail',
+        :'wait_critical_seconds' => :'wait_critical_seconds',
+        :'wait_warning_seconds' => :'wait_warning_seconds'
       }
     end
 
@@ -111,7 +119,9 @@ module UltracartClient
         :'say_voice' => :'String',
         :'twilio_taskrouter_workflow_sid' => :'String',
         :'twilio_workspace_queue_sid' => :'String',
-        :'voicemail' => :'BOOLEAN'
+        :'voicemail' => :'BOOLEAN',
+        :'wait_critical_seconds' => :'Integer',
+        :'wait_warning_seconds' => :'Integer'
       }
     end
 
@@ -193,6 +203,14 @@ module UltracartClient
 
       if attributes.has_key?(:'voicemail')
         self.voicemail = attributes[:'voicemail']
+      end
+
+      if attributes.has_key?(:'wait_critical_seconds')
+        self.wait_critical_seconds = attributes[:'wait_critical_seconds']
+      end
+
+      if attributes.has_key?(:'wait_warning_seconds')
+        self.wait_warning_seconds = attributes[:'wait_warning_seconds']
       end
     end
 
@@ -381,7 +399,9 @@ module UltracartClient
           say_voice == o.say_voice &&
           twilio_taskrouter_workflow_sid == o.twilio_taskrouter_workflow_sid &&
           twilio_workspace_queue_sid == o.twilio_workspace_queue_sid &&
-          voicemail == o.voicemail
+          voicemail == o.voicemail &&
+          wait_critical_seconds == o.wait_critical_seconds &&
+          wait_warning_seconds == o.wait_warning_seconds
     end
 
     # @see the `==` method
@@ -393,7 +413,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [announce_queue_position, conversation_pbx_queue_uuid, conversation_voicemail_mailbox_uuid, hold_conversation_pbx_audio_uuid, max_hold_seconds, members, merchant_id, name, no_agent_available_play_audio_uuid, no_agent_available_say, no_agent_available_say_voice, play_audio_uuid, record_call, say, say_voice, twilio_taskrouter_workflow_sid, twilio_workspace_queue_sid, voicemail].hash
+      [announce_queue_position, conversation_pbx_queue_uuid, conversation_voicemail_mailbox_uuid, hold_conversation_pbx_audio_uuid, max_hold_seconds, members, merchant_id, name, no_agent_available_play_audio_uuid, no_agent_available_say, no_agent_available_say_voice, play_audio_uuid, record_call, say, say_voice, twilio_taskrouter_workflow_sid, twilio_workspace_queue_sid, voicemail, wait_critical_seconds, wait_warning_seconds].hash
     end
 
     # Builds the object from hash

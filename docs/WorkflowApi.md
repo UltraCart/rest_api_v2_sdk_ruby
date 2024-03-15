@@ -4,6 +4,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**get_workflow_agent_websocket_authorization**](WorkflowApi.md#get_workflow_agent_websocket_authorization) | **PUT** /workflow/agent/auth | Get agent websocket authorization
 [**get_workflow_assignment_groups**](WorkflowApi.md#get_workflow_assignment_groups) | **GET** /workflow/assignment_groups | Retrieve a list of groups that workflow tasks can be assigned to
 [**get_workflow_assignment_users**](WorkflowApi.md#get_workflow_assignment_users) | **GET** /workflow/assignment_users | Retrieve a list of users that workflow tasks can be assigned to
 [**get_workflow_me**](WorkflowApi.md#get_workflow_me) | **GET** /workflow/me | Retrieve a user object for myself
@@ -14,6 +15,51 @@ Method | HTTP request | Description
 [**get_workflow_tasks**](WorkflowApi.md#get_workflow_tasks) | **POST** /workflow/tasks/search | Search workflow tasks
 [**insert_workflow_task**](WorkflowApi.md#insert_workflow_task) | **POST** /workflow/tasks | Insert a workflow task
 [**update_workflow_task**](WorkflowApi.md#update_workflow_task) | **PUT** /workflow/tasks/{task_uuid} | Update a workflow task
+
+
+# **get_workflow_agent_websocket_authorization**
+> WorkflowAgentAuthResponse get_workflow_agent_websocket_authorization
+
+Get agent websocket authorization
+
+Retrieve a JWT to authorize an agent to make a websocket connection. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::WorkflowApi.new_using_api_key(simple_key, false, false)
+
+
+
+begin
+  #Get agent websocket authorization
+  result = api_instance.get_workflow_agent_websocket_authorization
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling WorkflowApi->get_workflow_agent_websocket_authorization: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**WorkflowAgentAuthResponse**](WorkflowAgentAuthResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 
 
 # **get_workflow_assignment_groups**

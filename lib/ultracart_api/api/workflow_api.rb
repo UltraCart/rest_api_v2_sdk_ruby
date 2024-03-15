@@ -32,6 +32,55 @@ module UltracartClient
       UltracartClient::WorkflowApi.new(api_client)
     end
 
+    # Get agent websocket authorization
+    # Retrieve a JWT to authorize an agent to make a websocket connection. 
+    # @param [Hash] opts the optional parameters
+    # @return [WorkflowAgentAuthResponse]
+    def get_workflow_agent_websocket_authorization(opts = {})
+      data, _status_code, _headers = get_workflow_agent_websocket_authorization_with_http_info(opts)
+      data
+    end
+
+    # Get agent websocket authorization
+    # Retrieve a JWT to authorize an agent to make a websocket connection. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(WorkflowAgentAuthResponse, Fixnum, Hash)>] WorkflowAgentAuthResponse data, response status code and response headers
+    def get_workflow_agent_websocket_authorization_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: WorkflowApi.get_workflow_agent_websocket_authorization ...'
+      end
+      # resource path
+      local_var_path = '/workflow/agent/auth'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'WorkflowAgentAuthResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: WorkflowApi#get_workflow_agent_websocket_authorization\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Retrieve a list of groups that workflow tasks can be assigned to
     # Retrieve a list of groups that workflow tasks can be assigned to 
     # @param [Hash] opts the optional parameters
