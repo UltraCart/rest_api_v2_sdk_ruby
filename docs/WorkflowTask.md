@@ -14,6 +14,7 @@
 | **delay_until_dts** | **String** | Date/time that the workflow task should delay until | [optional] |
 | **dependant_workflow_task_uuid** | **String** | Dependant Workflow Task UUID (must be completed before this task can be completed) | [optional] |
 | **due_dts** | **String** | Date/time that the workflow task is due | [optional] |
+| **expiration_dts** | **String** | Date/time that the workflow task will expire and be closed.  This is set by system generated tasks. | [optional] |
 | **histories** | [**Array&lt;WorkflowTaskHistory&gt;**](WorkflowTaskHistory.md) | Array of history records for the task | [optional] |
 | **last_update_dts** | **String** | Date/time that the workflow task was last updated | [optional] |
 | **merchant_id** | **String** | Merchant ID | [optional] |
@@ -26,6 +27,7 @@
 | **properties** | [**Array&lt;Property&gt;**](Property.md) | Properties | [optional] |
 | **related_workflow_task_uuid** | **String** | Related Workflow Task UUID | [optional] |
 | **status** | **String** | Status of the workflow task | [optional] |
+| **system_task_type** | **String** | Constant for the type of system generated task | [optional] |
 | **tags** | **Array&lt;String&gt;** | Tags | [optional] |
 | **task_context** | **String** | User friendly string of the task context | [optional] |
 | **task_details** | **String** | Task Details | [optional] |
@@ -48,6 +50,7 @@ instance = UltracartClient::WorkflowTask.new(
   delay_until_dts: null,
   dependant_workflow_task_uuid: null,
   due_dts: null,
+  expiration_dts: null,
   histories: null,
   last_update_dts: null,
   merchant_id: null,
@@ -60,6 +63,7 @@ instance = UltracartClient::WorkflowTask.new(
   properties: null,
   related_workflow_task_uuid: null,
   status: null,
+  system_task_type: null,
   tags: null,
   task_context: null,
   task_details: null,

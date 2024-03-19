@@ -65,6 +65,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**join_conversation**](ConversationApi.md#join_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/join | Join a conversation |
 | [**leave_conversation**](ConversationApi.md#leave_conversation) | **DELETE** /conversation/conversations/{conversation_uuid}/leave | Leave a conversation |
 | [**mark_read_conversation**](ConversationApi.md#mark_read_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/markread | Mark a conversation as read |
+| [**reset_conversation_pbx_queue_statistics**](ConversationApi.md#reset_conversation_pbx_queue_statistics) | **POST** /conversation/pbx/queues/{queue_uuid}/reset_statistics | reset statistics within the queue |
 | [**search_conversation_canned_messages**](ConversationApi.md#search_conversation_canned_messages) | **POST** /conversation/canned_messages/search | Search for canned messages by short_code |
 | [**sms_unsubscribe_conversation**](ConversationApi.md#sms_unsubscribe_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/sms_unsubscribe | Unsubscribe any SMS participants in this conversation |
 | [**start_conversation**](ConversationApi.md#start_conversation) | **PUT** /conversation/conversations | Start a conversation |
@@ -4360,6 +4361,76 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **conversation_uuid** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## reset_conversation_pbx_queue_statistics
+
+> reset_conversation_pbx_queue_statistics(queue_uuid)
+
+reset statistics within the queue
+
+reset statistics within the queue 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+queue_uuid = 'queue_uuid_example' # String | 
+
+begin
+  # reset statistics within the queue
+  api_instance.reset_conversation_pbx_queue_statistics(queue_uuid)
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->reset_conversation_pbx_queue_statistics: #{e}"
+end
+```
+
+#### Using the reset_conversation_pbx_queue_statistics_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> reset_conversation_pbx_queue_statistics_with_http_info(queue_uuid)
+
+```ruby
+begin
+  # reset statistics within the queue
+  data, status_code, headers = api_instance.reset_conversation_pbx_queue_statistics_with_http_info(queue_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->reset_conversation_pbx_queue_statistics_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **queue_uuid** | **String** |  |  |
 
 ### Return type
 

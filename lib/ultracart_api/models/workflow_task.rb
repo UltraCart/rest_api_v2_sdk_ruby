@@ -44,6 +44,9 @@ module UltracartClient
     # Date/time that the workflow task is due
     attr_accessor :due_dts
 
+    # Date/time that the workflow task will expire and be closed.  This is set by system generated tasks.
+    attr_accessor :expiration_dts
+
     # Array of history records for the task
     attr_accessor :histories
 
@@ -79,6 +82,9 @@ module UltracartClient
 
     # Status of the workflow task
     attr_accessor :status
+
+    # Constant for the type of system generated task
+    attr_accessor :system_task_type
 
     # Tags
     attr_accessor :tags
@@ -130,6 +136,7 @@ module UltracartClient
         :'delay_until_dts' => :'delay_until_dts',
         :'dependant_workflow_task_uuid' => :'dependant_workflow_task_uuid',
         :'due_dts' => :'due_dts',
+        :'expiration_dts' => :'expiration_dts',
         :'histories' => :'histories',
         :'last_update_dts' => :'last_update_dts',
         :'merchant_id' => :'merchant_id',
@@ -142,6 +149,7 @@ module UltracartClient
         :'properties' => :'properties',
         :'related_workflow_task_uuid' => :'related_workflow_task_uuid',
         :'status' => :'status',
+        :'system_task_type' => :'system_task_type',
         :'tags' => :'tags',
         :'task_context' => :'task_context',
         :'task_details' => :'task_details',
@@ -168,6 +176,7 @@ module UltracartClient
         :'delay_until_dts' => :'String',
         :'dependant_workflow_task_uuid' => :'String',
         :'due_dts' => :'String',
+        :'expiration_dts' => :'String',
         :'histories' => :'Array<WorkflowTaskHistory>',
         :'last_update_dts' => :'String',
         :'merchant_id' => :'String',
@@ -180,6 +189,7 @@ module UltracartClient
         :'properties' => :'Array<Property>',
         :'related_workflow_task_uuid' => :'String',
         :'status' => :'String',
+        :'system_task_type' => :'String',
         :'tags' => :'Array<String>',
         :'task_context' => :'String',
         :'task_details' => :'String',
@@ -251,6 +261,10 @@ module UltracartClient
         self.due_dts = attributes[:'due_dts']
       end
 
+      if attributes.key?(:'expiration_dts')
+        self.expiration_dts = attributes[:'expiration_dts']
+      end
+
       if attributes.key?(:'histories')
         if (value = attributes[:'histories']).is_a?(Array)
           self.histories = value
@@ -305,6 +319,10 @@ module UltracartClient
         self.status = attributes[:'status']
       end
 
+      if attributes.key?(:'system_task_type')
+        self.system_task_type = attributes[:'system_task_type']
+      end
+
       if attributes.key?(:'tags')
         if (value = attributes[:'tags']).is_a?(Array)
           self.tags = value
@@ -342,8 +360,10 @@ module UltracartClient
       return false unless object_type_validator.valid?(@object_type)
       priority_validator = EnumAttributeValidator.new('String', ["1 - low", "2 - medium", "3 - high", "4 - critical"])
       return false unless priority_validator.valid?(@priority)
-      status_validator = EnumAttributeValidator.new('String', ["open", "closed", "delayed", "awaiting customer feedback"])
+      status_validator = EnumAttributeValidator.new('String', ["open", "closed", "delayed", "awaiting customer feedback", "closed - system", "closed - customer", "closed - expiration"])
       return false unless status_validator.valid?(@status)
+      system_task_type_validator = EnumAttributeValidator.new('String', ["order_accounts_receivable", "order_fraud_review", "auto_order_card_update_issue", "auto_order_canceled_payment", "item_low_stock", "item_out_of_stock"])
+      return false unless system_task_type_validator.valid?(@system_task_type)
       true
     end
 
@@ -370,11 +390,21 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      validator = EnumAttributeValidator.new('String', ["open", "closed", "delayed", "awaiting customer feedback"])
+      validator = EnumAttributeValidator.new('String', ["open", "closed", "delayed", "awaiting customer feedback", "closed - system", "closed - customer", "closed - expiration"])
       unless validator.valid?(status)
         fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
       end
       @status = status
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] system_task_type Object to be assigned
+    def system_task_type=(system_task_type)
+      validator = EnumAttributeValidator.new('String', ["order_accounts_receivable", "order_fraud_review", "auto_order_card_update_issue", "auto_order_canceled_payment", "item_low_stock", "item_out_of_stock"])
+      unless validator.valid?(system_task_type)
+        fail ArgumentError, "invalid value for \"system_task_type\", must be one of #{validator.allowable_values}."
+      end
+      @system_task_type = system_task_type
     end
 
     # Checks equality by comparing each attribute.
@@ -392,6 +422,7 @@ module UltracartClient
           delay_until_dts == o.delay_until_dts &&
           dependant_workflow_task_uuid == o.dependant_workflow_task_uuid &&
           due_dts == o.due_dts &&
+          expiration_dts == o.expiration_dts &&
           histories == o.histories &&
           last_update_dts == o.last_update_dts &&
           merchant_id == o.merchant_id &&
@@ -404,6 +435,7 @@ module UltracartClient
           properties == o.properties &&
           related_workflow_task_uuid == o.related_workflow_task_uuid &&
           status == o.status &&
+          system_task_type == o.system_task_type &&
           tags == o.tags &&
           task_context == o.task_context &&
           task_details == o.task_details &&
@@ -420,7 +452,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [assigned_to_group, assigned_to_group_id, assigned_to_user, assigned_to_user_id, attachments, created_by, created_dts, delay_until_dts, dependant_workflow_task_uuid, due_dts, histories, last_update_dts, merchant_id, notes, object_email, object_id, object_type, object_url, priority, properties, related_workflow_task_uuid, status, tags, task_context, task_details, task_name, workflow_task_uuid].hash
+      [assigned_to_group, assigned_to_group_id, assigned_to_user, assigned_to_user_id, attachments, created_by, created_dts, delay_until_dts, dependant_workflow_task_uuid, due_dts, expiration_dts, histories, last_update_dts, merchant_id, notes, object_email, object_id, object_type, object_url, priority, properties, related_workflow_task_uuid, status, system_task_type, tags, task_context, task_details, task_name, workflow_task_uuid].hash
     end
 
     # Builds the object from hash
