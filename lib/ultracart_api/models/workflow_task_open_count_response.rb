@@ -13,19 +13,16 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class WorkflowUsersResponse
+  class WorkflowTaskOpenCountResponse
     attr_accessor :error
 
     attr_accessor :metadata
 
-    # User ID of myself
-    attr_accessor :my_user_id
+    # Open Task Count
+    attr_accessor :open_count
 
     # Indicates if API call was successful
     attr_accessor :success
-
-    # users
-    attr_accessor :users
 
     attr_accessor :warning
 
@@ -34,9 +31,8 @@ module UltracartClient
       {
         :'error' => :'error',
         :'metadata' => :'metadata',
-        :'my_user_id' => :'my_user_id',
+        :'open_count' => :'open_count',
         :'success' => :'success',
-        :'users' => :'users',
         :'warning' => :'warning'
       }
     end
@@ -46,9 +42,8 @@ module UltracartClient
       {
         :'error' => :'Error',
         :'metadata' => :'ResponseMetadata',
-        :'my_user_id' => :'Integer',
+        :'open_count' => :'Integer',
         :'success' => :'BOOLEAN',
-        :'users' => :'Array<WorkflowUser>',
         :'warning' => :'Warning'
       }
     end
@@ -69,18 +64,12 @@ module UltracartClient
         self.metadata = attributes[:'metadata']
       end
 
-      if attributes.has_key?(:'my_user_id')
-        self.my_user_id = attributes[:'my_user_id']
+      if attributes.has_key?(:'open_count')
+        self.open_count = attributes[:'open_count']
       end
 
       if attributes.has_key?(:'success')
         self.success = attributes[:'success']
-      end
-
-      if attributes.has_key?(:'users')
-        if (value = attributes[:'users']).is_a?(Array)
-          self.users = value
-        end
       end
 
       if attributes.has_key?(:'warning')
@@ -108,9 +97,8 @@ module UltracartClient
       self.class == o.class &&
           error == o.error &&
           metadata == o.metadata &&
-          my_user_id == o.my_user_id &&
+          open_count == o.open_count &&
           success == o.success &&
-          users == o.users &&
           warning == o.warning
     end
 
@@ -123,7 +111,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [error, metadata, my_user_id, success, users, warning].hash
+      [error, metadata, open_count, success, warning].hash
     end
 
     # Builds the object from hash

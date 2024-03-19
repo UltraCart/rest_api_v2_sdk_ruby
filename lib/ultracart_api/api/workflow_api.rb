@@ -411,6 +411,55 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Retrieve workflow task open count
+    # Retrieve workflow task open count 
+    # @param [Hash] opts the optional parameters
+    # @return [WorkflowTaskOpenCountResponse]
+    def get_workflow_task_open_count(opts = {})
+      data, _status_code, _headers = get_workflow_task_open_count_with_http_info(opts)
+      data
+    end
+
+    # Retrieve workflow task open count
+    # Retrieve workflow task open count 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(WorkflowTaskOpenCountResponse, Fixnum, Hash)>] WorkflowTaskOpenCountResponse data, response status code and response headers
+    def get_workflow_task_open_count_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: WorkflowApi.get_workflow_task_open_count ...'
+      end
+      # resource path
+      local_var_path = '/workflow/tasks/open_count'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'WorkflowTaskOpenCountResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: WorkflowApi#get_workflow_task_open_count\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Get a list of existing workflow task tags
     # Retrieves a unique list of all the existing workflow task tags. 
     # @param [Hash] opts the optional parameters
