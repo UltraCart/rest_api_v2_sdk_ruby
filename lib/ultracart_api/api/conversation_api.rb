@@ -3292,6 +3292,60 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # reset statistics within the queue
+    # reset statistics within the queue 
+    # @param queue_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def reset_conversation_pbx_queue_statistics(queue_uuid, opts = {})
+      reset_conversation_pbx_queue_statistics_with_http_info(queue_uuid, opts)
+      nil
+    end
+
+    # reset statistics within the queue
+    # reset statistics within the queue 
+    # @param queue_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def reset_conversation_pbx_queue_statistics_with_http_info(queue_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.reset_conversation_pbx_queue_statistics ...'
+      end
+      # verify the required parameter 'queue_uuid' is set
+      if @api_client.config.client_side_validation && queue_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'queue_uuid' when calling ConversationApi.reset_conversation_pbx_queue_statistics"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/queues/{queue_uuid}/reset_statistics'.sub('{' + 'queue_uuid' + '}', queue_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#reset_conversation_pbx_queue_statistics\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Search for canned messages by short_code
     # Search for canned messages by short_code 
     # @param search_request Search request
