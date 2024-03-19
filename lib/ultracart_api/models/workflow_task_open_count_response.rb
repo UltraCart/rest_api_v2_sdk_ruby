@@ -14,19 +14,16 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class WorkflowUsersResponse
+  class WorkflowTaskOpenCountResponse
     attr_accessor :error
 
     attr_accessor :metadata
 
-    # User ID of myself
-    attr_accessor :my_user_id
+    # Open Task Count
+    attr_accessor :open_count
 
     # Indicates if API call was successful
     attr_accessor :success
-
-    # users
-    attr_accessor :users
 
     attr_accessor :warning
 
@@ -35,9 +32,8 @@ module UltracartClient
       {
         :'error' => :'error',
         :'metadata' => :'metadata',
-        :'my_user_id' => :'my_user_id',
+        :'open_count' => :'open_count',
         :'success' => :'success',
-        :'users' => :'users',
         :'warning' => :'warning'
       }
     end
@@ -52,9 +48,8 @@ module UltracartClient
       {
         :'error' => :'Error',
         :'metadata' => :'ResponseMetadata',
-        :'my_user_id' => :'Integer',
+        :'open_count' => :'Integer',
         :'success' => :'Boolean',
-        :'users' => :'Array<WorkflowUser>',
         :'warning' => :'Warning'
       }
     end
@@ -69,13 +64,13 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::WorkflowUsersResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::WorkflowTaskOpenCountResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::WorkflowUsersResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::WorkflowTaskOpenCountResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -88,18 +83,12 @@ module UltracartClient
         self.metadata = attributes[:'metadata']
       end
 
-      if attributes.key?(:'my_user_id')
-        self.my_user_id = attributes[:'my_user_id']
+      if attributes.key?(:'open_count')
+        self.open_count = attributes[:'open_count']
       end
 
       if attributes.key?(:'success')
         self.success = attributes[:'success']
-      end
-
-      if attributes.key?(:'users')
-        if (value = attributes[:'users']).is_a?(Array)
-          self.users = value
-        end
       end
 
       if attributes.key?(:'warning')
@@ -127,9 +116,8 @@ module UltracartClient
       self.class == o.class &&
           error == o.error &&
           metadata == o.metadata &&
-          my_user_id == o.my_user_id &&
+          open_count == o.open_count &&
           success == o.success &&
-          users == o.users &&
           warning == o.warning
     end
 
@@ -142,7 +130,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [error, metadata, my_user_id, success, users, warning].hash
+      [error, metadata, open_count, success, warning].hash
     end
 
     # Builds the object from hash
