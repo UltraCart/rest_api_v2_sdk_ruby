@@ -183,6 +183,9 @@ module UltracartClient
     # The rotating transaction gateway code for the gateway used to charge this order
     attr_accessor :rotating_transaction_gateway_code
 
+    # Sales rep code
+    attr_accessor :sales_rep_code
+
     # Screen branding theme code
     attr_accessor :screen_branding_theme_code
 
@@ -335,6 +338,7 @@ module UltracartClient
         :'payment_method' => :'payment_method',
         :'purchase_order_number' => :'purchase_order_number',
         :'rotating_transaction_gateway_code' => :'rotating_transaction_gateway_code',
+        :'sales_rep_code' => :'sales_rep_code',
         :'screen_branding_theme_code' => :'screen_branding_theme_code',
         :'ship_on_date' => :'ship_on_date',
         :'ship_to_residential' => :'ship_to_residential',
@@ -426,6 +430,7 @@ module UltracartClient
         :'payment_method' => :'String',
         :'purchase_order_number' => :'String',
         :'rotating_transaction_gateway_code' => :'String',
+        :'sales_rep_code' => :'String',
         :'screen_branding_theme_code' => :'String',
         :'ship_on_date' => :'String',
         :'ship_to_residential' => :'Boolean',
@@ -702,6 +707,10 @@ module UltracartClient
 
       if attributes.key?(:'rotating_transaction_gateway_code')
         self.rotating_transaction_gateway_code = attributes[:'rotating_transaction_gateway_code']
+      end
+
+      if attributes.key?(:'sales_rep_code')
+        self.sales_rep_code = attributes[:'sales_rep_code']
       end
 
       if attributes.key?(:'screen_branding_theme_code')
@@ -1442,6 +1451,7 @@ module UltracartClient
           payment_method == o.payment_method &&
           purchase_order_number == o.purchase_order_number &&
           rotating_transaction_gateway_code == o.rotating_transaction_gateway_code &&
+          sales_rep_code == o.sales_rep_code &&
           screen_branding_theme_code == o.screen_branding_theme_code &&
           ship_on_date == o.ship_on_date &&
           ship_to_residential == o.ship_to_residential &&
@@ -1477,7 +1487,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [advertising_source, affiliate_id, affiliate_sub_id, arbitrary_shipping_handling_total, arbitrary_tax, arbitrary_tax_rate, arbitrary_taxable_subtotal, associate_with_customer_profile_if_present, auto_approve_purchase_order, billto_address1, billto_address2, billto_city, billto_company, billto_country_code, billto_day_phone, billto_evening_phone, billto_first_name, billto_last_name, billto_postal_code, billto_state_region, billto_title, cc_email, channel_partner_order_id, consider_recurring, coupons, credit_card_authorization_amount, credit_card_authorization_dts, credit_card_authorization_number, credit_card_expiration_month, credit_card_expiration_year, credit_card_type, custom_field1, custom_field2, custom_field3, custom_field4, custom_field5, custom_field6, custom_field7, delivery_date, email, gift, gift_email, gift_message, hosted_fields_card_token, hosted_fields_cvv_token, insurance_application_id, insurance_claim_id, ip_address, items, least_cost_route, least_cost_route_shipping_methods, mailing_list_opt_in, no_realtime_payment_processing, payment_method, purchase_order_number, rotating_transaction_gateway_code, screen_branding_theme_code, ship_on_date, ship_to_residential, shipping_method, shipto_address1, shipto_address2, shipto_city, shipto_company, shipto_country_code, shipto_day_phone, shipto_evening_phone, shipto_first_name, shipto_last_name, shipto_postal_code, shipto_state_region, shipto_title, skip_payment_processing, special_instructions, store_completed, store_if_payment_declines, tax_county, tax_exempt, transaction, treat_warnings_as_errors].hash
+      [advertising_source, affiliate_id, affiliate_sub_id, arbitrary_shipping_handling_total, arbitrary_tax, arbitrary_tax_rate, arbitrary_taxable_subtotal, associate_with_customer_profile_if_present, auto_approve_purchase_order, billto_address1, billto_address2, billto_city, billto_company, billto_country_code, billto_day_phone, billto_evening_phone, billto_first_name, billto_last_name, billto_postal_code, billto_state_region, billto_title, cc_email, channel_partner_order_id, consider_recurring, coupons, credit_card_authorization_amount, credit_card_authorization_dts, credit_card_authorization_number, credit_card_expiration_month, credit_card_expiration_year, credit_card_type, custom_field1, custom_field2, custom_field3, custom_field4, custom_field5, custom_field6, custom_field7, delivery_date, email, gift, gift_email, gift_message, hosted_fields_card_token, hosted_fields_cvv_token, insurance_application_id, insurance_claim_id, ip_address, items, least_cost_route, least_cost_route_shipping_methods, mailing_list_opt_in, no_realtime_payment_processing, payment_method, purchase_order_number, rotating_transaction_gateway_code, sales_rep_code, screen_branding_theme_code, ship_on_date, ship_to_residential, shipping_method, shipto_address1, shipto_address2, shipto_city, shipto_company, shipto_country_code, shipto_day_phone, shipto_evening_phone, shipto_first_name, shipto_last_name, shipto_postal_code, shipto_state_region, shipto_title, skip_payment_processing, special_instructions, store_completed, store_if_payment_declines, tax_county, tax_exempt, transaction, treat_warnings_as_errors].hash
     end
 
     # Builds the object from hash
