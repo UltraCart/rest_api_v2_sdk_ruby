@@ -47,6 +47,9 @@ module UltracartClient
     # Date/time that the workflow task will expire and be closed.  This is set by system generated tasks.
     attr_accessor :expiration_dts
 
+    # Global task numer
+    attr_accessor :global_task_number
+
     # Array of history records for the task
     attr_accessor :histories
 
@@ -64,6 +67,9 @@ module UltracartClient
 
     # Object ID
     attr_accessor :object_id
+
+    # Object specific task numer
+    attr_accessor :object_task_number
 
     # Object Type
     attr_accessor :object_type
@@ -137,12 +143,14 @@ module UltracartClient
         :'dependant_workflow_task_uuid' => :'dependant_workflow_task_uuid',
         :'due_dts' => :'due_dts',
         :'expiration_dts' => :'expiration_dts',
+        :'global_task_number' => :'global_task_number',
         :'histories' => :'histories',
         :'last_update_dts' => :'last_update_dts',
         :'merchant_id' => :'merchant_id',
         :'notes' => :'notes',
         :'object_email' => :'object_email',
         :'object_id' => :'object_id',
+        :'object_task_number' => :'object_task_number',
         :'object_type' => :'object_type',
         :'object_url' => :'object_url',
         :'priority' => :'priority',
@@ -177,12 +185,14 @@ module UltracartClient
         :'dependant_workflow_task_uuid' => :'String',
         :'due_dts' => :'String',
         :'expiration_dts' => :'String',
+        :'global_task_number' => :'Integer',
         :'histories' => :'Array<WorkflowTaskHistory>',
         :'last_update_dts' => :'String',
         :'merchant_id' => :'String',
         :'notes' => :'Array<WorkflowNote>',
         :'object_email' => :'String',
         :'object_id' => :'String',
+        :'object_task_number' => :'Integer',
         :'object_type' => :'String',
         :'object_url' => :'String',
         :'priority' => :'String',
@@ -265,6 +275,10 @@ module UltracartClient
         self.expiration_dts = attributes[:'expiration_dts']
       end
 
+      if attributes.key?(:'global_task_number')
+        self.global_task_number = attributes[:'global_task_number']
+      end
+
       if attributes.key?(:'histories')
         if (value = attributes[:'histories']).is_a?(Array)
           self.histories = value
@@ -291,6 +305,10 @@ module UltracartClient
 
       if attributes.key?(:'object_id')
         self.object_id = attributes[:'object_id']
+      end
+
+      if attributes.key?(:'object_task_number')
+        self.object_task_number = attributes[:'object_task_number']
       end
 
       if attributes.key?(:'object_type')
@@ -423,12 +441,14 @@ module UltracartClient
           dependant_workflow_task_uuid == o.dependant_workflow_task_uuid &&
           due_dts == o.due_dts &&
           expiration_dts == o.expiration_dts &&
+          global_task_number == o.global_task_number &&
           histories == o.histories &&
           last_update_dts == o.last_update_dts &&
           merchant_id == o.merchant_id &&
           notes == o.notes &&
           object_email == o.object_email &&
           object_id == o.object_id &&
+          object_task_number == o.object_task_number &&
           object_type == o.object_type &&
           object_url == o.object_url &&
           priority == o.priority &&
@@ -452,7 +472,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [assigned_to_group, assigned_to_group_id, assigned_to_user, assigned_to_user_id, attachments, created_by, created_dts, delay_until_dts, dependant_workflow_task_uuid, due_dts, expiration_dts, histories, last_update_dts, merchant_id, notes, object_email, object_id, object_type, object_url, priority, properties, related_workflow_task_uuid, status, system_task_type, tags, task_context, task_details, task_name, workflow_task_uuid].hash
+      [assigned_to_group, assigned_to_group_id, assigned_to_user, assigned_to_user_id, attachments, created_by, created_dts, delay_until_dts, dependant_workflow_task_uuid, due_dts, expiration_dts, global_task_number, histories, last_update_dts, merchant_id, notes, object_email, object_id, object_task_number, object_type, object_url, priority, properties, related_workflow_task_uuid, status, system_task_type, tags, task_context, task_details, task_name, workflow_task_uuid].hash
     end
 
     # Builds the object from hash
