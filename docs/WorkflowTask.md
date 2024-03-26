@@ -8,6 +8,7 @@
 | **assigned_to_group_id** | **Integer** | Assigned to group ID | [optional] |
 | **assigned_to_user** | **String** | Assigned to user | [optional] |
 | **assigned_to_user_id** | **Integer** | Assigned to user ID | [optional] |
+| **assigned_to_user_or_group** | **String** | Assigned to user or group (used for sorting) | [optional] |
 | **attachments** | [**Array&lt;WorkflowAttachment&gt;**](WorkflowAttachment.md) | Attachments to the Workflow Task | [optional] |
 | **created_by** | [**WorkflowUser**](WorkflowUser.md) |  | [optional] |
 | **created_dts** | **String** | Date/time that the workflow task was created | [optional] |
@@ -46,6 +47,7 @@ instance = UltracartClient::WorkflowTask.new(
   assigned_to_group_id: null,
   assigned_to_user: null,
   assigned_to_user_id: null,
+  assigned_to_user_or_group: null,
   attachments: null,
   created_by: null,
   created_dts: null,
