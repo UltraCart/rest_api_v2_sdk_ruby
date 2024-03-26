@@ -26,6 +26,9 @@ module UltracartClient
     # Assigned to user ID
     attr_accessor :assigned_to_user_id
 
+    # Assigned to user or group (used for sorting)
+    attr_accessor :assigned_to_user_or_group
+
     # Attachments to the Workflow Task
     attr_accessor :attachments
 
@@ -135,6 +138,7 @@ module UltracartClient
         :'assigned_to_group_id' => :'assigned_to_group_id',
         :'assigned_to_user' => :'assigned_to_user',
         :'assigned_to_user_id' => :'assigned_to_user_id',
+        :'assigned_to_user_or_group' => :'assigned_to_user_or_group',
         :'attachments' => :'attachments',
         :'created_by' => :'created_by',
         :'created_dts' => :'created_dts',
@@ -172,6 +176,7 @@ module UltracartClient
         :'assigned_to_group_id' => :'Integer',
         :'assigned_to_user' => :'String',
         :'assigned_to_user_id' => :'Integer',
+        :'assigned_to_user_or_group' => :'String',
         :'attachments' => :'Array<WorkflowAttachment>',
         :'created_by' => :'WorkflowUser',
         :'created_dts' => :'String',
@@ -224,6 +229,10 @@ module UltracartClient
 
       if attributes.has_key?(:'assigned_to_user_id')
         self.assigned_to_user_id = attributes[:'assigned_to_user_id']
+      end
+
+      if attributes.has_key?(:'assigned_to_user_or_group')
+        self.assigned_to_user_or_group = attributes[:'assigned_to_user_or_group']
       end
 
       if attributes.has_key?(:'attachments')
@@ -415,6 +424,7 @@ module UltracartClient
           assigned_to_group_id == o.assigned_to_group_id &&
           assigned_to_user == o.assigned_to_user &&
           assigned_to_user_id == o.assigned_to_user_id &&
+          assigned_to_user_or_group == o.assigned_to_user_or_group &&
           attachments == o.attachments &&
           created_by == o.created_by &&
           created_dts == o.created_dts &&
@@ -453,7 +463,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [assigned_to_group, assigned_to_group_id, assigned_to_user, assigned_to_user_id, attachments, created_by, created_dts, delay_until_dts, dependant_workflow_task_uuid, due_dts, expiration_dts, global_task_number, histories, last_update_dts, merchant_id, notes, object_email, object_id, object_task_number, object_type, object_url, priority, properties, related_workflow_task_uuid, status, system_task_type, tags, task_context, task_details, task_name, workflow_task_uuid].hash
+      [assigned_to_group, assigned_to_group_id, assigned_to_user, assigned_to_user_id, assigned_to_user_or_group, attachments, created_by, created_dts, delay_until_dts, dependant_workflow_task_uuid, due_dts, expiration_dts, global_task_number, histories, last_update_dts, merchant_id, notes, object_email, object_id, object_task_number, object_type, object_url, priority, properties, related_workflow_task_uuid, status, system_task_type, tags, task_context, task_details, task_name, workflow_task_uuid].hash
     end
 
     # Builds the object from hash
