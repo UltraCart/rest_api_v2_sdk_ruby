@@ -210,6 +210,10 @@ docs/ConversationPbxTimeRangesResponse.md
 docs/ConversationPbxVoicemailMailbox.md
 docs/ConversationPbxVoicemailMailboxResponse.md
 docs/ConversationPbxVoicemailMailboxesResponse.md
+docs/ConversationPbxVoicemailMessage.md
+docs/ConversationPbxVoicemailMessageResponse.md
+docs/ConversationPbxVoicemailMessageSummariesResponse.md
+docs/ConversationPbxVoicemailMessageSummary.md
 docs/ConversationPermissions.md
 docs/ConversationPermissionsResponse.md
 docs/ConversationResponse.md
@@ -1091,6 +1095,10 @@ lib/ultracart_api/models/conversation_pbx_time_ranges_response.rb
 lib/ultracart_api/models/conversation_pbx_voicemail_mailbox.rb
 lib/ultracart_api/models/conversation_pbx_voicemail_mailbox_response.rb
 lib/ultracart_api/models/conversation_pbx_voicemail_mailboxes_response.rb
+lib/ultracart_api/models/conversation_pbx_voicemail_message.rb
+lib/ultracart_api/models/conversation_pbx_voicemail_message_response.rb
+lib/ultracart_api/models/conversation_pbx_voicemail_message_summaries_response.rb
+lib/ultracart_api/models/conversation_pbx_voicemail_message_summary.rb
 lib/ultracart_api/models/conversation_permissions.rb
 lib/ultracart_api/models/conversation_permissions_response.rb
 lib/ultracart_api/models/conversation_response.rb

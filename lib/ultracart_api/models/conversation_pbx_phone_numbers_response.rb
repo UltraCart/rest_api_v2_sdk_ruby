@@ -31,7 +31,7 @@ module UltracartClient
       {
         :'error' => :'error',
         :'metadata' => :'metadata',
-        :'phone_numbers' => :'phoneNumbers',
+        :'phone_numbers' => :'phone_numbers',
         :'success' => :'success',
         :'warning' => :'warning'
       }

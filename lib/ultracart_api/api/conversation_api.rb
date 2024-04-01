@@ -288,6 +288,70 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Delete Agent Voicemail
+    # Delete pbx agent Voicemail 
+    # @param recording_sid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_pbx_agent_voicemail(recording_sid, opts = {})
+      delete_pbx_agent_voicemail_with_http_info(recording_sid, opts)
+      nil
+    end
+
+    # Delete Agent Voicemail
+    # Delete pbx agent Voicemail 
+    # @param recording_sid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_pbx_agent_voicemail_with_http_info(recording_sid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.delete_pbx_agent_voicemail ...'
+      end
+      # verify the required parameter 'recording_sid' is set
+      if @api_client.config.client_side_validation && recording_sid.nil?
+        fail ArgumentError, "Missing the required parameter 'recording_sid' when calling ConversationApi.delete_pbx_agent_voicemail"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/agent/voicemails/{recording_sid}'.sub('{' + 'recording_sid' + '}', CGI.escape(recording_sid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.delete_pbx_agent_voicemail",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#delete_pbx_agent_voicemail\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete pbx audio
     # Delete a pbx audio 
     # @param conversation_pbx_audio_uuid [String] 
@@ -2053,6 +2117,128 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get Agent Voicemail
+    # Retrieve pbx agent Voicemail 
+    # @param recording_sid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxVoicemailMessageResponse]
+    def get_pbx_agent_voicemail(recording_sid, opts = {})
+      data, _status_code, _headers = get_pbx_agent_voicemail_with_http_info(recording_sid, opts)
+      data
+    end
+
+    # Get Agent Voicemail
+    # Retrieve pbx agent Voicemail 
+    # @param recording_sid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxVoicemailMessageResponse, Integer, Hash)>] ConversationPbxVoicemailMessageResponse data, response status code and response headers
+    def get_pbx_agent_voicemail_with_http_info(recording_sid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_pbx_agent_voicemail ...'
+      end
+      # verify the required parameter 'recording_sid' is set
+      if @api_client.config.client_side_validation && recording_sid.nil?
+        fail ArgumentError, "Missing the required parameter 'recording_sid' when calling ConversationApi.get_pbx_agent_voicemail"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/agent/voicemails/{recording_sid}'.sub('{' + 'recording_sid' + '}', CGI.escape(recording_sid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxVoicemailMessageResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_pbx_agent_voicemail",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_pbx_agent_voicemail\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get Agent Voicemails
+    # Retrieve pbx agent Voicemails 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxVoicemailMessageSummariesResponse]
+    def get_pbx_agent_voicemails(opts = {})
+      data, _status_code, _headers = get_pbx_agent_voicemails_with_http_info(opts)
+      data
+    end
+
+    # Get Agent Voicemails
+    # Retrieve pbx agent Voicemails 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxVoicemailMessageSummariesResponse, Integer, Hash)>] ConversationPbxVoicemailMessageSummariesResponse data, response status code and response headers
+    def get_pbx_agent_voicemails_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_pbx_agent_voicemails ...'
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/agent/voicemails'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxVoicemailMessageSummariesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_pbx_agent_voicemails",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_pbx_agent_voicemails\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get pbx agents
     # Retrieve pbx agents 
     # @param [Hash] opts the optional parameters
@@ -2537,6 +2723,140 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#get_pbx_queue\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get Queue Voicemail
+    # Retrieve pbx queue Voicemail 
+    # @param queue_uuid [String] 
+    # @param recording_sid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxVoicemailMessageResponse]
+    def get_pbx_queue_voicemail(queue_uuid, recording_sid, opts = {})
+      data, _status_code, _headers = get_pbx_queue_voicemail_with_http_info(queue_uuid, recording_sid, opts)
+      data
+    end
+
+    # Get Queue Voicemail
+    # Retrieve pbx queue Voicemail 
+    # @param queue_uuid [String] 
+    # @param recording_sid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxVoicemailMessageResponse, Integer, Hash)>] ConversationPbxVoicemailMessageResponse data, response status code and response headers
+    def get_pbx_queue_voicemail_with_http_info(queue_uuid, recording_sid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_pbx_queue_voicemail ...'
+      end
+      # verify the required parameter 'queue_uuid' is set
+      if @api_client.config.client_side_validation && queue_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'queue_uuid' when calling ConversationApi.get_pbx_queue_voicemail"
+      end
+      # verify the required parameter 'recording_sid' is set
+      if @api_client.config.client_side_validation && recording_sid.nil?
+        fail ArgumentError, "Missing the required parameter 'recording_sid' when calling ConversationApi.get_pbx_queue_voicemail"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/queues/{queue_uuid}/voicemails/{recording_sid}'.sub('{' + 'queue_uuid' + '}', CGI.escape(queue_uuid.to_s)).sub('{' + 'recording_sid' + '}', CGI.escape(recording_sid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxVoicemailMessageResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_pbx_queue_voicemail",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_pbx_queue_voicemail\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get Queue Voicemails
+    # Retrieve pbx queue voicemails 
+    # @param queue_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxVoicemailMessageSummariesResponse]
+    def get_pbx_queue_voicemails(queue_uuid, opts = {})
+      data, _status_code, _headers = get_pbx_queue_voicemails_with_http_info(queue_uuid, opts)
+      data
+    end
+
+    # Get Queue Voicemails
+    # Retrieve pbx queue voicemails 
+    # @param queue_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxVoicemailMessageSummariesResponse, Integer, Hash)>] ConversationPbxVoicemailMessageSummariesResponse data, response status code and response headers
+    def get_pbx_queue_voicemails_with_http_info(queue_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_pbx_queue_voicemails ...'
+      end
+      # verify the required parameter 'queue_uuid' is set
+      if @api_client.config.client_side_validation && queue_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'queue_uuid' when calling ConversationApi.get_pbx_queue_voicemails"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/queues/{queue_uuid}/voicemails'.sub('{' + 'queue_uuid' + '}', CGI.escape(queue_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxVoicemailMessageSummariesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_pbx_queue_voicemails",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_pbx_queue_voicemails\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -3855,6 +4175,70 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#leave_conversation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Listened Agent Voicemail
+    # Listened pbx agent Voicemail 
+    # @param recording_sid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def listened_pbx_agent_voicemail(recording_sid, opts = {})
+      listened_pbx_agent_voicemail_with_http_info(recording_sid, opts)
+      nil
+    end
+
+    # Listened Agent Voicemail
+    # Listened pbx agent Voicemail 
+    # @param recording_sid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def listened_pbx_agent_voicemail_with_http_info(recording_sid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.listened_pbx_agent_voicemail ...'
+      end
+      # verify the required parameter 'recording_sid' is set
+      if @api_client.config.client_side_validation && recording_sid.nil?
+        fail ArgumentError, "Missing the required parameter 'recording_sid' when calling ConversationApi.listened_pbx_agent_voicemail"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/agent/voicemails/{recording_sid}/listened'.sub('{' + 'recording_sid' + '}', CGI.escape(recording_sid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.listened_pbx_agent_voicemail",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#listened_pbx_agent_voicemail\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

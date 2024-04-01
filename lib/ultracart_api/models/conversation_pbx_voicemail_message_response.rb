@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationPbxTimeRangesResponse
+  class ConversationPbxVoicemailMessageResponse
     attr_accessor :error
 
     attr_accessor :metadata
@@ -22,7 +22,7 @@ module UltracartClient
     # Indicates if API call was successful
     attr_accessor :success
 
-    attr_accessor :time_ranges
+    attr_accessor :voicemail_message
 
     attr_accessor :warning
 
@@ -32,7 +32,7 @@ module UltracartClient
         :'error' => :'error',
         :'metadata' => :'metadata',
         :'success' => :'success',
-        :'time_ranges' => :'time_ranges',
+        :'voicemail_message' => :'voicemail_message',
         :'warning' => :'warning'
       }
     end
@@ -48,7 +48,7 @@ module UltracartClient
         :'error' => :'Error',
         :'metadata' => :'ResponseMetadata',
         :'success' => :'Boolean',
-        :'time_ranges' => :'Array<ConversationPbxTimeRange>',
+        :'voicemail_message' => :'ConversationPbxVoicemailMessage',
         :'warning' => :'Warning'
       }
     end
@@ -63,13 +63,13 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxTimeRangesResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxVoicemailMessageResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxTimeRangesResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxVoicemailMessageResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -86,10 +86,8 @@ module UltracartClient
         self.success = attributes[:'success']
       end
 
-      if attributes.key?(:'time_ranges')
-        if (value = attributes[:'time_ranges']).is_a?(Array)
-          self.time_ranges = value
-        end
+      if attributes.key?(:'voicemail_message')
+        self.voicemail_message = attributes[:'voicemail_message']
       end
 
       if attributes.key?(:'warning')
@@ -118,7 +116,7 @@ module UltracartClient
           error == o.error &&
           metadata == o.metadata &&
           success == o.success &&
-          time_ranges == o.time_ranges &&
+          voicemail_message == o.voicemail_message &&
           warning == o.warning
     end
 
@@ -131,7 +129,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [error, metadata, success, time_ranges, warning].hash
+      [error, metadata, success, voicemail_message, warning].hash
     end
 
     # Builds the object from hash

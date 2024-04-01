@@ -32,7 +32,7 @@ module UltracartClient
         :'error' => :'error',
         :'metadata' => :'metadata',
         :'success' => :'success',
-        :'time_baseds' => :'timeBaseds',
+        :'time_baseds' => :'time_baseds',
         :'warning' => :'warning'
       }
     end

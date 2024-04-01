@@ -14,26 +14,72 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationPbxTimeRangesResponse
-    attr_accessor :error
+  class ConversationPbxVoicemailMessageSummary
+    # Call SID
+    attr_accessor :call_sid
 
-    attr_accessor :metadata
+    # Duration in seconds
+    attr_accessor :duration
 
-    # Indicates if API call was successful
-    attr_accessor :success
+    # From phone number in E.164
+    attr_accessor :from
 
-    attr_accessor :time_ranges
+    # From caller id (if available)
+    attr_accessor :from_caller_id
 
-    attr_accessor :warning
+    # True if the voicemail has been listened to in the user interface
+    attr_accessor :listened
+
+    # Merchant ID
+    attr_accessor :merchant_id
+
+    # Recording SID
+    attr_accessor :recording_sid
+
+    # Recording size in bytes
+    attr_accessor :recording_size_bytes
+
+    # Recording Status
+    attr_accessor :recording_status
+
+    # Voicemail date/time
+    attr_accessor :voicemail_dts
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'error' => :'error',
-        :'metadata' => :'metadata',
-        :'success' => :'success',
-        :'time_ranges' => :'time_ranges',
-        :'warning' => :'warning'
+        :'call_sid' => :'call_sid',
+        :'duration' => :'duration',
+        :'from' => :'from',
+        :'from_caller_id' => :'from_caller_id',
+        :'listened' => :'listened',
+        :'merchant_id' => :'merchant_id',
+        :'recording_sid' => :'recording_sid',
+        :'recording_size_bytes' => :'recording_size_bytes',
+        :'recording_status' => :'recording_status',
+        :'voicemail_dts' => :'voicemail_dts'
       }
     end
 
@@ -45,11 +91,16 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'error' => :'Error',
-        :'metadata' => :'ResponseMetadata',
-        :'success' => :'Boolean',
-        :'time_ranges' => :'Array<ConversationPbxTimeRange>',
-        :'warning' => :'Warning'
+        :'call_sid' => :'String',
+        :'duration' => :'Integer',
+        :'from' => :'String',
+        :'from_caller_id' => :'String',
+        :'listened' => :'Boolean',
+        :'merchant_id' => :'String',
+        :'recording_sid' => :'String',
+        :'recording_size_bytes' => :'Integer',
+        :'recording_status' => :'String',
+        :'voicemail_dts' => :'String'
       }
     end
 
@@ -63,37 +114,55 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxTimeRangesResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxVoicemailMessageSummary` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxTimeRangesResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxVoicemailMessageSummary`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'error')
-        self.error = attributes[:'error']
+      if attributes.key?(:'call_sid')
+        self.call_sid = attributes[:'call_sid']
       end
 
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
+      if attributes.key?(:'duration')
+        self.duration = attributes[:'duration']
       end
 
-      if attributes.key?(:'success')
-        self.success = attributes[:'success']
+      if attributes.key?(:'from')
+        self.from = attributes[:'from']
       end
 
-      if attributes.key?(:'time_ranges')
-        if (value = attributes[:'time_ranges']).is_a?(Array)
-          self.time_ranges = value
-        end
+      if attributes.key?(:'from_caller_id')
+        self.from_caller_id = attributes[:'from_caller_id']
       end
 
-      if attributes.key?(:'warning')
-        self.warning = attributes[:'warning']
+      if attributes.key?(:'listened')
+        self.listened = attributes[:'listened']
+      end
+
+      if attributes.key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
+      end
+
+      if attributes.key?(:'recording_sid')
+        self.recording_sid = attributes[:'recording_sid']
+      end
+
+      if attributes.key?(:'recording_size_bytes')
+        self.recording_size_bytes = attributes[:'recording_size_bytes']
+      end
+
+      if attributes.key?(:'recording_status')
+        self.recording_status = attributes[:'recording_status']
+      end
+
+      if attributes.key?(:'voicemail_dts')
+        self.voicemail_dts = attributes[:'voicemail_dts']
       end
     end
 
@@ -107,7 +176,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      recording_status_validator = EnumAttributeValidator.new('String', ["completed"])
+      return false unless recording_status_validator.valid?(@recording_status)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] recording_status Object to be assigned
+    def recording_status=(recording_status)
+      validator = EnumAttributeValidator.new('String', ["completed"])
+      unless validator.valid?(recording_status)
+        fail ArgumentError, "invalid value for \"recording_status\", must be one of #{validator.allowable_values}."
+      end
+      @recording_status = recording_status
     end
 
     # Checks equality by comparing each attribute.
@@ -115,11 +196,16 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          error == o.error &&
-          metadata == o.metadata &&
-          success == o.success &&
-          time_ranges == o.time_ranges &&
-          warning == o.warning
+          call_sid == o.call_sid &&
+          duration == o.duration &&
+          from == o.from &&
+          from_caller_id == o.from_caller_id &&
+          listened == o.listened &&
+          merchant_id == o.merchant_id &&
+          recording_sid == o.recording_sid &&
+          recording_size_bytes == o.recording_size_bytes &&
+          recording_status == o.recording_status &&
+          voicemail_dts == o.voicemail_dts
     end
 
     # @see the `==` method
@@ -131,7 +217,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [error, metadata, success, time_ranges, warning].hash
+      [call_sid, duration, from, from_caller_id, listened, merchant_id, recording_sid, recording_size_bytes, recording_status, voicemail_dts].hash
     end
 
     # Builds the object from hash

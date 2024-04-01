@@ -32,7 +32,7 @@ module UltracartClient
         :'error' => :'error',
         :'metadata' => :'metadata',
         :'success' => :'success',
-        :'voicemail_mailbox' => :'voicemailMailbox',
+        :'voicemail_mailbox' => :'voicemail_mailbox',
         :'warning' => :'warning'
       }
     end
