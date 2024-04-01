@@ -31,7 +31,7 @@ module UltracartClient
         :'error' => :'error',
         :'metadata' => :'metadata',
         :'success' => :'success',
-        :'voicemail_mailbox' => :'voicemailMailbox',
+        :'voicemail_mailbox' => :'voicemail_mailbox',
         :'warning' => :'warning'
       }
     end
@@ -67,8 +67,8 @@ module UltracartClient
         self.success = attributes[:'success']
       end
 
-      if attributes.has_key?(:'voicemailMailbox')
-        self.voicemail_mailbox = attributes[:'voicemailMailbox']
+      if attributes.has_key?(:'voicemail_mailbox')
+        self.voicemail_mailbox = attributes[:'voicemail_mailbox']
       end
 
       if attributes.has_key?(:'warning')

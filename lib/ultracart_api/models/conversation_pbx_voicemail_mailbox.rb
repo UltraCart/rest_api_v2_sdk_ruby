@@ -47,6 +47,28 @@ module UltracartClient
     # Voicemail say voice
     attr_accessor :voicemail_say_voice
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -181,6 +203,8 @@ module UltracartClient
       return false if !@send_notices_to_email.nil? && @send_notices_to_email.to_s.length > 250
       return false if !@voicemail_follow_play_audio_uuid.nil? && @voicemail_follow_play_audio_uuid.to_s.length > 50
       return false if !@voicemail_mailbox_id.nil? && @voicemail_mailbox_id.to_s.length > 50
+      voicemail_mailbox_type_validator = EnumAttributeValidator.new('String', ['agent', 'shared'])
+      return false unless voicemail_mailbox_type_validator.valid?(@voicemail_mailbox_type)
       return false if !@voicemail_mailbox_type.nil? && @voicemail_mailbox_type.to_s.length > 50
       return false if !@voicemail_prompt_play_audio_uuid.nil? && @voicemail_prompt_play_audio_uuid.to_s.length > 50
       return false if !@voicemail_say_voice.nil? && @voicemail_say_voice.to_s.length > 50
@@ -237,13 +261,13 @@ module UltracartClient
       @voicemail_mailbox_id = voicemail_mailbox_id
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] voicemail_mailbox_type Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] voicemail_mailbox_type Object to be assigned
     def voicemail_mailbox_type=(voicemail_mailbox_type)
-      if !voicemail_mailbox_type.nil? && voicemail_mailbox_type.to_s.length > 50
-        fail ArgumentError, 'invalid value for "voicemail_mailbox_type", the character length must be smaller than or equal to 50.'
+      validator = EnumAttributeValidator.new('String', ['agent', 'shared'])
+      unless validator.valid?(voicemail_mailbox_type)
+        fail ArgumentError, 'invalid value for "voicemail_mailbox_type", must be one of #{validator.allowable_values}.'
       end
-
       @voicemail_mailbox_type = voicemail_mailbox_type
     end
 

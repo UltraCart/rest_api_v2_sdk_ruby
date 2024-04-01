@@ -50,6 +50,9 @@ module UltracartClient
     # The life time value of this item including the original purchase
     attr_accessor :life_time_value
 
+    # Calculated next item id
+    attr_accessor :next_item_id
+
     # The date/time of when the next pre-shipment notice should be sent
     attr_accessor :next_preshipment_notice_dts
 
@@ -128,6 +131,7 @@ module UltracartClient
         :'future_schedules' => :'future_schedules',
         :'last_order_dts' => :'last_order_dts',
         :'life_time_value' => :'life_time_value',
+        :'next_item_id' => :'next_item_id',
         :'next_preshipment_notice_dts' => :'next_preshipment_notice_dts',
         :'next_shipment_dts' => :'next_shipment_dts',
         :'no_order_after_dts' => :'no_order_after_dts',
@@ -160,6 +164,7 @@ module UltracartClient
         :'future_schedules' => :'Array<AutoOrderItemFutureSchedule>',
         :'last_order_dts' => :'String',
         :'life_time_value' => :'Float',
+        :'next_item_id' => :'String',
         :'next_preshipment_notice_dts' => :'String',
         :'next_shipment_dts' => :'String',
         :'no_order_after_dts' => :'String',
@@ -233,6 +238,10 @@ module UltracartClient
 
       if attributes.has_key?(:'life_time_value')
         self.life_time_value = attributes[:'life_time_value']
+      end
+
+      if attributes.has_key?(:'next_item_id')
+        self.next_item_id = attributes[:'next_item_id']
       end
 
       if attributes.has_key?(:'next_preshipment_notice_dts')
@@ -336,6 +345,7 @@ module UltracartClient
           future_schedules == o.future_schedules &&
           last_order_dts == o.last_order_dts &&
           life_time_value == o.life_time_value &&
+          next_item_id == o.next_item_id &&
           next_preshipment_notice_dts == o.next_preshipment_notice_dts &&
           next_shipment_dts == o.next_shipment_dts &&
           no_order_after_dts == o.no_order_after_dts &&
@@ -361,7 +371,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [arbitrary_item_id, arbitrary_percentage_discount, arbitrary_quantity, arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_remaining_orders, auto_order_item_oid, first_order_dts, frequency, future_schedules, last_order_dts, life_time_value, next_preshipment_notice_dts, next_shipment_dts, no_order_after_dts, number_of_rebills, options, original_item_id, original_quantity, paused, paypal_payer_id, paypal_recurring_payment_profile_id, preshipment_notice_sent, rebill_value, remaining_repeat_count, simple_schedule].hash
+      [arbitrary_item_id, arbitrary_percentage_discount, arbitrary_quantity, arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_remaining_orders, auto_order_item_oid, first_order_dts, frequency, future_schedules, last_order_dts, life_time_value, next_item_id, next_preshipment_notice_dts, next_shipment_dts, no_order_after_dts, number_of_rebills, options, original_item_id, original_quantity, paused, paypal_payer_id, paypal_recurring_payment_profile_id, preshipment_notice_sent, rebill_value, remaining_repeat_count, simple_schedule].hash
     end
 
     # Builds the object from hash

@@ -31,7 +31,7 @@ module UltracartClient
         :'error' => :'error',
         :'metadata' => :'metadata',
         :'success' => :'success',
-        :'time_range' => :'timeRange',
+        :'time_range' => :'time_range',
         :'warning' => :'warning'
       }
     end
@@ -67,8 +67,8 @@ module UltracartClient
         self.success = attributes[:'success']
       end
 
-      if attributes.has_key?(:'timeRange')
-        self.time_range = attributes[:'timeRange']
+      if attributes.has_key?(:'time_range')
+        self.time_range = attributes[:'time_range']
       end
 
       if attributes.has_key?(:'warning')

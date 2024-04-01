@@ -30,7 +30,7 @@ module UltracartClient
       {
         :'error' => :'error',
         :'metadata' => :'metadata',
-        :'phone_number' => :'phoneNumber',
+        :'phone_number' => :'phone_number',
         :'success' => :'success',
         :'warning' => :'warning'
       }
@@ -63,8 +63,8 @@ module UltracartClient
         self.metadata = attributes[:'metadata']
       end
 
-      if attributes.has_key?(:'phoneNumber')
-        self.phone_number = attributes[:'phoneNumber']
+      if attributes.has_key?(:'phone_number')
+        self.phone_number = attributes[:'phone_number']
       end
 
       if attributes.has_key?(:'success')

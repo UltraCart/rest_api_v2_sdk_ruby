@@ -13,37 +13,88 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ConversationPbxVoicemailMailboxesResponse
-    attr_accessor :error
+  class ConversationPbxVoicemailMessageSummary
+    # Call SID
+    attr_accessor :call_sid
 
-    attr_accessor :metadata
+    # Duration in seconds
+    attr_accessor :duration
 
-    # Indicates if API call was successful
-    attr_accessor :success
+    # From phone number in E.164
+    attr_accessor :from
 
-    attr_accessor :voicemail_mailboxes
+    # From caller id (if available)
+    attr_accessor :from_caller_id
 
-    attr_accessor :warning
+    # True if the voicemail has been listened to in the user interface
+    attr_accessor :listened
+
+    # Merchant ID
+    attr_accessor :merchant_id
+
+    # Recording SID
+    attr_accessor :recording_sid
+
+    # Recording size in bytes
+    attr_accessor :recording_size_bytes
+
+    # Recording Status
+    attr_accessor :recording_status
+
+    # Voicemail date/time
+    attr_accessor :voicemail_dts
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'error' => :'error',
-        :'metadata' => :'metadata',
-        :'success' => :'success',
-        :'voicemail_mailboxes' => :'voicemail_mailboxes',
-        :'warning' => :'warning'
+        :'call_sid' => :'call_sid',
+        :'duration' => :'duration',
+        :'from' => :'from',
+        :'from_caller_id' => :'from_caller_id',
+        :'listened' => :'listened',
+        :'merchant_id' => :'merchant_id',
+        :'recording_sid' => :'recording_sid',
+        :'recording_size_bytes' => :'recording_size_bytes',
+        :'recording_status' => :'recording_status',
+        :'voicemail_dts' => :'voicemail_dts'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'error' => :'Error',
-        :'metadata' => :'ResponseMetadata',
-        :'success' => :'BOOLEAN',
-        :'voicemail_mailboxes' => :'Array<ConversationPbxVoicemailMailbox>',
-        :'warning' => :'Warning'
+        :'call_sid' => :'String',
+        :'duration' => :'Integer',
+        :'from' => :'String',
+        :'from_caller_id' => :'String',
+        :'listened' => :'BOOLEAN',
+        :'merchant_id' => :'String',
+        :'recording_sid' => :'String',
+        :'recording_size_bytes' => :'Integer',
+        :'recording_status' => :'String',
+        :'voicemail_dts' => :'String'
       }
     end
 
@@ -55,26 +106,44 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'error')
-        self.error = attributes[:'error']
+      if attributes.has_key?(:'call_sid')
+        self.call_sid = attributes[:'call_sid']
       end
 
-      if attributes.has_key?(:'metadata')
-        self.metadata = attributes[:'metadata']
+      if attributes.has_key?(:'duration')
+        self.duration = attributes[:'duration']
       end
 
-      if attributes.has_key?(:'success')
-        self.success = attributes[:'success']
+      if attributes.has_key?(:'from')
+        self.from = attributes[:'from']
       end
 
-      if attributes.has_key?(:'voicemail_mailboxes')
-        if (value = attributes[:'voicemail_mailboxes']).is_a?(Array)
-          self.voicemail_mailboxes = value
-        end
+      if attributes.has_key?(:'from_caller_id')
+        self.from_caller_id = attributes[:'from_caller_id']
       end
 
-      if attributes.has_key?(:'warning')
-        self.warning = attributes[:'warning']
+      if attributes.has_key?(:'listened')
+        self.listened = attributes[:'listened']
+      end
+
+      if attributes.has_key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
+      end
+
+      if attributes.has_key?(:'recording_sid')
+        self.recording_sid = attributes[:'recording_sid']
+      end
+
+      if attributes.has_key?(:'recording_size_bytes')
+        self.recording_size_bytes = attributes[:'recording_size_bytes']
+      end
+
+      if attributes.has_key?(:'recording_status')
+        self.recording_status = attributes[:'recording_status']
+      end
+
+      if attributes.has_key?(:'voicemail_dts')
+        self.voicemail_dts = attributes[:'voicemail_dts']
       end
     end
 
@@ -88,7 +157,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      recording_status_validator = EnumAttributeValidator.new('String', ['completed'])
+      return false unless recording_status_validator.valid?(@recording_status)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] recording_status Object to be assigned
+    def recording_status=(recording_status)
+      validator = EnumAttributeValidator.new('String', ['completed'])
+      unless validator.valid?(recording_status)
+        fail ArgumentError, 'invalid value for "recording_status", must be one of #{validator.allowable_values}.'
+      end
+      @recording_status = recording_status
     end
 
     # Checks equality by comparing each attribute.
@@ -96,11 +177,16 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          error == o.error &&
-          metadata == o.metadata &&
-          success == o.success &&
-          voicemail_mailboxes == o.voicemail_mailboxes &&
-          warning == o.warning
+          call_sid == o.call_sid &&
+          duration == o.duration &&
+          from == o.from &&
+          from_caller_id == o.from_caller_id &&
+          listened == o.listened &&
+          merchant_id == o.merchant_id &&
+          recording_sid == o.recording_sid &&
+          recording_size_bytes == o.recording_size_bytes &&
+          recording_status == o.recording_status &&
+          voicemail_dts == o.voicemail_dts
     end
 
     # @see the `==` method
@@ -112,7 +198,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [error, metadata, success, voicemail_mailboxes, warning].hash
+      [call_sid, duration, from, from_caller_id, listened, merchant_id, recording_sid, recording_size_bytes, recording_status, voicemail_dts].hash
     end
 
     # Builds the object from hash

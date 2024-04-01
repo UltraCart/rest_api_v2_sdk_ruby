@@ -31,7 +31,7 @@ module UltracartClient
         :'error' => :'error',
         :'metadata' => :'metadata',
         :'success' => :'success',
-        :'time_based' => :'timeBased',
+        :'time_based' => :'time_based',
         :'warning' => :'warning'
       }
     end
@@ -67,8 +67,8 @@ module UltracartClient
         self.success = attributes[:'success']
       end
 
-      if attributes.has_key?(:'timeBased')
-        self.time_based = attributes[:'timeBased']
+      if attributes.has_key?(:'time_based')
+        self.time_based = attributes[:'time_based']
       end
 
       if attributes.has_key?(:'warning')

@@ -13,7 +13,7 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ConversationPbxVoicemailMailboxesResponse
+  class ConversationPbxVoicemailMessageSummariesResponse
     attr_accessor :error
 
     attr_accessor :metadata
@@ -21,7 +21,7 @@ module UltracartClient
     # Indicates if API call was successful
     attr_accessor :success
 
-    attr_accessor :voicemail_mailboxes
+    attr_accessor :voicemail_message_summaries
 
     attr_accessor :warning
 
@@ -31,7 +31,7 @@ module UltracartClient
         :'error' => :'error',
         :'metadata' => :'metadata',
         :'success' => :'success',
-        :'voicemail_mailboxes' => :'voicemail_mailboxes',
+        :'voicemail_message_summaries' => :'voicemail_message_summaries',
         :'warning' => :'warning'
       }
     end
@@ -42,7 +42,7 @@ module UltracartClient
         :'error' => :'Error',
         :'metadata' => :'ResponseMetadata',
         :'success' => :'BOOLEAN',
-        :'voicemail_mailboxes' => :'Array<ConversationPbxVoicemailMailbox>',
+        :'voicemail_message_summaries' => :'Array<ConversationPbxVoicemailMessageSummary>',
         :'warning' => :'Warning'
       }
     end
@@ -67,9 +67,9 @@ module UltracartClient
         self.success = attributes[:'success']
       end
 
-      if attributes.has_key?(:'voicemail_mailboxes')
-        if (value = attributes[:'voicemail_mailboxes']).is_a?(Array)
-          self.voicemail_mailboxes = value
+      if attributes.has_key?(:'voicemail_message_summaries')
+        if (value = attributes[:'voicemail_message_summaries']).is_a?(Array)
+          self.voicemail_message_summaries = value
         end
       end
 
@@ -99,7 +99,7 @@ module UltracartClient
           error == o.error &&
           metadata == o.metadata &&
           success == o.success &&
-          voicemail_mailboxes == o.voicemail_mailboxes &&
+          voicemail_message_summaries == o.voicemail_message_summaries &&
           warning == o.warning
     end
 
@@ -112,7 +112,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [error, metadata, success, voicemail_mailboxes, warning].hash
+      [error, metadata, success, voicemail_message_summaries, warning].hash
     end
 
     # Builds the object from hash

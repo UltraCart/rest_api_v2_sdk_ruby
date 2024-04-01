@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**delete_department**](ConversationApi.md#delete_department) | **DELETE** /conversation/departments/{conversation_department_oid} | Delete a conversation department
 [**delete_engagement**](ConversationApi.md#delete_engagement) | **DELETE** /conversation/engagements/{conversation_engagement_oid} | Delete a conversation engagement
 [**delete_pbx_agent**](ConversationApi.md#delete_pbx_agent) | **DELETE** /conversation/pbx/agent/{conversationPbxAgentUuid} | Delete pbx agent
+[**delete_pbx_agent_voicemail**](ConversationApi.md#delete_pbx_agent_voicemail) | **DELETE** /conversation/pbx/agent/voicemails/{recording_sid} | Delete Agent Voicemail
 [**delete_pbx_audio**](ConversationApi.md#delete_pbx_audio) | **DELETE** /conversation/pbx/audio/{conversationPbxAudioUuid} | Delete pbx audio
 [**delete_pbx_menu**](ConversationApi.md#delete_pbx_menu) | **DELETE** /conversation/pbx/menu/{conversationPbxMenuUuid} | Delete pbx menu
 [**delete_pbx_phone_number**](ConversationApi.md#delete_pbx_phone_number) | **DELETE** /conversation/pbx/phone_number/{conversationPbxPhoneNumberUuid} | Delete pbx phoneNumber
@@ -36,6 +37,8 @@ Method | HTTP request | Description
 [**get_conversations_search**](ConversationApi.md#get_conversations_search) | **POST** /conversation/conversations/search | Search conversations
 [**get_locations_for_engagement**](ConversationApi.md#get_locations_for_engagement) | **POST** /conversation/locations | Get location data for engagement configuration
 [**get_pbx_agent**](ConversationApi.md#get_pbx_agent) | **GET** /conversation/pbx/agent/{conversationPbxAgentUuid} | Get pbx agent
+[**get_pbx_agent_voicemail**](ConversationApi.md#get_pbx_agent_voicemail) | **GET** /conversation/pbx/agent/voicemails/{recording_sid} | Get Agent Voicemail
+[**get_pbx_agent_voicemails**](ConversationApi.md#get_pbx_agent_voicemails) | **GET** /conversation/pbx/agent/voicemails | Get Agent Voicemails
 [**get_pbx_agents**](ConversationApi.md#get_pbx_agents) | **GET** /conversation/pbx/agent | Get pbx agents
 [**get_pbx_audio**](ConversationApi.md#get_pbx_audio) | **GET** /conversation/pbx/audio/{conversationPbxAudioUuid} | Get pbx audio
 [**get_pbx_audios**](ConversationApi.md#get_pbx_audios) | **GET** /conversation/pbx/audio | Get pbx audios
@@ -44,6 +47,8 @@ Method | HTTP request | Description
 [**get_pbx_phone_number**](ConversationApi.md#get_pbx_phone_number) | **GET** /conversation/pbx/phone_number/{conversationPbxPhoneNumberUuid} | Get pbx phoneNumber
 [**get_pbx_phone_numbers**](ConversationApi.md#get_pbx_phone_numbers) | **GET** /conversation/pbx/phone_number | Get pbx phoneNumbers
 [**get_pbx_queue**](ConversationApi.md#get_pbx_queue) | **GET** /conversation/pbx/queue/{conversationPbxQueueUuid} | Get pbx queue
+[**get_pbx_queue_voicemail**](ConversationApi.md#get_pbx_queue_voicemail) | **GET** /conversation/pbx/queues/{queue_uuid}/voicemails/{recording_sid} | Get Queue Voicemail
+[**get_pbx_queue_voicemails**](ConversationApi.md#get_pbx_queue_voicemails) | **GET** /conversation/pbx/queues/{queue_uuid}/voicemails | Get Queue Voicemails
 [**get_pbx_queues**](ConversationApi.md#get_pbx_queues) | **GET** /conversation/pbx/queue | Get pbx queues
 [**get_pbx_time_based**](ConversationApi.md#get_pbx_time_based) | **GET** /conversation/pbx/time_based/{conversationPbxTimeBasedUuid} | Get pbx timeBased
 [**get_pbx_time_baseds**](ConversationApi.md#get_pbx_time_baseds) | **GET** /conversation/pbx/time_based | Get pbx timeBaseds
@@ -64,6 +69,7 @@ Method | HTTP request | Description
 [**insert_pbx_voicemail_mailbox**](ConversationApi.md#insert_pbx_voicemail_mailbox) | **POST** /conversation/pbx/voicemail_mailbox | Insert pbx voicemailMailbox
 [**join_conversation**](ConversationApi.md#join_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/join | Join a conversation
 [**leave_conversation**](ConversationApi.md#leave_conversation) | **DELETE** /conversation/conversations/{conversation_uuid}/leave | Leave a conversation
+[**listened_pbx_agent_voicemail**](ConversationApi.md#listened_pbx_agent_voicemail) | **GET** /conversation/pbx/agent/voicemails/{recording_sid}/listened | Listened Agent Voicemail
 [**mark_read_conversation**](ConversationApi.md#mark_read_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/markread | Mark a conversation as read
 [**reset_conversation_pbx_queue_statistics**](ConversationApi.md#reset_conversation_pbx_queue_statistics) | **POST** /conversation/pbx/queues/{queue_uuid}/reset_statistics | reset statistics within the queue
 [**search_conversation_canned_messages**](ConversationApi.md#search_conversation_canned_messages) | **POST** /conversation/canned_messages/search | Search for canned messages by short_code
@@ -269,6 +275,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ConversationPbxAgentResponse**](ConversationPbxAgentResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **delete_pbx_agent_voicemail**
+> delete_pbx_agent_voicemail(recording_sid)
+
+Delete Agent Voicemail
+
+Delete pbx agent Voicemail 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+recording_sid = 'recording_sid_example' # String | 
+
+
+begin
+  #Delete Agent Voicemail
+  api_instance.delete_pbx_agent_voicemail(recording_sid)
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->delete_pbx_agent_voicemail: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **recording_sid** | **String**|  | 
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
@@ -1648,6 +1703,101 @@ Name | Type | Description  | Notes
 
 
 
+# **get_pbx_agent_voicemail**
+> ConversationPbxVoicemailMessageResponse get_pbx_agent_voicemail(recording_sid)
+
+Get Agent Voicemail
+
+Retrieve pbx agent Voicemail 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+recording_sid = 'recording_sid_example' # String | 
+
+
+begin
+  #Get Agent Voicemail
+  result = api_instance.get_pbx_agent_voicemail(recording_sid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->get_pbx_agent_voicemail: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **recording_sid** | **String**|  | 
+
+### Return type
+
+[**ConversationPbxVoicemailMessageResponse**](ConversationPbxVoicemailMessageResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_pbx_agent_voicemails**
+> ConversationPbxVoicemailMessageSummariesResponse get_pbx_agent_voicemails
+
+Get Agent Voicemails
+
+Retrieve pbx agent Voicemails 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+
+begin
+  #Get Agent Voicemails
+  result = api_instance.get_pbx_agent_voicemails
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->get_pbx_agent_voicemails: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxVoicemailMessageSummariesResponse**](ConversationPbxVoicemailMessageSummariesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **get_pbx_agents**
 > ConversationPbxAgentsResponse get_pbx_agents
 
@@ -2016,6 +2166,109 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ConversationPbxQueueResponse**](ConversationPbxQueueResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_pbx_queue_voicemail**
+> ConversationPbxVoicemailMessageResponse get_pbx_queue_voicemail(queue_uuid, recording_sid)
+
+Get Queue Voicemail
+
+Retrieve pbx queue Voicemail 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+queue_uuid = 'queue_uuid_example' # String | 
+
+recording_sid = 'recording_sid_example' # String | 
+
+
+begin
+  #Get Queue Voicemail
+  result = api_instance.get_pbx_queue_voicemail(queue_uuid, recording_sid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->get_pbx_queue_voicemail: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **queue_uuid** | **String**|  | 
+ **recording_sid** | **String**|  | 
+
+### Return type
+
+[**ConversationPbxVoicemailMessageResponse**](ConversationPbxVoicemailMessageResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_pbx_queue_voicemails**
+> ConversationPbxVoicemailMessageSummariesResponse get_pbx_queue_voicemails(queue_uuid)
+
+Get Queue Voicemails
+
+Retrieve pbx queue voicemails 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+queue_uuid = 'queue_uuid_example' # String | 
+
+
+begin
+  #Get Queue Voicemails
+  result = api_instance.get_pbx_queue_voicemails(queue_uuid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->get_pbx_queue_voicemails: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **queue_uuid** | **String**|  | 
+
+### Return type
+
+[**ConversationPbxVoicemailMessageSummariesResponse**](ConversationPbxVoicemailMessageSummariesResponse.md)
 
 ### Authorization
 
@@ -2994,6 +3247,55 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **conversation_uuid** | **String**|  | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **listened_pbx_agent_voicemail**
+> listened_pbx_agent_voicemail(recording_sid)
+
+Listened Agent Voicemail
+
+Listened pbx agent Voicemail 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+recording_sid = 'recording_sid_example' # String | 
+
+
+begin
+  #Listened Agent Voicemail
+  api_instance.listened_pbx_agent_voicemail(recording_sid)
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->listened_pbx_agent_voicemail: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **recording_sid** | **String**|  | 
 
 ### Return type
 
