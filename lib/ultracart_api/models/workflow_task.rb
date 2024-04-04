@@ -50,7 +50,7 @@ module UltracartClient
     # Date/time that the workflow task will expire and be closed.  This is set by system generated tasks.
     attr_accessor :expiration_dts
 
-    # Global task numer
+    # Global task number
     attr_accessor :global_task_number
 
     # Array of history records for the task
@@ -71,7 +71,7 @@ module UltracartClient
     # Object ID
     attr_accessor :object_id
 
-    # Object specific task numer
+    # Object specific task number
     attr_accessor :object_task_number
 
     # Object Type

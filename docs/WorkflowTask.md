@@ -16,14 +16,14 @@
 | **dependant_workflow_task_uuid** | **String** | Dependant Workflow Task UUID (must be completed before this task can be completed) | [optional] |
 | **due_dts** | **String** | Date/time that the workflow task is due | [optional] |
 | **expiration_dts** | **String** | Date/time that the workflow task will expire and be closed.  This is set by system generated tasks. | [optional] |
-| **global_task_number** | **Integer** | Global task numer | [optional] |
+| **global_task_number** | **Integer** | Global task number | [optional] |
 | **histories** | [**Array&lt;WorkflowTaskHistory&gt;**](WorkflowTaskHistory.md) | Array of history records for the task | [optional] |
 | **last_update_dts** | **String** | Date/time that the workflow task was last updated | [optional] |
 | **merchant_id** | **String** | Merchant ID | [optional] |
 | **notes** | [**Array&lt;WorkflowNote&gt;**](WorkflowNote.md) | Notes on the Workflow Task | [optional] |
 | **object_email** | **String** | Object is associated with customer email | [optional] |
 | **object_id** | **String** | Object ID | [optional] |
-| **object_task_number** | **Integer** | Object specific task numer | [optional] |
+| **object_task_number** | **Integer** | Object specific task number | [optional] |
 | **object_type** | **String** | Object Type | [optional] |
 | **object_url** | **String** | Object URL | [optional] |
 | **priority** | **String** | Priority | [optional] |

@@ -20,6 +20,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**insert_digital_item**](ItemApi.md#insert_digital_item) | **POST** /item/digital_library | Create a file within the digital library |
 | [**insert_item**](ItemApi.md#insert_item) | **POST** /item/items | Create an item |
 | [**insert_review**](ItemApi.md#insert_review) | **POST** /item/items/{merchant_item_oid}/reviews | Insert a review |
+| [**insert_update_item_content_attribute**](ItemApi.md#insert_update_item_content_attribute) | **POST** /item/items/{merchant_item_oid}/content/attributes | Upsert an item content attribute |
 | [**update_digital_item**](ItemApi.md#update_digital_item) | **PUT** /item/digital_library/{digital_item_oid} | Updates a file within the digital library |
 | [**update_item**](ItemApi.md#update_item) | **PUT** /item/items/{merchant_item_oid} | Update an item |
 | [**update_items**](ItemApi.md#update_items) | **PUT** /item/items/batch | Update multiple items |
@@ -1215,6 +1216,78 @@ end
 ### Return type
 
 [**ItemReviewResponse**](ItemReviewResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## insert_update_item_content_attribute
+
+> insert_update_item_content_attribute(merchant_item_oid, item_attribute)
+
+Upsert an item content attribute
+
+Update an item content attribute, creating it new if it does not yet exist. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+merchant_item_oid = 56 # Integer | The item oid to modify.
+item_attribute = UltracartClient::ItemContentAttribute.new # ItemContentAttribute | Item content attribute to upsert
+
+begin
+  # Upsert an item content attribute
+  api_instance.insert_update_item_content_attribute(merchant_item_oid, item_attribute)
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->insert_update_item_content_attribute: #{e}"
+end
+```
+
+#### Using the insert_update_item_content_attribute_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> insert_update_item_content_attribute_with_http_info(merchant_item_oid, item_attribute)
+
+```ruby
+begin
+  # Upsert an item content attribute
+  data, status_code, headers = api_instance.insert_update_item_content_attribute_with_http_info(merchant_item_oid, item_attribute)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->insert_update_item_content_attribute_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **merchant_item_oid** | **Integer** | The item oid to modify. |  |
+| **item_attribute** | [**ItemContentAttribute**](ItemContentAttribute.md) | Item content attribute to upsert |  |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 

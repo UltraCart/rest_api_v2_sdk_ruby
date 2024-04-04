@@ -15,11 +15,17 @@ require 'time'
 
 module UltracartClient
   class WorkflowTasksRequest
+    # Assigned to group
+    attr_accessor :assigned_to_group
+
     # Assigned to group ID
     attr_accessor :assigned_to_group_id
 
     # Tasks are assigned to me either by direct user id or a group that the user is a member of
     attr_accessor :assigned_to_me
+
+    # Assigned to user
+    attr_accessor :assigned_to_user
 
     # Assigned to user ID
     attr_accessor :assigned_to_user_id
@@ -93,8 +99,10 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'assigned_to_group' => :'assigned_to_group',
         :'assigned_to_group_id' => :'assigned_to_group_id',
         :'assigned_to_me' => :'assigned_to_me',
+        :'assigned_to_user' => :'assigned_to_user',
         :'assigned_to_user_id' => :'assigned_to_user_id',
         :'created_by' => :'created_by',
         :'created_dts_begin' => :'created_dts_begin',
@@ -122,8 +130,10 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'assigned_to_group' => :'String',
         :'assigned_to_group_id' => :'Integer',
         :'assigned_to_me' => :'Boolean',
+        :'assigned_to_user' => :'String',
         :'assigned_to_user_id' => :'Integer',
         :'created_by' => :'WorkflowUser',
         :'created_dts_begin' => :'String',
@@ -164,12 +174,20 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'assigned_to_group')
+        self.assigned_to_group = attributes[:'assigned_to_group']
+      end
+
       if attributes.key?(:'assigned_to_group_id')
         self.assigned_to_group_id = attributes[:'assigned_to_group_id']
       end
 
       if attributes.key?(:'assigned_to_me')
         self.assigned_to_me = attributes[:'assigned_to_me']
+      end
+
+      if attributes.key?(:'assigned_to_user')
+        self.assigned_to_user = attributes[:'assigned_to_user']
       end
 
       if attributes.key?(:'assigned_to_user_id')
@@ -293,8 +311,10 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          assigned_to_group == o.assigned_to_group &&
           assigned_to_group_id == o.assigned_to_group_id &&
           assigned_to_me == o.assigned_to_me &&
+          assigned_to_user == o.assigned_to_user &&
           assigned_to_user_id == o.assigned_to_user_id &&
           created_by == o.created_by &&
           created_dts_begin == o.created_dts_begin &&
@@ -322,7 +342,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [assigned_to_group_id, assigned_to_me, assigned_to_user_id, created_by, created_dts_begin, created_dts_end, delay_until_dts_begin, delay_until_dts_end, due_dts_begin, due_dts_end, last_update_dts_begin, last_update_dts_end, object_email, object_type, priority, status, tags, unassigned].hash
+      [assigned_to_group, assigned_to_group_id, assigned_to_me, assigned_to_user, assigned_to_user_id, created_by, created_dts_begin, created_dts_end, delay_until_dts_begin, delay_until_dts_end, due_dts_begin, due_dts_end, last_update_dts_begin, last_update_dts_end, object_email, object_type, priority, status, tags, unassigned].hash
     end
 
     # Builds the object from hash

@@ -1146,6 +1146,81 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Upsert an item content attribute
+    # Update an item content attribute, creating it new if it does not yet exist. 
+    # @param merchant_item_oid [Integer] The item oid to modify.
+    # @param item_attribute [ItemContentAttribute] Item content attribute to upsert
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def insert_update_item_content_attribute(merchant_item_oid, item_attribute, opts = {})
+      insert_update_item_content_attribute_with_http_info(merchant_item_oid, item_attribute, opts)
+      nil
+    end
+
+    # Upsert an item content attribute
+    # Update an item content attribute, creating it new if it does not yet exist. 
+    # @param merchant_item_oid [Integer] The item oid to modify.
+    # @param item_attribute [ItemContentAttribute] Item content attribute to upsert
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def insert_update_item_content_attribute_with_http_info(merchant_item_oid, item_attribute, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ItemApi.insert_update_item_content_attribute ...'
+      end
+      # verify the required parameter 'merchant_item_oid' is set
+      if @api_client.config.client_side_validation && merchant_item_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'merchant_item_oid' when calling ItemApi.insert_update_item_content_attribute"
+      end
+      # verify the required parameter 'item_attribute' is set
+      if @api_client.config.client_side_validation && item_attribute.nil?
+        fail ArgumentError, "Missing the required parameter 'item_attribute' when calling ItemApi.insert_update_item_content_attribute"
+      end
+      # resource path
+      local_var_path = '/item/items/{merchant_item_oid}/content/attributes'.sub('{' + 'merchant_item_oid' + '}', CGI.escape(merchant_item_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(item_attribute)
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ItemApi.insert_update_item_content_attribute",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ItemApi#insert_update_item_content_attribute\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Updates a file within the digital library
     # Updates a file within the digital library.  This does not update an item, but updates a digital file available and selectable as part (or all) of an item. 
     # @param digital_item_oid [Integer] The digital item oid to update.
