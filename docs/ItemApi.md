@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**insert_digital_item**](ItemApi.md#insert_digital_item) | **POST** /item/digital_library | Create a file within the digital library
 [**insert_item**](ItemApi.md#insert_item) | **POST** /item/items | Create an item
 [**insert_review**](ItemApi.md#insert_review) | **POST** /item/items/{merchant_item_oid}/reviews | Insert a review
+[**insert_update_item_content_attribute**](ItemApi.md#insert_update_item_content_attribute) | **POST** /item/items/{merchant_item_oid}/content/attributes | Upsert an item content attribute
 [**update_digital_item**](ItemApi.md#update_digital_item) | **PUT** /item/digital_library/{digital_item_oid} | Updates a file within the digital library
 [**update_item**](ItemApi.md#update_item) | **PUT** /item/items/{merchant_item_oid} | Update an item
 [**update_items**](ItemApi.md#update_items) | **PUT** /item/items/batch | Update multiple items
@@ -877,6 +878,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ItemReviewResponse**](ItemReviewResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
+ - **Accept**: application/json
+
+
+
+# **insert_update_item_content_attribute**
+> insert_update_item_content_attribute(item_attribute, merchant_item_oid)
+
+Upsert an item content attribute
+
+Update an item content attribute, creating it new if it does not yet exist. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ItemApi.new_using_api_key(simple_key, false, false)
+
+
+item_attribute = UltracartClient::ItemContentAttribute.new # ItemContentAttribute | Item content attribute to upsert
+
+merchant_item_oid = 56 # Integer | The item oid to modify.
+
+
+begin
+  #Upsert an item content attribute
+  api_instance.insert_update_item_content_attribute(item_attribute, merchant_item_oid)
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ItemApi->insert_update_item_content_attribute: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **item_attribute** | [**ItemContentAttribute**](ItemContentAttribute.md)| Item content attribute to upsert | 
+ **merchant_item_oid** | **Integer**| The item oid to modify. | 
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 

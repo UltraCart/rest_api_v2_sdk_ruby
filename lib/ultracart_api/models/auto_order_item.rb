@@ -35,6 +35,9 @@ module UltracartClient
     # Primary key of AutoOrderItem
     attr_accessor :auto_order_item_oid
 
+    # Calculated Date/time that this item is scheduled to rebill.  Will be null if no more shipments are going to occur on this item
+    attr_accessor :calculated_next_shipment_dts
+
     # Date/time of the first order of this item.  Null if item added to auto order and has not been rebilled yet.
     attr_accessor :first_order_dts
 
@@ -126,6 +129,7 @@ module UltracartClient
         :'arbitrary_unit_cost' => :'arbitrary_unit_cost',
         :'arbitrary_unit_cost_remaining_orders' => :'arbitrary_unit_cost_remaining_orders',
         :'auto_order_item_oid' => :'auto_order_item_oid',
+        :'calculated_next_shipment_dts' => :'calculated_next_shipment_dts',
         :'first_order_dts' => :'first_order_dts',
         :'frequency' => :'frequency',
         :'future_schedules' => :'future_schedules',
@@ -159,6 +163,7 @@ module UltracartClient
         :'arbitrary_unit_cost' => :'Float',
         :'arbitrary_unit_cost_remaining_orders' => :'Integer',
         :'auto_order_item_oid' => :'Integer',
+        :'calculated_next_shipment_dts' => :'String',
         :'first_order_dts' => :'String',
         :'frequency' => :'String',
         :'future_schedules' => :'Array<AutoOrderItemFutureSchedule>',
@@ -216,6 +221,10 @@ module UltracartClient
 
       if attributes.has_key?(:'auto_order_item_oid')
         self.auto_order_item_oid = attributes[:'auto_order_item_oid']
+      end
+
+      if attributes.has_key?(:'calculated_next_shipment_dts')
+        self.calculated_next_shipment_dts = attributes[:'calculated_next_shipment_dts']
       end
 
       if attributes.has_key?(:'first_order_dts')
@@ -340,6 +349,7 @@ module UltracartClient
           arbitrary_unit_cost == o.arbitrary_unit_cost &&
           arbitrary_unit_cost_remaining_orders == o.arbitrary_unit_cost_remaining_orders &&
           auto_order_item_oid == o.auto_order_item_oid &&
+          calculated_next_shipment_dts == o.calculated_next_shipment_dts &&
           first_order_dts == o.first_order_dts &&
           frequency == o.frequency &&
           future_schedules == o.future_schedules &&
@@ -371,7 +381,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [arbitrary_item_id, arbitrary_percentage_discount, arbitrary_quantity, arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_remaining_orders, auto_order_item_oid, first_order_dts, frequency, future_schedules, last_order_dts, life_time_value, next_item_id, next_preshipment_notice_dts, next_shipment_dts, no_order_after_dts, number_of_rebills, options, original_item_id, original_quantity, paused, paypal_payer_id, paypal_recurring_payment_profile_id, preshipment_notice_sent, rebill_value, remaining_repeat_count, simple_schedule].hash
+      [arbitrary_item_id, arbitrary_percentage_discount, arbitrary_quantity, arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_remaining_orders, auto_order_item_oid, calculated_next_shipment_dts, first_order_dts, frequency, future_schedules, last_order_dts, life_time_value, next_item_id, next_preshipment_notice_dts, next_shipment_dts, no_order_after_dts, number_of_rebills, options, original_item_id, original_quantity, paused, paypal_payer_id, paypal_recurring_payment_profile_id, preshipment_notice_sent, rebill_value, remaining_repeat_count, simple_schedule].hash
     end
 
     # Builds the object from hash

@@ -523,6 +523,66 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Delete Queue Voicemail
+    # Delete pbx queue Voicemail 
+    # @param queue_uuid 
+    # @param recording_sid 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_pbx_queue_voicemail(queue_uuid, recording_sid, opts = {})
+      delete_pbx_queue_voicemail_with_http_info(queue_uuid, recording_sid, opts)
+      nil
+    end
+
+    # Delete Queue Voicemail
+    # Delete pbx queue Voicemail 
+    # @param queue_uuid 
+    # @param recording_sid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def delete_pbx_queue_voicemail_with_http_info(queue_uuid, recording_sid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.delete_pbx_queue_voicemail ...'
+      end
+      # verify the required parameter 'queue_uuid' is set
+      if @api_client.config.client_side_validation && queue_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'queue_uuid' when calling ConversationApi.delete_pbx_queue_voicemail"
+      end
+      # verify the required parameter 'recording_sid' is set
+      if @api_client.config.client_side_validation && recording_sid.nil?
+        fail ArgumentError, "Missing the required parameter 'recording_sid' when calling ConversationApi.delete_pbx_queue_voicemail"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/queues/{queue_uuid}/voicemails/{recording_sid}'.sub('{' + 'queue_uuid' + '}', queue_uuid.to_s).sub('{' + 'recording_sid' + '}', recording_sid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#delete_pbx_queue_voicemail\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Delete pbx timeBased
     # Delete a pbx timeBased 
     # @param conversation_pbx_time_based_uuid 
@@ -3563,6 +3623,66 @@ module UltracartClient
         :auth_names => auth_names)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#listened_pbx_agent_voicemail\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Listened Queue Voicemail
+    # Listened pbx queue Voicemail 
+    # @param queue_uuid 
+    # @param recording_sid 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def listened_pbx_queue_voicemail(queue_uuid, recording_sid, opts = {})
+      listened_pbx_queue_voicemail_with_http_info(queue_uuid, recording_sid, opts)
+      nil
+    end
+
+    # Listened Queue Voicemail
+    # Listened pbx queue Voicemail 
+    # @param queue_uuid 
+    # @param recording_sid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def listened_pbx_queue_voicemail_with_http_info(queue_uuid, recording_sid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.listened_pbx_queue_voicemail ...'
+      end
+      # verify the required parameter 'queue_uuid' is set
+      if @api_client.config.client_side_validation && queue_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'queue_uuid' when calling ConversationApi.listened_pbx_queue_voicemail"
+      end
+      # verify the required parameter 'recording_sid' is set
+      if @api_client.config.client_side_validation && recording_sid.nil?
+        fail ArgumentError, "Missing the required parameter 'recording_sid' when calling ConversationApi.listened_pbx_queue_voicemail"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/{queue_uuid}/voicemails/voicemails/{recording_sid}/listened'.sub('{' + 'queue_uuid' + '}', queue_uuid.to_s).sub('{' + 'recording_sid' + '}', recording_sid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#listened_pbx_queue_voicemail\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
