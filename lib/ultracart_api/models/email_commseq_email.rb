@@ -35,6 +35,22 @@ module UltracartClient
     # Email template virtual path
     attr_accessor :email_template_vm_path
 
+    attr_accessor :external_generation
+
+    attr_accessor :external_generation_authentication
+
+    attr_accessor :external_generation_basic_password
+
+    attr_accessor :external_generation_basic_username
+
+    attr_accessor :external_generation_header_name
+
+    attr_accessor :external_generation_header_value
+
+    attr_accessor :external_generation_id
+
+    attr_accessor :external_generation_url
+
     # Filter profile equation json
     attr_accessor :filter_profile_equation_json
 
@@ -102,6 +118,14 @@ module UltracartClient
         :'email_container_cjson' => :'email_container_cjson',
         :'email_container_cjson_last_modified_dts' => :'email_container_cjson_last_modified_dts',
         :'email_template_vm_path' => :'email_template_vm_path',
+        :'external_generation' => :'external_generation',
+        :'external_generation_authentication' => :'external_generation_authentication',
+        :'external_generation_basic_password' => :'external_generation_basic_password',
+        :'external_generation_basic_username' => :'external_generation_basic_username',
+        :'external_generation_header_name' => :'external_generation_header_name',
+        :'external_generation_header_value' => :'external_generation_header_value',
+        :'external_generation_id' => :'external_generation_id',
+        :'external_generation_url' => :'external_generation_url',
         :'filter_profile_equation_json' => :'filter_profile_equation_json',
         :'individually_render' => :'individually_render',
         :'library_item_oid' => :'library_item_oid',
@@ -134,6 +158,14 @@ module UltracartClient
         :'email_container_cjson' => :'String',
         :'email_container_cjson_last_modified_dts' => :'String',
         :'email_template_vm_path' => :'String',
+        :'external_generation' => :'BOOLEAN',
+        :'external_generation_authentication' => :'String',
+        :'external_generation_basic_password' => :'String',
+        :'external_generation_basic_username' => :'String',
+        :'external_generation_header_name' => :'String',
+        :'external_generation_header_value' => :'String',
+        :'external_generation_id' => :'String',
+        :'external_generation_url' => :'String',
         :'filter_profile_equation_json' => :'String',
         :'individually_render' => :'BOOLEAN',
         :'library_item_oid' => :'Integer',
@@ -190,6 +222,38 @@ module UltracartClient
 
       if attributes.has_key?(:'email_template_vm_path')
         self.email_template_vm_path = attributes[:'email_template_vm_path']
+      end
+
+      if attributes.has_key?(:'external_generation')
+        self.external_generation = attributes[:'external_generation']
+      end
+
+      if attributes.has_key?(:'external_generation_authentication')
+        self.external_generation_authentication = attributes[:'external_generation_authentication']
+      end
+
+      if attributes.has_key?(:'external_generation_basic_password')
+        self.external_generation_basic_password = attributes[:'external_generation_basic_password']
+      end
+
+      if attributes.has_key?(:'external_generation_basic_username')
+        self.external_generation_basic_username = attributes[:'external_generation_basic_username']
+      end
+
+      if attributes.has_key?(:'external_generation_header_name')
+        self.external_generation_header_name = attributes[:'external_generation_header_name']
+      end
+
+      if attributes.has_key?(:'external_generation_header_value')
+        self.external_generation_header_value = attributes[:'external_generation_header_value']
+      end
+
+      if attributes.has_key?(:'external_generation_id')
+        self.external_generation_id = attributes[:'external_generation_id']
+      end
+
+      if attributes.has_key?(:'external_generation_url')
+        self.external_generation_url = attributes[:'external_generation_url']
       end
 
       if attributes.has_key?(:'filter_profile_equation_json')
@@ -294,6 +358,14 @@ module UltracartClient
           email_container_cjson == o.email_container_cjson &&
           email_container_cjson_last_modified_dts == o.email_container_cjson_last_modified_dts &&
           email_template_vm_path == o.email_template_vm_path &&
+          external_generation == o.external_generation &&
+          external_generation_authentication == o.external_generation_authentication &&
+          external_generation_basic_password == o.external_generation_basic_password &&
+          external_generation_basic_username == o.external_generation_basic_username &&
+          external_generation_header_name == o.external_generation_header_name &&
+          external_generation_header_value == o.external_generation_header_value &&
+          external_generation_id == o.external_generation_id &&
+          external_generation_url == o.external_generation_url &&
           filter_profile_equation_json == o.filter_profile_equation_json &&
           individually_render == o.individually_render &&
           library_item_oid == o.library_item_oid &&
@@ -324,7 +396,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [deleted, edited_by_user, email_communication_sequence_email_uuid, email_communication_sequence_uuid, email_container_cjson, email_container_cjson_last_modified_dts, email_template_vm_path, filter_profile_equation_json, individually_render, library_item_oid, magic_link, merchant_id, pending_review, preview_text, rejected, requires_review, screenshot_large_full_url, screenshot_large_viewport_url, screenshot_small_full_url, screenshot_small_viewport_url, smart_sending, storefront_oid, subject, suspended_for_spam, transactional_email, version].hash
+      [deleted, edited_by_user, email_communication_sequence_email_uuid, email_communication_sequence_uuid, email_container_cjson, email_container_cjson_last_modified_dts, email_template_vm_path, external_generation, external_generation_authentication, external_generation_basic_password, external_generation_basic_username, external_generation_header_name, external_generation_header_value, external_generation_id, external_generation_url, filter_profile_equation_json, individually_render, library_item_oid, magic_link, merchant_id, pending_review, preview_text, rejected, requires_review, screenshot_large_full_url, screenshot_large_viewport_url, screenshot_small_full_url, screenshot_small_viewport_url, smart_sending, storefront_oid, subject, suspended_for_spam, transactional_email, version].hash
     end
 
     # Builds the object from hash

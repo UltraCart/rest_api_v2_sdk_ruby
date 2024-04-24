@@ -14,10 +14,10 @@ require 'date'
 
 module UltracartClient
   class ItemChargeback
-    # Addendums
+    # Addendums (deprecated)
     attr_accessor :addendums
 
-    # Adjustment requests
+    # Adjustment requests (deprecated)
     attr_accessor :adjustment_requests
 
     # Attribute mapping from ruby-style variable name to JSON key.

@@ -36,6 +36,9 @@ module UltracartClient
     # Reason codes available at the order level.
     attr_accessor :order_level_refund_reasons
 
+    # True if the order level reject reason is required
+    attr_accessor :order_level_reject_reason_required
+
     # Reject codes available at the order level.
     attr_accessor :order_level_reject_reasons
 
@@ -58,6 +61,7 @@ module UltracartClient
         :'metadata' => :'metadata',
         :'order_level_refund_reason_required' => :'order_level_refund_reason_required',
         :'order_level_refund_reasons' => :'order_level_refund_reasons',
+        :'order_level_reject_reason_required' => :'order_level_reject_reason_required',
         :'order_level_reject_reasons' => :'order_level_reject_reasons',
         :'refundable' => :'refundable',
         :'success' => :'success',
@@ -76,6 +80,7 @@ module UltracartClient
         :'metadata' => :'ResponseMetadata',
         :'order_level_refund_reason_required' => :'BOOLEAN',
         :'order_level_refund_reasons' => :'Array<OrderReason>',
+        :'order_level_reject_reason_required' => :'BOOLEAN',
         :'order_level_reject_reasons' => :'Array<OrderReason>',
         :'refundable' => :'BOOLEAN',
         :'success' => :'BOOLEAN',
@@ -129,6 +134,10 @@ module UltracartClient
         end
       end
 
+      if attributes.has_key?(:'order_level_reject_reason_required')
+        self.order_level_reject_reason_required = attributes[:'order_level_reject_reason_required']
+      end
+
       if attributes.has_key?(:'order_level_reject_reasons')
         if (value = attributes[:'order_level_reject_reasons']).is_a?(Array)
           self.order_level_reject_reasons = value
@@ -174,6 +183,7 @@ module UltracartClient
           metadata == o.metadata &&
           order_level_refund_reason_required == o.order_level_refund_reason_required &&
           order_level_refund_reasons == o.order_level_refund_reasons &&
+          order_level_reject_reason_required == o.order_level_reject_reason_required &&
           order_level_reject_reasons == o.order_level_reject_reasons &&
           refundable == o.refundable &&
           success == o.success &&
@@ -189,7 +199,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [error, item_level_refund_reason_required, item_level_refund_reasons, item_level_return_reasons, manual_because_multiple_charges, metadata, order_level_refund_reason_required, order_level_refund_reasons, order_level_reject_reasons, refundable, success, warning].hash
+      [error, item_level_refund_reason_required, item_level_refund_reasons, item_level_return_reasons, manual_because_multiple_charges, metadata, order_level_refund_reason_required, order_level_refund_reasons, order_level_reject_reason_required, order_level_reject_reasons, refundable, success, warning].hash
     end
 
     # Builds the object from hash
