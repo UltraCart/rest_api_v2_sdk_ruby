@@ -23,7 +23,13 @@ module UltracartClient
 
     attr_accessor :merchant_id
 
+    attr_accessor :pbx_admin
+
     attr_accessor :pbx_jwt
+
+    attr_accessor :pbx_supervisor
+
+    attr_accessor :pbx_user
 
     attr_accessor :pbx_voice_identity
 
@@ -42,7 +48,10 @@ module UltracartClient
         :'conversation_participant_name' => :'conversation_participant_name',
         :'jwt' => :'jwt',
         :'merchant_id' => :'merchant_id',
+        :'pbx_admin' => :'pbx_admin',
         :'pbx_jwt' => :'pbx_jwt',
+        :'pbx_supervisor' => :'pbx_supervisor',
+        :'pbx_user' => :'pbx_user',
         :'pbx_voice_identity' => :'pbx_voice_identity',
         :'pbx_voice_token' => :'pbx_voice_token',
         :'pbx_worker_token' => :'pbx_worker_token',
@@ -63,7 +72,10 @@ module UltracartClient
         :'conversation_participant_name' => :'String',
         :'jwt' => :'String',
         :'merchant_id' => :'String',
+        :'pbx_admin' => :'Boolean',
         :'pbx_jwt' => :'String',
+        :'pbx_supervisor' => :'Boolean',
+        :'pbx_user' => :'Boolean',
         :'pbx_voice_identity' => :'String',
         :'pbx_voice_token' => :'String',
         :'pbx_worker_token' => :'String',
@@ -109,8 +121,20 @@ module UltracartClient
         self.merchant_id = attributes[:'merchant_id']
       end
 
+      if attributes.key?(:'pbx_admin')
+        self.pbx_admin = attributes[:'pbx_admin']
+      end
+
       if attributes.key?(:'pbx_jwt')
         self.pbx_jwt = attributes[:'pbx_jwt']
+      end
+
+      if attributes.key?(:'pbx_supervisor')
+        self.pbx_supervisor = attributes[:'pbx_supervisor']
+      end
+
+      if attributes.key?(:'pbx_user')
+        self.pbx_user = attributes[:'pbx_user']
       end
 
       if attributes.key?(:'pbx_voice_identity')
@@ -158,7 +182,10 @@ module UltracartClient
           conversation_participant_name == o.conversation_participant_name &&
           jwt == o.jwt &&
           merchant_id == o.merchant_id &&
+          pbx_admin == o.pbx_admin &&
           pbx_jwt == o.pbx_jwt &&
+          pbx_supervisor == o.pbx_supervisor &&
+          pbx_user == o.pbx_user &&
           pbx_voice_identity == o.pbx_voice_identity &&
           pbx_voice_token == o.pbx_voice_token &&
           pbx_worker_token == o.pbx_worker_token &&
@@ -175,7 +202,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_participant_arn, conversation_participant_name, jwt, merchant_id, pbx_jwt, pbx_voice_identity, pbx_voice_token, pbx_worker_token, twilio_accounts, websocket_url].hash
+      [conversation_participant_arn, conversation_participant_name, jwt, merchant_id, pbx_admin, pbx_jwt, pbx_supervisor, pbx_user, pbx_voice_identity, pbx_voice_token, pbx_worker_token, twilio_accounts, websocket_url].hash
     end
 
     # Builds the object from hash

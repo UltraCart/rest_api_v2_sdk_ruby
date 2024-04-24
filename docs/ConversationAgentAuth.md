@@ -8,7 +8,10 @@
 | **conversation_participant_name** | **String** |  | [optional] |
 | **jwt** | **String** |  | [optional] |
 | **merchant_id** | **String** |  | [optional] |
+| **pbx_admin** | **Boolean** |  | [optional] |
 | **pbx_jwt** | **String** |  | [optional] |
+| **pbx_supervisor** | **Boolean** |  | [optional] |
+| **pbx_user** | **Boolean** |  | [optional] |
 | **pbx_voice_identity** | **String** |  | [optional] |
 | **pbx_voice_token** | **String** |  | [optional] |
 | **pbx_worker_token** | **String** |  | [optional] |
@@ -25,7 +28,10 @@ instance = UltracartClient::ConversationAgentAuth.new(
   conversation_participant_name: null,
   jwt: null,
   merchant_id: null,
+  pbx_admin: null,
   pbx_jwt: null,
+  pbx_supervisor: null,
+  pbx_user: null,
   pbx_voice_identity: null,
   pbx_voice_token: null,
   pbx_worker_token: null,

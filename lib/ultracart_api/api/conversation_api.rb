@@ -4343,7 +4343,7 @@ module UltracartClient
         fail ArgumentError, "Missing the required parameter 'recording_sid' when calling ConversationApi.listened_pbx_queue_voicemail"
       end
       # resource path
-      local_var_path = '/conversation/pbx/{queue_uuid}/voicemails/voicemails/{recording_sid}/listened'.sub('{' + 'queue_uuid' + '}', CGI.escape(queue_uuid.to_s)).sub('{' + 'recording_sid' + '}', CGI.escape(recording_sid.to_s))
+      local_var_path = '/conversation/pbx/queues/{queue_uuid}/voicemails/{recording_sid}/listened'.sub('{' + 'queue_uuid' + '}', CGI.escape(queue_uuid.to_s)).sub('{' + 'recording_sid' + '}', CGI.escape(recording_sid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

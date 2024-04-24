@@ -11,6 +11,14 @@
 | **email_container_cjson** | **String** | Email container cjson | [optional] |
 | **email_container_cjson_last_modified_dts** | **String** | Timestamp the last time the container was modified. | [optional] |
 | **email_template_vm_path** | **String** | Email template virtual path | [optional] |
+| **external_generation** | **Boolean** |  | [optional] |
+| **external_generation_authentication** | **String** |  | [optional] |
+| **external_generation_basic_password** | **String** |  | [optional] |
+| **external_generation_basic_username** | **String** |  | [optional] |
+| **external_generation_header_name** | **String** |  | [optional] |
+| **external_generation_header_value** | **String** |  | [optional] |
+| **external_generation_id** | **String** |  | [optional] |
+| **external_generation_url** | **String** |  | [optional] |
 | **filter_profile_equation_json** | **String** | Filter profile equation json | [optional] |
 | **individually_render** | **Boolean** | Individually render | [optional] |
 | **library_item_oid** | **Integer** | If this item was ever added to the Code Library, this is the oid for that library item, or 0 if never added before.  This value is used to determine if a library item should be inserted or updated. | [optional] |
@@ -44,6 +52,14 @@ instance = UltracartClient::EmailCommseqEmail.new(
   email_container_cjson: null,
   email_container_cjson_last_modified_dts: null,
   email_template_vm_path: null,
+  external_generation: null,
+  external_generation_authentication: null,
+  external_generation_basic_password: null,
+  external_generation_basic_username: null,
+  external_generation_header_name: null,
+  external_generation_header_value: null,
+  external_generation_id: null,
+  external_generation_url: null,
   filter_profile_equation_json: null,
   individually_render: null,
   library_item_oid: null,

@@ -12,6 +12,7 @@
 | **metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] |
 | **order_level_refund_reason_required** | **Boolean** | True if the order level refund reason is required | [optional] |
 | **order_level_refund_reasons** | [**Array&lt;OrderReason&gt;**](OrderReason.md) | Reason codes available at the order level. | [optional] |
+| **order_level_reject_reason_required** | **Boolean** | True if the order level reject reason is required | [optional] |
 | **order_level_reject_reasons** | [**Array&lt;OrderReason&gt;**](OrderReason.md) | Reject codes available at the order level. | [optional] |
 | **refundable** | **Boolean** | Whether the order is refundable or not.  Null should be interpreted as false. | [optional] |
 | **success** | **Boolean** | Indicates if API call was successful | [optional] |
@@ -31,6 +32,7 @@ instance = UltracartClient::OrderRefundableResponse.new(
   metadata: null,
   order_level_refund_reason_required: null,
   order_level_refund_reasons: null,
+  order_level_reject_reason_required: null,
   order_level_reject_reasons: null,
   refundable: null,
   success: null,

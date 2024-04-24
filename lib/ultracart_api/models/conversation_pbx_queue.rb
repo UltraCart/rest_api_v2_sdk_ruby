@@ -74,6 +74,9 @@ module UltracartClient
     # Wait time in seconds before warning
     attr_accessor :wait_warning_seconds
 
+    # Wrap up time in seconds
+    attr_accessor :wrap_up_seconds
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -96,7 +99,8 @@ module UltracartClient
         :'twilio_workspace_queue_sid' => :'twilio_workspace_queue_sid',
         :'voicemail' => :'voicemail',
         :'wait_critical_seconds' => :'wait_critical_seconds',
-        :'wait_warning_seconds' => :'wait_warning_seconds'
+        :'wait_warning_seconds' => :'wait_warning_seconds',
+        :'wrap_up_seconds' => :'wrap_up_seconds'
       }
     end
 
@@ -127,7 +131,8 @@ module UltracartClient
         :'twilio_workspace_queue_sid' => :'String',
         :'voicemail' => :'Boolean',
         :'wait_critical_seconds' => :'Integer',
-        :'wait_warning_seconds' => :'Integer'
+        :'wait_warning_seconds' => :'Integer',
+        :'wrap_up_seconds' => :'Integer'
       }
     end
 
@@ -230,6 +235,10 @@ module UltracartClient
 
       if attributes.key?(:'wait_warning_seconds')
         self.wait_warning_seconds = attributes[:'wait_warning_seconds']
+      end
+
+      if attributes.key?(:'wrap_up_seconds')
+        self.wrap_up_seconds = attributes[:'wrap_up_seconds']
       end
     end
 
@@ -420,7 +429,8 @@ module UltracartClient
           twilio_workspace_queue_sid == o.twilio_workspace_queue_sid &&
           voicemail == o.voicemail &&
           wait_critical_seconds == o.wait_critical_seconds &&
-          wait_warning_seconds == o.wait_warning_seconds
+          wait_warning_seconds == o.wait_warning_seconds &&
+          wrap_up_seconds == o.wrap_up_seconds
     end
 
     # @see the `==` method
@@ -432,7 +442,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [announce_queue_position, conversation_pbx_queue_uuid, conversation_voicemail_mailbox_uuid, hold_conversation_pbx_audio_uuid, max_hold_seconds, members, merchant_id, name, no_agent_available_play_audio_uuid, no_agent_available_say, no_agent_available_say_voice, play_audio_uuid, record_call, say, say_voice, twilio_taskrouter_workflow_sid, twilio_workspace_queue_sid, voicemail, wait_critical_seconds, wait_warning_seconds].hash
+      [announce_queue_position, conversation_pbx_queue_uuid, conversation_voicemail_mailbox_uuid, hold_conversation_pbx_audio_uuid, max_hold_seconds, members, merchant_id, name, no_agent_available_play_audio_uuid, no_agent_available_say, no_agent_available_say_voice, play_audio_uuid, record_call, say, say_voice, twilio_taskrouter_workflow_sid, twilio_workspace_queue_sid, voicemail, wait_critical_seconds, wait_warning_seconds, wrap_up_seconds].hash
     end
 
     # Builds the object from hash

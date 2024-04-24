@@ -24,6 +24,7 @@
 | **voicemail** | **Boolean** | If true, this queue has a voicemail associated with it | [optional] |
 | **wait_critical_seconds** | **Integer** | Wait time in seconds before critical | [optional] |
 | **wait_warning_seconds** | **Integer** | Wait time in seconds before warning | [optional] |
+| **wrap_up_seconds** | **Integer** | Wrap up time in seconds | [optional] |
 
 ## Example
 
@@ -50,7 +51,8 @@ instance = UltracartClient::ConversationPbxQueue.new(
   twilio_workspace_queue_sid: null,
   voicemail: null,
   wait_critical_seconds: null,
-  wait_warning_seconds: null
+  wait_warning_seconds: null,
+  wrap_up_seconds: null
 )
 ```
 
