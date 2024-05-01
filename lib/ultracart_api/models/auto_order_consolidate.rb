@@ -13,45 +13,20 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ConversationPbxCustomerSnapshotResponse
-    attr_accessor :auto_orders
-
-    attr_accessor :customers
-
-    attr_accessor :error
-
-    attr_accessor :metadata
-
-    attr_accessor :orders
-
-    # Indicates if API call was successful
-    attr_accessor :success
-
-    attr_accessor :warning
+  class AutoOrderConsolidate
+    attr_accessor :source_auto_order_oids
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'auto_orders' => :'auto_orders',
-        :'customers' => :'customers',
-        :'error' => :'error',
-        :'metadata' => :'metadata',
-        :'orders' => :'orders',
-        :'success' => :'success',
-        :'warning' => :'warning'
+        :'source_auto_order_oids' => :'source_auto_order_oids'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'auto_orders' => :'Array<AutoOrder>',
-        :'customers' => :'Array<Customer>',
-        :'error' => :'Error',
-        :'metadata' => :'ResponseMetadata',
-        :'orders' => :'Array<Order>',
-        :'success' => :'BOOLEAN',
-        :'warning' => :'Warning'
+        :'source_auto_order_oids' => :'Array<Integer>'
       }
     end
 
@@ -63,38 +38,10 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'auto_orders')
-        if (value = attributes[:'auto_orders']).is_a?(Array)
-          self.auto_orders = value
+      if attributes.has_key?(:'source_auto_order_oids')
+        if (value = attributes[:'source_auto_order_oids']).is_a?(Array)
+          self.source_auto_order_oids = value
         end
-      end
-
-      if attributes.has_key?(:'customers')
-        if (value = attributes[:'customers']).is_a?(Array)
-          self.customers = value
-        end
-      end
-
-      if attributes.has_key?(:'error')
-        self.error = attributes[:'error']
-      end
-
-      if attributes.has_key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.has_key?(:'orders')
-        if (value = attributes[:'orders']).is_a?(Array)
-          self.orders = value
-        end
-      end
-
-      if attributes.has_key?(:'success')
-        self.success = attributes[:'success']
-      end
-
-      if attributes.has_key?(:'warning')
-        self.warning = attributes[:'warning']
       end
     end
 
@@ -116,13 +63,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          auto_orders == o.auto_orders &&
-          customers == o.customers &&
-          error == o.error &&
-          metadata == o.metadata &&
-          orders == o.orders &&
-          success == o.success &&
-          warning == o.warning
+          source_auto_order_oids == o.source_auto_order_oids
     end
 
     # @see the `==` method
@@ -134,7 +75,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [auto_orders, customers, error, metadata, orders, success, warning].hash
+      [source_auto_order_oids].hash
     end
 
     # Builds the object from hash

@@ -1,13 +1,11 @@
-# UltracartClient::ConversationPbxCustomerSnapshotResponse
+# UltracartClient::ConversationPbxAudioUploadUrlResponse
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**auto_orders** | [**Array&lt;AutoOrder&gt;**](AutoOrder.md) |  | [optional] 
-**customers** | [**Array&lt;Customer&gt;**](Customer.md) |  | [optional] 
+**conversation_pbx_audio_upload_url** | [**ConversationPbxAudioUploadUrl**](ConversationPbxAudioUploadUrl.md) |  | [optional] 
 **error** | [**Error**](Error.md) |  | [optional] 
 **metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] 
-**orders** | [**Array&lt;Order&gt;**](Order.md) |  | [optional] 
 **success** | **BOOLEAN** | Indicates if API call was successful | [optional] 
 **warning** | [**Warning**](Warning.md) |  | [optional] 
 

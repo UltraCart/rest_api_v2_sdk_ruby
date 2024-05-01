@@ -13,16 +13,12 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ConversationPbxCustomerSnapshotResponse
-    attr_accessor :auto_orders
-
-    attr_accessor :customers
+  class ConversationPbxAudioUploadUrlResponse
+    attr_accessor :conversation_pbx_audio_upload_url
 
     attr_accessor :error
 
     attr_accessor :metadata
-
-    attr_accessor :orders
 
     # Indicates if API call was successful
     attr_accessor :success
@@ -32,11 +28,9 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'auto_orders' => :'auto_orders',
-        :'customers' => :'customers',
+        :'conversation_pbx_audio_upload_url' => :'conversation_pbx_audio_upload_url',
         :'error' => :'error',
         :'metadata' => :'metadata',
-        :'orders' => :'orders',
         :'success' => :'success',
         :'warning' => :'warning'
       }
@@ -45,11 +39,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'auto_orders' => :'Array<AutoOrder>',
-        :'customers' => :'Array<Customer>',
+        :'conversation_pbx_audio_upload_url' => :'ConversationPbxAudioUploadUrl',
         :'error' => :'Error',
         :'metadata' => :'ResponseMetadata',
-        :'orders' => :'Array<Order>',
         :'success' => :'BOOLEAN',
         :'warning' => :'Warning'
       }
@@ -63,16 +55,8 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'auto_orders')
-        if (value = attributes[:'auto_orders']).is_a?(Array)
-          self.auto_orders = value
-        end
-      end
-
-      if attributes.has_key?(:'customers')
-        if (value = attributes[:'customers']).is_a?(Array)
-          self.customers = value
-        end
+      if attributes.has_key?(:'conversation_pbx_audio_upload_url')
+        self.conversation_pbx_audio_upload_url = attributes[:'conversation_pbx_audio_upload_url']
       end
 
       if attributes.has_key?(:'error')
@@ -81,12 +65,6 @@ module UltracartClient
 
       if attributes.has_key?(:'metadata')
         self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.has_key?(:'orders')
-        if (value = attributes[:'orders']).is_a?(Array)
-          self.orders = value
-        end
       end
 
       if attributes.has_key?(:'success')
@@ -116,11 +94,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          auto_orders == o.auto_orders &&
-          customers == o.customers &&
+          conversation_pbx_audio_upload_url == o.conversation_pbx_audio_upload_url &&
           error == o.error &&
           metadata == o.metadata &&
-          orders == o.orders &&
           success == o.success &&
           warning == o.warning
     end
@@ -134,7 +110,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [auto_orders, customers, error, metadata, orders, success, warning].hash
+      [conversation_pbx_audio_upload_url, error, metadata, success, warning].hash
     end
 
     # Builds the object from hash
