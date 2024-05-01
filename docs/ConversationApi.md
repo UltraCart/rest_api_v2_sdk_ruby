@@ -1854,7 +1854,7 @@ end
 
 ## get_conversation_pbx_audio_upload_url
 
-> <ConversationMultimediaUploadUrlResponse> get_conversation_pbx_audio_upload_url(extension)
+> <ConversationPbxAudioUploadUrlResponse> get_conversation_pbx_audio_upload_url(extension)
 
 Get a pre-signed conversation multimedia upload URL
 
@@ -1889,7 +1889,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ConversationMultimediaUploadUrlResponse>, Integer, Hash)> get_conversation_pbx_audio_upload_url_with_http_info(extension)
+> <Array(<ConversationPbxAudioUploadUrlResponse>, Integer, Hash)> get_conversation_pbx_audio_upload_url_with_http_info(extension)
 
 ```ruby
 begin
@@ -1897,7 +1897,7 @@ begin
   data, status_code, headers = api_instance.get_conversation_pbx_audio_upload_url_with_http_info(extension)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <ConversationMultimediaUploadUrlResponse>
+  p data # => <ConversationPbxAudioUploadUrlResponse>
 rescue UltracartClient::ApiError => e
   puts "Error when calling ConversationApi->get_conversation_pbx_audio_upload_url_with_http_info: #{e}"
 end
@@ -1911,7 +1911,7 @@ end
 
 ### Return type
 
-[**ConversationMultimediaUploadUrlResponse**](ConversationMultimediaUploadUrlResponse.md)
+[**ConversationPbxAudioUploadUrlResponse**](ConversationPbxAudioUploadUrlResponse.md)
 
 ### Authorization
 

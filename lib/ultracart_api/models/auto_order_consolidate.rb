@@ -14,32 +14,13 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationPbxCustomerSnapshotResponse
-    attr_accessor :auto_orders
-
-    attr_accessor :customers
-
-    attr_accessor :error
-
-    attr_accessor :metadata
-
-    attr_accessor :orders
-
-    # Indicates if API call was successful
-    attr_accessor :success
-
-    attr_accessor :warning
+  class AutoOrderConsolidate
+    attr_accessor :source_auto_order_oids
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'auto_orders' => :'auto_orders',
-        :'customers' => :'customers',
-        :'error' => :'error',
-        :'metadata' => :'metadata',
-        :'orders' => :'orders',
-        :'success' => :'success',
-        :'warning' => :'warning'
+        :'source_auto_order_oids' => :'source_auto_order_oids'
       }
     end
 
@@ -51,13 +32,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'auto_orders' => :'Array<AutoOrder>',
-        :'customers' => :'Array<Customer>',
-        :'error' => :'Error',
-        :'metadata' => :'ResponseMetadata',
-        :'orders' => :'Array<Order>',
-        :'success' => :'Boolean',
-        :'warning' => :'Warning'
+        :'source_auto_order_oids' => :'Array<Integer>'
       }
     end
 
@@ -71,49 +46,21 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxCustomerSnapshotResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::AutoOrderConsolidate` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxCustomerSnapshotResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::AutoOrderConsolidate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'auto_orders')
-        if (value = attributes[:'auto_orders']).is_a?(Array)
-          self.auto_orders = value
+      if attributes.key?(:'source_auto_order_oids')
+        if (value = attributes[:'source_auto_order_oids']).is_a?(Array)
+          self.source_auto_order_oids = value
         end
-      end
-
-      if attributes.key?(:'customers')
-        if (value = attributes[:'customers']).is_a?(Array)
-          self.customers = value
-        end
-      end
-
-      if attributes.key?(:'error')
-        self.error = attributes[:'error']
-      end
-
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.key?(:'orders')
-        if (value = attributes[:'orders']).is_a?(Array)
-          self.orders = value
-        end
-      end
-
-      if attributes.key?(:'success')
-        self.success = attributes[:'success']
-      end
-
-      if attributes.key?(:'warning')
-        self.warning = attributes[:'warning']
       end
     end
 
@@ -135,13 +82,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          auto_orders == o.auto_orders &&
-          customers == o.customers &&
-          error == o.error &&
-          metadata == o.metadata &&
-          orders == o.orders &&
-          success == o.success &&
-          warning == o.warning
+          source_auto_order_oids == o.source_auto_order_oids
     end
 
     # @see the `==` method
@@ -153,7 +94,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_orders, customers, error, metadata, orders, success, warning].hash
+      [source_auto_order_oids].hash
     end
 
     # Builds the object from hash

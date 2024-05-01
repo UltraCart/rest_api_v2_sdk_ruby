@@ -14,16 +14,12 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationPbxCustomerSnapshotResponse
-    attr_accessor :auto_orders
-
-    attr_accessor :customers
+  class ConversationPbxAudioUploadUrlResponse
+    attr_accessor :conversation_pbx_audio_upload_url
 
     attr_accessor :error
 
     attr_accessor :metadata
-
-    attr_accessor :orders
 
     # Indicates if API call was successful
     attr_accessor :success
@@ -33,11 +29,9 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'auto_orders' => :'auto_orders',
-        :'customers' => :'customers',
+        :'conversation_pbx_audio_upload_url' => :'conversation_pbx_audio_upload_url',
         :'error' => :'error',
         :'metadata' => :'metadata',
-        :'orders' => :'orders',
         :'success' => :'success',
         :'warning' => :'warning'
       }
@@ -51,11 +45,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'auto_orders' => :'Array<AutoOrder>',
-        :'customers' => :'Array<Customer>',
+        :'conversation_pbx_audio_upload_url' => :'ConversationPbxAudioUploadUrl',
         :'error' => :'Error',
         :'metadata' => :'ResponseMetadata',
-        :'orders' => :'Array<Order>',
         :'success' => :'Boolean',
         :'warning' => :'Warning'
       }
@@ -71,27 +63,19 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxCustomerSnapshotResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxAudioUploadUrlResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxCustomerSnapshotResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxAudioUploadUrlResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'auto_orders')
-        if (value = attributes[:'auto_orders']).is_a?(Array)
-          self.auto_orders = value
-        end
-      end
-
-      if attributes.key?(:'customers')
-        if (value = attributes[:'customers']).is_a?(Array)
-          self.customers = value
-        end
+      if attributes.key?(:'conversation_pbx_audio_upload_url')
+        self.conversation_pbx_audio_upload_url = attributes[:'conversation_pbx_audio_upload_url']
       end
 
       if attributes.key?(:'error')
@@ -100,12 +84,6 @@ module UltracartClient
 
       if attributes.key?(:'metadata')
         self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.key?(:'orders')
-        if (value = attributes[:'orders']).is_a?(Array)
-          self.orders = value
-        end
       end
 
       if attributes.key?(:'success')
@@ -135,11 +113,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          auto_orders == o.auto_orders &&
-          customers == o.customers &&
+          conversation_pbx_audio_upload_url == o.conversation_pbx_audio_upload_url &&
           error == o.error &&
           metadata == o.metadata &&
-          orders == o.orders &&
           success == o.success &&
           warning == o.warning
     end
@@ -153,7 +129,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_orders, customers, error, metadata, orders, success, warning].hash
+      [conversation_pbx_audio_upload_url, error, metadata, success, warning].hash
     end
 
     # Builds the object from hash

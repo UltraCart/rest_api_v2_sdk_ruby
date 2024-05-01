@@ -1612,7 +1612,7 @@ module UltracartClient
     # Get a pre-signed conversation multimedia upload URL 
     # @param extension [String] 
     # @param [Hash] opts the optional parameters
-    # @return [ConversationMultimediaUploadUrlResponse]
+    # @return [ConversationPbxAudioUploadUrlResponse]
     def get_conversation_pbx_audio_upload_url(extension, opts = {})
       data, _status_code, _headers = get_conversation_pbx_audio_upload_url_with_http_info(extension, opts)
       data
@@ -1622,7 +1622,7 @@ module UltracartClient
     # Get a pre-signed conversation multimedia upload URL 
     # @param extension [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ConversationMultimediaUploadUrlResponse, Integer, Hash)>] ConversationMultimediaUploadUrlResponse data, response status code and response headers
+    # @return [Array<(ConversationPbxAudioUploadUrlResponse, Integer, Hash)>] ConversationPbxAudioUploadUrlResponse data, response status code and response headers
     def get_conversation_pbx_audio_upload_url_with_http_info(extension, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ConversationApi.get_conversation_pbx_audio_upload_url ...'
@@ -1650,7 +1650,7 @@ module UltracartClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'ConversationMultimediaUploadUrlResponse'
+      return_type = opts[:debug_return_type] || 'ConversationPbxAudioUploadUrlResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']

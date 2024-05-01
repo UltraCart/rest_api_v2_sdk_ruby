@@ -1,14 +1,12 @@
-# UltracartClient::ConversationPbxCustomerSnapshotResponse
+# UltracartClient::ConversationPbxAudioUploadUrlResponse
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **auto_orders** | [**Array&lt;AutoOrder&gt;**](AutoOrder.md) |  | [optional] |
-| **customers** | [**Array&lt;Customer&gt;**](Customer.md) |  | [optional] |
+| **conversation_pbx_audio_upload_url** | [**ConversationPbxAudioUploadUrl**](ConversationPbxAudioUploadUrl.md) |  | [optional] |
 | **error** | [**Error**](Error.md) |  | [optional] |
 | **metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] |
-| **orders** | [**Array&lt;Order&gt;**](Order.md) |  | [optional] |
 | **success** | **Boolean** | Indicates if API call was successful | [optional] |
 | **warning** | [**Warning**](Warning.md) |  | [optional] |
 
@@ -17,12 +15,10 @@
 ```ruby
 require 'ultracart_api'
 
-instance = UltracartClient::ConversationPbxCustomerSnapshotResponse.new(
-  auto_orders: null,
-  customers: null,
+instance = UltracartClient::ConversationPbxAudioUploadUrlResponse.new(
+  conversation_pbx_audio_upload_url: null,
   error: null,
   metadata: null,
-  orders: null,
   success: null,
   warning: null
 )

@@ -32,6 +32,84 @@ module UltracartClient
       UltracartClient::AutoOrderApi.new(api_client)
     end
 
+    # Consolidates multiple auto orders
+    # Consolidates mutliple auto orders on the UltraCart account. 
+    # @param auto_order_oid [Integer] The auto order oid to consolidate into.
+    # @param auto_order_consolidate [AutoOrderConsolidate] Auto orders to consolidate
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [AutoOrderResponse]
+    def consolidate_auto_orders(auto_order_oid, auto_order_consolidate, opts = {})
+      data, _status_code, _headers = consolidate_auto_orders_with_http_info(auto_order_oid, auto_order_consolidate, opts)
+      data
+    end
+
+    # Consolidates multiple auto orders
+    # Consolidates mutliple auto orders on the UltraCart account. 
+    # @param auto_order_oid [Integer] The auto order oid to consolidate into.
+    # @param auto_order_consolidate [AutoOrderConsolidate] Auto orders to consolidate
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(AutoOrderResponse, Integer, Hash)>] AutoOrderResponse data, response status code and response headers
+    def consolidate_auto_orders_with_http_info(auto_order_oid, auto_order_consolidate, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AutoOrderApi.consolidate_auto_orders ...'
+      end
+      # verify the required parameter 'auto_order_oid' is set
+      if @api_client.config.client_side_validation && auto_order_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'auto_order_oid' when calling AutoOrderApi.consolidate_auto_orders"
+      end
+      # verify the required parameter 'auto_order_consolidate' is set
+      if @api_client.config.client_side_validation && auto_order_consolidate.nil?
+        fail ArgumentError, "Missing the required parameter 'auto_order_consolidate' when calling AutoOrderApi.consolidate_auto_orders"
+      end
+      # resource path
+      local_var_path = '/auto_order/auto_orders/{auto_order_oid}/consolidate'.sub('{' + 'auto_order_oid' + '}', CGI.escape(auto_order_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(auto_order_consolidate)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AutoOrderResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AutoOrderApi.consolidate_auto_orders",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AutoOrderApi#consolidate_auto_orders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Establish an auto order by referencing a regular order id
     # Establish an auto order by referencing a regular order id.  The result will be an auto order without any items.  You should add the items and perform an update call.  Orders must be less than 60 days old and use a credit card payment. 
     # @param reference_order_id [String] The order id to attach this auto order to

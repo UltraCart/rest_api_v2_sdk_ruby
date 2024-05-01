@@ -4,6 +4,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**consolidate_auto_orders**](AutoOrderApi.md#consolidate_auto_orders) | **PUT** /auto_order/auto_orders/{auto_order_oid}/consolidate | Consolidates multiple auto orders |
 | [**establish_auto_order_by_reference_order_id**](AutoOrderApi.md#establish_auto_order_by_reference_order_id) | **POST** /auto_order/auto_orders/reference_order_id/{reference_order_id} | Establish an auto order by referencing a regular order id |
 | [**get_auto_order**](AutoOrderApi.md#get_auto_order) | **GET** /auto_order/auto_orders/{auto_order_oid} | Retrieve an auto order by oid |
 | [**get_auto_order_by_code**](AutoOrderApi.md#get_auto_order_by_code) | **GET** /auto_order/auto_orders/code/{auto_order_code} | Retrieve an auto order by code |
@@ -13,6 +14,83 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_auto_orders_by_query**](AutoOrderApi.md#get_auto_orders_by_query) | **POST** /auto_order/auto_orders/query | Retrieve auto orders by query |
 | [**update_auto_order**](AutoOrderApi.md#update_auto_order) | **PUT** /auto_order/auto_orders/{auto_order_oid} | Update an auto order |
 | [**update_auto_orders_batch**](AutoOrderApi.md#update_auto_orders_batch) | **PUT** /auto_order/auto_orders/batch | Update multiple auto orders |
+
+
+## consolidate_auto_orders
+
+> <AutoOrderResponse> consolidate_auto_orders(auto_order_oid, auto_order_consolidate, opts)
+
+Consolidates multiple auto orders
+
+Consolidates mutliple auto orders on the UltraCart account. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::AutoOrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+auto_order_oid = 56 # Integer | The auto order oid to consolidate into.
+auto_order_consolidate = UltracartClient::AutoOrderConsolidate.new # AutoOrderConsolidate | Auto orders to consolidate
+opts = {
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
+}
+
+begin
+  # Consolidates multiple auto orders
+  result = api_instance.consolidate_auto_orders(auto_order_oid, auto_order_consolidate, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling AutoOrderApi->consolidate_auto_orders: #{e}"
+end
+```
+
+#### Using the consolidate_auto_orders_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AutoOrderResponse>, Integer, Hash)> consolidate_auto_orders_with_http_info(auto_order_oid, auto_order_consolidate, opts)
+
+```ruby
+begin
+  # Consolidates multiple auto orders
+  data, status_code, headers = api_instance.consolidate_auto_orders_with_http_info(auto_order_oid, auto_order_consolidate, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AutoOrderResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling AutoOrderApi->consolidate_auto_orders_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **auto_order_oid** | **Integer** | The auto order oid to consolidate into. |  |
+| **auto_order_consolidate** | [**AutoOrderConsolidate**](AutoOrderConsolidate.md) | Auto orders to consolidate |  |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
+
+### Return type
+
+[**AutoOrderResponse**](AutoOrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
 
 
 ## establish_auto_order_by_reference_order_id
