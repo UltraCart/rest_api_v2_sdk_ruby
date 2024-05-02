@@ -42,6 +42,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_pbx_agent_voicemails**](ConversationApi.md#get_pbx_agent_voicemails) | **GET** /conversation/pbx/agent/voicemails | Get Agent Voicemails |
 | [**get_pbx_agents**](ConversationApi.md#get_pbx_agents) | **GET** /conversation/pbx/agent | Get pbx agents |
 | [**get_pbx_audio**](ConversationApi.md#get_pbx_audio) | **GET** /conversation/pbx/audio/{conversationPbxAudioUuid} | Get pbx audio |
+| [**get_pbx_audio_usage**](ConversationApi.md#get_pbx_audio_usage) | **GET** /conversation/pbx/audio/{conversationPbxAudioUuid}/usage | Get pbx audio usage |
 | [**get_pbx_audios**](ConversationApi.md#get_pbx_audios) | **GET** /conversation/pbx/audio | Get pbx audios |
 | [**get_pbx_menu**](ConversationApi.md#get_pbx_menu) | **GET** /conversation/pbx/menu/{conversationPbxMenuUuid} | Get pbx menu |
 | [**get_pbx_menus**](ConversationApi.md#get_pbx_menus) | **GET** /conversation/pbx/menu | Get pbx menus |
@@ -2757,6 +2758,77 @@ end
 ### Return type
 
 [**ConversationPbxAudioResponse**](ConversationPbxAudioResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_audio_usage
+
+> <ConversationPbxAudioUsageResponse> get_pbx_audio_usage(conversation_pbx_audio_uuid)
+
+Get pbx audio usage
+
+Retrieve a pbx audio usage 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+conversation_pbx_audio_uuid = 'conversation_pbx_audio_uuid_example' # String | 
+
+begin
+  # Get pbx audio usage
+  result = api_instance.get_pbx_audio_usage(conversation_pbx_audio_uuid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_audio_usage: #{e}"
+end
+```
+
+#### Using the get_pbx_audio_usage_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudioUsageResponse>, Integer, Hash)> get_pbx_audio_usage_with_http_info(conversation_pbx_audio_uuid)
+
+```ruby
+begin
+  # Get pbx audio usage
+  data, status_code, headers = api_instance.get_pbx_audio_usage_with_http_info(conversation_pbx_audio_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudioUsageResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_audio_usage_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_audio_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxAudioUsageResponse**](ConversationPbxAudioUsageResponse.md)
 
 ### Authorization
 
