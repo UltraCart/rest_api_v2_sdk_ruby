@@ -68,6 +68,12 @@ module UltracartClient
     # UltraCart merchant ID owning this order
     attr_accessor :merchant_id
 
+    # The date/time the auto order was merged into another auto order
+    attr_accessor :merged_dts
+
+    # The auto order that this auto order was merged into
+    attr_accessor :merged_into_auto_order_oid
+
     # The next time that the auto order will be attempted for processing
     attr_accessor :next_attempt
 
@@ -131,6 +137,8 @@ module UltracartClient
         :'logs' => :'logs',
         :'management' => :'management',
         :'merchant_id' => :'merchant_id',
+        :'merged_dts' => :'merged_dts',
+        :'merged_into_auto_order_oid' => :'merged_into_auto_order_oid',
         :'next_attempt' => :'next_attempt',
         :'original_order' => :'original_order',
         :'original_order_id' => :'original_order_id',
@@ -167,6 +175,8 @@ module UltracartClient
         :'logs' => :'Array<AutoOrderLog>',
         :'management' => :'AutoOrderManagement',
         :'merchant_id' => :'String',
+        :'merged_dts' => :'String',
+        :'merged_into_auto_order_oid' => :'Integer',
         :'next_attempt' => :'String',
         :'original_order' => :'Order',
         :'original_order_id' => :'String',
@@ -276,6 +286,14 @@ module UltracartClient
         self.merchant_id = attributes[:'merchant_id']
       end
 
+      if attributes.key?(:'merged_dts')
+        self.merged_dts = attributes[:'merged_dts']
+      end
+
+      if attributes.key?(:'merged_into_auto_order_oid')
+        self.merged_into_auto_order_oid = attributes[:'merged_into_auto_order_oid']
+      end
+
       if attributes.key?(:'next_attempt')
         self.next_attempt = attributes[:'next_attempt']
       end
@@ -317,7 +335,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      status_validator = EnumAttributeValidator.new('String', ["active", "canceled", "disabled"])
+      status_validator = EnumAttributeValidator.new('String', ["active", "canceled", "disabled", "merged"])
       return false unless status_validator.valid?(@status)
       true
     end
@@ -325,7 +343,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      validator = EnumAttributeValidator.new('String', ["active", "canceled", "disabled"])
+      validator = EnumAttributeValidator.new('String', ["active", "canceled", "disabled", "merged"])
       unless validator.valid?(status)
         fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
       end
@@ -355,6 +373,8 @@ module UltracartClient
           logs == o.logs &&
           management == o.management &&
           merchant_id == o.merchant_id &&
+          merged_dts == o.merged_dts &&
+          merged_into_auto_order_oid == o.merged_into_auto_order_oid &&
           next_attempt == o.next_attempt &&
           original_order == o.original_order &&
           original_order_id == o.original_order_id &&
@@ -373,7 +393,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_ons, auto_order_code, auto_order_oid, cancel_after_next_x_orders, cancel_downgrade, cancel_reason, cancel_upgrade, canceled_by_user, canceled_dts, completed, credit_card_attempt, disabled_dts, enabled, failure_reason, items, logs, management, merchant_id, next_attempt, original_order, original_order_id, override_affiliate_id, rebill_orders, rotating_transaction_gateway_code, status].hash
+      [add_ons, auto_order_code, auto_order_oid, cancel_after_next_x_orders, cancel_downgrade, cancel_reason, cancel_upgrade, canceled_by_user, canceled_dts, completed, credit_card_attempt, disabled_dts, enabled, failure_reason, items, logs, management, merchant_id, merged_dts, merged_into_auto_order_oid, next_attempt, original_order, original_order_id, override_affiliate_id, rebill_orders, rotating_transaction_gateway_code, status].hash
     end
 
     # Builds the object from hash

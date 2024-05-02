@@ -22,6 +22,8 @@
 | **logs** | [**Array&lt;AutoOrderLog&gt;**](AutoOrderLog.md) | Logs associated with this auto order | [optional] |
 | **management** | [**AutoOrderManagement**](AutoOrderManagement.md) |  | [optional] |
 | **merchant_id** | **String** | UltraCart merchant ID owning this order | [optional] |
+| **merged_dts** | **String** | The date/time the auto order was merged into another auto order | [optional] |
+| **merged_into_auto_order_oid** | **Integer** | The auto order that this auto order was merged into | [optional] |
 | **next_attempt** | **String** | The next time that the auto order will be attempted for processing | [optional] |
 | **original_order** | [**Order**](Order.md) |  | [optional] |
 | **original_order_id** | **String** | The original order id that this auto order is associated with. | [optional] |
@@ -54,6 +56,8 @@ instance = UltracartClient::AutoOrder.new(
   logs: null,
   management: null,
   merchant_id: null,
+  merged_dts: null,
+  merged_into_auto_order_oid: null,
   next_attempt: null,
   original_order: null,
   original_order_id: null,
