@@ -17,6 +17,12 @@
 | **fbclid** | **String** |  | [optional] |
 | **gbraid** | **String** |  | [optional] |
 | **glcid** | **String** |  | [optional] |
+| **itm_campaign** | **String** |  | [optional] |
+| **itm_content** | **String** |  | [optional] |
+| **itm_id** | **String** |  | [optional] |
+| **itm_medium** | **String** |  | [optional] |
+| **itm_source** | **String** |  | [optional] |
+| **itm_term** | **String** |  | [optional] |
 | **msclkid** | **String** |  | [optional] |
 | **ttclid** | **String** |  | [optional] |
 | **uc_message_id** | **String** |  | [optional] |
@@ -48,6 +54,12 @@ instance = UltracartClient::OrderUtm.new(
   fbclid: null,
   gbraid: null,
   glcid: null,
+  itm_campaign: null,
+  itm_content: null,
+  itm_id: null,
+  itm_medium: null,
+  itm_source: null,
+  itm_term: null,
   msclkid: null,
   ttclid: null,
   uc_message_id: null,

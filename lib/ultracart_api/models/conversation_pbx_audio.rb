@@ -36,6 +36,9 @@ module UltracartClient
     # Mime Type
     attr_accessor :mime_type
 
+    # URL
+    attr_accessor :url
+
     # User Id
     attr_accessor :user_id
 
@@ -52,6 +55,7 @@ module UltracartClient
         :'filename' => :'filename',
         :'merchant_id' => :'merchant_id',
         :'mime_type' => :'mime_type',
+        :'url' => :'url',
         :'user_id' => :'user_id',
         :'version' => :'version'
       }
@@ -72,6 +76,7 @@ module UltracartClient
         :'filename' => :'String',
         :'merchant_id' => :'String',
         :'mime_type' => :'String',
+        :'url' => :'String',
         :'user_id' => :'Integer',
         :'version' => :'Integer'
       }
@@ -124,6 +129,10 @@ module UltracartClient
 
       if attributes.key?(:'mime_type')
         self.mime_type = attributes[:'mime_type']
+      end
+
+      if attributes.key?(:'url')
+        self.url = attributes[:'url']
       end
 
       if attributes.key?(:'user_id')
@@ -250,6 +259,7 @@ module UltracartClient
           filename == o.filename &&
           merchant_id == o.merchant_id &&
           mime_type == o.mime_type &&
+          url == o.url &&
           user_id == o.user_id &&
           version == o.version
     end
@@ -263,7 +273,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [audio_s3_listing_key, conversation_pbx_audio_uuid, default_hold_music, description, filename, merchant_id, mime_type, user_id, version].hash
+      [audio_s3_listing_key, conversation_pbx_audio_uuid, default_hold_music, description, filename, merchant_id, mime_type, url, user_id, version].hash
     end
 
     # Builds the object from hash

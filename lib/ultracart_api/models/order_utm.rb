@@ -42,6 +42,18 @@ module UltracartClient
 
     attr_accessor :glcid
 
+    attr_accessor :itm_campaign
+
+    attr_accessor :itm_content
+
+    attr_accessor :itm_id
+
+    attr_accessor :itm_medium
+
+    attr_accessor :itm_source
+
+    attr_accessor :itm_term
+
     attr_accessor :msclkid
 
     attr_accessor :ttclid
@@ -80,6 +92,12 @@ module UltracartClient
         :'fbclid' => :'fbclid',
         :'gbraid' => :'gbraid',
         :'glcid' => :'glcid',
+        :'itm_campaign' => :'itm_campaign',
+        :'itm_content' => :'itm_content',
+        :'itm_id' => :'itm_id',
+        :'itm_medium' => :'itm_medium',
+        :'itm_source' => :'itm_source',
+        :'itm_term' => :'itm_term',
         :'msclkid' => :'msclkid',
         :'ttclid' => :'ttclid',
         :'uc_message_id' => :'uc_message_id',
@@ -115,6 +133,12 @@ module UltracartClient
         :'fbclid' => :'String',
         :'gbraid' => :'String',
         :'glcid' => :'String',
+        :'itm_campaign' => :'String',
+        :'itm_content' => :'String',
+        :'itm_id' => :'String',
+        :'itm_medium' => :'String',
+        :'itm_source' => :'String',
+        :'itm_term' => :'String',
         :'msclkid' => :'String',
         :'ttclid' => :'String',
         :'uc_message_id' => :'String',
@@ -202,6 +226,30 @@ module UltracartClient
         self.glcid = attributes[:'glcid']
       end
 
+      if attributes.key?(:'itm_campaign')
+        self.itm_campaign = attributes[:'itm_campaign']
+      end
+
+      if attributes.key?(:'itm_content')
+        self.itm_content = attributes[:'itm_content']
+      end
+
+      if attributes.key?(:'itm_id')
+        self.itm_id = attributes[:'itm_id']
+      end
+
+      if attributes.key?(:'itm_medium')
+        self.itm_medium = attributes[:'itm_medium']
+      end
+
+      if attributes.key?(:'itm_source')
+        self.itm_source = attributes[:'itm_source']
+      end
+
+      if attributes.key?(:'itm_term')
+        self.itm_term = attributes[:'itm_term']
+      end
+
       if attributes.key?(:'msclkid')
         self.msclkid = attributes[:'msclkid']
       end
@@ -278,6 +326,12 @@ module UltracartClient
           fbclid == o.fbclid &&
           gbraid == o.gbraid &&
           glcid == o.glcid &&
+          itm_campaign == o.itm_campaign &&
+          itm_content == o.itm_content &&
+          itm_id == o.itm_id &&
+          itm_medium == o.itm_medium &&
+          itm_source == o.itm_source &&
+          itm_term == o.itm_term &&
           msclkid == o.msclkid &&
           ttclid == o.ttclid &&
           uc_message_id == o.uc_message_id &&
@@ -300,7 +354,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attribution_first_click_subtotal, attribution_first_click_total, attribution_last_click_subtotal, attribution_last_click_total, attribution_linear_subtotal, attribution_linear_total, attribution_position_based_subtotal, attribution_position_based_total, click_dts, facebook_ad_id, fbclid, gbraid, glcid, msclkid, ttclid, uc_message_id, utm_campaign, utm_content, utm_id, utm_medium, utm_source, utm_term, vmcid, wbraid].hash
+      [attribution_first_click_subtotal, attribution_first_click_total, attribution_last_click_subtotal, attribution_last_click_total, attribution_linear_subtotal, attribution_linear_total, attribution_position_based_subtotal, attribution_position_based_total, click_dts, facebook_ad_id, fbclid, gbraid, glcid, itm_campaign, itm_content, itm_id, itm_medium, itm_source, itm_term, msclkid, ttclid, uc_message_id, utm_campaign, utm_content, utm_id, utm_medium, utm_source, utm_term, vmcid, wbraid].hash
     end
 
     # Builds the object from hash

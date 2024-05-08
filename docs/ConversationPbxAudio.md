@@ -11,6 +11,7 @@
 | **filename** | **String** | Filename | [optional] |
 | **merchant_id** | **String** | Merchant Id | [optional] |
 | **mime_type** | **String** | Mime Type | [optional] |
+| **url** | **String** | URL | [optional] |
 | **user_id** | **Integer** | User Id | [optional] |
 | **version** | **Integer** | Version | [optional] |
 
@@ -27,6 +28,7 @@ instance = UltracartClient::ConversationPbxAudio.new(
   filename: null,
   merchant_id: null,
   mime_type: null,
+  url: null,
   user_id: null,
   version: null
 )

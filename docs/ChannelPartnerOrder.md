@@ -43,6 +43,16 @@
 | **custom_field6** | **String** | Custom field 6 | [optional] |
 | **custom_field7** | **String** | Custom field 7 | [optional] |
 | **delivery_date** | **String** | Date the customer is requesting delivery on. Typically used for perishable product delivery. | [optional] |
+| **echeck_bank_aba_code** | **String** | eCheck bank ABA code | [optional] |
+| **echeck_bank_account_name** | **String** | eCheck bank account name | [optional] |
+| **echeck_bank_account_number** | **String** | eCheck bank account number | [optional] |
+| **echeck_bank_account_type** | **String** | eCheck bank account type | [optional] |
+| **echeck_bank_name** | **String** | eCheck bank name | [optional] |
+| **echeck_bank_owner_type** | **String** | eCheck bank owner type | [optional] |
+| **echeck_customer_tax_id** | **String** | eCheck customer tax id | [optional] |
+| **echeck_drivers_license_dob** | **String** | eCheck drivers license dob | [optional] |
+| **echeck_drivers_license_number** | **String** | eCheck drivers license number | [optional] |
+| **echeck_drivers_license_state** | **String** | eCheck drivers license state | [optional] |
 | **email** | **String** | Email | [optional] |
 | **gift** | **Boolean** | True if this order is a gift | [optional] |
 | **gift_email** | **String** | Email address of the gift recipient | [optional] |
@@ -131,6 +141,16 @@ instance = UltracartClient::ChannelPartnerOrder.new(
   custom_field6: null,
   custom_field7: null,
   delivery_date: null,
+  echeck_bank_aba_code: null,
+  echeck_bank_account_name: null,
+  echeck_bank_account_number: null,
+  echeck_bank_account_type: null,
+  echeck_bank_name: null,
+  echeck_bank_owner_type: null,
+  echeck_customer_tax_id: null,
+  echeck_drivers_license_dob: null,
+  echeck_drivers_license_number: null,
+  echeck_drivers_license_state: null,
   email: null,
   gift: null,
   gift_email: null,
