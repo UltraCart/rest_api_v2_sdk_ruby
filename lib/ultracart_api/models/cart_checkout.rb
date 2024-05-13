@@ -18,6 +18,9 @@ module UltracartClient
     # Comments from the customer.  Rarely used on the single page checkout.
     attr_accessor :comments
 
+    # Current step of the checkout (read only)
+    attr_accessor :current_step
+
     # Custom field 1
     attr_accessor :custom_field1
 
@@ -70,6 +73,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'comments' => :'comments',
+        :'current_step' => :'current_step',
         :'custom_field1' => :'custom_field1',
         :'custom_field10' => :'custom_field10',
         :'custom_field2' => :'custom_field2',
@@ -98,6 +102,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'comments' => :'String',
+        :'current_step' => :'String',
         :'custom_field1' => :'String',
         :'custom_field10' => :'String',
         :'custom_field2' => :'String',
@@ -140,6 +145,10 @@ module UltracartClient
 
       if attributes.key?(:'comments')
         self.comments = attributes[:'comments']
+      end
+
+      if attributes.key?(:'current_step')
+        self.current_step = attributes[:'current_step']
       end
 
       if attributes.key?(:'custom_field1')
@@ -421,6 +430,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           comments == o.comments &&
+          current_step == o.current_step &&
           custom_field1 == o.custom_field1 &&
           custom_field10 == o.custom_field10 &&
           custom_field2 == o.custom_field2 &&
@@ -448,7 +458,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [comments, custom_field1, custom_field10, custom_field2, custom_field3, custom_field4, custom_field5, custom_field6, custom_field7, custom_field8, custom_field9, ip_address, return_code, return_url, screen_branding_theme_code, storefront_host_name, user_agent].hash
+      [comments, current_step, custom_field1, custom_field10, custom_field2, custom_field3, custom_field4, custom_field5, custom_field6, custom_field7, custom_field8, custom_field9, ip_address, return_code, return_url, screen_branding_theme_code, storefront_host_name, user_agent].hash
     end
 
     # Builds the object from hash

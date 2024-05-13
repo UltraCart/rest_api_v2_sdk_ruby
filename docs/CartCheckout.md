@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **comments** | **String** | Comments from the customer.  Rarely used on the single page checkout. | [optional] |
+| **current_step** | **String** | Current step of the checkout (read only) | [optional] |
 | **custom_field1** | **String** | Custom field 1 | [optional] |
 | **custom_field10** | **String** | Custom field 10 | [optional] |
 | **custom_field2** | **String** | Custom field 2 | [optional] |
@@ -29,6 +30,7 @@ require 'ultracart_api'
 
 instance = UltracartClient::CartCheckout.new(
   comments: null,
+  current_step: null,
   custom_field1: null,
   custom_field10: null,
   custom_field2: null,
