@@ -25,10 +25,10 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'conversation_pbx_time_based_uuid' => :'conversationPbxTimeBasedUuid',
-        :'mapping_config' => :'mappingConfig',
-        :'merchant_id' => :'merchantId',
-        :'time_based_name' => :'timeBasedName'
+        :'conversation_pbx_time_based_uuid' => :'conversation_pbx_time_based_uuid',
+        :'mapping_config' => :'mapping_config',
+        :'merchant_id' => :'merchant_id',
+        :'time_based_name' => :'time_based_name'
       }
     end
 
@@ -50,20 +50,20 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'conversationPbxTimeBasedUuid')
-        self.conversation_pbx_time_based_uuid = attributes[:'conversationPbxTimeBasedUuid']
+      if attributes.has_key?(:'conversation_pbx_time_based_uuid')
+        self.conversation_pbx_time_based_uuid = attributes[:'conversation_pbx_time_based_uuid']
       end
 
-      if attributes.has_key?(:'mappingConfig')
-        self.mapping_config = attributes[:'mappingConfig']
+      if attributes.has_key?(:'mapping_config')
+        self.mapping_config = attributes[:'mapping_config']
       end
 
-      if attributes.has_key?(:'merchantId')
-        self.merchant_id = attributes[:'merchantId']
+      if attributes.has_key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
       end
 
-      if attributes.has_key?(:'timeBasedName')
-        self.time_based_name = attributes[:'timeBasedName']
+      if attributes.has_key?(:'time_based_name')
+        self.time_based_name = attributes[:'time_based_name']
       end
     end
 
