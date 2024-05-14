@@ -17,7 +17,7 @@ module UltracartClient
     # Action
     attr_accessor :action
 
-    # Action target
+    # Action target.  This is the UUID associated with the configuration object of that particular type.
     attr_accessor :action_target
 
     # Name
@@ -25,6 +25,28 @@ module UltracartClient
 
     # Time range UUID
     attr_accessor :time_range_uuid
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -97,6 +119,8 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      action_validator = EnumAttributeValidator.new('String', ['time based', 'menu', 'queue', 'voicemail', 'agent'])
+      return false unless action_validator.valid?(@action)
       return false if !@action.nil? && @action.to_s.length > 30
       return false if !@action_target.nil? && @action_target.to_s.length > 50
       return false if !@name.nil? && @name.to_s.length > 50
@@ -104,13 +128,13 @@ module UltracartClient
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] action Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] action Object to be assigned
     def action=(action)
-      if !action.nil? && action.to_s.length > 30
-        fail ArgumentError, 'invalid value for "action", the character length must be smaller than or equal to 30.'
+      validator = EnumAttributeValidator.new('String', ['time based', 'menu', 'queue', 'voicemail', 'agent'])
+      unless validator.valid?(action)
+        fail ArgumentError, 'invalid value for "action", must be one of #{validator.allowable_values}.'
       end
-
       @action = action
     end
 

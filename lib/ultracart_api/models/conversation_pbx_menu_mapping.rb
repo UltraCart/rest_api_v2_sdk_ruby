@@ -17,7 +17,7 @@ module UltracartClient
     # Action
     attr_accessor :action
 
-    # Action target
+    # Action target.  This is the UUID associated with the configuration object of that particular type.
     attr_accessor :action_target
 
     # Digits
@@ -25,6 +25,28 @@ module UltracartClient
 
     # Speech
     attr_accessor :speech
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -75,13 +97,45 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@action.nil? && @action.to_s.length > 30
+        invalid_properties.push('invalid value for "action", the character length must be smaller than or equal to 30.')
+      end
+
+      if !@action_target.nil? && @action_target.to_s.length > 50
+        invalid_properties.push('invalid value for "action_target", the character length must be smaller than or equal to 50.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      action_validator = EnumAttributeValidator.new('String', ['time based', 'menu', 'queue', 'voicemail', 'agent'])
+      return false unless action_validator.valid?(@action)
+      return false if !@action.nil? && @action.to_s.length > 30
+      return false if !@action_target.nil? && @action_target.to_s.length > 50
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] action Object to be assigned
+    def action=(action)
+      validator = EnumAttributeValidator.new('String', ['time based', 'menu', 'queue', 'voicemail', 'agent'])
+      unless validator.valid?(action)
+        fail ArgumentError, 'invalid value for "action", must be one of #{validator.allowable_values}.'
+      end
+      @action = action
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] action_target Value to be assigned
+    def action_target=(action_target)
+      if !action_target.nil? && action_target.to_s.length > 50
+        fail ArgumentError, 'invalid value for "action_target", the character length must be smaller than or equal to 50.'
+      end
+
+      @action_target = action_target
     end
 
     # Checks equality by comparing each attribute.
