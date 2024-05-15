@@ -24,8 +24,17 @@ module UltracartClient
     # Conversation Pbx Voicemail Mailbox UUID
     attr_accessor :conversation_pbx_voicemail_mailbox_uuid
 
+    # Extension
+    attr_accessor :extension
+
     # True if calls to this agent should be forwarded to their cellphone
     attr_accessor :forward_calls_to_cellphone
+
+    # Full name
+    attr_accessor :full_name
+
+    # Agent login
+    attr_accessor :login
 
     # Merchant Id
     attr_accessor :merchant_id
@@ -35,6 +44,15 @@ module UltracartClient
 
     # Twilio taskrouter worker Id
     attr_accessor :twilio_taskrouter_worker_id
+
+    # Unavailable play audio UUID
+    attr_accessor :unavailable_play_audio_uuid
+
+    # Unavailable say
+    attr_accessor :unavailable_say
+
+    # Unavailable say voice
+    attr_accessor :unavailable_say_voice
 
     # User Id
     attr_accessor :user_id
@@ -48,10 +66,16 @@ module UltracartClient
         :'cellphone' => :'cellphone',
         :'conversation_pbx_agent_uuid' => :'conversation_pbx_agent_uuid',
         :'conversation_pbx_voicemail_mailbox_uuid' => :'conversation_pbx_voicemail_mailbox_uuid',
+        :'extension' => :'extension',
         :'forward_calls_to_cellphone' => :'forward_calls_to_cellphone',
+        :'full_name' => :'full_name',
+        :'login' => :'login',
         :'merchant_id' => :'merchant_id',
         :'record_outgoing_automatically' => :'record_outgoing_automatically',
         :'twilio_taskrouter_worker_id' => :'twilio_taskrouter_worker_id',
+        :'unavailable_play_audio_uuid' => :'unavailable_play_audio_uuid',
+        :'unavailable_say' => :'unavailable_say',
+        :'unavailable_say_voice' => :'unavailable_say_voice',
         :'user_id' => :'user_id',
         :'voicemail' => :'voicemail'
       }
@@ -68,10 +92,16 @@ module UltracartClient
         :'cellphone' => :'String',
         :'conversation_pbx_agent_uuid' => :'String',
         :'conversation_pbx_voicemail_mailbox_uuid' => :'String',
+        :'extension' => :'Integer',
         :'forward_calls_to_cellphone' => :'Boolean',
+        :'full_name' => :'String',
+        :'login' => :'String',
         :'merchant_id' => :'String',
         :'record_outgoing_automatically' => :'Boolean',
         :'twilio_taskrouter_worker_id' => :'String',
+        :'unavailable_play_audio_uuid' => :'String',
+        :'unavailable_say' => :'String',
+        :'unavailable_say_voice' => :'String',
         :'user_id' => :'Integer',
         :'voicemail' => :'Boolean'
       }
@@ -110,8 +140,20 @@ module UltracartClient
         self.conversation_pbx_voicemail_mailbox_uuid = attributes[:'conversation_pbx_voicemail_mailbox_uuid']
       end
 
+      if attributes.key?(:'extension')
+        self.extension = attributes[:'extension']
+      end
+
       if attributes.key?(:'forward_calls_to_cellphone')
         self.forward_calls_to_cellphone = attributes[:'forward_calls_to_cellphone']
+      end
+
+      if attributes.key?(:'full_name')
+        self.full_name = attributes[:'full_name']
+      end
+
+      if attributes.key?(:'login')
+        self.login = attributes[:'login']
       end
 
       if attributes.key?(:'merchant_id')
@@ -124,6 +166,18 @@ module UltracartClient
 
       if attributes.key?(:'twilio_taskrouter_worker_id')
         self.twilio_taskrouter_worker_id = attributes[:'twilio_taskrouter_worker_id']
+      end
+
+      if attributes.key?(:'unavailable_play_audio_uuid')
+        self.unavailable_play_audio_uuid = attributes[:'unavailable_play_audio_uuid']
+      end
+
+      if attributes.key?(:'unavailable_say')
+        self.unavailable_say = attributes[:'unavailable_say']
+      end
+
+      if attributes.key?(:'unavailable_say_voice')
+        self.unavailable_say_voice = attributes[:'unavailable_say_voice']
       end
 
       if attributes.key?(:'user_id')
@@ -155,6 +209,14 @@ module UltracartClient
         invalid_properties.push('invalid value for "twilio_taskrouter_worker_id", the character length must be smaller than or equal to 100.')
       end
 
+      if !@unavailable_play_audio_uuid.nil? && @unavailable_play_audio_uuid.to_s.length > 50
+        invalid_properties.push('invalid value for "unavailable_play_audio_uuid", the character length must be smaller than or equal to 50.')
+      end
+
+      if !@unavailable_say_voice.nil? && @unavailable_say_voice.to_s.length > 50
+        invalid_properties.push('invalid value for "unavailable_say_voice", the character length must be smaller than or equal to 50.')
+      end
+
       invalid_properties
     end
 
@@ -165,6 +227,8 @@ module UltracartClient
       return false if !@conversation_pbx_voicemail_mailbox_uuid.nil? && @conversation_pbx_voicemail_mailbox_uuid.to_s.length > 50
       return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
       return false if !@twilio_taskrouter_worker_id.nil? && @twilio_taskrouter_worker_id.to_s.length > 100
+      return false if !@unavailable_play_audio_uuid.nil? && @unavailable_play_audio_uuid.to_s.length > 50
+      return false if !@unavailable_say_voice.nil? && @unavailable_say_voice.to_s.length > 50
       true
     end
 
@@ -208,6 +272,26 @@ module UltracartClient
       @twilio_taskrouter_worker_id = twilio_taskrouter_worker_id
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] unavailable_play_audio_uuid Value to be assigned
+    def unavailable_play_audio_uuid=(unavailable_play_audio_uuid)
+      if !unavailable_play_audio_uuid.nil? && unavailable_play_audio_uuid.to_s.length > 50
+        fail ArgumentError, 'invalid value for "unavailable_play_audio_uuid", the character length must be smaller than or equal to 50.'
+      end
+
+      @unavailable_play_audio_uuid = unavailable_play_audio_uuid
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] unavailable_say_voice Value to be assigned
+    def unavailable_say_voice=(unavailable_say_voice)
+      if !unavailable_say_voice.nil? && unavailable_say_voice.to_s.length > 50
+        fail ArgumentError, 'invalid value for "unavailable_say_voice", the character length must be smaller than or equal to 50.'
+      end
+
+      @unavailable_say_voice = unavailable_say_voice
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -216,10 +300,16 @@ module UltracartClient
           cellphone == o.cellphone &&
           conversation_pbx_agent_uuid == o.conversation_pbx_agent_uuid &&
           conversation_pbx_voicemail_mailbox_uuid == o.conversation_pbx_voicemail_mailbox_uuid &&
+          extension == o.extension &&
           forward_calls_to_cellphone == o.forward_calls_to_cellphone &&
+          full_name == o.full_name &&
+          login == o.login &&
           merchant_id == o.merchant_id &&
           record_outgoing_automatically == o.record_outgoing_automatically &&
           twilio_taskrouter_worker_id == o.twilio_taskrouter_worker_id &&
+          unavailable_play_audio_uuid == o.unavailable_play_audio_uuid &&
+          unavailable_say == o.unavailable_say &&
+          unavailable_say_voice == o.unavailable_say_voice &&
           user_id == o.user_id &&
           voicemail == o.voicemail
     end
@@ -233,7 +323,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cellphone, conversation_pbx_agent_uuid, conversation_pbx_voicemail_mailbox_uuid, forward_calls_to_cellphone, merchant_id, record_outgoing_automatically, twilio_taskrouter_worker_id, user_id, voicemail].hash
+      [cellphone, conversation_pbx_agent_uuid, conversation_pbx_voicemail_mailbox_uuid, extension, forward_calls_to_cellphone, full_name, login, merchant_id, record_outgoing_automatically, twilio_taskrouter_worker_id, unavailable_play_audio_uuid, unavailable_say, unavailable_say_voice, user_id, voicemail].hash
     end
 
     # Builds the object from hash

@@ -7,11 +7,9 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**delete_conversation_canned_message**](ConversationApi.md#delete_conversation_canned_message) | **DELETE** /conversation/canned_messages/{conversation_canned_message_oid} | Delete a conversation canned message |
 | [**delete_department**](ConversationApi.md#delete_department) | **DELETE** /conversation/departments/{conversation_department_oid} | Delete a conversation department |
 | [**delete_engagement**](ConversationApi.md#delete_engagement) | **DELETE** /conversation/engagements/{conversation_engagement_oid} | Delete a conversation engagement |
-| [**delete_pbx_agent**](ConversationApi.md#delete_pbx_agent) | **DELETE** /conversation/pbx/agent/{conversationPbxAgentUuid} | Delete pbx agent |
 | [**delete_pbx_agent_voicemail**](ConversationApi.md#delete_pbx_agent_voicemail) | **DELETE** /conversation/pbx/agent/voicemails/{recording_sid} | Delete Agent Voicemail |
 | [**delete_pbx_audio**](ConversationApi.md#delete_pbx_audio) | **DELETE** /conversation/pbx/audio/{conversationPbxAudioUuid} | Delete pbx audio |
 | [**delete_pbx_menu**](ConversationApi.md#delete_pbx_menu) | **DELETE** /conversation/pbx/menu/{conversationPbxMenuUuid} | Delete pbx menu |
-| [**delete_pbx_phone_number**](ConversationApi.md#delete_pbx_phone_number) | **DELETE** /conversation/pbx/phone_number/{conversationPbxPhoneNumberUuid} | Delete pbx phoneNumber |
 | [**delete_pbx_queue**](ConversationApi.md#delete_pbx_queue) | **DELETE** /conversation/pbx/queue/{conversationPbxQueueUuid} | Delete pbx queue |
 | [**delete_pbx_queue_voicemail**](ConversationApi.md#delete_pbx_queue_voicemail) | **DELETE** /conversation/pbx/queues/{queue_uuid}/voicemails/{recording_sid} | Delete Queue Voicemail |
 | [**delete_pbx_time_based**](ConversationApi.md#delete_pbx_time_based) | **DELETE** /conversation/pbx/time_based/{conversationPbxTimeBasedUuid} | Delete pbx timeBased |
@@ -61,10 +59,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**insert_conversation_canned_message**](ConversationApi.md#insert_conversation_canned_message) | **POST** /conversation/canned_messages | Insert a canned message |
 | [**insert_conversation_department**](ConversationApi.md#insert_conversation_department) | **POST** /conversation/departments | Insert a department |
 | [**insert_conversation_engagement**](ConversationApi.md#insert_conversation_engagement) | **POST** /conversation/engagements | Insert a engagement |
-| [**insert_pbx_agent**](ConversationApi.md#insert_pbx_agent) | **POST** /conversation/pbx/agent | Insert pbx agent |
 | [**insert_pbx_audio**](ConversationApi.md#insert_pbx_audio) | **POST** /conversation/pbx/audio | Insert pbx audio |
 | [**insert_pbx_menu**](ConversationApi.md#insert_pbx_menu) | **POST** /conversation/pbx/menu | Insert pbx menu |
-| [**insert_pbx_phone_number**](ConversationApi.md#insert_pbx_phone_number) | **POST** /conversation/pbx/phone_number | Insert pbx phoneNumber |
 | [**insert_pbx_queue**](ConversationApi.md#insert_pbx_queue) | **POST** /conversation/pbx/queue | Insert pbx queue |
 | [**insert_pbx_time_based**](ConversationApi.md#insert_pbx_time_based) | **POST** /conversation/pbx/time_based | Insert pbx timeBased |
 | [**insert_pbx_time_range**](ConversationApi.md#insert_pbx_time_range) | **POST** /conversation/pbx/time_range | Insert pbx timeRange |
@@ -303,77 +299,6 @@ nil (empty response body)
 - **Accept**: application/json
 
 
-## delete_pbx_agent
-
-> <ConversationPbxAgentResponse> delete_pbx_agent(conversation_pbx_agent_uuid)
-
-Delete pbx agent
-
-Delete a pbx agent 
-
-### Examples
-
-```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_agent_uuid = 'conversation_pbx_agent_uuid_example' # String | 
-
-begin
-  # Delete pbx agent
-  result = api_instance.delete_pbx_agent(conversation_pbx_agent_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->delete_pbx_agent: #{e}"
-end
-```
-
-#### Using the delete_pbx_agent_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<ConversationPbxAgentResponse>, Integer, Hash)> delete_pbx_agent_with_http_info(conversation_pbx_agent_uuid)
-
-```ruby
-begin
-  # Delete pbx agent
-  data, status_code, headers = api_instance.delete_pbx_agent_with_http_info(conversation_pbx_agent_uuid)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <ConversationPbxAgentResponse>
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->delete_pbx_agent_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **conversation_pbx_agent_uuid** | **String** |  |  |
-
-### Return type
-
-[**ConversationPbxAgentResponse**](ConversationPbxAgentResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## delete_pbx_agent_voicemail
 
 > delete_pbx_agent_voicemail(recording_sid)
@@ -575,77 +500,6 @@ end
 ### Return type
 
 [**ConversationPbxMenuResponse**](ConversationPbxMenuResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## delete_pbx_phone_number
-
-> <ConversationPbxPhoneNumberResponse> delete_pbx_phone_number(conversation_pbx_phone_number_uuid)
-
-Delete pbx phoneNumber
-
-Delete a pbx phoneNumber 
-
-### Examples
-
-```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_phone_number_uuid = 'conversation_pbx_phone_number_uuid_example' # String | 
-
-begin
-  # Delete pbx phoneNumber
-  result = api_instance.delete_pbx_phone_number(conversation_pbx_phone_number_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->delete_pbx_phone_number: #{e}"
-end
-```
-
-#### Using the delete_pbx_phone_number_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<ConversationPbxPhoneNumberResponse>, Integer, Hash)> delete_pbx_phone_number_with_http_info(conversation_pbx_phone_number_uuid)
-
-```ruby
-begin
-  # Delete pbx phoneNumber
-  data, status_code, headers = api_instance.delete_pbx_phone_number_with_http_info(conversation_pbx_phone_number_uuid)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <ConversationPbxPhoneNumberResponse>
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->delete_pbx_phone_number_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **conversation_pbx_phone_number_uuid** | **String** |  |  |
-
-### Return type
-
-[**ConversationPbxPhoneNumberResponse**](ConversationPbxPhoneNumberResponse.md)
 
 ### Authorization
 
@@ -4099,77 +3953,6 @@ end
 - **Accept**: application/json
 
 
-## insert_pbx_agent
-
-> <ConversationPbxAgentResponse> insert_pbx_agent(pbx_agent)
-
-Insert pbx agent
-
-Insert a pbx agent 
-
-### Examples
-
-```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-pbx_agent = UltracartClient::ConversationPbxAgent.new # ConversationPbxAgent | Pbx Agent
-
-begin
-  # Insert pbx agent
-  result = api_instance.insert_pbx_agent(pbx_agent)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->insert_pbx_agent: #{e}"
-end
-```
-
-#### Using the insert_pbx_agent_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<ConversationPbxAgentResponse>, Integer, Hash)> insert_pbx_agent_with_http_info(pbx_agent)
-
-```ruby
-begin
-  # Insert pbx agent
-  data, status_code, headers = api_instance.insert_pbx_agent_with_http_info(pbx_agent)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <ConversationPbxAgentResponse>
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->insert_pbx_agent_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **pbx_agent** | [**ConversationPbxAgent**](ConversationPbxAgent.md) | Pbx Agent |  |
-
-### Return type
-
-[**ConversationPbxAgentResponse**](ConversationPbxAgentResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## insert_pbx_audio
 
 > <ConversationPbxAudioResponse> insert_pbx_audio(pbx_audio)
@@ -4301,77 +4084,6 @@ end
 ### Return type
 
 [**ConversationPbxMenuResponse**](ConversationPbxMenuResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## insert_pbx_phone_number
-
-> <ConversationPbxPhoneNumberResponse> insert_pbx_phone_number(pbx_phone_number)
-
-Insert pbx phoneNumber
-
-Insert a pbx phoneNumber 
-
-### Examples
-
-```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-pbx_phone_number = UltracartClient::ConversationPbxPhoneNumber.new # ConversationPbxPhoneNumber | Pbx PhoneNumber
-
-begin
-  # Insert pbx phoneNumber
-  result = api_instance.insert_pbx_phone_number(pbx_phone_number)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->insert_pbx_phone_number: #{e}"
-end
-```
-
-#### Using the insert_pbx_phone_number_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<ConversationPbxPhoneNumberResponse>, Integer, Hash)> insert_pbx_phone_number_with_http_info(pbx_phone_number)
-
-```ruby
-begin
-  # Insert pbx phoneNumber
-  data, status_code, headers = api_instance.insert_pbx_phone_number_with_http_info(pbx_phone_number)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <ConversationPbxPhoneNumberResponse>
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->insert_pbx_phone_number_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **pbx_phone_number** | [**ConversationPbxPhoneNumber**](ConversationPbxPhoneNumber.md) | Pbx PhoneNumber |  |
-
-### Return type
-
-[**ConversationPbxPhoneNumberResponse**](ConversationPbxPhoneNumberResponse.md)
 
 ### Authorization
 
