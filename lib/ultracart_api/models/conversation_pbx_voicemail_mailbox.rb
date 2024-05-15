@@ -28,10 +28,13 @@ module UltracartClient
     attr_accessor :user_id
 
     # Voicemail follow play audio UUID
-    attr_accessor :voicemail_follow_play_audio_uuid
+    attr_accessor :voicemail_followup_play_audio_uuid
 
     # Voicemail followup say
     attr_accessor :voicemail_followup_say
+
+    # Voicemail followup say voice
+    attr_accessor :voicemail_followup_say_voice
 
     # Voicemail mailbox id
     attr_accessor :voicemail_mailbox_id
@@ -45,8 +48,8 @@ module UltracartClient
     # Voicemail prompt say
     attr_accessor :voicemail_prompt_say
 
-    # Voicemail say voice
-    attr_accessor :voicemail_say_voice
+    # Voicemail prompt say voice
+    attr_accessor :voicemail_prompt_say_voice
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -77,13 +80,14 @@ module UltracartClient
         :'merchant_id' => :'merchant_id',
         :'send_notices_to_email' => :'send_notices_to_email',
         :'user_id' => :'user_id',
-        :'voicemail_follow_play_audio_uuid' => :'voicemail_follow_play_audio_uuid',
+        :'voicemail_followup_play_audio_uuid' => :'voicemail_followup_play_audio_uuid',
         :'voicemail_followup_say' => :'voicemail_followup_say',
+        :'voicemail_followup_say_voice' => :'voicemail_followup_say_voice',
         :'voicemail_mailbox_id' => :'voicemail_mailbox_id',
         :'voicemail_mailbox_type' => :'voicemail_mailbox_type',
         :'voicemail_prompt_play_audio_uuid' => :'voicemail_prompt_play_audio_uuid',
         :'voicemail_prompt_say' => :'voicemail_prompt_say',
-        :'voicemail_say_voice' => :'voicemail_say_voice'
+        :'voicemail_prompt_say_voice' => :'voicemail_prompt_say_voice'
       }
     end
 
@@ -99,13 +103,14 @@ module UltracartClient
         :'merchant_id' => :'String',
         :'send_notices_to_email' => :'String',
         :'user_id' => :'Integer',
-        :'voicemail_follow_play_audio_uuid' => :'String',
+        :'voicemail_followup_play_audio_uuid' => :'String',
         :'voicemail_followup_say' => :'String',
+        :'voicemail_followup_say_voice' => :'String',
         :'voicemail_mailbox_id' => :'String',
         :'voicemail_mailbox_type' => :'String',
         :'voicemail_prompt_play_audio_uuid' => :'String',
         :'voicemail_prompt_say' => :'String',
-        :'voicemail_say_voice' => :'String'
+        :'voicemail_prompt_say_voice' => :'String'
       }
     end
 
@@ -146,12 +151,16 @@ module UltracartClient
         self.user_id = attributes[:'user_id']
       end
 
-      if attributes.key?(:'voicemail_follow_play_audio_uuid')
-        self.voicemail_follow_play_audio_uuid = attributes[:'voicemail_follow_play_audio_uuid']
+      if attributes.key?(:'voicemail_followup_play_audio_uuid')
+        self.voicemail_followup_play_audio_uuid = attributes[:'voicemail_followup_play_audio_uuid']
       end
 
       if attributes.key?(:'voicemail_followup_say')
         self.voicemail_followup_say = attributes[:'voicemail_followup_say']
+      end
+
+      if attributes.key?(:'voicemail_followup_say_voice')
+        self.voicemail_followup_say_voice = attributes[:'voicemail_followup_say_voice']
       end
 
       if attributes.key?(:'voicemail_mailbox_id')
@@ -170,8 +179,8 @@ module UltracartClient
         self.voicemail_prompt_say = attributes[:'voicemail_prompt_say']
       end
 
-      if attributes.key?(:'voicemail_say_voice')
-        self.voicemail_say_voice = attributes[:'voicemail_say_voice']
+      if attributes.key?(:'voicemail_prompt_say_voice')
+        self.voicemail_prompt_say_voice = attributes[:'voicemail_prompt_say_voice']
       end
     end
 
@@ -191,8 +200,12 @@ module UltracartClient
         invalid_properties.push('invalid value for "send_notices_to_email", the character length must be smaller than or equal to 250.')
       end
 
-      if !@voicemail_follow_play_audio_uuid.nil? && @voicemail_follow_play_audio_uuid.to_s.length > 50
-        invalid_properties.push('invalid value for "voicemail_follow_play_audio_uuid", the character length must be smaller than or equal to 50.')
+      if !@voicemail_followup_play_audio_uuid.nil? && @voicemail_followup_play_audio_uuid.to_s.length > 50
+        invalid_properties.push('invalid value for "voicemail_followup_play_audio_uuid", the character length must be smaller than or equal to 50.')
+      end
+
+      if !@voicemail_followup_say_voice.nil? && @voicemail_followup_say_voice.to_s.length > 50
+        invalid_properties.push('invalid value for "voicemail_followup_say_voice", the character length must be smaller than or equal to 50.')
       end
 
       if !@voicemail_mailbox_id.nil? && @voicemail_mailbox_id.to_s.length > 50
@@ -207,8 +220,8 @@ module UltracartClient
         invalid_properties.push('invalid value for "voicemail_prompt_play_audio_uuid", the character length must be smaller than or equal to 50.')
       end
 
-      if !@voicemail_say_voice.nil? && @voicemail_say_voice.to_s.length > 50
-        invalid_properties.push('invalid value for "voicemail_say_voice", the character length must be smaller than or equal to 50.')
+      if !@voicemail_prompt_say_voice.nil? && @voicemail_prompt_say_voice.to_s.length > 50
+        invalid_properties.push('invalid value for "voicemail_prompt_say_voice", the character length must be smaller than or equal to 50.')
       end
 
       invalid_properties
@@ -220,13 +233,14 @@ module UltracartClient
       return false if !@conversation_pbx_voicemail_mailbox_uuid.nil? && @conversation_pbx_voicemail_mailbox_uuid.to_s.length > 50
       return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
       return false if !@send_notices_to_email.nil? && @send_notices_to_email.to_s.length > 250
-      return false if !@voicemail_follow_play_audio_uuid.nil? && @voicemail_follow_play_audio_uuid.to_s.length > 50
+      return false if !@voicemail_followup_play_audio_uuid.nil? && @voicemail_followup_play_audio_uuid.to_s.length > 50
+      return false if !@voicemail_followup_say_voice.nil? && @voicemail_followup_say_voice.to_s.length > 50
       return false if !@voicemail_mailbox_id.nil? && @voicemail_mailbox_id.to_s.length > 50
       voicemail_mailbox_type_validator = EnumAttributeValidator.new('String', ["agent", "shared"])
       return false unless voicemail_mailbox_type_validator.valid?(@voicemail_mailbox_type)
       return false if !@voicemail_mailbox_type.nil? && @voicemail_mailbox_type.to_s.length > 50
       return false if !@voicemail_prompt_play_audio_uuid.nil? && @voicemail_prompt_play_audio_uuid.to_s.length > 50
-      return false if !@voicemail_say_voice.nil? && @voicemail_say_voice.to_s.length > 50
+      return false if !@voicemail_prompt_say_voice.nil? && @voicemail_prompt_say_voice.to_s.length > 50
       true
     end
 
@@ -261,13 +275,23 @@ module UltracartClient
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] voicemail_follow_play_audio_uuid Value to be assigned
-    def voicemail_follow_play_audio_uuid=(voicemail_follow_play_audio_uuid)
-      if !voicemail_follow_play_audio_uuid.nil? && voicemail_follow_play_audio_uuid.to_s.length > 50
-        fail ArgumentError, 'invalid value for "voicemail_follow_play_audio_uuid", the character length must be smaller than or equal to 50.'
+    # @param [Object] voicemail_followup_play_audio_uuid Value to be assigned
+    def voicemail_followup_play_audio_uuid=(voicemail_followup_play_audio_uuid)
+      if !voicemail_followup_play_audio_uuid.nil? && voicemail_followup_play_audio_uuid.to_s.length > 50
+        fail ArgumentError, 'invalid value for "voicemail_followup_play_audio_uuid", the character length must be smaller than or equal to 50.'
       end
 
-      @voicemail_follow_play_audio_uuid = voicemail_follow_play_audio_uuid
+      @voicemail_followup_play_audio_uuid = voicemail_followup_play_audio_uuid
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] voicemail_followup_say_voice Value to be assigned
+    def voicemail_followup_say_voice=(voicemail_followup_say_voice)
+      if !voicemail_followup_say_voice.nil? && voicemail_followup_say_voice.to_s.length > 50
+        fail ArgumentError, 'invalid value for "voicemail_followup_say_voice", the character length must be smaller than or equal to 50.'
+      end
+
+      @voicemail_followup_say_voice = voicemail_followup_say_voice
     end
 
     # Custom attribute writer method with validation
@@ -301,13 +325,13 @@ module UltracartClient
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] voicemail_say_voice Value to be assigned
-    def voicemail_say_voice=(voicemail_say_voice)
-      if !voicemail_say_voice.nil? && voicemail_say_voice.to_s.length > 50
-        fail ArgumentError, 'invalid value for "voicemail_say_voice", the character length must be smaller than or equal to 50.'
+    # @param [Object] voicemail_prompt_say_voice Value to be assigned
+    def voicemail_prompt_say_voice=(voicemail_prompt_say_voice)
+      if !voicemail_prompt_say_voice.nil? && voicemail_prompt_say_voice.to_s.length > 50
+        fail ArgumentError, 'invalid value for "voicemail_prompt_say_voice", the character length must be smaller than or equal to 50.'
       end
 
-      @voicemail_say_voice = voicemail_say_voice
+      @voicemail_prompt_say_voice = voicemail_prompt_say_voice
     end
 
     # Checks equality by comparing each attribute.
@@ -319,13 +343,14 @@ module UltracartClient
           merchant_id == o.merchant_id &&
           send_notices_to_email == o.send_notices_to_email &&
           user_id == o.user_id &&
-          voicemail_follow_play_audio_uuid == o.voicemail_follow_play_audio_uuid &&
+          voicemail_followup_play_audio_uuid == o.voicemail_followup_play_audio_uuid &&
           voicemail_followup_say == o.voicemail_followup_say &&
+          voicemail_followup_say_voice == o.voicemail_followup_say_voice &&
           voicemail_mailbox_id == o.voicemail_mailbox_id &&
           voicemail_mailbox_type == o.voicemail_mailbox_type &&
           voicemail_prompt_play_audio_uuid == o.voicemail_prompt_play_audio_uuid &&
           voicemail_prompt_say == o.voicemail_prompt_say &&
-          voicemail_say_voice == o.voicemail_say_voice
+          voicemail_prompt_say_voice == o.voicemail_prompt_say_voice
     end
 
     # @see the `==` method
@@ -337,7 +362,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_pbx_voicemail_mailbox_uuid, merchant_id, send_notices_to_email, user_id, voicemail_follow_play_audio_uuid, voicemail_followup_say, voicemail_mailbox_id, voicemail_mailbox_type, voicemail_prompt_play_audio_uuid, voicemail_prompt_say, voicemail_say_voice].hash
+      [conversation_pbx_voicemail_mailbox_uuid, merchant_id, send_notices_to_email, user_id, voicemail_followup_play_audio_uuid, voicemail_followup_say, voicemail_followup_say_voice, voicemail_mailbox_id, voicemail_mailbox_type, voicemail_prompt_play_audio_uuid, voicemail_prompt_say, voicemail_prompt_say_voice].hash
     end
 
     # Builds the object from hash
