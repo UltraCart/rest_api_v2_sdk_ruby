@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **default** | [**ConversationPbxTimeBasedMapping**](ConversationPbxTimeBasedMapping.md) |  | [optional] |
+| **default_mapping** | [**ConversationPbxTimeBasedMapping**](ConversationPbxTimeBasedMapping.md) |  | [optional] |
 | **mappings** | [**Array&lt;ConversationPbxTimeBasedMapping&gt;**](ConversationPbxTimeBasedMapping.md) | Mappings | [optional] |
 
 ## Example
@@ -13,7 +13,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::ConversationPbxTimeBasedMappingConfig.new(
-  default: null,
+  default_mapping: null,
   mappings: null
 )
 ```

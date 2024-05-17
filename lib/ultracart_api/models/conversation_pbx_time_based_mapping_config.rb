@@ -15,7 +15,7 @@ require 'time'
 
 module UltracartClient
   class ConversationPbxTimeBasedMappingConfig
-    attr_accessor :default
+    attr_accessor :default_mapping
 
     # Mappings
     attr_accessor :mappings
@@ -23,7 +23,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'default' => :'default',
+        :'default_mapping' => :'default_mapping',
         :'mappings' => :'mappings'
       }
     end
@@ -36,7 +36,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'default' => :'ConversationPbxTimeBasedMapping',
+        :'default_mapping' => :'ConversationPbxTimeBasedMapping',
         :'mappings' => :'Array<ConversationPbxTimeBasedMapping>'
       }
     end
@@ -62,8 +62,8 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'default')
-        self.default = attributes[:'default']
+      if attributes.key?(:'default_mapping')
+        self.default_mapping = attributes[:'default_mapping']
       end
 
       if attributes.key?(:'mappings')
@@ -91,7 +91,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          default == o.default &&
+          default_mapping == o.default_mapping &&
           mappings == o.mappings
     end
 
@@ -104,7 +104,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [default, mappings].hash
+      [default_mapping, mappings].hash
     end
 
     # Builds the object from hash
