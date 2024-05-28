@@ -35,6 +35,7 @@
 | **phone** | **String** | Phone | [optional] |
 | **postal_code** | **String** | Postal code | [optional] |
 | **purchase_order_number** | **String** | Purchase order number | [optional] |
+| **query_target** | **String** | Query Target | [optional] |
 | **refund_date_begin** | **String** | Date/time that the order was refunded | [optional] |
 | **refund_date_end** | **String** | Date/time that the order was refunded | [optional] |
 | **rma** | **String** | RMA number | [optional] |
@@ -84,6 +85,7 @@ instance = UltracartClient::OrderQuery.new(
   phone: null,
   postal_code: null,
   purchase_order_number: null,
+  query_target: null,
   refund_date_begin: null,
   refund_date_end: null,
   rma: null,
