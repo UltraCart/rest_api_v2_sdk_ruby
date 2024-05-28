@@ -107,6 +107,9 @@ module UltracartClient
     # Purchase order number
     attr_accessor :purchase_order_number
 
+    # Query Target
+    attr_accessor :query_target
+
     # Date/time that the order was refunded
     attr_accessor :refund_date_begin
 
@@ -196,6 +199,7 @@ module UltracartClient
         :'phone' => :'phone',
         :'postal_code' => :'postal_code',
         :'purchase_order_number' => :'purchase_order_number',
+        :'query_target' => :'query_target',
         :'refund_date_begin' => :'refund_date_begin',
         :'refund_date_end' => :'refund_date_end',
         :'rma' => :'rma',
@@ -244,6 +248,7 @@ module UltracartClient
         :'phone' => :'String',
         :'postal_code' => :'String',
         :'purchase_order_number' => :'String',
+        :'query_target' => :'String',
         :'refund_date_begin' => :'String',
         :'refund_date_end' => :'String',
         :'rma' => :'String',
@@ -390,6 +395,10 @@ module UltracartClient
         self.purchase_order_number = attributes[:'purchase_order_number']
       end
 
+      if attributes.has_key?(:'query_target')
+        self.query_target = attributes[:'query_target']
+      end
+
       if attributes.has_key?(:'refund_date_begin')
         self.refund_date_begin = attributes[:'refund_date_begin']
       end
@@ -506,6 +515,8 @@ module UltracartClient
       return false unless payment_method_validator.valid?(@payment_method)
       return false if !@phone.nil? && @phone.to_s.length > 25
       return false if !@postal_code.nil? && @postal_code.to_s.length > 20
+      query_target_validator = EnumAttributeValidator.new('String', ['origin', 'cache'])
+      return false unless query_target_validator.valid?(@query_target)
       return false if !@rma.nil? && @rma.to_s.length > 30
       return false if !@screen_branding_theme_code.nil? && @screen_branding_theme_code.to_s.length > 10
       return false if !@state_region.nil? && @state_region.to_s.length > 32
@@ -622,6 +633,16 @@ module UltracartClient
       @postal_code = postal_code
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] query_target Object to be assigned
+    def query_target=(query_target)
+      validator = EnumAttributeValidator.new('String', ['origin', 'cache'])
+      unless validator.valid?(query_target)
+        fail ArgumentError, 'invalid value for "query_target", must be one of #{validator.allowable_values}.'
+      end
+      @query_target = query_target
+    end
+
     # Custom attribute writer method with validation
     # @param [Object] rma Value to be assigned
     def rma=(rma)
@@ -688,6 +709,7 @@ module UltracartClient
           phone == o.phone &&
           postal_code == o.postal_code &&
           purchase_order_number == o.purchase_order_number &&
+          query_target == o.query_target &&
           refund_date_begin == o.refund_date_begin &&
           refund_date_end == o.refund_date_end &&
           rma == o.rma &&
@@ -710,7 +732,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [cc_email, channel_partner_code, channel_partner_order_id, city, company, country_code, creation_date_begin, creation_date_end, current_stage, custom_field_1, custom_field_10, custom_field_2, custom_field_3, custom_field_4, custom_field_5, custom_field_6, custom_field_7, custom_field_8, custom_field_9, customer_profile_oid, email, first_name, item_id, last_name, order_id, payment_date_begin, payment_date_end, payment_method, phone, postal_code, purchase_order_number, refund_date_begin, refund_date_end, rma, screen_branding_theme_code, shipment_date_begin, shipment_date_end, shipped_on_date_begin, shipped_on_date_end, state_region, storefront_host_name, total].hash
+      [cc_email, channel_partner_code, channel_partner_order_id, city, company, country_code, creation_date_begin, creation_date_end, current_stage, custom_field_1, custom_field_10, custom_field_2, custom_field_3, custom_field_4, custom_field_5, custom_field_6, custom_field_7, custom_field_8, custom_field_9, customer_profile_oid, email, first_name, item_id, last_name, order_id, payment_date_begin, payment_date_end, payment_method, phone, postal_code, purchase_order_number, query_target, refund_date_begin, refund_date_end, rma, screen_branding_theme_code, shipment_date_begin, shipment_date_end, shipped_on_date_begin, shipped_on_date_end, state_region, storefront_host_name, total].hash
     end
 
     # Builds the object from hash
