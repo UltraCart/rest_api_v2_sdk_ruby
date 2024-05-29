@@ -47,6 +47,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_email_commseq_email_stats**](StorefrontApi.md#get_email_commseq_email_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/emailStats | Get email communication sequence emails stats |
 | [**get_email_commseq_postcard_stats**](StorefrontApi.md#get_email_commseq_postcard_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/postcardStats | Get email communication sequence postcard stats |
 | [**get_email_commseq_postcard_tracking**](StorefrontApi.md#get_email_commseq_postcard_tracking) | **GET** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid}/tracking | Get email communication postcard tracking |
+| [**get_email_commseq_rate_limiters**](StorefrontApi.md#get_email_commseq_rate_limiters) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/rate_limiters | Get email commseq rate limiters |
 | [**get_email_commseq_sms_stats**](StorefrontApi.md#get_email_commseq_sms_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/smsStats | Get email communication sequence sms stats |
 | [**get_email_commseq_stat_overall**](StorefrontApi.md#get_email_commseq_stat_overall) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/stat | Get communication sequence stats overall |
 | [**get_email_commseq_step_stats**](StorefrontApi.md#get_email_commseq_step_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/stepStats | Get email communication sequence step stats |
@@ -136,6 +137,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**publish_library_item**](StorefrontApi.md#publish_library_item) | **POST** /storefront/code_library/{library_item_oid}/publish | Publish library item. |
 | [**purchase_library_item**](StorefrontApi.md#purchase_library_item) | **POST** /storefront/code_library/{library_item_oid}/purchase | Purchase public library item, which creates a copy of the item in your personal code library |
 | [**release_email_commseq_step_waiting**](StorefrontApi.md#release_email_commseq_step_waiting) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/waiting/{commseq_step_uuid} | Release email communication sequence customers waiting at the specified step |
+| [**reset_email_commseq_rate_limiters**](StorefrontApi.md#reset_email_commseq_rate_limiters) | **DELETE** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/rate_limiters | Reset email commseq rate limiters (only callable by UltraCart Support) |
 | [**review**](StorefrontApi.md#review) | **POST** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid}/review | Request a review of an email |
 | [**search**](StorefrontApi.md#search) | **GET** /storefront/search | Searches for all matching values |
 | [**search2**](StorefrontApi.md#search2) | **POST** /storefront/search | Searches for all matching values (using POST) |
@@ -3219,6 +3221,77 @@ end
 ### Return type
 
 [**EmailPostcardTrackingResponse**](EmailPostcardTrackingResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_email_commseq_rate_limiters
+
+> <EmailRateLimitersResponse> get_email_commseq_rate_limiters(storefront_oid, commseq_uuid)
+
+Get email commseq rate limiters
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+storefront_oid = 56 # Integer | 
+commseq_uuid = 'commseq_uuid_example' # String | 
+
+begin
+  # Get email commseq rate limiters
+  result = api_instance.get_email_commseq_rate_limiters(storefront_oid, commseq_uuid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->get_email_commseq_rate_limiters: #{e}"
+end
+```
+
+#### Using the get_email_commseq_rate_limiters_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmailRateLimitersResponse>, Integer, Hash)> get_email_commseq_rate_limiters_with_http_info(storefront_oid, commseq_uuid)
+
+```ruby
+begin
+  # Get email commseq rate limiters
+  data, status_code, headers = api_instance.get_email_commseq_rate_limiters_with_http_info(storefront_oid, commseq_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmailRateLimitersResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->get_email_commseq_rate_limiters_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **commseq_uuid** | **String** |  |  |
+
+### Return type
+
+[**EmailRateLimitersResponse**](EmailRateLimitersResponse.md)
 
 ### Authorization
 
@@ -9589,6 +9662,76 @@ end
 | **storefront_oid** | **Integer** |  |  |
 | **commseq_uuid** | **String** |  |  |
 | **commseq_step_uuid** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## reset_email_commseq_rate_limiters
+
+> reset_email_commseq_rate_limiters(storefront_oid, commseq_uuid)
+
+Reset email commseq rate limiters (only callable by UltraCart Support)
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+storefront_oid = 56 # Integer | 
+commseq_uuid = 'commseq_uuid_example' # String | 
+
+begin
+  # Reset email commseq rate limiters (only callable by UltraCart Support)
+  api_instance.reset_email_commseq_rate_limiters(storefront_oid, commseq_uuid)
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->reset_email_commseq_rate_limiters: #{e}"
+end
+```
+
+#### Using the reset_email_commseq_rate_limiters_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> reset_email_commseq_rate_limiters_with_http_info(storefront_oid, commseq_uuid)
+
+```ruby
+begin
+  # Reset email commseq rate limiters (only callable by UltraCart Support)
+  data, status_code, headers = api_instance.reset_email_commseq_rate_limiters_with_http_info(storefront_oid, commseq_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->reset_email_commseq_rate_limiters_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **commseq_uuid** | **String** |  |  |
 
 ### Return type
 

@@ -432,6 +432,8 @@ docs/EmailPlanResponse.md
 docs/EmailPostcardStat.md
 docs/EmailPostcardTracking.md
 docs/EmailPostcardTrackingResponse.md
+docs/EmailRateLimiter.md
+docs/EmailRateLimitersResponse.md
 docs/EmailSegment.md
 docs/EmailSegmentArchiveResponse.md
 docs/EmailSegmentCustomer.md
@@ -1318,6 +1320,8 @@ lib/ultracart_api/models/email_plan_response.rb
 lib/ultracart_api/models/email_postcard_stat.rb
 lib/ultracart_api/models/email_postcard_tracking.rb
 lib/ultracart_api/models/email_postcard_tracking_response.rb
+lib/ultracart_api/models/email_rate_limiter.rb
+lib/ultracart_api/models/email_rate_limiters_response.rb
 lib/ultracart_api/models/email_segment.rb
 lib/ultracart_api/models/email_segment_archive_response.rb
 lib/ultracart_api/models/email_segment_customer.rb
