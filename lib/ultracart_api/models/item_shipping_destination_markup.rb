@@ -14,6 +14,9 @@ require 'date'
 
 module UltracartClient
   class ItemShippingDestinationMarkup
+    # Adult Signature Required (only updated if not-null value provided)
+    attr_accessor :adult_signature_required
+
     # Country code (ISO-3166 two letter)
     attr_accessor :country_code
 
@@ -35,6 +38,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'adult_signature_required' => :'adult_signature_required',
         :'country_code' => :'country_code',
         :'flat_fee' => :'flat_fee',
         :'per_item' => :'per_item',
@@ -47,6 +51,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'adult_signature_required' => :'BOOLEAN',
         :'country_code' => :'String',
         :'flat_fee' => :'Float',
         :'per_item' => :'Float',
@@ -63,6 +68,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'adult_signature_required')
+        self.adult_signature_required = attributes[:'adult_signature_required']
+      end
 
       if attributes.has_key?(:'country_code')
         self.country_code = attributes[:'country_code']
@@ -152,6 +161,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          adult_signature_required == o.adult_signature_required &&
           country_code == o.country_code &&
           flat_fee == o.flat_fee &&
           per_item == o.per_item &&
@@ -169,7 +179,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [country_code, flat_fee, per_item, postal_code, shipping_method, state].hash
+      [adult_signature_required, country_code, flat_fee, per_item, postal_code, shipping_method, state].hash
     end
 
     # Builds the object from hash
