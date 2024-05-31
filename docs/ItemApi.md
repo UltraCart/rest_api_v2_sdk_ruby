@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**insert_item**](ItemApi.md#insert_item) | **POST** /item/items | Create an item
 [**insert_review**](ItemApi.md#insert_review) | **POST** /item/items/{merchant_item_oid}/reviews | Insert a review
 [**insert_update_item_content_attribute**](ItemApi.md#insert_update_item_content_attribute) | **POST** /item/items/{merchant_item_oid}/content/attributes | Upsert an item content attribute
+[**rest_item_inventory_snapshot_response**](ItemApi.md#rest_item_inventory_snapshot_response) | **GET** /item/items/inventory_snapshot | Retrieve a list of item inventories
 [**update_digital_item**](ItemApi.md#update_digital_item) | **PUT** /item/digital_library/{digital_item_oid} | Updates a file within the digital library
 [**update_item**](ItemApi.md#update_item) | **PUT** /item/items/{merchant_item_oid} | Update an item
 [**update_items**](ItemApi.md#update_items) | **PUT** /item/items/batch | Update multiple items
@@ -938,6 +939,51 @@ nil (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json; charset=UTF-8
+ - **Accept**: application/json
+
+
+
+# **rest_item_inventory_snapshot_response**
+> ItemInventorySnapshotResponse rest_item_inventory_snapshot_response
+
+Retrieve a list of item inventories
+
+Retrieves a list of item inventories. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ItemApi.new_using_api_key(simple_key, false, false)
+
+
+
+begin
+  #Retrieve a list of item inventories
+  result = api_instance.rest_item_inventory_snapshot_response
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ItemApi->rest_item_inventory_snapshot_response: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ItemInventorySnapshotResponse**](ItemInventorySnapshotResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
