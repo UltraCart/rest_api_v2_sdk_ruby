@@ -21,6 +21,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**insert_item**](ItemApi.md#insert_item) | **POST** /item/items | Create an item |
 | [**insert_review**](ItemApi.md#insert_review) | **POST** /item/items/{merchant_item_oid}/reviews | Insert a review |
 | [**insert_update_item_content_attribute**](ItemApi.md#insert_update_item_content_attribute) | **POST** /item/items/{merchant_item_oid}/content/attributes | Upsert an item content attribute |
+| [**rest_item_inventory_snapshot_response**](ItemApi.md#rest_item_inventory_snapshot_response) | **GET** /item/items/inventory_snapshot | Retrieve a list of item inventories |
 | [**update_digital_item**](ItemApi.md#update_digital_item) | **PUT** /item/digital_library/{digital_item_oid} | Updates a file within the digital library |
 | [**update_item**](ItemApi.md#update_item) | **PUT** /item/items/{merchant_item_oid} | Update an item |
 | [**update_items**](ItemApi.md#update_items) | **PUT** /item/items/batch | Update multiple items |
@@ -1296,6 +1297,74 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## rest_item_inventory_snapshot_response
+
+> <ItemInventorySnapshotResponse> rest_item_inventory_snapshot_response
+
+Retrieve a list of item inventories
+
+Retrieves a list of item inventories. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+
+begin
+  # Retrieve a list of item inventories
+  result = api_instance.rest_item_inventory_snapshot_response
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->rest_item_inventory_snapshot_response: #{e}"
+end
+```
+
+#### Using the rest_item_inventory_snapshot_response_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ItemInventorySnapshotResponse>, Integer, Hash)> rest_item_inventory_snapshot_response_with_http_info
+
+```ruby
+begin
+  # Retrieve a list of item inventories
+  data, status_code, headers = api_instance.rest_item_inventory_snapshot_response_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ItemInventorySnapshotResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->rest_item_inventory_snapshot_response_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ItemInventorySnapshotResponse**](ItemInventorySnapshotResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 

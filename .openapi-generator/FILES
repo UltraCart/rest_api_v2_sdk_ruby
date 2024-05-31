@@ -555,6 +555,9 @@ docs/ItemIdentifiers.md
 docs/ItemInstantPaymentNotification.md
 docs/ItemInstantPaymentNotifications.md
 docs/ItemInternal.md
+docs/ItemInventorySnapshot.md
+docs/ItemInventorySnapshotDistributionCenter.md
+docs/ItemInventorySnapshotResponse.md
 docs/ItemKitComponent.md
 docs/ItemKitDefinition.md
 docs/ItemOption.md
@@ -1439,6 +1442,9 @@ lib/ultracart_api/models/item_identifiers.rb
 lib/ultracart_api/models/item_instant_payment_notification.rb
 lib/ultracart_api/models/item_instant_payment_notifications.rb
 lib/ultracart_api/models/item_internal.rb
+lib/ultracart_api/models/item_inventory_snapshot.rb
+lib/ultracart_api/models/item_inventory_snapshot_distribution_center.rb
+lib/ultracart_api/models/item_inventory_snapshot_response.rb
 lib/ultracart_api/models/item_kit_component.rb
 lib/ultracart_api/models/item_kit_definition.rb
 lib/ultracart_api/models/item_option.rb
