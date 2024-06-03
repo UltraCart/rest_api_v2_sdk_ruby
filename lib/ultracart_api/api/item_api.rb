@@ -1221,8 +1221,8 @@ module UltracartClient
       return data, status_code, headers
     end
 
-    # Retrieve a list of item inventories
-    # Retrieves a list of item inventories. 
+    # Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
+    # Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response. 
     # @param [Hash] opts the optional parameters
     # @return [ItemInventorySnapshotResponse]
     def rest_item_inventory_snapshot_response(opts = {})
@@ -1230,8 +1230,8 @@ module UltracartClient
       data
     end
 
-    # Retrieve a list of item inventories
-    # Retrieves a list of item inventories. 
+    # Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
+    # Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response. 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ItemInventorySnapshotResponse, Integer, Hash)>] ItemInventorySnapshotResponse data, response status code and response headers
     def rest_item_inventory_snapshot_response_with_http_info(opts = {})

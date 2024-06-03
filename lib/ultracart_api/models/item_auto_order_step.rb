@@ -57,10 +57,10 @@ module UltracartClient
     # Frequency of the rebill
     attr_accessor :schedule
 
-    # Email list name to subscribe the customer to when the rebill occurs
+    # Email list name to subscribe the customer to when the rebill occurs (decommissioned email engine)
     attr_accessor :subscribe_email_list_name
 
-    # Email list identifier to subscribe the customer to when this rebill occurs
+    # Email list identifier to subscribe the customer to when this rebill occurs (decommissioned email engine)
     attr_accessor :subscribe_email_list_oid
 
     # Type of step (item, kit only, loop or pause)

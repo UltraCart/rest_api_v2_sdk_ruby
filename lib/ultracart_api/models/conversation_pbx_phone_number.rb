@@ -22,7 +22,7 @@ module UltracartClient
     attr_accessor :action_target
 
     # Conversation Pbx Phone Number UUID
-    attr_accessor :conversation_pbx_time_range_uuid
+    attr_accessor :conversation_pbx_phone_number_uuid
 
     # Merchant Id
     attr_accessor :merchant_id
@@ -57,7 +57,7 @@ module UltracartClient
       {
         :'action' => :'action',
         :'action_target' => :'action_target',
-        :'conversation_pbx_time_range_uuid' => :'conversation_pbx_time_range_uuid',
+        :'conversation_pbx_phone_number_uuid' => :'conversation_pbx_phone_number_uuid',
         :'merchant_id' => :'merchant_id',
         :'phone_number' => :'phone_number'
       }
@@ -73,7 +73,7 @@ module UltracartClient
       {
         :'action' => :'String',
         :'action_target' => :'String',
-        :'conversation_pbx_time_range_uuid' => :'String',
+        :'conversation_pbx_phone_number_uuid' => :'String',
         :'merchant_id' => :'String',
         :'phone_number' => :'String'
       }
@@ -108,8 +108,8 @@ module UltracartClient
         self.action_target = attributes[:'action_target']
       end
 
-      if attributes.key?(:'conversation_pbx_time_range_uuid')
-        self.conversation_pbx_time_range_uuid = attributes[:'conversation_pbx_time_range_uuid']
+      if attributes.key?(:'conversation_pbx_phone_number_uuid')
+        self.conversation_pbx_phone_number_uuid = attributes[:'conversation_pbx_phone_number_uuid']
       end
 
       if attributes.key?(:'merchant_id')
@@ -133,8 +133,8 @@ module UltracartClient
         invalid_properties.push('invalid value for "action_target", the character length must be smaller than or equal to 50.')
       end
 
-      if !@conversation_pbx_time_range_uuid.nil? && @conversation_pbx_time_range_uuid.to_s.length > 50
-        invalid_properties.push('invalid value for "conversation_pbx_time_range_uuid", the character length must be smaller than or equal to 50.')
+      if !@conversation_pbx_phone_number_uuid.nil? && @conversation_pbx_phone_number_uuid.to_s.length > 50
+        invalid_properties.push('invalid value for "conversation_pbx_phone_number_uuid", the character length must be smaller than or equal to 50.')
       end
 
       if !@merchant_id.nil? && @merchant_id.to_s.length > 5
@@ -155,7 +155,7 @@ module UltracartClient
       return false unless action_validator.valid?(@action)
       return false if !@action.nil? && @action.to_s.length > 30
       return false if !@action_target.nil? && @action_target.to_s.length > 50
-      return false if !@conversation_pbx_time_range_uuid.nil? && @conversation_pbx_time_range_uuid.to_s.length > 50
+      return false if !@conversation_pbx_phone_number_uuid.nil? && @conversation_pbx_phone_number_uuid.to_s.length > 50
       return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
       return false if !@phone_number.nil? && @phone_number.to_s.length > 50
       true
@@ -182,13 +182,13 @@ module UltracartClient
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] conversation_pbx_time_range_uuid Value to be assigned
-    def conversation_pbx_time_range_uuid=(conversation_pbx_time_range_uuid)
-      if !conversation_pbx_time_range_uuid.nil? && conversation_pbx_time_range_uuid.to_s.length > 50
-        fail ArgumentError, 'invalid value for "conversation_pbx_time_range_uuid", the character length must be smaller than or equal to 50.'
+    # @param [Object] conversation_pbx_phone_number_uuid Value to be assigned
+    def conversation_pbx_phone_number_uuid=(conversation_pbx_phone_number_uuid)
+      if !conversation_pbx_phone_number_uuid.nil? && conversation_pbx_phone_number_uuid.to_s.length > 50
+        fail ArgumentError, 'invalid value for "conversation_pbx_phone_number_uuid", the character length must be smaller than or equal to 50.'
       end
 
-      @conversation_pbx_time_range_uuid = conversation_pbx_time_range_uuid
+      @conversation_pbx_phone_number_uuid = conversation_pbx_phone_number_uuid
     end
 
     # Custom attribute writer method with validation
@@ -218,7 +218,7 @@ module UltracartClient
       self.class == o.class &&
           action == o.action &&
           action_target == o.action_target &&
-          conversation_pbx_time_range_uuid == o.conversation_pbx_time_range_uuid &&
+          conversation_pbx_phone_number_uuid == o.conversation_pbx_phone_number_uuid &&
           merchant_id == o.merchant_id &&
           phone_number == o.phone_number
     end
@@ -232,7 +232,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, action_target, conversation_pbx_time_range_uuid, merchant_id, phone_number].hash
+      [action, action_target, conversation_pbx_phone_number_uuid, merchant_id, phone_number].hash
     end
 
     # Builds the object from hash
