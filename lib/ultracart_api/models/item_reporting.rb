@@ -18,7 +18,7 @@ module UltracartClient
     # Report as an upsell
     attr_accessor :report_as_upsell
 
-    # Report pickable quantities
+    # Report pickable quantities (deprecated)
     attr_accessor :report_pickable_quantities
 
     # Attribute mapping from ruby-style variable name to JSON key.
