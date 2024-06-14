@@ -13,6 +13,7 @@
 | **name** | **String** | Menu name | [optional] |
 | **play_audio_uuid** | **String** | An optional audio clip that plays when a customer enters this menu | [optional] |
 | **say** | **String** | An optional saying that plays when a customer enters this menu | [optional] |
+| **say_voice** | **String** | say voice | [optional] |
 | **timeout** | **Integer** | The idle seconds before this menu times out | [optional] |
 
 ## Example
@@ -30,6 +31,7 @@ instance = UltracartClient::ConversationPbxMenu.new(
   name: null,
   play_audio_uuid: null,
   say: null,
+  say_voice: null,
   timeout: null
 )
 ```

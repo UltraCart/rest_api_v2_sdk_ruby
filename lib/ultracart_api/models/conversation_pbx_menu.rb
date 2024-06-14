@@ -42,8 +42,33 @@ module UltracartClient
     # An optional saying that plays when a customer enters this menu
     attr_accessor :say
 
+    # say voice
+    attr_accessor :say_voice
+
     # The idle seconds before this menu times out
     attr_accessor :timeout
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -57,6 +82,7 @@ module UltracartClient
         :'name' => :'name',
         :'play_audio_uuid' => :'play_audio_uuid',
         :'say' => :'say',
+        :'say_voice' => :'say_voice',
         :'timeout' => :'timeout'
       }
     end
@@ -78,6 +104,7 @@ module UltracartClient
         :'name' => :'String',
         :'play_audio_uuid' => :'String',
         :'say' => :'String',
+        :'say_voice' => :'String',
         :'timeout' => :'Integer'
       }
     end
@@ -141,6 +168,10 @@ module UltracartClient
         self.say = attributes[:'say']
       end
 
+      if attributes.key?(:'say_voice')
+        self.say_voice = attributes[:'say_voice']
+      end
+
       if attributes.key?(:'timeout')
         self.timeout = attributes[:'timeout']
       end
@@ -174,6 +205,10 @@ module UltracartClient
         invalid_properties.push('invalid value for "play_audio_uuid", the character length must be smaller than or equal to 50.')
       end
 
+      if !@say_voice.nil? && @say_voice.to_s.length > 50
+        invalid_properties.push('invalid value for "say_voice", the character length must be smaller than or equal to 50.')
+      end
+
       invalid_properties
     end
 
@@ -186,6 +221,9 @@ module UltracartClient
       return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
       return false if !@name.nil? && @name.to_s.length > 50
       return false if !@play_audio_uuid.nil? && @play_audio_uuid.to_s.length > 50
+      say_voice_validator = EnumAttributeValidator.new('String', ["man", "woman"])
+      return false unless say_voice_validator.valid?(@say_voice)
+      return false if !@say_voice.nil? && @say_voice.to_s.length > 50
       true
     end
 
@@ -249,6 +287,16 @@ module UltracartClient
       @play_audio_uuid = play_audio_uuid
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] say_voice Object to be assigned
+    def say_voice=(say_voice)
+      validator = EnumAttributeValidator.new('String', ["man", "woman"])
+      unless validator.valid?(say_voice)
+        fail ArgumentError, "invalid value for \"say_voice\", must be one of #{validator.allowable_values}."
+      end
+      @say_voice = say_voice
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -263,6 +311,7 @@ module UltracartClient
           name == o.name &&
           play_audio_uuid == o.play_audio_uuid &&
           say == o.say &&
+          say_voice == o.say_voice &&
           timeout == o.timeout
     end
 
@@ -275,7 +324,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allow_direct_extensions, conversation_pbx_menu_uuid, default_action, default_action_target, mappings, merchant_id, name, play_audio_uuid, say, timeout].hash
+      [allow_direct_extensions, conversation_pbx_menu_uuid, default_action, default_action_target, mappings, merchant_id, name, play_audio_uuid, say, say_voice, timeout].hash
     end
 
     # Builds the object from hash

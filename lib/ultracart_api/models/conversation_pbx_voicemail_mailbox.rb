@@ -234,12 +234,16 @@ module UltracartClient
       return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
       return false if !@send_notices_to_email.nil? && @send_notices_to_email.to_s.length > 250
       return false if !@voicemail_followup_play_audio_uuid.nil? && @voicemail_followup_play_audio_uuid.to_s.length > 50
+      voicemail_followup_say_voice_validator = EnumAttributeValidator.new('String', ["man", "woman"])
+      return false unless voicemail_followup_say_voice_validator.valid?(@voicemail_followup_say_voice)
       return false if !@voicemail_followup_say_voice.nil? && @voicemail_followup_say_voice.to_s.length > 50
       return false if !@voicemail_mailbox_id.nil? && @voicemail_mailbox_id.to_s.length > 50
       voicemail_mailbox_type_validator = EnumAttributeValidator.new('String', ["agent", "shared"])
       return false unless voicemail_mailbox_type_validator.valid?(@voicemail_mailbox_type)
       return false if !@voicemail_mailbox_type.nil? && @voicemail_mailbox_type.to_s.length > 50
       return false if !@voicemail_prompt_play_audio_uuid.nil? && @voicemail_prompt_play_audio_uuid.to_s.length > 50
+      voicemail_prompt_say_voice_validator = EnumAttributeValidator.new('String', ["man", "woman"])
+      return false unless voicemail_prompt_say_voice_validator.valid?(@voicemail_prompt_say_voice)
       return false if !@voicemail_prompt_say_voice.nil? && @voicemail_prompt_say_voice.to_s.length > 50
       true
     end
@@ -284,13 +288,13 @@ module UltracartClient
       @voicemail_followup_play_audio_uuid = voicemail_followup_play_audio_uuid
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] voicemail_followup_say_voice Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] voicemail_followup_say_voice Object to be assigned
     def voicemail_followup_say_voice=(voicemail_followup_say_voice)
-      if !voicemail_followup_say_voice.nil? && voicemail_followup_say_voice.to_s.length > 50
-        fail ArgumentError, 'invalid value for "voicemail_followup_say_voice", the character length must be smaller than or equal to 50.'
+      validator = EnumAttributeValidator.new('String', ["man", "woman"])
+      unless validator.valid?(voicemail_followup_say_voice)
+        fail ArgumentError, "invalid value for \"voicemail_followup_say_voice\", must be one of #{validator.allowable_values}."
       end
-
       @voicemail_followup_say_voice = voicemail_followup_say_voice
     end
 
@@ -324,13 +328,13 @@ module UltracartClient
       @voicemail_prompt_play_audio_uuid = voicemail_prompt_play_audio_uuid
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] voicemail_prompt_say_voice Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] voicemail_prompt_say_voice Object to be assigned
     def voicemail_prompt_say_voice=(voicemail_prompt_say_voice)
-      if !voicemail_prompt_say_voice.nil? && voicemail_prompt_say_voice.to_s.length > 50
-        fail ArgumentError, 'invalid value for "voicemail_prompt_say_voice", the character length must be smaller than or equal to 50.'
+      validator = EnumAttributeValidator.new('String', ["man", "woman"])
+      unless validator.valid?(voicemail_prompt_say_voice)
+        fail ArgumentError, "invalid value for \"voicemail_prompt_say_voice\", must be one of #{validator.allowable_values}."
       end
-
       @voicemail_prompt_say_voice = voicemail_prompt_say_voice
     end
 
