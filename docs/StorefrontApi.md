@@ -154,6 +154,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**sequence_test**](StorefrontApi.md#sequence_test) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/test | Sequence test |
 | [**start_email_campaign**](StorefrontApi.md#start_email_campaign) | **PUT** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid}/start | Start email campaign |
 | [**subscribe_to_email_list**](StorefrontApi.md#subscribe_to_email_list) | **POST** /storefront/{storefront_oid}/email/lists/{email_list_uuid}/subscribe | Subscribe customers to email list |
+| [**sunset_email_segment**](StorefrontApi.md#sunset_email_segment) | **PUT** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/sunset | Sunset email segment |
 | [**unfavorite_screen_recording**](StorefrontApi.md#unfavorite_screen_recording) | **DELETE** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/favorite | Remove favorite flag on screen recording |
 | [**update_email_campaign**](StorefrontApi.md#update_email_campaign) | **PUT** /storefront/{storefront_oid}/email/campaigns/{email_campaign_uuid} | Update email campaign |
 | [**update_email_campaign_folder**](StorefrontApi.md#update_email_campaign_folder) | **PUT** /storefront/{storefront_oid}/email/campaign_folders/{email_campaign_folder_uuid} | Update email campaign folder |
@@ -10940,6 +10941,76 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## sunset_email_segment
+
+> sunset_email_segment(storefront_oid, email_segment_uuid)
+
+Sunset email segment
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+storefront_oid = 56 # Integer | 
+email_segment_uuid = 'email_segment_uuid_example' # String | 
+
+begin
+  # Sunset email segment
+  api_instance.sunset_email_segment(storefront_oid, email_segment_uuid)
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->sunset_email_segment: #{e}"
+end
+```
+
+#### Using the sunset_email_segment_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> sunset_email_segment_with_http_info(storefront_oid, email_segment_uuid)
+
+```ruby
+begin
+  # Sunset email segment
+  data, status_code, headers = api_instance.sunset_email_segment_with_http_info(storefront_oid, email_segment_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->sunset_email_segment_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **email_segment_uuid** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
