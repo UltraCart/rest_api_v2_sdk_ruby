@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **order_ids** | **Array&lt;String&gt;** | Order IDs | [optional] |
+| **query_target** | **String** | Query Target | [optional] |
 
 ## Example
 
@@ -12,7 +13,8 @@
 require 'ultracart_api'
 
 instance = UltracartClient::OrderQueryBatch.new(
-  order_ids: null
+  order_ids: null,
+  query_target: null
 )
 ```
 

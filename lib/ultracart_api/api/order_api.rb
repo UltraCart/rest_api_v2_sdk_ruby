@@ -1491,6 +1491,7 @@ module UltracartClient
     # @option opts [Boolean] :manual_refund Consider a manual refund done externally (default to false)
     # @option opts [Boolean] :reverse_affiliate_transactions Reverse affiliate transactions (default to true)
     # @option opts [Boolean] :issue_store_credit Issue a store credit instead of refunding the original payment method, loyalty must be configured on merchant account (default to false)
+    # @option opts [String] :auto_order_cancel_reason Reason for auto orders cancellation
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [OrderResponse]
     def refund_order(order_id, order, opts = {})
@@ -1509,6 +1510,7 @@ module UltracartClient
     # @option opts [Boolean] :manual_refund Consider a manual refund done externally (default to false)
     # @option opts [Boolean] :reverse_affiliate_transactions Reverse affiliate transactions (default to true)
     # @option opts [Boolean] :issue_store_credit Issue a store credit instead of refunding the original payment method, loyalty must be configured on merchant account (default to false)
+    # @option opts [String] :auto_order_cancel_reason Reason for auto orders cancellation
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(OrderResponse, Integer, Hash)>] OrderResponse data, response status code and response headers
     def refund_order_with_http_info(order_id, order, opts = {})
@@ -1534,6 +1536,7 @@ module UltracartClient
       query_params[:'manual_refund'] = opts[:'manual_refund'] if !opts[:'manual_refund'].nil?
       query_params[:'reverse_affiliate_transactions'] = opts[:'reverse_affiliate_transactions'] if !opts[:'reverse_affiliate_transactions'].nil?
       query_params[:'issue_store_credit'] = opts[:'issue_store_credit'] if !opts[:'issue_store_credit'].nil?
+      query_params[:'auto_order_cancel_reason'] = opts[:'auto_order_cancel_reason'] if !opts[:'auto_order_cancel_reason'].nil?
       query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
 
       # header parameters

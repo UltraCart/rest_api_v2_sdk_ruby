@@ -11,4 +11,4 @@ script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build ultracart_api.gemspec
-  - gem install ./ultracart_api-4.0.230.gem
+  - gem install ./ultracart_api-4.0.231.gem
