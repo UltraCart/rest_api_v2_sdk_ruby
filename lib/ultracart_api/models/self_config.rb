@@ -14,12 +14,20 @@ require 'date'
 
 module UltracartClient
   class SelfConfig
+    # True if the Colorado Retail Delivery Fee should not be collected
+    attr_accessor :exempt_from_colorado_retail_delivery_fee
+
+    # True if the Minnesota Retail Delivery Fee should not be collected
+    attr_accessor :exempt_from_minnesota_retail_delivery_fee
+
     # True if sales tax should be collected based on billing address instead of shipping address
     attr_accessor :tax_billing
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'exempt_from_colorado_retail_delivery_fee' => :'exempt_from_colorado_retail_delivery_fee',
+        :'exempt_from_minnesota_retail_delivery_fee' => :'exempt_from_minnesota_retail_delivery_fee',
         :'tax_billing' => :'tax_billing'
       }
     end
@@ -27,6 +35,8 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'exempt_from_colorado_retail_delivery_fee' => :'BOOLEAN',
+        :'exempt_from_minnesota_retail_delivery_fee' => :'BOOLEAN',
         :'tax_billing' => :'BOOLEAN'
       }
     end
@@ -38,6 +48,14 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'exempt_from_colorado_retail_delivery_fee')
+        self.exempt_from_colorado_retail_delivery_fee = attributes[:'exempt_from_colorado_retail_delivery_fee']
+      end
+
+      if attributes.has_key?(:'exempt_from_minnesota_retail_delivery_fee')
+        self.exempt_from_minnesota_retail_delivery_fee = attributes[:'exempt_from_minnesota_retail_delivery_fee']
+      end
 
       if attributes.has_key?(:'tax_billing')
         self.tax_billing = attributes[:'tax_billing']
@@ -62,6 +80,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          exempt_from_colorado_retail_delivery_fee == o.exempt_from_colorado_retail_delivery_fee &&
+          exempt_from_minnesota_retail_delivery_fee == o.exempt_from_minnesota_retail_delivery_fee &&
           tax_billing == o.tax_billing
     end
 
@@ -74,7 +94,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [tax_billing].hash
+      [exempt_from_colorado_retail_delivery_fee, exempt_from_minnesota_retail_delivery_fee, tax_billing].hash
     end
 
     # Builds the object from hash

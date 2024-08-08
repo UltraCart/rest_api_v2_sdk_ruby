@@ -17,17 +17,44 @@ module UltracartClient
     # Order IDs
     attr_accessor :order_ids
 
+    # Query Target
+    attr_accessor :query_target
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'order_ids' => :'order_ids'
+        :'order_ids' => :'order_ids',
+        :'query_target' => :'query_target'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'order_ids' => :'Array<String>'
+        :'order_ids' => :'Array<String>',
+        :'query_target' => :'String'
       }
     end
 
@@ -44,6 +71,10 @@ module UltracartClient
           self.order_ids = value
         end
       end
+
+      if attributes.has_key?(:'query_target')
+        self.query_target = attributes[:'query_target']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -56,7 +87,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      query_target_validator = EnumAttributeValidator.new('String', ['origin', 'cache'])
+      return false unless query_target_validator.valid?(@query_target)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] query_target Object to be assigned
+    def query_target=(query_target)
+      validator = EnumAttributeValidator.new('String', ['origin', 'cache'])
+      unless validator.valid?(query_target)
+        fail ArgumentError, 'invalid value for "query_target", must be one of #{validator.allowable_values}.'
+      end
+      @query_target = query_target
     end
 
     # Checks equality by comparing each attribute.
@@ -64,7 +107,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          order_ids == o.order_ids
+          order_ids == o.order_ids &&
+          query_target == o.query_target
     end
 
     # @see the `==` method
@@ -76,7 +120,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [order_ids].hash
+      [order_ids, query_target].hash
     end
 
     # Builds the object from hash
