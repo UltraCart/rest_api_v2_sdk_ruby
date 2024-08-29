@@ -27,6 +27,7 @@
 | **free_shipping** | **Boolean** | Qualifies for free shipping | [optional] |
 | **freight_class** | **String** | Freight class | [optional] |
 | **hazmat** | **Boolean** | Hazardous material | [optional] |
+| **hold_for_transmission** | **Boolean** | Hold for transmission | [optional] |
 | **made_to_order** | **Boolean** | True if this item is made to order | [optional] |
 | **made_to_order_lead_time** | **Integer** | Number of days lead time it takes to make the item before ite can ship | [optional] |
 | **max_days_time_in_transit** | **Integer** | Maximum days allowed in transit | [optional] |
@@ -82,6 +83,7 @@ instance = UltracartClient::ItemShipping.new(
   free_shipping: null,
   freight_class: null,
   hazmat: null,
+  hold_for_transmission: null,
   made_to_order: null,
   made_to_order_lead_time: null,
   max_days_time_in_transit: null,
