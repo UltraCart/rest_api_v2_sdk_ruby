@@ -83,6 +83,9 @@ module UltracartClient
     # Hazardous material
     attr_accessor :hazmat
 
+    # Hold for transmission
+    attr_accessor :hold_for_transmission
+
     # True if this item is made to order
     attr_accessor :made_to_order
 
@@ -180,6 +183,7 @@ module UltracartClient
         :'free_shipping' => :'free_shipping',
         :'freight_class' => :'freight_class',
         :'hazmat' => :'hazmat',
+        :'hold_for_transmission' => :'hold_for_transmission',
         :'made_to_order' => :'made_to_order',
         :'made_to_order_lead_time' => :'made_to_order_lead_time',
         :'max_days_time_in_transit' => :'max_days_time_in_transit',
@@ -234,6 +238,7 @@ module UltracartClient
         :'free_shipping' => :'BOOLEAN',
         :'freight_class' => :'String',
         :'hazmat' => :'BOOLEAN',
+        :'hold_for_transmission' => :'BOOLEAN',
         :'made_to_order' => :'BOOLEAN',
         :'made_to_order_lead_time' => :'Integer',
         :'max_days_time_in_transit' => :'Integer',
@@ -368,6 +373,10 @@ module UltracartClient
 
       if attributes.has_key?(:'hazmat')
         self.hazmat = attributes[:'hazmat']
+      end
+
+      if attributes.has_key?(:'hold_for_transmission')
+        self.hold_for_transmission = attributes[:'hold_for_transmission']
       end
 
       if attributes.has_key?(:'made_to_order')
@@ -531,6 +540,7 @@ module UltracartClient
           free_shipping == o.free_shipping &&
           freight_class == o.freight_class &&
           hazmat == o.hazmat &&
+          hold_for_transmission == o.hold_for_transmission &&
           made_to_order == o.made_to_order &&
           made_to_order_lead_time == o.made_to_order_lead_time &&
           max_days_time_in_transit == o.max_days_time_in_transit &&
@@ -567,7 +577,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allow_back_order, amazon_fba, case_inner_packs, case_units, cases, collect_serial_numbers, country_code_of_origin, customs_description, customs_value, delivery_on_friday, delivery_on_monday, delivery_on_saturday, delivery_on_sunday, delivery_on_thursday, delivery_on_tuesday, delivery_on_wednesday, destination_markups, destination_restrictions, distribution_centers, eta, free_shipping, freight_class, hazmat, made_to_order, made_to_order_lead_time, max_days_time_in_transit, methods, no_shipping_discount, package_requirements, perishable_class_name, perishable_class_oid, preorder, require_delivery_date, restrict_shipment_on_friday, restrict_shipment_on_monday, restrict_shipment_on_saturday, restrict_shipment_on_sunday, restrict_shipment_on_thursday, restrict_shipment_on_tuesday, restrict_shipment_on_wednesday, ship_separately, ship_separately_additional_weight, ship_separately_height, ship_separately_length, ship_separately_package_special_type, ship_separately_width, special_product_type, track_inventory].hash
+      [allow_back_order, amazon_fba, case_inner_packs, case_units, cases, collect_serial_numbers, country_code_of_origin, customs_description, customs_value, delivery_on_friday, delivery_on_monday, delivery_on_saturday, delivery_on_sunday, delivery_on_thursday, delivery_on_tuesday, delivery_on_wednesday, destination_markups, destination_restrictions, distribution_centers, eta, free_shipping, freight_class, hazmat, hold_for_transmission, made_to_order, made_to_order_lead_time, max_days_time_in_transit, methods, no_shipping_discount, package_requirements, perishable_class_name, perishable_class_oid, preorder, require_delivery_date, restrict_shipment_on_friday, restrict_shipment_on_monday, restrict_shipment_on_saturday, restrict_shipment_on_sunday, restrict_shipment_on_thursday, restrict_shipment_on_tuesday, restrict_shipment_on_wednesday, ship_separately, ship_separately_additional_weight, ship_separately_height, ship_separately_length, ship_separately_package_special_type, ship_separately_width, special_product_type, track_inventory].hash
     end
 
     # Builds the object from hash
