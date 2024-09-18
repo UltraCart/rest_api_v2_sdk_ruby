@@ -260,7 +260,7 @@ module UltracartClient
     def valid?
       api_version_validator = EnumAttributeValidator.new('String', ["2017-03-01"])
       return false unless api_version_validator.valid?(@api_version)
-      authentication_type_validator = EnumAttributeValidator.new('String', ["none", "basic"])
+      authentication_type_validator = EnumAttributeValidator.new('String', ["none", "basic", "api user", "aws iam"])
       return false unless authentication_type_validator.valid?(@authentication_type)
       true
     end
@@ -278,7 +278,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] authentication_type Object to be assigned
     def authentication_type=(authentication_type)
-      validator = EnumAttributeValidator.new('String', ["none", "basic"])
+      validator = EnumAttributeValidator.new('String', ["none", "basic", "api user", "aws iam"])
       unless validator.valid?(authentication_type)
         fail ArgumentError, "invalid value for \"authentication_type\", must be one of #{validator.allowable_values}."
       end
