@@ -133,6 +133,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**insert_email_postcard**](StorefrontApi.md#insert_email_postcard) | **POST** /storefront/{storefront_oid}/email/postcards | Insert email postcard |
 | [**insert_email_segment**](StorefrontApi.md#insert_email_segment) | **POST** /storefront/{storefront_oid}/email/segments | Insert email segment |
 | [**insert_screen_recording_segment**](StorefrontApi.md#insert_screen_recording_segment) | **POST** /storefront/{storefront_oid}/screen_recordings/segments | Insert screen recording segment |
+| [**insert_update_page_content_attribute**](StorefrontApi.md#insert_update_page_content_attribute) | **POST** /storefront/{storefront_oid}/pages/{page_oid}/content/attributes | Upsert a page content attribute |
 | [**prepare_download_email_segment**](StorefrontApi.md#prepare_download_email_segment) | **POST** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/downloadPrepare | Prepare download of email segment |
 | [**publish_library_item**](StorefrontApi.md#publish_library_item) | **POST** /storefront/code_library/{library_item_oid}/publish | Publish library item. |
 | [**purchase_library_item**](StorefrontApi.md#purchase_library_item) | **POST** /storefront/code_library/{library_item_oid}/purchase | Purchase public library item, which creates a copy of the item in your personal code library |
@@ -9388,6 +9389,80 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## insert_update_page_content_attribute
+
+> insert_update_page_content_attribute(storefront_oid, page_oid, page_attribute)
+
+Upsert a page content attribute
+
+Update a page content attribute, creating it new if it does not yet exist. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+storefront_oid = 56 # Integer | 
+page_oid = 56 # Integer | The page oid to modify.
+page_attribute = UltracartClient::StoreFrontPageContentAttribute.new # StoreFrontPageContentAttribute | Page content attribute to upsert
+
+begin
+  # Upsert a page content attribute
+  api_instance.insert_update_page_content_attribute(storefront_oid, page_oid, page_attribute)
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->insert_update_page_content_attribute: #{e}"
+end
+```
+
+#### Using the insert_update_page_content_attribute_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> insert_update_page_content_attribute_with_http_info(storefront_oid, page_oid, page_attribute)
+
+```ruby
+begin
+  # Upsert a page content attribute
+  data, status_code, headers = api_instance.insert_update_page_content_attribute_with_http_info(storefront_oid, page_oid, page_attribute)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->insert_update_page_content_attribute_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **page_oid** | **Integer** | The page oid to modify. |  |
+| **page_attribute** | [**StoreFrontPageContentAttribute**](StoreFrontPageContentAttribute.md) | Page content attribute to upsert |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
 - **Accept**: application/json
 
 

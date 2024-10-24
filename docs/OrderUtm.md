@@ -24,6 +24,8 @@
 | **itm_source** | **String** |  | [optional] |
 | **itm_term** | **String** |  | [optional] |
 | **msclkid** | **String** |  | [optional] |
+| **short_code** | **String** |  | [optional] |
+| **short_code_backup** | **Boolean** |  | [optional] |
 | **ttclid** | **String** |  | [optional] |
 | **uc_message_id** | **String** |  | [optional] |
 | **utm_campaign** | **String** |  | [optional] |
@@ -61,6 +63,8 @@ instance = UltracartClient::OrderUtm.new(
   itm_source: null,
   itm_term: null,
   msclkid: null,
+  short_code: null,
+  short_code_backup: null,
   ttclid: null,
   uc_message_id: null,
   utm_campaign: null,
