@@ -133,6 +133,7 @@ Method | HTTP request | Description
 [**insert_email_postcard**](StorefrontApi.md#insert_email_postcard) | **POST** /storefront/{storefront_oid}/email/postcards | Insert email postcard
 [**insert_email_segment**](StorefrontApi.md#insert_email_segment) | **POST** /storefront/{storefront_oid}/email/segments | Insert email segment
 [**insert_screen_recording_segment**](StorefrontApi.md#insert_screen_recording_segment) | **POST** /storefront/{storefront_oid}/screen_recordings/segments | Insert screen recording segment
+[**insert_update_page_content_attribute**](StorefrontApi.md#insert_update_page_content_attribute) | **POST** /storefront/{storefront_oid}/pages/{page_oid}/content/attributes | Upsert a page content attribute
 [**prepare_download_email_segment**](StorefrontApi.md#prepare_download_email_segment) | **POST** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/downloadPrepare | Prepare download of email segment
 [**publish_library_item**](StorefrontApi.md#publish_library_item) | **POST** /storefront/code_library/{library_item_oid}/publish | Publish library item.
 [**purchase_library_item**](StorefrontApi.md#purchase_library_item) | **POST** /storefront/code_library/{library_item_oid}/purchase | Purchase public library item, which creates a copy of the item in your personal code library
@@ -6761,6 +6762,61 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **insert_update_page_content_attribute**
+> insert_update_page_content_attribute(page_attribute, storefront_oid, page_oid)
+
+Upsert a page content attribute
+
+Update a page content attribute, creating it new if it does not yet exist. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::StorefrontApi.new_using_api_key(simple_key, false, false)
+
+
+page_attribute = UltracartClient::StoreFrontPageContentAttribute.new # StoreFrontPageContentAttribute | Page content attribute to upsert
+
+storefront_oid = 56 # Integer | 
+
+page_oid = 56 # Integer | The page oid to modify.
+
+
+begin
+  #Upsert a page content attribute
+  api_instance.insert_update_page_content_attribute(page_attribute, storefront_oid, page_oid)
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling StorefrontApi->insert_update_page_content_attribute: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page_attribute** | [**StoreFrontPageContentAttribute**](StoreFrontPageContentAttribute.md)| Page content attribute to upsert | 
+ **storefront_oid** | **Integer**|  | 
+ **page_oid** | **Integer**| The page oid to modify. | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
  - **Accept**: application/json
 
 

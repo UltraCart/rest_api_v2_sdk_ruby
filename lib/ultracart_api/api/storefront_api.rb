@@ -7529,6 +7529,72 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Upsert a page content attribute
+    # Update a page content attribute, creating it new if it does not yet exist. 
+    # @param page_attribute Page content attribute to upsert
+    # @param storefront_oid 
+    # @param page_oid The page oid to modify.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def insert_update_page_content_attribute(page_attribute, storefront_oid, page_oid, opts = {})
+      insert_update_page_content_attribute_with_http_info(page_attribute, storefront_oid, page_oid, opts)
+      nil
+    end
+
+    # Upsert a page content attribute
+    # Update a page content attribute, creating it new if it does not yet exist. 
+    # @param page_attribute Page content attribute to upsert
+    # @param storefront_oid 
+    # @param page_oid The page oid to modify.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def insert_update_page_content_attribute_with_http_info(page_attribute, storefront_oid, page_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.insert_update_page_content_attribute ...'
+      end
+      # verify the required parameter 'page_attribute' is set
+      if @api_client.config.client_side_validation && page_attribute.nil?
+        fail ArgumentError, "Missing the required parameter 'page_attribute' when calling StorefrontApi.insert_update_page_content_attribute"
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.insert_update_page_content_attribute"
+      end
+      # verify the required parameter 'page_oid' is set
+      if @api_client.config.client_side_validation && page_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'page_oid' when calling StorefrontApi.insert_update_page_content_attribute"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/pages/{page_oid}/content/attributes'.sub('{' + 'storefront_oid' + '}', storefront_oid.to_s).sub('{' + 'page_oid' + '}', page_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(page_attribute)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#insert_update_page_content_attribute\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Prepare download of email segment
     # @param storefront_oid 
     # @param email_segment_uuid 

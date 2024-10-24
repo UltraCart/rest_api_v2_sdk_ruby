@@ -55,6 +55,10 @@ module UltracartClient
 
     attr_accessor :msclkid
 
+    attr_accessor :short_code
+
+    attr_accessor :short_code_backup
+
     attr_accessor :ttclid
 
     attr_accessor :uc_message_id
@@ -98,6 +102,8 @@ module UltracartClient
         :'itm_source' => :'itm_source',
         :'itm_term' => :'itm_term',
         :'msclkid' => :'msclkid',
+        :'short_code' => :'short_code',
+        :'short_code_backup' => :'short_code_backup',
         :'ttclid' => :'ttclid',
         :'uc_message_id' => :'uc_message_id',
         :'utm_campaign' => :'utm_campaign',
@@ -134,6 +140,8 @@ module UltracartClient
         :'itm_source' => :'String',
         :'itm_term' => :'String',
         :'msclkid' => :'String',
+        :'short_code' => :'String',
+        :'short_code_backup' => :'BOOLEAN',
         :'ttclid' => :'String',
         :'uc_message_id' => :'String',
         :'utm_campaign' => :'String',
@@ -235,6 +243,14 @@ module UltracartClient
         self.msclkid = attributes[:'msclkid']
       end
 
+      if attributes.has_key?(:'short_code')
+        self.short_code = attributes[:'short_code']
+      end
+
+      if attributes.has_key?(:'short_code_backup')
+        self.short_code_backup = attributes[:'short_code_backup']
+      end
+
       if attributes.has_key?(:'ttclid')
         self.ttclid = attributes[:'ttclid']
       end
@@ -314,6 +330,8 @@ module UltracartClient
           itm_source == o.itm_source &&
           itm_term == o.itm_term &&
           msclkid == o.msclkid &&
+          short_code == o.short_code &&
+          short_code_backup == o.short_code_backup &&
           ttclid == o.ttclid &&
           uc_message_id == o.uc_message_id &&
           utm_campaign == o.utm_campaign &&
@@ -335,7 +353,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [attribution_first_click_subtotal, attribution_first_click_total, attribution_last_click_subtotal, attribution_last_click_total, attribution_linear_subtotal, attribution_linear_total, attribution_position_based_subtotal, attribution_position_based_total, click_dts, facebook_ad_id, fbclid, gbraid, glcid, itm_campaign, itm_content, itm_id, itm_medium, itm_source, itm_term, msclkid, ttclid, uc_message_id, utm_campaign, utm_content, utm_id, utm_medium, utm_source, utm_term, vmcid, wbraid].hash
+      [attribution_first_click_subtotal, attribution_first_click_total, attribution_last_click_subtotal, attribution_last_click_total, attribution_linear_subtotal, attribution_linear_total, attribution_position_based_subtotal, attribution_position_based_total, click_dts, facebook_ad_id, fbclid, gbraid, glcid, itm_campaign, itm_content, itm_id, itm_medium, itm_source, itm_term, msclkid, short_code, short_code_backup, ttclid, uc_message_id, utm_campaign, utm_content, utm_id, utm_medium, utm_source, utm_term, vmcid, wbraid].hash
     end
 
     # Builds the object from hash
