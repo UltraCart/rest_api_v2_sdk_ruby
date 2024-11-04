@@ -47,6 +47,9 @@ module UltracartClient
     # URI of the webhook delivered to
     attr_accessor :uri
 
+    # webhook oid
+    attr_accessor :webhook_oid
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -60,7 +63,8 @@ module UltracartClient
         :'response_headers' => :'response_headers',
         :'status_code' => :'status_code',
         :'success' => :'success',
-        :'uri' => :'uri'
+        :'uri' => :'uri',
+        :'webhook_oid' => :'webhook_oid'
       }
     end
 
@@ -77,7 +81,8 @@ module UltracartClient
         :'response_headers' => :'Array<HTTPHeader>',
         :'status_code' => :'Integer',
         :'success' => :'BOOLEAN',
-        :'uri' => :'String'
+        :'uri' => :'String',
+        :'webhook_oid' => :'Integer'
       }
     end
 
@@ -136,6 +141,10 @@ module UltracartClient
       if attributes.has_key?(:'uri')
         self.uri = attributes[:'uri']
       end
+
+      if attributes.has_key?(:'webhook_oid')
+        self.webhook_oid = attributes[:'webhook_oid']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -166,7 +175,8 @@ module UltracartClient
           response_headers == o.response_headers &&
           status_code == o.status_code &&
           success == o.success &&
-          uri == o.uri
+          uri == o.uri &&
+          webhook_oid == o.webhook_oid
     end
 
     # @see the `==` method
@@ -178,7 +188,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [delivery_dts, duration, queue_delay, request, request_headers, request_id, response, response_headers, status_code, success, uri].hash
+      [delivery_dts, duration, queue_delay, request, request_headers, request_id, response, response_headers, status_code, success, uri, webhook_oid].hash
     end
 
     # Builds the object from hash

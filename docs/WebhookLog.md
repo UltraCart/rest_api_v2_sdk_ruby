@@ -14,5 +14,6 @@ Name | Type | Description | Notes
 **status_code** | **Integer** | HTTP status code received from the server | [optional] 
 **success** | **BOOLEAN** | True if the delivery was successful | [optional] 
 **uri** | **String** | URI of the webhook delivered to | [optional] 
+**webhook_oid** | **Integer** | webhook oid | [optional] 
 
 
