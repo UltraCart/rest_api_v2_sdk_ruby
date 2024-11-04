@@ -113,7 +113,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      frequency_validator = EnumAttributeValidator.new('String', ["Weekly", "Biweekly", "Every...", "Every 10 Days", "Every 24 Days", "Every 28 Days", "Monthly", "Every 45 Days", "Every 2 Months", "Every 3 Months", "Every 4 Months", "Every 6 Months", "Yearly", "Every 4 Weeks", "Every 6 Weeks", "Every 8 Weeks"])
+      frequency_validator = EnumAttributeValidator.new('String', ["Weekly", "Biweekly", "Every...", "Every 10 Days", "Every 24 Days", "Every 28 Days", "Monthly", "Every 45 Days", "Every 2 Months", "Every 3 Months", "Every 4 Months", "Every 5 Months", "Every 6 Months", "Yearly", "Every 4 Weeks", "Every 6 Weeks", "Every 8 Weeks"])
       return false unless frequency_validator.valid?(@frequency)
       true
     end
@@ -121,7 +121,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] frequency Object to be assigned
     def frequency=(frequency)
-      validator = EnumAttributeValidator.new('String', ["Weekly", "Biweekly", "Every...", "Every 10 Days", "Every 24 Days", "Every 28 Days", "Monthly", "Every 45 Days", "Every 2 Months", "Every 3 Months", "Every 4 Months", "Every 6 Months", "Yearly", "Every 4 Weeks", "Every 6 Weeks", "Every 8 Weeks"])
+      validator = EnumAttributeValidator.new('String', ["Weekly", "Biweekly", "Every...", "Every 10 Days", "Every 24 Days", "Every 28 Days", "Monthly", "Every 45 Days", "Every 2 Months", "Every 3 Months", "Every 4 Months", "Every 5 Months", "Every 6 Months", "Yearly", "Every 4 Weeks", "Every 6 Weeks", "Every 8 Weeks"])
       unless validator.valid?(frequency)
         fail ArgumentError, "invalid value for \"frequency\", must be one of #{validator.allowable_values}."
       end

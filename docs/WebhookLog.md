@@ -15,6 +15,7 @@
 | **status_code** | **Integer** | HTTP status code received from the server | [optional] |
 | **success** | **Boolean** | True if the delivery was successful | [optional] |
 | **uri** | **String** | URI of the webhook delivered to | [optional] |
+| **webhook_oid** | **Integer** | webhook oid | [optional] |
 
 ## Example
 
@@ -32,7 +33,8 @@ instance = UltracartClient::WebhookLog.new(
   response_headers: null,
   status_code: null,
   success: null,
-  uri: null
+  uri: null,
+  webhook_oid: null
 )
 ```
 
