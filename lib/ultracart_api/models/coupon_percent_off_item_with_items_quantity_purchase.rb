@@ -17,6 +17,9 @@ module UltracartClient
     # The percentage of subtotal discount
     attr_accessor :discount_percent
 
+    # An optional list of item tags which will receive a discount if one of the required purchased items is purchased.
+    attr_accessor :item_tags
+
     # A list of items which will receive a discount if one of the required purchase items is purchased.
     attr_accessor :items
 
@@ -26,6 +29,9 @@ module UltracartClient
     # Required items (at least one from the list) that must be purchased for coupon to be valid
     attr_accessor :required_purchase_items
 
+    # Required item tags (at least one from the list) that must be purchase for coupon to be valid.
+    attr_accessor :required_purchase_items_tags
+
     # The quantity of items that must be purchased for the discount to be applied.
     attr_accessor :required_purchase_quantity
 
@@ -33,9 +39,11 @@ module UltracartClient
     def self.attribute_map
       {
         :'discount_percent' => :'discount_percent',
+        :'item_tags' => :'item_tags',
         :'items' => :'items',
         :'limit' => :'limit',
         :'required_purchase_items' => :'required_purchase_items',
+        :'required_purchase_items_tags' => :'required_purchase_items_tags',
         :'required_purchase_quantity' => :'required_purchase_quantity'
       }
     end
@@ -44,9 +52,11 @@ module UltracartClient
     def self.swagger_types
       {
         :'discount_percent' => :'Float',
+        :'item_tags' => :'Array<String>',
         :'items' => :'Array<String>',
         :'limit' => :'Integer',
         :'required_purchase_items' => :'Array<String>',
+        :'required_purchase_items_tags' => :'Array<String>',
         :'required_purchase_quantity' => :'Integer'
       }
     end
@@ -63,6 +73,12 @@ module UltracartClient
         self.discount_percent = attributes[:'discount_percent']
       end
 
+      if attributes.has_key?(:'item_tags')
+        if (value = attributes[:'item_tags']).is_a?(Array)
+          self.item_tags = value
+        end
+      end
+
       if attributes.has_key?(:'items')
         if (value = attributes[:'items']).is_a?(Array)
           self.items = value
@@ -76,6 +92,12 @@ module UltracartClient
       if attributes.has_key?(:'required_purchase_items')
         if (value = attributes[:'required_purchase_items']).is_a?(Array)
           self.required_purchase_items = value
+        end
+      end
+
+      if attributes.has_key?(:'required_purchase_items_tags')
+        if (value = attributes[:'required_purchase_items_tags']).is_a?(Array)
+          self.required_purchase_items_tags = value
         end
       end
 
@@ -103,9 +125,11 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           discount_percent == o.discount_percent &&
+          item_tags == o.item_tags &&
           items == o.items &&
           limit == o.limit &&
           required_purchase_items == o.required_purchase_items &&
+          required_purchase_items_tags == o.required_purchase_items_tags &&
           required_purchase_quantity == o.required_purchase_quantity
     end
 
@@ -118,7 +142,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [discount_percent, items, limit, required_purchase_items, required_purchase_quantity].hash
+      [discount_percent, item_tags, items, limit, required_purchase_items, required_purchase_items_tags, required_purchase_quantity].hash
     end
 
     # Builds the object from hash
