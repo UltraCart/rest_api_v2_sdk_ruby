@@ -36,8 +36,17 @@ module UltracartClient
     # Extended description (max 10000 characters)
     attr_accessor :extended_description
 
-    # Extneded description text translation instance identifier
+    # Extended description text translation instance identifier
     attr_accessor :extended_description_translated_text_instance_oid
+
+    # SEO meta description used by Storefronts
+    attr_accessor :meta_description
+
+    # SEO meta keywords used by Storefronts
+    attr_accessor :meta_keywords
+
+    # SEO meta title used by Storefronts
+    attr_accessor :meta_title
 
     # Multimedia
     attr_accessor :multimedia
@@ -65,6 +74,9 @@ module UltracartClient
         :'exclude_from_top_sellers' => :'exclude_from_top_sellers',
         :'extended_description' => :'extended_description',
         :'extended_description_translated_text_instance_oid' => :'extended_description_translated_text_instance_oid',
+        :'meta_description' => :'meta_description',
+        :'meta_keywords' => :'meta_keywords',
+        :'meta_title' => :'meta_title',
         :'multimedia' => :'multimedia',
         :'new_item' => :'new_item',
         :'new_item_end' => :'new_item_end',
@@ -89,6 +101,9 @@ module UltracartClient
         :'exclude_from_top_sellers' => :'Boolean',
         :'extended_description' => :'String',
         :'extended_description_translated_text_instance_oid' => :'Integer',
+        :'meta_description' => :'String',
+        :'meta_keywords' => :'String',
+        :'meta_title' => :'String',
         :'multimedia' => :'Array<ItemContentMultimedia>',
         :'new_item' => :'Boolean',
         :'new_item_end' => :'String',
@@ -152,6 +167,18 @@ module UltracartClient
 
       if attributes.key?(:'extended_description_translated_text_instance_oid')
         self.extended_description_translated_text_instance_oid = attributes[:'extended_description_translated_text_instance_oid']
+      end
+
+      if attributes.key?(:'meta_description')
+        self.meta_description = attributes[:'meta_description']
+      end
+
+      if attributes.key?(:'meta_keywords')
+        self.meta_keywords = attributes[:'meta_keywords']
+      end
+
+      if attributes.key?(:'meta_title')
+        self.meta_title = attributes[:'meta_title']
       end
 
       if attributes.key?(:'multimedia')
@@ -218,6 +245,9 @@ module UltracartClient
           exclude_from_top_sellers == o.exclude_from_top_sellers &&
           extended_description == o.extended_description &&
           extended_description_translated_text_instance_oid == o.extended_description_translated_text_instance_oid &&
+          meta_description == o.meta_description &&
+          meta_keywords == o.meta_keywords &&
+          meta_title == o.meta_title &&
           multimedia == o.multimedia &&
           new_item == o.new_item &&
           new_item_end == o.new_item_end &&
@@ -234,7 +264,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [assignments, attributes, custom_thank_you_url, exclude_from_search, exclude_from_sitemap, exclude_from_top_sellers, extended_description, extended_description_translated_text_instance_oid, multimedia, new_item, new_item_end, new_item_start, view_url].hash
+      [assignments, attributes, custom_thank_you_url, exclude_from_search, exclude_from_sitemap, exclude_from_top_sellers, extended_description, extended_description_translated_text_instance_oid, meta_description, meta_keywords, meta_title, multimedia, new_item, new_item_end, new_item_start, view_url].hash
     end
 
     # Builds the object from hash

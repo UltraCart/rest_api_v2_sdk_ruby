@@ -11,7 +11,10 @@
 | **exclude_from_sitemap** | **Boolean** | Exclude from the sitemap for the StoreFront | [optional] |
 | **exclude_from_top_sellers** | **Boolean** | Exclude from the top sellers list in the StoreFront | [optional] |
 | **extended_description** | **String** | Extended description (max 10000 characters) | [optional] |
-| **extended_description_translated_text_instance_oid** | **Integer** | Extneded description text translation instance identifier | [optional] |
+| **extended_description_translated_text_instance_oid** | **Integer** | Extended description text translation instance identifier | [optional] |
+| **meta_description** | **String** | SEO meta description used by Storefronts | [optional] |
+| **meta_keywords** | **String** | SEO meta keywords used by Storefronts | [optional] |
+| **meta_title** | **String** | SEO meta title used by Storefronts | [optional] |
 | **multimedia** | [**Array&lt;ItemContentMultimedia&gt;**](ItemContentMultimedia.md) | Multimedia | [optional] |
 | **new_item** | **Boolean** | True if the item is new | [optional] |
 | **new_item_end** | **String** | The date the item should no longer be considered new | [optional] |
@@ -32,6 +35,9 @@ instance = UltracartClient::ItemContent.new(
   exclude_from_top_sellers: null,
   extended_description: null,
   extended_description_translated_text_instance_oid: null,
+  meta_description: null,
+  meta_keywords: null,
+  meta_title: null,
   multimedia: null,
   new_item: null,
   new_item_end: null,
