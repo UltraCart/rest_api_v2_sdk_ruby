@@ -9,11 +9,14 @@ Method | HTTP request | Description
 [**delete_channel_partner_ship_to_preference**](ChannelPartnerApi.md#delete_channel_partner_ship_to_preference) | **DELETE** /channel_partner/channel_partners/{channel_partner_oid}/ship_to_preferences/{channel_partner_ship_to_preference_oid} | Delete a ship to preference record for the channel partner.
 [**estimate_shipping_for_channel_partner_order**](ChannelPartnerApi.md#estimate_shipping_for_channel_partner_order) | **POST** /channel_partner/estimate_shipping | Estimate shipping for channel partner order
 [**estimate_tax_for_channel_partner_order**](ChannelPartnerApi.md#estimate_tax_for_channel_partner_order) | **POST** /channel_partner/estimate_tax | Estimate tax for channel partner order
+[**get_channel_partner_order**](ChannelPartnerApi.md#get_channel_partner_order) | **GET** /channel_partner/orders/{order_id} | Retrieve a channel partner order
+[**get_channel_partner_order_by_channel_partner_order_id**](ChannelPartnerApi.md#get_channel_partner_order_by_channel_partner_order_id) | **GET** /channel_partner/orders/by_channel_partner_order_id/{order_id} | Retrieve a channel partner order by the channel partner order id
 [**get_channel_partner_ship_to_preference**](ChannelPartnerApi.md#get_channel_partner_ship_to_preference) | **GET** /channel_partner/channel_partners/{channel_partner_oid}/ship_to_preferences/{channel_partner_ship_to_preference_oid} | Retrieve the ship to preference associated with the channel partner and the specific id.
 [**get_channel_partner_ship_to_preferences**](ChannelPartnerApi.md#get_channel_partner_ship_to_preferences) | **GET** /channel_partner/channel_partners/{channel_partner_oid}/ship_to_preferences | Retrieve the ship to preferences associated with the channel partner.
 [**get_channel_partners**](ChannelPartnerApi.md#get_channel_partners) | **GET** /channel_partner/channel_partners | Retrieve the channel partners configured on the account.
 [**import_channel_partner_order**](ChannelPartnerApi.md#import_channel_partner_order) | **POST** /channel_partner/import | Insert channel partner order
 [**insert_channel_partner_ship_to_preference**](ChannelPartnerApi.md#insert_channel_partner_ship_to_preference) | **POST** /channel_partner/channel_partners/{channel_partner_oid}/ship_to_preferences | Insert a ship to preference record for the channel partner.
+[**refund_channel_partner_order**](ChannelPartnerApi.md#refund_channel_partner_order) | **PUT** /channel_partner/orders/{order_id}/refund | Refund a channel partner order
 [**update_channel_partner_ship_to_preference**](ChannelPartnerApi.md#update_channel_partner_ship_to_preference) | **PUT** /channel_partner/channel_partners/{channel_partner_oid}/ship_to_preferences/{channel_partner_ship_to_preference_oid} | Update a ship to preference record for the channel partner.
 
 
@@ -269,6 +272,114 @@ Name | Type | Description  | Notes
 
 
 
+# **get_channel_partner_order**
+> OrderResponse get_channel_partner_order(order_id, opts)
+
+Retrieve a channel partner order
+
+Retrieves a single order using the specified order id.  Only orders belonging to this channel partner may be retrieved. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ChannelPartnerApi.new_using_api_key(simple_key, false, false)
+
+
+order_id = 'order_id_example' # String | The order id to retrieve.
+
+opts = { 
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See OrderApi.getOrder documentation for examples
+}
+
+begin
+  #Retrieve a channel partner order
+  result = api_instance.get_channel_partner_order(order_id, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ChannelPartnerApi->get_channel_partner_order: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **String**| The order id to retrieve. | 
+ **_expand** | **String**| The object expansion to perform on the result.  See OrderApi.getOrder documentation for examples | [optional] 
+
+### Return type
+
+[**OrderResponse**](OrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_channel_partner_order_by_channel_partner_order_id**
+> OrderResponse get_channel_partner_order_by_channel_partner_order_id(order_id, opts)
+
+Retrieve a channel partner order by the channel partner order id
+
+Retrieves a single order using the channel partner order id, not the ultracart order id.  Only orders belonging to this channel partner may be retrieved. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ChannelPartnerApi.new_using_api_key(simple_key, false, false)
+
+
+order_id = 'order_id_example' # String | The channel partner order id to retrieve.
+
+opts = { 
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See OrderApi.getOrder documentation for examples
+}
+
+begin
+  #Retrieve a channel partner order by the channel partner order id
+  result = api_instance.get_channel_partner_order_by_channel_partner_order_id(order_id, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ChannelPartnerApi->get_channel_partner_order_by_channel_partner_order_id: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **String**| The channel partner order id to retrieve. | 
+ **_expand** | **String**| The object expansion to perform on the result.  See OrderApi.getOrder documentation for examples | [optional] 
+
+### Return type
+
+[**OrderResponse**](OrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **get_channel_partner_ship_to_preference**
 > ChannelPartnerShipToPreferenceResponse get_channel_partner_ship_to_preference(channel_partner_oid, channel_partner_ship_to_preference_oid)
 
@@ -516,6 +627,77 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **refund_channel_partner_order**
+> OrderResponse refund_channel_partner_order(order, order_id, opts)
+
+Refund a channel partner order
+
+Perform a refund operation on a channel partner order and then update the order if successful.  All of the object properties ending in _refunded should be the TOTAL amount that should end up being refunded.  UltraCart will calculate the actual amount to refund based upon the prior refunds. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ChannelPartnerApi.new_using_api_key(simple_key, false, false)
+
+
+order = UltracartClient::Order.new # Order | Order to refund
+
+order_id = 'order_id_example' # String | The order id to refund.
+
+opts = { 
+  reject_after_refund: false, # BOOLEAN | Reject order after refund
+  skip_customer_notification: false, # BOOLEAN | Skip customer email notification
+  auto_order_cancel: false, # BOOLEAN | Cancel associated auto orders
+  manual_refund: false, # BOOLEAN | Consider a manual refund done externally
+  reverse_affiliate_transactions: true, # BOOLEAN | Reverse affiliate transactions
+  issue_store_credit: false, # BOOLEAN | Issue a store credit instead of refunding the original payment method, loyalty must be configured on merchant account
+  auto_order_cancel_reason: 'auto_order_cancel_reason_example', # String | Reason for auto orders cancellation
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See OrderApi.refundOrder documentation for examples
+}
+
+begin
+  #Refund a channel partner order
+  result = api_instance.refund_channel_partner_order(order, order_id, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ChannelPartnerApi->refund_channel_partner_order: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order** | [**Order**](Order.md)| Order to refund | 
+ **order_id** | **String**| The order id to refund. | 
+ **reject_after_refund** | **BOOLEAN**| Reject order after refund | [optional] [default to false]
+ **skip_customer_notification** | **BOOLEAN**| Skip customer email notification | [optional] [default to false]
+ **auto_order_cancel** | **BOOLEAN**| Cancel associated auto orders | [optional] [default to false]
+ **manual_refund** | **BOOLEAN**| Consider a manual refund done externally | [optional] [default to false]
+ **reverse_affiliate_transactions** | **BOOLEAN**| Reverse affiliate transactions | [optional] [default to true]
+ **issue_store_credit** | **BOOLEAN**| Issue a store credit instead of refunding the original payment method, loyalty must be configured on merchant account | [optional] [default to false]
+ **auto_order_cancel_reason** | **String**| Reason for auto orders cancellation | [optional] 
+ **_expand** | **String**| The object expansion to perform on the result.  See OrderApi.refundOrder documentation for examples | [optional] 
+
+### Return type
+
+[**OrderResponse**](OrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
  - **Accept**: application/json
 
 

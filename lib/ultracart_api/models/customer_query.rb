@@ -50,6 +50,9 @@ module UltracartClient
     # Email address of this customer profile
     attr_accessor :email
 
+    # Emails allows for searching on multiple email addresses and work with our without the single email variable.  You may specify a single email address here or use the email property.
+    attr_accessor :emails
+
     # Last modified date end
     attr_accessor :last_modified_dts_end
 
@@ -116,6 +119,7 @@ module UltracartClient
         :'billing_postal_code' => :'billing_postal_code',
         :'billing_state' => :'billing_state',
         :'email' => :'email',
+        :'emails' => :'emails',
         :'last_modified_dts_end' => :'last_modified_dts_end',
         :'last_modified_dts_start' => :'last_modified_dts_start',
         :'pricing_tier_name' => :'pricing_tier_name',
@@ -151,6 +155,7 @@ module UltracartClient
         :'billing_postal_code' => :'String',
         :'billing_state' => :'String',
         :'email' => :'String',
+        :'emails' => :'Array<String>',
         :'last_modified_dts_end' => :'String',
         :'last_modified_dts_start' => :'String',
         :'pricing_tier_name' => :'String',
@@ -229,6 +234,12 @@ module UltracartClient
 
       if attributes.has_key?(:'email')
         self.email = attributes[:'email']
+      end
+
+      if attributes.has_key?(:'emails')
+        if (value = attributes[:'emails']).is_a?(Array)
+          self.emails = value
+        end
       end
 
       if attributes.has_key?(:'last_modified_dts_end')
@@ -615,6 +626,7 @@ module UltracartClient
           billing_postal_code == o.billing_postal_code &&
           billing_state == o.billing_state &&
           email == o.email &&
+          emails == o.emails &&
           last_modified_dts_end == o.last_modified_dts_end &&
           last_modified_dts_start == o.last_modified_dts_start &&
           pricing_tier_name == o.pricing_tier_name &&
@@ -643,7 +655,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [all_tags, any_tags, billing_city, billing_company, billing_country_code, billing_day_phone, billing_evening_phone, billing_first_name, billing_last_name, billing_postal_code, billing_state, email, last_modified_dts_end, last_modified_dts_start, pricing_tier_name, pricing_tier_oid, qb_class, quickbooks_code, shipping_city, shipping_company, shipping_country_code, shipping_day_phone, shipping_evening_phone, shipping_first_name, shipping_last_name, shipping_postal_code, shipping_state, signup_dts_end, signup_dts_start].hash
+      [all_tags, any_tags, billing_city, billing_company, billing_country_code, billing_day_phone, billing_evening_phone, billing_first_name, billing_last_name, billing_postal_code, billing_state, email, emails, last_modified_dts_end, last_modified_dts_start, pricing_tier_name, pricing_tier_oid, qb_class, quickbooks_code, shipping_city, shipping_company, shipping_country_code, shipping_day_phone, shipping_evening_phone, shipping_first_name, shipping_last_name, shipping_postal_code, shipping_state, signup_dts_end, signup_dts_start].hash
     end
 
     # Builds the object from hash

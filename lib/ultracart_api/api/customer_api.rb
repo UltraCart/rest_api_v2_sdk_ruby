@@ -684,6 +684,7 @@ module UltracartClient
     # @option opts [String] :shipping_evening_phone Shipping evening phone
     # @option opts [Integer] :pricing_tier_oid Pricing tier oid
     # @option opts [String] :pricing_tier_name Pricing tier name
+    # @option opts [Object] :emails Emails
     # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Max 200) (default to 100)
     # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
     # @option opts [String] :_since Fetch customers that have been created/modified since this date/time.
@@ -725,6 +726,7 @@ module UltracartClient
     # @option opts [String] :shipping_evening_phone Shipping evening phone
     # @option opts [Integer] :pricing_tier_oid Pricing tier oid
     # @option opts [String] :pricing_tier_name Pricing tier name
+    # @option opts [Object] :emails Emails
     # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Max 200)
     # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index.
     # @option opts [String] :_since Fetch customers that have been created/modified since this date/time.
@@ -767,6 +769,7 @@ module UltracartClient
       query_params[:'shipping_evening_phone'] = opts[:'shipping_evening_phone'] if !opts[:'shipping_evening_phone'].nil?
       query_params[:'pricing_tier_oid'] = opts[:'pricing_tier_oid'] if !opts[:'pricing_tier_oid'].nil?
       query_params[:'pricing_tier_name'] = opts[:'pricing_tier_name'] if !opts[:'pricing_tier_name'].nil?
+      query_params[:'emails'] = opts[:'emails'] if !opts[:'emails'].nil?
       query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
       query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
       query_params[:'_since'] = opts[:'_since'] if !opts[:'_since'].nil?
