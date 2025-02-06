@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **accounting_code** | **String** | QuickBooks code | [optional] |
 | **activation_codes** | **Array&lt;String&gt;** | Activation codes assigned to this item | [optional] |
+| **actual_cogs** | [**Currency**](Currency.md) |  | [optional] |
 | **arbitrary_unit_cost** | [**Currency**](Currency.md) |  | [optional] |
 | **auto_order_last_rebill_dts** | **String** | Date/time of the last rebill, used only during order insert to help project future rebills | [optional] |
 | **auto_order_schedule** | **String** | Auto order schedule, used only during inserts supplying the recurring schedule | [optional] |
@@ -78,6 +79,7 @@ require 'ultracart_api'
 instance = UltracartClient::OrderItem.new(
   accounting_code: null,
   activation_codes: null,
+  actual_cogs: null,
   arbitrary_unit_cost: null,
   auto_order_last_rebill_dts: null,
   auto_order_schedule: null,

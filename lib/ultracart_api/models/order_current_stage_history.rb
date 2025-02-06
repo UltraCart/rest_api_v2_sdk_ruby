@@ -14,30 +14,44 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class CustomerAttachment
-    # Attachment identifier
-    attr_accessor :customer_profile_attachment_oid
+  class OrderCurrentStageHistory
+    # New stage that the order is in.
+    attr_accessor :after_stage
 
-    # Description
-    attr_accessor :description
+    # Previous stage that the order was in.
+    attr_accessor :before_stage
 
-    # File name
-    attr_accessor :file_name
+    # Date/time that the stage transitioned
+    attr_accessor :transition_dts
 
-    # Mime type
-    attr_accessor :mime_type
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    # Upload date/time
-    attr_accessor :upload_dts
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'customer_profile_attachment_oid' => :'customer_profile_attachment_oid',
-        :'description' => :'description',
-        :'file_name' => :'file_name',
-        :'mime_type' => :'mime_type',
-        :'upload_dts' => :'upload_dts'
+        :'after_stage' => :'after_stage',
+        :'before_stage' => :'before_stage',
+        :'transition_dts' => :'transition_dts'
       }
     end
 
@@ -49,11 +63,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'customer_profile_attachment_oid' => :'Integer',
-        :'description' => :'String',
-        :'file_name' => :'String',
-        :'mime_type' => :'String',
-        :'upload_dts' => :'String'
+        :'after_stage' => :'String',
+        :'before_stage' => :'String',
+        :'transition_dts' => :'String'
       }
     end
 
@@ -67,35 +79,27 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::CustomerAttachment` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::OrderCurrentStageHistory` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::CustomerAttachment`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::OrderCurrentStageHistory`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'customer_profile_attachment_oid')
-        self.customer_profile_attachment_oid = attributes[:'customer_profile_attachment_oid']
+      if attributes.key?(:'after_stage')
+        self.after_stage = attributes[:'after_stage']
       end
 
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
+      if attributes.key?(:'before_stage')
+        self.before_stage = attributes[:'before_stage']
       end
 
-      if attributes.key?(:'file_name')
-        self.file_name = attributes[:'file_name']
-      end
-
-      if attributes.key?(:'mime_type')
-        self.mime_type = attributes[:'mime_type']
-      end
-
-      if attributes.key?(:'upload_dts')
-        self.upload_dts = attributes[:'upload_dts']
+      if attributes.key?(:'transition_dts')
+        self.transition_dts = attributes[:'transition_dts']
       end
     end
 
@@ -109,7 +113,31 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      after_stage_validator = EnumAttributeValidator.new('String', ["Accounts Receivable", "Pending Clearance", "Fraud Review", "Rejected", "Shipping Department", "Completed Order", "Quote Request", "Quote Sent", "Least Cost Routing", "Unknown", "Pre-ordered", "Advanced Order Routing", "Hold"])
+      return false unless after_stage_validator.valid?(@after_stage)
+      before_stage_validator = EnumAttributeValidator.new('String', ["Accounts Receivable", "Pending Clearance", "Fraud Review", "Rejected", "Shipping Department", "Completed Order", "Quote Request", "Quote Sent", "Least Cost Routing", "Unknown", "Pre-ordered", "Advanced Order Routing", "Hold"])
+      return false unless before_stage_validator.valid?(@before_stage)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] after_stage Object to be assigned
+    def after_stage=(after_stage)
+      validator = EnumAttributeValidator.new('String', ["Accounts Receivable", "Pending Clearance", "Fraud Review", "Rejected", "Shipping Department", "Completed Order", "Quote Request", "Quote Sent", "Least Cost Routing", "Unknown", "Pre-ordered", "Advanced Order Routing", "Hold"])
+      unless validator.valid?(after_stage)
+        fail ArgumentError, "invalid value for \"after_stage\", must be one of #{validator.allowable_values}."
+      end
+      @after_stage = after_stage
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] before_stage Object to be assigned
+    def before_stage=(before_stage)
+      validator = EnumAttributeValidator.new('String', ["Accounts Receivable", "Pending Clearance", "Fraud Review", "Rejected", "Shipping Department", "Completed Order", "Quote Request", "Quote Sent", "Least Cost Routing", "Unknown", "Pre-ordered", "Advanced Order Routing", "Hold"])
+      unless validator.valid?(before_stage)
+        fail ArgumentError, "invalid value for \"before_stage\", must be one of #{validator.allowable_values}."
+      end
+      @before_stage = before_stage
     end
 
     # Checks equality by comparing each attribute.
@@ -117,11 +145,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          customer_profile_attachment_oid == o.customer_profile_attachment_oid &&
-          description == o.description &&
-          file_name == o.file_name &&
-          mime_type == o.mime_type &&
-          upload_dts == o.upload_dts
+          after_stage == o.after_stage &&
+          before_stage == o.before_stage &&
+          transition_dts == o.transition_dts
     end
 
     # @see the `==` method
@@ -133,7 +159,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [customer_profile_attachment_oid, description, file_name, mime_type, upload_dts].hash
+      [after_stage, before_stage, transition_dts].hash
     end
 
     # Builds the object from hash

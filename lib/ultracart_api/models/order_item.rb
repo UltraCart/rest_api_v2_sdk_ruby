@@ -21,6 +21,8 @@ module UltracartClient
     # Activation codes assigned to this item
     attr_accessor :activation_codes
 
+    attr_accessor :actual_cogs
+
     attr_accessor :arbitrary_unit_cost
 
     # Date/time of the last rebill, used only during order insert to help project future rebills
@@ -224,6 +226,7 @@ module UltracartClient
       {
         :'accounting_code' => :'accounting_code',
         :'activation_codes' => :'activation_codes',
+        :'actual_cogs' => :'actual_cogs',
         :'arbitrary_unit_cost' => :'arbitrary_unit_cost',
         :'auto_order_last_rebill_dts' => :'auto_order_last_rebill_dts',
         :'auto_order_schedule' => :'auto_order_schedule',
@@ -300,6 +303,7 @@ module UltracartClient
       {
         :'accounting_code' => :'String',
         :'activation_codes' => :'Array<String>',
+        :'actual_cogs' => :'Currency',
         :'arbitrary_unit_cost' => :'Currency',
         :'auto_order_last_rebill_dts' => :'String',
         :'auto_order_schedule' => :'String',
@@ -395,6 +399,10 @@ module UltracartClient
         if (value = attributes[:'activation_codes']).is_a?(Array)
           self.activation_codes = value
         end
+      end
+
+      if attributes.key?(:'actual_cogs')
+        self.actual_cogs = attributes[:'actual_cogs']
       end
 
       if attributes.key?(:'arbitrary_unit_cost')
@@ -853,6 +861,7 @@ module UltracartClient
       self.class == o.class &&
           accounting_code == o.accounting_code &&
           activation_codes == o.activation_codes &&
+          actual_cogs == o.actual_cogs &&
           arbitrary_unit_cost == o.arbitrary_unit_cost &&
           auto_order_last_rebill_dts == o.auto_order_last_rebill_dts &&
           auto_order_schedule == o.auto_order_schedule &&
@@ -927,7 +936,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accounting_code, activation_codes, arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, barcode, barcode_gtin12, barcode_gtin14, barcode_upc11, barcode_upc12, channel_partner_item_id, cogs, component_unit_value, cost, country_code_of_origin, customs_description, description, discount, discount_quantity, discount_shipping_weight, distribution_center_code, edi, exclude_coupon, free_shipping, hazmat, height, item_index, item_reference_oid, kit, kit_component, length, manufacturer_sku, max_days_time_in_transit, merchant_item_id, mix_and_match_group_name, mix_and_match_group_oid, no_shipping_discount, options, packed_by_user, parent_item_index, parent_merchant_item_id, perishable_class, pricing_tier_name, properties, quantity, quantity_refunded, quickbooks_class, refund_reason, return_reason, ship_separately, shipped_by_user, shipped_dts, shipping_status, special_product_type, tags, tax_free, tax_product_type, taxable_cost, total_cost_with_discount, total_refunded, transmitted_to_distribution_center_dts, unit_cost_with_discount, upsell, weight, width].hash
+      [accounting_code, activation_codes, actual_cogs, arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, barcode, barcode_gtin12, barcode_gtin14, barcode_upc11, barcode_upc12, channel_partner_item_id, cogs, component_unit_value, cost, country_code_of_origin, customs_description, description, discount, discount_quantity, discount_shipping_weight, distribution_center_code, edi, exclude_coupon, free_shipping, hazmat, height, item_index, item_reference_oid, kit, kit_component, length, manufacturer_sku, max_days_time_in_transit, merchant_item_id, mix_and_match_group_name, mix_and_match_group_oid, no_shipping_discount, options, packed_by_user, parent_item_index, parent_merchant_item_id, perishable_class, pricing_tier_name, properties, quantity, quantity_refunded, quickbooks_class, refund_reason, return_reason, ship_separately, shipped_by_user, shipped_dts, shipping_status, special_product_type, tags, tax_free, tax_product_type, taxable_cost, total_cost_with_discount, total_refunded, transmitted_to_distribution_center_dts, unit_cost_with_discount, upsell, weight, width].hash
     end
 
     # Builds the object from hash

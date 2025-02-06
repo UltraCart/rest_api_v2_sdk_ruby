@@ -276,6 +276,9 @@ module UltracartClient
     # If true any failed payments are placed into Accounts Receivable.  If false any failed payments result in a rejected order resulting in errors thrown during the insert routine
     attr_accessor :store_if_payment_declines
 
+    # StoreFront host name associated with the order
+    attr_accessor :storefront_host_name
+
     # The optional shipping county used to determine exact taxes
     attr_accessor :tax_county
 
@@ -399,6 +402,7 @@ module UltracartClient
         :'special_instructions' => :'special_instructions',
         :'store_completed' => :'store_completed',
         :'store_if_payment_declines' => :'store_if_payment_declines',
+        :'storefront_host_name' => :'storefront_host_name',
         :'tax_county' => :'tax_county',
         :'tax_exempt' => :'tax_exempt',
         :'transaction' => :'transaction',
@@ -501,6 +505,7 @@ module UltracartClient
         :'special_instructions' => :'String',
         :'store_completed' => :'Boolean',
         :'store_if_payment_declines' => :'Boolean',
+        :'storefront_host_name' => :'String',
         :'tax_county' => :'String',
         :'tax_exempt' => :'Boolean',
         :'transaction' => :'ChannelPartnerOrderTransaction',
@@ -881,6 +886,10 @@ module UltracartClient
 
       if attributes.key?(:'store_if_payment_declines')
         self.store_if_payment_declines = attributes[:'store_if_payment_declines']
+      end
+
+      if attributes.key?(:'storefront_host_name')
+        self.storefront_host_name = attributes[:'storefront_host_name']
       end
 
       if attributes.key?(:'tax_county')
@@ -1596,6 +1605,7 @@ module UltracartClient
           special_instructions == o.special_instructions &&
           store_completed == o.store_completed &&
           store_if_payment_declines == o.store_if_payment_declines &&
+          storefront_host_name == o.storefront_host_name &&
           tax_county == o.tax_county &&
           tax_exempt == o.tax_exempt &&
           transaction == o.transaction &&
@@ -1611,7 +1621,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [advertising_source, affiliate_id, affiliate_sub_id, arbitrary_shipping_handling_total, arbitrary_tax, arbitrary_tax_rate, arbitrary_taxable_subtotal, associate_with_customer_profile_if_present, auto_approve_purchase_order, billto_address1, billto_address2, billto_city, billto_company, billto_country_code, billto_day_phone, billto_evening_phone, billto_first_name, billto_last_name, billto_postal_code, billto_state_region, billto_title, cc_email, channel_partner_order_id, consider_recurring, coupons, credit_card_authorization_amount, credit_card_authorization_dts, credit_card_authorization_number, credit_card_expiration_month, credit_card_expiration_year, credit_card_type, custom_field1, custom_field2, custom_field3, custom_field4, custom_field5, custom_field6, custom_field7, delivery_date, echeck_bank_aba_code, echeck_bank_account_name, echeck_bank_account_number, echeck_bank_account_type, echeck_bank_name, echeck_bank_owner_type, echeck_customer_tax_id, echeck_drivers_license_dob, echeck_drivers_license_number, echeck_drivers_license_state, email, gift, gift_email, gift_message, hosted_fields_card_token, hosted_fields_cvv_token, insurance_application_id, insurance_claim_id, ip_address, items, least_cost_route, least_cost_route_shipping_methods, mailing_list_opt_in, no_realtime_payment_processing, payment_method, purchase_order_number, rotating_transaction_gateway_code, sales_rep_code, screen_branding_theme_code, ship_on_date, ship_to_residential, shipping_method, shipto_address1, shipto_address2, shipto_city, shipto_company, shipto_country_code, shipto_day_phone, shipto_evening_phone, shipto_first_name, shipto_last_name, shipto_postal_code, shipto_state_region, shipto_title, skip_payment_processing, special_instructions, store_completed, store_if_payment_declines, tax_county, tax_exempt, transaction, treat_warnings_as_errors].hash
+      [advertising_source, affiliate_id, affiliate_sub_id, arbitrary_shipping_handling_total, arbitrary_tax, arbitrary_tax_rate, arbitrary_taxable_subtotal, associate_with_customer_profile_if_present, auto_approve_purchase_order, billto_address1, billto_address2, billto_city, billto_company, billto_country_code, billto_day_phone, billto_evening_phone, billto_first_name, billto_last_name, billto_postal_code, billto_state_region, billto_title, cc_email, channel_partner_order_id, consider_recurring, coupons, credit_card_authorization_amount, credit_card_authorization_dts, credit_card_authorization_number, credit_card_expiration_month, credit_card_expiration_year, credit_card_type, custom_field1, custom_field2, custom_field3, custom_field4, custom_field5, custom_field6, custom_field7, delivery_date, echeck_bank_aba_code, echeck_bank_account_name, echeck_bank_account_number, echeck_bank_account_type, echeck_bank_name, echeck_bank_owner_type, echeck_customer_tax_id, echeck_drivers_license_dob, echeck_drivers_license_number, echeck_drivers_license_state, email, gift, gift_email, gift_message, hosted_fields_card_token, hosted_fields_cvv_token, insurance_application_id, insurance_claim_id, ip_address, items, least_cost_route, least_cost_route_shipping_methods, mailing_list_opt_in, no_realtime_payment_processing, payment_method, purchase_order_number, rotating_transaction_gateway_code, sales_rep_code, screen_branding_theme_code, ship_on_date, ship_to_residential, shipping_method, shipto_address1, shipto_address2, shipto_city, shipto_company, shipto_country_code, shipto_day_phone, shipto_evening_phone, shipto_first_name, shipto_last_name, shipto_postal_code, shipto_state_region, shipto_title, skip_payment_processing, special_instructions, store_completed, store_if_payment_declines, storefront_host_name, tax_county, tax_exempt, transaction, treat_warnings_as_errors].hash
     end
 
     # Builds the object from hash

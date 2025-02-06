@@ -8,6 +8,7 @@
 | **featured** | **Boolean** |  | [optional] |
 | **helperful_no_votes** | **Integer** |  | [optional] |
 | **helpful_yes_votes** | **Integer** |  | [optional] |
+| **merchant_reply** | **String** | Merchant Reply (set to an empty string to remove) | [optional] |
 | **order_id** | **String** |  | [optional] |
 | **overall** | **Float** |  | [optional] |
 | **rating_name1** | **String** | Rating Name 1 | [optional] |
@@ -52,6 +53,7 @@ instance = UltracartClient::ItemReview.new(
   featured: null,
   helperful_no_votes: null,
   helpful_yes_votes: null,
+  merchant_reply: null,
   order_id: null,
   overall: null,
   rating_name1: null,

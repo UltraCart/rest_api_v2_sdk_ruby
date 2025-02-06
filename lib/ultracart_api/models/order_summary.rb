@@ -17,7 +17,17 @@ module UltracartClient
   class OrderSummary
     attr_accessor :actual_fulfillment
 
+    attr_accessor :actual_other_cost
+
     attr_accessor :actual_payment_processing
+
+    attr_accessor :actual_profit
+
+    # Actual profit has been analyzed
+    attr_accessor :actual_profit_analyzed
+
+    # Actual profit needs review
+    attr_accessor :actual_profit_review
 
     attr_accessor :actual_shipping
 
@@ -63,7 +73,11 @@ module UltracartClient
     def self.attribute_map
       {
         :'actual_fulfillment' => :'actual_fulfillment',
+        :'actual_other_cost' => :'actual_other_cost',
         :'actual_payment_processing' => :'actual_payment_processing',
+        :'actual_profit' => :'actual_profit',
+        :'actual_profit_analyzed' => :'actual_profit_analyzed',
+        :'actual_profit_review' => :'actual_profit_review',
         :'actual_shipping' => :'actual_shipping',
         :'arbitrary_shipping_handling_total' => :'arbitrary_shipping_handling_total',
         :'health_benefit_card_amount' => :'health_benefit_card_amount',
@@ -96,7 +110,11 @@ module UltracartClient
     def self.openapi_types
       {
         :'actual_fulfillment' => :'Currency',
+        :'actual_other_cost' => :'Currency',
         :'actual_payment_processing' => :'Currency',
+        :'actual_profit' => :'Currency',
+        :'actual_profit_analyzed' => :'Boolean',
+        :'actual_profit_review' => :'Boolean',
         :'actual_shipping' => :'Currency',
         :'arbitrary_shipping_handling_total' => :'Currency',
         :'health_benefit_card_amount' => :'Currency',
@@ -145,8 +163,24 @@ module UltracartClient
         self.actual_fulfillment = attributes[:'actual_fulfillment']
       end
 
+      if attributes.key?(:'actual_other_cost')
+        self.actual_other_cost = attributes[:'actual_other_cost']
+      end
+
       if attributes.key?(:'actual_payment_processing')
         self.actual_payment_processing = attributes[:'actual_payment_processing']
+      end
+
+      if attributes.key?(:'actual_profit')
+        self.actual_profit = attributes[:'actual_profit']
+      end
+
+      if attributes.key?(:'actual_profit_analyzed')
+        self.actual_profit_analyzed = attributes[:'actual_profit_analyzed']
+      end
+
+      if attributes.key?(:'actual_profit_review')
+        self.actual_profit_review = attributes[:'actual_profit_review']
       end
 
       if attributes.key?(:'actual_shipping')
@@ -249,7 +283,11 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           actual_fulfillment == o.actual_fulfillment &&
+          actual_other_cost == o.actual_other_cost &&
           actual_payment_processing == o.actual_payment_processing &&
+          actual_profit == o.actual_profit &&
+          actual_profit_analyzed == o.actual_profit_analyzed &&
+          actual_profit_review == o.actual_profit_review &&
           actual_shipping == o.actual_shipping &&
           arbitrary_shipping_handling_total == o.arbitrary_shipping_handling_total &&
           health_benefit_card_amount == o.health_benefit_card_amount &&
@@ -281,7 +319,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [actual_fulfillment, actual_payment_processing, actual_shipping, arbitrary_shipping_handling_total, health_benefit_card_amount, health_benefit_card_refunded, internal_gift_certificate_amount, internal_gift_certificate_refunded, other_refunded, shipping_handling_refunded, shipping_handling_total, shipping_handling_total_discount, subtotal, subtotal_discount, subtotal_discount_refunded, subtotal_refunded, tax, tax_refunded, taxable_subtotal, taxable_subtotal_discount, total, total_refunded].hash
+      [actual_fulfillment, actual_other_cost, actual_payment_processing, actual_profit, actual_profit_analyzed, actual_profit_review, actual_shipping, arbitrary_shipping_handling_total, health_benefit_card_amount, health_benefit_card_refunded, internal_gift_certificate_amount, internal_gift_certificate_refunded, other_refunded, shipping_handling_refunded, shipping_handling_total, shipping_handling_total_discount, subtotal, subtotal_discount, subtotal_discount_refunded, subtotal_refunded, tax, tax_refunded, taxable_subtotal, taxable_subtotal_discount, total, total_refunded].hash
     end
 
     # Builds the object from hash

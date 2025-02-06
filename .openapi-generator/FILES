@@ -637,6 +637,7 @@ docs/OrderByTokenQuery.md
 docs/OrderChannelPartner.md
 docs/OrderCheckout.md
 docs/OrderCoupon.md
+docs/OrderCurrentStageHistory.md
 docs/OrderDigitalItem.md
 docs/OrderDigitalOrder.md
 docs/OrderEdi.md
@@ -1523,6 +1524,7 @@ lib/ultracart_api/models/order_by_token_query.rb
 lib/ultracart_api/models/order_channel_partner.rb
 lib/ultracart_api/models/order_checkout.rb
 lib/ultracart_api/models/order_coupon.rb
+lib/ultracart_api/models/order_current_stage_history.rb
 lib/ultracart_api/models/order_digital_item.rb
 lib/ultracart_api/models/order_digital_order.rb
 lib/ultracart_api/models/order_edi.rb
