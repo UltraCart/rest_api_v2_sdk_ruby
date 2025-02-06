@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **featured** | **BOOLEAN** |  | [optional] 
 **helperful_no_votes** | **Integer** |  | [optional] 
 **helpful_yes_votes** | **Integer** |  | [optional] 
+**merchant_reply** | **String** | Merchant Reply (set to an empty string to remove) | [optional] 
 **order_id** | **String** |  | [optional] 
 **overall** | **Float** |  | [optional] 
 **rating_name1** | **String** | Rating Name 1 | [optional] 

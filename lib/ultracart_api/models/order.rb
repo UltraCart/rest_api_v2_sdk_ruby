@@ -39,6 +39,9 @@ module UltracartClient
     # Current stage that the order is in.
     attr_accessor :current_stage
 
+    # History of the changes to the current_stage field
+    attr_accessor :current_stage_histories
+
     attr_accessor :customer_profile
 
     attr_accessor :digital_order
@@ -142,6 +145,7 @@ module UltracartClient
         :'creation_dts' => :'creation_dts',
         :'currency_code' => :'currency_code',
         :'current_stage' => :'current_stage',
+        :'current_stage_histories' => :'current_stage_histories',
         :'customer_profile' => :'customer_profile',
         :'digital_order' => :'digital_order',
         :'edi' => :'edi',
@@ -186,6 +190,7 @@ module UltracartClient
         :'creation_dts' => :'String',
         :'currency_code' => :'String',
         :'current_stage' => :'String',
+        :'current_stage_histories' => :'Array<OrderCurrentStageHistory>',
         :'customer_profile' => :'Customer',
         :'digital_order' => :'OrderDigitalOrder',
         :'edi' => :'OrderEdi',
@@ -267,6 +272,12 @@ module UltracartClient
 
       if attributes.has_key?(:'current_stage')
         self.current_stage = attributes[:'current_stage']
+      end
+
+      if attributes.has_key?(:'current_stage_histories')
+        if (value = attributes[:'current_stage_histories']).is_a?(Array)
+          self.current_stage_histories = value
+        end
       end
 
       if attributes.has_key?(:'customer_profile')
@@ -460,6 +471,7 @@ module UltracartClient
           creation_dts == o.creation_dts &&
           currency_code == o.currency_code &&
           current_stage == o.current_stage &&
+          current_stage_histories == o.current_stage_histories &&
           customer_profile == o.customer_profile &&
           digital_order == o.digital_order &&
           edi == o.edi &&
@@ -499,7 +511,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affiliates, auto_order, billing, buysafe, channel_partner, checkout, coupons, creation_dts, currency_code, current_stage, customer_profile, digital_order, edi, exchange_rate, fraud_score, gift, gift_certificate, internal, items, language_iso_code, linked_shipment, marketing, merchant_id, order_id, payment, point_of_sale, properties, quote, refund_dts, refund_reason, reject_dts, reject_reason, salesforce, shipping, summary, tags, taxes, utms].hash
+      [affiliates, auto_order, billing, buysafe, channel_partner, checkout, coupons, creation_dts, currency_code, current_stage, current_stage_histories, customer_profile, digital_order, edi, exchange_rate, fraud_score, gift, gift_certificate, internal, items, language_iso_code, linked_shipment, marketing, merchant_id, order_id, payment, point_of_sale, properties, quote, refund_dts, refund_reason, reject_dts, reject_reason, salesforce, shipping, summary, tags, taxes, utms].hash
     end
 
     # Builds the object from hash

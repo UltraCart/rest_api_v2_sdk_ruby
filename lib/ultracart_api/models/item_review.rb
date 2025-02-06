@@ -23,6 +23,9 @@ module UltracartClient
 
     attr_accessor :helpful_yes_votes
 
+    # Merchant Reply (set to an empty string to remove)
+    attr_accessor :merchant_reply
+
     attr_accessor :order_id
 
     attr_accessor :overall
@@ -136,6 +139,7 @@ module UltracartClient
         :'featured' => :'featured',
         :'helperful_no_votes' => :'helperful_no_votes',
         :'helpful_yes_votes' => :'helpful_yes_votes',
+        :'merchant_reply' => :'merchant_reply',
         :'order_id' => :'order_id',
         :'overall' => :'overall',
         :'rating_name1' => :'rating_name1',
@@ -179,6 +183,7 @@ module UltracartClient
         :'featured' => :'BOOLEAN',
         :'helperful_no_votes' => :'Integer',
         :'helpful_yes_votes' => :'Integer',
+        :'merchant_reply' => :'String',
         :'order_id' => :'String',
         :'overall' => :'Float',
         :'rating_name1' => :'String',
@@ -237,6 +242,10 @@ module UltracartClient
 
       if attributes.has_key?(:'helpful_yes_votes')
         self.helpful_yes_votes = attributes[:'helpful_yes_votes']
+      end
+
+      if attributes.has_key?(:'merchant_reply')
+        self.merchant_reply = attributes[:'merchant_reply']
       end
 
       if attributes.has_key?(:'order_id')
@@ -376,6 +385,10 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@merchant_reply.nil? && @merchant_reply.to_s.length > 10000
+        invalid_properties.push('invalid value for "merchant_reply", the character length must be smaller than or equal to 10000.')
+      end
+
       if !@rating_name1.nil? && @rating_name1.to_s.length > 100
         invalid_properties.push('invalid value for "rating_name1", the character length must be smaller than or equal to 100.')
       end
@@ -446,6 +459,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@merchant_reply.nil? && @merchant_reply.to_s.length > 10000
       return false if !@rating_name1.nil? && @rating_name1.to_s.length > 100
       return false if !@rating_name10.nil? && @rating_name10.to_s.length > 100
       return false if !@rating_name2.nil? && @rating_name2.to_s.length > 100
@@ -465,6 +479,16 @@ module UltracartClient
       return false if !@store_feedback.nil? && @store_feedback.to_s.length > 10000
       return false if !@title.nil? && @title.to_s.length > 250
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] merchant_reply Value to be assigned
+    def merchant_reply=(merchant_reply)
+      if !merchant_reply.nil? && merchant_reply.to_s.length > 10000
+        fail ArgumentError, 'invalid value for "merchant_reply", the character length must be smaller than or equal to 10000.'
+      end
+
+      @merchant_reply = merchant_reply
     end
 
     # Custom attribute writer method with validation
@@ -646,6 +670,7 @@ module UltracartClient
           featured == o.featured &&
           helperful_no_votes == o.helperful_no_votes &&
           helpful_yes_votes == o.helpful_yes_votes &&
+          merchant_reply == o.merchant_reply &&
           order_id == o.order_id &&
           overall == o.overall &&
           rating_name1 == o.rating_name1 &&
@@ -690,7 +715,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [customer_profile_oid, featured, helperful_no_votes, helpful_yes_votes, order_id, overall, rating_name1, rating_name10, rating_name2, rating_name3, rating_name4, rating_name5, rating_name6, rating_name7, rating_name8, rating_name9, rating_score1, rating_score10, rating_score2, rating_score3, rating_score4, rating_score5, rating_score6, rating_score7, rating_score8, rating_score9, recommend_store_to_friend, recommend_to_friend, review, review_oid, reviewed_nickname, reviewer_email, reviewer_location, status, store_feedback, submitted_dts, title].hash
+      [customer_profile_oid, featured, helperful_no_votes, helpful_yes_votes, merchant_reply, order_id, overall, rating_name1, rating_name10, rating_name2, rating_name3, rating_name4, rating_name5, rating_name6, rating_name7, rating_name8, rating_name9, rating_score1, rating_score10, rating_score2, rating_score3, rating_score4, rating_score5, rating_score6, rating_score7, rating_score8, rating_score9, recommend_store_to_friend, recommend_to_friend, review, review_oid, reviewed_nickname, reviewer_email, reviewer_location, status, store_feedback, submitted_dts, title].hash
     end
 
     # Builds the object from hash
