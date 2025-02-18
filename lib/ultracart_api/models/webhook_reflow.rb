@@ -14,26 +14,16 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class WebhookSampleRequest
-    # Request
-    attr_accessor :request
+  class WebhookReflow
+    attr_accessor :event_name
 
-    # Request headers
-    attr_accessor :request_headers
-
-    # Request id
-    attr_accessor :request_id
-
-    # URI to send request to
-    attr_accessor :uri
+    attr_accessor :queued
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'request' => :'request',
-        :'request_headers' => :'request_headers',
-        :'request_id' => :'request_id',
-        :'uri' => :'uri'
+        :'event_name' => :'event_name',
+        :'queued' => :'queued'
       }
     end
 
@@ -45,10 +35,8 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'request' => :'String',
-        :'request_headers' => :'Array<HTTPHeader>',
-        :'request_id' => :'String',
-        :'uri' => :'String'
+        :'event_name' => :'String',
+        :'queued' => :'Boolean'
       }
     end
 
@@ -62,33 +50,23 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::WebhookSampleRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::WebhookReflow` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::WebhookSampleRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::WebhookReflow`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'request')
-        self.request = attributes[:'request']
+      if attributes.key?(:'event_name')
+        self.event_name = attributes[:'event_name']
       end
 
-      if attributes.key?(:'request_headers')
-        if (value = attributes[:'request_headers']).is_a?(Array)
-          self.request_headers = value
-        end
-      end
-
-      if attributes.key?(:'request_id')
-        self.request_id = attributes[:'request_id']
-      end
-
-      if attributes.key?(:'uri')
-        self.uri = attributes[:'uri']
+      if attributes.key?(:'queued')
+        self.queued = attributes[:'queued']
       end
     end
 
@@ -110,10 +88,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          request == o.request &&
-          request_headers == o.request_headers &&
-          request_id == o.request_id &&
-          uri == o.uri
+          event_name == o.event_name &&
+          queued == o.queued
     end
 
     # @see the `==` method
@@ -125,7 +101,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [request, request_headers, request_id, uri].hash
+      [event_name, queued].hash
     end
 
     # Builds the object from hash

@@ -455,7 +455,7 @@ module UltracartClient
     # @param webhook_oid [Integer] The webhook oid that is receiving the reflowed events.
     # @param event_name [String] The event to reflow.
     # @param [Hash] opts the optional parameters
-    # @return [WebhookSampleRequestResponse]
+    # @return [WebhookReflowResponse]
     def resend_event(webhook_oid, event_name, opts = {})
       data, _status_code, _headers = resend_event_with_http_info(webhook_oid, event_name, opts)
       data
@@ -466,7 +466,7 @@ module UltracartClient
     # @param webhook_oid [Integer] The webhook oid that is receiving the reflowed events.
     # @param event_name [String] The event to reflow.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(WebhookSampleRequestResponse, Integer, Hash)>] WebhookSampleRequestResponse data, response status code and response headers
+    # @return [Array<(WebhookReflowResponse, Integer, Hash)>] WebhookReflowResponse data, response status code and response headers
     def resend_event_with_http_info(webhook_oid, event_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhookApi.resend_event ...'
@@ -498,7 +498,7 @@ module UltracartClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'WebhookSampleRequestResponse'
+      return_type = opts[:debug_return_type] || 'WebhookReflowResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']

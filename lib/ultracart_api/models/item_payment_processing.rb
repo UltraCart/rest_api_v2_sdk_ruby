@@ -18,6 +18,9 @@ module UltracartClient
     # True if prepaid cards should be blocked from buying this item
     attr_accessor :block_prepaid
 
+    # True if this item should block any refund attempts
+    attr_accessor :block_refunds
+
     # Credit card transaction type
     attr_accessor :credit_card_transaction_type
 
@@ -34,6 +37,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'block_prepaid' => :'block_prepaid',
+        :'block_refunds' => :'block_refunds',
         :'credit_card_transaction_type' => :'credit_card_transaction_type',
         :'no_realtime_charge' => :'no_realtime_charge',
         :'payment_method_validity' => :'payment_method_validity',
@@ -50,6 +54,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'block_prepaid' => :'Boolean',
+        :'block_refunds' => :'Boolean',
         :'credit_card_transaction_type' => :'String',
         :'no_realtime_charge' => :'Boolean',
         :'payment_method_validity' => :'Array<String>',
@@ -80,6 +85,10 @@ module UltracartClient
 
       if attributes.key?(:'block_prepaid')
         self.block_prepaid = attributes[:'block_prepaid']
+      end
+
+      if attributes.key?(:'block_refunds')
+        self.block_refunds = attributes[:'block_refunds']
       end
 
       if attributes.key?(:'credit_card_transaction_type')
@@ -122,6 +131,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           block_prepaid == o.block_prepaid &&
+          block_refunds == o.block_refunds &&
           credit_card_transaction_type == o.credit_card_transaction_type &&
           no_realtime_charge == o.no_realtime_charge &&
           payment_method_validity == o.payment_method_validity &&
@@ -137,7 +147,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [block_prepaid, credit_card_transaction_type, no_realtime_charge, payment_method_validity, rotating_transaction_gateway_codes].hash
+      [block_prepaid, block_refunds, credit_card_transaction_type, no_realtime_charge, payment_method_validity, rotating_transaction_gateway_codes].hash
     end
 
     # Builds the object from hash

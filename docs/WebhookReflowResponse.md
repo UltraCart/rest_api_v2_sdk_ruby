@@ -1,4 +1,4 @@
-# UltracartClient::WebhookSampleRequestResponse
+# UltracartClient::WebhookReflowResponse
 
 ## Properties
 
@@ -6,21 +6,21 @@
 | ---- | ---- | ----------- | ----- |
 | **error** | [**Error**](Error.md) |  | [optional] |
 | **metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] |
+| **reflow** | [**WebhookReflow**](WebhookReflow.md) |  | [optional] |
 | **success** | **Boolean** | Indicates if API call was successful | [optional] |
 | **warning** | [**Warning**](Warning.md) |  | [optional] |
-| **webhook_sample_request** | [**WebhookSampleRequest**](WebhookSampleRequest.md) |  | [optional] |
 
 ## Example
 
 ```ruby
 require 'ultracart_api'
 
-instance = UltracartClient::WebhookSampleRequestResponse.new(
+instance = UltracartClient::WebhookReflowResponse.new(
   error: null,
   metadata: null,
+  reflow: null,
   success: null,
-  warning: null,
-  webhook_sample_request: null
+  warning: null
 )
 ```
 

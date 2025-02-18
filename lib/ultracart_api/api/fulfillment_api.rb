@@ -112,7 +112,7 @@ module UltracartClient
     # @param distribution_center_code [String] Distribution center code
     # @param order_id [String] Order ID
     # @param [Hash] opts the optional parameters
-    # @return [OrdersResponse]
+    # @return [OrderPackingSlipResponse]
     def generate_packing_slip(distribution_center_code, order_id, opts = {})
       data, _status_code, _headers = generate_packing_slip_with_http_info(distribution_center_code, order_id, opts)
       data
@@ -123,7 +123,7 @@ module UltracartClient
     # @param distribution_center_code [String] Distribution center code
     # @param order_id [String] Order ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(OrdersResponse, Integer, Hash)>] OrdersResponse data, response status code and response headers
+    # @return [Array<(OrderPackingSlipResponse, Integer, Hash)>] OrderPackingSlipResponse data, response status code and response headers
     def generate_packing_slip_with_http_info(distribution_center_code, order_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FulfillmentApi.generate_packing_slip ...'
@@ -155,7 +155,7 @@ module UltracartClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'OrdersResponse'
+      return_type = opts[:debug_return_type] || 'OrderPackingSlipResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
@@ -178,7 +178,7 @@ module UltracartClient
     end
 
     # Retrieve orders queued up for this distribution center.
-    # Retrieves up to 100 orders that are queued up in this distribution center.  You must acknowledge them before additional new orders will be returned.  There is NO record chunking.  You'll get the same 100 records again and again until you acknowledge orders.  The orders that are returned contain only items for this distribution center and are by default completely expanded with billing, buysafe, channel_partner, checkout, coupons, customer_profile, edi, gift, gift_certificate, internal, items, payment, shipping, summary, taxes. 
+    # Retrieves up to 100 orders that are queued up in this distribution center.  You must acknowledge them before additional new orders will be returned.  There is NO record chunking.  You'll get the same 100 records again and again until you acknowledge orders.  The orders that are returned contain only items for this distribution center and are by default completely expanded with billing, channel_partner, checkout, coupons, customer_profile, edi, gift, gift_certificate, internal, items, payment, shipping, summary, taxes. 
     # @param distribution_center_code [String] Distribution center code
     # @param [Hash] opts the optional parameters
     # @return [OrdersResponse]
@@ -188,7 +188,7 @@ module UltracartClient
     end
 
     # Retrieve orders queued up for this distribution center.
-    # Retrieves up to 100 orders that are queued up in this distribution center.  You must acknowledge them before additional new orders will be returned.  There is NO record chunking.  You&#39;ll get the same 100 records again and again until you acknowledge orders.  The orders that are returned contain only items for this distribution center and are by default completely expanded with billing, buysafe, channel_partner, checkout, coupons, customer_profile, edi, gift, gift_certificate, internal, items, payment, shipping, summary, taxes. 
+    # Retrieves up to 100 orders that are queued up in this distribution center.  You must acknowledge them before additional new orders will be returned.  There is NO record chunking.  You&#39;ll get the same 100 records again and again until you acknowledge orders.  The orders that are returned contain only items for this distribution center and are by default completely expanded with billing, channel_partner, checkout, coupons, customer_profile, edi, gift, gift_certificate, internal, items, payment, shipping, summary, taxes. 
     # @param distribution_center_code [String] Distribution center code
     # @param [Hash] opts the optional parameters
     # @return [Array<(OrdersResponse, Integer, Hash)>] OrdersResponse data, response status code and response headers

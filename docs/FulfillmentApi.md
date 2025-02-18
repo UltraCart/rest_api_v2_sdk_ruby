@@ -86,7 +86,7 @@ nil (empty response body)
 
 ## generate_packing_slip
 
-> <OrdersResponse> generate_packing_slip(distribution_center_code, order_id)
+> <OrderPackingSlipResponse> generate_packing_slip(distribution_center_code, order_id)
 
 Generate a packing slip for this order for the given distribution center.
 
@@ -122,7 +122,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<OrdersResponse>, Integer, Hash)> generate_packing_slip_with_http_info(distribution_center_code, order_id)
+> <Array(<OrderPackingSlipResponse>, Integer, Hash)> generate_packing_slip_with_http_info(distribution_center_code, order_id)
 
 ```ruby
 begin
@@ -130,7 +130,7 @@ begin
   data, status_code, headers = api_instance.generate_packing_slip_with_http_info(distribution_center_code, order_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <OrdersResponse>
+  p data # => <OrderPackingSlipResponse>
 rescue UltracartClient::ApiError => e
   puts "Error when calling FulfillmentApi->generate_packing_slip_with_http_info: #{e}"
 end
@@ -145,7 +145,7 @@ end
 
 ### Return type
 
-[**OrdersResponse**](OrdersResponse.md)
+[**OrderPackingSlipResponse**](OrderPackingSlipResponse.md)
 
 ### Authorization
 
@@ -163,7 +163,7 @@ end
 
 Retrieve orders queued up for this distribution center.
 
-Retrieves up to 100 orders that are queued up in this distribution center.  You must acknowledge them before additional new orders will be returned.  There is NO record chunking.  You'll get the same 100 records again and again until you acknowledge orders.  The orders that are returned contain only items for this distribution center and are by default completely expanded with billing, buysafe, channel_partner, checkout, coupons, customer_profile, edi, gift, gift_certificate, internal, items, payment, shipping, summary, taxes. 
+Retrieves up to 100 orders that are queued up in this distribution center.  You must acknowledge them before additional new orders will be returned.  There is NO record chunking.  You'll get the same 100 records again and again until you acknowledge orders.  The orders that are returned contain only items for this distribution center and are by default completely expanded with billing, channel_partner, checkout, coupons, customer_profile, edi, gift, gift_certificate, internal, items, payment, shipping, summary, taxes. 
 
 ### Examples
 

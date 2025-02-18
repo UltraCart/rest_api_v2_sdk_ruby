@@ -857,9 +857,9 @@ docs/WebhookLog.md
 docs/WebhookLogResponse.md
 docs/WebhookLogSummariesResponse.md
 docs/WebhookLogSummary.md
+docs/WebhookReflow.md
+docs/WebhookReflowResponse.md
 docs/WebhookResponse.md
-docs/WebhookSampleRequest.md
-docs/WebhookSampleRequestResponse.md
 docs/WebhooksResponse.md
 docs/Weight.md
 docs/WorkflowAgentAuth.md
@@ -1739,9 +1739,9 @@ lib/ultracart_api/models/webhook_log.rb
 lib/ultracart_api/models/webhook_log_response.rb
 lib/ultracart_api/models/webhook_log_summaries_response.rb
 lib/ultracart_api/models/webhook_log_summary.rb
+lib/ultracart_api/models/webhook_reflow.rb
+lib/ultracart_api/models/webhook_reflow_response.rb
 lib/ultracart_api/models/webhook_response.rb
-lib/ultracart_api/models/webhook_sample_request.rb
-lib/ultracart_api/models/webhook_sample_request_response.rb
 lib/ultracart_api/models/webhooks_response.rb
 lib/ultracart_api/models/weight.rb
 lib/ultracart_api/models/workflow_agent_auth.rb

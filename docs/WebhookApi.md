@@ -463,7 +463,7 @@ end
 
 ## resend_event
 
-> <WebhookSampleRequestResponse> resend_event(webhook_oid, event_name)
+> <WebhookReflowResponse> resend_event(webhook_oid, event_name)
 
 Resend events to the webhook endpoint.
 
@@ -499,7 +499,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<WebhookSampleRequestResponse>, Integer, Hash)> resend_event_with_http_info(webhook_oid, event_name)
+> <Array(<WebhookReflowResponse>, Integer, Hash)> resend_event_with_http_info(webhook_oid, event_name)
 
 ```ruby
 begin
@@ -507,7 +507,7 @@ begin
   data, status_code, headers = api_instance.resend_event_with_http_info(webhook_oid, event_name)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <WebhookSampleRequestResponse>
+  p data # => <WebhookReflowResponse>
 rescue UltracartClient::ApiError => e
   puts "Error when calling WebhookApi->resend_event_with_http_info: #{e}"
 end
@@ -522,7 +522,7 @@ end
 
 ### Return type
 
-[**WebhookSampleRequestResponse**](WebhookSampleRequestResponse.md)
+[**WebhookReflowResponse**](WebhookReflowResponse.md)
 
 ### Authorization
 

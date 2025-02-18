@@ -14,26 +14,26 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class WebhookSampleRequestResponse
+  class WebhookReflowResponse
     attr_accessor :error
 
     attr_accessor :metadata
+
+    attr_accessor :reflow
 
     # Indicates if API call was successful
     attr_accessor :success
 
     attr_accessor :warning
 
-    attr_accessor :webhook_sample_request
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'error' => :'error',
         :'metadata' => :'metadata',
+        :'reflow' => :'reflow',
         :'success' => :'success',
-        :'warning' => :'warning',
-        :'webhook_sample_request' => :'webhook_sample_request'
+        :'warning' => :'warning'
       }
     end
 
@@ -47,9 +47,9 @@ module UltracartClient
       {
         :'error' => :'Error',
         :'metadata' => :'ResponseMetadata',
+        :'reflow' => :'WebhookReflow',
         :'success' => :'Boolean',
-        :'warning' => :'Warning',
-        :'webhook_sample_request' => :'WebhookSampleRequest'
+        :'warning' => :'Warning'
       }
     end
 
@@ -63,13 +63,13 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::WebhookSampleRequestResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::WebhookReflowResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::WebhookSampleRequestResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::WebhookReflowResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -82,16 +82,16 @@ module UltracartClient
         self.metadata = attributes[:'metadata']
       end
 
+      if attributes.key?(:'reflow')
+        self.reflow = attributes[:'reflow']
+      end
+
       if attributes.key?(:'success')
         self.success = attributes[:'success']
       end
 
       if attributes.key?(:'warning')
         self.warning = attributes[:'warning']
-      end
-
-      if attributes.key?(:'webhook_sample_request')
-        self.webhook_sample_request = attributes[:'webhook_sample_request']
       end
     end
 
@@ -115,9 +115,9 @@ module UltracartClient
       self.class == o.class &&
           error == o.error &&
           metadata == o.metadata &&
+          reflow == o.reflow &&
           success == o.success &&
-          warning == o.warning &&
-          webhook_sample_request == o.webhook_sample_request
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -129,7 +129,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [error, metadata, success, warning, webhook_sample_request].hash
+      [error, metadata, reflow, success, warning].hash
     end
 
     # Builds the object from hash
