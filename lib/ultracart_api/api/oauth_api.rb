@@ -38,7 +38,7 @@ module UltracartClient
     # @param grant_type Type of grant
     # @param [Hash] opts the optional parameters
     # @option opts [String] :code Authorization code received back from the browser redirect
-    # @option opts [String] :redirect_uri The URI that you redirect the browser to to start the authorization process
+    # @option opts [String] :redirect_uri The URI that you redirect the browser to start the authorization process
     # @option opts [String] :refresh_token The refresh token received during the original grant_type&#x3D;authorization_code that can be used to return a new access token
     # @return [OauthTokenResponse]
     def oauth_access_token(client_id, grant_type, opts = {})
@@ -52,7 +52,7 @@ module UltracartClient
     # @param grant_type Type of grant
     # @param [Hash] opts the optional parameters
     # @option opts [String] :code Authorization code received back from the browser redirect
-    # @option opts [String] :redirect_uri The URI that you redirect the browser to to start the authorization process
+    # @option opts [String] :redirect_uri The URI that you redirect the browser to start the authorization process
     # @option opts [String] :refresh_token The refresh token received during the original grant_type&#x3D;authorization_code that can be used to return a new access token
     # @return [Array<(OauthTokenResponse, Fixnum, Hash)>] OauthTokenResponse data, response status code and response headers
     def oauth_access_token_with_http_info(client_id, grant_type, opts = {})

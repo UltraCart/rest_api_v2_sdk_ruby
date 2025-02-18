@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 
 
 # **resend_event**
-> WebhookSampleRequestResponse resend_event(webhook_oid, event_name)
+> WebhookReflowResponse resend_event(webhook_oid, event_name)
 
 Resend events to the webhook endpoint.
 
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**WebhookSampleRequestResponse**](WebhookSampleRequestResponse.md)
+[**WebhookReflowResponse**](WebhookReflowResponse.md)
 
 ### Authorization
 

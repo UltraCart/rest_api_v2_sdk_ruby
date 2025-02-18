@@ -13,26 +13,26 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class WebhookSampleRequestResponse
+  class WebhookReflowResponse
     attr_accessor :error
 
     attr_accessor :metadata
+
+    attr_accessor :reflow
 
     # Indicates if API call was successful
     attr_accessor :success
 
     attr_accessor :warning
 
-    attr_accessor :webhook_sample_request
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'error' => :'error',
         :'metadata' => :'metadata',
+        :'reflow' => :'reflow',
         :'success' => :'success',
-        :'warning' => :'warning',
-        :'webhook_sample_request' => :'webhook_sample_request'
+        :'warning' => :'warning'
       }
     end
 
@@ -41,9 +41,9 @@ module UltracartClient
       {
         :'error' => :'Error',
         :'metadata' => :'ResponseMetadata',
+        :'reflow' => :'WebhookReflow',
         :'success' => :'BOOLEAN',
-        :'warning' => :'Warning',
-        :'webhook_sample_request' => :'WebhookSampleRequest'
+        :'warning' => :'Warning'
       }
     end
 
@@ -63,16 +63,16 @@ module UltracartClient
         self.metadata = attributes[:'metadata']
       end
 
+      if attributes.has_key?(:'reflow')
+        self.reflow = attributes[:'reflow']
+      end
+
       if attributes.has_key?(:'success')
         self.success = attributes[:'success']
       end
 
       if attributes.has_key?(:'warning')
         self.warning = attributes[:'warning']
-      end
-
-      if attributes.has_key?(:'webhook_sample_request')
-        self.webhook_sample_request = attributes[:'webhook_sample_request']
       end
     end
 
@@ -96,9 +96,9 @@ module UltracartClient
       self.class == o.class &&
           error == o.error &&
           metadata == o.metadata &&
+          reflow == o.reflow &&
           success == o.success &&
-          warning == o.warning &&
-          webhook_sample_request == o.webhook_sample_request
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -110,7 +110,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [error, metadata, success, warning, webhook_sample_request].hash
+      [error, metadata, reflow, success, warning].hash
     end
 
     # Builds the object from hash

@@ -13,36 +13,24 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class WebhookSampleRequest
-    # Request
-    attr_accessor :request
+  class WebhookReflow
+    attr_accessor :event_name
 
-    # Request headers
-    attr_accessor :request_headers
-
-    # Request id
-    attr_accessor :request_id
-
-    # URI to send request to
-    attr_accessor :uri
+    attr_accessor :queued
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'request' => :'request',
-        :'request_headers' => :'request_headers',
-        :'request_id' => :'request_id',
-        :'uri' => :'uri'
+        :'event_name' => :'event_name',
+        :'queued' => :'queued'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'request' => :'String',
-        :'request_headers' => :'Array<HTTPHeader>',
-        :'request_id' => :'String',
-        :'uri' => :'String'
+        :'event_name' => :'String',
+        :'queued' => :'BOOLEAN'
       }
     end
 
@@ -54,22 +42,12 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'request')
-        self.request = attributes[:'request']
+      if attributes.has_key?(:'event_name')
+        self.event_name = attributes[:'event_name']
       end
 
-      if attributes.has_key?(:'request_headers')
-        if (value = attributes[:'request_headers']).is_a?(Array)
-          self.request_headers = value
-        end
-      end
-
-      if attributes.has_key?(:'request_id')
-        self.request_id = attributes[:'request_id']
-      end
-
-      if attributes.has_key?(:'uri')
-        self.uri = attributes[:'uri']
+      if attributes.has_key?(:'queued')
+        self.queued = attributes[:'queued']
       end
     end
 
@@ -91,10 +69,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          request == o.request &&
-          request_headers == o.request_headers &&
-          request_id == o.request_id &&
-          uri == o.uri
+          event_name == o.event_name &&
+          queued == o.queued
     end
 
     # @see the `==` method
@@ -106,7 +82,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [request, request_headers, request_id, uri].hash
+      [event_name, queued].hash
     end
 
     # Builds the object from hash
