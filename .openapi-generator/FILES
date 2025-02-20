@@ -669,6 +669,7 @@ docs/OrderPaymentCreditCardDualVaultedProperty.md
 docs/OrderPaymentECheck.md
 docs/OrderPaymentHealthBenefitCard.md
 docs/OrderPaymentInsurance.md
+docs/OrderPaymentPayPal.md
 docs/OrderPaymentPurchaseOrder.md
 docs/OrderPaymentTransaction.md
 docs/OrderPaymentTransactionDetail.md
@@ -1556,6 +1557,7 @@ lib/ultracart_api/models/order_payment_credit_card_dual_vaulted_property.rb
 lib/ultracart_api/models/order_payment_e_check.rb
 lib/ultracart_api/models/order_payment_health_benefit_card.rb
 lib/ultracart_api/models/order_payment_insurance.rb
+lib/ultracart_api/models/order_payment_pay_pal.rb
 lib/ultracart_api/models/order_payment_purchase_order.rb
 lib/ultracart_api/models/order_payment_transaction.rb
 lib/ultracart_api/models/order_payment_transaction_detail.rb

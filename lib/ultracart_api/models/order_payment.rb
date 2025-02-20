@@ -43,6 +43,8 @@ module UltracartClient
     # Payment status
     attr_accessor :payment_status
 
+    attr_accessor :paypal
+
     attr_accessor :purchase_order
 
     # Rotating transaction gateway code used to process this order
@@ -101,6 +103,7 @@ module UltracartClient
         :'payment_method_accounting_code' => :'payment_method_accounting_code',
         :'payment_method_deposit_to_account' => :'payment_method_deposit_to_account',
         :'payment_status' => :'payment_status',
+        :'paypal' => :'paypal',
         :'purchase_order' => :'purchase_order',
         :'rotating_transaction_gateway_code' => :'rotating_transaction_gateway_code',
         :'surcharge' => :'surcharge',
@@ -131,6 +134,7 @@ module UltracartClient
         :'payment_method_accounting_code' => :'String',
         :'payment_method_deposit_to_account' => :'String',
         :'payment_status' => :'String',
+        :'paypal' => :'OrderPaymentPayPal',
         :'purchase_order' => :'OrderPaymentPurchaseOrder',
         :'rotating_transaction_gateway_code' => :'String',
         :'surcharge' => :'Currency',
@@ -205,6 +209,10 @@ module UltracartClient
 
       if attributes.key?(:'payment_status')
         self.payment_status = attributes[:'payment_status']
+      end
+
+      if attributes.key?(:'paypal')
+        self.paypal = attributes[:'paypal']
       end
 
       if attributes.key?(:'purchase_order')
@@ -295,6 +303,7 @@ module UltracartClient
           payment_method_accounting_code == o.payment_method_accounting_code &&
           payment_method_deposit_to_account == o.payment_method_deposit_to_account &&
           payment_status == o.payment_status &&
+          paypal == o.paypal &&
           purchase_order == o.purchase_order &&
           rotating_transaction_gateway_code == o.rotating_transaction_gateway_code &&
           surcharge == o.surcharge &&
@@ -314,7 +323,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [check, credit_card, echeck, health_benefit_card, hold_for_fraud_review, insurance, payment_dts, payment_method, payment_method_accounting_code, payment_method_deposit_to_account, payment_status, purchase_order, rotating_transaction_gateway_code, surcharge, surcharge_accounting_code, surcharge_transaction_fee, surcharge_transaction_percentage, test_order, transactions].hash
+      [check, credit_card, echeck, health_benefit_card, hold_for_fraud_review, insurance, payment_dts, payment_method, payment_method_accounting_code, payment_method_deposit_to_account, payment_status, paypal, purchase_order, rotating_transaction_gateway_code, surcharge, surcharge_accounting_code, surcharge_transaction_fee, surcharge_transaction_percentage, test_order, transactions].hash
     end
 
     # Builds the object from hash
