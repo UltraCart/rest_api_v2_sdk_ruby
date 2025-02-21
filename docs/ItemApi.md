@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**get_digital_item**](ItemApi.md#get_digital_item) | **GET** /item/digital_library/{digital_item_oid} | Retrieve a digital item from the digital library, which are digital files that may be attached to normal items
 [**get_digital_items**](ItemApi.md#get_digital_items) | **GET** /item/digital_library | Retrieve digital items from the digital library which are digital files that may be attached to normal items
 [**get_digital_items_by_external_id**](ItemApi.md#get_digital_items_by_external_id) | **GET** /item/digital_library/by_external/{external_id} | Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id
+[**get_inventory_snapshot**](ItemApi.md#get_inventory_snapshot) | **GET** /item/items/inventory_snapshot | Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
 [**get_item**](ItemApi.md#get_item) | **GET** /item/items/{merchant_item_oid} | Retrieve an item
 [**get_item_by_merchant_item_id**](ItemApi.md#get_item_by_merchant_item_id) | **GET** /item/items/merchant_item_id/{merchant_item_id} | Retrieve an item by item id
 [**get_items**](ItemApi.md#get_items) | **GET** /item/items | Retrieve items
@@ -21,7 +22,6 @@ Method | HTTP request | Description
 [**insert_item**](ItemApi.md#insert_item) | **POST** /item/items | Create an item
 [**insert_review**](ItemApi.md#insert_review) | **POST** /item/items/{merchant_item_oid}/reviews | Insert a review
 [**insert_update_item_content_attribute**](ItemApi.md#insert_update_item_content_attribute) | **POST** /item/items/{merchant_item_oid}/content/attributes | Upsert an item content attribute
-[**rest_item_inventory_snapshot_response**](ItemApi.md#rest_item_inventory_snapshot_response) | **GET** /item/items/inventory_snapshot | Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
 [**update_digital_item**](ItemApi.md#update_digital_item) | **PUT** /item/digital_library/{digital_item_oid} | Updates a file within the digital library
 [**update_item**](ItemApi.md#update_item) | **PUT** /item/items/{merchant_item_oid} | Update an item
 [**update_items**](ItemApi.md#update_items) | **PUT** /item/items/batch | Update multiple items
@@ -328,6 +328,51 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ItemDigitalItemsResponse**](ItemDigitalItemsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_inventory_snapshot**
+> ItemInventorySnapshotResponse get_inventory_snapshot
+
+Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
+
+Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ItemApi.new_using_api_key(simple_key, false, false)
+
+
+
+begin
+  #Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
+  result = api_instance.get_inventory_snapshot
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ItemApi->get_inventory_snapshot: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ItemInventorySnapshotResponse**](ItemInventorySnapshotResponse.md)
 
 ### Authorization
 
@@ -939,51 +984,6 @@ nil (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json; charset=UTF-8
- - **Accept**: application/json
-
-
-
-# **rest_item_inventory_snapshot_response**
-> ItemInventorySnapshotResponse rest_item_inventory_snapshot_response
-
-Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
-
-Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response. 
-
-### Example
-```ruby
-# load the gem
-require 'ultracart_api'
-
-# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
-simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
-api_instance = UltracartClient::ItemApi.new_using_api_key(simple_key, false, false)
-
-
-
-begin
-  #Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
-  result = api_instance.rest_item_inventory_snapshot_response
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Exception when calling ItemApi->rest_item_inventory_snapshot_response: #{e}"
-end
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**ItemInventorySnapshotResponse**](ItemInventorySnapshotResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 

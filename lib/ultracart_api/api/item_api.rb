@@ -377,6 +377,55 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
+    # Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response. 
+    # @param [Hash] opts the optional parameters
+    # @return [ItemInventorySnapshotResponse]
+    def get_inventory_snapshot(opts = {})
+      data, _status_code, _headers = get_inventory_snapshot_with_http_info(opts)
+      data
+    end
+
+    # Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
+    # Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ItemInventorySnapshotResponse, Fixnum, Hash)>] ItemInventorySnapshotResponse data, response status code and response headers
+    def get_inventory_snapshot_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ItemApi.get_inventory_snapshot ...'
+      end
+      # resource path
+      local_var_path = '/item/items/inventory_snapshot'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ItemInventorySnapshotResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ItemApi#get_inventory_snapshot\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Retrieve an item
     # Retrieves a single item using the specified item oid. 
     # @param merchant_item_oid The item oid to retrieve.
@@ -1041,55 +1090,6 @@ module UltracartClient
         :auth_names => auth_names)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ItemApi#insert_update_item_content_attribute\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-    # Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
-    # Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response. 
-    # @param [Hash] opts the optional parameters
-    # @return [ItemInventorySnapshotResponse]
-    def rest_item_inventory_snapshot_response(opts = {})
-      data, _status_code, _headers = rest_item_inventory_snapshot_response_with_http_info(opts)
-      data
-    end
-
-    # Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
-    # Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response. 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(ItemInventorySnapshotResponse, Fixnum, Hash)>] ItemInventorySnapshotResponse data, response status code and response headers
-    def rest_item_inventory_snapshot_response_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ItemApi.rest_item_inventory_snapshot_response ...'
-      end
-      # resource path
-      local_var_path = '/item/items/inventory_snapshot'
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'ItemInventorySnapshotResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ItemApi#rest_item_inventory_snapshot_response\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
