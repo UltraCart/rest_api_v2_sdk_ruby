@@ -10,6 +10,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_digital_item**](ItemApi.md#get_digital_item) | **GET** /item/digital_library/{digital_item_oid} | Retrieve a digital item from the digital library, which are digital files that may be attached to normal items |
 | [**get_digital_items**](ItemApi.md#get_digital_items) | **GET** /item/digital_library | Retrieve digital items from the digital library which are digital files that may be attached to normal items |
 | [**get_digital_items_by_external_id**](ItemApi.md#get_digital_items_by_external_id) | **GET** /item/digital_library/by_external/{external_id} | Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id |
+| [**get_inventory_snapshot**](ItemApi.md#get_inventory_snapshot) | **GET** /item/items/inventory_snapshot | Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response. |
 | [**get_item**](ItemApi.md#get_item) | **GET** /item/items/{merchant_item_oid} | Retrieve an item |
 | [**get_item_by_merchant_item_id**](ItemApi.md#get_item_by_merchant_item_id) | **GET** /item/items/merchant_item_id/{merchant_item_id} | Retrieve an item by item id |
 | [**get_items**](ItemApi.md#get_items) | **GET** /item/items | Retrieve items |
@@ -21,7 +22,6 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**insert_item**](ItemApi.md#insert_item) | **POST** /item/items | Create an item |
 | [**insert_review**](ItemApi.md#insert_review) | **POST** /item/items/{merchant_item_oid}/reviews | Insert a review |
 | [**insert_update_item_content_attribute**](ItemApi.md#insert_update_item_content_attribute) | **POST** /item/items/{merchant_item_oid}/content/attributes | Upsert an item content attribute |
-| [**rest_item_inventory_snapshot_response**](ItemApi.md#rest_item_inventory_snapshot_response) | **GET** /item/items/inventory_snapshot | Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response. |
 | [**update_digital_item**](ItemApi.md#update_digital_item) | **PUT** /item/digital_library/{digital_item_oid} | Updates a file within the digital library |
 | [**update_item**](ItemApi.md#update_item) | **PUT** /item/items/{merchant_item_oid} | Update an item |
 | [**update_items**](ItemApi.md#update_items) | **PUT** /item/items/batch | Update multiple items |
@@ -455,6 +455,74 @@ end
 ### Return type
 
 [**ItemDigitalItemsResponse**](ItemDigitalItemsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_inventory_snapshot
+
+> <ItemInventorySnapshotResponse> get_inventory_snapshot
+
+Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
+
+Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+
+begin
+  # Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
+  result = api_instance.get_inventory_snapshot
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->get_inventory_snapshot: #{e}"
+end
+```
+
+#### Using the get_inventory_snapshot_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ItemInventorySnapshotResponse>, Integer, Hash)> get_inventory_snapshot_with_http_info
+
+```ruby
+begin
+  # Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
+  data, status_code, headers = api_instance.get_inventory_snapshot_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ItemInventorySnapshotResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->get_inventory_snapshot_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ItemInventorySnapshotResponse**](ItemInventorySnapshotResponse.md)
 
 ### Authorization
 
@@ -1297,74 +1365,6 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
-- **Accept**: application/json
-
-
-## rest_item_inventory_snapshot_response
-
-> <ItemInventorySnapshotResponse> rest_item_inventory_snapshot_response
-
-Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
-
-Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response. 
-
-### Examples
-
-```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
-  result = api_instance.rest_item_inventory_snapshot_response
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->rest_item_inventory_snapshot_response: #{e}"
-end
-```
-
-#### Using the rest_item_inventory_snapshot_response_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<ItemInventorySnapshotResponse>, Integer, Hash)> rest_item_inventory_snapshot_response_with_http_info
-
-```ruby
-begin
-  # Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
-  data, status_code, headers = api_instance.rest_item_inventory_snapshot_response_with_http_info
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <ItemInventorySnapshotResponse>
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->rest_item_inventory_snapshot_response_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**ItemInventorySnapshotResponse**](ItemInventorySnapshotResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
