@@ -17,7 +17,7 @@ module UltracartClient
     # True if prepaid cards should be blocked from buying this item
     attr_accessor :block_prepaid
 
-    # True if this item should block any refund attempts
+    # True if this item should block any refund attempts, set to false otherwise, null value will not update the field
     attr_accessor :block_refunds
 
     # Credit card transaction type

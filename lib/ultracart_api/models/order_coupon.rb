@@ -26,7 +26,7 @@ module UltracartClient
     # Coupon code entered by the customer
     attr_accessor :coupon_code
 
-    # True if this coupon is hidde from the customer
+    # True if this coupon is hide from the customer
     attr_accessor :hdie_from_customer
 
     # Attribute mapping from ruby-style variable name to JSON key.
