@@ -12,6 +12,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_auto_orders**](AutoOrderApi.md#get_auto_orders) | **GET** /auto_order/auto_orders | Retrieve auto orders |
 | [**get_auto_orders_batch**](AutoOrderApi.md#get_auto_orders_batch) | **POST** /auto_order/auto_orders/batch | Retrieve auto order batch |
 | [**get_auto_orders_by_query**](AutoOrderApi.md#get_auto_orders_by_query) | **POST** /auto_order/auto_orders/query | Retrieve auto orders by query |
+| [**pause_auto_order**](AutoOrderApi.md#pause_auto_order) | **PUT** /auto_order/auto_orders/{auto_order_oid}/pause | Pause auto order |
 | [**update_auto_order**](AutoOrderApi.md#update_auto_order) | **PUT** /auto_order/auto_orders/{auto_order_oid} | Update an auto order |
 | [**update_auto_orders_batch**](AutoOrderApi.md#update_auto_orders_batch) | **PUT** /auto_order/auto_orders/batch | Update multiple auto orders |
 
@@ -663,6 +664,83 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## pause_auto_order
+
+> <AutoOrderResponse> pause_auto_order(auto_order_oid, auto_order, opts)
+
+Pause auto order
+
+Completely pause an auto order 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::AutoOrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+auto_order_oid = 56 # Integer | The auto order oid to pause.
+auto_order = UltracartClient::AutoOrder.new # AutoOrder | Auto orders to pause
+opts = {
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
+}
+
+begin
+  # Pause auto order
+  result = api_instance.pause_auto_order(auto_order_oid, auto_order, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling AutoOrderApi->pause_auto_order: #{e}"
+end
+```
+
+#### Using the pause_auto_order_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AutoOrderResponse>, Integer, Hash)> pause_auto_order_with_http_info(auto_order_oid, auto_order, opts)
+
+```ruby
+begin
+  # Pause auto order
+  data, status_code, headers = api_instance.pause_auto_order_with_http_info(auto_order_oid, auto_order, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AutoOrderResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling AutoOrderApi->pause_auto_order_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **auto_order_oid** | **Integer** | The auto order oid to pause. |  |
+| **auto_order** | [**AutoOrder**](AutoOrder.md) | Auto orders to pause |  |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
+
+### Return type
+
+[**AutoOrderResponse**](AutoOrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
 - **Accept**: application/json
 
 
