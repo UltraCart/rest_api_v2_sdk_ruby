@@ -95,5 +95,6 @@ Name | Type | Description | Notes
 **tax_exempt** | **BOOLEAN** | If true this order is marked as being tax exempt | [optional] 
 **transaction** | [**ChannelPartnerOrderTransaction**](ChannelPartnerOrderTransaction.md) |  | [optional] 
 **treat_warnings_as_errors** | **BOOLEAN** | If true all warnings are considered errors, this is true by default | [optional] 
+**use_prior_payment_information_from_order_id** | **String** | An Order Id from a prior purchase of this customer which is used to retrieve vaulted payment information in order to pay for this current order. | [optional] 
 
 
