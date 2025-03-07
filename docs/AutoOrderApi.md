@@ -516,7 +516,7 @@ simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
 api_instance = UltracartClient::AutoOrderApi.new_using_api_key(simple_key, false, false)
 
 
-auto_order = UltracartClient::AutoOrder.new # AutoOrder | Auto orders to pause
+auto_order = UltracartClient::AutoOrder.new # AutoOrder | Auto order to pause
 
 auto_order_oid = 56 # Integer | The auto order oid to pause.
 
@@ -537,7 +537,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **auto_order** | [**AutoOrder**](AutoOrder.md)| Auto orders to pause | 
+ **auto_order** | [**AutoOrder**](AutoOrder.md)| Auto order to pause | 
  **auto_order_oid** | **Integer**| The auto order oid to pause. | 
  **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
 
