@@ -690,7 +690,7 @@ require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/
 
 api = UltracartClient::AutoOrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 auto_order_oid = 56 # Integer | The auto order oid to pause.
-auto_order = UltracartClient::AutoOrder.new # AutoOrder | Auto orders to pause
+auto_order = UltracartClient::AutoOrder.new # AutoOrder | Auto order to pause
 opts = {
   _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
 }
@@ -727,7 +727,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **auto_order_oid** | **Integer** | The auto order oid to pause. |  |
-| **auto_order** | [**AutoOrder**](AutoOrder.md) | Auto orders to pause |  |
+| **auto_order** | [**AutoOrder**](AutoOrder.md) | Auto order to pause |  |
 | **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
 
 ### Return type

@@ -661,7 +661,7 @@ module UltracartClient
     # Pause auto order
     # Completely pause an auto order 
     # @param auto_order_oid [Integer] The auto order oid to pause.
-    # @param auto_order [AutoOrder] Auto orders to pause
+    # @param auto_order [AutoOrder] Auto order to pause
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [AutoOrderResponse]
@@ -673,7 +673,7 @@ module UltracartClient
     # Pause auto order
     # Completely pause an auto order 
     # @param auto_order_oid [Integer] The auto order oid to pause.
-    # @param auto_order [AutoOrder] Auto orders to pause
+    # @param auto_order [AutoOrder] Auto order to pause
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(AutoOrderResponse, Integer, Hash)>] AutoOrderResponse data, response status code and response headers
