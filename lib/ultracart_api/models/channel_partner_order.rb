@@ -1103,7 +1103,7 @@ module UltracartClient
       return false if !@email.nil? && @email.to_s.length > 100
       return false if !@gift_email.nil? && @gift_email.to_s.length > 100
       return false if !@gift_message.nil? && @gift_message.to_s.length > 10000
-      payment_method_validator = EnumAttributeValidator.new('String', ["Affirm", "Amazon", "Check", "COD", "Credit Card", "eCheck", "LoanHero", "Money Order", "PayPal", "Purchase Order", "Quote Request", "Wire Transfer"])
+      payment_method_validator = EnumAttributeValidator.new('String', ["Affirm", "Amazon", "Check", "COD", "Credit Card", "eCheck", "LoanHero", "Money Order", "PayPal", "Purchase Order", "Quote Request", "Wire Transfer", "PayPal Fastlane"])
       return false unless payment_method_validator.valid?(@payment_method)
       return false if !@screen_branding_theme_code.nil? && @screen_branding_theme_code.to_s.length > 10
       return false if !@shipto_address1.nil? && @shipto_address1.to_s.length > 50
@@ -1375,7 +1375,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] payment_method Object to be assigned
     def payment_method=(payment_method)
-      validator = EnumAttributeValidator.new('String', ["Affirm", "Amazon", "Check", "COD", "Credit Card", "eCheck", "LoanHero", "Money Order", "PayPal", "Purchase Order", "Quote Request", "Wire Transfer"])
+      validator = EnumAttributeValidator.new('String', ["Affirm", "Amazon", "Check", "COD", "Credit Card", "eCheck", "LoanHero", "Money Order", "PayPal", "Purchase Order", "Quote Request", "Wire Transfer", "PayPal Fastlane"])
       unless validator.valid?(payment_method)
         fail ArgumentError, "invalid value for \"payment_method\", must be one of #{validator.allowable_values}."
       end
