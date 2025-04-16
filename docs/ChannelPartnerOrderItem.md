@@ -9,6 +9,7 @@
 | **auto_order_schedule** | **String** | The frequency schedule for this item if this item is part of an auto (recurring) order | [optional] |
 | **merchant_item_id** | **String** | Item ID | [optional] |
 | **options** | [**Array&lt;ChannelPartnerOrderItemOption&gt;**](ChannelPartnerOrderItemOption.md) | Item options | [optional] |
+| **properties** | [**Array&lt;ChannelPartnerOrderItemProperty&gt;**](ChannelPartnerOrderItemProperty.md) | Properties | [optional] |
 | **quantity** | **Float** | Quantity | [optional] |
 | **upsell** | **Boolean** | True if this item was an upsell item. | [optional] |
 
@@ -23,6 +24,7 @@ instance = UltracartClient::ChannelPartnerOrderItem.new(
   auto_order_schedule: null,
   merchant_item_id: null,
   options: null,
+  properties: null,
   quantity: null,
   upsell: null
 )

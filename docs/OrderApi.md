@@ -25,6 +25,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**is_refundable_order**](OrderApi.md#is_refundable_order) | **GET** /order/orders/{order_id}/refundable | Determine if an order can be refunded |
 | [**process_payment**](OrderApi.md#process_payment) | **POST** /order/orders/{order_id}/process_payment | Process payment |
 | [**refund_order**](OrderApi.md#refund_order) | **PUT** /order/orders/{order_id}/refund | Refund an order |
+| [**refund_order_completely**](OrderApi.md#refund_order_completely) | **PUT** /order/orders/{order_id}/refund_completely | Refund an order completely |
 | [**replacement**](OrderApi.md#replacement) | **POST** /order/orders/{order_id}/replacement | Replacement order |
 | [**resend_receipt**](OrderApi.md#resend_receipt) | **POST** /order/orders/{order_id}/resend_receipt | Resend receipt |
 | [**resend_shipment_confirmation**](OrderApi.md#resend_shipment_confirmation) | **POST** /order/orders/{order_id}/resend_shipment_confirmation | Resend shipment confirmation |
@@ -1647,6 +1648,97 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## refund_order_completely
+
+> <OrderResponse> refund_order_completely(order_id, opts)
+
+Refund an order completely
+
+Perform a refund operation on an order and then update the order if successful. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+order_id = 'order_id_example' # String | The order id to refund.
+opts = {
+  reject_after_refund: true, # Boolean | Reject order after refund
+  skip_customer_notification: true, # Boolean | Skip customer email notification
+  auto_order_cancel: true, # Boolean | Cancel associated auto orders
+  manual_refund: true, # Boolean | Consider a manual refund done externally
+  reverse_affiliate_transactions: true, # Boolean | Reverse affiliate transactions
+  issue_store_credit: true, # Boolean | Issue a store credit instead of refunding the original payment method, loyalty must be configured on merchant account
+  auto_order_cancel_reason: 'auto_order_cancel_reason_example', # String | Reason for auto orders cancellation
+  refund_reason: 'refund_reason_example', # String | Reason for refund
+  reject_reason: 'reject_reason_example' # String | Reason for reject
+}
+
+begin
+  # Refund an order completely
+  result = api_instance.refund_order_completely(order_id, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->refund_order_completely: #{e}"
+end
+```
+
+#### Using the refund_order_completely_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OrderResponse>, Integer, Hash)> refund_order_completely_with_http_info(order_id, opts)
+
+```ruby
+begin
+  # Refund an order completely
+  data, status_code, headers = api_instance.refund_order_completely_with_http_info(order_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OrderResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->refund_order_completely_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **order_id** | **String** | The order id to refund. |  |
+| **reject_after_refund** | **Boolean** | Reject order after refund | [optional][default to false] |
+| **skip_customer_notification** | **Boolean** | Skip customer email notification | [optional][default to false] |
+| **auto_order_cancel** | **Boolean** | Cancel associated auto orders | [optional][default to false] |
+| **manual_refund** | **Boolean** | Consider a manual refund done externally | [optional][default to false] |
+| **reverse_affiliate_transactions** | **Boolean** | Reverse affiliate transactions | [optional][default to true] |
+| **issue_store_credit** | **Boolean** | Issue a store credit instead of refunding the original payment method, loyalty must be configured on merchant account | [optional][default to false] |
+| **auto_order_cancel_reason** | **String** | Reason for auto orders cancellation | [optional] |
+| **refund_reason** | **String** | Reason for refund | [optional] |
+| **reject_reason** | **String** | Reason for reject | [optional] |
+
+### Return type
+
+[**OrderResponse**](OrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 

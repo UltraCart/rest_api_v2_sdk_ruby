@@ -14,64 +14,26 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ChannelPartnerOrderItem
-    # Arbitrary unit cost for this item that differs from the listed price
-    attr_accessor :arbitrary_unit_cost
+  class ChannelPartnerOrderItemProperty
+    # True if this property is displayed to the customer
+    attr_accessor :display
 
-    # Optional date/time of the last rebill if this item is part of an auto (recurring) order
-    attr_accessor :auto_order_last_rebill_dts
+    # The date/time that the property expires and is deleted
+    attr_accessor :expiration_dts
 
-    # The frequency schedule for this item if this item is part of an auto (recurring) order
-    attr_accessor :auto_order_schedule
+    # Name
+    attr_accessor :name
 
-    # Item ID
-    attr_accessor :merchant_item_id
-
-    # Item options
-    attr_accessor :options
-
-    # Properties
-    attr_accessor :properties
-
-    # Quantity
-    attr_accessor :quantity
-
-    # True if this item was an upsell item.
-    attr_accessor :upsell
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    # Value
+    attr_accessor :value
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'arbitrary_unit_cost' => :'arbitrary_unit_cost',
-        :'auto_order_last_rebill_dts' => :'auto_order_last_rebill_dts',
-        :'auto_order_schedule' => :'auto_order_schedule',
-        :'merchant_item_id' => :'merchant_item_id',
-        :'options' => :'options',
-        :'properties' => :'properties',
-        :'quantity' => :'quantity',
-        :'upsell' => :'upsell'
+        :'display' => :'display',
+        :'expiration_dts' => :'expiration_dts',
+        :'name' => :'name',
+        :'value' => :'value'
       }
     end
 
@@ -83,14 +45,10 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'arbitrary_unit_cost' => :'Float',
-        :'auto_order_last_rebill_dts' => :'String',
-        :'auto_order_schedule' => :'String',
-        :'merchant_item_id' => :'String',
-        :'options' => :'Array<ChannelPartnerOrderItemOption>',
-        :'properties' => :'Array<ChannelPartnerOrderItemProperty>',
-        :'quantity' => :'Float',
-        :'upsell' => :'Boolean'
+        :'display' => :'Boolean',
+        :'expiration_dts' => :'String',
+        :'name' => :'String',
+        :'value' => :'String'
       }
     end
 
@@ -104,51 +62,31 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ChannelPartnerOrderItem` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ChannelPartnerOrderItemProperty` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ChannelPartnerOrderItem`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ChannelPartnerOrderItemProperty`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'arbitrary_unit_cost')
-        self.arbitrary_unit_cost = attributes[:'arbitrary_unit_cost']
+      if attributes.key?(:'display')
+        self.display = attributes[:'display']
       end
 
-      if attributes.key?(:'auto_order_last_rebill_dts')
-        self.auto_order_last_rebill_dts = attributes[:'auto_order_last_rebill_dts']
+      if attributes.key?(:'expiration_dts')
+        self.expiration_dts = attributes[:'expiration_dts']
       end
 
-      if attributes.key?(:'auto_order_schedule')
-        self.auto_order_schedule = attributes[:'auto_order_schedule']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'merchant_item_id')
-        self.merchant_item_id = attributes[:'merchant_item_id']
-      end
-
-      if attributes.key?(:'options')
-        if (value = attributes[:'options']).is_a?(Array)
-          self.options = value
-        end
-      end
-
-      if attributes.key?(:'properties')
-        if (value = attributes[:'properties']).is_a?(Array)
-          self.properties = value
-        end
-      end
-
-      if attributes.key?(:'quantity')
-        self.quantity = attributes[:'quantity']
-      end
-
-      if attributes.key?(:'upsell')
-        self.upsell = attributes[:'upsell']
+      if attributes.key?(:'value')
+        self.value = attributes[:'value']
       end
     end
 
@@ -156,8 +94,12 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@merchant_item_id.nil? && @merchant_item_id.to_s.length > 20
-        invalid_properties.push('invalid value for "merchant_item_id", the character length must be smaller than or equal to 20.')
+      if !@name.nil? && @name.to_s.length > 100
+        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 100.')
+      end
+
+      if !@value.nil? && @value.to_s.length > 3800
+        invalid_properties.push('invalid value for "value", the character length must be smaller than or equal to 3800.')
       end
 
       invalid_properties
@@ -166,30 +108,29 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      auto_order_schedule_validator = EnumAttributeValidator.new('String', ["Weekly", "Every 10 Days", "Biweekly", "Every 24 Days", "Every 28 Days", "Monthly", "Every 45 Days", "Every 2 Months", "Every 3 Months", "Every 4 Months", "Every 5 Months", "Every 6 Months", "Yearly", "Every 4 Weeks", "Every 6 Weeks", "Every 8 Weeks"])
-      return false unless auto_order_schedule_validator.valid?(@auto_order_schedule)
-      return false if !@merchant_item_id.nil? && @merchant_item_id.to_s.length > 20
+      return false if !@name.nil? && @name.to_s.length > 100
+      return false if !@value.nil? && @value.to_s.length > 3800
       true
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] auto_order_schedule Object to be assigned
-    def auto_order_schedule=(auto_order_schedule)
-      validator = EnumAttributeValidator.new('String', ["Weekly", "Every 10 Days", "Biweekly", "Every 24 Days", "Every 28 Days", "Monthly", "Every 45 Days", "Every 2 Months", "Every 3 Months", "Every 4 Months", "Every 5 Months", "Every 6 Months", "Yearly", "Every 4 Weeks", "Every 6 Weeks", "Every 8 Weeks"])
-      unless validator.valid?(auto_order_schedule)
-        fail ArgumentError, "invalid value for \"auto_order_schedule\", must be one of #{validator.allowable_values}."
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if !name.nil? && name.to_s.length > 100
+        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 100.'
       end
-      @auto_order_schedule = auto_order_schedule
+
+      @name = name
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] merchant_item_id Value to be assigned
-    def merchant_item_id=(merchant_item_id)
-      if !merchant_item_id.nil? && merchant_item_id.to_s.length > 20
-        fail ArgumentError, 'invalid value for "merchant_item_id", the character length must be smaller than or equal to 20.'
+    # @param [Object] value Value to be assigned
+    def value=(value)
+      if !value.nil? && value.to_s.length > 3800
+        fail ArgumentError, 'invalid value for "value", the character length must be smaller than or equal to 3800.'
       end
 
-      @merchant_item_id = merchant_item_id
+      @value = value
     end
 
     # Checks equality by comparing each attribute.
@@ -197,14 +138,10 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          arbitrary_unit_cost == o.arbitrary_unit_cost &&
-          auto_order_last_rebill_dts == o.auto_order_last_rebill_dts &&
-          auto_order_schedule == o.auto_order_schedule &&
-          merchant_item_id == o.merchant_item_id &&
-          options == o.options &&
-          properties == o.properties &&
-          quantity == o.quantity &&
-          upsell == o.upsell
+          display == o.display &&
+          expiration_dts == o.expiration_dts &&
+          name == o.name &&
+          value == o.value
     end
 
     # @see the `==` method
@@ -216,7 +153,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, merchant_item_id, options, properties, quantity, upsell].hash
+      [display, expiration_dts, name, value].hash
     end
 
     # Builds the object from hash
