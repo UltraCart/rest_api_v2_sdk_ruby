@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **auto_order_schedule** | **String** | The frequency schedule for this item if this item is part of an auto (recurring) order | [optional] 
 **merchant_item_id** | **String** | Item ID | [optional] 
 **options** | [**Array&lt;ChannelPartnerOrderItemOption&gt;**](ChannelPartnerOrderItemOption.md) | Item options | [optional] 
+**properties** | [**Array&lt;ChannelPartnerOrderItemProperty&gt;**](ChannelPartnerOrderItemProperty.md) | Properties | [optional] 
 **quantity** | **Float** | Quantity | [optional] 
 **upsell** | **BOOLEAN** | True if this item was an upsell item. | [optional] 
 

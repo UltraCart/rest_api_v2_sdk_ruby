@@ -29,6 +29,9 @@ module UltracartClient
     # Item options
     attr_accessor :options
 
+    # Properties
+    attr_accessor :properties
+
     # Quantity
     attr_accessor :quantity
 
@@ -65,6 +68,7 @@ module UltracartClient
         :'auto_order_schedule' => :'auto_order_schedule',
         :'merchant_item_id' => :'merchant_item_id',
         :'options' => :'options',
+        :'properties' => :'properties',
         :'quantity' => :'quantity',
         :'upsell' => :'upsell'
       }
@@ -78,6 +82,7 @@ module UltracartClient
         :'auto_order_schedule' => :'String',
         :'merchant_item_id' => :'String',
         :'options' => :'Array<ChannelPartnerOrderItemOption>',
+        :'properties' => :'Array<ChannelPartnerOrderItemProperty>',
         :'quantity' => :'Float',
         :'upsell' => :'BOOLEAN'
       }
@@ -110,6 +115,12 @@ module UltracartClient
       if attributes.has_key?(:'options')
         if (value = attributes[:'options']).is_a?(Array)
           self.options = value
+        end
+      end
+
+      if attributes.has_key?(:'properties')
+        if (value = attributes[:'properties']).is_a?(Array)
+          self.properties = value
         end
       end
 
@@ -172,6 +183,7 @@ module UltracartClient
           auto_order_schedule == o.auto_order_schedule &&
           merchant_item_id == o.merchant_item_id &&
           options == o.options &&
+          properties == o.properties &&
           quantity == o.quantity &&
           upsell == o.upsell
     end
@@ -185,7 +197,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, merchant_item_id, options, quantity, upsell].hash
+      [arbitrary_unit_cost, auto_order_last_rebill_dts, auto_order_schedule, merchant_item_id, options, properties, quantity, upsell].hash
     end
 
     # Builds the object from hash
