@@ -4,6 +4,10 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **ai** | **Boolean** | AI powered chat bot | [optional] |
+| **ai_chat_instructions** | **String** | Additional instructions for this AI when handle web chats | [optional] |
+| **ai_persona** | **String** | Persona of this AI agent | [optional] |
+| **ai_sms_instructions** | **String** | Additional instructions for this AI when handle SMS messages | [optional] |
 | **chat_limit** | **Integer** | The number of engagement chats that can be pushed on them at any given time. | [optional] |
 | **default_language_iso_code** | **String** | The default language the agent is chatting in | [optional] |
 | **default_status** | **String** | Default status when the agent loads conversations app. | [optional] |
@@ -18,6 +22,10 @@
 require 'ultracart_api'
 
 instance = UltracartClient::ConversationAgentProfile.new(
+  ai: null,
+  ai_chat_instructions: null,
+  ai_persona: null,
+  ai_sms_instructions: null,
   chat_limit: null,
   default_language_iso_code: null,
   default_status: null,
