@@ -14,6 +14,18 @@ require 'date'
 
 module UltracartClient
   class ConversationAgentProfile
+    # AI powered chat bot
+    attr_accessor :ai
+
+    # Additional instructions for this AI when handle web chats
+    attr_accessor :ai_chat_instructions
+
+    # Persona of this AI agent
+    attr_accessor :ai_persona
+
+    # Additional instructions for this AI when handle SMS messages
+    attr_accessor :ai_sms_instructions
+
     # The number of engagement chats that can be pushed on them at any given time.
     attr_accessor :chat_limit
 
@@ -60,6 +72,10 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'ai' => :'ai',
+        :'ai_chat_instructions' => :'ai_chat_instructions',
+        :'ai_persona' => :'ai_persona',
+        :'ai_sms_instructions' => :'ai_sms_instructions',
         :'chat_limit' => :'chat_limit',
         :'default_language_iso_code' => :'default_language_iso_code',
         :'default_status' => :'default_status',
@@ -73,6 +89,10 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'ai' => :'BOOLEAN',
+        :'ai_chat_instructions' => :'String',
+        :'ai_persona' => :'String',
+        :'ai_sms_instructions' => :'String',
         :'chat_limit' => :'Integer',
         :'default_language_iso_code' => :'String',
         :'default_status' => :'String',
@@ -90,6 +110,22 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'ai')
+        self.ai = attributes[:'ai']
+      end
+
+      if attributes.has_key?(:'ai_chat_instructions')
+        self.ai_chat_instructions = attributes[:'ai_chat_instructions']
+      end
+
+      if attributes.has_key?(:'ai_persona')
+        self.ai_persona = attributes[:'ai_persona']
+      end
+
+      if attributes.has_key?(:'ai_sms_instructions')
+        self.ai_sms_instructions = attributes[:'ai_sms_instructions']
+      end
 
       if attributes.has_key?(:'chat_limit')
         self.chat_limit = attributes[:'chat_limit']
@@ -150,6 +186,10 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          ai == o.ai &&
+          ai_chat_instructions == o.ai_chat_instructions &&
+          ai_persona == o.ai_persona &&
+          ai_sms_instructions == o.ai_sms_instructions &&
           chat_limit == o.chat_limit &&
           default_language_iso_code == o.default_language_iso_code &&
           default_status == o.default_status &&
@@ -168,7 +208,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [chat_limit, default_language_iso_code, default_status, display_name, name, profile_image_upload_key, profile_image_url].hash
+      [ai, ai_chat_instructions, ai_persona, ai_sms_instructions, chat_limit, default_language_iso_code, default_status, display_name, name, profile_image_upload_key, profile_image_url].hash
     end
 
     # Builds the object from hash
