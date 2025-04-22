@@ -11,6 +11,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**estimate_tax_for_channel_partner_order**](ChannelPartnerApi.md#estimate_tax_for_channel_partner_order) | **POST** /channel_partner/estimate_tax | Estimate tax for channel partner order |
 | [**get_channel_partner_order**](ChannelPartnerApi.md#get_channel_partner_order) | **GET** /channel_partner/orders/{order_id} | Retrieve a channel partner order |
 | [**get_channel_partner_order_by_channel_partner_order_id**](ChannelPartnerApi.md#get_channel_partner_order_by_channel_partner_order_id) | **GET** /channel_partner/orders/by_channel_partner_order_id/{order_id} | Retrieve a channel partner order by the channel partner order id |
+| [**get_channel_partner_reason_codes**](ChannelPartnerApi.md#get_channel_partner_reason_codes) | **GET** /channel_partner/channel_partners/{channel_partner_oid}/reason_codes | Retrieve reject and refund reason codes. |
 | [**get_channel_partner_ship_to_preference**](ChannelPartnerApi.md#get_channel_partner_ship_to_preference) | **GET** /channel_partner/channel_partners/{channel_partner_oid}/ship_to_preferences/{channel_partner_ship_to_preference_oid} | Retrieve the ship to preference associated with the channel partner and the specific id. |
 | [**get_channel_partner_ship_to_preferences**](ChannelPartnerApi.md#get_channel_partner_ship_to_preferences) | **GET** /channel_partner/channel_partners/{channel_partner_oid}/ship_to_preferences | Retrieve the ship to preferences associated with the channel partner. |
 | [**get_channel_partners**](ChannelPartnerApi.md#get_channel_partners) | **GET** /channel_partner/channel_partners | Retrieve the channel partners configured on the account. |
@@ -515,6 +516,77 @@ end
 ### Return type
 
 [**OrderResponse**](OrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_channel_partner_reason_codes
+
+> <ChanelPartnerReasonCodesResponse> get_channel_partner_reason_codes(channel_partner_oid)
+
+Retrieve reject and refund reason codes.
+
+Retrieve reject and refund reason codes. 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ChannelPartnerApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+channel_partner_oid = 56 # Integer | 
+
+begin
+  # Retrieve reject and refund reason codes.
+  result = api_instance.get_channel_partner_reason_codes(channel_partner_oid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ChannelPartnerApi->get_channel_partner_reason_codes: #{e}"
+end
+```
+
+#### Using the get_channel_partner_reason_codes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ChanelPartnerReasonCodesResponse>, Integer, Hash)> get_channel_partner_reason_codes_with_http_info(channel_partner_oid)
+
+```ruby
+begin
+  # Retrieve reject and refund reason codes.
+  data, status_code, headers = api_instance.get_channel_partner_reason_codes_with_http_info(channel_partner_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ChanelPartnerReasonCodesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ChannelPartnerApi->get_channel_partner_reason_codes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **channel_partner_oid** | **Integer** |  |  |
+
+### Return type
+
+[**ChanelPartnerReasonCodesResponse**](ChanelPartnerReasonCodesResponse.md)
 
 ### Authorization
 

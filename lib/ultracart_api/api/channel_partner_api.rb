@@ -502,6 +502,70 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Retrieve reject and refund reason codes.
+    # Retrieve reject and refund reason codes. 
+    # @param channel_partner_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [ChanelPartnerReasonCodesResponse]
+    def get_channel_partner_reason_codes(channel_partner_oid, opts = {})
+      data, _status_code, _headers = get_channel_partner_reason_codes_with_http_info(channel_partner_oid, opts)
+      data
+    end
+
+    # Retrieve reject and refund reason codes.
+    # Retrieve reject and refund reason codes. 
+    # @param channel_partner_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ChanelPartnerReasonCodesResponse, Integer, Hash)>] ChanelPartnerReasonCodesResponse data, response status code and response headers
+    def get_channel_partner_reason_codes_with_http_info(channel_partner_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ChannelPartnerApi.get_channel_partner_reason_codes ...'
+      end
+      # verify the required parameter 'channel_partner_oid' is set
+      if @api_client.config.client_side_validation && channel_partner_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'channel_partner_oid' when calling ChannelPartnerApi.get_channel_partner_reason_codes"
+      end
+      # resource path
+      local_var_path = '/channel_partner/channel_partners/{channel_partner_oid}/reason_codes'.sub('{' + 'channel_partner_oid' + '}', CGI.escape(channel_partner_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ChanelPartnerReasonCodesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ChannelPartnerApi.get_channel_partner_reason_codes",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ChannelPartnerApi#get_channel_partner_reason_codes\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve the ship to preference associated with the channel partner and the specific id.
     # Retrieve the ship to preference associated with the channel partner and the specific id. 
     # @param channel_partner_oid [Integer] 

@@ -14,34 +14,51 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class OrderProperty
-    # Created by user
-    attr_accessor :created_by
+  class ChanelPartnerReasonCodesResponse
+    attr_accessor :error
 
-    # The date/time that the property was created by the user
-    attr_accessor :created_dts
+    # True if the item level refund reason is required
+    attr_accessor :item_level_refund_reason_required
 
-    # True if this property is displayed to the customer
-    attr_accessor :display
+    # Reason codes available at the item level.
+    attr_accessor :item_level_refund_reasons
 
-    # The date/time that the property expires and is deleted
-    attr_accessor :expiration_dts
+    # Return codes available at the item level.
+    attr_accessor :item_level_return_reasons
 
-    # Name
-    attr_accessor :name
+    attr_accessor :metadata
 
-    # Value
-    attr_accessor :value
+    # True if the order level refund reason is required
+    attr_accessor :order_level_refund_reason_required
+
+    # Reason codes available at the order level.
+    attr_accessor :order_level_refund_reasons
+
+    # True if the order level reject reason is required
+    attr_accessor :order_level_reject_reason_required
+
+    # Reject codes available at the order level.
+    attr_accessor :order_level_reject_reasons
+
+    # Indicates if API call was successful
+    attr_accessor :success
+
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'created_by' => :'created_by',
-        :'created_dts' => :'created_dts',
-        :'display' => :'display',
-        :'expiration_dts' => :'expiration_dts',
-        :'name' => :'name',
-        :'value' => :'value'
+        :'error' => :'error',
+        :'item_level_refund_reason_required' => :'item_level_refund_reason_required',
+        :'item_level_refund_reasons' => :'item_level_refund_reasons',
+        :'item_level_return_reasons' => :'item_level_return_reasons',
+        :'metadata' => :'metadata',
+        :'order_level_refund_reason_required' => :'order_level_refund_reason_required',
+        :'order_level_refund_reasons' => :'order_level_refund_reasons',
+        :'order_level_reject_reason_required' => :'order_level_reject_reason_required',
+        :'order_level_reject_reasons' => :'order_level_reject_reasons',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
@@ -53,12 +70,17 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'created_by' => :'String',
-        :'created_dts' => :'String',
-        :'display' => :'Boolean',
-        :'expiration_dts' => :'String',
-        :'name' => :'String',
-        :'value' => :'String'
+        :'error' => :'Error',
+        :'item_level_refund_reason_required' => :'Boolean',
+        :'item_level_refund_reasons' => :'Array<OrderReason>',
+        :'item_level_return_reasons' => :'Array<OrderReason>',
+        :'metadata' => :'ResponseMetadata',
+        :'order_level_refund_reason_required' => :'Boolean',
+        :'order_level_refund_reasons' => :'Array<OrderReason>',
+        :'order_level_reject_reason_required' => :'Boolean',
+        :'order_level_reject_reasons' => :'Array<OrderReason>',
+        :'success' => :'Boolean',
+        :'warning' => :'Warning'
       }
     end
 
@@ -72,39 +94,67 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::OrderProperty` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ChanelPartnerReasonCodesResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::OrderProperty`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ChanelPartnerReasonCodesResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'created_by')
-        self.created_by = attributes[:'created_by']
+      if attributes.key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.key?(:'created_dts')
-        self.created_dts = attributes[:'created_dts']
+      if attributes.key?(:'item_level_refund_reason_required')
+        self.item_level_refund_reason_required = attributes[:'item_level_refund_reason_required']
       end
 
-      if attributes.key?(:'display')
-        self.display = attributes[:'display']
+      if attributes.key?(:'item_level_refund_reasons')
+        if (value = attributes[:'item_level_refund_reasons']).is_a?(Array)
+          self.item_level_refund_reasons = value
+        end
       end
 
-      if attributes.key?(:'expiration_dts')
-        self.expiration_dts = attributes[:'expiration_dts']
+      if attributes.key?(:'item_level_return_reasons')
+        if (value = attributes[:'item_level_return_reasons']).is_a?(Array)
+          self.item_level_return_reasons = value
+        end
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.key?(:'order_level_refund_reason_required')
+        self.order_level_refund_reason_required = attributes[:'order_level_refund_reason_required']
+      end
+
+      if attributes.key?(:'order_level_refund_reasons')
+        if (value = attributes[:'order_level_refund_reasons']).is_a?(Array)
+          self.order_level_refund_reasons = value
+        end
+      end
+
+      if attributes.key?(:'order_level_reject_reason_required')
+        self.order_level_reject_reason_required = attributes[:'order_level_reject_reason_required']
+      end
+
+      if attributes.key?(:'order_level_reject_reasons')
+        if (value = attributes[:'order_level_reject_reasons']).is_a?(Array)
+          self.order_level_reject_reasons = value
+        end
+      end
+
+      if attributes.key?(:'success')
+        self.success = attributes[:'success']
+      end
+
+      if attributes.key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -112,58 +162,13 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@created_by.nil? && @created_by.to_s.length > 20
-        invalid_properties.push('invalid value for "created_by", the character length must be smaller than or equal to 20.')
-      end
-
-      if !@name.nil? && @name.to_s.length > 100
-        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 100.')
-      end
-
-      if !@value.nil? && @value.to_s.length > 1500
-        invalid_properties.push('invalid value for "value", the character length must be smaller than or equal to 1500.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@created_by.nil? && @created_by.to_s.length > 20
-      return false if !@name.nil? && @name.to_s.length > 100
-      return false if !@value.nil? && @value.to_s.length > 1500
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] created_by Value to be assigned
-    def created_by=(created_by)
-      if !created_by.nil? && created_by.to_s.length > 20
-        fail ArgumentError, 'invalid value for "created_by", the character length must be smaller than or equal to 20.'
-      end
-
-      @created_by = created_by
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] name Value to be assigned
-    def name=(name)
-      if !name.nil? && name.to_s.length > 100
-        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 100.'
-      end
-
-      @name = name
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] value Value to be assigned
-    def value=(value)
-      if !value.nil? && value.to_s.length > 1500
-        fail ArgumentError, 'invalid value for "value", the character length must be smaller than or equal to 1500.'
-      end
-
-      @value = value
     end
 
     # Checks equality by comparing each attribute.
@@ -171,12 +176,17 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          created_by == o.created_by &&
-          created_dts == o.created_dts &&
-          display == o.display &&
-          expiration_dts == o.expiration_dts &&
-          name == o.name &&
-          value == o.value
+          error == o.error &&
+          item_level_refund_reason_required == o.item_level_refund_reason_required &&
+          item_level_refund_reasons == o.item_level_refund_reasons &&
+          item_level_return_reasons == o.item_level_return_reasons &&
+          metadata == o.metadata &&
+          order_level_refund_reason_required == o.order_level_refund_reason_required &&
+          order_level_refund_reasons == o.order_level_refund_reasons &&
+          order_level_reject_reason_required == o.order_level_reject_reason_required &&
+          order_level_reject_reasons == o.order_level_reject_reasons &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -188,7 +198,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [created_by, created_dts, display, expiration_dts, name, value].hash
+      [error, item_level_refund_reason_required, item_level_refund_reasons, item_level_return_reasons, metadata, order_level_refund_reason_required, order_level_refund_reasons, order_level_reject_reason_required, order_level_reject_reasons, success, warning].hash
     end
 
     # Builds the object from hash
