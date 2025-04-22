@@ -14,6 +14,12 @@ require 'date'
 
 module UltracartClient
   class OrderProperty
+    # Created by user
+    attr_accessor :created_by
+
+    # The date/time that the property was created by the user
+    attr_accessor :created_dts
+
     # True if this property is displayed to the customer
     attr_accessor :display
 
@@ -29,6 +35,8 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'created_by' => :'created_by',
+        :'created_dts' => :'created_dts',
         :'display' => :'display',
         :'expiration_dts' => :'expiration_dts',
         :'name' => :'name',
@@ -39,6 +47,8 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'created_by' => :'String',
+        :'created_dts' => :'String',
         :'display' => :'BOOLEAN',
         :'expiration_dts' => :'String',
         :'name' => :'String',
@@ -53,6 +63,14 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'created_by')
+        self.created_by = attributes[:'created_by']
+      end
+
+      if attributes.has_key?(:'created_dts')
+        self.created_dts = attributes[:'created_dts']
+      end
 
       if attributes.has_key?(:'display')
         self.display = attributes[:'display']
@@ -75,6 +93,10 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@created_by.nil? && @created_by.to_s.length > 20
+        invalid_properties.push('invalid value for "created_by", the character length must be smaller than or equal to 20.')
+      end
+
       if !@name.nil? && @name.to_s.length > 100
         invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 100.')
       end
@@ -89,9 +111,20 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@created_by.nil? && @created_by.to_s.length > 20
       return false if !@name.nil? && @name.to_s.length > 100
       return false if !@value.nil? && @value.to_s.length > 1500
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] created_by Value to be assigned
+    def created_by=(created_by)
+      if !created_by.nil? && created_by.to_s.length > 20
+        fail ArgumentError, 'invalid value for "created_by", the character length must be smaller than or equal to 20.'
+      end
+
+      @created_by = created_by
     end
 
     # Custom attribute writer method with validation
@@ -119,6 +152,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          created_by == o.created_by &&
+          created_dts == o.created_dts &&
           display == o.display &&
           expiration_dts == o.expiration_dts &&
           name == o.name &&
@@ -134,7 +169,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [display, expiration_dts, name, value].hash
+      [created_by, created_dts, display, expiration_dts, name, value].hash
     end
 
     # Builds the object from hash
