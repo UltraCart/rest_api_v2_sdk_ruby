@@ -735,6 +735,55 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Get agent profiles
+    # Retrieve the agents profile 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationAgentProfilesResponse]
+    def get_agent_profiles(opts = {})
+      data, _status_code, _headers = get_agent_profiles_with_http_info(opts)
+      data
+    end
+
+    # Get agent profiles
+    # Retrieve the agents profile 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationAgentProfilesResponse, Fixnum, Hash)>] ConversationAgentProfilesResponse data, response status code and response headers
+    def get_agent_profiles_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_agent_profiles ...'
+      end
+      # resource path
+      local_var_path = '/conversation/agent/profiles'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ConversationAgentProfilesResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_agent_profiles\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Get agent websocket authorization
     # Retrieve a JWT to authorize an agent to make a websocket connection. 
     # @param [Hash] opts the optional parameters
