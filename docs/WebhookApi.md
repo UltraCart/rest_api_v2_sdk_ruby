@@ -252,6 +252,14 @@ require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/
 api = UltracartClient::WebhookApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
 webhook_oid = 56 # Integer | The webhook oid to retrieve log summaries for.
 opts = {
+  request_id: 'request_id_example', # String | 
+  begin_date: 'begin_date_example', # String | 
+  end_date: 'end_date_example', # String | 
+  status: 'status_example', # String | 
+  event: 'event_example', # String | 
+  order_id: 'order_id_example', # String | 
+  request: 'request_example', # String | 
+  duration: 56, # Integer | 
   _limit: 56, # Integer | The maximum number of records to return on this one API call.
   _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
   _since: '_since_example' # String | Fetch log summaries that have been delivered since this date/time.
@@ -289,6 +297,14 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **webhook_oid** | **Integer** | The webhook oid to retrieve log summaries for. |  |
+| **request_id** | **String** |  | [optional] |
+| **begin_date** | **String** |  | [optional] |
+| **end_date** | **String** |  | [optional] |
+| **status** | **String** |  | [optional] |
+| **event** | **String** |  | [optional] |
+| **order_id** | **String** |  | [optional] |
+| **request** | **String** |  | [optional] |
+| **duration** | **Integer** |  | [optional] |
 | **_limit** | **Integer** | The maximum number of records to return on this one API call. | [optional][default to 100] |
 | **_offset** | **Integer** | Pagination of the record set.  Offset is a zero based index. | [optional][default to 0] |
 | **_since** | **String** | Fetch log summaries that have been delivered since this date/time. | [optional] |

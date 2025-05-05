@@ -17,6 +17,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**delete_pbx_voicemail_mailbox**](ConversationApi.md#delete_pbx_voicemail_mailbox) | **DELETE** /conversation/pbx/voicemail_mailbox/{conversationPbxVoicemailMailboxUuid} | Delete pbx voicemailMailbox |
 | [**get_agent_keep_alive**](ConversationApi.md#get_agent_keep_alive) | **GET** /conversation/agent/keepalive | Agent keep alive |
 | [**get_agent_profile**](ConversationApi.md#get_agent_profile) | **GET** /conversation/agent/profile | Get agent profile |
+| [**get_agent_profiles**](ConversationApi.md#get_agent_profiles) | **GET** /conversation/agent/profiles | Get agent profiles |
 | [**get_agent_websocket_authorization**](ConversationApi.md#get_agent_websocket_authorization) | **PUT** /conversation/agent/auth | Get agent websocket authorization |
 | [**get_conversation**](ConversationApi.md#get_conversation) | **GET** /conversation/conversations/{conversation_uuid} | Retrieve a conversation |
 | [**get_conversation_canned_messages**](ConversationApi.md#get_conversation_canned_messages) | **GET** /conversation/canned_messages | Retrieve a list of canned messages ordered by short_code |
@@ -991,6 +992,74 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**ConversationAgentProfileResponse**](ConversationAgentProfileResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_agent_profiles
+
+> <ConversationAgentProfilesResponse> get_agent_profiles
+
+Get agent profiles
+
+Retrieve the agents profile 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+
+begin
+  # Get agent profiles
+  result = api_instance.get_agent_profiles
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_profiles: #{e}"
+end
+```
+
+#### Using the get_agent_profiles_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAgentProfilesResponse>, Integer, Hash)> get_agent_profiles_with_http_info
+
+```ruby
+begin
+  # Get agent profiles
+  data, status_code, headers = api_instance.get_agent_profiles_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAgentProfilesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_profiles_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationAgentProfilesResponse**](ConversationAgentProfilesResponse.md)
 
 ### Authorization
 
