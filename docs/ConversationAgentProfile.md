@@ -15,6 +15,7 @@
 | **name** | **String** | Their actual user name for profile settings display as placeholder test | [optional] |
 | **profile_image_upload_key** | **String** | An upload key used to update the profile image. | [optional] |
 | **profile_image_url** | **String** | Their current profile image URL | [optional] |
+| **user_id** | **Integer** | User ID associated with the agent.  Populated by getAgentProfiles call only. | [optional] |
 
 ## Example
 
@@ -32,7 +33,8 @@ instance = UltracartClient::ConversationAgentProfile.new(
   display_name: null,
   name: null,
   profile_image_upload_key: null,
-  profile_image_url: null
+  profile_image_url: null,
+  user_id: null
 )
 ```
 

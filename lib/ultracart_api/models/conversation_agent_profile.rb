@@ -48,6 +48,9 @@ module UltracartClient
     # Their current profile image URL
     attr_accessor :profile_image_url
 
+    # User ID associated with the agent.  Populated by getAgentProfiles call only.
+    attr_accessor :user_id
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -83,7 +86,8 @@ module UltracartClient
         :'display_name' => :'display_name',
         :'name' => :'name',
         :'profile_image_upload_key' => :'profile_image_upload_key',
-        :'profile_image_url' => :'profile_image_url'
+        :'profile_image_url' => :'profile_image_url',
+        :'user_id' => :'user_id'
       }
     end
 
@@ -105,7 +109,8 @@ module UltracartClient
         :'display_name' => :'String',
         :'name' => :'String',
         :'profile_image_upload_key' => :'String',
-        :'profile_image_url' => :'String'
+        :'profile_image_url' => :'String',
+        :'user_id' => :'Integer'
       }
     end
 
@@ -173,6 +178,10 @@ module UltracartClient
       if attributes.key?(:'profile_image_url')
         self.profile_image_url = attributes[:'profile_image_url']
       end
+
+      if attributes.key?(:'user_id')
+        self.user_id = attributes[:'user_id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -215,7 +224,8 @@ module UltracartClient
           display_name == o.display_name &&
           name == o.name &&
           profile_image_upload_key == o.profile_image_upload_key &&
-          profile_image_url == o.profile_image_url
+          profile_image_url == o.profile_image_url &&
+          user_id == o.user_id
     end
 
     # @see the `==` method
@@ -227,7 +237,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ai, ai_chat_instructions, ai_persona, ai_sms_instructions, chat_limit, default_language_iso_code, default_status, display_name, name, profile_image_upload_key, profile_image_url].hash
+      [ai, ai_chat_instructions, ai_persona, ai_sms_instructions, chat_limit, default_language_iso_code, default_status, display_name, name, profile_image_upload_key, profile_image_url, user_id].hash
     end
 
     # Builds the object from hash
