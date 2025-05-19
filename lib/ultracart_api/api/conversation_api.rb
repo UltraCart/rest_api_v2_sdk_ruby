@@ -2900,6 +2900,55 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Get virtual agent capabilities
+    # Retrieve virtual agent capabilities 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationVirtualAgentCapabilitiesResponse]
+    def get_virtual_agent_capabilities(opts = {})
+      data, _status_code, _headers = get_virtual_agent_capabilities_with_http_info(opts)
+      data
+    end
+
+    # Get virtual agent capabilities
+    # Retrieve virtual agent capabilities 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationVirtualAgentCapabilitiesResponse, Fixnum, Hash)>] ConversationVirtualAgentCapabilitiesResponse data, response status code and response headers
+    def get_virtual_agent_capabilities_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_virtual_agent_capabilities ...'
+      end
+      # resource path
+      local_var_path = '/conversation/virtualagent/capabilities'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ConversationVirtualAgentCapabilitiesResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_virtual_agent_capabilities\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Insert a canned message
     # Insert a canned message 
     # @param canned_message Canned message
@@ -4729,6 +4778,61 @@ module UltracartClient
         :return_type => 'ConversationVirtualAgentBudgetResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#update_virtual_agent_budget\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update virtual agent capabilities
+    # Update virtual agent capabilities 
+    # @param virtual_agent_capabilities Virtual Agent Capabilities
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationVirtualAgentCapabilitiesResponse]
+    def update_virtual_agent_capabilities(virtual_agent_capabilities, opts = {})
+      data, _status_code, _headers = update_virtual_agent_capabilities_with_http_info(virtual_agent_capabilities, opts)
+      data
+    end
+
+    # Update virtual agent capabilities
+    # Update virtual agent capabilities 
+    # @param virtual_agent_capabilities Virtual Agent Capabilities
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationVirtualAgentCapabilitiesResponse, Fixnum, Hash)>] ConversationVirtualAgentCapabilitiesResponse data, response status code and response headers
+    def update_virtual_agent_capabilities_with_http_info(virtual_agent_capabilities, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.update_virtual_agent_capabilities ...'
+      end
+      # verify the required parameter 'virtual_agent_capabilities' is set
+      if @api_client.config.client_side_validation && virtual_agent_capabilities.nil?
+        fail ArgumentError, "Missing the required parameter 'virtual_agent_capabilities' when calling ConversationApi.update_virtual_agent_capabilities"
+      end
+      # resource path
+      local_var_path = '/conversation/virtualagent/capabilities'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(virtual_agent_capabilities)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ConversationVirtualAgentCapabilitiesResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#update_virtual_agent_capabilities\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
