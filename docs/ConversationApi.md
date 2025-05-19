@@ -58,6 +58,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_pbx_voicemail_mailbox**](ConversationApi.md#get_pbx_voicemail_mailbox) | **GET** /conversation/pbx/voicemail_mailbox/{conversationPbxVoicemailMailboxUuid} | Get pbx voicemailMailbox |
 | [**get_pbx_voicemail_mailboxes**](ConversationApi.md#get_pbx_voicemail_mailboxes) | **GET** /conversation/pbx/voicemail_mailbox | Get pbx voicemailMailboxes |
 | [**get_virtual_agent_budget**](ConversationApi.md#get_virtual_agent_budget) | **GET** /conversation/virtualagent/budget | Get virtual agent budget |
+| [**get_virtual_agent_capabilities**](ConversationApi.md#get_virtual_agent_capabilities) | **GET** /conversation/virtualagent/capabilities | Get virtual agent capabilities |
 | [**insert_conversation_canned_message**](ConversationApi.md#insert_conversation_canned_message) | **POST** /conversation/canned_messages | Insert a canned message |
 | [**insert_conversation_department**](ConversationApi.md#insert_conversation_department) | **POST** /conversation/departments | Insert a department |
 | [**insert_conversation_engagement**](ConversationApi.md#insert_conversation_engagement) | **POST** /conversation/engagements | Insert a engagement |
@@ -90,6 +91,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**update_pbx_time_range**](ConversationApi.md#update_pbx_time_range) | **PUT** /conversation/pbx/time_range/{conversationPbxTimeRangeUuid} | Update pbx timeRange |
 | [**update_pbx_voicemail_mailbox**](ConversationApi.md#update_pbx_voicemail_mailbox) | **PUT** /conversation/pbx/voicemail_mailbox/{conversationPbxVoicemailMailboxUuid} | Update pbx voicemailMailbox |
 | [**update_virtual_agent_budget**](ConversationApi.md#update_virtual_agent_budget) | **PUT** /conversation/virtualagent/budget | Update virtual agent budget |
+| [**update_virtual_agent_capabilities**](ConversationApi.md#update_virtual_agent_capabilities) | **PUT** /conversation/virtualagent/capabilities | Update virtual agent capabilities |
 
 
 ## delete_conversation_canned_message
@@ -3879,6 +3881,74 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
+## get_virtual_agent_capabilities
+
+> <ConversationVirtualAgentCapabilitiesResponse> get_virtual_agent_capabilities
+
+Get virtual agent capabilities
+
+Retrieve virtual agent capabilities 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+
+begin
+  # Get virtual agent capabilities
+  result = api_instance.get_virtual_agent_capabilities
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_virtual_agent_capabilities: #{e}"
+end
+```
+
+#### Using the get_virtual_agent_capabilities_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationVirtualAgentCapabilitiesResponse>, Integer, Hash)> get_virtual_agent_capabilities_with_http_info
+
+```ruby
+begin
+  # Get virtual agent capabilities
+  data, status_code, headers = api_instance.get_virtual_agent_capabilities_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationVirtualAgentCapabilitiesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_virtual_agent_capabilities_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationVirtualAgentCapabilitiesResponse**](ConversationVirtualAgentCapabilitiesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## insert_conversation_canned_message
 
 > <ConversationCannedMessageResponse> insert_conversation_canned_message(canned_message)
@@ -6162,6 +6232,77 @@ end
 ### Return type
 
 [**ConversationVirtualAgentBudgetResponse**](ConversationVirtualAgentBudgetResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_virtual_agent_capabilities
+
+> <ConversationVirtualAgentCapabilitiesResponse> update_virtual_agent_capabilities(virtual_agent_capabilities)
+
+Update virtual agent capabilities
+
+Update virtual agent capabilities 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+virtual_agent_capabilities = UltracartClient::ConversationVirtualAgentCapabilities.new # ConversationVirtualAgentCapabilities | Virtual Agent Capabilities
+
+begin
+  # Update virtual agent capabilities
+  result = api_instance.update_virtual_agent_capabilities(virtual_agent_capabilities)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_virtual_agent_capabilities: #{e}"
+end
+```
+
+#### Using the update_virtual_agent_capabilities_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationVirtualAgentCapabilitiesResponse>, Integer, Hash)> update_virtual_agent_capabilities_with_http_info(virtual_agent_capabilities)
+
+```ruby
+begin
+  # Update virtual agent capabilities
+  data, status_code, headers = api_instance.update_virtual_agent_capabilities_with_http_info(virtual_agent_capabilities)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationVirtualAgentCapabilitiesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_virtual_agent_capabilities_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **virtual_agent_capabilities** | [**ConversationVirtualAgentCapabilities**](ConversationVirtualAgentCapabilities.md) | Virtual Agent Capabilities |  |
+
+### Return type
+
+[**ConversationVirtualAgentCapabilitiesResponse**](ConversationVirtualAgentCapabilitiesResponse.md)
 
 ### Authorization
 
