@@ -57,6 +57,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_pbx_time_ranges**](ConversationApi.md#get_pbx_time_ranges) | **GET** /conversation/pbx/time_range | Get pbx timeRanges |
 | [**get_pbx_voicemail_mailbox**](ConversationApi.md#get_pbx_voicemail_mailbox) | **GET** /conversation/pbx/voicemail_mailbox/{conversationPbxVoicemailMailboxUuid} | Get pbx voicemailMailbox |
 | [**get_pbx_voicemail_mailboxes**](ConversationApi.md#get_pbx_voicemail_mailboxes) | **GET** /conversation/pbx/voicemail_mailbox | Get pbx voicemailMailboxes |
+| [**get_virtual_agent_budget**](ConversationApi.md#get_virtual_agent_budget) | **GET** /conversation/virtualagent/budget | Get virtual agent budget |
 | [**insert_conversation_canned_message**](ConversationApi.md#insert_conversation_canned_message) | **POST** /conversation/canned_messages | Insert a canned message |
 | [**insert_conversation_department**](ConversationApi.md#insert_conversation_department) | **POST** /conversation/departments | Insert a department |
 | [**insert_conversation_engagement**](ConversationApi.md#insert_conversation_engagement) | **POST** /conversation/engagements | Insert a engagement |
@@ -88,6 +89,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**update_pbx_time_based**](ConversationApi.md#update_pbx_time_based) | **PUT** /conversation/pbx/time_based/{conversationPbxTimeBasedUuid} | Update pbx timeBased |
 | [**update_pbx_time_range**](ConversationApi.md#update_pbx_time_range) | **PUT** /conversation/pbx/time_range/{conversationPbxTimeRangeUuid} | Update pbx timeRange |
 | [**update_pbx_voicemail_mailbox**](ConversationApi.md#update_pbx_voicemail_mailbox) | **PUT** /conversation/pbx/voicemail_mailbox/{conversationPbxVoicemailMailboxUuid} | Update pbx voicemailMailbox |
+| [**update_virtual_agent_budget**](ConversationApi.md#update_virtual_agent_budget) | **PUT** /conversation/virtualagent/budget | Update virtual agent budget |
 
 
 ## delete_conversation_canned_message
@@ -3809,6 +3811,74 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
+## get_virtual_agent_budget
+
+> <ConversationVirtualAgentBudgetResponse> get_virtual_agent_budget
+
+Get virtual agent budget
+
+Retrieve virtual agent budget 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+
+begin
+  # Get virtual agent budget
+  result = api_instance.get_virtual_agent_budget
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_virtual_agent_budget: #{e}"
+end
+```
+
+#### Using the get_virtual_agent_budget_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationVirtualAgentBudgetResponse>, Integer, Hash)> get_virtual_agent_budget_with_http_info
+
+```ruby
+begin
+  # Get virtual agent budget
+  data, status_code, headers = api_instance.get_virtual_agent_budget_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationVirtualAgentBudgetResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_virtual_agent_budget_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationVirtualAgentBudgetResponse**](ConversationVirtualAgentBudgetResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## insert_conversation_canned_message
 
 > <ConversationCannedMessageResponse> insert_conversation_canned_message(canned_message)
@@ -6021,6 +6091,77 @@ end
 ### Return type
 
 [**ConversationPbxVoicemailMailboxResponse**](ConversationPbxVoicemailMailboxResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_virtual_agent_budget
+
+> <ConversationVirtualAgentBudgetResponse> update_virtual_agent_budget(virtual_agent_budget)
+
+Update virtual agent budget
+
+Update virtual agent budget 
+
+### Examples
+
+```ruby
+require 'time'
+require 'ultracart_api'
+require 'json'
+require 'yaml'
+require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+
+# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
+# As such, this might not be the best way to use this object.
+# Please see https://github.com/UltraCart/sdk_samples for working examples.
+
+api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+virtual_agent_budget = UltracartClient::ConversationVirtualAgentBudget.new # ConversationVirtualAgentBudget | Virtual Agent Budget
+
+begin
+  # Update virtual agent budget
+  result = api_instance.update_virtual_agent_budget(virtual_agent_budget)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_virtual_agent_budget: #{e}"
+end
+```
+
+#### Using the update_virtual_agent_budget_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationVirtualAgentBudgetResponse>, Integer, Hash)> update_virtual_agent_budget_with_http_info(virtual_agent_budget)
+
+```ruby
+begin
+  # Update virtual agent budget
+  data, status_code, headers = api_instance.update_virtual_agent_budget_with_http_info(virtual_agent_budget)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationVirtualAgentBudgetResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_virtual_agent_budget_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **virtual_agent_budget** | [**ConversationVirtualAgentBudget**](ConversationVirtualAgentBudget.md) | Virtual Agent Budget |  |
+
+### Return type
+
+[**ConversationVirtualAgentBudgetResponse**](ConversationVirtualAgentBudgetResponse.md)
 
 ### Authorization
 
