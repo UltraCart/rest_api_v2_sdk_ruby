@@ -57,6 +57,12 @@ module UltracartClient
 
     attr_accessor :unread_messages
 
+    # True if a virtual agent answered the conversation
+    attr_accessor :virtual_agent
+
+    # The cost of this conversation performed by the virtual agent
+    attr_accessor :virtual_agent_cost
+
     attr_accessor :visible
 
     class EnumAttributeValidator
@@ -102,6 +108,8 @@ module UltracartClient
         :'sentiment' => :'sentiment',
         :'start_dts' => :'start_dts',
         :'unread_messages' => :'unread_messages',
+        :'virtual_agent' => :'virtual_agent',
+        :'virtual_agent_cost' => :'virtual_agent_cost',
         :'visible' => :'visible'
       }
     end
@@ -132,6 +140,8 @@ module UltracartClient
         :'sentiment' => :'ConversationSentiment',
         :'start_dts' => :'String',
         :'unread_messages' => :'Boolean',
+        :'virtual_agent' => :'Boolean',
+        :'virtual_agent_cost' => :'Float',
         :'visible' => :'Boolean'
       }
     end
@@ -233,6 +243,14 @@ module UltracartClient
         self.unread_messages = attributes[:'unread_messages']
       end
 
+      if attributes.key?(:'virtual_agent')
+        self.virtual_agent = attributes[:'virtual_agent']
+      end
+
+      if attributes.key?(:'virtual_agent_cost')
+        self.virtual_agent_cost = attributes[:'virtual_agent_cost']
+      end
+
       if attributes.key?(:'visible')
         self.visible = attributes[:'visible']
       end
@@ -286,6 +304,8 @@ module UltracartClient
           sentiment == o.sentiment &&
           start_dts == o.start_dts &&
           unread_messages == o.unread_messages &&
+          virtual_agent == o.virtual_agent &&
+          virtual_agent_cost == o.virtual_agent_cost &&
           visible == o.visible
     end
 
@@ -298,7 +318,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [base_language_iso_code, closed, conversation_arn, conversation_uuid, customer_first_message_unresponded_to_dts, last_conversation_message_body, last_conversation_participant_arn, last_conversation_participant_name, last_interactive_message_dts, last_message_dts, medium, merchant_id, message_count, messages, participants, sentiment, start_dts, unread_messages, visible].hash
+      [base_language_iso_code, closed, conversation_arn, conversation_uuid, customer_first_message_unresponded_to_dts, last_conversation_message_body, last_conversation_participant_arn, last_conversation_participant_name, last_interactive_message_dts, last_message_dts, medium, merchant_id, message_count, messages, participants, sentiment, start_dts, unread_messages, virtual_agent, virtual_agent_cost, visible].hash
     end
 
     # Builds the object from hash

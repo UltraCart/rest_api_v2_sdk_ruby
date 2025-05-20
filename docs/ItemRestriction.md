@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **exclude_coupon** | **Boolean** | Exclude coupons | [optional] |
 | **exclude_from_free_promotion** | **Boolean** | Exclude from free promotion | [optional] |
+| **exclude_from_loyalty** | **Boolean** | Exclude from loyalty.  Must be set to true or false to save.  Null is ignored for backwards SDK compatibility | [optional] |
 | **items** | [**Array&lt;ItemRestrictionItem&gt;**](ItemRestrictionItem.md) | Items | [optional] |
 | **maximum_quantity** | **Integer** | Maximum quantity | [optional] |
 | **minimum_quantity** | **Integer** | Minimum quantity (defaults to 1) | [optional] |
@@ -21,6 +22,7 @@ require 'ultracart_api'
 instance = UltracartClient::ItemRestriction.new(
   exclude_coupon: null,
   exclude_from_free_promotion: null,
+  exclude_from_loyalty: null,
   items: null,
   maximum_quantity: null,
   minimum_quantity: null,

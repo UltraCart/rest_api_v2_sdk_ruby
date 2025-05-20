@@ -21,6 +21,9 @@ module UltracartClient
     # Exclude from free promotion
     attr_accessor :exclude_from_free_promotion
 
+    # Exclude from loyalty.  Must be set to true or false to save.  Null is ignored for backwards SDK compatibility
+    attr_accessor :exclude_from_loyalty
+
     # Items
     attr_accessor :items
 
@@ -44,6 +47,7 @@ module UltracartClient
       {
         :'exclude_coupon' => :'exclude_coupon',
         :'exclude_from_free_promotion' => :'exclude_from_free_promotion',
+        :'exclude_from_loyalty' => :'exclude_from_loyalty',
         :'items' => :'items',
         :'maximum_quantity' => :'maximum_quantity',
         :'minimum_quantity' => :'minimum_quantity',
@@ -63,6 +67,7 @@ module UltracartClient
       {
         :'exclude_coupon' => :'Boolean',
         :'exclude_from_free_promotion' => :'Boolean',
+        :'exclude_from_loyalty' => :'Boolean',
         :'items' => :'Array<ItemRestrictionItem>',
         :'maximum_quantity' => :'Integer',
         :'minimum_quantity' => :'Integer',
@@ -99,6 +104,10 @@ module UltracartClient
 
       if attributes.key?(:'exclude_from_free_promotion')
         self.exclude_from_free_promotion = attributes[:'exclude_from_free_promotion']
+      end
+
+      if attributes.key?(:'exclude_from_loyalty')
+        self.exclude_from_loyalty = attributes[:'exclude_from_loyalty']
       end
 
       if attributes.key?(:'items')
@@ -148,6 +157,7 @@ module UltracartClient
       self.class == o.class &&
           exclude_coupon == o.exclude_coupon &&
           exclude_from_free_promotion == o.exclude_from_free_promotion &&
+          exclude_from_loyalty == o.exclude_from_loyalty &&
           items == o.items &&
           maximum_quantity == o.maximum_quantity &&
           minimum_quantity == o.minimum_quantity &&
@@ -165,7 +175,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [exclude_coupon, exclude_from_free_promotion, items, maximum_quantity, minimum_quantity, multiple_quantity, one_per_customer, purchase_separately].hash
+      [exclude_coupon, exclude_from_free_promotion, exclude_from_loyalty, items, maximum_quantity, minimum_quantity, multiple_quantity, one_per_customer, purchase_separately].hash
     end
 
     # Builds the object from hash
