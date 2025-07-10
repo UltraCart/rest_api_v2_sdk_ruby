@@ -102,29 +102,13 @@ Delete a conversation canned message
 
 Delete a conversation canned message 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_canned_message_oid = 56 # Integer | 
-
-begin
-  # Delete a conversation canned message
-  api_instance.delete_conversation_canned_message(conversation_canned_message_oid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->delete_conversation_canned_message: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_conversation_canned_message_with_http_info variant
 
@@ -172,29 +156,13 @@ Delete a conversation department
 
 Delete a conversation department 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_department_oid = 56 # Integer | 
-
-begin
-  # Delete a conversation department
-  api_instance.delete_department(conversation_department_oid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->delete_department: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_department_with_http_info variant
 
@@ -242,29 +210,13 @@ Delete a conversation engagement
 
 Delete a conversation engagement 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_engagement_oid = 56 # Integer | 
-
-begin
-  # Delete a conversation engagement
-  api_instance.delete_engagement(conversation_engagement_oid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->delete_engagement: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_engagement_with_http_info variant
 
@@ -312,29 +264,13 @@ Delete Agent Voicemail
 
 Delete pbx agent Voicemail 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-recording_sid = 'recording_sid_example' # String | 
-
-begin
-  # Delete Agent Voicemail
-  api_instance.delete_pbx_agent_voicemail(recording_sid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->delete_pbx_agent_voicemail: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_pbx_agent_voicemail_with_http_info variant
 
@@ -382,30 +318,13 @@ Delete pbx audio
 
 Delete a pbx audio 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_audio_uuid = 'conversation_pbx_audio_uuid_example' # String | 
-
-begin
-  # Delete pbx audio
-  result = api_instance.delete_pbx_audio(conversation_pbx_audio_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->delete_pbx_audio: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_pbx_audio_with_http_info variant
 
@@ -453,30 +372,13 @@ Delete pbx menu
 
 Delete a pbx menu 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_menu_uuid = 'conversation_pbx_menu_uuid_example' # String | 
-
-begin
-  # Delete pbx menu
-  result = api_instance.delete_pbx_menu(conversation_pbx_menu_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->delete_pbx_menu: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_pbx_menu_with_http_info variant
 
@@ -524,30 +426,13 @@ Delete pbx queue
 
 Delete a pbx queue 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_queue_uuid = 'conversation_pbx_queue_uuid_example' # String | 
-
-begin
-  # Delete pbx queue
-  result = api_instance.delete_pbx_queue(conversation_pbx_queue_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->delete_pbx_queue: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_pbx_queue_with_http_info variant
 
@@ -595,30 +480,13 @@ Delete Queue Voicemail
 
 Delete pbx queue Voicemail 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-queue_uuid = 'queue_uuid_example' # String | 
-recording_sid = 'recording_sid_example' # String | 
-
-begin
-  # Delete Queue Voicemail
-  api_instance.delete_pbx_queue_voicemail(queue_uuid, recording_sid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->delete_pbx_queue_voicemail: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_pbx_queue_voicemail_with_http_info variant
 
@@ -667,30 +535,13 @@ Delete pbx timeBased
 
 Delete a pbx timeBased 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_time_based_uuid = 'conversation_pbx_time_based_uuid_example' # String | 
-
-begin
-  # Delete pbx timeBased
-  result = api_instance.delete_pbx_time_based(conversation_pbx_time_based_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->delete_pbx_time_based: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_pbx_time_based_with_http_info variant
 
@@ -738,30 +589,13 @@ Delete pbx timeRange
 
 Delete a pbx timeRange 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_time_range_uuid = 'conversation_pbx_time_range_uuid_example' # String | 
-
-begin
-  # Delete pbx timeRange
-  result = api_instance.delete_pbx_time_range(conversation_pbx_time_range_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->delete_pbx_time_range: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_pbx_time_range_with_http_info variant
 
@@ -809,30 +643,13 @@ Delete pbx voicemailMailbox
 
 Delete a pbx voicemailMailbox 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_voicemail_mailbox_uuid = 'conversation_pbx_voicemail_mailbox_uuid_example' # String | 
-
-begin
-  # Delete pbx voicemailMailbox
-  result = api_instance.delete_pbx_voicemail_mailbox(conversation_pbx_voicemail_mailbox_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->delete_pbx_voicemail_mailbox: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_pbx_voicemail_mailbox_with_http_info variant
 
@@ -880,28 +697,13 @@ Agent keep alive
 
 Called periodically by the conversation API to keep the session alive. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Agent keep alive
-  api_instance.get_agent_keep_alive
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_agent_keep_alive: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_agent_keep_alive_with_http_info variant
 
@@ -947,29 +749,13 @@ Get agent profile
 
 Retrieve the agents profile 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get agent profile
-  result = api_instance.get_agent_profile
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_agent_profile: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_agent_profile_with_http_info variant
 
@@ -1015,29 +801,12 @@ Get agent profiles
 
 Retrieve the agents profile 
 
+
 ### Examples
 
-```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+(No example for this operation).
 
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get agent profiles
-  result = api_instance.get_agent_profiles
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_agent_profiles: #{e}"
-end
-```
 
 #### Using the get_agent_profiles_with_http_info variant
 
@@ -1083,29 +852,13 @@ Get agent websocket authorization
 
 Retrieve a JWT to authorize an agent to make a websocket connection. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get agent websocket authorization
-  result = api_instance.get_agent_websocket_authorization
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_agent_websocket_authorization: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_agent_websocket_authorization_with_http_info variant
 
@@ -1151,33 +904,13 @@ Retrieve a conversation
 
 Retrieve a conversation including the participants and messages 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_uuid = 'conversation_uuid_example' # String | 
-opts = {
-  limit: 56 # Integer | 
-}
-
-begin
-  # Retrieve a conversation
-  result = api_instance.get_conversation(conversation_uuid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_conversation: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_conversation_with_http_info variant
 
@@ -1226,29 +959,13 @@ Retrieve a list of canned messages ordered by short_code
 
 Retrieve a list of canned messages ordered by short_code 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Retrieve a list of canned messages ordered by short_code
-  result = api_instance.get_conversation_canned_messages
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_conversation_canned_messages: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_conversation_canned_messages_with_http_info variant
 
@@ -1294,30 +1011,13 @@ Get a webchat conversation context
 
 Get a webchat conversation context 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_uuid = 'conversation_uuid_example' # String | 
-
-begin
-  # Get a webchat conversation context
-  result = api_instance.get_conversation_context(conversation_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_conversation_context: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_conversation_context_with_http_info variant
 
@@ -1365,29 +1065,13 @@ Retrieve a list of possible department members
 
 Retrieve a list of possible department members 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Retrieve a list of possible department members
-  result = api_instance.get_conversation_department_member_list
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_conversation_department_member_list: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_conversation_department_member_list_with_http_info variant
 
@@ -1433,29 +1117,13 @@ Retrieve a list of departments ordered by name
 
 Retrieve a list of departments ordered by name 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Retrieve a list of departments ordered by name
-  result = api_instance.get_conversation_departments
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_conversation_departments: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_conversation_departments_with_http_info variant
 
@@ -1501,30 +1169,13 @@ Retrieve an engagement
 
 Retrieve an engagement 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_engagement_oid = 56 # Integer | 
-
-begin
-  # Retrieve an engagement
-  result = api_instance.get_conversation_engagement(conversation_engagement_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_conversation_engagement: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_conversation_engagement_with_http_info variant
 
@@ -1572,29 +1223,13 @@ Retrieve a list of engagements ordered by name
 
 Retrieve a list of engagements ordered by name 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Retrieve a list of engagements ordered by name
-  result = api_instance.get_conversation_engagements
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_conversation_engagements: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_conversation_engagements_with_http_info variant
 
@@ -1640,34 +1275,13 @@ Retrieve conversation messages
 
 Retrieve conversation messages since a particular time 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_uuid = 'conversation_uuid_example' # String | 
-since = 789 # Integer | 
-opts = {
-  limit: 56 # Integer | 
-}
-
-begin
-  # Retrieve conversation messages
-  result = api_instance.get_conversation_messages(conversation_uuid, since, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_conversation_messages: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_conversation_messages_with_http_info variant
 
@@ -1717,30 +1331,13 @@ Get a presigned conversation multimedia upload URL
 
 Get a presigned conversation multimedia upload URL 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-extension = 'extension_example' # String | 
-
-begin
-  # Get a presigned conversation multimedia upload URL
-  result = api_instance.get_conversation_multimedia_upload_url(extension)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_conversation_multimedia_upload_url: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_conversation_multimedia_upload_url_with_http_info variant
 
@@ -1788,30 +1385,13 @@ Get a pre-signed conversation multimedia upload URL
 
 Get a pre-signed conversation multimedia upload URL 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-extension = 'extension_example' # String | 
-
-begin
-  # Get a pre-signed conversation multimedia upload URL
-  result = api_instance.get_conversation_pbx_audio_upload_url(extension)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_conversation_pbx_audio_upload_url: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_conversation_pbx_audio_upload_url_with_http_info variant
 
@@ -1859,30 +1439,13 @@ Get orders and customer information for a phone number
 
 Retrieves all the orders, auto orders, and customer profile for a given phone number 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-pbx_customer_snapshot_request = UltracartClient::ConversationPbxCustomerSnapshotRequest.new # ConversationPbxCustomerSnapshotRequest | Conversation pbx customer snapshot request
-
-begin
-  # Get orders and customer information for a phone number
-  result = api_instance.get_conversation_pbx_customer_snapshot(pbx_customer_snapshot_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_conversation_pbx_customer_snapshot: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_conversation_pbx_customer_snapshot_with_http_info variant
 
@@ -1930,29 +1493,13 @@ Retrieve conversation permissions
 
 Retrieve conversation permissions 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Retrieve conversation permissions
-  result = api_instance.get_conversation_permissions
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_conversation_permissions: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_conversation_permissions_with_http_info variant
 
@@ -1998,29 +1545,13 @@ Retrieve a conversation webchat queue statuses
 
 Retrieve a conversation webchat queue statuses including agent status and queue entries 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Retrieve a conversation webchat queue statuses
-  result = api_instance.get_conversation_webchat_queue_statuses
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_conversation_webchat_queue_statuses: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_conversation_webchat_queue_statuses_with_http_info variant
 
@@ -2066,35 +1597,13 @@ Retrieve a list of conversation summaries newest to oldest
 
 Retrieve a list of conversation summaries that are ordered newest to oldest, include the most recent message and whether its been read. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-opts = {
-  medium: 'medium_example', # String | 
-  before: 'before_example', # String | 
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Max 200)
-  _offset: 56 # Integer | Pagination of the record set.  Offset is a zero based index.
-}
-
-begin
-  # Retrieve a list of conversation summaries newest to oldest
-  result = api_instance.get_conversations(opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_conversations: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_conversations_with_http_info variant
 
@@ -2145,30 +1654,13 @@ Retrieve a list of matching terms for a search field
 
 Retrieve a list of matching terms for a search field 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-autocomplete_request = UltracartClient::ConversationAutocompleteRequest.new # ConversationAutocompleteRequest | Autocomplete Request
-
-begin
-  # Retrieve a list of matching terms for a search field
-  result = api_instance.get_conversations_autocomplete(autocomplete_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_conversations_autocomplete: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_conversations_autocomplete_with_http_info variant
 
@@ -2216,30 +1708,13 @@ Search conversations
 
 Search conversations 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-search_request = UltracartClient::ConversationSearchRequest.new # ConversationSearchRequest | Search Request
-
-begin
-  # Search conversations
-  result = api_instance.get_conversations_search(search_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_conversations_search: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_conversations_search_with_http_info variant
 
@@ -2287,29 +1762,13 @@ Get location data for engagement configuration
 
 Get location data for engagement configuration 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get location data for engagement configuration
-  result = api_instance.get_locations_for_engagement
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_locations_for_engagement: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_locations_for_engagement_with_http_info variant
 
@@ -2355,30 +1814,13 @@ Get pbx agent
 
 Retrieve a pbx agent 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_agent_uuid = 'conversation_pbx_agent_uuid_example' # String | 
-
-begin
-  # Get pbx agent
-  result = api_instance.get_pbx_agent(conversation_pbx_agent_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_agent: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_agent_with_http_info variant
 
@@ -2426,30 +1868,13 @@ Get Agent Voicemail
 
 Retrieve pbx agent Voicemail 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-recording_sid = 'recording_sid_example' # String | 
-
-begin
-  # Get Agent Voicemail
-  result = api_instance.get_pbx_agent_voicemail(recording_sid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_agent_voicemail: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_agent_voicemail_with_http_info variant
 
@@ -2497,29 +1922,13 @@ Get Agent Voicemails
 
 Retrieve pbx agent Voicemails 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get Agent Voicemails
-  result = api_instance.get_pbx_agent_voicemails
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_agent_voicemails: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_agent_voicemails_with_http_info variant
 
@@ -2565,29 +1974,13 @@ Get pbx agents
 
 Retrieve pbx agents 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get pbx agents
-  result = api_instance.get_pbx_agents
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_agents: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_agents_with_http_info variant
 
@@ -2633,30 +2026,13 @@ Get pbx audio
 
 Retrieve a pbx audio 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_audio_uuid = 'conversation_pbx_audio_uuid_example' # String | 
-
-begin
-  # Get pbx audio
-  result = api_instance.get_pbx_audio(conversation_pbx_audio_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_audio: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_audio_with_http_info variant
 
@@ -2704,30 +2080,13 @@ Get pbx audio usage
 
 Retrieve a pbx audio usage 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_audio_uuid = 'conversation_pbx_audio_uuid_example' # String | 
-
-begin
-  # Get pbx audio usage
-  result = api_instance.get_pbx_audio_usage(conversation_pbx_audio_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_audio_usage: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_audio_usage_with_http_info variant
 
@@ -2775,29 +2134,13 @@ Get pbx audios
 
 Retrieve pbx audios 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get pbx audios
-  result = api_instance.get_pbx_audios
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_audios: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_audios_with_http_info variant
 
@@ -2843,30 +2186,13 @@ Get pbx menu
 
 Retrieve a pbx menu 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_menu_uuid = 'conversation_pbx_menu_uuid_example' # String | 
-
-begin
-  # Get pbx menu
-  result = api_instance.get_pbx_menu(conversation_pbx_menu_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_menu: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_menu_with_http_info variant
 
@@ -2914,29 +2240,13 @@ Get pbx menus
 
 Retrieve pbx menus 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get pbx menus
-  result = api_instance.get_pbx_menus
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_menus: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_menus_with_http_info variant
 
@@ -2982,30 +2292,13 @@ Get pbx phoneNumber
 
 Retrieve a pbx phoneNumber 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_phone_number_uuid = 'conversation_pbx_phone_number_uuid_example' # String | 
-
-begin
-  # Get pbx phoneNumber
-  result = api_instance.get_pbx_phone_number(conversation_pbx_phone_number_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_phone_number: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_phone_number_with_http_info variant
 
@@ -3053,29 +2346,13 @@ Get pbx phoneNumbers
 
 Retrieve pbx phoneNumbers 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get pbx phoneNumbers
-  result = api_instance.get_pbx_phone_numbers
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_phone_numbers: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_phone_numbers_with_http_info variant
 
@@ -3121,30 +2398,13 @@ Get pbx queue
 
 Retrieve a pbx queue 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_queue_uuid = 'conversation_pbx_queue_uuid_example' # String | 
-
-begin
-  # Get pbx queue
-  result = api_instance.get_pbx_queue(conversation_pbx_queue_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_queue: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_queue_with_http_info variant
 
@@ -3192,31 +2452,13 @@ Get Queue Voicemail
 
 Retrieve pbx queue Voicemail 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-queue_uuid = 'queue_uuid_example' # String | 
-recording_sid = 'recording_sid_example' # String | 
-
-begin
-  # Get Queue Voicemail
-  result = api_instance.get_pbx_queue_voicemail(queue_uuid, recording_sid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_queue_voicemail: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_queue_voicemail_with_http_info variant
 
@@ -3265,30 +2507,13 @@ Get Queue Voicemails
 
 Retrieve pbx queue voicemails 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-queue_uuid = 'queue_uuid_example' # String | 
-
-begin
-  # Get Queue Voicemails
-  result = api_instance.get_pbx_queue_voicemails(queue_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_queue_voicemails: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_queue_voicemails_with_http_info variant
 
@@ -3336,29 +2561,13 @@ Get pbx queues
 
 Retrieve pbx queues 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get pbx queues
-  result = api_instance.get_pbx_queues
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_queues: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_queues_with_http_info variant
 
@@ -3404,30 +2613,13 @@ Get pbx timeBased
 
 Retrieve a pbx timeBased 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_time_based_uuid = 'conversation_pbx_time_based_uuid_example' # String | 
-
-begin
-  # Get pbx timeBased
-  result = api_instance.get_pbx_time_based(conversation_pbx_time_based_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_time_based: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_time_based_with_http_info variant
 
@@ -3475,29 +2667,13 @@ Get pbx timeBaseds
 
 Retrieve pbx timeBaseds 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get pbx timeBaseds
-  result = api_instance.get_pbx_time_baseds
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_time_baseds: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_time_baseds_with_http_info variant
 
@@ -3543,30 +2719,13 @@ Get pbx timeRange
 
 Retrieve a pbx timeRange 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_time_range_uuid = 'conversation_pbx_time_range_uuid_example' # String | 
-
-begin
-  # Get pbx timeRange
-  result = api_instance.get_pbx_time_range(conversation_pbx_time_range_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_time_range: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_time_range_with_http_info variant
 
@@ -3614,29 +2773,13 @@ Get pbx timeRanges
 
 Retrieve pbx timeRanges 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get pbx timeRanges
-  result = api_instance.get_pbx_time_ranges
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_time_ranges: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_time_ranges_with_http_info variant
 
@@ -3682,30 +2825,13 @@ Get pbx voicemailMailbox
 
 Retrieve a pbx voicemailMailbox 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_voicemail_mailbox_uuid = 'conversation_pbx_voicemail_mailbox_uuid_example' # String | 
-
-begin
-  # Get pbx voicemailMailbox
-  result = api_instance.get_pbx_voicemail_mailbox(conversation_pbx_voicemail_mailbox_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_voicemail_mailbox: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_voicemail_mailbox_with_http_info variant
 
@@ -3753,29 +2879,13 @@ Get pbx voicemailMailboxes
 
 Retrieve pbx voicemailMailboxes 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get pbx voicemailMailboxes
-  result = api_instance.get_pbx_voicemail_mailboxes
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_pbx_voicemail_mailboxes: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_pbx_voicemail_mailboxes_with_http_info variant
 
@@ -3821,29 +2931,12 @@ Get virtual agent budget
 
 Retrieve virtual agent budget 
 
+
 ### Examples
 
-```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+(No example for this operation).
 
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get virtual agent budget
-  result = api_instance.get_virtual_agent_budget
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_virtual_agent_budget: #{e}"
-end
-```
 
 #### Using the get_virtual_agent_budget_with_http_info variant
 
@@ -3889,29 +2982,12 @@ Get virtual agent capabilities
 
 Retrieve virtual agent capabilities 
 
+
 ### Examples
 
-```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+(No example for this operation).
 
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get virtual agent capabilities
-  result = api_instance.get_virtual_agent_capabilities
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->get_virtual_agent_capabilities: #{e}"
-end
-```
 
 #### Using the get_virtual_agent_capabilities_with_http_info variant
 
@@ -3957,30 +3033,13 @@ Insert a canned message
 
 Insert a canned message 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-canned_message = UltracartClient::ConversationCannedMessage.new # ConversationCannedMessage | Canned message
-
-begin
-  # Insert a canned message
-  result = api_instance.insert_conversation_canned_message(canned_message)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->insert_conversation_canned_message: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the insert_conversation_canned_message_with_http_info variant
 
@@ -4028,30 +3087,13 @@ Insert a department
 
 Insert a department 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-department = UltracartClient::ConversationDepartment.new # ConversationDepartment | Department
-
-begin
-  # Insert a department
-  result = api_instance.insert_conversation_department(department)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->insert_conversation_department: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the insert_conversation_department_with_http_info variant
 
@@ -4099,30 +3141,13 @@ Insert a engagement
 
 Insert a engagement 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-engagement = UltracartClient::ConversationEngagement.new # ConversationEngagement | Engagement
-
-begin
-  # Insert a engagement
-  result = api_instance.insert_conversation_engagement(engagement)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->insert_conversation_engagement: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the insert_conversation_engagement_with_http_info variant
 
@@ -4170,30 +3195,13 @@ Insert pbx audio
 
 Insert a pbx audio 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-pbx_audio = UltracartClient::ConversationPbxAudio.new # ConversationPbxAudio | Pbx Audio
-
-begin
-  # Insert pbx audio
-  result = api_instance.insert_pbx_audio(pbx_audio)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->insert_pbx_audio: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the insert_pbx_audio_with_http_info variant
 
@@ -4241,30 +3249,13 @@ Insert pbx menu
 
 Insert a pbx menu 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-pbx_menu = UltracartClient::ConversationPbxMenu.new # ConversationPbxMenu | Pbx Menu
-
-begin
-  # Insert pbx menu
-  result = api_instance.insert_pbx_menu(pbx_menu)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->insert_pbx_menu: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the insert_pbx_menu_with_http_info variant
 
@@ -4312,30 +3303,13 @@ Insert pbx queue
 
 Insert a pbx queue 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-pbx_queue = UltracartClient::ConversationPbxQueue.new # ConversationPbxQueue | Pbx Queue
-
-begin
-  # Insert pbx queue
-  result = api_instance.insert_pbx_queue(pbx_queue)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->insert_pbx_queue: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the insert_pbx_queue_with_http_info variant
 
@@ -4383,30 +3357,13 @@ Insert pbx timeBased
 
 Insert a pbx timeBased 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-pbx_time_based = UltracartClient::ConversationPbxTimeBased.new # ConversationPbxTimeBased | Pbx TimeBased
-
-begin
-  # Insert pbx timeBased
-  result = api_instance.insert_pbx_time_based(pbx_time_based)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->insert_pbx_time_based: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the insert_pbx_time_based_with_http_info variant
 
@@ -4454,30 +3411,13 @@ Insert pbx timeRange
 
 Insert a pbx timeRange 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-pbx_time_range = UltracartClient::ConversationPbxTimeRange.new # ConversationPbxTimeRange | Pbx TimeRange
-
-begin
-  # Insert pbx timeRange
-  result = api_instance.insert_pbx_time_range(pbx_time_range)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->insert_pbx_time_range: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the insert_pbx_time_range_with_http_info variant
 
@@ -4525,30 +3465,13 @@ Insert pbx voicemailMailbox
 
 Insert a pbx voicemailMailbox 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-pbx_voicemail_mailbox = UltracartClient::ConversationPbxVoicemailMailbox.new # ConversationPbxVoicemailMailbox | Pbx VoicemailMailbox
-
-begin
-  # Insert pbx voicemailMailbox
-  result = api_instance.insert_pbx_voicemail_mailbox(pbx_voicemail_mailbox)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->insert_pbx_voicemail_mailbox: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the insert_pbx_voicemail_mailbox_with_http_info variant
 
@@ -4596,32 +3519,13 @@ Join a conversation
 
 Join a conversation 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_uuid = 'conversation_uuid_example' # String | 
-opts = {
-  join_request: UltracartClient::ConversationJoinRequest.new # ConversationJoinRequest | Join request
-}
-
-begin
-  # Join a conversation
-  api_instance.join_conversation(conversation_uuid, opts)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->join_conversation: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the join_conversation_with_http_info variant
 
@@ -4670,29 +3574,13 @@ Leave a conversation
 
 Leave a conversation 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_uuid = 'conversation_uuid_example' # String | 
-
-begin
-  # Leave a conversation
-  api_instance.leave_conversation(conversation_uuid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->leave_conversation: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the leave_conversation_with_http_info variant
 
@@ -4740,29 +3628,13 @@ Listened Agent Voicemail
 
 Listened pbx agent Voicemail 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-recording_sid = 'recording_sid_example' # String | 
-
-begin
-  # Listened Agent Voicemail
-  api_instance.listened_pbx_agent_voicemail(recording_sid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->listened_pbx_agent_voicemail: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the listened_pbx_agent_voicemail_with_http_info variant
 
@@ -4810,30 +3682,13 @@ Listened Queue Voicemail
 
 Listened pbx queue Voicemail 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-queue_uuid = 'queue_uuid_example' # String | 
-recording_sid = 'recording_sid_example' # String | 
-
-begin
-  # Listened Queue Voicemail
-  api_instance.listened_pbx_queue_voicemail(queue_uuid, recording_sid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->listened_pbx_queue_voicemail: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the listened_pbx_queue_voicemail_with_http_info variant
 
@@ -4882,29 +3737,13 @@ Mark a conversation as read
 
 Mark a conversation as read 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_uuid = 'conversation_uuid_example' # String | 
-
-begin
-  # Mark a conversation as read
-  api_instance.mark_read_conversation(conversation_uuid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->mark_read_conversation: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the mark_read_conversation_with_http_info variant
 
@@ -4952,29 +3791,13 @@ reset statistics within the queue
 
 reset statistics within the queue 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-queue_uuid = 'queue_uuid_example' # String | 
-
-begin
-  # reset statistics within the queue
-  api_instance.reset_conversation_pbx_queue_statistics(queue_uuid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->reset_conversation_pbx_queue_statistics: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the reset_conversation_pbx_queue_statistics_with_http_info variant
 
@@ -5022,30 +3845,13 @@ Search for canned messages by short_code
 
 Search for canned messages by short_code 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-search_request = UltracartClient::ConversationCannedMessagesSearch.new # ConversationCannedMessagesSearch | Search request
-
-begin
-  # Search for canned messages by short_code
-  result = api_instance.search_conversation_canned_messages(search_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->search_conversation_canned_messages: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the search_conversation_canned_messages_with_http_info variant
 
@@ -5093,29 +3899,13 @@ Unsubscribe any SMS participants in this conversation
 
 Unsubscribe any SMS participants in this conversation 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_uuid = 'conversation_uuid_example' # String | 
-
-begin
-  # Unsubscribe any SMS participants in this conversation
-  api_instance.sms_unsubscribe_conversation(conversation_uuid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->sms_unsubscribe_conversation: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the sms_unsubscribe_conversation_with_http_info variant
 
@@ -5163,30 +3953,13 @@ Start a conversation
 
 Start a new conversation 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-start_request = UltracartClient::ConversationStartRequest.new # ConversationStartRequest | Start request
-
-begin
-  # Start a conversation
-  result = api_instance.start_conversation(start_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->start_conversation: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the start_conversation_with_http_info variant
 
@@ -5234,30 +4007,13 @@ Update agent profile
 
 Update agent profile 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-profile_request = UltracartClient::ConversationAgentProfile.new # ConversationAgentProfile | Profile request
-
-begin
-  # Update agent profile
-  result = api_instance.update_agent_profile(profile_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->update_agent_profile: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_agent_profile_with_http_info variant
 
@@ -5305,31 +4061,13 @@ Update a canned message
 
 Update a canned message 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_canned_message_oid = 56 # Integer | 
-canned_message = UltracartClient::ConversationCannedMessage.new # ConversationCannedMessage | Canned message
-
-begin
-  # Update a canned message
-  result = api_instance.update_conversation_canned_message(conversation_canned_message_oid, canned_message)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->update_conversation_canned_message: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_conversation_canned_message_with_http_info variant
 
@@ -5378,31 +4116,13 @@ Update a department
 
 Update a department 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_department_oid = 56 # Integer | 
-department = UltracartClient::ConversationDepartment.new # ConversationDepartment | Department
-
-begin
-  # Update a department
-  result = api_instance.update_conversation_department(conversation_department_oid, department)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->update_conversation_department: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_conversation_department_with_http_info variant
 
@@ -5451,31 +4171,13 @@ Update a engagement
 
 Update a engagement 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_engagement_oid = 56 # Integer | 
-engagement = UltracartClient::ConversationEngagement.new # ConversationEngagement | Engagement
-
-begin
-  # Update a engagement
-  result = api_instance.update_conversation_engagement(conversation_engagement_oid, engagement)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->update_conversation_engagement: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_conversation_engagement_with_http_info variant
 
@@ -5524,30 +4226,13 @@ Update status within the queue
 
 Update status within the queue 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-queue_name = 'queue_name_example' # String | 
-status_request = UltracartClient::ConversationWebchatQueueStatusUpdateRequest.new # ConversationWebchatQueueStatusUpdateRequest | Status request
-
-begin
-  # Update status within the queue
-  api_instance.update_conversation_webchat_queue_status(queue_name, status_request)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->update_conversation_webchat_queue_status: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_conversation_webchat_queue_status_with_http_info variant
 
@@ -5596,31 +4281,13 @@ Update pbx agent
 
 Update a pbx agent 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_agent_uuid = 'conversation_pbx_agent_uuid_example' # String | 
-pbx_agent = UltracartClient::ConversationPbxAgent.new # ConversationPbxAgent | Pbx Agent
-
-begin
-  # Update pbx agent
-  result = api_instance.update_pbx_agent(conversation_pbx_agent_uuid, pbx_agent)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->update_pbx_agent: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_pbx_agent_with_http_info variant
 
@@ -5669,31 +4336,13 @@ Update pbx audio
 
 Update a pbx audio 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_audio_uuid = 'conversation_pbx_audio_uuid_example' # String | 
-pbx_audio = UltracartClient::ConversationPbxAudio.new # ConversationPbxAudio | Pbx Audio
-
-begin
-  # Update pbx audio
-  result = api_instance.update_pbx_audio(conversation_pbx_audio_uuid, pbx_audio)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->update_pbx_audio: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_pbx_audio_with_http_info variant
 
@@ -5742,31 +4391,13 @@ Update pbx menu
 
 Update a pbx menu 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_menu_uuid = 'conversation_pbx_menu_uuid_example' # String | 
-pbx_menu = UltracartClient::ConversationPbxMenu.new # ConversationPbxMenu | Pbx Menu
-
-begin
-  # Update pbx menu
-  result = api_instance.update_pbx_menu(conversation_pbx_menu_uuid, pbx_menu)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->update_pbx_menu: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_pbx_menu_with_http_info variant
 
@@ -5815,31 +4446,13 @@ Update pbx phoneNumber
 
 Update a pbx phoneNumber 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_phone_number_uuid = 'conversation_pbx_phone_number_uuid_example' # String | 
-pbx_phone_number = UltracartClient::ConversationPbxPhoneNumber.new # ConversationPbxPhoneNumber | Pbx PhoneNumber
-
-begin
-  # Update pbx phoneNumber
-  result = api_instance.update_pbx_phone_number(conversation_pbx_phone_number_uuid, pbx_phone_number)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->update_pbx_phone_number: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_pbx_phone_number_with_http_info variant
 
@@ -5888,31 +4501,13 @@ Update pbx queue
 
 Update a pbx queue 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_queue_uuid = 'conversation_pbx_queue_uuid_example' # String | 
-pbx_queue = UltracartClient::ConversationPbxQueue.new # ConversationPbxQueue | Pbx Queue
-
-begin
-  # Update pbx queue
-  result = api_instance.update_pbx_queue(conversation_pbx_queue_uuid, pbx_queue)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->update_pbx_queue: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_pbx_queue_with_http_info variant
 
@@ -5961,31 +4556,13 @@ Update pbx timeBased
 
 Update a pbx timeBased 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_time_based_uuid = 'conversation_pbx_time_based_uuid_example' # String | 
-pbx_time_based = UltracartClient::ConversationPbxTimeBased.new # ConversationPbxTimeBased | Pbx TimeBased
-
-begin
-  # Update pbx timeBased
-  result = api_instance.update_pbx_time_based(conversation_pbx_time_based_uuid, pbx_time_based)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->update_pbx_time_based: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_pbx_time_based_with_http_info variant
 
@@ -6034,31 +4611,13 @@ Update pbx timeRange
 
 Update a pbx timeRange 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_time_range_uuid = 'conversation_pbx_time_range_uuid_example' # String | 
-pbx_time_range = UltracartClient::ConversationPbxTimeRange.new # ConversationPbxTimeRange | Pbx TimeRange
-
-begin
-  # Update pbx timeRange
-  result = api_instance.update_pbx_time_range(conversation_pbx_time_range_uuid, pbx_time_range)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->update_pbx_time_range: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_pbx_time_range_with_http_info variant
 
@@ -6107,31 +4666,13 @@ Update pbx voicemailMailbox
 
 Update a pbx voicemailMailbox 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conversation_pbx_voicemail_mailbox_uuid = 'conversation_pbx_voicemail_mailbox_uuid_example' # String | 
-pbx_voicemail_mailbox = UltracartClient::ConversationPbxVoicemailMailbox.new # ConversationPbxVoicemailMailbox | Pbx VoicemailMailbox
-
-begin
-  # Update pbx voicemailMailbox
-  result = api_instance.update_pbx_voicemail_mailbox(conversation_pbx_voicemail_mailbox_uuid, pbx_voicemail_mailbox)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->update_pbx_voicemail_mailbox: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_pbx_voicemail_mailbox_with_http_info variant
 
@@ -6180,30 +4721,12 @@ Update virtual agent budget
 
 Update virtual agent budget 
 
+
 ### Examples
 
-```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+(No example for this operation).
 
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-virtual_agent_budget = UltracartClient::ConversationVirtualAgentBudget.new # ConversationVirtualAgentBudget | Virtual Agent Budget
-
-begin
-  # Update virtual agent budget
-  result = api_instance.update_virtual_agent_budget(virtual_agent_budget)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->update_virtual_agent_budget: #{e}"
-end
-```
 
 #### Using the update_virtual_agent_budget_with_http_info variant
 
@@ -6251,30 +4774,12 @@ Update virtual agent capabilities
 
 Update virtual agent capabilities 
 
+
 ### Examples
 
-```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+(No example for this operation).
 
-api = UltracartClient::ConversationApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-virtual_agent_capabilities = UltracartClient::ConversationVirtualAgentCapabilities.new # ConversationVirtualAgentCapabilities | Virtual Agent Capabilities
-
-begin
-  # Update virtual agent capabilities
-  result = api_instance.update_virtual_agent_capabilities(virtual_agent_capabilities)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->update_virtual_agent_capabilities: #{e}"
-end
-```
 
 #### Using the update_virtual_agent_capabilities_with_http_info variant
 

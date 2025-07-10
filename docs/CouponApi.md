@@ -33,29 +33,19 @@ Delete a coupon
 
 Delete a coupon on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
+require_relative '../constants'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
+coupon_oid = 123456789
 
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-coupon_oid = 56 # Integer | The coupon_oid to delete.
-
-begin
-  # Delete a coupon
-  api_instance.delete_coupon(coupon_oid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->delete_coupon: #{e}"
-end
+coupon_api.delete_coupon(coupon_oid)
 ```
+
 
 #### Using the delete_coupon_with_http_info variant
 
@@ -103,29 +93,21 @@ Deletes multiple coupons
 
 Delete coupons on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
+require_relative '../constants'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
+merchant_code = '10OFF'
+delete_request = UltracartClient::CouponDeletesRequest.new
+delete_request.coupon_codes = [merchant_code]
 
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-coupon_delete_request = UltracartClient::CouponDeletesRequest.new # CouponDeletesRequest | Coupon oids to delete
-
-begin
-  # Deletes multiple coupons
-  api_instance.delete_coupons_by_code(coupon_delete_request)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->delete_coupons_by_code: #{e}"
-end
+coupon_api.delete_coupons_by_code(delete_request)
 ```
+
 
 #### Using the delete_coupons_by_code_with_http_info variant
 
@@ -173,29 +155,23 @@ Deletes multiple coupons
 
 Delete coupons on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
+require_relative '../constants'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# This method is useful if you have the coupons stored in your own system along with their coupon_oids.  If not,
+# just use delete_coupons_by_code()
 
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-coupon_delete_request = UltracartClient::CouponDeletesRequest.new # CouponDeletesRequest | Coupon oids to delete
+coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
+delete_request = UltracartClient::CouponDeletesRequest.new
+delete_request.coupon_oids = [1234567, 2345678, 3456789]
 
-begin
-  # Deletes multiple coupons
-  api_instance.delete_coupons_by_oid(coupon_delete_request)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->delete_coupons_by_oid: #{e}"
-end
+coupon_api.delete_coupons_by_oid(delete_request)
 ```
+
 
 #### Using the delete_coupons_by_oid_with_http_info variant
 
@@ -243,30 +219,22 @@ Determines if a coupon merchant code already exists
 
 Determines if a coupon merchant code already exists. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
+require_relative '../constants'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
+merchant_code = '10OFF'
 
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-merchant_code = 'merchant_code_example' # String | The coupon merchant code to examine.
+api_response = coupon_api.does_coupon_code_exist(merchant_code)
+coupon_exists = api_response.exists
 
-begin
-  # Determines if a coupon merchant code already exists
-  result = api_instance.does_coupon_code_exist(merchant_code)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->does_coupon_code_exist: #{e}"
-end
+puts api_response.inspect
 ```
+
 
 #### Using the does_coupon_code_exist_with_http_info variant
 
@@ -314,31 +282,25 @@ Generates one time codes for a coupon
 
 Generate one time codes for a coupon 
 
+
 ### Examples
 
 ```ruby
-require 'time'
+require_relative '../constants'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
+coupon_oid = 12345678  # if you don't know your coupon_oid, use generate_one_time_codes_by_merchant_code.  same results
 
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-coupon_oid = 56 # Integer | The coupon oid to generate codes.
-coupon_codes_request = UltracartClient::CouponCodesRequest.new # CouponCodesRequest | Coupon code generation parameters
+codes_request = UltracartClient::CouponCodesRequest.new
+codes_request.quantity = 100  # give me 100 codes.
+codes_request.expiration_dts = (Date.today + 90).strftime('%Y-%m-%d') + 'T00:00:00+00:00'  # do you want the codes to expire?
+# codes_request.expiration_seconds  # also an option for short-lived coupons
 
-begin
-  # Generates one time codes for a coupon
-  result = api_instance.generate_coupon_codes(coupon_oid, coupon_codes_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->generate_coupon_codes: #{e}"
-end
+api_response = coupon_api.generate_coupon_codes(coupon_oid, codes_request)
+coupon_codes = api_response.coupon_codes
 ```
+
 
 #### Using the generate_coupon_codes_with_http_info variant
 
@@ -387,31 +349,25 @@ Generates one time codes by merchant code
 
 Generate one time codes by merchant code 
 
+
 ### Examples
 
 ```ruby
-require 'time'
+require_relative '../constants'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
+coupon_oid = 12345678  # if you don't know your coupon_oid, use generate_one_time_codes_by_merchant_code.  same results
 
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-merchant_code = 'merchant_code_example' # String | The merchant code to generate one time codes.
-coupon_codes_request = UltracartClient::CouponCodesRequest.new # CouponCodesRequest | Coupon code generation parameters
+codes_request = UltracartClient::CouponCodesRequest.new
+codes_request.quantity = 100  # give me 100 codes.
+codes_request.expiration_dts = (Date.today + 90).strftime('%Y-%m-%d') + 'T00:00:00+00:00'  # do you want the codes to expire?
+# codes_request.expiration_seconds  # also an option for short-lived coupons
 
-begin
-  # Generates one time codes by merchant code
-  result = api_instance.generate_one_time_codes_by_merchant_code(merchant_code, coupon_codes_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->generate_one_time_codes_by_merchant_code: #{e}"
-end
+api_response = coupon_api.generate_coupon_codes(coupon_oid, codes_request)
+coupon_codes = api_response.coupon_codes
 ```
+
 
 #### Using the generate_one_time_codes_by_merchant_code_with_http_info variant
 
@@ -460,29 +416,33 @@ Retrieve auto apply rules and conditions
 
 Retrieve auto apply rules and conditions 
 
+
 ### Examples
 
 ```ruby
-require 'time'
+require_relative '../constants'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+=begin
+    getAutoApply returns back the items and subtotals that trigger "auto coupons", i.e. coupons that are automatically
+    added to a shopping cart.  The manual configuration of auto coupons is at the bottom of the main coupons screen.
+    See: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/1376525/Coupons#Coupons-Navigation
+=end
 
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
+api_response = coupon_api.get_auto_apply
 
-begin
-  # Retrieve auto apply rules and conditions
-  result = api_instance.get_auto_apply
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->get_auto_apply: #{e}"
+puts 'These are the subtotal levels:'
+api_response.subtotal_levels.each do |subtotal_level|
+  puts subtotal_level.inspect
+end
+
+puts "\nThese are the item triggers:"
+api_response.required_items.each do |required_item|
+  puts required_item.inspect
 end
 ```
+
 
 #### Using the get_auto_apply_with_http_info variant
 
@@ -528,33 +488,22 @@ Retrieve a coupon
 
 Retrieves a single coupon using the specified coupon profile oid. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
+require_relative '../constants'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
+coupon_oid = 123456789
 
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-coupon_oid = 56 # Integer | The coupon oid to retrieve.
-opts = {
-  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
-}
+# coupons do not have expansions
+api_response = coupon_api.get_coupon(coupon_oid, { _expand: nil })
 
-begin
-  # Retrieve a coupon
-  result = api_instance.get_coupon(coupon_oid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->get_coupon: #{e}"
-end
+puts api_response.inspect
 ```
+
 
 #### Using the get_coupon_with_http_info variant
 
@@ -603,33 +552,19 @@ Retrieve a coupon by merchant code
 
 Retrieves a single coupon using the specified merchant code. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
+require_relative '../constants'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
+api_response = coupon_api.get_coupon_by_merchant_code('10OFF')
 
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-merchant_code = 'merchant_code_example' # String | The coupon merchant code to retrieve.
-opts = {
-  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
-}
-
-begin
-  # Retrieve a coupon by merchant code
-  result = api_instance.get_coupon_by_merchant_code(merchant_code, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->get_coupon_by_merchant_code: #{e}"
-end
+puts api_response.inspect
 ```
+
 
 #### Using the get_coupon_by_merchant_code_with_http_info variant
 
@@ -678,44 +613,92 @@ Retrieve coupons
 
 Retrieves coupons for this account.  If no parameters are specified, all coupons will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
+require_relative '../constants'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+# Error help: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/39077885/Troubleshooting+API+Errors
+# Additional Docs: https://www.ultracart.com/api/#introduction.html
 
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-opts = {
-  merchant_code: 'merchant_code_example', # String | Merchant code
-  description: 'description_example', # String | Description
-  coupon_type: 'coupon_type_example', # String | Coupon type
-  start_date_begin: 'start_date_begin_example', # String | Start date begin
-  start_date_end: 'start_date_end_example', # String | Start date end
-  expiration_date_begin: 'expiration_date_begin_example', # String | Expiration date begin
-  expiration_date_end: 'expiration_date_end_example', # String | Expiration date end
-  affiliate_oid: 56, # Integer | Affiliate oid
-  exclude_expired: true, # Boolean | Exclude expired
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Max 200)
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _sort: '_sort_example', # String | The sort order of the coupons.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
-}
+# This is an old example.  Please see get_coupons_by_query as they do essentially the same thing, but
+# get_coupons_by_query is easier to use.
+
+# returns a block of customers
+# @param coupon_api [UltracartClient::CouponApi]
+# @param offset [Integer] pagination variable
+# @param limit [Integer] pagination variable.  max server will allow is 200
+# @return [Array<UltracartClient::Coupon>]
+def get_coupons_chunk(coupon_api, offset = 0, limit = 200)
+  # TODO: consider using get_coupons_by_query() as it does not require all search parameters
+  merchant_code = nil
+  description = nil
+  coupon_type = nil
+  start_date_begin = nil
+  start_date_end = nil
+  expiration_date_begin = nil
+  expiration_date_end = nil
+  affiliate_oid = nil
+  exclude_expired = nil
+
+  # getCoupons doesn't have any expansions. full record is always returned.
+  opts = {
+    merchant_code: merchant_code,
+    description: description,
+    coupon_type: coupon_type,
+    start_date_begin: start_date_begin,
+    start_date_end: start_date_end,
+    expiration_date_begin: expiration_date_begin,
+    expiration_date_end: expiration_date_end,
+    affiliate_oid: affiliate_oid,
+    exclude_expired: exclude_expired,
+    _limit: limit,
+    _offset: offset,
+    _sort: nil,
+    _expand: nil
+  }
+
+  get_response = coupon_api.get_coupons(opts)
+
+  return get_response.coupons if get_response.success
+
+  []
+end
 
 begin
-  # Retrieve coupons
-  result = api_instance.get_coupons(opts)
-  p result
+  coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
+  coupons = []
+
+  iteration = 1
+  offset = 0
+  limit = 200
+  need_more_records = true
+
+  while need_more_records
+    puts "executing iteration ##{iteration}"
+    iteration += 1
+
+    block_of_customers = get_coupons_chunk(coupon_api, offset, limit)
+    coupons.concat(block_of_customers)
+
+    offset += limit
+    need_more_records = block_of_customers.length == limit
+    # sleep(1)  # I'm testing rate limiter headers.  this should probably be uncommented.  maybe.
+  end
+
+  puts coupons.inspect
+
 rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->get_coupons: #{e}"
+  puts "API Exception when calling CouponApi->get_coupons: #{e.message}"
+  puts e.response_body.inspect
+rescue StandardError => e
+  puts "Exception when calling CouponApi->get_coupons: #{e.message}"
 end
 ```
+
 
 #### Using the get_coupons_with_http_info variant
 
@@ -775,36 +758,111 @@ Retrieve coupons by query
 
 Retrieves coupons from the account.  If no parameters are specified, all coupons will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
+require_relative '../constants'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+=begin
+retrieves coupons by query.  Can filter on specific coupons or return back all coupons.  Support pagination.
+A note about the coupon type below.  Those are string literals representing coupons.  This method is used UltraCart's
+backend, and it uses a dropdown box for that value showing friendly descriptions of them.
 
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-coupon_query = UltracartClient::CouponQuery.new # CouponQuery | Coupon query
-opts = {
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Max 200)
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _sort: '_sort_example', # String | The sort order of the coupons.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
-}
+It's not anticipated a merchant would need to query by coupon type, but in the event you do, here's the list of constants:
+"BOGO limit L"
+"Free shipping method Y"
+"Free shipping method Y with purchase of items Z"
+"Free shipping method Y with subtotal Z"
+"Free shipping on item Z"
+"Free X with purchase of Y dollars limit L"
+"Free X with purchase of Y dollars limit L and shipping Z"
+"Free X with purchase of Y limit L"
+"Free X with purchase of Y limit L and free shipping"
+"I Free X with every J purchase of Y limit L"
+"I Free X with every J purchase of Y mix and match group limit L"
+"Item X for Y with purchase of Z limit L"
+"multiple X $ off item Z limit L"
+"No discount"
+"Tiered Dollar Off Subtotal"
+"Tiered % off items Z limit L"
+"Tiered $ off item Z limit L"
+"Tiered Percent off shipping methods Y with subtotal Z"
+"Tiered Percent Off Subtotal"
+"X dollars off shipping method Y with purchase of items Z"
+"X dollars off subtotal with purchase Y items"
+"X $ for item Z limit L"
+"X more loyalty cashback"
+"X more loyalty points"
+"X % off item Z and free shipping"
+"X $ off item Z limit L"
+"X % off item Z limit L"
+"X % off msrp item Z limit L"
+"X % off retail item Z limit L"
+"X $ off shipping method Y"
+"X % off shipping method Y"
+"X $ off subtotal"
+"X % off subtotal"
+"X $ off subtotal and shipping"
+"X % off subtotal free shipping method Y"
+"X % off subtotal limit L"
+"X off subtotal with purchase block of L item Y"
+"X % off subtotal with purchase of item Y"
+"X % off subtotal with purchase of Y"
+"X $ off subtotal with Y $ purchase"
+"X $ off subtotal with Y $ purchase and free shipping"
+"X % off Y with purchase Z limit L"
+"X % off Y with T purchase Z limit L"
+"X percent more loyalty points"
+"X $ shipping method Y with subtotal Z"
+"X ? subtotal"
+=end
 
-begin
-  # Retrieve coupons by query
-  result = api_instance.get_coupons_by_query(coupon_query, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->get_coupons_by_query: #{e}"
+def get_coupon_chunk(coupon_api, offset, limit)
+  query = UltracartClient::CouponQuery.new
+  query.merchant_code = '10OFF'  # supports partial matching
+  query.description = 'Saturday'  # supports partial matching
+  # query.coupon_type = nil  # see the note at the top of this sample.
+  # query.start_dts_begin = (Date.today - 2000).strftime('%Y-%m-%d') + 'T00:00:00+00:00'  # yes, that 2,000 days.
+  # query.start_dts_end = Date.today.strftime('%Y-%m-%d') + 'T00:00:00+00:00'
+  # query.expiration_dts_begin = nil
+  # query.expiration_dts_end = nil
+  # query.affiliate_oid = 0  # this requires an affiliate_oid.  If you need help finding an affiliate's oid, contact support.
+  query.exclude_expired = true
+
+  # coupons do not have expansions
+  # Possible sorts: "coupon_type", "merchant_code", "description", "start_dts", "expiration_dts", "quickbooks_code"
+  opts = {
+    _expand: nil,
+    _sort: 'merchant_code'
+  }
+
+  api_response = coupon_api.get_coupons_by_query(query, limit, offset, opts)
+  return api_response.coupons if api_response.coupons
+  []
 end
+
+coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
+coupons = []
+
+iteration = 1
+offset = 0
+limit = 200
+more_records_to_fetch = true
+
+while more_records_to_fetch
+  puts "executing iteration #{iteration}"
+  chunk_of_coupons = get_coupon_chunk(coupon_api, offset, limit)
+  coupons.concat(chunk_of_coupons)
+  offset += limit
+  more_records_to_fetch = chunk_of_coupons.length == limit
+  iteration += 1
+end
+
+puts coupons.inspect
 ```
+
 
 #### Using the get_coupons_by_query_with_http_info variant
 
@@ -856,29 +914,15 @@ Retrieve values needed for a coupon editor
 
 Retrieve values needed for a coupon editor 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Retrieve values needed for a coupon editor
-  result = api_instance.get_editor_values
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->get_editor_values: #{e}"
-end
+# This is an internal method used by our Coupon management screen.  It returns back all the static data needed
+# for our dropdown lists, such as coupon constants.  You can call it if you like, but the data won't be
+# of much use.
 ```
+
 
 #### Using the get_editor_values_with_http_info variant
 
@@ -924,33 +968,84 @@ Insert a coupon
 
 Insert a coupon on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# Initialize the coupon API
+coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
 
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-coupon = UltracartClient::Coupon.new # Coupon | Coupon to insert
-opts = {
-  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
-}
+# Create a new coupon
+coupon = UltracartClient::Coupon.new
+coupon.merchant_code = '11OFF'
+coupon.description = 'Eleven dollars off subtotal'
 
-begin
-  # Insert a coupon
-  result = api_instance.insert_coupon(coupon, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->insert_coupon: #{e}"
-end
+# each coupon must have a 'type' defined by creating a child object directly beneath the main Coupon object.
+# this is complex and there are a LOT of coupon types.  See the backend (secure.ultracart.com) coupon screens
+# to get an idea of what functionality each coupon possesses.  If you're not sure, contact UltraCart support.
+coupon.amount_off_subtotal = UltracartClient::CouponAmountOffSubtotal.new
+coupon.amount_off_subtotal.discount_amount = 11
+
+# Here are the different coupon types, but beware that new coupons are added frequently.
+#CouponAmountOffItems
+#CouponAmountOffShipping
+#CouponAmountOffShippingWithItemsPurchase
+#CouponAmountOffSubtotal
+#CouponAmountOffSubtotalAndShipping
+#CouponAmountOffSubtotalFreeShippingWithPurchase
+#CouponAmountOffSubtotalWithBlockPurchase
+#CouponAmountOffSubtotalWithItemsPurchase
+#CouponAmountOffSubtotalWithPurchase
+#CouponAmountShippingWithSubtotal
+#CouponDiscountItems
+#CouponDiscountItemWithItemPurchase
+#CouponFreeItemAndShippingWithSubtotal
+#CouponFreeItemsWithItemPurchase
+#CouponFreeItemsWithMixMatchPurchase
+#CouponFreeItemWithItemPurchase
+#CouponFreeItemWithItemPurchaseAndFreeShipping
+#CouponFreeItemWithSubtotal
+#CouponFreeShipping
+#CouponFreeShippingSpecificItems
+#CouponFreeShippingWithItemsPurchase
+#CouponFreeShippingWithSubtotal
+#CouponMoreLoyaltyCashback
+#CouponMoreLoyaltyPoints
+#CouponMultipleAmountsOffItems
+#CouponNoDiscount
+#CouponPercentMoreLoyaltyCashback
+#CouponPercentMoreLoyaltyPoints
+#CouponPercentOffItems
+#CouponPercentOffItemsAndFreeShipping
+#CouponPercentOffItemsWithItemsPurchase
+#CouponPercentOffItemWithItemsQuantityPurchase
+#CouponPercentOffMsrpItems
+#CouponPercentOffRetailPriceItems
+#CouponPercentOffShipping
+#CouponPercentOffSubtotal
+#CouponPercentOffSubtotalAndFreeShipping
+#CouponPercentOffSubtotalLimit
+#CouponPercentOffSubtotalWithItemsPurchase
+#CouponPercentOffSubtotalWithSubtotal
+#CouponTieredAmountOffItems
+#CouponTieredAmountOffSubtotal
+#CouponTieredPercentOffItems
+#CouponTieredPercentOffShipping
+#CouponTieredPercentOffSubtotal
+#CouponTieredPercentOffSubtotalBasedOnMSRP
+#CouponTierItemDiscount
+#CouponTierPercent
+#CouponTierQuantityAmount
+#CouponTierQuantityPercent
+
+# coupons do not have expansions
+api_response = coupon_api.insert_coupon(coupon, {_expand: nil})
+puts api_response
 ```
+
 
 #### Using the insert_coupon_with_http_info variant
 
@@ -999,34 +1094,29 @@ Insert multiple coupons
 
 Insert multiple coupon on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# Similar to insertCoupon except this method takes a request object containing up to 50 coupons.  Please see
+# insertCoupon for a detailed example on creating a coupon.  It is not repeated here.
 
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-coupons_request = UltracartClient::CouponsRequest.new # CouponsRequest | Coupons to insert (maximum 50)
-opts = {
-  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
-  _placeholders: true # Boolean | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-}
+# Initialize the coupon API
+coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
 
-begin
-  # Insert multiple coupons
-  result = api_instance.insert_coupons(coupons_request, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->insert_coupons: #{e}"
-end
+coupons_request = UltracartClient::CouponsRequest.new
+coupons = []
+# TODO: add Coupons() to this array (see insertCoupon sample for help)
+coupons_request.coupons = coupons
+
+# coupons do not have expansions or placeholders
+api_response = coupon_api.insert_coupons(coupons_request, {_expand: nil, _placeholders: nil})
+puts api_response
 ```
+
 
 #### Using the insert_coupons_with_http_info variant
 
@@ -1076,33 +1166,15 @@ Searches for items to display within a coupon editor and assign to coupons
 
 Searches for items to display within a coupon editor and assign to coupons 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-opts = {
-  s: 's_example', # String | 
-  m: 56 # Integer | 
-}
-
-begin
-  # Searches for items to display within a coupon editor and assign to coupons
-  result = api_instance.search_items(opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->search_items: #{e}"
-end
+# This is an internal method used by our Coupon management screen.  It searches merchant items to display in
+# some of the coupon editor dropdowns.  See ItemApi.getItemsByQuery if you need to search items.  This method
+# is inflexible and geared toward our UI.
 ```
+
 
 #### Using the search_items_with_http_info variant
 
@@ -1151,29 +1223,40 @@ Update auto apply rules and conditions
 
 Update auto apply rules and conditions 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# updateAutoApply updates the items and subtotals conditions that trigger "auto coupons", i.e. coupons that are automatically
+# added to a shopping cart.  The manual configuration of auto coupons is at the bottom of the main coupons screen.
+# See: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/1376525/Coupons#Coupons-Navigation
 
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-conditions = UltracartClient::CouponAutoApplyConditions.new # CouponAutoApplyConditions | Conditions
+# Success is 200 (There is no content.  Yes, this should return a 204, but it returns a 200 with no content)
 
-begin
-  # Update auto apply rules and conditions
-  api_instance.update_auto_apply(conditions)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->update_auto_apply: #{e}"
-end
+# Initialize the coupon API
+coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
+
+auto_apply = UltracartClient::CouponAutoApplyConditions.new
+
+item_condition = UltracartClient::CouponAutoApplyCondition.new
+item_condition.required_item_id = 'ITEM_ABC'
+item_condition.coupon_code = '10OFF'
+item_conditions = [item_condition]
+
+subtotal_condition = UltracartClient::CouponAutoApplyCondition.new
+subtotal_condition.minimum_subtotal = 50 # must spend fifty dollars
+item_condition.coupon_code = '5OFF'
+subtotal_conditions = [subtotal_condition]
+
+auto_apply.required_items = item_conditions
+auto_apply.subtotal_levels = subtotal_conditions
+
+coupon_api.update_auto_apply(auto_apply)
 ```
+
 
 #### Using the update_auto_apply_with_http_info variant
 
@@ -1221,34 +1304,29 @@ Update a coupon
 
 Update a coupon on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# Initialize the coupon API
+coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
+coupon_oid = 123456789
 
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-coupon_oid = 56 # Integer | The coupon_oid to update.
-coupon = UltracartClient::Coupon.new # Coupon | Coupon to update
-opts = {
-  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
-}
+# coupons do not have expansions
+api_response = coupon_api.get_coupon(coupon_oid, {_expand: nil})
+coupon = api_response.coupon
 
-begin
-  # Update a coupon
-  result = api_instance.update_coupon(coupon_oid, coupon, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->update_coupon: #{e}"
-end
+# update the coupon.  this can be difficult given the complexity of coupons.  see insertCoupon sample for details.
+coupon.expiration_dts = (Date.today + 90).strftime('%Y-%m-%d') + 'T00:00:00+00:00'
+
+api_response = coupon_api.update_coupon(coupon_oid, coupon, {_expand: nil})
+updated_coupon = api_response.coupon
+puts updated_coupon
 ```
+
 
 #### Using the update_coupon_with_http_info variant
 
@@ -1298,35 +1376,33 @@ Update multiple coupons
 
 Update multiple coupon on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# Initialize the coupon API
+coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
+coupon_oid = 123456789
 
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-coupons_request = UltracartClient::CouponsRequest.new # CouponsRequest | Coupons to update (synchronous maximum 50 / asynchronous maximum 100)
-opts = {
-  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
-  _placeholders: true, # Boolean | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-  _async: true # Boolean | True if the operation should be run async.  No result returned
-}
+# coupons do not have expansions or placeholders
+api_response = coupon_api.get_coupon(coupon_oid, {_expand: nil})
+coupon = api_response.coupon
 
-begin
-  # Update multiple coupons
-  result = api_instance.update_coupons(coupons_request, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->update_coupons: #{e}"
-end
+# update the coupon.  this can be difficult given the complexity of coupons.  see insertCoupon sample for details.
+coupon.expiration_dts = (Date.today + 90).strftime('%Y-%m-%d') + 'T00:00:00+00:00'
+
+# This example only has one coupon.  But it's a trivial matter to add more coupons
+coupons_request = UltracartClient::CouponsRequest.new
+coupons_request.coupons = [coupon]
+
+api_response = coupon_api.update_coupons(coupons_request, {_expand: nil, _placeholders: nil})
+updated_coupons = api_response.coupons
+puts updated_coupons
 ```
+
 
 #### Using the update_coupons_with_http_info variant
 
@@ -1377,31 +1453,34 @@ Upload one-time codes for a coupon
 
 Upload one-time codes for a coupon 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# uploadCouponCodes allows a merchant to upload one-time use codes and associate them with a merchant code (i.e. a coupon).
+# UltraCart has methods for generating one-time codes, and they work well, but this method exists when the merchant generates
+# them themselves.  This frequently occurs when a merchant sends out a mailer with unique coupon codes on the mailer.  The
+# merchant can then upload those codes with this method.
 
-api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-coupon_oid = 56 # Integer | The coupon oid to associate with the provided one-time codes.
-upload_coupon_codes_request = UltracartClient::UploadCouponCodesRequest.new # UploadCouponCodesRequest | One-time coupon codes
+# Initialize the coupon API
+coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
+coupon_oid = 12345678  # if you don't know your coupon_oid, use generateOneTimeCodesByMerchantCode.  same results
 
-begin
-  # Upload one-time codes for a coupon
-  result = api_instance.upload_coupon_codes(coupon_oid, upload_coupon_codes_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling CouponApi->upload_coupon_codes: #{e}"
-end
+codes_request = UltracartClient::UploadCouponCodesRequest.new
+codes_request.coupon_codes = ['code1', 'code2', 'code3']
+
+api_response = coupon_api.upload_coupon_codes(coupon_oid, codes_request)
+puts 'Uploaded codes:'
+puts api_response.uploaded_codes
+puts 'Duplicated codes:'
+puts api_response.duplicate_codes
+puts 'Rejected codes:'
+puts api_response.rejected_codes
 ```
+
 
 #### Using the upload_coupon_codes_with_http_info variant
 

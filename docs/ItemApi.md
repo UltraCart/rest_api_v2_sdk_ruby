@@ -37,29 +37,24 @@ Delete a digital item, which is a file within the digital library, not an actual
 
 Delete a digital item on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-digital_item_oid = 56 # Integer | The digital item oid to delete.
+require_relative '../constants'
+require_relative './item_functions'
 
 begin
-  # Delete a digital item, which is a file within the digital library, not an actual merchant item
-  api_instance.delete_digital_item(digital_item_oid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->delete_digital_item: #{e}"
+  digital_item_oid = insert_sample_digital_item
+  delete_sample_digital_item(digital_item_oid)
+rescue UltracartClient::ApiException => e
+  puts 'An ApiException occurred. Please review the following error:'
+  p e
+  exit(1)
 end
 ```
+
 
 #### Using the delete_digital_item_with_http_info variant
 
@@ -107,29 +102,24 @@ Delete an item
 
 Delete an item on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-merchant_item_oid = 56 # Integer | The item oid to delete.
+require_relative '../constants'
+require_relative './item_functions'
 
 begin
-  # Delete an item
-  api_instance.delete_item(merchant_item_oid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->delete_item: #{e}"
+  item_id = insert_sample_item
+  delete_sample_item(item_id)
+rescue UltracartClient::ApiException => e
+  puts 'An ApiException occurred. Please review the following error:'
+  p e
+  exit(1)
 end
 ```
+
 
 #### Using the delete_item_with_http_info variant
 
@@ -177,30 +167,30 @@ Delete a review
 
 Delete an item review. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# Deletes a specific user review for an item.  This would most likely be used by a merchant who has cached all
+# reviews on a separate site and then wishes to remove a particular review.
+#
+# The merchant_item_oid is a unique identifier used by UltraCart.  If you do not know your item's oid, call
+# ItemApi.get_item_by_merchant_item_id() to retrieve the item, and then it's oid item.merchant_item_oid
+#
+# The review_oid is a unique identifier used by UltraCart.  If you do not know a review's oid, call
+# ItemApi.get_reviews() to get all reviews where you can then grab the oid from an item.
+#
+# Success returns back a status code of 204 (No Content)
 
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-review_oid = 56 # Integer | The review oid to delete.
-merchant_item_oid = 56 # Integer | The item oid the review is associated with.
-
-begin
-  # Delete a review
-  api_instance.delete_review(review_oid, merchant_item_oid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->delete_review: #{e}"
-end
+item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+merchant_item_oid = 123456
+review_oid = 987654
+item_api.delete_review(review_oid, merchant_item_oid)
 ```
+
 
 #### Using the delete_review_with_http_info variant
 
@@ -249,30 +239,38 @@ Retrieve a digital item from the digital library, which are digital files that m
 
 Retrieves a digital item (file information) from the account.  Be aware that these are not normal items that can be added to a shopping cart. Rather, they are digital files that may be associated with normal items. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-digital_item_oid = 56 # Integer | The digital item oid to retrieve.
+require_relative '../constants'
+require_relative './item_functions'
 
 begin
-  # Retrieve a digital item from the digital library, which are digital files that may be attached to normal items
-  result = api_instance.get_digital_item(digital_item_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->get_digital_item: #{e}"
+  # Digital Items are not normal items you sell on your site. They are digital files that you may add to
+  # a library and then attach to a normal item as an accessory or the main item itself.
+  # See: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/1376485/Digital+Items
+
+  digital_item_oid = insert_sample_digital_item # create an item so I can get an item
+  item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+
+  opts = { '_expand' => nil }
+  api_response = item_api.get_digital_item(digital_item_oid, opts)
+  digital_item = api_response.digital_item # assuming this succeeded
+
+  puts 'The following item was retrieved via get_digital_item():'
+  p digital_item
+
+  delete_sample_digital_item(digital_item_oid)
+
+rescue UltracartClient::ApiException => e
+  puts 'An ApiException occurred. Please review the following error:'
+  p e
+  exit(1)
 end
 ```
+
 
 #### Using the get_digital_item_with_http_info variant
 
@@ -320,37 +318,53 @@ Retrieve digital items from the digital library which are digital files that may
 
 Retrieves a group of digital items (file information) from the account.  If no parameters are specified, all digital items will be returned.  Be aware that these are not normal items that can be added to a shopping cart. Rather, they are digital files that may be associated with normal items.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-opts = {
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Default 100, Max 2000)
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _since: '_since_example', # String | Fetch items that have been created/modified since this date/time.
-  _sort: '_sort_example', # String | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
-  _placeholders: true # Boolean | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-}
+require_relative '../constants'
+require_relative './item_functions'
 
 begin
-  # Retrieve digital items from the digital library which are digital files that may be attached to normal items
-  result = api_instance.get_digital_items(opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->get_digital_items: #{e}"
+  # Please Note!
+  # Digital Items are not normal items you sell on your site.  They are digital files that you may add to
+  # a library and then attach to a normal item as an accessory or the main item itself.
+  # See: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/1376485/Digital+Items
+
+  # Create a sample digital item to retrieve
+  digital_item_oid = insert_sample_digital_item
+
+  # Initialize the item API
+  item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+
+  # Prepare API call parameters
+  opts = {
+    '_limit' => 100,
+    '_offset' => 0,
+    '_since' => nil,  # digital items do not use since. leave as nil.
+    '_sort' => nil,   # if nil, use default of original_filename
+    '_expand' => nil, # digital items have no expansion. leave as nil. this value is ignored
+    '_placeholders' => nil # digital items have no placeholders. leave as nil.
+  }
+
+  # Retrieve digital items
+  api_response = item_api.get_digital_items(opts)
+  digital_items = api_response.digital_items # assuming this succeeded
+
+  # Output retrieved digital items
+  puts 'The following items were retrieved via getDigitalItems():'
+  digital_items.each do |digital_item|
+    p digital_item
+  end
+
+rescue UltracartClient::ApiException => e
+  puts 'An ApiException occurred. Please review the following error:'
+  p e # change_me: handle gracefully
+  exit 1
 end
 ```
+
 
 #### Using the get_digital_items_with_http_info variant
 
@@ -403,30 +417,48 @@ Retrieves digital items from the digital library (which are digital files that m
 
 Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id.  Be aware that these are not normal items that can be added to a shopping cart. Rather, they are digital files that may be associated with normal items. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-external_id = 'external_id_example' # String | The external id to match against.
+require_relative '../constants'
+require_relative './item_functions'
 
 begin
-  # Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id
-  result = api_instance.get_digital_items_by_external_id(external_id)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->get_digital_items_by_external_id: #{e}"
+  # Please Note!
+  # Digital Items are not normal items you sell on your site.  They are digital files that you may add to
+  # a library and then attach to a normal item as an accessory or the main item itself.
+  # See: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/1376485/Digital+Items
+
+  # Generate a unique external ID
+  external_id = SecureRandom.uuid
+  puts "My external id is #{external_id}"
+
+  # Create digital item with a specific external id for later use
+  digital_item_oid = insert_sample_digital_item(external_id)
+
+  # Initialize the item API
+  item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+
+  # Retrieve digital items by external ID
+  api_response = item_api.get_digital_items_by_external_id(external_id)
+  digital_items = api_response.digital_items # assuming this succeeded
+
+  # Output retrieved items
+  puts 'The following item was retrieved via getDigitalItem():'
+  p digital_items
+
+  # Delete the sample digital item
+  delete_sample_digital_item(digital_item_oid)
+
+rescue UltracartClient::ApiException => e
+  puts 'An ApiException occurred. Please review the following error:'
+  p e # change_me: handle gracefully
+  exit 1
 end
 ```
+
 
 #### Using the get_digital_items_by_external_id_with_http_info variant
 
@@ -474,29 +506,36 @@ Retrieve a list of item inventories.  This method may be called once every 15 mi
 
 Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
+# Retrieve a list of item inventories.
+# This method may be called once every 15 minutes.  More than that will result in a 429 response.
 
 begin
-  # Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response.
-  result = api_instance.get_inventory_snapshot
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->get_inventory_snapshot: #{e}"
+  # Initialize the item API
+  item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+
+  # Retrieve inventory snapshot
+  api_response = item_api.get_inventory_snapshot
+  inventories = api_response.inventories
+
+  # Output each inventory item
+  inventories.each do |inventory|
+    p inventory
+  end
+
+rescue UltracartClient::ApiException => e
+  puts 'An ApiException occurred. Please review the following error:'
+  p e # change_me: handle gracefully
+  exit 1
 end
 ```
+
 
 #### Using the get_inventory_snapshot_with_http_info variant
 
@@ -542,34 +581,75 @@ Retrieve an item
 
 Retrieves a single item using the specified item oid. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-merchant_item_oid = 56 # Integer | The item oid to retrieve.
-opts = {
-  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
-  _placeholders: true # Boolean | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-}
+require_relative '../constants'
+require_relative './item_functions'
 
 begin
-  # Retrieve an item
-  result = api_instance.get_item(merchant_item_oid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->get_item: #{e}"
+  # Of the two getItem methods, you'll probably always use getItemByMerchantItemId instead of this one.
+  # Most item work is done with the item id, not the item oid. The latter is only meaningful as a primary
+  # key in the UltraCart databases. But here is an example of using getItem(). We take the long route here
+  # of retrieving the item using getItemByMerchantItemId to obtain the oid rather than hard-coding it.
+  # We do this because these samples are used in our quality control system and run repeatedly.
+
+  # Insert a sample item
+  item_id = insert_sample_item
+
+  # Initialize APIs
+  item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+  customer_api = UltracartClient::CustomerApi.new_using_api_key(Constants::API_KEY)
+
+  # Retrieve item by merchant item ID (base object only)
+  base_response = item_api.get_item_by_merchant_item_id(item_id, opts = { '_expand' => nil, '_placeholders' => false })
+  item = base_response.item
+
+  merchant_item_oid = item.merchant_item_oid
+
+  # Possible expansion values documented in comments
+  # Expansion demonstrates accessing product reviews
+  expand_options = "reviews,reviews.individual_reviews"
+
+  # Retrieve full item details with expansions
+  full_response = item_api.get_item(merchant_item_oid, opts = { '_expand' => expand_options, '_placeholders' => false })
+  full_item = full_response.item
+
+  # Access item reviews
+  item_reviews = full_item.reviews
+  individual_reviews = item_reviews.individual_reviews
+
+  # Iterate through individual reviews
+  individual_reviews.each do |individual_review|
+    # Access rating names and scores (configurable by merchant)
+    rating_name = individual_review.get_rating_name1
+    rating_score = individual_review.get_rating_score1
+
+    # Retrieve reviewer information (cautiously to avoid API call limits)
+    customer_response = customer_api.get_customer(
+      individual_review.customer_profile_oid,
+      opts = { '_expand' => "reviewer" }
+    )
+    customer = customer_response.customer
+    reviewer = customer.reviewer
+  end
+
+  # Output the retrieved item
+  puts 'The following item was retrieved via getItem():'
+  p full_item
+
+  # Clean up sample item
+  delete_sample_item(merchant_item_oid)
+
+rescue UltracartClient::ApiException => e
+  puts 'An ApiException occurred. Please review the following error:'
+  p e # change_me: handle gracefully
+  exit 1
 end
 ```
+
 
 #### Using the get_item_with_http_info variant
 
@@ -619,34 +699,101 @@ Retrieve an item by item id
 
 Retrieves a single item using the specified item id. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-merchant_item_id = 'merchant_item_id_example' # String | The item id to retrieve.
-opts = {
-  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
-  _placeholders: true # Boolean | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-}
+require_relative '../constants'
+require_relative './item_functions'
 
 begin
-  # Retrieve an item by item id
-  result = api_instance.get_item_by_merchant_item_id(merchant_item_id, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->get_item_by_merchant_item_id: #{e}"
+  # Of the two getItem methods, you'll probably always use getItemByMerchantItemId instead of this one.
+  # Most item work is done with the item id, not the item oid. The latter is only meaningful as a primary
+  # key in the UltraCart databases. But here is an example of using getItem(). We take the long route here
+  # of retrieving the item using getItemByMerchantItemId to obtain the oid rather than hard-coding it. We do this
+  # because these samples are used in our quality control system and run repeatedly.
+
+  # Insert a sample item
+  item_id = insert_sample_item
+
+  # Initialize item API
+  item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+
+  # The real devil in the getItem calls is the expansion, making sure you return everything you need without
+  # returning everything since these objects are extremely large.
+  # These are the possible expansion values:
+  #
+  # accounting
+  # amember
+  # auto_order
+  # auto_order.steps
+  # ccbill
+  # channel_partner_mappings
+  # chargeback
+  # checkout
+  # content
+  # content.assignments
+  # content.attributes
+  # content.multimedia
+  # content.multimedia.thumbnails
+  # digital_delivery
+  # ebay
+  # email_notifications
+  # enrollment123
+  # gift_certificate
+  # google_product_search
+  # kit_definition
+  # identifiers
+  # instant_payment_notifications
+  # internal
+  # options
+  # payment_processing
+  # physical
+  # pricing
+  # pricing.tiers
+  # realtime_pricing
+  # related
+  # reporting
+  # restriction
+  # reviews
+  # salesforce
+  # shipping
+  # shipping.cases
+  # shipping.destination_markups
+  # shipping.destination_restrictions
+  # shipping.distribution_centers
+  # shipping.methods
+  # shipping.package_requirements
+  # tax
+  # third_party_email_marketing
+  # variations
+  # wishlist_member
+  #
+  # just some random ones. contact us if you're unsure
+  expand = "kit_definition,options,shipping,tax,variations"
+
+  # Retrieve item by merchant item ID with expansions
+  api_response = item_api.get_item_by_merchant_item_id(
+    item_id,
+    opts = { '_expand' => expand, '_placeholders' => false }
+  )
+  item = api_response.item
+
+  # Output the retrieved item
+  puts 'The following item was retrieved via getItemByMerchantItemId():'
+  p item
+
+  # Clean up sample item
+  delete_sample_item(item_id)
+
+rescue UltracartClient::ApiException => e
+  puts 'An ApiException occurred. Please review the following error:'
+  p e # change_me: handle gracefully
+  exit 1
 end
 ```
+
 
 #### Using the get_item_by_merchant_item_id_with_http_info variant
 
@@ -696,39 +843,105 @@ Retrieve items
 
 Retrieves a group of items from the account.  If no parameters are specified, all items will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# Increase execution time for potentially long-running script
+# Note: Ruby uses different methods for timeout management
+# You may need to adjust based on your specific Ruby environment
 
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-opts = {
-  parent_category_id: 56, # Integer | The parent category object id to retrieve items for.  Unspecified means all items on the account.  0 = root
-  parent_category_path: 'parent_category_path_example', # String | The parent category path to retrieve items for.  Unspecified means all items on the account.  / = root
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Default 100, Max 2000)
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _since: '_since_example', # String | Fetch items that have been created/modified since this date/time.
-  _sort: '_sort_example', # String | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
-  _placeholders: true # Boolean | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-}
+# This example illustrates how to retrieve items. When dealing with items, please note that categories are
+# essentially folders to organize and store items. They are only used for that purpose and play no role in
+# the checkout process or in the storefront display of items. So you may organize your items as best serves
+# you. We're often asked why we use the word 'category' instead of 'folder'. We started down the road of
+# item management 27 years ago with the word 'category', and it's too much trouble to change. So items are
+# managed by categories, not folders. But they are folders. :)
+#
+# The call takes two possible parameters:
+# 1) parentCategoryId: This is a number which uniquely identifies a category in our system. Not easy to determine.
+# 2) parentCategoryPath: This is the folder path you wish to retrieve, starting with a forward slash "/"
+# If you provide neither of these values, all items are returned.
+
+# Method to retrieve a chunk of items
+def get_item_chunk(item_api, offset, limit)
+  # The real devil in the getItem calls is the expansion, making sure you return everything you need without
+  # returning everything since these objects are extremely large.
+  # These are the possible expansion values:
+  #
+  # accounting                      amember                     auto_order                      auto_order.steps
+  # ccbill                          channel_partner_mappings    chargeback                      checkout
+  # content                         content.assignments         content.attributes              content.multimedia
+  # content.multimedia.thumbnails   digital_delivery            ebay                            email_notifications
+  # enrollment123                   gift_certificate            google_product_search           kit_definition
+  # identifiers                     instant_payment_notifications   internal                    options
+  # payment_processing              physical                    pricing                         pricing.tiers
+  # realtime_pricing                related                     reporting                       restriction
+  # reviews                         salesforce                  shipping                        shipping.cases
+  # tax                             third_party_email_marketing variations                      wishlist_member
+  # shipping.destination_markups
+  # shipping.destination_restrictions
+  # shipping.distribution_centers
+  # shipping.methods
+  # shipping.package_requirements
+
+  # Just some random ones. Contact us if you're unsure
+  expand = "kit_definition,options,shipping,tax,variations"
+
+  # Prepare options for API call
+  opts = {
+    '_parent_category_id' => nil,
+    '_parent_category_path' => nil,
+    '_limit' => limit,
+    '_offset' => offset,
+    '_since' => nil,
+    '_sort' => nil,
+    '_expand' => expand,
+    '_placeholders' => false
+  }
+
+  # Retrieve items
+  api_response = item_api.get_items(opts)
+
+  # Return items or empty array if none found
+  api_response.items || []
+end
 
 begin
-  # Retrieve items
-  result = api_instance.get_items(opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->get_items: #{e}"
+  # Initialize item API
+  item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+
+  # Pagination variables
+  items = []
+  iteration = 1
+  offset = 0
+  limit = 200
+  more_records_to_fetch = true
+
+  # Fetch items in chunks
+  while more_records_to_fetch
+    puts "executing iteration #{iteration}"
+
+    chunk_of_items = get_item_chunk(item_api, offset, limit)
+    items += chunk_of_items
+    offset += limit
+    more_records_to_fetch = chunk_of_items.length == limit
+    iteration += 1
+  end
+
+  # Output will be verbose...
+  p items
+
+rescue UltracartClient::ApiException => e
+  puts "ApiException occurred on iteration #{iteration}"
+  p e
+  exit 1
 end
 ```
+
 
 #### Using the get_items_with_http_info variant
 
@@ -783,32 +996,39 @@ Retrieve pricing tiers
 
 Retrieves the pricing tiers 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-opts = {
-  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
-}
+# Possible expansion values for PricingTier object:
+# - approval_notification
+# - signup_notification
 
 begin
-  # Retrieve pricing tiers
-  result = api_instance.get_pricing_tiers(opts)
-  p result
+  # Initialize the item API using the API key from constants
+  item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+
+  # Define expand options in the opts hash
+  opts = {
+    '_expand' => 'approval_notification,signup_notification'
+  }
+
+  # Get pricing tiers with expand options
+  api_response = item_api.get_pricing_tiers(opts)
+
+  # Print the pricing tiers
+  p api_response.pricing_tiers
+
 rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->get_pricing_tiers: #{e}"
+  puts 'ApiException occurred.'
+  p e
+  exit(1)
 end
 ```
+
 
 #### Using the get_pricing_tiers_with_http_info variant
 
@@ -856,31 +1076,52 @@ Get a review
 
 Retrieve an item review. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+=begin
+Retrieves a specific user review for an item. This would most likely be used by a merchant who has cached all
+reviews on a separate site and then wishes to update a particular review. It's always best to "get" the object,
+make changes to it, then call the update instead of trying to recreate the object from scratch.
 
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-review_oid = 56 # Integer | The review oid to retrieve.
-merchant_item_oid = 56 # Integer | The item oid the review is associated with.
+The merchant_item_oid is a unique identifier used by UltraCart. If you do not know your item's oid, call
+ItemApi.get_item_by_merchant_item_id() to retrieve the item, and then it's oid item.merchant_item_oid
 
+The review_oid is a unique identifier used by UltraCart. If you do not know a review's oid, call
+ItemApi.get_reviews() to get all reviews where you can then grab the oid from an item.
+=end
+
+# Initialize the item API
+item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+
+# Set merchant item and review OIDs
+merchant_item_oid = 123456
+review_oid = 987654
+
+# Get the review with opts hash
 begin
-  # Get a review
-  result = api_instance.get_review(review_oid, merchant_item_oid)
-  p result
+  api_response = item_api.get_review(review_oid, merchant_item_oid)
+
+  # Check for errors
+  if api_response.error
+    warn api_response.error.developer_message
+    warn api_response.error.user_message
+    exit
+  end
+
+  # Print the review
+  p api_response.review
+
 rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->get_review: #{e}"
+  warn "API Error: #{e.message}"
+  exit(1)
 end
 ```
+
 
 #### Using the get_review_with_http_info variant
 
@@ -929,30 +1170,48 @@ Get reviews for an item
 
 Retrieve item reviews. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+=begin
+Retrieves all user reviews for an item.
 
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-merchant_item_oid = 56 # Integer | The item oid the review is associated with.
+The merchant_item_oid is a unique identifier used by UltraCart. If you do not know your item's oid, call
+ItemApi.get_item_by_merchant_item_id() to retrieve the item, and then its oid item.merchant_item_oid
+=end
+
+# Initialize the item API
+item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+
+# Set merchant item OID
+merchant_item_oid = 123456
 
 begin
-  # Get reviews for an item
-  result = api_instance.get_reviews(merchant_item_oid)
-  p result
+  # Get reviews for the specified merchant item
+  api_response = item_api.get_reviews(merchant_item_oid)
+
+  # Check for errors
+  if api_response.error
+    warn api_response.error.developer_message
+    warn api_response.error.user_message
+    exit
+  end
+
+  # Print each review
+  api_response.reviews.each do |review|
+    p review
+  end
+
 rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->get_reviews: #{e}"
+  warn "API Error: #{e.message}"
+  exit(1)
 end
 ```
+
 
 #### Using the get_reviews_with_http_info variant
 
@@ -1000,37 +1259,60 @@ Retrieve digital items from the digital library (which are digital files that ma
 
 Retrieves a group of digital items (file information) from the account that are not yet associated with any actual items.  If no parameters are specified, all digital items will be returned.  Be aware that these are not normal items that can be added to a shopping cart. Rather, they are digital files that may be associated with normal items.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
+require_relative './item_functions'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+=begin
+Digital Items are not normal items you sell on your site. They are digital files that you may add to
+a library and then attach to a normal item as an accessory or the main item itself.
+See: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/1376485/Digital+Items
 
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-opts = {
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Default 100, Max 2000)
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _since: '_since_example', # String | Fetch items that have been created/modified since this date/time.
-  _sort: '_sort_example', # String | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
-  _placeholders: true # Boolean | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-}
+Retrieves a group of digital items (file information) from the account that are not yet associated with any
+actual items. If no parameters are specified, all digital items will be returned. These are
+digital files that may be associated with normal items.
+
+Default sort order: original_filename
+Possible sort orders: original_filename, description, file_size
+=end
 
 begin
-  # Retrieve digital items from the digital library (which are digital files that may be attached to normal items) not yet associated with actual items
-  result = api_instance.get_unassociated_digital_items(opts)
-  p result
+  # Create an unassociated digital item
+  digital_item_oid = insert_sample_digital_item
+
+  # Initialize the item API
+  item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+
+  # Prepare options for API call
+  opts = {
+    '_limit' => 100,
+    '_offset' => 0,
+    '_since' => nil,  # digital items do not use since
+    '_sort' => nil,   # defaults to original_filename
+    '_expand' => nil, # digital items have no expansion
+    '_placeholders' => nil
+  }
+
+  # Get unassociated digital items
+  api_response = item_api.get_unassociated_digital_items(opts)
+
+  # Print retrieved digital items
+  puts 'The following items were retrieved via get_unassociated_digital_items():'
+  api_response.digital_items.each do |digital_item|
+    p digital_item
+  end
+
 rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->get_unassociated_digital_items: #{e}"
+  warn 'An ApiException occurred. Please review the following error:'
+  p e
+  exit(1)
 end
 ```
+
 
 #### Using the get_unassociated_digital_items_with_http_info variant
 
@@ -1083,30 +1365,26 @@ Create a file within the digital library
 
 Create a file within the digital library.  This does not create an item, but makes this digital file available and selectable as part (or all) of an item. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-digital_item = UltracartClient::ItemDigitalItem.new # ItemDigitalItem | Digital item to create
+require_relative '../constants'
+require_relative './item_functions'
 
 begin
-  # Create a file within the digital library
-  result = api_instance.insert_digital_item(digital_item)
-  p result
+  # Create and then delete a sample digital item
+  digital_item_oid = insert_sample_digital_item
+  delete_sample_digital_item(digital_item_oid)
+
 rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->insert_digital_item: #{e}"
+  warn 'An ApiException occurred. Please review the following error:'
+  p e
+  exit(1)
 end
 ```
+
 
 #### Using the insert_digital_item_with_http_info variant
 
@@ -1154,34 +1432,26 @@ Create an item
 
 Create a new item on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-item = UltracartClient::Item.new # Item | Item to create
-opts = {
-  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
-  _placeholders: true # Boolean | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-}
+require_relative '../constants'
+require_relative './item_functions'
 
 begin
-  # Create an item
-  result = api_instance.insert_item(item, opts)
-  p result
+  # Create and then delete a sample item
+  item_id = insert_sample_item
+  delete_sample_item(item_id)
+
 rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->insert_item: #{e}"
+  warn 'An ApiException occurred. Please review the following error:'
+  p e
+  exit(1)
 end
 ```
+
 
 #### Using the insert_item_with_http_info variant
 
@@ -1231,31 +1501,86 @@ Insert a review
 
 Insert a item review. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-merchant_item_oid = 56 # Integer | The item oid the review is associated with.
-review = UltracartClient::ItemReview.new # ItemReview | Review to insert
+require_relative '../constants'
+require_relative './item_functions'
 
 begin
-  # Insert a review
-  result = api_instance.insert_review(merchant_item_oid, review)
-  p result
+  # To insert a review, you'll need an item's OID (Object Identifier) first.  So for this example, we create
+  # a sample item first, then retrieve it by item id to fetch the item oid.
+  item_id = insert_sample_item()
+
+  # Initialize the Item API
+  item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+
+  # Expand string is 'reviews' because we'll need to update the sample item's review template below.
+  # List of expansions for item object: https://www.ultracart.com/api/#resource_item.html
+  opts = {
+    '_expand' => 'reviews'
+  }
+
+  # Retrieve the item by merchant item ID
+  item_response = item_api.get_item_by_merchant_item_id(item_id, opts)
+  item = item_response.item
+  item_oid = item.merchant_item_oid
+
+  # The target item must have a review template associated before you may attach a review.
+  # You may create a review template here:
+  # https://secure.ultracart.com/merchant/item/review/reviewTemplateListLoad.do
+  # We're using a review template from our development system and it will not work for you.
+  # Once you have a review template, update your item either via our gui or the rest api.
+  # GUI: secure.ultracart.com -> Home -> Items -> <your item> -> Edit -> Review tab
+  # Since we're using a sample item we just created above, we'll update via the rest api.
+  # The rest api requires the review template oid, which is found on the template screen
+
+  review_template_oid = 402
+  reviews = UltracartClient::ItemReviews.new(review_template_oid: review_template_oid)
+  item.reviews = reviews
+  item = item_api.update_item(item_oid, item, opts).item
+
+  # You will need to know what your product review looks like.
+  review = UltracartClient::ItemReview.new(
+    title: 'Best Product Ever!',
+    review: "I loved this product.  I bought it for my wife and she was so happy she cried.  blah blah blah",
+    reviewed_nickname: "Bob420",
+    featured: true, # featured? sure. why not? this is a great review.
+    rating_name1: 'Durability',
+    rating_name2: 'Price',
+    rating_name3: 'Performance',
+    rating_name4: 'Appearance',
+    rating_score1: 4.5,
+    rating_score2: 3.5,
+    rating_score3: 2.5,
+    rating_score4: 1.5,
+    overall: 5.0, # hooray!
+    reviewer_location: "Southside Chicago",
+    status: 'approved'
+  )
+
+  # Insert the review and update our local variable to see how the review looks now.
+  review = item_api.insert_review(item_oid, review).review
+
+  # Output the review object
+  p review
+
+  # This will clean up the sample item, but you may wish to review the item in the backend or on your website first.
+  # delete_sample_item(item_id)
+
 rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->insert_review: #{e}"
+  puts 'An ApiException occurred. Please review the following error:'
+  p e
+  exit(1)
+
 end
 ```
+
 
 #### Using the insert_review_with_http_info variant
 
@@ -1304,30 +1629,49 @@ Upsert an item content attribute
 
 Update an item content attribute, creating it new if it does not yet exist. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+=begin
+    While UltraCart provides a means for updating item content, it is StoreFront specific.  This method allows for
+    item-wide update of content, such as SEO fields. The content attribute has three fields:
+    1) name
+    2) value
+    3) type: boolean,color,definitionlist,html,integer,mailinglist,multiline,rgba,simplelist,string,videolist
 
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-merchant_item_oid = 56 # Integer | The item oid to modify.
-item_attribute = UltracartClient::ItemContentAttribute.new # ItemContentAttribute | Item content attribute to upsert
+    The SEO content has the following names:
+    Item Meta Title = "storefrontSEOTitle"
+    Item Meta Description = "storefrontSEODescription"
+    Item Meta Keywords = "storefrontSEOKeywords"
 
-begin
-  # Upsert an item content attribute
-  api_instance.insert_update_item_content_attribute(merchant_item_oid, item_attribute)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->insert_update_item_content_attribute: #{e}"
-end
+    The merchant_item_oid is a unique identifier used by UltraCart.  If you do not know your item's oid, call
+    ItemApi.getItemByMerchantItemId() to retrieve the item, and then it's oid $item->getMerchantItemOid()
+
+    Success will return back a status code of 204 (No Content)
+=end
+
+# Initialize the Item API
+item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+merchant_item_oid = 12345
+
+# Create the content attribute
+attribute = UltracartClient::ItemContentAttribute.new(
+  name: "storefrontSEOKeywords",
+  value: 'dog,cat,fish',
+  type: "string"
+)
+
+# Insert or update the item content attribute
+item_api.insert_update_item_content_attribute(merchant_item_oid, attribute)
 ```
+
 
 #### Using the insert_update_item_content_attribute_with_http_info variant
 
@@ -1376,31 +1720,46 @@ Updates a file within the digital library
 
 Updates a file within the digital library.  This does not update an item, but updates a digital file available and selectable as part (or all) of an item. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-digital_item_oid = 56 # Integer | The digital item oid to update.
-digital_item = UltracartClient::ItemDigitalItem.new # ItemDigitalItem | Digital item to update
+require_relative '../constants'
+require_relative './item_functions'
 
 begin
-  # Updates a file within the digital library
-  result = api_instance.update_digital_item(digital_item_oid, digital_item)
-  p result
+  # Insert a sample digital item
+  digital_item_oid = insert_sample_digital_item()
+
+  # Initialize the Item API
+  item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+
+  # Retrieve the digital item
+  api_response = item_api.get_digital_item(digital_item_oid)
+  digital_item = api_response.digital_item
+
+  # Update the digital item details
+  digital_item.description = "I have updated the description to this sentence."
+  digital_item.click_wrap_agreement = "You hereby agree that the earth is round.  No debate."
+
+  # Update the digital item
+  item_api.update_digital_item(digital_item_oid, digital_item)
+
+  # Delete the sample digital item
+  delete_sample_digital_item(digital_item_oid)
+
 rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->update_digital_item: #{e}"
+  puts 'An ApiException occurred. Please review the following error:'
+  p e
+  exit(1)
+
 end
 ```
+
 
 #### Using the update_digital_item_with_http_info variant
 
@@ -1449,35 +1808,59 @@ Update an item
 
 Update a new item on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-merchant_item_oid = 56 # Integer | The item oid to update.
-item = UltracartClient::Item.new # Item | Item to update
-opts = {
-  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
-  _placeholders: true # Boolean | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-}
+require_relative '../constants'
+require_relative './item_functions'
 
 begin
-  # Update an item
-  result = api_instance.update_item(merchant_item_oid, item, opts)
-  p result
+  # Insert a sample item
+  item_id = insert_sample_item()
+
+  # Initialize the Item API
+  item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+
+  # See one of the getItem or getItems samples for possible expansion values
+  # See also: https://www.ultracart.com/api/#resource_item.html
+  opts = {
+    '_expand' => 'pricing',
+    '_placeholders' => false
+  }
+
+  # Retrieve the item
+  api_response = item_api.get_item_by_merchant_item_id(item_id, opts)
+  item = api_response.item
+  original_price = item.pricing.cost
+
+  # Update the price of the item
+  item_pricing = item.pricing
+  item_pricing.cost = 12.99
+
+  # Update the item
+  api_response = item_api.update_item(item.merchant_item_oid, item, opts)
+  updated_item = api_response.item
+
+  # Output the price changes
+  puts "Original Price: #{original_price}"
+  puts "Updated Price: #{updated_item.pricing.cost}"
+
+  # Delete the sample item
+  delete_sample_item(item_id)
+
 rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->update_item: #{e}"
+  puts 'An ApiException occurred. Please review the following error:'
+  p e
+  exit(1)
+
 end
 ```
+
 
 #### Using the update_item_with_http_info variant
 
@@ -1528,35 +1911,60 @@ Update multiple items
 
 Update multiple item on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-items_request = UltracartClient::ItemsRequest.new # ItemsRequest | Items to update (synchronous maximum 20 / asynchronous maximum 100)
-opts = {
-  _expand: '_expand_example', # String | The object expansion to perform on the result.  See documentation for examples
-  _placeholders: true, # Boolean | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-  _async: true # Boolean | True if the operation should be run async.  No result returned
-}
+require_relative '../constants'
+require_relative './item_functions'
 
 begin
+  # Insert two sample items
+  item_id1 = insert_sample_item()
+  item_id2 = insert_sample_item()
+
+  # Initialize the Item API
+  item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+
+  # See one of the getItem or getItems samples for possible expansion values
+  # See also: https://www.ultracart.com/api/#resource_item.html
+  opts = {
+    '_expand' => 'pricing',
+    '_placeholders' => false
+  }
+
+  # Retrieve the items
+  api_response = item_api.get_item_by_merchant_item_id(item_id1, opts)
+  item1 = api_response.item
+  api_response = item_api.get_item_by_merchant_item_id(item_id2, opts)
+  item2 = api_response.item
+
+  # Update the prices of the items
+  item1.pricing.cost = 12.99
+  item2.pricing.cost = 14.99
+
+  # Create items request for bulk update
+  update_items_request = UltracartClient::ItemsRequest.new(items: [item1, item2])
+
   # Update multiple items
-  result = api_instance.update_items(items_request, opts)
-  p result
+  api_response = item_api.update_items(update_items_request, opts.merge('_check_groups' => false))
+
+  # Delete the sample items
+  delete_sample_item(item_id1)
+  delete_sample_item(item_id2)
+
 rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->update_items: #{e}"
+  puts 'An ApiException occurred. Please review the following error:'
+  p e
+  exit(1)
+
 end
 ```
+
 
 #### Using the update_items_with_http_info variant
 
@@ -1607,32 +2015,66 @@ Update a review
 
 Update an item review. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-review_oid = 56 # Integer | The review oid to update.
-merchant_item_oid = 56 # Integer | The item oid the review is associated with.
-review = UltracartClient::ItemReview.new # ItemReview | Review to update
+require_relative '../constants'
+require_relative './item_functions'
 
 begin
-  # Update a review
-  result = api_instance.update_review(review_oid, merchant_item_oid, review)
-  p result
+  # To update a review, you'll need an item's OID (Object Identifier) and the review oid first.
+
+  # If you don't know your oid, call getItemByMerchantItemId() to get your item, then get the oid.
+  merchant_item_oid = 99998888
+  review_oid = 123456 # This is the particular oid you wish to update.
+
+  # Initialize the Item API
+  item_api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY)
+
+  # Retrieve the existing review
+  review = item_api.get_review(merchant_item_oid, review_oid).review
+
+  # Update the review details
+  review = UltracartClient::ItemReview.new(
+    title: 'Best Product Ever!',
+    review: "I loved this product.  I bought it for my wife and she was so happy she cried.  blah blah blah",
+    reviewed_nickname: "Bob420",
+    featured: true, # featured? sure. why not? this is a great review.
+    rating_name1: 'Durability',
+    rating_name2: 'Price',
+    rating_name3: 'Performance',
+    rating_name4: 'Appearance',
+    rating_score1: 4.5,
+    rating_score2: 3.5,
+    rating_score3: 2.5,
+    rating_score4: 1.5,
+    overall: 5.0, # hooray!
+    reviewer_location: "Southside Chicago",
+    status: 'approved'
+  )
+
+  # Update the review and retrieve the updated review
+  review = item_api.update_review(review_oid, merchant_item_oid, review).review
+
+  # Output the review object
+  p review
+
+  # This will clean up the sample item, but you may wish to review the item in the backend or on your website first.
+  # delete_sample_item(item_id)
+
 rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->update_review: #{e}"
+  puts 'An ApiException occurred. Please review the following error:'
+  p e
+  exit(1)
+
 end
 ```
+
 
 #### Using the update_review_with_http_info variant
 
@@ -1682,30 +2124,16 @@ Upload an image to the temporary multimedia.
 
 Uploads an image and returns back meta information about the image as well as the identifier needed for the item update. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::ItemApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-file = File.new('/path/to/some/file') # File | File to upload
-
-begin
-  # Upload an image to the temporary multimedia.
-  result = api_instance.upload_temporary_multimedia(file)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->upload_temporary_multimedia: #{e}"
-end
+# This method is used internally by UltraCart.
+# We don't envision a scenario where a merchant would ever need to call this.
+# As such, we're not providing a sample for it.  If you can think of a use for this
+# method, contact us, and we'll help you work through it.
 ```
+
 
 #### Using the upload_temporary_multimedia_with_http_info variant
 

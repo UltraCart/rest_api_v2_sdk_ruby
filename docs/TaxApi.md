@@ -42,30 +42,13 @@ Deletes a Self tax provider city
 
 Deletes a Self tax provider city. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-city = 'city_example' # String | The city being deleted.
-tax_city = UltracartClient::TaxCity.new # TaxCity | tax city to be deleted
-
-begin
-  # Deletes a Self tax provider city
-  api_instance.delete_tax_provider_self_city(city, tax_city)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->delete_tax_provider_self_city: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_tax_provider_self_city_with_http_info variant
 
@@ -114,30 +97,13 @@ Deletes a Self tax provider country
 
 Deletes a Self tax provider country. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-country_code = 'country_code_example' # String | The country code being deleted.
-tax_country = UltracartClient::TaxCountry.new # TaxCountry | tax country to be deleted
-
-begin
-  # Deletes a Self tax provider country
-  api_instance.delete_tax_provider_self_country(country_code, tax_country)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->delete_tax_provider_self_country: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_tax_provider_self_country_with_http_info variant
 
@@ -186,30 +152,13 @@ Deletes a Self tax provider county
 
 Deletes a Self tax provider county. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-county = 'county_example' # String | The county being deleted.
-tax_county = UltracartClient::TaxCounty.new # TaxCounty | tax county to be deleted
-
-begin
-  # Deletes a Self tax provider county
-  api_instance.delete_tax_provider_self_county(county, tax_county)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->delete_tax_provider_self_county: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_tax_provider_self_county_with_http_info variant
 
@@ -258,30 +207,13 @@ Deletes a Self tax provider postalCode
 
 Deletes a Self tax provider postalCode. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-postal_code = 'postal_code_example' # String | The postal code being deleted.
-tax_postal_code = UltracartClient::TaxPostalCode.new # TaxPostalCode | tax postal code to be deleted
-
-begin
-  # Deletes a Self tax provider postalCode
-  api_instance.delete_tax_provider_self_postal_code(postal_code, tax_postal_code)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->delete_tax_provider_self_postal_code: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_tax_provider_self_postal_code_with_http_info variant
 
@@ -330,30 +262,13 @@ Deletes a Self tax provider state
 
 Deletes a Self tax provider state. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-state_code = 'state_code_example' # String | The state code being deleted.
-tax_state = UltracartClient::TaxState.new # TaxState | tax state to be deleted
-
-begin
-  # Deletes a Self tax provider state
-  api_instance.delete_tax_provider_self_state(state_code, tax_state)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->delete_tax_provider_self_state: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_tax_provider_self_state_with_http_info variant
 
@@ -402,29 +317,13 @@ Retrieve the Avalara tax provider
 
 Retrieves the Avalara tax provider. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Retrieve the Avalara tax provider
-  result = api_instance.get_tax_provider_avalara
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->get_tax_provider_avalara: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_tax_provider_avalara_with_http_info variant
 
@@ -470,30 +369,13 @@ Returns Avalara Tax companies configured by the merchant
 
 Returns Avalara Tax companies configured by the merchant 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-tax_provider_avalara = UltracartClient::TaxProviderAvalara.new # TaxProviderAvalara | TaxProviderAvalara object
-
-begin
-  # Returns Avalara Tax companies configured by the merchant
-  result = api_instance.get_tax_provider_avalara_companies(tax_provider_avalara)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->get_tax_provider_avalara_companies: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_tax_provider_avalara_companies_with_http_info variant
 
@@ -541,29 +423,13 @@ Attempts to connect to Avalara and returns back the response
 
 Attempts to connect to Avalara and returns back the response. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Attempts to connect to Avalara and returns back the response
-  result = api_instance.get_tax_provider_avalara_test
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->get_tax_provider_avalara_test: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_tax_provider_avalara_test_with_http_info variant
 
@@ -609,29 +475,13 @@ Retrieve the Self tax provider
 
 Retrieves the Self tax provider. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Retrieve the Self tax provider
-  result = api_instance.get_tax_provider_self
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->get_tax_provider_self: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_tax_provider_self_with_http_info variant
 
@@ -677,29 +527,13 @@ Retrieve the Self tax provider countries
 
 Retrieves the Self tax provider countries. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Retrieve the Self tax provider countries
-  result = api_instance.get_tax_provider_self_countries
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->get_tax_provider_self_countries: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_tax_provider_self_countries_with_http_info variant
 
@@ -745,30 +579,13 @@ Retrieve the Self tax provider regions for a given country code
 
 Retrieves the Self tax provider regions for a given country code. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-country_code = 'country_code_example' # String | The country code regions desired.
-
-begin
-  # Retrieve the Self tax provider regions for a given country code
-  result = api_instance.get_tax_provider_self_regions_by_country_code(country_code)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->get_tax_provider_self_regions_by_country_code: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_tax_provider_self_regions_by_country_code_with_http_info variant
 
@@ -816,29 +633,13 @@ Retrieve the Sovos tax provider
 
 Retrieves the Sovos tax provider. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Retrieve the Sovos tax provider
-  result = api_instance.get_tax_provider_sovos
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->get_tax_provider_sovos: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_tax_provider_sovos_with_http_info variant
 
@@ -884,29 +685,13 @@ Attempts to connect to Sovos and returns back the response
 
 Attempts to connect to Sovos and returns back the response. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Attempts to connect to Sovos and returns back the response
-  result = api_instance.get_tax_provider_sovos_test
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->get_tax_provider_sovos_test: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_tax_provider_sovos_test_with_http_info variant
 
@@ -952,29 +737,13 @@ Retrieve the TaxJar tax provider
 
 Retrieves the TaxJar tax provider. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Retrieve the TaxJar tax provider
-  result = api_instance.get_tax_provider_tax_jar
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->get_tax_provider_tax_jar: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_tax_provider_tax_jar_with_http_info variant
 
@@ -1020,29 +789,13 @@ Attempts to connect to TaxJar and returns back the response
 
 Attempts to connect to TaxJar and returns back the response. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Attempts to connect to TaxJar and returns back the response
-  result = api_instance.get_tax_provider_tax_jar_test
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->get_tax_provider_tax_jar_test: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_tax_provider_tax_jar_test_with_http_info variant
 
@@ -1088,29 +841,13 @@ Retrieve the UltraCart tax provider
 
 Retrieves the UltraCart tax provider. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Retrieve the UltraCart tax provider
-  result = api_instance.get_tax_provider_ultra_cart
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->get_tax_provider_ultra_cart: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_tax_provider_ultra_cart_with_http_info variant
 
@@ -1156,34 +893,13 @@ Retrieve tax methods
 
 Retrieves tax methods for this account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-opts = {
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Max 200)
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
-}
-
-begin
-  # Retrieve tax methods
-  result = api_instance.get_tax_providers(opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->get_tax_providers: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_tax_providers_with_http_info variant
 
@@ -1233,30 +949,13 @@ Toggle a tax provider to active
 
 Toggle a tax provider to active. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-provider_name = 'provider_name_example' # String | The tax provider to set active.
-
-begin
-  # Toggle a tax provider to active
-  result = api_instance.set_active_tax_provider(provider_name)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->set_active_tax_provider: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the set_active_tax_provider_with_http_info variant
 
@@ -1304,30 +1003,13 @@ Update the Avalara tax provider
 
 Update the Avalara tax provider. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-tax_provider_avalara = UltracartClient::TaxProviderAvalara.new # TaxProviderAvalara | TaxProviderAvalara object
-
-begin
-  # Update the Avalara tax provider
-  result = api_instance.update_tax_provider_avalara(tax_provider_avalara)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->update_tax_provider_avalara: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_tax_provider_avalara_with_http_info variant
 
@@ -1375,30 +1057,13 @@ Update the Self tax provider
 
 Update the Self tax provider. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-tax_provider_self = UltracartClient::TaxProviderSelf.new # TaxProviderSelf | TaxProviderSelf object
-
-begin
-  # Update the Self tax provider
-  result = api_instance.update_tax_provider_self(tax_provider_self)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->update_tax_provider_self: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_tax_provider_self_with_http_info variant
 
@@ -1446,31 +1111,13 @@ Updates a Self tax provider city
 
 Updates a Self tax provider city. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-city = 'city_example' # String | The city being updated.
-tax_city = UltracartClient::TaxCity.new # TaxCity | tax city to be updated
-
-begin
-  # Updates a Self tax provider city
-  result = api_instance.update_tax_provider_self_city(city, tax_city)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->update_tax_provider_self_city: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_tax_provider_self_city_with_http_info variant
 
@@ -1519,31 +1166,13 @@ Updates a Self tax provider country
 
 Updates a Self tax provider country. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-country_code = 'country_code_example' # String | The country code being updated.
-tax_country = UltracartClient::TaxCountry.new # TaxCountry | tax country to be updated
-
-begin
-  # Updates a Self tax provider country
-  result = api_instance.update_tax_provider_self_country(country_code, tax_country)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->update_tax_provider_self_country: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_tax_provider_self_country_with_http_info variant
 
@@ -1592,31 +1221,13 @@ Updates a Self tax provider county
 
 Updates a Self tax provider county. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-county = 'county_example' # String | The county being updated.
-tax_county = UltracartClient::TaxCounty.new # TaxCounty | tax county to be updated
-
-begin
-  # Updates a Self tax provider county
-  result = api_instance.update_tax_provider_self_county(county, tax_county)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->update_tax_provider_self_county: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_tax_provider_self_county_with_http_info variant
 
@@ -1665,31 +1276,13 @@ Updates a Self tax provider postalCode
 
 Updates a Self tax provider postalCode. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-postal_code = 'postal_code_example' # String | The postal code being updated.
-tax_postal_code = UltracartClient::TaxPostalCode.new # TaxPostalCode | tax postal code to be updated
-
-begin
-  # Updates a Self tax provider postalCode
-  result = api_instance.update_tax_provider_self_postal_code(postal_code, tax_postal_code)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->update_tax_provider_self_postal_code: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_tax_provider_self_postal_code_with_http_info variant
 
@@ -1738,31 +1331,13 @@ Updates a Self tax provider state
 
 Updates a Self tax provider state. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-state_code = 'state_code_example' # String | The state code being updated.
-tax_state = UltracartClient::TaxState.new # TaxState | tax state to be updated
-
-begin
-  # Updates a Self tax provider state
-  result = api_instance.update_tax_provider_self_state(state_code, tax_state)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->update_tax_provider_self_state: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_tax_provider_self_state_with_http_info variant
 
@@ -1811,30 +1386,13 @@ Update the Sovos tax provider
 
 Update the Sovos tax provider. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-tax_provider_sovos = UltracartClient::TaxProviderSovos.new # TaxProviderSovos | TaxProviderSovos object
-
-begin
-  # Update the Sovos tax provider
-  result = api_instance.update_tax_provider_sovos(tax_provider_sovos)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->update_tax_provider_sovos: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_tax_provider_sovos_with_http_info variant
 
@@ -1882,30 +1440,13 @@ Update the TaxJar tax provider
 
 Update the TaxJar tax provider. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-tax_provider_tax_jar = UltracartClient::TaxProviderTaxJar.new # TaxProviderTaxJar | TaxProviderTaxJar object
-
-begin
-  # Update the TaxJar tax provider
-  result = api_instance.update_tax_provider_tax_jar(tax_provider_tax_jar)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->update_tax_provider_tax_jar: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_tax_provider_tax_jar_with_http_info variant
 
@@ -1953,30 +1494,13 @@ Update the UltraCart tax provider
 
 Update the UltraCart tax provider. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::TaxApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-tax_provider_ultracart = UltracartClient::TaxProviderUltraCart.new # TaxProviderUltraCart | TaxProviderUltraCart object
-
-begin
-  # Update the UltraCart tax provider
-  result = api_instance.update_tax_provider_ultra_cart(tax_provider_ultracart)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling TaxApi->update_tax_provider_ultra_cart: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_tax_provider_ultra_cart_with_http_info variant
 

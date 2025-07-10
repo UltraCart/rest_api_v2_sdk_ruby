@@ -22,29 +22,23 @@ Delete a webhook
 
 Delete a webhook on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# deletes a webhook
+#
+# You will need the webhook_oid to call this method.  Call getWebhooks() if you don't know your oid.
+# Returns status code 204 (No Content) on success
 
-api = UltracartClient::WebhookApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-webhook_oid = 56 # Integer | The webhook oid to delete.
-
-begin
-  # Delete a webhook
-  api_instance.delete_webhook(webhook_oid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling WebhookApi->delete_webhook: #{e}"
-end
+webhook_api = UltracartClient::WebhookApi.new_using_api_key(Constants::API_KEY)
+webhook_oid = 123456789 # call getWebhooks if you don't know this.
+webhook_api.delete_webhook(webhook_oid)
 ```
+
 
 #### Using the delete_webhook_with_http_info variant
 
@@ -92,30 +86,34 @@ Delete a webhook by URL
 
 Delete a webhook based upon the URL on the webhook_url matching an existing webhook. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# This method can be confusing due to its payload.  The method does indeed delete a webhook by url, but you need to
+# pass a webhook object in as the payload.  However, only the url is used.  UltraCart does this to avoid any confusion
+# with the rest url versus the webhook url.
+#
+# To use:
+# Get your webhook url.
+# Create a Webhook object.
+# Set the Webhook url property.
+# Pass the webhook to deleteWebhookByUrl()
+#
+# Returns status code 204 (No Content) on success
 
-api = UltracartClient::WebhookApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-webhook = UltracartClient::Webhook.new # Webhook | Webhook to delete
+webhook_api = UltracartClient::WebhookApi.new_using_api_key(Constants::API_KEY)
 
-begin
-  # Delete a webhook by URL
-  result = api_instance.delete_webhook_by_url(webhook)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling WebhookApi->delete_webhook_by_url: #{e}"
-end
+webhook_url = "https://www.mywebiste.com/page/to/call/when/this/webhook/fires.php"
+webhook = UltracartClient::Webhook.new
+webhook.webhook_url = webhook_url
+
+webhook_api.delete_webhook_by_url(webhook)
 ```
+
 
 #### Using the delete_webhook_by_url_with_http_info variant
 
@@ -163,31 +161,35 @@ Retrieve an individual log
 
 Retrieves an individual log for a webhook given the webhook oid the request id. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# getWebhookLog() provides a detail log of a webhook event.  It is used in tandem with getWebhookLogSummaries to audit
+# webhook events.  This method call will require the webhook_oid and the request_id.  The webhook_oid can be discerned
+# from the results of getWebhooks() and the request_id can be found from getWebhookLogSummaries().  see those examples
+# if needed.
 
-api = UltracartClient::WebhookApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-webhook_oid = 56 # Integer | The webhook oid that owns the log.
-request_id = 'request_id_example' # String | The request id associated with the log to view.
+webhook_api = UltracartClient::WebhookApi.new_using_api_key(Constants::API_KEY)
 
-begin
-  # Retrieve an individual log
-  result = api_instance.get_webhook_log(webhook_oid, request_id)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling WebhookApi->get_webhook_log: #{e}"
+webhook_oid = 123456789 # call getWebhooks if you don't know this.
+request_id = '987654321'  # call getWebhookLogSummaries if you don't know this.
+
+api_response = webhook_api.get_webhook_log(webhook_oid, request_id)
+webhook_log = api_response.webhook_log
+
+if api_response.error
+  puts api_response.error.developer_message
+  puts api_response.error.user_message
+  exit
 end
+
+puts webhook_log
 ```
+
 
 #### Using the get_webhook_log_with_http_info variant
 
@@ -236,43 +238,54 @@ Retrieve the log summaries
 
 Retrieves the log summary information for a given webhook.  This is useful for displaying all the various logs that can be viewed. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# This example illustrates how to retrieve webhook log summaries.
 
-api = UltracartClient::WebhookApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-webhook_oid = 56 # Integer | The webhook oid to retrieve log summaries for.
-opts = {
-  request_id: 'request_id_example', # String | 
-  begin_date: 'begin_date_example', # String | 
-  end_date: 'end_date_example', # String | 
-  status: 'status_example', # String | 
-  event: 'event_example', # String | 
-  order_id: 'order_id_example', # String | 
-  request: 'request_example', # String | 
-  duration: 56, # Integer | 
-  _limit: 56, # Integer | The maximum number of records to return on this one API call.
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _since: '_since_example' # String | Fetch log summaries that have been delivered since this date/time.
-}
+webhook_api = UltracartClient::WebhookApi.new_using_api_key(Constants::API_KEY)
+
+def get_summary_chunk(webhook_api, offset, limit)
+  webhook_oid = 123456789 # if you don't know this, use getWebhooks to find your webhook, then get its oid.
+  _since = (Date.today - 10).strftime('%Y-%m-%d') + "T00:00:00+00:00" # get the last 10 days
+  # Pay attention to whether limit or offset comes first in the method signature.  UltraCart is not consistent with their ordering.
+  api_response = webhook_api.get_webhook_log_summaries(webhook_oid, limit, offset, _since)
+
+  return api_response.webhook_log_summaries if api_response.webhook_log_summaries
+  []
+end
+
+summaries = []
+
+iteration = 1
+offset = 0
+limit = 200
+more_records_to_fetch = true
 
 begin
-  # Retrieve the log summaries
-  result = api_instance.get_webhook_log_summaries(webhook_oid, opts)
-  p result
+  while more_records_to_fetch
+    puts "executing iteration #{iteration}"
+
+    chunk_of_summaries = get_summary_chunk(webhook_api, offset, limit)
+    summaries.concat(chunk_of_summaries)
+    offset = offset + limit
+    more_records_to_fetch = chunk_of_summaries.length == limit
+    iteration += 1
+  end
 rescue UltracartClient::ApiError => e
-  puts "Error when calling WebhookApi->get_webhook_log_summaries: #{e}"
+  puts "ApiError occurred on iteration #{iteration}"
+  puts e.inspect
+  exit 1
 end
+
+# this will be verbose...
+puts summaries.inspect
 ```
+
 
 #### Using the get_webhook_log_summaries_with_http_info variant
 
@@ -331,35 +344,58 @@ Retrieve webhooks
 
 Retrieves the webhooks associated with this application. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# This example illustrates how to retrieve all webhooks.
 
-api = UltracartClient::WebhookApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-opts = {
-  _limit: 56, # Integer | The maximum number of records to return on this one API call.
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _sort: '_sort_example', # String | The sort order of the webhooks.  See documentation for examples
-  _placeholders: true # Boolean | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-}
+webhook_api = UltracartClient::WebhookApi.new_using_api_key(Constants::API_KEY)
+
+def get_webhook_chunk(webhook_api, offset, limit)
+  _sort = nil # default sorting is webhook_url, disabled, and those are also the two choices for sorting.
+  _placeholders = nil  # useful for UI displays, but not needed here.
+  # Pay attention to whether limit or offset comes first in the method signature.  UltraCart is not consistent with their ordering.
+  opts = {
+    '_sort' => _sort,
+    '_placeholders' => _placeholders
+  }
+  api_response = webhook_api.get_webhooks(limit, offset, opts)
+
+  return api_response.webhooks if api_response.webhooks
+  []
+end
+
+webhooks = []
+
+iteration = 1
+offset = 0
+limit = 200
+more_records_to_fetch = true
 
 begin
-  # Retrieve webhooks
-  result = api_instance.get_webhooks(opts)
-  p result
+  while more_records_to_fetch
+    puts "executing iteration #{iteration}"
+
+    chunk_of_webhooks = get_webhook_chunk(webhook_api, offset, limit)
+    webhooks.concat(chunk_of_webhooks)
+    offset = offset + limit
+    more_records_to_fetch = chunk_of_webhooks.length == limit
+    iteration += 1
+  end
 rescue UltracartClient::ApiError => e
-  puts "Error when calling WebhookApi->get_webhooks: #{e}"
+  puts "ApiError occurred on iteration #{iteration}"
+  puts e.inspect
+  exit 1
 end
+
+# this will be verbose...
+puts webhooks.inspect
 ```
+
 
 #### Using the get_webhooks_with_http_info variant
 
@@ -410,33 +446,132 @@ Add a webhook
 
 Adds a new webhook on the account.  If you add a new webhook with the authentication_type set to basic, but do not specify the basic_username and basic_password, UltraCart will automatically generate random ones and return them.  This allows your application to have simpler logic on the setup of a secure webhook. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# Adds a new webhook on the account.  If you add a new webhook with the authentication_type set to basic, but
+# do not specify the basic_username and basic_password, UltraCart will automatically generate random ones and
+# return them.  This allows your application to have simpler logic on the setup of a secure webhook.
+#
+# Event Category      Event Name                      Description
+# auto_order         auto_order_cancel               Fired when an auto order is canceled
+# auto_order         auto_order_create               Fired when an auto order is created
+# auto_order         auto_order_decline              Fired when an auto order is declined
+# auto_order         auto_order_disable              Fired when an auto order is disabled
+# auto_order         auto_order_preshipment          Fired when an auto order generates a new pre-shipment notice
+# auto_order         auto_order_rebill               Fired when an auto order is rebilled
+# auto_order         auto_order_update               Fired when an auto order is updated
+# chargeback         chargeback_create               Fired when a chargeback is created
+# chargeback         chargeback_delete               Fired when a chargeback is deleted
+# chargeback         chargeback_update               Fired when a chargeback is updated
+# checkout           checkout_cart_abandon           Fired when a cart is abandoned
+# checkout           checkout_cart_send_return_email Fired when a return email should be sent to a customer
+# customer           customer_create                 Fired when a customer profile is created.
+# customer           customer_delete                 Fired when a customer profile is deleted.
+# customer           customer_update                 Fired when a customer profile is updated.
+# fulfillment        fulfillment_hold                Fired when an order is held for review
+# fulfillment        fulfillment_transmit            Fired to transmit an order to the fulfillment house
+# item               item_create                     Fired when a new item is created.
+# item               item_delete                     Fired when an item is deleted.
+# item               item_update                     Fired when an item is updated.
+# order              order_abandon_recovery          Fired when a previously abandoned cart turns into an order
+# order              order_create                    Fired when an order is placed
+# order              order_delete                    Fired when an order is deleted
+# order              order_payment_failed            Fired when a payment fails
+# order              order_payment_process           Fired when a payment is processed
+# order              order_refund                    Fired when an order is refunded
+# order              order_reject                    Fired when an order is rejected
+# order              order_s3_invoice                Fired when an invoice PDF is stored in S3 bucket
+# order              order_s3_packing_slip           Fired when a packing slip PDF is stored in an S3 bucket
+# order              order_ship                      Fired when an order is shipped
+# order              order_ship_delivered            Fired when an order has a shipment delivered
+# order              order_ship_expected             Fired when an order has an expected delivery date
+# order              order_ship_out_for_delivery     Fired when an order has a shipment out for delivery
+# order              order_stage_change              Fired when an order stage changes
+# order              order_update                    Fired when an order is edited
+# storefront         screen_recording                Fired when a screen recording is created
+# user               user_create                     Fired when a user is created
+# user               user_delete                     Fired when a user is deleted
+# user               user_login                      Fired when a user logs in
+# user               user_update                     Fired when a user is updated
+# workflow_task      workflow_task_create            Fired when a workflow task is created
+# workflow_task      workflow_task_delete            Fired when a workflow task is deleted
+# workflow_task      workflow_task_update            Fired when a workflow task is updated
+#
+# Note: Each event uses the same expansions as the event category.  To see a list of possible expansion values,
+# visit www.ultracart.com/api/. Order Expansions (https://www.ultracart.com/api/#resource_order.html) are listed
+# below because most webhooks are for order events.
+# Order Expansion:
+# affiliate          auto_order          billing             checkout
+# affiliate.ledger   channel_partner     coupon             customer_profile
+# digital_order      edi                 fraud_score        gift
+# gift_certificate   internal            item               linked_shipment
+# marketing          payment             payment.transaction point_of_sale
+# quote              salesforce          shipping           shipping.tracking_number_details
+# summary            taxes               utms
+#
+# Note: The WebhookEventSubscription.event_ruler field is processed with the AWS Event Ruler library to filter down
+# events to just what you want.  If you wish to employ a ruler filter, see https://github.com/aws/event-ruler
+# for syntax examples.  You'll need to apply the aws syntax against the UltraCart object models.  Contact UltraCart
+# support if you need assistance creating the proper ruler expression.
 
-api = UltracartClient::WebhookApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-webhook = UltracartClient::Webhook.new # Webhook | Webhook to create
-opts = {
-  _placeholders: true # Boolean | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
-}
+webhook_api = UltracartClient::WebhookApi.new_using_api_key(Constants::API_KEY)
 
-begin
-  # Add a webhook
-  result = api_instance.insert_webhook(webhook, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling WebhookApi->insert_webhook: #{e}"
+webhook = UltracartClient::Webhook.new
+webhook.webhook_url = "https://www.mywebiste.com/page/to/call/when/this/webhook/fires.php"  # Must be HTTPS if customer related information is being delivered.
+webhook.authentication_type = "basic"  # "basic","none","api user","aws iam"
+webhook.basic_username = "george"
+webhook.basic_password = "LlamaLlamaRedPajama"
+webhook.maximum_events = 10
+webhook.maximum_size = 5242880 # 5 MB is pretty chunky.
+webhook.api_version = "2017-03-01" # this is our only API version so far.
+webhook.compress_events = true # compress events with gzip, then base64 encode them as a string.
+
+event_sub1 = UltracartClient::WebhookEventSubscription.new
+event_sub1.event_name = "order_create"
+event_sub1.event_description = "when an order is placed"
+event_sub1.expansion = "shipping,billing,item,coupon,summary" # whatever you need.
+event_sub1.event_ruler = nil # no filtering.  we want all objects.
+event_sub1.comments = "Merchant specific comment, for example: Bobby needs this webhook for the Accounting department."
+
+event_sub2 = UltracartClient::WebhookEventSubscription.new
+event_sub2.event_name = "order_update"
+event_sub2.event_description = "when an order is modified"
+event_sub2.expansion = "shipping,billing,item,coupon,summary" # whatever you need.
+event_sub2.event_ruler = nil # no filtering.  we want all objects.
+event_sub2.comments = "Merchant specific comment, for example: Bobby needs this webhook for the Accounting department."
+
+event_sub3 = UltracartClient::WebhookEventSubscription.new
+event_sub3.event_name = "order_delete"
+event_sub3.event_description = "when an order is modified"
+event_sub3.expansion = "" # don't need any expansion on delete.  only need to know the order_id
+event_sub3.event_ruler = nil # no filtering.  we want all objects.
+event_sub3.comments = "Merchant specific comment, for example: Bobby needs this webhook for the Accounting department."
+
+event_category1 = UltracartClient::WebhookEventCategory.new
+event_category1.event_category = "order"
+event_category1.events = [event_sub1, event_sub2, event_sub3]
+
+# api_response.webhook will return the newly created webhook.
+api_response = webhook_api.insert_webhook(webhook, false)
+
+if api_response.error
+  puts api_response.error.developer_message
+  puts api_response.error.user_message
+  exit
 end
+
+created_webhook = api_response.webhook
+# TODO - store the webhook oid in case you ever need to make changes.
+
+# This should equal what you submitted, plus contain much new information
+puts created_webhook.inspect
 ```
+
 
 #### Using the insert_webhook_with_http_info variant
 
@@ -485,31 +620,38 @@ Resend events to the webhook endpoint.
 
 This method will resend events to the webhook endpoint.  This method can be used for example to send all the existing items on an account to a webhook. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# resentEvent is used to reflow an event.  It will resend ALL events in history.  So it is essentially a way to
+# get all objects from an event.  Currently, there are only two events available for reflow: "item_update", and "order_create".
+# These two events provide the means to have a webhook receive all items or orders.  This method is usually called
+# at the beginning of a webhook's life to prepopulate a merchant's database with all items or orders.
+#
+# You will need the webhook_oid to call this method.  Call getWebhooks() if you don't know your oid.
 
-api = UltracartClient::WebhookApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-webhook_oid = 56 # Integer | The webhook oid that is receiving the reflowed events.
-event_name = 'event_name_example' # String | The event to reflow.
+webhook_api = UltracartClient::WebhookApi.new_using_api_key(Constants::API_KEY)
 
-begin
-  # Resend events to the webhook endpoint.
-  result = api_instance.resend_event(webhook_oid, event_name)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling WebhookApi->resend_event: #{e}"
+webhook_oid = 123456789 # call getWebhooks if you don't know this.
+event_name = "item_update" # or "order_create", but for this sample, we want all items.
+
+api_response = webhook_api.resend_event(webhook_oid, event_name)
+reflow = api_response.reflow
+success = reflow.queued
+
+if api_response.error
+  puts api_response.error.developer_message
+  puts api_response.error.user_message
+  exit
 end
+
+puts api_response.inspect
 ```
+
 
 #### Using the resend_event_with_http_info variant
 
@@ -558,34 +700,51 @@ Update a webhook
 
 Update a webhook on the account 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+# Updates a webhook on the account.  See insertWebhook.php for a complete example with field usage.
+# For this example, we are just updating the basic password.
 
-api = UltracartClient::WebhookApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-webhook_oid = 56 # Integer | The webhook oid to update.
-webhook = UltracartClient::Webhook.new # Webhook | Webhook to update
+webhook_api = UltracartClient::WebhookApi.new_using_api_key(Constants::API_KEY)
+
+# you should have stored this when you created the webhook.  If you don't know it, call getWebhooks and iterate through
+# them to find you target webhook (add useful comments to each webhook really helps in this endeavor) and get the
+# webhook oid from that.  You'll want to call getWebhooks any way to get the object for updating. It is HIGHLY
+# recommended to get the object from UltraCart for updating rather than constructing it yourself to avoid accidentally
+# deleting a part of the object during the update.
+webhook_oid = 123456789
+
+webhook_to_update = nil
 opts = {
-  _placeholders: true # Boolean | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API.
+  '_sort' => nil,
+  '_placeholders' => nil
 }
-
-begin
-  # Update a webhook
-  result = api_instance.update_webhook(webhook_oid, webhook, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling WebhookApi->update_webhook: #{e}"
+webhooks = webhook_api.get_webhooks(100, 0, opts).webhooks
+webhooks.each do |webhook|
+  if webhook.webhook_oid == webhook_oid
+    webhook_to_update = webhook
+    break
+  end
 end
+
+webhook_to_update.basic_password = "new password here"
+api_response = webhook_api.update_webhook(webhook_oid, webhook_to_update)
+updated_webhook = api_response.webhook
+
+if api_response.error
+  puts api_response.error.developer_message
+  puts api_response.error.user_message
+  exit
+end
+
+puts updated_webhook.inspect
 ```
+
 
 #### Using the update_webhook_with_http_info variant
 

@@ -16,35 +16,13 @@ Retrieve clicks
 
 Retrieves a group of clicks from the account based on a query object.  If no parameters are specified, the API call will fail with a bad request error.  Always specify some parameters to limit the scope of the clicks returned to ones you are truly interested in.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::AffiliateApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-click_query = UltracartClient::AffiliateClickQuery.new # AffiliateClickQuery | Click query
-opts = {
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Maximum 10000)
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _expand: '_expand_example' # String | The object expansion to perform on the result.  Only option is link.
-}
-
-begin
-  # Retrieve clicks
-  result = api_instance.get_clicks_by_query(click_query, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling AffiliateApi->get_clicks_by_query: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_clicks_by_query_with_http_info variant
 
@@ -95,35 +73,13 @@ Retrieve ledger entries
 
 Retrieves a group of ledger entries from the account based on a query object.  If no parameters are specified, the API call will fail with a bad request error.  Always specify some parameters to limit the scope of the ledgers returned to ones you are truly interested in.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::AffiliateApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-ledger_query = UltracartClient::AffiliateLedgerQuery.new # AffiliateLedgerQuery | Ledger query
-opts = {
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Maximum 200)
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _expand: '_expand_example' # String | The object expansion to perform on the result.  Only option is link.
-}
-
-begin
-  # Retrieve ledger entries
-  result = api_instance.get_ledgers_by_query(ledger_query, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling AffiliateApi->get_ledgers_by_query: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_ledgers_by_query_with_http_info variant
 

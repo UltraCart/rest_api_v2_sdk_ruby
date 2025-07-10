@@ -18,29 +18,13 @@ Get single sign on session user
 
 This is the equivalent of logging out of the single sign on session 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::SsoApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get single sign on session user
-  result = api_instance.get_sso_session_user
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling SsoApi->get_sso_session_user: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_sso_session_user_with_http_info variant
 
@@ -86,30 +70,13 @@ Authorize a single sign on session
 
 Starts the process of authorizing a single sign on session. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::SsoApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-authorization_request = UltracartClient::SingleSignOnAuthorizeRequest.new # SingleSignOnAuthorizeRequest | Authorization request
-
-begin
-  # Authorize a single sign on session
-  result = api_instance.sso_authorize(authorization_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling SsoApi->sso_authorize: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the sso_authorize_with_http_info variant
 
@@ -157,28 +124,13 @@ Revoke single sign on session
 
 This is the equivalent of logging out of the single sign on session 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::SsoApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Revoke single sign on session
-  api_instance.sso_session_revoke
-rescue UltracartClient::ApiError => e
-  puts "Error when calling SsoApi->sso_session_revoke: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the sso_session_revoke_with_http_info variant
 
@@ -224,30 +176,13 @@ Exchange a single sign on code for a simple key token
 
 Called by your application after receiving the code back on the redirect URI to obtain a simple key token to make API calls with 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::SsoApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-token_request = UltracartClient::SingleSignOnTokenRequest.new # SingleSignOnTokenRequest | Token request
-
-begin
-  # Exchange a single sign on code for a simple key token
-  result = api_instance.sso_token(token_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling SsoApi->sso_token: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the sso_token_with_http_info variant
 

@@ -190,30 +190,13 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 Add to library
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-add_library_request = UltracartClient::AddLibraryItemRequest.new # AddLibraryItemRequest | New library item request
-
-begin
-  # Add to library
-  result = api_instance.add_to_library(add_library_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->add_to_library: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the add_to_library_with_http_info variant
 
@@ -259,30 +242,13 @@ end
 
 Apply library item to storefront.
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-apply_library_request = UltracartClient::ApplyLibraryItemRequest.new # ApplyLibraryItemRequest | New library item
-
-begin
-  # Apply library item to storefront.
-  result = api_instance.apply_to_store_front(apply_library_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->apply_to_store_front: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the apply_to_store_front_with_http_info variant
 
@@ -328,31 +294,13 @@ end
 
 Archive email list
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_list_uuid = 'email_list_uuid_example' # String | 
-
-begin
-  # Archive email list
-  result = api_instance.archive_email_list(storefront_oid, email_list_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->archive_email_list: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the archive_email_list_with_http_info variant
 
@@ -399,31 +347,13 @@ end
 
 Archive email segment
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_segment_uuid = 'email_segment_uuid_example' # String | 
-
-begin
-  # Archive email segment
-  result = api_instance.archive_email_segment(storefront_oid, email_segment_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->archive_email_segment: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the archive_email_segment_with_http_info variant
 
@@ -470,32 +400,13 @@ end
 
 Back populate email flow
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_flow_uuid = 'email_flow_uuid_example' # String | 
-back_populate_request = UltracartClient::EmailFlowBackPopulateRequest.new # EmailFlowBackPopulateRequest | The request to back populate
-
-begin
-  # Back populate email flow
-  result = api_instance.back_populate_email_flow(storefront_oid, email_flow_uuid, back_populate_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->back_populate_email_flow: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the back_populate_email_flow_with_http_info variant
 
@@ -543,32 +454,13 @@ end
 
 Check download of email segment
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_segment_uuid = 'email_segment_uuid_example' # String | 
-email_segment_rebuild_uuid = 'email_segment_rebuild_uuid_example' # String | 
-
-begin
-  # Check download of email segment
-  result = api_instance.check_download_email_segment(storefront_oid, email_segment_uuid, email_segment_rebuild_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->check_download_email_segment: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the check_download_email_segment_with_http_info variant
 
@@ -616,34 +508,13 @@ end
 
 Clone email campaign
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_campaign_uuid = 'email_campaign_uuid_example' # String | 
-opts = {
-  target_storefront_oid: 56 # Integer | 
-}
-
-begin
-  # Clone email campaign
-  result = api_instance.clone_email_campaign(storefront_oid, email_campaign_uuid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->clone_email_campaign: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the clone_email_campaign_with_http_info variant
 
@@ -691,34 +562,13 @@ end
 
 Clone email flow
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_flow_uuid = 'email_flow_uuid_example' # String | 
-opts = {
-  target_storefront_oid: 56 # Integer | 
-}
-
-begin
-  # Clone email flow
-  result = api_instance.clone_email_flow(storefront_oid, email_flow_uuid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->clone_email_flow: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the clone_email_flow_with_http_info variant
 
@@ -766,30 +616,13 @@ end
 
 Create email campaign
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-domain = 'domain_example' # String | 
-
-begin
-  # Create email campaign
-  result = api_instance.create_email_sending_domain(domain)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->create_email_sending_domain: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the create_email_sending_domain_with_http_info variant
 
@@ -835,30 +668,13 @@ end
 
 Create email sending domain for various providers
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-email_domain = UltracartClient::EmailDomain.new # EmailDomain | EmailDomain
-
-begin
-  # Create email sending domain for various providers
-  result = api_instance.create_email_sending_domain2(email_domain)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->create_email_sending_domain2: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the create_email_sending_domain2_with_http_info variant
 
@@ -904,34 +720,13 @@ end
 
 Create file manager directory
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-id = 56 # Integer | 
-opts = {
-  name: 'name_example', # String | 
-  parent_storefront_fs_directory_oid: 56 # Integer | 
-}
-
-begin
-  # Create file manager directory
-  result = api_instance.create_fs_directory(id, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->create_fs_directory: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the create_fs_directory_with_http_info variant
 
@@ -979,30 +774,13 @@ end
 
 Create Twilio account
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-twilio = UltracartClient::Twilio.new # Twilio | Twilio
-
-begin
-  # Create Twilio account
-  result = api_instance.create_twilio_account(twilio)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->create_twilio_account: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the create_twilio_account_with_http_info variant
 
@@ -1048,31 +826,13 @@ end
 
 Delete email campaignFolder
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_campaign_folder_uuid = 'email_campaign_folder_uuid_example' # String | 
-
-begin
-  # Delete email campaignFolder
-  result = api_instance.delete_email_campaign_folder(storefront_oid, email_campaign_folder_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->delete_email_campaign_folder: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the delete_email_campaign_folder_with_http_info variant
 
@@ -1119,30 +879,13 @@ end
 
 Delete communication sequence stats
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-
-begin
-  # Delete communication sequence stats
-  api_instance.delete_email_commseq_stat(storefront_oid, commseq_uuid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->delete_email_commseq_stat: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the delete_email_commseq_stat_with_http_info variant
 
@@ -1189,31 +932,13 @@ nil (empty response body)
 
 Delete email email
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_email_uuid = 'commseq_email_uuid_example' # String | 
-
-begin
-  # Delete email email
-  result = api_instance.delete_email_email(storefront_oid, commseq_email_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->delete_email_email: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the delete_email_email_with_http_info variant
 
@@ -1260,31 +985,13 @@ end
 
 Delete email flowFolder
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_flow_folder_uuid = 'email_flow_folder_uuid_example' # String | 
-
-begin
-  # Delete email flowFolder
-  result = api_instance.delete_email_flow_folder(storefront_oid, email_flow_folder_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->delete_email_flow_folder: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the delete_email_flow_folder_with_http_info variant
 
@@ -1331,32 +1038,13 @@ end
 
 Delete email list customer
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_list_uuid = 'email_list_uuid_example' # String | 
-email_customer_uuid = 'email_customer_uuid_example' # String | 
-
-begin
-  # Delete email list customer
-  result = api_instance.delete_email_list_customer(storefront_oid, email_list_uuid, email_customer_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->delete_email_list_customer: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the delete_email_list_customer_with_http_info variant
 
@@ -1404,31 +1092,13 @@ end
 
 Delete email ListSegmentFolder
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_list_segment_folder_uuid = 'email_list_segment_folder_uuid_example' # String | 
-
-begin
-  # Delete email ListSegmentFolder
-  result = api_instance.delete_email_list_segment_folder(storefront_oid, email_list_segment_folder_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->delete_email_list_segment_folder: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the delete_email_list_segment_folder_with_http_info variant
 
@@ -1475,31 +1145,13 @@ end
 
 Delete email postcard
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_postcard_uuid = 'commseq_postcard_uuid_example' # String | 
-
-begin
-  # Delete email postcard
-  result = api_instance.delete_email_postcard(storefront_oid, commseq_postcard_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->delete_email_postcard: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the delete_email_postcard_with_http_info variant
 
@@ -1546,30 +1198,13 @@ end
 
 delete email campaign
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-domain = 'domain_example' # String | 
-
-begin
-  # delete email campaign
-  result = api_instance.delete_email_sending_domain(domain)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->delete_email_sending_domain: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the delete_email_sending_domain_with_http_info variant
 
@@ -1615,30 +1250,13 @@ end
 
 Delete experiment
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-storefront_experiment_oid = 56 # Integer | 
-
-begin
-  # Delete experiment
-  api_instance.delete_experiment(storefront_oid, storefront_experiment_oid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->delete_experiment: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the delete_experiment_with_http_info variant
 
@@ -1685,34 +1303,12 @@ nil (empty response body)
 
 Delete file manager directory
 
+
 ### Examples
 
-```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+(No example for this operation).
 
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-id = 56 # Integer | 
-opts = {
-  parent_storefront_fs_directory_oid: 56, # Integer | 
-  storefront_fs_file_oid: 56 # Integer | 
-}
-
-begin
-  # Delete file manager directory
-  result = api_instance.delete_fs_file(id, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->delete_fs_file: #{e}"
-end
-```
 
 #### Using the delete_fs_file_with_http_info variant
 
@@ -1762,30 +1358,13 @@ Delete screen recording heatmap
 
 Delete screen recording heatmap 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-query = UltracartClient::ScreenRecordingHeatmapReset.new # ScreenRecordingHeatmapReset | Query
-
-begin
-  # Delete screen recording heatmap
-  api_instance.delete_heatmap(storefront_oid, query)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->delete_heatmap: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the delete_heatmap_with_http_info variant
 
@@ -1832,29 +1411,13 @@ nil (empty response body)
 
 Delete library item
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-library_item_oid = 56 # Integer | 
-
-begin
-  # Delete library item
-  api_instance.delete_library_item(library_item_oid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->delete_library_item: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the delete_library_item_with_http_info variant
 
@@ -1900,29 +1463,13 @@ nil (empty response body)
 
 Delete all published versions for a library item, including anything in review.
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-library_item_oid = 56 # Integer | 
-
-begin
-  # Delete all published versions for a library item, including anything in review.
-  api_instance.delete_library_item_published_versions(library_item_oid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->delete_library_item_published_versions: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the delete_library_item_published_versions_with_http_info variant
 
@@ -1968,30 +1515,13 @@ nil (empty response body)
 
 Delete screen recording segment
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-screen_recording_segment_oid = 56 # Integer | 
-
-begin
-  # Delete screen recording segment
-  api_instance.delete_screen_recording_segment(storefront_oid, screen_recording_segment_oid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->delete_screen_recording_segment: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the delete_screen_recording_segment_with_http_info variant
 
@@ -2038,30 +1568,13 @@ nil (empty response body)
 
 delete Twilio account
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-esp_twilio_uuid = 'esp_twilio_uuid_example' # String | 
-
-begin
-  # delete Twilio account
-  result = api_instance.delete_twilio_account(esp_twilio_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->delete_twilio_account: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the delete_twilio_account_with_http_info variant
 
@@ -2107,30 +1620,13 @@ end
 
 Duplicate library item.
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-library_item_oid = 56 # Integer | 
-
-begin
-  # Duplicate library item.
-  result = api_instance.duplicate_library_item(library_item_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->duplicate_library_item: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the duplicate_library_item_with_http_info variant
 
@@ -2178,30 +1674,13 @@ Update favorite flag on screen recording
 
 Update favorite flag on screen recording 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-screen_recording_uuid = 'screen_recording_uuid_example' # String | 
-
-begin
-  # Update favorite flag on screen recording
-  api_instance.favorite_screen_recording(storefront_oid, screen_recording_uuid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->favorite_screen_recording: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the favorite_screen_recording_with_http_info variant
 
@@ -2248,31 +1727,13 @@ nil (empty response body)
 
 Obtain lat/long for an address
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-geocode_request = UltracartClient::GeocodeRequest.new # GeocodeRequest | geocode request
-
-begin
-  # Obtain lat/long for an address
-  result = api_instance.geocode_address(storefront_oid, geocode_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->geocode_address: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the geocode_address_with_http_info variant
 
@@ -2321,30 +1782,13 @@ Get countries
 
 Obtain a list of all the countries 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get countries
-  result = api_instance.get_countries(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_countries: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_countries_with_http_info variant
 
@@ -2392,30 +1836,13 @@ Gets editor token
 
 Fetches a temporary authentication token for the editor 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Gets editor token
-  result = api_instance.get_editor_token(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_editor_token: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_editor_token_with_http_info variant
 
@@ -2461,30 +1888,13 @@ end
 
 Get email communication base templates
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get email communication base templates
-  result = api_instance.get_email_base_templates(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_base_templates: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_base_templates_with_http_info variant
 
@@ -2530,31 +1940,13 @@ end
 
 Get email campaign
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_campaign_uuid = 'email_campaign_uuid_example' # String | 
-
-begin
-  # Get email campaign
-  result = api_instance.get_email_campaign(storefront_oid, email_campaign_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_campaign: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_campaign_with_http_info variant
 
@@ -2601,31 +1993,13 @@ end
 
 Get email campaign folder
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_campaign_folder_uuid = 'email_campaign_folder_uuid_example' # String | 
-
-begin
-  # Get email campaign folder
-  result = api_instance.get_email_campaign_folder(storefront_oid, email_campaign_folder_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_campaign_folder: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_campaign_folder_with_http_info variant
 
@@ -2672,30 +2046,13 @@ end
 
 Get email campaign folders
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get email campaign folders
-  result = api_instance.get_email_campaign_folders(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_campaign_folders: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_campaign_folders_with_http_info variant
 
@@ -2741,31 +2098,13 @@ end
 
 Get email campaign screenshots
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_campaign_uuid = 'email_campaign_uuid_example' # String | 
-
-begin
-  # Get email campaign screenshots
-  result = api_instance.get_email_campaign_screenshots(storefront_oid, email_campaign_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_campaign_screenshots: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_campaign_screenshots_with_http_info variant
 
@@ -2812,30 +2151,13 @@ end
 
 Get email campaigns
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get email campaigns
-  result = api_instance.get_email_campaigns(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_campaigns: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_campaigns_with_http_info variant
 
@@ -2881,31 +2203,13 @@ end
 
 Get email campaigns with stats
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-stat_days = 'stat_days_example' # String | 
-
-begin
-  # Get email campaigns with stats
-  result = api_instance.get_email_campaigns_with_stats(storefront_oid, stat_days)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_campaigns_with_stats: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_campaigns_with_stats_with_http_info variant
 
@@ -2952,31 +2256,13 @@ end
 
 Get email commseq
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-
-begin
-  # Get email commseq
-  result = api_instance.get_email_commseq(storefront_oid, commseq_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_commseq: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_commseq_with_http_info variant
 
@@ -3023,32 +2309,13 @@ end
 
 Get email communication sequence emails stats
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-stats_request = UltracartClient::EmailStatSummaryRequest.new # EmailStatSummaryRequest | StatsRequest
-
-begin
-  # Get email communication sequence emails stats
-  result = api_instance.get_email_commseq_email_stats(storefront_oid, commseq_uuid, stats_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_commseq_email_stats: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_commseq_email_stats_with_http_info variant
 
@@ -3096,32 +2363,13 @@ end
 
 Get email communication sequence postcard stats
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-stats_request = UltracartClient::EmailStatPostcardSummaryRequest.new # EmailStatPostcardSummaryRequest | StatsRequest
-
-begin
-  # Get email communication sequence postcard stats
-  result = api_instance.get_email_commseq_postcard_stats(storefront_oid, commseq_uuid, stats_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_commseq_postcard_stats: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_commseq_postcard_stats_with_http_info variant
 
@@ -3169,31 +2417,13 @@ end
 
 Get email communication postcard tracking
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_postcard_uuid = 'commseq_postcard_uuid_example' # String | 
-
-begin
-  # Get email communication postcard tracking
-  result = api_instance.get_email_commseq_postcard_tracking(storefront_oid, commseq_postcard_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_commseq_postcard_tracking: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_email_commseq_postcard_tracking_with_http_info variant
 
@@ -3240,31 +2470,13 @@ end
 
 Get email commseq rate limiters
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-
-begin
-  # Get email commseq rate limiters
-  result = api_instance.get_email_commseq_rate_limiters(storefront_oid, commseq_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_commseq_rate_limiters: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_email_commseq_rate_limiters_with_http_info variant
 
@@ -3311,32 +2523,13 @@ end
 
 Get email communication sequence sms stats
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-stats_request = UltracartClient::EmailStatSmsSummaryRequest.new # EmailStatSmsSummaryRequest | StatsRequest
-
-begin
-  # Get email communication sequence sms stats
-  result = api_instance.get_email_commseq_sms_stats(storefront_oid, commseq_uuid, stats_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_commseq_sms_stats: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_email_commseq_sms_stats_with_http_info variant
 
@@ -3384,31 +2577,13 @@ end
 
 Get communication sequence stats overall
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-
-begin
-  # Get communication sequence stats overall
-  result = api_instance.get_email_commseq_stat_overall(storefront_oid, commseq_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_commseq_stat_overall: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_commseq_stat_overall_with_http_info variant
 
@@ -3455,32 +2630,13 @@ end
 
 Get email communication sequence step stats
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-stats_request = UltracartClient::EmailStepStatRequest.new # EmailStepStatRequest | StatsRequest
-
-begin
-  # Get email communication sequence step stats
-  result = api_instance.get_email_commseq_step_stats(storefront_oid, commseq_uuid, stats_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_commseq_step_stats: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_commseq_step_stats_with_http_info variant
 
@@ -3528,32 +2684,13 @@ end
 
 Get email communication sequence customers waiting at each requested step
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-waiting_request = UltracartClient::EmailStepWaitingRequest.new # EmailStepWaitingRequest | WaitingRequest
-
-begin
-  # Get email communication sequence customers waiting at each requested step
-  result = api_instance.get_email_commseq_step_waiting(storefront_oid, commseq_uuid, waiting_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_commseq_step_waiting: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_commseq_step_waiting_with_http_info variant
 
@@ -3601,31 +2738,13 @@ end
 
 Get email webhook editor values
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-
-begin
-  # Get email webhook editor values
-  result = api_instance.get_email_commseq_webhook_editor_values(storefront_oid, commseq_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_commseq_webhook_editor_values: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_commseq_webhook_editor_values_with_http_info variant
 
@@ -3672,30 +2791,13 @@ end
 
 Get email commseqs
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get email commseqs
-  result = api_instance.get_email_commseqs(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_commseqs: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_commseqs_with_http_info variant
 
@@ -3741,31 +2843,13 @@ end
 
 Get customers editor URL
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_customer_uuid = 'email_customer_uuid_example' # String | 
-
-begin
-  # Get customers editor URL
-  result = api_instance.get_email_customer_editor_url(storefront_oid, email_customer_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_customer_editor_url: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_customer_editor_url_with_http_info variant
 
@@ -3812,35 +2896,13 @@ end
 
 Get email customers
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-opts = {
-  page_number: 56, # Integer | 
-  page_size: 56, # Integer | 
-  search_email_prefix: 'search_email_prefix_example' # String | 
-}
-
-begin
-  # Get email customers
-  result = api_instance.get_email_customers(storefront_oid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_customers: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_customers_with_http_info variant
 
@@ -3889,33 +2951,13 @@ end
 
 Get email dashboard activity
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-opts = {
-  last_records: 56 # Integer | 
-}
-
-begin
-  # Get email dashboard activity
-  result = api_instance.get_email_dashboard_activity(storefront_oid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_dashboard_activity: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_dashboard_activity_with_http_info variant
 
@@ -3962,33 +3004,13 @@ end
 
 Get dashboard stats
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-opts = {
-  days: 56 # Integer | 
-}
-
-begin
-  # Get dashboard stats
-  result = api_instance.get_email_dashboard_stats(storefront_oid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_dashboard_stats: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_dashboard_stats_with_http_info variant
 
@@ -4035,32 +3057,13 @@ end
 
 Get email dispatch logs
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-commseq_step_uuid = 'commseq_step_uuid_example' # String | 
-
-begin
-  # Get email dispatch logs
-  result = api_instance.get_email_dispatch_logs(storefront_oid, commseq_uuid, commseq_step_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_dispatch_logs: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_dispatch_logs_with_http_info variant
 
@@ -4108,31 +3111,13 @@ end
 
 Get email email
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_email_uuid = 'commseq_email_uuid_example' # String | 
-
-begin
-  # Get email email
-  result = api_instance.get_email_email(storefront_oid, commseq_email_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_email: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_email_with_http_info variant
 
@@ -4179,36 +3164,13 @@ end
 
 Get email email clicks
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-commseq_step_uuid = 'commseq_step_uuid_example' # String | 
-commseq_email_uuid = 'commseq_email_uuid_example' # String | 
-opts = {
-  days: 56 # Integer | 
-}
-
-begin
-  # Get email email clicks
-  result = api_instance.get_email_email_clicks(storefront_oid, commseq_uuid, commseq_step_uuid, commseq_email_uuid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_email_clicks: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_email_clicks_with_http_info variant
 
@@ -4258,32 +3220,13 @@ end
 
 Get email order customer editor url
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_email_uuid = 'commseq_email_uuid_example' # String | 
-order_id = 'order_id_example' # String | 
-
-begin
-  # Get email order customer editor url
-  result = api_instance.get_email_email_customer_editor_url(storefront_oid, commseq_email_uuid, order_id)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_email_customer_editor_url: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_email_customer_editor_url_with_http_info variant
 
@@ -4331,36 +3274,13 @@ end
 
 Get email email orders
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-commseq_step_uuid = 'commseq_step_uuid_example' # String | 
-commseq_email_uuid = 'commseq_email_uuid_example' # String | 
-opts = {
-  days: 56 # Integer | 
-}
-
-begin
-  # Get email email orders
-  result = api_instance.get_email_email_orders(storefront_oid, commseq_uuid, commseq_step_uuid, commseq_email_uuid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_email_orders: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_email_orders_with_http_info variant
 
@@ -4410,30 +3330,13 @@ end
 
 Get email emails
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get email emails
-  result = api_instance.get_email_emails(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_emails: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_emails_with_http_info variant
 
@@ -4479,31 +3382,13 @@ end
 
 Get email emails multiple
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_commseq_emails_request = UltracartClient::EmailCommseqEmailsRequest.new # EmailCommseqEmailsRequest | Request of email uuids
-
-begin
-  # Get email emails multiple
-  result = api_instance.get_email_emails_multiple(storefront_oid, email_commseq_emails_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_emails_multiple: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_emails_multiple_with_http_info variant
 
@@ -4550,31 +3435,13 @@ end
 
 Get email flow
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_flow_uuid = 'email_flow_uuid_example' # String | 
-
-begin
-  # Get email flow
-  result = api_instance.get_email_flow(storefront_oid, email_flow_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_flow: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_flow_with_http_info variant
 
@@ -4621,31 +3488,13 @@ end
 
 Get email flow folder
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_flow_folder_uuid = 'email_flow_folder_uuid_example' # String | 
-
-begin
-  # Get email flow folder
-  result = api_instance.get_email_flow_folder(storefront_oid, email_flow_folder_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_flow_folder: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_flow_folder_with_http_info variant
 
@@ -4692,30 +3541,13 @@ end
 
 Get email flow folders
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get email flow folders
-  result = api_instance.get_email_flow_folders(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_flow_folders: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_flow_folders_with_http_info variant
 
@@ -4761,31 +3593,13 @@ end
 
 Get email flow screenshots
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_flow_uuid = 'email_flow_uuid_example' # String | 
-
-begin
-  # Get email flow screenshots
-  result = api_instance.get_email_flow_screenshots(storefront_oid, email_flow_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_flow_screenshots: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_flow_screenshots_with_http_info variant
 
@@ -4832,30 +3646,13 @@ end
 
 Get email flows
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get email flows
-  result = api_instance.get_email_flows(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_flows: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_flows_with_http_info variant
 
@@ -4901,29 +3698,13 @@ end
 
 Get email globalsettings
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get email globalsettings
-  result = api_instance.get_email_global_settings
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_global_settings: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_global_settings_with_http_info variant
 
@@ -4967,31 +3748,13 @@ This endpoint does not need any parameter.
 
 Get email list
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_list_uuid = 'email_list_uuid_example' # String | 
-
-begin
-  # Get email list
-  result = api_instance.get_email_list(storefront_oid, email_list_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_list: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_list_with_http_info variant
 
@@ -5038,32 +3801,13 @@ end
 
 Get email list customer editor url
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_list_uuid = 'email_list_uuid_example' # String | 
-email_customer_uuid = 'email_customer_uuid_example' # String | 
-
-begin
-  # Get email list customer editor url
-  result = api_instance.get_email_list_customer_editor_url(storefront_oid, email_list_uuid, email_customer_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_list_customer_editor_url: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_list_customer_editor_url_with_http_info variant
 
@@ -5111,35 +3855,13 @@ end
 
 Get email list customers
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_list_uuid = 'email_list_uuid_example' # String | 
-opts = {
-  page_number: 56, # Integer | 
-  page_size: 56 # Integer | 
-}
-
-begin
-  # Get email list customers
-  result = api_instance.get_email_list_customers(storefront_oid, email_list_uuid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_list_customers: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_list_customers_with_http_info variant
 
@@ -5188,31 +3910,13 @@ end
 
 Get email campaign folder
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_list_segment_folder_uuid = 'email_list_segment_folder_uuid_example' # String | 
-
-begin
-  # Get email campaign folder
-  result = api_instance.get_email_list_segment_folder(storefront_oid, email_list_segment_folder_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_list_segment_folder: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_list_segment_folder_with_http_info variant
 
@@ -5259,30 +3963,13 @@ end
 
 Get email campaign folders
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get email campaign folders
-  result = api_instance.get_email_list_segment_folders(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_list_segment_folders: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_list_segment_folders_with_http_info variant
 
@@ -5328,30 +4015,13 @@ end
 
 Get email lists
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get email lists
-  result = api_instance.get_email_lists(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_lists: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_lists_with_http_info variant
 
@@ -5397,30 +4067,13 @@ end
 
 Get email performance
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get email performance
-  result = api_instance.get_email_performance(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_performance: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_performance_with_http_info variant
 
@@ -5466,30 +4119,13 @@ end
 
 Get email plan
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get email plan
-  result = api_instance.get_email_plan(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_plan: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_plan_with_http_info variant
 
@@ -5535,31 +4171,13 @@ end
 
 Get email postcard
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_postcard_uuid = 'commseq_postcard_uuid_example' # String | 
-
-begin
-  # Get email postcard
-  result = api_instance.get_email_postcard(storefront_oid, commseq_postcard_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_postcard: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_postcard_with_http_info variant
 
@@ -5606,30 +4224,13 @@ end
 
 Get email postcards
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get email postcards
-  result = api_instance.get_email_postcards(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_postcards: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_postcards_with_http_info variant
 
@@ -5675,31 +4276,13 @@ end
 
 Get email postcards multiple
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_commseq_postcards_request = UltracartClient::EmailCommseqPostcardsRequest.new # EmailCommseqPostcardsRequest | Request of postcard uuids
-
-begin
-  # Get email postcards multiple
-  result = api_instance.get_email_postcards_multiple(storefront_oid, email_commseq_postcards_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_postcards_multiple: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_postcards_multiple_with_http_info variant
 
@@ -5746,31 +4329,13 @@ end
 
 Get email segment
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_segment_uuid = 'email_segment_uuid_example' # String | 
-
-begin
-  # Get email segment
-  result = api_instance.get_email_segment(storefront_oid, email_segment_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_segment: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_segment_with_http_info variant
 
@@ -5817,32 +4382,13 @@ end
 
 Get email segment customers editor URL
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_segment_uuid = 'email_segment_uuid_example' # String | 
-email_customer_uuid = 'email_customer_uuid_example' # String | 
-
-begin
-  # Get email segment customers editor URL
-  result = api_instance.get_email_segment_customer_editor_url(storefront_oid, email_segment_uuid, email_customer_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_segment_customer_editor_url: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_segment_customer_editor_url_with_http_info variant
 
@@ -5890,35 +4436,13 @@ end
 
 Get email segment customers
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_segment_uuid = 'email_segment_uuid_example' # String | 
-opts = {
-  page_number: 56, # Integer | 
-  page_size: 56 # Integer | 
-}
-
-begin
-  # Get email segment customers
-  result = api_instance.get_email_segment_customers(storefront_oid, email_segment_uuid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_segment_customers: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_segment_customers_with_http_info variant
 
@@ -5967,30 +4491,13 @@ end
 
 Get email segments
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get email segments
-  result = api_instance.get_email_segments(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_segments: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_segments_with_http_info variant
 
@@ -6036,30 +4543,13 @@ end
 
 Get email sending domain
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-domain = 'domain_example' # String | 
-
-begin
-  # Get email sending domain
-  result = api_instance.get_email_sending_domain(domain)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_sending_domain: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_sending_domain_with_http_info variant
 
@@ -6105,30 +4595,13 @@ end
 
 Get email sending domain status
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-domain = 'domain_example' # String | 
-
-begin
-  # Get email sending domain status
-  result = api_instance.get_email_sending_domain_status(domain)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_sending_domain_status: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_sending_domain_status_with_http_info variant
 
@@ -6174,29 +4647,13 @@ end
 
 Get email sending domains
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get email sending domains
-  result = api_instance.get_email_sending_domains
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_sending_domains: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_sending_domains_with_http_info variant
 
@@ -6240,30 +4697,13 @@ This endpoint does not need any parameter.
 
 Get email settings
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get email settings
-  result = api_instance.get_email_settings(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_settings: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_settings_with_http_info variant
 
@@ -6309,35 +4749,13 @@ end
 
 Get email sms orders
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-commseq_step_uuid = 'commseq_step_uuid_example' # String | 
-opts = {
-  days: 56 # Integer | 
-}
-
-begin
-  # Get email sms orders
-  result = api_instance.get_email_sms_orders(storefront_oid, commseq_uuid, commseq_step_uuid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_sms_orders: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_email_sms_orders_with_http_info variant
 
@@ -6386,31 +4804,13 @@ end
 
 Get email template
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_template_oid = 56 # Integer | 
-
-begin
-  # Get email template
-  result = api_instance.get_email_template(storefront_oid, email_template_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_template: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_template_with_http_info variant
 
@@ -6457,33 +4857,13 @@ end
 
 Get email templates
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-opts = {
-  trigger_type: 'trigger_type_example' # String | 
-}
-
-begin
-  # Get email templates
-  result = api_instance.get_email_templates(storefront_oid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_templates: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_templates_with_http_info variant
 
@@ -6530,30 +4910,13 @@ end
 
 Get a list of third party email providers
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get a list of third party email providers
-  result = api_instance.get_email_third_party_providers(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_email_third_party_providers: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_email_third_party_providers_with_http_info variant
 
@@ -6599,30 +4962,13 @@ end
 
 Get experiments
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get experiments
-  result = api_instance.get_experiments(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_experiments: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_experiments_with_http_info variant
 
@@ -6668,35 +5014,13 @@ end
 
 Get file manager directory
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-id = 56 # Integer | 
-opts = {
-  path: 'path_example', # String | 
-  storefront_fs_directory_oid: 56, # Integer | 
-  storefront_theme_oid: 56 # Integer | 
-}
-
-begin
-  # Get file manager directory
-  result = api_instance.get_fs_directory(id, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_fs_directory: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_fs_directory_with_http_info variant
 
@@ -6747,31 +5071,13 @@ Get screen recording heatmap
 
 Get screen recording heatmap 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-query = UltracartClient::ScreenRecordingHeatmapRequest.new # ScreenRecordingHeatmapRequest | Query
-
-begin
-  # Get screen recording heatmap
-  result = api_instance.get_heatmap(storefront_oid, query)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_heatmap: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_heatmap_with_http_info variant
 
@@ -6820,36 +5126,13 @@ Get screen recording heatmap index
 
 Get screen recording heatmap index 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-query = UltracartClient::ScreenRecordingHeatmapIndexRequest.new # ScreenRecordingHeatmapIndexRequest | Query
-opts = {
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Default 100, Max 500)
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _sort: '_sort_example' # String | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-}
-
-begin
-  # Get screen recording heatmap index
-  result = api_instance.get_heatmap_index(storefront_oid, query, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_heatmap_index: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_heatmap_index_with_http_info variant
 
@@ -6901,33 +5184,13 @@ Get histogram property names
 
 Obtain a list of property names for a given property type 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-opts = {
-  property_type: 'property_type_example' # String | 
-}
-
-begin
-  # Get histogram property names
-  result = api_instance.get_histogram_property_names(storefront_oid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_histogram_property_names: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_histogram_property_names_with_http_info variant
 
@@ -6976,35 +5239,13 @@ Get histogram property values
 
 Obtain a list of property values for a given property name and type 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-opts = {
-  property_name: 'property_name_example', # String | 
-  property_type: 'property_type_example', # String | 
-  limit: 56 # Integer | 
-}
-
-begin
-  # Get histogram property values
-  result = api_instance.get_histogram_property_values(storefront_oid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_histogram_property_values: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_histogram_property_values_with_http_info variant
 
@@ -7053,29 +5294,13 @@ end
 
 Get library values used to populate drop down boxes for filtering.
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get library values used to populate drop down boxes for filtering.
-  result = api_instance.get_library_filter_values
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_library_filter_values: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_library_filter_values_with_http_info variant
 
@@ -7119,30 +5344,13 @@ This endpoint does not need any parameter.
 
 Get library item.
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-library_item_oid = 56 # Integer | 
-
-begin
-  # Get library item.
-  result = api_instance.get_library_item(library_item_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_library_item: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_library_item_with_http_info variant
 
@@ -7188,30 +5396,13 @@ end
 
 Get all published versions for a library item.
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-library_item_oid = 56 # Integer | 
-
-begin
-  # Get all published versions for a library item.
-  result = api_instance.get_library_item_published_versions(library_item_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_library_item_published_versions: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_library_item_published_versions_with_http_info variant
 
@@ -7259,31 +5450,13 @@ Get screen recording
 
 Get screen recording 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-screen_recording_uuid = 'screen_recording_uuid_example' # String | 
-
-begin
-  # Get screen recording
-  result = api_instance.get_screen_recording(storefront_oid, screen_recording_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_screen_recording: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_screen_recording_with_http_info variant
 
@@ -7332,32 +5505,13 @@ Get screen recording page view data
 
 Get screen recording page view data 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-screen_recording_uuid = 'screen_recording_uuid_example' # String | 
-screen_recording_page_view_uuid = 'screen_recording_page_view_uuid_example' # String | 
-
-begin
-  # Get screen recording page view data
-  result = api_instance.get_screen_recording_page_view_data(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_screen_recording_page_view_data: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_screen_recording_page_view_data_with_http_info variant
 
@@ -7405,31 +5559,13 @@ end
 
 Get screen recording segment
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-screen_recording_segment_oid = 56 # Integer | 
-
-begin
-  # Get screen recording segment
-  result = api_instance.get_screen_recording_segment(storefront_oid, screen_recording_segment_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_screen_recording_segment: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_screen_recording_segment_with_http_info variant
 
@@ -7476,30 +5612,13 @@ end
 
 Get screen recording segments
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get screen recording segments
-  result = api_instance.get_screen_recording_segments(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_screen_recording_segments: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_screen_recording_segments_with_http_info variant
 
@@ -7545,30 +5664,13 @@ end
 
 Get screen recording settings
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get screen recording settings
-  result = api_instance.get_screen_recording_settings(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_screen_recording_settings: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_screen_recording_settings_with_http_info variant
 
@@ -7616,30 +5718,13 @@ Get tags used by screen recording
 
 Get tags used by screen recording 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Get tags used by screen recording
-  result = api_instance.get_screen_recording_tags(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_screen_recording_tags: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_screen_recording_tags_with_http_info variant
 
@@ -7687,36 +5772,13 @@ Query screen recordings
 
 Query screen recordings 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-query = UltracartClient::ScreenRecordingQueryRequest.new # ScreenRecordingQueryRequest | Query
-opts = {
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Default 100, Max 500)
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _sort: '_sort_example' # String | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-}
-
-begin
-  # Query screen recordings
-  result = api_instance.get_screen_recordings_by_query(storefront_oid, query, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_screen_recordings_by_query: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_screen_recordings_by_query_with_http_info variant
 
@@ -7768,36 +5830,13 @@ Get screen recordings by segment
 
 Get screen recordings by segment 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-screen_recording_segment_oid = 56 # Integer | 
-opts = {
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Default 100, Max 500)
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _sort: '_sort_example' # String | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-}
-
-begin
-  # Get screen recordings by segment
-  result = api_instance.get_screen_recordings_by_segment(storefront_oid, screen_recording_segment_oid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_screen_recordings_by_segment: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_screen_recordings_by_segment_with_http_info variant
 
@@ -7849,32 +5888,13 @@ Retrieve pricing tiers
 
 Retrieves the pricing tiers 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-opts = {
-  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
-}
-
-begin
-  # Retrieve pricing tiers
-  result = api_instance.get_store_front_pricing_tiers(opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_store_front_pricing_tiers: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_store_front_pricing_tiers_with_http_info variant
 
@@ -7920,29 +5940,13 @@ end
 
 Get storefronts (internal use only for security reasons)
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get storefronts (internal use only for security reasons)
-  result = api_instance.get_store_fronts
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_store_fronts: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_store_fronts_with_http_info variant
 
@@ -7986,30 +5990,13 @@ This endpoint does not need any parameter.
 
 Get thumbnail parameters
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-thumbnail_parameters = UltracartClient::ThumbnailParametersRequest.new # ThumbnailParametersRequest | Thumbnail Parameters
-
-begin
-  # Get thumbnail parameters
-  result = api_instance.get_thumbnail_parameters(thumbnail_parameters)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_thumbnail_parameters: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_thumbnail_parameters_with_http_info variant
 
@@ -8057,31 +6044,13 @@ Gets a transaction email object
 
 Fetch a transactional email 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_id = 'email_id_example' # String | 
-
-begin
-  # Gets a transaction email object
-  result = api_instance.get_transaction_email(storefront_oid, email_id)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_transaction_email: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_transaction_email_with_http_info variant
 
@@ -8130,30 +6099,13 @@ Gets a list of transaction email names
 
 Obtain a list of all transactional emails and return back just their names 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-
-begin
-  # Gets a list of transaction email names
-  result = api_instance.get_transaction_email_list(storefront_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_transaction_email_list: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_transaction_email_list_with_http_info variant
 
@@ -8199,31 +6151,13 @@ end
 
 Get transactional email screenshots
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_id = 'email_id_example' # String | 
-
-begin
-  # Get transactional email screenshots
-  result = api_instance.get_transaction_email_screenshots(storefront_oid, email_id)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_transaction_email_screenshots: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_transaction_email_screenshots_with_http_info variant
 
@@ -8270,30 +6204,13 @@ end
 
 Get Twilio account
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-esp_twilio_uuid = 'esp_twilio_uuid_example' # String | 
-
-begin
-  # Get Twilio account
-  result = api_instance.get_twilio_account(esp_twilio_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_twilio_account: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_twilio_account_with_http_info variant
 
@@ -8339,29 +6256,13 @@ end
 
 Get all Twilio accounts
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get all Twilio accounts
-  result = api_instance.get_twilio_accounts
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_twilio_accounts: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the get_twilio_accounts_with_http_info variant
 
@@ -8405,31 +6306,13 @@ This endpoint does not need any parameter.
 
 Retrieves a S3 url where a file may be uploaded. Once uploaded, use uploadFsFile to trigger the server into reading the S3 bucket and retrieving the file.
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-id = 56 # Integer | 
-extension = 'extension_example' # String | 
-
-begin
-  # Retrieves a S3 url where a file may be uploaded. Once uploaded, use uploadFsFile to trigger the server into reading the S3 bucket and retrieving the file.
-  result = api_instance.get_upload_fs_file_url(id, extension)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->get_upload_fs_file_url: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_upload_fs_file_url_with_http_info variant
 
@@ -8476,31 +6359,13 @@ end
 
 Globally unsubscribe a customer
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-unsubscribe = UltracartClient::EmailGlobalUnsubscribeRequest.new # EmailGlobalUnsubscribeRequest | Unsubscribe
-
-begin
-  # Globally unsubscribe a customer
-  result = api_instance.global_unsubscribe(storefront_oid, unsubscribe)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->global_unsubscribe: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the global_unsubscribe_with_http_info variant
 
@@ -8547,30 +6412,13 @@ end
 
 Import a third party provider list
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-import_request = UltracartClient::EmailThirdPartyListImportRequest.new # EmailThirdPartyListImportRequest | lists to import
-
-begin
-  # Import a third party provider list
-  api_instance.import_email_third_party_provider_list(storefront_oid, import_request)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->import_email_third_party_provider_list: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the import_email_third_party_provider_list_with_http_info variant
 
@@ -8617,31 +6465,13 @@ nil (empty response body)
 
 Insert email campaign
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_campaign = UltracartClient::EmailCampaign.new # EmailCampaign | Email campaign
-
-begin
-  # Insert email campaign
-  result = api_instance.insert_email_campaign(storefront_oid, email_campaign)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->insert_email_campaign: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the insert_email_campaign_with_http_info variant
 
@@ -8688,31 +6518,13 @@ end
 
 Insert email campaign folder
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_campaign_folder = UltracartClient::EmailCampaignFolder.new # EmailCampaignFolder | Email campaign folder
-
-begin
-  # Insert email campaign folder
-  result = api_instance.insert_email_campaign_folder(storefront_oid, email_campaign_folder)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->insert_email_campaign_folder: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the insert_email_campaign_folder_with_http_info variant
 
@@ -8759,31 +6571,13 @@ end
 
 Insert email commseq
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_commseq = UltracartClient::EmailCommseq.new # EmailCommseq | Email commseq
-
-begin
-  # Insert email commseq
-  result = api_instance.insert_email_commseq(storefront_oid, email_commseq)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->insert_email_commseq: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the insert_email_commseq_with_http_info variant
 
@@ -8830,31 +6624,13 @@ end
 
 Insert email email
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_commseq_email = UltracartClient::EmailCommseqEmail.new # EmailCommseqEmail | Email email
-
-begin
-  # Insert email email
-  result = api_instance.insert_email_email(storefront_oid, email_commseq_email)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->insert_email_email: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the insert_email_email_with_http_info variant
 
@@ -8901,31 +6677,13 @@ end
 
 Insert email flow
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_flow = UltracartClient::EmailFlow.new # EmailFlow | Email flow
-
-begin
-  # Insert email flow
-  result = api_instance.insert_email_flow(storefront_oid, email_flow)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->insert_email_flow: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the insert_email_flow_with_http_info variant
 
@@ -8972,31 +6730,13 @@ end
 
 Insert email flow folder
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_flow_folder = UltracartClient::EmailFlowFolder.new # EmailFlowFolder | Email flow folder
-
-begin
-  # Insert email flow folder
-  result = api_instance.insert_email_flow_folder(storefront_oid, email_flow_folder)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->insert_email_flow_folder: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the insert_email_flow_folder_with_http_info variant
 
@@ -9043,31 +6783,13 @@ end
 
 Insert email list
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_list = UltracartClient::EmailList.new # EmailList | Email list
-
-begin
-  # Insert email list
-  result = api_instance.insert_email_list(storefront_oid, email_list)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->insert_email_list: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the insert_email_list_with_http_info variant
 
@@ -9114,31 +6836,13 @@ end
 
 Insert email campaign folder
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_list_segment_folder = UltracartClient::EmailListSegmentFolder.new # EmailListSegmentFolder | Email campaign folder
-
-begin
-  # Insert email campaign folder
-  result = api_instance.insert_email_list_segment_folder(storefront_oid, email_list_segment_folder)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->insert_email_list_segment_folder: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the insert_email_list_segment_folder_with_http_info variant
 
@@ -9185,31 +6889,13 @@ end
 
 Insert email postcard
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_commseq_postcard = UltracartClient::EmailCommseqPostcard.new # EmailCommseqPostcard | Email postcard
-
-begin
-  # Insert email postcard
-  result = api_instance.insert_email_postcard(storefront_oid, email_commseq_postcard)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->insert_email_postcard: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the insert_email_postcard_with_http_info variant
 
@@ -9256,31 +6942,13 @@ end
 
 Insert email segment
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_segment = UltracartClient::EmailSegment.new # EmailSegment | Email segment
-
-begin
-  # Insert email segment
-  result = api_instance.insert_email_segment(storefront_oid, email_segment)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->insert_email_segment: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the insert_email_segment_with_http_info variant
 
@@ -9327,31 +6995,13 @@ end
 
 Insert screen recording segment
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-segment = UltracartClient::ScreenRecordingSegment.new # ScreenRecordingSegment | Segment
-
-begin
-  # Insert screen recording segment
-  result = api_instance.insert_screen_recording_segment(storefront_oid, segment)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->insert_screen_recording_segment: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the insert_screen_recording_segment_with_http_info variant
 
@@ -9400,31 +7050,13 @@ Upsert a page content attribute
 
 Update a page content attribute, creating it new if it does not yet exist. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-page_oid = 56 # Integer | The page oid to modify.
-page_attribute = UltracartClient::StoreFrontPageContentAttribute.new # StoreFrontPageContentAttribute | Page content attribute to upsert
-
-begin
-  # Upsert a page content attribute
-  api_instance.insert_update_page_content_attribute(storefront_oid, page_oid, page_attribute)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->insert_update_page_content_attribute: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the insert_update_page_content_attribute_with_http_info variant
 
@@ -9472,31 +7104,13 @@ nil (empty response body)
 
 Prepare download of email segment
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_segment_uuid = 'email_segment_uuid_example' # String | 
-
-begin
-  # Prepare download of email segment
-  result = api_instance.prepare_download_email_segment(storefront_oid, email_segment_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->prepare_download_email_segment: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the prepare_download_email_segment_with_http_info variant
 
@@ -9543,31 +7157,13 @@ end
 
 Publish library item.
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-library_item_oid = 56 # Integer | 
-publish_library_request = UltracartClient::PublishLibraryItemRequest.new # PublishLibraryItemRequest | Publish library item request
-
-begin
-  # Publish library item.
-  result = api_instance.publish_library_item(library_item_oid, publish_library_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->publish_library_item: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the publish_library_item_with_http_info variant
 
@@ -9614,33 +7210,13 @@ end
 
 Purchase public library item, which creates a copy of the item in your personal code library
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-library_item_oid = 56 # Integer | 
-opts = {
-  storefront_oid: 56 # Integer | 
-}
-
-begin
-  # Purchase public library item, which creates a copy of the item in your personal code library
-  result = api_instance.purchase_library_item(library_item_oid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->purchase_library_item: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the purchase_library_item_with_http_info variant
 
@@ -9687,31 +7263,13 @@ end
 
 Release email communication sequence customers waiting at the specified step
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-commseq_step_uuid = 'commseq_step_uuid_example' # String | 
-
-begin
-  # Release email communication sequence customers waiting at the specified step
-  api_instance.release_email_commseq_step_waiting(storefront_oid, commseq_uuid, commseq_step_uuid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->release_email_commseq_step_waiting: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the release_email_commseq_step_waiting_with_http_info variant
 
@@ -9759,30 +7317,13 @@ nil (empty response body)
 
 Reset email commseq rate limiters (only callable by UltraCart Support)
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-
-begin
-  # Reset email commseq rate limiters (only callable by UltraCart Support)
-  api_instance.reset_email_commseq_rate_limiters(storefront_oid, commseq_uuid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->reset_email_commseq_rate_limiters: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the reset_email_commseq_rate_limiters_with_http_info variant
 
@@ -9829,32 +7370,13 @@ nil (empty response body)
 
 Request a review of an email
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_email_uuid = 'commseq_email_uuid_example' # String | 
-email_commseq_email_review_request = UltracartClient::EmailCommseqEmailSendTestRequest.new # EmailCommseqEmailSendTestRequest | Email commseq email review request
-
-begin
-  # Request a review of an email
-  result = api_instance.review(storefront_oid, commseq_email_uuid, email_commseq_email_review_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->review: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the review_with_http_info variant
 
@@ -9902,36 +7424,13 @@ end
 
 Searches for all matching values
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-opts = {
-  category: 'category_example', # String | 
-  matches: 'matches_example', # String | 
-  storefront_oid: 'storefront_oid_example', # String | 
-  max_hits: 56, # Integer | 
-  subcategory: 'subcategory_example' # String | 
-}
-
-begin
-  # Searches for all matching values
-  result = api_instance.search(opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->search: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the search_with_http_info variant
 
@@ -9981,30 +7480,13 @@ end
 
 Searches for all matching values (using POST)
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-lookup_request = UltracartClient::LookupRequest.new # LookupRequest | LookupRequest
-
-begin
-  # Searches for all matching values (using POST)
-  result = api_instance.search2(lookup_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->search2: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the search2_with_http_info variant
 
@@ -10050,34 +7532,13 @@ end
 
 Search email list customers
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_list_uuid = 'email_list_uuid_example' # String | 
-opts = {
-  starts_with: 'starts_with_example' # String | 
-}
-
-begin
-  # Search email list customers
-  result = api_instance.search_email_list_customers(storefront_oid, email_list_uuid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->search_email_list_customers: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the search_email_list_customers_with_http_info variant
 
@@ -10125,34 +7586,13 @@ end
 
 Search email segment customers
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_segment_uuid = 'email_segment_uuid_example' # String | 
-opts = {
-  starts_with: 'starts_with_example' # String | 
-}
-
-begin
-  # Search email segment customers
-  result = api_instance.search_email_segment_customers(storefront_oid, email_segment_uuid, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->search_email_segment_customers: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the search_email_segment_customers_with_http_info variant
 
@@ -10202,35 +7642,13 @@ Retrieve library items
 
 Retrieves a library items based on a query object.  If no parameters are specified, the API call will default to the merchant id only.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-item_query = UltracartClient::LibraryItemQuery.new # LibraryItemQuery | Item query
-opts = {
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Maximum 10000)
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _sort: '_sort_example' # String | The sort order of the library items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-}
-
-begin
-  # Retrieve library items
-  result = api_instance.search_library_items(item_query, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->search_library_items: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the search_library_items_with_http_info variant
 
@@ -10281,35 +7699,13 @@ Retrieve library items
 
 Retrieves a library items based on a query object.  If no parameters are specified, the API call will default to the merchant id only.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-item_query = UltracartClient::LibraryItemQuery.new # LibraryItemQuery | Item query
-opts = {
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Maximum 10000)
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _sort: '_sort_example' # String | The sort order of the library items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-}
-
-begin
-  # Retrieve library items
-  result = api_instance.search_published_items(item_query, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->search_published_items: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the search_published_items_with_http_info variant
 
@@ -10360,35 +7756,13 @@ Retrieve library items needing review or rejected
 
 Retrieves a library items based on a query object.  If no parameters are specified, the API call will default to the merchant id only.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-item_query = UltracartClient::LibraryItemQuery.new # LibraryItemQuery | Item query
-opts = {
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Maximum 10000)
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _sort: '_sort_example' # String | The sort order of the library items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-}
-
-begin
-  # Retrieve library items needing review or rejected
-  result = api_instance.search_review_items(item_query, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->search_review_items: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the search_review_items_with_http_info variant
 
@@ -10439,35 +7813,13 @@ Retrieve library items
 
 Retrieves a library items based on a query object.  If no parameters are specified, the API call will default to the merchant id only.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-item_query = UltracartClient::LibraryItemQuery.new # LibraryItemQuery | Item query
-opts = {
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Maximum 10000)
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _sort: '_sort_example' # String | The sort order of the library items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-}
-
-begin
-  # Retrieve library items
-  result = api_instance.search_shared_items(item_query, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->search_shared_items: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the search_shared_items_with_http_info variant
 
@@ -10516,32 +7868,13 @@ end
 
 Send email test
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_email_uuid = 'commseq_email_uuid_example' # String | 
-email_commseq_email_test_request = UltracartClient::EmailCommseqEmailSendTestRequest.new # EmailCommseqEmailSendTestRequest | Email commseq email test request
-
-begin
-  # Send email test
-  result = api_instance.send_email_test(storefront_oid, commseq_email_uuid, email_commseq_email_test_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->send_email_test: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the send_email_test_with_http_info variant
 
@@ -10589,32 +7922,13 @@ end
 
 Send postcard test
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_postcard_uuid = 'commseq_postcard_uuid_example' # String | 
-email_commseq_postcard_test_request = UltracartClient::EmailCommseqPostcardSendTestRequest.new # EmailCommseqPostcardSendTestRequest | Email commseq email test request
-
-begin
-  # Send postcard test
-  result = api_instance.send_postcard_test(storefront_oid, commseq_postcard_uuid, email_commseq_postcard_test_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->send_postcard_test: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the send_postcard_test_with_http_info variant
 
@@ -10662,33 +7976,13 @@ end
 
 Send SMS test
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-commseq_step_uuid = 'commseq_step_uuid_example' # String | 
-email_commseq_sms_test_request = UltracartClient::EmailCommseqSmsSendTestRequest.new # EmailCommseqSmsSendTestRequest | Email commseq sms test request
-
-begin
-  # Send SMS test
-  result = api_instance.send_sms_test(storefront_oid, commseq_uuid, commseq_step_uuid, email_commseq_sms_test_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->send_sms_test: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the send_sms_test_with_http_info variant
 
@@ -10737,31 +8031,13 @@ end
 
 Send webhook test
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_commseq_webhook_test_request = UltracartClient::EmailCommseqWebhookSendTestRequest.new # EmailCommseqWebhookSendTestRequest | Email commseq webhook test request
-
-begin
-  # Send webhook test
-  result = api_instance.send_webhook_test(storefront_oid, email_commseq_webhook_test_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->send_webhook_test: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the send_webhook_test_with_http_info variant
 
@@ -10808,32 +8084,13 @@ end
 
 Sequence test
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-email_commseq_sequence_test_request = UltracartClient::EmailCommseqSequenceTestRequest.new # EmailCommseqSequenceTestRequest | Commseq test request
-
-begin
-  # Sequence test
-  result = api_instance.sequence_test(storefront_oid, commseq_uuid, email_commseq_sequence_test_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->sequence_test: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the sequence_test_with_http_info variant
 
@@ -10881,31 +8138,13 @@ end
 
 Start email campaign
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_campaign_uuid = 'email_campaign_uuid_example' # String | 
-
-begin
-  # Start email campaign
-  result = api_instance.start_email_campaign(storefront_oid, email_campaign_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->start_email_campaign: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the start_email_campaign_with_http_info variant
 
@@ -10952,32 +8191,13 @@ end
 
 Subscribe customers to email list
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_list_uuid = 'email_list_uuid_example' # String | 
-customers = [UltracartClient::EmailCustomer.new] # Array<EmailCustomer> | Customers
-
-begin
-  # Subscribe customers to email list
-  result = api_instance.subscribe_to_email_list(storefront_oid, email_list_uuid, customers)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->subscribe_to_email_list: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the subscribe_to_email_list_with_http_info variant
 
@@ -11025,30 +8245,13 @@ end
 
 Sunset email segment
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_segment_uuid = 'email_segment_uuid_example' # String | 
-
-begin
-  # Sunset email segment
-  api_instance.sunset_email_segment(storefront_oid, email_segment_uuid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->sunset_email_segment: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the sunset_email_segment_with_http_info variant
 
@@ -11097,30 +8300,13 @@ Remove favorite flag on screen recording
 
 Remove favorite flag on screen recording 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-screen_recording_uuid = 'screen_recording_uuid_example' # String | 
-
-begin
-  # Remove favorite flag on screen recording
-  api_instance.unfavorite_screen_recording(storefront_oid, screen_recording_uuid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->unfavorite_screen_recording: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the unfavorite_screen_recording_with_http_info variant
 
@@ -11167,32 +8353,13 @@ nil (empty response body)
 
 Update email campaign
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_campaign_uuid = 'email_campaign_uuid_example' # String | 
-email_campaign = UltracartClient::EmailCampaign.new # EmailCampaign | Email campaign
-
-begin
-  # Update email campaign
-  result = api_instance.update_email_campaign(storefront_oid, email_campaign_uuid, email_campaign)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_email_campaign: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_email_campaign_with_http_info variant
 
@@ -11240,32 +8407,13 @@ end
 
 Update email campaign folder
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_campaign_folder_uuid = 'email_campaign_folder_uuid_example' # String | 
-email_campaign_folder = UltracartClient::EmailCampaignFolder.new # EmailCampaignFolder | Email campaign folder
-
-begin
-  # Update email campaign folder
-  result = api_instance.update_email_campaign_folder(storefront_oid, email_campaign_folder_uuid, email_campaign_folder)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_email_campaign_folder: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_email_campaign_folder_with_http_info variant
 
@@ -11313,32 +8461,13 @@ end
 
 Update email commseq
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_uuid = 'commseq_uuid_example' # String | 
-email_commseq = UltracartClient::EmailCommseq.new # EmailCommseq | Email commseq
-
-begin
-  # Update email commseq
-  result = api_instance.update_email_commseq(storefront_oid, commseq_uuid, email_commseq)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_email_commseq: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_email_commseq_with_http_info variant
 
@@ -11386,31 +8515,13 @@ end
 
 Update email customer
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_customer_uuid = 'email_customer_uuid_example' # String | 
-email_customer = UltracartClient::EmailCustomer.new # EmailCustomer | Email customer
-
-begin
-  # Update email customer
-  api_instance.update_email_customer(storefront_oid, email_customer_uuid, email_customer)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_email_customer: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_email_customer_with_http_info variant
 
@@ -11458,32 +8569,13 @@ nil (empty response body)
 
 Update email email
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_email_uuid = 'commseq_email_uuid_example' # String | 
-email_commseq_email = UltracartClient::EmailCommseqEmail.new # EmailCommseqEmail | Email commseq email
-
-begin
-  # Update email email
-  result = api_instance.update_email_email(storefront_oid, commseq_email_uuid, email_commseq_email)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_email_email: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_email_email_with_http_info variant
 
@@ -11531,32 +8623,13 @@ end
 
 Update email flow
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_flow_uuid = 'email_flow_uuid_example' # String | 
-email_flow = UltracartClient::EmailFlow.new # EmailFlow | Email flow
-
-begin
-  # Update email flow
-  result = api_instance.update_email_flow(storefront_oid, email_flow_uuid, email_flow)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_email_flow: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_email_flow_with_http_info variant
 
@@ -11604,32 +8677,13 @@ end
 
 Update email flow folder
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_flow_folder_uuid = 'email_flow_folder_uuid_example' # String | 
-email_flow_folder = UltracartClient::EmailFlowFolder.new # EmailFlowFolder | Email flow folder
-
-begin
-  # Update email flow folder
-  result = api_instance.update_email_flow_folder(storefront_oid, email_flow_folder_uuid, email_flow_folder)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_email_flow_folder: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_email_flow_folder_with_http_info variant
 
@@ -11677,30 +8731,13 @@ end
 
 Update email global settings
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-global_settings = UltracartClient::EmailGlobalSettings.new # EmailGlobalSettings | global settings request
-
-begin
-  # Update email global settings
-  result = api_instance.update_email_global_settings(global_settings)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_email_global_settings: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_email_global_settings_with_http_info variant
 
@@ -11746,32 +8783,13 @@ end
 
 Update email list
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_list_uuid = 'email_list_uuid_example' # String | 
-email_list = UltracartClient::EmailList.new # EmailList | Email list
-
-begin
-  # Update email list
-  result = api_instance.update_email_list(storefront_oid, email_list_uuid, email_list)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_email_list: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_email_list_with_http_info variant
 
@@ -11819,32 +8837,13 @@ end
 
 Update email campaign folder
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_list_segment_folder_uuid = 'email_list_segment_folder_uuid_example' # String | 
-email_list_segment_folder = UltracartClient::EmailListSegmentFolder.new # EmailListSegmentFolder | Email campaign folder
-
-begin
-  # Update email campaign folder
-  result = api_instance.update_email_list_segment_folder(storefront_oid, email_list_segment_folder_uuid, email_list_segment_folder)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_email_list_segment_folder: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_email_list_segment_folder_with_http_info variant
 
@@ -11892,31 +8891,13 @@ end
 
 Update email plan
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-settings = UltracartClient::EmailPlan.new # EmailPlan | plan request
-
-begin
-  # Update email plan
-  result = api_instance.update_email_plan(storefront_oid, settings)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_email_plan: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_email_plan_with_http_info variant
 
@@ -11963,32 +8944,13 @@ end
 
 Update email postcard
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-commseq_postcard_uuid = 'commseq_postcard_uuid_example' # String | 
-email_commseq_postcard = UltracartClient::EmailCommseqPostcard.new # EmailCommseqPostcard | Email commseq postcard
-
-begin
-  # Update email postcard
-  result = api_instance.update_email_postcard(storefront_oid, commseq_postcard_uuid, email_commseq_postcard)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_email_postcard: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_email_postcard_with_http_info variant
 
@@ -12036,32 +8998,13 @@ end
 
 Update email segment
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_segment_uuid = 'email_segment_uuid_example' # String | 
-email_segment = UltracartClient::EmailSegment.new # EmailSegment | Email segment
-
-begin
-  # Update email segment
-  result = api_instance.update_email_segment(storefront_oid, email_segment_uuid, email_segment)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_email_segment: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_email_segment_with_http_info variant
 
@@ -12109,31 +9052,12 @@ end
 
 Update email sending domain
 
+
 ### Examples
 
-```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+(No example for this operation).
 
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-domain = 'domain_example' # String | 
-email_domain = UltracartClient::EmailDomain.new # EmailDomain | EmailDomain
-
-begin
-  # Update email sending domain
-  result = api_instance.update_email_sending_domain(domain, email_domain)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_email_sending_domain: #{e}"
-end
-```
 
 #### Using the update_email_sending_domain_with_http_info variant
 
@@ -12180,31 +9104,13 @@ end
 
 Update email settings
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-settings = UltracartClient::EmailSettings.new # EmailSettings | settings request
-
-begin
-  # Update email settings
-  result = api_instance.update_email_settings(storefront_oid, settings)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_email_settings: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_email_settings_with_http_info variant
 
@@ -12251,32 +9157,13 @@ end
 
 Update experiment
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-storefront_experiment_oid = 56 # Integer | 
-experiment = UltracartClient::Experiment.new # Experiment | Experiment
-
-begin
-  # Update experiment
-  result = api_instance.update_experiment(storefront_oid, storefront_experiment_oid, experiment)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_experiment: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_experiment_with_http_info variant
 
@@ -12324,31 +9211,13 @@ end
 
 Update library item. Note that only certain fields may be updated via this method.
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-library_item_oid = 56 # Integer | 
-library_item = UltracartClient::LibraryItem.new # LibraryItem | Library item
-
-begin
-  # Update library item. Note that only certain fields may be updated via this method.
-  result = api_instance.update_library_item(library_item_oid, library_item)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_library_item: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_library_item_with_http_info variant
 
@@ -12397,31 +9266,13 @@ Update merchant notes on a screen recording
 
 Update merchant notes on a screen recording 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-screen_recording_uuid = 'screen_recording_uuid_example' # String | 
-merchant_notes_request = UltracartClient::ScreenRecordingMerchantNotesRequest.new # ScreenRecordingMerchantNotesRequest | Merchant Notes
-
-begin
-  # Update merchant notes on a screen recording
-  api_instance.update_screen_recording_merchant_notes(storefront_oid, screen_recording_uuid, merchant_notes_request)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_screen_recording_merchant_notes: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_screen_recording_merchant_notes_with_http_info variant
 
@@ -12469,32 +9320,13 @@ nil (empty response body)
 
 Update screen recording segment
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-screen_recording_segment_oid = 56 # Integer | 
-segment = UltracartClient::ScreenRecordingSegment.new # ScreenRecordingSegment | Segment
-
-begin
-  # Update screen recording segment
-  result = api_instance.update_screen_recording_segment(storefront_oid, screen_recording_segment_oid, segment)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_screen_recording_segment: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_screen_recording_segment_with_http_info variant
 
@@ -12542,31 +9374,13 @@ end
 
 Update screen recording settings
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-settings = UltracartClient::ScreenRecordingSettings.new # ScreenRecordingSettings | Settings
-
-begin
-  # Update screen recording settings
-  result = api_instance.update_screen_recording_settings(storefront_oid, settings)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_screen_recording_settings: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_screen_recording_settings_with_http_info variant
 
@@ -12615,31 +9429,13 @@ Update tags on a screen recording
 
 Update tags on a screen recording 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-screen_recording_uuid = 'screen_recording_uuid_example' # String | 
-tags = UltracartClient::ScreenRecordingTagsRequest.new # ScreenRecordingTagsRequest | Tags
-
-begin
-  # Update tags on a screen recording
-  api_instance.update_screen_recording_tags(storefront_oid, screen_recording_uuid, tags)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_screen_recording_tags: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_screen_recording_tags_with_http_info variant
 
@@ -12689,32 +9485,13 @@ Updates a transaction email object
 
 Updates a transactional email 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-storefront_oid = 56 # Integer | 
-email_id = 'email_id_example' # String | 
-transaction_email = UltracartClient::TransactionEmail.new # TransactionEmail | TransactionEmail
-
-begin
-  # Updates a transaction email object
-  result = api_instance.update_transaction_email(storefront_oid, email_id, transaction_email)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_transaction_email: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_transaction_email_with_http_info variant
 
@@ -12762,31 +9539,13 @@ end
 
 Update Twilio account
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-esp_twilio_uuid = 'esp_twilio_uuid_example' # String | 
-twilio = UltracartClient::Twilio.new # Twilio | Twilio
-
-begin
-  # Update Twilio account
-  result = api_instance.update_twilio_account(esp_twilio_uuid, twilio)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->update_twilio_account: #{e}"
-end
+# Please see the README.md in this directory for an explanation about StoreFrontApi samples.
 ```
+
 
 #### Using the update_twilio_account_with_http_info variant
 
@@ -12833,30 +9592,13 @@ end
 
 This is the last step in uploading a file after 1) calling getUploadFsFileUrl and 2) uploading a file to the provided url, then finally 3) calling this method and providing the key to trigger the server into reading the S3 bucket and retrieving the file.
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-id = 56 # Integer | 
-upload_request = UltracartClient::FileManagerUploadRequest.new # FileManagerUploadRequest | UploadRequest
-
-begin
-  # This is the last step in uploading a file after 1) calling getUploadFsFileUrl and 2) uploading a file to the provided url, then finally 3) calling this method and providing the key to trigger the server into reading the S3 bucket and retrieving the file.
-  api_instance.upload_fs_file(id, upload_request)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->upload_fs_file: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the upload_fs_file_with_http_info variant
 
@@ -12903,30 +9645,13 @@ nil (empty response body)
 
 Validate AWS Event Ruler
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::StorefrontApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-ruler_validate_request = UltracartClient::RulerValidationRequest.new # RulerValidationRequest | Ruler Validate Request
-
-begin
-  # Validate AWS Event Ruler
-  result = api_instance.validate_ruler(ruler_validate_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling StorefrontApi->validate_ruler: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the validate_ruler_with_http_info variant
 

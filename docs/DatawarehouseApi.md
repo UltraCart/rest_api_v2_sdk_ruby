@@ -24,29 +24,13 @@ Delete a report
 
 Delete a report on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::DatawarehouseApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-report_oid = 56 # Integer | The report oid to delete.
-
-begin
-  # Delete a report
-  api_instance.delete_report(report_oid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling DatawarehouseApi->delete_report: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_report_with_http_info variant
 
@@ -94,30 +78,13 @@ Dry run the report queries
 
 Dry run the report queries 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::DatawarehouseApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-query_request = UltracartClient::ReportDryRunQueriesRequest.new # ReportDryRunQueriesRequest | Dry run request
-
-begin
-  # Dry run the report queries
-  result = api_instance.dry_run_report_queries(query_request)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling DatawarehouseApi->dry_run_report_queries: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the dry_run_report_queries_with_http_info variant
 
@@ -165,29 +132,13 @@ Execute the report queries
 
 Execute the report queries 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::DatawarehouseApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-query_request = UltracartClient::ReportExecuteQueriesRequest.new # ReportExecuteQueriesRequest | Query request
-
-begin
-  # Execute the report queries
-  api_instance.execute_report_queries(query_request)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling DatawarehouseApi->execute_report_queries: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the execute_report_queries_with_http_info variant
 
@@ -235,30 +186,13 @@ Get a report
 
 Retrieve a report 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::DatawarehouseApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-report_oid = 56 # Integer | 
-
-begin
-  # Get a report
-  result = api_instance.get_report(report_oid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling DatawarehouseApi->get_report: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_report_with_http_info variant
 
@@ -306,30 +240,13 @@ Get a report data set
 
 Retrieve a report data set 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::DatawarehouseApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-dataset_uuid = 'dataset_uuid_example' # String | 
-
-begin
-  # Get a report data set
-  result = api_instance.get_report_data_set(dataset_uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling DatawarehouseApi->get_report_data_set: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_report_data_set_with_http_info variant
 
@@ -377,31 +294,13 @@ Get a report data set page
 
 Retrieve a report data set page 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::DatawarehouseApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-dataset_uuid = 'dataset_uuid_example' # String | 
-page_number = 56 # Integer | 
-
-begin
-  # Get a report data set page
-  result = api_instance.get_report_data_set_page(dataset_uuid, page_number)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling DatawarehouseApi->get_report_data_set_page: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_report_data_set_page_with_http_info variant
 
@@ -450,29 +349,13 @@ Get report websocket authorization
 
 Retrieve a JWT to authorize a report to make a websocket connection. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::DatawarehouseApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get report websocket authorization
-  result = api_instance.get_report_websocket_authorization
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling DatawarehouseApi->get_report_websocket_authorization: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_report_websocket_authorization_with_http_info variant
 
@@ -518,29 +401,13 @@ Get list of reports available
 
 Retrieve a list of reports available 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::DatawarehouseApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get list of reports available
-  result = api_instance.get_reports
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling DatawarehouseApi->get_reports: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_reports_with_http_info variant
 
@@ -586,30 +453,13 @@ Create a report
 
 Create a new report on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::DatawarehouseApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-report = UltracartClient::Report.new # Report | Report to create
-
-begin
-  # Create a report
-  result = api_instance.insert_report(report)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling DatawarehouseApi->insert_report: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the insert_report_with_http_info variant
 
@@ -657,31 +507,13 @@ Update a report
 
 Update a report on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::DatawarehouseApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-report_oid = 56 # Integer | The report oid to update.
-report = UltracartClient::Report.new # Report | Report to update
-
-begin
-  # Update a report
-  result = api_instance.update_report(report_oid, report)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling DatawarehouseApi->update_report: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_report_with_http_info variant
 

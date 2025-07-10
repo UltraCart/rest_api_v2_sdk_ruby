@@ -25,29 +25,13 @@ Delete a group
 
 Delete a group on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::UserApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-group_oid = 56 # Integer | The group_oid to delete.
-
-begin
-  # Delete a group
-  api_instance.delete_group(group_oid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling UserApi->delete_group: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_group_with_http_info variant
 
@@ -95,29 +79,13 @@ Delete a user
 
 Delete a user on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::UserApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-user_id = 56 # Integer | The user_id to delete.
-
-begin
-  # Delete a user
-  api_instance.delete_user(user_id)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling UserApi->delete_user: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the delete_user_with_http_info variant
 
@@ -165,29 +133,13 @@ Retrieve a group
 
 Retrieves a single group using the specified group id. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::UserApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-group_oid = 56 # Integer | The group id to retrieve.
-
-begin
-  # Retrieve a group
-  api_instance.get_group(group_oid)
-rescue UltracartClient::ApiError => e
-  puts "Error when calling UserApi->get_group: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_group_with_http_info variant
 
@@ -233,29 +185,13 @@ nil (empty response body)
 
 Get groups
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::UserApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get groups
-  result = api_instance.get_groups
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling UserApi->get_groups: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_groups_with_http_info variant
 
@@ -301,30 +237,13 @@ Retrieve a user
 
 Retrieves a single user using the specified user id. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::UserApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-user_id = 56 # Integer | The user id to retrieve.
-
-begin
-  # Retrieve a user
-  result = api_instance.get_user(user_id)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling UserApi->get_user: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_user_with_http_info variant
 
@@ -372,30 +291,13 @@ Retrieve a user's login history
 
 Retrieves logins for a single user using the specified user id. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::UserApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-user_id = 56 # Integer | The user id to retrieve.
-
-begin
-  # Retrieve a user's login history
-  result = api_instance.get_user_logins(user_id)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling UserApi->get_user_logins: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_user_logins_with_http_info variant
 
@@ -441,29 +343,13 @@ end
 
 Get users
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::UserApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-
-begin
-  # Get users
-  result = api_instance.get_users
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling UserApi->get_users: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_users_with_http_info variant
 
@@ -509,30 +395,13 @@ Insert a group
 
 Insert a group on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::UserApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-group = UltracartClient::Group.new # Group | Group to insert
-
-begin
-  # Insert a group
-  result = api_instance.insert_group(group)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling UserApi->insert_group: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the insert_group_with_http_info variant
 
@@ -580,30 +449,13 @@ Insert a user
 
 Insert a user on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::UserApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-user = UltracartClient::User.new # User | User to insert
-
-begin
-  # Insert a user
-  result = api_instance.insert_user(user)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling UserApi->insert_user: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the insert_user_with_http_info variant
 
@@ -651,31 +503,13 @@ Update a group
 
 Update a group on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::UserApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-group_oid = 56 # Integer | The group_oid to update.
-group = UltracartClient::Group.new # Group | Group to update
-
-begin
-  # Update a group
-  result = api_instance.update_group(group_oid, group)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling UserApi->update_group: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_group_with_http_info variant
 
@@ -724,31 +558,13 @@ Update a user
 
 Update a user on the UltraCart account. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::UserApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-user_id = 56 # Integer | The user_id to update.
-user = UltracartClient::User.new # User | User to update
-
-begin
-  # Update a user
-  result = api_instance.update_user(user_id, user)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling UserApi->update_user: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the update_user_with_http_info variant
 

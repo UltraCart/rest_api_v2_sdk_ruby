@@ -16,36 +16,69 @@ Exchange authorization code for access token.
 
 The final leg in the OAuth process which exchanges the specified access token for the access code needed to make API calls. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+=begin
 
-api = UltracartClient::OauthApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-client_id = 'client_id_example' # String | The OAuth application client_id.
-grant_type = 'grant_type_example' # String | Type of grant
-opts = {
-  code: 'code_example', # String | Authorization code received back from the browser redirect
-  redirect_uri: 'redirect_uri_example', # String | The URI that you redirect the browser to start the authorization process
-  refresh_token: 'refresh_token_example' # String | The refresh token received during the original grant_type=authorization_code that can be used to return a new access token
-}
+The first step in implementing an OAuth authorization to your UltraCart Developer Application is
+creating a Client ID and Secret.  See the following doc for instructions on doing so:
+https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/3488907265/Developer+Applications+-+Creating+a+Client+ID+and+Secret+for+an+OAuth+Application
 
-begin
-  # Exchange authorization code for access token.
-  result = api_instance.oauth_access_token(client_id, grant_type, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling OauthApi->oauth_access_token: #{e}"
-end
+The second step is to construct an authorize url for your customers to follow and authorize your application.
+See the oauthAuthorize.rb for an example on constructing that url.
+
+This method, OAuth.oauth_access_token() will be called from within your redirect script, i.e. that web page the
+customer is redirected to by UltraCart after successfully authorizing your application.
+
+This example illustrates how to retrieve the code parameter and exchange it for an access_token and refresh_token.
+
+Once you have your Client ID and Secret created, our OAuth security follows the industry standards.
+1. Construct an authorize url for your customers.
+2. Your customers will follow the link and authorize your application.
+3. Store their oauth credentials as best fits your application.
+
+Parameters this script should expect:
+code -> used to exchange for an access token
+state -> whatever you passed in your authorize url
+error -> if you have a problem with your application configure.  Possible values are:
+    invalid_request -> your authorize url has expired
+    access_denied -> user said 'no' and did not grant access.
+
+Parameters you will use to retrieve a token:
+code -> the value provided as a query parameter from UltraCart, required if grant_type is 'authorization_code'
+client_id -> your client id (see doc link at top of this file)
+grant_type -> 'authorization_code' or 'refresh_token'
+redirect_url -> The URI that you redirect the browser to start the authorization process
+refresh_token -> if grant_type = 'refresh_token', you have to provide the refresh token.  makes sense, yes?
+
+See OauthTokenResponse for fields that are returned from this call.
+All SDKs have the same field names with slight differences in capitalization and underscores.
+https://github.com/UltraCart/rest_api_v2_sdk_csharp/blob/master/src/com.ultracart.admin.v2/Model/OauthTokenResponse.cs
+
+=end
+
+client_id = "5e31ce86e17f02015a35257c47151544"  # this is given to you when you create your application (see the doc link above)
+grant_type = "authorization_code"
+redirect_url = "https://www.mywebsite.com/oauth/redirect_here.php"
+state = "denmark"  # this is whatever you used when you created your authorize url (see oauthAuthorize.rb)
+
+code = params['code']  # Assuming this is running in a web framework that provides params
+refresh_token = nil
+
+oauth_api = UltracartClient::OauthApi.new_using_api_key(Constants::API_KEY)
+api_response = oauth_api.oauth_access_token(client_id, grant_type, code, redirect_url, refresh_token)
+
+# api_response is an OauthTokenResponse object.
+puts api_response.inspect
+refresh_token = api_response.refresh_token
+expires_in = api_response.expires_in
 ```
+
 
 #### Using the oauth_access_token_with_http_info variant
 
@@ -97,31 +130,38 @@ Revoke this OAuth application.
 
 Revokes the OAuth application associated with the specified client_id and token. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
 require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
+require_relative '../constants'
 
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
+=begin
 
-api = UltracartClient::OauthApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-client_id = 'client_id_example' # String | The OAuth application client_id.
-token = 'token_example' # String | The OAuth access token that is to be revoked..
+This is a last feature of the UltraCart OAuth Security Implementation.
+oauthRevoke is used to kill an access token.
+Call this method when a customer desires to terminate using your Developer Application.
 
-begin
-  # Revoke this OAuth application.
-  result = api_instance.oauth_revoke(client_id, token)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling OauthApi->oauth_revoke: #{e}"
-end
+
+The first step in implementing an OAuth authorization to your UltraCart Developer Application is
+creating a Client ID and Secret.  See the following doc for instructions on doing so:
+https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/3488907265/Developer+Applications+-+Creating+a+Client+ID+and+Secret+for+an+OAuth+Application
+
+=end
+
+client_id = "5e31ce86e17f02015a35257c47151544"  # this is given to you when you create your application (see the doc link above)
+access_token = "123456789012345678901234567890" # this is stored by your application somewhere somehow.
+
+oauth_api = UltracartClient::OauthApi.new_using_api_key(Constants::API_KEY)
+api_response = oauth_api.oauth_revoke(client_id, access_token)
+
+# api_response is an OauthRevokeSuccessResponse object.
+puts api_response.inspect
+successful = api_response.successful
+message = api_response.message
 ```
+
 
 #### Using the oauth_revoke_with_http_info variant
 

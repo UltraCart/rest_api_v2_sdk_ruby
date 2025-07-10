@@ -19,31 +19,13 @@ Retrieve an integration log
 
 Retrieve an integration logs from the account based identifiers 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::IntegrationLogApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-pk = 'pk_example' # String | 
-sk = 'sk_example' # String | 
-
-begin
-  # Retrieve an integration log
-  result = api_instance.get_integration_log(pk, sk)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling IntegrationLogApi->get_integration_log: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_integration_log_with_http_info variant
 
@@ -92,32 +74,13 @@ Retrieve an integration log file
 
 Retrieve an integration log file from the account based identifiers 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::IntegrationLogApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-pk = 'pk_example' # String | 
-sk = 'sk_example' # String | 
-uuid = 'uuid_example' # String | 
-
-begin
-  # Retrieve an integration log file
-  result = api_instance.get_integration_log_file(pk, sk, uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling IntegrationLogApi->get_integration_log_file: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_integration_log_file_with_http_info variant
 
@@ -167,32 +130,13 @@ Retrieve an integration log file converted to PDF
 
 Retrieve an integration log file from the account based identifiers 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::IntegrationLogApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-pk = 'pk_example' # String | 
-sk = 'sk_example' # String | 
-uuid = 'uuid_example' # String | 
-
-begin
-  # Retrieve an integration log file converted to PDF
-  result = api_instance.get_integration_log_file_pdf(pk, sk, uuid)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling IntegrationLogApi->get_integration_log_file_pdf: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_integration_log_file_pdf_with_http_info variant
 
@@ -242,30 +186,13 @@ Retrieve integration log summaries
 
 Retrieves a set of integration log summaries from the account based on a query object. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::IntegrationLogApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-integration_log_summaries_query = UltracartClient::IntegrationLogSummaryQueryRequest.new # IntegrationLogSummaryQueryRequest | Integration log summaries query
-
-begin
-  # Retrieve integration log summaries
-  result = api_instance.get_integration_log_summaries_query(integration_log_summaries_query)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling IntegrationLogApi->get_integration_log_summaries_query: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_integration_log_summaries_query_with_http_info variant
 
@@ -313,35 +240,13 @@ Retrieve integration logs
 
 Retrieves a set of integration logs from the account based on a query object. 
 
+
 ### Examples
 
 ```ruby
-require 'time'
-require 'ultracart_api'
-require 'json'
-require 'yaml'
-require_relative '../constants' # https://github.com/UltraCart/sdk_samples/blob/master/ruby/constants.rb
-
-# This example is based on our samples_sdk project, but still contains auto-generated content from our sdk generators.
-# As such, this might not be the best way to use this object.
-# Please see https://github.com/UltraCart/sdk_samples for working examples.
-
-api = UltracartClient::IntegrationLogApi.new_using_api_key(Constants::API_KEY, Constants::VERIFY_SSL, Constants::DEBUG_MODE)
-integration_log_query = UltracartClient::IntegrationLogQueryRequest.new # IntegrationLogQueryRequest | Integration log query
-opts = {
-  _limit: 56, # Integer | The maximum number of records to return on this one API call. (Default 100, Max 500)
-  _offset: 56, # Integer | Pagination of the record set.  Offset is a zero based index.
-  _sort: '_sort_example' # String | The sort order of the items.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
-}
-
-begin
-  # Retrieve integration logs
-  result = api_instance.get_integration_logs_query(integration_log_query, opts)
-  p result
-rescue UltracartClient::ApiError => e
-  puts "Error when calling IntegrationLogApi->get_integration_logs_query: #{e}"
-end
+# Internal API.  No samples are provided as merchants will never need this api method
 ```
+
 
 #### Using the get_integration_logs_query_with_http_info variant
 
