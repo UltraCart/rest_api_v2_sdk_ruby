@@ -13,41 +13,40 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class CartUpsellAfter
-    # The date/time after which the cart will finalize into an order.
-    attr_accessor :finalize_after_dts
+  class CustomReportQuery
+    attr_accessor :conditional_formatting_start_column
 
-    # The amount of inactivity in minutes after which the cart should be finalized into an order.  This will calculate the finalize_after_dts field.
-    attr_accessor :finalize_after_minutes
+    attr_accessor :freeze_columns
 
-    # Upsell path code (this is for legacy upsells only)
-    attr_accessor :upsell_path_code
+    attr_accessor :pii_columns
 
-    # Upsell path name to start on (StoreFront Upsells).  Will only be respected on a handoff API call.
-    attr_accessor :upsell_path_name
+    attr_accessor :query
 
-    # Upsell path variation to start on (StoreFront Upsells).   Will only be respected on a handoff API call.
-    attr_accessor :upsell_path_variation
+    attr_accessor :sheet_name
+
+    attr_accessor :title
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'finalize_after_dts' => :'finalize_after_dts',
-        :'finalize_after_minutes' => :'finalize_after_minutes',
-        :'upsell_path_code' => :'upsell_path_code',
-        :'upsell_path_name' => :'upsell_path_name',
-        :'upsell_path_variation' => :'upsell_path_variation'
+        :'conditional_formatting_start_column' => :'conditional_formatting_start_column',
+        :'freeze_columns' => :'freeze_columns',
+        :'pii_columns' => :'pii_columns',
+        :'query' => :'query',
+        :'sheet_name' => :'sheet_name',
+        :'title' => :'title'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'finalize_after_dts' => :'String',
-        :'finalize_after_minutes' => :'Integer',
-        :'upsell_path_code' => :'String',
-        :'upsell_path_name' => :'String',
-        :'upsell_path_variation' => :'String'
+        :'conditional_formatting_start_column' => :'Integer',
+        :'freeze_columns' => :'Integer',
+        :'pii_columns' => :'Array<String>',
+        :'query' => :'String',
+        :'sheet_name' => :'String',
+        :'title' => :'String'
       }
     end
 
@@ -59,24 +58,30 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'finalize_after_dts')
-        self.finalize_after_dts = attributes[:'finalize_after_dts']
+      if attributes.has_key?(:'conditional_formatting_start_column')
+        self.conditional_formatting_start_column = attributes[:'conditional_formatting_start_column']
       end
 
-      if attributes.has_key?(:'finalize_after_minutes')
-        self.finalize_after_minutes = attributes[:'finalize_after_minutes']
+      if attributes.has_key?(:'freeze_columns')
+        self.freeze_columns = attributes[:'freeze_columns']
       end
 
-      if attributes.has_key?(:'upsell_path_code')
-        self.upsell_path_code = attributes[:'upsell_path_code']
+      if attributes.has_key?(:'pii_columns')
+        if (value = attributes[:'pii_columns']).is_a?(Array)
+          self.pii_columns = value
+        end
       end
 
-      if attributes.has_key?(:'upsell_path_name')
-        self.upsell_path_name = attributes[:'upsell_path_name']
+      if attributes.has_key?(:'query')
+        self.query = attributes[:'query']
       end
 
-      if attributes.has_key?(:'upsell_path_variation')
-        self.upsell_path_variation = attributes[:'upsell_path_variation']
+      if attributes.has_key?(:'sheet_name')
+        self.sheet_name = attributes[:'sheet_name']
+      end
+
+      if attributes.has_key?(:'title')
+        self.title = attributes[:'title']
       end
     end
 
@@ -84,28 +89,13 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@upsell_path_code.nil? && @upsell_path_code.to_s.length > 5
-        invalid_properties.push('invalid value for "upsell_path_code", the character length must be smaller than or equal to 5.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@upsell_path_code.nil? && @upsell_path_code.to_s.length > 5
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] upsell_path_code Value to be assigned
-    def upsell_path_code=(upsell_path_code)
-      if !upsell_path_code.nil? && upsell_path_code.to_s.length > 5
-        fail ArgumentError, 'invalid value for "upsell_path_code", the character length must be smaller than or equal to 5.'
-      end
-
-      @upsell_path_code = upsell_path_code
     end
 
     # Checks equality by comparing each attribute.
@@ -113,11 +103,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          finalize_after_dts == o.finalize_after_dts &&
-          finalize_after_minutes == o.finalize_after_minutes &&
-          upsell_path_code == o.upsell_path_code &&
-          upsell_path_name == o.upsell_path_name &&
-          upsell_path_variation == o.upsell_path_variation
+          conditional_formatting_start_column == o.conditional_formatting_start_column &&
+          freeze_columns == o.freeze_columns &&
+          pii_columns == o.pii_columns &&
+          query == o.query &&
+          sheet_name == o.sheet_name &&
+          title == o.title
     end
 
     # @see the `==` method
@@ -129,7 +120,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [finalize_after_dts, finalize_after_minutes, upsell_path_code, upsell_path_name, upsell_path_variation].hash
+      [conditional_formatting_start_column, freeze_columns, pii_columns, query, sheet_name, title].hash
     end
 
     # Builds the object from hash

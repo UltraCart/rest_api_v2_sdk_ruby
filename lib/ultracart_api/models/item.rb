@@ -90,7 +90,7 @@ module UltracartClient
     # Parent category of the item.  Zero indicates the root folder.
     attr_accessor :parent_category_id
 
-    # Parent category path.  / indicates the root folder.
+    # Parent category path.  / indicates the root folder.  This is the folder structure within item management.
     attr_accessor :parent_category_path
 
     attr_accessor :payment_processing

@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **lookup_order_information** | **BOOLEAN** |  | [optional] 
 **lookup_subscription_information** | **BOOLEAN** |  | [optional] 
 **open_support_ticket** | **BOOLEAN** |  | [optional] 
+**open_support_ticket_channel** | **String** | Channel to use to open the support ticket | [optional] 
+**open_support_ticket_channel_email** | **String** | Email to send support ticket to | [optional] 
 **pause_subscription** | **BOOLEAN** |  | [optional] 
 **resume_subscription** | **BOOLEAN** |  | [optional] 
 **transfer_chat_to_live_agent** | **BOOLEAN** |  | [optional] 

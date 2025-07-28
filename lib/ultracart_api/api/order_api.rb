@@ -93,6 +93,63 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Set a refund block on an order
+    # Sets a refund block on an order to prevent a user from performing a refund.  Commonly used when a chargeback has been received. 
+    # @param order_id The order id to block a refund on.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :block_reason Block reason code (optional)
+    # @return [nil]
+    def block_refund_on_order(order_id, opts = {})
+      block_refund_on_order_with_http_info(order_id, opts)
+      nil
+    end
+
+    # Set a refund block on an order
+    # Sets a refund block on an order to prevent a user from performing a refund.  Commonly used when a chargeback has been received. 
+    # @param order_id The order id to block a refund on.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :block_reason Block reason code (optional)
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def block_refund_on_order_with_http_info(order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.block_refund_on_order ...'
+      end
+      # verify the required parameter 'order_id' is set
+      if @api_client.config.client_side_validation && order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.block_refund_on_order"
+      end
+      # resource path
+      local_var_path = '/order/orders/{order_id}/refund_block'.sub('{' + 'order_id' + '}', order_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'block_reason'] = opts[:'block_reason'] if !opts[:'block_reason'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#block_refund_on_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Cancel an order
     # Cancel an order on the UltraCart account.  If the success flag is false, then consult the error message for why it failed. 
     # @param order_id The order id to cancel.
@@ -1604,6 +1661,60 @@ module UltracartClient
         :return_type => 'BaseResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: OrderApi#resend_shipment_confirmation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Remove a refund block on an order
+    # Removes a refund block on an order to prevent a user from performing a refund. 
+    # @param order_id The order id to unblock a refund on.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def unblock_refund_on_order(order_id, opts = {})
+      unblock_refund_on_order_with_http_info(order_id, opts)
+      nil
+    end
+
+    # Remove a refund block on an order
+    # Removes a refund block on an order to prevent a user from performing a refund. 
+    # @param order_id The order id to unblock a refund on.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def unblock_refund_on_order_with_http_info(order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.unblock_refund_on_order ...'
+      end
+      # verify the required parameter 'order_id' is set
+      if @api_client.config.client_side_validation && order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.unblock_refund_on_order"
+      end
+      # resource path
+      local_var_path = '/order/orders/{order_id}/refund_unblock'.sub('{' + 'order_id' + '}', order_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#unblock_refund_on_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

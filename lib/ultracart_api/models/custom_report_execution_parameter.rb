@@ -13,41 +13,28 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class CartUpsellAfter
-    # The date/time after which the cart will finalize into an order.
-    attr_accessor :finalize_after_dts
+  class CustomReportExecutionParameter
+    attr_accessor :name
 
-    # The amount of inactivity in minutes after which the cart should be finalized into an order.  This will calculate the finalize_after_dts field.
-    attr_accessor :finalize_after_minutes
+    attr_accessor :type
 
-    # Upsell path code (this is for legacy upsells only)
-    attr_accessor :upsell_path_code
-
-    # Upsell path name to start on (StoreFront Upsells).  Will only be respected on a handoff API call.
-    attr_accessor :upsell_path_name
-
-    # Upsell path variation to start on (StoreFront Upsells).   Will only be respected on a handoff API call.
-    attr_accessor :upsell_path_variation
+    attr_accessor :value
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'finalize_after_dts' => :'finalize_after_dts',
-        :'finalize_after_minutes' => :'finalize_after_minutes',
-        :'upsell_path_code' => :'upsell_path_code',
-        :'upsell_path_name' => :'upsell_path_name',
-        :'upsell_path_variation' => :'upsell_path_variation'
+        :'name' => :'name',
+        :'type' => :'type',
+        :'value' => :'value'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'finalize_after_dts' => :'String',
-        :'finalize_after_minutes' => :'Integer',
-        :'upsell_path_code' => :'String',
-        :'upsell_path_name' => :'String',
-        :'upsell_path_variation' => :'String'
+        :'name' => :'String',
+        :'type' => :'String',
+        :'value' => :'String'
       }
     end
 
@@ -59,24 +46,16 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'finalize_after_dts')
-        self.finalize_after_dts = attributes[:'finalize_after_dts']
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'finalize_after_minutes')
-        self.finalize_after_minutes = attributes[:'finalize_after_minutes']
+      if attributes.has_key?(:'type')
+        self.type = attributes[:'type']
       end
 
-      if attributes.has_key?(:'upsell_path_code')
-        self.upsell_path_code = attributes[:'upsell_path_code']
-      end
-
-      if attributes.has_key?(:'upsell_path_name')
-        self.upsell_path_name = attributes[:'upsell_path_name']
-      end
-
-      if attributes.has_key?(:'upsell_path_variation')
-        self.upsell_path_variation = attributes[:'upsell_path_variation']
+      if attributes.has_key?(:'value')
+        self.value = attributes[:'value']
       end
     end
 
@@ -84,28 +63,13 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@upsell_path_code.nil? && @upsell_path_code.to_s.length > 5
-        invalid_properties.push('invalid value for "upsell_path_code", the character length must be smaller than or equal to 5.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@upsell_path_code.nil? && @upsell_path_code.to_s.length > 5
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] upsell_path_code Value to be assigned
-    def upsell_path_code=(upsell_path_code)
-      if !upsell_path_code.nil? && upsell_path_code.to_s.length > 5
-        fail ArgumentError, 'invalid value for "upsell_path_code", the character length must be smaller than or equal to 5.'
-      end
-
-      @upsell_path_code = upsell_path_code
     end
 
     # Checks equality by comparing each attribute.
@@ -113,11 +77,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          finalize_after_dts == o.finalize_after_dts &&
-          finalize_after_minutes == o.finalize_after_minutes &&
-          upsell_path_code == o.upsell_path_code &&
-          upsell_path_name == o.upsell_path_name &&
-          upsell_path_variation == o.upsell_path_variation
+          name == o.name &&
+          type == o.type &&
+          value == o.value
     end
 
     # @see the `==` method
@@ -129,7 +91,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [finalize_after_dts, finalize_after_minutes, upsell_path_code, upsell_path_name, upsell_path_variation].hash
+      [name, type, value].hash
     end
 
     # Builds the object from hash

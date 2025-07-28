@@ -24,6 +24,12 @@ module UltracartClient
 
     attr_accessor :open_support_ticket
 
+    # Channel to use to open the support ticket
+    attr_accessor :open_support_ticket_channel
+
+    # Email to send support ticket to
+    attr_accessor :open_support_ticket_channel_email
+
     attr_accessor :pause_subscription
 
     attr_accessor :resume_subscription
@@ -31,6 +37,28 @@ module UltracartClient
     attr_accessor :transfer_chat_to_live_agent
 
     attr_accessor :update_subscription_credit_card
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -40,6 +68,8 @@ module UltracartClient
         :'lookup_order_information' => :'lookup_order_information',
         :'lookup_subscription_information' => :'lookup_subscription_information',
         :'open_support_ticket' => :'open_support_ticket',
+        :'open_support_ticket_channel' => :'open_support_ticket_channel',
+        :'open_support_ticket_channel_email' => :'open_support_ticket_channel_email',
         :'pause_subscription' => :'pause_subscription',
         :'resume_subscription' => :'resume_subscription',
         :'transfer_chat_to_live_agent' => :'transfer_chat_to_live_agent',
@@ -55,6 +85,8 @@ module UltracartClient
         :'lookup_order_information' => :'BOOLEAN',
         :'lookup_subscription_information' => :'BOOLEAN',
         :'open_support_ticket' => :'BOOLEAN',
+        :'open_support_ticket_channel' => :'String',
+        :'open_support_ticket_channel_email' => :'String',
         :'pause_subscription' => :'BOOLEAN',
         :'resume_subscription' => :'BOOLEAN',
         :'transfer_chat_to_live_agent' => :'BOOLEAN',
@@ -90,6 +122,14 @@ module UltracartClient
         self.open_support_ticket = attributes[:'open_support_ticket']
       end
 
+      if attributes.has_key?(:'open_support_ticket_channel')
+        self.open_support_ticket_channel = attributes[:'open_support_ticket_channel']
+      end
+
+      if attributes.has_key?(:'open_support_ticket_channel_email')
+        self.open_support_ticket_channel_email = attributes[:'open_support_ticket_channel_email']
+      end
+
       if attributes.has_key?(:'pause_subscription')
         self.pause_subscription = attributes[:'pause_subscription']
       end
@@ -117,7 +157,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      open_support_ticket_channel_validator = EnumAttributeValidator.new('String', ['none', 'email', 'UltraCart Task', 'Zoho Desk Ticket'])
+      return false unless open_support_ticket_channel_validator.valid?(@open_support_ticket_channel)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] open_support_ticket_channel Object to be assigned
+    def open_support_ticket_channel=(open_support_ticket_channel)
+      validator = EnumAttributeValidator.new('String', ['none', 'email', 'UltraCart Task', 'Zoho Desk Ticket'])
+      unless validator.valid?(open_support_ticket_channel)
+        fail ArgumentError, 'invalid value for "open_support_ticket_channel", must be one of #{validator.allowable_values}.'
+      end
+      @open_support_ticket_channel = open_support_ticket_channel
     end
 
     # Checks equality by comparing each attribute.
@@ -130,6 +182,8 @@ module UltracartClient
           lookup_order_information == o.lookup_order_information &&
           lookup_subscription_information == o.lookup_subscription_information &&
           open_support_ticket == o.open_support_ticket &&
+          open_support_ticket_channel == o.open_support_ticket_channel &&
+          open_support_ticket_channel_email == o.open_support_ticket_channel_email &&
           pause_subscription == o.pause_subscription &&
           resume_subscription == o.resume_subscription &&
           transfer_chat_to_live_agent == o.transfer_chat_to_live_agent &&
@@ -145,7 +199,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [cancel_subscription, delay_subscription, lookup_order_information, lookup_subscription_information, open_support_ticket, pause_subscription, resume_subscription, transfer_chat_to_live_agent, update_subscription_credit_card].hash
+      [cancel_subscription, delay_subscription, lookup_order_information, lookup_subscription_information, open_support_ticket, open_support_ticket_channel, open_support_ticket_channel_email, pause_subscription, resume_subscription, transfer_chat_to_live_agent, update_subscription_credit_card].hash
     end
 
     # Builds the object from hash
