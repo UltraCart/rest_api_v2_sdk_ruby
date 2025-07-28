@@ -11,6 +11,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**execute_report_queries**](DatawarehouseApi.md#execute_report_queries) | **PUT** /datawarehouse/reports/execute | Execute the report queries |
 | [**get_custom_report**](DatawarehouseApi.md#get_custom_report) | **GET** /datawarehouse/custom_reports/{custom_report_oid} | Get a custom report |
 | [**get_custom_report_account_config**](DatawarehouseApi.md#get_custom_report_account_config) | **GET** /datawarehouse/custom_reports/account_config | Get custom report account configuration |
+| [**get_custom_reports**](DatawarehouseApi.md#get_custom_reports) | **GET** /datawarehouse/custom_reports | Get custom reports |
 | [**get_report**](DatawarehouseApi.md#get_report) | **GET** /datawarehouse/reports/{report_oid} | Get a report |
 | [**get_report_data_set**](DatawarehouseApi.md#get_report_data_set) | **GET** /datawarehouse/reports/dataset/{dataset_uuid} | Get a report data set |
 | [**get_report_data_set_page**](DatawarehouseApi.md#get_report_data_set_page) | **GET** /datawarehouse/reports/dataset/{dataset_uuid}/pages/{page_number} | Get a report data set page |
@@ -385,6 +386,57 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**CustomReportAccountConfigResponse**](CustomReportAccountConfigResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_custom_reports
+
+> <CustomReportsResponse> get_custom_reports
+
+Get custom reports
+
+Retrieve a custom reports 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_custom_reports_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomReportsResponse>, Integer, Hash)> get_custom_reports_with_http_info
+
+```ruby
+begin
+  # Get custom reports
+  data, status_code, headers = api_instance.get_custom_reports_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomReportsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling DatawarehouseApi->get_custom_reports_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**CustomReportsResponse**](CustomReportsResponse.md)
 
 ### Authorization
 

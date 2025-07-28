@@ -310,14 +310,6 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **webhook_oid** | **Integer** | The webhook oid to retrieve log summaries for. |  |
-| **request_id** | **String** |  | [optional] |
-| **begin_date** | **String** |  | [optional] |
-| **end_date** | **String** |  | [optional] |
-| **status** | **String** |  | [optional] |
-| **event** | **String** |  | [optional] |
-| **order_id** | **String** |  | [optional] |
-| **request** | **String** |  | [optional] |
-| **duration** | **Integer** |  | [optional] |
 | **_limit** | **Integer** | The maximum number of records to return on this one API call. | [optional][default to 100] |
 | **_offset** | **Integer** | Pagination of the record set.  Offset is a zero based index. | [optional][default to 0] |
 | **_since** | **String** | Fetch log summaries that have been delivered since this date/time. | [optional] |

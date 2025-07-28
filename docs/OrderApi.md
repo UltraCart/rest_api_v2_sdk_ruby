@@ -5,7 +5,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**adjust_order_total**](OrderApi.md#adjust_order_total) | **POST** /order/orders/{order_id}/adjust_order_total/{desired_total} | Adjusts an order total |
-| [**block_refund_on_order**](OrderApi.md#block_refund_on_order) | **POST** /order/orders/{order_id}/refund_block | Set a refund block on an order |
+| [**block_refund_on_order**](OrderApi.md#block_refund_on_order) | **GET** /order/orders/{order_id}/refund_block | Set a refund block on an order |
 | [**cancel_order**](OrderApi.md#cancel_order) | **POST** /order/orders/{order_id}/cancel | Cancel an order |
 | [**delete_order**](OrderApi.md#delete_order) | **DELETE** /order/orders/{order_id} | Delete an order |
 | [**duplicate_order**](OrderApi.md#duplicate_order) | **POST** /order/orders/{order_id}/duplicate | Duplicate an order |
@@ -26,11 +26,10 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**is_refundable_order**](OrderApi.md#is_refundable_order) | **GET** /order/orders/{order_id}/refundable | Determine if an order can be refunded |
 | [**process_payment**](OrderApi.md#process_payment) | **POST** /order/orders/{order_id}/process_payment | Process payment |
 | [**refund_order**](OrderApi.md#refund_order) | **PUT** /order/orders/{order_id}/refund | Refund an order |
-| [**refund_order_completely**](OrderApi.md#refund_order_completely) | **PUT** /order/orders/{order_id}/refund_completely | Refund an order completely |
 | [**replacement**](OrderApi.md#replacement) | **POST** /order/orders/{order_id}/replacement | Replacement order |
 | [**resend_receipt**](OrderApi.md#resend_receipt) | **POST** /order/orders/{order_id}/resend_receipt | Resend receipt |
 | [**resend_shipment_confirmation**](OrderApi.md#resend_shipment_confirmation) | **POST** /order/orders/{order_id}/resend_shipment_confirmation | Resend shipment confirmation |
-| [**unblock_refund_on_order**](OrderApi.md#unblock_refund_on_order) | **POST** /order/orders/{order_id}/refund_unblock | Remove a refund block on an order |
+| [**unblock_refund_on_order**](OrderApi.md#unblock_refund_on_order) | **GET** /order/orders/{order_id}/refund_unblock | Remove a refund block on an order |
 | [**update_accounts_receivable_retry_config**](OrderApi.md#update_accounts_receivable_retry_config) | **POST** /order/accountsReceivableRetryConfig | Update A/R Retry Configuration |
 | [**update_order**](OrderApi.md#update_order) | **PUT** /order/orders/{order_id} | Update an order |
 | [**validate_order**](OrderApi.md#validate_order) | **POST** /order/validate | Validate |
@@ -127,8 +126,22 @@ Sets a refund block on an order to prevent a user from performing a refund.  Com
 
 ### Examples
 
+```ruby
+require 'ultracart_api'
+require_relative '../constants'
 
-(No example for this operation).
+#
+# blockRefundOnOrder sets an order property that is considered when a refund request is made.
+# If the property is present, the refund is denied.  Being an order property allows for querying
+# upon it within BigQuery for audit purposes.
+#
+order_api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY)
+
+order_id = 'DEMO-0009105222'
+order_api.block_refund_on_order(order_id, {block_reason: 'Chargeback'})
+
+p 'Method executed successfully.  Returns back 204 No Content'
+```
 
 
 #### Using the block_refund_on_order_with_http_info variant
@@ -2267,68 +2280,6 @@ end
 - **Accept**: application/json
 
 
-## refund_order_completely
-
-> <OrderResponse> refund_order_completely(order_id, opts)
-
-Refund an order completely
-
-Perform a refund operation on an order and then update the order if successful. 
-
-
-### Examples
-
-
-(No example for this operation).
-
-
-#### Using the refund_order_completely_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<OrderResponse>, Integer, Hash)> refund_order_completely_with_http_info(order_id, opts)
-
-```ruby
-begin
-  # Refund an order completely
-  data, status_code, headers = api_instance.refund_order_completely_with_http_info(order_id, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <OrderResponse>
-rescue UltracartClient::ApiError => e
-  puts "Error when calling OrderApi->refund_order_completely_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **order_id** | **String** | The order id to refund. |  |
-| **reject_after_refund** | **Boolean** | Reject order after refund | [optional][default to false] |
-| **skip_customer_notification** | **Boolean** | Skip customer email notification | [optional][default to false] |
-| **auto_order_cancel** | **Boolean** | Cancel associated auto orders | [optional][default to false] |
-| **manual_refund** | **Boolean** | Consider a manual refund done externally | [optional][default to false] |
-| **reverse_affiliate_transactions** | **Boolean** | Reverse affiliate transactions | [optional][default to true] |
-| **issue_store_credit** | **Boolean** | Issue a store credit instead of refunding the original payment method, loyalty must be configured on merchant account | [optional][default to false] |
-| **auto_order_cancel_reason** | **String** | Reason for auto orders cancellation | [optional] |
-| **refund_reason** | **String** | Reason for refund | [optional] |
-| **reject_reason** | **String** | Reason for reject | [optional] |
-
-### Return type
-
-[**OrderResponse**](OrderResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## replacement
 
 > <OrderReplacementResponse> replacement(order_id, replacement)
@@ -2591,8 +2542,22 @@ Removes a refund block on an order to prevent a user from performing a refund.
 
 ### Examples
 
+```ruby
+require 'ultracart_api'
+require_relative '../constants'
 
-(No example for this operation).
+#
+# unblockRefundOnOrder removes an order property that is considered when a refund request is made.
+# If the property is present, the refund is denied.  Being an order property allows for querying
+# upon it within BigQuery for audit purposes.#
+#
+order_api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY)
+
+order_id = 'DEMO-0009105222'
+order_api.unblock_refund_on_order(order_id)
+
+p 'Method executed successfully.  Returns back 204 No Content'
+```
 
 
 #### Using the unblock_refund_on_order_with_http_info variant

@@ -326,6 +326,7 @@ docs/CustomReportParameterOption.md
 docs/CustomReportQuery.md
 docs/CustomReportResponse.md
 docs/CustomReportTooltip.md
+docs/CustomReportsResponse.md
 docs/Customer.md
 docs/CustomerActivity.md
 docs/CustomerAffiliate.md
@@ -1239,6 +1240,7 @@ lib/ultracart_api/models/custom_report_parameter_option.rb
 lib/ultracart_api/models/custom_report_query.rb
 lib/ultracart_api/models/custom_report_response.rb
 lib/ultracart_api/models/custom_report_tooltip.rb
+lib/ultracart_api/models/custom_reports_response.rb
 lib/ultracart_api/models/customer.rb
 lib/ultracart_api/models/customer_activity.rb
 lib/ultracart_api/models/customer_affiliate.rb
