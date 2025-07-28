@@ -131,7 +131,7 @@ module UltracartClient
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
 
       # form parameters
       form_params = {}
@@ -139,7 +139,7 @@ module UltracartClient
       # http body (model)
       post_body = nil
       auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -1411,88 +1411,6 @@ module UltracartClient
       end
       return data, status_code, headers
     end
-    # Refund an order completely
-    # Perform a refund operation on an order and then update the order if successful. 
-    # @param order_id The order id to refund.
-    # @param [Hash] opts the optional parameters
-    # @option opts [BOOLEAN] :reject_after_refund Reject order after refund (default to false)
-    # @option opts [BOOLEAN] :skip_customer_notification Skip customer email notification (default to false)
-    # @option opts [BOOLEAN] :auto_order_cancel Cancel associated auto orders (default to false)
-    # @option opts [BOOLEAN] :manual_refund Consider a manual refund done externally (default to false)
-    # @option opts [BOOLEAN] :reverse_affiliate_transactions Reverse affiliate transactions (default to true)
-    # @option opts [BOOLEAN] :issue_store_credit Issue a store credit instead of refunding the original payment method, loyalty must be configured on merchant account (default to false)
-    # @option opts [String] :auto_order_cancel_reason Reason for auto orders cancellation
-    # @option opts [String] :refund_reason Reason for refund
-    # @option opts [String] :reject_reason Reason for reject
-    # @return [OrderResponse]
-    def refund_order_completely(order_id, opts = {})
-      data, _status_code, _headers = refund_order_completely_with_http_info(order_id, opts)
-      data
-    end
-
-    # Refund an order completely
-    # Perform a refund operation on an order and then update the order if successful. 
-    # @param order_id The order id to refund.
-    # @param [Hash] opts the optional parameters
-    # @option opts [BOOLEAN] :reject_after_refund Reject order after refund
-    # @option opts [BOOLEAN] :skip_customer_notification Skip customer email notification
-    # @option opts [BOOLEAN] :auto_order_cancel Cancel associated auto orders
-    # @option opts [BOOLEAN] :manual_refund Consider a manual refund done externally
-    # @option opts [BOOLEAN] :reverse_affiliate_transactions Reverse affiliate transactions
-    # @option opts [BOOLEAN] :issue_store_credit Issue a store credit instead of refunding the original payment method, loyalty must be configured on merchant account
-    # @option opts [String] :auto_order_cancel_reason Reason for auto orders cancellation
-    # @option opts [String] :refund_reason Reason for refund
-    # @option opts [String] :reject_reason Reason for reject
-    # @return [Array<(OrderResponse, Fixnum, Hash)>] OrderResponse data, response status code and response headers
-    def refund_order_completely_with_http_info(order_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: OrderApi.refund_order_completely ...'
-      end
-      # verify the required parameter 'order_id' is set
-      if @api_client.config.client_side_validation && order_id.nil?
-        fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.refund_order_completely"
-      end
-      # resource path
-      local_var_path = '/order/orders/{order_id}/refund_completely'.sub('{' + 'order_id' + '}', order_id.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'reject_after_refund'] = opts[:'reject_after_refund'] if !opts[:'reject_after_refund'].nil?
-      query_params[:'skip_customer_notification'] = opts[:'skip_customer_notification'] if !opts[:'skip_customer_notification'].nil?
-      query_params[:'auto_order_cancel'] = opts[:'auto_order_cancel'] if !opts[:'auto_order_cancel'].nil?
-      query_params[:'manual_refund'] = opts[:'manual_refund'] if !opts[:'manual_refund'].nil?
-      query_params[:'reverse_affiliate_transactions'] = opts[:'reverse_affiliate_transactions'] if !opts[:'reverse_affiliate_transactions'].nil?
-      query_params[:'issue_store_credit'] = opts[:'issue_store_credit'] if !opts[:'issue_store_credit'].nil?
-      query_params[:'auto_order_cancel_reason'] = opts[:'auto_order_cancel_reason'] if !opts[:'auto_order_cancel_reason'].nil?
-      query_params[:'refund_reason'] = opts[:'refund_reason'] if !opts[:'refund_reason'].nil?
-      query_params[:'reject_reason'] = opts[:'reject_reason'] if !opts[:'reject_reason'].nil?
-
-      # header parameters
-      header_params = {}
-      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'OrderResponse')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: OrderApi#refund_order_completely\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
     # Replacement order
     # Create a replacement order based upon a previous order 
     # @param order_id The order id to generate a replacement for.
@@ -1699,7 +1617,7 @@ module UltracartClient
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
 
       # form parameters
       form_params = {}
@@ -1707,7 +1625,7 @@ module UltracartClient
       # http body (model)
       post_body = nil
       auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
