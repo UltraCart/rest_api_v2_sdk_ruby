@@ -14,30 +14,40 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class CartUpsellAfter
-    # The date/time after which the cart will finalize into an order.
-    attr_accessor :finalize_after_dts
+  class CustomReport
+    attr_accessor :chart_javascript
 
-    # The amount of inactivity in minutes after which the cart should be finalized into an order.  This will calculate the finalize_after_dts field.
-    attr_accessor :finalize_after_minutes
+    attr_accessor :chart_javascript_url
 
-    # Upsell path code (this is for legacy upsells only)
-    attr_accessor :upsell_path_code
+    attr_accessor :data_warehouse_report_config_oid
 
-    # Upsell path name to start on (StoreFront Upsells).  Will only be respected on a handoff API call.
-    attr_accessor :upsell_path_name
+    attr_accessor :dataset_security_level
 
-    # Upsell path variation to start on (StoreFront Upsells).   Will only be respected on a handoff API call.
-    attr_accessor :upsell_path_variation
+    attr_accessor :group_name
+
+    attr_accessor :merchant_id
+
+    attr_accessor :name
+
+    attr_accessor :parameters
+
+    attr_accessor :queries
+
+    attr_accessor :tooltips
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'finalize_after_dts' => :'finalize_after_dts',
-        :'finalize_after_minutes' => :'finalize_after_minutes',
-        :'upsell_path_code' => :'upsell_path_code',
-        :'upsell_path_name' => :'upsell_path_name',
-        :'upsell_path_variation' => :'upsell_path_variation'
+        :'chart_javascript' => :'chart_javascript',
+        :'chart_javascript_url' => :'chart_javascript_url',
+        :'data_warehouse_report_config_oid' => :'data_warehouse_report_config_oid',
+        :'dataset_security_level' => :'dataset_security_level',
+        :'group_name' => :'group_name',
+        :'merchant_id' => :'merchant_id',
+        :'name' => :'name',
+        :'parameters' => :'parameters',
+        :'queries' => :'queries',
+        :'tooltips' => :'tooltips'
       }
     end
 
@@ -49,11 +59,16 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'finalize_after_dts' => :'String',
-        :'finalize_after_minutes' => :'Integer',
-        :'upsell_path_code' => :'String',
-        :'upsell_path_name' => :'String',
-        :'upsell_path_variation' => :'String'
+        :'chart_javascript' => :'String',
+        :'chart_javascript_url' => :'String',
+        :'data_warehouse_report_config_oid' => :'Integer',
+        :'dataset_security_level' => :'String',
+        :'group_name' => :'String',
+        :'merchant_id' => :'String',
+        :'name' => :'String',
+        :'parameters' => :'Array<CustomReportParameter>',
+        :'queries' => :'Array<CustomReportQuery>',
+        :'tooltips' => :'Array<CustomReportTooltip>'
       }
     end
 
@@ -67,35 +82,61 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::CartUpsellAfter` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::CustomReport` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::CartUpsellAfter`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::CustomReport`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'finalize_after_dts')
-        self.finalize_after_dts = attributes[:'finalize_after_dts']
+      if attributes.key?(:'chart_javascript')
+        self.chart_javascript = attributes[:'chart_javascript']
       end
 
-      if attributes.key?(:'finalize_after_minutes')
-        self.finalize_after_minutes = attributes[:'finalize_after_minutes']
+      if attributes.key?(:'chart_javascript_url')
+        self.chart_javascript_url = attributes[:'chart_javascript_url']
       end
 
-      if attributes.key?(:'upsell_path_code')
-        self.upsell_path_code = attributes[:'upsell_path_code']
+      if attributes.key?(:'data_warehouse_report_config_oid')
+        self.data_warehouse_report_config_oid = attributes[:'data_warehouse_report_config_oid']
       end
 
-      if attributes.key?(:'upsell_path_name')
-        self.upsell_path_name = attributes[:'upsell_path_name']
+      if attributes.key?(:'dataset_security_level')
+        self.dataset_security_level = attributes[:'dataset_security_level']
       end
 
-      if attributes.key?(:'upsell_path_variation')
-        self.upsell_path_variation = attributes[:'upsell_path_variation']
+      if attributes.key?(:'group_name')
+        self.group_name = attributes[:'group_name']
+      end
+
+      if attributes.key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'parameters')
+        if (value = attributes[:'parameters']).is_a?(Array)
+          self.parameters = value
+        end
+      end
+
+      if attributes.key?(:'queries')
+        if (value = attributes[:'queries']).is_a?(Array)
+          self.queries = value
+        end
+      end
+
+      if attributes.key?(:'tooltips')
+        if (value = attributes[:'tooltips']).is_a?(Array)
+          self.tooltips = value
+        end
       end
     end
 
@@ -103,28 +144,13 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@upsell_path_code.nil? && @upsell_path_code.to_s.length > 5
-        invalid_properties.push('invalid value for "upsell_path_code", the character length must be smaller than or equal to 5.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@upsell_path_code.nil? && @upsell_path_code.to_s.length > 5
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] upsell_path_code Value to be assigned
-    def upsell_path_code=(upsell_path_code)
-      if !upsell_path_code.nil? && upsell_path_code.to_s.length > 5
-        fail ArgumentError, 'invalid value for "upsell_path_code", the character length must be smaller than or equal to 5.'
-      end
-
-      @upsell_path_code = upsell_path_code
     end
 
     # Checks equality by comparing each attribute.
@@ -132,11 +158,16 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          finalize_after_dts == o.finalize_after_dts &&
-          finalize_after_minutes == o.finalize_after_minutes &&
-          upsell_path_code == o.upsell_path_code &&
-          upsell_path_name == o.upsell_path_name &&
-          upsell_path_variation == o.upsell_path_variation
+          chart_javascript == o.chart_javascript &&
+          chart_javascript_url == o.chart_javascript_url &&
+          data_warehouse_report_config_oid == o.data_warehouse_report_config_oid &&
+          dataset_security_level == o.dataset_security_level &&
+          group_name == o.group_name &&
+          merchant_id == o.merchant_id &&
+          name == o.name &&
+          parameters == o.parameters &&
+          queries == o.queries &&
+          tooltips == o.tooltips
     end
 
     # @see the `==` method
@@ -148,7 +179,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [finalize_after_dts, finalize_after_minutes, upsell_path_code, upsell_path_name, upsell_path_variation].hash
+      [chart_javascript, chart_javascript_url, data_warehouse_report_config_oid, dataset_security_level, group_name, merchant_id, name, parameters, queries, tooltips].hash
     end
 
     # Builds the object from hash

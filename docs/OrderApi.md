@@ -5,6 +5,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**adjust_order_total**](OrderApi.md#adjust_order_total) | **POST** /order/orders/{order_id}/adjust_order_total/{desired_total} | Adjusts an order total |
+| [**block_refund_on_order**](OrderApi.md#block_refund_on_order) | **POST** /order/orders/{order_id}/refund_block | Set a refund block on an order |
 | [**cancel_order**](OrderApi.md#cancel_order) | **POST** /order/orders/{order_id}/cancel | Cancel an order |
 | [**delete_order**](OrderApi.md#delete_order) | **DELETE** /order/orders/{order_id} | Delete an order |
 | [**duplicate_order**](OrderApi.md#duplicate_order) | **POST** /order/orders/{order_id}/duplicate | Duplicate an order |
@@ -29,6 +30,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**replacement**](OrderApi.md#replacement) | **POST** /order/orders/{order_id}/replacement | Replacement order |
 | [**resend_receipt**](OrderApi.md#resend_receipt) | **POST** /order/orders/{order_id}/resend_receipt | Resend receipt |
 | [**resend_shipment_confirmation**](OrderApi.md#resend_shipment_confirmation) | **POST** /order/orders/{order_id}/resend_shipment_confirmation | Resend shipment confirmation |
+| [**unblock_refund_on_order**](OrderApi.md#unblock_refund_on_order) | **POST** /order/orders/{order_id}/refund_unblock | Remove a refund block on an order |
 | [**update_accounts_receivable_retry_config**](OrderApi.md#update_accounts_receivable_retry_config) | **POST** /order/accountsReceivableRetryConfig | Update A/R Retry Configuration |
 | [**update_order**](OrderApi.md#update_order) | **PUT** /order/orders/{order_id} | Update an order |
 | [**validate_order**](OrderApi.md#validate_order) | **POST** /order/validate | Validate |
@@ -103,6 +105,60 @@ end
 ### Return type
 
 [**BaseResponse**](BaseResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## block_refund_on_order
+
+> block_refund_on_order(order_id, opts)
+
+Set a refund block on an order
+
+Sets a refund block on an order to prevent a user from performing a refund.  Commonly used when a chargeback has been received. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the block_refund_on_order_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> block_refund_on_order_with_http_info(order_id, opts)
+
+```ruby
+begin
+  # Set a refund block on an order
+  data, status_code, headers = api_instance.block_refund_on_order_with_http_info(order_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->block_refund_on_order_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **order_id** | **String** | The order id to block a refund on. |  |
+| **block_reason** | **String** | Block reason code (optional) | [optional] |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
@@ -2513,6 +2569,59 @@ end
 ### Return type
 
 [**BaseResponse**](BaseResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## unblock_refund_on_order
+
+> unblock_refund_on_order(order_id)
+
+Remove a refund block on an order
+
+Removes a refund block on an order to prevent a user from performing a refund. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the unblock_refund_on_order_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> unblock_refund_on_order_with_http_info(order_id)
+
+```ruby
+begin
+  # Remove a refund block on an order
+  data, status_code, headers = api_instance.unblock_refund_on_order_with_http_info(order_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->unblock_refund_on_order_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **order_id** | **String** | The order id to unblock a refund on. |  |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 

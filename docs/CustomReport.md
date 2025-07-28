@@ -1,0 +1,36 @@
+# UltracartClient::CustomReport
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **chart_javascript** | **String** |  | [optional] |
+| **chart_javascript_url** | **String** |  | [optional] |
+| **data_warehouse_report_config_oid** | **Integer** |  | [optional] |
+| **dataset_security_level** | **String** |  | [optional] |
+| **group_name** | **String** |  | [optional] |
+| **merchant_id** | **String** |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **parameters** | [**Array&lt;CustomReportParameter&gt;**](CustomReportParameter.md) |  | [optional] |
+| **queries** | [**Array&lt;CustomReportQuery&gt;**](CustomReportQuery.md) |  | [optional] |
+| **tooltips** | [**Array&lt;CustomReportTooltip&gt;**](CustomReportTooltip.md) |  | [optional] |
+
+## Example
+
+```ruby
+require 'ultracart_api'
+
+instance = UltracartClient::CustomReport.new(
+  chart_javascript: null,
+  chart_javascript_url: null,
+  data_warehouse_report_config_oid: null,
+  dataset_security_level: null,
+  group_name: null,
+  merchant_id: null,
+  name: null,
+  parameters: null,
+  queries: null,
+  tooltips: null
+)
+```
+

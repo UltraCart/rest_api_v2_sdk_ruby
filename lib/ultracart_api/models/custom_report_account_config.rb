@@ -14,30 +14,42 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class CartUpsellAfter
-    # The date/time after which the cart will finalize into an order.
-    attr_accessor :finalize_after_dts
+  class CustomReportAccountConfig
+    attr_accessor :ai_budget
 
-    # The amount of inactivity in minutes after which the cart should be finalized into an order.  This will calculate the finalize_after_dts field.
-    attr_accessor :finalize_after_minutes
+    # Current AI usage creating reports
+    attr_accessor :ai_usage
 
-    # Upsell path code (this is for legacy upsells only)
-    attr_accessor :upsell_path_code
+    # Current BigQuery SQL usage running reports
+    attr_accessor :merchant_id
 
-    # Upsell path name to start on (StoreFront Upsells).  Will only be respected on a handoff API call.
-    attr_accessor :upsell_path_name
+    attr_accessor :novice_sql_comments
 
-    # Upsell path variation to start on (StoreFront Upsells).   Will only be respected on a handoff API call.
-    attr_accessor :upsell_path_variation
+    # True if they have opted into custom reports
+    attr_accessor :opt_in
+
+    # User that opted into custom reporting
+    attr_accessor :opt_in_by_user
+
+    # Date/time that custom reporting was opted in to
+    attr_accessor :opt_in_date
+
+    attr_accessor :sql_budget
+
+    attr_accessor :sql_usage
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'finalize_after_dts' => :'finalize_after_dts',
-        :'finalize_after_minutes' => :'finalize_after_minutes',
-        :'upsell_path_code' => :'upsell_path_code',
-        :'upsell_path_name' => :'upsell_path_name',
-        :'upsell_path_variation' => :'upsell_path_variation'
+        :'ai_budget' => :'ai_budget',
+        :'ai_usage' => :'ai_usage',
+        :'merchant_id' => :'merchant_id',
+        :'novice_sql_comments' => :'novice_sql_comments',
+        :'opt_in' => :'opt_in',
+        :'opt_in_by_user' => :'opt_in_by_user',
+        :'opt_in_date' => :'opt_in_date',
+        :'sql_budget' => :'sql_budget',
+        :'sql_usage' => :'sql_usage'
       }
     end
 
@@ -49,11 +61,15 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'finalize_after_dts' => :'String',
-        :'finalize_after_minutes' => :'Integer',
-        :'upsell_path_code' => :'String',
-        :'upsell_path_name' => :'String',
-        :'upsell_path_variation' => :'String'
+        :'ai_budget' => :'Float',
+        :'ai_usage' => :'Float',
+        :'merchant_id' => :'String',
+        :'novice_sql_comments' => :'Boolean',
+        :'opt_in' => :'Boolean',
+        :'opt_in_by_user' => :'String',
+        :'opt_in_date' => :'String',
+        :'sql_budget' => :'Float',
+        :'sql_usage' => :'Float'
       }
     end
 
@@ -67,35 +83,51 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::CartUpsellAfter` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::CustomReportAccountConfig` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::CartUpsellAfter`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::CustomReportAccountConfig`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'finalize_after_dts')
-        self.finalize_after_dts = attributes[:'finalize_after_dts']
+      if attributes.key?(:'ai_budget')
+        self.ai_budget = attributes[:'ai_budget']
       end
 
-      if attributes.key?(:'finalize_after_minutes')
-        self.finalize_after_minutes = attributes[:'finalize_after_minutes']
+      if attributes.key?(:'ai_usage')
+        self.ai_usage = attributes[:'ai_usage']
       end
 
-      if attributes.key?(:'upsell_path_code')
-        self.upsell_path_code = attributes[:'upsell_path_code']
+      if attributes.key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
       end
 
-      if attributes.key?(:'upsell_path_name')
-        self.upsell_path_name = attributes[:'upsell_path_name']
+      if attributes.key?(:'novice_sql_comments')
+        self.novice_sql_comments = attributes[:'novice_sql_comments']
       end
 
-      if attributes.key?(:'upsell_path_variation')
-        self.upsell_path_variation = attributes[:'upsell_path_variation']
+      if attributes.key?(:'opt_in')
+        self.opt_in = attributes[:'opt_in']
+      end
+
+      if attributes.key?(:'opt_in_by_user')
+        self.opt_in_by_user = attributes[:'opt_in_by_user']
+      end
+
+      if attributes.key?(:'opt_in_date')
+        self.opt_in_date = attributes[:'opt_in_date']
+      end
+
+      if attributes.key?(:'sql_budget')
+        self.sql_budget = attributes[:'sql_budget']
+      end
+
+      if attributes.key?(:'sql_usage')
+        self.sql_usage = attributes[:'sql_usage']
       end
     end
 
@@ -103,28 +135,13 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@upsell_path_code.nil? && @upsell_path_code.to_s.length > 5
-        invalid_properties.push('invalid value for "upsell_path_code", the character length must be smaller than or equal to 5.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@upsell_path_code.nil? && @upsell_path_code.to_s.length > 5
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] upsell_path_code Value to be assigned
-    def upsell_path_code=(upsell_path_code)
-      if !upsell_path_code.nil? && upsell_path_code.to_s.length > 5
-        fail ArgumentError, 'invalid value for "upsell_path_code", the character length must be smaller than or equal to 5.'
-      end
-
-      @upsell_path_code = upsell_path_code
     end
 
     # Checks equality by comparing each attribute.
@@ -132,11 +149,15 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          finalize_after_dts == o.finalize_after_dts &&
-          finalize_after_minutes == o.finalize_after_minutes &&
-          upsell_path_code == o.upsell_path_code &&
-          upsell_path_name == o.upsell_path_name &&
-          upsell_path_variation == o.upsell_path_variation
+          ai_budget == o.ai_budget &&
+          ai_usage == o.ai_usage &&
+          merchant_id == o.merchant_id &&
+          novice_sql_comments == o.novice_sql_comments &&
+          opt_in == o.opt_in &&
+          opt_in_by_user == o.opt_in_by_user &&
+          opt_in_date == o.opt_in_date &&
+          sql_budget == o.sql_budget &&
+          sql_usage == o.sql_usage
     end
 
     # @see the `==` method
@@ -148,7 +169,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [finalize_after_dts, finalize_after_minutes, upsell_path_code, upsell_path_name, upsell_path_variation].hash
+      [ai_budget, ai_usage, merchant_id, novice_sql_comments, opt_in, opt_in_by_user, opt_in_date, sql_budget, sql_usage].hash
     end
 
     # Builds the object from hash
