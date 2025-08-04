@@ -1,4 +1,4 @@
-# UltracartClient::CustomReportExecutionParameter
+# UltracartClient::CustomDashboardExecutionParameter
 
 ## Properties
 Name | Type | Description | Notes

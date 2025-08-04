@@ -13,32 +13,24 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class CustomReportExecutionParameter
-    attr_accessor :name
+  class ConversationVirtualAgentCapabilityZohoDeskDepartment
+    attr_accessor :department_id
 
-    attr_accessor :quick_pick_key
-
-    attr_accessor :type
-
-    attr_accessor :value
+    attr_accessor :department_name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'quick_pick_key' => :'quick_pick_key',
-        :'type' => :'type',
-        :'value' => :'value'
+        :'department_id' => :'department_id',
+        :'department_name' => :'department_name'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'name' => :'String',
-        :'quick_pick_key' => :'String',
-        :'type' => :'String',
-        :'value' => :'String'
+        :'department_id' => :'String',
+        :'department_name' => :'String'
       }
     end
 
@@ -50,20 +42,12 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'department_id')
+        self.department_id = attributes[:'department_id']
       end
 
-      if attributes.has_key?(:'quick_pick_key')
-        self.quick_pick_key = attributes[:'quick_pick_key']
-      end
-
-      if attributes.has_key?(:'type')
-        self.type = attributes[:'type']
-      end
-
-      if attributes.has_key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.has_key?(:'department_name')
+        self.department_name = attributes[:'department_name']
       end
     end
 
@@ -85,10 +69,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          quick_pick_key == o.quick_pick_key &&
-          type == o.type &&
-          value == o.value
+          department_id == o.department_id &&
+          department_name == o.department_name
     end
 
     # @see the `==` method
@@ -100,7 +82,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, quick_pick_key, type, value].hash
+      [department_id, department_name].hash
     end
 
     # Builds the object from hash

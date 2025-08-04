@@ -22,13 +22,16 @@ module UltracartClient
 
     attr_accessor :pages
 
+    attr_accessor :parameters
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'data_warehouse_custom_dashboard_oid' => :'data_warehouse_custom_dashboard_oid',
         :'merchant_id' => :'merchant_id',
         :'name' => :'name',
-        :'pages' => :'pages'
+        :'pages' => :'pages',
+        :'parameters' => :'parameters'
       }
     end
 
@@ -38,7 +41,8 @@ module UltracartClient
         :'data_warehouse_custom_dashboard_oid' => :'Integer',
         :'merchant_id' => :'String',
         :'name' => :'String',
-        :'pages' => :'Array<CustomDashboardPage>'
+        :'pages' => :'Array<CustomDashboardPage>',
+        :'parameters' => :'Array<CustomDashboardExecutionParameter>'
       }
     end
 
@@ -67,6 +71,12 @@ module UltracartClient
           self.pages = value
         end
       end
+
+      if attributes.has_key?(:'parameters')
+        if (value = attributes[:'parameters']).is_a?(Array)
+          self.parameters = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -90,7 +100,8 @@ module UltracartClient
           data_warehouse_custom_dashboard_oid == o.data_warehouse_custom_dashboard_oid &&
           merchant_id == o.merchant_id &&
           name == o.name &&
-          pages == o.pages
+          pages == o.pages &&
+          parameters == o.parameters
     end
 
     # @see the `==` method
@@ -102,7 +113,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [data_warehouse_custom_dashboard_oid, merchant_id, name, pages].hash
+      [data_warehouse_custom_dashboard_oid, merchant_id, name, pages, parameters].hash
     end
 
     # Builds the object from hash

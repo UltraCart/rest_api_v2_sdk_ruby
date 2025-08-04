@@ -7,5 +7,6 @@ Name | Type | Description | Notes
 **merchant_id** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **pages** | [**Array&lt;CustomDashboardPage&gt;**](CustomDashboardPage.md) |  | [optional] 
+**parameters** | [**Array&lt;CustomDashboardExecutionParameter&gt;**](CustomDashboardExecutionParameter.md) |  | [optional] 
 
 

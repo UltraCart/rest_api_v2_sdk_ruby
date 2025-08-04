@@ -13,7 +13,7 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class CustomReportExecutionParameter
+  class CustomDashboardExecutionParameter
     attr_accessor :name
 
     attr_accessor :quick_pick_key
