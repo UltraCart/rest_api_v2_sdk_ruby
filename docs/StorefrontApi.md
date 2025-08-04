@@ -44,6 +44,7 @@ Method | HTTP request | Description
 [**get_email_campaigns**](StorefrontApi.md#get_email_campaigns) | **GET** /storefront/{storefront_oid}/email/campaigns | Get email campaigns
 [**get_email_campaigns_with_stats**](StorefrontApi.md#get_email_campaigns_with_stats) | **GET** /storefront/{storefront_oid}/email/campaignsWithStats/{stat_days} | Get email campaigns with stats
 [**get_email_commseq**](StorefrontApi.md#get_email_commseq) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid} | Get email commseq
+[**get_email_commseq_editor_values**](StorefrontApi.md#get_email_commseq_editor_values) | **GET** /storefront/{storefront_oid}/email/commseqs/editorValues | Get email merchant specific editor values
 [**get_email_commseq_email_stats**](StorefrontApi.md#get_email_commseq_email_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/emailStats | Get email communication sequence emails stats
 [**get_email_commseq_postcard_stats**](StorefrontApi.md#get_email_commseq_postcard_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/postcardStats | Get email communication sequence postcard stats
 [**get_email_commseq_postcard_tracking**](StorefrontApi.md#get_email_commseq_postcard_tracking) | **GET** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid}/tracking | Get email communication postcard tracking
@@ -2191,6 +2192,54 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EmailCommseqResponse**](EmailCommseqResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_email_commseq_editor_values**
+> EmailEditorValuesResponse get_email_commseq_editor_values(storefront_oid)
+
+Get email merchant specific editor values
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::StorefrontApi.new_using_api_key(simple_key, false, false)
+
+
+storefront_oid = 56 # Integer | 
+
+
+begin
+  #Get email merchant specific editor values
+  result = api_instance.get_email_commseq_editor_values(storefront_oid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling StorefrontApi->get_email_commseq_editor_values: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefront_oid** | **Integer**|  | 
+
+### Return type
+
+[**EmailEditorValuesResponse**](EmailEditorValuesResponse.md)
 
 ### Authorization
 
