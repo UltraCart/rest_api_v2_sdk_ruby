@@ -1,14 +1,11 @@
-# UltracartClient::EmailWebhookEditorValuesResponse
+# UltracartClient::CustomDashboardResponse
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**available_expansions** | **Array&lt;String&gt;** |  | [optional] 
-**available_tokens** | **Array&lt;String&gt;** |  | [optional] 
+**dashboard** | [**CustomDashboard**](CustomDashboard.md) |  | [optional] 
 **error** | [**Error**](Error.md) |  | [optional] 
-**loyalty_tiers** | **Array&lt;String&gt;** |  | [optional] 
 **metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] 
-**rest_object_type** | **String** |  | [optional] 
 **success** | **BOOLEAN** | Indicates if API call was successful | [optional] 
 **warning** | [**Warning**](Warning.md) |  | [optional] 
 

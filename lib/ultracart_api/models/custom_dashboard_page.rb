@@ -13,49 +13,28 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class EmailWebhookEditorValuesResponse
-    attr_accessor :available_expansions
+  class CustomDashboardPage
+    attr_accessor :page_height_inches
 
-    attr_accessor :available_tokens
+    attr_accessor :page_width_inches
 
-    attr_accessor :error
-
-    attr_accessor :loyalty_tiers
-
-    attr_accessor :metadata
-
-    attr_accessor :rest_object_type
-
-    # Indicates if API call was successful
-    attr_accessor :success
-
-    attr_accessor :warning
+    attr_accessor :reports
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'available_expansions' => :'available_expansions',
-        :'available_tokens' => :'available_tokens',
-        :'error' => :'error',
-        :'loyalty_tiers' => :'loyalty_tiers',
-        :'metadata' => :'metadata',
-        :'rest_object_type' => :'rest_object_type',
-        :'success' => :'success',
-        :'warning' => :'warning'
+        :'page_height_inches' => :'page_height_inches',
+        :'page_width_inches' => :'page_width_inches',
+        :'reports' => :'reports'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'available_expansions' => :'Array<String>',
-        :'available_tokens' => :'Array<String>',
-        :'error' => :'Error',
-        :'loyalty_tiers' => :'Array<String>',
-        :'metadata' => :'ResponseMetadata',
-        :'rest_object_type' => :'String',
-        :'success' => :'BOOLEAN',
-        :'warning' => :'Warning'
+        :'page_height_inches' => :'Float',
+        :'page_width_inches' => :'Float',
+        :'reports' => :'Array<CustomDashboardPageReport>'
       }
     end
 
@@ -67,42 +46,18 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'available_expansions')
-        if (value = attributes[:'available_expansions']).is_a?(Array)
-          self.available_expansions = value
+      if attributes.has_key?(:'page_height_inches')
+        self.page_height_inches = attributes[:'page_height_inches']
+      end
+
+      if attributes.has_key?(:'page_width_inches')
+        self.page_width_inches = attributes[:'page_width_inches']
+      end
+
+      if attributes.has_key?(:'reports')
+        if (value = attributes[:'reports']).is_a?(Array)
+          self.reports = value
         end
-      end
-
-      if attributes.has_key?(:'available_tokens')
-        if (value = attributes[:'available_tokens']).is_a?(Array)
-          self.available_tokens = value
-        end
-      end
-
-      if attributes.has_key?(:'error')
-        self.error = attributes[:'error']
-      end
-
-      if attributes.has_key?(:'loyalty_tiers')
-        if (value = attributes[:'loyalty_tiers']).is_a?(Array)
-          self.loyalty_tiers = value
-        end
-      end
-
-      if attributes.has_key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.has_key?(:'rest_object_type')
-        self.rest_object_type = attributes[:'rest_object_type']
-      end
-
-      if attributes.has_key?(:'success')
-        self.success = attributes[:'success']
-      end
-
-      if attributes.has_key?(:'warning')
-        self.warning = attributes[:'warning']
       end
     end
 
@@ -124,14 +79,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          available_expansions == o.available_expansions &&
-          available_tokens == o.available_tokens &&
-          error == o.error &&
-          loyalty_tiers == o.loyalty_tiers &&
-          metadata == o.metadata &&
-          rest_object_type == o.rest_object_type &&
-          success == o.success &&
-          warning == o.warning
+          page_height_inches == o.page_height_inches &&
+          page_width_inches == o.page_width_inches &&
+          reports == o.reports
     end
 
     # @see the `==` method
@@ -143,7 +93,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [available_expansions, available_tokens, error, loyalty_tiers, metadata, rest_object_type, success, warning].hash
+      [page_height_inches, page_width_inches, reports].hash
     end
 
     # Builds the object from hash

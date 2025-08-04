@@ -1,14 +1,14 @@
-# UltracartClient::EmailWebhookEditorValuesResponse
+# UltracartClient::CustomReportExecutionResponse
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**available_expansions** | **Array&lt;String&gt;** |  | [optional] 
-**available_tokens** | **Array&lt;String&gt;** |  | [optional] 
 **error** | [**Error**](Error.md) |  | [optional] 
-**loyalty_tiers** | **Array&lt;String&gt;** |  | [optional] 
 **metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] 
-**rest_object_type** | **String** |  | [optional] 
+**parameters** | [**Array&lt;CustomReportExecutionParameter&gt;**](CustomReportExecutionParameter.md) |  | [optional] 
+**report** | [**CustomReport**](CustomReport.md) |  | [optional] 
+**result_schema_json** | **String** |  | [optional] 
+**result_url** | **String** |  | [optional] 
 **success** | **BOOLEAN** | Indicates if API call was successful | [optional] 
 **warning** | [**Warning**](Warning.md) |  | [optional] 
 
