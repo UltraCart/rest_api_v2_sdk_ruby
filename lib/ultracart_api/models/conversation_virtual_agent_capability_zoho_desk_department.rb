@@ -14,25 +14,16 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class CustomDashboard
-    attr_accessor :data_warehouse_custom_dashboard_oid
+  class ConversationVirtualAgentCapabilityZohoDeskDepartment
+    attr_accessor :department_id
 
-    attr_accessor :merchant_id
-
-    attr_accessor :name
-
-    attr_accessor :pages
-
-    attr_accessor :parameters
+    attr_accessor :department_name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data_warehouse_custom_dashboard_oid' => :'data_warehouse_custom_dashboard_oid',
-        :'merchant_id' => :'merchant_id',
-        :'name' => :'name',
-        :'pages' => :'pages',
-        :'parameters' => :'parameters'
+        :'department_id' => :'department_id',
+        :'department_name' => :'department_name'
       }
     end
 
@@ -44,11 +35,8 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'data_warehouse_custom_dashboard_oid' => :'Integer',
-        :'merchant_id' => :'String',
-        :'name' => :'String',
-        :'pages' => :'Array<CustomDashboardPage>',
-        :'parameters' => :'Array<CustomDashboardExecutionParameter>'
+        :'department_id' => :'String',
+        :'department_name' => :'String'
       }
     end
 
@@ -62,39 +50,23 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::CustomDashboard` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationVirtualAgentCapabilityZohoDeskDepartment` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::CustomDashboard`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationVirtualAgentCapabilityZohoDeskDepartment`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data_warehouse_custom_dashboard_oid')
-        self.data_warehouse_custom_dashboard_oid = attributes[:'data_warehouse_custom_dashboard_oid']
+      if attributes.key?(:'department_id')
+        self.department_id = attributes[:'department_id']
       end
 
-      if attributes.key?(:'merchant_id')
-        self.merchant_id = attributes[:'merchant_id']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'pages')
-        if (value = attributes[:'pages']).is_a?(Array)
-          self.pages = value
-        end
-      end
-
-      if attributes.key?(:'parameters')
-        if (value = attributes[:'parameters']).is_a?(Array)
-          self.parameters = value
-        end
+      if attributes.key?(:'department_name')
+        self.department_name = attributes[:'department_name']
       end
     end
 
@@ -116,11 +88,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data_warehouse_custom_dashboard_oid == o.data_warehouse_custom_dashboard_oid &&
-          merchant_id == o.merchant_id &&
-          name == o.name &&
-          pages == o.pages &&
-          parameters == o.parameters
+          department_id == o.department_id &&
+          department_name == o.department_name
     end
 
     # @see the `==` method
@@ -132,7 +101,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data_warehouse_custom_dashboard_oid, merchant_id, name, pages, parameters].hash
+      [department_id, department_name].hash
     end
 
     # Builds the object from hash

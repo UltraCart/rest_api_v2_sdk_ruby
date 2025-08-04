@@ -8,6 +8,7 @@
 | **merchant_id** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **pages** | [**Array&lt;CustomDashboardPage&gt;**](CustomDashboardPage.md) |  | [optional] |
+| **parameters** | [**Array&lt;CustomDashboardExecutionParameter&gt;**](CustomDashboardExecutionParameter.md) |  | [optional] |
 
 ## Example
 
@@ -18,7 +19,8 @@ instance = UltracartClient::CustomDashboard.new(
   data_warehouse_custom_dashboard_oid: null,
   merchant_id: null,
   name: null,
-  pages: null
+  pages: null,
+  parameters: null
 )
 ```
 

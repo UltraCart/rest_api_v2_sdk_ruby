@@ -31,6 +31,9 @@ module UltracartClient
     # Email to send support ticket to
     attr_accessor :open_support_ticket_channel_email
 
+    # Department ID to open a Zoho Desk ticket for
+    attr_accessor :open_support_ticket_zoho_desk_department_id
+
     attr_accessor :pause_subscription
 
     attr_accessor :resume_subscription
@@ -38,6 +41,12 @@ module UltracartClient
     attr_accessor :transfer_chat_to_live_agent
 
     attr_accessor :update_subscription_credit_card
+
+    # True if Zoho Desk is connected to UltraCart
+    attr_accessor :zoho_desk_available
+
+    # Array of Zoho Desk Department if zoho desk is connected to UltraCart
+    attr_accessor :zoho_desk_departments
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -71,10 +80,13 @@ module UltracartClient
         :'open_support_ticket' => :'open_support_ticket',
         :'open_support_ticket_channel' => :'open_support_ticket_channel',
         :'open_support_ticket_channel_email' => :'open_support_ticket_channel_email',
+        :'open_support_ticket_zoho_desk_department_id' => :'open_support_ticket_zoho_desk_department_id',
         :'pause_subscription' => :'pause_subscription',
         :'resume_subscription' => :'resume_subscription',
         :'transfer_chat_to_live_agent' => :'transfer_chat_to_live_agent',
-        :'update_subscription_credit_card' => :'update_subscription_credit_card'
+        :'update_subscription_credit_card' => :'update_subscription_credit_card',
+        :'zoho_desk_available' => :'zoho_desk_available',
+        :'zoho_desk_departments' => :'zoho_desk_departments'
       }
     end
 
@@ -93,10 +105,13 @@ module UltracartClient
         :'open_support_ticket' => :'Boolean',
         :'open_support_ticket_channel' => :'String',
         :'open_support_ticket_channel_email' => :'String',
+        :'open_support_ticket_zoho_desk_department_id' => :'String',
         :'pause_subscription' => :'Boolean',
         :'resume_subscription' => :'Boolean',
         :'transfer_chat_to_live_agent' => :'Boolean',
-        :'update_subscription_credit_card' => :'Boolean'
+        :'update_subscription_credit_card' => :'Boolean',
+        :'zoho_desk_available' => :'Boolean',
+        :'zoho_desk_departments' => :'Array<ConversationVirtualAgentCapabilityZohoDeskDepartment>'
       }
     end
 
@@ -149,6 +164,10 @@ module UltracartClient
         self.open_support_ticket_channel_email = attributes[:'open_support_ticket_channel_email']
       end
 
+      if attributes.key?(:'open_support_ticket_zoho_desk_department_id')
+        self.open_support_ticket_zoho_desk_department_id = attributes[:'open_support_ticket_zoho_desk_department_id']
+      end
+
       if attributes.key?(:'pause_subscription')
         self.pause_subscription = attributes[:'pause_subscription']
       end
@@ -164,6 +183,16 @@ module UltracartClient
       if attributes.key?(:'update_subscription_credit_card')
         self.update_subscription_credit_card = attributes[:'update_subscription_credit_card']
       end
+
+      if attributes.key?(:'zoho_desk_available')
+        self.zoho_desk_available = attributes[:'zoho_desk_available']
+      end
+
+      if attributes.key?(:'zoho_desk_departments')
+        if (value = attributes[:'zoho_desk_departments']).is_a?(Array)
+          self.zoho_desk_departments = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -176,7 +205,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      open_support_ticket_channel_validator = EnumAttributeValidator.new('String', ["none", "email", "UltraCart Task", "Zoho Desk Ticket"])
+      open_support_ticket_channel_validator = EnumAttributeValidator.new('String', ["none", "email", "ultracart_task", "zoho_desk_ticket"])
       return false unless open_support_ticket_channel_validator.valid?(@open_support_ticket_channel)
       true
     end
@@ -184,7 +213,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] open_support_ticket_channel Object to be assigned
     def open_support_ticket_channel=(open_support_ticket_channel)
-      validator = EnumAttributeValidator.new('String', ["none", "email", "UltraCart Task", "Zoho Desk Ticket"])
+      validator = EnumAttributeValidator.new('String', ["none", "email", "ultracart_task", "zoho_desk_ticket"])
       unless validator.valid?(open_support_ticket_channel)
         fail ArgumentError, "invalid value for \"open_support_ticket_channel\", must be one of #{validator.allowable_values}."
       end
@@ -203,10 +232,13 @@ module UltracartClient
           open_support_ticket == o.open_support_ticket &&
           open_support_ticket_channel == o.open_support_ticket_channel &&
           open_support_ticket_channel_email == o.open_support_ticket_channel_email &&
+          open_support_ticket_zoho_desk_department_id == o.open_support_ticket_zoho_desk_department_id &&
           pause_subscription == o.pause_subscription &&
           resume_subscription == o.resume_subscription &&
           transfer_chat_to_live_agent == o.transfer_chat_to_live_agent &&
-          update_subscription_credit_card == o.update_subscription_credit_card
+          update_subscription_credit_card == o.update_subscription_credit_card &&
+          zoho_desk_available == o.zoho_desk_available &&
+          zoho_desk_departments == o.zoho_desk_departments
     end
 
     # @see the `==` method
@@ -218,7 +250,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cancel_subscription, delay_subscription, lookup_order_information, lookup_subscription_information, open_support_ticket, open_support_ticket_channel, open_support_ticket_channel_email, pause_subscription, resume_subscription, transfer_chat_to_live_agent, update_subscription_credit_card].hash
+      [cancel_subscription, delay_subscription, lookup_order_information, lookup_subscription_information, open_support_ticket, open_support_ticket_channel, open_support_ticket_channel_email, open_support_ticket_zoho_desk_department_id, pause_subscription, resume_subscription, transfer_chat_to_live_agent, update_subscription_credit_card, zoho_desk_available, zoho_desk_departments].hash
     end
 
     # Builds the object from hash

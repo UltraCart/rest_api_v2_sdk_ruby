@@ -17,6 +17,8 @@ module UltracartClient
   class CustomReportExecutionParameter
     attr_accessor :name
 
+    attr_accessor :quick_pick_key
+
     attr_accessor :type
 
     attr_accessor :value
@@ -25,6 +27,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'name' => :'name',
+        :'quick_pick_key' => :'quick_pick_key',
         :'type' => :'type',
         :'value' => :'value'
       }
@@ -39,6 +42,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'name' => :'String',
+        :'quick_pick_key' => :'String',
         :'type' => :'String',
         :'value' => :'String'
       }
@@ -69,6 +73,10 @@ module UltracartClient
         self.name = attributes[:'name']
       end
 
+      if attributes.key?(:'quick_pick_key')
+        self.quick_pick_key = attributes[:'quick_pick_key']
+      end
+
       if attributes.key?(:'type')
         self.type = attributes[:'type']
       end
@@ -97,6 +105,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
+          quick_pick_key == o.quick_pick_key &&
           type == o.type &&
           value == o.value
     end
@@ -110,7 +119,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, type, value].hash
+      [name, quick_pick_key, type, value].hash
     end
 
     # Builds the object from hash

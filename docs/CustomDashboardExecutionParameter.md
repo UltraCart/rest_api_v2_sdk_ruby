@@ -1,4 +1,4 @@
-# UltracartClient::CustomReportExecutionParameter
+# UltracartClient::CustomDashboardExecutionParameter
 
 ## Properties
 
@@ -14,7 +14,7 @@
 ```ruby
 require 'ultracart_api'
 
-instance = UltracartClient::CustomReportExecutionParameter.new(
+instance = UltracartClient::CustomDashboardExecutionParameter.new(
   name: null,
   quick_pick_key: null,
   type: null,

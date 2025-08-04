@@ -11,10 +11,13 @@
 | **open_support_ticket** | **Boolean** |  | [optional] |
 | **open_support_ticket_channel** | **String** | Channel to use to open the support ticket | [optional] |
 | **open_support_ticket_channel_email** | **String** | Email to send support ticket to | [optional] |
+| **open_support_ticket_zoho_desk_department_id** | **String** | Department ID to open a Zoho Desk ticket for | [optional] |
 | **pause_subscription** | **Boolean** |  | [optional] |
 | **resume_subscription** | **Boolean** |  | [optional] |
 | **transfer_chat_to_live_agent** | **Boolean** |  | [optional] |
 | **update_subscription_credit_card** | **Boolean** |  | [optional] |
+| **zoho_desk_available** | **Boolean** | True if Zoho Desk is connected to UltraCart | [optional] |
+| **zoho_desk_departments** | [**Array&lt;ConversationVirtualAgentCapabilityZohoDeskDepartment&gt;**](ConversationVirtualAgentCapabilityZohoDeskDepartment.md) | Array of Zoho Desk Department if zoho desk is connected to UltraCart | [optional] |
 
 ## Example
 
@@ -29,10 +32,13 @@ instance = UltracartClient::ConversationVirtualAgentCapabilities.new(
   open_support_ticket: null,
   open_support_ticket_channel: null,
   open_support_ticket_channel_email: null,
+  open_support_ticket_zoho_desk_department_id: null,
   pause_subscription: null,
   resume_subscription: null,
   transfer_chat_to_live_agent: null,
-  update_subscription_credit_card: null
+  update_subscription_credit_card: null,
+  zoho_desk_available: null,
+  zoho_desk_departments: null
 )
 ```
 

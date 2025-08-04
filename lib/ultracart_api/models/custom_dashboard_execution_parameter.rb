@@ -14,25 +14,22 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class CustomDashboard
-    attr_accessor :data_warehouse_custom_dashboard_oid
-
-    attr_accessor :merchant_id
-
+  class CustomDashboardExecutionParameter
     attr_accessor :name
 
-    attr_accessor :pages
+    attr_accessor :quick_pick_key
 
-    attr_accessor :parameters
+    attr_accessor :type
+
+    attr_accessor :value
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data_warehouse_custom_dashboard_oid' => :'data_warehouse_custom_dashboard_oid',
-        :'merchant_id' => :'merchant_id',
         :'name' => :'name',
-        :'pages' => :'pages',
-        :'parameters' => :'parameters'
+        :'quick_pick_key' => :'quick_pick_key',
+        :'type' => :'type',
+        :'value' => :'value'
       }
     end
 
@@ -44,11 +41,10 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'data_warehouse_custom_dashboard_oid' => :'Integer',
-        :'merchant_id' => :'String',
         :'name' => :'String',
-        :'pages' => :'Array<CustomDashboardPage>',
-        :'parameters' => :'Array<CustomDashboardExecutionParameter>'
+        :'quick_pick_key' => :'String',
+        :'type' => :'String',
+        :'value' => :'String'
       }
     end
 
@@ -62,39 +58,31 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::CustomDashboard` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::CustomDashboardExecutionParameter` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::CustomDashboard`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::CustomDashboardExecutionParameter`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'data_warehouse_custom_dashboard_oid')
-        self.data_warehouse_custom_dashboard_oid = attributes[:'data_warehouse_custom_dashboard_oid']
-      end
-
-      if attributes.key?(:'merchant_id')
-        self.merchant_id = attributes[:'merchant_id']
-      end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'pages')
-        if (value = attributes[:'pages']).is_a?(Array)
-          self.pages = value
-        end
+      if attributes.key?(:'quick_pick_key')
+        self.quick_pick_key = attributes[:'quick_pick_key']
       end
 
-      if attributes.key?(:'parameters')
-        if (value = attributes[:'parameters']).is_a?(Array)
-          self.parameters = value
-        end
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      end
+
+      if attributes.key?(:'value')
+        self.value = attributes[:'value']
       end
     end
 
@@ -116,11 +104,10 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data_warehouse_custom_dashboard_oid == o.data_warehouse_custom_dashboard_oid &&
-          merchant_id == o.merchant_id &&
           name == o.name &&
-          pages == o.pages &&
-          parameters == o.parameters
+          quick_pick_key == o.quick_pick_key &&
+          type == o.type &&
+          value == o.value
     end
 
     # @see the `==` method
@@ -132,7 +119,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data_warehouse_custom_dashboard_oid, merchant_id, name, pages, parameters].hash
+      [name, quick_pick_key, type, value].hash
     end
 
     # Builds the object from hash

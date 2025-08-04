@@ -235,6 +235,7 @@ docs/ConversationVirtualAgentBudget.md
 docs/ConversationVirtualAgentBudgetResponse.md
 docs/ConversationVirtualAgentCapabilities.md
 docs/ConversationVirtualAgentCapabilitiesResponse.md
+docs/ConversationVirtualAgentCapabilityZohoDeskDepartment.md
 docs/ConversationWebchatContext.md
 docs/ConversationWebchatQueueStatus.md
 docs/ConversationWebchatQueueStatusAgent.md
@@ -317,6 +318,7 @@ docs/CouponsRequest.md
 docs/CouponsResponse.md
 docs/Currency.md
 docs/CustomDashboard.md
+docs/CustomDashboardExecutionParameter.md
 docs/CustomDashboardPage.md
 docs/CustomDashboardPageReport.md
 docs/CustomDashboardResponse.md
@@ -1160,6 +1162,7 @@ lib/ultracart_api/models/conversation_virtual_agent_budget.rb
 lib/ultracart_api/models/conversation_virtual_agent_budget_response.rb
 lib/ultracart_api/models/conversation_virtual_agent_capabilities.rb
 lib/ultracart_api/models/conversation_virtual_agent_capabilities_response.rb
+lib/ultracart_api/models/conversation_virtual_agent_capability_zoho_desk_department.rb
 lib/ultracart_api/models/conversation_webchat_context.rb
 lib/ultracart_api/models/conversation_webchat_queue_status.rb
 lib/ultracart_api/models/conversation_webchat_queue_status_agent.rb
@@ -1241,6 +1244,7 @@ lib/ultracart_api/models/coupons_request.rb
 lib/ultracart_api/models/coupons_response.rb
 lib/ultracart_api/models/currency.rb
 lib/ultracart_api/models/custom_dashboard.rb
+lib/ultracart_api/models/custom_dashboard_execution_parameter.rb
 lib/ultracart_api/models/custom_dashboard_page.rb
 lib/ultracart_api/models/custom_dashboard_page_report.rb
 lib/ultracart_api/models/custom_dashboard_response.rb
