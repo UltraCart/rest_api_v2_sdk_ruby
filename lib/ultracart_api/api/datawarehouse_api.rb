@@ -32,6 +32,70 @@ module UltracartClient
       UltracartClient::DatawarehouseApi.new(api_client)
     end
 
+    # Delete a custom dashboard
+    # Delete a custom dashboard on the UltraCart account. 
+    # @param custom_dashboard_oid [Integer] The dashboard oid to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_custom_dashboard(custom_dashboard_oid, opts = {})
+      delete_custom_dashboard_with_http_info(custom_dashboard_oid, opts)
+      nil
+    end
+
+    # Delete a custom dashboard
+    # Delete a custom dashboard on the UltraCart account. 
+    # @param custom_dashboard_oid [Integer] The dashboard oid to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_custom_dashboard_with_http_info(custom_dashboard_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DatawarehouseApi.delete_custom_dashboard ...'
+      end
+      # verify the required parameter 'custom_dashboard_oid' is set
+      if @api_client.config.client_side_validation && custom_dashboard_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'custom_dashboard_oid' when calling DatawarehouseApi.delete_custom_dashboard"
+      end
+      # resource path
+      local_var_path = '/datawarehouse/custom_dashboards/{custom_dashboard_oid}'.sub('{' + 'custom_dashboard_oid' + '}', CGI.escape(custom_dashboard_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DatawarehouseApi.delete_custom_dashboard",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DatawarehouseApi#delete_custom_dashboard\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete a custom report
     # Delete a custom report on the UltraCart account. 
     # @param custom_report_oid [Integer] The report oid to delete.
@@ -234,7 +298,7 @@ module UltracartClient
     # @param custom_report_oid [Integer] The report oid to execute.
     # @param execution_request [CustomReportExecutionRequest] Request to execute custom report
     # @param [Hash] opts the optional parameters
-    # @return [CustomReportResponse]
+    # @return [CustomReportExecutionResponse]
     def execute_custom_report(custom_report_oid, execution_request, opts = {})
       data, _status_code, _headers = execute_custom_report_with_http_info(custom_report_oid, execution_request, opts)
       data
@@ -245,7 +309,7 @@ module UltracartClient
     # @param custom_report_oid [Integer] The report oid to execute.
     # @param execution_request [CustomReportExecutionRequest] Request to execute custom report
     # @param [Hash] opts the optional parameters
-    # @return [Array<(CustomReportResponse, Integer, Hash)>] CustomReportResponse data, response status code and response headers
+    # @return [Array<(CustomReportExecutionResponse, Integer, Hash)>] CustomReportExecutionResponse data, response status code and response headers
     def execute_custom_report_with_http_info(custom_report_oid, execution_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DatawarehouseApi.execute_custom_report ...'
@@ -282,7 +346,7 @@ module UltracartClient
       post_body = opts[:debug_body] || @api_client.object_to_http_body(execution_request)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'CustomReportResponse'
+      return_type = opts[:debug_return_type] || 'CustomReportExecutionResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
@@ -300,6 +364,75 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DatawarehouseApi#execute_custom_report\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Execute a custom reports
+    # Execute a custom reports on the UltraCart account. 
+    # @param execution_request [CustomReportsExecutionRequest] Request to execute custom reports
+    # @param [Hash] opts the optional parameters
+    # @return [CustomReportsExecutionResponse]
+    def execute_custom_reports(execution_request, opts = {})
+      data, _status_code, _headers = execute_custom_reports_with_http_info(execution_request, opts)
+      data
+    end
+
+    # Execute a custom reports
+    # Execute a custom reports on the UltraCart account. 
+    # @param execution_request [CustomReportsExecutionRequest] Request to execute custom reports
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomReportsExecutionResponse, Integer, Hash)>] CustomReportsExecutionResponse data, response status code and response headers
+    def execute_custom_reports_with_http_info(execution_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DatawarehouseApi.execute_custom_reports ...'
+      end
+      # verify the required parameter 'execution_request' is set
+      if @api_client.config.client_side_validation && execution_request.nil?
+        fail ArgumentError, "Missing the required parameter 'execution_request' when calling DatawarehouseApi.execute_custom_reports"
+      end
+      # resource path
+      local_var_path = '/datawarehouse/custom_reports/execute'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(execution_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CustomReportsExecutionResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DatawarehouseApi.execute_custom_reports",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DatawarehouseApi#execute_custom_reports\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -369,6 +502,128 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DatawarehouseApi#execute_report_queries\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get a custom dashboard
+    # Retrieve a custom dashboard 
+    # @param custom_dashboard_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [CustomDashboardResponse]
+    def get_custom_dashboard(custom_dashboard_oid, opts = {})
+      data, _status_code, _headers = get_custom_dashboard_with_http_info(custom_dashboard_oid, opts)
+      data
+    end
+
+    # Get a custom dashboard
+    # Retrieve a custom dashboard 
+    # @param custom_dashboard_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomDashboardResponse, Integer, Hash)>] CustomDashboardResponse data, response status code and response headers
+    def get_custom_dashboard_with_http_info(custom_dashboard_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DatawarehouseApi.get_custom_dashboard ...'
+      end
+      # verify the required parameter 'custom_dashboard_oid' is set
+      if @api_client.config.client_side_validation && custom_dashboard_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'custom_dashboard_oid' when calling DatawarehouseApi.get_custom_dashboard"
+      end
+      # resource path
+      local_var_path = '/datawarehouse/custom_dashboards/{custom_dashboard_oid}'.sub('{' + 'custom_dashboard_oid' + '}', CGI.escape(custom_dashboard_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CustomDashboardResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DatawarehouseApi.get_custom_dashboard",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DatawarehouseApi#get_custom_dashboard\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get custom dashboards
+    # Retrieve a custom dashboards 
+    # @param [Hash] opts the optional parameters
+    # @return [CustomDashboardsResponse]
+    def get_custom_dashboards(opts = {})
+      data, _status_code, _headers = get_custom_dashboards_with_http_info(opts)
+      data
+    end
+
+    # Get custom dashboards
+    # Retrieve a custom dashboards 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomDashboardsResponse, Integer, Hash)>] CustomDashboardsResponse data, response status code and response headers
+    def get_custom_dashboards_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DatawarehouseApi.get_custom_dashboards ...'
+      end
+      # resource path
+      local_var_path = '/datawarehouse/custom_dashboards'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CustomDashboardsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DatawarehouseApi.get_custom_dashboards",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DatawarehouseApi#get_custom_dashboards\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -867,6 +1122,75 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Create a custom dashboard
+    # Create a new custom dashboard on the UltraCart account. 
+    # @param dashboard [CustomDashboard] Dashboard to create
+    # @param [Hash] opts the optional parameters
+    # @return [CustomDashboardResponse]
+    def insert_custom_dashboard(dashboard, opts = {})
+      data, _status_code, _headers = insert_custom_dashboard_with_http_info(dashboard, opts)
+      data
+    end
+
+    # Create a custom dashboard
+    # Create a new custom dashboard on the UltraCart account. 
+    # @param dashboard [CustomDashboard] Dashboard to create
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomDashboardResponse, Integer, Hash)>] CustomDashboardResponse data, response status code and response headers
+    def insert_custom_dashboard_with_http_info(dashboard, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DatawarehouseApi.insert_custom_dashboard ...'
+      end
+      # verify the required parameter 'dashboard' is set
+      if @api_client.config.client_side_validation && dashboard.nil?
+        fail ArgumentError, "Missing the required parameter 'dashboard' when calling DatawarehouseApi.insert_custom_dashboard"
+      end
+      # resource path
+      local_var_path = '/datawarehouse/custom_dashboards'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(dashboard)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CustomDashboardResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DatawarehouseApi.insert_custom_dashboard",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DatawarehouseApi#insert_custom_dashboard\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a custom report
     # Create a new custom report on the UltraCart account. 
     # @param report [CustomReport] Report to create
@@ -1001,6 +1325,81 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DatawarehouseApi#insert_report\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a custom dashboard
+    # Update a custom dashboard on the UltraCart account. 
+    # @param custom_dashboard_oid [Integer] The dashboard oid to custom update.
+    # @param dashboard [CustomDashboard] Dashboard to custom update
+    # @param [Hash] opts the optional parameters
+    # @return [CustomDashboardResponse]
+    def update_custom_dashboard(custom_dashboard_oid, dashboard, opts = {})
+      data, _status_code, _headers = update_custom_dashboard_with_http_info(custom_dashboard_oid, dashboard, opts)
+      data
+    end
+
+    # Update a custom dashboard
+    # Update a custom dashboard on the UltraCart account. 
+    # @param custom_dashboard_oid [Integer] The dashboard oid to custom update.
+    # @param dashboard [CustomDashboard] Dashboard to custom update
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomDashboardResponse, Integer, Hash)>] CustomDashboardResponse data, response status code and response headers
+    def update_custom_dashboard_with_http_info(custom_dashboard_oid, dashboard, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DatawarehouseApi.update_custom_dashboard ...'
+      end
+      # verify the required parameter 'custom_dashboard_oid' is set
+      if @api_client.config.client_side_validation && custom_dashboard_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'custom_dashboard_oid' when calling DatawarehouseApi.update_custom_dashboard"
+      end
+      # verify the required parameter 'dashboard' is set
+      if @api_client.config.client_side_validation && dashboard.nil?
+        fail ArgumentError, "Missing the required parameter 'dashboard' when calling DatawarehouseApi.update_custom_dashboard"
+      end
+      # resource path
+      local_var_path = '/datawarehouse/custom_dashboards/{custom_dashboard_oid}'.sub('{' + 'custom_dashboard_oid' + '}', CGI.escape(custom_dashboard_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(dashboard)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CustomDashboardResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"DatawarehouseApi.update_custom_dashboard",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DatawarehouseApi#update_custom_dashboard\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

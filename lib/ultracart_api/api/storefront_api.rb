@@ -2729,6 +2729,68 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get email merchant specific editor values
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [EmailEditorValuesResponse]
+    def get_email_commseq_editor_values(storefront_oid, opts = {})
+      data, _status_code, _headers = get_email_commseq_editor_values_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Get email merchant specific editor values
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailEditorValuesResponse, Integer, Hash)>] EmailEditorValuesResponse data, response status code and response headers
+    def get_email_commseq_editor_values_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_email_commseq_editor_values ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_email_commseq_editor_values"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/commseqs/editorValues'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EmailEditorValuesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"StorefrontApi.get_email_commseq_editor_values",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_email_commseq_editor_values\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get email communication sequence emails stats
     # @param storefront_oid [Integer] 
     # @param commseq_uuid [String] 

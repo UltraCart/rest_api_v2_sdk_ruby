@@ -44,6 +44,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_email_campaigns**](StorefrontApi.md#get_email_campaigns) | **GET** /storefront/{storefront_oid}/email/campaigns | Get email campaigns |
 | [**get_email_campaigns_with_stats**](StorefrontApi.md#get_email_campaigns_with_stats) | **GET** /storefront/{storefront_oid}/email/campaignsWithStats/{stat_days} | Get email campaigns with stats |
 | [**get_email_commseq**](StorefrontApi.md#get_email_commseq) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid} | Get email commseq |
+| [**get_email_commseq_editor_values**](StorefrontApi.md#get_email_commseq_editor_values) | **GET** /storefront/{storefront_oid}/email/commseqs/editorValues | Get email merchant specific editor values |
 | [**get_email_commseq_email_stats**](StorefrontApi.md#get_email_commseq_email_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/emailStats | Get email communication sequence emails stats |
 | [**get_email_commseq_postcard_stats**](StorefrontApi.md#get_email_commseq_postcard_stats) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/postcardStats | Get email communication sequence postcard stats |
 | [**get_email_commseq_postcard_tracking**](StorefrontApi.md#get_email_commseq_postcard_tracking) | **GET** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid}/tracking | Get email communication postcard tracking |
@@ -2292,6 +2293,57 @@ end
 ### Return type
 
 [**EmailCommseqResponse**](EmailCommseqResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_email_commseq_editor_values
+
+> <EmailEditorValuesResponse> get_email_commseq_editor_values(storefront_oid)
+
+Get email merchant specific editor values
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_email_commseq_editor_values_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmailEditorValuesResponse>, Integer, Hash)> get_email_commseq_editor_values_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # Get email merchant specific editor values
+  data, status_code, headers = api_instance.get_email_commseq_editor_values_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmailEditorValuesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->get_email_commseq_editor_values_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**EmailEditorValuesResponse**](EmailEditorValuesResponse.md)
 
 ### Authorization
 
