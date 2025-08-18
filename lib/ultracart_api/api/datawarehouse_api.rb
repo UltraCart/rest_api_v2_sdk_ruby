@@ -86,6 +86,66 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Delete a custom dashboard schedule
+    # delete a custom dashboard schedule on the UltraCart account. 
+    # @param custom_dashboard_schedule_oid The dashboard schedule oid to delete.
+    # @param custom_dashboard_oid The dashboard oid that owns the schedule.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_custom_dashboard_schedule(custom_dashboard_schedule_oid, custom_dashboard_oid, opts = {})
+      delete_custom_dashboard_schedule_with_http_info(custom_dashboard_schedule_oid, custom_dashboard_oid, opts)
+      nil
+    end
+
+    # Delete a custom dashboard schedule
+    # delete a custom dashboard schedule on the UltraCart account. 
+    # @param custom_dashboard_schedule_oid The dashboard schedule oid to delete.
+    # @param custom_dashboard_oid The dashboard oid that owns the schedule.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def delete_custom_dashboard_schedule_with_http_info(custom_dashboard_schedule_oid, custom_dashboard_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DatawarehouseApi.delete_custom_dashboard_schedule ...'
+      end
+      # verify the required parameter 'custom_dashboard_schedule_oid' is set
+      if @api_client.config.client_side_validation && custom_dashboard_schedule_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'custom_dashboard_schedule_oid' when calling DatawarehouseApi.delete_custom_dashboard_schedule"
+      end
+      # verify the required parameter 'custom_dashboard_oid' is set
+      if @api_client.config.client_side_validation && custom_dashboard_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'custom_dashboard_oid' when calling DatawarehouseApi.delete_custom_dashboard_schedule"
+      end
+      # resource path
+      local_var_path = '/datawarehouse/custom_dashboards/{custom_dashboard_oid}/schedules/{custom_dashboard_schedule_oid}'.sub('{' + 'custom_dashboard_schedule_oid' + '}', custom_dashboard_schedule_oid.to_s).sub('{' + 'custom_dashboard_oid' + '}', custom_dashboard_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DatawarehouseApi#delete_custom_dashboard_schedule\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Delete a custom report
     # Delete a custom report on the UltraCart account. 
     # @param custom_report_oid The report oid to delete.
@@ -471,6 +531,61 @@ module UltracartClient
         :return_type => 'CustomDashboardResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DatawarehouseApi#get_custom_dashboard\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get custom dashboards
+    # Retrieve a custom dashboards 
+    # @param custom_dashboard_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [CustomDashboardSchedulesResponse]
+    def get_custom_dashboard_schedules(custom_dashboard_oid, opts = {})
+      data, _status_code, _headers = get_custom_dashboard_schedules_with_http_info(custom_dashboard_oid, opts)
+      data
+    end
+
+    # Get custom dashboards
+    # Retrieve a custom dashboards 
+    # @param custom_dashboard_oid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomDashboardSchedulesResponse, Fixnum, Hash)>] CustomDashboardSchedulesResponse data, response status code and response headers
+    def get_custom_dashboard_schedules_with_http_info(custom_dashboard_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DatawarehouseApi.get_custom_dashboard_schedules ...'
+      end
+      # verify the required parameter 'custom_dashboard_oid' is set
+      if @api_client.config.client_side_validation && custom_dashboard_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'custom_dashboard_oid' when calling DatawarehouseApi.get_custom_dashboard_schedules"
+      end
+      # resource path
+      local_var_path = '/datawarehouse/custom_dashboards/{custom_dashboard_oid}/schedules'.sub('{' + 'custom_dashboard_oid' + '}', custom_dashboard_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CustomDashboardSchedulesResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DatawarehouseApi#get_custom_dashboard_schedules\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1000,6 +1115,67 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Create a custom dashboard schedule
+    # Create a new custom dashboard schedule on the UltraCart account. 
+    # @param custom_dashboard_oid 
+    # @param dashboard_schedule Dashboard schedule to create
+    # @param [Hash] opts the optional parameters
+    # @return [CustomDashboardScheduleResponse]
+    def insert_custom_dashboard_schedule(custom_dashboard_oid, dashboard_schedule, opts = {})
+      data, _status_code, _headers = insert_custom_dashboard_schedule_with_http_info(custom_dashboard_oid, dashboard_schedule, opts)
+      data
+    end
+
+    # Create a custom dashboard schedule
+    # Create a new custom dashboard schedule on the UltraCart account. 
+    # @param custom_dashboard_oid 
+    # @param dashboard_schedule Dashboard schedule to create
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomDashboardScheduleResponse, Fixnum, Hash)>] CustomDashboardScheduleResponse data, response status code and response headers
+    def insert_custom_dashboard_schedule_with_http_info(custom_dashboard_oid, dashboard_schedule, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DatawarehouseApi.insert_custom_dashboard_schedule ...'
+      end
+      # verify the required parameter 'custom_dashboard_oid' is set
+      if @api_client.config.client_side_validation && custom_dashboard_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'custom_dashboard_oid' when calling DatawarehouseApi.insert_custom_dashboard_schedule"
+      end
+      # verify the required parameter 'dashboard_schedule' is set
+      if @api_client.config.client_side_validation && dashboard_schedule.nil?
+        fail ArgumentError, "Missing the required parameter 'dashboard_schedule' when calling DatawarehouseApi.insert_custom_dashboard_schedule"
+      end
+      # resource path
+      local_var_path = '/datawarehouse/custom_dashboards/{custom_dashboard_oid}/schedules'.sub('{' + 'custom_dashboard_oid' + '}', custom_dashboard_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(dashboard_schedule)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CustomDashboardScheduleResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DatawarehouseApi#insert_custom_dashboard_schedule\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Create a custom report
     # Create a new custom report on the UltraCart account. 
     # @param report Report to create
@@ -1168,6 +1344,73 @@ module UltracartClient
         :return_type => 'CustomDashboardResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DatawarehouseApi#update_custom_dashboard\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Update a custom dashboard schedule
+    # Update a custom dashboard schedule on the UltraCart account. 
+    # @param dashboard_schedule Dashboard schedule to update
+    # @param custom_dashboard_schedule_oid The dashboard schedule oid to update.
+    # @param custom_dashboard_oid The dashboard oid to update.
+    # @param [Hash] opts the optional parameters
+    # @return [CustomDashboardResponse]
+    def update_custom_dashboard_schedule(dashboard_schedule, custom_dashboard_schedule_oid, custom_dashboard_oid, opts = {})
+      data, _status_code, _headers = update_custom_dashboard_schedule_with_http_info(dashboard_schedule, custom_dashboard_schedule_oid, custom_dashboard_oid, opts)
+      data
+    end
+
+    # Update a custom dashboard schedule
+    # Update a custom dashboard schedule on the UltraCart account. 
+    # @param dashboard_schedule Dashboard schedule to update
+    # @param custom_dashboard_schedule_oid The dashboard schedule oid to update.
+    # @param custom_dashboard_oid The dashboard oid to update.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomDashboardResponse, Fixnum, Hash)>] CustomDashboardResponse data, response status code and response headers
+    def update_custom_dashboard_schedule_with_http_info(dashboard_schedule, custom_dashboard_schedule_oid, custom_dashboard_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DatawarehouseApi.update_custom_dashboard_schedule ...'
+      end
+      # verify the required parameter 'dashboard_schedule' is set
+      if @api_client.config.client_side_validation && dashboard_schedule.nil?
+        fail ArgumentError, "Missing the required parameter 'dashboard_schedule' when calling DatawarehouseApi.update_custom_dashboard_schedule"
+      end
+      # verify the required parameter 'custom_dashboard_schedule_oid' is set
+      if @api_client.config.client_side_validation && custom_dashboard_schedule_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'custom_dashboard_schedule_oid' when calling DatawarehouseApi.update_custom_dashboard_schedule"
+      end
+      # verify the required parameter 'custom_dashboard_oid' is set
+      if @api_client.config.client_side_validation && custom_dashboard_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'custom_dashboard_oid' when calling DatawarehouseApi.update_custom_dashboard_schedule"
+      end
+      # resource path
+      local_var_path = '/datawarehouse/custom_dashboards/{custom_dashboard_oid}/schedules/{custom_dashboard_schedule_oid}'.sub('{' + 'custom_dashboard_schedule_oid' + '}', custom_dashboard_schedule_oid.to_s).sub('{' + 'custom_dashboard_oid' + '}', custom_dashboard_oid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(dashboard_schedule)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CustomDashboardResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DatawarehouseApi#update_custom_dashboard_schedule\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -13,12 +13,12 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ChargebackDisputesResponse
-    attr_accessor :chargebacks
-
+  class CustomDashboardScheduleResponse
     attr_accessor :error
 
     attr_accessor :metadata
+
+    attr_accessor :schedule
 
     # Indicates if API call was successful
     attr_accessor :success
@@ -28,9 +28,9 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'chargebacks' => :'chargebacks',
         :'error' => :'error',
         :'metadata' => :'metadata',
+        :'schedule' => :'schedule',
         :'success' => :'success',
         :'warning' => :'warning'
       }
@@ -39,9 +39,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'chargebacks' => :'Array<ChargebackDispute>',
         :'error' => :'Error',
         :'metadata' => :'ResponseMetadata',
+        :'schedule' => :'CustomDashboardSchedule',
         :'success' => :'BOOLEAN',
         :'warning' => :'Warning'
       }
@@ -55,18 +55,16 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'chargebacks')
-        if (value = attributes[:'chargebacks']).is_a?(Array)
-          self.chargebacks = value
-        end
-      end
-
       if attributes.has_key?(:'error')
         self.error = attributes[:'error']
       end
 
       if attributes.has_key?(:'metadata')
         self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.has_key?(:'schedule')
+        self.schedule = attributes[:'schedule']
       end
 
       if attributes.has_key?(:'success')
@@ -96,9 +94,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          chargebacks == o.chargebacks &&
           error == o.error &&
           metadata == o.metadata &&
+          schedule == o.schedule &&
           success == o.success &&
           warning == o.warning
     end
@@ -112,7 +110,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [chargebacks, error, metadata, success, warning].hash
+      [error, metadata, schedule, success, warning].hash
     end
 
     # Builds the object from hash

@@ -13,60 +13,38 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class CustomReport
-    attr_accessor :business_analysis_prompt
+  class CustomDashboardSchedulesResponse
+    attr_accessor :error
 
-    attr_accessor :chart_javascript
+    attr_accessor :metadata
 
-    attr_accessor :chart_javascript_url
+    # schedules
+    attr_accessor :schedules
 
-    attr_accessor :data_warehouse_report_config_oid
+    # Indicates if API call was successful
+    attr_accessor :success
 
-    attr_accessor :dataset_security_level
-
-    attr_accessor :group_name
-
-    attr_accessor :merchant_id
-
-    attr_accessor :name
-
-    attr_accessor :parameters
-
-    attr_accessor :queries
-
-    attr_accessor :tooltips
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'business_analysis_prompt' => :'business_analysis_prompt',
-        :'chart_javascript' => :'chart_javascript',
-        :'chart_javascript_url' => :'chart_javascript_url',
-        :'data_warehouse_report_config_oid' => :'data_warehouse_report_config_oid',
-        :'dataset_security_level' => :'dataset_security_level',
-        :'group_name' => :'group_name',
-        :'merchant_id' => :'merchant_id',
-        :'name' => :'name',
-        :'parameters' => :'parameters',
-        :'queries' => :'queries',
-        :'tooltips' => :'tooltips'
+        :'error' => :'error',
+        :'metadata' => :'metadata',
+        :'schedules' => :'schedules',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'business_analysis_prompt' => :'String',
-        :'chart_javascript' => :'String',
-        :'chart_javascript_url' => :'String',
-        :'data_warehouse_report_config_oid' => :'Integer',
-        :'dataset_security_level' => :'String',
-        :'group_name' => :'String',
-        :'merchant_id' => :'String',
-        :'name' => :'String',
-        :'parameters' => :'Array<CustomReportParameter>',
-        :'queries' => :'Array<CustomReportQuery>',
-        :'tooltips' => :'Array<CustomReportTooltip>'
+        :'error' => :'Error',
+        :'metadata' => :'ResponseMetadata',
+        :'schedules' => :'Array<CustomDashboardSchedule>',
+        :'success' => :'BOOLEAN',
+        :'warning' => :'Warning'
       }
     end
 
@@ -78,54 +56,26 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'business_analysis_prompt')
-        self.business_analysis_prompt = attributes[:'business_analysis_prompt']
+      if attributes.has_key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.has_key?(:'chart_javascript')
-        self.chart_javascript = attributes[:'chart_javascript']
+      if attributes.has_key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.has_key?(:'chart_javascript_url')
-        self.chart_javascript_url = attributes[:'chart_javascript_url']
-      end
-
-      if attributes.has_key?(:'data_warehouse_report_config_oid')
-        self.data_warehouse_report_config_oid = attributes[:'data_warehouse_report_config_oid']
-      end
-
-      if attributes.has_key?(:'dataset_security_level')
-        self.dataset_security_level = attributes[:'dataset_security_level']
-      end
-
-      if attributes.has_key?(:'group_name')
-        self.group_name = attributes[:'group_name']
-      end
-
-      if attributes.has_key?(:'merchant_id')
-        self.merchant_id = attributes[:'merchant_id']
-      end
-
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'parameters')
-        if (value = attributes[:'parameters']).is_a?(Array)
-          self.parameters = value
+      if attributes.has_key?(:'schedules')
+        if (value = attributes[:'schedules']).is_a?(Array)
+          self.schedules = value
         end
       end
 
-      if attributes.has_key?(:'queries')
-        if (value = attributes[:'queries']).is_a?(Array)
-          self.queries = value
-        end
+      if attributes.has_key?(:'success')
+        self.success = attributes[:'success']
       end
 
-      if attributes.has_key?(:'tooltips')
-        if (value = attributes[:'tooltips']).is_a?(Array)
-          self.tooltips = value
-        end
+      if attributes.has_key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -147,17 +97,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          business_analysis_prompt == o.business_analysis_prompt &&
-          chart_javascript == o.chart_javascript &&
-          chart_javascript_url == o.chart_javascript_url &&
-          data_warehouse_report_config_oid == o.data_warehouse_report_config_oid &&
-          dataset_security_level == o.dataset_security_level &&
-          group_name == o.group_name &&
-          merchant_id == o.merchant_id &&
-          name == o.name &&
-          parameters == o.parameters &&
-          queries == o.queries &&
-          tooltips == o.tooltips
+          error == o.error &&
+          metadata == o.metadata &&
+          schedules == o.schedules &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -169,7 +113,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [business_analysis_prompt, chart_javascript, chart_javascript_url, data_warehouse_report_config_oid, dataset_security_level, group_name, merchant_id, name, parameters, queries, tooltips].hash
+      [error, metadata, schedules, success, warning].hash
     end
 
     # Builds the object from hash

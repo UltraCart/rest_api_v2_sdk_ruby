@@ -5,6 +5,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_custom_dashboard**](DatawarehouseApi.md#delete_custom_dashboard) | **DELETE** /datawarehouse/custom_dashboards/{custom_dashboard_oid} | Delete a custom dashboard
+[**delete_custom_dashboard_schedule**](DatawarehouseApi.md#delete_custom_dashboard_schedule) | **DELETE** /datawarehouse/custom_dashboards/{custom_dashboard_oid}/schedules/{custom_dashboard_schedule_oid} | Delete a custom dashboard schedule
 [**delete_custom_report**](DatawarehouseApi.md#delete_custom_report) | **DELETE** /datawarehouse/custom_reports/{custom_report_oid} | Delete a custom report
 [**delete_report**](DatawarehouseApi.md#delete_report) | **DELETE** /datawarehouse/reports/{report_oid} | Delete a report
 [**dry_run_report_queries**](DatawarehouseApi.md#dry_run_report_queries) | **PUT** /datawarehouse/reports/dryrun | Dry run the report queries
@@ -12,6 +13,7 @@ Method | HTTP request | Description
 [**execute_custom_reports**](DatawarehouseApi.md#execute_custom_reports) | **PUT** /datawarehouse/custom_reports/execute | Execute a custom reports
 [**execute_report_queries**](DatawarehouseApi.md#execute_report_queries) | **PUT** /datawarehouse/reports/execute | Execute the report queries
 [**get_custom_dashboard**](DatawarehouseApi.md#get_custom_dashboard) | **GET** /datawarehouse/custom_dashboards/{custom_dashboard_oid} | Get a custom dashboard
+[**get_custom_dashboard_schedules**](DatawarehouseApi.md#get_custom_dashboard_schedules) | **GET** /datawarehouse/custom_dashboards/{custom_dashboard_oid}/schedules | Get custom dashboards
 [**get_custom_dashboards**](DatawarehouseApi.md#get_custom_dashboards) | **GET** /datawarehouse/custom_dashboards | Get custom dashboards
 [**get_custom_report**](DatawarehouseApi.md#get_custom_report) | **GET** /datawarehouse/custom_reports/{custom_report_oid} | Get a custom report
 [**get_custom_report_account_config**](DatawarehouseApi.md#get_custom_report_account_config) | **GET** /datawarehouse/custom_reports/account_config | Get custom report account configuration
@@ -22,9 +24,11 @@ Method | HTTP request | Description
 [**get_report_websocket_authorization**](DatawarehouseApi.md#get_report_websocket_authorization) | **PUT** /datawarehouse/reports/auth | Get report websocket authorization
 [**get_reports**](DatawarehouseApi.md#get_reports) | **GET** /datawarehouse/reports | Get list of reports available
 [**insert_custom_dashboard**](DatawarehouseApi.md#insert_custom_dashboard) | **POST** /datawarehouse/custom_dashboards | Create a custom dashboard
+[**insert_custom_dashboard_schedule**](DatawarehouseApi.md#insert_custom_dashboard_schedule) | **POST** /datawarehouse/custom_dashboards/{custom_dashboard_oid}/schedules | Create a custom dashboard schedule
 [**insert_custom_report**](DatawarehouseApi.md#insert_custom_report) | **POST** /datawarehouse/custom_reports | Create a custom report
 [**insert_report**](DatawarehouseApi.md#insert_report) | **POST** /datawarehouse/reports | Create a report
 [**update_custom_dashboard**](DatawarehouseApi.md#update_custom_dashboard) | **PUT** /datawarehouse/custom_dashboards/{custom_dashboard_oid} | Update a custom dashboard
+[**update_custom_dashboard_schedule**](DatawarehouseApi.md#update_custom_dashboard_schedule) | **PUT** /datawarehouse/custom_dashboards/{custom_dashboard_oid}/schedules/{custom_dashboard_schedule_oid} | Update a custom dashboard schedule
 [**update_custom_report**](DatawarehouseApi.md#update_custom_report) | **PUT** /datawarehouse/custom_reports/{custom_report_oid} | Update a custom report
 [**update_custom_report_account_config**](DatawarehouseApi.md#update_custom_report_account_config) | **PUT** /datawarehouse/custom_reports/account_config | Update custom report account config
 [**update_report**](DatawarehouseApi.md#update_report) | **PUT** /datawarehouse/reports/{report_oid} | Update a report
@@ -75,6 +79,58 @@ nil (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **delete_custom_dashboard_schedule**
+> delete_custom_dashboard_schedule(custom_dashboard_schedule_oid, custom_dashboard_oid)
+
+Delete a custom dashboard schedule
+
+delete a custom dashboard schedule on the UltraCart account. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::DatawarehouseApi.new_using_api_key(simple_key, false, false)
+
+
+custom_dashboard_schedule_oid = 56 # Integer | The dashboard schedule oid to delete.
+
+custom_dashboard_oid = 56 # Integer | The dashboard oid that owns the schedule.
+
+
+begin
+  #Delete a custom dashboard schedule
+  api_instance.delete_custom_dashboard_schedule(custom_dashboard_schedule_oid, custom_dashboard_oid)
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling DatawarehouseApi->delete_custom_dashboard_schedule: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **custom_dashboard_schedule_oid** | **Integer**| The dashboard schedule oid to delete. | 
+ **custom_dashboard_oid** | **Integer**| The dashboard oid that owns the schedule. | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
  - **Accept**: application/json
 
 
@@ -417,6 +473,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CustomDashboardResponse**](CustomDashboardResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_custom_dashboard_schedules**
+> CustomDashboardSchedulesResponse get_custom_dashboard_schedules(custom_dashboard_oid)
+
+Get custom dashboards
+
+Retrieve a custom dashboards 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::DatawarehouseApi.new_using_api_key(simple_key, false, false)
+
+
+custom_dashboard_oid = 56 # Integer | 
+
+
+begin
+  #Get custom dashboards
+  result = api_instance.get_custom_dashboard_schedules(custom_dashboard_oid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling DatawarehouseApi->get_custom_dashboard_schedules: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **custom_dashboard_oid** | **Integer**|  | 
+
+### Return type
+
+[**CustomDashboardSchedulesResponse**](CustomDashboardSchedulesResponse.md)
 
 ### Authorization
 
@@ -907,6 +1013,59 @@ Name | Type | Description  | Notes
 
 
 
+# **insert_custom_dashboard_schedule**
+> CustomDashboardScheduleResponse insert_custom_dashboard_schedule(custom_dashboard_oid, dashboard_schedule)
+
+Create a custom dashboard schedule
+
+Create a new custom dashboard schedule on the UltraCart account. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::DatawarehouseApi.new_using_api_key(simple_key, false, false)
+
+
+custom_dashboard_oid = 56 # Integer | 
+
+dashboard_schedule = UltracartClient::CustomDashboardSchedule.new # CustomDashboardSchedule | Dashboard schedule to create
+
+
+begin
+  #Create a custom dashboard schedule
+  result = api_instance.insert_custom_dashboard_schedule(custom_dashboard_oid, dashboard_schedule)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling DatawarehouseApi->insert_custom_dashboard_schedule: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **custom_dashboard_oid** | **Integer**|  | 
+ **dashboard_schedule** | [**CustomDashboardSchedule**](CustomDashboardSchedule.md)| Dashboard schedule to create | 
+
+### Return type
+
+[**CustomDashboardScheduleResponse**](CustomDashboardScheduleResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
+ - **Accept**: application/json
+
+
+
 # **insert_custom_report**
 > CustomReportResponse insert_custom_report(report)
 
@@ -1044,6 +1203,62 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dashboard** | [**CustomDashboard**](CustomDashboard.md)| Dashboard to custom update | 
  **custom_dashboard_oid** | **Integer**| The dashboard oid to custom update. | 
+
+### Return type
+
+[**CustomDashboardResponse**](CustomDashboardResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
+ - **Accept**: application/json
+
+
+
+# **update_custom_dashboard_schedule**
+> CustomDashboardResponse update_custom_dashboard_schedule(dashboard_schedule, custom_dashboard_schedule_oid, custom_dashboard_oid)
+
+Update a custom dashboard schedule
+
+Update a custom dashboard schedule on the UltraCart account. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::DatawarehouseApi.new_using_api_key(simple_key, false, false)
+
+
+dashboard_schedule = UltracartClient::CustomDashboardSchedule.new # CustomDashboardSchedule | Dashboard schedule to update
+
+custom_dashboard_schedule_oid = 56 # Integer | The dashboard schedule oid to update.
+
+custom_dashboard_oid = 56 # Integer | The dashboard oid to update.
+
+
+begin
+  #Update a custom dashboard schedule
+  result = api_instance.update_custom_dashboard_schedule(dashboard_schedule, custom_dashboard_schedule_oid, custom_dashboard_oid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling DatawarehouseApi->update_custom_dashboard_schedule: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dashboard_schedule** | [**CustomDashboardSchedule**](CustomDashboardSchedule.md)| Dashboard schedule to update | 
+ **custom_dashboard_schedule_oid** | **Integer**| The dashboard schedule oid to update. | 
+ **custom_dashboard_oid** | **Integer**| The dashboard oid to update. | 
 
 ### Return type
 

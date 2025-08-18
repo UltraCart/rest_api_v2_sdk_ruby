@@ -13,37 +13,37 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ChargebackDisputeResponse
-    attr_accessor :chargeback
+  class CustomDashboardSchedule
+    attr_accessor :cron_trigger_expression
 
-    attr_accessor :error
+    attr_accessor :data_warehouse_custom_dashboard_oid
 
-    attr_accessor :metadata
+    attr_accessor :data_warehouse_custom_dashboard_schedule_oid
 
-    # Indicates if API call was successful
-    attr_accessor :success
+    attr_accessor :emails
 
-    attr_accessor :warning
+    # Date/time that the next send will occur.
+    attr_accessor :next_send_dts
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'chargeback' => :'chargeback',
-        :'error' => :'error',
-        :'metadata' => :'metadata',
-        :'success' => :'success',
-        :'warning' => :'warning'
+        :'cron_trigger_expression' => :'cron_trigger_expression',
+        :'data_warehouse_custom_dashboard_oid' => :'data_warehouse_custom_dashboard_oid',
+        :'data_warehouse_custom_dashboard_schedule_oid' => :'data_warehouse_custom_dashboard_schedule_oid',
+        :'emails' => :'emails',
+        :'next_send_dts' => :'next_send_dts'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'chargeback' => :'ChargebackDispute',
-        :'error' => :'Error',
-        :'metadata' => :'ResponseMetadata',
-        :'success' => :'BOOLEAN',
-        :'warning' => :'Warning'
+        :'cron_trigger_expression' => :'String',
+        :'data_warehouse_custom_dashboard_oid' => :'Integer',
+        :'data_warehouse_custom_dashboard_schedule_oid' => :'Integer',
+        :'emails' => :'Array<String>',
+        :'next_send_dts' => :'String'
       }
     end
 
@@ -55,24 +55,26 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'chargeback')
-        self.chargeback = attributes[:'chargeback']
+      if attributes.has_key?(:'cron_trigger_expression')
+        self.cron_trigger_expression = attributes[:'cron_trigger_expression']
       end
 
-      if attributes.has_key?(:'error')
-        self.error = attributes[:'error']
+      if attributes.has_key?(:'data_warehouse_custom_dashboard_oid')
+        self.data_warehouse_custom_dashboard_oid = attributes[:'data_warehouse_custom_dashboard_oid']
       end
 
-      if attributes.has_key?(:'metadata')
-        self.metadata = attributes[:'metadata']
+      if attributes.has_key?(:'data_warehouse_custom_dashboard_schedule_oid')
+        self.data_warehouse_custom_dashboard_schedule_oid = attributes[:'data_warehouse_custom_dashboard_schedule_oid']
       end
 
-      if attributes.has_key?(:'success')
-        self.success = attributes[:'success']
+      if attributes.has_key?(:'emails')
+        if (value = attributes[:'emails']).is_a?(Array)
+          self.emails = value
+        end
       end
 
-      if attributes.has_key?(:'warning')
-        self.warning = attributes[:'warning']
+      if attributes.has_key?(:'next_send_dts')
+        self.next_send_dts = attributes[:'next_send_dts']
       end
     end
 
@@ -94,11 +96,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          chargeback == o.chargeback &&
-          error == o.error &&
-          metadata == o.metadata &&
-          success == o.success &&
-          warning == o.warning
+          cron_trigger_expression == o.cron_trigger_expression &&
+          data_warehouse_custom_dashboard_oid == o.data_warehouse_custom_dashboard_oid &&
+          data_warehouse_custom_dashboard_schedule_oid == o.data_warehouse_custom_dashboard_schedule_oid &&
+          emails == o.emails &&
+          next_send_dts == o.next_send_dts
     end
 
     # @see the `==` method
@@ -110,7 +112,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [chargeback, error, metadata, success, warning].hash
+      [cron_trigger_expression, data_warehouse_custom_dashboard_oid, data_warehouse_custom_dashboard_schedule_oid, emails, next_send_dts].hash
     end
 
     # Builds the object from hash
