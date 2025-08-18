@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **business_analysis_prompt** | **String** |  | [optional] |
 | **chart_javascript** | **String** |  | [optional] |
 | **chart_javascript_url** | **String** |  | [optional] |
 | **data_warehouse_report_config_oid** | **Integer** |  | [optional] |
@@ -21,6 +22,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::CustomReport.new(
+  business_analysis_prompt: null,
   chart_javascript: null,
   chart_javascript_url: null,
   data_warehouse_report_config_oid: null,

@@ -14,43 +14,26 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class CustomReport
-    attr_accessor :business_analysis_prompt
+  class CustomDashboardScheduleResponse
+    attr_accessor :error
 
-    attr_accessor :chart_javascript
+    attr_accessor :metadata
 
-    attr_accessor :chart_javascript_url
+    attr_accessor :schedule
 
-    attr_accessor :data_warehouse_report_config_oid
+    # Indicates if API call was successful
+    attr_accessor :success
 
-    attr_accessor :dataset_security_level
-
-    attr_accessor :group_name
-
-    attr_accessor :merchant_id
-
-    attr_accessor :name
-
-    attr_accessor :parameters
-
-    attr_accessor :queries
-
-    attr_accessor :tooltips
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'business_analysis_prompt' => :'business_analysis_prompt',
-        :'chart_javascript' => :'chart_javascript',
-        :'chart_javascript_url' => :'chart_javascript_url',
-        :'data_warehouse_report_config_oid' => :'data_warehouse_report_config_oid',
-        :'dataset_security_level' => :'dataset_security_level',
-        :'group_name' => :'group_name',
-        :'merchant_id' => :'merchant_id',
-        :'name' => :'name',
-        :'parameters' => :'parameters',
-        :'queries' => :'queries',
-        :'tooltips' => :'tooltips'
+        :'error' => :'error',
+        :'metadata' => :'metadata',
+        :'schedule' => :'schedule',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
@@ -62,17 +45,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'business_analysis_prompt' => :'String',
-        :'chart_javascript' => :'String',
-        :'chart_javascript_url' => :'String',
-        :'data_warehouse_report_config_oid' => :'Integer',
-        :'dataset_security_level' => :'String',
-        :'group_name' => :'String',
-        :'merchant_id' => :'String',
-        :'name' => :'String',
-        :'parameters' => :'Array<CustomReportParameter>',
-        :'queries' => :'Array<CustomReportQuery>',
-        :'tooltips' => :'Array<CustomReportTooltip>'
+        :'error' => :'Error',
+        :'metadata' => :'ResponseMetadata',
+        :'schedule' => :'CustomDashboardSchedule',
+        :'success' => :'Boolean',
+        :'warning' => :'Warning'
       }
     end
 
@@ -86,65 +63,35 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::CustomReport` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::CustomDashboardScheduleResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::CustomReport`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::CustomDashboardScheduleResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'business_analysis_prompt')
-        self.business_analysis_prompt = attributes[:'business_analysis_prompt']
+      if attributes.key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.key?(:'chart_javascript')
-        self.chart_javascript = attributes[:'chart_javascript']
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.key?(:'chart_javascript_url')
-        self.chart_javascript_url = attributes[:'chart_javascript_url']
+      if attributes.key?(:'schedule')
+        self.schedule = attributes[:'schedule']
       end
 
-      if attributes.key?(:'data_warehouse_report_config_oid')
-        self.data_warehouse_report_config_oid = attributes[:'data_warehouse_report_config_oid']
+      if attributes.key?(:'success')
+        self.success = attributes[:'success']
       end
 
-      if attributes.key?(:'dataset_security_level')
-        self.dataset_security_level = attributes[:'dataset_security_level']
-      end
-
-      if attributes.key?(:'group_name')
-        self.group_name = attributes[:'group_name']
-      end
-
-      if attributes.key?(:'merchant_id')
-        self.merchant_id = attributes[:'merchant_id']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'parameters')
-        if (value = attributes[:'parameters']).is_a?(Array)
-          self.parameters = value
-        end
-      end
-
-      if attributes.key?(:'queries')
-        if (value = attributes[:'queries']).is_a?(Array)
-          self.queries = value
-        end
-      end
-
-      if attributes.key?(:'tooltips')
-        if (value = attributes[:'tooltips']).is_a?(Array)
-          self.tooltips = value
-        end
+      if attributes.key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -166,17 +113,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          business_analysis_prompt == o.business_analysis_prompt &&
-          chart_javascript == o.chart_javascript &&
-          chart_javascript_url == o.chart_javascript_url &&
-          data_warehouse_report_config_oid == o.data_warehouse_report_config_oid &&
-          dataset_security_level == o.dataset_security_level &&
-          group_name == o.group_name &&
-          merchant_id == o.merchant_id &&
-          name == o.name &&
-          parameters == o.parameters &&
-          queries == o.queries &&
-          tooltips == o.tooltips
+          error == o.error &&
+          metadata == o.metadata &&
+          schedule == o.schedule &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -188,7 +129,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [business_analysis_prompt, chart_javascript, chart_javascript_url, data_warehouse_report_config_oid, dataset_security_level, group_name, merchant_id, name, parameters, queries, tooltips].hash
+      [error, metadata, schedule, success, warning].hash
     end
 
     # Builds the object from hash

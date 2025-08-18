@@ -66,6 +66,12 @@ module UltracartClient
     # True if this campaign is prevented from sending at this time due to spam complaints.
     attr_accessor :prevent_sending_due_to_spam
 
+    # True if the campaign should repeat on a monthly basis
+    attr_accessor :repeat_monthly
+
+    # True if the campaign should repeat on a weekly basis
+    attr_accessor :repeat_weekly
+
     # Revenue associated with campaign
     attr_accessor :revenue_formatted
 
@@ -113,6 +119,8 @@ module UltracartClient
         :'name' => :'name',
         :'open_rate_formatted' => :'open_rate_formatted',
         :'prevent_sending_due_to_spam' => :'prevent_sending_due_to_spam',
+        :'repeat_monthly' => :'repeat_monthly',
+        :'repeat_weekly' => :'repeat_weekly',
         :'revenue_formatted' => :'revenue_formatted',
         :'revenue_per_customer_formatted' => :'revenue_per_customer_formatted',
         :'scheduled_dts' => :'scheduled_dts',
@@ -150,6 +158,8 @@ module UltracartClient
         :'name' => :'String',
         :'open_rate_formatted' => :'String',
         :'prevent_sending_due_to_spam' => :'Boolean',
+        :'repeat_monthly' => :'Boolean',
+        :'repeat_weekly' => :'Boolean',
         :'revenue_formatted' => :'String',
         :'revenue_per_customer_formatted' => :'String',
         :'scheduled_dts' => :'String',
@@ -253,6 +263,14 @@ module UltracartClient
         self.prevent_sending_due_to_spam = attributes[:'prevent_sending_due_to_spam']
       end
 
+      if attributes.key?(:'repeat_monthly')
+        self.repeat_monthly = attributes[:'repeat_monthly']
+      end
+
+      if attributes.key?(:'repeat_weekly')
+        self.repeat_weekly = attributes[:'repeat_weekly']
+      end
+
       if attributes.key?(:'revenue_formatted')
         self.revenue_formatted = attributes[:'revenue_formatted']
       end
@@ -340,6 +358,8 @@ module UltracartClient
           name == o.name &&
           open_rate_formatted == o.open_rate_formatted &&
           prevent_sending_due_to_spam == o.prevent_sending_due_to_spam &&
+          repeat_monthly == o.repeat_monthly &&
+          repeat_weekly == o.repeat_weekly &&
           revenue_formatted == o.revenue_formatted &&
           revenue_per_customer_formatted == o.revenue_per_customer_formatted &&
           scheduled_dts == o.scheduled_dts &&
@@ -360,7 +380,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [click_rate_formatted, created_dts, deleted, email_campaign_uuid, email_communication_sequence_uuid, end_once_customer_purchases, end_once_customer_purchases_anywhere, esp_campaign_folder_uuid, esp_domain_user, esp_domain_uuid, esp_friendly_name, library_item_oid, memberships, merchant_id, name, open_rate_formatted, prevent_sending_due_to_spam, revenue_formatted, revenue_per_customer_formatted, scheduled_dts, screenshot_large_full_url, sms_esp_twilio_uuid, sms_phone_number, status, status_dts, storefront_oid].hash
+      [click_rate_formatted, created_dts, deleted, email_campaign_uuid, email_communication_sequence_uuid, end_once_customer_purchases, end_once_customer_purchases_anywhere, esp_campaign_folder_uuid, esp_domain_user, esp_domain_uuid, esp_friendly_name, library_item_oid, memberships, merchant_id, name, open_rate_formatted, prevent_sending_due_to_spam, repeat_monthly, repeat_weekly, revenue_formatted, revenue_per_customer_formatted, scheduled_dts, screenshot_large_full_url, sms_esp_twilio_uuid, sms_phone_number, status, status_dts, storefront_oid].hash
     end
 
     # Builds the object from hash

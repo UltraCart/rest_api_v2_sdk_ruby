@@ -260,7 +260,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      payment_method_validator = EnumAttributeValidator.new('String', ["Affirm", "Amazon", "Amazon Pay", "Amazon SC", "Cash", "Check", "COD", "Credit Card", "eBay", "eCheck", "Google Shopping", "Insurance", "Link", "LoanHero", "Money Order", "PayPal", "Purchase Order", "Quote Request", "Unknown", "Wire Transfer", "Walmart", "Shop.com", "Sezzle", "Venmo", "Apple Pay", "Google Pay", "Health Benefit Card", "PayPal Fastlane"])
+      payment_method_validator = EnumAttributeValidator.new('String', ["Affirm", "Amazon", "Amazon Pay", "Amazon SC", "Cash", "Check", "COD", "Credit Card", "eBay", "eCheck", "Google Shopping", "Goldbelly", "GoHighLevel", "Insurance", "Link", "LoanHero", "Money Order", "PayPal", "Purchase Order", "Quote Request", "Unknown", "Wire Transfer", "Walmart", "Shop.com", "Sezzle", "Venmo", "Apple Pay", "Google Pay", "Health Benefit Card", "PayPal Fastlane"])
       return false unless payment_method_validator.valid?(@payment_method)
       payment_status_validator = EnumAttributeValidator.new('String', ["Unprocessed", "Authorized", "Capture Failed", "Processed", "Declined", "Voided", "Refunded", "Skipped"])
       return false unless payment_status_validator.valid?(@payment_status)
@@ -270,7 +270,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] payment_method Object to be assigned
     def payment_method=(payment_method)
-      validator = EnumAttributeValidator.new('String', ["Affirm", "Amazon", "Amazon Pay", "Amazon SC", "Cash", "Check", "COD", "Credit Card", "eBay", "eCheck", "Google Shopping", "Insurance", "Link", "LoanHero", "Money Order", "PayPal", "Purchase Order", "Quote Request", "Unknown", "Wire Transfer", "Walmart", "Shop.com", "Sezzle", "Venmo", "Apple Pay", "Google Pay", "Health Benefit Card", "PayPal Fastlane"])
+      validator = EnumAttributeValidator.new('String', ["Affirm", "Amazon", "Amazon Pay", "Amazon SC", "Cash", "Check", "COD", "Credit Card", "eBay", "eCheck", "Google Shopping", "Goldbelly", "GoHighLevel", "Insurance", "Link", "LoanHero", "Money Order", "PayPal", "Purchase Order", "Quote Request", "Unknown", "Wire Transfer", "Walmart", "Shop.com", "Sezzle", "Venmo", "Apple Pay", "Google Pay", "Health Benefit Card", "PayPal Fastlane"])
       unless validator.valid?(payment_method)
         fail ArgumentError, "invalid value for \"payment_method\", must be one of #{validator.allowable_values}."
       end

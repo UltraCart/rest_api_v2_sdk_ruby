@@ -1,12 +1,12 @@
-# UltracartClient::ChargebackDisputeResponse
+# UltracartClient::CustomDashboardScheduleResponse
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **chargeback** | [**ChargebackDispute**](ChargebackDispute.md) |  | [optional] |
 | **error** | [**Error**](Error.md) |  | [optional] |
 | **metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] |
+| **schedule** | [**CustomDashboardSchedule**](CustomDashboardSchedule.md) |  | [optional] |
 | **success** | **Boolean** | Indicates if API call was successful | [optional] |
 | **warning** | [**Warning**](Warning.md) |  | [optional] |
 
@@ -15,10 +15,10 @@
 ```ruby
 require 'ultracart_api'
 
-instance = UltracartClient::ChargebackDisputeResponse.new(
-  chargeback: null,
+instance = UltracartClient::CustomDashboardScheduleResponse.new(
   error: null,
   metadata: null,
+  schedule: null,
   success: null,
   warning: null
 )

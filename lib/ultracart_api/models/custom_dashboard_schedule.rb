@@ -14,26 +14,26 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ChargebackDisputesResponse
-    attr_accessor :chargebacks
+  class CustomDashboardSchedule
+    attr_accessor :cron_trigger_expression
 
-    attr_accessor :error
+    attr_accessor :data_warehouse_custom_dashboard_oid
 
-    attr_accessor :metadata
+    attr_accessor :data_warehouse_custom_dashboard_schedule_oid
 
-    # Indicates if API call was successful
-    attr_accessor :success
+    attr_accessor :emails
 
-    attr_accessor :warning
+    # Date/time that the next send will occur.
+    attr_accessor :next_send_dts
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'chargebacks' => :'chargebacks',
-        :'error' => :'error',
-        :'metadata' => :'metadata',
-        :'success' => :'success',
-        :'warning' => :'warning'
+        :'cron_trigger_expression' => :'cron_trigger_expression',
+        :'data_warehouse_custom_dashboard_oid' => :'data_warehouse_custom_dashboard_oid',
+        :'data_warehouse_custom_dashboard_schedule_oid' => :'data_warehouse_custom_dashboard_schedule_oid',
+        :'emails' => :'emails',
+        :'next_send_dts' => :'next_send_dts'
       }
     end
 
@@ -45,11 +45,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'chargebacks' => :'Array<ChargebackDispute>',
-        :'error' => :'Error',
-        :'metadata' => :'ResponseMetadata',
-        :'success' => :'Boolean',
-        :'warning' => :'Warning'
+        :'cron_trigger_expression' => :'String',
+        :'data_warehouse_custom_dashboard_oid' => :'Integer',
+        :'data_warehouse_custom_dashboard_schedule_oid' => :'Integer',
+        :'emails' => :'Array<String>',
+        :'next_send_dts' => :'String'
       }
     end
 
@@ -63,37 +63,37 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ChargebackDisputesResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::CustomDashboardSchedule` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ChargebackDisputesResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::CustomDashboardSchedule`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'chargebacks')
-        if (value = attributes[:'chargebacks']).is_a?(Array)
-          self.chargebacks = value
+      if attributes.key?(:'cron_trigger_expression')
+        self.cron_trigger_expression = attributes[:'cron_trigger_expression']
+      end
+
+      if attributes.key?(:'data_warehouse_custom_dashboard_oid')
+        self.data_warehouse_custom_dashboard_oid = attributes[:'data_warehouse_custom_dashboard_oid']
+      end
+
+      if attributes.key?(:'data_warehouse_custom_dashboard_schedule_oid')
+        self.data_warehouse_custom_dashboard_schedule_oid = attributes[:'data_warehouse_custom_dashboard_schedule_oid']
+      end
+
+      if attributes.key?(:'emails')
+        if (value = attributes[:'emails']).is_a?(Array)
+          self.emails = value
         end
       end
 
-      if attributes.key?(:'error')
-        self.error = attributes[:'error']
-      end
-
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.key?(:'success')
-        self.success = attributes[:'success']
-      end
-
-      if attributes.key?(:'warning')
-        self.warning = attributes[:'warning']
+      if attributes.key?(:'next_send_dts')
+        self.next_send_dts = attributes[:'next_send_dts']
       end
     end
 
@@ -115,11 +115,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          chargebacks == o.chargebacks &&
-          error == o.error &&
-          metadata == o.metadata &&
-          success == o.success &&
-          warning == o.warning
+          cron_trigger_expression == o.cron_trigger_expression &&
+          data_warehouse_custom_dashboard_oid == o.data_warehouse_custom_dashboard_oid &&
+          data_warehouse_custom_dashboard_schedule_oid == o.data_warehouse_custom_dashboard_schedule_oid &&
+          emails == o.emails &&
+          next_send_dts == o.next_send_dts
     end
 
     # @see the `==` method
@@ -131,7 +131,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [chargebacks, error, metadata, success, warning].hash
+      [cron_trigger_expression, data_warehouse_custom_dashboard_oid, data_warehouse_custom_dashboard_schedule_oid, emails, next_send_dts].hash
     end
 
     # Builds the object from hash
