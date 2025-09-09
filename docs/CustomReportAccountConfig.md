@@ -11,6 +11,7 @@
 | **opt_in** | **Boolean** | True if they have opted into custom reports | [optional] |
 | **opt_in_by_user** | **String** | User that opted into custom reporting | [optional] |
 | **opt_in_date** | **String** | Date/time that custom reporting was opted in to | [optional] |
+| **read_only** | **Boolean** |  | [optional] |
 | **sql_budget** | **Float** |  | [optional] |
 | **sql_usage** | **Float** |  | [optional] |
 
@@ -27,6 +28,7 @@ instance = UltracartClient::CustomReportAccountConfig.new(
   opt_in: null,
   opt_in_by_user: null,
   opt_in_date: null,
+  read_only: null,
   sql_budget: null,
   sql_usage: null
 )

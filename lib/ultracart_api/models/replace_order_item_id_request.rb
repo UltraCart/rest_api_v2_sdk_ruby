@@ -14,45 +14,26 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class CustomReportAccountConfig
-    attr_accessor :ai_budget
+  class ReplaceOrderItemIdRequest
+    # Index of the item on the order (one based index)
+    attr_accessor :item_index
 
-    # Current AI usage creating reports
-    attr_accessor :ai_usage
+    # Item ID
+    attr_accessor :merchant_item_id
 
-    # Current BigQuery SQL usage running reports
-    attr_accessor :merchant_id
+    # Order ID
+    attr_accessor :order_id
 
-    attr_accessor :novice_sql_comments
-
-    # True if they have opted into custom reports
-    attr_accessor :opt_in
-
-    # User that opted into custom reporting
-    attr_accessor :opt_in_by_user
-
-    # Date/time that custom reporting was opted in to
-    attr_accessor :opt_in_date
-
-    attr_accessor :read_only
-
-    attr_accessor :sql_budget
-
-    attr_accessor :sql_usage
+    # Replacement Item ID
+    attr_accessor :replacement_merchant_item_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'ai_budget' => :'ai_budget',
-        :'ai_usage' => :'ai_usage',
-        :'merchant_id' => :'merchant_id',
-        :'novice_sql_comments' => :'novice_sql_comments',
-        :'opt_in' => :'opt_in',
-        :'opt_in_by_user' => :'opt_in_by_user',
-        :'opt_in_date' => :'opt_in_date',
-        :'read_only' => :'read_only',
-        :'sql_budget' => :'sql_budget',
-        :'sql_usage' => :'sql_usage'
+        :'item_index' => :'item_index',
+        :'merchant_item_id' => :'merchant_item_id',
+        :'order_id' => :'order_id',
+        :'replacement_merchant_item_id' => :'replacement_merchant_item_id'
       }
     end
 
@@ -64,16 +45,10 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'ai_budget' => :'Float',
-        :'ai_usage' => :'Float',
-        :'merchant_id' => :'String',
-        :'novice_sql_comments' => :'Boolean',
-        :'opt_in' => :'Boolean',
-        :'opt_in_by_user' => :'String',
-        :'opt_in_date' => :'String',
-        :'read_only' => :'Boolean',
-        :'sql_budget' => :'Float',
-        :'sql_usage' => :'Float'
+        :'item_index' => :'Integer',
+        :'merchant_item_id' => :'String',
+        :'order_id' => :'String',
+        :'replacement_merchant_item_id' => :'String'
       }
     end
 
@@ -87,55 +62,31 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::CustomReportAccountConfig` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ReplaceOrderItemIdRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::CustomReportAccountConfig`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ReplaceOrderItemIdRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'ai_budget')
-        self.ai_budget = attributes[:'ai_budget']
+      if attributes.key?(:'item_index')
+        self.item_index = attributes[:'item_index']
       end
 
-      if attributes.key?(:'ai_usage')
-        self.ai_usage = attributes[:'ai_usage']
+      if attributes.key?(:'merchant_item_id')
+        self.merchant_item_id = attributes[:'merchant_item_id']
       end
 
-      if attributes.key?(:'merchant_id')
-        self.merchant_id = attributes[:'merchant_id']
+      if attributes.key?(:'order_id')
+        self.order_id = attributes[:'order_id']
       end
 
-      if attributes.key?(:'novice_sql_comments')
-        self.novice_sql_comments = attributes[:'novice_sql_comments']
-      end
-
-      if attributes.key?(:'opt_in')
-        self.opt_in = attributes[:'opt_in']
-      end
-
-      if attributes.key?(:'opt_in_by_user')
-        self.opt_in_by_user = attributes[:'opt_in_by_user']
-      end
-
-      if attributes.key?(:'opt_in_date')
-        self.opt_in_date = attributes[:'opt_in_date']
-      end
-
-      if attributes.key?(:'read_only')
-        self.read_only = attributes[:'read_only']
-      end
-
-      if attributes.key?(:'sql_budget')
-        self.sql_budget = attributes[:'sql_budget']
-      end
-
-      if attributes.key?(:'sql_usage')
-        self.sql_usage = attributes[:'sql_usage']
+      if attributes.key?(:'replacement_merchant_item_id')
+        self.replacement_merchant_item_id = attributes[:'replacement_merchant_item_id']
       end
     end
 
@@ -143,13 +94,43 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@merchant_item_id.nil? && @merchant_item_id.to_s.length > 20
+        invalid_properties.push('invalid value for "merchant_item_id", the character length must be smaller than or equal to 20.')
+      end
+
+      if !@replacement_merchant_item_id.nil? && @replacement_merchant_item_id.to_s.length > 20
+        invalid_properties.push('invalid value for "replacement_merchant_item_id", the character length must be smaller than or equal to 20.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@merchant_item_id.nil? && @merchant_item_id.to_s.length > 20
+      return false if !@replacement_merchant_item_id.nil? && @replacement_merchant_item_id.to_s.length > 20
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] merchant_item_id Value to be assigned
+    def merchant_item_id=(merchant_item_id)
+      if !merchant_item_id.nil? && merchant_item_id.to_s.length > 20
+        fail ArgumentError, 'invalid value for "merchant_item_id", the character length must be smaller than or equal to 20.'
+      end
+
+      @merchant_item_id = merchant_item_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] replacement_merchant_item_id Value to be assigned
+    def replacement_merchant_item_id=(replacement_merchant_item_id)
+      if !replacement_merchant_item_id.nil? && replacement_merchant_item_id.to_s.length > 20
+        fail ArgumentError, 'invalid value for "replacement_merchant_item_id", the character length must be smaller than or equal to 20.'
+      end
+
+      @replacement_merchant_item_id = replacement_merchant_item_id
     end
 
     # Checks equality by comparing each attribute.
@@ -157,16 +138,10 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          ai_budget == o.ai_budget &&
-          ai_usage == o.ai_usage &&
-          merchant_id == o.merchant_id &&
-          novice_sql_comments == o.novice_sql_comments &&
-          opt_in == o.opt_in &&
-          opt_in_by_user == o.opt_in_by_user &&
-          opt_in_date == o.opt_in_date &&
-          read_only == o.read_only &&
-          sql_budget == o.sql_budget &&
-          sql_usage == o.sql_usage
+          item_index == o.item_index &&
+          merchant_item_id == o.merchant_item_id &&
+          order_id == o.order_id &&
+          replacement_merchant_item_id == o.replacement_merchant_item_id
     end
 
     # @see the `==` method
@@ -178,7 +153,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ai_budget, ai_usage, merchant_id, novice_sql_comments, opt_in, opt_in_by_user, opt_in_date, read_only, sql_budget, sql_usage].hash
+      [item_index, merchant_item_id, order_id, replacement_merchant_item_id].hash
     end
 
     # Builds the object from hash

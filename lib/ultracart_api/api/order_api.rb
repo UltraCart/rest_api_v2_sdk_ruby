@@ -1646,6 +1646,84 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Replaces an order item id
+    # Replaces a single order item id with another merchant_item_id, leaving all other attributes and properties unchanged.  A custom method requested by a merchant to allow for item id updates due to shipping errors.  It is doubtful you will ever need this method.  The expansion variable affects the returned order object. 
+    # @param order_id [String] The order id to update.
+    # @param replace_order_item_id_request [ReplaceOrderItemIdRequest] Replacement Request
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [OrderResponse]
+    def replace_order_item_merchant_item_id(order_id, replace_order_item_id_request, opts = {})
+      data, _status_code, _headers = replace_order_item_merchant_item_id_with_http_info(order_id, replace_order_item_id_request, opts)
+      data
+    end
+
+    # Replaces an order item id
+    # Replaces a single order item id with another merchant_item_id, leaving all other attributes and properties unchanged.  A custom method requested by a merchant to allow for item id updates due to shipping errors.  It is doubtful you will ever need this method.  The expansion variable affects the returned order object. 
+    # @param order_id [String] The order id to update.
+    # @param replace_order_item_id_request [ReplaceOrderItemIdRequest] Replacement Request
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(OrderResponse, Integer, Hash)>] OrderResponse data, response status code and response headers
+    def replace_order_item_merchant_item_id_with_http_info(order_id, replace_order_item_id_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.replace_order_item_merchant_item_id ...'
+      end
+      # verify the required parameter 'order_id' is set
+      if @api_client.config.client_side_validation && order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.replace_order_item_merchant_item_id"
+      end
+      # verify the required parameter 'replace_order_item_id_request' is set
+      if @api_client.config.client_side_validation && replace_order_item_id_request.nil?
+        fail ArgumentError, "Missing the required parameter 'replace_order_item_id_request' when calling OrderApi.replace_order_item_merchant_item_id"
+      end
+      # resource path
+      local_var_path = '/order/orders/{order_id}/replace_item_id'.sub('{' + 'order_id' + '}', CGI.escape(order_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(replace_order_item_id_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OrderResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"OrderApi.replace_order_item_merchant_item_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#replace_order_item_merchant_item_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Replacement order
     # Create a replacement order based upon a previous order 
     # @param order_id [String] The order id to generate a replacement for.

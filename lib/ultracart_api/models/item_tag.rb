@@ -15,7 +15,7 @@ require 'time'
 
 module UltracartClient
   class ItemTag
-    # tag_tpe
+    # tag_type
     attr_accessor :tag_type
 
     # tag_value
