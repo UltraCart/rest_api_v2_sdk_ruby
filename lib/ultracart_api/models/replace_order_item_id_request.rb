@@ -13,48 +13,36 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ItemTag
-    # tag_type
-    attr_accessor :tag_type
+  class ReplaceOrderItemIdRequest
+    # Index of the item on the order (one based index)
+    attr_accessor :item_index
 
-    # tag_value
-    attr_accessor :tag_value
+    # Item ID
+    attr_accessor :merchant_item_id
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
+    # Order ID
+    attr_accessor :order_id
 
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    # Replacement Item ID
+    attr_accessor :replacement_merchant_item_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'tag_type' => :'tagType',
-        :'tag_value' => :'tagValue'
+        :'item_index' => :'item_index',
+        :'merchant_item_id' => :'merchant_item_id',
+        :'order_id' => :'order_id',
+        :'replacement_merchant_item_id' => :'replacement_merchant_item_id'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'tag_type' => :'String',
-        :'tag_value' => :'String'
+        :'item_index' => :'Integer',
+        :'merchant_item_id' => :'String',
+        :'order_id' => :'String',
+        :'replacement_merchant_item_id' => :'String'
       }
     end
 
@@ -66,12 +54,20 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'tagType')
-        self.tag_type = attributes[:'tagType']
+      if attributes.has_key?(:'item_index')
+        self.item_index = attributes[:'item_index']
       end
 
-      if attributes.has_key?(:'tagValue')
-        self.tag_value = attributes[:'tagValue']
+      if attributes.has_key?(:'merchant_item_id')
+        self.merchant_item_id = attributes[:'merchant_item_id']
+      end
+
+      if attributes.has_key?(:'order_id')
+        self.order_id = attributes[:'order_id']
+      end
+
+      if attributes.has_key?(:'replacement_merchant_item_id')
+        self.replacement_merchant_item_id = attributes[:'replacement_merchant_item_id']
       end
     end
 
@@ -79,8 +75,12 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@tag_value.nil? && @tag_value.to_s.length > 100
-        invalid_properties.push('invalid value for "tag_value", the character length must be smaller than or equal to 100.')
+      if !@merchant_item_id.nil? && @merchant_item_id.to_s.length > 20
+        invalid_properties.push('invalid value for "merchant_item_id", the character length must be smaller than or equal to 20.')
+      end
+
+      if !@replacement_merchant_item_id.nil? && @replacement_merchant_item_id.to_s.length > 20
+        invalid_properties.push('invalid value for "replacement_merchant_item_id", the character length must be smaller than or equal to 20.')
       end
 
       invalid_properties
@@ -89,30 +89,29 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      tag_type_validator = EnumAttributeValidator.new('String', ['item', 'order', 'customer'])
-      return false unless tag_type_validator.valid?(@tag_type)
-      return false if !@tag_value.nil? && @tag_value.to_s.length > 100
+      return false if !@merchant_item_id.nil? && @merchant_item_id.to_s.length > 20
+      return false if !@replacement_merchant_item_id.nil? && @replacement_merchant_item_id.to_s.length > 20
       true
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] tag_type Object to be assigned
-    def tag_type=(tag_type)
-      validator = EnumAttributeValidator.new('String', ['item', 'order', 'customer'])
-      unless validator.valid?(tag_type)
-        fail ArgumentError, 'invalid value for "tag_type", must be one of #{validator.allowable_values}.'
+    # Custom attribute writer method with validation
+    # @param [Object] merchant_item_id Value to be assigned
+    def merchant_item_id=(merchant_item_id)
+      if !merchant_item_id.nil? && merchant_item_id.to_s.length > 20
+        fail ArgumentError, 'invalid value for "merchant_item_id", the character length must be smaller than or equal to 20.'
       end
-      @tag_type = tag_type
+
+      @merchant_item_id = merchant_item_id
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] tag_value Value to be assigned
-    def tag_value=(tag_value)
-      if !tag_value.nil? && tag_value.to_s.length > 100
-        fail ArgumentError, 'invalid value for "tag_value", the character length must be smaller than or equal to 100.'
+    # @param [Object] replacement_merchant_item_id Value to be assigned
+    def replacement_merchant_item_id=(replacement_merchant_item_id)
+      if !replacement_merchant_item_id.nil? && replacement_merchant_item_id.to_s.length > 20
+        fail ArgumentError, 'invalid value for "replacement_merchant_item_id", the character length must be smaller than or equal to 20.'
       end
 
-      @tag_value = tag_value
+      @replacement_merchant_item_id = replacement_merchant_item_id
     end
 
     # Checks equality by comparing each attribute.
@@ -120,8 +119,10 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          tag_type == o.tag_type &&
-          tag_value == o.tag_value
+          item_index == o.item_index &&
+          merchant_item_id == o.merchant_item_id &&
+          order_id == o.order_id &&
+          replacement_merchant_item_id == o.replacement_merchant_item_id
     end
 
     # @see the `==` method
@@ -133,7 +134,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [tag_type, tag_value].hash
+      [item_index, merchant_item_id, order_id, replacement_merchant_item_id].hash
     end
 
     # Builds the object from hash

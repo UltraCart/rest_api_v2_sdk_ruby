@@ -4,6 +4,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**analyze_custom_report**](DatawarehouseApi.md#analyze_custom_report) | **PUT** /datawarehouse/custom_reports/{custom_report_oid}/analysis | Analyze a custom report
 [**delete_custom_dashboard**](DatawarehouseApi.md#delete_custom_dashboard) | **DELETE** /datawarehouse/custom_dashboards/{custom_dashboard_oid} | Delete a custom dashboard
 [**delete_custom_dashboard_schedule**](DatawarehouseApi.md#delete_custom_dashboard_schedule) | **DELETE** /datawarehouse/custom_dashboards/{custom_dashboard_oid}/schedules/{custom_dashboard_schedule_oid} | Delete a custom dashboard schedule
 [**delete_custom_report**](DatawarehouseApi.md#delete_custom_report) | **DELETE** /datawarehouse/custom_reports/{custom_report_oid} | Delete a custom report
@@ -17,6 +18,7 @@ Method | HTTP request | Description
 [**get_custom_dashboards**](DatawarehouseApi.md#get_custom_dashboards) | **GET** /datawarehouse/custom_dashboards | Get custom dashboards
 [**get_custom_report**](DatawarehouseApi.md#get_custom_report) | **GET** /datawarehouse/custom_reports/{custom_report_oid} | Get a custom report
 [**get_custom_report_account_config**](DatawarehouseApi.md#get_custom_report_account_config) | **GET** /datawarehouse/custom_reports/account_config | Get custom report account configuration
+[**get_custom_report_chart_png_upload_url**](DatawarehouseApi.md#get_custom_report_chart_png_upload_url) | **GET** /datawarehouse/custom_reports/{custom_report_oid}/chart_png | Upload a PNG of a custom report chart
 [**get_custom_reports**](DatawarehouseApi.md#get_custom_reports) | **GET** /datawarehouse/custom_reports | Get custom reports
 [**get_report**](DatawarehouseApi.md#get_report) | **GET** /datawarehouse/reports/{report_oid} | Get a report
 [**get_report_data_set**](DatawarehouseApi.md#get_report_data_set) | **GET** /datawarehouse/reports/dataset/{dataset_uuid} | Get a report data set
@@ -32,6 +34,59 @@ Method | HTTP request | Description
 [**update_custom_report**](DatawarehouseApi.md#update_custom_report) | **PUT** /datawarehouse/custom_reports/{custom_report_oid} | Update a custom report
 [**update_custom_report_account_config**](DatawarehouseApi.md#update_custom_report_account_config) | **PUT** /datawarehouse/custom_reports/account_config | Update custom report account config
 [**update_report**](DatawarehouseApi.md#update_report) | **PUT** /datawarehouse/reports/{report_oid} | Update a report
+
+
+# **analyze_custom_report**
+> CustomReportAnalysisResponse analyze_custom_report(analyze_request, custom_report_oid)
+
+Analyze a custom report
+
+Analyze a custom report on the UltraCart account. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::DatawarehouseApi.new_using_api_key(simple_key, false, false)
+
+
+analyze_request = UltracartClient::CustomReportAnalysisRequest.new # CustomReportAnalysisRequest | Request to analyze custom report
+
+custom_report_oid = 56 # Integer | The report oid to analyze.
+
+
+begin
+  #Analyze a custom report
+  result = api_instance.analyze_custom_report(analyze_request, custom_report_oid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling DatawarehouseApi->analyze_custom_report: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analyze_request** | [**CustomReportAnalysisRequest**](CustomReportAnalysisRequest.md)| Request to analyze custom report | 
+ **custom_report_oid** | **Integer**| The report oid to analyze. | 
+
+### Return type
+
+[**CustomReportAnalysisResponse**](CustomReportAnalysisResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
+ - **Accept**: application/json
+
 
 
 # **delete_custom_dashboard**
@@ -671,6 +726,56 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_custom_report_chart_png_upload_url**
+> CustomReportChartPngUploadResponse get_custom_report_chart_png_upload_url(custom_report_oid)
+
+Upload a PNG of a custom report chart
+
+Upload a PNG of a custom report chart 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::DatawarehouseApi.new_using_api_key(simple_key, false, false)
+
+
+custom_report_oid = 56 # Integer | The report oid to upload a chart PNG for.
+
+
+begin
+  #Upload a PNG of a custom report chart
+  result = api_instance.get_custom_report_chart_png_upload_url(custom_report_oid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling DatawarehouseApi->get_custom_report_chart_png_upload_url: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **custom_report_oid** | **Integer**| The report oid to upload a chart PNG for. | 
+
+### Return type
+
+[**CustomReportChartPngUploadResponse**](CustomReportChartPngUploadResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
  - **Accept**: application/json
 
 

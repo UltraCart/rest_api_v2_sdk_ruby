@@ -33,6 +33,8 @@ module UltracartClient
     # Date/time that custom reporting was opted in to
     attr_accessor :opt_in_date
 
+    attr_accessor :read_only
+
     attr_accessor :sql_budget
 
     attr_accessor :sql_usage
@@ -47,6 +49,7 @@ module UltracartClient
         :'opt_in' => :'opt_in',
         :'opt_in_by_user' => :'opt_in_by_user',
         :'opt_in_date' => :'opt_in_date',
+        :'read_only' => :'read_only',
         :'sql_budget' => :'sql_budget',
         :'sql_usage' => :'sql_usage'
       }
@@ -62,6 +65,7 @@ module UltracartClient
         :'opt_in' => :'BOOLEAN',
         :'opt_in_by_user' => :'String',
         :'opt_in_date' => :'String',
+        :'read_only' => :'BOOLEAN',
         :'sql_budget' => :'Float',
         :'sql_usage' => :'Float'
       }
@@ -103,6 +107,10 @@ module UltracartClient
         self.opt_in_date = attributes[:'opt_in_date']
       end
 
+      if attributes.has_key?(:'read_only')
+        self.read_only = attributes[:'read_only']
+      end
+
       if attributes.has_key?(:'sql_budget')
         self.sql_budget = attributes[:'sql_budget']
       end
@@ -137,6 +145,7 @@ module UltracartClient
           opt_in == o.opt_in &&
           opt_in_by_user == o.opt_in_by_user &&
           opt_in_date == o.opt_in_date &&
+          read_only == o.read_only &&
           sql_budget == o.sql_budget &&
           sql_usage == o.sql_usage
     end
@@ -150,7 +159,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [ai_budget, ai_usage, merchant_id, novice_sql_comments, opt_in, opt_in_by_user, opt_in_date, sql_budget, sql_usage].hash
+      [ai_budget, ai_usage, merchant_id, novice_sql_comments, opt_in, opt_in_by_user, opt_in_date, read_only, sql_budget, sql_usage].hash
     end
 
     # Builds the object from hash

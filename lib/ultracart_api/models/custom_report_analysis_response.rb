@@ -13,48 +13,37 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ItemTag
-    # tag_type
-    attr_accessor :tag_type
+  class CustomReportAnalysisResponse
+    attr_accessor :error
 
-    # tag_value
-    attr_accessor :tag_value
+    attr_accessor :html
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
+    attr_accessor :metadata
 
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
+    # Indicates if API call was successful
+    attr_accessor :success
 
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'tag_type' => :'tagType',
-        :'tag_value' => :'tagValue'
+        :'error' => :'error',
+        :'html' => :'html',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'tag_type' => :'String',
-        :'tag_value' => :'String'
+        :'error' => :'Error',
+        :'html' => :'String',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'BOOLEAN',
+        :'warning' => :'Warning'
       }
     end
 
@@ -66,12 +55,24 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'tagType')
-        self.tag_type = attributes[:'tagType']
+      if attributes.has_key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.has_key?(:'tagValue')
-        self.tag_value = attributes[:'tagValue']
+      if attributes.has_key?(:'html')
+        self.html = attributes[:'html']
+      end
+
+      if attributes.has_key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.has_key?(:'success')
+        self.success = attributes[:'success']
+      end
+
+      if attributes.has_key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -79,40 +80,13 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@tag_value.nil? && @tag_value.to_s.length > 100
-        invalid_properties.push('invalid value for "tag_value", the character length must be smaller than or equal to 100.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      tag_type_validator = EnumAttributeValidator.new('String', ['item', 'order', 'customer'])
-      return false unless tag_type_validator.valid?(@tag_type)
-      return false if !@tag_value.nil? && @tag_value.to_s.length > 100
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] tag_type Object to be assigned
-    def tag_type=(tag_type)
-      validator = EnumAttributeValidator.new('String', ['item', 'order', 'customer'])
-      unless validator.valid?(tag_type)
-        fail ArgumentError, 'invalid value for "tag_type", must be one of #{validator.allowable_values}.'
-      end
-      @tag_type = tag_type
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] tag_value Value to be assigned
-    def tag_value=(tag_value)
-      if !tag_value.nil? && tag_value.to_s.length > 100
-        fail ArgumentError, 'invalid value for "tag_value", the character length must be smaller than or equal to 100.'
-      end
-
-      @tag_value = tag_value
     end
 
     # Checks equality by comparing each attribute.
@@ -120,8 +94,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          tag_type == o.tag_type &&
-          tag_value == o.tag_value
+          error == o.error &&
+          html == o.html &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -133,7 +110,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [tag_type, tag_value].hash
+      [error, html, metadata, success, warning].hash
     end
 
     # Builds the object from hash
