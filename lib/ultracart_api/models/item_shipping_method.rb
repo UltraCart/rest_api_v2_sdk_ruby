@@ -57,6 +57,9 @@ module UltracartClient
     # Shipping method validity
     attr_accessor :shipping_method_validity
 
+    # Ships separately
+    attr_accessor :ships_separately
+
     # Signature required
     attr_accessor :signature_required
 
@@ -99,6 +102,7 @@ module UltracartClient
         :'shipping_method' => :'shipping_method',
         :'shipping_method_oid' => :'shipping_method_oid',
         :'shipping_method_validity' => :'shipping_method_validity',
+        :'ships_separately' => :'ships_separately',
         :'signature_required' => :'signature_required'
       }
     end
@@ -125,6 +129,7 @@ module UltracartClient
         :'shipping_method' => :'String',
         :'shipping_method_oid' => :'Integer',
         :'shipping_method_validity' => :'String',
+        :'ships_separately' => :'Boolean',
         :'signature_required' => :'Boolean'
       }
     end
@@ -206,6 +211,10 @@ module UltracartClient
         self.shipping_method_validity = attributes[:'shipping_method_validity']
       end
 
+      if attributes.key?(:'ships_separately')
+        self.ships_separately = attributes[:'ships_separately']
+      end
+
       if attributes.key?(:'signature_required')
         self.signature_required = attributes[:'signature_required']
       end
@@ -255,6 +264,7 @@ module UltracartClient
           shipping_method == o.shipping_method &&
           shipping_method_oid == o.shipping_method_oid &&
           shipping_method_validity == o.shipping_method_validity &&
+          ships_separately == o.ships_separately &&
           signature_required == o.signature_required
     end
 
@@ -267,7 +277,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cost, each_additional_item_markup, filter_to_if_available, first_item_markup, fixed_shipping_cost, flat_fee_markup, free_shipping, per_item_fee_markup, percentage_markup, percentage_of_item_markup, relax_restrictions_on_upsell, shipping_method, shipping_method_oid, shipping_method_validity, signature_required].hash
+      [cost, each_additional_item_markup, filter_to_if_available, first_item_markup, fixed_shipping_cost, flat_fee_markup, free_shipping, per_item_fee_markup, percentage_markup, percentage_of_item_markup, relax_restrictions_on_upsell, shipping_method, shipping_method_oid, shipping_method_validity, ships_separately, signature_required].hash
     end
 
     # Builds the object from hash

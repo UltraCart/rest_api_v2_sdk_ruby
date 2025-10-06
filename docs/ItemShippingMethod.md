@@ -18,6 +18,7 @@
 | **shipping_method** | **String** | Shipping method name | [optional] |
 | **shipping_method_oid** | **Integer** | Shipping method object identifier | [optional] |
 | **shipping_method_validity** | **String** | Shipping method validity | [optional] |
+| **ships_separately** | **Boolean** | Ships separately | [optional] |
 | **signature_required** | **Boolean** | Signature required | [optional] |
 
 ## Example
@@ -40,6 +41,7 @@ instance = UltracartClient::ItemShippingMethod.new(
   shipping_method: null,
   shipping_method_oid: null,
   shipping_method_validity: null,
+  ships_separately: null,
   signature_required: null
 )
 ```

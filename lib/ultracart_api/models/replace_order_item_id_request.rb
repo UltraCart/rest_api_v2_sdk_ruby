@@ -15,7 +15,7 @@ require 'time'
 
 module UltracartClient
   class ReplaceOrderItemIdRequest
-    # Index of the item on the order (one based index)
+    # Index of the item on the order.  Must match order.items[].item_index
     attr_accessor :item_index
 
     # Item ID

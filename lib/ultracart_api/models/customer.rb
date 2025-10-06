@@ -82,6 +82,9 @@ module UltracartClient
     # Exempt shipping handling charge
     attr_accessor :exempt_shipping_handling_charge
 
+    # Fax Number
+    attr_accessor :fax
+
     # FedEx account number
     attr_accessor :fedex_account_number
 
@@ -225,6 +228,7 @@ module UltracartClient
         :'edi' => :'edi',
         :'email' => :'email',
         :'exempt_shipping_handling_charge' => :'exempt_shipping_handling_charge',
+        :'fax' => :'fax',
         :'fedex_account_number' => :'fedex_account_number',
         :'free_shipping' => :'free_shipping',
         :'free_shipping_minimum' => :'free_shipping_minimum',
@@ -300,6 +304,7 @@ module UltracartClient
         :'edi' => :'CustomerEDI',
         :'email' => :'String',
         :'exempt_shipping_handling_charge' => :'Boolean',
+        :'fax' => :'String',
         :'fedex_account_number' => :'String',
         :'free_shipping' => :'Boolean',
         :'free_shipping_minimum' => :'Float',
@@ -463,6 +468,10 @@ module UltracartClient
 
       if attributes.key?(:'exempt_shipping_handling_charge')
         self.exempt_shipping_handling_charge = attributes[:'exempt_shipping_handling_charge']
+      end
+
+      if attributes.key?(:'fax')
+        self.fax = attributes[:'fax']
       end
 
       if attributes.key?(:'fedex_account_number')
@@ -660,6 +669,10 @@ module UltracartClient
         invalid_properties.push('invalid value for "dhl_duty_account_number", the character length must be smaller than or equal to 20.')
       end
 
+      if !@fax.nil? && @fax.to_s.length > 32
+        invalid_properties.push('invalid value for "fax", the character length must be smaller than or equal to 32.')
+      end
+
       if !@fedex_account_number.nil? && @fedex_account_number.to_s.length > 20
         invalid_properties.push('invalid value for "fedex_account_number", the character length must be smaller than or equal to 20.')
       end
@@ -701,6 +714,7 @@ module UltracartClient
       return false if !@business_notes.nil? && @business_notes.to_s.length > 2000
       return false if !@dhl_account_number.nil? && @dhl_account_number.to_s.length > 20
       return false if !@dhl_duty_account_number.nil? && @dhl_duty_account_number.to_s.length > 20
+      return false if !@fax.nil? && @fax.to_s.length > 32
       return false if !@fedex_account_number.nil? && @fedex_account_number.to_s.length > 20
       return false if !@last_modified_by.nil? && @last_modified_by.to_s.length > 100
       return false if !@password.nil? && @password.to_s.length > 30
@@ -740,6 +754,16 @@ module UltracartClient
       end
 
       @dhl_duty_account_number = dhl_duty_account_number
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] fax Value to be assigned
+    def fax=(fax)
+      if !fax.nil? && fax.to_s.length > 32
+        fail ArgumentError, 'invalid value for "fax", the character length must be smaller than or equal to 32.'
+      end
+
+      @fax = fax
     end
 
     # Custom attribute writer method with validation
@@ -850,6 +874,7 @@ module UltracartClient
           edi == o.edi &&
           email == o.email &&
           exempt_shipping_handling_charge == o.exempt_shipping_handling_charge &&
+          fax == o.fax &&
           fedex_account_number == o.fedex_account_number &&
           free_shipping == o.free_shipping &&
           free_shipping_minimum == o.free_shipping_minimum &&
@@ -902,7 +927,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [activity, affiliate_oid, allow_3rd_party_billing, allow_cod, allow_drop_shipping, allow_purchase_order, allow_quote_request, allow_selection_of_address_type, attachments, auto_approve_cod, auto_approve_purchase_order, automatic_merchant_notes, billing, business_notes, cards, cc_emails, customer_profile_oid, dhl_account_number, dhl_duty_account_number, do_not_send_mail, edi, email, exempt_shipping_handling_charge, fedex_account_number, free_shipping, free_shipping_minimum, last_modified_by, last_modified_dts, loyalty, maximum_item_count, merchant_id, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, orders, orders_summary, password, pricing_tiers, privacy, properties, qb_class, qb_code, qb_tax_exemption_reason_code, quotes, quotes_summary, referral_source, reviewer, sales_rep_code, send_signup_notification, shipping, signup_dts, software_entitlements, suppress_buysafe, tags, tax_codes, tax_exempt, tax_id, terms, track_separately, unapproved, ups_account_number, website_url].hash
+      [activity, affiliate_oid, allow_3rd_party_billing, allow_cod, allow_drop_shipping, allow_purchase_order, allow_quote_request, allow_selection_of_address_type, attachments, auto_approve_cod, auto_approve_purchase_order, automatic_merchant_notes, billing, business_notes, cards, cc_emails, customer_profile_oid, dhl_account_number, dhl_duty_account_number, do_not_send_mail, edi, email, exempt_shipping_handling_charge, fax, fedex_account_number, free_shipping, free_shipping_minimum, last_modified_by, last_modified_dts, loyalty, maximum_item_count, merchant_id, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, orders, orders_summary, password, pricing_tiers, privacy, properties, qb_class, qb_code, qb_tax_exemption_reason_code, quotes, quotes_summary, referral_source, reviewer, sales_rep_code, send_signup_notification, shipping, signup_dts, software_entitlements, suppress_buysafe, tags, tax_codes, tax_exempt, tax_id, terms, track_separately, unapproved, ups_account_number, website_url].hash
     end
 
     # Builds the object from hash

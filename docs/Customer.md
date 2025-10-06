@@ -27,6 +27,7 @@
 | **edi** | [**CustomerEDI**](CustomerEDI.md) |  | [optional] |
 | **email** | **String** | Email address of this customer profile | [optional] |
 | **exempt_shipping_handling_charge** | **Boolean** | Exempt shipping handling charge | [optional] |
+| **fax** | **String** | Fax Number | [optional] |
 | **fedex_account_number** | **String** | FedEx account number | [optional] |
 | **free_shipping** | **Boolean** | This customer always receives free shipping | [optional] |
 | **free_shipping_minimum** | **Float** | If free_shipping is true, this is the minimum subtotal required for free shipping | [optional] |
@@ -98,6 +99,7 @@ instance = UltracartClient::Customer.new(
   edi: null,
   email: null,
   exempt_shipping_handling_charge: null,
+  fax: null,
   fedex_account_number: null,
   free_shipping: null,
   free_shipping_minimum: null,
