@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **shipping_method** | **String** | Shipping method name | [optional] 
 **shipping_method_oid** | **Integer** | Shipping method object identifier | [optional] 
 **shipping_method_validity** | **String** | Shipping method validity | [optional] 
+**ships_separately** | **BOOLEAN** | Ships separately | [optional] 
 **signature_required** | **BOOLEAN** | Signature required | [optional] 
 
 
