@@ -251,10 +251,10 @@ module UltracartClient
     # @param customer_profile_oid [Integer] The customer oid for this wishlist.
     # @param customer_wishlist_item_oid [Integer] The wishlist oid for this wishlist item to delete.
     # @param [Hash] opts the optional parameters
-    # @return [CustomerWishListItem]
+    # @return [nil]
     def delete_wish_list_item(customer_profile_oid, customer_wishlist_item_oid, opts = {})
-      data, _status_code, _headers = delete_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid, opts)
-      data
+      delete_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid, opts)
+      nil
     end
 
     # Delete a customer wishlist item
@@ -262,7 +262,7 @@ module UltracartClient
     # @param customer_profile_oid [Integer] The customer oid for this wishlist.
     # @param customer_wishlist_item_oid [Integer] The wishlist oid for this wishlist item to delete.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(CustomerWishListItem, Integer, Hash)>] CustomerWishListItem data, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CustomerApi.delete_wish_list_item ...'
@@ -294,7 +294,7 @@ module UltracartClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'CustomerWishListItem'
+      return_type = opts[:debug_return_type]
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']

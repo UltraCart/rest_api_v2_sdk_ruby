@@ -14,48 +14,27 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class CustomReportAccountConfig
-    attr_accessor :ai_budget
+  class ConversationKnowledgeBaseDocumentsResponse
+    # documents
+    attr_accessor :documents
 
-    # Current AI usage creating reports
-    attr_accessor :ai_usage
+    attr_accessor :error
 
-    attr_accessor :ai_usage_breakdowns
+    attr_accessor :metadata
 
-    # Current BigQuery SQL usage running reports
-    attr_accessor :merchant_id
+    # Indicates if API call was successful
+    attr_accessor :success
 
-    attr_accessor :novice_sql_comments
-
-    # True if they have opted into custom reports
-    attr_accessor :opt_in
-
-    # User that opted into custom reporting
-    attr_accessor :opt_in_by_user
-
-    # Date/time that custom reporting was opted in to
-    attr_accessor :opt_in_date
-
-    attr_accessor :read_only
-
-    attr_accessor :sql_budget
-
-    attr_accessor :sql_usage
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'ai_budget' => :'ai_budget',
-        :'ai_usage' => :'ai_usage',
-        :'ai_usage_breakdowns' => :'ai_usage_breakdowns',
-        :'merchant_id' => :'merchant_id',
-        :'novice_sql_comments' => :'novice_sql_comments',
-        :'opt_in' => :'opt_in',
-        :'opt_in_by_user' => :'opt_in_by_user',
-        :'opt_in_date' => :'opt_in_date',
-        :'read_only' => :'read_only',
-        :'sql_budget' => :'sql_budget',
-        :'sql_usage' => :'sql_usage'
+        :'documents' => :'documents',
+        :'error' => :'error',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
@@ -67,17 +46,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'ai_budget' => :'Float',
-        :'ai_usage' => :'Float',
-        :'ai_usage_breakdowns' => :'Array<CustomReportUsageBreakdown>',
-        :'merchant_id' => :'String',
-        :'novice_sql_comments' => :'Boolean',
-        :'opt_in' => :'Boolean',
-        :'opt_in_by_user' => :'String',
-        :'opt_in_date' => :'String',
-        :'read_only' => :'Boolean',
-        :'sql_budget' => :'Float',
-        :'sql_usage' => :'Float'
+        :'documents' => :'Array<ConversationKnowledgeBaseDocument>',
+        :'error' => :'Error',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'Boolean',
+        :'warning' => :'Warning'
       }
     end
 
@@ -91,61 +64,37 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::CustomReportAccountConfig` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationKnowledgeBaseDocumentsResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::CustomReportAccountConfig`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationKnowledgeBaseDocumentsResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'ai_budget')
-        self.ai_budget = attributes[:'ai_budget']
-      end
-
-      if attributes.key?(:'ai_usage')
-        self.ai_usage = attributes[:'ai_usage']
-      end
-
-      if attributes.key?(:'ai_usage_breakdowns')
-        if (value = attributes[:'ai_usage_breakdowns']).is_a?(Array)
-          self.ai_usage_breakdowns = value
+      if attributes.key?(:'documents')
+        if (value = attributes[:'documents']).is_a?(Array)
+          self.documents = value
         end
       end
 
-      if attributes.key?(:'merchant_id')
-        self.merchant_id = attributes[:'merchant_id']
+      if attributes.key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.key?(:'novice_sql_comments')
-        self.novice_sql_comments = attributes[:'novice_sql_comments']
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.key?(:'opt_in')
-        self.opt_in = attributes[:'opt_in']
+      if attributes.key?(:'success')
+        self.success = attributes[:'success']
       end
 
-      if attributes.key?(:'opt_in_by_user')
-        self.opt_in_by_user = attributes[:'opt_in_by_user']
-      end
-
-      if attributes.key?(:'opt_in_date')
-        self.opt_in_date = attributes[:'opt_in_date']
-      end
-
-      if attributes.key?(:'read_only')
-        self.read_only = attributes[:'read_only']
-      end
-
-      if attributes.key?(:'sql_budget')
-        self.sql_budget = attributes[:'sql_budget']
-      end
-
-      if attributes.key?(:'sql_usage')
-        self.sql_usage = attributes[:'sql_usage']
+      if attributes.key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -167,17 +116,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          ai_budget == o.ai_budget &&
-          ai_usage == o.ai_usage &&
-          ai_usage_breakdowns == o.ai_usage_breakdowns &&
-          merchant_id == o.merchant_id &&
-          novice_sql_comments == o.novice_sql_comments &&
-          opt_in == o.opt_in &&
-          opt_in_by_user == o.opt_in_by_user &&
-          opt_in_date == o.opt_in_date &&
-          read_only == o.read_only &&
-          sql_budget == o.sql_budget &&
-          sql_usage == o.sql_usage
+          documents == o.documents &&
+          error == o.error &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -189,7 +132,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ai_budget, ai_usage, ai_usage_breakdowns, merchant_id, novice_sql_comments, opt_in, opt_in_by_user, opt_in_date, read_only, sql_budget, sql_usage].hash
+      [documents, error, metadata, success, warning].hash
     end
 
     # Builds the object from hash

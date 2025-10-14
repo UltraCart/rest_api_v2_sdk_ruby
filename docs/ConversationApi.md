@@ -4,6 +4,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**delete_agent_profile_knowledge_base_document**](ConversationApi.md#delete_agent_profile_knowledge_base_document) | **DELETE** /conversation/agent/profiles/{user_id}/knowledge_base/{document_uuid} | Delete a knowledge base document |
 | [**delete_conversation_canned_message**](ConversationApi.md#delete_conversation_canned_message) | **DELETE** /conversation/canned_messages/{conversation_canned_message_oid} | Delete a conversation canned message |
 | [**delete_department**](ConversationApi.md#delete_department) | **DELETE** /conversation/departments/{conversation_department_oid} | Delete a conversation department |
 | [**delete_engagement**](ConversationApi.md#delete_engagement) | **DELETE** /conversation/engagements/{conversation_engagement_oid} | Delete a conversation engagement |
@@ -17,6 +18,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**delete_pbx_voicemail_mailbox**](ConversationApi.md#delete_pbx_voicemail_mailbox) | **DELETE** /conversation/pbx/voicemail_mailbox/{conversationPbxVoicemailMailboxUuid} | Delete pbx voicemailMailbox |
 | [**get_agent_keep_alive**](ConversationApi.md#get_agent_keep_alive) | **GET** /conversation/agent/keepalive | Agent keep alive |
 | [**get_agent_profile**](ConversationApi.md#get_agent_profile) | **GET** /conversation/agent/profile | Get agent profile |
+| [**get_agent_profile_knowledge_base**](ConversationApi.md#get_agent_profile_knowledge_base) | **GET** /conversation/agent/profiles/{user_id}/knowledge_base | Get the list of knowledge base documents associated with this agent profile |
 | [**get_agent_profiles**](ConversationApi.md#get_agent_profiles) | **GET** /conversation/agent/profiles | Get agent profiles |
 | [**get_agent_websocket_authorization**](ConversationApi.md#get_agent_websocket_authorization) | **PUT** /conversation/agent/auth | Get agent websocket authorization |
 | [**get_conversation**](ConversationApi.md#get_conversation) | **GET** /conversation/conversations/{conversation_uuid} | Retrieve a conversation |
@@ -26,6 +28,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_conversation_departments**](ConversationApi.md#get_conversation_departments) | **GET** /conversation/departments | Retrieve a list of departments ordered by name |
 | [**get_conversation_engagement**](ConversationApi.md#get_conversation_engagement) | **GET** /conversation/engagements/{conversation_engagement_oid} | Retrieve an engagement |
 | [**get_conversation_engagements**](ConversationApi.md#get_conversation_engagements) | **GET** /conversation/engagements | Retrieve a list of engagements ordered by name |
+| [**get_conversation_knowledge_base_document_upload_url**](ConversationApi.md#get_conversation_knowledge_base_document_upload_url) | **GET** /conversation//rest/v2/conversation/agent/profiles/{user_id}/knowledge_base/upload_url/{extension} | Get a pre-signed conversation knowledge base document upload URL |
 | [**get_conversation_messages**](ConversationApi.md#get_conversation_messages) | **GET** /conversation/conversations/{conversation_uuid}/messages/{since} | Retrieve conversation messages |
 | [**get_conversation_multimedia_upload_url**](ConversationApi.md#get_conversation_multimedia_upload_url) | **GET** /conversation/upload_url/{extension} | Get a presigned conversation multimedia upload URL |
 | [**get_conversation_pbx_audio_upload_url**](ConversationApi.md#get_conversation_pbx_audio_upload_url) | **GET** /conversation/pbx/audio/upload_url/{extension} | Get a pre-signed conversation multimedia upload URL |
@@ -59,6 +62,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_pbx_voicemail_mailboxes**](ConversationApi.md#get_pbx_voicemail_mailboxes) | **GET** /conversation/pbx/voicemail_mailbox | Get pbx voicemailMailboxes |
 | [**get_virtual_agent_budget**](ConversationApi.md#get_virtual_agent_budget) | **GET** /conversation/virtualagent/budget | Get virtual agent budget |
 | [**get_virtual_agent_capabilities**](ConversationApi.md#get_virtual_agent_capabilities) | **GET** /conversation/virtualagent/capabilities | Get virtual agent capabilities |
+| [**insert_agent_profile_knowledge_base_document**](ConversationApi.md#insert_agent_profile_knowledge_base_document) | **POST** /conversation/agent/profiles/{user_id}/knowledge_base | Insert a knowledge base document |
 | [**insert_conversation_canned_message**](ConversationApi.md#insert_conversation_canned_message) | **POST** /conversation/canned_messages | Insert a canned message |
 | [**insert_conversation_department**](ConversationApi.md#insert_conversation_department) | **POST** /conversation/departments | Insert a department |
 | [**insert_conversation_engagement**](ConversationApi.md#insert_conversation_engagement) | **POST** /conversation/engagements | Insert a engagement |
@@ -92,6 +96,60 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**update_pbx_voicemail_mailbox**](ConversationApi.md#update_pbx_voicemail_mailbox) | **PUT** /conversation/pbx/voicemail_mailbox/{conversationPbxVoicemailMailboxUuid} | Update pbx voicemailMailbox |
 | [**update_virtual_agent_budget**](ConversationApi.md#update_virtual_agent_budget) | **PUT** /conversation/virtualagent/budget | Update virtual agent budget |
 | [**update_virtual_agent_capabilities**](ConversationApi.md#update_virtual_agent_capabilities) | **PUT** /conversation/virtualagent/capabilities | Update virtual agent capabilities |
+
+
+## delete_agent_profile_knowledge_base_document
+
+> <ConversationDeleteKnowledgeBaseDocumentResponse> delete_agent_profile_knowledge_base_document(user_id, document_uuid)
+
+Delete a knowledge base document
+
+Delete a knowledge base document 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_agent_profile_knowledge_base_document_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationDeleteKnowledgeBaseDocumentResponse>, Integer, Hash)> delete_agent_profile_knowledge_base_document_with_http_info(user_id, document_uuid)
+
+```ruby
+begin
+  # Delete a knowledge base document
+  data, status_code, headers = api_instance.delete_agent_profile_knowledge_base_document_with_http_info(user_id, document_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationDeleteKnowledgeBaseDocumentResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_agent_profile_knowledge_base_document_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+| **document_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationDeleteKnowledgeBaseDocumentResponse**](ConversationDeleteKnowledgeBaseDocumentResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## delete_conversation_canned_message
@@ -793,6 +851,59 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
+## get_agent_profile_knowledge_base
+
+> <ConversationKnowledgeBaseDocumentsResponse> get_agent_profile_knowledge_base(user_id)
+
+Get the list of knowledge base documents associated with this agent profile
+
+Retrieve knowledge base documents 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_agent_profile_knowledge_base_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationKnowledgeBaseDocumentsResponse>, Integer, Hash)> get_agent_profile_knowledge_base_with_http_info(user_id)
+
+```ruby
+begin
+  # Get the list of knowledge base documents associated with this agent profile
+  data, status_code, headers = api_instance.get_agent_profile_knowledge_base_with_http_info(user_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationKnowledgeBaseDocumentsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_profile_knowledge_base_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+
+### Return type
+
+[**ConversationKnowledgeBaseDocumentsResponse**](ConversationKnowledgeBaseDocumentsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_agent_profiles
 
 > <ConversationAgentProfilesResponse> get_agent_profiles
@@ -1256,6 +1367,60 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**ConversationEngagementsResponse**](ConversationEngagementsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_knowledge_base_document_upload_url
+
+> <ConversationKnowledgeBaseDocumentUploadUrlResponse> get_conversation_knowledge_base_document_upload_url(user_id, extension)
+
+Get a pre-signed conversation knowledge base document upload URL
+
+Get a pre-signed conversation knowledge base document upload URL 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_conversation_knowledge_base_document_upload_url_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationKnowledgeBaseDocumentUploadUrlResponse>, Integer, Hash)> get_conversation_knowledge_base_document_upload_url_with_http_info(user_id, extension)
+
+```ruby
+begin
+  # Get a pre-signed conversation knowledge base document upload URL
+  data, status_code, headers = api_instance.get_conversation_knowledge_base_document_upload_url_with_http_info(user_id, extension)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationKnowledgeBaseDocumentUploadUrlResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_knowledge_base_document_upload_url_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+| **extension** | **String** |  |  |
+
+### Return type
+
+[**ConversationKnowledgeBaseDocumentUploadUrlResponse**](ConversationKnowledgeBaseDocumentUploadUrlResponse.md)
 
 ### Authorization
 
@@ -3022,6 +3187,60 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## insert_agent_profile_knowledge_base_document
+
+> <ConversationInsertKnowledgeBaseDocumentResponse> insert_agent_profile_knowledge_base_document(user_id, knowledge_base_document_request)
+
+Insert a knowledge base document
+
+Insert a knowledge base document 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_agent_profile_knowledge_base_document_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationInsertKnowledgeBaseDocumentResponse>, Integer, Hash)> insert_agent_profile_knowledge_base_document_with_http_info(user_id, knowledge_base_document_request)
+
+```ruby
+begin
+  # Insert a knowledge base document
+  data, status_code, headers = api_instance.insert_agent_profile_knowledge_base_document_with_http_info(user_id, knowledge_base_document_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationInsertKnowledgeBaseDocumentResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_agent_profile_knowledge_base_document_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+| **knowledge_base_document_request** | [**ConversationInsertKnowledgeBaseDocumentRequest**](ConversationInsertKnowledgeBaseDocumentRequest.md) | Insert request |  |
+
+### Return type
+
+[**ConversationInsertKnowledgeBaseDocumentResponse**](ConversationInsertKnowledgeBaseDocumentResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

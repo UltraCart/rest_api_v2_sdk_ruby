@@ -321,7 +321,7 @@ nil (empty response body)
 
 ## delete_wish_list_item
 
-> <CustomerWishListItem> delete_wish_list_item(customer_profile_oid, customer_wishlist_item_oid)
+> delete_wish_list_item(customer_profile_oid, customer_wishlist_item_oid)
 
 Delete a customer wishlist item
 
@@ -424,9 +424,9 @@ end
 
 #### Using the delete_wish_list_item_with_http_info variant
 
-This returns an Array which contains the response data, status code and headers.
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(<CustomerWishListItem>, Integer, Hash)> delete_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid)
+> <Array(nil, Integer, Hash)> delete_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid)
 
 ```ruby
 begin
@@ -434,7 +434,7 @@ begin
   data, status_code, headers = api_instance.delete_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <CustomerWishListItem>
+  p data # => nil
 rescue UltracartClient::ApiError => e
   puts "Error when calling CustomerApi->delete_wish_list_item_with_http_info: #{e}"
 end
@@ -449,7 +449,7 @@ end
 
 ### Return type
 
-[**CustomerWishListItem**](CustomerWishListItem.md)
+nil (empty response body)
 
 ### Authorization
 
