@@ -213,10 +213,10 @@ module UltracartClient
     # @param customer_profile_oid The customer oid for this wishlist.
     # @param customer_wishlist_item_oid The wishlist oid for this wishlist item to delete.
     # @param [Hash] opts the optional parameters
-    # @return [CustomerWishListItem]
+    # @return [nil]
     def delete_wish_list_item(customer_profile_oid, customer_wishlist_item_oid, opts = {})
-      data, _status_code, _headers = delete_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid, opts)
-      data
+      delete_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid, opts)
+      nil
     end
 
     # Delete a customer wishlist item
@@ -224,7 +224,7 @@ module UltracartClient
     # @param customer_profile_oid The customer oid for this wishlist.
     # @param customer_wishlist_item_oid The wishlist oid for this wishlist item to delete.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(CustomerWishListItem, Fixnum, Hash)>] CustomerWishListItem data, response status code and response headers
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_wish_list_item_with_http_info(customer_profile_oid, customer_wishlist_item_oid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CustomerApi.delete_wish_list_item ...'
@@ -249,7 +249,7 @@ module UltracartClient
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
 
       # form parameters
       form_params = {}
@@ -262,8 +262,7 @@ module UltracartClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'CustomerWishListItem')
+        :auth_names => auth_names)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CustomerApi#delete_wish_list_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

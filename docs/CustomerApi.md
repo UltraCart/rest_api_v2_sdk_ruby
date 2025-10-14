@@ -186,7 +186,7 @@ nil (empty response body)
 
 
 # **delete_wish_list_item**
-> CustomerWishListItem delete_wish_list_item(customer_profile_oid, customer_wishlist_item_oid)
+> delete_wish_list_item(customer_profile_oid, customer_wishlist_item_oid)
 
 Delete a customer wishlist item
 
@@ -209,8 +209,7 @@ customer_wishlist_item_oid = 56 # Integer | The wishlist oid for this wishlist i
 
 begin
   #Delete a customer wishlist item
-  result = api_instance.delete_wish_list_item(customer_profile_oid, customer_wishlist_item_oid)
-  p result
+  api_instance.delete_wish_list_item(customer_profile_oid, customer_wishlist_item_oid)
 rescue UltracartClient::ApiError => e
   puts "Exception when calling CustomerApi->delete_wish_list_item: #{e}"
 end
@@ -225,7 +224,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CustomerWishListItem**](CustomerWishListItem.md)
+nil (empty response body)
 
 ### Authorization
 
@@ -233,7 +232,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json; charset=UTF-8
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

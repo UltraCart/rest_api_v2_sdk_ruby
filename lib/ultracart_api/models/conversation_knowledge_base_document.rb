@@ -13,65 +13,45 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class CustomReportAccountConfig
-    attr_accessor :ai_budget
+  class ConversationKnowledgeBaseDocument
+    attr_accessor :chunk_count
 
-    # Current AI usage creating reports
-    attr_accessor :ai_usage
+    attr_accessor :description
 
-    attr_accessor :ai_usage_breakdowns
+    # Human readable identifier.  Filename is recommended.
+    attr_accessor :document_id
 
-    # Current BigQuery SQL usage running reports
-    attr_accessor :merchant_id
+    attr_accessor :document_uuid
 
-    attr_accessor :novice_sql_comments
+    attr_accessor :metadata
 
-    # True if they have opted into custom reports
-    attr_accessor :opt_in
+    attr_accessor :mime_type
 
-    # User that opted into custom reporting
-    attr_accessor :opt_in_by_user
-
-    # Date/time that custom reporting was opted in to
-    attr_accessor :opt_in_date
-
-    attr_accessor :read_only
-
-    attr_accessor :sql_budget
-
-    attr_accessor :sql_usage
+    attr_accessor :s3_key
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'ai_budget' => :'ai_budget',
-        :'ai_usage' => :'ai_usage',
-        :'ai_usage_breakdowns' => :'ai_usage_breakdowns',
-        :'merchant_id' => :'merchant_id',
-        :'novice_sql_comments' => :'novice_sql_comments',
-        :'opt_in' => :'opt_in',
-        :'opt_in_by_user' => :'opt_in_by_user',
-        :'opt_in_date' => :'opt_in_date',
-        :'read_only' => :'read_only',
-        :'sql_budget' => :'sql_budget',
-        :'sql_usage' => :'sql_usage'
+        :'chunk_count' => :'chunk_count',
+        :'description' => :'description',
+        :'document_id' => :'document_id',
+        :'document_uuid' => :'document_uuid',
+        :'metadata' => :'metadata',
+        :'mime_type' => :'mime_type',
+        :'s3_key' => :'s3_key'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'ai_budget' => :'Float',
-        :'ai_usage' => :'Float',
-        :'ai_usage_breakdowns' => :'Array<CustomReportUsageBreakdown>',
-        :'merchant_id' => :'String',
-        :'novice_sql_comments' => :'BOOLEAN',
-        :'opt_in' => :'BOOLEAN',
-        :'opt_in_by_user' => :'String',
-        :'opt_in_date' => :'String',
-        :'read_only' => :'BOOLEAN',
-        :'sql_budget' => :'Float',
-        :'sql_usage' => :'Float'
+        :'chunk_count' => :'Integer',
+        :'description' => :'String',
+        :'document_id' => :'String',
+        :'document_uuid' => :'String',
+        :'metadata' => :'String',
+        :'mime_type' => :'String',
+        :'s3_key' => :'String'
       }
     end
 
@@ -83,50 +63,32 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'ai_budget')
-        self.ai_budget = attributes[:'ai_budget']
+      if attributes.has_key?(:'chunk_count')
+        self.chunk_count = attributes[:'chunk_count']
       end
 
-      if attributes.has_key?(:'ai_usage')
-        self.ai_usage = attributes[:'ai_usage']
+      if attributes.has_key?(:'description')
+        self.description = attributes[:'description']
       end
 
-      if attributes.has_key?(:'ai_usage_breakdowns')
-        if (value = attributes[:'ai_usage_breakdowns']).is_a?(Array)
-          self.ai_usage_breakdowns = value
-        end
+      if attributes.has_key?(:'document_id')
+        self.document_id = attributes[:'document_id']
       end
 
-      if attributes.has_key?(:'merchant_id')
-        self.merchant_id = attributes[:'merchant_id']
+      if attributes.has_key?(:'document_uuid')
+        self.document_uuid = attributes[:'document_uuid']
       end
 
-      if attributes.has_key?(:'novice_sql_comments')
-        self.novice_sql_comments = attributes[:'novice_sql_comments']
+      if attributes.has_key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.has_key?(:'opt_in')
-        self.opt_in = attributes[:'opt_in']
+      if attributes.has_key?(:'mime_type')
+        self.mime_type = attributes[:'mime_type']
       end
 
-      if attributes.has_key?(:'opt_in_by_user')
-        self.opt_in_by_user = attributes[:'opt_in_by_user']
-      end
-
-      if attributes.has_key?(:'opt_in_date')
-        self.opt_in_date = attributes[:'opt_in_date']
-      end
-
-      if attributes.has_key?(:'read_only')
-        self.read_only = attributes[:'read_only']
-      end
-
-      if attributes.has_key?(:'sql_budget')
-        self.sql_budget = attributes[:'sql_budget']
-      end
-
-      if attributes.has_key?(:'sql_usage')
-        self.sql_usage = attributes[:'sql_usage']
+      if attributes.has_key?(:'s3_key')
+        self.s3_key = attributes[:'s3_key']
       end
     end
 
@@ -148,17 +110,13 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          ai_budget == o.ai_budget &&
-          ai_usage == o.ai_usage &&
-          ai_usage_breakdowns == o.ai_usage_breakdowns &&
-          merchant_id == o.merchant_id &&
-          novice_sql_comments == o.novice_sql_comments &&
-          opt_in == o.opt_in &&
-          opt_in_by_user == o.opt_in_by_user &&
-          opt_in_date == o.opt_in_date &&
-          read_only == o.read_only &&
-          sql_budget == o.sql_budget &&
-          sql_usage == o.sql_usage
+          chunk_count == o.chunk_count &&
+          description == o.description &&
+          document_id == o.document_id &&
+          document_uuid == o.document_uuid &&
+          metadata == o.metadata &&
+          mime_type == o.mime_type &&
+          s3_key == o.s3_key
     end
 
     # @see the `==` method
@@ -170,7 +128,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [ai_budget, ai_usage, ai_usage_breakdowns, merchant_id, novice_sql_comments, opt_in, opt_in_by_user, opt_in_date, read_only, sql_budget, sql_usage].hash
+      [chunk_count, description, document_id, document_uuid, metadata, mime_type, s3_key].hash
     end
 
     # Builds the object from hash

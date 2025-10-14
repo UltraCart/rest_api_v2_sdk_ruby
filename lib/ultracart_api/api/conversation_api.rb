@@ -32,6 +32,67 @@ module UltracartClient
       UltracartClient::ConversationApi.new(api_client)
     end
 
+    # Delete a knowledge base document
+    # Delete a knowledge base document 
+    # @param user_id 
+    # @param document_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationDeleteKnowledgeBaseDocumentResponse]
+    def delete_agent_profile_knowledge_base_document(user_id, document_uuid, opts = {})
+      data, _status_code, _headers = delete_agent_profile_knowledge_base_document_with_http_info(user_id, document_uuid, opts)
+      data
+    end
+
+    # Delete a knowledge base document
+    # Delete a knowledge base document 
+    # @param user_id 
+    # @param document_uuid 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationDeleteKnowledgeBaseDocumentResponse, Fixnum, Hash)>] ConversationDeleteKnowledgeBaseDocumentResponse data, response status code and response headers
+    def delete_agent_profile_knowledge_base_document_with_http_info(user_id, document_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.delete_agent_profile_knowledge_base_document ...'
+      end
+      # verify the required parameter 'user_id' is set
+      if @api_client.config.client_side_validation && user_id.nil?
+        fail ArgumentError, "Missing the required parameter 'user_id' when calling ConversationApi.delete_agent_profile_knowledge_base_document"
+      end
+      # verify the required parameter 'document_uuid' is set
+      if @api_client.config.client_side_validation && document_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'document_uuid' when calling ConversationApi.delete_agent_profile_knowledge_base_document"
+      end
+      # resource path
+      local_var_path = '/conversation/agent/profiles/{user_id}/knowledge_base/{document_uuid}'.sub('{' + 'user_id' + '}', user_id.to_s).sub('{' + 'document_uuid' + '}', document_uuid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ConversationDeleteKnowledgeBaseDocumentResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#delete_agent_profile_knowledge_base_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Delete a conversation canned message
     # Delete a conversation canned message 
     # @param conversation_canned_message_oid 
@@ -735,6 +796,61 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Get the list of knowledge base documents associated with this agent profile
+    # Retrieve knowledge base documents 
+    # @param user_id 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationKnowledgeBaseDocumentsResponse]
+    def get_agent_profile_knowledge_base(user_id, opts = {})
+      data, _status_code, _headers = get_agent_profile_knowledge_base_with_http_info(user_id, opts)
+      data
+    end
+
+    # Get the list of knowledge base documents associated with this agent profile
+    # Retrieve knowledge base documents 
+    # @param user_id 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationKnowledgeBaseDocumentsResponse, Fixnum, Hash)>] ConversationKnowledgeBaseDocumentsResponse data, response status code and response headers
+    def get_agent_profile_knowledge_base_with_http_info(user_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_agent_profile_knowledge_base ...'
+      end
+      # verify the required parameter 'user_id' is set
+      if @api_client.config.client_side_validation && user_id.nil?
+        fail ArgumentError, "Missing the required parameter 'user_id' when calling ConversationApi.get_agent_profile_knowledge_base"
+      end
+      # resource path
+      local_var_path = '/conversation/agent/profiles/{user_id}/knowledge_base'.sub('{' + 'user_id' + '}', user_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ConversationKnowledgeBaseDocumentsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_agent_profile_knowledge_base\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Get agent profiles
     # Retrieve the agents profile 
     # @param [Hash] opts the optional parameters
@@ -1194,6 +1310,67 @@ module UltracartClient
         :return_type => 'ConversationEngagementsResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#get_conversation_engagements\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get a pre-signed conversation knowledge base document upload URL
+    # Get a pre-signed conversation knowledge base document upload URL 
+    # @param user_id 
+    # @param extension 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationKnowledgeBaseDocumentUploadUrlResponse]
+    def get_conversation_knowledge_base_document_upload_url(user_id, extension, opts = {})
+      data, _status_code, _headers = get_conversation_knowledge_base_document_upload_url_with_http_info(user_id, extension, opts)
+      data
+    end
+
+    # Get a pre-signed conversation knowledge base document upload URL
+    # Get a pre-signed conversation knowledge base document upload URL 
+    # @param user_id 
+    # @param extension 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationKnowledgeBaseDocumentUploadUrlResponse, Fixnum, Hash)>] ConversationKnowledgeBaseDocumentUploadUrlResponse data, response status code and response headers
+    def get_conversation_knowledge_base_document_upload_url_with_http_info(user_id, extension, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_conversation_knowledge_base_document_upload_url ...'
+      end
+      # verify the required parameter 'user_id' is set
+      if @api_client.config.client_side_validation && user_id.nil?
+        fail ArgumentError, "Missing the required parameter 'user_id' when calling ConversationApi.get_conversation_knowledge_base_document_upload_url"
+      end
+      # verify the required parameter 'extension' is set
+      if @api_client.config.client_side_validation && extension.nil?
+        fail ArgumentError, "Missing the required parameter 'extension' when calling ConversationApi.get_conversation_knowledge_base_document_upload_url"
+      end
+      # resource path
+      local_var_path = '/conversation//rest/v2/conversation/agent/profiles/{user_id}/knowledge_base/upload_url/{extension}'.sub('{' + 'user_id' + '}', user_id.to_s).sub('{' + 'extension' + '}', extension.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ConversationKnowledgeBaseDocumentUploadUrlResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_conversation_knowledge_base_document_upload_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2946,6 +3123,67 @@ module UltracartClient
         :return_type => 'ConversationVirtualAgentCapabilitiesResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#get_virtual_agent_capabilities\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Insert a knowledge base document
+    # Insert a knowledge base document 
+    # @param user_id 
+    # @param knowledge_base_document_request Insert request
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationInsertKnowledgeBaseDocumentResponse]
+    def insert_agent_profile_knowledge_base_document(user_id, knowledge_base_document_request, opts = {})
+      data, _status_code, _headers = insert_agent_profile_knowledge_base_document_with_http_info(user_id, knowledge_base_document_request, opts)
+      data
+    end
+
+    # Insert a knowledge base document
+    # Insert a knowledge base document 
+    # @param user_id 
+    # @param knowledge_base_document_request Insert request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationInsertKnowledgeBaseDocumentResponse, Fixnum, Hash)>] ConversationInsertKnowledgeBaseDocumentResponse data, response status code and response headers
+    def insert_agent_profile_knowledge_base_document_with_http_info(user_id, knowledge_base_document_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.insert_agent_profile_knowledge_base_document ...'
+      end
+      # verify the required parameter 'user_id' is set
+      if @api_client.config.client_side_validation && user_id.nil?
+        fail ArgumentError, "Missing the required parameter 'user_id' when calling ConversationApi.insert_agent_profile_knowledge_base_document"
+      end
+      # verify the required parameter 'knowledge_base_document_request' is set
+      if @api_client.config.client_side_validation && knowledge_base_document_request.nil?
+        fail ArgumentError, "Missing the required parameter 'knowledge_base_document_request' when calling ConversationApi.insert_agent_profile_knowledge_base_document"
+      end
+      # resource path
+      local_var_path = '/conversation/agent/profiles/{user_id}/knowledge_base'.sub('{' + 'user_id' + '}', user_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(knowledge_base_document_request)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ConversationInsertKnowledgeBaseDocumentResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#insert_agent_profile_knowledge_base_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
