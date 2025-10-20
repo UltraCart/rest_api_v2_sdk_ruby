@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**access_storefront_and_item** | **BOOLEAN** | Permission flag to allow this Agent access to the storefront and item information. | [optional] 
 **cancel_subscription** | **BOOLEAN** |  | [optional] 
 **delay_subscription** | **BOOLEAN** |  | [optional] 
 **lookup_order_information** | **BOOLEAN** |  | [optional] 

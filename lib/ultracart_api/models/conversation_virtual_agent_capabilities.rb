@@ -14,6 +14,9 @@ require 'date'
 
 module UltracartClient
   class ConversationVirtualAgentCapabilities
+    # Permission flag to allow this Agent access to the storefront and item information.
+    attr_accessor :access_storefront_and_item
+
     attr_accessor :cancel_subscription
 
     attr_accessor :delay_subscription
@@ -72,6 +75,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'access_storefront_and_item' => :'access_storefront_and_item',
         :'cancel_subscription' => :'cancel_subscription',
         :'delay_subscription' => :'delay_subscription',
         :'lookup_order_information' => :'lookup_order_information',
@@ -92,6 +96,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'access_storefront_and_item' => :'BOOLEAN',
         :'cancel_subscription' => :'BOOLEAN',
         :'delay_subscription' => :'BOOLEAN',
         :'lookup_order_information' => :'BOOLEAN',
@@ -116,6 +121,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'access_storefront_and_item')
+        self.access_storefront_and_item = attributes[:'access_storefront_and_item']
+      end
 
       if attributes.has_key?(:'cancel_subscription')
         self.cancel_subscription = attributes[:'cancel_subscription']
@@ -206,6 +215,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          access_storefront_and_item == o.access_storefront_and_item &&
           cancel_subscription == o.cancel_subscription &&
           delay_subscription == o.delay_subscription &&
           lookup_order_information == o.lookup_order_information &&
@@ -231,7 +241,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [cancel_subscription, delay_subscription, lookup_order_information, lookup_subscription_information, open_support_ticket, open_support_ticket_channel, open_support_ticket_channel_email, open_support_ticket_zoho_desk_department_id, pause_subscription, resume_subscription, transfer_chat_to_live_agent, update_subscription_credit_card, zoho_desk_available, zoho_desk_departments].hash
+      [access_storefront_and_item, cancel_subscription, delay_subscription, lookup_order_information, lookup_subscription_information, open_support_ticket, open_support_ticket_channel, open_support_ticket_channel_email, open_support_ticket_zoho_desk_department_id, pause_subscription, resume_subscription, transfer_chat_to_live_agent, update_subscription_credit_card, zoho_desk_available, zoho_desk_departments].hash
     end
 
     # Builds the object from hash
