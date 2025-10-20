@@ -29,6 +29,15 @@ module UltracartClient
     # Ledger entries
     attr_accessor :ledger_entries
 
+    # Loyalty tier expiration date (read only because of SDK addition)
+    attr_accessor :loyalty_tier_expiration_dts
+
+    # Loyalty tier name
+    attr_accessor :loyalty_tier_name
+
+    # Loyalty tier oid (set to zero to remove the tier)
+    attr_accessor :loyalty_tier_oid
+
     # Pending Points
     attr_accessor :pending_points
 
@@ -43,6 +52,9 @@ module UltracartClient
         :'internal_gift_certificate_balance' => :'internal_gift_certificate_balance',
         :'internal_gift_certificate_oid' => :'internal_gift_certificate_oid',
         :'ledger_entries' => :'ledger_entries',
+        :'loyalty_tier_expiration_dts' => :'loyalty_tier_expiration_dts',
+        :'loyalty_tier_name' => :'loyalty_tier_name',
+        :'loyalty_tier_oid' => :'loyalty_tier_oid',
         :'pending_points' => :'pending_points',
         :'redemptions' => :'redemptions'
       }
@@ -61,6 +73,9 @@ module UltracartClient
         :'internal_gift_certificate_balance' => :'String',
         :'internal_gift_certificate_oid' => :'Integer',
         :'ledger_entries' => :'Array<CustomerLoyaltyLedger>',
+        :'loyalty_tier_expiration_dts' => :'String',
+        :'loyalty_tier_name' => :'String',
+        :'loyalty_tier_oid' => :'Integer',
         :'pending_points' => :'Integer',
         :'redemptions' => :'Array<CustomerLoyaltyRedemption>'
       }
@@ -109,6 +124,18 @@ module UltracartClient
         end
       end
 
+      if attributes.key?(:'loyalty_tier_expiration_dts')
+        self.loyalty_tier_expiration_dts = attributes[:'loyalty_tier_expiration_dts']
+      end
+
+      if attributes.key?(:'loyalty_tier_name')
+        self.loyalty_tier_name = attributes[:'loyalty_tier_name']
+      end
+
+      if attributes.key?(:'loyalty_tier_oid')
+        self.loyalty_tier_oid = attributes[:'loyalty_tier_oid']
+      end
+
       if attributes.key?(:'pending_points')
         self.pending_points = attributes[:'pending_points']
       end
@@ -143,6 +170,9 @@ module UltracartClient
           internal_gift_certificate_balance == o.internal_gift_certificate_balance &&
           internal_gift_certificate_oid == o.internal_gift_certificate_oid &&
           ledger_entries == o.ledger_entries &&
+          loyalty_tier_expiration_dts == o.loyalty_tier_expiration_dts &&
+          loyalty_tier_name == o.loyalty_tier_name &&
+          loyalty_tier_oid == o.loyalty_tier_oid &&
           pending_points == o.pending_points &&
           redemptions == o.redemptions
     end
@@ -156,7 +186,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [current_points, internal_gift_certificate, internal_gift_certificate_balance, internal_gift_certificate_oid, ledger_entries, pending_points, redemptions].hash
+      [current_points, internal_gift_certificate, internal_gift_certificate_balance, internal_gift_certificate_oid, ledger_entries, loyalty_tier_expiration_dts, loyalty_tier_name, loyalty_tier_oid, pending_points, redemptions].hash
     end
 
     # Builds the object from hash

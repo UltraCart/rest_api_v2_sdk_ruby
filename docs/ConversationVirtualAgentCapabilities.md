@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **access_storefront_and_item** | **Boolean** | Permission flag to allow this Agent access to the storefront and item information. | [optional] |
 | **cancel_subscription** | **Boolean** |  | [optional] |
 | **delay_subscription** | **Boolean** |  | [optional] |
 | **lookup_order_information** | **Boolean** |  | [optional] |
@@ -25,6 +26,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::ConversationVirtualAgentCapabilities.new(
+  access_storefront_and_item: null,
   cancel_subscription: null,
   delay_subscription: null,
   lookup_order_information: null,
