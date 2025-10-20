@@ -14,7 +14,7 @@ require 'date'
 
 module UltracartClient
   class ConversationKnowledgeBaseDocumentUploadUrlResponse
-    attr_accessor :conversation_pbx_audio_upload_url
+    attr_accessor :conversation_knowledge_base_document_upload_url
 
     attr_accessor :error
 
@@ -28,7 +28,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'conversation_pbx_audio_upload_url' => :'conversation_pbx_audio_upload_url',
+        :'conversation_knowledge_base_document_upload_url' => :'conversation_knowledge_base_document_upload_url',
         :'error' => :'error',
         :'metadata' => :'metadata',
         :'success' => :'success',
@@ -39,7 +39,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'conversation_pbx_audio_upload_url' => :'ConversationKnowledgeBaseDocumentUploadUrl',
+        :'conversation_knowledge_base_document_upload_url' => :'ConversationKnowledgeBaseDocumentUploadUrl',
         :'error' => :'Error',
         :'metadata' => :'ResponseMetadata',
         :'success' => :'BOOLEAN',
@@ -55,8 +55,8 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'conversation_pbx_audio_upload_url')
-        self.conversation_pbx_audio_upload_url = attributes[:'conversation_pbx_audio_upload_url']
+      if attributes.has_key?(:'conversation_knowledge_base_document_upload_url')
+        self.conversation_knowledge_base_document_upload_url = attributes[:'conversation_knowledge_base_document_upload_url']
       end
 
       if attributes.has_key?(:'error')
@@ -94,7 +94,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          conversation_pbx_audio_upload_url == o.conversation_pbx_audio_upload_url &&
+          conversation_knowledge_base_document_upload_url == o.conversation_knowledge_base_document_upload_url &&
           error == o.error &&
           metadata == o.metadata &&
           success == o.success &&
@@ -110,7 +110,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_pbx_audio_upload_url, error, metadata, success, warning].hash
+      [conversation_knowledge_base_document_upload_url, error, metadata, success, warning].hash
     end
 
     # Builds the object from hash
