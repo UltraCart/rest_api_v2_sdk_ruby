@@ -1343,7 +1343,7 @@ module UltracartClient
         fail ArgumentError, "Missing the required parameter 'extension' when calling ConversationApi.get_conversation_knowledge_base_document_upload_url"
       end
       # resource path
-      local_var_path = '/conversation//rest/v2/conversation/agent/profiles/{user_id}/knowledge_base/upload_url/{extension}'.sub('{' + 'user_id' + '}', user_id.to_s).sub('{' + 'extension' + '}', extension.to_s)
+      local_var_path = '/conversation/agent/profiles/{user_id}/knowledge_base/upload_url/{extension}'.sub('{' + 'user_id' + '}', user_id.to_s).sub('{' + 'extension' + '}', extension.to_s)
 
       # query parameters
       query_params = {}
