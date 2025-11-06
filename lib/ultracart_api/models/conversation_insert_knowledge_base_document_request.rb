@@ -14,11 +14,14 @@ require 'date'
 
 module UltracartClient
   class ConversationInsertKnowledgeBaseDocumentRequest
+    attr_accessor :original_file_name
+
     attr_accessor :presigned_url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'original_file_name' => :'original_file_name',
         :'presigned_url' => :'presigned_url'
       }
     end
@@ -26,6 +29,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'original_file_name' => :'String',
         :'presigned_url' => :'String'
       }
     end
@@ -37,6 +41,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'original_file_name')
+        self.original_file_name = attributes[:'original_file_name']
+      end
 
       if attributes.has_key?(:'presigned_url')
         self.presigned_url = attributes[:'presigned_url']
@@ -61,6 +69,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          original_file_name == o.original_file_name &&
           presigned_url == o.presigned_url
     end
 
@@ -73,7 +82,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [presigned_url].hash
+      [original_file_name, presigned_url].hash
     end
 
     # Builds the object from hash
