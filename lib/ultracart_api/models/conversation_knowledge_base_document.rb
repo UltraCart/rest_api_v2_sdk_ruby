@@ -30,6 +30,8 @@ module UltracartClient
 
     attr_accessor :s3_key
 
+    attr_accessor :s3_url
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -39,7 +41,8 @@ module UltracartClient
         :'document_uuid' => :'document_uuid',
         :'metadata' => :'metadata',
         :'mime_type' => :'mime_type',
-        :'s3_key' => :'s3_key'
+        :'s3_key' => :'s3_key',
+        :'s3_url' => :'s3_url'
       }
     end
 
@@ -57,7 +60,8 @@ module UltracartClient
         :'document_uuid' => :'String',
         :'metadata' => :'String',
         :'mime_type' => :'String',
-        :'s3_key' => :'String'
+        :'s3_key' => :'String',
+        :'s3_url' => :'String'
       }
     end
 
@@ -109,6 +113,10 @@ module UltracartClient
       if attributes.key?(:'s3_key')
         self.s3_key = attributes[:'s3_key']
       end
+
+      if attributes.key?(:'s3_url')
+        self.s3_url = attributes[:'s3_url']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -135,7 +143,8 @@ module UltracartClient
           document_uuid == o.document_uuid &&
           metadata == o.metadata &&
           mime_type == o.mime_type &&
-          s3_key == o.s3_key
+          s3_key == o.s3_key &&
+          s3_url == o.s3_url
     end
 
     # @see the `==` method
@@ -147,7 +156,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [chunk_count, description, document_id, document_uuid, metadata, mime_type, s3_key].hash
+      [chunk_count, description, document_id, document_uuid, metadata, mime_type, s3_key, s3_url].hash
     end
 
     # Builds the object from hash

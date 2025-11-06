@@ -11,6 +11,7 @@
 | **metadata** | **String** |  | [optional] |
 | **mime_type** | **String** |  | [optional] |
 | **s3_key** | **String** |  | [optional] |
+| **s3_url** | **String** |  | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = UltracartClient::ConversationKnowledgeBaseDocument.new(
   document_uuid: null,
   metadata: null,
   mime_type: null,
-  s3_key: null
+  s3_key: null,
+  s3_url: null
 )
 ```
 
