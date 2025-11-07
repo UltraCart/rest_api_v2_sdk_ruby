@@ -93,6 +93,70 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Assigns an order to an affiliate
+    # Assigns an order to an affiliate. 
+    # @param order_id The order id to assign to the affiliate.
+    # @param assign_to_affiliate_request Assign to affiliate request
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [OrderResponse]
+    def assign_to_affiliate(order_id, assign_to_affiliate_request, opts = {})
+      data, _status_code, _headers = assign_to_affiliate_with_http_info(order_id, assign_to_affiliate_request, opts)
+      data
+    end
+
+    # Assigns an order to an affiliate
+    # Assigns an order to an affiliate. 
+    # @param order_id The order id to assign to the affiliate.
+    # @param assign_to_affiliate_request Assign to affiliate request
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(OrderResponse, Fixnum, Hash)>] OrderResponse data, response status code and response headers
+    def assign_to_affiliate_with_http_info(order_id, assign_to_affiliate_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.assign_to_affiliate ...'
+      end
+      # verify the required parameter 'order_id' is set
+      if @api_client.config.client_side_validation && order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.assign_to_affiliate"
+      end
+      # verify the required parameter 'assign_to_affiliate_request' is set
+      if @api_client.config.client_side_validation && assign_to_affiliate_request.nil?
+        fail ArgumentError, "Missing the required parameter 'assign_to_affiliate_request' when calling OrderApi.assign_to_affiliate"
+      end
+      # resource path
+      local_var_path = '/order/orders/{order_id}/assignToAffiliate'.sub('{' + 'order_id' + '}', order_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(assign_to_affiliate_request)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'OrderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#assign_to_affiliate\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Set a refund block on an order
     # Sets a refund block on an order to prevent a user from performing a refund.  Commonly used when a chargeback has been received. 
     # @param order_id The order id to block a refund on.
