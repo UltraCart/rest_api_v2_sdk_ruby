@@ -5,6 +5,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**adjust_order_total**](OrderApi.md#adjust_order_total) | **POST** /order/orders/{order_id}/adjust_order_total/{desired_total} | Adjusts an order total |
+| [**assign_to_affiliate**](OrderApi.md#assign_to_affiliate) | **POST** /order/orders/{order_id}/assignToAffiliate | Assigns an order to an affiliate |
 | [**block_refund_on_order**](OrderApi.md#block_refund_on_order) | **GET** /order/orders/{order_id}/refund_block | Set a refund block on an order |
 | [**cancel_order**](OrderApi.md#cancel_order) | **POST** /order/orders/{order_id}/cancel | Cancel an order |
 | [**delete_order**](OrderApi.md#delete_order) | **DELETE** /order/orders/{order_id} | Delete an order |
@@ -113,6 +114,61 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## assign_to_affiliate
+
+> <OrderResponse> assign_to_affiliate(order_id, assign_to_affiliate_request, opts)
+
+Assigns an order to an affiliate
+
+Assigns an order to an affiliate. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the assign_to_affiliate_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OrderResponse>, Integer, Hash)> assign_to_affiliate_with_http_info(order_id, assign_to_affiliate_request, opts)
+
+```ruby
+begin
+  # Assigns an order to an affiliate
+  data, status_code, headers = api_instance.assign_to_affiliate_with_http_info(order_id, assign_to_affiliate_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OrderResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->assign_to_affiliate_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **order_id** | **String** | The order id to assign to the affiliate. |  |
+| **assign_to_affiliate_request** | [**OrderAssignToAffiliateRequest**](OrderAssignToAffiliateRequest.md) | Assign to affiliate request |  |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
+
+### Return type
+
+[**OrderResponse**](OrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

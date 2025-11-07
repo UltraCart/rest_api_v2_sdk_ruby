@@ -670,6 +670,7 @@ docs/Order.md
 docs/OrderAffiliate.md
 docs/OrderAffiliateLedger.md
 docs/OrderApi.md
+docs/OrderAssignToAffiliateRequest.md
 docs/OrderAutoOrder.md
 docs/OrderBilling.md
 docs/OrderBuysafe.md
@@ -1599,6 +1600,7 @@ lib/ultracart_api/models/oauth_token_response.rb
 lib/ultracart_api/models/order.rb
 lib/ultracart_api/models/order_affiliate.rb
 lib/ultracart_api/models/order_affiliate_ledger.rb
+lib/ultracart_api/models/order_assign_to_affiliate_request.rb
 lib/ultracart_api/models/order_auto_order.rb
 lib/ultracart_api/models/order_billing.rb
 lib/ultracart_api/models/order_buysafe.rb
