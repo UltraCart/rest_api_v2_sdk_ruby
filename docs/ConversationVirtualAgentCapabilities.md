@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **access_storefront_and_item** | **BOOLEAN** | Permission flag to allow this Agent access to the storefront and item information. | [optional] 
 **cancel_subscription** | **BOOLEAN** |  | [optional] 
 **delay_subscription** | **BOOLEAN** |  | [optional] 
+**generate_coupon** | **BOOLEAN** | Permission flag to allow this Agent to generate coupons based upon the agent prompt instructions | [optional] 
 **lookup_order_information** | **BOOLEAN** |  | [optional] 
 **lookup_subscription_information** | **BOOLEAN** |  | [optional] 
 **open_support_ticket** | **BOOLEAN** |  | [optional] 
