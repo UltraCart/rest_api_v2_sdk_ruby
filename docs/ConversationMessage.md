@@ -15,6 +15,7 @@
 | **merchant_id** | **String** |  | [optional] |
 | **message_dts** | **String** | Message date/time | [optional] |
 | **message_epoch** | **Integer** | Message epoch milliseconds | [optional] |
+| **message_type** | **String** |  | [optional] |
 | **translations** | [**Array&lt;ConversationMessageTranslation&gt;**](ConversationMessageTranslation.md) |  | [optional] |
 | **transport_statuses** | [**Array&lt;ConversationMessageTransportStatus&gt;**](ConversationMessageTransportStatus.md) |  | [optional] |
 | **type** | **String** | Message type | [optional] |
@@ -37,6 +38,7 @@ instance = UltracartClient::ConversationMessage.new(
   merchant_id: null,
   message_dts: null,
   message_epoch: null,
+  message_type: null,
   translations: null,
   transport_statuses: null,
   type: null,

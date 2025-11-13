@@ -7,6 +7,7 @@
 | **access_storefront_and_item** | **Boolean** | Permission flag to allow this Agent access to the storefront and item information. | [optional] |
 | **cancel_subscription** | **Boolean** |  | [optional] |
 | **delay_subscription** | **Boolean** |  | [optional] |
+| **generate_coupon** | **Boolean** | Permission flag to allow this Agent to generate coupons based upon the agent prompt instructions | [optional] |
 | **lookup_order_information** | **Boolean** |  | [optional] |
 | **lookup_subscription_information** | **Boolean** |  | [optional] |
 | **open_support_ticket** | **Boolean** |  | [optional] |
@@ -29,6 +30,7 @@ instance = UltracartClient::ConversationVirtualAgentCapabilities.new(
   access_storefront_and_item: null,
   cancel_subscription: null,
   delay_subscription: null,
+  generate_coupon: null,
   lookup_order_information: null,
   lookup_subscription_information: null,
   open_support_ticket: null,

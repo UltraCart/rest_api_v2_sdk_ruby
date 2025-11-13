@@ -22,6 +22,9 @@ module UltracartClient
 
     attr_accessor :delay_subscription
 
+    # Permission flag to allow this Agent to generate coupons based upon the agent prompt instructions
+    attr_accessor :generate_coupon
+
     attr_accessor :lookup_order_information
 
     attr_accessor :lookup_subscription_information
@@ -79,6 +82,7 @@ module UltracartClient
         :'access_storefront_and_item' => :'access_storefront_and_item',
         :'cancel_subscription' => :'cancel_subscription',
         :'delay_subscription' => :'delay_subscription',
+        :'generate_coupon' => :'generate_coupon',
         :'lookup_order_information' => :'lookup_order_information',
         :'lookup_subscription_information' => :'lookup_subscription_information',
         :'open_support_ticket' => :'open_support_ticket',
@@ -105,6 +109,7 @@ module UltracartClient
         :'access_storefront_and_item' => :'Boolean',
         :'cancel_subscription' => :'Boolean',
         :'delay_subscription' => :'Boolean',
+        :'generate_coupon' => :'Boolean',
         :'lookup_order_information' => :'Boolean',
         :'lookup_subscription_information' => :'Boolean',
         :'open_support_ticket' => :'Boolean',
@@ -151,6 +156,10 @@ module UltracartClient
 
       if attributes.key?(:'delay_subscription')
         self.delay_subscription = attributes[:'delay_subscription']
+      end
+
+      if attributes.key?(:'generate_coupon')
+        self.generate_coupon = attributes[:'generate_coupon']
       end
 
       if attributes.key?(:'lookup_order_information')
@@ -237,6 +246,7 @@ module UltracartClient
           access_storefront_and_item == o.access_storefront_and_item &&
           cancel_subscription == o.cancel_subscription &&
           delay_subscription == o.delay_subscription &&
+          generate_coupon == o.generate_coupon &&
           lookup_order_information == o.lookup_order_information &&
           lookup_subscription_information == o.lookup_subscription_information &&
           open_support_ticket == o.open_support_ticket &&
@@ -260,7 +270,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_storefront_and_item, cancel_subscription, delay_subscription, lookup_order_information, lookup_subscription_information, open_support_ticket, open_support_ticket_channel, open_support_ticket_channel_email, open_support_ticket_zoho_desk_department_id, pause_subscription, resume_subscription, transfer_chat_to_live_agent, update_subscription_credit_card, zoho_desk_available, zoho_desk_departments].hash
+      [access_storefront_and_item, cancel_subscription, delay_subscription, generate_coupon, lookup_order_information, lookup_subscription_information, open_support_ticket, open_support_ticket_channel, open_support_ticket_channel_email, open_support_ticket_zoho_desk_department_id, pause_subscription, resume_subscription, transfer_chat_to_live_agent, update_subscription_credit_card, zoho_desk_available, zoho_desk_departments].hash
     end
 
     # Builds the object from hash

@@ -40,6 +40,8 @@ module UltracartClient
     # Message epoch milliseconds
     attr_accessor :message_epoch
 
+    attr_accessor :message_type
+
     attr_accessor :translations
 
     attr_accessor :transport_statuses
@@ -85,6 +87,7 @@ module UltracartClient
         :'merchant_id' => :'merchant_id',
         :'message_dts' => :'message_dts',
         :'message_epoch' => :'message_epoch',
+        :'message_type' => :'message_type',
         :'translations' => :'translations',
         :'transport_statuses' => :'transport_statuses',
         :'type' => :'type',
@@ -111,6 +114,7 @@ module UltracartClient
         :'merchant_id' => :'String',
         :'message_dts' => :'String',
         :'message_epoch' => :'Integer',
+        :'message_type' => :'String',
         :'translations' => :'Array<ConversationMessageTranslation>',
         :'transport_statuses' => :'Array<ConversationMessageTransportStatus>',
         :'type' => :'String',
@@ -185,6 +189,10 @@ module UltracartClient
         self.message_epoch = attributes[:'message_epoch']
       end
 
+      if attributes.key?(:'message_type')
+        self.message_type = attributes[:'message_type']
+      end
+
       if attributes.key?(:'translations')
         if (value = attributes[:'translations']).is_a?(Array)
           self.translations = value
@@ -249,6 +257,7 @@ module UltracartClient
           merchant_id == o.merchant_id &&
           message_dts == o.message_dts &&
           message_epoch == o.message_epoch &&
+          message_type == o.message_type &&
           translations == o.translations &&
           transport_statuses == o.transport_statuses &&
           type == o.type &&
@@ -264,7 +273,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [author_conversation_participant_arn, author_conversation_participant_name, body, client_message_id, conversation_message_uuid, delay_until_dts, language_iso_code, media_urls, merchant_id, message_dts, message_epoch, translations, transport_statuses, type, upload_keys].hash
+      [author_conversation_participant_arn, author_conversation_participant_name, body, client_message_id, conversation_message_uuid, delay_until_dts, language_iso_code, media_urls, merchant_id, message_dts, message_epoch, message_type, translations, transport_statuses, type, upload_keys].hash
     end
 
     # Builds the object from hash
