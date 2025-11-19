@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **freight_class** | **String** | Freight class | [optional] 
 **hazmat** | **BOOLEAN** | Hazardous material | [optional] 
 **hold_for_transmission** | **BOOLEAN** | Hold for transmission | [optional] 
+**include_on_packing_slip** | **BOOLEAN** | Force this item onto the packing slip even if there is no weight. | [optional] 
 **made_to_order** | **BOOLEAN** | True if this item is made to order | [optional] 
 **made_to_order_lead_time** | **Integer** | Number of days lead time it takes to make the item before ite can ship | [optional] 
 **max_days_time_in_transit** | **Integer** | Maximum days allowed in transit | [optional] 
