@@ -181,6 +181,7 @@ docs/ConversationLocationStateProvince.md
 docs/ConversationLocationsResponse.md
 docs/ConversationMcpServer.md
 docs/ConversationMcpServerResponse.md
+docs/ConversationMcpServerToolsResponse.md
 docs/ConversationMcpServersResponse.md
 docs/ConversationMessage.md
 docs/ConversationMessageTranslation.md
@@ -1123,6 +1124,7 @@ lib/ultracart_api/models/conversation_location_state_province.rb
 lib/ultracart_api/models/conversation_locations_response.rb
 lib/ultracart_api/models/conversation_mcp_server.rb
 lib/ultracart_api/models/conversation_mcp_server_response.rb
+lib/ultracart_api/models/conversation_mcp_server_tools_response.rb
 lib/ultracart_api/models/conversation_mcp_servers_response.rb
 lib/ultracart_api/models/conversation_message.rb
 lib/ultracart_api/models/conversation_message_translation.rb

@@ -5,6 +5,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**delete_agent_profile_knowledge_base_document**](ConversationApi.md#delete_agent_profile_knowledge_base_document) | **DELETE** /conversation/agent/profiles/{user_id}/knowledge_base/{document_uuid} | Delete a knowledge base document |
+| [**delete_agent_profile_mcp**](ConversationApi.md#delete_agent_profile_mcp) | **POST** /conversation/agent/profiles/{user_id}/mcps/{mcp_server_uuid} | Delete an agent MCP server |
 | [**delete_conversation_canned_message**](ConversationApi.md#delete_conversation_canned_message) | **DELETE** /conversation/canned_messages/{conversation_canned_message_oid} | Delete a conversation canned message |
 | [**delete_department**](ConversationApi.md#delete_department) | **DELETE** /conversation/departments/{conversation_department_oid} | Delete a conversation department |
 | [**delete_engagement**](ConversationApi.md#delete_engagement) | **DELETE** /conversation/engagements/{conversation_engagement_oid} | Delete a conversation engagement |
@@ -20,6 +21,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_agent_profile**](ConversationApi.md#get_agent_profile) | **GET** /conversation/agent/profile | Get agent profile |
 | [**get_agent_profile_knowledge_base**](ConversationApi.md#get_agent_profile_knowledge_base) | **GET** /conversation/agent/profiles/{user_id}/knowledge_base | Get the list of knowledge base documents associated with this agent profile |
 | [**get_agent_profile_mcp**](ConversationApi.md#get_agent_profile_mcp) | **GET** /conversation/agent/profiles/{user_id}/mcps/{mcp_server_uuid} | Get an MCP server associated with this agent |
+| [**get_agent_profile_mcp_tools**](ConversationApi.md#get_agent_profile_mcp_tools) | **GET** /conversation/agent/profiles/{user_id}/mcps/{mcp_server_uuid}/tools | Get the tools available from the MCP server |
 | [**get_agent_profile_mcps**](ConversationApi.md#get_agent_profile_mcps) | **GET** /conversation/agent/profiles/{user_id}/mcps | Get the list of MCP servers associated with this agent |
 | [**get_agent_profiles**](ConversationApi.md#get_agent_profiles) | **GET** /conversation/agent/profiles | Get agent profiles |
 | [**get_agent_websocket_authorization**](ConversationApi.md#get_agent_websocket_authorization) | **PUT** /conversation/agent/auth | Get agent websocket authorization |
@@ -85,7 +87,6 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**sms_unsubscribe_conversation**](ConversationApi.md#sms_unsubscribe_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/sms_unsubscribe | Unsubscribe any SMS participants in this conversation |
 | [**start_conversation**](ConversationApi.md#start_conversation) | **PUT** /conversation/conversations | Start a conversation |
 | [**update_agent_profile**](ConversationApi.md#update_agent_profile) | **PUT** /conversation/agent/profile | Update agent profile |
-| [**update_agent_profile_mcp**](ConversationApi.md#update_agent_profile_mcp) | **POST** /conversation/agent/profiles/{user_id}/mcps/{mcp_server_uuid} | Update an agent MCP server |
 | [**update_conversation_canned_message**](ConversationApi.md#update_conversation_canned_message) | **PUT** /conversation/canned_messages/{conversation_canned_message_oid} | Update a canned message |
 | [**update_conversation_department**](ConversationApi.md#update_conversation_department) | **PUT** /conversation/departments/{conversation_department_oid} | Update a department |
 | [**update_conversation_engagement**](ConversationApi.md#update_conversation_engagement) | **PUT** /conversation/engagements/{conversation_engagement_oid} | Update a engagement |
@@ -145,6 +146,60 @@ end
 ### Return type
 
 [**ConversationDeleteKnowledgeBaseDocumentResponse**](ConversationDeleteKnowledgeBaseDocumentResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_agent_profile_mcp
+
+> delete_agent_profile_mcp(user_id, mcp_server_uuid)
+
+Delete an agent MCP server
+
+Delete an agent MCP server 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_agent_profile_mcp_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_agent_profile_mcp_with_http_info(user_id, mcp_server_uuid)
+
+```ruby
+begin
+  # Delete an agent MCP server
+  data, status_code, headers = api_instance.delete_agent_profile_mcp_with_http_info(user_id, mcp_server_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_agent_profile_mcp_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+| **mcp_server_uuid** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
@@ -951,6 +1006,60 @@ end
 ### Return type
 
 [**ConversationMcpServerResponse**](ConversationMcpServerResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_agent_profile_mcp_tools
+
+> <ConversationMcpServerToolsResponse> get_agent_profile_mcp_tools(user_id, mcp_server_uuid)
+
+Get the tools available from the MCP server
+
+Get the tools available from the MCP server 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_agent_profile_mcp_tools_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationMcpServerToolsResponse>, Integer, Hash)> get_agent_profile_mcp_tools_with_http_info(user_id, mcp_server_uuid)
+
+```ruby
+begin
+  # Get the tools available from the MCP server
+  data, status_code, headers = api_instance.get_agent_profile_mcp_tools_with_http_info(user_id, mcp_server_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationMcpServerToolsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_profile_mcp_tools_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+| **mcp_server_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationMcpServerToolsResponse**](ConversationMcpServerToolsResponse.md)
 
 ### Authorization
 
@@ -4426,61 +4535,6 @@ end
 ### Return type
 
 [**ConversationAgentProfileResponse**](ConversationAgentProfileResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## update_agent_profile_mcp
-
-> <ConversationMcpServerResponse> update_agent_profile_mcp(user_id, mcp_server_uuid, mcp_server)
-
-Update an agent MCP server
-
-Update an agent MCP server 
-
-
-### Examples
-
-
-(No example for this operation).
-
-
-#### Using the update_agent_profile_mcp_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<ConversationMcpServerResponse>, Integer, Hash)> update_agent_profile_mcp_with_http_info(user_id, mcp_server_uuid, mcp_server)
-
-```ruby
-begin
-  # Update an agent MCP server
-  data, status_code, headers = api_instance.update_agent_profile_mcp_with_http_info(user_id, mcp_server_uuid, mcp_server)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <ConversationMcpServerResponse>
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ConversationApi->update_agent_profile_mcp_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **user_id** | **Integer** |  |  |
-| **mcp_server_uuid** | **String** |  |  |
-| **mcp_server** | [**ConversationMcpServer**](ConversationMcpServer.md) | MCP Server |  |
-
-### Return type
-
-[**ConversationMcpServerResponse**](ConversationMcpServerResponse.md)
 
 ### Authorization
 
