@@ -26,6 +26,9 @@ module UltracartClient
     # Additional instructions for this AI when handle SMS messages
     attr_accessor :ai_sms_instructions
 
+    # Additional instructions for this AI when handling ticket draft replies
+    attr_accessor :ai_ticket_instructions
+
     # The number of engagement chats that can be pushed on them at any given time.
     attr_accessor :chat_limit
 
@@ -49,6 +52,12 @@ module UltracartClient
 
     # User ID associated with the agent.  Populated by getAgentProfiles call only.
     attr_accessor :user_id
+
+    # Restrict this agent to drafting replies only to tickets with these classifications
+    attr_accessor :zohodesk_classifications
+
+    # Restrict this agent to drafting replies only to these department ids
+    attr_accessor :zohodesk_departments
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -79,6 +88,7 @@ module UltracartClient
         :'ai_chat_instructions' => :'ai_chat_instructions',
         :'ai_persona' => :'ai_persona',
         :'ai_sms_instructions' => :'ai_sms_instructions',
+        :'ai_ticket_instructions' => :'ai_ticket_instructions',
         :'chat_limit' => :'chat_limit',
         :'default_language_iso_code' => :'default_language_iso_code',
         :'default_status' => :'default_status',
@@ -86,7 +96,9 @@ module UltracartClient
         :'name' => :'name',
         :'profile_image_upload_key' => :'profile_image_upload_key',
         :'profile_image_url' => :'profile_image_url',
-        :'user_id' => :'user_id'
+        :'user_id' => :'user_id',
+        :'zohodesk_classifications' => :'zohodesk_classifications',
+        :'zohodesk_departments' => :'zohodesk_departments'
       }
     end
 
@@ -97,6 +109,7 @@ module UltracartClient
         :'ai_chat_instructions' => :'String',
         :'ai_persona' => :'String',
         :'ai_sms_instructions' => :'String',
+        :'ai_ticket_instructions' => :'String',
         :'chat_limit' => :'Integer',
         :'default_language_iso_code' => :'String',
         :'default_status' => :'String',
@@ -104,7 +117,9 @@ module UltracartClient
         :'name' => :'String',
         :'profile_image_upload_key' => :'String',
         :'profile_image_url' => :'String',
-        :'user_id' => :'Integer'
+        :'user_id' => :'Integer',
+        :'zohodesk_classifications' => :'Array<String>',
+        :'zohodesk_departments' => :'Array<String>'
       }
     end
 
@@ -130,6 +145,10 @@ module UltracartClient
 
       if attributes.has_key?(:'ai_sms_instructions')
         self.ai_sms_instructions = attributes[:'ai_sms_instructions']
+      end
+
+      if attributes.has_key?(:'ai_ticket_instructions')
+        self.ai_ticket_instructions = attributes[:'ai_ticket_instructions']
       end
 
       if attributes.has_key?(:'chat_limit')
@@ -162,6 +181,18 @@ module UltracartClient
 
       if attributes.has_key?(:'user_id')
         self.user_id = attributes[:'user_id']
+      end
+
+      if attributes.has_key?(:'zohodesk_classifications')
+        if (value = attributes[:'zohodesk_classifications']).is_a?(Array)
+          self.zohodesk_classifications = value
+        end
+      end
+
+      if attributes.has_key?(:'zohodesk_departments')
+        if (value = attributes[:'zohodesk_departments']).is_a?(Array)
+          self.zohodesk_departments = value
+        end
       end
     end
 
@@ -199,6 +230,7 @@ module UltracartClient
           ai_chat_instructions == o.ai_chat_instructions &&
           ai_persona == o.ai_persona &&
           ai_sms_instructions == o.ai_sms_instructions &&
+          ai_ticket_instructions == o.ai_ticket_instructions &&
           chat_limit == o.chat_limit &&
           default_language_iso_code == o.default_language_iso_code &&
           default_status == o.default_status &&
@@ -206,7 +238,9 @@ module UltracartClient
           name == o.name &&
           profile_image_upload_key == o.profile_image_upload_key &&
           profile_image_url == o.profile_image_url &&
-          user_id == o.user_id
+          user_id == o.user_id &&
+          zohodesk_classifications == o.zohodesk_classifications &&
+          zohodesk_departments == o.zohodesk_departments
     end
 
     # @see the `==` method
@@ -218,7 +252,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [ai, ai_chat_instructions, ai_persona, ai_sms_instructions, chat_limit, default_language_iso_code, default_status, display_name, name, profile_image_upload_key, profile_image_url, user_id].hash
+      [ai, ai_chat_instructions, ai_persona, ai_sms_instructions, ai_ticket_instructions, chat_limit, default_language_iso_code, default_status, display_name, name, profile_image_upload_key, profile_image_url, user_id, zohodesk_classifications, zohodesk_departments].hash
     end
 
     # Builds the object from hash
