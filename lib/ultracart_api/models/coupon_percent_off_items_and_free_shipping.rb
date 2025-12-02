@@ -30,6 +30,9 @@ module UltracartClient
     # An optional list of items which will receive a discount.  If blank, discount applies to all items except excluded items.
     attr_accessor :items
 
+    # One or more shipping methods that may be used with this coupon.  If not specified or empty, methods that are marked as qualifies for free shipping will be the only free methods
+    attr_accessor :shipping_methods
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -37,7 +40,8 @@ module UltracartClient
         :'excluded_item_tags' => :'excluded_item_tags',
         :'excluded_items' => :'excluded_items',
         :'item_tags' => :'item_tags',
-        :'items' => :'items'
+        :'items' => :'items',
+        :'shipping_methods' => :'shipping_methods'
       }
     end
 
@@ -53,7 +57,8 @@ module UltracartClient
         :'excluded_item_tags' => :'Array<String>',
         :'excluded_items' => :'Array<String>',
         :'item_tags' => :'Array<String>',
-        :'items' => :'Array<String>'
+        :'items' => :'Array<String>',
+        :'shipping_methods' => :'Array<String>'
       }
     end
 
@@ -105,6 +110,12 @@ module UltracartClient
           self.items = value
         end
       end
+
+      if attributes.key?(:'shipping_methods')
+        if (value = attributes[:'shipping_methods']).is_a?(Array)
+          self.shipping_methods = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -129,7 +140,8 @@ module UltracartClient
           excluded_item_tags == o.excluded_item_tags &&
           excluded_items == o.excluded_items &&
           item_tags == o.item_tags &&
-          items == o.items
+          items == o.items &&
+          shipping_methods == o.shipping_methods
     end
 
     # @see the `==` method
@@ -141,7 +153,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [discount_percent, excluded_item_tags, excluded_items, item_tags, items].hash
+      [discount_percent, excluded_item_tags, excluded_items, item_tags, items, shipping_methods].hash
     end
 
     # Builds the object from hash

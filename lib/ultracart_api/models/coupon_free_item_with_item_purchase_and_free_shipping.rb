@@ -27,13 +27,17 @@ module UltracartClient
     # Required items (at least one from the list) that must be purchased for coupon to be valid
     attr_accessor :required_purchase_items
 
+    # One or more shipping methods that may be used with this coupon.  If not specified or empty, methods that are marked as qualifies for free shipping will be the only free methods
+    attr_accessor :shipping_methods
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'items' => :'items',
         :'limit' => :'limit',
         :'match_required_purchase_item_to_free_item' => :'match_required_purchase_item_to_free_item',
-        :'required_purchase_items' => :'required_purchase_items'
+        :'required_purchase_items' => :'required_purchase_items',
+        :'shipping_methods' => :'shipping_methods'
       }
     end
 
@@ -48,7 +52,8 @@ module UltracartClient
         :'items' => :'Array<String>',
         :'limit' => :'Integer',
         :'match_required_purchase_item_to_free_item' => :'Boolean',
-        :'required_purchase_items' => :'Array<String>'
+        :'required_purchase_items' => :'Array<String>',
+        :'shipping_methods' => :'Array<String>'
       }
     end
 
@@ -92,6 +97,12 @@ module UltracartClient
           self.required_purchase_items = value
         end
       end
+
+      if attributes.key?(:'shipping_methods')
+        if (value = attributes[:'shipping_methods']).is_a?(Array)
+          self.shipping_methods = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -115,7 +126,8 @@ module UltracartClient
           items == o.items &&
           limit == o.limit &&
           match_required_purchase_item_to_free_item == o.match_required_purchase_item_to_free_item &&
-          required_purchase_items == o.required_purchase_items
+          required_purchase_items == o.required_purchase_items &&
+          shipping_methods == o.shipping_methods
     end
 
     # @see the `==` method
@@ -127,7 +139,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [items, limit, match_required_purchase_item_to_free_item, required_purchase_items].hash
+      [items, limit, match_required_purchase_item_to_free_item, required_purchase_items, shipping_methods].hash
     end
 
     # Builds the object from hash
