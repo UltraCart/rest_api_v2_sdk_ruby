@@ -3,6 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ai_generation** | **BOOLEAN** |  | [optional] 
+**ai_generation_prompt** | **String** |  | [optional] 
+**ai_generation_user_id** | **Integer** |  | [optional] 
 **deleted** | **BOOLEAN** | Deleted | [optional] 
 **edited_by_user** | **String** | Edited by user | [optional] 
 **email_communication_sequence_email_uuid** | **String** | Email communication sequence email uuid | [optional] 

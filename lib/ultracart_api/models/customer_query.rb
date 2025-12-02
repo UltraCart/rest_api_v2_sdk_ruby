@@ -68,6 +68,9 @@ module UltracartClient
     # QuickBooks class to import this customer as
     attr_accessor :qb_class
 
+    # Query Target
+    attr_accessor :query_target
+
     # QuickBooks name to import this customer as
     attr_accessor :quickbooks_code
 
@@ -104,6 +107,28 @@ module UltracartClient
     # Signup date start
     attr_accessor :signup_dts_start
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -125,6 +150,7 @@ module UltracartClient
         :'pricing_tier_name' => :'pricing_tier_name',
         :'pricing_tier_oid' => :'pricing_tier_oid',
         :'qb_class' => :'qb_class',
+        :'query_target' => :'query_target',
         :'quickbooks_code' => :'quickbooks_code',
         :'shipping_city' => :'shipping_city',
         :'shipping_company' => :'shipping_company',
@@ -161,6 +187,7 @@ module UltracartClient
         :'pricing_tier_name' => :'String',
         :'pricing_tier_oid' => :'Integer',
         :'qb_class' => :'String',
+        :'query_target' => :'String',
         :'quickbooks_code' => :'String',
         :'shipping_city' => :'String',
         :'shipping_company' => :'String',
@@ -260,6 +287,10 @@ module UltracartClient
 
       if attributes.has_key?(:'qb_class')
         self.qb_class = attributes[:'qb_class']
+      end
+
+      if attributes.has_key?(:'query_target')
+        self.query_target = attributes[:'query_target']
       end
 
       if attributes.has_key?(:'quickbooks_code')
@@ -407,6 +438,8 @@ module UltracartClient
       return false if !@billing_postal_code.nil? && @billing_postal_code.to_s.length > 20
       return false if !@billing_state.nil? && @billing_state.to_s.length > 32
       return false if !@pricing_tier_name.nil? && @pricing_tier_name.to_s.length > 50
+      query_target_validator = EnumAttributeValidator.new('String', ['origin', 'cache'])
+      return false unless query_target_validator.valid?(@query_target)
       return false if !@shipping_city.nil? && @shipping_city.to_s.length > 32
       return false if !@shipping_company.nil? && @shipping_company.to_s.length > 50
       return false if !@shipping_country_code.nil? && @shipping_country_code.to_s.length > 2
@@ -517,6 +550,16 @@ module UltracartClient
       end
 
       @pricing_tier_name = pricing_tier_name
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] query_target Object to be assigned
+    def query_target=(query_target)
+      validator = EnumAttributeValidator.new('String', ['origin', 'cache'])
+      unless validator.valid?(query_target)
+        fail ArgumentError, 'invalid value for "query_target", must be one of #{validator.allowable_values}.'
+      end
+      @query_target = query_target
     end
 
     # Custom attribute writer method with validation
@@ -632,6 +675,7 @@ module UltracartClient
           pricing_tier_name == o.pricing_tier_name &&
           pricing_tier_oid == o.pricing_tier_oid &&
           qb_class == o.qb_class &&
+          query_target == o.query_target &&
           quickbooks_code == o.quickbooks_code &&
           shipping_city == o.shipping_city &&
           shipping_company == o.shipping_company &&
@@ -655,7 +699,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [all_tags, any_tags, billing_city, billing_company, billing_country_code, billing_day_phone, billing_evening_phone, billing_first_name, billing_last_name, billing_postal_code, billing_state, email, emails, last_modified_dts_end, last_modified_dts_start, pricing_tier_name, pricing_tier_oid, qb_class, quickbooks_code, shipping_city, shipping_company, shipping_country_code, shipping_day_phone, shipping_evening_phone, shipping_first_name, shipping_last_name, shipping_postal_code, shipping_state, signup_dts_end, signup_dts_start].hash
+      [all_tags, any_tags, billing_city, billing_company, billing_country_code, billing_day_phone, billing_evening_phone, billing_first_name, billing_last_name, billing_postal_code, billing_state, email, emails, last_modified_dts_end, last_modified_dts_start, pricing_tier_name, pricing_tier_oid, qb_class, query_target, quickbooks_code, shipping_city, shipping_company, shipping_country_code, shipping_day_phone, shipping_evening_phone, shipping_first_name, shipping_last_name, shipping_postal_code, shipping_state, signup_dts_end, signup_dts_start].hash
     end
 
     # Builds the object from hash
