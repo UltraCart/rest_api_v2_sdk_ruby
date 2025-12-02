@@ -22,6 +22,7 @@
 | **pricing_tier_name** | **String** | Pricing tier name | [optional] |
 | **pricing_tier_oid** | **Integer** | Pricing tier oid | [optional] |
 | **qb_class** | **String** | QuickBooks class to import this customer as | [optional] |
+| **query_target** | **String** | Query Target | [optional] |
 | **quickbooks_code** | **String** | QuickBooks name to import this customer as | [optional] |
 | **shipping_city** | **String** | Billing city | [optional] |
 | **shipping_company** | **String** | Billing company | [optional] |
@@ -59,6 +60,7 @@ instance = UltracartClient::CustomerQuery.new(
   pricing_tier_name: null,
   pricing_tier_oid: null,
   qb_class: null,
+  query_target: null,
   quickbooks_code: null,
   shipping_city: null,
   shipping_company: null,

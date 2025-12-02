@@ -15,6 +15,12 @@ require 'time'
 
 module UltracartClient
   class EmailCommseqEmail
+    attr_accessor :ai_generation
+
+    attr_accessor :ai_generation_prompt
+
+    attr_accessor :ai_generation_user_id
+
     # Deleted
     attr_accessor :deleted
 
@@ -112,6 +118,9 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'ai_generation' => :'ai_generation',
+        :'ai_generation_prompt' => :'ai_generation_prompt',
+        :'ai_generation_user_id' => :'ai_generation_user_id',
         :'deleted' => :'deleted',
         :'edited_by_user' => :'edited_by_user',
         :'email_communication_sequence_email_uuid' => :'email_communication_sequence_email_uuid',
@@ -157,6 +166,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'ai_generation' => :'Boolean',
+        :'ai_generation_prompt' => :'String',
+        :'ai_generation_user_id' => :'Integer',
         :'deleted' => :'Boolean',
         :'edited_by_user' => :'String',
         :'email_communication_sequence_email_uuid' => :'String',
@@ -214,6 +226,18 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'ai_generation')
+        self.ai_generation = attributes[:'ai_generation']
+      end
+
+      if attributes.key?(:'ai_generation_prompt')
+        self.ai_generation_prompt = attributes[:'ai_generation_prompt']
+      end
+
+      if attributes.key?(:'ai_generation_user_id')
+        self.ai_generation_user_id = attributes[:'ai_generation_user_id']
+      end
 
       if attributes.key?(:'deleted')
         self.deleted = attributes[:'deleted']
@@ -370,6 +394,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          ai_generation == o.ai_generation &&
+          ai_generation_prompt == o.ai_generation_prompt &&
+          ai_generation_user_id == o.ai_generation_user_id &&
           deleted == o.deleted &&
           edited_by_user == o.edited_by_user &&
           email_communication_sequence_email_uuid == o.email_communication_sequence_email_uuid &&
@@ -415,7 +442,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [deleted, edited_by_user, email_communication_sequence_email_uuid, email_communication_sequence_uuid, email_container_cjson, email_container_cjson_last_modified_dts, email_template_vm_path, external_generation, external_generation_authentication, external_generation_basic_password, external_generation_basic_username, external_generation_header_name, external_generation_header_value, external_generation_id, external_generation_url, filter_profile_equation_json, individually_render, library_item_oid, magic_link, merchant_id, pending_review, preview_text, rejected, requires_review, screenshot_large_full_url, screenshot_large_viewport_url, screenshot_small_full_url, screenshot_small_viewport_url, smart_sending, storefront_oid, subject, suspended_for_spam, transactional_email, version].hash
+      [ai_generation, ai_generation_prompt, ai_generation_user_id, deleted, edited_by_user, email_communication_sequence_email_uuid, email_communication_sequence_uuid, email_container_cjson, email_container_cjson_last_modified_dts, email_template_vm_path, external_generation, external_generation_authentication, external_generation_basic_password, external_generation_basic_username, external_generation_header_name, external_generation_header_value, external_generation_id, external_generation_url, filter_profile_equation_json, individually_render, library_item_oid, magic_link, merchant_id, pending_review, preview_text, rejected, requires_review, screenshot_large_full_url, screenshot_large_viewport_url, screenshot_small_full_url, screenshot_small_viewport_url, smart_sending, storefront_oid, subject, suspended_for_spam, transactional_email, version].hash
     end
 
     # Builds the object from hash

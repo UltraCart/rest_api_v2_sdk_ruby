@@ -4,6 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **ai_generation** | **Boolean** |  | [optional] |
+| **ai_generation_prompt** | **String** |  | [optional] |
+| **ai_generation_user_id** | **Integer** |  | [optional] |
 | **deleted** | **Boolean** | Deleted | [optional] |
 | **edited_by_user** | **String** | Edited by user | [optional] |
 | **email_communication_sequence_email_uuid** | **String** | Email communication sequence email uuid | [optional] |
@@ -45,6 +48,9 @@
 require 'ultracart_api'
 
 instance = UltracartClient::EmailCommseqEmail.new(
+  ai_generation: null,
+  ai_generation_prompt: null,
+  ai_generation_user_id: null,
   deleted: null,
   edited_by_user: null,
   email_communication_sequence_email_uuid: null,

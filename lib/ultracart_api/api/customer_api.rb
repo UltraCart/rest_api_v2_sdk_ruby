@@ -1494,6 +1494,88 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Search for customers
+    # Retrieves customers from the account by matching the search value against most customer fields.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination.  This search also goes against the cache so updates should not be performed with these result objects.  Always re-query the individual customer profile if you are going to make updates. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :search_string Search
+    # @option opts [String] :signup_dts_start Signup date start
+    # @option opts [String] :signup_dts_end Signup date end
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Max 200) (default to 100)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
+    # @option opts [String] :_since Fetch customers that have been created/modified since this date/time.
+    # @option opts [String] :_sort The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [CustomersResponse]
+    def search_customers(opts = {})
+      data, _status_code, _headers = search_customers_with_http_info(opts)
+      data
+    end
+
+    # Search for customers
+    # Retrieves customers from the account by matching the search value against most customer fields.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination.  This search also goes against the cache so updates should not be performed with these result objects.  Always re-query the individual customer profile if you are going to make updates. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :search_string Search
+    # @option opts [String] :signup_dts_start Signup date start
+    # @option opts [String] :signup_dts_end Signup date end
+    # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (Max 200) (default to 100)
+    # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
+    # @option opts [String] :_since Fetch customers that have been created/modified since this date/time.
+    # @option opts [String] :_sort The sort order of the customers.  See Sorting documentation for examples of using multiple values and sorting by ascending and descending.
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(CustomersResponse, Integer, Hash)>] CustomersResponse data, response status code and response headers
+    def search_customers_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.search_customers ...'
+      end
+      # resource path
+      local_var_path = '/customer/customers/search'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'search_string'] = opts[:'search_string'] if !opts[:'search_string'].nil?
+      query_params[:'signup_dts_start'] = opts[:'signup_dts_start'] if !opts[:'signup_dts_start'].nil?
+      query_params[:'signup_dts_end'] = opts[:'signup_dts_end'] if !opts[:'signup_dts_end'].nil?
+      query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
+      query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
+      query_params[:'_since'] = opts[:'_since'] if !opts[:'_since'].nil?
+      query_params[:'_sort'] = opts[:'_sort'] if !opts[:'_sort'].nil?
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CustomersResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"CustomerApi.search_customers",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#search_customers\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Update a customer
     # Update a customer on the UltraCart account. 
     # @param customer_profile_oid [Integer] The customer_profile_oid to update.
