@@ -16,6 +16,7 @@
 | **pbx_voice_identity** | **String** |  | [optional] |
 | **pbx_voice_token** | **String** |  | [optional] |
 | **pbx_worker_token** | **String** |  | [optional] |
+| **pbx_worker_token_v2** | **String** |  | [optional] |
 | **twilio_accounts** | [**Array&lt;ConversationTwilioAccount&gt;**](ConversationTwilioAccount.md) |  | [optional] |
 | **user_id** | **Integer** | UltraCart User ID | [optional] |
 | **websocket_url** | **String** |  | [optional] |
@@ -38,6 +39,7 @@ instance = UltracartClient::ConversationAgentAuth.new(
   pbx_voice_identity: null,
   pbx_voice_token: null,
   pbx_worker_token: null,
+  pbx_worker_token_v2: null,
   twilio_accounts: null,
   user_id: null,
   websocket_url: null
