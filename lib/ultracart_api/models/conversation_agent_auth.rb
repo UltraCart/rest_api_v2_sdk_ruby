@@ -39,6 +39,8 @@ module UltracartClient
 
     attr_accessor :pbx_worker_token
 
+    attr_accessor :pbx_worker_token_v2
+
     attr_accessor :twilio_accounts
 
     # UltraCart User ID
@@ -61,6 +63,7 @@ module UltracartClient
         :'pbx_voice_identity' => :'pbx_voice_identity',
         :'pbx_voice_token' => :'pbx_voice_token',
         :'pbx_worker_token' => :'pbx_worker_token',
+        :'pbx_worker_token_v2' => :'pbx_worker_token_v2',
         :'twilio_accounts' => :'twilio_accounts',
         :'user_id' => :'user_id',
         :'websocket_url' => :'websocket_url'
@@ -82,6 +85,7 @@ module UltracartClient
         :'pbx_voice_identity' => :'String',
         :'pbx_voice_token' => :'String',
         :'pbx_worker_token' => :'String',
+        :'pbx_worker_token_v2' => :'String',
         :'twilio_accounts' => :'Array<ConversationTwilioAccount>',
         :'user_id' => :'Integer',
         :'websocket_url' => :'String'
@@ -146,6 +150,10 @@ module UltracartClient
         self.pbx_worker_token = attributes[:'pbx_worker_token']
       end
 
+      if attributes.has_key?(:'pbx_worker_token_v2')
+        self.pbx_worker_token_v2 = attributes[:'pbx_worker_token_v2']
+      end
+
       if attributes.has_key?(:'twilio_accounts')
         if (value = attributes[:'twilio_accounts']).is_a?(Array)
           self.twilio_accounts = value
@@ -191,6 +199,7 @@ module UltracartClient
           pbx_voice_identity == o.pbx_voice_identity &&
           pbx_voice_token == o.pbx_voice_token &&
           pbx_worker_token == o.pbx_worker_token &&
+          pbx_worker_token_v2 == o.pbx_worker_token_v2 &&
           twilio_accounts == o.twilio_accounts &&
           user_id == o.user_id &&
           websocket_url == o.websocket_url
@@ -205,7 +214,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_participant_arn, conversation_participant_name, group_ids, jwt, merchant_id, pbx_admin, pbx_jwt, pbx_supervisor, pbx_user, pbx_voice_identity, pbx_voice_token, pbx_worker_token, twilio_accounts, user_id, websocket_url].hash
+      [conversation_participant_arn, conversation_participant_name, group_ids, jwt, merchant_id, pbx_admin, pbx_jwt, pbx_supervisor, pbx_user, pbx_voice_identity, pbx_voice_token, pbx_worker_token, pbx_worker_token_v2, twilio_accounts, user_id, websocket_url].hash
     end
 
     # Builds the object from hash
