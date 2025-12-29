@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ai** | **Boolean** | AI powered chat bot | [optional] |
+| **ai_capabilities** | [**ConversationVirtualAgentCapabilities**](ConversationVirtualAgentCapabilities.md) |  | [optional] |
 | **ai_chat_instructions** | **String** | Additional instructions for this AI when handle web chats | [optional] |
 | **ai_persona** | **String** | Persona of this AI agent | [optional] |
 | **ai_sms_instructions** | **String** | Additional instructions for this AI when handle SMS messages | [optional] |
@@ -27,6 +28,7 @@ require 'ultracart_api'
 
 instance = UltracartClient::ConversationAgentProfile.new(
   ai: null,
+  ai_capabilities: null,
   ai_chat_instructions: null,
   ai_persona: null,
   ai_sms_instructions: null,

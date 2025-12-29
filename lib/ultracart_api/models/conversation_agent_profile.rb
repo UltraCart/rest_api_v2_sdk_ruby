@@ -18,6 +18,8 @@ module UltracartClient
     # AI powered chat bot
     attr_accessor :ai
 
+    attr_accessor :ai_capabilities
+
     # Additional instructions for this AI when handle web chats
     attr_accessor :ai_chat_instructions
 
@@ -86,6 +88,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'ai' => :'ai',
+        :'ai_capabilities' => :'ai_capabilities',
         :'ai_chat_instructions' => :'ai_chat_instructions',
         :'ai_persona' => :'ai_persona',
         :'ai_sms_instructions' => :'ai_sms_instructions',
@@ -112,6 +115,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'ai' => :'Boolean',
+        :'ai_capabilities' => :'ConversationVirtualAgentCapabilities',
         :'ai_chat_instructions' => :'String',
         :'ai_persona' => :'String',
         :'ai_sms_instructions' => :'String',
@@ -152,6 +156,10 @@ module UltracartClient
 
       if attributes.key?(:'ai')
         self.ai = attributes[:'ai']
+      end
+
+      if attributes.key?(:'ai_capabilities')
+        self.ai_capabilities = attributes[:'ai_capabilities']
       end
 
       if attributes.key?(:'ai_chat_instructions')
@@ -246,6 +254,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           ai == o.ai &&
+          ai_capabilities == o.ai_capabilities &&
           ai_chat_instructions == o.ai_chat_instructions &&
           ai_persona == o.ai_persona &&
           ai_sms_instructions == o.ai_sms_instructions &&
@@ -271,7 +280,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ai, ai_chat_instructions, ai_persona, ai_sms_instructions, ai_ticket_instructions, chat_limit, default_language_iso_code, default_status, display_name, name, profile_image_upload_key, profile_image_url, user_id, zohodesk_classifications, zohodesk_departments].hash
+      [ai, ai_capabilities, ai_chat_instructions, ai_persona, ai_sms_instructions, ai_ticket_instructions, chat_limit, default_language_iso_code, default_status, display_name, name, profile_image_upload_key, profile_image_url, user_id, zohodesk_classifications, zohodesk_departments].hash
     end
 
     # Builds the object from hash
