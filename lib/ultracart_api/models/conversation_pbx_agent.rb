@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class ConversationPbxAgent
+    # Flag to indicate if the agent is AI
+    attr_accessor :ai
+
     # Cellphone number of agent in E.164 format
     attr_accessor :cellphone
 
@@ -66,6 +69,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'ai' => :'ai',
         :'cellphone' => :'cellphone',
         :'conversation_pbx_agent_uuid' => :'conversation_pbx_agent_uuid',
         :'extension' => :'extension',
@@ -93,6 +97,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'ai' => :'Boolean',
         :'cellphone' => :'String',
         :'conversation_pbx_agent_uuid' => :'String',
         :'extension' => :'Integer',
@@ -132,6 +137,10 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'ai')
+        self.ai = attributes[:'ai']
+      end
 
       if attributes.key?(:'cellphone')
         self.cellphone = attributes[:'cellphone']
@@ -321,6 +330,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          ai == o.ai &&
           cellphone == o.cellphone &&
           conversation_pbx_agent_uuid == o.conversation_pbx_agent_uuid &&
           extension == o.extension &&
@@ -348,7 +358,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cellphone, conversation_pbx_agent_uuid, extension, forward_calls_to_cellphone, full_name, login, merchant_id, personal_conversation_pbx_voicemail_mailbox_uuid, record_outgoing_automatically, shared_conversation_pbx_voicemail_mailbox_uuid, twilio_taskrouter_worker_id, unavailable_play_audio_uuid, unavailable_say, unavailable_say_voice, user_id, voicemail].hash
+      [ai, cellphone, conversation_pbx_agent_uuid, extension, forward_calls_to_cellphone, full_name, login, merchant_id, personal_conversation_pbx_voicemail_mailbox_uuid, record_outgoing_automatically, shared_conversation_pbx_voicemail_mailbox_uuid, twilio_taskrouter_worker_id, unavailable_play_audio_uuid, unavailable_say, unavailable_say_voice, user_id, voicemail].hash
     end
 
     # Builds the object from hash

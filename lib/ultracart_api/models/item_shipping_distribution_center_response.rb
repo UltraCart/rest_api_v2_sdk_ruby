@@ -14,44 +14,26 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ItemRelatedItem
-    # Related item id
-    attr_accessor :related_merchant_item_id
+  class ItemShippingDistributionCenterResponse
+    attr_accessor :error
 
-    # Related item object identifier
-    attr_accessor :related_merchant_item_oid
+    attr_accessor :item_shipping_distribution_center
 
-    # Relationship type
-    attr_accessor :type
+    attr_accessor :metadata
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
+    # Indicates if API call was successful
+    attr_accessor :success
 
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'related_merchant_item_id' => :'related_merchant_item_id',
-        :'related_merchant_item_oid' => :'related_merchant_item_oid',
-        :'type' => :'type'
+        :'error' => :'error',
+        :'item_shipping_distribution_center' => :'itemShippingDistributionCenter',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
@@ -63,9 +45,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'related_merchant_item_id' => :'String',
-        :'related_merchant_item_oid' => :'Integer',
-        :'type' => :'String'
+        :'error' => :'Error',
+        :'item_shipping_distribution_center' => :'ItemShippingDistributionCenter',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'Boolean',
+        :'warning' => :'Warning'
       }
     end
 
@@ -79,27 +63,35 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ItemRelatedItem` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ItemShippingDistributionCenterResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ItemRelatedItem`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ItemShippingDistributionCenterResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'related_merchant_item_id')
-        self.related_merchant_item_id = attributes[:'related_merchant_item_id']
+      if attributes.key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.key?(:'related_merchant_item_oid')
-        self.related_merchant_item_oid = attributes[:'related_merchant_item_oid']
+      if attributes.key?(:'item_shipping_distribution_center')
+        self.item_shipping_distribution_center = attributes[:'item_shipping_distribution_center']
       end
 
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.key?(:'success')
+        self.success = attributes[:'success']
+      end
+
+      if attributes.key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -113,19 +105,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      type_validator = EnumAttributeValidator.new('String', ["System", "UserDefined", "Addon", "Complementary"])
-      return false unless type_validator.valid?(@type)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["System", "UserDefined", "Addon", "Complementary"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
-      end
-      @type = type
     end
 
     # Checks equality by comparing each attribute.
@@ -133,9 +113,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          related_merchant_item_id == o.related_merchant_item_id &&
-          related_merchant_item_oid == o.related_merchant_item_oid &&
-          type == o.type
+          error == o.error &&
+          item_shipping_distribution_center == o.item_shipping_distribution_center &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -147,7 +129,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [related_merchant_item_id, related_merchant_item_oid, type].hash
+      [error, item_shipping_distribution_center, metadata, success, warning].hash
     end
 
     # Builds the object from hash
