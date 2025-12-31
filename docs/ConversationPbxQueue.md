@@ -4,6 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **ai_priority** | **String** | AI Agent Priority compared to human agents | [optional] |
+| **ai_timeout_seconds** | **Integer** | AI timeout seconds | [optional] |
 | **announce_queue_position** | **Boolean** | If true, the customer is told their queue position upon entering the queue | [optional] |
 | **conversation_pbx_queue_uuid** | **String** | Conversation Pbx Queue unique identifier | [optional] |
 | **conversation_voicemail_mailbox_uuid** | **String** | The voicemail mailbox associated with this queue | [optional] |
@@ -32,6 +34,8 @@
 require 'ultracart_api'
 
 instance = UltracartClient::ConversationPbxQueue.new(
+  ai_priority: null,
+  ai_timeout_seconds: null,
   announce_queue_position: null,
   conversation_pbx_queue_uuid: null,
   conversation_voicemail_mailbox_uuid: null,

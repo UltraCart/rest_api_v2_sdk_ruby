@@ -15,6 +15,12 @@ require 'time'
 
 module UltracartClient
   class ConversationPbxQueue
+    # AI Agent Priority compared to human agents
+    attr_accessor :ai_priority
+
+    # AI timeout seconds
+    attr_accessor :ai_timeout_seconds
+
     # If true, the customer is told their queue position upon entering the queue
     attr_accessor :announce_queue_position
 
@@ -77,9 +83,33 @@ module UltracartClient
     # Wrap up time in seconds
     attr_accessor :wrap_up_seconds
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'ai_priority' => :'ai_priority',
+        :'ai_timeout_seconds' => :'ai_timeout_seconds',
         :'announce_queue_position' => :'announce_queue_position',
         :'conversation_pbx_queue_uuid' => :'conversation_pbx_queue_uuid',
         :'conversation_voicemail_mailbox_uuid' => :'conversation_voicemail_mailbox_uuid',
@@ -112,6 +142,8 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'ai_priority' => :'String',
+        :'ai_timeout_seconds' => :'Integer',
         :'announce_queue_position' => :'Boolean',
         :'conversation_pbx_queue_uuid' => :'String',
         :'conversation_voicemail_mailbox_uuid' => :'String',
@@ -156,6 +188,14 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'ai_priority')
+        self.ai_priority = attributes[:'ai_priority']
+      end
+
+      if attributes.key?(:'ai_timeout_seconds')
+        self.ai_timeout_seconds = attributes[:'ai_timeout_seconds']
+      end
 
       if attributes.key?(:'announce_queue_position')
         self.announce_queue_position = attributes[:'announce_queue_position']
@@ -292,6 +332,8 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      ai_priority_validator = EnumAttributeValidator.new('String', ["neutral", "first", "backup"])
+      return false unless ai_priority_validator.valid?(@ai_priority)
       return false if !@conversation_voicemail_mailbox_uuid.nil? && @conversation_voicemail_mailbox_uuid.to_s.length > 50
       return false if !@hold_conversation_pbx_audio_uuid.nil? && @hold_conversation_pbx_audio_uuid.to_s.length > 50
       return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
@@ -303,6 +345,16 @@ module UltracartClient
       return false if !@twilio_taskrouter_workflow_sid.nil? && @twilio_taskrouter_workflow_sid.to_s.length > 100
       return false if !@twilio_workspace_queue_sid.nil? && @twilio_workspace_queue_sid.to_s.length > 50
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] ai_priority Object to be assigned
+    def ai_priority=(ai_priority)
+      validator = EnumAttributeValidator.new('String', ["neutral", "first", "backup"])
+      unless validator.valid?(ai_priority)
+        fail ArgumentError, "invalid value for \"ai_priority\", must be one of #{validator.allowable_values}."
+      end
+      @ai_priority = ai_priority
     end
 
     # Custom attribute writer method with validation
@@ -410,6 +462,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          ai_priority == o.ai_priority &&
+          ai_timeout_seconds == o.ai_timeout_seconds &&
           announce_queue_position == o.announce_queue_position &&
           conversation_pbx_queue_uuid == o.conversation_pbx_queue_uuid &&
           conversation_voicemail_mailbox_uuid == o.conversation_voicemail_mailbox_uuid &&
@@ -442,7 +496,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [announce_queue_position, conversation_pbx_queue_uuid, conversation_voicemail_mailbox_uuid, hold_conversation_pbx_audio_uuid, max_hold_seconds, members, merchant_id, name, no_agent_available_play_audio_uuid, no_agent_available_say, no_agent_available_say_voice, play_audio_uuid, record_call, say, say_voice, twilio_taskrouter_workflow_sid, twilio_workspace_queue_sid, voicemail, wait_critical_seconds, wait_warning_seconds, wrap_up_seconds].hash
+      [ai_priority, ai_timeout_seconds, announce_queue_position, conversation_pbx_queue_uuid, conversation_voicemail_mailbox_uuid, hold_conversation_pbx_audio_uuid, max_hold_seconds, members, merchant_id, name, no_agent_available_play_audio_uuid, no_agent_available_say, no_agent_available_say_voice, play_audio_uuid, record_call, say, say_voice, twilio_taskrouter_workflow_sid, twilio_workspace_queue_sid, voicemail, wait_critical_seconds, wait_warning_seconds, wrap_up_seconds].hash
     end
 
     # Builds the object from hash

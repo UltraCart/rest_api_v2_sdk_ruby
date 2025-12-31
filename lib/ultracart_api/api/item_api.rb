@@ -1511,6 +1511,75 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Update item inventories for a distribution center
+    # Update item inventories for a distribution center 
+    # @param item_inventory_update_request [ItemInventoryUpdateRequest] Item inventory updates
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def update_item_inventories(item_inventory_update_request, opts = {})
+      update_item_inventories_with_http_info(item_inventory_update_request, opts)
+      nil
+    end
+
+    # Update item inventories for a distribution center
+    # Update item inventories for a distribution center 
+    # @param item_inventory_update_request [ItemInventoryUpdateRequest] Item inventory updates
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def update_item_inventories_with_http_info(item_inventory_update_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ItemApi.update_item_inventories ...'
+      end
+      # verify the required parameter 'item_inventory_update_request' is set
+      if @api_client.config.client_side_validation && item_inventory_update_request.nil?
+        fail ArgumentError, "Missing the required parameter 'item_inventory_update_request' when calling ItemApi.update_item_inventories"
+      end
+      # resource path
+      local_var_path = '/item/items/update_item_inventories'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(item_inventory_update_request)
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ItemApi.update_item_inventories",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ItemApi#update_item_inventories\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Update an item shipping distribution center
     # Update an item shipping distribution center 
     # @param merchant_item_oid [Integer] The item oid to update.

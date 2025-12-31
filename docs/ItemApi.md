@@ -25,6 +25,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**insert_update_item_content_attribute**](ItemApi.md#insert_update_item_content_attribute) | **POST** /item/items/{merchant_item_oid}/content/attributes | Upsert an item content attribute |
 | [**update_digital_item**](ItemApi.md#update_digital_item) | **PUT** /item/digital_library/{digital_item_oid} | Updates a file within the digital library |
 | [**update_item**](ItemApi.md#update_item) | **PUT** /item/items/{merchant_item_oid} | Update an item |
+| [**update_item_inventories**](ItemApi.md#update_item_inventories) | **PUT** /item/items/update_item_inventories | Update item inventories for a distribution center |
 | [**update_item_shipping_distribution_center_by_code**](ItemApi.md#update_item_shipping_distribution_center_by_code) | **PUT** /item/items/{merchant_item_oid}/shipping/distribution_centers/by_code/{distribution_center_code} | Update an item shipping distribution center |
 | [**update_items**](ItemApi.md#update_items) | **PUT** /item/items/batch | Update multiple items |
 | [**update_review**](ItemApi.md#update_review) | **PUT** /item/items/{merchant_item_oid}/reviews/{review_oid} | Update a review |
@@ -1950,6 +1951,59 @@ end
 ### Return type
 
 [**ItemResponse**](ItemResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_item_inventories
+
+> update_item_inventories(item_inventory_update_request)
+
+Update item inventories for a distribution center
+
+Update item inventories for a distribution center 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_item_inventories_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> update_item_inventories_with_http_info(item_inventory_update_request)
+
+```ruby
+begin
+  # Update item inventories for a distribution center
+  data, status_code, headers = api_instance.update_item_inventories_with_http_info(item_inventory_update_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->update_item_inventories_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **item_inventory_update_request** | [**ItemInventoryUpdateRequest**](ItemInventoryUpdateRequest.md) | Item inventory updates |  |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
