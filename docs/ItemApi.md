@@ -25,6 +25,7 @@ Method | HTTP request | Description
 [**insert_update_item_content_attribute**](ItemApi.md#insert_update_item_content_attribute) | **POST** /item/items/{merchant_item_oid}/content/attributes | Upsert an item content attribute
 [**update_digital_item**](ItemApi.md#update_digital_item) | **PUT** /item/digital_library/{digital_item_oid} | Updates a file within the digital library
 [**update_item**](ItemApi.md#update_item) | **PUT** /item/items/{merchant_item_oid} | Update an item
+[**update_item_inventories**](ItemApi.md#update_item_inventories) | **PUT** /item/items/update_item_inventories | Update item inventories for a distribution center
 [**update_item_shipping_distribution_center_by_code**](ItemApi.md#update_item_shipping_distribution_center_by_code) | **PUT** /item/items/{merchant_item_oid}/shipping/distribution_centers/by_code/{distribution_center_code} | Update an item shipping distribution center
 [**update_items**](ItemApi.md#update_items) | **PUT** /item/items/batch | Update multiple items
 [**update_review**](ItemApi.md#update_review) | **PUT** /item/items/{merchant_item_oid}/reviews/{review_oid} | Update a review
@@ -1149,6 +1150,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ItemResponse**](ItemResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
+ - **Accept**: application/json
+
+
+
+# **update_item_inventories**
+> update_item_inventories(item_inventory_update_request)
+
+Update item inventories for a distribution center
+
+Update item inventories for a distribution center 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ItemApi.new_using_api_key(simple_key, false, false)
+
+
+item_inventory_update_request = UltracartClient::ItemInventoryUpdateRequest.new # ItemInventoryUpdateRequest | Item inventory updates
+
+
+begin
+  #Update item inventories for a distribution center
+  api_instance.update_item_inventories(item_inventory_update_request)
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ItemApi->update_item_inventories: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **item_inventory_update_request** | [**ItemInventoryUpdateRequest**](ItemInventoryUpdateRequest.md)| Item inventory updates | 
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
