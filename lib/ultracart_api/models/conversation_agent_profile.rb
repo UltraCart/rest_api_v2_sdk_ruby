@@ -32,6 +32,12 @@ module UltracartClient
     # Additional instructions for this AI when handling ticket draft replies
     attr_accessor :ai_ticket_instructions
 
+    # Additional voice instructions for this AI when handling voice calls
+    attr_accessor :ai_voice_instructions
+
+    # Which AI voice personality to use when handling the call.
+    attr_accessor :ai_voice_personality
+
     # The number of engagement chats that can be pushed on them at any given time.
     attr_accessor :chat_limit
 
@@ -93,6 +99,8 @@ module UltracartClient
         :'ai_persona' => :'ai_persona',
         :'ai_sms_instructions' => :'ai_sms_instructions',
         :'ai_ticket_instructions' => :'ai_ticket_instructions',
+        :'ai_voice_instructions' => :'ai_voice_instructions',
+        :'ai_voice_personality' => :'ai_voice_personality',
         :'chat_limit' => :'chat_limit',
         :'default_language_iso_code' => :'default_language_iso_code',
         :'default_status' => :'default_status',
@@ -120,6 +128,8 @@ module UltracartClient
         :'ai_persona' => :'String',
         :'ai_sms_instructions' => :'String',
         :'ai_ticket_instructions' => :'String',
+        :'ai_voice_instructions' => :'String',
+        :'ai_voice_personality' => :'String',
         :'chat_limit' => :'Integer',
         :'default_language_iso_code' => :'String',
         :'default_status' => :'String',
@@ -178,6 +188,14 @@ module UltracartClient
         self.ai_ticket_instructions = attributes[:'ai_ticket_instructions']
       end
 
+      if attributes.key?(:'ai_voice_instructions')
+        self.ai_voice_instructions = attributes[:'ai_voice_instructions']
+      end
+
+      if attributes.key?(:'ai_voice_personality')
+        self.ai_voice_personality = attributes[:'ai_voice_personality']
+      end
+
       if attributes.key?(:'chat_limit')
         self.chat_limit = attributes[:'chat_limit']
       end
@@ -233,9 +251,21 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      ai_voice_personality_validator = EnumAttributeValidator.new('String', ["Ara", "Rex", "Sal", "Eve", "Leo"])
+      return false unless ai_voice_personality_validator.valid?(@ai_voice_personality)
       default_status_validator = EnumAttributeValidator.new('String', ["available", "busy", "unavailable"])
       return false unless default_status_validator.valid?(@default_status)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] ai_voice_personality Object to be assigned
+    def ai_voice_personality=(ai_voice_personality)
+      validator = EnumAttributeValidator.new('String', ["Ara", "Rex", "Sal", "Eve", "Leo"])
+      unless validator.valid?(ai_voice_personality)
+        fail ArgumentError, "invalid value for \"ai_voice_personality\", must be one of #{validator.allowable_values}."
+      end
+      @ai_voice_personality = ai_voice_personality
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -259,6 +289,8 @@ module UltracartClient
           ai_persona == o.ai_persona &&
           ai_sms_instructions == o.ai_sms_instructions &&
           ai_ticket_instructions == o.ai_ticket_instructions &&
+          ai_voice_instructions == o.ai_voice_instructions &&
+          ai_voice_personality == o.ai_voice_personality &&
           chat_limit == o.chat_limit &&
           default_language_iso_code == o.default_language_iso_code &&
           default_status == o.default_status &&
@@ -280,7 +312,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ai, ai_capabilities, ai_chat_instructions, ai_persona, ai_sms_instructions, ai_ticket_instructions, chat_limit, default_language_iso_code, default_status, display_name, name, profile_image_upload_key, profile_image_url, user_id, zohodesk_classifications, zohodesk_departments].hash
+      [ai, ai_capabilities, ai_chat_instructions, ai_persona, ai_sms_instructions, ai_ticket_instructions, ai_voice_instructions, ai_voice_personality, chat_limit, default_language_iso_code, default_status, display_name, name, profile_image_upload_key, profile_image_url, user_id, zohodesk_classifications, zohodesk_departments].hash
     end
 
     # Builds the object from hash
