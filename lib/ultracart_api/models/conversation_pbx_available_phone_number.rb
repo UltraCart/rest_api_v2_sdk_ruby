@@ -29,6 +29,9 @@ module UltracartClient
     # MMS capability
     attr_accessor :mms
 
+    # Monthly cost for this phone number
+    attr_accessor :monthly_cost
+
     # Phone number in E.164 format
     attr_accessor :phone_number
 
@@ -71,6 +74,7 @@ module UltracartClient
         :'friendly_name' => :'friendly_name',
         :'locality' => :'locality',
         :'mms' => :'mms',
+        :'monthly_cost' => :'monthly_cost',
         :'phone_number' => :'phone_number',
         :'region' => :'region',
         :'sms' => :'sms',
@@ -86,6 +90,7 @@ module UltracartClient
         :'friendly_name' => :'String',
         :'locality' => :'String',
         :'mms' => :'BOOLEAN',
+        :'monthly_cost' => :'Float',
         :'phone_number' => :'String',
         :'region' => :'String',
         :'sms' => :'BOOLEAN',
@@ -119,6 +124,10 @@ module UltracartClient
 
       if attributes.has_key?(:'mms')
         self.mms = attributes[:'mms']
+      end
+
+      if attributes.has_key?(:'monthly_cost')
+        self.monthly_cost = attributes[:'monthly_cost']
       end
 
       if attributes.has_key?(:'phone_number')
@@ -248,6 +257,7 @@ module UltracartClient
           friendly_name == o.friendly_name &&
           locality == o.locality &&
           mms == o.mms &&
+          monthly_cost == o.monthly_cost &&
           phone_number == o.phone_number &&
           region == o.region &&
           sms == o.sms &&
@@ -263,7 +273,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [address_requirements, country, friendly_name, locality, mms, phone_number, region, sms, voice].hash
+      [address_requirements, country, friendly_name, locality, mms, monthly_cost, phone_number, region, sms, voice].hash
     end
 
     # Builds the object from hash

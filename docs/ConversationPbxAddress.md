@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **postal_code** | **String** | Postal code | [optional] 
 **region** | **String** | State/Province/Region | [optional] 
 **street** | **String** | Street address | [optional] 
+**valid** | **BOOLEAN** | Whether the address is valid (validated or verified) | [optional] 
 **validated** | **BOOLEAN** | Whether the address has been validated by Twilio | [optional] 
 **verified** | **BOOLEAN** | Whether the address has been verified by Twilio | [optional] 
 
