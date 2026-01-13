@@ -364,6 +364,70 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Delete pbx address
+    # Delete a pbx address 
+    # @param conversation_pbx_address_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxAddressResponse]
+    def delete_pbx_address(conversation_pbx_address_uuid, opts = {})
+      data, _status_code, _headers = delete_pbx_address_with_http_info(conversation_pbx_address_uuid, opts)
+      data
+    end
+
+    # Delete pbx address
+    # Delete a pbx address 
+    # @param conversation_pbx_address_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxAddressResponse, Integer, Hash)>] ConversationPbxAddressResponse data, response status code and response headers
+    def delete_pbx_address_with_http_info(conversation_pbx_address_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.delete_pbx_address ...'
+      end
+      # verify the required parameter 'conversation_pbx_address_uuid' is set
+      if @api_client.config.client_side_validation && conversation_pbx_address_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_pbx_address_uuid' when calling ConversationApi.delete_pbx_address"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/address/{conversationPbxAddressUuid}'.sub('{' + 'conversationPbxAddressUuid' + '}', CGI.escape(conversation_pbx_address_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxAddressResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.delete_pbx_address",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#delete_pbx_address\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete Agent Voicemail
     # Delete pbx agent Voicemail 
     # @param recording_sid [String] 
@@ -552,6 +616,70 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#delete_pbx_menu\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete pbx phoneNumber
+    # Delete a pbx phoneNumber. Only works if deletion_protected is false. 
+    # @param conversation_pbx_phone_number_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_pbx_phone_number(conversation_pbx_phone_number_uuid, opts = {})
+      delete_pbx_phone_number_with_http_info(conversation_pbx_phone_number_uuid, opts)
+      nil
+    end
+
+    # Delete pbx phoneNumber
+    # Delete a pbx phoneNumber. Only works if deletion_protected is false. 
+    # @param conversation_pbx_phone_number_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_pbx_phone_number_with_http_info(conversation_pbx_phone_number_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.delete_pbx_phone_number ...'
+      end
+      # verify the required parameter 'conversation_pbx_phone_number_uuid' is set
+      if @api_client.config.client_side_validation && conversation_pbx_phone_number_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_pbx_phone_number_uuid' when calling ConversationApi.delete_pbx_phone_number"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/phone_number/{conversationPbxPhoneNumberUuid}'.sub('{' + 'conversationPbxPhoneNumberUuid' + '}', CGI.escape(conversation_pbx_phone_number_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.delete_pbx_phone_number",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#delete_pbx_phone_number\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2531,6 +2659,128 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get pbx address
+    # Retrieve a pbx address 
+    # @param conversation_pbx_address_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxAddressResponse]
+    def get_pbx_address(conversation_pbx_address_uuid, opts = {})
+      data, _status_code, _headers = get_pbx_address_with_http_info(conversation_pbx_address_uuid, opts)
+      data
+    end
+
+    # Get pbx address
+    # Retrieve a pbx address 
+    # @param conversation_pbx_address_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxAddressResponse, Integer, Hash)>] ConversationPbxAddressResponse data, response status code and response headers
+    def get_pbx_address_with_http_info(conversation_pbx_address_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_pbx_address ...'
+      end
+      # verify the required parameter 'conversation_pbx_address_uuid' is set
+      if @api_client.config.client_side_validation && conversation_pbx_address_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_pbx_address_uuid' when calling ConversationApi.get_pbx_address"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/address/{conversationPbxAddressUuid}'.sub('{' + 'conversationPbxAddressUuid' + '}', CGI.escape(conversation_pbx_address_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxAddressResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_pbx_address",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_pbx_address\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get pbx addresses
+    # Retrieve pbx addresses 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxAddressesResponse]
+    def get_pbx_addresses(opts = {})
+      data, _status_code, _headers = get_pbx_addresses_with_http_info(opts)
+      data
+    end
+
+    # Get pbx addresses
+    # Retrieve pbx addresses 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxAddressesResponse, Integer, Hash)>] ConversationPbxAddressesResponse data, response status code and response headers
+    def get_pbx_addresses_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_pbx_addresses ...'
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/address'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxAddressesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_pbx_addresses",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_pbx_addresses\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get pbx agent
     # Retrieve a pbx agent 
     # @param conversation_pbx_agent_uuid [String] 
@@ -4300,6 +4550,75 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Insert pbx address
+    # Insert a pbx address 
+    # @param pbx_address [ConversationPbxAddress] Pbx Address
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxAddressResponse]
+    def insert_pbx_address(pbx_address, opts = {})
+      data, _status_code, _headers = insert_pbx_address_with_http_info(pbx_address, opts)
+      data
+    end
+
+    # Insert pbx address
+    # Insert a pbx address 
+    # @param pbx_address [ConversationPbxAddress] Pbx Address
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxAddressResponse, Integer, Hash)>] ConversationPbxAddressResponse data, response status code and response headers
+    def insert_pbx_address_with_http_info(pbx_address, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.insert_pbx_address ...'
+      end
+      # verify the required parameter 'pbx_address' is set
+      if @api_client.config.client_side_validation && pbx_address.nil?
+        fail ArgumentError, "Missing the required parameter 'pbx_address' when calling ConversationApi.insert_pbx_address"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/address'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(pbx_address)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxAddressResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.insert_pbx_address",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#insert_pbx_address\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Insert pbx audio
     # Insert a pbx audio 
     # @param pbx_audio [ConversationPbxAudio] Pbx Audio
@@ -5047,6 +5366,139 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Protect pbx phoneNumber from deletion
+    # Protect a pbx phoneNumber from deletion. This is a one-way operation and cannot be undone through the API. 
+    # @param conversation_pbx_phone_number_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxPhoneNumberResponse]
+    def protect_pbx_phone_number(conversation_pbx_phone_number_uuid, opts = {})
+      data, _status_code, _headers = protect_pbx_phone_number_with_http_info(conversation_pbx_phone_number_uuid, opts)
+      data
+    end
+
+    # Protect pbx phoneNumber from deletion
+    # Protect a pbx phoneNumber from deletion. This is a one-way operation and cannot be undone through the API. 
+    # @param conversation_pbx_phone_number_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxPhoneNumberResponse, Integer, Hash)>] ConversationPbxPhoneNumberResponse data, response status code and response headers
+    def protect_pbx_phone_number_with_http_info(conversation_pbx_phone_number_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.protect_pbx_phone_number ...'
+      end
+      # verify the required parameter 'conversation_pbx_phone_number_uuid' is set
+      if @api_client.config.client_side_validation && conversation_pbx_phone_number_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_pbx_phone_number_uuid' when calling ConversationApi.protect_pbx_phone_number"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/phone_number/{conversationPbxPhoneNumberUuid}/protect'.sub('{' + 'conversationPbxPhoneNumberUuid' + '}', CGI.escape(conversation_pbx_phone_number_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxPhoneNumberResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.protect_pbx_phone_number",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#protect_pbx_phone_number\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Purchase pbx phone number
+    # Purchase a phone number from Twilio. The phone_number must be from the available phone number search results. 
+    # @param phone_number_purchase_request [ConversationPbxPhoneNumberPurchaseRequest] Phone number purchase request
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxPhoneNumberResponse]
+    def purchase_pbx_phone_number(phone_number_purchase_request, opts = {})
+      data, _status_code, _headers = purchase_pbx_phone_number_with_http_info(phone_number_purchase_request, opts)
+      data
+    end
+
+    # Purchase pbx phone number
+    # Purchase a phone number from Twilio. The phone_number must be from the available phone number search results. 
+    # @param phone_number_purchase_request [ConversationPbxPhoneNumberPurchaseRequest] Phone number purchase request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxPhoneNumberResponse, Integer, Hash)>] ConversationPbxPhoneNumberResponse data, response status code and response headers
+    def purchase_pbx_phone_number_with_http_info(phone_number_purchase_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.purchase_pbx_phone_number ...'
+      end
+      # verify the required parameter 'phone_number_purchase_request' is set
+      if @api_client.config.client_side_validation && phone_number_purchase_request.nil?
+        fail ArgumentError, "Missing the required parameter 'phone_number_purchase_request' when calling ConversationApi.purchase_pbx_phone_number"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/phone_number'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(phone_number_purchase_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxPhoneNumberResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.purchase_pbx_phone_number",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#purchase_pbx_phone_number\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # reset statistics within the queue
     # reset statistics within the queue 
     # @param queue_uuid [String] 
@@ -5176,6 +5628,89 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#search_conversation_canned_messages\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Search for available phone numbers
+    # Search for available phone numbers from Twilio that can be purchased 
+    # @param country [String] ISO country code (e.g., US, CA, GB)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :area_code Area code filter (e.g., 614)
+    # @option opts [String] :contains Pattern to match (e.g., 555, *PIZZA)
+    # @option opts [Boolean] :sms_enabled Filter for SMS capability
+    # @option opts [Boolean] :voice_enabled Filter for voice capability
+    # @option opts [String] :type Phone number type
+    # @option opts [Integer] :limit Max results (default 20, max 100)
+    # @return [ConversationPbxAvailablePhoneNumbersResponse]
+    def search_pbx_available_phone_numbers(country, opts = {})
+      data, _status_code, _headers = search_pbx_available_phone_numbers_with_http_info(country, opts)
+      data
+    end
+
+    # Search for available phone numbers
+    # Search for available phone numbers from Twilio that can be purchased 
+    # @param country [String] ISO country code (e.g., US, CA, GB)
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :area_code Area code filter (e.g., 614)
+    # @option opts [String] :contains Pattern to match (e.g., 555, *PIZZA)
+    # @option opts [Boolean] :sms_enabled Filter for SMS capability
+    # @option opts [Boolean] :voice_enabled Filter for voice capability
+    # @option opts [String] :type Phone number type
+    # @option opts [Integer] :limit Max results (default 20, max 100)
+    # @return [Array<(ConversationPbxAvailablePhoneNumbersResponse, Integer, Hash)>] ConversationPbxAvailablePhoneNumbersResponse data, response status code and response headers
+    def search_pbx_available_phone_numbers_with_http_info(country, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.search_pbx_available_phone_numbers ...'
+      end
+      # verify the required parameter 'country' is set
+      if @api_client.config.client_side_validation && country.nil?
+        fail ArgumentError, "Missing the required parameter 'country' when calling ConversationApi.search_pbx_available_phone_numbers"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/phone_number/search'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'country'] = country
+      query_params[:'area_code'] = opts[:'area_code'] if !opts[:'area_code'].nil?
+      query_params[:'contains'] = opts[:'contains'] if !opts[:'contains'].nil?
+      query_params[:'sms_enabled'] = opts[:'sms_enabled'] if !opts[:'sms_enabled'].nil?
+      query_params[:'voice_enabled'] = opts[:'voice_enabled'] if !opts[:'voice_enabled'].nil?
+      query_params[:'type'] = opts[:'type'] if !opts[:'type'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxAvailablePhoneNumbersResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.search_pbx_available_phone_numbers",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#search_pbx_available_phone_numbers\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5759,6 +6294,81 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#update_conversation_webchat_queue_status\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update pbx address
+    # Update a pbx address 
+    # @param conversation_pbx_address_uuid [String] 
+    # @param pbx_address [ConversationPbxAddress] Pbx Address
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxAddressResponse]
+    def update_pbx_address(conversation_pbx_address_uuid, pbx_address, opts = {})
+      data, _status_code, _headers = update_pbx_address_with_http_info(conversation_pbx_address_uuid, pbx_address, opts)
+      data
+    end
+
+    # Update pbx address
+    # Update a pbx address 
+    # @param conversation_pbx_address_uuid [String] 
+    # @param pbx_address [ConversationPbxAddress] Pbx Address
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxAddressResponse, Integer, Hash)>] ConversationPbxAddressResponse data, response status code and response headers
+    def update_pbx_address_with_http_info(conversation_pbx_address_uuid, pbx_address, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.update_pbx_address ...'
+      end
+      # verify the required parameter 'conversation_pbx_address_uuid' is set
+      if @api_client.config.client_side_validation && conversation_pbx_address_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_pbx_address_uuid' when calling ConversationApi.update_pbx_address"
+      end
+      # verify the required parameter 'pbx_address' is set
+      if @api_client.config.client_side_validation && pbx_address.nil?
+        fail ArgumentError, "Missing the required parameter 'pbx_address' when calling ConversationApi.update_pbx_address"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/address/{conversationPbxAddressUuid}'.sub('{' + 'conversationPbxAddressUuid' + '}', CGI.escape(conversation_pbx_address_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(pbx_address)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxAddressResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.update_pbx_address",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#update_pbx_address\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -14,23 +14,20 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationPbxPhoneNumber
-    # Action
+  class ConversationPbxPhoneNumberPurchaseRequest
+    # Initial action for incoming calls
     attr_accessor :action
 
-    # Action target.  This is the UUID associated with the configuration object of that particular type.
+    # Initial action target UUID
     attr_accessor :action_target
 
-    # Conversation Pbx Phone Number UUID
-    attr_accessor :conversation_pbx_phone_number_uuid
+    # Address SID if required for regulatory compliance
+    attr_accessor :address_sid
 
-    # If true, this phone number cannot be deleted through the API. It must be deleted via the Twilio console.
-    attr_accessor :deletion_protected
+    # Friendly name for the phone number
+    attr_accessor :friendly_name
 
-    # Merchant Id
-    attr_accessor :merchant_id
-
-    # Phone number
+    # Phone number to purchase in E.164 format (from search results)
     attr_accessor :phone_number
 
     class EnumAttributeValidator
@@ -60,9 +57,8 @@ module UltracartClient
       {
         :'action' => :'action',
         :'action_target' => :'action_target',
-        :'conversation_pbx_phone_number_uuid' => :'conversation_pbx_phone_number_uuid',
-        :'deletion_protected' => :'deletion_protected',
-        :'merchant_id' => :'merchant_id',
+        :'address_sid' => :'address_sid',
+        :'friendly_name' => :'friendly_name',
         :'phone_number' => :'phone_number'
       }
     end
@@ -77,9 +73,8 @@ module UltracartClient
       {
         :'action' => :'String',
         :'action_target' => :'String',
-        :'conversation_pbx_phone_number_uuid' => :'String',
-        :'deletion_protected' => :'Boolean',
-        :'merchant_id' => :'String',
+        :'address_sid' => :'String',
+        :'friendly_name' => :'String',
         :'phone_number' => :'String'
       }
     end
@@ -94,13 +89,13 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxPhoneNumber` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxPhoneNumberPurchaseRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxPhoneNumber`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxPhoneNumberPurchaseRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -113,16 +108,12 @@ module UltracartClient
         self.action_target = attributes[:'action_target']
       end
 
-      if attributes.key?(:'conversation_pbx_phone_number_uuid')
-        self.conversation_pbx_phone_number_uuid = attributes[:'conversation_pbx_phone_number_uuid']
+      if attributes.key?(:'address_sid')
+        self.address_sid = attributes[:'address_sid']
       end
 
-      if attributes.key?(:'deletion_protected')
-        self.deletion_protected = attributes[:'deletion_protected']
-      end
-
-      if attributes.key?(:'merchant_id')
-        self.merchant_id = attributes[:'merchant_id']
+      if attributes.key?(:'friendly_name')
+        self.friendly_name = attributes[:'friendly_name']
       end
 
       if attributes.key?(:'phone_number')
@@ -142,12 +133,12 @@ module UltracartClient
         invalid_properties.push('invalid value for "action_target", the character length must be smaller than or equal to 50.')
       end
 
-      if !@conversation_pbx_phone_number_uuid.nil? && @conversation_pbx_phone_number_uuid.to_s.length > 50
-        invalid_properties.push('invalid value for "conversation_pbx_phone_number_uuid", the character length must be smaller than or equal to 50.')
+      if !@address_sid.nil? && @address_sid.to_s.length > 50
+        invalid_properties.push('invalid value for "address_sid", the character length must be smaller than or equal to 50.')
       end
 
-      if !@merchant_id.nil? && @merchant_id.to_s.length > 5
-        invalid_properties.push('invalid value for "merchant_id", the character length must be smaller than or equal to 5.')
+      if !@friendly_name.nil? && @friendly_name.to_s.length > 64
+        invalid_properties.push('invalid value for "friendly_name", the character length must be smaller than or equal to 64.')
       end
 
       if !@phone_number.nil? && @phone_number.to_s.length > 50
@@ -164,8 +155,8 @@ module UltracartClient
       return false unless action_validator.valid?(@action)
       return false if !@action.nil? && @action.to_s.length > 30
       return false if !@action_target.nil? && @action_target.to_s.length > 50
-      return false if !@conversation_pbx_phone_number_uuid.nil? && @conversation_pbx_phone_number_uuid.to_s.length > 50
-      return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
+      return false if !@address_sid.nil? && @address_sid.to_s.length > 50
+      return false if !@friendly_name.nil? && @friendly_name.to_s.length > 64
       return false if !@phone_number.nil? && @phone_number.to_s.length > 50
       true
     end
@@ -191,23 +182,23 @@ module UltracartClient
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] conversation_pbx_phone_number_uuid Value to be assigned
-    def conversation_pbx_phone_number_uuid=(conversation_pbx_phone_number_uuid)
-      if !conversation_pbx_phone_number_uuid.nil? && conversation_pbx_phone_number_uuid.to_s.length > 50
-        fail ArgumentError, 'invalid value for "conversation_pbx_phone_number_uuid", the character length must be smaller than or equal to 50.'
+    # @param [Object] address_sid Value to be assigned
+    def address_sid=(address_sid)
+      if !address_sid.nil? && address_sid.to_s.length > 50
+        fail ArgumentError, 'invalid value for "address_sid", the character length must be smaller than or equal to 50.'
       end
 
-      @conversation_pbx_phone_number_uuid = conversation_pbx_phone_number_uuid
+      @address_sid = address_sid
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] merchant_id Value to be assigned
-    def merchant_id=(merchant_id)
-      if !merchant_id.nil? && merchant_id.to_s.length > 5
-        fail ArgumentError, 'invalid value for "merchant_id", the character length must be smaller than or equal to 5.'
+    # @param [Object] friendly_name Value to be assigned
+    def friendly_name=(friendly_name)
+      if !friendly_name.nil? && friendly_name.to_s.length > 64
+        fail ArgumentError, 'invalid value for "friendly_name", the character length must be smaller than or equal to 64.'
       end
 
-      @merchant_id = merchant_id
+      @friendly_name = friendly_name
     end
 
     # Custom attribute writer method with validation
@@ -227,9 +218,8 @@ module UltracartClient
       self.class == o.class &&
           action == o.action &&
           action_target == o.action_target &&
-          conversation_pbx_phone_number_uuid == o.conversation_pbx_phone_number_uuid &&
-          deletion_protected == o.deletion_protected &&
-          merchant_id == o.merchant_id &&
+          address_sid == o.address_sid &&
+          friendly_name == o.friendly_name &&
           phone_number == o.phone_number
     end
 
@@ -242,7 +232,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, action_target, conversation_pbx_phone_number_uuid, deletion_protected, merchant_id, phone_number].hash
+      [action, action_target, address_sid, friendly_name, phone_number].hash
     end
 
     # Builds the object from hash

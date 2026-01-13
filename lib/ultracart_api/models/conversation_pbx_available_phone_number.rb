@@ -14,24 +14,33 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationPbxPhoneNumber
-    # Action
-    attr_accessor :action
+  class ConversationPbxAvailablePhoneNumber
+    # Address requirements
+    attr_accessor :address_requirements
 
-    # Action target.  This is the UUID associated with the configuration object of that particular type.
-    attr_accessor :action_target
+    # ISO country code
+    attr_accessor :country
 
-    # Conversation Pbx Phone Number UUID
-    attr_accessor :conversation_pbx_phone_number_uuid
+    # Friendly formatted phone number
+    attr_accessor :friendly_name
 
-    # If true, this phone number cannot be deleted through the API. It must be deleted via the Twilio console.
-    attr_accessor :deletion_protected
+    # City/Locality
+    attr_accessor :locality
 
-    # Merchant Id
-    attr_accessor :merchant_id
+    # MMS capability
+    attr_accessor :mms
 
-    # Phone number
+    # Phone number in E.164 format
     attr_accessor :phone_number
+
+    # State/Province/Region
+    attr_accessor :region
+
+    # SMS capability
+    attr_accessor :sms
+
+    # Voice capability
+    attr_accessor :voice
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -58,12 +67,15 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'action' => :'action',
-        :'action_target' => :'action_target',
-        :'conversation_pbx_phone_number_uuid' => :'conversation_pbx_phone_number_uuid',
-        :'deletion_protected' => :'deletion_protected',
-        :'merchant_id' => :'merchant_id',
-        :'phone_number' => :'phone_number'
+        :'address_requirements' => :'address_requirements',
+        :'country' => :'country',
+        :'friendly_name' => :'friendly_name',
+        :'locality' => :'locality',
+        :'mms' => :'mms',
+        :'phone_number' => :'phone_number',
+        :'region' => :'region',
+        :'sms' => :'sms',
+        :'voice' => :'voice'
       }
     end
 
@@ -75,12 +87,15 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'action' => :'String',
-        :'action_target' => :'String',
-        :'conversation_pbx_phone_number_uuid' => :'String',
-        :'deletion_protected' => :'Boolean',
-        :'merchant_id' => :'String',
-        :'phone_number' => :'String'
+        :'address_requirements' => :'String',
+        :'country' => :'String',
+        :'friendly_name' => :'String',
+        :'locality' => :'String',
+        :'mms' => :'Boolean',
+        :'phone_number' => :'String',
+        :'region' => :'String',
+        :'sms' => :'Boolean',
+        :'voice' => :'Boolean'
       }
     end
 
@@ -94,39 +109,51 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxPhoneNumber` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxAvailablePhoneNumber` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxPhoneNumber`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxAvailablePhoneNumber`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'action')
-        self.action = attributes[:'action']
+      if attributes.key?(:'address_requirements')
+        self.address_requirements = attributes[:'address_requirements']
       end
 
-      if attributes.key?(:'action_target')
-        self.action_target = attributes[:'action_target']
+      if attributes.key?(:'country')
+        self.country = attributes[:'country']
       end
 
-      if attributes.key?(:'conversation_pbx_phone_number_uuid')
-        self.conversation_pbx_phone_number_uuid = attributes[:'conversation_pbx_phone_number_uuid']
+      if attributes.key?(:'friendly_name')
+        self.friendly_name = attributes[:'friendly_name']
       end
 
-      if attributes.key?(:'deletion_protected')
-        self.deletion_protected = attributes[:'deletion_protected']
+      if attributes.key?(:'locality')
+        self.locality = attributes[:'locality']
       end
 
-      if attributes.key?(:'merchant_id')
-        self.merchant_id = attributes[:'merchant_id']
+      if attributes.key?(:'mms')
+        self.mms = attributes[:'mms']
       end
 
       if attributes.key?(:'phone_number')
         self.phone_number = attributes[:'phone_number']
+      end
+
+      if attributes.key?(:'region')
+        self.region = attributes[:'region']
+      end
+
+      if attributes.key?(:'sms')
+        self.sms = attributes[:'sms']
+      end
+
+      if attributes.key?(:'voice')
+        self.voice = attributes[:'voice']
       end
     end
 
@@ -134,24 +161,24 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@action.nil? && @action.to_s.length > 30
-        invalid_properties.push('invalid value for "action", the character length must be smaller than or equal to 30.')
+      if !@country.nil? && @country.to_s.length > 2
+        invalid_properties.push('invalid value for "country", the character length must be smaller than or equal to 2.')
       end
 
-      if !@action_target.nil? && @action_target.to_s.length > 50
-        invalid_properties.push('invalid value for "action_target", the character length must be smaller than or equal to 50.')
+      if !@friendly_name.nil? && @friendly_name.to_s.length > 50
+        invalid_properties.push('invalid value for "friendly_name", the character length must be smaller than or equal to 50.')
       end
 
-      if !@conversation_pbx_phone_number_uuid.nil? && @conversation_pbx_phone_number_uuid.to_s.length > 50
-        invalid_properties.push('invalid value for "conversation_pbx_phone_number_uuid", the character length must be smaller than or equal to 50.')
-      end
-
-      if !@merchant_id.nil? && @merchant_id.to_s.length > 5
-        invalid_properties.push('invalid value for "merchant_id", the character length must be smaller than or equal to 5.')
+      if !@locality.nil? && @locality.to_s.length > 100
+        invalid_properties.push('invalid value for "locality", the character length must be smaller than or equal to 100.')
       end
 
       if !@phone_number.nil? && @phone_number.to_s.length > 50
         invalid_properties.push('invalid value for "phone_number", the character length must be smaller than or equal to 50.')
+      end
+
+      if !@region.nil? && @region.to_s.length > 50
+        invalid_properties.push('invalid value for "region", the character length must be smaller than or equal to 50.')
       end
 
       invalid_properties
@@ -160,54 +187,54 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      action_validator = EnumAttributeValidator.new('String', ["time based", "menu", "queue", "voicemail", "agent"])
-      return false unless action_validator.valid?(@action)
-      return false if !@action.nil? && @action.to_s.length > 30
-      return false if !@action_target.nil? && @action_target.to_s.length > 50
-      return false if !@conversation_pbx_phone_number_uuid.nil? && @conversation_pbx_phone_number_uuid.to_s.length > 50
-      return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
+      address_requirements_validator = EnumAttributeValidator.new('String', ["none", "any", "local", "foreign"])
+      return false unless address_requirements_validator.valid?(@address_requirements)
+      return false if !@country.nil? && @country.to_s.length > 2
+      return false if !@friendly_name.nil? && @friendly_name.to_s.length > 50
+      return false if !@locality.nil? && @locality.to_s.length > 100
       return false if !@phone_number.nil? && @phone_number.to_s.length > 50
+      return false if !@region.nil? && @region.to_s.length > 50
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] action Object to be assigned
-    def action=(action)
-      validator = EnumAttributeValidator.new('String', ["time based", "menu", "queue", "voicemail", "agent"])
-      unless validator.valid?(action)
-        fail ArgumentError, "invalid value for \"action\", must be one of #{validator.allowable_values}."
+    # @param [Object] address_requirements Object to be assigned
+    def address_requirements=(address_requirements)
+      validator = EnumAttributeValidator.new('String', ["none", "any", "local", "foreign"])
+      unless validator.valid?(address_requirements)
+        fail ArgumentError, "invalid value for \"address_requirements\", must be one of #{validator.allowable_values}."
       end
-      @action = action
+      @address_requirements = address_requirements
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] action_target Value to be assigned
-    def action_target=(action_target)
-      if !action_target.nil? && action_target.to_s.length > 50
-        fail ArgumentError, 'invalid value for "action_target", the character length must be smaller than or equal to 50.'
+    # @param [Object] country Value to be assigned
+    def country=(country)
+      if !country.nil? && country.to_s.length > 2
+        fail ArgumentError, 'invalid value for "country", the character length must be smaller than or equal to 2.'
       end
 
-      @action_target = action_target
+      @country = country
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] conversation_pbx_phone_number_uuid Value to be assigned
-    def conversation_pbx_phone_number_uuid=(conversation_pbx_phone_number_uuid)
-      if !conversation_pbx_phone_number_uuid.nil? && conversation_pbx_phone_number_uuid.to_s.length > 50
-        fail ArgumentError, 'invalid value for "conversation_pbx_phone_number_uuid", the character length must be smaller than or equal to 50.'
+    # @param [Object] friendly_name Value to be assigned
+    def friendly_name=(friendly_name)
+      if !friendly_name.nil? && friendly_name.to_s.length > 50
+        fail ArgumentError, 'invalid value for "friendly_name", the character length must be smaller than or equal to 50.'
       end
 
-      @conversation_pbx_phone_number_uuid = conversation_pbx_phone_number_uuid
+      @friendly_name = friendly_name
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] merchant_id Value to be assigned
-    def merchant_id=(merchant_id)
-      if !merchant_id.nil? && merchant_id.to_s.length > 5
-        fail ArgumentError, 'invalid value for "merchant_id", the character length must be smaller than or equal to 5.'
+    # @param [Object] locality Value to be assigned
+    def locality=(locality)
+      if !locality.nil? && locality.to_s.length > 100
+        fail ArgumentError, 'invalid value for "locality", the character length must be smaller than or equal to 100.'
       end
 
-      @merchant_id = merchant_id
+      @locality = locality
     end
 
     # Custom attribute writer method with validation
@@ -220,17 +247,30 @@ module UltracartClient
       @phone_number = phone_number
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] region Value to be assigned
+    def region=(region)
+      if !region.nil? && region.to_s.length > 50
+        fail ArgumentError, 'invalid value for "region", the character length must be smaller than or equal to 50.'
+      end
+
+      @region = region
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          action == o.action &&
-          action_target == o.action_target &&
-          conversation_pbx_phone_number_uuid == o.conversation_pbx_phone_number_uuid &&
-          deletion_protected == o.deletion_protected &&
-          merchant_id == o.merchant_id &&
-          phone_number == o.phone_number
+          address_requirements == o.address_requirements &&
+          country == o.country &&
+          friendly_name == o.friendly_name &&
+          locality == o.locality &&
+          mms == o.mms &&
+          phone_number == o.phone_number &&
+          region == o.region &&
+          sms == o.sms &&
+          voice == o.voice
     end
 
     # @see the `==` method
@@ -242,7 +282,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, action_target, conversation_pbx_phone_number_uuid, deletion_protected, merchant_id, phone_number].hash
+      [address_requirements, country, friendly_name, locality, mms, phone_number, region, sms, voice].hash
     end
 
     # Builds the object from hash
