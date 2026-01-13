@@ -9,9 +9,11 @@ Method | HTTP request | Description
 [**delete_conversation_canned_message**](ConversationApi.md#delete_conversation_canned_message) | **DELETE** /conversation/canned_messages/{conversation_canned_message_oid} | Delete a conversation canned message
 [**delete_department**](ConversationApi.md#delete_department) | **DELETE** /conversation/departments/{conversation_department_oid} | Delete a conversation department
 [**delete_engagement**](ConversationApi.md#delete_engagement) | **DELETE** /conversation/engagements/{conversation_engagement_oid} | Delete a conversation engagement
+[**delete_pbx_address**](ConversationApi.md#delete_pbx_address) | **DELETE** /conversation/pbx/address/{conversationPbxAddressUuid} | Delete pbx address
 [**delete_pbx_agent_voicemail**](ConversationApi.md#delete_pbx_agent_voicemail) | **DELETE** /conversation/pbx/agent/voicemails/{recording_sid} | Delete Agent Voicemail
 [**delete_pbx_audio**](ConversationApi.md#delete_pbx_audio) | **DELETE** /conversation/pbx/audio/{conversationPbxAudioUuid} | Delete pbx audio
 [**delete_pbx_menu**](ConversationApi.md#delete_pbx_menu) | **DELETE** /conversation/pbx/menu/{conversationPbxMenuUuid} | Delete pbx menu
+[**delete_pbx_phone_number**](ConversationApi.md#delete_pbx_phone_number) | **DELETE** /conversation/pbx/phone_number/{conversationPbxPhoneNumberUuid} | Delete pbx phoneNumber
 [**delete_pbx_queue**](ConversationApi.md#delete_pbx_queue) | **DELETE** /conversation/pbx/queue/{conversationPbxQueueUuid} | Delete pbx queue
 [**delete_pbx_queue_voicemail**](ConversationApi.md#delete_pbx_queue_voicemail) | **DELETE** /conversation/pbx/queues/{queue_uuid}/voicemails/{recording_sid} | Delete Queue Voicemail
 [**delete_pbx_time_based**](ConversationApi.md#delete_pbx_time_based) | **DELETE** /conversation/pbx/time_based/{conversationPbxTimeBasedUuid} | Delete pbx timeBased
@@ -43,6 +45,8 @@ Method | HTTP request | Description
 [**get_conversations_autocomplete**](ConversationApi.md#get_conversations_autocomplete) | **POST** /conversation/conversations/autocomplete | Retrieve a list of matching terms for a search field
 [**get_conversations_search**](ConversationApi.md#get_conversations_search) | **POST** /conversation/conversations/search | Search conversations
 [**get_locations_for_engagement**](ConversationApi.md#get_locations_for_engagement) | **POST** /conversation/locations | Get location data for engagement configuration
+[**get_pbx_address**](ConversationApi.md#get_pbx_address) | **GET** /conversation/pbx/address/{conversationPbxAddressUuid} | Get pbx address
+[**get_pbx_addresses**](ConversationApi.md#get_pbx_addresses) | **GET** /conversation/pbx/address | Get pbx addresses
 [**get_pbx_agent**](ConversationApi.md#get_pbx_agent) | **GET** /conversation/pbx/agent/{conversationPbxAgentUuid} | Get pbx agent
 [**get_pbx_agent_voicemail**](ConversationApi.md#get_pbx_agent_voicemail) | **GET** /conversation/pbx/agent/voicemails/{recording_sid} | Get Agent Voicemail
 [**get_pbx_agent_voicemails**](ConversationApi.md#get_pbx_agent_voicemails) | **GET** /conversation/pbx/agent/voicemails | Get Agent Voicemails
@@ -71,6 +75,7 @@ Method | HTTP request | Description
 [**insert_conversation_canned_message**](ConversationApi.md#insert_conversation_canned_message) | **POST** /conversation/canned_messages | Insert a canned message
 [**insert_conversation_department**](ConversationApi.md#insert_conversation_department) | **POST** /conversation/departments | Insert a department
 [**insert_conversation_engagement**](ConversationApi.md#insert_conversation_engagement) | **POST** /conversation/engagements | Insert a engagement
+[**insert_pbx_address**](ConversationApi.md#insert_pbx_address) | **POST** /conversation/pbx/address | Insert pbx address
 [**insert_pbx_audio**](ConversationApi.md#insert_pbx_audio) | **POST** /conversation/pbx/audio | Insert pbx audio
 [**insert_pbx_menu**](ConversationApi.md#insert_pbx_menu) | **POST** /conversation/pbx/menu | Insert pbx menu
 [**insert_pbx_queue**](ConversationApi.md#insert_pbx_queue) | **POST** /conversation/pbx/queue | Insert pbx queue
@@ -82,8 +87,11 @@ Method | HTTP request | Description
 [**listened_pbx_agent_voicemail**](ConversationApi.md#listened_pbx_agent_voicemail) | **GET** /conversation/pbx/agent/voicemails/{recording_sid}/listened | Listened Agent Voicemail
 [**listened_pbx_queue_voicemail**](ConversationApi.md#listened_pbx_queue_voicemail) | **GET** /conversation/pbx/queues/{queue_uuid}/voicemails/{recording_sid}/listened | Listened Queue Voicemail
 [**mark_read_conversation**](ConversationApi.md#mark_read_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/markread | Mark a conversation as read
+[**protect_pbx_phone_number**](ConversationApi.md#protect_pbx_phone_number) | **PUT** /conversation/pbx/phone_number/{conversationPbxPhoneNumberUuid}/protect | Protect pbx phoneNumber from deletion
+[**purchase_pbx_phone_number**](ConversationApi.md#purchase_pbx_phone_number) | **POST** /conversation/pbx/phone_number | Purchase pbx phone number
 [**reset_conversation_pbx_queue_statistics**](ConversationApi.md#reset_conversation_pbx_queue_statistics) | **POST** /conversation/pbx/queues/{queue_uuid}/reset_statistics | reset statistics within the queue
 [**search_conversation_canned_messages**](ConversationApi.md#search_conversation_canned_messages) | **POST** /conversation/canned_messages/search | Search for canned messages by short_code
+[**search_pbx_available_phone_numbers**](ConversationApi.md#search_pbx_available_phone_numbers) | **GET** /conversation/pbx/phone_number/search | Search for available phone numbers
 [**sms_unsubscribe_conversation**](ConversationApi.md#sms_unsubscribe_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/sms_unsubscribe | Unsubscribe any SMS participants in this conversation
 [**start_conversation**](ConversationApi.md#start_conversation) | **PUT** /conversation/conversations | Start a conversation
 [**update_agent_profile**](ConversationApi.md#update_agent_profile) | **PUT** /conversation/agent/profile | Update agent profile
@@ -92,6 +100,7 @@ Method | HTTP request | Description
 [**update_conversation_department**](ConversationApi.md#update_conversation_department) | **PUT** /conversation/departments/{conversation_department_oid} | Update a department
 [**update_conversation_engagement**](ConversationApi.md#update_conversation_engagement) | **PUT** /conversation/engagements/{conversation_engagement_oid} | Update a engagement
 [**update_conversation_webchat_queue_status**](ConversationApi.md#update_conversation_webchat_queue_status) | **PUT** /conversation/conversations/queues/{queue_name}/status | Update status within the queue
+[**update_pbx_address**](ConversationApi.md#update_pbx_address) | **PUT** /conversation/pbx/address/{conversationPbxAddressUuid} | Update pbx address
 [**update_pbx_agent**](ConversationApi.md#update_pbx_agent) | **PUT** /conversation/pbx/agent/{conversationPbxAgentUuid} | Update pbx agent
 [**update_pbx_audio**](ConversationApi.md#update_pbx_audio) | **PUT** /conversation/pbx/audio/{conversationPbxAudioUuid} | Update pbx audio
 [**update_pbx_menu**](ConversationApi.md#update_pbx_menu) | **PUT** /conversation/pbx/menu/{conversationPbxMenuUuid} | Update pbx menu
@@ -356,6 +365,56 @@ nil (empty response body)
 
 
 
+# **delete_pbx_address**
+> ConversationPbxAddressResponse delete_pbx_address(conversation_pbx_address_uuid)
+
+Delete pbx address
+
+Delete a pbx address 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+conversation_pbx_address_uuid = 'conversation_pbx_address_uuid_example' # String | 
+
+
+begin
+  #Delete pbx address
+  result = api_instance.delete_pbx_address(conversation_pbx_address_uuid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->delete_pbx_address: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conversation_pbx_address_uuid** | **String**|  | 
+
+### Return type
+
+[**ConversationPbxAddressResponse**](ConversationPbxAddressResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **delete_pbx_agent_voicemail**
 > delete_pbx_agent_voicemail(recording_sid)
 
@@ -493,6 +552,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ConversationPbxMenuResponse**](ConversationPbxMenuResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **delete_pbx_phone_number**
+> delete_pbx_phone_number(conversation_pbx_phone_number_uuid)
+
+Delete pbx phoneNumber
+
+Delete a pbx phoneNumber. Only works if deletion_protected is false. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+conversation_pbx_phone_number_uuid = 'conversation_pbx_phone_number_uuid_example' # String | 
+
+
+begin
+  #Delete pbx phoneNumber
+  api_instance.delete_pbx_phone_number(conversation_pbx_phone_number_uuid)
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->delete_pbx_phone_number: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conversation_pbx_phone_number_uuid** | **String**|  | 
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
@@ -2028,6 +2136,101 @@ This endpoint does not need any parameter.
 
 
 
+# **get_pbx_address**
+> ConversationPbxAddressResponse get_pbx_address(conversation_pbx_address_uuid)
+
+Get pbx address
+
+Retrieve a pbx address 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+conversation_pbx_address_uuid = 'conversation_pbx_address_uuid_example' # String | 
+
+
+begin
+  #Get pbx address
+  result = api_instance.get_pbx_address(conversation_pbx_address_uuid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->get_pbx_address: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conversation_pbx_address_uuid** | **String**|  | 
+
+### Return type
+
+[**ConversationPbxAddressResponse**](ConversationPbxAddressResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_pbx_addresses**
+> ConversationPbxAddressesResponse get_pbx_addresses
+
+Get pbx addresses
+
+Retrieve pbx addresses 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+
+begin
+  #Get pbx addresses
+  result = api_instance.get_pbx_addresses
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->get_pbx_addresses: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxAddressesResponse**](ConversationPbxAddressesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **get_pbx_agent**
 > ConversationPbxAgentResponse get_pbx_agent(conversation_pbx_agent_uuid)
 
@@ -3382,6 +3585,56 @@ Name | Type | Description  | Notes
 
 
 
+# **insert_pbx_address**
+> ConversationPbxAddressResponse insert_pbx_address(pbx_address)
+
+Insert pbx address
+
+Insert a pbx address 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+pbx_address = UltracartClient::ConversationPbxAddress.new # ConversationPbxAddress | Pbx Address
+
+
+begin
+  #Insert pbx address
+  result = api_instance.insert_pbx_address(pbx_address)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->insert_pbx_address: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pbx_address** | [**ConversationPbxAddress**](ConversationPbxAddress.md)| Pbx Address | 
+
+### Return type
+
+[**ConversationPbxAddressResponse**](ConversationPbxAddressResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **insert_pbx_audio**
 > ConversationPbxAudioResponse insert_pbx_audio(pbx_audio)
 
@@ -3934,6 +4187,106 @@ nil (empty response body)
 
 
 
+# **protect_pbx_phone_number**
+> ConversationPbxPhoneNumberResponse protect_pbx_phone_number(conversation_pbx_phone_number_uuid)
+
+Protect pbx phoneNumber from deletion
+
+Protect a pbx phoneNumber from deletion. This is a one-way operation and cannot be undone through the API. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+conversation_pbx_phone_number_uuid = 'conversation_pbx_phone_number_uuid_example' # String | 
+
+
+begin
+  #Protect pbx phoneNumber from deletion
+  result = api_instance.protect_pbx_phone_number(conversation_pbx_phone_number_uuid)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->protect_pbx_phone_number: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conversation_pbx_phone_number_uuid** | **String**|  | 
+
+### Return type
+
+[**ConversationPbxPhoneNumberResponse**](ConversationPbxPhoneNumberResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **purchase_pbx_phone_number**
+> ConversationPbxPhoneNumberResponse purchase_pbx_phone_number(phone_number_purchase_request)
+
+Purchase pbx phone number
+
+Purchase a phone number from Twilio. The phone_number must be from the available phone number search results. 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+phone_number_purchase_request = UltracartClient::ConversationPbxPhoneNumberPurchaseRequest.new # ConversationPbxPhoneNumberPurchaseRequest | Phone number purchase request
+
+
+begin
+  #Purchase pbx phone number
+  result = api_instance.purchase_pbx_phone_number(phone_number_purchase_request)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->purchase_pbx_phone_number: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **phone_number_purchase_request** | [**ConversationPbxPhoneNumberPurchaseRequest**](ConversationPbxPhoneNumberPurchaseRequest.md)| Phone number purchase request | 
+
+### Return type
+
+[**ConversationPbxPhoneNumberResponse**](ConversationPbxPhoneNumberResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
 # **reset_conversation_pbx_queue_statistics**
 > reset_conversation_pbx_queue_statistics(queue_uuid)
 
@@ -4021,6 +4374,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ConversationCannedMessagesResponse**](ConversationCannedMessagesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **search_pbx_available_phone_numbers**
+> ConversationPbxAvailablePhoneNumbersResponse search_pbx_available_phone_numbers(country, opts)
+
+Search for available phone numbers
+
+Search for available phone numbers from Twilio that can be purchased 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+country = 'country_example' # String | ISO country code (e.g., US, CA, GB)
+
+opts = { 
+  area_code: 'area_code_example', # String | Area code filter (e.g., 614)
+  contains: 'contains_example', # String | Pattern to match (e.g., 555, *PIZZA)
+  sms_enabled: true, # BOOLEAN | Filter for SMS capability
+  voice_enabled: true, # BOOLEAN | Filter for voice capability
+  type: 'type_example', # String | Phone number type
+  limit: 56 # Integer | Max results (default 20, max 100)
+}
+
+begin
+  #Search for available phone numbers
+  result = api_instance.search_pbx_available_phone_numbers(country, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->search_pbx_available_phone_numbers: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **country** | **String**| ISO country code (e.g., US, CA, GB) | 
+ **area_code** | **String**| Area code filter (e.g., 614) | [optional] 
+ **contains** | **String**| Pattern to match (e.g., 555, *PIZZA) | [optional] 
+ **sms_enabled** | **BOOLEAN**| Filter for SMS capability | [optional] 
+ **voice_enabled** | **BOOLEAN**| Filter for voice capability | [optional] 
+ **type** | **String**| Phone number type | [optional] 
+ **limit** | **Integer**| Max results (default 20, max 100) | [optional] 
+
+### Return type
+
+[**ConversationPbxAvailablePhoneNumbersResponse**](ConversationPbxAvailablePhoneNumbersResponse.md)
 
 ### Authorization
 
@@ -4437,6 +4854,59 @@ Name | Type | Description  | Notes
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **update_pbx_address**
+> ConversationPbxAddressResponse update_pbx_address(conversation_pbx_address_uuid, pbx_address)
+
+Update pbx address
+
+Update a pbx address 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+conversation_pbx_address_uuid = 'conversation_pbx_address_uuid_example' # String | 
+
+pbx_address = UltracartClient::ConversationPbxAddress.new # ConversationPbxAddress | Pbx Address
+
+
+begin
+  #Update pbx address
+  result = api_instance.update_pbx_address(conversation_pbx_address_uuid, pbx_address)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->update_pbx_address: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conversation_pbx_address_uuid** | **String**|  | 
+ **pbx_address** | [**ConversationPbxAddress**](ConversationPbxAddress.md)| Pbx Address | 
+
+### Return type
+
+[**ConversationPbxAddressResponse**](ConversationPbxAddressResponse.md)
 
 ### Authorization
 
