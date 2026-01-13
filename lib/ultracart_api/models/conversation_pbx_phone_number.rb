@@ -21,6 +21,9 @@ module UltracartClient
     # Action target.  This is the UUID associated with the configuration object of that particular type.
     attr_accessor :action_target
 
+    # Twilio Address SID linked to this phone number for regulatory compliance
+    attr_accessor :address_sid
+
     # Conversation Pbx Phone Number UUID
     attr_accessor :conversation_pbx_phone_number_uuid
 
@@ -60,6 +63,7 @@ module UltracartClient
       {
         :'action' => :'action',
         :'action_target' => :'action_target',
+        :'address_sid' => :'address_sid',
         :'conversation_pbx_phone_number_uuid' => :'conversation_pbx_phone_number_uuid',
         :'deletion_protected' => :'deletion_protected',
         :'merchant_id' => :'merchant_id',
@@ -77,6 +81,7 @@ module UltracartClient
       {
         :'action' => :'String',
         :'action_target' => :'String',
+        :'address_sid' => :'String',
         :'conversation_pbx_phone_number_uuid' => :'String',
         :'deletion_protected' => :'Boolean',
         :'merchant_id' => :'String',
@@ -113,6 +118,10 @@ module UltracartClient
         self.action_target = attributes[:'action_target']
       end
 
+      if attributes.key?(:'address_sid')
+        self.address_sid = attributes[:'address_sid']
+      end
+
       if attributes.key?(:'conversation_pbx_phone_number_uuid')
         self.conversation_pbx_phone_number_uuid = attributes[:'conversation_pbx_phone_number_uuid']
       end
@@ -142,6 +151,10 @@ module UltracartClient
         invalid_properties.push('invalid value for "action_target", the character length must be smaller than or equal to 50.')
       end
 
+      if !@address_sid.nil? && @address_sid.to_s.length > 50
+        invalid_properties.push('invalid value for "address_sid", the character length must be smaller than or equal to 50.')
+      end
+
       if !@conversation_pbx_phone_number_uuid.nil? && @conversation_pbx_phone_number_uuid.to_s.length > 50
         invalid_properties.push('invalid value for "conversation_pbx_phone_number_uuid", the character length must be smaller than or equal to 50.')
       end
@@ -164,6 +177,7 @@ module UltracartClient
       return false unless action_validator.valid?(@action)
       return false if !@action.nil? && @action.to_s.length > 30
       return false if !@action_target.nil? && @action_target.to_s.length > 50
+      return false if !@address_sid.nil? && @address_sid.to_s.length > 50
       return false if !@conversation_pbx_phone_number_uuid.nil? && @conversation_pbx_phone_number_uuid.to_s.length > 50
       return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
       return false if !@phone_number.nil? && @phone_number.to_s.length > 50
@@ -188,6 +202,16 @@ module UltracartClient
       end
 
       @action_target = action_target
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] address_sid Value to be assigned
+    def address_sid=(address_sid)
+      if !address_sid.nil? && address_sid.to_s.length > 50
+        fail ArgumentError, 'invalid value for "address_sid", the character length must be smaller than or equal to 50.'
+      end
+
+      @address_sid = address_sid
     end
 
     # Custom attribute writer method with validation
@@ -227,6 +251,7 @@ module UltracartClient
       self.class == o.class &&
           action == o.action &&
           action_target == o.action_target &&
+          address_sid == o.address_sid &&
           conversation_pbx_phone_number_uuid == o.conversation_pbx_phone_number_uuid &&
           deletion_protected == o.deletion_protected &&
           merchant_id == o.merchant_id &&
@@ -242,7 +267,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, action_target, conversation_pbx_phone_number_uuid, deletion_protected, merchant_id, phone_number].hash
+      [action, action_target, address_sid, conversation_pbx_phone_number_uuid, deletion_protected, merchant_id, phone_number].hash
     end
 
     # Builds the object from hash

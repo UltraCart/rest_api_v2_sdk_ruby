@@ -45,6 +45,9 @@ module UltracartClient
     # Street address
     attr_accessor :street
 
+    # Whether the address is valid (validated or verified)
+    attr_accessor :valid
+
     # Whether the address has been validated by Twilio
     attr_accessor :validated
 
@@ -64,6 +67,7 @@ module UltracartClient
         :'postal_code' => :'postal_code',
         :'region' => :'region',
         :'street' => :'street',
+        :'valid' => :'valid',
         :'validated' => :'validated',
         :'verified' => :'verified'
       }
@@ -87,6 +91,7 @@ module UltracartClient
         :'postal_code' => :'String',
         :'region' => :'String',
         :'street' => :'String',
+        :'valid' => :'Boolean',
         :'validated' => :'Boolean',
         :'verified' => :'Boolean'
       }
@@ -151,6 +156,10 @@ module UltracartClient
 
       if attributes.key?(:'street')
         self.street = attributes[:'street']
+      end
+
+      if attributes.key?(:'valid')
+        self.valid = attributes[:'valid']
       end
 
       if attributes.key?(:'validated')
@@ -340,6 +349,7 @@ module UltracartClient
           postal_code == o.postal_code &&
           region == o.region &&
           street == o.street &&
+          valid == o.valid &&
           validated == o.validated &&
           verified == o.verified
     end
@@ -353,7 +363,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [address_sid, city, conversation_pbx_address_uuid, country_code, customer_name, friendly_name, merchant_id, postal_code, region, street, validated, verified].hash
+      [address_sid, city, conversation_pbx_address_uuid, country_code, customer_name, friendly_name, merchant_id, postal_code, region, street, valid, validated, verified].hash
     end
 
     # Builds the object from hash

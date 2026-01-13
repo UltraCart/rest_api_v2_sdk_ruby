@@ -14,6 +14,7 @@
 | **postal_code** | **String** | Postal code | [optional] |
 | **region** | **String** | State/Province/Region | [optional] |
 | **street** | **String** | Street address | [optional] |
+| **valid** | **Boolean** | Whether the address is valid (validated or verified) | [optional] |
 | **validated** | **Boolean** | Whether the address has been validated by Twilio | [optional] |
 | **verified** | **Boolean** | Whether the address has been verified by Twilio | [optional] |
 
@@ -33,6 +34,7 @@ instance = UltracartClient::ConversationPbxAddress.new(
   postal_code: null,
   region: null,
   street: null,
+  valid: null,
   validated: null,
   verified: null
 )

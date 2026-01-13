@@ -9,6 +9,7 @@
 | **friendly_name** | **String** | Friendly formatted phone number | [optional] |
 | **locality** | **String** | City/Locality | [optional] |
 | **mms** | **Boolean** | MMS capability | [optional] |
+| **monthly_cost** | **Float** | Monthly cost for this phone number | [optional] |
 | **phone_number** | **String** | Phone number in E.164 format | [optional] |
 | **region** | **String** | State/Province/Region | [optional] |
 | **sms** | **Boolean** | SMS capability | [optional] |
@@ -25,6 +26,7 @@ instance = UltracartClient::ConversationPbxAvailablePhoneNumber.new(
   friendly_name: null,
   locality: null,
   mms: null,
+  monthly_cost: null,
   phone_number: null,
   region: null,
   sms: null,
