@@ -24,6 +24,9 @@ module UltracartClient
 
     attr_accessor :metadata
 
+    # Optional prefix for generated codes
+    attr_accessor :prefix
+
     # Quantity
     attr_accessor :quantity
 
@@ -39,6 +42,7 @@ module UltracartClient
         :'expiration_dts' => :'expiration_dts',
         :'expiration_seconds' => :'expiration_seconds',
         :'metadata' => :'metadata',
+        :'prefix' => :'prefix',
         :'quantity' => :'quantity',
         :'success' => :'success',
         :'warning' => :'warning'
@@ -52,6 +56,7 @@ module UltracartClient
         :'expiration_dts' => :'String',
         :'expiration_seconds' => :'Integer',
         :'metadata' => :'ResponseMetadata',
+        :'prefix' => :'String',
         :'quantity' => :'Integer',
         :'success' => :'BOOLEAN',
         :'warning' => :'Warning'
@@ -82,6 +87,10 @@ module UltracartClient
         self.metadata = attributes[:'metadata']
       end
 
+      if attributes.has_key?(:'prefix')
+        self.prefix = attributes[:'prefix']
+      end
+
       if attributes.has_key?(:'quantity')
         self.quantity = attributes[:'quantity']
       end
@@ -99,13 +108,28 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@prefix.nil? && @prefix.to_s.length > 12
+        invalid_properties.push('invalid value for "prefix", the character length must be smaller than or equal to 12.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@prefix.nil? && @prefix.to_s.length > 12
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] prefix Value to be assigned
+    def prefix=(prefix)
+      if !prefix.nil? && prefix.to_s.length > 12
+        fail ArgumentError, 'invalid value for "prefix", the character length must be smaller than or equal to 12.'
+      end
+
+      @prefix = prefix
     end
 
     # Checks equality by comparing each attribute.
@@ -117,6 +141,7 @@ module UltracartClient
           expiration_dts == o.expiration_dts &&
           expiration_seconds == o.expiration_seconds &&
           metadata == o.metadata &&
+          prefix == o.prefix &&
           quantity == o.quantity &&
           success == o.success &&
           warning == o.warning
@@ -131,7 +156,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [error, expiration_dts, expiration_seconds, metadata, quantity, success, warning].hash
+      [error, expiration_dts, expiration_seconds, metadata, prefix, quantity, success, warning].hash
     end
 
     # Builds the object from hash
