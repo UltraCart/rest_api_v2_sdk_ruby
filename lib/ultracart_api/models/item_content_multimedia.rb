@@ -45,6 +45,9 @@ module UltracartClient
     # True if the object is a place holder that can be populated
     attr_accessor :placeholder
 
+    # Size of the file in bytes if known
+    attr_accessor :size
+
     # Temporary multimedia object identifier assigned if uploading new multimedia
     attr_accessor :temp_multimedia_oid
 
@@ -95,6 +98,7 @@ module UltracartClient
         :'merchant_item_multimedia_oid' => :'merchant_item_multimedia_oid',
         :'orphan' => :'orphan',
         :'placeholder' => :'placeholder',
+        :'size' => :'size',
         :'temp_multimedia_oid' => :'temp_multimedia_oid',
         :'thumbnails' => :'thumbnails',
         :'type' => :'type',
@@ -121,6 +125,7 @@ module UltracartClient
         :'merchant_item_multimedia_oid' => :'Integer',
         :'orphan' => :'Boolean',
         :'placeholder' => :'Boolean',
+        :'size' => :'Integer',
         :'temp_multimedia_oid' => :'Integer',
         :'thumbnails' => :'Array<ItemContentMultimediaThumbnail>',
         :'type' => :'String',
@@ -188,6 +193,10 @@ module UltracartClient
 
       if attributes.key?(:'placeholder')
         self.placeholder = attributes[:'placeholder']
+      end
+
+      if attributes.key?(:'size')
+        self.size = attributes[:'size']
       end
 
       if attributes.key?(:'temp_multimedia_oid')
@@ -298,6 +307,7 @@ module UltracartClient
           merchant_item_multimedia_oid == o.merchant_item_multimedia_oid &&
           orphan == o.orphan &&
           placeholder == o.placeholder &&
+          size == o.size &&
           temp_multimedia_oid == o.temp_multimedia_oid &&
           thumbnails == o.thumbnails &&
           type == o.type &&
@@ -314,7 +324,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cloud_url, cloud_url_expiration, code, description, exclude_from_gallery, file_name, height, merchant_item_multimedia_oid, orphan, placeholder, temp_multimedia_oid, thumbnails, type, url, width].hash
+      [cloud_url, cloud_url_expiration, code, description, exclude_from_gallery, file_name, height, merchant_item_multimedia_oid, orphan, placeholder, size, temp_multimedia_oid, thumbnails, type, url, width].hash
     end
 
     # Builds the object from hash
