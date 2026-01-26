@@ -556,6 +556,70 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Delete pbx hardware phone
+    # Delete a pbx hardware phone 
+    # @param conversation_pbx_hardware_phone_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxHardwarePhoneResponse]
+    def delete_pbx_hardware_phone(conversation_pbx_hardware_phone_uuid, opts = {})
+      data, _status_code, _headers = delete_pbx_hardware_phone_with_http_info(conversation_pbx_hardware_phone_uuid, opts)
+      data
+    end
+
+    # Delete pbx hardware phone
+    # Delete a pbx hardware phone 
+    # @param conversation_pbx_hardware_phone_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxHardwarePhoneResponse, Integer, Hash)>] ConversationPbxHardwarePhoneResponse data, response status code and response headers
+    def delete_pbx_hardware_phone_with_http_info(conversation_pbx_hardware_phone_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.delete_pbx_hardware_phone ...'
+      end
+      # verify the required parameter 'conversation_pbx_hardware_phone_uuid' is set
+      if @api_client.config.client_side_validation && conversation_pbx_hardware_phone_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_pbx_hardware_phone_uuid' when calling ConversationApi.delete_pbx_hardware_phone"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/hardware_phone/{conversationPbxHardwarePhoneUuid}'.sub('{' + 'conversationPbxHardwarePhoneUuid' + '}', CGI.escape(conversation_pbx_hardware_phone_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxHardwarePhoneResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.delete_pbx_hardware_phone",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#delete_pbx_hardware_phone\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete pbx menu
     # Delete a pbx menu 
     # @param conversation_pbx_menu_uuid [String] 
@@ -3211,6 +3275,186 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get pbx hardware phone
+    # Retrieve a pbx hardware phone 
+    # @param conversation_pbx_hardware_phone_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxHardwarePhoneResponse]
+    def get_pbx_hardware_phone(conversation_pbx_hardware_phone_uuid, opts = {})
+      data, _status_code, _headers = get_pbx_hardware_phone_with_http_info(conversation_pbx_hardware_phone_uuid, opts)
+      data
+    end
+
+    # Get pbx hardware phone
+    # Retrieve a pbx hardware phone 
+    # @param conversation_pbx_hardware_phone_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxHardwarePhoneResponse, Integer, Hash)>] ConversationPbxHardwarePhoneResponse data, response status code and response headers
+    def get_pbx_hardware_phone_with_http_info(conversation_pbx_hardware_phone_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_pbx_hardware_phone ...'
+      end
+      # verify the required parameter 'conversation_pbx_hardware_phone_uuid' is set
+      if @api_client.config.client_side_validation && conversation_pbx_hardware_phone_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_pbx_hardware_phone_uuid' when calling ConversationApi.get_pbx_hardware_phone"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/hardware_phone/{conversationPbxHardwarePhoneUuid}'.sub('{' + 'conversationPbxHardwarePhoneUuid' + '}', CGI.escape(conversation_pbx_hardware_phone_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxHardwarePhoneResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_pbx_hardware_phone",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_pbx_hardware_phone\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get pbx hardware phone manufacturers
+    # Retrieve pbx hardware phone manufacturers and models for auto-provisioning 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxPhoneManufacturersResponse]
+    def get_pbx_hardware_phone_manufacturers(opts = {})
+      data, _status_code, _headers = get_pbx_hardware_phone_manufacturers_with_http_info(opts)
+      data
+    end
+
+    # Get pbx hardware phone manufacturers
+    # Retrieve pbx hardware phone manufacturers and models for auto-provisioning 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxPhoneManufacturersResponse, Integer, Hash)>] ConversationPbxPhoneManufacturersResponse data, response status code and response headers
+    def get_pbx_hardware_phone_manufacturers_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_pbx_hardware_phone_manufacturers ...'
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/hardware_phone/manufacturers'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxPhoneManufacturersResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_pbx_hardware_phone_manufacturers",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_pbx_hardware_phone_manufacturers\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get pbx hardware phones
+    # Retrieve pbx hardware phones 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxHardwarePhonesResponse]
+    def get_pbx_hardware_phones(opts = {})
+      data, _status_code, _headers = get_pbx_hardware_phones_with_http_info(opts)
+      data
+    end
+
+    # Get pbx hardware phones
+    # Retrieve pbx hardware phones 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxHardwarePhonesResponse, Integer, Hash)>] ConversationPbxHardwarePhonesResponse data, response status code and response headers
+    def get_pbx_hardware_phones_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_pbx_hardware_phones ...'
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/hardware_phone'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxHardwarePhonesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_pbx_hardware_phones",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_pbx_hardware_phones\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get pbx menu
     # Retrieve a pbx menu 
     # @param conversation_pbx_menu_uuid [String] 
@@ -4688,6 +4932,75 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Insert pbx hardware phone
+    # Insert a pbx hardware phone 
+    # @param pbx_hardware_phone [ConversationPbxHardwarePhone] Pbx Hardware Phone
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxHardwarePhoneResponse]
+    def insert_pbx_hardware_phone(pbx_hardware_phone, opts = {})
+      data, _status_code, _headers = insert_pbx_hardware_phone_with_http_info(pbx_hardware_phone, opts)
+      data
+    end
+
+    # Insert pbx hardware phone
+    # Insert a pbx hardware phone 
+    # @param pbx_hardware_phone [ConversationPbxHardwarePhone] Pbx Hardware Phone
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxHardwarePhoneResponse, Integer, Hash)>] ConversationPbxHardwarePhoneResponse data, response status code and response headers
+    def insert_pbx_hardware_phone_with_http_info(pbx_hardware_phone, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.insert_pbx_hardware_phone ...'
+      end
+      # verify the required parameter 'pbx_hardware_phone' is set
+      if @api_client.config.client_side_validation && pbx_hardware_phone.nil?
+        fail ArgumentError, "Missing the required parameter 'pbx_hardware_phone' when calling ConversationApi.insert_pbx_hardware_phone"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/hardware_phone'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(pbx_hardware_phone)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxHardwarePhoneResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.insert_pbx_hardware_phone",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#insert_pbx_hardware_phone\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Insert pbx menu
     # Insert a pbx menu 
     # @param pbx_menu [ConversationPbxMenu] Pbx Menu
@@ -5495,6 +5808,81 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#purchase_pbx_phone_number\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update pbx hardware phone
+    # Update a pbx hardware phone 
+    # @param conversation_pbx_hardware_phone_uuid [String] 
+    # @param pbx_hardware_phone [ConversationPbxHardwarePhone] Pbx Hardware Phone
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxHardwarePhoneResponse]
+    def regenerate_password_for_pbx_hardware_phone(conversation_pbx_hardware_phone_uuid, pbx_hardware_phone, opts = {})
+      data, _status_code, _headers = regenerate_password_for_pbx_hardware_phone_with_http_info(conversation_pbx_hardware_phone_uuid, pbx_hardware_phone, opts)
+      data
+    end
+
+    # Update pbx hardware phone
+    # Update a pbx hardware phone 
+    # @param conversation_pbx_hardware_phone_uuid [String] 
+    # @param pbx_hardware_phone [ConversationPbxHardwarePhone] Pbx Hardware Phone
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxHardwarePhoneResponse, Integer, Hash)>] ConversationPbxHardwarePhoneResponse data, response status code and response headers
+    def regenerate_password_for_pbx_hardware_phone_with_http_info(conversation_pbx_hardware_phone_uuid, pbx_hardware_phone, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.regenerate_password_for_pbx_hardware_phone ...'
+      end
+      # verify the required parameter 'conversation_pbx_hardware_phone_uuid' is set
+      if @api_client.config.client_side_validation && conversation_pbx_hardware_phone_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_pbx_hardware_phone_uuid' when calling ConversationApi.regenerate_password_for_pbx_hardware_phone"
+      end
+      # verify the required parameter 'pbx_hardware_phone' is set
+      if @api_client.config.client_side_validation && pbx_hardware_phone.nil?
+        fail ArgumentError, "Missing the required parameter 'pbx_hardware_phone' when calling ConversationApi.regenerate_password_for_pbx_hardware_phone"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/hardware_phone/{conversationPbxHardwarePhoneUuid}/regenerate_password'.sub('{' + 'conversationPbxHardwarePhoneUuid' + '}', CGI.escape(conversation_pbx_hardware_phone_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(pbx_hardware_phone)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxHardwarePhoneResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.regenerate_password_for_pbx_hardware_phone",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#regenerate_password_for_pbx_hardware_phone\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6519,6 +6907,81 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#update_pbx_audio\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update pbx hardware phone
+    # Update a pbx hardware phone 
+    # @param conversation_pbx_hardware_phone_uuid [String] 
+    # @param pbx_hardware_phone [ConversationPbxHardwarePhone] Pbx Hardware Phone
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxHardwarePhoneResponse]
+    def update_pbx_hardware_phone(conversation_pbx_hardware_phone_uuid, pbx_hardware_phone, opts = {})
+      data, _status_code, _headers = update_pbx_hardware_phone_with_http_info(conversation_pbx_hardware_phone_uuid, pbx_hardware_phone, opts)
+      data
+    end
+
+    # Update pbx hardware phone
+    # Update a pbx hardware phone 
+    # @param conversation_pbx_hardware_phone_uuid [String] 
+    # @param pbx_hardware_phone [ConversationPbxHardwarePhone] Pbx Hardware Phone
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxHardwarePhoneResponse, Integer, Hash)>] ConversationPbxHardwarePhoneResponse data, response status code and response headers
+    def update_pbx_hardware_phone_with_http_info(conversation_pbx_hardware_phone_uuid, pbx_hardware_phone, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.update_pbx_hardware_phone ...'
+      end
+      # verify the required parameter 'conversation_pbx_hardware_phone_uuid' is set
+      if @api_client.config.client_side_validation && conversation_pbx_hardware_phone_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_pbx_hardware_phone_uuid' when calling ConversationApi.update_pbx_hardware_phone"
+      end
+      # verify the required parameter 'pbx_hardware_phone' is set
+      if @api_client.config.client_side_validation && pbx_hardware_phone.nil?
+        fail ArgumentError, "Missing the required parameter 'pbx_hardware_phone' when calling ConversationApi.update_pbx_hardware_phone"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/hardware_phone/{conversationPbxHardwarePhoneUuid}'.sub('{' + 'conversationPbxHardwarePhoneUuid' + '}', CGI.escape(conversation_pbx_hardware_phone_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(pbx_hardware_phone)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxHardwarePhoneResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.update_pbx_hardware_phone",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#update_pbx_hardware_phone\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
