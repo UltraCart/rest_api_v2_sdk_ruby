@@ -77,6 +77,9 @@ module UltracartClient
 
     attr_accessor :upsell_after
 
+    # UTM clicks.  The zero index is the most recent (last) UTM click.  Only available in BigQuery and on an abandon webhook.
+    attr_accessor :utms
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -105,7 +108,8 @@ module UltracartClient
         :'shipping' => :'shipping',
         :'summary' => :'summary',
         :'taxes' => :'taxes',
-        :'upsell_after' => :'upsell_after'
+        :'upsell_after' => :'upsell_after',
+        :'utms' => :'utms'
       }
     end
 
@@ -137,7 +141,8 @@ module UltracartClient
         :'shipping' => :'CartShipping',
         :'summary' => :'CartSummary',
         :'taxes' => :'CartTaxes',
-        :'upsell_after' => :'CartUpsellAfter'
+        :'upsell_after' => :'CartUpsellAfter',
+        :'utms' => :'Array<CartUtm>'
       }
     end
 
@@ -258,6 +263,12 @@ module UltracartClient
       if attributes.has_key?(:'upsell_after')
         self.upsell_after = attributes[:'upsell_after']
       end
+
+      if attributes.has_key?(:'utms')
+        if (value = attributes[:'utms']).is_a?(Array)
+          self.utms = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -348,7 +359,8 @@ module UltracartClient
           shipping == o.shipping &&
           summary == o.summary &&
           taxes == o.taxes &&
-          upsell_after == o.upsell_after
+          upsell_after == o.upsell_after &&
+          utms == o.utms
     end
 
     # @see the `==` method
@@ -360,7 +372,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [affiliate, affiliate_network_pixel_oid, base_currency_code, billing, buysafe, cart_id, checkout, coupons, currency_code, currency_conversion, customer_profile, exchange_rate, gift, gift_certificate, items, language_iso_code, logged_in, marketing, merchant_id, payment, properties, settings, shipping, summary, taxes, upsell_after].hash
+      [affiliate, affiliate_network_pixel_oid, base_currency_code, billing, buysafe, cart_id, checkout, coupons, currency_code, currency_conversion, customer_profile, exchange_rate, gift, gift_certificate, items, language_iso_code, logged_in, marketing, merchant_id, payment, properties, settings, shipping, summary, taxes, upsell_after, utms].hash
     end
 
     # Builds the object from hash
