@@ -14,6 +14,8 @@ require 'date'
 
 module UltracartClient
   class ConversationDepartmentMember
+    attr_accessor :ai
+
     attr_accessor :member
 
     attr_accessor :name
@@ -23,6 +25,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'ai' => :'ai',
         :'member' => :'member',
         :'name' => :'name',
         :'user_id' => :'user_id'
@@ -32,6 +35,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'ai' => :'BOOLEAN',
         :'member' => :'BOOLEAN',
         :'name' => :'String',
         :'user_id' => :'Integer'
@@ -45,6 +49,10 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'ai')
+        self.ai = attributes[:'ai']
+      end
 
       if attributes.has_key?(:'member')
         self.member = attributes[:'member']
@@ -77,6 +85,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          ai == o.ai &&
           member == o.member &&
           name == o.name &&
           user_id == o.user_id
@@ -91,7 +100,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [member, name, user_id].hash
+      [ai, member, name, user_id].hash
     end
 
     # Builds the object from hash
