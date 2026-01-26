@@ -14,6 +14,10 @@ require 'date'
 
 module UltracartClient
   class ConversationAgentAuth
+    attr_accessor :chat_admin
+
+    attr_accessor :chat_user
+
     attr_accessor :conversation_participant_arn
 
     attr_accessor :conversation_participant_name
@@ -51,6 +55,8 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'chat_admin' => :'chat_admin',
+        :'chat_user' => :'chat_user',
         :'conversation_participant_arn' => :'conversation_participant_arn',
         :'conversation_participant_name' => :'conversation_participant_name',
         :'group_ids' => :'group_ids',
@@ -73,6 +79,8 @@ module UltracartClient
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'chat_admin' => :'BOOLEAN',
+        :'chat_user' => :'BOOLEAN',
         :'conversation_participant_arn' => :'String',
         :'conversation_participant_name' => :'String',
         :'group_ids' => :'Array<Integer>',
@@ -99,6 +107,14 @@ module UltracartClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'chat_admin')
+        self.chat_admin = attributes[:'chat_admin']
+      end
+
+      if attributes.has_key?(:'chat_user')
+        self.chat_user = attributes[:'chat_user']
+      end
 
       if attributes.has_key?(:'conversation_participant_arn')
         self.conversation_participant_arn = attributes[:'conversation_participant_arn']
@@ -187,6 +203,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          chat_admin == o.chat_admin &&
+          chat_user == o.chat_user &&
           conversation_participant_arn == o.conversation_participant_arn &&
           conversation_participant_name == o.conversation_participant_name &&
           group_ids == o.group_ids &&
@@ -214,7 +232,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [conversation_participant_arn, conversation_participant_name, group_ids, jwt, merchant_id, pbx_admin, pbx_jwt, pbx_supervisor, pbx_user, pbx_voice_identity, pbx_voice_token, pbx_worker_token, pbx_worker_token_v2, twilio_accounts, user_id, websocket_url].hash
+      [chat_admin, chat_user, conversation_participant_arn, conversation_participant_name, group_ids, jwt, merchant_id, pbx_admin, pbx_jwt, pbx_supervisor, pbx_user, pbx_voice_identity, pbx_voice_token, pbx_worker_token, pbx_worker_token_v2, twilio_accounts, user_id, websocket_url].hash
     end
 
     # Builds the object from hash

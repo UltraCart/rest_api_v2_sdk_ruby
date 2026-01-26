@@ -3,6 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**chat_admin** | **BOOLEAN** |  | [optional] 
+**chat_user** | **BOOLEAN** |  | [optional] 
 **conversation_participant_arn** | **String** |  | [optional] 
 **conversation_participant_name** | **String** |  | [optional] 
 **group_ids** | **Array&lt;Integer&gt;** | UltraCart Groups this user belongs to | [optional] 
