@@ -4,6 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **chat_admin** | **Boolean** |  | [optional] |
+| **chat_user** | **Boolean** |  | [optional] |
 | **conversation_participant_arn** | **String** |  | [optional] |
 | **conversation_participant_name** | **String** |  | [optional] |
 | **group_ids** | **Array&lt;Integer&gt;** | UltraCart Groups this user belongs to | [optional] |
@@ -27,6 +29,8 @@
 require 'ultracart_api'
 
 instance = UltracartClient::ConversationAgentAuth.new(
+  chat_admin: null,
+  chat_user: null,
   conversation_participant_arn: null,
   conversation_participant_name: null,
   group_ids: null,
