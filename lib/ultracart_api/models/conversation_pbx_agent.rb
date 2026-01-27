@@ -18,6 +18,9 @@ module UltracartClient
     # Flag to indicate if the agent is AI
     attr_accessor :ai
 
+    # The call routing preference
+    attr_accessor :call_routing_preference
+
     # Cellphone number of agent in E.164 format
     attr_accessor :cellphone
 
@@ -27,11 +30,11 @@ module UltracartClient
     # Extension
     attr_accessor :extension
 
-    # True if calls to this agent should be forwarded to their cellphone
-    attr_accessor :forward_calls_to_cellphone
-
     # Full name
     attr_accessor :full_name
+
+    # Array of hardware phones UUIDs associated with this agent
+    attr_accessor :hardware_phone_uuids
 
     # Agent login
     attr_accessor :login
@@ -41,6 +44,9 @@ module UltracartClient
 
     # Personal Conversation Pbx Voicemail Mailbox UUID
     attr_accessor :personal_conversation_pbx_voicemail_mailbox_uuid
+
+    # The hardware phone that will be dialed on an incoming call if routing preference is hardware_phone
+    attr_accessor :preferred_hardware_phone_uuid
 
     # True if outgoing calls should be automatically recorded
     attr_accessor :record_outgoing_automatically
@@ -66,18 +72,42 @@ module UltracartClient
     # True if this agent has voicemail configured
     attr_accessor :voicemail
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'ai' => :'ai',
+        :'call_routing_preference' => :'call_routing_preference',
         :'cellphone' => :'cellphone',
         :'conversation_pbx_agent_uuid' => :'conversation_pbx_agent_uuid',
         :'extension' => :'extension',
-        :'forward_calls_to_cellphone' => :'forward_calls_to_cellphone',
         :'full_name' => :'full_name',
+        :'hardware_phone_uuids' => :'hardware_phone_uuids',
         :'login' => :'login',
         :'merchant_id' => :'merchant_id',
         :'personal_conversation_pbx_voicemail_mailbox_uuid' => :'personal_conversation_pbx_voicemail_mailbox_uuid',
+        :'preferred_hardware_phone_uuid' => :'preferred_hardware_phone_uuid',
         :'record_outgoing_automatically' => :'record_outgoing_automatically',
         :'shared_conversation_pbx_voicemail_mailbox_uuid' => :'shared_conversation_pbx_voicemail_mailbox_uuid',
         :'twilio_taskrouter_worker_id' => :'twilio_taskrouter_worker_id',
@@ -98,14 +128,16 @@ module UltracartClient
     def self.openapi_types
       {
         :'ai' => :'Boolean',
+        :'call_routing_preference' => :'String',
         :'cellphone' => :'String',
         :'conversation_pbx_agent_uuid' => :'String',
         :'extension' => :'Integer',
-        :'forward_calls_to_cellphone' => :'Boolean',
         :'full_name' => :'String',
+        :'hardware_phone_uuids' => :'Array<String>',
         :'login' => :'String',
         :'merchant_id' => :'String',
         :'personal_conversation_pbx_voicemail_mailbox_uuid' => :'String',
+        :'preferred_hardware_phone_uuid' => :'String',
         :'record_outgoing_automatically' => :'Boolean',
         :'shared_conversation_pbx_voicemail_mailbox_uuid' => :'String',
         :'twilio_taskrouter_worker_id' => :'String',
@@ -142,6 +174,10 @@ module UltracartClient
         self.ai = attributes[:'ai']
       end
 
+      if attributes.key?(:'call_routing_preference')
+        self.call_routing_preference = attributes[:'call_routing_preference']
+      end
+
       if attributes.key?(:'cellphone')
         self.cellphone = attributes[:'cellphone']
       end
@@ -154,12 +190,14 @@ module UltracartClient
         self.extension = attributes[:'extension']
       end
 
-      if attributes.key?(:'forward_calls_to_cellphone')
-        self.forward_calls_to_cellphone = attributes[:'forward_calls_to_cellphone']
-      end
-
       if attributes.key?(:'full_name')
         self.full_name = attributes[:'full_name']
+      end
+
+      if attributes.key?(:'hardware_phone_uuids')
+        if (value = attributes[:'hardware_phone_uuids']).is_a?(Array)
+          self.hardware_phone_uuids = value
+        end
       end
 
       if attributes.key?(:'login')
@@ -172,6 +210,10 @@ module UltracartClient
 
       if attributes.key?(:'personal_conversation_pbx_voicemail_mailbox_uuid')
         self.personal_conversation_pbx_voicemail_mailbox_uuid = attributes[:'personal_conversation_pbx_voicemail_mailbox_uuid']
+      end
+
+      if attributes.key?(:'preferred_hardware_phone_uuid')
+        self.preferred_hardware_phone_uuid = attributes[:'preferred_hardware_phone_uuid']
       end
 
       if attributes.key?(:'record_outgoing_automatically')
@@ -245,6 +287,8 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      call_routing_preference_validator = EnumAttributeValidator.new('String', ["softphone", "hardware_phone", "cellphone"])
+      return false unless call_routing_preference_validator.valid?(@call_routing_preference)
       return false if !@cellphone.nil? && @cellphone.to_s.length > 50
       return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
       return false if !@personal_conversation_pbx_voicemail_mailbox_uuid.nil? && @personal_conversation_pbx_voicemail_mailbox_uuid.to_s.length > 50
@@ -253,6 +297,16 @@ module UltracartClient
       return false if !@unavailable_play_audio_uuid.nil? && @unavailable_play_audio_uuid.to_s.length > 50
       return false if !@unavailable_say_voice.nil? && @unavailable_say_voice.to_s.length > 50
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] call_routing_preference Object to be assigned
+    def call_routing_preference=(call_routing_preference)
+      validator = EnumAttributeValidator.new('String', ["softphone", "hardware_phone", "cellphone"])
+      unless validator.valid?(call_routing_preference)
+        fail ArgumentError, "invalid value for \"call_routing_preference\", must be one of #{validator.allowable_values}."
+      end
+      @call_routing_preference = call_routing_preference
     end
 
     # Custom attribute writer method with validation
@@ -331,14 +385,16 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           ai == o.ai &&
+          call_routing_preference == o.call_routing_preference &&
           cellphone == o.cellphone &&
           conversation_pbx_agent_uuid == o.conversation_pbx_agent_uuid &&
           extension == o.extension &&
-          forward_calls_to_cellphone == o.forward_calls_to_cellphone &&
           full_name == o.full_name &&
+          hardware_phone_uuids == o.hardware_phone_uuids &&
           login == o.login &&
           merchant_id == o.merchant_id &&
           personal_conversation_pbx_voicemail_mailbox_uuid == o.personal_conversation_pbx_voicemail_mailbox_uuid &&
+          preferred_hardware_phone_uuid == o.preferred_hardware_phone_uuid &&
           record_outgoing_automatically == o.record_outgoing_automatically &&
           shared_conversation_pbx_voicemail_mailbox_uuid == o.shared_conversation_pbx_voicemail_mailbox_uuid &&
           twilio_taskrouter_worker_id == o.twilio_taskrouter_worker_id &&
@@ -358,7 +414,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ai, cellphone, conversation_pbx_agent_uuid, extension, forward_calls_to_cellphone, full_name, login, merchant_id, personal_conversation_pbx_voicemail_mailbox_uuid, record_outgoing_automatically, shared_conversation_pbx_voicemail_mailbox_uuid, twilio_taskrouter_worker_id, unavailable_play_audio_uuid, unavailable_say, unavailable_say_voice, user_id, voicemail].hash
+      [ai, call_routing_preference, cellphone, conversation_pbx_agent_uuid, extension, full_name, hardware_phone_uuids, login, merchant_id, personal_conversation_pbx_voicemail_mailbox_uuid, preferred_hardware_phone_uuid, record_outgoing_automatically, shared_conversation_pbx_voicemail_mailbox_uuid, twilio_taskrouter_worker_id, unavailable_play_audio_uuid, unavailable_say, unavailable_say_voice, user_id, voicemail].hash
     end
 
     # Builds the object from hash

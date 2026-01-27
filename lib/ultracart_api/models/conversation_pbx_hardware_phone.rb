@@ -15,6 +15,12 @@ require 'time'
 
 module UltracartClient
   class ConversationPbxHardwarePhone
+    # Admin Username
+    attr_accessor :admin_username
+
+    # Associated Agent UUID
+    attr_accessor :conversation_pbx_agent_uuid
+
     # Conversation Pbx Hardware Phone UUID
     attr_accessor :conversation_pbx_hardware_phone_uuid
 
@@ -45,11 +51,17 @@ module UltracartClient
     # SIP Domain
     attr_accessor :sip_domain
 
-    # SIP Password
+    # SIP Edge Location
+    attr_accessor :sip_edge_location
+
+    # SIP Password (only on create or regenerate password requests)
     attr_accessor :sip_password
 
     # SIP Username
     attr_accessor :sip_username
+
+    # Twilio Credential SID
+    attr_accessor :twilio_credential_sid
 
     # Updated At
     attr_accessor :updated_at
@@ -57,6 +69,8 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'admin_username' => :'admin_username',
+        :'conversation_pbx_agent_uuid' => :'conversation_pbx_agent_uuid',
         :'conversation_pbx_hardware_phone_uuid' => :'conversation_pbx_hardware_phone_uuid',
         :'created_at' => :'created_at',
         :'description' => :'description',
@@ -67,8 +81,10 @@ module UltracartClient
         :'name' => :'name',
         :'provisioning_url' => :'provisioning_url',
         :'sip_domain' => :'sip_domain',
+        :'sip_edge_location' => :'sip_edge_location',
         :'sip_password' => :'sip_password',
         :'sip_username' => :'sip_username',
+        :'twilio_credential_sid' => :'twilio_credential_sid',
         :'updated_at' => :'updated_at'
       }
     end
@@ -81,6 +97,8 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'admin_username' => :'String',
+        :'conversation_pbx_agent_uuid' => :'String',
         :'conversation_pbx_hardware_phone_uuid' => :'String',
         :'created_at' => :'Object',
         :'description' => :'String',
@@ -91,8 +109,10 @@ module UltracartClient
         :'name' => :'String',
         :'provisioning_url' => :'String',
         :'sip_domain' => :'String',
+        :'sip_edge_location' => :'String',
         :'sip_password' => :'String',
         :'sip_username' => :'String',
+        :'twilio_credential_sid' => :'String',
         :'updated_at' => :'Object'
       }
     end
@@ -117,6 +137,14 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'admin_username')
+        self.admin_username = attributes[:'admin_username']
+      end
+
+      if attributes.key?(:'conversation_pbx_agent_uuid')
+        self.conversation_pbx_agent_uuid = attributes[:'conversation_pbx_agent_uuid']
+      end
 
       if attributes.key?(:'conversation_pbx_hardware_phone_uuid')
         self.conversation_pbx_hardware_phone_uuid = attributes[:'conversation_pbx_hardware_phone_uuid']
@@ -158,12 +186,20 @@ module UltracartClient
         self.sip_domain = attributes[:'sip_domain']
       end
 
+      if attributes.key?(:'sip_edge_location')
+        self.sip_edge_location = attributes[:'sip_edge_location']
+      end
+
       if attributes.key?(:'sip_password')
         self.sip_password = attributes[:'sip_password']
       end
 
       if attributes.key?(:'sip_username')
         self.sip_username = attributes[:'sip_username']
+      end
+
+      if attributes.key?(:'twilio_credential_sid')
+        self.twilio_credential_sid = attributes[:'twilio_credential_sid']
       end
 
       if attributes.key?(:'updated_at')
@@ -207,6 +243,10 @@ module UltracartClient
         invalid_properties.push('invalid value for "sip_domain", the character length must be smaller than or equal to 200.')
       end
 
+      if !@sip_edge_location.nil? && @sip_edge_location.to_s.length > 50
+        invalid_properties.push('invalid value for "sip_edge_location", the character length must be smaller than or equal to 50.')
+      end
+
       if !@sip_password.nil? && @sip_password.to_s.length > 100
         invalid_properties.push('invalid value for "sip_password", the character length must be smaller than or equal to 100.')
       end
@@ -229,6 +269,7 @@ module UltracartClient
       return false if !@model.nil? && @model.to_s.length > 100
       return false if !@name.nil? && @name.to_s.length > 100
       return false if !@sip_domain.nil? && @sip_domain.to_s.length > 200
+      return false if !@sip_edge_location.nil? && @sip_edge_location.to_s.length > 50
       return false if !@sip_password.nil? && @sip_password.to_s.length > 100
       return false if !@sip_username.nil? && @sip_username.to_s.length > 100
       true
@@ -315,6 +356,16 @@ module UltracartClient
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] sip_edge_location Value to be assigned
+    def sip_edge_location=(sip_edge_location)
+      if !sip_edge_location.nil? && sip_edge_location.to_s.length > 50
+        fail ArgumentError, 'invalid value for "sip_edge_location", the character length must be smaller than or equal to 50.'
+      end
+
+      @sip_edge_location = sip_edge_location
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] sip_password Value to be assigned
     def sip_password=(sip_password)
       if !sip_password.nil? && sip_password.to_s.length > 100
@@ -339,6 +390,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          admin_username == o.admin_username &&
+          conversation_pbx_agent_uuid == o.conversation_pbx_agent_uuid &&
           conversation_pbx_hardware_phone_uuid == o.conversation_pbx_hardware_phone_uuid &&
           created_at == o.created_at &&
           description == o.description &&
@@ -349,8 +402,10 @@ module UltracartClient
           name == o.name &&
           provisioning_url == o.provisioning_url &&
           sip_domain == o.sip_domain &&
+          sip_edge_location == o.sip_edge_location &&
           sip_password == o.sip_password &&
           sip_username == o.sip_username &&
+          twilio_credential_sid == o.twilio_credential_sid &&
           updated_at == o.updated_at
     end
 
@@ -363,7 +418,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_pbx_hardware_phone_uuid, created_at, description, mac_address, manufacturer, merchant_id, model, name, provisioning_url, sip_domain, sip_password, sip_username, updated_at].hash
+      [admin_username, conversation_pbx_agent_uuid, conversation_pbx_hardware_phone_uuid, created_at, description, mac_address, manufacturer, merchant_id, model, name, provisioning_url, sip_domain, sip_edge_location, sip_password, sip_username, twilio_credential_sid, updated_at].hash
     end
 
     # Builds the object from hash
