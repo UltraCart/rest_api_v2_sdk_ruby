@@ -23,6 +23,9 @@ module UltracartClient
     # If true, the customer is told their queue position upon entering the queue
     attr_accessor :announce_queue_position
 
+    # AI Agent UUID to automatically engage to provide coaching
+    attr_accessor :automatic_coach_agent_uuid
+
     # Conversation Pbx Queue unique identifier
     attr_accessor :conversation_pbx_queue_uuid
 
@@ -110,6 +113,7 @@ module UltracartClient
         :'ai_priority' => :'ai_priority',
         :'ai_timeout_seconds' => :'ai_timeout_seconds',
         :'announce_queue_position' => :'announce_queue_position',
+        :'automatic_coach_agent_uuid' => :'automatic_coach_agent_uuid',
         :'conversation_pbx_queue_uuid' => :'conversation_pbx_queue_uuid',
         :'conversation_voicemail_mailbox_uuid' => :'conversation_voicemail_mailbox_uuid',
         :'hold_conversation_pbx_audio_uuid' => :'hold_conversation_pbx_audio_uuid',
@@ -139,6 +143,7 @@ module UltracartClient
         :'ai_priority' => :'String',
         :'ai_timeout_seconds' => :'Integer',
         :'announce_queue_position' => :'BOOLEAN',
+        :'automatic_coach_agent_uuid' => :'String',
         :'conversation_pbx_queue_uuid' => :'String',
         :'conversation_voicemail_mailbox_uuid' => :'String',
         :'hold_conversation_pbx_audio_uuid' => :'String',
@@ -180,6 +185,10 @@ module UltracartClient
 
       if attributes.has_key?(:'announce_queue_position')
         self.announce_queue_position = attributes[:'announce_queue_position']
+      end
+
+      if attributes.has_key?(:'automatic_coach_agent_uuid')
+        self.automatic_coach_agent_uuid = attributes[:'automatic_coach_agent_uuid']
       end
 
       if attributes.has_key?(:'conversation_pbx_queue_uuid')
@@ -446,6 +455,7 @@ module UltracartClient
           ai_priority == o.ai_priority &&
           ai_timeout_seconds == o.ai_timeout_seconds &&
           announce_queue_position == o.announce_queue_position &&
+          automatic_coach_agent_uuid == o.automatic_coach_agent_uuid &&
           conversation_pbx_queue_uuid == o.conversation_pbx_queue_uuid &&
           conversation_voicemail_mailbox_uuid == o.conversation_voicemail_mailbox_uuid &&
           hold_conversation_pbx_audio_uuid == o.hold_conversation_pbx_audio_uuid &&
@@ -477,7 +487,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [ai_priority, ai_timeout_seconds, announce_queue_position, conversation_pbx_queue_uuid, conversation_voicemail_mailbox_uuid, hold_conversation_pbx_audio_uuid, max_hold_seconds, members, merchant_id, name, no_agent_available_play_audio_uuid, no_agent_available_say, no_agent_available_say_voice, play_audio_uuid, record_call, say, say_voice, twilio_taskrouter_workflow_sid, twilio_workspace_queue_sid, voicemail, wait_critical_seconds, wait_warning_seconds, wrap_up_seconds].hash
+      [ai_priority, ai_timeout_seconds, announce_queue_position, automatic_coach_agent_uuid, conversation_pbx_queue_uuid, conversation_voicemail_mailbox_uuid, hold_conversation_pbx_audio_uuid, max_hold_seconds, members, merchant_id, name, no_agent_available_play_audio_uuid, no_agent_available_say, no_agent_available_say_voice, play_audio_uuid, record_call, say, say_voice, twilio_taskrouter_workflow_sid, twilio_workspace_queue_sid, voicemail, wait_critical_seconds, wait_warning_seconds, wrap_up_seconds].hash
     end
 
     # Builds the object from hash
