@@ -7,6 +7,7 @@
 | **ai_priority** | **String** | AI Agent Priority compared to human agents | [optional] |
 | **ai_timeout_seconds** | **Integer** | AI timeout seconds | [optional] |
 | **announce_queue_position** | **Boolean** | If true, the customer is told their queue position upon entering the queue | [optional] |
+| **automatic_coach_agent_uuid** | **String** | AI Agent UUID to automatically engage to provide coaching | [optional] |
 | **conversation_pbx_queue_uuid** | **String** | Conversation Pbx Queue unique identifier | [optional] |
 | **conversation_voicemail_mailbox_uuid** | **String** | The voicemail mailbox associated with this queue | [optional] |
 | **hold_conversation_pbx_audio_uuid** | **String** | The audio to play while holding in a queue | [optional] |
@@ -37,6 +38,7 @@ instance = UltracartClient::ConversationPbxQueue.new(
   ai_priority: null,
   ai_timeout_seconds: null,
   announce_queue_position: null,
+  automatic_coach_agent_uuid: null,
   conversation_pbx_queue_uuid: null,
   conversation_voicemail_mailbox_uuid: null,
   hold_conversation_pbx_audio_uuid: null,
