@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **account_sid** | **String** |  | [optional] |
+| **ai_twiml_app_sid** | **String** |  | [optional] |
 | **api_key_id** | **String** |  | [optional] |
 | **api_key_name** | **String** |  | [optional] |
 | **auth_token** | **String** |  | [optional] |
@@ -21,6 +22,7 @@ require 'ultracart_api'
 
 instance = UltracartClient::Twilio.new(
   account_sid: null,
+  ai_twiml_app_sid: null,
   api_key_id: null,
   api_key_name: null,
   auth_token: null,

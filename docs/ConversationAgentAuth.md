@@ -8,6 +8,7 @@
 | **chat_user** | **Boolean** |  | [optional] |
 | **conversation_participant_arn** | **String** |  | [optional] |
 | **conversation_participant_name** | **String** |  | [optional] |
+| **default_phone_number** | **String** | The default phone number this agent should use when making an outbound call. | [optional] |
 | **group_ids** | **Array&lt;Integer&gt;** | UltraCart Groups this user belongs to | [optional] |
 | **jwt** | **String** |  | [optional] |
 | **merchant_id** | **String** |  | [optional] |
@@ -33,6 +34,7 @@ instance = UltracartClient::ConversationAgentAuth.new(
   chat_user: null,
   conversation_participant_arn: null,
   conversation_participant_name: null,
+  default_phone_number: null,
   group_ids: null,
   jwt: null,
   merchant_id: null,

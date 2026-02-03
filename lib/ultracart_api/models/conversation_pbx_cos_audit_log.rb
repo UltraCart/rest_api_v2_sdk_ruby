@@ -14,70 +14,72 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationAgentAuth
-    attr_accessor :chat_admin
+  class ConversationPbxCosAuditLog
+    # Action taken
+    attr_accessor :action
 
-    attr_accessor :chat_user
+    # Login of the agent who attempted the call
+    attr_accessor :agent_login
 
-    attr_accessor :conversation_participant_arn
+    # Audit log entry unique identifier
+    attr_accessor :audit_log_uuid
 
-    attr_accessor :conversation_participant_name
+    # Name of the class of service (denormalized for display)
+    attr_accessor :class_of_service_name
 
-    # The default phone number this agent should use when making an outbound call.
-    attr_accessor :default_phone_number
+    # UUID of the class of service that was evaluated
+    attr_accessor :class_of_service_uuid
 
-    # UltraCart Groups this user belongs to
-    attr_accessor :group_ids
+    # Phone number the agent tried to dial
+    attr_accessor :destination
 
-    attr_accessor :jwt
-
+    # Merchant Id
     attr_accessor :merchant_id
 
-    attr_accessor :pbx_admin
+    # Rule that triggered the action
+    attr_accessor :rule_triggered
 
-    attr_accessor :pbx_jwt
+    # Login of supervisor who approved/denied (null for timeouts and direct blocks)
+    attr_accessor :supervisor_login
 
-    attr_accessor :pbx_supervisor
+    # ISO 8601 timestamp of the event
+    attr_accessor :timestamp
 
-    attr_accessor :pbx_user
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    attr_accessor :pbx_voice_identity
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
 
-    attr_accessor :pbx_voice_token
-
-    attr_accessor :pbx_worker_token
-
-    attr_accessor :pbx_worker_token_v2
-
-    attr_accessor :twilio_accounts
-
-    # UltraCart User ID
-    attr_accessor :user_id
-
-    attr_accessor :websocket_url
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'chat_admin' => :'chat_admin',
-        :'chat_user' => :'chat_user',
-        :'conversation_participant_arn' => :'conversation_participant_arn',
-        :'conversation_participant_name' => :'conversation_participant_name',
-        :'default_phone_number' => :'default_phone_number',
-        :'group_ids' => :'group_ids',
-        :'jwt' => :'jwt',
+        :'action' => :'action',
+        :'agent_login' => :'agent_login',
+        :'audit_log_uuid' => :'audit_log_uuid',
+        :'class_of_service_name' => :'class_of_service_name',
+        :'class_of_service_uuid' => :'class_of_service_uuid',
+        :'destination' => :'destination',
         :'merchant_id' => :'merchant_id',
-        :'pbx_admin' => :'pbx_admin',
-        :'pbx_jwt' => :'pbx_jwt',
-        :'pbx_supervisor' => :'pbx_supervisor',
-        :'pbx_user' => :'pbx_user',
-        :'pbx_voice_identity' => :'pbx_voice_identity',
-        :'pbx_voice_token' => :'pbx_voice_token',
-        :'pbx_worker_token' => :'pbx_worker_token',
-        :'pbx_worker_token_v2' => :'pbx_worker_token_v2',
-        :'twilio_accounts' => :'twilio_accounts',
-        :'user_id' => :'user_id',
-        :'websocket_url' => :'websocket_url'
+        :'rule_triggered' => :'rule_triggered',
+        :'supervisor_login' => :'supervisor_login',
+        :'timestamp' => :'timestamp'
       }
     end
 
@@ -89,25 +91,16 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'chat_admin' => :'Boolean',
-        :'chat_user' => :'Boolean',
-        :'conversation_participant_arn' => :'String',
-        :'conversation_participant_name' => :'String',
-        :'default_phone_number' => :'String',
-        :'group_ids' => :'Array<Integer>',
-        :'jwt' => :'String',
+        :'action' => :'String',
+        :'agent_login' => :'String',
+        :'audit_log_uuid' => :'String',
+        :'class_of_service_name' => :'String',
+        :'class_of_service_uuid' => :'String',
+        :'destination' => :'String',
         :'merchant_id' => :'String',
-        :'pbx_admin' => :'Boolean',
-        :'pbx_jwt' => :'String',
-        :'pbx_supervisor' => :'Boolean',
-        :'pbx_user' => :'Boolean',
-        :'pbx_voice_identity' => :'String',
-        :'pbx_voice_token' => :'String',
-        :'pbx_worker_token' => :'String',
-        :'pbx_worker_token_v2' => :'String',
-        :'twilio_accounts' => :'Array<ConversationTwilioAccount>',
-        :'user_id' => :'Integer',
-        :'websocket_url' => :'String'
+        :'rule_triggered' => :'String',
+        :'supervisor_login' => :'String',
+        :'timestamp' => :'String'
       }
     end
 
@@ -121,95 +114,55 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationAgentAuth` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxCosAuditLog` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationAgentAuth`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxCosAuditLog`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'chat_admin')
-        self.chat_admin = attributes[:'chat_admin']
+      if attributes.key?(:'action')
+        self.action = attributes[:'action']
       end
 
-      if attributes.key?(:'chat_user')
-        self.chat_user = attributes[:'chat_user']
+      if attributes.key?(:'agent_login')
+        self.agent_login = attributes[:'agent_login']
       end
 
-      if attributes.key?(:'conversation_participant_arn')
-        self.conversation_participant_arn = attributes[:'conversation_participant_arn']
+      if attributes.key?(:'audit_log_uuid')
+        self.audit_log_uuid = attributes[:'audit_log_uuid']
       end
 
-      if attributes.key?(:'conversation_participant_name')
-        self.conversation_participant_name = attributes[:'conversation_participant_name']
+      if attributes.key?(:'class_of_service_name')
+        self.class_of_service_name = attributes[:'class_of_service_name']
       end
 
-      if attributes.key?(:'default_phone_number')
-        self.default_phone_number = attributes[:'default_phone_number']
+      if attributes.key?(:'class_of_service_uuid')
+        self.class_of_service_uuid = attributes[:'class_of_service_uuid']
       end
 
-      if attributes.key?(:'group_ids')
-        if (value = attributes[:'group_ids']).is_a?(Array)
-          self.group_ids = value
-        end
-      end
-
-      if attributes.key?(:'jwt')
-        self.jwt = attributes[:'jwt']
+      if attributes.key?(:'destination')
+        self.destination = attributes[:'destination']
       end
 
       if attributes.key?(:'merchant_id')
         self.merchant_id = attributes[:'merchant_id']
       end
 
-      if attributes.key?(:'pbx_admin')
-        self.pbx_admin = attributes[:'pbx_admin']
+      if attributes.key?(:'rule_triggered')
+        self.rule_triggered = attributes[:'rule_triggered']
       end
 
-      if attributes.key?(:'pbx_jwt')
-        self.pbx_jwt = attributes[:'pbx_jwt']
+      if attributes.key?(:'supervisor_login')
+        self.supervisor_login = attributes[:'supervisor_login']
       end
 
-      if attributes.key?(:'pbx_supervisor')
-        self.pbx_supervisor = attributes[:'pbx_supervisor']
-      end
-
-      if attributes.key?(:'pbx_user')
-        self.pbx_user = attributes[:'pbx_user']
-      end
-
-      if attributes.key?(:'pbx_voice_identity')
-        self.pbx_voice_identity = attributes[:'pbx_voice_identity']
-      end
-
-      if attributes.key?(:'pbx_voice_token')
-        self.pbx_voice_token = attributes[:'pbx_voice_token']
-      end
-
-      if attributes.key?(:'pbx_worker_token')
-        self.pbx_worker_token = attributes[:'pbx_worker_token']
-      end
-
-      if attributes.key?(:'pbx_worker_token_v2')
-        self.pbx_worker_token_v2 = attributes[:'pbx_worker_token_v2']
-      end
-
-      if attributes.key?(:'twilio_accounts')
-        if (value = attributes[:'twilio_accounts']).is_a?(Array)
-          self.twilio_accounts = value
-        end
-      end
-
-      if attributes.key?(:'user_id')
-        self.user_id = attributes[:'user_id']
-      end
-
-      if attributes.key?(:'websocket_url')
-        self.websocket_url = attributes[:'websocket_url']
+      if attributes.key?(:'timestamp')
+        self.timestamp = attributes[:'timestamp']
       end
     end
 
@@ -217,13 +170,52 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@merchant_id.nil? && @merchant_id.to_s.length > 5
+        invalid_properties.push('invalid value for "merchant_id", the character length must be smaller than or equal to 5.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      action_validator = EnumAttributeValidator.new('String', ["blocked", "override_requested", "override_approved", "override_denied", "override_timeout"])
+      return false unless action_validator.valid?(@action)
+      return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
+      rule_triggered_validator = EnumAttributeValidator.new('String', ["outbound_disabled", "time_range", "country_blocked", "premium_blocked"])
+      return false unless rule_triggered_validator.valid?(@rule_triggered)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] action Object to be assigned
+    def action=(action)
+      validator = EnumAttributeValidator.new('String', ["blocked", "override_requested", "override_approved", "override_denied", "override_timeout"])
+      unless validator.valid?(action)
+        fail ArgumentError, "invalid value for \"action\", must be one of #{validator.allowable_values}."
+      end
+      @action = action
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] merchant_id Value to be assigned
+    def merchant_id=(merchant_id)
+      if !merchant_id.nil? && merchant_id.to_s.length > 5
+        fail ArgumentError, 'invalid value for "merchant_id", the character length must be smaller than or equal to 5.'
+      end
+
+      @merchant_id = merchant_id
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] rule_triggered Object to be assigned
+    def rule_triggered=(rule_triggered)
+      validator = EnumAttributeValidator.new('String', ["outbound_disabled", "time_range", "country_blocked", "premium_blocked"])
+      unless validator.valid?(rule_triggered)
+        fail ArgumentError, "invalid value for \"rule_triggered\", must be one of #{validator.allowable_values}."
+      end
+      @rule_triggered = rule_triggered
     end
 
     # Checks equality by comparing each attribute.
@@ -231,25 +223,16 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          chat_admin == o.chat_admin &&
-          chat_user == o.chat_user &&
-          conversation_participant_arn == o.conversation_participant_arn &&
-          conversation_participant_name == o.conversation_participant_name &&
-          default_phone_number == o.default_phone_number &&
-          group_ids == o.group_ids &&
-          jwt == o.jwt &&
+          action == o.action &&
+          agent_login == o.agent_login &&
+          audit_log_uuid == o.audit_log_uuid &&
+          class_of_service_name == o.class_of_service_name &&
+          class_of_service_uuid == o.class_of_service_uuid &&
+          destination == o.destination &&
           merchant_id == o.merchant_id &&
-          pbx_admin == o.pbx_admin &&
-          pbx_jwt == o.pbx_jwt &&
-          pbx_supervisor == o.pbx_supervisor &&
-          pbx_user == o.pbx_user &&
-          pbx_voice_identity == o.pbx_voice_identity &&
-          pbx_voice_token == o.pbx_voice_token &&
-          pbx_worker_token == o.pbx_worker_token &&
-          pbx_worker_token_v2 == o.pbx_worker_token_v2 &&
-          twilio_accounts == o.twilio_accounts &&
-          user_id == o.user_id &&
-          websocket_url == o.websocket_url
+          rule_triggered == o.rule_triggered &&
+          supervisor_login == o.supervisor_login &&
+          timestamp == o.timestamp
     end
 
     # @see the `==` method
@@ -261,7 +244,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [chat_admin, chat_user, conversation_participant_arn, conversation_participant_name, default_phone_number, group_ids, jwt, merchant_id, pbx_admin, pbx_jwt, pbx_supervisor, pbx_user, pbx_voice_identity, pbx_voice_token, pbx_worker_token, pbx_worker_token_v2, twilio_accounts, user_id, websocket_url].hash
+      [action, agent_login, audit_log_uuid, class_of_service_name, class_of_service_uuid, destination, merchant_id, rule_triggered, supervisor_login, timestamp].hash
     end
 
     # Builds the object from hash

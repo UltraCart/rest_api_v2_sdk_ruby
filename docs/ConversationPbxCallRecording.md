@@ -7,6 +7,7 @@
 | **channels** | **Integer** | Number of audio channels in the recording (1 for mono, 2 for stereo/dual-channel) | [optional] |
 | **duration_seconds** | **Integer** | Duration of the recording in seconds | [optional] |
 | **is_primary** | **Boolean** | Whether this is the primary recording for the call | [optional] |
+| **recording_s3_key** | **String** | S3 key for the recording audio file | [optional] |
 | **recording_sid** | **String** | Twilio recording SID | [optional] |
 | **recording_url** | **String** | URL to access the recording | [optional] |
 | **status** | **String** | Status of the recording | [optional] |
@@ -21,6 +22,7 @@ instance = UltracartClient::ConversationPbxCallRecording.new(
   channels: null,
   duration_seconds: null,
   is_primary: null,
+  recording_s3_key: null,
   recording_sid: null,
   recording_url: null,
   status: null,

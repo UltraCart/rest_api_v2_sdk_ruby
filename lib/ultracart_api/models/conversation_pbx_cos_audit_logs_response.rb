@@ -14,40 +14,27 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class Twilio
-    attr_accessor :account_sid
+  class ConversationPbxCosAuditLogsResponse
+    # Array of audit log entries
+    attr_accessor :audit_logs
 
-    attr_accessor :ai_twiml_app_sid
+    attr_accessor :error
 
-    attr_accessor :api_key_id
+    attr_accessor :metadata
 
-    attr_accessor :api_key_name
+    # Indicates if API call was successful
+    attr_accessor :success
 
-    attr_accessor :auth_token
-
-    attr_accessor :esp_twilio_uuid
-
-    attr_accessor :inbound_twiml_app_sid
-
-    attr_accessor :outbound_twiml_app_sid
-
-    attr_accessor :phone_numbers
-
-    attr_accessor :twilio_workspace_sid
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'account_sid' => :'account_sid',
-        :'ai_twiml_app_sid' => :'ai_twiml_app_sid',
-        :'api_key_id' => :'api_key_id',
-        :'api_key_name' => :'api_key_name',
-        :'auth_token' => :'auth_token',
-        :'esp_twilio_uuid' => :'esp_twilio_uuid',
-        :'inbound_twiml_app_sid' => :'inbound_twiml_app_sid',
-        :'outbound_twiml_app_sid' => :'outbound_twiml_app_sid',
-        :'phone_numbers' => :'phone_numbers',
-        :'twilio_workspace_sid' => :'twilio_workspace_sid'
+        :'audit_logs' => :'audit_logs',
+        :'error' => :'error',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
@@ -59,16 +46,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'account_sid' => :'String',
-        :'ai_twiml_app_sid' => :'String',
-        :'api_key_id' => :'String',
-        :'api_key_name' => :'String',
-        :'auth_token' => :'String',
-        :'esp_twilio_uuid' => :'String',
-        :'inbound_twiml_app_sid' => :'String',
-        :'outbound_twiml_app_sid' => :'String',
-        :'phone_numbers' => :'Array<String>',
-        :'twilio_workspace_sid' => :'String'
+        :'audit_logs' => :'Array<ConversationPbxCosAuditLog>',
+        :'error' => :'Error',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'Boolean',
+        :'warning' => :'Warning'
       }
     end
 
@@ -82,57 +64,37 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::Twilio` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxCosAuditLogsResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::Twilio`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxCosAuditLogsResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'account_sid')
-        self.account_sid = attributes[:'account_sid']
-      end
-
-      if attributes.key?(:'ai_twiml_app_sid')
-        self.ai_twiml_app_sid = attributes[:'ai_twiml_app_sid']
-      end
-
-      if attributes.key?(:'api_key_id')
-        self.api_key_id = attributes[:'api_key_id']
-      end
-
-      if attributes.key?(:'api_key_name')
-        self.api_key_name = attributes[:'api_key_name']
-      end
-
-      if attributes.key?(:'auth_token')
-        self.auth_token = attributes[:'auth_token']
-      end
-
-      if attributes.key?(:'esp_twilio_uuid')
-        self.esp_twilio_uuid = attributes[:'esp_twilio_uuid']
-      end
-
-      if attributes.key?(:'inbound_twiml_app_sid')
-        self.inbound_twiml_app_sid = attributes[:'inbound_twiml_app_sid']
-      end
-
-      if attributes.key?(:'outbound_twiml_app_sid')
-        self.outbound_twiml_app_sid = attributes[:'outbound_twiml_app_sid']
-      end
-
-      if attributes.key?(:'phone_numbers')
-        if (value = attributes[:'phone_numbers']).is_a?(Array)
-          self.phone_numbers = value
+      if attributes.key?(:'audit_logs')
+        if (value = attributes[:'audit_logs']).is_a?(Array)
+          self.audit_logs = value
         end
       end
 
-      if attributes.key?(:'twilio_workspace_sid')
-        self.twilio_workspace_sid = attributes[:'twilio_workspace_sid']
+      if attributes.key?(:'error')
+        self.error = attributes[:'error']
+      end
+
+      if attributes.key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.key?(:'success')
+        self.success = attributes[:'success']
+      end
+
+      if attributes.key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -154,16 +116,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          account_sid == o.account_sid &&
-          ai_twiml_app_sid == o.ai_twiml_app_sid &&
-          api_key_id == o.api_key_id &&
-          api_key_name == o.api_key_name &&
-          auth_token == o.auth_token &&
-          esp_twilio_uuid == o.esp_twilio_uuid &&
-          inbound_twiml_app_sid == o.inbound_twiml_app_sid &&
-          outbound_twiml_app_sid == o.outbound_twiml_app_sid &&
-          phone_numbers == o.phone_numbers &&
-          twilio_workspace_sid == o.twilio_workspace_sid
+          audit_logs == o.audit_logs &&
+          error == o.error &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -175,7 +132,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_sid, ai_twiml_app_sid, api_key_id, api_key_name, auth_token, esp_twilio_uuid, inbound_twiml_app_sid, outbound_twiml_app_sid, phone_numbers, twilio_workspace_sid].hash
+      [audit_logs, error, metadata, success, warning].hash
     end
 
     # Builds the object from hash

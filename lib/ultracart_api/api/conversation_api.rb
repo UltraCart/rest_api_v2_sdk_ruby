@@ -556,6 +556,70 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Delete pbx class of service
+    # Delete a class of service 
+    # @param class_of_service_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [BaseResponse]
+    def delete_pbx_class_of_service(class_of_service_uuid, opts = {})
+      data, _status_code, _headers = delete_pbx_class_of_service_with_http_info(class_of_service_uuid, opts)
+      data
+    end
+
+    # Delete pbx class of service
+    # Delete a class of service 
+    # @param class_of_service_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BaseResponse, Integer, Hash)>] BaseResponse data, response status code and response headers
+    def delete_pbx_class_of_service_with_http_info(class_of_service_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.delete_pbx_class_of_service ...'
+      end
+      # verify the required parameter 'class_of_service_uuid' is set
+      if @api_client.config.client_side_validation && class_of_service_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'class_of_service_uuid' when calling ConversationApi.delete_pbx_class_of_service"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/class_of_service/{classOfServiceUuid}'.sub('{' + 'classOfServiceUuid' + '}', CGI.escape(class_of_service_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BaseResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.delete_pbx_class_of_service",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#delete_pbx_class_of_service\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete pbx hardware phone
     # Delete a pbx hardware phone 
     # @param conversation_pbx_hardware_phone_uuid [String] 
@@ -3339,6 +3403,195 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get pbx class of service
+    # Retrieve a single class of service 
+    # @param class_of_service_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxClassOfServiceResponse]
+    def get_pbx_class_of_service(class_of_service_uuid, opts = {})
+      data, _status_code, _headers = get_pbx_class_of_service_with_http_info(class_of_service_uuid, opts)
+      data
+    end
+
+    # Get pbx class of service
+    # Retrieve a single class of service 
+    # @param class_of_service_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxClassOfServiceResponse, Integer, Hash)>] ConversationPbxClassOfServiceResponse data, response status code and response headers
+    def get_pbx_class_of_service_with_http_info(class_of_service_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_pbx_class_of_service ...'
+      end
+      # verify the required parameter 'class_of_service_uuid' is set
+      if @api_client.config.client_side_validation && class_of_service_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'class_of_service_uuid' when calling ConversationApi.get_pbx_class_of_service"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/class_of_service/{classOfServiceUuid}'.sub('{' + 'classOfServiceUuid' + '}', CGI.escape(class_of_service_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxClassOfServiceResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_pbx_class_of_service",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_pbx_class_of_service\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get pbx classes of service
+    # Retrieve all classes of service for the merchant 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxClassOfServicesResponse]
+    def get_pbx_classes_of_service(opts = {})
+      data, _status_code, _headers = get_pbx_classes_of_service_with_http_info(opts)
+      data
+    end
+
+    # Get pbx classes of service
+    # Retrieve all classes of service for the merchant 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxClassOfServicesResponse, Integer, Hash)>] ConversationPbxClassOfServicesResponse data, response status code and response headers
+    def get_pbx_classes_of_service_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_pbx_classes_of_service ...'
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/class_of_service'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxClassOfServicesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_pbx_classes_of_service",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_pbx_classes_of_service\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get pbx class of service audit logs
+    # Retrieve audit log entries for class of service enforcement 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :since ISO timestamp to filter entries since
+    # @option opts [String] :agent_login Filter by agent login
+    # @option opts [Integer] :limit Maximum number of entries to return (default 100)
+    # @return [ConversationPbxCosAuditLogsResponse]
+    def get_pbx_cos_audit_logs(opts = {})
+      data, _status_code, _headers = get_pbx_cos_audit_logs_with_http_info(opts)
+      data
+    end
+
+    # Get pbx class of service audit logs
+    # Retrieve audit log entries for class of service enforcement 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :since ISO timestamp to filter entries since
+    # @option opts [String] :agent_login Filter by agent login
+    # @option opts [Integer] :limit Maximum number of entries to return (default 100)
+    # @return [Array<(ConversationPbxCosAuditLogsResponse, Integer, Hash)>] ConversationPbxCosAuditLogsResponse data, response status code and response headers
+    def get_pbx_cos_audit_logs_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_pbx_cos_audit_logs ...'
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/class_of_service/audit_log'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
+      query_params[:'agent_login'] = opts[:'agent_login'] if !opts[:'agent_login'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxCosAuditLogsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_pbx_cos_audit_logs",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_pbx_cos_audit_logs\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get pbx hardware phone
     # Retrieve a pbx hardware phone 
     # @param conversation_pbx_hardware_phone_uuid [String] 
@@ -4992,6 +5245,75 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#insert_pbx_audio\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Insert pbx class of service
+    # Create a new class of service 
+    # @param class_of_service [ConversationPbxClassOfService] Class of service
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxClassOfServiceResponse]
+    def insert_pbx_class_of_service(class_of_service, opts = {})
+      data, _status_code, _headers = insert_pbx_class_of_service_with_http_info(class_of_service, opts)
+      data
+    end
+
+    # Insert pbx class of service
+    # Create a new class of service 
+    # @param class_of_service [ConversationPbxClassOfService] Class of service
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxClassOfServiceResponse, Integer, Hash)>] ConversationPbxClassOfServiceResponse data, response status code and response headers
+    def insert_pbx_class_of_service_with_http_info(class_of_service, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.insert_pbx_class_of_service ...'
+      end
+      # verify the required parameter 'class_of_service' is set
+      if @api_client.config.client_side_validation && class_of_service.nil?
+        fail ArgumentError, "Missing the required parameter 'class_of_service' when calling ConversationApi.insert_pbx_class_of_service"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/class_of_service'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(class_of_service)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxClassOfServiceResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.insert_pbx_class_of_service",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#insert_pbx_class_of_service\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -7049,6 +7371,81 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#update_pbx_audio\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update pbx class of service
+    # Update an existing class of service 
+    # @param class_of_service_uuid [String] 
+    # @param class_of_service [ConversationPbxClassOfService] Class of service
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxClassOfServiceResponse]
+    def update_pbx_class_of_service(class_of_service_uuid, class_of_service, opts = {})
+      data, _status_code, _headers = update_pbx_class_of_service_with_http_info(class_of_service_uuid, class_of_service, opts)
+      data
+    end
+
+    # Update pbx class of service
+    # Update an existing class of service 
+    # @param class_of_service_uuid [String] 
+    # @param class_of_service [ConversationPbxClassOfService] Class of service
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxClassOfServiceResponse, Integer, Hash)>] ConversationPbxClassOfServiceResponse data, response status code and response headers
+    def update_pbx_class_of_service_with_http_info(class_of_service_uuid, class_of_service, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.update_pbx_class_of_service ...'
+      end
+      # verify the required parameter 'class_of_service_uuid' is set
+      if @api_client.config.client_side_validation && class_of_service_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'class_of_service_uuid' when calling ConversationApi.update_pbx_class_of_service"
+      end
+      # verify the required parameter 'class_of_service' is set
+      if @api_client.config.client_side_validation && class_of_service.nil?
+        fail ArgumentError, "Missing the required parameter 'class_of_service' when calling ConversationApi.update_pbx_class_of_service"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/class_of_service/{classOfServiceUuid}'.sub('{' + 'classOfServiceUuid' + '}', CGI.escape(class_of_service_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(class_of_service)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxClassOfServiceResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.update_pbx_class_of_service",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#update_pbx_class_of_service\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

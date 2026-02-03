@@ -24,6 +24,9 @@ module UltracartClient
     # Whether this is the primary recording for the call
     attr_accessor :is_primary
 
+    # S3 key for the recording audio file
+    attr_accessor :recording_s3_key
+
     # Twilio recording SID
     attr_accessor :recording_sid
 
@@ -41,6 +44,7 @@ module UltracartClient
         :'channels' => :'channels',
         :'duration_seconds' => :'duration_seconds',
         :'is_primary' => :'is_primary',
+        :'recording_s3_key' => :'recording_s3_key',
         :'recording_sid' => :'recording_sid',
         :'recording_url' => :'recording_url',
         :'status' => :'status',
@@ -59,6 +63,7 @@ module UltracartClient
         :'channels' => :'Integer',
         :'duration_seconds' => :'Integer',
         :'is_primary' => :'Boolean',
+        :'recording_s3_key' => :'String',
         :'recording_sid' => :'String',
         :'recording_url' => :'String',
         :'status' => :'String',
@@ -99,6 +104,10 @@ module UltracartClient
         self.is_primary = attributes[:'is_primary']
       end
 
+      if attributes.key?(:'recording_s3_key')
+        self.recording_s3_key = attributes[:'recording_s3_key']
+      end
+
       if attributes.key?(:'recording_sid')
         self.recording_sid = attributes[:'recording_sid']
       end
@@ -137,6 +146,7 @@ module UltracartClient
           channels == o.channels &&
           duration_seconds == o.duration_seconds &&
           is_primary == o.is_primary &&
+          recording_s3_key == o.recording_s3_key &&
           recording_sid == o.recording_sid &&
           recording_url == o.recording_url &&
           status == o.status &&
@@ -152,7 +162,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [channels, duration_seconds, is_primary, recording_sid, recording_url, status, transcript].hash
+      [channels, duration_seconds, is_primary, recording_s3_key, recording_sid, recording_url, status, transcript].hash
     end
 
     # Builds the object from hash

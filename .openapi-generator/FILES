@@ -224,6 +224,11 @@ docs/ConversationPbxCallTimeline.md
 docs/ConversationPbxCallTranscript.md
 docs/ConversationPbxCallTranscriptSegment.md
 docs/ConversationPbxCallTransfer.md
+docs/ConversationPbxClassOfService.md
+docs/ConversationPbxClassOfServiceResponse.md
+docs/ConversationPbxClassOfServicesResponse.md
+docs/ConversationPbxCosAuditLog.md
+docs/ConversationPbxCosAuditLogsResponse.md
 docs/ConversationPbxCustomerSnapshotRequest.md
 docs/ConversationPbxCustomerSnapshotResponse.md
 docs/ConversationPbxHardwarePhone.md
@@ -1202,6 +1207,11 @@ lib/ultracart_api/models/conversation_pbx_call_timeline.rb
 lib/ultracart_api/models/conversation_pbx_call_transcript.rb
 lib/ultracart_api/models/conversation_pbx_call_transcript_segment.rb
 lib/ultracart_api/models/conversation_pbx_call_transfer.rb
+lib/ultracart_api/models/conversation_pbx_class_of_service.rb
+lib/ultracart_api/models/conversation_pbx_class_of_service_response.rb
+lib/ultracart_api/models/conversation_pbx_class_of_services_response.rb
+lib/ultracart_api/models/conversation_pbx_cos_audit_log.rb
+lib/ultracart_api/models/conversation_pbx_cos_audit_logs_response.rb
 lib/ultracart_api/models/conversation_pbx_customer_snapshot_request.rb
 lib/ultracart_api/models/conversation_pbx_customer_snapshot_response.rb
 lib/ultracart_api/models/conversation_pbx_hardware_phone.rb

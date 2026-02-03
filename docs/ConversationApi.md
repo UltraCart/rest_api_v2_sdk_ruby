@@ -12,6 +12,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**delete_pbx_address**](ConversationApi.md#delete_pbx_address) | **DELETE** /conversation/pbx/address/{conversationPbxAddressUuid} | Delete pbx address |
 | [**delete_pbx_agent_voicemail**](ConversationApi.md#delete_pbx_agent_voicemail) | **DELETE** /conversation/pbx/agent/voicemails/{recording_sid} | Delete Agent Voicemail |
 | [**delete_pbx_audio**](ConversationApi.md#delete_pbx_audio) | **DELETE** /conversation/pbx/audio/{conversationPbxAudioUuid} | Delete pbx audio |
+| [**delete_pbx_class_of_service**](ConversationApi.md#delete_pbx_class_of_service) | **DELETE** /conversation/pbx/class_of_service/{classOfServiceUuid} | Delete pbx class of service |
 | [**delete_pbx_hardware_phone**](ConversationApi.md#delete_pbx_hardware_phone) | **DELETE** /conversation/pbx/hardware_phone/{conversationPbxHardwarePhoneUuid} | Delete pbx hardware phone |
 | [**delete_pbx_menu**](ConversationApi.md#delete_pbx_menu) | **DELETE** /conversation/pbx/menu/{conversationPbxMenuUuid} | Delete pbx menu |
 | [**delete_pbx_phone_number**](ConversationApi.md#delete_pbx_phone_number) | **DELETE** /conversation/pbx/phone_number/{conversationPbxPhoneNumberUuid} | Delete pbx phoneNumber |
@@ -56,6 +57,9 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_pbx_audio_usage**](ConversationApi.md#get_pbx_audio_usage) | **GET** /conversation/pbx/audio/{conversationPbxAudioUuid}/usage | Get pbx audio usage |
 | [**get_pbx_audios**](ConversationApi.md#get_pbx_audios) | **GET** /conversation/pbx/audio | Get pbx audios |
 | [**get_pbx_call**](ConversationApi.md#get_pbx_call) | **GET** /conversation/pbx/call/{callUuid} | Get pbx call record |
+| [**get_pbx_class_of_service**](ConversationApi.md#get_pbx_class_of_service) | **GET** /conversation/pbx/class_of_service/{classOfServiceUuid} | Get pbx class of service |
+| [**get_pbx_classes_of_service**](ConversationApi.md#get_pbx_classes_of_service) | **GET** /conversation/pbx/class_of_service | Get pbx classes of service |
+| [**get_pbx_cos_audit_logs**](ConversationApi.md#get_pbx_cos_audit_logs) | **GET** /conversation/pbx/class_of_service/audit_log | Get pbx class of service audit logs |
 | [**get_pbx_hardware_phone**](ConversationApi.md#get_pbx_hardware_phone) | **GET** /conversation/pbx/hardware_phone/{conversationPbxHardwarePhoneUuid} | Get pbx hardware phone |
 | [**get_pbx_hardware_phone_manufacturers**](ConversationApi.md#get_pbx_hardware_phone_manufacturers) | **GET** /conversation/pbx/hardware_phone/manufacturers | Get pbx hardware phone manufacturers |
 | [**get_pbx_hardware_phones**](ConversationApi.md#get_pbx_hardware_phones) | **GET** /conversation/pbx/hardware_phone | Get pbx hardware phones |
@@ -82,6 +86,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**insert_conversation_engagement**](ConversationApi.md#insert_conversation_engagement) | **POST** /conversation/engagements | Insert a engagement |
 | [**insert_pbx_address**](ConversationApi.md#insert_pbx_address) | **POST** /conversation/pbx/address | Insert pbx address |
 | [**insert_pbx_audio**](ConversationApi.md#insert_pbx_audio) | **POST** /conversation/pbx/audio | Insert pbx audio |
+| [**insert_pbx_class_of_service**](ConversationApi.md#insert_pbx_class_of_service) | **POST** /conversation/pbx/class_of_service | Insert pbx class of service |
 | [**insert_pbx_hardware_phone**](ConversationApi.md#insert_pbx_hardware_phone) | **POST** /conversation/pbx/hardware_phone | Insert pbx hardware phone |
 | [**insert_pbx_menu**](ConversationApi.md#insert_pbx_menu) | **POST** /conversation/pbx/menu | Insert pbx menu |
 | [**insert_pbx_queue**](ConversationApi.md#insert_pbx_queue) | **POST** /conversation/pbx/queue | Insert pbx queue |
@@ -111,6 +116,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**update_pbx_address**](ConversationApi.md#update_pbx_address) | **PUT** /conversation/pbx/address/{conversationPbxAddressUuid} | Update pbx address |
 | [**update_pbx_agent**](ConversationApi.md#update_pbx_agent) | **PUT** /conversation/pbx/agent/{conversationPbxAgentUuid} | Update pbx agent |
 | [**update_pbx_audio**](ConversationApi.md#update_pbx_audio) | **PUT** /conversation/pbx/audio/{conversationPbxAudioUuid} | Update pbx audio |
+| [**update_pbx_class_of_service**](ConversationApi.md#update_pbx_class_of_service) | **PUT** /conversation/pbx/class_of_service/{classOfServiceUuid} | Update pbx class of service |
 | [**update_pbx_hardware_phone**](ConversationApi.md#update_pbx_hardware_phone) | **PUT** /conversation/pbx/hardware_phone/{conversationPbxHardwarePhoneUuid} | Update pbx hardware phone |
 | [**update_pbx_menu**](ConversationApi.md#update_pbx_menu) | **PUT** /conversation/pbx/menu/{conversationPbxMenuUuid} | Update pbx menu |
 | [**update_pbx_phone_number**](ConversationApi.md#update_pbx_phone_number) | **PUT** /conversation/pbx/phone_number/{conversationPbxPhoneNumberUuid} | Update pbx phoneNumber |
@@ -542,6 +548,59 @@ end
 ### Return type
 
 [**ConversationPbxAudioResponse**](ConversationPbxAudioResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_pbx_class_of_service
+
+> <BaseResponse> delete_pbx_class_of_service(class_of_service_uuid)
+
+Delete pbx class of service
+
+Delete a class of service 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_pbx_class_of_service_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<BaseResponse>, Integer, Hash)> delete_pbx_class_of_service_with_http_info(class_of_service_uuid)
+
+```ruby
+begin
+  # Delete pbx class of service
+  data, status_code, headers = api_instance.delete_pbx_class_of_service_with_http_info(class_of_service_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <BaseResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_pbx_class_of_service_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **class_of_service_uuid** | **String** |  |  |
+
+### Return type
+
+[**BaseResponse**](BaseResponse.md)
 
 ### Authorization
 
@@ -2899,6 +2958,165 @@ end
 - **Accept**: application/json
 
 
+## get_pbx_class_of_service
+
+> <ConversationPbxClassOfServiceResponse> get_pbx_class_of_service(class_of_service_uuid)
+
+Get pbx class of service
+
+Retrieve a single class of service 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_pbx_class_of_service_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxClassOfServiceResponse>, Integer, Hash)> get_pbx_class_of_service_with_http_info(class_of_service_uuid)
+
+```ruby
+begin
+  # Get pbx class of service
+  data, status_code, headers = api_instance.get_pbx_class_of_service_with_http_info(class_of_service_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxClassOfServiceResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_class_of_service_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **class_of_service_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxClassOfServiceResponse**](ConversationPbxClassOfServiceResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_classes_of_service
+
+> <ConversationPbxClassOfServicesResponse> get_pbx_classes_of_service
+
+Get pbx classes of service
+
+Retrieve all classes of service for the merchant 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_pbx_classes_of_service_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxClassOfServicesResponse>, Integer, Hash)> get_pbx_classes_of_service_with_http_info
+
+```ruby
+begin
+  # Get pbx classes of service
+  data, status_code, headers = api_instance.get_pbx_classes_of_service_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxClassOfServicesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_classes_of_service_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxClassOfServicesResponse**](ConversationPbxClassOfServicesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_cos_audit_logs
+
+> <ConversationPbxCosAuditLogsResponse> get_pbx_cos_audit_logs(opts)
+
+Get pbx class of service audit logs
+
+Retrieve audit log entries for class of service enforcement 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_pbx_cos_audit_logs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxCosAuditLogsResponse>, Integer, Hash)> get_pbx_cos_audit_logs_with_http_info(opts)
+
+```ruby
+begin
+  # Get pbx class of service audit logs
+  data, status_code, headers = api_instance.get_pbx_cos_audit_logs_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxCosAuditLogsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_cos_audit_logs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **since** | **String** | ISO timestamp to filter entries since | [optional] |
+| **agent_login** | **String** | Filter by agent login | [optional] |
+| **limit** | **Integer** | Maximum number of entries to return (default 100) | [optional] |
+
+### Return type
+
+[**ConversationPbxCosAuditLogsResponse**](ConversationPbxCosAuditLogsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_pbx_hardware_phone
 
 > <ConversationPbxHardwarePhoneResponse> get_pbx_hardware_phone(conversation_pbx_hardware_phone_uuid)
@@ -4275,6 +4493,59 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## insert_pbx_class_of_service
+
+> <ConversationPbxClassOfServiceResponse> insert_pbx_class_of_service(class_of_service)
+
+Insert pbx class of service
+
+Create a new class of service 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_pbx_class_of_service_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxClassOfServiceResponse>, Integer, Hash)> insert_pbx_class_of_service_with_http_info(class_of_service)
+
+```ruby
+begin
+  # Insert pbx class of service
+  data, status_code, headers = api_instance.insert_pbx_class_of_service_with_http_info(class_of_service)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxClassOfServiceResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_pbx_class_of_service_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **class_of_service** | [**ConversationPbxClassOfService**](ConversationPbxClassOfService.md) | Class of service |  |
+
+### Return type
+
+[**ConversationPbxClassOfServiceResponse**](ConversationPbxClassOfServiceResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
 - **Accept**: application/json
 
 
@@ -5854,6 +6125,60 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_pbx_class_of_service
+
+> <ConversationPbxClassOfServiceResponse> update_pbx_class_of_service(class_of_service_uuid, class_of_service)
+
+Update pbx class of service
+
+Update an existing class of service 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_pbx_class_of_service_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxClassOfServiceResponse>, Integer, Hash)> update_pbx_class_of_service_with_http_info(class_of_service_uuid, class_of_service)
+
+```ruby
+begin
+  # Update pbx class of service
+  data, status_code, headers = api_instance.update_pbx_class_of_service_with_http_info(class_of_service_uuid, class_of_service)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxClassOfServiceResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_pbx_class_of_service_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **class_of_service_uuid** | **String** |  |  |
+| **class_of_service** | [**ConversationPbxClassOfService**](ConversationPbxClassOfService.md) | Class of service |  |
+
+### Return type
+
+[**ConversationPbxClassOfServiceResponse**](ConversationPbxClassOfServiceResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
 - **Accept**: application/json
 
 

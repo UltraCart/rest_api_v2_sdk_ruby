@@ -14,40 +14,46 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class Twilio
-    attr_accessor :account_sid
+  class ConversationPbxClassOfService
+    # E.164 country calling codes (e.g. 1 for US/Canada, 44 for UK). Empty means domestic only.
+    attr_accessor :allowed_countries
 
-    attr_accessor :ai_twiml_app_sid
+    # Block calls to 900, 976, premium-rate, and shortcode destinations
+    attr_accessor :block_premium_numbers
 
-    attr_accessor :api_key_id
+    # Class of Service unique identifier
+    attr_accessor :conversation_pbx_class_of_service_uuid
 
-    attr_accessor :api_key_name
+    # If true, this CoS applies to all agents without an explicit cos_uuid. Only one per merchant.
+    attr_accessor :default_flag
 
-    attr_accessor :auth_token
+    # Description of the class of service
+    attr_accessor :description
 
-    attr_accessor :esp_twilio_uuid
+    # Merchant Id
+    attr_accessor :merchant_id
 
-    attr_accessor :inbound_twiml_app_sid
+    # Display name for the class of service
+    attr_accessor :name
 
-    attr_accessor :outbound_twiml_app_sid
+    # Whether agents with this CoS can make outbound calls
+    attr_accessor :outbound_enabled
 
-    attr_accessor :phone_numbers
-
-    attr_accessor :twilio_workspace_sid
+    # UUID of a time range. If set, outbound calls only permitted during those time windows.
+    attr_accessor :time_range_uuid
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'account_sid' => :'account_sid',
-        :'ai_twiml_app_sid' => :'ai_twiml_app_sid',
-        :'api_key_id' => :'api_key_id',
-        :'api_key_name' => :'api_key_name',
-        :'auth_token' => :'auth_token',
-        :'esp_twilio_uuid' => :'esp_twilio_uuid',
-        :'inbound_twiml_app_sid' => :'inbound_twiml_app_sid',
-        :'outbound_twiml_app_sid' => :'outbound_twiml_app_sid',
-        :'phone_numbers' => :'phone_numbers',
-        :'twilio_workspace_sid' => :'twilio_workspace_sid'
+        :'allowed_countries' => :'allowed_countries',
+        :'block_premium_numbers' => :'block_premium_numbers',
+        :'conversation_pbx_class_of_service_uuid' => :'conversation_pbx_class_of_service_uuid',
+        :'default_flag' => :'default_flag',
+        :'description' => :'description',
+        :'merchant_id' => :'merchant_id',
+        :'name' => :'name',
+        :'outbound_enabled' => :'outbound_enabled',
+        :'time_range_uuid' => :'time_range_uuid'
       }
     end
 
@@ -59,16 +65,15 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'account_sid' => :'String',
-        :'ai_twiml_app_sid' => :'String',
-        :'api_key_id' => :'String',
-        :'api_key_name' => :'String',
-        :'auth_token' => :'String',
-        :'esp_twilio_uuid' => :'String',
-        :'inbound_twiml_app_sid' => :'String',
-        :'outbound_twiml_app_sid' => :'String',
-        :'phone_numbers' => :'Array<String>',
-        :'twilio_workspace_sid' => :'String'
+        :'allowed_countries' => :'Array<String>',
+        :'block_premium_numbers' => :'Boolean',
+        :'conversation_pbx_class_of_service_uuid' => :'String',
+        :'default_flag' => :'Boolean',
+        :'description' => :'String',
+        :'merchant_id' => :'String',
+        :'name' => :'String',
+        :'outbound_enabled' => :'Boolean',
+        :'time_range_uuid' => :'String'
       }
     end
 
@@ -82,57 +87,53 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::Twilio` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxClassOfService` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::Twilio`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxClassOfService`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'account_sid')
-        self.account_sid = attributes[:'account_sid']
-      end
-
-      if attributes.key?(:'ai_twiml_app_sid')
-        self.ai_twiml_app_sid = attributes[:'ai_twiml_app_sid']
-      end
-
-      if attributes.key?(:'api_key_id')
-        self.api_key_id = attributes[:'api_key_id']
-      end
-
-      if attributes.key?(:'api_key_name')
-        self.api_key_name = attributes[:'api_key_name']
-      end
-
-      if attributes.key?(:'auth_token')
-        self.auth_token = attributes[:'auth_token']
-      end
-
-      if attributes.key?(:'esp_twilio_uuid')
-        self.esp_twilio_uuid = attributes[:'esp_twilio_uuid']
-      end
-
-      if attributes.key?(:'inbound_twiml_app_sid')
-        self.inbound_twiml_app_sid = attributes[:'inbound_twiml_app_sid']
-      end
-
-      if attributes.key?(:'outbound_twiml_app_sid')
-        self.outbound_twiml_app_sid = attributes[:'outbound_twiml_app_sid']
-      end
-
-      if attributes.key?(:'phone_numbers')
-        if (value = attributes[:'phone_numbers']).is_a?(Array)
-          self.phone_numbers = value
+      if attributes.key?(:'allowed_countries')
+        if (value = attributes[:'allowed_countries']).is_a?(Array)
+          self.allowed_countries = value
         end
       end
 
-      if attributes.key?(:'twilio_workspace_sid')
-        self.twilio_workspace_sid = attributes[:'twilio_workspace_sid']
+      if attributes.key?(:'block_premium_numbers')
+        self.block_premium_numbers = attributes[:'block_premium_numbers']
+      end
+
+      if attributes.key?(:'conversation_pbx_class_of_service_uuid')
+        self.conversation_pbx_class_of_service_uuid = attributes[:'conversation_pbx_class_of_service_uuid']
+      end
+
+      if attributes.key?(:'default_flag')
+        self.default_flag = attributes[:'default_flag']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'outbound_enabled')
+        self.outbound_enabled = attributes[:'outbound_enabled']
+      end
+
+      if attributes.key?(:'time_range_uuid')
+        self.time_range_uuid = attributes[:'time_range_uuid']
       end
     end
 
@@ -140,13 +141,58 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@description.nil? && @description.to_s.length > 500
+        invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 500.')
+      end
+
+      if !@merchant_id.nil? && @merchant_id.to_s.length > 5
+        invalid_properties.push('invalid value for "merchant_id", the character length must be smaller than or equal to 5.')
+      end
+
+      if !@name.nil? && @name.to_s.length > 100
+        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 100.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@description.nil? && @description.to_s.length > 500
+      return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
+      return false if !@name.nil? && @name.to_s.length > 100
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+      if !description.nil? && description.to_s.length > 500
+        fail ArgumentError, 'invalid value for "description", the character length must be smaller than or equal to 500.'
+      end
+
+      @description = description
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] merchant_id Value to be assigned
+    def merchant_id=(merchant_id)
+      if !merchant_id.nil? && merchant_id.to_s.length > 5
+        fail ArgumentError, 'invalid value for "merchant_id", the character length must be smaller than or equal to 5.'
+      end
+
+      @merchant_id = merchant_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if !name.nil? && name.to_s.length > 100
+        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 100.'
+      end
+
+      @name = name
     end
 
     # Checks equality by comparing each attribute.
@@ -154,16 +200,15 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          account_sid == o.account_sid &&
-          ai_twiml_app_sid == o.ai_twiml_app_sid &&
-          api_key_id == o.api_key_id &&
-          api_key_name == o.api_key_name &&
-          auth_token == o.auth_token &&
-          esp_twilio_uuid == o.esp_twilio_uuid &&
-          inbound_twiml_app_sid == o.inbound_twiml_app_sid &&
-          outbound_twiml_app_sid == o.outbound_twiml_app_sid &&
-          phone_numbers == o.phone_numbers &&
-          twilio_workspace_sid == o.twilio_workspace_sid
+          allowed_countries == o.allowed_countries &&
+          block_premium_numbers == o.block_premium_numbers &&
+          conversation_pbx_class_of_service_uuid == o.conversation_pbx_class_of_service_uuid &&
+          default_flag == o.default_flag &&
+          description == o.description &&
+          merchant_id == o.merchant_id &&
+          name == o.name &&
+          outbound_enabled == o.outbound_enabled &&
+          time_range_uuid == o.time_range_uuid
     end
 
     # @see the `==` method
@@ -175,7 +220,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_sid, ai_twiml_app_sid, api_key_id, api_key_name, auth_token, esp_twilio_uuid, inbound_twiml_app_sid, outbound_twiml_app_sid, phone_numbers, twilio_workspace_sid].hash
+      [allowed_countries, block_premium_numbers, conversation_pbx_class_of_service_uuid, default_flag, description, merchant_id, name, outbound_enabled, time_range_uuid].hash
     end
 
     # Builds the object from hash
