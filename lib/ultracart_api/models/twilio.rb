@@ -16,6 +16,8 @@ module UltracartClient
   class Twilio
     attr_accessor :account_sid
 
+    attr_accessor :ai_twiml_app_sid
+
     attr_accessor :api_key_id
 
     attr_accessor :api_key_name
@@ -36,6 +38,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'account_sid' => :'account_sid',
+        :'ai_twiml_app_sid' => :'ai_twiml_app_sid',
         :'api_key_id' => :'api_key_id',
         :'api_key_name' => :'api_key_name',
         :'auth_token' => :'auth_token',
@@ -51,6 +54,7 @@ module UltracartClient
     def self.swagger_types
       {
         :'account_sid' => :'String',
+        :'ai_twiml_app_sid' => :'String',
         :'api_key_id' => :'String',
         :'api_key_name' => :'String',
         :'auth_token' => :'String',
@@ -72,6 +76,10 @@ module UltracartClient
 
       if attributes.has_key?(:'account_sid')
         self.account_sid = attributes[:'account_sid']
+      end
+
+      if attributes.has_key?(:'ai_twiml_app_sid')
+        self.ai_twiml_app_sid = attributes[:'ai_twiml_app_sid']
       end
 
       if attributes.has_key?(:'api_key_id')
@@ -128,6 +136,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           account_sid == o.account_sid &&
+          ai_twiml_app_sid == o.ai_twiml_app_sid &&
           api_key_id == o.api_key_id &&
           api_key_name == o.api_key_name &&
           auth_token == o.auth_token &&
@@ -147,7 +156,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [account_sid, api_key_id, api_key_name, auth_token, esp_twilio_uuid, inbound_twiml_app_sid, outbound_twiml_app_sid, phone_numbers, twilio_workspace_sid].hash
+      [account_sid, ai_twiml_app_sid, api_key_id, api_key_name, auth_token, esp_twilio_uuid, inbound_twiml_app_sid, outbound_twiml_app_sid, phone_numbers, twilio_workspace_sid].hash
     end
 
     # Builds the object from hash

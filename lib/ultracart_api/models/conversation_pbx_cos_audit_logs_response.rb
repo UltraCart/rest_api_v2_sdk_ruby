@@ -13,55 +13,38 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ConversationPbxCallRecording
-    # Number of audio channels in the recording (1 for mono, 2 for stereo/dual-channel)
-    attr_accessor :channels
+  class ConversationPbxCosAuditLogsResponse
+    # Array of audit log entries
+    attr_accessor :audit_logs
 
-    # Duration of the recording in seconds
-    attr_accessor :duration_seconds
+    attr_accessor :error
 
-    # Whether this is the primary recording for the call
-    attr_accessor :is_primary
+    attr_accessor :metadata
 
-    # S3 key for the recording audio file
-    attr_accessor :recording_s3_key
+    # Indicates if API call was successful
+    attr_accessor :success
 
-    # Twilio recording SID
-    attr_accessor :recording_sid
-
-    # URL to access the recording
-    attr_accessor :recording_url
-
-    # Status of the recording
-    attr_accessor :status
-
-    attr_accessor :transcript
+    attr_accessor :warning
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'channels' => :'channels',
-        :'duration_seconds' => :'duration_seconds',
-        :'is_primary' => :'is_primary',
-        :'recording_s3_key' => :'recording_s3_key',
-        :'recording_sid' => :'recording_sid',
-        :'recording_url' => :'recording_url',
-        :'status' => :'status',
-        :'transcript' => :'transcript'
+        :'audit_logs' => :'audit_logs',
+        :'error' => :'error',
+        :'metadata' => :'metadata',
+        :'success' => :'success',
+        :'warning' => :'warning'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'channels' => :'Integer',
-        :'duration_seconds' => :'Integer',
-        :'is_primary' => :'BOOLEAN',
-        :'recording_s3_key' => :'String',
-        :'recording_sid' => :'String',
-        :'recording_url' => :'String',
-        :'status' => :'String',
-        :'transcript' => :'ConversationPbxCallTranscript'
+        :'audit_logs' => :'Array<ConversationPbxCosAuditLog>',
+        :'error' => :'Error',
+        :'metadata' => :'ResponseMetadata',
+        :'success' => :'BOOLEAN',
+        :'warning' => :'Warning'
       }
     end
 
@@ -73,36 +56,26 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'channels')
-        self.channels = attributes[:'channels']
+      if attributes.has_key?(:'audit_logs')
+        if (value = attributes[:'audit_logs']).is_a?(Array)
+          self.audit_logs = value
+        end
       end
 
-      if attributes.has_key?(:'duration_seconds')
-        self.duration_seconds = attributes[:'duration_seconds']
+      if attributes.has_key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.has_key?(:'is_primary')
-        self.is_primary = attributes[:'is_primary']
+      if attributes.has_key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
 
-      if attributes.has_key?(:'recording_s3_key')
-        self.recording_s3_key = attributes[:'recording_s3_key']
+      if attributes.has_key?(:'success')
+        self.success = attributes[:'success']
       end
 
-      if attributes.has_key?(:'recording_sid')
-        self.recording_sid = attributes[:'recording_sid']
-      end
-
-      if attributes.has_key?(:'recording_url')
-        self.recording_url = attributes[:'recording_url']
-      end
-
-      if attributes.has_key?(:'status')
-        self.status = attributes[:'status']
-      end
-
-      if attributes.has_key?(:'transcript')
-        self.transcript = attributes[:'transcript']
+      if attributes.has_key?(:'warning')
+        self.warning = attributes[:'warning']
       end
     end
 
@@ -124,14 +97,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          channels == o.channels &&
-          duration_seconds == o.duration_seconds &&
-          is_primary == o.is_primary &&
-          recording_s3_key == o.recording_s3_key &&
-          recording_sid == o.recording_sid &&
-          recording_url == o.recording_url &&
-          status == o.status &&
-          transcript == o.transcript
+          audit_logs == o.audit_logs &&
+          error == o.error &&
+          metadata == o.metadata &&
+          success == o.success &&
+          warning == o.warning
     end
 
     # @see the `==` method
@@ -143,7 +113,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [channels, duration_seconds, is_primary, recording_s3_key, recording_sid, recording_url, status, transcript].hash
+      [audit_logs, error, metadata, success, warning].hash
     end
 
     # Builds the object from hash

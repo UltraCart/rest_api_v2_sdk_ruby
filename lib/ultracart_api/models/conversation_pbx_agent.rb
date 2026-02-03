@@ -26,6 +26,9 @@ module UltracartClient
     # Conversation Pbx Agent unique identifier
     attr_accessor :conversation_pbx_agent_uuid
 
+    # Class of Service UUID. If null, the merchant default CoS applies.
+    attr_accessor :cos_uuid
+
     # The default phone number that this agent should dial out to the PSTN with.
     attr_accessor :default_phone_number_uuid
 
@@ -103,6 +106,7 @@ module UltracartClient
         :'call_routing_preference' => :'call_routing_preference',
         :'cellphone' => :'cellphone',
         :'conversation_pbx_agent_uuid' => :'conversation_pbx_agent_uuid',
+        :'cos_uuid' => :'cos_uuid',
         :'default_phone_number_uuid' => :'default_phone_number_uuid',
         :'extension' => :'extension',
         :'full_name' => :'full_name',
@@ -129,6 +133,7 @@ module UltracartClient
         :'call_routing_preference' => :'String',
         :'cellphone' => :'String',
         :'conversation_pbx_agent_uuid' => :'String',
+        :'cos_uuid' => :'String',
         :'default_phone_number_uuid' => :'String',
         :'extension' => :'Integer',
         :'full_name' => :'String',
@@ -170,6 +175,10 @@ module UltracartClient
 
       if attributes.has_key?(:'conversation_pbx_agent_uuid')
         self.conversation_pbx_agent_uuid = attributes[:'conversation_pbx_agent_uuid']
+      end
+
+      if attributes.has_key?(:'cos_uuid')
+        self.cos_uuid = attributes[:'cos_uuid']
       end
 
       if attributes.has_key?(:'default_phone_number_uuid')
@@ -285,6 +294,8 @@ module UltracartClient
       return false if !@shared_conversation_pbx_voicemail_mailbox_uuid.nil? && @shared_conversation_pbx_voicemail_mailbox_uuid.to_s.length > 50
       return false if !@twilio_taskrouter_worker_id.nil? && @twilio_taskrouter_worker_id.to_s.length > 100
       return false if !@unavailable_play_audio_uuid.nil? && @unavailable_play_audio_uuid.to_s.length > 50
+      unavailable_say_voice_validator = EnumAttributeValidator.new('String', ['man', 'woman'])
+      return false unless unavailable_say_voice_validator.valid?(@unavailable_say_voice)
       return false if !@unavailable_say_voice.nil? && @unavailable_say_voice.to_s.length > 50
       true
     end
@@ -359,13 +370,13 @@ module UltracartClient
       @unavailable_play_audio_uuid = unavailable_play_audio_uuid
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] unavailable_say_voice Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] unavailable_say_voice Object to be assigned
     def unavailable_say_voice=(unavailable_say_voice)
-      if !unavailable_say_voice.nil? && unavailable_say_voice.to_s.length > 50
-        fail ArgumentError, 'invalid value for "unavailable_say_voice", the character length must be smaller than or equal to 50.'
+      validator = EnumAttributeValidator.new('String', ['man', 'woman'])
+      unless validator.valid?(unavailable_say_voice)
+        fail ArgumentError, 'invalid value for "unavailable_say_voice", must be one of #{validator.allowable_values}.'
       end
-
       @unavailable_say_voice = unavailable_say_voice
     end
 
@@ -378,6 +389,7 @@ module UltracartClient
           call_routing_preference == o.call_routing_preference &&
           cellphone == o.cellphone &&
           conversation_pbx_agent_uuid == o.conversation_pbx_agent_uuid &&
+          cos_uuid == o.cos_uuid &&
           default_phone_number_uuid == o.default_phone_number_uuid &&
           extension == o.extension &&
           full_name == o.full_name &&
@@ -405,7 +417,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [ai, call_routing_preference, cellphone, conversation_pbx_agent_uuid, default_phone_number_uuid, extension, full_name, hardware_phone_uuids, login, merchant_id, personal_conversation_pbx_voicemail_mailbox_uuid, preferred_hardware_phone_uuid, record_outgoing_automatically, shared_conversation_pbx_voicemail_mailbox_uuid, twilio_taskrouter_worker_id, unavailable_play_audio_uuid, unavailable_say, unavailable_say_voice, user_id, voicemail].hash
+      [ai, call_routing_preference, cellphone, conversation_pbx_agent_uuid, cos_uuid, default_phone_number_uuid, extension, full_name, hardware_phone_uuids, login, merchant_id, personal_conversation_pbx_voicemail_mailbox_uuid, preferred_hardware_phone_uuid, record_outgoing_automatically, shared_conversation_pbx_voicemail_mailbox_uuid, twilio_taskrouter_worker_id, unavailable_play_audio_uuid, unavailable_say, unavailable_say_voice, user_id, voicemail].hash
     end
 
     # Builds the object from hash

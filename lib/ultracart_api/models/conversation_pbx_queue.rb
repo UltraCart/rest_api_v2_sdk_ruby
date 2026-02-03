@@ -329,8 +329,12 @@ module UltracartClient
       return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
       return false if !@name.nil? && @name.to_s.length > 50
       return false if !@no_agent_available_play_audio_uuid.nil? && @no_agent_available_play_audio_uuid.to_s.length > 50
+      no_agent_available_say_voice_validator = EnumAttributeValidator.new('String', ['man', 'woman'])
+      return false unless no_agent_available_say_voice_validator.valid?(@no_agent_available_say_voice)
       return false if !@no_agent_available_say_voice.nil? && @no_agent_available_say_voice.to_s.length > 50
       return false if !@play_audio_uuid.nil? && @play_audio_uuid.to_s.length > 50
+      say_voice_validator = EnumAttributeValidator.new('String', ['man', 'woman'])
+      return false unless say_voice_validator.valid?(@say_voice)
       return false if !@say_voice.nil? && @say_voice.to_s.length > 50
       return false if !@twilio_taskrouter_workflow_sid.nil? && @twilio_taskrouter_workflow_sid.to_s.length > 100
       return false if !@twilio_workspace_queue_sid.nil? && @twilio_workspace_queue_sid.to_s.length > 50
@@ -397,13 +401,13 @@ module UltracartClient
       @no_agent_available_play_audio_uuid = no_agent_available_play_audio_uuid
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] no_agent_available_say_voice Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] no_agent_available_say_voice Object to be assigned
     def no_agent_available_say_voice=(no_agent_available_say_voice)
-      if !no_agent_available_say_voice.nil? && no_agent_available_say_voice.to_s.length > 50
-        fail ArgumentError, 'invalid value for "no_agent_available_say_voice", the character length must be smaller than or equal to 50.'
+      validator = EnumAttributeValidator.new('String', ['man', 'woman'])
+      unless validator.valid?(no_agent_available_say_voice)
+        fail ArgumentError, 'invalid value for "no_agent_available_say_voice", must be one of #{validator.allowable_values}.'
       end
-
       @no_agent_available_say_voice = no_agent_available_say_voice
     end
 
@@ -417,13 +421,13 @@ module UltracartClient
       @play_audio_uuid = play_audio_uuid
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] say_voice Value to be assigned
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] say_voice Object to be assigned
     def say_voice=(say_voice)
-      if !say_voice.nil? && say_voice.to_s.length > 50
-        fail ArgumentError, 'invalid value for "say_voice", the character length must be smaller than or equal to 50.'
+      validator = EnumAttributeValidator.new('String', ['man', 'woman'])
+      unless validator.valid?(say_voice)
+        fail ArgumentError, 'invalid value for "say_voice", must be one of #{validator.allowable_values}.'
       end
-
       @say_voice = say_voice
     end
 
