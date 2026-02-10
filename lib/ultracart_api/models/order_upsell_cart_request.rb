@@ -13,31 +13,28 @@ Swagger Codegen version: 2.4.15-SNAPSHOT
 require 'date'
 
 module UltracartClient
-  class ItemInventoryUpdate
-    # Distribution center code
-    attr_accessor :distribution_center_code
+  class OrderUpsellCartRequest
+    attr_accessor :checkout_url
 
-    # Inventory level
-    attr_accessor :inventory_level
+    attr_accessor :coupon_codes
 
-    # Merchant Item ID
-    attr_accessor :merchant_item_id
+    attr_accessor :items
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'distribution_center_code' => :'distribution_center_code',
-        :'inventory_level' => :'inventory_level',
-        :'merchant_item_id' => :'merchant_item_id'
+        :'checkout_url' => :'checkout_url',
+        :'coupon_codes' => :'coupon_codes',
+        :'items' => :'items'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'distribution_center_code' => :'String',
-        :'inventory_level' => :'Float',
-        :'merchant_item_id' => :'String'
+        :'checkout_url' => :'String',
+        :'coupon_codes' => :'Array<String>',
+        :'items' => :'Array<CartItem>'
       }
     end
 
@@ -49,16 +46,20 @@ module UltracartClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'distribution_center_code')
-        self.distribution_center_code = attributes[:'distribution_center_code']
+      if attributes.has_key?(:'checkout_url')
+        self.checkout_url = attributes[:'checkout_url']
       end
 
-      if attributes.has_key?(:'inventory_level')
-        self.inventory_level = attributes[:'inventory_level']
+      if attributes.has_key?(:'coupon_codes')
+        if (value = attributes[:'coupon_codes']).is_a?(Array)
+          self.coupon_codes = value
+        end
       end
 
-      if attributes.has_key?(:'merchant_item_id')
-        self.merchant_item_id = attributes[:'merchant_item_id']
+      if attributes.has_key?(:'items')
+        if (value = attributes[:'items']).is_a?(Array)
+          self.items = value
+        end
       end
     end
 
@@ -80,9 +81,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          distribution_center_code == o.distribution_center_code &&
-          inventory_level == o.inventory_level &&
-          merchant_item_id == o.merchant_item_id
+          checkout_url == o.checkout_url &&
+          coupon_codes == o.coupon_codes &&
+          items == o.items
     end
 
     # @see the `==` method
@@ -94,7 +95,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [distribution_center_code, inventory_level, merchant_item_id].hash
+      [checkout_url, coupon_codes, items].hash
     end
 
     # Builds the object from hash

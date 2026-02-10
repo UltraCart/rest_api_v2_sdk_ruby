@@ -2846,6 +2846,7 @@ api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, fa
 opts = { 
   since: 'since_example', # String | ISO timestamp to filter entries since
   agent_login: 'agent_login_example', # String | Filter by agent login
+  action: 'action_example', # String | Action
   limit: 56 # Integer | Maximum number of entries to return (default 100)
 }
 
@@ -2864,6 +2865,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **since** | **String**| ISO timestamp to filter entries since | [optional] 
  **agent_login** | **String**| Filter by agent login | [optional] 
+ **action** | **String**| Action | [optional] 
  **limit** | **Integer**| Maximum number of entries to return (default 100) | [optional] 
 
 ### Return type
