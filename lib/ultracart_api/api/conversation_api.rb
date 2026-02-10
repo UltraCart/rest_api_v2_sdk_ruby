@@ -3530,6 +3530,7 @@ module UltracartClient
     # @param [Hash] opts the optional parameters
     # @option opts [String] :since ISO timestamp to filter entries since
     # @option opts [String] :agent_login Filter by agent login
+    # @option opts [String] :action Action
     # @option opts [Integer] :limit Maximum number of entries to return (default 100)
     # @return [ConversationPbxCosAuditLogsResponse]
     def get_pbx_cos_audit_logs(opts = {})
@@ -3542,6 +3543,7 @@ module UltracartClient
     # @param [Hash] opts the optional parameters
     # @option opts [String] :since ISO timestamp to filter entries since
     # @option opts [String] :agent_login Filter by agent login
+    # @option opts [String] :action Action
     # @option opts [Integer] :limit Maximum number of entries to return (default 100)
     # @return [Array<(ConversationPbxCosAuditLogsResponse, Integer, Hash)>] ConversationPbxCosAuditLogsResponse data, response status code and response headers
     def get_pbx_cos_audit_logs_with_http_info(opts = {})
@@ -3555,6 +3557,7 @@ module UltracartClient
       query_params = opts[:query_params] || {}
       query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
       query_params[:'agent_login'] = opts[:'agent_login'] if !opts[:'agent_login'].nil?
+      query_params[:'action'] = opts[:'action'] if !opts[:'action'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
 
       # header parameters

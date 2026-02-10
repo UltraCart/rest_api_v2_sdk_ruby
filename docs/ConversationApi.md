@@ -3101,6 +3101,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **since** | **String** | ISO timestamp to filter entries since | [optional] |
 | **agent_login** | **String** | Filter by agent login | [optional] |
+| **action** | **String** | Action | [optional] |
 | **limit** | **Integer** | Maximum number of entries to return (default 100) | [optional] |
 
 ### Return type

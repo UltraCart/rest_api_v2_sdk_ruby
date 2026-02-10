@@ -20,6 +20,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_order**](OrderApi.md#get_order) | **GET** /order/orders/{order_id} | Retrieve an order |
 | [**get_order_by_token**](OrderApi.md#get_order_by_token) | **POST** /order/orders/token | Retrieve an order using a token |
 | [**get_order_edi_documents**](OrderApi.md#get_order_edi_documents) | **GET** /order/orders/{order_id}/edi | Retrieve EDI documents associated with this order. |
+| [**get_order_upsell_cart**](OrderApi.md#get_order_upsell_cart) | **PUT** /order/orders/{order_id}/upsell_with_cart | Get Order Upsell Cart |
 | [**get_orders**](OrderApi.md#get_orders) | **GET** /order/orders | Retrieve orders |
 | [**get_orders_batch**](OrderApi.md#get_orders_batch) | **POST** /order/orders/batch | Retrieve order batch |
 | [**get_orders_by_query**](OrderApi.md#get_orders_by_query) | **POST** /order/orders/query | Retrieve orders by query |
@@ -1246,6 +1247,61 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_order_upsell_cart
+
+> <OrderResponse> get_order_upsell_cart(order_id, upsell_cart_request, opts)
+
+Get Order Upsell Cart
+
+Creates a new cart using cloned information from the order, but with a specific set of items, coupons and optionally a checkout URL to return the customer to 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_order_upsell_cart_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OrderResponse>, Integer, Hash)> get_order_upsell_cart_with_http_info(order_id, upsell_cart_request, opts)
+
+```ruby
+begin
+  # Get Order Upsell Cart
+  data, status_code, headers = api_instance.get_order_upsell_cart_with_http_info(order_id, upsell_cart_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OrderResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->get_order_upsell_cart_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **order_id** | **String** | The order id to base things on. |  |
+| **upsell_cart_request** | [**OrderUpsellCartRequest**](OrderUpsellCartRequest.md) | Request for the upsell cart |  |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
+
+### Return type
+
+[**OrderResponse**](OrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
 - **Accept**: application/json
 
 
