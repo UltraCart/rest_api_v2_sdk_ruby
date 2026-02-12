@@ -36,6 +36,7 @@ Method | HTTP request | Description
 [**get_conversation_departments**](ConversationApi.md#get_conversation_departments) | **GET** /conversation/departments | Retrieve a list of departments ordered by name
 [**get_conversation_engagement**](ConversationApi.md#get_conversation_engagement) | **GET** /conversation/engagements/{conversation_engagement_oid} | Retrieve an engagement
 [**get_conversation_engagements**](ConversationApi.md#get_conversation_engagements) | **GET** /conversation/engagements | Retrieve a list of engagements ordered by name
+[**get_conversation_item_variations**](ConversationApi.md#get_conversation_item_variations) | **GET** /conversation/items/{merchant_item_id}/variations | Retrieve an item with sparse variations populated
 [**get_conversation_knowledge_base_document_upload_url**](ConversationApi.md#get_conversation_knowledge_base_document_upload_url) | **GET** /conversation/agent/profiles/{user_id}/knowledge_base/upload_url/{extension} | Get a pre-signed conversation knowledge base document upload URL
 [**get_conversation_messages**](ConversationApi.md#get_conversation_messages) | **GET** /conversation/conversations/{conversation_uuid}/messages/{since} | Retrieve conversation messages
 [**get_conversation_multimedia_upload_url**](ConversationApi.md#get_conversation_multimedia_upload_url) | **GET** /conversation/upload_url/{extension} | Get a presigned conversation multimedia upload URL
@@ -1687,6 +1688,56 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**ConversationEngagementsResponse**](ConversationEngagementsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **get_conversation_item_variations**
+> ItemResponse get_conversation_item_variations(merchant_item_id)
+
+Retrieve an item with sparse variations populated
+
+Retrieve an item with sparse variations populated 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::ConversationApi.new_using_api_key(simple_key, false, false)
+
+
+merchant_item_id = 'merchant_item_id_example' # String | 
+
+
+begin
+  #Retrieve an item with sparse variations populated
+  result = api_instance.get_conversation_item_variations(merchant_item_id)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling ConversationApi->get_conversation_item_variations: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **merchant_item_id** | **String**|  | 
+
+### Return type
+
+[**ItemResponse**](ItemResponse.md)
 
 ### Authorization
 

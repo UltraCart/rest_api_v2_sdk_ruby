@@ -140,6 +140,9 @@ module UltracartClient
     # Restrict shipment on Wednesday
     attr_accessor :restrict_shipment_on_wednesday
 
+    # Send order to hold stage before fulfillment
+    attr_accessor :send_to_hold_before_fulfillment
+
     # Ship this item in a separate box
     attr_accessor :ship_separately
 
@@ -205,6 +208,7 @@ module UltracartClient
         :'restrict_shipment_on_thursday' => :'restrict_shipment_on_thursday',
         :'restrict_shipment_on_tuesday' => :'restrict_shipment_on_tuesday',
         :'restrict_shipment_on_wednesday' => :'restrict_shipment_on_wednesday',
+        :'send_to_hold_before_fulfillment' => :'send_to_hold_before_fulfillment',
         :'ship_separately' => :'ship_separately',
         :'ship_separately_additional_weight' => :'ship_separately_additional_weight',
         :'ship_separately_height' => :'ship_separately_height',
@@ -261,6 +265,7 @@ module UltracartClient
         :'restrict_shipment_on_thursday' => :'BOOLEAN',
         :'restrict_shipment_on_tuesday' => :'BOOLEAN',
         :'restrict_shipment_on_wednesday' => :'BOOLEAN',
+        :'send_to_hold_before_fulfillment' => :'BOOLEAN',
         :'ship_separately' => :'BOOLEAN',
         :'ship_separately_additional_weight' => :'Weight',
         :'ship_separately_height' => :'Distance',
@@ -460,6 +465,10 @@ module UltracartClient
         self.restrict_shipment_on_wednesday = attributes[:'restrict_shipment_on_wednesday']
       end
 
+      if attributes.has_key?(:'send_to_hold_before_fulfillment')
+        self.send_to_hold_before_fulfillment = attributes[:'send_to_hold_before_fulfillment']
+      end
+
       if attributes.has_key?(:'ship_separately')
         self.ship_separately = attributes[:'ship_separately']
       end
@@ -568,6 +577,7 @@ module UltracartClient
           restrict_shipment_on_thursday == o.restrict_shipment_on_thursday &&
           restrict_shipment_on_tuesday == o.restrict_shipment_on_tuesday &&
           restrict_shipment_on_wednesday == o.restrict_shipment_on_wednesday &&
+          send_to_hold_before_fulfillment == o.send_to_hold_before_fulfillment &&
           ship_separately == o.ship_separately &&
           ship_separately_additional_weight == o.ship_separately_additional_weight &&
           ship_separately_height == o.ship_separately_height &&
@@ -587,7 +597,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [allow_back_order, amazon_fba, case_inner_packs, case_units, cases, collect_serial_numbers, country_code_of_origin, customs_description, customs_value, delivery_on_friday, delivery_on_monday, delivery_on_saturday, delivery_on_sunday, delivery_on_thursday, delivery_on_tuesday, delivery_on_wednesday, destination_markups, destination_restrictions, distribution_centers, eta, free_shipping, freight_class, hazmat, hold_for_transmission, include_on_packing_slip, made_to_order, made_to_order_lead_time, max_days_time_in_transit, methods, no_shipping_discount, package_requirements, perishable_class_name, perishable_class_oid, preorder, require_delivery_date, restrict_shipment_on_friday, restrict_shipment_on_monday, restrict_shipment_on_saturday, restrict_shipment_on_sunday, restrict_shipment_on_thursday, restrict_shipment_on_tuesday, restrict_shipment_on_wednesday, ship_separately, ship_separately_additional_weight, ship_separately_height, ship_separately_length, ship_separately_package_special_type, ship_separately_width, special_product_type, track_inventory].hash
+      [allow_back_order, amazon_fba, case_inner_packs, case_units, cases, collect_serial_numbers, country_code_of_origin, customs_description, customs_value, delivery_on_friday, delivery_on_monday, delivery_on_saturday, delivery_on_sunday, delivery_on_thursday, delivery_on_tuesday, delivery_on_wednesday, destination_markups, destination_restrictions, distribution_centers, eta, free_shipping, freight_class, hazmat, hold_for_transmission, include_on_packing_slip, made_to_order, made_to_order_lead_time, max_days_time_in_transit, methods, no_shipping_discount, package_requirements, perishable_class_name, perishable_class_oid, preorder, require_delivery_date, restrict_shipment_on_friday, restrict_shipment_on_monday, restrict_shipment_on_saturday, restrict_shipment_on_sunday, restrict_shipment_on_thursday, restrict_shipment_on_tuesday, restrict_shipment_on_wednesday, send_to_hold_before_fulfillment, ship_separately, ship_separately_additional_weight, ship_separately_height, ship_separately_length, ship_separately_package_special_type, ship_separately_width, special_product_type, track_inventory].hash
     end
 
     # Builds the object from hash

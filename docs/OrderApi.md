@@ -24,6 +24,8 @@ Method | HTTP request | Description
 [**get_orders**](OrderApi.md#get_orders) | **GET** /order/orders | Retrieve orders
 [**get_orders_batch**](OrderApi.md#get_orders_batch) | **POST** /order/orders/batch | Retrieve order batch
 [**get_orders_by_query**](OrderApi.md#get_orders_by_query) | **POST** /order/orders/query | Retrieve orders by query
+[**held_order_add_items_and_release**](OrderApi.md#held_order_add_items_and_release) | **PUT** /order/orders/{order_id}/hold/add_items_and_release | Add items and release a held order
+[**held_order_release**](OrderApi.md#held_order_release) | **PUT** /order/orders/{order_id}/hold/release | Release a held order
 [**insert_order**](OrderApi.md#insert_order) | **POST** /order/orders | Insert an order
 [**is_refundable_order**](OrderApi.md#is_refundable_order) | **GET** /order/orders/{order_id}/refundable | Determine if an order can be refunded
 [**process_payment**](OrderApi.md#process_payment) | **POST** /order/orders/{order_id}/process_payment | Process payment
@@ -1150,6 +1152,117 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **held_order_add_items_and_release**
+> OrderResponse held_order_add_items_and_release(add_items_and_release_request, order_id, opts)
+
+Add items and release a held order
+
+This method adds items to an order in the hold stage and releases it 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
+
+
+add_items_and_release_request = UltracartClient::OrderAddItemsAndReleaseRequest.new # OrderAddItemsAndReleaseRequest | Add items and release request
+
+order_id = 'order_id_example' # String | The order id to release.
+
+opts = { 
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
+}
+
+begin
+  #Add items and release a held order
+  result = api_instance.held_order_add_items_and_release(add_items_and_release_request, order_id, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling OrderApi->held_order_add_items_and_release: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **add_items_and_release_request** | [**OrderAddItemsAndReleaseRequest**](OrderAddItemsAndReleaseRequest.md)| Add items and release request | 
+ **order_id** | **String**| The order id to release. | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+
+### Return type
+
+[**OrderResponse**](OrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
+ - **Accept**: application/json
+
+
+
+# **held_order_release**
+> OrderResponse held_order_release(order_id, opts)
+
+Release a held order
+
+This method releases an order from the hold stage 
+
+### Example
+```ruby
+# load the gem
+require 'ultracart_api'
+
+# Create a Simple Key: https://ultracart.atlassian.net/wiki/spaces/ucdoc/pages/38688545/API+Simple+Key
+simple_key = '109ee846ee69f50177018ab12f008a00748a25aa28dbdc0177018ab12f008a00'
+api_instance = UltracartClient::OrderApi.new_using_api_key(simple_key, false, false)
+
+
+order_id = 'order_id_example' # String | The order id to release.
+
+opts = { 
+  _expand: '_expand_example' # String | The object expansion to perform on the result.  See documentation for examples
+}
+
+begin
+  #Release a held order
+  result = api_instance.held_order_release(order_id, opts)
+  p result
+rescue UltracartClient::ApiError => e
+  puts "Exception when calling OrderApi->held_order_release: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **String**| The order id to release. | 
+ **_expand** | **String**| The object expansion to perform on the result.  See documentation for examples | [optional] 
+
+### Return type
+
+[**OrderResponse**](OrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
  - **Accept**: application/json
 
 

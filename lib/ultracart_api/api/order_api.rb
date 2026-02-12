@@ -1280,6 +1280,128 @@ module UltracartClient
       end
       return data, status_code, headers
     end
+    # Add items and release a held order
+    # This method adds items to an order in the hold stage and releases it 
+    # @param add_items_and_release_request Add items and release request
+    # @param order_id The order id to release.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [OrderResponse]
+    def held_order_add_items_and_release(add_items_and_release_request, order_id, opts = {})
+      data, _status_code, _headers = held_order_add_items_and_release_with_http_info(add_items_and_release_request, order_id, opts)
+      data
+    end
+
+    # Add items and release a held order
+    # This method adds items to an order in the hold stage and releases it 
+    # @param add_items_and_release_request Add items and release request
+    # @param order_id The order id to release.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(OrderResponse, Fixnum, Hash)>] OrderResponse data, response status code and response headers
+    def held_order_add_items_and_release_with_http_info(add_items_and_release_request, order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.held_order_add_items_and_release ...'
+      end
+      # verify the required parameter 'add_items_and_release_request' is set
+      if @api_client.config.client_side_validation && add_items_and_release_request.nil?
+        fail ArgumentError, "Missing the required parameter 'add_items_and_release_request' when calling OrderApi.held_order_add_items_and_release"
+      end
+      # verify the required parameter 'order_id' is set
+      if @api_client.config.client_side_validation && order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.held_order_add_items_and_release"
+      end
+      # resource path
+      local_var_path = '/order/orders/{order_id}/hold/add_items_and_release'.sub('{' + 'order_id' + '}', order_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(add_items_and_release_request)
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'OrderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#held_order_add_items_and_release\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Release a held order
+    # This method releases an order from the hold stage 
+    # @param order_id The order id to release.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [OrderResponse]
+    def held_order_release(order_id, opts = {})
+      data, _status_code, _headers = held_order_release_with_http_info(order_id, opts)
+      data
+    end
+
+    # Release a held order
+    # This method releases an order from the hold stage 
+    # @param order_id The order id to release.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(OrderResponse, Fixnum, Hash)>] OrderResponse data, response status code and response headers
+    def held_order_release_with_http_info(order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.held_order_release ...'
+      end
+      # verify the required parameter 'order_id' is set
+      if @api_client.config.client_side_validation && order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.held_order_release"
+      end
+      # resource path
+      local_var_path = '/order/orders/{order_id}/hold/release'.sub('{' + 'order_id' + '}', order_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['ultraCartOauth', 'ultraCartSimpleApiKey']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'OrderResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#held_order_release\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Insert an order
     # Inserts a new order on the UltraCart account.  This is probably NOT the method you want.  This is for channel orders.  For regular orders the customer is entering, use the CheckoutApi.  It has many, many more features, checks, and validations. 
     # @param order Order to insert

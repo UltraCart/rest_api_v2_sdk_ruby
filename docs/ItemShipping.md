@@ -45,6 +45,7 @@ Name | Type | Description | Notes
 **restrict_shipment_on_thursday** | **BOOLEAN** | Restrict shipment on Thursday | [optional] 
 **restrict_shipment_on_tuesday** | **BOOLEAN** | Restrict shipment on Tuesday | [optional] 
 **restrict_shipment_on_wednesday** | **BOOLEAN** | Restrict shipment on Wednesday | [optional] 
+**send_to_hold_before_fulfillment** | **BOOLEAN** | Send order to hold stage before fulfillment | [optional] 
 **ship_separately** | **BOOLEAN** | Ship this item in a separate box | [optional] 
 **ship_separately_additional_weight** | [**Weight**](Weight.md) |  | [optional] 
 **ship_separately_height** | [**Distance**](Distance.md) |  | [optional] 
