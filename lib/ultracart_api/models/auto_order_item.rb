@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class AutoOrderItem
+    # Array of addon objects instructing which items to add to auto order and how many times they should be added.
+    attr_accessor :add_ons
+
     # Arbitrary item id that should be rebilled instead of the normal schedule
     attr_accessor :arbitrary_item_id
 
@@ -90,6 +93,9 @@ module UltracartClient
     # True if the preshipment notice associated with the next rebill has been sent
     attr_accessor :preshipment_notice_sent
 
+    # Array of property objects
+    attr_accessor :properties
+
     # The value of the rebills of this item
     attr_accessor :rebill_value
 
@@ -123,6 +129,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'add_ons' => :'add_ons',
         :'arbitrary_item_id' => :'arbitrary_item_id',
         :'arbitrary_percentage_discount' => :'arbitrary_percentage_discount',
         :'arbitrary_quantity' => :'arbitrary_quantity',
@@ -148,6 +155,7 @@ module UltracartClient
         :'paypal_payer_id' => :'paypal_payer_id',
         :'paypal_recurring_payment_profile_id' => :'paypal_recurring_payment_profile_id',
         :'preshipment_notice_sent' => :'preshipment_notice_sent',
+        :'properties' => :'properties',
         :'rebill_value' => :'rebill_value',
         :'remaining_repeat_count' => :'remaining_repeat_count',
         :'simple_schedule' => :'simple_schedule'
@@ -162,6 +170,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'add_ons' => :'Array<AutoOrderAddonItem>',
         :'arbitrary_item_id' => :'String',
         :'arbitrary_percentage_discount' => :'Float',
         :'arbitrary_quantity' => :'Float',
@@ -187,6 +196,7 @@ module UltracartClient
         :'paypal_payer_id' => :'String',
         :'paypal_recurring_payment_profile_id' => :'String',
         :'preshipment_notice_sent' => :'Boolean',
+        :'properties' => :'Array<AutoOrderProperty>',
         :'rebill_value' => :'Float',
         :'remaining_repeat_count' => :'Integer',
         :'simple_schedule' => :'AutoOrderItemSimpleSchedule'
@@ -213,6 +223,12 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'add_ons')
+        if (value = attributes[:'add_ons']).is_a?(Array)
+          self.add_ons = value
+        end
+      end
 
       if attributes.key?(:'arbitrary_item_id')
         self.arbitrary_item_id = attributes[:'arbitrary_item_id']
@@ -318,6 +334,12 @@ module UltracartClient
         self.preshipment_notice_sent = attributes[:'preshipment_notice_sent']
       end
 
+      if attributes.key?(:'properties')
+        if (value = attributes[:'properties']).is_a?(Array)
+          self.properties = value
+        end
+      end
+
       if attributes.key?(:'rebill_value')
         self.rebill_value = attributes[:'rebill_value']
       end
@@ -361,6 +383,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          add_ons == o.add_ons &&
           arbitrary_item_id == o.arbitrary_item_id &&
           arbitrary_percentage_discount == o.arbitrary_percentage_discount &&
           arbitrary_quantity == o.arbitrary_quantity &&
@@ -386,6 +409,7 @@ module UltracartClient
           paypal_payer_id == o.paypal_payer_id &&
           paypal_recurring_payment_profile_id == o.paypal_recurring_payment_profile_id &&
           preshipment_notice_sent == o.preshipment_notice_sent &&
+          properties == o.properties &&
           rebill_value == o.rebill_value &&
           remaining_repeat_count == o.remaining_repeat_count &&
           simple_schedule == o.simple_schedule
@@ -400,7 +424,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [arbitrary_item_id, arbitrary_percentage_discount, arbitrary_quantity, arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_remaining_orders, auto_order_item_oid, calculated_next_shipment_dts, first_order_dts, frequency, future_schedules, last_order_dts, life_time_value, next_item_id, next_preshipment_notice_dts, next_shipment_dts, no_order_after_dts, number_of_rebills, options, original_item_id, original_quantity, paused, paypal_payer_id, paypal_recurring_payment_profile_id, preshipment_notice_sent, rebill_value, remaining_repeat_count, simple_schedule].hash
+      [add_ons, arbitrary_item_id, arbitrary_percentage_discount, arbitrary_quantity, arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_remaining_orders, auto_order_item_oid, calculated_next_shipment_dts, first_order_dts, frequency, future_schedules, last_order_dts, life_time_value, next_item_id, next_preshipment_notice_dts, next_shipment_dts, no_order_after_dts, number_of_rebills, options, original_item_id, original_quantity, paused, paypal_payer_id, paypal_recurring_payment_profile_id, preshipment_notice_sent, properties, rebill_value, remaining_repeat_count, simple_schedule].hash
     end
 
     # Builds the object from hash

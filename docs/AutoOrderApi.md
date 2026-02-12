@@ -14,6 +14,9 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_auto_orders_by_query**](AutoOrderApi.md#get_auto_orders_by_query) | **POST** /auto_order/auto_orders/query | Retrieve auto orders by query |
 | [**pause_auto_order**](AutoOrderApi.md#pause_auto_order) | **PUT** /auto_order/auto_orders/{auto_order_oid}/pause | Pause auto order |
 | [**update_auto_order**](AutoOrderApi.md#update_auto_order) | **PUT** /auto_order/auto_orders/{auto_order_oid} | Update an auto order |
+| [**update_auto_order_item_add_ons**](AutoOrderApi.md#update_auto_order_item_add_ons) | **PUT** /auto_order/auto_orders/{auto_order_oid}/items/{auto_order_item_oid}/add_ons | Update an auto order item add ons |
+| [**update_auto_order_item_properties**](AutoOrderApi.md#update_auto_order_item_properties) | **PUT** /auto_order/auto_orders/{auto_order_oid}/items/{auto_order_item_oid}/properties | Update an auto order item properties |
+| [**update_auto_order_properties**](AutoOrderApi.md#update_auto_order_properties) | **PUT** /auto_order/auto_orders/{auto_order_oid}/properties | Update an auto order properties |
 | [**update_auto_orders_batch**](AutoOrderApi.md#update_auto_orders_batch) | **PUT** /auto_order/auto_orders/batch | Update multiple auto orders |
 
 
@@ -1136,6 +1139,173 @@ end
 | **auto_order_oid** | **Integer** | The auto order oid to update. |  |
 | **auto_order** | [**AutoOrder**](AutoOrder.md) | Auto order to update |  |
 | **validate_original_order** | **String** | Validate original order before updating | [optional] |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
+
+### Return type
+
+[**AutoOrderResponse**](AutoOrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_auto_order_item_add_ons
+
+> <AutoOrderResponse> update_auto_order_item_add_ons(auto_order_oid, auto_order_item_oid, auto_order_add_ons_update_request, opts)
+
+Update an auto order item add ons
+
+Update an auto order item add ons.  Returns the auto order based upon expansion 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_auto_order_item_add_ons_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AutoOrderResponse>, Integer, Hash)> update_auto_order_item_add_ons_with_http_info(auto_order_oid, auto_order_item_oid, auto_order_add_ons_update_request, opts)
+
+```ruby
+begin
+  # Update an auto order item add ons
+  data, status_code, headers = api_instance.update_auto_order_item_add_ons_with_http_info(auto_order_oid, auto_order_item_oid, auto_order_add_ons_update_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AutoOrderResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling AutoOrderApi->update_auto_order_item_add_ons_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **auto_order_oid** | **Integer** | The auto order oid to update. |  |
+| **auto_order_item_oid** | **Integer** | The auto order item oid to update. |  |
+| **auto_order_add_ons_update_request** | [**AutoOrderAddonItemsUpdateRequest**](AutoOrderAddonItemsUpdateRequest.md) | Auto order add ons update request |  |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
+
+### Return type
+
+[**AutoOrderResponse**](AutoOrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_auto_order_item_properties
+
+> <AutoOrderResponse> update_auto_order_item_properties(auto_order_oid, auto_order_item_oid, auto_order_properties_update_request, opts)
+
+Update an auto order item properties
+
+Update an auto order item properties.  Returns the auto order based upon expansion 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_auto_order_item_properties_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AutoOrderResponse>, Integer, Hash)> update_auto_order_item_properties_with_http_info(auto_order_oid, auto_order_item_oid, auto_order_properties_update_request, opts)
+
+```ruby
+begin
+  # Update an auto order item properties
+  data, status_code, headers = api_instance.update_auto_order_item_properties_with_http_info(auto_order_oid, auto_order_item_oid, auto_order_properties_update_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AutoOrderResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling AutoOrderApi->update_auto_order_item_properties_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **auto_order_oid** | **Integer** | The auto order oid to update. |  |
+| **auto_order_item_oid** | **Integer** | The auto order item oid to update. |  |
+| **auto_order_properties_update_request** | [**AutoOrderPropertiesUpdateRequest**](AutoOrderPropertiesUpdateRequest.md) | Auto order property update request |  |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
+
+### Return type
+
+[**AutoOrderResponse**](AutoOrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_auto_order_properties
+
+> <AutoOrderResponse> update_auto_order_properties(auto_order_oid, auto_order_properties_update_request, opts)
+
+Update an auto order properties
+
+Update an auto order properties.  Returns the auto order based upon expansion 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_auto_order_properties_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AutoOrderResponse>, Integer, Hash)> update_auto_order_properties_with_http_info(auto_order_oid, auto_order_properties_update_request, opts)
+
+```ruby
+begin
+  # Update an auto order properties
+  data, status_code, headers = api_instance.update_auto_order_properties_with_http_info(auto_order_oid, auto_order_properties_update_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AutoOrderResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling AutoOrderApi->update_auto_order_properties_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **auto_order_oid** | **Integer** | The auto order oid to update. |  |
+| **auto_order_properties_update_request** | [**AutoOrderPropertiesUpdateRequest**](AutoOrderPropertiesUpdateRequest.md) | Auto order property update request |  |
 | **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
 
 ### Return type

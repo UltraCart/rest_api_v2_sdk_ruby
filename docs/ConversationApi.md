@@ -36,6 +36,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_conversation_departments**](ConversationApi.md#get_conversation_departments) | **GET** /conversation/departments | Retrieve a list of departments ordered by name |
 | [**get_conversation_engagement**](ConversationApi.md#get_conversation_engagement) | **GET** /conversation/engagements/{conversation_engagement_oid} | Retrieve an engagement |
 | [**get_conversation_engagements**](ConversationApi.md#get_conversation_engagements) | **GET** /conversation/engagements | Retrieve a list of engagements ordered by name |
+| [**get_conversation_item_variations**](ConversationApi.md#get_conversation_item_variations) | **GET** /conversation/items/{merchant_item_id}/variations | Retrieve an item with sparse variations populated |
 | [**get_conversation_knowledge_base_document_upload_url**](ConversationApi.md#get_conversation_knowledge_base_document_upload_url) | **GET** /conversation/agent/profiles/{user_id}/knowledge_base/upload_url/{extension} | Get a pre-signed conversation knowledge base document upload URL |
 | [**get_conversation_messages**](ConversationApi.md#get_conversation_messages) | **GET** /conversation/conversations/{conversation_uuid}/messages/{since} | Retrieve conversation messages |
 | [**get_conversation_multimedia_upload_url**](ConversationApi.md#get_conversation_multimedia_upload_url) | **GET** /conversation/upload_url/{extension} | Get a presigned conversation multimedia upload URL |
@@ -1825,6 +1826,59 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**ConversationEngagementsResponse**](ConversationEngagementsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_item_variations
+
+> <ItemResponse> get_conversation_item_variations(merchant_item_id)
+
+Retrieve an item with sparse variations populated
+
+Retrieve an item with sparse variations populated 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_conversation_item_variations_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ItemResponse>, Integer, Hash)> get_conversation_item_variations_with_http_info(merchant_item_id)
+
+```ruby
+begin
+  # Retrieve an item with sparse variations populated
+  data, status_code, headers = api_instance.get_conversation_item_variations_with_http_info(merchant_item_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ItemResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_item_variations_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **merchant_item_id** | **String** |  |  |
+
+### Return type
+
+[**ItemResponse**](ItemResponse.md)
 
 ### Authorization
 

@@ -31,6 +31,7 @@ docs/ApplyLibraryItemResponse.md
 docs/AutoOrder.md
 docs/AutoOrderAddonItem.md
 docs/AutoOrderAddonItemOption.md
+docs/AutoOrderAddonItemsUpdateRequest.md
 docs/AutoOrderApi.md
 docs/AutoOrderConsolidate.md
 docs/AutoOrderItem.md
@@ -39,6 +40,8 @@ docs/AutoOrderItemOption.md
 docs/AutoOrderItemSimpleSchedule.md
 docs/AutoOrderLog.md
 docs/AutoOrderManagement.md
+docs/AutoOrderPropertiesUpdateRequest.md
+docs/AutoOrderProperty.md
 docs/AutoOrderQuery.md
 docs/AutoOrderQueryBatch.md
 docs/AutoOrderResponse.md
@@ -639,6 +642,8 @@ docs/ItemInternal.md
 docs/ItemInventorySnapshot.md
 docs/ItemInventorySnapshotDistributionCenter.md
 docs/ItemInventorySnapshotResponse.md
+docs/ItemInventoryUpdate.md
+docs/ItemInventoryUpdateRequest.md
 docs/ItemKitComponent.md
 docs/ItemKitDefinition.md
 docs/ItemOption.md
@@ -670,6 +675,7 @@ docs/ItemShippingCase.md
 docs/ItemShippingDestinationMarkup.md
 docs/ItemShippingDestinationRestriction.md
 docs/ItemShippingDistributionCenter.md
+docs/ItemShippingDistributionCenterResponse.md
 docs/ItemShippingMethod.md
 docs/ItemShippingPackageRequirement.md
 docs/ItemTag.md
@@ -708,6 +714,7 @@ docs/OauthApi.md
 docs/OauthRevokeSuccessResponse.md
 docs/OauthTokenResponse.md
 docs/Order.md
+docs/OrderAddItemsAndReleaseRequest.md
 docs/OrderAffiliate.md
 docs/OrderAffiliateLedger.md
 docs/OrderApi.md
@@ -1016,6 +1023,7 @@ lib/ultracart_api/models/apply_library_item_response.rb
 lib/ultracart_api/models/auto_order.rb
 lib/ultracart_api/models/auto_order_addon_item.rb
 lib/ultracart_api/models/auto_order_addon_item_option.rb
+lib/ultracart_api/models/auto_order_addon_items_update_request.rb
 lib/ultracart_api/models/auto_order_consolidate.rb
 lib/ultracart_api/models/auto_order_item.rb
 lib/ultracart_api/models/auto_order_item_future_schedule.rb
@@ -1023,6 +1031,8 @@ lib/ultracart_api/models/auto_order_item_option.rb
 lib/ultracart_api/models/auto_order_item_simple_schedule.rb
 lib/ultracart_api/models/auto_order_log.rb
 lib/ultracart_api/models/auto_order_management.rb
+lib/ultracart_api/models/auto_order_properties_update_request.rb
+lib/ultracart_api/models/auto_order_property.rb
 lib/ultracart_api/models/auto_order_query.rb
 lib/ultracart_api/models/auto_order_query_batch.rb
 lib/ultracart_api/models/auto_order_response.rb
@@ -1613,6 +1623,8 @@ lib/ultracart_api/models/item_internal.rb
 lib/ultracart_api/models/item_inventory_snapshot.rb
 lib/ultracart_api/models/item_inventory_snapshot_distribution_center.rb
 lib/ultracart_api/models/item_inventory_snapshot_response.rb
+lib/ultracart_api/models/item_inventory_update.rb
+lib/ultracart_api/models/item_inventory_update_request.rb
 lib/ultracart_api/models/item_kit_component.rb
 lib/ultracart_api/models/item_kit_definition.rb
 lib/ultracart_api/models/item_option.rb
@@ -1644,6 +1656,7 @@ lib/ultracart_api/models/item_shipping_case.rb
 lib/ultracart_api/models/item_shipping_destination_markup.rb
 lib/ultracart_api/models/item_shipping_destination_restriction.rb
 lib/ultracart_api/models/item_shipping_distribution_center.rb
+lib/ultracart_api/models/item_shipping_distribution_center_response.rb
 lib/ultracart_api/models/item_shipping_method.rb
 lib/ultracart_api/models/item_shipping_package_requirement.rb
 lib/ultracart_api/models/item_tag.rb
@@ -1681,6 +1694,7 @@ lib/ultracart_api/models/notification.rb
 lib/ultracart_api/models/oauth_revoke_success_response.rb
 lib/ultracart_api/models/oauth_token_response.rb
 lib/ultracart_api/models/order.rb
+lib/ultracart_api/models/order_add_items_and_release_request.rb
 lib/ultracart_api/models/order_affiliate.rb
 lib/ultracart_api/models/order_affiliate_ledger.rb
 lib/ultracart_api/models/order_assign_to_affiliate_request.rb

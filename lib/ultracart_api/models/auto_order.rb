@@ -85,6 +85,9 @@ module UltracartClient
     # Override the affiliate id given credit for rebills of this auto order
     attr_accessor :override_affiliate_id
 
+    # Array of property objects
+    attr_accessor :properties
+
     # Rebill orders that have taken place on this auto order
     attr_accessor :rebill_orders
 
@@ -143,6 +146,7 @@ module UltracartClient
         :'original_order' => :'original_order',
         :'original_order_id' => :'original_order_id',
         :'override_affiliate_id' => :'override_affiliate_id',
+        :'properties' => :'properties',
         :'rebill_orders' => :'rebill_orders',
         :'rotating_transaction_gateway_code' => :'rotating_transaction_gateway_code',
         :'status' => :'status'
@@ -181,6 +185,7 @@ module UltracartClient
         :'original_order' => :'Order',
         :'original_order_id' => :'String',
         :'override_affiliate_id' => :'Integer',
+        :'properties' => :'Array<AutoOrderProperty>',
         :'rebill_orders' => :'Array<Order>',
         :'rotating_transaction_gateway_code' => :'String',
         :'status' => :'String'
@@ -310,6 +315,12 @@ module UltracartClient
         self.override_affiliate_id = attributes[:'override_affiliate_id']
       end
 
+      if attributes.key?(:'properties')
+        if (value = attributes[:'properties']).is_a?(Array)
+          self.properties = value
+        end
+      end
+
       if attributes.key?(:'rebill_orders')
         if (value = attributes[:'rebill_orders']).is_a?(Array)
           self.rebill_orders = value
@@ -379,6 +390,7 @@ module UltracartClient
           original_order == o.original_order &&
           original_order_id == o.original_order_id &&
           override_affiliate_id == o.override_affiliate_id &&
+          properties == o.properties &&
           rebill_orders == o.rebill_orders &&
           rotating_transaction_gateway_code == o.rotating_transaction_gateway_code &&
           status == o.status
@@ -393,7 +405,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_ons, auto_order_code, auto_order_oid, cancel_after_next_x_orders, cancel_downgrade, cancel_reason, cancel_upgrade, canceled_by_user, canceled_dts, completed, credit_card_attempt, disabled_dts, enabled, failure_reason, items, logs, management, merchant_id, merged_dts, merged_into_auto_order_oid, next_attempt, original_order, original_order_id, override_affiliate_id, rebill_orders, rotating_transaction_gateway_code, status].hash
+      [add_ons, auto_order_code, auto_order_oid, cancel_after_next_x_orders, cancel_downgrade, cancel_reason, cancel_upgrade, canceled_by_user, canceled_dts, completed, credit_card_attempt, disabled_dts, enabled, failure_reason, items, logs, management, merchant_id, merged_dts, merged_into_auto_order_oid, next_attempt, original_order, original_order_id, override_affiliate_id, properties, rebill_orders, rotating_transaction_gateway_code, status].hash
     end
 
     # Builds the object from hash

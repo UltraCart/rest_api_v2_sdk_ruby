@@ -46,6 +46,7 @@
 | **restrict_shipment_on_thursday** | **Boolean** | Restrict shipment on Thursday | [optional] |
 | **restrict_shipment_on_tuesday** | **Boolean** | Restrict shipment on Tuesday | [optional] |
 | **restrict_shipment_on_wednesday** | **Boolean** | Restrict shipment on Wednesday | [optional] |
+| **send_to_hold_before_fulfillment** | **Boolean** | Send order to hold stage before fulfillment | [optional] |
 | **ship_separately** | **Boolean** | Ship this item in a separate box | [optional] |
 | **ship_separately_additional_weight** | [**Weight**](Weight.md) |  | [optional] |
 | **ship_separately_height** | [**Distance**](Distance.md) |  | [optional] |
@@ -103,6 +104,7 @@ instance = UltracartClient::ItemShipping.new(
   restrict_shipment_on_thursday: null,
   restrict_shipment_on_tuesday: null,
   restrict_shipment_on_wednesday: null,
+  send_to_hold_before_fulfillment: null,
   ship_separately: null,
   ship_separately_additional_weight: null,
   ship_separately_height: null,

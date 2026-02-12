@@ -2065,6 +2065,70 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Retrieve an item with sparse variations populated
+    # Retrieve an item with sparse variations populated 
+    # @param merchant_item_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [ItemResponse]
+    def get_conversation_item_variations(merchant_item_id, opts = {})
+      data, _status_code, _headers = get_conversation_item_variations_with_http_info(merchant_item_id, opts)
+      data
+    end
+
+    # Retrieve an item with sparse variations populated
+    # Retrieve an item with sparse variations populated 
+    # @param merchant_item_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ItemResponse, Integer, Hash)>] ItemResponse data, response status code and response headers
+    def get_conversation_item_variations_with_http_info(merchant_item_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_conversation_item_variations ...'
+      end
+      # verify the required parameter 'merchant_item_id' is set
+      if @api_client.config.client_side_validation && merchant_item_id.nil?
+        fail ArgumentError, "Missing the required parameter 'merchant_item_id' when calling ConversationApi.get_conversation_item_variations"
+      end
+      # resource path
+      local_var_path = '/conversation/items/{merchant_item_id}/variations'.sub('{' + 'merchant_item_id' + '}', CGI.escape(merchant_item_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ItemResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_conversation_item_variations",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_conversation_item_variations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get a pre-signed conversation knowledge base document upload URL
     # Get a pre-signed conversation knowledge base document upload URL 
     # @param user_id [Integer] 
