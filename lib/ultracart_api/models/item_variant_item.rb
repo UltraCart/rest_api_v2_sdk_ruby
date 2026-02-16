@@ -29,6 +29,8 @@ module UltracartClient
     # Variant item object identifier
     attr_accessor :variant_merchant_item_oid
 
+    attr_accessor :variant_pricing
+
     # Variation options
     attr_accessor :variation_options
 
@@ -43,6 +45,7 @@ module UltracartClient
         :'variant_default_multimedia' => :'variant_default_multimedia',
         :'variant_merchant_item_id' => :'variant_merchant_item_id',
         :'variant_merchant_item_oid' => :'variant_merchant_item_oid',
+        :'variant_pricing' => :'variant_pricing',
         :'variation_options' => :'variation_options',
         :'variations' => :'variations'
       }
@@ -61,6 +64,7 @@ module UltracartClient
         :'variant_default_multimedia' => :'ItemContentMultimedia',
         :'variant_merchant_item_id' => :'String',
         :'variant_merchant_item_oid' => :'Integer',
+        :'variant_pricing' => :'ItemPricing',
         :'variation_options' => :'Array<String>',
         :'variations' => :'Array<String>'
       }
@@ -105,6 +109,10 @@ module UltracartClient
 
       if attributes.key?(:'variant_merchant_item_oid')
         self.variant_merchant_item_oid = attributes[:'variant_merchant_item_oid']
+      end
+
+      if attributes.key?(:'variant_pricing')
+        self.variant_pricing = attributes[:'variant_pricing']
       end
 
       if attributes.key?(:'variation_options')
@@ -158,6 +166,7 @@ module UltracartClient
           variant_default_multimedia == o.variant_default_multimedia &&
           variant_merchant_item_id == o.variant_merchant_item_id &&
           variant_merchant_item_oid == o.variant_merchant_item_oid &&
+          variant_pricing == o.variant_pricing &&
           variation_options == o.variation_options &&
           variations == o.variations
     end
@@ -171,7 +180,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [description, merchant_item_multimedia_oid, variant_default_multimedia, variant_merchant_item_id, variant_merchant_item_oid, variation_options, variations].hash
+      [description, merchant_item_multimedia_oid, variant_default_multimedia, variant_merchant_item_id, variant_merchant_item_oid, variant_pricing, variation_options, variations].hash
     end
 
     # Builds the object from hash

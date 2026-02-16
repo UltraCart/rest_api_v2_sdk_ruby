@@ -9,6 +9,7 @@
 | **variant_default_multimedia** | [**ItemContentMultimedia**](ItemContentMultimedia.md) |  | [optional] |
 | **variant_merchant_item_id** | **String** | Variant item id | [optional] |
 | **variant_merchant_item_oid** | **Integer** | Variant item object identifier | [optional] |
+| **variant_pricing** | [**ItemPricing**](ItemPricing.md) |  | [optional] |
 | **variation_options** | **Array&lt;String&gt;** | Variation options | [optional] |
 | **variations** | **Array&lt;String&gt;** | Variations | [optional] |
 
@@ -23,6 +24,7 @@ instance = UltracartClient::ItemVariantItem.new(
   variant_default_multimedia: null,
   variant_merchant_item_id: null,
   variant_merchant_item_oid: null,
+  variant_pricing: null,
   variation_options: null,
   variations: null
 )
