@@ -149,7 +149,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      speaker_validator = EnumAttributeValidator.new('String', ["customer", " agent"])
+      speaker_validator = EnumAttributeValidator.new('String', ["customer", "agent"])
       return false unless speaker_validator.valid?(@speaker)
       true
     end
@@ -157,7 +157,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] speaker Object to be assigned
     def speaker=(speaker)
-      validator = EnumAttributeValidator.new('String', ["customer", " agent"])
+      validator = EnumAttributeValidator.new('String', ["customer", "agent"])
       unless validator.valid?(speaker)
         fail ArgumentError, "invalid value for \"speaker\", must be one of #{validator.allowable_values}."
       end
