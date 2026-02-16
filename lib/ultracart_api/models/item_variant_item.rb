@@ -20,6 +20,8 @@ module UltracartClient
     # Multimedia object identifier
     attr_accessor :merchant_item_multimedia_oid
 
+    attr_accessor :variant_default_multimedia
+
     # Variant item id
     attr_accessor :variant_merchant_item_id
 
@@ -37,6 +39,7 @@ module UltracartClient
       {
         :'description' => :'description',
         :'merchant_item_multimedia_oid' => :'merchant_item_multimedia_oid',
+        :'variant_default_multimedia' => :'variant_default_multimedia',
         :'variant_merchant_item_id' => :'variant_merchant_item_id',
         :'variant_merchant_item_oid' => :'variant_merchant_item_oid',
         :'variation_options' => :'variation_options',
@@ -49,6 +52,7 @@ module UltracartClient
       {
         :'description' => :'String',
         :'merchant_item_multimedia_oid' => :'Integer',
+        :'variant_default_multimedia' => :'ItemContentMultimedia',
         :'variant_merchant_item_id' => :'String',
         :'variant_merchant_item_oid' => :'Integer',
         :'variation_options' => :'Array<String>',
@@ -70,6 +74,10 @@ module UltracartClient
 
       if attributes.has_key?(:'merchant_item_multimedia_oid')
         self.merchant_item_multimedia_oid = attributes[:'merchant_item_multimedia_oid']
+      end
+
+      if attributes.has_key?(:'variant_default_multimedia')
+        self.variant_default_multimedia = attributes[:'variant_default_multimedia']
       end
 
       if attributes.has_key?(:'variant_merchant_item_id')
@@ -128,6 +136,7 @@ module UltracartClient
       self.class == o.class &&
           description == o.description &&
           merchant_item_multimedia_oid == o.merchant_item_multimedia_oid &&
+          variant_default_multimedia == o.variant_default_multimedia &&
           variant_merchant_item_id == o.variant_merchant_item_id &&
           variant_merchant_item_oid == o.variant_merchant_item_oid &&
           variation_options == o.variation_options &&
@@ -143,7 +152,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [description, merchant_item_multimedia_oid, variant_merchant_item_id, variant_merchant_item_oid, variation_options, variations].hash
+      [description, merchant_item_multimedia_oid, variant_default_multimedia, variant_merchant_item_id, variant_merchant_item_oid, variation_options, variations].hash
     end
 
     # Builds the object from hash
