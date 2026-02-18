@@ -23,6 +23,8 @@ module UltracartClient
 
     attr_accessor :conversation_participant_name
 
+    attr_accessor :customer_profile
+
     # The default phone number this agent should use when making an outbound call.
     attr_accessor :default_phone_number
 
@@ -63,6 +65,7 @@ module UltracartClient
         :'chat_user' => :'chat_user',
         :'conversation_participant_arn' => :'conversation_participant_arn',
         :'conversation_participant_name' => :'conversation_participant_name',
+        :'customer_profile' => :'customer_profile',
         :'default_phone_number' => :'default_phone_number',
         :'group_ids' => :'group_ids',
         :'jwt' => :'jwt',
@@ -93,6 +96,7 @@ module UltracartClient
         :'chat_user' => :'Boolean',
         :'conversation_participant_arn' => :'String',
         :'conversation_participant_name' => :'String',
+        :'customer_profile' => :'Boolean',
         :'default_phone_number' => :'String',
         :'group_ids' => :'Array<Integer>',
         :'jwt' => :'String',
@@ -146,6 +150,10 @@ module UltracartClient
 
       if attributes.key?(:'conversation_participant_name')
         self.conversation_participant_name = attributes[:'conversation_participant_name']
+      end
+
+      if attributes.key?(:'customer_profile')
+        self.customer_profile = attributes[:'customer_profile']
       end
 
       if attributes.key?(:'default_phone_number')
@@ -235,6 +243,7 @@ module UltracartClient
           chat_user == o.chat_user &&
           conversation_participant_arn == o.conversation_participant_arn &&
           conversation_participant_name == o.conversation_participant_name &&
+          customer_profile == o.customer_profile &&
           default_phone_number == o.default_phone_number &&
           group_ids == o.group_ids &&
           jwt == o.jwt &&
@@ -261,7 +270,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [chat_admin, chat_user, conversation_participant_arn, conversation_participant_name, default_phone_number, group_ids, jwt, merchant_id, pbx_admin, pbx_jwt, pbx_supervisor, pbx_user, pbx_voice_identity, pbx_voice_token, pbx_worker_token, pbx_worker_token_v2, twilio_accounts, user_id, websocket_url].hash
+      [chat_admin, chat_user, conversation_participant_arn, conversation_participant_name, customer_profile, default_phone_number, group_ids, jwt, merchant_id, pbx_admin, pbx_jwt, pbx_supervisor, pbx_user, pbx_voice_identity, pbx_voice_token, pbx_worker_token, pbx_worker_token_v2, twilio_accounts, user_id, websocket_url].hash
     end
 
     # Builds the object from hash
