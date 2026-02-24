@@ -10,6 +10,8 @@
 | **memberships** | [**Array&lt;ListSegmentMembership&gt;**](ListSegmentMembership.md) |  | [optional] |
 | **metrics** | [**Array&lt;Metric&gt;**](Metric.md) |  | [optional] |
 | **properties_list** | [**Array&lt;Property&gt;**](Property.md) |  | [optional] |
+| **sms** | **String** |  | [optional] |
+| **sms_stop** | **Boolean** |  | [optional] |
 | **spam_complaint** | **Boolean** |  | [optional] |
 | **spam_complaint_dts** | **String** |  | [optional] |
 
@@ -25,6 +27,8 @@ instance = UltracartClient::CustomerActivity.new(
   memberships: null,
   metrics: null,
   properties_list: null,
+  sms: null,
+  sms_stop: null,
   spam_complaint: null,
   spam_complaint_dts: null
 )
