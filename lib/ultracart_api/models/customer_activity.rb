@@ -26,6 +26,10 @@ module UltracartClient
 
     attr_accessor :properties_list
 
+    attr_accessor :sms
+
+    attr_accessor :sms_stop
+
     attr_accessor :spam_complaint
 
     attr_accessor :spam_complaint_dts
@@ -39,6 +43,8 @@ module UltracartClient
         :'memberships' => :'memberships',
         :'metrics' => :'metrics',
         :'properties_list' => :'properties_list',
+        :'sms' => :'sms',
+        :'sms_stop' => :'sms_stop',
         :'spam_complaint' => :'spam_complaint',
         :'spam_complaint_dts' => :'spam_complaint_dts'
       }
@@ -53,6 +59,8 @@ module UltracartClient
         :'memberships' => :'Array<ListSegmentMembership>',
         :'metrics' => :'Array<Metric>',
         :'properties_list' => :'Array<Property>',
+        :'sms' => :'String',
+        :'sms_stop' => :'BOOLEAN',
         :'spam_complaint' => :'BOOLEAN',
         :'spam_complaint_dts' => :'String'
       }
@@ -98,6 +106,14 @@ module UltracartClient
         end
       end
 
+      if attributes.has_key?(:'sms')
+        self.sms = attributes[:'sms']
+      end
+
+      if attributes.has_key?(:'sms_stop')
+        self.sms_stop = attributes[:'sms_stop']
+      end
+
       if attributes.has_key?(:'spam_complaint')
         self.spam_complaint = attributes[:'spam_complaint']
       end
@@ -131,6 +147,8 @@ module UltracartClient
           memberships == o.memberships &&
           metrics == o.metrics &&
           properties_list == o.properties_list &&
+          sms == o.sms &&
+          sms_stop == o.sms_stop &&
           spam_complaint == o.spam_complaint &&
           spam_complaint_dts == o.spam_complaint_dts
     end
@@ -144,7 +162,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [activities, global_unsubscribed, global_unsubscribed_dts, memberships, metrics, properties_list, spam_complaint, spam_complaint_dts].hash
+      [activities, global_unsubscribed, global_unsubscribed_dts, memberships, metrics, properties_list, sms, sms_stop, spam_complaint, spam_complaint_dts].hash
     end
 
     # Builds the object from hash

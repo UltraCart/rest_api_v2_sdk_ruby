@@ -152,7 +152,7 @@ module UltracartClient
 
     attr_accessor :quotes_summary
 
-    # Referral Source
+    # Referral Source specified on the wholesale customer signup form.  No other meaning than that signup flow.
     attr_accessor :referral_source
 
     attr_accessor :reviewer
