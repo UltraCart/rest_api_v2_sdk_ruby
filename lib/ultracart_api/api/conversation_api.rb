@@ -1138,6 +1138,70 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Delete user pbx audio
+    # Delete a pbx audio file owned by the authenticated user 
+    # @param conversation_pbx_audio_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxAudioResponse]
+    def delete_user_pbx_audio(conversation_pbx_audio_uuid, opts = {})
+      data, _status_code, _headers = delete_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid, opts)
+      data
+    end
+
+    # Delete user pbx audio
+    # Delete a pbx audio file owned by the authenticated user 
+    # @param conversation_pbx_audio_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxAudioResponse, Integer, Hash)>] ConversationPbxAudioResponse data, response status code and response headers
+    def delete_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.delete_user_pbx_audio ...'
+      end
+      # verify the required parameter 'conversation_pbx_audio_uuid' is set
+      if @api_client.config.client_side_validation && conversation_pbx_audio_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_pbx_audio_uuid' when calling ConversationApi.delete_user_pbx_audio"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/audio/user/{conversationPbxAudioUuid}'.sub('{' + 'conversationPbxAudioUuid' + '}', CGI.escape(conversation_pbx_audio_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxAudioResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.delete_user_pbx_audio",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#delete_user_pbx_audio\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Agent keep alive
     # Called periodically by the conversation API to keep the session alive. 
     # @param [Hash] opts the optional parameters
@@ -4705,6 +4769,128 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get user pbx audio
+    # Retrieve a pbx audio file owned by the authenticated user 
+    # @param conversation_pbx_audio_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxAudioResponse]
+    def get_user_pbx_audio(conversation_pbx_audio_uuid, opts = {})
+      data, _status_code, _headers = get_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid, opts)
+      data
+    end
+
+    # Get user pbx audio
+    # Retrieve a pbx audio file owned by the authenticated user 
+    # @param conversation_pbx_audio_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxAudioResponse, Integer, Hash)>] ConversationPbxAudioResponse data, response status code and response headers
+    def get_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_user_pbx_audio ...'
+      end
+      # verify the required parameter 'conversation_pbx_audio_uuid' is set
+      if @api_client.config.client_side_validation && conversation_pbx_audio_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_pbx_audio_uuid' when calling ConversationApi.get_user_pbx_audio"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/audio/user/{conversationPbxAudioUuid}'.sub('{' + 'conversationPbxAudioUuid' + '}', CGI.escape(conversation_pbx_audio_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxAudioResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_user_pbx_audio",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_user_pbx_audio\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get user pbx audios
+    # Retrieve pbx audio files owned by the authenticated user 
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxAudiosResponse]
+    def get_user_pbx_audios(opts = {})
+      data, _status_code, _headers = get_user_pbx_audios_with_http_info(opts)
+      data
+    end
+
+    # Get user pbx audios
+    # Retrieve pbx audio files owned by the authenticated user 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxAudiosResponse, Integer, Hash)>] ConversationPbxAudiosResponse data, response status code and response headers
+    def get_user_pbx_audios_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.get_user_pbx_audios ...'
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/audio/user'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxAudiosResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.get_user_pbx_audios",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#get_user_pbx_audios\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get virtual agent budget
     # Retrieve virtual agent budget 
     # @param [Hash] opts the optional parameters
@@ -5795,6 +5981,75 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#insert_pbx_voicemail_mailbox\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Insert user pbx audio
+    # Insert a pbx audio file for the authenticated user 
+    # @param pbx_audio [ConversationPbxAudio] Pbx Audio
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxAudioResponse]
+    def insert_user_pbx_audio(pbx_audio, opts = {})
+      data, _status_code, _headers = insert_user_pbx_audio_with_http_info(pbx_audio, opts)
+      data
+    end
+
+    # Insert user pbx audio
+    # Insert a pbx audio file for the authenticated user 
+    # @param pbx_audio [ConversationPbxAudio] Pbx Audio
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxAudioResponse, Integer, Hash)>] ConversationPbxAudioResponse data, response status code and response headers
+    def insert_user_pbx_audio_with_http_info(pbx_audio, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.insert_user_pbx_audio ...'
+      end
+      # verify the required parameter 'pbx_audio' is set
+      if @api_client.config.client_side_validation && pbx_audio.nil?
+        fail ArgumentError, "Missing the required parameter 'pbx_audio' when calling ConversationApi.insert_user_pbx_audio"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/audio/user'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(pbx_audio)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxAudioResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.insert_user_pbx_audio",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#insert_user_pbx_audio\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -8038,6 +8293,81 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConversationApi#update_pbx_voicemail_mailbox\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update user pbx audio
+    # Update a pbx audio file owned by the authenticated user 
+    # @param conversation_pbx_audio_uuid [String] 
+    # @param pbx_audio [ConversationPbxAudio] Pbx Audio
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxAudioResponse]
+    def update_user_pbx_audio(conversation_pbx_audio_uuid, pbx_audio, opts = {})
+      data, _status_code, _headers = update_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid, pbx_audio, opts)
+      data
+    end
+
+    # Update user pbx audio
+    # Update a pbx audio file owned by the authenticated user 
+    # @param conversation_pbx_audio_uuid [String] 
+    # @param pbx_audio [ConversationPbxAudio] Pbx Audio
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxAudioResponse, Integer, Hash)>] ConversationPbxAudioResponse data, response status code and response headers
+    def update_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid, pbx_audio, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.update_user_pbx_audio ...'
+      end
+      # verify the required parameter 'conversation_pbx_audio_uuid' is set
+      if @api_client.config.client_side_validation && conversation_pbx_audio_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'conversation_pbx_audio_uuid' when calling ConversationApi.update_user_pbx_audio"
+      end
+      # verify the required parameter 'pbx_audio' is set
+      if @api_client.config.client_side_validation && pbx_audio.nil?
+        fail ArgumentError, "Missing the required parameter 'pbx_audio' when calling ConversationApi.update_user_pbx_audio"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/audio/user/{conversationPbxAudioUuid}'.sub('{' + 'conversationPbxAudioUuid' + '}', CGI.escape(conversation_pbx_audio_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(pbx_audio)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxAudioResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.update_user_pbx_audio",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#update_user_pbx_audio\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

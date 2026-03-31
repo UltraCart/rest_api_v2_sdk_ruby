@@ -21,6 +21,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**delete_pbx_time_based**](ConversationApi.md#delete_pbx_time_based) | **DELETE** /conversation/pbx/time_based/{conversationPbxTimeBasedUuid} | Delete pbx timeBased |
 | [**delete_pbx_time_range**](ConversationApi.md#delete_pbx_time_range) | **DELETE** /conversation/pbx/time_range/{conversationPbxTimeRangeUuid} | Delete pbx timeRange |
 | [**delete_pbx_voicemail_mailbox**](ConversationApi.md#delete_pbx_voicemail_mailbox) | **DELETE** /conversation/pbx/voicemail_mailbox/{conversationPbxVoicemailMailboxUuid} | Delete pbx voicemailMailbox |
+| [**delete_user_pbx_audio**](ConversationApi.md#delete_user_pbx_audio) | **DELETE** /conversation/pbx/audio/user/{conversationPbxAudioUuid} | Delete user pbx audio |
 | [**get_agent_keep_alive**](ConversationApi.md#get_agent_keep_alive) | **GET** /conversation/agent/keepalive | Agent keep alive |
 | [**get_agent_profile**](ConversationApi.md#get_agent_profile) | **GET** /conversation/agent/profile | Get agent profile |
 | [**get_agent_profile_knowledge_base**](ConversationApi.md#get_agent_profile_knowledge_base) | **GET** /conversation/agent/profiles/{user_id}/knowledge_base | Get the list of knowledge base documents associated with this agent profile |
@@ -78,6 +79,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_pbx_time_ranges**](ConversationApi.md#get_pbx_time_ranges) | **GET** /conversation/pbx/time_range | Get pbx timeRanges |
 | [**get_pbx_voicemail_mailbox**](ConversationApi.md#get_pbx_voicemail_mailbox) | **GET** /conversation/pbx/voicemail_mailbox/{conversationPbxVoicemailMailboxUuid} | Get pbx voicemailMailbox |
 | [**get_pbx_voicemail_mailboxes**](ConversationApi.md#get_pbx_voicemail_mailboxes) | **GET** /conversation/pbx/voicemail_mailbox | Get pbx voicemailMailboxes |
+| [**get_user_pbx_audio**](ConversationApi.md#get_user_pbx_audio) | **GET** /conversation/pbx/audio/user/{conversationPbxAudioUuid} | Get user pbx audio |
+| [**get_user_pbx_audios**](ConversationApi.md#get_user_pbx_audios) | **GET** /conversation/pbx/audio/user | Get user pbx audios |
 | [**get_virtual_agent_budget**](ConversationApi.md#get_virtual_agent_budget) | **GET** /conversation/virtualagent/budget | Get virtual agent budget |
 | [**get_virtual_agent_capabilities**](ConversationApi.md#get_virtual_agent_capabilities) | **GET** /conversation/virtualagent/capabilities | Get virtual agent capabilities |
 | [**insert_agent_profile_knowledge_base_document**](ConversationApi.md#insert_agent_profile_knowledge_base_document) | **POST** /conversation/agent/profiles/{user_id}/knowledge_base | Insert a knowledge base document |
@@ -94,6 +97,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**insert_pbx_time_based**](ConversationApi.md#insert_pbx_time_based) | **POST** /conversation/pbx/time_based | Insert pbx timeBased |
 | [**insert_pbx_time_range**](ConversationApi.md#insert_pbx_time_range) | **POST** /conversation/pbx/time_range | Insert pbx timeRange |
 | [**insert_pbx_voicemail_mailbox**](ConversationApi.md#insert_pbx_voicemail_mailbox) | **POST** /conversation/pbx/voicemail_mailbox | Insert pbx voicemailMailbox |
+| [**insert_user_pbx_audio**](ConversationApi.md#insert_user_pbx_audio) | **POST** /conversation/pbx/audio/user | Insert user pbx audio |
 | [**join_conversation**](ConversationApi.md#join_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/join | Join a conversation |
 | [**leave_conversation**](ConversationApi.md#leave_conversation) | **DELETE** /conversation/conversations/{conversation_uuid}/leave | Leave a conversation |
 | [**listened_pbx_agent_voicemail**](ConversationApi.md#listened_pbx_agent_voicemail) | **GET** /conversation/pbx/agent/voicemails/{recording_sid}/listened | Listened Agent Voicemail |
@@ -125,6 +129,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**update_pbx_time_based**](ConversationApi.md#update_pbx_time_based) | **PUT** /conversation/pbx/time_based/{conversationPbxTimeBasedUuid} | Update pbx timeBased |
 | [**update_pbx_time_range**](ConversationApi.md#update_pbx_time_range) | **PUT** /conversation/pbx/time_range/{conversationPbxTimeRangeUuid} | Update pbx timeRange |
 | [**update_pbx_voicemail_mailbox**](ConversationApi.md#update_pbx_voicemail_mailbox) | **PUT** /conversation/pbx/voicemail_mailbox/{conversationPbxVoicemailMailboxUuid} | Update pbx voicemailMailbox |
+| [**update_user_pbx_audio**](ConversationApi.md#update_user_pbx_audio) | **PUT** /conversation/pbx/audio/user/{conversationPbxAudioUuid} | Update user pbx audio |
 | [**update_virtual_agent_budget**](ConversationApi.md#update_virtual_agent_budget) | **PUT** /conversation/virtualagent/budget | Update virtual agent budget |
 | [**update_virtual_agent_capabilities**](ConversationApi.md#update_virtual_agent_capabilities) | **PUT** /conversation/virtualagent/capabilities | Update virtual agent capabilities |
 
@@ -1034,6 +1039,59 @@ end
 ### Return type
 
 [**ConversationPbxVoicemailMailboxResponse**](ConversationPbxVoicemailMailboxResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_user_pbx_audio
+
+> <ConversationPbxAudioResponse> delete_user_pbx_audio(conversation_pbx_audio_uuid)
+
+Delete user pbx audio
+
+Delete a pbx audio file owned by the authenticated user 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_user_pbx_audio_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudioResponse>, Integer, Hash)> delete_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid)
+
+```ruby
+begin
+  # Delete user pbx audio
+  data, status_code, headers = api_instance.delete_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudioResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_user_pbx_audio_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_audio_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxAudioResponse**](ConversationPbxAudioResponse.md)
 
 ### Authorization
 
@@ -4072,6 +4130,110 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
+## get_user_pbx_audio
+
+> <ConversationPbxAudioResponse> get_user_pbx_audio(conversation_pbx_audio_uuid)
+
+Get user pbx audio
+
+Retrieve a pbx audio file owned by the authenticated user 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_user_pbx_audio_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudioResponse>, Integer, Hash)> get_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid)
+
+```ruby
+begin
+  # Get user pbx audio
+  data, status_code, headers = api_instance.get_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudioResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_user_pbx_audio_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_audio_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxAudioResponse**](ConversationPbxAudioResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_user_pbx_audios
+
+> <ConversationPbxAudiosResponse> get_user_pbx_audios
+
+Get user pbx audios
+
+Retrieve pbx audio files owned by the authenticated user 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_user_pbx_audios_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudiosResponse>, Integer, Hash)> get_user_pbx_audios_with_http_info
+
+```ruby
+begin
+  # Get user pbx audios
+  data, status_code, headers = api_instance.get_user_pbx_audios_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudiosResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_user_pbx_audios_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxAudiosResponse**](ConversationPbxAudiosResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_virtual_agent_budget
 
 > <ConversationVirtualAgentBudgetResponse> get_virtual_agent_budget
@@ -4916,6 +5078,59 @@ end
 ### Return type
 
 [**ConversationPbxVoicemailMailboxResponse**](ConversationPbxVoicemailMailboxResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## insert_user_pbx_audio
+
+> <ConversationPbxAudioResponse> insert_user_pbx_audio(pbx_audio)
+
+Insert user pbx audio
+
+Insert a pbx audio file for the authenticated user 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_user_pbx_audio_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudioResponse>, Integer, Hash)> insert_user_pbx_audio_with_http_info(pbx_audio)
+
+```ruby
+begin
+  # Insert user pbx audio
+  data, status_code, headers = api_instance.insert_user_pbx_audio_with_http_info(pbx_audio)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudioResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_user_pbx_audio_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pbx_audio** | [**ConversationPbxAudio**](ConversationPbxAudio.md) | Pbx Audio |  |
+
+### Return type
+
+[**ConversationPbxAudioResponse**](ConversationPbxAudioResponse.md)
 
 ### Authorization
 
@@ -6610,6 +6825,60 @@ end
 ### Return type
 
 [**ConversationPbxVoicemailMailboxResponse**](ConversationPbxVoicemailMailboxResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_user_pbx_audio
+
+> <ConversationPbxAudioResponse> update_user_pbx_audio(conversation_pbx_audio_uuid, pbx_audio)
+
+Update user pbx audio
+
+Update a pbx audio file owned by the authenticated user 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_user_pbx_audio_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudioResponse>, Integer, Hash)> update_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid, pbx_audio)
+
+```ruby
+begin
+  # Update user pbx audio
+  data, status_code, headers = api_instance.update_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid, pbx_audio)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudioResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_user_pbx_audio_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_audio_uuid** | **String** |  |  |
+| **pbx_audio** | [**ConversationPbxAudio**](ConversationPbxAudio.md) | Pbx Audio |  |
+
+### Return type
+
+[**ConversationPbxAudioResponse**](ConversationPbxAudioResponse.md)
 
 ### Authorization
 
