@@ -40,6 +40,7 @@ module UltracartClient
     # @option opts [String] :code Authorization code received back from the browser redirect
     # @option opts [String] :redirect_uri The URI that you redirect the browser to start the authorization process
     # @option opts [String] :refresh_token The refresh token received during the original grant_type&#x3D;authorization_code that can be used to return a new access token
+    # @option opts [String] :device_code The device code received from /oauth/device/authorize
     # @return [OauthTokenResponse]
     def oauth_access_token(client_id, grant_type, opts = {})
       data, _status_code, _headers = oauth_access_token_with_http_info(client_id, grant_type, opts)
@@ -54,6 +55,7 @@ module UltracartClient
     # @option opts [String] :code Authorization code received back from the browser redirect
     # @option opts [String] :redirect_uri The URI that you redirect the browser to start the authorization process
     # @option opts [String] :refresh_token The refresh token received during the original grant_type&#x3D;authorization_code that can be used to return a new access token
+    # @option opts [String] :device_code The device code received from /oauth/device/authorize
     # @return [Array<(OauthTokenResponse, Integer, Hash)>] OauthTokenResponse data, response status code and response headers
     def oauth_access_token_with_http_info(client_id, grant_type, opts = {})
       if @api_client.config.debugging
@@ -91,6 +93,7 @@ module UltracartClient
       form_params['code'] = opts[:'code'] if !opts[:'code'].nil?
       form_params['redirect_uri'] = opts[:'redirect_uri'] if !opts[:'redirect_uri'].nil?
       form_params['refresh_token'] = opts[:'refresh_token'] if !opts[:'refresh_token'].nil?
+      form_params['device_code'] = opts[:'device_code'] if !opts[:'device_code'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]
@@ -114,6 +117,83 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: OauthApi#oauth_access_token\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Initiate a device authorization flow.
+    # Initiates the device authorization flow by returning a device code and user code. The device displays the user code to the merchant, who visits the verification URI to approve the request. RFC 8628. 
+    # @param client_id [String] The OAuth application client_id.
+    # @param scope [String] The application-level scope (e.g., crm, ultraship).
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def oauth_device_authorize(client_id, scope, opts = {})
+      oauth_device_authorize_with_http_info(client_id, scope, opts)
+      nil
+    end
+
+    # Initiate a device authorization flow.
+    # Initiates the device authorization flow by returning a device code and user code. The device displays the user code to the merchant, who visits the verification URI to approve the request. RFC 8628. 
+    # @param client_id [String] The OAuth application client_id.
+    # @param scope [String] The application-level scope (e.g., crm, ultraship).
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def oauth_device_authorize_with_http_info(client_id, scope, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OauthApi.oauth_device_authorize ...'
+      end
+      # verify the required parameter 'client_id' is set
+      if @api_client.config.client_side_validation && client_id.nil?
+        fail ArgumentError, "Missing the required parameter 'client_id' when calling OauthApi.oauth_device_authorize"
+      end
+      # verify the required parameter 'scope' is set
+      if @api_client.config.client_side_validation && scope.nil?
+        fail ArgumentError, "Missing the required parameter 'scope' when calling OauthApi.oauth_device_authorize"
+      end
+      # resource path
+      local_var_path = '/oauth/device/authorize'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/x-www-form-urlencoded'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+      form_params['client_id'] = client_id
+      form_params['scope'] = scope
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"OauthApi.oauth_device_authorize",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OauthApi#oauth_device_authorize\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -14,6 +14,7 @@
 | **pos_location_oid** | **Integer** | Object identifier of the point of sale location. | [optional] |
 | **postal_code** | **String** | Postal code | [optional] |
 | **state_province** | **String** | State/province | [optional] |
+| **tax_county** | **String** | Tax county associated with this address.  Need when a self managed tax configuration is being used. | [optional] |
 
 ## Example
 
@@ -30,7 +31,8 @@ instance = UltracartClient::PointOfSaleLocation.new(
   merchant_id: null,
   pos_location_oid: null,
   postal_code: null,
-  state_province: null
+  state_province: null,
+  tax_county: null
 )
 ```
 

@@ -5,6 +5,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**oauth_access_token**](OauthApi.md#oauth_access_token) | **POST** /oauth/token | Exchange authorization code for access token. |
+| [**oauth_device_authorize**](OauthApi.md#oauth_device_authorize) | **POST** /oauth/device/authorize | Initiate a device authorization flow. |
 | [**oauth_revoke**](OauthApi.md#oauth_revoke) | **POST** /oauth/revoke | Revoke this OAuth application. |
 
 
@@ -107,10 +108,65 @@ end
 | **code** | **String** | Authorization code received back from the browser redirect | [optional] |
 | **redirect_uri** | **String** | The URI that you redirect the browser to start the authorization process | [optional] |
 | **refresh_token** | **String** | The refresh token received during the original grant_type&#x3D;authorization_code that can be used to return a new access token | [optional] |
+| **device_code** | **String** | The device code received from /oauth/device/authorize | [optional] |
 
 ### Return type
 
 [**OauthTokenResponse**](OauthTokenResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/x-www-form-urlencoded
+- **Accept**: application/json
+
+
+## oauth_device_authorize
+
+> oauth_device_authorize(client_id, scope)
+
+Initiate a device authorization flow.
+
+Initiates the device authorization flow by returning a device code and user code. The device displays the user code to the merchant, who visits the verification URI to approve the request. RFC 8628. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the oauth_device_authorize_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> oauth_device_authorize_with_http_info(client_id, scope)
+
+```ruby
+begin
+  # Initiate a device authorization flow.
+  data, status_code, headers = api_instance.oauth_device_authorize_with_http_info(client_id, scope)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OauthApi->oauth_device_authorize_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **client_id** | **String** | The OAuth application client_id. |  |
+| **scope** | **String** | The application-level scope (e.g., crm, ultraship). |  |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 

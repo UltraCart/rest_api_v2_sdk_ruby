@@ -14,54 +14,34 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class PointOfSaleLocation
-    # Address line 2
-    attr_accessor :adddress2
+  class OauthDeviceAuthorizationResponse
+    # The device verification code
+    attr_accessor :device_code
 
-    # Address line 1
-    attr_accessor :address1
+    # The lifetime in seconds of the device_code and user_code
+    attr_accessor :expires_in
 
-    # City
-    attr_accessor :city
+    # The minimum amount of time in seconds the client should wait between polling requests
+    attr_accessor :interval
 
-    # Country
-    attr_accessor :country
+    # The end-user verification code
+    attr_accessor :user_code
 
-    # The distribution center code where inventory is reduced from for this sale.
-    attr_accessor :distribution_center_code
+    # The end-user verification URI on the authorization server
+    attr_accessor :verification_uri
 
-    # External Id useful for syncing with a remote filesystem, this may be an MD5 hash or whatever suits your needs.
-    attr_accessor :external_id
-
-    # Merchant ID that owns this location
-    attr_accessor :merchant_id
-
-    # Object identifier of the point of sale location.
-    attr_accessor :pos_location_oid
-
-    # Postal code
-    attr_accessor :postal_code
-
-    # State/province
-    attr_accessor :state_province
-
-    # Tax county associated with this address.  Need when a self managed tax configuration is being used.
-    attr_accessor :tax_county
+    # The verification URI with the user code pre-filled
+    attr_accessor :verification_uri_complete
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'adddress2' => :'adddress2',
-        :'address1' => :'address1',
-        :'city' => :'city',
-        :'country' => :'country',
-        :'distribution_center_code' => :'distribution_center_code',
-        :'external_id' => :'external_id',
-        :'merchant_id' => :'merchant_id',
-        :'pos_location_oid' => :'pos_location_oid',
-        :'postal_code' => :'postal_code',
-        :'state_province' => :'state_province',
-        :'tax_county' => :'tax_county'
+        :'device_code' => :'device_code',
+        :'expires_in' => :'expires_in',
+        :'interval' => :'interval',
+        :'user_code' => :'user_code',
+        :'verification_uri' => :'verification_uri',
+        :'verification_uri_complete' => :'verification_uri_complete'
       }
     end
 
@@ -73,17 +53,12 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'adddress2' => :'String',
-        :'address1' => :'String',
-        :'city' => :'String',
-        :'country' => :'String',
-        :'distribution_center_code' => :'String',
-        :'external_id' => :'String',
-        :'merchant_id' => :'String',
-        :'pos_location_oid' => :'Integer',
-        :'postal_code' => :'String',
-        :'state_province' => :'String',
-        :'tax_county' => :'String'
+        :'device_code' => :'String',
+        :'expires_in' => :'Integer',
+        :'interval' => :'Integer',
+        :'user_code' => :'String',
+        :'verification_uri' => :'String',
+        :'verification_uri_complete' => :'String'
       }
     end
 
@@ -97,59 +72,39 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::PointOfSaleLocation` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::OauthDeviceAuthorizationResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::PointOfSaleLocation`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::OauthDeviceAuthorizationResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'adddress2')
-        self.adddress2 = attributes[:'adddress2']
+      if attributes.key?(:'device_code')
+        self.device_code = attributes[:'device_code']
       end
 
-      if attributes.key?(:'address1')
-        self.address1 = attributes[:'address1']
+      if attributes.key?(:'expires_in')
+        self.expires_in = attributes[:'expires_in']
       end
 
-      if attributes.key?(:'city')
-        self.city = attributes[:'city']
+      if attributes.key?(:'interval')
+        self.interval = attributes[:'interval']
       end
 
-      if attributes.key?(:'country')
-        self.country = attributes[:'country']
+      if attributes.key?(:'user_code')
+        self.user_code = attributes[:'user_code']
       end
 
-      if attributes.key?(:'distribution_center_code')
-        self.distribution_center_code = attributes[:'distribution_center_code']
+      if attributes.key?(:'verification_uri')
+        self.verification_uri = attributes[:'verification_uri']
       end
 
-      if attributes.key?(:'external_id')
-        self.external_id = attributes[:'external_id']
-      end
-
-      if attributes.key?(:'merchant_id')
-        self.merchant_id = attributes[:'merchant_id']
-      end
-
-      if attributes.key?(:'pos_location_oid')
-        self.pos_location_oid = attributes[:'pos_location_oid']
-      end
-
-      if attributes.key?(:'postal_code')
-        self.postal_code = attributes[:'postal_code']
-      end
-
-      if attributes.key?(:'state_province')
-        self.state_province = attributes[:'state_province']
-      end
-
-      if attributes.key?(:'tax_county')
-        self.tax_county = attributes[:'tax_county']
+      if attributes.key?(:'verification_uri_complete')
+        self.verification_uri_complete = attributes[:'verification_uri_complete']
       end
     end
 
@@ -157,43 +112,13 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@external_id.nil? && @external_id.to_s.length > 100
-        invalid_properties.push('invalid value for "external_id", the character length must be smaller than or equal to 100.')
-      end
-
-      if !@tax_county.nil? && @tax_county.to_s.length > 32
-        invalid_properties.push('invalid value for "tax_county", the character length must be smaller than or equal to 32.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@external_id.nil? && @external_id.to_s.length > 100
-      return false if !@tax_county.nil? && @tax_county.to_s.length > 32
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] external_id Value to be assigned
-    def external_id=(external_id)
-      if !external_id.nil? && external_id.to_s.length > 100
-        fail ArgumentError, 'invalid value for "external_id", the character length must be smaller than or equal to 100.'
-      end
-
-      @external_id = external_id
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] tax_county Value to be assigned
-    def tax_county=(tax_county)
-      if !tax_county.nil? && tax_county.to_s.length > 32
-        fail ArgumentError, 'invalid value for "tax_county", the character length must be smaller than or equal to 32.'
-      end
-
-      @tax_county = tax_county
     end
 
     # Checks equality by comparing each attribute.
@@ -201,17 +126,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          adddress2 == o.adddress2 &&
-          address1 == o.address1 &&
-          city == o.city &&
-          country == o.country &&
-          distribution_center_code == o.distribution_center_code &&
-          external_id == o.external_id &&
-          merchant_id == o.merchant_id &&
-          pos_location_oid == o.pos_location_oid &&
-          postal_code == o.postal_code &&
-          state_province == o.state_province &&
-          tax_county == o.tax_county
+          device_code == o.device_code &&
+          expires_in == o.expires_in &&
+          interval == o.interval &&
+          user_code == o.user_code &&
+          verification_uri == o.verification_uri &&
+          verification_uri_complete == o.verification_uri_complete
     end
 
     # @see the `==` method
@@ -223,7 +143,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [adddress2, address1, city, country, distribution_center_code, external_id, merchant_id, pos_location_oid, postal_code, state_province, tax_county].hash
+      [device_code, expires_in, interval, user_code, verification_uri, verification_uri_complete].hash
     end
 
     # Builds the object from hash
