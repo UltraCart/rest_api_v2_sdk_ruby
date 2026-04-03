@@ -27,6 +27,42 @@ module UltracartClient
     # AI Agent UUID to automatically engage to provide coaching
     attr_accessor :automatic_coach_agent_uuid
 
+    # Custom audio file UUID for the callback offer prompt
+    attr_accessor :callback_announce_audio_uuid
+
+    # Custom TTS text for the callback offer prompt
+    attr_accessor :callback_announce_say
+
+    # Custom audio file UUID for the callback confirmation message
+    attr_accessor :callback_confirm_audio_uuid
+
+    # Custom TTS text for the callback confirmation message
+    attr_accessor :callback_confirm_say
+
+    # If true, the callback option is enabled for this queue
+    attr_accessor :callback_enabled
+
+    # When true, only offer callbacks during business hours
+    attr_accessor :callback_hours_only
+
+    # Maximum number of times the system will attempt to call the customer back
+    attr_accessor :callback_max_attempts
+
+    # Maximum number of times the callback option is offered to a caller per call
+    attr_accessor :callback_max_offers
+
+    # Maximum number of pending callbacks allowed per queue
+    attr_accessor :callback_max_pending
+
+    # Seconds a caller must wait in queue before the callback option is offered
+    attr_accessor :callback_offer_after_seconds
+
+    # Seconds between repeat callback offers to the same caller
+    attr_accessor :callback_offer_interval_seconds
+
+    # Delay in seconds between callback retry attempts
+    attr_accessor :callback_retry_delay_seconds
+
     # Conversation Pbx Queue unique identifier
     attr_accessor :conversation_pbx_queue_uuid
 
@@ -115,6 +151,18 @@ module UltracartClient
         :'ai_timeout_seconds' => :'ai_timeout_seconds',
         :'announce_queue_position' => :'announce_queue_position',
         :'automatic_coach_agent_uuid' => :'automatic_coach_agent_uuid',
+        :'callback_announce_audio_uuid' => :'callback_announce_audio_uuid',
+        :'callback_announce_say' => :'callback_announce_say',
+        :'callback_confirm_audio_uuid' => :'callback_confirm_audio_uuid',
+        :'callback_confirm_say' => :'callback_confirm_say',
+        :'callback_enabled' => :'callback_enabled',
+        :'callback_hours_only' => :'callback_hours_only',
+        :'callback_max_attempts' => :'callback_max_attempts',
+        :'callback_max_offers' => :'callback_max_offers',
+        :'callback_max_pending' => :'callback_max_pending',
+        :'callback_offer_after_seconds' => :'callback_offer_after_seconds',
+        :'callback_offer_interval_seconds' => :'callback_offer_interval_seconds',
+        :'callback_retry_delay_seconds' => :'callback_retry_delay_seconds',
         :'conversation_pbx_queue_uuid' => :'conversation_pbx_queue_uuid',
         :'conversation_voicemail_mailbox_uuid' => :'conversation_voicemail_mailbox_uuid',
         :'hold_conversation_pbx_audio_uuid' => :'hold_conversation_pbx_audio_uuid',
@@ -150,6 +198,18 @@ module UltracartClient
         :'ai_timeout_seconds' => :'Integer',
         :'announce_queue_position' => :'Boolean',
         :'automatic_coach_agent_uuid' => :'String',
+        :'callback_announce_audio_uuid' => :'String',
+        :'callback_announce_say' => :'String',
+        :'callback_confirm_audio_uuid' => :'String',
+        :'callback_confirm_say' => :'String',
+        :'callback_enabled' => :'Boolean',
+        :'callback_hours_only' => :'Boolean',
+        :'callback_max_attempts' => :'Integer',
+        :'callback_max_offers' => :'Integer',
+        :'callback_max_pending' => :'Integer',
+        :'callback_offer_after_seconds' => :'Integer',
+        :'callback_offer_interval_seconds' => :'Integer',
+        :'callback_retry_delay_seconds' => :'Integer',
         :'conversation_pbx_queue_uuid' => :'String',
         :'conversation_voicemail_mailbox_uuid' => :'String',
         :'hold_conversation_pbx_audio_uuid' => :'String',
@@ -208,6 +268,54 @@ module UltracartClient
 
       if attributes.key?(:'automatic_coach_agent_uuid')
         self.automatic_coach_agent_uuid = attributes[:'automatic_coach_agent_uuid']
+      end
+
+      if attributes.key?(:'callback_announce_audio_uuid')
+        self.callback_announce_audio_uuid = attributes[:'callback_announce_audio_uuid']
+      end
+
+      if attributes.key?(:'callback_announce_say')
+        self.callback_announce_say = attributes[:'callback_announce_say']
+      end
+
+      if attributes.key?(:'callback_confirm_audio_uuid')
+        self.callback_confirm_audio_uuid = attributes[:'callback_confirm_audio_uuid']
+      end
+
+      if attributes.key?(:'callback_confirm_say')
+        self.callback_confirm_say = attributes[:'callback_confirm_say']
+      end
+
+      if attributes.key?(:'callback_enabled')
+        self.callback_enabled = attributes[:'callback_enabled']
+      end
+
+      if attributes.key?(:'callback_hours_only')
+        self.callback_hours_only = attributes[:'callback_hours_only']
+      end
+
+      if attributes.key?(:'callback_max_attempts')
+        self.callback_max_attempts = attributes[:'callback_max_attempts']
+      end
+
+      if attributes.key?(:'callback_max_offers')
+        self.callback_max_offers = attributes[:'callback_max_offers']
+      end
+
+      if attributes.key?(:'callback_max_pending')
+        self.callback_max_pending = attributes[:'callback_max_pending']
+      end
+
+      if attributes.key?(:'callback_offer_after_seconds')
+        self.callback_offer_after_seconds = attributes[:'callback_offer_after_seconds']
+      end
+
+      if attributes.key?(:'callback_offer_interval_seconds')
+        self.callback_offer_interval_seconds = attributes[:'callback_offer_interval_seconds']
+      end
+
+      if attributes.key?(:'callback_retry_delay_seconds')
+        self.callback_retry_delay_seconds = attributes[:'callback_retry_delay_seconds']
       end
 
       if attributes.key?(:'conversation_pbx_queue_uuid')
@@ -295,6 +403,14 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@callback_announce_audio_uuid.nil? && @callback_announce_audio_uuid.to_s.length > 50
+        invalid_properties.push('invalid value for "callback_announce_audio_uuid", the character length must be smaller than or equal to 50.')
+      end
+
+      if !@callback_confirm_audio_uuid.nil? && @callback_confirm_audio_uuid.to_s.length > 50
+        invalid_properties.push('invalid value for "callback_confirm_audio_uuid", the character length must be smaller than or equal to 50.')
+      end
+
       if !@conversation_voicemail_mailbox_uuid.nil? && @conversation_voicemail_mailbox_uuid.to_s.length > 50
         invalid_properties.push('invalid value for "conversation_voicemail_mailbox_uuid", the character length must be smaller than or equal to 50.')
       end
@@ -343,6 +459,8 @@ module UltracartClient
     def valid?
       ai_priority_validator = EnumAttributeValidator.new('String', ["neutral", "first", "backup"])
       return false unless ai_priority_validator.valid?(@ai_priority)
+      return false if !@callback_announce_audio_uuid.nil? && @callback_announce_audio_uuid.to_s.length > 50
+      return false if !@callback_confirm_audio_uuid.nil? && @callback_confirm_audio_uuid.to_s.length > 50
       return false if !@conversation_voicemail_mailbox_uuid.nil? && @conversation_voicemail_mailbox_uuid.to_s.length > 50
       return false if !@hold_conversation_pbx_audio_uuid.nil? && @hold_conversation_pbx_audio_uuid.to_s.length > 50
       return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
@@ -368,6 +486,26 @@ module UltracartClient
         fail ArgumentError, "invalid value for \"ai_priority\", must be one of #{validator.allowable_values}."
       end
       @ai_priority = ai_priority
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] callback_announce_audio_uuid Value to be assigned
+    def callback_announce_audio_uuid=(callback_announce_audio_uuid)
+      if !callback_announce_audio_uuid.nil? && callback_announce_audio_uuid.to_s.length > 50
+        fail ArgumentError, 'invalid value for "callback_announce_audio_uuid", the character length must be smaller than or equal to 50.'
+      end
+
+      @callback_announce_audio_uuid = callback_announce_audio_uuid
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] callback_confirm_audio_uuid Value to be assigned
+    def callback_confirm_audio_uuid=(callback_confirm_audio_uuid)
+      if !callback_confirm_audio_uuid.nil? && callback_confirm_audio_uuid.to_s.length > 50
+        fail ArgumentError, 'invalid value for "callback_confirm_audio_uuid", the character length must be smaller than or equal to 50.'
+      end
+
+      @callback_confirm_audio_uuid = callback_confirm_audio_uuid
     end
 
     # Custom attribute writer method with validation
@@ -479,6 +617,18 @@ module UltracartClient
           ai_timeout_seconds == o.ai_timeout_seconds &&
           announce_queue_position == o.announce_queue_position &&
           automatic_coach_agent_uuid == o.automatic_coach_agent_uuid &&
+          callback_announce_audio_uuid == o.callback_announce_audio_uuid &&
+          callback_announce_say == o.callback_announce_say &&
+          callback_confirm_audio_uuid == o.callback_confirm_audio_uuid &&
+          callback_confirm_say == o.callback_confirm_say &&
+          callback_enabled == o.callback_enabled &&
+          callback_hours_only == o.callback_hours_only &&
+          callback_max_attempts == o.callback_max_attempts &&
+          callback_max_offers == o.callback_max_offers &&
+          callback_max_pending == o.callback_max_pending &&
+          callback_offer_after_seconds == o.callback_offer_after_seconds &&
+          callback_offer_interval_seconds == o.callback_offer_interval_seconds &&
+          callback_retry_delay_seconds == o.callback_retry_delay_seconds &&
           conversation_pbx_queue_uuid == o.conversation_pbx_queue_uuid &&
           conversation_voicemail_mailbox_uuid == o.conversation_voicemail_mailbox_uuid &&
           hold_conversation_pbx_audio_uuid == o.hold_conversation_pbx_audio_uuid &&
@@ -510,7 +660,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ai_priority, ai_timeout_seconds, announce_queue_position, automatic_coach_agent_uuid, conversation_pbx_queue_uuid, conversation_voicemail_mailbox_uuid, hold_conversation_pbx_audio_uuid, max_hold_seconds, members, merchant_id, name, no_agent_available_play_audio_uuid, no_agent_available_say, no_agent_available_say_voice, play_audio_uuid, record_call, say, say_voice, twilio_taskrouter_workflow_sid, twilio_workspace_queue_sid, voicemail, wait_critical_seconds, wait_warning_seconds, wrap_up_seconds].hash
+      [ai_priority, ai_timeout_seconds, announce_queue_position, automatic_coach_agent_uuid, callback_announce_audio_uuid, callback_announce_say, callback_confirm_audio_uuid, callback_confirm_say, callback_enabled, callback_hours_only, callback_max_attempts, callback_max_offers, callback_max_pending, callback_offer_after_seconds, callback_offer_interval_seconds, callback_retry_delay_seconds, conversation_pbx_queue_uuid, conversation_voicemail_mailbox_uuid, hold_conversation_pbx_audio_uuid, max_hold_seconds, members, merchant_id, name, no_agent_available_play_audio_uuid, no_agent_available_say, no_agent_available_say_voice, play_audio_uuid, record_call, say, say_voice, twilio_taskrouter_workflow_sid, twilio_workspace_queue_sid, voicemail, wait_critical_seconds, wait_warning_seconds, wrap_up_seconds].hash
     end
 
     # Builds the object from hash
