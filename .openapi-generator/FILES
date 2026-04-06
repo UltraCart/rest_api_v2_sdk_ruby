@@ -338,6 +338,7 @@ docs/CouponPercentOffItemWithItemsQuantityPurchase.md
 docs/CouponPercentOffItems.md
 docs/CouponPercentOffItemsAndFreeShipping.md
 docs/CouponPercentOffItemsWithItemsPurchase.md
+docs/CouponPercentOffItemsWithMinimumItemAmount.md
 docs/CouponPercentOffMsrpItems.md
 docs/CouponPercentOffRetailPriceItems.md
 docs/CouponPercentOffShipping.md
@@ -1326,6 +1327,7 @@ lib/ultracart_api/models/coupon_percent_off_item_with_items_quantity_purchase.rb
 lib/ultracart_api/models/coupon_percent_off_items.rb
 lib/ultracart_api/models/coupon_percent_off_items_and_free_shipping.rb
 lib/ultracart_api/models/coupon_percent_off_items_with_items_purchase.rb
+lib/ultracart_api/models/coupon_percent_off_items_with_minimum_item_amount.rb
 lib/ultracart_api/models/coupon_percent_off_msrp_items.rb
 lib/ultracart_api/models/coupon_percent_off_retail_price_items.rb
 lib/ultracart_api/models/coupon_percent_off_shipping.rb

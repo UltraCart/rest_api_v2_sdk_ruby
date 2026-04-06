@@ -49,6 +49,7 @@
 | **percent_off_items** | [**CouponPercentOffItems**](CouponPercentOffItems.md) |  | [optional] |
 | **percent_off_items_and_free_shipping** | [**CouponPercentOffItemsAndFreeShipping**](CouponPercentOffItemsAndFreeShipping.md) |  | [optional] |
 | **percent_off_items_with_items_purchase** | [**CouponPercentOffItemsWithItemsPurchase**](CouponPercentOffItemsWithItemsPurchase.md) |  | [optional] |
+| **percent_off_items_with_minimum_item_amount** | [**CouponPercentOffItemsWithMinimumItemAmount**](CouponPercentOffItemsWithMinimumItemAmount.md) |  | [optional] |
 | **percent_off_msrp_items** | [**CouponPercentOffMsrpItems**](CouponPercentOffMsrpItems.md) |  | [optional] |
 | **percent_off_retail_price_items** | [**CouponPercentOffRetailPriceItems**](CouponPercentOffRetailPriceItems.md) |  | [optional] |
 | **percent_off_shipping** | [**CouponPercentOffShipping**](CouponPercentOffShipping.md) |  | [optional] |
@@ -123,6 +124,7 @@ instance = UltracartClient::Coupon.new(
   percent_off_items: null,
   percent_off_items_and_free_shipping: null,
   percent_off_items_with_items_purchase: null,
+  percent_off_items_with_minimum_item_amount: null,
   percent_off_msrp_items: null,
   percent_off_retail_price_items: null,
   percent_off_shipping: null,
