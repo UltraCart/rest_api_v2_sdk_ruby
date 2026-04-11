@@ -21,8 +21,14 @@ module UltracartClient
     # Merchant Id
     attr_accessor :merchant_id
 
+    # Send notices to channel
+    attr_accessor :send_notices_to_channel
+
     # Send notices to email
     attr_accessor :send_notices_to_email
+
+    # Send notices to Zoho Desk department id
+    attr_accessor :send_notices_to_zoho_desk_department_id
 
     # User Id
     attr_accessor :user_id
@@ -78,7 +84,9 @@ module UltracartClient
       {
         :'conversation_pbx_voicemail_mailbox_uuid' => :'conversation_pbx_voicemail_mailbox_uuid',
         :'merchant_id' => :'merchant_id',
+        :'send_notices_to_channel' => :'send_notices_to_channel',
         :'send_notices_to_email' => :'send_notices_to_email',
+        :'send_notices_to_zoho_desk_department_id' => :'send_notices_to_zoho_desk_department_id',
         :'user_id' => :'user_id',
         :'voicemail_followup_play_audio_uuid' => :'voicemail_followup_play_audio_uuid',
         :'voicemail_followup_say' => :'voicemail_followup_say',
@@ -101,7 +109,9 @@ module UltracartClient
       {
         :'conversation_pbx_voicemail_mailbox_uuid' => :'String',
         :'merchant_id' => :'String',
+        :'send_notices_to_channel' => :'String',
         :'send_notices_to_email' => :'String',
+        :'send_notices_to_zoho_desk_department_id' => :'String',
         :'user_id' => :'Integer',
         :'voicemail_followup_play_audio_uuid' => :'String',
         :'voicemail_followup_say' => :'String',
@@ -143,8 +153,16 @@ module UltracartClient
         self.merchant_id = attributes[:'merchant_id']
       end
 
+      if attributes.key?(:'send_notices_to_channel')
+        self.send_notices_to_channel = attributes[:'send_notices_to_channel']
+      end
+
       if attributes.key?(:'send_notices_to_email')
         self.send_notices_to_email = attributes[:'send_notices_to_email']
+      end
+
+      if attributes.key?(:'send_notices_to_zoho_desk_department_id')
+        self.send_notices_to_zoho_desk_department_id = attributes[:'send_notices_to_zoho_desk_department_id']
       end
 
       if attributes.key?(:'user_id')
@@ -196,8 +214,16 @@ module UltracartClient
         invalid_properties.push('invalid value for "merchant_id", the character length must be smaller than or equal to 5.')
       end
 
+      if !@send_notices_to_channel.nil? && @send_notices_to_channel.to_s.length > 50
+        invalid_properties.push('invalid value for "send_notices_to_channel", the character length must be smaller than or equal to 50.')
+      end
+
       if !@send_notices_to_email.nil? && @send_notices_to_email.to_s.length > 250
         invalid_properties.push('invalid value for "send_notices_to_email", the character length must be smaller than or equal to 250.')
+      end
+
+      if !@send_notices_to_zoho_desk_department_id.nil? && @send_notices_to_zoho_desk_department_id.to_s.length > 50
+        invalid_properties.push('invalid value for "send_notices_to_zoho_desk_department_id", the character length must be smaller than or equal to 50.')
       end
 
       if !@voicemail_followup_play_audio_uuid.nil? && @voicemail_followup_play_audio_uuid.to_s.length > 50
@@ -232,7 +258,11 @@ module UltracartClient
     def valid?
       return false if !@conversation_pbx_voicemail_mailbox_uuid.nil? && @conversation_pbx_voicemail_mailbox_uuid.to_s.length > 50
       return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
+      send_notices_to_channel_validator = EnumAttributeValidator.new('String', ["none", "email", "zoho_desk_ticket", "ultracart_task"])
+      return false unless send_notices_to_channel_validator.valid?(@send_notices_to_channel)
+      return false if !@send_notices_to_channel.nil? && @send_notices_to_channel.to_s.length > 50
       return false if !@send_notices_to_email.nil? && @send_notices_to_email.to_s.length > 250
+      return false if !@send_notices_to_zoho_desk_department_id.nil? && @send_notices_to_zoho_desk_department_id.to_s.length > 50
       return false if !@voicemail_followup_play_audio_uuid.nil? && @voicemail_followup_play_audio_uuid.to_s.length > 50
       voicemail_followup_say_voice_validator = EnumAttributeValidator.new('String', ["man", "woman"])
       return false unless voicemail_followup_say_voice_validator.valid?(@voicemail_followup_say_voice)
@@ -268,6 +298,16 @@ module UltracartClient
       @merchant_id = merchant_id
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] send_notices_to_channel Object to be assigned
+    def send_notices_to_channel=(send_notices_to_channel)
+      validator = EnumAttributeValidator.new('String', ["none", "email", "zoho_desk_ticket", "ultracart_task"])
+      unless validator.valid?(send_notices_to_channel)
+        fail ArgumentError, "invalid value for \"send_notices_to_channel\", must be one of #{validator.allowable_values}."
+      end
+      @send_notices_to_channel = send_notices_to_channel
+    end
+
     # Custom attribute writer method with validation
     # @param [Object] send_notices_to_email Value to be assigned
     def send_notices_to_email=(send_notices_to_email)
@@ -276,6 +316,16 @@ module UltracartClient
       end
 
       @send_notices_to_email = send_notices_to_email
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] send_notices_to_zoho_desk_department_id Value to be assigned
+    def send_notices_to_zoho_desk_department_id=(send_notices_to_zoho_desk_department_id)
+      if !send_notices_to_zoho_desk_department_id.nil? && send_notices_to_zoho_desk_department_id.to_s.length > 50
+        fail ArgumentError, 'invalid value for "send_notices_to_zoho_desk_department_id", the character length must be smaller than or equal to 50.'
+      end
+
+      @send_notices_to_zoho_desk_department_id = send_notices_to_zoho_desk_department_id
     end
 
     # Custom attribute writer method with validation
@@ -345,7 +395,9 @@ module UltracartClient
       self.class == o.class &&
           conversation_pbx_voicemail_mailbox_uuid == o.conversation_pbx_voicemail_mailbox_uuid &&
           merchant_id == o.merchant_id &&
+          send_notices_to_channel == o.send_notices_to_channel &&
           send_notices_to_email == o.send_notices_to_email &&
+          send_notices_to_zoho_desk_department_id == o.send_notices_to_zoho_desk_department_id &&
           user_id == o.user_id &&
           voicemail_followup_play_audio_uuid == o.voicemail_followup_play_audio_uuid &&
           voicemail_followup_say == o.voicemail_followup_say &&
@@ -366,7 +418,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_pbx_voicemail_mailbox_uuid, merchant_id, send_notices_to_email, user_id, voicemail_followup_play_audio_uuid, voicemail_followup_say, voicemail_followup_say_voice, voicemail_mailbox_id, voicemail_mailbox_type, voicemail_prompt_play_audio_uuid, voicemail_prompt_say, voicemail_prompt_say_voice].hash
+      [conversation_pbx_voicemail_mailbox_uuid, merchant_id, send_notices_to_channel, send_notices_to_email, send_notices_to_zoho_desk_department_id, user_id, voicemail_followup_play_audio_uuid, voicemail_followup_say, voicemail_followup_say_voice, voicemail_mailbox_id, voicemail_mailbox_type, voicemail_prompt_play_audio_uuid, voicemail_prompt_say, voicemail_prompt_say_voice].hash
     end
 
     # Builds the object from hash

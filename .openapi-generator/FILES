@@ -261,6 +261,7 @@ docs/ConversationPbxTimeRange.md
 docs/ConversationPbxTimeRangeConfig.md
 docs/ConversationPbxTimeRangeResponse.md
 docs/ConversationPbxTimeRangesResponse.md
+docs/ConversationPbxVoicemailCapabilitiesResponse.md
 docs/ConversationPbxVoicemailMailbox.md
 docs/ConversationPbxVoicemailMailboxResponse.md
 docs/ConversationPbxVoicemailMailboxesResponse.md
@@ -1251,6 +1252,7 @@ lib/ultracart_api/models/conversation_pbx_time_range.rb
 lib/ultracart_api/models/conversation_pbx_time_range_config.rb
 lib/ultracart_api/models/conversation_pbx_time_range_response.rb
 lib/ultracart_api/models/conversation_pbx_time_ranges_response.rb
+lib/ultracart_api/models/conversation_pbx_voicemail_capabilities_response.rb
 lib/ultracart_api/models/conversation_pbx_voicemail_mailbox.rb
 lib/ultracart_api/models/conversation_pbx_voicemail_mailbox_response.rb
 lib/ultracart_api/models/conversation_pbx_voicemail_mailboxes_response.rb

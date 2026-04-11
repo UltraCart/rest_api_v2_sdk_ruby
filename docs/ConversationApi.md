@@ -77,6 +77,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_pbx_time_baseds**](ConversationApi.md#get_pbx_time_baseds) | **GET** /conversation/pbx/time_based | Get pbx timeBaseds |
 | [**get_pbx_time_range**](ConversationApi.md#get_pbx_time_range) | **GET** /conversation/pbx/time_range/{conversationPbxTimeRangeUuid} | Get pbx timeRange |
 | [**get_pbx_time_ranges**](ConversationApi.md#get_pbx_time_ranges) | **GET** /conversation/pbx/time_range | Get pbx timeRanges |
+| [**get_pbx_voicemail_capabilities**](ConversationApi.md#get_pbx_voicemail_capabilities) | **GET** /conversation/pbx/voicemail/capabilities | Get pbx voicemail capabilities |
 | [**get_pbx_voicemail_mailbox**](ConversationApi.md#get_pbx_voicemail_mailbox) | **GET** /conversation/pbx/voicemail_mailbox/{conversationPbxVoicemailMailboxUuid} | Get pbx voicemailMailbox |
 | [**get_pbx_voicemail_mailboxes**](ConversationApi.md#get_pbx_voicemail_mailboxes) | **GET** /conversation/pbx/voicemail_mailbox | Get pbx voicemailMailboxes |
 | [**get_user_pbx_audio**](ConversationApi.md#get_user_pbx_audio) | **GET** /conversation/pbx/audio/user/{conversationPbxAudioUuid} | Get user pbx audio |
@@ -4013,6 +4014,57 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**ConversationPbxTimeRangesResponse**](ConversationPbxTimeRangesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_voicemail_capabilities
+
+> <ConversationPbxVoicemailCapabilitiesResponse> get_pbx_voicemail_capabilities
+
+Get pbx voicemail capabilities
+
+Retrieve voicemail notification capabilities including available channels 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_pbx_voicemail_capabilities_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxVoicemailCapabilitiesResponse>, Integer, Hash)> get_pbx_voicemail_capabilities_with_http_info
+
+```ruby
+begin
+  # Get pbx voicemail capabilities
+  data, status_code, headers = api_instance.get_pbx_voicemail_capabilities_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxVoicemailCapabilitiesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_voicemail_capabilities_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxVoicemailCapabilitiesResponse**](ConversationPbxVoicemailCapabilitiesResponse.md)
 
 ### Authorization
 

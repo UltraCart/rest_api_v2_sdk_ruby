@@ -6,7 +6,9 @@
 | ---- | ---- | ----------- | ----- |
 | **conversation_pbx_voicemail_mailbox_uuid** | **String** | Conversation Pbx Voicemail Mailbox UUID | [optional] |
 | **merchant_id** | **String** | Merchant Id | [optional] |
+| **send_notices_to_channel** | **String** | Send notices to channel | [optional] |
 | **send_notices_to_email** | **String** | Send notices to email | [optional] |
+| **send_notices_to_zoho_desk_department_id** | **String** | Send notices to Zoho Desk department id | [optional] |
 | **user_id** | **Integer** | User Id | [optional] |
 | **voicemail_followup_play_audio_uuid** | **String** | Voicemail follow play audio UUID | [optional] |
 | **voicemail_followup_say** | **String** | Voicemail followup say | [optional] |
@@ -25,7 +27,9 @@ require 'ultracart_api'
 instance = UltracartClient::ConversationPbxVoicemailMailbox.new(
   conversation_pbx_voicemail_mailbox_uuid: null,
   merchant_id: null,
+  send_notices_to_channel: null,
   send_notices_to_email: null,
+  send_notices_to_zoho_desk_department_id: null,
   user_id: null,
   voicemail_followup_play_audio_uuid: null,
   voicemail_followup_say: null,
