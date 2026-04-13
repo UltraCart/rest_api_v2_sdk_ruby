@@ -24,6 +24,8 @@ module UltracartClient
     # List of AI agent engagements during the call
     attr_accessor :ai_agent_engagements
 
+    attr_accessor :ai_summary
+
     # Twilio call SID for the primary (customer) call leg
     attr_accessor :call_sid
 
@@ -77,12 +79,19 @@ module UltracartClient
     # Timestamp when the call record was last updated
     attr_accessor :updated_at_dts
 
+    # Zoho Desk ticket ID if a ticket was created for this call
+    attr_accessor :zoho_desk_ticket_id
+
+    # URL to the Zoho Desk ticket if a ticket was created for this call
+    attr_accessor :zoho_desk_ticket_url
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'account_sid' => :'account_sid',
         :'agents' => :'agents',
         :'ai_agent_engagements' => :'ai_agent_engagements',
+        :'ai_summary' => :'ai_summary',
         :'call_sid' => :'call_sid',
         :'call_uuid' => :'call_uuid',
         :'caller' => :'caller',
@@ -101,7 +110,9 @@ module UltracartClient
         :'status' => :'status',
         :'timeline' => :'timeline',
         :'transfers' => :'transfers',
-        :'updated_at_dts' => :'updated_at_dts'
+        :'updated_at_dts' => :'updated_at_dts',
+        :'zoho_desk_ticket_id' => :'zoho_desk_ticket_id',
+        :'zoho_desk_ticket_url' => :'zoho_desk_ticket_url'
       }
     end
 
@@ -116,6 +127,7 @@ module UltracartClient
         :'account_sid' => :'String',
         :'agents' => :'Array<ConversationPbxCallAgent>',
         :'ai_agent_engagements' => :'Array<ConversationPbxCallAiEngagement>',
+        :'ai_summary' => :'ConversationPbxCallAiSummary',
         :'call_sid' => :'String',
         :'call_uuid' => :'String',
         :'caller' => :'ConversationPbxCallCaller',
@@ -134,7 +146,9 @@ module UltracartClient
         :'status' => :'String',
         :'timeline' => :'ConversationPbxCallTimeline',
         :'transfers' => :'Array<ConversationPbxCallTransfer>',
-        :'updated_at_dts' => :'String'
+        :'updated_at_dts' => :'String',
+        :'zoho_desk_ticket_id' => :'String',
+        :'zoho_desk_ticket_url' => :'String'
       }
     end
 
@@ -173,6 +187,10 @@ module UltracartClient
         if (value = attributes[:'ai_agent_engagements']).is_a?(Array)
           self.ai_agent_engagements = value
         end
+      end
+
+      if attributes.key?(:'ai_summary')
+        self.ai_summary = attributes[:'ai_summary']
       end
 
       if attributes.key?(:'call_sid')
@@ -258,6 +276,14 @@ module UltracartClient
       if attributes.key?(:'updated_at_dts')
         self.updated_at_dts = attributes[:'updated_at_dts']
       end
+
+      if attributes.key?(:'zoho_desk_ticket_id')
+        self.zoho_desk_ticket_id = attributes[:'zoho_desk_ticket_id']
+      end
+
+      if attributes.key?(:'zoho_desk_ticket_url')
+        self.zoho_desk_ticket_url = attributes[:'zoho_desk_ticket_url']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -281,6 +307,7 @@ module UltracartClient
           account_sid == o.account_sid &&
           agents == o.agents &&
           ai_agent_engagements == o.ai_agent_engagements &&
+          ai_summary == o.ai_summary &&
           call_sid == o.call_sid &&
           call_uuid == o.call_uuid &&
           caller == o.caller &&
@@ -299,7 +326,9 @@ module UltracartClient
           status == o.status &&
           timeline == o.timeline &&
           transfers == o.transfers &&
-          updated_at_dts == o.updated_at_dts
+          updated_at_dts == o.updated_at_dts &&
+          zoho_desk_ticket_id == o.zoho_desk_ticket_id &&
+          zoho_desk_ticket_url == o.zoho_desk_ticket_url
     end
 
     # @see the `==` method
@@ -311,7 +340,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_sid, agents, ai_agent_engagements, call_sid, call_uuid, caller, conference_sid, created_at_dts, customer_name, customer_profile_oid, disposition, email, financial, holds, merchant_id, recording_sids, recordings, routing, status, timeline, transfers, updated_at_dts].hash
+      [account_sid, agents, ai_agent_engagements, ai_summary, call_sid, call_uuid, caller, conference_sid, created_at_dts, customer_name, customer_profile_oid, disposition, email, financial, holds, merchant_id, recording_sids, recordings, routing, status, timeline, transfers, updated_at_dts, zoho_desk_ticket_id, zoho_desk_ticket_url].hash
     end
 
     # Builds the object from hash

@@ -7,6 +7,7 @@
 | **ai_agent_billed_minutes** | **Float** | Total AI agent billed minutes for this call | [optional] |
 | **ai_agent_cost** | **Float** | Total AI agent cost for this call | [optional] |
 | **ai_agent_cost_currency** | **String** | Currency for AI agent cost | [optional] |
+| **ai_summary_cost** | **Float** | AI summary generation cost (LLM call made by pbx-transcript-formatter after the call ends) | [optional] |
 | **call_currency** | **String** | Currency for call price (default USD) | [optional] |
 | **call_price** | **Float** | Twilio call cost | [optional] |
 | **call_price_estimated** | **Boolean** | True if call price is a fallback-rate estimate, false if Twilio-confirmed | [optional] |
@@ -21,6 +22,7 @@ instance = UltracartClient::ConversationPbxCallFinancial.new(
   ai_agent_billed_minutes: null,
   ai_agent_cost: null,
   ai_agent_cost_currency: null,
+  ai_summary_cost: null,
   call_currency: null,
   call_price: null,
   call_price_estimated: null,

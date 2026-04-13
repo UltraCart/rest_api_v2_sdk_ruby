@@ -14,42 +14,76 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationPbxCallFinancial
-    # Total AI agent billed minutes for this call
-    attr_accessor :ai_agent_billed_minutes
+  class ConversationPbxCallAiSummary
+    # Action items identified during the call
+    attr_accessor :action_items
 
-    # Total AI agent cost for this call
-    attr_accessor :ai_agent_cost
+    # Category of the call (e.g. support, sales, billing)
+    attr_accessor :call_category
 
-    # Currency for AI agent cost
-    attr_accessor :ai_agent_cost_currency
+    # Number of output tokens used to generate the summary
+    attr_accessor :completion_tokens
 
-    # AI summary generation cost (LLM call made by pbx-transcript-formatter after the call ends)
-    attr_accessor :ai_summary_cost
+    # Cost of generating the summary in the specified currency
+    attr_accessor :cost
 
-    # Currency for call price (default USD)
-    attr_accessor :call_currency
+    # Currency code for the summary cost (always USD)
+    attr_accessor :cost_currency
 
-    # Twilio call cost
-    attr_accessor :call_price
+    # Timestamp when the summary was generated
+    attr_accessor :generated_at_dts
 
-    # True if call price is a fallback-rate estimate, false if Twilio-confirmed
-    attr_accessor :call_price_estimated
+    # Key topics discussed during the call
+    attr_accessor :key_topics
 
-    # AWS Transcribe transcription cost
-    attr_accessor :transcription_cost
+    # AI model used to generate the summary (e.g. grok-4.1-fast)
+    attr_accessor :model
+
+    # Number of input tokens used to generate the summary
+    attr_accessor :prompt_tokens
+
+    # Overall sentiment of the call
+    attr_accessor :sentiment
+
+    # 2-3 sentence synopsis of the call
+    attr_accessor :summary
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'ai_agent_billed_minutes' => :'ai_agent_billed_minutes',
-        :'ai_agent_cost' => :'ai_agent_cost',
-        :'ai_agent_cost_currency' => :'ai_agent_cost_currency',
-        :'ai_summary_cost' => :'ai_summary_cost',
-        :'call_currency' => :'call_currency',
-        :'call_price' => :'call_price',
-        :'call_price_estimated' => :'call_price_estimated',
-        :'transcription_cost' => :'transcription_cost'
+        :'action_items' => :'action_items',
+        :'call_category' => :'call_category',
+        :'completion_tokens' => :'completion_tokens',
+        :'cost' => :'cost',
+        :'cost_currency' => :'cost_currency',
+        :'generated_at_dts' => :'generated_at_dts',
+        :'key_topics' => :'key_topics',
+        :'model' => :'model',
+        :'prompt_tokens' => :'prompt_tokens',
+        :'sentiment' => :'sentiment',
+        :'summary' => :'summary'
       }
     end
 
@@ -61,14 +95,17 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'ai_agent_billed_minutes' => :'Float',
-        :'ai_agent_cost' => :'Float',
-        :'ai_agent_cost_currency' => :'String',
-        :'ai_summary_cost' => :'Float',
-        :'call_currency' => :'String',
-        :'call_price' => :'Float',
-        :'call_price_estimated' => :'Boolean',
-        :'transcription_cost' => :'Float'
+        :'action_items' => :'Array<String>',
+        :'call_category' => :'String',
+        :'completion_tokens' => :'Integer',
+        :'cost' => :'Float',
+        :'cost_currency' => :'String',
+        :'generated_at_dts' => :'String',
+        :'key_topics' => :'Array<String>',
+        :'model' => :'String',
+        :'prompt_tokens' => :'Integer',
+        :'sentiment' => :'String',
+        :'summary' => :'String'
       }
     end
 
@@ -82,47 +119,63 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxCallFinancial` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxCallAiSummary` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxCallFinancial`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxCallAiSummary`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'ai_agent_billed_minutes')
-        self.ai_agent_billed_minutes = attributes[:'ai_agent_billed_minutes']
+      if attributes.key?(:'action_items')
+        if (value = attributes[:'action_items']).is_a?(Array)
+          self.action_items = value
+        end
       end
 
-      if attributes.key?(:'ai_agent_cost')
-        self.ai_agent_cost = attributes[:'ai_agent_cost']
+      if attributes.key?(:'call_category')
+        self.call_category = attributes[:'call_category']
       end
 
-      if attributes.key?(:'ai_agent_cost_currency')
-        self.ai_agent_cost_currency = attributes[:'ai_agent_cost_currency']
+      if attributes.key?(:'completion_tokens')
+        self.completion_tokens = attributes[:'completion_tokens']
       end
 
-      if attributes.key?(:'ai_summary_cost')
-        self.ai_summary_cost = attributes[:'ai_summary_cost']
+      if attributes.key?(:'cost')
+        self.cost = attributes[:'cost']
       end
 
-      if attributes.key?(:'call_currency')
-        self.call_currency = attributes[:'call_currency']
+      if attributes.key?(:'cost_currency')
+        self.cost_currency = attributes[:'cost_currency']
       end
 
-      if attributes.key?(:'call_price')
-        self.call_price = attributes[:'call_price']
+      if attributes.key?(:'generated_at_dts')
+        self.generated_at_dts = attributes[:'generated_at_dts']
       end
 
-      if attributes.key?(:'call_price_estimated')
-        self.call_price_estimated = attributes[:'call_price_estimated']
+      if attributes.key?(:'key_topics')
+        if (value = attributes[:'key_topics']).is_a?(Array)
+          self.key_topics = value
+        end
       end
 
-      if attributes.key?(:'transcription_cost')
-        self.transcription_cost = attributes[:'transcription_cost']
+      if attributes.key?(:'model')
+        self.model = attributes[:'model']
+      end
+
+      if attributes.key?(:'prompt_tokens')
+        self.prompt_tokens = attributes[:'prompt_tokens']
+      end
+
+      if attributes.key?(:'sentiment')
+        self.sentiment = attributes[:'sentiment']
+      end
+
+      if attributes.key?(:'summary')
+        self.summary = attributes[:'summary']
       end
     end
 
@@ -136,7 +189,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      sentiment_validator = EnumAttributeValidator.new('String', ["positive", "neutral", "negative"])
+      return false unless sentiment_validator.valid?(@sentiment)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sentiment Object to be assigned
+    def sentiment=(sentiment)
+      validator = EnumAttributeValidator.new('String', ["positive", "neutral", "negative"])
+      unless validator.valid?(sentiment)
+        fail ArgumentError, "invalid value for \"sentiment\", must be one of #{validator.allowable_values}."
+      end
+      @sentiment = sentiment
     end
 
     # Checks equality by comparing each attribute.
@@ -144,14 +209,17 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          ai_agent_billed_minutes == o.ai_agent_billed_minutes &&
-          ai_agent_cost == o.ai_agent_cost &&
-          ai_agent_cost_currency == o.ai_agent_cost_currency &&
-          ai_summary_cost == o.ai_summary_cost &&
-          call_currency == o.call_currency &&
-          call_price == o.call_price &&
-          call_price_estimated == o.call_price_estimated &&
-          transcription_cost == o.transcription_cost
+          action_items == o.action_items &&
+          call_category == o.call_category &&
+          completion_tokens == o.completion_tokens &&
+          cost == o.cost &&
+          cost_currency == o.cost_currency &&
+          generated_at_dts == o.generated_at_dts &&
+          key_topics == o.key_topics &&
+          model == o.model &&
+          prompt_tokens == o.prompt_tokens &&
+          sentiment == o.sentiment &&
+          summary == o.summary
     end
 
     # @see the `==` method
@@ -163,7 +231,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ai_agent_billed_minutes, ai_agent_cost, ai_agent_cost_currency, ai_summary_cost, call_currency, call_price, call_price_estimated, transcription_cost].hash
+      [action_items, call_category, completion_tokens, cost, cost_currency, generated_at_dts, key_topics, model, prompt_tokens, sentiment, summary].hash
     end
 
     # Builds the object from hash

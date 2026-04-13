@@ -5,6 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ai_priority** | **String** | AI Agent Priority compared to human agents | [optional] |
+| **ai_summary_enabled** | **Boolean** | If true, AI summaries are generated for answered calls in this queue | [optional] |
+| **ai_summary_instructions** | **String** | Custom instructions injected into the AI summary system prompt for this queue | [optional] |
 | **ai_timeout_seconds** | **Integer** | AI timeout seconds | [optional] |
 | **announce_queue_position** | **Boolean** | If true, the customer is told their queue position upon entering the queue | [optional] |
 | **automatic_coach_agent_uuid** | **String** | AI Agent UUID to automatically engage to provide coaching | [optional] |
@@ -40,6 +42,8 @@
 | **wait_critical_seconds** | **Integer** | Wait time in seconds before critical | [optional] |
 | **wait_warning_seconds** | **Integer** | Wait time in seconds before warning | [optional] |
 | **wrap_up_seconds** | **Integer** | Wrap up time in seconds | [optional] |
+| **zoho_desk_department_id** | **String** | Zoho Desk department ID to create tickets in | [optional] |
+| **zoho_desk_ticket_enabled** | **Boolean** | If true, a Zoho Desk ticket is automatically created for answered calls in this queue | [optional] |
 
 ## Example
 
@@ -48,6 +52,8 @@ require 'ultracart_api'
 
 instance = UltracartClient::ConversationPbxQueue.new(
   ai_priority: null,
+  ai_summary_enabled: null,
+  ai_summary_instructions: null,
   ai_timeout_seconds: null,
   announce_queue_position: null,
   automatic_coach_agent_uuid: null,
@@ -82,7 +88,9 @@ instance = UltracartClient::ConversationPbxQueue.new(
   voicemail: null,
   wait_critical_seconds: null,
   wait_warning_seconds: null,
-  wrap_up_seconds: null
+  wrap_up_seconds: null,
+  zoho_desk_department_id: null,
+  zoho_desk_ticket_enabled: null
 )
 ```
 

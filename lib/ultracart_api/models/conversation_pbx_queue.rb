@@ -18,6 +18,12 @@ module UltracartClient
     # AI Agent Priority compared to human agents
     attr_accessor :ai_priority
 
+    # If true, AI summaries are generated for answered calls in this queue
+    attr_accessor :ai_summary_enabled
+
+    # Custom instructions injected into the AI summary system prompt for this queue
+    attr_accessor :ai_summary_instructions
+
     # AI timeout seconds
     attr_accessor :ai_timeout_seconds
 
@@ -122,6 +128,12 @@ module UltracartClient
     # Wrap up time in seconds
     attr_accessor :wrap_up_seconds
 
+    # Zoho Desk department ID to create tickets in
+    attr_accessor :zoho_desk_department_id
+
+    # If true, a Zoho Desk ticket is automatically created for answered calls in this queue
+    attr_accessor :zoho_desk_ticket_enabled
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -148,6 +160,8 @@ module UltracartClient
     def self.attribute_map
       {
         :'ai_priority' => :'ai_priority',
+        :'ai_summary_enabled' => :'ai_summary_enabled',
+        :'ai_summary_instructions' => :'ai_summary_instructions',
         :'ai_timeout_seconds' => :'ai_timeout_seconds',
         :'announce_queue_position' => :'announce_queue_position',
         :'automatic_coach_agent_uuid' => :'automatic_coach_agent_uuid',
@@ -182,7 +196,9 @@ module UltracartClient
         :'voicemail' => :'voicemail',
         :'wait_critical_seconds' => :'wait_critical_seconds',
         :'wait_warning_seconds' => :'wait_warning_seconds',
-        :'wrap_up_seconds' => :'wrap_up_seconds'
+        :'wrap_up_seconds' => :'wrap_up_seconds',
+        :'zoho_desk_department_id' => :'zoho_desk_department_id',
+        :'zoho_desk_ticket_enabled' => :'zoho_desk_ticket_enabled'
       }
     end
 
@@ -195,6 +211,8 @@ module UltracartClient
     def self.openapi_types
       {
         :'ai_priority' => :'String',
+        :'ai_summary_enabled' => :'Boolean',
+        :'ai_summary_instructions' => :'String',
         :'ai_timeout_seconds' => :'Integer',
         :'announce_queue_position' => :'Boolean',
         :'automatic_coach_agent_uuid' => :'String',
@@ -229,7 +247,9 @@ module UltracartClient
         :'voicemail' => :'Boolean',
         :'wait_critical_seconds' => :'Integer',
         :'wait_warning_seconds' => :'Integer',
-        :'wrap_up_seconds' => :'Integer'
+        :'wrap_up_seconds' => :'Integer',
+        :'zoho_desk_department_id' => :'String',
+        :'zoho_desk_ticket_enabled' => :'Boolean'
       }
     end
 
@@ -256,6 +276,14 @@ module UltracartClient
 
       if attributes.key?(:'ai_priority')
         self.ai_priority = attributes[:'ai_priority']
+      end
+
+      if attributes.key?(:'ai_summary_enabled')
+        self.ai_summary_enabled = attributes[:'ai_summary_enabled']
+      end
+
+      if attributes.key?(:'ai_summary_instructions')
+        self.ai_summary_instructions = attributes[:'ai_summary_instructions']
       end
 
       if attributes.key?(:'ai_timeout_seconds')
@@ -397,12 +425,24 @@ module UltracartClient
       if attributes.key?(:'wrap_up_seconds')
         self.wrap_up_seconds = attributes[:'wrap_up_seconds']
       end
+
+      if attributes.key?(:'zoho_desk_department_id')
+        self.zoho_desk_department_id = attributes[:'zoho_desk_department_id']
+      end
+
+      if attributes.key?(:'zoho_desk_ticket_enabled')
+        self.zoho_desk_ticket_enabled = attributes[:'zoho_desk_ticket_enabled']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@ai_summary_instructions.nil? && @ai_summary_instructions.to_s.length > 100000
+        invalid_properties.push('invalid value for "ai_summary_instructions", the character length must be smaller than or equal to 100000.')
+      end
+
       if !@callback_announce_audio_uuid.nil? && @callback_announce_audio_uuid.to_s.length > 50
         invalid_properties.push('invalid value for "callback_announce_audio_uuid", the character length must be smaller than or equal to 50.')
       end
@@ -451,6 +491,10 @@ module UltracartClient
         invalid_properties.push('invalid value for "twilio_workspace_queue_sid", the character length must be smaller than or equal to 50.')
       end
 
+      if !@zoho_desk_department_id.nil? && @zoho_desk_department_id.to_s.length > 50
+        invalid_properties.push('invalid value for "zoho_desk_department_id", the character length must be smaller than or equal to 50.')
+      end
+
       invalid_properties
     end
 
@@ -459,6 +503,7 @@ module UltracartClient
     def valid?
       ai_priority_validator = EnumAttributeValidator.new('String', ["neutral", "first", "backup"])
       return false unless ai_priority_validator.valid?(@ai_priority)
+      return false if !@ai_summary_instructions.nil? && @ai_summary_instructions.to_s.length > 100000
       return false if !@callback_announce_audio_uuid.nil? && @callback_announce_audio_uuid.to_s.length > 50
       return false if !@callback_confirm_audio_uuid.nil? && @callback_confirm_audio_uuid.to_s.length > 50
       return false if !@conversation_voicemail_mailbox_uuid.nil? && @conversation_voicemail_mailbox_uuid.to_s.length > 50
@@ -475,6 +520,7 @@ module UltracartClient
       return false if !@say_voice.nil? && @say_voice.to_s.length > 50
       return false if !@twilio_taskrouter_workflow_sid.nil? && @twilio_taskrouter_workflow_sid.to_s.length > 100
       return false if !@twilio_workspace_queue_sid.nil? && @twilio_workspace_queue_sid.to_s.length > 50
+      return false if !@zoho_desk_department_id.nil? && @zoho_desk_department_id.to_s.length > 50
       true
     end
 
@@ -486,6 +532,16 @@ module UltracartClient
         fail ArgumentError, "invalid value for \"ai_priority\", must be one of #{validator.allowable_values}."
       end
       @ai_priority = ai_priority
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] ai_summary_instructions Value to be assigned
+    def ai_summary_instructions=(ai_summary_instructions)
+      if !ai_summary_instructions.nil? && ai_summary_instructions.to_s.length > 100000
+        fail ArgumentError, 'invalid value for "ai_summary_instructions", the character length must be smaller than or equal to 100000.'
+      end
+
+      @ai_summary_instructions = ai_summary_instructions
     end
 
     # Custom attribute writer method with validation
@@ -608,12 +664,24 @@ module UltracartClient
       @twilio_workspace_queue_sid = twilio_workspace_queue_sid
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] zoho_desk_department_id Value to be assigned
+    def zoho_desk_department_id=(zoho_desk_department_id)
+      if !zoho_desk_department_id.nil? && zoho_desk_department_id.to_s.length > 50
+        fail ArgumentError, 'invalid value for "zoho_desk_department_id", the character length must be smaller than or equal to 50.'
+      end
+
+      @zoho_desk_department_id = zoho_desk_department_id
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
           ai_priority == o.ai_priority &&
+          ai_summary_enabled == o.ai_summary_enabled &&
+          ai_summary_instructions == o.ai_summary_instructions &&
           ai_timeout_seconds == o.ai_timeout_seconds &&
           announce_queue_position == o.announce_queue_position &&
           automatic_coach_agent_uuid == o.automatic_coach_agent_uuid &&
@@ -648,7 +716,9 @@ module UltracartClient
           voicemail == o.voicemail &&
           wait_critical_seconds == o.wait_critical_seconds &&
           wait_warning_seconds == o.wait_warning_seconds &&
-          wrap_up_seconds == o.wrap_up_seconds
+          wrap_up_seconds == o.wrap_up_seconds &&
+          zoho_desk_department_id == o.zoho_desk_department_id &&
+          zoho_desk_ticket_enabled == o.zoho_desk_ticket_enabled
     end
 
     # @see the `==` method
@@ -660,7 +730,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ai_priority, ai_timeout_seconds, announce_queue_position, automatic_coach_agent_uuid, callback_announce_audio_uuid, callback_announce_say, callback_confirm_audio_uuid, callback_confirm_say, callback_enabled, callback_hours_only, callback_max_attempts, callback_max_offers, callback_max_pending, callback_offer_after_seconds, callback_offer_interval_seconds, callback_retry_delay_seconds, conversation_pbx_queue_uuid, conversation_voicemail_mailbox_uuid, hold_conversation_pbx_audio_uuid, max_hold_seconds, members, merchant_id, name, no_agent_available_play_audio_uuid, no_agent_available_say, no_agent_available_say_voice, play_audio_uuid, record_call, say, say_voice, twilio_taskrouter_workflow_sid, twilio_workspace_queue_sid, voicemail, wait_critical_seconds, wait_warning_seconds, wrap_up_seconds].hash
+      [ai_priority, ai_summary_enabled, ai_summary_instructions, ai_timeout_seconds, announce_queue_position, automatic_coach_agent_uuid, callback_announce_audio_uuid, callback_announce_say, callback_confirm_audio_uuid, callback_confirm_say, callback_enabled, callback_hours_only, callback_max_attempts, callback_max_offers, callback_max_pending, callback_offer_after_seconds, callback_offer_interval_seconds, callback_retry_delay_seconds, conversation_pbx_queue_uuid, conversation_voicemail_mailbox_uuid, hold_conversation_pbx_audio_uuid, max_hold_seconds, members, merchant_id, name, no_agent_available_play_audio_uuid, no_agent_available_say, no_agent_available_say_voice, play_audio_uuid, record_call, say, say_voice, twilio_taskrouter_workflow_sid, twilio_workspace_queue_sid, voicemail, wait_critical_seconds, wait_warning_seconds, wrap_up_seconds, zoho_desk_department_id, zoho_desk_ticket_enabled].hash
     end
 
     # Builds the object from hash

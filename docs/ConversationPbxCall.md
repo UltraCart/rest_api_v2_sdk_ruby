@@ -7,6 +7,7 @@
 | **account_sid** | **String** | Twilio account SID | [optional] |
 | **agents** | [**Array&lt;ConversationPbxCallAgent&gt;**](ConversationPbxCallAgent.md) | List of agents who participated in this call | [optional] |
 | **ai_agent_engagements** | [**Array&lt;ConversationPbxCallAiEngagement&gt;**](ConversationPbxCallAiEngagement.md) | List of AI agent engagements during the call | [optional] |
+| **ai_summary** | [**ConversationPbxCallAiSummary**](ConversationPbxCallAiSummary.md) |  | [optional] |
 | **call_sid** | **String** | Twilio call SID for the primary (customer) call leg | [optional] |
 | **call_uuid** | **String** | Unique identifier for this call record | [optional] |
 | **caller** | [**ConversationPbxCallCaller**](ConversationPbxCallCaller.md) |  | [optional] |
@@ -26,6 +27,8 @@
 | **timeline** | [**ConversationPbxCallTimeline**](ConversationPbxCallTimeline.md) |  | [optional] |
 | **transfers** | [**Array&lt;ConversationPbxCallTransfer&gt;**](ConversationPbxCallTransfer.md) | List of transfer events during the call | [optional] |
 | **updated_at_dts** | **String** | Timestamp when the call record was last updated | [optional] |
+| **zoho_desk_ticket_id** | **String** | Zoho Desk ticket ID if a ticket was created for this call | [optional] |
+| **zoho_desk_ticket_url** | **String** | URL to the Zoho Desk ticket if a ticket was created for this call | [optional] |
 
 ## Example
 
@@ -36,6 +39,7 @@ instance = UltracartClient::ConversationPbxCall.new(
   account_sid: null,
   agents: null,
   ai_agent_engagements: null,
+  ai_summary: null,
   call_sid: null,
   call_uuid: null,
   caller: null,
@@ -54,7 +58,9 @@ instance = UltracartClient::ConversationPbxCall.new(
   status: null,
   timeline: null,
   transfers: null,
-  updated_at_dts: null
+  updated_at_dts: null,
+  zoho_desk_ticket_id: null,
+  zoho_desk_ticket_url: null
 )
 ```
 

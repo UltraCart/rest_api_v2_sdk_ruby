@@ -212,6 +212,7 @@ docs/ConversationPbxCall.md
 docs/ConversationPbxCallAgent.md
 docs/ConversationPbxCallAiCost.md
 docs/ConversationPbxCallAiEngagement.md
+docs/ConversationPbxCallAiSummary.md
 docs/ConversationPbxCallAiToolCall.md
 docs/ConversationPbxCallAiWhisper.md
 docs/ConversationPbxCallCaller.md
@@ -1203,6 +1204,7 @@ lib/ultracart_api/models/conversation_pbx_call.rb
 lib/ultracart_api/models/conversation_pbx_call_agent.rb
 lib/ultracart_api/models/conversation_pbx_call_ai_cost.rb
 lib/ultracart_api/models/conversation_pbx_call_ai_engagement.rb
+lib/ultracart_api/models/conversation_pbx_call_ai_summary.rb
 lib/ultracart_api/models/conversation_pbx_call_ai_tool_call.rb
 lib/ultracart_api/models/conversation_pbx_call_ai_whisper.rb
 lib/ultracart_api/models/conversation_pbx_call_caller.rb
