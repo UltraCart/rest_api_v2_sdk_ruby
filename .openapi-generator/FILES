@@ -35,6 +35,7 @@ docs/AutoOrderAddonItemsUpdateRequest.md
 docs/AutoOrderApi.md
 docs/AutoOrderConsolidate.md
 docs/AutoOrderItem.md
+docs/AutoOrderItemCancelRequest.md
 docs/AutoOrderItemFutureSchedule.md
 docs/AutoOrderItemOption.md
 docs/AutoOrderItemSimpleSchedule.md
@@ -1030,6 +1031,7 @@ lib/ultracart_api/models/auto_order_addon_item_option.rb
 lib/ultracart_api/models/auto_order_addon_items_update_request.rb
 lib/ultracart_api/models/auto_order_consolidate.rb
 lib/ultracart_api/models/auto_order_item.rb
+lib/ultracart_api/models/auto_order_item_cancel_request.rb
 lib/ultracart_api/models/auto_order_item_future_schedule.rb
 lib/ultracart_api/models/auto_order_item_option.rb
 lib/ultracart_api/models/auto_order_item_simple_schedule.rb

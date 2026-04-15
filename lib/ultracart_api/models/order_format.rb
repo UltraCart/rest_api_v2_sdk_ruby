@@ -63,6 +63,9 @@ module UltracartClient
     # True to translate the order into the native language of the customer
     attr_accessor :translate
 
+    # True to render phone numbers as <phone-number-format> web components in the HTML output. Only honored by the div format. Default false preserves legacy scalar rendering for receipts and unauthenticated consumers.
+    attr_accessor :use_phone_number_web_component
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -103,7 +106,8 @@ module UltracartClient
         :'show_merchant_notes' => :'show_merchant_notes',
         :'show_non_sensitive_payment_info' => :'show_non_sensitive_payment_info',
         :'show_payment_info' => :'show_payment_info',
-        :'translate' => :'translate'
+        :'translate' => :'translate',
+        :'use_phone_number_web_component' => :'use_phone_number_web_component'
       }
     end
 
@@ -130,7 +134,8 @@ module UltracartClient
         :'show_merchant_notes' => :'Boolean',
         :'show_non_sensitive_payment_info' => :'Boolean',
         :'show_payment_info' => :'Boolean',
-        :'translate' => :'Boolean'
+        :'translate' => :'Boolean',
+        :'use_phone_number_web_component' => :'Boolean'
       }
     end
 
@@ -218,6 +223,10 @@ module UltracartClient
       if attributes.key?(:'translate')
         self.translate = attributes[:'translate']
       end
+
+      if attributes.key?(:'use_phone_number_web_component')
+        self.use_phone_number_web_component = attributes[:'use_phone_number_web_component']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -265,7 +274,8 @@ module UltracartClient
           show_merchant_notes == o.show_merchant_notes &&
           show_non_sensitive_payment_info == o.show_non_sensitive_payment_info &&
           show_payment_info == o.show_payment_info &&
-          translate == o.translate
+          translate == o.translate &&
+          use_phone_number_web_component == o.use_phone_number_web_component
     end
 
     # @see the `==` method
@@ -277,7 +287,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [context, dont_link_email_to_search, email_as_link, filter_distribution_center_oid, filter_to_items_in_container_oid, format, hide_bill_to_address, hide_price_information, link_file_attachments, show_contact_info, show_in_merchant_currency, show_internal_information, show_merchant_notes, show_non_sensitive_payment_info, show_payment_info, translate].hash
+      [context, dont_link_email_to_search, email_as_link, filter_distribution_center_oid, filter_to_items_in_container_oid, format, hide_bill_to_address, hide_price_information, link_file_attachments, show_contact_info, show_in_merchant_currency, show_internal_information, show_merchant_notes, show_non_sensitive_payment_info, show_payment_info, translate, use_phone_number_web_component].hash
     end
 
     # Builds the object from hash

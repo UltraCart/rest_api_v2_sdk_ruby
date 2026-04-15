@@ -32,6 +32,86 @@ module UltracartClient
       UltracartClient::AutoOrderApi.new(api_client)
     end
 
+    # Cancel a single item on an auto order
+    # Cancels a single item on an auto order identified by the original order id and the item's original_item_id.  The request body may specify mode=_end (soft cancel by setting no_order_after_dts to the current time, preserving the row for reporting; this is the default when the body is omitted) or mode=remove (hard delete).  Returns the updated auto order based upon expansion. 
+    # @param reference_order_id [String] The reference order id (original_order_id) of the auto order.
+    # @param original_item_id [String] The original_item_id (SKU) of the item to cancel.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [AutoOrderItemCancelRequest] :auto_order_item_cancel_request Cancel request.  Body is optional; omit for default mode&#x3D;_end.
+    # @return [AutoOrderResponse]
+    def cancel_auto_order_item_by_reference_order_id(reference_order_id, original_item_id, opts = {})
+      data, _status_code, _headers = cancel_auto_order_item_by_reference_order_id_with_http_info(reference_order_id, original_item_id, opts)
+      data
+    end
+
+    # Cancel a single item on an auto order
+    # Cancels a single item on an auto order identified by the original order id and the item&#39;s original_item_id.  The request body may specify mode&#x3D;_end (soft cancel by setting no_order_after_dts to the current time, preserving the row for reporting; this is the default when the body is omitted) or mode&#x3D;remove (hard delete).  Returns the updated auto order based upon expansion. 
+    # @param reference_order_id [String] The reference order id (original_order_id) of the auto order.
+    # @param original_item_id [String] The original_item_id (SKU) of the item to cancel.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @option opts [AutoOrderItemCancelRequest] :auto_order_item_cancel_request Cancel request.  Body is optional; omit for default mode&#x3D;_end.
+    # @return [Array<(AutoOrderResponse, Integer, Hash)>] AutoOrderResponse data, response status code and response headers
+    def cancel_auto_order_item_by_reference_order_id_with_http_info(reference_order_id, original_item_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AutoOrderApi.cancel_auto_order_item_by_reference_order_id ...'
+      end
+      # verify the required parameter 'reference_order_id' is set
+      if @api_client.config.client_side_validation && reference_order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'reference_order_id' when calling AutoOrderApi.cancel_auto_order_item_by_reference_order_id"
+      end
+      # verify the required parameter 'original_item_id' is set
+      if @api_client.config.client_side_validation && original_item_id.nil?
+        fail ArgumentError, "Missing the required parameter 'original_item_id' when calling AutoOrderApi.cancel_auto_order_item_by_reference_order_id"
+      end
+      # resource path
+      local_var_path = '/auto_order/auto_orders/reference_order_id/{reference_order_id}/items/original/{original_item_id}/cancel'.sub('{' + 'reference_order_id' + '}', CGI.escape(reference_order_id.to_s)).sub('{' + 'original_item_id' + '}', CGI.escape(original_item_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'auto_order_item_cancel_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AutoOrderResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AutoOrderApi.cancel_auto_order_item_by_reference_order_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AutoOrderApi#cancel_auto_order_item_by_reference_order_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Consolidates multiple auto orders
     # Consolidates mutliple auto orders on the UltraCart account. 
     # @param auto_order_oid [Integer] The auto order oid to consolidate into.
