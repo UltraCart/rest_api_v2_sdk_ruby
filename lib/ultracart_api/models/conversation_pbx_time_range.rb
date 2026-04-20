@@ -18,6 +18,9 @@ module UltracartClient
     # Configurations for all ranges in this time range
     attr_accessor :configs
 
+    # Optional child merchant ID this resource is assigned to. Null = shared across the linked merchant group.
+    attr_accessor :context_merchant_id
+
     # Conversation Pbx Time Range UUID
     attr_accessor :conversation_pbx_time_range_uuid
 
@@ -34,6 +37,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'configs' => :'configs',
+        :'context_merchant_id' => :'context_merchant_id',
         :'conversation_pbx_time_range_uuid' => :'conversation_pbx_time_range_uuid',
         :'merchant_id' => :'merchant_id',
         :'time_range_name' => :'time_range_name',
@@ -50,6 +54,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'configs' => :'Array<ConversationPbxTimeRangeConfig>',
+        :'context_merchant_id' => :'String',
         :'conversation_pbx_time_range_uuid' => :'String',
         :'merchant_id' => :'String',
         :'time_range_name' => :'String',
@@ -84,6 +89,10 @@ module UltracartClient
         end
       end
 
+      if attributes.key?(:'context_merchant_id')
+        self.context_merchant_id = attributes[:'context_merchant_id']
+      end
+
       if attributes.key?(:'conversation_pbx_time_range_uuid')
         self.conversation_pbx_time_range_uuid = attributes[:'conversation_pbx_time_range_uuid']
       end
@@ -105,6 +114,10 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@context_merchant_id.nil? && @context_merchant_id.to_s.length > 20
+        invalid_properties.push('invalid value for "context_merchant_id", the character length must be smaller than or equal to 20.')
+      end
+
       if !@conversation_pbx_time_range_uuid.nil? && @conversation_pbx_time_range_uuid.to_s.length > 50
         invalid_properties.push('invalid value for "conversation_pbx_time_range_uuid", the character length must be smaller than or equal to 50.')
       end
@@ -127,11 +140,22 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@context_merchant_id.nil? && @context_merchant_id.to_s.length > 20
       return false if !@conversation_pbx_time_range_uuid.nil? && @conversation_pbx_time_range_uuid.to_s.length > 50
       return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
       return false if !@time_range_name.nil? && @time_range_name.to_s.length > 50
       return false if !@timezone.nil? && @timezone.to_s.length > 100
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] context_merchant_id Value to be assigned
+    def context_merchant_id=(context_merchant_id)
+      if !context_merchant_id.nil? && context_merchant_id.to_s.length > 20
+        fail ArgumentError, 'invalid value for "context_merchant_id", the character length must be smaller than or equal to 20.'
+      end
+
+      @context_merchant_id = context_merchant_id
     end
 
     # Custom attribute writer method with validation
@@ -180,6 +204,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           configs == o.configs &&
+          context_merchant_id == o.context_merchant_id &&
           conversation_pbx_time_range_uuid == o.conversation_pbx_time_range_uuid &&
           merchant_id == o.merchant_id &&
           time_range_name == o.time_range_name &&
@@ -195,7 +220,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [configs, conversation_pbx_time_range_uuid, merchant_id, time_range_name, timezone].hash
+      [configs, context_merchant_id, conversation_pbx_time_range_uuid, merchant_id, time_range_name, timezone].hash
     end
 
     # Builds the object from hash

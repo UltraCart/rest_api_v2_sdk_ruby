@@ -13,6 +13,8 @@
 | **group_ids** | **Array&lt;Integer&gt;** | UltraCart Groups this user belongs to | [optional] |
 | **jwt** | **String** |  | [optional] |
 | **merchant_id** | **String** |  | [optional] |
+| **merchants** | [**Array&lt;ConversationAgentAuthMerchant&gt;**](ConversationAgentAuthMerchant.md) | List of merchants in this linked merchant group | [optional] |
+| **parent_merchant_id** | **String** | The parent merchant ID for PBX. For non-linked merchants, equals merchant_id. | [optional] |
 | **pbx_admin** | **Boolean** |  | [optional] |
 | **pbx_jwt** | **String** |  | [optional] |
 | **pbx_supervisor** | **Boolean** |  | [optional] |
@@ -40,6 +42,8 @@ instance = UltracartClient::ConversationAgentAuth.new(
   group_ids: null,
   jwt: null,
   merchant_id: null,
+  merchants: null,
+  parent_merchant_id: null,
   pbx_admin: null,
   pbx_jwt: null,
   pbx_supervisor: null,

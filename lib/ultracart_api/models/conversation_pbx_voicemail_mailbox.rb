@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class ConversationPbxVoicemailMailbox
+    # Optional child merchant ID this resource is assigned to. Null = shared across the linked merchant group.
+    attr_accessor :context_merchant_id
+
     # Conversation Pbx Voicemail Mailbox UUID
     attr_accessor :conversation_pbx_voicemail_mailbox_uuid
 
@@ -82,6 +85,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'context_merchant_id' => :'context_merchant_id',
         :'conversation_pbx_voicemail_mailbox_uuid' => :'conversation_pbx_voicemail_mailbox_uuid',
         :'merchant_id' => :'merchant_id',
         :'send_notices_to_channel' => :'send_notices_to_channel',
@@ -107,6 +111,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'context_merchant_id' => :'String',
         :'conversation_pbx_voicemail_mailbox_uuid' => :'String',
         :'merchant_id' => :'String',
         :'send_notices_to_channel' => :'String',
@@ -144,6 +149,10 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'context_merchant_id')
+        self.context_merchant_id = attributes[:'context_merchant_id']
+      end
 
       if attributes.key?(:'conversation_pbx_voicemail_mailbox_uuid')
         self.conversation_pbx_voicemail_mailbox_uuid = attributes[:'conversation_pbx_voicemail_mailbox_uuid']
@@ -206,6 +215,10 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@context_merchant_id.nil? && @context_merchant_id.to_s.length > 20
+        invalid_properties.push('invalid value for "context_merchant_id", the character length must be smaller than or equal to 20.')
+      end
+
       if !@conversation_pbx_voicemail_mailbox_uuid.nil? && @conversation_pbx_voicemail_mailbox_uuid.to_s.length > 50
         invalid_properties.push('invalid value for "conversation_pbx_voicemail_mailbox_uuid", the character length must be smaller than or equal to 50.')
       end
@@ -256,6 +269,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@context_merchant_id.nil? && @context_merchant_id.to_s.length > 20
       return false if !@conversation_pbx_voicemail_mailbox_uuid.nil? && @conversation_pbx_voicemail_mailbox_uuid.to_s.length > 50
       return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
       send_notices_to_channel_validator = EnumAttributeValidator.new('String', ["none", "email", "zoho_desk_ticket", "ultracart_task"])
@@ -276,6 +290,16 @@ module UltracartClient
       return false unless voicemail_prompt_say_voice_validator.valid?(@voicemail_prompt_say_voice)
       return false if !@voicemail_prompt_say_voice.nil? && @voicemail_prompt_say_voice.to_s.length > 50
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] context_merchant_id Value to be assigned
+    def context_merchant_id=(context_merchant_id)
+      if !context_merchant_id.nil? && context_merchant_id.to_s.length > 20
+        fail ArgumentError, 'invalid value for "context_merchant_id", the character length must be smaller than or equal to 20.'
+      end
+
+      @context_merchant_id = context_merchant_id
     end
 
     # Custom attribute writer method with validation
@@ -393,6 +417,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          context_merchant_id == o.context_merchant_id &&
           conversation_pbx_voicemail_mailbox_uuid == o.conversation_pbx_voicemail_mailbox_uuid &&
           merchant_id == o.merchant_id &&
           send_notices_to_channel == o.send_notices_to_channel &&
@@ -418,7 +443,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [conversation_pbx_voicemail_mailbox_uuid, merchant_id, send_notices_to_channel, send_notices_to_email, send_notices_to_zoho_desk_department_id, user_id, voicemail_followup_play_audio_uuid, voicemail_followup_say, voicemail_followup_say_voice, voicemail_mailbox_id, voicemail_mailbox_type, voicemail_prompt_play_audio_uuid, voicemail_prompt_say, voicemail_prompt_say_voice].hash
+      [context_merchant_id, conversation_pbx_voicemail_mailbox_uuid, merchant_id, send_notices_to_channel, send_notices_to_email, send_notices_to_zoho_desk_department_id, user_id, voicemail_followup_play_audio_uuid, voicemail_followup_say, voicemail_followup_say_voice, voicemail_mailbox_id, voicemail_mailbox_type, voicemail_prompt_play_audio_uuid, voicemail_prompt_say, voicemail_prompt_say_voice].hash
     end
 
     # Builds the object from hash

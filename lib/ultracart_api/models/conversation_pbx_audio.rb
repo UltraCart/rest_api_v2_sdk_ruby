@@ -18,6 +18,9 @@ module UltracartClient
     # Audio S3 Listing Key
     attr_accessor :audio_s3_listing_key
 
+    # Optional child merchant ID this resource is assigned to. Null = shared across the linked merchant group.
+    attr_accessor :context_merchant_id
+
     # Conversation Pbx Audio UUID
     attr_accessor :conversation_pbx_audio_uuid
 
@@ -49,6 +52,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'audio_s3_listing_key' => :'audio_s3_listing_key',
+        :'context_merchant_id' => :'context_merchant_id',
         :'conversation_pbx_audio_uuid' => :'conversation_pbx_audio_uuid',
         :'default_hold_music' => :'default_hold_music',
         :'description' => :'description',
@@ -70,6 +74,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'audio_s3_listing_key' => :'String',
+        :'context_merchant_id' => :'String',
         :'conversation_pbx_audio_uuid' => :'String',
         :'default_hold_music' => :'Boolean',
         :'description' => :'String',
@@ -105,6 +110,10 @@ module UltracartClient
 
       if attributes.key?(:'audio_s3_listing_key')
         self.audio_s3_listing_key = attributes[:'audio_s3_listing_key']
+      end
+
+      if attributes.key?(:'context_merchant_id')
+        self.context_merchant_id = attributes[:'context_merchant_id']
       end
 
       if attributes.key?(:'conversation_pbx_audio_uuid')
@@ -152,6 +161,10 @@ module UltracartClient
         invalid_properties.push('invalid value for "audio_s3_listing_key", the character length must be smaller than or equal to 250.')
       end
 
+      if !@context_merchant_id.nil? && @context_merchant_id.to_s.length > 20
+        invalid_properties.push('invalid value for "context_merchant_id", the character length must be smaller than or equal to 20.')
+      end
+
       if !@conversation_pbx_audio_uuid.nil? && @conversation_pbx_audio_uuid.to_s.length > 50
         invalid_properties.push('invalid value for "conversation_pbx_audio_uuid", the character length must be smaller than or equal to 50.')
       end
@@ -179,6 +192,7 @@ module UltracartClient
     # @return true if the model is valid
     def valid?
       return false if !@audio_s3_listing_key.nil? && @audio_s3_listing_key.to_s.length > 250
+      return false if !@context_merchant_id.nil? && @context_merchant_id.to_s.length > 20
       return false if !@conversation_pbx_audio_uuid.nil? && @conversation_pbx_audio_uuid.to_s.length > 50
       return false if !@description.nil? && @description.to_s.length > 100
       return false if !@filename.nil? && @filename.to_s.length > 100
@@ -195,6 +209,16 @@ module UltracartClient
       end
 
       @audio_s3_listing_key = audio_s3_listing_key
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] context_merchant_id Value to be assigned
+    def context_merchant_id=(context_merchant_id)
+      if !context_merchant_id.nil? && context_merchant_id.to_s.length > 20
+        fail ArgumentError, 'invalid value for "context_merchant_id", the character length must be smaller than or equal to 20.'
+      end
+
+      @context_merchant_id = context_merchant_id
     end
 
     # Custom attribute writer method with validation
@@ -253,6 +277,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           audio_s3_listing_key == o.audio_s3_listing_key &&
+          context_merchant_id == o.context_merchant_id &&
           conversation_pbx_audio_uuid == o.conversation_pbx_audio_uuid &&
           default_hold_music == o.default_hold_music &&
           description == o.description &&
@@ -273,7 +298,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [audio_s3_listing_key, conversation_pbx_audio_uuid, default_hold_music, description, filename, merchant_id, mime_type, url, user_id, version].hash
+      [audio_s3_listing_key, context_merchant_id, conversation_pbx_audio_uuid, default_hold_music, description, filename, merchant_id, mime_type, url, user_id, version].hash
     end
 
     # Builds the object from hash

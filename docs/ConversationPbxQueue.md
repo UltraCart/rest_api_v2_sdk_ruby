@@ -22,6 +22,7 @@
 | **callback_offer_after_seconds** | **Integer** | Seconds a caller must wait in queue before the callback option is offered | [optional] |
 | **callback_offer_interval_seconds** | **Integer** | Seconds between repeat callback offers to the same caller | [optional] |
 | **callback_retry_delay_seconds** | **Integer** | Delay in seconds between callback retry attempts | [optional] |
+| **context_merchant_id** | **String** | Optional child merchant ID this resource is assigned to. Null &#x3D; shared across the linked merchant group. | [optional] |
 | **conversation_pbx_queue_uuid** | **String** | Conversation Pbx Queue unique identifier | [optional] |
 | **conversation_voicemail_mailbox_uuid** | **String** | The voicemail mailbox associated with this queue | [optional] |
 | **hold_conversation_pbx_audio_uuid** | **String** | The audio to play while holding in a queue | [optional] |
@@ -69,6 +70,7 @@ instance = UltracartClient::ConversationPbxQueue.new(
   callback_offer_after_seconds: null,
   callback_offer_interval_seconds: null,
   callback_retry_delay_seconds: null,
+  context_merchant_id: null,
   conversation_pbx_queue_uuid: null,
   conversation_voicemail_mailbox_uuid: null,
   hold_conversation_pbx_audio_uuid: null,

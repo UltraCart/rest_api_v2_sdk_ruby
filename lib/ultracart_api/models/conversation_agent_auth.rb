@@ -35,6 +35,12 @@ module UltracartClient
 
     attr_accessor :merchant_id
 
+    # List of merchants in this linked merchant group
+    attr_accessor :merchants
+
+    # The parent merchant ID for PBX. For non-linked merchants, equals merchant_id.
+    attr_accessor :parent_merchant_id
+
     attr_accessor :pbx_admin
 
     attr_accessor :pbx_jwt
@@ -70,6 +76,8 @@ module UltracartClient
         :'group_ids' => :'group_ids',
         :'jwt' => :'jwt',
         :'merchant_id' => :'merchant_id',
+        :'merchants' => :'merchants',
+        :'parent_merchant_id' => :'parent_merchant_id',
         :'pbx_admin' => :'pbx_admin',
         :'pbx_jwt' => :'pbx_jwt',
         :'pbx_supervisor' => :'pbx_supervisor',
@@ -101,6 +109,8 @@ module UltracartClient
         :'group_ids' => :'Array<Integer>',
         :'jwt' => :'String',
         :'merchant_id' => :'String',
+        :'merchants' => :'Array<ConversationAgentAuthMerchant>',
+        :'parent_merchant_id' => :'String',
         :'pbx_admin' => :'Boolean',
         :'pbx_jwt' => :'String',
         :'pbx_supervisor' => :'Boolean',
@@ -172,6 +182,16 @@ module UltracartClient
 
       if attributes.key?(:'merchant_id')
         self.merchant_id = attributes[:'merchant_id']
+      end
+
+      if attributes.key?(:'merchants')
+        if (value = attributes[:'merchants']).is_a?(Array)
+          self.merchants = value
+        end
+      end
+
+      if attributes.key?(:'parent_merchant_id')
+        self.parent_merchant_id = attributes[:'parent_merchant_id']
       end
 
       if attributes.key?(:'pbx_admin')
@@ -248,6 +268,8 @@ module UltracartClient
           group_ids == o.group_ids &&
           jwt == o.jwt &&
           merchant_id == o.merchant_id &&
+          merchants == o.merchants &&
+          parent_merchant_id == o.parent_merchant_id &&
           pbx_admin == o.pbx_admin &&
           pbx_jwt == o.pbx_jwt &&
           pbx_supervisor == o.pbx_supervisor &&
@@ -270,7 +292,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [chat_admin, chat_user, conversation_participant_arn, conversation_participant_name, customer_profile, default_phone_number, group_ids, jwt, merchant_id, pbx_admin, pbx_jwt, pbx_supervisor, pbx_user, pbx_voice_identity, pbx_voice_token, pbx_worker_token, pbx_worker_token_v2, twilio_accounts, user_id, websocket_url].hash
+      [chat_admin, chat_user, conversation_participant_arn, conversation_participant_name, customer_profile, default_phone_number, group_ids, jwt, merchant_id, merchants, parent_merchant_id, pbx_admin, pbx_jwt, pbx_supervisor, pbx_user, pbx_voice_identity, pbx_voice_token, pbx_worker_token, pbx_worker_token_v2, twilio_accounts, user_id, websocket_url].hash
     end
 
     # Builds the object from hash

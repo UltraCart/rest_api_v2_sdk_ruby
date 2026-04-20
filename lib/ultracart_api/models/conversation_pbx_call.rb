@@ -37,6 +37,9 @@ module UltracartClient
     # Twilio conference SID if this call used conferencing
     attr_accessor :conference_sid
 
+    # Optional child merchant ID this call is attributed to. Null = no child attribution (parent-level call).
+    attr_accessor :context_merchant_id
+
     # Timestamp when the call record was created
     attr_accessor :created_at_dts
 
@@ -96,6 +99,7 @@ module UltracartClient
         :'call_uuid' => :'call_uuid',
         :'caller' => :'caller',
         :'conference_sid' => :'conference_sid',
+        :'context_merchant_id' => :'context_merchant_id',
         :'created_at_dts' => :'created_at_dts',
         :'customer_name' => :'customer_name',
         :'customer_profile_oid' => :'customer_profile_oid',
@@ -132,6 +136,7 @@ module UltracartClient
         :'call_uuid' => :'String',
         :'caller' => :'ConversationPbxCallCaller',
         :'conference_sid' => :'String',
+        :'context_merchant_id' => :'String',
         :'created_at_dts' => :'String',
         :'customer_name' => :'String',
         :'customer_profile_oid' => :'String',
@@ -207,6 +212,10 @@ module UltracartClient
 
       if attributes.key?(:'conference_sid')
         self.conference_sid = attributes[:'conference_sid']
+      end
+
+      if attributes.key?(:'context_merchant_id')
+        self.context_merchant_id = attributes[:'context_merchant_id']
       end
 
       if attributes.key?(:'created_at_dts')
@@ -312,6 +321,7 @@ module UltracartClient
           call_uuid == o.call_uuid &&
           caller == o.caller &&
           conference_sid == o.conference_sid &&
+          context_merchant_id == o.context_merchant_id &&
           created_at_dts == o.created_at_dts &&
           customer_name == o.customer_name &&
           customer_profile_oid == o.customer_profile_oid &&
@@ -340,7 +350,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_sid, agents, ai_agent_engagements, ai_summary, call_sid, call_uuid, caller, conference_sid, created_at_dts, customer_name, customer_profile_oid, disposition, email, financial, holds, merchant_id, recording_sids, recordings, routing, status, timeline, transfers, updated_at_dts, zoho_desk_ticket_id, zoho_desk_ticket_url].hash
+      [account_sid, agents, ai_agent_engagements, ai_summary, call_sid, call_uuid, caller, conference_sid, context_merchant_id, created_at_dts, customer_name, customer_profile_oid, disposition, email, financial, holds, merchant_id, recording_sids, recordings, routing, status, timeline, transfers, updated_at_dts, zoho_desk_ticket_id, zoho_desk_ticket_url].hash
     end
 
     # Builds the object from hash

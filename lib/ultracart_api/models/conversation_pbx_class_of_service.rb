@@ -21,6 +21,9 @@ module UltracartClient
     # Block calls to 900, 976, premium-rate, and shortcode destinations
     attr_accessor :block_premium_numbers
 
+    # Optional child merchant ID this resource is assigned to. Null = shared across the linked merchant group.
+    attr_accessor :context_merchant_id
+
     # Class of Service unique identifier
     attr_accessor :conversation_pbx_class_of_service_uuid
 
@@ -47,6 +50,7 @@ module UltracartClient
       {
         :'allowed_countries' => :'allowed_countries',
         :'block_premium_numbers' => :'block_premium_numbers',
+        :'context_merchant_id' => :'context_merchant_id',
         :'conversation_pbx_class_of_service_uuid' => :'conversation_pbx_class_of_service_uuid',
         :'default_flag' => :'default_flag',
         :'description' => :'description',
@@ -67,6 +71,7 @@ module UltracartClient
       {
         :'allowed_countries' => :'Array<String>',
         :'block_premium_numbers' => :'Boolean',
+        :'context_merchant_id' => :'String',
         :'conversation_pbx_class_of_service_uuid' => :'String',
         :'default_flag' => :'Boolean',
         :'description' => :'String',
@@ -108,6 +113,10 @@ module UltracartClient
         self.block_premium_numbers = attributes[:'block_premium_numbers']
       end
 
+      if attributes.key?(:'context_merchant_id')
+        self.context_merchant_id = attributes[:'context_merchant_id']
+      end
+
       if attributes.key?(:'conversation_pbx_class_of_service_uuid')
         self.conversation_pbx_class_of_service_uuid = attributes[:'conversation_pbx_class_of_service_uuid']
       end
@@ -141,6 +150,10 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@context_merchant_id.nil? && @context_merchant_id.to_s.length > 20
+        invalid_properties.push('invalid value for "context_merchant_id", the character length must be smaller than or equal to 20.')
+      end
+
       if !@description.nil? && @description.to_s.length > 500
         invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 500.')
       end
@@ -159,10 +172,21 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@context_merchant_id.nil? && @context_merchant_id.to_s.length > 20
       return false if !@description.nil? && @description.to_s.length > 500
       return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
       return false if !@name.nil? && @name.to_s.length > 100
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] context_merchant_id Value to be assigned
+    def context_merchant_id=(context_merchant_id)
+      if !context_merchant_id.nil? && context_merchant_id.to_s.length > 20
+        fail ArgumentError, 'invalid value for "context_merchant_id", the character length must be smaller than or equal to 20.'
+      end
+
+      @context_merchant_id = context_merchant_id
     end
 
     # Custom attribute writer method with validation
@@ -202,6 +226,7 @@ module UltracartClient
       self.class == o.class &&
           allowed_countries == o.allowed_countries &&
           block_premium_numbers == o.block_premium_numbers &&
+          context_merchant_id == o.context_merchant_id &&
           conversation_pbx_class_of_service_uuid == o.conversation_pbx_class_of_service_uuid &&
           default_flag == o.default_flag &&
           description == o.description &&
@@ -220,7 +245,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allowed_countries, block_premium_numbers, conversation_pbx_class_of_service_uuid, default_flag, description, merchant_id, name, outbound_enabled, time_range_uuid].hash
+      [allowed_countries, block_premium_numbers, context_merchant_id, conversation_pbx_class_of_service_uuid, default_flag, description, merchant_id, name, outbound_enabled, time_range_uuid].hash
     end
 
     # Builds the object from hash

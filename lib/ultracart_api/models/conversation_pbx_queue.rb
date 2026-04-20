@@ -69,6 +69,9 @@ module UltracartClient
     # Delay in seconds between callback retry attempts
     attr_accessor :callback_retry_delay_seconds
 
+    # Optional child merchant ID this resource is assigned to. Null = shared across the linked merchant group.
+    attr_accessor :context_merchant_id
+
     # Conversation Pbx Queue unique identifier
     attr_accessor :conversation_pbx_queue_uuid
 
@@ -177,6 +180,7 @@ module UltracartClient
         :'callback_offer_after_seconds' => :'callback_offer_after_seconds',
         :'callback_offer_interval_seconds' => :'callback_offer_interval_seconds',
         :'callback_retry_delay_seconds' => :'callback_retry_delay_seconds',
+        :'context_merchant_id' => :'context_merchant_id',
         :'conversation_pbx_queue_uuid' => :'conversation_pbx_queue_uuid',
         :'conversation_voicemail_mailbox_uuid' => :'conversation_voicemail_mailbox_uuid',
         :'hold_conversation_pbx_audio_uuid' => :'hold_conversation_pbx_audio_uuid',
@@ -228,6 +232,7 @@ module UltracartClient
         :'callback_offer_after_seconds' => :'Integer',
         :'callback_offer_interval_seconds' => :'Integer',
         :'callback_retry_delay_seconds' => :'Integer',
+        :'context_merchant_id' => :'String',
         :'conversation_pbx_queue_uuid' => :'String',
         :'conversation_voicemail_mailbox_uuid' => :'String',
         :'hold_conversation_pbx_audio_uuid' => :'String',
@@ -346,6 +351,10 @@ module UltracartClient
         self.callback_retry_delay_seconds = attributes[:'callback_retry_delay_seconds']
       end
 
+      if attributes.key?(:'context_merchant_id')
+        self.context_merchant_id = attributes[:'context_merchant_id']
+      end
+
       if attributes.key?(:'conversation_pbx_queue_uuid')
         self.conversation_pbx_queue_uuid = attributes[:'conversation_pbx_queue_uuid']
       end
@@ -451,6 +460,10 @@ module UltracartClient
         invalid_properties.push('invalid value for "callback_confirm_audio_uuid", the character length must be smaller than or equal to 50.')
       end
 
+      if !@context_merchant_id.nil? && @context_merchant_id.to_s.length > 20
+        invalid_properties.push('invalid value for "context_merchant_id", the character length must be smaller than or equal to 20.')
+      end
+
       if !@conversation_voicemail_mailbox_uuid.nil? && @conversation_voicemail_mailbox_uuid.to_s.length > 50
         invalid_properties.push('invalid value for "conversation_voicemail_mailbox_uuid", the character length must be smaller than or equal to 50.')
       end
@@ -506,6 +519,7 @@ module UltracartClient
       return false if !@ai_summary_instructions.nil? && @ai_summary_instructions.to_s.length > 100000
       return false if !@callback_announce_audio_uuid.nil? && @callback_announce_audio_uuid.to_s.length > 50
       return false if !@callback_confirm_audio_uuid.nil? && @callback_confirm_audio_uuid.to_s.length > 50
+      return false if !@context_merchant_id.nil? && @context_merchant_id.to_s.length > 20
       return false if !@conversation_voicemail_mailbox_uuid.nil? && @conversation_voicemail_mailbox_uuid.to_s.length > 50
       return false if !@hold_conversation_pbx_audio_uuid.nil? && @hold_conversation_pbx_audio_uuid.to_s.length > 50
       return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
@@ -562,6 +576,16 @@ module UltracartClient
       end
 
       @callback_confirm_audio_uuid = callback_confirm_audio_uuid
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] context_merchant_id Value to be assigned
+    def context_merchant_id=(context_merchant_id)
+      if !context_merchant_id.nil? && context_merchant_id.to_s.length > 20
+        fail ArgumentError, 'invalid value for "context_merchant_id", the character length must be smaller than or equal to 20.'
+      end
+
+      @context_merchant_id = context_merchant_id
     end
 
     # Custom attribute writer method with validation
@@ -697,6 +721,7 @@ module UltracartClient
           callback_offer_after_seconds == o.callback_offer_after_seconds &&
           callback_offer_interval_seconds == o.callback_offer_interval_seconds &&
           callback_retry_delay_seconds == o.callback_retry_delay_seconds &&
+          context_merchant_id == o.context_merchant_id &&
           conversation_pbx_queue_uuid == o.conversation_pbx_queue_uuid &&
           conversation_voicemail_mailbox_uuid == o.conversation_voicemail_mailbox_uuid &&
           hold_conversation_pbx_audio_uuid == o.hold_conversation_pbx_audio_uuid &&
@@ -730,7 +755,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ai_priority, ai_summary_enabled, ai_summary_instructions, ai_timeout_seconds, announce_queue_position, automatic_coach_agent_uuid, callback_announce_audio_uuid, callback_announce_say, callback_confirm_audio_uuid, callback_confirm_say, callback_enabled, callback_hours_only, callback_max_attempts, callback_max_offers, callback_max_pending, callback_offer_after_seconds, callback_offer_interval_seconds, callback_retry_delay_seconds, conversation_pbx_queue_uuid, conversation_voicemail_mailbox_uuid, hold_conversation_pbx_audio_uuid, max_hold_seconds, members, merchant_id, name, no_agent_available_play_audio_uuid, no_agent_available_say, no_agent_available_say_voice, play_audio_uuid, record_call, say, say_voice, twilio_taskrouter_workflow_sid, twilio_workspace_queue_sid, voicemail, wait_critical_seconds, wait_warning_seconds, wrap_up_seconds, zoho_desk_department_id, zoho_desk_ticket_enabled].hash
+      [ai_priority, ai_summary_enabled, ai_summary_instructions, ai_timeout_seconds, announce_queue_position, automatic_coach_agent_uuid, callback_announce_audio_uuid, callback_announce_say, callback_confirm_audio_uuid, callback_confirm_say, callback_enabled, callback_hours_only, callback_max_attempts, callback_max_offers, callback_max_pending, callback_offer_after_seconds, callback_offer_interval_seconds, callback_retry_delay_seconds, context_merchant_id, conversation_pbx_queue_uuid, conversation_voicemail_mailbox_uuid, hold_conversation_pbx_audio_uuid, max_hold_seconds, members, merchant_id, name, no_agent_available_play_audio_uuid, no_agent_available_say, no_agent_available_say_voice, play_audio_uuid, record_call, say, say_voice, twilio_taskrouter_workflow_sid, twilio_workspace_queue_sid, voicemail, wait_critical_seconds, wait_warning_seconds, wrap_up_seconds, zoho_desk_department_id, zoho_desk_ticket_enabled].hash
     end
 
     # Builds the object from hash

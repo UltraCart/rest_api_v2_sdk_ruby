@@ -27,6 +27,8 @@ module UltracartClient
 
     attr_accessor :phone_number
 
+    attr_accessor :search_linked_accounts
+
     # Indicates if API call was successful
     attr_accessor :success
 
@@ -41,6 +43,7 @@ module UltracartClient
         :'metadata' => :'metadata',
         :'order_expand' => :'order_expand',
         :'phone_number' => :'phone_number',
+        :'search_linked_accounts' => :'search_linked_accounts',
         :'success' => :'success',
         :'warning' => :'warning'
       }
@@ -60,6 +63,7 @@ module UltracartClient
         :'metadata' => :'ResponseMetadata',
         :'order_expand' => :'String',
         :'phone_number' => :'String',
+        :'search_linked_accounts' => :'Boolean',
         :'success' => :'Boolean',
         :'warning' => :'Warning'
       }
@@ -110,6 +114,10 @@ module UltracartClient
         self.phone_number = attributes[:'phone_number']
       end
 
+      if attributes.key?(:'search_linked_accounts')
+        self.search_linked_accounts = attributes[:'search_linked_accounts']
+      end
+
       if attributes.key?(:'success')
         self.success = attributes[:'success']
       end
@@ -143,6 +151,7 @@ module UltracartClient
           metadata == o.metadata &&
           order_expand == o.order_expand &&
           phone_number == o.phone_number &&
+          search_linked_accounts == o.search_linked_accounts &&
           success == o.success &&
           warning == o.warning
     end
@@ -156,7 +165,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_order_expand, customer_expand, error, metadata, order_expand, phone_number, success, warning].hash
+      [auto_order_expand, customer_expand, error, metadata, order_expand, phone_number, search_linked_accounts, success, warning].hash
     end
 
     # Builds the object from hash

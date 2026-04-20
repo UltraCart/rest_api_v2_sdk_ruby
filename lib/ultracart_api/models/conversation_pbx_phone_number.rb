@@ -24,6 +24,9 @@ module UltracartClient
     # Twilio Address SID linked to this phone number for regulatory compliance
     attr_accessor :address_sid
 
+    # Optional child merchant ID this resource is assigned to. Null = shared across the linked merchant group.
+    attr_accessor :context_merchant_id
+
     # Conversation Pbx Phone Number UUID
     attr_accessor :conversation_pbx_phone_number_uuid
 
@@ -67,6 +70,7 @@ module UltracartClient
         :'action' => :'action',
         :'action_target' => :'action_target',
         :'address_sid' => :'address_sid',
+        :'context_merchant_id' => :'context_merchant_id',
         :'conversation_pbx_phone_number_uuid' => :'conversation_pbx_phone_number_uuid',
         :'default_phone_number' => :'default_phone_number',
         :'deletion_protected' => :'deletion_protected',
@@ -86,6 +90,7 @@ module UltracartClient
         :'action' => :'String',
         :'action_target' => :'String',
         :'address_sid' => :'String',
+        :'context_merchant_id' => :'String',
         :'conversation_pbx_phone_number_uuid' => :'String',
         :'default_phone_number' => :'Boolean',
         :'deletion_protected' => :'Boolean',
@@ -127,6 +132,10 @@ module UltracartClient
         self.address_sid = attributes[:'address_sid']
       end
 
+      if attributes.key?(:'context_merchant_id')
+        self.context_merchant_id = attributes[:'context_merchant_id']
+      end
+
       if attributes.key?(:'conversation_pbx_phone_number_uuid')
         self.conversation_pbx_phone_number_uuid = attributes[:'conversation_pbx_phone_number_uuid']
       end
@@ -164,6 +173,10 @@ module UltracartClient
         invalid_properties.push('invalid value for "address_sid", the character length must be smaller than or equal to 50.')
       end
 
+      if !@context_merchant_id.nil? && @context_merchant_id.to_s.length > 20
+        invalid_properties.push('invalid value for "context_merchant_id", the character length must be smaller than or equal to 20.')
+      end
+
       if !@conversation_pbx_phone_number_uuid.nil? && @conversation_pbx_phone_number_uuid.to_s.length > 50
         invalid_properties.push('invalid value for "conversation_pbx_phone_number_uuid", the character length must be smaller than or equal to 50.')
       end
@@ -187,6 +200,7 @@ module UltracartClient
       return false if !@action.nil? && @action.to_s.length > 30
       return false if !@action_target.nil? && @action_target.to_s.length > 50
       return false if !@address_sid.nil? && @address_sid.to_s.length > 50
+      return false if !@context_merchant_id.nil? && @context_merchant_id.to_s.length > 20
       return false if !@conversation_pbx_phone_number_uuid.nil? && @conversation_pbx_phone_number_uuid.to_s.length > 50
       return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
       return false if !@phone_number.nil? && @phone_number.to_s.length > 50
@@ -221,6 +235,16 @@ module UltracartClient
       end
 
       @address_sid = address_sid
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] context_merchant_id Value to be assigned
+    def context_merchant_id=(context_merchant_id)
+      if !context_merchant_id.nil? && context_merchant_id.to_s.length > 20
+        fail ArgumentError, 'invalid value for "context_merchant_id", the character length must be smaller than or equal to 20.'
+      end
+
+      @context_merchant_id = context_merchant_id
     end
 
     # Custom attribute writer method with validation
@@ -261,6 +285,7 @@ module UltracartClient
           action == o.action &&
           action_target == o.action_target &&
           address_sid == o.address_sid &&
+          context_merchant_id == o.context_merchant_id &&
           conversation_pbx_phone_number_uuid == o.conversation_pbx_phone_number_uuid &&
           default_phone_number == o.default_phone_number &&
           deletion_protected == o.deletion_protected &&
@@ -277,7 +302,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, action_target, address_sid, conversation_pbx_phone_number_uuid, default_phone_number, deletion_protected, merchant_id, phone_number].hash
+      [action, action_target, address_sid, context_merchant_id, conversation_pbx_phone_number_uuid, default_phone_number, deletion_protected, merchant_id, phone_number].hash
     end
 
     # Builds the object from hash

@@ -18,6 +18,9 @@ module UltracartClient
     # If true, the customer is allowed to input direct extensions within this menu
     attr_accessor :allow_direct_extensions
 
+    # Optional child merchant ID this resource is assigned to. Null = shared across the linked merchant group.
+    attr_accessor :context_merchant_id
+
     # Conversation Pbx Menu UUID
     attr_accessor :conversation_pbx_menu_uuid
 
@@ -74,6 +77,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'allow_direct_extensions' => :'allow_direct_extensions',
+        :'context_merchant_id' => :'context_merchant_id',
         :'conversation_pbx_menu_uuid' => :'conversation_pbx_menu_uuid',
         :'default_action' => :'default_action',
         :'default_action_target' => :'default_action_target',
@@ -96,6 +100,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'allow_direct_extensions' => :'Boolean',
+        :'context_merchant_id' => :'String',
         :'conversation_pbx_menu_uuid' => :'String',
         :'default_action' => :'String',
         :'default_action_target' => :'String',
@@ -132,6 +137,10 @@ module UltracartClient
 
       if attributes.key?(:'allow_direct_extensions')
         self.allow_direct_extensions = attributes[:'allow_direct_extensions']
+      end
+
+      if attributes.key?(:'context_merchant_id')
+        self.context_merchant_id = attributes[:'context_merchant_id']
       end
 
       if attributes.key?(:'conversation_pbx_menu_uuid')
@@ -181,6 +190,10 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@context_merchant_id.nil? && @context_merchant_id.to_s.length > 20
+        invalid_properties.push('invalid value for "context_merchant_id", the character length must be smaller than or equal to 20.')
+      end
+
       if !@conversation_pbx_menu_uuid.nil? && @conversation_pbx_menu_uuid.to_s.length > 50
         invalid_properties.push('invalid value for "conversation_pbx_menu_uuid", the character length must be smaller than or equal to 50.')
       end
@@ -215,6 +228,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@context_merchant_id.nil? && @context_merchant_id.to_s.length > 20
       return false if !@conversation_pbx_menu_uuid.nil? && @conversation_pbx_menu_uuid.to_s.length > 50
       return false if !@default_action.nil? && @default_action.to_s.length > 30
       return false if !@default_action_target.nil? && @default_action_target.to_s.length > 50
@@ -225,6 +239,16 @@ module UltracartClient
       return false unless say_voice_validator.valid?(@say_voice)
       return false if !@say_voice.nil? && @say_voice.to_s.length > 50
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] context_merchant_id Value to be assigned
+    def context_merchant_id=(context_merchant_id)
+      if !context_merchant_id.nil? && context_merchant_id.to_s.length > 20
+        fail ArgumentError, 'invalid value for "context_merchant_id", the character length must be smaller than or equal to 20.'
+      end
+
+      @context_merchant_id = context_merchant_id
     end
 
     # Custom attribute writer method with validation
@@ -303,6 +327,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           allow_direct_extensions == o.allow_direct_extensions &&
+          context_merchant_id == o.context_merchant_id &&
           conversation_pbx_menu_uuid == o.conversation_pbx_menu_uuid &&
           default_action == o.default_action &&
           default_action_target == o.default_action_target &&
@@ -324,7 +349,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allow_direct_extensions, conversation_pbx_menu_uuid, default_action, default_action_target, mappings, merchant_id, name, play_audio_uuid, say, say_voice, timeout].hash
+      [allow_direct_extensions, context_merchant_id, conversation_pbx_menu_uuid, default_action, default_action_target, mappings, merchant_id, name, play_audio_uuid, say, say_voice, timeout].hash
     end
 
     # Builds the object from hash

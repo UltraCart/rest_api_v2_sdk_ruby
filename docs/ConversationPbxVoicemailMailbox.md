@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **context_merchant_id** | **String** | Optional child merchant ID this resource is assigned to. Null &#x3D; shared across the linked merchant group. | [optional] |
 | **conversation_pbx_voicemail_mailbox_uuid** | **String** | Conversation Pbx Voicemail Mailbox UUID | [optional] |
 | **merchant_id** | **String** | Merchant Id | [optional] |
 | **send_notices_to_channel** | **String** | Send notices to channel | [optional] |
@@ -25,6 +26,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::ConversationPbxVoicemailMailbox.new(
+  context_merchant_id: null,
   conversation_pbx_voicemail_mailbox_uuid: null,
   merchant_id: null,
   send_notices_to_channel: null,

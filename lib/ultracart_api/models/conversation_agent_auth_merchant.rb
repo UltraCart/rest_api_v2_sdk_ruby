@@ -14,25 +14,22 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationPbxTimeBased
-    attr_accessor :context_merchant_id
+  class ConversationAgentAuthMerchant
+    # The company name for this merchant
+    attr_accessor :company
 
-    attr_accessor :conversation_pbx_time_based_uuid
+    # True if this is the parent merchant that owns the Twilio account
+    attr_accessor :is_parent
 
-    attr_accessor :mapping_config
-
+    # The merchant ID
     attr_accessor :merchant_id
-
-    attr_accessor :time_based_name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'context_merchant_id' => :'context_merchant_id',
-        :'conversation_pbx_time_based_uuid' => :'conversation_pbx_time_based_uuid',
-        :'mapping_config' => :'mapping_config',
-        :'merchant_id' => :'merchant_id',
-        :'time_based_name' => :'time_based_name'
+        :'company' => :'company',
+        :'is_parent' => :'is_parent',
+        :'merchant_id' => :'merchant_id'
       }
     end
 
@@ -44,11 +41,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'context_merchant_id' => :'String',
-        :'conversation_pbx_time_based_uuid' => :'String',
-        :'mapping_config' => :'ConversationPbxTimeBasedMappingConfig',
-        :'merchant_id' => :'String',
-        :'time_based_name' => :'String'
+        :'company' => :'String',
+        :'is_parent' => :'Boolean',
+        :'merchant_id' => :'String'
       }
     end
 
@@ -62,35 +57,27 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxTimeBased` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationAgentAuthMerchant` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxTimeBased`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationAgentAuthMerchant`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'context_merchant_id')
-        self.context_merchant_id = attributes[:'context_merchant_id']
+      if attributes.key?(:'company')
+        self.company = attributes[:'company']
       end
 
-      if attributes.key?(:'conversation_pbx_time_based_uuid')
-        self.conversation_pbx_time_based_uuid = attributes[:'conversation_pbx_time_based_uuid']
-      end
-
-      if attributes.key?(:'mapping_config')
-        self.mapping_config = attributes[:'mapping_config']
+      if attributes.key?(:'is_parent')
+        self.is_parent = attributes[:'is_parent']
       end
 
       if attributes.key?(:'merchant_id')
         self.merchant_id = attributes[:'merchant_id']
-      end
-
-      if attributes.key?(:'time_based_name')
-        self.time_based_name = attributes[:'time_based_name']
       end
     end
 
@@ -98,13 +85,28 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@merchant_id.nil? && @merchant_id.to_s.length > 20
+        invalid_properties.push('invalid value for "merchant_id", the character length must be smaller than or equal to 20.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@merchant_id.nil? && @merchant_id.to_s.length > 20
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] merchant_id Value to be assigned
+    def merchant_id=(merchant_id)
+      if !merchant_id.nil? && merchant_id.to_s.length > 20
+        fail ArgumentError, 'invalid value for "merchant_id", the character length must be smaller than or equal to 20.'
+      end
+
+      @merchant_id = merchant_id
     end
 
     # Checks equality by comparing each attribute.
@@ -112,11 +114,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          context_merchant_id == o.context_merchant_id &&
-          conversation_pbx_time_based_uuid == o.conversation_pbx_time_based_uuid &&
-          mapping_config == o.mapping_config &&
-          merchant_id == o.merchant_id &&
-          time_based_name == o.time_based_name
+          company == o.company &&
+          is_parent == o.is_parent &&
+          merchant_id == o.merchant_id
     end
 
     # @see the `==` method
@@ -128,7 +128,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [context_merchant_id, conversation_pbx_time_based_uuid, mapping_config, merchant_id, time_based_name].hash
+      [company, is_parent, merchant_id].hash
     end
 
     # Builds the object from hash

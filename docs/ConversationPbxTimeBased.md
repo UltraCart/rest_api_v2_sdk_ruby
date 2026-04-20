@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **context_merchant_id** | **String** |  | [optional] |
 | **conversation_pbx_time_based_uuid** | **String** |  | [optional] |
 | **mapping_config** | [**ConversationPbxTimeBasedMappingConfig**](ConversationPbxTimeBasedMappingConfig.md) |  | [optional] |
 | **merchant_id** | **String** |  | [optional] |
@@ -15,6 +16,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::ConversationPbxTimeBased.new(
+  context_merchant_id: null,
   conversation_pbx_time_based_uuid: null,
   mapping_config: null,
   merchant_id: null,

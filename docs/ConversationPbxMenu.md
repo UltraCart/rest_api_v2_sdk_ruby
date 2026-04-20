@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **allow_direct_extensions** | **Boolean** | If true, the customer is allowed to input direct extensions within this menu | [optional] |
+| **context_merchant_id** | **String** | Optional child merchant ID this resource is assigned to. Null &#x3D; shared across the linked merchant group. | [optional] |
 | **conversation_pbx_menu_uuid** | **String** | Conversation Pbx Menu UUID | [optional] |
 | **default_action** | **String** | The default action for this menu | [optional] |
 | **default_action_target** | **String** | The default action target for this menu | [optional] |
@@ -23,6 +24,7 @@ require 'ultracart_api'
 
 instance = UltracartClient::ConversationPbxMenu.new(
   allow_direct_extensions: null,
+  context_merchant_id: null,
   conversation_pbx_menu_uuid: null,
   default_action: null,
   default_action_target: null,
