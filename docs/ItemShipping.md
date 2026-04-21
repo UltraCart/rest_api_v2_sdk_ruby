@@ -34,6 +34,7 @@
 | **max_days_time_in_transit** | **Integer** | Maximum days allowed in transit | [optional] |
 | **methods** | [**Array&lt;ItemShippingMethod&gt;**](ItemShippingMethod.md) | Methods | [optional] |
 | **no_shipping_discount** | **Boolean** | No shipping discounts | [optional] |
+| **one_line_per_unit** | **Boolean** | Split cart line items with quantity greater than one into individual lines of quantity one on the order | [optional] |
 | **package_requirements** | [**Array&lt;ItemShippingPackageRequirement&gt;**](ItemShippingPackageRequirement.md) | Package requirements | [optional] |
 | **perishable_class_name** | **String** | Perishable class name | [optional] |
 | **perishable_class_oid** | **Integer** | Perishable class object identifier | [optional] |
@@ -92,6 +93,7 @@ instance = UltracartClient::ItemShipping.new(
   max_days_time_in_transit: null,
   methods: null,
   no_shipping_discount: null,
+  one_line_per_unit: null,
   package_requirements: null,
   perishable_class_name: null,
   perishable_class_oid: null,
