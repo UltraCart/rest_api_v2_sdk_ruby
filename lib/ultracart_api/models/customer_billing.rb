@@ -39,11 +39,17 @@ module UltracartClient
     # Day phone
     attr_accessor :day_phone
 
+    # Day phone in E.164 format (derived â€” read only)
+    attr_accessor :day_phone_e164
+
     # Default billing
     attr_accessor :default_billing
 
     # Evening phone
     attr_accessor :evening_phone
+
+    # Evening phone in E.164 format (derived â€” read only)
+    attr_accessor :evening_phone_e164
 
     # First name
     attr_accessor :first_name
@@ -77,8 +83,10 @@ module UltracartClient
         :'customer_billing_oid' => :'customer_billing_oid',
         :'customer_profile_oid' => :'customer_profile_oid',
         :'day_phone' => :'day_phone',
+        :'day_phone_e164' => :'day_phone_e164',
         :'default_billing' => :'default_billing',
         :'evening_phone' => :'evening_phone',
+        :'evening_phone_e164' => :'evening_phone_e164',
         :'first_name' => :'first_name',
         :'last_name' => :'last_name',
         :'last_used_dts' => :'last_used_dts',
@@ -105,8 +113,10 @@ module UltracartClient
         :'customer_billing_oid' => :'Integer',
         :'customer_profile_oid' => :'Integer',
         :'day_phone' => :'String',
+        :'day_phone_e164' => :'String',
         :'default_billing' => :'Boolean',
         :'evening_phone' => :'String',
+        :'evening_phone_e164' => :'String',
         :'first_name' => :'String',
         :'last_name' => :'String',
         :'last_used_dts' => :'String',
@@ -170,12 +180,20 @@ module UltracartClient
         self.day_phone = attributes[:'day_phone']
       end
 
+      if attributes.key?(:'day_phone_e164')
+        self.day_phone_e164 = attributes[:'day_phone_e164']
+      end
+
       if attributes.key?(:'default_billing')
         self.default_billing = attributes[:'default_billing']
       end
 
       if attributes.key?(:'evening_phone')
         self.evening_phone = attributes[:'evening_phone']
+      end
+
+      if attributes.key?(:'evening_phone_e164')
+        self.evening_phone_e164 = attributes[:'evening_phone_e164']
       end
 
       if attributes.key?(:'first_name')
@@ -428,8 +446,10 @@ module UltracartClient
           customer_billing_oid == o.customer_billing_oid &&
           customer_profile_oid == o.customer_profile_oid &&
           day_phone == o.day_phone &&
+          day_phone_e164 == o.day_phone_e164 &&
           default_billing == o.default_billing &&
           evening_phone == o.evening_phone &&
+          evening_phone_e164 == o.evening_phone_e164 &&
           first_name == o.first_name &&
           last_name == o.last_name &&
           last_used_dts == o.last_used_dts &&
@@ -448,7 +468,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [address1, address2, city, company, country_code, customer_billing_oid, customer_profile_oid, day_phone, default_billing, evening_phone, first_name, last_name, last_used_dts, postal_code, state_region, tax_county, title].hash
+      [address1, address2, city, company, country_code, customer_billing_oid, customer_profile_oid, day_phone, day_phone_e164, default_billing, evening_phone, evening_phone_e164, first_name, last_name, last_used_dts, postal_code, state_region, tax_county, title].hash
     end
 
     # Builds the object from hash

@@ -12,8 +12,10 @@
 | **customer_billing_oid** | **Integer** | Customer profile billing object identifier | [optional] |
 | **customer_profile_oid** | **Integer** | Customer profile object identifier | [optional] |
 | **day_phone** | **String** | Day phone | [optional] |
+| **day_phone_e164** | **String** | Day phone in E.164 format (derived â€” read only) | [optional] |
 | **default_billing** | **Boolean** | Default billing | [optional] |
 | **evening_phone** | **String** | Evening phone | [optional] |
+| **evening_phone_e164** | **String** | Evening phone in E.164 format (derived â€” read only) | [optional] |
 | **first_name** | **String** | First name | [optional] |
 | **last_name** | **String** | Last name | [optional] |
 | **last_used_dts** | **String** | Last used date | [optional] |
@@ -36,8 +38,10 @@ instance = UltracartClient::CustomerBilling.new(
   customer_billing_oid: null,
   customer_profile_oid: null,
   day_phone: null,
+  day_phone_e164: null,
   default_billing: null,
   evening_phone: null,
+  evening_phone_e164: null,
   first_name: null,
   last_name: null,
   last_used_dts: null,
