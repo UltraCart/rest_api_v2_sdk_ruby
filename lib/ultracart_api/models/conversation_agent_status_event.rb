@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class ConversationAgentStatusEvent
+    # Agent identifier â€” voice_identity for PBX (e.g. 'client:login'), participant_arn for chat, synthetic 'ai:<user_id>' for AI flag events. Stable across an agent's events; participates in DDB pk and GSI1 sk.
+    attr_accessor :agent_identifier
+
     # Agent display name at the time of the event
     attr_accessor :agent_name
 
@@ -88,6 +91,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'agent_identifier' => :'agent_identifier',
         :'agent_name' => :'agent_name',
         :'agent_type' => :'agent_type',
         :'agent_user_id' => :'agent_user_id',
@@ -115,6 +119,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'agent_identifier' => :'String',
         :'agent_name' => :'String',
         :'agent_type' => :'String',
         :'agent_user_id' => :'String',
@@ -154,6 +159,10 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'agent_identifier')
+        self.agent_identifier = attributes[:'agent_identifier']
+      end
 
       if attributes.key?(:'agent_name')
         self.agent_name = attributes[:'agent_name']
@@ -358,6 +367,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          agent_identifier == o.agent_identifier &&
           agent_name == o.agent_name &&
           agent_type == o.agent_type &&
           agent_user_id == o.agent_user_id &&
@@ -385,7 +395,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [agent_name, agent_type, agent_user_id, channel, custom_status_name, custom_status_uuid, duration_in_previous_seconds, event_dts, event_uuid, merchant_id, new_routing_effect, new_status, parent_merchant_id, previous_routing_effect, previous_status, trigger].hash
+      [agent_identifier, agent_name, agent_type, agent_user_id, channel, custom_status_name, custom_status_uuid, duration_in_previous_seconds, event_dts, event_uuid, merchant_id, new_routing_effect, new_status, parent_merchant_id, previous_routing_effect, previous_status, trigger].hash
     end
 
     # Builds the object from hash

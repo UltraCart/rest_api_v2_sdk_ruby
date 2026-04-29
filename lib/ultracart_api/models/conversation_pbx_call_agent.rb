@@ -24,6 +24,9 @@ module UltracartClient
     # Display name of the agent
     attr_accessor :agent_name
 
+    # UltraCart user id for the agent (denormalized at index time so reporting endpoints can join on agent_user_id without translating from the agent_id login).
+    attr_accessor :agent_user_id
+
     # Whether the agent answered the call
     attr_accessor :answered
 
@@ -48,6 +51,7 @@ module UltracartClient
         :'agent_extension' => :'agent_extension',
         :'agent_id' => :'agent_id',
         :'agent_name' => :'agent_name',
+        :'agent_user_id' => :'agent_user_id',
         :'answered' => :'answered',
         :'call_sid' => :'call_sid',
         :'joined_at_dts' => :'joined_at_dts',
@@ -68,6 +72,7 @@ module UltracartClient
         :'agent_extension' => :'String',
         :'agent_id' => :'String',
         :'agent_name' => :'String',
+        :'agent_user_id' => :'String',
         :'answered' => :'Boolean',
         :'call_sid' => :'String',
         :'joined_at_dts' => :'String',
@@ -108,6 +113,10 @@ module UltracartClient
 
       if attributes.key?(:'agent_name')
         self.agent_name = attributes[:'agent_name']
+      end
+
+      if attributes.key?(:'agent_user_id')
+        self.agent_user_id = attributes[:'agent_user_id']
       end
 
       if attributes.key?(:'answered')
@@ -156,6 +165,7 @@ module UltracartClient
           agent_extension == o.agent_extension &&
           agent_id == o.agent_id &&
           agent_name == o.agent_name &&
+          agent_user_id == o.agent_user_id &&
           answered == o.answered &&
           call_sid == o.call_sid &&
           joined_at_dts == o.joined_at_dts &&
@@ -173,7 +183,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [agent_extension, agent_id, agent_name, answered, call_sid, joined_at_dts, left_at_dts, role, worker_sid].hash
+      [agent_extension, agent_id, agent_name, agent_user_id, answered, call_sid, joined_at_dts, left_at_dts, role, worker_sid].hash
     end
 
     # Builds the object from hash

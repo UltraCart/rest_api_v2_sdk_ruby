@@ -15,7 +15,10 @@ require 'time'
 
 module UltracartClient
   class AutoOrderItemCancelRequest
-    # Optional tiebreaker when more than one item on the auto order shares the same original_item_id.  When present, the item with this oid is targeted and its original_item_id must match the URL path parameter (safety check).  Leave unset for the common case of a unique original_item_id.
+    # Specifying these items allows for an easier immutable item contact.  Validation will occur before any operations take place.  After the end/remove operation is successful, append these additional item(s) to the auto order.  The changes will be available in the response if the expansion includes items.
+    attr_accessor :append_items
+
+    # Optional tiebreaker when more than one item on the auto order shares the same original_item_id.  When present, the item with this oid is targeted and its original_item_id must match the URL path parameter (safety check).  Leave unset for the common case of a unique original_item_id.  For reference the order_item.item_reference_oid is the same value as auto_order_item.auto_order_item_oid UNLESS the a manual edit took place AFTER the original order was placed.
     attr_accessor :auto_order_item_oid
 
     # Cancellation mode.  'end' soft-cancels the item by setting no_order_after_dts to the current time, preserving the row for reporting.  'remove' hard-deletes the item from the auto order.  Defaults to 'end' (the less destructive option) when omitted.
@@ -46,6 +49,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'append_items' => :'append_items',
         :'auto_order_item_oid' => :'auto_order_item_oid',
         :'mode' => :'mode'
       }
@@ -59,6 +63,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'append_items' => :'Array<AutoOrderItem>',
         :'auto_order_item_oid' => :'Integer',
         :'mode' => :'String'
       }
@@ -84,6 +89,12 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'append_items')
+        if (value = attributes[:'append_items']).is_a?(Array)
+          self.append_items = value
+        end
+      end
 
       if attributes.key?(:'auto_order_item_oid')
         self.auto_order_item_oid = attributes[:'auto_order_item_oid']
@@ -124,6 +135,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          append_items == o.append_items &&
           auto_order_item_oid == o.auto_order_item_oid &&
           mode == o.mode
     end
@@ -137,7 +149,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_order_item_oid, mode].hash
+      [append_items, auto_order_item_oid, mode].hash
     end
 
     # Builds the object from hash
