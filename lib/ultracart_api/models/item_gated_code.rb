@@ -14,22 +14,26 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ItemInventoryUpdate
-    # Distribution center code
-    attr_accessor :distribution_center_code
+  class ItemGatedCode
+    # The access code a customer must enter at checkout.
+    attr_accessor :code
 
-    # Inventory level
-    attr_accessor :inventory_level
+    # Date/time the code was added.
+    attr_accessor :created_dts
 
-    # Merchant Item ID
-    attr_accessor :merchant_item_id
+    # Internal identifier; populated by the server on insert.
+    attr_accessor :merchant_item_gated_code_oid
+
+    # Item this code is associated with.
+    attr_accessor :merchant_item_oid
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'distribution_center_code' => :'distribution_center_code',
-        :'inventory_level' => :'inventory_level',
-        :'merchant_item_id' => :'merchant_item_id'
+        :'code' => :'code',
+        :'created_dts' => :'created_dts',
+        :'merchant_item_gated_code_oid' => :'merchant_item_gated_code_oid',
+        :'merchant_item_oid' => :'merchant_item_oid'
       }
     end
 
@@ -41,9 +45,10 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'distribution_center_code' => :'String',
-        :'inventory_level' => :'Float',
-        :'merchant_item_id' => :'String'
+        :'code' => :'String',
+        :'created_dts' => :'String',
+        :'merchant_item_gated_code_oid' => :'Integer',
+        :'merchant_item_oid' => :'Integer'
       }
     end
 
@@ -57,27 +62,31 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ItemInventoryUpdate` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ItemGatedCode` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ItemInventoryUpdate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ItemGatedCode`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'distribution_center_code')
-        self.distribution_center_code = attributes[:'distribution_center_code']
+      if attributes.key?(:'code')
+        self.code = attributes[:'code']
       end
 
-      if attributes.key?(:'inventory_level')
-        self.inventory_level = attributes[:'inventory_level']
+      if attributes.key?(:'created_dts')
+        self.created_dts = attributes[:'created_dts']
       end
 
-      if attributes.key?(:'merchant_item_id')
-        self.merchant_item_id = attributes[:'merchant_item_id']
+      if attributes.key?(:'merchant_item_gated_code_oid')
+        self.merchant_item_gated_code_oid = attributes[:'merchant_item_gated_code_oid']
+      end
+
+      if attributes.key?(:'merchant_item_oid')
+        self.merchant_item_oid = attributes[:'merchant_item_oid']
       end
     end
 
@@ -85,13 +94,28 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@code.nil? && @code.to_s.length > 255
+        invalid_properties.push('invalid value for "code", the character length must be smaller than or equal to 255.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@code.nil? && @code.to_s.length > 255
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] code Value to be assigned
+    def code=(code)
+      if !code.nil? && code.to_s.length > 255
+        fail ArgumentError, 'invalid value for "code", the character length must be smaller than or equal to 255.'
+      end
+
+      @code = code
     end
 
     # Checks equality by comparing each attribute.
@@ -99,9 +123,10 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          distribution_center_code == o.distribution_center_code &&
-          inventory_level == o.inventory_level &&
-          merchant_item_id == o.merchant_item_id
+          code == o.code &&
+          created_dts == o.created_dts &&
+          merchant_item_gated_code_oid == o.merchant_item_gated_code_oid &&
+          merchant_item_oid == o.merchant_item_oid
     end
 
     # @see the `==` method
@@ -113,7 +138,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [distribution_center_code, inventory_level, merchant_item_id].hash
+      [code, created_dts, merchant_item_gated_code_oid, merchant_item_oid].hash
     end
 
     # Builds the object from hash

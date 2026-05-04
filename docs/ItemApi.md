@@ -4,32 +4,88 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**delete_all_gated_codes**](ItemApi.md#delete_all_gated_codes) | **DELETE** /item/items/{merchant_item_oid}/gated_codes | Delete all gated access codes for an item |
 | [**delete_digital_item**](ItemApi.md#delete_digital_item) | **DELETE** /item/digital_library/{digital_item_oid} | Delete a digital item, which is a file within the digital library, not an actual merchant item |
+| [**delete_gated_code**](ItemApi.md#delete_gated_code) | **DELETE** /item/items/{merchant_item_oid}/gated_codes/{merchant_item_gated_code_oid} | Delete a gated access code by OID |
 | [**delete_item**](ItemApi.md#delete_item) | **DELETE** /item/items/{merchant_item_oid} | Delete an item |
 | [**delete_review**](ItemApi.md#delete_review) | **DELETE** /item/items/{merchant_item_oid}/reviews/{review_oid} | Delete a review |
+| [**generate_gated_codes**](ItemApi.md#generate_gated_codes) | **POST** /item/items/{merchant_item_oid}/gated_codes/generate | Generate a batch of gated access codes |
 | [**get_digital_item**](ItemApi.md#get_digital_item) | **GET** /item/digital_library/{digital_item_oid} | Retrieve a digital item from the digital library, which are digital files that may be attached to normal items |
 | [**get_digital_items**](ItemApi.md#get_digital_items) | **GET** /item/digital_library | Retrieve digital items from the digital library which are digital files that may be attached to normal items |
 | [**get_digital_items_by_external_id**](ItemApi.md#get_digital_items_by_external_id) | **GET** /item/digital_library/by_external/{external_id} | Retrieves digital items from the digital library (which are digital files that may be attached to normal items) that having a matching external id |
+| [**get_gated_codes**](ItemApi.md#get_gated_codes) | **GET** /item/items/{merchant_item_oid}/gated_codes | Get gated access codes for an item |
 | [**get_inventory_snapshot**](ItemApi.md#get_inventory_snapshot) | **GET** /item/items/inventory_snapshot | Retrieve a list of item inventories.  This method may be called once every 15 minutes.  More than that will result in a 429 response. |
 | [**get_item**](ItemApi.md#get_item) | **GET** /item/items/{merchant_item_oid} | Retrieve an item |
 | [**get_item_by_merchant_item_id**](ItemApi.md#get_item_by_merchant_item_id) | **GET** /item/items/merchant_item_id/{merchant_item_id} | Retrieve an item by item id |
-| [**get_item_shipping_distribution_center_by_code**](ItemApi.md#get_item_shipping_distribution_center_by_code) | **GET** /item/items/{merchant_item_oid}/shipping/distribution_centers/by_code/{distribution_center_code} | Retrieve an item shipping distribution center |
 | [**get_items**](ItemApi.md#get_items) | **GET** /item/items | Retrieve items |
 | [**get_pricing_tiers**](ItemApi.md#get_pricing_tiers) | **GET** /item/pricing_tiers | Retrieve pricing tiers |
 | [**get_review**](ItemApi.md#get_review) | **GET** /item/items/{merchant_item_oid}/reviews/{review_oid} | Get a review |
 | [**get_reviews**](ItemApi.md#get_reviews) | **GET** /item/items/{merchant_item_oid}/reviews | Get reviews for an item |
 | [**get_unassociated_digital_items**](ItemApi.md#get_unassociated_digital_items) | **GET** /item/digital_library/unassociated | Retrieve digital items from the digital library (which are digital files that may be attached to normal items) not yet associated with actual items |
 | [**insert_digital_item**](ItemApi.md#insert_digital_item) | **POST** /item/digital_library | Create a file within the digital library |
+| [**insert_gated_code**](ItemApi.md#insert_gated_code) | **POST** /item/items/{merchant_item_oid}/gated_codes | Add a single gated access code to an item |
 | [**insert_item**](ItemApi.md#insert_item) | **POST** /item/items | Create an item |
 | [**insert_review**](ItemApi.md#insert_review) | **POST** /item/items/{merchant_item_oid}/reviews | Insert a review |
 | [**insert_update_item_content_attribute**](ItemApi.md#insert_update_item_content_attribute) | **POST** /item/items/{merchant_item_oid}/content/attributes | Upsert an item content attribute |
+| [**replace_gated_codes**](ItemApi.md#replace_gated_codes) | **PUT** /item/items/{merchant_item_oid}/gated_codes | Replace the full list of gated access codes for an item |
 | [**update_digital_item**](ItemApi.md#update_digital_item) | **PUT** /item/digital_library/{digital_item_oid} | Updates a file within the digital library |
 | [**update_item**](ItemApi.md#update_item) | **PUT** /item/items/{merchant_item_oid} | Update an item |
-| [**update_item_inventories**](ItemApi.md#update_item_inventories) | **PUT** /item/items/update_item_inventories | Update item inventories for a distribution center |
-| [**update_item_shipping_distribution_center_by_code**](ItemApi.md#update_item_shipping_distribution_center_by_code) | **PUT** /item/items/{merchant_item_oid}/shipping/distribution_centers/by_code/{distribution_center_code} | Update an item shipping distribution center |
 | [**update_items**](ItemApi.md#update_items) | **PUT** /item/items/batch | Update multiple items |
 | [**update_review**](ItemApi.md#update_review) | **PUT** /item/items/{merchant_item_oid}/reviews/{review_oid} | Update a review |
 | [**upload_temporary_multimedia**](ItemApi.md#upload_temporary_multimedia) | **POST** /item/temp_multimedia | Upload an image to the temporary multimedia. |
+
+
+## delete_all_gated_codes
+
+> <BaseResponse> delete_all_gated_codes(merchant_item_oid)
+
+Delete all gated access codes for an item
+
+Removes every gated access code currently configured for the item. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_all_gated_codes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<BaseResponse>, Integer, Hash)> delete_all_gated_codes_with_http_info(merchant_item_oid)
+
+```ruby
+begin
+  # Delete all gated access codes for an item
+  data, status_code, headers = api_instance.delete_all_gated_codes_with_http_info(merchant_item_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <BaseResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->delete_all_gated_codes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **merchant_item_oid** | **Integer** | The item oid. |  |
+
+### Return type
+
+[**BaseResponse**](BaseResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## delete_digital_item
@@ -86,6 +142,60 @@ end
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_gated_code
+
+> <BaseResponse> delete_gated_code(merchant_item_oid, merchant_item_gated_code_oid)
+
+Delete a gated access code by OID
+
+Delete a specific gated access code by its OID. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_gated_code_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<BaseResponse>, Integer, Hash)> delete_gated_code_with_http_info(merchant_item_oid, merchant_item_gated_code_oid)
+
+```ruby
+begin
+  # Delete a gated access code by OID
+  data, status_code, headers = api_instance.delete_gated_code_with_http_info(merchant_item_oid, merchant_item_gated_code_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <BaseResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->delete_gated_code_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **merchant_item_oid** | **Integer** | The item oid. |  |
+| **merchant_item_gated_code_oid** | **Integer** | The gated code oid. |  |
+
+### Return type
+
+[**BaseResponse**](BaseResponse.md)
 
 ### Authorization
 
@@ -231,6 +341,60 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## generate_gated_codes
+
+> <ItemGatedCodesResponse> generate_gated_codes(merchant_item_oid, generate_request)
+
+Generate a batch of gated access codes
+
+Returns randomly generated codes using a profanity-safe charset (vowel-free, 0/1 removed). Codes are NOT persisted; submit them via PUT or POST to commit. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the generate_gated_codes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ItemGatedCodesResponse>, Integer, Hash)> generate_gated_codes_with_http_info(merchant_item_oid, generate_request)
+
+```ruby
+begin
+  # Generate a batch of gated access codes
+  data, status_code, headers = api_instance.generate_gated_codes_with_http_info(merchant_item_oid, generate_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ItemGatedCodesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->generate_gated_codes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **merchant_item_oid** | **Integer** | The item oid. |  |
+| **generate_request** | [**ItemGenerateGatedCodesRequest**](ItemGenerateGatedCodesRequest.md) | Generate request. |  |
+
+### Return type
+
+[**ItemGatedCodesResponse**](ItemGatedCodesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
 - **Accept**: application/json
 
 
@@ -490,6 +654,59 @@ end
 ### Return type
 
 [**ItemDigitalItemsResponse**](ItemDigitalItemsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_gated_codes
+
+> <ItemGatedCodesResponse> get_gated_codes(merchant_item_oid)
+
+Get gated access codes for an item
+
+Retrieve all unredeemed gated access codes configured for an item. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_gated_codes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ItemGatedCodesResponse>, Integer, Hash)> get_gated_codes_with_http_info(merchant_item_oid)
+
+```ruby
+begin
+  # Get gated access codes for an item
+  data, status_code, headers = api_instance.get_gated_codes_with_http_info(merchant_item_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ItemGatedCodesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->get_gated_codes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **merchant_item_oid** | **Integer** | The item oid. |  |
+
+### Return type
+
+[**ItemGatedCodesResponse**](ItemGatedCodesResponse.md)
 
 ### Authorization
 
@@ -827,62 +1044,6 @@ end
 ### Return type
 
 [**ItemResponse**](ItemResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_item_shipping_distribution_center_by_code
-
-> <ItemShippingDistributionCenterResponse> get_item_shipping_distribution_center_by_code(merchant_item_oid, distribution_center_code, opts)
-
-Retrieve an item shipping distribution center
-
-Retrieve an item shipping distribution center. 
-
-
-### Examples
-
-
-(No example for this operation).
-
-
-#### Using the get_item_shipping_distribution_center_by_code_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<ItemShippingDistributionCenterResponse>, Integer, Hash)> get_item_shipping_distribution_center_by_code_with_http_info(merchant_item_oid, distribution_center_code, opts)
-
-```ruby
-begin
-  # Retrieve an item shipping distribution center
-  data, status_code, headers = api_instance.get_item_shipping_distribution_center_by_code_with_http_info(merchant_item_oid, distribution_center_code, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <ItemShippingDistributionCenterResponse>
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->get_item_shipping_distribution_center_by_code_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **merchant_item_oid** | **Integer** | The item oid to retrieve. |  |
-| **distribution_center_code** | **String** |  |  |
-| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
-| **_placeholders** | **Boolean** | Whether or not placeholder values should be returned in the result.  Useful for UIs that consume this REST API. | [optional] |
-
-### Return type
-
-[**ItemShippingDistributionCenterResponse**](ItemShippingDistributionCenterResponse.md)
 
 ### Authorization
 
@@ -1483,6 +1644,60 @@ end
 - **Accept**: application/json
 
 
+## insert_gated_code
+
+> <ItemGatedCodeResponse> insert_gated_code(merchant_item_oid, gated_code)
+
+Add a single gated access code to an item
+
+Insert a single gated access code; the server assigns the OID and created_dts. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_gated_code_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ItemGatedCodeResponse>, Integer, Hash)> insert_gated_code_with_http_info(merchant_item_oid, gated_code)
+
+```ruby
+begin
+  # Add a single gated access code to an item
+  data, status_code, headers = api_instance.insert_gated_code_with_http_info(merchant_item_oid, gated_code)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ItemGatedCodeResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->insert_gated_code_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **merchant_item_oid** | **Integer** | The item oid. |  |
+| **gated_code** | [**ItemGatedCode**](ItemGatedCode.md) | Gated code to insert. |  |
+
+### Return type
+
+[**ItemGatedCodeResponse**](ItemGatedCodeResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
 ## insert_item
 
 > <ItemResponse> insert_item(item, opts)
@@ -1771,6 +1986,60 @@ nil (empty response body)
 - **Accept**: application/json
 
 
+## replace_gated_codes
+
+> <ItemGatedCodesResponse> replace_gated_codes(merchant_item_oid, gated_codes_request)
+
+Replace the full list of gated access codes for an item
+
+Existing codes not present in the request body are deleted. New codes are inserted. Unchanged codes preserve their OID and created_dts. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the replace_gated_codes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ItemGatedCodesResponse>, Integer, Hash)> replace_gated_codes_with_http_info(merchant_item_oid, gated_codes_request)
+
+```ruby
+begin
+  # Replace the full list of gated access codes for an item
+  data, status_code, headers = api_instance.replace_gated_codes_with_http_info(merchant_item_oid, gated_codes_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ItemGatedCodesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ItemApi->replace_gated_codes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **merchant_item_oid** | **Integer** | The item oid. |  |
+| **gated_codes_request** | [**ItemGatedCodesRequest**](ItemGatedCodesRequest.md) | Codes to replace the existing list with. |  |
+
+### Return type
+
+[**ItemGatedCodesResponse**](ItemGatedCodesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
 ## update_digital_item
 
 > <ItemDigitalItemResponse> update_digital_item(digital_item_oid, digital_item)
@@ -1951,114 +2220,6 @@ end
 ### Return type
 
 [**ItemResponse**](ItemResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: application/json; charset=UTF-8
-- **Accept**: application/json
-
-
-## update_item_inventories
-
-> update_item_inventories(item_inventory_update_request)
-
-Update item inventories for a distribution center
-
-Update item inventories for a distribution center 
-
-
-### Examples
-
-
-(No example for this operation).
-
-
-#### Using the update_item_inventories_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> update_item_inventories_with_http_info(item_inventory_update_request)
-
-```ruby
-begin
-  # Update item inventories for a distribution center
-  data, status_code, headers = api_instance.update_item_inventories_with_http_info(item_inventory_update_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->update_item_inventories_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **item_inventory_update_request** | [**ItemInventoryUpdateRequest**](ItemInventoryUpdateRequest.md) | Item inventory updates |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: application/json; charset=UTF-8
-- **Accept**: application/json
-
-
-## update_item_shipping_distribution_center_by_code
-
-> update_item_shipping_distribution_center_by_code(merchant_item_oid, distribution_center_code, item_shipping_distribution_center)
-
-Update an item shipping distribution center
-
-Update an item shipping distribution center 
-
-
-### Examples
-
-
-(No example for this operation).
-
-
-#### Using the update_item_shipping_distribution_center_by_code_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> update_item_shipping_distribution_center_by_code_with_http_info(merchant_item_oid, distribution_center_code, item_shipping_distribution_center)
-
-```ruby
-begin
-  # Update an item shipping distribution center
-  data, status_code, headers = api_instance.update_item_shipping_distribution_center_by_code_with_http_info(merchant_item_oid, distribution_center_code, item_shipping_distribution_center)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue UltracartClient::ApiError => e
-  puts "Error when calling ItemApi->update_item_shipping_distribution_center_by_code_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **merchant_item_oid** | **Integer** | The item oid to update. |  |
-| **distribution_center_code** | **String** |  |  |
-| **item_shipping_distribution_center** | [**ItemShippingDistributionCenter**](ItemShippingDistributionCenter.md) | Item shipping distribution center |  |
-
-### Return type
-
-nil (empty response body)
 
 ### Authorization
 

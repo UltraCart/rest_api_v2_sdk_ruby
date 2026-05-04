@@ -20,6 +20,7 @@
 | **email_notifications** | [**ItemEmailNotifications**](ItemEmailNotifications.md) |  | [optional] |
 | **enrollment123** | [**ItemEnrollment123**](ItemEnrollment123.md) |  | [optional] |
 | **fulfillment_addons** | [**Array&lt;ItemFulfillmentAddon&gt;**](ItemFulfillmentAddon.md) | Fulfillment Add-ons | [optional] |
+| **gated_codes** | [**Array&lt;ItemGatedCode&gt;**](ItemGatedCode.md) | Gated access codes for this item. Read-only on this object. Use the /items/{merchant_item_oid}/gated_codes endpoints to manage. | [optional] |
 | **gift_certificate** | [**ItemGiftCertificate**](ItemGiftCertificate.md) |  | [optional] |
 | **google_product_search** | [**ItemGoogleProductSearch**](ItemGoogleProductSearch.md) |  | [optional] |
 | **identifiers** | [**ItemIdentifiers**](ItemIdentifiers.md) |  | [optional] |
@@ -78,6 +79,7 @@ instance = UltracartClient::Item.new(
   email_notifications: null,
   enrollment123: null,
   fulfillment_addons: null,
+  gated_codes: null,
   gift_certificate: null,
   google_product_search: null,
   identifiers: null,

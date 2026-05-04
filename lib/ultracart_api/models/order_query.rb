@@ -525,7 +525,7 @@ module UltracartClient
       return false if !@city.nil? && @city.to_s.length > 32
       return false if !@company.nil? && @company.to_s.length > 50
       return false if !@country_code.nil? && @country_code.to_s.length > 2
-      current_stage_validator = EnumAttributeValidator.new('String', ["Accounts Receivable", "Pending Clearance", "Fraud Review", "Rejected", "Shipping Department", "Completed Order", "Quote Request", "Quote Sent", "Least Cost Routing", "Unknown"])
+      current_stage_validator = EnumAttributeValidator.new('String', ["Accounts Receivable", "Pending Clearance", "Fraud Review", "Rejected", "Shipping Department", "Completed Order", "Quote Request", "Quote Sent", "Least Cost Routing", "Unknown", "Hold"])
       return false unless current_stage_validator.valid?(@current_stage)
       return false if !@email.nil? && @email.to_s.length > 100
       return false if !@first_name.nil? && @first_name.to_s.length > 30
@@ -585,7 +585,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] current_stage Object to be assigned
     def current_stage=(current_stage)
-      validator = EnumAttributeValidator.new('String', ["Accounts Receivable", "Pending Clearance", "Fraud Review", "Rejected", "Shipping Department", "Completed Order", "Quote Request", "Quote Sent", "Least Cost Routing", "Unknown"])
+      validator = EnumAttributeValidator.new('String', ["Accounts Receivable", "Pending Clearance", "Fraud Review", "Rejected", "Shipping Department", "Completed Order", "Quote Request", "Quote Sent", "Least Cost Routing", "Unknown", "Hold"])
       unless validator.valid?(current_stage)
         fail ArgumentError, "invalid value for \"current_stage\", must be one of #{validator.allowable_values}."
       end

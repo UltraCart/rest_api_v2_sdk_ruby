@@ -1,11 +1,11 @@
-# UltracartClient::ItemShippingDistributionCenterResponse
+# UltracartClient::ItemGatedCodesResponse
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **error** | [**Error**](Error.md) |  | [optional] |
-| **item_shipping_distribution_center** | [**ItemShippingDistributionCenter**](ItemShippingDistributionCenter.md) |  | [optional] |
+| **gated_codes** | [**Array&lt;ItemGatedCode&gt;**](ItemGatedCode.md) | gated_codes | [optional] |
 | **metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] |
 | **success** | **Boolean** | Indicates if API call was successful | [optional] |
 | **warning** | [**Warning**](Warning.md) |  | [optional] |
@@ -15,9 +15,9 @@
 ```ruby
 require 'ultracart_api'
 
-instance = UltracartClient::ItemShippingDistributionCenterResponse.new(
+instance = UltracartClient::ItemGatedCodesResponse.new(
   error: null,
-  item_shipping_distribution_center: null,
+  gated_codes: null,
   metadata: null,
   success: null,
   warning: null

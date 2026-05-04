@@ -14,26 +14,14 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ItemShippingDistributionCenterResponse
-    attr_accessor :error
-
-    attr_accessor :item_shipping_distribution_center
-
-    attr_accessor :metadata
-
-    # Indicates if API call was successful
-    attr_accessor :success
-
-    attr_accessor :warning
+  class ItemGatedCodesRequest
+    # gated_codes
+    attr_accessor :gated_codes
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'error' => :'error',
-        :'item_shipping_distribution_center' => :'itemShippingDistributionCenter',
-        :'metadata' => :'metadata',
-        :'success' => :'success',
-        :'warning' => :'warning'
+        :'gated_codes' => :'gatedCodes'
       }
     end
 
@@ -45,11 +33,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'error' => :'Error',
-        :'item_shipping_distribution_center' => :'ItemShippingDistributionCenter',
-        :'metadata' => :'ResponseMetadata',
-        :'success' => :'Boolean',
-        :'warning' => :'Warning'
+        :'gated_codes' => :'Array<ItemGatedCode>'
       }
     end
 
@@ -63,35 +47,21 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ItemShippingDistributionCenterResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ItemGatedCodesRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ItemShippingDistributionCenterResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ItemGatedCodesRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'error')
-        self.error = attributes[:'error']
-      end
-
-      if attributes.key?(:'item_shipping_distribution_center')
-        self.item_shipping_distribution_center = attributes[:'item_shipping_distribution_center']
-      end
-
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.key?(:'success')
-        self.success = attributes[:'success']
-      end
-
-      if attributes.key?(:'warning')
-        self.warning = attributes[:'warning']
+      if attributes.key?(:'gated_codes')
+        if (value = attributes[:'gated_codes']).is_a?(Array)
+          self.gated_codes = value
+        end
       end
     end
 
@@ -113,11 +83,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          error == o.error &&
-          item_shipping_distribution_center == o.item_shipping_distribution_center &&
-          metadata == o.metadata &&
-          success == o.success &&
-          warning == o.warning
+          gated_codes == o.gated_codes
     end
 
     # @see the `==` method
@@ -129,7 +95,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [error, item_shipping_distribution_center, metadata, success, warning].hash
+      [gated_codes].hash
     end
 
     # Builds the object from hash

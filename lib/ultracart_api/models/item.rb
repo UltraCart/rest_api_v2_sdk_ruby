@@ -52,6 +52,9 @@ module UltracartClient
     # Fulfillment Add-ons
     attr_accessor :fulfillment_addons
 
+    # Gated access codes for this item. Read-only on this object. Use the /items/{merchant_item_oid}/gated_codes endpoints to manage.
+    attr_accessor :gated_codes
+
     attr_accessor :gift_certificate
 
     attr_accessor :google_product_search
@@ -156,6 +159,7 @@ module UltracartClient
         :'email_notifications' => :'email_notifications',
         :'enrollment123' => :'enrollment123',
         :'fulfillment_addons' => :'fulfillment_addons',
+        :'gated_codes' => :'gated_codes',
         :'gift_certificate' => :'gift_certificate',
         :'google_product_search' => :'google_product_search',
         :'identifiers' => :'identifiers',
@@ -218,6 +222,7 @@ module UltracartClient
         :'email_notifications' => :'ItemEmailNotifications',
         :'enrollment123' => :'ItemEnrollment123',
         :'fulfillment_addons' => :'Array<ItemFulfillmentAddon>',
+        :'gated_codes' => :'Array<ItemGatedCode>',
         :'gift_certificate' => :'ItemGiftCertificate',
         :'google_product_search' => :'ItemGoogleProductSearch',
         :'identifiers' => :'ItemIdentifiers',
@@ -342,6 +347,12 @@ module UltracartClient
       if attributes.key?(:'fulfillment_addons')
         if (value = attributes[:'fulfillment_addons']).is_a?(Array)
           self.fulfillment_addons = value
+        end
+      end
+
+      if attributes.key?(:'gated_codes')
+        if (value = attributes[:'gated_codes']).is_a?(Array)
+          self.gated_codes = value
         end
       end
 
@@ -575,6 +586,7 @@ module UltracartClient
           email_notifications == o.email_notifications &&
           enrollment123 == o.enrollment123 &&
           fulfillment_addons == o.fulfillment_addons &&
+          gated_codes == o.gated_codes &&
           gift_certificate == o.gift_certificate &&
           google_product_search == o.google_product_search &&
           identifiers == o.identifiers &&
@@ -621,7 +633,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accounting, amember, auto_order, ccbill, channel_partner_item_mappings, chargeback, checkout, content, creation_dts, description, description_translated_text_instance_oid, digital_delivery, ebay, email_notifications, enrollment123, fulfillment_addons, gift_certificate, google_product_search, identifiers, inactive, instant_payment_notifications, internal, kit, kit_component_only, kit_definition, last_modified_dts, merchant_id, merchant_item_id, merchant_item_oid, options, parent_category_id, parent_category_path, payment_processing, physical, pricing, properties, realtime_pricing, recommend_replenishment_days, related, reporting, restriction, revguard, reviews, salesforce, shipping, tags, tax, third_party_email_marketing, variant_items, variations, wishlist_member].hash
+      [accounting, amember, auto_order, ccbill, channel_partner_item_mappings, chargeback, checkout, content, creation_dts, description, description_translated_text_instance_oid, digital_delivery, ebay, email_notifications, enrollment123, fulfillment_addons, gated_codes, gift_certificate, google_product_search, identifiers, inactive, instant_payment_notifications, internal, kit, kit_component_only, kit_definition, last_modified_dts, merchant_id, merchant_item_id, merchant_item_oid, options, parent_category_id, parent_category_path, payment_processing, physical, pricing, properties, realtime_pricing, recommend_replenishment_days, related, reporting, restriction, revguard, reviews, salesforce, shipping, tags, tax, third_party_email_marketing, variant_items, variations, wishlist_member].hash
     end
 
     # Builds the object from hash
