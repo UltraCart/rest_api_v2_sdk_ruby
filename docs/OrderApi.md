@@ -15,6 +15,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**generate_order_token**](OrderApi.md#generate_order_token) | **GET** /order/orders/token/{order_id} | Generate an order token for a given order id |
 | [**generate_packing_slip_all_dc**](OrderApi.md#generate_packing_slip_all_dc) | **GET** /order/orders/{order_id}/packing_slip | Generate a packing slip for this order across all distribution centers. |
 | [**generate_packing_slip_specific_dc**](OrderApi.md#generate_packing_slip_specific_dc) | **GET** /order/orders/{order_id}/packing_slip/{distribution_center_code} | Generate a packing slip for this order for the given distribution center. |
+| [**get_accounts_receivable_detail_value_histogram**](OrderApi.md#get_accounts_receivable_detail_value_histogram) | **GET** /order/accounts_receivable/detail_value_histogram | Retrieve a value histogram for a given AR transaction-detail name |
+| [**get_accounts_receivable_gateway_detail_names**](OrderApi.md#get_accounts_receivable_gateway_detail_names) | **GET** /order/accounts_receivable/gateway_detail_names | Retrieve gateway / detail-name picker data for the AR filter modal |
 | [**get_accounts_receivable_retry_config**](OrderApi.md#get_accounts_receivable_retry_config) | **GET** /order/accountsReceivableRetryConfig | Retrieve A/R Retry Configuration |
 | [**get_accounts_receivable_retry_stats**](OrderApi.md#get_accounts_receivable_retry_stats) | **GET** /order/accountsReceivableRetryConfig/stats | Retrieve A/R Retry Statistics |
 | [**get_order**](OrderApi.md#get_order) | **GET** /order/orders/{order_id} | Retrieve an order |
@@ -849,6 +851,111 @@ end
 ### Return type
 
 [**OrderPackingSlipResponse**](OrderPackingSlipResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_accounts_receivable_detail_value_histogram
+
+> get_accounts_receivable_detail_value_histogram(detail, opts)
+
+Retrieve a value histogram for a given AR transaction-detail name
+
+For the calling merchant's Accounts Receivable orders, returns a value -> document-count histogram for the named transaction detail, optionally scoped to transactions on the named gateway. Drives the AR filter modal's autocomplete on the detail-value input. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_accounts_receivable_detail_value_histogram_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> get_accounts_receivable_detail_value_histogram_with_http_info(detail, opts)
+
+```ruby
+begin
+  # Retrieve a value histogram for a given AR transaction-detail name
+  data, status_code, headers = api_instance.get_accounts_receivable_detail_value_histogram_with_http_info(detail, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->get_accounts_receivable_detail_value_histogram_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **detail** | **String** | The transaction-detail name to histogram. |  |
+| **gateway** | **String** | The gateway name to scope to (optional). | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_accounts_receivable_gateway_detail_names
+
+> get_accounts_receivable_gateway_detail_names
+
+Retrieve gateway / detail-name picker data for the AR filter modal
+
+For the calling merchant's Accounts Receivable orders, returns the distinct payment gateway names paired with the set of transaction-detail names observed on those gateways. Drives the cascading gateway / detail-name pickers in the AR filter modal. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_accounts_receivable_gateway_detail_names_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> get_accounts_receivable_gateway_detail_names_with_http_info
+
+```ruby
+begin
+  # Retrieve gateway / detail-name picker data for the AR filter modal
+  data, status_code, headers = api_instance.get_accounts_receivable_gateway_detail_names_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->get_accounts_receivable_gateway_detail_names_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 

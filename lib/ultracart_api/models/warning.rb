@@ -18,6 +18,9 @@ module UltracartClient
     # Additional information often a link to additional documentation
     attr_accessor :more_info
 
+    # A stable machine-readable code identifying the warning. See API docs for known values.
+    attr_accessor :warning_code
+
     # A technical message meant to be read by a developer
     attr_accessor :warning_message
 
@@ -25,6 +28,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'more_info' => :'more_info',
+        :'warning_code' => :'warning_code',
         :'warning_message' => :'warning_message'
       }
     end
@@ -38,6 +42,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'more_info' => :'String',
+        :'warning_code' => :'String',
         :'warning_message' => :'String'
       }
     end
@@ -67,6 +72,10 @@ module UltracartClient
         self.more_info = attributes[:'more_info']
       end
 
+      if attributes.key?(:'warning_code')
+        self.warning_code = attributes[:'warning_code']
+      end
+
       if attributes.key?(:'warning_message')
         self.warning_message = attributes[:'warning_message']
       end
@@ -91,6 +100,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           more_info == o.more_info &&
+          warning_code == o.warning_code &&
           warning_message == o.warning_message
     end
 
@@ -103,7 +113,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [more_info, warning_message].hash
+      [more_info, warning_code, warning_message].hash
     end
 
     # Builds the object from hash

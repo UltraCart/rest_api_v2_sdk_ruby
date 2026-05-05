@@ -785,6 +785,132 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Retrieve a value histogram for a given AR transaction-detail name
+    # For the calling merchant's Accounts Receivable orders, returns a value -> document-count histogram for the named transaction detail, optionally scoped to transactions on the named gateway. Drives the AR filter modal's autocomplete on the detail-value input. 
+    # @param detail [String] The transaction-detail name to histogram.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :gateway The gateway name to scope to (optional).
+    # @return [nil]
+    def get_accounts_receivable_detail_value_histogram(detail, opts = {})
+      get_accounts_receivable_detail_value_histogram_with_http_info(detail, opts)
+      nil
+    end
+
+    # Retrieve a value histogram for a given AR transaction-detail name
+    # For the calling merchant&#39;s Accounts Receivable orders, returns a value -&gt; document-count histogram for the named transaction detail, optionally scoped to transactions on the named gateway. Drives the AR filter modal&#39;s autocomplete on the detail-value input. 
+    # @param detail [String] The transaction-detail name to histogram.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :gateway The gateway name to scope to (optional).
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def get_accounts_receivable_detail_value_histogram_with_http_info(detail, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.get_accounts_receivable_detail_value_histogram ...'
+      end
+      # verify the required parameter 'detail' is set
+      if @api_client.config.client_side_validation && detail.nil?
+        fail ArgumentError, "Missing the required parameter 'detail' when calling OrderApi.get_accounts_receivable_detail_value_histogram"
+      end
+      # resource path
+      local_var_path = '/order/accounts_receivable/detail_value_histogram'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'detail'] = detail
+      query_params[:'gateway'] = opts[:'gateway'] if !opts[:'gateway'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"OrderApi.get_accounts_receivable_detail_value_histogram",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#get_accounts_receivable_detail_value_histogram\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve gateway / detail-name picker data for the AR filter modal
+    # For the calling merchant's Accounts Receivable orders, returns the distinct payment gateway names paired with the set of transaction-detail names observed on those gateways. Drives the cascading gateway / detail-name pickers in the AR filter modal. 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def get_accounts_receivable_gateway_detail_names(opts = {})
+      get_accounts_receivable_gateway_detail_names_with_http_info(opts)
+      nil
+    end
+
+    # Retrieve gateway / detail-name picker data for the AR filter modal
+    # For the calling merchant&#39;s Accounts Receivable orders, returns the distinct payment gateway names paired with the set of transaction-detail names observed on those gateways. Drives the cascading gateway / detail-name pickers in the AR filter modal. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def get_accounts_receivable_gateway_detail_names_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.get_accounts_receivable_gateway_detail_names ...'
+      end
+      # resource path
+      local_var_path = '/order/accounts_receivable/gateway_detail_names'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"OrderApi.get_accounts_receivable_gateway_detail_names",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#get_accounts_receivable_gateway_detail_names\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve A/R Retry Configuration
     # Retrieve A/R Retry Configuration. This is primarily an internal API call.  It is doubtful you would ever need to use it. 
     # @param [Hash] opts the optional parameters
