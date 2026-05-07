@@ -24,6 +24,9 @@ module UltracartClient
     # Cancellation mode.  'end' soft-cancels the item by setting no_order_after_dts to the current time, preserving the row for reporting.  'remove' hard-deletes the item from the auto order.  Defaults to 'end' (the less destructive option) when omitted.
     attr_accessor :mode
 
+    # Date/time that will be used in an END mode (optional)
+    attr_accessor :no_orders_after_dts
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -51,7 +54,8 @@ module UltracartClient
       {
         :'append_items' => :'append_items',
         :'auto_order_item_oid' => :'auto_order_item_oid',
-        :'mode' => :'mode'
+        :'mode' => :'mode',
+        :'no_orders_after_dts' => :'no_orders_after_dts'
       }
     end
 
@@ -65,7 +69,8 @@ module UltracartClient
       {
         :'append_items' => :'Array<AutoOrderItem>',
         :'auto_order_item_oid' => :'Integer',
-        :'mode' => :'String'
+        :'mode' => :'String',
+        :'no_orders_after_dts' => :'String'
       }
     end
 
@@ -103,6 +108,10 @@ module UltracartClient
       if attributes.key?(:'mode')
         self.mode = attributes[:'mode']
       end
+
+      if attributes.key?(:'no_orders_after_dts')
+        self.no_orders_after_dts = attributes[:'no_orders_after_dts']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -137,7 +146,8 @@ module UltracartClient
       self.class == o.class &&
           append_items == o.append_items &&
           auto_order_item_oid == o.auto_order_item_oid &&
-          mode == o.mode
+          mode == o.mode &&
+          no_orders_after_dts == o.no_orders_after_dts
     end
 
     # @see the `==` method
@@ -149,7 +159,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [append_items, auto_order_item_oid, mode].hash
+      [append_items, auto_order_item_oid, mode, no_orders_after_dts].hash
     end
 
     # Builds the object from hash
