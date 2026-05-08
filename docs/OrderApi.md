@@ -23,6 +23,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_order_by_token**](OrderApi.md#get_order_by_token) | **POST** /order/orders/token | Retrieve an order using a token |
 | [**get_order_edi_documents**](OrderApi.md#get_order_edi_documents) | **GET** /order/orders/{order_id}/edi | Retrieve EDI documents associated with this order. |
 | [**get_order_emails**](OrderApi.md#get_order_emails) | **GET** /order/orders/{order_id}/emails | Retrieve email delivery information for this order. |
+| [**get_order_page_view_history**](OrderApi.md#get_order_page_view_history) | **GET** /order/orders/{order_id}/page_view_history | Retrieve page view history for this order. |
 | [**get_order_upsell_cart**](OrderApi.md#get_order_upsell_cart) | **PUT** /order/orders/{order_id}/upsell_with_cart | Get Order Upsell Cart |
 | [**get_orders**](OrderApi.md#get_orders) | **GET** /order/orders | Retrieve orders |
 | [**get_orders_batch**](OrderApi.md#get_orders_batch) | **POST** /order/orders/batch | Retrieve order batch |
@@ -1402,6 +1403,59 @@ end
 ### Return type
 
 [**OrderEmailsResponse**](OrderEmailsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_order_page_view_history
+
+> <OrderPageViewHistoryResponse> get_order_page_view_history(order_id)
+
+Retrieve page view history for this order.
+
+Retrieves the page views captured during the session that placed this order. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_order_page_view_history_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OrderPageViewHistoryResponse>, Integer, Hash)> get_order_page_view_history_with_http_info(order_id)
+
+```ruby
+begin
+  # Retrieve page view history for this order.
+  data, status_code, headers = api_instance.get_order_page_view_history_with_http_info(order_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OrderPageViewHistoryResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->get_order_page_view_history_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **order_id** | **String** | The order id to retrieve page view history for. |  |
+
+### Return type
+
+[**OrderPageViewHistoryResponse**](OrderPageViewHistoryResponse.md)
 
 ### Authorization
 

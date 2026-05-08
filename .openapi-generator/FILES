@@ -782,6 +782,10 @@ docs/OrderItemTag.md
 docs/OrderLinkedShipment.md
 docs/OrderMarketing.md
 docs/OrderPackingSlipResponse.md
+docs/OrderPageView.md
+docs/OrderPageViewHistoryResponse.md
+docs/OrderPageViewMetaData.md
+docs/OrderPageViewParam.md
 docs/OrderPayment.md
 docs/OrderPaymentCheck.md
 docs/OrderPaymentCreditCard.md
@@ -1794,6 +1798,10 @@ lib/ultracart_api/models/order_item_tag.rb
 lib/ultracart_api/models/order_linked_shipment.rb
 lib/ultracart_api/models/order_marketing.rb
 lib/ultracart_api/models/order_packing_slip_response.rb
+lib/ultracart_api/models/order_page_view.rb
+lib/ultracart_api/models/order_page_view_history_response.rb
+lib/ultracart_api/models/order_page_view_meta_data.rb
+lib/ultracart_api/models/order_page_view_param.rb
 lib/ultracart_api/models/order_payment.rb
 lib/ultracart_api/models/order_payment_check.rb
 lib/ultracart_api/models/order_payment_credit_card.rb
