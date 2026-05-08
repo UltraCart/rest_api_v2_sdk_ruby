@@ -22,6 +22,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_order**](OrderApi.md#get_order) | **GET** /order/orders/{order_id} | Retrieve an order |
 | [**get_order_by_token**](OrderApi.md#get_order_by_token) | **POST** /order/orders/token | Retrieve an order using a token |
 | [**get_order_edi_documents**](OrderApi.md#get_order_edi_documents) | **GET** /order/orders/{order_id}/edi | Retrieve EDI documents associated with this order. |
+| [**get_order_emails**](OrderApi.md#get_order_emails) | **GET** /order/orders/{order_id}/emails | Retrieve email delivery information for this order. |
 | [**get_order_upsell_cart**](OrderApi.md#get_order_upsell_cart) | **PUT** /order/orders/{order_id}/upsell_with_cart | Get Order Upsell Cart |
 | [**get_orders**](OrderApi.md#get_orders) | **GET** /order/orders | Retrieve orders |
 | [**get_orders_batch**](OrderApi.md#get_orders_batch) | **POST** /order/orders/batch | Retrieve order batch |
@@ -1348,6 +1349,59 @@ end
 ### Return type
 
 [**OrderEdiDocumentsResponse**](OrderEdiDocumentsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_order_emails
+
+> <OrderEmailsResponse> get_order_emails(order_id)
+
+Retrieve email delivery information for this order.
+
+Retrieves email delivery records associated with the specified order id. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_order_emails_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OrderEmailsResponse>, Integer, Hash)> get_order_emails_with_http_info(order_id)
+
+```ruby
+begin
+  # Retrieve email delivery information for this order.
+  data, status_code, headers = api_instance.get_order_emails_with_http_info(order_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OrderEmailsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->get_order_emails_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **order_id** | **String** | The order id to retrieve email delivery information for. |  |
+
+### Return type
+
+[**OrderEmailsResponse**](OrderEmailsResponse.md)
 
 ### Authorization
 

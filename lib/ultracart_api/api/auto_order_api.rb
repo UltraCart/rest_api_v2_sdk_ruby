@@ -458,6 +458,70 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Retrieve email delivery information for this auto order.
+    # Retrieves email delivery records associated with the specified auto order. 
+    # @param auto_order_oid [Integer] The auto order oid to retrieve email delivery information for.
+    # @param [Hash] opts the optional parameters
+    # @return [AutoOrderEmailsResponse]
+    def get_auto_order_emails(auto_order_oid, opts = {})
+      data, _status_code, _headers = get_auto_order_emails_with_http_info(auto_order_oid, opts)
+      data
+    end
+
+    # Retrieve email delivery information for this auto order.
+    # Retrieves email delivery records associated with the specified auto order. 
+    # @param auto_order_oid [Integer] The auto order oid to retrieve email delivery information for.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AutoOrderEmailsResponse, Integer, Hash)>] AutoOrderEmailsResponse data, response status code and response headers
+    def get_auto_order_emails_with_http_info(auto_order_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AutoOrderApi.get_auto_order_emails ...'
+      end
+      # verify the required parameter 'auto_order_oid' is set
+      if @api_client.config.client_side_validation && auto_order_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'auto_order_oid' when calling AutoOrderApi.get_auto_order_emails"
+      end
+      # resource path
+      local_var_path = '/auto_order/auto_orders/{auto_order_oid}/emails'.sub('{' + 'auto_order_oid' + '}', CGI.escape(auto_order_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AutoOrderEmailsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AutoOrderApi.get_auto_order_emails",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AutoOrderApi#get_auto_order_emails\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve auto orders
     # Retrieves auto orders from the account.  If no parameters are specified, all auto orders will be returned.  You will need to make multiple API calls in order to retrieve the entire result set since this API performs result set pagination. 
     # @param [Hash] opts the optional parameters

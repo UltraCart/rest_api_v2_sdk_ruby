@@ -51,6 +51,9 @@ module UltracartClient
     # The date/time the auto order was disabled due to failed rebills
     attr_accessor :disabled_dts
 
+    # Email delivery records associated with this auto order.
+    attr_accessor :emails
+
     # True if this auto order is enabled
     attr_accessor :enabled
 
@@ -134,6 +137,7 @@ module UltracartClient
         :'completed' => :'completed',
         :'credit_card_attempt' => :'credit_card_attempt',
         :'disabled_dts' => :'disabled_dts',
+        :'emails' => :'emails',
         :'enabled' => :'enabled',
         :'failure_reason' => :'failure_reason',
         :'items' => :'items',
@@ -173,6 +177,7 @@ module UltracartClient
         :'completed' => :'Boolean',
         :'credit_card_attempt' => :'Integer',
         :'disabled_dts' => :'String',
+        :'emails' => :'Array<AutoOrderEmail>',
         :'enabled' => :'Boolean',
         :'failure_reason' => :'String',
         :'items' => :'Array<AutoOrderItem>',
@@ -261,6 +266,12 @@ module UltracartClient
 
       if attributes.key?(:'disabled_dts')
         self.disabled_dts = attributes[:'disabled_dts']
+      end
+
+      if attributes.key?(:'emails')
+        if (value = attributes[:'emails']).is_a?(Array)
+          self.emails = value
+        end
       end
 
       if attributes.key?(:'enabled')
@@ -378,6 +389,7 @@ module UltracartClient
           completed == o.completed &&
           credit_card_attempt == o.credit_card_attempt &&
           disabled_dts == o.disabled_dts &&
+          emails == o.emails &&
           enabled == o.enabled &&
           failure_reason == o.failure_reason &&
           items == o.items &&
@@ -405,7 +417,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_ons, auto_order_code, auto_order_oid, cancel_after_next_x_orders, cancel_downgrade, cancel_reason, cancel_upgrade, canceled_by_user, canceled_dts, completed, credit_card_attempt, disabled_dts, enabled, failure_reason, items, logs, management, merchant_id, merged_dts, merged_into_auto_order_oid, next_attempt, original_order, original_order_id, override_affiliate_id, properties, rebill_orders, rotating_transaction_gateway_code, status].hash
+      [add_ons, auto_order_code, auto_order_oid, cancel_after_next_x_orders, cancel_downgrade, cancel_reason, cancel_upgrade, canceled_by_user, canceled_dts, completed, credit_card_attempt, disabled_dts, emails, enabled, failure_reason, items, logs, management, merchant_id, merged_dts, merged_into_auto_order_oid, next_attempt, original_order, original_order_id, override_affiliate_id, properties, rebill_orders, rotating_transaction_gateway_code, status].hash
     end
 
     # Builds the object from hash

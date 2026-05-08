@@ -35,6 +35,8 @@ docs/AutoOrderAddonItemOption.md
 docs/AutoOrderAddonItemsUpdateRequest.md
 docs/AutoOrderApi.md
 docs/AutoOrderConsolidate.md
+docs/AutoOrderEmail.md
+docs/AutoOrderEmailsResponse.md
 docs/AutoOrderItem.md
 docs/AutoOrderItemCancelRequest.md
 docs/AutoOrderItemFutureSchedule.md
@@ -760,6 +762,8 @@ docs/OrderDigitalOrder.md
 docs/OrderEdi.md
 docs/OrderEdiDocument.md
 docs/OrderEdiDocumentsResponse.md
+docs/OrderEmail.md
+docs/OrderEmailsResponse.md
 docs/OrderFormat.md
 docs/OrderFormatResponse.md
 docs/OrderFraudScore.md
@@ -1056,6 +1060,8 @@ lib/ultracart_api/models/auto_order_addon_item.rb
 lib/ultracart_api/models/auto_order_addon_item_option.rb
 lib/ultracart_api/models/auto_order_addon_items_update_request.rb
 lib/ultracart_api/models/auto_order_consolidate.rb
+lib/ultracart_api/models/auto_order_email.rb
+lib/ultracart_api/models/auto_order_emails_response.rb
 lib/ultracart_api/models/auto_order_item.rb
 lib/ultracart_api/models/auto_order_item_cancel_request.rb
 lib/ultracart_api/models/auto_order_item_future_schedule.rb
@@ -1768,6 +1774,8 @@ lib/ultracart_api/models/order_digital_order.rb
 lib/ultracart_api/models/order_edi.rb
 lib/ultracart_api/models/order_edi_document.rb
 lib/ultracart_api/models/order_edi_documents_response.rb
+lib/ultracart_api/models/order_email.rb
+lib/ultracart_api/models/order_emails_response.rb
 lib/ultracart_api/models/order_format.rb
 lib/ultracart_api/models/order_format_response.rb
 lib/ultracart_api/models/order_fraud_score.rb

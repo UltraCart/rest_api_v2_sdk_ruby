@@ -49,6 +49,9 @@ module UltracartClient
 
     attr_accessor :edi
 
+    # Email delivery records associated with this order.
+    attr_accessor :emails
+
     # Exchange rate at the time the order was placed if currency code is different than the base currency
     attr_accessor :exchange_rate
 
@@ -150,6 +153,7 @@ module UltracartClient
         :'customer_profile' => :'customer_profile',
         :'digital_order' => :'digital_order',
         :'edi' => :'edi',
+        :'emails' => :'emails',
         :'exchange_rate' => :'exchange_rate',
         :'fraud_score' => :'fraud_score',
         :'gift' => :'gift',
@@ -200,6 +204,7 @@ module UltracartClient
         :'customer_profile' => :'Customer',
         :'digital_order' => :'OrderDigitalOrder',
         :'edi' => :'OrderEdi',
+        :'emails' => :'Array<OrderEmail>',
         :'exchange_rate' => :'Float',
         :'fraud_score' => :'OrderFraudScore',
         :'gift' => :'OrderGift',
@@ -309,6 +314,12 @@ module UltracartClient
 
       if attributes.key?(:'edi')
         self.edi = attributes[:'edi']
+      end
+
+      if attributes.key?(:'emails')
+        if (value = attributes[:'emails']).is_a?(Array)
+          self.emails = value
+        end
       end
 
       if attributes.key?(:'exchange_rate')
@@ -494,6 +505,7 @@ module UltracartClient
           customer_profile == o.customer_profile &&
           digital_order == o.digital_order &&
           edi == o.edi &&
+          emails == o.emails &&
           exchange_rate == o.exchange_rate &&
           fraud_score == o.fraud_score &&
           gift == o.gift &&
@@ -530,7 +542,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [affiliates, auto_order, billing, buysafe, channel_partner, checkout, coupons, creation_dts, currency_code, current_stage, current_stage_histories, customer_profile, digital_order, edi, exchange_rate, fraud_score, gift, gift_certificate, internal, items, language_iso_code, linked_shipment, marketing, merchant_id, order_id, payment, point_of_sale, properties, quote, refund_dts, refund_reason, reject_dts, reject_reason, salesforce, shipping, summary, tags, taxes, utms].hash
+      [affiliates, auto_order, billing, buysafe, channel_partner, checkout, coupons, creation_dts, currency_code, current_stage, current_stage_histories, customer_profile, digital_order, edi, emails, exchange_rate, fraud_score, gift, gift_certificate, internal, items, language_iso_code, linked_shipment, marketing, merchant_id, order_id, payment, point_of_sale, properties, quote, refund_dts, refund_reason, reject_dts, reject_reason, salesforce, shipping, summary, tags, taxes, utms].hash
     end
 
     # Builds the object from hash

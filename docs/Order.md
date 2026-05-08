@@ -18,6 +18,7 @@
 | **customer_profile** | [**Customer**](Customer.md) |  | [optional] |
 | **digital_order** | [**OrderDigitalOrder**](OrderDigitalOrder.md) |  | [optional] |
 | **edi** | [**OrderEdi**](OrderEdi.md) |  | [optional] |
+| **emails** | [**Array&lt;OrderEmail&gt;**](OrderEmail.md) | Email delivery records associated with this order. | [optional] |
 | **exchange_rate** | **Float** | Exchange rate at the time the order was placed if currency code is different than the base currency | [optional] |
 | **fraud_score** | [**OrderFraudScore**](OrderFraudScore.md) |  | [optional] |
 | **gift** | [**OrderGift**](OrderGift.md) |  | [optional] |
@@ -64,6 +65,7 @@ instance = UltracartClient::Order.new(
   customer_profile: null,
   digital_order: null,
   edi: null,
+  emails: null,
   exchange_rate: null,
   fraud_score: null,
   gift: null,
