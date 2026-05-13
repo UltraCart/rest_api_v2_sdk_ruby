@@ -165,6 +165,64 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Retrieve webhook event categories
+    # Retrieves the available webhook event categories and events with backend-owned metadata (OIDs, names, descriptions, available expansions, flags) independent of whether any webhooks are saved.  Used by the New Webhook editor so a merchant with zero webhooks can still see the catalog. 
+    # @param [Hash] opts the optional parameters
+    # @return [WebhookEventCategoriesResponse]
+    def get_webhook_event_categories(opts = {})
+      data, _status_code, _headers = get_webhook_event_categories_with_http_info(opts)
+      data
+    end
+
+    # Retrieve webhook event categories
+    # Retrieves the available webhook event categories and events with backend-owned metadata (OIDs, names, descriptions, available expansions, flags) independent of whether any webhooks are saved.  Used by the New Webhook editor so a merchant with zero webhooks can still see the catalog. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(WebhookEventCategoriesResponse, Integer, Hash)>] WebhookEventCategoriesResponse data, response status code and response headers
+    def get_webhook_event_categories_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: WebhookApi.get_webhook_event_categories ...'
+      end
+      # resource path
+      local_var_path = '/webhook/webhook_event_categories'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'WebhookEventCategoriesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"WebhookApi.get_webhook_event_categories",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: WebhookApi#get_webhook_event_categories\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve an individual log
     # Retrieves an individual log for a webhook given the webhook oid the request id. 
     # @param webhook_oid [Integer] The webhook oid that owns the log.

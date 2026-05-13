@@ -6,6 +6,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | ------ | ------------ | ----------- |
 | [**delete_webhook**](WebhookApi.md#delete_webhook) | **DELETE** /webhook/webhooks/{webhookOid} | Delete a webhook |
 | [**delete_webhook_by_url**](WebhookApi.md#delete_webhook_by_url) | **DELETE** /webhook/webhooks | Delete a webhook by URL |
+| [**get_webhook_event_categories**](WebhookApi.md#get_webhook_event_categories) | **GET** /webhook/webhook_event_categories | Retrieve webhook event categories |
 | [**get_webhook_log**](WebhookApi.md#get_webhook_log) | **GET** /webhook/webhooks/{webhookOid}/logs/{requestId} | Retrieve an individual log |
 | [**get_webhook_log_summaries**](WebhookApi.md#get_webhook_log_summaries) | **GET** /webhook/webhooks/{webhookOid}/logs | Retrieve the log summaries |
 | [**get_webhooks**](WebhookApi.md#get_webhooks) | **GET** /webhook/webhooks | Retrieve webhooks |
@@ -150,6 +151,57 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## get_webhook_event_categories
+
+> <WebhookEventCategoriesResponse> get_webhook_event_categories
+
+Retrieve webhook event categories
+
+Retrieves the available webhook event categories and events with backend-owned metadata (OIDs, names, descriptions, available expansions, flags) independent of whether any webhooks are saved.  Used by the New Webhook editor so a merchant with zero webhooks can still see the catalog. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_webhook_event_categories_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<WebhookEventCategoriesResponse>, Integer, Hash)> get_webhook_event_categories_with_http_info
+
+```ruby
+begin
+  # Retrieve webhook event categories
+  data, status_code, headers = api_instance.get_webhook_event_categories_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <WebhookEventCategoriesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling WebhookApi->get_webhook_event_categories_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**WebhookEventCategoriesResponse**](WebhookEventCategoriesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 

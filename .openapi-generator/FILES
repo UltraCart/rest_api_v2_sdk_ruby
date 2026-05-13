@@ -980,6 +980,7 @@ docs/VerificationRecord.md
 docs/Warning.md
 docs/Webhook.md
 docs/WebhookApi.md
+docs/WebhookEventCategoriesResponse.md
 docs/WebhookEventCategory.md
 docs/WebhookEventSubscription.md
 docs/WebhookLog.md
@@ -1991,6 +1992,7 @@ lib/ultracart_api/models/users_response.rb
 lib/ultracart_api/models/verification_record.rb
 lib/ultracart_api/models/warning.rb
 lib/ultracart_api/models/webhook.rb
+lib/ultracart_api/models/webhook_event_categories_response.rb
 lib/ultracart_api/models/webhook_event_category.rb
 lib/ultracart_api/models/webhook_event_subscription.rb
 lib/ultracart_api/models/webhook_log.rb
