@@ -34,6 +34,8 @@ docs/AutoOrderAddonItem.md
 docs/AutoOrderAddonItemOption.md
 docs/AutoOrderAddonItemsUpdateRequest.md
 docs/AutoOrderApi.md
+docs/AutoOrderCancelReason.md
+docs/AutoOrderCancelReasonsResponse.md
 docs/AutoOrderConsolidate.md
 docs/AutoOrderEmail.md
 docs/AutoOrderEmailsResponse.md
@@ -1064,6 +1066,8 @@ lib/ultracart_api/models/auto_order.rb
 lib/ultracart_api/models/auto_order_addon_item.rb
 lib/ultracart_api/models/auto_order_addon_item_option.rb
 lib/ultracart_api/models/auto_order_addon_items_update_request.rb
+lib/ultracart_api/models/auto_order_cancel_reason.rb
+lib/ultracart_api/models/auto_order_cancel_reasons_response.rb
 lib/ultracart_api/models/auto_order_consolidate.rb
 lib/ultracart_api/models/auto_order_email.rb
 lib/ultracart_api/models/auto_order_emails_response.rb

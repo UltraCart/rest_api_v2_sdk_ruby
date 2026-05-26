@@ -10,6 +10,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_auto_order**](AutoOrderApi.md#get_auto_order) | **GET** /auto_order/auto_orders/{auto_order_oid} | Retrieve an auto order by oid |
 | [**get_auto_order_by_code**](AutoOrderApi.md#get_auto_order_by_code) | **GET** /auto_order/auto_orders/code/{auto_order_code} | Retrieve an auto order by code |
 | [**get_auto_order_by_reference_order_id**](AutoOrderApi.md#get_auto_order_by_reference_order_id) | **GET** /auto_order/auto_orders/reference_order_id/{reference_order_id} | Retrieve an auto order by order id |
+| [**get_auto_order_cancel_reasons**](AutoOrderApi.md#get_auto_order_cancel_reasons) | **GET** /auto_order/auto_orders/cancel_reasons | Retrieve auto order cancel reasons. |
 | [**get_auto_order_emails**](AutoOrderApi.md#get_auto_order_emails) | **GET** /auto_order/auto_orders/{auto_order_oid}/emails | Retrieve email delivery information for this auto order. |
 | [**get_auto_orders**](AutoOrderApi.md#get_auto_orders) | **GET** /auto_order/auto_orders | Retrieve auto orders |
 | [**get_auto_orders_batch**](AutoOrderApi.md#get_auto_orders_batch) | **POST** /auto_order/auto_orders/batch | Retrieve auto order batch |
@@ -556,6 +557,57 @@ end
 ### Return type
 
 [**AutoOrderResponse**](AutoOrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_auto_order_cancel_reasons
+
+> <AutoOrderCancelReasonsResponse> get_auto_order_cancel_reasons
+
+Retrieve auto order cancel reasons.
+
+Retrieves auto order cancel reasons. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_auto_order_cancel_reasons_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AutoOrderCancelReasonsResponse>, Integer, Hash)> get_auto_order_cancel_reasons_with_http_info
+
+```ruby
+begin
+  # Retrieve auto order cancel reasons.
+  data, status_code, headers = api_instance.get_auto_order_cancel_reasons_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AutoOrderCancelReasonsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling AutoOrderApi->get_auto_order_cancel_reasons_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AutoOrderCancelReasonsResponse**](AutoOrderCancelReasonsResponse.md)
 
 ### Authorization
 
