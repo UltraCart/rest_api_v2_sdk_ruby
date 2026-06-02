@@ -1,0 +1,36 @@
+# UltracartClient::ConversationPbxAvailablePhoneNumber
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **address_requirements** | **String** | Address requirements | [optional] |
+| **country** | **String** | ISO country code | [optional] |
+| **friendly_name** | **String** | Friendly formatted phone number | [optional] |
+| **locality** | **String** | City/Locality | [optional] |
+| **mms** | **Boolean** | MMS capability | [optional] |
+| **monthly_cost** | **Float** | Monthly cost for this phone number | [optional] |
+| **phone_number** | **String** | Phone number in E.164 format | [optional] |
+| **region** | **String** | State/Province/Region | [optional] |
+| **sms** | **Boolean** | SMS capability | [optional] |
+| **voice** | **Boolean** | Voice capability | [optional] |
+
+## Example
+
+```ruby
+require 'ultracart_api'
+
+instance = UltracartClient::ConversationPbxAvailablePhoneNumber.new(
+  address_requirements: null,
+  country: null,
+  friendly_name: null,
+  locality: null,
+  mms: null,
+  monthly_cost: null,
+  phone_number: null,
+  region: null,
+  sms: null,
+  voice: null
+)
+```
+

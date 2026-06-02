@@ -1,0 +1,26 @@
+# UltracartClient::ConversationPbxPhoneNumberPurchaseRequest
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **action** | **String** | Initial action for incoming calls | [optional] |
+| **action_target** | **String** | Initial action target UUID | [optional] |
+| **address_sid** | **String** | Address SID if required for regulatory compliance | [optional] |
+| **friendly_name** | **String** | Friendly name for the phone number | [optional] |
+| **phone_number** | **String** | Phone number to purchase in E.164 format (from search results) | [optional] |
+
+## Example
+
+```ruby
+require 'ultracart_api'
+
+instance = UltracartClient::ConversationPbxPhoneNumberPurchaseRequest.new(
+  action: null,
+  action_target: null,
+  address_sid: null,
+  friendly_name: null,
+  phone_number: null
+)
+```
+
