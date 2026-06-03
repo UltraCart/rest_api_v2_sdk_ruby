@@ -32,8 +32,8 @@ module UltracartClient
       UltracartClient::FraudApi.new(api_client)
     end
 
-    # Decline emails during checkout fraud review
-    # Adds one or more email addresses to the fraud decline list for this merchant account. 
+    # Decline email during checkout fraud review
+    # Adds one email address to the fraud decline list for this merchant account. 
     # @param fraud_decline_emails_request [FraudDeclineEmailRequest] Fraud decline emails request
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -42,8 +42,8 @@ module UltracartClient
       nil
     end
 
-    # Decline emails during checkout fraud review
-    # Adds one or more email addresses to the fraud decline list for this merchant account. 
+    # Decline email during checkout fraud review
+    # Adds one email address to the fraud decline list for this merchant account. 
     # @param fraud_decline_emails_request [FraudDeclineEmailRequest] Fraud decline emails request
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
@@ -161,6 +161,75 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: FraudApi#delete_fraud_rule\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Establish fraud rules from an order
+    # Creates one or more fraud rules for this merchant account derived from an existing order, mirroring the 'establish fraud filter' action in the order processing screen. Select which filters to establish; all values are taken from the order. The IP rule is created against the order's /24 subnet (last octet masked). The credit card filter duplicates the order's stored card vault token, so no card number is sent through the API. Filters whose order data is missing (no stored card, no email, no usable IP, or no numeric street) are skipped and reported in the warning slot rather than failing the request. 
+    # @param fraud_rule_from_order_request [FraudRuleFromOrderRequest] Fraud rule from order request
+    # @param [Hash] opts the optional parameters
+    # @return [FraudRulesResponse]
+    def establish_fraud_rules_from_order(fraud_rule_from_order_request, opts = {})
+      data, _status_code, _headers = establish_fraud_rules_from_order_with_http_info(fraud_rule_from_order_request, opts)
+      data
+    end
+
+    # Establish fraud rules from an order
+    # Creates one or more fraud rules for this merchant account derived from an existing order, mirroring the &#39;establish fraud filter&#39; action in the order processing screen. Select which filters to establish; all values are taken from the order. The IP rule is created against the order&#39;s /24 subnet (last octet masked). The credit card filter duplicates the order&#39;s stored card vault token, so no card number is sent through the API. Filters whose order data is missing (no stored card, no email, no usable IP, or no numeric street) are skipped and reported in the warning slot rather than failing the request. 
+    # @param fraud_rule_from_order_request [FraudRuleFromOrderRequest] Fraud rule from order request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(FraudRulesResponse, Integer, Hash)>] FraudRulesResponse data, response status code and response headers
+    def establish_fraud_rules_from_order_with_http_info(fraud_rule_from_order_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: FraudApi.establish_fraud_rules_from_order ...'
+      end
+      # verify the required parameter 'fraud_rule_from_order_request' is set
+      if @api_client.config.client_side_validation && fraud_rule_from_order_request.nil?
+        fail ArgumentError, "Missing the required parameter 'fraud_rule_from_order_request' when calling FraudApi.establish_fraud_rules_from_order"
+      end
+      # resource path
+      local_var_path = '/fraud/rules/from_order'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(fraud_rule_from_order_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'FraudRulesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"FraudApi.establish_fraud_rules_from_order",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: FraudApi#establish_fraud_rules_from_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

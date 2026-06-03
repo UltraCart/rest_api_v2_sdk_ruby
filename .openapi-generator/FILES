@@ -600,8 +600,12 @@ docs/FileManagerUploadRequest.md
 docs/FileManagerUploadUrlResponse.md
 docs/FraudApi.md
 docs/FraudDeclineEmailRequest.md
+docs/FraudLookupAffiliate.md
+docs/FraudLookupGateway.md
+docs/FraudLookupTheme.md
 docs/FraudLookupValues.md
 docs/FraudLookupValuesResponse.md
+docs/FraudRuleFromOrderRequest.md
 docs/FraudRuleInsertRequest.md
 docs/FraudRuleItemFilter.md
 docs/FraudRulePublic.md
@@ -1637,8 +1641,12 @@ lib/ultracart_api/models/file_manager_page_response.rb
 lib/ultracart_api/models/file_manager_upload_request.rb
 lib/ultracart_api/models/file_manager_upload_url_response.rb
 lib/ultracart_api/models/fraud_decline_email_request.rb
+lib/ultracart_api/models/fraud_lookup_affiliate.rb
+lib/ultracart_api/models/fraud_lookup_gateway.rb
+lib/ultracart_api/models/fraud_lookup_theme.rb
 lib/ultracart_api/models/fraud_lookup_values.rb
 lib/ultracart_api/models/fraud_lookup_values_response.rb
+lib/ultracart_api/models/fraud_rule_from_order_request.rb
 lib/ultracart_api/models/fraud_rule_insert_request.rb
 lib/ultracart_api/models/fraud_rule_item_filter.rb
 lib/ultracart_api/models/fraud_rule_public.rb

@@ -14,54 +14,60 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class FraudLookupValues
-    # Affiliates with non-empty email, sorted by email.
-    attr_accessor :affiliates
+  class FraudRuleFromOrderRequest
+    # Note automatically appended to the order's merchant note when these rules fire.
+    attr_accessor :auto_note
 
-    # Valid values for avs_match_type on the 'address street and zip avs' rule type.
-    attr_accessor :avs_match_types
+    # Establish an 'address street and zip avs' rule from the order's ship-to street and zip.
+    attr_accessor :establish_address_filter
 
-    # ISO country codes available to this merchant.
-    attr_accessor :countries
+    # Establish a 'credit card matches' rule by duplicating the order's stored card vault token. Skipped if the order has no stored card.
+    attr_accessor :establish_card_filter
 
-    # Valid values for failure_action on insert and search requests.
-    attr_accessor :failure_actions
+    # Establish an 'address email' rule from the order's email address.
+    attr_accessor :establish_email_filter
 
-    # Valid values for ip_range_type on IP-based rules.
-    attr_accessor :ip_range_types
+    # Establish an 'ip matches' subnet rule from the order's customer IP address (last octet masked to a subnet).
+    attr_accessor :establish_ip_filter
 
-    # True when this merchant has at least one linked merchant account.
-    attr_accessor :linked_accounts
+    # Action to take when these rules fire. Defaults to 'Flag For Review' when omitted.
+    attr_accessor :failure_action
 
-    # Rotating transaction gateways configured for this merchant. Use the oid as a value in rotating_transaction_gateway_filters on insert.
-    attr_accessor :rotating_transaction_gateways
+    # The order id to establish the fraud rule(s) from.
+    attr_accessor :order_id
 
-    # Valid values for rule_group on search requests.
-    attr_accessor :rule_groups
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    # Valid values for rule_type on insert and search requests.
-    attr_accessor :rule_types
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
 
-    # Screen branding themes configured for this merchant. Use the oid as a value in screen_branding_theme_filters on insert.
-    attr_accessor :screen_branding_themes
-
-    # Valid values for user_action on rule types that distinguish between attempted and approved transactions.
-    attr_accessor :user_actions
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'affiliates' => :'affiliates',
-        :'avs_match_types' => :'avs_match_types',
-        :'countries' => :'countries',
-        :'failure_actions' => :'failure_actions',
-        :'ip_range_types' => :'ip_range_types',
-        :'linked_accounts' => :'linked_accounts',
-        :'rotating_transaction_gateways' => :'rotating_transaction_gateways',
-        :'rule_groups' => :'rule_groups',
-        :'rule_types' => :'rule_types',
-        :'screen_branding_themes' => :'screen_branding_themes',
-        :'user_actions' => :'user_actions'
+        :'auto_note' => :'auto_note',
+        :'establish_address_filter' => :'establish_address_filter',
+        :'establish_card_filter' => :'establish_card_filter',
+        :'establish_email_filter' => :'establish_email_filter',
+        :'establish_ip_filter' => :'establish_ip_filter',
+        :'failure_action' => :'failure_action',
+        :'order_id' => :'order_id'
       }
     end
 
@@ -73,17 +79,13 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'affiliates' => :'Array<FraudLookupAffiliate>',
-        :'avs_match_types' => :'Array<String>',
-        :'countries' => :'Array<String>',
-        :'failure_actions' => :'Array<String>',
-        :'ip_range_types' => :'Array<String>',
-        :'linked_accounts' => :'Boolean',
-        :'rotating_transaction_gateways' => :'Array<FraudLookupGateway>',
-        :'rule_groups' => :'Array<String>',
-        :'rule_types' => :'Array<String>',
-        :'screen_branding_themes' => :'Array<FraudLookupTheme>',
-        :'user_actions' => :'Array<String>'
+        :'auto_note' => :'String',
+        :'establish_address_filter' => :'Boolean',
+        :'establish_card_filter' => :'Boolean',
+        :'establish_email_filter' => :'Boolean',
+        :'establish_ip_filter' => :'Boolean',
+        :'failure_action' => :'String',
+        :'order_id' => :'String'
       }
     end
 
@@ -97,79 +99,43 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::FraudLookupValues` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::FraudRuleFromOrderRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::FraudLookupValues`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::FraudRuleFromOrderRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'affiliates')
-        if (value = attributes[:'affiliates']).is_a?(Array)
-          self.affiliates = value
-        end
+      if attributes.key?(:'auto_note')
+        self.auto_note = attributes[:'auto_note']
       end
 
-      if attributes.key?(:'avs_match_types')
-        if (value = attributes[:'avs_match_types']).is_a?(Array)
-          self.avs_match_types = value
-        end
+      if attributes.key?(:'establish_address_filter')
+        self.establish_address_filter = attributes[:'establish_address_filter']
       end
 
-      if attributes.key?(:'countries')
-        if (value = attributes[:'countries']).is_a?(Array)
-          self.countries = value
-        end
+      if attributes.key?(:'establish_card_filter')
+        self.establish_card_filter = attributes[:'establish_card_filter']
       end
 
-      if attributes.key?(:'failure_actions')
-        if (value = attributes[:'failure_actions']).is_a?(Array)
-          self.failure_actions = value
-        end
+      if attributes.key?(:'establish_email_filter')
+        self.establish_email_filter = attributes[:'establish_email_filter']
       end
 
-      if attributes.key?(:'ip_range_types')
-        if (value = attributes[:'ip_range_types']).is_a?(Array)
-          self.ip_range_types = value
-        end
+      if attributes.key?(:'establish_ip_filter')
+        self.establish_ip_filter = attributes[:'establish_ip_filter']
       end
 
-      if attributes.key?(:'linked_accounts')
-        self.linked_accounts = attributes[:'linked_accounts']
+      if attributes.key?(:'failure_action')
+        self.failure_action = attributes[:'failure_action']
       end
 
-      if attributes.key?(:'rotating_transaction_gateways')
-        if (value = attributes[:'rotating_transaction_gateways']).is_a?(Array)
-          self.rotating_transaction_gateways = value
-        end
-      end
-
-      if attributes.key?(:'rule_groups')
-        if (value = attributes[:'rule_groups']).is_a?(Array)
-          self.rule_groups = value
-        end
-      end
-
-      if attributes.key?(:'rule_types')
-        if (value = attributes[:'rule_types']).is_a?(Array)
-          self.rule_types = value
-        end
-      end
-
-      if attributes.key?(:'screen_branding_themes')
-        if (value = attributes[:'screen_branding_themes']).is_a?(Array)
-          self.screen_branding_themes = value
-        end
-      end
-
-      if attributes.key?(:'user_actions')
-        if (value = attributes[:'user_actions']).is_a?(Array)
-          self.user_actions = value
-        end
+      if attributes.key?(:'order_id')
+        self.order_id = attributes[:'order_id']
       end
     end
 
@@ -183,7 +149,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      failure_action_validator = EnumAttributeValidator.new('String', ["Flag For Review", "Process Payment and Modify", "Process Payment and Review", "Decline Transaction", "Exempt"])
+      return false unless failure_action_validator.valid?(@failure_action)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] failure_action Object to be assigned
+    def failure_action=(failure_action)
+      validator = EnumAttributeValidator.new('String', ["Flag For Review", "Process Payment and Modify", "Process Payment and Review", "Decline Transaction", "Exempt"])
+      unless validator.valid?(failure_action)
+        fail ArgumentError, "invalid value for \"failure_action\", must be one of #{validator.allowable_values}."
+      end
+      @failure_action = failure_action
     end
 
     # Checks equality by comparing each attribute.
@@ -191,17 +169,13 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          affiliates == o.affiliates &&
-          avs_match_types == o.avs_match_types &&
-          countries == o.countries &&
-          failure_actions == o.failure_actions &&
-          ip_range_types == o.ip_range_types &&
-          linked_accounts == o.linked_accounts &&
-          rotating_transaction_gateways == o.rotating_transaction_gateways &&
-          rule_groups == o.rule_groups &&
-          rule_types == o.rule_types &&
-          screen_branding_themes == o.screen_branding_themes &&
-          user_actions == o.user_actions
+          auto_note == o.auto_note &&
+          establish_address_filter == o.establish_address_filter &&
+          establish_card_filter == o.establish_card_filter &&
+          establish_email_filter == o.establish_email_filter &&
+          establish_ip_filter == o.establish_ip_filter &&
+          failure_action == o.failure_action &&
+          order_id == o.order_id
     end
 
     # @see the `==` method
@@ -213,7 +187,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [affiliates, avs_match_types, countries, failure_actions, ip_range_types, linked_accounts, rotating_transaction_gateways, rule_groups, rule_types, screen_branding_themes, user_actions].hash
+      [auto_note, establish_address_filter, establish_card_filter, establish_email_filter, establish_ip_filter, failure_action, order_id].hash
     end
 
     # Builds the object from hash

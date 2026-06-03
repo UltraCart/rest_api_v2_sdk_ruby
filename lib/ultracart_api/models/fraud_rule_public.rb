@@ -15,21 +15,27 @@ require 'time'
 
 module UltracartClient
   class FraudRulePublic
+    # Affiliate oid for the 'affiliate matches' rule type.
     attr_accessor :affiliate_oid
 
+    # Monetary or score threshold for amount/score/percentage rule types.
     attr_accessor :amount_threshold
 
+    # Note automatically appended to the order's merchant note when this rule fires.
     attr_accessor :auto_note
 
     attr_accessor :avs_match_type
 
+    # AVS response codes for the 'address street and zip avs' rule type.
     attr_accessor :avs_response_codes
 
     # Masked credit card number for rules tied to a specific card
     attr_accessor :card_number
 
+    # Integer count threshold for count/quantity/hours rule types.
     attr_accessor :count_threshold
 
+    # ISO country code for the 'address not in country' rule type.
     attr_accessor :country_code
 
     attr_accessor :created_by
@@ -40,6 +46,7 @@ module UltracartClient
     # Credit card BINs blocked by the 'credit card block bin' rule type.
     attr_accessor :credit_card_bins
 
+    # Message shown in the A/R review screen when this rule fires.
     attr_accessor :decline_message
 
     # Human-readable description of the rule
@@ -48,6 +55,7 @@ module UltracartClient
     # HTML version of the rule description
     attr_accessor :description_html
 
+    # Email address for the 'address email' rule type.
     attr_accessor :email
 
     # Action taken when this rule fires.
@@ -56,36 +64,51 @@ module UltracartClient
     # UltraCart unique identifier for this fraud rule
     attr_accessor :fraud_rule_oid
 
+    # Gateway response code key for the 'gateway response' rule type.
     attr_accessor :gateway_response_codes
 
+    # Gateway response code value for the 'gateway response' rule type.
     attr_accessor :gateway_response_value
 
+    # IP address or subnet for 'exempt ip' and 'ip matches' rule types.
     attr_accessor :ip_address
 
     attr_accessor :ip_range_type
 
+    # Item filters restricting this rule to orders containing one or more of these items.
     attr_accessor :item_filters
 
+    # Merchant item id for the 'item matches' rule type.
     attr_accessor :merchant_item_id
 
+    # Value the rule sets on order custom field 1 (only meaningful for 'Process Payment and Modify').
     attr_accessor :modify_custom_field1
 
+    # Value the rule sets on order custom field 2 (only meaningful for 'Process Payment and Modify').
     attr_accessor :modify_custom_field2
 
+    # Value the rule sets on order custom field 3 (only meaningful for 'Process Payment and Modify').
     attr_accessor :modify_custom_field3
 
+    # Value the rule sets on order custom field 4 (only meaningful for 'Process Payment and Modify').
     attr_accessor :modify_custom_field4
 
+    # Value the rule sets on order custom field 5 (only meaningful for 'Process Payment and Modify').
     attr_accessor :modify_custom_field5
 
+    # Value the rule sets on order custom field 6 (only meaningful for 'Process Payment and Modify').
     attr_accessor :modify_custom_field6
 
+    # Value the rule sets on order custom field 7 (only meaningful for 'Process Payment and Modify').
     attr_accessor :modify_custom_field7
 
+    # When true, the rule strips the affiliate from the order (only meaningful for 'Process Payment and Modify').
     attr_accessor :modify_skip_affiliate
 
+    # When true, the rule suppresses the affiliate network pixel (only meaningful for 'Process Payment and Modify').
     attr_accessor :modify_skip_affiliate_network_pixel
 
+    # Gateway filters restricting this rule to orders processed by one of these rotating transaction gateways.
     attr_accessor :rotating_transaction_gateway_filters
 
     # Group containing this rule type (eg 'creditCardRules'). Deliberately not constrained by allowableValues on the response so SDK consumers do not hard-fail on an unexpected value if a future rule_type slips through the server-side mapping. Search REQUESTS still restrict rule_group to the known set.
@@ -94,6 +117,7 @@ module UltracartClient
     # Rule type.
     attr_accessor :rule_type
 
+    # Storefront filters restricting this rule to orders placed on one of these storefronts.
     attr_accessor :storefront_filters
 
     attr_accessor :user_action
@@ -181,7 +205,7 @@ module UltracartClient
         :'country_code' => :'String',
         :'created_by' => :'String',
         :'created_dts' => :'String',
-        :'credit_card_bins' => :'Object',
+        :'credit_card_bins' => :'Array<String>',
         :'decline_message' => :'String',
         :'description' => :'String',
         :'description_html' => :'String',
@@ -273,7 +297,9 @@ module UltracartClient
       end
 
       if attributes.key?(:'credit_card_bins')
-        self.credit_card_bins = attributes[:'credit_card_bins']
+        if (value = attributes[:'credit_card_bins']).is_a?(Array)
+          self.credit_card_bins = value
+        end
       end
 
       if attributes.key?(:'decline_message')

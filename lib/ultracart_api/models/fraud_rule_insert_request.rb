@@ -66,22 +66,31 @@ module UltracartClient
     # Merchant item id. Used by the 'item matches' rule type.
     attr_accessor :merchant_item_id
 
+    # When failure_action is 'Process Payment and Modify', set order custom field 1 to this value.
     attr_accessor :modify_custom_field1
 
+    # When failure_action is 'Process Payment and Modify', set order custom field 2 to this value.
     attr_accessor :modify_custom_field2
 
+    # When failure_action is 'Process Payment and Modify', set order custom field 3 to this value.
     attr_accessor :modify_custom_field3
 
+    # When failure_action is 'Process Payment and Modify', set order custom field 4 to this value.
     attr_accessor :modify_custom_field4
 
+    # When failure_action is 'Process Payment and Modify', set order custom field 5 to this value.
     attr_accessor :modify_custom_field5
 
+    # When failure_action is 'Process Payment and Modify', set order custom field 6 to this value.
     attr_accessor :modify_custom_field6
 
+    # When failure_action is 'Process Payment and Modify', set order custom field 7 to this value.
     attr_accessor :modify_custom_field7
 
+    # When failure_action is 'Process Payment and Modify', strip the affiliate from the order.
     attr_accessor :modify_skip_affiliate
 
+    # When failure_action is 'Process Payment and Modify', skip firing the affiliate network pixel.
     attr_accessor :modify_skip_affiliate_network_pixel
 
     # Optional list of rotating transaction gateway oids restricting this rule to orders processed by one of these gateways.
@@ -170,14 +179,14 @@ module UltracartClient
         :'avs_response_codes' => :'String',
         :'count_threshold' => :'Integer',
         :'country_code' => :'String',
-        :'credit_card_bins' => :'Object',
+        :'credit_card_bins' => :'Array<String>',
         :'email' => :'String',
         :'failure_action' => :'String',
         :'gateway_response_codes' => :'String',
         :'gateway_response_value' => :'String',
         :'ip_address' => :'String',
         :'ip_range_type' => :'String',
-        :'item_filters' => :'Object',
+        :'item_filters' => :'Array<String>',
         :'merchant_item_id' => :'String',
         :'modify_custom_field1' => :'String',
         :'modify_custom_field2' => :'String',
@@ -188,9 +197,9 @@ module UltracartClient
         :'modify_custom_field7' => :'String',
         :'modify_skip_affiliate' => :'Boolean',
         :'modify_skip_affiliate_network_pixel' => :'Boolean',
-        :'rotating_transaction_gateway_filters' => :'Object',
+        :'rotating_transaction_gateway_filters' => :'Array<Integer>',
         :'rule_type' => :'String',
-        :'screen_branding_theme_filters' => :'Object',
+        :'screen_branding_theme_filters' => :'Array<Integer>',
         :'user_action' => :'String'
       }
     end
@@ -249,7 +258,9 @@ module UltracartClient
       end
 
       if attributes.key?(:'credit_card_bins')
-        self.credit_card_bins = attributes[:'credit_card_bins']
+        if (value = attributes[:'credit_card_bins']).is_a?(Array)
+          self.credit_card_bins = value
+        end
       end
 
       if attributes.key?(:'email')
@@ -277,7 +288,9 @@ module UltracartClient
       end
 
       if attributes.key?(:'item_filters')
-        self.item_filters = attributes[:'item_filters']
+        if (value = attributes[:'item_filters']).is_a?(Array)
+          self.item_filters = value
+        end
       end
 
       if attributes.key?(:'merchant_item_id')
@@ -321,7 +334,9 @@ module UltracartClient
       end
 
       if attributes.key?(:'rotating_transaction_gateway_filters')
-        self.rotating_transaction_gateway_filters = attributes[:'rotating_transaction_gateway_filters']
+        if (value = attributes[:'rotating_transaction_gateway_filters']).is_a?(Array)
+          self.rotating_transaction_gateway_filters = value
+        end
       end
 
       if attributes.key?(:'rule_type')
@@ -329,7 +344,9 @@ module UltracartClient
       end
 
       if attributes.key?(:'screen_branding_theme_filters')
-        self.screen_branding_theme_filters = attributes[:'screen_branding_theme_filters']
+        if (value = attributes[:'screen_branding_theme_filters']).is_a?(Array)
+          self.screen_branding_theme_filters = value
+        end
       end
 
       if attributes.key?(:'user_action')

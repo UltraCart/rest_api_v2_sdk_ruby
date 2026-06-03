@@ -21,6 +21,7 @@ module UltracartClient
     # Lower bound on amount/score/percentage thresholds (rules backed by the same numeric column).
     attr_accessor :amount_threshold_begin
 
+    # Upper bound on amount/score/percentage thresholds (rules backed by the same numeric column).
     attr_accessor :amount_threshold_end
 
     # Wildcard search on the rule's auto_note. Use '*' for wildcards.
@@ -29,8 +30,10 @@ module UltracartClient
     # Lower bound on count thresholds (rules backed by the same integer count column).
     attr_accessor :count_threshold_begin
 
+    # Upper bound on count thresholds (rules backed by the same integer count column).
     attr_accessor :count_threshold_end
 
+    # Filter to rules created by this user login.
     attr_accessor :created_by
 
     # Rule creation date begin (MM/dd/yyyy)
@@ -47,29 +50,40 @@ module UltracartClient
 
     attr_accessor :failure_action
 
+    # Filter to rules with this rotating transaction gateway code in their rotating_transaction_gateway_filters list.
     attr_accessor :gateway_code
 
+    # Filter to rules with this merchant item id in their item_filters list.
     attr_accessor :merchant_item_id
 
     # Wildcard search on the rule's secondary modifier (eg 'address'/'subnet', gateway codes, avs match types).
     attr_accessor :modifier_value
 
+    # Wildcard search on rules' modify_custom_field1 value.
     attr_accessor :modify_custom_field1
 
+    # Wildcard search on rules' modify_custom_field2 value.
     attr_accessor :modify_custom_field2
 
+    # Wildcard search on rules' modify_custom_field3 value.
     attr_accessor :modify_custom_field3
 
+    # Wildcard search on rules' modify_custom_field4 value.
     attr_accessor :modify_custom_field4
 
+    # Wildcard search on rules' modify_custom_field5 value.
     attr_accessor :modify_custom_field5
 
+    # Wildcard search on rules' modify_custom_field6 value.
     attr_accessor :modify_custom_field6
 
+    # Wildcard search on rules' modify_custom_field7 value.
     attr_accessor :modify_custom_field7
 
+    # Filter to rules whose modify_skip_affiliate flag matches this value.
     attr_accessor :modify_skip_affiliate
 
+    # Filter to rules whose modify_skip_affiliate_network_pixel flag matches this value.
     attr_accessor :modify_skip_affiliate_network_pixel
 
     # Rule group to filter by.
@@ -81,11 +95,13 @@ module UltracartClient
     # Include rules from accounts linked to this merchant. Defaults to false.
     attr_accessor :search_linked_accounts
 
+    # Filter to rules with this storefront hostname in their screen_branding_theme_filters list.
     attr_accessor :storefront_hostname
 
     # Wildcard search on the rule's text parameter (email / ip / bin / country / item id / avs codes - the backend disambiguates by rule_type).
     attr_accessor :text_value
 
+    # Filter to rules with this screen branding theme code in their screen_branding_theme_filters list.
     attr_accessor :theme_code
 
     attr_accessor :user_action

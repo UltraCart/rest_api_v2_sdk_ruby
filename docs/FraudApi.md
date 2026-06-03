@@ -4,8 +4,9 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**decline_email**](FraudApi.md#decline_email) | **POST** /fraud/decline_email | Decline emails during checkout fraud review |
+| [**decline_email**](FraudApi.md#decline_email) | **POST** /fraud/decline_email | Decline email during checkout fraud review |
 | [**delete_fraud_rule**](FraudApi.md#delete_fraud_rule) | **DELETE** /fraud/rules/{fraud_rule_oid} | Delete a fraud rule |
+| [**establish_fraud_rules_from_order**](FraudApi.md#establish_fraud_rules_from_order) | **POST** /fraud/rules/from_order | Establish fraud rules from an order |
 | [**get_fraud_lookup_values**](FraudApi.md#get_fraud_lookup_values) | **GET** /fraud/lookup_values | Retrieve fraud rule lookup values |
 | [**insert_fraud_rule**](FraudApi.md#insert_fraud_rule) | **POST** /fraud/rules | Insert a fraud rule |
 | [**search_fraud_rules**](FraudApi.md#search_fraud_rules) | **POST** /fraud/rules/search | Search fraud rules |
@@ -15,9 +16,9 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 > decline_email(fraud_decline_emails_request)
 
-Decline emails during checkout fraud review
+Decline email during checkout fraud review
 
-Adds one or more email addresses to the fraud decline list for this merchant account. 
+Adds one email address to the fraud decline list for this merchant account. 
 
 
 ### Examples
@@ -34,7 +35,7 @@ This returns an Array which contains the response data (`nil` in this case), sta
 
 ```ruby
 begin
-  # Decline emails during checkout fraud review
+  # Decline email during checkout fraud review
   data, status_code, headers = api_instance.decline_email_with_http_info(fraud_decline_emails_request)
   p status_code # => 2xx
   p headers # => { ... }
@@ -114,6 +115,59 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## establish_fraud_rules_from_order
+
+> <FraudRulesResponse> establish_fraud_rules_from_order(fraud_rule_from_order_request)
+
+Establish fraud rules from an order
+
+Creates one or more fraud rules for this merchant account derived from an existing order, mirroring the 'establish fraud filter' action in the order processing screen. Select which filters to establish; all values are taken from the order. The IP rule is created against the order's /24 subnet (last octet masked). The credit card filter duplicates the order's stored card vault token, so no card number is sent through the API. Filters whose order data is missing (no stored card, no email, no usable IP, or no numeric street) are skipped and reported in the warning slot rather than failing the request. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the establish_fraud_rules_from_order_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FraudRulesResponse>, Integer, Hash)> establish_fraud_rules_from_order_with_http_info(fraud_rule_from_order_request)
+
+```ruby
+begin
+  # Establish fraud rules from an order
+  data, status_code, headers = api_instance.establish_fraud_rules_from_order_with_http_info(fraud_rule_from_order_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FraudRulesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling FraudApi->establish_fraud_rules_from_order_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **fraud_rule_from_order_request** | [**FraudRuleFromOrderRequest**](FraudRuleFromOrderRequest.md) | Fraud rule from order request |  |
+
+### Return type
+
+[**FraudRulesResponse**](FraudRulesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
