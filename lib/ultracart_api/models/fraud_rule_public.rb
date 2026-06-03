@@ -88,7 +88,7 @@ module UltracartClient
 
     attr_accessor :rotating_transaction_gateway_filters
 
-    # Group containing this rule type (eg 'creditCardRules')
+    # Group containing this rule type (eg 'creditCardRules'). Deliberately not constrained by allowableValues on the response so SDK consumers do not hard-fail on an unexpected value if a future rule_type slips through the server-side mapping. Search REQUESTS still restrict rule_group to the known set.
     attr_accessor :rule_group
 
     # Rule type.
@@ -403,8 +403,6 @@ module UltracartClient
       return false unless failure_action_validator.valid?(@failure_action)
       ip_range_type_validator = EnumAttributeValidator.new('String', ["address", "subnet"])
       return false unless ip_range_type_validator.valid?(@ip_range_type)
-      rule_group_validator = EnumAttributeValidator.new('String', ["exemptRules", "creditCardRules", "ipRules", "addressRules", "affiliateRules", "itemRules", "orderRules", "browserRules"])
-      return false unless rule_group_validator.valid?(@rule_group)
       rule_type_validator = EnumAttributeValidator.new('String', ["exempt apo fpo", "exempt ip", "exempt logged in customer with pricing tier", "credit card single transaction exceeds", "credit card daily transaction amount exceeds", "credit card daily transaction count exceeds", "credit card weekly transaction amount exceeds", "credit card weekly transaction count exceeds", "credit card change number", "credit card block bin", "credit card block prepaid", "amazon special instructions", "paypal special instructions", "reward coupon email mismatch", "gateway response", "ip daily transaction amount exceeds", "ip daily transaction count exceeds", "ip weekly transaction amount exceeds", "ip weekly transaction count exceeds", "ip matches", "ip country mismatch", "address fraud score exceeds", "address fraud score exceeds exempt apo fpo", "address street and zip avs", "address billing doesnt match shipping", "billing country doesnt match shipping", "address international", "address match except zip", "address email", "address not in country", "wholesale customer not logged in", "affiliate matches", "affiliate daily count exceeds", "affiliate weekly count exceeds", "affiliate daily decline percentage exceeds", "affiliate weekly decline percentage exceeds", "affiliate daily with same ip", "affiliate weekly with same ip", "item matches", "item quantity exceeds", "order previous return", "order purchased within last hours", "order used coupon meant for sharing", "browser os linux"])
       return false unless rule_type_validator.valid?(@rule_type)
       user_action_validator = EnumAttributeValidator.new('String', ["Attempted", "Approved"])
@@ -440,16 +438,6 @@ module UltracartClient
         fail ArgumentError, "invalid value for \"ip_range_type\", must be one of #{validator.allowable_values}."
       end
       @ip_range_type = ip_range_type
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] rule_group Object to be assigned
-    def rule_group=(rule_group)
-      validator = EnumAttributeValidator.new('String', ["exemptRules", "creditCardRules", "ipRules", "addressRules", "affiliateRules", "itemRules", "orderRules", "browserRules"])
-      unless validator.valid?(rule_group)
-        fail ArgumentError, "invalid value for \"rule_group\", must be one of #{validator.allowable_values}."
-      end
-      @rule_group = rule_group
     end
 
     # Custom attribute writer method checking allowed values (enum).
