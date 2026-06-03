@@ -126,7 +126,7 @@ end
 
 ## oauth_device_authorize
 
-> oauth_device_authorize(client_id, scope)
+> <OauthDeviceAuthorizationResponse> oauth_device_authorize(client_id, scope)
 
 Initiate a device authorization flow.
 
@@ -141,9 +141,9 @@ Initiates the device authorization flow by returning a device code and user code
 
 #### Using the oauth_device_authorize_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> oauth_device_authorize_with_http_info(client_id, scope)
+> <Array(<OauthDeviceAuthorizationResponse>, Integer, Hash)> oauth_device_authorize_with_http_info(client_id, scope)
 
 ```ruby
 begin
@@ -151,7 +151,7 @@ begin
   data, status_code, headers = api_instance.oauth_device_authorize_with_http_info(client_id, scope)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <OauthDeviceAuthorizationResponse>
 rescue UltracartClient::ApiError => e
   puts "Error when calling OauthApi->oauth_device_authorize_with_http_info: #{e}"
 end
@@ -166,7 +166,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**OauthDeviceAuthorizationResponse**](OauthDeviceAuthorizationResponse.md)
 
 ### Authorization
 

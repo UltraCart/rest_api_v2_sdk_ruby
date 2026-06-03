@@ -126,10 +126,10 @@ module UltracartClient
     # @param client_id [String] The OAuth application client_id.
     # @param scope [String] The application-level scope (e.g., crm, ultraship).
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [OauthDeviceAuthorizationResponse]
     def oauth_device_authorize(client_id, scope, opts = {})
-      oauth_device_authorize_with_http_info(client_id, scope, opts)
-      nil
+      data, _status_code, _headers = oauth_device_authorize_with_http_info(client_id, scope, opts)
+      data
     end
 
     # Initiate a device authorization flow.
@@ -137,7 +137,7 @@ module UltracartClient
     # @param client_id [String] The OAuth application client_id.
     # @param scope [String] The application-level scope (e.g., crm, ultraship).
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(OauthDeviceAuthorizationResponse, Integer, Hash)>] OauthDeviceAuthorizationResponse data, response status code and response headers
     def oauth_device_authorize_with_http_info(client_id, scope, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OauthApi.oauth_device_authorize ...'
@@ -176,7 +176,7 @@ module UltracartClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'OauthDeviceAuthorizationResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
