@@ -7,6 +7,7 @@
 | **affiliate_oid** | **Integer** | Associates an order with an affiliate when this value is set. | [optional] |
 | **allow_multiple_one_time_codes** | **Boolean** | True if multiple one time codes for this coupon can be used on a cart at the same time. | [optional] |
 | **amount_off_items** | [**CouponAmountOffItems**](CouponAmountOffItems.md) |  | [optional] |
+| **amount_off_items_and_free_shipping** | [**CouponAmountOffItemsAndFreeShipping**](CouponAmountOffItemsAndFreeShipping.md) |  | [optional] |
 | **amount_off_shipping** | [**CouponAmountOffShipping**](CouponAmountOffShipping.md) |  | [optional] |
 | **amount_off_shipping_with_items_purchase** | [**CouponAmountOffShippingWithItemsPurchase**](CouponAmountOffShippingWithItemsPurchase.md) |  | [optional] |
 | **amount_off_subtotal** | [**CouponAmountOffSubtotal**](CouponAmountOffSubtotal.md) |  | [optional] |
@@ -82,6 +83,7 @@ instance = UltracartClient::Coupon.new(
   affiliate_oid: null,
   allow_multiple_one_time_codes: null,
   amount_off_items: null,
+  amount_off_items_and_free_shipping: null,
   amount_off_shipping: null,
   amount_off_shipping_with_items_purchase: null,
   amount_off_subtotal: null,
