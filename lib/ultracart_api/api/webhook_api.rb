@@ -297,6 +297,15 @@ module UltracartClient
     # Retrieves the log summary information for a given webhook.  This is useful for displaying all the various logs that can be viewed. 
     # @param webhook_oid [Integer] The webhook oid to retrieve log summaries for.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :request_id Filter by request id
+    # @option opts [String] :begin_date Filter to deliveries on or after this date/time
+    # @option opts [String] :end_date Filter to deliveries on or before this date/time
+    # @option opts [String] :status Filter by HTTP status code
+    # @option opts [Boolean] :success Filter by success (true) or failure (false)
+    # @option opts [String] :event Filter by an event name contained in the delivery
+    # @option opts [String] :order_id Filter by an order id contained in the delivery
+    # @option opts [String] :request Filter by text contained in the request payload
+    # @option opts [Integer] :duration Filter to deliveries that took at least this many milliseconds
     # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (default to 100)
     # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
     # @option opts [String] :_since Fetch log summaries that have been delivered since this date/time.
@@ -310,6 +319,15 @@ module UltracartClient
     # Retrieves the log summary information for a given webhook.  This is useful for displaying all the various logs that can be viewed. 
     # @param webhook_oid [Integer] The webhook oid to retrieve log summaries for.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :request_id Filter by request id
+    # @option opts [String] :begin_date Filter to deliveries on or after this date/time
+    # @option opts [String] :end_date Filter to deliveries on or before this date/time
+    # @option opts [String] :status Filter by HTTP status code
+    # @option opts [Boolean] :success Filter by success (true) or failure (false)
+    # @option opts [String] :event Filter by an event name contained in the delivery
+    # @option opts [String] :order_id Filter by an order id contained in the delivery
+    # @option opts [String] :request Filter by text contained in the request payload
+    # @option opts [Integer] :duration Filter to deliveries that took at least this many milliseconds
     # @option opts [Integer] :_limit The maximum number of records to return on this one API call. (default to 100)
     # @option opts [Integer] :_offset Pagination of the record set.  Offset is a zero based index. (default to 0)
     # @option opts [String] :_since Fetch log summaries that have been delivered since this date/time.
@@ -327,6 +345,15 @@ module UltracartClient
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'requestId'] = opts[:'request_id'] if !opts[:'request_id'].nil?
+      query_params[:'beginDate'] = opts[:'begin_date'] if !opts[:'begin_date'].nil?
+      query_params[:'endDate'] = opts[:'end_date'] if !opts[:'end_date'].nil?
+      query_params[:'status'] = opts[:'status'] if !opts[:'status'].nil?
+      query_params[:'success'] = opts[:'success'] if !opts[:'success'].nil?
+      query_params[:'event'] = opts[:'event'] if !opts[:'event'].nil?
+      query_params[:'orderId'] = opts[:'order_id'] if !opts[:'order_id'].nil?
+      query_params[:'request'] = opts[:'request'] if !opts[:'request'].nil?
+      query_params[:'duration'] = opts[:'duration'] if !opts[:'duration'].nil?
       query_params[:'_limit'] = opts[:'_limit'] if !opts[:'_limit'].nil?
       query_params[:'_offset'] = opts[:'_offset'] if !opts[:'_offset'].nil?
       query_params[:'_since'] = opts[:'_since'] if !opts[:'_since'].nil?

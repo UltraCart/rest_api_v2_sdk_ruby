@@ -21,6 +21,12 @@ module UltracartClient
     # Number of milliseconds to process the notification
     attr_accessor :duration
 
+    # Event names contained in this delivery
+    attr_accessor :event_names
+
+    # Order ids contained in this delivery
+    attr_accessor :order_ids
+
     # Number of milliseconds of delay caused by queuing
     attr_accessor :queue_delay
 
@@ -56,6 +62,8 @@ module UltracartClient
       {
         :'delivery_dts' => :'delivery_dts',
         :'duration' => :'duration',
+        :'event_names' => :'event_names',
+        :'order_ids' => :'order_ids',
         :'queue_delay' => :'queue_delay',
         :'request' => :'request',
         :'request_headers' => :'request_headers',
@@ -79,6 +87,8 @@ module UltracartClient
       {
         :'delivery_dts' => :'String',
         :'duration' => :'Integer',
+        :'event_names' => :'Array<String>',
+        :'order_ids' => :'Array<String>',
         :'queue_delay' => :'Integer',
         :'request' => :'String',
         :'request_headers' => :'Array<HTTPHeader>',
@@ -119,6 +129,18 @@ module UltracartClient
 
       if attributes.key?(:'duration')
         self.duration = attributes[:'duration']
+      end
+
+      if attributes.key?(:'event_names')
+        if (value = attributes[:'event_names']).is_a?(Array)
+          self.event_names = value
+        end
+      end
+
+      if attributes.key?(:'order_ids')
+        if (value = attributes[:'order_ids']).is_a?(Array)
+          self.order_ids = value
+        end
       end
 
       if attributes.key?(:'queue_delay')
@@ -186,6 +208,8 @@ module UltracartClient
       self.class == o.class &&
           delivery_dts == o.delivery_dts &&
           duration == o.duration &&
+          event_names == o.event_names &&
+          order_ids == o.order_ids &&
           queue_delay == o.queue_delay &&
           request == o.request &&
           request_headers == o.request_headers &&
@@ -207,7 +231,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [delivery_dts, duration, queue_delay, request, request_headers, request_id, response, response_headers, status_code, success, uri, webhook_oid].hash
+      [delivery_dts, duration, event_names, order_ids, queue_delay, request, request_headers, request_id, response, response_headers, status_code, success, uri, webhook_oid].hash
     end
 
     # Builds the object from hash

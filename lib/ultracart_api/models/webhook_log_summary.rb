@@ -18,8 +18,20 @@ module UltracartClient
     # Date/time of the delivery
     attr_accessor :delivery_dts
 
+    # Number of milliseconds to process the notification
+    attr_accessor :duration
+
+    # Event names contained in this delivery
+    attr_accessor :event_names
+
+    # Order ids contained in this delivery
+    attr_accessor :order_ids
+
     # Request id
     attr_accessor :request_id
+
+    # HTTP status code received from the server
+    attr_accessor :status_code
 
     # True if the notification was successful
     attr_accessor :success
@@ -28,7 +40,11 @@ module UltracartClient
     def self.attribute_map
       {
         :'delivery_dts' => :'delivery_dts',
+        :'duration' => :'duration',
+        :'event_names' => :'event_names',
+        :'order_ids' => :'order_ids',
         :'request_id' => :'request_id',
+        :'status_code' => :'status_code',
         :'success' => :'success'
       }
     end
@@ -42,7 +58,11 @@ module UltracartClient
     def self.openapi_types
       {
         :'delivery_dts' => :'String',
+        :'duration' => :'Integer',
+        :'event_names' => :'Array<String>',
+        :'order_ids' => :'Array<String>',
         :'request_id' => :'String',
+        :'status_code' => :'Integer',
         :'success' => :'Boolean'
       }
     end
@@ -72,8 +92,28 @@ module UltracartClient
         self.delivery_dts = attributes[:'delivery_dts']
       end
 
+      if attributes.key?(:'duration')
+        self.duration = attributes[:'duration']
+      end
+
+      if attributes.key?(:'event_names')
+        if (value = attributes[:'event_names']).is_a?(Array)
+          self.event_names = value
+        end
+      end
+
+      if attributes.key?(:'order_ids')
+        if (value = attributes[:'order_ids']).is_a?(Array)
+          self.order_ids = value
+        end
+      end
+
       if attributes.key?(:'request_id')
         self.request_id = attributes[:'request_id']
+      end
+
+      if attributes.key?(:'status_code')
+        self.status_code = attributes[:'status_code']
       end
 
       if attributes.key?(:'success')
@@ -100,7 +140,11 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           delivery_dts == o.delivery_dts &&
+          duration == o.duration &&
+          event_names == o.event_names &&
+          order_ids == o.order_ids &&
           request_id == o.request_id &&
+          status_code == o.status_code &&
           success == o.success
     end
 
@@ -113,7 +157,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [delivery_dts, request_id, success].hash
+      [delivery_dts, duration, event_names, order_ids, request_id, status_code, success].hash
     end
 
     # Builds the object from hash

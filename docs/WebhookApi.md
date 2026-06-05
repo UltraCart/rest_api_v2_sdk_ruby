@@ -362,6 +362,15 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **webhook_oid** | **Integer** | The webhook oid to retrieve log summaries for. |  |
+| **request_id** | **String** | Filter by request id | [optional] |
+| **begin_date** | **String** | Filter to deliveries on or after this date/time | [optional] |
+| **end_date** | **String** | Filter to deliveries on or before this date/time | [optional] |
+| **status** | **String** | Filter by HTTP status code | [optional] |
+| **success** | **Boolean** | Filter by success (true) or failure (false) | [optional] |
+| **event** | **String** | Filter by an event name contained in the delivery | [optional] |
+| **order_id** | **String** | Filter by an order id contained in the delivery | [optional] |
+| **request** | **String** | Filter by text contained in the request payload | [optional] |
+| **duration** | **Integer** | Filter to deliveries that took at least this many milliseconds | [optional] |
 | **_limit** | **Integer** | The maximum number of records to return on this one API call. | [optional][default to 100] |
 | **_offset** | **Integer** | Pagination of the record set.  Offset is a zero based index. | [optional][default to 0] |
 | **_since** | **String** | Fetch log summaries that have been delivered since this date/time. | [optional] |

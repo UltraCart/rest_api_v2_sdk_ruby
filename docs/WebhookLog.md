@@ -6,6 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **delivery_dts** | **String** | Date/time of delivery | [optional] |
 | **duration** | **Integer** | Number of milliseconds to process the notification | [optional] |
+| **event_names** | **Array&lt;String&gt;** | Event names contained in this delivery | [optional] |
+| **order_ids** | **Array&lt;String&gt;** | Order ids contained in this delivery | [optional] |
 | **queue_delay** | **Integer** | Number of milliseconds of delay caused by queuing | [optional] |
 | **request** | **String** | Request payload (first 100,000 characters) | [optional] |
 | **request_headers** | [**Array&lt;HTTPHeader&gt;**](HTTPHeader.md) | Request headers sent to the server | [optional] |
@@ -25,6 +27,8 @@ require 'ultracart_api'
 instance = UltracartClient::WebhookLog.new(
   delivery_dts: null,
   duration: null,
+  event_names: null,
+  order_ids: null,
   queue_delay: null,
   request: null,
   request_headers: null,
