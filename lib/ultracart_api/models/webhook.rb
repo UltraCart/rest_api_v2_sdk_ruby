@@ -56,8 +56,14 @@ module UltracartClient
     # The maximum size of the payload that UltraCart will deliver
     attr_accessor :maximum_size
 
+    # Merchant comments about this webhook
+    attr_accessor :merchant_comments
+
     # The UltraCart merchant ID that owns this webhook
     attr_accessor :merchant_id
+
+    # Friendly name to help identify this webhook
+    attr_accessor :name
 
     # The next time UltraCart will attempt delivery if failures have been occurring
     attr_accessor :next_retry_after
@@ -110,7 +116,9 @@ module UltracartClient
         :'iam_secret_key' => :'iam_secret_key',
         :'maximum_events' => :'maximum_events',
         :'maximum_size' => :'maximum_size',
+        :'merchant_comments' => :'merchant_comments',
         :'merchant_id' => :'merchant_id',
+        :'name' => :'name',
         :'next_retry_after' => :'next_retry_after',
         :'pending' => :'pending',
         :'webhook_oid' => :'webhook_oid',
@@ -140,7 +148,9 @@ module UltracartClient
         :'iam_secret_key' => :'String',
         :'maximum_events' => :'Integer',
         :'maximum_size' => :'Integer',
+        :'merchant_comments' => :'String',
         :'merchant_id' => :'String',
+        :'name' => :'String',
         :'next_retry_after' => :'String',
         :'pending' => :'Integer',
         :'webhook_oid' => :'Integer',
@@ -227,8 +237,16 @@ module UltracartClient
         self.maximum_size = attributes[:'maximum_size']
       end
 
+      if attributes.key?(:'merchant_comments')
+        self.merchant_comments = attributes[:'merchant_comments']
+      end
+
       if attributes.key?(:'merchant_id')
         self.merchant_id = attributes[:'merchant_id']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
       if attributes.key?(:'next_retry_after')
@@ -304,7 +322,9 @@ module UltracartClient
           iam_secret_key == o.iam_secret_key &&
           maximum_events == o.maximum_events &&
           maximum_size == o.maximum_size &&
+          merchant_comments == o.merchant_comments &&
           merchant_id == o.merchant_id &&
+          name == o.name &&
           next_retry_after == o.next_retry_after &&
           pending == o.pending &&
           webhook_oid == o.webhook_oid &&
@@ -320,7 +340,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [api_user_oid, api_version, application_profile, authentication_type, basic_password, basic_username, compress_events, consecutive_failures, disabled, event_categories, iam_access_key, iam_secret_key, maximum_events, maximum_size, merchant_id, next_retry_after, pending, webhook_oid, webhook_url].hash
+      [api_user_oid, api_version, application_profile, authentication_type, basic_password, basic_username, compress_events, consecutive_failures, disabled, event_categories, iam_access_key, iam_secret_key, maximum_events, maximum_size, merchant_comments, merchant_id, name, next_retry_after, pending, webhook_oid, webhook_url].hash
     end
 
     # Builds the object from hash

@@ -18,7 +18,9 @@
 | **iam_secret_key** | **String** | IAM Secret Key for AWS SQS Delivery | [optional] |
 | **maximum_events** | **Integer** | The maximum number of events in the payload that UltraCart will deliver | [optional] |
 | **maximum_size** | **Integer** | The maximum size of the payload that UltraCart will deliver | [optional] |
+| **merchant_comments** | **String** | Merchant comments about this webhook | [optional] |
 | **merchant_id** | **String** | The UltraCart merchant ID that owns this webhook | [optional] |
+| **name** | **String** | Friendly name to help identify this webhook | [optional] |
 | **next_retry_after** | **String** | The next time UltraCart will attempt delivery if failures have been occurring | [optional] |
 | **pending** | **Integer** | The number of pending events for this webhook | [optional] |
 | **webhook_oid** | **Integer** | The object identifier for this webhook | [optional] |
@@ -44,7 +46,9 @@ instance = UltracartClient::Webhook.new(
   iam_secret_key: null,
   maximum_events: null,
   maximum_size: null,
+  merchant_comments: null,
   merchant_id: null,
+  name: null,
   next_retry_after: null,
   pending: null,
   webhook_oid: null,
