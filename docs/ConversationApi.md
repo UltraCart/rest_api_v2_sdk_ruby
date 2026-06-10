@@ -132,6 +132,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**update_pbx_address**](ConversationApi.md#update_pbx_address) | **PUT** /conversation/pbx/address/{conversationPbxAddressUuid} | Update pbx address |
 | [**update_pbx_agent**](ConversationApi.md#update_pbx_agent) | **PUT** /conversation/pbx/agent/{conversationPbxAgentUuid} | Update pbx agent |
 | [**update_pbx_audio**](ConversationApi.md#update_pbx_audio) | **PUT** /conversation/pbx/audio/{conversationPbxAudioUuid} | Update pbx audio |
+| [**update_pbx_call**](ConversationApi.md#update_pbx_call) | **PUT** /conversation/pbx/call/{callUuid} | Update pbx call record |
 | [**update_pbx_class_of_service**](ConversationApi.md#update_pbx_class_of_service) | **PUT** /conversation/pbx/class_of_service/{classOfServiceUuid} | Update pbx class of service |
 | [**update_pbx_default_timezone**](ConversationApi.md#update_pbx_default_timezone) | **PUT** /conversation/pbx/config/default-timezone | Set the merchant default timezone |
 | [**update_pbx_hardware_phone**](ConversationApi.md#update_pbx_hardware_phone) | **PUT** /conversation/pbx/hardware_phone/{conversationPbxHardwarePhoneUuid} | Update pbx hardware phone |
@@ -6986,6 +6987,60 @@ end
 ### Return type
 
 [**ConversationPbxAudioResponse**](ConversationPbxAudioResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_pbx_call
+
+> <ConversationPbxCallResponse> update_pbx_call(call_uuid, update_request)
+
+Update pbx call record
+
+Update the agent-authored fields (notes, finalize) on a PBX call record 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_pbx_call_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxCallResponse>, Integer, Hash)> update_pbx_call_with_http_info(call_uuid, update_request)
+
+```ruby
+begin
+  # Update pbx call record
+  data, status_code, headers = api_instance.update_pbx_call_with_http_info(call_uuid, update_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxCallResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_pbx_call_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **call_uuid** | **String** |  |  |
+| **update_request** | [**ConversationPbxCallUpdateRequest**](ConversationPbxCallUpdateRequest.md) | Update Request |  |
+
+### Return type
+
+[**ConversationPbxCallResponse**](ConversationPbxCallResponse.md)
 
 ### Authorization
 

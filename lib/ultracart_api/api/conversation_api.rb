@@ -8450,6 +8450,81 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Update pbx call record
+    # Update the agent-authored fields (notes, finalize) on a PBX call record 
+    # @param call_uuid [String] 
+    # @param update_request [ConversationPbxCallUpdateRequest] Update Request
+    # @param [Hash] opts the optional parameters
+    # @return [ConversationPbxCallResponse]
+    def update_pbx_call(call_uuid, update_request, opts = {})
+      data, _status_code, _headers = update_pbx_call_with_http_info(call_uuid, update_request, opts)
+      data
+    end
+
+    # Update pbx call record
+    # Update the agent-authored fields (notes, finalize) on a PBX call record 
+    # @param call_uuid [String] 
+    # @param update_request [ConversationPbxCallUpdateRequest] Update Request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ConversationPbxCallResponse, Integer, Hash)>] ConversationPbxCallResponse data, response status code and response headers
+    def update_pbx_call_with_http_info(call_uuid, update_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ConversationApi.update_pbx_call ...'
+      end
+      # verify the required parameter 'call_uuid' is set
+      if @api_client.config.client_side_validation && call_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'call_uuid' when calling ConversationApi.update_pbx_call"
+      end
+      # verify the required parameter 'update_request' is set
+      if @api_client.config.client_side_validation && update_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_request' when calling ConversationApi.update_pbx_call"
+      end
+      # resource path
+      local_var_path = '/conversation/pbx/call/{callUuid}'.sub('{' + 'callUuid' + '}', CGI.escape(call_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ConversationPbxCallResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ConversationApi.update_pbx_call",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ConversationApi#update_pbx_call\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Update pbx class of service
     # Update an existing class of service 
     # @param class_of_service_uuid [String] 

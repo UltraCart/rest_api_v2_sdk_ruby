@@ -63,6 +63,12 @@ module UltracartClient
     # Merchant identifier
     attr_accessor :merchant_id
 
+    # Agent-authored notes for this call, captured during the call and after-call work
+    attr_accessor :notes
+
+    # Timestamp when the agent finalized notes via Save & finish; gates Zoho Desk ticket creation
+    attr_accessor :notes_finalized_dts
+
     # List of all Twilio recording SIDs associated with this call
     attr_accessor :recording_sids
 
@@ -108,6 +114,8 @@ module UltracartClient
         :'financial' => :'financial',
         :'holds' => :'holds',
         :'merchant_id' => :'merchant_id',
+        :'notes' => :'notes',
+        :'notes_finalized_dts' => :'notes_finalized_dts',
         :'recording_sids' => :'recording_sids',
         :'recordings' => :'recordings',
         :'routing' => :'routing',
@@ -145,6 +153,8 @@ module UltracartClient
         :'financial' => :'ConversationPbxCallFinancial',
         :'holds' => :'Array<ConversationPbxCallHold>',
         :'merchant_id' => :'String',
+        :'notes' => :'String',
+        :'notes_finalized_dts' => :'String',
         :'recording_sids' => :'Array<String>',
         :'recordings' => :'Array<ConversationPbxCallRecording>',
         :'routing' => :'ConversationPbxCallRouting',
@@ -252,6 +262,14 @@ module UltracartClient
         self.merchant_id = attributes[:'merchant_id']
       end
 
+      if attributes.key?(:'notes')
+        self.notes = attributes[:'notes']
+      end
+
+      if attributes.key?(:'notes_finalized_dts')
+        self.notes_finalized_dts = attributes[:'notes_finalized_dts']
+      end
+
       if attributes.key?(:'recording_sids')
         if (value = attributes[:'recording_sids']).is_a?(Array)
           self.recording_sids = value
@@ -330,6 +348,8 @@ module UltracartClient
           financial == o.financial &&
           holds == o.holds &&
           merchant_id == o.merchant_id &&
+          notes == o.notes &&
+          notes_finalized_dts == o.notes_finalized_dts &&
           recording_sids == o.recording_sids &&
           recordings == o.recordings &&
           routing == o.routing &&
@@ -350,7 +370,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_sid, agents, ai_agent_engagements, ai_summary, call_sid, call_uuid, caller, conference_sid, context_merchant_id, created_at_dts, customer_name, customer_profile_oid, disposition, email, financial, holds, merchant_id, recording_sids, recordings, routing, status, timeline, transfers, updated_at_dts, zoho_desk_ticket_id, zoho_desk_ticket_url].hash
+      [account_sid, agents, ai_agent_engagements, ai_summary, call_sid, call_uuid, caller, conference_sid, context_merchant_id, created_at_dts, customer_name, customer_profile_oid, disposition, email, financial, holds, merchant_id, notes, notes_finalized_dts, recording_sids, recordings, routing, status, timeline, transfers, updated_at_dts, zoho_desk_ticket_id, zoho_desk_ticket_url].hash
     end
 
     # Builds the object from hash
