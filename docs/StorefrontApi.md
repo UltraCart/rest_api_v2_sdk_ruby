@@ -32,6 +32,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**delete_screen_recording_segment**](StorefrontApi.md#delete_screen_recording_segment) | **DELETE** /storefront/{storefront_oid}/screen_recordings/segments/{screen_recording_segment_oid} | Delete screen recording segment |
 | [**delete_twilio_account**](StorefrontApi.md#delete_twilio_account) | **DELETE** /storefront/twilio/accounts/{esp_twilio_uuid} | delete Twilio account |
 | [**duplicate_library_item**](StorefrontApi.md#duplicate_library_item) | **POST** /storefront/code_library/{library_item_oid}/duplicate | Duplicate library item. |
+| [**enroll_commseq_customer**](StorefrontApi.md#enroll_commseq_customer) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/enroll | Enroll a customer into a communication sequence |
 | [**favorite_screen_recording**](StorefrontApi.md#favorite_screen_recording) | **POST** /storefront/{storefront_oid}/screen_recordings/{screen_recording_uuid}/favorite | Update favorite flag on screen recording |
 | [**geocode_address**](StorefrontApi.md#geocode_address) | **POST** /storefront/{storefront_oid}/email/geocode | Obtain lat/long for an address |
 | [**get_countries**](StorefrontApi.md#get_countries) | **GET** /storefront/{storefront_oid}/email/countries | Get countries |
@@ -1664,6 +1665,61 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## enroll_commseq_customer
+
+> <EmailCommseqEnrollmentResponse> enroll_commseq_customer(storefront_oid, commseq_uuid, email_commseq_enrollment_request)
+
+Enroll a customer into a communication sequence
+
+Enrolls a single real customer (by email) into the communication sequence.  A customer who is already enrolled will not be enrolled a second time. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the enroll_commseq_customer_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmailCommseqEnrollmentResponse>, Integer, Hash)> enroll_commseq_customer_with_http_info(storefront_oid, commseq_uuid, email_commseq_enrollment_request)
+
+```ruby
+begin
+  # Enroll a customer into a communication sequence
+  data, status_code, headers = api_instance.enroll_commseq_customer_with_http_info(storefront_oid, commseq_uuid, email_commseq_enrollment_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmailCommseqEnrollmentResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->enroll_commseq_customer_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **commseq_uuid** | **String** |  |  |
+| **email_commseq_enrollment_request** | [**EmailCommseqEnrollmentRequest**](EmailCommseqEnrollmentRequest.md) | Commseq enrollment request |  |
+
+### Return type
+
+[**EmailCommseqEnrollmentResponse**](EmailCommseqEnrollmentResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

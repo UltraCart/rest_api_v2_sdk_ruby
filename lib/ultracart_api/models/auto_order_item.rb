@@ -42,6 +42,12 @@ module UltracartClient
     # Calculated Date/time that this item is scheduled to rebill.  Will be null if no more shipments are going to occur on this item
     attr_accessor :calculated_next_shipment_dts
 
+    # Date/time this item was cancelled (companion to cancel_reason).  On update, null leaves the existing value unchanged; pass an empty string to clear it.
+    attr_accessor :cancel_dts
+
+    # Reason this item was cancelled, captured when the item was cancelled by the customer or merchant.  On update, null leaves the existing value unchanged; pass an empty string to clear it.
+    attr_accessor :cancel_reason
+
     # Date/time of the first order of this item.  Null if item added to auto order and has not been rebilled yet.
     attr_accessor :first_order_dts
 
@@ -138,6 +144,8 @@ module UltracartClient
         :'arbitrary_unit_cost_remaining_orders' => :'arbitrary_unit_cost_remaining_orders',
         :'auto_order_item_oid' => :'auto_order_item_oid',
         :'calculated_next_shipment_dts' => :'calculated_next_shipment_dts',
+        :'cancel_dts' => :'cancel_dts',
+        :'cancel_reason' => :'cancel_reason',
         :'first_order_dts' => :'first_order_dts',
         :'frequency' => :'frequency',
         :'future_schedules' => :'future_schedules',
@@ -179,6 +187,8 @@ module UltracartClient
         :'arbitrary_unit_cost_remaining_orders' => :'Integer',
         :'auto_order_item_oid' => :'Integer',
         :'calculated_next_shipment_dts' => :'String',
+        :'cancel_dts' => :'String',
+        :'cancel_reason' => :'String',
         :'first_order_dts' => :'String',
         :'frequency' => :'String',
         :'future_schedules' => :'Array<AutoOrderItemFutureSchedule>',
@@ -260,6 +270,14 @@ module UltracartClient
 
       if attributes.key?(:'calculated_next_shipment_dts')
         self.calculated_next_shipment_dts = attributes[:'calculated_next_shipment_dts']
+      end
+
+      if attributes.key?(:'cancel_dts')
+        self.cancel_dts = attributes[:'cancel_dts']
+      end
+
+      if attributes.key?(:'cancel_reason')
+        self.cancel_reason = attributes[:'cancel_reason']
       end
 
       if attributes.key?(:'first_order_dts')
@@ -392,6 +410,8 @@ module UltracartClient
           arbitrary_unit_cost_remaining_orders == o.arbitrary_unit_cost_remaining_orders &&
           auto_order_item_oid == o.auto_order_item_oid &&
           calculated_next_shipment_dts == o.calculated_next_shipment_dts &&
+          cancel_dts == o.cancel_dts &&
+          cancel_reason == o.cancel_reason &&
           first_order_dts == o.first_order_dts &&
           frequency == o.frequency &&
           future_schedules == o.future_schedules &&
@@ -424,7 +444,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_ons, arbitrary_item_id, arbitrary_percentage_discount, arbitrary_quantity, arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_remaining_orders, auto_order_item_oid, calculated_next_shipment_dts, first_order_dts, frequency, future_schedules, last_order_dts, life_time_value, next_item_id, next_preshipment_notice_dts, next_shipment_dts, no_order_after_dts, number_of_rebills, options, original_item_id, original_quantity, paused, paypal_payer_id, paypal_recurring_payment_profile_id, preshipment_notice_sent, properties, rebill_value, remaining_repeat_count, simple_schedule].hash
+      [add_ons, arbitrary_item_id, arbitrary_percentage_discount, arbitrary_quantity, arbitrary_schedule_days, arbitrary_unit_cost, arbitrary_unit_cost_remaining_orders, auto_order_item_oid, calculated_next_shipment_dts, cancel_dts, cancel_reason, first_order_dts, frequency, future_schedules, last_order_dts, life_time_value, next_item_id, next_preshipment_notice_dts, next_shipment_dts, no_order_after_dts, number_of_rebills, options, original_item_id, original_quantity, paused, paypal_payer_id, paypal_recurring_payment_profile_id, preshipment_notice_sent, properties, rebill_value, remaining_repeat_count, simple_schedule].hash
     end
 
     # Builds the object from hash

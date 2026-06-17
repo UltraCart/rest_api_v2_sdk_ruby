@@ -270,6 +270,14 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@merchant_comments.nil? && @merchant_comments.to_s.length > 2000
+        invalid_properties.push('invalid value for "merchant_comments", the character length must be smaller than or equal to 2000.')
+      end
+
+      if !@name.nil? && @name.to_s.length > 80
+        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 80.')
+      end
+
       invalid_properties
     end
 
@@ -280,6 +288,8 @@ module UltracartClient
       return false unless api_version_validator.valid?(@api_version)
       authentication_type_validator = EnumAttributeValidator.new('String', ["none", "basic", "api user", "aws iam"])
       return false unless authentication_type_validator.valid?(@authentication_type)
+      return false if !@merchant_comments.nil? && @merchant_comments.to_s.length > 2000
+      return false if !@name.nil? && @name.to_s.length > 80
       true
     end
 
@@ -301,6 +311,26 @@ module UltracartClient
         fail ArgumentError, "invalid value for \"authentication_type\", must be one of #{validator.allowable_values}."
       end
       @authentication_type = authentication_type
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] merchant_comments Value to be assigned
+    def merchant_comments=(merchant_comments)
+      if !merchant_comments.nil? && merchant_comments.to_s.length > 2000
+        fail ArgumentError, 'invalid value for "merchant_comments", the character length must be smaller than or equal to 2000.'
+      end
+
+      @merchant_comments = merchant_comments
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if !name.nil? && name.to_s.length > 80
+        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 80.'
+      end
+
+      @name = name
     end
 
     # Checks equality by comparing each attribute.

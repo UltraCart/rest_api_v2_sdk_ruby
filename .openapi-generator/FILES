@@ -480,6 +480,8 @@ docs/EmailCommseqEmailSendTestRequest.md
 docs/EmailCommseqEmailSendTestResponse.md
 docs/EmailCommseqEmailsRequest.md
 docs/EmailCommseqEmailsResponse.md
+docs/EmailCommseqEnrollmentRequest.md
+docs/EmailCommseqEnrollmentResponse.md
 docs/EmailCommseqPostcard.md
 docs/EmailCommseqPostcardResponse.md
 docs/EmailCommseqPostcardSendTestRequest.md
@@ -1524,6 +1526,8 @@ lib/ultracart_api/models/email_commseq_email_send_test_request.rb
 lib/ultracart_api/models/email_commseq_email_send_test_response.rb
 lib/ultracart_api/models/email_commseq_emails_request.rb
 lib/ultracart_api/models/email_commseq_emails_response.rb
+lib/ultracart_api/models/email_commseq_enrollment_request.rb
+lib/ultracart_api/models/email_commseq_enrollment_response.rb
 lib/ultracart_api/models/email_commseq_postcard.rb
 lib/ultracart_api/models/email_commseq_postcard_response.rb
 lib/ultracart_api/models/email_commseq_postcard_send_test_request.rb
