@@ -17,7 +17,9 @@ docs/Activity.md
 docs/AddLibraryItemRequest.md
 docs/AdjustInternalCertificateRequest.md
 docs/AdjustInternalCertificateResponse.md
+docs/Affiliate.md
 docs/AffiliateApi.md
+docs/AffiliateAttribute.md
 docs/AffiliateClick.md
 docs/AffiliateClickQuery.md
 docs/AffiliateClicksResponse.md
@@ -25,6 +27,11 @@ docs/AffiliateLedger.md
 docs/AffiliateLedgerQuery.md
 docs/AffiliateLedgersResponse.md
 docs/AffiliateLink.md
+docs/AffiliateMarketingStrategy.md
+docs/AffiliateQuery.md
+docs/AffiliateResponse.md
+docs/AffiliateTierRelationship.md
+docs/AffiliatesResponse.md
 docs/AgentSummary.md
 docs/ApiUserApplicationProfile.md
 docs/ApplyLibraryItemRequest.md
@@ -1072,6 +1079,8 @@ lib/ultracart_api/models/activity.rb
 lib/ultracart_api/models/add_library_item_request.rb
 lib/ultracart_api/models/adjust_internal_certificate_request.rb
 lib/ultracart_api/models/adjust_internal_certificate_response.rb
+lib/ultracart_api/models/affiliate.rb
+lib/ultracart_api/models/affiliate_attribute.rb
 lib/ultracart_api/models/affiliate_click.rb
 lib/ultracart_api/models/affiliate_click_query.rb
 lib/ultracart_api/models/affiliate_clicks_response.rb
@@ -1079,6 +1088,11 @@ lib/ultracart_api/models/affiliate_ledger.rb
 lib/ultracart_api/models/affiliate_ledger_query.rb
 lib/ultracart_api/models/affiliate_ledgers_response.rb
 lib/ultracart_api/models/affiliate_link.rb
+lib/ultracart_api/models/affiliate_marketing_strategy.rb
+lib/ultracart_api/models/affiliate_query.rb
+lib/ultracart_api/models/affiliate_response.rb
+lib/ultracart_api/models/affiliate_tier_relationship.rb
+lib/ultracart_api/models/affiliates_response.rb
 lib/ultracart_api/models/agent_summary.rb
 lib/ultracart_api/models/api_user_application_profile.rb
 lib/ultracart_api/models/apply_library_item_request.rb
