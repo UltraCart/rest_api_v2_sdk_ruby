@@ -11,6 +11,7 @@
 | **order_expand** | **String** |  | [optional] |
 | **phone_number** | **String** |  | [optional] |
 | **search_linked_accounts** | **Boolean** |  | [optional] |
+| **search_zoho_desk_tickets** | **Boolean** |  | [optional] |
 | **success** | **Boolean** | Indicates if API call was successful | [optional] |
 | **warning** | [**Warning**](Warning.md) |  | [optional] |
 
@@ -27,6 +28,7 @@ instance = UltracartClient::ConversationPbxCustomerSnapshotRequest.new(
   order_expand: null,
   phone_number: null,
   search_linked_accounts: null,
+  search_zoho_desk_tickets: null,
   success: null,
   warning: null
 )

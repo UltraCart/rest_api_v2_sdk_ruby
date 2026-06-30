@@ -30,6 +30,8 @@ module UltracartClient
 
     attr_accessor :warning
 
+    attr_accessor :zoho_desk_tickets
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -39,7 +41,8 @@ module UltracartClient
         :'metadata' => :'metadata',
         :'orders' => :'orders',
         :'success' => :'success',
-        :'warning' => :'warning'
+        :'warning' => :'warning',
+        :'zoho_desk_tickets' => :'zoho_desk_tickets'
       }
     end
 
@@ -57,7 +60,8 @@ module UltracartClient
         :'metadata' => :'ResponseMetadata',
         :'orders' => :'Array<Order>',
         :'success' => :'Boolean',
-        :'warning' => :'Warning'
+        :'warning' => :'Warning',
+        :'zoho_desk_tickets' => :'Array<ZohoDeskTicketSummary>'
       }
     end
 
@@ -115,6 +119,12 @@ module UltracartClient
       if attributes.key?(:'warning')
         self.warning = attributes[:'warning']
       end
+
+      if attributes.key?(:'zoho_desk_tickets')
+        if (value = attributes[:'zoho_desk_tickets']).is_a?(Array)
+          self.zoho_desk_tickets = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -141,7 +151,8 @@ module UltracartClient
           metadata == o.metadata &&
           orders == o.orders &&
           success == o.success &&
-          warning == o.warning
+          warning == o.warning &&
+          zoho_desk_tickets == o.zoho_desk_tickets
     end
 
     # @see the `==` method
@@ -153,7 +164,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_orders, customers, error, metadata, orders, success, warning].hash
+      [auto_orders, customers, error, metadata, orders, success, warning, zoho_desk_tickets].hash
     end
 
     # Builds the object from hash

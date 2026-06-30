@@ -1030,6 +1030,7 @@ require 'ultracart_api/models/workflow_tasks_response'
 require 'ultracart_api/models/workflow_user'
 require 'ultracart_api/models/workflow_user_response'
 require 'ultracart_api/models/workflow_users_response'
+require 'ultracart_api/models/zoho_desk_ticket_summary'
 
 # APIs
 require 'ultracart_api/api/affiliate_api'

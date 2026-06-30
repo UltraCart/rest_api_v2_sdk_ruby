@@ -11,6 +11,7 @@
 | **orders** | [**Array&lt;Order&gt;**](Order.md) |  | [optional] |
 | **success** | **Boolean** | Indicates if API call was successful | [optional] |
 | **warning** | [**Warning**](Warning.md) |  | [optional] |
+| **zoho_desk_tickets** | [**Array&lt;ZohoDeskTicketSummary&gt;**](ZohoDeskTicketSummary.md) |  | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = UltracartClient::ConversationPbxCustomerSnapshotResponse.new(
   metadata: null,
   orders: null,
   success: null,
-  warning: null
+  warning: null,
+  zoho_desk_tickets: null
 )
 ```
 

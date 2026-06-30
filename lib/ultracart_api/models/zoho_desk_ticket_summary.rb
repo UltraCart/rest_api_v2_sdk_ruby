@@ -14,41 +14,66 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class ConversationPbxCustomerSnapshotRequest
-    attr_accessor :auto_order_expand
+  class ZohoDeskTicketSummary
+    # Assigned agent ID, if any
+    attr_accessor :assignee_id
 
-    attr_accessor :customer_expand
+    # Assigned agent display name, if any
+    attr_accessor :assignee_name
 
-    attr_accessor :error
+    # Source channel (Phone, Email, Chat, ...)
+    attr_accessor :channel
 
-    attr_accessor :metadata
+    # Creation timestamp in ISO 8601
+    attr_accessor :created_time
 
-    attr_accessor :order_expand
+    # Department ID
+    attr_accessor :department_id
 
-    attr_accessor :phone_number
+    # Department display name
+    attr_accessor :department_name
 
-    attr_accessor :search_linked_accounts
+    # Unique ticket ID
+    attr_accessor :id
 
-    attr_accessor :search_zoho_desk_tickets
+    # Last modification timestamp in ISO 8601
+    attr_accessor :modified_time
 
-    # Indicates if API call was successful
-    attr_accessor :success
+    # Priority
+    attr_accessor :priority
 
-    attr_accessor :warning
+    # Current status (e.g. Open, Closed)
+    attr_accessor :status
+
+    # Status category (Open/Closed/OnHold)
+    attr_accessor :status_type
+
+    # Ticket subject
+    attr_accessor :subject
+
+    # Human-readable ticket number
+    attr_accessor :ticket_number
+
+    # Direct link to the ticket in Zoho Desk
+    attr_accessor :web_url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'auto_order_expand' => :'auto_order_expand',
-        :'customer_expand' => :'customer_expand',
-        :'error' => :'error',
-        :'metadata' => :'metadata',
-        :'order_expand' => :'order_expand',
-        :'phone_number' => :'phone_number',
-        :'search_linked_accounts' => :'search_linked_accounts',
-        :'search_zoho_desk_tickets' => :'search_zoho_desk_tickets',
-        :'success' => :'success',
-        :'warning' => :'warning'
+        :'assignee_id' => :'assignee_id',
+        :'assignee_name' => :'assignee_name',
+        :'channel' => :'channel',
+        :'created_time' => :'created_time',
+        :'department_id' => :'department_id',
+        :'department_name' => :'department_name',
+        :'id' => :'id',
+        :'modified_time' => :'modified_time',
+        :'priority' => :'priority',
+        :'status' => :'status',
+        :'status_type' => :'status_type',
+        :'subject' => :'subject',
+        :'ticket_number' => :'ticket_number',
+        :'web_url' => :'web_url'
       }
     end
 
@@ -60,16 +85,20 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'auto_order_expand' => :'String',
-        :'customer_expand' => :'String',
-        :'error' => :'Error',
-        :'metadata' => :'ResponseMetadata',
-        :'order_expand' => :'String',
-        :'phone_number' => :'String',
-        :'search_linked_accounts' => :'Boolean',
-        :'search_zoho_desk_tickets' => :'Boolean',
-        :'success' => :'Boolean',
-        :'warning' => :'Warning'
+        :'assignee_id' => :'String',
+        :'assignee_name' => :'String',
+        :'channel' => :'String',
+        :'created_time' => :'String',
+        :'department_id' => :'String',
+        :'department_name' => :'String',
+        :'id' => :'String',
+        :'modified_time' => :'String',
+        :'priority' => :'String',
+        :'status' => :'String',
+        :'status_type' => :'String',
+        :'subject' => :'String',
+        :'ticket_number' => :'String',
+        :'web_url' => :'String'
       }
     end
 
@@ -83,55 +112,71 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ConversationPbxCustomerSnapshotRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::ZohoDeskTicketSummary` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ConversationPbxCustomerSnapshotRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::ZohoDeskTicketSummary`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'auto_order_expand')
-        self.auto_order_expand = attributes[:'auto_order_expand']
+      if attributes.key?(:'assignee_id')
+        self.assignee_id = attributes[:'assignee_id']
       end
 
-      if attributes.key?(:'customer_expand')
-        self.customer_expand = attributes[:'customer_expand']
+      if attributes.key?(:'assignee_name')
+        self.assignee_name = attributes[:'assignee_name']
       end
 
-      if attributes.key?(:'error')
-        self.error = attributes[:'error']
+      if attributes.key?(:'channel')
+        self.channel = attributes[:'channel']
       end
 
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
+      if attributes.key?(:'created_time')
+        self.created_time = attributes[:'created_time']
       end
 
-      if attributes.key?(:'order_expand')
-        self.order_expand = attributes[:'order_expand']
+      if attributes.key?(:'department_id')
+        self.department_id = attributes[:'department_id']
       end
 
-      if attributes.key?(:'phone_number')
-        self.phone_number = attributes[:'phone_number']
+      if attributes.key?(:'department_name')
+        self.department_name = attributes[:'department_name']
       end
 
-      if attributes.key?(:'search_linked_accounts')
-        self.search_linked_accounts = attributes[:'search_linked_accounts']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'search_zoho_desk_tickets')
-        self.search_zoho_desk_tickets = attributes[:'search_zoho_desk_tickets']
+      if attributes.key?(:'modified_time')
+        self.modified_time = attributes[:'modified_time']
       end
 
-      if attributes.key?(:'success')
-        self.success = attributes[:'success']
+      if attributes.key?(:'priority')
+        self.priority = attributes[:'priority']
       end
 
-      if attributes.key?(:'warning')
-        self.warning = attributes[:'warning']
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
+      end
+
+      if attributes.key?(:'status_type')
+        self.status_type = attributes[:'status_type']
+      end
+
+      if attributes.key?(:'subject')
+        self.subject = attributes[:'subject']
+      end
+
+      if attributes.key?(:'ticket_number')
+        self.ticket_number = attributes[:'ticket_number']
+      end
+
+      if attributes.key?(:'web_url')
+        self.web_url = attributes[:'web_url']
       end
     end
 
@@ -153,16 +198,20 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          auto_order_expand == o.auto_order_expand &&
-          customer_expand == o.customer_expand &&
-          error == o.error &&
-          metadata == o.metadata &&
-          order_expand == o.order_expand &&
-          phone_number == o.phone_number &&
-          search_linked_accounts == o.search_linked_accounts &&
-          search_zoho_desk_tickets == o.search_zoho_desk_tickets &&
-          success == o.success &&
-          warning == o.warning
+          assignee_id == o.assignee_id &&
+          assignee_name == o.assignee_name &&
+          channel == o.channel &&
+          created_time == o.created_time &&
+          department_id == o.department_id &&
+          department_name == o.department_name &&
+          id == o.id &&
+          modified_time == o.modified_time &&
+          priority == o.priority &&
+          status == o.status &&
+          status_type == o.status_type &&
+          subject == o.subject &&
+          ticket_number == o.ticket_number &&
+          web_url == o.web_url
     end
 
     # @see the `==` method
@@ -174,7 +223,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_order_expand, customer_expand, error, metadata, order_expand, phone_number, search_linked_accounts, search_zoho_desk_tickets, success, warning].hash
+      [assignee_id, assignee_name, channel, created_time, department_id, department_name, id, modified_time, priority, status, status_type, subject, ticket_number, web_url].hash
     end
 
     # Builds the object from hash
