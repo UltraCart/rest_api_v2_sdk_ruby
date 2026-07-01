@@ -21,11 +21,19 @@ module UltracartClient
     # Agent-authored notes for the call. Card-like values are scrubbed server-side for PCI compliance.
     attr_accessor :notes
 
+    # Existing zoho desk ticket id to associate this call with.
+    attr_accessor :zoho_desk_ticket_id
+
+    # Existing zoho desk ticket URL
+    attr_accessor :zoho_desk_ticket_url
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'finalize' => :'finalize',
-        :'notes' => :'notes'
+        :'notes' => :'notes',
+        :'zoho_desk_ticket_id' => :'zoho_desk_ticket_id',
+        :'zoho_desk_ticket_url' => :'zoho_desk_ticket_url'
       }
     end
 
@@ -38,7 +46,9 @@ module UltracartClient
     def self.openapi_types
       {
         :'finalize' => :'Boolean',
-        :'notes' => :'String'
+        :'notes' => :'String',
+        :'zoho_desk_ticket_id' => :'String',
+        :'zoho_desk_ticket_url' => :'String'
       }
     end
 
@@ -70,6 +80,14 @@ module UltracartClient
       if attributes.key?(:'notes')
         self.notes = attributes[:'notes']
       end
+
+      if attributes.key?(:'zoho_desk_ticket_id')
+        self.zoho_desk_ticket_id = attributes[:'zoho_desk_ticket_id']
+      end
+
+      if attributes.key?(:'zoho_desk_ticket_url')
+        self.zoho_desk_ticket_url = attributes[:'zoho_desk_ticket_url']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -91,7 +109,9 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           finalize == o.finalize &&
-          notes == o.notes
+          notes == o.notes &&
+          zoho_desk_ticket_id == o.zoho_desk_ticket_id &&
+          zoho_desk_ticket_url == o.zoho_desk_ticket_url
     end
 
     # @see the `==` method
@@ -103,7 +123,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [finalize, notes].hash
+      [finalize, notes, zoho_desk_ticket_id, zoho_desk_ticket_url].hash
     end
 
     # Builds the object from hash
