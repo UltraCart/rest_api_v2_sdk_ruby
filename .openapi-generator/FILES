@@ -66,6 +66,14 @@ docs/Browser.md
 docs/BrowserDevice.md
 docs/BrowserOS.md
 docs/BrowserUserAgent.md
+docs/BulkApi.md
+docs/BulkJob.md
+docs/BulkJobRequest.md
+docs/BulkJobResponse.md
+docs/BulkJobsResponse.md
+docs/BulkRecord.md
+docs/BulkRecordsResponse.md
+docs/BulkUploadUrlResponse.md
 docs/Cart.md
 docs/CartAffiliate.md
 docs/CartAffirmCheckoutResponse.md
@@ -1045,6 +1053,7 @@ git_push.sh
 lib/ultracart_api.rb
 lib/ultracart_api/api/affiliate_api.rb
 lib/ultracart_api/api/auto_order_api.rb
+lib/ultracart_api/api/bulk_api.rb
 lib/ultracart_api/api/channel_partner_api.rb
 lib/ultracart_api/api/checkout_api.rb
 lib/ultracart_api/api/conversation_api.rb
@@ -1127,6 +1136,13 @@ lib/ultracart_api/models/browser.rb
 lib/ultracart_api/models/browser_device.rb
 lib/ultracart_api/models/browser_os.rb
 lib/ultracart_api/models/browser_user_agent.rb
+lib/ultracart_api/models/bulk_job.rb
+lib/ultracart_api/models/bulk_job_request.rb
+lib/ultracart_api/models/bulk_job_response.rb
+lib/ultracart_api/models/bulk_jobs_response.rb
+lib/ultracart_api/models/bulk_record.rb
+lib/ultracart_api/models/bulk_records_response.rb
+lib/ultracart_api/models/bulk_upload_url_response.rb
 lib/ultracart_api/models/cart.rb
 lib/ultracart_api/models/cart_affiliate.rb
 lib/ultracart_api/models/cart_affirm_checkout_response.rb
