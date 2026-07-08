@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **anrok** | [**TaxProviderAnrok**](TaxProviderAnrok.md) |  | [optional] |
 | **avalara** | [**TaxProviderAvalara**](TaxProviderAvalara.md) |  | [optional] |
 | **error** | [**Error**](Error.md) |  | [optional] |
 | **metadata** | [**ResponseMetadata**](ResponseMetadata.md) |  | [optional] |
@@ -20,6 +21,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::TaxProvidersResponse.new(
+  anrok: null,
   avalara: null,
   error: null,
   metadata: null,

@@ -9,6 +9,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**delete_tax_provider_self_county**](TaxApi.md#delete_tax_provider_self_county) | **DELETE** /tax/providers/self/county/{county} | Deletes a Self tax provider county |
 | [**delete_tax_provider_self_postal_code**](TaxApi.md#delete_tax_provider_self_postal_code) | **DELETE** /tax/providers/self/postalCode/{postal_code} | Deletes a Self tax provider postalCode |
 | [**delete_tax_provider_self_state**](TaxApi.md#delete_tax_provider_self_state) | **DELETE** /tax/providers/self/state/{stateCode} | Deletes a Self tax provider state |
+| [**get_tax_provider_anrok**](TaxApi.md#get_tax_provider_anrok) | **GET** /tax/providers/anrok | Retrieve the Anrok tax provider |
+| [**get_tax_provider_anrok_test**](TaxApi.md#get_tax_provider_anrok_test) | **GET** /tax/providers/anrok/test | Attempts to connect to Anrok and returns back the response |
 | [**get_tax_provider_avalara**](TaxApi.md#get_tax_provider_avalara) | **GET** /tax/providers/avalara | Retrieve the Avalara tax provider |
 | [**get_tax_provider_avalara_companies**](TaxApi.md#get_tax_provider_avalara_companies) | **POST** /tax/providers/avalara/companies | Returns Avalara Tax companies configured by the merchant |
 | [**get_tax_provider_avalara_test**](TaxApi.md#get_tax_provider_avalara_test) | **GET** /tax/providers/avalara/test | Attempts to connect to Avalara and returns back the response |
@@ -22,6 +24,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_tax_provider_ultra_cart**](TaxApi.md#get_tax_provider_ultra_cart) | **GET** /tax/providers/ultracart | Retrieve the UltraCart tax provider |
 | [**get_tax_providers**](TaxApi.md#get_tax_providers) | **GET** /tax/providers | Retrieve tax methods |
 | [**set_active_tax_provider**](TaxApi.md#set_active_tax_provider) | **POST** /tax/providers/setActive/{providerName} | Toggle a tax provider to active |
+| [**update_tax_provider_anrok**](TaxApi.md#update_tax_provider_anrok) | **POST** /tax/providers/anrok | Update the Anrok tax provider |
 | [**update_tax_provider_avalara**](TaxApi.md#update_tax_provider_avalara) | **POST** /tax/providers/avalara | Update the Avalara tax provider |
 | [**update_tax_provider_self**](TaxApi.md#update_tax_provider_self) | **POST** /tax/providers/self | Update the Self tax provider |
 | [**update_tax_provider_self_city**](TaxApi.md#update_tax_provider_self_city) | **POST** /tax/providers/self/city/{city} | Updates a Self tax provider city |
@@ -306,6 +309,108 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_tax_provider_anrok
+
+> <TaxProviderAnrok> get_tax_provider_anrok
+
+Retrieve the Anrok tax provider
+
+Retrieves the Anrok tax provider. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_tax_provider_anrok_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TaxProviderAnrok>, Integer, Hash)> get_tax_provider_anrok_with_http_info
+
+```ruby
+begin
+  # Retrieve the Anrok tax provider
+  data, status_code, headers = api_instance.get_tax_provider_anrok_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TaxProviderAnrok>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling TaxApi->get_tax_provider_anrok_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**TaxProviderAnrok**](TaxProviderAnrok.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_tax_provider_anrok_test
+
+> <TaxProviderTestResult> get_tax_provider_anrok_test
+
+Attempts to connect to Anrok and returns back the response
+
+Attempts to connect to Anrok and returns back the response. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_tax_provider_anrok_test_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TaxProviderTestResult>, Integer, Hash)> get_tax_provider_anrok_test_with_http_info
+
+```ruby
+begin
+  # Attempts to connect to Anrok and returns back the response
+  data, status_code, headers = api_instance.get_tax_provider_anrok_test_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TaxProviderTestResult>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling TaxApi->get_tax_provider_anrok_test_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**TaxProviderTestResult**](TaxProviderTestResult.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -992,6 +1097,59 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## update_tax_provider_anrok
+
+> <TaxProviderAnrok> update_tax_provider_anrok(tax_provider_anrok)
+
+Update the Anrok tax provider
+
+Update the Anrok tax provider. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_tax_provider_anrok_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TaxProviderAnrok>, Integer, Hash)> update_tax_provider_anrok_with_http_info(tax_provider_anrok)
+
+```ruby
+begin
+  # Update the Anrok tax provider
+  data, status_code, headers = api_instance.update_tax_provider_anrok_with_http_info(tax_provider_anrok)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TaxProviderAnrok>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling TaxApi->update_tax_provider_anrok_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **tax_provider_anrok** | [**TaxProviderAnrok**](TaxProviderAnrok.md) | TaxProviderAnrok object |  |
+
+### Return type
+
+[**TaxProviderAnrok**](TaxProviderAnrok.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

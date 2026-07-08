@@ -407,6 +407,122 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Retrieve the Anrok tax provider
+    # Retrieves the Anrok tax provider. 
+    # @param [Hash] opts the optional parameters
+    # @return [TaxProviderAnrok]
+    def get_tax_provider_anrok(opts = {})
+      data, _status_code, _headers = get_tax_provider_anrok_with_http_info(opts)
+      data
+    end
+
+    # Retrieve the Anrok tax provider
+    # Retrieves the Anrok tax provider. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(TaxProviderAnrok, Integer, Hash)>] TaxProviderAnrok data, response status code and response headers
+    def get_tax_provider_anrok_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: TaxApi.get_tax_provider_anrok ...'
+      end
+      # resource path
+      local_var_path = '/tax/providers/anrok'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'TaxProviderAnrok'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"TaxApi.get_tax_provider_anrok",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: TaxApi#get_tax_provider_anrok\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Attempts to connect to Anrok and returns back the response
+    # Attempts to connect to Anrok and returns back the response. 
+    # @param [Hash] opts the optional parameters
+    # @return [TaxProviderTestResult]
+    def get_tax_provider_anrok_test(opts = {})
+      data, _status_code, _headers = get_tax_provider_anrok_test_with_http_info(opts)
+      data
+    end
+
+    # Attempts to connect to Anrok and returns back the response
+    # Attempts to connect to Anrok and returns back the response. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(TaxProviderTestResult, Integer, Hash)>] TaxProviderTestResult data, response status code and response headers
+    def get_tax_provider_anrok_test_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: TaxApi.get_tax_provider_anrok_test ...'
+      end
+      # resource path
+      local_var_path = '/tax/providers/anrok/test'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'TaxProviderTestResult'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"TaxApi.get_tax_provider_anrok_test",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: TaxApi#get_tax_provider_anrok_test\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve the Avalara tax provider
     # Retrieves the Avalara tax provider. 
     # @param [Hash] opts the optional parameters
@@ -1189,6 +1305,75 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: TaxApi#set_active_tax_provider\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update the Anrok tax provider
+    # Update the Anrok tax provider. 
+    # @param tax_provider_anrok [TaxProviderAnrok] TaxProviderAnrok object
+    # @param [Hash] opts the optional parameters
+    # @return [TaxProviderAnrok]
+    def update_tax_provider_anrok(tax_provider_anrok, opts = {})
+      data, _status_code, _headers = update_tax_provider_anrok_with_http_info(tax_provider_anrok, opts)
+      data
+    end
+
+    # Update the Anrok tax provider
+    # Update the Anrok tax provider. 
+    # @param tax_provider_anrok [TaxProviderAnrok] TaxProviderAnrok object
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(TaxProviderAnrok, Integer, Hash)>] TaxProviderAnrok data, response status code and response headers
+    def update_tax_provider_anrok_with_http_info(tax_provider_anrok, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: TaxApi.update_tax_provider_anrok ...'
+      end
+      # verify the required parameter 'tax_provider_anrok' is set
+      if @api_client.config.client_side_validation && tax_provider_anrok.nil?
+        fail ArgumentError, "Missing the required parameter 'tax_provider_anrok' when calling TaxApi.update_tax_provider_anrok"
+      end
+      # resource path
+      local_var_path = '/tax/providers/anrok'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(tax_provider_anrok)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'TaxProviderAnrok'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"TaxApi.update_tax_provider_anrok",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: TaxApi#update_tax_provider_anrok\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
