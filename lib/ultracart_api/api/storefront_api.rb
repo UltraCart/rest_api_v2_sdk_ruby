@@ -3601,6 +3601,91 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get a customer's dispatch-log journey across all flows/campaigns
+    # Paginated, date-boundable journey of every flow/campaign step a customer moved through (AP1/AP2), time-sorted. Rows are lean; fetch a row's detail via getEmailStepDispatchLogDetail. scanForward=false (default) returns recent-first; true returns chronological progression. Page forward until 'more' is false. 
+    # @param storefront_oid [Integer] 
+    # @param email_customer_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :since 
+    # @option opts [String] :_until 
+    # @option opts [Integer] :page_number 
+    # @option opts [Integer] :page_size 
+    # @option opts [Boolean] :scan_forward 
+    # @return [EmailDispatchLogsResponse]
+    def get_email_customer_dispatch_logs(storefront_oid, email_customer_uuid, opts = {})
+      data, _status_code, _headers = get_email_customer_dispatch_logs_with_http_info(storefront_oid, email_customer_uuid, opts)
+      data
+    end
+
+    # Get a customer&#39;s dispatch-log journey across all flows/campaigns
+    # Paginated, date-boundable journey of every flow/campaign step a customer moved through (AP1/AP2), time-sorted. Rows are lean; fetch a row&#39;s detail via getEmailStepDispatchLogDetail. scanForward&#x3D;false (default) returns recent-first; true returns chronological progression. Page forward until &#39;more&#39; is false. 
+    # @param storefront_oid [Integer] 
+    # @param email_customer_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :since 
+    # @option opts [String] :_until 
+    # @option opts [Integer] :page_number 
+    # @option opts [Integer] :page_size 
+    # @option opts [Boolean] :scan_forward 
+    # @return [Array<(EmailDispatchLogsResponse, Integer, Hash)>] EmailDispatchLogsResponse data, response status code and response headers
+    def get_email_customer_dispatch_logs_with_http_info(storefront_oid, email_customer_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_email_customer_dispatch_logs ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_email_customer_dispatch_logs"
+      end
+      # verify the required parameter 'email_customer_uuid' is set
+      if @api_client.config.client_side_validation && email_customer_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'email_customer_uuid' when calling StorefrontApi.get_email_customer_dispatch_logs"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/customers/{email_customer_uuid}/dispatch_logs'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'email_customer_uuid' + '}', CGI.escape(email_customer_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
+      query_params[:'until'] = opts[:'_until'] if !opts[:'_until'].nil?
+      query_params[:'pageNumber'] = opts[:'page_number'] if !opts[:'page_number'].nil?
+      query_params[:'pageSize'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'scanForward'] = opts[:'scan_forward'] if !opts[:'scan_forward'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EmailDispatchLogsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"StorefrontApi.get_email_customer_dispatch_logs",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_email_customer_dispatch_logs\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get customers editor URL
     # @param storefront_oid [Integer] 
     # @param email_customer_uuid [String] 
@@ -3866,6 +3951,73 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#get_email_dashboard_stats\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Resolve a customer email to its ESP customer UUID
+    # Entry-hop resolver for the customer-journey screen (AP0). Returns the esp_customer_uuid for a merchant's customer email, or a null uuid when the email is not on file. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :email 
+    # @return [EmailCustomerLookupResponse]
+    def get_email_dispatch_log_customer_lookup(storefront_oid, opts = {})
+      data, _status_code, _headers = get_email_dispatch_log_customer_lookup_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Resolve a customer email to its ESP customer UUID
+    # Entry-hop resolver for the customer-journey screen (AP0). Returns the esp_customer_uuid for a merchant&#39;s customer email, or a null uuid when the email is not on file. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :email 
+    # @return [Array<(EmailCustomerLookupResponse, Integer, Hash)>] EmailCustomerLookupResponse data, response status code and response headers
+    def get_email_dispatch_log_customer_lookup_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_email_dispatch_log_customer_lookup ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_email_dispatch_log_customer_lookup"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/dispatch_logs/customer_lookup'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'email'] = opts[:'email'] if !opts[:'email'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EmailCustomerLookupResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"StorefrontApi.get_email_dispatch_log_customer_lookup",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_email_dispatch_log_customer_lookup\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6099,6 +6251,176 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StorefrontApi#get_email_sms_orders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get the full detail of a single dispatch-log record
+    # Fetches and gunzips the full detail payload of one dispatch-log record (AP5 drill-down), identified by its step plus the log_dts and esp_customer_uuid shown on the list row. 
+    # @param storefront_oid [Integer] 
+    # @param commseq_uuid [String] 
+    # @param commseq_step_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :log_dts 
+    # @option opts [String] :esp_customer_uuid 
+    # @return [EmailDispatchLogDetailResponse]
+    def get_email_step_dispatch_log_detail(storefront_oid, commseq_uuid, commseq_step_uuid, opts = {})
+      data, _status_code, _headers = get_email_step_dispatch_log_detail_with_http_info(storefront_oid, commseq_uuid, commseq_step_uuid, opts)
+      data
+    end
+
+    # Get the full detail of a single dispatch-log record
+    # Fetches and gunzips the full detail payload of one dispatch-log record (AP5 drill-down), identified by its step plus the log_dts and esp_customer_uuid shown on the list row. 
+    # @param storefront_oid [Integer] 
+    # @param commseq_uuid [String] 
+    # @param commseq_step_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :log_dts 
+    # @option opts [String] :esp_customer_uuid 
+    # @return [Array<(EmailDispatchLogDetailResponse, Integer, Hash)>] EmailDispatchLogDetailResponse data, response status code and response headers
+    def get_email_step_dispatch_log_detail_with_http_info(storefront_oid, commseq_uuid, commseq_step_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_email_step_dispatch_log_detail ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_email_step_dispatch_log_detail"
+      end
+      # verify the required parameter 'commseq_uuid' is set
+      if @api_client.config.client_side_validation && commseq_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'commseq_uuid' when calling StorefrontApi.get_email_step_dispatch_log_detail"
+      end
+      # verify the required parameter 'commseq_step_uuid' is set
+      if @api_client.config.client_side_validation && commseq_step_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'commseq_step_uuid' when calling StorefrontApi.get_email_step_dispatch_log_detail"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/steps/{commseq_step_uuid}/dispatch_logs/detail'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'commseq_uuid' + '}', CGI.escape(commseq_uuid.to_s)).sub('{' + 'commseq_step_uuid' + '}', CGI.escape(commseq_step_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'log_dts'] = opts[:'log_dts'] if !opts[:'log_dts'].nil?
+      query_params[:'esp_customer_uuid'] = opts[:'esp_customer_uuid'] if !opts[:'esp_customer_uuid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EmailDispatchLogDetailResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"StorefrontApi.get_email_step_dispatch_log_detail",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_email_step_dispatch_log_detail\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get a paginated, date-boundable dispatch-log feed for a step
+    # Paginated per-step dispatch activity with 90-day depth (AP3/AP4). Rows are lean, rendered from the DynamoDB keys; fetch a row's full detail via getEmailStepDispatchLogDetail. Page forward by incrementing pageNumber until the response 'more' flag is false. since/until are inclusive ISO-8601 bounds on log_dts. 
+    # @param storefront_oid [Integer] 
+    # @param commseq_uuid [String] 
+    # @param commseq_step_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :since 
+    # @option opts [String] :_until 
+    # @option opts [Integer] :page_number 
+    # @option opts [Integer] :page_size 
+    # @return [EmailDispatchLogsResponse]
+    def get_email_step_dispatch_logs(storefront_oid, commseq_uuid, commseq_step_uuid, opts = {})
+      data, _status_code, _headers = get_email_step_dispatch_logs_with_http_info(storefront_oid, commseq_uuid, commseq_step_uuid, opts)
+      data
+    end
+
+    # Get a paginated, date-boundable dispatch-log feed for a step
+    # Paginated per-step dispatch activity with 90-day depth (AP3/AP4). Rows are lean, rendered from the DynamoDB keys; fetch a row&#39;s full detail via getEmailStepDispatchLogDetail. Page forward by incrementing pageNumber until the response &#39;more&#39; flag is false. since/until are inclusive ISO-8601 bounds on log_dts. 
+    # @param storefront_oid [Integer] 
+    # @param commseq_uuid [String] 
+    # @param commseq_step_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :since 
+    # @option opts [String] :_until 
+    # @option opts [Integer] :page_number 
+    # @option opts [Integer] :page_size 
+    # @return [Array<(EmailDispatchLogsResponse, Integer, Hash)>] EmailDispatchLogsResponse data, response status code and response headers
+    def get_email_step_dispatch_logs_with_http_info(storefront_oid, commseq_uuid, commseq_step_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_email_step_dispatch_logs ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_email_step_dispatch_logs"
+      end
+      # verify the required parameter 'commseq_uuid' is set
+      if @api_client.config.client_side_validation && commseq_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'commseq_uuid' when calling StorefrontApi.get_email_step_dispatch_logs"
+      end
+      # verify the required parameter 'commseq_step_uuid' is set
+      if @api_client.config.client_side_validation && commseq_step_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'commseq_step_uuid' when calling StorefrontApi.get_email_step_dispatch_logs"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/steps/{commseq_step_uuid}/dispatch_logs'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'commseq_uuid' + '}', CGI.escape(commseq_uuid.to_s)).sub('{' + 'commseq_step_uuid' + '}', CGI.escape(commseq_step_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
+      query_params[:'until'] = opts[:'_until'] if !opts[:'_until'].nil?
+      query_params[:'pageNumber'] = opts[:'page_number'] if !opts[:'page_number'].nil?
+      query_params[:'pageSize'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EmailDispatchLogsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"StorefrontApi.get_email_step_dispatch_logs",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_email_step_dispatch_logs\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

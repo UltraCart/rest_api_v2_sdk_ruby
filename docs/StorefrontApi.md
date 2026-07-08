@@ -56,10 +56,12 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_email_commseq_step_waiting**](StorefrontApi.md#get_email_commseq_step_waiting) | **POST** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/waiting | Get email communication sequence customers waiting at each requested step |
 | [**get_email_commseq_webhook_editor_values**](StorefrontApi.md#get_email_commseq_webhook_editor_values) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/webhookEditorValues | Get email webhook editor values |
 | [**get_email_commseqs**](StorefrontApi.md#get_email_commseqs) | **GET** /storefront/{storefront_oid}/email/commseqs | Get email commseqs |
+| [**get_email_customer_dispatch_logs**](StorefrontApi.md#get_email_customer_dispatch_logs) | **GET** /storefront/{storefront_oid}/email/customers/{email_customer_uuid}/dispatch_logs | Get a customer&#39;s dispatch-log journey across all flows/campaigns |
 | [**get_email_customer_editor_url**](StorefrontApi.md#get_email_customer_editor_url) | **GET** /storefront/{storefront_oid}/email/customers/{email_customer_uuid}/editor_url | Get customers editor URL |
 | [**get_email_customers**](StorefrontApi.md#get_email_customers) | **GET** /storefront/{storefront_oid}/email/customers | Get email customers |
 | [**get_email_dashboard_activity**](StorefrontApi.md#get_email_dashboard_activity) | **GET** /storefront/{storefront_oid}/email/dashboard_activity | Get email dashboard activity |
 | [**get_email_dashboard_stats**](StorefrontApi.md#get_email_dashboard_stats) | **GET** /storefront/{storefront_oid}/email/dashboard_stats | Get dashboard stats |
+| [**get_email_dispatch_log_customer_lookup**](StorefrontApi.md#get_email_dispatch_log_customer_lookup) | **GET** /storefront/{storefront_oid}/email/dispatch_logs/customer_lookup | Resolve a customer email to its ESP customer UUID |
 | [**get_email_dispatch_logs**](StorefrontApi.md#get_email_dispatch_logs) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/steps/{commseq_step_uuid}/logs | Get email dispatch logs |
 | [**get_email_email**](StorefrontApi.md#get_email_email) | **GET** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid} | Get email email |
 | [**get_email_email_clicks**](StorefrontApi.md#get_email_email_clicks) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/steps/{commseq_step_uuid}/emails/{commseq_email_uuid}/clicks | Get email email clicks |
@@ -93,6 +95,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_email_sending_domains**](StorefrontApi.md#get_email_sending_domains) | **GET** /storefront/email/sending_domains | Get email sending domains |
 | [**get_email_settings**](StorefrontApi.md#get_email_settings) | **GET** /storefront/{storefront_oid}/email/settings | Get email settings |
 | [**get_email_sms_orders**](StorefrontApi.md#get_email_sms_orders) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/steps/{commseq_step_uuid}/sms/orders | Get email sms orders |
+| [**get_email_step_dispatch_log_detail**](StorefrontApi.md#get_email_step_dispatch_log_detail) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/steps/{commseq_step_uuid}/dispatch_logs/detail | Get the full detail of a single dispatch-log record |
+| [**get_email_step_dispatch_logs**](StorefrontApi.md#get_email_step_dispatch_logs) | **GET** /storefront/{storefront_oid}/email/commseqs/{commseq_uuid}/steps/{commseq_step_uuid}/dispatch_logs | Get a paginated, date-boundable dispatch-log feed for a step |
 | [**get_email_template**](StorefrontApi.md#get_email_template) | **GET** /storefront/{storefront_oid}/email/templates/{email_template_oid} | Get email template |
 | [**get_email_templates**](StorefrontApi.md#get_email_templates) | **GET** /storefront/{storefront_oid}/email/templates | Get email templates |
 | [**get_email_third_party_providers**](StorefrontApi.md#get_email_third_party_providers) | **GET** /storefront/{storefront_oid}/email/third_party_providers | Get a list of third party email providers |
@@ -2945,6 +2949,65 @@ end
 - **Accept**: application/json
 
 
+## get_email_customer_dispatch_logs
+
+> <EmailDispatchLogsResponse> get_email_customer_dispatch_logs(storefront_oid, email_customer_uuid, opts)
+
+Get a customer's dispatch-log journey across all flows/campaigns
+
+Paginated, date-boundable journey of every flow/campaign step a customer moved through (AP1/AP2), time-sorted. Rows are lean; fetch a row's detail via getEmailStepDispatchLogDetail. scanForward=false (default) returns recent-first; true returns chronological progression. Page forward until 'more' is false. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_email_customer_dispatch_logs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmailDispatchLogsResponse>, Integer, Hash)> get_email_customer_dispatch_logs_with_http_info(storefront_oid, email_customer_uuid, opts)
+
+```ruby
+begin
+  # Get a customer's dispatch-log journey across all flows/campaigns
+  data, status_code, headers = api_instance.get_email_customer_dispatch_logs_with_http_info(storefront_oid, email_customer_uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmailDispatchLogsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->get_email_customer_dispatch_logs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **email_customer_uuid** | **String** |  |  |
+| **since** | **String** |  | [optional] |
+| **_until** | **String** |  | [optional] |
+| **page_number** | **Integer** |  | [optional] |
+| **page_size** | **Integer** |  | [optional] |
+| **scan_forward** | **Boolean** |  | [optional] |
+
+### Return type
+
+[**EmailDispatchLogsResponse**](EmailDispatchLogsResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_email_customer_editor_url
 
 > <EmailCustomerEditorUrlResponse> get_email_customer_editor_url(storefront_oid, email_customer_uuid)
@@ -3148,6 +3211,60 @@ end
 ### Return type
 
 [**EmailDashboardStatsResponse**](EmailDashboardStatsResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_email_dispatch_log_customer_lookup
+
+> <EmailCustomerLookupResponse> get_email_dispatch_log_customer_lookup(storefront_oid, opts)
+
+Resolve a customer email to its ESP customer UUID
+
+Entry-hop resolver for the customer-journey screen (AP0). Returns the esp_customer_uuid for a merchant's customer email, or a null uuid when the email is not on file. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_email_dispatch_log_customer_lookup_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmailCustomerLookupResponse>, Integer, Hash)> get_email_dispatch_log_customer_lookup_with_http_info(storefront_oid, opts)
+
+```ruby
+begin
+  # Resolve a customer email to its ESP customer UUID
+  data, status_code, headers = api_instance.get_email_dispatch_log_customer_lookup_with_http_info(storefront_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmailCustomerLookupResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->get_email_dispatch_log_customer_lookup_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **email** | **String** |  | [optional] |
+
+### Return type
+
+[**EmailCustomerLookupResponse**](EmailCustomerLookupResponse.md)
 
 ### Authorization
 
@@ -4895,6 +5012,122 @@ end
 ### Return type
 
 [**EmailSmsOrdersResponse**](EmailSmsOrdersResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_email_step_dispatch_log_detail
+
+> <EmailDispatchLogDetailResponse> get_email_step_dispatch_log_detail(storefront_oid, commseq_uuid, commseq_step_uuid, opts)
+
+Get the full detail of a single dispatch-log record
+
+Fetches and gunzips the full detail payload of one dispatch-log record (AP5 drill-down), identified by its step plus the log_dts and esp_customer_uuid shown on the list row. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_email_step_dispatch_log_detail_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmailDispatchLogDetailResponse>, Integer, Hash)> get_email_step_dispatch_log_detail_with_http_info(storefront_oid, commseq_uuid, commseq_step_uuid, opts)
+
+```ruby
+begin
+  # Get the full detail of a single dispatch-log record
+  data, status_code, headers = api_instance.get_email_step_dispatch_log_detail_with_http_info(storefront_oid, commseq_uuid, commseq_step_uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmailDispatchLogDetailResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->get_email_step_dispatch_log_detail_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **commseq_uuid** | **String** |  |  |
+| **commseq_step_uuid** | **String** |  |  |
+| **log_dts** | **String** |  | [optional] |
+| **esp_customer_uuid** | **String** |  | [optional] |
+
+### Return type
+
+[**EmailDispatchLogDetailResponse**](EmailDispatchLogDetailResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_email_step_dispatch_logs
+
+> <EmailDispatchLogsResponse> get_email_step_dispatch_logs(storefront_oid, commseq_uuid, commseq_step_uuid, opts)
+
+Get a paginated, date-boundable dispatch-log feed for a step
+
+Paginated per-step dispatch activity with 90-day depth (AP3/AP4). Rows are lean, rendered from the DynamoDB keys; fetch a row's full detail via getEmailStepDispatchLogDetail. Page forward by incrementing pageNumber until the response 'more' flag is false. since/until are inclusive ISO-8601 bounds on log_dts. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_email_step_dispatch_logs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmailDispatchLogsResponse>, Integer, Hash)> get_email_step_dispatch_logs_with_http_info(storefront_oid, commseq_uuid, commseq_step_uuid, opts)
+
+```ruby
+begin
+  # Get a paginated, date-boundable dispatch-log feed for a step
+  data, status_code, headers = api_instance.get_email_step_dispatch_logs_with_http_info(storefront_oid, commseq_uuid, commseq_step_uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmailDispatchLogsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->get_email_step_dispatch_logs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **commseq_uuid** | **String** |  |  |
+| **commseq_step_uuid** | **String** |  |  |
+| **since** | **String** |  | [optional] |
+| **_until** | **String** |  | [optional] |
+| **page_number** | **Integer** |  | [optional] |
+| **page_size** | **Integer** |  | [optional] |
+
+### Return type
+
+[**EmailDispatchLogsResponse**](EmailDispatchLogsResponse.md)
 
 ### Authorization
 
