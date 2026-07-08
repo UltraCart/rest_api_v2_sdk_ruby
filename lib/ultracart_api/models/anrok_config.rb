@@ -18,6 +18,9 @@ module UltracartClient
     # Anrok API key
     attr_accessor :api_key
 
+    # Default Anrok Product ID, used for cart items that do not have their own Anrok Product ID assigned
+    attr_accessor :default_product_id
+
     # True if this Anrok configuration is to estimate taxes only and not report placed orders to Anrok
     attr_accessor :estimate_only
 
@@ -31,6 +34,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'api_key' => :'api_key',
+        :'default_product_id' => :'default_product_id',
         :'estimate_only' => :'estimate_only',
         :'last_test_dts' => :'last_test_dts',
         :'test_results' => :'test_results'
@@ -46,6 +50,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'api_key' => :'String',
+        :'default_product_id' => :'String',
         :'estimate_only' => :'Boolean',
         :'last_test_dts' => :'String',
         :'test_results' => :'String'
@@ -75,6 +80,10 @@ module UltracartClient
 
       if attributes.key?(:'api_key')
         self.api_key = attributes[:'api_key']
+      end
+
+      if attributes.key?(:'default_product_id')
+        self.default_product_id = attributes[:'default_product_id']
       end
 
       if attributes.key?(:'estimate_only')
@@ -109,6 +118,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           api_key == o.api_key &&
+          default_product_id == o.default_product_id &&
           estimate_only == o.estimate_only &&
           last_test_dts == o.last_test_dts &&
           test_results == o.test_results
@@ -123,7 +133,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [api_key, estimate_only, last_test_dts, test_results].hash
+      [api_key, default_product_id, estimate_only, last_test_dts, test_results].hash
     end
 
     # Builds the object from hash
