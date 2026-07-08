@@ -27,6 +27,9 @@ module UltracartClient
     # Date/time of the connection test to Anrok
     attr_accessor :last_test_dts
 
+    # Anrok Product ID used to classify shipping/handling charges; must be created in Anrok and mapped to the Shipping cost tax category
+    attr_accessor :shipping_product_id
+
     # Test results of the last connection test to Anrok
     attr_accessor :test_results
 
@@ -37,6 +40,7 @@ module UltracartClient
         :'default_product_id' => :'default_product_id',
         :'estimate_only' => :'estimate_only',
         :'last_test_dts' => :'last_test_dts',
+        :'shipping_product_id' => :'shipping_product_id',
         :'test_results' => :'test_results'
       }
     end
@@ -53,6 +57,7 @@ module UltracartClient
         :'default_product_id' => :'String',
         :'estimate_only' => :'Boolean',
         :'last_test_dts' => :'String',
+        :'shipping_product_id' => :'String',
         :'test_results' => :'String'
       }
     end
@@ -94,6 +99,10 @@ module UltracartClient
         self.last_test_dts = attributes[:'last_test_dts']
       end
 
+      if attributes.key?(:'shipping_product_id')
+        self.shipping_product_id = attributes[:'shipping_product_id']
+      end
+
       if attributes.key?(:'test_results')
         self.test_results = attributes[:'test_results']
       end
@@ -121,6 +130,7 @@ module UltracartClient
           default_product_id == o.default_product_id &&
           estimate_only == o.estimate_only &&
           last_test_dts == o.last_test_dts &&
+          shipping_product_id == o.shipping_product_id &&
           test_results == o.test_results
     end
 
@@ -133,7 +143,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [api_key, default_product_id, estimate_only, last_test_dts, test_results].hash
+      [api_key, default_product_id, estimate_only, last_test_dts, shipping_product_id, test_results].hash
     end
 
     # Builds the object from hash
