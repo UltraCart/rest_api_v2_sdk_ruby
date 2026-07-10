@@ -877,6 +877,8 @@ docs/PricingTierNotification.md
 docs/PricingTiersResponse.md
 docs/Property.md
 docs/PublishLibraryItemRequest.md
+docs/QuickBooksOnlineCustomer.md
+docs/QuickBooksOnlineCustomersResponse.md
 docs/RegisterAffiliateClickRequest.md
 docs/RegisterAffiliateClickResponse.md
 docs/ReplaceOrderItemIdRequest.md
@@ -1939,6 +1941,8 @@ lib/ultracart_api/models/pricing_tier_notification.rb
 lib/ultracart_api/models/pricing_tiers_response.rb
 lib/ultracart_api/models/property.rb
 lib/ultracart_api/models/publish_library_item_request.rb
+lib/ultracart_api/models/quick_books_online_customer.rb
+lib/ultracart_api/models/quick_books_online_customers_response.rb
 lib/ultracart_api/models/register_affiliate_click_request.rb
 lib/ultracart_api/models/register_affiliate_click_response.rb
 lib/ultracart_api/models/replace_order_item_id_request.rb

@@ -20,6 +20,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_customers_for_data_tables**](CustomerApi.md#get_customers_for_data_tables) | **POST** /customer/customers/dataTables | Retrieve customers for DataTables plugin |
 | [**get_email_verification_token**](CustomerApi.md#get_email_verification_token) | **POST** /customer/customers/email_verify/get_token | Create a token that can be used to verify a customer email address |
 | [**get_magic_link**](CustomerApi.md#get_magic_link) | **PUT** /customer/customers/{customer_profile_oid}/magic_link/{storefront_host_name} | getMagicLink |
+| [**get_quick_books_online_customers**](CustomerApi.md#get_quick_books_online_customers) | **GET** /customer/quickbooks_online/customers | Search the merchant&#39;s QuickBooks Online customers |
 | [**insert_customer**](CustomerApi.md#insert_customer) | **POST** /customer/customers | Insert a customer |
 | [**insert_wish_list_item**](CustomerApi.md#insert_wish_list_item) | **POST** /customer/customers/{customer_profile_oid}/wishlist | Insert a customer wishlist item |
 | [**merge_customer**](CustomerApi.md#merge_customer) | **PUT** /customer/customers/{customer_profile_oid}/merge | Merge customer into this customer |
@@ -1752,6 +1753,59 @@ end
 ### Return type
 
 [**CustomerMagicLinkResponse**](CustomerMagicLinkResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_quick_books_online_customers
+
+> <QuickBooksOnlineCustomersResponse> get_quick_books_online_customers(opts)
+
+Search the merchant's QuickBooks Online customers
+
+Typeahead search of the merchant's QuickBooks Online customers by display name.  Used by the customer profile editor to link a profile 1:1 to a QuickBooks Online customer.  Returns up to 100 matches.  If QuickBooks Online is not connected the list will be empty. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_quick_books_online_customers_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<QuickBooksOnlineCustomersResponse>, Integer, Hash)> get_quick_books_online_customers_with_http_info(opts)
+
+```ruby
+begin
+  # Search the merchant's QuickBooks Online customers
+  data, status_code, headers = api_instance.get_quick_books_online_customers_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <QuickBooksOnlineCustomersResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->get_quick_books_online_customers_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **q** | **String** | Search query matched against the QuickBooks Online customer display name | [optional] |
+
+### Return type
+
+[**QuickBooksOnlineCustomersResponse**](QuickBooksOnlineCustomersResponse.md)
 
 ### Authorization
 

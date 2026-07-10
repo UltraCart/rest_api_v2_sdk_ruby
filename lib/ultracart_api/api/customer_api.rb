@@ -1202,6 +1202,67 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Search the merchant's QuickBooks Online customers
+    # Typeahead search of the merchant's QuickBooks Online customers by display name.  Used by the customer profile editor to link a profile 1:1 to a QuickBooks Online customer.  Returns up to 100 matches.  If QuickBooks Online is not connected the list will be empty. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :q Search query matched against the QuickBooks Online customer display name
+    # @return [QuickBooksOnlineCustomersResponse]
+    def get_quick_books_online_customers(opts = {})
+      data, _status_code, _headers = get_quick_books_online_customers_with_http_info(opts)
+      data
+    end
+
+    # Search the merchant&#39;s QuickBooks Online customers
+    # Typeahead search of the merchant&#39;s QuickBooks Online customers by display name.  Used by the customer profile editor to link a profile 1:1 to a QuickBooks Online customer.  Returns up to 100 matches.  If QuickBooks Online is not connected the list will be empty. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :q Search query matched against the QuickBooks Online customer display name
+    # @return [Array<(QuickBooksOnlineCustomersResponse, Integer, Hash)>] QuickBooksOnlineCustomersResponse data, response status code and response headers
+    def get_quick_books_online_customers_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.get_quick_books_online_customers ...'
+      end
+      # resource path
+      local_var_path = '/customer/quickbooks_online/customers'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'QuickBooksOnlineCustomersResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"CustomerApi.get_quick_books_online_customers",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#get_quick_books_online_customers\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Insert a customer
     # Insert a customer on the UltraCart account. 
     # @param customer [Customer] Customer to insert
