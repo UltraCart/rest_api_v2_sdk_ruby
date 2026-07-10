@@ -53,6 +53,9 @@ module UltracartClient
     # Billing addresses for this customer
     attr_accessor :billing
 
+    # Customer birthday
+    attr_accessor :birth_date
+
     # Business notes (internally visible only)
     attr_accessor :business_notes
 
@@ -148,6 +151,9 @@ module UltracartClient
     # QuickBooks tax exemption reason code
     attr_accessor :qb_tax_exemption_reason_code
 
+    # QuickBooks Online customer ID used to lock this customer 1:1 with QuickBooks Online
+    attr_accessor :quickbooks_online_customer_id
+
     # Quotes associated with this customer profile
     attr_accessor :quotes
 
@@ -218,6 +224,7 @@ module UltracartClient
         :'auto_approve_purchase_order' => :'auto_approve_purchase_order',
         :'automatic_merchant_notes' => :'automatic_merchant_notes',
         :'billing' => :'billing',
+        :'birth_date' => :'birth_date',
         :'business_notes' => :'business_notes',
         :'cards' => :'cards',
         :'cc_emails' => :'cc_emails',
@@ -251,6 +258,7 @@ module UltracartClient
         :'qb_class' => :'qb_class',
         :'qb_code' => :'qb_code',
         :'qb_tax_exemption_reason_code' => :'qb_tax_exemption_reason_code',
+        :'quickbooks_online_customer_id' => :'quickbooks_online_customer_id',
         :'quotes' => :'quotes',
         :'quotes_summary' => :'quotes_summary',
         :'referral_source' => :'referral_source',
@@ -294,6 +302,7 @@ module UltracartClient
         :'auto_approve_purchase_order' => :'Boolean',
         :'automatic_merchant_notes' => :'String',
         :'billing' => :'Array<CustomerBilling>',
+        :'birth_date' => :'String',
         :'business_notes' => :'String',
         :'cards' => :'Array<CustomerCard>',
         :'cc_emails' => :'Array<CustomerEmail>',
@@ -327,6 +336,7 @@ module UltracartClient
         :'qb_class' => :'String',
         :'qb_code' => :'String',
         :'qb_tax_exemption_reason_code' => :'Integer',
+        :'quickbooks_online_customer_id' => :'String',
         :'quotes' => :'Array<Order>',
         :'quotes_summary' => :'CustomerQuotesSummary',
         :'referral_source' => :'String',
@@ -424,6 +434,10 @@ module UltracartClient
         if (value = attributes[:'billing']).is_a?(Array)
           self.billing = value
         end
+      end
+
+      if attributes.key?(:'birth_date')
+        self.birth_date = attributes[:'birth_date']
       end
 
       if attributes.key?(:'business_notes')
@@ -568,6 +582,10 @@ module UltracartClient
         self.qb_tax_exemption_reason_code = attributes[:'qb_tax_exemption_reason_code']
       end
 
+      if attributes.key?(:'quickbooks_online_customer_id')
+        self.quickbooks_online_customer_id = attributes[:'quickbooks_online_customer_id']
+      end
+
       if attributes.key?(:'quotes')
         if (value = attributes[:'quotes']).is_a?(Array)
           self.quotes = value
@@ -685,6 +703,10 @@ module UltracartClient
         invalid_properties.push('invalid value for "password", the character length must be smaller than or equal to 30.')
       end
 
+      if !@quickbooks_online_customer_id.nil? && @quickbooks_online_customer_id.to_s.length > 50
+        invalid_properties.push('invalid value for "quickbooks_online_customer_id", the character length must be smaller than or equal to 50.')
+      end
+
       if !@referral_source.nil? && @referral_source.to_s.length > 50
         invalid_properties.push('invalid value for "referral_source", the character length must be smaller than or equal to 50.')
       end
@@ -718,6 +740,7 @@ module UltracartClient
       return false if !@fedex_account_number.nil? && @fedex_account_number.to_s.length > 20
       return false if !@last_modified_by.nil? && @last_modified_by.to_s.length > 100
       return false if !@password.nil? && @password.to_s.length > 30
+      return false if !@quickbooks_online_customer_id.nil? && @quickbooks_online_customer_id.to_s.length > 50
       return false if !@referral_source.nil? && @referral_source.to_s.length > 50
       return false if !@sales_rep_code.nil? && @sales_rep_code.to_s.length > 10
       return false if !@tax_id.nil? && @tax_id.to_s.length > 15
@@ -797,6 +820,16 @@ module UltracartClient
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] quickbooks_online_customer_id Value to be assigned
+    def quickbooks_online_customer_id=(quickbooks_online_customer_id)
+      if !quickbooks_online_customer_id.nil? && quickbooks_online_customer_id.to_s.length > 50
+        fail ArgumentError, 'invalid value for "quickbooks_online_customer_id", the character length must be smaller than or equal to 50.'
+      end
+
+      @quickbooks_online_customer_id = quickbooks_online_customer_id
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] referral_source Value to be assigned
     def referral_source=(referral_source)
       if !referral_source.nil? && referral_source.to_s.length > 50
@@ -864,6 +897,7 @@ module UltracartClient
           auto_approve_purchase_order == o.auto_approve_purchase_order &&
           automatic_merchant_notes == o.automatic_merchant_notes &&
           billing == o.billing &&
+          birth_date == o.birth_date &&
           business_notes == o.business_notes &&
           cards == o.cards &&
           cc_emails == o.cc_emails &&
@@ -897,6 +931,7 @@ module UltracartClient
           qb_class == o.qb_class &&
           qb_code == o.qb_code &&
           qb_tax_exemption_reason_code == o.qb_tax_exemption_reason_code &&
+          quickbooks_online_customer_id == o.quickbooks_online_customer_id &&
           quotes == o.quotes &&
           quotes_summary == o.quotes_summary &&
           referral_source == o.referral_source &&
@@ -927,7 +962,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [activity, affiliate_oid, allow_3rd_party_billing, allow_cod, allow_drop_shipping, allow_purchase_order, allow_quote_request, allow_selection_of_address_type, attachments, auto_approve_cod, auto_approve_purchase_order, automatic_merchant_notes, billing, business_notes, cards, cc_emails, customer_profile_oid, dhl_account_number, dhl_duty_account_number, do_not_send_mail, edi, email, exempt_shipping_handling_charge, fax, fedex_account_number, free_shipping, free_shipping_minimum, last_modified_by, last_modified_dts, loyalty, maximum_item_count, merchant_id, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, orders, orders_summary, password, pricing_tiers, privacy, properties, qb_class, qb_code, qb_tax_exemption_reason_code, quotes, quotes_summary, referral_source, reviewer, sales_rep_code, send_signup_notification, shipping, signup_dts, software_entitlements, suppress_buysafe, tags, tax_codes, tax_exempt, tax_id, terms, track_separately, unapproved, ups_account_number, website_url].hash
+      [activity, affiliate_oid, allow_3rd_party_billing, allow_cod, allow_drop_shipping, allow_purchase_order, allow_quote_request, allow_selection_of_address_type, attachments, auto_approve_cod, auto_approve_purchase_order, automatic_merchant_notes, billing, birth_date, business_notes, cards, cc_emails, customer_profile_oid, dhl_account_number, dhl_duty_account_number, do_not_send_mail, edi, email, exempt_shipping_handling_charge, fax, fedex_account_number, free_shipping, free_shipping_minimum, last_modified_by, last_modified_dts, loyalty, maximum_item_count, merchant_id, minimum_item_count, minimum_subtotal, no_coupons, no_free_shipping, no_realtime_charge, orders, orders_summary, password, pricing_tiers, privacy, properties, qb_class, qb_code, qb_tax_exemption_reason_code, quickbooks_online_customer_id, quotes, quotes_summary, referral_source, reviewer, sales_rep_code, send_signup_notification, shipping, signup_dts, software_entitlements, suppress_buysafe, tags, tax_codes, tax_exempt, tax_id, terms, track_separately, unapproved, ups_account_number, website_url].hash
     end
 
     # Builds the object from hash

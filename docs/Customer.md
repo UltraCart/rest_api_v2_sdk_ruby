@@ -17,6 +17,7 @@
 | **auto_approve_purchase_order** | **Boolean** | Auto approve purchase orders by this customer | [optional] |
 | **automatic_merchant_notes** | **String** | Automatic merchant notes are added to every order placed | [optional] |
 | **billing** | [**Array&lt;CustomerBilling&gt;**](CustomerBilling.md) | Billing addresses for this customer | [optional] |
+| **birth_date** | **String** | Customer birthday | [optional] |
 | **business_notes** | **String** | Business notes (internally visible only) | [optional] |
 | **cards** | [**Array&lt;CustomerCard&gt;**](CustomerCard.md) | Credit Cards for this customer | [optional] |
 | **cc_emails** | [**Array&lt;CustomerEmail&gt;**](CustomerEmail.md) | Additional emails to CC notification | [optional] |
@@ -50,6 +51,7 @@
 | **qb_class** | **String** | QuickBooks class to import this customer as | [optional] |
 | **qb_code** | **String** | QuickBooks name to import this customer as | [optional] |
 | **qb_tax_exemption_reason_code** | **Integer** | QuickBooks tax exemption reason code | [optional] |
+| **quickbooks_online_customer_id** | **String** | QuickBooks Online customer ID used to lock this customer 1:1 with QuickBooks Online | [optional] |
 | **quotes** | [**Array&lt;Order&gt;**](Order.md) | Quotes associated with this customer profile | [optional] |
 | **quotes_summary** | [**CustomerQuotesSummary**](CustomerQuotesSummary.md) |  | [optional] |
 | **referral_source** | **String** | Referral Source specified on the wholesale customer signup form.  No other meaning than that signup flow. | [optional] |
@@ -89,6 +91,7 @@ instance = UltracartClient::Customer.new(
   auto_approve_purchase_order: null,
   automatic_merchant_notes: null,
   billing: null,
+  birth_date: null,
   business_notes: null,
   cards: null,
   cc_emails: null,
@@ -122,6 +125,7 @@ instance = UltracartClient::Customer.new(
   qb_class: null,
   qb_code: null,
   qb_tax_exemption_reason_code: null,
+  quickbooks_online_customer_id: null,
   quotes: null,
   quotes_summary: null,
   referral_source: null,
