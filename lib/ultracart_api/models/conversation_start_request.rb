@@ -21,12 +21,15 @@ module UltracartClient
 
     attr_accessor :conversation_webchat_queue_uuid
 
+    attr_accessor :resolve_only
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'add_conversation_participant_arns' => :'add_conversation_participant_arns',
         :'conversation_arn' => :'conversation_arn',
-        :'conversation_webchat_queue_uuid' => :'conversation_webchat_queue_uuid'
+        :'conversation_webchat_queue_uuid' => :'conversation_webchat_queue_uuid',
+        :'resolve_only' => :'resolve_only'
       }
     end
 
@@ -40,7 +43,8 @@ module UltracartClient
       {
         :'add_conversation_participant_arns' => :'Array<String>',
         :'conversation_arn' => :'String',
-        :'conversation_webchat_queue_uuid' => :'String'
+        :'conversation_webchat_queue_uuid' => :'String',
+        :'resolve_only' => :'Boolean'
       }
     end
 
@@ -78,6 +82,10 @@ module UltracartClient
       if attributes.key?(:'conversation_webchat_queue_uuid')
         self.conversation_webchat_queue_uuid = attributes[:'conversation_webchat_queue_uuid']
       end
+
+      if attributes.key?(:'resolve_only')
+        self.resolve_only = attributes[:'resolve_only']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -100,7 +108,8 @@ module UltracartClient
       self.class == o.class &&
           add_conversation_participant_arns == o.add_conversation_participant_arns &&
           conversation_arn == o.conversation_arn &&
-          conversation_webchat_queue_uuid == o.conversation_webchat_queue_uuid
+          conversation_webchat_queue_uuid == o.conversation_webchat_queue_uuid &&
+          resolve_only == o.resolve_only
     end
 
     # @see the `==` method
@@ -112,7 +121,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [add_conversation_participant_arns, conversation_arn, conversation_webchat_queue_uuid].hash
+      [add_conversation_participant_arns, conversation_arn, conversation_webchat_queue_uuid, resolve_only].hash
     end
 
     # Builds the object from hash
