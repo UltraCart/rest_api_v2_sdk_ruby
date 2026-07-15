@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class EmailDispatchLog
+    # Dispatch detail text (free-form log of how the customer moved through the step)
+    attr_accessor :detail
+
     # Customer email, resolved from the customer UUID for the page
     attr_accessor :email
 
@@ -33,6 +36,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'detail' => :'detail',
         :'email' => :'email',
         :'esp_commseq_step_uuid' => :'esp_commseq_step_uuid',
         :'esp_commseq_uuid' => :'esp_commseq_uuid',
@@ -49,6 +53,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'detail' => :'String',
         :'email' => :'String',
         :'esp_commseq_step_uuid' => :'String',
         :'esp_commseq_uuid' => :'String',
@@ -77,6 +82,10 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'detail')
+        self.detail = attributes[:'detail']
+      end
 
       if attributes.key?(:'email')
         self.email = attributes[:'email']
@@ -117,6 +126,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          detail == o.detail &&
           email == o.email &&
           esp_commseq_step_uuid == o.esp_commseq_step_uuid &&
           esp_commseq_uuid == o.esp_commseq_uuid &&
@@ -133,7 +143,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [email, esp_commseq_step_uuid, esp_commseq_uuid, esp_customer_uuid, log_dts].hash
+      [detail, email, esp_commseq_step_uuid, esp_commseq_uuid, esp_customer_uuid, log_dts].hash
     end
 
     # Builds the object from hash

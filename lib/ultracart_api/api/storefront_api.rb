@@ -3611,6 +3611,7 @@ module UltracartClient
     # @option opts [Integer] :page_number 
     # @option opts [Integer] :page_size 
     # @option opts [Boolean] :scan_forward 
+    # @option opts [Boolean] :include_detail 
     # @return [EmailDispatchLogsResponse]
     def get_email_customer_dispatch_logs(storefront_oid, email_customer_uuid, opts = {})
       data, _status_code, _headers = get_email_customer_dispatch_logs_with_http_info(storefront_oid, email_customer_uuid, opts)
@@ -3627,6 +3628,7 @@ module UltracartClient
     # @option opts [Integer] :page_number 
     # @option opts [Integer] :page_size 
     # @option opts [Boolean] :scan_forward 
+    # @option opts [Boolean] :include_detail 
     # @return [Array<(EmailDispatchLogsResponse, Integer, Hash)>] EmailDispatchLogsResponse data, response status code and response headers
     def get_email_customer_dispatch_logs_with_http_info(storefront_oid, email_customer_uuid, opts = {})
       if @api_client.config.debugging
@@ -3650,6 +3652,7 @@ module UltracartClient
       query_params[:'pageNumber'] = opts[:'page_number'] if !opts[:'page_number'].nil?
       query_params[:'pageSize'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'scanForward'] = opts[:'scan_forward'] if !opts[:'scan_forward'].nil?
+      query_params[:'includeDetail'] = opts[:'include_detail'] if !opts[:'include_detail'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -6338,7 +6341,7 @@ module UltracartClient
     end
 
     # Get a paginated, date-boundable dispatch-log feed for a step
-    # Paginated per-step dispatch activity with 90-day depth (AP3/AP4). Rows are lean, rendered from the DynamoDB keys; fetch a row's full detail via getEmailStepDispatchLogDetail. Page forward by incrementing pageNumber until the response 'more' flag is false. since/until are inclusive ISO-8601 bounds on log_dts. 
+    # Paginated per-step dispatch activity with 90-day depth (AP3/AP4). Rows are lean unless includeDetail is passed as true, rendered from the DynamoDB keys; fetch a row's full detail via getEmailStepDispatchLogDetail. Page forward by incrementing pageNumber until the response 'more' flag is false. since/until are inclusive ISO-8601 bounds on log_dts. 
     # @param storefront_oid [Integer] 
     # @param commseq_uuid [String] 
     # @param commseq_step_uuid [String] 
@@ -6347,6 +6350,7 @@ module UltracartClient
     # @option opts [String] :_until 
     # @option opts [Integer] :page_number 
     # @option opts [Integer] :page_size 
+    # @option opts [Boolean] :include_detail 
     # @return [EmailDispatchLogsResponse]
     def get_email_step_dispatch_logs(storefront_oid, commseq_uuid, commseq_step_uuid, opts = {})
       data, _status_code, _headers = get_email_step_dispatch_logs_with_http_info(storefront_oid, commseq_uuid, commseq_step_uuid, opts)
@@ -6354,7 +6358,7 @@ module UltracartClient
     end
 
     # Get a paginated, date-boundable dispatch-log feed for a step
-    # Paginated per-step dispatch activity with 90-day depth (AP3/AP4). Rows are lean, rendered from the DynamoDB keys; fetch a row&#39;s full detail via getEmailStepDispatchLogDetail. Page forward by incrementing pageNumber until the response &#39;more&#39; flag is false. since/until are inclusive ISO-8601 bounds on log_dts. 
+    # Paginated per-step dispatch activity with 90-day depth (AP3/AP4). Rows are lean unless includeDetail is passed as true, rendered from the DynamoDB keys; fetch a row&#39;s full detail via getEmailStepDispatchLogDetail. Page forward by incrementing pageNumber until the response &#39;more&#39; flag is false. since/until are inclusive ISO-8601 bounds on log_dts. 
     # @param storefront_oid [Integer] 
     # @param commseq_uuid [String] 
     # @param commseq_step_uuid [String] 
@@ -6363,6 +6367,7 @@ module UltracartClient
     # @option opts [String] :_until 
     # @option opts [Integer] :page_number 
     # @option opts [Integer] :page_size 
+    # @option opts [Boolean] :include_detail 
     # @return [Array<(EmailDispatchLogsResponse, Integer, Hash)>] EmailDispatchLogsResponse data, response status code and response headers
     def get_email_step_dispatch_logs_with_http_info(storefront_oid, commseq_uuid, commseq_step_uuid, opts = {})
       if @api_client.config.debugging
@@ -6389,6 +6394,7 @@ module UltracartClient
       query_params[:'until'] = opts[:'_until'] if !opts[:'_until'].nil?
       query_params[:'pageNumber'] = opts[:'page_number'] if !opts[:'page_number'].nil?
       query_params[:'pageSize'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'includeDetail'] = opts[:'include_detail'] if !opts[:'include_detail'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
