@@ -401,6 +401,7 @@ module UltracartClient
     # Insert an affiliate on the UltraCart account.  The affiliate is created within the merchant's active affiliate program. 
     # @param affiliate [Affiliate] Affiliate to insert
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :send_welcome_email Whether to send a welcome email to the affiliate after it is created.  Defaults to false. (default to false)
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [AffiliateResponse]
     def insert_affiliate(affiliate, opts = {})
@@ -412,6 +413,7 @@ module UltracartClient
     # Insert an affiliate on the UltraCart account.  The affiliate is created within the merchant&#39;s active affiliate program. 
     # @param affiliate [Affiliate] Affiliate to insert
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :send_welcome_email Whether to send a welcome email to the affiliate after it is created.  Defaults to false. (default to false)
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
     # @return [Array<(AffiliateResponse, Integer, Hash)>] AffiliateResponse data, response status code and response headers
     def insert_affiliate_with_http_info(affiliate, opts = {})
@@ -427,6 +429,7 @@ module UltracartClient
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'send_welcome_email'] = opts[:'send_welcome_email'] if !opts[:'send_welcome_email'].nil?
       query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
 
       # header parameters
@@ -465,6 +468,70 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AffiliateApi#insert_affiliate\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Send a welcome email to an affiliate
+    # Sends a welcome email to the specified affiliate using the welcome letter configured on the merchant's active affiliate program. 
+    # @param affiliate_oid [Integer] The affiliate oid to send the welcome email to.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def send_affiliate_welcome_email(affiliate_oid, opts = {})
+      send_affiliate_welcome_email_with_http_info(affiliate_oid, opts)
+      nil
+    end
+
+    # Send a welcome email to an affiliate
+    # Sends a welcome email to the specified affiliate using the welcome letter configured on the merchant&#39;s active affiliate program. 
+    # @param affiliate_oid [Integer] The affiliate oid to send the welcome email to.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def send_affiliate_welcome_email_with_http_info(affiliate_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AffiliateApi.send_affiliate_welcome_email ...'
+      end
+      # verify the required parameter 'affiliate_oid' is set
+      if @api_client.config.client_side_validation && affiliate_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'affiliate_oid' when calling AffiliateApi.send_affiliate_welcome_email"
+      end
+      # resource path
+      local_var_path = '/affiliate/affiliates/{affiliate_oid}/welcome_email'.sub('{' + 'affiliate_oid' + '}', CGI.escape(affiliate_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AffiliateApi.send_affiliate_welcome_email",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AffiliateApi#send_affiliate_welcome_email\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

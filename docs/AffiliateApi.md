@@ -10,6 +10,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_clicks_by_query**](AffiliateApi.md#get_clicks_by_query) | **POST** /affiliate/clicks/query | Retrieve clicks |
 | [**get_ledgers_by_query**](AffiliateApi.md#get_ledgers_by_query) | **POST** /affiliate/ledgers/query | Retrieve ledger entries |
 | [**insert_affiliate**](AffiliateApi.md#insert_affiliate) | **POST** /affiliate/affiliates | Insert an affiliate |
+| [**send_affiliate_welcome_email**](AffiliateApi.md#send_affiliate_welcome_email) | **POST** /affiliate/affiliates/{affiliate_oid}/welcome_email | Send a welcome email to an affiliate |
 | [**update_affiliate**](AffiliateApi.md#update_affiliate) | **PUT** /affiliate/affiliates/{affiliate_oid} | Update an affiliate |
 
 
@@ -328,6 +329,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **affiliate** | [**Affiliate**](Affiliate.md) | Affiliate to insert |  |
+| **send_welcome_email** | **Boolean** | Whether to send a welcome email to the affiliate after it is created.  Defaults to false. | [optional][default to false] |
 | **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
 
 ### Return type
@@ -341,6 +343,59 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## send_affiliate_welcome_email
+
+> send_affiliate_welcome_email(affiliate_oid)
+
+Send a welcome email to an affiliate
+
+Sends a welcome email to the specified affiliate using the welcome letter configured on the merchant's active affiliate program. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the send_affiliate_welcome_email_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> send_affiliate_welcome_email_with_http_info(affiliate_oid)
+
+```ruby
+begin
+  # Send a welcome email to an affiliate
+  data, status_code, headers = api_instance.send_affiliate_welcome_email_with_http_info(affiliate_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling AffiliateApi->send_affiliate_welcome_email_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **affiliate_oid** | **Integer** | The affiliate oid to send the welcome email to. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 

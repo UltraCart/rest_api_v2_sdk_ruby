@@ -847,6 +847,7 @@ docs/OrderProcessPaymentResponse.md
 docs/OrderProperty.md
 docs/OrderQuery.md
 docs/OrderQueryBatch.md
+docs/OrderQueryPaymentTransactionFilter.md
 docs/OrderQuote.md
 docs/OrderReason.md
 docs/OrderRefundableResponse.md
@@ -1911,6 +1912,7 @@ lib/ultracart_api/models/order_process_payment_response.rb
 lib/ultracart_api/models/order_property.rb
 lib/ultracart_api/models/order_query.rb
 lib/ultracart_api/models/order_query_batch.rb
+lib/ultracart_api/models/order_query_payment_transaction_filter.rb
 lib/ultracart_api/models/order_quote.rb
 lib/ultracart_api/models/order_reason.rb
 lib/ultracart_api/models/order_refundable_response.rb

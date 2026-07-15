@@ -99,6 +99,9 @@ module UltracartClient
     # Payment method
     attr_accessor :payment_method
 
+    # Exact-match filters on the detail name/value pairs of a single payment transaction, AND-ed against the same transaction. Requires query_target=cache which uses the ElasticSearch cache. The origin or database path cannot search transaction details. The rotating gateway is just another pair, name equals rotatingTransactionGatewayCode or rotatingTransactionGatewayName.
+    attr_accessor :payment_transaction_filters
+
     # Phone
     attr_accessor :phone
 
@@ -197,6 +200,7 @@ module UltracartClient
         :'payment_date_begin' => :'payment_date_begin',
         :'payment_date_end' => :'payment_date_end',
         :'payment_method' => :'payment_method',
+        :'payment_transaction_filters' => :'payment_transaction_filters',
         :'phone' => :'phone',
         :'postal_code' => :'postal_code',
         :'purchase_order_number' => :'purchase_order_number',
@@ -251,6 +255,7 @@ module UltracartClient
         :'payment_date_begin' => :'String',
         :'payment_date_end' => :'String',
         :'payment_method' => :'String',
+        :'payment_transaction_filters' => :'Array<OrderQueryPaymentTransactionFilter>',
         :'phone' => :'String',
         :'postal_code' => :'String',
         :'purchase_order_number' => :'String',
@@ -400,6 +405,12 @@ module UltracartClient
 
       if attributes.key?(:'payment_method')
         self.payment_method = attributes[:'payment_method']
+      end
+
+      if attributes.key?(:'payment_transaction_filters')
+        if (value = attributes[:'payment_transaction_filters']).is_a?(Array)
+          self.payment_transaction_filters = value
+        end
       end
 
       if attributes.key?(:'phone')
@@ -725,6 +736,7 @@ module UltracartClient
           payment_date_begin == o.payment_date_begin &&
           payment_date_end == o.payment_date_end &&
           payment_method == o.payment_method &&
+          payment_transaction_filters == o.payment_transaction_filters &&
           phone == o.phone &&
           postal_code == o.postal_code &&
           purchase_order_number == o.purchase_order_number &&
@@ -751,7 +763,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cc_email, channel_partner_code, channel_partner_order_id, city, company, country_code, creation_date_begin, creation_date_end, current_stage, custom_field_1, custom_field_10, custom_field_2, custom_field_3, custom_field_4, custom_field_5, custom_field_6, custom_field_7, custom_field_8, custom_field_9, customer_profile_oid, email, first_name, item_id, last_name, order_id, payment_date_begin, payment_date_end, payment_method, phone, postal_code, purchase_order_number, query_target, refund_date_begin, refund_date_end, rma, screen_branding_theme_code, shipment_date_begin, shipment_date_end, shipped_on_date_begin, shipped_on_date_end, state_region, storefront_host_name, total].hash
+      [cc_email, channel_partner_code, channel_partner_order_id, city, company, country_code, creation_date_begin, creation_date_end, current_stage, custom_field_1, custom_field_10, custom_field_2, custom_field_3, custom_field_4, custom_field_5, custom_field_6, custom_field_7, custom_field_8, custom_field_9, customer_profile_oid, email, first_name, item_id, last_name, order_id, payment_date_begin, payment_date_end, payment_method, payment_transaction_filters, phone, postal_code, purchase_order_number, query_target, refund_date_begin, refund_date_end, rma, screen_branding_theme_code, shipment_date_begin, shipment_date_end, shipped_on_date_begin, shipped_on_date_end, state_region, storefront_host_name, total].hash
     end
 
     # Builds the object from hash
