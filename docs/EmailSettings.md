@@ -7,6 +7,7 @@
 | **emails_per_day** | **Integer** | Emails per day allowed | [optional] |
 | **emails_per_hour** | **Integer** | Emails per hour allowed | [optional] |
 | **emails_per_month** | **Integer** | Emails per month allowed | [optional] |
+| **machine_open_ignore** | **Boolean** | If machine open should be ignored | [optional] |
 | **marketing_esp_domain_user** | **String** |  | [optional] |
 | **marketing_esp_domain_uuid** | **String** |  | [optional] |
 | **marketing_esp_friendly_name** | **String** |  | [optional] |
@@ -33,6 +34,7 @@ instance = UltracartClient::EmailSettings.new(
   emails_per_day: null,
   emails_per_hour: null,
   emails_per_month: null,
+  machine_open_ignore: null,
   marketing_esp_domain_user: null,
   marketing_esp_domain_uuid: null,
   marketing_esp_friendly_name: null,

@@ -24,6 +24,9 @@ module UltracartClient
     # Emails per month allowed
     attr_accessor :emails_per_month
 
+    # If machine open should be ignored
+    attr_accessor :machine_open_ignore
+
     attr_accessor :marketing_esp_domain_user
 
     attr_accessor :marketing_esp_domain_uuid
@@ -64,6 +67,7 @@ module UltracartClient
         :'emails_per_day' => :'emails_per_day',
         :'emails_per_hour' => :'emails_per_hour',
         :'emails_per_month' => :'emails_per_month',
+        :'machine_open_ignore' => :'machine_open_ignore',
         :'marketing_esp_domain_user' => :'marketing_esp_domain_user',
         :'marketing_esp_domain_uuid' => :'marketing_esp_domain_uuid',
         :'marketing_esp_friendly_name' => :'marketing_esp_friendly_name',
@@ -94,6 +98,7 @@ module UltracartClient
         :'emails_per_day' => :'Integer',
         :'emails_per_hour' => :'Integer',
         :'emails_per_month' => :'Integer',
+        :'machine_open_ignore' => :'Boolean',
         :'marketing_esp_domain_user' => :'String',
         :'marketing_esp_domain_uuid' => :'String',
         :'marketing_esp_friendly_name' => :'String',
@@ -144,6 +149,10 @@ module UltracartClient
 
       if attributes.key?(:'emails_per_month')
         self.emails_per_month = attributes[:'emails_per_month']
+      end
+
+      if attributes.key?(:'machine_open_ignore')
+        self.machine_open_ignore = attributes[:'machine_open_ignore']
       end
 
       if attributes.key?(:'marketing_esp_domain_user')
@@ -232,6 +241,7 @@ module UltracartClient
           emails_per_day == o.emails_per_day &&
           emails_per_hour == o.emails_per_hour &&
           emails_per_month == o.emails_per_month &&
+          machine_open_ignore == o.machine_open_ignore &&
           marketing_esp_domain_user == o.marketing_esp_domain_user &&
           marketing_esp_domain_uuid == o.marketing_esp_domain_uuid &&
           marketing_esp_friendly_name == o.marketing_esp_friendly_name &&
@@ -259,7 +269,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [emails_per_day, emails_per_hour, emails_per_month, marketing_esp_domain_user, marketing_esp_domain_uuid, marketing_esp_friendly_name, postcard_from_address1, postcard_from_address2, postcard_from_city, postcard_from_name, postcard_from_postal_code, postcard_from_state, require_order_within_last, reviews_io_configured, sms_esp_twilio_uuid, sms_phone_number, transactional_esp_domain_user, transactional_esp_domain_uuid, transactional_esp_friendly_name].hash
+      [emails_per_day, emails_per_hour, emails_per_month, machine_open_ignore, marketing_esp_domain_user, marketing_esp_domain_uuid, marketing_esp_friendly_name, postcard_from_address1, postcard_from_address2, postcard_from_city, postcard_from_name, postcard_from_postal_code, postcard_from_state, require_order_within_last, reviews_io_configured, sms_esp_twilio_uuid, sms_phone_number, transactional_esp_domain_user, transactional_esp_domain_uuid, transactional_esp_friendly_name].hash
     end
 
     # Builds the object from hash

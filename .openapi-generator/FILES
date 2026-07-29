@@ -54,10 +54,12 @@ docs/AutoOrderItemOption.md
 docs/AutoOrderItemSimpleSchedule.md
 docs/AutoOrderLog.md
 docs/AutoOrderManagement.md
+docs/AutoOrderPaymentUpdateRequest.md
 docs/AutoOrderPropertiesUpdateRequest.md
 docs/AutoOrderProperty.md
 docs/AutoOrderQuery.md
 docs/AutoOrderQueryBatch.md
+docs/AutoOrderRebillResponse.md
 docs/AutoOrderResponse.md
 docs/AutoOrdersRequest.md
 docs/AutoOrdersResponse.md
@@ -1134,10 +1136,12 @@ lib/ultracart_api/models/auto_order_item_option.rb
 lib/ultracart_api/models/auto_order_item_simple_schedule.rb
 lib/ultracart_api/models/auto_order_log.rb
 lib/ultracart_api/models/auto_order_management.rb
+lib/ultracart_api/models/auto_order_payment_update_request.rb
 lib/ultracart_api/models/auto_order_properties_update_request.rb
 lib/ultracart_api/models/auto_order_property.rb
 lib/ultracart_api/models/auto_order_query.rb
 lib/ultracart_api/models/auto_order_query_batch.rb
+lib/ultracart_api/models/auto_order_rebill_response.rb
 lib/ultracart_api/models/auto_order_response.rb
 lib/ultracart_api/models/auto_orders_request.rb
 lib/ultracart_api/models/auto_orders_response.rb

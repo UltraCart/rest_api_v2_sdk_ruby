@@ -32,6 +32,73 @@ module UltracartClient
       UltracartClient::AutoOrderApi.new(api_client)
     end
 
+    # Attempt a failed rebill on an auto order
+    # Attempts to rebill an auto order using the payment information already on the original order.  The attempt is refused if the auto order is scheduled to charge within the next five minutes, or if it was already billed within the last 24 hours, both of which guard against double charging.  Runs synchronously and may take some time while the gateway is contacted.  A declined card is reported in the response body rather than as an API error. 
+    # @param auto_order_oid [Integer] The auto order oid to rebill.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [AutoOrderRebillResponse]
+    def attempt_auto_order_rebill(auto_order_oid, opts = {})
+      data, _status_code, _headers = attempt_auto_order_rebill_with_http_info(auto_order_oid, opts)
+      data
+    end
+
+    # Attempt a failed rebill on an auto order
+    # Attempts to rebill an auto order using the payment information already on the original order.  The attempt is refused if the auto order is scheduled to charge within the next five minutes, or if it was already billed within the last 24 hours, both of which guard against double charging.  Runs synchronously and may take some time while the gateway is contacted.  A declined card is reported in the response body rather than as an API error. 
+    # @param auto_order_oid [Integer] The auto order oid to rebill.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(AutoOrderRebillResponse, Integer, Hash)>] AutoOrderRebillResponse data, response status code and response headers
+    def attempt_auto_order_rebill_with_http_info(auto_order_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AutoOrderApi.attempt_auto_order_rebill ...'
+      end
+      # verify the required parameter 'auto_order_oid' is set
+      if @api_client.config.client_side_validation && auto_order_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'auto_order_oid' when calling AutoOrderApi.attempt_auto_order_rebill"
+      end
+      # resource path
+      local_var_path = '/auto_order/auto_orders/{auto_order_oid}/rebill'.sub('{' + 'auto_order_oid' + '}', CGI.escape(auto_order_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AutoOrderRebillResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AutoOrderApi.attempt_auto_order_rebill",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AutoOrderApi#attempt_auto_order_rebill\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Cancel a single item on an auto order
     # Cancels a single item on an auto order identified by the original order id and the item's original_item_id.  The request body may specify mode=_end (soft cancel by setting no_order_after_dts to the current time, preserving the row for reporting; this is the default when the body is omitted) or mode=remove (hard delete).  Returns the updated auto order based upon expansion. 
     # @param reference_order_id [String] The reference order id (original_order_id) of the auto order.
@@ -1183,6 +1250,84 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AutoOrderApi#update_auto_order_item_properties\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update the payment information on an auto order
+    # Updates the credit card on the original order behind an auto order, along with any rebills sitting in accounts receivable, and reactivates the auto order.  Card data is accepted as hosted field tokens only. raw card numbers and card verification numbers are rejected.  Set attempt_rebill to true to also attempt the rebill immediately, which runs synchronously and may take some time while the gateway is contacted.  A declined card is reported in the response body rather than as an API error. 
+    # @param auto_order_oid [Integer] The auto order oid to update payment information on.
+    # @param auto_order_payment_update_request [AutoOrderPaymentUpdateRequest] Payment information to place on the auto order
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [AutoOrderRebillResponse]
+    def update_auto_order_payment(auto_order_oid, auto_order_payment_update_request, opts = {})
+      data, _status_code, _headers = update_auto_order_payment_with_http_info(auto_order_oid, auto_order_payment_update_request, opts)
+      data
+    end
+
+    # Update the payment information on an auto order
+    # Updates the credit card on the original order behind an auto order, along with any rebills sitting in accounts receivable, and reactivates the auto order.  Card data is accepted as hosted field tokens only. raw card numbers and card verification numbers are rejected.  Set attempt_rebill to true to also attempt the rebill immediately, which runs synchronously and may take some time while the gateway is contacted.  A declined card is reported in the response body rather than as an API error. 
+    # @param auto_order_oid [Integer] The auto order oid to update payment information on.
+    # @param auto_order_payment_update_request [AutoOrderPaymentUpdateRequest] Payment information to place on the auto order
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(AutoOrderRebillResponse, Integer, Hash)>] AutoOrderRebillResponse data, response status code and response headers
+    def update_auto_order_payment_with_http_info(auto_order_oid, auto_order_payment_update_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AutoOrderApi.update_auto_order_payment ...'
+      end
+      # verify the required parameter 'auto_order_oid' is set
+      if @api_client.config.client_side_validation && auto_order_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'auto_order_oid' when calling AutoOrderApi.update_auto_order_payment"
+      end
+      # verify the required parameter 'auto_order_payment_update_request' is set
+      if @api_client.config.client_side_validation && auto_order_payment_update_request.nil?
+        fail ArgumentError, "Missing the required parameter 'auto_order_payment_update_request' when calling AutoOrderApi.update_auto_order_payment"
+      end
+      # resource path
+      local_var_path = '/auto_order/auto_orders/{auto_order_oid}/payment'.sub('{' + 'auto_order_oid' + '}', CGI.escape(auto_order_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(auto_order_payment_update_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AutoOrderRebillResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"AutoOrderApi.update_auto_order_payment",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AutoOrderApi#update_auto_order_payment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

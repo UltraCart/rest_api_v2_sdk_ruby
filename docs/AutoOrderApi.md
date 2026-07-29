@@ -4,6 +4,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**attempt_auto_order_rebill**](AutoOrderApi.md#attempt_auto_order_rebill) | **POST** /auto_order/auto_orders/{auto_order_oid}/rebill | Attempt a failed rebill on an auto order |
 | [**cancel_auto_order_item_by_reference_order_id**](AutoOrderApi.md#cancel_auto_order_item_by_reference_order_id) | **POST** /auto_order/auto_orders/reference_order_id/{reference_order_id}/items/original/{original_item_id}/cancel | Cancel a single item on an auto order |
 | [**consolidate_auto_orders**](AutoOrderApi.md#consolidate_auto_orders) | **PUT** /auto_order/auto_orders/{auto_order_oid}/consolidate | Consolidates multiple auto orders |
 | [**establish_auto_order_by_reference_order_id**](AutoOrderApi.md#establish_auto_order_by_reference_order_id) | **POST** /auto_order/auto_orders/reference_order_id/{reference_order_id} | Establish an auto order by referencing a regular order id |
@@ -19,8 +20,63 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**update_auto_order**](AutoOrderApi.md#update_auto_order) | **PUT** /auto_order/auto_orders/{auto_order_oid} | Update an auto order |
 | [**update_auto_order_item_add_ons**](AutoOrderApi.md#update_auto_order_item_add_ons) | **PUT** /auto_order/auto_orders/{auto_order_oid}/items/{auto_order_item_oid}/add_ons | Update an auto order item add ons |
 | [**update_auto_order_item_properties**](AutoOrderApi.md#update_auto_order_item_properties) | **PUT** /auto_order/auto_orders/{auto_order_oid}/items/{auto_order_item_oid}/properties | Update an auto order item properties |
+| [**update_auto_order_payment**](AutoOrderApi.md#update_auto_order_payment) | **PUT** /auto_order/auto_orders/{auto_order_oid}/payment | Update the payment information on an auto order |
 | [**update_auto_order_properties**](AutoOrderApi.md#update_auto_order_properties) | **PUT** /auto_order/auto_orders/{auto_order_oid}/properties | Update an auto order properties |
 | [**update_auto_orders_batch**](AutoOrderApi.md#update_auto_orders_batch) | **PUT** /auto_order/auto_orders/batch | Update multiple auto orders |
+
+
+## attempt_auto_order_rebill
+
+> <AutoOrderRebillResponse> attempt_auto_order_rebill(auto_order_oid, opts)
+
+Attempt a failed rebill on an auto order
+
+Attempts to rebill an auto order using the payment information already on the original order.  The attempt is refused if the auto order is scheduled to charge within the next five minutes, or if it was already billed within the last 24 hours, both of which guard against double charging.  Runs synchronously and may take some time while the gateway is contacted.  A declined card is reported in the response body rather than as an API error. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the attempt_auto_order_rebill_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AutoOrderRebillResponse>, Integer, Hash)> attempt_auto_order_rebill_with_http_info(auto_order_oid, opts)
+
+```ruby
+begin
+  # Attempt a failed rebill on an auto order
+  data, status_code, headers = api_instance.attempt_auto_order_rebill_with_http_info(auto_order_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AutoOrderRebillResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling AutoOrderApi->attempt_auto_order_rebill_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **auto_order_oid** | **Integer** | The auto order oid to rebill. |  |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
+
+### Return type
+
+[**AutoOrderRebillResponse**](AutoOrderRebillResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## cancel_auto_order_item_by_reference_order_id
@@ -1419,6 +1475,61 @@ end
 ### Return type
 
 [**AutoOrderResponse**](AutoOrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_auto_order_payment
+
+> <AutoOrderRebillResponse> update_auto_order_payment(auto_order_oid, auto_order_payment_update_request, opts)
+
+Update the payment information on an auto order
+
+Updates the credit card on the original order behind an auto order, along with any rebills sitting in accounts receivable, and reactivates the auto order.  Card data is accepted as hosted field tokens only. raw card numbers and card verification numbers are rejected.  Set attempt_rebill to true to also attempt the rebill immediately, which runs synchronously and may take some time while the gateway is contacted.  A declined card is reported in the response body rather than as an API error. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_auto_order_payment_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AutoOrderRebillResponse>, Integer, Hash)> update_auto_order_payment_with_http_info(auto_order_oid, auto_order_payment_update_request, opts)
+
+```ruby
+begin
+  # Update the payment information on an auto order
+  data, status_code, headers = api_instance.update_auto_order_payment_with_http_info(auto_order_oid, auto_order_payment_update_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AutoOrderRebillResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling AutoOrderApi->update_auto_order_payment_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **auto_order_oid** | **Integer** | The auto order oid to update payment information on. |  |
+| **auto_order_payment_update_request** | [**AutoOrderPaymentUpdateRequest**](AutoOrderPaymentUpdateRequest.md) | Payment information to place on the auto order |  |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
+
+### Return type
+
+[**AutoOrderRebillResponse**](AutoOrderRebillResponse.md)
 
 ### Authorization
 
