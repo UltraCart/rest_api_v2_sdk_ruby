@@ -452,6 +452,9 @@ docs/CustomerEDI.md
 docs/CustomerEditorValues.md
 docs/CustomerEmail.md
 docs/CustomerEmailListChanges.md
+docs/CustomerEmailSuppressionRequest.md
+docs/CustomerEmailSuppressionResponse.md
+docs/CustomerEmailSuppressionResult.md
 docs/CustomerLoyalty.md
 docs/CustomerLoyaltyLedger.md
 docs/CustomerLoyaltyRedemption.md
@@ -600,6 +603,7 @@ docs/EmailStepStatRequest.md
 docs/EmailStepStatResponse.md
 docs/EmailStepWaitingRequest.md
 docs/EmailStepWaitingResponse.md
+docs/EmailSuppressionSurfaces.md
 docs/EmailTemplate.md
 docs/EmailTemplatesResponse.md
 docs/EmailThirdPartyList.md
@@ -1527,6 +1531,9 @@ lib/ultracart_api/models/customer_edi.rb
 lib/ultracart_api/models/customer_editor_values.rb
 lib/ultracart_api/models/customer_email.rb
 lib/ultracart_api/models/customer_email_list_changes.rb
+lib/ultracart_api/models/customer_email_suppression_request.rb
+lib/ultracart_api/models/customer_email_suppression_response.rb
+lib/ultracart_api/models/customer_email_suppression_result.rb
 lib/ultracart_api/models/customer_loyalty.rb
 lib/ultracart_api/models/customer_loyalty_ledger.rb
 lib/ultracart_api/models/customer_loyalty_redemption.rb
@@ -1674,6 +1681,7 @@ lib/ultracart_api/models/email_step_stat_request.rb
 lib/ultracart_api/models/email_step_stat_response.rb
 lib/ultracart_api/models/email_step_waiting_request.rb
 lib/ultracart_api/models/email_step_waiting_response.rb
+lib/ultracart_api/models/email_suppression_surfaces.rb
 lib/ultracart_api/models/email_template.rb
 lib/ultracart_api/models/email_templates_response.rb
 lib/ultracart_api/models/email_third_party_list.rb

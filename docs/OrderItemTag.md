@@ -1,0 +1,18 @@
+# UltracartClient::OrderItemTag
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **tag_value** | **String** | Tag Value | [optional] |
+
+## Example
+
+```ruby
+require 'ultracart_api'
+
+instance = UltracartClient::OrderItemTag.new(
+  tag_value: null
+)
+```
+

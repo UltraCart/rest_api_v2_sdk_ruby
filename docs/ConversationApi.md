@@ -1,0 +1,7704 @@
+# UltracartClient::ConversationApi
+
+All URIs are relative to *https://secure.ultracart.com/rest/v2*
+
+| Method | HTTP request | Description |
+| ------ | ------------ | ----------- |
+| [**delete_agent_profile_knowledge_base_document**](ConversationApi.md#delete_agent_profile_knowledge_base_document) | **DELETE** /conversation/agent/profiles/{user_id}/knowledge_base/{document_uuid} | Delete a knowledge base document |
+| [**delete_agent_profile_mcp**](ConversationApi.md#delete_agent_profile_mcp) | **DELETE** /conversation/agent/profiles/{user_id}/mcps/{mcp_server_uuid} | Delete an agent MCP server |
+| [**delete_agent_status_config**](ConversationApi.md#delete_agent_status_config) | **DELETE** /conversation/agent/status/config/{conversation_status_uuid} | Soft-deactivate a custom agent status |
+| [**delete_conversation_canned_message**](ConversationApi.md#delete_conversation_canned_message) | **DELETE** /conversation/canned_messages/{conversation_canned_message_oid} | Delete a conversation canned message |
+| [**delete_department**](ConversationApi.md#delete_department) | **DELETE** /conversation/departments/{conversation_department_oid} | Delete a conversation department |
+| [**delete_engagement**](ConversationApi.md#delete_engagement) | **DELETE** /conversation/engagements/{conversation_engagement_oid} | Delete a conversation engagement |
+| [**delete_pbx_address**](ConversationApi.md#delete_pbx_address) | **DELETE** /conversation/pbx/address/{conversationPbxAddressUuid} | Delete pbx address |
+| [**delete_pbx_agent_voicemail**](ConversationApi.md#delete_pbx_agent_voicemail) | **DELETE** /conversation/pbx/agent/voicemails/{recording_sid} | Delete Agent Voicemail |
+| [**delete_pbx_audio**](ConversationApi.md#delete_pbx_audio) | **DELETE** /conversation/pbx/audio/{conversationPbxAudioUuid} | Delete pbx audio |
+| [**delete_pbx_class_of_service**](ConversationApi.md#delete_pbx_class_of_service) | **DELETE** /conversation/pbx/class_of_service/{classOfServiceUuid} | Delete pbx class of service |
+| [**delete_pbx_hardware_phone**](ConversationApi.md#delete_pbx_hardware_phone) | **DELETE** /conversation/pbx/hardware_phone/{conversationPbxHardwarePhoneUuid} | Delete pbx hardware phone |
+| [**delete_pbx_menu**](ConversationApi.md#delete_pbx_menu) | **DELETE** /conversation/pbx/menu/{conversationPbxMenuUuid} | Delete pbx menu |
+| [**delete_pbx_phone_number**](ConversationApi.md#delete_pbx_phone_number) | **DELETE** /conversation/pbx/phone_number/{conversationPbxPhoneNumberUuid} | Delete pbx phoneNumber |
+| [**delete_pbx_queue**](ConversationApi.md#delete_pbx_queue) | **DELETE** /conversation/pbx/queue/{conversationPbxQueueUuid} | Delete pbx queue |
+| [**delete_pbx_queue_voicemail**](ConversationApi.md#delete_pbx_queue_voicemail) | **DELETE** /conversation/pbx/queues/{queue_uuid}/voicemails/{recording_sid} | Delete Queue Voicemail |
+| [**delete_pbx_time_based**](ConversationApi.md#delete_pbx_time_based) | **DELETE** /conversation/pbx/time_based/{conversationPbxTimeBasedUuid} | Delete pbx timeBased |
+| [**delete_pbx_time_range**](ConversationApi.md#delete_pbx_time_range) | **DELETE** /conversation/pbx/time_range/{conversationPbxTimeRangeUuid} | Delete pbx timeRange |
+| [**delete_pbx_voicemail_mailbox**](ConversationApi.md#delete_pbx_voicemail_mailbox) | **DELETE** /conversation/pbx/voicemail_mailbox/{conversationPbxVoicemailMailboxUuid} | Delete pbx voicemailMailbox |
+| [**delete_user_pbx_audio**](ConversationApi.md#delete_user_pbx_audio) | **DELETE** /conversation/pbx/audio/user/{conversationPbxAudioUuid} | Delete user pbx audio |
+| [**get_agent_keep_alive**](ConversationApi.md#get_agent_keep_alive) | **GET** /conversation/agent/keepalive | Agent keep alive |
+| [**get_agent_profile**](ConversationApi.md#get_agent_profile) | **GET** /conversation/agent/profile | Get agent profile |
+| [**get_agent_profile_knowledge_base**](ConversationApi.md#get_agent_profile_knowledge_base) | **GET** /conversation/agent/profiles/{user_id}/knowledge_base | Get the list of knowledge base documents associated with this agent profile |
+| [**get_agent_profile_mcp**](ConversationApi.md#get_agent_profile_mcp) | **GET** /conversation/agent/profiles/{user_id}/mcps/{mcp_server_uuid} | Get an MCP server associated with this agent |
+| [**get_agent_profile_mcp_tools**](ConversationApi.md#get_agent_profile_mcp_tools) | **GET** /conversation/agent/profiles/{user_id}/mcps/{mcp_server_uuid}/tools | Get the tools available from the MCP server |
+| [**get_agent_profile_mcps**](ConversationApi.md#get_agent_profile_mcps) | **GET** /conversation/agent/profiles/{user_id}/mcps | Get the list of MCP servers associated with this agent |
+| [**get_agent_profiles**](ConversationApi.md#get_agent_profiles) | **GET** /conversation/agent/profiles | Get agent profiles |
+| [**get_agent_status_configs**](ConversationApi.md#get_agent_status_configs) | **GET** /conversation/agent/status/config | List custom agent statuses |
+| [**get_agent_status_heatmap**](ConversationApi.md#get_agent_status_heatmap) | **POST** /conversation/agent/status/heatmap | Agent x hour-of-day heatmap |
+| [**get_agent_status_summary**](ConversationApi.md#get_agent_status_summary) | **GET** /conversation/agent/status/rollup/summary | Dashboard summary for a date range |
+| [**get_agent_status_timeline**](ConversationApi.md#get_agent_status_timeline) | **GET** /conversation/agent/status/history/{agent_user_id}/timeline | Day timeline for a single agent |
+| [**get_agent_websocket_authorization**](ConversationApi.md#get_agent_websocket_authorization) | **PUT** /conversation/agent/auth | Get agent websocket authorization |
+| [**get_conversation**](ConversationApi.md#get_conversation) | **GET** /conversation/conversations/{conversation_uuid} | Retrieve a conversation |
+| [**get_conversation_canned_messages**](ConversationApi.md#get_conversation_canned_messages) | **GET** /conversation/canned_messages | Retrieve a list of canned messages ordered by short_code |
+| [**get_conversation_context**](ConversationApi.md#get_conversation_context) | **PUT** /conversation/conversations/{conversation_uuid}/context | Get a webchat conversation context |
+| [**get_conversation_department_member_list**](ConversationApi.md#get_conversation_department_member_list) | **GET** /conversation/department_members | Retrieve a list of possible department members |
+| [**get_conversation_departments**](ConversationApi.md#get_conversation_departments) | **GET** /conversation/departments | Retrieve a list of departments ordered by name |
+| [**get_conversation_engagement**](ConversationApi.md#get_conversation_engagement) | **GET** /conversation/engagements/{conversation_engagement_oid} | Retrieve an engagement |
+| [**get_conversation_engagements**](ConversationApi.md#get_conversation_engagements) | **GET** /conversation/engagements | Retrieve a list of engagements ordered by name |
+| [**get_conversation_item_variations**](ConversationApi.md#get_conversation_item_variations) | **GET** /conversation/items/{merchant_item_id}/variations | Retrieve an item with sparse variations populated |
+| [**get_conversation_knowledge_base_document_upload_url**](ConversationApi.md#get_conversation_knowledge_base_document_upload_url) | **GET** /conversation/agent/profiles/{user_id}/knowledge_base/upload_url/{extension} | Get a pre-signed conversation knowledge base document upload URL |
+| [**get_conversation_messages**](ConversationApi.md#get_conversation_messages) | **GET** /conversation/conversations/{conversation_uuid}/messages/{since} | Retrieve conversation messages |
+| [**get_conversation_multimedia_upload_url**](ConversationApi.md#get_conversation_multimedia_upload_url) | **GET** /conversation/upload_url/{extension} | Get a presigned conversation multimedia upload URL |
+| [**get_conversation_pbx_audio_upload_url**](ConversationApi.md#get_conversation_pbx_audio_upload_url) | **GET** /conversation/pbx/audio/upload_url/{extension} | Get a pre-signed conversation multimedia upload URL |
+| [**get_conversation_pbx_customer_snapshot**](ConversationApi.md#get_conversation_pbx_customer_snapshot) | **POST** /conversation/pbx/customer_snapshot | Get orders and customer information for a phone number |
+| [**get_conversation_permissions**](ConversationApi.md#get_conversation_permissions) | **GET** /conversation/permissions | Retrieve conversation permissions |
+| [**get_conversation_webchat_queue_statuses**](ConversationApi.md#get_conversation_webchat_queue_statuses) | **GET** /conversation/conversations/queues/statuses | Retrieve a conversation webchat queue statuses |
+| [**get_conversations**](ConversationApi.md#get_conversations) | **GET** /conversation/conversations | Retrieve a list of conversation summaries newest to oldest |
+| [**get_conversations_autocomplete**](ConversationApi.md#get_conversations_autocomplete) | **POST** /conversation/conversations/autocomplete | Retrieve a list of matching terms for a search field |
+| [**get_conversations_search**](ConversationApi.md#get_conversations_search) | **POST** /conversation/conversations/search | Search conversations |
+| [**get_locations_for_engagement**](ConversationApi.md#get_locations_for_engagement) | **POST** /conversation/locations | Get location data for engagement configuration |
+| [**get_pbx_address**](ConversationApi.md#get_pbx_address) | **GET** /conversation/pbx/address/{conversationPbxAddressUuid} | Get pbx address |
+| [**get_pbx_addresses**](ConversationApi.md#get_pbx_addresses) | **GET** /conversation/pbx/address | Get pbx addresses |
+| [**get_pbx_agent**](ConversationApi.md#get_pbx_agent) | **GET** /conversation/pbx/agent/{conversationPbxAgentUuid} | Get pbx agent |
+| [**get_pbx_agent_voicemail**](ConversationApi.md#get_pbx_agent_voicemail) | **GET** /conversation/pbx/agent/voicemails/{recording_sid} | Get Agent Voicemail |
+| [**get_pbx_agent_voicemails**](ConversationApi.md#get_pbx_agent_voicemails) | **GET** /conversation/pbx/agent/voicemails | Get Agent Voicemails |
+| [**get_pbx_agents**](ConversationApi.md#get_pbx_agents) | **GET** /conversation/pbx/agent | Get pbx agents |
+| [**get_pbx_audio**](ConversationApi.md#get_pbx_audio) | **GET** /conversation/pbx/audio/{conversationPbxAudioUuid} | Get pbx audio |
+| [**get_pbx_audio_usage**](ConversationApi.md#get_pbx_audio_usage) | **GET** /conversation/pbx/audio/{conversationPbxAudioUuid}/usage | Get pbx audio usage |
+| [**get_pbx_audios**](ConversationApi.md#get_pbx_audios) | **GET** /conversation/pbx/audio | Get pbx audios |
+| [**get_pbx_call**](ConversationApi.md#get_pbx_call) | **GET** /conversation/pbx/call/{callUuid} | Get pbx call record |
+| [**get_pbx_class_of_service**](ConversationApi.md#get_pbx_class_of_service) | **GET** /conversation/pbx/class_of_service/{classOfServiceUuid} | Get pbx class of service |
+| [**get_pbx_classes_of_service**](ConversationApi.md#get_pbx_classes_of_service) | **GET** /conversation/pbx/class_of_service | Get pbx classes of service |
+| [**get_pbx_cos_audit_logs**](ConversationApi.md#get_pbx_cos_audit_logs) | **GET** /conversation/pbx/class_of_service/audit_log | Get pbx class of service audit logs |
+| [**get_pbx_default_timezone**](ConversationApi.md#get_pbx_default_timezone) | **GET** /conversation/pbx/config/default-timezone | Get the merchant default timezone |
+| [**get_pbx_hardware_phone**](ConversationApi.md#get_pbx_hardware_phone) | **GET** /conversation/pbx/hardware_phone/{conversationPbxHardwarePhoneUuid} | Get pbx hardware phone |
+| [**get_pbx_hardware_phone_manufacturers**](ConversationApi.md#get_pbx_hardware_phone_manufacturers) | **GET** /conversation/pbx/hardware_phone/manufacturers | Get pbx hardware phone manufacturers |
+| [**get_pbx_hardware_phones**](ConversationApi.md#get_pbx_hardware_phones) | **GET** /conversation/pbx/hardware_phone | Get pbx hardware phones |
+| [**get_pbx_menu**](ConversationApi.md#get_pbx_menu) | **GET** /conversation/pbx/menu/{conversationPbxMenuUuid} | Get pbx menu |
+| [**get_pbx_menus**](ConversationApi.md#get_pbx_menus) | **GET** /conversation/pbx/menu | Get pbx menus |
+| [**get_pbx_phone_number**](ConversationApi.md#get_pbx_phone_number) | **GET** /conversation/pbx/phone_number/{conversationPbxPhoneNumberUuid} | Get pbx phoneNumber |
+| [**get_pbx_phone_numbers**](ConversationApi.md#get_pbx_phone_numbers) | **GET** /conversation/pbx/phone_number | Get pbx phoneNumbers |
+| [**get_pbx_queue**](ConversationApi.md#get_pbx_queue) | **GET** /conversation/pbx/queue/{conversationPbxQueueUuid} | Get pbx queue |
+| [**get_pbx_queue_voicemail**](ConversationApi.md#get_pbx_queue_voicemail) | **GET** /conversation/pbx/queues/{queue_uuid}/voicemails/{recording_sid} | Get Queue Voicemail |
+| [**get_pbx_queue_voicemails**](ConversationApi.md#get_pbx_queue_voicemails) | **GET** /conversation/pbx/queues/{queue_uuid}/voicemails | Get Queue Voicemails |
+| [**get_pbx_queues**](ConversationApi.md#get_pbx_queues) | **GET** /conversation/pbx/queue | Get pbx queues |
+| [**get_pbx_time_based**](ConversationApi.md#get_pbx_time_based) | **GET** /conversation/pbx/time_based/{conversationPbxTimeBasedUuid} | Get pbx timeBased |
+| [**get_pbx_time_baseds**](ConversationApi.md#get_pbx_time_baseds) | **GET** /conversation/pbx/time_based | Get pbx timeBaseds |
+| [**get_pbx_time_range**](ConversationApi.md#get_pbx_time_range) | **GET** /conversation/pbx/time_range/{conversationPbxTimeRangeUuid} | Get pbx timeRange |
+| [**get_pbx_time_ranges**](ConversationApi.md#get_pbx_time_ranges) | **GET** /conversation/pbx/time_range | Get pbx timeRanges |
+| [**get_pbx_voicemail_capabilities**](ConversationApi.md#get_pbx_voicemail_capabilities) | **GET** /conversation/pbx/voicemail/capabilities | Get pbx voicemail capabilities |
+| [**get_pbx_voicemail_mailbox**](ConversationApi.md#get_pbx_voicemail_mailbox) | **GET** /conversation/pbx/voicemail_mailbox/{conversationPbxVoicemailMailboxUuid} | Get pbx voicemailMailbox |
+| [**get_pbx_voicemail_mailboxes**](ConversationApi.md#get_pbx_voicemail_mailboxes) | **GET** /conversation/pbx/voicemail_mailbox | Get pbx voicemailMailboxes |
+| [**get_user_pbx_audio**](ConversationApi.md#get_user_pbx_audio) | **GET** /conversation/pbx/audio/user/{conversationPbxAudioUuid} | Get user pbx audio |
+| [**get_user_pbx_audios**](ConversationApi.md#get_user_pbx_audios) | **GET** /conversation/pbx/audio/user | Get user pbx audios |
+| [**get_virtual_agent_budget**](ConversationApi.md#get_virtual_agent_budget) | **GET** /conversation/virtualagent/budget | Get virtual agent budget |
+| [**get_virtual_agent_capabilities**](ConversationApi.md#get_virtual_agent_capabilities) | **GET** /conversation/virtualagent/capabilities | Get virtual agent capabilities |
+| [**insert_agent_profile_knowledge_base_document**](ConversationApi.md#insert_agent_profile_knowledge_base_document) | **POST** /conversation/agent/profiles/{user_id}/knowledge_base | Insert a knowledge base document |
+| [**insert_agent_profile_mcp**](ConversationApi.md#insert_agent_profile_mcp) | **POST** /conversation/agent/profiles/{user_id}/mcps | Insert an agent MCP server |
+| [**insert_agent_status_config**](ConversationApi.md#insert_agent_status_config) | **POST** /conversation/agent/status/config | Create a custom agent status |
+| [**insert_conversation_canned_message**](ConversationApi.md#insert_conversation_canned_message) | **POST** /conversation/canned_messages | Insert a canned message |
+| [**insert_conversation_department**](ConversationApi.md#insert_conversation_department) | **POST** /conversation/departments | Insert a department |
+| [**insert_conversation_engagement**](ConversationApi.md#insert_conversation_engagement) | **POST** /conversation/engagements | Insert a engagement |
+| [**insert_pbx_address**](ConversationApi.md#insert_pbx_address) | **POST** /conversation/pbx/address | Insert pbx address |
+| [**insert_pbx_audio**](ConversationApi.md#insert_pbx_audio) | **POST** /conversation/pbx/audio | Insert pbx audio |
+| [**insert_pbx_class_of_service**](ConversationApi.md#insert_pbx_class_of_service) | **POST** /conversation/pbx/class_of_service | Insert pbx class of service |
+| [**insert_pbx_hardware_phone**](ConversationApi.md#insert_pbx_hardware_phone) | **POST** /conversation/pbx/hardware_phone | Insert pbx hardware phone |
+| [**insert_pbx_menu**](ConversationApi.md#insert_pbx_menu) | **POST** /conversation/pbx/menu | Insert pbx menu |
+| [**insert_pbx_queue**](ConversationApi.md#insert_pbx_queue) | **POST** /conversation/pbx/queue | Insert pbx queue |
+| [**insert_pbx_time_based**](ConversationApi.md#insert_pbx_time_based) | **POST** /conversation/pbx/time_based | Insert pbx timeBased |
+| [**insert_pbx_time_range**](ConversationApi.md#insert_pbx_time_range) | **POST** /conversation/pbx/time_range | Insert pbx timeRange |
+| [**insert_pbx_voicemail_mailbox**](ConversationApi.md#insert_pbx_voicemail_mailbox) | **POST** /conversation/pbx/voicemail_mailbox | Insert pbx voicemailMailbox |
+| [**insert_user_pbx_audio**](ConversationApi.md#insert_user_pbx_audio) | **POST** /conversation/pbx/audio/user | Insert user pbx audio |
+| [**join_conversation**](ConversationApi.md#join_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/join | Join a conversation |
+| [**leave_conversation**](ConversationApi.md#leave_conversation) | **DELETE** /conversation/conversations/{conversation_uuid}/leave | Leave a conversation |
+| [**listened_pbx_agent_voicemail**](ConversationApi.md#listened_pbx_agent_voicemail) | **GET** /conversation/pbx/agent/voicemails/{recording_sid}/listened | Listened Agent Voicemail |
+| [**listened_pbx_queue_voicemail**](ConversationApi.md#listened_pbx_queue_voicemail) | **GET** /conversation/pbx/queues/{queue_uuid}/voicemails/{recording_sid}/listened | Listened Queue Voicemail |
+| [**mark_read_conversation**](ConversationApi.md#mark_read_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/markread | Mark a conversation as read |
+| [**protect_pbx_phone_number**](ConversationApi.md#protect_pbx_phone_number) | **PUT** /conversation/pbx/phone_number/{conversationPbxPhoneNumberUuid}/protect | Protect pbx phoneNumber from deletion |
+| [**purchase_pbx_phone_number**](ConversationApi.md#purchase_pbx_phone_number) | **POST** /conversation/pbx/phone_number | Purchase pbx phone number |
+| [**regenerate_password_for_pbx_hardware_phone**](ConversationApi.md#regenerate_password_for_pbx_hardware_phone) | **POST** /conversation/pbx/hardware_phone/{conversationPbxHardwarePhoneUuid}/regenerate_password | Update pbx hardware phone |
+| [**reset_conversation_pbx_queue_statistics**](ConversationApi.md#reset_conversation_pbx_queue_statistics) | **POST** /conversation/pbx/queues/{queue_uuid}/reset_statistics | reset statistics within the queue |
+| [**search_agent_status_history**](ConversationApi.md#search_agent_status_history) | **POST** /conversation/agent/status/history/search | Search agent status history |
+| [**search_agent_status_rollups**](ConversationApi.md#search_agent_status_rollups) | **POST** /conversation/agent/status/rollup/search | Search per-(agent, day) rollups |
+| [**search_conversation_canned_messages**](ConversationApi.md#search_conversation_canned_messages) | **POST** /conversation/canned_messages/search | Search for canned messages by short_code |
+| [**search_pbx_available_phone_numbers**](ConversationApi.md#search_pbx_available_phone_numbers) | **GET** /conversation/pbx/phone_number/search | Search for available phone numbers |
+| [**search_pbx_calls**](ConversationApi.md#search_pbx_calls) | **POST** /conversation/pbx/call/search | Search pbx call records |
+| [**sms_unsubscribe_conversation**](ConversationApi.md#sms_unsubscribe_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/sms_unsubscribe | Unsubscribe any SMS participants in this conversation |
+| [**start_conversation**](ConversationApi.md#start_conversation) | **PUT** /conversation/conversations | Start a conversation |
+| [**update_agent_profile**](ConversationApi.md#update_agent_profile) | **PUT** /conversation/agent/profile | Update agent profile |
+| [**update_agent_profile_mcp**](ConversationApi.md#update_agent_profile_mcp) | **POST** /conversation/agent/profiles/{user_id}/mcps/{mcp_server_uuid} | Update an agent MCP server |
+| [**update_agent_status_config**](ConversationApi.md#update_agent_status_config) | **PUT** /conversation/agent/status/config/{conversation_status_uuid} | Update a custom agent status |
+| [**update_conversation_canned_message**](ConversationApi.md#update_conversation_canned_message) | **PUT** /conversation/canned_messages/{conversation_canned_message_oid} | Update a canned message |
+| [**update_conversation_department**](ConversationApi.md#update_conversation_department) | **PUT** /conversation/departments/{conversation_department_oid} | Update a department |
+| [**update_conversation_engagement**](ConversationApi.md#update_conversation_engagement) | **PUT** /conversation/engagements/{conversation_engagement_oid} | Update a engagement |
+| [**update_conversation_webchat_queue_status**](ConversationApi.md#update_conversation_webchat_queue_status) | **PUT** /conversation/conversations/queues/{queue_name}/status | Update status within the queue |
+| [**update_pbx_address**](ConversationApi.md#update_pbx_address) | **PUT** /conversation/pbx/address/{conversationPbxAddressUuid} | Update pbx address |
+| [**update_pbx_agent**](ConversationApi.md#update_pbx_agent) | **PUT** /conversation/pbx/agent/{conversationPbxAgentUuid} | Update pbx agent |
+| [**update_pbx_audio**](ConversationApi.md#update_pbx_audio) | **PUT** /conversation/pbx/audio/{conversationPbxAudioUuid} | Update pbx audio |
+| [**update_pbx_call**](ConversationApi.md#update_pbx_call) | **PUT** /conversation/pbx/call/{callUuid} | Update pbx call record |
+| [**update_pbx_class_of_service**](ConversationApi.md#update_pbx_class_of_service) | **PUT** /conversation/pbx/class_of_service/{classOfServiceUuid} | Update pbx class of service |
+| [**update_pbx_default_timezone**](ConversationApi.md#update_pbx_default_timezone) | **PUT** /conversation/pbx/config/default-timezone | Set the merchant default timezone |
+| [**update_pbx_hardware_phone**](ConversationApi.md#update_pbx_hardware_phone) | **PUT** /conversation/pbx/hardware_phone/{conversationPbxHardwarePhoneUuid} | Update pbx hardware phone |
+| [**update_pbx_menu**](ConversationApi.md#update_pbx_menu) | **PUT** /conversation/pbx/menu/{conversationPbxMenuUuid} | Update pbx menu |
+| [**update_pbx_phone_number**](ConversationApi.md#update_pbx_phone_number) | **PUT** /conversation/pbx/phone_number/{conversationPbxPhoneNumberUuid} | Update pbx phoneNumber |
+| [**update_pbx_queue**](ConversationApi.md#update_pbx_queue) | **PUT** /conversation/pbx/queue/{conversationPbxQueueUuid} | Update pbx queue |
+| [**update_pbx_time_based**](ConversationApi.md#update_pbx_time_based) | **PUT** /conversation/pbx/time_based/{conversationPbxTimeBasedUuid} | Update pbx timeBased |
+| [**update_pbx_time_range**](ConversationApi.md#update_pbx_time_range) | **PUT** /conversation/pbx/time_range/{conversationPbxTimeRangeUuid} | Update pbx timeRange |
+| [**update_pbx_voicemail_mailbox**](ConversationApi.md#update_pbx_voicemail_mailbox) | **PUT** /conversation/pbx/voicemail_mailbox/{conversationPbxVoicemailMailboxUuid} | Update pbx voicemailMailbox |
+| [**update_user_pbx_audio**](ConversationApi.md#update_user_pbx_audio) | **PUT** /conversation/pbx/audio/user/{conversationPbxAudioUuid} | Update user pbx audio |
+| [**update_virtual_agent_budget**](ConversationApi.md#update_virtual_agent_budget) | **PUT** /conversation/virtualagent/budget | Update virtual agent budget |
+| [**update_virtual_agent_capabilities**](ConversationApi.md#update_virtual_agent_capabilities) | **PUT** /conversation/virtualagent/capabilities | Update virtual agent capabilities |
+
+
+## delete_agent_profile_knowledge_base_document
+
+> <ConversationDeleteKnowledgeBaseDocumentResponse> delete_agent_profile_knowledge_base_document(user_id, document_uuid)
+
+Delete a knowledge base document
+
+Delete a knowledge base document 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_agent_profile_knowledge_base_document_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationDeleteKnowledgeBaseDocumentResponse>, Integer, Hash)> delete_agent_profile_knowledge_base_document_with_http_info(user_id, document_uuid)
+
+```ruby
+begin
+  # Delete a knowledge base document
+  data, status_code, headers = api_instance.delete_agent_profile_knowledge_base_document_with_http_info(user_id, document_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationDeleteKnowledgeBaseDocumentResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_agent_profile_knowledge_base_document_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+| **document_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationDeleteKnowledgeBaseDocumentResponse**](ConversationDeleteKnowledgeBaseDocumentResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_agent_profile_mcp
+
+> delete_agent_profile_mcp(user_id, mcp_server_uuid)
+
+Delete an agent MCP server
+
+Delete an agent MCP server 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_agent_profile_mcp_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_agent_profile_mcp_with_http_info(user_id, mcp_server_uuid)
+
+```ruby
+begin
+  # Delete an agent MCP server
+  data, status_code, headers = api_instance.delete_agent_profile_mcp_with_http_info(user_id, mcp_server_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_agent_profile_mcp_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+| **mcp_server_uuid** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_agent_status_config
+
+> delete_agent_status_config(conversation_status_uuid)
+
+Soft-deactivate a custom agent status
+
+Sets active=false on the row and the DDB sync record. The Twilio Activity is preserved (Round 2 decision) so historic worker reporting still resolves the SID. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_agent_status_config_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_agent_status_config_with_http_info(conversation_status_uuid)
+
+```ruby
+begin
+  # Soft-deactivate a custom agent status
+  data, status_code, headers = api_instance.delete_agent_status_config_with_http_info(conversation_status_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_agent_status_config_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_status_uuid** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_conversation_canned_message
+
+> delete_conversation_canned_message(conversation_canned_message_oid)
+
+Delete a conversation canned message
+
+Delete a conversation canned message 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the delete_conversation_canned_message_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_conversation_canned_message_with_http_info(conversation_canned_message_oid)
+
+```ruby
+begin
+  # Delete a conversation canned message
+  data, status_code, headers = api_instance.delete_conversation_canned_message_with_http_info(conversation_canned_message_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_conversation_canned_message_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_canned_message_oid** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_department
+
+> delete_department(conversation_department_oid)
+
+Delete a conversation department
+
+Delete a conversation department 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the delete_department_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_department_with_http_info(conversation_department_oid)
+
+```ruby
+begin
+  # Delete a conversation department
+  data, status_code, headers = api_instance.delete_department_with_http_info(conversation_department_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_department_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_department_oid** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_engagement
+
+> delete_engagement(conversation_engagement_oid)
+
+Delete a conversation engagement
+
+Delete a conversation engagement 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the delete_engagement_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_engagement_with_http_info(conversation_engagement_oid)
+
+```ruby
+begin
+  # Delete a conversation engagement
+  data, status_code, headers = api_instance.delete_engagement_with_http_info(conversation_engagement_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_engagement_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_engagement_oid** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_pbx_address
+
+> <ConversationPbxAddressResponse> delete_pbx_address(conversation_pbx_address_uuid)
+
+Delete pbx address
+
+Delete a pbx address 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_pbx_address_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAddressResponse>, Integer, Hash)> delete_pbx_address_with_http_info(conversation_pbx_address_uuid)
+
+```ruby
+begin
+  # Delete pbx address
+  data, status_code, headers = api_instance.delete_pbx_address_with_http_info(conversation_pbx_address_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAddressResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_pbx_address_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_address_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxAddressResponse**](ConversationPbxAddressResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_pbx_agent_voicemail
+
+> delete_pbx_agent_voicemail(recording_sid)
+
+Delete Agent Voicemail
+
+Delete pbx agent Voicemail 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the delete_pbx_agent_voicemail_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_pbx_agent_voicemail_with_http_info(recording_sid)
+
+```ruby
+begin
+  # Delete Agent Voicemail
+  data, status_code, headers = api_instance.delete_pbx_agent_voicemail_with_http_info(recording_sid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_pbx_agent_voicemail_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **recording_sid** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_pbx_audio
+
+> <ConversationPbxAudioResponse> delete_pbx_audio(conversation_pbx_audio_uuid)
+
+Delete pbx audio
+
+Delete a pbx audio 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the delete_pbx_audio_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudioResponse>, Integer, Hash)> delete_pbx_audio_with_http_info(conversation_pbx_audio_uuid)
+
+```ruby
+begin
+  # Delete pbx audio
+  data, status_code, headers = api_instance.delete_pbx_audio_with_http_info(conversation_pbx_audio_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudioResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_pbx_audio_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_audio_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxAudioResponse**](ConversationPbxAudioResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_pbx_class_of_service
+
+> <BaseResponse> delete_pbx_class_of_service(class_of_service_uuid)
+
+Delete pbx class of service
+
+Delete a class of service 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_pbx_class_of_service_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<BaseResponse>, Integer, Hash)> delete_pbx_class_of_service_with_http_info(class_of_service_uuid)
+
+```ruby
+begin
+  # Delete pbx class of service
+  data, status_code, headers = api_instance.delete_pbx_class_of_service_with_http_info(class_of_service_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <BaseResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_pbx_class_of_service_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **class_of_service_uuid** | **String** |  |  |
+
+### Return type
+
+[**BaseResponse**](BaseResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_pbx_hardware_phone
+
+> <ConversationPbxHardwarePhoneResponse> delete_pbx_hardware_phone(conversation_pbx_hardware_phone_uuid)
+
+Delete pbx hardware phone
+
+Delete a pbx hardware phone 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_pbx_hardware_phone_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxHardwarePhoneResponse>, Integer, Hash)> delete_pbx_hardware_phone_with_http_info(conversation_pbx_hardware_phone_uuid)
+
+```ruby
+begin
+  # Delete pbx hardware phone
+  data, status_code, headers = api_instance.delete_pbx_hardware_phone_with_http_info(conversation_pbx_hardware_phone_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxHardwarePhoneResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_pbx_hardware_phone_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_hardware_phone_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxHardwarePhoneResponse**](ConversationPbxHardwarePhoneResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_pbx_menu
+
+> <ConversationPbxMenuResponse> delete_pbx_menu(conversation_pbx_menu_uuid)
+
+Delete pbx menu
+
+Delete a pbx menu 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the delete_pbx_menu_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxMenuResponse>, Integer, Hash)> delete_pbx_menu_with_http_info(conversation_pbx_menu_uuid)
+
+```ruby
+begin
+  # Delete pbx menu
+  data, status_code, headers = api_instance.delete_pbx_menu_with_http_info(conversation_pbx_menu_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxMenuResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_pbx_menu_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_menu_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxMenuResponse**](ConversationPbxMenuResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_pbx_phone_number
+
+> delete_pbx_phone_number(conversation_pbx_phone_number_uuid)
+
+Delete pbx phoneNumber
+
+Delete a pbx phoneNumber. Only works if deletion_protected is false. 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the delete_pbx_phone_number_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_pbx_phone_number_with_http_info(conversation_pbx_phone_number_uuid)
+
+```ruby
+begin
+  # Delete pbx phoneNumber
+  data, status_code, headers = api_instance.delete_pbx_phone_number_with_http_info(conversation_pbx_phone_number_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_pbx_phone_number_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_phone_number_uuid** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_pbx_queue
+
+> <ConversationPbxQueueResponse> delete_pbx_queue(conversation_pbx_queue_uuid)
+
+Delete pbx queue
+
+Delete a pbx queue 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the delete_pbx_queue_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxQueueResponse>, Integer, Hash)> delete_pbx_queue_with_http_info(conversation_pbx_queue_uuid)
+
+```ruby
+begin
+  # Delete pbx queue
+  data, status_code, headers = api_instance.delete_pbx_queue_with_http_info(conversation_pbx_queue_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxQueueResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_pbx_queue_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_queue_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxQueueResponse**](ConversationPbxQueueResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_pbx_queue_voicemail
+
+> delete_pbx_queue_voicemail(queue_uuid, recording_sid)
+
+Delete Queue Voicemail
+
+Delete pbx queue Voicemail 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the delete_pbx_queue_voicemail_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_pbx_queue_voicemail_with_http_info(queue_uuid, recording_sid)
+
+```ruby
+begin
+  # Delete Queue Voicemail
+  data, status_code, headers = api_instance.delete_pbx_queue_voicemail_with_http_info(queue_uuid, recording_sid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_pbx_queue_voicemail_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **queue_uuid** | **String** |  |  |
+| **recording_sid** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_pbx_time_based
+
+> <ConversationPbxTimeBasedResponse> delete_pbx_time_based(conversation_pbx_time_based_uuid)
+
+Delete pbx timeBased
+
+Delete a pbx timeBased 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the delete_pbx_time_based_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxTimeBasedResponse>, Integer, Hash)> delete_pbx_time_based_with_http_info(conversation_pbx_time_based_uuid)
+
+```ruby
+begin
+  # Delete pbx timeBased
+  data, status_code, headers = api_instance.delete_pbx_time_based_with_http_info(conversation_pbx_time_based_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxTimeBasedResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_pbx_time_based_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_time_based_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxTimeBasedResponse**](ConversationPbxTimeBasedResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_pbx_time_range
+
+> <ConversationPbxTimeRangeResponse> delete_pbx_time_range(conversation_pbx_time_range_uuid)
+
+Delete pbx timeRange
+
+Delete a pbx timeRange 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the delete_pbx_time_range_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxTimeRangeResponse>, Integer, Hash)> delete_pbx_time_range_with_http_info(conversation_pbx_time_range_uuid)
+
+```ruby
+begin
+  # Delete pbx timeRange
+  data, status_code, headers = api_instance.delete_pbx_time_range_with_http_info(conversation_pbx_time_range_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxTimeRangeResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_pbx_time_range_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_time_range_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxTimeRangeResponse**](ConversationPbxTimeRangeResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_pbx_voicemail_mailbox
+
+> <ConversationPbxVoicemailMailboxResponse> delete_pbx_voicemail_mailbox(conversation_pbx_voicemail_mailbox_uuid)
+
+Delete pbx voicemailMailbox
+
+Delete a pbx voicemailMailbox 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the delete_pbx_voicemail_mailbox_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxVoicemailMailboxResponse>, Integer, Hash)> delete_pbx_voicemail_mailbox_with_http_info(conversation_pbx_voicemail_mailbox_uuid)
+
+```ruby
+begin
+  # Delete pbx voicemailMailbox
+  data, status_code, headers = api_instance.delete_pbx_voicemail_mailbox_with_http_info(conversation_pbx_voicemail_mailbox_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxVoicemailMailboxResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_pbx_voicemail_mailbox_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_voicemail_mailbox_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxVoicemailMailboxResponse**](ConversationPbxVoicemailMailboxResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_user_pbx_audio
+
+> <ConversationPbxAudioResponse> delete_user_pbx_audio(conversation_pbx_audio_uuid)
+
+Delete user pbx audio
+
+Delete a pbx audio file owned by the authenticated user 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_user_pbx_audio_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudioResponse>, Integer, Hash)> delete_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid)
+
+```ruby
+begin
+  # Delete user pbx audio
+  data, status_code, headers = api_instance.delete_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudioResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->delete_user_pbx_audio_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_audio_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxAudioResponse**](ConversationPbxAudioResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_agent_keep_alive
+
+> get_agent_keep_alive
+
+Agent keep alive
+
+Called periodically by the conversation API to keep the session alive. 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_agent_keep_alive_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> get_agent_keep_alive_with_http_info
+
+```ruby
+begin
+  # Agent keep alive
+  data, status_code, headers = api_instance.get_agent_keep_alive_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_keep_alive_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_agent_profile
+
+> <ConversationAgentProfileResponse> get_agent_profile
+
+Get agent profile
+
+Retrieve the agents profile 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_agent_profile_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAgentProfileResponse>, Integer, Hash)> get_agent_profile_with_http_info
+
+```ruby
+begin
+  # Get agent profile
+  data, status_code, headers = api_instance.get_agent_profile_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAgentProfileResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_profile_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationAgentProfileResponse**](ConversationAgentProfileResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_agent_profile_knowledge_base
+
+> <ConversationKnowledgeBaseDocumentsResponse> get_agent_profile_knowledge_base(user_id)
+
+Get the list of knowledge base documents associated with this agent profile
+
+Retrieve knowledge base documents 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_agent_profile_knowledge_base_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationKnowledgeBaseDocumentsResponse>, Integer, Hash)> get_agent_profile_knowledge_base_with_http_info(user_id)
+
+```ruby
+begin
+  # Get the list of knowledge base documents associated with this agent profile
+  data, status_code, headers = api_instance.get_agent_profile_knowledge_base_with_http_info(user_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationKnowledgeBaseDocumentsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_profile_knowledge_base_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+
+### Return type
+
+[**ConversationKnowledgeBaseDocumentsResponse**](ConversationKnowledgeBaseDocumentsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_agent_profile_mcp
+
+> <ConversationMcpServerResponse> get_agent_profile_mcp(user_id, mcp_server_uuid)
+
+Get an MCP server associated with this agent
+
+Retrieve MCP server associated with this agent 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_agent_profile_mcp_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationMcpServerResponse>, Integer, Hash)> get_agent_profile_mcp_with_http_info(user_id, mcp_server_uuid)
+
+```ruby
+begin
+  # Get an MCP server associated with this agent
+  data, status_code, headers = api_instance.get_agent_profile_mcp_with_http_info(user_id, mcp_server_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationMcpServerResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_profile_mcp_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+| **mcp_server_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationMcpServerResponse**](ConversationMcpServerResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_agent_profile_mcp_tools
+
+> <ConversationMcpServerToolsResponse> get_agent_profile_mcp_tools(user_id, mcp_server_uuid)
+
+Get the tools available from the MCP server
+
+Get the tools available from the MCP server 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_agent_profile_mcp_tools_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationMcpServerToolsResponse>, Integer, Hash)> get_agent_profile_mcp_tools_with_http_info(user_id, mcp_server_uuid)
+
+```ruby
+begin
+  # Get the tools available from the MCP server
+  data, status_code, headers = api_instance.get_agent_profile_mcp_tools_with_http_info(user_id, mcp_server_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationMcpServerToolsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_profile_mcp_tools_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+| **mcp_server_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationMcpServerToolsResponse**](ConversationMcpServerToolsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_agent_profile_mcps
+
+> <ConversationMcpServersResponse> get_agent_profile_mcps(user_id)
+
+Get the list of MCP servers associated with this agent
+
+Retrieve MCP servers associated with this agent 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_agent_profile_mcps_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationMcpServersResponse>, Integer, Hash)> get_agent_profile_mcps_with_http_info(user_id)
+
+```ruby
+begin
+  # Get the list of MCP servers associated with this agent
+  data, status_code, headers = api_instance.get_agent_profile_mcps_with_http_info(user_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationMcpServersResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_profile_mcps_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+
+### Return type
+
+[**ConversationMcpServersResponse**](ConversationMcpServersResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_agent_profiles
+
+> <ConversationAgentProfilesResponse> get_agent_profiles
+
+Get agent profiles
+
+Retrieve the agents profile 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_agent_profiles_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAgentProfilesResponse>, Integer, Hash)> get_agent_profiles_with_http_info
+
+```ruby
+begin
+  # Get agent profiles
+  data, status_code, headers = api_instance.get_agent_profiles_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAgentProfilesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_profiles_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationAgentProfilesResponse**](ConversationAgentProfilesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_agent_status_configs
+
+> <ConversationAgentStatusConfigsResponse> get_agent_status_configs
+
+List custom agent statuses
+
+Returns all custom statuses (active and soft-deactivated) for the merchant. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_agent_status_configs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAgentStatusConfigsResponse>, Integer, Hash)> get_agent_status_configs_with_http_info
+
+```ruby
+begin
+  # List custom agent statuses
+  data, status_code, headers = api_instance.get_agent_status_configs_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAgentStatusConfigsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_status_configs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationAgentStatusConfigsResponse**](ConversationAgentStatusConfigsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_agent_status_heatmap
+
+> <ConversationAgentStatusHeatmapResponse> get_agent_status_heatmap(heatmap_request)
+
+Agent x hour-of-day heatmap
+
+Returns ECharts-shaped agent x hour grid for the requested metric (availability, call_volume, chat_volume). Multi-day requests average the cell values across the date range. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_agent_status_heatmap_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAgentStatusHeatmapResponse>, Integer, Hash)> get_agent_status_heatmap_with_http_info(heatmap_request)
+
+```ruby
+begin
+  # Agent x hour-of-day heatmap
+  data, status_code, headers = api_instance.get_agent_status_heatmap_with_http_info(heatmap_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAgentStatusHeatmapResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_status_heatmap_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **heatmap_request** | [**ConversationAgentStatusHeatmapRequest**](ConversationAgentStatusHeatmapRequest.md) | Heatmap request |  |
+
+### Return type
+
+[**ConversationAgentStatusHeatmapResponse**](ConversationAgentStatusHeatmapResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_agent_status_summary
+
+> <ConversationAgentStatusSummaryResponse> get_agent_status_summary(date_start2, date_end2, opts)
+
+Dashboard summary for a date range
+
+Top-line summary: total_agents, avg_available_pct, status_breakdown, per-agent rollups. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_agent_status_summary_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAgentStatusSummaryResponse>, Integer, Hash)> get_agent_status_summary_with_http_info(date_start2, date_end2, opts)
+
+```ruby
+begin
+  # Dashboard summary for a date range
+  data, status_code, headers = api_instance.get_agent_status_summary_with_http_info(date_start2, date_end2, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAgentStatusSummaryResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_status_summary_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **date_start2** | **String** | Range start (YYYY-MM-DD) |  |
+| **date_end2** | **String** | Range end (YYYY-MM-DD) |  |
+| **date_start** | **String** |  | [optional] |
+| **date_end** | **String** |  | [optional] |
+
+### Return type
+
+[**ConversationAgentStatusSummaryResponse**](ConversationAgentStatusSummaryResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_agent_status_timeline
+
+> <ConversationAgentStatusTimelineResponse> get_agent_status_timeline(agent_user_id, date2, opts)
+
+Day timeline for a single agent
+
+Returns merged status events + PBX calls + chat conversations for the agent on the given date. Omitting the channel parameter returns both channels merged. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_agent_status_timeline_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAgentStatusTimelineResponse>, Integer, Hash)> get_agent_status_timeline_with_http_info(agent_user_id, date2, opts)
+
+```ruby
+begin
+  # Day timeline for a single agent
+  data, status_code, headers = api_instance.get_agent_status_timeline_with_http_info(agent_user_id, date2, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAgentStatusTimelineResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_status_timeline_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **agent_user_id** | **String** |  |  |
+| **date2** | **String** | Day to retrieve (YYYY-MM-DD) |  |
+| **date** | **String** |  | [optional] |
+| **channel** | **String** |  | [optional] |
+| **channel2** | **String** | Restrict to one channel (omit for both) | [optional] |
+
+### Return type
+
+[**ConversationAgentStatusTimelineResponse**](ConversationAgentStatusTimelineResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_agent_websocket_authorization
+
+> <ConversationAgentAuthResponse> get_agent_websocket_authorization
+
+Get agent websocket authorization
+
+Retrieve a JWT to authorize an agent to make a websocket connection. 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_agent_websocket_authorization_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAgentAuthResponse>, Integer, Hash)> get_agent_websocket_authorization_with_http_info
+
+```ruby
+begin
+  # Get agent websocket authorization
+  data, status_code, headers = api_instance.get_agent_websocket_authorization_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAgentAuthResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_agent_websocket_authorization_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationAgentAuthResponse**](ConversationAgentAuthResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation
+
+> <ConversationResponse> get_conversation(conversation_uuid, opts)
+
+Retrieve a conversation
+
+Retrieve a conversation including the participants and messages 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_conversation_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationResponse>, Integer, Hash)> get_conversation_with_http_info(conversation_uuid, opts)
+
+```ruby
+begin
+  # Retrieve a conversation
+  data, status_code, headers = api_instance.get_conversation_with_http_info(conversation_uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_uuid** | **String** |  |  |
+| **limit** | **Integer** |  | [optional] |
+
+### Return type
+
+[**ConversationResponse**](ConversationResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_canned_messages
+
+> <ConversationCannedMessagesResponse> get_conversation_canned_messages
+
+Retrieve a list of canned messages ordered by short_code
+
+Retrieve a list of canned messages ordered by short_code 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_conversation_canned_messages_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationCannedMessagesResponse>, Integer, Hash)> get_conversation_canned_messages_with_http_info
+
+```ruby
+begin
+  # Retrieve a list of canned messages ordered by short_code
+  data, status_code, headers = api_instance.get_conversation_canned_messages_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationCannedMessagesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_canned_messages_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationCannedMessagesResponse**](ConversationCannedMessagesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_context
+
+> <ConversationWebchatContext> get_conversation_context(conversation_uuid)
+
+Get a webchat conversation context
+
+Get a webchat conversation context 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_conversation_context_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationWebchatContext>, Integer, Hash)> get_conversation_context_with_http_info(conversation_uuid)
+
+```ruby
+begin
+  # Get a webchat conversation context
+  data, status_code, headers = api_instance.get_conversation_context_with_http_info(conversation_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationWebchatContext>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_context_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationWebchatContext**](ConversationWebchatContext.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_department_member_list
+
+> <ConversationDepartmentMembersResponse> get_conversation_department_member_list
+
+Retrieve a list of possible department members
+
+Retrieve a list of possible department members 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_conversation_department_member_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationDepartmentMembersResponse>, Integer, Hash)> get_conversation_department_member_list_with_http_info
+
+```ruby
+begin
+  # Retrieve a list of possible department members
+  data, status_code, headers = api_instance.get_conversation_department_member_list_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationDepartmentMembersResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_department_member_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationDepartmentMembersResponse**](ConversationDepartmentMembersResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_departments
+
+> <ConversationDepartmentsResponse> get_conversation_departments
+
+Retrieve a list of departments ordered by name
+
+Retrieve a list of departments ordered by name 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_conversation_departments_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationDepartmentsResponse>, Integer, Hash)> get_conversation_departments_with_http_info
+
+```ruby
+begin
+  # Retrieve a list of departments ordered by name
+  data, status_code, headers = api_instance.get_conversation_departments_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationDepartmentsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_departments_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationDepartmentsResponse**](ConversationDepartmentsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_engagement
+
+> <ConversationEngagementResponse> get_conversation_engagement(conversation_engagement_oid)
+
+Retrieve an engagement
+
+Retrieve an engagement 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_conversation_engagement_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationEngagementResponse>, Integer, Hash)> get_conversation_engagement_with_http_info(conversation_engagement_oid)
+
+```ruby
+begin
+  # Retrieve an engagement
+  data, status_code, headers = api_instance.get_conversation_engagement_with_http_info(conversation_engagement_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationEngagementResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_engagement_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_engagement_oid** | **Integer** |  |  |
+
+### Return type
+
+[**ConversationEngagementResponse**](ConversationEngagementResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_engagements
+
+> <ConversationEngagementsResponse> get_conversation_engagements
+
+Retrieve a list of engagements ordered by name
+
+Retrieve a list of engagements ordered by name 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_conversation_engagements_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationEngagementsResponse>, Integer, Hash)> get_conversation_engagements_with_http_info
+
+```ruby
+begin
+  # Retrieve a list of engagements ordered by name
+  data, status_code, headers = api_instance.get_conversation_engagements_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationEngagementsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_engagements_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationEngagementsResponse**](ConversationEngagementsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_item_variations
+
+> <ItemResponse> get_conversation_item_variations(merchant_item_id)
+
+Retrieve an item with sparse variations populated
+
+Retrieve an item with sparse variations populated 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_conversation_item_variations_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ItemResponse>, Integer, Hash)> get_conversation_item_variations_with_http_info(merchant_item_id)
+
+```ruby
+begin
+  # Retrieve an item with sparse variations populated
+  data, status_code, headers = api_instance.get_conversation_item_variations_with_http_info(merchant_item_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ItemResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_item_variations_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **merchant_item_id** | **String** |  |  |
+
+### Return type
+
+[**ItemResponse**](ItemResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_knowledge_base_document_upload_url
+
+> <ConversationKnowledgeBaseDocumentUploadUrlResponse> get_conversation_knowledge_base_document_upload_url(user_id, extension)
+
+Get a pre-signed conversation knowledge base document upload URL
+
+Get a pre-signed conversation knowledge base document upload URL 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_conversation_knowledge_base_document_upload_url_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationKnowledgeBaseDocumentUploadUrlResponse>, Integer, Hash)> get_conversation_knowledge_base_document_upload_url_with_http_info(user_id, extension)
+
+```ruby
+begin
+  # Get a pre-signed conversation knowledge base document upload URL
+  data, status_code, headers = api_instance.get_conversation_knowledge_base_document_upload_url_with_http_info(user_id, extension)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationKnowledgeBaseDocumentUploadUrlResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_knowledge_base_document_upload_url_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+| **extension** | **String** |  |  |
+
+### Return type
+
+[**ConversationKnowledgeBaseDocumentUploadUrlResponse**](ConversationKnowledgeBaseDocumentUploadUrlResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_messages
+
+> <ConversationMessagesResponse> get_conversation_messages(conversation_uuid, since, opts)
+
+Retrieve conversation messages
+
+Retrieve conversation messages since a particular time 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_conversation_messages_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationMessagesResponse>, Integer, Hash)> get_conversation_messages_with_http_info(conversation_uuid, since, opts)
+
+```ruby
+begin
+  # Retrieve conversation messages
+  data, status_code, headers = api_instance.get_conversation_messages_with_http_info(conversation_uuid, since, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationMessagesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_messages_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_uuid** | **String** |  |  |
+| **since** | **Integer** |  |  |
+| **limit** | **Integer** |  | [optional] |
+
+### Return type
+
+[**ConversationMessagesResponse**](ConversationMessagesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_multimedia_upload_url
+
+> <ConversationMultimediaUploadUrlResponse> get_conversation_multimedia_upload_url(extension)
+
+Get a presigned conversation multimedia upload URL
+
+Get a presigned conversation multimedia upload URL 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_conversation_multimedia_upload_url_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationMultimediaUploadUrlResponse>, Integer, Hash)> get_conversation_multimedia_upload_url_with_http_info(extension)
+
+```ruby
+begin
+  # Get a presigned conversation multimedia upload URL
+  data, status_code, headers = api_instance.get_conversation_multimedia_upload_url_with_http_info(extension)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationMultimediaUploadUrlResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_multimedia_upload_url_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **extension** | **String** |  |  |
+
+### Return type
+
+[**ConversationMultimediaUploadUrlResponse**](ConversationMultimediaUploadUrlResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_pbx_audio_upload_url
+
+> <ConversationPbxAudioUploadUrlResponse> get_conversation_pbx_audio_upload_url(extension)
+
+Get a pre-signed conversation multimedia upload URL
+
+Get a pre-signed conversation multimedia upload URL 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_conversation_pbx_audio_upload_url_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudioUploadUrlResponse>, Integer, Hash)> get_conversation_pbx_audio_upload_url_with_http_info(extension)
+
+```ruby
+begin
+  # Get a pre-signed conversation multimedia upload URL
+  data, status_code, headers = api_instance.get_conversation_pbx_audio_upload_url_with_http_info(extension)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudioUploadUrlResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_pbx_audio_upload_url_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **extension** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxAudioUploadUrlResponse**](ConversationPbxAudioUploadUrlResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_pbx_customer_snapshot
+
+> <ConversationPbxCustomerSnapshotResponse> get_conversation_pbx_customer_snapshot(pbx_customer_snapshot_request)
+
+Get orders and customer information for a phone number
+
+Retrieves all the orders, auto orders, and customer profile for a given phone number 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_conversation_pbx_customer_snapshot_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxCustomerSnapshotResponse>, Integer, Hash)> get_conversation_pbx_customer_snapshot_with_http_info(pbx_customer_snapshot_request)
+
+```ruby
+begin
+  # Get orders and customer information for a phone number
+  data, status_code, headers = api_instance.get_conversation_pbx_customer_snapshot_with_http_info(pbx_customer_snapshot_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxCustomerSnapshotResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_pbx_customer_snapshot_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pbx_customer_snapshot_request** | [**ConversationPbxCustomerSnapshotRequest**](ConversationPbxCustomerSnapshotRequest.md) | Conversation pbx customer snapshot request |  |
+
+### Return type
+
+[**ConversationPbxCustomerSnapshotResponse**](ConversationPbxCustomerSnapshotResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_conversation_permissions
+
+> <ConversationPermissionsResponse> get_conversation_permissions
+
+Retrieve conversation permissions
+
+Retrieve conversation permissions 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_conversation_permissions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPermissionsResponse>, Integer, Hash)> get_conversation_permissions_with_http_info
+
+```ruby
+begin
+  # Retrieve conversation permissions
+  data, status_code, headers = api_instance.get_conversation_permissions_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPermissionsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_permissions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPermissionsResponse**](ConversationPermissionsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversation_webchat_queue_statuses
+
+> <ConversationWebchatQueueStatusesResponse> get_conversation_webchat_queue_statuses
+
+Retrieve a conversation webchat queue statuses
+
+Retrieve a conversation webchat queue statuses including agent status and queue entries 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_conversation_webchat_queue_statuses_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationWebchatQueueStatusesResponse>, Integer, Hash)> get_conversation_webchat_queue_statuses_with_http_info
+
+```ruby
+begin
+  # Retrieve a conversation webchat queue statuses
+  data, status_code, headers = api_instance.get_conversation_webchat_queue_statuses_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationWebchatQueueStatusesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversation_webchat_queue_statuses_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationWebchatQueueStatusesResponse**](ConversationWebchatQueueStatusesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversations
+
+> <ConversationsResponse> get_conversations(opts)
+
+Retrieve a list of conversation summaries newest to oldest
+
+Retrieve a list of conversation summaries that are ordered newest to oldest, include the most recent message and whether its been read. 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_conversations_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationsResponse>, Integer, Hash)> get_conversations_with_http_info(opts)
+
+```ruby
+begin
+  # Retrieve a list of conversation summaries newest to oldest
+  data, status_code, headers = api_instance.get_conversations_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversations_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **medium** | **String** |  | [optional] |
+| **before** | **String** |  | [optional] |
+| **_limit** | **Integer** | The maximum number of records to return on this one API call. (Max 200) | [optional][default to 100] |
+| **_offset** | **Integer** | Pagination of the record set.  Offset is a zero based index. | [optional][default to 0] |
+
+### Return type
+
+[**ConversationsResponse**](ConversationsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_conversations_autocomplete
+
+> <ConversationAutocompleteResponse> get_conversations_autocomplete(autocomplete_request)
+
+Retrieve a list of matching terms for a search field
+
+Retrieve a list of matching terms for a search field 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_conversations_autocomplete_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAutocompleteResponse>, Integer, Hash)> get_conversations_autocomplete_with_http_info(autocomplete_request)
+
+```ruby
+begin
+  # Retrieve a list of matching terms for a search field
+  data, status_code, headers = api_instance.get_conversations_autocomplete_with_http_info(autocomplete_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAutocompleteResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversations_autocomplete_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **autocomplete_request** | [**ConversationAutocompleteRequest**](ConversationAutocompleteRequest.md) | Autocomplete Request |  |
+
+### Return type
+
+[**ConversationAutocompleteResponse**](ConversationAutocompleteResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_conversations_search
+
+> <ConversationSearchResponse> get_conversations_search(search_request)
+
+Search conversations
+
+Search conversations 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_conversations_search_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationSearchResponse>, Integer, Hash)> get_conversations_search_with_http_info(search_request)
+
+```ruby
+begin
+  # Search conversations
+  data, status_code, headers = api_instance.get_conversations_search_with_http_info(search_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationSearchResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_conversations_search_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **search_request** | [**ConversationSearchRequest**](ConversationSearchRequest.md) | Search Request |  |
+
+### Return type
+
+[**ConversationSearchResponse**](ConversationSearchResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_locations_for_engagement
+
+> <ConversationLocationsResponse> get_locations_for_engagement
+
+Get location data for engagement configuration
+
+Get location data for engagement configuration 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_locations_for_engagement_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationLocationsResponse>, Integer, Hash)> get_locations_for_engagement_with_http_info
+
+```ruby
+begin
+  # Get location data for engagement configuration
+  data, status_code, headers = api_instance.get_locations_for_engagement_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationLocationsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_locations_for_engagement_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationLocationsResponse**](ConversationLocationsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_address
+
+> <ConversationPbxAddressResponse> get_pbx_address(conversation_pbx_address_uuid)
+
+Get pbx address
+
+Retrieve a pbx address 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_pbx_address_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAddressResponse>, Integer, Hash)> get_pbx_address_with_http_info(conversation_pbx_address_uuid)
+
+```ruby
+begin
+  # Get pbx address
+  data, status_code, headers = api_instance.get_pbx_address_with_http_info(conversation_pbx_address_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAddressResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_address_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_address_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxAddressResponse**](ConversationPbxAddressResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_addresses
+
+> <ConversationPbxAddressesResponse> get_pbx_addresses
+
+Get pbx addresses
+
+Retrieve pbx addresses 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_pbx_addresses_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAddressesResponse>, Integer, Hash)> get_pbx_addresses_with_http_info
+
+```ruby
+begin
+  # Get pbx addresses
+  data, status_code, headers = api_instance.get_pbx_addresses_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAddressesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_addresses_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxAddressesResponse**](ConversationPbxAddressesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_agent
+
+> <ConversationPbxAgentResponse> get_pbx_agent(conversation_pbx_agent_uuid)
+
+Get pbx agent
+
+Retrieve a pbx agent 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_agent_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAgentResponse>, Integer, Hash)> get_pbx_agent_with_http_info(conversation_pbx_agent_uuid)
+
+```ruby
+begin
+  # Get pbx agent
+  data, status_code, headers = api_instance.get_pbx_agent_with_http_info(conversation_pbx_agent_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAgentResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_agent_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_agent_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxAgentResponse**](ConversationPbxAgentResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_agent_voicemail
+
+> <ConversationPbxVoicemailMessageResponse> get_pbx_agent_voicemail(recording_sid)
+
+Get Agent Voicemail
+
+Retrieve pbx agent Voicemail 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_agent_voicemail_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxVoicemailMessageResponse>, Integer, Hash)> get_pbx_agent_voicemail_with_http_info(recording_sid)
+
+```ruby
+begin
+  # Get Agent Voicemail
+  data, status_code, headers = api_instance.get_pbx_agent_voicemail_with_http_info(recording_sid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxVoicemailMessageResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_agent_voicemail_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **recording_sid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxVoicemailMessageResponse**](ConversationPbxVoicemailMessageResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_agent_voicemails
+
+> <ConversationPbxVoicemailMessageSummariesResponse> get_pbx_agent_voicemails
+
+Get Agent Voicemails
+
+Retrieve pbx agent Voicemails 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_agent_voicemails_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxVoicemailMessageSummariesResponse>, Integer, Hash)> get_pbx_agent_voicemails_with_http_info
+
+```ruby
+begin
+  # Get Agent Voicemails
+  data, status_code, headers = api_instance.get_pbx_agent_voicemails_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxVoicemailMessageSummariesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_agent_voicemails_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxVoicemailMessageSummariesResponse**](ConversationPbxVoicemailMessageSummariesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_agents
+
+> <ConversationPbxAgentsResponse> get_pbx_agents
+
+Get pbx agents
+
+Retrieve pbx agents 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_agents_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAgentsResponse>, Integer, Hash)> get_pbx_agents_with_http_info
+
+```ruby
+begin
+  # Get pbx agents
+  data, status_code, headers = api_instance.get_pbx_agents_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAgentsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_agents_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxAgentsResponse**](ConversationPbxAgentsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_audio
+
+> <ConversationPbxAudioResponse> get_pbx_audio(conversation_pbx_audio_uuid)
+
+Get pbx audio
+
+Retrieve a pbx audio 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_audio_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudioResponse>, Integer, Hash)> get_pbx_audio_with_http_info(conversation_pbx_audio_uuid)
+
+```ruby
+begin
+  # Get pbx audio
+  data, status_code, headers = api_instance.get_pbx_audio_with_http_info(conversation_pbx_audio_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudioResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_audio_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_audio_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxAudioResponse**](ConversationPbxAudioResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_audio_usage
+
+> <ConversationPbxAudioUsageResponse> get_pbx_audio_usage(conversation_pbx_audio_uuid)
+
+Get pbx audio usage
+
+Retrieve a pbx audio usage 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_audio_usage_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudioUsageResponse>, Integer, Hash)> get_pbx_audio_usage_with_http_info(conversation_pbx_audio_uuid)
+
+```ruby
+begin
+  # Get pbx audio usage
+  data, status_code, headers = api_instance.get_pbx_audio_usage_with_http_info(conversation_pbx_audio_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudioUsageResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_audio_usage_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_audio_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxAudioUsageResponse**](ConversationPbxAudioUsageResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_audios
+
+> <ConversationPbxAudiosResponse> get_pbx_audios
+
+Get pbx audios
+
+Retrieve pbx audios 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_audios_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudiosResponse>, Integer, Hash)> get_pbx_audios_with_http_info
+
+```ruby
+begin
+  # Get pbx audios
+  data, status_code, headers = api_instance.get_pbx_audios_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudiosResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_audios_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxAudiosResponse**](ConversationPbxAudiosResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_call
+
+> <ConversationPbxCallResponse> get_pbx_call(call_uuid)
+
+Get pbx call record
+
+Retrieve a single PBX call record with full details 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_pbx_call_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxCallResponse>, Integer, Hash)> get_pbx_call_with_http_info(call_uuid)
+
+```ruby
+begin
+  # Get pbx call record
+  data, status_code, headers = api_instance.get_pbx_call_with_http_info(call_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxCallResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_call_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **call_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxCallResponse**](ConversationPbxCallResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_class_of_service
+
+> <ConversationPbxClassOfServiceResponse> get_pbx_class_of_service(class_of_service_uuid)
+
+Get pbx class of service
+
+Retrieve a single class of service 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_pbx_class_of_service_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxClassOfServiceResponse>, Integer, Hash)> get_pbx_class_of_service_with_http_info(class_of_service_uuid)
+
+```ruby
+begin
+  # Get pbx class of service
+  data, status_code, headers = api_instance.get_pbx_class_of_service_with_http_info(class_of_service_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxClassOfServiceResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_class_of_service_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **class_of_service_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxClassOfServiceResponse**](ConversationPbxClassOfServiceResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_classes_of_service
+
+> <ConversationPbxClassOfServicesResponse> get_pbx_classes_of_service
+
+Get pbx classes of service
+
+Retrieve all classes of service for the merchant 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_pbx_classes_of_service_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxClassOfServicesResponse>, Integer, Hash)> get_pbx_classes_of_service_with_http_info
+
+```ruby
+begin
+  # Get pbx classes of service
+  data, status_code, headers = api_instance.get_pbx_classes_of_service_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxClassOfServicesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_classes_of_service_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxClassOfServicesResponse**](ConversationPbxClassOfServicesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_cos_audit_logs
+
+> <ConversationPbxCosAuditLogsResponse> get_pbx_cos_audit_logs(opts)
+
+Get pbx class of service audit logs
+
+Retrieve audit log entries for class of service enforcement 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_pbx_cos_audit_logs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxCosAuditLogsResponse>, Integer, Hash)> get_pbx_cos_audit_logs_with_http_info(opts)
+
+```ruby
+begin
+  # Get pbx class of service audit logs
+  data, status_code, headers = api_instance.get_pbx_cos_audit_logs_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxCosAuditLogsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_cos_audit_logs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **since** | **String** | ISO timestamp to filter entries since | [optional] |
+| **agent_login** | **String** | Filter by agent login | [optional] |
+| **action** | **String** | Action | [optional] |
+| **limit** | **Integer** | Maximum number of entries to return (default 100) | [optional] |
+
+### Return type
+
+[**ConversationPbxCosAuditLogsResponse**](ConversationPbxCosAuditLogsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_default_timezone
+
+> <ConversationPbxDefaultTimezoneResponse> get_pbx_default_timezone
+
+Get the merchant default timezone
+
+Returns the merchant's stored default timezone (IANA name). Falls back to America/New_York when unset. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_pbx_default_timezone_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxDefaultTimezoneResponse>, Integer, Hash)> get_pbx_default_timezone_with_http_info
+
+```ruby
+begin
+  # Get the merchant default timezone
+  data, status_code, headers = api_instance.get_pbx_default_timezone_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxDefaultTimezoneResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_default_timezone_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxDefaultTimezoneResponse**](ConversationPbxDefaultTimezoneResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_hardware_phone
+
+> <ConversationPbxHardwarePhoneResponse> get_pbx_hardware_phone(conversation_pbx_hardware_phone_uuid)
+
+Get pbx hardware phone
+
+Retrieve a pbx hardware phone 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_pbx_hardware_phone_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxHardwarePhoneResponse>, Integer, Hash)> get_pbx_hardware_phone_with_http_info(conversation_pbx_hardware_phone_uuid)
+
+```ruby
+begin
+  # Get pbx hardware phone
+  data, status_code, headers = api_instance.get_pbx_hardware_phone_with_http_info(conversation_pbx_hardware_phone_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxHardwarePhoneResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_hardware_phone_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_hardware_phone_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxHardwarePhoneResponse**](ConversationPbxHardwarePhoneResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_hardware_phone_manufacturers
+
+> <ConversationPbxPhoneManufacturersResponse> get_pbx_hardware_phone_manufacturers
+
+Get pbx hardware phone manufacturers
+
+Retrieve pbx hardware phone manufacturers and models for auto-provisioning 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_pbx_hardware_phone_manufacturers_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxPhoneManufacturersResponse>, Integer, Hash)> get_pbx_hardware_phone_manufacturers_with_http_info
+
+```ruby
+begin
+  # Get pbx hardware phone manufacturers
+  data, status_code, headers = api_instance.get_pbx_hardware_phone_manufacturers_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxPhoneManufacturersResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_hardware_phone_manufacturers_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxPhoneManufacturersResponse**](ConversationPbxPhoneManufacturersResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_hardware_phones
+
+> <ConversationPbxHardwarePhonesResponse> get_pbx_hardware_phones
+
+Get pbx hardware phones
+
+Retrieve pbx hardware phones 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_pbx_hardware_phones_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxHardwarePhonesResponse>, Integer, Hash)> get_pbx_hardware_phones_with_http_info
+
+```ruby
+begin
+  # Get pbx hardware phones
+  data, status_code, headers = api_instance.get_pbx_hardware_phones_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxHardwarePhonesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_hardware_phones_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxHardwarePhonesResponse**](ConversationPbxHardwarePhonesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_menu
+
+> <ConversationPbxMenuResponse> get_pbx_menu(conversation_pbx_menu_uuid)
+
+Get pbx menu
+
+Retrieve a pbx menu 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_menu_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxMenuResponse>, Integer, Hash)> get_pbx_menu_with_http_info(conversation_pbx_menu_uuid)
+
+```ruby
+begin
+  # Get pbx menu
+  data, status_code, headers = api_instance.get_pbx_menu_with_http_info(conversation_pbx_menu_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxMenuResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_menu_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_menu_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxMenuResponse**](ConversationPbxMenuResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_menus
+
+> <ConversationPbxMenusResponse> get_pbx_menus
+
+Get pbx menus
+
+Retrieve pbx menus 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_menus_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxMenusResponse>, Integer, Hash)> get_pbx_menus_with_http_info
+
+```ruby
+begin
+  # Get pbx menus
+  data, status_code, headers = api_instance.get_pbx_menus_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxMenusResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_menus_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxMenusResponse**](ConversationPbxMenusResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_phone_number
+
+> <ConversationPbxPhoneNumberResponse> get_pbx_phone_number(conversation_pbx_phone_number_uuid)
+
+Get pbx phoneNumber
+
+Retrieve a pbx phoneNumber 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_phone_number_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxPhoneNumberResponse>, Integer, Hash)> get_pbx_phone_number_with_http_info(conversation_pbx_phone_number_uuid)
+
+```ruby
+begin
+  # Get pbx phoneNumber
+  data, status_code, headers = api_instance.get_pbx_phone_number_with_http_info(conversation_pbx_phone_number_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxPhoneNumberResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_phone_number_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_phone_number_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxPhoneNumberResponse**](ConversationPbxPhoneNumberResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_phone_numbers
+
+> <ConversationPbxPhoneNumbersResponse> get_pbx_phone_numbers
+
+Get pbx phoneNumbers
+
+Retrieve pbx phoneNumbers 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_phone_numbers_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxPhoneNumbersResponse>, Integer, Hash)> get_pbx_phone_numbers_with_http_info
+
+```ruby
+begin
+  # Get pbx phoneNumbers
+  data, status_code, headers = api_instance.get_pbx_phone_numbers_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxPhoneNumbersResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_phone_numbers_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxPhoneNumbersResponse**](ConversationPbxPhoneNumbersResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_queue
+
+> <ConversationPbxQueueResponse> get_pbx_queue(conversation_pbx_queue_uuid)
+
+Get pbx queue
+
+Retrieve a pbx queue 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_queue_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxQueueResponse>, Integer, Hash)> get_pbx_queue_with_http_info(conversation_pbx_queue_uuid)
+
+```ruby
+begin
+  # Get pbx queue
+  data, status_code, headers = api_instance.get_pbx_queue_with_http_info(conversation_pbx_queue_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxQueueResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_queue_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_queue_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxQueueResponse**](ConversationPbxQueueResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_queue_voicemail
+
+> <ConversationPbxVoicemailMessageResponse> get_pbx_queue_voicemail(queue_uuid, recording_sid)
+
+Get Queue Voicemail
+
+Retrieve pbx queue Voicemail 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_queue_voicemail_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxVoicemailMessageResponse>, Integer, Hash)> get_pbx_queue_voicemail_with_http_info(queue_uuid, recording_sid)
+
+```ruby
+begin
+  # Get Queue Voicemail
+  data, status_code, headers = api_instance.get_pbx_queue_voicemail_with_http_info(queue_uuid, recording_sid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxVoicemailMessageResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_queue_voicemail_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **queue_uuid** | **String** |  |  |
+| **recording_sid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxVoicemailMessageResponse**](ConversationPbxVoicemailMessageResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_queue_voicemails
+
+> <ConversationPbxVoicemailMessageSummariesResponse> get_pbx_queue_voicemails(queue_uuid)
+
+Get Queue Voicemails
+
+Retrieve pbx queue voicemails 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_queue_voicemails_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxVoicemailMessageSummariesResponse>, Integer, Hash)> get_pbx_queue_voicemails_with_http_info(queue_uuid)
+
+```ruby
+begin
+  # Get Queue Voicemails
+  data, status_code, headers = api_instance.get_pbx_queue_voicemails_with_http_info(queue_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxVoicemailMessageSummariesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_queue_voicemails_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **queue_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxVoicemailMessageSummariesResponse**](ConversationPbxVoicemailMessageSummariesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_queues
+
+> <ConversationPbxQueuesResponse> get_pbx_queues
+
+Get pbx queues
+
+Retrieve pbx queues 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_queues_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxQueuesResponse>, Integer, Hash)> get_pbx_queues_with_http_info
+
+```ruby
+begin
+  # Get pbx queues
+  data, status_code, headers = api_instance.get_pbx_queues_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxQueuesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_queues_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxQueuesResponse**](ConversationPbxQueuesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_time_based
+
+> <ConversationPbxTimeBasedResponse> get_pbx_time_based(conversation_pbx_time_based_uuid)
+
+Get pbx timeBased
+
+Retrieve a pbx timeBased 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_time_based_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxTimeBasedResponse>, Integer, Hash)> get_pbx_time_based_with_http_info(conversation_pbx_time_based_uuid)
+
+```ruby
+begin
+  # Get pbx timeBased
+  data, status_code, headers = api_instance.get_pbx_time_based_with_http_info(conversation_pbx_time_based_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxTimeBasedResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_time_based_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_time_based_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxTimeBasedResponse**](ConversationPbxTimeBasedResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_time_baseds
+
+> <ConversationPbxTimeBasedsResponse> get_pbx_time_baseds
+
+Get pbx timeBaseds
+
+Retrieve pbx timeBaseds 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_time_baseds_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxTimeBasedsResponse>, Integer, Hash)> get_pbx_time_baseds_with_http_info
+
+```ruby
+begin
+  # Get pbx timeBaseds
+  data, status_code, headers = api_instance.get_pbx_time_baseds_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxTimeBasedsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_time_baseds_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxTimeBasedsResponse**](ConversationPbxTimeBasedsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_time_range
+
+> <ConversationPbxTimeRangeResponse> get_pbx_time_range(conversation_pbx_time_range_uuid)
+
+Get pbx timeRange
+
+Retrieve a pbx timeRange 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_time_range_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxTimeRangeResponse>, Integer, Hash)> get_pbx_time_range_with_http_info(conversation_pbx_time_range_uuid)
+
+```ruby
+begin
+  # Get pbx timeRange
+  data, status_code, headers = api_instance.get_pbx_time_range_with_http_info(conversation_pbx_time_range_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxTimeRangeResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_time_range_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_time_range_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxTimeRangeResponse**](ConversationPbxTimeRangeResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_time_ranges
+
+> <ConversationPbxTimeRangesResponse> get_pbx_time_ranges
+
+Get pbx timeRanges
+
+Retrieve pbx timeRanges 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_time_ranges_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxTimeRangesResponse>, Integer, Hash)> get_pbx_time_ranges_with_http_info
+
+```ruby
+begin
+  # Get pbx timeRanges
+  data, status_code, headers = api_instance.get_pbx_time_ranges_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxTimeRangesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_time_ranges_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxTimeRangesResponse**](ConversationPbxTimeRangesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_voicemail_capabilities
+
+> <ConversationPbxVoicemailCapabilitiesResponse> get_pbx_voicemail_capabilities
+
+Get pbx voicemail capabilities
+
+Retrieve voicemail notification capabilities including available channels 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_pbx_voicemail_capabilities_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxVoicemailCapabilitiesResponse>, Integer, Hash)> get_pbx_voicemail_capabilities_with_http_info
+
+```ruby
+begin
+  # Get pbx voicemail capabilities
+  data, status_code, headers = api_instance.get_pbx_voicemail_capabilities_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxVoicemailCapabilitiesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_voicemail_capabilities_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxVoicemailCapabilitiesResponse**](ConversationPbxVoicemailCapabilitiesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_voicemail_mailbox
+
+> <ConversationPbxVoicemailMailboxResponse> get_pbx_voicemail_mailbox(conversation_pbx_voicemail_mailbox_uuid)
+
+Get pbx voicemailMailbox
+
+Retrieve a pbx voicemailMailbox 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_voicemail_mailbox_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxVoicemailMailboxResponse>, Integer, Hash)> get_pbx_voicemail_mailbox_with_http_info(conversation_pbx_voicemail_mailbox_uuid)
+
+```ruby
+begin
+  # Get pbx voicemailMailbox
+  data, status_code, headers = api_instance.get_pbx_voicemail_mailbox_with_http_info(conversation_pbx_voicemail_mailbox_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxVoicemailMailboxResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_voicemail_mailbox_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_voicemail_mailbox_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxVoicemailMailboxResponse**](ConversationPbxVoicemailMailboxResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_pbx_voicemail_mailboxes
+
+> <ConversationPbxVoicemailMailboxesResponse> get_pbx_voicemail_mailboxes
+
+Get pbx voicemailMailboxes
+
+Retrieve pbx voicemailMailboxes 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the get_pbx_voicemail_mailboxes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxVoicemailMailboxesResponse>, Integer, Hash)> get_pbx_voicemail_mailboxes_with_http_info
+
+```ruby
+begin
+  # Get pbx voicemailMailboxes
+  data, status_code, headers = api_instance.get_pbx_voicemail_mailboxes_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxVoicemailMailboxesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_pbx_voicemail_mailboxes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxVoicemailMailboxesResponse**](ConversationPbxVoicemailMailboxesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_user_pbx_audio
+
+> <ConversationPbxAudioResponse> get_user_pbx_audio(conversation_pbx_audio_uuid)
+
+Get user pbx audio
+
+Retrieve a pbx audio file owned by the authenticated user 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_user_pbx_audio_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudioResponse>, Integer, Hash)> get_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid)
+
+```ruby
+begin
+  # Get user pbx audio
+  data, status_code, headers = api_instance.get_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudioResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_user_pbx_audio_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_audio_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxAudioResponse**](ConversationPbxAudioResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_user_pbx_audios
+
+> <ConversationPbxAudiosResponse> get_user_pbx_audios
+
+Get user pbx audios
+
+Retrieve pbx audio files owned by the authenticated user 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_user_pbx_audios_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudiosResponse>, Integer, Hash)> get_user_pbx_audios_with_http_info
+
+```ruby
+begin
+  # Get user pbx audios
+  data, status_code, headers = api_instance.get_user_pbx_audios_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudiosResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_user_pbx_audios_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationPbxAudiosResponse**](ConversationPbxAudiosResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_virtual_agent_budget
+
+> <ConversationVirtualAgentBudgetResponse> get_virtual_agent_budget
+
+Get virtual agent budget
+
+Retrieve virtual agent budget 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_virtual_agent_budget_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationVirtualAgentBudgetResponse>, Integer, Hash)> get_virtual_agent_budget_with_http_info
+
+```ruby
+begin
+  # Get virtual agent budget
+  data, status_code, headers = api_instance.get_virtual_agent_budget_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationVirtualAgentBudgetResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_virtual_agent_budget_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationVirtualAgentBudgetResponse**](ConversationVirtualAgentBudgetResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_virtual_agent_capabilities
+
+> <ConversationVirtualAgentCapabilitiesResponse> get_virtual_agent_capabilities
+
+Get virtual agent capabilities
+
+Retrieve virtual agent capabilities 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_virtual_agent_capabilities_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationVirtualAgentCapabilitiesResponse>, Integer, Hash)> get_virtual_agent_capabilities_with_http_info
+
+```ruby
+begin
+  # Get virtual agent capabilities
+  data, status_code, headers = api_instance.get_virtual_agent_capabilities_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationVirtualAgentCapabilitiesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->get_virtual_agent_capabilities_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ConversationVirtualAgentCapabilitiesResponse**](ConversationVirtualAgentCapabilitiesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## insert_agent_profile_knowledge_base_document
+
+> <ConversationInsertKnowledgeBaseDocumentResponse> insert_agent_profile_knowledge_base_document(user_id, knowledge_base_document_request)
+
+Insert a knowledge base document
+
+Insert a knowledge base document 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_agent_profile_knowledge_base_document_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationInsertKnowledgeBaseDocumentResponse>, Integer, Hash)> insert_agent_profile_knowledge_base_document_with_http_info(user_id, knowledge_base_document_request)
+
+```ruby
+begin
+  # Insert a knowledge base document
+  data, status_code, headers = api_instance.insert_agent_profile_knowledge_base_document_with_http_info(user_id, knowledge_base_document_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationInsertKnowledgeBaseDocumentResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_agent_profile_knowledge_base_document_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+| **knowledge_base_document_request** | [**ConversationInsertKnowledgeBaseDocumentRequest**](ConversationInsertKnowledgeBaseDocumentRequest.md) | Insert request |  |
+
+### Return type
+
+[**ConversationInsertKnowledgeBaseDocumentResponse**](ConversationInsertKnowledgeBaseDocumentResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## insert_agent_profile_mcp
+
+> <ConversationMcpServerResponse> insert_agent_profile_mcp(user_id, mcp_server)
+
+Insert an agent MCP server
+
+Insert an agent MCP server 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_agent_profile_mcp_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationMcpServerResponse>, Integer, Hash)> insert_agent_profile_mcp_with_http_info(user_id, mcp_server)
+
+```ruby
+begin
+  # Insert an agent MCP server
+  data, status_code, headers = api_instance.insert_agent_profile_mcp_with_http_info(user_id, mcp_server)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationMcpServerResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_agent_profile_mcp_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+| **mcp_server** | [**ConversationMcpServer**](ConversationMcpServer.md) | MCP Server |  |
+
+### Return type
+
+[**ConversationMcpServerResponse**](ConversationMcpServerResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## insert_agent_status_config
+
+> <ConversationAgentStatusConfigResponse> insert_agent_status_config(status_config)
+
+Create a custom agent status
+
+Create a custom status. Enforces a 20-active-status-per-merchant cap and the 50-Twilio-Activity-per-workspace cap. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_agent_status_config_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAgentStatusConfigResponse>, Integer, Hash)> insert_agent_status_config_with_http_info(status_config)
+
+```ruby
+begin
+  # Create a custom agent status
+  data, status_code, headers = api_instance.insert_agent_status_config_with_http_info(status_config)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAgentStatusConfigResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_agent_status_config_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **status_config** | [**ConversationAgentStatusConfig**](ConversationAgentStatusConfig.md) | Status config |  |
+
+### Return type
+
+[**ConversationAgentStatusConfigResponse**](ConversationAgentStatusConfigResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## insert_conversation_canned_message
+
+> <ConversationCannedMessageResponse> insert_conversation_canned_message(canned_message)
+
+Insert a canned message
+
+Insert a canned message 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the insert_conversation_canned_message_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationCannedMessageResponse>, Integer, Hash)> insert_conversation_canned_message_with_http_info(canned_message)
+
+```ruby
+begin
+  # Insert a canned message
+  data, status_code, headers = api_instance.insert_conversation_canned_message_with_http_info(canned_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationCannedMessageResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_conversation_canned_message_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **canned_message** | [**ConversationCannedMessage**](ConversationCannedMessage.md) | Canned message |  |
+
+### Return type
+
+[**ConversationCannedMessageResponse**](ConversationCannedMessageResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## insert_conversation_department
+
+> <ConversationDepartmentResponse> insert_conversation_department(department)
+
+Insert a department
+
+Insert a department 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the insert_conversation_department_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationDepartmentResponse>, Integer, Hash)> insert_conversation_department_with_http_info(department)
+
+```ruby
+begin
+  # Insert a department
+  data, status_code, headers = api_instance.insert_conversation_department_with_http_info(department)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationDepartmentResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_conversation_department_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **department** | [**ConversationDepartment**](ConversationDepartment.md) | Department |  |
+
+### Return type
+
+[**ConversationDepartmentResponse**](ConversationDepartmentResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## insert_conversation_engagement
+
+> <ConversationEngagementResponse> insert_conversation_engagement(engagement)
+
+Insert a engagement
+
+Insert a engagement 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the insert_conversation_engagement_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationEngagementResponse>, Integer, Hash)> insert_conversation_engagement_with_http_info(engagement)
+
+```ruby
+begin
+  # Insert a engagement
+  data, status_code, headers = api_instance.insert_conversation_engagement_with_http_info(engagement)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationEngagementResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_conversation_engagement_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **engagement** | [**ConversationEngagement**](ConversationEngagement.md) | Engagement |  |
+
+### Return type
+
+[**ConversationEngagementResponse**](ConversationEngagementResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## insert_pbx_address
+
+> <ConversationPbxAddressResponse> insert_pbx_address(pbx_address)
+
+Insert pbx address
+
+Insert a pbx address 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_pbx_address_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAddressResponse>, Integer, Hash)> insert_pbx_address_with_http_info(pbx_address)
+
+```ruby
+begin
+  # Insert pbx address
+  data, status_code, headers = api_instance.insert_pbx_address_with_http_info(pbx_address)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAddressResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_pbx_address_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pbx_address** | [**ConversationPbxAddress**](ConversationPbxAddress.md) | Pbx Address |  |
+
+### Return type
+
+[**ConversationPbxAddressResponse**](ConversationPbxAddressResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## insert_pbx_audio
+
+> <ConversationPbxAudioResponse> insert_pbx_audio(pbx_audio)
+
+Insert pbx audio
+
+Insert a pbx audio 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the insert_pbx_audio_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudioResponse>, Integer, Hash)> insert_pbx_audio_with_http_info(pbx_audio)
+
+```ruby
+begin
+  # Insert pbx audio
+  data, status_code, headers = api_instance.insert_pbx_audio_with_http_info(pbx_audio)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudioResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_pbx_audio_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pbx_audio** | [**ConversationPbxAudio**](ConversationPbxAudio.md) | Pbx Audio |  |
+
+### Return type
+
+[**ConversationPbxAudioResponse**](ConversationPbxAudioResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## insert_pbx_class_of_service
+
+> <ConversationPbxClassOfServiceResponse> insert_pbx_class_of_service(class_of_service)
+
+Insert pbx class of service
+
+Create a new class of service 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_pbx_class_of_service_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxClassOfServiceResponse>, Integer, Hash)> insert_pbx_class_of_service_with_http_info(class_of_service)
+
+```ruby
+begin
+  # Insert pbx class of service
+  data, status_code, headers = api_instance.insert_pbx_class_of_service_with_http_info(class_of_service)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxClassOfServiceResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_pbx_class_of_service_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **class_of_service** | [**ConversationPbxClassOfService**](ConversationPbxClassOfService.md) | Class of service |  |
+
+### Return type
+
+[**ConversationPbxClassOfServiceResponse**](ConversationPbxClassOfServiceResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## insert_pbx_hardware_phone
+
+> <ConversationPbxHardwarePhoneResponse> insert_pbx_hardware_phone(pbx_hardware_phone)
+
+Insert pbx hardware phone
+
+Insert a pbx hardware phone 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_pbx_hardware_phone_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxHardwarePhoneResponse>, Integer, Hash)> insert_pbx_hardware_phone_with_http_info(pbx_hardware_phone)
+
+```ruby
+begin
+  # Insert pbx hardware phone
+  data, status_code, headers = api_instance.insert_pbx_hardware_phone_with_http_info(pbx_hardware_phone)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxHardwarePhoneResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_pbx_hardware_phone_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pbx_hardware_phone** | [**ConversationPbxHardwarePhone**](ConversationPbxHardwarePhone.md) | Pbx Hardware Phone |  |
+
+### Return type
+
+[**ConversationPbxHardwarePhoneResponse**](ConversationPbxHardwarePhoneResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## insert_pbx_menu
+
+> <ConversationPbxMenuResponse> insert_pbx_menu(pbx_menu)
+
+Insert pbx menu
+
+Insert a pbx menu 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the insert_pbx_menu_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxMenuResponse>, Integer, Hash)> insert_pbx_menu_with_http_info(pbx_menu)
+
+```ruby
+begin
+  # Insert pbx menu
+  data, status_code, headers = api_instance.insert_pbx_menu_with_http_info(pbx_menu)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxMenuResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_pbx_menu_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pbx_menu** | [**ConversationPbxMenu**](ConversationPbxMenu.md) | Pbx Menu |  |
+
+### Return type
+
+[**ConversationPbxMenuResponse**](ConversationPbxMenuResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## insert_pbx_queue
+
+> <ConversationPbxQueueResponse> insert_pbx_queue(pbx_queue)
+
+Insert pbx queue
+
+Insert a pbx queue 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the insert_pbx_queue_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxQueueResponse>, Integer, Hash)> insert_pbx_queue_with_http_info(pbx_queue)
+
+```ruby
+begin
+  # Insert pbx queue
+  data, status_code, headers = api_instance.insert_pbx_queue_with_http_info(pbx_queue)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxQueueResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_pbx_queue_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pbx_queue** | [**ConversationPbxQueue**](ConversationPbxQueue.md) | Pbx Queue |  |
+
+### Return type
+
+[**ConversationPbxQueueResponse**](ConversationPbxQueueResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## insert_pbx_time_based
+
+> <ConversationPbxTimeBasedResponse> insert_pbx_time_based(pbx_time_based)
+
+Insert pbx timeBased
+
+Insert a pbx timeBased 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the insert_pbx_time_based_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxTimeBasedResponse>, Integer, Hash)> insert_pbx_time_based_with_http_info(pbx_time_based)
+
+```ruby
+begin
+  # Insert pbx timeBased
+  data, status_code, headers = api_instance.insert_pbx_time_based_with_http_info(pbx_time_based)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxTimeBasedResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_pbx_time_based_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pbx_time_based** | [**ConversationPbxTimeBased**](ConversationPbxTimeBased.md) | Pbx TimeBased |  |
+
+### Return type
+
+[**ConversationPbxTimeBasedResponse**](ConversationPbxTimeBasedResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## insert_pbx_time_range
+
+> <ConversationPbxTimeRangeResponse> insert_pbx_time_range(pbx_time_range)
+
+Insert pbx timeRange
+
+Insert a pbx timeRange 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the insert_pbx_time_range_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxTimeRangeResponse>, Integer, Hash)> insert_pbx_time_range_with_http_info(pbx_time_range)
+
+```ruby
+begin
+  # Insert pbx timeRange
+  data, status_code, headers = api_instance.insert_pbx_time_range_with_http_info(pbx_time_range)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxTimeRangeResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_pbx_time_range_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pbx_time_range** | [**ConversationPbxTimeRange**](ConversationPbxTimeRange.md) | Pbx TimeRange |  |
+
+### Return type
+
+[**ConversationPbxTimeRangeResponse**](ConversationPbxTimeRangeResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## insert_pbx_voicemail_mailbox
+
+> <ConversationPbxVoicemailMailboxResponse> insert_pbx_voicemail_mailbox(pbx_voicemail_mailbox)
+
+Insert pbx voicemailMailbox
+
+Insert a pbx voicemailMailbox 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the insert_pbx_voicemail_mailbox_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxVoicemailMailboxResponse>, Integer, Hash)> insert_pbx_voicemail_mailbox_with_http_info(pbx_voicemail_mailbox)
+
+```ruby
+begin
+  # Insert pbx voicemailMailbox
+  data, status_code, headers = api_instance.insert_pbx_voicemail_mailbox_with_http_info(pbx_voicemail_mailbox)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxVoicemailMailboxResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_pbx_voicemail_mailbox_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pbx_voicemail_mailbox** | [**ConversationPbxVoicemailMailbox**](ConversationPbxVoicemailMailbox.md) | Pbx VoicemailMailbox |  |
+
+### Return type
+
+[**ConversationPbxVoicemailMailboxResponse**](ConversationPbxVoicemailMailboxResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## insert_user_pbx_audio
+
+> <ConversationPbxAudioResponse> insert_user_pbx_audio(pbx_audio)
+
+Insert user pbx audio
+
+Insert a pbx audio file for the authenticated user 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_user_pbx_audio_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudioResponse>, Integer, Hash)> insert_user_pbx_audio_with_http_info(pbx_audio)
+
+```ruby
+begin
+  # Insert user pbx audio
+  data, status_code, headers = api_instance.insert_user_pbx_audio_with_http_info(pbx_audio)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudioResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->insert_user_pbx_audio_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pbx_audio** | [**ConversationPbxAudio**](ConversationPbxAudio.md) | Pbx Audio |  |
+
+### Return type
+
+[**ConversationPbxAudioResponse**](ConversationPbxAudioResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## join_conversation
+
+> join_conversation(conversation_uuid, opts)
+
+Join a conversation
+
+Join a conversation 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the join_conversation_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> join_conversation_with_http_info(conversation_uuid, opts)
+
+```ruby
+begin
+  # Join a conversation
+  data, status_code, headers = api_instance.join_conversation_with_http_info(conversation_uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->join_conversation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_uuid** | **String** |  |  |
+| **join_request** | [**ConversationJoinRequest**](ConversationJoinRequest.md) | Join request | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## leave_conversation
+
+> leave_conversation(conversation_uuid)
+
+Leave a conversation
+
+Leave a conversation 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the leave_conversation_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> leave_conversation_with_http_info(conversation_uuid)
+
+```ruby
+begin
+  # Leave a conversation
+  data, status_code, headers = api_instance.leave_conversation_with_http_info(conversation_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->leave_conversation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_uuid** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## listened_pbx_agent_voicemail
+
+> listened_pbx_agent_voicemail(recording_sid)
+
+Listened Agent Voicemail
+
+Listened pbx agent Voicemail 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the listened_pbx_agent_voicemail_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> listened_pbx_agent_voicemail_with_http_info(recording_sid)
+
+```ruby
+begin
+  # Listened Agent Voicemail
+  data, status_code, headers = api_instance.listened_pbx_agent_voicemail_with_http_info(recording_sid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->listened_pbx_agent_voicemail_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **recording_sid** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## listened_pbx_queue_voicemail
+
+> listened_pbx_queue_voicemail(queue_uuid, recording_sid)
+
+Listened Queue Voicemail
+
+Listened pbx queue Voicemail 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the listened_pbx_queue_voicemail_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> listened_pbx_queue_voicemail_with_http_info(queue_uuid, recording_sid)
+
+```ruby
+begin
+  # Listened Queue Voicemail
+  data, status_code, headers = api_instance.listened_pbx_queue_voicemail_with_http_info(queue_uuid, recording_sid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->listened_pbx_queue_voicemail_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **queue_uuid** | **String** |  |  |
+| **recording_sid** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## mark_read_conversation
+
+> mark_read_conversation(conversation_uuid)
+
+Mark a conversation as read
+
+Mark a conversation as read 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the mark_read_conversation_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> mark_read_conversation_with_http_info(conversation_uuid)
+
+```ruby
+begin
+  # Mark a conversation as read
+  data, status_code, headers = api_instance.mark_read_conversation_with_http_info(conversation_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->mark_read_conversation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_uuid** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## protect_pbx_phone_number
+
+> <ConversationPbxPhoneNumberResponse> protect_pbx_phone_number(conversation_pbx_phone_number_uuid)
+
+Protect pbx phoneNumber from deletion
+
+Protect a pbx phoneNumber from deletion. This is a one-way operation and cannot be undone through the API. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the protect_pbx_phone_number_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxPhoneNumberResponse>, Integer, Hash)> protect_pbx_phone_number_with_http_info(conversation_pbx_phone_number_uuid)
+
+```ruby
+begin
+  # Protect pbx phoneNumber from deletion
+  data, status_code, headers = api_instance.protect_pbx_phone_number_with_http_info(conversation_pbx_phone_number_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxPhoneNumberResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->protect_pbx_phone_number_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_phone_number_uuid** | **String** |  |  |
+
+### Return type
+
+[**ConversationPbxPhoneNumberResponse**](ConversationPbxPhoneNumberResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## purchase_pbx_phone_number
+
+> <ConversationPbxPhoneNumberResponse> purchase_pbx_phone_number(phone_number_purchase_request)
+
+Purchase pbx phone number
+
+Purchase a phone number from Twilio. The phone_number must be from the available phone number search results. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the purchase_pbx_phone_number_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxPhoneNumberResponse>, Integer, Hash)> purchase_pbx_phone_number_with_http_info(phone_number_purchase_request)
+
+```ruby
+begin
+  # Purchase pbx phone number
+  data, status_code, headers = api_instance.purchase_pbx_phone_number_with_http_info(phone_number_purchase_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxPhoneNumberResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->purchase_pbx_phone_number_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **phone_number_purchase_request** | [**ConversationPbxPhoneNumberPurchaseRequest**](ConversationPbxPhoneNumberPurchaseRequest.md) | Phone number purchase request |  |
+
+### Return type
+
+[**ConversationPbxPhoneNumberResponse**](ConversationPbxPhoneNumberResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## regenerate_password_for_pbx_hardware_phone
+
+> <ConversationPbxHardwarePhoneResponse> regenerate_password_for_pbx_hardware_phone(conversation_pbx_hardware_phone_uuid, pbx_hardware_phone)
+
+Update pbx hardware phone
+
+Update a pbx hardware phone 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the regenerate_password_for_pbx_hardware_phone_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxHardwarePhoneResponse>, Integer, Hash)> regenerate_password_for_pbx_hardware_phone_with_http_info(conversation_pbx_hardware_phone_uuid, pbx_hardware_phone)
+
+```ruby
+begin
+  # Update pbx hardware phone
+  data, status_code, headers = api_instance.regenerate_password_for_pbx_hardware_phone_with_http_info(conversation_pbx_hardware_phone_uuid, pbx_hardware_phone)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxHardwarePhoneResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->regenerate_password_for_pbx_hardware_phone_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_hardware_phone_uuid** | **String** |  |  |
+| **pbx_hardware_phone** | [**ConversationPbxHardwarePhone**](ConversationPbxHardwarePhone.md) | Pbx Hardware Phone |  |
+
+### Return type
+
+[**ConversationPbxHardwarePhoneResponse**](ConversationPbxHardwarePhoneResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## reset_conversation_pbx_queue_statistics
+
+> reset_conversation_pbx_queue_statistics(queue_uuid)
+
+reset statistics within the queue
+
+reset statistics within the queue 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the reset_conversation_pbx_queue_statistics_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> reset_conversation_pbx_queue_statistics_with_http_info(queue_uuid)
+
+```ruby
+begin
+  # reset statistics within the queue
+  data, status_code, headers = api_instance.reset_conversation_pbx_queue_statistics_with_http_info(queue_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->reset_conversation_pbx_queue_statistics_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **queue_uuid** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## search_agent_status_history
+
+> <ConversationAgentStatusHistorySearchResponse> search_agent_status_history(search_request, opts)
+
+Search agent status history
+
+Paginated search over conversation_agent_status_events_all. Filters: agent_user_id, channel, status, trigger, date range. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the search_agent_status_history_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAgentStatusHistorySearchResponse>, Integer, Hash)> search_agent_status_history_with_http_info(search_request, opts)
+
+```ruby
+begin
+  # Search agent status history
+  data, status_code, headers = api_instance.search_agent_status_history_with_http_info(search_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAgentStatusHistorySearchResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->search_agent_status_history_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **search_request** | [**ConversationAgentStatusHistorySearchRequest**](ConversationAgentStatusHistorySearchRequest.md) | Search request |  |
+| **_limit** | **Integer** | Maximum records per call (max 200) | [optional][default to 100] |
+| **_offset** | **Integer** | Pagination offset (zero-based) | [optional][default to 0] |
+
+### Return type
+
+[**ConversationAgentStatusHistorySearchResponse**](ConversationAgentStatusHistorySearchResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## search_agent_status_rollups
+
+> <ConversationAgentStatusRollupSearchResponse> search_agent_status_rollups(search_request)
+
+Search per-(agent, day) rollups
+
+Aggregated over conversation_agent_status_events_all via date_histogram + terms. Returns one row per (agent, day, channel). 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the search_agent_status_rollups_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAgentStatusRollupSearchResponse>, Integer, Hash)> search_agent_status_rollups_with_http_info(search_request)
+
+```ruby
+begin
+  # Search per-(agent, day) rollups
+  data, status_code, headers = api_instance.search_agent_status_rollups_with_http_info(search_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAgentStatusRollupSearchResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->search_agent_status_rollups_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **search_request** | [**ConversationAgentStatusRollupSearchRequest**](ConversationAgentStatusRollupSearchRequest.md) | Search request |  |
+
+### Return type
+
+[**ConversationAgentStatusRollupSearchResponse**](ConversationAgentStatusRollupSearchResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## search_conversation_canned_messages
+
+> <ConversationCannedMessagesResponse> search_conversation_canned_messages(search_request)
+
+Search for canned messages by short_code
+
+Search for canned messages by short_code 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the search_conversation_canned_messages_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationCannedMessagesResponse>, Integer, Hash)> search_conversation_canned_messages_with_http_info(search_request)
+
+```ruby
+begin
+  # Search for canned messages by short_code
+  data, status_code, headers = api_instance.search_conversation_canned_messages_with_http_info(search_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationCannedMessagesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->search_conversation_canned_messages_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **search_request** | [**ConversationCannedMessagesSearch**](ConversationCannedMessagesSearch.md) | Search request |  |
+
+### Return type
+
+[**ConversationCannedMessagesResponse**](ConversationCannedMessagesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## search_pbx_available_phone_numbers
+
+> <ConversationPbxAvailablePhoneNumbersResponse> search_pbx_available_phone_numbers(country, opts)
+
+Search for available phone numbers
+
+Search for available phone numbers from Twilio that can be purchased 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the search_pbx_available_phone_numbers_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAvailablePhoneNumbersResponse>, Integer, Hash)> search_pbx_available_phone_numbers_with_http_info(country, opts)
+
+```ruby
+begin
+  # Search for available phone numbers
+  data, status_code, headers = api_instance.search_pbx_available_phone_numbers_with_http_info(country, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAvailablePhoneNumbersResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->search_pbx_available_phone_numbers_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **country** | **String** | ISO country code (e.g., US, CA, GB) |  |
+| **area_code** | **String** | Area code filter (e.g., 614) | [optional] |
+| **contains** | **String** | Pattern to match (e.g., 555, *PIZZA) | [optional] |
+| **sms_enabled** | **Boolean** | Filter for SMS capability | [optional] |
+| **voice_enabled** | **Boolean** | Filter for voice capability | [optional] |
+| **type** | **String** | Phone number type | [optional] |
+| **limit** | **Integer** | Max results (default 20, max 100) | [optional] |
+
+### Return type
+
+[**ConversationPbxAvailablePhoneNumbersResponse**](ConversationPbxAvailablePhoneNumbersResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## search_pbx_calls
+
+> <ConversationPbxCallSearchResponse> search_pbx_calls(search_request, opts)
+
+Search pbx call records
+
+Search and list PBX call records with filtering, sorting, and pagination 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the search_pbx_calls_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxCallSearchResponse>, Integer, Hash)> search_pbx_calls_with_http_info(search_request, opts)
+
+```ruby
+begin
+  # Search pbx call records
+  data, status_code, headers = api_instance.search_pbx_calls_with_http_info(search_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxCallSearchResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->search_pbx_calls_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **search_request** | [**ConversationPbxCallSearchRequest**](ConversationPbxCallSearchRequest.md) | Search Request |  |
+| **_limit** | **Integer** | The maximum number of records to return on this one API call. (Maximum 200) | [optional][default to 100] |
+| **_offset** | **Integer** | Pagination of the record set.  Offset is a zero based index. | [optional][default to 0] |
+| **_sort** | **String** | The sort order of the calls. | [optional] |
+
+### Return type
+
+[**ConversationPbxCallSearchResponse**](ConversationPbxCallSearchResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## sms_unsubscribe_conversation
+
+> sms_unsubscribe_conversation(conversation_uuid)
+
+Unsubscribe any SMS participants in this conversation
+
+Unsubscribe any SMS participants in this conversation 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the sms_unsubscribe_conversation_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> sms_unsubscribe_conversation_with_http_info(conversation_uuid)
+
+```ruby
+begin
+  # Unsubscribe any SMS participants in this conversation
+  data, status_code, headers = api_instance.sms_unsubscribe_conversation_with_http_info(conversation_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->sms_unsubscribe_conversation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_uuid** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## start_conversation
+
+> <ConversationStartResponse> start_conversation(start_request)
+
+Start a conversation
+
+Start a new conversation 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the start_conversation_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationStartResponse>, Integer, Hash)> start_conversation_with_http_info(start_request)
+
+```ruby
+begin
+  # Start a conversation
+  data, status_code, headers = api_instance.start_conversation_with_http_info(start_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationStartResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->start_conversation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **start_request** | [**ConversationStartRequest**](ConversationStartRequest.md) | Start request |  |
+
+### Return type
+
+[**ConversationStartResponse**](ConversationStartResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_agent_profile
+
+> <ConversationAgentProfileResponse> update_agent_profile(profile_request)
+
+Update agent profile
+
+Update agent profile 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the update_agent_profile_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAgentProfileResponse>, Integer, Hash)> update_agent_profile_with_http_info(profile_request)
+
+```ruby
+begin
+  # Update agent profile
+  data, status_code, headers = api_instance.update_agent_profile_with_http_info(profile_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAgentProfileResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_agent_profile_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **profile_request** | [**ConversationAgentProfile**](ConversationAgentProfile.md) | Profile request |  |
+
+### Return type
+
+[**ConversationAgentProfileResponse**](ConversationAgentProfileResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_agent_profile_mcp
+
+> <ConversationMcpServerResponse> update_agent_profile_mcp(user_id, mcp_server_uuid, mcp_server)
+
+Update an agent MCP server
+
+Update an agent MCP server 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_agent_profile_mcp_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationMcpServerResponse>, Integer, Hash)> update_agent_profile_mcp_with_http_info(user_id, mcp_server_uuid, mcp_server)
+
+```ruby
+begin
+  # Update an agent MCP server
+  data, status_code, headers = api_instance.update_agent_profile_mcp_with_http_info(user_id, mcp_server_uuid, mcp_server)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationMcpServerResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_agent_profile_mcp_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+| **mcp_server_uuid** | **String** |  |  |
+| **mcp_server** | [**ConversationMcpServer**](ConversationMcpServer.md) | MCP Server |  |
+
+### Return type
+
+[**ConversationMcpServerResponse**](ConversationMcpServerResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_agent_status_config
+
+> <ConversationAgentStatusConfigResponse> update_agent_status_config(conversation_status_uuid, status_config)
+
+Update a custom agent status
+
+Update a custom status. Renaming flows through to the Twilio Activity. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_agent_status_config_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAgentStatusConfigResponse>, Integer, Hash)> update_agent_status_config_with_http_info(conversation_status_uuid, status_config)
+
+```ruby
+begin
+  # Update a custom agent status
+  data, status_code, headers = api_instance.update_agent_status_config_with_http_info(conversation_status_uuid, status_config)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAgentStatusConfigResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_agent_status_config_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_status_uuid** | **String** |  |  |
+| **status_config** | [**ConversationAgentStatusConfig**](ConversationAgentStatusConfig.md) | Status config |  |
+
+### Return type
+
+[**ConversationAgentStatusConfigResponse**](ConversationAgentStatusConfigResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_conversation_canned_message
+
+> <ConversationCannedMessageResponse> update_conversation_canned_message(conversation_canned_message_oid, canned_message)
+
+Update a canned message
+
+Update a canned message 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the update_conversation_canned_message_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationCannedMessageResponse>, Integer, Hash)> update_conversation_canned_message_with_http_info(conversation_canned_message_oid, canned_message)
+
+```ruby
+begin
+  # Update a canned message
+  data, status_code, headers = api_instance.update_conversation_canned_message_with_http_info(conversation_canned_message_oid, canned_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationCannedMessageResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_conversation_canned_message_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_canned_message_oid** | **Integer** |  |  |
+| **canned_message** | [**ConversationCannedMessage**](ConversationCannedMessage.md) | Canned message |  |
+
+### Return type
+
+[**ConversationCannedMessageResponse**](ConversationCannedMessageResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_conversation_department
+
+> <ConversationDepartmentResponse> update_conversation_department(conversation_department_oid, department)
+
+Update a department
+
+Update a department 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the update_conversation_department_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationDepartmentResponse>, Integer, Hash)> update_conversation_department_with_http_info(conversation_department_oid, department)
+
+```ruby
+begin
+  # Update a department
+  data, status_code, headers = api_instance.update_conversation_department_with_http_info(conversation_department_oid, department)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationDepartmentResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_conversation_department_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_department_oid** | **Integer** |  |  |
+| **department** | [**ConversationDepartment**](ConversationDepartment.md) | Department |  |
+
+### Return type
+
+[**ConversationDepartmentResponse**](ConversationDepartmentResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_conversation_engagement
+
+> <ConversationEngagementResponse> update_conversation_engagement(conversation_engagement_oid, engagement)
+
+Update a engagement
+
+Update a engagement 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the update_conversation_engagement_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationEngagementResponse>, Integer, Hash)> update_conversation_engagement_with_http_info(conversation_engagement_oid, engagement)
+
+```ruby
+begin
+  # Update a engagement
+  data, status_code, headers = api_instance.update_conversation_engagement_with_http_info(conversation_engagement_oid, engagement)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationEngagementResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_conversation_engagement_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_engagement_oid** | **Integer** |  |  |
+| **engagement** | [**ConversationEngagement**](ConversationEngagement.md) | Engagement |  |
+
+### Return type
+
+[**ConversationEngagementResponse**](ConversationEngagementResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_conversation_webchat_queue_status
+
+> update_conversation_webchat_queue_status(queue_name, status_request)
+
+Update status within the queue
+
+Update status within the queue 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the update_conversation_webchat_queue_status_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> update_conversation_webchat_queue_status_with_http_info(queue_name, status_request)
+
+```ruby
+begin
+  # Update status within the queue
+  data, status_code, headers = api_instance.update_conversation_webchat_queue_status_with_http_info(queue_name, status_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_conversation_webchat_queue_status_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **queue_name** | **String** |  |  |
+| **status_request** | [**ConversationWebchatQueueStatusUpdateRequest**](ConversationWebchatQueueStatusUpdateRequest.md) | Status request |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_pbx_address
+
+> <ConversationPbxAddressResponse> update_pbx_address(conversation_pbx_address_uuid, pbx_address)
+
+Update pbx address
+
+Update a pbx address 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_pbx_address_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAddressResponse>, Integer, Hash)> update_pbx_address_with_http_info(conversation_pbx_address_uuid, pbx_address)
+
+```ruby
+begin
+  # Update pbx address
+  data, status_code, headers = api_instance.update_pbx_address_with_http_info(conversation_pbx_address_uuid, pbx_address)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAddressResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_pbx_address_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_address_uuid** | **String** |  |  |
+| **pbx_address** | [**ConversationPbxAddress**](ConversationPbxAddress.md) | Pbx Address |  |
+
+### Return type
+
+[**ConversationPbxAddressResponse**](ConversationPbxAddressResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_pbx_agent
+
+> <ConversationPbxAgentResponse> update_pbx_agent(conversation_pbx_agent_uuid, pbx_agent)
+
+Update pbx agent
+
+Update a pbx agent 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the update_pbx_agent_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAgentResponse>, Integer, Hash)> update_pbx_agent_with_http_info(conversation_pbx_agent_uuid, pbx_agent)
+
+```ruby
+begin
+  # Update pbx agent
+  data, status_code, headers = api_instance.update_pbx_agent_with_http_info(conversation_pbx_agent_uuid, pbx_agent)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAgentResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_pbx_agent_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_agent_uuid** | **String** |  |  |
+| **pbx_agent** | [**ConversationPbxAgent**](ConversationPbxAgent.md) | Pbx Agent |  |
+
+### Return type
+
+[**ConversationPbxAgentResponse**](ConversationPbxAgentResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_pbx_audio
+
+> <ConversationPbxAudioResponse> update_pbx_audio(conversation_pbx_audio_uuid, pbx_audio)
+
+Update pbx audio
+
+Update a pbx audio 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the update_pbx_audio_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudioResponse>, Integer, Hash)> update_pbx_audio_with_http_info(conversation_pbx_audio_uuid, pbx_audio)
+
+```ruby
+begin
+  # Update pbx audio
+  data, status_code, headers = api_instance.update_pbx_audio_with_http_info(conversation_pbx_audio_uuid, pbx_audio)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudioResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_pbx_audio_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_audio_uuid** | **String** |  |  |
+| **pbx_audio** | [**ConversationPbxAudio**](ConversationPbxAudio.md) | Pbx Audio |  |
+
+### Return type
+
+[**ConversationPbxAudioResponse**](ConversationPbxAudioResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_pbx_call
+
+> <ConversationPbxCallResponse> update_pbx_call(call_uuid, update_request)
+
+Update pbx call record
+
+Update the agent-authored fields (notes, finalize) on a PBX call record 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_pbx_call_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxCallResponse>, Integer, Hash)> update_pbx_call_with_http_info(call_uuid, update_request)
+
+```ruby
+begin
+  # Update pbx call record
+  data, status_code, headers = api_instance.update_pbx_call_with_http_info(call_uuid, update_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxCallResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_pbx_call_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **call_uuid** | **String** |  |  |
+| **update_request** | [**ConversationPbxCallUpdateRequest**](ConversationPbxCallUpdateRequest.md) | Update Request |  |
+
+### Return type
+
+[**ConversationPbxCallResponse**](ConversationPbxCallResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_pbx_class_of_service
+
+> <ConversationPbxClassOfServiceResponse> update_pbx_class_of_service(class_of_service_uuid, class_of_service)
+
+Update pbx class of service
+
+Update an existing class of service 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_pbx_class_of_service_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxClassOfServiceResponse>, Integer, Hash)> update_pbx_class_of_service_with_http_info(class_of_service_uuid, class_of_service)
+
+```ruby
+begin
+  # Update pbx class of service
+  data, status_code, headers = api_instance.update_pbx_class_of_service_with_http_info(class_of_service_uuid, class_of_service)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxClassOfServiceResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_pbx_class_of_service_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **class_of_service_uuid** | **String** |  |  |
+| **class_of_service** | [**ConversationPbxClassOfService**](ConversationPbxClassOfService.md) | Class of service |  |
+
+### Return type
+
+[**ConversationPbxClassOfServiceResponse**](ConversationPbxClassOfServiceResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_pbx_default_timezone
+
+> <ConversationPbxDefaultTimezoneResponse> update_pbx_default_timezone(timezone_update)
+
+Set the merchant default timezone
+
+Persists the IANA timezone on the Config#<merchant_id>/default DDB record (creates on first PUT). 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_pbx_default_timezone_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxDefaultTimezoneResponse>, Integer, Hash)> update_pbx_default_timezone_with_http_info(timezone_update)
+
+```ruby
+begin
+  # Set the merchant default timezone
+  data, status_code, headers = api_instance.update_pbx_default_timezone_with_http_info(timezone_update)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxDefaultTimezoneResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_pbx_default_timezone_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **timezone_update** | [**ConversationPbxDefaultTimezoneUpdateRequest**](ConversationPbxDefaultTimezoneUpdateRequest.md) | Timezone update |  |
+
+### Return type
+
+[**ConversationPbxDefaultTimezoneResponse**](ConversationPbxDefaultTimezoneResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_pbx_hardware_phone
+
+> <ConversationPbxHardwarePhoneResponse> update_pbx_hardware_phone(conversation_pbx_hardware_phone_uuid, pbx_hardware_phone)
+
+Update pbx hardware phone
+
+Update a pbx hardware phone 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_pbx_hardware_phone_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxHardwarePhoneResponse>, Integer, Hash)> update_pbx_hardware_phone_with_http_info(conversation_pbx_hardware_phone_uuid, pbx_hardware_phone)
+
+```ruby
+begin
+  # Update pbx hardware phone
+  data, status_code, headers = api_instance.update_pbx_hardware_phone_with_http_info(conversation_pbx_hardware_phone_uuid, pbx_hardware_phone)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxHardwarePhoneResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_pbx_hardware_phone_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_hardware_phone_uuid** | **String** |  |  |
+| **pbx_hardware_phone** | [**ConversationPbxHardwarePhone**](ConversationPbxHardwarePhone.md) | Pbx Hardware Phone |  |
+
+### Return type
+
+[**ConversationPbxHardwarePhoneResponse**](ConversationPbxHardwarePhoneResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_pbx_menu
+
+> <ConversationPbxMenuResponse> update_pbx_menu(conversation_pbx_menu_uuid, pbx_menu)
+
+Update pbx menu
+
+Update a pbx menu 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the update_pbx_menu_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxMenuResponse>, Integer, Hash)> update_pbx_menu_with_http_info(conversation_pbx_menu_uuid, pbx_menu)
+
+```ruby
+begin
+  # Update pbx menu
+  data, status_code, headers = api_instance.update_pbx_menu_with_http_info(conversation_pbx_menu_uuid, pbx_menu)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxMenuResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_pbx_menu_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_menu_uuid** | **String** |  |  |
+| **pbx_menu** | [**ConversationPbxMenu**](ConversationPbxMenu.md) | Pbx Menu |  |
+
+### Return type
+
+[**ConversationPbxMenuResponse**](ConversationPbxMenuResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_pbx_phone_number
+
+> <ConversationPbxPhoneNumberResponse> update_pbx_phone_number(conversation_pbx_phone_number_uuid, pbx_phone_number)
+
+Update pbx phoneNumber
+
+Update a pbx phoneNumber 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the update_pbx_phone_number_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxPhoneNumberResponse>, Integer, Hash)> update_pbx_phone_number_with_http_info(conversation_pbx_phone_number_uuid, pbx_phone_number)
+
+```ruby
+begin
+  # Update pbx phoneNumber
+  data, status_code, headers = api_instance.update_pbx_phone_number_with_http_info(conversation_pbx_phone_number_uuid, pbx_phone_number)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxPhoneNumberResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_pbx_phone_number_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_phone_number_uuid** | **String** |  |  |
+| **pbx_phone_number** | [**ConversationPbxPhoneNumber**](ConversationPbxPhoneNumber.md) | Pbx PhoneNumber |  |
+
+### Return type
+
+[**ConversationPbxPhoneNumberResponse**](ConversationPbxPhoneNumberResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_pbx_queue
+
+> <ConversationPbxQueueResponse> update_pbx_queue(conversation_pbx_queue_uuid, pbx_queue)
+
+Update pbx queue
+
+Update a pbx queue 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the update_pbx_queue_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxQueueResponse>, Integer, Hash)> update_pbx_queue_with_http_info(conversation_pbx_queue_uuid, pbx_queue)
+
+```ruby
+begin
+  # Update pbx queue
+  data, status_code, headers = api_instance.update_pbx_queue_with_http_info(conversation_pbx_queue_uuid, pbx_queue)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxQueueResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_pbx_queue_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_queue_uuid** | **String** |  |  |
+| **pbx_queue** | [**ConversationPbxQueue**](ConversationPbxQueue.md) | Pbx Queue |  |
+
+### Return type
+
+[**ConversationPbxQueueResponse**](ConversationPbxQueueResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_pbx_time_based
+
+> <ConversationPbxTimeBasedResponse> update_pbx_time_based(conversation_pbx_time_based_uuid, pbx_time_based)
+
+Update pbx timeBased
+
+Update a pbx timeBased 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the update_pbx_time_based_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxTimeBasedResponse>, Integer, Hash)> update_pbx_time_based_with_http_info(conversation_pbx_time_based_uuid, pbx_time_based)
+
+```ruby
+begin
+  # Update pbx timeBased
+  data, status_code, headers = api_instance.update_pbx_time_based_with_http_info(conversation_pbx_time_based_uuid, pbx_time_based)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxTimeBasedResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_pbx_time_based_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_time_based_uuid** | **String** |  |  |
+| **pbx_time_based** | [**ConversationPbxTimeBased**](ConversationPbxTimeBased.md) | Pbx TimeBased |  |
+
+### Return type
+
+[**ConversationPbxTimeBasedResponse**](ConversationPbxTimeBasedResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_pbx_time_range
+
+> <ConversationPbxTimeRangeResponse> update_pbx_time_range(conversation_pbx_time_range_uuid, pbx_time_range)
+
+Update pbx timeRange
+
+Update a pbx timeRange 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the update_pbx_time_range_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxTimeRangeResponse>, Integer, Hash)> update_pbx_time_range_with_http_info(conversation_pbx_time_range_uuid, pbx_time_range)
+
+```ruby
+begin
+  # Update pbx timeRange
+  data, status_code, headers = api_instance.update_pbx_time_range_with_http_info(conversation_pbx_time_range_uuid, pbx_time_range)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxTimeRangeResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_pbx_time_range_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_time_range_uuid** | **String** |  |  |
+| **pbx_time_range** | [**ConversationPbxTimeRange**](ConversationPbxTimeRange.md) | Pbx TimeRange |  |
+
+### Return type
+
+[**ConversationPbxTimeRangeResponse**](ConversationPbxTimeRangeResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_pbx_voicemail_mailbox
+
+> <ConversationPbxVoicemailMailboxResponse> update_pbx_voicemail_mailbox(conversation_pbx_voicemail_mailbox_uuid, pbx_voicemail_mailbox)
+
+Update pbx voicemailMailbox
+
+Update a pbx voicemailMailbox 
+
+
+### Examples
+
+```ruby
+# Internal API.  No samples are provided as merchants will never need this api method
+```
+
+
+#### Using the update_pbx_voicemail_mailbox_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxVoicemailMailboxResponse>, Integer, Hash)> update_pbx_voicemail_mailbox_with_http_info(conversation_pbx_voicemail_mailbox_uuid, pbx_voicemail_mailbox)
+
+```ruby
+begin
+  # Update pbx voicemailMailbox
+  data, status_code, headers = api_instance.update_pbx_voicemail_mailbox_with_http_info(conversation_pbx_voicemail_mailbox_uuid, pbx_voicemail_mailbox)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxVoicemailMailboxResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_pbx_voicemail_mailbox_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_voicemail_mailbox_uuid** | **String** |  |  |
+| **pbx_voicemail_mailbox** | [**ConversationPbxVoicemailMailbox**](ConversationPbxVoicemailMailbox.md) | Pbx VoicemailMailbox |  |
+
+### Return type
+
+[**ConversationPbxVoicemailMailboxResponse**](ConversationPbxVoicemailMailboxResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_user_pbx_audio
+
+> <ConversationPbxAudioResponse> update_user_pbx_audio(conversation_pbx_audio_uuid, pbx_audio)
+
+Update user pbx audio
+
+Update a pbx audio file owned by the authenticated user 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_user_pbx_audio_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationPbxAudioResponse>, Integer, Hash)> update_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid, pbx_audio)
+
+```ruby
+begin
+  # Update user pbx audio
+  data, status_code, headers = api_instance.update_user_pbx_audio_with_http_info(conversation_pbx_audio_uuid, pbx_audio)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationPbxAudioResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_user_pbx_audio_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **conversation_pbx_audio_uuid** | **String** |  |  |
+| **pbx_audio** | [**ConversationPbxAudio**](ConversationPbxAudio.md) | Pbx Audio |  |
+
+### Return type
+
+[**ConversationPbxAudioResponse**](ConversationPbxAudioResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_virtual_agent_budget
+
+> <ConversationVirtualAgentBudgetResponse> update_virtual_agent_budget(virtual_agent_budget)
+
+Update virtual agent budget
+
+Update virtual agent budget 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_virtual_agent_budget_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationVirtualAgentBudgetResponse>, Integer, Hash)> update_virtual_agent_budget_with_http_info(virtual_agent_budget)
+
+```ruby
+begin
+  # Update virtual agent budget
+  data, status_code, headers = api_instance.update_virtual_agent_budget_with_http_info(virtual_agent_budget)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationVirtualAgentBudgetResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_virtual_agent_budget_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **virtual_agent_budget** | [**ConversationVirtualAgentBudget**](ConversationVirtualAgentBudget.md) | Virtual Agent Budget |  |
+
+### Return type
+
+[**ConversationVirtualAgentBudgetResponse**](ConversationVirtualAgentBudgetResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_virtual_agent_capabilities
+
+> <ConversationVirtualAgentCapabilitiesResponse> update_virtual_agent_capabilities(virtual_agent_capabilities)
+
+Update virtual agent capabilities
+
+Update virtual agent capabilities 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_virtual_agent_capabilities_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationVirtualAgentCapabilitiesResponse>, Integer, Hash)> update_virtual_agent_capabilities_with_http_info(virtual_agent_capabilities)
+
+```ruby
+begin
+  # Update virtual agent capabilities
+  data, status_code, headers = api_instance.update_virtual_agent_capabilities_with_http_info(virtual_agent_capabilities)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationVirtualAgentCapabilitiesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->update_virtual_agent_capabilities_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **virtual_agent_capabilities** | [**ConversationVirtualAgentCapabilities**](ConversationVirtualAgentCapabilities.md) | Virtual Agent Capabilities |  |
+
+### Return type
+
+[**ConversationVirtualAgentCapabilitiesResponse**](ConversationVirtualAgentCapabilitiesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
