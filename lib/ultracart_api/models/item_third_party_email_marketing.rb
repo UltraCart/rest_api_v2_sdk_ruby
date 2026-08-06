@@ -139,7 +139,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      provider_name_validator = EnumAttributeValidator.new('String', ["ActiveCampaign", "AWeber", "Campaign Monitor", "ConstantContact", "Emma", "GetResponse", "iContact", "Klaviyo", "Lyris", "LyrisHQ", "MailChimp", "SilverPop"])
+      provider_name_validator = EnumAttributeValidator.new('String', ["ActiveCampaign", "AWeber", "Campaign Monitor", "ConstantContact", "Emma", "GetResponse", "iContact", "Klaviyo", "Lyris", "LyrisHQ", "MailChimp"])
       return false unless provider_name_validator.valid?(@provider_name)
       true
     end
@@ -147,7 +147,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] provider_name Object to be assigned
     def provider_name=(provider_name)
-      validator = EnumAttributeValidator.new('String', ["ActiveCampaign", "AWeber", "Campaign Monitor", "ConstantContact", "Emma", "GetResponse", "iContact", "Klaviyo", "Lyris", "LyrisHQ", "MailChimp", "SilverPop"])
+      validator = EnumAttributeValidator.new('String', ["ActiveCampaign", "AWeber", "Campaign Monitor", "ConstantContact", "Emma", "GetResponse", "iContact", "Klaviyo", "Lyris", "LyrisHQ", "MailChimp"])
       unless validator.valid?(provider_name)
         fail ArgumentError, "invalid value for \"provider_name\", must be one of #{validator.allowable_values}."
       end

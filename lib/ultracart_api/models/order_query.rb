@@ -15,6 +15,12 @@ require 'time'
 
 module UltracartClient
   class OrderQuery
+    # First six digits (BIN) of the credit card number.  Must be specified together with card_last4 and a payment_date_begin/payment_date_end range.  Requires query_target=cache.
+    attr_accessor :card_bin
+
+    # Last four digits of the credit card number.  Must be specified together with card_bin and a payment_date_begin/payment_date_end range.  Always supply four digits, including for American Express.  Requires query_target=cache.
+    attr_accessor :card_last4
+
     # CC Email
     attr_accessor :cc_email
 
@@ -99,7 +105,7 @@ module UltracartClient
     # Payment method
     attr_accessor :payment_method
 
-    # Exact-match filters on the detail name/value pairs of a single payment transaction, AND-ed against the same transaction. Requires query_target=cache which uses the ElasticSearch cache. The origin or database path cannot search transaction details. The rotating gateway is just another pair, name equals rotatingTransactionGatewayCode or rotatingTransactionGatewayName.
+    # Exact-match filters on the detail name/value pairs of a single payment transaction, AND-ed against the same transaction. Requires query_target=cache. The origin or database path cannot search transaction details. The rotating gateway is just another pair, name equals rotatingTransactionGatewayCode or rotatingTransactionGatewayName.
     attr_accessor :payment_transaction_filters
 
     # Phone
@@ -172,6 +178,8 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'card_bin' => :'card_bin',
+        :'card_last4' => :'card_last4',
         :'cc_email' => :'cc_email',
         :'channel_partner_code' => :'channel_partner_code',
         :'channel_partner_order_id' => :'channel_partner_order_id',
@@ -227,6 +235,8 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'card_bin' => :'String',
+        :'card_last4' => :'String',
         :'cc_email' => :'String',
         :'channel_partner_code' => :'String',
         :'channel_partner_order_id' => :'String',
@@ -294,6 +304,14 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'card_bin')
+        self.card_bin = attributes[:'card_bin']
+      end
+
+      if attributes.key?(:'card_last4')
+        self.card_last4 = attributes[:'card_last4']
+      end
 
       if attributes.key?(:'cc_email')
         self.cc_email = attributes[:'cc_email']
@@ -478,6 +496,14 @@ module UltracartClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@card_bin.nil? && @card_bin.to_s.length > 6
+        invalid_properties.push('invalid value for "card_bin", the character length must be smaller than or equal to 6.')
+      end
+
+      if !@card_last4.nil? && @card_last4.to_s.length > 4
+        invalid_properties.push('invalid value for "card_last4", the character length must be smaller than or equal to 4.')
+      end
+
       if !@cc_email.nil? && @cc_email.to_s.length > 100
         invalid_properties.push('invalid value for "cc_email", the character length must be smaller than or equal to 100.')
       end
@@ -532,6 +558,8 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@card_bin.nil? && @card_bin.to_s.length > 6
+      return false if !@card_last4.nil? && @card_last4.to_s.length > 4
       return false if !@cc_email.nil? && @cc_email.to_s.length > 100
       return false if !@city.nil? && @city.to_s.length > 32
       return false if !@company.nil? && @company.to_s.length > 50
@@ -551,6 +579,26 @@ module UltracartClient
       return false if !@screen_branding_theme_code.nil? && @screen_branding_theme_code.to_s.length > 10
       return false if !@state_region.nil? && @state_region.to_s.length > 32
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] card_bin Value to be assigned
+    def card_bin=(card_bin)
+      if !card_bin.nil? && card_bin.to_s.length > 6
+        fail ArgumentError, 'invalid value for "card_bin", the character length must be smaller than or equal to 6.'
+      end
+
+      @card_bin = card_bin
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] card_last4 Value to be assigned
+    def card_last4=(card_last4)
+      if !card_last4.nil? && card_last4.to_s.length > 4
+        fail ArgumentError, 'invalid value for "card_last4", the character length must be smaller than or equal to 4.'
+      end
+
+      @card_last4 = card_last4
     end
 
     # Custom attribute writer method with validation
@@ -708,6 +756,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          card_bin == o.card_bin &&
+          card_last4 == o.card_last4 &&
           cc_email == o.cc_email &&
           channel_partner_code == o.channel_partner_code &&
           channel_partner_order_id == o.channel_partner_order_id &&
@@ -763,7 +813,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cc_email, channel_partner_code, channel_partner_order_id, city, company, country_code, creation_date_begin, creation_date_end, current_stage, custom_field_1, custom_field_10, custom_field_2, custom_field_3, custom_field_4, custom_field_5, custom_field_6, custom_field_7, custom_field_8, custom_field_9, customer_profile_oid, email, first_name, item_id, last_name, order_id, payment_date_begin, payment_date_end, payment_method, payment_transaction_filters, phone, postal_code, purchase_order_number, query_target, refund_date_begin, refund_date_end, rma, screen_branding_theme_code, shipment_date_begin, shipment_date_end, shipped_on_date_begin, shipped_on_date_end, state_region, storefront_host_name, total].hash
+      [card_bin, card_last4, cc_email, channel_partner_code, channel_partner_order_id, city, company, country_code, creation_date_begin, creation_date_end, current_stage, custom_field_1, custom_field_10, custom_field_2, custom_field_3, custom_field_4, custom_field_5, custom_field_6, custom_field_7, custom_field_8, custom_field_9, customer_profile_oid, email, first_name, item_id, last_name, order_id, payment_date_begin, payment_date_end, payment_method, payment_transaction_filters, phone, postal_code, purchase_order_number, query_target, refund_date_begin, refund_date_end, rma, screen_branding_theme_code, shipment_date_begin, shipment_date_end, shipped_on_date_begin, shipped_on_date_end, state_region, storefront_host_name, total].hash
     end
 
     # Builds the object from hash
