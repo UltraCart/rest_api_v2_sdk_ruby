@@ -6,6 +6,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | ------ | ------------ | ----------- |
 | [**oauth_access_token**](OauthApi.md#oauth_access_token) | **POST** /oauth/token | Exchange authorization code for access token. |
 | [**oauth_device_authorize**](OauthApi.md#oauth_device_authorize) | **POST** /oauth/device/authorize | Initiate a device authorization flow. |
+| [**oauth_me**](OauthApi.md#oauth_me) | **GET** /oauth/me | Identify the merchant account this access token belongs to. |
 | [**oauth_revoke**](OauthApi.md#oauth_revoke) | **POST** /oauth/revoke | Revoke this OAuth application. |
 
 
@@ -175,6 +176,57 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/x-www-form-urlencoded
+- **Accept**: application/json
+
+
+## oauth_me
+
+> oauth_me
+
+Identify the merchant account this access token belongs to.
+
+Returns the UltraCart merchant account that authorized your application, along with the permissions that were granted.  Call it immediately after exchanging your authorization code so you can display the connected account to your user and map it within your own system.  Any OAuth access token may call this endpoint regardless of the permissions it holds.  The granted permissions are the ones the merchant approved, which may be narrower than the permissions your application currently requests, because permissions are recorded when the merchant authorizes and do not change afterwards.  If you add a permission to your application, already connected merchants keep the permissions they originally approved until they authorize again, so read this list rather than assuming your application's configured permissions. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the oauth_me_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> oauth_me_with_http_info
+
+```ruby
+begin
+  # Identify the merchant account this access token belongs to.
+  data, status_code, headers = api_instance.oauth_me_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OauthApi->oauth_me_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 

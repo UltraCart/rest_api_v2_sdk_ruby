@@ -198,6 +198,64 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Identify the merchant account this access token belongs to.
+    # Returns the UltraCart merchant account that authorized your application, along with the permissions that were granted.  Call it immediately after exchanging your authorization code so you can display the connected account to your user and map it within your own system.  Any OAuth access token may call this endpoint regardless of the permissions it holds.  The granted permissions are the ones the merchant approved, which may be narrower than the permissions your application currently requests, because permissions are recorded when the merchant authorizes and do not change afterwards.  If you add a permission to your application, already connected merchants keep the permissions they originally approved until they authorize again, so read this list rather than assuming your application's configured permissions. 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def oauth_me(opts = {})
+      oauth_me_with_http_info(opts)
+      nil
+    end
+
+    # Identify the merchant account this access token belongs to.
+    # Returns the UltraCart merchant account that authorized your application, along with the permissions that were granted.  Call it immediately after exchanging your authorization code so you can display the connected account to your user and map it within your own system.  Any OAuth access token may call this endpoint regardless of the permissions it holds.  The granted permissions are the ones the merchant approved, which may be narrower than the permissions your application currently requests, because permissions are recorded when the merchant authorizes and do not change afterwards.  If you add a permission to your application, already connected merchants keep the permissions they originally approved until they authorize again, so read this list rather than assuming your application&#39;s configured permissions. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def oauth_me_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OauthApi.oauth_me ...'
+      end
+      # resource path
+      local_var_path = '/oauth/me'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth']
+
+      new_options = opts.merge(
+        :operation => :"OauthApi.oauth_me",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OauthApi#oauth_me\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Revoke this OAuth application.
     # Revokes the OAuth application associated with the specified client_id and token. 
     # @param client_id [String] The OAuth application client_id.

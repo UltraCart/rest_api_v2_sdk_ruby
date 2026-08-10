@@ -14,65 +14,30 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class OauthTokenResponse
-    # Access token to use in OAuth authenticated API call
-    attr_accessor :access_token
+  class OauthMeResponse
+    # The name of your application as the merchant approved it.
+    attr_accessor :application_name
 
-    attr_accessor :error
+    # Your application's client_id.  Null when authenticating with a simple key, which is not tied to an application.
+    attr_accessor :client_id
 
-    attr_accessor :error_description
-
-    attr_accessor :error_uri
-
-    # The number of seconds since issuance when the access token will expire and need to be refreshed using the refresh token
-    attr_accessor :expires_in
-
-    # The UltraCart merchant account that authorized this token.  Use it to map the token to the merchant within your own system.  Also returned by GET /oauth/me along with the account name.
+    # The UltraCart merchant account that authorized your application.  Stable, and the value to key your own records on.
     attr_accessor :merchant_id
 
-    # The refresh token that should be used to fetch a new access token when the expiration occurs
-    attr_accessor :refresh_token
+    # The account's company name, suitable for displaying to your user.  The merchant can change this, so display it rather than storing it as an identifier.
+    attr_accessor :merchant_name
 
-    # The scope of permissions associated with teh access token
-    attr_accessor :scope
-
-    # Type of token
-    attr_accessor :token_type
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    # The permissions the merchant granted.  May be narrower than the permissions your application currently requests.
+    attr_accessor :scopes
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'access_token' => :'access_token',
-        :'error' => :'error',
-        :'error_description' => :'error_description',
-        :'error_uri' => :'error_uri',
-        :'expires_in' => :'expires_in',
+        :'application_name' => :'application_name',
+        :'client_id' => :'client_id',
         :'merchant_id' => :'merchant_id',
-        :'refresh_token' => :'refresh_token',
-        :'scope' => :'scope',
-        :'token_type' => :'token_type'
+        :'merchant_name' => :'merchant_name',
+        :'scopes' => :'scopes'
       }
     end
 
@@ -84,15 +49,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'access_token' => :'String',
-        :'error' => :'String',
-        :'error_description' => :'String',
-        :'error_uri' => :'String',
-        :'expires_in' => :'String',
+        :'application_name' => :'String',
+        :'client_id' => :'String',
         :'merchant_id' => :'String',
-        :'refresh_token' => :'String',
-        :'scope' => :'String',
-        :'token_type' => :'String'
+        :'merchant_name' => :'String',
+        :'scopes' => :'Array<String>'
       }
     end
 
@@ -106,51 +67,37 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::OauthTokenResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::OauthMeResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::OauthTokenResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::OauthMeResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'access_token')
-        self.access_token = attributes[:'access_token']
+      if attributes.key?(:'application_name')
+        self.application_name = attributes[:'application_name']
       end
 
-      if attributes.key?(:'error')
-        self.error = attributes[:'error']
-      end
-
-      if attributes.key?(:'error_description')
-        self.error_description = attributes[:'error_description']
-      end
-
-      if attributes.key?(:'error_uri')
-        self.error_uri = attributes[:'error_uri']
-      end
-
-      if attributes.key?(:'expires_in')
-        self.expires_in = attributes[:'expires_in']
+      if attributes.key?(:'client_id')
+        self.client_id = attributes[:'client_id']
       end
 
       if attributes.key?(:'merchant_id')
         self.merchant_id = attributes[:'merchant_id']
       end
 
-      if attributes.key?(:'refresh_token')
-        self.refresh_token = attributes[:'refresh_token']
+      if attributes.key?(:'merchant_name')
+        self.merchant_name = attributes[:'merchant_name']
       end
 
-      if attributes.key?(:'scope')
-        self.scope = attributes[:'scope']
-      end
-
-      if attributes.key?(:'token_type')
-        self.token_type = attributes[:'token_type']
+      if attributes.key?(:'scopes')
+        if (value = attributes[:'scopes']).is_a?(Array)
+          self.scopes = value
+        end
       end
     end
 
@@ -164,19 +111,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      token_type_validator = EnumAttributeValidator.new('String', ["bearer"])
-      return false unless token_type_validator.valid?(@token_type)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] token_type Object to be assigned
-    def token_type=(token_type)
-      validator = EnumAttributeValidator.new('String', ["bearer"])
-      unless validator.valid?(token_type)
-        fail ArgumentError, "invalid value for \"token_type\", must be one of #{validator.allowable_values}."
-      end
-      @token_type = token_type
     end
 
     # Checks equality by comparing each attribute.
@@ -184,15 +119,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          access_token == o.access_token &&
-          error == o.error &&
-          error_description == o.error_description &&
-          error_uri == o.error_uri &&
-          expires_in == o.expires_in &&
+          application_name == o.application_name &&
+          client_id == o.client_id &&
           merchant_id == o.merchant_id &&
-          refresh_token == o.refresh_token &&
-          scope == o.scope &&
-          token_type == o.token_type
+          merchant_name == o.merchant_name &&
+          scopes == o.scopes
     end
 
     # @see the `==` method
@@ -204,7 +135,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_token, error, error_description, error_uri, expires_in, merchant_id, refresh_token, scope, token_type].hash
+      [application_name, client_id, merchant_id, merchant_name, scopes].hash
     end
 
     # Builds the object from hash
