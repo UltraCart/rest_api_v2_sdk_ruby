@@ -8,9 +8,11 @@
 | **affiliate_id** | **String** | Affiliate Id | [optional] |
 | **affiliate_sub_id** | **String** | Affiliate Sub Id | [optional] |
 | **arbitrary_shipping_handling_total** | **Float** | Arbitrary shipping handling total | [optional] |
+| **arbitrary_subtotal_discount** | **Float** | Arbitrary subtotal discount for overriding the calculated subtotal discount.  Send the gross price in the item arbitrary unit cost and the discount here. | [optional] |
 | **arbitrary_tax** | **Float** | Arbitrary tax for overriding calculated taxes | [optional] |
 | **arbitrary_tax_rate** | **Float** | Arbitrary tax rate | [optional] |
 | **arbitrary_taxable_subtotal** | **Float** | Arbitrary taxable subtotal | [optional] |
+| **arbitrary_taxable_subtotal_discount** | **Float** | Arbitrary taxable subtotal discount.  If an arbitrary subtotal discount is supplied without this field, the arbitrary subtotal discount is used for both. | [optional] |
 | **associate_with_customer_profile_if_present** | **Boolean** | If true any matching customer profile based on email is associated with this order | [optional] |
 | **auto_approve_purchase_order** | **Boolean** | If true any purchase orders are automatically approved | [optional] |
 | **billto_address1** | **String** | Billing Address line 1 | [optional] |
@@ -109,9 +111,11 @@ instance = UltracartClient::ChannelPartnerOrder.new(
   affiliate_id: null,
   affiliate_sub_id: null,
   arbitrary_shipping_handling_total: null,
+  arbitrary_subtotal_discount: null,
   arbitrary_tax: null,
   arbitrary_tax_rate: null,
   arbitrary_taxable_subtotal: null,
+  arbitrary_taxable_subtotal_discount: null,
   associate_with_customer_profile_if_present: null,
   auto_approve_purchase_order: null,
   billto_address1: null,
