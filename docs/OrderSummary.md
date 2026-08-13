@@ -12,6 +12,8 @@
 | **actual_profit_review** | **Boolean** | Actual profit needs review | [optional] |
 | **actual_shipping** | [**Currency**](Currency.md) |  | [optional] |
 | **arbitrary_shipping_handling_total** | [**Currency**](Currency.md) |  | [optional] |
+| **arbitrary_subtotal_discount** | [**Currency**](Currency.md) |  | [optional] |
+| **arbitrary_taxable_subtotal_discount** | [**Currency**](Currency.md) |  | [optional] |
 | **health_benefit_card_amount** | [**Currency**](Currency.md) |  | [optional] |
 | **health_benefit_card_refunded** | [**Currency**](Currency.md) |  | [optional] |
 | **internal_gift_certificate_amount** | [**Currency**](Currency.md) |  | [optional] |
@@ -45,6 +47,8 @@ instance = UltracartClient::OrderSummary.new(
   actual_profit_review: null,
   actual_shipping: null,
   arbitrary_shipping_handling_total: null,
+  arbitrary_subtotal_discount: null,
+  arbitrary_taxable_subtotal_discount: null,
   health_benefit_card_amount: null,
   health_benefit_card_refunded: null,
   internal_gift_certificate_amount: null,

@@ -33,6 +33,10 @@ module UltracartClient
 
     attr_accessor :arbitrary_shipping_handling_total
 
+    attr_accessor :arbitrary_subtotal_discount
+
+    attr_accessor :arbitrary_taxable_subtotal_discount
+
     attr_accessor :health_benefit_card_amount
 
     attr_accessor :health_benefit_card_refunded
@@ -80,6 +84,8 @@ module UltracartClient
         :'actual_profit_review' => :'actual_profit_review',
         :'actual_shipping' => :'actual_shipping',
         :'arbitrary_shipping_handling_total' => :'arbitrary_shipping_handling_total',
+        :'arbitrary_subtotal_discount' => :'arbitrary_subtotal_discount',
+        :'arbitrary_taxable_subtotal_discount' => :'arbitrary_taxable_subtotal_discount',
         :'health_benefit_card_amount' => :'health_benefit_card_amount',
         :'health_benefit_card_refunded' => :'health_benefit_card_refunded',
         :'internal_gift_certificate_amount' => :'internal_gift_certificate_amount',
@@ -117,6 +123,8 @@ module UltracartClient
         :'actual_profit_review' => :'Boolean',
         :'actual_shipping' => :'Currency',
         :'arbitrary_shipping_handling_total' => :'Currency',
+        :'arbitrary_subtotal_discount' => :'Currency',
+        :'arbitrary_taxable_subtotal_discount' => :'Currency',
         :'health_benefit_card_amount' => :'Currency',
         :'health_benefit_card_refunded' => :'Currency',
         :'internal_gift_certificate_amount' => :'Currency',
@@ -189,6 +197,14 @@ module UltracartClient
 
       if attributes.key?(:'arbitrary_shipping_handling_total')
         self.arbitrary_shipping_handling_total = attributes[:'arbitrary_shipping_handling_total']
+      end
+
+      if attributes.key?(:'arbitrary_subtotal_discount')
+        self.arbitrary_subtotal_discount = attributes[:'arbitrary_subtotal_discount']
+      end
+
+      if attributes.key?(:'arbitrary_taxable_subtotal_discount')
+        self.arbitrary_taxable_subtotal_discount = attributes[:'arbitrary_taxable_subtotal_discount']
       end
 
       if attributes.key?(:'health_benefit_card_amount')
@@ -290,6 +306,8 @@ module UltracartClient
           actual_profit_review == o.actual_profit_review &&
           actual_shipping == o.actual_shipping &&
           arbitrary_shipping_handling_total == o.arbitrary_shipping_handling_total &&
+          arbitrary_subtotal_discount == o.arbitrary_subtotal_discount &&
+          arbitrary_taxable_subtotal_discount == o.arbitrary_taxable_subtotal_discount &&
           health_benefit_card_amount == o.health_benefit_card_amount &&
           health_benefit_card_refunded == o.health_benefit_card_refunded &&
           internal_gift_certificate_amount == o.internal_gift_certificate_amount &&
@@ -319,7 +337,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [actual_fulfillment, actual_other_cost, actual_payment_processing, actual_profit, actual_profit_analyzed, actual_profit_review, actual_shipping, arbitrary_shipping_handling_total, health_benefit_card_amount, health_benefit_card_refunded, internal_gift_certificate_amount, internal_gift_certificate_refunded, other_refunded, shipping_handling_refunded, shipping_handling_total, shipping_handling_total_discount, subtotal, subtotal_discount, subtotal_discount_refunded, subtotal_refunded, tax, tax_refunded, taxable_subtotal, taxable_subtotal_discount, total, total_refunded].hash
+      [actual_fulfillment, actual_other_cost, actual_payment_processing, actual_profit, actual_profit_analyzed, actual_profit_review, actual_shipping, arbitrary_shipping_handling_total, arbitrary_subtotal_discount, arbitrary_taxable_subtotal_discount, health_benefit_card_amount, health_benefit_card_refunded, internal_gift_certificate_amount, internal_gift_certificate_refunded, other_refunded, shipping_handling_refunded, shipping_handling_total, shipping_handling_total_discount, subtotal, subtotal_discount, subtotal_discount_refunded, subtotal_refunded, tax, tax_refunded, taxable_subtotal, taxable_subtotal_discount, total, total_refunded].hash
     end
 
     # Builds the object from hash
