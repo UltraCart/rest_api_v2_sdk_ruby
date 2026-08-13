@@ -11,6 +11,7 @@
 | **channel_partner_order_id** | **String** | The order ID assigned by the channel partner for this order. | [optional] |
 | **ignore_invalid_shipping_method** | **Boolean** | Set to true to ignore invalid shipping method being specified.  Only applicable on inserting orders. | [optional] |
 | **no_realtime_payment_processing** | **Boolean** | Indicates this order should be placed in Account Receivable for later payment processing | [optional] |
+| **skip_auto_order_setup** | **Boolean** | Instructs UltraCart to skip auto order setup.  Only applicable on inserting orders. | [optional] |
 | **skip_payment_processing** | **Boolean** | Indicates this order was already paid for via a channel purchase and no payment collection should be attempted | [optional] |
 | **store_completed** | **Boolean** | Instructs UltraCart to skip shipping department and mark this order as fully complete.  This flag defaults to true.  Set this flag to false to shipped product for this order. | [optional] |
 | **store_if_payment_declines** | **Boolean** | If true, any failed payment will place the order in Accounts Receivable rather than rejecting it. | [optional] |
@@ -29,6 +30,7 @@ instance = UltracartClient::OrderChannelPartner.new(
   channel_partner_order_id: null,
   ignore_invalid_shipping_method: null,
   no_realtime_payment_processing: null,
+  skip_auto_order_setup: null,
   skip_payment_processing: null,
   store_completed: null,
   store_if_payment_declines: null,

@@ -36,6 +36,9 @@ module UltracartClient
     # Indicates this order should be placed in Account Receivable for later payment processing
     attr_accessor :no_realtime_payment_processing
 
+    # Instructs UltraCart to skip auto order setup.  Only applicable on inserting orders.
+    attr_accessor :skip_auto_order_setup
+
     # Indicates this order was already paid for via a channel purchase and no payment collection should be attempted
     attr_accessor :skip_payment_processing
 
@@ -58,6 +61,7 @@ module UltracartClient
         :'channel_partner_order_id' => :'channel_partner_order_id',
         :'ignore_invalid_shipping_method' => :'ignore_invalid_shipping_method',
         :'no_realtime_payment_processing' => :'no_realtime_payment_processing',
+        :'skip_auto_order_setup' => :'skip_auto_order_setup',
         :'skip_payment_processing' => :'skip_payment_processing',
         :'store_completed' => :'store_completed',
         :'store_if_payment_declines' => :'store_if_payment_declines',
@@ -80,6 +84,7 @@ module UltracartClient
         :'channel_partner_order_id' => :'String',
         :'ignore_invalid_shipping_method' => :'Boolean',
         :'no_realtime_payment_processing' => :'Boolean',
+        :'skip_auto_order_setup' => :'Boolean',
         :'skip_payment_processing' => :'Boolean',
         :'store_completed' => :'Boolean',
         :'store_if_payment_declines' => :'Boolean',
@@ -134,6 +139,10 @@ module UltracartClient
 
       if attributes.key?(:'no_realtime_payment_processing')
         self.no_realtime_payment_processing = attributes[:'no_realtime_payment_processing']
+      end
+
+      if attributes.key?(:'skip_auto_order_setup')
+        self.skip_auto_order_setup = attributes[:'skip_auto_order_setup']
       end
 
       if attributes.key?(:'skip_payment_processing')
@@ -193,6 +202,7 @@ module UltracartClient
           channel_partner_order_id == o.channel_partner_order_id &&
           ignore_invalid_shipping_method == o.ignore_invalid_shipping_method &&
           no_realtime_payment_processing == o.no_realtime_payment_processing &&
+          skip_auto_order_setup == o.skip_auto_order_setup &&
           skip_payment_processing == o.skip_payment_processing &&
           store_completed == o.store_completed &&
           store_if_payment_declines == o.store_if_payment_declines &&
@@ -208,7 +218,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_approve_purchase_order, channel_partner_code, channel_partner_data, channel_partner_oid, channel_partner_order_id, ignore_invalid_shipping_method, no_realtime_payment_processing, skip_payment_processing, store_completed, store_if_payment_declines, treat_warnings_as_errors].hash
+      [auto_approve_purchase_order, channel_partner_code, channel_partner_data, channel_partner_oid, channel_partner_order_id, ignore_invalid_shipping_method, no_realtime_payment_processing, skip_auto_order_setup, skip_payment_processing, store_completed, store_if_payment_declines, treat_warnings_as_errors].hash
     end
 
     # Builds the object from hash
