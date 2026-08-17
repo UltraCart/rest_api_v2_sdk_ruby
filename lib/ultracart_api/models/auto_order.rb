@@ -30,16 +30,16 @@ module UltracartClient
     # True if the auto order was canceled because the customer purchased a downgrade item
     attr_accessor :cancel_downgrade
 
-    # The reason this auto order was canceled by either merchant or customer
+    # The reason this auto order was canceled by either merchant or customer. Supplying this when setting enabled to false records the change as a cancellation rather than a disable.
     attr_accessor :cancel_reason
 
     # True if the auto order was canceled because the customer purchased an upgrade item
     attr_accessor :cancel_upgrade
 
-    # The user that canceled the auto order
+    # The user that canceled the auto order. Supplying this when setting enabled to false records the change as a cancellation rather than a disable.
     attr_accessor :canceled_by_user
 
-    # The date/time that the auto order was canceled
+    # The date/time that the auto order was canceled. Supply this to record an explicit cancellation time, otherwise it is stamped automatically when enabled is set to false along with cancel_reason or canceled_by_user.
     attr_accessor :canceled_dts
 
     # True if the auto order ran successfully to completion
@@ -48,13 +48,13 @@ module UltracartClient
     # The number of credit card attempts that have taken place
     attr_accessor :credit_card_attempt
 
-    # The date/time the auto order was disabled due to failed rebills
+    # The date/time the auto order was disabled, either by a failed rebill or by setting enabled to false without a cancellation
     attr_accessor :disabled_dts
 
     # Email delivery records associated with this auto order.
     attr_accessor :emails
 
-    # True if this auto order is enabled
+    # True if this auto order is enabled. Setting this to false along with cancel_reason or canceled_by_user records the change as a cancellation and fires the auto order cancel notifications. Setting it to false without either field records a disable instead.
     attr_accessor :enabled
 
     # The reason this auto order failed during the last rebill attempt

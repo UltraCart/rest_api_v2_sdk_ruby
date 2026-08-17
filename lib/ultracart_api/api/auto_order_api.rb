@@ -1006,7 +1006,7 @@ module UltracartClient
     end
 
     # Update an auto order
-    # Update an auto order on the UltraCart account. 
+    # Update an auto order on the UltraCart account.  To cancel an auto order, set enabled to false and supply either cancel_reason or canceled_by_user, which records the change as a cancellation and fires the auto order cancel notifications.  Setting enabled to false without either field records a disable. 
     # @param auto_order_oid [Integer] The auto order oid to update.
     # @param auto_order [AutoOrder] Auto order to update
     # @param [Hash] opts the optional parameters
@@ -1019,7 +1019,7 @@ module UltracartClient
     end
 
     # Update an auto order
-    # Update an auto order on the UltraCart account. 
+    # Update an auto order on the UltraCart account.  To cancel an auto order, set enabled to false and supply either cancel_reason or canceled_by_user, which records the change as a cancellation and fires the auto order cancel notifications.  Setting enabled to false without either field records a disable. 
     # @param auto_order_oid [Integer] The auto order oid to update.
     # @param auto_order [AutoOrder] Auto order to update
     # @param [Hash] opts the optional parameters
@@ -1411,7 +1411,7 @@ module UltracartClient
     end
 
     # Update multiple auto orders
-    # Update multiple auto orders on the UltraCart account. 
+    # Update multiple auto orders on the UltraCart account.  To cancel an auto order, set enabled to false and supply either cancel_reason or canceled_by_user, which records the change as a cancellation and fires the auto order cancel notifications.  Setting enabled to false without either field records a disable. 
     # @param auto_orders_request [AutoOrdersRequest] Auto orders to update (synchronous maximum 20 / asynchronous maximum 100)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
@@ -1424,7 +1424,7 @@ module UltracartClient
     end
 
     # Update multiple auto orders
-    # Update multiple auto orders on the UltraCart account. 
+    # Update multiple auto orders on the UltraCart account.  To cancel an auto order, set enabled to false and supply either cancel_reason or canceled_by_user, which records the change as a cancellation and fires the auto order cancel notifications.  Setting enabled to false without either field records a disable. 
     # @param auto_orders_request [AutoOrdersRequest] Auto orders to update (synchronous maximum 20 / asynchronous maximum 100)
     # @param [Hash] opts the optional parameters
     # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
