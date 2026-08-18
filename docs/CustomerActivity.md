@@ -4,9 +4,11 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **active** | **Boolean** |  | [optional] |
 | **activities** | [**Array&lt;Activity&gt;**](Activity.md) |  | [optional] |
 | **global_unsubscribed** | **Boolean** |  | [optional] |
 | **global_unsubscribed_dts** | **String** |  | [optional] |
+| **last_activity_dts** | **String** |  | [optional] |
 | **memberships** | [**Array&lt;ListSegmentMembership&gt;**](ListSegmentMembership.md) |  | [optional] |
 | **metrics** | [**Array&lt;Metric&gt;**](Metric.md) |  | [optional] |
 | **properties_list** | [**Array&lt;Property&gt;**](Property.md) |  | [optional] |
@@ -21,9 +23,11 @@
 require 'ultracart_api'
 
 instance = UltracartClient::CustomerActivity.new(
+  active: null,
   activities: null,
   global_unsubscribed: null,
   global_unsubscribed_dts: null,
+  last_activity_dts: null,
   memberships: null,
   metrics: null,
   properties_list: null,

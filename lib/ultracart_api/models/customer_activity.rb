@@ -15,11 +15,15 @@ require 'time'
 
 module UltracartClient
   class CustomerActivity
+    attr_accessor :active
+
     attr_accessor :activities
 
     attr_accessor :global_unsubscribed
 
     attr_accessor :global_unsubscribed_dts
+
+    attr_accessor :last_activity_dts
 
     attr_accessor :memberships
 
@@ -38,9 +42,11 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'active' => :'active',
         :'activities' => :'activities',
         :'global_unsubscribed' => :'global_unsubscribed',
         :'global_unsubscribed_dts' => :'global_unsubscribed_dts',
+        :'last_activity_dts' => :'last_activity_dts',
         :'memberships' => :'memberships',
         :'metrics' => :'metrics',
         :'properties_list' => :'properties_list',
@@ -59,9 +65,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'active' => :'Boolean',
         :'activities' => :'Array<Activity>',
         :'global_unsubscribed' => :'Boolean',
         :'global_unsubscribed_dts' => :'String',
+        :'last_activity_dts' => :'String',
         :'memberships' => :'Array<ListSegmentMembership>',
         :'metrics' => :'Array<Metric>',
         :'properties_list' => :'Array<Property>',
@@ -93,6 +101,10 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'active')
+        self.active = attributes[:'active']
+      end
+
       if attributes.key?(:'activities')
         if (value = attributes[:'activities']).is_a?(Array)
           self.activities = value
@@ -105,6 +117,10 @@ module UltracartClient
 
       if attributes.key?(:'global_unsubscribed_dts')
         self.global_unsubscribed_dts = attributes[:'global_unsubscribed_dts']
+      end
+
+      if attributes.key?(:'last_activity_dts')
+        self.last_activity_dts = attributes[:'last_activity_dts']
       end
 
       if attributes.key?(:'memberships')
@@ -160,9 +176,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          active == o.active &&
           activities == o.activities &&
           global_unsubscribed == o.global_unsubscribed &&
           global_unsubscribed_dts == o.global_unsubscribed_dts &&
+          last_activity_dts == o.last_activity_dts &&
           memberships == o.memberships &&
           metrics == o.metrics &&
           properties_list == o.properties_list &&
@@ -181,7 +199,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [activities, global_unsubscribed, global_unsubscribed_dts, memberships, metrics, properties_list, sms, sms_stop, spam_complaint, spam_complaint_dts].hash
+      [active, activities, global_unsubscribed, global_unsubscribed_dts, last_activity_dts, memberships, metrics, properties_list, sms, sms_stop, spam_complaint, spam_complaint_dts].hash
     end
 
     # Builds the object from hash
