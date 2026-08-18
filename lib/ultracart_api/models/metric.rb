@@ -15,6 +15,8 @@ require 'time'
 
 module UltracartClient
   class Metric
+    attr_accessor :active
+
     attr_accessor :all_time
 
     attr_accessor :all_time_formatted
@@ -22,6 +24,8 @@ module UltracartClient
     attr_accessor :last_30
 
     attr_accessor :last_30_formatted
+
+    attr_accessor :last_activity_dts
 
     attr_accessor :name
 
@@ -34,10 +38,12 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'active' => :'active',
         :'all_time' => :'all_time',
         :'all_time_formatted' => :'all_time_formatted',
         :'last_30' => :'last_30',
         :'last_30_formatted' => :'last_30_formatted',
+        :'last_activity_dts' => :'last_activity_dts',
         :'name' => :'name',
         :'prior_30' => :'prior_30',
         :'prior_30_formatted' => :'prior_30_formatted',
@@ -53,10 +59,12 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'active' => :'Boolean',
         :'all_time' => :'Float',
         :'all_time_formatted' => :'String',
         :'last_30' => :'Float',
         :'last_30_formatted' => :'String',
+        :'last_activity_dts' => :'String',
         :'name' => :'String',
         :'prior_30' => :'Float',
         :'prior_30_formatted' => :'String',
@@ -85,6 +93,10 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'active')
+        self.active = attributes[:'active']
+      end
+
       if attributes.key?(:'all_time')
         self.all_time = attributes[:'all_time']
       end
@@ -99,6 +111,10 @@ module UltracartClient
 
       if attributes.key?(:'last_30_formatted')
         self.last_30_formatted = attributes[:'last_30_formatted']
+      end
+
+      if attributes.key?(:'last_activity_dts')
+        self.last_activity_dts = attributes[:'last_activity_dts']
       end
 
       if attributes.key?(:'name')
@@ -136,10 +152,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          active == o.active &&
           all_time == o.all_time &&
           all_time_formatted == o.all_time_formatted &&
           last_30 == o.last_30 &&
           last_30_formatted == o.last_30_formatted &&
+          last_activity_dts == o.last_activity_dts &&
           name == o.name &&
           prior_30 == o.prior_30 &&
           prior_30_formatted == o.prior_30_formatted &&
@@ -155,7 +173,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [all_time, all_time_formatted, last_30, last_30_formatted, name, prior_30, prior_30_formatted, type].hash
+      [active, all_time, all_time_formatted, last_30, last_30_formatted, last_activity_dts, name, prior_30, prior_30_formatted, type].hash
     end
 
     # Builds the object from hash
