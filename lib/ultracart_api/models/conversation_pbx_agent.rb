@@ -78,6 +78,12 @@ module UltracartClient
     # True if this agent has voicemail configured
     attr_accessor :voicemail
 
+    # Zoho Desk department ID to create outbound-call tickets in for this agent
+    attr_accessor :zoho_desk_outbound_department_id
+
+    # If true, a Zoho Desk ticket is automatically created for outbound calls placed by this agent
+    attr_accessor :zoho_desk_outbound_ticket_enabled
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -123,7 +129,9 @@ module UltracartClient
         :'unavailable_say' => :'unavailable_say',
         :'unavailable_say_voice' => :'unavailable_say_voice',
         :'user_id' => :'user_id',
-        :'voicemail' => :'voicemail'
+        :'voicemail' => :'voicemail',
+        :'zoho_desk_outbound_department_id' => :'zoho_desk_outbound_department_id',
+        :'zoho_desk_outbound_ticket_enabled' => :'zoho_desk_outbound_ticket_enabled'
       }
     end
 
@@ -155,7 +163,9 @@ module UltracartClient
         :'unavailable_say' => :'String',
         :'unavailable_say_voice' => :'String',
         :'user_id' => :'Integer',
-        :'voicemail' => :'Boolean'
+        :'voicemail' => :'Boolean',
+        :'zoho_desk_outbound_department_id' => :'String',
+        :'zoho_desk_outbound_ticket_enabled' => :'Boolean'
       }
     end
 
@@ -265,6 +275,14 @@ module UltracartClient
       if attributes.key?(:'voicemail')
         self.voicemail = attributes[:'voicemail']
       end
+
+      if attributes.key?(:'zoho_desk_outbound_department_id')
+        self.zoho_desk_outbound_department_id = attributes[:'zoho_desk_outbound_department_id']
+      end
+
+      if attributes.key?(:'zoho_desk_outbound_ticket_enabled')
+        self.zoho_desk_outbound_ticket_enabled = attributes[:'zoho_desk_outbound_ticket_enabled']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -299,6 +317,10 @@ module UltracartClient
         invalid_properties.push('invalid value for "unavailable_say_voice", the character length must be smaller than or equal to 50.')
       end
 
+      if !@zoho_desk_outbound_department_id.nil? && @zoho_desk_outbound_department_id.to_s.length > 50
+        invalid_properties.push('invalid value for "zoho_desk_outbound_department_id", the character length must be smaller than or equal to 50.')
+      end
+
       invalid_properties
     end
 
@@ -316,6 +338,7 @@ module UltracartClient
       unavailable_say_voice_validator = EnumAttributeValidator.new('String', ["man", "woman"])
       return false unless unavailable_say_voice_validator.valid?(@unavailable_say_voice)
       return false if !@unavailable_say_voice.nil? && @unavailable_say_voice.to_s.length > 50
+      return false if !@zoho_desk_outbound_department_id.nil? && @zoho_desk_outbound_department_id.to_s.length > 50
       true
     end
 
@@ -399,6 +422,16 @@ module UltracartClient
       @unavailable_say_voice = unavailable_say_voice
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] zoho_desk_outbound_department_id Value to be assigned
+    def zoho_desk_outbound_department_id=(zoho_desk_outbound_department_id)
+      if !zoho_desk_outbound_department_id.nil? && zoho_desk_outbound_department_id.to_s.length > 50
+        fail ArgumentError, 'invalid value for "zoho_desk_outbound_department_id", the character length must be smaller than or equal to 50.'
+      end
+
+      @zoho_desk_outbound_department_id = zoho_desk_outbound_department_id
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -424,7 +457,9 @@ module UltracartClient
           unavailable_say == o.unavailable_say &&
           unavailable_say_voice == o.unavailable_say_voice &&
           user_id == o.user_id &&
-          voicemail == o.voicemail
+          voicemail == o.voicemail &&
+          zoho_desk_outbound_department_id == o.zoho_desk_outbound_department_id &&
+          zoho_desk_outbound_ticket_enabled == o.zoho_desk_outbound_ticket_enabled
     end
 
     # @see the `==` method
@@ -436,7 +471,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ai, call_routing_preference, cellphone, conversation_pbx_agent_uuid, cos_uuid, default_phone_number_uuid, extension, full_name, hardware_phone_uuids, login, merchant_id, personal_conversation_pbx_voicemail_mailbox_uuid, preferred_hardware_phone_uuid, record_outgoing_automatically, shared_conversation_pbx_voicemail_mailbox_uuid, twilio_taskrouter_worker_id, unavailable_play_audio_uuid, unavailable_say, unavailable_say_voice, user_id, voicemail].hash
+      [ai, call_routing_preference, cellphone, conversation_pbx_agent_uuid, cos_uuid, default_phone_number_uuid, extension, full_name, hardware_phone_uuids, login, merchant_id, personal_conversation_pbx_voicemail_mailbox_uuid, preferred_hardware_phone_uuid, record_outgoing_automatically, shared_conversation_pbx_voicemail_mailbox_uuid, twilio_taskrouter_worker_id, unavailable_play_audio_uuid, unavailable_say, unavailable_say_voice, user_id, voicemail, zoho_desk_outbound_department_id, zoho_desk_outbound_ticket_enabled].hash
     end
 
     # Builds the object from hash

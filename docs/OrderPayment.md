@@ -23,7 +23,7 @@
 | **surcharge_transaction_fee** | **Float** | Surcharge transaction fee | [optional] |
 | **surcharge_transaction_percentage** | **Float** | Surcharge transaction percentage | [optional] |
 | **test_order** | **Boolean** | True if this is a test order | [optional] |
-| **transactions** | [**Array&lt;OrderPaymentTransaction&gt;**](OrderPaymentTransaction.md) | Transactions associated with processing this payment | [optional] |
+| **transactions** | [**Array&lt;OrderPaymentTransaction&gt;**](OrderPaymentTransaction.md) | Transactions associated with processing this payment.  Accepted on insert to carry the payment history of an order captured outside the system. | [optional] |
 
 ## Example
 

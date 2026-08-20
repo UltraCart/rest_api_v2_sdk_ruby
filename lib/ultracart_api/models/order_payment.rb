@@ -64,7 +64,7 @@ module UltracartClient
     # True if this is a test order
     attr_accessor :test_order
 
-    # Transactions associated with processing this payment
+    # Transactions associated with processing this payment.  Accepted on insert to carry the payment history of an order captured outside the system.
     attr_accessor :transactions
 
     class EnumAttributeValidator
