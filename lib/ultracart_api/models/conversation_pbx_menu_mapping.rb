@@ -24,6 +24,9 @@ module UltracartClient
     # Digits
     attr_accessor :digits
 
+    # Optional phone number to send the text message from.  Must be a phone number configured on this merchant account and SMS enabled.  Defaults to the number the caller dialed.  Only used when the action is 'send text'.
+    attr_accessor :sms_from_number
+
     # Speech
     attr_accessor :speech
 
@@ -58,6 +61,7 @@ module UltracartClient
         :'action' => :'action',
         :'action_target' => :'action_target',
         :'digits' => :'digits',
+        :'sms_from_number' => :'sms_from_number',
         :'speech' => :'speech',
         :'text_message' => :'text_message'
       }
@@ -74,6 +78,7 @@ module UltracartClient
         :'action' => :'String',
         :'action_target' => :'String',
         :'digits' => :'Integer',
+        :'sms_from_number' => :'String',
         :'speech' => :'String',
         :'text_message' => :'String'
       }
@@ -112,6 +117,10 @@ module UltracartClient
         self.digits = attributes[:'digits']
       end
 
+      if attributes.key?(:'sms_from_number')
+        self.sms_from_number = attributes[:'sms_from_number']
+      end
+
       if attributes.key?(:'speech')
         self.speech = attributes[:'speech']
       end
@@ -133,6 +142,10 @@ module UltracartClient
         invalid_properties.push('invalid value for "action_target", the character length must be smaller than or equal to 50.')
       end
 
+      if !@sms_from_number.nil? && @sms_from_number.to_s.length > 25
+        invalid_properties.push('invalid value for "sms_from_number", the character length must be smaller than or equal to 25.')
+      end
+
       if !@text_message.nil? && @text_message.to_s.length > 1600
         invalid_properties.push('invalid value for "text_message", the character length must be smaller than or equal to 1600.')
       end
@@ -147,6 +160,7 @@ module UltracartClient
       return false unless action_validator.valid?(@action)
       return false if !@action.nil? && @action.to_s.length > 30
       return false if !@action_target.nil? && @action_target.to_s.length > 50
+      return false if !@sms_from_number.nil? && @sms_from_number.to_s.length > 25
       return false if !@text_message.nil? && @text_message.to_s.length > 1600
       true
     end
@@ -172,6 +186,16 @@ module UltracartClient
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] sms_from_number Value to be assigned
+    def sms_from_number=(sms_from_number)
+      if !sms_from_number.nil? && sms_from_number.to_s.length > 25
+        fail ArgumentError, 'invalid value for "sms_from_number", the character length must be smaller than or equal to 25.'
+      end
+
+      @sms_from_number = sms_from_number
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] text_message Value to be assigned
     def text_message=(text_message)
       if !text_message.nil? && text_message.to_s.length > 1600
@@ -189,6 +213,7 @@ module UltracartClient
           action == o.action &&
           action_target == o.action_target &&
           digits == o.digits &&
+          sms_from_number == o.sms_from_number &&
           speech == o.speech &&
           text_message == o.text_message
     end
@@ -202,7 +227,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, action_target, digits, speech, text_message].hash
+      [action, action_target, digits, sms_from_number, speech, text_message].hash
     end
 
     # Builds the object from hash
