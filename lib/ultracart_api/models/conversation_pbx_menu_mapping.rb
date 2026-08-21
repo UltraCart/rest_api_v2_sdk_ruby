@@ -27,6 +27,9 @@ module UltracartClient
     # Speech
     attr_accessor :speech
 
+    # Text message body sent to the caller when the action is 'send text'.  Ignored for all other actions.
+    attr_accessor :text_message
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -55,7 +58,8 @@ module UltracartClient
         :'action' => :'action',
         :'action_target' => :'action_target',
         :'digits' => :'digits',
-        :'speech' => :'speech'
+        :'speech' => :'speech',
+        :'text_message' => :'text_message'
       }
     end
 
@@ -70,7 +74,8 @@ module UltracartClient
         :'action' => :'String',
         :'action_target' => :'String',
         :'digits' => :'Integer',
-        :'speech' => :'String'
+        :'speech' => :'String',
+        :'text_message' => :'String'
       }
     end
 
@@ -110,6 +115,10 @@ module UltracartClient
       if attributes.key?(:'speech')
         self.speech = attributes[:'speech']
       end
+
+      if attributes.key?(:'text_message')
+        self.text_message = attributes[:'text_message']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -124,23 +133,28 @@ module UltracartClient
         invalid_properties.push('invalid value for "action_target", the character length must be smaller than or equal to 50.')
       end
 
+      if !@text_message.nil? && @text_message.to_s.length > 1600
+        invalid_properties.push('invalid value for "text_message", the character length must be smaller than or equal to 1600.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      action_validator = EnumAttributeValidator.new('String', ["time based", "menu", "queue", "voicemail", "agent"])
+      action_validator = EnumAttributeValidator.new('String', ["time based", "menu", "queue", "voicemail", "agent", "send text"])
       return false unless action_validator.valid?(@action)
       return false if !@action.nil? && @action.to_s.length > 30
       return false if !@action_target.nil? && @action_target.to_s.length > 50
+      return false if !@text_message.nil? && @text_message.to_s.length > 1600
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] action Object to be assigned
     def action=(action)
-      validator = EnumAttributeValidator.new('String', ["time based", "menu", "queue", "voicemail", "agent"])
+      validator = EnumAttributeValidator.new('String', ["time based", "menu", "queue", "voicemail", "agent", "send text"])
       unless validator.valid?(action)
         fail ArgumentError, "invalid value for \"action\", must be one of #{validator.allowable_values}."
       end
@@ -157,6 +171,16 @@ module UltracartClient
       @action_target = action_target
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] text_message Value to be assigned
+    def text_message=(text_message)
+      if !text_message.nil? && text_message.to_s.length > 1600
+        fail ArgumentError, 'invalid value for "text_message", the character length must be smaller than or equal to 1600.'
+      end
+
+      @text_message = text_message
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -165,7 +189,8 @@ module UltracartClient
           action == o.action &&
           action_target == o.action_target &&
           digits == o.digits &&
-          speech == o.speech
+          speech == o.speech &&
+          text_message == o.text_message
     end
 
     # @see the `==` method
@@ -177,7 +202,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, action_target, digits, speech].hash
+      [action, action_target, digits, speech, text_message].hash
     end
 
     # Builds the object from hash
