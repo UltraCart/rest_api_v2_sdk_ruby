@@ -182,6 +182,81 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Adjusts the loyalty points for a customer by adding a record to the loyalty ledger.
+    # Adjusts the loyalty points for a customer by adding a record to the loyalty ledger.  The loyalty ledger is append only.  Records are never updated or deleted, so a correction is made by posting a second adjustment with the opposite sign. 
+    # @param customer_profile_oid [Integer] The customer profile oid
+    # @param adjust_loyalty_points_request [AdjustLoyaltyPointsRequest] adjustLoyaltyPointsRequest
+    # @param [Hash] opts the optional parameters
+    # @return [AdjustLoyaltyPointsResponse]
+    def adjust_loyalty_points(customer_profile_oid, adjust_loyalty_points_request, opts = {})
+      data, _status_code, _headers = adjust_loyalty_points_with_http_info(customer_profile_oid, adjust_loyalty_points_request, opts)
+      data
+    end
+
+    # Adjusts the loyalty points for a customer by adding a record to the loyalty ledger.
+    # Adjusts the loyalty points for a customer by adding a record to the loyalty ledger.  The loyalty ledger is append only.  Records are never updated or deleted, so a correction is made by posting a second adjustment with the opposite sign. 
+    # @param customer_profile_oid [Integer] The customer profile oid
+    # @param adjust_loyalty_points_request [AdjustLoyaltyPointsRequest] adjustLoyaltyPointsRequest
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AdjustLoyaltyPointsResponse, Integer, Hash)>] AdjustLoyaltyPointsResponse data, response status code and response headers
+    def adjust_loyalty_points_with_http_info(customer_profile_oid, adjust_loyalty_points_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.adjust_loyalty_points ...'
+      end
+      # verify the required parameter 'customer_profile_oid' is set
+      if @api_client.config.client_side_validation && customer_profile_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.adjust_loyalty_points"
+      end
+      # verify the required parameter 'adjust_loyalty_points_request' is set
+      if @api_client.config.client_side_validation && adjust_loyalty_points_request.nil?
+        fail ArgumentError, "Missing the required parameter 'adjust_loyalty_points_request' when calling CustomerApi.adjust_loyalty_points"
+      end
+      # resource path
+      local_var_path = '/customer/customers/{customer_profile_oid}/adjust_loyalty_points'.sub('{' + 'customer_profile_oid' + '}', CGI.escape(customer_profile_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(adjust_loyalty_points_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AdjustLoyaltyPointsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"CustomerApi.adjust_loyalty_points",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#adjust_loyalty_points\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete a customer
     # Delete a customer on the UltraCart account. 
     # @param customer_profile_oid [Integer] The customer_profile_oid to delete.
@@ -562,6 +637,70 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CustomerApi#get_customer_email_lists\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve the loyalty points, ledger and redemptions for a customer
+    # Retrieve the loyalty points, ledger and redemptions for a customer.  This is a convenience method that returns the same information as expanding loyalty on the customer object, without having to retrieve the entire customer. 
+    # @param customer_profile_oid [Integer] The customer oid to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @return [CustomerLoyaltyResponse]
+    def get_customer_loyalty(customer_profile_oid, opts = {})
+      data, _status_code, _headers = get_customer_loyalty_with_http_info(customer_profile_oid, opts)
+      data
+    end
+
+    # Retrieve the loyalty points, ledger and redemptions for a customer
+    # Retrieve the loyalty points, ledger and redemptions for a customer.  This is a convenience method that returns the same information as expanding loyalty on the customer object, without having to retrieve the entire customer. 
+    # @param customer_profile_oid [Integer] The customer oid to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomerLoyaltyResponse, Integer, Hash)>] CustomerLoyaltyResponse data, response status code and response headers
+    def get_customer_loyalty_with_http_info(customer_profile_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CustomerApi.get_customer_loyalty ...'
+      end
+      # verify the required parameter 'customer_profile_oid' is set
+      if @api_client.config.client_side_validation && customer_profile_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'customer_profile_oid' when calling CustomerApi.get_customer_loyalty"
+      end
+      # resource path
+      local_var_path = '/customer/customers/{customer_profile_oid}/loyalty'.sub('{' + 'customer_profile_oid' + '}', CGI.escape(customer_profile_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CustomerLoyaltyResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"CustomerApi.get_customer_loyalty",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomerApi#get_customer_loyalty\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

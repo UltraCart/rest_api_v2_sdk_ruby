@@ -6,12 +6,14 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | ------ | ------------ | ----------- |
 | [**add_customer_store_credit**](CustomerApi.md#add_customer_store_credit) | **POST** /customer/customers/{customer_profile_oid}/store_credit | Adds store credit to a customer |
 | [**adjust_internal_certificate**](CustomerApi.md#adjust_internal_certificate) | **POST** /customer/customers/{customer_profile_oid}/adjust_cashback_balance | Updates the cashback balance for a customer by updating the internal gift certificate used, creating the gift certificate if needed. |
+| [**adjust_loyalty_points**](CustomerApi.md#adjust_loyalty_points) | **POST** /customer/customers/{customer_profile_oid}/adjust_loyalty_points | Adjusts the loyalty points for a customer by adding a record to the loyalty ledger. |
 | [**delete_customer**](CustomerApi.md#delete_customer) | **DELETE** /customer/customers/{customer_profile_oid} | Delete a customer |
 | [**delete_wish_list_item**](CustomerApi.md#delete_wish_list_item) | **DELETE** /customer/customers/{customer_profile_oid}/wishlist/{customer_wishlist_item_oid} | Delete a customer wishlist item |
 | [**get_customer**](CustomerApi.md#get_customer) | **GET** /customer/customers/{customer_profile_oid} | Retrieve a customer |
 | [**get_customer_by_email**](CustomerApi.md#get_customer_by_email) | **GET** /customer/customers/by_email/{email} | Retrieve a customer by Email |
 | [**get_customer_editor_values**](CustomerApi.md#get_customer_editor_values) | **GET** /customer/editor_values | Retrieve values needed for a customer profile editor |
 | [**get_customer_email_lists**](CustomerApi.md#get_customer_email_lists) | **GET** /customer/email_lists | Retrieve all email lists across all storefronts |
+| [**get_customer_loyalty**](CustomerApi.md#get_customer_loyalty) | **GET** /customer/customers/{customer_profile_oid}/loyalty | Retrieve the loyalty points, ledger and redemptions for a customer |
 | [**get_customer_store_credit**](CustomerApi.md#get_customer_store_credit) | **GET** /customer/customers/{customer_profile_oid}/store_credit | Retrieve the customer store credit accumulated through loyalty programs |
 | [**get_customer_wish_list**](CustomerApi.md#get_customer_wish_list) | **GET** /customer/customers/{customer_profile_oid}/wishlist | Retrieve wishlist items for customer |
 | [**get_customer_wish_list_item**](CustomerApi.md#get_customer_wish_list_item) | **GET** /customer/customers/{customer_profile_oid}/wishlist/{customer_wishlist_item_oid} | Retrieve wishlist item for customer |
@@ -238,6 +240,60 @@ end
 ### Return type
 
 [**AdjustInternalCertificateResponse**](AdjustInternalCertificateResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## adjust_loyalty_points
+
+> <AdjustLoyaltyPointsResponse> adjust_loyalty_points(customer_profile_oid, adjust_loyalty_points_request)
+
+Adjusts the loyalty points for a customer by adding a record to the loyalty ledger.
+
+Adjusts the loyalty points for a customer by adding a record to the loyalty ledger.  The loyalty ledger is append only.  Records are never updated or deleted, so a correction is made by posting a second adjustment with the opposite sign. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the adjust_loyalty_points_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AdjustLoyaltyPointsResponse>, Integer, Hash)> adjust_loyalty_points_with_http_info(customer_profile_oid, adjust_loyalty_points_request)
+
+```ruby
+begin
+  # Adjusts the loyalty points for a customer by adding a record to the loyalty ledger.
+  data, status_code, headers = api_instance.adjust_loyalty_points_with_http_info(customer_profile_oid, adjust_loyalty_points_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AdjustLoyaltyPointsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->adjust_loyalty_points_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer_profile_oid** | **Integer** | The customer profile oid |  |
+| **adjust_loyalty_points_request** | [**AdjustLoyaltyPointsRequest**](AdjustLoyaltyPointsRequest.md) | adjustLoyaltyPointsRequest |  |
+
+### Return type
+
+[**AdjustLoyaltyPointsResponse**](AdjustLoyaltyPointsResponse.md)
 
 ### Authorization
 
@@ -754,6 +810,59 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**EmailListsResponse**](EmailListsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_customer_loyalty
+
+> <CustomerLoyaltyResponse> get_customer_loyalty(customer_profile_oid)
+
+Retrieve the loyalty points, ledger and redemptions for a customer
+
+Retrieve the loyalty points, ledger and redemptions for a customer.  This is a convenience method that returns the same information as expanding loyalty on the customer object, without having to retrieve the entire customer. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_customer_loyalty_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CustomerLoyaltyResponse>, Integer, Hash)> get_customer_loyalty_with_http_info(customer_profile_oid)
+
+```ruby
+begin
+  # Retrieve the loyalty points, ledger and redemptions for a customer
+  data, status_code, headers = api_instance.get_customer_loyalty_with_http_info(customer_profile_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CustomerLoyaltyResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling CustomerApi->get_customer_loyalty_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **customer_profile_oid** | **Integer** | The customer oid to retrieve. |  |
+
+### Return type
+
+[**CustomerLoyaltyResponse**](CustomerLoyaltyResponse.md)
 
 ### Authorization
 
