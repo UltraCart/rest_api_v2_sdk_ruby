@@ -7,6 +7,7 @@
 | **advertising_source** | **String** | advertising_source | [optional] |
 | **affiliate_id** | **String** | Affiliate Id | [optional] |
 | **affiliate_sub_id** | **String** | Affiliate Sub Id | [optional] |
+| **arbitrary_pricing_tier_names** | **Array&lt;String&gt;** | Names of pricing tiers to price this order against, without associating a customer profile.  An unknown tier name will fail the import.  An item that also supplies arbitrary_unit_cost keeps that cost and ignores the tier.  If a customer profile is attached to this order during checkout, these tiers are granted to that profile permanently. | [optional] |
 | **arbitrary_shipping_handling_total** | **Float** | Arbitrary shipping handling total | [optional] |
 | **arbitrary_subtotal_discount** | **Float** | Arbitrary subtotal discount for overriding the calculated subtotal discount.  Send the gross price in the item arbitrary unit cost and the discount here. | [optional] |
 | **arbitrary_tax** | **Float** | Arbitrary tax for overriding calculated taxes | [optional] |
@@ -111,6 +112,7 @@ instance = UltracartClient::ChannelPartnerOrder.new(
   advertising_source: null,
   affiliate_id: null,
   affiliate_sub_id: null,
+  arbitrary_pricing_tier_names: null,
   arbitrary_shipping_handling_total: null,
   arbitrary_subtotal_discount: null,
   arbitrary_tax: null,

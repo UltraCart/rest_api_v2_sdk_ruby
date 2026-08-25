@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class OrderChannelPartner
+    # Names of pricing tiers to price this order against, without associating a customer profile.  An unknown tier name will fail the import.  An item that also supplies arbitrary_unit_cost keeps that cost and ignores the tier.  If a customer profile is attached to this order during checkout, these tiers are granted to that profile permanently.  Only applicable on inserting orders.
+    attr_accessor :arbitrary_pricing_tier_names
+
     # If true, any purchase order submitted is automatically approved
     attr_accessor :auto_approve_purchase_order
 
@@ -54,6 +57,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'arbitrary_pricing_tier_names' => :'arbitrary_pricing_tier_names',
         :'auto_approve_purchase_order' => :'auto_approve_purchase_order',
         :'channel_partner_code' => :'channel_partner_code',
         :'channel_partner_data' => :'channel_partner_data',
@@ -77,6 +81,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'arbitrary_pricing_tier_names' => :'Array<String>',
         :'auto_approve_purchase_order' => :'Boolean',
         :'channel_partner_code' => :'String',
         :'channel_partner_data' => :'String',
@@ -112,6 +117,12 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'arbitrary_pricing_tier_names')
+        if (value = attributes[:'arbitrary_pricing_tier_names']).is_a?(Array)
+          self.arbitrary_pricing_tier_names = value
+        end
+      end
 
       if attributes.key?(:'auto_approve_purchase_order')
         self.auto_approve_purchase_order = attributes[:'auto_approve_purchase_order']
@@ -195,6 +206,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          arbitrary_pricing_tier_names == o.arbitrary_pricing_tier_names &&
           auto_approve_purchase_order == o.auto_approve_purchase_order &&
           channel_partner_code == o.channel_partner_code &&
           channel_partner_data == o.channel_partner_data &&
@@ -218,7 +230,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_approve_purchase_order, channel_partner_code, channel_partner_data, channel_partner_oid, channel_partner_order_id, ignore_invalid_shipping_method, no_realtime_payment_processing, skip_auto_order_setup, skip_payment_processing, store_completed, store_if_payment_declines, treat_warnings_as_errors].hash
+      [arbitrary_pricing_tier_names, auto_approve_purchase_order, channel_partner_code, channel_partner_data, channel_partner_oid, channel_partner_order_id, ignore_invalid_shipping_method, no_realtime_payment_processing, skip_auto_order_setup, skip_payment_processing, store_completed, store_if_payment_declines, treat_warnings_as_errors].hash
     end
 
     # Builds the object from hash
