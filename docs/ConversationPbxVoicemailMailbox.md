@@ -1,0 +1,46 @@
+# UltracartClient::ConversationPbxVoicemailMailbox
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **context_merchant_id** | **String** | Optional child merchant ID this resource is assigned to. Null &#x3D; shared across the linked merchant group. | [optional] |
+| **conversation_pbx_voicemail_mailbox_uuid** | **String** | Conversation Pbx Voicemail Mailbox UUID | [optional] |
+| **merchant_id** | **String** | Merchant Id | [optional] |
+| **send_notices_to_channel** | **String** | Send notices to channel | [optional] |
+| **send_notices_to_email** | **String** | Send notices to email | [optional] |
+| **send_notices_to_zoho_desk_department_id** | **String** | Send notices to Zoho Desk department id | [optional] |
+| **user_id** | **Integer** | User Id | [optional] |
+| **voicemail_followup_play_audio_uuid** | **String** | Voicemail follow play audio UUID | [optional] |
+| **voicemail_followup_say** | **String** | Voicemail followup say | [optional] |
+| **voicemail_followup_say_voice** | **String** | Voicemail followup say voice | [optional] |
+| **voicemail_mailbox_id** | **String** | Voicemail mailbox id | [optional] |
+| **voicemail_mailbox_type** | **String** | Voicemail mailbox type | [optional] |
+| **voicemail_prompt_play_audio_uuid** | **String** | Voicemail prompt play audio UUID | [optional] |
+| **voicemail_prompt_say** | **String** | Voicemail prompt say | [optional] |
+| **voicemail_prompt_say_voice** | **String** | Voicemail prompt say voice | [optional] |
+
+## Example
+
+```ruby
+require 'ultracart_api'
+
+instance = UltracartClient::ConversationPbxVoicemailMailbox.new(
+  context_merchant_id: null,
+  conversation_pbx_voicemail_mailbox_uuid: null,
+  merchant_id: null,
+  send_notices_to_channel: null,
+  send_notices_to_email: null,
+  send_notices_to_zoho_desk_department_id: null,
+  user_id: null,
+  voicemail_followup_play_audio_uuid: null,
+  voicemail_followup_say: null,
+  voicemail_followup_say_voice: null,
+  voicemail_mailbox_id: null,
+  voicemail_mailbox_type: null,
+  voicemail_prompt_play_audio_uuid: null,
+  voicemail_prompt_say: null,
+  voicemail_prompt_say_voice: null
+)
+```
+
