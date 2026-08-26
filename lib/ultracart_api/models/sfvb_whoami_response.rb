@@ -24,6 +24,15 @@ module UltracartClient
     # How this token authenticated - Oauth2, Simple Key, Public/Private Key or Browser Key.
     attr_accessor :authentication_type
 
+    # True when this token may write a target that is currently live - an active upsell offer, an email on a delivering flow, the active theme, the storefront root.  Never infer this; it is the difference between a draft edit and a shopper visible change.
+    attr_accessor :can_publish
+
+    # True when this token may read.  Do not infer this from the requested scope name.
+    attr_accessor :can_read
+
+    # True when this token may write.  Writing a target that is not currently live needs only this.
+    attr_accessor :can_write
+
     # Device scope name, when this is a device flow token.
     attr_accessor :device_scope
 
@@ -51,6 +60,9 @@ module UltracartClient
         :'acting_as_user' => :'actingAsUser',
         :'application_name' => :'applicationName',
         :'authentication_type' => :'authenticationType',
+        :'can_publish' => :'canPublish',
+        :'can_read' => :'canRead',
+        :'can_write' => :'canWrite',
         :'device_scope' => :'deviceScope',
         :'login' => :'login',
         :'merchant_id' => :'merchantId',
@@ -72,6 +84,9 @@ module UltracartClient
         :'acting_as_user' => :'Boolean',
         :'application_name' => :'String',
         :'authentication_type' => :'String',
+        :'can_publish' => :'Boolean',
+        :'can_read' => :'Boolean',
+        :'can_write' => :'Boolean',
         :'device_scope' => :'String',
         :'login' => :'String',
         :'merchant_id' => :'String',
@@ -113,6 +128,18 @@ module UltracartClient
 
       if attributes.key?(:'authentication_type')
         self.authentication_type = attributes[:'authentication_type']
+      end
+
+      if attributes.key?(:'can_publish')
+        self.can_publish = attributes[:'can_publish']
+      end
+
+      if attributes.key?(:'can_read')
+        self.can_read = attributes[:'can_read']
+      end
+
+      if attributes.key?(:'can_write')
+        self.can_write = attributes[:'can_write']
       end
 
       if attributes.key?(:'device_scope')
@@ -169,6 +196,9 @@ module UltracartClient
           acting_as_user == o.acting_as_user &&
           application_name == o.application_name &&
           authentication_type == o.authentication_type &&
+          can_publish == o.can_publish &&
+          can_read == o.can_read &&
+          can_write == o.can_write &&
           device_scope == o.device_scope &&
           login == o.login &&
           merchant_id == o.merchant_id &&
@@ -187,7 +217,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [acting_as_user, application_name, authentication_type, device_scope, login, merchant_id, scopes, storefronts, storefronts_withheld, user_name].hash
+      [acting_as_user, application_name, authentication_type, can_publish, can_read, can_write, device_scope, login, merchant_id, scopes, storefronts, storefronts_withheld, user_name].hash
     end
 
     # Builds the object from hash

@@ -7,6 +7,9 @@
 | **acting_as_user** | **Boolean** | True when this token resolves to a merchant user.  Preview sessions and file writes need one, because they are recorded against the person who approved the token.  Only device flow tokens resolve a user, so a plain API key will see this false. | [optional] |
 | **application_name** | **String** | Description of the application this credential belongs to. | [optional] |
 | **authentication_type** | **String** | How this token authenticated - Oauth2, Simple Key, Public/Private Key or Browser Key. | [optional] |
+| **can_publish** | **Boolean** | True when this token may write a target that is currently live - an active upsell offer, an email on a delivering flow, the active theme, the storefront root.  Never infer this; it is the difference between a draft edit and a shopper visible change. | [optional] |
+| **can_read** | **Boolean** | True when this token may read.  Do not infer this from the requested scope name. | [optional] |
+| **can_write** | **Boolean** | True when this token may write.  Writing a target that is not currently live needs only this. | [optional] |
 | **device_scope** | **String** | Device scope name, when this is a device flow token. | [optional] |
 | **login** | **String** | Login of the user who approved this token.  Populated for device flow tokens; null for plain API key credentials. | [optional] |
 | **merchant_id** | **String** | Merchant id this token acts against. | [optional] |
@@ -24,6 +27,9 @@ instance = UltracartClient::SfvbWhoamiResponse.new(
   acting_as_user: null,
   application_name: null,
   authentication_type: null,
+  can_publish: null,
+  can_read: null,
+  can_write: null,
   device_scope: null,
   login: null,
   merchant_id: null,
