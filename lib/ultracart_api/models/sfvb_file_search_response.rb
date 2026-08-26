@@ -43,13 +43,13 @@ module UltracartClient
     def self.attribute_map
       {
         :'files' => :'files',
-        :'max_results' => :'maxResults',
-        :'next_offset' => :'nextOffset',
+        :'max_results' => :'max_results',
+        :'next_offset' => :'next_offset',
         :'offset' => :'offset',
-        :'result_count' => :'resultCount',
-        :'total_count' => :'totalCount',
+        :'result_count' => :'result_count',
+        :'total_count' => :'total_count',
         :'truncated' => :'truncated',
-        :'truncation_advice' => :'truncationAdvice'
+        :'truncation_advice' => :'truncation_advice'
       }
     end
 

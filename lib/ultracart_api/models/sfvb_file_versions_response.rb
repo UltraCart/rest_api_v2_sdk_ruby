@@ -27,7 +27,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'fs_file_oid' => :'fsFileOid',
+        :'fs_file_oid' => :'fs_file_oid',
         :'path' => :'path',
         :'versions' => :'versions'
       }

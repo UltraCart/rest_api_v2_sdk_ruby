@@ -27,7 +27,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'element_count' => :'elementCount',
+        :'element_count' => :'element_count',
         :'elements' => :'elements',
         :'version' => :'version'
       }

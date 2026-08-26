@@ -51,16 +51,16 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'auto_compiled' => :'autoCompiled',
+        :'auto_compiled' => :'auto_compiled',
         :'content' => :'content',
-        :'fs_file_oid' => :'fsFileOid',
-        :'hash_sha256' => :'hashSha256',
-        :'mime_type' => :'mimeType',
+        :'fs_file_oid' => :'fs_file_oid',
+        :'hash_sha256' => :'hash_sha256',
+        :'mime_type' => :'mime_type',
         :'path' => :'path',
         :'size' => :'size',
         :'truncated' => :'truncated',
         :'valid' => :'valid',
-        :'velocity_errors' => :'velocityErrors',
+        :'velocity_errors' => :'velocity_errors',
         :'version' => :'version'
       }
     end

@@ -39,13 +39,13 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'expires_in_seconds' => :'expiresInSeconds',
+        :'expires_in_seconds' => :'expires_in_seconds',
         :'path' => :'path',
-        :'preview_session_id' => :'previewSessionId',
-        :'preview_url' => :'previewUrl',
-        :'requires_browser_session' => :'requiresBrowserSession',
+        :'preview_session_id' => :'preview_session_id',
+        :'preview_url' => :'preview_url',
+        :'requires_browser_session' => :'requires_browser_session',
         :'shareable' => :'shareable',
-        :'usage_note' => :'usageNote'
+        :'usage_note' => :'usage_note'
       }
     end
 

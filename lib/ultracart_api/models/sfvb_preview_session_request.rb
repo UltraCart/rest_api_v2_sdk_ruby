@@ -25,7 +25,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'containers' => :'containers',
-        :'theme_oid' => :'themeOid'
+        :'theme_oid' => :'theme_oid'
       }
     end
 

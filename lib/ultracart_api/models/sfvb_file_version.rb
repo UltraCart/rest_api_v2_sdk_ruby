@@ -47,10 +47,10 @@ module UltracartClient
       {
         :'comment' => :'comment',
         :'current' => :'current',
-        :'edited_by' => :'editedBy',
-        :'fs_file_history_oid' => :'fsFileHistoryOid',
-        :'hash_sha256' => :'hashSha256',
-        :'last_modified' => :'lastModified',
+        :'edited_by' => :'edited_by',
+        :'fs_file_history_oid' => :'fs_file_history_oid',
+        :'hash_sha256' => :'hash_sha256',
+        :'last_modified' => :'last_modified',
         :'revertable' => :'revertable',
         :'size' => :'size',
         :'version' => :'version'

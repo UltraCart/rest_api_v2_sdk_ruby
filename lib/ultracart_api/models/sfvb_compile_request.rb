@@ -34,9 +34,9 @@ module UltracartClient
     def self.attribute_map
       {
         :'cjson' => :'cjson',
-        :'container_name' => :'containerName',
-        :'storefront_oid' => :'storefrontOid',
-        :'theme_oid' => :'themeOid',
+        :'container_name' => :'container_name',
+        :'storefront_oid' => :'storefront_oid',
+        :'theme_oid' => :'theme_oid',
         :'validate' => :'validate'
       }
     end

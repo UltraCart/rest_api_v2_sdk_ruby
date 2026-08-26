@@ -24,7 +24,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'schema_available' => :'schemaAvailable',
+        :'schema_available' => :'schema_available',
         :'type' => :'type'
       }
     end

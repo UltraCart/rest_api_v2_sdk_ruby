@@ -56,10 +56,10 @@ module UltracartClient
     def self.attribute_map
       {
         :'cjson' => :'cjson',
-        :'container_name' => :'containerName',
-        :'include_warnings' => :'includeWarnings',
-        :'marketing_email' => :'marketingEmail',
-        :'owner_type' => :'ownerType'
+        :'container_name' => :'container_name',
+        :'include_warnings' => :'include_warnings',
+        :'marketing_email' => :'marketing_email',
+        :'owner_type' => :'owner_type'
       }
     end
 

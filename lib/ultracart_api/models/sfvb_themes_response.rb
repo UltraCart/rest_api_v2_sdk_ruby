@@ -24,7 +24,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'active_theme_oid' => :'activeThemeOid',
+        :'active_theme_oid' => :'active_theme_oid',
         :'themes' => :'themes'
       }
     end

@@ -35,10 +35,10 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'container_id' => :'containerId',
+        :'container_id' => :'container_id',
         :'directives' => :'directives',
         :'success' => :'success',
-        :'used_elements' => :'usedElements',
+        :'used_elements' => :'used_elements',
         :'validation' => :'validation',
         :'velocity' => :'velocity'
       }

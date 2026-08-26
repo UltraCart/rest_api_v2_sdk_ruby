@@ -72,7 +72,7 @@ module UltracartClient
       {
         :'code' => :'code',
         :'column' => :'column',
-        :'did_you_mean' => :'didYouMean',
+        :'did_you_mean' => :'did_you_mean',
         :'expected' => :'expected',
         :'found' => :'found',
         :'line' => :'line',

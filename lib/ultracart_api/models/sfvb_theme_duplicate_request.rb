@@ -28,8 +28,8 @@ module UltracartClient
     def self.attribute_map
       {
         :'folder' => :'folder',
-        :'target_storefront_oid' => :'targetStorefrontOid',
-        :'theme_name' => :'themeName'
+        :'target_storefront_oid' => :'target_storefront_oid',
+        :'theme_name' => :'theme_name'
       }
     end
 

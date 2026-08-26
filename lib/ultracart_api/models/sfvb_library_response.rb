@@ -37,11 +37,11 @@ module UltracartClient
     def self.attribute_map
       {
         :'facets' => :'facets',
-        :'first_result_number' => :'firstResultNumber',
-        :'last_result_number' => :'lastResultNumber',
+        :'first_result_number' => :'first_result_number',
+        :'last_result_number' => :'last_result_number',
         :'results' => :'results',
-        :'total_pages' => :'totalPages',
-        :'total_results' => :'totalResults'
+        :'total_pages' => :'total_pages',
+        :'total_results' => :'total_results'
       }
     end
 

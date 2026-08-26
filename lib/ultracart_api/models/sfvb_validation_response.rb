@@ -31,7 +31,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'errors' => :'errors',
-        :'used_elements' => :'usedElements',
+        :'used_elements' => :'used_elements',
         :'valid' => :'valid',
         :'warnings' => :'warnings'
       }

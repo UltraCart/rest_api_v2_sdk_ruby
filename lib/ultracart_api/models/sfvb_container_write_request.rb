@@ -30,10 +30,10 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'allow_warnings' => :'allowWarnings',
+        :'allow_warnings' => :'allow_warnings',
         :'cjson' => :'cjson',
         :'comment' => :'comment',
-        :'marketing_email' => :'marketingEmail'
+        :'marketing_email' => :'marketing_email'
       }
     end
 

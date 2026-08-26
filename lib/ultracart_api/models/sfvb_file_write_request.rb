@@ -29,7 +29,7 @@ module UltracartClient
       {
         :'comment' => :'comment',
         :'content' => :'content',
-        :'create_if_missing' => :'createIfMissing'
+        :'create_if_missing' => :'create_if_missing'
       }
     end
 

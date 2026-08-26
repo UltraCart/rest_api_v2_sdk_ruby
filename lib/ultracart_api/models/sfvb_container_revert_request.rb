@@ -25,7 +25,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'comment' => :'comment',
-        :'container_history_oid' => :'containerHistoryOid'
+        :'container_history_oid' => :'container_history_oid'
       }
     end
 
