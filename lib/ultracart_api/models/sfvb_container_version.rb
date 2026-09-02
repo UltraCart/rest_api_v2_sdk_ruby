@@ -21,7 +21,7 @@ module UltracartClient
     # Comment recorded with the write that replaced this version.
     attr_accessor :comment
 
-    # History record oid.  Pass to the revert operation on the owning container.
+    # History record oid.  Pass to the revert operation on the owning container.  Absent on the entry marked current, which holds the value stored right now, has no history row of its own, and so cannot be fetched or reverted to.
     attr_accessor :container_history_oid
 
     # Container name, where the owner has more than one container.

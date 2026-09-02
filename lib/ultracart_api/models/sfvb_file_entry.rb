@@ -24,7 +24,7 @@ module UltracartClient
     # StoreFront file system directory oid.  For a directory this is its own oid; for a file it is the parent.
     attr_accessor :fs_directory_oid
 
-    # StoreFront file system file oid.
+    # StoreFront file system file oid.  Absent on a directory entry, which has no file oid.
     attr_accessor :fs_file_oid
 
     # SHA-256 of the content.  Use as the If-Match value when writing.
@@ -57,7 +57,7 @@ module UltracartClient
     # False when the file failed Velocity validation on its last write.
     attr_accessor :valid
 
-    # Current version number of the file.
+    # Current version number of the file.  Absent on a directory entry, which is not versioned.
     attr_accessor :version
 
     # Attribute mapping from ruby-style variable name to JSON key.
