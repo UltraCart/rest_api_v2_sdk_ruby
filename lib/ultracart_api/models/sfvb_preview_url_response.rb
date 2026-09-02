@@ -30,7 +30,7 @@ module UltracartClient
     # Always true.  The preview only applies to a request carrying the UltraCart admin session cookie of the user who authorised this token.  Fetched without it, the URL returns the LIVE page with a 200 and no error, so a successful fetch is not evidence the preview was applied.  Present this URL for a human to open; do not fetch it.
     attr_accessor :requires_browser_session
 
-    # Always false.  The session is keyed by individual login, so anyone else opening this URL sees the live page rather than the preview.
+    # The session is keyed by individual login, so anyone else opening this URL sees the live page rather than the preview.  This is false in every response, which means it is absent from the JSON - false booleans are omitted across this API, so a generated client sees undefined rather than false.  Do not test it for equality with false.  usage_note carries the same warning as a string and does survive.
     attr_accessor :shareable
 
     # Plain language restatement of the two flags above, safe to show a user.
