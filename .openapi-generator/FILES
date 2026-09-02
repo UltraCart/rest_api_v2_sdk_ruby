@@ -995,6 +995,8 @@ docs/SfvbFileEntry.md
 docs/SfvbFileRevertRequest.md
 docs/SfvbFileSearchRequest.md
 docs/SfvbFileSearchResponse.md
+docs/SfvbFileUploadRequest.md
+docs/SfvbFileUploadUrlResponse.md
 docs/SfvbFileVersion.md
 docs/SfvbFileVersionsResponse.md
 docs/SfvbFileWriteRequest.md
@@ -2117,6 +2119,8 @@ lib/ultracart_api/models/sfvb_file_entry.rb
 lib/ultracart_api/models/sfvb_file_revert_request.rb
 lib/ultracart_api/models/sfvb_file_search_request.rb
 lib/ultracart_api/models/sfvb_file_search_response.rb
+lib/ultracart_api/models/sfvb_file_upload_request.rb
+lib/ultracart_api/models/sfvb_file_upload_url_response.rb
 lib/ultracart_api/models/sfvb_file_version.rb
 lib/ultracart_api/models/sfvb_file_versions_response.rb
 lib/ultracart_api/models/sfvb_file_write_request.rb

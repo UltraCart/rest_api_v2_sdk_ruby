@@ -309,6 +309,73 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Read a storefront file's raw bytes
+    # Returns the file itself rather than a JSON envelope, for any type including binaries that files/content refuses.  Use this to verify what you uploaded, and note it is the only way to read a file inside a theme that is not active - such a file is served to nobody until the theme is promoted, so it has no public URL to fetch instead.  On success the body is the file; on failure it is the usual JSON error object, so do not assume the content type without checking the status. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :path 
+    # @return [nil]
+    def download_sfvb_file(storefront_oid, opts = {})
+      download_sfvb_file_with_http_info(storefront_oid, opts)
+      nil
+    end
+
+    # Read a storefront file&#39;s raw bytes
+    # Returns the file itself rather than a JSON envelope, for any type including binaries that files/content refuses.  Use this to verify what you uploaded, and note it is the only way to read a file inside a theme that is not active - such a file is served to nobody until the theme is promoted, so it has no public URL to fetch instead.  On success the body is the file; on failure it is the usual JSON error object, so do not assume the content type without checking the status. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :path 
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def download_sfvb_file_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.download_sfvb_file ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.download_sfvb_file"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/files/download'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'path'] = opts[:'path'] if !opts[:'path'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.download_sfvb_file",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#download_sfvb_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Duplicate a theme
     # Copies a theme into a new one and returns a job handle to poll.  Asynchronous, because copying a theme copies every file in it.  Needs sfvb_write rather than sfvb_publish, because the job explicitly does not activate what it creates, so the worst outcome of a mistaken call is a spare theme.  This is how you get somewhere safe to work - duplicate, edit the copy with an ordinary write scope, and let a human promote it. 
     # @param storefront_oid [Integer] 
@@ -678,7 +745,7 @@ module UltracartClient
     end
 
     # Read a storefront file
-    # Returns the current content, or an earlier version when version is supplied.  The content hash is returned as an ETag; send it back as If-Match when writing. 
+    # Returns the current content, or an earlier version when version is supplied.  Send the body's hash_sha256 back as If-Match when writing.  The ETag header carries the same hash, but a compressing proxy may append a suffix such as -gzip to it, so prefer the body value. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :path 
@@ -690,7 +757,7 @@ module UltracartClient
     end
 
     # Read a storefront file
-    # Returns the current content, or an earlier version when version is supplied.  The content hash is returned as an ETag; send it back as If-Match when writing. 
+    # Returns the current content, or an earlier version when version is supplied.  Send the body&#39;s hash_sha256 back as If-Match when writing.  The ETag header carries the same hash, but a compressing proxy may append a suffix such as -gzip to it, so prefer the body value. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :path 
@@ -743,6 +810,76 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_file_content\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get a URL to upload a binary asset to
+    # Binary content does not travel through this API as JSON, so uploading an image, font, video or PDF is two steps.  Ask here for a URL, PUT the raw bytes straight to it, then call uploadSfvbFile quoting the key you were given.  The bytes never pass through the API server.  The extension is checked against the accepted type list before a URL is issued, so an unsupported type fails here rather than after you have sent the file.  The URL is short lived and the key is bound to your account. 
+    # @param storefront_oid [Integer] 
+    # @param extension [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbFileUploadUrlResponse]
+    def get_sfvb_file_upload_url(storefront_oid, extension, opts = {})
+      data, _status_code, _headers = get_sfvb_file_upload_url_with_http_info(storefront_oid, extension, opts)
+      data
+    end
+
+    # Get a URL to upload a binary asset to
+    # Binary content does not travel through this API as JSON, so uploading an image, font, video or PDF is two steps.  Ask here for a URL, PUT the raw bytes straight to it, then call uploadSfvbFile quoting the key you were given.  The bytes never pass through the API server.  The extension is checked against the accepted type list before a URL is issued, so an unsupported type fails here rather than after you have sent the file.  The URL is short lived and the key is bound to your account. 
+    # @param storefront_oid [Integer] 
+    # @param extension [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbFileUploadUrlResponse, Integer, Hash)>] SfvbFileUploadUrlResponse data, response status code and response headers
+    def get_sfvb_file_upload_url_with_http_info(storefront_oid, extension, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_file_upload_url ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_file_upload_url"
+      end
+      # verify the required parameter 'extension' is set
+      if @api_client.config.client_side_validation && extension.nil?
+        fail ArgumentError, "Missing the required parameter 'extension' when calling SfvbApi.get_sfvb_file_upload_url"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/files/upload_url/{extension}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'extension' + '}', CGI.escape(extension.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbFileUploadUrlResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_file_upload_url",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_file_upload_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2408,6 +2545,84 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#search_sfvb_library\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Store a binary asset that was already uploaded
+    # The second half of the two step upload.  The bytes are fetched from the key, checked against the extension they claim to be, and written exactly as a text write is - so the same If-Match precondition, the same read only refusal and the same publish gate apply.  An SVG is sanitized before it is stored.  Writing outside /themes/ requires sfvb_publish, because anything served off the storefront root is live by definition. 
+    # @param storefront_oid [Integer] 
+    # @param file_upload_request [SfvbFileUploadRequest] Where to store the uploaded bytes
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :if_match Content hash from the last read.  Required when the file already exists; 428 when absent, 412 when stale.
+    # @return [SfvbFileWriteResponse]
+    def upload_sfvb_file(storefront_oid, file_upload_request, opts = {})
+      data, _status_code, _headers = upload_sfvb_file_with_http_info(storefront_oid, file_upload_request, opts)
+      data
+    end
+
+    # Store a binary asset that was already uploaded
+    # The second half of the two step upload.  The bytes are fetched from the key, checked against the extension they claim to be, and written exactly as a text write is - so the same If-Match precondition, the same read only refusal and the same publish gate apply.  An SVG is sanitized before it is stored.  Writing outside /themes/ requires sfvb_publish, because anything served off the storefront root is live by definition. 
+    # @param storefront_oid [Integer] 
+    # @param file_upload_request [SfvbFileUploadRequest] Where to store the uploaded bytes
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :if_match Content hash from the last read.  Required when the file already exists; 428 when absent, 412 when stale.
+    # @return [Array<(SfvbFileWriteResponse, Integer, Hash)>] SfvbFileWriteResponse data, response status code and response headers
+    def upload_sfvb_file_with_http_info(storefront_oid, file_upload_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.upload_sfvb_file ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.upload_sfvb_file"
+      end
+      # verify the required parameter 'file_upload_request' is set
+      if @api_client.config.client_side_validation && file_upload_request.nil?
+        fail ArgumentError, "Missing the required parameter 'file_upload_request' when calling SfvbApi.upload_sfvb_file"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/files/upload'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = opts[:'if_match'] if !opts[:'if_match'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(file_upload_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbFileWriteResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.upload_sfvb_file",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#upload_sfvb_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

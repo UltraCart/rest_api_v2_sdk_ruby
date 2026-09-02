@@ -14,54 +14,26 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbFileContentResponse
-    # True when this file is compiler output and must not be edited directly.
-    attr_accessor :auto_compiled
+  class SfvbFileUploadUrlResponse
+    # Seconds until the upload URL stops working.  Ask for a new one rather than holding this across a long job.
+    attr_accessor :expires_in_seconds
 
-    # UTF-8 content.  Only text/* files can be read this way.
-    attr_accessor :content
+    # HTTP method the upload URL expects.
+    attr_accessor :http_method
 
-    # StoreFront file system file oid.
-    attr_accessor :fs_file_oid
+    # Quote this back to the upload endpoint once the bytes are in place.  It identifies the uploaded object and is bound to your account.
+    attr_accessor :key
 
-    # SHA-256 of the content.  Send this back as If-Match when writing.  The ETag header carries the same hash, but a compressing proxy may append a suffix such as -gzip to it, so this body value is the authoritative one.  Both forms are accepted on write.
-    attr_accessor :hash_sha256
-
-    # Mime type.
-    attr_accessor :mime_type
-
-    # Full path of the file.
-    attr_accessor :path
-
-    # Size in bytes.
-    attr_accessor :size
-
-    # True when the content was cut short.  Never truncated silently.
-    attr_accessor :truncated
-
-    # False when the file failed Velocity validation on its last write.
-    attr_accessor :valid
-
-    # Velocity errors recorded on the last write.  Null when valid.
-    attr_accessor :velocity_errors
-
-    # Version number of the content returned.
-    attr_accessor :version
+    # Send the raw bytes to this URL.  It is short lived and single use, and it is not part of this API - do not send an Authorization header with it.
+    attr_accessor :upload_url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'auto_compiled' => :'auto_compiled',
-        :'content' => :'content',
-        :'fs_file_oid' => :'fs_file_oid',
-        :'hash_sha256' => :'hash_sha256',
-        :'mime_type' => :'mime_type',
-        :'path' => :'path',
-        :'size' => :'size',
-        :'truncated' => :'truncated',
-        :'valid' => :'valid',
-        :'velocity_errors' => :'velocity_errors',
-        :'version' => :'version'
+        :'expires_in_seconds' => :'expires_in_seconds',
+        :'http_method' => :'http_method',
+        :'key' => :'key',
+        :'upload_url' => :'upload_url'
       }
     end
 
@@ -73,17 +45,10 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'auto_compiled' => :'Boolean',
-        :'content' => :'String',
-        :'fs_file_oid' => :'Integer',
-        :'hash_sha256' => :'String',
-        :'mime_type' => :'String',
-        :'path' => :'String',
-        :'size' => :'Integer',
-        :'truncated' => :'Boolean',
-        :'valid' => :'Boolean',
-        :'velocity_errors' => :'String',
-        :'version' => :'Integer'
+        :'expires_in_seconds' => :'Integer',
+        :'http_method' => :'String',
+        :'key' => :'String',
+        :'upload_url' => :'String'
       }
     end
 
@@ -97,59 +62,31 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbFileContentResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbFileUploadUrlResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbFileContentResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbFileUploadUrlResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'auto_compiled')
-        self.auto_compiled = attributes[:'auto_compiled']
+      if attributes.key?(:'expires_in_seconds')
+        self.expires_in_seconds = attributes[:'expires_in_seconds']
       end
 
-      if attributes.key?(:'content')
-        self.content = attributes[:'content']
+      if attributes.key?(:'http_method')
+        self.http_method = attributes[:'http_method']
       end
 
-      if attributes.key?(:'fs_file_oid')
-        self.fs_file_oid = attributes[:'fs_file_oid']
+      if attributes.key?(:'key')
+        self.key = attributes[:'key']
       end
 
-      if attributes.key?(:'hash_sha256')
-        self.hash_sha256 = attributes[:'hash_sha256']
-      end
-
-      if attributes.key?(:'mime_type')
-        self.mime_type = attributes[:'mime_type']
-      end
-
-      if attributes.key?(:'path')
-        self.path = attributes[:'path']
-      end
-
-      if attributes.key?(:'size')
-        self.size = attributes[:'size']
-      end
-
-      if attributes.key?(:'truncated')
-        self.truncated = attributes[:'truncated']
-      end
-
-      if attributes.key?(:'valid')
-        self.valid = attributes[:'valid']
-      end
-
-      if attributes.key?(:'velocity_errors')
-        self.velocity_errors = attributes[:'velocity_errors']
-      end
-
-      if attributes.key?(:'version')
-        self.version = attributes[:'version']
+      if attributes.key?(:'upload_url')
+        self.upload_url = attributes[:'upload_url']
       end
     end
 
@@ -171,17 +108,10 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          auto_compiled == o.auto_compiled &&
-          content == o.content &&
-          fs_file_oid == o.fs_file_oid &&
-          hash_sha256 == o.hash_sha256 &&
-          mime_type == o.mime_type &&
-          path == o.path &&
-          size == o.size &&
-          truncated == o.truncated &&
-          valid == o.valid &&
-          velocity_errors == o.velocity_errors &&
-          version == o.version
+          expires_in_seconds == o.expires_in_seconds &&
+          http_method == o.http_method &&
+          key == o.key &&
+          upload_url == o.upload_url
     end
 
     # @see the `==` method
@@ -193,7 +123,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_compiled, content, fs_file_oid, hash_sha256, mime_type, path, size, truncated, valid, velocity_errors, version].hash
+      [expires_in_seconds, http_method, key, upload_url].hash
     end
 
     # Builds the object from hash

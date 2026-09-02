@@ -23,6 +23,9 @@ module UltracartClient
     # New SHA-256.  Use as the next If-Match value.
     attr_accessor :hash_sha256
 
+    # Where a shopper's browser will fetch this file, for use in an img src or a background image.  Present only for a path outside /themes/, which is served straight off the storefront root.  A file inside a theme is absent here because its public URL depends on which theme is active, and guessing it would be worse than omitting it.
+    attr_accessor :public_url
+
     attr_accessor :validation
 
     # Velocity errors recorded by the store.  Present means the file was written but is not valid.
@@ -37,6 +40,7 @@ module UltracartClient
         :'compiled_path' => :'compiled_path',
         :'file' => :'file',
         :'hash_sha256' => :'hash_sha256',
+        :'public_url' => :'public_url',
         :'validation' => :'validation',
         :'velocity_errors' => :'velocity_errors',
         :'version' => :'version'
@@ -54,6 +58,7 @@ module UltracartClient
         :'compiled_path' => :'String',
         :'file' => :'SfvbFileEntry',
         :'hash_sha256' => :'String',
+        :'public_url' => :'String',
         :'validation' => :'SfvbValidationResponse',
         :'velocity_errors' => :'String',
         :'version' => :'Integer'
@@ -93,6 +98,10 @@ module UltracartClient
         self.hash_sha256 = attributes[:'hash_sha256']
       end
 
+      if attributes.key?(:'public_url')
+        self.public_url = attributes[:'public_url']
+      end
+
       if attributes.key?(:'validation')
         self.validation = attributes[:'validation']
       end
@@ -127,6 +136,7 @@ module UltracartClient
           compiled_path == o.compiled_path &&
           file == o.file &&
           hash_sha256 == o.hash_sha256 &&
+          public_url == o.public_url &&
           validation == o.validation &&
           velocity_errors == o.velocity_errors &&
           version == o.version
@@ -141,7 +151,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [compiled_path, file, hash_sha256, validation, velocity_errors, version].hash
+      [compiled_path, file, hash_sha256, public_url, validation, velocity_errors, version].hash
     end
 
     # Builds the object from hash
