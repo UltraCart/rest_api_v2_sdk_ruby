@@ -24,7 +24,7 @@ module UltracartClient
     # Login of whoever wrote this version.
     attr_accessor :edited_by
 
-    # History record oid.
+    # History record oid, for correlating an entry with the file manager.  Absent on the entry marked current, which is the content on disk right now and has no history row of its own.  Unlike container_history_oid on a container version, this is NOT addressable through this API - nothing accepts it.  Fetch and revert a file version by path plus version instead.
     attr_accessor :fs_file_history_oid
 
     # SHA-256 of this version's content.
@@ -33,7 +33,7 @@ module UltracartClient
     # When this version was written.
     attr_accessor :last_modified
 
-    # True when this version can be reverted to.
+    # True when this version can be reverted to, which is every entry except the one marked current.  Note that it is absent rather than false on that entry - false booleans are omitted across this API, so a generated client sees undefined rather than false.  Test whether the key is present, or simpler still, use current.
     attr_accessor :revertable
 
     # Size in bytes.

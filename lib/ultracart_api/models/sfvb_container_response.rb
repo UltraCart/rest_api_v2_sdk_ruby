@@ -15,14 +15,8 @@ require 'time'
 
 module UltracartClient
   class SfvbContainerResponse
-    # True when this container lives in the theme currently serving live traffic.  Writing to it requires the sfvb_publish scope.
-    attr_accessor :active_theme
-
     # The container JSON.  Runtime state is stripped on the way out.
     attr_accessor :cjson
-
-    # Container id as the compiler will derive it.
-    attr_accessor :container_id
 
     # Container name.
     attr_accessor :container_name
@@ -30,7 +24,7 @@ module UltracartClient
     # SHA-256 of the cjson.  Send back as If-Match when writing.
     attr_accessor :hash_sha256
 
-    # When the container was last modified, where the store records it.
+    # When the container was last modified, in the store's own record of it.  Present for email, postcardfront and postcardback.  Absent for upsell and item, because those tables carry no modification timestamp at all - for those two, read created_dts on the current entry of container_versions, which records when this API last wrote the container.  Note that a postcard keeps one timestamp for both of its sides, so writing the front moves the value the back reports.
     attr_accessor :last_modified
 
     # Identifier of the owning object within its store.
@@ -38,12 +32,6 @@ module UltracartClient
 
     # Where this container lives.
     attr_accessor :owner_type
-
-    # File path, for theme and page containers only.
-    attr_accessor :path
-
-    # File version, for theme and page containers only.
-    attr_accessor :version
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -70,16 +58,12 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'active_theme' => :'active_theme',
         :'cjson' => :'cjson',
-        :'container_id' => :'container_id',
         :'container_name' => :'container_name',
         :'hash_sha256' => :'hash_sha256',
         :'last_modified' => :'last_modified',
         :'owner_object_id' => :'owner_object_id',
-        :'owner_type' => :'owner_type',
-        :'path' => :'path',
-        :'version' => :'version'
+        :'owner_type' => :'owner_type'
       }
     end
 
@@ -91,16 +75,12 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'active_theme' => :'Boolean',
         :'cjson' => :'String',
-        :'container_id' => :'String',
         :'container_name' => :'String',
         :'hash_sha256' => :'String',
         :'last_modified' => :'String',
         :'owner_object_id' => :'String',
-        :'owner_type' => :'String',
-        :'path' => :'String',
-        :'version' => :'Integer'
+        :'owner_type' => :'String'
       }
     end
 
@@ -125,16 +105,8 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'active_theme')
-        self.active_theme = attributes[:'active_theme']
-      end
-
       if attributes.key?(:'cjson')
         self.cjson = attributes[:'cjson']
-      end
-
-      if attributes.key?(:'container_id')
-        self.container_id = attributes[:'container_id']
       end
 
       if attributes.key?(:'container_name')
@@ -155,14 +127,6 @@ module UltracartClient
 
       if attributes.key?(:'owner_type')
         self.owner_type = attributes[:'owner_type']
-      end
-
-      if attributes.key?(:'path')
-        self.path = attributes[:'path']
-      end
-
-      if attributes.key?(:'version')
-        self.version = attributes[:'version']
       end
     end
 
@@ -196,16 +160,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          active_theme == o.active_theme &&
           cjson == o.cjson &&
-          container_id == o.container_id &&
           container_name == o.container_name &&
           hash_sha256 == o.hash_sha256 &&
           last_modified == o.last_modified &&
           owner_object_id == o.owner_object_id &&
-          owner_type == o.owner_type &&
-          path == o.path &&
-          version == o.version
+          owner_type == o.owner_type
     end
 
     # @see the `==` method
@@ -217,7 +177,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [active_theme, cjson, container_id, container_name, hash_sha256, last_modified, owner_object_id, owner_type, path, version].hash
+      [cjson, container_name, hash_sha256, last_modified, owner_object_id, owner_type].hash
     end
 
     # Builds the object from hash
