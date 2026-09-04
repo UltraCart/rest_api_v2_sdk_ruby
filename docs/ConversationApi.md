@@ -107,6 +107,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**insert_pbx_time_range**](ConversationApi.md#insert_pbx_time_range) | **POST** /conversation/pbx/time_range | Insert pbx timeRange |
 | [**insert_pbx_voicemail_mailbox**](ConversationApi.md#insert_pbx_voicemail_mailbox) | **POST** /conversation/pbx/voicemail_mailbox | Insert pbx voicemailMailbox |
 | [**insert_user_pbx_audio**](ConversationApi.md#insert_user_pbx_audio) | **POST** /conversation/pbx/audio/user | Insert user pbx audio |
+| [**join_agent_test_session**](ConversationApi.md#join_agent_test_session) | **PUT** /conversation/agent/profiles/{user_id}/test_session/{conversation_uuid}/join | Join a test conversation as the simulated customer |
 | [**join_conversation**](ConversationApi.md#join_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/join | Join a conversation |
 | [**leave_conversation**](ConversationApi.md#leave_conversation) | **DELETE** /conversation/conversations/{conversation_uuid}/leave | Leave a conversation |
 | [**listened_pbx_agent_voicemail**](ConversationApi.md#listened_pbx_agent_voicemail) | **GET** /conversation/pbx/agent/voicemails/{recording_sid}/listened | Listened Agent Voicemail |
@@ -122,6 +123,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**search_pbx_available_phone_numbers**](ConversationApi.md#search_pbx_available_phone_numbers) | **GET** /conversation/pbx/phone_number/search | Search for available phone numbers |
 | [**search_pbx_calls**](ConversationApi.md#search_pbx_calls) | **POST** /conversation/pbx/call/search | Search pbx call records |
 | [**sms_unsubscribe_conversation**](ConversationApi.md#sms_unsubscribe_conversation) | **PUT** /conversation/conversations/{conversation_uuid}/sms_unsubscribe | Unsubscribe any SMS participants in this conversation |
+| [**start_agent_test_session**](ConversationApi.md#start_agent_test_session) | **PUT** /conversation/agent/profiles/{user_id}/test_session | Start a test conversation with this AI agent |
 | [**start_conversation**](ConversationApi.md#start_conversation) | **PUT** /conversation/conversations | Start a conversation |
 | [**update_agent_profile**](ConversationApi.md#update_agent_profile) | **PUT** /conversation/agent/profile | Update agent profile |
 | [**update_agent_profile_mcp**](ConversationApi.md#update_agent_profile_mcp) | **POST** /conversation/agent/profiles/{user_id}/mcps/{mcp_server_uuid} | Update an agent MCP server |
@@ -5632,6 +5634,61 @@ end
 - **Accept**: application/json
 
 
+## join_agent_test_session
+
+> join_agent_test_session(user_id, conversation_uuid, join_request)
+
+Join a test conversation as the simulated customer
+
+Joins the simulated customer to the conversation the agent opened for a test session.  This mirrors what the storefront webchat widget does after an agent picks up its queue entry, and it is what gives the conversation a customer participant.  Requires a logged in user with conversations admin; an API key or OAuth application cannot call this. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the join_agent_test_session_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> join_agent_test_session_with_http_info(user_id, conversation_uuid, join_request)
+
+```ruby
+begin
+  # Join a test conversation as the simulated customer
+  data, status_code, headers = api_instance.join_agent_test_session_with_http_info(user_id, conversation_uuid, join_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->join_agent_test_session_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+| **conversation_uuid** | **String** |  |  |
+| **join_request** | [**ConversationAgentTestSessionJoinRequest**](ConversationAgentTestSessionJoinRequest.md) | Test session join request |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## join_conversation
 
 > join_conversation(conversation_uuid, opts)
@@ -6446,6 +6503,60 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## start_agent_test_session
+
+> <ConversationAgentTestSessionResponse> start_agent_test_session(user_id, test_session_request)
+
+Start a test conversation with this AI agent
+
+Opens a webchat conversation against this specific AI agent as if the given customer had started it from the storefront, so the agent can be tried out before it is put in front of anyone.  The session runs against live data: the cart is real, the customer is real, and anything the agent does during the conversation actually happens.  Requires a logged in user with conversations admin; an API key or OAuth application cannot call this. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the start_agent_test_session_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ConversationAgentTestSessionResponse>, Integer, Hash)> start_agent_test_session_with_http_info(user_id, test_session_request)
+
+```ruby
+begin
+  # Start a test conversation with this AI agent
+  data, status_code, headers = api_instance.start_agent_test_session_with_http_info(user_id, test_session_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ConversationAgentTestSessionResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling ConversationApi->start_agent_test_session_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_id** | **Integer** |  |  |
+| **test_session_request** | [**ConversationAgentTestSessionRequest**](ConversationAgentTestSessionRequest.md) | Test session request |  |
+
+### Return type
+
+[**ConversationAgentTestSessionResponse**](ConversationAgentTestSessionResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

@@ -188,6 +188,9 @@ docs/ConversationAgentStatusRollupSearchRequest.md
 docs/ConversationAgentStatusRollupSearchResponse.md
 docs/ConversationAgentStatusSummaryResponse.md
 docs/ConversationAgentStatusTimelineResponse.md
+docs/ConversationAgentTestSessionJoinRequest.md
+docs/ConversationAgentTestSessionRequest.md
+docs/ConversationAgentTestSessionResponse.md
 docs/ConversationApi.md
 docs/ConversationAutocompleteRequest.md
 docs/ConversationAutocompleteResponse.md
@@ -196,6 +199,7 @@ docs/ConversationCannedMessage.md
 docs/ConversationCannedMessageResponse.md
 docs/ConversationCannedMessagesResponse.md
 docs/ConversationCannedMessagesSearch.md
+docs/ConversationCustomerAuth.md
 docs/ConversationDeleteKnowledgeBaseDocumentResponse.md
 docs/ConversationDepartment.md
 docs/ConversationDepartmentMember.md
@@ -1326,6 +1330,9 @@ lib/ultracart_api/models/conversation_agent_status_rollup_search_request.rb
 lib/ultracart_api/models/conversation_agent_status_rollup_search_response.rb
 lib/ultracart_api/models/conversation_agent_status_summary_response.rb
 lib/ultracart_api/models/conversation_agent_status_timeline_response.rb
+lib/ultracart_api/models/conversation_agent_test_session_join_request.rb
+lib/ultracart_api/models/conversation_agent_test_session_request.rb
+lib/ultracart_api/models/conversation_agent_test_session_response.rb
 lib/ultracart_api/models/conversation_autocomplete_request.rb
 lib/ultracart_api/models/conversation_autocomplete_response.rb
 lib/ultracart_api/models/conversation_autocomplete_value.rb
@@ -1333,6 +1340,7 @@ lib/ultracart_api/models/conversation_canned_message.rb
 lib/ultracart_api/models/conversation_canned_message_response.rb
 lib/ultracart_api/models/conversation_canned_messages_response.rb
 lib/ultracart_api/models/conversation_canned_messages_search.rb
+lib/ultracart_api/models/conversation_customer_auth.rb
 lib/ultracart_api/models/conversation_delete_knowledge_base_document_response.rb
 lib/ultracart_api/models/conversation_department.rb
 lib/ultracart_api/models/conversation_department_member.rb
