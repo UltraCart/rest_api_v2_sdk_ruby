@@ -121,7 +121,7 @@ module UltracartClient
         :'access_custom_collections' => :'Boolean',
         :'access_storefront_and_item' => :'Boolean',
         :'cancel_subscription' => :'Boolean',
-        :'custom_collection_oids' => :'Object',
+        :'custom_collection_oids' => :'Array<Integer>',
         :'custom_collections' => :'Array<ConversationVirtualAgentCapabilityCustomCollection>',
         :'delay_subscription' => :'Boolean',
         :'generate_coupon' => :'Boolean',
@@ -174,7 +174,9 @@ module UltracartClient
       end
 
       if attributes.key?(:'custom_collection_oids')
-        self.custom_collection_oids = attributes[:'custom_collection_oids']
+        if (value = attributes[:'custom_collection_oids']).is_a?(Array)
+          self.custom_collection_oids = value
+        end
       end
 
       if attributes.key?(:'custom_collections')
