@@ -15,10 +15,19 @@ require 'time'
 
 module UltracartClient
   class ConversationVirtualAgentCapabilities
+    # Permission flag to allow this Agent to search the merchant's custom Typesense collections.
+    attr_accessor :access_custom_collections
+
     # Permission flag to allow this Agent access to the storefront and item information.
     attr_accessor :access_storefront_and_item
 
     attr_accessor :cancel_subscription
+
+    # The custom collections this Agent is allowed to search.  Empty means none, even when access_custom_collections is true.
+    attr_accessor :custom_collection_oids
+
+    # Read only.  All of the merchant's custom collections, to populate the selection list for custom_collection_oids.  Changes here are ignored.
+    attr_accessor :custom_collections
 
     attr_accessor :delay_subscription
 
@@ -79,8 +88,11 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'access_custom_collections' => :'access_custom_collections',
         :'access_storefront_and_item' => :'access_storefront_and_item',
         :'cancel_subscription' => :'cancel_subscription',
+        :'custom_collection_oids' => :'custom_collection_oids',
+        :'custom_collections' => :'custom_collections',
         :'delay_subscription' => :'delay_subscription',
         :'generate_coupon' => :'generate_coupon',
         :'lookup_order_information' => :'lookup_order_information',
@@ -106,8 +118,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'access_custom_collections' => :'Boolean',
         :'access_storefront_and_item' => :'Boolean',
         :'cancel_subscription' => :'Boolean',
+        :'custom_collection_oids' => :'Object',
+        :'custom_collections' => :'Array<ConversationVirtualAgentCapabilityCustomCollection>',
         :'delay_subscription' => :'Boolean',
         :'generate_coupon' => :'Boolean',
         :'lookup_order_information' => :'Boolean',
@@ -146,12 +161,26 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'access_custom_collections')
+        self.access_custom_collections = attributes[:'access_custom_collections']
+      end
+
       if attributes.key?(:'access_storefront_and_item')
         self.access_storefront_and_item = attributes[:'access_storefront_and_item']
       end
 
       if attributes.key?(:'cancel_subscription')
         self.cancel_subscription = attributes[:'cancel_subscription']
+      end
+
+      if attributes.key?(:'custom_collection_oids')
+        self.custom_collection_oids = attributes[:'custom_collection_oids']
+      end
+
+      if attributes.key?(:'custom_collections')
+        if (value = attributes[:'custom_collections']).is_a?(Array)
+          self.custom_collections = value
+        end
       end
 
       if attributes.key?(:'delay_subscription')
@@ -243,8 +272,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          access_custom_collections == o.access_custom_collections &&
           access_storefront_and_item == o.access_storefront_and_item &&
           cancel_subscription == o.cancel_subscription &&
+          custom_collection_oids == o.custom_collection_oids &&
+          custom_collections == o.custom_collections &&
           delay_subscription == o.delay_subscription &&
           generate_coupon == o.generate_coupon &&
           lookup_order_information == o.lookup_order_information &&
@@ -270,7 +302,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_storefront_and_item, cancel_subscription, delay_subscription, generate_coupon, lookup_order_information, lookup_subscription_information, open_support_ticket, open_support_ticket_channel, open_support_ticket_channel_email, open_support_ticket_zoho_desk_department_id, pause_subscription, resume_subscription, transfer_chat_to_live_agent, update_subscription_credit_card, zoho_desk_available, zoho_desk_departments].hash
+      [access_custom_collections, access_storefront_and_item, cancel_subscription, custom_collection_oids, custom_collections, delay_subscription, generate_coupon, lookup_order_information, lookup_subscription_information, open_support_ticket, open_support_ticket_channel, open_support_ticket_channel_email, open_support_ticket_zoho_desk_department_id, pause_subscription, resume_subscription, transfer_chat_to_live_agent, update_subscription_credit_card, zoho_desk_available, zoho_desk_departments].hash
     end
 
     # Builds the object from hash

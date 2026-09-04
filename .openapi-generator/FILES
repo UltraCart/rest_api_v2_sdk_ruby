@@ -333,6 +333,7 @@ docs/ConversationVirtualAgentBudget.md
 docs/ConversationVirtualAgentBudgetResponse.md
 docs/ConversationVirtualAgentCapabilities.md
 docs/ConversationVirtualAgentCapabilitiesResponse.md
+docs/ConversationVirtualAgentCapabilityCustomCollection.md
 docs/ConversationVirtualAgentCapabilityZohoDeskDepartment.md
 docs/ConversationWebchatContext.md
 docs/ConversationWebchatQueueStatus.md
@@ -1468,6 +1469,7 @@ lib/ultracart_api/models/conversation_virtual_agent_budget.rb
 lib/ultracart_api/models/conversation_virtual_agent_budget_response.rb
 lib/ultracart_api/models/conversation_virtual_agent_capabilities.rb
 lib/ultracart_api/models/conversation_virtual_agent_capabilities_response.rb
+lib/ultracart_api/models/conversation_virtual_agent_capability_custom_collection.rb
 lib/ultracart_api/models/conversation_virtual_agent_capability_zoho_desk_department.rb
 lib/ultracart_api/models/conversation_webchat_context.rb
 lib/ultracart_api/models/conversation_webchat_queue_status.rb
