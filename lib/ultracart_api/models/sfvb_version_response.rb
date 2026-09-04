@@ -24,17 +24,35 @@ module UltracartClient
     # Number of element types this version recognizes.
     attr_accessor :element_count
 
+    # Largest binary asset that can be uploaded, in bytes, for every accepted type except video.
+    attr_accessor :max_asset_bytes
+
     # Largest CJSON document that will be parsed, in bytes.
     attr_accessor :max_cjson_bytes
+
+    # Most entries one directory listing returns.  Asking for more is silently reduced to this rather than refused, so compare against it instead of trusting that you got what you asked for.  The listing does set a truncated flag when it drops entries.
+    attr_accessor :max_directory_entries
+
+    # Most element library results one page returns.  Asking for more is silently reduced to this, and unlike the directory listing there is no truncation flag on the response, so this number is the only way to know a larger request was cut.
+    attr_accessor :max_library_results_per_page
 
     # Largest payload one preview session may hold, in bytes.
     attr_accessor :max_preview_session_bytes
 
+    # Largest historical version files/revert will restore, in bytes.  Higher than max_text_read_bytes deliberately - putting back a version that is already stored is cheaper than serving it as JSON, so a version too large to read can still be reverted to.
+    attr_accessor :max_revertable_bytes
+
     # Hard ceiling on file search results per page.
     attr_accessor :max_search_results
 
-    # Largest template file that can be written, in bytes.
+    # Largest .vm template that can be written, in bytes.  Narrow on purpose - it gates writes, only for files ending in .vm, and it is not the ceiling on reading a file back.  Use max_text_read_bytes for that.
     attr_accessor :max_template_bytes
+
+    # Largest file files/content will return as text, in bytes.  A file above this is refused with sfvb.too_large however small its history versions are.  Bigger than max_template_bytes, so a file can be readable here and still be too large to write back as a template.  Anything above this is still readable in full through files/download, which returns raw bytes and applies no ceiling.
+    attr_accessor :max_text_read_bytes
+
+    # Largest video that can be uploaded, in bytes.  Video is the one type allowed past max_asset_bytes.
+    attr_accessor :max_video_bytes
 
     # Most widget ids that can be reserved in one call.
     attr_accessor :max_widget_ids_per_request
@@ -73,10 +91,16 @@ module UltracartClient
         :'container_manager_version' => :'container_manager_version',
         :'container_versions_retained' => :'container_versions_retained',
         :'element_count' => :'element_count',
+        :'max_asset_bytes' => :'max_asset_bytes',
         :'max_cjson_bytes' => :'max_cjson_bytes',
+        :'max_directory_entries' => :'max_directory_entries',
+        :'max_library_results_per_page' => :'max_library_results_per_page',
         :'max_preview_session_bytes' => :'max_preview_session_bytes',
+        :'max_revertable_bytes' => :'max_revertable_bytes',
         :'max_search_results' => :'max_search_results',
         :'max_template_bytes' => :'max_template_bytes',
+        :'max_text_read_bytes' => :'max_text_read_bytes',
+        :'max_video_bytes' => :'max_video_bytes',
         :'max_widget_ids_per_request' => :'max_widget_ids_per_request',
         :'preview_session_ttl_seconds' => :'preview_session_ttl_seconds',
         :'release' => :'release'
@@ -94,10 +118,16 @@ module UltracartClient
         :'container_manager_version' => :'String',
         :'container_versions_retained' => :'Integer',
         :'element_count' => :'Integer',
+        :'max_asset_bytes' => :'Integer',
         :'max_cjson_bytes' => :'Integer',
+        :'max_directory_entries' => :'Integer',
+        :'max_library_results_per_page' => :'Integer',
         :'max_preview_session_bytes' => :'Integer',
+        :'max_revertable_bytes' => :'Integer',
         :'max_search_results' => :'Integer',
         :'max_template_bytes' => :'Integer',
+        :'max_text_read_bytes' => :'Integer',
+        :'max_video_bytes' => :'Integer',
         :'max_widget_ids_per_request' => :'Integer',
         :'preview_session_ttl_seconds' => :'Integer',
         :'release' => :'String'
@@ -137,12 +167,28 @@ module UltracartClient
         self.element_count = attributes[:'element_count']
       end
 
+      if attributes.key?(:'max_asset_bytes')
+        self.max_asset_bytes = attributes[:'max_asset_bytes']
+      end
+
       if attributes.key?(:'max_cjson_bytes')
         self.max_cjson_bytes = attributes[:'max_cjson_bytes']
       end
 
+      if attributes.key?(:'max_directory_entries')
+        self.max_directory_entries = attributes[:'max_directory_entries']
+      end
+
+      if attributes.key?(:'max_library_results_per_page')
+        self.max_library_results_per_page = attributes[:'max_library_results_per_page']
+      end
+
       if attributes.key?(:'max_preview_session_bytes')
         self.max_preview_session_bytes = attributes[:'max_preview_session_bytes']
+      end
+
+      if attributes.key?(:'max_revertable_bytes')
+        self.max_revertable_bytes = attributes[:'max_revertable_bytes']
       end
 
       if attributes.key?(:'max_search_results')
@@ -151,6 +197,14 @@ module UltracartClient
 
       if attributes.key?(:'max_template_bytes')
         self.max_template_bytes = attributes[:'max_template_bytes']
+      end
+
+      if attributes.key?(:'max_text_read_bytes')
+        self.max_text_read_bytes = attributes[:'max_text_read_bytes']
+      end
+
+      if attributes.key?(:'max_video_bytes')
+        self.max_video_bytes = attributes[:'max_video_bytes']
       end
 
       if attributes.key?(:'max_widget_ids_per_request')
@@ -199,10 +253,16 @@ module UltracartClient
           container_manager_version == o.container_manager_version &&
           container_versions_retained == o.container_versions_retained &&
           element_count == o.element_count &&
+          max_asset_bytes == o.max_asset_bytes &&
           max_cjson_bytes == o.max_cjson_bytes &&
+          max_directory_entries == o.max_directory_entries &&
+          max_library_results_per_page == o.max_library_results_per_page &&
           max_preview_session_bytes == o.max_preview_session_bytes &&
+          max_revertable_bytes == o.max_revertable_bytes &&
           max_search_results == o.max_search_results &&
           max_template_bytes == o.max_template_bytes &&
+          max_text_read_bytes == o.max_text_read_bytes &&
+          max_video_bytes == o.max_video_bytes &&
           max_widget_ids_per_request == o.max_widget_ids_per_request &&
           preview_session_ttl_seconds == o.preview_session_ttl_seconds &&
           release == o.release
@@ -217,7 +277,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [container_manager_version, container_versions_retained, element_count, max_cjson_bytes, max_preview_session_bytes, max_search_results, max_template_bytes, max_widget_ids_per_request, preview_session_ttl_seconds, release].hash
+      [container_manager_version, container_versions_retained, element_count, max_asset_bytes, max_cjson_bytes, max_directory_entries, max_library_results_per_page, max_preview_session_bytes, max_revertable_bytes, max_search_results, max_template_bytes, max_text_read_bytes, max_video_bytes, max_widget_ids_per_request, preview_session_ttl_seconds, release].hash
     end
 
     # Builds the object from hash
