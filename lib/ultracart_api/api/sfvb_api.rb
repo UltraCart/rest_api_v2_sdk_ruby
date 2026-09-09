@@ -1095,6 +1095,76 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Read a theme's colors, fonts and settings
+    # The values theme.css and the compiled containers resolve at render time.  These do NOT live in any file.  settings.json contains a palette and looks like the answer, but it is the theme's factory template - it supplies defaults for slots that have never been set and is ignored for slots that have, so editing it will not change a color and reading it will not tell you the current one.  Slots a template declares but nothing has ever set are included here, carrying the default they will render with, so the response describes the whole theme rather than the rows that happen to exist. 
+    # @param storefront_oid [Integer] 
+    # @param theme_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbThemeAttributesResponse]
+    def get_sfvb_theme_attributes(storefront_oid, theme_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_theme_attributes_with_http_info(storefront_oid, theme_oid, opts)
+      data
+    end
+
+    # Read a theme&#39;s colors, fonts and settings
+    # The values theme.css and the compiled containers resolve at render time.  These do NOT live in any file.  settings.json contains a palette and looks like the answer, but it is the theme&#39;s factory template - it supplies defaults for slots that have never been set and is ignored for slots that have, so editing it will not change a color and reading it will not tell you the current one.  Slots a template declares but nothing has ever set are included here, carrying the default they will render with, so the response describes the whole theme rather than the rows that happen to exist. 
+    # @param storefront_oid [Integer] 
+    # @param theme_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbThemeAttributesResponse, Integer, Hash)>] SfvbThemeAttributesResponse data, response status code and response headers
+    def get_sfvb_theme_attributes_with_http_info(storefront_oid, theme_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_theme_attributes ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_theme_attributes"
+      end
+      # verify the required parameter 'theme_oid' is set
+      if @api_client.config.client_side_validation && theme_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'theme_oid' when calling SfvbApi.get_sfvb_theme_attributes"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/attributes'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'theme_oid' + '}', CGI.escape(theme_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbThemeAttributesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_theme_attributes",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_theme_attributes\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Status of an asynchronous theme job
     # Poll until complete is true, then check success.  Note that the new theme's oid is not returned.  The job's product is a plain text report rather than a structured result, so once it completes, list themes and match on the target_path the start call gave you. 
     # @param storefront_oid [Integer] 
@@ -2069,6 +2139,87 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_preview_session\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change a theme's colors, fonts and settings
+    # A partial update.  Only the slots you name are changed and every other slot on the theme keeps its value, so there is no need to send the whole set back to change one color.  Send a whole palette in one call rather than one call per color - they are applied together, so the storefront never renders half of a change.  Needs sfvb_publish when the theme is the one serving live traffic, because a color is referenced by name from every template that uses it and one write repaints the whole storefront at once.  On a dormant theme sfvb_write is enough, which is what makes duplicate-then-restyle work. 
+    # @param storefront_oid [Integer] 
+    # @param theme_oid [Integer] 
+    # @param attribute_update_request [SfvbThemeAttributeUpdateRequest] Slots to change
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbThemeAttributesResponse]
+    def put_sfvb_theme_attributes(storefront_oid, theme_oid, attribute_update_request, opts = {})
+      data, _status_code, _headers = put_sfvb_theme_attributes_with_http_info(storefront_oid, theme_oid, attribute_update_request, opts)
+      data
+    end
+
+    # Change a theme&#39;s colors, fonts and settings
+    # A partial update.  Only the slots you name are changed and every other slot on the theme keeps its value, so there is no need to send the whole set back to change one color.  Send a whole palette in one call rather than one call per color - they are applied together, so the storefront never renders half of a change.  Needs sfvb_publish when the theme is the one serving live traffic, because a color is referenced by name from every template that uses it and one write repaints the whole storefront at once.  On a dormant theme sfvb_write is enough, which is what makes duplicate-then-restyle work. 
+    # @param storefront_oid [Integer] 
+    # @param theme_oid [Integer] 
+    # @param attribute_update_request [SfvbThemeAttributeUpdateRequest] Slots to change
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbThemeAttributesResponse, Integer, Hash)>] SfvbThemeAttributesResponse data, response status code and response headers
+    def put_sfvb_theme_attributes_with_http_info(storefront_oid, theme_oid, attribute_update_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.put_sfvb_theme_attributes ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.put_sfvb_theme_attributes"
+      end
+      # verify the required parameter 'theme_oid' is set
+      if @api_client.config.client_side_validation && theme_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'theme_oid' when calling SfvbApi.put_sfvb_theme_attributes"
+      end
+      # verify the required parameter 'attribute_update_request' is set
+      if @api_client.config.client_side_validation && attribute_update_request.nil?
+        fail ArgumentError, "Missing the required parameter 'attribute_update_request' when calling SfvbApi.put_sfvb_theme_attributes"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/attributes'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'theme_oid' + '}', CGI.escape(theme_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(attribute_update_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbThemeAttributesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.put_sfvb_theme_attributes",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_theme_attributes\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

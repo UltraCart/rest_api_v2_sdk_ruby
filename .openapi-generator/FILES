@@ -1018,7 +1018,13 @@ docs/SfvbRenderResponse.md
 docs/SfvbStorefront.md
 docs/SfvbStorefrontsResponse.md
 docs/SfvbTheme.md
+docs/SfvbThemeAttribute.md
+docs/SfvbThemeAttributeUpdate.md
+docs/SfvbThemeAttributeUpdateRequest.md
+docs/SfvbThemeAttributesResponse.md
 docs/SfvbThemeDuplicateRequest.md
+docs/SfvbThemeFont.md
+docs/SfvbThemeFontFamily.md
 docs/SfvbThemeJobResponse.md
 docs/SfvbThemesResponse.md
 docs/SfvbUpsellOffer.md
@@ -2147,7 +2153,13 @@ lib/ultracart_api/models/sfvb_render_response.rb
 lib/ultracart_api/models/sfvb_storefront.rb
 lib/ultracart_api/models/sfvb_storefronts_response.rb
 lib/ultracart_api/models/sfvb_theme.rb
+lib/ultracart_api/models/sfvb_theme_attribute.rb
+lib/ultracart_api/models/sfvb_theme_attribute_update.rb
+lib/ultracart_api/models/sfvb_theme_attribute_update_request.rb
+lib/ultracart_api/models/sfvb_theme_attributes_response.rb
 lib/ultracart_api/models/sfvb_theme_duplicate_request.rb
+lib/ultracart_api/models/sfvb_theme_font.rb
+lib/ultracart_api/models/sfvb_theme_font_family.rb
 lib/ultracart_api/models/sfvb_theme_job_response.rb
 lib/ultracart_api/models/sfvb_themes_response.rb
 lib/ultracart_api/models/sfvb_upsell_offer.rb

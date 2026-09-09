@@ -19,6 +19,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_library_entry**](SfvbApi.md#get_sfvb_library_entry) | **GET** /sfvb/storefronts/{storefront_oid}/library/{library_oid} | Read one library entry including its CJSON |
 | [**get_sfvb_preview_url**](SfvbApi.md#get_sfvb_preview_url) | **GET** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id}/url | URL that renders a preview session |
 | [**get_sfvb_theme**](SfvbApi.md#get_sfvb_theme) | **GET** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid} | Get a theme |
+| [**get_sfvb_theme_attributes**](SfvbApi.md#get_sfvb_theme_attributes) | **GET** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/attributes | Read a theme&#39;s colors, fonts and settings |
 | [**get_sfvb_theme_job**](SfvbApi.md#get_sfvb_theme_job) | **GET** /sfvb/storefronts/{storefront_oid}/theme_jobs/{job_id} | Status of an asynchronous theme job |
 | [**get_sfvb_version**](SfvbApi.md#get_sfvb_version) | **GET** /sfvb/version | Compiler version for this merchant |
 | [**get_sfvb_whoami**](SfvbApi.md#get_sfvb_whoami) | **GET** /sfvb/whoami | Who this token is |
@@ -33,6 +34,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**put_sfvb_container**](SfvbApi.md#put_sfvb_container) | **PUT** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id} | Write a container stored outside the file system |
 | [**put_sfvb_file_content**](SfvbApi.md#put_sfvb_file_content) | **PUT** /sfvb/storefronts/{storefront_oid}/files/content | Write a storefront file |
 | [**put_sfvb_preview_session**](SfvbApi.md#put_sfvb_preview_session) | **PUT** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id} | Push containers into a preview session |
+| [**put_sfvb_theme_attributes**](SfvbApi.md#put_sfvb_theme_attributes) | **PUT** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/attributes | Change a theme&#39;s colors, fonts and settings |
 | [**render_sfvb_widgets**](SfvbApi.md#render_sfvb_widgets) | **POST** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/render | Render a CJSON node to HTML |
 | [**reserve_sfvb_widget_ids**](SfvbApi.md#reserve_sfvb_widget_ids) | **POST** /sfvb/storefronts/{storefront_oid}/widget_ids | Reserve a block of widget ids |
 | [**revert_sfvb_container**](SfvbApi.md#revert_sfvb_container) | **POST** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id}/revert | Revert a container stored outside the file system |
@@ -853,6 +855,60 @@ end
 - **Accept**: application/json
 
 
+## get_sfvb_theme_attributes
+
+> <SfvbThemeAttributesResponse> get_sfvb_theme_attributes(storefront_oid, theme_oid)
+
+Read a theme's colors, fonts and settings
+
+The values theme.css and the compiled containers resolve at render time.  These do NOT live in any file.  settings.json contains a palette and looks like the answer, but it is the theme's factory template - it supplies defaults for slots that have never been set and is ignored for slots that have, so editing it will not change a color and reading it will not tell you the current one.  Slots a template declares but nothing has ever set are included here, carrying the default they will render with, so the response describes the whole theme rather than the rows that happen to exist. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_theme_attributes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbThemeAttributesResponse>, Integer, Hash)> get_sfvb_theme_attributes_with_http_info(storefront_oid, theme_oid)
+
+```ruby
+begin
+  # Read a theme's colors, fonts and settings
+  data, status_code, headers = api_instance.get_sfvb_theme_attributes_with_http_info(storefront_oid, theme_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbThemeAttributesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_theme_attributes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **theme_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbThemeAttributesResponse**](SfvbThemeAttributesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_sfvb_theme_job
 
 > <SfvbThemeJobResponse> get_sfvb_theme_job(storefront_oid, job_id)
@@ -1593,6 +1649,61 @@ end
 ### Return type
 
 [**SfvbPreviewSessionResponse**](SfvbPreviewSessionResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## put_sfvb_theme_attributes
+
+> <SfvbThemeAttributesResponse> put_sfvb_theme_attributes(storefront_oid, theme_oid, attribute_update_request)
+
+Change a theme's colors, fonts and settings
+
+A partial update.  Only the slots you name are changed and every other slot on the theme keeps its value, so there is no need to send the whole set back to change one color.  Send a whole palette in one call rather than one call per color - they are applied together, so the storefront never renders half of a change.  Needs sfvb_publish when the theme is the one serving live traffic, because a color is referenced by name from every template that uses it and one write repaints the whole storefront at once.  On a dormant theme sfvb_write is enough, which is what makes duplicate-then-restyle work. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the put_sfvb_theme_attributes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbThemeAttributesResponse>, Integer, Hash)> put_sfvb_theme_attributes_with_http_info(storefront_oid, theme_oid, attribute_update_request)
+
+```ruby
+begin
+  # Change a theme's colors, fonts and settings
+  data, status_code, headers = api_instance.put_sfvb_theme_attributes_with_http_info(storefront_oid, theme_oid, attribute_update_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbThemeAttributesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->put_sfvb_theme_attributes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **theme_oid** | **Integer** |  |  |
+| **attribute_update_request** | [**SfvbThemeAttributeUpdateRequest**](SfvbThemeAttributeUpdateRequest.md) | Slots to change |  |
+
+### Return type
+
+[**SfvbThemeAttributesResponse**](SfvbThemeAttributesResponse.md)
 
 ### Authorization
 
