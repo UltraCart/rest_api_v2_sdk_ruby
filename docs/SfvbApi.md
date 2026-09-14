@@ -7,6 +7,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**compile_sfvb_cjson**](SfvbApi.md#compile_sfvb_cjson) | **POST** /sfvb/cjson/compile | Compile CJSON to Velocity |
 | [**create_sfvb_preview_session**](SfvbApi.md#create_sfvb_preview_session) | **POST** /sfvb/storefronts/{storefront_oid}/preview_sessions | Create a preview session |
 | [**delete_sfvb_file**](SfvbApi.md#delete_sfvb_file) | **DELETE** /sfvb/storefronts/{storefront_oid}/files | Delete a storefront file |
+| [**delete_sfvb_page_multimedia**](SfvbApi.md#delete_sfvb_page_multimedia) | **DELETE** /sfvb/storefronts/{storefront_oid}/pages/multimedia | Detach an image from a page |
 | [**delete_sfvb_preview_session**](SfvbApi.md#delete_sfvb_preview_session) | **DELETE** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id} | Delete a preview session |
 | [**download_sfvb_file**](SfvbApi.md#download_sfvb_file) | **GET** /sfvb/storefronts/{storefront_oid}/files/download | Read a storefront file&#39;s raw bytes |
 | [**duplicate_sfvb_theme**](SfvbApi.md#duplicate_sfvb_theme) | **POST** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/duplicate | Duplicate a theme |
@@ -17,6 +18,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_file_content**](SfvbApi.md#get_sfvb_file_content) | **GET** /sfvb/storefronts/{storefront_oid}/files/content | Read a storefront file |
 | [**get_sfvb_file_upload_url**](SfvbApi.md#get_sfvb_file_upload_url) | **GET** /sfvb/storefronts/{storefront_oid}/files/upload_url/{extension} | Get a URL to upload a binary asset to |
 | [**get_sfvb_library_entry**](SfvbApi.md#get_sfvb_library_entry) | **GET** /sfvb/storefronts/{storefront_oid}/library/{library_oid} | Read one library entry including its CJSON |
+| [**get_sfvb_page**](SfvbApi.md#get_sfvb_page) | **GET** /sfvb/storefronts/{storefront_oid}/pages | Read a page&#39;s attributes and images |
 | [**get_sfvb_preview_url**](SfvbApi.md#get_sfvb_preview_url) | **GET** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id}/url | URL that renders a preview session |
 | [**get_sfvb_theme**](SfvbApi.md#get_sfvb_theme) | **GET** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid} | Get a theme |
 | [**get_sfvb_theme_attributes**](SfvbApi.md#get_sfvb_theme_attributes) | **GET** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/attributes | Read a theme&#39;s colors, fonts and settings |
@@ -33,6 +35,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**list_sfvb_upsell_offers**](SfvbApi.md#list_sfvb_upsell_offers) | **GET** /sfvb/storefronts/{storefront_oid}/upsell_offers | List upsell offers |
 | [**put_sfvb_container**](SfvbApi.md#put_sfvb_container) | **PUT** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id} | Write a container stored outside the file system |
 | [**put_sfvb_file_content**](SfvbApi.md#put_sfvb_file_content) | **PUT** /sfvb/storefronts/{storefront_oid}/files/content | Write a storefront file |
+| [**put_sfvb_page_attributes**](SfvbApi.md#put_sfvb_page_attributes) | **PUT** /sfvb/storefronts/{storefront_oid}/pages/attributes | Change a page&#39;s attributes |
+| [**put_sfvb_page_multimedia**](SfvbApi.md#put_sfvb_page_multimedia) | **PUT** /sfvb/storefronts/{storefront_oid}/pages/multimedia | Attach an image to a page |
 | [**put_sfvb_preview_session**](SfvbApi.md#put_sfvb_preview_session) | **PUT** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id} | Push containers into a preview session |
 | [**put_sfvb_theme_attributes**](SfvbApi.md#put_sfvb_theme_attributes) | **PUT** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/attributes | Change a theme&#39;s colors, fonts and settings |
 | [**render_sfvb_widgets**](SfvbApi.md#render_sfvb_widgets) | **POST** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/render | Render a CJSON node to HTML |
@@ -196,6 +200,62 @@ end
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_sfvb_page_multimedia
+
+> <SfvbPageResponse> delete_sfvb_page_multimedia(storefront_oid, path, opts)
+
+Detach an image from a page
+
+Name exactly one of code or default.  Removes the page's copy of the image; the source file in the page folder is left alone.  Always needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_sfvb_page_multimedia_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbPageResponse>, Integer, Hash)> delete_sfvb_page_multimedia_with_http_info(storefront_oid, path, opts)
+
+```ruby
+begin
+  # Detach an image from a page
+  data, status_code, headers = api_instance.delete_sfvb_page_multimedia_with_http_info(storefront_oid, path, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbPageResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->delete_sfvb_page_multimedia_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **path** | **String** | Page path, for example /catalog/dispensers/ |  |
+| **code** | **String** | Image code to detach | [optional] |
+| **default** | **Boolean** | True to detach the default image | [optional] |
+
+### Return type
+
+[**SfvbPageResponse**](SfvbPageResponse.md)
 
 ### Authorization
 
@@ -737,6 +797,60 @@ end
 ### Return type
 
 [**SfvbLibraryEntry**](SfvbLibraryEntry.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_page
+
+> <SfvbPageResponse> get_sfvb_page(storefront_oid, path)
+
+Read a page's attributes and images
+
+What the pageattribute and pageimage elements render for this page.  These are not in any file, which is why a page folder can be empty and its elements still render something.  Attributes and image codes a template declares but nothing has set are included, so the response describes what the page can show rather than only what has been saved. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_page_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbPageResponse>, Integer, Hash)> get_sfvb_page_with_http_info(storefront_oid, path)
+
+```ruby
+begin
+  # Read a page's attributes and images
+  data, status_code, headers = api_instance.get_sfvb_page_with_http_info(storefront_oid, path)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbPageResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_page_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **path** | **String** | Page path, for example /catalog/dispensers/ |  |
+
+### Return type
+
+[**SfvbPageResponse**](SfvbPageResponse.md)
 
 ### Authorization
 
@@ -1593,6 +1707,116 @@ end
 ### Return type
 
 [**SfvbFileWriteResponse**](SfvbFileWriteResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## put_sfvb_page_attributes
+
+> <SfvbPageResponse> put_sfvb_page_attributes(storefront_oid, path, page_attribute_update_request)
+
+Change a page's attributes
+
+A partial update.  Only the attributes you name are changed.  Every entry is checked before any is written.  List, slider, item set, page collection and video list attributes are refused - edit those in the page editor.  Always needs sfvb_publish, because a page's attributes are shared by every theme and there is no dormant copy to change instead. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the put_sfvb_page_attributes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbPageResponse>, Integer, Hash)> put_sfvb_page_attributes_with_http_info(storefront_oid, path, page_attribute_update_request)
+
+```ruby
+begin
+  # Change a page's attributes
+  data, status_code, headers = api_instance.put_sfvb_page_attributes_with_http_info(storefront_oid, path, page_attribute_update_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbPageResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->put_sfvb_page_attributes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **path** | **String** | Page path, for example /catalog/dispensers/ |  |
+| **page_attribute_update_request** | [**SfvbPageAttributeUpdateRequest**](SfvbPageAttributeUpdateRequest.md) | Attributes to change |  |
+
+### Return type
+
+[**SfvbPageResponse**](SfvbPageResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## put_sfvb_page_multimedia
+
+> <SfvbPageResponse> put_sfvb_page_multimedia(storefront_oid, path, page_multimedia_request)
+
+Attach an image to a page
+
+Upload the image with files/upload to the page path followed by a filename first, then name that filename here as either the default image or an image code.  The default image is what a pageimage element with no pageImageCode renders, and what a subgroup tile shows.  Replaces whatever that slot held.  Always needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the put_sfvb_page_multimedia_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbPageResponse>, Integer, Hash)> put_sfvb_page_multimedia_with_http_info(storefront_oid, path, page_multimedia_request)
+
+```ruby
+begin
+  # Attach an image to a page
+  data, status_code, headers = api_instance.put_sfvb_page_multimedia_with_http_info(storefront_oid, path, page_multimedia_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbPageResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->put_sfvb_page_multimedia_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **path** | **String** | Page path, for example /catalog/dispensers/ |  |
+| **page_multimedia_request** | [**SfvbPageMultimediaRequest**](SfvbPageMultimediaRequest.md) | Image to attach |  |
+
+### Return type
+
+[**SfvbPageResponse**](SfvbPageResponse.md)
 
 ### Authorization
 
