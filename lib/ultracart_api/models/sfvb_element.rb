@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class SfvbElement
+    # True when a markdown field card for this element is available from elements/{element_type}.
+    attr_accessor :doc_available
+
     # True when a per element configuration schema is available from elements/{element_type}.
     attr_accessor :schema_available
 
@@ -24,6 +27,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'doc_available' => :'doc_available',
         :'schema_available' => :'schema_available',
         :'type' => :'type'
       }
@@ -37,6 +41,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'doc_available' => :'Boolean',
         :'schema_available' => :'Boolean',
         :'type' => :'String'
       }
@@ -62,6 +67,10 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'doc_available')
+        self.doc_available = attributes[:'doc_available']
+      end
 
       if attributes.key?(:'schema_available')
         self.schema_available = attributes[:'schema_available']
@@ -90,6 +99,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          doc_available == o.doc_available &&
           schema_available == o.schema_available &&
           type == o.type
     end
@@ -103,7 +113,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [schema_available, type].hash
+      [doc_available, schema_available, type].hash
     end
 
     # Builds the object from hash

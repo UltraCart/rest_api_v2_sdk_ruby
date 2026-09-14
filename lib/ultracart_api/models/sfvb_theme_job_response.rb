@@ -21,7 +21,7 @@ module UltracartClient
     # Human readable description of the job.
     attr_accessor :description
 
-    # Failure detail.  Populated only when status is error.
+    # What to do next when the job did not produce a theme.  The internal cause is not returned; it is recorded against the job id in the server log.
     attr_accessor :error_message
 
     # When the job stopped.  Null until it does.

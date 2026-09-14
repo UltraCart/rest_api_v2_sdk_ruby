@@ -15,7 +15,10 @@ require 'time'
 
 module UltracartClient
   class SfvbElementSchemaResponse
-    # JSON schema for this element's config object, as a JSON string.  Null when no schema has been published for this element yet.
+    # Markdown field card for this element, as a string.  Omitted when no field card has been published for this element.
+    attr_accessor :doc
+
+    # Draft-07 JSON schema for this element's config object, as a JSON string.  Omitted when no schema has been published for this element.
     attr_accessor :schema
 
     # The element type.
@@ -24,6 +27,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'doc' => :'doc',
         :'schema' => :'schema',
         :'type' => :'type'
       }
@@ -37,6 +41,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'doc' => :'String',
         :'schema' => :'String',
         :'type' => :'String'
       }
@@ -62,6 +67,10 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'doc')
+        self.doc = attributes[:'doc']
+      end
 
       if attributes.key?(:'schema')
         self.schema = attributes[:'schema']
@@ -90,6 +99,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          doc == o.doc &&
           schema == o.schema &&
           type == o.type
     end
@@ -103,7 +113,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [schema, type].hash
+      [doc, schema, type].hash
     end
 
     # Builds the object from hash

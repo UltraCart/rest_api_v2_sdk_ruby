@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **schema** | **String** | JSON schema for this element&#39;s config object, as a JSON string.  Null when no schema has been published for this element yet. | [optional] |
+| **doc** | **String** | Markdown field card for this element, as a string.  Omitted when no field card has been published for this element. | [optional] |
+| **schema** | **String** | Draft-07 JSON schema for this element&#39;s config object, as a JSON string.  Omitted when no schema has been published for this element. | [optional] |
 | **type** | **String** | The element type. | [optional] |
 
 ## Example
@@ -13,6 +14,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::SfvbElementSchemaResponse.new(
+  doc: null,
   schema: null,
   type: null
 )

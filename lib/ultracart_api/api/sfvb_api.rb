@@ -759,7 +759,8 @@ module UltracartClient
       return data, status_code, headers
     end
 
-    # Configuration schema for one element type
+    # Configuration schema and field card for one element type
+    # schema is the draft-07 JSON schema for the element config object and doc is the markdown field card, both as strings.  Either is omitted when none has been published for the element, which is still a 200.  The catalog is published by the visual builder release process, and a republish can take up to an hour to appear here. 
     # @param element_type [String] 
     # @param [Hash] opts the optional parameters
     # @return [SfvbElementSchemaResponse]
@@ -768,7 +769,8 @@ module UltracartClient
       data
     end
 
-    # Configuration schema for one element type
+    # Configuration schema and field card for one element type
+    # schema is the draft-07 JSON schema for the element config object and doc is the markdown field card, both as strings.  Either is omitted when none has been published for the element, which is still a 200.  The catalog is published by the visual builder release process, and a republish can take up to an hour to appear here. 
     # @param element_type [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(SfvbElementSchemaResponse, Integer, Hash)>] SfvbElementSchemaResponse data, response status code and response headers
