@@ -5,6 +5,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**compile_sfvb_cjson**](SfvbApi.md#compile_sfvb_cjson) | **POST** /sfvb/cjson/compile | Compile CJSON to Velocity |
+| [**create_sfvb_preview_access**](SfvbApi.md#create_sfvb_preview_access) | **POST** /sfvb/storefronts/{storefront_oid}/preview_access | One time link that opens a preview in a browser with no UltraCart login |
 | [**create_sfvb_preview_session**](SfvbApi.md#create_sfvb_preview_session) | **POST** /sfvb/storefronts/{storefront_oid}/preview_sessions | Create a preview session |
 | [**delete_sfvb_file**](SfvbApi.md#delete_sfvb_file) | **DELETE** /sfvb/storefronts/{storefront_oid}/files | Delete a storefront file |
 | [**delete_sfvb_page_multimedia**](SfvbApi.md#delete_sfvb_page_multimedia) | **DELETE** /sfvb/storefronts/{storefront_oid}/pages/multimedia | Detach an image from a page |
@@ -92,6 +93,60 @@ end
 ### Return type
 
 [**SfvbCompileResponse**](SfvbCompileResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_sfvb_preview_access
+
+> <SfvbPreviewAccessResponse> create_sfvb_preview_access(storefront_oid, opts)
+
+One time link that opens a preview in a browser with no UltraCart login
+
+The preview URL only works in a browser already signed in to UltraCart on the storefront's own host, and an agent's built in browser never is.  This returns a single use access_url on the storefront host instead.  Opening it gets past the storefront lock, shows the requested theme and applies the requested preview session for the rest of that browser session, then redirects to path.  It expires two minutes after issue or on first use.  Pages opened afterwards carry an X-UltraCart-Preview header of applied or not-applied.  Requires a token that resolves to a user, so use the device authorization flow. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the create_sfvb_preview_access_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbPreviewAccessResponse>, Integer, Hash)> create_sfvb_preview_access_with_http_info(storefront_oid, opts)
+
+```ruby
+begin
+  # One time link that opens a preview in a browser with no UltraCart login
+  data, status_code, headers = api_instance.create_sfvb_preview_access_with_http_info(storefront_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbPreviewAccessResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->create_sfvb_preview_access_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **preview_access** | [**SfvbPreviewAccessRequest**](SfvbPreviewAccessRequest.md) | What the browser should see | [optional] |
+
+### Return type
+
+[**SfvbPreviewAccessResponse**](SfvbPreviewAccessResponse.md)
 
 ### Authorization
 

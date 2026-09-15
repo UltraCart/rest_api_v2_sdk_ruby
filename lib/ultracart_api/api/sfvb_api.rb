@@ -101,6 +101,77 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # One time link that opens a preview in a browser with no UltraCart login
+    # The preview URL only works in a browser already signed in to UltraCart on the storefront's own host, and an agent's built in browser never is.  This returns a single use access_url on the storefront host instead.  Opening it gets past the storefront lock, shows the requested theme and applies the requested preview session for the rest of that browser session, then redirects to path.  It expires two minutes after issue or on first use.  Pages opened afterwards carry an X-UltraCart-Preview header of applied or not-applied.  Requires a token that resolves to a user, so use the device authorization flow. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [SfvbPreviewAccessRequest] :preview_access What the browser should see
+    # @return [SfvbPreviewAccessResponse]
+    def create_sfvb_preview_access(storefront_oid, opts = {})
+      data, _status_code, _headers = create_sfvb_preview_access_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # One time link that opens a preview in a browser with no UltraCart login
+    # The preview URL only works in a browser already signed in to UltraCart on the storefront&#39;s own host, and an agent&#39;s built in browser never is.  This returns a single use access_url on the storefront host instead.  Opening it gets past the storefront lock, shows the requested theme and applies the requested preview session for the rest of that browser session, then redirects to path.  It expires two minutes after issue or on first use.  Pages opened afterwards carry an X-UltraCart-Preview header of applied or not-applied.  Requires a token that resolves to a user, so use the device authorization flow. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [SfvbPreviewAccessRequest] :preview_access What the browser should see
+    # @return [Array<(SfvbPreviewAccessResponse, Integer, Hash)>] SfvbPreviewAccessResponse data, response status code and response headers
+    def create_sfvb_preview_access_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.create_sfvb_preview_access ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.create_sfvb_preview_access"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/preview_access'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'preview_access'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbPreviewAccessResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.create_sfvb_preview_access",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#create_sfvb_preview_access\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a preview session
     # Returns a server generated session id to push containers into, and opens the session so that id exists rather than merely being random.  The id is not caller supplied, because concurrent agents choosing their own would be free to collide, and the browser editor's habit of minting one with Math.random is not a property worth carrying into an API.  Expires after eight hours and can be deleted sooner.  Requires a token that resolves to a user, so use the device authorization flow. 
     # @param storefront_oid [Integer] 
