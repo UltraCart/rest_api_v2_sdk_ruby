@@ -36,6 +36,12 @@ module UltracartClient
     # Most element library results one page returns.  Asking for more is silently reduced to this, and unlike the directory listing there is no truncation flag on the response, so this number is the only way to know a larger request was cut.
     attr_accessor :max_library_results_per_page
 
+    # How deeply store menu entries can nest.
+    attr_accessor :max_menu_depth
+
+    # Most entries one store menu can hold, counting every level of the tree.  A menu is navigation that renders on every page, so this is deliberately far below what the storage would physically accept.
+    attr_accessor :max_menu_items
+
     # Largest payload one preview session may hold, in bytes.
     attr_accessor :max_preview_session_bytes
 
@@ -95,6 +101,8 @@ module UltracartClient
         :'max_cjson_bytes' => :'max_cjson_bytes',
         :'max_directory_entries' => :'max_directory_entries',
         :'max_library_results_per_page' => :'max_library_results_per_page',
+        :'max_menu_depth' => :'max_menu_depth',
+        :'max_menu_items' => :'max_menu_items',
         :'max_preview_session_bytes' => :'max_preview_session_bytes',
         :'max_revertable_bytes' => :'max_revertable_bytes',
         :'max_search_results' => :'max_search_results',
@@ -122,6 +130,8 @@ module UltracartClient
         :'max_cjson_bytes' => :'Integer',
         :'max_directory_entries' => :'Integer',
         :'max_library_results_per_page' => :'Integer',
+        :'max_menu_depth' => :'Integer',
+        :'max_menu_items' => :'Integer',
         :'max_preview_session_bytes' => :'Integer',
         :'max_revertable_bytes' => :'Integer',
         :'max_search_results' => :'Integer',
@@ -181,6 +191,14 @@ module UltracartClient
 
       if attributes.key?(:'max_library_results_per_page')
         self.max_library_results_per_page = attributes[:'max_library_results_per_page']
+      end
+
+      if attributes.key?(:'max_menu_depth')
+        self.max_menu_depth = attributes[:'max_menu_depth']
+      end
+
+      if attributes.key?(:'max_menu_items')
+        self.max_menu_items = attributes[:'max_menu_items']
       end
 
       if attributes.key?(:'max_preview_session_bytes')
@@ -257,6 +275,8 @@ module UltracartClient
           max_cjson_bytes == o.max_cjson_bytes &&
           max_directory_entries == o.max_directory_entries &&
           max_library_results_per_page == o.max_library_results_per_page &&
+          max_menu_depth == o.max_menu_depth &&
+          max_menu_items == o.max_menu_items &&
           max_preview_session_bytes == o.max_preview_session_bytes &&
           max_revertable_bytes == o.max_revertable_bytes &&
           max_search_results == o.max_search_results &&
@@ -277,7 +297,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [container_manager_version, container_versions_retained, element_count, max_asset_bytes, max_cjson_bytes, max_directory_entries, max_library_results_per_page, max_preview_session_bytes, max_revertable_bytes, max_search_results, max_template_bytes, max_text_read_bytes, max_video_bytes, max_widget_ids_per_request, preview_session_ttl_seconds, release].hash
+      [container_manager_version, container_versions_retained, element_count, max_asset_bytes, max_cjson_bytes, max_directory_entries, max_library_results_per_page, max_menu_depth, max_menu_items, max_preview_session_bytes, max_revertable_bytes, max_search_results, max_template_bytes, max_text_read_bytes, max_video_bytes, max_widget_ids_per_request, preview_session_ttl_seconds, release].hash
     end
 
     # Builds the object from hash

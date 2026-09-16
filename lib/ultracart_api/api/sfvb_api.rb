@@ -1104,6 +1104,140 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Read one store menu and its entries
+    # The whole tree, in render order.  Page entries carry the page_path they resolve to and item entries the merchant_item_id, rather than the oids the storage keeps.  Menu item oids are not returned at all because a write regenerates every one of them.  Keep hash_sha256 - it is the If-Match a write needs. 
+    # @param storefront_oid [Integer] 
+    # @param code [String] Menu code, matched without regard to case
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbMenu]
+    def get_sfvb_menu(storefront_oid, code, opts = {})
+      data, _status_code, _headers = get_sfvb_menu_with_http_info(storefront_oid, code, opts)
+      data
+    end
+
+    # Read one store menu and its entries
+    # The whole tree, in render order.  Page entries carry the page_path they resolve to and item entries the merchant_item_id, rather than the oids the storage keeps.  Menu item oids are not returned at all because a write regenerates every one of them.  Keep hash_sha256 - it is the If-Match a write needs. 
+    # @param storefront_oid [Integer] 
+    # @param code [String] Menu code, matched without regard to case
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbMenu, Integer, Hash)>] SfvbMenu data, response status code and response headers
+    def get_sfvb_menu_with_http_info(storefront_oid, code, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_menu ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_menu"
+      end
+      # verify the required parameter 'code' is set
+      if @api_client.config.client_side_validation && code.nil?
+        fail ArgumentError, "Missing the required parameter 'code' when calling SfvbApi.get_sfvb_menu"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/menus/{code}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'code' + '}', CGI.escape(code.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbMenu'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_menu",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_menu\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List a storefront's store menus
+    # The menus a menu element's menuName can name, sorted by code and without their entries.  A code the active theme's templates ask for but nothing has created is included with unconfigured true - that code renders an empty list today, and writing it creates it.  A menu no template names is marked undeclared, which usually means a menuName is misspelled. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbMenusResponse]
+    def get_sfvb_menus(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_menus_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List a storefront&#39;s store menus
+    # The menus a menu element&#39;s menuName can name, sorted by code and without their entries.  A code the active theme&#39;s templates ask for but nothing has created is included with unconfigured true - that code renders an empty list today, and writing it creates it.  A menu no template names is marked undeclared, which usually means a menuName is misspelled. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbMenusResponse, Integer, Hash)>] SfvbMenusResponse data, response status code and response headers
+    def get_sfvb_menus_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_menus ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_menus"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/menus'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbMenusResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_menus",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_menus\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read a page's attributes and images
     # What the pageattribute and pageimage elements render for this page.  These are not in any file, which is why a page folder can be empty and its elements still render something.  Attributes and image codes a template declares but nothing has set are included, so the response describes what the page can show rather than only what has been saved. 
     # @param storefront_oid [Integer] 
@@ -2276,6 +2410,90 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_file_content\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Replace a store menu's entries
+    # A whole menu replace, not a merge - what you send is what the menu holds afterwards, so read it, change the tree and send it back.  Omitting items changes only the title; sending an empty array empties the menu.  Writing a code that does not exist creates it.  Every entry is checked before any of it is written, including that a merchant_item_id and a page_path actually resolve, so a tree with one bad entry changes nothing.  Always needs sfvb_publish, because a menu is shared by every theme and there is no dormant copy to change instead. 
+    # @param storefront_oid [Integer] 
+    # @param code [String] Menu code, matched without regard to case
+    # @param menu_write_request [SfvbMenuWriteRequest] The menu&#39;s replacement contents
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :if_match Content hash from the last read.  Required when the menu already exists; 428 when absent, 412 when stale.
+    # @return [SfvbMenu]
+    def put_sfvb_menu(storefront_oid, code, menu_write_request, opts = {})
+      data, _status_code, _headers = put_sfvb_menu_with_http_info(storefront_oid, code, menu_write_request, opts)
+      data
+    end
+
+    # Replace a store menu&#39;s entries
+    # A whole menu replace, not a merge - what you send is what the menu holds afterwards, so read it, change the tree and send it back.  Omitting items changes only the title; sending an empty array empties the menu.  Writing a code that does not exist creates it.  Every entry is checked before any of it is written, including that a merchant_item_id and a page_path actually resolve, so a tree with one bad entry changes nothing.  Always needs sfvb_publish, because a menu is shared by every theme and there is no dormant copy to change instead. 
+    # @param storefront_oid [Integer] 
+    # @param code [String] Menu code, matched without regard to case
+    # @param menu_write_request [SfvbMenuWriteRequest] The menu&#39;s replacement contents
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :if_match Content hash from the last read.  Required when the menu already exists; 428 when absent, 412 when stale.
+    # @return [Array<(SfvbMenu, Integer, Hash)>] SfvbMenu data, response status code and response headers
+    def put_sfvb_menu_with_http_info(storefront_oid, code, menu_write_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.put_sfvb_menu ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.put_sfvb_menu"
+      end
+      # verify the required parameter 'code' is set
+      if @api_client.config.client_side_validation && code.nil?
+        fail ArgumentError, "Missing the required parameter 'code' when calling SfvbApi.put_sfvb_menu"
+      end
+      # verify the required parameter 'menu_write_request' is set
+      if @api_client.config.client_side_validation && menu_write_request.nil?
+        fail ArgumentError, "Missing the required parameter 'menu_write_request' when calling SfvbApi.put_sfvb_menu"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/menus/{code}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'code' + '}', CGI.escape(code.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = opts[:'if_match'] if !opts[:'if_match'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(menu_write_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbMenu'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.put_sfvb_menu",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_menu\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

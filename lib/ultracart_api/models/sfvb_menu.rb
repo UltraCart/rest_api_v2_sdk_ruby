@@ -14,42 +14,38 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbPreviewAccessResponse
-    # One time link on the storefront's own host.  Opening it in any browser, including an agent's built in browser with no UltraCart login, gets past the storefront lock and applies the preview session and theme for the rest of that browser's session, then redirects to path.  It is a credential until used, so do not paste it anywhere other than the browser that should open it.
-    attr_accessor :access_url
+  class SfvbMenu
+    # The menu's code, which is the value a menu element's menuName refers to.  Compare case insensitively.
+    attr_accessor :code
 
-    # Seconds left to open access_url.  It stops working after that, and after its first use.
-    attr_accessor :expires_in_seconds
+    # Content hash of the menu as stored.  Send it back as If-Match when writing.
+    attr_accessor :hash_sha256
 
-    # Storefront path the browser lands on, after reserved preview parameters are removed.
-    attr_accessor :path
+    # How many entries the menu holds in total, counting every level of the tree.
+    attr_accessor :item_count
 
-    # The preview session applied, when one was requested.
-    attr_accessor :preview_session_id
+    # The menu's entries, in the order they render.  Omitted from the list endpoint, which returns each menu's identity and counts only.
+    attr_accessor :items
 
-    # How long the browser stays in preview once access_url is opened.  The remaining life of the preview session, or eight hours when none was given.  Ending the preview session ends preview in that browser at its next page.  The user and their storefront permission are checked again on every page, so removing either ends it sooner.
-    attr_accessor :session_lifetime_seconds
+    # The menu's own label, shown in the store admin rather than on the storefront.  Trimmed to 250 characters.
+    attr_accessor :title
 
-    # Always true.  A second open of access_url returns 410.
-    attr_accessor :single_use
+    # True when a template names this code but no menu has been created for it.  Such a code renders an empty list today.  Write it to create it.
+    attr_accessor :unconfigured
 
-    # The theme shown, when one was requested.
-    attr_accessor :theme_oid
-
-    # Plain language instructions, safe to show a user.
-    attr_accessor :usage_note
+    # True when no template on the storefront names this code.  The menu is stored and editable, but nothing renders it, which usually means a menu element's menuName is misspelled.
+    attr_accessor :undeclared
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'access_url' => :'access_url',
-        :'expires_in_seconds' => :'expires_in_seconds',
-        :'path' => :'path',
-        :'preview_session_id' => :'preview_session_id',
-        :'session_lifetime_seconds' => :'session_lifetime_seconds',
-        :'single_use' => :'single_use',
-        :'theme_oid' => :'theme_oid',
-        :'usage_note' => :'usage_note'
+        :'code' => :'code',
+        :'hash_sha256' => :'hash_sha256',
+        :'item_count' => :'item_count',
+        :'items' => :'items',
+        :'title' => :'title',
+        :'unconfigured' => :'unconfigured',
+        :'undeclared' => :'undeclared'
       }
     end
 
@@ -61,14 +57,13 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'access_url' => :'String',
-        :'expires_in_seconds' => :'Integer',
-        :'path' => :'String',
-        :'preview_session_id' => :'String',
-        :'session_lifetime_seconds' => :'Integer',
-        :'single_use' => :'Boolean',
-        :'theme_oid' => :'Integer',
-        :'usage_note' => :'String'
+        :'code' => :'String',
+        :'hash_sha256' => :'String',
+        :'item_count' => :'Integer',
+        :'items' => :'Array<SfvbMenuItem>',
+        :'title' => :'String',
+        :'unconfigured' => :'Boolean',
+        :'undeclared' => :'Boolean'
       }
     end
 
@@ -82,47 +77,45 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbPreviewAccessResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbMenu` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbPreviewAccessResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbMenu`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'access_url')
-        self.access_url = attributes[:'access_url']
+      if attributes.key?(:'code')
+        self.code = attributes[:'code']
       end
 
-      if attributes.key?(:'expires_in_seconds')
-        self.expires_in_seconds = attributes[:'expires_in_seconds']
+      if attributes.key?(:'hash_sha256')
+        self.hash_sha256 = attributes[:'hash_sha256']
       end
 
-      if attributes.key?(:'path')
-        self.path = attributes[:'path']
+      if attributes.key?(:'item_count')
+        self.item_count = attributes[:'item_count']
       end
 
-      if attributes.key?(:'preview_session_id')
-        self.preview_session_id = attributes[:'preview_session_id']
+      if attributes.key?(:'items')
+        if (value = attributes[:'items']).is_a?(Array)
+          self.items = value
+        end
       end
 
-      if attributes.key?(:'session_lifetime_seconds')
-        self.session_lifetime_seconds = attributes[:'session_lifetime_seconds']
+      if attributes.key?(:'title')
+        self.title = attributes[:'title']
       end
 
-      if attributes.key?(:'single_use')
-        self.single_use = attributes[:'single_use']
+      if attributes.key?(:'unconfigured')
+        self.unconfigured = attributes[:'unconfigured']
       end
 
-      if attributes.key?(:'theme_oid')
-        self.theme_oid = attributes[:'theme_oid']
-      end
-
-      if attributes.key?(:'usage_note')
-        self.usage_note = attributes[:'usage_note']
+      if attributes.key?(:'undeclared')
+        self.undeclared = attributes[:'undeclared']
       end
     end
 
@@ -144,14 +137,13 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          access_url == o.access_url &&
-          expires_in_seconds == o.expires_in_seconds &&
-          path == o.path &&
-          preview_session_id == o.preview_session_id &&
-          session_lifetime_seconds == o.session_lifetime_seconds &&
-          single_use == o.single_use &&
-          theme_oid == o.theme_oid &&
-          usage_note == o.usage_note
+          code == o.code &&
+          hash_sha256 == o.hash_sha256 &&
+          item_count == o.item_count &&
+          items == o.items &&
+          title == o.title &&
+          unconfigured == o.unconfigured &&
+          undeclared == o.undeclared
     end
 
     # @see the `==` method
@@ -163,7 +155,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_url, expires_in_seconds, path, preview_session_id, session_lifetime_seconds, single_use, theme_oid, usage_note].hash
+      [code, hash_sha256, item_count, items, title, unconfigured, undeclared].hash
     end
 
     # Builds the object from hash

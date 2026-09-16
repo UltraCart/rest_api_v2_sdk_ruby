@@ -19,6 +19,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_file_content**](SfvbApi.md#get_sfvb_file_content) | **GET** /sfvb/storefronts/{storefront_oid}/files/content | Read a storefront file |
 | [**get_sfvb_file_upload_url**](SfvbApi.md#get_sfvb_file_upload_url) | **GET** /sfvb/storefronts/{storefront_oid}/files/upload_url/{extension} | Get a URL to upload a binary asset to |
 | [**get_sfvb_library_entry**](SfvbApi.md#get_sfvb_library_entry) | **GET** /sfvb/storefronts/{storefront_oid}/library/{library_oid} | Read one library entry including its CJSON |
+| [**get_sfvb_menu**](SfvbApi.md#get_sfvb_menu) | **GET** /sfvb/storefronts/{storefront_oid}/menus/{code} | Read one store menu and its entries |
+| [**get_sfvb_menus**](SfvbApi.md#get_sfvb_menus) | **GET** /sfvb/storefronts/{storefront_oid}/menus | List a storefront&#39;s store menus |
 | [**get_sfvb_page**](SfvbApi.md#get_sfvb_page) | **GET** /sfvb/storefronts/{storefront_oid}/pages | Read a page&#39;s attributes and images |
 | [**get_sfvb_preview_url**](SfvbApi.md#get_sfvb_preview_url) | **GET** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id}/url | URL that renders a preview session |
 | [**get_sfvb_theme**](SfvbApi.md#get_sfvb_theme) | **GET** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid} | Get a theme |
@@ -36,6 +38,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**list_sfvb_upsell_offers**](SfvbApi.md#list_sfvb_upsell_offers) | **GET** /sfvb/storefronts/{storefront_oid}/upsell_offers | List upsell offers |
 | [**put_sfvb_container**](SfvbApi.md#put_sfvb_container) | **PUT** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id} | Write a container stored outside the file system |
 | [**put_sfvb_file_content**](SfvbApi.md#put_sfvb_file_content) | **PUT** /sfvb/storefronts/{storefront_oid}/files/content | Write a storefront file |
+| [**put_sfvb_menu**](SfvbApi.md#put_sfvb_menu) | **PUT** /sfvb/storefronts/{storefront_oid}/menus/{code} | Replace a store menu&#39;s entries |
 | [**put_sfvb_page_attributes**](SfvbApi.md#put_sfvb_page_attributes) | **PUT** /sfvb/storefronts/{storefront_oid}/pages/attributes | Change a page&#39;s attributes |
 | [**put_sfvb_page_multimedia**](SfvbApi.md#put_sfvb_page_multimedia) | **PUT** /sfvb/storefronts/{storefront_oid}/pages/multimedia | Attach an image to a page |
 | [**put_sfvb_preview_session**](SfvbApi.md#put_sfvb_preview_session) | **PUT** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id} | Push containers into a preview session |
@@ -854,6 +857,113 @@ end
 ### Return type
 
 [**SfvbLibraryEntry**](SfvbLibraryEntry.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_menu
+
+> <SfvbMenu> get_sfvb_menu(storefront_oid, code)
+
+Read one store menu and its entries
+
+The whole tree, in render order.  Page entries carry the page_path they resolve to and item entries the merchant_item_id, rather than the oids the storage keeps.  Menu item oids are not returned at all because a write regenerates every one of them.  Keep hash_sha256 - it is the If-Match a write needs. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_menu_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbMenu>, Integer, Hash)> get_sfvb_menu_with_http_info(storefront_oid, code)
+
+```ruby
+begin
+  # Read one store menu and its entries
+  data, status_code, headers = api_instance.get_sfvb_menu_with_http_info(storefront_oid, code)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbMenu>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_menu_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **code** | **String** | Menu code, matched without regard to case |  |
+
+### Return type
+
+[**SfvbMenu**](SfvbMenu.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_menus
+
+> <SfvbMenusResponse> get_sfvb_menus(storefront_oid)
+
+List a storefront's store menus
+
+The menus a menu element's menuName can name, sorted by code and without their entries.  A code the active theme's templates ask for but nothing has created is included with unconfigured true - that code renders an empty list today, and writing it creates it.  A menu no template names is marked undeclared, which usually means a menuName is misspelled. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_menus_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbMenusResponse>, Integer, Hash)> get_sfvb_menus_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # List a storefront's store menus
+  data, status_code, headers = api_instance.get_sfvb_menus_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbMenusResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_menus_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbMenusResponse**](SfvbMenusResponse.md)
 
 ### Authorization
 
@@ -1764,6 +1874,62 @@ end
 ### Return type
 
 [**SfvbFileWriteResponse**](SfvbFileWriteResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## put_sfvb_menu
+
+> <SfvbMenu> put_sfvb_menu(storefront_oid, code, menu_write_request, opts)
+
+Replace a store menu's entries
+
+A whole menu replace, not a merge - what you send is what the menu holds afterwards, so read it, change the tree and send it back.  Omitting items changes only the title; sending an empty array empties the menu.  Writing a code that does not exist creates it.  Every entry is checked before any of it is written, including that a merchant_item_id and a page_path actually resolve, so a tree with one bad entry changes nothing.  Always needs sfvb_publish, because a menu is shared by every theme and there is no dormant copy to change instead. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the put_sfvb_menu_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbMenu>, Integer, Hash)> put_sfvb_menu_with_http_info(storefront_oid, code, menu_write_request, opts)
+
+```ruby
+begin
+  # Replace a store menu's entries
+  data, status_code, headers = api_instance.put_sfvb_menu_with_http_info(storefront_oid, code, menu_write_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbMenu>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->put_sfvb_menu_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **code** | **String** | Menu code, matched without regard to case |  |
+| **menu_write_request** | [**SfvbMenuWriteRequest**](SfvbMenuWriteRequest.md) | The menu&#39;s replacement contents |  |
+| **if_match** | **String** | Content hash from the last read.  Required when the menu already exists; 428 when absent, 412 when stale. | [optional] |
+
+### Return type
+
+[**SfvbMenu**](SfvbMenu.md)
 
 ### Authorization
 

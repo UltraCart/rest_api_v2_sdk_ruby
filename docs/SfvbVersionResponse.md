@@ -11,6 +11,8 @@
 | **max_cjson_bytes** | **Integer** | Largest CJSON document that will be parsed, in bytes. | [optional] |
 | **max_directory_entries** | **Integer** | Most entries one directory listing returns.  Asking for more is silently reduced to this rather than refused, so compare against it instead of trusting that you got what you asked for.  The listing does set a truncated flag when it drops entries. | [optional] |
 | **max_library_results_per_page** | **Integer** | Most element library results one page returns.  Asking for more is silently reduced to this, and unlike the directory listing there is no truncation flag on the response, so this number is the only way to know a larger request was cut. | [optional] |
+| **max_menu_depth** | **Integer** | How deeply store menu entries can nest. | [optional] |
+| **max_menu_items** | **Integer** | Most entries one store menu can hold, counting every level of the tree.  A menu is navigation that renders on every page, so this is deliberately far below what the storage would physically accept. | [optional] |
 | **max_preview_session_bytes** | **Integer** | Largest payload one preview session may hold, in bytes. | [optional] |
 | **max_revertable_bytes** | **Integer** | Largest historical version files/revert will restore, in bytes.  Higher than max_text_read_bytes deliberately - putting back a version that is already stored is cheaper than serving it as JSON, so a version too large to read can still be reverted to. | [optional] |
 | **max_search_results** | **Integer** | Hard ceiling on file search results per page. | [optional] |
@@ -34,6 +36,8 @@ instance = UltracartClient::SfvbVersionResponse.new(
   max_cjson_bytes: null,
   max_directory_entries: null,
   max_library_results_per_page: null,
+  max_menu_depth: null,
+  max_menu_items: null,
   max_preview_session_bytes: null,
   max_revertable_bytes: null,
   max_search_results: null,
