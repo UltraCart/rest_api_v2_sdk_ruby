@@ -14,9 +14,9 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbPageResponse
-    # Every attribute this page has, including ones a template declares but nothing has set yet.  These are what the pageattribute element renders.  Sorted by name.
-    attr_accessor :attributes
+  class SfvbPageSummary
+    # Number of pages directly under this one.
+    attr_accessor :child_count
 
     # True when the page is left out of the sitemap and marked noindex.
     attr_accessor :exclude_from_sitemap
@@ -24,17 +24,32 @@ module UltracartClient
     # Template file that renders the page itself, a bare .vm name found anywhere in the active theme.
     attr_accessor :group_template
 
+    # Number of items assigned to the page.  The catalog stops counting at its per-page item ceiling.
+    attr_accessor :item_count
+
     # Template file that renders the item pages under this page.
     attr_accessor :item_template
 
-    # The page's images, including codes a template declares but nothing has attached yet.  These are what the pageimage element renders - the default image when pageImageCode is empty, otherwise the image with that code.  The default image comes first.
-    attr_accessor :multimedia
+    # S for a static page, D for a dynamic one.
+    attr_accessor :page_type
 
-    # The page path, normalized to begin and end with a slash.
+    # Path of the page this one sits under.  Empty for the root page.
+    attr_accessor :parent_path
+
+    # The page path, beginning and ending with a slash.  The root page is /.
     attr_accessor :path
+
+    # True for the storefront's home page.
+    attr_accessor :root
+
+    # Position among its siblings when the parent sorts child pages by a custom order.
+    attr_accessor :sort_order
 
     # The page title.
     attr_accessor :title
+
+    # True when the page's items or blog posts are chosen by selectors rather than assigned by hand.
+    attr_accessor :uses_selectors
 
     # False when the page is hidden.  A hidden page answers 404 to shoppers.
     attr_accessor :visible
@@ -45,13 +60,18 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'attributes' => :'attributes',
+        :'child_count' => :'child_count',
         :'exclude_from_sitemap' => :'exclude_from_sitemap',
         :'group_template' => :'group_template',
+        :'item_count' => :'item_count',
         :'item_template' => :'item_template',
-        :'multimedia' => :'multimedia',
+        :'page_type' => :'page_type',
+        :'parent_path' => :'parent_path',
         :'path' => :'path',
+        :'root' => :'root',
+        :'sort_order' => :'sort_order',
         :'title' => :'title',
+        :'uses_selectors' => :'uses_selectors',
         :'visible' => :'visible',
         :'visible_dts' => :'visible_dts'
       }
@@ -65,13 +85,18 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'attributes' => :'Array<SfvbPageAttribute>',
+        :'child_count' => :'Integer',
         :'exclude_from_sitemap' => :'Boolean',
         :'group_template' => :'String',
+        :'item_count' => :'Integer',
         :'item_template' => :'String',
-        :'multimedia' => :'Array<SfvbPageMultimedia>',
+        :'page_type' => :'String',
+        :'parent_path' => :'String',
         :'path' => :'String',
+        :'root' => :'Boolean',
+        :'sort_order' => :'Integer',
         :'title' => :'String',
+        :'uses_selectors' => :'Boolean',
         :'visible' => :'Boolean',
         :'visible_dts' => :'String'
       }
@@ -87,21 +112,19 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbPageResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbPageSummary` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbPageResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbPageSummary`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'attributes')
-        if (value = attributes[:'attributes']).is_a?(Array)
-          self.attributes = value
-        end
+      if attributes.key?(:'child_count')
+        self.child_count = attributes[:'child_count']
       end
 
       if attributes.key?(:'exclude_from_sitemap')
@@ -112,22 +135,40 @@ module UltracartClient
         self.group_template = attributes[:'group_template']
       end
 
+      if attributes.key?(:'item_count')
+        self.item_count = attributes[:'item_count']
+      end
+
       if attributes.key?(:'item_template')
         self.item_template = attributes[:'item_template']
       end
 
-      if attributes.key?(:'multimedia')
-        if (value = attributes[:'multimedia']).is_a?(Array)
-          self.multimedia = value
-        end
+      if attributes.key?(:'page_type')
+        self.page_type = attributes[:'page_type']
+      end
+
+      if attributes.key?(:'parent_path')
+        self.parent_path = attributes[:'parent_path']
       end
 
       if attributes.key?(:'path')
         self.path = attributes[:'path']
       end
 
+      if attributes.key?(:'root')
+        self.root = attributes[:'root']
+      end
+
+      if attributes.key?(:'sort_order')
+        self.sort_order = attributes[:'sort_order']
+      end
+
       if attributes.key?(:'title')
         self.title = attributes[:'title']
+      end
+
+      if attributes.key?(:'uses_selectors')
+        self.uses_selectors = attributes[:'uses_selectors']
       end
 
       if attributes.key?(:'visible')
@@ -157,13 +198,18 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          attributes == o.attributes &&
+          child_count == o.child_count &&
           exclude_from_sitemap == o.exclude_from_sitemap &&
           group_template == o.group_template &&
+          item_count == o.item_count &&
           item_template == o.item_template &&
-          multimedia == o.multimedia &&
+          page_type == o.page_type &&
+          parent_path == o.parent_path &&
           path == o.path &&
+          root == o.root &&
+          sort_order == o.sort_order &&
           title == o.title &&
+          uses_selectors == o.uses_selectors &&
           visible == o.visible &&
           visible_dts == o.visible_dts
     end
@@ -177,7 +223,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attributes, exclude_from_sitemap, group_template, item_template, multimedia, path, title, visible, visible_dts].hash
+      [child_count, exclude_from_sitemap, group_template, item_count, item_template, page_type, parent_path, path, root, sort_order, title, uses_selectors, visible, visible_dts].hash
     end
 
     # Builds the object from hash

@@ -14,42 +14,42 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbPageResponse
-    # Every attribute this page has, including ones a template declares but nothing has set yet.  These are what the pageattribute element renders.  Sorted by name.
-    attr_accessor :attributes
+  class SfvbPageCreateRequest
+    # The page description, for templates that show one.
+    attr_accessor :description
 
-    # True when the page is left out of the sitemap and marked noindex.
+    # Leave the page out of the sitemap and mark it noindex.  Usual for ad landing pages.
     attr_accessor :exclude_from_sitemap
 
-    # Template file that renders the page itself, a bare .vm name found anywhere in the active theme.
+    # Template that renders the page, a name from the template list.  When omitted the page inherits its parent's templates, or catalog_group.vm directly under the root.
     attr_accessor :group_template
 
-    # Template file that renders the item pages under this page.
+    # Template that renders the item pages under this page.  Inherited or defaulted like group_template.
     attr_accessor :item_template
 
-    # The page's images, including codes a template declares but nothing has attached yet.  These are what the pageimage element renders - the default image when pageImageCode is empty, otherwise the image with that code.  The default image comes first.
-    attr_accessor :multimedia
+    # S for a static page, D for a dynamic one.  Defaults to D, as in the admin.
+    attr_accessor :page_type
 
-    # The page path, normalized to begin and end with a slash.
+    # Path of the new page, for example /lp/spring-sale/.  The parent page must already exist, and the last part may only contain letters, digits, hyphens and underscores.
     attr_accessor :path
 
     # The page title.
     attr_accessor :title
 
-    # False when the page is hidden.  A hidden page answers 404 to shoppers.
+    # False creates the page hidden, so it answers 404 to shoppers until it is shown.
     attr_accessor :visible
 
-    # When set, the page stays hidden until this time (ISO 8601, UTC).
+    # Keep the page hidden until this time (ISO 8601).
     attr_accessor :visible_dts
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'attributes' => :'attributes',
+        :'description' => :'description',
         :'exclude_from_sitemap' => :'exclude_from_sitemap',
         :'group_template' => :'group_template',
         :'item_template' => :'item_template',
-        :'multimedia' => :'multimedia',
+        :'page_type' => :'page_type',
         :'path' => :'path',
         :'title' => :'title',
         :'visible' => :'visible',
@@ -65,11 +65,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'attributes' => :'Array<SfvbPageAttribute>',
+        :'description' => :'String',
         :'exclude_from_sitemap' => :'Boolean',
         :'group_template' => :'String',
         :'item_template' => :'String',
-        :'multimedia' => :'Array<SfvbPageMultimedia>',
+        :'page_type' => :'String',
         :'path' => :'String',
         :'title' => :'String',
         :'visible' => :'Boolean',
@@ -87,21 +87,19 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbPageResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbPageCreateRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbPageResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbPageCreateRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'attributes')
-        if (value = attributes[:'attributes']).is_a?(Array)
-          self.attributes = value
-        end
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'exclude_from_sitemap')
@@ -116,10 +114,8 @@ module UltracartClient
         self.item_template = attributes[:'item_template']
       end
 
-      if attributes.key?(:'multimedia')
-        if (value = attributes[:'multimedia']).is_a?(Array)
-          self.multimedia = value
-        end
+      if attributes.key?(:'page_type')
+        self.page_type = attributes[:'page_type']
       end
 
       if attributes.key?(:'path')
@@ -157,11 +153,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          attributes == o.attributes &&
+          description == o.description &&
           exclude_from_sitemap == o.exclude_from_sitemap &&
           group_template == o.group_template &&
           item_template == o.item_template &&
-          multimedia == o.multimedia &&
+          page_type == o.page_type &&
           path == o.path &&
           title == o.title &&
           visible == o.visible &&
@@ -177,7 +173,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attributes, exclude_from_sitemap, group_template, item_template, multimedia, path, title, visible, visible_dts].hash
+      [description, exclude_from_sitemap, group_template, item_template, page_type, path, title, visible, visible_dts].hash
     end
 
     # Builds the object from hash

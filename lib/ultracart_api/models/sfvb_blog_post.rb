@@ -14,46 +14,38 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbPageResponse
-    # Every attribute this page has, including ones a template declares but nothing has set yet.  These are what the pageattribute element renders.  Sorted by name.
-    attr_accessor :attributes
+  class SfvbBlogPost
+    # The post author.
+    attr_accessor :author
 
-    # True when the page is left out of the sitemap and marked noindex.
-    attr_accessor :exclude_from_sitemap
+    # The blog post's oid.  This is what a page's blog post assignment names.
+    attr_accessor :blog_post_oid
 
-    # Template file that renders the page itself, a bare .vm name found anywhere in the active theme.
-    attr_accessor :group_template
+    # When the post was published (ISO 8601, UTC), or when it was created if it has no publication time.
+    attr_accessor :publication_dts
 
-    # Template file that renders the item pages under this page.
-    attr_accessor :item_template
-
-    # The page's images, including codes a template declares but nothing has attached yet.  These are what the pageimage element renders - the default image when pageImageCode is empty, otherwise the image with that code.  The default image comes first.
-    attr_accessor :multimedia
-
-    # The page path, normalized to begin and end with a slash.
-    attr_accessor :path
-
-    # The page title.
+    # The post title.
     attr_accessor :title
 
-    # False when the page is hidden.  A hidden page answers 404 to shoppers.
-    attr_accessor :visible
+    # True when no page shows this post yet.  Only reported by the blog post list.
+    attr_accessor :unassigned
 
-    # When set, the page stays hidden until this time (ISO 8601, UTC).
-    attr_accessor :visible_dts
+    # The post's name in its URL.
+    attr_accessor :url_part
+
+    # P public, L logged in customers only, D draft.
+    attr_accessor :visibility
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'attributes' => :'attributes',
-        :'exclude_from_sitemap' => :'exclude_from_sitemap',
-        :'group_template' => :'group_template',
-        :'item_template' => :'item_template',
-        :'multimedia' => :'multimedia',
-        :'path' => :'path',
+        :'author' => :'author',
+        :'blog_post_oid' => :'blog_post_oid',
+        :'publication_dts' => :'publication_dts',
         :'title' => :'title',
-        :'visible' => :'visible',
-        :'visible_dts' => :'visible_dts'
+        :'unassigned' => :'unassigned',
+        :'url_part' => :'url_part',
+        :'visibility' => :'visibility'
       }
     end
 
@@ -65,15 +57,13 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'attributes' => :'Array<SfvbPageAttribute>',
-        :'exclude_from_sitemap' => :'Boolean',
-        :'group_template' => :'String',
-        :'item_template' => :'String',
-        :'multimedia' => :'Array<SfvbPageMultimedia>',
-        :'path' => :'String',
+        :'author' => :'String',
+        :'blog_post_oid' => :'Integer',
+        :'publication_dts' => :'String',
         :'title' => :'String',
-        :'visible' => :'Boolean',
-        :'visible_dts' => :'String'
+        :'unassigned' => :'Boolean',
+        :'url_part' => :'String',
+        :'visibility' => :'String'
       }
     end
 
@@ -87,55 +77,43 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbPageResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbBlogPost` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbPageResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbBlogPost`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'attributes')
-        if (value = attributes[:'attributes']).is_a?(Array)
-          self.attributes = value
-        end
+      if attributes.key?(:'author')
+        self.author = attributes[:'author']
       end
 
-      if attributes.key?(:'exclude_from_sitemap')
-        self.exclude_from_sitemap = attributes[:'exclude_from_sitemap']
+      if attributes.key?(:'blog_post_oid')
+        self.blog_post_oid = attributes[:'blog_post_oid']
       end
 
-      if attributes.key?(:'group_template')
-        self.group_template = attributes[:'group_template']
-      end
-
-      if attributes.key?(:'item_template')
-        self.item_template = attributes[:'item_template']
-      end
-
-      if attributes.key?(:'multimedia')
-        if (value = attributes[:'multimedia']).is_a?(Array)
-          self.multimedia = value
-        end
-      end
-
-      if attributes.key?(:'path')
-        self.path = attributes[:'path']
+      if attributes.key?(:'publication_dts')
+        self.publication_dts = attributes[:'publication_dts']
       end
 
       if attributes.key?(:'title')
         self.title = attributes[:'title']
       end
 
-      if attributes.key?(:'visible')
-        self.visible = attributes[:'visible']
+      if attributes.key?(:'unassigned')
+        self.unassigned = attributes[:'unassigned']
       end
 
-      if attributes.key?(:'visible_dts')
-        self.visible_dts = attributes[:'visible_dts']
+      if attributes.key?(:'url_part')
+        self.url_part = attributes[:'url_part']
+      end
+
+      if attributes.key?(:'visibility')
+        self.visibility = attributes[:'visibility']
       end
     end
 
@@ -157,15 +135,13 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          attributes == o.attributes &&
-          exclude_from_sitemap == o.exclude_from_sitemap &&
-          group_template == o.group_template &&
-          item_template == o.item_template &&
-          multimedia == o.multimedia &&
-          path == o.path &&
+          author == o.author &&
+          blog_post_oid == o.blog_post_oid &&
+          publication_dts == o.publication_dts &&
           title == o.title &&
-          visible == o.visible &&
-          visible_dts == o.visible_dts
+          unassigned == o.unassigned &&
+          url_part == o.url_part &&
+          visibility == o.visibility
     end
 
     # @see the `==` method
@@ -177,7 +153,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attributes, exclude_from_sitemap, group_template, item_template, multimedia, path, title, visible, visible_dts].hash
+      [author, blog_post_oid, publication_dts, title, unassigned, url_part, visibility].hash
     end
 
     # Builds the object from hash

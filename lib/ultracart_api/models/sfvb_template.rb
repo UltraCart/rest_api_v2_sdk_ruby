@@ -14,46 +14,50 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbPageResponse
-    # Every attribute this page has, including ones a template declares but nothing has set yet.  These are what the pageattribute element renders.  Sorted by name.
-    attr_accessor :attributes
+  class SfvbTemplate
+    # True when the template shows the page's blog posts.
+    attr_accessor :display_blog_posts
 
-    # True when the page is left out of the sitemap and marked noindex.
-    attr_accessor :exclude_from_sitemap
+    # True when the template shows the page's items.
+    attr_accessor :display_items
 
-    # Template file that renders the page itself, a bare .vm name found anywhere in the active theme.
-    attr_accessor :group_template
+    # True when the template shows the pages under this one.
+    attr_accessor :display_subgroups
 
-    # Template file that renders the item pages under this page.
-    attr_accessor :item_template
+    # False when the template has no metadata, so the capability flags below are unknown.
+    attr_accessor :metadata_available
 
-    # The page's images, including codes a template declares but nothing has attached yet.  These are what the pageimage element renders - the default image when pageImageCode is empty, otherwise the image with that code.  The default image comes first.
-    attr_accessor :multimedia
+    # The bare file name.  This is the value a page's group_template or item_template holds.
+    attr_accessor :name
 
-    # The page path, normalized to begin and end with a slash.
-    attr_accessor :path
+    # The page type the template declares, such as group, item or static.  system for the fixed templates the storefront itself uses, such as checkout and my account.  Null when the template has no metadata.
+    attr_accessor :page_type
 
-    # The page title.
-    attr_accessor :title
+    # True when the template pages through a long list of items.
+    attr_accessor :pagination
 
-    # False when the page is hidden.  A hidden page answers 404 to shoppers.
-    attr_accessor :visible
+    # True for the fixed templates the storefront itself uses.  Never assign one to a page.
+    attr_accessor :system
 
-    # When set, the page stays hidden until this time (ISO 8601, UTC).
-    attr_accessor :visible_dts
+    # Where the file sits inside the theme.
+    attr_accessor :theme_relative_path
+
+    # True when the template renders visual builder containers.
+    attr_accessor :visual_builder
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'attributes' => :'attributes',
-        :'exclude_from_sitemap' => :'exclude_from_sitemap',
-        :'group_template' => :'group_template',
-        :'item_template' => :'item_template',
-        :'multimedia' => :'multimedia',
-        :'path' => :'path',
-        :'title' => :'title',
-        :'visible' => :'visible',
-        :'visible_dts' => :'visible_dts'
+        :'display_blog_posts' => :'display_blog_posts',
+        :'display_items' => :'display_items',
+        :'display_subgroups' => :'display_subgroups',
+        :'metadata_available' => :'metadata_available',
+        :'name' => :'name',
+        :'page_type' => :'page_type',
+        :'pagination' => :'pagination',
+        :'system' => :'system',
+        :'theme_relative_path' => :'theme_relative_path',
+        :'visual_builder' => :'visual_builder'
       }
     end
 
@@ -65,15 +69,16 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'attributes' => :'Array<SfvbPageAttribute>',
-        :'exclude_from_sitemap' => :'Boolean',
-        :'group_template' => :'String',
-        :'item_template' => :'String',
-        :'multimedia' => :'Array<SfvbPageMultimedia>',
-        :'path' => :'String',
-        :'title' => :'String',
-        :'visible' => :'Boolean',
-        :'visible_dts' => :'String'
+        :'display_blog_posts' => :'Boolean',
+        :'display_items' => :'Boolean',
+        :'display_subgroups' => :'Boolean',
+        :'metadata_available' => :'Boolean',
+        :'name' => :'String',
+        :'page_type' => :'String',
+        :'pagination' => :'Boolean',
+        :'system' => :'Boolean',
+        :'theme_relative_path' => :'String',
+        :'visual_builder' => :'Boolean'
       }
     end
 
@@ -87,55 +92,55 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbPageResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbTemplate` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbPageResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbTemplate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'attributes')
-        if (value = attributes[:'attributes']).is_a?(Array)
-          self.attributes = value
-        end
+      if attributes.key?(:'display_blog_posts')
+        self.display_blog_posts = attributes[:'display_blog_posts']
       end
 
-      if attributes.key?(:'exclude_from_sitemap')
-        self.exclude_from_sitemap = attributes[:'exclude_from_sitemap']
+      if attributes.key?(:'display_items')
+        self.display_items = attributes[:'display_items']
       end
 
-      if attributes.key?(:'group_template')
-        self.group_template = attributes[:'group_template']
+      if attributes.key?(:'display_subgroups')
+        self.display_subgroups = attributes[:'display_subgroups']
       end
 
-      if attributes.key?(:'item_template')
-        self.item_template = attributes[:'item_template']
+      if attributes.key?(:'metadata_available')
+        self.metadata_available = attributes[:'metadata_available']
       end
 
-      if attributes.key?(:'multimedia')
-        if (value = attributes[:'multimedia']).is_a?(Array)
-          self.multimedia = value
-        end
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'path')
-        self.path = attributes[:'path']
+      if attributes.key?(:'page_type')
+        self.page_type = attributes[:'page_type']
       end
 
-      if attributes.key?(:'title')
-        self.title = attributes[:'title']
+      if attributes.key?(:'pagination')
+        self.pagination = attributes[:'pagination']
       end
 
-      if attributes.key?(:'visible')
-        self.visible = attributes[:'visible']
+      if attributes.key?(:'system')
+        self.system = attributes[:'system']
       end
 
-      if attributes.key?(:'visible_dts')
-        self.visible_dts = attributes[:'visible_dts']
+      if attributes.key?(:'theme_relative_path')
+        self.theme_relative_path = attributes[:'theme_relative_path']
+      end
+
+      if attributes.key?(:'visual_builder')
+        self.visual_builder = attributes[:'visual_builder']
       end
     end
 
@@ -157,15 +162,16 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          attributes == o.attributes &&
-          exclude_from_sitemap == o.exclude_from_sitemap &&
-          group_template == o.group_template &&
-          item_template == o.item_template &&
-          multimedia == o.multimedia &&
-          path == o.path &&
-          title == o.title &&
-          visible == o.visible &&
-          visible_dts == o.visible_dts
+          display_blog_posts == o.display_blog_posts &&
+          display_items == o.display_items &&
+          display_subgroups == o.display_subgroups &&
+          metadata_available == o.metadata_available &&
+          name == o.name &&
+          page_type == o.page_type &&
+          pagination == o.pagination &&
+          system == o.system &&
+          theme_relative_path == o.theme_relative_path &&
+          visual_builder == o.visual_builder
     end
 
     # @see the `==` method
@@ -177,7 +183,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attributes, exclude_from_sitemap, group_template, item_template, multimedia, path, title, visible, visible_dts].hash
+      [display_blog_posts, display_items, display_subgroups, metadata_available, name, page_type, pagination, system, theme_relative_path, visual_builder].hash
     end
 
     # Builds the object from hash

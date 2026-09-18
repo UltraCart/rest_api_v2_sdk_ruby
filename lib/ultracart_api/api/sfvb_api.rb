@@ -32,6 +32,170 @@ module UltracartClient
       UltracartClient::SfvbApi.new(api_client)
     end
 
+    # Assign blog posts to a page
+    # Adds posts by blog_post_oid, at most 500 at a time.  Every oid must be a post on this storefront, and one that is not changes nothing.  Refused on a page whose selectors choose its blog posts.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /blog/
+    # @param page_blog_posts_request [SfvbPageBlogPostsRequest] Blog posts to assign
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbPageBlogPostsResponse]
+    def add_sfvb_page_blog_posts(storefront_oid, path, page_blog_posts_request, opts = {})
+      data, _status_code, _headers = add_sfvb_page_blog_posts_with_http_info(storefront_oid, path, page_blog_posts_request, opts)
+      data
+    end
+
+    # Assign blog posts to a page
+    # Adds posts by blog_post_oid, at most 500 at a time.  Every oid must be a post on this storefront, and one that is not changes nothing.  Refused on a page whose selectors choose its blog posts.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /blog/
+    # @param page_blog_posts_request [SfvbPageBlogPostsRequest] Blog posts to assign
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbPageBlogPostsResponse, Integer, Hash)>] SfvbPageBlogPostsResponse data, response status code and response headers
+    def add_sfvb_page_blog_posts_with_http_info(storefront_oid, path, page_blog_posts_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.add_sfvb_page_blog_posts ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.add_sfvb_page_blog_posts"
+      end
+      # verify the required parameter 'path' is set
+      if @api_client.config.client_side_validation && path.nil?
+        fail ArgumentError, "Missing the required parameter 'path' when calling SfvbApi.add_sfvb_page_blog_posts"
+      end
+      # verify the required parameter 'page_blog_posts_request' is set
+      if @api_client.config.client_side_validation && page_blog_posts_request.nil?
+        fail ArgumentError, "Missing the required parameter 'page_blog_posts_request' when calling SfvbApi.add_sfvb_page_blog_posts"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/pages/blog_posts/add'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'path'] = path
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(page_blog_posts_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbPageBlogPostsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.add_sfvb_page_blog_posts",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#add_sfvb_page_blog_posts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Assign items to a page
+    # Adds items by item id, at most 500 at a time, or changes the sort order or url part of items already on the page.  Every id is checked first and one unknown id changes nothing.  Refused on a page whose selectors choose its items.  sort_order is refused unless the page sorts its items by a custom order.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /lp/spring-sale/
+    # @param page_items_add_request [SfvbPageItemsAddRequest] Items to assign
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbPageItemsResponse]
+    def add_sfvb_page_items(storefront_oid, path, page_items_add_request, opts = {})
+      data, _status_code, _headers = add_sfvb_page_items_with_http_info(storefront_oid, path, page_items_add_request, opts)
+      data
+    end
+
+    # Assign items to a page
+    # Adds items by item id, at most 500 at a time, or changes the sort order or url part of items already on the page.  Every id is checked first and one unknown id changes nothing.  Refused on a page whose selectors choose its items.  sort_order is refused unless the page sorts its items by a custom order.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /lp/spring-sale/
+    # @param page_items_add_request [SfvbPageItemsAddRequest] Items to assign
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbPageItemsResponse, Integer, Hash)>] SfvbPageItemsResponse data, response status code and response headers
+    def add_sfvb_page_items_with_http_info(storefront_oid, path, page_items_add_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.add_sfvb_page_items ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.add_sfvb_page_items"
+      end
+      # verify the required parameter 'path' is set
+      if @api_client.config.client_side_validation && path.nil?
+        fail ArgumentError, "Missing the required parameter 'path' when calling SfvbApi.add_sfvb_page_items"
+      end
+      # verify the required parameter 'page_items_add_request' is set
+      if @api_client.config.client_side_validation && page_items_add_request.nil?
+        fail ArgumentError, "Missing the required parameter 'page_items_add_request' when calling SfvbApi.add_sfvb_page_items"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/pages/items/add'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'path'] = path
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(page_items_add_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbPageItemsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.add_sfvb_page_items",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#add_sfvb_page_items\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Compile CJSON to Velocity
     # Compiles a container document to Velocity without storing anything.  Supply theme_oid to compile with the theme's inherit groups applied; omit it to compile standalone. 
     # @param compile_request [SfvbCompileRequest] CJSON to compile
@@ -524,6 +688,81 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Copy a page to a new path
+    # Copies what the store admin's duplicate copies - settings, items, blog posts, permissions, attributes, selectors, images and the page folder with its body.  The copy goes to the path you choose, under any existing page, with the same path rules as creating a page, and a 409 with the code sfvb.page_exists when that path is taken.  The root page and pages with pages under them cannot be copied.  A page whose folder holds a started experiment is refused, because the copy would share the experiment - end it first.  Translated title and description text is not copied.  Always needs sfvb_publish, because the copy is live as soon as it exists. 
+    # @param storefront_oid [Integer] 
+    # @param page_duplicate_request [SfvbPageDuplicateRequest] The page to copy and where
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbPageResponse]
+    def duplicate_sfvb_page(storefront_oid, page_duplicate_request, opts = {})
+      data, _status_code, _headers = duplicate_sfvb_page_with_http_info(storefront_oid, page_duplicate_request, opts)
+      data
+    end
+
+    # Copy a page to a new path
+    # Copies what the store admin&#39;s duplicate copies - settings, items, blog posts, permissions, attributes, selectors, images and the page folder with its body.  The copy goes to the path you choose, under any existing page, with the same path rules as creating a page, and a 409 with the code sfvb.page_exists when that path is taken.  The root page and pages with pages under them cannot be copied.  A page whose folder holds a started experiment is refused, because the copy would share the experiment - end it first.  Translated title and description text is not copied.  Always needs sfvb_publish, because the copy is live as soon as it exists. 
+    # @param storefront_oid [Integer] 
+    # @param page_duplicate_request [SfvbPageDuplicateRequest] The page to copy and where
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbPageResponse, Integer, Hash)>] SfvbPageResponse data, response status code and response headers
+    def duplicate_sfvb_page_with_http_info(storefront_oid, page_duplicate_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.duplicate_sfvb_page ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.duplicate_sfvb_page"
+      end
+      # verify the required parameter 'page_duplicate_request' is set
+      if @api_client.config.client_side_validation && page_duplicate_request.nil?
+        fail ArgumentError, "Missing the required parameter 'page_duplicate_request' when calling SfvbApi.duplicate_sfvb_page"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/pages/duplicate'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(page_duplicate_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbPageResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.duplicate_sfvb_page",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#duplicate_sfvb_page\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Duplicate a theme
     # Copies a theme into a new one and returns a job handle to poll.  Asynchronous, because copying a theme copies every file in it.  Needs sfvb_write rather than sfvb_publish, because the job explicitly does not activate what it creates, so the worst outcome of a mistaken call is a spare theme.  This is how you get somewhere safe to work - duplicate, edit the copy with an ordinary write scope, and let a human promote it. 
     # @param storefront_oid [Integer] 
@@ -601,6 +840,83 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#duplicate_sfvb_theme\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # End an experiment
+    # Ends a running experiment.  With winner_variation_number the winner gets all new visitors, and a page experiment's winning content is promoted into the page by the completion job on its next run, which also emails the merchant.  Without a winner a page experiment's id is cleared from its page body so the page shows variation 0, and a url experiment sends everyone to variation 0.  Visitors already assigned to a url experiment keep their page for up to 30 days.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param experiment_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [SfvbExperimentEndRequest] :experiment_end_request The winner, if any
+    # @return [SfvbExperiment]
+    def end_sfvb_experiment(storefront_oid, experiment_oid, opts = {})
+      data, _status_code, _headers = end_sfvb_experiment_with_http_info(storefront_oid, experiment_oid, opts)
+      data
+    end
+
+    # End an experiment
+    # Ends a running experiment.  With winner_variation_number the winner gets all new visitors, and a page experiment&#39;s winning content is promoted into the page by the completion job on its next run, which also emails the merchant.  Without a winner a page experiment&#39;s id is cleared from its page body so the page shows variation 0, and a url experiment sends everyone to variation 0.  Visitors already assigned to a url experiment keep their page for up to 30 days.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param experiment_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [SfvbExperimentEndRequest] :experiment_end_request The winner, if any
+    # @return [Array<(SfvbExperiment, Integer, Hash)>] SfvbExperiment data, response status code and response headers
+    def end_sfvb_experiment_with_http_info(storefront_oid, experiment_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.end_sfvb_experiment ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.end_sfvb_experiment"
+      end
+      # verify the required parameter 'experiment_oid' is set
+      if @api_client.config.client_side_validation && experiment_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'experiment_oid' when calling SfvbApi.end_sfvb_experiment"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/experiments/{experiment_oid}/end'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'experiment_oid' + '}', CGI.escape(experiment_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'experiment_end_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbExperiment'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.end_sfvb_experiment",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#end_sfvb_experiment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -890,6 +1206,143 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_element\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read one experiment and its statistics
+    # The experiment, its variations and their statistics, and with daily=true each variation's daily rows.  p95_sessions_needed is estimated only after 1000 sessions, and sessions_needed_computed_dts says when.  For a url experiment, router_url is the address visitors must enter through. 
+    # @param storefront_oid [Integer] 
+    # @param experiment_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :daily Include each variation&#39;s daily statistics
+    # @return [SfvbExperiment]
+    def get_sfvb_experiment(storefront_oid, experiment_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_experiment_with_http_info(storefront_oid, experiment_oid, opts)
+      data
+    end
+
+    # Read one experiment and its statistics
+    # The experiment, its variations and their statistics, and with daily&#x3D;true each variation&#39;s daily rows.  p95_sessions_needed is estimated only after 1000 sessions, and sessions_needed_computed_dts says when.  For a url experiment, router_url is the address visitors must enter through. 
+    # @param storefront_oid [Integer] 
+    # @param experiment_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :daily Include each variation&#39;s daily statistics
+    # @return [Array<(SfvbExperiment, Integer, Hash)>] SfvbExperiment data, response status code and response headers
+    def get_sfvb_experiment_with_http_info(storefront_oid, experiment_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_experiment ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_experiment"
+      end
+      # verify the required parameter 'experiment_oid' is set
+      if @api_client.config.client_side_validation && experiment_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'experiment_oid' when calling SfvbApi.get_sfvb_experiment"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/experiments/{experiment_oid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'experiment_oid' + '}', CGI.escape(experiment_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'daily'] = opts[:'daily'] if !opts[:'daily'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbExperiment'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_experiment",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_experiment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List the objectives an experiment can optimize
+    # Each objective with what is measured per session and compared between variations, the usual optimization type, and whether it needs an event name. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbExperimentObjectivesResponse]
+    def get_sfvb_experiment_objectives(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_experiment_objectives_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List the objectives an experiment can optimize
+    # Each objective with what is measured per session and compared between variations, the usual optimization type, and whether it needs an event name. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbExperimentObjectivesResponse, Integer, Hash)>] SfvbExperimentObjectivesResponse data, response status code and response headers
+    def get_sfvb_experiment_objectives_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_experiment_objectives ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_experiment_objectives"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/experiments/objectives'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbExperimentObjectivesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_experiment_objectives",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_experiment_objectives\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1305,6 +1758,219 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_page\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read the blog posts assigned to a page
+    # The posts the page shows.  uses_selectors is true when the page's blog post selectors choose them instead. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /blog/
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbPageBlogPostsResponse]
+    def get_sfvb_page_blog_posts(storefront_oid, path, opts = {})
+      data, _status_code, _headers = get_sfvb_page_blog_posts_with_http_info(storefront_oid, path, opts)
+      data
+    end
+
+    # Read the blog posts assigned to a page
+    # The posts the page shows.  uses_selectors is true when the page&#39;s blog post selectors choose them instead. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /blog/
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbPageBlogPostsResponse, Integer, Hash)>] SfvbPageBlogPostsResponse data, response status code and response headers
+    def get_sfvb_page_blog_posts_with_http_info(storefront_oid, path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_page_blog_posts ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_page_blog_posts"
+      end
+      # verify the required parameter 'path' is set
+      if @api_client.config.client_side_validation && path.nil?
+        fail ArgumentError, "Missing the required parameter 'path' when calling SfvbApi.get_sfvb_page_blog_posts"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/pages/blog_posts'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'path'] = path
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbPageBlogPostsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_page_blog_posts",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_page_blog_posts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read the items assigned to a page
+    # The items on the page with their sort order and url part.  uses_selectors is true when the page's selectors choose its items instead. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /lp/spring-sale/
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbPageItemsResponse]
+    def get_sfvb_page_items(storefront_oid, path, opts = {})
+      data, _status_code, _headers = get_sfvb_page_items_with_http_info(storefront_oid, path, opts)
+      data
+    end
+
+    # Read the items assigned to a page
+    # The items on the page with their sort order and url part.  uses_selectors is true when the page&#39;s selectors choose its items instead. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /lp/spring-sale/
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbPageItemsResponse, Integer, Hash)>] SfvbPageItemsResponse data, response status code and response headers
+    def get_sfvb_page_items_with_http_info(storefront_oid, path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_page_items ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_page_items"
+      end
+      # verify the required parameter 'path' is set
+      if @api_client.config.client_side_validation && path.nil?
+        fail ArgumentError, "Missing the required parameter 'path' when calling SfvbApi.get_sfvb_page_items"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/pages/items'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'path'] = path
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbPageItemsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_page_items",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_page_items\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read a page's selectors
+    # The conditions that choose the page's items and blog posts, and whether each set must all match. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /lp/spring-sale/
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbPageSelectors]
+    def get_sfvb_page_selectors(storefront_oid, path, opts = {})
+      data, _status_code, _headers = get_sfvb_page_selectors_with_http_info(storefront_oid, path, opts)
+      data
+    end
+
+    # Read a page&#39;s selectors
+    # The conditions that choose the page&#39;s items and blog posts, and whether each set must all match. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /lp/spring-sale/
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbPageSelectors, Integer, Hash)>] SfvbPageSelectors data, response status code and response headers
+    def get_sfvb_page_selectors_with_http_info(storefront_oid, path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_page_selectors ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_page_selectors"
+      end
+      # verify the required parameter 'path' is set
+      if @api_client.config.client_side_validation && path.nil?
+        fail ArgumentError, "Missing the required parameter 'path' when calling SfvbApi.get_sfvb_page_selectors"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/pages/selectors'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'path'] = path
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbPageSelectors'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_page_selectors",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_page_selectors\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1770,6 +2436,81 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Create a page
+    # Creates the page and its folder, the way the store admin's add page does.  The parent page must already exist, and the last part of the path may only contain letters, digits, hyphens and underscores - it is refused, not cleaned.  A path that already has a page is refused with a 409 and the code sfvb.page_exists.  Without a group_template the page inherits its parent's templates, or catalog_group.vm directly under the root.  Set attributes and images afterwards with the page attribute and image endpoints, and push the body to the page folder.  Always needs sfvb_publish, because the page is live as soon as it exists.  Deleting, moving and renaming pages stay in the store admin. 
+    # @param storefront_oid [Integer] 
+    # @param page_create_request [SfvbPageCreateRequest] The page to create
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbPageResponse]
+    def insert_sfvb_page(storefront_oid, page_create_request, opts = {})
+      data, _status_code, _headers = insert_sfvb_page_with_http_info(storefront_oid, page_create_request, opts)
+      data
+    end
+
+    # Create a page
+    # Creates the page and its folder, the way the store admin&#39;s add page does.  The parent page must already exist, and the last part of the path may only contain letters, digits, hyphens and underscores - it is refused, not cleaned.  A path that already has a page is refused with a 409 and the code sfvb.page_exists.  Without a group_template the page inherits its parent&#39;s templates, or catalog_group.vm directly under the root.  Set attributes and images afterwards with the page attribute and image endpoints, and push the body to the page folder.  Always needs sfvb_publish, because the page is live as soon as it exists.  Deleting, moving and renaming pages stay in the store admin. 
+    # @param storefront_oid [Integer] 
+    # @param page_create_request [SfvbPageCreateRequest] The page to create
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbPageResponse, Integer, Hash)>] SfvbPageResponse data, response status code and response headers
+    def insert_sfvb_page_with_http_info(storefront_oid, page_create_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.insert_sfvb_page ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.insert_sfvb_page"
+      end
+      # verify the required parameter 'page_create_request' is set
+      if @api_client.config.client_side_validation && page_create_request.nil?
+        fail ArgumentError, "Missing the required parameter 'page_create_request' when calling SfvbApi.insert_sfvb_page"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/pages'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(page_create_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbPageResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.insert_sfvb_page",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_page\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Install a library entry into a storefront
     # Copies the fragment's referenced assets into the storefront file system and returns the CJSON with its paths resolved, ready to place.  This writes, which is why it is a POST rather than the GET the internal admin endpoint uses.  It also requires sfvb_publish, because the assets land in the shared storefront file system, which is served to shoppers regardless of which theme is active, so no amount of working inside a duplicate theme isolates them. 
     # @param storefront_oid [Integer] 
@@ -1836,6 +2577,79 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#install_sfvb_library_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List the storefront's blog posts
+    # One page of blog posts, newest first, without their bodies.  search matches the title, body, excerpt, url part or author, or a tag exactly.  unassigned marks posts no page shows yet.  Use a post's blog_post_oid to assign it to a page. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :search Text to search for
+    # @option opts [Integer] :page Page number, starting at 1
+    # @option opts [Integer] :page_size Posts per page, 1 to 100, default 50
+    # @return [SfvbBlogPostsResponse]
+    def list_sfvb_blog_posts(storefront_oid, opts = {})
+      data, _status_code, _headers = list_sfvb_blog_posts_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List the storefront&#39;s blog posts
+    # One page of blog posts, newest first, without their bodies.  search matches the title, body, excerpt, url part or author, or a tag exactly.  unassigned marks posts no page shows yet.  Use a post&#39;s blog_post_oid to assign it to a page. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :search Text to search for
+    # @option opts [Integer] :page Page number, starting at 1
+    # @option opts [Integer] :page_size Posts per page, 1 to 100, default 50
+    # @return [Array<(SfvbBlogPostsResponse, Integer, Hash)>] SfvbBlogPostsResponse data, response status code and response headers
+    def list_sfvb_blog_posts_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.list_sfvb_blog_posts ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.list_sfvb_blog_posts"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/blog_posts'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbBlogPostsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.list_sfvb_blog_posts",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_blog_posts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1967,6 +2781,79 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_elements\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List the storefront's experiments
+    # Every experiment that is not deleted, with its variations and their statistics - the same numbers the store admin shows.  Filter by status, by type (page, url, theme, openai), or by the page an experiment runs on.  auto_ends_at says when the engine will end an experiment by itself, and p_value is a one-way ANOVA across all variations.  Read one experiment for its daily statistics. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :status Running or Ended
+    # @option opts [String] :type page, url, theme or openai
+    # @option opts [String] :path Only experiments on this page, for example /lp/spring-sale/
+    # @return [SfvbExperimentsResponse]
+    def list_sfvb_experiments(storefront_oid, opts = {})
+      data, _status_code, _headers = list_sfvb_experiments_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List the storefront&#39;s experiments
+    # Every experiment that is not deleted, with its variations and their statistics - the same numbers the store admin shows.  Filter by status, by type (page, url, theme, openai), or by the page an experiment runs on.  auto_ends_at says when the engine will end an experiment by itself, and p_value is a one-way ANOVA across all variations.  Read one experiment for its daily statistics. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :status Running or Ended
+    # @option opts [String] :type page, url, theme or openai
+    # @option opts [String] :path Only experiments on this page, for example /lp/spring-sale/
+    # @return [Array<(SfvbExperimentsResponse, Integer, Hash)>] SfvbExperimentsResponse data, response status code and response headers
+    def list_sfvb_experiments_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.list_sfvb_experiments ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.list_sfvb_experiments"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/experiments'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'status'] = opts[:'status'] if !opts[:'status'].nil?
+      query_params[:'type'] = opts[:'type'] if !opts[:'type'].nil?
+      query_params[:'path'] = opts[:'path'] if !opts[:'path'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbExperimentsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.list_sfvb_experiments",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_experiments\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2114,6 +3001,73 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # List the storefront's pages
+    # Every page with its settings, sorted by path with the root first.  Hidden pages are included.  Pass under to list one page and everything below it.  Read from the same cached catalog the admin page tree uses, so a page created a moment ago can take a moment to appear here - read it directly with the single-page read to confirm a write. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :under Only this page and the pages below it, for example /lp/
+    # @return [SfvbPageListResponse]
+    def list_sfvb_pages(storefront_oid, opts = {})
+      data, _status_code, _headers = list_sfvb_pages_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List the storefront&#39;s pages
+    # Every page with its settings, sorted by path with the root first.  Hidden pages are included.  Pass under to list one page and everything below it.  Read from the same cached catalog the admin page tree uses, so a page created a moment ago can take a moment to appear here - read it directly with the single-page read to confirm a write. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :under Only this page and the pages below it, for example /lp/
+    # @return [Array<(SfvbPageListResponse, Integer, Hash)>] SfvbPageListResponse data, response status code and response headers
+    def list_sfvb_pages_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.list_sfvb_pages ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.list_sfvb_pages"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/pages/list'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'under'] = opts[:'under'] if !opts[:'under'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbPageListResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.list_sfvb_pages",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_pages\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List storefronts
     # @param [Hash] opts the optional parameters
     # @return [SfvbStorefrontsResponse]
@@ -2166,6 +3120,73 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_storefronts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List the active theme's templates
+    # Each template with the page type it declares and what it can render - items, sub-pages, blog posts, pagination, visual builder containers.  A page's group_template names one of these.  The storefront's fixed templates, such as checkout and my account, are flagged system and must never be assigned to a page. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :page_type Only templates declaring this page type, for example group
+    # @return [SfvbTemplatesResponse]
+    def list_sfvb_templates(storefront_oid, opts = {})
+      data, _status_code, _headers = list_sfvb_templates_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List the active theme&#39;s templates
+    # Each template with the page type it declares and what it can render - items, sub-pages, blog posts, pagination, visual builder containers.  A page&#39;s group_template names one of these.  The storefront&#39;s fixed templates, such as checkout and my account, are flagged system and must never be assigned to a page. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :page_type Only templates declaring this page type, for example group
+    # @return [Array<(SfvbTemplatesResponse, Integer, Hash)>] SfvbTemplatesResponse data, response status code and response headers
+    def list_sfvb_templates_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.list_sfvb_templates ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.list_sfvb_templates"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/templates'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page_type'] = opts[:'page_type'] if !opts[:'page_type'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTemplatesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.list_sfvb_templates",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_templates\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2391,6 +3412,93 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_container\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Pause or resume a variation
+    # Stops or resumes sending new visitors to one variation of a running experiment.  Visitors already assigned keep seeing it.  Variation 0 cannot be paused, because the split falls back to it, and the last variation still receiving visitors cannot be paused.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param experiment_oid [Integer] 
+    # @param variation_number [Integer] 
+    # @param experiment_variation_update_request [SfvbExperimentVariationUpdateRequest] Pause or resume
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbExperiment]
+    def put_sfvb_experiment_variation(storefront_oid, experiment_oid, variation_number, experiment_variation_update_request, opts = {})
+      data, _status_code, _headers = put_sfvb_experiment_variation_with_http_info(storefront_oid, experiment_oid, variation_number, experiment_variation_update_request, opts)
+      data
+    end
+
+    # Pause or resume a variation
+    # Stops or resumes sending new visitors to one variation of a running experiment.  Visitors already assigned keep seeing it.  Variation 0 cannot be paused, because the split falls back to it, and the last variation still receiving visitors cannot be paused.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param experiment_oid [Integer] 
+    # @param variation_number [Integer] 
+    # @param experiment_variation_update_request [SfvbExperimentVariationUpdateRequest] Pause or resume
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbExperiment, Integer, Hash)>] SfvbExperiment data, response status code and response headers
+    def put_sfvb_experiment_variation_with_http_info(storefront_oid, experiment_oid, variation_number, experiment_variation_update_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.put_sfvb_experiment_variation ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.put_sfvb_experiment_variation"
+      end
+      # verify the required parameter 'experiment_oid' is set
+      if @api_client.config.client_side_validation && experiment_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'experiment_oid' when calling SfvbApi.put_sfvb_experiment_variation"
+      end
+      # verify the required parameter 'variation_number' is set
+      if @api_client.config.client_side_validation && variation_number.nil?
+        fail ArgumentError, "Missing the required parameter 'variation_number' when calling SfvbApi.put_sfvb_experiment_variation"
+      end
+      # verify the required parameter 'experiment_variation_update_request' is set
+      if @api_client.config.client_side_validation && experiment_variation_update_request.nil?
+        fail ArgumentError, "Missing the required parameter 'experiment_variation_update_request' when calling SfvbApi.put_sfvb_experiment_variation"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/experiments/{experiment_oid}/variations/{variation_number}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'experiment_oid' + '}', CGI.escape(experiment_oid.to_s)).sub('{' + 'variation_number' + '}', CGI.escape(variation_number.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(experiment_variation_update_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbExperiment'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.put_sfvb_experiment_variation",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_experiment_variation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2728,6 +3836,170 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Replace a page's selectors
+    # Each list you send replaces that whole set, and an empty list clears it.  A list you leave out is not touched.  The page's items or blog posts are recalculated from the new selectors straight away.  While a page has item selectors its items cannot be assigned by hand.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /lp/spring-sale/
+    # @param page_selectors_request [SfvbPageSelectors] The selector sets to replace
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbPageSelectors]
+    def put_sfvb_page_selectors(storefront_oid, path, page_selectors_request, opts = {})
+      data, _status_code, _headers = put_sfvb_page_selectors_with_http_info(storefront_oid, path, page_selectors_request, opts)
+      data
+    end
+
+    # Replace a page&#39;s selectors
+    # Each list you send replaces that whole set, and an empty list clears it.  A list you leave out is not touched.  The page&#39;s items or blog posts are recalculated from the new selectors straight away.  While a page has item selectors its items cannot be assigned by hand.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /lp/spring-sale/
+    # @param page_selectors_request [SfvbPageSelectors] The selector sets to replace
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbPageSelectors, Integer, Hash)>] SfvbPageSelectors data, response status code and response headers
+    def put_sfvb_page_selectors_with_http_info(storefront_oid, path, page_selectors_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.put_sfvb_page_selectors ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.put_sfvb_page_selectors"
+      end
+      # verify the required parameter 'path' is set
+      if @api_client.config.client_side_validation && path.nil?
+        fail ArgumentError, "Missing the required parameter 'path' when calling SfvbApi.put_sfvb_page_selectors"
+      end
+      # verify the required parameter 'page_selectors_request' is set
+      if @api_client.config.client_side_validation && page_selectors_request.nil?
+        fail ArgumentError, "Missing the required parameter 'page_selectors_request' when calling SfvbApi.put_sfvb_page_selectors"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/pages/selectors'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'path'] = path
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(page_selectors_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbPageSelectors'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.put_sfvb_page_selectors",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_page_selectors\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change a page's settings
+    # A partial update.  Only the fields you send change - title, description, templates, visibility, sitemap exclusion, sort orders, items per page and page type.  Unlike the store admin's page save, the page's attributes, images, items, selectors and permissions are left exactly as they are.  Fields that would move or rename the page, and fields this endpoint does not know, are refused.  The root page cannot be hidden.  Always needs sfvb_publish, because page settings are live. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /lp/spring-sale/
+    # @param page_settings_request [SfvbPageSettingsRequest] The settings to change
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbPageResponse]
+    def put_sfvb_page_settings(storefront_oid, path, page_settings_request, opts = {})
+      data, _status_code, _headers = put_sfvb_page_settings_with_http_info(storefront_oid, path, page_settings_request, opts)
+      data
+    end
+
+    # Change a page&#39;s settings
+    # A partial update.  Only the fields you send change - title, description, templates, visibility, sitemap exclusion, sort orders, items per page and page type.  Unlike the store admin&#39;s page save, the page&#39;s attributes, images, items, selectors and permissions are left exactly as they are.  Fields that would move or rename the page, and fields this endpoint does not know, are refused.  The root page cannot be hidden.  Always needs sfvb_publish, because page settings are live. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /lp/spring-sale/
+    # @param page_settings_request [SfvbPageSettingsRequest] The settings to change
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbPageResponse, Integer, Hash)>] SfvbPageResponse data, response status code and response headers
+    def put_sfvb_page_settings_with_http_info(storefront_oid, path, page_settings_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.put_sfvb_page_settings ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.put_sfvb_page_settings"
+      end
+      # verify the required parameter 'path' is set
+      if @api_client.config.client_side_validation && path.nil?
+        fail ArgumentError, "Missing the required parameter 'path' when calling SfvbApi.put_sfvb_page_settings"
+      end
+      # verify the required parameter 'page_settings_request' is set
+      if @api_client.config.client_side_validation && page_settings_request.nil?
+        fail ArgumentError, "Missing the required parameter 'page_settings_request' when calling SfvbApi.put_sfvb_page_settings"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/pages/settings'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'path'] = path
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(page_settings_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbPageResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.put_sfvb_page_settings",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_page_settings\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Push containers into a preview session
     # Stores compiled containers against a session created by createSfvbPreviewSession.  Replaces whatever the session held.  The session must exist - this does not create one, so a deleted, expired or never issued id is a 404 rather than a new session.  Nothing durable is written.  Requires a token that resolves to a user, so use the device authorization flow. 
     # @param storefront_oid [Integer] 
@@ -2964,6 +4236,170 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_theme_attributes\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Take blog posts off a page
+    # Removes posts by blog_post_oid, at most 500 at a time.  Every oid must be on the page, and one that is not changes nothing.  The posts themselves are not touched.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /blog/
+    # @param page_blog_posts_request [SfvbPageBlogPostsRequest] Blog posts to take off the page
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbPageBlogPostsResponse]
+    def remove_sfvb_page_blog_posts(storefront_oid, path, page_blog_posts_request, opts = {})
+      data, _status_code, _headers = remove_sfvb_page_blog_posts_with_http_info(storefront_oid, path, page_blog_posts_request, opts)
+      data
+    end
+
+    # Take blog posts off a page
+    # Removes posts by blog_post_oid, at most 500 at a time.  Every oid must be on the page, and one that is not changes nothing.  The posts themselves are not touched.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /blog/
+    # @param page_blog_posts_request [SfvbPageBlogPostsRequest] Blog posts to take off the page
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbPageBlogPostsResponse, Integer, Hash)>] SfvbPageBlogPostsResponse data, response status code and response headers
+    def remove_sfvb_page_blog_posts_with_http_info(storefront_oid, path, page_blog_posts_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.remove_sfvb_page_blog_posts ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.remove_sfvb_page_blog_posts"
+      end
+      # verify the required parameter 'path' is set
+      if @api_client.config.client_side_validation && path.nil?
+        fail ArgumentError, "Missing the required parameter 'path' when calling SfvbApi.remove_sfvb_page_blog_posts"
+      end
+      # verify the required parameter 'page_blog_posts_request' is set
+      if @api_client.config.client_side_validation && page_blog_posts_request.nil?
+        fail ArgumentError, "Missing the required parameter 'page_blog_posts_request' when calling SfvbApi.remove_sfvb_page_blog_posts"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/pages/blog_posts/remove'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'path'] = path
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(page_blog_posts_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbPageBlogPostsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.remove_sfvb_page_blog_posts",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#remove_sfvb_page_blog_posts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Take items off a page
+    # Removes items by item id, at most 500 at a time.  Every id must be on the page, and one that is not changes nothing.  The items themselves are not touched.  Refused on a page whose selectors choose its items.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /lp/spring-sale/
+    # @param page_items_remove_request [SfvbPageItemsRemoveRequest] Items to take off the page
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbPageItemsResponse]
+    def remove_sfvb_page_items(storefront_oid, path, page_items_remove_request, opts = {})
+      data, _status_code, _headers = remove_sfvb_page_items_with_http_info(storefront_oid, path, page_items_remove_request, opts)
+      data
+    end
+
+    # Take items off a page
+    # Removes items by item id, at most 500 at a time.  Every id must be on the page, and one that is not changes nothing.  The items themselves are not touched.  Refused on a page whose selectors choose its items.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] Page path, for example /lp/spring-sale/
+    # @param page_items_remove_request [SfvbPageItemsRemoveRequest] Items to take off the page
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbPageItemsResponse, Integer, Hash)>] SfvbPageItemsResponse data, response status code and response headers
+    def remove_sfvb_page_items_with_http_info(storefront_oid, path, page_items_remove_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.remove_sfvb_page_items ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.remove_sfvb_page_items"
+      end
+      # verify the required parameter 'path' is set
+      if @api_client.config.client_side_validation && path.nil?
+        fail ArgumentError, "Missing the required parameter 'path' when calling SfvbApi.remove_sfvb_page_items"
+      end
+      # verify the required parameter 'page_items_remove_request' is set
+      if @api_client.config.client_side_validation && page_items_remove_request.nil?
+        fail ArgumentError, "Missing the required parameter 'page_items_remove_request' when calling SfvbApi.remove_sfvb_page_items"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/pages/items/remove'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'path'] = path
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(page_items_remove_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbPageItemsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.remove_sfvb_page_items",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#remove_sfvb_page_items\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -3442,6 +4878,81 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#search_sfvb_library\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Start an experiment
+    # type page starts an experiment element already saved in a page body - send path, slot and widget_id, and its name, objective, duration and variations are read from the element with the builder's rules (2 to 5 variations numbered 0 up with no gaps, 3 to 90 days, traffic on all or none adding up to 100).  The new id is written into the element and the body is saved, so pull it again before the next edit.  type url splits visitors between existing pages at router_url, and always ends by itself after duration_days.  Always needs sfvb_publish, because visitors are split as soon as it starts. 
+    # @param storefront_oid [Integer] 
+    # @param experiment_start_request [SfvbExperimentStartRequest] The experiment to start
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbExperiment]
+    def start_sfvb_experiment(storefront_oid, experiment_start_request, opts = {})
+      data, _status_code, _headers = start_sfvb_experiment_with_http_info(storefront_oid, experiment_start_request, opts)
+      data
+    end
+
+    # Start an experiment
+    # type page starts an experiment element already saved in a page body - send path, slot and widget_id, and its name, objective, duration and variations are read from the element with the builder&#39;s rules (2 to 5 variations numbered 0 up with no gaps, 3 to 90 days, traffic on all or none adding up to 100).  The new id is written into the element and the body is saved, so pull it again before the next edit.  type url splits visitors between existing pages at router_url, and always ends by itself after duration_days.  Always needs sfvb_publish, because visitors are split as soon as it starts. 
+    # @param storefront_oid [Integer] 
+    # @param experiment_start_request [SfvbExperimentStartRequest] The experiment to start
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbExperiment, Integer, Hash)>] SfvbExperiment data, response status code and response headers
+    def start_sfvb_experiment_with_http_info(storefront_oid, experiment_start_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.start_sfvb_experiment ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.start_sfvb_experiment"
+      end
+      # verify the required parameter 'experiment_start_request' is set
+      if @api_client.config.client_side_validation && experiment_start_request.nil?
+        fail ArgumentError, "Missing the required parameter 'experiment_start_request' when calling SfvbApi.start_sfvb_experiment"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/experiments'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(experiment_start_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbExperiment'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.start_sfvb_experiment",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#start_sfvb_experiment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

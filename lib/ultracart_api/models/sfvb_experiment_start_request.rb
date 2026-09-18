@@ -14,46 +14,58 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbPageResponse
-    # Every attribute this page has, including ones a template declares but nothing has set yet.  These are what the pageattribute element renders.  Sorted by name.
-    attr_accessor :attributes
+  class SfvbExperimentStartRequest
+    # url - 3 to 90.  A url experiment always ends by itself after this many days.
+    attr_accessor :duration_days
 
-    # True when the page is left out of the sitemap and marked noindex.
-    attr_accessor :exclude_from_sitemap
+    # url - true keeps the split fixed.  false shifts traffic toward the leader as the experiment runs.  Defaults to true.
+    attr_accessor :equal_weighting
 
-    # Template file that renders the page itself, a bare .vm name found anywhere in the active theme.
-    attr_accessor :group_template
+    # url - experiment name.
+    attr_accessor :name
 
-    # Template file that renders the item pages under this page.
-    attr_accessor :item_template
+    # url - notes, such as the hypothesis being tested.
+    attr_accessor :notes
 
-    # The page's images, including codes a template declares but nothing has attached yet.  These are what the pageimage element renders - the default image when pageImageCode is empty, otherwise the image with that code.  The default image comes first.
-    attr_accessor :multimedia
+    # url - one of the objectives from the objective list.
+    attr_accessor :objective
 
-    # The page path, normalized to begin and end with a slash.
+    # url - the event name, when the objective is Events.
+    attr_accessor :objective_parameter
+
+    # url - MAXIMUM or MINIMUM.
+    attr_accessor :optimization_type
+
+    # page - path of the page whose body holds the experiment element.
     attr_accessor :path
 
-    # The page title.
-    attr_accessor :title
+    # page - the body file's name without .cjson.  Defaults to body.
+    attr_accessor :slot
 
-    # False when the page is hidden.  A hidden page answers 404 to shoppers.
-    attr_accessor :visible
+    # page or url.
+    attr_accessor :type
 
-    # When set, the page stays hidden until this time (ISO 8601, UTC).
-    attr_accessor :visible_dts
+    # url - 2 to 5 pages.  The first is the control.
+    attr_accessor :variations
+
+    # page - id of the experiment element in that body.
+    attr_accessor :widget_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'attributes' => :'attributes',
-        :'exclude_from_sitemap' => :'exclude_from_sitemap',
-        :'group_template' => :'group_template',
-        :'item_template' => :'item_template',
-        :'multimedia' => :'multimedia',
+        :'duration_days' => :'duration_days',
+        :'equal_weighting' => :'equal_weighting',
+        :'name' => :'name',
+        :'notes' => :'notes',
+        :'objective' => :'objective',
+        :'objective_parameter' => :'objective_parameter',
+        :'optimization_type' => :'optimization_type',
         :'path' => :'path',
-        :'title' => :'title',
-        :'visible' => :'visible',
-        :'visible_dts' => :'visible_dts'
+        :'slot' => :'slot',
+        :'type' => :'type',
+        :'variations' => :'variations',
+        :'widget_id' => :'widget_id'
       }
     end
 
@@ -65,15 +77,18 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'attributes' => :'Array<SfvbPageAttribute>',
-        :'exclude_from_sitemap' => :'Boolean',
-        :'group_template' => :'String',
-        :'item_template' => :'String',
-        :'multimedia' => :'Array<SfvbPageMultimedia>',
+        :'duration_days' => :'Integer',
+        :'equal_weighting' => :'Boolean',
+        :'name' => :'String',
+        :'notes' => :'String',
+        :'objective' => :'String',
+        :'objective_parameter' => :'String',
+        :'optimization_type' => :'String',
         :'path' => :'String',
-        :'title' => :'String',
-        :'visible' => :'Boolean',
-        :'visible_dts' => :'String'
+        :'slot' => :'String',
+        :'type' => :'String',
+        :'variations' => :'Array<SfvbExperimentStartVariation>',
+        :'widget_id' => :'String'
       }
     end
 
@@ -87,55 +102,65 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbPageResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbExperimentStartRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbPageResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbExperimentStartRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'attributes')
-        if (value = attributes[:'attributes']).is_a?(Array)
-          self.attributes = value
-        end
+      if attributes.key?(:'duration_days')
+        self.duration_days = attributes[:'duration_days']
       end
 
-      if attributes.key?(:'exclude_from_sitemap')
-        self.exclude_from_sitemap = attributes[:'exclude_from_sitemap']
+      if attributes.key?(:'equal_weighting')
+        self.equal_weighting = attributes[:'equal_weighting']
       end
 
-      if attributes.key?(:'group_template')
-        self.group_template = attributes[:'group_template']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'item_template')
-        self.item_template = attributes[:'item_template']
+      if attributes.key?(:'notes')
+        self.notes = attributes[:'notes']
       end
 
-      if attributes.key?(:'multimedia')
-        if (value = attributes[:'multimedia']).is_a?(Array)
-          self.multimedia = value
-        end
+      if attributes.key?(:'objective')
+        self.objective = attributes[:'objective']
+      end
+
+      if attributes.key?(:'objective_parameter')
+        self.objective_parameter = attributes[:'objective_parameter']
+      end
+
+      if attributes.key?(:'optimization_type')
+        self.optimization_type = attributes[:'optimization_type']
       end
 
       if attributes.key?(:'path')
         self.path = attributes[:'path']
       end
 
-      if attributes.key?(:'title')
-        self.title = attributes[:'title']
+      if attributes.key?(:'slot')
+        self.slot = attributes[:'slot']
       end
 
-      if attributes.key?(:'visible')
-        self.visible = attributes[:'visible']
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
       end
 
-      if attributes.key?(:'visible_dts')
-        self.visible_dts = attributes[:'visible_dts']
+      if attributes.key?(:'variations')
+        if (value = attributes[:'variations']).is_a?(Array)
+          self.variations = value
+        end
+      end
+
+      if attributes.key?(:'widget_id')
+        self.widget_id = attributes[:'widget_id']
       end
     end
 
@@ -157,15 +182,18 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          attributes == o.attributes &&
-          exclude_from_sitemap == o.exclude_from_sitemap &&
-          group_template == o.group_template &&
-          item_template == o.item_template &&
-          multimedia == o.multimedia &&
+          duration_days == o.duration_days &&
+          equal_weighting == o.equal_weighting &&
+          name == o.name &&
+          notes == o.notes &&
+          objective == o.objective &&
+          objective_parameter == o.objective_parameter &&
+          optimization_type == o.optimization_type &&
           path == o.path &&
-          title == o.title &&
-          visible == o.visible &&
-          visible_dts == o.visible_dts
+          slot == o.slot &&
+          type == o.type &&
+          variations == o.variations &&
+          widget_id == o.widget_id
     end
 
     # @see the `==` method
@@ -177,7 +205,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attributes, exclude_from_sitemap, group_template, item_template, multimedia, path, title, visible, visible_dts].hash
+      [duration_days, equal_weighting, name, notes, objective, objective_parameter, optimization_type, path, slot, type, variations, widget_id].hash
     end
 
     # Builds the object from hash

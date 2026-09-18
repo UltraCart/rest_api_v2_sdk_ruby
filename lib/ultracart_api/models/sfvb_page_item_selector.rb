@@ -14,46 +14,62 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbPageResponse
-    # Every attribute this page has, including ones a template declares but nothing has set yet.  These are what the pageattribute element renders.  Sorted by name.
-    attr_accessor :attributes
+  class SfvbPageItemSelector
+    # attribute - the item attribute name.  Required with attribute_value.
+    attr_accessor :attribute_name
 
-    # True when the page is left out of the sitemap and marked noindex.
-    attr_accessor :exclude_from_sitemap
+    # attribute - the value to match.
+    attr_accessor :attribute_value
 
-    # Template file that renders the page itself, a bare .vm name found anywhere in the active theme.
-    attr_accessor :group_template
+    # item folder and item folder tree - the item folder, which must exist.
+    attr_accessor :item_folder_oid
 
-    # Template file that renders the item pages under this page.
-    attr_accessor :item_template
+    # manufacturer name - required.
+    attr_accessor :manufacturer_name
 
-    # The page's images, including codes a template declares but nothing has attached yet.  These are what the pageimage element renders - the default image when pageImageCode is empty, otherwise the image with that code.  The default image comes first.
-    attr_accessor :multimedia
+    # retail cost - the highest price.
+    attr_accessor :retail_cost_high
 
-    # The page path, normalized to begin and end with a slash.
-    attr_accessor :path
+    # retail cost - the lowest price.  At least one of low and high is required.
+    attr_accessor :retail_cost_low
 
-    # The page title.
-    attr_accessor :title
+    # sale item - match items on sale.
+    attr_accessor :sale_item
 
-    # False when the page is hidden.  A hidden page answers 404 to shoppers.
-    attr_accessor :visible
+    # tag - the item tag to match.  Required.
+    attr_accessor :tag
 
-    # When set, the page stays hidden until this time (ISO 8601, UTC).
-    attr_accessor :visible_dts
+    # top seller - how many items, 1 to 250.  Required with top_seller_days.
+    attr_accessor :top_seller_count
+
+    # top seller - over how many days, 1 to 180.
+    attr_accessor :top_seller_days
+
+    # One of retail cost, attribute, variation, not variation, manufacturer name, exploded diagram, sale item, item folder, item folder tree, top seller, new, pre-order, tag.
+    attr_accessor :type
+
+    # variation - the variation name.  Required with variation_value.
+    attr_accessor :variation_name
+
+    # variation - the variation value to match.
+    attr_accessor :variation_value
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'attributes' => :'attributes',
-        :'exclude_from_sitemap' => :'exclude_from_sitemap',
-        :'group_template' => :'group_template',
-        :'item_template' => :'item_template',
-        :'multimedia' => :'multimedia',
-        :'path' => :'path',
-        :'title' => :'title',
-        :'visible' => :'visible',
-        :'visible_dts' => :'visible_dts'
+        :'attribute_name' => :'attribute_name',
+        :'attribute_value' => :'attribute_value',
+        :'item_folder_oid' => :'item_folder_oid',
+        :'manufacturer_name' => :'manufacturer_name',
+        :'retail_cost_high' => :'retail_cost_high',
+        :'retail_cost_low' => :'retail_cost_low',
+        :'sale_item' => :'sale_item',
+        :'tag' => :'tag',
+        :'top_seller_count' => :'top_seller_count',
+        :'top_seller_days' => :'top_seller_days',
+        :'type' => :'type',
+        :'variation_name' => :'variation_name',
+        :'variation_value' => :'variation_value'
       }
     end
 
@@ -65,15 +81,19 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'attributes' => :'Array<SfvbPageAttribute>',
-        :'exclude_from_sitemap' => :'Boolean',
-        :'group_template' => :'String',
-        :'item_template' => :'String',
-        :'multimedia' => :'Array<SfvbPageMultimedia>',
-        :'path' => :'String',
-        :'title' => :'String',
-        :'visible' => :'Boolean',
-        :'visible_dts' => :'String'
+        :'attribute_name' => :'String',
+        :'attribute_value' => :'String',
+        :'item_folder_oid' => :'Integer',
+        :'manufacturer_name' => :'String',
+        :'retail_cost_high' => :'Float',
+        :'retail_cost_low' => :'Float',
+        :'sale_item' => :'Boolean',
+        :'tag' => :'String',
+        :'top_seller_count' => :'Integer',
+        :'top_seller_days' => :'Integer',
+        :'type' => :'String',
+        :'variation_name' => :'String',
+        :'variation_value' => :'String'
       }
     end
 
@@ -87,55 +107,67 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbPageResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbPageItemSelector` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbPageResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbPageItemSelector`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'attributes')
-        if (value = attributes[:'attributes']).is_a?(Array)
-          self.attributes = value
-        end
+      if attributes.key?(:'attribute_name')
+        self.attribute_name = attributes[:'attribute_name']
       end
 
-      if attributes.key?(:'exclude_from_sitemap')
-        self.exclude_from_sitemap = attributes[:'exclude_from_sitemap']
+      if attributes.key?(:'attribute_value')
+        self.attribute_value = attributes[:'attribute_value']
       end
 
-      if attributes.key?(:'group_template')
-        self.group_template = attributes[:'group_template']
+      if attributes.key?(:'item_folder_oid')
+        self.item_folder_oid = attributes[:'item_folder_oid']
       end
 
-      if attributes.key?(:'item_template')
-        self.item_template = attributes[:'item_template']
+      if attributes.key?(:'manufacturer_name')
+        self.manufacturer_name = attributes[:'manufacturer_name']
       end
 
-      if attributes.key?(:'multimedia')
-        if (value = attributes[:'multimedia']).is_a?(Array)
-          self.multimedia = value
-        end
+      if attributes.key?(:'retail_cost_high')
+        self.retail_cost_high = attributes[:'retail_cost_high']
       end
 
-      if attributes.key?(:'path')
-        self.path = attributes[:'path']
+      if attributes.key?(:'retail_cost_low')
+        self.retail_cost_low = attributes[:'retail_cost_low']
       end
 
-      if attributes.key?(:'title')
-        self.title = attributes[:'title']
+      if attributes.key?(:'sale_item')
+        self.sale_item = attributes[:'sale_item']
       end
 
-      if attributes.key?(:'visible')
-        self.visible = attributes[:'visible']
+      if attributes.key?(:'tag')
+        self.tag = attributes[:'tag']
       end
 
-      if attributes.key?(:'visible_dts')
-        self.visible_dts = attributes[:'visible_dts']
+      if attributes.key?(:'top_seller_count')
+        self.top_seller_count = attributes[:'top_seller_count']
+      end
+
+      if attributes.key?(:'top_seller_days')
+        self.top_seller_days = attributes[:'top_seller_days']
+      end
+
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      end
+
+      if attributes.key?(:'variation_name')
+        self.variation_name = attributes[:'variation_name']
+      end
+
+      if attributes.key?(:'variation_value')
+        self.variation_value = attributes[:'variation_value']
       end
     end
 
@@ -157,15 +189,19 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          attributes == o.attributes &&
-          exclude_from_sitemap == o.exclude_from_sitemap &&
-          group_template == o.group_template &&
-          item_template == o.item_template &&
-          multimedia == o.multimedia &&
-          path == o.path &&
-          title == o.title &&
-          visible == o.visible &&
-          visible_dts == o.visible_dts
+          attribute_name == o.attribute_name &&
+          attribute_value == o.attribute_value &&
+          item_folder_oid == o.item_folder_oid &&
+          manufacturer_name == o.manufacturer_name &&
+          retail_cost_high == o.retail_cost_high &&
+          retail_cost_low == o.retail_cost_low &&
+          sale_item == o.sale_item &&
+          tag == o.tag &&
+          top_seller_count == o.top_seller_count &&
+          top_seller_days == o.top_seller_days &&
+          type == o.type &&
+          variation_name == o.variation_name &&
+          variation_value == o.variation_value
     end
 
     # @see the `==` method
@@ -177,7 +213,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attributes, exclude_from_sitemap, group_template, item_template, multimedia, path, title, visible, visible_dts].hash
+      [attribute_name, attribute_value, item_folder_oid, manufacturer_name, retail_cost_high, retail_cost_low, sale_item, tag, top_seller_count, top_seller_days, type, variation_name, variation_value].hash
     end
 
     # Builds the object from hash

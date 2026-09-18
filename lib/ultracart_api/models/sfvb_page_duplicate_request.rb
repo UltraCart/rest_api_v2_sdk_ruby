@@ -14,46 +14,22 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbPageResponse
-    # Every attribute this page has, including ones a template declares but nothing has set yet.  These are what the pageattribute element renders.  Sorted by name.
-    attr_accessor :attributes
-
-    # True when the page is left out of the sitemap and marked noindex.
-    attr_accessor :exclude_from_sitemap
-
-    # Template file that renders the page itself, a bare .vm name found anywhere in the active theme.
-    attr_accessor :group_template
-
-    # Template file that renders the item pages under this page.
-    attr_accessor :item_template
-
-    # The page's images, including codes a template declares but nothing has attached yet.  These are what the pageimage element renders - the default image when pageImageCode is empty, otherwise the image with that code.  The default image comes first.
-    attr_accessor :multimedia
-
-    # The page path, normalized to begin and end with a slash.
+  class SfvbPageDuplicateRequest
+    # Path of the copy, for example /lp/spring-sale-b/.  The same rules as creating a page - the parent must exist, the path must be new, and the last part may only contain letters, digits, hyphens and underscores.
     attr_accessor :path
 
-    # The page title.
+    # Path of the page to copy.  Not the root, and not a page with pages under it.
+    attr_accessor :source_path
+
+    # Title of the copy.  Defaults to the source page's title.
     attr_accessor :title
-
-    # False when the page is hidden.  A hidden page answers 404 to shoppers.
-    attr_accessor :visible
-
-    # When set, the page stays hidden until this time (ISO 8601, UTC).
-    attr_accessor :visible_dts
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'attributes' => :'attributes',
-        :'exclude_from_sitemap' => :'exclude_from_sitemap',
-        :'group_template' => :'group_template',
-        :'item_template' => :'item_template',
-        :'multimedia' => :'multimedia',
         :'path' => :'path',
-        :'title' => :'title',
-        :'visible' => :'visible',
-        :'visible_dts' => :'visible_dts'
+        :'source_path' => :'source_path',
+        :'title' => :'title'
       }
     end
 
@@ -65,15 +41,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'attributes' => :'Array<SfvbPageAttribute>',
-        :'exclude_from_sitemap' => :'Boolean',
-        :'group_template' => :'String',
-        :'item_template' => :'String',
-        :'multimedia' => :'Array<SfvbPageMultimedia>',
         :'path' => :'String',
-        :'title' => :'String',
-        :'visible' => :'Boolean',
-        :'visible_dts' => :'String'
+        :'source_path' => :'String',
+        :'title' => :'String'
       }
     end
 
@@ -87,55 +57,27 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbPageResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbPageDuplicateRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbPageResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbPageDuplicateRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'attributes')
-        if (value = attributes[:'attributes']).is_a?(Array)
-          self.attributes = value
-        end
-      end
-
-      if attributes.key?(:'exclude_from_sitemap')
-        self.exclude_from_sitemap = attributes[:'exclude_from_sitemap']
-      end
-
-      if attributes.key?(:'group_template')
-        self.group_template = attributes[:'group_template']
-      end
-
-      if attributes.key?(:'item_template')
-        self.item_template = attributes[:'item_template']
-      end
-
-      if attributes.key?(:'multimedia')
-        if (value = attributes[:'multimedia']).is_a?(Array)
-          self.multimedia = value
-        end
-      end
 
       if attributes.key?(:'path')
         self.path = attributes[:'path']
       end
 
+      if attributes.key?(:'source_path')
+        self.source_path = attributes[:'source_path']
+      end
+
       if attributes.key?(:'title')
         self.title = attributes[:'title']
-      end
-
-      if attributes.key?(:'visible')
-        self.visible = attributes[:'visible']
-      end
-
-      if attributes.key?(:'visible_dts')
-        self.visible_dts = attributes[:'visible_dts']
       end
     end
 
@@ -157,15 +99,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          attributes == o.attributes &&
-          exclude_from_sitemap == o.exclude_from_sitemap &&
-          group_template == o.group_template &&
-          item_template == o.item_template &&
-          multimedia == o.multimedia &&
           path == o.path &&
-          title == o.title &&
-          visible == o.visible &&
-          visible_dts == o.visible_dts
+          source_path == o.source_path &&
+          title == o.title
     end
 
     # @see the `==` method
@@ -177,7 +113,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attributes, exclude_from_sitemap, group_template, item_template, multimedia, path, title, visible, visible_dts].hash
+      [path, source_path, title].hash
     end
 
     # Builds the object from hash
