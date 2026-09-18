@@ -27,6 +27,9 @@ module UltracartClient
     # When the container was last modified, in the store's own record of it.  Every owner type reports this.  It is absent only when the container has never been written since the store began recording it, so treat an absent value as unknown rather than as never modified.  Two behaviours worth knowing.  A postcard keeps one timestamp for both of its sides, so writing the front moves the value the back reports.  An upsell container that is rewritten with byte identical content keeps its original date rather than moving to now, because the timestamp tracks changes to the container and not writes to the offer.
     attr_accessor :last_modified
 
+    # The merchant item id of the owning item, for item containers only and absent for every other owner type.  owner_object_id is the item oid, which appears nowhere on a rendered storefront, so this is how a caller confirms which item an oid actually reached.  It is read fresh on every call and so reflects a renamed item.  A container's own id embeds this value, which is what a preview session keys an item container on.
+    attr_accessor :merchant_item_id
+
     # Identifier of the owning object within its store.
     attr_accessor :owner_object_id
 
@@ -62,6 +65,7 @@ module UltracartClient
         :'container_name' => :'container_name',
         :'hash_sha256' => :'hash_sha256',
         :'last_modified' => :'last_modified',
+        :'merchant_item_id' => :'merchant_item_id',
         :'owner_object_id' => :'owner_object_id',
         :'owner_type' => :'owner_type'
       }
@@ -79,6 +83,7 @@ module UltracartClient
         :'container_name' => :'String',
         :'hash_sha256' => :'String',
         :'last_modified' => :'String',
+        :'merchant_item_id' => :'String',
         :'owner_object_id' => :'String',
         :'owner_type' => :'String'
       }
@@ -119,6 +124,10 @@ module UltracartClient
 
       if attributes.key?(:'last_modified')
         self.last_modified = attributes[:'last_modified']
+      end
+
+      if attributes.key?(:'merchant_item_id')
+        self.merchant_item_id = attributes[:'merchant_item_id']
       end
 
       if attributes.key?(:'owner_object_id')
@@ -164,6 +173,7 @@ module UltracartClient
           container_name == o.container_name &&
           hash_sha256 == o.hash_sha256 &&
           last_modified == o.last_modified &&
+          merchant_item_id == o.merchant_item_id &&
           owner_object_id == o.owner_object_id &&
           owner_type == o.owner_type
     end
@@ -177,7 +187,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cjson, container_name, hash_sha256, last_modified, owner_object_id, owner_type].hash
+      [cjson, container_name, hash_sha256, last_modified, merchant_item_id, owner_object_id, owner_type].hash
     end
 
     # Builds the object from hash

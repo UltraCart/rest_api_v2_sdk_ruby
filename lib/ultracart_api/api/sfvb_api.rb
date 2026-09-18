@@ -673,7 +673,7 @@ module UltracartClient
     end
 
     # Read a container stored outside the file system
-    # owner_type is one of upsell, email, postcardfront, postcardback or item.  Item containers also require container_name.  Theme and page containers are files; read those through files/content. 
+    # owner_type is one of upsell, email, postcardfront, postcardback, item or itemid.  It also says how owner_object_id is read - item and upsell take an oid, itemid takes a merchant item id, and the rest take an esp uuid.  itemid reaches the same containers as item and is the way to address one from a storefront, where data-context-item-id carries the merchant item id and the oid appears nowhere.  Item containers also require container_name.  Theme and page containers are files; read those through files/content. 
     # @param storefront_oid [Integer] 
     # @param owner_type [String] 
     # @param owner_object_id [String] 
@@ -686,7 +686,7 @@ module UltracartClient
     end
 
     # Read a container stored outside the file system
-    # owner_type is one of upsell, email, postcardfront, postcardback or item.  Item containers also require container_name.  Theme and page containers are files; read those through files/content. 
+    # owner_type is one of upsell, email, postcardfront, postcardback, item or itemid.  It also says how owner_object_id is read - item and upsell take an oid, itemid takes a merchant item id, and the rest take an esp uuid.  itemid reaches the same containers as item and is the way to address one from a storefront, where data-context-item-id carries the merchant item id and the oid appears nowhere.  Item containers also require container_name.  Theme and page containers are files; read those through files/content. 
     # @param storefront_oid [Integer] 
     # @param owner_type [String] 
     # @param owner_object_id [String] 
@@ -752,7 +752,7 @@ module UltracartClient
     end
 
     # Read the CJSON stored in one container history entry
-    # Inspect or diff an earlier version without reverting to it.  The version is addressed through the container that owns it, so a history oid belonging to some other resource cannot be read through this route. 
+    # Inspect or diff an earlier version without reverting to it.  The version is addressed through the container that owns it, so a history oid belonging to some other resource cannot be read through this route.  owner_type also says how owner_object_id is read, and itemid addresses an item container by merchant item id. 
     # @param storefront_oid [Integer] 
     # @param container_history_oid [Integer] 
     # @param [Hash] opts the optional parameters
@@ -766,7 +766,7 @@ module UltracartClient
     end
 
     # Read the CJSON stored in one container history entry
-    # Inspect or diff an earlier version without reverting to it.  The version is addressed through the container that owns it, so a history oid belonging to some other resource cannot be read through this route. 
+    # Inspect or diff an earlier version without reverting to it.  The version is addressed through the container that owns it, so a history oid belonging to some other resource cannot be read through this route.  owner_type also says how owner_object_id is read, and itemid addresses an item container by merchant item id. 
     # @param storefront_oid [Integer] 
     # @param container_history_oid [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1777,6 +1777,7 @@ module UltracartClient
     end
 
     # Version history for a container stored outside the file system
+    # Addressed the same way as the container itself, so owner_type also says how owner_object_id is read and itemid lists the history of the item container that merchant item id names. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :owner_type 
@@ -1789,6 +1790,7 @@ module UltracartClient
     end
 
     # Version history for a container stored outside the file system
+    # Addressed the same way as the container itself, so owner_type also says how owner_object_id is read and itemid lists the history of the item container that merchant item id names. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :owner_type 
@@ -2233,7 +2235,7 @@ module UltracartClient
     end
 
     # Write a container stored outside the file system
-    # Validation is mandatory and runs here regardless of whether the caller validated first.  The previous value is snapshotted before the write, so the change can be reverted.  Side effects the visual builder performs on save, such as upsell screenshot regeneration and email content review flagging, are applied too. 
+    # Validation is mandatory and runs here regardless of whether the caller validated first.  The previous value is snapshotted before the write, so the change can be reverted.  Side effects the visual builder performs on save, such as upsell screenshot regeneration and email content review flagging, are applied too.  owner_type also says how owner_object_id is read; send itemid to address an item container by merchant item id rather than by oid.  Either way the history records the one canonical address, so a container written under one spelling is listed and reverted under the other. 
     # @param storefront_oid [Integer] 
     # @param owner_type [String] 
     # @param owner_object_id [String] 
@@ -2248,7 +2250,7 @@ module UltracartClient
     end
 
     # Write a container stored outside the file system
-    # Validation is mandatory and runs here regardless of whether the caller validated first.  The previous value is snapshotted before the write, so the change can be reverted.  Side effects the visual builder performs on save, such as upsell screenshot regeneration and email content review flagging, are applied too. 
+    # Validation is mandatory and runs here regardless of whether the caller validated first.  The previous value is snapshotted before the write, so the change can be reverted.  Side effects the visual builder performs on save, such as upsell screenshot regeneration and email content review flagging, are applied too.  owner_type also says how owner_object_id is read; send itemid to address an item container by merchant item id rather than by oid.  Either way the history records the one canonical address, so a container written under one spelling is listed and reverted under the other. 
     # @param storefront_oid [Integer] 
     # @param owner_type [String] 
     # @param owner_object_id [String] 
@@ -2976,7 +2978,7 @@ module UltracartClient
     end
 
     # Revert a container stored outside the file system
-    # The restore is itself snapshotted, so a revert can be undone in turn.  Reverting to an entry recorded before the container existed removes it again.  Addressed through the owning container and guarded by If-Match, because a revert overwrites live content just as much as an ordinary write does. 
+    # The restore is itself snapshotted, so a revert can be undone in turn.  Reverting to an entry recorded before the container existed removes it again.  Addressed through the owning container and guarded by If-Match, because a revert overwrites live content just as much as an ordinary write does.  owner_type also says how owner_object_id is read, so a version written by oid can be reverted by merchant item id and the other way round. 
     # @param storefront_oid [Integer] 
     # @param owner_type [String] 
     # @param owner_object_id [String] 
@@ -2991,7 +2993,7 @@ module UltracartClient
     end
 
     # Revert a container stored outside the file system
-    # The restore is itself snapshotted, so a revert can be undone in turn.  Reverting to an entry recorded before the container existed removes it again.  Addressed through the owning container and guarded by If-Match, because a revert overwrites live content just as much as an ordinary write does. 
+    # The restore is itself snapshotted, so a revert can be undone in turn.  Reverting to an entry recorded before the container existed removes it again.  Addressed through the owning container and guarded by If-Match, because a revert overwrites live content just as much as an ordinary write does.  owner_type also says how owner_object_id is read, so a version written by oid can be reverted by merchant item id and the other way round. 
     # @param storefront_oid [Integer] 
     # @param owner_type [String] 
     # @param owner_object_id [String] 
