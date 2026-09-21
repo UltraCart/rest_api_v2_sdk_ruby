@@ -1300,8 +1300,48 @@ Retrieves the customer activity associated with the email address on this order.
 
 ### Examples
 
+```ruby
+require 'ultracart_api'
+require_relative '../constants'
 
-(No example for this operation).
+# getOrderCustomerActivity returns the customer activity associated with the email address on an order.
+# This includes email engagement history, email list and segment membership, lifetime metrics and email
+# suppression status.
+#
+# A customer profile is NOT required and is not consulted.  The activity is keyed off the email address on
+# the order, so this works for guest orders that have never had a customer profile established.  For the
+# page views captured during the session that placed the order, use get_order_page_view_history instead.
+#
+# If the order has no valid email address, email and customer_activity both come back nil.  That is a
+# successful response rather than an error - without an email there is no activity record to find.
+#
+# Note: activity.ts is a unix timestamp in milliseconds, not an ISO 8601 string like most dates in this API.
+#
+# Possible Errors:
+# order_id does not start with the merchant id -> "Path parameter 'order_id' does not start with the merchant id.  Check your parameter value and call log."
+order_api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY)
+
+order_id = 'DEMO-0009104976'
+
+begin
+  api_response = order_api.get_order_customer_activity(order_id)
+  customer_activity = api_response.customer_activity
+
+  puts "Customer activity for: #{api_response.email}"
+
+  if customer_activity.nil?
+    puts 'No customer activity found for this order.'
+  else
+    puts "Globally unsubscribed: #{customer_activity.global_unsubscribed}"
+    puts "Spam complaint: #{customer_activity.spam_complaint}"
+
+    # Using inspect instead of var_dump for Ruby-style object representation
+    puts customer_activity.activities.inspect
+  end
+rescue StandardError => e
+  puts "An error occurred: #{e.message}"
+end
+```
 
 
 #### Using the get_order_customer_activity_with_http_info variant
@@ -1426,8 +1466,52 @@ Retrieves email delivery records associated with the specified order id.
 
 ### Examples
 
+```ruby
+require 'ultracart_api'
+require_relative '../constants'
 
-(No example for this operation).
+# getOrderEmails returns the delivery records for every email UltraCart sent regarding an order, oldest
+# first.  Each record carries the subject and send time plus delivery, open, click and bounce status,
+# which makes this useful evidence that a customer was notified about their order.
+#
+# A customer profile is NOT required.  These records are tied to the order id itself.
+#
+# An order with no email history, or one whose emails were all suppressed, comes back with an empty emails
+# array.  That is a successful response rather than an error.
+#
+# The internal flag marks messages sent to merchant staff rather than to the customer.  Filter those out
+# if you only want what the customer actually received.
+#
+# Possible Errors:
+# order_id does not start with the merchant id -> "Path parameter 'order_id' does not start with the merchant id.  Check your parameter value and call log."
+order_api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY)
+
+order_id = 'DEMO-0009104976'
+
+begin
+  api_response = order_api.get_order_emails(order_id)
+  emails = api_response.emails || []
+
+  if emails.empty?
+    puts 'No emails were sent for this order.'
+  else
+    emails.each do |email|
+      puts "#{email.send_dts} - #{email.email} - #{email.subject}"
+
+      status = []
+      status << "delivered #{email.delivery_dts}" if email.delivered
+      status << "opened #{email.opened_dts}" if email.opened
+      status << "clicked #{email.clicked_dts}" if email.clicked
+      status << "skipped: #{email.skip_reason}" if email.skipped
+      status << "bounced #{email.bounce_type}/#{email.bounce_sub_type}" if email.bounce_type
+
+      puts "    #{status.empty? ? 'no delivery events recorded' : status.join(', ')}"
+    end
+  end
+rescue StandardError => e
+  puts "An error occurred: #{e.message}"
+end
+```
 
 
 #### Using the get_order_emails_with_http_info variant
@@ -1479,8 +1563,51 @@ Retrieves the page views captured during the session that placed this order.
 
 ### Examples
 
+```ruby
+require 'ultracart_api'
+require_relative '../constants'
 
-(No example for this operation).
+# getOrderPageViewHistory returns the page views captured during the session that placed an order, along
+# with the referrer that started that session.
+#
+# A customer profile is NOT required.  These page views are keyed off an analytics client id stored on the
+# order itself, so this works for guest orders.  For the email engagement side of customer activity, use
+# get_order_customer_activity instead.
+#
+# An order placed outside the storefront, such as a phone order or an order imported from a channel
+# partner, will have no analytics session attached.  In that case page_views comes back empty.  That is a
+# successful response rather than an error.
+#
+# Note: view_dts is an ISO 8601 string here.  Be aware that the ts field on get_order_customer_activity is
+# unix milliseconds instead, so do not assume the two methods format dates the same way.
+#
+# Possible Errors:
+# order_id does not start with the merchant id -> "Path parameter 'order_id' does not start with the merchant id.  Check your parameter value and call log."
+order_api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY)
+
+order_id = 'DEMO-0009104976'
+
+begin
+  api_response = order_api.get_order_page_view_history(order_id)
+  page_views = api_response.page_views || []
+
+  puts "Session referrer: #{api_response.referrer || '(none captured)'}"
+
+  if page_views.empty?
+    puts 'No page views were captured for this order.'
+  else
+    page_views.each do |page_view|
+      time_on_page = page_view.time_on_page ? " (#{page_view.time_on_page}s on page)" : ''
+      puts "#{page_view.view_dts} - #{page_view.url}#{time_on_page}"
+    end
+
+    # Using inspect instead of var_dump for Ruby-style object representation
+    puts page_views.inspect
+  end
+rescue StandardError => e
+  puts "An error occurred: #{e.message}"
+end
+```
 
 
 #### Using the get_order_page_view_history_with_http_info variant
@@ -2283,7 +2410,7 @@ begin
   cc_token = 'F893C8CBAE34830177F9EA9D97205400'
   cvv_token = '3FA7577E42F7580177F9EAA2FF1F5900'
 
-  get_response = checkout_api.get_cart(_expand: expansion)
+  get_response = checkout_api.get_cart({:'_expand' => expansion})
   if get_response.errors&.length&.positive?
     # handle errors here.
     abort('System error.  Could not retrieve shopping cart.')
@@ -2308,7 +2435,7 @@ begin
 
   # If the customer already has a customer profile, then load that profile and pull the shipping/billing from there.
   # otherwise populate it manually.
-  customer_response = customer_api.get_customer_by_email(email, { _expand: 'shipping,billing,cards' })
+  customer_response = customer_api.get_customer_by_email(email, { :'_expand' => 'shipping,billing,cards' })
   if customer_response&.customer
 
     cp = customer_response.customer # cp is short for 'customer profile'
@@ -2378,7 +2505,7 @@ begin
   # the optimal shipping method estimates and ensure that you don't error
   # by selecting a shipping method that is somehow excluded from the possible
   # list for whatever reason (restrictions, locations, item-level constraints, etc)
-  update_response = checkout_api.update_cart(cart, _expand: expansion)
+  update_response = checkout_api.update_cart(cart, {:'_expand' => expansion})
   cart = update_response.cart
 
   # for shipping, check the estimates and select one.  for a completely non-interactive checkout such as this,
@@ -2392,7 +2519,7 @@ begin
     end
   end
 
-  update_response = checkout_api.update_cart(cart, _expand: expansion)
+  update_response = checkout_api.update_cart(cart, {:'_expand' => expansion})
   cart = update_response.cart
 
   # validate the cart to ensure everything is in order.
@@ -2577,7 +2704,7 @@ expansion = "items"   # for this example, we're going to change the items after 
 
 # Step 1. Duplicate the order
 order_id_to_duplicate = 'DEMO-0009104436'
-api_response = order_api.duplicate_order(order_id_to_duplicate, opts = { _expand: expansion })
+api_response = order_api.duplicate_order(order_id_to_duplicate, opts = { :'_expand' => expansion })
 new_order = api_response.order
 
 # Step 2. Update the items. I will create a new items array and assign it to the order to remove the old ones completely.
@@ -2600,7 +2727,7 @@ item.weight = weight
 
 items << item
 new_order.items = items
-update_response = order_api.update_order(new_order.order_id, new_order, opts = { _expand: expansion })
+update_response = order_api.update_order(new_order.order_id, new_order, opts = { :'_expand' => expansion })
 
 updated_order = update_response.order
 
@@ -2697,7 +2824,7 @@ expansion = "items"
 
 # Step 1. Retrieve the order
 order_id = 'DEMO-0009104436'
-order = order_api.get_order(order_id, opts = { _expand: expansion }).order
+order = order_api.get_order(order_id, opts = { :'_expand' => expansion }).order
 
 order.items.each do |item|
   item.quantity_refunded = item.quantity
@@ -3221,13 +3348,13 @@ order_api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY)
 expansion = "checkout" # see the get_order sample for expansion discussion
 
 order_id = 'DEMO-0009104976'
-order = order_api.get_order(order_id, opts = { _expand: expansion }).order
+order = order_api.get_order(order_id, opts = { :'_expand' => expansion }).order
 
 p order
 
 # TODO: do some updates to the order.
 
-api_response = order_api.update_order(order_id, order, opts = { _expand: expansion })
+api_response = order_api.update_order(order_id, order, opts = { :'_expand' => expansion })
 
 if api_response.error
   puts api_response.error.developer_message
@@ -3330,7 +3457,7 @@ order_api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY)
 expansion = "checkout" # see the get_order sample for expansion discussion
 
 order_id = 'DEMO-0009104976'
-order = order_api.get_order(order_id, opts = { _expand: expansion }).order
+order = order_api.get_order(order_id, opts = { :'_expand' => expansion }).order
 
 p order
 

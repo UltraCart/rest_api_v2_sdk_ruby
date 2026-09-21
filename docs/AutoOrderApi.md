@@ -90,8 +90,28 @@ Cancels a single item on an auto order identified by the original order id and t
 
 ### Examples
 
+```ruby
+# Cancel a single item on an auto order, identified by the reference (original) order id
+# that placed the auto order and the original item id on that order. This is useful when
+# you know the original UltraCart order id rather than the auto_order_oid.
 
-(No example for this operation).
+require_relative '../constants'
+require 'ultracart_api'
+
+auto_order_api = UltracartClient::AutoOrderApi.new_using_api_key(Constants::API_KEY)
+
+reference_order_id = "DEMO-12345678" # the UltraCart order id that placed the auto order
+original_item_id   = "ITEM001"       # the merchant item id on that original order
+expand             = "items"         # see https://www.ultracart.com/api/#resource_auto_order.html for list
+
+response = auto_order_api.cancel_auto_order_item_by_reference_order_id(
+  reference_order_id,
+  original_item_id,
+  { _expand: expand }
+)
+auto_order = response.auto_order
+puts auto_order.inspect
+```
 
 
 #### Using the cancel_auto_order_item_by_reference_order_id_with_http_info variant
@@ -163,7 +183,7 @@ target_auto_order_oid = 123456789 # set getAutoOrdersByQuery for retrieving auto
 consolidate_request = UltracartClient::AutoOrderConsolidate.new
 consolidate_request.source_auto_order_oids = [23456789, 3456789] # these are the autoorder_oids you wish to consolidate into the target.
 
-api_response = auto_order_api.consolidate_auto_orders(target_auto_order_oid, consolidate_request, { '_expand' => expand })
+api_response = auto_order_api.consolidate_auto_orders(target_auto_order_oid, consolidate_request, { :'_expand' => expand })
 
 consolidated_auto_order = api_response.auto_order
 
@@ -237,7 +257,7 @@ auto_order_api = UltracartClient::AutoOrderApi.new_using_api_key(Constants::API_
 expand = "items,items.future_schedules,original_order,rebill_orders"
 
 original_order_id = "DEMO-123457"
-api_response = auto_order_api.establish_auto_order_by_reference_order_id(original_order_id, { '_expand' => expand })
+api_response = auto_order_api.establish_auto_order_by_reference_order_id(original_order_id, { :'_expand' => expand })
 
 empty_auto_order = api_response.auto_order
 auto_order_oid = empty_auto_order.auto_order_oid
@@ -255,7 +275,7 @@ items << item
 empty_auto_order.items = items
 
 validate_original_order = 'No'
-api_response = auto_order_api.update_auto_order(auto_order_oid, empty_auto_order,  { '_expand' => expand, validate_original_order: validate_original_order })
+api_response = auto_order_api.update_auto_order(auto_order_oid, empty_auto_order,  { :'_expand' => expand, :'validate_original_order' => validate_original_order })
 updated_auto_order = api_response.auto_order
 puts updated_auto_order.inspect
 ```
@@ -322,7 +342,7 @@ auto_order_api = UltracartClient::AutoOrderApi.new_using_api_key(Constants::API_
 # see https://www.ultracart.com/api/#resource_auto_order.html for list
 expand = "items,items.future_schedules,original_order,rebill_orders"
 auto_order_oid = 123456789 # If you don't know the oid, use getAutoOrdersByQuery for retrieving auto orders
-api_response = auto_order_api.get_auto_order(auto_order_oid, { '_expand' => expand })
+api_response = auto_order_api.get_auto_order(auto_order_oid, { :'_expand' => expand })
 auto_order = api_response.auto_order
 puts auto_order.inspect
 ```
@@ -451,7 +471,7 @@ auto_order_api = UltracartClient::AutoOrderApi.new_using_api_key(Constants::API_
 
 expand = "items,items.future_schedules,original_order,rebill_orders" # contact us if you're unsure what you need
 code = "RT2A9CBSX9"
-api_response = auto_order_api.get_auto_order_by_code(code, { '_expand' => expand })
+api_response = auto_order_api.get_auto_order_by_code(code, { :'_expand' => expand })
 auto_order = api_response.auto_order
 
 # this will be verbose...
@@ -577,7 +597,7 @@ auto_order_api = UltracartClient::AutoOrderApi.new_using_api_key(Constants::API_
 
 expand = "items,items.future_schedules,original_order,rebill_orders" # contact us if you're unsure what you need
 original_order_id = "DEMO-12345678"
-api_response = auto_order_api.get_auto_order_by_reference_order_id(original_order_id, { '_expand' => expand })
+api_response = auto_order_api.get_auto_order_by_reference_order_id(original_order_id, { :'_expand' => expand })
 auto_order = api_response.auto_order
 
 # this will be verbose...
@@ -635,8 +655,23 @@ Retrieves auto order cancel reasons.
 
 ### Examples
 
+```ruby
+require 'ultracart_api'
+require_relative '../constants'
 
-(No example for this operation).
+# Retrieves the list of cancel reasons that can be presented to customers when
+# cancelling an auto order (e.g., in MyAccount). Each reason includes the reason
+# text, an optional MyAccount alternate description, and whether the reason is
+# visible in MyAccount.
+
+auto_order_api = UltracartClient::AutoOrderApi.new_using_api_key(Constants::API_KEY)
+
+api_response = auto_order_api.get_auto_order_cancel_reasons
+
+api_response.cancel_reasons.each do |cancel_reason|
+  puts cancel_reason.inspect
+end
+```
 
 
 #### Using the get_auto_order_cancel_reasons_with_http_info variant
@@ -797,10 +832,31 @@ def get_auto_order_chunk(auto_order_api, offset, limit)
   sort = nil
 
   # see all these parameters?  that is why you should use getAutoOrdersByQuery() instead of getAutoOrders()
-  api_response = auto_order_api.get_auto_orders(auto_order_code, original_order_id, first_name, last_name,
-    company, city, state, postal_code, country_code, phone, email, original_order_date_begin,
-    original_order_date_end, next_shipment_date_begin, next_shipment_date_end, card_type, item_id, status,
-    limit, offset, since, sort, { '_expand' => expand })
+  api_response = auto_order_api.get_auto_orders(
+    {
+      :'auto_order_code' => auto_order_code,
+      :'original_order_id' => original_order_id,
+      :'first_name' =>  first_name,
+      :'last_name' => last_name,
+      :'company' =>  company,
+      :'city' =>  city,
+      :'state' =>  state,
+      :'postal_code' =>  postal_code,
+      :'country_code' =>  country_code,
+      :'phone' =>  phone,
+      :'email' =>  email,
+      :'original_order_date_begin' =>  original_order_date_begin,
+      :'original_order_date_end' =>  original_order_date_end,
+      :'next_shipment_date_begin' =>  next_shipment_date_begin,
+      :'next_shipment_date_end' =>  next_shipment_date_end,
+      :'card_type' =>  card_type,
+      :'item_id' =>  item_id,
+      :'status' =>  status,
+      :'_limit' =>  limit,
+      :'_offset' =>  offset,
+      :'_since' =>  since,
+      :'_sort' =>  sort,
+      :'_expand' => expand })
 
   api_response.auto_orders || []
 end
@@ -954,7 +1010,7 @@ expand = "items,items.future_schedules,original_order,rebill_orders" # contact u
 auto_order_oids = [123456, 234567, 345678, 456789]
 batch_request = UltracartClient::AutoOrderQueryBatch.new
 batch_request.auto_order_oids = auto_order_oids
-api_response = auto_order_api.get_auto_orders_batch(batch_request, { '_expand' => expand })
+api_response = auto_order_api.get_auto_orders_batch(batch_request, { :'_expand' => expand })
 auto_orders = api_response.auto_orders
 
 # this will be verbose...
@@ -1112,10 +1168,10 @@ def get_auto_order_chunk(auto_order_api, offset, limit)
   query.email = "support@ultracart.com"
 
   opts = {
-    _limit: limit,
-    _offset: offset,
-    _sort: "next_shipment_dts",
-    _expand: expand
+    :'_limit' => limit,
+    :'_offset' => offset,
+    :'_sort' => "next_shipment_dts",
+    :'_expand' => expand
   }
 
   api_response = auto_order_api.get_auto_orders_by_query(query, opts)
@@ -1225,7 +1281,7 @@ auto_order_api = UltracartClient::AutoOrderApi.new_using_api_key(Constants::API_
 
 expand = "items" # see https://www.ultracart.com/api/#resource_auto_order.html for list
 auto_order_oid = 123456789 # get an auto order and update it. There are many ways to retrieve an auto order.
-get_response = auto_order_api.get_auto_order(auto_order_oid, {_expand: expand})
+get_response = auto_order_api.get_auto_order(auto_order_oid, {:'_expand' => expand})
 auto_order = get_response.auto_order
 
 pause_response = auto_order_api.pause_auto_order(auto_order_oid, auto_order)
@@ -1309,7 +1365,7 @@ email = 'test@test.com'
 query = UltracartClient::AutoOrderQuery.new
 query.email = email
 expansion = 'items,items.future_schedules,items.simple_schedule,rebill_orders'
-ao_response = ao_api.get_auto_orders_by_query(query, { _expand: expansion })
+ao_response = ao_api.get_auto_orders_by_query(query, { :'_expand' => expansion })
 
 # there should only be one auto order for a customer.  that's typical.
 # If you are marketing more than one, than you must loop through the result set
@@ -1325,7 +1381,7 @@ auto_order.items.each do |auto_order_item|
 end
 
 # save the auto order with the updated item.
-ao_api.update_auto_order(auto_order, auto_order.auto_order_oid, { _expand: expansion })
+ao_api.update_auto_order(auto_order, auto_order.auto_order_oid, { :'_expand' => expansion })
 
 
 
@@ -1640,9 +1696,9 @@ auto_orders_request = UltracartClient::AutoOrdersRequest.new
 auto_orders_request.auto_orders = auto_orders
 
 opts = {
-  _expand: expand,
-  _placeholders: placeholders,
-  _async: async
+  :'_expand' => expand,
+  :'_placeholders' => placeholders,
+  :'_async' => async
 }
 
 api_response = auto_order_api.update_auto_orders_batch(auto_orders_request, opts)

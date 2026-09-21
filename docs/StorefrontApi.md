@@ -1314,8 +1314,9 @@ Delete file manager directory
 
 ### Examples
 
+```ruby
 
-(No example for this operation).
+```
 
 
 #### Using the delete_fs_file_with_http_info variant
@@ -9506,8 +9507,9 @@ Update email sending domain
 
 ### Examples
 
+```ruby
 
-(No example for this operation).
+```
 
 
 #### Using the update_email_sending_domain_with_http_info variant

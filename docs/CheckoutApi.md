@@ -136,7 +136,7 @@ cart_id = cookies[Constants::CART_ID_COOKIE_NAME] if cookies[Constants::CART_ID_
 
 cart = nil
 if cart_id.nil?
-  api_response = checkout_api.get_cart(_expand: expansion)
+  api_response = checkout_api.get_cart({:'_expand' => expansion})
 else
   api_response = checkout_api.get_cart_by_cart_id(cart_id, _expand: expansion)
 end
@@ -537,7 +537,7 @@ expansion = "items,billing,shipping,coupons,checkout,payment,summary,taxes"
 # summary	                    upsell_after
 
 return_code = '1234567890'  # usually retrieved from a query parameter
-api_response = checkout_api.get_cart_by_return_code(return_code, _expand: expansion)
+api_response = checkout_api.get_cart_by_return_code(return_code, {:'_expand' => expansion})
 cart = api_response.cart
 
 # TODO: set or re-set the cart cookie if this is part of a multi-page process. two weeks is a generous cart id time.
@@ -622,7 +622,7 @@ expansion = "items,billing,shipping,coupons,checkout,payment,summary,taxes"
 # summary	                    upsell_after
 
 cart_token = '1234567890'  # usually retrieved from a query parameter
-api_response = checkout_api.get_cart_by_return_token(cart_token, _expand: expansion)
+api_response = checkout_api.get_cart_by_return_token({:'return_token' => cart_token, :'_expand' => expansion})
 cart = api_response.cart
 
 # TODO: set or re-set the cart cookie if this is part of a multi-page process. two weeks is a generous cart id time.
@@ -1220,9 +1220,9 @@ expansion = 'customer_profile,items,billing,shipping,coupons,checkout,payment,su
 cart_id = ENV['HTTP_ULTRACARTSHOPPINGCARTID']
 
 cart = if cart_id.nil?
-          checkout_api.get_cart({_expand: expansion}).cart
+          checkout_api.get_cart({:'_expand' => expansion}).cart
        else
-          checkout_api.get_cart_by_cart_id(cart_id, {_expand: expansion}).cart
+          checkout_api.get_cart_by_cart_id(cart_id, {:'_expand' => expansion}).cart
        end
 
 # TODO - add some items to the cart and update.
@@ -1235,7 +1235,7 @@ items << cart_item
 cart.items = items
 
 # Update the cart
-cart = checkout_api.update_cart(cart, { '_expand' => expansion }).cart
+cart = checkout_api.update_cart(cart, { :'_expand' => expansion }).cart
 
 api_response = checkout_api.related_items_for_cart(cart)
 related_items = api_response.items
@@ -1310,9 +1310,9 @@ expansion = 'customer_profile,items,billing,shipping,coupons,checkout,payment,su
 cart_id = ENV['HTTP_ULTRACARTSHOPPINGCARTID']
 
 cart = if cart_id.nil?
-          checkout_api.get_cart({_expand: expansion}).cart
+          checkout_api.get_cart({:'_expand' => expansion}).cart
        else
-          checkout_api.get_cart_by_cart_id(cart_id, {_expand: expansion}).cart
+          checkout_api.get_cart_by_cart_id(cart_id, {:'_expand' => expansion}).cart
        end
 
 # TODO - add some items to the cart and update.
@@ -1325,11 +1325,11 @@ items << cart_item
 cart.items = items
 
 # Update the cart
-cart = checkout_api.update_cart(cart, { '_expand' => expansion }).cart
+cart = checkout_api.update_cart(cart, {:'_expand' => expansion }).cart
 
 another_item_id = 'ITEM_ZZZ'
 
-api_response = checkout_api.related_items_for_item(another_item_id, cart, { '_expand' => expansion })
+api_response = checkout_api.related_items_for_item(another_item_id, cart, {:'_expand' => expansion })
 related_items = api_response.items
 
 puts related_items.inspect
@@ -1466,11 +1466,11 @@ expansion = 'items' # For this example, we're just getting a cart to insert some
 
 cart_id = nil
 cart_id = ENV['HTTP_COOKIE'].to_s[/#{Constants::CART_ID_COOKIE_NAME}=([^;]+)/, 1] if ENV['HTTP_COOKIE']
-
+opts = { :'_expand' => expansion }
 cart = if cart_id.nil?
-         checkout_api.get_cart({_expand: expansion}).cart
+         checkout_api.get_cart(opts).cart
        else
-         checkout_api.get_cart_by_cart_id(cart_id, {_expand: expansion}).cart
+         checkout_api.get_cart_by_cart_id(cart_id, opts).cart
        end
 
 # Get the items array on the cart, creating it if it doesn't exist.
@@ -1492,7 +1492,7 @@ items << item
 cart.items = items
 
 # Push the cart up to save the item
-cart_response = checkout_api.update_cart(cart, {_expand: expansion})
+cart_response = checkout_api.update_cart(cart, opts)
 
 # Extract the updated cart from the response
 cart = cart_response.cart
@@ -1565,8 +1565,9 @@ checkout_api = UltracartClient::CheckoutApi.new_using_api_key(Constants::API_KEY
 cart_id = '123456789123456789123456789123456789' # Usually this would be retrieved from a session variable or cookie.
 
 expansion = 'items,billing,shipping,coupons,checkout,payment,summary,taxes'
+opts = {:'_expand' => expansion}
 
-cart = checkout_api.get_cart_by_cart_id(cart_id, {_expand: expansion}).cart
+cart = checkout_api.get_cart_by_cart_id(cart_id, opts).cart
 
 validation_request = UltracartClient::CartValidationRequest.new
 validation_request.cart = cart
@@ -1574,7 +1575,7 @@ validation_request.cart = cart
 # Possible Checks (you can set these as needed, or leave as default):
 # validation_request.set_checks(["All", "Item Quantity Valid", "Payment Information Validate"])
 
-api_response = checkout_api.validate_cart(validation_request, {_expand: expansion})
+api_response = checkout_api.validate_cart(validation_request, opts)
 cart = api_response.cart
 
 puts "Validation Errors:"

@@ -499,7 +499,7 @@ coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
 coupon_oid = 123456789
 
 # coupons do not have expansions
-api_response = coupon_api.get_coupon(coupon_oid, { _expand: nil })
+api_response = coupon_api.get_coupon(coupon_oid, {})
 
 puts api_response.inspect
 ```
@@ -646,19 +646,19 @@ def get_coupons_chunk(coupon_api, offset = 0, limit = 200)
 
   # getCoupons doesn't have any expansions. full record is always returned.
   opts = {
-    merchant_code: merchant_code,
-    description: description,
-    coupon_type: coupon_type,
-    start_date_begin: start_date_begin,
-    start_date_end: start_date_end,
-    expiration_date_begin: expiration_date_begin,
-    expiration_date_end: expiration_date_end,
-    affiliate_oid: affiliate_oid,
-    exclude_expired: exclude_expired,
-    _limit: limit,
-    _offset: offset,
-    _sort: nil,
-    _expand: nil
+    :'merchant_code' => merchant_code,
+    :'description' => description,
+    :'coupon_type' => coupon_type,
+    :'start_date_begin' => start_date_begin,
+    :'start_date_end' => start_date_end,
+    :'expiration_date_begin' => expiration_date_begin,
+    :'expiration_date_end' => expiration_date_end,
+    :'affiliate_oid' => affiliate_oid,
+    :'exclude_expired' => exclude_expired,
+    :'_limit' => limit,
+    :'_offset' => offset,
+    :'_sort' => nil,
+    :'_expand' => nil
   }
 
   get_response = coupon_api.get_coupons(opts)
@@ -834,8 +834,8 @@ def get_coupon_chunk(coupon_api, offset, limit)
   # coupons do not have expansions
   # Possible sorts: "coupon_type", "merchant_code", "description", "start_dts", "expiration_dts", "quickbooks_code"
   opts = {
-    _expand: nil,
-    _sort: 'merchant_code'
+    :'_expand' => nil,
+    :'_sort' => 'merchant_code'
   }
 
   api_response = coupon_api.get_coupons_by_query(query, limit, offset, opts)
@@ -1042,7 +1042,7 @@ coupon.amount_off_subtotal.discount_amount = 11
 #CouponTierQuantityPercent
 
 # coupons do not have expansions
-api_response = coupon_api.insert_coupon(coupon, {_expand: nil})
+api_response = coupon_api.insert_coupon(coupon, {})
 puts api_response
 ```
 
@@ -1113,7 +1113,7 @@ coupons = []
 coupons_request.coupons = coupons
 
 # coupons do not have expansions or placeholders
-api_response = coupon_api.insert_coupons(coupons_request, {_expand: nil, _placeholders: nil})
+api_response = coupon_api.insert_coupons(coupons_request, {})
 puts api_response
 ```
 
@@ -1316,13 +1316,13 @@ coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
 coupon_oid = 123456789
 
 # coupons do not have expansions
-api_response = coupon_api.get_coupon(coupon_oid, {_expand: nil})
+api_response = coupon_api.get_coupon(coupon_oid, {})
 coupon = api_response.coupon
 
 # update the coupon.  this can be difficult given the complexity of coupons.  see insertCoupon sample for details.
 coupon.expiration_dts = (Date.today + 90).strftime('%Y-%m-%d') + 'T00:00:00+00:00'
 
-api_response = coupon_api.update_coupon(coupon_oid, coupon, {_expand: nil})
+api_response = coupon_api.update_coupon(coupon_oid, coupon, {})
 updated_coupon = api_response.coupon
 puts updated_coupon
 ```
@@ -1388,7 +1388,7 @@ coupon_api = UltracartClient::CouponApi.new_using_api_key(Constants::API_KEY)
 coupon_oid = 123456789
 
 # coupons do not have expansions or placeholders
-api_response = coupon_api.get_coupon(coupon_oid, {_expand: nil})
+api_response = coupon_api.get_coupon(coupon_oid, {})
 coupon = api_response.coupon
 
 # update the coupon.  this can be difficult given the complexity of coupons.  see insertCoupon sample for details.
@@ -1398,7 +1398,7 @@ coupon.expiration_dts = (Date.today + 90).strftime('%Y-%m-%d') + 'T00:00:00+00:0
 coupons_request = UltracartClient::CouponsRequest.new
 coupons_request.coupons = [coupon]
 
-api_response = coupon_api.update_coupons(coupons_request, {_expand: nil, _placeholders: nil})
+api_response = coupon_api.update_coupons(coupons_request, {})
 updated_coupons = api_response.coupons
 puts updated_coupons
 ```
