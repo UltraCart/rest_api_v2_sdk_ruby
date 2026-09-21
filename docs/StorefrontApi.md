@@ -86,6 +86,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_email_postcard**](StorefrontApi.md#get_email_postcard) | **GET** /storefront/{storefront_oid}/email/postcards/{commseq_postcard_uuid} | Get email postcard |
 | [**get_email_postcards**](StorefrontApi.md#get_email_postcards) | **GET** /storefront/{storefront_oid}/email/postcards | Get email postcards |
 | [**get_email_postcards_multiple**](StorefrontApi.md#get_email_postcards_multiple) | **POST** /storefront/{storefront_oid}/email/postcards/multiple | Get email postcards multiple |
+| [**get_email_review_status**](StorefrontApi.md#get_email_review_status) | **GET** /storefront/{storefront_oid}/email/emails/{commseq_email_uuid}/review_status | Get the review status of an email |
+| [**get_email_review_statuses_multiple**](StorefrontApi.md#get_email_review_statuses_multiple) | **POST** /storefront/{storefront_oid}/email/emails/review_status/multiple | Get the review status of multiple emails |
 | [**get_email_segment**](StorefrontApi.md#get_email_segment) | **GET** /storefront/{storefront_oid}/email/segments/{email_segment_uuid} | Get email segment |
 | [**get_email_segment_customer_editor_url**](StorefrontApi.md#get_email_segment_customer_editor_url) | **GET** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/customers/{email_customer_uuid}/editor_url | Get email segment customers editor URL |
 | [**get_email_segment_customers**](StorefrontApi.md#get_email_segment_customers) | **GET** /storefront/{storefront_oid}/email/segments/{email_segment_uuid}/customers | Get email segment customers |
@@ -4538,6 +4540,112 @@ end
 ### Return type
 
 [**EmailCommseqPostcardsResponse**](EmailCommseqPostcardsResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_email_review_status
+
+> <EmailCommseqEmailReviewStatusResponse> get_email_review_status(storefront_oid, commseq_email_uuid)
+
+Get the review status of an email
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_email_review_status_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmailCommseqEmailReviewStatusResponse>, Integer, Hash)> get_email_review_status_with_http_info(storefront_oid, commseq_email_uuid)
+
+```ruby
+begin
+  # Get the review status of an email
+  data, status_code, headers = api_instance.get_email_review_status_with_http_info(storefront_oid, commseq_email_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmailCommseqEmailReviewStatusResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->get_email_review_status_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **commseq_email_uuid** | **String** |  |  |
+
+### Return type
+
+[**EmailCommseqEmailReviewStatusResponse**](EmailCommseqEmailReviewStatusResponse.md)
+
+### Authorization
+
+[ultraCartBrowserApiKey](../README.md#ultraCartBrowserApiKey), [ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_email_review_statuses_multiple
+
+> <EmailCommseqEmailReviewStatusesResponse> get_email_review_statuses_multiple(storefront_oid, email_commseq_email_review_statuses_request)
+
+Get the review status of multiple emails
+
+Returns one entry per requested email, in the order requested, so a caller polling a campaign does not have to reconcile a short response. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_email_review_statuses_multiple_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmailCommseqEmailReviewStatusesResponse>, Integer, Hash)> get_email_review_statuses_multiple_with_http_info(storefront_oid, email_commseq_email_review_statuses_request)
+
+```ruby
+begin
+  # Get the review status of multiple emails
+  data, status_code, headers = api_instance.get_email_review_statuses_multiple_with_http_info(storefront_oid, email_commseq_email_review_statuses_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmailCommseqEmailReviewStatusesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling StorefrontApi->get_email_review_statuses_multiple_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **email_commseq_email_review_statuses_request** | [**EmailCommseqEmailReviewStatusesRequest**](EmailCommseqEmailReviewStatusesRequest.md) | Request of email uuids |  |
+
+### Return type
+
+[**EmailCommseqEmailReviewStatusesResponse**](EmailCommseqEmailReviewStatusesResponse.md)
 
 ### Authorization
 

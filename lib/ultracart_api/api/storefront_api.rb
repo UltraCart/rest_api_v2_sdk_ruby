@@ -5661,6 +5661,149 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get the review status of an email
+    # @param storefront_oid [Integer] 
+    # @param commseq_email_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [EmailCommseqEmailReviewStatusResponse]
+    def get_email_review_status(storefront_oid, commseq_email_uuid, opts = {})
+      data, _status_code, _headers = get_email_review_status_with_http_info(storefront_oid, commseq_email_uuid, opts)
+      data
+    end
+
+    # Get the review status of an email
+    # @param storefront_oid [Integer] 
+    # @param commseq_email_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailCommseqEmailReviewStatusResponse, Integer, Hash)>] EmailCommseqEmailReviewStatusResponse data, response status code and response headers
+    def get_email_review_status_with_http_info(storefront_oid, commseq_email_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_email_review_status ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_email_review_status"
+      end
+      # verify the required parameter 'commseq_email_uuid' is set
+      if @api_client.config.client_side_validation && commseq_email_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'commseq_email_uuid' when calling StorefrontApi.get_email_review_status"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/emails/{commseq_email_uuid}/review_status'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'commseq_email_uuid' + '}', CGI.escape(commseq_email_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EmailCommseqEmailReviewStatusResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"StorefrontApi.get_email_review_status",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_email_review_status\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get the review status of multiple emails
+    # Returns one entry per requested email, in the order requested, so a caller polling a campaign does not have to reconcile a short response. 
+    # @param storefront_oid [Integer] 
+    # @param email_commseq_email_review_statuses_request [EmailCommseqEmailReviewStatusesRequest] Request of email uuids
+    # @param [Hash] opts the optional parameters
+    # @return [EmailCommseqEmailReviewStatusesResponse]
+    def get_email_review_statuses_multiple(storefront_oid, email_commseq_email_review_statuses_request, opts = {})
+      data, _status_code, _headers = get_email_review_statuses_multiple_with_http_info(storefront_oid, email_commseq_email_review_statuses_request, opts)
+      data
+    end
+
+    # Get the review status of multiple emails
+    # Returns one entry per requested email, in the order requested, so a caller polling a campaign does not have to reconcile a short response. 
+    # @param storefront_oid [Integer] 
+    # @param email_commseq_email_review_statuses_request [EmailCommseqEmailReviewStatusesRequest] Request of email uuids
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailCommseqEmailReviewStatusesResponse, Integer, Hash)>] EmailCommseqEmailReviewStatusesResponse data, response status code and response headers
+    def get_email_review_statuses_multiple_with_http_info(storefront_oid, email_commseq_email_review_statuses_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StorefrontApi.get_email_review_statuses_multiple ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling StorefrontApi.get_email_review_statuses_multiple"
+      end
+      # verify the required parameter 'email_commseq_email_review_statuses_request' is set
+      if @api_client.config.client_side_validation && email_commseq_email_review_statuses_request.nil?
+        fail ArgumentError, "Missing the required parameter 'email_commseq_email_review_statuses_request' when calling StorefrontApi.get_email_review_statuses_multiple"
+      end
+      # resource path
+      local_var_path = '/storefront/{storefront_oid}/email/emails/review_status/multiple'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(email_commseq_email_review_statuses_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EmailCommseqEmailReviewStatusesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartBrowserApiKey', 'ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"StorefrontApi.get_email_review_statuses_multiple",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StorefrontApi#get_email_review_statuses_multiple\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get email segment
     # @param storefront_oid [Integer] 
     # @param email_segment_uuid [String] 
