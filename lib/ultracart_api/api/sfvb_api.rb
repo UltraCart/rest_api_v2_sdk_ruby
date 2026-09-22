@@ -3001,6 +3001,85 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # List the item containers on the account
+    # An itemcontainer element renders nothing of its own.  It names a slot, and a separate container is resolved per item for that slot, so a catalog of five hundred products with three slots is fifteen hundred containers.  This says which of them exist.  Filter by container_name to find every item carrying one slot, or by merchant_item_id to see what one item has.  Which items are missing a slot is a set difference against pages/items, because a listing can only report containers that exist.  Each row carries hash_sha256, so a listing is enough to start an If-Match write without reading the container first.  Item containers are stored per account rather than per storefront, so storefront_oid identifies the caller's storefront but does not narrow the result. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id Restrict to one item, by the merchant item id a storefront carries
+    # @option opts [Integer] :merchant_item_oid Restrict to one item, by oid.  Send this or merchant_item_id, not both
+    # @option opts [String] :container_name Restrict to one slot name, matched without regard to case
+    # @option opts [Integer] :max_results 
+    # @option opts [Integer] :offset 
+    # @return [SfvbItemContainersResponse]
+    def list_sfvb_item_containers(storefront_oid, opts = {})
+      data, _status_code, _headers = list_sfvb_item_containers_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List the item containers on the account
+    # An itemcontainer element renders nothing of its own.  It names a slot, and a separate container is resolved per item for that slot, so a catalog of five hundred products with three slots is fifteen hundred containers.  This says which of them exist.  Filter by container_name to find every item carrying one slot, or by merchant_item_id to see what one item has.  Which items are missing a slot is a set difference against pages/items, because a listing can only report containers that exist.  Each row carries hash_sha256, so a listing is enough to start an If-Match write without reading the container first.  Item containers are stored per account rather than per storefront, so storefront_oid identifies the caller&#39;s storefront but does not narrow the result. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id Restrict to one item, by the merchant item id a storefront carries
+    # @option opts [Integer] :merchant_item_oid Restrict to one item, by oid.  Send this or merchant_item_id, not both
+    # @option opts [String] :container_name Restrict to one slot name, matched without regard to case
+    # @option opts [Integer] :max_results 
+    # @option opts [Integer] :offset 
+    # @return [Array<(SfvbItemContainersResponse, Integer, Hash)>] SfvbItemContainersResponse data, response status code and response headers
+    def list_sfvb_item_containers_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.list_sfvb_item_containers ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.list_sfvb_item_containers"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/item_containers'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'merchant_item_id'] = opts[:'merchant_item_id'] if !opts[:'merchant_item_id'].nil?
+      query_params[:'merchant_item_oid'] = opts[:'merchant_item_oid'] if !opts[:'merchant_item_oid'].nil?
+      query_params[:'container_name'] = opts[:'container_name'] if !opts[:'container_name'].nil?
+      query_params[:'max_results'] = opts[:'max_results'] if !opts[:'max_results'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbItemContainersResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.list_sfvb_item_containers",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_item_containers\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List the storefront's pages
     # Every page with its settings, sorted by path with the root first.  Hidden pages are included.  Pass under to list one page and everything below it.  Read from the same cached catalog the admin page tree uses, so a page created a moment ago can take a moment to appear here - read it directly with the single-page read to confirm a write. 
     # @param storefront_oid [Integer] 

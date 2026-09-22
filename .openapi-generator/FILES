@@ -1021,6 +1021,8 @@ docs/SfvbFileVersionsResponse.md
 docs/SfvbFileWriteRequest.md
 docs/SfvbFileWriteResponse.md
 docs/SfvbFilesResponse.md
+docs/SfvbItemContainer.md
+docs/SfvbItemContainersResponse.md
 docs/SfvbLibraryEntry.md
 docs/SfvbLibraryFacet.md
 docs/SfvbLibraryResponse.md
@@ -2202,6 +2204,8 @@ lib/ultracart_api/models/sfvb_file_versions_response.rb
 lib/ultracart_api/models/sfvb_file_write_request.rb
 lib/ultracart_api/models/sfvb_file_write_response.rb
 lib/ultracart_api/models/sfvb_files_response.rb
+lib/ultracart_api/models/sfvb_item_container.rb
+lib/ultracart_api/models/sfvb_item_containers_response.rb
 lib/ultracart_api/models/sfvb_library_entry.rb
 lib/ultracart_api/models/sfvb_library_facet.rb
 lib/ultracart_api/models/sfvb_library_response.rb
