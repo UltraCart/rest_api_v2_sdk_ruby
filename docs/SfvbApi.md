@@ -10,6 +10,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**create_sfvb_preview_access**](SfvbApi.md#create_sfvb_preview_access) | **POST** /sfvb/storefronts/{storefront_oid}/preview_access | One time link that opens a preview in a browser with no UltraCart login |
 | [**create_sfvb_preview_session**](SfvbApi.md#create_sfvb_preview_session) | **POST** /sfvb/storefronts/{storefront_oid}/preview_sessions | Create a preview session |
 | [**delete_sfvb_file**](SfvbApi.md#delete_sfvb_file) | **DELETE** /sfvb/storefronts/{storefront_oid}/files | Delete a storefront file |
+| [**delete_sfvb_item_multimedia**](SfvbApi.md#delete_sfvb_item_multimedia) | **DELETE** /sfvb/storefronts/{storefront_oid}/items/multimedia | Detach an image from an item |
 | [**delete_sfvb_page_multimedia**](SfvbApi.md#delete_sfvb_page_multimedia) | **DELETE** /sfvb/storefronts/{storefront_oid}/pages/multimedia | Detach an image from a page |
 | [**delete_sfvb_preview_session**](SfvbApi.md#delete_sfvb_preview_session) | **DELETE** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id} | Delete a preview session |
 | [**download_sfvb_file**](SfvbApi.md#download_sfvb_file) | **GET** /sfvb/storefronts/{storefront_oid}/files/download | Read a storefront file&#39;s raw bytes |
@@ -24,6 +25,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_experiment_objectives**](SfvbApi.md#get_sfvb_experiment_objectives) | **GET** /sfvb/storefronts/{storefront_oid}/experiments/objectives | List the objectives an experiment can optimize |
 | [**get_sfvb_file_content**](SfvbApi.md#get_sfvb_file_content) | **GET** /sfvb/storefronts/{storefront_oid}/files/content | Read a storefront file |
 | [**get_sfvb_file_upload_url**](SfvbApi.md#get_sfvb_file_upload_url) | **GET** /sfvb/storefronts/{storefront_oid}/files/upload_url/{extension} | Get a URL to upload a binary asset to |
+| [**get_sfvb_item**](SfvbApi.md#get_sfvb_item) | **GET** /sfvb/storefronts/{storefront_oid}/items | Read an item&#39;s storefront facing content |
 | [**get_sfvb_library_entry**](SfvbApi.md#get_sfvb_library_entry) | **GET** /sfvb/storefronts/{storefront_oid}/library/{library_oid} | Read one library entry including its CJSON |
 | [**get_sfvb_menu**](SfvbApi.md#get_sfvb_menu) | **GET** /sfvb/storefronts/{storefront_oid}/menus/{code} | Read one store menu and its entries |
 | [**get_sfvb_menus**](SfvbApi.md#get_sfvb_menus) | **GET** /sfvb/storefronts/{storefront_oid}/menus | List a storefront&#39;s store menus |
@@ -55,6 +57,10 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**put_sfvb_container**](SfvbApi.md#put_sfvb_container) | **PUT** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id} | Write a container stored outside the file system |
 | [**put_sfvb_experiment_variation**](SfvbApi.md#put_sfvb_experiment_variation) | **PUT** /sfvb/storefronts/{storefront_oid}/experiments/{experiment_oid}/variations/{variation_number} | Pause or resume a variation |
 | [**put_sfvb_file_content**](SfvbApi.md#put_sfvb_file_content) | **PUT** /sfvb/storefronts/{storefront_oid}/files/content | Write a storefront file |
+| [**put_sfvb_item_attributes**](SfvbApi.md#put_sfvb_item_attributes) | **PUT** /sfvb/storefronts/{storefront_oid}/items/attributes | Change some of an item&#39;s attributes |
+| [**put_sfvb_item_content**](SfvbApi.md#put_sfvb_item_content) | **PUT** /sfvb/storefronts/{storefront_oid}/items/content | Change an item&#39;s title or long description |
+| [**put_sfvb_item_multimedia**](SfvbApi.md#put_sfvb_item_multimedia) | **PUT** /sfvb/storefronts/{storefront_oid}/items/multimedia | Attach an image to an item |
+| [**put_sfvb_item_seo**](SfvbApi.md#put_sfvb_item_seo) | **PUT** /sfvb/storefronts/{storefront_oid}/items/seo | Change an item&#39;s search metadata |
 | [**put_sfvb_menu**](SfvbApi.md#put_sfvb_menu) | **PUT** /sfvb/storefronts/{storefront_oid}/menus/{code} | Replace a store menu&#39;s entries |
 | [**put_sfvb_page_attributes**](SfvbApi.md#put_sfvb_page_attributes) | **PUT** /sfvb/storefronts/{storefront_oid}/pages/attributes | Change a page&#39;s attributes |
 | [**put_sfvb_page_multimedia**](SfvbApi.md#put_sfvb_page_multimedia) | **PUT** /sfvb/storefronts/{storefront_oid}/pages/multimedia | Attach an image to a page |
@@ -391,6 +397,63 @@ end
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_sfvb_item_multimedia
+
+> <SfvbItemResponse> delete_sfvb_item_multimedia(storefront_oid, opts)
+
+Detach an image from an item
+
+Removes the item's copy of the image in one slot.  The file you uploaded is left where it is, so the same source can be attached again or used elsewhere. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_sfvb_item_multimedia_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbItemResponse>, Integer, Hash)> delete_sfvb_item_multimedia_with_http_info(storefront_oid, opts)
+
+```ruby
+begin
+  # Detach an image from an item
+  data, status_code, headers = api_instance.delete_sfvb_item_multimedia_with_http_info(storefront_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbItemResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->delete_sfvb_item_multimedia_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **merchant_item_id** | **String** |  | [optional] |
+| **merchant_item_oid** | **Integer** |  | [optional] |
+| **code** | **String** | The image code to detach | [optional] |
+| **default** | **Boolean** | Detach the default image instead of a coded one | [optional] |
+
+### Return type
+
+[**SfvbItemResponse**](SfvbItemResponse.md)
 
 ### Authorization
 
@@ -1153,6 +1216,61 @@ end
 ### Return type
 
 [**SfvbFileUploadUrlResponse**](SfvbFileUploadUrlResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_item
+
+> <SfvbItemResponse> get_sfvb_item(storefront_oid, opts)
+
+Read an item's storefront facing content
+
+The attributes, images, title, description and search metadata a StoreFront element can render, reconciled against the templates behind the pages this item sits on.  An attribute a template declares but nothing has set comes back present with an empty value, which is how you discover what the page is asking for.  Pricing, shipping, inventory, tax, variants and kit structure are not here because no element reads them; use the item API for those.  Address by merchant_item_id, the value data-context-item-id carries, or by merchant_item_oid. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_item_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbItemResponse>, Integer, Hash)> get_sfvb_item_with_http_info(storefront_oid, opts)
+
+```ruby
+begin
+  # Read an item's storefront facing content
+  data, status_code, headers = api_instance.get_sfvb_item_with_http_info(storefront_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbItemResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_item_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **merchant_item_id** | **String** | The merchant item id, as a storefront carries it | [optional] |
+| **merchant_item_oid** | **Integer** | The item oid.  Send this or merchant_item_id, not both | [optional] |
+
+### Return type
+
+[**SfvbItemResponse**](SfvbItemResponse.md)
 
 ### Authorization
 
@@ -2829,6 +2947,230 @@ end
 ### Return type
 
 [**SfvbFileWriteResponse**](SfvbFileWriteResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## put_sfvb_item_attributes
+
+> <SfvbItemResponse> put_sfvb_item_attributes(storefront_oid, item_attribute_update_request, opts)
+
+Change some of an item's attributes
+
+Partial - only the attributes named change, and an empty value clears one.  Every entry is validated before any is written, so a refusal leaves the item untouched.  The list types are checked against the shape their renderer actually parses, which matters more than it sounds: a definition list is a bare array with one letter keys, a video list is a wrapper object with keys spelled out, and an item set is comma separated text rather than JSON.  A shape the renderer cannot read is not reported at render time - it renders exactly like an attribute nobody ever set. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the put_sfvb_item_attributes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbItemResponse>, Integer, Hash)> put_sfvb_item_attributes_with_http_info(storefront_oid, item_attribute_update_request, opts)
+
+```ruby
+begin
+  # Change some of an item's attributes
+  data, status_code, headers = api_instance.put_sfvb_item_attributes_with_http_info(storefront_oid, item_attribute_update_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbItemResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->put_sfvb_item_attributes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **item_attribute_update_request** | [**SfvbItemAttributeUpdateRequest**](SfvbItemAttributeUpdateRequest.md) | Attributes to change |  |
+| **merchant_item_id** | **String** |  | [optional] |
+| **merchant_item_oid** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SfvbItemResponse**](SfvbItemResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## put_sfvb_item_content
+
+> <SfvbItemResponse> put_sfvb_item_content(storefront_oid, item_content_request, opts)
+
+Change an item's title or long description
+
+Partial - a field left out is untouched, a field sent empty is cleared, and those are different things.  These are what itemtitle and itemdescription render.  Writing the matching config keys into a container does nothing, because they are dialog buffers bound to the item and the render never reads them.  Both are the catalog's own fields, so a change here reaches the item everywhere, not only on this storefront. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the put_sfvb_item_content_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbItemResponse>, Integer, Hash)> put_sfvb_item_content_with_http_info(storefront_oid, item_content_request, opts)
+
+```ruby
+begin
+  # Change an item's title or long description
+  data, status_code, headers = api_instance.put_sfvb_item_content_with_http_info(storefront_oid, item_content_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbItemResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->put_sfvb_item_content_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **item_content_request** | [**SfvbItemContentRequest**](SfvbItemContentRequest.md) | Title and description to change |  |
+| **merchant_item_id** | **String** |  | [optional] |
+| **merchant_item_oid** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SfvbItemResponse**](SfvbItemResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## put_sfvb_item_multimedia
+
+> <SfvbItemResponse> put_sfvb_item_multimedia(storefront_oid, item_multimedia_request, opts)
+
+Attach an image to an item
+
+One slot at a time - the default image or one code - and every other image on the item is left alone.  That is the difference from the item API, where images are reachable only through a full item update whose multimedia array is reconciled destructively, so adding one means resending the rest or losing them.  Upload the file with files/upload first and name its storefront path here; unlike a page image it does not have to live in any particular folder, because the bytes are copied into the item's own storage on attach. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the put_sfvb_item_multimedia_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbItemResponse>, Integer, Hash)> put_sfvb_item_multimedia_with_http_info(storefront_oid, item_multimedia_request, opts)
+
+```ruby
+begin
+  # Attach an image to an item
+  data, status_code, headers = api_instance.put_sfvb_item_multimedia_with_http_info(storefront_oid, item_multimedia_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbItemResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->put_sfvb_item_multimedia_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **item_multimedia_request** | [**SfvbItemMultimediaRequest**](SfvbItemMultimediaRequest.md) | Image to attach |  |
+| **merchant_item_id** | **String** |  | [optional] |
+| **merchant_item_oid** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SfvbItemResponse**](SfvbItemResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## put_sfvb_item_seo
+
+> <SfvbItemResponse> put_sfvb_item_seo(storefront_oid, item_seo_request, opts)
+
+Change an item's search metadata
+
+Partial - a field left out is untouched, a field sent empty is cleared and the page falls back to what it fell back to before.  Underneath these are three item attributes with reserved names, so this and the attributes endpoint reach the same storage; it exists separately because the names are not discoverable from the templates.  Two things worth knowing.  A title set here changes the document title only - og:title and twitter:title render the item's description either way.  And there is no canonical or noindex field, because both are site wide switches rather than per item values. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the put_sfvb_item_seo_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbItemResponse>, Integer, Hash)> put_sfvb_item_seo_with_http_info(storefront_oid, item_seo_request, opts)
+
+```ruby
+begin
+  # Change an item's search metadata
+  data, status_code, headers = api_instance.put_sfvb_item_seo_with_http_info(storefront_oid, item_seo_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbItemResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->put_sfvb_item_seo_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **item_seo_request** | [**SfvbItemSeoRequest**](SfvbItemSeoRequest.md) | Search metadata to change |  |
+| **merchant_item_id** | **String** |  | [optional] |
+| **merchant_item_oid** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SfvbItemResponse**](SfvbItemResponse.md)
 
 ### Authorization
 

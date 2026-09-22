@@ -474,6 +474,82 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Detach an image from an item
+    # Removes the item's copy of the image in one slot.  The file you uploaded is left where it is, so the same source can be attached again or used elsewhere. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @option opts [String] :code The image code to detach
+    # @option opts [Boolean] :default Detach the default image instead of a coded one
+    # @return [SfvbItemResponse]
+    def delete_sfvb_item_multimedia(storefront_oid, opts = {})
+      data, _status_code, _headers = delete_sfvb_item_multimedia_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Detach an image from an item
+    # Removes the item&#39;s copy of the image in one slot.  The file you uploaded is left where it is, so the same source can be attached again or used elsewhere. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @option opts [String] :code The image code to detach
+    # @option opts [Boolean] :default Detach the default image instead of a coded one
+    # @return [Array<(SfvbItemResponse, Integer, Hash)>] SfvbItemResponse data, response status code and response headers
+    def delete_sfvb_item_multimedia_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.delete_sfvb_item_multimedia ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.delete_sfvb_item_multimedia"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/items/multimedia'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'merchant_item_id'] = opts[:'merchant_item_id'] if !opts[:'merchant_item_id'].nil?
+      query_params[:'merchant_item_oid'] = opts[:'merchant_item_oid'] if !opts[:'merchant_item_oid'].nil?
+      query_params[:'code'] = opts[:'code'] if !opts[:'code'].nil?
+      query_params[:'default'] = opts[:'default'] if !opts[:'default'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbItemResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.delete_sfvb_item_multimedia",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_item_multimedia\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Detach an image from a page
     # Name exactly one of code or default.  Removes the page's copy of the image; the source file in the page folder is left alone.  Always needs sfvb_publish. 
     # @param storefront_oid [Integer] 
@@ -1483,6 +1559,76 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_file_upload_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read an item's storefront facing content
+    # The attributes, images, title, description and search metadata a StoreFront element can render, reconciled against the templates behind the pages this item sits on.  An attribute a template declares but nothing has set comes back present with an empty value, which is how you discover what the page is asking for.  Pricing, shipping, inventory, tax, variants and kit structure are not here because no element reads them; use the item API for those.  Address by merchant_item_id, the value data-context-item-id carries, or by merchant_item_oid. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id The merchant item id, as a storefront carries it
+    # @option opts [Integer] :merchant_item_oid The item oid.  Send this or merchant_item_id, not both
+    # @return [SfvbItemResponse]
+    def get_sfvb_item(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_item_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Read an item&#39;s storefront facing content
+    # The attributes, images, title, description and search metadata a StoreFront element can render, reconciled against the templates behind the pages this item sits on.  An attribute a template declares but nothing has set comes back present with an empty value, which is how you discover what the page is asking for.  Pricing, shipping, inventory, tax, variants and kit structure are not here because no element reads them; use the item API for those.  Address by merchant_item_id, the value data-context-item-id carries, or by merchant_item_oid. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id The merchant item id, as a storefront carries it
+    # @option opts [Integer] :merchant_item_oid The item oid.  Send this or merchant_item_id, not both
+    # @return [Array<(SfvbItemResponse, Integer, Hash)>] SfvbItemResponse data, response status code and response headers
+    def get_sfvb_item_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_item ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_item"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/items'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'merchant_item_id'] = opts[:'merchant_item_id'] if !opts[:'merchant_item_id'].nil?
+      query_params[:'merchant_item_oid'] = opts[:'merchant_item_oid'] if !opts[:'merchant_item_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbItemResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_item",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -3663,6 +3809,330 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_file_content\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change some of an item's attributes
+    # Partial - only the attributes named change, and an empty value clears one.  Every entry is validated before any is written, so a refusal leaves the item untouched.  The list types are checked against the shape their renderer actually parses, which matters more than it sounds: a definition list is a bare array with one letter keys, a video list is a wrapper object with keys spelled out, and an item set is comma separated text rather than JSON.  A shape the renderer cannot read is not reported at render time - it renders exactly like an attribute nobody ever set. 
+    # @param storefront_oid [Integer] 
+    # @param item_attribute_update_request [SfvbItemAttributeUpdateRequest] Attributes to change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @return [SfvbItemResponse]
+    def put_sfvb_item_attributes(storefront_oid, item_attribute_update_request, opts = {})
+      data, _status_code, _headers = put_sfvb_item_attributes_with_http_info(storefront_oid, item_attribute_update_request, opts)
+      data
+    end
+
+    # Change some of an item&#39;s attributes
+    # Partial - only the attributes named change, and an empty value clears one.  Every entry is validated before any is written, so a refusal leaves the item untouched.  The list types are checked against the shape their renderer actually parses, which matters more than it sounds: a definition list is a bare array with one letter keys, a video list is a wrapper object with keys spelled out, and an item set is comma separated text rather than JSON.  A shape the renderer cannot read is not reported at render time - it renders exactly like an attribute nobody ever set. 
+    # @param storefront_oid [Integer] 
+    # @param item_attribute_update_request [SfvbItemAttributeUpdateRequest] Attributes to change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @return [Array<(SfvbItemResponse, Integer, Hash)>] SfvbItemResponse data, response status code and response headers
+    def put_sfvb_item_attributes_with_http_info(storefront_oid, item_attribute_update_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.put_sfvb_item_attributes ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.put_sfvb_item_attributes"
+      end
+      # verify the required parameter 'item_attribute_update_request' is set
+      if @api_client.config.client_side_validation && item_attribute_update_request.nil?
+        fail ArgumentError, "Missing the required parameter 'item_attribute_update_request' when calling SfvbApi.put_sfvb_item_attributes"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/items/attributes'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'merchant_item_id'] = opts[:'merchant_item_id'] if !opts[:'merchant_item_id'].nil?
+      query_params[:'merchant_item_oid'] = opts[:'merchant_item_oid'] if !opts[:'merchant_item_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(item_attribute_update_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbItemResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.put_sfvb_item_attributes",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_item_attributes\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change an item's title or long description
+    # Partial - a field left out is untouched, a field sent empty is cleared, and those are different things.  These are what itemtitle and itemdescription render.  Writing the matching config keys into a container does nothing, because they are dialog buffers bound to the item and the render never reads them.  Both are the catalog's own fields, so a change here reaches the item everywhere, not only on this storefront. 
+    # @param storefront_oid [Integer] 
+    # @param item_content_request [SfvbItemContentRequest] Title and description to change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @return [SfvbItemResponse]
+    def put_sfvb_item_content(storefront_oid, item_content_request, opts = {})
+      data, _status_code, _headers = put_sfvb_item_content_with_http_info(storefront_oid, item_content_request, opts)
+      data
+    end
+
+    # Change an item&#39;s title or long description
+    # Partial - a field left out is untouched, a field sent empty is cleared, and those are different things.  These are what itemtitle and itemdescription render.  Writing the matching config keys into a container does nothing, because they are dialog buffers bound to the item and the render never reads them.  Both are the catalog&#39;s own fields, so a change here reaches the item everywhere, not only on this storefront. 
+    # @param storefront_oid [Integer] 
+    # @param item_content_request [SfvbItemContentRequest] Title and description to change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @return [Array<(SfvbItemResponse, Integer, Hash)>] SfvbItemResponse data, response status code and response headers
+    def put_sfvb_item_content_with_http_info(storefront_oid, item_content_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.put_sfvb_item_content ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.put_sfvb_item_content"
+      end
+      # verify the required parameter 'item_content_request' is set
+      if @api_client.config.client_side_validation && item_content_request.nil?
+        fail ArgumentError, "Missing the required parameter 'item_content_request' when calling SfvbApi.put_sfvb_item_content"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/items/content'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'merchant_item_id'] = opts[:'merchant_item_id'] if !opts[:'merchant_item_id'].nil?
+      query_params[:'merchant_item_oid'] = opts[:'merchant_item_oid'] if !opts[:'merchant_item_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(item_content_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbItemResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.put_sfvb_item_content",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_item_content\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Attach an image to an item
+    # One slot at a time - the default image or one code - and every other image on the item is left alone.  That is the difference from the item API, where images are reachable only through a full item update whose multimedia array is reconciled destructively, so adding one means resending the rest or losing them.  Upload the file with files/upload first and name its storefront path here; unlike a page image it does not have to live in any particular folder, because the bytes are copied into the item's own storage on attach. 
+    # @param storefront_oid [Integer] 
+    # @param item_multimedia_request [SfvbItemMultimediaRequest] Image to attach
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @return [SfvbItemResponse]
+    def put_sfvb_item_multimedia(storefront_oid, item_multimedia_request, opts = {})
+      data, _status_code, _headers = put_sfvb_item_multimedia_with_http_info(storefront_oid, item_multimedia_request, opts)
+      data
+    end
+
+    # Attach an image to an item
+    # One slot at a time - the default image or one code - and every other image on the item is left alone.  That is the difference from the item API, where images are reachable only through a full item update whose multimedia array is reconciled destructively, so adding one means resending the rest or losing them.  Upload the file with files/upload first and name its storefront path here; unlike a page image it does not have to live in any particular folder, because the bytes are copied into the item&#39;s own storage on attach. 
+    # @param storefront_oid [Integer] 
+    # @param item_multimedia_request [SfvbItemMultimediaRequest] Image to attach
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @return [Array<(SfvbItemResponse, Integer, Hash)>] SfvbItemResponse data, response status code and response headers
+    def put_sfvb_item_multimedia_with_http_info(storefront_oid, item_multimedia_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.put_sfvb_item_multimedia ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.put_sfvb_item_multimedia"
+      end
+      # verify the required parameter 'item_multimedia_request' is set
+      if @api_client.config.client_side_validation && item_multimedia_request.nil?
+        fail ArgumentError, "Missing the required parameter 'item_multimedia_request' when calling SfvbApi.put_sfvb_item_multimedia"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/items/multimedia'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'merchant_item_id'] = opts[:'merchant_item_id'] if !opts[:'merchant_item_id'].nil?
+      query_params[:'merchant_item_oid'] = opts[:'merchant_item_oid'] if !opts[:'merchant_item_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(item_multimedia_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbItemResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.put_sfvb_item_multimedia",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_item_multimedia\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change an item's search metadata
+    # Partial - a field left out is untouched, a field sent empty is cleared and the page falls back to what it fell back to before.  Underneath these are three item attributes with reserved names, so this and the attributes endpoint reach the same storage; it exists separately because the names are not discoverable from the templates.  Two things worth knowing.  A title set here changes the document title only - og:title and twitter:title render the item's description either way.  And there is no canonical or noindex field, because both are site wide switches rather than per item values. 
+    # @param storefront_oid [Integer] 
+    # @param item_seo_request [SfvbItemSeoRequest] Search metadata to change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @return [SfvbItemResponse]
+    def put_sfvb_item_seo(storefront_oid, item_seo_request, opts = {})
+      data, _status_code, _headers = put_sfvb_item_seo_with_http_info(storefront_oid, item_seo_request, opts)
+      data
+    end
+
+    # Change an item&#39;s search metadata
+    # Partial - a field left out is untouched, a field sent empty is cleared and the page falls back to what it fell back to before.  Underneath these are three item attributes with reserved names, so this and the attributes endpoint reach the same storage; it exists separately because the names are not discoverable from the templates.  Two things worth knowing.  A title set here changes the document title only - og:title and twitter:title render the item&#39;s description either way.  And there is no canonical or noindex field, because both are site wide switches rather than per item values. 
+    # @param storefront_oid [Integer] 
+    # @param item_seo_request [SfvbItemSeoRequest] Search metadata to change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @return [Array<(SfvbItemResponse, Integer, Hash)>] SfvbItemResponse data, response status code and response headers
+    def put_sfvb_item_seo_with_http_info(storefront_oid, item_seo_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.put_sfvb_item_seo ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.put_sfvb_item_seo"
+      end
+      # verify the required parameter 'item_seo_request' is set
+      if @api_client.config.client_side_validation && item_seo_request.nil?
+        fail ArgumentError, "Missing the required parameter 'item_seo_request' when calling SfvbApi.put_sfvb_item_seo"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/items/seo'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'merchant_item_id'] = opts[:'merchant_item_id'] if !opts[:'merchant_item_id'].nil?
+      query_params[:'merchant_item_oid'] = opts[:'merchant_item_oid'] if !opts[:'merchant_item_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(item_seo_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbItemResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.put_sfvb_item_seo",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_item_seo\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

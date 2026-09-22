@@ -1,0 +1,20 @@
+# UltracartClient::SfvbItemContentRequest
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **description** | **String** | What an itemdescription element renders, the item&#39;s extended description.  HTML is accepted; the element&#39;s excerpt settings only decide how much of it is shown. | [optional] |
+| **title** | **String** | What an itemtitle element renders.  This is the item&#39;s short description in the catalog, so it changes the item everywhere, not only on this storefront. | [optional] |
+
+## Example
+
+```ruby
+require 'ultracart_api'
+
+instance = UltracartClient::SfvbItemContentRequest.new(
+  description: null,
+  title: null
+)
+```
+
