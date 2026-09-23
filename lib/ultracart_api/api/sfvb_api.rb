@@ -196,6 +196,76 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Archive an upsell path
+    # Files the path out of the default list.  An archived path does not run.  Archiving one that is switched on is a live change and needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_path_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbUpsellPath]
+    def archive_sfvb_upsell_path(storefront_oid, upsell_path_oid, opts = {})
+      data, _status_code, _headers = archive_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, opts)
+      data
+    end
+
+    # Archive an upsell path
+    # Files the path out of the default list.  An archived path does not run.  Archiving one that is switched on is a live change and needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_path_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbUpsellPath, Integer, Hash)>] SfvbUpsellPath data, response status code and response headers
+    def archive_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.archive_sfvb_upsell_path ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.archive_sfvb_upsell_path"
+      end
+      # verify the required parameter 'upsell_path_oid' is set
+      if @api_client.config.client_side_validation && upsell_path_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'upsell_path_oid' when calling SfvbApi.archive_sfvb_upsell_path"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/archive'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'upsell_path_oid' + '}', CGI.escape(upsell_path_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUpsellPath'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.archive_sfvb_upsell_path",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#archive_sfvb_upsell_path\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Compile CJSON to Velocity
     # Compiles a container document to Velocity without storing anything.  Supply theme_oid to compile with the theme's inherit groups applied; omit it to compile standalone. 
     # @param compile_request [SfvbCompileRequest] CJSON to compile
@@ -474,6 +544,83 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Delete an attribute from an item
+    # Removes one attribute that no template on the item's pages declares - a test name, a misspelling, one a retired template used.  A declared attribute is refused, because the template would list it again, empty; send an empty value through the attributes update to clear one of those instead. 
+    # @param storefront_oid [Integer] 
+    # @param name [String] The attribute name, matched without regard to case
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @return [SfvbItemResponse]
+    def delete_sfvb_item_attribute(storefront_oid, name, opts = {})
+      data, _status_code, _headers = delete_sfvb_item_attribute_with_http_info(storefront_oid, name, opts)
+      data
+    end
+
+    # Delete an attribute from an item
+    # Removes one attribute that no template on the item&#39;s pages declares - a test name, a misspelling, one a retired template used.  A declared attribute is refused, because the template would list it again, empty; send an empty value through the attributes update to clear one of those instead. 
+    # @param storefront_oid [Integer] 
+    # @param name [String] The attribute name, matched without regard to case
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @return [Array<(SfvbItemResponse, Integer, Hash)>] SfvbItemResponse data, response status code and response headers
+    def delete_sfvb_item_attribute_with_http_info(storefront_oid, name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.delete_sfvb_item_attribute ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.delete_sfvb_item_attribute"
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling SfvbApi.delete_sfvb_item_attribute"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/items/attributes'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'name'] = name
+      query_params[:'merchant_item_id'] = opts[:'merchant_item_id'] if !opts[:'merchant_item_id'].nil?
+      query_params[:'merchant_item_oid'] = opts[:'merchant_item_oid'] if !opts[:'merchant_item_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbItemResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.delete_sfvb_item_attribute",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_item_attribute\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Detach an image from an item
     # Removes the item's copy of the image in one slot.  The file you uploaded is left where it is, so the same source can be attached again or used elsewhere. 
     # @param storefront_oid [Integer] 
@@ -697,6 +844,146 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Disable an upsell offer
+    # Switches the offer off.  Disabling one that is switched on is a live change and needs sfvb_publish.  An offer that is already off is returned unchanged.  There is no delete. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_offer_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbUpsellOffer]
+    def disable_sfvb_upsell_offer(storefront_oid, upsell_offer_oid, opts = {})
+      data, _status_code, _headers = disable_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid, opts)
+      data
+    end
+
+    # Disable an upsell offer
+    # Switches the offer off.  Disabling one that is switched on is a live change and needs sfvb_publish.  An offer that is already off is returned unchanged.  There is no delete. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_offer_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbUpsellOffer, Integer, Hash)>] SfvbUpsellOffer data, response status code and response headers
+    def disable_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.disable_sfvb_upsell_offer ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.disable_sfvb_upsell_offer"
+      end
+      # verify the required parameter 'upsell_offer_oid' is set
+      if @api_client.config.client_side_validation && upsell_offer_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'upsell_offer_oid' when calling SfvbApi.disable_sfvb_upsell_offer"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/disable'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'upsell_offer_oid' + '}', CGI.escape(upsell_offer_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUpsellOffer'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.disable_sfvb_upsell_offer",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#disable_sfvb_upsell_offer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Disable an upsell path
+    # Switches the path off.  Disabling a running path is a live change and needs sfvb_publish.  A path that is already off is returned unchanged.  There is no delete. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_path_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbUpsellPath]
+    def disable_sfvb_upsell_path(storefront_oid, upsell_path_oid, opts = {})
+      data, _status_code, _headers = disable_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, opts)
+      data
+    end
+
+    # Disable an upsell path
+    # Switches the path off.  Disabling a running path is a live change and needs sfvb_publish.  A path that is already off is returned unchanged.  There is no delete. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_path_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbUpsellPath, Integer, Hash)>] SfvbUpsellPath data, response status code and response headers
+    def disable_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.disable_sfvb_upsell_path ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.disable_sfvb_upsell_path"
+      end
+      # verify the required parameter 'upsell_path_oid' is set
+      if @api_client.config.client_side_validation && upsell_path_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'upsell_path_oid' when calling SfvbApi.disable_sfvb_upsell_path"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/disable'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'upsell_path_oid' + '}', CGI.escape(upsell_path_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUpsellPath'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.disable_sfvb_upsell_path",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#disable_sfvb_upsell_path\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read a storefront file's raw bytes
     # Returns the file itself rather than a JSON envelope, for any type including binaries that files/content refuses.  Use this to verify what you uploaded, and note it is the only way to read a file inside a theme that is not active - such a file is served to nobody until the theme is promoted, so it has no public URL to fetch instead.  On success the body is the file; on failure it is the usual JSON error object, so do not assume the content type without checking the status. 
     # @param storefront_oid [Integer] 
@@ -916,6 +1203,153 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#duplicate_sfvb_theme\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Duplicate an upsell offer
+    # A copy named Copy of, switched off, with its own copy of the container.  Put it on a path with a path update to have it shown. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_offer_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbUpsellOffer]
+    def duplicate_sfvb_upsell_offer(storefront_oid, upsell_offer_oid, opts = {})
+      data, _status_code, _headers = duplicate_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid, opts)
+      data
+    end
+
+    # Duplicate an upsell offer
+    # A copy named Copy of, switched off, with its own copy of the container.  Put it on a path with a path update to have it shown. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_offer_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbUpsellOffer, Integer, Hash)>] SfvbUpsellOffer data, response status code and response headers
+    def duplicate_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.duplicate_sfvb_upsell_offer ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.duplicate_sfvb_upsell_offer"
+      end
+      # verify the required parameter 'upsell_offer_oid' is set
+      if @api_client.config.client_side_validation && upsell_offer_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'upsell_offer_oid' when calling SfvbApi.duplicate_sfvb_upsell_offer"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/duplicate'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'upsell_offer_oid' + '}', CGI.escape(upsell_offer_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUpsellOffer'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.duplicate_sfvb_upsell_offer",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#duplicate_sfvb_upsell_offer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Duplicate an upsell path or one of its variations
+    # Without a variation, copies the whole path right after it, switched off.  With a variation, appends a copy of that variation to the same path, which needs sfvb_publish when the path is running.  Every offer the copy uses is copied too and switched off.  Within this storefront only. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_path_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [SfvbUpsellPathDuplicateRequest] :duplicate_request What to duplicate
+    # @return [SfvbUpsellPath]
+    def duplicate_sfvb_upsell_path(storefront_oid, upsell_path_oid, opts = {})
+      data, _status_code, _headers = duplicate_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, opts)
+      data
+    end
+
+    # Duplicate an upsell path or one of its variations
+    # Without a variation, copies the whole path right after it, switched off.  With a variation, appends a copy of that variation to the same path, which needs sfvb_publish when the path is running.  Every offer the copy uses is copied too and switched off.  Within this storefront only. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_path_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [SfvbUpsellPathDuplicateRequest] :duplicate_request What to duplicate
+    # @return [Array<(SfvbUpsellPath, Integer, Hash)>] SfvbUpsellPath data, response status code and response headers
+    def duplicate_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.duplicate_sfvb_upsell_path ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.duplicate_sfvb_upsell_path"
+      end
+      # verify the required parameter 'upsell_path_oid' is set
+      if @api_client.config.client_side_validation && upsell_path_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'upsell_path_oid' when calling SfvbApi.duplicate_sfvb_upsell_path"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/duplicate'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'upsell_path_oid' + '}', CGI.escape(upsell_path_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'duplicate_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUpsellPath'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.duplicate_sfvb_upsell_path",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#duplicate_sfvb_upsell_path\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2466,6 +2900,170 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get an upsell offer
+    # The whole offer, with the hash an update sends back in If-Match, which upsell items are out of stock now, and whether loyalty, TowerData and Everflow are set up.  Stats as on the path list. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_offer_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :stats Include stats
+    # @option opts [String] :stats_start Stats window start, YYYY-MM-DD
+    # @option opts [String] :stats_end Stats window end, YYYY-MM-DD
+    # @option opts [String] :stats_weekdays Only these weekdays, comma separated mon to sun
+    # @return [SfvbUpsellOffer]
+    def get_sfvb_upsell_offer(storefront_oid, upsell_offer_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid, opts)
+      data
+    end
+
+    # Get an upsell offer
+    # The whole offer, with the hash an update sends back in If-Match, which upsell items are out of stock now, and whether loyalty, TowerData and Everflow are set up.  Stats as on the path list. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_offer_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :stats Include stats
+    # @option opts [String] :stats_start Stats window start, YYYY-MM-DD
+    # @option opts [String] :stats_end Stats window end, YYYY-MM-DD
+    # @option opts [String] :stats_weekdays Only these weekdays, comma separated mon to sun
+    # @return [Array<(SfvbUpsellOffer, Integer, Hash)>] SfvbUpsellOffer data, response status code and response headers
+    def get_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_upsell_offer ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_upsell_offer"
+      end
+      # verify the required parameter 'upsell_offer_oid' is set
+      if @api_client.config.client_side_validation && upsell_offer_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'upsell_offer_oid' when calling SfvbApi.get_sfvb_upsell_offer"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'upsell_offer_oid' + '}', CGI.escape(upsell_offer_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'stats'] = opts[:'stats'] if !opts[:'stats'].nil?
+      query_params[:'stats_start'] = opts[:'stats_start'] if !opts[:'stats_start'].nil?
+      query_params[:'stats_end'] = opts[:'stats_end'] if !opts[:'stats_end'].nil?
+      query_params[:'stats_weekdays'] = opts[:'stats_weekdays'] if !opts[:'stats_weekdays'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUpsellOffer'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_upsell_offer",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_upsell_offer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get an upsell path
+    # The whole path, with the hash an update sends back in If-Match.  Stats as on the list. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_path_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :stats Include stats
+    # @option opts [String] :stats_start Stats window start, YYYY-MM-DD
+    # @option opts [String] :stats_end Stats window end, YYYY-MM-DD
+    # @option opts [String] :stats_weekdays Only these weekdays, comma separated mon to sun
+    # @return [SfvbUpsellPath]
+    def get_sfvb_upsell_path(storefront_oid, upsell_path_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, opts)
+      data
+    end
+
+    # Get an upsell path
+    # The whole path, with the hash an update sends back in If-Match.  Stats as on the list. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_path_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :stats Include stats
+    # @option opts [String] :stats_start Stats window start, YYYY-MM-DD
+    # @option opts [String] :stats_end Stats window end, YYYY-MM-DD
+    # @option opts [String] :stats_weekdays Only these weekdays, comma separated mon to sun
+    # @return [Array<(SfvbUpsellPath, Integer, Hash)>] SfvbUpsellPath data, response status code and response headers
+    def get_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_upsell_path ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_upsell_path"
+      end
+      # verify the required parameter 'upsell_path_oid' is set
+      if @api_client.config.client_side_validation && upsell_path_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'upsell_path_oid' when calling SfvbApi.get_sfvb_upsell_path"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'upsell_path_oid' + '}', CGI.escape(upsell_path_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'stats'] = opts[:'stats'] if !opts[:'stats'].nil?
+      query_params[:'stats_start'] = opts[:'stats_start'] if !opts[:'stats_start'].nil?
+      query_params[:'stats_end'] = opts[:'stats_end'] if !opts[:'stats_end'].nil?
+      query_params[:'stats_weekdays'] = opts[:'stats_weekdays'] if !opts[:'stats_weekdays'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUpsellPath'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_upsell_path",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_upsell_path\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Compiler version for this merchant
     # The visual builder release channel is per merchant, so a CLI holding cached schema or element data should compare against this to know when it has gone stale. 
     # @param [Hash] opts the optional parameters
@@ -2653,6 +3251,156 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_page\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create an upsell offer
+    # Every item it names must exist, and every shipping method, payment method and loyalty tier must be one the merchant has.  Put it on a path with a path update to have it shown.  Creating it switched on, or with upsell_item_id_javascript or offsite_content_url, needs sfvb_publish.  Its page content is its container, written with the container endpoints and owner type upsell. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_offer [SfvbUpsellOffer] The offer to create
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbUpsellOffer]
+    def insert_sfvb_upsell_offer(storefront_oid, upsell_offer, opts = {})
+      data, _status_code, _headers = insert_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer, opts)
+      data
+    end
+
+    # Create an upsell offer
+    # Every item it names must exist, and every shipping method, payment method and loyalty tier must be one the merchant has.  Put it on a path with a path update to have it shown.  Creating it switched on, or with upsell_item_id_javascript or offsite_content_url, needs sfvb_publish.  Its page content is its container, written with the container endpoints and owner type upsell. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_offer [SfvbUpsellOffer] The offer to create
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbUpsellOffer, Integer, Hash)>] SfvbUpsellOffer data, response status code and response headers
+    def insert_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.insert_sfvb_upsell_offer ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.insert_sfvb_upsell_offer"
+      end
+      # verify the required parameter 'upsell_offer' is set
+      if @api_client.config.client_side_validation && upsell_offer.nil?
+        fail ArgumentError, "Missing the required parameter 'upsell_offer' when calling SfvbApi.insert_sfvb_upsell_offer"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/upsell_offers'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(upsell_offer)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUpsellOffer'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.insert_sfvb_upsell_offer",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_upsell_offer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create an upsell path
+    # Placed last in path order.  Every offer a step names must be an offer of this storefront, and every item in the item logic must exist.  Creating it switched on needs sfvb_publish; create it with active false to build it without that scope. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_path [SfvbUpsellPath] The path to create
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbUpsellPath]
+    def insert_sfvb_upsell_path(storefront_oid, upsell_path, opts = {})
+      data, _status_code, _headers = insert_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path, opts)
+      data
+    end
+
+    # Create an upsell path
+    # Placed last in path order.  Every offer a step names must be an offer of this storefront, and every item in the item logic must exist.  Creating it switched on needs sfvb_publish; create it with active false to build it without that scope. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_path [SfvbUpsellPath] The path to create
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbUpsellPath, Integer, Hash)>] SfvbUpsellPath data, response status code and response headers
+    def insert_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.insert_sfvb_upsell_path ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.insert_sfvb_upsell_path"
+      end
+      # verify the required parameter 'upsell_path' is set
+      if @api_client.config.client_side_validation && upsell_path.nil?
+        fail ArgumentError, "Missing the required parameter 'upsell_path' when calling SfvbApi.insert_sfvb_upsell_path"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/upsell_paths'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(upsell_path)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUpsellPath'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.insert_sfvb_upsell_path",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_upsell_path\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -3481,9 +4229,13 @@ module UltracartClient
     end
 
     # List upsell offers
-    # Without container JSON, so the funnel can be surveyed cheaply.  A large container size alongside a small element count is the signature of markup pasted into a single html element. 
+    # Every offer on one of this storefront's paths that are not archived, the same list the admin shows, with each offer's full settings but not its container JSON.  An offer on no path yet is still read by oid.  A large container size alongside a small element count is the signature of markup pasted into a single html element.  Stats as on the path list. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :stats Include stats
+    # @option opts [String] :stats_start Stats window start, YYYY-MM-DD
+    # @option opts [String] :stats_end Stats window end, YYYY-MM-DD
+    # @option opts [String] :stats_weekdays Only these weekdays, comma separated mon to sun
     # @return [SfvbUpsellOffersResponse]
     def list_sfvb_upsell_offers(storefront_oid, opts = {})
       data, _status_code, _headers = list_sfvb_upsell_offers_with_http_info(storefront_oid, opts)
@@ -3491,9 +4243,13 @@ module UltracartClient
     end
 
     # List upsell offers
-    # Without container JSON, so the funnel can be surveyed cheaply.  A large container size alongside a small element count is the signature of markup pasted into a single html element. 
+    # Every offer on one of this storefront&#39;s paths that are not archived, the same list the admin shows, with each offer&#39;s full settings but not its container JSON.  An offer on no path yet is still read by oid.  A large container size alongside a small element count is the signature of markup pasted into a single html element.  Stats as on the path list. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :stats Include stats
+    # @option opts [String] :stats_start Stats window start, YYYY-MM-DD
+    # @option opts [String] :stats_end Stats window end, YYYY-MM-DD
+    # @option opts [String] :stats_weekdays Only these weekdays, comma separated mon to sun
     # @return [Array<(SfvbUpsellOffersResponse, Integer, Hash)>] SfvbUpsellOffersResponse data, response status code and response headers
     def list_sfvb_upsell_offers_with_http_info(storefront_oid, opts = {})
       if @api_client.config.debugging
@@ -3508,6 +4264,10 @@ module UltracartClient
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'stats'] = opts[:'stats'] if !opts[:'stats'].nil?
+      query_params[:'stats_start'] = opts[:'stats_start'] if !opts[:'stats_start'].nil?
+      query_params[:'stats_end'] = opts[:'stats_end'] if !opts[:'stats_end'].nil?
+      query_params[:'stats_weekdays'] = opts[:'stats_weekdays'] if !opts[:'stats_weekdays'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -3540,6 +4300,178 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_upsell_offers\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List upsell paths
+    # In path order, first to last.  status current (the default) leaves out archived paths.  Stats are computed only with stats=true, over stats_start to stats_end (YYYY-MM-DD, the last 30 days when both are omitted, at most 366 days), because they are the expensive part of the read. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :status current, archived or all
+    # @option opts [String] :location pre checkout or post checkout
+    # @option opts [String] :search Only paths whose name contains this
+    # @option opts [Boolean] :stats Include stats
+    # @option opts [String] :stats_start Stats window start, YYYY-MM-DD
+    # @option opts [String] :stats_end Stats window end, YYYY-MM-DD
+    # @option opts [String] :stats_weekdays Only these weekdays, comma separated mon to sun
+    # @option opts [Integer] :max_results Page size, 1 to 500, default 100
+    # @option opts [Integer] :offset Offset of the first path returned
+    # @return [SfvbUpsellPathsResponse]
+    def list_sfvb_upsell_paths(storefront_oid, opts = {})
+      data, _status_code, _headers = list_sfvb_upsell_paths_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List upsell paths
+    # In path order, first to last.  status current (the default) leaves out archived paths.  Stats are computed only with stats&#x3D;true, over stats_start to stats_end (YYYY-MM-DD, the last 30 days when both are omitted, at most 366 days), because they are the expensive part of the read. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :status current, archived or all
+    # @option opts [String] :location pre checkout or post checkout
+    # @option opts [String] :search Only paths whose name contains this
+    # @option opts [Boolean] :stats Include stats
+    # @option opts [String] :stats_start Stats window start, YYYY-MM-DD
+    # @option opts [String] :stats_end Stats window end, YYYY-MM-DD
+    # @option opts [String] :stats_weekdays Only these weekdays, comma separated mon to sun
+    # @option opts [Integer] :max_results Page size, 1 to 500, default 100
+    # @option opts [Integer] :offset Offset of the first path returned
+    # @return [Array<(SfvbUpsellPathsResponse, Integer, Hash)>] SfvbUpsellPathsResponse data, response status code and response headers
+    def list_sfvb_upsell_paths_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.list_sfvb_upsell_paths ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.list_sfvb_upsell_paths"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/upsell_paths'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'status'] = opts[:'status'] if !opts[:'status'].nil?
+      query_params[:'location'] = opts[:'location'] if !opts[:'location'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'stats'] = opts[:'stats'] if !opts[:'stats'].nil?
+      query_params[:'stats_start'] = opts[:'stats_start'] if !opts[:'stats_start'].nil?
+      query_params[:'stats_end'] = opts[:'stats_end'] if !opts[:'stats_end'].nil?
+      query_params[:'stats_weekdays'] = opts[:'stats_weekdays'] if !opts[:'stats_weekdays'].nil?
+      query_params[:'max_results'] = opts[:'max_results'] if !opts[:'max_results'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUpsellPathsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.list_sfvb_upsell_paths",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_upsell_paths\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Move an upsell path
+    # Up, down, to the top or to the bottom of the storefront's paths.  Order decides which running path a shopper meets first, so moving a running path needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_path_oid [Integer] 
+    # @param move_request [SfvbUpsellPathMoveRequest] Where to move it
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbUpsellPath]
+    def move_sfvb_upsell_path(storefront_oid, upsell_path_oid, move_request, opts = {})
+      data, _status_code, _headers = move_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, move_request, opts)
+      data
+    end
+
+    # Move an upsell path
+    # Up, down, to the top or to the bottom of the storefront&#39;s paths.  Order decides which running path a shopper meets first, so moving a running path needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_path_oid [Integer] 
+    # @param move_request [SfvbUpsellPathMoveRequest] Where to move it
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbUpsellPath, Integer, Hash)>] SfvbUpsellPath data, response status code and response headers
+    def move_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, move_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.move_sfvb_upsell_path ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.move_sfvb_upsell_path"
+      end
+      # verify the required parameter 'upsell_path_oid' is set
+      if @api_client.config.client_side_validation && upsell_path_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'upsell_path_oid' when calling SfvbApi.move_sfvb_upsell_path"
+      end
+      # verify the required parameter 'move_request' is set
+      if @api_client.config.client_side_validation && move_request.nil?
+        fail ArgumentError, "Missing the required parameter 'move_request' when calling SfvbApi.move_sfvb_upsell_path"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/move'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'upsell_path_oid' + '}', CGI.escape(upsell_path_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(move_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUpsellPath'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.move_sfvb_upsell_path",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#move_sfvb_upsell_path\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -3814,7 +4746,7 @@ module UltracartClient
     end
 
     # Change some of an item's attributes
-    # Partial - only the attributes named change, and an empty value clears one.  Every entry is validated before any is written, so a refusal leaves the item untouched.  The list types are checked against the shape their renderer actually parses, which matters more than it sounds: a definition list is a bare array with one letter keys, a video list is a wrapper object with keys spelled out, and an item set is comma separated text rather than JSON.  A shape the renderer cannot read is not reported at render time - it renders exactly like an attribute nobody ever set. 
+    # Partial - only the attributes named change, and an empty value empties one but keeps it on the item.  To remove an attribute no template declares, use the attribute DELETE.  Every entry is validated before any is written, so a refusal leaves the item untouched.  The list types are checked against the shape their renderer actually parses, which matters more than it sounds: a definition list is a bare array with one letter keys, a video list is a wrapper object with keys spelled out, and an item set is comma separated text rather than JSON.  A shape the renderer cannot read is not reported at render time - it renders exactly like an attribute nobody ever set. 
     # @param storefront_oid [Integer] 
     # @param item_attribute_update_request [SfvbItemAttributeUpdateRequest] Attributes to change
     # @param [Hash] opts the optional parameters
@@ -3827,7 +4759,7 @@ module UltracartClient
     end
 
     # Change some of an item&#39;s attributes
-    # Partial - only the attributes named change, and an empty value clears one.  Every entry is validated before any is written, so a refusal leaves the item untouched.  The list types are checked against the shape their renderer actually parses, which matters more than it sounds: a definition list is a bare array with one letter keys, a video list is a wrapper object with keys spelled out, and an item set is comma separated text rather than JSON.  A shape the renderer cannot read is not reported at render time - it renders exactly like an attribute nobody ever set. 
+    # Partial - only the attributes named change, and an empty value empties one but keeps it on the item.  To remove an attribute no template declares, use the attribute DELETE.  Every entry is validated before any is written, so a refusal leaves the item untouched.  The list types are checked against the shape their renderer actually parses, which matters more than it sounds: a definition list is a bare array with one letter keys, a video list is a wrapper object with keys spelled out, and an item set is comma separated text rather than JSON.  A shape the renderer cannot read is not reported at render time - it renders exactly like an attribute nobody ever set. 
     # @param storefront_oid [Integer] 
     # @param item_attribute_update_request [SfvbItemAttributeUpdateRequest] Attributes to change
     # @param [Hash] opts the optional parameters
@@ -5502,6 +6434,252 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#start_sfvb_experiment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Unarchive an upsell path
+    # Brings the path back into the default list.  Unarchiving one that is switched on starts it, so that needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_path_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbUpsellPath]
+    def unarchive_sfvb_upsell_path(storefront_oid, upsell_path_oid, opts = {})
+      data, _status_code, _headers = unarchive_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, opts)
+      data
+    end
+
+    # Unarchive an upsell path
+    # Brings the path back into the default list.  Unarchiving one that is switched on starts it, so that needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_path_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbUpsellPath, Integer, Hash)>] SfvbUpsellPath data, response status code and response headers
+    def unarchive_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.unarchive_sfvb_upsell_path ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.unarchive_sfvb_upsell_path"
+      end
+      # verify the required parameter 'upsell_path_oid' is set
+      if @api_client.config.client_side_validation && upsell_path_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'upsell_path_oid' when calling SfvbApi.unarchive_sfvb_upsell_path"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/unarchive'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'upsell_path_oid' + '}', CGI.escape(upsell_path_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUpsellPath'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.unarchive_sfvb_upsell_path",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#unarchive_sfvb_upsell_path\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update an upsell offer
+    # A full replace.  Send back the whole offer you read, changed, with its hash_sha256 in If-Match.  Read only fields are ignored and a writable field left out is cleared.  Changing an offer that is switched on, switching one on, or changing upsell_item_id_javascript or offsite_content_url needs sfvb_publish.  Settings the API does not show, such as the offer's screenshots, are kept. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_offer_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param upsell_offer [SfvbUpsellOffer] The whole offer
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbUpsellOffer]
+    def update_sfvb_upsell_offer(storefront_oid, upsell_offer_oid, if_match, upsell_offer, opts = {})
+      data, _status_code, _headers = update_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid, if_match, upsell_offer, opts)
+      data
+    end
+
+    # Update an upsell offer
+    # A full replace.  Send back the whole offer you read, changed, with its hash_sha256 in If-Match.  Read only fields are ignored and a writable field left out is cleared.  Changing an offer that is switched on, switching one on, or changing upsell_item_id_javascript or offsite_content_url needs sfvb_publish.  Settings the API does not show, such as the offer&#39;s screenshots, are kept. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_offer_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param upsell_offer [SfvbUpsellOffer] The whole offer
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbUpsellOffer, Integer, Hash)>] SfvbUpsellOffer data, response status code and response headers
+    def update_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid, if_match, upsell_offer, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_upsell_offer ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_upsell_offer"
+      end
+      # verify the required parameter 'upsell_offer_oid' is set
+      if @api_client.config.client_side_validation && upsell_offer_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'upsell_offer_oid' when calling SfvbApi.update_sfvb_upsell_offer"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.update_sfvb_upsell_offer"
+      end
+      # verify the required parameter 'upsell_offer' is set
+      if @api_client.config.client_side_validation && upsell_offer.nil?
+        fail ArgumentError, "Missing the required parameter 'upsell_offer' when calling SfvbApi.update_sfvb_upsell_offer"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'upsell_offer_oid' + '}', CGI.escape(upsell_offer_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(upsell_offer)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUpsellOffer'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_upsell_offer",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_upsell_offer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update an upsell path
+    # A full replace.  Send back the whole path you read, changed, with its hash_sha256 in If-Match.  Read only fields are ignored and a writable field left out is cleared.  Order and archived keep their stored values; change them with the move, archive and unarchive calls.  Changing a running path, or switching one on, needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_path_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param upsell_path [SfvbUpsellPath] The whole path
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbUpsellPath]
+    def update_sfvb_upsell_path(storefront_oid, upsell_path_oid, if_match, upsell_path, opts = {})
+      data, _status_code, _headers = update_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, if_match, upsell_path, opts)
+      data
+    end
+
+    # Update an upsell path
+    # A full replace.  Send back the whole path you read, changed, with its hash_sha256 in If-Match.  Read only fields are ignored and a writable field left out is cleared.  Order and archived keep their stored values; change them with the move, archive and unarchive calls.  Changing a running path, or switching one on, needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param upsell_path_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param upsell_path [SfvbUpsellPath] The whole path
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbUpsellPath, Integer, Hash)>] SfvbUpsellPath data, response status code and response headers
+    def update_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, if_match, upsell_path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_upsell_path ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_upsell_path"
+      end
+      # verify the required parameter 'upsell_path_oid' is set
+      if @api_client.config.client_side_validation && upsell_path_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'upsell_path_oid' when calling SfvbApi.update_sfvb_upsell_path"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.update_sfvb_upsell_path"
+      end
+      # verify the required parameter 'upsell_path' is set
+      if @api_client.config.client_side_validation && upsell_path.nil?
+        fail ArgumentError, "Missing the required parameter 'upsell_path' when calling SfvbApi.update_sfvb_upsell_path"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'upsell_path_oid' + '}', CGI.escape(upsell_path_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(upsell_path)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUpsellPath'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_upsell_path",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_upsell_path\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

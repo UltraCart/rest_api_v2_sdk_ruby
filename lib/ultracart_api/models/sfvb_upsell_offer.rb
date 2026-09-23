@@ -15,31 +15,193 @@ require 'time'
 
 module UltracartClient
   class SfvbUpsellOffer
-    # Whether the offer is switched on.
+    # Whether the offer is switched on.  Setting it true, or changing an offer that is active overall, needs the sfvb_publish scope.
     attr_accessor :active
 
-    # Whether the offer is active once its date window and daily pricing are taken into account.  This is the one that says whether shoppers are actually seeing it.
+    # Read only.  Whether the offer is active once its date window and daily pricing are taken into account.  This is the one that says whether shoppers are actually seeing it.
     attr_accessor :active_overall
 
-    # Size of the offer's container JSON in bytes.  A large value here alongside a low element count is the signature of a hand pasted HTML dump.
+    # Accessory items added when the offer is accepted.
+    attr_accessor :add_accessory_item_ids
+
+    # Option on the trigger item to adjust when the offer is accepted.  Omitted or null for none.
+    attr_accessor :adjust_trigger_item_option
+
+    # Whether to show the offer when the upsell item is already in the cart.
+    attr_accessor :allow_upsell_item_in_cart_already
+
+    # Price per unit when the offer is accepted.  Omitted or null to charge the item's own price.
+    attr_accessor :arbitrary_unit_cost
+
+    # Price on Fridays, overriding arbitrary_unit_cost.
+    attr_accessor :arbitrary_unit_cost_friday
+
+    # Price on Mondays, overriding arbitrary_unit_cost.  Omitted or null for no override.
+    attr_accessor :arbitrary_unit_cost_monday
+
+    # Price on Saturdays, overriding arbitrary_unit_cost.
+    attr_accessor :arbitrary_unit_cost_saturday
+
+    # Price on Sundays, overriding arbitrary_unit_cost.
+    attr_accessor :arbitrary_unit_cost_sunday
+
+    # Price on Thursdays, overriding arbitrary_unit_cost.
+    attr_accessor :arbitrary_unit_cost_thursday
+
+    # Price on Tuesdays, overriding arbitrary_unit_cost.
+    attr_accessor :arbitrary_unit_cost_tuesday
+
+    # Price on Wednesdays, overriding arbitrary_unit_cost.
+    attr_accessor :arbitrary_unit_cost_wednesday
+
+    # Read only.  Size of the offer's container JSON in bytes.  A large value here alongside a low element count is the signature of a hand pasted HTML dump.
     attr_accessor :cjson_size
 
-    # Whether a container has been authored for this offer.
+    # Last day the offer runs, as YYYY-MM-DD, inclusive.  Omitted or null for no end.
+    attr_accessor :end_date
+
+    # Everflow advertiser event id recorded when the offer is accepted.  Omitted or null for none.
+    attr_accessor :everflow_advertiser_event_id
+
+    # Show only to shoppers who have not bought the upsell item before.
+    attr_accessor :first_time_item
+
+    # Show only to shoppers buying from this store for the first time.
+    attr_accessor :first_time_store
+
+    # Whether the upsell item ships free.
+    attr_accessor :free_shipping
+
+    # Read only.  Whether a container has been authored for this offer.
     attr_accessor :has_container
 
-    # Offer name.
+    # Read only.  Whether the merchant has Everflow set up.
+    attr_accessor :has_everflow_configured
+
+    # Read only.  Whether the merchant has loyalty set up, so the loyalty tier lists apply.
+    attr_accessor :has_loyalty_configured
+
+    # Read only.  Whether the merchant has TowerData set up, so the age and gender lists apply.
+    attr_accessor :has_towerdata_configured
+
+    # Read only.  Hash of the offer's writable fields.  Send it in If-Match on an update.
+    attr_accessor :hash_sha256
+
+    attr_accessor :item_logic_suppression
+
+    attr_accessor :item_logic_trigger
+
+    # Whether the shipping method is locked once the offer is accepted.
+    attr_accessor :lock_shipping
+
+    # Most units a shopper can take.  Omitted or null for no limit.
+    attr_accessor :max_quantity
+
+    # Accessory items to migrate from, paired by position with migrate_accessory_item_ids_to.
+    attr_accessor :migrate_accessory_item_ids_from
+
+    # Accessory items to migrate to, paired by position with migrate_accessory_item_ids_from.
+    attr_accessor :migrate_accessory_item_ids_to
+
+    # Offer name, at most 50 characters.
     attr_accessor :name
 
-    # Name of the upsell path this offer sits on.
+    # URL of offsite content shown instead of the container.  Omitted or null for none.
+    attr_accessor :offsite_content_url
+
+    # Read only.  Upsell items that are out of stock now, so the offer would not be shown.
+    attr_accessor :out_of_stock_upsell_item_ids
+
+    # Read only.  Name of the upsell path this offer was last served on.  Written by checkout traffic, so it is empty until shoppers have seen the offer and can be stale.  Use referenced_by_path_oids for the configured answer.
     attr_accessor :path_name
 
-    # Storefront oid.
+    # Whether the accepted item is recorded as a regular item rather than an upsell.
+    attr_accessor :record_as_regular_item
+
+    # Read only.  The storefront's upsell paths whose steps use this offer, as an offer or a downsell.
+    attr_accessor :referenced_by_path_oids
+
+    # Whether the shopper can remove the accepted item on the confirmation step.
+    attr_accessor :removable_on_confirmation
+
+    # Accessory items removed when the offer is accepted.
+    attr_accessor :remove_accessory_item_ids
+
+    # Whether accepting the offer removes the item that triggered it (a swap rather than an add).
+    attr_accessor :remove_trigger_item
+
+    # Do not show to previous customers.
+    attr_accessor :skip_previous_customers
+
+    # First day the offer runs, as YYYY-MM-DD.  Omitted or null for no start.
+    attr_accessor :start_date
+
+    attr_accessor :stats
+
+    # Read only.  Storefront oid.
     attr_accessor :storefront_oid
+
+    # Do not show on large screens.
+    attr_accessor :suppress_large
+
+    # Do not show on medium screens.
+    attr_accessor :suppress_medium
+
+    # Do not show on small screens.
+    attr_accessor :suppress_small
+
+    # Shipping countries that stop the offer from showing.
+    attr_accessor :suppression_country_codes
+
+    # Loyalty tiers that stop the offer from showing.
+    attr_accessor :suppression_loyalty_tier_oids
+
+    # Payment methods that stop the offer from showing.
+    attr_accessor :suppression_payment_methods
+
+    # Shipping methods that stop the offer from showing.
+    attr_accessor :suppression_shipping_methods
+
+    # Shipping states that stop the offer from showing.
+    attr_accessor :suppression_state_codes
+
+    # Customer tags that stop the offer from showing.
+    attr_accessor :suppression_tags
 
     # Whether the offer is restricted to test traffic.
     attr_accessor :test_only
 
-    # Upsell offer oid.
+    # TowerData age bands the offer is shown to.  18-20, 21-24, 25-34, 35-44, 45-54, 55-64, 65+ or Unknown.
+    attr_accessor :trigger_ages
+
+    # Shipping countries (ISO 3166 two letter codes) that trigger the offer.
+    attr_accessor :trigger_country_codes
+
+    # TowerData genders the offer is shown to.  Male, Female or Unknown.
+    attr_accessor :trigger_genders
+
+    # Loyalty tiers that trigger the offer.  Each must be one of the merchant's loyalty tiers.
+    attr_accessor :trigger_loyalty_tier_oids
+
+    # Payment methods that trigger the offer.  Each must be one of the merchant's payment methods.
+    attr_accessor :trigger_payment_methods
+
+    # Shipping methods that trigger the offer.  Each must be one of the merchant's shipping methods.
+    attr_accessor :trigger_shipping_methods
+
+    # Shipping states that trigger the offer.
+    attr_accessor :trigger_state_codes
+
+    # Customer tags that trigger the offer.
+    attr_accessor :trigger_tags
+
+    # JavaScript that chooses the upsell item at runtime.  Omitted or null for none.
+    attr_accessor :upsell_item_id_javascript
+
+    # The items offered.  Every item id must exist on the merchant account.
+    attr_accessor :upsell_item_ids
+
+    # Read only.  Upsell offer oid.
     attr_accessor :upsell_offer_oid
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -47,12 +209,67 @@ module UltracartClient
       {
         :'active' => :'active',
         :'active_overall' => :'active_overall',
+        :'add_accessory_item_ids' => :'add_accessory_item_ids',
+        :'adjust_trigger_item_option' => :'adjust_trigger_item_option',
+        :'allow_upsell_item_in_cart_already' => :'allow_upsell_item_in_cart_already',
+        :'arbitrary_unit_cost' => :'arbitrary_unit_cost',
+        :'arbitrary_unit_cost_friday' => :'arbitrary_unit_cost_friday',
+        :'arbitrary_unit_cost_monday' => :'arbitrary_unit_cost_monday',
+        :'arbitrary_unit_cost_saturday' => :'arbitrary_unit_cost_saturday',
+        :'arbitrary_unit_cost_sunday' => :'arbitrary_unit_cost_sunday',
+        :'arbitrary_unit_cost_thursday' => :'arbitrary_unit_cost_thursday',
+        :'arbitrary_unit_cost_tuesday' => :'arbitrary_unit_cost_tuesday',
+        :'arbitrary_unit_cost_wednesday' => :'arbitrary_unit_cost_wednesday',
         :'cjson_size' => :'cjson_size',
+        :'end_date' => :'end_date',
+        :'everflow_advertiser_event_id' => :'everflow_advertiser_event_id',
+        :'first_time_item' => :'first_time_item',
+        :'first_time_store' => :'first_time_store',
+        :'free_shipping' => :'free_shipping',
         :'has_container' => :'has_container',
+        :'has_everflow_configured' => :'has_everflow_configured',
+        :'has_loyalty_configured' => :'has_loyalty_configured',
+        :'has_towerdata_configured' => :'has_towerdata_configured',
+        :'hash_sha256' => :'hash_sha256',
+        :'item_logic_suppression' => :'item_logic_suppression',
+        :'item_logic_trigger' => :'item_logic_trigger',
+        :'lock_shipping' => :'lock_shipping',
+        :'max_quantity' => :'max_quantity',
+        :'migrate_accessory_item_ids_from' => :'migrate_accessory_item_ids_from',
+        :'migrate_accessory_item_ids_to' => :'migrate_accessory_item_ids_to',
         :'name' => :'name',
+        :'offsite_content_url' => :'offsite_content_url',
+        :'out_of_stock_upsell_item_ids' => :'out_of_stock_upsell_item_ids',
         :'path_name' => :'path_name',
+        :'record_as_regular_item' => :'record_as_regular_item',
+        :'referenced_by_path_oids' => :'referenced_by_path_oids',
+        :'removable_on_confirmation' => :'removable_on_confirmation',
+        :'remove_accessory_item_ids' => :'remove_accessory_item_ids',
+        :'remove_trigger_item' => :'remove_trigger_item',
+        :'skip_previous_customers' => :'skip_previous_customers',
+        :'start_date' => :'start_date',
+        :'stats' => :'stats',
         :'storefront_oid' => :'storefront_oid',
+        :'suppress_large' => :'suppress_large',
+        :'suppress_medium' => :'suppress_medium',
+        :'suppress_small' => :'suppress_small',
+        :'suppression_country_codes' => :'suppression_country_codes',
+        :'suppression_loyalty_tier_oids' => :'suppression_loyalty_tier_oids',
+        :'suppression_payment_methods' => :'suppression_payment_methods',
+        :'suppression_shipping_methods' => :'suppression_shipping_methods',
+        :'suppression_state_codes' => :'suppression_state_codes',
+        :'suppression_tags' => :'suppression_tags',
         :'test_only' => :'test_only',
+        :'trigger_ages' => :'trigger_ages',
+        :'trigger_country_codes' => :'trigger_country_codes',
+        :'trigger_genders' => :'trigger_genders',
+        :'trigger_loyalty_tier_oids' => :'trigger_loyalty_tier_oids',
+        :'trigger_payment_methods' => :'trigger_payment_methods',
+        :'trigger_shipping_methods' => :'trigger_shipping_methods',
+        :'trigger_state_codes' => :'trigger_state_codes',
+        :'trigger_tags' => :'trigger_tags',
+        :'upsell_item_id_javascript' => :'upsell_item_id_javascript',
+        :'upsell_item_ids' => :'upsell_item_ids',
         :'upsell_offer_oid' => :'upsell_offer_oid'
       }
     end
@@ -67,12 +284,67 @@ module UltracartClient
       {
         :'active' => :'Boolean',
         :'active_overall' => :'Boolean',
+        :'add_accessory_item_ids' => :'Array<String>',
+        :'adjust_trigger_item_option' => :'String',
+        :'allow_upsell_item_in_cart_already' => :'Boolean',
+        :'arbitrary_unit_cost' => :'Float',
+        :'arbitrary_unit_cost_friday' => :'Float',
+        :'arbitrary_unit_cost_monday' => :'Float',
+        :'arbitrary_unit_cost_saturday' => :'Float',
+        :'arbitrary_unit_cost_sunday' => :'Float',
+        :'arbitrary_unit_cost_thursday' => :'Float',
+        :'arbitrary_unit_cost_tuesday' => :'Float',
+        :'arbitrary_unit_cost_wednesday' => :'Float',
         :'cjson_size' => :'Integer',
+        :'end_date' => :'String',
+        :'everflow_advertiser_event_id' => :'String',
+        :'first_time_item' => :'Boolean',
+        :'first_time_store' => :'Boolean',
+        :'free_shipping' => :'Boolean',
         :'has_container' => :'Boolean',
+        :'has_everflow_configured' => :'Boolean',
+        :'has_loyalty_configured' => :'Boolean',
+        :'has_towerdata_configured' => :'Boolean',
+        :'hash_sha256' => :'String',
+        :'item_logic_suppression' => :'SfvbUpsellItemLogic',
+        :'item_logic_trigger' => :'SfvbUpsellItemLogic',
+        :'lock_shipping' => :'Boolean',
+        :'max_quantity' => :'Integer',
+        :'migrate_accessory_item_ids_from' => :'Array<String>',
+        :'migrate_accessory_item_ids_to' => :'Array<String>',
         :'name' => :'String',
+        :'offsite_content_url' => :'String',
+        :'out_of_stock_upsell_item_ids' => :'Array<String>',
         :'path_name' => :'String',
+        :'record_as_regular_item' => :'Boolean',
+        :'referenced_by_path_oids' => :'Array<Integer>',
+        :'removable_on_confirmation' => :'Boolean',
+        :'remove_accessory_item_ids' => :'Array<String>',
+        :'remove_trigger_item' => :'Boolean',
+        :'skip_previous_customers' => :'Boolean',
+        :'start_date' => :'String',
+        :'stats' => :'SfvbUpsellStats',
         :'storefront_oid' => :'Integer',
+        :'suppress_large' => :'Boolean',
+        :'suppress_medium' => :'Boolean',
+        :'suppress_small' => :'Boolean',
+        :'suppression_country_codes' => :'Array<String>',
+        :'suppression_loyalty_tier_oids' => :'Array<Integer>',
+        :'suppression_payment_methods' => :'Array<String>',
+        :'suppression_shipping_methods' => :'Array<String>',
+        :'suppression_state_codes' => :'Array<String>',
+        :'suppression_tags' => :'Array<String>',
         :'test_only' => :'Boolean',
+        :'trigger_ages' => :'Array<String>',
+        :'trigger_country_codes' => :'Array<String>',
+        :'trigger_genders' => :'Array<String>',
+        :'trigger_loyalty_tier_oids' => :'Array<Integer>',
+        :'trigger_payment_methods' => :'Array<String>',
+        :'trigger_shipping_methods' => :'Array<String>',
+        :'trigger_state_codes' => :'Array<String>',
+        :'trigger_tags' => :'Array<String>',
+        :'upsell_item_id_javascript' => :'String',
+        :'upsell_item_ids' => :'Array<String>',
         :'upsell_offer_oid' => :'Integer'
       }
     end
@@ -106,28 +378,290 @@ module UltracartClient
         self.active_overall = attributes[:'active_overall']
       end
 
+      if attributes.key?(:'add_accessory_item_ids')
+        if (value = attributes[:'add_accessory_item_ids']).is_a?(Array)
+          self.add_accessory_item_ids = value
+        end
+      end
+
+      if attributes.key?(:'adjust_trigger_item_option')
+        self.adjust_trigger_item_option = attributes[:'adjust_trigger_item_option']
+      end
+
+      if attributes.key?(:'allow_upsell_item_in_cart_already')
+        self.allow_upsell_item_in_cart_already = attributes[:'allow_upsell_item_in_cart_already']
+      end
+
+      if attributes.key?(:'arbitrary_unit_cost')
+        self.arbitrary_unit_cost = attributes[:'arbitrary_unit_cost']
+      end
+
+      if attributes.key?(:'arbitrary_unit_cost_friday')
+        self.arbitrary_unit_cost_friday = attributes[:'arbitrary_unit_cost_friday']
+      end
+
+      if attributes.key?(:'arbitrary_unit_cost_monday')
+        self.arbitrary_unit_cost_monday = attributes[:'arbitrary_unit_cost_monday']
+      end
+
+      if attributes.key?(:'arbitrary_unit_cost_saturday')
+        self.arbitrary_unit_cost_saturday = attributes[:'arbitrary_unit_cost_saturday']
+      end
+
+      if attributes.key?(:'arbitrary_unit_cost_sunday')
+        self.arbitrary_unit_cost_sunday = attributes[:'arbitrary_unit_cost_sunday']
+      end
+
+      if attributes.key?(:'arbitrary_unit_cost_thursday')
+        self.arbitrary_unit_cost_thursday = attributes[:'arbitrary_unit_cost_thursday']
+      end
+
+      if attributes.key?(:'arbitrary_unit_cost_tuesday')
+        self.arbitrary_unit_cost_tuesday = attributes[:'arbitrary_unit_cost_tuesday']
+      end
+
+      if attributes.key?(:'arbitrary_unit_cost_wednesday')
+        self.arbitrary_unit_cost_wednesday = attributes[:'arbitrary_unit_cost_wednesday']
+      end
+
       if attributes.key?(:'cjson_size')
         self.cjson_size = attributes[:'cjson_size']
+      end
+
+      if attributes.key?(:'end_date')
+        self.end_date = attributes[:'end_date']
+      end
+
+      if attributes.key?(:'everflow_advertiser_event_id')
+        self.everflow_advertiser_event_id = attributes[:'everflow_advertiser_event_id']
+      end
+
+      if attributes.key?(:'first_time_item')
+        self.first_time_item = attributes[:'first_time_item']
+      end
+
+      if attributes.key?(:'first_time_store')
+        self.first_time_store = attributes[:'first_time_store']
+      end
+
+      if attributes.key?(:'free_shipping')
+        self.free_shipping = attributes[:'free_shipping']
       end
 
       if attributes.key?(:'has_container')
         self.has_container = attributes[:'has_container']
       end
 
+      if attributes.key?(:'has_everflow_configured')
+        self.has_everflow_configured = attributes[:'has_everflow_configured']
+      end
+
+      if attributes.key?(:'has_loyalty_configured')
+        self.has_loyalty_configured = attributes[:'has_loyalty_configured']
+      end
+
+      if attributes.key?(:'has_towerdata_configured')
+        self.has_towerdata_configured = attributes[:'has_towerdata_configured']
+      end
+
+      if attributes.key?(:'hash_sha256')
+        self.hash_sha256 = attributes[:'hash_sha256']
+      end
+
+      if attributes.key?(:'item_logic_suppression')
+        self.item_logic_suppression = attributes[:'item_logic_suppression']
+      end
+
+      if attributes.key?(:'item_logic_trigger')
+        self.item_logic_trigger = attributes[:'item_logic_trigger']
+      end
+
+      if attributes.key?(:'lock_shipping')
+        self.lock_shipping = attributes[:'lock_shipping']
+      end
+
+      if attributes.key?(:'max_quantity')
+        self.max_quantity = attributes[:'max_quantity']
+      end
+
+      if attributes.key?(:'migrate_accessory_item_ids_from')
+        if (value = attributes[:'migrate_accessory_item_ids_from']).is_a?(Array)
+          self.migrate_accessory_item_ids_from = value
+        end
+      end
+
+      if attributes.key?(:'migrate_accessory_item_ids_to')
+        if (value = attributes[:'migrate_accessory_item_ids_to']).is_a?(Array)
+          self.migrate_accessory_item_ids_to = value
+        end
+      end
+
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'offsite_content_url')
+        self.offsite_content_url = attributes[:'offsite_content_url']
+      end
+
+      if attributes.key?(:'out_of_stock_upsell_item_ids')
+        if (value = attributes[:'out_of_stock_upsell_item_ids']).is_a?(Array)
+          self.out_of_stock_upsell_item_ids = value
+        end
       end
 
       if attributes.key?(:'path_name')
         self.path_name = attributes[:'path_name']
       end
 
+      if attributes.key?(:'record_as_regular_item')
+        self.record_as_regular_item = attributes[:'record_as_regular_item']
+      end
+
+      if attributes.key?(:'referenced_by_path_oids')
+        if (value = attributes[:'referenced_by_path_oids']).is_a?(Array)
+          self.referenced_by_path_oids = value
+        end
+      end
+
+      if attributes.key?(:'removable_on_confirmation')
+        self.removable_on_confirmation = attributes[:'removable_on_confirmation']
+      end
+
+      if attributes.key?(:'remove_accessory_item_ids')
+        if (value = attributes[:'remove_accessory_item_ids']).is_a?(Array)
+          self.remove_accessory_item_ids = value
+        end
+      end
+
+      if attributes.key?(:'remove_trigger_item')
+        self.remove_trigger_item = attributes[:'remove_trigger_item']
+      end
+
+      if attributes.key?(:'skip_previous_customers')
+        self.skip_previous_customers = attributes[:'skip_previous_customers']
+      end
+
+      if attributes.key?(:'start_date')
+        self.start_date = attributes[:'start_date']
+      end
+
+      if attributes.key?(:'stats')
+        self.stats = attributes[:'stats']
+      end
+
       if attributes.key?(:'storefront_oid')
         self.storefront_oid = attributes[:'storefront_oid']
       end
 
+      if attributes.key?(:'suppress_large')
+        self.suppress_large = attributes[:'suppress_large']
+      end
+
+      if attributes.key?(:'suppress_medium')
+        self.suppress_medium = attributes[:'suppress_medium']
+      end
+
+      if attributes.key?(:'suppress_small')
+        self.suppress_small = attributes[:'suppress_small']
+      end
+
+      if attributes.key?(:'suppression_country_codes')
+        if (value = attributes[:'suppression_country_codes']).is_a?(Array)
+          self.suppression_country_codes = value
+        end
+      end
+
+      if attributes.key?(:'suppression_loyalty_tier_oids')
+        if (value = attributes[:'suppression_loyalty_tier_oids']).is_a?(Array)
+          self.suppression_loyalty_tier_oids = value
+        end
+      end
+
+      if attributes.key?(:'suppression_payment_methods')
+        if (value = attributes[:'suppression_payment_methods']).is_a?(Array)
+          self.suppression_payment_methods = value
+        end
+      end
+
+      if attributes.key?(:'suppression_shipping_methods')
+        if (value = attributes[:'suppression_shipping_methods']).is_a?(Array)
+          self.suppression_shipping_methods = value
+        end
+      end
+
+      if attributes.key?(:'suppression_state_codes')
+        if (value = attributes[:'suppression_state_codes']).is_a?(Array)
+          self.suppression_state_codes = value
+        end
+      end
+
+      if attributes.key?(:'suppression_tags')
+        if (value = attributes[:'suppression_tags']).is_a?(Array)
+          self.suppression_tags = value
+        end
+      end
+
       if attributes.key?(:'test_only')
         self.test_only = attributes[:'test_only']
+      end
+
+      if attributes.key?(:'trigger_ages')
+        if (value = attributes[:'trigger_ages']).is_a?(Array)
+          self.trigger_ages = value
+        end
+      end
+
+      if attributes.key?(:'trigger_country_codes')
+        if (value = attributes[:'trigger_country_codes']).is_a?(Array)
+          self.trigger_country_codes = value
+        end
+      end
+
+      if attributes.key?(:'trigger_genders')
+        if (value = attributes[:'trigger_genders']).is_a?(Array)
+          self.trigger_genders = value
+        end
+      end
+
+      if attributes.key?(:'trigger_loyalty_tier_oids')
+        if (value = attributes[:'trigger_loyalty_tier_oids']).is_a?(Array)
+          self.trigger_loyalty_tier_oids = value
+        end
+      end
+
+      if attributes.key?(:'trigger_payment_methods')
+        if (value = attributes[:'trigger_payment_methods']).is_a?(Array)
+          self.trigger_payment_methods = value
+        end
+      end
+
+      if attributes.key?(:'trigger_shipping_methods')
+        if (value = attributes[:'trigger_shipping_methods']).is_a?(Array)
+          self.trigger_shipping_methods = value
+        end
+      end
+
+      if attributes.key?(:'trigger_state_codes')
+        if (value = attributes[:'trigger_state_codes']).is_a?(Array)
+          self.trigger_state_codes = value
+        end
+      end
+
+      if attributes.key?(:'trigger_tags')
+        if (value = attributes[:'trigger_tags']).is_a?(Array)
+          self.trigger_tags = value
+        end
+      end
+
+      if attributes.key?(:'upsell_item_id_javascript')
+        self.upsell_item_id_javascript = attributes[:'upsell_item_id_javascript']
+      end
+
+      if attributes.key?(:'upsell_item_ids')
+        if (value = attributes[:'upsell_item_ids']).is_a?(Array)
+          self.upsell_item_ids = value
+        end
       end
 
       if attributes.key?(:'upsell_offer_oid')
@@ -155,12 +689,67 @@ module UltracartClient
       self.class == o.class &&
           active == o.active &&
           active_overall == o.active_overall &&
+          add_accessory_item_ids == o.add_accessory_item_ids &&
+          adjust_trigger_item_option == o.adjust_trigger_item_option &&
+          allow_upsell_item_in_cart_already == o.allow_upsell_item_in_cart_already &&
+          arbitrary_unit_cost == o.arbitrary_unit_cost &&
+          arbitrary_unit_cost_friday == o.arbitrary_unit_cost_friday &&
+          arbitrary_unit_cost_monday == o.arbitrary_unit_cost_monday &&
+          arbitrary_unit_cost_saturday == o.arbitrary_unit_cost_saturday &&
+          arbitrary_unit_cost_sunday == o.arbitrary_unit_cost_sunday &&
+          arbitrary_unit_cost_thursday == o.arbitrary_unit_cost_thursday &&
+          arbitrary_unit_cost_tuesday == o.arbitrary_unit_cost_tuesday &&
+          arbitrary_unit_cost_wednesday == o.arbitrary_unit_cost_wednesday &&
           cjson_size == o.cjson_size &&
+          end_date == o.end_date &&
+          everflow_advertiser_event_id == o.everflow_advertiser_event_id &&
+          first_time_item == o.first_time_item &&
+          first_time_store == o.first_time_store &&
+          free_shipping == o.free_shipping &&
           has_container == o.has_container &&
+          has_everflow_configured == o.has_everflow_configured &&
+          has_loyalty_configured == o.has_loyalty_configured &&
+          has_towerdata_configured == o.has_towerdata_configured &&
+          hash_sha256 == o.hash_sha256 &&
+          item_logic_suppression == o.item_logic_suppression &&
+          item_logic_trigger == o.item_logic_trigger &&
+          lock_shipping == o.lock_shipping &&
+          max_quantity == o.max_quantity &&
+          migrate_accessory_item_ids_from == o.migrate_accessory_item_ids_from &&
+          migrate_accessory_item_ids_to == o.migrate_accessory_item_ids_to &&
           name == o.name &&
+          offsite_content_url == o.offsite_content_url &&
+          out_of_stock_upsell_item_ids == o.out_of_stock_upsell_item_ids &&
           path_name == o.path_name &&
+          record_as_regular_item == o.record_as_regular_item &&
+          referenced_by_path_oids == o.referenced_by_path_oids &&
+          removable_on_confirmation == o.removable_on_confirmation &&
+          remove_accessory_item_ids == o.remove_accessory_item_ids &&
+          remove_trigger_item == o.remove_trigger_item &&
+          skip_previous_customers == o.skip_previous_customers &&
+          start_date == o.start_date &&
+          stats == o.stats &&
           storefront_oid == o.storefront_oid &&
+          suppress_large == o.suppress_large &&
+          suppress_medium == o.suppress_medium &&
+          suppress_small == o.suppress_small &&
+          suppression_country_codes == o.suppression_country_codes &&
+          suppression_loyalty_tier_oids == o.suppression_loyalty_tier_oids &&
+          suppression_payment_methods == o.suppression_payment_methods &&
+          suppression_shipping_methods == o.suppression_shipping_methods &&
+          suppression_state_codes == o.suppression_state_codes &&
+          suppression_tags == o.suppression_tags &&
           test_only == o.test_only &&
+          trigger_ages == o.trigger_ages &&
+          trigger_country_codes == o.trigger_country_codes &&
+          trigger_genders == o.trigger_genders &&
+          trigger_loyalty_tier_oids == o.trigger_loyalty_tier_oids &&
+          trigger_payment_methods == o.trigger_payment_methods &&
+          trigger_shipping_methods == o.trigger_shipping_methods &&
+          trigger_state_codes == o.trigger_state_codes &&
+          trigger_tags == o.trigger_tags &&
+          upsell_item_id_javascript == o.upsell_item_id_javascript &&
+          upsell_item_ids == o.upsell_item_ids &&
           upsell_offer_oid == o.upsell_offer_oid
     end
 
@@ -173,7 +762,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [active, active_overall, cjson_size, has_container, name, path_name, storefront_oid, test_only, upsell_offer_oid].hash
+      [active, active_overall, add_accessory_item_ids, adjust_trigger_item_option, allow_upsell_item_in_cart_already, arbitrary_unit_cost, arbitrary_unit_cost_friday, arbitrary_unit_cost_monday, arbitrary_unit_cost_saturday, arbitrary_unit_cost_sunday, arbitrary_unit_cost_thursday, arbitrary_unit_cost_tuesday, arbitrary_unit_cost_wednesday, cjson_size, end_date, everflow_advertiser_event_id, first_time_item, first_time_store, free_shipping, has_container, has_everflow_configured, has_loyalty_configured, has_towerdata_configured, hash_sha256, item_logic_suppression, item_logic_trigger, lock_shipping, max_quantity, migrate_accessory_item_ids_from, migrate_accessory_item_ids_to, name, offsite_content_url, out_of_stock_upsell_item_ids, path_name, record_as_regular_item, referenced_by_path_oids, removable_on_confirmation, remove_accessory_item_ids, remove_trigger_item, skip_previous_customers, start_date, stats, storefront_oid, suppress_large, suppress_medium, suppress_small, suppression_country_codes, suppression_loyalty_tier_oids, suppression_payment_methods, suppression_shipping_methods, suppression_state_codes, suppression_tags, test_only, trigger_ages, trigger_country_codes, trigger_genders, trigger_loyalty_tier_oids, trigger_payment_methods, trigger_shipping_methods, trigger_state_codes, trigger_tags, upsell_item_id_javascript, upsell_item_ids, upsell_offer_oid].hash
     end
 
     # Builds the object from hash

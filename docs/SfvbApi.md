@@ -6,16 +6,22 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | ------ | ------------ | ----------- |
 | [**add_sfvb_page_blog_posts**](SfvbApi.md#add_sfvb_page_blog_posts) | **POST** /sfvb/storefronts/{storefront_oid}/pages/blog_posts/add | Assign blog posts to a page |
 | [**add_sfvb_page_items**](SfvbApi.md#add_sfvb_page_items) | **POST** /sfvb/storefronts/{storefront_oid}/pages/items/add | Assign items to a page |
+| [**archive_sfvb_upsell_path**](SfvbApi.md#archive_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/archive | Archive an upsell path |
 | [**compile_sfvb_cjson**](SfvbApi.md#compile_sfvb_cjson) | **POST** /sfvb/cjson/compile | Compile CJSON to Velocity |
 | [**create_sfvb_preview_access**](SfvbApi.md#create_sfvb_preview_access) | **POST** /sfvb/storefronts/{storefront_oid}/preview_access | One time link that opens a preview in a browser with no UltraCart login |
 | [**create_sfvb_preview_session**](SfvbApi.md#create_sfvb_preview_session) | **POST** /sfvb/storefronts/{storefront_oid}/preview_sessions | Create a preview session |
 | [**delete_sfvb_file**](SfvbApi.md#delete_sfvb_file) | **DELETE** /sfvb/storefronts/{storefront_oid}/files | Delete a storefront file |
+| [**delete_sfvb_item_attribute**](SfvbApi.md#delete_sfvb_item_attribute) | **DELETE** /sfvb/storefronts/{storefront_oid}/items/attributes | Delete an attribute from an item |
 | [**delete_sfvb_item_multimedia**](SfvbApi.md#delete_sfvb_item_multimedia) | **DELETE** /sfvb/storefronts/{storefront_oid}/items/multimedia | Detach an image from an item |
 | [**delete_sfvb_page_multimedia**](SfvbApi.md#delete_sfvb_page_multimedia) | **DELETE** /sfvb/storefronts/{storefront_oid}/pages/multimedia | Detach an image from a page |
 | [**delete_sfvb_preview_session**](SfvbApi.md#delete_sfvb_preview_session) | **DELETE** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id} | Delete a preview session |
+| [**disable_sfvb_upsell_offer**](SfvbApi.md#disable_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/disable | Disable an upsell offer |
+| [**disable_sfvb_upsell_path**](SfvbApi.md#disable_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/disable | Disable an upsell path |
 | [**download_sfvb_file**](SfvbApi.md#download_sfvb_file) | **GET** /sfvb/storefronts/{storefront_oid}/files/download | Read a storefront file&#39;s raw bytes |
 | [**duplicate_sfvb_page**](SfvbApi.md#duplicate_sfvb_page) | **POST** /sfvb/storefronts/{storefront_oid}/pages/duplicate | Copy a page to a new path |
 | [**duplicate_sfvb_theme**](SfvbApi.md#duplicate_sfvb_theme) | **POST** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/duplicate | Duplicate a theme |
+| [**duplicate_sfvb_upsell_offer**](SfvbApi.md#duplicate_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/duplicate | Duplicate an upsell offer |
+| [**duplicate_sfvb_upsell_path**](SfvbApi.md#duplicate_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/duplicate | Duplicate an upsell path or one of its variations |
 | [**end_sfvb_experiment**](SfvbApi.md#end_sfvb_experiment) | **POST** /sfvb/storefronts/{storefront_oid}/experiments/{experiment_oid}/end | End an experiment |
 | [**get_sfvb_cjson_used_elements**](SfvbApi.md#get_sfvb_cjson_used_elements) | **POST** /sfvb/cjson/elements | Element types used by a container |
 | [**get_sfvb_container**](SfvbApi.md#get_sfvb_container) | **GET** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id} | Read a container stored outside the file system |
@@ -38,9 +44,13 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_theme**](SfvbApi.md#get_sfvb_theme) | **GET** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid} | Get a theme |
 | [**get_sfvb_theme_attributes**](SfvbApi.md#get_sfvb_theme_attributes) | **GET** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/attributes | Read a theme&#39;s colors, fonts and settings |
 | [**get_sfvb_theme_job**](SfvbApi.md#get_sfvb_theme_job) | **GET** /sfvb/storefronts/{storefront_oid}/theme_jobs/{job_id} | Status of an asynchronous theme job |
+| [**get_sfvb_upsell_offer**](SfvbApi.md#get_sfvb_upsell_offer) | **GET** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid} | Get an upsell offer |
+| [**get_sfvb_upsell_path**](SfvbApi.md#get_sfvb_upsell_path) | **GET** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid} | Get an upsell path |
 | [**get_sfvb_version**](SfvbApi.md#get_sfvb_version) | **GET** /sfvb/version | Compiler version for this merchant |
 | [**get_sfvb_whoami**](SfvbApi.md#get_sfvb_whoami) | **GET** /sfvb/whoami | Who this token is |
 | [**insert_sfvb_page**](SfvbApi.md#insert_sfvb_page) | **POST** /sfvb/storefronts/{storefront_oid}/pages | Create a page |
+| [**insert_sfvb_upsell_offer**](SfvbApi.md#insert_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers | Create an upsell offer |
+| [**insert_sfvb_upsell_path**](SfvbApi.md#insert_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths | Create an upsell path |
 | [**install_sfvb_library_entry**](SfvbApi.md#install_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/install | Install a library entry into a storefront |
 | [**list_sfvb_blog_posts**](SfvbApi.md#list_sfvb_blog_posts) | **GET** /sfvb/storefronts/{storefront_oid}/blog_posts | List the storefront&#39;s blog posts |
 | [**list_sfvb_container_versions**](SfvbApi.md#list_sfvb_container_versions) | **GET** /sfvb/storefronts/{storefront_oid}/container_versions | Version history for a container stored outside the file system |
@@ -54,6 +64,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**list_sfvb_templates**](SfvbApi.md#list_sfvb_templates) | **GET** /sfvb/storefronts/{storefront_oid}/templates | List the active theme&#39;s templates |
 | [**list_sfvb_themes**](SfvbApi.md#list_sfvb_themes) | **GET** /sfvb/storefronts/{storefront_oid}/themes | List themes for a storefront |
 | [**list_sfvb_upsell_offers**](SfvbApi.md#list_sfvb_upsell_offers) | **GET** /sfvb/storefronts/{storefront_oid}/upsell_offers | List upsell offers |
+| [**list_sfvb_upsell_paths**](SfvbApi.md#list_sfvb_upsell_paths) | **GET** /sfvb/storefronts/{storefront_oid}/upsell_paths | List upsell paths |
+| [**move_sfvb_upsell_path**](SfvbApi.md#move_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/move | Move an upsell path |
 | [**put_sfvb_container**](SfvbApi.md#put_sfvb_container) | **PUT** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id} | Write a container stored outside the file system |
 | [**put_sfvb_experiment_variation**](SfvbApi.md#put_sfvb_experiment_variation) | **PUT** /sfvb/storefronts/{storefront_oid}/experiments/{experiment_oid}/variations/{variation_number} | Pause or resume a variation |
 | [**put_sfvb_file_content**](SfvbApi.md#put_sfvb_file_content) | **PUT** /sfvb/storefronts/{storefront_oid}/files/content | Write a storefront file |
@@ -78,6 +90,9 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**search_sfvb_files**](SfvbApi.md#search_sfvb_files) | **POST** /sfvb/storefronts/{storefront_oid}/files/search | Search storefront files |
 | [**search_sfvb_library**](SfvbApi.md#search_sfvb_library) | **GET** /sfvb/storefronts/{storefront_oid}/library | Search the element library |
 | [**start_sfvb_experiment**](SfvbApi.md#start_sfvb_experiment) | **POST** /sfvb/storefronts/{storefront_oid}/experiments | Start an experiment |
+| [**unarchive_sfvb_upsell_path**](SfvbApi.md#unarchive_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/unarchive | Unarchive an upsell path |
+| [**update_sfvb_upsell_offer**](SfvbApi.md#update_sfvb_upsell_offer) | **PUT** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid} | Update an upsell offer |
+| [**update_sfvb_upsell_path**](SfvbApi.md#update_sfvb_upsell_path) | **PUT** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid} | Update an upsell path |
 | [**upload_sfvb_file**](SfvbApi.md#upload_sfvb_file) | **POST** /sfvb/storefronts/{storefront_oid}/files/upload | Store a binary asset that was already uploaded |
 | [**validate_sfvb_cjson**](SfvbApi.md#validate_sfvb_cjson) | **POST** /sfvb/cjson/validate | Validate CJSON |
 | [**validate_sfvb_velocity**](SfvbApi.md#validate_sfvb_velocity) | **POST** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/velocity/validate | Validate a Velocity template against a theme |
@@ -190,6 +205,60 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## archive_sfvb_upsell_path
+
+> <SfvbUpsellPath> archive_sfvb_upsell_path(storefront_oid, upsell_path_oid)
+
+Archive an upsell path
+
+Files the path out of the default list.  An archived path does not run.  Archiving one that is switched on is a live change and needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the archive_sfvb_upsell_path_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUpsellPath>, Integer, Hash)> archive_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid)
+
+```ruby
+begin
+  # Archive an upsell path
+  data, status_code, headers = api_instance.archive_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUpsellPath>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->archive_sfvb_upsell_path_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **upsell_path_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbUpsellPath**](SfvbUpsellPath.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -408,6 +477,62 @@ nil (empty response body)
 - **Accept**: application/json
 
 
+## delete_sfvb_item_attribute
+
+> <SfvbItemResponse> delete_sfvb_item_attribute(storefront_oid, name, opts)
+
+Delete an attribute from an item
+
+Removes one attribute that no template on the item's pages declares - a test name, a misspelling, one a retired template used.  A declared attribute is refused, because the template would list it again, empty; send an empty value through the attributes update to clear one of those instead. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_sfvb_item_attribute_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbItemResponse>, Integer, Hash)> delete_sfvb_item_attribute_with_http_info(storefront_oid, name, opts)
+
+```ruby
+begin
+  # Delete an attribute from an item
+  data, status_code, headers = api_instance.delete_sfvb_item_attribute_with_http_info(storefront_oid, name, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbItemResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->delete_sfvb_item_attribute_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **name** | **String** | The attribute name, matched without regard to case |  |
+| **merchant_item_id** | **String** |  | [optional] |
+| **merchant_item_oid** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SfvbItemResponse**](SfvbItemResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## delete_sfvb_item_multimedia
 
 > <SfvbItemResponse> delete_sfvb_item_multimedia(storefront_oid, opts)
@@ -564,6 +689,114 @@ end
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## disable_sfvb_upsell_offer
+
+> <SfvbUpsellOffer> disable_sfvb_upsell_offer(storefront_oid, upsell_offer_oid)
+
+Disable an upsell offer
+
+Switches the offer off.  Disabling one that is switched on is a live change and needs sfvb_publish.  An offer that is already off is returned unchanged.  There is no delete. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the disable_sfvb_upsell_offer_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUpsellOffer>, Integer, Hash)> disable_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid)
+
+```ruby
+begin
+  # Disable an upsell offer
+  data, status_code, headers = api_instance.disable_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUpsellOffer>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->disable_sfvb_upsell_offer_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **upsell_offer_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbUpsellOffer**](SfvbUpsellOffer.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## disable_sfvb_upsell_path
+
+> <SfvbUpsellPath> disable_sfvb_upsell_path(storefront_oid, upsell_path_oid)
+
+Disable an upsell path
+
+Switches the path off.  Disabling a running path is a live change and needs sfvb_publish.  A path that is already off is returned unchanged.  There is no delete. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the disable_sfvb_upsell_path_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUpsellPath>, Integer, Hash)> disable_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid)
+
+```ruby
+begin
+  # Disable an upsell path
+  data, status_code, headers = api_instance.disable_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUpsellPath>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->disable_sfvb_upsell_path_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **upsell_path_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbUpsellPath**](SfvbUpsellPath.md)
 
 ### Authorization
 
@@ -735,6 +968,115 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## duplicate_sfvb_upsell_offer
+
+> <SfvbUpsellOffer> duplicate_sfvb_upsell_offer(storefront_oid, upsell_offer_oid)
+
+Duplicate an upsell offer
+
+A copy named Copy of, switched off, with its own copy of the container.  Put it on a path with a path update to have it shown. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the duplicate_sfvb_upsell_offer_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUpsellOffer>, Integer, Hash)> duplicate_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid)
+
+```ruby
+begin
+  # Duplicate an upsell offer
+  data, status_code, headers = api_instance.duplicate_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUpsellOffer>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->duplicate_sfvb_upsell_offer_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **upsell_offer_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbUpsellOffer**](SfvbUpsellOffer.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## duplicate_sfvb_upsell_path
+
+> <SfvbUpsellPath> duplicate_sfvb_upsell_path(storefront_oid, upsell_path_oid, opts)
+
+Duplicate an upsell path or one of its variations
+
+Without a variation, copies the whole path right after it, switched off.  With a variation, appends a copy of that variation to the same path, which needs sfvb_publish when the path is running.  Every offer the copy uses is copied too and switched off.  Within this storefront only. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the duplicate_sfvb_upsell_path_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUpsellPath>, Integer, Hash)> duplicate_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, opts)
+
+```ruby
+begin
+  # Duplicate an upsell path or one of its variations
+  data, status_code, headers = api_instance.duplicate_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUpsellPath>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->duplicate_sfvb_upsell_path_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **upsell_path_oid** | **Integer** |  |  |
+| **duplicate_request** | [**SfvbUpsellPathDuplicateRequest**](SfvbUpsellPathDuplicateRequest.md) | What to duplicate | [optional] |
+
+### Return type
+
+[**SfvbUpsellPath**](SfvbUpsellPath.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
 - **Accept**: application/json
 
 
@@ -1927,6 +2269,122 @@ end
 - **Accept**: application/json
 
 
+## get_sfvb_upsell_offer
+
+> <SfvbUpsellOffer> get_sfvb_upsell_offer(storefront_oid, upsell_offer_oid, opts)
+
+Get an upsell offer
+
+The whole offer, with the hash an update sends back in If-Match, which upsell items are out of stock now, and whether loyalty, TowerData and Everflow are set up.  Stats as on the path list. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_upsell_offer_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUpsellOffer>, Integer, Hash)> get_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid, opts)
+
+```ruby
+begin
+  # Get an upsell offer
+  data, status_code, headers = api_instance.get_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUpsellOffer>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_upsell_offer_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **upsell_offer_oid** | **Integer** |  |  |
+| **stats** | **Boolean** | Include stats | [optional] |
+| **stats_start** | **String** | Stats window start, YYYY-MM-DD | [optional] |
+| **stats_end** | **String** | Stats window end, YYYY-MM-DD | [optional] |
+| **stats_weekdays** | **String** | Only these weekdays, comma separated mon to sun | [optional] |
+
+### Return type
+
+[**SfvbUpsellOffer**](SfvbUpsellOffer.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_upsell_path
+
+> <SfvbUpsellPath> get_sfvb_upsell_path(storefront_oid, upsell_path_oid, opts)
+
+Get an upsell path
+
+The whole path, with the hash an update sends back in If-Match.  Stats as on the list. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_upsell_path_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUpsellPath>, Integer, Hash)> get_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, opts)
+
+```ruby
+begin
+  # Get an upsell path
+  data, status_code, headers = api_instance.get_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUpsellPath>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_upsell_path_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **upsell_path_oid** | **Integer** |  |  |
+| **stats** | **Boolean** | Include stats | [optional] |
+| **stats_start** | **String** | Stats window start, YYYY-MM-DD | [optional] |
+| **stats_end** | **String** | Stats window end, YYYY-MM-DD | [optional] |
+| **stats_weekdays** | **String** | Only these weekdays, comma separated mon to sun | [optional] |
+
+### Return type
+
+[**SfvbUpsellPath**](SfvbUpsellPath.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_sfvb_version
 
 > <SfvbVersionResponse> get_sfvb_version
@@ -2072,6 +2530,114 @@ end
 ### Return type
 
 [**SfvbPageResponse**](SfvbPageResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## insert_sfvb_upsell_offer
+
+> <SfvbUpsellOffer> insert_sfvb_upsell_offer(storefront_oid, upsell_offer)
+
+Create an upsell offer
+
+Every item it names must exist, and every shipping method, payment method and loyalty tier must be one the merchant has.  Put it on a path with a path update to have it shown.  Creating it switched on, or with upsell_item_id_javascript or offsite_content_url, needs sfvb_publish.  Its page content is its container, written with the container endpoints and owner type upsell. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_sfvb_upsell_offer_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUpsellOffer>, Integer, Hash)> insert_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer)
+
+```ruby
+begin
+  # Create an upsell offer
+  data, status_code, headers = api_instance.insert_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUpsellOffer>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->insert_sfvb_upsell_offer_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **upsell_offer** | [**SfvbUpsellOffer**](SfvbUpsellOffer.md) | The offer to create |  |
+
+### Return type
+
+[**SfvbUpsellOffer**](SfvbUpsellOffer.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## insert_sfvb_upsell_path
+
+> <SfvbUpsellPath> insert_sfvb_upsell_path(storefront_oid, upsell_path)
+
+Create an upsell path
+
+Placed last in path order.  Every offer a step names must be an offer of this storefront, and every item in the item logic must exist.  Creating it switched on needs sfvb_publish; create it with active false to build it without that scope. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_sfvb_upsell_path_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUpsellPath>, Integer, Hash)> insert_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path)
+
+```ruby
+begin
+  # Create an upsell path
+  data, status_code, headers = api_instance.insert_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUpsellPath>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->insert_sfvb_upsell_path_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **upsell_path** | [**SfvbUpsellPath**](SfvbUpsellPath.md) | The path to create |  |
+
+### Return type
+
+[**SfvbUpsellPath**](SfvbUpsellPath.md)
 
 ### Authorization
 
@@ -2737,11 +3303,11 @@ end
 
 ## list_sfvb_upsell_offers
 
-> <SfvbUpsellOffersResponse> list_sfvb_upsell_offers(storefront_oid)
+> <SfvbUpsellOffersResponse> list_sfvb_upsell_offers(storefront_oid, opts)
 
 List upsell offers
 
-Without container JSON, so the funnel can be surveyed cheaply.  A large container size alongside a small element count is the signature of markup pasted into a single html element. 
+Every offer on one of this storefront's paths that are not archived, the same list the admin shows, with each offer's full settings but not its container JSON.  An offer on no path yet is still read by oid.  A large container size alongside a small element count is the signature of markup pasted into a single html element.  Stats as on the path list. 
 
 
 ### Examples
@@ -2754,12 +3320,12 @@ Without container JSON, so the funnel can be surveyed cheaply.  A large containe
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SfvbUpsellOffersResponse>, Integer, Hash)> list_sfvb_upsell_offers_with_http_info(storefront_oid)
+> <Array(<SfvbUpsellOffersResponse>, Integer, Hash)> list_sfvb_upsell_offers_with_http_info(storefront_oid, opts)
 
 ```ruby
 begin
   # List upsell offers
-  data, status_code, headers = api_instance.list_sfvb_upsell_offers_with_http_info(storefront_oid)
+  data, status_code, headers = api_instance.list_sfvb_upsell_offers_with_http_info(storefront_oid, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <SfvbUpsellOffersResponse>
@@ -2773,6 +3339,10 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **storefront_oid** | **Integer** |  |  |
+| **stats** | **Boolean** | Include stats | [optional] |
+| **stats_start** | **String** | Stats window start, YYYY-MM-DD | [optional] |
+| **stats_end** | **String** | Stats window end, YYYY-MM-DD | [optional] |
+| **stats_weekdays** | **String** | Only these weekdays, comma separated mon to sun | [optional] |
 
 ### Return type
 
@@ -2785,6 +3355,123 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_sfvb_upsell_paths
+
+> <SfvbUpsellPathsResponse> list_sfvb_upsell_paths(storefront_oid, opts)
+
+List upsell paths
+
+In path order, first to last.  status current (the default) leaves out archived paths.  Stats are computed only with stats=true, over stats_start to stats_end (YYYY-MM-DD, the last 30 days when both are omitted, at most 366 days), because they are the expensive part of the read. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the list_sfvb_upsell_paths_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUpsellPathsResponse>, Integer, Hash)> list_sfvb_upsell_paths_with_http_info(storefront_oid, opts)
+
+```ruby
+begin
+  # List upsell paths
+  data, status_code, headers = api_instance.list_sfvb_upsell_paths_with_http_info(storefront_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUpsellPathsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->list_sfvb_upsell_paths_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **status** | **String** | current, archived or all | [optional] |
+| **location** | **String** | pre checkout or post checkout | [optional] |
+| **search** | **String** | Only paths whose name contains this | [optional] |
+| **stats** | **Boolean** | Include stats | [optional] |
+| **stats_start** | **String** | Stats window start, YYYY-MM-DD | [optional] |
+| **stats_end** | **String** | Stats window end, YYYY-MM-DD | [optional] |
+| **stats_weekdays** | **String** | Only these weekdays, comma separated mon to sun | [optional] |
+| **max_results** | **Integer** | Page size, 1 to 500, default 100 | [optional] |
+| **offset** | **Integer** | Offset of the first path returned | [optional] |
+
+### Return type
+
+[**SfvbUpsellPathsResponse**](SfvbUpsellPathsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## move_sfvb_upsell_path
+
+> <SfvbUpsellPath> move_sfvb_upsell_path(storefront_oid, upsell_path_oid, move_request)
+
+Move an upsell path
+
+Up, down, to the top or to the bottom of the storefront's paths.  Order decides which running path a shopper meets first, so moving a running path needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the move_sfvb_upsell_path_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUpsellPath>, Integer, Hash)> move_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, move_request)
+
+```ruby
+begin
+  # Move an upsell path
+  data, status_code, headers = api_instance.move_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, move_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUpsellPath>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->move_sfvb_upsell_path_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **upsell_path_oid** | **Integer** |  |  |
+| **move_request** | [**SfvbUpsellPathMoveRequest**](SfvbUpsellPathMoveRequest.md) | Where to move it |  |
+
+### Return type
+
+[**SfvbUpsellPath**](SfvbUpsellPath.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
 - **Accept**: application/json
 
 
@@ -2964,7 +3651,7 @@ end
 
 Change some of an item's attributes
 
-Partial - only the attributes named change, and an empty value clears one.  Every entry is validated before any is written, so a refusal leaves the item untouched.  The list types are checked against the shape their renderer actually parses, which matters more than it sounds: a definition list is a bare array with one letter keys, a video list is a wrapper object with keys spelled out, and an item set is comma separated text rather than JSON.  A shape the renderer cannot read is not reported at render time - it renders exactly like an attribute nobody ever set. 
+Partial - only the attributes named change, and an empty value empties one but keeps it on the item.  To remove an attribute no template declares, use the attribute DELETE.  Every entry is validated before any is written, so a refusal leaves the item untouched.  The list types are checked against the shape their renderer actually parses, which matters more than it sounds: a definition list is a bare array with one letter keys, a video list is a wrapper object with keys spelled out, and an item set is comma separated text rather than JSON.  A shape the renderer cannot read is not reported at render time - it renders exactly like an attribute nobody ever set. 
 
 
 ### Examples
@@ -4109,6 +4796,172 @@ end
 ### Return type
 
 [**SfvbExperiment**](SfvbExperiment.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## unarchive_sfvb_upsell_path
+
+> <SfvbUpsellPath> unarchive_sfvb_upsell_path(storefront_oid, upsell_path_oid)
+
+Unarchive an upsell path
+
+Brings the path back into the default list.  Unarchiving one that is switched on starts it, so that needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the unarchive_sfvb_upsell_path_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUpsellPath>, Integer, Hash)> unarchive_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid)
+
+```ruby
+begin
+  # Unarchive an upsell path
+  data, status_code, headers = api_instance.unarchive_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUpsellPath>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->unarchive_sfvb_upsell_path_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **upsell_path_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbUpsellPath**](SfvbUpsellPath.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## update_sfvb_upsell_offer
+
+> <SfvbUpsellOffer> update_sfvb_upsell_offer(storefront_oid, upsell_offer_oid, if_match, upsell_offer)
+
+Update an upsell offer
+
+A full replace.  Send back the whole offer you read, changed, with its hash_sha256 in If-Match.  Read only fields are ignored and a writable field left out is cleared.  Changing an offer that is switched on, switching one on, or changing upsell_item_id_javascript or offsite_content_url needs sfvb_publish.  Settings the API does not show, such as the offer's screenshots, are kept. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_upsell_offer_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUpsellOffer>, Integer, Hash)> update_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid, if_match, upsell_offer)
+
+```ruby
+begin
+  # Update an upsell offer
+  data, status_code, headers = api_instance.update_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid, if_match, upsell_offer)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUpsellOffer>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_upsell_offer_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **upsell_offer_oid** | **Integer** |  |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **upsell_offer** | [**SfvbUpsellOffer**](SfvbUpsellOffer.md) | The whole offer |  |
+
+### Return type
+
+[**SfvbUpsellOffer**](SfvbUpsellOffer.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_sfvb_upsell_path
+
+> <SfvbUpsellPath> update_sfvb_upsell_path(storefront_oid, upsell_path_oid, if_match, upsell_path)
+
+Update an upsell path
+
+A full replace.  Send back the whole path you read, changed, with its hash_sha256 in If-Match.  Read only fields are ignored and a writable field left out is cleared.  Order and archived keep their stored values; change them with the move, archive and unarchive calls.  Changing a running path, or switching one on, needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_upsell_path_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUpsellPath>, Integer, Hash)> update_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, if_match, upsell_path)
+
+```ruby
+begin
+  # Update an upsell path
+  data, status_code, headers = api_instance.update_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, if_match, upsell_path)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUpsellPath>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_upsell_path_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **upsell_path_oid** | **Integer** |  |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **upsell_path** | [**SfvbUpsellPath**](SfvbUpsellPath.md) | The whole path |  |
+
+### Return type
+
+[**SfvbUpsellPath**](SfvbUpsellPath.md)
 
 ### Authorization
 
