@@ -75,6 +75,12 @@ module UltracartClient
     # Open rate of emails, formatted
     attr_accessor :open_rate_formatted
 
+    # Number of days after the last enrollment before a customer may enter this flow again.  Only used when reentry_policy is after_days.  Maximum 1095.
+    attr_accessor :reentry_delay_days
+
+    # Whether a customer may enter this flow again after a previous enrollment.  anytime (default), after_days (see reentry_delay_days), or never.  Enrollment history is kept for 3 years, so never means not within 3 years of the last enrollment.
+    attr_accessor :reentry_policy
+
     # Revenue, formatted
     attr_accessor :revenue_formatted
 
@@ -108,6 +114,28 @@ module UltracartClient
     # Trigger type
     attr_accessor :trigger_type
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -131,6 +159,8 @@ module UltracartClient
         :'merchant_id' => :'merchant_id',
         :'name' => :'name',
         :'open_rate_formatted' => :'open_rate_formatted',
+        :'reentry_delay_days' => :'reentry_delay_days',
+        :'reentry_policy' => :'reentry_policy',
         :'revenue_formatted' => :'revenue_formatted',
         :'revenue_per_customer_formatted' => :'revenue_per_customer_formatted',
         :'screenshot_large_full_url' => :'screenshot_large_full_url',
@@ -173,6 +203,8 @@ module UltracartClient
         :'merchant_id' => :'String',
         :'name' => :'String',
         :'open_rate_formatted' => :'String',
+        :'reentry_delay_days' => :'Integer',
+        :'reentry_policy' => :'String',
         :'revenue_formatted' => :'String',
         :'revenue_per_customer_formatted' => :'String',
         :'screenshot_large_full_url' => :'String',
@@ -288,6 +320,14 @@ module UltracartClient
         self.open_rate_formatted = attributes[:'open_rate_formatted']
       end
 
+      if attributes.key?(:'reentry_delay_days')
+        self.reentry_delay_days = attributes[:'reentry_delay_days']
+      end
+
+      if attributes.key?(:'reentry_policy')
+        self.reentry_policy = attributes[:'reentry_policy']
+      end
+
       if attributes.key?(:'revenue_formatted')
         self.revenue_formatted = attributes[:'revenue_formatted']
       end
@@ -348,6 +388,8 @@ module UltracartClient
     # @return true if the model is valid
     def valid?
       return false if !@name.nil? && @name.to_s.length > 250
+      reentry_policy_validator = EnumAttributeValidator.new('String', ["anytime", "after_days", "never"])
+      return false unless reentry_policy_validator.valid?(@reentry_policy)
       true
     end
 
@@ -359,6 +401,16 @@ module UltracartClient
       end
 
       @name = name
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] reentry_policy Object to be assigned
+    def reentry_policy=(reentry_policy)
+      validator = EnumAttributeValidator.new('String', ["anytime", "after_days", "never"])
+      unless validator.valid?(reentry_policy)
+        fail ArgumentError, "invalid value for \"reentry_policy\", must be one of #{validator.allowable_values}."
+      end
+      @reentry_policy = reentry_policy
     end
 
     # Checks equality by comparing each attribute.
@@ -386,6 +438,8 @@ module UltracartClient
           merchant_id == o.merchant_id &&
           name == o.name &&
           open_rate_formatted == o.open_rate_formatted &&
+          reentry_delay_days == o.reentry_delay_days &&
+          reentry_policy == o.reentry_policy &&
           revenue_formatted == o.revenue_formatted &&
           revenue_per_customer_formatted == o.revenue_per_customer_formatted &&
           screenshot_large_full_url == o.screenshot_large_full_url &&
@@ -408,7 +462,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allow_multiple_concurrent_enrollments, back_populating, click_rate_formatted, created_dts, deleted, email_communication_sequence_uuid, email_flow_uuid, end_once_customer_purchases, end_once_customer_purchases_anywhere, enrolled_customers, esp_domain_user, esp_domain_uuid, esp_flow_folder_uuid, esp_friendly_name, filter_profile_equation_json, library_item_oid, maximum_enrolled, merchant_id, name, open_rate_formatted, revenue_formatted, revenue_per_customer_formatted, screenshot_large_full_url, sms_esp_twilio_uuid, sms_phone_number, status, status_dts, storefront_oid, trigger_parameter, trigger_parameter_name, trigger_type].hash
+      [allow_multiple_concurrent_enrollments, back_populating, click_rate_formatted, created_dts, deleted, email_communication_sequence_uuid, email_flow_uuid, end_once_customer_purchases, end_once_customer_purchases_anywhere, enrolled_customers, esp_domain_user, esp_domain_uuid, esp_flow_folder_uuid, esp_friendly_name, filter_profile_equation_json, library_item_oid, maximum_enrolled, merchant_id, name, open_rate_formatted, reentry_delay_days, reentry_policy, revenue_formatted, revenue_per_customer_formatted, screenshot_large_full_url, sms_esp_twilio_uuid, sms_phone_number, status, status_dts, storefront_oid, trigger_parameter, trigger_parameter_name, trigger_type].hash
     end
 
     # Builds the object from hash
