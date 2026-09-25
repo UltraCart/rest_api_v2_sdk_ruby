@@ -85,6 +85,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**remove_sfvb_page_items**](SfvbApi.md#remove_sfvb_page_items) | **POST** /sfvb/storefronts/{storefront_oid}/pages/items/remove | Take items off a page |
 | [**render_sfvb_widgets**](SfvbApi.md#render_sfvb_widgets) | **POST** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/render | Render a CJSON node to HTML |
 | [**reserve_sfvb_widget_ids**](SfvbApi.md#reserve_sfvb_widget_ids) | **POST** /sfvb/storefronts/{storefront_oid}/widget_ids | Reserve a block of widget ids |
+| [**resolve_sfvb_template**](SfvbApi.md#resolve_sfvb_template) | **GET** /sfvb/storefronts/{storefront_oid}/templates/resolve | Resolve a template name to the file a page renders |
 | [**revert_sfvb_container**](SfvbApi.md#revert_sfvb_container) | **POST** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id}/revert | Revert a container stored outside the file system |
 | [**revert_sfvb_file**](SfvbApi.md#revert_sfvb_file) | **POST** /sfvb/storefronts/{storefront_oid}/files/revert | Revert a storefront file to an earlier version |
 | [**search_sfvb_files**](SfvbApi.md#search_sfvb_files) | **POST** /sfvb/storefronts/{storefront_oid}/files/search | Search storefront files |
@@ -1086,7 +1087,7 @@ end
 
 End an experiment
 
-Ends a running experiment.  With winner_variation_number the winner gets all new visitors, and a page experiment's winning content is promoted into the page by the completion job on its next run, which also emails the merchant.  Without a winner a page experiment's id is cleared from its page body so the page shows variation 0, and a url experiment sends everyone to variation 0.  Visitors already assigned to a url experiment keep their page for up to 30 days.  Always needs sfvb_publish. 
+Ends a running experiment.  With winner_variation_number the winner gets every visitor, including visitors already assigned to another variation, and a page experiment's winning content is promoted into the page by the completion job on its next run, which also emails the merchant.  Without a winner a page experiment's id is cleared from its page body so the page shows variation 0, and a url experiment sends everyone to variation 0.  Always needs sfvb_publish. 
 
 
 ### Examples
@@ -4518,6 +4519,61 @@ end
 ### Return type
 
 [**SfvbWidgetIdsResponse**](SfvbWidgetIdsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## resolve_sfvb_template
+
+> <SfvbTemplateResolveResponse> resolve_sfvb_template(storefront_oid, name, opts)
+
+Resolve a template name to the file a page renders
+
+A page stores only its template's file name.  This runs the storefront's own template search for that name and returns the file a page naming it renders, relative to the theme.  It also lists the theme's resource paths in search order with every file of that name below each, so a theme copy overriding a shared core copy, or a copy in a snippets folder that is never used, is visible.  exists is false when a page naming the template cannot render. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the resolve_sfvb_template_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbTemplateResolveResponse>, Integer, Hash)> resolve_sfvb_template_with_http_info(storefront_oid, name, opts)
+
+```ruby
+begin
+  # Resolve a template name to the file a page renders
+  data, status_code, headers = api_instance.resolve_sfvb_template_with_http_info(storefront_oid, name, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbTemplateResolveResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->resolve_sfvb_template_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **name** | **String** | The template file name, such as catalog.vm |  |
+| **theme_oid** | **Integer** | Resolve in this theme instead of the active theme | [optional] |
+
+### Return type
+
+[**SfvbTemplateResolveResponse**](SfvbTemplateResolveResponse.md)
 
 ### Authorization
 

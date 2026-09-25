@@ -1355,7 +1355,7 @@ module UltracartClient
     end
 
     # End an experiment
-    # Ends a running experiment.  With winner_variation_number the winner gets all new visitors, and a page experiment's winning content is promoted into the page by the completion job on its next run, which also emails the merchant.  Without a winner a page experiment's id is cleared from its page body so the page shows variation 0, and a url experiment sends everyone to variation 0.  Visitors already assigned to a url experiment keep their page for up to 30 days.  Always needs sfvb_publish. 
+    # Ends a running experiment.  With winner_variation_number the winner gets every visitor, including visitors already assigned to another variation, and a page experiment's winning content is promoted into the page by the completion job on its next run, which also emails the merchant.  Without a winner a page experiment's id is cleared from its page body so the page shows variation 0, and a url experiment sends everyone to variation 0.  Always needs sfvb_publish. 
     # @param storefront_oid [Integer] 
     # @param experiment_oid [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1367,7 +1367,7 @@ module UltracartClient
     end
 
     # End an experiment
-    # Ends a running experiment.  With winner_variation_number the winner gets all new visitors, and a page experiment&#39;s winning content is promoted into the page by the completion job on its next run, which also emails the merchant.  Without a winner a page experiment&#39;s id is cleared from its page body so the page shows variation 0, and a url experiment sends everyone to variation 0.  Visitors already assigned to a url experiment keep their page for up to 30 days.  Always needs sfvb_publish. 
+    # Ends a running experiment.  With winner_variation_number the winner gets every visitor, including visitors already assigned to another variation, and a page experiment&#39;s winning content is promoted into the page by the completion job on its next run, which also emails the merchant.  Without a winner a page experiment&#39;s id is cleared from its page body so the page shows variation 0, and a url experiment sends everyone to variation 0.  Always needs sfvb_publish. 
     # @param storefront_oid [Integer] 
     # @param experiment_oid [Integer] 
     # @param [Hash] opts the optional parameters
@@ -6029,6 +6029,80 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#reserve_sfvb_widget_ids\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Resolve a template name to the file a page renders
+    # A page stores only its template's file name.  This runs the storefront's own template search for that name and returns the file a page naming it renders, relative to the theme.  It also lists the theme's resource paths in search order with every file of that name below each, so a theme copy overriding a shared core copy, or a copy in a snippets folder that is never used, is visible.  exists is false when a page naming the template cannot render. 
+    # @param storefront_oid [Integer] 
+    # @param name [String] The template file name, such as catalog.vm
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :theme_oid Resolve in this theme instead of the active theme
+    # @return [SfvbTemplateResolveResponse]
+    def resolve_sfvb_template(storefront_oid, name, opts = {})
+      data, _status_code, _headers = resolve_sfvb_template_with_http_info(storefront_oid, name, opts)
+      data
+    end
+
+    # Resolve a template name to the file a page renders
+    # A page stores only its template&#39;s file name.  This runs the storefront&#39;s own template search for that name and returns the file a page naming it renders, relative to the theme.  It also lists the theme&#39;s resource paths in search order with every file of that name below each, so a theme copy overriding a shared core copy, or a copy in a snippets folder that is never used, is visible.  exists is false when a page naming the template cannot render. 
+    # @param storefront_oid [Integer] 
+    # @param name [String] The template file name, such as catalog.vm
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :theme_oid Resolve in this theme instead of the active theme
+    # @return [Array<(SfvbTemplateResolveResponse, Integer, Hash)>] SfvbTemplateResolveResponse data, response status code and response headers
+    def resolve_sfvb_template_with_http_info(storefront_oid, name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.resolve_sfvb_template ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.resolve_sfvb_template"
+      end
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling SfvbApi.resolve_sfvb_template"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/templates/resolve'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'name'] = name
+      query_params[:'theme_oid'] = opts[:'theme_oid'] if !opts[:'theme_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTemplateResolveResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.resolve_sfvb_template",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#resolve_sfvb_template\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
