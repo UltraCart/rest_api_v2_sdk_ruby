@@ -1055,6 +1055,8 @@ docs/SfvbPageItemsResponse.md
 docs/SfvbPageListResponse.md
 docs/SfvbPageMultimedia.md
 docs/SfvbPageMultimediaRequest.md
+docs/SfvbPageRefreshRequest.md
+docs/SfvbPageRefreshResponse.md
 docs/SfvbPageResponse.md
 docs/SfvbPageSelectors.md
 docs/SfvbPageSettingsRequest.md
@@ -2261,6 +2263,8 @@ lib/ultracart_api/models/sfvb_page_items_response.rb
 lib/ultracart_api/models/sfvb_page_list_response.rb
 lib/ultracart_api/models/sfvb_page_multimedia.rb
 lib/ultracart_api/models/sfvb_page_multimedia_request.rb
+lib/ultracart_api/models/sfvb_page_refresh_request.rb
+lib/ultracart_api/models/sfvb_page_refresh_response.rb
 lib/ultracart_api/models/sfvb_page_response.rb
 lib/ultracart_api/models/sfvb_page_selectors.rb
 lib/ultracart_api/models/sfvb_page_settings_request.rb

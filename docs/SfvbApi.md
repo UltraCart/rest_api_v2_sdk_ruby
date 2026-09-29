@@ -81,6 +81,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**put_sfvb_preview_session**](SfvbApi.md#put_sfvb_preview_session) | **PUT** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id} | Push containers into a preview session |
 | [**put_sfvb_site_attributes**](SfvbApi.md#put_sfvb_site_attributes) | **PUT** /sfvb/storefronts/{storefront_oid}/attributes | Change a storefront&#39;s site attributes |
 | [**put_sfvb_theme_attributes**](SfvbApi.md#put_sfvb_theme_attributes) | **PUT** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/attributes | Change a theme&#39;s colors, fonts and settings |
+| [**refresh_sfvb_page**](SfvbApi.md#refresh_sfvb_page) | **POST** /sfvb/storefronts/{storefront_oid}/pages/refresh | Drop one page&#39;s cached copy |
 | [**remove_sfvb_page_blog_posts**](SfvbApi.md#remove_sfvb_page_blog_posts) | **POST** /sfvb/storefronts/{storefront_oid}/pages/blog_posts/remove | Take blog posts off a page |
 | [**remove_sfvb_page_items**](SfvbApi.md#remove_sfvb_page_items) | **POST** /sfvb/storefronts/{storefront_oid}/pages/items/remove | Take items off a page |
 | [**render_sfvb_widgets**](SfvbApi.md#render_sfvb_widgets) | **POST** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/render | Render a CJSON node to HTML |
@@ -4300,6 +4301,60 @@ end
 ### Return type
 
 [**SfvbThemeAttributesResponse**](SfvbThemeAttributesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## refresh_sfvb_page
+
+> <SfvbPageRefreshResponse> refresh_sfvb_page(storefront_oid, page_refresh_request)
+
+Drop one page's cached copy
+
+The next request renders the page fresh.  Use it when a write succeeded, a read shows the new value, and the public page still shows the old one.  Writes normally refresh the pages they affect, so a stale page after a write is a bug worth reporting with its URL.  One page per request.  The response says whether the page had a cached copy and whether anything was dropped. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the refresh_sfvb_page_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbPageRefreshResponse>, Integer, Hash)> refresh_sfvb_page_with_http_info(storefront_oid, page_refresh_request)
+
+```ruby
+begin
+  # Drop one page's cached copy
+  data, status_code, headers = api_instance.refresh_sfvb_page_with_http_info(storefront_oid, page_refresh_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbPageRefreshResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->refresh_sfvb_page_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **page_refresh_request** | [**SfvbPageRefreshRequest**](SfvbPageRefreshRequest.md) | The page to refresh |  |
+
+### Return type
+
+[**SfvbPageRefreshResponse**](SfvbPageRefreshResponse.md)
 
 ### Authorization
 
