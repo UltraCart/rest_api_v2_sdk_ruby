@@ -14,44 +14,38 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class TaxProvidersResponse
-    attr_accessor :anrok
+  class TaxCloudConfig
+    # TaxCloud API key
+    attr_accessor :api_key
 
-    attr_accessor :avalara
+    # TaxCloud Connection ID (a UUID) identifying the TaxCloud connection to use; a test connection and a production connection have different IDs
+    attr_accessor :connection_id
 
-    attr_accessor :error
+    # Default TaxCloud TIC (Taxability Information Code), used for items that do not have their own TIC; blank lets TaxCloud apply its default (0, general goods)
+    attr_accessor :default_tic
 
-    attr_accessor :metadata
+    # True if this TaxCloud configuration is to estimate taxes only and not report placed orders to TaxCloud
+    attr_accessor :estimate_only
 
-    attr_accessor :_self
+    # Date/time of the connection test to TaxCloud
+    attr_accessor :last_test_dts
 
-    attr_accessor :sovos
+    # TaxCloud TIC used to classify shipping/handling charges (11000 = shipping and handling); blank means shipping is not taxed
+    attr_accessor :shipping_tic
 
-    # Indicates if API call was successful
-    attr_accessor :success
-
-    attr_accessor :taxcloud
-
-    attr_accessor :taxjar
-
-    attr_accessor :ultracart
-
-    attr_accessor :warning
+    # Test results of the last connection test to TaxCloud
+    attr_accessor :test_results
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'anrok' => :'anrok',
-        :'avalara' => :'avalara',
-        :'error' => :'error',
-        :'metadata' => :'metadata',
-        :'_self' => :'self',
-        :'sovos' => :'sovos',
-        :'success' => :'success',
-        :'taxcloud' => :'taxcloud',
-        :'taxjar' => :'taxjar',
-        :'ultracart' => :'ultracart',
-        :'warning' => :'warning'
+        :'api_key' => :'api_key',
+        :'connection_id' => :'connection_id',
+        :'default_tic' => :'default_tic',
+        :'estimate_only' => :'estimate_only',
+        :'last_test_dts' => :'last_test_dts',
+        :'shipping_tic' => :'shipping_tic',
+        :'test_results' => :'test_results'
       }
     end
 
@@ -63,17 +57,13 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'anrok' => :'TaxProviderAnrok',
-        :'avalara' => :'TaxProviderAvalara',
-        :'error' => :'Error',
-        :'metadata' => :'ResponseMetadata',
-        :'_self' => :'TaxProviderSelf',
-        :'sovos' => :'TaxProviderSovos',
-        :'success' => :'Boolean',
-        :'taxcloud' => :'TaxProviderTaxCloud',
-        :'taxjar' => :'TaxProviderTaxJar',
-        :'ultracart' => :'TaxProviderUltraCart',
-        :'warning' => :'Warning'
+        :'api_key' => :'String',
+        :'connection_id' => :'String',
+        :'default_tic' => :'String',
+        :'estimate_only' => :'Boolean',
+        :'last_test_dts' => :'String',
+        :'shipping_tic' => :'String',
+        :'test_results' => :'String'
       }
     end
 
@@ -87,59 +77,43 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::TaxProvidersResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::TaxCloudConfig` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::TaxProvidersResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::TaxCloudConfig`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'anrok')
-        self.anrok = attributes[:'anrok']
+      if attributes.key?(:'api_key')
+        self.api_key = attributes[:'api_key']
       end
 
-      if attributes.key?(:'avalara')
-        self.avalara = attributes[:'avalara']
+      if attributes.key?(:'connection_id')
+        self.connection_id = attributes[:'connection_id']
       end
 
-      if attributes.key?(:'error')
-        self.error = attributes[:'error']
+      if attributes.key?(:'default_tic')
+        self.default_tic = attributes[:'default_tic']
       end
 
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
+      if attributes.key?(:'estimate_only')
+        self.estimate_only = attributes[:'estimate_only']
       end
 
-      if attributes.key?(:'_self')
-        self._self = attributes[:'_self']
+      if attributes.key?(:'last_test_dts')
+        self.last_test_dts = attributes[:'last_test_dts']
       end
 
-      if attributes.key?(:'sovos')
-        self.sovos = attributes[:'sovos']
+      if attributes.key?(:'shipping_tic')
+        self.shipping_tic = attributes[:'shipping_tic']
       end
 
-      if attributes.key?(:'success')
-        self.success = attributes[:'success']
-      end
-
-      if attributes.key?(:'taxcloud')
-        self.taxcloud = attributes[:'taxcloud']
-      end
-
-      if attributes.key?(:'taxjar')
-        self.taxjar = attributes[:'taxjar']
-      end
-
-      if attributes.key?(:'ultracart')
-        self.ultracart = attributes[:'ultracart']
-      end
-
-      if attributes.key?(:'warning')
-        self.warning = attributes[:'warning']
+      if attributes.key?(:'test_results')
+        self.test_results = attributes[:'test_results']
       end
     end
 
@@ -161,17 +135,13 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          anrok == o.anrok &&
-          avalara == o.avalara &&
-          error == o.error &&
-          metadata == o.metadata &&
-          _self == o._self &&
-          sovos == o.sovos &&
-          success == o.success &&
-          taxcloud == o.taxcloud &&
-          taxjar == o.taxjar &&
-          ultracart == o.ultracart &&
-          warning == o.warning
+          api_key == o.api_key &&
+          connection_id == o.connection_id &&
+          default_tic == o.default_tic &&
+          estimate_only == o.estimate_only &&
+          last_test_dts == o.last_test_dts &&
+          shipping_tic == o.shipping_tic &&
+          test_results == o.test_results
     end
 
     # @see the `==` method
@@ -183,7 +153,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [anrok, avalara, error, metadata, _self, sovos, success, taxcloud, taxjar, ultracart, warning].hash
+      [api_key, connection_id, default_tic, estimate_only, last_test_dts, shipping_tic, test_results].hash
     end
 
     # Builds the object from hash

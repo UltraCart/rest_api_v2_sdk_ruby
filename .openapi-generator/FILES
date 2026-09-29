@@ -1123,6 +1123,7 @@ docs/StoreFrontsResponse.md
 docs/StorefrontApi.md
 docs/TaxApi.md
 docs/TaxCity.md
+docs/TaxCloudConfig.md
 docs/TaxCountry.md
 docs/TaxCountryCode.md
 docs/TaxCounty.md
@@ -1130,6 +1131,8 @@ docs/TaxJarConfig.md
 docs/TaxPostalCode.md
 docs/TaxProviderActivateResult.md
 docs/TaxProviderAnrok.md
+docs/TaxProviderAnrokProduct.md
+docs/TaxProviderAnrokTestResult.md
 docs/TaxProviderAvalara.md
 docs/TaxProviderAvalaraCompaniesResult.md
 docs/TaxProviderAvalaraCompany.md
@@ -1137,6 +1140,7 @@ docs/TaxProviderSelf.md
 docs/TaxProviderSelfCountriesResponse.md
 docs/TaxProviderSelfRegionsResponse.md
 docs/TaxProviderSovos.md
+docs/TaxProviderTaxCloud.md
 docs/TaxProviderTaxJar.md
 docs/TaxProviderTestResult.md
 docs/TaxProviderUltraCart.md
@@ -2328,6 +2332,7 @@ lib/ultracart_api/models/store_front.rb
 lib/ultracart_api/models/store_front_page_content_attribute.rb
 lib/ultracart_api/models/store_fronts_response.rb
 lib/ultracart_api/models/tax_city.rb
+lib/ultracart_api/models/tax_cloud_config.rb
 lib/ultracart_api/models/tax_country.rb
 lib/ultracart_api/models/tax_country_code.rb
 lib/ultracart_api/models/tax_county.rb
@@ -2335,6 +2340,8 @@ lib/ultracart_api/models/tax_jar_config.rb
 lib/ultracart_api/models/tax_postal_code.rb
 lib/ultracart_api/models/tax_provider_activate_result.rb
 lib/ultracart_api/models/tax_provider_anrok.rb
+lib/ultracart_api/models/tax_provider_anrok_product.rb
+lib/ultracart_api/models/tax_provider_anrok_test_result.rb
 lib/ultracart_api/models/tax_provider_avalara.rb
 lib/ultracart_api/models/tax_provider_avalara_companies_result.rb
 lib/ultracart_api/models/tax_provider_avalara_company.rb
@@ -2342,6 +2349,7 @@ lib/ultracart_api/models/tax_provider_self.rb
 lib/ultracart_api/models/tax_provider_self_countries_response.rb
 lib/ultracart_api/models/tax_provider_self_regions_response.rb
 lib/ultracart_api/models/tax_provider_sovos.rb
+lib/ultracart_api/models/tax_provider_tax_cloud.rb
 lib/ultracart_api/models/tax_provider_tax_jar.rb
 lib/ultracart_api/models/tax_provider_test_result.rb
 lib/ultracart_api/models/tax_provider_ultra_cart.rb

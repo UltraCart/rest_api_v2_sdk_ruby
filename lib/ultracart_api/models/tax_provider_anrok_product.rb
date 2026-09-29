@@ -14,44 +14,26 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class TaxProvidersResponse
-    attr_accessor :anrok
+  class TaxProviderAnrokProduct
+    # Product description in Anrok
+    attr_accessor :description
 
-    attr_accessor :avalara
+    # Anrok product external id.  This is the value to enter as the item's Anrok Product ID.
+    attr_accessor :external_id
 
-    attr_accessor :error
+    # Product name in Anrok
+    attr_accessor :name
 
-    attr_accessor :metadata
-
-    attr_accessor :_self
-
-    attr_accessor :sovos
-
-    # Indicates if API call was successful
-    attr_accessor :success
-
-    attr_accessor :taxcloud
-
-    attr_accessor :taxjar
-
-    attr_accessor :ultracart
-
-    attr_accessor :warning
+    # Anrok product tax category applied to this product, for example \"SaaS - General, B2C\"
+    attr_accessor :tax_category_name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'anrok' => :'anrok',
-        :'avalara' => :'avalara',
-        :'error' => :'error',
-        :'metadata' => :'metadata',
-        :'_self' => :'self',
-        :'sovos' => :'sovos',
-        :'success' => :'success',
-        :'taxcloud' => :'taxcloud',
-        :'taxjar' => :'taxjar',
-        :'ultracart' => :'ultracart',
-        :'warning' => :'warning'
+        :'description' => :'description',
+        :'external_id' => :'external_id',
+        :'name' => :'name',
+        :'tax_category_name' => :'tax_category_name'
       }
     end
 
@@ -63,17 +45,10 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'anrok' => :'TaxProviderAnrok',
-        :'avalara' => :'TaxProviderAvalara',
-        :'error' => :'Error',
-        :'metadata' => :'ResponseMetadata',
-        :'_self' => :'TaxProviderSelf',
-        :'sovos' => :'TaxProviderSovos',
-        :'success' => :'Boolean',
-        :'taxcloud' => :'TaxProviderTaxCloud',
-        :'taxjar' => :'TaxProviderTaxJar',
-        :'ultracart' => :'TaxProviderUltraCart',
-        :'warning' => :'Warning'
+        :'description' => :'String',
+        :'external_id' => :'String',
+        :'name' => :'String',
+        :'tax_category_name' => :'String'
       }
     end
 
@@ -87,59 +62,31 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::TaxProvidersResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::TaxProviderAnrokProduct` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::TaxProvidersResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::TaxProviderAnrokProduct`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'anrok')
-        self.anrok = attributes[:'anrok']
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
-      if attributes.key?(:'avalara')
-        self.avalara = attributes[:'avalara']
+      if attributes.key?(:'external_id')
+        self.external_id = attributes[:'external_id']
       end
 
-      if attributes.key?(:'error')
-        self.error = attributes[:'error']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
-      end
-
-      if attributes.key?(:'_self')
-        self._self = attributes[:'_self']
-      end
-
-      if attributes.key?(:'sovos')
-        self.sovos = attributes[:'sovos']
-      end
-
-      if attributes.key?(:'success')
-        self.success = attributes[:'success']
-      end
-
-      if attributes.key?(:'taxcloud')
-        self.taxcloud = attributes[:'taxcloud']
-      end
-
-      if attributes.key?(:'taxjar')
-        self.taxjar = attributes[:'taxjar']
-      end
-
-      if attributes.key?(:'ultracart')
-        self.ultracart = attributes[:'ultracart']
-      end
-
-      if attributes.key?(:'warning')
-        self.warning = attributes[:'warning']
+      if attributes.key?(:'tax_category_name')
+        self.tax_category_name = attributes[:'tax_category_name']
       end
     end
 
@@ -161,17 +108,10 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          anrok == o.anrok &&
-          avalara == o.avalara &&
-          error == o.error &&
-          metadata == o.metadata &&
-          _self == o._self &&
-          sovos == o.sovos &&
-          success == o.success &&
-          taxcloud == o.taxcloud &&
-          taxjar == o.taxjar &&
-          ultracart == o.ultracart &&
-          warning == o.warning
+          description == o.description &&
+          external_id == o.external_id &&
+          name == o.name &&
+          tax_category_name == o.tax_category_name
     end
 
     # @see the `==` method
@@ -183,7 +123,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [anrok, avalara, error, metadata, _self, sovos, success, taxcloud, taxjar, ultracart, warning].hash
+      [description, external_id, name, tax_category_name].hash
     end
 
     # Builds the object from hash

@@ -19,6 +19,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_tax_provider_self_regions_by_country_code**](TaxApi.md#get_tax_provider_self_regions_by_country_code) | **GET** /tax/providers/self/regions/{countryCode} | Retrieve the Self tax provider regions for a given country code |
 | [**get_tax_provider_sovos**](TaxApi.md#get_tax_provider_sovos) | **GET** /tax/providers/sovos | Retrieve the Sovos tax provider |
 | [**get_tax_provider_sovos_test**](TaxApi.md#get_tax_provider_sovos_test) | **GET** /tax/providers/sovos/test | Attempts to connect to Sovos and returns back the response |
+| [**get_tax_provider_tax_cloud**](TaxApi.md#get_tax_provider_tax_cloud) | **GET** /tax/providers/taxcloud | Retrieve the TaxCloud tax provider |
+| [**get_tax_provider_tax_cloud_test**](TaxApi.md#get_tax_provider_tax_cloud_test) | **GET** /tax/providers/taxcloud/test | Attempts to connect to TaxCloud and returns back the response |
 | [**get_tax_provider_tax_jar**](TaxApi.md#get_tax_provider_tax_jar) | **GET** /tax/providers/taxjar | Retrieve the TaxJar tax provider |
 | [**get_tax_provider_tax_jar_test**](TaxApi.md#get_tax_provider_tax_jar_test) | **GET** /tax/providers/taxjar/test | Attempts to connect to TaxJar and returns back the response |
 | [**get_tax_provider_ultra_cart**](TaxApi.md#get_tax_provider_ultra_cart) | **GET** /tax/providers/ultracart | Retrieve the UltraCart tax provider |
@@ -33,6 +35,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**update_tax_provider_self_postal_code**](TaxApi.md#update_tax_provider_self_postal_code) | **POST** /tax/providers/self/postalCode/{postal_code} | Updates a Self tax provider postalCode |
 | [**update_tax_provider_self_state**](TaxApi.md#update_tax_provider_self_state) | **POST** /tax/providers/self/state/{stateCode} | Updates a Self tax provider state |
 | [**update_tax_provider_sovos**](TaxApi.md#update_tax_provider_sovos) | **POST** /tax/providers/sovos | Update the Sovos tax provider |
+| [**update_tax_provider_tax_cloud**](TaxApi.md#update_tax_provider_tax_cloud) | **POST** /tax/providers/taxcloud | Update the TaxCloud tax provider |
 | [**update_tax_provider_tax_jar**](TaxApi.md#update_tax_provider_tax_jar) | **POST** /tax/providers/taxjar | Update the TaxJar tax provider |
 | [**update_tax_provider_ultra_cart**](TaxApi.md#update_tax_provider_ultra_cart) | **POST** /tax/providers/ultracart | Update the UltraCart tax provider |
 
@@ -365,11 +368,11 @@ This endpoint does not need any parameter.
 
 ## get_tax_provider_anrok_test
 
-> <TaxProviderTestResult> get_tax_provider_anrok_test
+> <TaxProviderAnrokTestResult> get_tax_provider_anrok_test
 
 Attempts to connect to Anrok and returns back the response
 
-Attempts to connect to Anrok and returns back the response. 
+Attempts to connect to Anrok and returns back the response, including the products configured on the merchant's Anrok account. 
 
 
 ### Examples
@@ -382,7 +385,7 @@ Attempts to connect to Anrok and returns back the response.
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<TaxProviderTestResult>, Integer, Hash)> get_tax_provider_anrok_test_with_http_info
+> <Array(<TaxProviderAnrokTestResult>, Integer, Hash)> get_tax_provider_anrok_test_with_http_info
 
 ```ruby
 begin
@@ -390,7 +393,7 @@ begin
   data, status_code, headers = api_instance.get_tax_provider_anrok_test_with_http_info
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <TaxProviderTestResult>
+  p data # => <TaxProviderAnrokTestResult>
 rescue UltracartClient::ApiError => e
   puts "Error when calling TaxApi->get_tax_provider_anrok_test_with_http_info: #{e}"
 end
@@ -402,7 +405,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TaxProviderTestResult**](TaxProviderTestResult.md)
+[**TaxProviderAnrokTestResult**](TaxProviderAnrokTestResult.md)
 
 ### Authorization
 
@@ -813,6 +816,108 @@ begin
   p data # => <TaxProviderTestResult>
 rescue UltracartClient::ApiError => e
   puts "Error when calling TaxApi->get_tax_provider_sovos_test_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**TaxProviderTestResult**](TaxProviderTestResult.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_tax_provider_tax_cloud
+
+> <TaxProviderTaxCloud> get_tax_provider_tax_cloud
+
+Retrieve the TaxCloud tax provider
+
+Retrieves the TaxCloud tax provider. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_tax_provider_tax_cloud_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TaxProviderTaxCloud>, Integer, Hash)> get_tax_provider_tax_cloud_with_http_info
+
+```ruby
+begin
+  # Retrieve the TaxCloud tax provider
+  data, status_code, headers = api_instance.get_tax_provider_tax_cloud_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TaxProviderTaxCloud>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling TaxApi->get_tax_provider_tax_cloud_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**TaxProviderTaxCloud**](TaxProviderTaxCloud.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_tax_provider_tax_cloud_test
+
+> <TaxProviderTestResult> get_tax_provider_tax_cloud_test
+
+Attempts to connect to TaxCloud and returns back the response
+
+Attempts to connect to TaxCloud with the saved API key and Connection ID and returns back the response. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_tax_provider_tax_cloud_test_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TaxProviderTestResult>, Integer, Hash)> get_tax_provider_tax_cloud_test_with_http_info
+
+```ruby
+begin
+  # Attempts to connect to TaxCloud and returns back the response
+  data, status_code, headers = api_instance.get_tax_provider_tax_cloud_test_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TaxProviderTestResult>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling TaxApi->get_tax_provider_tax_cloud_test_with_http_info: #{e}"
 end
 ```
 
@@ -1579,6 +1684,59 @@ end
 ### Return type
 
 [**TaxProviderSovos**](TaxProviderSovos.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_tax_provider_tax_cloud
+
+> <TaxProviderTaxCloud> update_tax_provider_tax_cloud(tax_provider_taxcloud)
+
+Update the TaxCloud tax provider
+
+Update the TaxCloud tax provider. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_tax_provider_tax_cloud_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TaxProviderTaxCloud>, Integer, Hash)> update_tax_provider_tax_cloud_with_http_info(tax_provider_taxcloud)
+
+```ruby
+begin
+  # Update the TaxCloud tax provider
+  data, status_code, headers = api_instance.update_tax_provider_tax_cloud_with_http_info(tax_provider_taxcloud)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TaxProviderTaxCloud>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling TaxApi->update_tax_provider_tax_cloud_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **tax_provider_taxcloud** | [**TaxProviderTaxCloud**](TaxProviderTaxCloud.md) | TaxProviderTaxCloud object |  |
+
+### Return type
+
+[**TaxProviderTaxCloud**](TaxProviderTaxCloud.md)
 
 ### Authorization
 

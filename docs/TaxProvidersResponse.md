@@ -11,6 +11,7 @@
 | **_self** | [**TaxProviderSelf**](TaxProviderSelf.md) |  | [optional] |
 | **sovos** | [**TaxProviderSovos**](TaxProviderSovos.md) |  | [optional] |
 | **success** | **Boolean** | Indicates if API call was successful | [optional] |
+| **taxcloud** | [**TaxProviderTaxCloud**](TaxProviderTaxCloud.md) |  | [optional] |
 | **taxjar** | [**TaxProviderTaxJar**](TaxProviderTaxJar.md) |  | [optional] |
 | **ultracart** | [**TaxProviderUltraCart**](TaxProviderUltraCart.md) |  | [optional] |
 | **warning** | [**Warning**](Warning.md) |  | [optional] |
@@ -28,6 +29,7 @@ instance = UltracartClient::TaxProvidersResponse.new(
   _self: null,
   sovos: null,
   success: null,
+  taxcloud: null,
   taxjar: null,
   ultracart: null,
   warning: null
