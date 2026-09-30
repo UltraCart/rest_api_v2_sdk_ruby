@@ -266,6 +266,87 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Attach an image to a blog post
+    # Three calls, like the admin blog editor's upload.  Request an upload URL with files/upload_url, send the bytes to it, then attach with the key and a filename.  No storefront file is created, and the key is redeemed, so it cannot be used twice.  default_image replaces the post's default image and code replaces the image with that code; with neither, the image is added for use in the body at the url the response reports.  JPEG, PNG, GIF or WebP, checked by content.  A post that is not a draft needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param blog_post_oid [Integer] 
+    # @param blog_post_image_request [SfvbBlogPostImageRequest] Image to attach
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbBlogPostDetail]
+    def attach_sfvb_blog_post_image(storefront_oid, blog_post_oid, blog_post_image_request, opts = {})
+      data, _status_code, _headers = attach_sfvb_blog_post_image_with_http_info(storefront_oid, blog_post_oid, blog_post_image_request, opts)
+      data
+    end
+
+    # Attach an image to a blog post
+    # Three calls, like the admin blog editor&#39;s upload.  Request an upload URL with files/upload_url, send the bytes to it, then attach with the key and a filename.  No storefront file is created, and the key is redeemed, so it cannot be used twice.  default_image replaces the post&#39;s default image and code replaces the image with that code; with neither, the image is added for use in the body at the url the response reports.  JPEG, PNG, GIF or WebP, checked by content.  A post that is not a draft needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param blog_post_oid [Integer] 
+    # @param blog_post_image_request [SfvbBlogPostImageRequest] Image to attach
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbBlogPostDetail, Integer, Hash)>] SfvbBlogPostDetail data, response status code and response headers
+    def attach_sfvb_blog_post_image_with_http_info(storefront_oid, blog_post_oid, blog_post_image_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.attach_sfvb_blog_post_image ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.attach_sfvb_blog_post_image"
+      end
+      # verify the required parameter 'blog_post_oid' is set
+      if @api_client.config.client_side_validation && blog_post_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'blog_post_oid' when calling SfvbApi.attach_sfvb_blog_post_image"
+      end
+      # verify the required parameter 'blog_post_image_request' is set
+      if @api_client.config.client_side_validation && blog_post_image_request.nil?
+        fail ArgumentError, "Missing the required parameter 'blog_post_image_request' when calling SfvbApi.attach_sfvb_blog_post_image"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid}/images/attach'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'blog_post_oid' + '}', CGI.escape(blog_post_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(blog_post_image_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbBlogPostDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.attach_sfvb_blog_post_image",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#attach_sfvb_blog_post_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Compile CJSON to Velocity
     # Compiles a container document to Velocity without storing anything.  Supply theme_oid to compile with the theme's inherit groups applied; omit it to compile standalone. 
     # @param compile_request [SfvbCompileRequest] CJSON to compile
@@ -466,6 +547,76 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#create_sfvb_preview_session\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a blog post
+    # Takes the post off every page and deletes it.  There is no undo.  A post that is not a draft needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param blog_post_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_sfvb_blog_post(storefront_oid, blog_post_oid, opts = {})
+      delete_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid, opts)
+      nil
+    end
+
+    # Delete a blog post
+    # Takes the post off every page and deletes it.  There is no undo.  A post that is not a draft needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param blog_post_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.delete_sfvb_blog_post ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.delete_sfvb_blog_post"
+      end
+      # verify the required parameter 'blog_post_oid' is set
+      if @api_client.config.client_side_validation && blog_post_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'blog_post_oid' when calling SfvbApi.delete_sfvb_blog_post"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'blog_post_oid' + '}', CGI.escape(blog_post_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.delete_sfvb_blog_post",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_blog_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -840,6 +991,87 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_preview_session\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Detach an image from a blog post
+    # Name exactly one of default_image, code or blog_post_multimedia_oid.  Removes the image from the post and deletes its stored copy.  Take it out of the body too, or the body keeps a broken image.  A post that is not a draft needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param blog_post_oid [Integer] 
+    # @param blog_post_image_request [SfvbBlogPostImageRequest] Image to detach
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbBlogPostDetail]
+    def detach_sfvb_blog_post_image(storefront_oid, blog_post_oid, blog_post_image_request, opts = {})
+      data, _status_code, _headers = detach_sfvb_blog_post_image_with_http_info(storefront_oid, blog_post_oid, blog_post_image_request, opts)
+      data
+    end
+
+    # Detach an image from a blog post
+    # Name exactly one of default_image, code or blog_post_multimedia_oid.  Removes the image from the post and deletes its stored copy.  Take it out of the body too, or the body keeps a broken image.  A post that is not a draft needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param blog_post_oid [Integer] 
+    # @param blog_post_image_request [SfvbBlogPostImageRequest] Image to detach
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbBlogPostDetail, Integer, Hash)>] SfvbBlogPostDetail data, response status code and response headers
+    def detach_sfvb_blog_post_image_with_http_info(storefront_oid, blog_post_oid, blog_post_image_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.detach_sfvb_blog_post_image ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.detach_sfvb_blog_post_image"
+      end
+      # verify the required parameter 'blog_post_oid' is set
+      if @api_client.config.client_side_validation && blog_post_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'blog_post_oid' when calling SfvbApi.detach_sfvb_blog_post_image"
+      end
+      # verify the required parameter 'blog_post_image_request' is set
+      if @api_client.config.client_side_validation && blog_post_image_request.nil?
+        fail ArgumentError, "Missing the required parameter 'blog_post_image_request' when calling SfvbApi.detach_sfvb_blog_post_image"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid}/images/detach'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'blog_post_oid' + '}', CGI.escape(blog_post_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(blog_post_image_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbBlogPostDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.detach_sfvb_blog_post_image",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#detach_sfvb_blog_post_image\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1427,6 +1659,76 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#end_sfvb_experiment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read a blog post
+    # The whole post - body, excerpt, tags, images and where it is shown.  An image's url is the address to use for it in the body. 
+    # @param storefront_oid [Integer] 
+    # @param blog_post_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbBlogPostDetail]
+    def get_sfvb_blog_post(storefront_oid, blog_post_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid, opts)
+      data
+    end
+
+    # Read a blog post
+    # The whole post - body, excerpt, tags, images and where it is shown.  An image&#39;s url is the address to use for it in the body. 
+    # @param storefront_oid [Integer] 
+    # @param blog_post_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbBlogPostDetail, Integer, Hash)>] SfvbBlogPostDetail data, response status code and response headers
+    def get_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_blog_post ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_blog_post"
+      end
+      # verify the required parameter 'blog_post_oid' is set
+      if @api_client.config.client_side_validation && blog_post_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'blog_post_oid' when calling SfvbApi.get_sfvb_blog_post"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'blog_post_oid' + '}', CGI.escape(blog_post_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbBlogPostDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_blog_post",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_blog_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -3176,6 +3478,81 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_whoami\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a blog post
+    # title and url_part are required.  The post is a draft unless visibility says otherwise, and anything but a draft needs sfvb_publish.  The body and excerpt are refused with sfvb.unsafe_html if they could run script, and a url_part another post uses is refused with a 409 and sfvb.blog_post_exists.  Assign the post to a page with pages/blog_posts/add, or let the page's selectors choose it. 
+    # @param storefront_oid [Integer] 
+    # @param blog_post_request [SfvbBlogPostRequest] The blog post to create
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbBlogPostDetail]
+    def insert_sfvb_blog_post(storefront_oid, blog_post_request, opts = {})
+      data, _status_code, _headers = insert_sfvb_blog_post_with_http_info(storefront_oid, blog_post_request, opts)
+      data
+    end
+
+    # Create a blog post
+    # title and url_part are required.  The post is a draft unless visibility says otherwise, and anything but a draft needs sfvb_publish.  The body and excerpt are refused with sfvb.unsafe_html if they could run script, and a url_part another post uses is refused with a 409 and sfvb.blog_post_exists.  Assign the post to a page with pages/blog_posts/add, or let the page&#39;s selectors choose it. 
+    # @param storefront_oid [Integer] 
+    # @param blog_post_request [SfvbBlogPostRequest] The blog post to create
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbBlogPostDetail, Integer, Hash)>] SfvbBlogPostDetail data, response status code and response headers
+    def insert_sfvb_blog_post_with_http_info(storefront_oid, blog_post_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.insert_sfvb_blog_post ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.insert_sfvb_blog_post"
+      end
+      # verify the required parameter 'blog_post_request' is set
+      if @api_client.config.client_side_validation && blog_post_request.nil?
+        fail ArgumentError, "Missing the required parameter 'blog_post_request' when calling SfvbApi.insert_sfvb_blog_post"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/blog_posts'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(blog_post_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbBlogPostDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.insert_sfvb_blog_post",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_blog_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6653,6 +7030,87 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#unarchive_sfvb_upsell_path\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change a blog post
+    # Only the fields sent change; tags, when sent, replaces every tag.  The post's images and attributes are left alone.  Publish or unpublish with visibility.  A post that is not a draft before or after the change needs sfvb_publish.  The same content rules as create apply. 
+    # @param storefront_oid [Integer] 
+    # @param blog_post_oid [Integer] 
+    # @param blog_post_request [SfvbBlogPostRequest] The fields to change
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbBlogPostDetail]
+    def update_sfvb_blog_post(storefront_oid, blog_post_oid, blog_post_request, opts = {})
+      data, _status_code, _headers = update_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid, blog_post_request, opts)
+      data
+    end
+
+    # Change a blog post
+    # Only the fields sent change; tags, when sent, replaces every tag.  The post&#39;s images and attributes are left alone.  Publish or unpublish with visibility.  A post that is not a draft before or after the change needs sfvb_publish.  The same content rules as create apply. 
+    # @param storefront_oid [Integer] 
+    # @param blog_post_oid [Integer] 
+    # @param blog_post_request [SfvbBlogPostRequest] The fields to change
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbBlogPostDetail, Integer, Hash)>] SfvbBlogPostDetail data, response status code and response headers
+    def update_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid, blog_post_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_blog_post ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_blog_post"
+      end
+      # verify the required parameter 'blog_post_oid' is set
+      if @api_client.config.client_side_validation && blog_post_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'blog_post_oid' when calling SfvbApi.update_sfvb_blog_post"
+      end
+      # verify the required parameter 'blog_post_request' is set
+      if @api_client.config.client_side_validation && blog_post_request.nil?
+        fail ArgumentError, "Missing the required parameter 'blog_post_request' when calling SfvbApi.update_sfvb_blog_post"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'blog_post_oid' + '}', CGI.escape(blog_post_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(blog_post_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbBlogPostDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_blog_post",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_blog_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

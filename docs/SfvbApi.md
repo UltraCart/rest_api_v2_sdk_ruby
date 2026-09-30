@@ -7,14 +7,17 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**add_sfvb_page_blog_posts**](SfvbApi.md#add_sfvb_page_blog_posts) | **POST** /sfvb/storefronts/{storefront_oid}/pages/blog_posts/add | Assign blog posts to a page |
 | [**add_sfvb_page_items**](SfvbApi.md#add_sfvb_page_items) | **POST** /sfvb/storefronts/{storefront_oid}/pages/items/add | Assign items to a page |
 | [**archive_sfvb_upsell_path**](SfvbApi.md#archive_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/archive | Archive an upsell path |
+| [**attach_sfvb_blog_post_image**](SfvbApi.md#attach_sfvb_blog_post_image) | **POST** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid}/images/attach | Attach an image to a blog post |
 | [**compile_sfvb_cjson**](SfvbApi.md#compile_sfvb_cjson) | **POST** /sfvb/cjson/compile | Compile CJSON to Velocity |
 | [**create_sfvb_preview_access**](SfvbApi.md#create_sfvb_preview_access) | **POST** /sfvb/storefronts/{storefront_oid}/preview_access | One time link that opens a preview in a browser with no UltraCart login |
 | [**create_sfvb_preview_session**](SfvbApi.md#create_sfvb_preview_session) | **POST** /sfvb/storefronts/{storefront_oid}/preview_sessions | Create a preview session |
+| [**delete_sfvb_blog_post**](SfvbApi.md#delete_sfvb_blog_post) | **DELETE** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Delete a blog post |
 | [**delete_sfvb_file**](SfvbApi.md#delete_sfvb_file) | **DELETE** /sfvb/storefronts/{storefront_oid}/files | Delete a storefront file |
 | [**delete_sfvb_item_attribute**](SfvbApi.md#delete_sfvb_item_attribute) | **DELETE** /sfvb/storefronts/{storefront_oid}/items/attributes | Delete an attribute from an item |
 | [**delete_sfvb_item_multimedia**](SfvbApi.md#delete_sfvb_item_multimedia) | **DELETE** /sfvb/storefronts/{storefront_oid}/items/multimedia | Detach an image from an item |
 | [**delete_sfvb_page_multimedia**](SfvbApi.md#delete_sfvb_page_multimedia) | **DELETE** /sfvb/storefronts/{storefront_oid}/pages/multimedia | Detach an image from a page |
 | [**delete_sfvb_preview_session**](SfvbApi.md#delete_sfvb_preview_session) | **DELETE** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id} | Delete a preview session |
+| [**detach_sfvb_blog_post_image**](SfvbApi.md#detach_sfvb_blog_post_image) | **POST** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid}/images/detach | Detach an image from a blog post |
 | [**disable_sfvb_upsell_offer**](SfvbApi.md#disable_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/disable | Disable an upsell offer |
 | [**disable_sfvb_upsell_path**](SfvbApi.md#disable_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/disable | Disable an upsell path |
 | [**download_sfvb_file**](SfvbApi.md#download_sfvb_file) | **GET** /sfvb/storefronts/{storefront_oid}/files/download | Read a storefront file&#39;s raw bytes |
@@ -23,6 +26,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**duplicate_sfvb_upsell_offer**](SfvbApi.md#duplicate_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/duplicate | Duplicate an upsell offer |
 | [**duplicate_sfvb_upsell_path**](SfvbApi.md#duplicate_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/duplicate | Duplicate an upsell path or one of its variations |
 | [**end_sfvb_experiment**](SfvbApi.md#end_sfvb_experiment) | **POST** /sfvb/storefronts/{storefront_oid}/experiments/{experiment_oid}/end | End an experiment |
+| [**get_sfvb_blog_post**](SfvbApi.md#get_sfvb_blog_post) | **GET** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Read a blog post |
 | [**get_sfvb_cjson_used_elements**](SfvbApi.md#get_sfvb_cjson_used_elements) | **POST** /sfvb/cjson/elements | Element types used by a container |
 | [**get_sfvb_container**](SfvbApi.md#get_sfvb_container) | **GET** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id} | Read a container stored outside the file system |
 | [**get_sfvb_container_version**](SfvbApi.md#get_sfvb_container_version) | **GET** /sfvb/storefronts/{storefront_oid}/container_versions/{container_history_oid} | Read the CJSON stored in one container history entry |
@@ -48,6 +52,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_upsell_path**](SfvbApi.md#get_sfvb_upsell_path) | **GET** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid} | Get an upsell path |
 | [**get_sfvb_version**](SfvbApi.md#get_sfvb_version) | **GET** /sfvb/version | Compiler version for this merchant |
 | [**get_sfvb_whoami**](SfvbApi.md#get_sfvb_whoami) | **GET** /sfvb/whoami | Who this token is |
+| [**insert_sfvb_blog_post**](SfvbApi.md#insert_sfvb_blog_post) | **POST** /sfvb/storefronts/{storefront_oid}/blog_posts | Create a blog post |
 | [**insert_sfvb_page**](SfvbApi.md#insert_sfvb_page) | **POST** /sfvb/storefronts/{storefront_oid}/pages | Create a page |
 | [**insert_sfvb_upsell_offer**](SfvbApi.md#insert_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers | Create an upsell offer |
 | [**insert_sfvb_upsell_path**](SfvbApi.md#insert_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths | Create an upsell path |
@@ -93,6 +98,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**search_sfvb_library**](SfvbApi.md#search_sfvb_library) | **GET** /sfvb/storefronts/{storefront_oid}/library | Search the element library |
 | [**start_sfvb_experiment**](SfvbApi.md#start_sfvb_experiment) | **POST** /sfvb/storefronts/{storefront_oid}/experiments | Start an experiment |
 | [**unarchive_sfvb_upsell_path**](SfvbApi.md#unarchive_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/unarchive | Unarchive an upsell path |
+| [**update_sfvb_blog_post**](SfvbApi.md#update_sfvb_blog_post) | **PUT** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Change a blog post |
 | [**update_sfvb_upsell_offer**](SfvbApi.md#update_sfvb_upsell_offer) | **PUT** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid} | Update an upsell offer |
 | [**update_sfvb_upsell_path**](SfvbApi.md#update_sfvb_upsell_path) | **PUT** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid} | Update an upsell path |
 | [**upload_sfvb_file**](SfvbApi.md#upload_sfvb_file) | **POST** /sfvb/storefronts/{storefront_oid}/files/upload | Store a binary asset that was already uploaded |
@@ -264,6 +270,61 @@ end
 - **Accept**: application/json
 
 
+## attach_sfvb_blog_post_image
+
+> <SfvbBlogPostDetail> attach_sfvb_blog_post_image(storefront_oid, blog_post_oid, blog_post_image_request)
+
+Attach an image to a blog post
+
+Three calls, like the admin blog editor's upload.  Request an upload URL with files/upload_url, send the bytes to it, then attach with the key and a filename.  No storefront file is created, and the key is redeemed, so it cannot be used twice.  default_image replaces the post's default image and code replaces the image with that code; with neither, the image is added for use in the body at the url the response reports.  JPEG, PNG, GIF or WebP, checked by content.  A post that is not a draft needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the attach_sfvb_blog_post_image_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbBlogPostDetail>, Integer, Hash)> attach_sfvb_blog_post_image_with_http_info(storefront_oid, blog_post_oid, blog_post_image_request)
+
+```ruby
+begin
+  # Attach an image to a blog post
+  data, status_code, headers = api_instance.attach_sfvb_blog_post_image_with_http_info(storefront_oid, blog_post_oid, blog_post_image_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbBlogPostDetail>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->attach_sfvb_blog_post_image_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **blog_post_oid** | **Integer** |  |  |
+| **blog_post_image_request** | [**SfvbBlogPostImageRequest**](SfvbBlogPostImageRequest.md) | Image to attach |  |
+
+### Return type
+
+[**SfvbBlogPostDetail**](SfvbBlogPostDetail.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
 ## compile_sfvb_cjson
 
 > <SfvbCompileResponse> compile_sfvb_cjson(compile_request)
@@ -413,6 +474,60 @@ end
 ### Return type
 
 [**SfvbPreviewSessionResponse**](SfvbPreviewSessionResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_sfvb_blog_post
+
+> delete_sfvb_blog_post(storefront_oid, blog_post_oid)
+
+Delete a blog post
+
+Takes the post off every page and deletes it.  There is no undo.  A post that is not a draft needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_sfvb_blog_post_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid)
+
+```ruby
+begin
+  # Delete a blog post
+  data, status_code, headers = api_instance.delete_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->delete_sfvb_blog_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **blog_post_oid** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
@@ -699,6 +814,61 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## detach_sfvb_blog_post_image
+
+> <SfvbBlogPostDetail> detach_sfvb_blog_post_image(storefront_oid, blog_post_oid, blog_post_image_request)
+
+Detach an image from a blog post
+
+Name exactly one of default_image, code or blog_post_multimedia_oid.  Removes the image from the post and deletes its stored copy.  Take it out of the body too, or the body keeps a broken image.  A post that is not a draft needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the detach_sfvb_blog_post_image_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbBlogPostDetail>, Integer, Hash)> detach_sfvb_blog_post_image_with_http_info(storefront_oid, blog_post_oid, blog_post_image_request)
+
+```ruby
+begin
+  # Detach an image from a blog post
+  data, status_code, headers = api_instance.detach_sfvb_blog_post_image_with_http_info(storefront_oid, blog_post_oid, blog_post_image_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbBlogPostDetail>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->detach_sfvb_blog_post_image_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **blog_post_oid** | **Integer** |  |  |
+| **blog_post_image_request** | [**SfvbBlogPostImageRequest**](SfvbBlogPostImageRequest.md) | Image to detach |  |
+
+### Return type
+
+[**SfvbBlogPostDetail**](SfvbBlogPostDetail.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
 - **Accept**: application/json
 
 
@@ -1134,6 +1304,60 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## get_sfvb_blog_post
+
+> <SfvbBlogPostDetail> get_sfvb_blog_post(storefront_oid, blog_post_oid)
+
+Read a blog post
+
+The whole post - body, excerpt, tags, images and where it is shown.  An image's url is the address to use for it in the body. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_blog_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbBlogPostDetail>, Integer, Hash)> get_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid)
+
+```ruby
+begin
+  # Read a blog post
+  data, status_code, headers = api_instance.get_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbBlogPostDetail>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_blog_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **blog_post_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbBlogPostDetail**](SfvbBlogPostDetail.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -2486,6 +2710,60 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## insert_sfvb_blog_post
+
+> <SfvbBlogPostDetail> insert_sfvb_blog_post(storefront_oid, blog_post_request)
+
+Create a blog post
+
+title and url_part are required.  The post is a draft unless visibility says otherwise, and anything but a draft needs sfvb_publish.  The body and excerpt are refused with sfvb.unsafe_html if they could run script, and a url_part another post uses is refused with a 409 and sfvb.blog_post_exists.  Assign the post to a page with pages/blog_posts/add, or let the page's selectors choose it. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_sfvb_blog_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbBlogPostDetail>, Integer, Hash)> insert_sfvb_blog_post_with_http_info(storefront_oid, blog_post_request)
+
+```ruby
+begin
+  # Create a blog post
+  data, status_code, headers = api_instance.insert_sfvb_blog_post_with_http_info(storefront_oid, blog_post_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbBlogPostDetail>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->insert_sfvb_blog_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **blog_post_request** | [**SfvbBlogPostRequest**](SfvbBlogPostRequest.md) | The blog post to create |  |
+
+### Return type
+
+[**SfvbBlogPostDetail**](SfvbBlogPostDetail.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
 - **Accept**: application/json
 
 
@@ -4969,6 +5247,61 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## update_sfvb_blog_post
+
+> <SfvbBlogPostDetail> update_sfvb_blog_post(storefront_oid, blog_post_oid, blog_post_request)
+
+Change a blog post
+
+Only the fields sent change; tags, when sent, replaces every tag.  The post's images and attributes are left alone.  Publish or unpublish with visibility.  A post that is not a draft before or after the change needs sfvb_publish.  The same content rules as create apply. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_blog_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbBlogPostDetail>, Integer, Hash)> update_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid, blog_post_request)
+
+```ruby
+begin
+  # Change a blog post
+  data, status_code, headers = api_instance.update_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid, blog_post_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbBlogPostDetail>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_blog_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **blog_post_oid** | **Integer** |  |  |
+| **blog_post_request** | [**SfvbBlogPostRequest**](SfvbBlogPostRequest.md) | The fields to change |  |
+
+### Return type
+
+[**SfvbBlogPostDetail**](SfvbBlogPostDetail.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
 - **Accept**: application/json
 
 

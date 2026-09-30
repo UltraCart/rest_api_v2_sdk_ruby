@@ -989,6 +989,10 @@ docs/ScreenshotsResponse.md
 docs/SelfConfig.md
 docs/SfvbApi.md
 docs/SfvbBlogPost.md
+docs/SfvbBlogPostDetail.md
+docs/SfvbBlogPostImage.md
+docs/SfvbBlogPostImageRequest.md
+docs/SfvbBlogPostRequest.md
 docs/SfvbBlogPostsResponse.md
 docs/SfvbCompileRequest.md
 docs/SfvbCompileResponse.md
@@ -2201,6 +2205,10 @@ lib/ultracart_api/models/screen_recording_user_property.rb
 lib/ultracart_api/models/screenshots_response.rb
 lib/ultracart_api/models/self_config.rb
 lib/ultracart_api/models/sfvb_blog_post.rb
+lib/ultracart_api/models/sfvb_blog_post_detail.rb
+lib/ultracart_api/models/sfvb_blog_post_image.rb
+lib/ultracart_api/models/sfvb_blog_post_image_request.rb
+lib/ultracart_api/models/sfvb_blog_post_request.rb
 lib/ultracart_api/models/sfvb_blog_posts_response.rb
 lib/ultracart_api/models/sfvb_compile_request.rb
 lib/ultracart_api/models/sfvb_compile_response.rb

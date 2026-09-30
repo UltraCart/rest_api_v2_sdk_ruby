@@ -14,15 +14,33 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbPageAttributeUpdate
-    # Attribute name.  Matched without regard to case against what the page already has, so you do not have to reproduce the exact casing.  A name nothing matches creates a new attribute.
-    attr_accessor :name
+  class SfvbBlogPostRequest
+    # Whether shoppers may comment.  Defaults to false on create.
+    attr_accessor :allow_comments
 
-    # Only consulted when creating an attribute no template declares.  For a declared attribute the template's type always wins, because the templates decide it and not the caller.
-    attr_accessor :type
+    # The author's name as plain text, up to 100 characters, with no quotes or angle brackets.
+    attr_accessor :author
 
-    # The value to store.  An empty string clears it.  For html the markup is stored as given and rendered as given.  For boolean send the text true or false.  For itemset send a comma separated list of merchant item ids in display order, not JSON.  An id that does not resolve is dropped.
-    attr_accessor :value
+    # The post body as HTML, up to 1 MB, rendered exactly as stored.  Refused with sfvb.unsafe_html if it could run script - script and other executable tags, on attributes, links that are not http, https, mailto, tel or relative, and iframes other than YouTube or Vimeo players.  Reference an attached image by the url the post's images report.
+    attr_accessor :body
+
+    # The post excerpt as HTML, up to 256 KB.  Held to the same rule as body.
+    attr_accessor :excerpt
+
+    # When the post is published, as an ISO 8601 UTC time in the same form publication_dts reads back.  Refused on a draft.  A post made public without one is published now.
+    attr_accessor :publication_dts
+
+    # The post's tags as plain text, up to 100 characters each, with no quotes or angle brackets and no repeats.  On an update the list replaces every tag, and an empty list clears them.
+    attr_accessor :tags
+
+    # The post title, up to 1000 characters.  Required on create.
+    attr_accessor :title
+
+    # The post's name in its URL, which is the page path followed by this and .html.  Letters, digits, hyphens and underscores, up to 150.  Must not be used by another post on the storefront, compared without regard to case, and must not be an item id or an item's url part, because the storefront checks blog posts first and the post would replace the item's page.  index and index-N are reserved.  Required on create.
+    attr_accessor :url_part
+
+    # P public, L logged in customers only, D draft.  Defaults to D on create.  Anything but D needs sfvb_publish, and so does any change to a post that is not a draft.
+    attr_accessor :visibility
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -49,9 +67,15 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'type' => :'type',
-        :'value' => :'value'
+        :'allow_comments' => :'allow_comments',
+        :'author' => :'author',
+        :'body' => :'body',
+        :'excerpt' => :'excerpt',
+        :'publication_dts' => :'publication_dts',
+        :'tags' => :'tags',
+        :'title' => :'title',
+        :'url_part' => :'url_part',
+        :'visibility' => :'visibility'
       }
     end
 
@@ -63,9 +87,15 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'type' => :'String',
-        :'value' => :'String'
+        :'allow_comments' => :'Boolean',
+        :'author' => :'String',
+        :'body' => :'String',
+        :'excerpt' => :'String',
+        :'publication_dts' => :'String',
+        :'tags' => :'Array<String>',
+        :'title' => :'String',
+        :'url_part' => :'String',
+        :'visibility' => :'String'
       }
     end
 
@@ -79,27 +109,53 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbPageAttributeUpdate` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbBlogPostRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbPageAttributeUpdate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbBlogPostRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'allow_comments')
+        self.allow_comments = attributes[:'allow_comments']
       end
 
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
+      if attributes.key?(:'author')
+        self.author = attributes[:'author']
       end
 
-      if attributes.key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.key?(:'body')
+        self.body = attributes[:'body']
+      end
+
+      if attributes.key?(:'excerpt')
+        self.excerpt = attributes[:'excerpt']
+      end
+
+      if attributes.key?(:'publication_dts')
+        self.publication_dts = attributes[:'publication_dts']
+      end
+
+      if attributes.key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
+        end
+      end
+
+      if attributes.key?(:'title')
+        self.title = attributes[:'title']
+      end
+
+      if attributes.key?(:'url_part')
+        self.url_part = attributes[:'url_part']
+      end
+
+      if attributes.key?(:'visibility')
+        self.visibility = attributes[:'visibility']
       end
     end
 
@@ -113,19 +169,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      type_validator = EnumAttributeValidator.new('String', ["string", "multiline", "html", "boolean", "integer", "color", "rgba"])
-      return false unless type_validator.valid?(@type)
+      visibility_validator = EnumAttributeValidator.new('String', ["P", "L", "D"])
+      return false unless visibility_validator.valid?(@visibility)
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["string", "multiline", "html", "boolean", "integer", "color", "rgba"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
+    # @param [Object] visibility Object to be assigned
+    def visibility=(visibility)
+      validator = EnumAttributeValidator.new('String', ["P", "L", "D"])
+      unless validator.valid?(visibility)
+        fail ArgumentError, "invalid value for \"visibility\", must be one of #{validator.allowable_values}."
       end
-      @type = type
+      @visibility = visibility
     end
 
     # Checks equality by comparing each attribute.
@@ -133,9 +189,15 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          type == o.type &&
-          value == o.value
+          allow_comments == o.allow_comments &&
+          author == o.author &&
+          body == o.body &&
+          excerpt == o.excerpt &&
+          publication_dts == o.publication_dts &&
+          tags == o.tags &&
+          title == o.title &&
+          url_part == o.url_part &&
+          visibility == o.visibility
     end
 
     # @see the `==` method
@@ -147,7 +209,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, type, value].hash
+      [allow_comments, author, body, excerpt, publication_dts, tags, title, url_part, visibility].hash
     end
 
     # Builds the object from hash

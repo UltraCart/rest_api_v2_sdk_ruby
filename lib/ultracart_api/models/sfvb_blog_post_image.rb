@@ -14,44 +14,42 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbPageAttributeUpdate
-    # Attribute name.  Matched without regard to case against what the page already has, so you do not have to reproduce the exact casing.  A name nothing matches creates a new attribute.
-    attr_accessor :name
+  class SfvbBlogPostImage
+    # The image's oid.  Detach names it this way.
+    attr_accessor :blog_post_multimedia_oid
 
-    # Only consulted when creating an attribute no template declares.  For a declared attribute the template's type always wins, because the templates decide it and not the caller.
-    attr_accessor :type
+    # The image code, or null for the default image and for an image used only in the body.
+    attr_accessor :code
 
-    # The value to store.  An empty string clears it.  For html the markup is stored as given and rendered as given.  For boolean send the text true or false.  For itemset send a comma separated list of merchant item ids in display order, not JSON.  An id that does not resolve is dropped.
-    attr_accessor :value
+    # True for the post's default image, which a blogpostimage element and og image use.
+    attr_accessor :default_image
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
+    # The description stored with the image, used as its alt text.
+    attr_accessor :description
 
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
+    # The image's file name.
+    attr_accessor :filename
 
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    # Height in pixels, when it could be measured.
+    attr_accessor :height
+
+    # The address to use in the post body, for example in an img src.  The storefront serves it from its image CDN once the image has been copied there.
+    attr_accessor :url
+
+    # Width in pixels, when it could be measured.
+    attr_accessor :width
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'type' => :'type',
-        :'value' => :'value'
+        :'blog_post_multimedia_oid' => :'blog_post_multimedia_oid',
+        :'code' => :'code',
+        :'default_image' => :'default_image',
+        :'description' => :'description',
+        :'filename' => :'filename',
+        :'height' => :'height',
+        :'url' => :'url',
+        :'width' => :'width'
       }
     end
 
@@ -63,9 +61,14 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'type' => :'String',
-        :'value' => :'String'
+        :'blog_post_multimedia_oid' => :'Integer',
+        :'code' => :'String',
+        :'default_image' => :'Boolean',
+        :'description' => :'String',
+        :'filename' => :'String',
+        :'height' => :'Integer',
+        :'url' => :'String',
+        :'width' => :'Integer'
       }
     end
 
@@ -79,27 +82,47 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbPageAttributeUpdate` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbBlogPostImage` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbPageAttributeUpdate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbBlogPostImage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'blog_post_multimedia_oid')
+        self.blog_post_multimedia_oid = attributes[:'blog_post_multimedia_oid']
       end
 
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
+      if attributes.key?(:'code')
+        self.code = attributes[:'code']
       end
 
-      if attributes.key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.key?(:'default_image')
+        self.default_image = attributes[:'default_image']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'filename')
+        self.filename = attributes[:'filename']
+      end
+
+      if attributes.key?(:'height')
+        self.height = attributes[:'height']
+      end
+
+      if attributes.key?(:'url')
+        self.url = attributes[:'url']
+      end
+
+      if attributes.key?(:'width')
+        self.width = attributes[:'width']
       end
     end
 
@@ -113,19 +136,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      type_validator = EnumAttributeValidator.new('String', ["string", "multiline", "html", "boolean", "integer", "color", "rgba"])
-      return false unless type_validator.valid?(@type)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["string", "multiline", "html", "boolean", "integer", "color", "rgba"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
-      end
-      @type = type
     end
 
     # Checks equality by comparing each attribute.
@@ -133,9 +144,14 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          type == o.type &&
-          value == o.value
+          blog_post_multimedia_oid == o.blog_post_multimedia_oid &&
+          code == o.code &&
+          default_image == o.default_image &&
+          description == o.description &&
+          filename == o.filename &&
+          height == o.height &&
+          url == o.url &&
+          width == o.width
     end
 
     # @see the `==` method
@@ -147,7 +163,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, type, value].hash
+      [blog_post_multimedia_oid, code, default_image, description, filename, height, url, width].hash
     end
 
     # Builds the object from hash
