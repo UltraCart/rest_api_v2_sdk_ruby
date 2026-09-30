@@ -1072,6 +1072,10 @@ docs/SfvbPreviewSessionResponse.md
 docs/SfvbPreviewUrlResponse.md
 docs/SfvbRenderRequest.md
 docs/SfvbRenderResponse.md
+docs/SfvbServerLog.md
+docs/SfvbServerLogDetail.md
+docs/SfvbServerLogEntry.md
+docs/SfvbServerLogsResponse.md
 docs/SfvbSiteAttribute.md
 docs/SfvbSiteAttributeUpdate.md
 docs/SfvbSiteAttributeUpdateRequest.md
@@ -2288,6 +2292,10 @@ lib/ultracart_api/models/sfvb_preview_session_response.rb
 lib/ultracart_api/models/sfvb_preview_url_response.rb
 lib/ultracart_api/models/sfvb_render_request.rb
 lib/ultracart_api/models/sfvb_render_response.rb
+lib/ultracart_api/models/sfvb_server_log.rb
+lib/ultracart_api/models/sfvb_server_log_detail.rb
+lib/ultracart_api/models/sfvb_server_log_entry.rb
+lib/ultracart_api/models/sfvb_server_logs_response.rb
 lib/ultracart_api/models/sfvb_site_attribute.rb
 lib/ultracart_api/models/sfvb_site_attribute_update.rb
 lib/ultracart_api/models/sfvb_site_attribute_update_request.rb

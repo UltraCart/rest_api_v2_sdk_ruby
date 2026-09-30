@@ -44,6 +44,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_page_items**](SfvbApi.md#get_sfvb_page_items) | **GET** /sfvb/storefronts/{storefront_oid}/pages/items | Read the items assigned to a page |
 | [**get_sfvb_page_selectors**](SfvbApi.md#get_sfvb_page_selectors) | **GET** /sfvb/storefronts/{storefront_oid}/pages/selectors | Read a page&#39;s selectors |
 | [**get_sfvb_preview_url**](SfvbApi.md#get_sfvb_preview_url) | **GET** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id}/url | URL that renders a preview session |
+| [**get_sfvb_server_log**](SfvbApi.md#get_sfvb_server_log) | **GET** /sfvb/storefronts/{storefront_oid}/logs/{log_id} | Get one storefront render log |
 | [**get_sfvb_site_attributes**](SfvbApi.md#get_sfvb_site_attributes) | **GET** /sfvb/storefronts/{storefront_oid}/attributes | Read a storefront&#39;s site attributes |
 | [**get_sfvb_theme**](SfvbApi.md#get_sfvb_theme) | **GET** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid} | Get a theme |
 | [**get_sfvb_theme_attributes**](SfvbApi.md#get_sfvb_theme_attributes) | **GET** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/attributes | Read a theme&#39;s colors, fonts and settings |
@@ -65,6 +66,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**list_sfvb_files**](SfvbApi.md#list_sfvb_files) | **GET** /sfvb/storefronts/{storefront_oid}/files | List a storefront directory |
 | [**list_sfvb_item_containers**](SfvbApi.md#list_sfvb_item_containers) | **GET** /sfvb/storefronts/{storefront_oid}/item_containers | List the item containers on the account |
 | [**list_sfvb_pages**](SfvbApi.md#list_sfvb_pages) | **GET** /sfvb/storefronts/{storefront_oid}/pages/list | List the storefront&#39;s pages |
+| [**list_sfvb_server_logs**](SfvbApi.md#list_sfvb_server_logs) | **GET** /sfvb/storefronts/{storefront_oid}/logs | List recent storefront render logs |
 | [**list_sfvb_storefronts**](SfvbApi.md#list_sfvb_storefronts) | **GET** /sfvb/storefronts | List storefronts |
 | [**list_sfvb_templates**](SfvbApi.md#list_sfvb_templates) | **GET** /sfvb/storefronts/{storefront_oid}/templates | List the active theme&#39;s templates |
 | [**list_sfvb_themes**](SfvbApi.md#list_sfvb_themes) | **GET** /sfvb/storefronts/{storefront_oid}/themes | List themes for a storefront |
@@ -2282,6 +2284,61 @@ end
 - **Accept**: application/json
 
 
+## get_sfvb_server_log
+
+> <SfvbServerLogDetail> get_sfvb_server_log(storefront_oid, log_id, opts)
+
+Get one storefront render log
+
+One render's server log with its lines, each with a level, a category such as VELOCITY or FLOW, and the message.  log_id comes from the list, or from the X-UltraCart-Storefront-Log-Id header a page sends inside an SFVB preview session.  min_level is debug, info, warn or error, default debug. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_server_log_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbServerLogDetail>, Integer, Hash)> get_sfvb_server_log_with_http_info(storefront_oid, log_id, opts)
+
+```ruby
+begin
+  # Get one storefront render log
+  data, status_code, headers = api_instance.get_sfvb_server_log_with_http_info(storefront_oid, log_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbServerLogDetail>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_server_log_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **log_id** | **String** |  |  |
+| **min_level** | **String** |  | [optional] |
+
+### Return type
+
+[**SfvbServerLogDetail**](SfvbServerLogDetail.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_sfvb_site_attributes
 
 > <SfvbSiteAttributesResponse> get_sfvb_site_attributes(storefront_oid)
@@ -3414,6 +3471,63 @@ end
 ### Return type
 
 [**SfvbPageListResponse**](SfvbPageListResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_sfvb_server_logs
+
+> <SfvbServerLogsResponse> list_sfvb_server_logs(storefront_oid, opts)
+
+List recent storefront render logs
+
+The server log the storefront Developer Tools panel shows, one per page render, newest first and without the log text.  Each carries counts of error and warning lines, including Velocity problems such as a null #set, so a failing render stands out without reading every log.  Filter by uri (a case insensitive contains match on the rendered address) and errors_only.  since is 15m, 2h or 1d, or an ISO-8601 time, default 1h; logs are kept for seven days and only the newest 1000.  With a filter the newest 200 logs in the window are searched, and more_available says whether older ones were left unread. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the list_sfvb_server_logs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbServerLogsResponse>, Integer, Hash)> list_sfvb_server_logs_with_http_info(storefront_oid, opts)
+
+```ruby
+begin
+  # List recent storefront render logs
+  data, status_code, headers = api_instance.list_sfvb_server_logs_with_http_info(storefront_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbServerLogsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->list_sfvb_server_logs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **uri** | **String** |  | [optional] |
+| **since** | **String** |  | [optional] |
+| **errors_only** | **Boolean** |  | [optional] |
+| **limit** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SfvbServerLogsResponse**](SfvbServerLogsResponse.md)
 
 ### Authorization
 

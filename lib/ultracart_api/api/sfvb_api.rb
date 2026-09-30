@@ -2930,6 +2930,79 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get one storefront render log
+    # One render's server log with its lines, each with a level, a category such as VELOCITY or FLOW, and the message.  log_id comes from the list, or from the X-UltraCart-Storefront-Log-Id header a page sends inside an SFVB preview session.  min_level is debug, info, warn or error, default debug. 
+    # @param storefront_oid [Integer] 
+    # @param log_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :min_level 
+    # @return [SfvbServerLogDetail]
+    def get_sfvb_server_log(storefront_oid, log_id, opts = {})
+      data, _status_code, _headers = get_sfvb_server_log_with_http_info(storefront_oid, log_id, opts)
+      data
+    end
+
+    # Get one storefront render log
+    # One render&#39;s server log with its lines, each with a level, a category such as VELOCITY or FLOW, and the message.  log_id comes from the list, or from the X-UltraCart-Storefront-Log-Id header a page sends inside an SFVB preview session.  min_level is debug, info, warn or error, default debug. 
+    # @param storefront_oid [Integer] 
+    # @param log_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :min_level 
+    # @return [Array<(SfvbServerLogDetail, Integer, Hash)>] SfvbServerLogDetail data, response status code and response headers
+    def get_sfvb_server_log_with_http_info(storefront_oid, log_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_server_log ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_server_log"
+      end
+      # verify the required parameter 'log_id' is set
+      if @api_client.config.client_side_validation && log_id.nil?
+        fail ArgumentError, "Missing the required parameter 'log_id' when calling SfvbApi.get_sfvb_server_log"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/logs/{log_id}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'log_id' + '}', CGI.escape(log_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'min_level'] = opts[:'min_level'] if !opts[:'min_level'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbServerLogDetail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_server_log",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_server_log\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read a storefront's site attributes
     # The values the siteattribute element and $site.attr render.  These are not in any file or theme.  Attributes a template declares but nothing has set are included with the template's default, so the response describes what the templates can render rather than only what has been saved.  Credentials stored as site attributes are never included. 
     # @param storefront_oid [Integer] 
@@ -4414,6 +4487,82 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_pages\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List recent storefront render logs
+    # The server log the storefront Developer Tools panel shows, one per page render, newest first and without the log text.  Each carries counts of error and warning lines, including Velocity problems such as a null #set, so a failing render stands out without reading every log.  Filter by uri (a case insensitive contains match on the rendered address) and errors_only.  since is 15m, 2h or 1d, or an ISO-8601 time, default 1h; logs are kept for seven days and only the newest 1000.  With a filter the newest 200 logs in the window are searched, and more_available says whether older ones were left unread. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :uri 
+    # @option opts [String] :since 
+    # @option opts [Boolean] :errors_only 
+    # @option opts [Integer] :limit 
+    # @return [SfvbServerLogsResponse]
+    def list_sfvb_server_logs(storefront_oid, opts = {})
+      data, _status_code, _headers = list_sfvb_server_logs_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List recent storefront render logs
+    # The server log the storefront Developer Tools panel shows, one per page render, newest first and without the log text.  Each carries counts of error and warning lines, including Velocity problems such as a null #set, so a failing render stands out without reading every log.  Filter by uri (a case insensitive contains match on the rendered address) and errors_only.  since is 15m, 2h or 1d, or an ISO-8601 time, default 1h; logs are kept for seven days and only the newest 1000.  With a filter the newest 200 logs in the window are searched, and more_available says whether older ones were left unread. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :uri 
+    # @option opts [String] :since 
+    # @option opts [Boolean] :errors_only 
+    # @option opts [Integer] :limit 
+    # @return [Array<(SfvbServerLogsResponse, Integer, Hash)>] SfvbServerLogsResponse data, response status code and response headers
+    def list_sfvb_server_logs_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.list_sfvb_server_logs ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.list_sfvb_server_logs"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/logs'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'uri'] = opts[:'uri'] if !opts[:'uri'].nil?
+      query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
+      query_params[:'errors_only'] = opts[:'errors_only'] if !opts[:'errors_only'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbServerLogsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.list_sfvb_server_logs",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_server_logs\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
