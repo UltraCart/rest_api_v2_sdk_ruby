@@ -44,6 +44,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_page_items**](SfvbApi.md#get_sfvb_page_items) | **GET** /sfvb/storefronts/{storefront_oid}/pages/items | Read the items assigned to a page |
 | [**get_sfvb_page_selectors**](SfvbApi.md#get_sfvb_page_selectors) | **GET** /sfvb/storefronts/{storefront_oid}/pages/selectors | Read a page&#39;s selectors |
 | [**get_sfvb_preview_url**](SfvbApi.md#get_sfvb_preview_url) | **GET** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id}/url | URL that renders a preview session |
+| [**get_sfvb_recording**](SfvbApi.md#get_sfvb_recording) | **GET** /sfvb/storefronts/{storefront_oid}/recordings/{screen_recording_uuid} | Get a screen recording |
+| [**get_sfvb_recording_page_view_events**](SfvbApi.md#get_sfvb_recording_page_view_events) | **GET** /sfvb/storefronts/{storefront_oid}/recordings/{screen_recording_uuid}/page_views/{screen_recording_page_view_uuid}/events | Get one recorded page view&#39;s replay events |
 | [**get_sfvb_server_log**](SfvbApi.md#get_sfvb_server_log) | **GET** /sfvb/storefronts/{storefront_oid}/logs/{log_id} | Get one storefront render log |
 | [**get_sfvb_site_attributes**](SfvbApi.md#get_sfvb_site_attributes) | **GET** /sfvb/storefronts/{storefront_oid}/attributes | Read a storefront&#39;s site attributes |
 | [**get_sfvb_theme**](SfvbApi.md#get_sfvb_theme) | **GET** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid} | Get a theme |
@@ -2273,6 +2275,115 @@ end
 ### Return type
 
 [**SfvbPreviewUrlResponse**](SfvbPreviewUrlResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_recording
+
+> <SfvbRecordingResponse> get_sfvb_recording(storefront_oid, screen_recording_uuid)
+
+Get a screen recording
+
+One recorded visitor session and its page views, with each page view's named events such as rage clicks, script errors and checkout errors, but without the replay data.  Fetch a page view's replay events separately.  Find recordings to look at from the heatmaps or the analytics warehouse.  The visitor's email, IP address and visitor id are not returned, nor what they typed into form fields.  Reading a recording does not mark it watched. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_recording_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbRecordingResponse>, Integer, Hash)> get_sfvb_recording_with_http_info(storefront_oid, screen_recording_uuid)
+
+```ruby
+begin
+  # Get a screen recording
+  data, status_code, headers = api_instance.get_sfvb_recording_with_http_info(storefront_oid, screen_recording_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbRecordingResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_recording_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **screen_recording_uuid** | **String** |  |  |
+
+### Return type
+
+[**SfvbRecordingResponse**](SfvbRecordingResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_recording_page_view_events
+
+> <SfvbRecordingEventsResponse> get_sfvb_recording_page_view_events(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid)
+
+Get one recorded page view's replay events
+
+The rrweb events for one page view, as a JSON array in a string, for replaying on the caller's own machine.  Card fields are masked by the recorder, but other text the visitor typed can appear.  Limited per account to 30 page views a minute, 300 an hour and 1000 a day.  Reading the events does not mark the recording watched. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_recording_page_view_events_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbRecordingEventsResponse>, Integer, Hash)> get_sfvb_recording_page_view_events_with_http_info(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid)
+
+```ruby
+begin
+  # Get one recorded page view's replay events
+  data, status_code, headers = api_instance.get_sfvb_recording_page_view_events_with_http_info(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbRecordingEventsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_recording_page_view_events_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **screen_recording_uuid** | **String** |  |  |
+| **screen_recording_page_view_uuid** | **String** |  |  |
+
+### Return type
+
+[**SfvbRecordingEventsResponse**](SfvbRecordingEventsResponse.md)
 
 ### Authorization
 

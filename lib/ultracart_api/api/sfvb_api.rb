@@ -2930,6 +2930,152 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get a screen recording
+    # One recorded visitor session and its page views, with each page view's named events such as rage clicks, script errors and checkout errors, but without the replay data.  Fetch a page view's replay events separately.  Find recordings to look at from the heatmaps or the analytics warehouse.  The visitor's email, IP address and visitor id are not returned, nor what they typed into form fields.  Reading a recording does not mark it watched. 
+    # @param storefront_oid [Integer] 
+    # @param screen_recording_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbRecordingResponse]
+    def get_sfvb_recording(storefront_oid, screen_recording_uuid, opts = {})
+      data, _status_code, _headers = get_sfvb_recording_with_http_info(storefront_oid, screen_recording_uuid, opts)
+      data
+    end
+
+    # Get a screen recording
+    # One recorded visitor session and its page views, with each page view&#39;s named events such as rage clicks, script errors and checkout errors, but without the replay data.  Fetch a page view&#39;s replay events separately.  Find recordings to look at from the heatmaps or the analytics warehouse.  The visitor&#39;s email, IP address and visitor id are not returned, nor what they typed into form fields.  Reading a recording does not mark it watched. 
+    # @param storefront_oid [Integer] 
+    # @param screen_recording_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbRecordingResponse, Integer, Hash)>] SfvbRecordingResponse data, response status code and response headers
+    def get_sfvb_recording_with_http_info(storefront_oid, screen_recording_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_recording ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_recording"
+      end
+      # verify the required parameter 'screen_recording_uuid' is set
+      if @api_client.config.client_side_validation && screen_recording_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'screen_recording_uuid' when calling SfvbApi.get_sfvb_recording"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/recordings/{screen_recording_uuid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'screen_recording_uuid' + '}', CGI.escape(screen_recording_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbRecordingResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_recording",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_recording\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get one recorded page view's replay events
+    # The rrweb events for one page view, as a JSON array in a string, for replaying on the caller's own machine.  Card fields are masked by the recorder, but other text the visitor typed can appear.  Limited per account to 30 page views a minute, 300 an hour and 1000 a day.  Reading the events does not mark the recording watched. 
+    # @param storefront_oid [Integer] 
+    # @param screen_recording_uuid [String] 
+    # @param screen_recording_page_view_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbRecordingEventsResponse]
+    def get_sfvb_recording_page_view_events(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid, opts = {})
+      data, _status_code, _headers = get_sfvb_recording_page_view_events_with_http_info(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid, opts)
+      data
+    end
+
+    # Get one recorded page view&#39;s replay events
+    # The rrweb events for one page view, as a JSON array in a string, for replaying on the caller&#39;s own machine.  Card fields are masked by the recorder, but other text the visitor typed can appear.  Limited per account to 30 page views a minute, 300 an hour and 1000 a day.  Reading the events does not mark the recording watched. 
+    # @param storefront_oid [Integer] 
+    # @param screen_recording_uuid [String] 
+    # @param screen_recording_page_view_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbRecordingEventsResponse, Integer, Hash)>] SfvbRecordingEventsResponse data, response status code and response headers
+    def get_sfvb_recording_page_view_events_with_http_info(storefront_oid, screen_recording_uuid, screen_recording_page_view_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_recording_page_view_events ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_recording_page_view_events"
+      end
+      # verify the required parameter 'screen_recording_uuid' is set
+      if @api_client.config.client_side_validation && screen_recording_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'screen_recording_uuid' when calling SfvbApi.get_sfvb_recording_page_view_events"
+      end
+      # verify the required parameter 'screen_recording_page_view_uuid' is set
+      if @api_client.config.client_side_validation && screen_recording_page_view_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'screen_recording_page_view_uuid' when calling SfvbApi.get_sfvb_recording_page_view_events"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/recordings/{screen_recording_uuid}/page_views/{screen_recording_page_view_uuid}/events'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'screen_recording_uuid' + '}', CGI.escape(screen_recording_uuid.to_s)).sub('{' + 'screen_recording_page_view_uuid' + '}', CGI.escape(screen_recording_page_view_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbRecordingEventsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_recording_page_view_events",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_recording_page_view_events\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get one storefront render log
     # One render's server log with its lines, each with a level, a category such as VELOCITY or FLOW, and the message.  log_id comes from the list, or from the X-UltraCart-Storefront-Log-Id header a page sends inside an SFVB preview session.  min_level is debug, info, warn or error, default debug. 
     # @param storefront_oid [Integer] 
