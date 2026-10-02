@@ -14,6 +14,7 @@
 | **context_order_id** | **String** | Order id for the rendering context. | [optional] |
 | **context_page_number** | **String** | Page number for paginated elements.  Defaults to 1. | [optional] |
 | **context_upsell_offer_oid** | **Integer** | Upsell offer oid for the rendering context. | [optional] |
+| **edit_mode** | **Boolean** | True renders every branch the way the builder shows it, for styling content a shopper only sometimes sees.  Omitted or false renders what a shopper sees, with conditions, prices and sale state evaluated against the context item. | [optional] |
 | **language_iso_code** | **String** | Language ISO code.  Defaults to ENG. | [optional] |
 | **uri** | **String** | Storefront URI the node would appear on.  Affects rendering of anything page relative. | [optional] |
 
@@ -33,6 +34,7 @@ instance = UltracartClient::SfvbRenderRequest.new(
   context_order_id: null,
   context_page_number: null,
   context_upsell_offer_oid: null,
+  edit_mode: null,
   language_iso_code: null,
   uri: null
 )

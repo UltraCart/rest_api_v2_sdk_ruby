@@ -45,6 +45,9 @@ module UltracartClient
     # Upsell offer oid for the rendering context.
     attr_accessor :context_upsell_offer_oid
 
+    # True renders every branch the way the builder shows it, for styling content a shopper only sometimes sees.  Omitted or false renders what a shopper sees, with conditions, prices and sale state evaluated against the context item.
+    attr_accessor :edit_mode
+
     # Language ISO code.  Defaults to ENG.
     attr_accessor :language_iso_code
 
@@ -64,6 +67,7 @@ module UltracartClient
         :'context_order_id' => :'context_order_id',
         :'context_page_number' => :'context_page_number',
         :'context_upsell_offer_oid' => :'context_upsell_offer_oid',
+        :'edit_mode' => :'edit_mode',
         :'language_iso_code' => :'language_iso_code',
         :'uri' => :'uri'
       }
@@ -87,6 +91,7 @@ module UltracartClient
         :'context_order_id' => :'String',
         :'context_page_number' => :'String',
         :'context_upsell_offer_oid' => :'Integer',
+        :'edit_mode' => :'Boolean',
         :'language_iso_code' => :'String',
         :'uri' => :'String'
       }
@@ -153,6 +158,10 @@ module UltracartClient
         self.context_upsell_offer_oid = attributes[:'context_upsell_offer_oid']
       end
 
+      if attributes.key?(:'edit_mode')
+        self.edit_mode = attributes[:'edit_mode']
+      end
+
       if attributes.key?(:'language_iso_code')
         self.language_iso_code = attributes[:'language_iso_code']
       end
@@ -190,6 +199,7 @@ module UltracartClient
           context_order_id == o.context_order_id &&
           context_page_number == o.context_page_number &&
           context_upsell_offer_oid == o.context_upsell_offer_oid &&
+          edit_mode == o.edit_mode &&
           language_iso_code == o.language_iso_code &&
           uri == o.uri
     end
@@ -203,7 +213,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ancestors_cjson, child_containers_json, cjson, context_affiliate_oid, context_blog_post_oid, context_group_path, context_item_id, context_order_id, context_page_number, context_upsell_offer_oid, language_iso_code, uri].hash
+      [ancestors_cjson, child_containers_json, cjson, context_affiliate_oid, context_blog_post_oid, context_group_path, context_item_id, context_order_id, context_page_number, context_upsell_offer_oid, edit_mode, language_iso_code, uri].hash
     end
 
     # Builds the object from hash
