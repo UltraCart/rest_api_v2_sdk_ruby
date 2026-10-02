@@ -1078,6 +1078,9 @@ docs/SfvbRecordingEventsResponse.md
 docs/SfvbRecordingPageView.md
 docs/SfvbRecordingParameter.md
 docs/SfvbRecordingResponse.md
+docs/SfvbRecordingSettings.md
+docs/SfvbRecordingSettingsRequest.md
+docs/SfvbRecordingSettingsResponse.md
 docs/SfvbRenderRequest.md
 docs/SfvbRenderResponse.md
 docs/SfvbServerLog.md
@@ -2306,6 +2309,9 @@ lib/ultracart_api/models/sfvb_recording_events_response.rb
 lib/ultracart_api/models/sfvb_recording_page_view.rb
 lib/ultracart_api/models/sfvb_recording_parameter.rb
 lib/ultracart_api/models/sfvb_recording_response.rb
+lib/ultracart_api/models/sfvb_recording_settings.rb
+lib/ultracart_api/models/sfvb_recording_settings_request.rb
+lib/ultracart_api/models/sfvb_recording_settings_response.rb
 lib/ultracart_api/models/sfvb_render_request.rb
 lib/ultracart_api/models/sfvb_render_response.rb
 lib/ultracart_api/models/sfvb_server_log.rb
