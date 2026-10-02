@@ -812,8 +812,10 @@ docs/OrderAddItemsAndReleaseRequest.md
 docs/OrderAffiliate.md
 docs/OrderAffiliateLedger.md
 docs/OrderApi.md
+docs/OrderAssignRmaRequest.md
 docs/OrderAssignToAffiliateRequest.md
 docs/OrderAutoOrder.md
+docs/OrderAutoOrderUpdateBillingUrlResponse.md
 docs/OrderBilling.md
 docs/OrderBuysafe.md
 docs/OrderByTokenQuery.md
@@ -2039,8 +2041,10 @@ lib/ultracart_api/models/order.rb
 lib/ultracart_api/models/order_add_items_and_release_request.rb
 lib/ultracart_api/models/order_affiliate.rb
 lib/ultracart_api/models/order_affiliate_ledger.rb
+lib/ultracart_api/models/order_assign_rma_request.rb
 lib/ultracart_api/models/order_assign_to_affiliate_request.rb
 lib/ultracart_api/models/order_auto_order.rb
+lib/ultracart_api/models/order_auto_order_update_billing_url_response.rb
 lib/ultracart_api/models/order_billing.rb
 lib/ultracart_api/models/order_buysafe.rb
 lib/ultracart_api/models/order_by_token_query.rb

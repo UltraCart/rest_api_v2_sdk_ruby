@@ -15,7 +15,7 @@ require 'time'
 
 module UltracartClient
   class SfvbBlogPostDetail
-    # Whether shoppers may comment.
+    # Whether shoppers may comment.  Like every false value here, false is left out of the response.
     attr_accessor :allow_comments
 
     # The post author.
@@ -42,7 +42,16 @@ module UltracartClient
     # When the post is published (ISO 8601, UTC), or null for a draft.
     attr_accessor :publication_dts
 
-    # The post's tags.
+    # The meta description (storefrontSEODescription).  Absent when not set.
+    attr_accessor :seo_description
+
+    # The meta keywords (storefrontSEOKeywords).  Absent when not set.
+    attr_accessor :seo_keywords
+
+    # The page head title (storefrontSEOTitle).  Absent when not set, and the head then uses the post title.
+    attr_accessor :seo_title
+
+    # The post's tags, in alphabetical order.  The order they were sent in is not kept.
     attr_accessor :tags
 
     # The post title.
@@ -72,6 +81,9 @@ module UltracartClient
         :'images' => :'images',
         :'last_modified_dts' => :'last_modified_dts',
         :'publication_dts' => :'publication_dts',
+        :'seo_description' => :'seo_description',
+        :'seo_keywords' => :'seo_keywords',
+        :'seo_title' => :'seo_title',
         :'tags' => :'tags',
         :'title' => :'title',
         :'unassigned' => :'unassigned',
@@ -98,6 +110,9 @@ module UltracartClient
         :'images' => :'Array<SfvbBlogPostImage>',
         :'last_modified_dts' => :'String',
         :'publication_dts' => :'String',
+        :'seo_description' => :'String',
+        :'seo_keywords' => :'String',
+        :'seo_title' => :'String',
         :'tags' => :'Array<String>',
         :'title' => :'String',
         :'unassigned' => :'Boolean',
@@ -166,6 +181,18 @@ module UltracartClient
         self.publication_dts = attributes[:'publication_dts']
       end
 
+      if attributes.key?(:'seo_description')
+        self.seo_description = attributes[:'seo_description']
+      end
+
+      if attributes.key?(:'seo_keywords')
+        self.seo_keywords = attributes[:'seo_keywords']
+      end
+
+      if attributes.key?(:'seo_title')
+        self.seo_title = attributes[:'seo_title']
+      end
+
       if attributes.key?(:'tags')
         if (value = attributes[:'tags']).is_a?(Array)
           self.tags = value
@@ -220,6 +247,9 @@ module UltracartClient
           images == o.images &&
           last_modified_dts == o.last_modified_dts &&
           publication_dts == o.publication_dts &&
+          seo_description == o.seo_description &&
+          seo_keywords == o.seo_keywords &&
+          seo_title == o.seo_title &&
           tags == o.tags &&
           title == o.title &&
           unassigned == o.unassigned &&
@@ -237,7 +267,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allow_comments, author, blog_post_oid, body, created_dts, excerpt, images, last_modified_dts, publication_dts, tags, title, unassigned, url_part, view_url, visibility].hash
+      [allow_comments, author, blog_post_oid, body, created_dts, excerpt, images, last_modified_dts, publication_dts, seo_description, seo_keywords, seo_title, tags, title, unassigned, url_part, view_url, visibility].hash
     end
 
     # Builds the object from hash

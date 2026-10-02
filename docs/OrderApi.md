@@ -5,6 +5,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**adjust_order_total**](OrderApi.md#adjust_order_total) | **POST** /order/orders/{order_id}/adjust_order_total/{desired_total} | Adjusts an order total |
+| [**assign_rma**](OrderApi.md#assign_rma) | **POST** /order/orders/{order_id}/rma | Associates an RMA with an order |
 | [**assign_to_affiliate**](OrderApi.md#assign_to_affiliate) | **POST** /order/orders/{order_id}/assignToAffiliate | Assigns an order to an affiliate |
 | [**block_refund_on_order**](OrderApi.md#block_refund_on_order) | **GET** /order/orders/{order_id}/refund_block | Set a refund block on an order |
 | [**cancel_order**](OrderApi.md#cancel_order) | **POST** /order/orders/{order_id}/cancel | Cancel an order |
@@ -29,6 +30,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_orders**](OrderApi.md#get_orders) | **GET** /order/orders | Retrieve orders |
 | [**get_orders_batch**](OrderApi.md#get_orders_batch) | **POST** /order/orders/batch | Retrieve order batch |
 | [**get_orders_by_query**](OrderApi.md#get_orders_by_query) | **POST** /order/orders/query | Retrieve orders by query |
+| [**get_orders_by_rma**](OrderApi.md#get_orders_by_rma) | **GET** /order/orders/rma/{rma} | Retrieve orders by RMA |
+| [**get_update_billing_url**](OrderApi.md#get_update_billing_url) | **GET** /order/orders/{order_id}/auto_order_update_billing_url | Generate an auto order update billing url |
 | [**held_order_add_items_and_release**](OrderApi.md#held_order_add_items_and_release) | **PUT** /order/orders/{order_id}/hold/add_items_and_release | Add items and release a held order |
 | [**held_order_release**](OrderApi.md#held_order_release) | **PUT** /order/orders/{order_id}/hold/release | Release a held order |
 | [**insert_order**](OrderApi.md#insert_order) | **POST** /order/orders | Insert an order |
@@ -122,6 +125,61 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## assign_rma
+
+> <OrderResponse> assign_rma(order_id, assign_rma_request, opts)
+
+Associates an RMA with an order
+
+Associates an RMA number with an order.  Any existing RMA on the order is replaced. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the assign_rma_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OrderResponse>, Integer, Hash)> assign_rma_with_http_info(order_id, assign_rma_request, opts)
+
+```ruby
+begin
+  # Associates an RMA with an order
+  data, status_code, headers = api_instance.assign_rma_with_http_info(order_id, assign_rma_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OrderResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->assign_rma_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **order_id** | **String** | The order id to associate the RMA with. |  |
+| **assign_rma_request** | [**OrderAssignRmaRequest**](OrderAssignRmaRequest.md) | Assign RMA request |  |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
+
+### Return type
+
+[**OrderResponse**](OrderResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -2185,6 +2243,113 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_orders_by_rma
+
+> <OrdersResponse> get_orders_by_rma(rma, opts)
+
+Retrieve orders by RMA
+
+Retrieves the orders associated with the specified RMA number.  The RMA must be an exact value; wildcards are not permitted. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_orders_by_rma_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OrdersResponse>, Integer, Hash)> get_orders_by_rma_with_http_info(rma, opts)
+
+```ruby
+begin
+  # Retrieve orders by RMA
+  data, status_code, headers = api_instance.get_orders_by_rma_with_http_info(rma, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OrdersResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->get_orders_by_rma_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **rma** | **String** | The RMA number to search for. |  |
+| **_expand** | **String** | The object expansion to perform on the result.  See documentation for examples | [optional] |
+
+### Return type
+
+[**OrdersResponse**](OrdersResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_update_billing_url
+
+> <OrderAutoOrderUpdateBillingUrlResponse> get_update_billing_url(order_id)
+
+Generate an auto order update billing url
+
+Generates the url a customer can use to update the billing information on the auto order associated with this order.  This is the same url sent in the auto order update billing email. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_update_billing_url_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OrderAutoOrderUpdateBillingUrlResponse>, Integer, Hash)> get_update_billing_url_with_http_info(order_id)
+
+```ruby
+begin
+  # Generate an auto order update billing url
+  data, status_code, headers = api_instance.get_update_billing_url_with_http_info(order_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OrderAutoOrderUpdateBillingUrlResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling OrderApi->get_update_billing_url_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **order_id** | **String** | The order id to generate the update billing url for. |  |
+
+### Return type
+
+[**OrderAutoOrderUpdateBillingUrlResponse**](OrderAutoOrderUpdateBillingUrlResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 

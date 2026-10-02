@@ -13,6 +13,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_auto_order_by_reference_order_id**](AutoOrderApi.md#get_auto_order_by_reference_order_id) | **GET** /auto_order/auto_orders/reference_order_id/{reference_order_id} | Retrieve an auto order by order id |
 | [**get_auto_order_cancel_reasons**](AutoOrderApi.md#get_auto_order_cancel_reasons) | **GET** /auto_order/auto_orders/cancel_reasons | Retrieve auto order cancel reasons. |
 | [**get_auto_order_emails**](AutoOrderApi.md#get_auto_order_emails) | **GET** /auto_order/auto_orders/{auto_order_oid}/emails | Retrieve email delivery information for this auto order. |
+| [**get_auto_order_update_billing_url**](AutoOrderApi.md#get_auto_order_update_billing_url) | **GET** /auto_order/auto_orders/{auto_order_oid}/update_billing_url | Generate an auto order update billing url |
 | [**get_auto_orders**](AutoOrderApi.md#get_auto_orders) | **GET** /auto_order/auto_orders | Retrieve auto orders |
 | [**get_auto_orders_batch**](AutoOrderApi.md#get_auto_orders_batch) | **POST** /auto_order/auto_orders/batch | Retrieve auto order batch |
 | [**get_auto_orders_by_query**](AutoOrderApi.md#get_auto_orders_by_query) | **POST** /auto_order/auto_orders/query | Retrieve auto orders by query |
@@ -752,6 +753,59 @@ end
 ### Return type
 
 [**AutoOrderEmailsResponse**](AutoOrderEmailsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_auto_order_update_billing_url
+
+> <OrderAutoOrderUpdateBillingUrlResponse> get_auto_order_update_billing_url(auto_order_oid)
+
+Generate an auto order update billing url
+
+Generates the url a customer can use to update the billing information on this auto order.  This is the same url sent in the auto order update billing email. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_auto_order_update_billing_url_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OrderAutoOrderUpdateBillingUrlResponse>, Integer, Hash)> get_auto_order_update_billing_url_with_http_info(auto_order_oid)
+
+```ruby
+begin
+  # Generate an auto order update billing url
+  data, status_code, headers = api_instance.get_auto_order_update_billing_url_with_http_info(auto_order_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OrderAutoOrderUpdateBillingUrlResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling AutoOrderApi->get_auto_order_update_billing_url_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **auto_order_oid** | **Integer** | The auto order oid to generate the update billing url for. |  |
+
+### Return type
+
+[**OrderAutoOrderUpdateBillingUrlResponse**](OrderAutoOrderUpdateBillingUrlResponse.md)
 
 ### Authorization
 

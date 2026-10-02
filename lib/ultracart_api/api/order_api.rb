@@ -102,6 +102,84 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Associates an RMA with an order
+    # Associates an RMA number with an order.  Any existing RMA on the order is replaced. 
+    # @param order_id [String] The order id to associate the RMA with.
+    # @param assign_rma_request [OrderAssignRmaRequest] Assign RMA request
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [OrderResponse]
+    def assign_rma(order_id, assign_rma_request, opts = {})
+      data, _status_code, _headers = assign_rma_with_http_info(order_id, assign_rma_request, opts)
+      data
+    end
+
+    # Associates an RMA with an order
+    # Associates an RMA number with an order.  Any existing RMA on the order is replaced. 
+    # @param order_id [String] The order id to associate the RMA with.
+    # @param assign_rma_request [OrderAssignRmaRequest] Assign RMA request
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(OrderResponse, Integer, Hash)>] OrderResponse data, response status code and response headers
+    def assign_rma_with_http_info(order_id, assign_rma_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.assign_rma ...'
+      end
+      # verify the required parameter 'order_id' is set
+      if @api_client.config.client_side_validation && order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.assign_rma"
+      end
+      # verify the required parameter 'assign_rma_request' is set
+      if @api_client.config.client_side_validation && assign_rma_request.nil?
+        fail ArgumentError, "Missing the required parameter 'assign_rma_request' when calling OrderApi.assign_rma"
+      end
+      # resource path
+      local_var_path = '/order/orders/{order_id}/rma'.sub('{' + 'order_id' + '}', CGI.escape(order_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(assign_rma_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OrderResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"OrderApi.assign_rma",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#assign_rma\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Assigns an order to an affiliate
     # Assigns an order to an affiliate. 
     # @param order_id [String] The order id to assign to the affiliate.
@@ -1806,6 +1884,137 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: OrderApi#get_orders_by_query\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve orders by RMA
+    # Retrieves the orders associated with the specified RMA number.  The RMA must be an exact value; wildcards are not permitted. 
+    # @param rma [String] The RMA number to search for.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [OrdersResponse]
+    def get_orders_by_rma(rma, opts = {})
+      data, _status_code, _headers = get_orders_by_rma_with_http_info(rma, opts)
+      data
+    end
+
+    # Retrieve orders by RMA
+    # Retrieves the orders associated with the specified RMA number.  The RMA must be an exact value; wildcards are not permitted. 
+    # @param rma [String] The RMA number to search for.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_expand The object expansion to perform on the result.  See documentation for examples
+    # @return [Array<(OrdersResponse, Integer, Hash)>] OrdersResponse data, response status code and response headers
+    def get_orders_by_rma_with_http_info(rma, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.get_orders_by_rma ...'
+      end
+      # verify the required parameter 'rma' is set
+      if @api_client.config.client_side_validation && rma.nil?
+        fail ArgumentError, "Missing the required parameter 'rma' when calling OrderApi.get_orders_by_rma"
+      end
+      # resource path
+      local_var_path = '/order/orders/rma/{rma}'.sub('{' + 'rma' + '}', CGI.escape(rma.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'_expand'] = opts[:'_expand'] if !opts[:'_expand'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OrdersResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"OrderApi.get_orders_by_rma",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#get_orders_by_rma\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Generate an auto order update billing url
+    # Generates the url a customer can use to update the billing information on the auto order associated with this order.  This is the same url sent in the auto order update billing email. 
+    # @param order_id [String] The order id to generate the update billing url for.
+    # @param [Hash] opts the optional parameters
+    # @return [OrderAutoOrderUpdateBillingUrlResponse]
+    def get_update_billing_url(order_id, opts = {})
+      data, _status_code, _headers = get_update_billing_url_with_http_info(order_id, opts)
+      data
+    end
+
+    # Generate an auto order update billing url
+    # Generates the url a customer can use to update the billing information on the auto order associated with this order.  This is the same url sent in the auto order update billing email. 
+    # @param order_id [String] The order id to generate the update billing url for.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OrderAutoOrderUpdateBillingUrlResponse, Integer, Hash)>] OrderAutoOrderUpdateBillingUrlResponse data, response status code and response headers
+    def get_update_billing_url_with_http_info(order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.get_update_billing_url ...'
+      end
+      # verify the required parameter 'order_id' is set
+      if @api_client.config.client_side_validation && order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.get_update_billing_url"
+      end
+      # resource path
+      local_var_path = '/order/orders/{order_id}/auto_order_update_billing_url'.sub('{' + 'order_id' + '}', CGI.escape(order_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OrderAutoOrderUpdateBillingUrlResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"OrderApi.get_update_billing_url",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#get_update_billing_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

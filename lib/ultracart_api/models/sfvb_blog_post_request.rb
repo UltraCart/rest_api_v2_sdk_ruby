@@ -30,6 +30,15 @@ module UltracartClient
     # When the post is published, as an ISO 8601 UTC time in the same form publication_dts reads back.  Refused on a draft.  A post made public without one is published now.
     attr_accessor :publication_dts
 
+    # The meta description (storefrontSEODescription), the search result snippet.  Plain text with no angle brackets or double quotes, up to 1000 characters.  Left out, it is unchanged; an empty string clears it, and the head falls back to the site's description.
+    attr_accessor :seo_description
+
+    # The meta keywords (storefrontSEOKeywords).  Plain text with no angle brackets or double quotes, up to 1000 characters.  Left out, it is unchanged; an empty string clears it, and the head falls back to the site's keywords.
+    attr_accessor :seo_keywords
+
+    # The page head title (storefrontSEOTitle), used in place of the post title in the browser tab and search results.  Plain text with no angle brackets or double quotes, up to 1000 characters.  Left out, it is unchanged; an empty string clears it, and the head falls back to the post title.
+    attr_accessor :seo_title
+
     # The post's tags as plain text, up to 100 characters each, with no quotes or angle brackets and no repeats.  On an update the list replaces every tag, and an empty list clears them.
     attr_accessor :tags
 
@@ -72,6 +81,9 @@ module UltracartClient
         :'body' => :'body',
         :'excerpt' => :'excerpt',
         :'publication_dts' => :'publication_dts',
+        :'seo_description' => :'seo_description',
+        :'seo_keywords' => :'seo_keywords',
+        :'seo_title' => :'seo_title',
         :'tags' => :'tags',
         :'title' => :'title',
         :'url_part' => :'url_part',
@@ -92,6 +104,9 @@ module UltracartClient
         :'body' => :'String',
         :'excerpt' => :'String',
         :'publication_dts' => :'String',
+        :'seo_description' => :'String',
+        :'seo_keywords' => :'String',
+        :'seo_title' => :'String',
         :'tags' => :'Array<String>',
         :'title' => :'String',
         :'url_part' => :'String',
@@ -138,6 +153,18 @@ module UltracartClient
 
       if attributes.key?(:'publication_dts')
         self.publication_dts = attributes[:'publication_dts']
+      end
+
+      if attributes.key?(:'seo_description')
+        self.seo_description = attributes[:'seo_description']
+      end
+
+      if attributes.key?(:'seo_keywords')
+        self.seo_keywords = attributes[:'seo_keywords']
+      end
+
+      if attributes.key?(:'seo_title')
+        self.seo_title = attributes[:'seo_title']
       end
 
       if attributes.key?(:'tags')
@@ -194,6 +221,9 @@ module UltracartClient
           body == o.body &&
           excerpt == o.excerpt &&
           publication_dts == o.publication_dts &&
+          seo_description == o.seo_description &&
+          seo_keywords == o.seo_keywords &&
+          seo_title == o.seo_title &&
           tags == o.tags &&
           title == o.title &&
           url_part == o.url_part &&
@@ -209,7 +239,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allow_comments, author, body, excerpt, publication_dts, tags, title, url_part, visibility].hash
+      [allow_comments, author, body, excerpt, publication_dts, seo_description, seo_keywords, seo_title, tags, title, url_part, visibility].hash
     end
 
     # Builds the object from hash
