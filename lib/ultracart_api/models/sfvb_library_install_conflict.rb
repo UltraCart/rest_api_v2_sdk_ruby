@@ -14,22 +14,22 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbLibraryFacet
-    # Human readable facet name.
-    attr_accessor :display_name
+  class SfvbLibraryInstallConflict
+    # Hash of the file already at that path.
+    attr_accessor :existing_sha256
 
-    # Facet key, such as facet_purpose.  To select an option, add a query parameter named after the key whose value is the key, a colon and the option.
-    attr_accessor :name
+    # The storefront path.
+    attr_accessor :path
 
-    # Values present in the results.  A facet with only one value is left out unless it is selected.
-    attr_accessor :options
+    # Hash of the file the entry would install.
+    attr_accessor :snapshot_sha256
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'display_name' => :'display_name',
-        :'name' => :'name',
-        :'options' => :'options'
+        :'existing_sha256' => :'existing_sha256',
+        :'path' => :'path',
+        :'snapshot_sha256' => :'snapshot_sha256'
       }
     end
 
@@ -41,9 +41,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'display_name' => :'String',
-        :'name' => :'String',
-        :'options' => :'Array<String>'
+        :'existing_sha256' => :'String',
+        :'path' => :'String',
+        :'snapshot_sha256' => :'String'
       }
     end
 
@@ -57,29 +57,27 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryFacet` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryInstallConflict` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryFacet`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryInstallConflict`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'display_name')
-        self.display_name = attributes[:'display_name']
+      if attributes.key?(:'existing_sha256')
+        self.existing_sha256 = attributes[:'existing_sha256']
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'path')
+        self.path = attributes[:'path']
       end
 
-      if attributes.key?(:'options')
-        if (value = attributes[:'options']).is_a?(Array)
-          self.options = value
-        end
+      if attributes.key?(:'snapshot_sha256')
+        self.snapshot_sha256 = attributes[:'snapshot_sha256']
       end
     end
 
@@ -101,9 +99,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          display_name == o.display_name &&
-          name == o.name &&
-          options == o.options
+          existing_sha256 == o.existing_sha256 &&
+          path == o.path &&
+          snapshot_sha256 == o.snapshot_sha256
     end
 
     # @see the `==` method
@@ -115,7 +113,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [display_name, name, options].hash
+      [existing_sha256, path, snapshot_sha256].hash
     end
 
     # Builds the object from hash

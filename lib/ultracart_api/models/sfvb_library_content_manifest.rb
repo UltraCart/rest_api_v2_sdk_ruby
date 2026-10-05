@@ -14,22 +14,29 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbLibraryFacet
-    # Human readable facet name.
-    attr_accessor :display_name
+  class SfvbLibraryContentManifest
+    # Images, fonts, stylesheets, scripts or media loaded from an absolute URL.  A shared or public entry must use relative paths so it never pulls files from another storefront or site.
+    attr_accessor :absolute_asset_urls
 
-    # Facet key, such as facet_purpose.  To select an option, add a query parameter named after the key whose value is the key, a colon and the option.
-    attr_accessor :name
+    attr_accessor :ai_review
 
-    # Values present in the results.  A facet with only one value is left out unless it is selected.
-    attr_accessor :options
+    # Content that runs in a shopper's browser or on the server.  Script, html, embed, css and velocity elements, script in markup, Velocity, script bearing CSS and unsafe URL schemes.  An entry with any of these cannot be made public, and installing it needs an explicit acknowledgement.
+    attr_accessor :executable
+
+    # Card skimming and obfuscation signals.  An entry with any is refused outright, whoever owns it.
+    attr_accessor :rejected
+
+    # Strings shaped like credentials, by kind only.  An entry with any cannot be shared or made public.
+    attr_accessor :secrets
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'display_name' => :'display_name',
-        :'name' => :'name',
-        :'options' => :'options'
+        :'absolute_asset_urls' => :'absolute_asset_urls',
+        :'ai_review' => :'ai_review',
+        :'executable' => :'executable',
+        :'rejected' => :'rejected',
+        :'secrets' => :'secrets'
       }
     end
 
@@ -41,9 +48,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'display_name' => :'String',
-        :'name' => :'String',
-        :'options' => :'Array<String>'
+        :'absolute_asset_urls' => :'Object',
+        :'ai_review' => :'SfvbLibraryAiReview',
+        :'executable' => :'Object',
+        :'rejected' => :'Object',
+        :'secrets' => :'Object'
       }
     end
 
@@ -57,29 +66,35 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryFacet` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryContentManifest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryFacet`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryContentManifest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'display_name')
-        self.display_name = attributes[:'display_name']
+      if attributes.key?(:'absolute_asset_urls')
+        self.absolute_asset_urls = attributes[:'absolute_asset_urls']
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'ai_review')
+        self.ai_review = attributes[:'ai_review']
       end
 
-      if attributes.key?(:'options')
-        if (value = attributes[:'options']).is_a?(Array)
-          self.options = value
-        end
+      if attributes.key?(:'executable')
+        self.executable = attributes[:'executable']
+      end
+
+      if attributes.key?(:'rejected')
+        self.rejected = attributes[:'rejected']
+      end
+
+      if attributes.key?(:'secrets')
+        self.secrets = attributes[:'secrets']
       end
     end
 
@@ -101,9 +116,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          display_name == o.display_name &&
-          name == o.name &&
-          options == o.options
+          absolute_asset_urls == o.absolute_asset_urls &&
+          ai_review == o.ai_review &&
+          executable == o.executable &&
+          rejected == o.rejected &&
+          secrets == o.secrets
     end
 
     # @see the `==` method
@@ -115,7 +132,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [display_name, name, options].hash
+      [absolute_asset_urls, ai_review, executable, rejected, secrets].hash
     end
 
     # Builds the object from hash

@@ -21,8 +21,16 @@ module UltracartClient
     # The fragment's CJSON.  Omitted from search results to keep them terse; fetch a single entry to get it.
     attr_accessor :cjson
 
+    attr_accessor :content_manifest
+
     # What this fragment is for.
     attr_accessor :description
+
+    # Hash of the draft's writable fields.  Send it back as If-Match to update, delete or publish.  Present only for the owner.
+    attr_accessor :hash_sha256
+
+    # When the draft was last saved, ISO 8601.
+    attr_accessor :last_modified_dts
 
     # Library entry oid.
     attr_accessor :library_oid
@@ -33,34 +41,102 @@ module UltracartClient
     # True when the calling user owns this entry.
     attr_accessor :owned
 
+    # Named values the fragment expects the installer to supply.
+    attr_accessor :parameters
+
+    # The latest published revision, or null when the entry has never been published.
+    attr_accessor :published_revision_number
+
     # Storefront file paths this fragment references.  Installing the fragment copies them into the storefront; reading it does not.
     attr_accessor :referenced_files
+
+    # True when the owner deleted an entry that had been published or installed.  It is kept so existing installs still resolve, and it leaves search.
+    attr_accessor :retired
+
+    # The revision returned.  For the owner this is the draft, which every save increments.  For anyone else it is the published revision.
+    attr_accessor :revision_number
+
+    # Screenshot height in pixels.
+    attr_accessor :screenshot_height
 
     # S3 listing key for the large screenshot, when one has been generated.
     attr_accessor :screenshot_key
 
+    # Hash of the uploaded screenshot.
+    attr_accessor :screenshot_sha256
+
+    # True on an update that changed the fragment of an entry with a screenshot.  Retake it and set it again with the library screenshot endpoint.
+    attr_accessor :screenshot_stale
+
+    # Screenshot width in pixels.
+    attr_accessor :screenshot_width
+
     # True when the entry is shared across the merchant account.
     attr_accessor :share_with_account
+
+    # Linked accounts the entry is shared with.  Present only for the owner.
+    attr_accessor :shared_with
+
+    attr_accessor :taxonomy
 
     # S3 listing key for the medium thumbnail, when one has been generated.  Thumbnails are produced asynchronously and can lag a save by a minute or two.
     attr_accessor :thumbnail_key
 
+    # private, shared or public.
+    attr_accessor :visibility
+
     # Element type at the root of the fragment.
     attr_accessor :widget_type
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'bookmarked' => :'bookmarked',
         :'cjson' => :'cjson',
+        :'content_manifest' => :'content_manifest',
         :'description' => :'description',
+        :'hash_sha256' => :'hash_sha256',
+        :'last_modified_dts' => :'last_modified_dts',
         :'library_oid' => :'library_oid',
         :'name' => :'name',
         :'owned' => :'owned',
+        :'parameters' => :'parameters',
+        :'published_revision_number' => :'published_revision_number',
         :'referenced_files' => :'referenced_files',
+        :'retired' => :'retired',
+        :'revision_number' => :'revision_number',
+        :'screenshot_height' => :'screenshot_height',
         :'screenshot_key' => :'screenshot_key',
+        :'screenshot_sha256' => :'screenshot_sha256',
+        :'screenshot_stale' => :'screenshot_stale',
+        :'screenshot_width' => :'screenshot_width',
         :'share_with_account' => :'share_with_account',
+        :'shared_with' => :'shared_with',
+        :'taxonomy' => :'taxonomy',
         :'thumbnail_key' => :'thumbnail_key',
+        :'visibility' => :'visibility',
         :'widget_type' => :'widget_type'
       }
     end
@@ -75,14 +151,28 @@ module UltracartClient
       {
         :'bookmarked' => :'Boolean',
         :'cjson' => :'String',
+        :'content_manifest' => :'SfvbLibraryContentManifest',
         :'description' => :'String',
+        :'hash_sha256' => :'String',
+        :'last_modified_dts' => :'String',
         :'library_oid' => :'Integer',
         :'name' => :'String',
         :'owned' => :'Boolean',
+        :'parameters' => :'Array<SfvbLibraryParameter>',
+        :'published_revision_number' => :'Integer',
         :'referenced_files' => :'Array<String>',
+        :'retired' => :'Boolean',
+        :'revision_number' => :'Integer',
+        :'screenshot_height' => :'Integer',
         :'screenshot_key' => :'String',
+        :'screenshot_sha256' => :'String',
+        :'screenshot_stale' => :'Boolean',
+        :'screenshot_width' => :'Integer',
         :'share_with_account' => :'Boolean',
+        :'shared_with' => :'Array<SfvbLibraryShareTarget>',
+        :'taxonomy' => :'SfvbLibraryTaxonomy',
         :'thumbnail_key' => :'String',
+        :'visibility' => :'String',
         :'widget_type' => :'String'
       }
     end
@@ -116,8 +206,20 @@ module UltracartClient
         self.cjson = attributes[:'cjson']
       end
 
+      if attributes.key?(:'content_manifest')
+        self.content_manifest = attributes[:'content_manifest']
+      end
+
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'hash_sha256')
+        self.hash_sha256 = attributes[:'hash_sha256']
+      end
+
+      if attributes.key?(:'last_modified_dts')
+        self.last_modified_dts = attributes[:'last_modified_dts']
       end
 
       if attributes.key?(:'library_oid')
@@ -132,22 +234,70 @@ module UltracartClient
         self.owned = attributes[:'owned']
       end
 
+      if attributes.key?(:'parameters')
+        if (value = attributes[:'parameters']).is_a?(Array)
+          self.parameters = value
+        end
+      end
+
+      if attributes.key?(:'published_revision_number')
+        self.published_revision_number = attributes[:'published_revision_number']
+      end
+
       if attributes.key?(:'referenced_files')
         if (value = attributes[:'referenced_files']).is_a?(Array)
           self.referenced_files = value
         end
       end
 
+      if attributes.key?(:'retired')
+        self.retired = attributes[:'retired']
+      end
+
+      if attributes.key?(:'revision_number')
+        self.revision_number = attributes[:'revision_number']
+      end
+
+      if attributes.key?(:'screenshot_height')
+        self.screenshot_height = attributes[:'screenshot_height']
+      end
+
       if attributes.key?(:'screenshot_key')
         self.screenshot_key = attributes[:'screenshot_key']
+      end
+
+      if attributes.key?(:'screenshot_sha256')
+        self.screenshot_sha256 = attributes[:'screenshot_sha256']
+      end
+
+      if attributes.key?(:'screenshot_stale')
+        self.screenshot_stale = attributes[:'screenshot_stale']
+      end
+
+      if attributes.key?(:'screenshot_width')
+        self.screenshot_width = attributes[:'screenshot_width']
       end
 
       if attributes.key?(:'share_with_account')
         self.share_with_account = attributes[:'share_with_account']
       end
 
+      if attributes.key?(:'shared_with')
+        if (value = attributes[:'shared_with']).is_a?(Array)
+          self.shared_with = value
+        end
+      end
+
+      if attributes.key?(:'taxonomy')
+        self.taxonomy = attributes[:'taxonomy']
+      end
+
       if attributes.key?(:'thumbnail_key')
         self.thumbnail_key = attributes[:'thumbnail_key']
+      end
+
+      if attributes.key?(:'visibility')
+        self.visibility = attributes[:'visibility']
       end
 
       if attributes.key?(:'widget_type')
@@ -165,7 +315,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      visibility_validator = EnumAttributeValidator.new('String', ["private", "shared", "public"])
+      return false unless visibility_validator.valid?(@visibility)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] visibility Object to be assigned
+    def visibility=(visibility)
+      validator = EnumAttributeValidator.new('String', ["private", "shared", "public"])
+      unless validator.valid?(visibility)
+        fail ArgumentError, "invalid value for \"visibility\", must be one of #{validator.allowable_values}."
+      end
+      @visibility = visibility
     end
 
     # Checks equality by comparing each attribute.
@@ -175,14 +337,28 @@ module UltracartClient
       self.class == o.class &&
           bookmarked == o.bookmarked &&
           cjson == o.cjson &&
+          content_manifest == o.content_manifest &&
           description == o.description &&
+          hash_sha256 == o.hash_sha256 &&
+          last_modified_dts == o.last_modified_dts &&
           library_oid == o.library_oid &&
           name == o.name &&
           owned == o.owned &&
+          parameters == o.parameters &&
+          published_revision_number == o.published_revision_number &&
           referenced_files == o.referenced_files &&
+          retired == o.retired &&
+          revision_number == o.revision_number &&
+          screenshot_height == o.screenshot_height &&
           screenshot_key == o.screenshot_key &&
+          screenshot_sha256 == o.screenshot_sha256 &&
+          screenshot_stale == o.screenshot_stale &&
+          screenshot_width == o.screenshot_width &&
           share_with_account == o.share_with_account &&
+          shared_with == o.shared_with &&
+          taxonomy == o.taxonomy &&
           thumbnail_key == o.thumbnail_key &&
+          visibility == o.visibility &&
           widget_type == o.widget_type
     end
 
@@ -195,7 +371,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [bookmarked, cjson, description, library_oid, name, owned, referenced_files, screenshot_key, share_with_account, thumbnail_key, widget_type].hash
+      [bookmarked, cjson, content_manifest, description, hash_sha256, last_modified_dts, library_oid, name, owned, parameters, published_revision_number, referenced_files, retired, revision_number, screenshot_height, screenshot_key, screenshot_sha256, screenshot_stale, screenshot_width, share_with_account, shared_with, taxonomy, thumbnail_key, visibility, widget_type].hash
     end
 
     # Builds the object from hash

@@ -347,6 +347,83 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Remove a library entry's screenshot
+    # Owner only, with the draft's hash_sha256 as If-Match.  Clears the screenshot and thumbnail.  Published revisions and copies that used the image keep it. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbLibraryEntry]
+    def clear_sfvb_library_screenshot(storefront_oid, library_oid, if_match, opts = {})
+      data, _status_code, _headers = clear_sfvb_library_screenshot_with_http_info(storefront_oid, library_oid, if_match, opts)
+      data
+    end
+
+    # Remove a library entry&#39;s screenshot
+    # Owner only, with the draft&#39;s hash_sha256 as If-Match.  Clears the screenshot and thumbnail.  Published revisions and copies that used the image keep it. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbLibraryEntry, Integer, Hash)>] SfvbLibraryEntry data, response status code and response headers
+    def clear_sfvb_library_screenshot_with_http_info(storefront_oid, library_oid, if_match, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.clear_sfvb_library_screenshot ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.clear_sfvb_library_screenshot"
+      end
+      # verify the required parameter 'library_oid' is set
+      if @api_client.config.client_side_validation && library_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'library_oid' when calling SfvbApi.clear_sfvb_library_screenshot"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.clear_sfvb_library_screenshot"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/library/{library_oid}/screenshot'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'library_oid' + '}', CGI.escape(library_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbLibraryEntry'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.clear_sfvb_library_screenshot",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#clear_sfvb_library_screenshot\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Compile CJSON to Velocity
     # Compiles a container document to Velocity without storing anything.  Supply theme_oid to compile with the theme's inherit groups applied; omit it to compile standalone. 
     # @param compile_request [SfvbCompileRequest] CJSON to compile
@@ -412,6 +489,81 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#compile_sfvb_cjson\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Save a fragment to the library
+    # Creates a private draft owned by the calling user.  The fragment is one widget and its children, and it must validate.  Images it references on this storefront are copied into the entry before this returns, so it installs anywhere with its images.  The fragment is scanned; card skimming or obfuscation signals are refused outright.  Nothing other merchants or shoppers see changes, so sfvb_write is enough.  Publish it to share it.  An optional screenshot takes a staged PNG key, exactly as the library screenshot endpoint does; a refused screenshot refuses the whole create. 
+    # @param storefront_oid [Integer] 
+    # @param library_entry [SfvbLibraryEntryRequest] The entry
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbLibraryEntry]
+    def create_sfvb_library_entry(storefront_oid, library_entry, opts = {})
+      data, _status_code, _headers = create_sfvb_library_entry_with_http_info(storefront_oid, library_entry, opts)
+      data
+    end
+
+    # Save a fragment to the library
+    # Creates a private draft owned by the calling user.  The fragment is one widget and its children, and it must validate.  Images it references on this storefront are copied into the entry before this returns, so it installs anywhere with its images.  The fragment is scanned; card skimming or obfuscation signals are refused outright.  Nothing other merchants or shoppers see changes, so sfvb_write is enough.  Publish it to share it.  An optional screenshot takes a staged PNG key, exactly as the library screenshot endpoint does; a refused screenshot refuses the whole create. 
+    # @param storefront_oid [Integer] 
+    # @param library_entry [SfvbLibraryEntryRequest] The entry
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbLibraryEntry, Integer, Hash)>] SfvbLibraryEntry data, response status code and response headers
+    def create_sfvb_library_entry_with_http_info(storefront_oid, library_entry, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.create_sfvb_library_entry ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.create_sfvb_library_entry"
+      end
+      # verify the required parameter 'library_entry' is set
+      if @api_client.config.client_side_validation && library_entry.nil?
+        fail ArgumentError, "Missing the required parameter 'library_entry' when calling SfvbApi.create_sfvb_library_entry"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/library'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(library_entry)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbLibraryEntry'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.create_sfvb_library_entry",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#create_sfvb_library_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -844,6 +996,83 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_item_multimedia\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete or retire a library entry
+    # Owner only, with the draft's hash_sha256 as If-Match.  An entry that was never published, installed or shared is deleted.  Anything else is retired - kept so the storefronts that installed it still resolve, but out of search and refusing new installs and publishes.  The result says which happened. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbLibraryDeleteResult]
+    def delete_sfvb_library_entry(storefront_oid, library_oid, if_match, opts = {})
+      data, _status_code, _headers = delete_sfvb_library_entry_with_http_info(storefront_oid, library_oid, if_match, opts)
+      data
+    end
+
+    # Delete or retire a library entry
+    # Owner only, with the draft&#39;s hash_sha256 as If-Match.  An entry that was never published, installed or shared is deleted.  Anything else is retired - kept so the storefronts that installed it still resolve, but out of search and refusing new installs and publishes.  The result says which happened. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbLibraryDeleteResult, Integer, Hash)>] SfvbLibraryDeleteResult data, response status code and response headers
+    def delete_sfvb_library_entry_with_http_info(storefront_oid, library_oid, if_match, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.delete_sfvb_library_entry ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.delete_sfvb_library_entry"
+      end
+      # verify the required parameter 'library_oid' is set
+      if @api_client.config.client_side_validation && library_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'library_oid' when calling SfvbApi.delete_sfvb_library_entry"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.delete_sfvb_library_entry"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/library/{library_oid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'library_oid' + '}', CGI.escape(library_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbLibraryDeleteResult'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.delete_sfvb_library_entry",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_library_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1283,6 +1512,79 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Copy a library entry into a new private entry
+    # The copy is owned by the calling user and private.  From an entry you own it copies the draft; from one shared with you it copies the published revision.  It is scanned on its own and inherits nothing but content, its images and its screenshot. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name Name for the copy.  Defaults to Copy of and the source name.
+    # @return [SfvbLibraryEntry]
+    def duplicate_sfvb_library_entry(storefront_oid, library_oid, opts = {})
+      data, _status_code, _headers = duplicate_sfvb_library_entry_with_http_info(storefront_oid, library_oid, opts)
+      data
+    end
+
+    # Copy a library entry into a new private entry
+    # The copy is owned by the calling user and private.  From an entry you own it copies the draft; from one shared with you it copies the published revision.  It is scanned on its own and inherits nothing but content, its images and its screenshot. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name Name for the copy.  Defaults to Copy of and the source name.
+    # @return [Array<(SfvbLibraryEntry, Integer, Hash)>] SfvbLibraryEntry data, response status code and response headers
+    def duplicate_sfvb_library_entry_with_http_info(storefront_oid, library_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.duplicate_sfvb_library_entry ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.duplicate_sfvb_library_entry"
+      end
+      # verify the required parameter 'library_oid' is set
+      if @api_client.config.client_side_validation && library_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'library_oid' when calling SfvbApi.duplicate_sfvb_library_entry"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/library/{library_oid}/duplicate'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'library_oid' + '}', CGI.escape(library_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbLibraryEntry'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.duplicate_sfvb_library_entry",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#duplicate_sfvb_library_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Copy a page to a new path
     # Copies what the store admin's duplicate copies - settings, items, blog posts, permissions, attributes, selectors, images and the page folder with its body.  The copy goes to the path you choose, under any existing page, with the same path rules as creating a page, and a 409 with the code sfvb.page_exists when that path is taken.  The root page and pages with pages under them cannot be copied.  A page whose folder holds a started experiment is refused, because the copy would share the experiment - end it first.  Translated title and description text is not copied.  Always needs sfvb_publish, because the copy is live as soon as it exists. 
     # @param storefront_oid [Integer] 
@@ -1659,6 +1961,76 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#end_sfvb_experiment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Favorite a library entry
+    # Bookmarks the entry for the calling user.  Idempotent.  Owner or anyone the entry is shared with. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def favorite_sfvb_library_entry(storefront_oid, library_oid, opts = {})
+      favorite_sfvb_library_entry_with_http_info(storefront_oid, library_oid, opts)
+      nil
+    end
+
+    # Favorite a library entry
+    # Bookmarks the entry for the calling user.  Idempotent.  Owner or anyone the entry is shared with. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def favorite_sfvb_library_entry_with_http_info(storefront_oid, library_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.favorite_sfvb_library_entry ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.favorite_sfvb_library_entry"
+      end
+      # verify the required parameter 'library_oid' is set
+      if @api_client.config.client_side_validation && library_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'library_oid' when calling SfvbApi.favorite_sfvb_library_entry"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/library/{library_oid}/favorite'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'library_oid' + '}', CGI.escape(library_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.favorite_sfvb_library_entry",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#favorite_sfvb_library_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2370,10 +2742,11 @@ module UltracartClient
     end
 
     # Read one library entry including its CJSON
-    # Returns the fragment as authored.  If it references images or other storefront files those paths will not resolve on this storefront until the entry is installed, so use install rather than this when the intent is to place the fragment. 
+    # The owner gets the draft with its hash_sha256, which an update, delete or publish sends back as If-Match.  Everyone else gets the latest published revision.  Pin a published revision with revision_number.  Read content_manifest before installing.  If the fragment references images or other storefront files those paths will not resolve on this storefront until the entry is installed, so use install rather than this when the intent is to place the fragment. 
     # @param storefront_oid [Integer] 
     # @param library_oid [Integer] 
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :revision_number A published revision to read instead of the default.
     # @return [SfvbLibraryEntry]
     def get_sfvb_library_entry(storefront_oid, library_oid, opts = {})
       data, _status_code, _headers = get_sfvb_library_entry_with_http_info(storefront_oid, library_oid, opts)
@@ -2381,10 +2754,11 @@ module UltracartClient
     end
 
     # Read one library entry including its CJSON
-    # Returns the fragment as authored.  If it references images or other storefront files those paths will not resolve on this storefront until the entry is installed, so use install rather than this when the intent is to place the fragment. 
+    # The owner gets the draft with its hash_sha256, which an update, delete or publish sends back as If-Match.  Everyone else gets the latest published revision.  Pin a published revision with revision_number.  Read content_manifest before installing.  If the fragment references images or other storefront files those paths will not resolve on this storefront until the entry is installed, so use install rather than this when the intent is to place the fragment. 
     # @param storefront_oid [Integer] 
     # @param library_oid [Integer] 
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :revision_number A published revision to read instead of the default.
     # @return [Array<(SfvbLibraryEntry, Integer, Hash)>] SfvbLibraryEntry data, response status code and response headers
     def get_sfvb_library_entry_with_http_info(storefront_oid, library_oid, opts = {})
       if @api_client.config.debugging
@@ -2403,6 +2777,7 @@ module UltracartClient
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'revision_number'] = opts[:'revision_number'] if !opts[:'revision_number'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -2435,6 +2810,204 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_library_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List a library entry's published revisions
+    # Newest first, each with its release notes and hash.  Read one with getSfvbLibraryEntry and revision_number.  The owner and anyone the entry is shared with can list it. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbLibraryHistoryEntry]
+    def get_sfvb_library_history(storefront_oid, library_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_library_history_with_http_info(storefront_oid, library_oid, opts)
+      data
+    end
+
+    # List a library entry&#39;s published revisions
+    # Newest first, each with its release notes and hash.  Read one with getSfvbLibraryEntry and revision_number.  The owner and anyone the entry is shared with can list it. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbLibraryHistoryEntry, Integer, Hash)>] SfvbLibraryHistoryEntry data, response status code and response headers
+    def get_sfvb_library_history_with_http_info(storefront_oid, library_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_library_history ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_library_history"
+      end
+      # verify the required parameter 'library_oid' is set
+      if @api_client.config.client_side_validation && library_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'library_oid' when calling SfvbApi.get_sfvb_library_history"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/library/{library_oid}/history'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'library_oid' + '}', CGI.escape(library_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbLibraryHistoryEntry'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_library_history",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_library_history\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List the accounts a library entry can be shared with
+    # The calling account's linked accounts, each with its merchant id and company.  These are the only merchants a share can name. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbLibraryShareTarget]
+    def get_sfvb_library_share_targets(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_library_share_targets_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List the accounts a library entry can be shared with
+    # The calling account&#39;s linked accounts, each with its merchant id and company.  These are the only merchants a share can name. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbLibraryShareTarget, Integer, Hash)>] SfvbLibraryShareTarget data, response status code and response headers
+    def get_sfvb_library_share_targets_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_library_share_targets ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_library_share_targets"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/library/share_targets'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbLibraryShareTarget'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_library_share_targets",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_library_share_targets\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List the allowed library tags
+    # The fixed tag list for purpose, section, industry and style, each tag with a one line description.  Saving an entry refuses any tag not on it with sfvb.library_taxonomy_unknown, naming the closest one.  The same tags are the facet_purpose, facet_section, facet_industry and facet_style search facets. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbLibraryTaxonomyCatalog]
+    def get_sfvb_library_taxonomy(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_library_taxonomy_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List the allowed library tags
+    # The fixed tag list for purpose, section, industry and style, each tag with a one line description.  Saving an entry refuses any tag not on it with sfvb.library_taxonomy_unknown, naming the closest one.  The same tags are the facet_purpose, facet_section, facet_industry and facet_style search facets. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbLibraryTaxonomyCatalog, Integer, Hash)>] SfvbLibraryTaxonomyCatalog data, response status code and response headers
+    def get_sfvb_library_taxonomy_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_library_taxonomy ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_library_taxonomy"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/library/taxonomy'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbLibraryTaxonomyCatalog'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_library_taxonomy",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_library_taxonomy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -4066,22 +4639,24 @@ module UltracartClient
     end
 
     # Install a library entry into a storefront
-    # Copies the fragment's referenced assets into the storefront file system and returns the CJSON with its paths resolved, ready to place.  This writes, which is why it is a POST rather than the GET the internal admin endpoint uses.  It also requires sfvb_publish, because the assets land in the shared storefront file system, which is served to shoppers regardless of which theme is active, so no amount of working inside a duplicate theme isolates them. 
+    # Copies the fragment's referenced files into the storefront file system and returns a receipt with the CJSON's paths resolved, ready to place.  It never places the CJSON.  Read content_manifest first; executable content needs acknowledge_executable true.  A file that already exists with different content is a conflict - on_conflict fail (the default) refuses with 409 and writes nothing, skip keeps the existing file, overwrite replaces it.  A recipient installs a published revision.  This writes, which is why it is a POST, and it requires sfvb_publish because the files land in the shared storefront file system, which is served to shoppers whichever theme is active. 
     # @param storefront_oid [Integer] 
     # @param library_oid [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [SfvbLibraryEntry]
+    # @option opts [SfvbLibraryInstallRequest] :install_request Revision, conflict handling and acknowledgement
+    # @return [SfvbLibraryInstallReceipt]
     def install_sfvb_library_entry(storefront_oid, library_oid, opts = {})
       data, _status_code, _headers = install_sfvb_library_entry_with_http_info(storefront_oid, library_oid, opts)
       data
     end
 
     # Install a library entry into a storefront
-    # Copies the fragment&#39;s referenced assets into the storefront file system and returns the CJSON with its paths resolved, ready to place.  This writes, which is why it is a POST rather than the GET the internal admin endpoint uses.  It also requires sfvb_publish, because the assets land in the shared storefront file system, which is served to shoppers regardless of which theme is active, so no amount of working inside a duplicate theme isolates them. 
+    # Copies the fragment&#39;s referenced files into the storefront file system and returns a receipt with the CJSON&#39;s paths resolved, ready to place.  It never places the CJSON.  Read content_manifest first; executable content needs acknowledge_executable true.  A file that already exists with different content is a conflict - on_conflict fail (the default) refuses with 409 and writes nothing, skip keeps the existing file, overwrite replaces it.  A recipient installs a published revision.  This writes, which is why it is a POST, and it requires sfvb_publish because the files land in the shared storefront file system, which is served to shoppers whichever theme is active. 
     # @param storefront_oid [Integer] 
     # @param library_oid [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(SfvbLibraryEntry, Integer, Hash)>] SfvbLibraryEntry data, response status code and response headers
+    # @option opts [SfvbLibraryInstallRequest] :install_request Revision, conflict handling and acknowledgement
+    # @return [Array<(SfvbLibraryInstallReceipt, Integer, Hash)>] SfvbLibraryInstallReceipt data, response status code and response headers
     def install_sfvb_library_entry_with_http_info(storefront_oid, library_oid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SfvbApi.install_sfvb_library_entry ...'
@@ -4105,15 +4680,20 @@ module UltracartClient
       header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body]
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'install_request'])
 
       # return_type
-      return_type = opts[:debug_return_type] || 'SfvbLibraryEntry'
+      return_type = opts[:debug_return_type] || 'SfvbLibraryInstallReceipt'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
@@ -4630,6 +5210,70 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_item_containers\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List the library entries installed on a storefront
+    # Each entry's most recently installed revision, its latest published revision and update_available.  Nothing updates automatically.  An entry this account can no longer see is listed without its name. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbLibraryInstallRecord]
+    def list_sfvb_library_installs(storefront_oid, opts = {})
+      data, _status_code, _headers = list_sfvb_library_installs_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List the library entries installed on a storefront
+    # Each entry&#39;s most recently installed revision, its latest published revision and update_available.  Nothing updates automatically.  An entry this account can no longer see is listed without its name. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbLibraryInstallRecord, Integer, Hash)>] SfvbLibraryInstallRecord data, response status code and response headers
+    def list_sfvb_library_installs_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.list_sfvb_library_installs ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.list_sfvb_library_installs"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/library/installs'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbLibraryInstallRecord'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.list_sfvb_library_installs",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_library_installs\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5208,6 +5852,94 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#move_sfvb_upsell_path\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Publish a library entry's draft
+    # Freezes the draft as a published revision at its revision_number and sets who can see it.  Owner only, with the draft's hash_sha256 as If-Match.  Always needs sfvb_publish, because it changes what other merchants can install.  Images, fonts, stylesheets and media must be relative paths, and credential shaped strings are refused.  Public also needs the library publisher property on the account and no executable content at all - no script, html, embed, css or velocity elements.  After those checks an automated AI review reads the fragment, which can take up to about a minute.  A clear violation both of its models agree on refuses any publish with sfvb.library_ai_review_blocked.  A public publish also needs its approval, otherwise sfvb.library_ai_review_inconclusive.  The result is in content_manifest.ai_review. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param publish_request [SfvbLibraryPublishRequest] Visibility and release notes
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbLibraryEntry]
+    def publish_sfvb_library_entry(storefront_oid, library_oid, if_match, publish_request, opts = {})
+      data, _status_code, _headers = publish_sfvb_library_entry_with_http_info(storefront_oid, library_oid, if_match, publish_request, opts)
+      data
+    end
+
+    # Publish a library entry&#39;s draft
+    # Freezes the draft as a published revision at its revision_number and sets who can see it.  Owner only, with the draft&#39;s hash_sha256 as If-Match.  Always needs sfvb_publish, because it changes what other merchants can install.  Images, fonts, stylesheets and media must be relative paths, and credential shaped strings are refused.  Public also needs the library publisher property on the account and no executable content at all - no script, html, embed, css or velocity elements.  After those checks an automated AI review reads the fragment, which can take up to about a minute.  A clear violation both of its models agree on refuses any publish with sfvb.library_ai_review_blocked.  A public publish also needs its approval, otherwise sfvb.library_ai_review_inconclusive.  The result is in content_manifest.ai_review. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param publish_request [SfvbLibraryPublishRequest] Visibility and release notes
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbLibraryEntry, Integer, Hash)>] SfvbLibraryEntry data, response status code and response headers
+    def publish_sfvb_library_entry_with_http_info(storefront_oid, library_oid, if_match, publish_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.publish_sfvb_library_entry ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.publish_sfvb_library_entry"
+      end
+      # verify the required parameter 'library_oid' is set
+      if @api_client.config.client_side_validation && library_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'library_oid' when calling SfvbApi.publish_sfvb_library_entry"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.publish_sfvb_library_entry"
+      end
+      # verify the required parameter 'publish_request' is set
+      if @api_client.config.client_side_validation && publish_request.nil?
+        fail ArgumentError, "Missing the required parameter 'publish_request' when calling SfvbApi.publish_sfvb_library_entry"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/library/{library_oid}/publish'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'library_oid' + '}', CGI.escape(library_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(publish_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbLibraryEntry'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.publish_sfvb_library_entry",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#publish_sfvb_library_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -7248,7 +7980,7 @@ module UltracartClient
     end
 
     # Search the element library
-    # Known-good CJSON fragments a human already built out of real elements.  This is what a lint warning about a monolithic html element should point at - a warning that names a fragment solving the same problem is an instruction, where a warning on its own is only criticism.  Results are terse; fetch a single entry for its CJSON.  Narrow with facet_{name}={option} query parameters. 
+    # Known-good CJSON fragments a human already built out of real elements.  This is what a lint warning about a monolithic html element should point at - a warning that names a fragment solving the same problem is an instruction, where a warning on its own is only criticism.  Results are terse; fetch a single entry for its CJSON.  Narrow with a query parameter named after a facet, such as facet_purpose, whose value is the facet name, a colon and one of its options.  Besides element type and author, the facets include purpose, section, industry and style from library/taxonomy, and the search text matches those tags too.  Results follow the same rules as reading one entry, so others see published revisions only. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :segment 
@@ -7262,7 +7994,7 @@ module UltracartClient
     end
 
     # Search the element library
-    # Known-good CJSON fragments a human already built out of real elements.  This is what a lint warning about a monolithic html element should point at - a warning that names a fragment solving the same problem is an instruction, where a warning on its own is only criticism.  Results are terse; fetch a single entry for its CJSON.  Narrow with facet_{name}&#x3D;{option} query parameters. 
+    # Known-good CJSON fragments a human already built out of real elements.  This is what a lint warning about a monolithic html element should point at - a warning that names a fragment solving the same problem is an instruction, where a warning on its own is only criticism.  Results are terse; fetch a single entry for its CJSON.  Narrow with a query parameter named after a facet, such as facet_purpose, whose value is the facet name, a colon and one of its options.  Besides element type and author, the facets include purpose, section, industry and style from library/taxonomy, and the search text matches those tags too.  Results follow the same rules as reading one entry, so others see published revisions only. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :segment 
@@ -7319,6 +8051,175 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#search_sfvb_library\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Set a library entry's screenshot
+    # Three calls, like the other uploads.  Request an upload URL with files/upload_url/png, PUT the PNG bytes to it, then call this with the key, the sha256 of those bytes and where the image came from.  Owner only, with the draft's hash_sha256 as If-Match.  The PNG must be at most 5 MB and 4096 pixels a side; it is re-encoded, which drops any metadata, and a thumbnail is made from it before this returns.  Capture it with test data only.  A refused image leaves the previous screenshot in place.  Other merchants see a new screenshot only after the next publish, whose review checks it. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param screenshot_request [SfvbLibraryScreenshotRequest] The staged PNG
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbLibraryEntry]
+    def set_sfvb_library_screenshot(storefront_oid, library_oid, if_match, screenshot_request, opts = {})
+      data, _status_code, _headers = set_sfvb_library_screenshot_with_http_info(storefront_oid, library_oid, if_match, screenshot_request, opts)
+      data
+    end
+
+    # Set a library entry&#39;s screenshot
+    # Three calls, like the other uploads.  Request an upload URL with files/upload_url/png, PUT the PNG bytes to it, then call this with the key, the sha256 of those bytes and where the image came from.  Owner only, with the draft&#39;s hash_sha256 as If-Match.  The PNG must be at most 5 MB and 4096 pixels a side; it is re-encoded, which drops any metadata, and a thumbnail is made from it before this returns.  Capture it with test data only.  A refused image leaves the previous screenshot in place.  Other merchants see a new screenshot only after the next publish, whose review checks it. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param screenshot_request [SfvbLibraryScreenshotRequest] The staged PNG
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbLibraryEntry, Integer, Hash)>] SfvbLibraryEntry data, response status code and response headers
+    def set_sfvb_library_screenshot_with_http_info(storefront_oid, library_oid, if_match, screenshot_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.set_sfvb_library_screenshot ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.set_sfvb_library_screenshot"
+      end
+      # verify the required parameter 'library_oid' is set
+      if @api_client.config.client_side_validation && library_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'library_oid' when calling SfvbApi.set_sfvb_library_screenshot"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.set_sfvb_library_screenshot"
+      end
+      # verify the required parameter 'screenshot_request' is set
+      if @api_client.config.client_side_validation && screenshot_request.nil?
+        fail ArgumentError, "Missing the required parameter 'screenshot_request' when calling SfvbApi.set_sfvb_library_screenshot"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/library/{library_oid}/screenshot'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'library_oid' + '}', CGI.escape(library_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(screenshot_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbLibraryEntry'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.set_sfvb_library_screenshot",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#set_sfvb_library_screenshot\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Share a published library entry with a linked account
+    # Owner only, and always needs sfvb_publish.  The merchant must be one share_targets lists, and the entry must have a published revision, which is what the recipient sees.  The published revision is checked again for absolute asset URLs and credentials.  Idempotent. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param share_request [SfvbLibraryShareRequest] The linked account
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbLibraryEntry]
+    def share_sfvb_library_entry(storefront_oid, library_oid, share_request, opts = {})
+      data, _status_code, _headers = share_sfvb_library_entry_with_http_info(storefront_oid, library_oid, share_request, opts)
+      data
+    end
+
+    # Share a published library entry with a linked account
+    # Owner only, and always needs sfvb_publish.  The merchant must be one share_targets lists, and the entry must have a published revision, which is what the recipient sees.  The published revision is checked again for absolute asset URLs and credentials.  Idempotent. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param share_request [SfvbLibraryShareRequest] The linked account
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbLibraryEntry, Integer, Hash)>] SfvbLibraryEntry data, response status code and response headers
+    def share_sfvb_library_entry_with_http_info(storefront_oid, library_oid, share_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.share_sfvb_library_entry ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.share_sfvb_library_entry"
+      end
+      # verify the required parameter 'library_oid' is set
+      if @api_client.config.client_side_validation && library_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'library_oid' when calling SfvbApi.share_sfvb_library_entry"
+      end
+      # verify the required parameter 'share_request' is set
+      if @api_client.config.client_side_validation && share_request.nil?
+        fail ArgumentError, "Missing the required parameter 'share_request' when calling SfvbApi.share_sfvb_library_entry"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/library/{library_oid}/shares'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'library_oid' + '}', CGI.escape(library_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(share_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbLibraryEntry'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.share_sfvb_library_entry",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#share_sfvb_library_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -7468,6 +8369,233 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Remove a library entry from favorites
+    # Removes the calling user's bookmark.  Idempotent. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def unfavorite_sfvb_library_entry(storefront_oid, library_oid, opts = {})
+      unfavorite_sfvb_library_entry_with_http_info(storefront_oid, library_oid, opts)
+      nil
+    end
+
+    # Remove a library entry from favorites
+    # Removes the calling user&#39;s bookmark.  Idempotent. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def unfavorite_sfvb_library_entry_with_http_info(storefront_oid, library_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.unfavorite_sfvb_library_entry ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.unfavorite_sfvb_library_entry"
+      end
+      # verify the required parameter 'library_oid' is set
+      if @api_client.config.client_side_validation && library_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'library_oid' when calling SfvbApi.unfavorite_sfvb_library_entry"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/library/{library_oid}/favorite'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'library_oid' + '}', CGI.escape(library_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.unfavorite_sfvb_library_entry",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#unfavorite_sfvb_library_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Narrow who can see a library entry
+    # Sets visibility to shared or private.  Owner only, and always needs sfvb_publish.  Published revisions are kept and storefronts that already installed the entry keep their copies. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param unpublish_request [SfvbLibraryPublishRequest] The narrower visibility
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbLibraryEntry]
+    def unpublish_sfvb_library_entry(storefront_oid, library_oid, unpublish_request, opts = {})
+      data, _status_code, _headers = unpublish_sfvb_library_entry_with_http_info(storefront_oid, library_oid, unpublish_request, opts)
+      data
+    end
+
+    # Narrow who can see a library entry
+    # Sets visibility to shared or private.  Owner only, and always needs sfvb_publish.  Published revisions are kept and storefronts that already installed the entry keep their copies. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param unpublish_request [SfvbLibraryPublishRequest] The narrower visibility
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbLibraryEntry, Integer, Hash)>] SfvbLibraryEntry data, response status code and response headers
+    def unpublish_sfvb_library_entry_with_http_info(storefront_oid, library_oid, unpublish_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.unpublish_sfvb_library_entry ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.unpublish_sfvb_library_entry"
+      end
+      # verify the required parameter 'library_oid' is set
+      if @api_client.config.client_side_validation && library_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'library_oid' when calling SfvbApi.unpublish_sfvb_library_entry"
+      end
+      # verify the required parameter 'unpublish_request' is set
+      if @api_client.config.client_side_validation && unpublish_request.nil?
+        fail ArgumentError, "Missing the required parameter 'unpublish_request' when calling SfvbApi.unpublish_sfvb_library_entry"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/library/{library_oid}/unpublish'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'library_oid' + '}', CGI.escape(library_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(unpublish_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbLibraryEntry'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.unpublish_sfvb_library_entry",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#unpublish_sfvb_library_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Stop sharing a library entry with an account
+    # Owner only, and always needs sfvb_publish.  Stops further installs by that account.  Its existing installs keep their copies and are listed in the result.  Idempotent, and still works while the library is turned off. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param merchant_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbLibraryUnshareResult]
+    def unshare_sfvb_library_entry(storefront_oid, library_oid, merchant_id, opts = {})
+      data, _status_code, _headers = unshare_sfvb_library_entry_with_http_info(storefront_oid, library_oid, merchant_id, opts)
+      data
+    end
+
+    # Stop sharing a library entry with an account
+    # Owner only, and always needs sfvb_publish.  Stops further installs by that account.  Its existing installs keep their copies and are listed in the result.  Idempotent, and still works while the library is turned off. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param merchant_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbLibraryUnshareResult, Integer, Hash)>] SfvbLibraryUnshareResult data, response status code and response headers
+    def unshare_sfvb_library_entry_with_http_info(storefront_oid, library_oid, merchant_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.unshare_sfvb_library_entry ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.unshare_sfvb_library_entry"
+      end
+      # verify the required parameter 'library_oid' is set
+      if @api_client.config.client_side_validation && library_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'library_oid' when calling SfvbApi.unshare_sfvb_library_entry"
+      end
+      # verify the required parameter 'merchant_id' is set
+      if @api_client.config.client_side_validation && merchant_id.nil?
+        fail ArgumentError, "Missing the required parameter 'merchant_id' when calling SfvbApi.unshare_sfvb_library_entry"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/library/{library_oid}/shares/{merchant_id}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'library_oid' + '}', CGI.escape(library_oid.to_s)).sub('{' + 'merchant_id' + '}', CGI.escape(merchant_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbLibraryUnshareResult'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.unshare_sfvb_library_entry",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#unshare_sfvb_library_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Change a blog post
     # Only the fields sent change; tags, when sent, replaces every tag.  The post's images and attributes are left alone.  Publish or unpublish with visibility.  A post that is not a draft before or after the change needs sfvb_publish.  The same content rules as create apply. 
     # @param storefront_oid [Integer] 
@@ -7545,6 +8673,94 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_blog_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a library entry's draft
+    # A full replace of the draft's fields.  Owner only.  Send the hash_sha256 you read as If-Match.  Every save increments revision_number; nothing other merchants see changes until the draft is published.  A changed fragment is re-scanned and its images copied again, and screenshot_stale tells you to retake the screenshot. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param library_entry [SfvbLibraryEntryRequest] The whole entry
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbLibraryEntry]
+    def update_sfvb_library_entry(storefront_oid, library_oid, if_match, library_entry, opts = {})
+      data, _status_code, _headers = update_sfvb_library_entry_with_http_info(storefront_oid, library_oid, if_match, library_entry, opts)
+      data
+    end
+
+    # Update a library entry&#39;s draft
+    # A full replace of the draft&#39;s fields.  Owner only.  Send the hash_sha256 you read as If-Match.  Every save increments revision_number; nothing other merchants see changes until the draft is published.  A changed fragment is re-scanned and its images copied again, and screenshot_stale tells you to retake the screenshot. 
+    # @param storefront_oid [Integer] 
+    # @param library_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param library_entry [SfvbLibraryEntryRequest] The whole entry
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbLibraryEntry, Integer, Hash)>] SfvbLibraryEntry data, response status code and response headers
+    def update_sfvb_library_entry_with_http_info(storefront_oid, library_oid, if_match, library_entry, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_library_entry ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_library_entry"
+      end
+      # verify the required parameter 'library_oid' is set
+      if @api_client.config.client_side_validation && library_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'library_oid' when calling SfvbApi.update_sfvb_library_entry"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.update_sfvb_library_entry"
+      end
+      # verify the required parameter 'library_entry' is set
+      if @api_client.config.client_side_validation && library_entry.nil?
+        fail ArgumentError, "Missing the required parameter 'library_entry' when calling SfvbApi.update_sfvb_library_entry"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/library/{library_oid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'library_oid' + '}', CGI.escape(library_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(library_entry)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbLibraryEntry'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_library_entry",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_library_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

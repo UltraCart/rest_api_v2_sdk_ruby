@@ -14,22 +14,41 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbLibraryFacet
-    # Human readable facet name.
-    attr_accessor :display_name
+  class SfvbLibraryInstallReceipt
+    # The fragment, with its file paths rewritten to where they were installed.  Ready to place.
+    attr_accessor :cjson
 
-    # Facet key, such as facet_purpose.  To select an option, add a query parameter named after the key whose value is the key, a colon and the option.
-    attr_accessor :name
+    # Paths that already held a different file.  With on_conflict fail these refuse the install.
+    attr_accessor :conflicts
 
-    # Values present in the results.  A facet with only one value is left out unless it is selected.
-    attr_accessor :options
+    attr_accessor :content_manifest
+
+    # Paths not written, because an identical or chosen existing file was kept, or the file could not be fetched.
+    attr_accessor :files_skipped
+
+    # Storefront paths this install wrote.
+    attr_accessor :files_written
+
+    # The entry.
+    attr_accessor :library_oid
+
+    # The revision installed.
+    attr_accessor :revision_number
+
+    # Required parameters with no default.  Replace them in the cjson before placing it.
+    attr_accessor :unresolved_parameters
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'display_name' => :'display_name',
-        :'name' => :'name',
-        :'options' => :'options'
+        :'cjson' => :'cjson',
+        :'conflicts' => :'conflicts',
+        :'content_manifest' => :'content_manifest',
+        :'files_skipped' => :'files_skipped',
+        :'files_written' => :'files_written',
+        :'library_oid' => :'library_oid',
+        :'revision_number' => :'revision_number',
+        :'unresolved_parameters' => :'unresolved_parameters'
       }
     end
 
@@ -41,9 +60,14 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'display_name' => :'String',
-        :'name' => :'String',
-        :'options' => :'Array<String>'
+        :'cjson' => :'String',
+        :'conflicts' => :'Array<SfvbLibraryInstallConflict>',
+        :'content_manifest' => :'SfvbLibraryContentManifest',
+        :'files_skipped' => :'Array<String>',
+        :'files_written' => :'Array<String>',
+        :'library_oid' => :'Integer',
+        :'revision_number' => :'Integer',
+        :'unresolved_parameters' => :'Array<String>'
       }
     end
 
@@ -57,28 +81,54 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryFacet` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryInstallReceipt` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryFacet`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryInstallReceipt`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'display_name')
-        self.display_name = attributes[:'display_name']
+      if attributes.key?(:'cjson')
+        self.cjson = attributes[:'cjson']
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'conflicts')
+        if (value = attributes[:'conflicts']).is_a?(Array)
+          self.conflicts = value
+        end
       end
 
-      if attributes.key?(:'options')
-        if (value = attributes[:'options']).is_a?(Array)
-          self.options = value
+      if attributes.key?(:'content_manifest')
+        self.content_manifest = attributes[:'content_manifest']
+      end
+
+      if attributes.key?(:'files_skipped')
+        if (value = attributes[:'files_skipped']).is_a?(Array)
+          self.files_skipped = value
+        end
+      end
+
+      if attributes.key?(:'files_written')
+        if (value = attributes[:'files_written']).is_a?(Array)
+          self.files_written = value
+        end
+      end
+
+      if attributes.key?(:'library_oid')
+        self.library_oid = attributes[:'library_oid']
+      end
+
+      if attributes.key?(:'revision_number')
+        self.revision_number = attributes[:'revision_number']
+      end
+
+      if attributes.key?(:'unresolved_parameters')
+        if (value = attributes[:'unresolved_parameters']).is_a?(Array)
+          self.unresolved_parameters = value
         end
       end
     end
@@ -101,9 +151,14 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          display_name == o.display_name &&
-          name == o.name &&
-          options == o.options
+          cjson == o.cjson &&
+          conflicts == o.conflicts &&
+          content_manifest == o.content_manifest &&
+          files_skipped == o.files_skipped &&
+          files_written == o.files_written &&
+          library_oid == o.library_oid &&
+          revision_number == o.revision_number &&
+          unresolved_parameters == o.unresolved_parameters
     end
 
     # @see the `==` method
@@ -115,7 +170,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [display_name, name, options].hash
+      [cjson, conflicts, content_manifest, files_skipped, files_written, library_oid, revision_number, unresolved_parameters].hash
     end
 
     # Builds the object from hash

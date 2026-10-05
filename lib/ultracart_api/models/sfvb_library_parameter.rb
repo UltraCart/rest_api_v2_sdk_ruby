@@ -14,22 +14,30 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbLibraryFacet
-    # Human readable facet name.
-    attr_accessor :display_name
+  class SfvbLibraryParameter
+    # The value used when none is supplied.
+    attr_accessor :default
 
-    # Facet key, such as facet_purpose.  To select an option, add a query parameter named after the key whose value is the key, a colon and the option.
+    # What the value is used for.
+    attr_accessor :description
+
+    # Parameter name, letters, digits, hyphens and underscores.
     attr_accessor :name
 
-    # Values present in the results.  A facet with only one value is left out unless it is selected.
-    attr_accessor :options
+    # True when the fragment cannot be used without it.
+    attr_accessor :required
+
+    # What kind of value it takes, such as string, url, color or item.
+    attr_accessor :type
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'display_name' => :'display_name',
+        :'default' => :'default',
+        :'description' => :'description',
         :'name' => :'name',
-        :'options' => :'options'
+        :'required' => :'required',
+        :'type' => :'type'
       }
     end
 
@@ -41,9 +49,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'display_name' => :'String',
+        :'default' => :'String',
+        :'description' => :'String',
         :'name' => :'String',
-        :'options' => :'Array<String>'
+        :'required' => :'Boolean',
+        :'type' => :'String'
       }
     end
 
@@ -57,29 +67,35 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryFacet` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryParameter` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryFacet`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryParameter`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'display_name')
-        self.display_name = attributes[:'display_name']
+      if attributes.key?(:'default')
+        self.default = attributes[:'default']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'options')
-        if (value = attributes[:'options']).is_a?(Array)
-          self.options = value
-        end
+      if attributes.key?(:'required')
+        self.required = attributes[:'required']
+      end
+
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
       end
     end
 
@@ -101,9 +117,11 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          display_name == o.display_name &&
+          default == o.default &&
+          description == o.description &&
           name == o.name &&
-          options == o.options
+          required == o.required &&
+          type == o.type
     end
 
     # @see the `==` method
@@ -115,7 +133,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [display_name, name, options].hash
+      [default, description, name, required, type].hash
     end
 
     # Builds the object from hash

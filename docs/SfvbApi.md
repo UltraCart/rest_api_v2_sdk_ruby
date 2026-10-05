@@ -8,24 +8,29 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**add_sfvb_page_items**](SfvbApi.md#add_sfvb_page_items) | **POST** /sfvb/storefronts/{storefront_oid}/pages/items/add | Assign items to a page |
 | [**archive_sfvb_upsell_path**](SfvbApi.md#archive_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/archive | Archive an upsell path |
 | [**attach_sfvb_blog_post_image**](SfvbApi.md#attach_sfvb_blog_post_image) | **POST** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid}/images/attach | Attach an image to a blog post |
+| [**clear_sfvb_library_screenshot**](SfvbApi.md#clear_sfvb_library_screenshot) | **DELETE** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/screenshot | Remove a library entry&#39;s screenshot |
 | [**compile_sfvb_cjson**](SfvbApi.md#compile_sfvb_cjson) | **POST** /sfvb/cjson/compile | Compile CJSON to Velocity |
+| [**create_sfvb_library_entry**](SfvbApi.md#create_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library | Save a fragment to the library |
 | [**create_sfvb_preview_access**](SfvbApi.md#create_sfvb_preview_access) | **POST** /sfvb/storefronts/{storefront_oid}/preview_access | One time link that opens a preview in a browser with no UltraCart login |
 | [**create_sfvb_preview_session**](SfvbApi.md#create_sfvb_preview_session) | **POST** /sfvb/storefronts/{storefront_oid}/preview_sessions | Create a preview session |
 | [**delete_sfvb_blog_post**](SfvbApi.md#delete_sfvb_blog_post) | **DELETE** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Delete a blog post |
 | [**delete_sfvb_file**](SfvbApi.md#delete_sfvb_file) | **DELETE** /sfvb/storefronts/{storefront_oid}/files | Delete a storefront file |
 | [**delete_sfvb_item_attribute**](SfvbApi.md#delete_sfvb_item_attribute) | **DELETE** /sfvb/storefronts/{storefront_oid}/items/attributes | Delete an attribute from an item |
 | [**delete_sfvb_item_multimedia**](SfvbApi.md#delete_sfvb_item_multimedia) | **DELETE** /sfvb/storefronts/{storefront_oid}/items/multimedia | Detach an image from an item |
+| [**delete_sfvb_library_entry**](SfvbApi.md#delete_sfvb_library_entry) | **DELETE** /sfvb/storefronts/{storefront_oid}/library/{library_oid} | Delete or retire a library entry |
 | [**delete_sfvb_page_multimedia**](SfvbApi.md#delete_sfvb_page_multimedia) | **DELETE** /sfvb/storefronts/{storefront_oid}/pages/multimedia | Detach an image from a page |
 | [**delete_sfvb_preview_session**](SfvbApi.md#delete_sfvb_preview_session) | **DELETE** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id} | Delete a preview session |
 | [**detach_sfvb_blog_post_image**](SfvbApi.md#detach_sfvb_blog_post_image) | **POST** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid}/images/detach | Detach an image from a blog post |
 | [**disable_sfvb_upsell_offer**](SfvbApi.md#disable_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/disable | Disable an upsell offer |
 | [**disable_sfvb_upsell_path**](SfvbApi.md#disable_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/disable | Disable an upsell path |
 | [**download_sfvb_file**](SfvbApi.md#download_sfvb_file) | **GET** /sfvb/storefronts/{storefront_oid}/files/download | Read a storefront file&#39;s raw bytes |
+| [**duplicate_sfvb_library_entry**](SfvbApi.md#duplicate_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/duplicate | Copy a library entry into a new private entry |
 | [**duplicate_sfvb_page**](SfvbApi.md#duplicate_sfvb_page) | **POST** /sfvb/storefronts/{storefront_oid}/pages/duplicate | Copy a page to a new path |
 | [**duplicate_sfvb_theme**](SfvbApi.md#duplicate_sfvb_theme) | **POST** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/duplicate | Duplicate a theme |
 | [**duplicate_sfvb_upsell_offer**](SfvbApi.md#duplicate_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/duplicate | Duplicate an upsell offer |
 | [**duplicate_sfvb_upsell_path**](SfvbApi.md#duplicate_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/duplicate | Duplicate an upsell path or one of its variations |
 | [**end_sfvb_experiment**](SfvbApi.md#end_sfvb_experiment) | **POST** /sfvb/storefronts/{storefront_oid}/experiments/{experiment_oid}/end | End an experiment |
+| [**favorite_sfvb_library_entry**](SfvbApi.md#favorite_sfvb_library_entry) | **PUT** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/favorite | Favorite a library entry |
 | [**get_sfvb_blog_post**](SfvbApi.md#get_sfvb_blog_post) | **GET** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Read a blog post |
 | [**get_sfvb_cjson_used_elements**](SfvbApi.md#get_sfvb_cjson_used_elements) | **POST** /sfvb/cjson/elements | Element types used by a container |
 | [**get_sfvb_container**](SfvbApi.md#get_sfvb_container) | **GET** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id} | Read a container stored outside the file system |
@@ -37,6 +42,9 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_file_upload_url**](SfvbApi.md#get_sfvb_file_upload_url) | **GET** /sfvb/storefronts/{storefront_oid}/files/upload_url/{extension} | Get a URL to upload a binary asset to |
 | [**get_sfvb_item**](SfvbApi.md#get_sfvb_item) | **GET** /sfvb/storefronts/{storefront_oid}/items | Read an item&#39;s storefront facing content |
 | [**get_sfvb_library_entry**](SfvbApi.md#get_sfvb_library_entry) | **GET** /sfvb/storefronts/{storefront_oid}/library/{library_oid} | Read one library entry including its CJSON |
+| [**get_sfvb_library_history**](SfvbApi.md#get_sfvb_library_history) | **GET** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/history | List a library entry&#39;s published revisions |
+| [**get_sfvb_library_share_targets**](SfvbApi.md#get_sfvb_library_share_targets) | **GET** /sfvb/storefronts/{storefront_oid}/library/share_targets | List the accounts a library entry can be shared with |
+| [**get_sfvb_library_taxonomy**](SfvbApi.md#get_sfvb_library_taxonomy) | **GET** /sfvb/storefronts/{storefront_oid}/library/taxonomy | List the allowed library tags |
 | [**get_sfvb_menu**](SfvbApi.md#get_sfvb_menu) | **GET** /sfvb/storefronts/{storefront_oid}/menus/{code} | Read one store menu and its entries |
 | [**get_sfvb_menus**](SfvbApi.md#get_sfvb_menus) | **GET** /sfvb/storefronts/{storefront_oid}/menus | List a storefront&#39;s store menus |
 | [**get_sfvb_page**](SfvbApi.md#get_sfvb_page) | **GET** /sfvb/storefronts/{storefront_oid}/pages | Read a page&#39;s attributes and images |
@@ -68,6 +76,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**list_sfvb_file_versions**](SfvbApi.md#list_sfvb_file_versions) | **GET** /sfvb/storefronts/{storefront_oid}/files/versions | Version history for a storefront file |
 | [**list_sfvb_files**](SfvbApi.md#list_sfvb_files) | **GET** /sfvb/storefronts/{storefront_oid}/files | List a storefront directory |
 | [**list_sfvb_item_containers**](SfvbApi.md#list_sfvb_item_containers) | **GET** /sfvb/storefronts/{storefront_oid}/item_containers | List the item containers on the account |
+| [**list_sfvb_library_installs**](SfvbApi.md#list_sfvb_library_installs) | **GET** /sfvb/storefronts/{storefront_oid}/library/installs | List the library entries installed on a storefront |
 | [**list_sfvb_pages**](SfvbApi.md#list_sfvb_pages) | **GET** /sfvb/storefronts/{storefront_oid}/pages/list | List the storefront&#39;s pages |
 | [**list_sfvb_server_logs**](SfvbApi.md#list_sfvb_server_logs) | **GET** /sfvb/storefronts/{storefront_oid}/logs | List recent storefront render logs |
 | [**list_sfvb_storefronts**](SfvbApi.md#list_sfvb_storefronts) | **GET** /sfvb/storefronts | List storefronts |
@@ -76,6 +85,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**list_sfvb_upsell_offers**](SfvbApi.md#list_sfvb_upsell_offers) | **GET** /sfvb/storefronts/{storefront_oid}/upsell_offers | List upsell offers |
 | [**list_sfvb_upsell_paths**](SfvbApi.md#list_sfvb_upsell_paths) | **GET** /sfvb/storefronts/{storefront_oid}/upsell_paths | List upsell paths |
 | [**move_sfvb_upsell_path**](SfvbApi.md#move_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/move | Move an upsell path |
+| [**publish_sfvb_library_entry**](SfvbApi.md#publish_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/publish | Publish a library entry&#39;s draft |
 | [**put_sfvb_container**](SfvbApi.md#put_sfvb_container) | **PUT** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id} | Write a container stored outside the file system |
 | [**put_sfvb_experiment_variation**](SfvbApi.md#put_sfvb_experiment_variation) | **PUT** /sfvb/storefronts/{storefront_oid}/experiments/{experiment_oid}/variations/{variation_number} | Pause or resume a variation |
 | [**put_sfvb_file_content**](SfvbApi.md#put_sfvb_file_content) | **PUT** /sfvb/storefronts/{storefront_oid}/files/content | Write a storefront file |
@@ -102,9 +112,15 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**revert_sfvb_file**](SfvbApi.md#revert_sfvb_file) | **POST** /sfvb/storefronts/{storefront_oid}/files/revert | Revert a storefront file to an earlier version |
 | [**search_sfvb_files**](SfvbApi.md#search_sfvb_files) | **POST** /sfvb/storefronts/{storefront_oid}/files/search | Search storefront files |
 | [**search_sfvb_library**](SfvbApi.md#search_sfvb_library) | **GET** /sfvb/storefronts/{storefront_oid}/library | Search the element library |
+| [**set_sfvb_library_screenshot**](SfvbApi.md#set_sfvb_library_screenshot) | **PUT** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/screenshot | Set a library entry&#39;s screenshot |
+| [**share_sfvb_library_entry**](SfvbApi.md#share_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/shares | Share a published library entry with a linked account |
 | [**start_sfvb_experiment**](SfvbApi.md#start_sfvb_experiment) | **POST** /sfvb/storefronts/{storefront_oid}/experiments | Start an experiment |
 | [**unarchive_sfvb_upsell_path**](SfvbApi.md#unarchive_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/unarchive | Unarchive an upsell path |
+| [**unfavorite_sfvb_library_entry**](SfvbApi.md#unfavorite_sfvb_library_entry) | **DELETE** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/favorite | Remove a library entry from favorites |
+| [**unpublish_sfvb_library_entry**](SfvbApi.md#unpublish_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/unpublish | Narrow who can see a library entry |
+| [**unshare_sfvb_library_entry**](SfvbApi.md#unshare_sfvb_library_entry) | **DELETE** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/shares/{merchant_id} | Stop sharing a library entry with an account |
 | [**update_sfvb_blog_post**](SfvbApi.md#update_sfvb_blog_post) | **PUT** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Change a blog post |
+| [**update_sfvb_library_entry**](SfvbApi.md#update_sfvb_library_entry) | **PUT** /sfvb/storefronts/{storefront_oid}/library/{library_oid} | Update a library entry&#39;s draft |
 | [**update_sfvb_upsell_offer**](SfvbApi.md#update_sfvb_upsell_offer) | **PUT** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid} | Update an upsell offer |
 | [**update_sfvb_upsell_path**](SfvbApi.md#update_sfvb_upsell_path) | **PUT** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid} | Update an upsell path |
 | [**upload_sfvb_file**](SfvbApi.md#upload_sfvb_file) | **POST** /sfvb/storefronts/{storefront_oid}/files/upload | Store a binary asset that was already uploaded |
@@ -331,6 +347,61 @@ end
 - **Accept**: application/json
 
 
+## clear_sfvb_library_screenshot
+
+> <SfvbLibraryEntry> clear_sfvb_library_screenshot(storefront_oid, library_oid, if_match)
+
+Remove a library entry's screenshot
+
+Owner only, with the draft's hash_sha256 as If-Match.  Clears the screenshot and thumbnail.  Published revisions and copies that used the image keep it. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the clear_sfvb_library_screenshot_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbLibraryEntry>, Integer, Hash)> clear_sfvb_library_screenshot_with_http_info(storefront_oid, library_oid, if_match)
+
+```ruby
+begin
+  # Remove a library entry's screenshot
+  data, status_code, headers = api_instance.clear_sfvb_library_screenshot_with_http_info(storefront_oid, library_oid, if_match)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbLibraryEntry>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->clear_sfvb_library_screenshot_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **library_oid** | **Integer** |  |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+
+### Return type
+
+[**SfvbLibraryEntry**](SfvbLibraryEntry.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## compile_sfvb_cjson
 
 > <SfvbCompileResponse> compile_sfvb_cjson(compile_request)
@@ -381,6 +452,60 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_sfvb_library_entry
+
+> <SfvbLibraryEntry> create_sfvb_library_entry(storefront_oid, library_entry)
+
+Save a fragment to the library
+
+Creates a private draft owned by the calling user.  The fragment is one widget and its children, and it must validate.  Images it references on this storefront are copied into the entry before this returns, so it installs anywhere with its images.  The fragment is scanned; card skimming or obfuscation signals are refused outright.  Nothing other merchants or shoppers see changes, so sfvb_write is enough.  Publish it to share it.  An optional screenshot takes a staged PNG key, exactly as the library screenshot endpoint does; a refused screenshot refuses the whole create. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the create_sfvb_library_entry_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbLibraryEntry>, Integer, Hash)> create_sfvb_library_entry_with_http_info(storefront_oid, library_entry)
+
+```ruby
+begin
+  # Save a fragment to the library
+  data, status_code, headers = api_instance.create_sfvb_library_entry_with_http_info(storefront_oid, library_entry)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbLibraryEntry>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->create_sfvb_library_entry_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **library_entry** | [**SfvbLibraryEntryRequest**](SfvbLibraryEntryRequest.md) | The entry |  |
+
+### Return type
+
+[**SfvbLibraryEntry**](SfvbLibraryEntry.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
 - **Accept**: application/json
 
 
@@ -702,6 +827,61 @@ end
 ### Return type
 
 [**SfvbItemResponse**](SfvbItemResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_sfvb_library_entry
+
+> <SfvbLibraryDeleteResult> delete_sfvb_library_entry(storefront_oid, library_oid, if_match)
+
+Delete or retire a library entry
+
+Owner only, with the draft's hash_sha256 as If-Match.  An entry that was never published, installed or shared is deleted.  Anything else is retired - kept so the storefronts that installed it still resolve, but out of search and refusing new installs and publishes.  The result says which happened. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_sfvb_library_entry_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbLibraryDeleteResult>, Integer, Hash)> delete_sfvb_library_entry_with_http_info(storefront_oid, library_oid, if_match)
+
+```ruby
+begin
+  # Delete or retire a library entry
+  data, status_code, headers = api_instance.delete_sfvb_library_entry_with_http_info(storefront_oid, library_oid, if_match)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbLibraryDeleteResult>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->delete_sfvb_library_entry_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **library_oid** | **Integer** |  |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+
+### Return type
+
+[**SfvbLibraryDeleteResult**](SfvbLibraryDeleteResult.md)
 
 ### Authorization
 
@@ -1040,6 +1220,61 @@ nil (empty response body)
 - **Accept**: application/octet-stream
 
 
+## duplicate_sfvb_library_entry
+
+> <SfvbLibraryEntry> duplicate_sfvb_library_entry(storefront_oid, library_oid, opts)
+
+Copy a library entry into a new private entry
+
+The copy is owned by the calling user and private.  From an entry you own it copies the draft; from one shared with you it copies the published revision.  It is scanned on its own and inherits nothing but content, its images and its screenshot. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the duplicate_sfvb_library_entry_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbLibraryEntry>, Integer, Hash)> duplicate_sfvb_library_entry_with_http_info(storefront_oid, library_oid, opts)
+
+```ruby
+begin
+  # Copy a library entry into a new private entry
+  data, status_code, headers = api_instance.duplicate_sfvb_library_entry_with_http_info(storefront_oid, library_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbLibraryEntry>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->duplicate_sfvb_library_entry_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **library_oid** | **Integer** |  |  |
+| **name** | **String** | Name for the copy.  Defaults to Copy of and the source name. | [optional] |
+
+### Return type
+
+[**SfvbLibraryEntry**](SfvbLibraryEntry.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## duplicate_sfvb_page
 
 > <SfvbPageResponse> duplicate_sfvb_page(storefront_oid, page_duplicate_request)
@@ -1310,6 +1545,60 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## favorite_sfvb_library_entry
+
+> favorite_sfvb_library_entry(storefront_oid, library_oid)
+
+Favorite a library entry
+
+Bookmarks the entry for the calling user.  Idempotent.  Owner or anyone the entry is shared with. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the favorite_sfvb_library_entry_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> favorite_sfvb_library_entry_with_http_info(storefront_oid, library_oid)
+
+```ruby
+begin
+  # Favorite a library entry
+  data, status_code, headers = api_instance.favorite_sfvb_library_entry_with_http_info(storefront_oid, library_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->favorite_sfvb_library_entry_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **library_oid** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -1858,11 +2147,11 @@ end
 
 ## get_sfvb_library_entry
 
-> <SfvbLibraryEntry> get_sfvb_library_entry(storefront_oid, library_oid)
+> <SfvbLibraryEntry> get_sfvb_library_entry(storefront_oid, library_oid, opts)
 
 Read one library entry including its CJSON
 
-Returns the fragment as authored.  If it references images or other storefront files those paths will not resolve on this storefront until the entry is installed, so use install rather than this when the intent is to place the fragment. 
+The owner gets the draft with its hash_sha256, which an update, delete or publish sends back as If-Match.  Everyone else gets the latest published revision.  Pin a published revision with revision_number.  Read content_manifest before installing.  If the fragment references images or other storefront files those paths will not resolve on this storefront until the entry is installed, so use install rather than this when the intent is to place the fragment. 
 
 
 ### Examples
@@ -1875,12 +2164,12 @@ Returns the fragment as authored.  If it references images or other storefront f
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SfvbLibraryEntry>, Integer, Hash)> get_sfvb_library_entry_with_http_info(storefront_oid, library_oid)
+> <Array(<SfvbLibraryEntry>, Integer, Hash)> get_sfvb_library_entry_with_http_info(storefront_oid, library_oid, opts)
 
 ```ruby
 begin
   # Read one library entry including its CJSON
-  data, status_code, headers = api_instance.get_sfvb_library_entry_with_http_info(storefront_oid, library_oid)
+  data, status_code, headers = api_instance.get_sfvb_library_entry_with_http_info(storefront_oid, library_oid, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <SfvbLibraryEntry>
@@ -1895,10 +2184,171 @@ end
 | ---- | ---- | ----------- | ----- |
 | **storefront_oid** | **Integer** |  |  |
 | **library_oid** | **Integer** |  |  |
+| **revision_number** | **Integer** | A published revision to read instead of the default. | [optional] |
 
 ### Return type
 
 [**SfvbLibraryEntry**](SfvbLibraryEntry.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_library_history
+
+> <SfvbLibraryHistoryEntry> get_sfvb_library_history(storefront_oid, library_oid)
+
+List a library entry's published revisions
+
+Newest first, each with its release notes and hash.  Read one with getSfvbLibraryEntry and revision_number.  The owner and anyone the entry is shared with can list it. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_library_history_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbLibraryHistoryEntry>, Integer, Hash)> get_sfvb_library_history_with_http_info(storefront_oid, library_oid)
+
+```ruby
+begin
+  # List a library entry's published revisions
+  data, status_code, headers = api_instance.get_sfvb_library_history_with_http_info(storefront_oid, library_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbLibraryHistoryEntry>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_library_history_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **library_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbLibraryHistoryEntry**](SfvbLibraryHistoryEntry.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_library_share_targets
+
+> <SfvbLibraryShareTarget> get_sfvb_library_share_targets(storefront_oid)
+
+List the accounts a library entry can be shared with
+
+The calling account's linked accounts, each with its merchant id and company.  These are the only merchants a share can name. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_library_share_targets_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbLibraryShareTarget>, Integer, Hash)> get_sfvb_library_share_targets_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # List the accounts a library entry can be shared with
+  data, status_code, headers = api_instance.get_sfvb_library_share_targets_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbLibraryShareTarget>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_library_share_targets_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbLibraryShareTarget**](SfvbLibraryShareTarget.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_library_taxonomy
+
+> <SfvbLibraryTaxonomyCatalog> get_sfvb_library_taxonomy(storefront_oid)
+
+List the allowed library tags
+
+The fixed tag list for purpose, section, industry and style, each tag with a one line description.  Saving an entry refuses any tag not on it with sfvb.library_taxonomy_unknown, naming the closest one.  The same tags are the facet_purpose, facet_section, facet_industry and facet_style search facets. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_library_taxonomy_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbLibraryTaxonomyCatalog>, Integer, Hash)> get_sfvb_library_taxonomy_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # List the allowed library tags
+  data, status_code, headers = api_instance.get_sfvb_library_taxonomy_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbLibraryTaxonomyCatalog>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_library_taxonomy_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbLibraryTaxonomyCatalog**](SfvbLibraryTaxonomyCatalog.md)
 
 ### Authorization
 
@@ -3154,11 +3604,11 @@ end
 
 ## install_sfvb_library_entry
 
-> <SfvbLibraryEntry> install_sfvb_library_entry(storefront_oid, library_oid)
+> <SfvbLibraryInstallReceipt> install_sfvb_library_entry(storefront_oid, library_oid, opts)
 
 Install a library entry into a storefront
 
-Copies the fragment's referenced assets into the storefront file system and returns the CJSON with its paths resolved, ready to place.  This writes, which is why it is a POST rather than the GET the internal admin endpoint uses.  It also requires sfvb_publish, because the assets land in the shared storefront file system, which is served to shoppers regardless of which theme is active, so no amount of working inside a duplicate theme isolates them. 
+Copies the fragment's referenced files into the storefront file system and returns a receipt with the CJSON's paths resolved, ready to place.  It never places the CJSON.  Read content_manifest first; executable content needs acknowledge_executable true.  A file that already exists with different content is a conflict - on_conflict fail (the default) refuses with 409 and writes nothing, skip keeps the existing file, overwrite replaces it.  A recipient installs a published revision.  This writes, which is why it is a POST, and it requires sfvb_publish because the files land in the shared storefront file system, which is served to shoppers whichever theme is active. 
 
 
 ### Examples
@@ -3171,15 +3621,15 @@ Copies the fragment's referenced assets into the storefront file system and retu
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SfvbLibraryEntry>, Integer, Hash)> install_sfvb_library_entry_with_http_info(storefront_oid, library_oid)
+> <Array(<SfvbLibraryInstallReceipt>, Integer, Hash)> install_sfvb_library_entry_with_http_info(storefront_oid, library_oid, opts)
 
 ```ruby
 begin
   # Install a library entry into a storefront
-  data, status_code, headers = api_instance.install_sfvb_library_entry_with_http_info(storefront_oid, library_oid)
+  data, status_code, headers = api_instance.install_sfvb_library_entry_with_http_info(storefront_oid, library_oid, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <SfvbLibraryEntry>
+  p data # => <SfvbLibraryInstallReceipt>
 rescue UltracartClient::ApiError => e
   puts "Error when calling SfvbApi->install_sfvb_library_entry_with_http_info: #{e}"
 end
@@ -3191,10 +3641,11 @@ end
 | ---- | ---- | ----------- | ----- |
 | **storefront_oid** | **Integer** |  |  |
 | **library_oid** | **Integer** |  |  |
+| **install_request** | [**SfvbLibraryInstallRequest**](SfvbLibraryInstallRequest.md) | Revision, conflict handling and acknowledgement | [optional] |
 
 ### Return type
 
-[**SfvbLibraryEntry**](SfvbLibraryEntry.md)
+[**SfvbLibraryInstallReceipt**](SfvbLibraryInstallReceipt.md)
 
 ### Authorization
 
@@ -3202,7 +3653,7 @@ end
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json; charset=UTF-8
 - **Accept**: application/json
 
 
@@ -3583,6 +4034,59 @@ end
 ### Return type
 
 [**SfvbItemContainersResponse**](SfvbItemContainersResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_sfvb_library_installs
+
+> <SfvbLibraryInstallRecord> list_sfvb_library_installs(storefront_oid)
+
+List the library entries installed on a storefront
+
+Each entry's most recently installed revision, its latest published revision and update_available.  Nothing updates automatically.  An entry this account can no longer see is listed without its name. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the list_sfvb_library_installs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbLibraryInstallRecord>, Integer, Hash)> list_sfvb_library_installs_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # List the library entries installed on a storefront
+  data, status_code, headers = api_instance.list_sfvb_library_installs_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbLibraryInstallRecord>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->list_sfvb_library_installs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbLibraryInstallRecord**](SfvbLibraryInstallRecord.md)
 
 ### Authorization
 
@@ -4024,6 +4528,62 @@ end
 ### Return type
 
 [**SfvbUpsellPath**](SfvbUpsellPath.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## publish_sfvb_library_entry
+
+> <SfvbLibraryEntry> publish_sfvb_library_entry(storefront_oid, library_oid, if_match, publish_request)
+
+Publish a library entry's draft
+
+Freezes the draft as a published revision at its revision_number and sets who can see it.  Owner only, with the draft's hash_sha256 as If-Match.  Always needs sfvb_publish, because it changes what other merchants can install.  Images, fonts, stylesheets and media must be relative paths, and credential shaped strings are refused.  Public also needs the library publisher property on the account and no executable content at all - no script, html, embed, css or velocity elements.  After those checks an automated AI review reads the fragment, which can take up to about a minute.  A clear violation both of its models agree on refuses any publish with sfvb.library_ai_review_blocked.  A public publish also needs its approval, otherwise sfvb.library_ai_review_inconclusive.  The result is in content_manifest.ai_review. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the publish_sfvb_library_entry_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbLibraryEntry>, Integer, Hash)> publish_sfvb_library_entry_with_http_info(storefront_oid, library_oid, if_match, publish_request)
+
+```ruby
+begin
+  # Publish a library entry's draft
+  data, status_code, headers = api_instance.publish_sfvb_library_entry_with_http_info(storefront_oid, library_oid, if_match, publish_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbLibraryEntry>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->publish_sfvb_library_entry_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **library_oid** | **Integer** |  |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **publish_request** | [**SfvbLibraryPublishRequest**](SfvbLibraryPublishRequest.md) | Visibility and release notes |  |
+
+### Return type
+
+[**SfvbLibraryEntry**](SfvbLibraryEntry.md)
 
 ### Authorization
 
@@ -5425,7 +5985,7 @@ end
 
 Search the element library
 
-Known-good CJSON fragments a human already built out of real elements.  This is what a lint warning about a monolithic html element should point at - a warning that names a fragment solving the same problem is an instruction, where a warning on its own is only criticism.  Results are terse; fetch a single entry for its CJSON.  Narrow with facet_{name}={option} query parameters. 
+Known-good CJSON fragments a human already built out of real elements.  This is what a lint warning about a monolithic html element should point at - a warning that names a fragment solving the same problem is an instruction, where a warning on its own is only criticism.  Results are terse; fetch a single entry for its CJSON.  Narrow with a query parameter named after a facet, such as facet_purpose, whose value is the facet name, a colon and one of its options.  Besides element type and author, the facets include purpose, section, industry and style from library/taxonomy, and the search text matches those tags too.  Results follow the same rules as reading one entry, so others see published revisions only. 
 
 
 ### Examples
@@ -5473,6 +6033,117 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## set_sfvb_library_screenshot
+
+> <SfvbLibraryEntry> set_sfvb_library_screenshot(storefront_oid, library_oid, if_match, screenshot_request)
+
+Set a library entry's screenshot
+
+Three calls, like the other uploads.  Request an upload URL with files/upload_url/png, PUT the PNG bytes to it, then call this with the key, the sha256 of those bytes and where the image came from.  Owner only, with the draft's hash_sha256 as If-Match.  The PNG must be at most 5 MB and 4096 pixels a side; it is re-encoded, which drops any metadata, and a thumbnail is made from it before this returns.  Capture it with test data only.  A refused image leaves the previous screenshot in place.  Other merchants see a new screenshot only after the next publish, whose review checks it. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the set_sfvb_library_screenshot_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbLibraryEntry>, Integer, Hash)> set_sfvb_library_screenshot_with_http_info(storefront_oid, library_oid, if_match, screenshot_request)
+
+```ruby
+begin
+  # Set a library entry's screenshot
+  data, status_code, headers = api_instance.set_sfvb_library_screenshot_with_http_info(storefront_oid, library_oid, if_match, screenshot_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbLibraryEntry>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->set_sfvb_library_screenshot_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **library_oid** | **Integer** |  |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **screenshot_request** | [**SfvbLibraryScreenshotRequest**](SfvbLibraryScreenshotRequest.md) | The staged PNG |  |
+
+### Return type
+
+[**SfvbLibraryEntry**](SfvbLibraryEntry.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## share_sfvb_library_entry
+
+> <SfvbLibraryEntry> share_sfvb_library_entry(storefront_oid, library_oid, share_request)
+
+Share a published library entry with a linked account
+
+Owner only, and always needs sfvb_publish.  The merchant must be one share_targets lists, and the entry must have a published revision, which is what the recipient sees.  The published revision is checked again for absolute asset URLs and credentials.  Idempotent. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the share_sfvb_library_entry_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbLibraryEntry>, Integer, Hash)> share_sfvb_library_entry_with_http_info(storefront_oid, library_oid, share_request)
+
+```ruby
+begin
+  # Share a published library entry with a linked account
+  data, status_code, headers = api_instance.share_sfvb_library_entry_with_http_info(storefront_oid, library_oid, share_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbLibraryEntry>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->share_sfvb_library_entry_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **library_oid** | **Integer** |  |  |
+| **share_request** | [**SfvbLibraryShareRequest**](SfvbLibraryShareRequest.md) | The linked account |  |
+
+### Return type
+
+[**SfvbLibraryEntry**](SfvbLibraryEntry.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
 - **Accept**: application/json
 
 
@@ -5584,6 +6255,170 @@ end
 - **Accept**: application/json
 
 
+## unfavorite_sfvb_library_entry
+
+> unfavorite_sfvb_library_entry(storefront_oid, library_oid)
+
+Remove a library entry from favorites
+
+Removes the calling user's bookmark.  Idempotent. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the unfavorite_sfvb_library_entry_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> unfavorite_sfvb_library_entry_with_http_info(storefront_oid, library_oid)
+
+```ruby
+begin
+  # Remove a library entry from favorites
+  data, status_code, headers = api_instance.unfavorite_sfvb_library_entry_with_http_info(storefront_oid, library_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->unfavorite_sfvb_library_entry_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **library_oid** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## unpublish_sfvb_library_entry
+
+> <SfvbLibraryEntry> unpublish_sfvb_library_entry(storefront_oid, library_oid, unpublish_request)
+
+Narrow who can see a library entry
+
+Sets visibility to shared or private.  Owner only, and always needs sfvb_publish.  Published revisions are kept and storefronts that already installed the entry keep their copies. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the unpublish_sfvb_library_entry_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbLibraryEntry>, Integer, Hash)> unpublish_sfvb_library_entry_with_http_info(storefront_oid, library_oid, unpublish_request)
+
+```ruby
+begin
+  # Narrow who can see a library entry
+  data, status_code, headers = api_instance.unpublish_sfvb_library_entry_with_http_info(storefront_oid, library_oid, unpublish_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbLibraryEntry>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->unpublish_sfvb_library_entry_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **library_oid** | **Integer** |  |  |
+| **unpublish_request** | [**SfvbLibraryPublishRequest**](SfvbLibraryPublishRequest.md) | The narrower visibility |  |
+
+### Return type
+
+[**SfvbLibraryEntry**](SfvbLibraryEntry.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## unshare_sfvb_library_entry
+
+> <SfvbLibraryUnshareResult> unshare_sfvb_library_entry(storefront_oid, library_oid, merchant_id)
+
+Stop sharing a library entry with an account
+
+Owner only, and always needs sfvb_publish.  Stops further installs by that account.  Its existing installs keep their copies and are listed in the result.  Idempotent, and still works while the library is turned off. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the unshare_sfvb_library_entry_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbLibraryUnshareResult>, Integer, Hash)> unshare_sfvb_library_entry_with_http_info(storefront_oid, library_oid, merchant_id)
+
+```ruby
+begin
+  # Stop sharing a library entry with an account
+  data, status_code, headers = api_instance.unshare_sfvb_library_entry_with_http_info(storefront_oid, library_oid, merchant_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbLibraryUnshareResult>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->unshare_sfvb_library_entry_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **library_oid** | **Integer** |  |  |
+| **merchant_id** | **String** |  |  |
+
+### Return type
+
+[**SfvbLibraryUnshareResult**](SfvbLibraryUnshareResult.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## update_sfvb_blog_post
 
 > <SfvbBlogPostDetail> update_sfvb_blog_post(storefront_oid, blog_post_oid, blog_post_request)
@@ -5628,6 +6463,62 @@ end
 ### Return type
 
 [**SfvbBlogPostDetail**](SfvbBlogPostDetail.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_sfvb_library_entry
+
+> <SfvbLibraryEntry> update_sfvb_library_entry(storefront_oid, library_oid, if_match, library_entry)
+
+Update a library entry's draft
+
+A full replace of the draft's fields.  Owner only.  Send the hash_sha256 you read as If-Match.  Every save increments revision_number; nothing other merchants see changes until the draft is published.  A changed fragment is re-scanned and its images copied again, and screenshot_stale tells you to retake the screenshot. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_library_entry_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbLibraryEntry>, Integer, Hash)> update_sfvb_library_entry_with_http_info(storefront_oid, library_oid, if_match, library_entry)
+
+```ruby
+begin
+  # Update a library entry's draft
+  data, status_code, headers = api_instance.update_sfvb_library_entry_with_http_info(storefront_oid, library_oid, if_match, library_entry)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbLibraryEntry>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_library_entry_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **library_oid** | **Integer** |  |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **library_entry** | [**SfvbLibraryEntryRequest**](SfvbLibraryEntryRequest.md) | The whole entry |  |
+
+### Return type
+
+[**SfvbLibraryEntry**](SfvbLibraryEntry.md)
 
 ### Authorization
 

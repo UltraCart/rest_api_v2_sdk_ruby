@@ -14,22 +14,26 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbLibraryFacet
-    # Human readable facet name.
-    attr_accessor :display_name
+  class SfvbLibraryHistoryEntry
+    # Hash of the published revision.
+    attr_accessor :hash_sha256
 
-    # Facet key, such as facet_purpose.  To select an option, add a query parameter named after the key whose value is the key, a colon and the option.
-    attr_accessor :name
+    # When it was published, ISO 8601.
+    attr_accessor :published_dts
 
-    # Values present in the results.  A facet with only one value is left out unless it is selected.
-    attr_accessor :options
+    # What changed, as the publisher described it.
+    attr_accessor :release_notes
+
+    # The revision that was published.
+    attr_accessor :revision_number
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'display_name' => :'display_name',
-        :'name' => :'name',
-        :'options' => :'options'
+        :'hash_sha256' => :'hash_sha256',
+        :'published_dts' => :'published_dts',
+        :'release_notes' => :'release_notes',
+        :'revision_number' => :'revision_number'
       }
     end
 
@@ -41,9 +45,10 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'display_name' => :'String',
-        :'name' => :'String',
-        :'options' => :'Array<String>'
+        :'hash_sha256' => :'String',
+        :'published_dts' => :'String',
+        :'release_notes' => :'String',
+        :'revision_number' => :'Integer'
       }
     end
 
@@ -57,29 +62,31 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryFacet` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryHistoryEntry` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryFacet`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryHistoryEntry`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'display_name')
-        self.display_name = attributes[:'display_name']
+      if attributes.key?(:'hash_sha256')
+        self.hash_sha256 = attributes[:'hash_sha256']
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'published_dts')
+        self.published_dts = attributes[:'published_dts']
       end
 
-      if attributes.key?(:'options')
-        if (value = attributes[:'options']).is_a?(Array)
-          self.options = value
-        end
+      if attributes.key?(:'release_notes')
+        self.release_notes = attributes[:'release_notes']
+      end
+
+      if attributes.key?(:'revision_number')
+        self.revision_number = attributes[:'revision_number']
       end
     end
 
@@ -101,9 +108,10 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          display_name == o.display_name &&
-          name == o.name &&
-          options == o.options
+          hash_sha256 == o.hash_sha256 &&
+          published_dts == o.published_dts &&
+          release_notes == o.release_notes &&
+          revision_number == o.revision_number
     end
 
     # @see the `==` method
@@ -115,7 +123,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [display_name, name, options].hash
+      [hash_sha256, published_dts, release_notes, revision_number].hash
     end
 
     # Builds the object from hash

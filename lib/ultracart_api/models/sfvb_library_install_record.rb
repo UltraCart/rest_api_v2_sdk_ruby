@@ -14,22 +14,42 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbLibraryFacet
-    # Human readable facet name.
-    attr_accessor :display_name
+  class SfvbLibraryInstallRecord
+    # When it was installed, ISO 8601.
+    attr_accessor :installed_dts
 
-    # Facet key, such as facet_purpose.  To select an option, add a query parameter named after the key whose value is the key, a colon and the option.
+    # The revision installed most recently on this storefront.
+    attr_accessor :installed_revision_number
+
+    # The latest published revision, or null when it can no longer be read.
+    attr_accessor :latest_revision_number
+
+    # The entry.
+    attr_accessor :library_oid
+
+    # The entry name, when the entry is still visible to this account.
     attr_accessor :name
 
-    # Values present in the results.  A facet with only one value is left out unless it is selected.
-    attr_accessor :options
+    # True when the owner retired the entry.  The installed copy keeps working.
+    attr_accessor :retired
+
+    # The storefront it was installed on.
+    attr_accessor :storefront_oid
+
+    # True when a newer revision has been published.  Nothing updates automatically.
+    attr_accessor :update_available
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'display_name' => :'display_name',
+        :'installed_dts' => :'installed_dts',
+        :'installed_revision_number' => :'installed_revision_number',
+        :'latest_revision_number' => :'latest_revision_number',
+        :'library_oid' => :'library_oid',
         :'name' => :'name',
-        :'options' => :'options'
+        :'retired' => :'retired',
+        :'storefront_oid' => :'storefront_oid',
+        :'update_available' => :'update_available'
       }
     end
 
@@ -41,9 +61,14 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'display_name' => :'String',
+        :'installed_dts' => :'String',
+        :'installed_revision_number' => :'Integer',
+        :'latest_revision_number' => :'Integer',
+        :'library_oid' => :'Integer',
         :'name' => :'String',
-        :'options' => :'Array<String>'
+        :'retired' => :'Boolean',
+        :'storefront_oid' => :'Integer',
+        :'update_available' => :'Boolean'
       }
     end
 
@@ -57,29 +82,47 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryFacet` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryInstallRecord` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryFacet`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryInstallRecord`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'display_name')
-        self.display_name = attributes[:'display_name']
+      if attributes.key?(:'installed_dts')
+        self.installed_dts = attributes[:'installed_dts']
+      end
+
+      if attributes.key?(:'installed_revision_number')
+        self.installed_revision_number = attributes[:'installed_revision_number']
+      end
+
+      if attributes.key?(:'latest_revision_number')
+        self.latest_revision_number = attributes[:'latest_revision_number']
+      end
+
+      if attributes.key?(:'library_oid')
+        self.library_oid = attributes[:'library_oid']
       end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'options')
-        if (value = attributes[:'options']).is_a?(Array)
-          self.options = value
-        end
+      if attributes.key?(:'retired')
+        self.retired = attributes[:'retired']
+      end
+
+      if attributes.key?(:'storefront_oid')
+        self.storefront_oid = attributes[:'storefront_oid']
+      end
+
+      if attributes.key?(:'update_available')
+        self.update_available = attributes[:'update_available']
       end
     end
 
@@ -101,9 +144,14 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          display_name == o.display_name &&
+          installed_dts == o.installed_dts &&
+          installed_revision_number == o.installed_revision_number &&
+          latest_revision_number == o.latest_revision_number &&
+          library_oid == o.library_oid &&
           name == o.name &&
-          options == o.options
+          retired == o.retired &&
+          storefront_oid == o.storefront_oid &&
+          update_available == o.update_available
     end
 
     # @see the `==` method
@@ -115,7 +163,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [display_name, name, options].hash
+      [installed_dts, installed_revision_number, latest_revision_number, library_oid, name, retired, storefront_oid, update_available].hash
     end
 
     # Builds the object from hash

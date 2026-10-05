@@ -14,22 +14,18 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbLibraryFacet
-    # Human readable facet name.
-    attr_accessor :display_name
+  class SfvbLibraryShareTarget
+    # The linked account's company name.
+    attr_accessor :company
 
-    # Facet key, such as facet_purpose.  To select an option, add a query parameter named after the key whose value is the key, a colon and the option.
-    attr_accessor :name
-
-    # Values present in the results.  A facet with only one value is left out unless it is selected.
-    attr_accessor :options
+    # The linked account's merchant id.
+    attr_accessor :merchant_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'display_name' => :'display_name',
-        :'name' => :'name',
-        :'options' => :'options'
+        :'company' => :'company',
+        :'merchant_id' => :'merchant_id'
       }
     end
 
@@ -41,9 +37,8 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'display_name' => :'String',
-        :'name' => :'String',
-        :'options' => :'Array<String>'
+        :'company' => :'String',
+        :'merchant_id' => :'String'
       }
     end
 
@@ -57,29 +52,23 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryFacet` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryShareTarget` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryFacet`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryShareTarget`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'display_name')
-        self.display_name = attributes[:'display_name']
+      if attributes.key?(:'company')
+        self.company = attributes[:'company']
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'options')
-        if (value = attributes[:'options']).is_a?(Array)
-          self.options = value
-        end
+      if attributes.key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
       end
     end
 
@@ -101,9 +90,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          display_name == o.display_name &&
-          name == o.name &&
-          options == o.options
+          company == o.company &&
+          merchant_id == o.merchant_id
     end
 
     # @see the `==` method
@@ -115,7 +103,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [display_name, name, options].hash
+      [company, merchant_id].hash
     end
 
     # Builds the object from hash

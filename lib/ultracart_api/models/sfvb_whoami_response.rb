@@ -27,6 +27,9 @@ module UltracartClient
     # True when this token may write a target that is currently live - an active upsell offer, an email on a delivering flow, the active theme, the storefront root.  Never infer this; it is the difference between a draft edit and a shopper visible change.
     attr_accessor :can_publish
 
+    # True when this account may publish library entries to the public library.  Set by UltraCart staff only.
+    attr_accessor :can_publish_public
+
     # True when this token may read.  Do not infer this from the requested scope name.
     attr_accessor :can_read
 
@@ -61,6 +64,7 @@ module UltracartClient
         :'application_name' => :'application_name',
         :'authentication_type' => :'authentication_type',
         :'can_publish' => :'can_publish',
+        :'can_publish_public' => :'can_publish_public',
         :'can_read' => :'can_read',
         :'can_write' => :'can_write',
         :'device_scope' => :'device_scope',
@@ -85,6 +89,7 @@ module UltracartClient
         :'application_name' => :'String',
         :'authentication_type' => :'String',
         :'can_publish' => :'Boolean',
+        :'can_publish_public' => :'Boolean',
         :'can_read' => :'Boolean',
         :'can_write' => :'Boolean',
         :'device_scope' => :'String',
@@ -132,6 +137,10 @@ module UltracartClient
 
       if attributes.key?(:'can_publish')
         self.can_publish = attributes[:'can_publish']
+      end
+
+      if attributes.key?(:'can_publish_public')
+        self.can_publish_public = attributes[:'can_publish_public']
       end
 
       if attributes.key?(:'can_read')
@@ -197,6 +206,7 @@ module UltracartClient
           application_name == o.application_name &&
           authentication_type == o.authentication_type &&
           can_publish == o.can_publish &&
+          can_publish_public == o.can_publish_public &&
           can_read == o.can_read &&
           can_write == o.can_write &&
           device_scope == o.device_scope &&
@@ -217,7 +227,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [acting_as_user, application_name, authentication_type, can_publish, can_read, can_write, device_scope, login, merchant_id, scopes, storefronts, storefronts_withheld, user_name].hash
+      [acting_as_user, application_name, authentication_type, can_publish, can_publish_public, can_read, can_write, device_scope, login, merchant_id, scopes, storefronts, storefronts_withheld, user_name].hash
     end
 
     # Builds the object from hash

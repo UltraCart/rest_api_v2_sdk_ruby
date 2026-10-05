@@ -14,22 +14,22 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbLibraryFacet
-    # Human readable facet name.
-    attr_accessor :display_name
+  class SfvbLibraryUnshareResult
+    # That account's installs, which keep their copies.  Unsharing never reaches into a storefront.
+    attr_accessor :existing_installs
 
-    # Facet key, such as facet_purpose.  To select an option, add a query parameter named after the key whose value is the key, a colon and the option.
-    attr_accessor :name
+    # The entry.
+    attr_accessor :library_oid
 
-    # Values present in the results.  A facet with only one value is left out unless it is selected.
-    attr_accessor :options
+    # The account the entry is no longer shared with.
+    attr_accessor :merchant_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'display_name' => :'display_name',
-        :'name' => :'name',
-        :'options' => :'options'
+        :'existing_installs' => :'existing_installs',
+        :'library_oid' => :'library_oid',
+        :'merchant_id' => :'merchant_id'
       }
     end
 
@@ -41,9 +41,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'display_name' => :'String',
-        :'name' => :'String',
-        :'options' => :'Array<String>'
+        :'existing_installs' => :'Array<SfvbLibraryInstallRecord>',
+        :'library_oid' => :'Integer',
+        :'merchant_id' => :'String'
       }
     end
 
@@ -57,29 +57,29 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryFacet` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryUnshareResult` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryFacet`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryUnshareResult`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'display_name')
-        self.display_name = attributes[:'display_name']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'options')
-        if (value = attributes[:'options']).is_a?(Array)
-          self.options = value
+      if attributes.key?(:'existing_installs')
+        if (value = attributes[:'existing_installs']).is_a?(Array)
+          self.existing_installs = value
         end
+      end
+
+      if attributes.key?(:'library_oid')
+        self.library_oid = attributes[:'library_oid']
+      end
+
+      if attributes.key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
       end
     end
 
@@ -101,9 +101,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          display_name == o.display_name &&
-          name == o.name &&
-          options == o.options
+          existing_installs == o.existing_installs &&
+          library_oid == o.library_oid &&
+          merchant_id == o.merchant_id
     end
 
     # @see the `==` method
@@ -115,7 +115,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [display_name, name, options].hash
+      [existing_installs, library_oid, merchant_id].hash
     end
 
     # Builds the object from hash

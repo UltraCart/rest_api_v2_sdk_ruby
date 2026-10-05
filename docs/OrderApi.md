@@ -139,8 +139,46 @@ Associates an RMA number with an order.  Any existing RMA on the order is replac
 
 ### Examples
 
+```ruby
+require 'ultracart_api'
+require_relative '../constants'
 
-(No example for this operation).
+# OrderApi.assign_rma() associates an RMA (return merchandise authorization) number with an order.
+# The rma is required, may be at most 30 characters, and is trimmed of whitespace.
+# Any existing RMA on the order is replaced, and a merchant note is added to the order recording the change.
+# The optional _expand parameter controls how much of the updated order is returned.
+# Requires the order_write permission.
+
+order_api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY)
+
+order_id = 'DEMO-0009104390'
+
+assign_rma_request = UltracartClient::OrderAssignRmaRequest.new
+assign_rma_request.rma = 'RMA-12345'
+
+# see www.ultracart.com/api/ for all the expansion fields available
+opts = {
+  '_expand' => 'item,summary'
+}
+
+begin
+  api_response = order_api.assign_rma(order_id, assign_rma_request, opts)
+
+  # Check for errors
+  if api_response.error
+    puts "Developer Message: #{api_response.error.developer_message}"
+    puts "User Message: #{api_response.error.user_message}"
+    exit
+  end
+
+  order = api_response.order
+
+  puts "RMA #{assign_rma_request.rma} assigned to order #{order.order_id}"
+  puts order.inspect
+rescue StandardError => e
+  puts "An error occurred: #{e.message}"
+end
+```
 
 
 #### Using the assign_rma_with_http_info variant
@@ -2257,8 +2295,45 @@ Retrieves the orders associated with the specified RMA number.  The RMA must be 
 
 ### Examples
 
+```ruby
+require 'ultracart_api'
+require_relative '../constants'
 
-(No example for this operation).
+# OrderApi.get_orders_by_rma() retrieves the orders associated with an RMA number.
+# The RMA must be an exact match; wildcards such as * are not permitted and will return a 400 error.
+# Multiple orders can share the same RMA, so this call returns a list of orders.
+# This lookup is backed by a search index, so an RMA that was just assigned may take a short time to appear.
+# Requires the order_read permission.
+
+order_api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY)
+
+rma = 'RMA-12345'
+
+# see www.ultracart.com/api/ for all the expansion fields available
+opts = {
+  '_expand' => 'item,summary,billing,shipping'
+}
+
+begin
+  api_response = order_api.get_orders_by_rma(rma, opts)
+
+  # Check for errors
+  if api_response.error
+    puts "Developer Message: #{api_response.error.developer_message}"
+    puts "User Message: #{api_response.error.user_message}"
+    exit
+  end
+
+  orders = api_response.orders
+
+  puts "Found #{orders.length} order(s) with RMA #{rma}"
+  orders.each do |order|
+    puts order.inspect
+  end
+rescue StandardError => e
+  puts "An error occurred: #{e.message}"
+end
+```
 
 
 #### Using the get_orders_by_rma_with_http_info variant
@@ -2311,8 +2386,37 @@ Generates the url a customer can use to update the billing information on the au
 
 ### Examples
 
+```ruby
+require 'ultracart_api'
+require_relative '../constants'
 
-(No example for this operation).
+# OrderApi.get_update_billing_url() generates the url a customer can use to update the billing information
+# on the auto order associated with an order. This is the same url sent in the auto order update billing email.
+# The order must belong to an auto order, otherwise a 400 error is returned. Either the original order
+# or any rebill order of the auto order may be used.
+# Requires the order_write permission, because the url carries a customer access token.
+
+order_api = UltracartClient::OrderApi.new_using_api_key(Constants::API_KEY)
+
+order_id = 'DEMO-0009104390'
+
+begin
+  api_response = order_api.get_update_billing_url(order_id)
+
+  # Check for errors
+  if api_response.error
+    puts "Developer Message: #{api_response.error.developer_message}"
+    puts "User Message: #{api_response.error.user_message}"
+    exit
+  end
+
+  # WARNING: The update billing url is sensitive. It grants access to the customer's billing information.
+  # Do not log it or expose it publicly in production. Deliver it only to the customer who owns the auto order.
+  puts "Update billing url: #{api_response.update_billing_url}"
+rescue StandardError => e
+  puts "An error occurred: #{e.message}"
+end
+```
 
 
 #### Using the get_update_billing_url_with_http_info variant

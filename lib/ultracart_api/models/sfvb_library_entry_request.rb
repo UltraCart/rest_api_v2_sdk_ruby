@@ -14,22 +14,36 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbLibraryFacet
-    # Human readable facet name.
-    attr_accessor :display_name
+  class SfvbLibraryEntryRequest
+    # The fragment, one widget and its children.  Not a whole container.
+    attr_accessor :cjson
 
-    # Facet key, such as facet_purpose.  To select an option, add a query parameter named after the key whose value is the key, a colon and the option.
+    # What the fragment is for, at most 1024 characters.
+    attr_accessor :description
+
+    # Entry name, at most 100 characters.
     attr_accessor :name
 
-    # Values present in the results.  A facet with only one value is left out unless it is selected.
-    attr_accessor :options
+    # Named values the fragment expects its installer to supply.
+    attr_accessor :parameters
+
+    attr_accessor :screenshot
+
+    # True to let the other users on this merchant account see the published revision.
+    attr_accessor :share_with_account
+
+    attr_accessor :taxonomy
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'display_name' => :'display_name',
+        :'cjson' => :'cjson',
+        :'description' => :'description',
         :'name' => :'name',
-        :'options' => :'options'
+        :'parameters' => :'parameters',
+        :'screenshot' => :'screenshot',
+        :'share_with_account' => :'share_with_account',
+        :'taxonomy' => :'taxonomy'
       }
     end
 
@@ -41,9 +55,13 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'display_name' => :'String',
+        :'cjson' => :'String',
+        :'description' => :'String',
         :'name' => :'String',
-        :'options' => :'Array<String>'
+        :'parameters' => :'Array<SfvbLibraryParameter>',
+        :'screenshot' => :'SfvbLibraryScreenshotRequest',
+        :'share_with_account' => :'Boolean',
+        :'taxonomy' => :'SfvbLibraryTaxonomy'
       }
     end
 
@@ -57,29 +75,45 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryFacet` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryEntryRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryFacet`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryEntryRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'display_name')
-        self.display_name = attributes[:'display_name']
+      if attributes.key?(:'cjson')
+        self.cjson = attributes[:'cjson']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'options')
-        if (value = attributes[:'options']).is_a?(Array)
-          self.options = value
+      if attributes.key?(:'parameters')
+        if (value = attributes[:'parameters']).is_a?(Array)
+          self.parameters = value
         end
+      end
+
+      if attributes.key?(:'screenshot')
+        self.screenshot = attributes[:'screenshot']
+      end
+
+      if attributes.key?(:'share_with_account')
+        self.share_with_account = attributes[:'share_with_account']
+      end
+
+      if attributes.key?(:'taxonomy')
+        self.taxonomy = attributes[:'taxonomy']
       end
     end
 
@@ -101,9 +135,13 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          display_name == o.display_name &&
+          cjson == o.cjson &&
+          description == o.description &&
           name == o.name &&
-          options == o.options
+          parameters == o.parameters &&
+          screenshot == o.screenshot &&
+          share_with_account == o.share_with_account &&
+          taxonomy == o.taxonomy
     end
 
     # @see the `==` method
@@ -115,7 +153,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [display_name, name, options].hash
+      [cjson, description, name, parameters, screenshot, share_with_account, taxonomy].hash
     end
 
     # Builds the object from hash
