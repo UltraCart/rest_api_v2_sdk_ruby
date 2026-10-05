@@ -2819,7 +2819,7 @@ module UltracartClient
     # @param storefront_oid [Integer] 
     # @param library_oid [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [SfvbLibraryHistoryEntry]
+    # @return [SfvbLibraryHistoryResponse]
     def get_sfvb_library_history(storefront_oid, library_oid, opts = {})
       data, _status_code, _headers = get_sfvb_library_history_with_http_info(storefront_oid, library_oid, opts)
       data
@@ -2830,7 +2830,7 @@ module UltracartClient
     # @param storefront_oid [Integer] 
     # @param library_oid [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(SfvbLibraryHistoryEntry, Integer, Hash)>] SfvbLibraryHistoryEntry data, response status code and response headers
+    # @return [Array<(SfvbLibraryHistoryResponse, Integer, Hash)>] SfvbLibraryHistoryResponse data, response status code and response headers
     def get_sfvb_library_history_with_http_info(storefront_oid, library_oid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_library_history ...'
@@ -2862,7 +2862,7 @@ module UltracartClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'SfvbLibraryHistoryEntry'
+      return_type = opts[:debug_return_type] || 'SfvbLibraryHistoryResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
@@ -2888,7 +2888,7 @@ module UltracartClient
     # The calling account's linked accounts, each with its merchant id and company.  These are the only merchants a share can name. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [SfvbLibraryShareTarget]
+    # @return [SfvbLibraryShareTargetsResponse]
     def get_sfvb_library_share_targets(storefront_oid, opts = {})
       data, _status_code, _headers = get_sfvb_library_share_targets_with_http_info(storefront_oid, opts)
       data
@@ -2898,7 +2898,7 @@ module UltracartClient
     # The calling account&#39;s linked accounts, each with its merchant id and company.  These are the only merchants a share can name. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(SfvbLibraryShareTarget, Integer, Hash)>] SfvbLibraryShareTarget data, response status code and response headers
+    # @return [Array<(SfvbLibraryShareTargetsResponse, Integer, Hash)>] SfvbLibraryShareTargetsResponse data, response status code and response headers
     def get_sfvb_library_share_targets_with_http_info(storefront_oid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_library_share_targets ...'
@@ -2926,7 +2926,7 @@ module UltracartClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'SfvbLibraryShareTarget'
+      return_type = opts[:debug_return_type] || 'SfvbLibraryShareTargetsResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
@@ -5218,7 +5218,7 @@ module UltracartClient
     # Each entry's most recently installed revision, its latest published revision and update_available.  Nothing updates automatically.  An entry this account can no longer see is listed without its name. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [SfvbLibraryInstallRecord]
+    # @return [SfvbLibraryInstallsResponse]
     def list_sfvb_library_installs(storefront_oid, opts = {})
       data, _status_code, _headers = list_sfvb_library_installs_with_http_info(storefront_oid, opts)
       data
@@ -5228,7 +5228,7 @@ module UltracartClient
     # Each entry&#39;s most recently installed revision, its latest published revision and update_available.  Nothing updates automatically.  An entry this account can no longer see is listed without its name. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(SfvbLibraryInstallRecord, Integer, Hash)>] SfvbLibraryInstallRecord data, response status code and response headers
+    # @return [Array<(SfvbLibraryInstallsResponse, Integer, Hash)>] SfvbLibraryInstallsResponse data, response status code and response headers
     def list_sfvb_library_installs_with_http_info(storefront_oid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SfvbApi.list_sfvb_library_installs ...'
@@ -5256,7 +5256,7 @@ module UltracartClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'SfvbLibraryInstallRecord'
+      return_type = opts[:debug_return_type] || 'SfvbLibraryInstallsResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']

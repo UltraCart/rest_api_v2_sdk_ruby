@@ -2202,7 +2202,7 @@ end
 
 ## get_sfvb_library_history
 
-> <SfvbLibraryHistoryEntry> get_sfvb_library_history(storefront_oid, library_oid)
+> <SfvbLibraryHistoryResponse> get_sfvb_library_history(storefront_oid, library_oid)
 
 List a library entry's published revisions
 
@@ -2219,7 +2219,7 @@ Newest first, each with its release notes and hash.  Read one with getSfvbLibrar
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SfvbLibraryHistoryEntry>, Integer, Hash)> get_sfvb_library_history_with_http_info(storefront_oid, library_oid)
+> <Array(<SfvbLibraryHistoryResponse>, Integer, Hash)> get_sfvb_library_history_with_http_info(storefront_oid, library_oid)
 
 ```ruby
 begin
@@ -2227,7 +2227,7 @@ begin
   data, status_code, headers = api_instance.get_sfvb_library_history_with_http_info(storefront_oid, library_oid)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <SfvbLibraryHistoryEntry>
+  p data # => <SfvbLibraryHistoryResponse>
 rescue UltracartClient::ApiError => e
   puts "Error when calling SfvbApi->get_sfvb_library_history_with_http_info: #{e}"
 end
@@ -2242,7 +2242,7 @@ end
 
 ### Return type
 
-[**SfvbLibraryHistoryEntry**](SfvbLibraryHistoryEntry.md)
+[**SfvbLibraryHistoryResponse**](SfvbLibraryHistoryResponse.md)
 
 ### Authorization
 
@@ -2256,7 +2256,7 @@ end
 
 ## get_sfvb_library_share_targets
 
-> <SfvbLibraryShareTarget> get_sfvb_library_share_targets(storefront_oid)
+> <SfvbLibraryShareTargetsResponse> get_sfvb_library_share_targets(storefront_oid)
 
 List the accounts a library entry can be shared with
 
@@ -2273,7 +2273,7 @@ The calling account's linked accounts, each with its merchant id and company.  T
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SfvbLibraryShareTarget>, Integer, Hash)> get_sfvb_library_share_targets_with_http_info(storefront_oid)
+> <Array(<SfvbLibraryShareTargetsResponse>, Integer, Hash)> get_sfvb_library_share_targets_with_http_info(storefront_oid)
 
 ```ruby
 begin
@@ -2281,7 +2281,7 @@ begin
   data, status_code, headers = api_instance.get_sfvb_library_share_targets_with_http_info(storefront_oid)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <SfvbLibraryShareTarget>
+  p data # => <SfvbLibraryShareTargetsResponse>
 rescue UltracartClient::ApiError => e
   puts "Error when calling SfvbApi->get_sfvb_library_share_targets_with_http_info: #{e}"
 end
@@ -2295,7 +2295,7 @@ end
 
 ### Return type
 
-[**SfvbLibraryShareTarget**](SfvbLibraryShareTarget.md)
+[**SfvbLibraryShareTargetsResponse**](SfvbLibraryShareTargetsResponse.md)
 
 ### Authorization
 
@@ -4047,7 +4047,7 @@ end
 
 ## list_sfvb_library_installs
 
-> <SfvbLibraryInstallRecord> list_sfvb_library_installs(storefront_oid)
+> <SfvbLibraryInstallsResponse> list_sfvb_library_installs(storefront_oid)
 
 List the library entries installed on a storefront
 
@@ -4064,7 +4064,7 @@ Each entry's most recently installed revision, its latest published revision and
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SfvbLibraryInstallRecord>, Integer, Hash)> list_sfvb_library_installs_with_http_info(storefront_oid)
+> <Array(<SfvbLibraryInstallsResponse>, Integer, Hash)> list_sfvb_library_installs_with_http_info(storefront_oid)
 
 ```ruby
 begin
@@ -4072,7 +4072,7 @@ begin
   data, status_code, headers = api_instance.list_sfvb_library_installs_with_http_info(storefront_oid)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <SfvbLibraryInstallRecord>
+  p data # => <SfvbLibraryInstallsResponse>
 rescue UltracartClient::ApiError => e
   puts "Error when calling SfvbApi->list_sfvb_library_installs_with_http_info: #{e}"
 end
@@ -4086,7 +4086,7 @@ end
 
 ### Return type
 
-[**SfvbLibraryInstallRecord**](SfvbLibraryInstallRecord.md)
+[**SfvbLibraryInstallsResponse**](SfvbLibraryInstallsResponse.md)
 
 ### Authorization
 
