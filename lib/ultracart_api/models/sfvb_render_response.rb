@@ -30,6 +30,9 @@ module UltracartClient
     # True when the HTML was cut short.
     attr_accessor :truncated
 
+    # Strings rendered in English because no translation is stored for the requested language yet.  A render never translates, so re-rendering does not change this.  Push the page to store its hand translations; machine translations are made when shoppers first view it in that language.
+    attr_accessor :untranslated_count
+
     # Quality warnings about the rendered node.
     attr_accessor :warnings
 
@@ -41,6 +44,7 @@ module UltracartClient
         :'pending_translation_count' => :'pending_translation_count',
         :'success' => :'success',
         :'truncated' => :'truncated',
+        :'untranslated_count' => :'untranslated_count',
         :'warnings' => :'warnings'
       }
     end
@@ -58,6 +62,7 @@ module UltracartClient
         :'pending_translation_count' => :'Integer',
         :'success' => :'Boolean',
         :'truncated' => :'Boolean',
+        :'untranslated_count' => :'Integer',
         :'warnings' => :'Array<SfvbErrorDetail>'
       }
     end
@@ -105,6 +110,10 @@ module UltracartClient
         self.truncated = attributes[:'truncated']
       end
 
+      if attributes.key?(:'untranslated_count')
+        self.untranslated_count = attributes[:'untranslated_count']
+      end
+
       if attributes.key?(:'warnings')
         if (value = attributes[:'warnings']).is_a?(Array)
           self.warnings = value
@@ -135,6 +144,7 @@ module UltracartClient
           pending_translation_count == o.pending_translation_count &&
           success == o.success &&
           truncated == o.truncated &&
+          untranslated_count == o.untranslated_count &&
           warnings == o.warnings
     end
 
@@ -147,7 +157,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [errors, html, pending_translation_count, success, truncated, warnings].hash
+      [errors, html, pending_translation_count, success, truncated, untranslated_count, warnings].hash
     end
 
     # Builds the object from hash
