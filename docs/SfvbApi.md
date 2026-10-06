@@ -21,6 +21,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**delete_sfvb_page_multimedia**](SfvbApi.md#delete_sfvb_page_multimedia) | **DELETE** /sfvb/storefronts/{storefront_oid}/pages/multimedia | Detach an image from a page |
 | [**delete_sfvb_preview_session**](SfvbApi.md#delete_sfvb_preview_session) | **DELETE** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id} | Delete a preview session |
 | [**detach_sfvb_blog_post_image**](SfvbApi.md#detach_sfvb_blog_post_image) | **POST** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid}/images/detach | Detach an image from a blog post |
+| [**disable_sfvb_i18n_language**](SfvbApi.md#disable_sfvb_i18n_language) | **POST** /sfvb/storefronts/{storefront_oid}/i18n/languages/{code}/disable | Disable a language |
 | [**disable_sfvb_upsell_offer**](SfvbApi.md#disable_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/disable | Disable an upsell offer |
 | [**disable_sfvb_upsell_path**](SfvbApi.md#disable_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/disable | Disable an upsell path |
 | [**download_sfvb_file**](SfvbApi.md#download_sfvb_file) | **GET** /sfvb/storefronts/{storefront_oid}/files/download | Read a storefront file&#39;s raw bytes |
@@ -29,6 +30,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**duplicate_sfvb_theme**](SfvbApi.md#duplicate_sfvb_theme) | **POST** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/duplicate | Duplicate a theme |
 | [**duplicate_sfvb_upsell_offer**](SfvbApi.md#duplicate_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/duplicate | Duplicate an upsell offer |
 | [**duplicate_sfvb_upsell_path**](SfvbApi.md#duplicate_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/duplicate | Duplicate an upsell path or one of its variations |
+| [**enable_sfvb_i18n_language**](SfvbApi.md#enable_sfvb_i18n_language) | **POST** /sfvb/storefronts/{storefront_oid}/i18n/languages/{code}/enable | Enable a language |
 | [**end_sfvb_experiment**](SfvbApi.md#end_sfvb_experiment) | **POST** /sfvb/storefronts/{storefront_oid}/experiments/{experiment_oid}/end | End an experiment |
 | [**favorite_sfvb_library_entry**](SfvbApi.md#favorite_sfvb_library_entry) | **PUT** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/favorite | Favorite a library entry |
 | [**get_sfvb_blog_post**](SfvbApi.md#get_sfvb_blog_post) | **GET** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Read a blog post |
@@ -40,6 +42,11 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_experiment_objectives**](SfvbApi.md#get_sfvb_experiment_objectives) | **GET** /sfvb/storefronts/{storefront_oid}/experiments/objectives | List the objectives an experiment can optimize |
 | [**get_sfvb_file_content**](SfvbApi.md#get_sfvb_file_content) | **GET** /sfvb/storefronts/{storefront_oid}/files/content | Read a storefront file |
 | [**get_sfvb_file_upload_url**](SfvbApi.md#get_sfvb_file_upload_url) | **GET** /sfvb/storefronts/{storefront_oid}/files/upload_url/{extension} | Get a URL to upload a binary asset to |
+| [**get_sfvb_i18n_glossary**](SfvbApi.md#get_sfvb_i18n_glossary) | **GET** /sfvb/storefronts/{storefront_oid}/i18n/glossary | Read the storefront&#39;s translation glossary |
+| [**get_sfvb_i18n_languages**](SfvbApi.md#get_sfvb_i18n_languages) | **GET** /sfvb/storefronts/{storefront_oid}/i18n/languages | List a storefront&#39;s languages |
+| [**get_sfvb_i18n_machine_translations**](SfvbApi.md#get_sfvb_i18n_machine_translations) | **GET** /sfvb/storefronts/{storefront_oid}/i18n/machine_translations | Read where a widget setting&#39;s translations come from |
+| [**get_sfvb_i18n_message**](SfvbApi.md#get_sfvb_i18n_message) | **GET** /sfvb/storefronts/{storefront_oid}/i18n/messages/{key} | Read one built-in message |
+| [**get_sfvb_i18n_message_machine_translations**](SfvbApi.md#get_sfvb_i18n_message_machine_translations) | **GET** /sfvb/storefronts/{storefront_oid}/i18n/messages/{key}/machine_translations | Read where a message&#39;s translations come from |
 | [**get_sfvb_item**](SfvbApi.md#get_sfvb_item) | **GET** /sfvb/storefronts/{storefront_oid}/items | Read an item&#39;s storefront facing content |
 | [**get_sfvb_library_entry**](SfvbApi.md#get_sfvb_library_entry) | **GET** /sfvb/storefronts/{storefront_oid}/library/{library_oid} | Read one library entry including its CJSON |
 | [**get_sfvb_library_history**](SfvbApi.md#get_sfvb_library_history) | **GET** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/history | List a library entry&#39;s published revisions |
@@ -75,6 +82,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**list_sfvb_experiments**](SfvbApi.md#list_sfvb_experiments) | **GET** /sfvb/storefronts/{storefront_oid}/experiments | List the storefront&#39;s experiments |
 | [**list_sfvb_file_versions**](SfvbApi.md#list_sfvb_file_versions) | **GET** /sfvb/storefronts/{storefront_oid}/files/versions | Version history for a storefront file |
 | [**list_sfvb_files**](SfvbApi.md#list_sfvb_files) | **GET** /sfvb/storefronts/{storefront_oid}/files | List a storefront directory |
+| [**list_sfvb_i18n_messages**](SfvbApi.md#list_sfvb_i18n_messages) | **GET** /sfvb/storefronts/{storefront_oid}/i18n/messages | List built-in messages |
 | [**list_sfvb_item_containers**](SfvbApi.md#list_sfvb_item_containers) | **GET** /sfvb/storefronts/{storefront_oid}/item_containers | List the item containers on the account |
 | [**list_sfvb_library_installs**](SfvbApi.md#list_sfvb_library_installs) | **GET** /sfvb/storefronts/{storefront_oid}/library/installs | List the library entries installed on a storefront |
 | [**list_sfvb_pages**](SfvbApi.md#list_sfvb_pages) | **GET** /sfvb/storefronts/{storefront_oid}/pages/list | List the storefront&#39;s pages |
@@ -89,6 +97,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**put_sfvb_container**](SfvbApi.md#put_sfvb_container) | **PUT** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id} | Write a container stored outside the file system |
 | [**put_sfvb_experiment_variation**](SfvbApi.md#put_sfvb_experiment_variation) | **PUT** /sfvb/storefronts/{storefront_oid}/experiments/{experiment_oid}/variations/{variation_number} | Pause or resume a variation |
 | [**put_sfvb_file_content**](SfvbApi.md#put_sfvb_file_content) | **PUT** /sfvb/storefronts/{storefront_oid}/files/content | Write a storefront file |
+| [**put_sfvb_i18n_glossary**](SfvbApi.md#put_sfvb_i18n_glossary) | **PUT** /sfvb/storefronts/{storefront_oid}/i18n/glossary | Replace the storefront&#39;s translation glossary |
+| [**put_sfvb_i18n_message**](SfvbApi.md#put_sfvb_i18n_message) | **PUT** /sfvb/storefronts/{storefront_oid}/i18n/messages/{key} | Change one built-in message |
 | [**put_sfvb_item_attributes**](SfvbApi.md#put_sfvb_item_attributes) | **PUT** /sfvb/storefronts/{storefront_oid}/items/attributes | Change some of an item&#39;s attributes |
 | [**put_sfvb_item_content**](SfvbApi.md#put_sfvb_item_content) | **PUT** /sfvb/storefronts/{storefront_oid}/items/content | Change an item&#39;s title or long description |
 | [**put_sfvb_item_multimedia**](SfvbApi.md#put_sfvb_item_multimedia) | **PUT** /sfvb/storefronts/{storefront_oid}/items/multimedia | Attach an image to an item |
@@ -107,6 +117,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**remove_sfvb_page_items**](SfvbApi.md#remove_sfvb_page_items) | **POST** /sfvb/storefronts/{storefront_oid}/pages/items/remove | Take items off a page |
 | [**render_sfvb_widgets**](SfvbApi.md#render_sfvb_widgets) | **POST** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/render | Render a CJSON node to HTML |
 | [**reserve_sfvb_widget_ids**](SfvbApi.md#reserve_sfvb_widget_ids) | **POST** /sfvb/storefronts/{storefront_oid}/widget_ids | Reserve a block of widget ids |
+| [**reset_sfvb_i18n_message**](SfvbApi.md#reset_sfvb_i18n_message) | **DELETE** /sfvb/storefronts/{storefront_oid}/i18n/messages/{key} | Reset one built-in message |
 | [**resolve_sfvb_template**](SfvbApi.md#resolve_sfvb_template) | **GET** /sfvb/storefronts/{storefront_oid}/templates/resolve | Resolve a template name to the file a page renders |
 | [**revert_sfvb_container**](SfvbApi.md#revert_sfvb_container) | **POST** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id}/revert | Revert a container stored outside the file system |
 | [**revert_sfvb_file**](SfvbApi.md#revert_sfvb_file) | **POST** /sfvb/storefronts/{storefront_oid}/files/revert | Revert a storefront file to an earlier version |
@@ -1058,6 +1069,61 @@ end
 - **Accept**: application/json
 
 
+## disable_sfvb_i18n_language
+
+> <SfvbI18nLanguagesResponse> disable_sfvb_i18n_language(storefront_oid, code, if_match)
+
+Disable a language
+
+Stops serving a language.  Its hand and machine translations are kept and come back when it is enabled again.  The default language cannot be disabled.  Already disabled answers changed false.  Always needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the disable_sfvb_i18n_language_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbI18nLanguagesResponse>, Integer, Hash)> disable_sfvb_i18n_language_with_http_info(storefront_oid, code, if_match)
+
+```ruby
+begin
+  # Disable a language
+  data, status_code, headers = api_instance.disable_sfvb_i18n_language_with_http_info(storefront_oid, code, if_match)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbI18nLanguagesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->disable_sfvb_i18n_language_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **code** | **String** |  |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+
+### Return type
+
+[**SfvbI18nLanguagesResponse**](SfvbI18nLanguagesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## disable_sfvb_upsell_offer
 
 > <SfvbUpsellOffer> disable_sfvb_upsell_offer(storefront_oid, upsell_offer_oid)
@@ -1482,6 +1548,62 @@ end
 ### Return type
 
 [**SfvbUpsellPath**](SfvbUpsellPath.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## enable_sfvb_i18n_language
+
+> <SfvbI18nLanguagesResponse> enable_sfvb_i18n_language(storefront_oid, code, if_match, language_enable_request)
+
+Enable a language
+
+Turns a language on.  It is served to shoppers and machine translated, which is billed per character, so acknowledge_cost must be true and the caller must be a person (device authorization).  Records the same billing note as the merchant admin.  Already enabled answers changed false.  Always needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the enable_sfvb_i18n_language_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbI18nLanguagesResponse>, Integer, Hash)> enable_sfvb_i18n_language_with_http_info(storefront_oid, code, if_match, language_enable_request)
+
+```ruby
+begin
+  # Enable a language
+  data, status_code, headers = api_instance.enable_sfvb_i18n_language_with_http_info(storefront_oid, code, if_match, language_enable_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbI18nLanguagesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->enable_sfvb_i18n_language_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **code** | **String** |  |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **language_enable_request** | [**SfvbI18nLanguageEnableRequest**](SfvbI18nLanguageEnableRequest.md) | The cost acknowledgement |  |
+
+### Return type
+
+[**SfvbI18nLanguagesResponse**](SfvbI18nLanguagesResponse.md)
 
 ### Authorization
 
@@ -2079,6 +2201,278 @@ end
 ### Return type
 
 [**SfvbFileUploadUrlResponse**](SfvbFileUploadUrlResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_i18n_glossary
+
+> <SfvbI18nGlossary> get_sfvb_i18n_glossary(storefront_oid)
+
+Read the storefront's translation glossary
+
+The storefront's glossary, plain markdown with terms not to translate, required translations, tone and words to avoid.  Read it before translating anything.  Empty when none has been saved.  Each storefront has its own, because a storefront is often its own brand. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_i18n_glossary_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbI18nGlossary>, Integer, Hash)> get_sfvb_i18n_glossary_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # Read the storefront's translation glossary
+  data, status_code, headers = api_instance.get_sfvb_i18n_glossary_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbI18nGlossary>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_i18n_glossary_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbI18nGlossary**](SfvbI18nGlossary.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_i18n_languages
+
+> <SfvbI18nLanguagesResponse> get_sfvb_i18n_languages(storefront_oid)
+
+List a storefront's languages
+
+Every language the storefront can be translated into, with UltraCart's three-letter code (ESP for Spanish), the other spellings accepted, whether it is enabled, the default and right to left.  Language maps in CJSON and render take the code.  English is the source of every string.  Also gives the machine translation estimate for one more language, and the hash_sha256 an enable or disable sends back. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_i18n_languages_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbI18nLanguagesResponse>, Integer, Hash)> get_sfvb_i18n_languages_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # List a storefront's languages
+  data, status_code, headers = api_instance.get_sfvb_i18n_languages_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbI18nLanguagesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_i18n_languages_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbI18nLanguagesResponse**](SfvbI18nLanguagesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_i18n_machine_translations
+
+> <SfvbI18nMachineTranslationsResponse> get_sfvb_i18n_machine_translations(storefront_oid, opts)
+
+Read where a widget setting's translations come from
+
+For one multilingual widget setting, named by widget_id and property on a theme (the active theme unless theme_oid is given), each enabled language's text and whether a shopper sees a hand translation from the language map, a machine translation, one still queued (pending) or none yet.  The setting is registered when its container is saved.  Nothing is generated by reading it. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_i18n_machine_translations_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbI18nMachineTranslationsResponse>, Integer, Hash)> get_sfvb_i18n_machine_translations_with_http_info(storefront_oid, opts)
+
+```ruby
+begin
+  # Read where a widget setting's translations come from
+  data, status_code, headers = api_instance.get_sfvb_i18n_machine_translations_with_http_info(storefront_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbI18nMachineTranslationsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_i18n_machine_translations_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **theme_oid** | **Integer** |  | [optional] |
+| **widget_id** | **String** |  | [optional] |
+| **property** | **String** |  | [optional] |
+
+### Return type
+
+[**SfvbI18nMachineTranslationsResponse**](SfvbI18nMachineTranslationsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_i18n_message
+
+> <SfvbI18nMessage> get_sfvb_i18n_message(storefront_oid, key, opts)
+
+Read one built-in message
+
+One message by key, with the hash_sha256 a set or reset sends back. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_i18n_message_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbI18nMessage>, Integer, Hash)> get_sfvb_i18n_message_with_http_info(storefront_oid, key, opts)
+
+```ruby
+begin
+  # Read one built-in message
+  data, status_code, headers = api_instance.get_sfvb_i18n_message_with_http_info(storefront_oid, key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbI18nMessage>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_i18n_message_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **key** | **String** |  |  |
+| **theme_oid** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SfvbI18nMessage**](SfvbI18nMessage.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_i18n_message_machine_translations
+
+> <SfvbI18nMachineTranslationsResponse> get_sfvb_i18n_message_machine_translations(storefront_oid, key, opts)
+
+Read where a message's translations come from
+
+For one message, each enabled language's text and whether a shopper sees a hand translation, a machine translation, one still queued (pending) or none yet.  Nothing is generated by reading it. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_i18n_message_machine_translations_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbI18nMachineTranslationsResponse>, Integer, Hash)> get_sfvb_i18n_message_machine_translations_with_http_info(storefront_oid, key, opts)
+
+```ruby
+begin
+  # Read where a message's translations come from
+  data, status_code, headers = api_instance.get_sfvb_i18n_message_machine_translations_with_http_info(storefront_oid, key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbI18nMachineTranslationsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_i18n_message_machine_translations_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **key** | **String** |  |  |
+| **theme_oid** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SfvbI18nMachineTranslationsResponse**](SfvbI18nMachineTranslationsResponse.md)
 
 ### Authorization
 
@@ -3987,6 +4381,65 @@ end
 - **Accept**: application/json
 
 
+## list_sfvb_i18n_messages
+
+> <SfvbI18nMessagesResponse> list_sfvb_i18n_messages(storefront_oid, opts)
+
+List built-in messages
+
+The system text templates render by key, such as checkout labels, for one theme (the active theme unless theme_oid is given).  Each message has its English, whether it was edited, and each enabled language's text with its source (hand, machine, pending or none).  A message appears the first time a page renders it.  q matches the key or the English.  overridden keeps messages with an edited English or a hand translation.  Paged by offset and limit (default 200, at most 500). 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the list_sfvb_i18n_messages_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbI18nMessagesResponse>, Integer, Hash)> list_sfvb_i18n_messages_with_http_info(storefront_oid, opts)
+
+```ruby
+begin
+  # List built-in messages
+  data, status_code, headers = api_instance.list_sfvb_i18n_messages_with_http_info(storefront_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbI18nMessagesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->list_sfvb_i18n_messages_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **theme_oid** | **Integer** |  | [optional] |
+| **q** | **String** |  | [optional] |
+| **language** | **String** |  | [optional] |
+| **overridden** | **Boolean** |  | [optional] |
+| **offset** | **Integer** |  | [optional] |
+| **limit** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SfvbI18nMessagesResponse**](SfvbI18nMessagesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_sfvb_item_containers
 
 > <SfvbItemContainersResponse> list_sfvb_item_containers(storefront_oid, opts)
@@ -4762,6 +5215,118 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## put_sfvb_i18n_glossary
+
+> <SfvbI18nGlossary> put_sfvb_i18n_glossary(storefront_oid, glossary_request, opts)
+
+Replace the storefront's translation glossary
+
+Replaces the whole glossary, plain markdown up to 64 KB.  The server stores it and never interprets it; the agent follows it.  Send the hash_sha256 you read as If-Match, except for the first save.  Always needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the put_sfvb_i18n_glossary_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbI18nGlossary>, Integer, Hash)> put_sfvb_i18n_glossary_with_http_info(storefront_oid, glossary_request, opts)
+
+```ruby
+begin
+  # Replace the storefront's translation glossary
+  data, status_code, headers = api_instance.put_sfvb_i18n_glossary_with_http_info(storefront_oid, glossary_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbI18nGlossary>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->put_sfvb_i18n_glossary_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **glossary_request** | [**SfvbI18nGlossaryRequest**](SfvbI18nGlossaryRequest.md) | The glossary |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Not needed for the first save; otherwise 428 when absent, 412 when stale. | [optional] |
+
+### Return type
+
+[**SfvbI18nGlossary**](SfvbI18nGlossary.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## put_sfvb_i18n_message
+
+> <SfvbI18nMessage> put_sfvb_i18n_message(storefront_oid, key, if_match, message_write_request, opts)
+
+Change one built-in message
+
+Sets one message in any number of languages.  ENG replaces the English, which drops its machine translations so they regenerate.  Any other language becomes a hand translation.  Languages not named are left alone; empty text is refused.  Shoppers see it at once.  Always needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the put_sfvb_i18n_message_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbI18nMessage>, Integer, Hash)> put_sfvb_i18n_message_with_http_info(storefront_oid, key, if_match, message_write_request, opts)
+
+```ruby
+begin
+  # Change one built-in message
+  data, status_code, headers = api_instance.put_sfvb_i18n_message_with_http_info(storefront_oid, key, if_match, message_write_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbI18nMessage>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->put_sfvb_i18n_message_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **key** | **String** |  |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **message_write_request** | [**SfvbI18nMessageWriteRequest**](SfvbI18nMessageWriteRequest.md) | The languages to change |  |
+| **theme_oid** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SfvbI18nMessage**](SfvbI18nMessage.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
 - **Accept**: application/json
 
 
@@ -5746,6 +6311,62 @@ end
 ### Return type
 
 [**SfvbWidgetIdsResponse**](SfvbWidgetIdsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## reset_sfvb_i18n_message
+
+> <SfvbI18nResetResponse> reset_sfvb_i18n_message(storefront_oid, key, if_match, opts)
+
+Reset one built-in message
+
+Puts a message back to the template's text.  The merchant's English edit and hand translations stop serving at once and every language falls back to machine translation; the message comes back the next time a page renders it.  A message imported from an older theme's locale file is refused.  Always needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the reset_sfvb_i18n_message_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbI18nResetResponse>, Integer, Hash)> reset_sfvb_i18n_message_with_http_info(storefront_oid, key, if_match, opts)
+
+```ruby
+begin
+  # Reset one built-in message
+  data, status_code, headers = api_instance.reset_sfvb_i18n_message_with_http_info(storefront_oid, key, if_match, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbI18nResetResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->reset_sfvb_i18n_message_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **key** | **String** |  |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **theme_oid** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SfvbI18nResetResponse**](SfvbI18nResetResponse.md)
 
 ### Authorization
 

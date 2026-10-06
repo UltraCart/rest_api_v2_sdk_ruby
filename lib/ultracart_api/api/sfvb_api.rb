@@ -1305,6 +1305,83 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Disable a language
+    # Stops serving a language.  Its hand and machine translations are kept and come back when it is enabled again.  The default language cannot be disabled.  Already disabled answers changed false.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param code [String] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbI18nLanguagesResponse]
+    def disable_sfvb_i18n_language(storefront_oid, code, if_match, opts = {})
+      data, _status_code, _headers = disable_sfvb_i18n_language_with_http_info(storefront_oid, code, if_match, opts)
+      data
+    end
+
+    # Disable a language
+    # Stops serving a language.  Its hand and machine translations are kept and come back when it is enabled again.  The default language cannot be disabled.  Already disabled answers changed false.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param code [String] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbI18nLanguagesResponse, Integer, Hash)>] SfvbI18nLanguagesResponse data, response status code and response headers
+    def disable_sfvb_i18n_language_with_http_info(storefront_oid, code, if_match, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.disable_sfvb_i18n_language ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.disable_sfvb_i18n_language"
+      end
+      # verify the required parameter 'code' is set
+      if @api_client.config.client_side_validation && code.nil?
+        fail ArgumentError, "Missing the required parameter 'code' when calling SfvbApi.disable_sfvb_i18n_language"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.disable_sfvb_i18n_language"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/i18n/languages/{code}/disable'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'code' + '}', CGI.escape(code.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbI18nLanguagesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.disable_sfvb_i18n_language",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#disable_sfvb_i18n_language\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Disable an upsell offer
     # Switches the offer off.  Disabling one that is switched on is a live change and needs sfvb_publish.  An offer that is already off is returned unchanged.  There is no delete. 
     # @param storefront_oid [Integer] 
@@ -1884,6 +1961,94 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#duplicate_sfvb_upsell_path\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Enable a language
+    # Turns a language on.  It is served to shoppers and machine translated, which is billed per character, so acknowledge_cost must be true and the caller must be a person (device authorization).  Records the same billing note as the merchant admin.  Already enabled answers changed false.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param code [String] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param language_enable_request [SfvbI18nLanguageEnableRequest] The cost acknowledgement
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbI18nLanguagesResponse]
+    def enable_sfvb_i18n_language(storefront_oid, code, if_match, language_enable_request, opts = {})
+      data, _status_code, _headers = enable_sfvb_i18n_language_with_http_info(storefront_oid, code, if_match, language_enable_request, opts)
+      data
+    end
+
+    # Enable a language
+    # Turns a language on.  It is served to shoppers and machine translated, which is billed per character, so acknowledge_cost must be true and the caller must be a person (device authorization).  Records the same billing note as the merchant admin.  Already enabled answers changed false.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param code [String] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param language_enable_request [SfvbI18nLanguageEnableRequest] The cost acknowledgement
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbI18nLanguagesResponse, Integer, Hash)>] SfvbI18nLanguagesResponse data, response status code and response headers
+    def enable_sfvb_i18n_language_with_http_info(storefront_oid, code, if_match, language_enable_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.enable_sfvb_i18n_language ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.enable_sfvb_i18n_language"
+      end
+      # verify the required parameter 'code' is set
+      if @api_client.config.client_side_validation && code.nil?
+        fail ArgumentError, "Missing the required parameter 'code' when calling SfvbApi.enable_sfvb_i18n_language"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.enable_sfvb_i18n_language"
+      end
+      # verify the required parameter 'language_enable_request' is set
+      if @api_client.config.client_side_validation && language_enable_request.nil?
+        fail ArgumentError, "Missing the required parameter 'language_enable_request' when calling SfvbApi.enable_sfvb_i18n_language"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/i18n/languages/{code}/enable'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'code' + '}', CGI.escape(code.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(language_enable_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbI18nLanguagesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.enable_sfvb_i18n_language",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#enable_sfvb_i18n_language\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2667,6 +2832,353 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_file_upload_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read the storefront's translation glossary
+    # The storefront's glossary, plain markdown with terms not to translate, required translations, tone and words to avoid.  Read it before translating anything.  Empty when none has been saved.  Each storefront has its own, because a storefront is often its own brand. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbI18nGlossary]
+    def get_sfvb_i18n_glossary(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_i18n_glossary_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Read the storefront&#39;s translation glossary
+    # The storefront&#39;s glossary, plain markdown with terms not to translate, required translations, tone and words to avoid.  Read it before translating anything.  Empty when none has been saved.  Each storefront has its own, because a storefront is often its own brand. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbI18nGlossary, Integer, Hash)>] SfvbI18nGlossary data, response status code and response headers
+    def get_sfvb_i18n_glossary_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_i18n_glossary ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_i18n_glossary"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/i18n/glossary'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbI18nGlossary'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_i18n_glossary",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_i18n_glossary\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List a storefront's languages
+    # Every language the storefront can be translated into, with UltraCart's three-letter code (ESP for Spanish), the other spellings accepted, whether it is enabled, the default and right to left.  Language maps in CJSON and render take the code.  English is the source of every string.  Also gives the machine translation estimate for one more language, and the hash_sha256 an enable or disable sends back. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbI18nLanguagesResponse]
+    def get_sfvb_i18n_languages(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_i18n_languages_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List a storefront&#39;s languages
+    # Every language the storefront can be translated into, with UltraCart&#39;s three-letter code (ESP for Spanish), the other spellings accepted, whether it is enabled, the default and right to left.  Language maps in CJSON and render take the code.  English is the source of every string.  Also gives the machine translation estimate for one more language, and the hash_sha256 an enable or disable sends back. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbI18nLanguagesResponse, Integer, Hash)>] SfvbI18nLanguagesResponse data, response status code and response headers
+    def get_sfvb_i18n_languages_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_i18n_languages ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_i18n_languages"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/i18n/languages'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbI18nLanguagesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_i18n_languages",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_i18n_languages\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read where a widget setting's translations come from
+    # For one multilingual widget setting, named by widget_id and property on a theme (the active theme unless theme_oid is given), each enabled language's text and whether a shopper sees a hand translation from the language map, a machine translation, one still queued (pending) or none yet.  The setting is registered when its container is saved.  Nothing is generated by reading it. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :theme_oid 
+    # @option opts [String] :widget_id 
+    # @option opts [String] :property 
+    # @return [SfvbI18nMachineTranslationsResponse]
+    def get_sfvb_i18n_machine_translations(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_i18n_machine_translations_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Read where a widget setting&#39;s translations come from
+    # For one multilingual widget setting, named by widget_id and property on a theme (the active theme unless theme_oid is given), each enabled language&#39;s text and whether a shopper sees a hand translation from the language map, a machine translation, one still queued (pending) or none yet.  The setting is registered when its container is saved.  Nothing is generated by reading it. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :theme_oid 
+    # @option opts [String] :widget_id 
+    # @option opts [String] :property 
+    # @return [Array<(SfvbI18nMachineTranslationsResponse, Integer, Hash)>] SfvbI18nMachineTranslationsResponse data, response status code and response headers
+    def get_sfvb_i18n_machine_translations_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_i18n_machine_translations ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_i18n_machine_translations"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/i18n/machine_translations'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'theme_oid'] = opts[:'theme_oid'] if !opts[:'theme_oid'].nil?
+      query_params[:'widget_id'] = opts[:'widget_id'] if !opts[:'widget_id'].nil?
+      query_params[:'property'] = opts[:'property'] if !opts[:'property'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbI18nMachineTranslationsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_i18n_machine_translations",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_i18n_machine_translations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read one built-in message
+    # One message by key, with the hash_sha256 a set or reset sends back. 
+    # @param storefront_oid [Integer] 
+    # @param key [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :theme_oid 
+    # @return [SfvbI18nMessage]
+    def get_sfvb_i18n_message(storefront_oid, key, opts = {})
+      data, _status_code, _headers = get_sfvb_i18n_message_with_http_info(storefront_oid, key, opts)
+      data
+    end
+
+    # Read one built-in message
+    # One message by key, with the hash_sha256 a set or reset sends back. 
+    # @param storefront_oid [Integer] 
+    # @param key [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :theme_oid 
+    # @return [Array<(SfvbI18nMessage, Integer, Hash)>] SfvbI18nMessage data, response status code and response headers
+    def get_sfvb_i18n_message_with_http_info(storefront_oid, key, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_i18n_message ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_i18n_message"
+      end
+      # verify the required parameter 'key' is set
+      if @api_client.config.client_side_validation && key.nil?
+        fail ArgumentError, "Missing the required parameter 'key' when calling SfvbApi.get_sfvb_i18n_message"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/i18n/messages/{key}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'key' + '}', CGI.escape(key.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'theme_oid'] = opts[:'theme_oid'] if !opts[:'theme_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbI18nMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_i18n_message",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_i18n_message\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read where a message's translations come from
+    # For one message, each enabled language's text and whether a shopper sees a hand translation, a machine translation, one still queued (pending) or none yet.  Nothing is generated by reading it. 
+    # @param storefront_oid [Integer] 
+    # @param key [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :theme_oid 
+    # @return [SfvbI18nMachineTranslationsResponse]
+    def get_sfvb_i18n_message_machine_translations(storefront_oid, key, opts = {})
+      data, _status_code, _headers = get_sfvb_i18n_message_machine_translations_with_http_info(storefront_oid, key, opts)
+      data
+    end
+
+    # Read where a message&#39;s translations come from
+    # For one message, each enabled language&#39;s text and whether a shopper sees a hand translation, a machine translation, one still queued (pending) or none yet.  Nothing is generated by reading it. 
+    # @param storefront_oid [Integer] 
+    # @param key [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :theme_oid 
+    # @return [Array<(SfvbI18nMachineTranslationsResponse, Integer, Hash)>] SfvbI18nMachineTranslationsResponse data, response status code and response headers
+    def get_sfvb_i18n_message_machine_translations_with_http_info(storefront_oid, key, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_i18n_message_machine_translations ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_i18n_message_machine_translations"
+      end
+      # verify the required parameter 'key' is set
+      if @api_client.config.client_side_validation && key.nil?
+        fail ArgumentError, "Missing the required parameter 'key' when calling SfvbApi.get_sfvb_i18n_message_machine_translations"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/i18n/messages/{key}/machine_translations'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'key' + '}', CGI.escape(key.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'theme_oid'] = opts[:'theme_oid'] if !opts[:'theme_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbI18nMachineTranslationsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_i18n_message_machine_translations",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_i18n_message_machine_translations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5135,6 +5647,88 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # List built-in messages
+    # The system text templates render by key, such as checkout labels, for one theme (the active theme unless theme_oid is given).  Each message has its English, whether it was edited, and each enabled language's text with its source (hand, machine, pending or none).  A message appears the first time a page renders it.  q matches the key or the English.  overridden keeps messages with an edited English or a hand translation.  Paged by offset and limit (default 200, at most 500). 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :theme_oid 
+    # @option opts [String] :q 
+    # @option opts [String] :language 
+    # @option opts [Boolean] :overridden 
+    # @option opts [Integer] :offset 
+    # @option opts [Integer] :limit 
+    # @return [SfvbI18nMessagesResponse]
+    def list_sfvb_i18n_messages(storefront_oid, opts = {})
+      data, _status_code, _headers = list_sfvb_i18n_messages_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List built-in messages
+    # The system text templates render by key, such as checkout labels, for one theme (the active theme unless theme_oid is given).  Each message has its English, whether it was edited, and each enabled language&#39;s text with its source (hand, machine, pending or none).  A message appears the first time a page renders it.  q matches the key or the English.  overridden keeps messages with an edited English or a hand translation.  Paged by offset and limit (default 200, at most 500). 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :theme_oid 
+    # @option opts [String] :q 
+    # @option opts [String] :language 
+    # @option opts [Boolean] :overridden 
+    # @option opts [Integer] :offset 
+    # @option opts [Integer] :limit 
+    # @return [Array<(SfvbI18nMessagesResponse, Integer, Hash)>] SfvbI18nMessagesResponse data, response status code and response headers
+    def list_sfvb_i18n_messages_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.list_sfvb_i18n_messages ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.list_sfvb_i18n_messages"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/i18n/messages'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'theme_oid'] = opts[:'theme_oid'] if !opts[:'theme_oid'].nil?
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+      query_params[:'language'] = opts[:'language'] if !opts[:'language'].nil?
+      query_params[:'overridden'] = opts[:'overridden'] if !opts[:'overridden'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbI18nMessagesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.list_sfvb_i18n_messages",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_i18n_messages\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List the item containers on the account
     # An itemcontainer element renders nothing of its own.  It names a slot, and a separate container is resolved per item for that slot, so a catalog of five hundred products with three slots is fifteen hundred containers.  This says which of them exist.  Filter by container_name to find every item carrying one slot, or by merchant_item_id to see what one item has.  Which items are missing a slot is a set difference against pages/items, because a listing can only report containers that exist.  Each row carries hash_sha256, so a listing is enough to start an If-Match write without reading the container first.  Item containers are stored per account rather than per storefront, so storefront_oid identifies the caller's storefront but does not narrow the result. 
     # @param storefront_oid [Integer] 
@@ -6209,6 +6803,175 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_file_content\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Replace the storefront's translation glossary
+    # Replaces the whole glossary, plain markdown up to 64 KB.  The server stores it and never interprets it; the agent follows it.  Send the hash_sha256 you read as If-Match, except for the first save.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param glossary_request [SfvbI18nGlossaryRequest] The glossary
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :if_match hash_sha256 from the last read.  Not needed for the first save; otherwise 428 when absent, 412 when stale.
+    # @return [SfvbI18nGlossary]
+    def put_sfvb_i18n_glossary(storefront_oid, glossary_request, opts = {})
+      data, _status_code, _headers = put_sfvb_i18n_glossary_with_http_info(storefront_oid, glossary_request, opts)
+      data
+    end
+
+    # Replace the storefront&#39;s translation glossary
+    # Replaces the whole glossary, plain markdown up to 64 KB.  The server stores it and never interprets it; the agent follows it.  Send the hash_sha256 you read as If-Match, except for the first save.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param glossary_request [SfvbI18nGlossaryRequest] The glossary
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :if_match hash_sha256 from the last read.  Not needed for the first save; otherwise 428 when absent, 412 when stale.
+    # @return [Array<(SfvbI18nGlossary, Integer, Hash)>] SfvbI18nGlossary data, response status code and response headers
+    def put_sfvb_i18n_glossary_with_http_info(storefront_oid, glossary_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.put_sfvb_i18n_glossary ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.put_sfvb_i18n_glossary"
+      end
+      # verify the required parameter 'glossary_request' is set
+      if @api_client.config.client_side_validation && glossary_request.nil?
+        fail ArgumentError, "Missing the required parameter 'glossary_request' when calling SfvbApi.put_sfvb_i18n_glossary"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/i18n/glossary'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = opts[:'if_match'] if !opts[:'if_match'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(glossary_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbI18nGlossary'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.put_sfvb_i18n_glossary",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_i18n_glossary\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change one built-in message
+    # Sets one message in any number of languages.  ENG replaces the English, which drops its machine translations so they regenerate.  Any other language becomes a hand translation.  Languages not named are left alone; empty text is refused.  Shoppers see it at once.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param key [String] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param message_write_request [SfvbI18nMessageWriteRequest] The languages to change
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :theme_oid 
+    # @return [SfvbI18nMessage]
+    def put_sfvb_i18n_message(storefront_oid, key, if_match, message_write_request, opts = {})
+      data, _status_code, _headers = put_sfvb_i18n_message_with_http_info(storefront_oid, key, if_match, message_write_request, opts)
+      data
+    end
+
+    # Change one built-in message
+    # Sets one message in any number of languages.  ENG replaces the English, which drops its machine translations so they regenerate.  Any other language becomes a hand translation.  Languages not named are left alone; empty text is refused.  Shoppers see it at once.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param key [String] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param message_write_request [SfvbI18nMessageWriteRequest] The languages to change
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :theme_oid 
+    # @return [Array<(SfvbI18nMessage, Integer, Hash)>] SfvbI18nMessage data, response status code and response headers
+    def put_sfvb_i18n_message_with_http_info(storefront_oid, key, if_match, message_write_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.put_sfvb_i18n_message ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.put_sfvb_i18n_message"
+      end
+      # verify the required parameter 'key' is set
+      if @api_client.config.client_side_validation && key.nil?
+        fail ArgumentError, "Missing the required parameter 'key' when calling SfvbApi.put_sfvb_i18n_message"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.put_sfvb_i18n_message"
+      end
+      # verify the required parameter 'message_write_request' is set
+      if @api_client.config.client_side_validation && message_write_request.nil?
+        fail ArgumentError, "Missing the required parameter 'message_write_request' when calling SfvbApi.put_sfvb_i18n_message"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/i18n/messages/{key}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'key' + '}', CGI.escape(key.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'theme_oid'] = opts[:'theme_oid'] if !opts[:'theme_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(message_write_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbI18nMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.put_sfvb_i18n_message",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_i18n_message\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -7647,6 +8410,86 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#reserve_sfvb_widget_ids\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Reset one built-in message
+    # Puts a message back to the template's text.  The merchant's English edit and hand translations stop serving at once and every language falls back to machine translation; the message comes back the next time a page renders it.  A message imported from an older theme's locale file is refused.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param key [String] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :theme_oid 
+    # @return [SfvbI18nResetResponse]
+    def reset_sfvb_i18n_message(storefront_oid, key, if_match, opts = {})
+      data, _status_code, _headers = reset_sfvb_i18n_message_with_http_info(storefront_oid, key, if_match, opts)
+      data
+    end
+
+    # Reset one built-in message
+    # Puts a message back to the template&#39;s text.  The merchant&#39;s English edit and hand translations stop serving at once and every language falls back to machine translation; the message comes back the next time a page renders it.  A message imported from an older theme&#39;s locale file is refused.  Always needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param key [String] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :theme_oid 
+    # @return [Array<(SfvbI18nResetResponse, Integer, Hash)>] SfvbI18nResetResponse data, response status code and response headers
+    def reset_sfvb_i18n_message_with_http_info(storefront_oid, key, if_match, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.reset_sfvb_i18n_message ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.reset_sfvb_i18n_message"
+      end
+      # verify the required parameter 'key' is set
+      if @api_client.config.client_side_validation && key.nil?
+        fail ArgumentError, "Missing the required parameter 'key' when calling SfvbApi.reset_sfvb_i18n_message"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.reset_sfvb_i18n_message"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/i18n/messages/{key}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'key' + '}', CGI.escape(key.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'theme_oid'] = opts[:'theme_oid'] if !opts[:'theme_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbI18nResetResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.reset_sfvb_i18n_message",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#reset_sfvb_i18n_message\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
