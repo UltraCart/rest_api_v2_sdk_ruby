@@ -14,62 +14,18 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbRenderRequest
-    # The chain of ancestor nodes above this one, as CJSON.  Elements that inherit layout or styling from a parent render differently without it, so supply it when rendering a node from inside a container rather than a standalone fragment.
-    attr_accessor :ancestors_cjson
+  class SfvbRedirectImportRequest
+    # From the dry run.  Required to apply.
+    attr_accessor :plan_hash
 
-    # Child containers this node references, as a JSON object keyed by container id.  Compiled into the render context so nested containers resolve.
-    attr_accessor :child_containers_json
-
-    # The CJSON node to render.
-    attr_accessor :cjson
-
-    # Affiliate oid for the rendering context.
-    attr_accessor :context_affiliate_oid
-
-    # Blog post oid for the rendering context.
-    attr_accessor :context_blog_post_oid
-
-    # Catalog group path for the rendering context.
-    attr_accessor :context_group_path
-
-    # Item id for the rendering context.  Required for item bound elements.
-    attr_accessor :context_item_id
-
-    # Order id for the rendering context.
-    attr_accessor :context_order_id
-
-    # Page number for paginated elements.  Defaults to 1.
-    attr_accessor :context_page_number
-
-    # Upsell offer oid for the rendering context.
-    attr_accessor :context_upsell_offer_oid
-
-    # True renders every branch the way the builder shows it, for styling content a shopper only sometimes sees.  Omitted or false renders what a shopper sees, with conditions, prices and sale state evaluated against the context item.
-    attr_accessor :edit_mode
-
-    # Three-letter ISO 639-2 language code in the bibliographic form (GER, FRE, CHI), with UltraCart exceptions such as ESP for Spanish.  Must be enabled on the storefront.  Defaults to ENG.
-    attr_accessor :language_iso_code
-
-    # Storefront URI the node would appear on.  Affects rendering of anything page relative.
-    attr_accessor :uri
+    # The rows, up to 5,000.
+    attr_accessor :rows
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'ancestors_cjson' => :'ancestors_cjson',
-        :'child_containers_json' => :'child_containers_json',
-        :'cjson' => :'cjson',
-        :'context_affiliate_oid' => :'context_affiliate_oid',
-        :'context_blog_post_oid' => :'context_blog_post_oid',
-        :'context_group_path' => :'context_group_path',
-        :'context_item_id' => :'context_item_id',
-        :'context_order_id' => :'context_order_id',
-        :'context_page_number' => :'context_page_number',
-        :'context_upsell_offer_oid' => :'context_upsell_offer_oid',
-        :'edit_mode' => :'edit_mode',
-        :'language_iso_code' => :'language_iso_code',
-        :'uri' => :'uri'
+        :'plan_hash' => :'plan_hash',
+        :'rows' => :'rows'
       }
     end
 
@@ -81,19 +37,8 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'ancestors_cjson' => :'String',
-        :'child_containers_json' => :'String',
-        :'cjson' => :'String',
-        :'context_affiliate_oid' => :'Integer',
-        :'context_blog_post_oid' => :'Integer',
-        :'context_group_path' => :'String',
-        :'context_item_id' => :'String',
-        :'context_order_id' => :'String',
-        :'context_page_number' => :'String',
-        :'context_upsell_offer_oid' => :'Integer',
-        :'edit_mode' => :'Boolean',
-        :'language_iso_code' => :'String',
-        :'uri' => :'String'
+        :'plan_hash' => :'String',
+        :'rows' => :'Array<SfvbRedirectImportRow>'
       }
     end
 
@@ -107,67 +52,25 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbRenderRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbRedirectImportRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbRenderRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbRedirectImportRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'ancestors_cjson')
-        self.ancestors_cjson = attributes[:'ancestors_cjson']
+      if attributes.key?(:'plan_hash')
+        self.plan_hash = attributes[:'plan_hash']
       end
 
-      if attributes.key?(:'child_containers_json')
-        self.child_containers_json = attributes[:'child_containers_json']
-      end
-
-      if attributes.key?(:'cjson')
-        self.cjson = attributes[:'cjson']
-      end
-
-      if attributes.key?(:'context_affiliate_oid')
-        self.context_affiliate_oid = attributes[:'context_affiliate_oid']
-      end
-
-      if attributes.key?(:'context_blog_post_oid')
-        self.context_blog_post_oid = attributes[:'context_blog_post_oid']
-      end
-
-      if attributes.key?(:'context_group_path')
-        self.context_group_path = attributes[:'context_group_path']
-      end
-
-      if attributes.key?(:'context_item_id')
-        self.context_item_id = attributes[:'context_item_id']
-      end
-
-      if attributes.key?(:'context_order_id')
-        self.context_order_id = attributes[:'context_order_id']
-      end
-
-      if attributes.key?(:'context_page_number')
-        self.context_page_number = attributes[:'context_page_number']
-      end
-
-      if attributes.key?(:'context_upsell_offer_oid')
-        self.context_upsell_offer_oid = attributes[:'context_upsell_offer_oid']
-      end
-
-      if attributes.key?(:'edit_mode')
-        self.edit_mode = attributes[:'edit_mode']
-      end
-
-      if attributes.key?(:'language_iso_code')
-        self.language_iso_code = attributes[:'language_iso_code']
-      end
-
-      if attributes.key?(:'uri')
-        self.uri = attributes[:'uri']
+      if attributes.key?(:'rows')
+        if (value = attributes[:'rows']).is_a?(Array)
+          self.rows = value
+        end
       end
     end
 
@@ -189,19 +92,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          ancestors_cjson == o.ancestors_cjson &&
-          child_containers_json == o.child_containers_json &&
-          cjson == o.cjson &&
-          context_affiliate_oid == o.context_affiliate_oid &&
-          context_blog_post_oid == o.context_blog_post_oid &&
-          context_group_path == o.context_group_path &&
-          context_item_id == o.context_item_id &&
-          context_order_id == o.context_order_id &&
-          context_page_number == o.context_page_number &&
-          context_upsell_offer_oid == o.context_upsell_offer_oid &&
-          edit_mode == o.edit_mode &&
-          language_iso_code == o.language_iso_code &&
-          uri == o.uri
+          plan_hash == o.plan_hash &&
+          rows == o.rows
     end
 
     # @see the `==` method
@@ -213,7 +105,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ancestors_cjson, child_containers_json, cjson, context_affiliate_oid, context_blog_post_oid, context_group_path, context_item_id, context_order_id, context_page_number, context_upsell_offer_oid, edit_mode, language_iso_code, uri].hash
+      [plan_hash, rows].hash
     end
 
     # Builds the object from hash

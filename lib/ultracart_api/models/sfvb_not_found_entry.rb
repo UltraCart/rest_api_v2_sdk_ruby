@@ -14,62 +14,54 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbRenderRequest
-    # The chain of ancestor nodes above this one, as CJSON.  Elements that inherit layout or styling from a parent render differently without it, so supply it when rendering a node from inside a container rather than a standalone fragment.
-    attr_accessor :ancestors_cjson
+  class SfvbNotFoundEntry
+    # Bot hits since bot counting began on this entry.  Empty when not yet counted.
+    attr_accessor :bot_hits
 
-    # Child containers this node references, as a JSON object keyed by container id.  Compiled into the render context so nested containers resolve.
-    attr_accessor :child_containers_json
+    # bot_hits divided by counted_hits, 0 to 1.  Empty when not yet counted.
+    attr_accessor :bot_share
 
-    # The CJSON node to render.
-    attr_accessor :cjson
+    # Hits since bot counting began, the base for bot_share.
+    attr_accessor :counted_hits
 
-    # Affiliate oid for the rendering context.
-    attr_accessor :context_affiliate_oid
+    # First hit, ISO 8601.
+    attr_accessor :first_seen_dts
 
-    # Blog post oid for the rendering context.
-    attr_accessor :context_blog_post_oid
+    # Every recorded hit, bots included.
+    attr_accessor :hits
 
-    # Catalog group path for the rendering context.
-    attr_accessor :context_group_path
+    # True when the entry is ignored and no longer counts.
+    attr_accessor :ignored
 
-    # Item id for the rendering context.  Required for item bound elements.
-    attr_accessor :context_item_id
+    # Latest hit, ISO 8601.
+    attr_accessor :last_seen_dts
 
-    # Order id for the rendering context.
-    attr_accessor :context_order_id
+    # The entry's id.
+    attr_accessor :not_found_id
 
-    # Page number for paginated elements.  Defaults to 1.
-    attr_accessor :context_page_number
+    # The path, without its query string.  Token-like segments show as {token} unless asked for.
+    attr_accessor :path
 
-    # Upsell offer oid for the rendering context.
-    attr_accessor :context_upsell_offer_oid
+    # Where a redirect rule now sends this path, when one does.
+    attr_accessor :redirected_to
 
-    # True renders every branch the way the builder shows it, for styling content a shopper only sometimes sees.  Omitted or false renders what a shopper sees, with conditions, prices and sale state evaluated against the context item.
-    attr_accessor :edit_mode
-
-    # Three-letter ISO 639-2 language code in the bibliographic form (GER, FRE, CHI), with UltraCart exceptions such as ESP for Spanish.  Must be enabled on the storefront.  Defaults to ENG.
-    attr_accessor :language_iso_code
-
-    # Storefront URI the node would appear on.  Affects rendering of anything page relative.
-    attr_accessor :uri
+    # Hosts of the pages that linked to it.
+    attr_accessor :referrer_hosts
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'ancestors_cjson' => :'ancestors_cjson',
-        :'child_containers_json' => :'child_containers_json',
-        :'cjson' => :'cjson',
-        :'context_affiliate_oid' => :'context_affiliate_oid',
-        :'context_blog_post_oid' => :'context_blog_post_oid',
-        :'context_group_path' => :'context_group_path',
-        :'context_item_id' => :'context_item_id',
-        :'context_order_id' => :'context_order_id',
-        :'context_page_number' => :'context_page_number',
-        :'context_upsell_offer_oid' => :'context_upsell_offer_oid',
-        :'edit_mode' => :'edit_mode',
-        :'language_iso_code' => :'language_iso_code',
-        :'uri' => :'uri'
+        :'bot_hits' => :'bot_hits',
+        :'bot_share' => :'bot_share',
+        :'counted_hits' => :'counted_hits',
+        :'first_seen_dts' => :'first_seen_dts',
+        :'hits' => :'hits',
+        :'ignored' => :'ignored',
+        :'last_seen_dts' => :'last_seen_dts',
+        :'not_found_id' => :'not_found_id',
+        :'path' => :'path',
+        :'redirected_to' => :'redirected_to',
+        :'referrer_hosts' => :'referrer_hosts'
       }
     end
 
@@ -81,19 +73,17 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'ancestors_cjson' => :'String',
-        :'child_containers_json' => :'String',
-        :'cjson' => :'String',
-        :'context_affiliate_oid' => :'Integer',
-        :'context_blog_post_oid' => :'Integer',
-        :'context_group_path' => :'String',
-        :'context_item_id' => :'String',
-        :'context_order_id' => :'String',
-        :'context_page_number' => :'String',
-        :'context_upsell_offer_oid' => :'Integer',
-        :'edit_mode' => :'Boolean',
-        :'language_iso_code' => :'String',
-        :'uri' => :'String'
+        :'bot_hits' => :'Integer',
+        :'bot_share' => :'Object',
+        :'counted_hits' => :'Integer',
+        :'first_seen_dts' => :'String',
+        :'hits' => :'Integer',
+        :'ignored' => :'Boolean',
+        :'last_seen_dts' => :'String',
+        :'not_found_id' => :'String',
+        :'path' => :'String',
+        :'redirected_to' => :'String',
+        :'referrer_hosts' => :'Array<String>'
       }
     end
 
@@ -107,67 +97,61 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbRenderRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbNotFoundEntry` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbRenderRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbNotFoundEntry`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'ancestors_cjson')
-        self.ancestors_cjson = attributes[:'ancestors_cjson']
+      if attributes.key?(:'bot_hits')
+        self.bot_hits = attributes[:'bot_hits']
       end
 
-      if attributes.key?(:'child_containers_json')
-        self.child_containers_json = attributes[:'child_containers_json']
+      if attributes.key?(:'bot_share')
+        self.bot_share = attributes[:'bot_share']
       end
 
-      if attributes.key?(:'cjson')
-        self.cjson = attributes[:'cjson']
+      if attributes.key?(:'counted_hits')
+        self.counted_hits = attributes[:'counted_hits']
       end
 
-      if attributes.key?(:'context_affiliate_oid')
-        self.context_affiliate_oid = attributes[:'context_affiliate_oid']
+      if attributes.key?(:'first_seen_dts')
+        self.first_seen_dts = attributes[:'first_seen_dts']
       end
 
-      if attributes.key?(:'context_blog_post_oid')
-        self.context_blog_post_oid = attributes[:'context_blog_post_oid']
+      if attributes.key?(:'hits')
+        self.hits = attributes[:'hits']
       end
 
-      if attributes.key?(:'context_group_path')
-        self.context_group_path = attributes[:'context_group_path']
+      if attributes.key?(:'ignored')
+        self.ignored = attributes[:'ignored']
       end
 
-      if attributes.key?(:'context_item_id')
-        self.context_item_id = attributes[:'context_item_id']
+      if attributes.key?(:'last_seen_dts')
+        self.last_seen_dts = attributes[:'last_seen_dts']
       end
 
-      if attributes.key?(:'context_order_id')
-        self.context_order_id = attributes[:'context_order_id']
+      if attributes.key?(:'not_found_id')
+        self.not_found_id = attributes[:'not_found_id']
       end
 
-      if attributes.key?(:'context_page_number')
-        self.context_page_number = attributes[:'context_page_number']
+      if attributes.key?(:'path')
+        self.path = attributes[:'path']
       end
 
-      if attributes.key?(:'context_upsell_offer_oid')
-        self.context_upsell_offer_oid = attributes[:'context_upsell_offer_oid']
+      if attributes.key?(:'redirected_to')
+        self.redirected_to = attributes[:'redirected_to']
       end
 
-      if attributes.key?(:'edit_mode')
-        self.edit_mode = attributes[:'edit_mode']
-      end
-
-      if attributes.key?(:'language_iso_code')
-        self.language_iso_code = attributes[:'language_iso_code']
-      end
-
-      if attributes.key?(:'uri')
-        self.uri = attributes[:'uri']
+      if attributes.key?(:'referrer_hosts')
+        if (value = attributes[:'referrer_hosts']).is_a?(Array)
+          self.referrer_hosts = value
+        end
       end
     end
 
@@ -189,19 +173,17 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          ancestors_cjson == o.ancestors_cjson &&
-          child_containers_json == o.child_containers_json &&
-          cjson == o.cjson &&
-          context_affiliate_oid == o.context_affiliate_oid &&
-          context_blog_post_oid == o.context_blog_post_oid &&
-          context_group_path == o.context_group_path &&
-          context_item_id == o.context_item_id &&
-          context_order_id == o.context_order_id &&
-          context_page_number == o.context_page_number &&
-          context_upsell_offer_oid == o.context_upsell_offer_oid &&
-          edit_mode == o.edit_mode &&
-          language_iso_code == o.language_iso_code &&
-          uri == o.uri
+          bot_hits == o.bot_hits &&
+          bot_share == o.bot_share &&
+          counted_hits == o.counted_hits &&
+          first_seen_dts == o.first_seen_dts &&
+          hits == o.hits &&
+          ignored == o.ignored &&
+          last_seen_dts == o.last_seen_dts &&
+          not_found_id == o.not_found_id &&
+          path == o.path &&
+          redirected_to == o.redirected_to &&
+          referrer_hosts == o.referrer_hosts
     end
 
     # @see the `==` method
@@ -213,7 +195,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ancestors_cjson, child_containers_json, cjson, context_affiliate_oid, context_blog_post_oid, context_group_path, context_item_id, context_order_id, context_page_number, context_upsell_offer_oid, edit_mode, language_iso_code, uri].hash
+      [bot_hits, bot_share, counted_hits, first_seen_dts, hits, ignored, last_seen_dts, not_found_id, path, redirected_to, referrer_hosts].hash
     end
 
     # Builds the object from hash

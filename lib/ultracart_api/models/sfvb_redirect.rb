@@ -14,62 +14,62 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbRenderRequest
-    # The chain of ancestor nodes above this one, as CJSON.  Elements that inherit layout or styling from a parent render differently without it, so supply it when rendering a node from inside a container rather than a standalone fragment.
-    attr_accessor :ancestors_cjson
+  class SfvbRedirect
+    # When SFVB created the rule, ISO 8601.  Empty for rules created in the admin.
+    attr_accessor :created_dts
 
-    # Child containers this node references, as a JSON object keyed by container id.  Compiled into the render context so nested containers resolve.
-    attr_accessor :child_containers_json
+    # Whether the source is left out of the generated sitemap.
+    attr_accessor :exclude_from_sitemap
 
-    # The CJSON node to render.
-    attr_accessor :cjson
+    # Send back as If-Match to update or delete the rule.
+    attr_accessor :hash_sha256
 
-    # Affiliate oid for the rendering context.
-    attr_accessor :context_affiliate_oid
+    # When SFVB last changed the rule, ISO 8601.
+    attr_accessor :modified_dts
 
-    # Blog post oid for the rendering context.
-    attr_accessor :context_blog_post_oid
+    # Why the rule exists.
+    attr_accessor :note
 
-    # Catalog group path for the rendering context.
-    attr_accessor :context_group_path
+    # When the rule is pinned to a page, that page's current path.  The target follows the page.
+    attr_accessor :pinned_page_path
 
-    # Item id for the rendering context.  Required for item bound elements.
-    attr_accessor :context_item_id
+    # The rule's id.
+    attr_accessor :redirect_id
 
-    # Order id for the rendering context.
-    attr_accessor :context_order_id
+    # The path the rule catches, as stored.  A trailing /* catches everything below it.
+    attr_accessor :source
 
-    # Page number for paginated elements.  Defaults to 1.
-    attr_accessor :context_page_number
+    # 301, 302 (to another site, admin rules only) or rewrite (an admin rule serving the target at the source with a 200).  Rules written through SFVB are always 301.
+    attr_accessor :status
 
-    # Upsell offer oid for the rendering context.
-    attr_accessor :context_upsell_offer_oid
+    # Where the rule sends the shopper.
+    attr_accessor :target
 
-    # True renders every branch the way the builder shows it, for styling content a shopper only sometimes sees.  Omitted or false renders what a shopper sees, with conditions, prices and sale state evaluated against the context item.
-    attr_accessor :edit_mode
+    # True when the target is a page or item that does not exist.
+    attr_accessor :target_invalid
 
-    # Three-letter ISO 639-2 language code in the bibliographic form (GER, FRE, CHI), with UltraCart exceptions such as ESP for Spanish.  Must be enabled on the storefront.  Defaults to ENG.
-    attr_accessor :language_iso_code
+    # Why the target is invalid.
+    attr_accessor :target_invalid_message
 
-    # Storefront URI the node would appear on.  Affects rendering of anything page relative.
-    attr_accessor :uri
+    # exact or pattern.
+    attr_accessor :type
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'ancestors_cjson' => :'ancestors_cjson',
-        :'child_containers_json' => :'child_containers_json',
-        :'cjson' => :'cjson',
-        :'context_affiliate_oid' => :'context_affiliate_oid',
-        :'context_blog_post_oid' => :'context_blog_post_oid',
-        :'context_group_path' => :'context_group_path',
-        :'context_item_id' => :'context_item_id',
-        :'context_order_id' => :'context_order_id',
-        :'context_page_number' => :'context_page_number',
-        :'context_upsell_offer_oid' => :'context_upsell_offer_oid',
-        :'edit_mode' => :'edit_mode',
-        :'language_iso_code' => :'language_iso_code',
-        :'uri' => :'uri'
+        :'created_dts' => :'created_dts',
+        :'exclude_from_sitemap' => :'exclude_from_sitemap',
+        :'hash_sha256' => :'hash_sha256',
+        :'modified_dts' => :'modified_dts',
+        :'note' => :'note',
+        :'pinned_page_path' => :'pinned_page_path',
+        :'redirect_id' => :'redirect_id',
+        :'source' => :'source',
+        :'status' => :'status',
+        :'target' => :'target',
+        :'target_invalid' => :'target_invalid',
+        :'target_invalid_message' => :'target_invalid_message',
+        :'type' => :'type'
       }
     end
 
@@ -81,19 +81,19 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'ancestors_cjson' => :'String',
-        :'child_containers_json' => :'String',
-        :'cjson' => :'String',
-        :'context_affiliate_oid' => :'Integer',
-        :'context_blog_post_oid' => :'Integer',
-        :'context_group_path' => :'String',
-        :'context_item_id' => :'String',
-        :'context_order_id' => :'String',
-        :'context_page_number' => :'String',
-        :'context_upsell_offer_oid' => :'Integer',
-        :'edit_mode' => :'Boolean',
-        :'language_iso_code' => :'String',
-        :'uri' => :'String'
+        :'created_dts' => :'String',
+        :'exclude_from_sitemap' => :'Boolean',
+        :'hash_sha256' => :'String',
+        :'modified_dts' => :'String',
+        :'note' => :'String',
+        :'pinned_page_path' => :'String',
+        :'redirect_id' => :'Integer',
+        :'source' => :'String',
+        :'status' => :'String',
+        :'target' => :'String',
+        :'target_invalid' => :'Boolean',
+        :'target_invalid_message' => :'String',
+        :'type' => :'String'
       }
     end
 
@@ -107,67 +107,67 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbRenderRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbRedirect` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbRenderRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbRedirect`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'ancestors_cjson')
-        self.ancestors_cjson = attributes[:'ancestors_cjson']
+      if attributes.key?(:'created_dts')
+        self.created_dts = attributes[:'created_dts']
       end
 
-      if attributes.key?(:'child_containers_json')
-        self.child_containers_json = attributes[:'child_containers_json']
+      if attributes.key?(:'exclude_from_sitemap')
+        self.exclude_from_sitemap = attributes[:'exclude_from_sitemap']
       end
 
-      if attributes.key?(:'cjson')
-        self.cjson = attributes[:'cjson']
+      if attributes.key?(:'hash_sha256')
+        self.hash_sha256 = attributes[:'hash_sha256']
       end
 
-      if attributes.key?(:'context_affiliate_oid')
-        self.context_affiliate_oid = attributes[:'context_affiliate_oid']
+      if attributes.key?(:'modified_dts')
+        self.modified_dts = attributes[:'modified_dts']
       end
 
-      if attributes.key?(:'context_blog_post_oid')
-        self.context_blog_post_oid = attributes[:'context_blog_post_oid']
+      if attributes.key?(:'note')
+        self.note = attributes[:'note']
       end
 
-      if attributes.key?(:'context_group_path')
-        self.context_group_path = attributes[:'context_group_path']
+      if attributes.key?(:'pinned_page_path')
+        self.pinned_page_path = attributes[:'pinned_page_path']
       end
 
-      if attributes.key?(:'context_item_id')
-        self.context_item_id = attributes[:'context_item_id']
+      if attributes.key?(:'redirect_id')
+        self.redirect_id = attributes[:'redirect_id']
       end
 
-      if attributes.key?(:'context_order_id')
-        self.context_order_id = attributes[:'context_order_id']
+      if attributes.key?(:'source')
+        self.source = attributes[:'source']
       end
 
-      if attributes.key?(:'context_page_number')
-        self.context_page_number = attributes[:'context_page_number']
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
       end
 
-      if attributes.key?(:'context_upsell_offer_oid')
-        self.context_upsell_offer_oid = attributes[:'context_upsell_offer_oid']
+      if attributes.key?(:'target')
+        self.target = attributes[:'target']
       end
 
-      if attributes.key?(:'edit_mode')
-        self.edit_mode = attributes[:'edit_mode']
+      if attributes.key?(:'target_invalid')
+        self.target_invalid = attributes[:'target_invalid']
       end
 
-      if attributes.key?(:'language_iso_code')
-        self.language_iso_code = attributes[:'language_iso_code']
+      if attributes.key?(:'target_invalid_message')
+        self.target_invalid_message = attributes[:'target_invalid_message']
       end
 
-      if attributes.key?(:'uri')
-        self.uri = attributes[:'uri']
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
       end
     end
 
@@ -189,19 +189,19 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          ancestors_cjson == o.ancestors_cjson &&
-          child_containers_json == o.child_containers_json &&
-          cjson == o.cjson &&
-          context_affiliate_oid == o.context_affiliate_oid &&
-          context_blog_post_oid == o.context_blog_post_oid &&
-          context_group_path == o.context_group_path &&
-          context_item_id == o.context_item_id &&
-          context_order_id == o.context_order_id &&
-          context_page_number == o.context_page_number &&
-          context_upsell_offer_oid == o.context_upsell_offer_oid &&
-          edit_mode == o.edit_mode &&
-          language_iso_code == o.language_iso_code &&
-          uri == o.uri
+          created_dts == o.created_dts &&
+          exclude_from_sitemap == o.exclude_from_sitemap &&
+          hash_sha256 == o.hash_sha256 &&
+          modified_dts == o.modified_dts &&
+          note == o.note &&
+          pinned_page_path == o.pinned_page_path &&
+          redirect_id == o.redirect_id &&
+          source == o.source &&
+          status == o.status &&
+          target == o.target &&
+          target_invalid == o.target_invalid &&
+          target_invalid_message == o.target_invalid_message &&
+          type == o.type
     end
 
     # @see the `==` method
@@ -213,7 +213,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ancestors_cjson, child_containers_json, cjson, context_affiliate_oid, context_blog_post_oid, context_group_path, context_item_id, context_order_id, context_page_number, context_upsell_offer_oid, edit_mode, language_iso_code, uri].hash
+      [created_dts, exclude_from_sitemap, hash_sha256, modified_dts, note, pinned_page_path, redirect_id, source, status, target, target_invalid, target_invalid_message, type].hash
     end
 
     # Builds the object from hash
