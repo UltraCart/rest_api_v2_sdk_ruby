@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **default** | **String** | The value used when none is supplied. | [optional] |
+| **default_value** | **String** | The value used when none is supplied. | [optional] |
 | **description** | **String** | What the value is used for. | [optional] |
 | **name** | **String** | Parameter name, letters, digits, hyphens and underscores. | [optional] |
 | **required** | **Boolean** | True when the fragment cannot be used without it. | [optional] |
@@ -16,7 +16,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::SfvbLibraryParameter.new(
-  default: null,
+  default_value: null,
   description: null,
   name: null,
   required: null,

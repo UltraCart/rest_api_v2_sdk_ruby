@@ -75,7 +75,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'findings' => :'Object',
+        :'findings' => :'Array<SfvbLibraryManifestFinding>',
         :'prompt_version' => :'String',
         :'reviewed_dts' => :'String',
         :'screenshot_sha256' => :'String',
@@ -106,7 +106,9 @@ module UltracartClient
       }
 
       if attributes.key?(:'findings')
-        self.findings = attributes[:'findings']
+        if (value = attributes[:'findings']).is_a?(Array)
+          self.findings = value
+        end
       end
 
       if attributes.key?(:'prompt_version')

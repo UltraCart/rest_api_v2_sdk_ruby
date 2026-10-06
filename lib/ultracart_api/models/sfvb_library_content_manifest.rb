@@ -48,11 +48,11 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'absolute_asset_urls' => :'Object',
+        :'absolute_asset_urls' => :'Array<SfvbLibraryManifestFinding>',
         :'ai_review' => :'SfvbLibraryAiReview',
-        :'executable' => :'Object',
-        :'rejected' => :'Object',
-        :'secrets' => :'Object'
+        :'executable' => :'Array<SfvbLibraryManifestFinding>',
+        :'rejected' => :'Array<SfvbLibraryManifestFinding>',
+        :'secrets' => :'Array<SfvbLibraryManifestFinding>'
       }
     end
 
@@ -78,7 +78,9 @@ module UltracartClient
       }
 
       if attributes.key?(:'absolute_asset_urls')
-        self.absolute_asset_urls = attributes[:'absolute_asset_urls']
+        if (value = attributes[:'absolute_asset_urls']).is_a?(Array)
+          self.absolute_asset_urls = value
+        end
       end
 
       if attributes.key?(:'ai_review')
@@ -86,15 +88,21 @@ module UltracartClient
       end
 
       if attributes.key?(:'executable')
-        self.executable = attributes[:'executable']
+        if (value = attributes[:'executable']).is_a?(Array)
+          self.executable = value
+        end
       end
 
       if attributes.key?(:'rejected')
-        self.rejected = attributes[:'rejected']
+        if (value = attributes[:'rejected']).is_a?(Array)
+          self.rejected = value
+        end
       end
 
       if attributes.key?(:'secrets')
-        self.secrets = attributes[:'secrets']
+        if (value = attributes[:'secrets']).is_a?(Array)
+          self.secrets = value
+        end
       end
     end
 

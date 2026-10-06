@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **dimensions** | **Object** | purpose, section, industry and style, each with its allowed tags. | [optional] |
+| **dimensions** | [**Array&lt;SfvbLibraryTaxonomyDimension&gt;**](SfvbLibraryTaxonomyDimension.md) | purpose, section, industry and style, each with its allowed tags. | [optional] |
 
 ## Example
 

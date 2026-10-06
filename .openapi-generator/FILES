@@ -1051,6 +1051,7 @@ docs/SfvbLibraryInstallReceipt.md
 docs/SfvbLibraryInstallRecord.md
 docs/SfvbLibraryInstallRequest.md
 docs/SfvbLibraryInstallsResponse.md
+docs/SfvbLibraryManifestFinding.md
 docs/SfvbLibraryParameter.md
 docs/SfvbLibraryPublishRequest.md
 docs/SfvbLibraryResponse.md
@@ -1060,6 +1061,8 @@ docs/SfvbLibraryShareTarget.md
 docs/SfvbLibraryShareTargetsResponse.md
 docs/SfvbLibraryTaxonomy.md
 docs/SfvbLibraryTaxonomyCatalog.md
+docs/SfvbLibraryTaxonomyDimension.md
+docs/SfvbLibraryTaxonomyTag.md
 docs/SfvbLibraryUnshareResult.md
 docs/SfvbMenu.md
 docs/SfvbMenuItem.md
@@ -2302,6 +2305,7 @@ lib/ultracart_api/models/sfvb_library_install_receipt.rb
 lib/ultracart_api/models/sfvb_library_install_record.rb
 lib/ultracart_api/models/sfvb_library_install_request.rb
 lib/ultracart_api/models/sfvb_library_installs_response.rb
+lib/ultracart_api/models/sfvb_library_manifest_finding.rb
 lib/ultracart_api/models/sfvb_library_parameter.rb
 lib/ultracart_api/models/sfvb_library_publish_request.rb
 lib/ultracart_api/models/sfvb_library_response.rb
@@ -2311,6 +2315,8 @@ lib/ultracart_api/models/sfvb_library_share_target.rb
 lib/ultracart_api/models/sfvb_library_share_targets_response.rb
 lib/ultracart_api/models/sfvb_library_taxonomy.rb
 lib/ultracart_api/models/sfvb_library_taxonomy_catalog.rb
+lib/ultracart_api/models/sfvb_library_taxonomy_dimension.rb
+lib/ultracart_api/models/sfvb_library_taxonomy_tag.rb
 lib/ultracart_api/models/sfvb_library_unshare_result.rb
 lib/ultracart_api/models/sfvb_menu.rb
 lib/ultracart_api/models/sfvb_menu_item.rb

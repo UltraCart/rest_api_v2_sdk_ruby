@@ -33,7 +33,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'dimensions' => :'Object'
+        :'dimensions' => :'Array<SfvbLibraryTaxonomyDimension>'
       }
     end
 
@@ -59,7 +59,9 @@ module UltracartClient
       }
 
       if attributes.key?(:'dimensions')
-        self.dimensions = attributes[:'dimensions']
+        if (value = attributes[:'dimensions']).is_a?(Array)
+          self.dimensions = value
+        end
       end
     end
 

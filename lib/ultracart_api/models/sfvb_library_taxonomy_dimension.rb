@@ -14,30 +14,44 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbLibraryParameter
-    # The value used when none is supplied.
-    attr_accessor :default_value
-
-    # What the value is used for.
+  class SfvbLibraryTaxonomyDimension
+    # What the dimension describes.
     attr_accessor :description
 
-    # Parameter name, letters, digits, hyphens and underscores.
+    # The taxonomy field this list applies to.
     attr_accessor :name
 
-    # True when the fragment cannot be used without it.
-    attr_accessor :required
+    # The allowed tags, in display order.
+    attr_accessor :tags
 
-    # What kind of value it takes, such as string, url, color or item.
-    attr_accessor :type
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'default_value' => :'default_value',
         :'description' => :'description',
         :'name' => :'name',
-        :'required' => :'required',
-        :'type' => :'type'
+        :'tags' => :'tags'
       }
     end
 
@@ -49,11 +63,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'default_value' => :'String',
         :'description' => :'String',
         :'name' => :'String',
-        :'required' => :'Boolean',
-        :'type' => :'String'
+        :'tags' => :'Array<SfvbLibraryTaxonomyTag>'
       }
     end
 
@@ -67,20 +79,16 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryParameter` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryTaxonomyDimension` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryParameter`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryTaxonomyDimension`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'default_value')
-        self.default_value = attributes[:'default_value']
-      end
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
@@ -90,12 +98,10 @@ module UltracartClient
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'required')
-        self.required = attributes[:'required']
-      end
-
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
+      if attributes.key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
+        end
       end
     end
 
@@ -109,7 +115,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      name_validator = EnumAttributeValidator.new('String', ["purpose", "section", "industry", "style"])
+      return false unless name_validator.valid?(@name)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] name Object to be assigned
+    def name=(name)
+      validator = EnumAttributeValidator.new('String', ["purpose", "section", "industry", "style"])
+      unless validator.valid?(name)
+        fail ArgumentError, "invalid value for \"name\", must be one of #{validator.allowable_values}."
+      end
+      @name = name
     end
 
     # Checks equality by comparing each attribute.
@@ -117,11 +135,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          default_value == o.default_value &&
           description == o.description &&
           name == o.name &&
-          required == o.required &&
-          type == o.type
+          tags == o.tags
     end
 
     # @see the `==` method
@@ -133,7 +149,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [default_value, description, name, required, type].hash
+      [description, name, tags].hash
     end
 
     # Builds the object from hash

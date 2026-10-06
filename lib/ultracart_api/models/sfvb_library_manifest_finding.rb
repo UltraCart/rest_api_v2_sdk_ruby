@@ -14,30 +14,22 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbLibraryParameter
-    # The value used when none is supplied.
-    attr_accessor :default_value
+  class SfvbLibraryManifestFinding
+    # What was found.  For an absolute asset URL this is the URL.  For a credential it is only the kind of credential, never its value.
+    attr_accessor :detail
 
-    # What the value is used for.
-    attr_accessor :description
+    # Id of the widget the finding is in.
+    attr_accessor :widget_id
 
-    # Parameter name, letters, digits, hyphens and underscores.
-    attr_accessor :name
-
-    # True when the fragment cannot be used without it.
-    attr_accessor :required
-
-    # What kind of value it takes, such as string, url, color or item.
-    attr_accessor :type
+    # Element type of that widget.
+    attr_accessor :widget_type
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'default_value' => :'default_value',
-        :'description' => :'description',
-        :'name' => :'name',
-        :'required' => :'required',
-        :'type' => :'type'
+        :'detail' => :'detail',
+        :'widget_id' => :'widget_id',
+        :'widget_type' => :'widget_type'
       }
     end
 
@@ -49,11 +41,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'default_value' => :'String',
-        :'description' => :'String',
-        :'name' => :'String',
-        :'required' => :'Boolean',
-        :'type' => :'String'
+        :'detail' => :'String',
+        :'widget_id' => :'String',
+        :'widget_type' => :'String'
       }
     end
 
@@ -67,35 +57,27 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryParameter` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbLibraryManifestFinding` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryParameter`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbLibraryManifestFinding`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'default_value')
-        self.default_value = attributes[:'default_value']
+      if attributes.key?(:'detail')
+        self.detail = attributes[:'detail']
       end
 
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
+      if attributes.key?(:'widget_id')
+        self.widget_id = attributes[:'widget_id']
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'required')
-        self.required = attributes[:'required']
-      end
-
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
+      if attributes.key?(:'widget_type')
+        self.widget_type = attributes[:'widget_type']
       end
     end
 
@@ -117,11 +99,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          default_value == o.default_value &&
-          description == o.description &&
-          name == o.name &&
-          required == o.required &&
-          type == o.type
+          detail == o.detail &&
+          widget_id == o.widget_id &&
+          widget_type == o.widget_type
     end
 
     # @see the `==` method
@@ -133,7 +113,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [default_value, description, name, required, type].hash
+      [detail, widget_id, widget_type].hash
     end
 
     # Builds the object from hash
