@@ -48,7 +48,7 @@ module UltracartClient
     # True renders every branch the way the builder shows it, for styling content a shopper only sometimes sees.  Omitted or false renders what a shopper sees, with conditions, prices and sale state evaluated against the context item.
     attr_accessor :edit_mode
 
-    # Language ISO code.  Defaults to ENG.
+    # UltraCart language code such as ESP, enabled on the storefront.  Two-letter codes and English names are accepted.  Defaults to ENG.
     attr_accessor :language_iso_code
 
     # Storefront URI the node would appear on.  Affects rendering of anything page relative.
