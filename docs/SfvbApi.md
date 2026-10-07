@@ -72,6 +72,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_redirects**](SfvbApi.md#get_sfvb_redirects) | **GET** /sfvb/storefronts/{storefront_oid}/redirects | List the storefront&#39;s redirect rules |
 | [**get_sfvb_server_log**](SfvbApi.md#get_sfvb_server_log) | **GET** /sfvb/storefronts/{storefront_oid}/logs/{log_id} | Get one storefront render log |
 | [**get_sfvb_site_attributes**](SfvbApi.md#get_sfvb_site_attributes) | **GET** /sfvb/storefronts/{storefront_oid}/attributes | Read a storefront&#39;s site attributes |
+| [**get_sfvb_test_orders**](SfvbApi.md#get_sfvb_test_orders) | **GET** /sfvb/storefronts/{storefront_oid}/test_orders | List recent test orders |
 | [**get_sfvb_theme**](SfvbApi.md#get_sfvb_theme) | **GET** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid} | Get a theme |
 | [**get_sfvb_theme_attributes**](SfvbApi.md#get_sfvb_theme_attributes) | **GET** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/attributes | Read a theme&#39;s colors, fonts and settings |
 | [**get_sfvb_theme_job**](SfvbApi.md#get_sfvb_theme_job) | **GET** /sfvb/storefronts/{storefront_oid}/theme_jobs/{job_id} | Status of an asynchronous theme job |
@@ -3845,6 +3846,62 @@ end
 ### Return type
 
 [**SfvbSiteAttributesResponse**](SfvbSiteAttributesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_test_orders
+
+> <SfvbTestOrdersResponse> get_sfvb_test_orders(storefront_oid, opts)
+
+List recent test orders
+
+Test orders on this account only, newest first, with no customer details, so an agent can render the order pages (receipt, order tracking, digital downloads, auto order pages) with one.  Use an order_id as a render's context_order_id; a real customer's order is refused there.  The last 7 days are searched, widening to 30 and then 90 until enough are found.  digital_items and auto_order keep only orders with downloads or an auto order.  limit is 1 to 25, default 10. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_test_orders_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbTestOrdersResponse>, Integer, Hash)> get_sfvb_test_orders_with_http_info(storefront_oid, opts)
+
+```ruby
+begin
+  # List recent test orders
+  data, status_code, headers = api_instance.get_sfvb_test_orders_with_http_info(storefront_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbTestOrdersResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_test_orders_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **limit** | **Integer** |  | [optional] |
+| **digital_items** | **Boolean** |  | [optional] |
+| **auto_order** | **Boolean** |  | [optional] |
+
+### Return type
+
+[**SfvbTestOrdersResponse**](SfvbTestOrdersResponse.md)
 
 ### Authorization
 

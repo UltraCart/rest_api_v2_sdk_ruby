@@ -4951,6 +4951,79 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # List recent test orders
+    # Test orders on this account only, newest first, with no customer details, so an agent can render the order pages (receipt, order tracking, digital downloads, auto order pages) with one.  Use an order_id as a render's context_order_id; a real customer's order is refused there.  The last 7 days are searched, widening to 30 and then 90 until enough are found.  digital_items and auto_order keep only orders with downloads or an auto order.  limit is 1 to 25, default 10. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit 
+    # @option opts [Boolean] :digital_items 
+    # @option opts [Boolean] :auto_order 
+    # @return [SfvbTestOrdersResponse]
+    def get_sfvb_test_orders(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_test_orders_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List recent test orders
+    # Test orders on this account only, newest first, with no customer details, so an agent can render the order pages (receipt, order tracking, digital downloads, auto order pages) with one.  Use an order_id as a render&#39;s context_order_id; a real customer&#39;s order is refused there.  The last 7 days are searched, widening to 30 and then 90 until enough are found.  digital_items and auto_order keep only orders with downloads or an auto order.  limit is 1 to 25, default 10. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :limit 
+    # @option opts [Boolean] :digital_items 
+    # @option opts [Boolean] :auto_order 
+    # @return [Array<(SfvbTestOrdersResponse, Integer, Hash)>] SfvbTestOrdersResponse data, response status code and response headers
+    def get_sfvb_test_orders_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_test_orders ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_test_orders"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/test_orders'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'digital_items'] = opts[:'digital_items'] if !opts[:'digital_items'].nil?
+      query_params[:'auto_order'] = opts[:'auto_order'] if !opts[:'auto_order'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTestOrdersResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_test_orders",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_test_orders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get a theme
     # @param storefront_oid [Integer] 
     # @param theme_oid [Integer] 

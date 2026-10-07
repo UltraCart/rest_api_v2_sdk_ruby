@@ -1149,6 +1149,8 @@ docs/SfvbTemplateResolveCandidate.md
 docs/SfvbTemplateResolvePath.md
 docs/SfvbTemplateResolveResponse.md
 docs/SfvbTemplatesResponse.md
+docs/SfvbTestOrder.md
+docs/SfvbTestOrdersResponse.md
 docs/SfvbTheme.md
 docs/SfvbThemeAttribute.md
 docs/SfvbThemeAttributeUpdate.md
@@ -2431,6 +2433,8 @@ lib/ultracart_api/models/sfvb_template_resolve_candidate.rb
 lib/ultracart_api/models/sfvb_template_resolve_path.rb
 lib/ultracart_api/models/sfvb_template_resolve_response.rb
 lib/ultracart_api/models/sfvb_templates_response.rb
+lib/ultracart_api/models/sfvb_test_order.rb
+lib/ultracart_api/models/sfvb_test_orders_response.rb
 lib/ultracart_api/models/sfvb_theme.rb
 lib/ultracart_api/models/sfvb_theme_attribute.rb
 lib/ultracart_api/models/sfvb_theme_attribute_update.rb
