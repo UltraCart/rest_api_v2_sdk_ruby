@@ -15,11 +15,8 @@ require 'time'
 
 module UltracartClient
   class SfvbTestOrdersResponse
-    # Present when nothing matched.  Says how to place a test order.
+    # Present when nothing matched.
     attr_accessor :hint
-
-    # How many days back were searched, 7, 30 or 90, widening until enough test orders were found.
-    attr_accessor :searched_days
 
     # Test orders, newest first.  Only orders marked as test orders are ever listed.
     attr_accessor :test_orders
@@ -28,7 +25,6 @@ module UltracartClient
     def self.attribute_map
       {
         :'hint' => :'hint',
-        :'searched_days' => :'searched_days',
         :'test_orders' => :'test_orders'
       }
     end
@@ -42,7 +38,6 @@ module UltracartClient
     def self.openapi_types
       {
         :'hint' => :'String',
-        :'searched_days' => :'Integer',
         :'test_orders' => :'Array<SfvbTestOrder>'
       }
     end
@@ -72,10 +67,6 @@ module UltracartClient
         self.hint = attributes[:'hint']
       end
 
-      if attributes.key?(:'searched_days')
-        self.searched_days = attributes[:'searched_days']
-      end
-
       if attributes.key?(:'test_orders')
         if (value = attributes[:'test_orders']).is_a?(Array)
           self.test_orders = value
@@ -102,7 +93,6 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           hint == o.hint &&
-          searched_days == o.searched_days &&
           test_orders == o.test_orders
     end
 
@@ -115,7 +105,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [hint, searched_days, test_orders].hash
+      [hint, test_orders].hash
     end
 
     # Builds the object from hash
