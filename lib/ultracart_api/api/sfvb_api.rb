@@ -778,11 +778,76 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Cancel a pending approval request
+    # Withdraws a request nobody has decided yet, which frees one of the five pending slots a sign-in has.  A request that was already decided, used or expired cannot be cancelled. 
+    # @param approval_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_sfvb_approval(approval_id, opts = {})
+      delete_sfvb_approval_with_http_info(approval_id, opts)
+      nil
+    end
+
+    # Cancel a pending approval request
+    # Withdraws a request nobody has decided yet, which frees one of the five pending slots a sign-in has.  A request that was already decided, used or expired cannot be cancelled. 
+    # @param approval_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_sfvb_approval_with_http_info(approval_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.delete_sfvb_approval ...'
+      end
+      # verify the required parameter 'approval_id' is set
+      if @api_client.config.client_side_validation && approval_id.nil?
+        fail ArgumentError, "Missing the required parameter 'approval_id' when calling SfvbApi.delete_sfvb_approval"
+      end
+      # resource path
+      local_var_path = '/sfvb/approvals/{approval_id}'.sub('{' + 'approval_id' + '}', CGI.escape(approval_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.delete_sfvb_approval",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_approval\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete a blog post
     # Takes the post off every page and deletes it.  There is no undo.  A post that is not a draft needs sfvb_publish. 
     # @param storefront_oid [Integer] 
     # @param blog_post_oid [Integer] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id The approval_id of an approved blog_post.delete request for this post.  See POST /sfvb/approvals.
     # @return [nil]
     def delete_sfvb_blog_post(storefront_oid, blog_post_oid, opts = {})
       delete_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid, opts)
@@ -794,6 +859,7 @@ module UltracartClient
     # @param storefront_oid [Integer] 
     # @param blog_post_oid [Integer] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id The approval_id of an approved blog_post.delete request for this post.  See POST /sfvb/approvals.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid, opts = {})
       if @api_client.config.debugging
@@ -818,6 +884,7 @@ module UltracartClient
       header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -854,6 +921,7 @@ module UltracartClient
     # @param if_match [String] Content hash of the file being deleted.  Required; 428 when absent, 412 when stale.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :path 
+    # @option opts [String] :approval_id The approval_id of an approved file.delete request for this exact path.  See POST /sfvb/approvals.
     # @return [nil]
     def delete_sfvb_file(storefront_oid, if_match, opts = {})
       delete_sfvb_file_with_http_info(storefront_oid, if_match, opts)
@@ -866,6 +934,7 @@ module UltracartClient
     # @param if_match [String] Content hash of the file being deleted.  Required; 428 when absent, 412 when stale.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :path 
+    # @option opts [String] :approval_id The approval_id of an approved file.delete request for this exact path.  See POST /sfvb/approvals.
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_sfvb_file_with_http_info(storefront_oid, if_match, opts = {})
       if @api_client.config.debugging
@@ -892,6 +961,7 @@ module UltracartClient
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       header_params[:'If-Match'] = if_match
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -2423,6 +2493,128 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#favorite_sfvb_library_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read one approval request
+    # Poll this every interval_seconds after requesting an approval.  status is pending until the person decides, then approved or denied, and expired if nobody acts in 10 minutes.  Once the gated call has used it, status is used and outcome says whether the call succeeded.  Used with no outcome means the result is unknown, so check the target - never repeat the call. 
+    # @param approval_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbApproval]
+    def get_sfvb_approval(approval_id, opts = {})
+      data, _status_code, _headers = get_sfvb_approval_with_http_info(approval_id, opts)
+      data
+    end
+
+    # Read one approval request
+    # Poll this every interval_seconds after requesting an approval.  status is pending until the person decides, then approved or denied, and expired if nobody acts in 10 minutes.  Once the gated call has used it, status is used and outcome says whether the call succeeded.  Used with no outcome means the result is unknown, so check the target - never repeat the call. 
+    # @param approval_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbApproval, Integer, Hash)>] SfvbApproval data, response status code and response headers
+    def get_sfvb_approval_with_http_info(approval_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_approval ...'
+      end
+      # verify the required parameter 'approval_id' is set
+      if @api_client.config.client_side_validation && approval_id.nil?
+        fail ArgumentError, "Missing the required parameter 'approval_id' when calling SfvbApi.get_sfvb_approval"
+      end
+      # resource path
+      local_var_path = '/sfvb/approvals/{approval_id}'.sub('{' + 'approval_id' + '}', CGI.escape(approval_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbApproval'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_approval",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_approval\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List this sign-in's approval requests
+    # Requests made with this sign-in in the last 24 hours, newest first, at most 50, with their status and outcome.  Use it to find a request whose id was lost, or to see what an earlier run did. 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbApprovalsResponse]
+    def get_sfvb_approvals(opts = {})
+      data, _status_code, _headers = get_sfvb_approvals_with_http_info(opts)
+      data
+    end
+
+    # List this sign-in&#39;s approval requests
+    # Requests made with this sign-in in the last 24 hours, newest first, at most 50, with their status and outcome.  Use it to find a request whose id was lost, or to see what an earlier run did. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbApprovalsResponse, Integer, Hash)>] SfvbApprovalsResponse data, response status code and response headers
+    def get_sfvb_approvals_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_approvals ...'
+      end
+      # resource path
+      local_var_path = '/sfvb/approvals'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbApprovalsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_approvals",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_approvals\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5653,6 +5845,78 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#import_sfvb_redirects\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Request a human approval
+    # Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow. 
+    # @param approval_request [SfvbApprovalCreateRequest] The request
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :storefront_oid The storefront the action runs on.  Required for storefront actions, left out for account-wide ones.
+    # @return [nil]
+    def insert_sfvb_approval(approval_request, opts = {})
+      insert_sfvb_approval_with_http_info(approval_request, opts)
+      nil
+    end
+
+    # Request a human approval
+    # Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow. 
+    # @param approval_request [SfvbApprovalCreateRequest] The request
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :storefront_oid The storefront the action runs on.  Required for storefront actions, left out for account-wide ones.
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def insert_sfvb_approval_with_http_info(approval_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.insert_sfvb_approval ...'
+      end
+      # verify the required parameter 'approval_request' is set
+      if @api_client.config.client_side_validation && approval_request.nil?
+        fail ArgumentError, "Missing the required parameter 'approval_request' when calling SfvbApi.insert_sfvb_approval"
+      end
+      # resource path
+      local_var_path = '/sfvb/approvals'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'storefront_oid'] = opts[:'storefront_oid'] if !opts[:'storefront_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(approval_request)
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.insert_sfvb_approval",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_approval\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

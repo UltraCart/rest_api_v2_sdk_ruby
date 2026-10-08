@@ -990,6 +990,10 @@ docs/ScreenRecordingUserProperty.md
 docs/ScreenshotsResponse.md
 docs/SelfConfig.md
 docs/SfvbApi.md
+docs/SfvbApproval.md
+docs/SfvbApprovalCreateRequest.md
+docs/SfvbApprovalParams.md
+docs/SfvbApprovalsResponse.md
 docs/SfvbBlogPost.md
 docs/SfvbBlogPostDetail.md
 docs/SfvbBlogPostImage.md
@@ -2274,6 +2278,10 @@ lib/ultracart_api/models/screen_recording_user_agent_os.rb
 lib/ultracart_api/models/screen_recording_user_property.rb
 lib/ultracart_api/models/screenshots_response.rb
 lib/ultracart_api/models/self_config.rb
+lib/ultracart_api/models/sfvb_approval.rb
+lib/ultracart_api/models/sfvb_approval_create_request.rb
+lib/ultracart_api/models/sfvb_approval_params.rb
+lib/ultracart_api/models/sfvb_approvals_response.rb
 lib/ultracart_api/models/sfvb_blog_post.rb
 lib/ultracart_api/models/sfvb_blog_post_detail.rb
 lib/ultracart_api/models/sfvb_blog_post_image.rb

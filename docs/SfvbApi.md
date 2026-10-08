@@ -14,6 +14,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**create_sfvb_library_entry**](SfvbApi.md#create_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library | Save a fragment to the library |
 | [**create_sfvb_preview_access**](SfvbApi.md#create_sfvb_preview_access) | **POST** /sfvb/storefronts/{storefront_oid}/preview_access | One time link that opens a preview in a browser with no UltraCart login |
 | [**create_sfvb_preview_session**](SfvbApi.md#create_sfvb_preview_session) | **POST** /sfvb/storefronts/{storefront_oid}/preview_sessions | Create a preview session |
+| [**delete_sfvb_approval**](SfvbApi.md#delete_sfvb_approval) | **DELETE** /sfvb/approvals/{approval_id} | Cancel a pending approval request |
 | [**delete_sfvb_blog_post**](SfvbApi.md#delete_sfvb_blog_post) | **DELETE** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Delete a blog post |
 | [**delete_sfvb_file**](SfvbApi.md#delete_sfvb_file) | **DELETE** /sfvb/storefronts/{storefront_oid}/files | Delete a storefront file |
 | [**delete_sfvb_item_attribute**](SfvbApi.md#delete_sfvb_item_attribute) | **DELETE** /sfvb/storefronts/{storefront_oid}/items/attributes | Delete an attribute from an item |
@@ -36,6 +37,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**enable_sfvb_i18n_language**](SfvbApi.md#enable_sfvb_i18n_language) | **POST** /sfvb/storefronts/{storefront_oid}/i18n/languages/{code}/enable | Enable a language |
 | [**end_sfvb_experiment**](SfvbApi.md#end_sfvb_experiment) | **POST** /sfvb/storefronts/{storefront_oid}/experiments/{experiment_oid}/end | End an experiment |
 | [**favorite_sfvb_library_entry**](SfvbApi.md#favorite_sfvb_library_entry) | **PUT** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/favorite | Favorite a library entry |
+| [**get_sfvb_approval**](SfvbApi.md#get_sfvb_approval) | **GET** /sfvb/approvals/{approval_id} | Read one approval request |
+| [**get_sfvb_approvals**](SfvbApi.md#get_sfvb_approvals) | **GET** /sfvb/approvals | List this sign-in&#39;s approval requests |
 | [**get_sfvb_blog_post**](SfvbApi.md#get_sfvb_blog_post) | **GET** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Read a blog post |
 | [**get_sfvb_cjson_used_elements**](SfvbApi.md#get_sfvb_cjson_used_elements) | **POST** /sfvb/cjson/elements | Element types used by a container |
 | [**get_sfvb_container**](SfvbApi.md#get_sfvb_container) | **GET** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id} | Read a container stored outside the file system |
@@ -82,6 +85,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_whoami**](SfvbApi.md#get_sfvb_whoami) | **GET** /sfvb/whoami | Who this token is |
 | [**ignore_sfvb_not_found_entry**](SfvbApi.md#ignore_sfvb_not_found_entry) | **POST** /sfvb/storefronts/{storefront_oid}/not_found/{not_found_id}/ignore | Ignore a 404 path |
 | [**import_sfvb_redirects**](SfvbApi.md#import_sfvb_redirects) | **POST** /sfvb/storefronts/{storefront_oid}/redirects/import | Apply a reviewed redirect import |
+| [**insert_sfvb_approval**](SfvbApi.md#insert_sfvb_approval) | **POST** /sfvb/approvals | Request a human approval |
 | [**insert_sfvb_blog_post**](SfvbApi.md#insert_sfvb_blog_post) | **POST** /sfvb/storefronts/{storefront_oid}/blog_posts | Create a blog post |
 | [**insert_sfvb_page**](SfvbApi.md#insert_sfvb_page) | **POST** /sfvb/storefronts/{storefront_oid}/pages | Create a page |
 | [**insert_sfvb_redirect**](SfvbApi.md#insert_sfvb_redirect) | **POST** /sfvb/storefronts/{storefront_oid}/redirects | Create a 301 redirect rule |
@@ -696,9 +700,62 @@ end
 - **Accept**: application/json
 
 
+## delete_sfvb_approval
+
+> delete_sfvb_approval(approval_id)
+
+Cancel a pending approval request
+
+Withdraws a request nobody has decided yet, which frees one of the five pending slots a sign-in has.  A request that was already decided, used or expired cannot be cancelled. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_sfvb_approval_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_sfvb_approval_with_http_info(approval_id)
+
+```ruby
+begin
+  # Cancel a pending approval request
+  data, status_code, headers = api_instance.delete_sfvb_approval_with_http_info(approval_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->delete_sfvb_approval_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **approval_id** | **String** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## delete_sfvb_blog_post
 
-> delete_sfvb_blog_post(storefront_oid, blog_post_oid)
+> delete_sfvb_blog_post(storefront_oid, blog_post_oid, opts)
 
 Delete a blog post
 
@@ -715,12 +772,12 @@ Takes the post off every page and deletes it.  There is no undo.  A post that is
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> delete_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid)
+> <Array(nil, Integer, Hash)> delete_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid, opts)
 
 ```ruby
 begin
   # Delete a blog post
-  data, status_code, headers = api_instance.delete_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid)
+  data, status_code, headers = api_instance.delete_sfvb_blog_post_with_http_info(storefront_oid, blog_post_oid, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -735,6 +792,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **storefront_oid** | **Integer** |  |  |
 | **blog_post_oid** | **Integer** |  |  |
+| **approval_id** | **String** | The approval_id of an approved blog_post.delete request for this post.  See POST /sfvb/approvals. | [optional] |
 
 ### Return type
 
@@ -790,6 +848,7 @@ end
 | **storefront_oid** | **Integer** |  |  |
 | **if_match** | **String** | Content hash of the file being deleted.  Required; 428 when absent, 412 when stale. |  |
 | **path** | **String** |  | [optional] |
+| **approval_id** | **String** | The approval_id of an approved file.delete request for this exact path.  See POST /sfvb/approvals. | [optional] |
 
 ### Return type
 
@@ -1891,6 +1950,110 @@ end
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_approval
+
+> <SfvbApproval> get_sfvb_approval(approval_id)
+
+Read one approval request
+
+Poll this every interval_seconds after requesting an approval.  status is pending until the person decides, then approved or denied, and expired if nobody acts in 10 minutes.  Once the gated call has used it, status is used and outcome says whether the call succeeded.  Used with no outcome means the result is unknown, so check the target - never repeat the call. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_approval_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbApproval>, Integer, Hash)> get_sfvb_approval_with_http_info(approval_id)
+
+```ruby
+begin
+  # Read one approval request
+  data, status_code, headers = api_instance.get_sfvb_approval_with_http_info(approval_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbApproval>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_approval_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **approval_id** | **String** |  |  |
+
+### Return type
+
+[**SfvbApproval**](SfvbApproval.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_approvals
+
+> <SfvbApprovalsResponse> get_sfvb_approvals
+
+List this sign-in's approval requests
+
+Requests made with this sign-in in the last 24 hours, newest first, at most 50, with their status and outcome.  Use it to find a request whose id was lost, or to see what an earlier run did. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_approvals_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbApprovalsResponse>, Integer, Hash)> get_sfvb_approvals_with_http_info
+
+```ruby
+begin
+  # List this sign-in's approval requests
+  data, status_code, headers = api_instance.get_sfvb_approvals_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbApprovalsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_approvals_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SfvbApprovalsResponse**](SfvbApprovalsResponse.md)
 
 ### Authorization
 
@@ -4388,6 +4551,60 @@ end
 ### Return type
 
 [**SfvbRedirectImportResponse**](SfvbRedirectImportResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## insert_sfvb_approval
+
+> insert_sfvb_approval(approval_request, opts)
+
+Request a human approval
+
+Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_sfvb_approval_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> insert_sfvb_approval_with_http_info(approval_request, opts)
+
+```ruby
+begin
+  # Request a human approval
+  data, status_code, headers = api_instance.insert_sfvb_approval_with_http_info(approval_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->insert_sfvb_approval_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **approval_request** | [**SfvbApprovalCreateRequest**](SfvbApprovalCreateRequest.md) | The request |  |
+| **storefront_oid** | **Integer** | The storefront the action runs on.  Required for storefront actions, left out for account-wide ones. | [optional] |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
