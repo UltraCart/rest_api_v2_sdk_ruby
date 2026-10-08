@@ -56,10 +56,12 @@ module UltracartClient
     # The reason the agent sent, as stored and shown (cleaned and capped).
     attr_accessor :reason
 
+    attr_accessor :review
+
     # Where the action applies.  The storefront host name, or account for account-wide actions.
     attr_accessor :scope
 
-    # pending, approved, denied, cancelled, expired or used.  Only approved may be sent with the gated call.
+    # reviewing, pending, approved, denied, cancelled, expired, used or refused.  Only approved may be sent with the gated call.  A script write starts as reviewing while UltraCart reviews it; keep polling, and show approval_url only once it is pending.  refused means the review refused the script; outcome_code and review say why.
     attr_accessor :status
 
     # The storefront the action runs on.  Absent for account-wide actions.
@@ -110,6 +112,7 @@ module UltracartClient
         :'outcome_http_status' => :'outcome_http_status',
         :'params' => :'params',
         :'reason' => :'reason',
+        :'review' => :'review',
         :'scope' => :'scope',
         :'status' => :'status',
         :'storefront_oid' => :'storefront_oid',
@@ -140,6 +143,7 @@ module UltracartClient
         :'outcome_http_status' => :'Integer',
         :'params' => :'SfvbApprovalParams',
         :'reason' => :'String',
+        :'review' => :'SfvbApprovalReview',
         :'scope' => :'String',
         :'status' => :'String',
         :'storefront_oid' => :'Integer',
@@ -225,6 +229,10 @@ module UltracartClient
         self.reason = attributes[:'reason']
       end
 
+      if attributes.key?(:'review')
+        self.review = attributes[:'review']
+      end
+
       if attributes.key?(:'scope')
         self.scope = attributes[:'scope']
       end
@@ -258,7 +266,7 @@ module UltracartClient
     def valid?
       outcome_validator = EnumAttributeValidator.new('String', ["succeeded", "failed"])
       return false unless outcome_validator.valid?(@outcome)
-      status_validator = EnumAttributeValidator.new('String', ["pending", "approved", "denied", "cancelled", "expired", "used"])
+      status_validator = EnumAttributeValidator.new('String', ["reviewing", "pending", "approved", "denied", "cancelled", "expired", "used", "refused"])
       return false unless status_validator.valid?(@status)
       true
     end
@@ -276,7 +284,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      validator = EnumAttributeValidator.new('String', ["pending", "approved", "denied", "cancelled", "expired", "used"])
+      validator = EnumAttributeValidator.new('String', ["reviewing", "pending", "approved", "denied", "cancelled", "expired", "used", "refused"])
       unless validator.valid?(status)
         fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
       end
@@ -302,6 +310,7 @@ module UltracartClient
           outcome_http_status == o.outcome_http_status &&
           params == o.params &&
           reason == o.reason &&
+          review == o.review &&
           scope == o.scope &&
           status == o.status &&
           storefront_oid == o.storefront_oid &&
@@ -318,7 +327,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, approval_id, approval_url, created_at, description, expires_at, expires_in_seconds, fresh_code_required, interval_seconds, outcome, outcome_code, outcome_http_status, params, reason, scope, status, storefront_oid, used_at, user_code].hash
+      [action, approval_id, approval_url, created_at, description, expires_at, expires_in_seconds, fresh_code_required, interval_seconds, outcome, outcome_code, outcome_http_status, params, reason, review, scope, status, storefront_oid, used_at, user_code].hash
     end
 
     # Builds the object from hash

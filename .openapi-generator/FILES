@@ -993,6 +993,8 @@ docs/SfvbApi.md
 docs/SfvbApproval.md
 docs/SfvbApprovalCreateRequest.md
 docs/SfvbApprovalParams.md
+docs/SfvbApprovalReview.md
+docs/SfvbApprovalReviewFinding.md
 docs/SfvbApprovalsResponse.md
 docs/SfvbBlogPost.md
 docs/SfvbBlogPostDetail.md
@@ -1127,6 +1129,10 @@ docs/SfvbRecordingSettingsRequest.md
 docs/SfvbRecordingSettingsResponse.md
 docs/SfvbRedirect.md
 docs/SfvbRedirectCheckResponse.md
+docs/SfvbRedirectDeleteRequest.md
+docs/SfvbRedirectDeleteResponse.md
+docs/SfvbRedirectDeleteRow.md
+docs/SfvbRedirectDeleteRowResult.md
 docs/SfvbRedirectImportRequest.md
 docs/SfvbRedirectImportResponse.md
 docs/SfvbRedirectImportRow.md
@@ -2281,6 +2287,8 @@ lib/ultracart_api/models/self_config.rb
 lib/ultracart_api/models/sfvb_approval.rb
 lib/ultracart_api/models/sfvb_approval_create_request.rb
 lib/ultracart_api/models/sfvb_approval_params.rb
+lib/ultracart_api/models/sfvb_approval_review.rb
+lib/ultracart_api/models/sfvb_approval_review_finding.rb
 lib/ultracart_api/models/sfvb_approvals_response.rb
 lib/ultracart_api/models/sfvb_blog_post.rb
 lib/ultracart_api/models/sfvb_blog_post_detail.rb
@@ -2415,6 +2423,10 @@ lib/ultracart_api/models/sfvb_recording_settings_request.rb
 lib/ultracart_api/models/sfvb_recording_settings_response.rb
 lib/ultracart_api/models/sfvb_redirect.rb
 lib/ultracart_api/models/sfvb_redirect_check_response.rb
+lib/ultracart_api/models/sfvb_redirect_delete_request.rb
+lib/ultracart_api/models/sfvb_redirect_delete_response.rb
+lib/ultracart_api/models/sfvb_redirect_delete_row.rb
+lib/ultracart_api/models/sfvb_redirect_delete_row_result.rb
 lib/ultracart_api/models/sfvb_redirect_import_request.rb
 lib/ultracart_api/models/sfvb_redirect_import_response.rb
 lib/ultracart_api/models/sfvb_redirect_import_row.rb

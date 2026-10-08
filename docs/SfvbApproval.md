@@ -18,8 +18,9 @@
 | **outcome_http_status** | **Integer** | The HTTP status the gated call answered with. | [optional] |
 | **params** | [**SfvbApprovalParams**](SfvbApprovalParams.md) |  | [optional] |
 | **reason** | **String** | The reason the agent sent, as stored and shown (cleaned and capped). | [optional] |
+| **review** | [**SfvbApprovalReview**](SfvbApprovalReview.md) |  | [optional] |
 | **scope** | **String** | Where the action applies.  The storefront host name, or account for account-wide actions. | [optional] |
-| **status** | **String** | pending, approved, denied, cancelled, expired or used.  Only approved may be sent with the gated call. | [optional] |
+| **status** | **String** | reviewing, pending, approved, denied, cancelled, expired, used or refused.  Only approved may be sent with the gated call.  A script write starts as reviewing while UltraCart reviews it; keep polling, and show approval_url only once it is pending.  refused means the review refused the script; outcome_code and review say why. | [optional] |
 | **storefront_oid** | **Integer** | The storefront the action runs on.  Absent for account-wide actions. | [optional] |
 | **used_at** | **String** | When the gated call used this approval, ISO 8601 UTC. | [optional] |
 | **user_code** | **String** | Short matching code.  Print it next to approval_url so the person can check the page shows the same code. | [optional] |
@@ -44,6 +45,7 @@ instance = UltracartClient::SfvbApproval.new(
   outcome_http_status: null,
   params: null,
   reason: null,
+  review: null,
   scope: null,
   status: null,
   storefront_oid: null,

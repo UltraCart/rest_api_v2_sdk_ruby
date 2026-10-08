@@ -23,11 +23,13 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**delete_sfvb_page_multimedia**](SfvbApi.md#delete_sfvb_page_multimedia) | **DELETE** /sfvb/storefronts/{storefront_oid}/pages/multimedia | Detach an image from a page |
 | [**delete_sfvb_preview_session**](SfvbApi.md#delete_sfvb_preview_session) | **DELETE** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id} | Delete a preview session |
 | [**delete_sfvb_redirect**](SfvbApi.md#delete_sfvb_redirect) | **DELETE** /sfvb/storefronts/{storefront_oid}/redirects/{redirect_id} | Delete a redirect rule |
+| [**delete_sfvb_redirects**](SfvbApi.md#delete_sfvb_redirects) | **POST** /sfvb/storefronts/{storefront_oid}/redirects/delete | Delete up to 5,000 redirect rules in one call |
 | [**detach_sfvb_blog_post_image**](SfvbApi.md#detach_sfvb_blog_post_image) | **POST** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid}/images/detach | Detach an image from a blog post |
 | [**disable_sfvb_i18n_language**](SfvbApi.md#disable_sfvb_i18n_language) | **POST** /sfvb/storefronts/{storefront_oid}/i18n/languages/{code}/disable | Disable a language |
 | [**disable_sfvb_upsell_offer**](SfvbApi.md#disable_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/disable | Disable an upsell offer |
 | [**disable_sfvb_upsell_path**](SfvbApi.md#disable_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/disable | Disable an upsell path |
 | [**download_sfvb_file**](SfvbApi.md#download_sfvb_file) | **GET** /sfvb/storefronts/{storefront_oid}/files/download | Read a storefront file&#39;s raw bytes |
+| [**dry_run_sfvb_redirect_delete**](SfvbApi.md#dry_run_sfvb_redirect_delete) | **POST** /sfvb/storefronts/{storefront_oid}/redirects/delete/dry_run | Check a batch delete of redirect rules without writing it |
 | [**dry_run_sfvb_redirect_import**](SfvbApi.md#dry_run_sfvb_redirect_import) | **POST** /sfvb/storefronts/{storefront_oid}/redirects/import/dry_run | Check a redirect import without writing it |
 | [**duplicate_sfvb_library_entry**](SfvbApi.md#duplicate_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/duplicate | Copy a library entry into a new private entry |
 | [**duplicate_sfvb_page**](SfvbApi.md#duplicate_sfvb_page) | **POST** /sfvb/storefronts/{storefront_oid}/pages/duplicate | Copy a page to a new path |
@@ -1197,6 +1199,61 @@ nil (empty response body)
 - **Accept**: application/json
 
 
+## delete_sfvb_redirects
+
+> <SfvbRedirectDeleteResponse> delete_sfvb_redirects(storefront_oid, redirect_delete_request, opts)
+
+Delete up to 5,000 redirect rules in one call
+
+Deletes exactly the rows of a dry run, given its plan_hash, in one transaction.  Every row needs its hash_sha256.  A rule changed since its hash was read is skipped and reported as stale, and a missing one as not_found; the other rows still go through.  Needs the approval of the person who signed in the CLI, as an approved redirect.delete_batch request for exactly these rows in the Approval-Id header, and sfvb_publish.  Deleting rules lets add and import work again once the storefront is back under 5,000 rules. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_sfvb_redirects_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbRedirectDeleteResponse>, Integer, Hash)> delete_sfvb_redirects_with_http_info(storefront_oid, redirect_delete_request, opts)
+
+```ruby
+begin
+  # Delete up to 5,000 redirect rules in one call
+  data, status_code, headers = api_instance.delete_sfvb_redirects_with_http_info(storefront_oid, redirect_delete_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbRedirectDeleteResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->delete_sfvb_redirects_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **redirect_delete_request** | [**SfvbRedirectDeleteRequest**](SfvbRedirectDeleteRequest.md) | The request |  |
+| **approval_id** | **String** | The approval_id of an approved redirect.delete_batch request for exactly these rows.  Required.  See POST /sfvb/approvals. | [optional] |
+
+### Return type
+
+[**SfvbRedirectDeleteResponse**](SfvbRedirectDeleteResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
 ## detach_sfvb_blog_post_image
 
 > <SfvbBlogPostDetail> detach_sfvb_blog_post_image(storefront_oid, blog_post_oid, blog_post_image_request)
@@ -1467,6 +1524,60 @@ nil (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: application/octet-stream
+
+
+## dry_run_sfvb_redirect_delete
+
+> <SfvbRedirectDeleteResponse> dry_run_sfvb_redirect_delete(storefront_oid, redirect_delete_request)
+
+Check a batch delete of redirect rules without writing it
+
+Checks up to 5,000 rules by redirect_id and returns each one as deletable, stale (its hash_sha256 differs from the one sent) or not_found, with its current hash, source, target, status, type and note, and a plan_hash.  Writes nothing.  Rows may leave out hash_sha256; the result carries the current one to send when deleting. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the dry_run_sfvb_redirect_delete_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbRedirectDeleteResponse>, Integer, Hash)> dry_run_sfvb_redirect_delete_with_http_info(storefront_oid, redirect_delete_request)
+
+```ruby
+begin
+  # Check a batch delete of redirect rules without writing it
+  data, status_code, headers = api_instance.dry_run_sfvb_redirect_delete_with_http_info(storefront_oid, redirect_delete_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbRedirectDeleteResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->dry_run_sfvb_redirect_delete_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **redirect_delete_request** | [**SfvbRedirectDeleteRequest**](SfvbRedirectDeleteRequest.md) | The request |  |
+
+### Return type
+
+[**SfvbRedirectDeleteResponse**](SfvbRedirectDeleteResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
 
 
 ## dry_run_sfvb_redirect_import
@@ -4568,7 +4679,7 @@ end
 
 Request a human approval
 
-Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow. 
+Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow.  For file.put_script send the script as content, or params.version for a revert.  The request starts as reviewing while UltraCart's scanner and two AI models read it, then becomes pending with the review attached, or refused.  Keep polling, and show approval_url only once it is pending.  Only the hash is kept, so the write must send the same bytes. 
 
 
 ### Examples
@@ -6093,6 +6204,7 @@ end
 | **if_match** | **String** | Content hash from the last read.  Required; 428 when absent, 412 when stale. |  |
 | **file_write_request** | [**SfvbFileWriteRequest**](SfvbFileWriteRequest.md) | File content to write |  |
 | **path** | **String** |  | [optional] |
+| **approval_id** | **String** | For a .js or .mjs file, the approval_id of an approved file.put_script request for exactly these bytes.  Required for scripts.  See POST /sfvb/approvals. | [optional] |
 
 ### Return type
 
@@ -7437,7 +7549,7 @@ end
 
 ## revert_sfvb_file
 
-> <SfvbFileWriteResponse> revert_sfvb_file(storefront_oid, if_match, file_revert_request)
+> <SfvbFileWriteResponse> revert_sfvb_file(storefront_oid, if_match, file_revert_request, opts)
 
 Revert a storefront file to an earlier version
 
@@ -7454,12 +7566,12 @@ The revert lands as a new version, so it is itself undoable.
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SfvbFileWriteResponse>, Integer, Hash)> revert_sfvb_file_with_http_info(storefront_oid, if_match, file_revert_request)
+> <Array(<SfvbFileWriteResponse>, Integer, Hash)> revert_sfvb_file_with_http_info(storefront_oid, if_match, file_revert_request, opts)
 
 ```ruby
 begin
   # Revert a storefront file to an earlier version
-  data, status_code, headers = api_instance.revert_sfvb_file_with_http_info(storefront_oid, if_match, file_revert_request)
+  data, status_code, headers = api_instance.revert_sfvb_file_with_http_info(storefront_oid, if_match, file_revert_request, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <SfvbFileWriteResponse>
@@ -7475,6 +7587,7 @@ end
 | **storefront_oid** | **Integer** |  |  |
 | **if_match** | **String** | Content hash of the file being reverted.  Required; 428 when absent, 412 when stale. |  |
 | **file_revert_request** | [**SfvbFileRevertRequest**](SfvbFileRevertRequest.md) | Version to revert the file to |  |
+| **approval_id** | **String** | For a .js or .mjs file, the approval_id of an approved file.put_script request naming this version.  Required for scripts.  See POST /sfvb/approvals. | [optional] |
 
 ### Return type
 

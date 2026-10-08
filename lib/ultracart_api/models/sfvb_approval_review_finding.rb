@@ -14,51 +14,26 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbApprovalCreateRequest
-    # The gated action to approve.
-    attr_accessor :action
+  class SfvbApprovalReviewFinding
+    # What kind of problem, such as data_exfiltration or third_party_tracking.
+    attr_accessor :category
 
-    # For a file.put_script write, the exact script to be written, at most 256 KB.  UltraCart reviews it and keeps only its hash, so send the same bytes again on the write.  Leave it out for a revert, which names params.version.
-    attr_accessor :content
+    # True when this alone would justify refusing the script.
+    attr_accessor :clear_violation
 
-    attr_accessor :params
+    # The code quoted from the script, at most 500 characters.
+    attr_accessor :evidence
 
-    # Why the agent wants to do this, in a sentence.  Shown to the person as unverified text, capped at 500 characters.
-    attr_accessor :reason
-
-    # For redirect.delete_batch, exactly the rows the batch delete will send, up to 5,000, each with its hash_sha256.  UltraCart keeps only their hash.
-    attr_accessor :redirect_rows
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    # The line of the script the evidence is on, when the reviewer named one.
+    attr_accessor :line
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'action' => :'action',
-        :'content' => :'content',
-        :'params' => :'params',
-        :'reason' => :'reason',
-        :'redirect_rows' => :'redirect_rows'
+        :'category' => :'category',
+        :'clear_violation' => :'clear_violation',
+        :'evidence' => :'evidence',
+        :'line' => :'line'
       }
     end
 
@@ -70,11 +45,10 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'action' => :'String',
-        :'content' => :'String',
-        :'params' => :'SfvbApprovalParams',
-        :'reason' => :'String',
-        :'redirect_rows' => :'Array<SfvbRedirectDeleteRow>'
+        :'category' => :'String',
+        :'clear_violation' => :'Boolean',
+        :'evidence' => :'String',
+        :'line' => :'Integer'
       }
     end
 
@@ -88,37 +62,31 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbApprovalCreateRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbApprovalReviewFinding` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbApprovalCreateRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbApprovalReviewFinding`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'action')
-        self.action = attributes[:'action']
+      if attributes.key?(:'category')
+        self.category = attributes[:'category']
       end
 
-      if attributes.key?(:'content')
-        self.content = attributes[:'content']
+      if attributes.key?(:'clear_violation')
+        self.clear_violation = attributes[:'clear_violation']
       end
 
-      if attributes.key?(:'params')
-        self.params = attributes[:'params']
+      if attributes.key?(:'evidence')
+        self.evidence = attributes[:'evidence']
       end
 
-      if attributes.key?(:'reason')
-        self.reason = attributes[:'reason']
-      end
-
-      if attributes.key?(:'redirect_rows')
-        if (value = attributes[:'redirect_rows']).is_a?(Array)
-          self.redirect_rows = value
-        end
+      if attributes.key?(:'line')
+        self.line = attributes[:'line']
       end
     end
 
@@ -132,19 +100,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      action_validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch"])
-      return false unless action_validator.valid?(@action)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] action Object to be assigned
-    def action=(action)
-      validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch"])
-      unless validator.valid?(action)
-        fail ArgumentError, "invalid value for \"action\", must be one of #{validator.allowable_values}."
-      end
-      @action = action
     end
 
     # Checks equality by comparing each attribute.
@@ -152,11 +108,10 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          action == o.action &&
-          content == o.content &&
-          params == o.params &&
-          reason == o.reason &&
-          redirect_rows == o.redirect_rows
+          category == o.category &&
+          clear_violation == o.clear_violation &&
+          evidence == o.evidence &&
+          line == o.line
     end
 
     # @see the `==` method
@@ -168,7 +123,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, content, params, reason, redirect_rows].hash
+      [category, clear_violation, evidence, line].hash
     end
 
     # Builds the object from hash

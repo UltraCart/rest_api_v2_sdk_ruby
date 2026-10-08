@@ -18,14 +18,30 @@ module UltracartClient
     # The blog post, for blog_post.delete.
     attr_accessor :blog_post_oid
 
-    # The file path, for file.delete.  Exactly as the delete call will send it.
+    # For file.put_script, the SHA-256 of the exact bytes approved.  Set by the server, never by the caller.  The write must send bytes with this hash.
+    attr_accessor :content_sha256
+
+    # The file path, for file.delete and file.put_script.  Exactly as the gated call will send it.
     attr_accessor :path
+
+    # For redirect.delete_batch, the plan_hash of the exact rows approved.  Set by the server.  The batch delete must send rows with this hash.
+    attr_accessor :rows_sha256
+
+    # For redirect.delete_batch, how many rules the batch would delete when it was requested.  Set by the server.
+    attr_accessor :rule_count
+
+    # For file.put_script, the history version a revert restores.  Leave it out, and send content instead, for a write.
+    attr_accessor :version
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'blog_post_oid' => :'blog_post_oid',
-        :'path' => :'path'
+        :'content_sha256' => :'content_sha256',
+        :'path' => :'path',
+        :'rows_sha256' => :'rows_sha256',
+        :'rule_count' => :'rule_count',
+        :'version' => :'version'
       }
     end
 
@@ -38,7 +54,11 @@ module UltracartClient
     def self.openapi_types
       {
         :'blog_post_oid' => :'Integer',
-        :'path' => :'String'
+        :'content_sha256' => :'String',
+        :'path' => :'String',
+        :'rows_sha256' => :'String',
+        :'rule_count' => :'Integer',
+        :'version' => :'Integer'
       }
     end
 
@@ -67,8 +87,24 @@ module UltracartClient
         self.blog_post_oid = attributes[:'blog_post_oid']
       end
 
+      if attributes.key?(:'content_sha256')
+        self.content_sha256 = attributes[:'content_sha256']
+      end
+
       if attributes.key?(:'path')
         self.path = attributes[:'path']
+      end
+
+      if attributes.key?(:'rows_sha256')
+        self.rows_sha256 = attributes[:'rows_sha256']
+      end
+
+      if attributes.key?(:'rule_count')
+        self.rule_count = attributes[:'rule_count']
+      end
+
+      if attributes.key?(:'version')
+        self.version = attributes[:'version']
       end
     end
 
@@ -91,7 +127,11 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           blog_post_oid == o.blog_post_oid &&
-          path == o.path
+          content_sha256 == o.content_sha256 &&
+          path == o.path &&
+          rows_sha256 == o.rows_sha256 &&
+          rule_count == o.rule_count &&
+          version == o.version
     end
 
     # @see the `==` method
@@ -103,7 +143,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [blog_post_oid, path].hash
+      [blog_post_oid, content_sha256, path, rows_sha256, rule_count, version].hash
     end
 
     # Builds the object from hash

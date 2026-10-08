@@ -1446,6 +1446,84 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Delete up to 5,000 redirect rules in one call
+    # Deletes exactly the rows of a dry run, given its plan_hash, in one transaction.  Every row needs its hash_sha256.  A rule changed since its hash was read is skipped and reported as stale, and a missing one as not_found; the other rows still go through.  Needs the approval of the person who signed in the CLI, as an approved redirect.delete_batch request for exactly these rows in the Approval-Id header, and sfvb_publish.  Deleting rules lets add and import work again once the storefront is back under 5,000 rules. 
+    # @param storefront_oid [Integer] 
+    # @param redirect_delete_request [SfvbRedirectDeleteRequest] The request
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id The approval_id of an approved redirect.delete_batch request for exactly these rows.  Required.  See POST /sfvb/approvals.
+    # @return [SfvbRedirectDeleteResponse]
+    def delete_sfvb_redirects(storefront_oid, redirect_delete_request, opts = {})
+      data, _status_code, _headers = delete_sfvb_redirects_with_http_info(storefront_oid, redirect_delete_request, opts)
+      data
+    end
+
+    # Delete up to 5,000 redirect rules in one call
+    # Deletes exactly the rows of a dry run, given its plan_hash, in one transaction.  Every row needs its hash_sha256.  A rule changed since its hash was read is skipped and reported as stale, and a missing one as not_found; the other rows still go through.  Needs the approval of the person who signed in the CLI, as an approved redirect.delete_batch request for exactly these rows in the Approval-Id header, and sfvb_publish.  Deleting rules lets add and import work again once the storefront is back under 5,000 rules. 
+    # @param storefront_oid [Integer] 
+    # @param redirect_delete_request [SfvbRedirectDeleteRequest] The request
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id The approval_id of an approved redirect.delete_batch request for exactly these rows.  Required.  See POST /sfvb/approvals.
+    # @return [Array<(SfvbRedirectDeleteResponse, Integer, Hash)>] SfvbRedirectDeleteResponse data, response status code and response headers
+    def delete_sfvb_redirects_with_http_info(storefront_oid, redirect_delete_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.delete_sfvb_redirects ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.delete_sfvb_redirects"
+      end
+      # verify the required parameter 'redirect_delete_request' is set
+      if @api_client.config.client_side_validation && redirect_delete_request.nil?
+        fail ArgumentError, "Missing the required parameter 'redirect_delete_request' when calling SfvbApi.delete_sfvb_redirects"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/redirects/delete'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(redirect_delete_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbRedirectDeleteResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.delete_sfvb_redirects",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_redirects\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Detach an image from a blog post
     # Name exactly one of default_image, code or blog_post_multimedia_oid.  Removes the image from the post and deletes its stored copy.  Take it out of the body too, or the body keeps a broken image.  A post that is not a draft needs sfvb_publish. 
     # @param storefront_oid [Integer] 
@@ -1807,6 +1885,81 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#download_sfvb_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Check a batch delete of redirect rules without writing it
+    # Checks up to 5,000 rules by redirect_id and returns each one as deletable, stale (its hash_sha256 differs from the one sent) or not_found, with its current hash, source, target, status, type and note, and a plan_hash.  Writes nothing.  Rows may leave out hash_sha256; the result carries the current one to send when deleting. 
+    # @param storefront_oid [Integer] 
+    # @param redirect_delete_request [SfvbRedirectDeleteRequest] The request
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbRedirectDeleteResponse]
+    def dry_run_sfvb_redirect_delete(storefront_oid, redirect_delete_request, opts = {})
+      data, _status_code, _headers = dry_run_sfvb_redirect_delete_with_http_info(storefront_oid, redirect_delete_request, opts)
+      data
+    end
+
+    # Check a batch delete of redirect rules without writing it
+    # Checks up to 5,000 rules by redirect_id and returns each one as deletable, stale (its hash_sha256 differs from the one sent) or not_found, with its current hash, source, target, status, type and note, and a plan_hash.  Writes nothing.  Rows may leave out hash_sha256; the result carries the current one to send when deleting. 
+    # @param storefront_oid [Integer] 
+    # @param redirect_delete_request [SfvbRedirectDeleteRequest] The request
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbRedirectDeleteResponse, Integer, Hash)>] SfvbRedirectDeleteResponse data, response status code and response headers
+    def dry_run_sfvb_redirect_delete_with_http_info(storefront_oid, redirect_delete_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.dry_run_sfvb_redirect_delete ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.dry_run_sfvb_redirect_delete"
+      end
+      # verify the required parameter 'redirect_delete_request' is set
+      if @api_client.config.client_side_validation && redirect_delete_request.nil?
+        fail ArgumentError, "Missing the required parameter 'redirect_delete_request' when calling SfvbApi.dry_run_sfvb_redirect_delete"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/redirects/delete/dry_run'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(redirect_delete_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbRedirectDeleteResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.dry_run_sfvb_redirect_delete",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#dry_run_sfvb_redirect_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5850,7 +6003,7 @@ module UltracartClient
     end
 
     # Request a human approval
-    # Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow. 
+    # Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow.  For file.put_script send the script as content, or params.version for a revert.  The request starts as reviewing while UltraCart's scanner and two AI models read it, then becomes pending with the review attached, or refused.  Keep polling, and show approval_url only once it is pending.  Only the hash is kept, so the write must send the same bytes. 
     # @param approval_request [SfvbApprovalCreateRequest] The request
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :storefront_oid The storefront the action runs on.  Required for storefront actions, left out for account-wide ones.
@@ -5861,7 +6014,7 @@ module UltracartClient
     end
 
     # Request a human approval
-    # Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow. 
+    # Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow.  For file.put_script send the script as content, or params.version for a revert.  The request starts as reviewing while UltraCart&#39;s scanner and two AI models read it, then becomes pending with the review attached, or refused.  Keep polling, and show approval_url only once it is pending.  Only the hash is kept, so the write must send the same bytes. 
     # @param approval_request [SfvbApprovalCreateRequest] The request
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :storefront_oid The storefront the action runs on.  Required for storefront actions, left out for account-wide ones.
@@ -7875,6 +8028,7 @@ module UltracartClient
     # @param file_write_request [SfvbFileWriteRequest] File content to write
     # @param [Hash] opts the optional parameters
     # @option opts [String] :path 
+    # @option opts [String] :approval_id For a .js or .mjs file, the approval_id of an approved file.put_script request for exactly these bytes.  Required for scripts.  See POST /sfvb/approvals.
     # @return [SfvbFileWriteResponse]
     def put_sfvb_file_content(storefront_oid, if_match, file_write_request, opts = {})
       data, _status_code, _headers = put_sfvb_file_content_with_http_info(storefront_oid, if_match, file_write_request, opts)
@@ -7888,6 +8042,7 @@ module UltracartClient
     # @param file_write_request [SfvbFileWriteRequest] File content to write
     # @param [Hash] opts the optional parameters
     # @option opts [String] :path 
+    # @option opts [String] :approval_id For a .js or .mjs file, the approval_id of an approved file.put_script request for exactly these bytes.  Required for scripts.  See POST /sfvb/approvals.
     # @return [Array<(SfvbFileWriteResponse, Integer, Hash)>] SfvbFileWriteResponse data, response status code and response headers
     def put_sfvb_file_content_with_http_info(storefront_oid, if_match, file_write_request, opts = {})
       if @api_client.config.debugging
@@ -7923,6 +8078,7 @@ module UltracartClient
           header_params['Content-Type'] = content_type
       end
       header_params[:'If-Match'] = if_match
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -9884,6 +10040,7 @@ module UltracartClient
     # @param if_match [String] Content hash of the file being reverted.  Required; 428 when absent, 412 when stale.
     # @param file_revert_request [SfvbFileRevertRequest] Version to revert the file to
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id For a .js or .mjs file, the approval_id of an approved file.put_script request naming this version.  Required for scripts.  See POST /sfvb/approvals.
     # @return [SfvbFileWriteResponse]
     def revert_sfvb_file(storefront_oid, if_match, file_revert_request, opts = {})
       data, _status_code, _headers = revert_sfvb_file_with_http_info(storefront_oid, if_match, file_revert_request, opts)
@@ -9896,6 +10053,7 @@ module UltracartClient
     # @param if_match [String] Content hash of the file being reverted.  Required; 428 when absent, 412 when stale.
     # @param file_revert_request [SfvbFileRevertRequest] Version to revert the file to
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id For a .js or .mjs file, the approval_id of an approved file.put_script request naming this version.  Required for scripts.  See POST /sfvb/approvals.
     # @return [Array<(SfvbFileWriteResponse, Integer, Hash)>] SfvbFileWriteResponse data, response status code and response headers
     def revert_sfvb_file_with_http_info(storefront_oid, if_match, file_revert_request, opts = {})
       if @api_client.config.debugging
@@ -9930,6 +10088,7 @@ module UltracartClient
           header_params['Content-Type'] = content_type
       end
       header_params[:'If-Match'] = if_match
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}

@@ -14,20 +14,30 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbApprovalCreateRequest
-    # The gated action to approve.
-    attr_accessor :action
+  class SfvbRedirectDeleteRowResult
+    # The rule's current hash.  Absent when not_found.
+    attr_accessor :hash_sha256
 
-    # For a file.put_script write, the exact script to be written, at most 256 KB.  UltraCart reviews it and keeps only its hash, so send the same bytes again on the write.  Leave it out for a revert, which names params.version.
-    attr_accessor :content
+    # The rule's note.
+    attr_accessor :note
 
-    attr_accessor :params
+    # The rule.
+    attr_accessor :redirect_id
 
-    # Why the agent wants to do this, in a sentence.  Shown to the person as unverified text, capped at 500 characters.
-    attr_accessor :reason
+    # deletable, stale (the rule changed since its hash was read), not_found, or deleted after an apply.
+    attr_accessor :result
 
-    # For redirect.delete_batch, exactly the rows the batch delete will send, up to 5,000, each with its hash_sha256.  UltraCart keeps only their hash.
-    attr_accessor :redirect_rows
+    # The rule's source, for a backup.
+    attr_accessor :source
+
+    # The rule's status (301, 302 or rewrite).
+    attr_accessor :status
+
+    # The rule's target, for a backup.
+    attr_accessor :target
+
+    # exact or pattern.
+    attr_accessor :type
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -54,11 +64,14 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'action' => :'action',
-        :'content' => :'content',
-        :'params' => :'params',
-        :'reason' => :'reason',
-        :'redirect_rows' => :'redirect_rows'
+        :'hash_sha256' => :'hash_sha256',
+        :'note' => :'note',
+        :'redirect_id' => :'redirect_id',
+        :'result' => :'result',
+        :'source' => :'source',
+        :'status' => :'status',
+        :'target' => :'target',
+        :'type' => :'type'
       }
     end
 
@@ -70,11 +83,14 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'action' => :'String',
-        :'content' => :'String',
-        :'params' => :'SfvbApprovalParams',
-        :'reason' => :'String',
-        :'redirect_rows' => :'Array<SfvbRedirectDeleteRow>'
+        :'hash_sha256' => :'String',
+        :'note' => :'String',
+        :'redirect_id' => :'Integer',
+        :'result' => :'String',
+        :'source' => :'String',
+        :'status' => :'String',
+        :'target' => :'String',
+        :'type' => :'String'
       }
     end
 
@@ -88,37 +104,47 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbApprovalCreateRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbRedirectDeleteRowResult` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbApprovalCreateRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbRedirectDeleteRowResult`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'action')
-        self.action = attributes[:'action']
+      if attributes.key?(:'hash_sha256')
+        self.hash_sha256 = attributes[:'hash_sha256']
       end
 
-      if attributes.key?(:'content')
-        self.content = attributes[:'content']
+      if attributes.key?(:'note')
+        self.note = attributes[:'note']
       end
 
-      if attributes.key?(:'params')
-        self.params = attributes[:'params']
+      if attributes.key?(:'redirect_id')
+        self.redirect_id = attributes[:'redirect_id']
       end
 
-      if attributes.key?(:'reason')
-        self.reason = attributes[:'reason']
+      if attributes.key?(:'result')
+        self.result = attributes[:'result']
       end
 
-      if attributes.key?(:'redirect_rows')
-        if (value = attributes[:'redirect_rows']).is_a?(Array)
-          self.redirect_rows = value
-        end
+      if attributes.key?(:'source')
+        self.source = attributes[:'source']
+      end
+
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
+      end
+
+      if attributes.key?(:'target')
+        self.target = attributes[:'target']
+      end
+
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
       end
     end
 
@@ -132,19 +158,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      action_validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch"])
-      return false unless action_validator.valid?(@action)
+      result_validator = EnumAttributeValidator.new('String', ["deletable", "stale", "not_found", "deleted"])
+      return false unless result_validator.valid?(@result)
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] action Object to be assigned
-    def action=(action)
-      validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch"])
-      unless validator.valid?(action)
-        fail ArgumentError, "invalid value for \"action\", must be one of #{validator.allowable_values}."
+    # @param [Object] result Object to be assigned
+    def result=(result)
+      validator = EnumAttributeValidator.new('String', ["deletable", "stale", "not_found", "deleted"])
+      unless validator.valid?(result)
+        fail ArgumentError, "invalid value for \"result\", must be one of #{validator.allowable_values}."
       end
-      @action = action
+      @result = result
     end
 
     # Checks equality by comparing each attribute.
@@ -152,11 +178,14 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          action == o.action &&
-          content == o.content &&
-          params == o.params &&
-          reason == o.reason &&
-          redirect_rows == o.redirect_rows
+          hash_sha256 == o.hash_sha256 &&
+          note == o.note &&
+          redirect_id == o.redirect_id &&
+          result == o.result &&
+          source == o.source &&
+          status == o.status &&
+          target == o.target &&
+          type == o.type
     end
 
     # @see the `==` method
@@ -168,7 +197,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, content, params, reason, redirect_rows].hash
+      [hash_sha256, note, redirect_id, result, source, status, target, type].hash
     end
 
     # Builds the object from hash
