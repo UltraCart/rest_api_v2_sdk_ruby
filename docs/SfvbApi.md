@@ -4564,7 +4564,7 @@ end
 
 ## insert_sfvb_approval
 
-> insert_sfvb_approval(approval_request, opts)
+> <SfvbApproval> insert_sfvb_approval(approval_request, opts)
 
 Request a human approval
 
@@ -4579,9 +4579,9 @@ Asks the person who signed in the CLI to approve one gated action on one exact t
 
 #### Using the insert_sfvb_approval_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> insert_sfvb_approval_with_http_info(approval_request, opts)
+> <Array(<SfvbApproval>, Integer, Hash)> insert_sfvb_approval_with_http_info(approval_request, opts)
 
 ```ruby
 begin
@@ -4589,7 +4589,7 @@ begin
   data, status_code, headers = api_instance.insert_sfvb_approval_with_http_info(approval_request, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <SfvbApproval>
 rescue UltracartClient::ApiError => e
   puts "Error when calling SfvbApi->insert_sfvb_approval_with_http_info: #{e}"
 end
@@ -4604,7 +4604,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**SfvbApproval**](SfvbApproval.md)
 
 ### Authorization
 

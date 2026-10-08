@@ -5854,10 +5854,10 @@ module UltracartClient
     # @param approval_request [SfvbApprovalCreateRequest] The request
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :storefront_oid The storefront the action runs on.  Required for storefront actions, left out for account-wide ones.
-    # @return [nil]
+    # @return [SfvbApproval]
     def insert_sfvb_approval(approval_request, opts = {})
-      insert_sfvb_approval_with_http_info(approval_request, opts)
-      nil
+      data, _status_code, _headers = insert_sfvb_approval_with_http_info(approval_request, opts)
+      data
     end
 
     # Request a human approval
@@ -5865,7 +5865,7 @@ module UltracartClient
     # @param approval_request [SfvbApprovalCreateRequest] The request
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :storefront_oid The storefront the action runs on.  Required for storefront actions, left out for account-wide ones.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SfvbApproval, Integer, Hash)>] SfvbApproval data, response status code and response headers
     def insert_sfvb_approval_with_http_info(approval_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SfvbApi.insert_sfvb_approval ...'
@@ -5899,7 +5899,7 @@ module UltracartClient
       post_body = opts[:debug_body] || @api_client.object_to_http_body(approval_request)
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'SfvbApproval'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
