@@ -14,61 +14,58 @@ require 'date'
 require 'time'
 
 module UltracartClient
-  class SfvbApprovalCreateRequest
-    # The gated action to approve.
-    attr_accessor :action
+  class SfvbItemAttributeBatchResponse
+    # True after an apply.
+    attr_accessor :applied
 
-    # For a file.put_script write, the exact script to be written, at most 256 KB.  UltraCart reviews it and keeps only its hash, so send the same bytes again on the write.  Leave it out for a revert, which names params.version.
-    attr_accessor :content
+    # Rows that would change, from a dry run.
+    attr_accessor :change
 
-    attr_accessor :experiment_start
+    # Rows on an item that could not be saved, after an apply.
+    attr_accessor :error
 
-    # For item.attribute_batch, exactly the rows the batch will send - the dry run's change rows, each with merchant_item_oid and current_sha256.  UltraCart keeps only their hash.
-    attr_accessor :item_attribute_rows
+    # Rows refused by the attribute checks.
+    attr_accessor :invalid
 
-    attr_accessor :item_pricing
+    # Distinct items with at least one row that would change, or did.
+    attr_accessor :item_count
 
-    attr_accessor :params
+    # Rows naming an item that does not exist.
+    attr_accessor :not_found
 
-    # Why the agent wants to do this, in a sentence.  Shown to the person as unverified text, capped at 500 characters.
-    attr_accessor :reason
+    # The hash of the rows answered as change, with their current_sha256.  Apply exactly those rows with this hash.
+    attr_accessor :plan_hash
 
-    # For redirect.delete_batch, exactly the rows the batch delete will send, up to 5,000, each with its hash_sha256.  UltraCart keeps only their hash.
-    attr_accessor :redirect_rows
+    # One result per row, in request order.
+    attr_accessor :rows
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
+    # Rows skipped because the value is not the one expected.
+    attr_accessor :stale
 
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
+    # Rows checked.
+    attr_accessor :total
 
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    # Rows whose value is already the new one.
+    attr_accessor :unchanged
+
+    # Rows written, after an apply.
+    attr_accessor :updated
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'action' => :'action',
-        :'content' => :'content',
-        :'experiment_start' => :'experiment_start',
-        :'item_attribute_rows' => :'item_attribute_rows',
-        :'item_pricing' => :'item_pricing',
-        :'params' => :'params',
-        :'reason' => :'reason',
-        :'redirect_rows' => :'redirect_rows'
+        :'applied' => :'applied',
+        :'change' => :'change',
+        :'error' => :'error',
+        :'invalid' => :'invalid',
+        :'item_count' => :'item_count',
+        :'not_found' => :'not_found',
+        :'plan_hash' => :'plan_hash',
+        :'rows' => :'rows',
+        :'stale' => :'stale',
+        :'total' => :'total',
+        :'unchanged' => :'unchanged',
+        :'updated' => :'updated'
       }
     end
 
@@ -80,14 +77,18 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'action' => :'String',
-        :'content' => :'String',
-        :'experiment_start' => :'SfvbExperimentStartRequest',
-        :'item_attribute_rows' => :'Array<SfvbItemAttributeBatchRow>',
-        :'item_pricing' => :'SfvbItemPricingRequest',
-        :'params' => :'SfvbApprovalParams',
-        :'reason' => :'String',
-        :'redirect_rows' => :'Array<SfvbRedirectDeleteRow>'
+        :'applied' => :'Boolean',
+        :'change' => :'Integer',
+        :'error' => :'Integer',
+        :'invalid' => :'Integer',
+        :'item_count' => :'Integer',
+        :'not_found' => :'Integer',
+        :'plan_hash' => :'String',
+        :'rows' => :'Array<SfvbItemAttributeBatchRowResult>',
+        :'stale' => :'Integer',
+        :'total' => :'Integer',
+        :'unchanged' => :'Integer',
+        :'updated' => :'Integer'
       }
     end
 
@@ -101,51 +102,65 @@ module UltracartClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbApprovalCreateRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `UltracartClient::SfvbItemAttributeBatchResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbApprovalCreateRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `UltracartClient::SfvbItemAttributeBatchResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'action')
-        self.action = attributes[:'action']
+      if attributes.key?(:'applied')
+        self.applied = attributes[:'applied']
       end
 
-      if attributes.key?(:'content')
-        self.content = attributes[:'content']
+      if attributes.key?(:'change')
+        self.change = attributes[:'change']
       end
 
-      if attributes.key?(:'experiment_start')
-        self.experiment_start = attributes[:'experiment_start']
+      if attributes.key?(:'error')
+        self.error = attributes[:'error']
       end
 
-      if attributes.key?(:'item_attribute_rows')
-        if (value = attributes[:'item_attribute_rows']).is_a?(Array)
-          self.item_attribute_rows = value
+      if attributes.key?(:'invalid')
+        self.invalid = attributes[:'invalid']
+      end
+
+      if attributes.key?(:'item_count')
+        self.item_count = attributes[:'item_count']
+      end
+
+      if attributes.key?(:'not_found')
+        self.not_found = attributes[:'not_found']
+      end
+
+      if attributes.key?(:'plan_hash')
+        self.plan_hash = attributes[:'plan_hash']
+      end
+
+      if attributes.key?(:'rows')
+        if (value = attributes[:'rows']).is_a?(Array)
+          self.rows = value
         end
       end
 
-      if attributes.key?(:'item_pricing')
-        self.item_pricing = attributes[:'item_pricing']
+      if attributes.key?(:'stale')
+        self.stale = attributes[:'stale']
       end
 
-      if attributes.key?(:'params')
-        self.params = attributes[:'params']
+      if attributes.key?(:'total')
+        self.total = attributes[:'total']
       end
 
-      if attributes.key?(:'reason')
-        self.reason = attributes[:'reason']
+      if attributes.key?(:'unchanged')
+        self.unchanged = attributes[:'unchanged']
       end
 
-      if attributes.key?(:'redirect_rows')
-        if (value = attributes[:'redirect_rows']).is_a?(Array)
-          self.redirect_rows = value
-        end
+      if attributes.key?(:'updated')
+        self.updated = attributes[:'updated']
       end
     end
 
@@ -159,19 +174,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      action_validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing"])
-      return false unless action_validator.valid?(@action)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] action Object to be assigned
-    def action=(action)
-      validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing"])
-      unless validator.valid?(action)
-        fail ArgumentError, "invalid value for \"action\", must be one of #{validator.allowable_values}."
-      end
-      @action = action
     end
 
     # Checks equality by comparing each attribute.
@@ -179,14 +182,18 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          action == o.action &&
-          content == o.content &&
-          experiment_start == o.experiment_start &&
-          item_attribute_rows == o.item_attribute_rows &&
-          item_pricing == o.item_pricing &&
-          params == o.params &&
-          reason == o.reason &&
-          redirect_rows == o.redirect_rows
+          applied == o.applied &&
+          change == o.change &&
+          error == o.error &&
+          invalid == o.invalid &&
+          item_count == o.item_count &&
+          not_found == o.not_found &&
+          plan_hash == o.plan_hash &&
+          rows == o.rows &&
+          stale == o.stale &&
+          total == o.total &&
+          unchanged == o.unchanged &&
+          updated == o.updated
     end
 
     # @see the `==` method
@@ -198,7 +205,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, content, experiment_start, item_attribute_rows, item_pricing, params, reason, redirect_rows].hash
+      [applied, change, error, invalid, item_count, not_found, plan_hash, rows, stale, total, unchanged, updated].hash
     end
 
     # Builds the object from hash

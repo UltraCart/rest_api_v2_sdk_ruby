@@ -29,6 +29,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**disable_sfvb_upsell_offer**](SfvbApi.md#disable_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/disable | Disable an upsell offer |
 | [**disable_sfvb_upsell_path**](SfvbApi.md#disable_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/disable | Disable an upsell path |
 | [**download_sfvb_file**](SfvbApi.md#download_sfvb_file) | **GET** /sfvb/storefronts/{storefront_oid}/files/download | Read a storefront file&#39;s raw bytes |
+| [**dry_run_sfvb_item_attribute_batch**](SfvbApi.md#dry_run_sfvb_item_attribute_batch) | **POST** /sfvb/storefronts/{storefront_oid}/items/attributes/batch/dry_run | Check attribute changes across many items without writing them |
 | [**dry_run_sfvb_redirect_delete**](SfvbApi.md#dry_run_sfvb_redirect_delete) | **POST** /sfvb/storefronts/{storefront_oid}/redirects/delete/dry_run | Check a batch delete of redirect rules without writing it |
 | [**dry_run_sfvb_redirect_import**](SfvbApi.md#dry_run_sfvb_redirect_import) | **POST** /sfvb/storefronts/{storefront_oid}/redirects/import/dry_run | Check a redirect import without writing it |
 | [**duplicate_sfvb_library_entry**](SfvbApi.md#duplicate_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/duplicate | Copy a library entry into a new private entry |
@@ -37,6 +38,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**duplicate_sfvb_upsell_offer**](SfvbApi.md#duplicate_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/duplicate | Duplicate an upsell offer |
 | [**duplicate_sfvb_upsell_path**](SfvbApi.md#duplicate_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/duplicate | Duplicate an upsell path or one of its variations |
 | [**enable_sfvb_i18n_language**](SfvbApi.md#enable_sfvb_i18n_language) | **POST** /sfvb/storefronts/{storefront_oid}/i18n/languages/{code}/enable | Enable a language |
+| [**enable_sfvb_upsell_offer**](SfvbApi.md#enable_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/enable | Enable an upsell offer |
+| [**enable_sfvb_upsell_path**](SfvbApi.md#enable_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/enable | Enable an upsell path |
 | [**end_sfvb_experiment**](SfvbApi.md#end_sfvb_experiment) | **POST** /sfvb/storefronts/{storefront_oid}/experiments/{experiment_oid}/end | End an experiment |
 | [**favorite_sfvb_library_entry**](SfvbApi.md#favorite_sfvb_library_entry) | **PUT** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/favorite | Favorite a library entry |
 | [**get_sfvb_approval**](SfvbApi.md#get_sfvb_approval) | **GET** /sfvb/approvals/{approval_id} | Read one approval request |
@@ -56,6 +59,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_i18n_message**](SfvbApi.md#get_sfvb_i18n_message) | **GET** /sfvb/storefronts/{storefront_oid}/i18n/messages/{key} | Read one built-in message |
 | [**get_sfvb_i18n_message_machine_translations**](SfvbApi.md#get_sfvb_i18n_message_machine_translations) | **GET** /sfvb/storefronts/{storefront_oid}/i18n/messages/{key}/machine_translations | Read where a message&#39;s translations come from |
 | [**get_sfvb_item**](SfvbApi.md#get_sfvb_item) | **GET** /sfvb/storefronts/{storefront_oid}/items | Read an item&#39;s storefront facing content |
+| [**get_sfvb_item_pricing**](SfvbApi.md#get_sfvb_item_pricing) | **GET** /sfvb/storefronts/{storefront_oid}/items/pricing | Read what an item charges |
+| [**get_sfvb_item_related**](SfvbApi.md#get_sfvb_item_related) | **GET** /sfvb/storefronts/{storefront_oid}/items/related | Read an item&#39;s related items |
 | [**get_sfvb_library_entry**](SfvbApi.md#get_sfvb_library_entry) | **GET** /sfvb/storefronts/{storefront_oid}/library/{library_oid} | Read one library entry including its CJSON |
 | [**get_sfvb_library_history**](SfvbApi.md#get_sfvb_library_history) | **GET** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/history | List a library entry&#39;s published revisions |
 | [**get_sfvb_library_share_targets**](SfvbApi.md#get_sfvb_library_share_targets) | **GET** /sfvb/storefronts/{storefront_oid}/library/share_targets | List the accounts a library entry can be shared with |
@@ -120,6 +125,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**put_sfvb_item_attributes**](SfvbApi.md#put_sfvb_item_attributes) | **PUT** /sfvb/storefronts/{storefront_oid}/items/attributes | Change some of an item&#39;s attributes |
 | [**put_sfvb_item_content**](SfvbApi.md#put_sfvb_item_content) | **PUT** /sfvb/storefronts/{storefront_oid}/items/content | Change an item&#39;s title or long description |
 | [**put_sfvb_item_multimedia**](SfvbApi.md#put_sfvb_item_multimedia) | **PUT** /sfvb/storefronts/{storefront_oid}/items/multimedia | Attach an image to an item |
+| [**put_sfvb_item_pricing**](SfvbApi.md#put_sfvb_item_pricing) | **PUT** /sfvb/storefronts/{storefront_oid}/items/pricing | Change what an item charges |
+| [**put_sfvb_item_related**](SfvbApi.md#put_sfvb_item_related) | **PUT** /sfvb/storefronts/{storefront_oid}/items/related | Replace an item&#39;s related items |
 | [**put_sfvb_item_seo**](SfvbApi.md#put_sfvb_item_seo) | **PUT** /sfvb/storefronts/{storefront_oid}/items/seo | Change an item&#39;s search metadata |
 | [**put_sfvb_menu**](SfvbApi.md#put_sfvb_menu) | **PUT** /sfvb/storefronts/{storefront_oid}/menus/{code} | Replace a store menu&#39;s entries |
 | [**put_sfvb_page_attributes**](SfvbApi.md#put_sfvb_page_attributes) | **PUT** /sfvb/storefronts/{storefront_oid}/pages/attributes | Change a page&#39;s attributes |
@@ -151,6 +158,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**unpublish_sfvb_library_entry**](SfvbApi.md#unpublish_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/unpublish | Narrow who can see a library entry |
 | [**unshare_sfvb_library_entry**](SfvbApi.md#unshare_sfvb_library_entry) | **DELETE** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/shares/{merchant_id} | Stop sharing a library entry with an account |
 | [**update_sfvb_blog_post**](SfvbApi.md#update_sfvb_blog_post) | **PUT** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Change a blog post |
+| [**update_sfvb_item_attribute_batch**](SfvbApi.md#update_sfvb_item_attribute_batch) | **POST** /sfvb/storefronts/{storefront_oid}/items/attributes/batch | Change attributes across many items in one call |
 | [**update_sfvb_library_entry**](SfvbApi.md#update_sfvb_library_entry) | **PUT** /sfvb/storefronts/{storefront_oid}/library/{library_oid} | Update a library entry&#39;s draft |
 | [**update_sfvb_redirect**](SfvbApi.md#update_sfvb_redirect) | **PUT** /sfvb/storefronts/{storefront_oid}/redirects/{redirect_id} | Change a redirect rule |
 | [**update_sfvb_upsell_offer**](SfvbApi.md#update_sfvb_upsell_offer) | **PUT** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid} | Update an upsell offer |
@@ -1526,6 +1534,60 @@ nil (empty response body)
 - **Accept**: application/octet-stream
 
 
+## dry_run_sfvb_item_attribute_batch
+
+> <SfvbItemAttributeBatchResponse> dry_run_sfvb_item_attribute_batch(storefront_oid, item_attribute_batch_request)
+
+Check attribute changes across many items without writing them
+
+Checks up to 2,000 rows on up to 200 items, each with the single attribute update's checks, and answers every row as change, unchanged, stale (expected_value differs from the current value), not_found or invalid, with the current value and its current_sha256, plus a plan_hash over the change rows.  Writes nothing.  SEO attributes are refused; a batch never touches them or any attribute it does not name. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the dry_run_sfvb_item_attribute_batch_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbItemAttributeBatchResponse>, Integer, Hash)> dry_run_sfvb_item_attribute_batch_with_http_info(storefront_oid, item_attribute_batch_request)
+
+```ruby
+begin
+  # Check attribute changes across many items without writing them
+  data, status_code, headers = api_instance.dry_run_sfvb_item_attribute_batch_with_http_info(storefront_oid, item_attribute_batch_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbItemAttributeBatchResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->dry_run_sfvb_item_attribute_batch_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **item_attribute_batch_request** | [**SfvbItemAttributeBatchRequest**](SfvbItemAttributeBatchRequest.md) | The rows |  |
+
+### Return type
+
+[**SfvbItemAttributeBatchResponse**](SfvbItemAttributeBatchResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
 ## dry_run_sfvb_redirect_delete
 
 > <SfvbRedirectDeleteResponse> dry_run_sfvb_redirect_delete(storefront_oid, redirect_delete_request)
@@ -1963,13 +2025,123 @@ end
 - **Accept**: application/json
 
 
+## enable_sfvb_upsell_offer
+
+> <SfvbUpsellOffer> enable_sfvb_upsell_offer(storefront_oid, upsell_offer_oid, opts)
+
+Enable an upsell offer
+
+Switches the offer on.  The only way to switch one on - create and update refuse active true on an offer that is off.  Needs sfvb_publish and the approval of the person who signed in the CLI, an approved upsell.enable request for this offer (see POST /sfvb/approvals).  An offer that is already on is returned unchanged, and no approval is used. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the enable_sfvb_upsell_offer_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUpsellOffer>, Integer, Hash)> enable_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid, opts)
+
+```ruby
+begin
+  # Enable an upsell offer
+  data, status_code, headers = api_instance.enable_sfvb_upsell_offer_with_http_info(storefront_oid, upsell_offer_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUpsellOffer>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->enable_sfvb_upsell_offer_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **upsell_offer_oid** | **Integer** |  |  |
+| **approval_id** | **String** | The approval_id of an approved upsell.enable request for this offer.  Required when the offer is off.  See POST /sfvb/approvals. | [optional] |
+
+### Return type
+
+[**SfvbUpsellOffer**](SfvbUpsellOffer.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## enable_sfvb_upsell_path
+
+> <SfvbUpsellPath> enable_sfvb_upsell_path(storefront_oid, upsell_path_oid, opts)
+
+Enable an upsell path
+
+Switches the path on, so it starts running.  The only way to switch one on - create, update and unarchive refuse to.  An archived path is refused; unarchive it first.  Needs sfvb_publish and the approval of the person who signed in the CLI, an approved upsell.enable request for this path (see POST /sfvb/approvals).  A path that is already on is returned unchanged, and no approval is used. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the enable_sfvb_upsell_path_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUpsellPath>, Integer, Hash)> enable_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, opts)
+
+```ruby
+begin
+  # Enable an upsell path
+  data, status_code, headers = api_instance.enable_sfvb_upsell_path_with_http_info(storefront_oid, upsell_path_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUpsellPath>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->enable_sfvb_upsell_path_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **upsell_path_oid** | **Integer** |  |  |
+| **approval_id** | **String** | The approval_id of an approved upsell.enable request for this path.  Required when the path is off.  See POST /sfvb/approvals. | [optional] |
+
+### Return type
+
+[**SfvbUpsellPath**](SfvbUpsellPath.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## end_sfvb_experiment
 
 > <SfvbExperiment> end_sfvb_experiment(storefront_oid, experiment_oid, opts)
 
 End an experiment
 
-Ends a running experiment.  With winner_variation_number the winner gets every visitor, including visitors already assigned to another variation, and a page experiment's winning content is promoted into the page by the completion job on its next run, which also emails the merchant.  Without a winner a page experiment's id is cleared from its page body so the page shows variation 0, and a url experiment sends everyone to variation 0.  Always needs sfvb_publish. 
+Ends a running experiment.  With winner_variation_number the winner gets every visitor, including visitors already assigned to another variation, and a page experiment's winning content is promoted into the page by the completion job on its next run, which also emails the merchant.  Without a winner a page experiment's id is cleared from its page body so the page shows variation 0, and a url experiment sends everyone to variation 0.  Always needs sfvb_publish, and the approval of the person who signed in the CLI - an approved experiment.end request for this experiment and winner, which always needs a fresh authenticator code (see POST /sfvb/approvals). 
 
 
 ### Examples
@@ -2002,6 +2174,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **storefront_oid** | **Integer** |  |  |
 | **experiment_oid** | **Integer** |  |  |
+| **approval_id** | **String** | The approval_id of an approved experiment.end request for this experiment and winner.  Required.  See POST /sfvb/approvals. | [optional] |
 | **experiment_end_request** | [**SfvbExperimentEndRequest**](SfvbExperimentEndRequest.md) | The winner, if any | [optional] |
 
 ### Return type
@@ -2942,7 +3115,7 @@ end
 
 Read an item's storefront facing content
 
-The attributes, images, title, description and search metadata a StoreFront element can render, reconciled against the templates behind the pages this item sits on.  An attribute a template declares but nothing has set comes back present with an empty value, which is how you discover what the page is asking for.  Pricing, shipping, inventory, tax, variants and kit structure are not here because no element reads them; use the item API for those.  Address by merchant_item_id, the value data-context-item-id carries, or by merchant_item_oid. 
+The attributes, images, title, description and search metadata a StoreFront element can render, reconciled against the templates behind the pages this item sits on.  An attribute a template declares but nothing has set comes back present with an empty value, which is how you discover what the page is asking for.  Pricing and related items have their own calls, items/pricing and items/related.  Shipping, inventory, tax, variants and kit structure stay with the item API.  Address by merchant_item_id, the value data-context-item-id carries, or by merchant_item_oid. 
 
 
 ### Examples
@@ -2980,6 +3153,116 @@ end
 ### Return type
 
 [**SfvbItemResponse**](SfvbItemResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_item_pricing
+
+> <SfvbItemPricing> get_sfvb_item_pricing(storefront_oid, opts)
+
+Read what an item charges
+
+Price, sale (with whether it applies now), MSRP and retail volume pricing - what itemprice, itemsale, itemmsrp, itemsavings and itemvolumediscounts render - with a hash_sha256 to send as If-Match when changing it.  Wholesale pricing tiers are not shown.  Address by merchant_item_id or merchant_item_oid. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_item_pricing_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbItemPricing>, Integer, Hash)> get_sfvb_item_pricing_with_http_info(storefront_oid, opts)
+
+```ruby
+begin
+  # Read what an item charges
+  data, status_code, headers = api_instance.get_sfvb_item_pricing_with_http_info(storefront_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbItemPricing>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_item_pricing_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **merchant_item_id** | **String** |  | [optional] |
+| **merchant_item_oid** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SfvbItemPricing**](SfvbItemPricing.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_item_related
+
+> <SfvbItemRelated> get_sfvb_item_related(storefront_oid, opts)
+
+Read an item's related items
+
+What itemrelateditemslist lists - the merchant's own related items (user, addon, complementary) and the ones UltraCart calculates (system), with a hash_sha256 to send as If-Match when changing them. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_item_related_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbItemRelated>, Integer, Hash)> get_sfvb_item_related_with_http_info(storefront_oid, opts)
+
+```ruby
+begin
+  # Read an item's related items
+  data, status_code, headers = api_instance.get_sfvb_item_related_with_http_info(storefront_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbItemRelated>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_item_related_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **merchant_item_id** | **String** |  | [optional] |
+| **merchant_item_oid** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SfvbItemRelated**](SfvbItemRelated.md)
 
 ### Authorization
 
@@ -4895,7 +5178,7 @@ end
 
 Create an upsell offer
 
-Every item it names must exist, and every shipping method, payment method and loyalty tier must be one the merchant has.  Put it on a path with a path update to have it shown.  Creating it switched on, or with upsell_item_id_javascript or offsite_content_url, needs sfvb_publish.  Its page content is its container, written with the container endpoints and owner type upsell. 
+Every item it names must exist, and every shipping method, payment method and loyalty tier must be one the merchant has.  Put it on a path with a path update to have it shown.  It must be created with active false, and switched on with the enable call, which needs approval.  upsell_item_id_javascript or offsite_content_url needs sfvb_publish.  Its page content is its container, written with the container endpoints and owner type upsell. 
 
 
 ### Examples
@@ -4949,7 +5232,7 @@ end
 
 Create an upsell path
 
-Placed last in path order.  Every offer a step names must be an offer of this storefront, and every item in the item logic must exist.  Creating it switched on needs sfvb_publish; create it with active false to build it without that scope. 
+Placed last in path order.  Every offer a step names must be an offer of this storefront, and every item in the item logic must exist.  It must be created with active false, and switched on with the enable call, which needs approval. 
 
 
 ### Examples
@@ -6500,6 +6783,121 @@ end
 - **Accept**: application/json
 
 
+## put_sfvb_item_pricing
+
+> <SfvbItemPricing> put_sfvb_item_pricing(storefront_oid, if_match, item_pricing_request, opts)
+
+Change what an item charges
+
+Partial - a field left out is untouched.  A sale needs sale_cost, sale_start and sale_end together, the end after the start; clear_sale removes it.  msrp must be more than 0 (0 only when the price is 0); clear_msrp removes it.  volume_discounts replaces the retail quantity breaks.  Shoppers pay the new price at once, so this needs sfvb_publish, If-Match with the pricing hash_sha256, and the approval of the person who signed in the CLI - an approved item.pricing request for this item and exactly this change.  A change that sets every field to what it already is returns the pricing unchanged and uses no approval. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the put_sfvb_item_pricing_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbItemPricing>, Integer, Hash)> put_sfvb_item_pricing_with_http_info(storefront_oid, if_match, item_pricing_request, opts)
+
+```ruby
+begin
+  # Change what an item charges
+  data, status_code, headers = api_instance.put_sfvb_item_pricing_with_http_info(storefront_oid, if_match, item_pricing_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbItemPricing>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->put_sfvb_item_pricing_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **if_match** | **String** | hash_sha256 from the pricing read.  Required; 428 when absent, 412 when stale. |  |
+| **item_pricing_request** | [**SfvbItemPricingRequest**](SfvbItemPricingRequest.md) | The change |  |
+| **merchant_item_id** | **String** |  | [optional] |
+| **merchant_item_oid** | **Integer** |  | [optional] |
+| **approval_id** | **String** | The approval_id of an approved item.pricing request for this item and change.  Required.  See POST /sfvb/approvals. | [optional] |
+
+### Return type
+
+[**SfvbItemPricing**](SfvbItemPricing.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## put_sfvb_item_related
+
+> <SfvbItemRelated> put_sfvb_item_related(storefront_oid, if_match, item_related_request, opts)
+
+Replace an item's related items
+
+Replaces the merchant's own related items, in order, and keeps the ones UltraCart calculates.  Each must be an item of this account and not the item itself, named once, up to 50.  No link back is added to the other items.  Needs sfvb_publish and If-Match with the related hash_sha256. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the put_sfvb_item_related_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbItemRelated>, Integer, Hash)> put_sfvb_item_related_with_http_info(storefront_oid, if_match, item_related_request, opts)
+
+```ruby
+begin
+  # Replace an item's related items
+  data, status_code, headers = api_instance.put_sfvb_item_related_with_http_info(storefront_oid, if_match, item_related_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbItemRelated>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->put_sfvb_item_related_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **if_match** | **String** | hash_sha256 from the related read.  Required; 428 when absent, 412 when stale. |  |
+| **item_related_request** | [**SfvbItemRelatedRequest**](SfvbItemRelatedRequest.md) | The related items |  |
+| **merchant_item_id** | **String** |  | [optional] |
+| **merchant_item_oid** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SfvbItemRelated**](SfvbItemRelated.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
 ## put_sfvb_item_seo
 
 > <SfvbItemResponse> put_sfvb_item_seo(storefront_oid, item_seo_request, opts)
@@ -7827,11 +8225,11 @@ end
 
 ## start_sfvb_experiment
 
-> <SfvbExperiment> start_sfvb_experiment(storefront_oid, experiment_start_request)
+> <SfvbExperiment> start_sfvb_experiment(storefront_oid, experiment_start_request, opts)
 
 Start an experiment
 
-type page starts an experiment element already saved in a page body - send path, slot and widget_id, and its name, objective, duration and variations are read from the element with the builder's rules (2 to 5 variations numbered 0 up with no gaps, 3 to 90 days, traffic on all or none adding up to 100).  The new id is written into the element and the body is saved, so pull it again before the next edit.  type url splits visitors between existing pages at router_url, and always ends by itself after duration_days.  Always needs sfvb_publish, because visitors are split as soon as it starts. 
+type page starts an experiment element already saved in a page body - send path, slot and widget_id, and its name, objective, duration and variations are read from the element with the builder's rules (2 to 5 variations numbered 0 up with no gaps, 3 to 90 days, traffic on all or none adding up to 100).  The new id is written into the element and the body is saved, so pull it again before the next edit.  type url splits visitors between existing pages at router_url, and always ends by itself after duration_days.  Always needs sfvb_publish, because visitors are split as soon as it starts, and the approval of the person who signed in the CLI - an approved experiment.start request for exactly this start (see POST /sfvb/approvals). 
 
 
 ### Examples
@@ -7844,12 +8242,12 @@ type page starts an experiment element already saved in a page body - send path,
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SfvbExperiment>, Integer, Hash)> start_sfvb_experiment_with_http_info(storefront_oid, experiment_start_request)
+> <Array(<SfvbExperiment>, Integer, Hash)> start_sfvb_experiment_with_http_info(storefront_oid, experiment_start_request, opts)
 
 ```ruby
 begin
   # Start an experiment
-  data, status_code, headers = api_instance.start_sfvb_experiment_with_http_info(storefront_oid, experiment_start_request)
+  data, status_code, headers = api_instance.start_sfvb_experiment_with_http_info(storefront_oid, experiment_start_request, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <SfvbExperiment>
@@ -7864,6 +8262,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **storefront_oid** | **Integer** |  |  |
 | **experiment_start_request** | [**SfvbExperimentStartRequest**](SfvbExperimentStartRequest.md) | The experiment to start |  |
+| **approval_id** | **String** | The approval_id of an approved experiment.start request for exactly this start.  Required.  See POST /sfvb/approvals. | [optional] |
 
 ### Return type
 
@@ -7885,7 +8284,7 @@ end
 
 Unarchive an upsell path
 
-Brings the path back into the default list.  Unarchiving one that is switched on starts it, so that needs sfvb_publish. 
+Brings the path back into the default list.  A path that is switched on is refused, because unarchiving it would start it without approval - disable it, unarchive it, then enable it. 
 
 
 ### Examples
@@ -8206,6 +8605,61 @@ end
 - **Accept**: application/json
 
 
+## update_sfvb_item_attribute_batch
+
+> <SfvbItemAttributeBatchResponse> update_sfvb_item_attribute_batch(storefront_oid, item_attribute_batch_request, opts)
+
+Change attributes across many items in one call
+
+Applies exactly the change rows of a dry run, given its plan_hash, each with its merchant_item_oid and current_sha256.  Each item is saved once with all of its rows; a row whose value changed since the dry run is skipped as stale and never overwritten, and an item that cannot be saved does not stop the others.  Only the named attributes change.  Needs sfvb_publish and the approval of the person who signed in the CLI, an approved item.attribute_batch request for exactly these rows in the Approval-Id header. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_item_attribute_batch_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbItemAttributeBatchResponse>, Integer, Hash)> update_sfvb_item_attribute_batch_with_http_info(storefront_oid, item_attribute_batch_request, opts)
+
+```ruby
+begin
+  # Change attributes across many items in one call
+  data, status_code, headers = api_instance.update_sfvb_item_attribute_batch_with_http_info(storefront_oid, item_attribute_batch_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbItemAttributeBatchResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_item_attribute_batch_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **item_attribute_batch_request** | [**SfvbItemAttributeBatchRequest**](SfvbItemAttributeBatchRequest.md) | The dry run&#39;s change rows and plan_hash |  |
+| **approval_id** | **String** | The approval_id of an approved item.attribute_batch request for exactly these rows.  Required.  See POST /sfvb/approvals. | [optional] |
+
+### Return type
+
+[**SfvbItemAttributeBatchResponse**](SfvbItemAttributeBatchResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
 ## update_sfvb_library_entry
 
 > <SfvbLibraryEntry> update_sfvb_library_entry(storefront_oid, library_oid, if_match, library_entry)
@@ -8324,7 +8778,7 @@ end
 
 Update an upsell offer
 
-A full replace.  Send back the whole offer you read, changed, with its hash_sha256 in If-Match.  Read only fields are ignored and a writable field left out is cleared.  Changing an offer that is switched on, switching one on, or changing upsell_item_id_javascript or offsite_content_url needs sfvb_publish.  Settings the API does not show, such as the offer's screenshots, are kept. 
+A full replace.  Send back the whole offer you read, changed, with its hash_sha256 in If-Match.  Read only fields are ignored and a writable field left out is cleared.  Changing an offer that is switched on, or changing upsell_item_id_javascript or offsite_content_url, needs sfvb_publish.  An update cannot switch an offer on; that is the enable call, which needs approval.  Settings the API does not show, such as the offer's screenshots, are kept. 
 
 
 ### Examples
@@ -8380,7 +8834,7 @@ end
 
 Update an upsell path
 
-A full replace.  Send back the whole path you read, changed, with its hash_sha256 in If-Match.  Read only fields are ignored and a writable field left out is cleared.  Order and archived keep their stored values; change them with the move, archive and unarchive calls.  Changing a running path, or switching one on, needs sfvb_publish. 
+A full replace.  Send back the whole path you read, changed, with its hash_sha256 in If-Match.  Read only fields are ignored and a writable field left out is cleared.  Order and archived keep their stored values; change them with the move, archive and unarchive calls.  Changing a running path needs sfvb_publish.  An update cannot switch a path on; that is the enable call, which needs approval. 
 
 
 ### Examples

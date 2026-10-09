@@ -15,33 +15,95 @@ require 'time'
 
 module UltracartClient
   class SfvbApprovalParams
+    # For item.attribute_batch, the attributes the batch would change.  Set by the server.
+    attr_accessor :attribute_names
+
     # The blog post, for blog_post.delete.
     attr_accessor :blog_post_oid
 
     # For file.put_script, the SHA-256 of the exact bytes approved.  Set by the server, never by the caller.  The write must send bytes with this hash.
     attr_accessor :content_sha256
 
-    # The file path, for file.delete and file.put_script.  Exactly as the gated call will send it.
+    # For experiment.end, the experiment to end.
+    attr_accessor :experiment_oid
+
+    # For item.attribute_batch, how many items the batch would change when it was requested.  Set by the server.
+    attr_accessor :item_count
+
+    # For item.pricing, the item whose pricing changes.
+    attr_accessor :merchant_item_oid
+
+    # The file path, for file.delete and file.put_script, or the page path for experiment.start of a page experiment.  Exactly as the gated call will send it.
     attr_accessor :path
 
-    # For redirect.delete_batch, the plan_hash of the exact rows approved.  Set by the server.  The batch delete must send rows with this hash.
+    # For experiment.start of a url experiment, the hash of the checked experiment approved, and for item.pricing the hash of the change.  Set by the server.  The gated call must send the same.
+    attr_accessor :request_sha256
+
+    # For redirect.delete_batch and item.attribute_batch, the plan_hash of the exact rows approved.  Set by the server.  The batch must send rows with this hash.
     attr_accessor :rows_sha256
 
     # For redirect.delete_batch, how many rules the batch would delete when it was requested.  Set by the server.
     attr_accessor :rule_count
 
+    # For experiment.start of a page experiment, the page body name.  Defaults to body.
+    attr_accessor :slot
+
+    # For upsell.enable, what to switch on.
+    attr_accessor :upsell_kind
+
+    # For upsell.enable, the oid of the offer or path to switch on.
+    attr_accessor :upsell_oid
+
     # For file.put_script, the history version a revert restores.  Leave it out, and send content instead, for a write.
     attr_accessor :version
+
+    # For experiment.start of a page experiment, the id of the experiment element.
+    attr_accessor :widget_id
+
+    # For experiment.end, the winning variation.  Leave it out to end without a winner, and leave it out of the end call too.
+    attr_accessor :winner_variation_number
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'attribute_names' => :'attribute_names',
         :'blog_post_oid' => :'blog_post_oid',
         :'content_sha256' => :'content_sha256',
+        :'experiment_oid' => :'experiment_oid',
+        :'item_count' => :'item_count',
+        :'merchant_item_oid' => :'merchant_item_oid',
         :'path' => :'path',
+        :'request_sha256' => :'request_sha256',
         :'rows_sha256' => :'rows_sha256',
         :'rule_count' => :'rule_count',
-        :'version' => :'version'
+        :'slot' => :'slot',
+        :'upsell_kind' => :'upsell_kind',
+        :'upsell_oid' => :'upsell_oid',
+        :'version' => :'version',
+        :'widget_id' => :'widget_id',
+        :'winner_variation_number' => :'winner_variation_number'
       }
     end
 
@@ -53,12 +115,22 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'attribute_names' => :'Array<String>',
         :'blog_post_oid' => :'Integer',
         :'content_sha256' => :'String',
+        :'experiment_oid' => :'Integer',
+        :'item_count' => :'Integer',
+        :'merchant_item_oid' => :'Integer',
         :'path' => :'String',
+        :'request_sha256' => :'String',
         :'rows_sha256' => :'String',
         :'rule_count' => :'Integer',
-        :'version' => :'Integer'
+        :'slot' => :'String',
+        :'upsell_kind' => :'String',
+        :'upsell_oid' => :'Integer',
+        :'version' => :'Integer',
+        :'widget_id' => :'String',
+        :'winner_variation_number' => :'Integer'
       }
     end
 
@@ -83,6 +155,12 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'attribute_names')
+        if (value = attributes[:'attribute_names']).is_a?(Array)
+          self.attribute_names = value
+        end
+      end
+
       if attributes.key?(:'blog_post_oid')
         self.blog_post_oid = attributes[:'blog_post_oid']
       end
@@ -91,8 +169,24 @@ module UltracartClient
         self.content_sha256 = attributes[:'content_sha256']
       end
 
+      if attributes.key?(:'experiment_oid')
+        self.experiment_oid = attributes[:'experiment_oid']
+      end
+
+      if attributes.key?(:'item_count')
+        self.item_count = attributes[:'item_count']
+      end
+
+      if attributes.key?(:'merchant_item_oid')
+        self.merchant_item_oid = attributes[:'merchant_item_oid']
+      end
+
       if attributes.key?(:'path')
         self.path = attributes[:'path']
+      end
+
+      if attributes.key?(:'request_sha256')
+        self.request_sha256 = attributes[:'request_sha256']
       end
 
       if attributes.key?(:'rows_sha256')
@@ -103,8 +197,28 @@ module UltracartClient
         self.rule_count = attributes[:'rule_count']
       end
 
+      if attributes.key?(:'slot')
+        self.slot = attributes[:'slot']
+      end
+
+      if attributes.key?(:'upsell_kind')
+        self.upsell_kind = attributes[:'upsell_kind']
+      end
+
+      if attributes.key?(:'upsell_oid')
+        self.upsell_oid = attributes[:'upsell_oid']
+      end
+
       if attributes.key?(:'version')
         self.version = attributes[:'version']
+      end
+
+      if attributes.key?(:'widget_id')
+        self.widget_id = attributes[:'widget_id']
+      end
+
+      if attributes.key?(:'winner_variation_number')
+        self.winner_variation_number = attributes[:'winner_variation_number']
       end
     end
 
@@ -118,7 +232,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      upsell_kind_validator = EnumAttributeValidator.new('String', ["offer", "path"])
+      return false unless upsell_kind_validator.valid?(@upsell_kind)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] upsell_kind Object to be assigned
+    def upsell_kind=(upsell_kind)
+      validator = EnumAttributeValidator.new('String', ["offer", "path"])
+      unless validator.valid?(upsell_kind)
+        fail ArgumentError, "invalid value for \"upsell_kind\", must be one of #{validator.allowable_values}."
+      end
+      @upsell_kind = upsell_kind
     end
 
     # Checks equality by comparing each attribute.
@@ -126,12 +252,22 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          attribute_names == o.attribute_names &&
           blog_post_oid == o.blog_post_oid &&
           content_sha256 == o.content_sha256 &&
+          experiment_oid == o.experiment_oid &&
+          item_count == o.item_count &&
+          merchant_item_oid == o.merchant_item_oid &&
           path == o.path &&
+          request_sha256 == o.request_sha256 &&
           rows_sha256 == o.rows_sha256 &&
           rule_count == o.rule_count &&
-          version == o.version
+          slot == o.slot &&
+          upsell_kind == o.upsell_kind &&
+          upsell_oid == o.upsell_oid &&
+          version == o.version &&
+          widget_id == o.widget_id &&
+          winner_variation_number == o.winner_variation_number
     end
 
     # @see the `==` method
@@ -143,7 +279,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [blog_post_oid, content_sha256, path, rows_sha256, rule_count, version].hash
+      [attribute_names, blog_post_oid, content_sha256, experiment_oid, item_count, merchant_item_oid, path, request_sha256, rows_sha256, rule_count, slot, upsell_kind, upsell_oid, version, widget_id, winner_variation_number].hash
     end
 
     # Builds the object from hash
