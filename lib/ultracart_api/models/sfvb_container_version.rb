@@ -27,7 +27,7 @@ module UltracartClient
     # Container name, where the owner has more than one container.
     attr_accessor :container_name
 
-    # When this snapshot was taken.
+    # When this snapshot was taken, ISO 8601 UTC.
     attr_accessor :created_dts
 
     # True for the value currently stored.

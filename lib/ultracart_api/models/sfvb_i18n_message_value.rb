@@ -18,7 +18,7 @@ module UltracartClient
     # The language code.  ENG changes the English source, which clears its machine translations.
     attr_accessor :language
 
-    # The new text.  Empty text is refused; reset the message instead.
+    # The new text.  Empty text removes this language's translation, so it goes back to machine translation.  Empty English text is refused.
     attr_accessor :text
 
     # Attribute mapping from ruby-style variable name to JSON key.

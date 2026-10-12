@@ -24,7 +24,7 @@ module UltracartClient
     # What to do next when the job did not produce a theme.  The internal cause is not returned; it is recorded against the job id in the server log.
     attr_accessor :error_message
 
-    # When the job stopped.  Null until it does.
+    # When the job stopped, ISO 8601 UTC.  Null until it does.
     attr_accessor :finished_dts
 
     # Job handle.  Poll getSfvbThemeJob with this.
@@ -36,13 +36,13 @@ module UltracartClient
     # What the job is doing right now, for example 'Duplicating locale text'.
     attr_accessor :progress_description
 
-    # When the job started running.  Null until it does.
+    # When the job started running, ISO 8601 UTC.  Null until it does.
     attr_accessor :started_dts
 
     # Raw job status.
     attr_accessor :status
 
-    # When the job was queued.
+    # When the job was queued, ISO 8601 UTC.
     attr_accessor :submitted_dts
 
     # True only when the job finished successfully.  Check complete first.

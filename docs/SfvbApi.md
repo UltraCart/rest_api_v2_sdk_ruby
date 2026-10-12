@@ -49,6 +49,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_container**](SfvbApi.md#get_sfvb_container) | **GET** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id} | Read a container stored outside the file system |
 | [**get_sfvb_container_version**](SfvbApi.md#get_sfvb_container_version) | **GET** /sfvb/storefronts/{storefront_oid}/container_versions/{container_history_oid} | Read the CJSON stored in one container history entry |
 | [**get_sfvb_element**](SfvbApi.md#get_sfvb_element) | **GET** /sfvb/elements/{element_type} | Configuration schema and field card for one element type |
+| [**get_sfvb_events**](SfvbApi.md#get_sfvb_events) | **GET** /sfvb/events | Replay events |
+| [**get_sfvb_events_authorization**](SfvbApi.md#get_sfvb_events_authorization) | **PUT** /sfvb/events/auth | Open the event stream |
 | [**get_sfvb_experiment**](SfvbApi.md#get_sfvb_experiment) | **GET** /sfvb/storefronts/{storefront_oid}/experiments/{experiment_oid} | Read one experiment and its statistics |
 | [**get_sfvb_experiment_objectives**](SfvbApi.md#get_sfvb_experiment_objectives) | **GET** /sfvb/storefronts/{storefront_oid}/experiments/objectives | List the objectives an experiment can optimize |
 | [**get_sfvb_file_content**](SfvbApi.md#get_sfvb_file_content) | **GET** /sfvb/storefronts/{storefront_oid}/files/content | Read a storefront file |
@@ -2141,7 +2143,7 @@ end
 
 End an experiment
 
-Ends a running experiment.  With winner_variation_number the winner gets every visitor, including visitors already assigned to another variation, and a page experiment's winning content is promoted into the page by the completion job on its next run, which also emails the merchant.  Without a winner a page experiment's id is cleared from its page body so the page shows variation 0, and a url experiment sends everyone to variation 0.  Always needs sfvb_publish, and the approval of the person who signed in the CLI - an approved experiment.end request for this experiment and winner, which always needs a fresh authenticator code (see POST /sfvb/approvals). 
+Ends a running experiment.  With winner_variation_number the winner gets every visitor, including visitors already assigned to another variation, and a page experiment's winning content is promoted into the page by the completion job on its next run, which also emails the merchant.  Without a winner a page experiment's id is cleared from its page body so the page shows variation 0, and a url experiment sends everyone to variation 0.  Always needs sfvb_publish, and the approval of the person who signed in the CLI - an approved experiment.end request for this experiment and winner.  An end with a winner always needs a fresh authenticator code; an end without a winner can be covered by the person's approval session (see POST /sfvb/approvals). 
 
 
 ### Examples
@@ -2617,6 +2619,114 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_events
+
+> <SfvbEventsResponse> get_sfvb_events(opts)
+
+Replay events
+
+The signed-in person's events after the cursor, oldest first.  Events are kept 72 hours; an older cursor returns resync_required, and then the caller re-lists what it was waiting on.  Events about one sign-in's requests, such as approvals, are only returned to that sign-in.  limit is 1 to 500, default 100. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_events_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbEventsResponse>, Integer, Hash)> get_sfvb_events_with_http_info(opts)
+
+```ruby
+begin
+  # Replay events
+  data, status_code, headers = api_instance.get_sfvb_events_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbEventsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_events_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **after** | **String** | Return events after this event_id.  Leave it out for every event kept. | [optional] |
+| **storefront_oid** | **Integer** | Only events about this storefront, plus merchant-level ones. | [optional] |
+| **limit** | **Integer** | At most this many events, 1 to 500. | [optional] |
+
+### Return type
+
+[**SfvbEventsResponse**](SfvbEventsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_events_authorization
+
+> <SfvbEventsAuthResponse> get_sfvb_events_authorization(opts)
+
+Open the event stream
+
+Returns a websocket URL and a single-use token, valid for 5 minutes, for the signed-in person's event stream.  Events are thin hints, type and ids only, and the stream is at most once.  Re-read the object before acting, and after every reconnect replay from the last event_id with GET events.  Send ping messages to keep the connection open, and reconnect with a new token before two hours.  Requires a token that resolves to a user, so use the device authorization flow. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_events_authorization_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbEventsAuthResponse>, Integer, Hash)> get_sfvb_events_authorization_with_http_info(opts)
+
+```ruby
+begin
+  # Open the event stream
+  data, status_code, headers = api_instance.get_sfvb_events_authorization_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbEventsAuthResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_events_authorization_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **events_auth_request** | [**SfvbEventsAuthRequest**](SfvbEventsAuthRequest.md) | Optional storefront filter | [optional] |
+
+### Return type
+
+[**SfvbEventsAuthResponse**](SfvbEventsAuthResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
 - **Accept**: application/json
 
 
@@ -3602,7 +3712,7 @@ end
 
 List the paths that answered 404
 
-The paths shoppers asked for that answered 404, most hits first or by last_seen.  Paths only, never query strings.  Bots are left out unless include_bots.  Token-like path segments show as {token} unless include_tokens.  limit is 1 to 100, default 50. 
+The paths shoppers asked for that answered 404, most hits first or by last_seen.  Paths only, never query strings.  Bots are left out unless include_bots.  Token-like path segments show as {token} unless include_tokens.  A path stays listed after a redirect rule catches it, with redirected_to set.  redirected=false lists only paths no rule catches yet, and redirected=true only those one does.  limit is 1 to 100, default 50. 
 
 
 ### Examples
@@ -3640,6 +3750,7 @@ end
 | **include_tokens** | **Boolean** |  | [optional] |
 | **q** | **String** |  | [optional] |
 | **limit** | **Integer** |  | [optional] |
+| **redirected** | **Boolean** |  | [optional] |
 
 ### Return type
 
@@ -6564,7 +6675,7 @@ end
 
 Change one built-in message
 
-Sets one message in any number of languages.  ENG replaces the English, which drops its machine translations so they regenerate.  Any other language becomes a hand translation.  Languages not named are left alone; empty text is refused.  Shoppers see it at once.  Always needs sfvb_publish. 
+Sets one message in any number of languages.  ENG replaces the English, which drops its machine translations so they regenerate.  Any other language becomes a hand translation.  Languages not named are left alone.  Empty text removes that language's translation so machine translation fills it again (not allowed for ENG); it is the undo for an imported message, which can't be reset.  Shoppers see it at once.  Always needs sfvb_publish. 
 
 
 ### Examples

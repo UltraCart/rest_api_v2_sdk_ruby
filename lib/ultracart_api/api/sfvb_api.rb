@@ -2725,7 +2725,7 @@ module UltracartClient
     end
 
     # End an experiment
-    # Ends a running experiment.  With winner_variation_number the winner gets every visitor, including visitors already assigned to another variation, and a page experiment's winning content is promoted into the page by the completion job on its next run, which also emails the merchant.  Without a winner a page experiment's id is cleared from its page body so the page shows variation 0, and a url experiment sends everyone to variation 0.  Always needs sfvb_publish, and the approval of the person who signed in the CLI - an approved experiment.end request for this experiment and winner, which always needs a fresh authenticator code (see POST /sfvb/approvals). 
+    # Ends a running experiment.  With winner_variation_number the winner gets every visitor, including visitors already assigned to another variation, and a page experiment's winning content is promoted into the page by the completion job on its next run, which also emails the merchant.  Without a winner a page experiment's id is cleared from its page body so the page shows variation 0, and a url experiment sends everyone to variation 0.  Always needs sfvb_publish, and the approval of the person who signed in the CLI - an approved experiment.end request for this experiment and winner.  An end with a winner always needs a fresh authenticator code; an end without a winner can be covered by the person's approval session (see POST /sfvb/approvals). 
     # @param storefront_oid [Integer] 
     # @param experiment_oid [Integer] 
     # @param [Hash] opts the optional parameters
@@ -2738,7 +2738,7 @@ module UltracartClient
     end
 
     # End an experiment
-    # Ends a running experiment.  With winner_variation_number the winner gets every visitor, including visitors already assigned to another variation, and a page experiment&#39;s winning content is promoted into the page by the completion job on its next run, which also emails the merchant.  Without a winner a page experiment&#39;s id is cleared from its page body so the page shows variation 0, and a url experiment sends everyone to variation 0.  Always needs sfvb_publish, and the approval of the person who signed in the CLI - an approved experiment.end request for this experiment and winner, which always needs a fresh authenticator code (see POST /sfvb/approvals). 
+    # Ends a running experiment.  With winner_variation_number the winner gets every visitor, including visitors already assigned to another variation, and a page experiment&#39;s winning content is promoted into the page by the completion job on its next run, which also emails the merchant.  Without a winner a page experiment&#39;s id is cleared from its page body so the page shows variation 0, and a url experiment sends everyone to variation 0.  Always needs sfvb_publish, and the approval of the person who signed in the CLI - an approved experiment.end request for this experiment and winner.  An end with a winner always needs a fresh authenticator code; an end without a winner can be covered by the person&#39;s approval session (see POST /sfvb/approvals). 
     # @param storefront_oid [Integer] 
     # @param experiment_oid [Integer] 
     # @param [Hash] opts the optional parameters
@@ -3351,6 +3351,138 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_element\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Replay events
+    # The signed-in person's events after the cursor, oldest first.  Events are kept 72 hours; an older cursor returns resync_required, and then the caller re-lists what it was waiting on.  Events about one sign-in's requests, such as approvals, are only returned to that sign-in.  limit is 1 to 500, default 100. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :after Return events after this event_id.  Leave it out for every event kept.
+    # @option opts [Integer] :storefront_oid Only events about this storefront, plus merchant-level ones.
+    # @option opts [Integer] :limit At most this many events, 1 to 500.
+    # @return [SfvbEventsResponse]
+    def get_sfvb_events(opts = {})
+      data, _status_code, _headers = get_sfvb_events_with_http_info(opts)
+      data
+    end
+
+    # Replay events
+    # The signed-in person&#39;s events after the cursor, oldest first.  Events are kept 72 hours; an older cursor returns resync_required, and then the caller re-lists what it was waiting on.  Events about one sign-in&#39;s requests, such as approvals, are only returned to that sign-in.  limit is 1 to 500, default 100. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :after Return events after this event_id.  Leave it out for every event kept.
+    # @option opts [Integer] :storefront_oid Only events about this storefront, plus merchant-level ones.
+    # @option opts [Integer] :limit At most this many events, 1 to 500.
+    # @return [Array<(SfvbEventsResponse, Integer, Hash)>] SfvbEventsResponse data, response status code and response headers
+    def get_sfvb_events_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_events ...'
+      end
+      # resource path
+      local_var_path = '/sfvb/events'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'after'] = opts[:'after'] if !opts[:'after'].nil?
+      query_params[:'storefront_oid'] = opts[:'storefront_oid'] if !opts[:'storefront_oid'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbEventsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_events",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_events\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Open the event stream
+    # Returns a websocket URL and a single-use token, valid for 5 minutes, for the signed-in person's event stream.  Events are thin hints, type and ids only, and the stream is at most once.  Re-read the object before acting, and after every reconnect replay from the last event_id with GET events.  Send ping messages to keep the connection open, and reconnect with a new token before two hours.  Requires a token that resolves to a user, so use the device authorization flow. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [SfvbEventsAuthRequest] :events_auth_request Optional storefront filter
+    # @return [SfvbEventsAuthResponse]
+    def get_sfvb_events_authorization(opts = {})
+      data, _status_code, _headers = get_sfvb_events_authorization_with_http_info(opts)
+      data
+    end
+
+    # Open the event stream
+    # Returns a websocket URL and a single-use token, valid for 5 minutes, for the signed-in person&#39;s event stream.  Events are thin hints, type and ids only, and the stream is at most once.  Re-read the object before acting, and after every reconnect replay from the last event_id with GET events.  Send ping messages to keep the connection open, and reconnect with a new token before two hours.  Requires a token that resolves to a user, so use the device authorization flow. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [SfvbEventsAuthRequest] :events_auth_request Optional storefront filter
+    # @return [Array<(SfvbEventsAuthResponse, Integer, Hash)>] SfvbEventsAuthResponse data, response status code and response headers
+    def get_sfvb_events_authorization_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_events_authorization ...'
+      end
+      # resource path
+      local_var_path = '/sfvb/events/auth'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'events_auth_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbEventsAuthResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_events_authorization",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_events_authorization\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -4595,7 +4727,7 @@ module UltracartClient
     end
 
     # List the paths that answered 404
-    # The paths shoppers asked for that answered 404, most hits first or by last_seen.  Paths only, never query strings.  Bots are left out unless include_bots.  Token-like path segments show as {token} unless include_tokens.  limit is 1 to 100, default 50. 
+    # The paths shoppers asked for that answered 404, most hits first or by last_seen.  Paths only, never query strings.  Bots are left out unless include_bots.  Token-like path segments show as {token} unless include_tokens.  A path stays listed after a redirect rule catches it, with redirected_to set.  redirected=false lists only paths no rule catches yet, and redirected=true only those one does.  limit is 1 to 100, default 50. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :since 
@@ -4604,6 +4736,7 @@ module UltracartClient
     # @option opts [Boolean] :include_tokens 
     # @option opts [String] :q 
     # @option opts [Integer] :limit 
+    # @option opts [Boolean] :redirected 
     # @return [SfvbNotFoundResponse]
     def get_sfvb_not_found(storefront_oid, opts = {})
       data, _status_code, _headers = get_sfvb_not_found_with_http_info(storefront_oid, opts)
@@ -4611,7 +4744,7 @@ module UltracartClient
     end
 
     # List the paths that answered 404
-    # The paths shoppers asked for that answered 404, most hits first or by last_seen.  Paths only, never query strings.  Bots are left out unless include_bots.  Token-like path segments show as {token} unless include_tokens.  limit is 1 to 100, default 50. 
+    # The paths shoppers asked for that answered 404, most hits first or by last_seen.  Paths only, never query strings.  Bots are left out unless include_bots.  Token-like path segments show as {token} unless include_tokens.  A path stays listed after a redirect rule catches it, with redirected_to set.  redirected&#x3D;false lists only paths no rule catches yet, and redirected&#x3D;true only those one does.  limit is 1 to 100, default 50. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :since 
@@ -4620,6 +4753,7 @@ module UltracartClient
     # @option opts [Boolean] :include_tokens 
     # @option opts [String] :q 
     # @option opts [Integer] :limit 
+    # @option opts [Boolean] :redirected 
     # @return [Array<(SfvbNotFoundResponse, Integer, Hash)>] SfvbNotFoundResponse data, response status code and response headers
     def get_sfvb_not_found_with_http_info(storefront_oid, opts = {})
       if @api_client.config.debugging
@@ -4640,6 +4774,7 @@ module UltracartClient
       query_params[:'include_tokens'] = opts[:'include_tokens'] if !opts[:'include_tokens'].nil?
       query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'redirected'] = opts[:'redirected'] if !opts[:'redirected'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -8552,7 +8687,7 @@ module UltracartClient
     end
 
     # Change one built-in message
-    # Sets one message in any number of languages.  ENG replaces the English, which drops its machine translations so they regenerate.  Any other language becomes a hand translation.  Languages not named are left alone; empty text is refused.  Shoppers see it at once.  Always needs sfvb_publish. 
+    # Sets one message in any number of languages.  ENG replaces the English, which drops its machine translations so they regenerate.  Any other language becomes a hand translation.  Languages not named are left alone.  Empty text removes that language's translation so machine translation fills it again (not allowed for ENG); it is the undo for an imported message, which can't be reset.  Shoppers see it at once.  Always needs sfvb_publish. 
     # @param storefront_oid [Integer] 
     # @param key [String] 
     # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
@@ -8566,7 +8701,7 @@ module UltracartClient
     end
 
     # Change one built-in message
-    # Sets one message in any number of languages.  ENG replaces the English, which drops its machine translations so they regenerate.  Any other language becomes a hand translation.  Languages not named are left alone; empty text is refused.  Shoppers see it at once.  Always needs sfvb_publish. 
+    # Sets one message in any number of languages.  ENG replaces the English, which drops its machine translations so they regenerate.  Any other language becomes a hand translation.  Languages not named are left alone.  Empty text removes that language&#39;s translation so machine translation fills it again (not allowed for ENG); it is the undo for an imported message, which can&#39;t be reset.  Shoppers see it at once.  Always needs sfvb_publish. 
     # @param storefront_oid [Integer] 
     # @param key [String] 
     # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.

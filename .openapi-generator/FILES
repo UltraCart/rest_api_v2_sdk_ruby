@@ -1013,6 +1013,10 @@ docs/SfvbElement.md
 docs/SfvbElementSchemaResponse.md
 docs/SfvbElementsResponse.md
 docs/SfvbErrorDetail.md
+docs/SfvbEvent.md
+docs/SfvbEventsAuthRequest.md
+docs/SfvbEventsAuthResponse.md
+docs/SfvbEventsResponse.md
 docs/SfvbExperiment.md
 docs/SfvbExperimentEndRequest.md
 docs/SfvbExperimentObjective.md
@@ -2317,6 +2321,10 @@ lib/ultracart_api/models/sfvb_element.rb
 lib/ultracart_api/models/sfvb_element_schema_response.rb
 lib/ultracart_api/models/sfvb_elements_response.rb
 lib/ultracart_api/models/sfvb_error_detail.rb
+lib/ultracart_api/models/sfvb_event.rb
+lib/ultracart_api/models/sfvb_events_auth_request.rb
+lib/ultracart_api/models/sfvb_events_auth_response.rb
+lib/ultracart_api/models/sfvb_events_response.rb
 lib/ultracart_api/models/sfvb_experiment.rb
 lib/ultracart_api/models/sfvb_experiment_end_request.rb
 lib/ultracart_api/models/sfvb_experiment_objective.rb
