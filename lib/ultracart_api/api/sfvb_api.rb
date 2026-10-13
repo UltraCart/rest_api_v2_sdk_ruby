@@ -9020,6 +9020,87 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Change an item image's description
+    # Changes the description (alt text) of one image already attached to the item, in place.  The image is not touched.  Name it by merchant_item_multimedia_oid, or by exactly one of code or default; gallery images often have no code.  An empty description clears it, so the render falls back again.  Send the description_sha256 you read as current_sha256 so a change made since is not overwritten.  A description written here takes the place of the machine description, and image recognition never overwrites it. 
+    # @param storefront_oid [Integer] 
+    # @param item_multimedia_description_request [SfvbItemMultimediaDescriptionRequest] The image and its new description
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @return [SfvbItemResponse]
+    def put_sfvb_item_multimedia_description(storefront_oid, item_multimedia_description_request, opts = {})
+      data, _status_code, _headers = put_sfvb_item_multimedia_description_with_http_info(storefront_oid, item_multimedia_description_request, opts)
+      data
+    end
+
+    # Change an item image&#39;s description
+    # Changes the description (alt text) of one image already attached to the item, in place.  The image is not touched.  Name it by merchant_item_multimedia_oid, or by exactly one of code or default; gallery images often have no code.  An empty description clears it, so the render falls back again.  Send the description_sha256 you read as current_sha256 so a change made since is not overwritten.  A description written here takes the place of the machine description, and image recognition never overwrites it. 
+    # @param storefront_oid [Integer] 
+    # @param item_multimedia_description_request [SfvbItemMultimediaDescriptionRequest] The image and its new description
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @return [Array<(SfvbItemResponse, Integer, Hash)>] SfvbItemResponse data, response status code and response headers
+    def put_sfvb_item_multimedia_description_with_http_info(storefront_oid, item_multimedia_description_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.put_sfvb_item_multimedia_description ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.put_sfvb_item_multimedia_description"
+      end
+      # verify the required parameter 'item_multimedia_description_request' is set
+      if @api_client.config.client_side_validation && item_multimedia_description_request.nil?
+        fail ArgumentError, "Missing the required parameter 'item_multimedia_description_request' when calling SfvbApi.put_sfvb_item_multimedia_description"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/items/multimedia/description'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'merchant_item_id'] = opts[:'merchant_item_id'] if !opts[:'merchant_item_id'].nil?
+      query_params[:'merchant_item_oid'] = opts[:'merchant_item_oid'] if !opts[:'merchant_item_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(item_multimedia_description_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbItemResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.put_sfvb_item_multimedia_description",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_item_multimedia_description\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Change what an item charges
     # Partial - a field left out is untouched.  A sale needs sale_cost, sale_start and sale_end together, the end after the start; clear_sale removes it.  msrp must be more than 0 (0 only when the price is 0); clear_msrp removes it.  volume_discounts replaces the retail quantity breaks.  Shoppers pay the new price at once, so this needs sfvb_publish, If-Match with the pricing hash_sha256, and the approval of the person who signed in the CLI - an approved item.pricing request for this item and exactly this change.  A change that sets every field to what it already is returns the pricing unchanged and uses no approval. 
     # @param storefront_oid [Integer] 

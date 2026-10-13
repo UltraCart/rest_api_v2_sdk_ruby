@@ -259,7 +259,7 @@ module UltracartClient
     # Revoke this OAuth application.
     # Revokes the OAuth application associated with the specified client_id and token. 
     # @param client_id [String] The OAuth application client_id.
-    # @param token [String] The OAuth access token that is to be revoked..
+    # @param token [String] The OAuth access token or refresh token that is to be revoked.
     # @param [Hash] opts the optional parameters
     # @return [OauthRevokeSuccessResponse]
     def oauth_revoke(client_id, token, opts = {})
@@ -270,7 +270,7 @@ module UltracartClient
     # Revoke this OAuth application.
     # Revokes the OAuth application associated with the specified client_id and token. 
     # @param client_id [String] The OAuth application client_id.
-    # @param token [String] The OAuth access token that is to be revoked..
+    # @param token [String] The OAuth access token or refresh token that is to be revoked.
     # @param [Hash] opts the optional parameters
     # @return [Array<(OauthRevokeSuccessResponse, Integer, Hash)>] OauthRevokeSuccessResponse data, response status code and response headers
     def oauth_revoke_with_http_info(client_id, token, opts = {})

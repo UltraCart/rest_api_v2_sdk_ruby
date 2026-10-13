@@ -24,8 +24,14 @@ module UltracartClient
     # True for the image an itemimage element with no code renders.  Default is per media type, so an item may have one default image and one default PDF at the same time.
     attr_accessor :default
 
-    # Stored with the image and rendered as its alt text.  When it is empty the render falls back to the item's own description, so an empty value here is not an empty alt attribute.
+    # The merchant's description, stored with the image and rendered as its alt text.  When it is empty the render falls back to rekognition_description or to text built from the item's title, depending on the element, so an empty value here is not an empty alt attribute.
     attr_accessor :description
+
+    # SHA-256 of description (empty when there is none).  Send it as current_sha256 when changing the description so a change made since you read it is not overwritten.
+    attr_accessor :description_sha256
+
+    # Where the alt text comes from now.  merchant when description is set, rekognition when only rekognition_description is, none otherwise.
+    attr_accessor :description_source
 
     # Width x height in pixels, when the storage measured the file.
     attr_accessor :dimensions
@@ -35,6 +41,12 @@ module UltracartClient
 
     # The stored file's name.  Empty when the slot is declared and nothing is attached.
     attr_accessor :filename
+
+    # The stored image's id.  Name it to change this image's description when it has no code.
+    attr_accessor :merchant_item_multimedia_oid
+
+    # The machine description image recognition produced for the stored image, if any.  It is used only while description is empty, and a description written here or in the admin always takes its place.
+    attr_accessor :rekognition_description
 
     # The media type the storage recorded.
     attr_accessor :type
@@ -71,9 +83,13 @@ module UltracartClient
         :'declared' => :'declared',
         :'default' => :'default',
         :'description' => :'description',
+        :'description_sha256' => :'description_sha256',
+        :'description_source' => :'description_source',
         :'dimensions' => :'dimensions',
         :'exclude_from_gallery' => :'exclude_from_gallery',
         :'filename' => :'filename',
+        :'merchant_item_multimedia_oid' => :'merchant_item_multimedia_oid',
+        :'rekognition_description' => :'rekognition_description',
         :'type' => :'type',
         :'view_url' => :'view_url'
       }
@@ -91,9 +107,13 @@ module UltracartClient
         :'declared' => :'Boolean',
         :'default' => :'Boolean',
         :'description' => :'String',
+        :'description_sha256' => :'String',
+        :'description_source' => :'String',
         :'dimensions' => :'String',
         :'exclude_from_gallery' => :'Boolean',
         :'filename' => :'String',
+        :'merchant_item_multimedia_oid' => :'Integer',
+        :'rekognition_description' => :'String',
         :'type' => :'String',
         :'view_url' => :'String'
       }
@@ -136,6 +156,14 @@ module UltracartClient
         self.description = attributes[:'description']
       end
 
+      if attributes.key?(:'description_sha256')
+        self.description_sha256 = attributes[:'description_sha256']
+      end
+
+      if attributes.key?(:'description_source')
+        self.description_source = attributes[:'description_source']
+      end
+
       if attributes.key?(:'dimensions')
         self.dimensions = attributes[:'dimensions']
       end
@@ -146,6 +174,14 @@ module UltracartClient
 
       if attributes.key?(:'filename')
         self.filename = attributes[:'filename']
+      end
+
+      if attributes.key?(:'merchant_item_multimedia_oid')
+        self.merchant_item_multimedia_oid = attributes[:'merchant_item_multimedia_oid']
+      end
+
+      if attributes.key?(:'rekognition_description')
+        self.rekognition_description = attributes[:'rekognition_description']
       end
 
       if attributes.key?(:'type')
@@ -167,9 +203,21 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      description_source_validator = EnumAttributeValidator.new('String', ["merchant", "rekognition", "none"])
+      return false unless description_source_validator.valid?(@description_source)
       type_validator = EnumAttributeValidator.new('String', ["Image", "Video", "PDF", "Text", "Unknown"])
       return false unless type_validator.valid?(@type)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] description_source Object to be assigned
+    def description_source=(description_source)
+      validator = EnumAttributeValidator.new('String', ["merchant", "rekognition", "none"])
+      unless validator.valid?(description_source)
+        fail ArgumentError, "invalid value for \"description_source\", must be one of #{validator.allowable_values}."
+      end
+      @description_source = description_source
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -191,9 +239,13 @@ module UltracartClient
           declared == o.declared &&
           default == o.default &&
           description == o.description &&
+          description_sha256 == o.description_sha256 &&
+          description_source == o.description_source &&
           dimensions == o.dimensions &&
           exclude_from_gallery == o.exclude_from_gallery &&
           filename == o.filename &&
+          merchant_item_multimedia_oid == o.merchant_item_multimedia_oid &&
+          rekognition_description == o.rekognition_description &&
           type == o.type &&
           view_url == o.view_url
     end
@@ -207,7 +259,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [code, declared, default, description, dimensions, exclude_from_gallery, filename, type, view_url].hash
+      [code, declared, default, description, description_sha256, description_source, dimensions, exclude_from_gallery, filename, merchant_item_multimedia_oid, rekognition_description, type, view_url].hash
     end
 
     # Builds the object from hash
