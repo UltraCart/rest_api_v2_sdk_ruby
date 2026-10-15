@@ -24,6 +24,12 @@ module UltracartClient
     # For file.put_script, the SHA-256 of the exact bytes approved.  Set by the server, never by the caller.  The write must send bytes with this hash.
     attr_accessor :content_sha256
 
+    # For sending_domain.delete, the sending domain.
+    attr_accessor :domain
+
+    # For twilio_account.delete, the Twilio account's esp_twilio_uuid, as GET comms/twilio_account returns it.
+    attr_accessor :esp_twilio_uuid
+
     # For experiment.end, the experiment to end.
     attr_accessor :experiment_oid
 
@@ -91,6 +97,8 @@ module UltracartClient
         :'attribute_names' => :'attribute_names',
         :'blog_post_oid' => :'blog_post_oid',
         :'content_sha256' => :'content_sha256',
+        :'domain' => :'domain',
+        :'esp_twilio_uuid' => :'esp_twilio_uuid',
         :'experiment_oid' => :'experiment_oid',
         :'item_count' => :'item_count',
         :'merchant_item_oid' => :'merchant_item_oid',
@@ -118,6 +126,8 @@ module UltracartClient
         :'attribute_names' => :'Array<String>',
         :'blog_post_oid' => :'Integer',
         :'content_sha256' => :'String',
+        :'domain' => :'String',
+        :'esp_twilio_uuid' => :'String',
         :'experiment_oid' => :'Integer',
         :'item_count' => :'Integer',
         :'merchant_item_oid' => :'Integer',
@@ -167,6 +177,14 @@ module UltracartClient
 
       if attributes.key?(:'content_sha256')
         self.content_sha256 = attributes[:'content_sha256']
+      end
+
+      if attributes.key?(:'domain')
+        self.domain = attributes[:'domain']
+      end
+
+      if attributes.key?(:'esp_twilio_uuid')
+        self.esp_twilio_uuid = attributes[:'esp_twilio_uuid']
       end
 
       if attributes.key?(:'experiment_oid')
@@ -255,6 +273,8 @@ module UltracartClient
           attribute_names == o.attribute_names &&
           blog_post_oid == o.blog_post_oid &&
           content_sha256 == o.content_sha256 &&
+          domain == o.domain &&
+          esp_twilio_uuid == o.esp_twilio_uuid &&
           experiment_oid == o.experiment_oid &&
           item_count == o.item_count &&
           merchant_item_oid == o.merchant_item_oid &&
@@ -279,7 +299,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attribute_names, blog_post_oid, content_sha256, experiment_oid, item_count, merchant_item_oid, path, request_sha256, rows_sha256, rule_count, slot, upsell_kind, upsell_oid, version, widget_id, winner_variation_number].hash
+      [attribute_names, blog_post_oid, content_sha256, domain, esp_twilio_uuid, experiment_oid, item_count, merchant_item_oid, path, request_sha256, rows_sha256, rule_count, slot, upsell_kind, upsell_oid, version, widget_id, winner_variation_number].hash
     end
 
     # Builds the object from hash

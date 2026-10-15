@@ -915,6 +915,134 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Remove a sending domain
+    # Removes the domain from UltraCart and from Amazon SES.  Needs an approved sending_domain.delete request for it (POST approvals, params.domain). 
+    # @param domain [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id The approval_id of an approved sending_domain.delete request for this domain.  See POST /sfvb/approvals.
+    # @return [nil]
+    def delete_sfvb_comms_sending_domain(domain, opts = {})
+      delete_sfvb_comms_sending_domain_with_http_info(domain, opts)
+      nil
+    end
+
+    # Remove a sending domain
+    # Removes the domain from UltraCart and from Amazon SES.  Needs an approved sending_domain.delete request for it (POST approvals, params.domain). 
+    # @param domain [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id The approval_id of an approved sending_domain.delete request for this domain.  See POST /sfvb/approvals.
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_sfvb_comms_sending_domain_with_http_info(domain, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.delete_sfvb_comms_sending_domain ...'
+      end
+      # verify the required parameter 'domain' is set
+      if @api_client.config.client_side_validation && domain.nil?
+        fail ArgumentError, "Missing the required parameter 'domain' when calling SfvbApi.delete_sfvb_comms_sending_domain"
+      end
+      # resource path
+      local_var_path = '/sfvb/comms/sending_domains/{domain}'.sub('{' + 'domain' + '}', CGI.escape(domain.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.delete_sfvb_comms_sending_domain",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_comms_sending_domain\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Remove the Twilio account
+    # Removes the account's Twilio account and its credentials from UltraCart.  The account stays at Twilio.  Needs an approved twilio_account.delete request for it (POST approvals, params.esp_twilio_uuid). 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id The approval_id of an approved twilio_account.delete request for this account.  See POST /sfvb/approvals.
+    # @return [nil]
+    def delete_sfvb_comms_twilio_account(opts = {})
+      delete_sfvb_comms_twilio_account_with_http_info(opts)
+      nil
+    end
+
+    # Remove the Twilio account
+    # Removes the account&#39;s Twilio account and its credentials from UltraCart.  The account stays at Twilio.  Needs an approved twilio_account.delete request for it (POST approvals, params.esp_twilio_uuid). 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id The approval_id of an approved twilio_account.delete request for this account.  See POST /sfvb/approvals.
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_sfvb_comms_twilio_account_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.delete_sfvb_comms_twilio_account ...'
+      end
+      # resource path
+      local_var_path = '/sfvb/comms/twilio_account'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.delete_sfvb_comms_twilio_account",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_comms_twilio_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete a storefront file
     # Recoverable from the recycle bin. 
     # @param storefront_oid [Integer] 
@@ -3193,6 +3321,186 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_cjson_used_elements\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read a sending domain
+    # One sending domain as stored.  To check an amazon domain's DNS again, use the status call. 
+    # @param domain [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsSendingDomain]
+    def get_sfvb_comms_sending_domain(domain, opts = {})
+      data, _status_code, _headers = get_sfvb_comms_sending_domain_with_http_info(domain, opts)
+      data
+    end
+
+    # Read a sending domain
+    # One sending domain as stored.  To check an amazon domain&#39;s DNS again, use the status call. 
+    # @param domain [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsSendingDomain, Integer, Hash)>] SfvbCommsSendingDomain data, response status code and response headers
+    def get_sfvb_comms_sending_domain_with_http_info(domain, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_comms_sending_domain ...'
+      end
+      # verify the required parameter 'domain' is set
+      if @api_client.config.client_side_validation && domain.nil?
+        fail ArgumentError, "Missing the required parameter 'domain' when calling SfvbApi.get_sfvb_comms_sending_domain"
+      end
+      # resource path
+      local_var_path = '/sfvb/comms/sending_domains/{domain}'.sub('{' + 'domain' + '}', CGI.escape(domain.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsSendingDomain'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_comms_sending_domain",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_comms_sending_domain\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List the sending domains
+    # Every domain the account sends email from, with its provider, verification status and the DNS records an amazon domain needs.  mailgun_api_key is always a mask. 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsSendingDomainsResponse]
+    def get_sfvb_comms_sending_domains(opts = {})
+      data, _status_code, _headers = get_sfvb_comms_sending_domains_with_http_info(opts)
+      data
+    end
+
+    # List the sending domains
+    # Every domain the account sends email from, with its provider, verification status and the DNS records an amazon domain needs.  mailgun_api_key is always a mask. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsSendingDomainsResponse, Integer, Hash)>] SfvbCommsSendingDomainsResponse data, response status code and response headers
+    def get_sfvb_comms_sending_domains_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_comms_sending_domains ...'
+      end
+      # resource path
+      local_var_path = '/sfvb/comms/sending_domains'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsSendingDomainsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_comms_sending_domains",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_comms_sending_domains\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read the Twilio account
+    # The account's Twilio account, used for SMS and the phone system, or none.  An account has at most one.  auth_token is always a mask. 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsTwilioAccountResponse]
+    def get_sfvb_comms_twilio_account(opts = {})
+      data, _status_code, _headers = get_sfvb_comms_twilio_account_with_http_info(opts)
+      data
+    end
+
+    # Read the Twilio account
+    # The account&#39;s Twilio account, used for SMS and the phone system, or none.  An account has at most one.  auth_token is always a mask. 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsTwilioAccountResponse, Integer, Hash)>] SfvbCommsTwilioAccountResponse data, response status code and response headers
+    def get_sfvb_comms_twilio_account_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_comms_twilio_account ...'
+      end
+      # resource path
+      local_var_path = '/sfvb/comms/twilio_account'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsTwilioAccountResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_comms_twilio_account",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_comms_twilio_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6892,6 +7200,144 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Add a sending domain
+    # Adds a domain to send email from.  An amazon domain starts verification with Amazon SES and returns the DNS records to publish; the person signed in also gets them by email.  A mailgun domain needs mailgun_api_key as a secret handle made for the domain (POST secrets, sink mailgun.domain.api_key), never the key itself.  UltraCart sets up its webhooks on the Mailgun domain with the key; if Mailgun refuses, nothing is saved and the handle is given back unused. 
+    # @param sending_domain [SfvbCommsSendingDomain] The sending domain
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsSendingDomain]
+    def insert_sfvb_comms_sending_domain(sending_domain, opts = {})
+      data, _status_code, _headers = insert_sfvb_comms_sending_domain_with_http_info(sending_domain, opts)
+      data
+    end
+
+    # Add a sending domain
+    # Adds a domain to send email from.  An amazon domain starts verification with Amazon SES and returns the DNS records to publish; the person signed in also gets them by email.  A mailgun domain needs mailgun_api_key as a secret handle made for the domain (POST secrets, sink mailgun.domain.api_key), never the key itself.  UltraCart sets up its webhooks on the Mailgun domain with the key; if Mailgun refuses, nothing is saved and the handle is given back unused. 
+    # @param sending_domain [SfvbCommsSendingDomain] The sending domain
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsSendingDomain, Integer, Hash)>] SfvbCommsSendingDomain data, response status code and response headers
+    def insert_sfvb_comms_sending_domain_with_http_info(sending_domain, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.insert_sfvb_comms_sending_domain ...'
+      end
+      # verify the required parameter 'sending_domain' is set
+      if @api_client.config.client_side_validation && sending_domain.nil?
+        fail ArgumentError, "Missing the required parameter 'sending_domain' when calling SfvbApi.insert_sfvb_comms_sending_domain"
+      end
+      # resource path
+      local_var_path = '/sfvb/comms/sending_domains'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(sending_domain)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsSendingDomain'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.insert_sfvb_comms_sending_domain",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_comms_sending_domain\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Connect the Twilio account
+    # Connects the account's Twilio account with account_sid and auth_token.  Send auth_token as a secret handle made for that account SID (POST secrets, sink twilio.account.auth_token), never the token itself.  UltraCart checks the token with Twilio, then makes its API key, TwiML apps and voice encryption key on the account, as the admin does.  If Twilio refuses, nothing is saved and the handle is given back unused.  An account has at most one Twilio account, so this is refused when one exists; update it instead. 
+    # @param twilio_account [SfvbCommsTwilioAccount] The Twilio account
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsTwilioAccountResponse]
+    def insert_sfvb_comms_twilio_account(twilio_account, opts = {})
+      data, _status_code, _headers = insert_sfvb_comms_twilio_account_with_http_info(twilio_account, opts)
+      data
+    end
+
+    # Connect the Twilio account
+    # Connects the account&#39;s Twilio account with account_sid and auth_token.  Send auth_token as a secret handle made for that account SID (POST secrets, sink twilio.account.auth_token), never the token itself.  UltraCart checks the token with Twilio, then makes its API key, TwiML apps and voice encryption key on the account, as the admin does.  If Twilio refuses, nothing is saved and the handle is given back unused.  An account has at most one Twilio account, so this is refused when one exists; update it instead. 
+    # @param twilio_account [SfvbCommsTwilioAccount] The Twilio account
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsTwilioAccountResponse, Integer, Hash)>] SfvbCommsTwilioAccountResponse data, response status code and response headers
+    def insert_sfvb_comms_twilio_account_with_http_info(twilio_account, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.insert_sfvb_comms_twilio_account ...'
+      end
+      # verify the required parameter 'twilio_account' is set
+      if @api_client.config.client_side_validation && twilio_account.nil?
+        fail ArgumentError, "Missing the required parameter 'twilio_account' when calling SfvbApi.insert_sfvb_comms_twilio_account"
+      end
+      # resource path
+      local_var_path = '/sfvb/comms/twilio_account'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(twilio_account)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsTwilioAccountResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.insert_sfvb_comms_twilio_account",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_comms_twilio_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a page
     # Creates the page and its folder, the way the store admin's add page does.  The parent page must already exist, and the last part of the path may only contain letters, digits, hyphens and underscores - it is refused, not cleaned.  A path that already has a page is refused with a 409 and the code sfvb.page_exists.  Without a group_template the page inherits its parent's templates, or catalog_group.vm directly under the root.  Set attributes and images afterwards with the page attribute and image endpoints, and push the body to the page folder.  Always needs sfvb_publish, because the page is live as soon as it exists.  Deleting, moving and renaming pages stay in the store admin. 
     # @param storefront_oid [Integer] 
@@ -10401,6 +10847,70 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Check a sending domain's verification
+    # Asks Amazon SES again whether an amazon domain's DNS records are in place, and restarts a verification that failed (its records then change).  A mailgun domain comes back as it is; Mailgun checks its own records. 
+    # @param domain [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsSendingDomain]
+    def refresh_sfvb_comms_sending_domain_status(domain, opts = {})
+      data, _status_code, _headers = refresh_sfvb_comms_sending_domain_status_with_http_info(domain, opts)
+      data
+    end
+
+    # Check a sending domain&#39;s verification
+    # Asks Amazon SES again whether an amazon domain&#39;s DNS records are in place, and restarts a verification that failed (its records then change).  A mailgun domain comes back as it is; Mailgun checks its own records. 
+    # @param domain [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsSendingDomain, Integer, Hash)>] SfvbCommsSendingDomain data, response status code and response headers
+    def refresh_sfvb_comms_sending_domain_status_with_http_info(domain, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.refresh_sfvb_comms_sending_domain_status ...'
+      end
+      # verify the required parameter 'domain' is set
+      if @api_client.config.client_side_validation && domain.nil?
+        fail ArgumentError, "Missing the required parameter 'domain' when calling SfvbApi.refresh_sfvb_comms_sending_domain_status"
+      end
+      # resource path
+      local_var_path = '/sfvb/comms/sending_domains/{domain}/status'.sub('{' + 'domain' + '}', CGI.escape(domain.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsSendingDomain'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.refresh_sfvb_comms_sending_domain_status",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#refresh_sfvb_comms_sending_domain_status\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Drop one page's cached copy
     # The next request renders the page fresh.  Use it when a write succeeded, a read shows the new value, and the public page still shows the old one.  Writes normally refresh the pages they affect, so a stale page after a write is a bug worth reporting with its URL.  One page per request.  The response says whether the page had a cached copy and whether anything was dropped. 
     # @param storefront_oid [Integer] 
@@ -12097,6 +12607,150 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_blog_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a sending domain
+    # Only a mailgun domain's mailgun_api_key can change.  Send it as a secret handle made for the domain to replace it, or as the mask it was read with to keep it.  A new key sets up UltraCart's webhooks again with it; if Mailgun refuses, nothing is saved and the handle is given back unused. 
+    # @param domain [String] 
+    # @param sending_domain [SfvbCommsSendingDomain] The changes
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsSendingDomain]
+    def update_sfvb_comms_sending_domain(domain, sending_domain, opts = {})
+      data, _status_code, _headers = update_sfvb_comms_sending_domain_with_http_info(domain, sending_domain, opts)
+      data
+    end
+
+    # Update a sending domain
+    # Only a mailgun domain&#39;s mailgun_api_key can change.  Send it as a secret handle made for the domain to replace it, or as the mask it was read with to keep it.  A new key sets up UltraCart&#39;s webhooks again with it; if Mailgun refuses, nothing is saved and the handle is given back unused. 
+    # @param domain [String] 
+    # @param sending_domain [SfvbCommsSendingDomain] The changes
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsSendingDomain, Integer, Hash)>] SfvbCommsSendingDomain data, response status code and response headers
+    def update_sfvb_comms_sending_domain_with_http_info(domain, sending_domain, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_comms_sending_domain ...'
+      end
+      # verify the required parameter 'domain' is set
+      if @api_client.config.client_side_validation && domain.nil?
+        fail ArgumentError, "Missing the required parameter 'domain' when calling SfvbApi.update_sfvb_comms_sending_domain"
+      end
+      # verify the required parameter 'sending_domain' is set
+      if @api_client.config.client_side_validation && sending_domain.nil?
+        fail ArgumentError, "Missing the required parameter 'sending_domain' when calling SfvbApi.update_sfvb_comms_sending_domain"
+      end
+      # resource path
+      local_var_path = '/sfvb/comms/sending_domains/{domain}'.sub('{' + 'domain' + '}', CGI.escape(domain.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(sending_domain)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsSendingDomain'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_comms_sending_domain",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_comms_sending_domain\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update the Twilio account
+    # Changes the account's Twilio account.  Leave a field out to keep it.  Send auth_token as the mask it was read with to keep it, or as a secret handle made for the account SID to replace it.  A new account_sid needs a new auth_token with it.  A new token is checked with Twilio and UltraCart's API key, TwiML apps and voice encryption key are made again; if Twilio refuses, nothing is saved and the handle is given back unused.  phone_numbers, when sent, replaces the list. 
+    # @param twilio_account [SfvbCommsTwilioAccount] The changes
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsTwilioAccountResponse]
+    def update_sfvb_comms_twilio_account(twilio_account, opts = {})
+      data, _status_code, _headers = update_sfvb_comms_twilio_account_with_http_info(twilio_account, opts)
+      data
+    end
+
+    # Update the Twilio account
+    # Changes the account&#39;s Twilio account.  Leave a field out to keep it.  Send auth_token as the mask it was read with to keep it, or as a secret handle made for the account SID to replace it.  A new account_sid needs a new auth_token with it.  A new token is checked with Twilio and UltraCart&#39;s API key, TwiML apps and voice encryption key are made again; if Twilio refuses, nothing is saved and the handle is given back unused.  phone_numbers, when sent, replaces the list. 
+    # @param twilio_account [SfvbCommsTwilioAccount] The changes
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsTwilioAccountResponse, Integer, Hash)>] SfvbCommsTwilioAccountResponse data, response status code and response headers
+    def update_sfvb_comms_twilio_account_with_http_info(twilio_account, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_comms_twilio_account ...'
+      end
+      # verify the required parameter 'twilio_account' is set
+      if @api_client.config.client_side_validation && twilio_account.nil?
+        fail ArgumentError, "Missing the required parameter 'twilio_account' when calling SfvbApi.update_sfvb_comms_twilio_account"
+      end
+      # resource path
+      local_var_path = '/sfvb/comms/twilio_account'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(twilio_account)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsTwilioAccountResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_comms_twilio_account",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_comms_twilio_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
