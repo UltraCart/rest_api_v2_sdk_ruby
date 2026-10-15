@@ -6628,6 +6628,70 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # List the transactional emails a storefront sends
+    # The order, shipment, auto order and other transactional emails this storefront sends, with their template files and the body container a draft replaces.  Forgot password and chat verification are not listed, because they have no preview. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbTransactionalEmailsResponse]
+    def get_sfvb_transactional_emails(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_transactional_emails_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List the transactional emails a storefront sends
+    # The order, shipment, auto order and other transactional emails this storefront sends, with their template files and the body container a draft replaces.  Forgot password and chat verification are not listed, because they have no preview. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbTransactionalEmailsResponse, Integer, Hash)>] SfvbTransactionalEmailsResponse data, response status code and response headers
+    def get_sfvb_transactional_emails_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_transactional_emails ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_transactional_emails"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/transactional_emails'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTransactionalEmailsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_transactional_emails",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_transactional_emails\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get an upsell offer
     # The whole offer, with the hash an update sends back in If-Match, which upsell items are out of stock now, and whether loyalty, TowerData and Everflow are set up.  Stats as on the path list. 
     # @param storefront_oid [Integer] 
@@ -11146,6 +11210,168 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#remove_sfvb_page_items\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Render a flow or campaign email without sending it
+    # Renders a flow or campaign email exactly as its send would, and returns the subject, preview text, HTML and text.  Nothing is sent, saved or created.  A unique coupon code, click id and magic link token are placeholders.  A missing footer token, which a send skips the email for, is a warning.  Give cjson to render an unsaved draft of the email container in place of the saved one.  An order must be a test order.  cart_item_ids fills the cart a cart flow email shows. 
+    # @param storefront_oid [Integer] 
+    # @param email_uuid [String] 
+    # @param email_render_request [SfvbEmailRenderRequest] What to render the email with
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbEmailRenderResponse]
+    def render_sfvb_email(storefront_oid, email_uuid, email_render_request, opts = {})
+      data, _status_code, _headers = render_sfvb_email_with_http_info(storefront_oid, email_uuid, email_render_request, opts)
+      data
+    end
+
+    # Render a flow or campaign email without sending it
+    # Renders a flow or campaign email exactly as its send would, and returns the subject, preview text, HTML and text.  Nothing is sent, saved or created.  A unique coupon code, click id and magic link token are placeholders.  A missing footer token, which a send skips the email for, is a warning.  Give cjson to render an unsaved draft of the email container in place of the saved one.  An order must be a test order.  cart_item_ids fills the cart a cart flow email shows. 
+    # @param storefront_oid [Integer] 
+    # @param email_uuid [String] 
+    # @param email_render_request [SfvbEmailRenderRequest] What to render the email with
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbEmailRenderResponse, Integer, Hash)>] SfvbEmailRenderResponse data, response status code and response headers
+    def render_sfvb_email_with_http_info(storefront_oid, email_uuid, email_render_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.render_sfvb_email ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.render_sfvb_email"
+      end
+      # verify the required parameter 'email_uuid' is set
+      if @api_client.config.client_side_validation && email_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'email_uuid' when calling SfvbApi.render_sfvb_email"
+      end
+      # verify the required parameter 'email_render_request' is set
+      if @api_client.config.client_side_validation && email_render_request.nil?
+        fail ArgumentError, "Missing the required parameter 'email_render_request' when calling SfvbApi.render_sfvb_email"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/emails/{email_uuid}/render'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'email_uuid' + '}', CGI.escape(email_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(email_render_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbEmailRenderResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.render_sfvb_email",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#render_sfvb_email\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Render a transactional email without sending it
+    # Renders a transactional email, such as the order receipt, exactly as it is sent, and returns the subject, HTML and text.  Nothing is sent or saved.  file_name is the template file, such as receipt_html.vm, or the display name.  Give cjson to render an unsaved draft of the email's body container in place of the saved one.  The order must be a test order.  Without one the email renders with a made up order. 
+    # @param storefront_oid [Integer] 
+    # @param file_name [String] 
+    # @param email_render_request [SfvbEmailRenderRequest] What to render the email with
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbEmailRenderResponse]
+    def render_sfvb_transactional_email(storefront_oid, file_name, email_render_request, opts = {})
+      data, _status_code, _headers = render_sfvb_transactional_email_with_http_info(storefront_oid, file_name, email_render_request, opts)
+      data
+    end
+
+    # Render a transactional email without sending it
+    # Renders a transactional email, such as the order receipt, exactly as it is sent, and returns the subject, HTML and text.  Nothing is sent or saved.  file_name is the template file, such as receipt_html.vm, or the display name.  Give cjson to render an unsaved draft of the email&#39;s body container in place of the saved one.  The order must be a test order.  Without one the email renders with a made up order. 
+    # @param storefront_oid [Integer] 
+    # @param file_name [String] 
+    # @param email_render_request [SfvbEmailRenderRequest] What to render the email with
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbEmailRenderResponse, Integer, Hash)>] SfvbEmailRenderResponse data, response status code and response headers
+    def render_sfvb_transactional_email_with_http_info(storefront_oid, file_name, email_render_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.render_sfvb_transactional_email ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.render_sfvb_transactional_email"
+      end
+      # verify the required parameter 'file_name' is set
+      if @api_client.config.client_side_validation && file_name.nil?
+        fail ArgumentError, "Missing the required parameter 'file_name' when calling SfvbApi.render_sfvb_transactional_email"
+      end
+      # verify the required parameter 'email_render_request' is set
+      if @api_client.config.client_side_validation && email_render_request.nil?
+        fail ArgumentError, "Missing the required parameter 'email_render_request' when calling SfvbApi.render_sfvb_transactional_email"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/transactional_emails/{file_name}/render'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'file_name' + '}', CGI.escape(file_name.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(email_render_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbEmailRenderResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.render_sfvb_transactional_email",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#render_sfvb_transactional_email\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
