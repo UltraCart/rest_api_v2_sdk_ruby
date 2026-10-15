@@ -24,13 +24,13 @@ module UltracartClient
     # The id of what changed, such as the approval_id.
     attr_accessor :object_id
 
-    # What changed, such as approval.
+    # What changed, such as approval or secret_sink.
     attr_accessor :object_type
 
     # The storefront it concerns.  Empty for merchant-level objects.
     attr_accessor :storefront_oid
 
-    # approval.decided (approved, denied, cancelled or refused by the script review) or approval.ready (the review finished and the person can decide).
+    # approval.decided (approved, denied, cancelled or refused by the script review), approval.ready (the review finished and the person can decide) or secret_sink.completed (a person entered the values of a secret request; object_id is the request id).
     attr_accessor :type
 
     # Attribute mapping from ruby-style variable name to JSON key.

@@ -24,6 +24,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**delete_sfvb_preview_session**](SfvbApi.md#delete_sfvb_preview_session) | **DELETE** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id} | Delete a preview session |
 | [**delete_sfvb_redirect**](SfvbApi.md#delete_sfvb_redirect) | **DELETE** /sfvb/storefronts/{storefront_oid}/redirects/{redirect_id} | Delete a redirect rule |
 | [**delete_sfvb_redirects**](SfvbApi.md#delete_sfvb_redirects) | **POST** /sfvb/storefronts/{storefront_oid}/redirects/delete | Delete up to 5,000 redirect rules in one call |
+| [**delete_sfvb_secret_request**](SfvbApi.md#delete_sfvb_secret_request) | **DELETE** /sfvb/secrets/{request_id} | Cancel a pending secret request |
 | [**detach_sfvb_blog_post_image**](SfvbApi.md#detach_sfvb_blog_post_image) | **POST** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid}/images/detach | Detach an image from a blog post |
 | [**disable_sfvb_i18n_language**](SfvbApi.md#disable_sfvb_i18n_language) | **POST** /sfvb/storefronts/{storefront_oid}/i18n/languages/{code}/disable | Disable a language |
 | [**disable_sfvb_upsell_offer**](SfvbApi.md#disable_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/disable | Disable an upsell offer |
@@ -82,6 +83,9 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_recording_settings**](SfvbApi.md#get_sfvb_recording_settings) | **GET** /sfvb/storefronts/{storefront_oid}/recording_settings | Get the storefront&#39;s screen recording settings |
 | [**get_sfvb_redirect**](SfvbApi.md#get_sfvb_redirect) | **GET** /sfvb/storefronts/{storefront_oid}/redirects/{redirect_id} | Read one redirect rule |
 | [**get_sfvb_redirects**](SfvbApi.md#get_sfvb_redirects) | **GET** /sfvb/storefronts/{storefront_oid}/redirects | List the storefront&#39;s redirect rules |
+| [**get_sfvb_secret_kinds**](SfvbApi.md#get_sfvb_secret_kinds) | **GET** /sfvb/secrets/kinds | List the secrets this server collects |
+| [**get_sfvb_secret_request**](SfvbApi.md#get_sfvb_secret_request) | **GET** /sfvb/secrets/{request_id} | Read one secret request |
+| [**get_sfvb_secret_requests**](SfvbApi.md#get_sfvb_secret_requests) | **GET** /sfvb/secrets | List this sign-in&#39;s secret requests |
 | [**get_sfvb_server_log**](SfvbApi.md#get_sfvb_server_log) | **GET** /sfvb/storefronts/{storefront_oid}/logs/{log_id} | Get one storefront render log |
 | [**get_sfvb_site_attributes**](SfvbApi.md#get_sfvb_site_attributes) | **GET** /sfvb/storefronts/{storefront_oid}/attributes | Read a storefront&#39;s site attributes |
 | [**get_sfvb_test_orders**](SfvbApi.md#get_sfvb_test_orders) | **GET** /sfvb/storefronts/{storefront_oid}/test_orders | List recent test orders |
@@ -98,6 +102,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**insert_sfvb_blog_post**](SfvbApi.md#insert_sfvb_blog_post) | **POST** /sfvb/storefronts/{storefront_oid}/blog_posts | Create a blog post |
 | [**insert_sfvb_page**](SfvbApi.md#insert_sfvb_page) | **POST** /sfvb/storefronts/{storefront_oid}/pages | Create a page |
 | [**insert_sfvb_redirect**](SfvbApi.md#insert_sfvb_redirect) | **POST** /sfvb/storefronts/{storefront_oid}/redirects | Create a 301 redirect rule |
+| [**insert_sfvb_secret_request**](SfvbApi.md#insert_sfvb_secret_request) | **POST** /sfvb/secrets | Ask a person to enter secret values |
 | [**insert_sfvb_upsell_offer**](SfvbApi.md#insert_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers | Create an upsell offer |
 | [**insert_sfvb_upsell_path**](SfvbApi.md#insert_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths | Create an upsell path |
 | [**install_sfvb_library_entry**](SfvbApi.md#install_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/install | Install a library entry into a storefront |
@@ -150,6 +155,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**resolve_sfvb_template**](SfvbApi.md#resolve_sfvb_template) | **GET** /sfvb/storefronts/{storefront_oid}/templates/resolve | Resolve a template name to the file a page renders |
 | [**revert_sfvb_container**](SfvbApi.md#revert_sfvb_container) | **POST** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id}/revert | Revert a container stored outside the file system |
 | [**revert_sfvb_file**](SfvbApi.md#revert_sfvb_file) | **POST** /sfvb/storefronts/{storefront_oid}/files/revert | Revert a storefront file to an earlier version |
+| [**revoke_sfvb_secret_request**](SfvbApi.md#revoke_sfvb_secret_request) | **POST** /sfvb/secrets/{request_id}/revoke | Revoke a fulfilled request&#39;s unused handles |
 | [**search_sfvb_files**](SfvbApi.md#search_sfvb_files) | **POST** /sfvb/storefronts/{storefront_oid}/files/search | Search storefront files |
 | [**search_sfvb_library**](SfvbApi.md#search_sfvb_library) | **GET** /sfvb/storefronts/{storefront_oid}/library | Search the element library |
 | [**set_sfvb_library_screenshot**](SfvbApi.md#set_sfvb_library_screenshot) | **PUT** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/screenshot | Set a library entry&#39;s screenshot |
@@ -612,7 +618,7 @@ end
 
 One time link that opens a preview in a browser with no UltraCart login
 
-The preview URL only works in a browser already signed in to UltraCart on the storefront's own host, and an agent's built in browser never is.  This returns a single use access_url on the storefront host instead.  Opening it gets past the storefront lock, shows the requested theme and applies the requested preview session for the rest of that browser session, then redirects to path.  It expires two minutes after issue or on first use.  Pages opened afterwards carry an X-UltraCart-Preview header of applied or not-applied.  Requires a token that resolves to a user, so use the device authorization flow. 
+The preview URL only works in a browser already signed in to UltraCart on the storefront's own host, and an agent's built in browser never is.  This returns a single use access_url on the storefront host instead.  Opening it gets past the storefront lock, shows the requested theme and applies the requested preview session for the rest of that browser session, then redirects to path.  It expires two minutes after issue or on first use.  With a preview session, pages opened afterwards carry an X-UltraCart-Preview header of applied or not-applied.  Without one, the pages are the live content and carry no X-UltraCart-Preview header.  Requires a token that resolves to a user, so use the device authorization flow. 
 
 
 ### Examples
@@ -1262,6 +1268,59 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## delete_sfvb_secret_request
+
+> <SfvbSecretRequest> delete_sfvb_secret_request(request_id)
+
+Cancel a pending secret request
+
+Withdraws a request nobody has filled in yet, with its handles, which frees one of the five pending slots a sign-in has.  A fulfilled request cannot be cancelled; revoke its handles instead. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_sfvb_secret_request_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbSecretRequest>, Integer, Hash)> delete_sfvb_secret_request_with_http_info(request_id)
+
+```ruby
+begin
+  # Cancel a pending secret request
+  data, status_code, headers = api_instance.delete_sfvb_secret_request_with_http_info(request_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbSecretRequest>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->delete_sfvb_secret_request_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **request_id** | **String** |  |  |
+
+### Return type
+
+[**SfvbSecretRequest**](SfvbSecretRequest.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -4418,6 +4477,161 @@ end
 - **Accept**: application/json
 
 
+## get_sfvb_secret_kinds
+
+> <SfvbSecretKindsResponse> get_sfvb_secret_kinds
+
+List the secrets this server collects
+
+The kinds of secret value, with what each looks like, and the secret fields (sinks) a handle can be written to.  Request a handle for a sink with POST secrets. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_secret_kinds_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbSecretKindsResponse>, Integer, Hash)> get_sfvb_secret_kinds_with_http_info
+
+```ruby
+begin
+  # List the secrets this server collects
+  data, status_code, headers = api_instance.get_sfvb_secret_kinds_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbSecretKindsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_secret_kinds_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SfvbSecretKindsResponse**](SfvbSecretKindsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_secret_request
+
+> <SfvbSecretRequest> get_sfvb_secret_request(request_id)
+
+Read one secret request
+
+Poll this every interval_seconds after making a request.  status is pending until a person enters the values, then fulfilled, and expired if nobody does within 24 hours.  handles lists each handle with its own status, and a fingerprint (the last few characters as a mask shows them) once its value is entered.  Never a value. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_secret_request_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbSecretRequest>, Integer, Hash)> get_sfvb_secret_request_with_http_info(request_id)
+
+```ruby
+begin
+  # Read one secret request
+  data, status_code, headers = api_instance.get_sfvb_secret_request_with_http_info(request_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbSecretRequest>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_secret_request_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **request_id** | **String** |  |  |
+
+### Return type
+
+[**SfvbSecretRequest**](SfvbSecretRequest.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_secret_requests
+
+> <SfvbSecretRequestsResponse> get_sfvb_secret_requests
+
+List this sign-in's secret requests
+
+Requests made with this sign-in in the last 24 hours, newest first, at most 50, without their handles.  Read one request for its handles. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_secret_requests_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbSecretRequestsResponse>, Integer, Hash)> get_sfvb_secret_requests_with_http_info
+
+```ruby
+begin
+  # List this sign-in's secret requests
+  data, status_code, headers = api_instance.get_sfvb_secret_requests_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbSecretRequestsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_secret_requests_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SfvbSecretRequestsResponse**](SfvbSecretRequestsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_sfvb_server_log
 
 > <SfvbServerLogDetail> get_sfvb_server_log(storefront_oid, log_id, opts)
@@ -5273,6 +5487,59 @@ end
 ### Return type
 
 [**SfvbRedirectResponse**](SfvbRedirectResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## insert_sfvb_secret_request
+
+> <SfvbSecretRequest> insert_sfvb_secret_request(secret_request)
+
+Ask a person to enter secret values
+
+Never ask for a credential in the conversation.  This makes a handle for each sink (and each key, for a bulk request) at once, pending until a person enters the values on request_url.  Show the person request_url and user_code and never open or fill in the page yourself.  Poll GET secrets/{request_id} every interval_seconds until status is fulfilled, then send each handle in its secret field.  The server writes the value in its place.  A handle works only for this sign-in, its sink and its target, for ttl_seconds and uses writes.  A request lapses after 24 hours, and shares the five pending requests a sign-in has with approvals.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  Requires a token that resolves to a user, so use the device authorization flow.  A secret request is never an approval. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_sfvb_secret_request_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbSecretRequest>, Integer, Hash)> insert_sfvb_secret_request_with_http_info(secret_request)
+
+```ruby
+begin
+  # Ask a person to enter secret values
+  data, status_code, headers = api_instance.insert_sfvb_secret_request_with_http_info(secret_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbSecretRequest>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->insert_sfvb_secret_request_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **secret_request** | [**SfvbSecretRequestCreate**](SfvbSecretRequestCreate.md) | The request |  |
+
+### Return type
+
+[**SfvbSecretRequest**](SfvbSecretRequest.md)
 
 ### Authorization
 
@@ -8166,6 +8433,59 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## revoke_sfvb_secret_request
+
+> <SfvbSecretRequest> revoke_sfvb_secret_request(request_id)
+
+Revoke a fulfilled request's unused handles
+
+Every handle of the request that no write has used up stops working at once, and its value is deleted.  A handle a write is using right now is left to that write.  Use it when the plan changed, or a handle may have leaked. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the revoke_sfvb_secret_request_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbSecretRequest>, Integer, Hash)> revoke_sfvb_secret_request_with_http_info(request_id)
+
+```ruby
+begin
+  # Revoke a fulfilled request's unused handles
+  data, status_code, headers = api_instance.revoke_sfvb_secret_request_with_http_info(request_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbSecretRequest>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->revoke_sfvb_secret_request_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **request_id** | **String** |  |  |
+
+### Return type
+
+[**SfvbSecretRequest**](SfvbSecretRequest.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
