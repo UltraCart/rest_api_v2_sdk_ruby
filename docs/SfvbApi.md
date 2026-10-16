@@ -48,6 +48,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_approval**](SfvbApi.md#get_sfvb_approval) | **GET** /sfvb/approvals/{approval_id} | Read one approval request |
 | [**get_sfvb_approvals**](SfvbApi.md#get_sfvb_approvals) | **GET** /sfvb/approvals | List this sign-in&#39;s approval requests |
 | [**get_sfvb_blog_post**](SfvbApi.md#get_sfvb_blog_post) | **GET** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Read a blog post |
+| [**get_sfvb_campaign**](SfvbApi.md#get_sfvb_campaign) | **GET** /sfvb/storefronts/{storefront_oid}/campaigns/{campaign_uuid} | Get a campaign |
 | [**get_sfvb_cjson_used_elements**](SfvbApi.md#get_sfvb_cjson_used_elements) | **POST** /sfvb/cjson/elements | Element types used by a container |
 | [**get_sfvb_comms_sending_domain**](SfvbApi.md#get_sfvb_comms_sending_domain) | **GET** /sfvb/comms/sending_domains/{domain} | Read a sending domain |
 | [**get_sfvb_comms_sending_domains**](SfvbApi.md#get_sfvb_comms_sending_domains) | **GET** /sfvb/comms/sending_domains | List the sending domains |
@@ -61,6 +62,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_experiment_objectives**](SfvbApi.md#get_sfvb_experiment_objectives) | **GET** /sfvb/storefronts/{storefront_oid}/experiments/objectives | List the objectives an experiment can optimize |
 | [**get_sfvb_file_content**](SfvbApi.md#get_sfvb_file_content) | **GET** /sfvb/storefronts/{storefront_oid}/files/content | Read a storefront file |
 | [**get_sfvb_file_upload_url**](SfvbApi.md#get_sfvb_file_upload_url) | **GET** /sfvb/storefronts/{storefront_oid}/files/upload_url/{extension} | Get a URL to upload a binary asset to |
+| [**get_sfvb_flow**](SfvbApi.md#get_sfvb_flow) | **GET** /sfvb/storefronts/{storefront_oid}/flows/{flow_uuid} | Get a flow |
 | [**get_sfvb_i18n_glossary**](SfvbApi.md#get_sfvb_i18n_glossary) | **GET** /sfvb/storefronts/{storefront_oid}/i18n/glossary | Read the storefront&#39;s translation glossary |
 | [**get_sfvb_i18n_languages**](SfvbApi.md#get_sfvb_i18n_languages) | **GET** /sfvb/storefronts/{storefront_oid}/i18n/languages | List a storefront&#39;s languages |
 | [**get_sfvb_i18n_machine_translations**](SfvbApi.md#get_sfvb_i18n_machine_translations) | **GET** /sfvb/storefronts/{storefront_oid}/i18n/machine_translations | Read where a widget setting&#39;s translations come from |
@@ -115,11 +117,13 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**insert_sfvb_upsell_path**](SfvbApi.md#insert_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths | Create an upsell path |
 | [**install_sfvb_library_entry**](SfvbApi.md#install_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/install | Install a library entry into a storefront |
 | [**list_sfvb_blog_posts**](SfvbApi.md#list_sfvb_blog_posts) | **GET** /sfvb/storefronts/{storefront_oid}/blog_posts | List the storefront&#39;s blog posts |
+| [**list_sfvb_campaigns**](SfvbApi.md#list_sfvb_campaigns) | **GET** /sfvb/storefronts/{storefront_oid}/campaigns | List the storefront&#39;s campaigns |
 | [**list_sfvb_container_versions**](SfvbApi.md#list_sfvb_container_versions) | **GET** /sfvb/storefronts/{storefront_oid}/container_versions | Version history for a container stored outside the file system |
 | [**list_sfvb_elements**](SfvbApi.md#list_sfvb_elements) | **GET** /sfvb/elements | List every SFVB element type |
 | [**list_sfvb_experiments**](SfvbApi.md#list_sfvb_experiments) | **GET** /sfvb/storefronts/{storefront_oid}/experiments | List the storefront&#39;s experiments |
 | [**list_sfvb_file_versions**](SfvbApi.md#list_sfvb_file_versions) | **GET** /sfvb/storefronts/{storefront_oid}/files/versions | Version history for a storefront file |
 | [**list_sfvb_files**](SfvbApi.md#list_sfvb_files) | **GET** /sfvb/storefronts/{storefront_oid}/files | List a storefront directory |
+| [**list_sfvb_flows**](SfvbApi.md#list_sfvb_flows) | **GET** /sfvb/storefronts/{storefront_oid}/flows | List the storefront&#39;s flows |
 | [**list_sfvb_i18n_messages**](SfvbApi.md#list_sfvb_i18n_messages) | **GET** /sfvb/storefronts/{storefront_oid}/i18n/messages | List built-in messages |
 | [**list_sfvb_item_containers**](SfvbApi.md#list_sfvb_item_containers) | **GET** /sfvb/storefronts/{storefront_oid}/item_containers | List the item containers on the account |
 | [**list_sfvb_library_installs**](SfvbApi.md#list_sfvb_library_installs) | **GET** /sfvb/storefronts/{storefront_oid}/library/installs | List the library entries installed on a storefront |
@@ -2585,6 +2589,60 @@ end
 - **Accept**: application/json
 
 
+## get_sfvb_campaign
+
+> <SfvbCampaign> get_sfvb_campaign(storefront_oid, campaign_uuid)
+
+Get a campaign
+
+One campaign, the same object as its list entry, with its emails and postcards in step order.  A deleted campaign is returned with deleted true. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_campaign_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCampaign>, Integer, Hash)> get_sfvb_campaign_with_http_info(storefront_oid, campaign_uuid)
+
+```ruby
+begin
+  # Get a campaign
+  data, status_code, headers = api_instance.get_sfvb_campaign_with_http_info(storefront_oid, campaign_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCampaign>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_campaign_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **campaign_uuid** | **String** |  |  |
+
+### Return type
+
+[**SfvbCampaign**](SfvbCampaign.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_sfvb_cjson_used_elements
 
 > <SfvbElementsResponse> get_sfvb_cjson_used_elements(compile_request)
@@ -3271,6 +3329,60 @@ end
 ### Return type
 
 [**SfvbFileUploadUrlResponse**](SfvbFileUploadUrlResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_flow
+
+> <SfvbFlow> get_sfvb_flow(storefront_oid, flow_uuid)
+
+Get a flow
+
+One flow, the same object as its list entry, with its emails and postcards in step order.  A deleted flow is returned with deleted true. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_flow_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbFlow>, Integer, Hash)> get_sfvb_flow_with_http_info(storefront_oid, flow_uuid)
+
+```ruby
+begin
+  # Get a flow
+  data, status_code, headers = api_instance.get_sfvb_flow_with_http_info(storefront_oid, flow_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbFlow>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_flow_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **flow_uuid** | **String** |  |  |
+
+### Return type
+
+[**SfvbFlow**](SfvbFlow.md)
 
 ### Authorization
 
@@ -6204,6 +6316,63 @@ end
 - **Accept**: application/json
 
 
+## list_sfvb_campaigns
+
+> <SfvbCampaignsResponse> list_sfvb_campaigns(storefront_oid, opts)
+
+List the storefront's campaigns
+
+One page of campaigns, newest first, each with its emails and postcards in step order, without their container JSON.  search matches the campaign name.  Deleted campaigns are left out unless include_deleted is true.  live is true unless the status sends nothing (draft or archived), so a change to one of its emails reaches customers at once. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the list_sfvb_campaigns_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCampaignsResponse>, Integer, Hash)> list_sfvb_campaigns_with_http_info(storefront_oid, opts)
+
+```ruby
+begin
+  # List the storefront's campaigns
+  data, status_code, headers = api_instance.list_sfvb_campaigns_with_http_info(storefront_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCampaignsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->list_sfvb_campaigns_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **search** | **String** | Text to search for in the name | [optional] |
+| **page** | **Integer** | Page number, starting at 1 | [optional] |
+| **page_size** | **Integer** | Campaigns per page, 1 to 100, default 50 | [optional] |
+| **include_deleted** | **Boolean** | Include deleted campaigns | [optional] |
+
+### Return type
+
+[**SfvbCampaignsResponse**](SfvbCampaignsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_sfvb_container_versions
 
 > <SfvbContainerVersionsResponse> list_sfvb_container_versions(storefront_oid, opts)
@@ -6467,6 +6636,63 @@ end
 ### Return type
 
 [**SfvbFilesResponse**](SfvbFilesResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_sfvb_flows
+
+> <SfvbFlowsResponse> list_sfvb_flows(storefront_oid, opts)
+
+List the storefront's flows
+
+One page of flows, newest first, each with its trigger and its emails and postcards in step order, without their container JSON.  search matches the flow name.  Deleted flows are left out unless include_deleted is true.  live is true unless the status sends nothing (draft or inactive); a paused flow still holds enrolled customers, so it counts as live. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the list_sfvb_flows_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbFlowsResponse>, Integer, Hash)> list_sfvb_flows_with_http_info(storefront_oid, opts)
+
+```ruby
+begin
+  # List the storefront's flows
+  data, status_code, headers = api_instance.list_sfvb_flows_with_http_info(storefront_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbFlowsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->list_sfvb_flows_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **search** | **String** | Text to search for in the name | [optional] |
+| **page** | **Integer** | Page number, starting at 1 | [optional] |
+| **page_size** | **Integer** | Flows per page, 1 to 100, default 50 | [optional] |
+| **include_deleted** | **Boolean** | Include deleted flows | [optional] |
+
+### Return type
+
+[**SfvbFlowsResponse**](SfvbFlowsResponse.md)
 
 ### Authorization
 

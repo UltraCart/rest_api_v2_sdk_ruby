@@ -1002,7 +1002,11 @@ docs/SfvbBlogPostImage.md
 docs/SfvbBlogPostImageRequest.md
 docs/SfvbBlogPostRequest.md
 docs/SfvbBlogPostsResponse.md
+docs/SfvbCampaign.md
+docs/SfvbCampaignsResponse.md
 docs/SfvbCommsDnsRecord.md
+docs/SfvbCommsEmail.md
+docs/SfvbCommsPostcard.md
 docs/SfvbCommsSendingDomain.md
 docs/SfvbCommsSendingDomainsResponse.md
 docs/SfvbCommsTwilioAccount.md
@@ -1044,6 +1048,8 @@ docs/SfvbFileVersionsResponse.md
 docs/SfvbFileWriteRequest.md
 docs/SfvbFileWriteResponse.md
 docs/SfvbFilesResponse.md
+docs/SfvbFlow.md
+docs/SfvbFlowsResponse.md
 docs/SfvbI18nGlossary.md
 docs/SfvbI18nGlossaryRequest.md
 docs/SfvbI18nLanguage.md
@@ -2327,7 +2333,11 @@ lib/ultracart_api/models/sfvb_blog_post_image.rb
 lib/ultracart_api/models/sfvb_blog_post_image_request.rb
 lib/ultracart_api/models/sfvb_blog_post_request.rb
 lib/ultracart_api/models/sfvb_blog_posts_response.rb
+lib/ultracart_api/models/sfvb_campaign.rb
+lib/ultracart_api/models/sfvb_campaigns_response.rb
 lib/ultracart_api/models/sfvb_comms_dns_record.rb
+lib/ultracart_api/models/sfvb_comms_email.rb
+lib/ultracart_api/models/sfvb_comms_postcard.rb
 lib/ultracart_api/models/sfvb_comms_sending_domain.rb
 lib/ultracart_api/models/sfvb_comms_sending_domains_response.rb
 lib/ultracart_api/models/sfvb_comms_twilio_account.rb
@@ -2369,6 +2379,8 @@ lib/ultracart_api/models/sfvb_file_versions_response.rb
 lib/ultracart_api/models/sfvb_file_write_request.rb
 lib/ultracart_api/models/sfvb_file_write_response.rb
 lib/ultracart_api/models/sfvb_files_response.rb
+lib/ultracart_api/models/sfvb_flow.rb
+lib/ultracart_api/models/sfvb_flows_response.rb
 lib/ultracart_api/models/sfvb_i18n_glossary.rb
 lib/ultracart_api/models/sfvb_i18n_glossary_request.rb
 lib/ultracart_api/models/sfvb_i18n_language.rb

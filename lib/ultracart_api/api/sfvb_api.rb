@@ -3258,6 +3258,76 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get a campaign
+    # One campaign, the same object as its list entry, with its emails and postcards in step order.  A deleted campaign is returned with deleted true. 
+    # @param storefront_oid [Integer] 
+    # @param campaign_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCampaign]
+    def get_sfvb_campaign(storefront_oid, campaign_uuid, opts = {})
+      data, _status_code, _headers = get_sfvb_campaign_with_http_info(storefront_oid, campaign_uuid, opts)
+      data
+    end
+
+    # Get a campaign
+    # One campaign, the same object as its list entry, with its emails and postcards in step order.  A deleted campaign is returned with deleted true. 
+    # @param storefront_oid [Integer] 
+    # @param campaign_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCampaign, Integer, Hash)>] SfvbCampaign data, response status code and response headers
+    def get_sfvb_campaign_with_http_info(storefront_oid, campaign_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_campaign ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_campaign"
+      end
+      # verify the required parameter 'campaign_uuid' is set
+      if @api_client.config.client_side_validation && campaign_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'campaign_uuid' when calling SfvbApi.get_sfvb_campaign"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/campaigns/{campaign_uuid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'campaign_uuid' + '}', CGI.escape(campaign_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCampaign'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_campaign",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_campaign\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Element types used by a container
     # @param compile_request [SfvbCompileRequest] CJSON to inspect
     # @param [Hash] opts the optional parameters
@@ -4132,6 +4202,76 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_file_upload_url\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get a flow
+    # One flow, the same object as its list entry, with its emails and postcards in step order.  A deleted flow is returned with deleted true. 
+    # @param storefront_oid [Integer] 
+    # @param flow_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbFlow]
+    def get_sfvb_flow(storefront_oid, flow_uuid, opts = {})
+      data, _status_code, _headers = get_sfvb_flow_with_http_info(storefront_oid, flow_uuid, opts)
+      data
+    end
+
+    # Get a flow
+    # One flow, the same object as its list entry, with its emails and postcards in step order.  A deleted flow is returned with deleted true. 
+    # @param storefront_oid [Integer] 
+    # @param flow_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbFlow, Integer, Hash)>] SfvbFlow data, response status code and response headers
+    def get_sfvb_flow_with_http_info(storefront_oid, flow_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_flow ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_flow"
+      end
+      # verify the required parameter 'flow_uuid' is set
+      if @api_client.config.client_side_validation && flow_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'flow_uuid' when calling SfvbApi.get_sfvb_flow"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/flows/{flow_uuid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'flow_uuid' + '}', CGI.escape(flow_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbFlow'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_flow",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_flow\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -7921,6 +8061,82 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # List the storefront's campaigns
+    # One page of campaigns, newest first, each with its emails and postcards in step order, without their container JSON.  search matches the campaign name.  Deleted campaigns are left out unless include_deleted is true.  live is true unless the status sends nothing (draft or archived), so a change to one of its emails reaches customers at once. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :search Text to search for in the name
+    # @option opts [Integer] :page Page number, starting at 1
+    # @option opts [Integer] :page_size Campaigns per page, 1 to 100, default 50
+    # @option opts [Boolean] :include_deleted Include deleted campaigns
+    # @return [SfvbCampaignsResponse]
+    def list_sfvb_campaigns(storefront_oid, opts = {})
+      data, _status_code, _headers = list_sfvb_campaigns_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List the storefront&#39;s campaigns
+    # One page of campaigns, newest first, each with its emails and postcards in step order, without their container JSON.  search matches the campaign name.  Deleted campaigns are left out unless include_deleted is true.  live is true unless the status sends nothing (draft or archived), so a change to one of its emails reaches customers at once. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :search Text to search for in the name
+    # @option opts [Integer] :page Page number, starting at 1
+    # @option opts [Integer] :page_size Campaigns per page, 1 to 100, default 50
+    # @option opts [Boolean] :include_deleted Include deleted campaigns
+    # @return [Array<(SfvbCampaignsResponse, Integer, Hash)>] SfvbCampaignsResponse data, response status code and response headers
+    def list_sfvb_campaigns_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.list_sfvb_campaigns ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.list_sfvb_campaigns"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/campaigns'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'include_deleted'] = opts[:'include_deleted'] if !opts[:'include_deleted'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCampaignsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.list_sfvb_campaigns",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_campaigns\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Version history for a container stored outside the file system
     # Addressed the same way as the container itself, so owner_type also says how owner_object_id is read and itemid lists the history of the item container that merchant item id names. 
     # @param storefront_oid [Integer] 
@@ -8264,6 +8480,82 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_files\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List the storefront's flows
+    # One page of flows, newest first, each with its trigger and its emails and postcards in step order, without their container JSON.  search matches the flow name.  Deleted flows are left out unless include_deleted is true.  live is true unless the status sends nothing (draft or inactive); a paused flow still holds enrolled customers, so it counts as live. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :search Text to search for in the name
+    # @option opts [Integer] :page Page number, starting at 1
+    # @option opts [Integer] :page_size Flows per page, 1 to 100, default 50
+    # @option opts [Boolean] :include_deleted Include deleted flows
+    # @return [SfvbFlowsResponse]
+    def list_sfvb_flows(storefront_oid, opts = {})
+      data, _status_code, _headers = list_sfvb_flows_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List the storefront&#39;s flows
+    # One page of flows, newest first, each with its trigger and its emails and postcards in step order, without their container JSON.  search matches the flow name.  Deleted flows are left out unless include_deleted is true.  live is true unless the status sends nothing (draft or inactive); a paused flow still holds enrolled customers, so it counts as live. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :search Text to search for in the name
+    # @option opts [Integer] :page Page number, starting at 1
+    # @option opts [Integer] :page_size Flows per page, 1 to 100, default 50
+    # @option opts [Boolean] :include_deleted Include deleted flows
+    # @return [Array<(SfvbFlowsResponse, Integer, Hash)>] SfvbFlowsResponse data, response status code and response headers
+    def list_sfvb_flows_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.list_sfvb_flows ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.list_sfvb_flows"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/flows'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'include_deleted'] = opts[:'include_deleted'] if !opts[:'include_deleted'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbFlowsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.list_sfvb_flows",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_flows\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
