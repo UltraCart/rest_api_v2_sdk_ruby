@@ -15,8 +15,11 @@ require 'time'
 
 module UltracartClient
   class SfvbTransactionalEmail
-    # The body container a draft replaces, such as receipt_body.cjson.
+    # The body container a draft replaces, such as receipt_body.cjson.  Present only when the theme has the file.
     attr_accessor :body_file_name
+
+    # The full theme file path of the body container, such as /themes/Elements/core/emails/receipt_body.cjson.  Read it with the files endpoint.  Present only when the theme has the file.
+    attr_accessor :body_path
 
     # The HTML template file, such as receipt_html.vm.
     attr_accessor :file_name
@@ -31,6 +34,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'body_file_name' => :'body_file_name',
+        :'body_path' => :'body_path',
         :'file_name' => :'file_name',
         :'name' => :'name',
         :'text_file_name' => :'text_file_name'
@@ -46,6 +50,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'body_file_name' => :'String',
+        :'body_path' => :'String',
         :'file_name' => :'String',
         :'name' => :'String',
         :'text_file_name' => :'String'
@@ -75,6 +80,10 @@ module UltracartClient
 
       if attributes.key?(:'body_file_name')
         self.body_file_name = attributes[:'body_file_name']
+      end
+
+      if attributes.key?(:'body_path')
+        self.body_path = attributes[:'body_path']
       end
 
       if attributes.key?(:'file_name')
@@ -109,6 +118,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           body_file_name == o.body_file_name &&
+          body_path == o.body_path &&
           file_name == o.file_name &&
           name == o.name &&
           text_file_name == o.text_file_name
@@ -123,7 +133,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [body_file_name, file_name, name, text_file_name].hash
+      [body_file_name, body_path, file_name, name, text_file_name].hash
     end
 
     # Builds the object from hash
