@@ -56,6 +56,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_container**](SfvbApi.md#get_sfvb_container) | **GET** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id} | Read a container stored outside the file system |
 | [**get_sfvb_container_version**](SfvbApi.md#get_sfvb_container_version) | **GET** /sfvb/storefronts/{storefront_oid}/container_versions/{container_history_oid} | Read the CJSON stored in one container history entry |
 | [**get_sfvb_element**](SfvbApi.md#get_sfvb_element) | **GET** /sfvb/elements/{element_type} | Configuration schema and field card for one element type |
+| [**get_sfvb_email**](SfvbApi.md#get_sfvb_email) | **GET** /sfvb/storefronts/{storefront_oid}/emails/{email_uuid} | Get a flow or campaign email&#39;s subject and preview text |
 | [**get_sfvb_events**](SfvbApi.md#get_sfvb_events) | **GET** /sfvb/events | Replay events |
 | [**get_sfvb_events_authorization**](SfvbApi.md#get_sfvb_events_authorization) | **PUT** /sfvb/events/auth | Open the event stream |
 | [**get_sfvb_experiment**](SfvbApi.md#get_sfvb_experiment) | **GET** /sfvb/storefronts/{storefront_oid}/experiments/{experiment_oid} | Read one experiment and its statistics |
@@ -184,6 +185,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**update_sfvb_blog_post**](SfvbApi.md#update_sfvb_blog_post) | **PUT** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Change a blog post |
 | [**update_sfvb_comms_sending_domain**](SfvbApi.md#update_sfvb_comms_sending_domain) | **PUT** /sfvb/comms/sending_domains/{domain} | Update a sending domain |
 | [**update_sfvb_comms_twilio_account**](SfvbApi.md#update_sfvb_comms_twilio_account) | **PUT** /sfvb/comms/twilio_account | Update the Twilio account |
+| [**update_sfvb_email**](SfvbApi.md#update_sfvb_email) | **PUT** /sfvb/storefronts/{storefront_oid}/emails/{email_uuid} | Change a flow or campaign email&#39;s subject or preview text |
 | [**update_sfvb_item_attribute_batch**](SfvbApi.md#update_sfvb_item_attribute_batch) | **POST** /sfvb/storefronts/{storefront_oid}/items/attributes/batch | Change attributes across many items in one call |
 | [**update_sfvb_library_entry**](SfvbApi.md#update_sfvb_library_entry) | **PUT** /sfvb/storefronts/{storefront_oid}/library/{library_oid} | Update a library entry&#39;s draft |
 | [**update_sfvb_redirect**](SfvbApi.md#update_sfvb_redirect) | **PUT** /sfvb/storefronts/{storefront_oid}/redirects/{redirect_id} | Change a redirect rule |
@@ -3004,6 +3006,60 @@ end
 ### Return type
 
 [**SfvbElementSchemaResponse**](SfvbElementSchemaResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_email
+
+> <SfvbEmail> get_sfvb_email(storefront_oid, email_uuid)
+
+Get a flow or campaign email's subject and preview text
+
+The subject, preview text and hash_sha256 to send as If-Match when updating them, with whether the email is live and its review state.  The body is the email container (owner type email).  Find the uuid in the storefront's campaigns and flows. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_email_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbEmail>, Integer, Hash)> get_sfvb_email_with_http_info(storefront_oid, email_uuid)
+
+```ruby
+begin
+  # Get a flow or campaign email's subject and preview text
+  data, status_code, headers = api_instance.get_sfvb_email_with_http_info(storefront_oid, email_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbEmail>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_email_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **email_uuid** | **String** |  |  |
+
+### Return type
+
+[**SfvbEmail**](SfvbEmail.md)
 
 ### Authorization
 
@@ -10020,6 +10076,62 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_sfvb_email
+
+> <SfvbEmail> update_sfvb_email(storefront_oid, email_uuid, if_match, email_update_request)
+
+Change a flow or campaign email's subject or preview text
+
+A field left out keeps its value.  Each is 5 to 150 characters on one line.  Send the hash_sha256 you read as If-Match.  An email in a sending flow or campaign needs sfvb_publish, as a body push does.  The merchant's content review rule applies, so an email waiting for review or rejected goes back to needing review.  An email suspended for spam is refused with sfvb.email_suspended. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_email_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbEmail>, Integer, Hash)> update_sfvb_email_with_http_info(storefront_oid, email_uuid, if_match, email_update_request)
+
+```ruby
+begin
+  # Change a flow or campaign email's subject or preview text
+  data, status_code, headers = api_instance.update_sfvb_email_with_http_info(storefront_oid, email_uuid, if_match, email_update_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbEmail>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_email_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **email_uuid** | **String** |  |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **email_update_request** | [**SfvbEmailUpdateRequest**](SfvbEmailUpdateRequest.md) | The subject or preview text to change |  |
+
+### Return type
+
+[**SfvbEmail**](SfvbEmail.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

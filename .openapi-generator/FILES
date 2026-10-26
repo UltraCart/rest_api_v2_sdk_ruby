@@ -1021,8 +1021,10 @@ docs/SfvbContainerWriteRequest.md
 docs/SfvbElement.md
 docs/SfvbElementSchemaResponse.md
 docs/SfvbElementsResponse.md
+docs/SfvbEmail.md
 docs/SfvbEmailRenderRequest.md
 docs/SfvbEmailRenderResponse.md
+docs/SfvbEmailUpdateRequest.md
 docs/SfvbErrorDetail.md
 docs/SfvbEvent.md
 docs/SfvbEventsAuthRequest.md
@@ -2352,8 +2354,10 @@ lib/ultracart_api/models/sfvb_container_write_request.rb
 lib/ultracart_api/models/sfvb_element.rb
 lib/ultracart_api/models/sfvb_element_schema_response.rb
 lib/ultracart_api/models/sfvb_elements_response.rb
+lib/ultracart_api/models/sfvb_email.rb
 lib/ultracart_api/models/sfvb_email_render_request.rb
 lib/ultracart_api/models/sfvb_email_render_response.rb
+lib/ultracart_api/models/sfvb_email_update_request.rb
 lib/ultracart_api/models/sfvb_error_detail.rb
 lib/ultracart_api/models/sfvb_event.rb
 lib/ultracart_api/models/sfvb_events_auth_request.rb

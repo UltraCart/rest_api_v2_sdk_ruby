@@ -3797,6 +3797,76 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get a flow or campaign email's subject and preview text
+    # The subject, preview text and hash_sha256 to send as If-Match when updating them, with whether the email is live and its review state.  The body is the email container (owner type email).  Find the uuid in the storefront's campaigns and flows. 
+    # @param storefront_oid [Integer] 
+    # @param email_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbEmail]
+    def get_sfvb_email(storefront_oid, email_uuid, opts = {})
+      data, _status_code, _headers = get_sfvb_email_with_http_info(storefront_oid, email_uuid, opts)
+      data
+    end
+
+    # Get a flow or campaign email&#39;s subject and preview text
+    # The subject, preview text and hash_sha256 to send as If-Match when updating them, with whether the email is live and its review state.  The body is the email container (owner type email).  Find the uuid in the storefront&#39;s campaigns and flows. 
+    # @param storefront_oid [Integer] 
+    # @param email_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbEmail, Integer, Hash)>] SfvbEmail data, response status code and response headers
+    def get_sfvb_email_with_http_info(storefront_oid, email_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_email ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_email"
+      end
+      # verify the required parameter 'email_uuid' is set
+      if @api_client.config.client_side_validation && email_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'email_uuid' when calling SfvbApi.get_sfvb_email"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/emails/{email_uuid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'email_uuid' + '}', CGI.escape(email_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbEmail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_email",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_email\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Replay events
     # The signed-in person's events after the cursor, oldest first.  Events are kept 72 hours; an older cursor returns resync_required, and then the caller re-lists what it was waiting on.  Events about one sign-in's requests, such as approvals, are only returned to that sign-in.  limit is 1 to 500, default 100. 
     # @param [Hash] opts the optional parameters
@@ -13269,6 +13339,94 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_comms_twilio_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change a flow or campaign email's subject or preview text
+    # A field left out keeps its value.  Each is 5 to 150 characters on one line.  Send the hash_sha256 you read as If-Match.  An email in a sending flow or campaign needs sfvb_publish, as a body push does.  The merchant's content review rule applies, so an email waiting for review or rejected goes back to needing review.  An email suspended for spam is refused with sfvb.email_suspended. 
+    # @param storefront_oid [Integer] 
+    # @param email_uuid [String] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param email_update_request [SfvbEmailUpdateRequest] The subject or preview text to change
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbEmail]
+    def update_sfvb_email(storefront_oid, email_uuid, if_match, email_update_request, opts = {})
+      data, _status_code, _headers = update_sfvb_email_with_http_info(storefront_oid, email_uuid, if_match, email_update_request, opts)
+      data
+    end
+
+    # Change a flow or campaign email&#39;s subject or preview text
+    # A field left out keeps its value.  Each is 5 to 150 characters on one line.  Send the hash_sha256 you read as If-Match.  An email in a sending flow or campaign needs sfvb_publish, as a body push does.  The merchant&#39;s content review rule applies, so an email waiting for review or rejected goes back to needing review.  An email suspended for spam is refused with sfvb.email_suspended. 
+    # @param storefront_oid [Integer] 
+    # @param email_uuid [String] 
+    # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param email_update_request [SfvbEmailUpdateRequest] The subject or preview text to change
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbEmail, Integer, Hash)>] SfvbEmail data, response status code and response headers
+    def update_sfvb_email_with_http_info(storefront_oid, email_uuid, if_match, email_update_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_email ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_email"
+      end
+      # verify the required parameter 'email_uuid' is set
+      if @api_client.config.client_side_validation && email_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'email_uuid' when calling SfvbApi.update_sfvb_email"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.update_sfvb_email"
+      end
+      # verify the required parameter 'email_update_request' is set
+      if @api_client.config.client_side_validation && email_update_request.nil?
+        fail ArgumentError, "Missing the required parameter 'email_update_request' when calling SfvbApi.update_sfvb_email"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/emails/{email_uuid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'email_uuid' + '}', CGI.escape(email_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(email_update_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbEmail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_email",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_email\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
