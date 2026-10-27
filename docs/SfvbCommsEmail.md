@@ -14,6 +14,9 @@
 | **step_uuid** | **String** | The step that sends this email. | [optional] |
 | **subject** | **String** | The subject line. | [optional] |
 | **transactional** | **Boolean** | True for a transactional email, which skips the marketing footer rules. | [optional] |
+| **variant_name** | **String** | For an email in an experiment step, the variant name.  Absent otherwise. | [optional] |
+| **variant_percentage** | **Float** | For an email in an experiment step, the share of customers it is sent to. | [optional] |
+| **variant_winner** | **Boolean** | For an email in an experiment step, true when the experiment chose it as the winner. | [optional] |
 | **version** | **Integer** | The email version. | [optional] |
 
 ## Example
@@ -32,6 +35,9 @@ instance = UltracartClient::SfvbCommsEmail.new(
   step_uuid: null,
   subject: null,
   transactional: null,
+  variant_name: null,
+  variant_percentage: null,
+  variant_winner: null,
   version: null
 )
 ```

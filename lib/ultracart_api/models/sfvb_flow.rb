@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class SfvbFlow
+    # True when a customer may be in this flow more than once at a time.
+    attr_accessor :allow_multiple_concurrent_enrollments
+
     # The communication sequence the steps belong to.
     attr_accessor :communication_sequence_uuid
 
@@ -27,8 +30,17 @@ module UltracartClient
     # Its emails, in step order.
     attr_accessor :emails
 
+    # True when a customer leaves the flow once they buy from one of its emails.
+    attr_accessor :end_once_customer_purchases
+
+    # True when a customer leaves the flow once they buy from any source.
+    attr_accessor :end_once_customer_purchases_anywhere
+
     # The flow uuid.
     attr_accessor :flow_uuid
+
+    # Send this as If-Match when changing, archiving or turning the flow on or off.
+    attr_accessor :hash_sha256
 
     # True when the emails and postcards reach customers now, so a change to one shows at once.  False only in a status that sends nothing.
     attr_accessor :live
@@ -36,14 +48,35 @@ module UltracartClient
     # The flow name.
     attr_accessor :name
 
+    # What a write did beyond the fields it was asked to change, such as putting emails back to needing review or setting a scheduled campaign back to draft.  Only on a write.
+    attr_accessor :notes
+
     # Its postcards, in step order.
     attr_accessor :postcards
+
+    # Days before a customer may enter again, with after_days.
+    attr_accessor :reentry_delay_days
+
+    # Whether a customer may enter again, anytime, after_days or never.
+    attr_accessor :reentry_policy
+
+    # The sending domain uuid.  Defaults to the storefront's marketing sending domain.
+    attr_accessor :sending_domain_uuid
+
+    # The from name.  Defaults to the storefront's marketing setting.
+    attr_accessor :sending_name
+
+    # The part of the from address before the at sign.  Defaults to the storefront's marketing setting.
+    attr_accessor :sending_user
 
     # The status, such as draft, active, paused, draining or inactive.
     attr_accessor :status
 
     # When the status last changed (ISO 8601, UTC).
     attr_accessor :status_dts
+
+    # The list or segment uuid, or other value, the trigger is limited to.
+    attr_accessor :trigger_parameter
 
     # The name of the trigger parameter, when the trigger takes one.
     attr_accessor :trigger_parameter_name
@@ -54,16 +87,27 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'allow_multiple_concurrent_enrollments' => :'allow_multiple_concurrent_enrollments',
         :'communication_sequence_uuid' => :'communication_sequence_uuid',
         :'created_dts' => :'created_dts',
         :'deleted' => :'deleted',
         :'emails' => :'emails',
+        :'end_once_customer_purchases' => :'end_once_customer_purchases',
+        :'end_once_customer_purchases_anywhere' => :'end_once_customer_purchases_anywhere',
         :'flow_uuid' => :'flow_uuid',
+        :'hash_sha256' => :'hash_sha256',
         :'live' => :'live',
         :'name' => :'name',
+        :'notes' => :'notes',
         :'postcards' => :'postcards',
+        :'reentry_delay_days' => :'reentry_delay_days',
+        :'reentry_policy' => :'reentry_policy',
+        :'sending_domain_uuid' => :'sending_domain_uuid',
+        :'sending_name' => :'sending_name',
+        :'sending_user' => :'sending_user',
         :'status' => :'status',
         :'status_dts' => :'status_dts',
+        :'trigger_parameter' => :'trigger_parameter',
         :'trigger_parameter_name' => :'trigger_parameter_name',
         :'trigger_type' => :'trigger_type'
       }
@@ -77,16 +121,27 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'allow_multiple_concurrent_enrollments' => :'Boolean',
         :'communication_sequence_uuid' => :'String',
         :'created_dts' => :'String',
         :'deleted' => :'Boolean',
         :'emails' => :'Array<SfvbCommsEmail>',
+        :'end_once_customer_purchases' => :'Boolean',
+        :'end_once_customer_purchases_anywhere' => :'Boolean',
         :'flow_uuid' => :'String',
+        :'hash_sha256' => :'String',
         :'live' => :'Boolean',
         :'name' => :'String',
+        :'notes' => :'Array<String>',
         :'postcards' => :'Array<SfvbCommsPostcard>',
+        :'reentry_delay_days' => :'Integer',
+        :'reentry_policy' => :'String',
+        :'sending_domain_uuid' => :'String',
+        :'sending_name' => :'String',
+        :'sending_user' => :'String',
         :'status' => :'String',
         :'status_dts' => :'String',
+        :'trigger_parameter' => :'String',
         :'trigger_parameter_name' => :'String',
         :'trigger_type' => :'String'
       }
@@ -113,6 +168,10 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'allow_multiple_concurrent_enrollments')
+        self.allow_multiple_concurrent_enrollments = attributes[:'allow_multiple_concurrent_enrollments']
+      end
+
       if attributes.key?(:'communication_sequence_uuid')
         self.communication_sequence_uuid = attributes[:'communication_sequence_uuid']
       end
@@ -131,8 +190,20 @@ module UltracartClient
         end
       end
 
+      if attributes.key?(:'end_once_customer_purchases')
+        self.end_once_customer_purchases = attributes[:'end_once_customer_purchases']
+      end
+
+      if attributes.key?(:'end_once_customer_purchases_anywhere')
+        self.end_once_customer_purchases_anywhere = attributes[:'end_once_customer_purchases_anywhere']
+      end
+
       if attributes.key?(:'flow_uuid')
         self.flow_uuid = attributes[:'flow_uuid']
+      end
+
+      if attributes.key?(:'hash_sha256')
+        self.hash_sha256 = attributes[:'hash_sha256']
       end
 
       if attributes.key?(:'live')
@@ -143,10 +214,36 @@ module UltracartClient
         self.name = attributes[:'name']
       end
 
+      if attributes.key?(:'notes')
+        if (value = attributes[:'notes']).is_a?(Array)
+          self.notes = value
+        end
+      end
+
       if attributes.key?(:'postcards')
         if (value = attributes[:'postcards']).is_a?(Array)
           self.postcards = value
         end
+      end
+
+      if attributes.key?(:'reentry_delay_days')
+        self.reentry_delay_days = attributes[:'reentry_delay_days']
+      end
+
+      if attributes.key?(:'reentry_policy')
+        self.reentry_policy = attributes[:'reentry_policy']
+      end
+
+      if attributes.key?(:'sending_domain_uuid')
+        self.sending_domain_uuid = attributes[:'sending_domain_uuid']
+      end
+
+      if attributes.key?(:'sending_name')
+        self.sending_name = attributes[:'sending_name']
+      end
+
+      if attributes.key?(:'sending_user')
+        self.sending_user = attributes[:'sending_user']
       end
 
       if attributes.key?(:'status')
@@ -155,6 +252,10 @@ module UltracartClient
 
       if attributes.key?(:'status_dts')
         self.status_dts = attributes[:'status_dts']
+      end
+
+      if attributes.key?(:'trigger_parameter')
+        self.trigger_parameter = attributes[:'trigger_parameter']
       end
 
       if attributes.key?(:'trigger_parameter_name')
@@ -184,16 +285,27 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          allow_multiple_concurrent_enrollments == o.allow_multiple_concurrent_enrollments &&
           communication_sequence_uuid == o.communication_sequence_uuid &&
           created_dts == o.created_dts &&
           deleted == o.deleted &&
           emails == o.emails &&
+          end_once_customer_purchases == o.end_once_customer_purchases &&
+          end_once_customer_purchases_anywhere == o.end_once_customer_purchases_anywhere &&
           flow_uuid == o.flow_uuid &&
+          hash_sha256 == o.hash_sha256 &&
           live == o.live &&
           name == o.name &&
+          notes == o.notes &&
           postcards == o.postcards &&
+          reentry_delay_days == o.reentry_delay_days &&
+          reentry_policy == o.reentry_policy &&
+          sending_domain_uuid == o.sending_domain_uuid &&
+          sending_name == o.sending_name &&
+          sending_user == o.sending_user &&
           status == o.status &&
           status_dts == o.status_dts &&
+          trigger_parameter == o.trigger_parameter &&
           trigger_parameter_name == o.trigger_parameter_name &&
           trigger_type == o.trigger_type
     end
@@ -207,7 +319,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [communication_sequence_uuid, created_dts, deleted, emails, flow_uuid, live, name, postcards, status, status_dts, trigger_parameter_name, trigger_type].hash
+      [allow_multiple_concurrent_enrollments, communication_sequence_uuid, created_dts, deleted, emails, end_once_customer_purchases, end_once_customer_purchases_anywhere, flow_uuid, hash_sha256, live, name, notes, postcards, reentry_delay_days, reentry_policy, sending_domain_uuid, sending_name, sending_user, status, status_dts, trigger_parameter, trigger_parameter_name, trigger_type].hash
     end
 
     # Builds the object from hash

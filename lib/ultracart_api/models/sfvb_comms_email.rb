@@ -45,6 +45,15 @@ module UltracartClient
     # True for a transactional email, which skips the marketing footer rules.
     attr_accessor :transactional
 
+    # For an email in an experiment step, the variant name.  Absent otherwise.
+    attr_accessor :variant_name
+
+    # For an email in an experiment step, the share of customers it is sent to.
+    attr_accessor :variant_percentage
+
+    # For an email in an experiment step, true when the experiment chose it as the winner.
+    attr_accessor :variant_winner
+
     # The email version.
     attr_accessor :version
 
@@ -61,6 +70,9 @@ module UltracartClient
         :'step_uuid' => :'step_uuid',
         :'subject' => :'subject',
         :'transactional' => :'transactional',
+        :'variant_name' => :'variant_name',
+        :'variant_percentage' => :'variant_percentage',
+        :'variant_winner' => :'variant_winner',
         :'version' => :'version'
       }
     end
@@ -83,6 +95,9 @@ module UltracartClient
         :'step_uuid' => :'String',
         :'subject' => :'String',
         :'transactional' => :'Boolean',
+        :'variant_name' => :'String',
+        :'variant_percentage' => :'Float',
+        :'variant_winner' => :'Boolean',
         :'version' => :'Integer'
       }
     end
@@ -148,6 +163,18 @@ module UltracartClient
         self.transactional = attributes[:'transactional']
       end
 
+      if attributes.key?(:'variant_name')
+        self.variant_name = attributes[:'variant_name']
+      end
+
+      if attributes.key?(:'variant_percentage')
+        self.variant_percentage = attributes[:'variant_percentage']
+      end
+
+      if attributes.key?(:'variant_winner')
+        self.variant_winner = attributes[:'variant_winner']
+      end
+
       if attributes.key?(:'version')
         self.version = attributes[:'version']
       end
@@ -181,6 +208,9 @@ module UltracartClient
           step_uuid == o.step_uuid &&
           subject == o.subject &&
           transactional == o.transactional &&
+          variant_name == o.variant_name &&
+          variant_percentage == o.variant_percentage &&
+          variant_winner == o.variant_winner &&
           version == o.version
     end
 
@@ -193,7 +223,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [container_last_modified_dts, deleted, email_uuid, pending_review, preview_text, rejected, requires_review, step_uuid, subject, transactional, version].hash
+      [container_last_modified_dts, deleted, email_uuid, pending_review, preview_text, rejected, requires_review, step_uuid, subject, transactional, variant_name, variant_percentage, variant_winner, version].hash
     end
 
     # Builds the object from hash

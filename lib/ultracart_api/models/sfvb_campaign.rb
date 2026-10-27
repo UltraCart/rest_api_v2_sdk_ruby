@@ -30,17 +30,41 @@ module UltracartClient
     # Its emails, in step order.
     attr_accessor :emails
 
+    # True when a customer leaves the campaign once they buy from one of its emails.
+    attr_accessor :end_once_customer_purchases
+
+    # True when a customer leaves the campaign once they buy from any source.
+    attr_accessor :end_once_customer_purchases_anywhere
+
+    # Send this as If-Match when changing or archiving the campaign.
+    attr_accessor :hash_sha256
+
     # True when the emails and postcards reach customers now, so a change to one shows at once.  False only in a status that sends nothing.
     attr_accessor :live
 
+    # The lists and segments it sends to or leaves out.
+    attr_accessor :memberships
+
     # The campaign name.
     attr_accessor :name
+
+    # What a write did beyond the fields it was asked to change, such as putting emails back to needing review or setting a scheduled campaign back to draft.  Only on a write.
+    attr_accessor :notes
 
     # Its postcards, in step order.
     attr_accessor :postcards
 
     # When the campaign is scheduled to send (ISO 8601, UTC), when it is.
     attr_accessor :scheduled_dts
+
+    # The sending domain uuid.  Defaults to the storefront's marketing sending domain.
+    attr_accessor :sending_domain_uuid
+
+    # The from name.  Defaults to the storefront's marketing setting.
+    attr_accessor :sending_name
+
+    # The part of the from address before the at sign.  Defaults to the storefront's marketing setting.
+    attr_accessor :sending_user
 
     # The status, such as draft, scheduled, sending, sent or archived.
     attr_accessor :status
@@ -56,10 +80,18 @@ module UltracartClient
         :'created_dts' => :'created_dts',
         :'deleted' => :'deleted',
         :'emails' => :'emails',
+        :'end_once_customer_purchases' => :'end_once_customer_purchases',
+        :'end_once_customer_purchases_anywhere' => :'end_once_customer_purchases_anywhere',
+        :'hash_sha256' => :'hash_sha256',
         :'live' => :'live',
+        :'memberships' => :'memberships',
         :'name' => :'name',
+        :'notes' => :'notes',
         :'postcards' => :'postcards',
         :'scheduled_dts' => :'scheduled_dts',
+        :'sending_domain_uuid' => :'sending_domain_uuid',
+        :'sending_name' => :'sending_name',
+        :'sending_user' => :'sending_user',
         :'status' => :'status',
         :'status_dts' => :'status_dts'
       }
@@ -78,10 +110,18 @@ module UltracartClient
         :'created_dts' => :'String',
         :'deleted' => :'Boolean',
         :'emails' => :'Array<SfvbCommsEmail>',
+        :'end_once_customer_purchases' => :'Boolean',
+        :'end_once_customer_purchases_anywhere' => :'Boolean',
+        :'hash_sha256' => :'String',
         :'live' => :'Boolean',
+        :'memberships' => :'Array<SfvbCampaignMembership>',
         :'name' => :'String',
+        :'notes' => :'Array<String>',
         :'postcards' => :'Array<SfvbCommsPostcard>',
         :'scheduled_dts' => :'String',
+        :'sending_domain_uuid' => :'String',
+        :'sending_name' => :'String',
+        :'sending_user' => :'String',
         :'status' => :'String',
         :'status_dts' => :'String'
       }
@@ -130,12 +170,36 @@ module UltracartClient
         end
       end
 
+      if attributes.key?(:'end_once_customer_purchases')
+        self.end_once_customer_purchases = attributes[:'end_once_customer_purchases']
+      end
+
+      if attributes.key?(:'end_once_customer_purchases_anywhere')
+        self.end_once_customer_purchases_anywhere = attributes[:'end_once_customer_purchases_anywhere']
+      end
+
+      if attributes.key?(:'hash_sha256')
+        self.hash_sha256 = attributes[:'hash_sha256']
+      end
+
       if attributes.key?(:'live')
         self.live = attributes[:'live']
       end
 
+      if attributes.key?(:'memberships')
+        if (value = attributes[:'memberships']).is_a?(Array)
+          self.memberships = value
+        end
+      end
+
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'notes')
+        if (value = attributes[:'notes']).is_a?(Array)
+          self.notes = value
+        end
       end
 
       if attributes.key?(:'postcards')
@@ -146,6 +210,18 @@ module UltracartClient
 
       if attributes.key?(:'scheduled_dts')
         self.scheduled_dts = attributes[:'scheduled_dts']
+      end
+
+      if attributes.key?(:'sending_domain_uuid')
+        self.sending_domain_uuid = attributes[:'sending_domain_uuid']
+      end
+
+      if attributes.key?(:'sending_name')
+        self.sending_name = attributes[:'sending_name']
+      end
+
+      if attributes.key?(:'sending_user')
+        self.sending_user = attributes[:'sending_user']
       end
 
       if attributes.key?(:'status')
@@ -180,10 +256,18 @@ module UltracartClient
           created_dts == o.created_dts &&
           deleted == o.deleted &&
           emails == o.emails &&
+          end_once_customer_purchases == o.end_once_customer_purchases &&
+          end_once_customer_purchases_anywhere == o.end_once_customer_purchases_anywhere &&
+          hash_sha256 == o.hash_sha256 &&
           live == o.live &&
+          memberships == o.memberships &&
           name == o.name &&
+          notes == o.notes &&
           postcards == o.postcards &&
           scheduled_dts == o.scheduled_dts &&
+          sending_domain_uuid == o.sending_domain_uuid &&
+          sending_name == o.sending_name &&
+          sending_user == o.sending_user &&
           status == o.status &&
           status_dts == o.status_dts
     end
@@ -197,7 +281,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [campaign_uuid, communication_sequence_uuid, created_dts, deleted, emails, live, name, postcards, scheduled_dts, status, status_dts].hash
+      [campaign_uuid, communication_sequence_uuid, created_dts, deleted, emails, end_once_customer_purchases, end_once_customer_purchases_anywhere, hash_sha256, live, memberships, name, notes, postcards, scheduled_dts, sending_domain_uuid, sending_name, sending_user, status, status_dts].hash
     end
 
     # Builds the object from hash

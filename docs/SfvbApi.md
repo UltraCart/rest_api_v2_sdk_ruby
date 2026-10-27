@@ -6,11 +6,17 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | ------ | ------------ | ----------- |
 | [**add_sfvb_page_blog_posts**](SfvbApi.md#add_sfvb_page_blog_posts) | **POST** /sfvb/storefronts/{storefront_oid}/pages/blog_posts/add | Assign blog posts to a page |
 | [**add_sfvb_page_items**](SfvbApi.md#add_sfvb_page_items) | **POST** /sfvb/storefronts/{storefront_oid}/pages/items/add | Assign items to a page |
+| [**archive_sfvb_campaign**](SfvbApi.md#archive_sfvb_campaign) | **PUT** /sfvb/storefronts/{storefront_oid}/campaigns/{campaign_uuid}/archive | Archive or unarchive a campaign |
+| [**archive_sfvb_flow**](SfvbApi.md#archive_sfvb_flow) | **PUT** /sfvb/storefronts/{storefront_oid}/flows/{flow_uuid}/archive | Archive or unarchive a flow |
 | [**archive_sfvb_upsell_path**](SfvbApi.md#archive_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/archive | Archive an upsell path |
 | [**attach_sfvb_blog_post_image**](SfvbApi.md#attach_sfvb_blog_post_image) | **POST** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid}/images/attach | Attach an image to a blog post |
 | [**check_sfvb_redirect**](SfvbApi.md#check_sfvb_redirect) | **POST** /sfvb/storefronts/{storefront_oid}/redirects/check | Check a redirect rule without creating it |
 | [**clear_sfvb_library_screenshot**](SfvbApi.md#clear_sfvb_library_screenshot) | **DELETE** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/screenshot | Remove a library entry&#39;s screenshot |
+| [**clone_sfvb_campaign**](SfvbApi.md#clone_sfvb_campaign) | **POST** /sfvb/storefronts/{storefront_oid}/campaigns/{campaign_uuid}/clone | Copy a campaign on the same storefront |
+| [**clone_sfvb_flow**](SfvbApi.md#clone_sfvb_flow) | **POST** /sfvb/storefronts/{storefront_oid}/flows/{flow_uuid}/clone | Copy a flow on the same storefront |
 | [**compile_sfvb_cjson**](SfvbApi.md#compile_sfvb_cjson) | **POST** /sfvb/cjson/compile | Compile CJSON to Velocity |
+| [**create_sfvb_campaign**](SfvbApi.md#create_sfvb_campaign) | **POST** /sfvb/storefronts/{storefront_oid}/campaigns | Create a draft campaign |
+| [**create_sfvb_flow**](SfvbApi.md#create_sfvb_flow) | **POST** /sfvb/storefronts/{storefront_oid}/flows | Create a draft flow |
 | [**create_sfvb_library_entry**](SfvbApi.md#create_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library | Save a fragment to the library |
 | [**create_sfvb_preview_access**](SfvbApi.md#create_sfvb_preview_access) | **POST** /sfvb/storefronts/{storefront_oid}/preview_access | One time link that opens a preview in a browser with no UltraCart login |
 | [**create_sfvb_preview_session**](SfvbApi.md#create_sfvb_preview_session) | **POST** /sfvb/storefronts/{storefront_oid}/preview_sessions | Create a preview session |
@@ -119,6 +125,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**install_sfvb_library_entry**](SfvbApi.md#install_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/install | Install a library entry into a storefront |
 | [**list_sfvb_blog_posts**](SfvbApi.md#list_sfvb_blog_posts) | **GET** /sfvb/storefronts/{storefront_oid}/blog_posts | List the storefront&#39;s blog posts |
 | [**list_sfvb_campaigns**](SfvbApi.md#list_sfvb_campaigns) | **GET** /sfvb/storefronts/{storefront_oid}/campaigns | List the storefront&#39;s campaigns |
+| [**list_sfvb_comms_lists**](SfvbApi.md#list_sfvb_comms_lists) | **GET** /sfvb/storefronts/{storefront_oid}/lists | List the storefront&#39;s email lists |
+| [**list_sfvb_comms_segments**](SfvbApi.md#list_sfvb_comms_segments) | **GET** /sfvb/storefronts/{storefront_oid}/segments | List the storefront&#39;s segments |
 | [**list_sfvb_container_versions**](SfvbApi.md#list_sfvb_container_versions) | **GET** /sfvb/storefronts/{storefront_oid}/container_versions | Version history for a container stored outside the file system |
 | [**list_sfvb_elements**](SfvbApi.md#list_sfvb_elements) | **GET** /sfvb/elements | List every SFVB element type |
 | [**list_sfvb_experiments**](SfvbApi.md#list_sfvb_experiments) | **GET** /sfvb/storefronts/{storefront_oid}/experiments | List the storefront&#39;s experiments |
@@ -183,9 +191,12 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**unpublish_sfvb_library_entry**](SfvbApi.md#unpublish_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/unpublish | Narrow who can see a library entry |
 | [**unshare_sfvb_library_entry**](SfvbApi.md#unshare_sfvb_library_entry) | **DELETE** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/shares/{merchant_id} | Stop sharing a library entry with an account |
 | [**update_sfvb_blog_post**](SfvbApi.md#update_sfvb_blog_post) | **PUT** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Change a blog post |
+| [**update_sfvb_campaign**](SfvbApi.md#update_sfvb_campaign) | **PUT** /sfvb/storefronts/{storefront_oid}/campaigns/{campaign_uuid} | Change a campaign |
 | [**update_sfvb_comms_sending_domain**](SfvbApi.md#update_sfvb_comms_sending_domain) | **PUT** /sfvb/comms/sending_domains/{domain} | Update a sending domain |
 | [**update_sfvb_comms_twilio_account**](SfvbApi.md#update_sfvb_comms_twilio_account) | **PUT** /sfvb/comms/twilio_account | Update the Twilio account |
 | [**update_sfvb_email**](SfvbApi.md#update_sfvb_email) | **PUT** /sfvb/storefronts/{storefront_oid}/emails/{email_uuid} | Change a flow or campaign email&#39;s subject or preview text |
+| [**update_sfvb_flow**](SfvbApi.md#update_sfvb_flow) | **PUT** /sfvb/storefronts/{storefront_oid}/flows/{flow_uuid} | Change a flow |
+| [**update_sfvb_flow_status**](SfvbApi.md#update_sfvb_flow_status) | **PUT** /sfvb/storefronts/{storefront_oid}/flows/{flow_uuid}/status | Turn a flow on or off |
 | [**update_sfvb_item_attribute_batch**](SfvbApi.md#update_sfvb_item_attribute_batch) | **POST** /sfvb/storefronts/{storefront_oid}/items/attributes/batch | Change attributes across many items in one call |
 | [**update_sfvb_library_entry**](SfvbApi.md#update_sfvb_library_entry) | **PUT** /sfvb/storefronts/{storefront_oid}/library/{library_oid} | Update a library entry&#39;s draft |
 | [**update_sfvb_redirect**](SfvbApi.md#update_sfvb_redirect) | **PUT** /sfvb/storefronts/{storefront_oid}/redirects/{redirect_id} | Change a redirect rule |
@@ -303,6 +314,118 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## archive_sfvb_campaign
+
+> <SfvbCampaign> archive_sfvb_campaign(storefront_oid, campaign_uuid, if_match, archive_request)
+
+Archive or unarchive a campaign
+
+Archiving alone never stops a send, so archiving a scheduled campaign also sets it back to draft, and notes says so.  A campaign whose send is under way is refused with sfvb.campaign_sending.  Send the hash_sha256 you read as If-Match.  A scheduled, sending or sent campaign needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the archive_sfvb_campaign_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCampaign>, Integer, Hash)> archive_sfvb_campaign_with_http_info(storefront_oid, campaign_uuid, if_match, archive_request)
+
+```ruby
+begin
+  # Archive or unarchive a campaign
+  data, status_code, headers = api_instance.archive_sfvb_campaign_with_http_info(storefront_oid, campaign_uuid, if_match, archive_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCampaign>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->archive_sfvb_campaign_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **campaign_uuid** | **String** |  |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **archive_request** | [**SfvbArchiveRequest**](SfvbArchiveRequest.md) | Whether to archive |  |
+
+### Return type
+
+[**SfvbCampaign**](SfvbCampaign.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## archive_sfvb_flow
+
+> <SfvbFlow> archive_sfvb_flow(storefront_oid, flow_uuid, if_match, archive_request)
+
+Archive or unarchive a flow
+
+A flow that is still enrolling customers is refused, because archiving would only hide it.  Set its status to inactive first.  Send the hash_sha256 you read as If-Match. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the archive_sfvb_flow_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbFlow>, Integer, Hash)> archive_sfvb_flow_with_http_info(storefront_oid, flow_uuid, if_match, archive_request)
+
+```ruby
+begin
+  # Archive or unarchive a flow
+  data, status_code, headers = api_instance.archive_sfvb_flow_with_http_info(storefront_oid, flow_uuid, if_match, archive_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbFlow>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->archive_sfvb_flow_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **flow_uuid** | **String** |  |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **archive_request** | [**SfvbArchiveRequest**](SfvbArchiveRequest.md) | Whether to archive |  |
+
+### Return type
+
+[**SfvbFlow**](SfvbFlow.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -524,6 +647,114 @@ end
 - **Accept**: application/json
 
 
+## clone_sfvb_campaign
+
+> <SfvbCampaign> clone_sfvb_campaign(storefront_oid, campaign_uuid)
+
+Copy a campaign on the same storefront
+
+A draft copy with copies of its emails and postcards, named Copy of and the original name, never archived and never scheduled.  Steps keep their settings, including a paused rate limiter or an experiment winner, and notes names each one. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the clone_sfvb_campaign_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCampaign>, Integer, Hash)> clone_sfvb_campaign_with_http_info(storefront_oid, campaign_uuid)
+
+```ruby
+begin
+  # Copy a campaign on the same storefront
+  data, status_code, headers = api_instance.clone_sfvb_campaign_with_http_info(storefront_oid, campaign_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCampaign>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->clone_sfvb_campaign_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **campaign_uuid** | **String** |  |  |
+
+### Return type
+
+[**SfvbCampaign**](SfvbCampaign.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## clone_sfvb_flow
+
+> <SfvbFlow> clone_sfvb_flow(storefront_oid, flow_uuid)
+
+Copy a flow on the same storefront
+
+A draft copy with copies of its emails and postcards, named Copy of and the original name, never archived.  It enrolls nobody until it is turned on.  Steps keep their settings, including a paused rate limiter or an experiment winner, and notes names each one. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the clone_sfvb_flow_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbFlow>, Integer, Hash)> clone_sfvb_flow_with_http_info(storefront_oid, flow_uuid)
+
+```ruby
+begin
+  # Copy a flow on the same storefront
+  data, status_code, headers = api_instance.clone_sfvb_flow_with_http_info(storefront_oid, flow_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbFlow>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->clone_sfvb_flow_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **flow_uuid** | **String** |  |  |
+
+### Return type
+
+[**SfvbFlow**](SfvbFlow.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## compile_sfvb_cjson
 
 > <SfvbCompileResponse> compile_sfvb_cjson(compile_request)
@@ -566,6 +797,114 @@ end
 ### Return type
 
 [**SfvbCompileResponse**](SfvbCompileResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_sfvb_campaign
+
+> <SfvbCampaign> create_sfvb_campaign(storefront_oid, campaign_write_request)
+
+Create a draft campaign
+
+A new draft campaign with an empty communication sequence.  name is required.  The sender defaults to the storefront's marketing sending settings.  Nothing here starts a campaign. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the create_sfvb_campaign_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCampaign>, Integer, Hash)> create_sfvb_campaign_with_http_info(storefront_oid, campaign_write_request)
+
+```ruby
+begin
+  # Create a draft campaign
+  data, status_code, headers = api_instance.create_sfvb_campaign_with_http_info(storefront_oid, campaign_write_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCampaign>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->create_sfvb_campaign_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **campaign_write_request** | [**SfvbCampaignWriteRequest**](SfvbCampaignWriteRequest.md) | The campaign to create |  |
+
+### Return type
+
+[**SfvbCampaign**](SfvbCampaign.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_sfvb_flow
+
+> <SfvbFlow> create_sfvb_flow(storefront_oid, flow_write_request)
+
+Create a draft flow
+
+A new draft flow with an empty communication sequence.  name and trigger_type are required.  A list or segment trigger needs trigger_parameter, the uuid of a list or segment on this storefront.  The sender defaults to the storefront's marketing sending settings.  A draft flow enrolls nobody until it is turned on. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the create_sfvb_flow_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbFlow>, Integer, Hash)> create_sfvb_flow_with_http_info(storefront_oid, flow_write_request)
+
+```ruby
+begin
+  # Create a draft flow
+  data, status_code, headers = api_instance.create_sfvb_flow_with_http_info(storefront_oid, flow_write_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbFlow>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->create_sfvb_flow_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **flow_write_request** | [**SfvbFlowWriteRequest**](SfvbFlowWriteRequest.md) | The flow to create |  |
+
+### Return type
+
+[**SfvbFlow**](SfvbFlow.md)
 
 ### Authorization
 
@@ -6429,6 +6768,112 @@ end
 - **Accept**: application/json
 
 
+## list_sfvb_comms_lists
+
+> <SfvbCommsListsResponse> list_sfvb_comms_lists(storefront_oid)
+
+List the storefront's email lists
+
+Each list's uuid, name and member count, by name, for a campaign's memberships or a list trigger.  Never its members.  Archived lists are left out. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the list_sfvb_comms_lists_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsListsResponse>, Integer, Hash)> list_sfvb_comms_lists_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # List the storefront's email lists
+  data, status_code, headers = api_instance.list_sfvb_comms_lists_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsListsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->list_sfvb_comms_lists_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbCommsListsResponse**](SfvbCommsListsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_sfvb_comms_segments
+
+> <SfvbCommsSegmentsResponse> list_sfvb_comms_segments(storefront_oid)
+
+List the storefront's segments
+
+Each segment's uuid, name and member count at its last rebuild, by name, for a campaign's memberships or a segment trigger.  Never its members or its rule.  Archived segments are left out. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the list_sfvb_comms_segments_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsSegmentsResponse>, Integer, Hash)> list_sfvb_comms_segments_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # List the storefront's segments
+  data, status_code, headers = api_instance.list_sfvb_comms_segments_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsSegmentsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->list_sfvb_comms_segments_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbCommsSegmentsResponse**](SfvbCommsSegmentsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## list_sfvb_container_versions
 
 > <SfvbContainerVersionsResponse> list_sfvb_container_versions(storefront_oid, opts)
@@ -9972,6 +10417,62 @@ end
 - **Accept**: application/json
 
 
+## update_sfvb_campaign
+
+> <SfvbCampaign> update_sfvb_campaign(storefront_oid, campaign_uuid, if_match, campaign_write_request)
+
+Change a campaign
+
+A field left out keeps its value; memberships replaces the whole set.  The status is never changed here.  Send the hash_sha256 you read as If-Match.  A scheduled, sending or sent campaign needs sfvb_publish, and a change to a scheduled one applies to the send that is coming.  notes lists any emails a sending domain change put back to needing review. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_campaign_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCampaign>, Integer, Hash)> update_sfvb_campaign_with_http_info(storefront_oid, campaign_uuid, if_match, campaign_write_request)
+
+```ruby
+begin
+  # Change a campaign
+  data, status_code, headers = api_instance.update_sfvb_campaign_with_http_info(storefront_oid, campaign_uuid, if_match, campaign_write_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCampaign>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_campaign_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **campaign_uuid** | **String** |  |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **campaign_write_request** | [**SfvbCampaignWriteRequest**](SfvbCampaignWriteRequest.md) | The fields to change |  |
+
+### Return type
+
+[**SfvbCampaign**](SfvbCampaign.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_sfvb_comms_sending_domain
 
 > <SfvbCommsSendingDomain> update_sfvb_comms_sending_domain(domain, sending_domain)
@@ -10124,6 +10625,118 @@ end
 ### Return type
 
 [**SfvbEmail**](SfvbEmail.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_sfvb_flow
+
+> <SfvbFlow> update_sfvb_flow(storefront_oid, flow_uuid, if_match, flow_write_request)
+
+Change a flow
+
+A field left out keeps its value.  The trigger and the status are never changed here.  Send the hash_sha256 you read as If-Match.  A flow that is enrolling customers needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_flow_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbFlow>, Integer, Hash)> update_sfvb_flow_with_http_info(storefront_oid, flow_uuid, if_match, flow_write_request)
+
+```ruby
+begin
+  # Change a flow
+  data, status_code, headers = api_instance.update_sfvb_flow_with_http_info(storefront_oid, flow_uuid, if_match, flow_write_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbFlow>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_flow_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **flow_uuid** | **String** |  |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **flow_write_request** | [**SfvbFlowWriteRequest**](SfvbFlowWriteRequest.md) | The fields to change |  |
+
+### Return type
+
+[**SfvbFlow**](SfvbFlow.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_sfvb_flow_status
+
+> <SfvbFlow> update_sfvb_flow_status(storefront_oid, flow_uuid, if_match, flow_status_request)
+
+Turn a flow on or off
+
+active enrolls customers as they trigger the flow from now on, and they receive its emails.  inactive stops new enrollments.  Always needs sfvb_publish.  Send the hash_sha256 you read as If-Match. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_flow_status_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbFlow>, Integer, Hash)> update_sfvb_flow_status_with_http_info(storefront_oid, flow_uuid, if_match, flow_status_request)
+
+```ruby
+begin
+  # Turn a flow on or off
+  data, status_code, headers = api_instance.update_sfvb_flow_status_with_http_info(storefront_oid, flow_uuid, if_match, flow_status_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbFlow>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_flow_status_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **flow_uuid** | **String** |  |  |
+| **if_match** | **String** | hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **flow_status_request** | [**SfvbFlowStatusRequest**](SfvbFlowStatusRequest.md) | The status to set |  |
+
+### Return type
+
+[**SfvbFlow**](SfvbFlow.md)
 
 ### Authorization
 
