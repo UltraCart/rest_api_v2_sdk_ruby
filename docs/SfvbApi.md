@@ -100,6 +100,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_secret_kinds**](SfvbApi.md#get_sfvb_secret_kinds) | **GET** /sfvb/secrets/kinds | List the secrets this server collects |
 | [**get_sfvb_secret_request**](SfvbApi.md#get_sfvb_secret_request) | **GET** /sfvb/secrets/{request_id} | Read one secret request |
 | [**get_sfvb_secret_requests**](SfvbApi.md#get_sfvb_secret_requests) | **GET** /sfvb/secrets | List this sign-in&#39;s secret requests |
+| [**get_sfvb_sequence**](SfvbApi.md#get_sfvb_sequence) | **GET** /sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid} | Get a campaign&#39;s or flow&#39;s steps as a tree |
 | [**get_sfvb_server_log**](SfvbApi.md#get_sfvb_server_log) | **GET** /sfvb/storefronts/{storefront_oid}/logs/{log_id} | Get one storefront render log |
 | [**get_sfvb_site_attributes**](SfvbApi.md#get_sfvb_site_attributes) | **GET** /sfvb/storefronts/{storefront_oid}/attributes | Read a storefront&#39;s site attributes |
 | [**get_sfvb_test_orders**](SfvbApi.md#get_sfvb_test_orders) | **GET** /sfvb/storefronts/{storefront_oid}/test_orders | List recent test orders |
@@ -5404,6 +5405,61 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**SfvbSecretRequestsResponse**](SfvbSecretRequestsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_sequence
+
+> <SfvbSequence> get_sfvb_sequence(storefront_oid, sequence_uuid, opts)
+
+Get a campaign's or flow's steps as a tree
+
+The communication sequence named by a campaign's or flow's communication_sequence_uuid, with its steps from the start in order.  Only condition, split and InboxGeek steps branch, and each holds its two sides in branches.  Each step has its type, the admin's label, its settings (a webhook's header and parameter values masked), its audience filter, and the emails, postcard, lists or items it names.  waiting adds how many customers are waiting on each step now.  Read only. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_sequence_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbSequence>, Integer, Hash)> get_sfvb_sequence_with_http_info(storefront_oid, sequence_uuid, opts)
+
+```ruby
+begin
+  # Get a campaign's or flow's steps as a tree
+  data, status_code, headers = api_instance.get_sfvb_sequence_with_http_info(storefront_oid, sequence_uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbSequence>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_sequence_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **sequence_uuid** | **String** |  |  |
+| **waiting** | **Boolean** | Include how many customers are waiting on each step | [optional] |
+
+### Return type
+
+[**SfvbSequence**](SfvbSequence.md)
 
 ### Authorization
 
