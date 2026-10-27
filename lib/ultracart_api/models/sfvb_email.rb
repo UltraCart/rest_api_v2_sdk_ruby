@@ -27,6 +27,9 @@ module UltracartClient
     # True when the email is in a flow or campaign that is sending, so a change reaches customers and needs sfvb_publish.  An email in neither is reported live.
     attr_accessor :live
 
+    # What a write did beyond the fields asked for, such as a step label it could not refresh.  Only on a write.
+    attr_accessor :notes
+
     # True while a change waits for review.  An edit puts it back to needing review.
     attr_accessor :pending_review
 
@@ -58,6 +61,7 @@ module UltracartClient
         :'email_uuid' => :'email_uuid',
         :'hash_sha256' => :'hash_sha256',
         :'live' => :'live',
+        :'notes' => :'notes',
         :'pending_review' => :'pending_review',
         :'preview_text' => :'preview_text',
         :'rejected' => :'rejected',
@@ -81,6 +85,7 @@ module UltracartClient
         :'email_uuid' => :'String',
         :'hash_sha256' => :'String',
         :'live' => :'Boolean',
+        :'notes' => :'Array<String>',
         :'pending_review' => :'Boolean',
         :'preview_text' => :'String',
         :'rejected' => :'Boolean',
@@ -127,6 +132,12 @@ module UltracartClient
 
       if attributes.key?(:'live')
         self.live = attributes[:'live']
+      end
+
+      if attributes.key?(:'notes')
+        if (value = attributes[:'notes']).is_a?(Array)
+          self.notes = value
+        end
       end
 
       if attributes.key?(:'pending_review')
@@ -184,6 +195,7 @@ module UltracartClient
           email_uuid == o.email_uuid &&
           hash_sha256 == o.hash_sha256 &&
           live == o.live &&
+          notes == o.notes &&
           pending_review == o.pending_review &&
           preview_text == o.preview_text &&
           rejected == o.rejected &&
@@ -203,7 +215,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [container_last_modified_dts, email_uuid, hash_sha256, live, pending_review, preview_text, rejected, requires_review, subject, suspended_for_spam, transactional, version].hash
+      [container_last_modified_dts, email_uuid, hash_sha256, live, notes, pending_review, preview_text, rejected, requires_review, subject, suspended_for_spam, transactional, version].hash
     end
 
     # Builds the object from hash

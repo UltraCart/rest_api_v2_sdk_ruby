@@ -12883,6 +12883,87 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Request a content review of a flow or campaign email
+    # Starts a review the way the admin's Request Review does.  One test copy of the email goes to the signed-in user, and to no one else, and the review runs in the background, so read the email again for pending_review and then the ruling.  Refused with sfvb.review_not_needed when it doesn't need review, is already waiting for one, or was rejected and not changed since.  An email in a flow triggered by an order or an auto order needs order_id, a test order.  Needs a signed-in user, not an API key alone. 
+    # @param storefront_oid [Integer] 
+    # @param email_uuid [String] 
+    # @param email_review_request [SfvbEmailReviewRequest] The test order, for an email in an order-triggered flow
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbEmail]
+    def review_sfvb_email(storefront_oid, email_uuid, email_review_request, opts = {})
+      data, _status_code, _headers = review_sfvb_email_with_http_info(storefront_oid, email_uuid, email_review_request, opts)
+      data
+    end
+
+    # Request a content review of a flow or campaign email
+    # Starts a review the way the admin&#39;s Request Review does.  One test copy of the email goes to the signed-in user, and to no one else, and the review runs in the background, so read the email again for pending_review and then the ruling.  Refused with sfvb.review_not_needed when it doesn&#39;t need review, is already waiting for one, or was rejected and not changed since.  An email in a flow triggered by an order or an auto order needs order_id, a test order.  Needs a signed-in user, not an API key alone. 
+    # @param storefront_oid [Integer] 
+    # @param email_uuid [String] 
+    # @param email_review_request [SfvbEmailReviewRequest] The test order, for an email in an order-triggered flow
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbEmail, Integer, Hash)>] SfvbEmail data, response status code and response headers
+    def review_sfvb_email_with_http_info(storefront_oid, email_uuid, email_review_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.review_sfvb_email ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.review_sfvb_email"
+      end
+      # verify the required parameter 'email_uuid' is set
+      if @api_client.config.client_side_validation && email_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'email_uuid' when calling SfvbApi.review_sfvb_email"
+      end
+      # verify the required parameter 'email_review_request' is set
+      if @api_client.config.client_side_validation && email_review_request.nil?
+        fail ArgumentError, "Missing the required parameter 'email_review_request' when calling SfvbApi.review_sfvb_email"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/emails/{email_uuid}/review'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'email_uuid' + '}', CGI.escape(email_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(email_review_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbEmail'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.review_sfvb_email",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#review_sfvb_email\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Revoke a fulfilled request's unused handles
     # Every handle of the request that no write has used up stops working at once, and its value is deleted.  A handle a write is using right now is left to that write.  Use it when the plan changed, or a handle may have leaked. 
     # @param request_id [String] 

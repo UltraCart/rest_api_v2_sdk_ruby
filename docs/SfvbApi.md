@@ -179,6 +179,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**resolve_sfvb_template**](SfvbApi.md#resolve_sfvb_template) | **GET** /sfvb/storefronts/{storefront_oid}/templates/resolve | Resolve a template name to the file a page renders |
 | [**revert_sfvb_container**](SfvbApi.md#revert_sfvb_container) | **POST** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id}/revert | Revert a container stored outside the file system |
 | [**revert_sfvb_file**](SfvbApi.md#revert_sfvb_file) | **POST** /sfvb/storefronts/{storefront_oid}/files/revert | Revert a storefront file to an earlier version |
+| [**review_sfvb_email**](SfvbApi.md#review_sfvb_email) | **POST** /sfvb/storefronts/{storefront_oid}/emails/{email_uuid}/review | Request a content review of a flow or campaign email |
 | [**revoke_sfvb_secret_request**](SfvbApi.md#revoke_sfvb_secret_request) | **POST** /sfvb/secrets/{request_id}/revoke | Revoke a fulfilled request&#39;s unused handles |
 | [**search_sfvb_files**](SfvbApi.md#search_sfvb_files) | **POST** /sfvb/storefronts/{storefront_oid}/files/search | Search storefront files |
 | [**search_sfvb_library**](SfvbApi.md#search_sfvb_library) | **GET** /sfvb/storefronts/{storefront_oid}/library | Search the element library |
@@ -9749,6 +9750,61 @@ end
 ### Return type
 
 [**SfvbFileWriteResponse**](SfvbFileWriteResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## review_sfvb_email
+
+> <SfvbEmail> review_sfvb_email(storefront_oid, email_uuid, email_review_request)
+
+Request a content review of a flow or campaign email
+
+Starts a review the way the admin's Request Review does.  One test copy of the email goes to the signed-in user, and to no one else, and the review runs in the background, so read the email again for pending_review and then the ruling.  Refused with sfvb.review_not_needed when it doesn't need review, is already waiting for one, or was rejected and not changed since.  An email in a flow triggered by an order or an auto order needs order_id, a test order.  Needs a signed-in user, not an API key alone. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the review_sfvb_email_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbEmail>, Integer, Hash)> review_sfvb_email_with_http_info(storefront_oid, email_uuid, email_review_request)
+
+```ruby
+begin
+  # Request a content review of a flow or campaign email
+  data, status_code, headers = api_instance.review_sfvb_email_with_http_info(storefront_oid, email_uuid, email_review_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbEmail>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->review_sfvb_email_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **email_uuid** | **String** |  |  |
+| **email_review_request** | [**SfvbEmailReviewRequest**](SfvbEmailReviewRequest.md) | The test order, for an email in an order-triggered flow |  |
+
+### Return type
+
+[**SfvbEmail**](SfvbEmail.md)
 
 ### Authorization
 
