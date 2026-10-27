@@ -60,6 +60,9 @@ module UltracartClient
     # Shared Conversation Pbx Voicemail Mailbox UUID
     attr_accessor :shared_conversation_pbx_voicemail_mailbox_uuid
 
+    # Status the agent starts in when the CRM loads. Missing means available.
+    attr_accessor :startup_activity
+
     # Twilio taskrouter worker Id
     attr_accessor :twilio_taskrouter_worker_id
 
@@ -124,6 +127,7 @@ module UltracartClient
         :'preferred_hardware_phone_uuid' => :'preferred_hardware_phone_uuid',
         :'record_outgoing_automatically' => :'record_outgoing_automatically',
         :'shared_conversation_pbx_voicemail_mailbox_uuid' => :'shared_conversation_pbx_voicemail_mailbox_uuid',
+        :'startup_activity' => :'startup_activity',
         :'twilio_taskrouter_worker_id' => :'twilio_taskrouter_worker_id',
         :'unavailable_play_audio_uuid' => :'unavailable_play_audio_uuid',
         :'unavailable_say' => :'unavailable_say',
@@ -158,6 +162,7 @@ module UltracartClient
         :'preferred_hardware_phone_uuid' => :'String',
         :'record_outgoing_automatically' => :'Boolean',
         :'shared_conversation_pbx_voicemail_mailbox_uuid' => :'String',
+        :'startup_activity' => :'String',
         :'twilio_taskrouter_worker_id' => :'String',
         :'unavailable_play_audio_uuid' => :'String',
         :'unavailable_say' => :'String',
@@ -252,6 +257,10 @@ module UltracartClient
         self.shared_conversation_pbx_voicemail_mailbox_uuid = attributes[:'shared_conversation_pbx_voicemail_mailbox_uuid']
       end
 
+      if attributes.key?(:'startup_activity')
+        self.startup_activity = attributes[:'startup_activity']
+      end
+
       if attributes.key?(:'twilio_taskrouter_worker_id')
         self.twilio_taskrouter_worker_id = attributes[:'twilio_taskrouter_worker_id']
       end
@@ -333,6 +342,8 @@ module UltracartClient
       return false if !@merchant_id.nil? && @merchant_id.to_s.length > 5
       return false if !@personal_conversation_pbx_voicemail_mailbox_uuid.nil? && @personal_conversation_pbx_voicemail_mailbox_uuid.to_s.length > 50
       return false if !@shared_conversation_pbx_voicemail_mailbox_uuid.nil? && @shared_conversation_pbx_voicemail_mailbox_uuid.to_s.length > 50
+      startup_activity_validator = EnumAttributeValidator.new('String', ["available", "unavailable"])
+      return false unless startup_activity_validator.valid?(@startup_activity)
       return false if !@twilio_taskrouter_worker_id.nil? && @twilio_taskrouter_worker_id.to_s.length > 100
       return false if !@unavailable_play_audio_uuid.nil? && @unavailable_play_audio_uuid.to_s.length > 50
       unavailable_say_voice_validator = EnumAttributeValidator.new('String', ["man", "woman"])
@@ -390,6 +401,16 @@ module UltracartClient
       end
 
       @shared_conversation_pbx_voicemail_mailbox_uuid = shared_conversation_pbx_voicemail_mailbox_uuid
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] startup_activity Object to be assigned
+    def startup_activity=(startup_activity)
+      validator = EnumAttributeValidator.new('String', ["available", "unavailable"])
+      unless validator.valid?(startup_activity)
+        fail ArgumentError, "invalid value for \"startup_activity\", must be one of #{validator.allowable_values}."
+      end
+      @startup_activity = startup_activity
     end
 
     # Custom attribute writer method with validation
@@ -452,6 +473,7 @@ module UltracartClient
           preferred_hardware_phone_uuid == o.preferred_hardware_phone_uuid &&
           record_outgoing_automatically == o.record_outgoing_automatically &&
           shared_conversation_pbx_voicemail_mailbox_uuid == o.shared_conversation_pbx_voicemail_mailbox_uuid &&
+          startup_activity == o.startup_activity &&
           twilio_taskrouter_worker_id == o.twilio_taskrouter_worker_id &&
           unavailable_play_audio_uuid == o.unavailable_play_audio_uuid &&
           unavailable_say == o.unavailable_say &&
@@ -471,7 +493,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ai, call_routing_preference, cellphone, conversation_pbx_agent_uuid, cos_uuid, default_phone_number_uuid, extension, full_name, hardware_phone_uuids, login, merchant_id, personal_conversation_pbx_voicemail_mailbox_uuid, preferred_hardware_phone_uuid, record_outgoing_automatically, shared_conversation_pbx_voicemail_mailbox_uuid, twilio_taskrouter_worker_id, unavailable_play_audio_uuid, unavailable_say, unavailable_say_voice, user_id, voicemail, zoho_desk_outbound_department_id, zoho_desk_outbound_ticket_enabled].hash
+      [ai, call_routing_preference, cellphone, conversation_pbx_agent_uuid, cos_uuid, default_phone_number_uuid, extension, full_name, hardware_phone_uuids, login, merchant_id, personal_conversation_pbx_voicemail_mailbox_uuid, preferred_hardware_phone_uuid, record_outgoing_automatically, shared_conversation_pbx_voicemail_mailbox_uuid, startup_activity, twilio_taskrouter_worker_id, unavailable_play_audio_uuid, unavailable_say, unavailable_say_voice, user_id, voicemail, zoho_desk_outbound_department_id, zoho_desk_outbound_ticket_enabled].hash
     end
 
     # Builds the object from hash

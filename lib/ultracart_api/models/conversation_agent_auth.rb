@@ -45,6 +45,9 @@ module UltracartClient
 
     attr_accessor :pbx_jwt
 
+    # Status the agent starts in when the CRM loads
+    attr_accessor :pbx_startup_activity
+
     attr_accessor :pbx_supervisor
 
     attr_accessor :pbx_user
@@ -64,6 +67,28 @@ module UltracartClient
 
     attr_accessor :websocket_url
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -80,6 +105,7 @@ module UltracartClient
         :'parent_merchant_id' => :'parent_merchant_id',
         :'pbx_admin' => :'pbx_admin',
         :'pbx_jwt' => :'pbx_jwt',
+        :'pbx_startup_activity' => :'pbx_startup_activity',
         :'pbx_supervisor' => :'pbx_supervisor',
         :'pbx_user' => :'pbx_user',
         :'pbx_voice_identity' => :'pbx_voice_identity',
@@ -113,6 +139,7 @@ module UltracartClient
         :'parent_merchant_id' => :'String',
         :'pbx_admin' => :'Boolean',
         :'pbx_jwt' => :'String',
+        :'pbx_startup_activity' => :'String',
         :'pbx_supervisor' => :'Boolean',
         :'pbx_user' => :'Boolean',
         :'pbx_voice_identity' => :'String',
@@ -202,6 +229,10 @@ module UltracartClient
         self.pbx_jwt = attributes[:'pbx_jwt']
       end
 
+      if attributes.key?(:'pbx_startup_activity')
+        self.pbx_startup_activity = attributes[:'pbx_startup_activity']
+      end
+
       if attributes.key?(:'pbx_supervisor')
         self.pbx_supervisor = attributes[:'pbx_supervisor']
       end
@@ -251,7 +282,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      pbx_startup_activity_validator = EnumAttributeValidator.new('String', ["available", "unavailable"])
+      return false unless pbx_startup_activity_validator.valid?(@pbx_startup_activity)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] pbx_startup_activity Object to be assigned
+    def pbx_startup_activity=(pbx_startup_activity)
+      validator = EnumAttributeValidator.new('String', ["available", "unavailable"])
+      unless validator.valid?(pbx_startup_activity)
+        fail ArgumentError, "invalid value for \"pbx_startup_activity\", must be one of #{validator.allowable_values}."
+      end
+      @pbx_startup_activity = pbx_startup_activity
     end
 
     # Checks equality by comparing each attribute.
@@ -272,6 +315,7 @@ module UltracartClient
           parent_merchant_id == o.parent_merchant_id &&
           pbx_admin == o.pbx_admin &&
           pbx_jwt == o.pbx_jwt &&
+          pbx_startup_activity == o.pbx_startup_activity &&
           pbx_supervisor == o.pbx_supervisor &&
           pbx_user == o.pbx_user &&
           pbx_voice_identity == o.pbx_voice_identity &&
@@ -292,7 +336,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [chat_admin, chat_user, conversation_participant_arn, conversation_participant_name, customer_profile, default_phone_number, group_ids, jwt, merchant_id, merchants, parent_merchant_id, pbx_admin, pbx_jwt, pbx_supervisor, pbx_user, pbx_voice_identity, pbx_voice_token, pbx_worker_token, pbx_worker_token_v2, twilio_accounts, user_id, websocket_url].hash
+      [chat_admin, chat_user, conversation_participant_arn, conversation_participant_name, customer_profile, default_phone_number, group_ids, jwt, merchant_id, merchants, parent_merchant_id, pbx_admin, pbx_jwt, pbx_startup_activity, pbx_supervisor, pbx_user, pbx_voice_identity, pbx_voice_token, pbx_worker_token, pbx_worker_token_v2, twilio_accounts, user_id, websocket_url].hash
     end
 
     # Builds the object from hash

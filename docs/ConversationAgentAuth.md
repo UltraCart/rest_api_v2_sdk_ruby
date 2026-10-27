@@ -17,6 +17,7 @@
 | **parent_merchant_id** | **String** | The parent merchant ID for PBX. For non-linked merchants, equals merchant_id. | [optional] |
 | **pbx_admin** | **Boolean** |  | [optional] |
 | **pbx_jwt** | **String** |  | [optional] |
+| **pbx_startup_activity** | **String** | Status the agent starts in when the CRM loads | [optional] |
 | **pbx_supervisor** | **Boolean** |  | [optional] |
 | **pbx_user** | **Boolean** |  | [optional] |
 | **pbx_voice_identity** | **String** |  | [optional] |
@@ -46,6 +47,7 @@ instance = UltracartClient::ConversationAgentAuth.new(
   parent_merchant_id: null,
   pbx_admin: null,
   pbx_jwt: null,
+  pbx_startup_activity: null,
   pbx_supervisor: null,
   pbx_user: null,
   pbx_voice_identity: null,
