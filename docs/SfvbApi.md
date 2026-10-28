@@ -202,6 +202,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**update_sfvb_item_attribute_batch**](SfvbApi.md#update_sfvb_item_attribute_batch) | **POST** /sfvb/storefronts/{storefront_oid}/items/attributes/batch | Change attributes across many items in one call |
 | [**update_sfvb_library_entry**](SfvbApi.md#update_sfvb_library_entry) | **PUT** /sfvb/storefronts/{storefront_oid}/library/{library_oid} | Update a library entry&#39;s draft |
 | [**update_sfvb_redirect**](SfvbApi.md#update_sfvb_redirect) | **PUT** /sfvb/storefronts/{storefront_oid}/redirects/{redirect_id} | Change a redirect rule |
+| [**update_sfvb_sequence_step**](SfvbApi.md#update_sfvb_sequence_step) | **PUT** /sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid}/steps/{step_uuid} | Change one step&#39;s settings or audience filter |
 | [**update_sfvb_upsell_offer**](SfvbApi.md#update_sfvb_upsell_offer) | **PUT** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid} | Update an upsell offer |
 | [**update_sfvb_upsell_path**](SfvbApi.md#update_sfvb_upsell_path) | **PUT** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid} | Update an upsell path |
 | [**upload_sfvb_file**](SfvbApi.md#upload_sfvb_file) | **POST** /sfvb/storefronts/{storefront_oid}/files/upload | Store a binary asset that was already uploaded |
@@ -5422,7 +5423,7 @@ This endpoint does not need any parameter.
 
 Get a campaign's or flow's steps as a tree
 
-The communication sequence named by a campaign's or flow's communication_sequence_uuid, with its steps from the start in order.  Only condition, split and InboxGeek steps branch, and each holds its two sides in branches.  Each step has its type, the admin's label, its settings (a webhook's header and parameter values masked), its audience filter, and the emails, postcard, lists or items it names.  waiting adds how many customers are waiting on each step now.  Read only. 
+The communication sequence named by a campaign's or flow's communication_sequence_uuid, with its steps from the start in order.  Only condition, split and InboxGeek steps branch, and each holds its two sides in branches.  Each step has its type, the admin's label, its settings (a webhook's header and parameter values masked), its audience filter, the emails, postcard, lists or items it names, and the hash_sha256 to send as If-Match when changing it.  waiting adds how many customers are waiting on each step now.  Read only. 
 
 
 ### Examples
@@ -11024,6 +11025,63 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_sfvb_sequence_step
+
+> <SfvbSequenceStepUpdateResponse> update_sfvb_sequence_step(storefront_oid, sequence_uuid, step_uuid, if_match, sequence_step_update_request)
+
+Change one step's settings or audience filter
+
+Replaces the step's settings (config_json), its audience filter (filter_profile_equation_json), or both.  Nothing else about the step or the sequence changes.  Send the step's hash_sha256 as If-Match; the write only lands if the step is still what you read.  Email, postcard, experiment, resend, webhook, begin, end, continue and merge steps are refused.  A sequence whose campaign or flow is live needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_sequence_step_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbSequenceStepUpdateResponse>, Integer, Hash)> update_sfvb_sequence_step_with_http_info(storefront_oid, sequence_uuid, step_uuid, if_match, sequence_step_update_request)
+
+```ruby
+begin
+  # Change one step's settings or audience filter
+  data, status_code, headers = api_instance.update_sfvb_sequence_step_with_http_info(storefront_oid, sequence_uuid, step_uuid, if_match, sequence_step_update_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbSequenceStepUpdateResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_sequence_step_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **sequence_uuid** | **String** |  |  |
+| **step_uuid** | **String** |  |  |
+| **if_match** | **String** | The step&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **sequence_step_update_request** | [**SfvbSequenceStepUpdateRequest**](SfvbSequenceStepUpdateRequest.md) | The settings, the filter, or both |  |
+
+### Return type
+
+[**SfvbSequenceStepUpdateResponse**](SfvbSequenceStepUpdateResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

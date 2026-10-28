@@ -6887,7 +6887,7 @@ module UltracartClient
     end
 
     # Get a campaign's or flow's steps as a tree
-    # The communication sequence named by a campaign's or flow's communication_sequence_uuid, with its steps from the start in order.  Only condition, split and InboxGeek steps branch, and each holds its two sides in branches.  Each step has its type, the admin's label, its settings (a webhook's header and parameter values masked), its audience filter, and the emails, postcard, lists or items it names.  waiting adds how many customers are waiting on each step now.  Read only. 
+    # The communication sequence named by a campaign's or flow's communication_sequence_uuid, with its steps from the start in order.  Only condition, split and InboxGeek steps branch, and each holds its two sides in branches.  Each step has its type, the admin's label, its settings (a webhook's header and parameter values masked), its audience filter, the emails, postcard, lists or items it names, and the hash_sha256 to send as If-Match when changing it.  waiting adds how many customers are waiting on each step now.  Read only. 
     # @param storefront_oid [Integer] 
     # @param sequence_uuid [String] 
     # @param [Hash] opts the optional parameters
@@ -6899,7 +6899,7 @@ module UltracartClient
     end
 
     # Get a campaign&#39;s or flow&#39;s steps as a tree
-    # The communication sequence named by a campaign&#39;s or flow&#39;s communication_sequence_uuid, with its steps from the start in order.  Only condition, split and InboxGeek steps branch, and each holds its two sides in branches.  Each step has its type, the admin&#39;s label, its settings (a webhook&#39;s header and parameter values masked), its audience filter, and the emails, postcard, lists or items it names.  waiting adds how many customers are waiting on each step now.  Read only. 
+    # The communication sequence named by a campaign&#39;s or flow&#39;s communication_sequence_uuid, with its steps from the start in order.  Only condition, split and InboxGeek steps branch, and each holds its two sides in branches.  Each step has its type, the admin&#39;s label, its settings (a webhook&#39;s header and parameter values masked), its audience filter, the emails, postcard, lists or items it names, and the hash_sha256 to send as If-Match when changing it.  waiting adds how many customers are waiting on each step now.  Read only. 
     # @param storefront_oid [Integer] 
     # @param sequence_uuid [String] 
     # @param [Hash] opts the optional parameters
@@ -14693,6 +14693,100 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_redirect\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change one step's settings or audience filter
+    # Replaces the step's settings (config_json), its audience filter (filter_profile_equation_json), or both.  Nothing else about the step or the sequence changes.  Send the step's hash_sha256 as If-Match; the write only lands if the step is still what you read.  Email, postcard, experiment, resend, webhook, begin, end, continue and merge steps are refused.  A sequence whose campaign or flow is live needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param sequence_uuid [String] 
+    # @param step_uuid [String] 
+    # @param if_match [String] The step&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param sequence_step_update_request [SfvbSequenceStepUpdateRequest] The settings, the filter, or both
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbSequenceStepUpdateResponse]
+    def update_sfvb_sequence_step(storefront_oid, sequence_uuid, step_uuid, if_match, sequence_step_update_request, opts = {})
+      data, _status_code, _headers = update_sfvb_sequence_step_with_http_info(storefront_oid, sequence_uuid, step_uuid, if_match, sequence_step_update_request, opts)
+      data
+    end
+
+    # Change one step&#39;s settings or audience filter
+    # Replaces the step&#39;s settings (config_json), its audience filter (filter_profile_equation_json), or both.  Nothing else about the step or the sequence changes.  Send the step&#39;s hash_sha256 as If-Match; the write only lands if the step is still what you read.  Email, postcard, experiment, resend, webhook, begin, end, continue and merge steps are refused.  A sequence whose campaign or flow is live needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param sequence_uuid [String] 
+    # @param step_uuid [String] 
+    # @param if_match [String] The step&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param sequence_step_update_request [SfvbSequenceStepUpdateRequest] The settings, the filter, or both
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbSequenceStepUpdateResponse, Integer, Hash)>] SfvbSequenceStepUpdateResponse data, response status code and response headers
+    def update_sfvb_sequence_step_with_http_info(storefront_oid, sequence_uuid, step_uuid, if_match, sequence_step_update_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_sequence_step ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_sequence_step"
+      end
+      # verify the required parameter 'sequence_uuid' is set
+      if @api_client.config.client_side_validation && sequence_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'sequence_uuid' when calling SfvbApi.update_sfvb_sequence_step"
+      end
+      # verify the required parameter 'step_uuid' is set
+      if @api_client.config.client_side_validation && step_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'step_uuid' when calling SfvbApi.update_sfvb_sequence_step"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.update_sfvb_sequence_step"
+      end
+      # verify the required parameter 'sequence_step_update_request' is set
+      if @api_client.config.client_side_validation && sequence_step_update_request.nil?
+        fail ArgumentError, "Missing the required parameter 'sequence_step_update_request' when calling SfvbApi.update_sfvb_sequence_step"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid}/steps/{step_uuid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'sequence_uuid' + '}', CGI.escape(sequence_uuid.to_s)).sub('{' + 'step_uuid' + '}', CGI.escape(step_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(sequence_step_update_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbSequenceStepUpdateResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_sequence_step",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_sequence_step\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

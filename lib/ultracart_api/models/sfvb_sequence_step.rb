@@ -36,6 +36,9 @@ module UltracartClient
     # The step's audience filter as stored, when it has one.
     attr_accessor :filter_profile_equation_json
 
+    # The hash of the step's type, stored settings and audience filter.  Send it back as If-Match when changing the step.
+    attr_accessor :hash_sha256
+
     # The items it names, for a cart or rate limiter step.
     attr_accessor :item_ids
 
@@ -76,6 +79,7 @@ module UltracartClient
         :'disabled' => :'disabled',
         :'email_uuids' => :'email_uuids',
         :'filter_profile_equation_json' => :'filter_profile_equation_json',
+        :'hash_sha256' => :'hash_sha256',
         :'item_ids' => :'item_ids',
         :'label' => :'label',
         :'list_uuids' => :'list_uuids',
@@ -104,6 +108,7 @@ module UltracartClient
         :'disabled' => :'Boolean',
         :'email_uuids' => :'Array<String>',
         :'filter_profile_equation_json' => :'String',
+        :'hash_sha256' => :'String',
         :'item_ids' => :'Array<String>',
         :'label' => :'String',
         :'list_uuids' => :'Array<String>',
@@ -168,6 +173,10 @@ module UltracartClient
 
       if attributes.key?(:'filter_profile_equation_json')
         self.filter_profile_equation_json = attributes[:'filter_profile_equation_json']
+      end
+
+      if attributes.key?(:'hash_sha256')
+        self.hash_sha256 = attributes[:'hash_sha256']
       end
 
       if attributes.key?(:'item_ids')
@@ -240,6 +249,7 @@ module UltracartClient
           disabled == o.disabled &&
           email_uuids == o.email_uuids &&
           filter_profile_equation_json == o.filter_profile_equation_json &&
+          hash_sha256 == o.hash_sha256 &&
           item_ids == o.item_ids &&
           label == o.label &&
           list_uuids == o.list_uuids &&
@@ -261,7 +271,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [branches, config_error, config_json, config_merchant_notes, disabled, email_uuids, filter_profile_equation_json, item_ids, label, list_uuids, merchant_notes, name, number_waiting, postcard_uuid, step_uuid, type, unreachable].hash
+      [branches, config_error, config_json, config_merchant_notes, disabled, email_uuids, filter_profile_equation_json, hash_sha256, item_ids, label, list_uuids, merchant_notes, name, number_waiting, postcard_uuid, step_uuid, type, unreachable].hash
     end
 
     # Builds the object from hash
