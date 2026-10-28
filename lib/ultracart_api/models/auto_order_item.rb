@@ -24,13 +24,13 @@ module UltracartClient
     # An arbitrary percentage discount to provide on future rebills
     attr_accessor :arbitrary_percentage_discount
 
-    # Arbitrary quantity to rebill
+    # Quantity to rebill.  When set, every rebill uses this quantity instead of original_quantity.  Set this field to change the quantity on an active auto order; the merchant auto order editor updates this same field.  Each rebill charges the unit price multiplied by this quantity.
     attr_accessor :arbitrary_quantity
 
     # The number of days to rebill if the frequency is set to an arbitrary number of days
     attr_accessor :arbitrary_schedule_days
 
-    # Arbitrary unit cost that rebills of this item should occur at
+    # Arbitrary unit cost that rebills of this item should occur at.  This is a price per unit.  Each rebill charges it multiplied by the rebill quantity (arbitrary_quantity, or original_quantity when arbitrary_quantity is null).
     attr_accessor :arbitrary_unit_cost
 
     # The number of rebills to give the arbitrary unit cost on before reverting to normal pricing.
@@ -84,7 +84,7 @@ module UltracartClient
     # The original item id purchased.  This item controls scheduling.  If you wish to modify a schedule, for example, from monthly to yearly, change this item from your monthly item to your yearly item, and then change the next_shipment_dts to your desired date.
     attr_accessor :original_item_id
 
-    # The original quantity purchased
+    # The quantity purchased on the original order.  Rebills use this quantity only when arbitrary_quantity is null.  To change the quantity on future rebills, set arbitrary_quantity instead.
     attr_accessor :original_quantity
 
     # True if paused.  This field is an object instead of a primitive for backwards compatibility.
