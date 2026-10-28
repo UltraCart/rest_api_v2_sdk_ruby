@@ -11,6 +11,7 @@
 | **merchant_item_oid** | **Integer** | The item&#39;s internal oid, which appears nowhere on a rendered storefront. | [optional] |
 | **multimedia** | [**Array&lt;SfvbItemMultimedia&gt;**](SfvbItemMultimedia.md) | Every image slot a template declares plus every image attached to the item. | [optional] |
 | **seo** | [**SfvbItemSeo**](SfvbItemSeo.md) |  | [optional] |
+| **tags** | [**SfvbItemTags**](SfvbItemTags.md) |  | [optional] |
 | **title** | **String** | What an itemtitle element renders.  This is the item&#39;s short description in the catalog, not a storefront only field, so changing it changes the item everywhere. | [optional] |
 
 ## Example
@@ -26,6 +27,7 @@ instance = UltracartClient::SfvbItemResponse.new(
   merchant_item_oid: null,
   multimedia: null,
   seo: null,
+  tags: null,
   title: null
 )
 ```

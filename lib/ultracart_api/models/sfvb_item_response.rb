@@ -35,6 +35,8 @@ module UltracartClient
 
     attr_accessor :seo
 
+    attr_accessor :tags
+
     # What an itemtitle element renders.  This is the item's short description in the catalog, not a storefront only field, so changing it changes the item everywhere.
     attr_accessor :title
 
@@ -48,6 +50,7 @@ module UltracartClient
         :'merchant_item_oid' => :'merchant_item_oid',
         :'multimedia' => :'multimedia',
         :'seo' => :'seo',
+        :'tags' => :'tags',
         :'title' => :'title'
       }
     end
@@ -67,6 +70,7 @@ module UltracartClient
         :'merchant_item_oid' => :'Integer',
         :'multimedia' => :'Array<SfvbItemMultimedia>',
         :'seo' => :'SfvbItemSeo',
+        :'tags' => :'SfvbItemTags',
         :'title' => :'String'
       }
     end
@@ -126,6 +130,10 @@ module UltracartClient
         self.seo = attributes[:'seo']
       end
 
+      if attributes.key?(:'tags')
+        self.tags = attributes[:'tags']
+      end
+
       if attributes.key?(:'title')
         self.title = attributes[:'title']
       end
@@ -156,6 +164,7 @@ module UltracartClient
           merchant_item_oid == o.merchant_item_oid &&
           multimedia == o.multimedia &&
           seo == o.seo &&
+          tags == o.tags &&
           title == o.title
     end
 
@@ -168,7 +177,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attributes, description, groups, merchant_item_id, merchant_item_oid, multimedia, seo, title].hash
+      [attributes, description, groups, merchant_item_id, merchant_item_oid, multimedia, seo, tags, title].hash
     end
 
     # Builds the object from hash
