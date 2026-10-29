@@ -8370,6 +8370,94 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Add an email step, with its new email
+    # Creates a new email with the subject and preview text and adds the email step that sends it, together, so a failure leaves neither.  It goes right after after_step_uuid, or first on one side of a condition, split or inboxgeek step (branch_step_uuid with side).  Send that step's hash_sha256 as If-Match.  The email has no body yet, and gets the content review flags the admin gives a new email here.  A sequence whose campaign or flow is live needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param sequence_uuid [String] 
+    # @param if_match [String] The hash_sha256 of the step it goes after, or of the branching step.  Required; 428 when absent, 412 when stale.
+    # @param sequence_step_create_request [SfvbSequenceStepCreateRequest] Where the step goes, and the new email&#39;s subject and preview text
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbSequenceStepCreateResponse]
+    def insert_sfvb_sequence_step(storefront_oid, sequence_uuid, if_match, sequence_step_create_request, opts = {})
+      data, _status_code, _headers = insert_sfvb_sequence_step_with_http_info(storefront_oid, sequence_uuid, if_match, sequence_step_create_request, opts)
+      data
+    end
+
+    # Add an email step, with its new email
+    # Creates a new email with the subject and preview text and adds the email step that sends it, together, so a failure leaves neither.  It goes right after after_step_uuid, or first on one side of a condition, split or inboxgeek step (branch_step_uuid with side).  Send that step&#39;s hash_sha256 as If-Match.  The email has no body yet, and gets the content review flags the admin gives a new email here.  A sequence whose campaign or flow is live needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param sequence_uuid [String] 
+    # @param if_match [String] The hash_sha256 of the step it goes after, or of the branching step.  Required; 428 when absent, 412 when stale.
+    # @param sequence_step_create_request [SfvbSequenceStepCreateRequest] Where the step goes, and the new email&#39;s subject and preview text
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbSequenceStepCreateResponse, Integer, Hash)>] SfvbSequenceStepCreateResponse data, response status code and response headers
+    def insert_sfvb_sequence_step_with_http_info(storefront_oid, sequence_uuid, if_match, sequence_step_create_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.insert_sfvb_sequence_step ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.insert_sfvb_sequence_step"
+      end
+      # verify the required parameter 'sequence_uuid' is set
+      if @api_client.config.client_side_validation && sequence_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'sequence_uuid' when calling SfvbApi.insert_sfvb_sequence_step"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.insert_sfvb_sequence_step"
+      end
+      # verify the required parameter 'sequence_step_create_request' is set
+      if @api_client.config.client_side_validation && sequence_step_create_request.nil?
+        fail ArgumentError, "Missing the required parameter 'sequence_step_create_request' when calling SfvbApi.insert_sfvb_sequence_step"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid}/steps'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'sequence_uuid' + '}', CGI.escape(sequence_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(sequence_step_create_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbSequenceStepCreateResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.insert_sfvb_sequence_step",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_sequence_step\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create an upsell offer
     # Every item it names must exist, and every shipping method, payment method and loyalty tier must be one the merchant has.  Put it on a path with a path update to have it shown.  It must be created with active false, and switched on with the enable call, which needs approval.  upsell_item_id_javascript or offsite_content_url needs sfvb_publish.  Its page content is its container, written with the container endpoints and owner type upsell. 
     # @param storefront_oid [Integer] 

@@ -1195,6 +1195,8 @@ docs/SfvbSecretSink.md
 docs/SfvbSequence.md
 docs/SfvbSequenceBranch.md
 docs/SfvbSequenceStep.md
+docs/SfvbSequenceStepCreateRequest.md
+docs/SfvbSequenceStepCreateResponse.md
 docs/SfvbSequenceStepUpdateRequest.md
 docs/SfvbSequenceStepUpdateResponse.md
 docs/SfvbServerLog.md
@@ -2544,6 +2546,8 @@ lib/ultracart_api/models/sfvb_secret_sink.rb
 lib/ultracart_api/models/sfvb_sequence.rb
 lib/ultracart_api/models/sfvb_sequence_branch.rb
 lib/ultracart_api/models/sfvb_sequence_step.rb
+lib/ultracart_api/models/sfvb_sequence_step_create_request.rb
+lib/ultracart_api/models/sfvb_sequence_step_create_response.rb
 lib/ultracart_api/models/sfvb_sequence_step_update_request.rb
 lib/ultracart_api/models/sfvb_sequence_step_update_response.rb
 lib/ultracart_api/models/sfvb_server_log.rb

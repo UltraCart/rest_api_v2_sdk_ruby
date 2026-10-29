@@ -121,6 +121,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**insert_sfvb_page**](SfvbApi.md#insert_sfvb_page) | **POST** /sfvb/storefronts/{storefront_oid}/pages | Create a page |
 | [**insert_sfvb_redirect**](SfvbApi.md#insert_sfvb_redirect) | **POST** /sfvb/storefronts/{storefront_oid}/redirects | Create a 301 redirect rule |
 | [**insert_sfvb_secret_request**](SfvbApi.md#insert_sfvb_secret_request) | **POST** /sfvb/secrets | Ask a person to enter secret values |
+| [**insert_sfvb_sequence_step**](SfvbApi.md#insert_sfvb_sequence_step) | **POST** /sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid}/steps | Add an email step, with its new email |
 | [**insert_sfvb_upsell_offer**](SfvbApi.md#insert_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers | Create an upsell offer |
 | [**insert_sfvb_upsell_path**](SfvbApi.md#insert_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths | Create an upsell path |
 | [**install_sfvb_library_entry**](SfvbApi.md#install_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/install | Install a library entry into a storefront |
@@ -6547,6 +6548,62 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## insert_sfvb_sequence_step
+
+> <SfvbSequenceStepCreateResponse> insert_sfvb_sequence_step(storefront_oid, sequence_uuid, if_match, sequence_step_create_request)
+
+Add an email step, with its new email
+
+Creates a new email with the subject and preview text and adds the email step that sends it, together, so a failure leaves neither.  It goes right after after_step_uuid, or first on one side of a condition, split or inboxgeek step (branch_step_uuid with side).  Send that step's hash_sha256 as If-Match.  The email has no body yet, and gets the content review flags the admin gives a new email here.  A sequence whose campaign or flow is live needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_sfvb_sequence_step_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbSequenceStepCreateResponse>, Integer, Hash)> insert_sfvb_sequence_step_with_http_info(storefront_oid, sequence_uuid, if_match, sequence_step_create_request)
+
+```ruby
+begin
+  # Add an email step, with its new email
+  data, status_code, headers = api_instance.insert_sfvb_sequence_step_with_http_info(storefront_oid, sequence_uuid, if_match, sequence_step_create_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbSequenceStepCreateResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->insert_sfvb_sequence_step_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **sequence_uuid** | **String** |  |  |
+| **if_match** | **String** | The hash_sha256 of the step it goes after, or of the branching step.  Required; 428 when absent, 412 when stale. |  |
+| **sequence_step_create_request** | [**SfvbSequenceStepCreateRequest**](SfvbSequenceStepCreateRequest.md) | Where the step goes, and the new email&#39;s subject and preview text |  |
+
+### Return type
+
+[**SfvbSequenceStepCreateResponse**](SfvbSequenceStepCreateResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
