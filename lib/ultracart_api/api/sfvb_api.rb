@@ -2182,6 +2182,92 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Remove one step
+    # Removes the step from its list and links the step before it to the step after it, in one transaction.  An email, experiment or postcard step's email or postcard is archived with it.  Refused while any customer is waiting on the step, for the begin, end, continue and merge markers, for a condition, split or inboxgeek step with steps on a side, and for a step whose email a resend step re-sends.  Send the step's hash_sha256 as If-Match.  A sequence whose campaign or flow is live needs sfvb_publish and an approved sequence_step.delete approval (Approval-Id); a draft or inactive one needs neither.  An email or postcard another step still uses is left as it is. 
+    # @param storefront_oid [Integer] 
+    # @param sequence_uuid [String] 
+    # @param step_uuid [String] 
+    # @param if_match [String] The step&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id When the sequence is live, the approval_id of an approved sequence_step.delete request for this step.  See POST /sfvb/approvals.
+    # @return [SfvbSequenceStepDeleteResponse]
+    def delete_sfvb_sequence_step(storefront_oid, sequence_uuid, step_uuid, if_match, opts = {})
+      data, _status_code, _headers = delete_sfvb_sequence_step_with_http_info(storefront_oid, sequence_uuid, step_uuid, if_match, opts)
+      data
+    end
+
+    # Remove one step
+    # Removes the step from its list and links the step before it to the step after it, in one transaction.  An email, experiment or postcard step&#39;s email or postcard is archived with it.  Refused while any customer is waiting on the step, for the begin, end, continue and merge markers, for a condition, split or inboxgeek step with steps on a side, and for a step whose email a resend step re-sends.  Send the step&#39;s hash_sha256 as If-Match.  A sequence whose campaign or flow is live needs sfvb_publish and an approved sequence_step.delete approval (Approval-Id); a draft or inactive one needs neither.  An email or postcard another step still uses is left as it is. 
+    # @param storefront_oid [Integer] 
+    # @param sequence_uuid [String] 
+    # @param step_uuid [String] 
+    # @param if_match [String] The step&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id When the sequence is live, the approval_id of an approved sequence_step.delete request for this step.  See POST /sfvb/approvals.
+    # @return [Array<(SfvbSequenceStepDeleteResponse, Integer, Hash)>] SfvbSequenceStepDeleteResponse data, response status code and response headers
+    def delete_sfvb_sequence_step_with_http_info(storefront_oid, sequence_uuid, step_uuid, if_match, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.delete_sfvb_sequence_step ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.delete_sfvb_sequence_step"
+      end
+      # verify the required parameter 'sequence_uuid' is set
+      if @api_client.config.client_side_validation && sequence_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'sequence_uuid' when calling SfvbApi.delete_sfvb_sequence_step"
+      end
+      # verify the required parameter 'step_uuid' is set
+      if @api_client.config.client_side_validation && step_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'step_uuid' when calling SfvbApi.delete_sfvb_sequence_step"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.delete_sfvb_sequence_step"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid}/steps/{step_uuid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'sequence_uuid' + '}', CGI.escape(sequence_uuid.to_s)).sub('{' + 'step_uuid' + '}', CGI.escape(step_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'If-Match'] = if_match
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbSequenceStepDeleteResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.delete_sfvb_sequence_step",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_sequence_step\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Detach an image from a blog post
     # Name exactly one of default_image, code or blog_post_multimedia_oid.  Removes the image from the post and deletes its stored copy.  Take it out of the body too, or the body keeps a broken image.  A post that is not a draft needs sfvb_publish. 
     # @param storefront_oid [Integer] 
@@ -8371,10 +8457,10 @@ module UltracartClient
     end
 
     # Add an email step, with its new email
-    # Creates a new email with the subject and preview text and adds the email step that sends it, together, so a failure leaves neither.  It goes right after after_step_uuid, or first on one side of a condition, split or inboxgeek step (branch_step_uuid with side).  Send that step's hash_sha256 as If-Match.  The email has no body yet, and gets the content review flags the admin gives a new email here.  A sequence whose campaign or flow is live needs sfvb_publish. 
+    # Creates a new email with the subject and preview text and adds the email step that sends it, together, so a failure leaves neither.  It goes right after after_step_uuid, or first on one side of a condition, split or inboxgeek step (branch_step_uuid with side).  Send that step's hash_sha256 as If-Match.  A sequence with no steps yet takes neither place and If-Match *, and gets begin and end steps around the email, as the admin's editor adds them.  The email has no body yet, and gets the content review flags the admin gives a new email here.  A sequence whose campaign or flow is live needs sfvb_publish. 
     # @param storefront_oid [Integer] 
     # @param sequence_uuid [String] 
-    # @param if_match [String] The hash_sha256 of the step it goes after, or of the branching step.  Required; 428 when absent, 412 when stale.
+    # @param if_match [String] The hash_sha256 of the step it goes after, or of the branching step, or * for the first step of a sequence with no steps.  Required; 428 when absent, 412 when stale.
     # @param sequence_step_create_request [SfvbSequenceStepCreateRequest] Where the step goes, and the new email&#39;s subject and preview text
     # @param [Hash] opts the optional parameters
     # @return [SfvbSequenceStepCreateResponse]
@@ -8384,10 +8470,10 @@ module UltracartClient
     end
 
     # Add an email step, with its new email
-    # Creates a new email with the subject and preview text and adds the email step that sends it, together, so a failure leaves neither.  It goes right after after_step_uuid, or first on one side of a condition, split or inboxgeek step (branch_step_uuid with side).  Send that step&#39;s hash_sha256 as If-Match.  The email has no body yet, and gets the content review flags the admin gives a new email here.  A sequence whose campaign or flow is live needs sfvb_publish. 
+    # Creates a new email with the subject and preview text and adds the email step that sends it, together, so a failure leaves neither.  It goes right after after_step_uuid, or first on one side of a condition, split or inboxgeek step (branch_step_uuid with side).  Send that step&#39;s hash_sha256 as If-Match.  A sequence with no steps yet takes neither place and If-Match *, and gets begin and end steps around the email, as the admin&#39;s editor adds them.  The email has no body yet, and gets the content review flags the admin gives a new email here.  A sequence whose campaign or flow is live needs sfvb_publish. 
     # @param storefront_oid [Integer] 
     # @param sequence_uuid [String] 
-    # @param if_match [String] The hash_sha256 of the step it goes after, or of the branching step.  Required; 428 when absent, 412 when stale.
+    # @param if_match [String] The hash_sha256 of the step it goes after, or of the branching step, or * for the first step of a sequence with no steps.  Required; 428 when absent, 412 when stale.
     # @param sequence_step_create_request [SfvbSequenceStepCreateRequest] Where the step goes, and the new email&#39;s subject and preview text
     # @param [Hash] opts the optional parameters
     # @return [Array<(SfvbSequenceStepCreateResponse, Integer, Hash)>] SfvbSequenceStepCreateResponse data, response status code and response headers

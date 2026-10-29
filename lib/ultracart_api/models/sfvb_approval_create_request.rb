@@ -159,7 +159,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      action_validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing"])
+      action_validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing", "twilio_account.delete", "sending_domain.delete", "sequence_step.delete"])
       return false unless action_validator.valid?(@action)
       true
     end
@@ -167,7 +167,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] action Object to be assigned
     def action=(action)
-      validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing"])
+      validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing", "twilio_account.delete", "sending_domain.delete", "sequence_step.delete"])
       unless validator.valid?(action)
         fail ArgumentError, "invalid value for \"action\", must be one of #{validator.allowable_values}."
       end
