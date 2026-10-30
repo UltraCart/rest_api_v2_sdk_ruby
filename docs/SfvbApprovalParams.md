@@ -16,6 +16,7 @@
 | **request_sha256** | **String** | For experiment.start of a url experiment, the hash of the checked experiment approved, and for item.pricing the hash of the change.  Set by the server.  The gated call must send the same. | [optional] |
 | **rows_sha256** | **String** | For redirect.delete_batch and item.attribute_batch, the plan_hash of the exact rows approved.  Set by the server.  The batch must send rows with this hash. | [optional] |
 | **rule_count** | **Integer** | For redirect.delete_batch, how many rules the batch would delete when it was requested.  Set by the server. | [optional] |
+| **segment_uuid** | **String** | The segment whose rule changes, for segment.update. | [optional] |
 | **sequence_uuid** | **String** | The communication sequence, for sequence_step.delete. | [optional] |
 | **slot** | **String** | For experiment.start of a page experiment, the page body name.  Defaults to body. | [optional] |
 | **step_uuid** | **String** | The step to remove, for sequence_step.delete. | [optional] |
@@ -43,6 +44,7 @@ instance = UltracartClient::SfvbApprovalParams.new(
   request_sha256: null,
   rows_sha256: null,
   rule_count: null,
+  segment_uuid: null,
   sequence_uuid: null,
   slot: null,
   step_uuid: null,

@@ -51,6 +51,9 @@ module UltracartClient
     # For redirect.delete_batch, how many rules the batch would delete when it was requested.  Set by the server.
     attr_accessor :rule_count
 
+    # The segment whose rule changes, for segment.update.
+    attr_accessor :segment_uuid
+
     # The communication sequence, for sequence_step.delete.
     attr_accessor :sequence_uuid
 
@@ -112,6 +115,7 @@ module UltracartClient
         :'request_sha256' => :'request_sha256',
         :'rows_sha256' => :'rows_sha256',
         :'rule_count' => :'rule_count',
+        :'segment_uuid' => :'segment_uuid',
         :'sequence_uuid' => :'sequence_uuid',
         :'slot' => :'slot',
         :'step_uuid' => :'step_uuid',
@@ -143,6 +147,7 @@ module UltracartClient
         :'request_sha256' => :'String',
         :'rows_sha256' => :'String',
         :'rule_count' => :'Integer',
+        :'segment_uuid' => :'String',
         :'sequence_uuid' => :'String',
         :'slot' => :'String',
         :'step_uuid' => :'String',
@@ -225,6 +230,10 @@ module UltracartClient
         self.rule_count = attributes[:'rule_count']
       end
 
+      if attributes.key?(:'segment_uuid')
+        self.segment_uuid = attributes[:'segment_uuid']
+      end
+
       if attributes.key?(:'sequence_uuid')
         self.sequence_uuid = attributes[:'sequence_uuid']
       end
@@ -300,6 +309,7 @@ module UltracartClient
           request_sha256 == o.request_sha256 &&
           rows_sha256 == o.rows_sha256 &&
           rule_count == o.rule_count &&
+          segment_uuid == o.segment_uuid &&
           sequence_uuid == o.sequence_uuid &&
           slot == o.slot &&
           step_uuid == o.step_uuid &&
@@ -319,7 +329,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attribute_names, blog_post_oid, content_sha256, domain, esp_twilio_uuid, experiment_oid, item_count, merchant_item_oid, path, request_sha256, rows_sha256, rule_count, sequence_uuid, slot, step_uuid, upsell_kind, upsell_oid, version, widget_id, winner_variation_number].hash
+      [attribute_names, blog_post_oid, content_sha256, domain, esp_twilio_uuid, experiment_oid, item_count, merchant_item_oid, path, request_sha256, rows_sha256, rule_count, segment_uuid, sequence_uuid, slot, step_uuid, upsell_kind, upsell_oid, version, widget_id, winner_variation_number].hash
     end
 
     # Builds the object from hash

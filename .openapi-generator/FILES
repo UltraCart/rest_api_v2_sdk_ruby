@@ -1013,6 +1013,10 @@ docs/SfvbCommsList.md
 docs/SfvbCommsListsResponse.md
 docs/SfvbCommsPostcard.md
 docs/SfvbCommsSegment.md
+docs/SfvbCommsSegmentDetail.md
+docs/SfvbCommsSegmentResponse.md
+docs/SfvbCommsSegmentUsedBy.md
+docs/SfvbCommsSegmentWriteRequest.md
 docs/SfvbCommsSegmentsResponse.md
 docs/SfvbCommsSendingDomain.md
 docs/SfvbCommsSendingDomainsResponse.md
@@ -2365,6 +2369,10 @@ lib/ultracart_api/models/sfvb_comms_list.rb
 lib/ultracart_api/models/sfvb_comms_lists_response.rb
 lib/ultracart_api/models/sfvb_comms_postcard.rb
 lib/ultracart_api/models/sfvb_comms_segment.rb
+lib/ultracart_api/models/sfvb_comms_segment_detail.rb
+lib/ultracart_api/models/sfvb_comms_segment_response.rb
+lib/ultracart_api/models/sfvb_comms_segment_used_by.rb
+lib/ultracart_api/models/sfvb_comms_segment_write_request.rb
 lib/ultracart_api/models/sfvb_comms_segments_response.rb
 lib/ultracart_api/models/sfvb_comms_sending_domain.rb
 lib/ultracart_api/models/sfvb_comms_sending_domains_response.rb

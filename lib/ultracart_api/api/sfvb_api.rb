@@ -3947,6 +3947,76 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Read one segment, with its rule
+    # The segment's name, folder, rule, member count at its last rebuild, whether a rebuild is still due, and the campaigns and flows that use it, each with whether it is live.  hash_sha256 is the If-Match for an update.  Never its members, its Facebook audience, its ranking or its third party sync settings. 
+    # @param storefront_oid [Integer] 
+    # @param segment_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsSegmentResponse]
+    def get_sfvb_comms_segment(storefront_oid, segment_uuid, opts = {})
+      data, _status_code, _headers = get_sfvb_comms_segment_with_http_info(storefront_oid, segment_uuid, opts)
+      data
+    end
+
+    # Read one segment, with its rule
+    # The segment&#39;s name, folder, rule, member count at its last rebuild, whether a rebuild is still due, and the campaigns and flows that use it, each with whether it is live.  hash_sha256 is the If-Match for an update.  Never its members, its Facebook audience, its ranking or its third party sync settings. 
+    # @param storefront_oid [Integer] 
+    # @param segment_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsSegmentResponse, Integer, Hash)>] SfvbCommsSegmentResponse data, response status code and response headers
+    def get_sfvb_comms_segment_with_http_info(storefront_oid, segment_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_comms_segment ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_comms_segment"
+      end
+      # verify the required parameter 'segment_uuid' is set
+      if @api_client.config.client_side_validation && segment_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'segment_uuid' when calling SfvbApi.get_sfvb_comms_segment"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/segments/{segment_uuid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'segment_uuid' + '}', CGI.escape(segment_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsSegmentResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_comms_segment",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_comms_segment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read a sending domain
     # One sending domain as stored.  To check an amazon domain's DNS again, use the status call. 
     # @param domain [String] 
@@ -8095,6 +8165,81 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_blog_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a segment
+    # A new segment with the name, rule and folder given.  The rule needs at least one group, each with at least one function of a rule type the segment rebuild knows, and any list or segment it names must be on this storefront.  The segment starts empty and rebuilds in the background; member_count is out of date until rebuild_required is false. 
+    # @param storefront_oid [Integer] 
+    # @param segment_write_request [SfvbCommsSegmentWriteRequest] The new segment&#39;s name, rule and folder
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsSegmentResponse]
+    def insert_sfvb_comms_segment(storefront_oid, segment_write_request, opts = {})
+      data, _status_code, _headers = insert_sfvb_comms_segment_with_http_info(storefront_oid, segment_write_request, opts)
+      data
+    end
+
+    # Create a segment
+    # A new segment with the name, rule and folder given.  The rule needs at least one group, each with at least one function of a rule type the segment rebuild knows, and any list or segment it names must be on this storefront.  The segment starts empty and rebuilds in the background; member_count is out of date until rebuild_required is false. 
+    # @param storefront_oid [Integer] 
+    # @param segment_write_request [SfvbCommsSegmentWriteRequest] The new segment&#39;s name, rule and folder
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsSegmentResponse, Integer, Hash)>] SfvbCommsSegmentResponse data, response status code and response headers
+    def insert_sfvb_comms_segment_with_http_info(storefront_oid, segment_write_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.insert_sfvb_comms_segment ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.insert_sfvb_comms_segment"
+      end
+      # verify the required parameter 'segment_write_request' is set
+      if @api_client.config.client_side_validation && segment_write_request.nil?
+        fail ArgumentError, "Missing the required parameter 'segment_write_request' when calling SfvbApi.insert_sfvb_comms_segment"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/segments'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(segment_write_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsSegmentResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.insert_sfvb_comms_segment",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_comms_segment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -14205,6 +14350,97 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_campaign\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change a segment's name, rule or folder
+    # A field left out stays as it is.  Send the segment's hash_sha256 as If-Match; the change applies only while the name, rule and folder are still what was read.  A changed rule is checked as on a create and starts a rebuild.  Changing the rule of a segment a live campaign or flow uses needs sfvb_publish and an approved segment.update approval (Approval-Id); a name or folder change, or a segment nothing live uses, needs neither. 
+    # @param storefront_oid [Integer] 
+    # @param segment_uuid [String] 
+    # @param if_match [String] The segment&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param segment_write_request [SfvbCommsSegmentWriteRequest] The fields to change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id When the rule changes and a live campaign or flow uses the segment, the approval_id of an approved segment.update request for this change.  See POST /sfvb/approvals.
+    # @return [SfvbCommsSegmentResponse]
+    def update_sfvb_comms_segment(storefront_oid, segment_uuid, if_match, segment_write_request, opts = {})
+      data, _status_code, _headers = update_sfvb_comms_segment_with_http_info(storefront_oid, segment_uuid, if_match, segment_write_request, opts)
+      data
+    end
+
+    # Change a segment&#39;s name, rule or folder
+    # A field left out stays as it is.  Send the segment&#39;s hash_sha256 as If-Match; the change applies only while the name, rule and folder are still what was read.  A changed rule is checked as on a create and starts a rebuild.  Changing the rule of a segment a live campaign or flow uses needs sfvb_publish and an approved segment.update approval (Approval-Id); a name or folder change, or a segment nothing live uses, needs neither. 
+    # @param storefront_oid [Integer] 
+    # @param segment_uuid [String] 
+    # @param if_match [String] The segment&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param segment_write_request [SfvbCommsSegmentWriteRequest] The fields to change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id When the rule changes and a live campaign or flow uses the segment, the approval_id of an approved segment.update request for this change.  See POST /sfvb/approvals.
+    # @return [Array<(SfvbCommsSegmentResponse, Integer, Hash)>] SfvbCommsSegmentResponse data, response status code and response headers
+    def update_sfvb_comms_segment_with_http_info(storefront_oid, segment_uuid, if_match, segment_write_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_comms_segment ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_comms_segment"
+      end
+      # verify the required parameter 'segment_uuid' is set
+      if @api_client.config.client_side_validation && segment_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'segment_uuid' when calling SfvbApi.update_sfvb_comms_segment"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.update_sfvb_comms_segment"
+      end
+      # verify the required parameter 'segment_write_request' is set
+      if @api_client.config.client_side_validation && segment_write_request.nil?
+        fail ArgumentError, "Missing the required parameter 'segment_write_request' when calling SfvbApi.update_sfvb_comms_segment"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/segments/{segment_uuid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'segment_uuid' + '}', CGI.escape(segment_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(segment_write_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsSegmentResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_comms_segment",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_comms_segment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

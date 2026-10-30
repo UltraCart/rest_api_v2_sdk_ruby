@@ -36,6 +36,8 @@ module UltracartClient
     # For redirect.delete_batch, exactly the rows the batch delete will send, up to 5,000, each with its hash_sha256.  UltraCart keeps only their hash.
     attr_accessor :redirect_rows
 
+    attr_accessor :segment_update
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -68,7 +70,8 @@ module UltracartClient
         :'item_pricing' => :'item_pricing',
         :'params' => :'params',
         :'reason' => :'reason',
-        :'redirect_rows' => :'redirect_rows'
+        :'redirect_rows' => :'redirect_rows',
+        :'segment_update' => :'segment_update'
       }
     end
 
@@ -87,7 +90,8 @@ module UltracartClient
         :'item_pricing' => :'SfvbItemPricingRequest',
         :'params' => :'SfvbApprovalParams',
         :'reason' => :'String',
-        :'redirect_rows' => :'Array<SfvbRedirectDeleteRow>'
+        :'redirect_rows' => :'Array<SfvbRedirectDeleteRow>',
+        :'segment_update' => :'SfvbCommsSegmentWriteRequest'
       }
     end
 
@@ -147,6 +151,10 @@ module UltracartClient
           self.redirect_rows = value
         end
       end
+
+      if attributes.key?(:'segment_update')
+        self.segment_update = attributes[:'segment_update']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -159,7 +167,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      action_validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing", "twilio_account.delete", "sending_domain.delete", "sequence_step.delete"])
+      action_validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing", "twilio_account.delete", "sending_domain.delete", "sequence_step.delete", "segment.update"])
       return false unless action_validator.valid?(@action)
       true
     end
@@ -167,7 +175,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] action Object to be assigned
     def action=(action)
-      validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing", "twilio_account.delete", "sending_domain.delete", "sequence_step.delete"])
+      validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing", "twilio_account.delete", "sending_domain.delete", "sequence_step.delete", "segment.update"])
       unless validator.valid?(action)
         fail ArgumentError, "invalid value for \"action\", must be one of #{validator.allowable_values}."
       end
@@ -186,7 +194,8 @@ module UltracartClient
           item_pricing == o.item_pricing &&
           params == o.params &&
           reason == o.reason &&
-          redirect_rows == o.redirect_rows
+          redirect_rows == o.redirect_rows &&
+          segment_update == o.segment_update
     end
 
     # @see the `==` method
@@ -198,7 +207,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, content, experiment_start, item_attribute_rows, item_pricing, params, reason, redirect_rows].hash
+      [action, content, experiment_start, item_attribute_rows, item_pricing, params, reason, redirect_rows, segment_update].hash
     end
 
     # Builds the object from hash

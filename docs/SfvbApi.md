@@ -57,6 +57,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_blog_post**](SfvbApi.md#get_sfvb_blog_post) | **GET** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Read a blog post |
 | [**get_sfvb_campaign**](SfvbApi.md#get_sfvb_campaign) | **GET** /sfvb/storefronts/{storefront_oid}/campaigns/{campaign_uuid} | Get a campaign |
 | [**get_sfvb_cjson_used_elements**](SfvbApi.md#get_sfvb_cjson_used_elements) | **POST** /sfvb/cjson/elements | Element types used by a container |
+| [**get_sfvb_comms_segment**](SfvbApi.md#get_sfvb_comms_segment) | **GET** /sfvb/storefronts/{storefront_oid}/segments/{segment_uuid} | Read one segment, with its rule |
 | [**get_sfvb_comms_sending_domain**](SfvbApi.md#get_sfvb_comms_sending_domain) | **GET** /sfvb/comms/sending_domains/{domain} | Read a sending domain |
 | [**get_sfvb_comms_sending_domains**](SfvbApi.md#get_sfvb_comms_sending_domains) | **GET** /sfvb/comms/sending_domains | List the sending domains |
 | [**get_sfvb_comms_twilio_account**](SfvbApi.md#get_sfvb_comms_twilio_account) | **GET** /sfvb/comms/twilio_account | Read the Twilio account |
@@ -117,6 +118,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**import_sfvb_redirects**](SfvbApi.md#import_sfvb_redirects) | **POST** /sfvb/storefronts/{storefront_oid}/redirects/import | Apply a reviewed redirect import |
 | [**insert_sfvb_approval**](SfvbApi.md#insert_sfvb_approval) | **POST** /sfvb/approvals | Request a human approval |
 | [**insert_sfvb_blog_post**](SfvbApi.md#insert_sfvb_blog_post) | **POST** /sfvb/storefronts/{storefront_oid}/blog_posts | Create a blog post |
+| [**insert_sfvb_comms_segment**](SfvbApi.md#insert_sfvb_comms_segment) | **POST** /sfvb/storefronts/{storefront_oid}/segments | Create a segment |
 | [**insert_sfvb_comms_sending_domain**](SfvbApi.md#insert_sfvb_comms_sending_domain) | **POST** /sfvb/comms/sending_domains | Add a sending domain |
 | [**insert_sfvb_comms_twilio_account**](SfvbApi.md#insert_sfvb_comms_twilio_account) | **POST** /sfvb/comms/twilio_account | Connect the Twilio account |
 | [**insert_sfvb_page**](SfvbApi.md#insert_sfvb_page) | **POST** /sfvb/storefronts/{storefront_oid}/pages | Create a page |
@@ -196,6 +198,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**unshare_sfvb_library_entry**](SfvbApi.md#unshare_sfvb_library_entry) | **DELETE** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/shares/{merchant_id} | Stop sharing a library entry with an account |
 | [**update_sfvb_blog_post**](SfvbApi.md#update_sfvb_blog_post) | **PUT** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Change a blog post |
 | [**update_sfvb_campaign**](SfvbApi.md#update_sfvb_campaign) | **PUT** /sfvb/storefronts/{storefront_oid}/campaigns/{campaign_uuid} | Change a campaign |
+| [**update_sfvb_comms_segment**](SfvbApi.md#update_sfvb_comms_segment) | **PUT** /sfvb/storefronts/{storefront_oid}/segments/{segment_uuid} | Change a segment&#39;s name, rule or folder |
 | [**update_sfvb_comms_sending_domain**](SfvbApi.md#update_sfvb_comms_sending_domain) | **PUT** /sfvb/comms/sending_domains/{domain} | Update a sending domain |
 | [**update_sfvb_comms_twilio_account**](SfvbApi.md#update_sfvb_comms_twilio_account) | **PUT** /sfvb/comms/twilio_account | Update the Twilio account |
 | [**update_sfvb_email**](SfvbApi.md#update_sfvb_email) | **PUT** /sfvb/storefronts/{storefront_oid}/emails/{email_uuid} | Change a flow or campaign email&#39;s subject or preview text |
@@ -3094,6 +3097,60 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_sfvb_comms_segment
+
+> <SfvbCommsSegmentResponse> get_sfvb_comms_segment(storefront_oid, segment_uuid)
+
+Read one segment, with its rule
+
+The segment's name, folder, rule, member count at its last rebuild, whether a rebuild is still due, and the campaigns and flows that use it, each with whether it is live.  hash_sha256 is the If-Match for an update.  Never its members, its Facebook audience, its ranking or its third party sync settings. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_comms_segment_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsSegmentResponse>, Integer, Hash)> get_sfvb_comms_segment_with_http_info(storefront_oid, segment_uuid)
+
+```ruby
+begin
+  # Read one segment, with its rule
+  data, status_code, headers = api_instance.get_sfvb_comms_segment_with_http_info(storefront_oid, segment_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsSegmentResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_comms_segment_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **segment_uuid** | **String** |  |  |
+
+### Return type
+
+[**SfvbCommsSegmentResponse**](SfvbCommsSegmentResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -6339,6 +6396,60 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## insert_sfvb_comms_segment
+
+> <SfvbCommsSegmentResponse> insert_sfvb_comms_segment(storefront_oid, segment_write_request)
+
+Create a segment
+
+A new segment with the name, rule and folder given.  The rule needs at least one group, each with at least one function of a rule type the segment rebuild knows, and any list or segment it names must be on this storefront.  The segment starts empty and rebuilds in the background; member_count is out of date until rebuild_required is false. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_sfvb_comms_segment_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsSegmentResponse>, Integer, Hash)> insert_sfvb_comms_segment_with_http_info(storefront_oid, segment_write_request)
+
+```ruby
+begin
+  # Create a segment
+  data, status_code, headers = api_instance.insert_sfvb_comms_segment_with_http_info(storefront_oid, segment_write_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsSegmentResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->insert_sfvb_comms_segment_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **segment_write_request** | [**SfvbCommsSegmentWriteRequest**](SfvbCommsSegmentWriteRequest.md) | The new segment&#39;s name, rule and folder |  |
+
+### Return type
+
+[**SfvbCommsSegmentResponse**](SfvbCommsSegmentResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -10690,6 +10801,63 @@ end
 ### Return type
 
 [**SfvbCampaign**](SfvbCampaign.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_sfvb_comms_segment
+
+> <SfvbCommsSegmentResponse> update_sfvb_comms_segment(storefront_oid, segment_uuid, if_match, segment_write_request, opts)
+
+Change a segment's name, rule or folder
+
+A field left out stays as it is.  Send the segment's hash_sha256 as If-Match; the change applies only while the name, rule and folder are still what was read.  A changed rule is checked as on a create and starts a rebuild.  Changing the rule of a segment a live campaign or flow uses needs sfvb_publish and an approved segment.update approval (Approval-Id); a name or folder change, or a segment nothing live uses, needs neither. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_comms_segment_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsSegmentResponse>, Integer, Hash)> update_sfvb_comms_segment_with_http_info(storefront_oid, segment_uuid, if_match, segment_write_request, opts)
+
+```ruby
+begin
+  # Change a segment's name, rule or folder
+  data, status_code, headers = api_instance.update_sfvb_comms_segment_with_http_info(storefront_oid, segment_uuid, if_match, segment_write_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsSegmentResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_comms_segment_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **segment_uuid** | **String** |  |  |
+| **if_match** | **String** | The segment&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **segment_write_request** | [**SfvbCommsSegmentWriteRequest**](SfvbCommsSegmentWriteRequest.md) | The fields to change |  |
+| **approval_id** | **String** | When the rule changes and a live campaign or flow uses the segment, the approval_id of an approved segment.update request for this change.  See POST /sfvb/approvals. | [optional] |
+
+### Return type
+
+[**SfvbCommsSegmentResponse**](SfvbCommsSegmentResponse.md)
 
 ### Authorization
 
