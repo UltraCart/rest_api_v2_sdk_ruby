@@ -24,6 +24,9 @@ module UltracartClient
     # Credit card transaction type
     attr_accessor :credit_card_transaction_type
 
+    # HSA/FSA eligibility. eligible_with_lmn means the customer needs a Letter of Medical Necessity. Kept in sync automatically when Truemed is configured. Empty string clears it, null value will not update the field
+    attr_accessor :hsa_fsa_eligibility
+
     # True if no real-time charge should be performed on this item.
     attr_accessor :no_realtime_charge
 
@@ -39,6 +42,7 @@ module UltracartClient
         :'block_prepaid' => :'block_prepaid',
         :'block_refunds' => :'block_refunds',
         :'credit_card_transaction_type' => :'credit_card_transaction_type',
+        :'hsa_fsa_eligibility' => :'hsa_fsa_eligibility',
         :'no_realtime_charge' => :'no_realtime_charge',
         :'payment_method_validity' => :'payment_method_validity',
         :'rotating_transaction_gateway_codes' => :'rotating_transaction_gateway_codes'
@@ -56,6 +60,7 @@ module UltracartClient
         :'block_prepaid' => :'Boolean',
         :'block_refunds' => :'Boolean',
         :'credit_card_transaction_type' => :'String',
+        :'hsa_fsa_eligibility' => :'String',
         :'no_realtime_charge' => :'Boolean',
         :'payment_method_validity' => :'Array<String>',
         :'rotating_transaction_gateway_codes' => :'Array<String>'
@@ -93,6 +98,10 @@ module UltracartClient
 
       if attributes.key?(:'credit_card_transaction_type')
         self.credit_card_transaction_type = attributes[:'credit_card_transaction_type']
+      end
+
+      if attributes.key?(:'hsa_fsa_eligibility')
+        self.hsa_fsa_eligibility = attributes[:'hsa_fsa_eligibility']
       end
 
       if attributes.key?(:'no_realtime_charge')
@@ -133,6 +142,7 @@ module UltracartClient
           block_prepaid == o.block_prepaid &&
           block_refunds == o.block_refunds &&
           credit_card_transaction_type == o.credit_card_transaction_type &&
+          hsa_fsa_eligibility == o.hsa_fsa_eligibility &&
           no_realtime_charge == o.no_realtime_charge &&
           payment_method_validity == o.payment_method_validity &&
           rotating_transaction_gateway_codes == o.rotating_transaction_gateway_codes
@@ -147,7 +157,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [block_prepaid, block_refunds, credit_card_transaction_type, no_realtime_charge, payment_method_validity, rotating_transaction_gateway_codes].hash
+      [block_prepaid, block_refunds, credit_card_transaction_type, hsa_fsa_eligibility, no_realtime_charge, payment_method_validity, rotating_transaction_gateway_codes].hash
     end
 
     # Builds the object from hash
