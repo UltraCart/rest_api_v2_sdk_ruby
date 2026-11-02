@@ -15,11 +15,32 @@ require 'time'
 
 module UltracartClient
   class SfvbSequenceStepCreateResponse
+    # A post_card step's back, the container with owner type postcardback and this owner id.
+    attr_accessor :back_container_uuid
+
     # The new email's uuid.  Its body is the email container with this owner id.
     attr_accessor :email_uuid
 
+    # A post_card step's front, the container with owner type postcardfront and this owner id.
+    attr_accessor :front_container_uuid
+
+    # The library item's files whose path already held a file, which was kept, not replaced.
+    attr_accessor :library_files_kept
+
+    # The library item's files that weren't written because they aren't a PNG, JPEG or GIF image whose bytes match its name.  Only those images are copied from a library item.
+    attr_accessor :library_files_skipped
+
+    # Storefront file paths the library item's files were written to.  A file already at its path is kept as it is and listed in library_files_kept instead.
+    attr_accessor :library_files_written
+
+    # The code library email item the new email started from (#1589), when one was given.
+    attr_accessor :library_item_oid
+
     # What to do next, such as writing the body, and customers already waiting on the step before it.
     attr_accessor :notes
+
+    # A post_card step's new postcard (#1644).
+    attr_accessor :postcard_uuid
 
     # True when the new email must pass content review before it sends.
     attr_accessor :requires_review
@@ -29,8 +50,15 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'back_container_uuid' => :'back_container_uuid',
         :'email_uuid' => :'email_uuid',
+        :'front_container_uuid' => :'front_container_uuid',
+        :'library_files_kept' => :'library_files_kept',
+        :'library_files_skipped' => :'library_files_skipped',
+        :'library_files_written' => :'library_files_written',
+        :'library_item_oid' => :'library_item_oid',
         :'notes' => :'notes',
+        :'postcard_uuid' => :'postcard_uuid',
         :'requires_review' => :'requires_review',
         :'step' => :'step'
       }
@@ -44,8 +72,15 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'back_container_uuid' => :'String',
         :'email_uuid' => :'String',
+        :'front_container_uuid' => :'String',
+        :'library_files_kept' => :'Array<String>',
+        :'library_files_skipped' => :'Array<String>',
+        :'library_files_written' => :'Array<String>',
+        :'library_item_oid' => :'Integer',
         :'notes' => :'Array<String>',
+        :'postcard_uuid' => :'String',
         :'requires_review' => :'Boolean',
         :'step' => :'SfvbSequenceStep'
       }
@@ -72,14 +107,48 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'back_container_uuid')
+        self.back_container_uuid = attributes[:'back_container_uuid']
+      end
+
       if attributes.key?(:'email_uuid')
         self.email_uuid = attributes[:'email_uuid']
+      end
+
+      if attributes.key?(:'front_container_uuid')
+        self.front_container_uuid = attributes[:'front_container_uuid']
+      end
+
+      if attributes.key?(:'library_files_kept')
+        if (value = attributes[:'library_files_kept']).is_a?(Array)
+          self.library_files_kept = value
+        end
+      end
+
+      if attributes.key?(:'library_files_skipped')
+        if (value = attributes[:'library_files_skipped']).is_a?(Array)
+          self.library_files_skipped = value
+        end
+      end
+
+      if attributes.key?(:'library_files_written')
+        if (value = attributes[:'library_files_written']).is_a?(Array)
+          self.library_files_written = value
+        end
+      end
+
+      if attributes.key?(:'library_item_oid')
+        self.library_item_oid = attributes[:'library_item_oid']
       end
 
       if attributes.key?(:'notes')
         if (value = attributes[:'notes']).is_a?(Array)
           self.notes = value
         end
+      end
+
+      if attributes.key?(:'postcard_uuid')
+        self.postcard_uuid = attributes[:'postcard_uuid']
       end
 
       if attributes.key?(:'requires_review')
@@ -109,8 +178,15 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          back_container_uuid == o.back_container_uuid &&
           email_uuid == o.email_uuid &&
+          front_container_uuid == o.front_container_uuid &&
+          library_files_kept == o.library_files_kept &&
+          library_files_skipped == o.library_files_skipped &&
+          library_files_written == o.library_files_written &&
+          library_item_oid == o.library_item_oid &&
           notes == o.notes &&
+          postcard_uuid == o.postcard_uuid &&
           requires_review == o.requires_review &&
           step == o.step
     end
@@ -124,7 +200,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [email_uuid, notes, requires_review, step].hash
+      [back_container_uuid, email_uuid, front_container_uuid, library_files_kept, library_files_skipped, library_files_written, library_item_oid, notes, postcard_uuid, requires_review, step].hash
     end
 
     # Builds the object from hash

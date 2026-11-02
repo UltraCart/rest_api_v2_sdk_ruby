@@ -15,29 +15,45 @@ require 'time'
 
 module UltracartClient
   class SfvbSequenceStepCreateRequest
+    # With library_item_oid, true once the caller has seen that the item carries executable content (script, html, embed, css or velocity elements) and still wants it.  An item with any is refused without it.
+    attr_accessor :acknowledge_executable
+
     # The step the new step follows, in the same list.  Not an end, continue or merge step.
     attr_accessor :after_step_uuid
 
     # A condition, split or inboxgeek step.  With side, the new step goes first on that side.
     attr_accessor :branch_step_uuid
 
-    # The new email's preview text, 5 to 150 characters.
+    # A wait step's settings, as the admin saves them and set-config changes them, namely delay_duration and delay_duration_unit (minutes, hours, days, weeks or months), and optionally the delay_until_* options.  Not for an email step.
+    attr_accessor :config_json
+
+    # An email item from the code library (#1589) to start the new email from, taking its body, with new element ids, and its subject and preview text unless subject or preview_text is given.  The item must be this account's own, shared with it, or published, approved by UltraCart and free.  Only for an email step.  The items are listed by the code library email read.
+    attr_accessor :library_item_oid
+
+    # A post_card step's name, shown in the admin, 1 to 100 characters on one line.  Postcard by default.  Only for a post_card step.
+    attr_accessor :name
+
+    # The new email's preview text, 5 to 150 characters.  Optional with library_item_oid, whose preview text is used when this is left out.
     attr_accessor :preview_text
 
     # With branch_step_uuid, the side's label from the sequence read.  yes or no for a condition, left or right for a split or inboxgeek step.
     attr_accessor :side
 
-    # The new email's subject line, 5 to 150 characters.
+    # The new email's subject line, 5 to 150 characters.  Optional with library_item_oid, whose subject is used when this is left out.
     attr_accessor :subject
 
-    # The kind of step.  Only email for now.
+    # The kind of step, one of email (the default), wait or post_card.
     attr_accessor :type
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'acknowledge_executable' => :'acknowledge_executable',
         :'after_step_uuid' => :'after_step_uuid',
         :'branch_step_uuid' => :'branch_step_uuid',
+        :'config_json' => :'config_json',
+        :'library_item_oid' => :'library_item_oid',
+        :'name' => :'name',
         :'preview_text' => :'preview_text',
         :'side' => :'side',
         :'subject' => :'subject',
@@ -53,8 +69,12 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'acknowledge_executable' => :'Boolean',
         :'after_step_uuid' => :'String',
         :'branch_step_uuid' => :'String',
+        :'config_json' => :'String',
+        :'library_item_oid' => :'Integer',
+        :'name' => :'String',
         :'preview_text' => :'String',
         :'side' => :'String',
         :'subject' => :'String',
@@ -83,12 +103,28 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'acknowledge_executable')
+        self.acknowledge_executable = attributes[:'acknowledge_executable']
+      end
+
       if attributes.key?(:'after_step_uuid')
         self.after_step_uuid = attributes[:'after_step_uuid']
       end
 
       if attributes.key?(:'branch_step_uuid')
         self.branch_step_uuid = attributes[:'branch_step_uuid']
+      end
+
+      if attributes.key?(:'config_json')
+        self.config_json = attributes[:'config_json']
+      end
+
+      if attributes.key?(:'library_item_oid')
+        self.library_item_oid = attributes[:'library_item_oid']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
       if attributes.key?(:'preview_text')
@@ -126,8 +162,12 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          acknowledge_executable == o.acknowledge_executable &&
           after_step_uuid == o.after_step_uuid &&
           branch_step_uuid == o.branch_step_uuid &&
+          config_json == o.config_json &&
+          library_item_oid == o.library_item_oid &&
+          name == o.name &&
           preview_text == o.preview_text &&
           side == o.side &&
           subject == o.subject &&
@@ -143,7 +183,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [after_step_uuid, branch_step_uuid, preview_text, side, subject, type].hash
+      [acknowledge_executable, after_step_uuid, branch_step_uuid, config_json, library_item_oid, name, preview_text, side, subject, type].hash
     end
 
     # Builds the object from hash

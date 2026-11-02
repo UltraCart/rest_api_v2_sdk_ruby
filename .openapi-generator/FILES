@@ -1007,6 +1007,8 @@ docs/SfvbCampaign.md
 docs/SfvbCampaignMembership.md
 docs/SfvbCampaignWriteRequest.md
 docs/SfvbCampaignsResponse.md
+docs/SfvbCodeLibraryEmail.md
+docs/SfvbCodeLibraryEmailsResponse.md
 docs/SfvbCommsDnsRecord.md
 docs/SfvbCommsEmail.md
 docs/SfvbCommsList.md
@@ -1202,6 +1204,8 @@ docs/SfvbSequenceStep.md
 docs/SfvbSequenceStepCreateRequest.md
 docs/SfvbSequenceStepCreateResponse.md
 docs/SfvbSequenceStepDeleteResponse.md
+docs/SfvbSequenceStepMoveRequest.md
+docs/SfvbSequenceStepMoveResponse.md
 docs/SfvbSequenceStepUpdateRequest.md
 docs/SfvbSequenceStepUpdateResponse.md
 docs/SfvbServerLog.md
@@ -2363,6 +2367,8 @@ lib/ultracart_api/models/sfvb_campaign.rb
 lib/ultracart_api/models/sfvb_campaign_membership.rb
 lib/ultracart_api/models/sfvb_campaign_write_request.rb
 lib/ultracart_api/models/sfvb_campaigns_response.rb
+lib/ultracart_api/models/sfvb_code_library_email.rb
+lib/ultracart_api/models/sfvb_code_library_emails_response.rb
 lib/ultracart_api/models/sfvb_comms_dns_record.rb
 lib/ultracart_api/models/sfvb_comms_email.rb
 lib/ultracart_api/models/sfvb_comms_list.rb
@@ -2558,6 +2564,8 @@ lib/ultracart_api/models/sfvb_sequence_step.rb
 lib/ultracart_api/models/sfvb_sequence_step_create_request.rb
 lib/ultracart_api/models/sfvb_sequence_step_create_response.rb
 lib/ultracart_api/models/sfvb_sequence_step_delete_response.rb
+lib/ultracart_api/models/sfvb_sequence_step_move_request.rb
+lib/ultracart_api/models/sfvb_sequence_step_move_response.rb
 lib/ultracart_api/models/sfvb_sequence_step_update_request.rb
 lib/ultracart_api/models/sfvb_sequence_step_update_response.rb
 lib/ultracart_api/models/sfvb_server_log.rb

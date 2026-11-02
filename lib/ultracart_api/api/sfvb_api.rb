@@ -8601,12 +8601,12 @@ module UltracartClient
       return data, status_code, headers
     end
 
-    # Add an email step, with its new email
-    # Creates a new email with the subject and preview text and adds the email step that sends it, together, so a failure leaves neither.  It goes right after after_step_uuid, or first on one side of a condition, split or inboxgeek step (branch_step_uuid with side).  Send that step's hash_sha256 as If-Match.  A sequence with no steps yet takes neither place and If-Match *, and gets begin and end steps around the email, as the admin's editor adds them.  The email has no body yet, and gets the content review flags the admin gives a new email here.  A sequence whose campaign or flow is live needs sfvb_publish. 
+    # Add an email step, with its new email, a wait step, or a postcard step, with its new postcard
+    # type email (the default) creates a new email with the subject and preview text and adds the email step that sends it, together, so a failure leaves neither.  The email has no body yet, and gets the content review flags the admin gives a new email here.  With library_item_oid the email starts from a code library email item instead (listSfvbCodeLibraryEmails): its body with new element ids, and its subject and preview text where the request gives none.  The item must be this account's own, shared with it, or published, approved by UltraCart and free; it must pass the library content scanner and the email container rules, and executable elements need acknowledge_executable true.  Its PNG, JPEG and GIF image files are copied into the storefront first, never over an existing file; any other file is skipped and listed.  type wait adds a wait step with config_json as its settings: delay_duration and delay_duration_unit (minutes, hours, days, weeks or months), or a delay_until option; a wait that would pass customers on at once is refused.  type post_card creates a new postcard with the admin's default front and back and adds the postcard step that mails it, together; the step starts disabled, so nothing is printed or mailed until it is turned on with set-config, and the response names the front and back containers.  Any goes right after after_step_uuid, or first on one side of a condition, split or inboxgeek step (branch_step_uuid with side).  Send that step's hash_sha256 as If-Match.  A sequence with no steps yet takes neither place and If-Match *, and gets begin and end steps around the new step, as the admin's editor adds them.  A sequence whose campaign or flow is live needs sfvb_publish. 
     # @param storefront_oid [Integer] 
     # @param sequence_uuid [String] 
     # @param if_match [String] The hash_sha256 of the step it goes after, or of the branching step, or * for the first step of a sequence with no steps.  Required; 428 when absent, 412 when stale.
-    # @param sequence_step_create_request [SfvbSequenceStepCreateRequest] Where the step goes, and the new email&#39;s subject and preview text
+    # @param sequence_step_create_request [SfvbSequenceStepCreateRequest] Where the step goes, and the new email&#39;s subject and preview text or code library item, the wait&#39;s config_json, or the postcard step&#39;s name
     # @param [Hash] opts the optional parameters
     # @return [SfvbSequenceStepCreateResponse]
     def insert_sfvb_sequence_step(storefront_oid, sequence_uuid, if_match, sequence_step_create_request, opts = {})
@@ -8614,12 +8614,12 @@ module UltracartClient
       data
     end
 
-    # Add an email step, with its new email
-    # Creates a new email with the subject and preview text and adds the email step that sends it, together, so a failure leaves neither.  It goes right after after_step_uuid, or first on one side of a condition, split or inboxgeek step (branch_step_uuid with side).  Send that step&#39;s hash_sha256 as If-Match.  A sequence with no steps yet takes neither place and If-Match *, and gets begin and end steps around the email, as the admin&#39;s editor adds them.  The email has no body yet, and gets the content review flags the admin gives a new email here.  A sequence whose campaign or flow is live needs sfvb_publish. 
+    # Add an email step, with its new email, a wait step, or a postcard step, with its new postcard
+    # type email (the default) creates a new email with the subject and preview text and adds the email step that sends it, together, so a failure leaves neither.  The email has no body yet, and gets the content review flags the admin gives a new email here.  With library_item_oid the email starts from a code library email item instead (listSfvbCodeLibraryEmails): its body with new element ids, and its subject and preview text where the request gives none.  The item must be this account&#39;s own, shared with it, or published, approved by UltraCart and free; it must pass the library content scanner and the email container rules, and executable elements need acknowledge_executable true.  Its PNG, JPEG and GIF image files are copied into the storefront first, never over an existing file; any other file is skipped and listed.  type wait adds a wait step with config_json as its settings: delay_duration and delay_duration_unit (minutes, hours, days, weeks or months), or a delay_until option; a wait that would pass customers on at once is refused.  type post_card creates a new postcard with the admin&#39;s default front and back and adds the postcard step that mails it, together; the step starts disabled, so nothing is printed or mailed until it is turned on with set-config, and the response names the front and back containers.  Any goes right after after_step_uuid, or first on one side of a condition, split or inboxgeek step (branch_step_uuid with side).  Send that step&#39;s hash_sha256 as If-Match.  A sequence with no steps yet takes neither place and If-Match *, and gets begin and end steps around the new step, as the admin&#39;s editor adds them.  A sequence whose campaign or flow is live needs sfvb_publish. 
     # @param storefront_oid [Integer] 
     # @param sequence_uuid [String] 
     # @param if_match [String] The hash_sha256 of the step it goes after, or of the branching step, or * for the first step of a sequence with no steps.  Required; 428 when absent, 412 when stale.
-    # @param sequence_step_create_request [SfvbSequenceStepCreateRequest] Where the step goes, and the new email&#39;s subject and preview text
+    # @param sequence_step_create_request [SfvbSequenceStepCreateRequest] Where the step goes, and the new email&#39;s subject and preview text or code library item, the wait&#39;s config_json, or the postcard step&#39;s name
     # @param [Hash] opts the optional parameters
     # @return [Array<(SfvbSequenceStepCreateResponse, Integer, Hash)>] SfvbSequenceStepCreateResponse data, response status code and response headers
     def insert_sfvb_sequence_step_with_http_info(storefront_oid, sequence_uuid, if_match, sequence_step_create_request, opts = {})
@@ -9061,6 +9061,73 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_campaigns\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Email items from the code library that can start a new email step
+    # The code library is the one the admin's \"start from library\" uses; it isn't the Visual Builder element library.  Lists the email items this account may use, by title: its own (source owned), those shared with it (shared), and those published for everyone, approved by UltraCart and free (public).  search matches part of the title, with case.  Each kind is capped at 100 items, and truncated says when there were more.  Send an item's library_item_oid on the step insert to start a new email from it. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :search Part of the title to match, with case.  Up to 100 characters.
+    # @return [SfvbCodeLibraryEmailsResponse]
+    def list_sfvb_code_library_emails(storefront_oid, opts = {})
+      data, _status_code, _headers = list_sfvb_code_library_emails_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Email items from the code library that can start a new email step
+    # The code library is the one the admin&#39;s \&quot;start from library\&quot; uses; it isn&#39;t the Visual Builder element library.  Lists the email items this account may use, by title: its own (source owned), those shared with it (shared), and those published for everyone, approved by UltraCart and free (public).  search matches part of the title, with case.  Each kind is capped at 100 items, and truncated says when there were more.  Send an item&#39;s library_item_oid on the step insert to start a new email from it. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :search Part of the title to match, with case.  Up to 100 characters.
+    # @return [Array<(SfvbCodeLibraryEmailsResponse, Integer, Hash)>] SfvbCodeLibraryEmailsResponse data, response status code and response headers
+    def list_sfvb_code_library_emails_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.list_sfvb_code_library_emails ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.list_sfvb_code_library_emails"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/code_library/emails'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCodeLibraryEmailsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.list_sfvb_code_library_emails",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_code_library_emails\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -10334,6 +10401,103 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#list_sfvb_upsell_paths\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Move one step
+    # Moves the step, in one transaction, to right after after_step_uuid (the begin step puts it first in the sequence) or to the start of one side of a condition, split or inboxgeek step (branch_step_uuid with side).  The step keeps its uuid, settings and the email or postcard it sends: nothing is archived or created.  Refused for the begin, end, continue and merge markers, for a condition, split or inboxgeek step, while any customer is waiting on the step, and when the new place is the one it is in.  Send the step's hash_sha256 as If-Match, and the hash_sha256 of after_step_uuid or branch_step_uuid as anchor_hash_sha256.  A sequence whose campaign or flow is live needs sfvb_publish and an approved sequence_step.move approval (Approval-Id); a draft or inactive one needs neither. 
+    # @param storefront_oid [Integer] 
+    # @param sequence_uuid [String] 
+    # @param step_uuid [String] 
+    # @param if_match [String] The moved step&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param sequence_step_move_request [SfvbSequenceStepMoveRequest] Where the step moves, and the hash of the step it goes next to
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id When the sequence is live, the approval_id of an approved sequence_step.move request for exactly this move.  See POST /sfvb/approvals.
+    # @return [SfvbSequenceStepMoveResponse]
+    def move_sfvb_sequence_step(storefront_oid, sequence_uuid, step_uuid, if_match, sequence_step_move_request, opts = {})
+      data, _status_code, _headers = move_sfvb_sequence_step_with_http_info(storefront_oid, sequence_uuid, step_uuid, if_match, sequence_step_move_request, opts)
+      data
+    end
+
+    # Move one step
+    # Moves the step, in one transaction, to right after after_step_uuid (the begin step puts it first in the sequence) or to the start of one side of a condition, split or inboxgeek step (branch_step_uuid with side).  The step keeps its uuid, settings and the email or postcard it sends: nothing is archived or created.  Refused for the begin, end, continue and merge markers, for a condition, split or inboxgeek step, while any customer is waiting on the step, and when the new place is the one it is in.  Send the step&#39;s hash_sha256 as If-Match, and the hash_sha256 of after_step_uuid or branch_step_uuid as anchor_hash_sha256.  A sequence whose campaign or flow is live needs sfvb_publish and an approved sequence_step.move approval (Approval-Id); a draft or inactive one needs neither. 
+    # @param storefront_oid [Integer] 
+    # @param sequence_uuid [String] 
+    # @param step_uuid [String] 
+    # @param if_match [String] The moved step&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param sequence_step_move_request [SfvbSequenceStepMoveRequest] Where the step moves, and the hash of the step it goes next to
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id When the sequence is live, the approval_id of an approved sequence_step.move request for exactly this move.  See POST /sfvb/approvals.
+    # @return [Array<(SfvbSequenceStepMoveResponse, Integer, Hash)>] SfvbSequenceStepMoveResponse data, response status code and response headers
+    def move_sfvb_sequence_step_with_http_info(storefront_oid, sequence_uuid, step_uuid, if_match, sequence_step_move_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.move_sfvb_sequence_step ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.move_sfvb_sequence_step"
+      end
+      # verify the required parameter 'sequence_uuid' is set
+      if @api_client.config.client_side_validation && sequence_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'sequence_uuid' when calling SfvbApi.move_sfvb_sequence_step"
+      end
+      # verify the required parameter 'step_uuid' is set
+      if @api_client.config.client_side_validation && step_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'step_uuid' when calling SfvbApi.move_sfvb_sequence_step"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.move_sfvb_sequence_step"
+      end
+      # verify the required parameter 'sequence_step_move_request' is set
+      if @api_client.config.client_side_validation && sequence_step_move_request.nil?
+        fail ArgumentError, "Missing the required parameter 'sequence_step_move_request' when calling SfvbApi.move_sfvb_sequence_step"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid}/steps/{step_uuid}/move'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'sequence_uuid' + '}', CGI.escape(sequence_uuid.to_s)).sub('{' + 'step_uuid' + '}', CGI.escape(step_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(sequence_step_move_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbSequenceStepMoveResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.move_sfvb_sequence_step",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#move_sfvb_sequence_step\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -15108,13 +15272,14 @@ module UltracartClient
     end
 
     # Change one step's settings or audience filter
-    # Replaces the step's settings (config_json), its audience filter (filter_profile_equation_json), or both.  Nothing else about the step or the sequence changes.  Send the step's hash_sha256 as If-Match; the write only lands if the step is still what you read.  Email, postcard, experiment, resend, webhook, begin, end, continue and merge steps are refused.  A sequence whose campaign or flow is live needs sfvb_publish. 
+    # Replaces the step's settings (config_json), its audience filter (filter_profile_equation_json), or both.  Nothing else about the step or the sequence changes.  Send the step's hash_sha256 as If-Match; the write only lands if the step is still what you read.  Email, experiment, resend, webhook, begin, end, continue and merge steps are refused.  On a post_card step only disabled, name and info change, and not its filter.  A sequence whose campaign or flow is live needs sfvb_publish.  Turning a post_card step on, live or not, needs an approved sequence_step.enable_postcard approval (Approval-Id): once on, it mails printed cards whenever the campaign or flow runs. 
     # @param storefront_oid [Integer] 
     # @param sequence_uuid [String] 
     # @param step_uuid [String] 
     # @param if_match [String] The step&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
     # @param sequence_step_update_request [SfvbSequenceStepUpdateRequest] The settings, the filter, or both
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id When the change turns a post_card step on, the approval_id of an approved sequence_step.enable_postcard request for this step.  See POST /sfvb/approvals.
     # @return [SfvbSequenceStepUpdateResponse]
     def update_sfvb_sequence_step(storefront_oid, sequence_uuid, step_uuid, if_match, sequence_step_update_request, opts = {})
       data, _status_code, _headers = update_sfvb_sequence_step_with_http_info(storefront_oid, sequence_uuid, step_uuid, if_match, sequence_step_update_request, opts)
@@ -15122,13 +15287,14 @@ module UltracartClient
     end
 
     # Change one step&#39;s settings or audience filter
-    # Replaces the step&#39;s settings (config_json), its audience filter (filter_profile_equation_json), or both.  Nothing else about the step or the sequence changes.  Send the step&#39;s hash_sha256 as If-Match; the write only lands if the step is still what you read.  Email, postcard, experiment, resend, webhook, begin, end, continue and merge steps are refused.  A sequence whose campaign or flow is live needs sfvb_publish. 
+    # Replaces the step&#39;s settings (config_json), its audience filter (filter_profile_equation_json), or both.  Nothing else about the step or the sequence changes.  Send the step&#39;s hash_sha256 as If-Match; the write only lands if the step is still what you read.  Email, experiment, resend, webhook, begin, end, continue and merge steps are refused.  On a post_card step only disabled, name and info change, and not its filter.  A sequence whose campaign or flow is live needs sfvb_publish.  Turning a post_card step on, live or not, needs an approved sequence_step.enable_postcard approval (Approval-Id): once on, it mails printed cards whenever the campaign or flow runs. 
     # @param storefront_oid [Integer] 
     # @param sequence_uuid [String] 
     # @param step_uuid [String] 
     # @param if_match [String] The step&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
     # @param sequence_step_update_request [SfvbSequenceStepUpdateRequest] The settings, the filter, or both
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id When the change turns a post_card step on, the approval_id of an approved sequence_step.enable_postcard request for this step.  See POST /sfvb/approvals.
     # @return [Array<(SfvbSequenceStepUpdateResponse, Integer, Hash)>] SfvbSequenceStepUpdateResponse data, response status code and response headers
     def update_sfvb_sequence_step_with_http_info(storefront_oid, sequence_uuid, step_uuid, if_match, sequence_step_update_request, opts = {})
       if @api_client.config.debugging
@@ -15171,6 +15337,7 @@ module UltracartClient
           header_params['Content-Type'] = content_type
       end
       header_params[:'If-Match'] = if_match
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}

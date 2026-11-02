@@ -2267,6 +2267,8 @@ end
 
 Get email campaigns with stats
 
+Lists only the campaigns with stats recorded in the last stat_days days, with those stats summed.  A campaign with no stats in that window isn't listed; getEmailCampaigns lists every campaign. 
+
 
 ### Examples
 

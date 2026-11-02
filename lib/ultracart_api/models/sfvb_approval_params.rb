@@ -15,11 +15,17 @@ require 'time'
 
 module UltracartClient
   class SfvbApprovalParams
+    # For sequence_step.move, the step it moves after.  Or branch_step_uuid with side.
+    attr_accessor :after_step_uuid
+
     # For item.attribute_batch, the attributes the batch would change.  Set by the server.
     attr_accessor :attribute_names
 
     # The blog post, for blog_post.delete.
     attr_accessor :blog_post_oid
+
+    # For sequence_step.move, the condition, split or inboxgeek step it moves to the start of a side of.
+    attr_accessor :branch_step_uuid
 
     # For file.put_script, the SHA-256 of the exact bytes approved.  Set by the server, never by the caller.  The write must send bytes with this hash.
     attr_accessor :content_sha256
@@ -54,13 +60,16 @@ module UltracartClient
     # The segment whose rule changes, for segment.update.
     attr_accessor :segment_uuid
 
-    # The communication sequence, for sequence_step.delete.
+    # The communication sequence, for sequence_step.delete and sequence_step.move.
     attr_accessor :sequence_uuid
+
+    # For sequence_step.move with branch_step_uuid, the side's label from the sequence read.
+    attr_accessor :side
 
     # For experiment.start of a page experiment, the page body name.  Defaults to body.
     attr_accessor :slot
 
-    # The step to remove, for sequence_step.delete.
+    # The step to remove, for sequence_step.delete, or to move, for sequence_step.move.
     attr_accessor :step_uuid
 
     # For upsell.enable, what to switch on.
@@ -103,8 +112,10 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'after_step_uuid' => :'after_step_uuid',
         :'attribute_names' => :'attribute_names',
         :'blog_post_oid' => :'blog_post_oid',
+        :'branch_step_uuid' => :'branch_step_uuid',
         :'content_sha256' => :'content_sha256',
         :'domain' => :'domain',
         :'esp_twilio_uuid' => :'esp_twilio_uuid',
@@ -117,6 +128,7 @@ module UltracartClient
         :'rule_count' => :'rule_count',
         :'segment_uuid' => :'segment_uuid',
         :'sequence_uuid' => :'sequence_uuid',
+        :'side' => :'side',
         :'slot' => :'slot',
         :'step_uuid' => :'step_uuid',
         :'upsell_kind' => :'upsell_kind',
@@ -135,8 +147,10 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'after_step_uuid' => :'String',
         :'attribute_names' => :'Array<String>',
         :'blog_post_oid' => :'Integer',
+        :'branch_step_uuid' => :'String',
         :'content_sha256' => :'String',
         :'domain' => :'String',
         :'esp_twilio_uuid' => :'String',
@@ -149,6 +163,7 @@ module UltracartClient
         :'rule_count' => :'Integer',
         :'segment_uuid' => :'String',
         :'sequence_uuid' => :'String',
+        :'side' => :'String',
         :'slot' => :'String',
         :'step_uuid' => :'String',
         :'upsell_kind' => :'String',
@@ -180,6 +195,10 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'after_step_uuid')
+        self.after_step_uuid = attributes[:'after_step_uuid']
+      end
+
       if attributes.key?(:'attribute_names')
         if (value = attributes[:'attribute_names']).is_a?(Array)
           self.attribute_names = value
@@ -188,6 +207,10 @@ module UltracartClient
 
       if attributes.key?(:'blog_post_oid')
         self.blog_post_oid = attributes[:'blog_post_oid']
+      end
+
+      if attributes.key?(:'branch_step_uuid')
+        self.branch_step_uuid = attributes[:'branch_step_uuid']
       end
 
       if attributes.key?(:'content_sha256')
@@ -236,6 +259,10 @@ module UltracartClient
 
       if attributes.key?(:'sequence_uuid')
         self.sequence_uuid = attributes[:'sequence_uuid']
+      end
+
+      if attributes.key?(:'side')
+        self.side = attributes[:'side']
       end
 
       if attributes.key?(:'slot')
@@ -297,8 +324,10 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          after_step_uuid == o.after_step_uuid &&
           attribute_names == o.attribute_names &&
           blog_post_oid == o.blog_post_oid &&
+          branch_step_uuid == o.branch_step_uuid &&
           content_sha256 == o.content_sha256 &&
           domain == o.domain &&
           esp_twilio_uuid == o.esp_twilio_uuid &&
@@ -311,6 +340,7 @@ module UltracartClient
           rule_count == o.rule_count &&
           segment_uuid == o.segment_uuid &&
           sequence_uuid == o.sequence_uuid &&
+          side == o.side &&
           slot == o.slot &&
           step_uuid == o.step_uuid &&
           upsell_kind == o.upsell_kind &&
@@ -329,7 +359,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attribute_names, blog_post_oid, content_sha256, domain, esp_twilio_uuid, experiment_oid, item_count, merchant_item_oid, path, request_sha256, rows_sha256, rule_count, segment_uuid, sequence_uuid, slot, step_uuid, upsell_kind, upsell_oid, version, widget_id, winner_variation_number].hash
+      [after_step_uuid, attribute_names, blog_post_oid, branch_step_uuid, content_sha256, domain, esp_twilio_uuid, experiment_oid, item_count, merchant_item_oid, path, request_sha256, rows_sha256, rule_count, segment_uuid, sequence_uuid, side, slot, step_uuid, upsell_kind, upsell_oid, version, widget_id, winner_variation_number].hash
     end
 
     # Builds the object from hash
