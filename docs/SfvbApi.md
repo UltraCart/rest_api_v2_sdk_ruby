@@ -151,6 +151,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**list_sfvb_upsell_paths**](SfvbApi.md#list_sfvb_upsell_paths) | **GET** /sfvb/storefronts/{storefront_oid}/upsell_paths | List upsell paths |
 | [**move_sfvb_sequence_step**](SfvbApi.md#move_sfvb_sequence_step) | **POST** /sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid}/steps/{step_uuid}/move | Move one step |
 | [**move_sfvb_upsell_path**](SfvbApi.md#move_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/move | Move an upsell path |
+| [**proof_sfvb_sequence_postcard**](SfvbApi.md#proof_sfvb_sequence_postcard) | **POST** /sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid}/steps/{step_uuid}/postcard_proof | Proof a postcard step without mailing it |
 | [**publish_sfvb_library_entry**](SfvbApi.md#publish_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/publish | Publish a library entry&#39;s draft |
 | [**put_sfvb_container**](SfvbApi.md#put_sfvb_container) | **PUT** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id} | Write a container stored outside the file system |
 | [**put_sfvb_experiment_variation**](SfvbApi.md#put_sfvb_experiment_variation) | **PUT** /sfvb/storefronts/{storefront_oid}/experiments/{experiment_oid}/variations/{variation_number} | Pause or resume a variation |
@@ -8211,6 +8212,62 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## proof_sfvb_sequence_postcard
+
+> <SfvbPostcardProofResponse> proof_sfvb_sequence_postcard(storefront_oid, sequence_uuid, step_uuid, postcard_proof_request)
+
+Proof a postcard step without mailing it
+
+Renders both sides of the step's postcard as a send renders them, then has the print vendor render the card as a dry run.  Returns the HTML of each side, the PNG image of each side that the vendor prints from, the vendor's thumbnails and its proof PDF.  The QR code is the short link a send prints.  No card is printed or mailed, nothing is billed, the step is not changed, and no coupon is created.  A unique coupon code shows as PREVIEW-UNIQUE.  The image urls are public.  html_only returns the HTML alone, with no vendor render.  An order must be a test order.  cart_item_ids fills the cart a cart flow card shows.  Works whether the step is on or off. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the proof_sfvb_sequence_postcard_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbPostcardProofResponse>, Integer, Hash)> proof_sfvb_sequence_postcard_with_http_info(storefront_oid, sequence_uuid, step_uuid, postcard_proof_request)
+
+```ruby
+begin
+  # Proof a postcard step without mailing it
+  data, status_code, headers = api_instance.proof_sfvb_sequence_postcard_with_http_info(storefront_oid, sequence_uuid, step_uuid, postcard_proof_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbPostcardProofResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->proof_sfvb_sequence_postcard_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **sequence_uuid** | **String** |  |  |
+| **step_uuid** | **String** |  |  |
+| **postcard_proof_request** | [**SfvbPostcardProofRequest**](SfvbPostcardProofRequest.md) | Who the card is addressed to, and the order or cart it shows |  |
+
+### Return type
+
+[**SfvbPostcardProofResponse**](SfvbPostcardProofResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

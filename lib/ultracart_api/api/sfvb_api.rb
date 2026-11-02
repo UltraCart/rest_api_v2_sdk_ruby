@@ -10583,6 +10583,93 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Proof a postcard step without mailing it
+    # Renders both sides of the step's postcard as a send renders them, then has the print vendor render the card as a dry run.  Returns the HTML of each side, the PNG image of each side that the vendor prints from, the vendor's thumbnails and its proof PDF.  The QR code is the short link a send prints.  No card is printed or mailed, nothing is billed, the step is not changed, and no coupon is created.  A unique coupon code shows as PREVIEW-UNIQUE.  The image urls are public.  html_only returns the HTML alone, with no vendor render.  An order must be a test order.  cart_item_ids fills the cart a cart flow card shows.  Works whether the step is on or off. 
+    # @param storefront_oid [Integer] 
+    # @param sequence_uuid [String] 
+    # @param step_uuid [String] 
+    # @param postcard_proof_request [SfvbPostcardProofRequest] Who the card is addressed to, and the order or cart it shows
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbPostcardProofResponse]
+    def proof_sfvb_sequence_postcard(storefront_oid, sequence_uuid, step_uuid, postcard_proof_request, opts = {})
+      data, _status_code, _headers = proof_sfvb_sequence_postcard_with_http_info(storefront_oid, sequence_uuid, step_uuid, postcard_proof_request, opts)
+      data
+    end
+
+    # Proof a postcard step without mailing it
+    # Renders both sides of the step&#39;s postcard as a send renders them, then has the print vendor render the card as a dry run.  Returns the HTML of each side, the PNG image of each side that the vendor prints from, the vendor&#39;s thumbnails and its proof PDF.  The QR code is the short link a send prints.  No card is printed or mailed, nothing is billed, the step is not changed, and no coupon is created.  A unique coupon code shows as PREVIEW-UNIQUE.  The image urls are public.  html_only returns the HTML alone, with no vendor render.  An order must be a test order.  cart_item_ids fills the cart a cart flow card shows.  Works whether the step is on or off. 
+    # @param storefront_oid [Integer] 
+    # @param sequence_uuid [String] 
+    # @param step_uuid [String] 
+    # @param postcard_proof_request [SfvbPostcardProofRequest] Who the card is addressed to, and the order or cart it shows
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbPostcardProofResponse, Integer, Hash)>] SfvbPostcardProofResponse data, response status code and response headers
+    def proof_sfvb_sequence_postcard_with_http_info(storefront_oid, sequence_uuid, step_uuid, postcard_proof_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.proof_sfvb_sequence_postcard ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.proof_sfvb_sequence_postcard"
+      end
+      # verify the required parameter 'sequence_uuid' is set
+      if @api_client.config.client_side_validation && sequence_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'sequence_uuid' when calling SfvbApi.proof_sfvb_sequence_postcard"
+      end
+      # verify the required parameter 'step_uuid' is set
+      if @api_client.config.client_side_validation && step_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'step_uuid' when calling SfvbApi.proof_sfvb_sequence_postcard"
+      end
+      # verify the required parameter 'postcard_proof_request' is set
+      if @api_client.config.client_side_validation && postcard_proof_request.nil?
+        fail ArgumentError, "Missing the required parameter 'postcard_proof_request' when calling SfvbApi.proof_sfvb_sequence_postcard"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid}/steps/{step_uuid}/postcard_proof'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'sequence_uuid' + '}', CGI.escape(sequence_uuid.to_s)).sub('{' + 'step_uuid' + '}', CGI.escape(step_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(postcard_proof_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbPostcardProofResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.proof_sfvb_sequence_postcard",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#proof_sfvb_sequence_postcard\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Publish a library entry's draft
     # Freezes the draft as a published revision at its revision_number and sets who can see it.  Owner only, with the draft's hash_sha256 as If-Match.  Always needs sfvb_publish, because it changes what other merchants can install.  Images, fonts, stylesheets and media must be relative paths, and credential shaped strings are refused.  Public also needs the library publisher property on the account and no executable content at all - no script, html, embed, css or velocity elements.  After those checks an automated AI review reads the fragment, which can take up to about a minute.  A clear violation both of its models agree on refuses any publish with sfvb.library_ai_review_blocked.  A public publish also needs its approval, otherwise sfvb.library_ai_review_inconclusive.  The result is in content_manifest.ai_review. 
     # @param storefront_oid [Integer] 

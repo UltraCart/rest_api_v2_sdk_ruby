@@ -1160,6 +1160,8 @@ docs/SfvbPageResponse.md
 docs/SfvbPageSelectors.md
 docs/SfvbPageSettingsRequest.md
 docs/SfvbPageSummary.md
+docs/SfvbPostcardProofRequest.md
+docs/SfvbPostcardProofResponse.md
 docs/SfvbPreviewAccessRequest.md
 docs/SfvbPreviewAccessResponse.md
 docs/SfvbPreviewSessionRequest.md
@@ -2520,6 +2522,8 @@ lib/ultracart_api/models/sfvb_page_response.rb
 lib/ultracart_api/models/sfvb_page_selectors.rb
 lib/ultracart_api/models/sfvb_page_settings_request.rb
 lib/ultracart_api/models/sfvb_page_summary.rb
+lib/ultracart_api/models/sfvb_postcard_proof_request.rb
+lib/ultracart_api/models/sfvb_postcard_proof_response.rb
 lib/ultracart_api/models/sfvb_preview_access_request.rb
 lib/ultracart_api/models/sfvb_preview_access_response.rb
 lib/ultracart_api/models/sfvb_preview_session_request.rb
