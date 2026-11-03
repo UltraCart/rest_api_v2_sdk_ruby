@@ -33,6 +33,9 @@ module UltracartClient
     # The refresh token that should be used to fetch a new access token when the expiration occurs
     attr_accessor :refresh_token
 
+    # Seconds until the refresh token expires.  Returned only by applications that rotate refresh tokens, which return a new refresh token on every refresh.
+    attr_accessor :refresh_token_expires_in
+
     # The scope of permissions associated with teh access token
     attr_accessor :scope
 
@@ -71,6 +74,7 @@ module UltracartClient
         :'expires_in' => :'expires_in',
         :'merchant_id' => :'merchant_id',
         :'refresh_token' => :'refresh_token',
+        :'refresh_token_expires_in' => :'refresh_token_expires_in',
         :'scope' => :'scope',
         :'token_type' => :'token_type'
       }
@@ -91,6 +95,7 @@ module UltracartClient
         :'expires_in' => :'String',
         :'merchant_id' => :'String',
         :'refresh_token' => :'String',
+        :'refresh_token_expires_in' => :'String',
         :'scope' => :'String',
         :'token_type' => :'String'
       }
@@ -145,6 +150,10 @@ module UltracartClient
         self.refresh_token = attributes[:'refresh_token']
       end
 
+      if attributes.key?(:'refresh_token_expires_in')
+        self.refresh_token_expires_in = attributes[:'refresh_token_expires_in']
+      end
+
       if attributes.key?(:'scope')
         self.scope = attributes[:'scope']
       end
@@ -191,6 +200,7 @@ module UltracartClient
           expires_in == o.expires_in &&
           merchant_id == o.merchant_id &&
           refresh_token == o.refresh_token &&
+          refresh_token_expires_in == o.refresh_token_expires_in &&
           scope == o.scope &&
           token_type == o.token_type
     end
@@ -204,7 +214,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_token, error, error_description, error_uri, expires_in, merchant_id, refresh_token, scope, token_type].hash
+      [access_token, error, error_description, error_uri, expires_in, merchant_id, refresh_token, refresh_token_expires_in, scope, token_type].hash
     end
 
     # Builds the object from hash
