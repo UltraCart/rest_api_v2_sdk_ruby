@@ -60,7 +60,7 @@ module UltracartClient
     # The segment whose rule changes, for segment.update.
     attr_accessor :segment_uuid
 
-    # The communication sequence, for sequence_step.delete and sequence_step.move.
+    # The communication sequence, for sequence_step.delete, sequence_step.move and sequence_step.enable_postcard.
     attr_accessor :sequence_uuid
 
     # For sequence_step.move with branch_step_uuid, the side's label from the sequence read.
@@ -69,7 +69,7 @@ module UltracartClient
     # For experiment.start of a page experiment, the page body name.  Defaults to body.
     attr_accessor :slot
 
-    # The step to remove, for sequence_step.delete, or to move, for sequence_step.move.
+    # The step to remove, for sequence_step.delete, to move, for sequence_step.move, or to turn on, for sequence_step.enable_postcard.
     attr_accessor :step_uuid
 
     # For upsell.enable, what to switch on.
