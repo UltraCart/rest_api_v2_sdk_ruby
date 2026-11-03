@@ -16,7 +16,7 @@ require 'time'
 module UltracartClient
   class SfvbTrackingProviderConsent
     # On a write, true to remove the gate.  Not with type or region.
-    attr_accessor :_false
+    attr_accessor :disabled
 
     # Which shoppers the gate applies to.  all, eea or non_us.
     attr_accessor :region
@@ -27,7 +27,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'_false' => :'false',
+        :'disabled' => :'disabled',
         :'region' => :'region',
         :'type' => :'type'
       }
@@ -41,7 +41,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'_false' => :'Boolean',
+        :'disabled' => :'Boolean',
         :'region' => :'String',
         :'type' => :'String'
       }
@@ -68,8 +68,8 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'_false')
-        self._false = attributes[:'_false']
+      if attributes.key?(:'disabled')
+        self.disabled = attributes[:'disabled']
       end
 
       if attributes.key?(:'region')
@@ -99,7 +99,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          _false == o._false &&
+          disabled == o.disabled &&
           region == o.region &&
           type == o.type
     end
@@ -113,7 +113,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [_false, region, type].hash
+      [disabled, region, type].hash
     end
 
     # Builds the object from hash

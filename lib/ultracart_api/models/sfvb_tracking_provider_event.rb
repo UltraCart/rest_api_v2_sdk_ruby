@@ -15,17 +15,17 @@ require 'time'
 
 module UltracartClient
   class SfvbTrackingProviderEvent
+    # True when the event is sent to the provider.
+    attr_accessor :enabled
+
     # AddPaymentInfo, AddToCart, AddToWishlist, CompleteRegistration, InitiateCheckout, Lead, Search or ViewContent.
     attr_accessor :name
-
-    # True when the event is sent to the provider.
-    attr_accessor :_true
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'_true' => :'true'
+        :'enabled' => :'enabled',
+        :'name' => :'name'
       }
     end
 
@@ -37,8 +37,8 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'_true' => :'Boolean'
+        :'enabled' => :'Boolean',
+        :'name' => :'String'
       }
     end
 
@@ -63,12 +63,12 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'enabled')
+        self.enabled = attributes[:'enabled']
       end
 
-      if attributes.key?(:'_true')
-        self._true = attributes[:'_true']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
     end
 
@@ -90,8 +90,8 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          _true == o._true
+          enabled == o.enabled &&
+          name == o.name
     end
 
     # @see the `==` method
@@ -103,7 +103,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, _true].hash
+      [enabled, name].hash
     end
 
     # Builds the object from hash
