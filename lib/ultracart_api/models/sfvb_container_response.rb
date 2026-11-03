@@ -36,6 +36,9 @@ module UltracartClient
     # Where this container lives.
     attr_accessor :owner_type
 
+    # Quality warnings from validating this write.  The write succeeded; each one says what to look at, such as a postcard QR code URL with a fragment.  Absent when there are none.
+    attr_accessor :warnings
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -67,7 +70,8 @@ module UltracartClient
         :'last_modified' => :'last_modified',
         :'merchant_item_id' => :'merchant_item_id',
         :'owner_object_id' => :'owner_object_id',
-        :'owner_type' => :'owner_type'
+        :'owner_type' => :'owner_type',
+        :'warnings' => :'warnings'
       }
     end
 
@@ -85,7 +89,8 @@ module UltracartClient
         :'last_modified' => :'String',
         :'merchant_item_id' => :'String',
         :'owner_object_id' => :'String',
-        :'owner_type' => :'String'
+        :'owner_type' => :'String',
+        :'warnings' => :'Array<SfvbErrorDetail>'
       }
     end
 
@@ -137,6 +142,12 @@ module UltracartClient
       if attributes.key?(:'owner_type')
         self.owner_type = attributes[:'owner_type']
       end
+
+      if attributes.key?(:'warnings')
+        if (value = attributes[:'warnings']).is_a?(Array)
+          self.warnings = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -175,7 +186,8 @@ module UltracartClient
           last_modified == o.last_modified &&
           merchant_item_id == o.merchant_item_id &&
           owner_object_id == o.owner_object_id &&
-          owner_type == o.owner_type
+          owner_type == o.owner_type &&
+          warnings == o.warnings
     end
 
     # @see the `==` method
@@ -187,7 +199,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cjson, container_name, hash_sha256, last_modified, merchant_item_id, owner_object_id, owner_type].hash
+      [cjson, container_name, hash_sha256, last_modified, merchant_item_id, owner_object_id, owner_type, warnings].hash
     end
 
     # Builds the object from hash

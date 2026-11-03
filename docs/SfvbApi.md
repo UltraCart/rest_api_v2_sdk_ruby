@@ -20,6 +20,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**create_sfvb_library_entry**](SfvbApi.md#create_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library | Save a fragment to the library |
 | [**create_sfvb_preview_access**](SfvbApi.md#create_sfvb_preview_access) | **POST** /sfvb/storefronts/{storefront_oid}/preview_access | One time link that opens a preview in a browser with no UltraCart login |
 | [**create_sfvb_preview_session**](SfvbApi.md#create_sfvb_preview_session) | **POST** /sfvb/storefronts/{storefront_oid}/preview_sessions | Create a preview session |
+| [**delete_sfvb_affiliate_network**](SfvbApi.md#delete_sfvb_affiliate_network) | **DELETE** /sfvb/storefronts/{storefront_oid}/tracking/affiliate_networks/{affiliate_network_oid} | Delete an affiliate network |
 | [**delete_sfvb_approval**](SfvbApi.md#delete_sfvb_approval) | **DELETE** /sfvb/approvals/{approval_id} | Cancel a pending approval request |
 | [**delete_sfvb_blog_post**](SfvbApi.md#delete_sfvb_blog_post) | **DELETE** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Delete a blog post |
 | [**delete_sfvb_comms_sending_domain**](SfvbApi.md#delete_sfvb_comms_sending_domain) | **DELETE** /sfvb/comms/sending_domains/{domain} | Remove a sending domain |
@@ -34,6 +35,9 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**delete_sfvb_redirects**](SfvbApi.md#delete_sfvb_redirects) | **POST** /sfvb/storefronts/{storefront_oid}/redirects/delete | Delete up to 5,000 redirect rules in one call |
 | [**delete_sfvb_secret_request**](SfvbApi.md#delete_sfvb_secret_request) | **DELETE** /sfvb/secrets/{request_id} | Cancel a pending secret request |
 | [**delete_sfvb_sequence_step**](SfvbApi.md#delete_sfvb_sequence_step) | **DELETE** /sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid}/steps/{step_uuid} | Remove one step |
+| [**delete_sfvb_smart_attribution**](SfvbApi.md#delete_sfvb_smart_attribution) | **DELETE** /sfvb/storefronts/{storefront_oid}/smart_attribution | Delete a storefront&#39;s Smart Attribution configuration |
+| [**delete_sfvb_tracking_provider**](SfvbApi.md#delete_sfvb_tracking_provider) | **DELETE** /sfvb/storefronts/{storefront_oid}/tracking/providers/{provider} | Clear one tracking provider |
+| [**delete_sfvb_utm_shortcode**](SfvbApi.md#delete_sfvb_utm_shortcode) | **DELETE** /sfvb/storefronts/{storefront_oid}/utm_shortcodes/{shortcode_oid} | Delete a UTM shortcode |
 | [**detach_sfvb_blog_post_image**](SfvbApi.md#detach_sfvb_blog_post_image) | **POST** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid}/images/detach | Detach an image from a blog post |
 | [**disable_sfvb_i18n_language**](SfvbApi.md#disable_sfvb_i18n_language) | **POST** /sfvb/storefronts/{storefront_oid}/i18n/languages/{code}/disable | Disable a language |
 | [**disable_sfvb_upsell_offer**](SfvbApi.md#disable_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/disable | Disable an upsell offer |
@@ -48,10 +52,13 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**duplicate_sfvb_upsell_offer**](SfvbApi.md#duplicate_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/duplicate | Duplicate an upsell offer |
 | [**duplicate_sfvb_upsell_path**](SfvbApi.md#duplicate_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/duplicate | Duplicate an upsell path or one of its variations |
 | [**enable_sfvb_i18n_language**](SfvbApi.md#enable_sfvb_i18n_language) | **POST** /sfvb/storefronts/{storefront_oid}/i18n/languages/{code}/enable | Enable a language |
+| [**enable_sfvb_smart_attribution**](SfvbApi.md#enable_sfvb_smart_attribution) | **POST** /sfvb/storefronts/{storefront_oid}/smart_attribution/enable | Turn Smart Attribution on in report_only mode |
 | [**enable_sfvb_upsell_offer**](SfvbApi.md#enable_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid}/enable | Enable an upsell offer |
 | [**enable_sfvb_upsell_path**](SfvbApi.md#enable_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/enable | Enable an upsell path |
 | [**end_sfvb_experiment**](SfvbApi.md#end_sfvb_experiment) | **POST** /sfvb/storefronts/{storefront_oid}/experiments/{experiment_oid}/end | End an experiment |
 | [**favorite_sfvb_library_entry**](SfvbApi.md#favorite_sfvb_library_entry) | **PUT** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/favorite | Favorite a library entry |
+| [**get_sfvb_affiliate_network**](SfvbApi.md#get_sfvb_affiliate_network) | **GET** /sfvb/storefronts/{storefront_oid}/tracking/affiliate_networks/{affiliate_network_oid} | Read one affiliate network |
+| [**get_sfvb_affiliate_networks**](SfvbApi.md#get_sfvb_affiliate_networks) | **GET** /sfvb/storefronts/{storefront_oid}/tracking/affiliate_networks | List a storefront&#39;s affiliate networks |
 | [**get_sfvb_approval**](SfvbApi.md#get_sfvb_approval) | **GET** /sfvb/approvals/{approval_id} | Read one approval request |
 | [**get_sfvb_approvals**](SfvbApi.md#get_sfvb_approvals) | **GET** /sfvb/approvals | List this sign-in&#39;s approval requests |
 | [**get_sfvb_blog_post**](SfvbApi.md#get_sfvb_blog_post) | **GET** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Read a blog post |
@@ -105,17 +112,26 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_sequence**](SfvbApi.md#get_sfvb_sequence) | **GET** /sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid} | Get a campaign&#39;s or flow&#39;s steps as a tree |
 | [**get_sfvb_server_log**](SfvbApi.md#get_sfvb_server_log) | **GET** /sfvb/storefronts/{storefront_oid}/logs/{log_id} | Get one storefront render log |
 | [**get_sfvb_site_attributes**](SfvbApi.md#get_sfvb_site_attributes) | **GET** /sfvb/storefronts/{storefront_oid}/attributes | Read a storefront&#39;s site attributes |
+| [**get_sfvb_smart_attribution**](SfvbApi.md#get_sfvb_smart_attribution) | **GET** /sfvb/storefronts/{storefront_oid}/smart_attribution | Read a storefront&#39;s Smart Attribution configuration |
 | [**get_sfvb_test_orders**](SfvbApi.md#get_sfvb_test_orders) | **GET** /sfvb/storefronts/{storefront_oid}/test_orders | List recent test orders |
 | [**get_sfvb_theme**](SfvbApi.md#get_sfvb_theme) | **GET** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid} | Get a theme |
 | [**get_sfvb_theme_attributes**](SfvbApi.md#get_sfvb_theme_attributes) | **GET** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/attributes | Read a theme&#39;s colors, fonts and settings |
 | [**get_sfvb_theme_job**](SfvbApi.md#get_sfvb_theme_job) | **GET** /sfvb/storefronts/{storefront_oid}/theme_jobs/{job_id} | Status of an asynchronous theme job |
+| [**get_sfvb_tracking_html**](SfvbApi.md#get_sfvb_tracking_html) | **GET** /sfvb/storefronts/{storefront_oid}/tracking/html/{slot} | Read one custom tracking HTML slot |
+| [**get_sfvb_tracking_html_slots**](SfvbApi.md#get_sfvb_tracking_html_slots) | **GET** /sfvb/storefronts/{storefront_oid}/tracking/html | List a storefront&#39;s custom tracking HTML slots |
+| [**get_sfvb_tracking_provider**](SfvbApi.md#get_sfvb_tracking_provider) | **GET** /sfvb/storefronts/{storefront_oid}/tracking/providers/{provider} | Read one tracking provider |
+| [**get_sfvb_tracking_providers**](SfvbApi.md#get_sfvb_tracking_providers) | **GET** /sfvb/storefronts/{storefront_oid}/tracking/providers | List a storefront&#39;s tracking providers |
+| [**get_sfvb_tracking_settings**](SfvbApi.md#get_sfvb_tracking_settings) | **GET** /sfvb/storefronts/{storefront_oid}/tracking | Read a storefront&#39;s privacy rules and advanced conversion settings |
 | [**get_sfvb_transactional_emails**](SfvbApi.md#get_sfvb_transactional_emails) | **GET** /sfvb/storefronts/{storefront_oid}/transactional_emails | List the transactional emails a storefront sends |
 | [**get_sfvb_upsell_offer**](SfvbApi.md#get_sfvb_upsell_offer) | **GET** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid} | Get an upsell offer |
 | [**get_sfvb_upsell_path**](SfvbApi.md#get_sfvb_upsell_path) | **GET** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid} | Get an upsell path |
+| [**get_sfvb_utm_shortcode**](SfvbApi.md#get_sfvb_utm_shortcode) | **GET** /sfvb/storefronts/{storefront_oid}/utm_shortcodes/{shortcode_oid} | Read one UTM shortcode |
+| [**get_sfvb_utm_shortcodes**](SfvbApi.md#get_sfvb_utm_shortcodes) | **GET** /sfvb/storefronts/{storefront_oid}/utm_shortcodes | List a storefront&#39;s UTM shortcodes |
 | [**get_sfvb_version**](SfvbApi.md#get_sfvb_version) | **GET** /sfvb/version | Compiler version for this merchant |
 | [**get_sfvb_whoami**](SfvbApi.md#get_sfvb_whoami) | **GET** /sfvb/whoami | Who this token is |
 | [**ignore_sfvb_not_found_entry**](SfvbApi.md#ignore_sfvb_not_found_entry) | **POST** /sfvb/storefronts/{storefront_oid}/not_found/{not_found_id}/ignore | Ignore a 404 path |
 | [**import_sfvb_redirects**](SfvbApi.md#import_sfvb_redirects) | **POST** /sfvb/storefronts/{storefront_oid}/redirects/import | Apply a reviewed redirect import |
+| [**insert_sfvb_affiliate_network**](SfvbApi.md#insert_sfvb_affiliate_network) | **POST** /sfvb/storefronts/{storefront_oid}/tracking/affiliate_networks | Add an affiliate network |
 | [**insert_sfvb_approval**](SfvbApi.md#insert_sfvb_approval) | **POST** /sfvb/approvals | Request a human approval |
 | [**insert_sfvb_blog_post**](SfvbApi.md#insert_sfvb_blog_post) | **POST** /sfvb/storefronts/{storefront_oid}/blog_posts | Create a blog post |
 | [**insert_sfvb_comms_segment**](SfvbApi.md#insert_sfvb_comms_segment) | **POST** /sfvb/storefronts/{storefront_oid}/segments | Create a segment |
@@ -127,6 +143,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**insert_sfvb_sequence_step**](SfvbApi.md#insert_sfvb_sequence_step) | **POST** /sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid}/steps | Add an email step, with its new email, a wait step, or a postcard step, with its new postcard |
 | [**insert_sfvb_upsell_offer**](SfvbApi.md#insert_sfvb_upsell_offer) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_offers | Create an upsell offer |
 | [**insert_sfvb_upsell_path**](SfvbApi.md#insert_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths | Create an upsell path |
+| [**insert_sfvb_utm_shortcode**](SfvbApi.md#insert_sfvb_utm_shortcode) | **POST** /sfvb/storefronts/{storefront_oid}/utm_shortcodes | Create a UTM shortcode |
 | [**install_sfvb_library_entry**](SfvbApi.md#install_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/install | Install a library entry into a storefront |
 | [**list_sfvb_blog_posts**](SfvbApi.md#list_sfvb_blog_posts) | **GET** /sfvb/storefronts/{storefront_oid}/blog_posts | List the storefront&#39;s blog posts |
 | [**list_sfvb_campaigns**](SfvbApi.md#list_sfvb_campaigns) | **GET** /sfvb/storefronts/{storefront_oid}/campaigns | List the storefront&#39;s campaigns |
@@ -199,6 +216,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**unignore_sfvb_not_found_entry**](SfvbApi.md#unignore_sfvb_not_found_entry) | **DELETE** /sfvb/storefronts/{storefront_oid}/not_found/{not_found_id}/ignore | Stop ignoring a 404 path |
 | [**unpublish_sfvb_library_entry**](SfvbApi.md#unpublish_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/unpublish | Narrow who can see a library entry |
 | [**unshare_sfvb_library_entry**](SfvbApi.md#unshare_sfvb_library_entry) | **DELETE** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/shares/{merchant_id} | Stop sharing a library entry with an account |
+| [**update_sfvb_affiliate_network**](SfvbApi.md#update_sfvb_affiliate_network) | **PUT** /sfvb/storefronts/{storefront_oid}/tracking/affiliate_networks/{affiliate_network_oid} | Change an affiliate network |
 | [**update_sfvb_blog_post**](SfvbApi.md#update_sfvb_blog_post) | **PUT** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Change a blog post |
 | [**update_sfvb_campaign**](SfvbApi.md#update_sfvb_campaign) | **PUT** /sfvb/storefronts/{storefront_oid}/campaigns/{campaign_uuid} | Change a campaign |
 | [**update_sfvb_comms_segment**](SfvbApi.md#update_sfvb_comms_segment) | **PUT** /sfvb/storefronts/{storefront_oid}/segments/{segment_uuid} | Change a segment&#39;s name, rule or folder |
@@ -211,8 +229,14 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**update_sfvb_library_entry**](SfvbApi.md#update_sfvb_library_entry) | **PUT** /sfvb/storefronts/{storefront_oid}/library/{library_oid} | Update a library entry&#39;s draft |
 | [**update_sfvb_redirect**](SfvbApi.md#update_sfvb_redirect) | **PUT** /sfvb/storefronts/{storefront_oid}/redirects/{redirect_id} | Change a redirect rule |
 | [**update_sfvb_sequence_step**](SfvbApi.md#update_sfvb_sequence_step) | **PUT** /sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid}/steps/{step_uuid} | Change one step&#39;s settings or audience filter |
+| [**update_sfvb_smart_attribution**](SfvbApi.md#update_sfvb_smart_attribution) | **PUT** /sfvb/storefronts/{storefront_oid}/smart_attribution | Change a storefront&#39;s Smart Attribution configuration |
+| [**update_sfvb_tracking_advanced**](SfvbApi.md#update_sfvb_tracking_advanced) | **PUT** /sfvb/storefronts/{storefront_oid}/tracking/advanced | Change a storefront&#39;s advanced conversion settings |
+| [**update_sfvb_tracking_html**](SfvbApi.md#update_sfvb_tracking_html) | **PUT** /sfvb/storefronts/{storefront_oid}/tracking/html/{slot} | Write one custom tracking HTML slot |
+| [**update_sfvb_tracking_privacy**](SfvbApi.md#update_sfvb_tracking_privacy) | **PUT** /sfvb/storefronts/{storefront_oid}/tracking/privacy | Change a storefront&#39;s privacy rules |
+| [**update_sfvb_tracking_provider**](SfvbApi.md#update_sfvb_tracking_provider) | **PUT** /sfvb/storefronts/{storefront_oid}/tracking/providers/{provider} | Change one tracking provider |
 | [**update_sfvb_upsell_offer**](SfvbApi.md#update_sfvb_upsell_offer) | **PUT** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid} | Update an upsell offer |
 | [**update_sfvb_upsell_path**](SfvbApi.md#update_sfvb_upsell_path) | **PUT** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid} | Update an upsell path |
+| [**update_sfvb_utm_shortcode**](SfvbApi.md#update_sfvb_utm_shortcode) | **PUT** /sfvb/storefronts/{storefront_oid}/utm_shortcodes/{shortcode_oid} | Change a UTM shortcode |
 | [**upload_sfvb_file**](SfvbApi.md#upload_sfvb_file) | **POST** /sfvb/storefronts/{storefront_oid}/files/upload | Store a binary asset that was already uploaded |
 | [**validate_sfvb_cjson**](SfvbApi.md#validate_sfvb_cjson) | **POST** /sfvb/cjson/validate | Validate CJSON |
 | [**validate_sfvb_velocity**](SfvbApi.md#validate_sfvb_velocity) | **POST** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/velocity/validate | Validate a Velocity template against a theme |
@@ -1088,6 +1112,62 @@ end
 - **Accept**: application/json
 
 
+## delete_sfvb_affiliate_network
+
+> delete_sfvb_affiliate_network(storefront_oid, affiliate_network_oid, if_match, approval_id)
+
+Delete an affiliate network
+
+Visits from the network stop being recognized and its pixel stops firing.  Refused with 409 while Smart Attribution names the network as a platform.  Send the network's hash_sha256 as If-Match.  Needs sfvb_publish and an approved affiliate_network.delete request (Approval-Id). 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_sfvb_affiliate_network_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_sfvb_affiliate_network_with_http_info(storefront_oid, affiliate_network_oid, if_match, approval_id)
+
+```ruby
+begin
+  # Delete an affiliate network
+  data, status_code, headers = api_instance.delete_sfvb_affiliate_network_with_http_info(storefront_oid, affiliate_network_oid, if_match, approval_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->delete_sfvb_affiliate_network_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **affiliate_network_oid** | **Integer** |  |  |
+| **if_match** | **String** | The network&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale. |  |
+| **approval_id** | **String** | The approval_id of an approved affiliate_network.delete request for this network.  See POST /sfvb/approvals. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## delete_sfvb_approval
 
 > delete_sfvb_approval(approval_id)
@@ -1846,6 +1926,171 @@ end
 ### Return type
 
 [**SfvbSequenceStepDeleteResponse**](SfvbSequenceStepDeleteResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_sfvb_smart_attribution
+
+> delete_sfvb_smart_attribution(storefront_oid, if_match, opts)
+
+Delete a storefront's Smart Attribution configuration
+
+Every platform goes back to being sent conversions as it was before Smart Attribution, and the settings are gone.  Send the hash_sha256 you read as If-Match.  Needs sfvb_publish and an approved smart_attribution.delete request (Approval-Id).  An unconfigured storefront is 404. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_sfvb_smart_attribution_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_sfvb_smart_attribution_with_http_info(storefront_oid, if_match, opts)
+
+```ruby
+begin
+  # Delete a storefront's Smart Attribution configuration
+  data, status_code, headers = api_instance.delete_sfvb_smart_attribution_with_http_info(storefront_oid, if_match, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->delete_sfvb_smart_attribution_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **if_match** | **String** | hash_sha256 from the Smart Attribution read.  428 when absent, 412 when stale. |  |
+| **approval_id** | **String** | The approval_id of an approved smart_attribution.delete request.  Required.  See POST /sfvb/approvals. | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_sfvb_tracking_provider
+
+> <SfvbTrackingProvider> delete_sfvb_tracking_provider(storefront_oid, provider, if_match)
+
+Clear one tracking provider
+
+Clears every field and secret the API can change, the consent gate and the events, and turns off Google Tag Gateway.  The provider stops being sent anything.  An OAuth connection is left alone, and notes say to disconnect it in the admin.  Send the provider's hash_sha256 as If-Match.  Needs sfvb_publish.  No approval. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_sfvb_tracking_provider_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbTrackingProvider>, Integer, Hash)> delete_sfvb_tracking_provider_with_http_info(storefront_oid, provider, if_match)
+
+```ruby
+begin
+  # Clear one tracking provider
+  data, status_code, headers = api_instance.delete_sfvb_tracking_provider_with_http_info(storefront_oid, provider, if_match)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbTrackingProvider>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->delete_sfvb_tracking_provider_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **provider** | **String** |  |  |
+| **if_match** | **String** | The provider&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale. |  |
+
+### Return type
+
+[**SfvbTrackingProvider**](SfvbTrackingProvider.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_sfvb_utm_shortcode
+
+> delete_sfvb_utm_shortcode(storefront_oid, shortcode_oid, if_match)
+
+Delete a UTM shortcode
+
+The shortcode stops attributing at once.  A link that uses it as a path segment still opens its page, without the UTM values.  Send the hash_sha256 you read as If-Match.  Needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the delete_sfvb_utm_shortcode_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_sfvb_utm_shortcode_with_http_info(storefront_oid, shortcode_oid, if_match)
+
+```ruby
+begin
+  # Delete a UTM shortcode
+  data, status_code, headers = api_instance.delete_sfvb_utm_shortcode_with_http_info(storefront_oid, shortcode_oid, if_match)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->delete_sfvb_utm_shortcode_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **shortcode_oid** | **Integer** |  |  |
+| **if_match** | **String** | The shortcode&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale. |  |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
@@ -2620,6 +2865,59 @@ end
 - **Accept**: application/json
 
 
+## enable_sfvb_smart_attribution
+
+> <SfvbSmartAttribution> enable_sfvb_smart_attribution(storefront_oid)
+
+Turn Smart Attribution on in report_only mode
+
+What the admin's Enable button saves: report_only, position_based, a 40/20/40 split, a 7 day lookback and every detected platform.  report_only records decisions and changes nothing any platform is sent.  A storefront that already has a configuration is 409 sfvb.smart_attribution_configured.  Needs sfvb_publish. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the enable_sfvb_smart_attribution_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbSmartAttribution>, Integer, Hash)> enable_sfvb_smart_attribution_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # Turn Smart Attribution on in report_only mode
+  data, status_code, headers = api_instance.enable_sfvb_smart_attribution_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbSmartAttribution>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->enable_sfvb_smart_attribution_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbSmartAttribution**](SfvbSmartAttribution.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## enable_sfvb_upsell_offer
 
 > <SfvbUpsellOffer> enable_sfvb_upsell_offer(storefront_oid, upsell_offer_oid, opts)
@@ -2829,6 +3127,113 @@ end
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_affiliate_network
+
+> <SfvbAffiliateNetwork> get_sfvb_affiliate_network(storefront_oid, affiliate_network_oid)
+
+Read one affiliate network
+
+The network with its conversion_pixel, and the hash_sha256 an update or delete sends back as If-Match. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_affiliate_network_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbAffiliateNetwork>, Integer, Hash)> get_sfvb_affiliate_network_with_http_info(storefront_oid, affiliate_network_oid)
+
+```ruby
+begin
+  # Read one affiliate network
+  data, status_code, headers = api_instance.get_sfvb_affiliate_network_with_http_info(storefront_oid, affiliate_network_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbAffiliateNetwork>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_affiliate_network_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **affiliate_network_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbAffiliateNetwork**](SfvbAffiliateNetwork.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_affiliate_networks
+
+> <SfvbAffiliateNetworksResponse> get_sfvb_affiliate_networks(storefront_oid)
+
+List a storefront's affiliate networks
+
+Every affiliate network pixel, by name, with its settings and hash_sha256.  conversion_pixel is left out; its size and hash are shown.  Read one network for it. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_affiliate_networks_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbAffiliateNetworksResponse>, Integer, Hash)> get_sfvb_affiliate_networks_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # List a storefront's affiliate networks
+  data, status_code, headers = api_instance.get_sfvb_affiliate_networks_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbAffiliateNetworksResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_affiliate_networks_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbAffiliateNetworksResponse**](SfvbAffiliateNetworksResponse.md)
 
 ### Authorization
 
@@ -5699,6 +6104,59 @@ end
 - **Accept**: application/json
 
 
+## get_sfvb_smart_attribution
+
+> <SfvbSmartAttribution> get_sfvb_smart_attribution(storefront_oid)
+
+Read a storefront's Smart Attribution configuration
+
+The mode, model, global credit split, lookback and platforms, the platforms detected from the tracking integrations that are not configured yet, and the hash_sha256 a change or delete sends back as If-Match.  When configured is false the values are the defaults an enable would save. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_smart_attribution_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbSmartAttribution>, Integer, Hash)> get_sfvb_smart_attribution_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # Read a storefront's Smart Attribution configuration
+  data, status_code, headers = api_instance.get_sfvb_smart_attribution_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbSmartAttribution>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_smart_attribution_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbSmartAttribution**](SfvbSmartAttribution.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_sfvb_test_orders
 
 > <SfvbTestOrdersResponse> get_sfvb_test_orders(storefront_oid, opts)
@@ -5915,6 +6373,274 @@ end
 - **Accept**: application/json
 
 
+## get_sfvb_tracking_html
+
+> <SfvbTrackingHtml> get_sfvb_tracking_html(storefront_oid, slot)
+
+Read one custom tracking HTML slot
+
+The HTML with its Velocity tokens as stored, and the hash_sha256 a write sends back as If-Match. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_tracking_html_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbTrackingHtml>, Integer, Hash)> get_sfvb_tracking_html_with_http_info(storefront_oid, slot)
+
+```ruby
+begin
+  # Read one custom tracking HTML slot
+  data, status_code, headers = api_instance.get_sfvb_tracking_html_with_http_info(storefront_oid, slot)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbTrackingHtml>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_tracking_html_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **slot** | **String** | tracking or conversion |  |
+
+### Return type
+
+[**SfvbTrackingHtml**](SfvbTrackingHtml.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_tracking_html_slots
+
+> <SfvbTrackingHtmlResponse> get_sfvb_tracking_html_slots(storefront_oid)
+
+List a storefront's custom tracking HTML slots
+
+tracking (every page but the receipt) and conversion (the receipt only), each with its size and hash_sha256.  Read one slot for its content. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_tracking_html_slots_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbTrackingHtmlResponse>, Integer, Hash)> get_sfvb_tracking_html_slots_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # List a storefront's custom tracking HTML slots
+  data, status_code, headers = api_instance.get_sfvb_tracking_html_slots_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbTrackingHtmlResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_tracking_html_slots_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbTrackingHtmlResponse**](SfvbTrackingHtmlResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_tracking_provider
+
+> <SfvbTrackingProvider> get_sfvb_tracking_provider(storefront_oid, provider)
+
+Read one tracking provider
+
+The provider as the list shows it, with the hash_sha256 a change or clear sends back as If-Match. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_tracking_provider_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbTrackingProvider>, Integer, Hash)> get_sfvb_tracking_provider_with_http_info(storefront_oid, provider)
+
+```ruby
+begin
+  # Read one tracking provider
+  data, status_code, headers = api_instance.get_sfvb_tracking_provider_with_http_info(storefront_oid, provider)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbTrackingProvider>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_tracking_provider_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **provider** | **String** |  |  |
+
+### Return type
+
+[**SfvbTrackingProvider**](SfvbTrackingProvider.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_tracking_providers
+
+> <SfvbTrackingProvidersResponse> get_sfvb_tracking_providers(storefront_oid, opts)
+
+List a storefront's tracking providers
+
+Every provider on the admin's Google and Other tabs, with each field's type and value, its consent gate, events, OAuth connection state and hash_sha256.  A secret's value is never returned, only whether one is set, its mask and the sink to request a handle for.  configured=true lists only the providers that are on. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_tracking_providers_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbTrackingProvidersResponse>, Integer, Hash)> get_sfvb_tracking_providers_with_http_info(storefront_oid, opts)
+
+```ruby
+begin
+  # List a storefront's tracking providers
+  data, status_code, headers = api_instance.get_sfvb_tracking_providers_with_http_info(storefront_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbTrackingProvidersResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_tracking_providers_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **configured** | **Boolean** |  | [optional] |
+
+### Return type
+
+[**SfvbTrackingProvidersResponse**](SfvbTrackingProvidersResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_tracking_settings
+
+> <SfvbTrackingSettingsResponse> get_sfvb_tracking_settings(storefront_oid)
+
+Read a storefront's privacy rules and advanced conversion settings
+
+The five privacy rules (which shoppers each applies to) and the advanced conversion settings, each section with the hash_sha256 a write sends back as If-Match.  The order hash secret key is shared by every storefront on the account and is reported only as set or not. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_tracking_settings_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbTrackingSettingsResponse>, Integer, Hash)> get_sfvb_tracking_settings_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # Read a storefront's privacy rules and advanced conversion settings
+  data, status_code, headers = api_instance.get_sfvb_tracking_settings_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbTrackingSettingsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_tracking_settings_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbTrackingSettingsResponse**](SfvbTrackingSettingsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_sfvb_transactional_emails
 
 > <SfvbTransactionalEmailsResponse> get_sfvb_transactional_emails(storefront_oid)
@@ -6073,6 +6799,114 @@ end
 ### Return type
 
 [**SfvbUpsellPath**](SfvbUpsellPath.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_utm_shortcode
+
+> <SfvbUtmShortcode> get_sfvb_utm_shortcode(storefront_oid, shortcode_oid)
+
+Read one UTM shortcode
+
+The shortcode with the hash_sha256 an update or delete sends back as If-Match.  A deleted shortcode is 404. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_utm_shortcode_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUtmShortcode>, Integer, Hash)> get_sfvb_utm_shortcode_with_http_info(storefront_oid, shortcode_oid)
+
+```ruby
+begin
+  # Read one UTM shortcode
+  data, status_code, headers = api_instance.get_sfvb_utm_shortcode_with_http_info(storefront_oid, shortcode_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUtmShortcode>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_utm_shortcode_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **shortcode_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbUtmShortcode**](SfvbUtmShortcode.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_utm_shortcodes
+
+> <SfvbUtmShortcodesResponse> get_sfvb_utm_shortcodes(storefront_oid, opts)
+
+List a storefront's UTM shortcodes
+
+Every live shortcode, sorted by code, each with its hash_sha256.  q matches the code or the description, ignoring case. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_utm_shortcodes_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUtmShortcodesResponse>, Integer, Hash)> get_sfvb_utm_shortcodes_with_http_info(storefront_oid, opts)
+
+```ruby
+begin
+  # List a storefront's UTM shortcodes
+  data, status_code, headers = api_instance.get_sfvb_utm_shortcodes_with_http_info(storefront_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUtmShortcodesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_utm_shortcodes_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **q** | **String** |  | [optional] |
+
+### Return type
+
+[**SfvbUtmShortcodesResponse**](SfvbUtmShortcodesResponse.md)
 
 ### Authorization
 
@@ -6294,13 +7128,68 @@ end
 - **Accept**: application/json
 
 
+## insert_sfvb_affiliate_network
+
+> <SfvbAffiliateNetwork> insert_sfvb_affiliate_network(storefront_oid, affiliate_network_request, opts)
+
+Add an affiliate network
+
+network_name, parameter_name and parameter_value are required; the rest start from the admin's defaults.  Internal affiliate oids must be the account's own.  Needs sfvb_publish.  A network with a conversion_pixel that a custom or server_to_server network will use needs an approved affiliate_network.change request for exactly this create (Approval-Id), which UltraCart reviews first.  dry_run says whether it needs one, without saving. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_sfvb_affiliate_network_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbAffiliateNetwork>, Integer, Hash)> insert_sfvb_affiliate_network_with_http_info(storefront_oid, affiliate_network_request, opts)
+
+```ruby
+begin
+  # Add an affiliate network
+  data, status_code, headers = api_instance.insert_sfvb_affiliate_network_with_http_info(storefront_oid, affiliate_network_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbAffiliateNetwork>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->insert_sfvb_affiliate_network_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **affiliate_network_request** | [**SfvbAffiliateNetworkRequest**](SfvbAffiliateNetworkRequest.md) | The network |  |
+| **approval_id** | **String** | For a network with a conversion pixel it will use, the approval_id of an approved affiliate_network.change request for exactly this create.  See POST /sfvb/approvals. | [optional] |
+
+### Return type
+
+[**SfvbAffiliateNetwork**](SfvbAffiliateNetwork.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
 ## insert_sfvb_approval
 
 > <SfvbApproval> insert_sfvb_approval(approval_request, opts)
 
 Request a human approval
 
-Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow.  For file.put_script send the script as content, or params.version for a revert.  The request starts as reviewing while UltraCart's scanner and two AI models read it, then becomes pending with the review attached, or refused.  Keep polling, and show approval_url only once it is pending.  Only the hash is kept, so the write must send the same bytes. 
+Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow.  For file.put_script send the script as content, or params.version for a revert; for tracking_html.put send the HTML as content and params.slot; for affiliate_network.change send affiliate_network.  These three start as reviewing while UltraCart's scanner and two AI models read the content, then become pending with the review attached, or refused.  Keep polling, and show approval_url only once it is pending.  Only the hash is kept, so the write must send the same content. 
 
 
 ### Examples
@@ -6876,6 +7765,60 @@ end
 ### Return type
 
 [**SfvbUpsellPath**](SfvbUpsellPath.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## insert_sfvb_utm_shortcode
+
+> <SfvbUtmShortcode> insert_sfvb_utm_shortcode(storefront_oid, utm_shortcode_request)
+
+Create a UTM shortcode
+
+code is letters, digits, underscore and hyphen, 1 to 50 characters, and at least one UTM or ITM value is required.  A code another live shortcode has, ignoring case, is 409 sfvb.utm_shortcode_exists.  A code that is one of the account's affiliate short codes is 409 sfvb.utm_shortcode_affiliate_conflict, because the storefront checks those first and this one would never fire.  Up to 5,000 per storefront.  Needs sfvb_write only, because no link sent before it existed changes. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_sfvb_utm_shortcode_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUtmShortcode>, Integer, Hash)> insert_sfvb_utm_shortcode_with_http_info(storefront_oid, utm_shortcode_request)
+
+```ruby
+begin
+  # Create a UTM shortcode
+  data, status_code, headers = api_instance.insert_sfvb_utm_shortcode_with_http_info(storefront_oid, utm_shortcode_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUtmShortcode>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->insert_sfvb_utm_shortcode_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **utm_shortcode_request** | [**SfvbUtmShortcodeRequest**](SfvbUtmShortcodeRequest.md) | The shortcode |  |
+
+### Return type
+
+[**SfvbUtmShortcode**](SfvbUtmShortcode.md)
 
 ### Authorization
 
@@ -10872,6 +11815,63 @@ end
 - **Accept**: application/json
 
 
+## update_sfvb_affiliate_network
+
+> <SfvbAffiliateNetwork> update_sfvb_affiliate_network(storefront_oid, affiliate_network_oid, if_match, affiliate_network_request, opts)
+
+Change an affiliate network
+
+A partial update: only the fields sent change.  Send the network's hash_sha256 as If-Match.  Needs sfvb_publish.  Changing the conversion_pixel, or the conversion_type, of a network whose pixel will be used needs an approved affiliate_network.change request for exactly this change (Approval-Id), which UltraCart reviews first.  Other fields, and emptying the pixel, need none.  dry_run says whether it needs one, without saving. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_affiliate_network_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbAffiliateNetwork>, Integer, Hash)> update_sfvb_affiliate_network_with_http_info(storefront_oid, affiliate_network_oid, if_match, affiliate_network_request, opts)
+
+```ruby
+begin
+  # Change an affiliate network
+  data, status_code, headers = api_instance.update_sfvb_affiliate_network_with_http_info(storefront_oid, affiliate_network_oid, if_match, affiliate_network_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbAffiliateNetwork>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_affiliate_network_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **affiliate_network_oid** | **Integer** |  |  |
+| **if_match** | **String** | The network&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale. |  |
+| **affiliate_network_request** | [**SfvbAffiliateNetworkRequest**](SfvbAffiliateNetworkRequest.md) | The change |  |
+| **approval_id** | **String** | When the change sets a conversion pixel the network will use, the approval_id of an approved affiliate_network.change request for exactly this change.  See POST /sfvb/approvals. | [optional] |
+
+### Return type
+
+[**SfvbAffiliateNetwork**](SfvbAffiliateNetwork.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
 ## update_sfvb_blog_post
 
 > <SfvbBlogPostDetail> update_sfvb_blog_post(storefront_oid, blog_post_oid, blog_post_request)
@@ -11540,6 +12540,286 @@ end
 - **Accept**: application/json
 
 
+## update_sfvb_smart_attribution
+
+> <SfvbSmartAttribution> update_sfvb_smart_attribution(storefront_oid, if_match, smart_attribution_request, opts)
+
+Change a storefront's Smart Attribution configuration
+
+A partial update of the mode, model, global split and lookback.  platforms, when sent, replaces the whole list.  The global split must total exactly 1 and the lookback is 7 to 365.  On an unconfigured storefront it creates the configuration.  Send the hash_sha256 you read as If-Match.  Needs sfvb_publish, and when the mode is active or the change makes it active, an approved smart_attribution.change request for exactly this change (Approval-Id), because active mode decides which conversions each platform is sent.  A change that stores what is already stored returns the configuration unchanged and uses no approval. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_smart_attribution_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbSmartAttribution>, Integer, Hash)> update_sfvb_smart_attribution_with_http_info(storefront_oid, if_match, smart_attribution_request, opts)
+
+```ruby
+begin
+  # Change a storefront's Smart Attribution configuration
+  data, status_code, headers = api_instance.update_sfvb_smart_attribution_with_http_info(storefront_oid, if_match, smart_attribution_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbSmartAttribution>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_smart_attribution_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **if_match** | **String** | hash_sha256 from the Smart Attribution read.  428 when absent, 412 when stale. |  |
+| **smart_attribution_request** | [**SfvbSmartAttributionRequest**](SfvbSmartAttributionRequest.md) | The change |  |
+| **approval_id** | **String** | When the mode is or becomes active, the approval_id of an approved smart_attribution.change request for this change.  See POST /sfvb/approvals. | [optional] |
+
+### Return type
+
+[**SfvbSmartAttribution**](SfvbSmartAttribution.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_sfvb_tracking_advanced
+
+> <SfvbTrackingSettingsResponse> update_sfvb_tracking_advanced(storefront_oid, if_match, tracking_advanced_request)
+
+Change a storefront's advanced conversion settings
+
+A partial update.  Fields left out keep their value, and a text setting is cleared by naming it in unset.  URLs are a path starting with / or an absolute http or https URL, and one over its limit is refused rather than cut short.  The currency must be one the read lists.  The order hash secret key cannot be changed here.  Every field is checked before any is written.  Send the advanced hash_sha256 you read as If-Match.  dry_run reports the changes without saving.  Always needs sfvb_publish, because the settings apply to shoppers as soon as they are saved.  The admin saves the whole tab, so a merchant with it open can still overwrite a change made here. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_tracking_advanced_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbTrackingSettingsResponse>, Integer, Hash)> update_sfvb_tracking_advanced_with_http_info(storefront_oid, if_match, tracking_advanced_request)
+
+```ruby
+begin
+  # Change a storefront's advanced conversion settings
+  data, status_code, headers = api_instance.update_sfvb_tracking_advanced_with_http_info(storefront_oid, if_match, tracking_advanced_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbTrackingSettingsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_tracking_advanced_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **if_match** | **String** | The advanced hash_sha256 from the last read.  428 when absent, 412 when stale. |  |
+| **tracking_advanced_request** | [**SfvbTrackingAdvancedRequest**](SfvbTrackingAdvancedRequest.md) | The settings to change |  |
+
+### Return type
+
+[**SfvbTrackingSettingsResponse**](SfvbTrackingSettingsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_sfvb_tracking_html
+
+> <SfvbTrackingHtml> update_sfvb_tracking_html(storefront_oid, slot, if_match, tracking_html_request, opts)
+
+Write one custom tracking HTML slot
+
+Replaces the whole slot, at most 256 KB.  Content the storefront's templates may not use is refused with its lines.  Send the slot's hash_sha256 as If-Match.  Needs sfvb_publish.  Any HTML but an empty string needs an approved tracking_html.put request for exactly this content (Approval-Id), which UltraCart reviews first.  An empty string empties the slot without one.  dry_run says whether the write needs one, without saving. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_tracking_html_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbTrackingHtml>, Integer, Hash)> update_sfvb_tracking_html_with_http_info(storefront_oid, slot, if_match, tracking_html_request, opts)
+
+```ruby
+begin
+  # Write one custom tracking HTML slot
+  data, status_code, headers = api_instance.update_sfvb_tracking_html_with_http_info(storefront_oid, slot, if_match, tracking_html_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbTrackingHtml>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_tracking_html_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **slot** | **String** | tracking or conversion |  |
+| **if_match** | **String** | The slot&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale. |  |
+| **tracking_html_request** | [**SfvbTrackingHtmlRequest**](SfvbTrackingHtmlRequest.md) | The content |  |
+| **approval_id** | **String** | For any content but an empty string, the approval_id of an approved tracking_html.put request for exactly this content.  See POST /sfvb/approvals. | [optional] |
+
+### Return type
+
+[**SfvbTrackingHtml**](SfvbTrackingHtml.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_sfvb_tracking_privacy
+
+> <SfvbTrackingSettingsResponse> update_sfvb_tracking_privacy(storefront_oid, if_match, tracking_privacy_request)
+
+Change a storefront's privacy rules
+
+A partial update.  Each rule named is set to all, eea, non_us or off, and rules left out keep their value.  Every rule is checked before any is written.  Send the privacy hash_sha256 you read as If-Match.  dry_run reports the changes without saving.  Always needs sfvb_publish, because the rules apply to shoppers as soon as they are saved.  The admin saves the whole tab, so a merchant with it open can still overwrite a change made here. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_tracking_privacy_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbTrackingSettingsResponse>, Integer, Hash)> update_sfvb_tracking_privacy_with_http_info(storefront_oid, if_match, tracking_privacy_request)
+
+```ruby
+begin
+  # Change a storefront's privacy rules
+  data, status_code, headers = api_instance.update_sfvb_tracking_privacy_with_http_info(storefront_oid, if_match, tracking_privacy_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbTrackingSettingsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_tracking_privacy_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **if_match** | **String** | The privacy hash_sha256 from the last read.  428 when absent, 412 when stale. |  |
+| **tracking_privacy_request** | [**SfvbTrackingPrivacyRequest**](SfvbTrackingPrivacyRequest.md) | The rules to change |  |
+
+### Return type
+
+[**SfvbTrackingSettingsResponse**](SfvbTrackingSettingsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_sfvb_tracking_provider
+
+> <SfvbTrackingProvider> update_sfvb_tracking_provider(storefront_oid, provider, if_match, tracking_provider_request, opts)
+
+Change one tracking provider
+
+A partial update of the provider's fields, secrets (as secret handles), consent gate, events and, for google_analytics, wholesale account numbers.  Every value is checked for its field's type before anything is written.  Send the provider's hash_sha256 as If-Match.  dry_run reports the changes without saving.  Needs sfvb_publish.  Turning the provider on, loosening its consent gate, or turning on Google Tag Gateway (which also needs accept_cost true) needs an approved tracking_provider.change request for exactly this change (Approval-Id).  OAuth connections are made in the admin. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_tracking_provider_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbTrackingProvider>, Integer, Hash)> update_sfvb_tracking_provider_with_http_info(storefront_oid, provider, if_match, tracking_provider_request, opts)
+
+```ruby
+begin
+  # Change one tracking provider
+  data, status_code, headers = api_instance.update_sfvb_tracking_provider_with_http_info(storefront_oid, provider, if_match, tracking_provider_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbTrackingProvider>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_tracking_provider_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **provider** | **String** |  |  |
+| **if_match** | **String** | The provider&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale. |  |
+| **tracking_provider_request** | [**SfvbTrackingProviderRequest**](SfvbTrackingProviderRequest.md) | The change |  |
+| **approval_id** | **String** | When the change turns the provider on, loosens its consent gate or turns on Google Tag Gateway, the approval_id of an approved tracking_provider.change request for this change.  See POST /sfvb/approvals. | [optional] |
+
+### Return type
+
+[**SfvbTrackingProvider**](SfvbTrackingProvider.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
 ## update_sfvb_upsell_offer
 
 > <SfvbUpsellOffer> update_sfvb_upsell_offer(storefront_oid, upsell_offer_oid, if_match, upsell_offer)
@@ -11641,6 +12921,62 @@ end
 ### Return type
 
 [**SfvbUpsellPath**](SfvbUpsellPath.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_sfvb_utm_shortcode
+
+> <SfvbUtmShortcode> update_sfvb_utm_shortcode(storefront_oid, shortcode_oid, if_match, utm_shortcode_request)
+
+Change a UTM shortcode
+
+A partial update.  Fields left out keep their value, and an empty string clears a value.  A changed code is checked like a new one.  The creation date is kept.  Send the hash_sha256 you read as If-Match.  Needs sfvb_publish, because links already in emails and ads that use the code are attributed differently from now on. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_utm_shortcode_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbUtmShortcode>, Integer, Hash)> update_sfvb_utm_shortcode_with_http_info(storefront_oid, shortcode_oid, if_match, utm_shortcode_request)
+
+```ruby
+begin
+  # Change a UTM shortcode
+  data, status_code, headers = api_instance.update_sfvb_utm_shortcode_with_http_info(storefront_oid, shortcode_oid, if_match, utm_shortcode_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbUtmShortcode>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_utm_shortcode_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **shortcode_oid** | **Integer** |  |  |
+| **if_match** | **String** | The shortcode&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale. |  |
+| **utm_shortcode_request** | [**SfvbUtmShortcodeRequest**](SfvbUtmShortcodeRequest.md) | The change |  |
+
+### Return type
+
+[**SfvbUtmShortcode**](SfvbUtmShortcode.md)
 
 ### Authorization
 

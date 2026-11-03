@@ -1244,6 +1244,90 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Delete an affiliate network
+    # Visits from the network stop being recognized and its pixel stops firing.  Refused with 409 while Smart Attribution names the network as a platform.  Send the network's hash_sha256 as If-Match.  Needs sfvb_publish and an approved affiliate_network.delete request (Approval-Id). 
+    # @param storefront_oid [Integer] 
+    # @param affiliate_network_oid [Integer] 
+    # @param if_match [String] The network&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param approval_id [String] The approval_id of an approved affiliate_network.delete request for this network.  See POST /sfvb/approvals.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_sfvb_affiliate_network(storefront_oid, affiliate_network_oid, if_match, approval_id, opts = {})
+      delete_sfvb_affiliate_network_with_http_info(storefront_oid, affiliate_network_oid, if_match, approval_id, opts)
+      nil
+    end
+
+    # Delete an affiliate network
+    # Visits from the network stop being recognized and its pixel stops firing.  Refused with 409 while Smart Attribution names the network as a platform.  Send the network&#39;s hash_sha256 as If-Match.  Needs sfvb_publish and an approved affiliate_network.delete request (Approval-Id). 
+    # @param storefront_oid [Integer] 
+    # @param affiliate_network_oid [Integer] 
+    # @param if_match [String] The network&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param approval_id [String] The approval_id of an approved affiliate_network.delete request for this network.  See POST /sfvb/approvals.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_sfvb_affiliate_network_with_http_info(storefront_oid, affiliate_network_oid, if_match, approval_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.delete_sfvb_affiliate_network ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.delete_sfvb_affiliate_network"
+      end
+      # verify the required parameter 'affiliate_network_oid' is set
+      if @api_client.config.client_side_validation && affiliate_network_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'affiliate_network_oid' when calling SfvbApi.delete_sfvb_affiliate_network"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.delete_sfvb_affiliate_network"
+      end
+      # verify the required parameter 'approval_id' is set
+      if @api_client.config.client_side_validation && approval_id.nil?
+        fail ArgumentError, "Missing the required parameter 'approval_id' when calling SfvbApi.delete_sfvb_affiliate_network"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/tracking/affiliate_networks/{affiliate_network_oid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'affiliate_network_oid' + '}', CGI.escape(affiliate_network_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'If-Match'] = if_match
+      header_params[:'Approval-Id'] = approval_id
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.delete_sfvb_affiliate_network",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_affiliate_network\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Cancel a pending approval request
     # Withdraws a request nobody has decided yet, which frees one of the five pending slots a sign-in has.  A request that was already decided, used or expired cannot be cancelled. 
     # @param approval_id [String] 
@@ -2264,6 +2348,234 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_sequence_step\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a storefront's Smart Attribution configuration
+    # Every platform goes back to being sent conversions as it was before Smart Attribution, and the settings are gone.  Send the hash_sha256 you read as If-Match.  Needs sfvb_publish and an approved smart_attribution.delete request (Approval-Id).  An unconfigured storefront is 404. 
+    # @param storefront_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the Smart Attribution read.  428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id The approval_id of an approved smart_attribution.delete request.  Required.  See POST /sfvb/approvals.
+    # @return [nil]
+    def delete_sfvb_smart_attribution(storefront_oid, if_match, opts = {})
+      delete_sfvb_smart_attribution_with_http_info(storefront_oid, if_match, opts)
+      nil
+    end
+
+    # Delete a storefront&#39;s Smart Attribution configuration
+    # Every platform goes back to being sent conversions as it was before Smart Attribution, and the settings are gone.  Send the hash_sha256 you read as If-Match.  Needs sfvb_publish and an approved smart_attribution.delete request (Approval-Id).  An unconfigured storefront is 404. 
+    # @param storefront_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the Smart Attribution read.  428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id The approval_id of an approved smart_attribution.delete request.  Required.  See POST /sfvb/approvals.
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_sfvb_smart_attribution_with_http_info(storefront_oid, if_match, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.delete_sfvb_smart_attribution ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.delete_sfvb_smart_attribution"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.delete_sfvb_smart_attribution"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/smart_attribution'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'If-Match'] = if_match
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.delete_sfvb_smart_attribution",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_smart_attribution\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Clear one tracking provider
+    # Clears every field and secret the API can change, the consent gate and the events, and turns off Google Tag Gateway.  The provider stops being sent anything.  An OAuth connection is left alone, and notes say to disconnect it in the admin.  Send the provider's hash_sha256 as If-Match.  Needs sfvb_publish.  No approval. 
+    # @param storefront_oid [Integer] 
+    # @param provider [String] 
+    # @param if_match [String] The provider&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbTrackingProvider]
+    def delete_sfvb_tracking_provider(storefront_oid, provider, if_match, opts = {})
+      data, _status_code, _headers = delete_sfvb_tracking_provider_with_http_info(storefront_oid, provider, if_match, opts)
+      data
+    end
+
+    # Clear one tracking provider
+    # Clears every field and secret the API can change, the consent gate and the events, and turns off Google Tag Gateway.  The provider stops being sent anything.  An OAuth connection is left alone, and notes say to disconnect it in the admin.  Send the provider&#39;s hash_sha256 as If-Match.  Needs sfvb_publish.  No approval. 
+    # @param storefront_oid [Integer] 
+    # @param provider [String] 
+    # @param if_match [String] The provider&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbTrackingProvider, Integer, Hash)>] SfvbTrackingProvider data, response status code and response headers
+    def delete_sfvb_tracking_provider_with_http_info(storefront_oid, provider, if_match, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.delete_sfvb_tracking_provider ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.delete_sfvb_tracking_provider"
+      end
+      # verify the required parameter 'provider' is set
+      if @api_client.config.client_side_validation && provider.nil?
+        fail ArgumentError, "Missing the required parameter 'provider' when calling SfvbApi.delete_sfvb_tracking_provider"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.delete_sfvb_tracking_provider"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/tracking/providers/{provider}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'provider' + '}', CGI.escape(provider.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTrackingProvider'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.delete_sfvb_tracking_provider",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_tracking_provider\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a UTM shortcode
+    # The shortcode stops attributing at once.  A link that uses it as a path segment still opens its page, without the UTM values.  Send the hash_sha256 you read as If-Match.  Needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param shortcode_oid [Integer] 
+    # @param if_match [String] The shortcode&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_sfvb_utm_shortcode(storefront_oid, shortcode_oid, if_match, opts = {})
+      delete_sfvb_utm_shortcode_with_http_info(storefront_oid, shortcode_oid, if_match, opts)
+      nil
+    end
+
+    # Delete a UTM shortcode
+    # The shortcode stops attributing at once.  A link that uses it as a path segment still opens its page, without the UTM values.  Send the hash_sha256 you read as If-Match.  Needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param shortcode_oid [Integer] 
+    # @param if_match [String] The shortcode&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_sfvb_utm_shortcode_with_http_info(storefront_oid, shortcode_oid, if_match, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.delete_sfvb_utm_shortcode ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.delete_sfvb_utm_shortcode"
+      end
+      # verify the required parameter 'shortcode_oid' is set
+      if @api_client.config.client_side_validation && shortcode_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'shortcode_oid' when calling SfvbApi.delete_sfvb_utm_shortcode"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.delete_sfvb_utm_shortcode"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/utm_shortcodes/{shortcode_oid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'shortcode_oid' + '}', CGI.escape(shortcode_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.delete_sfvb_utm_shortcode",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_utm_shortcode\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -3322,6 +3634,70 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Turn Smart Attribution on in report_only mode
+    # What the admin's Enable button saves: report_only, position_based, a 40/20/40 split, a 7 day lookback and every detected platform.  report_only records decisions and changes nothing any platform is sent.  A storefront that already has a configuration is 409 sfvb.smart_attribution_configured.  Needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbSmartAttribution]
+    def enable_sfvb_smart_attribution(storefront_oid, opts = {})
+      data, _status_code, _headers = enable_sfvb_smart_attribution_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Turn Smart Attribution on in report_only mode
+    # What the admin&#39;s Enable button saves: report_only, position_based, a 40/20/40 split, a 7 day lookback and every detected platform.  report_only records decisions and changes nothing any platform is sent.  A storefront that already has a configuration is 409 sfvb.smart_attribution_configured.  Needs sfvb_publish. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbSmartAttribution, Integer, Hash)>] SfvbSmartAttribution data, response status code and response headers
+    def enable_sfvb_smart_attribution_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.enable_sfvb_smart_attribution ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.enable_sfvb_smart_attribution"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/smart_attribution/enable'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbSmartAttribution'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.enable_sfvb_smart_attribution",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#enable_sfvb_smart_attribution\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Enable an upsell offer
     # Switches the offer on.  The only way to switch one on - create and update refuse active true on an offer that is off.  Needs sfvb_publish and the approval of the person who signed in the CLI, an approved upsell.enable request for this offer (see POST /sfvb/approvals).  An offer that is already on is returned unchanged, and no approval is used. 
     # @param storefront_oid [Integer] 
@@ -3614,6 +3990,140 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#favorite_sfvb_library_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read one affiliate network
+    # The network with its conversion_pixel, and the hash_sha256 an update or delete sends back as If-Match. 
+    # @param storefront_oid [Integer] 
+    # @param affiliate_network_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbAffiliateNetwork]
+    def get_sfvb_affiliate_network(storefront_oid, affiliate_network_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_affiliate_network_with_http_info(storefront_oid, affiliate_network_oid, opts)
+      data
+    end
+
+    # Read one affiliate network
+    # The network with its conversion_pixel, and the hash_sha256 an update or delete sends back as If-Match. 
+    # @param storefront_oid [Integer] 
+    # @param affiliate_network_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbAffiliateNetwork, Integer, Hash)>] SfvbAffiliateNetwork data, response status code and response headers
+    def get_sfvb_affiliate_network_with_http_info(storefront_oid, affiliate_network_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_affiliate_network ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_affiliate_network"
+      end
+      # verify the required parameter 'affiliate_network_oid' is set
+      if @api_client.config.client_side_validation && affiliate_network_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'affiliate_network_oid' when calling SfvbApi.get_sfvb_affiliate_network"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/tracking/affiliate_networks/{affiliate_network_oid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'affiliate_network_oid' + '}', CGI.escape(affiliate_network_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbAffiliateNetwork'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_affiliate_network",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_affiliate_network\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List a storefront's affiliate networks
+    # Every affiliate network pixel, by name, with its settings and hash_sha256.  conversion_pixel is left out; its size and hash are shown.  Read one network for it. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbAffiliateNetworksResponse]
+    def get_sfvb_affiliate_networks(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_affiliate_networks_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List a storefront&#39;s affiliate networks
+    # Every affiliate network pixel, by name, with its settings and hash_sha256.  conversion_pixel is left out; its size and hash are shown.  Read one network for it. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbAffiliateNetworksResponse, Integer, Hash)>] SfvbAffiliateNetworksResponse data, response status code and response headers
+    def get_sfvb_affiliate_networks_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_affiliate_networks ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_affiliate_networks"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/tracking/affiliate_networks'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbAffiliateNetworksResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_affiliate_networks",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_affiliate_networks\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -7252,6 +7762,70 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Read a storefront's Smart Attribution configuration
+    # The mode, model, global credit split, lookback and platforms, the platforms detected from the tracking integrations that are not configured yet, and the hash_sha256 a change or delete sends back as If-Match.  When configured is false the values are the defaults an enable would save. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbSmartAttribution]
+    def get_sfvb_smart_attribution(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_smart_attribution_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Read a storefront&#39;s Smart Attribution configuration
+    # The mode, model, global credit split, lookback and platforms, the platforms detected from the tracking integrations that are not configured yet, and the hash_sha256 a change or delete sends back as If-Match.  When configured is false the values are the defaults an enable would save. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbSmartAttribution, Integer, Hash)>] SfvbSmartAttribution data, response status code and response headers
+    def get_sfvb_smart_attribution_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_smart_attribution ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_smart_attribution"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/smart_attribution'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbSmartAttribution'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_smart_attribution",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_smart_attribution\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List recent test orders
     # Test orders on this account only, newest first, with no customer details, so an agent can render the order pages (receipt, order tracking, digital downloads, auto order pages) with one.  Use an order_id as a render's context_order_id; a real customer's order is refused there.  The last 7 days are searched, widening to 30 and then 90 until enough are found.  digital_items and auto_order keep only orders with downloads or an auto order.  limit is 1 to 25, default 10. 
     # @param storefront_oid [Integer] 
@@ -7533,6 +8107,341 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Read one custom tracking HTML slot
+    # The HTML with its Velocity tokens as stored, and the hash_sha256 a write sends back as If-Match. 
+    # @param storefront_oid [Integer] 
+    # @param slot [String] tracking or conversion
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbTrackingHtml]
+    def get_sfvb_tracking_html(storefront_oid, slot, opts = {})
+      data, _status_code, _headers = get_sfvb_tracking_html_with_http_info(storefront_oid, slot, opts)
+      data
+    end
+
+    # Read one custom tracking HTML slot
+    # The HTML with its Velocity tokens as stored, and the hash_sha256 a write sends back as If-Match. 
+    # @param storefront_oid [Integer] 
+    # @param slot [String] tracking or conversion
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbTrackingHtml, Integer, Hash)>] SfvbTrackingHtml data, response status code and response headers
+    def get_sfvb_tracking_html_with_http_info(storefront_oid, slot, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_tracking_html ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_tracking_html"
+      end
+      # verify the required parameter 'slot' is set
+      if @api_client.config.client_side_validation && slot.nil?
+        fail ArgumentError, "Missing the required parameter 'slot' when calling SfvbApi.get_sfvb_tracking_html"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/tracking/html/{slot}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'slot' + '}', CGI.escape(slot.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTrackingHtml'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_tracking_html",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_tracking_html\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List a storefront's custom tracking HTML slots
+    # tracking (every page but the receipt) and conversion (the receipt only), each with its size and hash_sha256.  Read one slot for its content. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbTrackingHtmlResponse]
+    def get_sfvb_tracking_html_slots(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_tracking_html_slots_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List a storefront&#39;s custom tracking HTML slots
+    # tracking (every page but the receipt) and conversion (the receipt only), each with its size and hash_sha256.  Read one slot for its content. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbTrackingHtmlResponse, Integer, Hash)>] SfvbTrackingHtmlResponse data, response status code and response headers
+    def get_sfvb_tracking_html_slots_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_tracking_html_slots ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_tracking_html_slots"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/tracking/html'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTrackingHtmlResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_tracking_html_slots",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_tracking_html_slots\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read one tracking provider
+    # The provider as the list shows it, with the hash_sha256 a change or clear sends back as If-Match. 
+    # @param storefront_oid [Integer] 
+    # @param provider [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbTrackingProvider]
+    def get_sfvb_tracking_provider(storefront_oid, provider, opts = {})
+      data, _status_code, _headers = get_sfvb_tracking_provider_with_http_info(storefront_oid, provider, opts)
+      data
+    end
+
+    # Read one tracking provider
+    # The provider as the list shows it, with the hash_sha256 a change or clear sends back as If-Match. 
+    # @param storefront_oid [Integer] 
+    # @param provider [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbTrackingProvider, Integer, Hash)>] SfvbTrackingProvider data, response status code and response headers
+    def get_sfvb_tracking_provider_with_http_info(storefront_oid, provider, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_tracking_provider ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_tracking_provider"
+      end
+      # verify the required parameter 'provider' is set
+      if @api_client.config.client_side_validation && provider.nil?
+        fail ArgumentError, "Missing the required parameter 'provider' when calling SfvbApi.get_sfvb_tracking_provider"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/tracking/providers/{provider}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'provider' + '}', CGI.escape(provider.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTrackingProvider'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_tracking_provider",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_tracking_provider\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List a storefront's tracking providers
+    # Every provider on the admin's Google and Other tabs, with each field's type and value, its consent gate, events, OAuth connection state and hash_sha256.  A secret's value is never returned, only whether one is set, its mask and the sink to request a handle for.  configured=true lists only the providers that are on. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :configured 
+    # @return [SfvbTrackingProvidersResponse]
+    def get_sfvb_tracking_providers(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_tracking_providers_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List a storefront&#39;s tracking providers
+    # Every provider on the admin&#39;s Google and Other tabs, with each field&#39;s type and value, its consent gate, events, OAuth connection state and hash_sha256.  A secret&#39;s value is never returned, only whether one is set, its mask and the sink to request a handle for.  configured&#x3D;true lists only the providers that are on. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :configured 
+    # @return [Array<(SfvbTrackingProvidersResponse, Integer, Hash)>] SfvbTrackingProvidersResponse data, response status code and response headers
+    def get_sfvb_tracking_providers_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_tracking_providers ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_tracking_providers"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/tracking/providers'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'configured'] = opts[:'configured'] if !opts[:'configured'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTrackingProvidersResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_tracking_providers",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_tracking_providers\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read a storefront's privacy rules and advanced conversion settings
+    # The five privacy rules (which shoppers each applies to) and the advanced conversion settings, each section with the hash_sha256 a write sends back as If-Match.  The order hash secret key is shared by every storefront on the account and is reported only as set or not. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbTrackingSettingsResponse]
+    def get_sfvb_tracking_settings(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_tracking_settings_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Read a storefront&#39;s privacy rules and advanced conversion settings
+    # The five privacy rules (which shoppers each applies to) and the advanced conversion settings, each section with the hash_sha256 a write sends back as If-Match.  The order hash secret key is shared by every storefront on the account and is reported only as set or not. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbTrackingSettingsResponse, Integer, Hash)>] SfvbTrackingSettingsResponse data, response status code and response headers
+    def get_sfvb_tracking_settings_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_tracking_settings ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_tracking_settings"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/tracking'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTrackingSettingsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_tracking_settings",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_tracking_settings\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List the transactional emails a storefront sends
     # The order, shipment, auto order and other transactional emails this storefront sends, with their template files and the body container a draft replaces.  Forgot password and chat verification are not listed, because they have no preview. 
     # @param storefront_oid [Integer] 
@@ -7757,6 +8666,143 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_upsell_path\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read one UTM shortcode
+    # The shortcode with the hash_sha256 an update or delete sends back as If-Match.  A deleted shortcode is 404. 
+    # @param storefront_oid [Integer] 
+    # @param shortcode_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbUtmShortcode]
+    def get_sfvb_utm_shortcode(storefront_oid, shortcode_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_utm_shortcode_with_http_info(storefront_oid, shortcode_oid, opts)
+      data
+    end
+
+    # Read one UTM shortcode
+    # The shortcode with the hash_sha256 an update or delete sends back as If-Match.  A deleted shortcode is 404. 
+    # @param storefront_oid [Integer] 
+    # @param shortcode_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbUtmShortcode, Integer, Hash)>] SfvbUtmShortcode data, response status code and response headers
+    def get_sfvb_utm_shortcode_with_http_info(storefront_oid, shortcode_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_utm_shortcode ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_utm_shortcode"
+      end
+      # verify the required parameter 'shortcode_oid' is set
+      if @api_client.config.client_side_validation && shortcode_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'shortcode_oid' when calling SfvbApi.get_sfvb_utm_shortcode"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/utm_shortcodes/{shortcode_oid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'shortcode_oid' + '}', CGI.escape(shortcode_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUtmShortcode'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_utm_shortcode",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_utm_shortcode\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List a storefront's UTM shortcodes
+    # Every live shortcode, sorted by code, each with its hash_sha256.  q matches the code or the description, ignoring case. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :q 
+    # @return [SfvbUtmShortcodesResponse]
+    def get_sfvb_utm_shortcodes(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_utm_shortcodes_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List a storefront&#39;s UTM shortcodes
+    # Every live shortcode, sorted by code, each with its hash_sha256.  q matches the code or the description, ignoring case. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :q 
+    # @return [Array<(SfvbUtmShortcodesResponse, Integer, Hash)>] SfvbUtmShortcodesResponse data, response status code and response headers
+    def get_sfvb_utm_shortcodes_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_utm_shortcodes ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_utm_shortcodes"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/utm_shortcodes'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'q'] = opts[:'q'] if !opts[:'q'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUtmShortcodesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_utm_shortcodes",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_utm_shortcodes\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -8022,8 +9068,86 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Add an affiliate network
+    # network_name, parameter_name and parameter_value are required; the rest start from the admin's defaults.  Internal affiliate oids must be the account's own.  Needs sfvb_publish.  A network with a conversion_pixel that a custom or server_to_server network will use needs an approved affiliate_network.change request for exactly this create (Approval-Id), which UltraCart reviews first.  dry_run says whether it needs one, without saving. 
+    # @param storefront_oid [Integer] 
+    # @param affiliate_network_request [SfvbAffiliateNetworkRequest] The network
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id For a network with a conversion pixel it will use, the approval_id of an approved affiliate_network.change request for exactly this create.  See POST /sfvb/approvals.
+    # @return [SfvbAffiliateNetwork]
+    def insert_sfvb_affiliate_network(storefront_oid, affiliate_network_request, opts = {})
+      data, _status_code, _headers = insert_sfvb_affiliate_network_with_http_info(storefront_oid, affiliate_network_request, opts)
+      data
+    end
+
+    # Add an affiliate network
+    # network_name, parameter_name and parameter_value are required; the rest start from the admin&#39;s defaults.  Internal affiliate oids must be the account&#39;s own.  Needs sfvb_publish.  A network with a conversion_pixel that a custom or server_to_server network will use needs an approved affiliate_network.change request for exactly this create (Approval-Id), which UltraCart reviews first.  dry_run says whether it needs one, without saving. 
+    # @param storefront_oid [Integer] 
+    # @param affiliate_network_request [SfvbAffiliateNetworkRequest] The network
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id For a network with a conversion pixel it will use, the approval_id of an approved affiliate_network.change request for exactly this create.  See POST /sfvb/approvals.
+    # @return [Array<(SfvbAffiliateNetwork, Integer, Hash)>] SfvbAffiliateNetwork data, response status code and response headers
+    def insert_sfvb_affiliate_network_with_http_info(storefront_oid, affiliate_network_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.insert_sfvb_affiliate_network ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.insert_sfvb_affiliate_network"
+      end
+      # verify the required parameter 'affiliate_network_request' is set
+      if @api_client.config.client_side_validation && affiliate_network_request.nil?
+        fail ArgumentError, "Missing the required parameter 'affiliate_network_request' when calling SfvbApi.insert_sfvb_affiliate_network"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/tracking/affiliate_networks'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(affiliate_network_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbAffiliateNetwork'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.insert_sfvb_affiliate_network",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_affiliate_network\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Request a human approval
-    # Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow.  For file.put_script send the script as content, or params.version for a revert.  The request starts as reviewing while UltraCart's scanner and two AI models read it, then becomes pending with the review attached, or refused.  Keep polling, and show approval_url only once it is pending.  Only the hash is kept, so the write must send the same bytes. 
+    # Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow.  For file.put_script send the script as content, or params.version for a revert; for tracking_html.put send the HTML as content and params.slot; for affiliate_network.change send affiliate_network.  These three start as reviewing while UltraCart's scanner and two AI models read the content, then become pending with the review attached, or refused.  Keep polling, and show approval_url only once it is pending.  Only the hash is kept, so the write must send the same content. 
     # @param approval_request [SfvbApprovalCreateRequest] The request
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :storefront_oid The storefront the action runs on.  Required for storefront actions, left out for account-wide ones.
@@ -8034,7 +9158,7 @@ module UltracartClient
     end
 
     # Request a human approval
-    # Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow.  For file.put_script send the script as content, or params.version for a revert.  The request starts as reviewing while UltraCart&#39;s scanner and two AI models read it, then becomes pending with the review attached, or refused.  Keep polling, and show approval_url only once it is pending.  Only the hash is kept, so the write must send the same bytes. 
+    # Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow.  For file.put_script send the script as content, or params.version for a revert; for tracking_html.put send the HTML as content and params.slot; for affiliate_network.change send affiliate_network.  These three start as reviewing while UltraCart&#39;s scanner and two AI models read the content, then become pending with the review attached, or refused.  Keep polling, and show approval_url only once it is pending.  Only the hash is kept, so the write must send the same content. 
     # @param approval_request [SfvbApprovalCreateRequest] The request
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :storefront_oid The storefront the action runs on.  Required for storefront actions, left out for account-wide ones.
@@ -8835,6 +9959,81 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_upsell_path\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a UTM shortcode
+    # code is letters, digits, underscore and hyphen, 1 to 50 characters, and at least one UTM or ITM value is required.  A code another live shortcode has, ignoring case, is 409 sfvb.utm_shortcode_exists.  A code that is one of the account's affiliate short codes is 409 sfvb.utm_shortcode_affiliate_conflict, because the storefront checks those first and this one would never fire.  Up to 5,000 per storefront.  Needs sfvb_write only, because no link sent before it existed changes. 
+    # @param storefront_oid [Integer] 
+    # @param utm_shortcode_request [SfvbUtmShortcodeRequest] The shortcode
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbUtmShortcode]
+    def insert_sfvb_utm_shortcode(storefront_oid, utm_shortcode_request, opts = {})
+      data, _status_code, _headers = insert_sfvb_utm_shortcode_with_http_info(storefront_oid, utm_shortcode_request, opts)
+      data
+    end
+
+    # Create a UTM shortcode
+    # code is letters, digits, underscore and hyphen, 1 to 50 characters, and at least one UTM or ITM value is required.  A code another live shortcode has, ignoring case, is 409 sfvb.utm_shortcode_exists.  A code that is one of the account&#39;s affiliate short codes is 409 sfvb.utm_shortcode_affiliate_conflict, because the storefront checks those first and this one would never fire.  Up to 5,000 per storefront.  Needs sfvb_write only, because no link sent before it existed changes. 
+    # @param storefront_oid [Integer] 
+    # @param utm_shortcode_request [SfvbUtmShortcodeRequest] The shortcode
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbUtmShortcode, Integer, Hash)>] SfvbUtmShortcode data, response status code and response headers
+    def insert_sfvb_utm_shortcode_with_http_info(storefront_oid, utm_shortcode_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.insert_sfvb_utm_shortcode ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.insert_sfvb_utm_shortcode"
+      end
+      # verify the required parameter 'utm_shortcode_request' is set
+      if @api_client.config.client_side_validation && utm_shortcode_request.nil?
+        fail ArgumentError, "Missing the required parameter 'utm_shortcode_request' when calling SfvbApi.insert_sfvb_utm_shortcode"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/utm_shortcodes'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(utm_shortcode_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUtmShortcode'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.insert_sfvb_utm_shortcode",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_utm_shortcode\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -14436,6 +15635,97 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Change an affiliate network
+    # A partial update: only the fields sent change.  Send the network's hash_sha256 as If-Match.  Needs sfvb_publish.  Changing the conversion_pixel, or the conversion_type, of a network whose pixel will be used needs an approved affiliate_network.change request for exactly this change (Approval-Id), which UltraCart reviews first.  Other fields, and emptying the pixel, need none.  dry_run says whether it needs one, without saving. 
+    # @param storefront_oid [Integer] 
+    # @param affiliate_network_oid [Integer] 
+    # @param if_match [String] The network&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param affiliate_network_request [SfvbAffiliateNetworkRequest] The change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id When the change sets a conversion pixel the network will use, the approval_id of an approved affiliate_network.change request for exactly this change.  See POST /sfvb/approvals.
+    # @return [SfvbAffiliateNetwork]
+    def update_sfvb_affiliate_network(storefront_oid, affiliate_network_oid, if_match, affiliate_network_request, opts = {})
+      data, _status_code, _headers = update_sfvb_affiliate_network_with_http_info(storefront_oid, affiliate_network_oid, if_match, affiliate_network_request, opts)
+      data
+    end
+
+    # Change an affiliate network
+    # A partial update: only the fields sent change.  Send the network&#39;s hash_sha256 as If-Match.  Needs sfvb_publish.  Changing the conversion_pixel, or the conversion_type, of a network whose pixel will be used needs an approved affiliate_network.change request for exactly this change (Approval-Id), which UltraCart reviews first.  Other fields, and emptying the pixel, need none.  dry_run says whether it needs one, without saving. 
+    # @param storefront_oid [Integer] 
+    # @param affiliate_network_oid [Integer] 
+    # @param if_match [String] The network&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param affiliate_network_request [SfvbAffiliateNetworkRequest] The change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id When the change sets a conversion pixel the network will use, the approval_id of an approved affiliate_network.change request for exactly this change.  See POST /sfvb/approvals.
+    # @return [Array<(SfvbAffiliateNetwork, Integer, Hash)>] SfvbAffiliateNetwork data, response status code and response headers
+    def update_sfvb_affiliate_network_with_http_info(storefront_oid, affiliate_network_oid, if_match, affiliate_network_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_affiliate_network ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_affiliate_network"
+      end
+      # verify the required parameter 'affiliate_network_oid' is set
+      if @api_client.config.client_side_validation && affiliate_network_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'affiliate_network_oid' when calling SfvbApi.update_sfvb_affiliate_network"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.update_sfvb_affiliate_network"
+      end
+      # verify the required parameter 'affiliate_network_request' is set
+      if @api_client.config.client_side_validation && affiliate_network_request.nil?
+        fail ArgumentError, "Missing the required parameter 'affiliate_network_request' when calling SfvbApi.update_sfvb_affiliate_network"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/tracking/affiliate_networks/{affiliate_network_oid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'affiliate_network_oid' + '}', CGI.escape(affiliate_network_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(affiliate_network_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbAffiliateNetwork'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_affiliate_network",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_affiliate_network\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Change a blog post
     # Only the fields sent change; tags, when sent, replaces every tag.  The post's images and attributes are left alone.  Publish or unpublish with visibility.  A post that is not a draft before or after the change needs sfvb_publish.  The same content rules as create apply. 
     # @param storefront_oid [Integer] 
@@ -15455,6 +16745,437 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Change a storefront's Smart Attribution configuration
+    # A partial update of the mode, model, global split and lookback.  platforms, when sent, replaces the whole list.  The global split must total exactly 1 and the lookback is 7 to 365.  On an unconfigured storefront it creates the configuration.  Send the hash_sha256 you read as If-Match.  Needs sfvb_publish, and when the mode is active or the change makes it active, an approved smart_attribution.change request for exactly this change (Approval-Id), because active mode decides which conversions each platform is sent.  A change that stores what is already stored returns the configuration unchanged and uses no approval. 
+    # @param storefront_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the Smart Attribution read.  428 when absent, 412 when stale.
+    # @param smart_attribution_request [SfvbSmartAttributionRequest] The change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id When the mode is or becomes active, the approval_id of an approved smart_attribution.change request for this change.  See POST /sfvb/approvals.
+    # @return [SfvbSmartAttribution]
+    def update_sfvb_smart_attribution(storefront_oid, if_match, smart_attribution_request, opts = {})
+      data, _status_code, _headers = update_sfvb_smart_attribution_with_http_info(storefront_oid, if_match, smart_attribution_request, opts)
+      data
+    end
+
+    # Change a storefront&#39;s Smart Attribution configuration
+    # A partial update of the mode, model, global split and lookback.  platforms, when sent, replaces the whole list.  The global split must total exactly 1 and the lookback is 7 to 365.  On an unconfigured storefront it creates the configuration.  Send the hash_sha256 you read as If-Match.  Needs sfvb_publish, and when the mode is active or the change makes it active, an approved smart_attribution.change request for exactly this change (Approval-Id), because active mode decides which conversions each platform is sent.  A change that stores what is already stored returns the configuration unchanged and uses no approval. 
+    # @param storefront_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the Smart Attribution read.  428 when absent, 412 when stale.
+    # @param smart_attribution_request [SfvbSmartAttributionRequest] The change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id When the mode is or becomes active, the approval_id of an approved smart_attribution.change request for this change.  See POST /sfvb/approvals.
+    # @return [Array<(SfvbSmartAttribution, Integer, Hash)>] SfvbSmartAttribution data, response status code and response headers
+    def update_sfvb_smart_attribution_with_http_info(storefront_oid, if_match, smart_attribution_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_smart_attribution ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_smart_attribution"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.update_sfvb_smart_attribution"
+      end
+      # verify the required parameter 'smart_attribution_request' is set
+      if @api_client.config.client_side_validation && smart_attribution_request.nil?
+        fail ArgumentError, "Missing the required parameter 'smart_attribution_request' when calling SfvbApi.update_sfvb_smart_attribution"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/smart_attribution'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(smart_attribution_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbSmartAttribution'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_smart_attribution",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_smart_attribution\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change a storefront's advanced conversion settings
+    # A partial update.  Fields left out keep their value, and a text setting is cleared by naming it in unset.  URLs are a path starting with / or an absolute http or https URL, and one over its limit is refused rather than cut short.  The currency must be one the read lists.  The order hash secret key cannot be changed here.  Every field is checked before any is written.  Send the advanced hash_sha256 you read as If-Match.  dry_run reports the changes without saving.  Always needs sfvb_publish, because the settings apply to shoppers as soon as they are saved.  The admin saves the whole tab, so a merchant with it open can still overwrite a change made here. 
+    # @param storefront_oid [Integer] 
+    # @param if_match [String] The advanced hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param tracking_advanced_request [SfvbTrackingAdvancedRequest] The settings to change
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbTrackingSettingsResponse]
+    def update_sfvb_tracking_advanced(storefront_oid, if_match, tracking_advanced_request, opts = {})
+      data, _status_code, _headers = update_sfvb_tracking_advanced_with_http_info(storefront_oid, if_match, tracking_advanced_request, opts)
+      data
+    end
+
+    # Change a storefront&#39;s advanced conversion settings
+    # A partial update.  Fields left out keep their value, and a text setting is cleared by naming it in unset.  URLs are a path starting with / or an absolute http or https URL, and one over its limit is refused rather than cut short.  The currency must be one the read lists.  The order hash secret key cannot be changed here.  Every field is checked before any is written.  Send the advanced hash_sha256 you read as If-Match.  dry_run reports the changes without saving.  Always needs sfvb_publish, because the settings apply to shoppers as soon as they are saved.  The admin saves the whole tab, so a merchant with it open can still overwrite a change made here. 
+    # @param storefront_oid [Integer] 
+    # @param if_match [String] The advanced hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param tracking_advanced_request [SfvbTrackingAdvancedRequest] The settings to change
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbTrackingSettingsResponse, Integer, Hash)>] SfvbTrackingSettingsResponse data, response status code and response headers
+    def update_sfvb_tracking_advanced_with_http_info(storefront_oid, if_match, tracking_advanced_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_tracking_advanced ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_tracking_advanced"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.update_sfvb_tracking_advanced"
+      end
+      # verify the required parameter 'tracking_advanced_request' is set
+      if @api_client.config.client_side_validation && tracking_advanced_request.nil?
+        fail ArgumentError, "Missing the required parameter 'tracking_advanced_request' when calling SfvbApi.update_sfvb_tracking_advanced"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/tracking/advanced'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(tracking_advanced_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTrackingSettingsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_tracking_advanced",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_tracking_advanced\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Write one custom tracking HTML slot
+    # Replaces the whole slot, at most 256 KB.  Content the storefront's templates may not use is refused with its lines.  Send the slot's hash_sha256 as If-Match.  Needs sfvb_publish.  Any HTML but an empty string needs an approved tracking_html.put request for exactly this content (Approval-Id), which UltraCart reviews first.  An empty string empties the slot without one.  dry_run says whether the write needs one, without saving. 
+    # @param storefront_oid [Integer] 
+    # @param slot [String] tracking or conversion
+    # @param if_match [String] The slot&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param tracking_html_request [SfvbTrackingHtmlRequest] The content
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id For any content but an empty string, the approval_id of an approved tracking_html.put request for exactly this content.  See POST /sfvb/approvals.
+    # @return [SfvbTrackingHtml]
+    def update_sfvb_tracking_html(storefront_oid, slot, if_match, tracking_html_request, opts = {})
+      data, _status_code, _headers = update_sfvb_tracking_html_with_http_info(storefront_oid, slot, if_match, tracking_html_request, opts)
+      data
+    end
+
+    # Write one custom tracking HTML slot
+    # Replaces the whole slot, at most 256 KB.  Content the storefront&#39;s templates may not use is refused with its lines.  Send the slot&#39;s hash_sha256 as If-Match.  Needs sfvb_publish.  Any HTML but an empty string needs an approved tracking_html.put request for exactly this content (Approval-Id), which UltraCart reviews first.  An empty string empties the slot without one.  dry_run says whether the write needs one, without saving. 
+    # @param storefront_oid [Integer] 
+    # @param slot [String] tracking or conversion
+    # @param if_match [String] The slot&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param tracking_html_request [SfvbTrackingHtmlRequest] The content
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id For any content but an empty string, the approval_id of an approved tracking_html.put request for exactly this content.  See POST /sfvb/approvals.
+    # @return [Array<(SfvbTrackingHtml, Integer, Hash)>] SfvbTrackingHtml data, response status code and response headers
+    def update_sfvb_tracking_html_with_http_info(storefront_oid, slot, if_match, tracking_html_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_tracking_html ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_tracking_html"
+      end
+      # verify the required parameter 'slot' is set
+      if @api_client.config.client_side_validation && slot.nil?
+        fail ArgumentError, "Missing the required parameter 'slot' when calling SfvbApi.update_sfvb_tracking_html"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.update_sfvb_tracking_html"
+      end
+      # verify the required parameter 'tracking_html_request' is set
+      if @api_client.config.client_side_validation && tracking_html_request.nil?
+        fail ArgumentError, "Missing the required parameter 'tracking_html_request' when calling SfvbApi.update_sfvb_tracking_html"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/tracking/html/{slot}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'slot' + '}', CGI.escape(slot.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(tracking_html_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTrackingHtml'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_tracking_html",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_tracking_html\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change a storefront's privacy rules
+    # A partial update.  Each rule named is set to all, eea, non_us or off, and rules left out keep their value.  Every rule is checked before any is written.  Send the privacy hash_sha256 you read as If-Match.  dry_run reports the changes without saving.  Always needs sfvb_publish, because the rules apply to shoppers as soon as they are saved.  The admin saves the whole tab, so a merchant with it open can still overwrite a change made here. 
+    # @param storefront_oid [Integer] 
+    # @param if_match [String] The privacy hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param tracking_privacy_request [SfvbTrackingPrivacyRequest] The rules to change
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbTrackingSettingsResponse]
+    def update_sfvb_tracking_privacy(storefront_oid, if_match, tracking_privacy_request, opts = {})
+      data, _status_code, _headers = update_sfvb_tracking_privacy_with_http_info(storefront_oid, if_match, tracking_privacy_request, opts)
+      data
+    end
+
+    # Change a storefront&#39;s privacy rules
+    # A partial update.  Each rule named is set to all, eea, non_us or off, and rules left out keep their value.  Every rule is checked before any is written.  Send the privacy hash_sha256 you read as If-Match.  dry_run reports the changes without saving.  Always needs sfvb_publish, because the rules apply to shoppers as soon as they are saved.  The admin saves the whole tab, so a merchant with it open can still overwrite a change made here. 
+    # @param storefront_oid [Integer] 
+    # @param if_match [String] The privacy hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param tracking_privacy_request [SfvbTrackingPrivacyRequest] The rules to change
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbTrackingSettingsResponse, Integer, Hash)>] SfvbTrackingSettingsResponse data, response status code and response headers
+    def update_sfvb_tracking_privacy_with_http_info(storefront_oid, if_match, tracking_privacy_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_tracking_privacy ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_tracking_privacy"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.update_sfvb_tracking_privacy"
+      end
+      # verify the required parameter 'tracking_privacy_request' is set
+      if @api_client.config.client_side_validation && tracking_privacy_request.nil?
+        fail ArgumentError, "Missing the required parameter 'tracking_privacy_request' when calling SfvbApi.update_sfvb_tracking_privacy"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/tracking/privacy'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(tracking_privacy_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTrackingSettingsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_tracking_privacy",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_tracking_privacy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change one tracking provider
+    # A partial update of the provider's fields, secrets (as secret handles), consent gate, events and, for google_analytics, wholesale account numbers.  Every value is checked for its field's type before anything is written.  Send the provider's hash_sha256 as If-Match.  dry_run reports the changes without saving.  Needs sfvb_publish.  Turning the provider on, loosening its consent gate, or turning on Google Tag Gateway (which also needs accept_cost true) needs an approved tracking_provider.change request for exactly this change (Approval-Id).  OAuth connections are made in the admin. 
+    # @param storefront_oid [Integer] 
+    # @param provider [String] 
+    # @param if_match [String] The provider&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param tracking_provider_request [SfvbTrackingProviderRequest] The change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id When the change turns the provider on, loosens its consent gate or turns on Google Tag Gateway, the approval_id of an approved tracking_provider.change request for this change.  See POST /sfvb/approvals.
+    # @return [SfvbTrackingProvider]
+    def update_sfvb_tracking_provider(storefront_oid, provider, if_match, tracking_provider_request, opts = {})
+      data, _status_code, _headers = update_sfvb_tracking_provider_with_http_info(storefront_oid, provider, if_match, tracking_provider_request, opts)
+      data
+    end
+
+    # Change one tracking provider
+    # A partial update of the provider&#39;s fields, secrets (as secret handles), consent gate, events and, for google_analytics, wholesale account numbers.  Every value is checked for its field&#39;s type before anything is written.  Send the provider&#39;s hash_sha256 as If-Match.  dry_run reports the changes without saving.  Needs sfvb_publish.  Turning the provider on, loosening its consent gate, or turning on Google Tag Gateway (which also needs accept_cost true) needs an approved tracking_provider.change request for exactly this change (Approval-Id).  OAuth connections are made in the admin. 
+    # @param storefront_oid [Integer] 
+    # @param provider [String] 
+    # @param if_match [String] The provider&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param tracking_provider_request [SfvbTrackingProviderRequest] The change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id When the change turns the provider on, loosens its consent gate or turns on Google Tag Gateway, the approval_id of an approved tracking_provider.change request for this change.  See POST /sfvb/approvals.
+    # @return [Array<(SfvbTrackingProvider, Integer, Hash)>] SfvbTrackingProvider data, response status code and response headers
+    def update_sfvb_tracking_provider_with_http_info(storefront_oid, provider, if_match, tracking_provider_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_tracking_provider ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_tracking_provider"
+      end
+      # verify the required parameter 'provider' is set
+      if @api_client.config.client_side_validation && provider.nil?
+        fail ArgumentError, "Missing the required parameter 'provider' when calling SfvbApi.update_sfvb_tracking_provider"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.update_sfvb_tracking_provider"
+      end
+      # verify the required parameter 'tracking_provider_request' is set
+      if @api_client.config.client_side_validation && tracking_provider_request.nil?
+        fail ArgumentError, "Missing the required parameter 'tracking_provider_request' when calling SfvbApi.update_sfvb_tracking_provider"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/tracking/providers/{provider}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'provider' + '}', CGI.escape(provider.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(tracking_provider_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTrackingProvider'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_tracking_provider",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_tracking_provider\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Update an upsell offer
     # A full replace.  Send back the whole offer you read, changed, with its hash_sha256 in If-Match.  Read only fields are ignored and a writable field left out is cleared.  Changing an offer that is switched on, or changing upsell_item_id_javascript or offsite_content_url, needs sfvb_publish.  An update cannot switch an offer on; that is the enable call, which needs approval.  Settings the API does not show, such as the offer's screenshots, are kept. 
     # @param storefront_oid [Integer] 
@@ -15627,6 +17348,94 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_upsell_path\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change a UTM shortcode
+    # A partial update.  Fields left out keep their value, and an empty string clears a value.  A changed code is checked like a new one.  The creation date is kept.  Send the hash_sha256 you read as If-Match.  Needs sfvb_publish, because links already in emails and ads that use the code are attributed differently from now on. 
+    # @param storefront_oid [Integer] 
+    # @param shortcode_oid [Integer] 
+    # @param if_match [String] The shortcode&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param utm_shortcode_request [SfvbUtmShortcodeRequest] The change
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbUtmShortcode]
+    def update_sfvb_utm_shortcode(storefront_oid, shortcode_oid, if_match, utm_shortcode_request, opts = {})
+      data, _status_code, _headers = update_sfvb_utm_shortcode_with_http_info(storefront_oid, shortcode_oid, if_match, utm_shortcode_request, opts)
+      data
+    end
+
+    # Change a UTM shortcode
+    # A partial update.  Fields left out keep their value, and an empty string clears a value.  A changed code is checked like a new one.  The creation date is kept.  Send the hash_sha256 you read as If-Match.  Needs sfvb_publish, because links already in emails and ads that use the code are attributed differently from now on. 
+    # @param storefront_oid [Integer] 
+    # @param shortcode_oid [Integer] 
+    # @param if_match [String] The shortcode&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param utm_shortcode_request [SfvbUtmShortcodeRequest] The change
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbUtmShortcode, Integer, Hash)>] SfvbUtmShortcode data, response status code and response headers
+    def update_sfvb_utm_shortcode_with_http_info(storefront_oid, shortcode_oid, if_match, utm_shortcode_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_utm_shortcode ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_utm_shortcode"
+      end
+      # verify the required parameter 'shortcode_oid' is set
+      if @api_client.config.client_side_validation && shortcode_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'shortcode_oid' when calling SfvbApi.update_sfvb_utm_shortcode"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.update_sfvb_utm_shortcode"
+      end
+      # verify the required parameter 'utm_shortcode_request' is set
+      if @api_client.config.client_side_validation && utm_shortcode_request.nil?
+        fail ArgumentError, "Missing the required parameter 'utm_shortcode_request' when calling SfvbApi.update_sfvb_utm_shortcode"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/utm_shortcodes/{shortcode_oid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'shortcode_oid' + '}', CGI.escape(shortcode_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(utm_shortcode_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbUtmShortcode'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_utm_shortcode",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_utm_shortcode\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

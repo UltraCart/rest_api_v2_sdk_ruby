@@ -11,6 +11,7 @@
 | **merchant_item_id** | **String** | The merchant item id of the owning item, for item containers only and absent for every other owner type.  owner_object_id is the item oid, which appears nowhere on a rendered storefront, so this is how a caller confirms which item an oid actually reached.  It is read fresh on every call and so reflects a renamed item.  A container&#39;s own id embeds this value, which is what a preview session keys an item container on. | [optional] |
 | **owner_object_id** | **String** | Identifier of the owning object within its store. | [optional] |
 | **owner_type** | **String** | Where this container lives. | [optional] |
+| **warnings** | [**Array&lt;SfvbErrorDetail&gt;**](SfvbErrorDetail.md) | Quality warnings from validating this write.  The write succeeded; each one says what to look at, such as a postcard QR code URL with a fragment.  Absent when there are none. | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = UltracartClient::SfvbContainerResponse.new(
   last_modified: null,
   merchant_item_id: null,
   owner_object_id: null,
-  owner_type: null
+  owner_type: null,
+  warnings: null
 )
 ```
 

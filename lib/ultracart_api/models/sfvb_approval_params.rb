@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class SfvbApprovalParams
+    # The affiliate network, for affiliate_network.change and affiliate_network.delete.  0 or left out for affiliate_network.change of a network the create call will add.
+    attr_accessor :affiliate_network_oid
+
     # For sequence_step.move, the step it moves after.  Or branch_step_uuid with side.
     attr_accessor :after_step_uuid
 
@@ -27,7 +30,7 @@ module UltracartClient
     # For sequence_step.move, the condition, split or inboxgeek step it moves to the start of a side of.
     attr_accessor :branch_step_uuid
 
-    # For file.put_script, the SHA-256 of the exact bytes approved.  Set by the server, never by the caller.  The write must send bytes with this hash.
+    # For file.put_script and tracking_html.put, the SHA-256 of the exact bytes approved, and for affiliate_network.change the SHA-256 of the conversion pixel.  Set by the server, never by the caller.  The write must send bytes with this hash.
     attr_accessor :content_sha256
 
     # For sending_domain.delete, the sending domain.
@@ -48,7 +51,7 @@ module UltracartClient
     # The file path, for file.delete and file.put_script, or the page path for experiment.start of a page experiment.  Exactly as the gated call will send it.
     attr_accessor :path
 
-    # For experiment.start of a url experiment, the hash of the checked experiment approved, and for item.pricing the hash of the change.  Set by the server.  The gated call must send the same.
+    # For experiment.start of a url experiment, the hash of the checked experiment approved, for item.pricing, tracking_provider.change and affiliate_network.change the hash of the change, and for smart_attribution.change the hash of the configuration the change would store.  Set by the server.  The gated call must send the same.
     attr_accessor :request_sha256
 
     # For redirect.delete_batch and item.attribute_batch, the plan_hash of the exact rows approved.  Set by the server.  The batch must send rows with this hash.
@@ -66,11 +69,14 @@ module UltracartClient
     # For sequence_step.move with branch_step_uuid, the side's label from the sequence read.
     attr_accessor :side
 
-    # For experiment.start of a page experiment, the page body name.  Defaults to body.
+    # For experiment.start of a page experiment, the page body name, which defaults to body.  For tracking_html.put, tracking or conversion.
     attr_accessor :slot
 
     # The step to remove, for sequence_step.delete, to move, for sequence_step.move, or to turn on, for sequence_step.enable_postcard.
     attr_accessor :step_uuid
+
+    # The tracking provider key, for tracking_provider.change.
+    attr_accessor :tracking_provider
 
     # For upsell.enable, what to switch on.
     attr_accessor :upsell_kind
@@ -112,6 +118,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'affiliate_network_oid' => :'affiliate_network_oid',
         :'after_step_uuid' => :'after_step_uuid',
         :'attribute_names' => :'attribute_names',
         :'blog_post_oid' => :'blog_post_oid',
@@ -131,6 +138,7 @@ module UltracartClient
         :'side' => :'side',
         :'slot' => :'slot',
         :'step_uuid' => :'step_uuid',
+        :'tracking_provider' => :'tracking_provider',
         :'upsell_kind' => :'upsell_kind',
         :'upsell_oid' => :'upsell_oid',
         :'version' => :'version',
@@ -147,6 +155,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'affiliate_network_oid' => :'Integer',
         :'after_step_uuid' => :'String',
         :'attribute_names' => :'Array<String>',
         :'blog_post_oid' => :'Integer',
@@ -166,6 +175,7 @@ module UltracartClient
         :'side' => :'String',
         :'slot' => :'String',
         :'step_uuid' => :'String',
+        :'tracking_provider' => :'String',
         :'upsell_kind' => :'String',
         :'upsell_oid' => :'Integer',
         :'version' => :'Integer',
@@ -194,6 +204,10 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'affiliate_network_oid')
+        self.affiliate_network_oid = attributes[:'affiliate_network_oid']
+      end
 
       if attributes.key?(:'after_step_uuid')
         self.after_step_uuid = attributes[:'after_step_uuid']
@@ -273,6 +287,10 @@ module UltracartClient
         self.step_uuid = attributes[:'step_uuid']
       end
 
+      if attributes.key?(:'tracking_provider')
+        self.tracking_provider = attributes[:'tracking_provider']
+      end
+
       if attributes.key?(:'upsell_kind')
         self.upsell_kind = attributes[:'upsell_kind']
       end
@@ -324,6 +342,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          affiliate_network_oid == o.affiliate_network_oid &&
           after_step_uuid == o.after_step_uuid &&
           attribute_names == o.attribute_names &&
           blog_post_oid == o.blog_post_oid &&
@@ -343,6 +362,7 @@ module UltracartClient
           side == o.side &&
           slot == o.slot &&
           step_uuid == o.step_uuid &&
+          tracking_provider == o.tracking_provider &&
           upsell_kind == o.upsell_kind &&
           upsell_oid == o.upsell_oid &&
           version == o.version &&
@@ -359,7 +379,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [after_step_uuid, attribute_names, blog_post_oid, branch_step_uuid, content_sha256, domain, esp_twilio_uuid, experiment_oid, item_count, merchant_item_oid, path, request_sha256, rows_sha256, rule_count, segment_uuid, sequence_uuid, side, slot, step_uuid, upsell_kind, upsell_oid, version, widget_id, winner_variation_number].hash
+      [affiliate_network_oid, after_step_uuid, attribute_names, blog_post_oid, branch_step_uuid, content_sha256, domain, esp_twilio_uuid, experiment_oid, item_count, merchant_item_oid, path, request_sha256, rows_sha256, rule_count, segment_uuid, sequence_uuid, side, slot, step_uuid, tracking_provider, upsell_kind, upsell_oid, version, widget_id, winner_variation_number].hash
     end
 
     # Builds the object from hash
