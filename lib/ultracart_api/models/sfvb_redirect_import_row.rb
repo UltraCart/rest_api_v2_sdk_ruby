@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class SfvbRedirectImportRow
+    # True to leave the rule's source out of the generated sitemap.  Left out means false, as in the admin.
+    attr_accessor :exclude_from_sitemap
+
     # Why the rule exists.
     attr_accessor :note
 
@@ -27,6 +30,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'exclude_from_sitemap' => :'exclude_from_sitemap',
         :'note' => :'note',
         :'source' => :'source',
         :'target' => :'target'
@@ -41,6 +45,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'exclude_from_sitemap' => :'Boolean',
         :'note' => :'String',
         :'source' => :'String',
         :'target' => :'String'
@@ -67,6 +72,10 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'exclude_from_sitemap')
+        self.exclude_from_sitemap = attributes[:'exclude_from_sitemap']
+      end
 
       if attributes.key?(:'note')
         self.note = attributes[:'note']
@@ -99,6 +108,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          exclude_from_sitemap == o.exclude_from_sitemap &&
           note == o.note &&
           source == o.source &&
           target == o.target
@@ -113,7 +123,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [note, source, target].hash
+      [exclude_from_sitemap, note, source, target].hash
     end
 
     # Builds the object from hash

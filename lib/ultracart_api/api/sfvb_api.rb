@@ -1900,6 +1900,76 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Remove a 404 path from the log
+    # The admin's Permanent Ignore button.  Despite that label, the next hit on the path records it again as a new entry.  To stop counting a path, ignore it instead. 
+    # @param storefront_oid [Integer] 
+    # @param not_found_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_sfvb_not_found_entry(storefront_oid, not_found_id, opts = {})
+      delete_sfvb_not_found_entry_with_http_info(storefront_oid, not_found_id, opts)
+      nil
+    end
+
+    # Remove a 404 path from the log
+    # The admin&#39;s Permanent Ignore button.  Despite that label, the next hit on the path records it again as a new entry.  To stop counting a path, ignore it instead. 
+    # @param storefront_oid [Integer] 
+    # @param not_found_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_sfvb_not_found_entry_with_http_info(storefront_oid, not_found_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.delete_sfvb_not_found_entry ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.delete_sfvb_not_found_entry"
+      end
+      # verify the required parameter 'not_found_id' is set
+      if @api_client.config.client_side_validation && not_found_id.nil?
+        fail ArgumentError, "Missing the required parameter 'not_found_id' when calling SfvbApi.delete_sfvb_not_found_entry"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/not_found/{not_found_id}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'not_found_id' + '}', CGI.escape(not_found_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.delete_sfvb_not_found_entry",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_not_found_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Detach an image from a page
     # Name exactly one of code or default.  Removes the page's copy of the image; the source file in the page folder is left alone.  Always needs sfvb_publish. 
     # @param storefront_oid [Integer] 
@@ -3924,6 +3994,76 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Export the open 404 paths
+    # Up to 5,000 open paths, most hits first, as the admin's mapping spreadsheet reads them, each with where a redirect rule already sends it.  Fixed, mapped and ignored paths are never included.  Paths only bots have hit are left out unless include_bots is true.  Tokens in paths are redacted unless include_tokens is true.  Read only. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :include_bots 
+    # @option opts [Boolean] :include_tokens 
+    # @return [SfvbNotFoundResponse]
+    def export_sfvb_not_found(storefront_oid, opts = {})
+      data, _status_code, _headers = export_sfvb_not_found_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Export the open 404 paths
+    # Up to 5,000 open paths, most hits first, as the admin&#39;s mapping spreadsheet reads them, each with where a redirect rule already sends it.  Fixed, mapped and ignored paths are never included.  Paths only bots have hit are left out unless include_bots is true.  Tokens in paths are redacted unless include_tokens is true.  Read only. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :include_bots 
+    # @option opts [Boolean] :include_tokens 
+    # @return [Array<(SfvbNotFoundResponse, Integer, Hash)>] SfvbNotFoundResponse data, response status code and response headers
+    def export_sfvb_not_found_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.export_sfvb_not_found ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.export_sfvb_not_found"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/not_found/export'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'include_bots'] = opts[:'include_bots'] if !opts[:'include_bots'].nil?
+      query_params[:'include_tokens'] = opts[:'include_tokens'] if !opts[:'include_tokens'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbNotFoundResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.export_sfvb_not_found",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#export_sfvb_not_found\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Favorite a library entry
     # Bookmarks the entry for the calling user.  Idempotent.  Owner or anyone the entry is shared with. 
     # @param storefront_oid [Integer] 
@@ -3990,6 +4130,76 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#favorite_sfvb_library_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Mark a 404 path fixed
+    # For a path fixed by creating the page rather than a redirect.  It leaves the list; the next hit on the path clears the mark and lists it again.  The admin's Mark Fixed. 
+    # @param storefront_oid [Integer] 
+    # @param not_found_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbNotFoundEntry]
+    def fix_sfvb_not_found_entry(storefront_oid, not_found_id, opts = {})
+      data, _status_code, _headers = fix_sfvb_not_found_entry_with_http_info(storefront_oid, not_found_id, opts)
+      data
+    end
+
+    # Mark a 404 path fixed
+    # For a path fixed by creating the page rather than a redirect.  It leaves the list; the next hit on the path clears the mark and lists it again.  The admin&#39;s Mark Fixed. 
+    # @param storefront_oid [Integer] 
+    # @param not_found_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbNotFoundEntry, Integer, Hash)>] SfvbNotFoundEntry data, response status code and response headers
+    def fix_sfvb_not_found_entry_with_http_info(storefront_oid, not_found_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.fix_sfvb_not_found_entry ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.fix_sfvb_not_found_entry"
+      end
+      # verify the required parameter 'not_found_id' is set
+      if @api_client.config.client_side_validation && not_found_id.nil?
+        fail ArgumentError, "Missing the required parameter 'not_found_id' when calling SfvbApi.fix_sfvb_not_found_entry"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/not_found/{not_found_id}/fixed'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'not_found_id' + '}', CGI.escape(not_found_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbNotFoundEntry'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.fix_sfvb_not_found_entry",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#fix_sfvb_not_found_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -6662,6 +6872,70 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # The 404 log's trend
+    # The admin's 404 charts: hits per day for 30 and 7 days and per hour for 24 hours, bots included, plus up to 10 open paths first seen in the last 30 days.  Read only. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbNotFoundSummary]
+    def get_sfvb_not_found_summary(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_not_found_summary_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # The 404 log&#39;s trend
+    # The admin&#39;s 404 charts: hits per day for 30 and 7 days and per hour for 24 hours, bots included, plus up to 10 open paths first seen in the last 30 days.  Read only. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbNotFoundSummary, Integer, Hash)>] SfvbNotFoundSummary data, response status code and response headers
+    def get_sfvb_not_found_summary_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_not_found_summary ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_not_found_summary"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/not_found/summary'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbNotFoundSummary'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_not_found_summary",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_not_found_summary\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read a page's attributes and images
     # What the pageattribute and pageimage elements render for this page.  These are not in any file, which is why a page folder can be empty and its elements still render something.  Attributes and image codes a template declares but nothing has set are included, so the response describes what the page can show rather than only what has been saved. 
     # @param storefront_oid [Integer] 
@@ -7843,6 +8117,70 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_site_attributes\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read a storefront's search engine settings
+    # Canonical Links, Schema.org and Prevent Indexing as true or false, with the default meta description and keywords and the hash to send as If-Match on a change. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbSiteSeo]
+    def get_sfvb_site_seo(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_site_seo_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Read a storefront&#39;s search engine settings
+    # Canonical Links, Schema.org and Prevent Indexing as true or false, with the default meta description and keywords and the hash to send as If-Match on a change. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbSiteSeo, Integer, Hash)>] SfvbSiteSeo data, response status code and response headers
+    def get_sfvb_site_seo_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_site_seo ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_site_seo"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/seo'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbSiteSeo'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_site_seo",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_site_seo\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -14618,6 +14956,81 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # What a shopper gets for each of many paths
+    # Up to 1,000 paths in one call, each followed through the redirect rules exactly as the single resolve does, with counts of how many redirect and how many end on a 404.  For checking every old URL of a migrated store.  Read only. 
+    # @param storefront_oid [Integer] 
+    # @param redirect_resolve_batch_request [SfvbRedirectResolveBatchRequest] The paths
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbRedirectResolveBatchResponse]
+    def resolve_sfvb_redirect_batch(storefront_oid, redirect_resolve_batch_request, opts = {})
+      data, _status_code, _headers = resolve_sfvb_redirect_batch_with_http_info(storefront_oid, redirect_resolve_batch_request, opts)
+      data
+    end
+
+    # What a shopper gets for each of many paths
+    # Up to 1,000 paths in one call, each followed through the redirect rules exactly as the single resolve does, with counts of how many redirect and how many end on a 404.  For checking every old URL of a migrated store.  Read only. 
+    # @param storefront_oid [Integer] 
+    # @param redirect_resolve_batch_request [SfvbRedirectResolveBatchRequest] The paths
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbRedirectResolveBatchResponse, Integer, Hash)>] SfvbRedirectResolveBatchResponse data, response status code and response headers
+    def resolve_sfvb_redirect_batch_with_http_info(storefront_oid, redirect_resolve_batch_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.resolve_sfvb_redirect_batch ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.resolve_sfvb_redirect_batch"
+      end
+      # verify the required parameter 'redirect_resolve_batch_request' is set
+      if @api_client.config.client_side_validation && redirect_resolve_batch_request.nil?
+        fail ArgumentError, "Missing the required parameter 'redirect_resolve_batch_request' when calling SfvbApi.resolve_sfvb_redirect_batch"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/redirects/resolve_batch'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(redirect_resolve_batch_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbRedirectResolveBatchResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.resolve_sfvb_redirect_batch",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#resolve_sfvb_redirect_batch\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Resolve a template name to the file a page renders
     # A page stores only its template's file name.  This runs the storefront's own template search for that name and returns the file a page naming it renders, relative to the theme.  It also lists the theme's resource paths in search order with every file of that name below each, so a theme copy overriding a shared core copy, or a copy in a snippets folder that is never used, is visible.  exists is false when a page naming the template cannot render. 
     # @param storefront_oid [Integer] 
@@ -16890,6 +17303,91 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_sequence_step\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change a storefront's search engine settings
+    # A partial update of Canonical Links, Schema.org and Prevent Indexing.  Send the hash_sha256 you read as If-Match.  dry_run reports each change, whether it needs approval and whether that approval needs a fresh code, without saving.  Turning Canonical Links or Schema.org on needs no approval.  Turning either off, or turning Prevent Indexing on or off, needs an approved site_seo.change request for exactly this change (Approval-Id), and turning Prevent Indexing on asks for an authenticator code even inside an approval session.  Always needs sfvb_publish, because the settings apply to every page as soon as they are saved.  The admin saves the whole storefront, so a merchant with the screen open can still overwrite a change made here. 
+    # @param storefront_oid [Integer] 
+    # @param if_match [String] The hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param site_seo_request [SfvbSiteSeoRequest] The switches to change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id When the change turns Canonical Links or Schema.org off, or turns Prevent Indexing on or off, the approval_id of an approved site_seo.change request for this change.  See POST /sfvb/approvals.
+    # @return [SfvbSiteSeo]
+    def update_sfvb_site_seo(storefront_oid, if_match, site_seo_request, opts = {})
+      data, _status_code, _headers = update_sfvb_site_seo_with_http_info(storefront_oid, if_match, site_seo_request, opts)
+      data
+    end
+
+    # Change a storefront&#39;s search engine settings
+    # A partial update of Canonical Links, Schema.org and Prevent Indexing.  Send the hash_sha256 you read as If-Match.  dry_run reports each change, whether it needs approval and whether that approval needs a fresh code, without saving.  Turning Canonical Links or Schema.org on needs no approval.  Turning either off, or turning Prevent Indexing on or off, needs an approved site_seo.change request for exactly this change (Approval-Id), and turning Prevent Indexing on asks for an authenticator code even inside an approval session.  Always needs sfvb_publish, because the settings apply to every page as soon as they are saved.  The admin saves the whole storefront, so a merchant with the screen open can still overwrite a change made here. 
+    # @param storefront_oid [Integer] 
+    # @param if_match [String] The hash_sha256 from the last read.  428 when absent, 412 when stale.
+    # @param site_seo_request [SfvbSiteSeoRequest] The switches to change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id When the change turns Canonical Links or Schema.org off, or turns Prevent Indexing on or off, the approval_id of an approved site_seo.change request for this change.  See POST /sfvb/approvals.
+    # @return [Array<(SfvbSiteSeo, Integer, Hash)>] SfvbSiteSeo data, response status code and response headers
+    def update_sfvb_site_seo_with_http_info(storefront_oid, if_match, site_seo_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_site_seo ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_site_seo"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.update_sfvb_site_seo"
+      end
+      # verify the required parameter 'site_seo_request' is set
+      if @api_client.config.client_side_validation && site_seo_request.nil?
+        fail ArgumentError, "Missing the required parameter 'site_seo_request' when calling SfvbApi.update_sfvb_site_seo"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/seo'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(site_seo_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbSiteSeo'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_site_seo",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_site_seo\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

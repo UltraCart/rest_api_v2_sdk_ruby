@@ -8,6 +8,7 @@
 | **bot_share** | **Object** | bot_hits divided by counted_hits, 0 to 1.  Empty when not yet counted. | [optional] |
 | **counted_hits** | **Integer** | Hits since bot counting began, the base for bot_share. | [optional] |
 | **first_seen_dts** | **String** | First hit, ISO 8601. | [optional] |
+| **fixed** | **Boolean** | True when the entry is marked fixed or mapped.  The next hit on the path clears it. | [optional] |
 | **hits** | **Integer** | Every recorded hit, bots included. | [optional] |
 | **ignored** | **Boolean** | True when the entry is ignored and no longer counts. | [optional] |
 | **last_seen_dts** | **String** | Latest hit, ISO 8601. | [optional] |
@@ -26,6 +27,7 @@ instance = UltracartClient::SfvbNotFoundEntry.new(
   bot_share: null,
   counted_hits: null,
   first_seen_dts: null,
+  fixed: null,
   hits: null,
   ignored: null,
   last_seen_dts: null,

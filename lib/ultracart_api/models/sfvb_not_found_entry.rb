@@ -27,6 +27,9 @@ module UltracartClient
     # First hit, ISO 8601.
     attr_accessor :first_seen_dts
 
+    # True when the entry is marked fixed or mapped.  The next hit on the path clears it.
+    attr_accessor :fixed
+
     # Every recorded hit, bots included.
     attr_accessor :hits
 
@@ -55,6 +58,7 @@ module UltracartClient
         :'bot_share' => :'bot_share',
         :'counted_hits' => :'counted_hits',
         :'first_seen_dts' => :'first_seen_dts',
+        :'fixed' => :'fixed',
         :'hits' => :'hits',
         :'ignored' => :'ignored',
         :'last_seen_dts' => :'last_seen_dts',
@@ -77,6 +81,7 @@ module UltracartClient
         :'bot_share' => :'Object',
         :'counted_hits' => :'Integer',
         :'first_seen_dts' => :'String',
+        :'fixed' => :'Boolean',
         :'hits' => :'Integer',
         :'ignored' => :'Boolean',
         :'last_seen_dts' => :'String',
@@ -122,6 +127,10 @@ module UltracartClient
 
       if attributes.key?(:'first_seen_dts')
         self.first_seen_dts = attributes[:'first_seen_dts']
+      end
+
+      if attributes.key?(:'fixed')
+        self.fixed = attributes[:'fixed']
       end
 
       if attributes.key?(:'hits')
@@ -177,6 +186,7 @@ module UltracartClient
           bot_share == o.bot_share &&
           counted_hits == o.counted_hits &&
           first_seen_dts == o.first_seen_dts &&
+          fixed == o.fixed &&
           hits == o.hits &&
           ignored == o.ignored &&
           last_seen_dts == o.last_seen_dts &&
@@ -195,7 +205,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [bot_hits, bot_share, counted_hits, first_seen_dts, hits, ignored, last_seen_dts, not_found_id, path, redirected_to, referrer_hosts].hash
+      [bot_hits, bot_share, counted_hits, first_seen_dts, fixed, hits, ignored, last_seen_dts, not_found_id, path, redirected_to, referrer_hosts].hash
     end
 
     # Builds the object from hash

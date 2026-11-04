@@ -14,6 +14,7 @@
 | **reason** | **String** | Why the agent wants to do this, in a sentence.  Shown to the person as unverified text, capped at 500 characters. | [optional] |
 | **redirect_rows** | [**Array&lt;SfvbRedirectDeleteRow&gt;**](SfvbRedirectDeleteRow.md) | For redirect.delete_batch, exactly the rows the batch delete will send, up to 5,000, each with its hash_sha256.  UltraCart keeps only their hash. | [optional] |
 | **segment_update** | [**SfvbCommsSegmentWriteRequest**](SfvbCommsSegmentWriteRequest.md) |  | [optional] |
+| **site_seo** | [**SfvbSiteSeoRequest**](SfvbSiteSeoRequest.md) |  | [optional] |
 | **smart_attribution** | [**SfvbSmartAttributionRequest**](SfvbSmartAttributionRequest.md) |  | [optional] |
 | **tracking_provider** | [**SfvbTrackingProviderRequest**](SfvbTrackingProviderRequest.md) |  | [optional] |
 
@@ -33,6 +34,7 @@ instance = UltracartClient::SfvbApprovalCreateRequest.new(
   reason: null,
   redirect_rows: null,
   segment_update: null,
+  site_seo: null,
   smart_attribution: null,
   tracking_provider: null
 )
