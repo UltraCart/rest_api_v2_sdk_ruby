@@ -24,6 +24,9 @@ module UltracartClient
     # The post body as HTML, up to 1 MB, rendered exactly as stored.  Refused with sfvb.unsafe_html if it could run script - script and other executable tags, on attributes, links that are not http, https, mailto, tel or relative, and iframes other than YouTube or Vimeo players.  Reference an attached image by the url the post's images report.
     attr_accessor :body
 
+    # On an update, true to run every check the write would run and save nothing.  A refusal comes back exactly as it would on the real write.
+    attr_accessor :dry_run
+
     # The post excerpt as HTML, up to 256 KB.  Held to the same rule as body.
     attr_accessor :excerpt
 
@@ -79,6 +82,7 @@ module UltracartClient
         :'allow_comments' => :'allow_comments',
         :'author' => :'author',
         :'body' => :'body',
+        :'dry_run' => :'dry_run',
         :'excerpt' => :'excerpt',
         :'publication_dts' => :'publication_dts',
         :'seo_description' => :'seo_description',
@@ -102,6 +106,7 @@ module UltracartClient
         :'allow_comments' => :'Boolean',
         :'author' => :'String',
         :'body' => :'String',
+        :'dry_run' => :'Boolean',
         :'excerpt' => :'String',
         :'publication_dts' => :'String',
         :'seo_description' => :'String',
@@ -145,6 +150,10 @@ module UltracartClient
 
       if attributes.key?(:'body')
         self.body = attributes[:'body']
+      end
+
+      if attributes.key?(:'dry_run')
+        self.dry_run = attributes[:'dry_run']
       end
 
       if attributes.key?(:'excerpt')
@@ -219,6 +228,7 @@ module UltracartClient
           allow_comments == o.allow_comments &&
           author == o.author &&
           body == o.body &&
+          dry_run == o.dry_run &&
           excerpt == o.excerpt &&
           publication_dts == o.publication_dts &&
           seo_description == o.seo_description &&
@@ -239,7 +249,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allow_comments, author, body, excerpt, publication_dts, seo_description, seo_keywords, seo_title, tags, title, url_part, visibility].hash
+      [allow_comments, author, body, dry_run, excerpt, publication_dts, seo_description, seo_keywords, seo_title, tags, title, url_part, visibility].hash
     end
 
     # Builds the object from hash

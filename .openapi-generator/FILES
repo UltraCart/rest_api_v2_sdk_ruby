@@ -1228,6 +1228,9 @@ docs/SfvbSitemapsResponse.md
 docs/SfvbSmartAttribution.md
 docs/SfvbSmartAttributionPlatform.md
 docs/SfvbSmartAttributionRequest.md
+docs/SfvbStepCounts.md
+docs/SfvbStepDispatchLog.md
+docs/SfvbStepDispatchLogsResponse.md
 docs/SfvbStorefront.md
 docs/SfvbStorefrontsResponse.md
 docs/SfvbTemplate.md
@@ -2621,6 +2624,9 @@ lib/ultracart_api/models/sfvb_sitemaps_response.rb
 lib/ultracart_api/models/sfvb_smart_attribution.rb
 lib/ultracart_api/models/sfvb_smart_attribution_platform.rb
 lib/ultracart_api/models/sfvb_smart_attribution_request.rb
+lib/ultracart_api/models/sfvb_step_counts.rb
+lib/ultracart_api/models/sfvb_step_dispatch_log.rb
+lib/ultracart_api/models/sfvb_step_dispatch_logs_response.rb
 lib/ultracart_api/models/sfvb_storefront.rb
 lib/ultracart_api/models/sfvb_storefronts_response.rb
 lib/ultracart_api/models/sfvb_template.rb

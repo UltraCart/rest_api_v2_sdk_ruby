@@ -110,6 +110,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_secret_request**](SfvbApi.md#get_sfvb_secret_request) | **GET** /sfvb/secrets/{request_id} | Read one secret request |
 | [**get_sfvb_secret_requests**](SfvbApi.md#get_sfvb_secret_requests) | **GET** /sfvb/secrets | List this sign-in&#39;s secret requests |
 | [**get_sfvb_sequence**](SfvbApi.md#get_sfvb_sequence) | **GET** /sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid} | Get a campaign&#39;s or flow&#39;s steps as a tree |
+| [**get_sfvb_sequence_step_dispatch_logs**](SfvbApi.md#get_sfvb_sequence_step_dispatch_logs) | **GET** /sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid}/steps/{step_uuid}/dispatch_logs | Read a flow or campaign step&#39;s dispatch log and counts |
 | [**get_sfvb_server_log**](SfvbApi.md#get_sfvb_server_log) | **GET** /sfvb/storefronts/{storefront_oid}/logs/{log_id} | Get one storefront render log |
 | [**get_sfvb_site_attributes**](SfvbApi.md#get_sfvb_site_attributes) | **GET** /sfvb/storefronts/{storefront_oid}/attributes | Read a storefront&#39;s site attributes |
 | [**get_sfvb_sitemaps**](SfvbApi.md#get_sfvb_sitemaps) | **GET** /sfvb/storefronts/{storefront_oid}/sitemaps | Read a storefront&#39;s sitemaps and robots.txt |
@@ -5986,6 +5987,64 @@ end
 ### Return type
 
 [**SfvbSequence**](SfvbSequence.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_sequence_step_dispatch_logs
+
+> <SfvbStepDispatchLogsResponse> get_sfvb_sequence_step_dispatch_logs(storefront_oid, sequence_uuid, step_uuid, opts)
+
+Read a flow or campaign step's dispatch log and counts
+
+Why customers were sent, skipped or ended at this step, newest first, as the admin's Dispatch Logs screen shows it, with the step's counts.  An email step's counts are its email's; any other step's are its own over 90 days.  Email addresses and phone numbers in the text are masked.  since is 15m, 2h or 7d, or an ISO-8601 time, default 7d; entries are kept 90 days.  limit is 1 to 200, default 50; send next_offset as offset for the next page.  Read only. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_sequence_step_dispatch_logs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbStepDispatchLogsResponse>, Integer, Hash)> get_sfvb_sequence_step_dispatch_logs_with_http_info(storefront_oid, sequence_uuid, step_uuid, opts)
+
+```ruby
+begin
+  # Read a flow or campaign step's dispatch log and counts
+  data, status_code, headers = api_instance.get_sfvb_sequence_step_dispatch_logs_with_http_info(storefront_oid, sequence_uuid, step_uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbStepDispatchLogsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_sequence_step_dispatch_logs_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **sequence_uuid** | **String** |  |  |
+| **step_uuid** | **String** |  |  |
+| **since** | **String** |  | [optional] |
+| **limit** | **Integer** |  | [optional] |
+| **offset** | **Integer** |  | [optional] |
+
+### Return type
+
+[**SfvbStepDispatchLogsResponse**](SfvbStepDispatchLogsResponse.md)
 
 ### Authorization
 

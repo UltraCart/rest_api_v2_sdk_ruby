@@ -9,6 +9,7 @@
 | **blog_post_oid** | **Integer** | The blog post&#39;s oid.  This is what a page&#39;s blog post assignment names. | [optional] |
 | **body** | **String** | The post body as HTML, exactly as stored. | [optional] |
 | **created_dts** | **String** | When the post was created (ISO 8601, UTC). | [optional] |
+| **dry_run** | **Boolean** | True when this is the result of a dry run and nothing was saved.  The post is shown as it is stored. | [optional] |
 | **excerpt** | **String** | The post excerpt as HTML, exactly as stored. | [optional] |
 | **images** | [**Array&lt;SfvbBlogPostImage&gt;**](SfvbBlogPostImage.md) | The post&#39;s images, the default image first. | [optional] |
 | **last_modified_dts** | **String** | When the post was last changed (ISO 8601, UTC), or null if it never was. | [optional] |
@@ -34,6 +35,7 @@ instance = UltracartClient::SfvbBlogPostDetail.new(
   blog_post_oid: null,
   body: null,
   created_dts: null,
+  dry_run: null,
   excerpt: null,
   images: null,
   last_modified_dts: null,

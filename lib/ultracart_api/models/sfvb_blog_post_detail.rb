@@ -30,6 +30,9 @@ module UltracartClient
     # When the post was created (ISO 8601, UTC).
     attr_accessor :created_dts
 
+    # True when this is the result of a dry run and nothing was saved.  The post is shown as it is stored.
+    attr_accessor :dry_run
+
     # The post excerpt as HTML, exactly as stored.
     attr_accessor :excerpt
 
@@ -77,6 +80,7 @@ module UltracartClient
         :'blog_post_oid' => :'blog_post_oid',
         :'body' => :'body',
         :'created_dts' => :'created_dts',
+        :'dry_run' => :'dry_run',
         :'excerpt' => :'excerpt',
         :'images' => :'images',
         :'last_modified_dts' => :'last_modified_dts',
@@ -106,6 +110,7 @@ module UltracartClient
         :'blog_post_oid' => :'Integer',
         :'body' => :'String',
         :'created_dts' => :'String',
+        :'dry_run' => :'Boolean',
         :'excerpt' => :'String',
         :'images' => :'Array<SfvbBlogPostImage>',
         :'last_modified_dts' => :'String',
@@ -161,6 +166,10 @@ module UltracartClient
 
       if attributes.key?(:'created_dts')
         self.created_dts = attributes[:'created_dts']
+      end
+
+      if attributes.key?(:'dry_run')
+        self.dry_run = attributes[:'dry_run']
       end
 
       if attributes.key?(:'excerpt')
@@ -243,6 +252,7 @@ module UltracartClient
           blog_post_oid == o.blog_post_oid &&
           body == o.body &&
           created_dts == o.created_dts &&
+          dry_run == o.dry_run &&
           excerpt == o.excerpt &&
           images == o.images &&
           last_modified_dts == o.last_modified_dts &&
@@ -267,7 +277,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allow_comments, author, blog_post_oid, body, created_dts, excerpt, images, last_modified_dts, publication_dts, seo_description, seo_keywords, seo_title, tags, title, unassigned, url_part, view_url, visibility].hash
+      [allow_comments, author, blog_post_oid, body, created_dts, dry_run, excerpt, images, last_modified_dts, publication_dts, seo_description, seo_keywords, seo_title, tags, title, unassigned, url_part, view_url, visibility].hash
     end
 
     # Builds the object from hash

@@ -7625,6 +7625,91 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Read a flow or campaign step's dispatch log and counts
+    # Why customers were sent, skipped or ended at this step, newest first, as the admin's Dispatch Logs screen shows it, with the step's counts.  An email step's counts are its email's; any other step's are its own over 90 days.  Email addresses and phone numbers in the text are masked.  since is 15m, 2h or 7d, or an ISO-8601 time, default 7d; entries are kept 90 days.  limit is 1 to 200, default 50; send next_offset as offset for the next page.  Read only. 
+    # @param storefront_oid [Integer] 
+    # @param sequence_uuid [String] 
+    # @param step_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :since 
+    # @option opts [Integer] :limit 
+    # @option opts [Integer] :offset 
+    # @return [SfvbStepDispatchLogsResponse]
+    def get_sfvb_sequence_step_dispatch_logs(storefront_oid, sequence_uuid, step_uuid, opts = {})
+      data, _status_code, _headers = get_sfvb_sequence_step_dispatch_logs_with_http_info(storefront_oid, sequence_uuid, step_uuid, opts)
+      data
+    end
+
+    # Read a flow or campaign step&#39;s dispatch log and counts
+    # Why customers were sent, skipped or ended at this step, newest first, as the admin&#39;s Dispatch Logs screen shows it, with the step&#39;s counts.  An email step&#39;s counts are its email&#39;s; any other step&#39;s are its own over 90 days.  Email addresses and phone numbers in the text are masked.  since is 15m, 2h or 7d, or an ISO-8601 time, default 7d; entries are kept 90 days.  limit is 1 to 200, default 50; send next_offset as offset for the next page.  Read only. 
+    # @param storefront_oid [Integer] 
+    # @param sequence_uuid [String] 
+    # @param step_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :since 
+    # @option opts [Integer] :limit 
+    # @option opts [Integer] :offset 
+    # @return [Array<(SfvbStepDispatchLogsResponse, Integer, Hash)>] SfvbStepDispatchLogsResponse data, response status code and response headers
+    def get_sfvb_sequence_step_dispatch_logs_with_http_info(storefront_oid, sequence_uuid, step_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_sequence_step_dispatch_logs ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_sequence_step_dispatch_logs"
+      end
+      # verify the required parameter 'sequence_uuid' is set
+      if @api_client.config.client_side_validation && sequence_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'sequence_uuid' when calling SfvbApi.get_sfvb_sequence_step_dispatch_logs"
+      end
+      # verify the required parameter 'step_uuid' is set
+      if @api_client.config.client_side_validation && step_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'step_uuid' when calling SfvbApi.get_sfvb_sequence_step_dispatch_logs"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid}/steps/{step_uuid}/dispatch_logs'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'sequence_uuid' + '}', CGI.escape(sequence_uuid.to_s)).sub('{' + 'step_uuid' + '}', CGI.escape(step_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'since'] = opts[:'since'] if !opts[:'since'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbStepDispatchLogsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_sequence_step_dispatch_logs",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_sequence_step_dispatch_logs\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get one storefront render log
     # One render's server log with its lines, each with a level, a category such as VELOCITY or FLOW, and the message.  log_id comes from the list, or from the X-UltraCart-Storefront-Log-Id header a page sends inside an SFVB preview session.  min_level is debug, info, warn or error, default debug. 
     # @param storefront_oid [Integer] 
