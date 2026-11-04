@@ -1196,6 +1196,7 @@ docs/SfvbRedirectResponse.md
 docs/SfvbRedirectsResponse.md
 docs/SfvbRenderRequest.md
 docs/SfvbRenderResponse.md
+docs/SfvbRobotsTxt.md
 docs/SfvbSecretHandle.md
 docs/SfvbSecretKind.md
 docs/SfvbSecretKindsResponse.md
@@ -1221,6 +1222,9 @@ docs/SfvbSiteAttribute.md
 docs/SfvbSiteAttributeUpdate.md
 docs/SfvbSiteAttributeUpdateRequest.md
 docs/SfvbSiteAttributesResponse.md
+docs/SfvbSitemap.md
+docs/SfvbSitemapFile.md
+docs/SfvbSitemapsResponse.md
 docs/SfvbSmartAttribution.md
 docs/SfvbSmartAttributionPlatform.md
 docs/SfvbSmartAttributionRequest.md
@@ -2585,6 +2589,7 @@ lib/ultracart_api/models/sfvb_redirect_response.rb
 lib/ultracart_api/models/sfvb_redirects_response.rb
 lib/ultracart_api/models/sfvb_render_request.rb
 lib/ultracart_api/models/sfvb_render_response.rb
+lib/ultracart_api/models/sfvb_robots_txt.rb
 lib/ultracart_api/models/sfvb_secret_handle.rb
 lib/ultracart_api/models/sfvb_secret_kind.rb
 lib/ultracart_api/models/sfvb_secret_kinds_response.rb
@@ -2610,6 +2615,9 @@ lib/ultracart_api/models/sfvb_site_attribute.rb
 lib/ultracart_api/models/sfvb_site_attribute_update.rb
 lib/ultracart_api/models/sfvb_site_attribute_update_request.rb
 lib/ultracart_api/models/sfvb_site_attributes_response.rb
+lib/ultracart_api/models/sfvb_sitemap.rb
+lib/ultracart_api/models/sfvb_sitemap_file.rb
+lib/ultracart_api/models/sfvb_sitemaps_response.rb
 lib/ultracart_api/models/sfvb_smart_attribution.rb
 lib/ultracart_api/models/sfvb_smart_attribution_platform.rb
 lib/ultracart_api/models/sfvb_smart_attribution_request.rb
