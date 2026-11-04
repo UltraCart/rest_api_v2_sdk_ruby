@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **admin_path** | **String** | Where the provider is in the admin. | [optional] |
+| **approval_needed** | **Boolean** | On a dry run, whether the real write needs an approved tracking_provider.change request. | [optional] |
 | **changes** | [**Array&lt;SfvbTrackingChange&gt;**](SfvbTrackingChange.md) | On a write, each setting it changed, or would change on a dry run.  Secrets read only set or cleared. | [optional] |
 | **configured** | **Boolean** | True when the provider is on, which means one of its identifying fields is set. | [optional] |
 | **consent** | [**SfvbTrackingProviderConsent**](SfvbTrackingProviderConsent.md) |  | [optional] |
@@ -28,6 +29,7 @@ require 'ultracart_api'
 
 instance = UltracartClient::SfvbTrackingProvider.new(
   admin_path: null,
+  approval_needed: null,
   changes: null,
   configured: null,
   consent: null,

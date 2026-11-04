@@ -48,6 +48,9 @@ module UltracartClient
     # id, id_list, token, url, server_url, host, host_list, bool, select, number, numeric_id or secret.  It decides what a write accepts.
     attr_accessor :type
 
+    # Present only when this storefront can't turn the field on, and why.  Turning it off still works.
+    attr_accessor :unavailable_reason
+
     # The stored value.  Booleans are true or false.  Null when blank.  Never present for a secret.
     attr_accessor :value
 
@@ -68,6 +71,7 @@ module UltracartClient
         :'set' => :'set',
         :'sink' => :'sink',
         :'type' => :'type',
+        :'unavailable_reason' => :'unavailable_reason',
         :'value' => :'value',
         :'writable' => :'writable'
       }
@@ -92,6 +96,7 @@ module UltracartClient
         :'set' => :'Boolean',
         :'sink' => :'String',
         :'type' => :'String',
+        :'unavailable_reason' => :'String',
         :'value' => :'String',
         :'writable' => :'Boolean'
       }
@@ -164,6 +169,10 @@ module UltracartClient
         self.type = attributes[:'type']
       end
 
+      if attributes.key?(:'unavailable_reason')
+        self.unavailable_reason = attributes[:'unavailable_reason']
+      end
+
       if attributes.key?(:'value')
         self.value = attributes[:'value']
       end
@@ -202,6 +211,7 @@ module UltracartClient
           set == o.set &&
           sink == o.sink &&
           type == o.type &&
+          unavailable_reason == o.unavailable_reason &&
           value == o.value &&
           writable == o.writable
     end
@@ -215,7 +225,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allowed, key, label, mask, max, max_value, min_value, secret, set, sink, type, value, writable].hash
+      [allowed, key, label, mask, max, max_value, min_value, secret, set, sink, type, unavailable_reason, value, writable].hash
     end
 
     # Builds the object from hash

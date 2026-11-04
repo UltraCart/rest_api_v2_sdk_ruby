@@ -18,6 +18,9 @@ module UltracartClient
     # Where the provider is in the admin.
     attr_accessor :admin_path
 
+    # On a dry run, whether the real write needs an approved tracking_provider.change request.
+    attr_accessor :approval_needed
+
     # On a write, each setting it changed, or would change on a dry run.  Secrets read only set or cleared.
     attr_accessor :changes
 
@@ -65,6 +68,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'admin_path' => :'admin_path',
+        :'approval_needed' => :'approval_needed',
         :'changes' => :'changes',
         :'configured' => :'configured',
         :'consent' => :'consent',
@@ -92,6 +96,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'admin_path' => :'String',
+        :'approval_needed' => :'Boolean',
         :'changes' => :'Array<SfvbTrackingChange>',
         :'configured' => :'Boolean',
         :'consent' => :'SfvbTrackingProviderConsent',
@@ -133,6 +138,10 @@ module UltracartClient
 
       if attributes.key?(:'admin_path')
         self.admin_path = attributes[:'admin_path']
+      end
+
+      if attributes.key?(:'approval_needed')
+        self.approval_needed = attributes[:'approval_needed']
       end
 
       if attributes.key?(:'changes')
@@ -225,6 +234,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           admin_path == o.admin_path &&
+          approval_needed == o.approval_needed &&
           changes == o.changes &&
           configured == o.configured &&
           consent == o.consent &&
@@ -251,7 +261,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [admin_path, changes, configured, consent, consent_supported, cost, dry_run, events, fields, group, hash_sha256, key, name, notes, oauth, wholesale_tiers].hash
+      [admin_path, approval_needed, changes, configured, consent, consent_supported, cost, dry_run, events, fields, group, hash_sha256, key, name, notes, oauth, wholesale_tiers].hash
     end
 
     # Builds the object from hash
