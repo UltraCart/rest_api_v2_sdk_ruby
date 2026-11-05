@@ -14,6 +14,9 @@
 | **auto_order_cancel_minimum_rebill_count** | **Integer** | The minimum rebill count that must be billed in order to not be charged the cancellation item. | [optional] |
 | **auto_order_cancel_minimum_rebill_value** | **Float** | The minimum rebill value that must be paid in order to not be charged the cancellation item. | [optional] |
 | **auto_order_downgrade_items** | **Array&lt;String&gt;** | List of downgrade items presented to customer service representatives | [optional] |
+| **auto_order_myaccount_frequency_day_counts** | **Array&lt;Integer&gt;** | Day counts (1 to 365, at most 20) a customer may switch this auto-enrolled item to from MyAccount, for example [30, 60, 90].  Requires the advanced auto order settings to be enabled on the account.  Omit to leave unchanged; send an empty array to clear. | [optional] |
+| **auto_order_myaccount_frequency_last_step_only** | **Boolean** | True if the MyAccount frequency change is only offered once the item is on its last auto order step.  Omit to leave unchanged. | [optional] |
+| **auto_order_myaccount_frequency_schedules** | **Array&lt;String&gt;** | Standard schedules a customer may switch this auto-enrolled item to from MyAccount.  Requires the advanced auto order settings to be enabled on the account.  Omit to leave unchanged; send an empty array to clear. | [optional] |
 | **auto_order_paused** | **Boolean** | True if the rebill processing of this item is paused | [optional] |
 | **auto_order_prohibit_expiring_cards** | **Integer** | Minimum number of months before expiration for the card.  Overrides the account level setting if higher.  Set to zero to disable. | [optional] |
 | **auto_order_schedules** | **Array&lt;String&gt;** | The user selectable schedules that are available | [optional] |
@@ -43,6 +46,9 @@ instance = UltracartClient::ItemAutoOrder.new(
   auto_order_cancel_minimum_rebill_count: null,
   auto_order_cancel_minimum_rebill_value: null,
   auto_order_downgrade_items: null,
+  auto_order_myaccount_frequency_day_counts: null,
+  auto_order_myaccount_frequency_last_step_only: null,
+  auto_order_myaccount_frequency_schedules: null,
   auto_order_paused: null,
   auto_order_prohibit_expiring_cards: null,
   auto_order_schedules: null,

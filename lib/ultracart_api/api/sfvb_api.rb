@@ -284,6 +284,160 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Archive an email list
+    # Hides the list from the lists list and the admin, and keeps its members.  Refused with sfvb.in_use_live, naming each one, while a live campaign or flow uses it; notes names any that use it but aren't live, which can no longer use it.  Send the list's hash_sha256 as If-Match. 
+    # @param storefront_oid [Integer] 
+    # @param list_uuid [String] 
+    # @param if_match [String] The list&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsListResponse]
+    def archive_sfvb_comms_list(storefront_oid, list_uuid, if_match, opts = {})
+      data, _status_code, _headers = archive_sfvb_comms_list_with_http_info(storefront_oid, list_uuid, if_match, opts)
+      data
+    end
+
+    # Archive an email list
+    # Hides the list from the lists list and the admin, and keeps its members.  Refused with sfvb.in_use_live, naming each one, while a live campaign or flow uses it; notes names any that use it but aren&#39;t live, which can no longer use it.  Send the list&#39;s hash_sha256 as If-Match. 
+    # @param storefront_oid [Integer] 
+    # @param list_uuid [String] 
+    # @param if_match [String] The list&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsListResponse, Integer, Hash)>] SfvbCommsListResponse data, response status code and response headers
+    def archive_sfvb_comms_list_with_http_info(storefront_oid, list_uuid, if_match, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.archive_sfvb_comms_list ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.archive_sfvb_comms_list"
+      end
+      # verify the required parameter 'list_uuid' is set
+      if @api_client.config.client_side_validation && list_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'list_uuid' when calling SfvbApi.archive_sfvb_comms_list"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.archive_sfvb_comms_list"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/lists/{list_uuid}/archive'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'list_uuid' + '}', CGI.escape(list_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsListResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.archive_sfvb_comms_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#archive_sfvb_comms_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Archive a segment
+    # Hides the segment from the segments list and the admin.  Refused with sfvb.in_use_live, naming each one, while a live campaign or flow uses it; notes names any that use it but aren't live, which can no longer use it.  Send the segment's hash_sha256 as If-Match. 
+    # @param storefront_oid [Integer] 
+    # @param segment_uuid [String] 
+    # @param if_match [String] The segment&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsSegmentResponse]
+    def archive_sfvb_comms_segment(storefront_oid, segment_uuid, if_match, opts = {})
+      data, _status_code, _headers = archive_sfvb_comms_segment_with_http_info(storefront_oid, segment_uuid, if_match, opts)
+      data
+    end
+
+    # Archive a segment
+    # Hides the segment from the segments list and the admin.  Refused with sfvb.in_use_live, naming each one, while a live campaign or flow uses it; notes names any that use it but aren&#39;t live, which can no longer use it.  Send the segment&#39;s hash_sha256 as If-Match. 
+    # @param storefront_oid [Integer] 
+    # @param segment_uuid [String] 
+    # @param if_match [String] The segment&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsSegmentResponse, Integer, Hash)>] SfvbCommsSegmentResponse data, response status code and response headers
+    def archive_sfvb_comms_segment_with_http_info(storefront_oid, segment_uuid, if_match, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.archive_sfvb_comms_segment ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.archive_sfvb_comms_segment"
+      end
+      # verify the required parameter 'segment_uuid' is set
+      if @api_client.config.client_side_validation && segment_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'segment_uuid' when calling SfvbApi.archive_sfvb_comms_segment"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.archive_sfvb_comms_segment"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/segments/{segment_uuid}/archive'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'segment_uuid' + '}', CGI.escape(segment_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsSegmentResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.archive_sfvb_comms_segment",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#archive_sfvb_comms_segment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Archive or unarchive a flow
     # A flow that is still enrolling customers is refused, because archiving would only hide it.  Set its status to inactive first.  Send the hash_sha256 you read as If-Match. 
     # @param storefront_oid [Integer] 
@@ -1461,6 +1615,83 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_blog_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a list and segment folder
+    # Its lists and segments are kept and filed under no folder, as the admin does; items names each one.  Send the folder's hash_sha256 as If-Match.  A folder the admin made itself (system_generated) can't be deleted here. 
+    # @param storefront_oid [Integer] 
+    # @param folder_uuid [String] 
+    # @param if_match [String] The folder&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsFolderResponse]
+    def delete_sfvb_comms_folder(storefront_oid, folder_uuid, if_match, opts = {})
+      data, _status_code, _headers = delete_sfvb_comms_folder_with_http_info(storefront_oid, folder_uuid, if_match, opts)
+      data
+    end
+
+    # Delete a list and segment folder
+    # Its lists and segments are kept and filed under no folder, as the admin does; items names each one.  Send the folder&#39;s hash_sha256 as If-Match.  A folder the admin made itself (system_generated) can&#39;t be deleted here. 
+    # @param storefront_oid [Integer] 
+    # @param folder_uuid [String] 
+    # @param if_match [String] The folder&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsFolderResponse, Integer, Hash)>] SfvbCommsFolderResponse data, response status code and response headers
+    def delete_sfvb_comms_folder_with_http_info(storefront_oid, folder_uuid, if_match, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.delete_sfvb_comms_folder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.delete_sfvb_comms_folder"
+      end
+      # verify the required parameter 'folder_uuid' is set
+      if @api_client.config.client_side_validation && folder_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'folder_uuid' when calling SfvbApi.delete_sfvb_comms_folder"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.delete_sfvb_comms_folder"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/list_segment_folders/{folder_uuid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'folder_uuid' + '}', CGI.escape(folder_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsFolderResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.delete_sfvb_comms_folder",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#delete_sfvb_comms_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -4663,6 +4894,210 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_cjson_used_elements\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read one list and segment folder
+    # The folder, with the name and uuid of each list and segment filed in it. 
+    # @param storefront_oid [Integer] 
+    # @param folder_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsFolderResponse]
+    def get_sfvb_comms_folder(storefront_oid, folder_uuid, opts = {})
+      data, _status_code, _headers = get_sfvb_comms_folder_with_http_info(storefront_oid, folder_uuid, opts)
+      data
+    end
+
+    # Read one list and segment folder
+    # The folder, with the name and uuid of each list and segment filed in it. 
+    # @param storefront_oid [Integer] 
+    # @param folder_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsFolderResponse, Integer, Hash)>] SfvbCommsFolderResponse data, response status code and response headers
+    def get_sfvb_comms_folder_with_http_info(storefront_oid, folder_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_comms_folder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_comms_folder"
+      end
+      # verify the required parameter 'folder_uuid' is set
+      if @api_client.config.client_side_validation && folder_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'folder_uuid' when calling SfvbApi.get_sfvb_comms_folder"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/list_segment_folders/{folder_uuid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'folder_uuid' + '}', CGI.escape(folder_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsFolderResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_comms_folder",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_comms_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List the list and segment folders
+    # Each folder with how many lists and segments are filed in it, whether the admin made it, and its hash_sha256. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsFoldersResponse]
+    def get_sfvb_comms_folders(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_comms_folders_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # List the list and segment folders
+    # Each folder with how many lists and segments are filed in it, whether the admin made it, and its hash_sha256. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsFoldersResponse, Integer, Hash)>] SfvbCommsFoldersResponse data, response status code and response headers
+    def get_sfvb_comms_folders_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_comms_folders ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_comms_folders"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/list_segment_folders'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsFoldersResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_comms_folders",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_comms_folders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read one email list
+    # The list's name, folder, member count, public settings, and the campaigns and flows that use it, each with whether it is live.  hash_sha256 is the If-Match for a change or an archive.  Never its members. 
+    # @param storefront_oid [Integer] 
+    # @param list_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsListResponse]
+    def get_sfvb_comms_list(storefront_oid, list_uuid, opts = {})
+      data, _status_code, _headers = get_sfvb_comms_list_with_http_info(storefront_oid, list_uuid, opts)
+      data
+    end
+
+    # Read one email list
+    # The list&#39;s name, folder, member count, public settings, and the campaigns and flows that use it, each with whether it is live.  hash_sha256 is the If-Match for a change or an archive.  Never its members. 
+    # @param storefront_oid [Integer] 
+    # @param list_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsListResponse, Integer, Hash)>] SfvbCommsListResponse data, response status code and response headers
+    def get_sfvb_comms_list_with_http_info(storefront_oid, list_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_comms_list ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_comms_list"
+      end
+      # verify the required parameter 'list_uuid' is set
+      if @api_client.config.client_side_validation && list_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'list_uuid' when calling SfvbApi.get_sfvb_comms_list"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/lists/{list_uuid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'list_uuid' + '}', CGI.escape(list_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsListResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_comms_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_comms_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -9776,6 +10211,156 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_blog_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a list and segment folder
+    # A new, empty folder.  File a list or segment in it by setting its folder_uuid. 
+    # @param storefront_oid [Integer] 
+    # @param folder_write_request [SfvbCommsFolderWriteRequest] The new folder&#39;s name
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsFolderResponse]
+    def insert_sfvb_comms_folder(storefront_oid, folder_write_request, opts = {})
+      data, _status_code, _headers = insert_sfvb_comms_folder_with_http_info(storefront_oid, folder_write_request, opts)
+      data
+    end
+
+    # Create a list and segment folder
+    # A new, empty folder.  File a list or segment in it by setting its folder_uuid. 
+    # @param storefront_oid [Integer] 
+    # @param folder_write_request [SfvbCommsFolderWriteRequest] The new folder&#39;s name
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsFolderResponse, Integer, Hash)>] SfvbCommsFolderResponse data, response status code and response headers
+    def insert_sfvb_comms_folder_with_http_info(storefront_oid, folder_write_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.insert_sfvb_comms_folder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.insert_sfvb_comms_folder"
+      end
+      # verify the required parameter 'folder_write_request' is set
+      if @api_client.config.client_side_validation && folder_write_request.nil?
+        fail ArgumentError, "Missing the required parameter 'folder_write_request' when calling SfvbApi.insert_sfvb_comms_folder"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/list_segment_folders'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(folder_write_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsFolderResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.insert_sfvb_comms_folder",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_comms_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create an email list
+    # A new, empty list with the name, folder and public settings given.  public_description is plain text, since subscribers see it on the email preferences page. 
+    # @param storefront_oid [Integer] 
+    # @param list_write_request [SfvbCommsListWriteRequest] The new list&#39;s name, folder and public settings
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsListResponse]
+    def insert_sfvb_comms_list(storefront_oid, list_write_request, opts = {})
+      data, _status_code, _headers = insert_sfvb_comms_list_with_http_info(storefront_oid, list_write_request, opts)
+      data
+    end
+
+    # Create an email list
+    # A new, empty list with the name, folder and public settings given.  public_description is plain text, since subscribers see it on the email preferences page. 
+    # @param storefront_oid [Integer] 
+    # @param list_write_request [SfvbCommsListWriteRequest] The new list&#39;s name, folder and public settings
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsListResponse, Integer, Hash)>] SfvbCommsListResponse data, response status code and response headers
+    def insert_sfvb_comms_list_with_http_info(storefront_oid, list_write_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.insert_sfvb_comms_list ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.insert_sfvb_comms_list"
+      end
+      # verify the required parameter 'list_write_request' is set
+      if @api_client.config.client_side_validation && list_write_request.nil?
+        fail ArgumentError, "Missing the required parameter 'list_write_request' when calling SfvbApi.insert_sfvb_comms_list"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/lists'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(list_write_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsListResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.insert_sfvb_comms_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_comms_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -16457,6 +17042,182 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Rename a list and segment folder
+    # Send the folder's hash_sha256 as If-Match.  A folder the admin made itself (system_generated) can't be renamed here. 
+    # @param storefront_oid [Integer] 
+    # @param folder_uuid [String] 
+    # @param if_match [String] The folder&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param folder_write_request [SfvbCommsFolderWriteRequest] The new name
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsFolderResponse]
+    def update_sfvb_comms_folder(storefront_oid, folder_uuid, if_match, folder_write_request, opts = {})
+      data, _status_code, _headers = update_sfvb_comms_folder_with_http_info(storefront_oid, folder_uuid, if_match, folder_write_request, opts)
+      data
+    end
+
+    # Rename a list and segment folder
+    # Send the folder&#39;s hash_sha256 as If-Match.  A folder the admin made itself (system_generated) can&#39;t be renamed here. 
+    # @param storefront_oid [Integer] 
+    # @param folder_uuid [String] 
+    # @param if_match [String] The folder&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param folder_write_request [SfvbCommsFolderWriteRequest] The new name
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsFolderResponse, Integer, Hash)>] SfvbCommsFolderResponse data, response status code and response headers
+    def update_sfvb_comms_folder_with_http_info(storefront_oid, folder_uuid, if_match, folder_write_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_comms_folder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_comms_folder"
+      end
+      # verify the required parameter 'folder_uuid' is set
+      if @api_client.config.client_side_validation && folder_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'folder_uuid' when calling SfvbApi.update_sfvb_comms_folder"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.update_sfvb_comms_folder"
+      end
+      # verify the required parameter 'folder_write_request' is set
+      if @api_client.config.client_side_validation && folder_write_request.nil?
+        fail ArgumentError, "Missing the required parameter 'folder_write_request' when calling SfvbApi.update_sfvb_comms_folder"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/list_segment_folders/{folder_uuid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'folder_uuid' + '}', CGI.escape(folder_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(folder_write_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsFolderResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_comms_folder",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_comms_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change an email list's name, folder or public settings
+    # A field left out stays as it is; an empty folder_uuid or public_description clears it.  Send the list's hash_sha256 as If-Match; the change applies only while the name, folder and public settings are still what was read.  The members and member count are never changed here. 
+    # @param storefront_oid [Integer] 
+    # @param list_uuid [String] 
+    # @param if_match [String] The list&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param list_write_request [SfvbCommsListWriteRequest] The fields to change
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCommsListResponse]
+    def update_sfvb_comms_list(storefront_oid, list_uuid, if_match, list_write_request, opts = {})
+      data, _status_code, _headers = update_sfvb_comms_list_with_http_info(storefront_oid, list_uuid, if_match, list_write_request, opts)
+      data
+    end
+
+    # Change an email list&#39;s name, folder or public settings
+    # A field left out stays as it is; an empty folder_uuid or public_description clears it.  Send the list&#39;s hash_sha256 as If-Match; the change applies only while the name, folder and public settings are still what was read.  The members and member count are never changed here. 
+    # @param storefront_oid [Integer] 
+    # @param list_uuid [String] 
+    # @param if_match [String] The list&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param list_write_request [SfvbCommsListWriteRequest] The fields to change
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCommsListResponse, Integer, Hash)>] SfvbCommsListResponse data, response status code and response headers
+    def update_sfvb_comms_list_with_http_info(storefront_oid, list_uuid, if_match, list_write_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_comms_list ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_comms_list"
+      end
+      # verify the required parameter 'list_uuid' is set
+      if @api_client.config.client_side_validation && list_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'list_uuid' when calling SfvbApi.update_sfvb_comms_list"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.update_sfvb_comms_list"
+      end
+      # verify the required parameter 'list_write_request' is set
+      if @api_client.config.client_side_validation && list_write_request.nil?
+        fail ArgumentError, "Missing the required parameter 'list_write_request' when calling SfvbApi.update_sfvb_comms_list"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/lists/{list_uuid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'list_uuid' + '}', CGI.escape(list_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(list_write_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsListResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_comms_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_comms_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Change a segment's name, rule or folder
     # A field left out stays as it is.  Send the segment's hash_sha256 as If-Match; the change applies only while the name, rule and folder are still what was read.  A changed rule is checked as on a create and starts a rebuild.  Changing the rule of a segment a live campaign or flow uses needs sfvb_publish and an approved segment.update approval (Approval-Id); a name or folder change, or a segment nothing live uses, needs neither. 
     # @param storefront_oid [Integer] 
@@ -16781,7 +17542,7 @@ module UltracartClient
     end
 
     # Change a flow
-    # A field left out keeps its value.  The trigger and the status are never changed here.  Send the hash_sha256 you read as If-Match.  A flow that is enrolling customers needs sfvb_publish. 
+    # A field left out keeps its value.  The trigger changes only while the flow is off (sfvb.flow_trigger_live otherwise), and customers already in the flow continue.  The status is never changed here.  Send the hash_sha256 you read as If-Match.  A flow that is enrolling customers needs sfvb_publish. 
     # @param storefront_oid [Integer] 
     # @param flow_uuid [String] 
     # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
@@ -16794,7 +17555,7 @@ module UltracartClient
     end
 
     # Change a flow
-    # A field left out keeps its value.  The trigger and the status are never changed here.  Send the hash_sha256 you read as If-Match.  A flow that is enrolling customers needs sfvb_publish. 
+    # A field left out keeps its value.  The trigger changes only while the flow is off (sfvb.flow_trigger_live otherwise), and customers already in the flow continue.  The status is never changed here.  Send the hash_sha256 you read as If-Match.  A flow that is enrolling customers needs sfvb_publish. 
     # @param storefront_oid [Integer] 
     # @param flow_uuid [String] 
     # @param if_match [String] hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.

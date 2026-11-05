@@ -33,7 +33,7 @@ module UltracartClient
     # Customers who reached the step and were not sent anything.  The dispatch log says why.
     attr_accessor :skipped
 
-    # email (the step's email, all time) or step (this step, the last 90 days).
+    # email (the step's email, all time), sequence (the begin step, customers who started the sequence, all time) or step (this step, the last 90 days).
     attr_accessor :source
 
     # Spam complaints.

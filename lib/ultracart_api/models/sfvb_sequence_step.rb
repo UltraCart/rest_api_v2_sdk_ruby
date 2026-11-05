@@ -36,7 +36,7 @@ module UltracartClient
     # The step's audience filter as stored, when it has one.
     attr_accessor :filter_profile_equation_json
 
-    # The hash of the step's type, stored settings and audience filter.  Send it back as If-Match when changing the step.
+    # The hash of the step's type, stored settings and audience filter.  Send it back as If-Match when changing the step.  What a running flow records in the settings (a resend step's resend mappings, a rate limiter's inventory refresh time, an experiment's winner) doesn't count.  An email step's smartSending and magicLink are the email's own settings, so the email's hash_sha256 guards them, not this one.
     attr_accessor :hash_sha256
 
     # The items it names, for a cart or rate limiter step.

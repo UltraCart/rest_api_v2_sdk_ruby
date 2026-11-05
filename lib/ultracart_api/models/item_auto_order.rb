@@ -45,6 +45,15 @@ module UltracartClient
     # List of downgrade items presented to customer service representatives
     attr_accessor :auto_order_downgrade_items
 
+    # Day counts (1 to 365, at most 20) a customer may switch this auto-enrolled item to from MyAccount, for example [30, 60, 90].  Requires the advanced auto order settings to be enabled on the account.  Omit to leave unchanged; send an empty array to clear.
+    attr_accessor :auto_order_myaccount_frequency_day_counts
+
+    # True if the MyAccount frequency change is only offered once the item is on its last auto order step.  Omit to leave unchanged.
+    attr_accessor :auto_order_myaccount_frequency_last_step_only
+
+    # Standard schedules a customer may switch this auto-enrolled item to from MyAccount.  Requires the advanced auto order settings to be enabled on the account.  Omit to leave unchanged; send an empty array to clear.
+    attr_accessor :auto_order_myaccount_frequency_schedules
+
     # True if the rebill processing of this item is paused
     attr_accessor :auto_order_paused
 
@@ -94,6 +103,9 @@ module UltracartClient
         :'auto_order_cancel_minimum_rebill_count' => :'auto_order_cancel_minimum_rebill_count',
         :'auto_order_cancel_minimum_rebill_value' => :'auto_order_cancel_minimum_rebill_value',
         :'auto_order_downgrade_items' => :'auto_order_downgrade_items',
+        :'auto_order_myaccount_frequency_day_counts' => :'auto_order_myaccount_frequency_day_counts',
+        :'auto_order_myaccount_frequency_last_step_only' => :'auto_order_myaccount_frequency_last_step_only',
+        :'auto_order_myaccount_frequency_schedules' => :'auto_order_myaccount_frequency_schedules',
         :'auto_order_paused' => :'auto_order_paused',
         :'auto_order_prohibit_expiring_cards' => :'auto_order_prohibit_expiring_cards',
         :'auto_order_schedules' => :'auto_order_schedules',
@@ -127,6 +139,9 @@ module UltracartClient
         :'auto_order_cancel_minimum_rebill_count' => :'Integer',
         :'auto_order_cancel_minimum_rebill_value' => :'Float',
         :'auto_order_downgrade_items' => :'Array<String>',
+        :'auto_order_myaccount_frequency_day_counts' => :'Array<Integer>',
+        :'auto_order_myaccount_frequency_last_step_only' => :'Boolean',
+        :'auto_order_myaccount_frequency_schedules' => :'Array<String>',
         :'auto_order_paused' => :'Boolean',
         :'auto_order_prohibit_expiring_cards' => :'Integer',
         :'auto_order_schedules' => :'Array<String>',
@@ -202,6 +217,22 @@ module UltracartClient
       if attributes.key?(:'auto_order_downgrade_items')
         if (value = attributes[:'auto_order_downgrade_items']).is_a?(Array)
           self.auto_order_downgrade_items = value
+        end
+      end
+
+      if attributes.key?(:'auto_order_myaccount_frequency_day_counts')
+        if (value = attributes[:'auto_order_myaccount_frequency_day_counts']).is_a?(Array)
+          self.auto_order_myaccount_frequency_day_counts = value
+        end
+      end
+
+      if attributes.key?(:'auto_order_myaccount_frequency_last_step_only')
+        self.auto_order_myaccount_frequency_last_step_only = attributes[:'auto_order_myaccount_frequency_last_step_only']
+      end
+
+      if attributes.key?(:'auto_order_myaccount_frequency_schedules')
+        if (value = attributes[:'auto_order_myaccount_frequency_schedules']).is_a?(Array)
+          self.auto_order_myaccount_frequency_schedules = value
         end
       end
 
@@ -303,6 +334,9 @@ module UltracartClient
           auto_order_cancel_minimum_rebill_count == o.auto_order_cancel_minimum_rebill_count &&
           auto_order_cancel_minimum_rebill_value == o.auto_order_cancel_minimum_rebill_value &&
           auto_order_downgrade_items == o.auto_order_downgrade_items &&
+          auto_order_myaccount_frequency_day_counts == o.auto_order_myaccount_frequency_day_counts &&
+          auto_order_myaccount_frequency_last_step_only == o.auto_order_myaccount_frequency_last_step_only &&
+          auto_order_myaccount_frequency_schedules == o.auto_order_myaccount_frequency_schedules &&
           auto_order_paused == o.auto_order_paused &&
           auto_order_prohibit_expiring_cards == o.auto_order_prohibit_expiring_cards &&
           auto_order_schedules == o.auto_order_schedules &&
@@ -326,7 +360,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auth_future_amount, auth_test_amount, auto_order_cancel_charge_minimum_balance, auto_order_cancel_item_id, auto_order_cancel_item_oid, auto_order_cancel_minimum_life_time_count, auto_order_cancel_minimum_life_time_value, auto_order_cancel_minimum_rebill_count, auto_order_cancel_minimum_rebill_value, auto_order_downgrade_items, auto_order_paused, auto_order_prohibit_expiring_cards, auto_order_schedules, auto_order_upgrade_items, auto_order_upsell, auto_order_upsell_no_easy_cancel, auto_order_upsell_one_per_customer, auto_orderable, cancel_other_auto_orders, free_shipping_auto_order, refund_other_auto_orders, steps].hash
+      [auth_future_amount, auth_test_amount, auto_order_cancel_charge_minimum_balance, auto_order_cancel_item_id, auto_order_cancel_item_oid, auto_order_cancel_minimum_life_time_count, auto_order_cancel_minimum_life_time_value, auto_order_cancel_minimum_rebill_count, auto_order_cancel_minimum_rebill_value, auto_order_downgrade_items, auto_order_myaccount_frequency_day_counts, auto_order_myaccount_frequency_last_step_only, auto_order_myaccount_frequency_schedules, auto_order_paused, auto_order_prohibit_expiring_cards, auto_order_schedules, auto_order_upgrade_items, auto_order_upsell, auto_order_upsell_no_easy_cancel, auto_order_upsell_one_per_customer, auto_orderable, cancel_other_auto_orders, free_shipping_auto_order, refund_other_auto_orders, steps].hash
     end
 
     # Builds the object from hash

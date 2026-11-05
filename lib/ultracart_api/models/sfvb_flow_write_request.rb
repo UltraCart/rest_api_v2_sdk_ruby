@@ -42,10 +42,10 @@ module UltracartClient
     # The part of the from address before the at sign.  Defaults to the storefront's marketing setting.
     attr_accessor :sending_user
 
-    # The list or segment uuid for a list or segment trigger.  Create only.
+    # The list or segment uuid for a list or segment trigger.  Cleared when the trigger changes to one that takes none.
     attr_accessor :trigger_parameter
 
-    # What enrolls a customer, such as cart abandoned.  Create only.
+    # What enrolls a customer, such as cart abandoned.  Required to create.  On a change, only while the flow is off.
     attr_accessor :trigger_type
 
     class EnumAttributeValidator
