@@ -70,14 +70,22 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_blog_post**](SfvbApi.md#get_sfvb_blog_post) | **GET** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Read a blog post |
 | [**get_sfvb_campaign**](SfvbApi.md#get_sfvb_campaign) | **GET** /sfvb/storefronts/{storefront_oid}/campaigns/{campaign_uuid} | Get a campaign |
 | [**get_sfvb_cjson_used_elements**](SfvbApi.md#get_sfvb_cjson_used_elements) | **POST** /sfvb/cjson/elements | Element types used by a container |
+| [**get_sfvb_comms_dashboard_stats**](SfvbApi.md#get_sfvb_comms_dashboard_stats) | **GET** /sfvb/storefronts/{storefront_oid}/comms/stats/dashboard | Read every flow&#39;s and campaign&#39;s counts over a window, with the account&#39;s daily sending |
+| [**get_sfvb_comms_email_clicks**](SfvbApi.md#get_sfvb_comms_email_clicks) | **GET** /sfvb/storefronts/{storefront_oid}/comms/sequences/{commseq_uuid}/emails/{email_uuid}/clicks | Read each link in one email and how often it was clicked |
 | [**get_sfvb_comms_folder**](SfvbApi.md#get_sfvb_comms_folder) | **GET** /sfvb/storefronts/{storefront_oid}/list_segment_folders/{folder_uuid} | Read one list and segment folder |
 | [**get_sfvb_comms_folders**](SfvbApi.md#get_sfvb_comms_folders) | **GET** /sfvb/storefronts/{storefront_oid}/list_segment_folders | List the list and segment folders |
 | [**get_sfvb_comms_list**](SfvbApi.md#get_sfvb_comms_list) | **GET** /sfvb/storefronts/{storefront_oid}/lists/{list_uuid} | Read one email list |
 | [**get_sfvb_comms_list_members**](SfvbApi.md#get_sfvb_comms_list_members) | **GET** /sfvb/storefronts/{storefront_oid}/lists/{list_uuid}/members | Read one page of a list&#39;s members |
+| [**get_sfvb_comms_plan**](SfvbApi.md#get_sfvb_comms_plan) | **GET** /sfvb/storefronts/{storefront_oid}/comms/plan | Read the account&#39;s communications plan and sending health |
+| [**get_sfvb_comms_providers**](SfvbApi.md#get_sfvb_comms_providers) | **GET** /sfvb/storefronts/{storefront_oid}/comms/providers | List the email providers the account can import lists from |
 | [**get_sfvb_comms_segment**](SfvbApi.md#get_sfvb_comms_segment) | **GET** /sfvb/storefronts/{storefront_oid}/segments/{segment_uuid} | Read one segment, with its rule |
 | [**get_sfvb_comms_segment_members**](SfvbApi.md#get_sfvb_comms_segment_members) | **GET** /sfvb/storefronts/{storefront_oid}/segments/{segment_uuid}/members | Read one page of a segment&#39;s members |
 | [**get_sfvb_comms_sending_domain**](SfvbApi.md#get_sfvb_comms_sending_domain) | **GET** /sfvb/comms/sending_domains/{domain} | Read a sending domain |
 | [**get_sfvb_comms_sending_domains**](SfvbApi.md#get_sfvb_comms_sending_domains) | **GET** /sfvb/comms/sending_domains | List the sending domains |
+| [**get_sfvb_comms_sequence_stats**](SfvbApi.md#get_sfvb_comms_sequence_stats) | **GET** /sfvb/storefronts/{storefront_oid}/comms/sequences/{commseq_uuid}/stats | Read a flow&#39;s or campaign&#39;s counts, overall and step by step |
+| [**get_sfvb_comms_settings**](SfvbApi.md#get_sfvb_comms_settings) | **GET** /sfvb/storefronts/{storefront_oid}/comms/settings | Read a storefront&#39;s communications settings |
+| [**get_sfvb_comms_template**](SfvbApi.md#get_sfvb_comms_template) | **GET** /sfvb/storefronts/{storefront_oid}/comms/templates/{email_template_oid} | Read one saved email template&#39;s body |
+| [**get_sfvb_comms_templates**](SfvbApi.md#get_sfvb_comms_templates) | **GET** /sfvb/storefronts/{storefront_oid}/comms/templates | List the email templates a new email can start from |
 | [**get_sfvb_comms_twilio_account**](SfvbApi.md#get_sfvb_comms_twilio_account) | **GET** /sfvb/comms/twilio_account | Read the Twilio account |
 | [**get_sfvb_container**](SfvbApi.md#get_sfvb_container) | **GET** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id} | Read a container stored outside the file system |
 | [**get_sfvb_container_version**](SfvbApi.md#get_sfvb_container_version) | **GET** /sfvb/storefronts/{storefront_oid}/container_versions/{container_history_oid} | Read the CJSON stored in one container history entry |
@@ -147,6 +155,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_version**](SfvbApi.md#get_sfvb_version) | **GET** /sfvb/version | Compiler version for this merchant |
 | [**get_sfvb_whoami**](SfvbApi.md#get_sfvb_whoami) | **GET** /sfvb/whoami | Who this token is |
 | [**ignore_sfvb_not_found_entry**](SfvbApi.md#ignore_sfvb_not_found_entry) | **POST** /sfvb/storefronts/{storefront_oid}/not_found/{not_found_id}/ignore | Ignore a 404 path |
+| [**import_sfvb_comms_provider_lists**](SfvbApi.md#import_sfvb_comms_provider_lists) | **POST** /sfvb/storefronts/{storefront_oid}/comms/providers/import | Import lists from another email provider |
 | [**import_sfvb_redirects**](SfvbApi.md#import_sfvb_redirects) | **POST** /sfvb/storefronts/{storefront_oid}/redirects/import | Apply a reviewed redirect import |
 | [**insert_sfvb_affiliate_network**](SfvbApi.md#insert_sfvb_affiliate_network) | **POST** /sfvb/storefronts/{storefront_oid}/tracking/affiliate_networks | Add an affiliate network |
 | [**insert_sfvb_approval**](SfvbApi.md#insert_sfvb_approval) | **POST** /sfvb/approvals | Request a human approval |
@@ -231,6 +240,9 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**set_sfvb_library_screenshot**](SfvbApi.md#set_sfvb_library_screenshot) | **PUT** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/screenshot | Set a library entry&#39;s screenshot |
 | [**share_sfvb_library_entry**](SfvbApi.md#share_sfvb_library_entry) | **POST** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/shares | Share a published library entry with a linked account |
 | [**start_sfvb_experiment**](SfvbApi.md#start_sfvb_experiment) | **POST** /sfvb/storefronts/{storefront_oid}/experiments | Start an experiment |
+| [**test_sfvb_comms_email**](SfvbApi.md#test_sfvb_comms_email) | **POST** /sfvb/storefronts/{storefront_oid}/comms/sequences/{commseq_uuid}/steps/{step_uuid}/test_email | Send one test of an email step&#39;s email to a user on this account |
+| [**test_sfvb_comms_postcard**](SfvbApi.md#test_sfvb_comms_postcard) | **POST** /sfvb/storefronts/{storefront_oid}/comms/sequences/{commseq_uuid}/steps/{step_uuid}/test_postcard | Print and mail one real test postcard |
+| [**test_sfvb_comms_sms**](SfvbApi.md#test_sfvb_comms_sms) | **POST** /sfvb/storefronts/{storefront_oid}/comms/sequences/{commseq_uuid}/steps/{step_uuid}/test_sms | Send one test of an SMS step to a user on this account |
 | [**unarchive_sfvb_upsell_path**](SfvbApi.md#unarchive_sfvb_upsell_path) | **POST** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid}/unarchive | Unarchive an upsell path |
 | [**unfavorite_sfvb_library_entry**](SfvbApi.md#unfavorite_sfvb_library_entry) | **DELETE** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/favorite | Remove a library entry from favorites |
 | [**unignore_sfvb_not_found_entry**](SfvbApi.md#unignore_sfvb_not_found_entry) | **DELETE** /sfvb/storefronts/{storefront_oid}/not_found/{not_found_id}/ignore | Stop ignoring a 404 path |
@@ -243,6 +255,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**update_sfvb_comms_list**](SfvbApi.md#update_sfvb_comms_list) | **PUT** /sfvb/storefronts/{storefront_oid}/lists/{list_uuid} | Change an email list&#39;s name, folder or public settings |
 | [**update_sfvb_comms_segment**](SfvbApi.md#update_sfvb_comms_segment) | **PUT** /sfvb/storefronts/{storefront_oid}/segments/{segment_uuid} | Change a segment&#39;s name, rule or folder |
 | [**update_sfvb_comms_sending_domain**](SfvbApi.md#update_sfvb_comms_sending_domain) | **PUT** /sfvb/comms/sending_domains/{domain} | Update a sending domain |
+| [**update_sfvb_comms_settings**](SfvbApi.md#update_sfvb_comms_settings) | **PUT** /sfvb/storefronts/{storefront_oid}/comms/settings | Change a storefront&#39;s communications settings |
 | [**update_sfvb_comms_twilio_account**](SfvbApi.md#update_sfvb_comms_twilio_account) | **PUT** /sfvb/comms/twilio_account | Update the Twilio account |
 | [**update_sfvb_email**](SfvbApi.md#update_sfvb_email) | **PUT** /sfvb/storefronts/{storefront_oid}/emails/{email_uuid} | Change a flow or campaign email&#39;s subject or preview text |
 | [**update_sfvb_flow**](SfvbApi.md#update_sfvb_flow) | **PUT** /sfvb/storefronts/{storefront_oid}/flows/{flow_uuid} | Change a flow |
@@ -3860,6 +3873,116 @@ end
 - **Accept**: application/json
 
 
+## get_sfvb_comms_dashboard_stats
+
+> <SfvbCommsDashboardResponse> get_sfvb_comms_dashboard_stats(storefront_oid, opts)
+
+Read every flow's and campaign's counts over a window, with the account's daily sending
+
+rows cover each flow and campaign with activity in the last days (1 to 365, default 30); daily is the account's last 31 days of sending, whatever the window.  Read only. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_comms_dashboard_stats_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsDashboardResponse>, Integer, Hash)> get_sfvb_comms_dashboard_stats_with_http_info(storefront_oid, opts)
+
+```ruby
+begin
+  # Read every flow's and campaign's counts over a window, with the account's daily sending
+  data, status_code, headers = api_instance.get_sfvb_comms_dashboard_stats_with_http_info(storefront_oid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsDashboardResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_comms_dashboard_stats_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **days** | **Integer** | The window for the rows, 1 to 365 days (default 30). | [optional] |
+
+### Return type
+
+[**SfvbCommsDashboardResponse**](SfvbCommsDashboardResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_comms_email_clicks
+
+> <SfvbCommsClicksResponse> get_sfvb_comms_email_clicks(storefront_oid, commseq_uuid, email_uuid, opts)
+
+Read each link in one email and how often it was clicked
+
+The email must be sent by an email or experiment step of this flow's or campaign's sequence; any other is 404.  Most clicked first, over the last days (1 to 365, default 30).  Read only. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_comms_email_clicks_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsClicksResponse>, Integer, Hash)> get_sfvb_comms_email_clicks_with_http_info(storefront_oid, commseq_uuid, email_uuid, opts)
+
+```ruby
+begin
+  # Read each link in one email and how often it was clicked
+  data, status_code, headers = api_instance.get_sfvb_comms_email_clicks_with_http_info(storefront_oid, commseq_uuid, email_uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsClicksResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_comms_email_clicks_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **commseq_uuid** | **String** |  |  |
+| **email_uuid** | **String** |  |  |
+| **days** | **Integer** | The window, 1 to 365 days (default 30). | [optional] |
+
+### Return type
+
+[**SfvbCommsClicksResponse**](SfvbCommsClicksResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_sfvb_comms_folder
 
 > <SfvbCommsFolderResponse> get_sfvb_comms_folder(storefront_oid, folder_uuid)
@@ -4078,6 +4201,112 @@ end
 - **Accept**: application/json
 
 
+## get_sfvb_comms_plan
+
+> <SfvbCommsPlanResponse> get_sfvb_comms_plan(storefront_oid)
+
+Read the account's communications plan and sending health
+
+The plan, its customer and email caps, what has been sent against them, and the spam pause, with notes on anything that stops sends.  Account-wide.  Never a price, fee or upgrade option; the plan is changed in the admin.  Read only. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_comms_plan_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsPlanResponse>, Integer, Hash)> get_sfvb_comms_plan_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # Read the account's communications plan and sending health
+  data, status_code, headers = api_instance.get_sfvb_comms_plan_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsPlanResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_comms_plan_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbCommsPlanResponse**](SfvbCommsPlanResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_comms_providers
+
+> <SfvbCommsProvidersResponse> get_sfvb_comms_providers(storefront_oid)
+
+List the email providers the account can import lists from
+
+Each provider that can share list members, connected or not, with a connected one's lists.  Each call asks the providers themselves, so it is rate limited.  No credential or connect URL is returned.  import_allowed says whether the account may import.  Read only. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_comms_providers_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsProvidersResponse>, Integer, Hash)> get_sfvb_comms_providers_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # List the email providers the account can import lists from
+  data, status_code, headers = api_instance.get_sfvb_comms_providers_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsProvidersResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_comms_providers_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbCommsProvidersResponse**](SfvbCommsProvidersResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_sfvb_comms_segment
 
 > <SfvbCommsSegmentResponse> get_sfvb_comms_segment(storefront_oid, segment_uuid)
@@ -4282,6 +4511,221 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**SfvbCommsSendingDomainsResponse**](SfvbCommsSendingDomainsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_comms_sequence_stats
+
+> <SfvbCommsSequenceStatsResponse> get_sfvb_comms_sequence_stats(storefront_oid, commseq_uuid, opts)
+
+Read a flow's or campaign's counts, overall and step by step
+
+overall covers all time; each email, SMS, postcard and branch step covers the last days (1 to 365, default 30).  Each step reports only the counts its channel records and names the rest in not_measured, so a missing count is never zero.  Bounces, opens and spam are counts here, not separate reports.  Read only. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_comms_sequence_stats_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsSequenceStatsResponse>, Integer, Hash)> get_sfvb_comms_sequence_stats_with_http_info(storefront_oid, commseq_uuid, opts)
+
+```ruby
+begin
+  # Read a flow's or campaign's counts, overall and step by step
+  data, status_code, headers = api_instance.get_sfvb_comms_sequence_stats_with_http_info(storefront_oid, commseq_uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsSequenceStatsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_comms_sequence_stats_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **commseq_uuid** | **String** |  |  |
+| **days** | **Integer** | The window for the step counts, 1 to 365 days (default 30). | [optional] |
+
+### Return type
+
+[**SfvbCommsSequenceStatsResponse**](SfvbCommsSequenceStatsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_comms_settings
+
+> <SfvbCommsSettingsResponse> get_sfvb_comms_settings(storefront_oid)
+
+Read a storefront's communications settings
+
+The postcard return address, the default marketing and transactional senders, and the default SMS number, with what each one drives in notes.  Read only.  hash_sha256 is the If-Match for an update. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_comms_settings_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsSettingsResponse>, Integer, Hash)> get_sfvb_comms_settings_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # Read a storefront's communications settings
+  data, status_code, headers = api_instance.get_sfvb_comms_settings_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsSettingsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_comms_settings_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbCommsSettingsResponse**](SfvbCommsSettingsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_comms_template
+
+> <SfvbCommsTemplateResponse> get_sfvb_comms_template(storefront_oid, email_template_oid)
+
+Read one saved email template's body
+
+A system template or one saved on this storefront; any other is 404.  container_cjson is the body.  The Velocity template it renders inside is named in email_template_vm_path, not shown.  Read only. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_comms_template_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsTemplateResponse>, Integer, Hash)> get_sfvb_comms_template_with_http_info(storefront_oid, email_template_oid)
+
+```ruby
+begin
+  # Read one saved email template's body
+  data, status_code, headers = api_instance.get_sfvb_comms_template_with_http_info(storefront_oid, email_template_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsTemplateResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_comms_template_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **email_template_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbCommsTemplateResponse**](SfvbCommsTemplateResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_comms_templates
+
+> <SfvbCommsTemplatesResponse> get_sfvb_comms_templates(storefront_oid)
+
+List the email templates a new email can start from
+
+One list: UltraCart's system templates and this storefront's saved ones (each with email_template_oid), then base templates, the active theme's files an email renders inside (each with path).  Read only. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_comms_templates_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsTemplatesResponse>, Integer, Hash)> get_sfvb_comms_templates_with_http_info(storefront_oid)
+
+```ruby
+begin
+  # List the email templates a new email can start from
+  data, status_code, headers = api_instance.get_sfvb_comms_templates_with_http_info(storefront_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsTemplatesResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_comms_templates_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbCommsTemplatesResponse**](SfvbCommsTemplatesResponse.md)
 
 ### Authorization
 
@@ -8026,6 +8470,61 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## import_sfvb_comms_provider_lists
+
+> <SfvbCommsProviderImportResponse> import_sfvb_comms_provider_lists(storefront_oid, provider_import_request, opts)
+
+Import lists from another email provider
+
+Each list becomes a new list of the same name on this storefront and every member is subscribed, in the background; the signed-in user is emailed when it finishes.  Needs the account to be allowed to import, sfvb_publish, and an approved comms_list.import request for exactly these lists.  At most 20 lists.  dry_run checks the provider and the list ids and names what would be created, without importing or using an approval. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the import_sfvb_comms_provider_lists_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsProviderImportResponse>, Integer, Hash)> import_sfvb_comms_provider_lists_with_http_info(storefront_oid, provider_import_request, opts)
+
+```ruby
+begin
+  # Import lists from another email provider
+  data, status_code, headers = api_instance.import_sfvb_comms_provider_lists_with_http_info(storefront_oid, provider_import_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsProviderImportResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->import_sfvb_comms_provider_lists_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **provider_import_request** | [**SfvbCommsProviderImportRequest**](SfvbCommsProviderImportRequest.md) | The provider and lists to import |  |
+| **approval_id** | **String** | The approval_id of an approved comms_list.import request for exactly these lists.  See POST /sfvb/approvals. | [optional] |
+
+### Return type
+
+[**SfvbCommsProviderImportResponse**](SfvbCommsProviderImportResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -12660,6 +13159,175 @@ end
 - **Accept**: application/json
 
 
+## test_sfvb_comms_email
+
+> <SfvbCommsTestSendResponse> test_sfvb_comms_email(storefront_oid, commseq_uuid, step_uuid, test_email_request)
+
+Send one test of an email step's email to a user on this account
+
+to_email must be the email address of a user on this account; a test is never sent to customers or anyone else.  It reaches a real inbox and counts against the plan's email quota.  Needs sfvb_publish and the sign-in of a person.  Rate limited per merchant to 10 an hour and 50 a day.  The email render shows the same email without sending it. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the test_sfvb_comms_email_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsTestSendResponse>, Integer, Hash)> test_sfvb_comms_email_with_http_info(storefront_oid, commseq_uuid, step_uuid, test_email_request)
+
+```ruby
+begin
+  # Send one test of an email step's email to a user on this account
+  data, status_code, headers = api_instance.test_sfvb_comms_email_with_http_info(storefront_oid, commseq_uuid, step_uuid, test_email_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsTestSendResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->test_sfvb_comms_email_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **commseq_uuid** | **String** |  |  |
+| **step_uuid** | **String** |  |  |
+| **test_email_request** | [**SfvbCommsTestEmailRequest**](SfvbCommsTestEmailRequest.md) | The email and the recipient |  |
+
+### Return type
+
+[**SfvbCommsTestSendResponse**](SfvbCommsTestSendResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## test_sfvb_comms_postcard
+
+> <SfvbCommsTestSendResponse> test_sfvb_comms_postcard(storefront_oid, commseq_uuid, step_uuid, test_postcard_request, opts)
+
+Print and mail one real test postcard
+
+It is printed and mailed at the account's cost and can't be recalled.  mail_card must be true; the postcard proof shows the card without mailing it.  Postcards must be turned on for the account by UltraCart.  Needs sfvb_publish, the sign-in of a person, and an approved postcard.test_mail request for exactly this card and address, with a fresh code every time.  dry_run checks everything and shows the cost.  Rate limited per merchant to 3 an hour and 10 a day.  The answer says whether a card was mailed. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the test_sfvb_comms_postcard_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsTestSendResponse>, Integer, Hash)> test_sfvb_comms_postcard_with_http_info(storefront_oid, commseq_uuid, step_uuid, test_postcard_request, opts)
+
+```ruby
+begin
+  # Print and mail one real test postcard
+  data, status_code, headers = api_instance.test_sfvb_comms_postcard_with_http_info(storefront_oid, commseq_uuid, step_uuid, test_postcard_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsTestSendResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->test_sfvb_comms_postcard_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **commseq_uuid** | **String** |  |  |
+| **step_uuid** | **String** |  |  |
+| **test_postcard_request** | [**SfvbCommsTestPostcardRequest**](SfvbCommsTestPostcardRequest.md) | The address and mail_card |  |
+| **approval_id** | **String** | The approval_id of an approved postcard.test_mail request for exactly this card and address.  See POST /sfvb/approvals. | [optional] |
+
+### Return type
+
+[**SfvbCommsTestSendResponse**](SfvbCommsTestSendResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## test_sfvb_comms_sms
+
+> <SfvbCommsTestSendResponse> test_sfvb_comms_sms(storefront_oid, commseq_uuid, step_uuid, test_sms_request)
+
+Send one test of an SMS step to a user on this account
+
+to_phone must be the cell phone of a user on this account, in E.164 form.  It is billed per segment through the account's Twilio account, from the flow's or campaign's SMS number; with none it is refused.  Needs sfvb_publish and the sign-in of a person.  Rate limited per merchant to 5 an hour and 20 a day. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the test_sfvb_comms_sms_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsTestSendResponse>, Integer, Hash)> test_sfvb_comms_sms_with_http_info(storefront_oid, commseq_uuid, step_uuid, test_sms_request)
+
+```ruby
+begin
+  # Send one test of an SMS step to a user on this account
+  data, status_code, headers = api_instance.test_sfvb_comms_sms_with_http_info(storefront_oid, commseq_uuid, step_uuid, test_sms_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsTestSendResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->test_sfvb_comms_sms_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **commseq_uuid** | **String** |  |  |
+| **step_uuid** | **String** |  |  |
+| **test_sms_request** | [**SfvbCommsTestSmsRequest**](SfvbCommsTestSmsRequest.md) | The recipient |  |
+
+### Return type
+
+[**SfvbCommsTestSendResponse**](SfvbCommsTestSendResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## unarchive_sfvb_upsell_path
 
 > <SfvbUpsellPath> unarchive_sfvb_upsell_path(storefront_oid, upsell_path_oid)
@@ -13320,6 +13988,62 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_sfvb_comms_settings
+
+> <SfvbCommsSettingsResponse> update_sfvb_comms_settings(storefront_oid, if_match, comms_settings_update_request, opts)
+
+Change a storefront's communications settings
+
+A field left out stays as it is.  A return address change needs sfvb_write and If-Match.  A change to the default marketing or transactional sender, or the default SMS number, also needs sfvb_publish and an approved comms_settings.update request for exactly this change.  A sending domain must be on this account and the SMS number on one of its Twilio accounts.  dry_run checks and shows the change without writing or using an approval. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_comms_settings_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsSettingsResponse>, Integer, Hash)> update_sfvb_comms_settings_with_http_info(storefront_oid, if_match, comms_settings_update_request, opts)
+
+```ruby
+begin
+  # Change a storefront's communications settings
+  data, status_code, headers = api_instance.update_sfvb_comms_settings_with_http_info(storefront_oid, if_match, comms_settings_update_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsSettingsResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_comms_settings_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **if_match** | **String** | The settings&#39; hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **comms_settings_update_request** | [**SfvbCommsSettingsUpdateRequest**](SfvbCommsSettingsUpdateRequest.md) | The settings to change |  |
+| **approval_id** | **String** | The approval_id of an approved comms_settings.update request for exactly this change, when a sender or the SMS number changes.  See POST /sfvb/approvals. | [optional] |
+
+### Return type
+
+[**SfvbCommsSettingsResponse**](SfvbCommsSettingsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class ItemContentMultimedia
+    # AI generated alt text for the image.  StoreFront uses this when description is empty.
+    attr_accessor :ai_alt_text
+
     # URL where the image can be downloaded from the cloud
     attr_accessor :cloud_url
 
@@ -88,6 +91,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'ai_alt_text' => :'ai_alt_text',
         :'cloud_url' => :'cloud_url',
         :'cloud_url_expiration' => :'cloud_url_expiration',
         :'code' => :'code',
@@ -115,6 +119,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'ai_alt_text' => :'String',
         :'cloud_url' => :'String',
         :'cloud_url_expiration' => :'String',
         :'code' => :'String',
@@ -154,6 +159,10 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'ai_alt_text')
+        self.ai_alt_text = attributes[:'ai_alt_text']
+      end
 
       if attributes.key?(:'cloud_url')
         self.cloud_url = attributes[:'cloud_url']
@@ -297,6 +306,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          ai_alt_text == o.ai_alt_text &&
           cloud_url == o.cloud_url &&
           cloud_url_expiration == o.cloud_url_expiration &&
           code == o.code &&
@@ -324,7 +334,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cloud_url, cloud_url_expiration, code, description, exclude_from_gallery, file_name, height, merchant_item_multimedia_oid, orphan, placeholder, size, temp_multimedia_oid, thumbnails, type, url, width].hash
+      [ai_alt_text, cloud_url, cloud_url_expiration, code, description, exclude_from_gallery, file_name, height, merchant_item_multimedia_oid, orphan, placeholder, size, temp_multimedia_oid, thumbnails, type, url, width].hash
     end
 
     # Builds the object from hash

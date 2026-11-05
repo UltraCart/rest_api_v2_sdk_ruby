@@ -20,6 +20,10 @@ module UltracartClient
 
     attr_accessor :affiliate_network
 
+    attr_accessor :comms_list_import
+
+    attr_accessor :comms_settings
+
     # For a file.put_script write, the exact script to be written, at most 256 KB.  For tracking_html.put, the exact HTML the write will send, at most 256 KB.  UltraCart reviews it and keeps only its hash, so send the same bytes again on the write.  Leave it out for a revert, which names params.version.
     attr_accessor :content
 
@@ -31,6 +35,8 @@ module UltracartClient
     attr_accessor :item_pricing
 
     attr_accessor :params
+
+    attr_accessor :postcard_test_mail
 
     # Why the agent wants to do this, in a sentence.  Shown to the person as unverified text, capped at 500 characters.
     attr_accessor :reason
@@ -75,11 +81,14 @@ module UltracartClient
       {
         :'action' => :'action',
         :'affiliate_network' => :'affiliate_network',
+        :'comms_list_import' => :'comms_list_import',
+        :'comms_settings' => :'comms_settings',
         :'content' => :'content',
         :'experiment_start' => :'experiment_start',
         :'item_attribute_rows' => :'item_attribute_rows',
         :'item_pricing' => :'item_pricing',
         :'params' => :'params',
+        :'postcard_test_mail' => :'postcard_test_mail',
         :'reason' => :'reason',
         :'redirect_rows' => :'redirect_rows',
         :'segment_update' => :'segment_update',
@@ -100,11 +109,14 @@ module UltracartClient
       {
         :'action' => :'String',
         :'affiliate_network' => :'SfvbAffiliateNetworkRequest',
+        :'comms_list_import' => :'SfvbCommsProviderImportRequest',
+        :'comms_settings' => :'SfvbCommsSettingsUpdateRequest',
         :'content' => :'String',
         :'experiment_start' => :'SfvbExperimentStartRequest',
         :'item_attribute_rows' => :'Array<SfvbItemAttributeBatchRow>',
         :'item_pricing' => :'SfvbItemPricingRequest',
         :'params' => :'SfvbApprovalParams',
+        :'postcard_test_mail' => :'SfvbCommsTestPostcardRequest',
         :'reason' => :'String',
         :'redirect_rows' => :'Array<SfvbRedirectDeleteRow>',
         :'segment_update' => :'SfvbCommsSegmentWriteRequest',
@@ -144,6 +156,14 @@ module UltracartClient
         self.affiliate_network = attributes[:'affiliate_network']
       end
 
+      if attributes.key?(:'comms_list_import')
+        self.comms_list_import = attributes[:'comms_list_import']
+      end
+
+      if attributes.key?(:'comms_settings')
+        self.comms_settings = attributes[:'comms_settings']
+      end
+
       if attributes.key?(:'content')
         self.content = attributes[:'content']
       end
@@ -164,6 +184,10 @@ module UltracartClient
 
       if attributes.key?(:'params')
         self.params = attributes[:'params']
+      end
+
+      if attributes.key?(:'postcard_test_mail')
+        self.postcard_test_mail = attributes[:'postcard_test_mail']
       end
 
       if attributes.key?(:'reason')
@@ -207,7 +231,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      action_validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing", "twilio_account.delete", "sending_domain.delete", "sequence_step.delete", "sequence_step.move", "sequence_step.enable_postcard", "segment.update", "smart_attribution.change", "smart_attribution.delete", "tracking_provider.change", "tracking_html.put", "affiliate_network.change", "affiliate_network.delete", "site_seo.change", "transactional_email.update"])
+      action_validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing", "twilio_account.delete", "sending_domain.delete", "sequence_step.delete", "sequence_step.move", "sequence_step.enable_postcard", "segment.update", "smart_attribution.change", "smart_attribution.delete", "tracking_provider.change", "tracking_html.put", "affiliate_network.change", "affiliate_network.delete", "site_seo.change", "transactional_email.update", "comms_settings.update", "comms_list.import", "postcard.test_mail"])
       return false unless action_validator.valid?(@action)
       true
     end
@@ -215,7 +239,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] action Object to be assigned
     def action=(action)
-      validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing", "twilio_account.delete", "sending_domain.delete", "sequence_step.delete", "sequence_step.move", "sequence_step.enable_postcard", "segment.update", "smart_attribution.change", "smart_attribution.delete", "tracking_provider.change", "tracking_html.put", "affiliate_network.change", "affiliate_network.delete", "site_seo.change", "transactional_email.update"])
+      validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing", "twilio_account.delete", "sending_domain.delete", "sequence_step.delete", "sequence_step.move", "sequence_step.enable_postcard", "segment.update", "smart_attribution.change", "smart_attribution.delete", "tracking_provider.change", "tracking_html.put", "affiliate_network.change", "affiliate_network.delete", "site_seo.change", "transactional_email.update", "comms_settings.update", "comms_list.import", "postcard.test_mail"])
       unless validator.valid?(action)
         fail ArgumentError, "invalid value for \"action\", must be one of #{validator.allowable_values}."
       end
@@ -229,11 +253,14 @@ module UltracartClient
       self.class == o.class &&
           action == o.action &&
           affiliate_network == o.affiliate_network &&
+          comms_list_import == o.comms_list_import &&
+          comms_settings == o.comms_settings &&
           content == o.content &&
           experiment_start == o.experiment_start &&
           item_attribute_rows == o.item_attribute_rows &&
           item_pricing == o.item_pricing &&
           params == o.params &&
+          postcard_test_mail == o.postcard_test_mail &&
           reason == o.reason &&
           redirect_rows == o.redirect_rows &&
           segment_update == o.segment_update &&
@@ -252,7 +279,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, affiliate_network, content, experiment_start, item_attribute_rows, item_pricing, params, reason, redirect_rows, segment_update, site_seo, smart_attribution, tracking_provider, transactional_email].hash
+      [action, affiliate_network, comms_list_import, comms_settings, content, experiment_start, item_attribute_rows, item_pricing, params, postcard_test_mail, reason, redirect_rows, segment_update, site_seo, smart_attribution, tracking_provider, transactional_email].hash
     end
 
     # Builds the object from hash
