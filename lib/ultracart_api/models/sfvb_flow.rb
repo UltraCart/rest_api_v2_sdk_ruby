@@ -69,6 +69,9 @@ module UltracartClient
     # The part of the from address before the at sign.  Defaults to the storefront's marketing setting.
     attr_accessor :sending_user
 
+    # The number this flow's SMS steps send from.  Without one, every SMS step skips every customer, whatever the account's SMS settings say.
+    attr_accessor :sms_phone_number
+
     # The status, such as draft, active, paused, draining or inactive.
     attr_accessor :status
 
@@ -105,6 +108,7 @@ module UltracartClient
         :'sending_domain_uuid' => :'sending_domain_uuid',
         :'sending_name' => :'sending_name',
         :'sending_user' => :'sending_user',
+        :'sms_phone_number' => :'sms_phone_number',
         :'status' => :'status',
         :'status_dts' => :'status_dts',
         :'trigger_parameter' => :'trigger_parameter',
@@ -139,6 +143,7 @@ module UltracartClient
         :'sending_domain_uuid' => :'String',
         :'sending_name' => :'String',
         :'sending_user' => :'String',
+        :'sms_phone_number' => :'String',
         :'status' => :'String',
         :'status_dts' => :'String',
         :'trigger_parameter' => :'String',
@@ -246,6 +251,10 @@ module UltracartClient
         self.sending_user = attributes[:'sending_user']
       end
 
+      if attributes.key?(:'sms_phone_number')
+        self.sms_phone_number = attributes[:'sms_phone_number']
+      end
+
       if attributes.key?(:'status')
         self.status = attributes[:'status']
       end
@@ -303,6 +312,7 @@ module UltracartClient
           sending_domain_uuid == o.sending_domain_uuid &&
           sending_name == o.sending_name &&
           sending_user == o.sending_user &&
+          sms_phone_number == o.sms_phone_number &&
           status == o.status &&
           status_dts == o.status_dts &&
           trigger_parameter == o.trigger_parameter &&
@@ -319,7 +329,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allow_multiple_concurrent_enrollments, communication_sequence_uuid, created_dts, deleted, emails, end_once_customer_purchases, end_once_customer_purchases_anywhere, flow_uuid, hash_sha256, live, name, notes, postcards, reentry_delay_days, reentry_policy, sending_domain_uuid, sending_name, sending_user, status, status_dts, trigger_parameter, trigger_parameter_name, trigger_type].hash
+      [allow_multiple_concurrent_enrollments, communication_sequence_uuid, created_dts, deleted, emails, end_once_customer_purchases, end_once_customer_purchases_anywhere, flow_uuid, hash_sha256, live, name, notes, postcards, reentry_delay_days, reentry_policy, sending_domain_uuid, sending_name, sending_user, sms_phone_number, status, status_dts, trigger_parameter, trigger_parameter_name, trigger_type].hash
     end
 
     # Builds the object from hash

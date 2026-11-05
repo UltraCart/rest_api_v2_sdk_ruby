@@ -17,6 +17,7 @@
 | **site_seo** | [**SfvbSiteSeoRequest**](SfvbSiteSeoRequest.md) |  | [optional] |
 | **smart_attribution** | [**SfvbSmartAttributionRequest**](SfvbSmartAttributionRequest.md) |  | [optional] |
 | **tracking_provider** | [**SfvbTrackingProviderRequest**](SfvbTrackingProviderRequest.md) |  | [optional] |
+| **transactional_email** | [**SfvbTransactionalEmailUpdateRequest**](SfvbTransactionalEmailUpdateRequest.md) |  | [optional] |
 
 ## Example
 
@@ -36,7 +37,8 @@ instance = UltracartClient::SfvbApprovalCreateRequest.new(
   segment_update: null,
   site_seo: null,
   smart_attribution: null,
-  tracking_provider: null
+  tracking_provider: null,
+  transactional_email: null
 )
 ```
 

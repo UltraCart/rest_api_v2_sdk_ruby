@@ -22,6 +22,7 @@
 | **sending_domain_uuid** | **String** | The sending domain uuid.  Defaults to the storefront&#39;s marketing sending domain. | [optional] |
 | **sending_name** | **String** | The from name.  Defaults to the storefront&#39;s marketing setting. | [optional] |
 | **sending_user** | **String** | The part of the from address before the at sign.  Defaults to the storefront&#39;s marketing setting. | [optional] |
+| **sms_phone_number** | **String** | The number this flow&#39;s SMS steps send from.  Without one, every SMS step skips every customer, whatever the account&#39;s SMS settings say. | [optional] |
 | **status** | **String** | The status, such as draft, active, paused, draining or inactive. | [optional] |
 | **status_dts** | **String** | When the status last changed (ISO 8601, UTC). | [optional] |
 | **trigger_parameter** | **String** | The list or segment uuid, or other value, the trigger is limited to. | [optional] |
@@ -52,6 +53,7 @@ instance = UltracartClient::SfvbFlow.new(
   sending_domain_uuid: null,
   sending_name: null,
   sending_user: null,
+  sms_phone_number: null,
   status: null,
   status_dts: null,
   trigger_parameter: null,

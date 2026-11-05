@@ -5102,6 +5102,85 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Read one page of a list's members
+    # Each member's customer uuid, email and the date they joined.  Email addresses are masked (w***a@example.com) and customer_data is masked, unless show_customer_data is true, which returns the real addresses and needs the sfvb_publish scope.  Every such read is logged.  Ask for them only when the merchant needs a person's address.  Read only. 
+    # @param storefront_oid [Integer] 
+    # @param list_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page, from 1
+    # @option opts [Integer] :page_size Members per page, 1 to 100 (default 50)
+    # @option opts [Boolean] :show_customer_data True to return the real email addresses instead of masked ones
+    # @return [SfvbCommsMembersResponse]
+    def get_sfvb_comms_list_members(storefront_oid, list_uuid, opts = {})
+      data, _status_code, _headers = get_sfvb_comms_list_members_with_http_info(storefront_oid, list_uuid, opts)
+      data
+    end
+
+    # Read one page of a list&#39;s members
+    # Each member&#39;s customer uuid, email and the date they joined.  Email addresses are masked (w***a@example.com) and customer_data is masked, unless show_customer_data is true, which returns the real addresses and needs the sfvb_publish scope.  Every such read is logged.  Ask for them only when the merchant needs a person&#39;s address.  Read only. 
+    # @param storefront_oid [Integer] 
+    # @param list_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page, from 1
+    # @option opts [Integer] :page_size Members per page, 1 to 100 (default 50)
+    # @option opts [Boolean] :show_customer_data True to return the real email addresses instead of masked ones
+    # @return [Array<(SfvbCommsMembersResponse, Integer, Hash)>] SfvbCommsMembersResponse data, response status code and response headers
+    def get_sfvb_comms_list_members_with_http_info(storefront_oid, list_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_comms_list_members ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_comms_list_members"
+      end
+      # verify the required parameter 'list_uuid' is set
+      if @api_client.config.client_side_validation && list_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'list_uuid' when calling SfvbApi.get_sfvb_comms_list_members"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/lists/{list_uuid}/members'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'list_uuid' + '}', CGI.escape(list_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'show_customer_data'] = opts[:'show_customer_data'] if !opts[:'show_customer_data'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsMembersResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_comms_list_members",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_comms_list_members\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read one segment, with its rule
     # The segment's name, folder, rule, member count at its last rebuild, whether a rebuild is still due, and the campaigns and flows that use it, each with whether it is live.  hash_sha256 is the If-Match for an update.  Never its members, its Facebook audience, its ranking or its third party sync settings. 
     # @param storefront_oid [Integer] 
@@ -5168,6 +5247,85 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_comms_segment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read one page of a segment's members
+    # Each member's customer uuid, email and the date they joined.  Email addresses are masked (w***a@example.com) and customer_data is masked, unless show_customer_data is true, which returns the real addresses and needs the sfvb_publish scope.  Every such read is logged.  Ask for them only when the merchant needs a person's address.  Read only. 
+    # @param storefront_oid [Integer] 
+    # @param segment_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page, from 1
+    # @option opts [Integer] :page_size Members per page, 1 to 100 (default 50)
+    # @option opts [Boolean] :show_customer_data True to return the real email addresses instead of masked ones
+    # @return [SfvbCommsMembersResponse]
+    def get_sfvb_comms_segment_members(storefront_oid, segment_uuid, opts = {})
+      data, _status_code, _headers = get_sfvb_comms_segment_members_with_http_info(storefront_oid, segment_uuid, opts)
+      data
+    end
+
+    # Read one page of a segment&#39;s members
+    # Each member&#39;s customer uuid, email and the date they joined.  Email addresses are masked (w***a@example.com) and customer_data is masked, unless show_customer_data is true, which returns the real addresses and needs the sfvb_publish scope.  Every such read is logged.  Ask for them only when the merchant needs a person&#39;s address.  Read only. 
+    # @param storefront_oid [Integer] 
+    # @param segment_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page, from 1
+    # @option opts [Integer] :page_size Members per page, 1 to 100 (default 50)
+    # @option opts [Boolean] :show_customer_data True to return the real email addresses instead of masked ones
+    # @return [Array<(SfvbCommsMembersResponse, Integer, Hash)>] SfvbCommsMembersResponse data, response status code and response headers
+    def get_sfvb_comms_segment_members_with_http_info(storefront_oid, segment_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_comms_segment_members ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_comms_segment_members"
+      end
+      # verify the required parameter 'segment_uuid' is set
+      if @api_client.config.client_side_validation && segment_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'segment_uuid' when calling SfvbApi.get_sfvb_comms_segment_members"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/segments/{segment_uuid}/members'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'segment_uuid' + '}', CGI.escape(segment_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'show_customer_data'] = opts[:'show_customer_data'] if !opts[:'show_customer_data'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCommsMembersResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_comms_segment_members",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_comms_segment_members\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -7655,6 +7813,85 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Read one page of the cards mailed for a postcard
+    # Every printed card mailed for the postcard, newest first, with its status, cost, dates and the order it converted to.  Recipients are masked (the name an initial, the street lines hidden, city, state and postal code kept) and the vendor's status text is left out, unless show_customer_data is true, which needs the sfvb_publish scope and is logged.  The return address is the merchant's own.  Read only. 
+    # @param storefront_oid [Integer] 
+    # @param postcard_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page, from 1
+    # @option opts [Integer] :page_size Cards per page, 1 to 100 (default 50)
+    # @option opts [Boolean] :show_customer_data True to return the recipients&#39; real names and street addresses
+    # @return [SfvbPostcardTrackingResponse]
+    def get_sfvb_postcard_tracking(storefront_oid, postcard_uuid, opts = {})
+      data, _status_code, _headers = get_sfvb_postcard_tracking_with_http_info(storefront_oid, postcard_uuid, opts)
+      data
+    end
+
+    # Read one page of the cards mailed for a postcard
+    # Every printed card mailed for the postcard, newest first, with its status, cost, dates and the order it converted to.  Recipients are masked (the name an initial, the street lines hidden, city, state and postal code kept) and the vendor&#39;s status text is left out, unless show_customer_data is true, which needs the sfvb_publish scope and is logged.  The return address is the merchant&#39;s own.  Read only. 
+    # @param storefront_oid [Integer] 
+    # @param postcard_uuid [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page The page, from 1
+    # @option opts [Integer] :page_size Cards per page, 1 to 100 (default 50)
+    # @option opts [Boolean] :show_customer_data True to return the recipients&#39; real names and street addresses
+    # @return [Array<(SfvbPostcardTrackingResponse, Integer, Hash)>] SfvbPostcardTrackingResponse data, response status code and response headers
+    def get_sfvb_postcard_tracking_with_http_info(storefront_oid, postcard_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_postcard_tracking ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_postcard_tracking"
+      end
+      # verify the required parameter 'postcard_uuid' is set
+      if @api_client.config.client_side_validation && postcard_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'postcard_uuid' when calling SfvbApi.get_sfvb_postcard_tracking"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/postcards/{postcard_uuid}/tracking'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'postcard_uuid' + '}', CGI.escape(postcard_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'show_customer_data'] = opts[:'show_customer_data'] if !opts[:'show_customer_data'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbPostcardTrackingResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_postcard_tracking",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_postcard_tracking\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # URL that renders a preview session
     # Refuses a session that does not exist, so a URL you receive is for a session that was really there.  expires_in_seconds is the time actually remaining, not the configured lifetime.  Needs a token that resolves to a user, because a preview session belongs to the person who created it. 
     # @param storefront_oid [Integer] 
@@ -9360,6 +9597,76 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_tracking_settings\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read a transactional email's subject, delivery options and sender
+    # file_name is the template file from the transactional email list, such as receipt_html.vm, or its display name.  The sender is shared by every storefront on the same screen branding theme (sender_shared_with); a sender that sends through the merchant's own mail server shows smtp true and never its credentials.  hash_sha256 is the If-Match for an update.  The template itself is a theme file. 
+    # @param storefront_oid [Integer] 
+    # @param file_name [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbTransactionalEmailResponse]
+    def get_sfvb_transactional_email(storefront_oid, file_name, opts = {})
+      data, _status_code, _headers = get_sfvb_transactional_email_with_http_info(storefront_oid, file_name, opts)
+      data
+    end
+
+    # Read a transactional email&#39;s subject, delivery options and sender
+    # file_name is the template file from the transactional email list, such as receipt_html.vm, or its display name.  The sender is shared by every storefront on the same screen branding theme (sender_shared_with); a sender that sends through the merchant&#39;s own mail server shows smtp true and never its credentials.  hash_sha256 is the If-Match for an update.  The template itself is a theme file. 
+    # @param storefront_oid [Integer] 
+    # @param file_name [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbTransactionalEmailResponse, Integer, Hash)>] SfvbTransactionalEmailResponse data, response status code and response headers
+    def get_sfvb_transactional_email_with_http_info(storefront_oid, file_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_transactional_email ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_transactional_email"
+      end
+      # verify the required parameter 'file_name' is set
+      if @api_client.config.client_side_validation && file_name.nil?
+        fail ArgumentError, "Missing the required parameter 'file_name' when calling SfvbApi.get_sfvb_transactional_email"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/transactional_emails/{file_name}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'file_name' + '}', CGI.escape(file_name.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTransactionalEmailResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_transactional_email",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_transactional_email\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -18580,6 +18887,97 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_tracking_provider\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change a transactional email's subject, delivery options or sender
+    # A field left out stays as it is.  It goes to every matching order from the moment it is saved, so every change needs sfvb_publish, the email's hash_sha256 as If-Match, and an approved transactional_email.update request for exactly this change (params.path the template file).  dry_run checks and shows the change without writing or using an approval.  Delivery options are named by name.  A sender change reaches every storefront on the same screen branding theme, and is refused for one that sends through the merchant's own mail server. 
+    # @param storefront_oid [Integer] 
+    # @param file_name [String] 
+    # @param if_match [String] The email&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param transactional_email_update_request [SfvbTransactionalEmailUpdateRequest] The fields to change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id The approval_id of an approved transactional_email.update request for exactly this change.  See POST /sfvb/approvals.
+    # @return [SfvbTransactionalEmailResponse]
+    def update_sfvb_transactional_email(storefront_oid, file_name, if_match, transactional_email_update_request, opts = {})
+      data, _status_code, _headers = update_sfvb_transactional_email_with_http_info(storefront_oid, file_name, if_match, transactional_email_update_request, opts)
+      data
+    end
+
+    # Change a transactional email&#39;s subject, delivery options or sender
+    # A field left out stays as it is.  It goes to every matching order from the moment it is saved, so every change needs sfvb_publish, the email&#39;s hash_sha256 as If-Match, and an approved transactional_email.update request for exactly this change (params.path the template file).  dry_run checks and shows the change without writing or using an approval.  Delivery options are named by name.  A sender change reaches every storefront on the same screen branding theme, and is refused for one that sends through the merchant&#39;s own mail server. 
+    # @param storefront_oid [Integer] 
+    # @param file_name [String] 
+    # @param if_match [String] The email&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale.
+    # @param transactional_email_update_request [SfvbTransactionalEmailUpdateRequest] The fields to change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id The approval_id of an approved transactional_email.update request for exactly this change.  See POST /sfvb/approvals.
+    # @return [Array<(SfvbTransactionalEmailResponse, Integer, Hash)>] SfvbTransactionalEmailResponse data, response status code and response headers
+    def update_sfvb_transactional_email_with_http_info(storefront_oid, file_name, if_match, transactional_email_update_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_transactional_email ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_transactional_email"
+      end
+      # verify the required parameter 'file_name' is set
+      if @api_client.config.client_side_validation && file_name.nil?
+        fail ArgumentError, "Missing the required parameter 'file_name' when calling SfvbApi.update_sfvb_transactional_email"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.update_sfvb_transactional_email"
+      end
+      # verify the required parameter 'transactional_email_update_request' is set
+      if @api_client.config.client_side_validation && transactional_email_update_request.nil?
+        fail ArgumentError, "Missing the required parameter 'transactional_email_update_request' when calling SfvbApi.update_sfvb_transactional_email"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/transactional_emails/{file_name}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'file_name' + '}', CGI.escape(file_name.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(transactional_email_update_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTransactionalEmailResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_transactional_email",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_transactional_email\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -73,7 +73,9 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_comms_folder**](SfvbApi.md#get_sfvb_comms_folder) | **GET** /sfvb/storefronts/{storefront_oid}/list_segment_folders/{folder_uuid} | Read one list and segment folder |
 | [**get_sfvb_comms_folders**](SfvbApi.md#get_sfvb_comms_folders) | **GET** /sfvb/storefronts/{storefront_oid}/list_segment_folders | List the list and segment folders |
 | [**get_sfvb_comms_list**](SfvbApi.md#get_sfvb_comms_list) | **GET** /sfvb/storefronts/{storefront_oid}/lists/{list_uuid} | Read one email list |
+| [**get_sfvb_comms_list_members**](SfvbApi.md#get_sfvb_comms_list_members) | **GET** /sfvb/storefronts/{storefront_oid}/lists/{list_uuid}/members | Read one page of a list&#39;s members |
 | [**get_sfvb_comms_segment**](SfvbApi.md#get_sfvb_comms_segment) | **GET** /sfvb/storefronts/{storefront_oid}/segments/{segment_uuid} | Read one segment, with its rule |
+| [**get_sfvb_comms_segment_members**](SfvbApi.md#get_sfvb_comms_segment_members) | **GET** /sfvb/storefronts/{storefront_oid}/segments/{segment_uuid}/members | Read one page of a segment&#39;s members |
 | [**get_sfvb_comms_sending_domain**](SfvbApi.md#get_sfvb_comms_sending_domain) | **GET** /sfvb/comms/sending_domains/{domain} | Read a sending domain |
 | [**get_sfvb_comms_sending_domains**](SfvbApi.md#get_sfvb_comms_sending_domains) | **GET** /sfvb/comms/sending_domains | List the sending domains |
 | [**get_sfvb_comms_twilio_account**](SfvbApi.md#get_sfvb_comms_twilio_account) | **GET** /sfvb/comms/twilio_account | Read the Twilio account |
@@ -110,6 +112,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_page_blog_posts**](SfvbApi.md#get_sfvb_page_blog_posts) | **GET** /sfvb/storefronts/{storefront_oid}/pages/blog_posts | Read the blog posts assigned to a page |
 | [**get_sfvb_page_items**](SfvbApi.md#get_sfvb_page_items) | **GET** /sfvb/storefronts/{storefront_oid}/pages/items | Read the items assigned to a page |
 | [**get_sfvb_page_selectors**](SfvbApi.md#get_sfvb_page_selectors) | **GET** /sfvb/storefronts/{storefront_oid}/pages/selectors | Read a page&#39;s selectors |
+| [**get_sfvb_postcard_tracking**](SfvbApi.md#get_sfvb_postcard_tracking) | **GET** /sfvb/storefronts/{storefront_oid}/postcards/{postcard_uuid}/tracking | Read one page of the cards mailed for a postcard |
 | [**get_sfvb_preview_url**](SfvbApi.md#get_sfvb_preview_url) | **GET** /sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id}/url | URL that renders a preview session |
 | [**get_sfvb_recording**](SfvbApi.md#get_sfvb_recording) | **GET** /sfvb/storefronts/{storefront_oid}/recordings/{screen_recording_uuid} | Get a screen recording |
 | [**get_sfvb_recording_page_view_events**](SfvbApi.md#get_sfvb_recording_page_view_events) | **GET** /sfvb/storefronts/{storefront_oid}/recordings/{screen_recording_uuid}/page_views/{screen_recording_page_view_uuid}/events | Get one recorded page view&#39;s replay events |
@@ -135,6 +138,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_tracking_provider**](SfvbApi.md#get_sfvb_tracking_provider) | **GET** /sfvb/storefronts/{storefront_oid}/tracking/providers/{provider} | Read one tracking provider |
 | [**get_sfvb_tracking_providers**](SfvbApi.md#get_sfvb_tracking_providers) | **GET** /sfvb/storefronts/{storefront_oid}/tracking/providers | List a storefront&#39;s tracking providers |
 | [**get_sfvb_tracking_settings**](SfvbApi.md#get_sfvb_tracking_settings) | **GET** /sfvb/storefronts/{storefront_oid}/tracking | Read a storefront&#39;s privacy rules and advanced conversion settings |
+| [**get_sfvb_transactional_email**](SfvbApi.md#get_sfvb_transactional_email) | **GET** /sfvb/storefronts/{storefront_oid}/transactional_emails/{file_name} | Read a transactional email&#39;s subject, delivery options and sender |
 | [**get_sfvb_transactional_emails**](SfvbApi.md#get_sfvb_transactional_emails) | **GET** /sfvb/storefronts/{storefront_oid}/transactional_emails | List the transactional emails a storefront sends |
 | [**get_sfvb_upsell_offer**](SfvbApi.md#get_sfvb_upsell_offer) | **GET** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid} | Get an upsell offer |
 | [**get_sfvb_upsell_path**](SfvbApi.md#get_sfvb_upsell_path) | **GET** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid} | Get an upsell path |
@@ -253,6 +257,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**update_sfvb_tracking_html**](SfvbApi.md#update_sfvb_tracking_html) | **PUT** /sfvb/storefronts/{storefront_oid}/tracking/html/{slot} | Write one custom tracking HTML slot |
 | [**update_sfvb_tracking_privacy**](SfvbApi.md#update_sfvb_tracking_privacy) | **PUT** /sfvb/storefronts/{storefront_oid}/tracking/privacy | Change a storefront&#39;s privacy rules |
 | [**update_sfvb_tracking_provider**](SfvbApi.md#update_sfvb_tracking_provider) | **PUT** /sfvb/storefronts/{storefront_oid}/tracking/providers/{provider} | Change one tracking provider |
+| [**update_sfvb_transactional_email**](SfvbApi.md#update_sfvb_transactional_email) | **PUT** /sfvb/storefronts/{storefront_oid}/transactional_emails/{file_name} | Change a transactional email&#39;s subject, delivery options or sender |
 | [**update_sfvb_upsell_offer**](SfvbApi.md#update_sfvb_upsell_offer) | **PUT** /sfvb/storefronts/{storefront_oid}/upsell_offers/{upsell_offer_oid} | Update an upsell offer |
 | [**update_sfvb_upsell_path**](SfvbApi.md#update_sfvb_upsell_path) | **PUT** /sfvb/storefronts/{storefront_oid}/upsell_paths/{upsell_path_oid} | Update an upsell path |
 | [**update_sfvb_utm_shortcode**](SfvbApi.md#update_sfvb_utm_shortcode) | **PUT** /sfvb/storefronts/{storefront_oid}/utm_shortcodes/{shortcode_oid} | Change a UTM shortcode |
@@ -4016,6 +4021,63 @@ end
 - **Accept**: application/json
 
 
+## get_sfvb_comms_list_members
+
+> <SfvbCommsMembersResponse> get_sfvb_comms_list_members(storefront_oid, list_uuid, opts)
+
+Read one page of a list's members
+
+Each member's customer uuid, email and the date they joined.  Email addresses are masked (w***a@example.com) and customer_data is masked, unless show_customer_data is true, which returns the real addresses and needs the sfvb_publish scope.  Every such read is logged.  Ask for them only when the merchant needs a person's address.  Read only. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_comms_list_members_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsMembersResponse>, Integer, Hash)> get_sfvb_comms_list_members_with_http_info(storefront_oid, list_uuid, opts)
+
+```ruby
+begin
+  # Read one page of a list's members
+  data, status_code, headers = api_instance.get_sfvb_comms_list_members_with_http_info(storefront_oid, list_uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsMembersResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_comms_list_members_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **list_uuid** | **String** |  |  |
+| **page** | **Integer** | The page, from 1 | [optional] |
+| **page_size** | **Integer** | Members per page, 1 to 100 (default 50) | [optional] |
+| **show_customer_data** | **Boolean** | True to return the real email addresses instead of masked ones | [optional] |
+
+### Return type
+
+[**SfvbCommsMembersResponse**](SfvbCommsMembersResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_sfvb_comms_segment
 
 > <SfvbCommsSegmentResponse> get_sfvb_comms_segment(storefront_oid, segment_uuid)
@@ -4059,6 +4121,63 @@ end
 ### Return type
 
 [**SfvbCommsSegmentResponse**](SfvbCommsSegmentResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_comms_segment_members
+
+> <SfvbCommsMembersResponse> get_sfvb_comms_segment_members(storefront_oid, segment_uuid, opts)
+
+Read one page of a segment's members
+
+Each member's customer uuid, email and the date they joined.  Email addresses are masked (w***a@example.com) and customer_data is masked, unless show_customer_data is true, which returns the real addresses and needs the sfvb_publish scope.  Every such read is logged.  Ask for them only when the merchant needs a person's address.  Read only. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_comms_segment_members_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCommsMembersResponse>, Integer, Hash)> get_sfvb_comms_segment_members_with_http_info(storefront_oid, segment_uuid, opts)
+
+```ruby
+begin
+  # Read one page of a segment's members
+  data, status_code, headers = api_instance.get_sfvb_comms_segment_members_with_http_info(storefront_oid, segment_uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCommsMembersResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_comms_segment_members_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **segment_uuid** | **String** |  |  |
+| **page** | **Integer** | The page, from 1 | [optional] |
+| **page_size** | **Integer** | Members per page, 1 to 100 (default 50) | [optional] |
+| **show_customer_data** | **Boolean** | True to return the real email addresses instead of masked ones | [optional] |
+
+### Return type
+
+[**SfvbCommsMembersResponse**](SfvbCommsMembersResponse.md)
 
 ### Authorization
 
@@ -6020,6 +6139,63 @@ end
 - **Accept**: application/json
 
 
+## get_sfvb_postcard_tracking
+
+> <SfvbPostcardTrackingResponse> get_sfvb_postcard_tracking(storefront_oid, postcard_uuid, opts)
+
+Read one page of the cards mailed for a postcard
+
+Every printed card mailed for the postcard, newest first, with its status, cost, dates and the order it converted to.  Recipients are masked (the name an initial, the street lines hidden, city, state and postal code kept) and the vendor's status text is left out, unless show_customer_data is true, which needs the sfvb_publish scope and is logged.  The return address is the merchant's own.  Read only. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_postcard_tracking_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbPostcardTrackingResponse>, Integer, Hash)> get_sfvb_postcard_tracking_with_http_info(storefront_oid, postcard_uuid, opts)
+
+```ruby
+begin
+  # Read one page of the cards mailed for a postcard
+  data, status_code, headers = api_instance.get_sfvb_postcard_tracking_with_http_info(storefront_oid, postcard_uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbPostcardTrackingResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_postcard_tracking_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **postcard_uuid** | **String** |  |  |
+| **page** | **Integer** | The page, from 1 | [optional] |
+| **page_size** | **Integer** | Cards per page, 1 to 100 (default 50) | [optional] |
+| **show_customer_data** | **Boolean** | True to return the recipients&#39; real names and street addresses | [optional] |
+
+### Return type
+
+[**SfvbPostcardTrackingResponse**](SfvbPostcardTrackingResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_sfvb_preview_url
 
 > <SfvbPreviewUrlResponse> get_sfvb_preview_url(storefront_oid, preview_session_id, opts)
@@ -7355,6 +7531,60 @@ end
 ### Return type
 
 [**SfvbTrackingSettingsResponse**](SfvbTrackingSettingsResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_transactional_email
+
+> <SfvbTransactionalEmailResponse> get_sfvb_transactional_email(storefront_oid, file_name)
+
+Read a transactional email's subject, delivery options and sender
+
+file_name is the template file from the transactional email list, such as receipt_html.vm, or its display name.  The sender is shared by every storefront on the same screen branding theme (sender_shared_with); a sender that sends through the merchant's own mail server shows smtp true and never its credentials.  hash_sha256 is the If-Match for an update.  The template itself is a theme file. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_transactional_email_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbTransactionalEmailResponse>, Integer, Hash)> get_sfvb_transactional_email_with_http_info(storefront_oid, file_name)
+
+```ruby
+begin
+  # Read a transactional email's subject, delivery options and sender
+  data, status_code, headers = api_instance.get_sfvb_transactional_email_with_http_info(storefront_oid, file_name)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbTransactionalEmailResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_transactional_email_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **file_name** | **String** |  |  |
+
+### Return type
+
+[**SfvbTransactionalEmailResponse**](SfvbTransactionalEmailResponse.md)
 
 ### Authorization
 
@@ -13872,6 +14102,63 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## update_sfvb_transactional_email
+
+> <SfvbTransactionalEmailResponse> update_sfvb_transactional_email(storefront_oid, file_name, if_match, transactional_email_update_request, opts)
+
+Change a transactional email's subject, delivery options or sender
+
+A field left out stays as it is.  It goes to every matching order from the moment it is saved, so every change needs sfvb_publish, the email's hash_sha256 as If-Match, and an approved transactional_email.update request for exactly this change (params.path the template file).  dry_run checks and shows the change without writing or using an approval.  Delivery options are named by name.  A sender change reaches every storefront on the same screen branding theme, and is refused for one that sends through the merchant's own mail server. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the update_sfvb_transactional_email_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbTransactionalEmailResponse>, Integer, Hash)> update_sfvb_transactional_email_with_http_info(storefront_oid, file_name, if_match, transactional_email_update_request, opts)
+
+```ruby
+begin
+  # Change a transactional email's subject, delivery options or sender
+  data, status_code, headers = api_instance.update_sfvb_transactional_email_with_http_info(storefront_oid, file_name, if_match, transactional_email_update_request, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbTransactionalEmailResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->update_sfvb_transactional_email_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **file_name** | **String** |  |  |
+| **if_match** | **String** | The email&#39;s hash_sha256 from the last read.  Required; 428 when absent, 412 when stale. |  |
+| **transactional_email_update_request** | [**SfvbTransactionalEmailUpdateRequest**](SfvbTransactionalEmailUpdateRequest.md) | The fields to change |  |
+| **approval_id** | **String** | The approval_id of an approved transactional_email.update request for exactly this change.  See POST /sfvb/approvals. | [optional] |
+
+### Return type
+
+[**SfvbTransactionalEmailResponse**](SfvbTransactionalEmailResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

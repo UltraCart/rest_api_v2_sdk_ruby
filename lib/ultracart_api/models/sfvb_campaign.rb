@@ -66,6 +66,9 @@ module UltracartClient
     # The part of the from address before the at sign.  Defaults to the storefront's marketing setting.
     attr_accessor :sending_user
 
+    # The number this campaign's SMS steps send from.  Without one, every SMS step skips every customer, whatever the account's SMS settings say.
+    attr_accessor :sms_phone_number
+
     # The status, such as draft, scheduled, sending, sent or archived.
     attr_accessor :status
 
@@ -92,6 +95,7 @@ module UltracartClient
         :'sending_domain_uuid' => :'sending_domain_uuid',
         :'sending_name' => :'sending_name',
         :'sending_user' => :'sending_user',
+        :'sms_phone_number' => :'sms_phone_number',
         :'status' => :'status',
         :'status_dts' => :'status_dts'
       }
@@ -122,6 +126,7 @@ module UltracartClient
         :'sending_domain_uuid' => :'String',
         :'sending_name' => :'String',
         :'sending_user' => :'String',
+        :'sms_phone_number' => :'String',
         :'status' => :'String',
         :'status_dts' => :'String'
       }
@@ -224,6 +229,10 @@ module UltracartClient
         self.sending_user = attributes[:'sending_user']
       end
 
+      if attributes.key?(:'sms_phone_number')
+        self.sms_phone_number = attributes[:'sms_phone_number']
+      end
+
       if attributes.key?(:'status')
         self.status = attributes[:'status']
       end
@@ -268,6 +277,7 @@ module UltracartClient
           sending_domain_uuid == o.sending_domain_uuid &&
           sending_name == o.sending_name &&
           sending_user == o.sending_user &&
+          sms_phone_number == o.sms_phone_number &&
           status == o.status &&
           status_dts == o.status_dts
     end
@@ -281,7 +291,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [campaign_uuid, communication_sequence_uuid, created_dts, deleted, emails, end_once_customer_purchases, end_once_customer_purchases_anywhere, hash_sha256, live, memberships, name, notes, postcards, scheduled_dts, sending_domain_uuid, sending_name, sending_user, status, status_dts].hash
+      [campaign_uuid, communication_sequence_uuid, created_dts, deleted, emails, end_once_customer_purchases, end_once_customer_purchases_anywhere, hash_sha256, live, memberships, name, notes, postcards, scheduled_dts, sending_domain_uuid, sending_name, sending_user, sms_phone_number, status, status_dts].hash
     end
 
     # Builds the object from hash
