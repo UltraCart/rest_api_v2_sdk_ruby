@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **bounced** | **Integer** | Permanent bounces. | [optional] |
-| **channel** | **String** | email, sms, postcard, branch or sequence. | [optional] |
+| **channel** | **String** | email, sms, postcard, branch or sequence, or step for a step type that records no counts of its own, with every count named in not_measured. | [optional] |
 | **clicked** | **Integer** | Clicks (for a postcard, scans of its QR code). | [optional] |
 | **conversions** | **Integer** | Conversions. | [optional] |
 | **customers** | **Integer** | Customers who reached it (a branch side), or started (a whole sequence). | [optional] |

@@ -24,6 +24,9 @@ module UltracartClient
     # True to end the flow for a customer once they buy from any source.
     attr_accessor :end_once_customer_purchases_anywhere
 
+    # File it in this flow folder.  An empty value takes it out of its folder.
+    attr_accessor :folder_uuid
+
     # The flow name, 1 to 250 characters.  Required to create.
     attr_accessor :name
 
@@ -76,6 +79,7 @@ module UltracartClient
         :'allow_multiple_concurrent_enrollments' => :'allow_multiple_concurrent_enrollments',
         :'end_once_customer_purchases' => :'end_once_customer_purchases',
         :'end_once_customer_purchases_anywhere' => :'end_once_customer_purchases_anywhere',
+        :'folder_uuid' => :'folder_uuid',
         :'name' => :'name',
         :'reentry_delay_days' => :'reentry_delay_days',
         :'reentry_policy' => :'reentry_policy',
@@ -98,6 +102,7 @@ module UltracartClient
         :'allow_multiple_concurrent_enrollments' => :'Boolean',
         :'end_once_customer_purchases' => :'Boolean',
         :'end_once_customer_purchases_anywhere' => :'Boolean',
+        :'folder_uuid' => :'String',
         :'name' => :'String',
         :'reentry_delay_days' => :'Integer',
         :'reentry_policy' => :'String',
@@ -140,6 +145,10 @@ module UltracartClient
 
       if attributes.key?(:'end_once_customer_purchases_anywhere')
         self.end_once_customer_purchases_anywhere = attributes[:'end_once_customer_purchases_anywhere']
+      end
+
+      if attributes.key?(:'folder_uuid')
+        self.folder_uuid = attributes[:'folder_uuid']
       end
 
       if attributes.key?(:'name')
@@ -208,6 +217,7 @@ module UltracartClient
           allow_multiple_concurrent_enrollments == o.allow_multiple_concurrent_enrollments &&
           end_once_customer_purchases == o.end_once_customer_purchases &&
           end_once_customer_purchases_anywhere == o.end_once_customer_purchases_anywhere &&
+          folder_uuid == o.folder_uuid &&
           name == o.name &&
           reentry_delay_days == o.reentry_delay_days &&
           reentry_policy == o.reentry_policy &&
@@ -227,7 +237,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allow_multiple_concurrent_enrollments, end_once_customer_purchases, end_once_customer_purchases_anywhere, name, reentry_delay_days, reentry_policy, sending_domain_uuid, sending_name, sending_user, trigger_parameter, trigger_type].hash
+      [allow_multiple_concurrent_enrollments, end_once_customer_purchases, end_once_customer_purchases_anywhere, folder_uuid, name, reentry_delay_days, reentry_policy, sending_domain_uuid, sending_name, sending_user, trigger_parameter, trigger_type].hash
     end
 
     # Builds the object from hash

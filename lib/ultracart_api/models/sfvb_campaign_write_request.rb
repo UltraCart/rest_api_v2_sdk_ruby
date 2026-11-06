@@ -21,6 +21,9 @@ module UltracartClient
     # True to end the campaign for a customer once they buy from any source.
     attr_accessor :end_once_customer_purchases_anywhere
 
+    # File it in this campaign folder.  An empty value takes it out of its folder.
+    attr_accessor :folder_uuid
+
     # The lists and segments it sends to or leaves out.  Replaces the whole set.  An empty array clears it.
     attr_accessor :memberships
 
@@ -44,6 +47,7 @@ module UltracartClient
       {
         :'end_once_customer_purchases' => :'end_once_customer_purchases',
         :'end_once_customer_purchases_anywhere' => :'end_once_customer_purchases_anywhere',
+        :'folder_uuid' => :'folder_uuid',
         :'memberships' => :'memberships',
         :'name' => :'name',
         :'scheduled_dts' => :'scheduled_dts',
@@ -63,6 +67,7 @@ module UltracartClient
       {
         :'end_once_customer_purchases' => :'Boolean',
         :'end_once_customer_purchases_anywhere' => :'Boolean',
+        :'folder_uuid' => :'String',
         :'memberships' => :'Array<SfvbCampaignMembership>',
         :'name' => :'String',
         :'scheduled_dts' => :'String',
@@ -99,6 +104,10 @@ module UltracartClient
 
       if attributes.key?(:'end_once_customer_purchases_anywhere')
         self.end_once_customer_purchases_anywhere = attributes[:'end_once_customer_purchases_anywhere']
+      end
+
+      if attributes.key?(:'folder_uuid')
+        self.folder_uuid = attributes[:'folder_uuid']
       end
 
       if attributes.key?(:'memberships')
@@ -148,6 +157,7 @@ module UltracartClient
       self.class == o.class &&
           end_once_customer_purchases == o.end_once_customer_purchases &&
           end_once_customer_purchases_anywhere == o.end_once_customer_purchases_anywhere &&
+          folder_uuid == o.folder_uuid &&
           memberships == o.memberships &&
           name == o.name &&
           scheduled_dts == o.scheduled_dts &&
@@ -165,7 +175,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [end_once_customer_purchases, end_once_customer_purchases_anywhere, memberships, name, scheduled_dts, sending_domain_uuid, sending_name, sending_user].hash
+      [end_once_customer_purchases, end_once_customer_purchases_anywhere, folder_uuid, memberships, name, scheduled_dts, sending_domain_uuid, sending_name, sending_user].hash
     end
 
     # Builds the object from hash

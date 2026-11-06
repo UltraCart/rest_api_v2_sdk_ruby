@@ -18,7 +18,7 @@ module UltracartClient
     # Permanent bounces.
     attr_accessor :bounced
 
-    # email, sms, postcard, branch or sequence.
+    # email, sms, postcard, branch or sequence, or step for a step type that records no counts of its own, with every count named in not_measured.
     attr_accessor :channel
 
     # Clicks (for a postcard, scans of its QR code).

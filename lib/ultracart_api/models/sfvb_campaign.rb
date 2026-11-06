@@ -36,6 +36,12 @@ module UltracartClient
     # True when a customer leaves the campaign once they buy from any source.
     attr_accessor :end_once_customer_purchases_anywhere
 
+    # That folder's name.
+    attr_accessor :folder_name
+
+    # The campaign folder it is filed in, or none.
+    attr_accessor :folder_uuid
+
     # Send this as If-Match when changing or archiving the campaign.
     attr_accessor :hash_sha256
 
@@ -85,6 +91,8 @@ module UltracartClient
         :'emails' => :'emails',
         :'end_once_customer_purchases' => :'end_once_customer_purchases',
         :'end_once_customer_purchases_anywhere' => :'end_once_customer_purchases_anywhere',
+        :'folder_name' => :'folder_name',
+        :'folder_uuid' => :'folder_uuid',
         :'hash_sha256' => :'hash_sha256',
         :'live' => :'live',
         :'memberships' => :'memberships',
@@ -116,6 +124,8 @@ module UltracartClient
         :'emails' => :'Array<SfvbCommsEmail>',
         :'end_once_customer_purchases' => :'Boolean',
         :'end_once_customer_purchases_anywhere' => :'Boolean',
+        :'folder_name' => :'String',
+        :'folder_uuid' => :'String',
         :'hash_sha256' => :'String',
         :'live' => :'Boolean',
         :'memberships' => :'Array<SfvbCampaignMembership>',
@@ -181,6 +191,14 @@ module UltracartClient
 
       if attributes.key?(:'end_once_customer_purchases_anywhere')
         self.end_once_customer_purchases_anywhere = attributes[:'end_once_customer_purchases_anywhere']
+      end
+
+      if attributes.key?(:'folder_name')
+        self.folder_name = attributes[:'folder_name']
+      end
+
+      if attributes.key?(:'folder_uuid')
+        self.folder_uuid = attributes[:'folder_uuid']
       end
 
       if attributes.key?(:'hash_sha256')
@@ -267,6 +285,8 @@ module UltracartClient
           emails == o.emails &&
           end_once_customer_purchases == o.end_once_customer_purchases &&
           end_once_customer_purchases_anywhere == o.end_once_customer_purchases_anywhere &&
+          folder_name == o.folder_name &&
+          folder_uuid == o.folder_uuid &&
           hash_sha256 == o.hash_sha256 &&
           live == o.live &&
           memberships == o.memberships &&
@@ -291,7 +311,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [campaign_uuid, communication_sequence_uuid, created_dts, deleted, emails, end_once_customer_purchases, end_once_customer_purchases_anywhere, hash_sha256, live, memberships, name, notes, postcards, scheduled_dts, sending_domain_uuid, sending_name, sending_user, sms_phone_number, status, status_dts].hash
+      [campaign_uuid, communication_sequence_uuid, created_dts, deleted, emails, end_once_customer_purchases, end_once_customer_purchases_anywhere, folder_name, folder_uuid, hash_sha256, live, memberships, name, notes, postcards, scheduled_dts, sending_domain_uuid, sending_name, sending_user, sms_phone_number, status, status_dts].hash
     end
 
     # Builds the object from hash

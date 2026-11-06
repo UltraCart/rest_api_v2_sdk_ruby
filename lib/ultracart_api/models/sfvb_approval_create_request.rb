@@ -29,6 +29,8 @@ module UltracartClient
 
     attr_accessor :experiment_start
 
+    attr_accessor :flow_backfill
+
     # For item.attribute_batch, exactly the rows the batch will send - the dry run's change rows, each with merchant_item_oid and current_sha256.  UltraCart keeps only their hash.
     attr_accessor :item_attribute_rows
 
@@ -85,6 +87,7 @@ module UltracartClient
         :'comms_settings' => :'comms_settings',
         :'content' => :'content',
         :'experiment_start' => :'experiment_start',
+        :'flow_backfill' => :'flow_backfill',
         :'item_attribute_rows' => :'item_attribute_rows',
         :'item_pricing' => :'item_pricing',
         :'params' => :'params',
@@ -113,6 +116,7 @@ module UltracartClient
         :'comms_settings' => :'SfvbCommsSettingsUpdateRequest',
         :'content' => :'String',
         :'experiment_start' => :'SfvbExperimentStartRequest',
+        :'flow_backfill' => :'SfvbFlowBackfillRequest',
         :'item_attribute_rows' => :'Array<SfvbItemAttributeBatchRow>',
         :'item_pricing' => :'SfvbItemPricingRequest',
         :'params' => :'SfvbApprovalParams',
@@ -170,6 +174,10 @@ module UltracartClient
 
       if attributes.key?(:'experiment_start')
         self.experiment_start = attributes[:'experiment_start']
+      end
+
+      if attributes.key?(:'flow_backfill')
+        self.flow_backfill = attributes[:'flow_backfill']
       end
 
       if attributes.key?(:'item_attribute_rows')
@@ -231,7 +239,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      action_validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing", "twilio_account.delete", "sending_domain.delete", "sequence_step.delete", "sequence_step.move", "sequence_step.enable_postcard", "segment.update", "smart_attribution.change", "smart_attribution.delete", "tracking_provider.change", "tracking_html.put", "affiliate_network.change", "affiliate_network.delete", "site_seo.change", "transactional_email.update", "comms_settings.update", "comms_list.import", "postcard.test_mail"])
+      action_validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing", "twilio_account.delete", "sending_domain.delete", "sequence_step.delete", "sequence_step.move", "sequence_step.enable_postcard", "segment.update", "smart_attribution.change", "smart_attribution.delete", "tracking_provider.change", "tracking_html.put", "affiliate_network.change", "affiliate_network.delete", "site_seo.change", "transactional_email.update", "comms_settings.update", "comms_list.import", "postcard.test_mail", "flow.backfill"])
       return false unless action_validator.valid?(@action)
       true
     end
@@ -239,7 +247,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] action Object to be assigned
     def action=(action)
-      validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing", "twilio_account.delete", "sending_domain.delete", "sequence_step.delete", "sequence_step.move", "sequence_step.enable_postcard", "segment.update", "smart_attribution.change", "smart_attribution.delete", "tracking_provider.change", "tracking_html.put", "affiliate_network.change", "affiliate_network.delete", "site_seo.change", "transactional_email.update", "comms_settings.update", "comms_list.import", "postcard.test_mail"])
+      validator = EnumAttributeValidator.new('String', ["file.delete", "blog_post.delete", "file.put_script", "redirect.delete_batch", "experiment.start", "experiment.end", "upsell.enable", "item.attribute_batch", "item.pricing", "twilio_account.delete", "sending_domain.delete", "sequence_step.delete", "sequence_step.move", "sequence_step.enable_postcard", "segment.update", "smart_attribution.change", "smart_attribution.delete", "tracking_provider.change", "tracking_html.put", "affiliate_network.change", "affiliate_network.delete", "site_seo.change", "transactional_email.update", "comms_settings.update", "comms_list.import", "postcard.test_mail", "flow.backfill"])
       unless validator.valid?(action)
         fail ArgumentError, "invalid value for \"action\", must be one of #{validator.allowable_values}."
       end
@@ -257,6 +265,7 @@ module UltracartClient
           comms_settings == o.comms_settings &&
           content == o.content &&
           experiment_start == o.experiment_start &&
+          flow_backfill == o.flow_backfill &&
           item_attribute_rows == o.item_attribute_rows &&
           item_pricing == o.item_pricing &&
           params == o.params &&
@@ -279,7 +288,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, affiliate_network, comms_list_import, comms_settings, content, experiment_start, item_attribute_rows, item_pricing, params, postcard_test_mail, reason, redirect_rows, segment_update, site_seo, smart_attribution, tracking_provider, transactional_email].hash
+      [action, affiliate_network, comms_list_import, comms_settings, content, experiment_start, flow_backfill, item_attribute_rows, item_pricing, params, postcard_test_mail, reason, redirect_rows, segment_update, site_seo, smart_attribution, tracking_provider, transactional_email].hash
     end
 
     # Builds the object from hash

@@ -18,7 +18,7 @@ module UltracartClient
     # The template's body, as CJSON.
     attr_accessor :container_cjson
 
-    # The Velocity template it renders inside.  Its content isn't shown here.
+    # The Velocity template it renders inside, as stored.  It is looked up in the storefront's active theme.
     attr_accessor :email_template_vm_path
 
     # What isn't shown.
@@ -26,13 +26,25 @@ module UltracartClient
 
     attr_accessor :template
 
+    # True when the file at template_path exists.
+    attr_accessor :template_exists
+
+    # Why there is no template file, or null when there is one.
+    attr_accessor :template_note
+
+    # The theme file that template is, as a render finds it.  Read it with the files endpoints, whose read also reports valid and velocity_errors.  Null when it couldn't be worked out, with template_note saying why.
+    attr_accessor :template_path
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'container_cjson' => :'container_cjson',
         :'email_template_vm_path' => :'email_template_vm_path',
         :'notes' => :'notes',
-        :'template' => :'template'
+        :'template' => :'template',
+        :'template_exists' => :'template_exists',
+        :'template_note' => :'template_note',
+        :'template_path' => :'template_path'
       }
     end
 
@@ -47,7 +59,10 @@ module UltracartClient
         :'container_cjson' => :'String',
         :'email_template_vm_path' => :'String',
         :'notes' => :'Array<String>',
-        :'template' => :'SfvbCommsTemplate'
+        :'template' => :'SfvbCommsTemplate',
+        :'template_exists' => :'Boolean',
+        :'template_note' => :'String',
+        :'template_path' => :'String'
       }
     end
 
@@ -89,6 +104,18 @@ module UltracartClient
       if attributes.key?(:'template')
         self.template = attributes[:'template']
       end
+
+      if attributes.key?(:'template_exists')
+        self.template_exists = attributes[:'template_exists']
+      end
+
+      if attributes.key?(:'template_note')
+        self.template_note = attributes[:'template_note']
+      end
+
+      if attributes.key?(:'template_path')
+        self.template_path = attributes[:'template_path']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -112,7 +139,10 @@ module UltracartClient
           container_cjson == o.container_cjson &&
           email_template_vm_path == o.email_template_vm_path &&
           notes == o.notes &&
-          template == o.template
+          template == o.template &&
+          template_exists == o.template_exists &&
+          template_note == o.template_note &&
+          template_path == o.template_path
     end
 
     # @see the `==` method
@@ -124,7 +154,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [container_cjson, email_template_vm_path, notes, template].hash
+      [container_cjson, email_template_vm_path, notes, template, template_exists, template_note, template_path].hash
     end
 
     # Builds the object from hash

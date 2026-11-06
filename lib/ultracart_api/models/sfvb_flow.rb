@@ -39,6 +39,12 @@ module UltracartClient
     # The flow uuid.
     attr_accessor :flow_uuid
 
+    # That folder's name.
+    attr_accessor :folder_name
+
+    # The flow folder it is filed in, or none.
+    attr_accessor :folder_uuid
+
     # Send this as If-Match when changing, archiving or turning the flow on or off.
     attr_accessor :hash_sha256
 
@@ -98,6 +104,8 @@ module UltracartClient
         :'end_once_customer_purchases' => :'end_once_customer_purchases',
         :'end_once_customer_purchases_anywhere' => :'end_once_customer_purchases_anywhere',
         :'flow_uuid' => :'flow_uuid',
+        :'folder_name' => :'folder_name',
+        :'folder_uuid' => :'folder_uuid',
         :'hash_sha256' => :'hash_sha256',
         :'live' => :'live',
         :'name' => :'name',
@@ -133,6 +141,8 @@ module UltracartClient
         :'end_once_customer_purchases' => :'Boolean',
         :'end_once_customer_purchases_anywhere' => :'Boolean',
         :'flow_uuid' => :'String',
+        :'folder_name' => :'String',
+        :'folder_uuid' => :'String',
         :'hash_sha256' => :'String',
         :'live' => :'Boolean',
         :'name' => :'String',
@@ -205,6 +215,14 @@ module UltracartClient
 
       if attributes.key?(:'flow_uuid')
         self.flow_uuid = attributes[:'flow_uuid']
+      end
+
+      if attributes.key?(:'folder_name')
+        self.folder_name = attributes[:'folder_name']
+      end
+
+      if attributes.key?(:'folder_uuid')
+        self.folder_uuid = attributes[:'folder_uuid']
       end
 
       if attributes.key?(:'hash_sha256')
@@ -302,6 +320,8 @@ module UltracartClient
           end_once_customer_purchases == o.end_once_customer_purchases &&
           end_once_customer_purchases_anywhere == o.end_once_customer_purchases_anywhere &&
           flow_uuid == o.flow_uuid &&
+          folder_name == o.folder_name &&
+          folder_uuid == o.folder_uuid &&
           hash_sha256 == o.hash_sha256 &&
           live == o.live &&
           name == o.name &&
@@ -329,7 +349,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [allow_multiple_concurrent_enrollments, communication_sequence_uuid, created_dts, deleted, emails, end_once_customer_purchases, end_once_customer_purchases_anywhere, flow_uuid, hash_sha256, live, name, notes, postcards, reentry_delay_days, reentry_policy, sending_domain_uuid, sending_name, sending_user, sms_phone_number, status, status_dts, trigger_parameter, trigger_parameter_name, trigger_type].hash
+      [allow_multiple_concurrent_enrollments, communication_sequence_uuid, created_dts, deleted, emails, end_once_customer_purchases, end_once_customer_purchases_anywhere, flow_uuid, folder_name, folder_uuid, hash_sha256, live, name, notes, postcards, reentry_delay_days, reentry_policy, sending_domain_uuid, sending_name, sending_user, sms_phone_number, status, status_dts, trigger_parameter, trigger_parameter_name, trigger_type].hash
     end
 
     # Builds the object from hash

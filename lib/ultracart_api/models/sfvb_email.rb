@@ -18,6 +18,9 @@ module UltracartClient
     # When the email container was last changed (ISO 8601, UTC).
     attr_accessor :container_last_modified_dts
 
+    # The Velocity template the email body renders inside, as stored, such as templates/template_email.vm.  It is looked up in the storefront's active theme.
+    attr_accessor :email_template_vm_path
+
     # The email uuid.  The same uuid the email container (owner type email) and the email render take.
     attr_accessor :email_uuid
 
@@ -48,6 +51,15 @@ module UltracartClient
     # True when UltraCart suspended the email for spam.  Edits are refused until the merchant resolves it with UltraCart support.
     attr_accessor :suspended_for_spam
 
+    # True when the file at template_path exists.  False means the email can't render.
+    attr_accessor :template_exists
+
+    # Why there is no template file, or null when there is one.
+    attr_accessor :template_note
+
+    # The theme file that template is, as the render finds it.  Read it with the files endpoints, whose read also reports valid and velocity_errors.  Null when it couldn't be worked out, with template_note saying why.
+    attr_accessor :template_path
+
     # True for a transactional email, which skips the marketing footer rules.
     attr_accessor :transactional
 
@@ -58,6 +70,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'container_last_modified_dts' => :'container_last_modified_dts',
+        :'email_template_vm_path' => :'email_template_vm_path',
         :'email_uuid' => :'email_uuid',
         :'hash_sha256' => :'hash_sha256',
         :'live' => :'live',
@@ -68,6 +81,9 @@ module UltracartClient
         :'requires_review' => :'requires_review',
         :'subject' => :'subject',
         :'suspended_for_spam' => :'suspended_for_spam',
+        :'template_exists' => :'template_exists',
+        :'template_note' => :'template_note',
+        :'template_path' => :'template_path',
         :'transactional' => :'transactional',
         :'version' => :'version'
       }
@@ -82,6 +98,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'container_last_modified_dts' => :'String',
+        :'email_template_vm_path' => :'String',
         :'email_uuid' => :'String',
         :'hash_sha256' => :'String',
         :'live' => :'Boolean',
@@ -92,6 +109,9 @@ module UltracartClient
         :'requires_review' => :'Boolean',
         :'subject' => :'String',
         :'suspended_for_spam' => :'Boolean',
+        :'template_exists' => :'Boolean',
+        :'template_note' => :'String',
+        :'template_path' => :'String',
         :'transactional' => :'Boolean',
         :'version' => :'Integer'
       }
@@ -120,6 +140,10 @@ module UltracartClient
 
       if attributes.key?(:'container_last_modified_dts')
         self.container_last_modified_dts = attributes[:'container_last_modified_dts']
+      end
+
+      if attributes.key?(:'email_template_vm_path')
+        self.email_template_vm_path = attributes[:'email_template_vm_path']
       end
 
       if attributes.key?(:'email_uuid')
@@ -164,6 +188,18 @@ module UltracartClient
         self.suspended_for_spam = attributes[:'suspended_for_spam']
       end
 
+      if attributes.key?(:'template_exists')
+        self.template_exists = attributes[:'template_exists']
+      end
+
+      if attributes.key?(:'template_note')
+        self.template_note = attributes[:'template_note']
+      end
+
+      if attributes.key?(:'template_path')
+        self.template_path = attributes[:'template_path']
+      end
+
       if attributes.key?(:'transactional')
         self.transactional = attributes[:'transactional']
       end
@@ -192,6 +228,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           container_last_modified_dts == o.container_last_modified_dts &&
+          email_template_vm_path == o.email_template_vm_path &&
           email_uuid == o.email_uuid &&
           hash_sha256 == o.hash_sha256 &&
           live == o.live &&
@@ -202,6 +239,9 @@ module UltracartClient
           requires_review == o.requires_review &&
           subject == o.subject &&
           suspended_for_spam == o.suspended_for_spam &&
+          template_exists == o.template_exists &&
+          template_note == o.template_note &&
+          template_path == o.template_path &&
           transactional == o.transactional &&
           version == o.version
     end
@@ -215,7 +255,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [container_last_modified_dts, email_uuid, hash_sha256, live, notes, pending_review, preview_text, rejected, requires_review, subject, suspended_for_spam, transactional, version].hash
+      [container_last_modified_dts, email_template_vm_path, email_uuid, hash_sha256, live, notes, pending_review, preview_text, rejected, requires_review, subject, suspended_for_spam, template_exists, template_note, template_path, transactional, version].hash
     end
 
     # Builds the object from hash

@@ -33,7 +33,7 @@ module UltracartClient
     # Customers who reached the step and were not sent anything.  The dispatch log says why.
     attr_accessor :skipped
 
-    # email (the step's email, all time), sequence (the begin step, customers who started the sequence, all time) or step (this step, the last 90 days).
+    # email (the step's email, all time), sequence (the begin step, customers who started the sequence, all time), resend (a Resend Email step, what it resent, the last 90 days), experiment (an experiment step, its variants together, the last 90 days), sms or postcard (the step's own sends, the last 90 days), step (the end step or a condition, split or InboxGeek step, the last 90 days) or not_recorded (a step type the send path keeps no counts for, such as a wait; no counts are given).
     attr_accessor :source
 
     # Spam complaints.
