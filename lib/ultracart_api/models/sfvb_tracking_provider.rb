@@ -61,6 +61,9 @@ module UltracartClient
 
     attr_accessor :oauth
 
+    # What the provider also sends from UltraCart's servers.  A consent gate holds back only the browser pixel, not these.  Absent when it sends nothing server side.
+    attr_accessor :server_side
+
     # For google_analytics, the account number per wholesale pricing tier.
     attr_accessor :wholesale_tiers
 
@@ -83,6 +86,7 @@ module UltracartClient
         :'name' => :'name',
         :'notes' => :'notes',
         :'oauth' => :'oauth',
+        :'server_side' => :'server_side',
         :'wholesale_tiers' => :'wholesale_tiers'
       }
     end
@@ -111,6 +115,7 @@ module UltracartClient
         :'name' => :'String',
         :'notes' => :'Array<String>',
         :'oauth' => :'SfvbTrackingProviderOauth',
+        :'server_side' => :'String',
         :'wholesale_tiers' => :'Array<SfvbTrackingWholesaleTier>'
       }
     end
@@ -208,6 +213,10 @@ module UltracartClient
         self.oauth = attributes[:'oauth']
       end
 
+      if attributes.key?(:'server_side')
+        self.server_side = attributes[:'server_side']
+      end
+
       if attributes.key?(:'wholesale_tiers')
         if (value = attributes[:'wholesale_tiers']).is_a?(Array)
           self.wholesale_tiers = value
@@ -249,6 +258,7 @@ module UltracartClient
           name == o.name &&
           notes == o.notes &&
           oauth == o.oauth &&
+          server_side == o.server_side &&
           wholesale_tiers == o.wholesale_tiers
     end
 
@@ -261,7 +271,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [admin_path, approval_needed, changes, configured, consent, consent_supported, cost, dry_run, events, fields, group, hash_sha256, key, name, notes, oauth, wholesale_tiers].hash
+      [admin_path, approval_needed, changes, configured, consent, consent_supported, cost, dry_run, events, fields, group, hash_sha256, key, name, notes, oauth, server_side, wholesale_tiers].hash
     end
 
     # Builds the object from hash

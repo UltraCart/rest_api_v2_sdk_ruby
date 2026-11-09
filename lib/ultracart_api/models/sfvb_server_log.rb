@@ -21,7 +21,7 @@ module UltracartClient
     # How long the render took in milliseconds.
     attr_accessor :duration_ms
 
-    # Error lines in the log, including Velocity problems such as a null
+    # Error lines in the log, including Velocity problems such as setting a variable to null.
     attr_accessor :error_count
 
     # Lines in the full log text.

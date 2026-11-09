@@ -2966,11 +2966,13 @@ module UltracartClient
     end
 
     # Clear one tracking provider
-    # Clears every field and secret the API can change, the consent gate and the events, and turns off Google Tag Gateway.  The provider stops being sent anything.  An OAuth connection is left alone, and notes say to disconnect it in the admin.  Send the provider's hash_sha256 as If-Match.  Needs sfvb_publish.  No approval. 
+    # Clears every field and secret the API can change, the consent gate and the events, and turns off Google Tag Gateway.  An OAuth connection is left alone, and notes say to disconnect it in the admin.  Send the provider's hash_sha256 as If-Match.  Needs sfvb_publish.  dry_run=true reports the changes, and approval_needed, without clearing.  No approval, except when the clear removes a consent gate while something outside the provider's fields still fires it (Google Ads for an affiliate's own Google conversion id, Commission Junction for an affiliate network of its type): that needs an approved tracking_provider.clear request for the provider (Approval-Id). 
     # @param storefront_oid [Integer] 
     # @param provider [String] 
     # @param if_match [String] The provider&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale.
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :dry_run 
+    # @option opts [String] :approval_id When the clear removes a consent gate while something else still fires the provider, the approval_id of an approved tracking_provider.clear request for it.  See POST /sfvb/approvals.
     # @return [SfvbTrackingProvider]
     def delete_sfvb_tracking_provider(storefront_oid, provider, if_match, opts = {})
       data, _status_code, _headers = delete_sfvb_tracking_provider_with_http_info(storefront_oid, provider, if_match, opts)
@@ -2978,11 +2980,13 @@ module UltracartClient
     end
 
     # Clear one tracking provider
-    # Clears every field and secret the API can change, the consent gate and the events, and turns off Google Tag Gateway.  The provider stops being sent anything.  An OAuth connection is left alone, and notes say to disconnect it in the admin.  Send the provider&#39;s hash_sha256 as If-Match.  Needs sfvb_publish.  No approval. 
+    # Clears every field and secret the API can change, the consent gate and the events, and turns off Google Tag Gateway.  An OAuth connection is left alone, and notes say to disconnect it in the admin.  Send the provider&#39;s hash_sha256 as If-Match.  Needs sfvb_publish.  dry_run&#x3D;true reports the changes, and approval_needed, without clearing.  No approval, except when the clear removes a consent gate while something outside the provider&#39;s fields still fires it (Google Ads for an affiliate&#39;s own Google conversion id, Commission Junction for an affiliate network of its type): that needs an approved tracking_provider.clear request for the provider (Approval-Id). 
     # @param storefront_oid [Integer] 
     # @param provider [String] 
     # @param if_match [String] The provider&#39;s hash_sha256 from the last read.  428 when absent, 412 when stale.
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :dry_run 
+    # @option opts [String] :approval_id When the clear removes a consent gate while something else still fires the provider, the approval_id of an approved tracking_provider.clear request for it.  See POST /sfvb/approvals.
     # @return [Array<(SfvbTrackingProvider, Integer, Hash)>] SfvbTrackingProvider data, response status code and response headers
     def delete_sfvb_tracking_provider_with_http_info(storefront_oid, provider, if_match, opts = {})
       if @api_client.config.debugging
@@ -3005,6 +3009,7 @@ module UltracartClient
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'dry_run'] = opts[:'dry_run'] if !opts[:'dry_run'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -3012,6 +3017,7 @@ module UltracartClient
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       header_params[:'If-Match'] = if_match
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -5834,7 +5840,7 @@ module UltracartClient
     end
 
     # Find which storefront a communications uuid lives on
-    # Takes a campaign, flow, sequence, step, email, postcard, list or segment uuid and says which of this account's storefronts it is on, what it is, the campaign or flow it belongs to, and the command that reads it.  A uuid nothing on this account has, another account's included, is 404.  Read only. 
+    # Takes a campaign, flow, sequence, step, email, postcard, list or segment uuid and says which of this account's storefronts it is on, what it is, the campaign or flow it belongs to, and the command that reads it.  An archived campaign or flow is found too, with archived true, and owner.archived is true when what was found belongs to one.  A uuid nothing on this account has, another account's included, and a deleted step, email, postcard, list or segment, is 404.  Read only. 
     # @param uuid [String] The uuid to find.
     # @param [Hash] opts the optional parameters
     # @return [SfvbCommsLookupResponse]
@@ -5844,7 +5850,7 @@ module UltracartClient
     end
 
     # Find which storefront a communications uuid lives on
-    # Takes a campaign, flow, sequence, step, email, postcard, list or segment uuid and says which of this account&#39;s storefronts it is on, what it is, the campaign or flow it belongs to, and the command that reads it.  A uuid nothing on this account has, another account&#39;s included, is 404.  Read only. 
+    # Takes a campaign, flow, sequence, step, email, postcard, list or segment uuid and says which of this account&#39;s storefronts it is on, what it is, the campaign or flow it belongs to, and the command that reads it.  An archived campaign or flow is found too, with archived true, and owner.archived is true when what was found belongs to one.  A uuid nothing on this account has, another account&#39;s included, and a deleted step, email, postcard, list or segment, is 404.  Read only. 
     # @param uuid [String] The uuid to find.
     # @param [Hash] opts the optional parameters
     # @return [Array<(SfvbCommsLookupResponse, Integer, Hash)>] SfvbCommsLookupResponse data, response status code and response headers
@@ -16265,6 +16271,87 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Stage custom tracking HTML in a preview session
+    # Runs Tracking HTML, Conversion HTML or both instead of the storefront's live slots, only in a browser that opened this session's preview access link, so a page can be checked before the write is approved.  Staged Conversion HTML runs only on a test order's receipt.  Each slot gets the same checks as a write.  An empty string unstages a slot; a slot left out is left as it is.  Containers pushed to the session later keep what is staged.  Needs sfvb_write and a token that resolves to a user; no approval, since nothing durable is written and only that user's own session runs it. 
+    # @param storefront_oid [Integer] 
+    # @param preview_session_id [String] 
+    # @param preview_tracking_html [SfvbPreviewTrackingHtmlRequest] The HTML to stage
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbTrackingHtmlResponse]
+    def put_sfvb_preview_tracking_html(storefront_oid, preview_session_id, preview_tracking_html, opts = {})
+      data, _status_code, _headers = put_sfvb_preview_tracking_html_with_http_info(storefront_oid, preview_session_id, preview_tracking_html, opts)
+      data
+    end
+
+    # Stage custom tracking HTML in a preview session
+    # Runs Tracking HTML, Conversion HTML or both instead of the storefront&#39;s live slots, only in a browser that opened this session&#39;s preview access link, so a page can be checked before the write is approved.  Staged Conversion HTML runs only on a test order&#39;s receipt.  Each slot gets the same checks as a write.  An empty string unstages a slot; a slot left out is left as it is.  Containers pushed to the session later keep what is staged.  Needs sfvb_write and a token that resolves to a user; no approval, since nothing durable is written and only that user&#39;s own session runs it. 
+    # @param storefront_oid [Integer] 
+    # @param preview_session_id [String] 
+    # @param preview_tracking_html [SfvbPreviewTrackingHtmlRequest] The HTML to stage
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbTrackingHtmlResponse, Integer, Hash)>] SfvbTrackingHtmlResponse data, response status code and response headers
+    def put_sfvb_preview_tracking_html_with_http_info(storefront_oid, preview_session_id, preview_tracking_html, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.put_sfvb_preview_tracking_html ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.put_sfvb_preview_tracking_html"
+      end
+      # verify the required parameter 'preview_session_id' is set
+      if @api_client.config.client_side_validation && preview_session_id.nil?
+        fail ArgumentError, "Missing the required parameter 'preview_session_id' when calling SfvbApi.put_sfvb_preview_tracking_html"
+      end
+      # verify the required parameter 'preview_tracking_html' is set
+      if @api_client.config.client_side_validation && preview_tracking_html.nil?
+        fail ArgumentError, "Missing the required parameter 'preview_tracking_html' when calling SfvbApi.put_sfvb_preview_tracking_html"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/preview_sessions/{preview_session_id}/tracking_html'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'preview_session_id' + '}', CGI.escape(preview_session_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(preview_tracking_html)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTrackingHtmlResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.put_sfvb_preview_tracking_html",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_preview_tracking_html\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Turn the storefront's screen recording on or off
     # Turning it on records real shoppers' sessions from that moment, with no history before it.  The first time starts a 14 day free trial, after which recorded sessions are billed per 1,000.  Only change it when the merchant has asked for it.  Asking for the state it is already in changes nothing, and changed comes back false.  Always needs sfvb_publish, in both directions, because it decides whether live shoppers are recorded.  Limited per storefront to 5 changes a minute, 20 an hour and 50 a day. 
     # @param storefront_oid [Integer] 
@@ -16876,6 +16963,87 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#render_sfvb_email\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Render the Conversion HTML against a test order
+    # The Conversion HTML as the receipt of that order would inject it: order tokens filled, then Velocity run with $order, $conversion and $formatHelper.  Renders the stored slot, or content when it is sent (a draft, checked as a write is).  Only a test order on this account may be used; a real or unknown order is refused the same way.  Nothing is saved, injected or sent: the receipt's provider pixels, analytics and postbacks do not run, and a token that would write something ([CouponForNewAffiliate=...]) is left as written.  Only the conversion slot renders; tracking HTML is checked by staging it in a preview session. 
+    # @param storefront_oid [Integer] 
+    # @param slot [String] conversion
+    # @param tracking_html_render_request [SfvbTrackingHtmlRenderRequest] The test order, and optionally a draft
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbTrackingHtmlRenderResponse]
+    def render_sfvb_tracking_html(storefront_oid, slot, tracking_html_render_request, opts = {})
+      data, _status_code, _headers = render_sfvb_tracking_html_with_http_info(storefront_oid, slot, tracking_html_render_request, opts)
+      data
+    end
+
+    # Render the Conversion HTML against a test order
+    # The Conversion HTML as the receipt of that order would inject it: order tokens filled, then Velocity run with $order, $conversion and $formatHelper.  Renders the stored slot, or content when it is sent (a draft, checked as a write is).  Only a test order on this account may be used; a real or unknown order is refused the same way.  Nothing is saved, injected or sent: the receipt&#39;s provider pixels, analytics and postbacks do not run, and a token that would write something ([CouponForNewAffiliate&#x3D;...]) is left as written.  Only the conversion slot renders; tracking HTML is checked by staging it in a preview session. 
+    # @param storefront_oid [Integer] 
+    # @param slot [String] conversion
+    # @param tracking_html_render_request [SfvbTrackingHtmlRenderRequest] The test order, and optionally a draft
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbTrackingHtmlRenderResponse, Integer, Hash)>] SfvbTrackingHtmlRenderResponse data, response status code and response headers
+    def render_sfvb_tracking_html_with_http_info(storefront_oid, slot, tracking_html_render_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.render_sfvb_tracking_html ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.render_sfvb_tracking_html"
+      end
+      # verify the required parameter 'slot' is set
+      if @api_client.config.client_side_validation && slot.nil?
+        fail ArgumentError, "Missing the required parameter 'slot' when calling SfvbApi.render_sfvb_tracking_html"
+      end
+      # verify the required parameter 'tracking_html_render_request' is set
+      if @api_client.config.client_side_validation && tracking_html_render_request.nil?
+        fail ArgumentError, "Missing the required parameter 'tracking_html_render_request' when calling SfvbApi.render_sfvb_tracking_html"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/tracking/html/{slot}/render'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'slot' + '}', CGI.escape(slot.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(tracking_html_render_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTrackingHtmlRenderResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.render_sfvb_tracking_html",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#render_sfvb_tracking_html\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

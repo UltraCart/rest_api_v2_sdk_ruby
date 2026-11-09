@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class SfvbCommsLookupResponse
+    # True when the uuid is an archived campaign or flow.  It is still on its storefront and can be read; it sends nothing.
+    attr_accessor :archived
+
     # The sequence it belongs to, when there is one.
     attr_accessor :communication_sequence_uuid
 
@@ -44,6 +47,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'archived' => :'archived',
         :'communication_sequence_uuid' => :'communication_sequence_uuid',
         :'kind' => :'kind',
         :'name' => :'name',
@@ -64,6 +68,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'archived' => :'Boolean',
         :'communication_sequence_uuid' => :'String',
         :'kind' => :'String',
         :'name' => :'String',
@@ -96,6 +101,10 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'archived')
+        self.archived = attributes[:'archived']
+      end
 
       if attributes.key?(:'communication_sequence_uuid')
         self.communication_sequence_uuid = attributes[:'communication_sequence_uuid']
@@ -154,6 +163,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          archived == o.archived &&
           communication_sequence_uuid == o.communication_sequence_uuid &&
           kind == o.kind &&
           name == o.name &&
@@ -174,7 +184,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [communication_sequence_uuid, kind, name, _next, notes, owner, step_uuid, storefront_oid, uuid].hash
+      [archived, communication_sequence_uuid, kind, name, _next, notes, owner, step_uuid, storefront_oid, uuid].hash
     end
 
     # Builds the object from hash

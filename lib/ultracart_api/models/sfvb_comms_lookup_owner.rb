@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class SfvbCommsLookupOwner
+    # True when the campaign or flow is archived.  It sends nothing, and 'sf comms flows list' or 'campaigns list' shows it only with --include-deleted.
+    attr_accessor :archived
+
     # True when it is sending now, by the same rule the sequence read uses.
     attr_accessor :live
 
@@ -33,6 +36,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'archived' => :'archived',
         :'live' => :'live',
         :'name' => :'name',
         :'status' => :'status',
@@ -49,6 +53,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'archived' => :'Boolean',
         :'live' => :'Boolean',
         :'name' => :'String',
         :'status' => :'String',
@@ -77,6 +82,10 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'archived')
+        self.archived = attributes[:'archived']
+      end
 
       if attributes.key?(:'live')
         self.live = attributes[:'live']
@@ -117,6 +126,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          archived == o.archived &&
           live == o.live &&
           name == o.name &&
           status == o.status &&
@@ -133,7 +143,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [live, name, status, type, uuid].hash
+      [archived, live, name, status, type, uuid].hash
     end
 
     # Builds the object from hash

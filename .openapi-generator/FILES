@@ -1224,6 +1224,7 @@ docs/SfvbPreviewAccessRequest.md
 docs/SfvbPreviewAccessResponse.md
 docs/SfvbPreviewSessionRequest.md
 docs/SfvbPreviewSessionResponse.md
+docs/SfvbPreviewTrackingHtmlRequest.md
 docs/SfvbPreviewUrlResponse.md
 docs/SfvbRecording.md
 docs/SfvbRecordingEvent.md
@@ -1314,6 +1315,8 @@ docs/SfvbTrackingAdvanced.md
 docs/SfvbTrackingAdvancedRequest.md
 docs/SfvbTrackingChange.md
 docs/SfvbTrackingHtml.md
+docs/SfvbTrackingHtmlRenderRequest.md
+docs/SfvbTrackingHtmlRenderResponse.md
 docs/SfvbTrackingHtmlRequest.md
 docs/SfvbTrackingHtmlResponse.md
 docs/SfvbTrackingPrivacy.md
@@ -2686,6 +2689,7 @@ lib/ultracart_api/models/sfvb_preview_access_request.rb
 lib/ultracart_api/models/sfvb_preview_access_response.rb
 lib/ultracart_api/models/sfvb_preview_session_request.rb
 lib/ultracart_api/models/sfvb_preview_session_response.rb
+lib/ultracart_api/models/sfvb_preview_tracking_html_request.rb
 lib/ultracart_api/models/sfvb_preview_url_response.rb
 lib/ultracart_api/models/sfvb_recording.rb
 lib/ultracart_api/models/sfvb_recording_event.rb
@@ -2776,6 +2780,8 @@ lib/ultracart_api/models/sfvb_tracking_advanced.rb
 lib/ultracart_api/models/sfvb_tracking_advanced_request.rb
 lib/ultracart_api/models/sfvb_tracking_change.rb
 lib/ultracart_api/models/sfvb_tracking_html.rb
+lib/ultracart_api/models/sfvb_tracking_html_render_request.rb
+lib/ultracart_api/models/sfvb_tracking_html_render_response.rb
 lib/ultracart_api/models/sfvb_tracking_html_request.rb
 lib/ultracart_api/models/sfvb_tracking_html_response.rb
 lib/ultracart_api/models/sfvb_tracking_privacy.rb

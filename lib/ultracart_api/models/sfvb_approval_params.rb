@@ -75,7 +75,7 @@ module UltracartClient
     # The step to remove, for sequence_step.delete, to move, for sequence_step.move, or to turn on, for sequence_step.enable_postcard.
     attr_accessor :step_uuid
 
-    # The tracking provider key, for tracking_provider.change.
+    # The tracking provider key, for tracking_provider.change and tracking_provider.clear.
     attr_accessor :tracking_provider
 
     # For upsell.enable, what to switch on.
