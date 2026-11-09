@@ -150,6 +150,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_theme**](SfvbApi.md#get_sfvb_theme) | **GET** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid} | Get a theme |
 | [**get_sfvb_theme_attributes**](SfvbApi.md#get_sfvb_theme_attributes) | **GET** /sfvb/storefronts/{storefront_oid}/themes/{theme_oid}/attributes | Read a theme&#39;s colors, fonts and settings |
 | [**get_sfvb_theme_job**](SfvbApi.md#get_sfvb_theme_job) | **GET** /sfvb/storefronts/{storefront_oid}/theme_jobs/{job_id} | Status of an asynchronous theme job |
+| [**get_sfvb_tracking_check_plan**](SfvbApi.md#get_sfvb_tracking_check_plan) | **GET** /sfvb/storefronts/{storefront_oid}/tracking/check_plan | Plan a browser check of a storefront&#39;s tracking |
 | [**get_sfvb_tracking_html**](SfvbApi.md#get_sfvb_tracking_html) | **GET** /sfvb/storefronts/{storefront_oid}/tracking/html/{slot} | Read one custom tracking HTML slot |
 | [**get_sfvb_tracking_html_slots**](SfvbApi.md#get_sfvb_tracking_html_slots) | **GET** /sfvb/storefronts/{storefront_oid}/tracking/html | List a storefront&#39;s custom tracking HTML slots |
 | [**get_sfvb_tracking_provider**](SfvbApi.md#get_sfvb_tracking_provider) | **GET** /sfvb/storefronts/{storefront_oid}/tracking/providers/{provider} | Read one tracking provider |
@@ -8211,6 +8212,64 @@ end
 ### Return type
 
 [**SfvbThemeJobResponse**](SfvbThemeJobResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_sfvb_tracking_check_plan
+
+> <SfvbTrackingCheckPlan> get_sfvb_tracking_check_plan(storefront_oid, path, opts)
+
+Plan a browser check of a storefront's tracking
+
+What each tracking provider should load on one page, for page_view or a test order's purchase, under a consent state and region, with the requests and calls to look for and the ones that must not appear.  Built from the same rules the storefront's tracking templates follow, never by running them, so nothing is sent to any provider.  Includes the hosts the storefront's custom and affiliate network HTML loads, the sends made from UltraCart servers, and a snippet that collects what the browser saw.  Grade the results locally; they are never sent here.  With neither consent nor region, every provider is listed with the gate that holds it back.  A purchase needs a test order on this account. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_tracking_check_plan_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbTrackingCheckPlan>, Integer, Hash)> get_sfvb_tracking_check_plan_with_http_info(storefront_oid, path, opts)
+
+```ruby
+begin
+  # Plan a browser check of a storefront's tracking
+  data, status_code, headers = api_instance.get_sfvb_tracking_check_plan_with_http_info(storefront_oid, path, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbTrackingCheckPlan>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_tracking_check_plan_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **path** | **String** | A storefront page path, such as / or /checkout/receipt.html, with an optional query |  |
+| **event** | **String** | page_view (the default) or purchase | [optional] |
+| **order_id** | **String** | For purchase, a test order on this account | [optional] |
+| **consent** | **String** | none, all, or a comma list of statistics, preferences and marketing | [optional] |
+| **region** | **String** | Where the browser is.  eea, non-us or other | [optional] |
+
+### Return type
+
+[**SfvbTrackingCheckPlan**](SfvbTrackingCheckPlan.md)
 
 ### Authorization
 

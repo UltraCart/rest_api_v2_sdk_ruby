@@ -1314,6 +1314,13 @@ docs/SfvbThemesResponse.md
 docs/SfvbTrackingAdvanced.md
 docs/SfvbTrackingAdvancedRequest.md
 docs/SfvbTrackingChange.md
+docs/SfvbTrackingCheckPlan.md
+docs/SfvbTrackingCheckPlanEvent.md
+docs/SfvbTrackingCheckPlanGate.md
+docs/SfvbTrackingCheckPlanProvider.md
+docs/SfvbTrackingCheckPlanRequest.md
+docs/SfvbTrackingCheckPlanServerSide.md
+docs/SfvbTrackingCheckPlanUnchecked.md
 docs/SfvbTrackingHtml.md
 docs/SfvbTrackingHtmlRenderRequest.md
 docs/SfvbTrackingHtmlRenderResponse.md
@@ -2779,6 +2786,13 @@ lib/ultracart_api/models/sfvb_themes_response.rb
 lib/ultracart_api/models/sfvb_tracking_advanced.rb
 lib/ultracart_api/models/sfvb_tracking_advanced_request.rb
 lib/ultracart_api/models/sfvb_tracking_change.rb
+lib/ultracart_api/models/sfvb_tracking_check_plan.rb
+lib/ultracart_api/models/sfvb_tracking_check_plan_event.rb
+lib/ultracart_api/models/sfvb_tracking_check_plan_gate.rb
+lib/ultracart_api/models/sfvb_tracking_check_plan_provider.rb
+lib/ultracart_api/models/sfvb_tracking_check_plan_request.rb
+lib/ultracart_api/models/sfvb_tracking_check_plan_server_side.rb
+lib/ultracart_api/models/sfvb_tracking_check_plan_unchecked.rb
 lib/ultracart_api/models/sfvb_tracking_html.rb
 lib/ultracart_api/models/sfvb_tracking_html_render_request.rb
 lib/ultracart_api/models/sfvb_tracking_html_render_response.rb

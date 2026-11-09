@@ -10452,6 +10452,89 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Plan a browser check of a storefront's tracking
+    # What each tracking provider should load on one page, for page_view or a test order's purchase, under a consent state and region, with the requests and calls to look for and the ones that must not appear.  Built from the same rules the storefront's tracking templates follow, never by running them, so nothing is sent to any provider.  Includes the hosts the storefront's custom and affiliate network HTML loads, the sends made from UltraCart servers, and a snippet that collects what the browser saw.  Grade the results locally; they are never sent here.  With neither consent nor region, every provider is listed with the gate that holds it back.  A purchase needs a test order on this account. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] A storefront page path, such as / or /checkout/receipt.html, with an optional query
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :event page_view (the default) or purchase
+    # @option opts [String] :order_id For purchase, a test order on this account
+    # @option opts [String] :consent none, all, or a comma list of statistics, preferences and marketing
+    # @option opts [String] :region Where the browser is.  eea, non-us or other
+    # @return [SfvbTrackingCheckPlan]
+    def get_sfvb_tracking_check_plan(storefront_oid, path, opts = {})
+      data, _status_code, _headers = get_sfvb_tracking_check_plan_with_http_info(storefront_oid, path, opts)
+      data
+    end
+
+    # Plan a browser check of a storefront&#39;s tracking
+    # What each tracking provider should load on one page, for page_view or a test order&#39;s purchase, under a consent state and region, with the requests and calls to look for and the ones that must not appear.  Built from the same rules the storefront&#39;s tracking templates follow, never by running them, so nothing is sent to any provider.  Includes the hosts the storefront&#39;s custom and affiliate network HTML loads, the sends made from UltraCart servers, and a snippet that collects what the browser saw.  Grade the results locally; they are never sent here.  With neither consent nor region, every provider is listed with the gate that holds it back.  A purchase needs a test order on this account. 
+    # @param storefront_oid [Integer] 
+    # @param path [String] A storefront page path, such as / or /checkout/receipt.html, with an optional query
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :event page_view (the default) or purchase
+    # @option opts [String] :order_id For purchase, a test order on this account
+    # @option opts [String] :consent none, all, or a comma list of statistics, preferences and marketing
+    # @option opts [String] :region Where the browser is.  eea, non-us or other
+    # @return [Array<(SfvbTrackingCheckPlan, Integer, Hash)>] SfvbTrackingCheckPlan data, response status code and response headers
+    def get_sfvb_tracking_check_plan_with_http_info(storefront_oid, path, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_tracking_check_plan ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_tracking_check_plan"
+      end
+      # verify the required parameter 'path' is set
+      if @api_client.config.client_side_validation && path.nil?
+        fail ArgumentError, "Missing the required parameter 'path' when calling SfvbApi.get_sfvb_tracking_check_plan"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/tracking/check_plan'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'path'] = path
+      query_params[:'event'] = opts[:'event'] if !opts[:'event'].nil?
+      query_params[:'order_id'] = opts[:'order_id'] if !opts[:'order_id'].nil?
+      query_params[:'consent'] = opts[:'consent'] if !opts[:'consent'].nil?
+      query_params[:'region'] = opts[:'region'] if !opts[:'region'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbTrackingCheckPlan'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_tracking_check_plan",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_tracking_check_plan\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read one custom tracking HTML slot
     # The HTML with its Velocity tokens as stored, and the hash_sha256 a write sends back as If-Match. 
     # @param storefront_oid [Integer] 
