@@ -7948,6 +7948,146 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Read an item's pre-order flag and ETA
+    # Whether the item is on pre-order, its ETA, and what itempreorder shows shoppers because of them, with a hash_sha256 to send as If-Match when changing them.  A variation is an item of its own and can be read here; read a parent's variations together with GET items/preorder/children.  Address by merchant_item_id or merchant_item_oid. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @return [SfvbItemPreorder]
+    def get_sfvb_item_preorder(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_item_preorder_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Read an item&#39;s pre-order flag and ETA
+    # Whether the item is on pre-order, its ETA, and what itempreorder shows shoppers because of them, with a hash_sha256 to send as If-Match when changing them.  A variation is an item of its own and can be read here; read a parent&#39;s variations together with GET items/preorder/children.  Address by merchant_item_id or merchant_item_oid. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @return [Array<(SfvbItemPreorder, Integer, Hash)>] SfvbItemPreorder data, response status code and response headers
+    def get_sfvb_item_preorder_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_item_preorder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_item_preorder"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/items/preorder'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'merchant_item_id'] = opts[:'merchant_item_id'] if !opts[:'merchant_item_id'].nil?
+      query_params[:'merchant_item_oid'] = opts[:'merchant_item_oid'] if !opts[:'merchant_item_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbItemPreorder'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_item_preorder",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_item_preorder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read the pre-order flag and ETA of a parent item's variations
+    # The parent's own values and each variation's, with the option values that pick it (such as Size 2T) and its hash_sha256 to send when changing it.  Read fresh, never from a cache.  Address the parent by merchant_item_id or merchant_item_oid. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @return [SfvbItemPreorderListResponse]
+    def get_sfvb_item_preorder_children(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_item_preorder_children_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Read the pre-order flag and ETA of a parent item&#39;s variations
+    # The parent&#39;s own values and each variation&#39;s, with the option values that pick it (such as Size 2T) and its hash_sha256 to send when changing it.  Read fresh, never from a cache.  Address the parent by merchant_item_id or merchant_item_oid. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @return [Array<(SfvbItemPreorderListResponse, Integer, Hash)>] SfvbItemPreorderListResponse data, response status code and response headers
+    def get_sfvb_item_preorder_children_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_item_preorder_children ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_item_preorder_children"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/items/preorder/children'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'merchant_item_id'] = opts[:'merchant_item_id'] if !opts[:'merchant_item_id'].nil?
+      query_params[:'merchant_item_oid'] = opts[:'merchant_item_oid'] if !opts[:'merchant_item_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbItemPreorderListResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_item_preorder_children",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_item_preorder_children\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read what an item charges
     # Price, sale (with whether it applies now), MSRP and retail volume pricing - what itemprice, itemsale, itemmsrp, itemsavings and itemvolumediscounts render - with a hash_sha256 to send as If-Match when changing it.  Wholesale pricing tiers are not shown.  Address by merchant_item_id or merchant_item_oid. 
     # @param storefront_oid [Integer] 
@@ -15730,6 +15870,181 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_item_multimedia_description\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change an item's pre-order flag or ETA
+    # Partial - a field left out is untouched, and nothing else on the item changes.  eta is YYYY-MM-DD; clear_eta removes it.  Needs sfvb_publish when items are live and If-Match with the hash_sha256 from the read.  Putting the item on or off pre-order also needs the approval of the person who signed in the CLI - an approved item.preorder request for this item and exactly this change - because a pre-order item can be ordered while out of stock and its orders go to the Pre-ordered stage.  An ETA-only change needs no approval.  A change that sets every field to what it already is returns the item unchanged.  The answer has the values before and after, what shoppers now see, and warnings such as an ETA in the past. 
+    # @param storefront_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the pre-order read.  Required; 428 when absent, 412 when stale.
+    # @param item_preorder_request [SfvbItemPreorderRequest] The change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @option opts [String] :approval_id The approval_id of an approved item.preorder request for this item and change.  Required when the change puts the item on or off pre-order.  See POST /sfvb/approvals.
+    # @return [SfvbItemPreorder]
+    def put_sfvb_item_preorder(storefront_oid, if_match, item_preorder_request, opts = {})
+      data, _status_code, _headers = put_sfvb_item_preorder_with_http_info(storefront_oid, if_match, item_preorder_request, opts)
+      data
+    end
+
+    # Change an item&#39;s pre-order flag or ETA
+    # Partial - a field left out is untouched, and nothing else on the item changes.  eta is YYYY-MM-DD; clear_eta removes it.  Needs sfvb_publish when items are live and If-Match with the hash_sha256 from the read.  Putting the item on or off pre-order also needs the approval of the person who signed in the CLI - an approved item.preorder request for this item and exactly this change - because a pre-order item can be ordered while out of stock and its orders go to the Pre-ordered stage.  An ETA-only change needs no approval.  A change that sets every field to what it already is returns the item unchanged.  The answer has the values before and after, what shoppers now see, and warnings such as an ETA in the past. 
+    # @param storefront_oid [Integer] 
+    # @param if_match [String] hash_sha256 from the pre-order read.  Required; 428 when absent, 412 when stale.
+    # @param item_preorder_request [SfvbItemPreorderRequest] The change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @option opts [String] :approval_id The approval_id of an approved item.preorder request for this item and change.  Required when the change puts the item on or off pre-order.  See POST /sfvb/approvals.
+    # @return [Array<(SfvbItemPreorder, Integer, Hash)>] SfvbItemPreorder data, response status code and response headers
+    def put_sfvb_item_preorder_with_http_info(storefront_oid, if_match, item_preorder_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.put_sfvb_item_preorder ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.put_sfvb_item_preorder"
+      end
+      # verify the required parameter 'if_match' is set
+      if @api_client.config.client_side_validation && if_match.nil?
+        fail ArgumentError, "Missing the required parameter 'if_match' when calling SfvbApi.put_sfvb_item_preorder"
+      end
+      # verify the required parameter 'item_preorder_request' is set
+      if @api_client.config.client_side_validation && item_preorder_request.nil?
+        fail ArgumentError, "Missing the required parameter 'item_preorder_request' when calling SfvbApi.put_sfvb_item_preorder"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/items/preorder'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'merchant_item_id'] = opts[:'merchant_item_id'] if !opts[:'merchant_item_id'].nil?
+      query_params[:'merchant_item_oid'] = opts[:'merchant_item_oid'] if !opts[:'merchant_item_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = if_match
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(item_preorder_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbItemPreorder'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.put_sfvb_item_preorder",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_item_preorder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change the pre-order flag or ETA of several variations of one parent
+    # The same change for each variation named, 1 to 100, by its merchant item id or by an option value only one variation has (such as 2T), each with the hash_sha256 from the children read.  All or nothing - every row is checked before any variation is saved, and an unknown, ambiguous, repeated or stale row refuses the whole call.  Putting any of them on or off pre-order needs one approved item.preorder request for the parent and exactly this change; an ETA-only change needs none.  Needs sfvb_publish when items are live.  Each variation is saved on its own, so if a save itself fails part way the error names the variations already saved. 
+    # @param storefront_oid [Integer] 
+    # @param item_preorder_children_request [SfvbItemPreorderChildrenRequest] The change and the variations
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @option opts [String] :approval_id The approval_id of an approved item.preorder request for the parent and this change.  Required when the change puts any variation on or off pre-order.  See POST /sfvb/approvals.
+    # @return [SfvbItemPreorderListResponse]
+    def put_sfvb_item_preorder_children(storefront_oid, item_preorder_children_request, opts = {})
+      data, _status_code, _headers = put_sfvb_item_preorder_children_with_http_info(storefront_oid, item_preorder_children_request, opts)
+      data
+    end
+
+    # Change the pre-order flag or ETA of several variations of one parent
+    # The same change for each variation named, 1 to 100, by its merchant item id or by an option value only one variation has (such as 2T), each with the hash_sha256 from the children read.  All or nothing - every row is checked before any variation is saved, and an unknown, ambiguous, repeated or stale row refuses the whole call.  Putting any of them on or off pre-order needs one approved item.preorder request for the parent and exactly this change; an ETA-only change needs none.  Needs sfvb_publish when items are live.  Each variation is saved on its own, so if a save itself fails part way the error names the variations already saved. 
+    # @param storefront_oid [Integer] 
+    # @param item_preorder_children_request [SfvbItemPreorderChildrenRequest] The change and the variations
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :merchant_item_id 
+    # @option opts [Integer] :merchant_item_oid 
+    # @option opts [String] :approval_id The approval_id of an approved item.preorder request for the parent and this change.  Required when the change puts any variation on or off pre-order.  See POST /sfvb/approvals.
+    # @return [Array<(SfvbItemPreorderListResponse, Integer, Hash)>] SfvbItemPreorderListResponse data, response status code and response headers
+    def put_sfvb_item_preorder_children_with_http_info(storefront_oid, item_preorder_children_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.put_sfvb_item_preorder_children ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.put_sfvb_item_preorder_children"
+      end
+      # verify the required parameter 'item_preorder_children_request' is set
+      if @api_client.config.client_side_validation && item_preorder_children_request.nil?
+        fail ArgumentError, "Missing the required parameter 'item_preorder_children_request' when calling SfvbApi.put_sfvb_item_preorder_children"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/items/preorder/children'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'merchant_item_id'] = opts[:'merchant_item_id'] if !opts[:'merchant_item_id'].nil?
+      query_params[:'merchant_item_oid'] = opts[:'merchant_item_oid'] if !opts[:'merchant_item_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(item_preorder_children_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbItemPreorderListResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.put_sfvb_item_preorder_children",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#put_sfvb_item_preorder_children\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

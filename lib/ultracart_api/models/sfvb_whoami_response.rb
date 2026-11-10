@@ -24,6 +24,9 @@ module UltracartClient
     # How this token authenticated - Oauth2, Simple Key, Public/Private Key or Browser Key.
     attr_accessor :authentication_type
 
+    # True when this token may change item data.  Needs can_write, and the UltraCart user behind the token must hold Edit Items.  A token with no user is judged on its scopes alone.
+    attr_accessor :can_edit_items
+
     # True when this token may write a target that is currently live - an active upsell offer, an email on a delivering flow, the active theme, the storefront root.  Never infer this; it is the difference between a draft edit and a shopper visible change.
     attr_accessor :can_publish
 
@@ -32,6 +35,9 @@ module UltracartClient
 
     # True when this token may read.  Do not infer this from the requested scope name.
     attr_accessor :can_read
+
+    # True when this token may read item data - the item, its pricing, pre-order and related items.  Needs can_read, and the UltraCart user behind the token must hold View Items or Edit Items.  A token with no user is judged on its scopes alone.
+    attr_accessor :can_read_items
 
     # True when this token may write.  Writing a target that is not currently live needs only this.
     attr_accessor :can_write
@@ -63,9 +69,11 @@ module UltracartClient
         :'acting_as_user' => :'acting_as_user',
         :'application_name' => :'application_name',
         :'authentication_type' => :'authentication_type',
+        :'can_edit_items' => :'can_edit_items',
         :'can_publish' => :'can_publish',
         :'can_publish_public' => :'can_publish_public',
         :'can_read' => :'can_read',
+        :'can_read_items' => :'can_read_items',
         :'can_write' => :'can_write',
         :'device_scope' => :'device_scope',
         :'login' => :'login',
@@ -88,9 +96,11 @@ module UltracartClient
         :'acting_as_user' => :'Boolean',
         :'application_name' => :'String',
         :'authentication_type' => :'String',
+        :'can_edit_items' => :'Boolean',
         :'can_publish' => :'Boolean',
         :'can_publish_public' => :'Boolean',
         :'can_read' => :'Boolean',
+        :'can_read_items' => :'Boolean',
         :'can_write' => :'Boolean',
         :'device_scope' => :'String',
         :'login' => :'String',
@@ -135,6 +145,10 @@ module UltracartClient
         self.authentication_type = attributes[:'authentication_type']
       end
 
+      if attributes.key?(:'can_edit_items')
+        self.can_edit_items = attributes[:'can_edit_items']
+      end
+
       if attributes.key?(:'can_publish')
         self.can_publish = attributes[:'can_publish']
       end
@@ -145,6 +159,10 @@ module UltracartClient
 
       if attributes.key?(:'can_read')
         self.can_read = attributes[:'can_read']
+      end
+
+      if attributes.key?(:'can_read_items')
+        self.can_read_items = attributes[:'can_read_items']
       end
 
       if attributes.key?(:'can_write')
@@ -205,9 +223,11 @@ module UltracartClient
           acting_as_user == o.acting_as_user &&
           application_name == o.application_name &&
           authentication_type == o.authentication_type &&
+          can_edit_items == o.can_edit_items &&
           can_publish == o.can_publish &&
           can_publish_public == o.can_publish_public &&
           can_read == o.can_read &&
+          can_read_items == o.can_read_items &&
           can_write == o.can_write &&
           device_scope == o.device_scope &&
           login == o.login &&
@@ -227,7 +247,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [acting_as_user, application_name, authentication_type, can_publish, can_publish_public, can_read, can_write, device_scope, login, merchant_id, scopes, storefronts, storefronts_withheld, user_name].hash
+      [acting_as_user, application_name, authentication_type, can_edit_items, can_publish, can_publish_public, can_read, can_read_items, can_write, device_scope, login, merchant_id, scopes, storefronts, storefronts_withheld, user_name].hash
     end
 
     # Builds the object from hash

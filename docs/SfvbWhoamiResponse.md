@@ -7,9 +7,11 @@
 | **acting_as_user** | **Boolean** | True when this token resolves to a merchant user.  Preview sessions and file writes need one, because they are recorded against the person who approved the token.  Only device flow tokens resolve a user, so a plain API key will see this false. | [optional] |
 | **application_name** | **String** | Description of the application this credential belongs to. | [optional] |
 | **authentication_type** | **String** | How this token authenticated - Oauth2, Simple Key, Public/Private Key or Browser Key. | [optional] |
+| **can_edit_items** | **Boolean** | True when this token may change item data.  Needs can_write, and the UltraCart user behind the token must hold Edit Items.  A token with no user is judged on its scopes alone. | [optional] |
 | **can_publish** | **Boolean** | True when this token may write a target that is currently live - an active upsell offer, an email on a delivering flow, the active theme, the storefront root.  Never infer this; it is the difference between a draft edit and a shopper visible change. | [optional] |
 | **can_publish_public** | **Boolean** | True when this account may publish library entries to the public library.  Set by UltraCart staff only. | [optional] |
 | **can_read** | **Boolean** | True when this token may read.  Do not infer this from the requested scope name. | [optional] |
+| **can_read_items** | **Boolean** | True when this token may read item data - the item, its pricing, pre-order and related items.  Needs can_read, and the UltraCart user behind the token must hold View Items or Edit Items.  A token with no user is judged on its scopes alone. | [optional] |
 | **can_write** | **Boolean** | True when this token may write.  Writing a target that is not currently live needs only this. | [optional] |
 | **device_scope** | **String** | Device scope name, when this is a device flow token. | [optional] |
 | **login** | **String** | Login of the user who approved this token.  Populated for device flow tokens; null for plain API key credentials. | [optional] |
@@ -28,9 +30,11 @@ instance = UltracartClient::SfvbWhoamiResponse.new(
   acting_as_user: null,
   application_name: null,
   authentication_type: null,
+  can_edit_items: null,
   can_publish: null,
   can_publish_public: null,
   can_read: null,
+  can_read_items: null,
   can_write: null,
   device_scope: null,
   login: null,

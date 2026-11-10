@@ -1150,6 +1150,13 @@ docs/SfvbItemContentRequest.md
 docs/SfvbItemMultimedia.md
 docs/SfvbItemMultimediaDescriptionRequest.md
 docs/SfvbItemMultimediaRequest.md
+docs/SfvbItemPreorder.md
+docs/SfvbItemPreorderChange.md
+docs/SfvbItemPreorderChildRow.md
+docs/SfvbItemPreorderChildrenRequest.md
+docs/SfvbItemPreorderListResponse.md
+docs/SfvbItemPreorderOption.md
+docs/SfvbItemPreorderRequest.md
 docs/SfvbItemPricing.md
 docs/SfvbItemPricingRequest.md
 docs/SfvbItemRelated.md
@@ -2625,6 +2632,13 @@ lib/ultracart_api/models/sfvb_item_content_request.rb
 lib/ultracart_api/models/sfvb_item_multimedia.rb
 lib/ultracart_api/models/sfvb_item_multimedia_description_request.rb
 lib/ultracart_api/models/sfvb_item_multimedia_request.rb
+lib/ultracart_api/models/sfvb_item_preorder.rb
+lib/ultracart_api/models/sfvb_item_preorder_change.rb
+lib/ultracart_api/models/sfvb_item_preorder_child_row.rb
+lib/ultracart_api/models/sfvb_item_preorder_children_request.rb
+lib/ultracart_api/models/sfvb_item_preorder_list_response.rb
+lib/ultracart_api/models/sfvb_item_preorder_option.rb
+lib/ultracart_api/models/sfvb_item_preorder_request.rb
 lib/ultracart_api/models/sfvb_item_pricing.rb
 lib/ultracart_api/models/sfvb_item_pricing_request.rb
 lib/ultracart_api/models/sfvb_item_related.rb
