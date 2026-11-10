@@ -18,6 +18,9 @@ module UltracartClient
     # Where the gate applies.  all, eea or non_us.
     attr_accessor :region
 
+    # The cookie service the consent gate is stored under, for example openai or facebook (#1959).
+    attr_accessor :service
+
     # The consent category that must be granted.  Statistics, Preferences or Marketing.
     attr_accessor :type
 
@@ -47,6 +50,7 @@ module UltracartClient
     def self.attribute_map
       {
         :'region' => :'region',
+        :'service' => :'service',
         :'type' => :'type'
       }
     end
@@ -60,6 +64,7 @@ module UltracartClient
     def self.openapi_types
       {
         :'region' => :'String',
+        :'service' => :'String',
         :'type' => :'String'
       }
     end
@@ -87,6 +92,10 @@ module UltracartClient
 
       if attributes.key?(:'region')
         self.region = attributes[:'region']
+      end
+
+      if attributes.key?(:'service')
+        self.service = attributes[:'service']
       end
 
       if attributes.key?(:'type')
@@ -137,6 +146,7 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           region == o.region &&
+          service == o.service &&
           type == o.type
     end
 
@@ -149,7 +159,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [region, type].hash
+      [region, service, type].hash
     end
 
     # Builds the object from hash

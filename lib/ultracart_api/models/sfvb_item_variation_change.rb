@@ -25,7 +25,7 @@ module UltracartClient
     attr_accessor :child
 
     # add_option and add_axis make the option the default.
-    attr_accessor :default
+    attr_accessor :default_option
 
     # The prompt, for add_axis and set_default_text.  Null clears it.
     attr_accessor :default_text
@@ -57,7 +57,7 @@ module UltracartClient
         :'axis' => :'axis',
         :'before' => :'before',
         :'child' => :'child',
-        :'default' => :'default',
+        :'default_option' => :'default_option',
         :'default_text' => :'default_text',
         :'multimedia_oid' => :'multimedia_oid',
         :'op' => :'op',
@@ -80,7 +80,7 @@ module UltracartClient
         :'axis' => :'String',
         :'before' => :'String',
         :'child' => :'String',
-        :'default' => :'Boolean',
+        :'default_option' => :'Boolean',
         :'default_text' => :'String',
         :'multimedia_oid' => :'Integer',
         :'op' => :'String',
@@ -125,8 +125,8 @@ module UltracartClient
         self.child = attributes[:'child']
       end
 
-      if attributes.key?(:'default')
-        self.default = attributes[:'default']
+      if attributes.key?(:'default_option')
+        self.default_option = attributes[:'default_option']
       end
 
       if attributes.key?(:'default_text')
@@ -187,7 +187,7 @@ module UltracartClient
           axis == o.axis &&
           before == o.before &&
           child == o.child &&
-          default == o.default &&
+          default_option == o.default_option &&
           default_text == o.default_text &&
           multimedia_oid == o.multimedia_oid &&
           op == o.op &&
@@ -207,7 +207,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [axis, before, child, default, default_text, multimedia_oid, op, quantity, to, value, values, variation_values].hash
+      [axis, before, child, default_option, default_text, multimedia_oid, op, quantity, to, value, values, variation_values].hash
     end
 
     # Builds the object from hash

@@ -16,7 +16,7 @@ require 'time'
 module UltracartClient
   class SfvbItemVariationOption
     # True for the option the item page starts on.  At most one per axis.
-    attr_accessor :default
+    attr_accessor :default_option
 
     # An image or swatch of the parent item shown for this option, or null.
     attr_accessor :multimedia_oid
@@ -27,7 +27,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'default' => :'default',
+        :'default_option' => :'default_option',
         :'multimedia_oid' => :'multimedia_oid',
         :'value' => :'value'
       }
@@ -41,7 +41,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'default' => :'Boolean',
+        :'default_option' => :'Boolean',
         :'multimedia_oid' => :'Integer',
         :'value' => :'String'
       }
@@ -68,8 +68,8 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'default')
-        self.default = attributes[:'default']
+      if attributes.key?(:'default_option')
+        self.default_option = attributes[:'default_option']
       end
 
       if attributes.key?(:'multimedia_oid')
@@ -99,7 +99,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          default == o.default &&
+          default_option == o.default_option &&
           multimedia_oid == o.multimedia_oid &&
           value == o.value
     end
@@ -113,7 +113,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [default, multimedia_oid, value].hash
+      [default_option, multimedia_oid, value].hash
     end
 
     # Builds the object from hash
