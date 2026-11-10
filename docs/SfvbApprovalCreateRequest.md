@@ -12,9 +12,11 @@
 | **experiment_start** | [**SfvbExperimentStartRequest**](SfvbExperimentStartRequest.md) |  | [optional] |
 | **flow_backfill** | [**SfvbFlowBackfillRequest**](SfvbFlowBackfillRequest.md) |  | [optional] |
 | **item_attribute_rows** | [**Array&lt;SfvbItemAttributeBatchRow&gt;**](SfvbItemAttributeBatchRow.md) | For item.attribute_batch, exactly the rows the batch will send - the dry run&#39;s change rows, each with merchant_item_oid and current_sha256.  UltraCart keeps only their hash. | [optional] |
+| **item_default_page_rows** | [**Array&lt;SfvbItemDefaultPageRow&gt;**](SfvbItemDefaultPageRow.md) | For item.default_page, exactly the rows the apply will send - the dry run&#39;s ready rows, each with merchant_item_oid, page_oid and current_sha256.  UltraCart keeps only their hash. | [optional] |
 | **item_preorder** | [**SfvbItemPreorderRequest**](SfvbItemPreorderRequest.md) |  | [optional] |
 | **item_preorder_children** | [**SfvbItemPreorderChildrenRequest**](SfvbItemPreorderChildrenRequest.md) |  | [optional] |
 | **item_pricing** | [**SfvbItemPricingRequest**](SfvbItemPricingRequest.md) |  | [optional] |
+| **item_variations** | [**SfvbItemVariationsRequest**](SfvbItemVariationsRequest.md) |  | [optional] |
 | **params** | [**SfvbApprovalParams**](SfvbApprovalParams.md) |  | [optional] |
 | **postcard_test_mail** | [**SfvbCommsTestPostcardRequest**](SfvbCommsTestPostcardRequest.md) |  | [optional] |
 | **reason** | **String** | Why the agent wants to do this, in a sentence.  Shown to the person as unverified text, capped at 500 characters. | [optional] |
@@ -39,9 +41,11 @@ instance = UltracartClient::SfvbApprovalCreateRequest.new(
   experiment_start: null,
   flow_backfill: null,
   item_attribute_rows: null,
+  item_default_page_rows: null,
   item_preorder: null,
   item_preorder_children: null,
   item_pricing: null,
+  item_variations: null,
   params: null,
   postcard_test_mail: null,
   reason: null,
