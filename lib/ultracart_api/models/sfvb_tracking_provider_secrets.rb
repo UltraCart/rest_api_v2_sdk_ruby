@@ -51,6 +51,9 @@ module UltracartClient
     # Northbeam API Key.  A secret handle (sec_...) made for this storefront by POST secrets with sink tracking.northbeam.api_key, or an empty string to clear it.
     attr_accessor :northbeam_api_key
 
+    # OpenAI Conversions API Key.  A secret handle (sec_...) made for this storefront by POST secrets with sink tracking.openai.conversions_api_key, or an empty string to clear it.
+    attr_accessor :openai_conversions_api_key
+
     # Pinterest Conversion Token.  A secret handle (sec_...) made for this storefront by POST secrets with sink tracking.pinterest.capi_token, or an empty string to clear it.
     attr_accessor :pinterest_token
 
@@ -75,6 +78,7 @@ module UltracartClient
         :'klaviyo_private_api_key' => :'klaviyo_private_api_key',
         :'nextdoor_access_token' => :'nextdoor_access_token',
         :'northbeam_api_key' => :'northbeam_api_key',
+        :'openai_conversions_api_key' => :'openai_conversions_api_key',
         :'pinterest_token' => :'pinterest_token',
         :'referralcandy_secret_key' => :'referralcandy_secret_key',
         :'retention_key' => :'retention_key'
@@ -101,6 +105,7 @@ module UltracartClient
         :'klaviyo_private_api_key' => :'String',
         :'nextdoor_access_token' => :'String',
         :'northbeam_api_key' => :'String',
+        :'openai_conversions_api_key' => :'String',
         :'pinterest_token' => :'String',
         :'referralcandy_secret_key' => :'String',
         :'retention_key' => :'String'
@@ -176,6 +181,10 @@ module UltracartClient
         self.northbeam_api_key = attributes[:'northbeam_api_key']
       end
 
+      if attributes.key?(:'openai_conversions_api_key')
+        self.openai_conversions_api_key = attributes[:'openai_conversions_api_key']
+      end
+
       if attributes.key?(:'pinterest_token')
         self.pinterest_token = attributes[:'pinterest_token']
       end
@@ -219,6 +228,7 @@ module UltracartClient
           klaviyo_private_api_key == o.klaviyo_private_api_key &&
           nextdoor_access_token == o.nextdoor_access_token &&
           northbeam_api_key == o.northbeam_api_key &&
+          openai_conversions_api_key == o.openai_conversions_api_key &&
           pinterest_token == o.pinterest_token &&
           referralcandy_secret_key == o.referralcandy_secret_key &&
           retention_key == o.retention_key
@@ -233,7 +243,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attentive_private_api_key, awin_conversion_api_key, axon_conversion_api_key, converge_webhook_token, customerio_write_key, facebook_server_side_access_token, ga4_api_secret, hyros_api_key, kissmetrics_api_key, klaviyo_private_api_key, nextdoor_access_token, northbeam_api_key, pinterest_token, referralcandy_secret_key, retention_key].hash
+      [attentive_private_api_key, awin_conversion_api_key, axon_conversion_api_key, converge_webhook_token, customerio_write_key, facebook_server_side_access_token, ga4_api_secret, hyros_api_key, kissmetrics_api_key, klaviyo_private_api_key, nextdoor_access_token, northbeam_api_key, openai_conversions_api_key, pinterest_token, referralcandy_secret_key, retention_key].hash
     end
 
     # Builds the object from hash
