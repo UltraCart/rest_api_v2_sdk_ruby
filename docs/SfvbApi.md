@@ -98,6 +98,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_comms_unreferenced**](SfvbApi.md#get_sfvb_comms_unreferenced) | **GET** /sfvb/storefronts/{storefront_oid}/comms/unreferenced | List the emails and postcards on a storefront that no step names |
 | [**get_sfvb_container**](SfvbApi.md#get_sfvb_container) | **GET** /sfvb/storefronts/{storefront_oid}/containers/{owner_type}/{owner_object_id} | Read a container stored outside the file system |
 | [**get_sfvb_container_version**](SfvbApi.md#get_sfvb_container_version) | **GET** /sfvb/storefronts/{storefront_oid}/container_versions/{container_history_oid} | Read the CJSON stored in one container history entry |
+| [**get_sfvb_docs_gap**](SfvbApi.md#get_sfvb_docs_gap) | **GET** /sfvb/docs/gaps/{report_id} | Get a documentation-gap report&#39;s status |
 | [**get_sfvb_element**](SfvbApi.md#get_sfvb_element) | **GET** /sfvb/elements/{element_type} | Configuration schema and field card for one element type |
 | [**get_sfvb_email**](SfvbApi.md#get_sfvb_email) | **GET** /sfvb/storefronts/{storefront_oid}/emails/{email_uuid} | Get a flow or campaign email&#39;s subject and preview text |
 | [**get_sfvb_events**](SfvbApi.md#get_sfvb_events) | **GET** /sfvb/events | Replay events |
@@ -177,6 +178,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**insert_sfvb_comms_segment**](SfvbApi.md#insert_sfvb_comms_segment) | **POST** /sfvb/storefronts/{storefront_oid}/segments | Create a segment |
 | [**insert_sfvb_comms_sending_domain**](SfvbApi.md#insert_sfvb_comms_sending_domain) | **POST** /sfvb/comms/sending_domains | Add a sending domain |
 | [**insert_sfvb_comms_twilio_account**](SfvbApi.md#insert_sfvb_comms_twilio_account) | **POST** /sfvb/comms/twilio_account | Connect the Twilio account |
+| [**insert_sfvb_docs_gap**](SfvbApi.md#insert_sfvb_docs_gap) | **POST** /sfvb/docs/gaps | Send UltraCart a documentation-gap report |
 | [**insert_sfvb_page**](SfvbApi.md#insert_sfvb_page) | **POST** /sfvb/storefronts/{storefront_oid}/pages | Create a page |
 | [**insert_sfvb_redirect**](SfvbApi.md#insert_sfvb_redirect) | **POST** /sfvb/storefronts/{storefront_oid}/redirects | Create a 301 redirect rule |
 | [**insert_sfvb_secret_request**](SfvbApi.md#insert_sfvb_secret_request) | **POST** /sfvb/secrets | Ask a person to enter secret values |
@@ -5406,6 +5408,59 @@ end
 - **Accept**: application/json
 
 
+## get_sfvb_docs_gap
+
+> <SfvbDocsGap> get_sfvb_docs_gap(report_id)
+
+Get a documentation-gap report's status
+
+The status of a report this account sent.  received until UltraCart staff look at it, then accepted, declined or fixed.  The report text and UltraCart's internal notes are not returned.  A report from another account answers 404. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_docs_gap_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbDocsGap>, Integer, Hash)> get_sfvb_docs_gap_with_http_info(report_id)
+
+```ruby
+begin
+  # Get a documentation-gap report's status
+  data, status_code, headers = api_instance.get_sfvb_docs_gap_with_http_info(report_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbDocsGap>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_docs_gap_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **report_id** | **String** |  |  |
+
+### Return type
+
+[**SfvbDocsGap**](SfvbDocsGap.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_sfvb_element
 
 > <SfvbElementSchemaResponse> get_sfvb_element(element_type)
@@ -9673,6 +9728,60 @@ end
 ### Return type
 
 [**SfvbCommsTwilioAccountResponse**](SfvbCommsTwilioAccountResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## insert_sfvb_docs_gap
+
+> <SfvbDocsGap> insert_sfvb_docs_gap(docs_gap_report, opts)
+
+Send UltraCart a documentation-gap report
+
+Reports a place where docs.ultracart.com is wrong or missing, for UltraCart staff to triage.  Send the report uc-storefront docs gap review checked, in this form.  Optionally name the storefront the agent was working on with storefront_oid.  The server checks the report again and refuses one that holds a credential or an email address (an ultracart.com address may stay), without keeping it.  Sending the same report again returns the earlier report_id with 200 and duplicate true rather than a second report.  An account may send 20 reports a UTC day.  Requires a token that resolves to a user, so use the device authorization flow. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_sfvb_docs_gap_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbDocsGap>, Integer, Hash)> insert_sfvb_docs_gap_with_http_info(docs_gap_report, opts)
+
+```ruby
+begin
+  # Send UltraCart a documentation-gap report
+  data, status_code, headers = api_instance.insert_sfvb_docs_gap_with_http_info(docs_gap_report, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbDocsGap>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->insert_sfvb_docs_gap_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **docs_gap_report** | [**SfvbDocsGapReport**](SfvbDocsGapReport.md) | The report |  |
+| **storefront_oid** | **Integer** | The storefront the agent was working on, recorded for context.  Leave it out when none applies. | [optional] |
+
+### Return type
+
+[**SfvbDocsGap**](SfvbDocsGap.md)
 
 ### Authorization
 

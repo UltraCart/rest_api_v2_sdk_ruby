@@ -6854,6 +6854,70 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Get a documentation-gap report's status
+    # The status of a report this account sent.  received until UltraCart staff look at it, then accepted, declined or fixed.  The report text and UltraCart's internal notes are not returned.  A report from another account answers 404. 
+    # @param report_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbDocsGap]
+    def get_sfvb_docs_gap(report_id, opts = {})
+      data, _status_code, _headers = get_sfvb_docs_gap_with_http_info(report_id, opts)
+      data
+    end
+
+    # Get a documentation-gap report&#39;s status
+    # The status of a report this account sent.  received until UltraCart staff look at it, then accepted, declined or fixed.  The report text and UltraCart&#39;s internal notes are not returned.  A report from another account answers 404. 
+    # @param report_id [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbDocsGap, Integer, Hash)>] SfvbDocsGap data, response status code and response headers
+    def get_sfvb_docs_gap_with_http_info(report_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_docs_gap ...'
+      end
+      # verify the required parameter 'report_id' is set
+      if @api_client.config.client_side_validation && report_id.nil?
+        fail ArgumentError, "Missing the required parameter 'report_id' when calling SfvbApi.get_sfvb_docs_gap"
+      end
+      # resource path
+      local_var_path = '/sfvb/docs/gaps/{report_id}'.sub('{' + 'report_id' + '}', CGI.escape(report_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbDocsGap'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_docs_gap",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_docs_gap\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Configuration schema and field card for one element type
     # schema is the draft-07 JSON schema for the element config object and doc is the markdown field card, both as strings.  Either is omitted when none has been published for the element, which is still a 200.  The catalog is published by the visual builder release process, and a republish can take up to an hour to appear here. 
     # @param element_type [String] 
@@ -12378,6 +12442,78 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_comms_twilio_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Send UltraCart a documentation-gap report
+    # Reports a place where docs.ultracart.com is wrong or missing, for UltraCart staff to triage.  Send the report uc-storefront docs gap review checked, in this form.  Optionally name the storefront the agent was working on with storefront_oid.  The server checks the report again and refuses one that holds a credential or an email address (an ultracart.com address may stay), without keeping it.  Sending the same report again returns the earlier report_id with 200 and duplicate true rather than a second report.  An account may send 20 reports a UTC day.  Requires a token that resolves to a user, so use the device authorization flow. 
+    # @param docs_gap_report [SfvbDocsGapReport] The report
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :storefront_oid The storefront the agent was working on, recorded for context.  Leave it out when none applies.
+    # @return [SfvbDocsGap]
+    def insert_sfvb_docs_gap(docs_gap_report, opts = {})
+      data, _status_code, _headers = insert_sfvb_docs_gap_with_http_info(docs_gap_report, opts)
+      data
+    end
+
+    # Send UltraCart a documentation-gap report
+    # Reports a place where docs.ultracart.com is wrong or missing, for UltraCart staff to triage.  Send the report uc-storefront docs gap review checked, in this form.  Optionally name the storefront the agent was working on with storefront_oid.  The server checks the report again and refuses one that holds a credential or an email address (an ultracart.com address may stay), without keeping it.  Sending the same report again returns the earlier report_id with 200 and duplicate true rather than a second report.  An account may send 20 reports a UTC day.  Requires a token that resolves to a user, so use the device authorization flow. 
+    # @param docs_gap_report [SfvbDocsGapReport] The report
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :storefront_oid The storefront the agent was working on, recorded for context.  Leave it out when none applies.
+    # @return [Array<(SfvbDocsGap, Integer, Hash)>] SfvbDocsGap data, response status code and response headers
+    def insert_sfvb_docs_gap_with_http_info(docs_gap_report, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.insert_sfvb_docs_gap ...'
+      end
+      # verify the required parameter 'docs_gap_report' is set
+      if @api_client.config.client_side_validation && docs_gap_report.nil?
+        fail ArgumentError, "Missing the required parameter 'docs_gap_report' when calling SfvbApi.insert_sfvb_docs_gap"
+      end
+      # resource path
+      local_var_path = '/sfvb/docs/gaps'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'storefront_oid'] = opts[:'storefront_oid'] if !opts[:'storefront_oid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(docs_gap_report)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbDocsGap'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.insert_sfvb_docs_gap",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_docs_gap\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -1083,6 +1083,9 @@ docs/SfvbContainerRevertRequest.md
 docs/SfvbContainerVersion.md
 docs/SfvbContainerVersionsResponse.md
 docs/SfvbContainerWriteRequest.md
+docs/SfvbDocsGap.md
+docs/SfvbDocsGapReport.md
+docs/SfvbDocsGapReportGap.md
 docs/SfvbElement.md
 docs/SfvbElementSchemaResponse.md
 docs/SfvbElementsResponse.md
@@ -2555,6 +2558,9 @@ lib/ultracart_api/models/sfvb_container_revert_request.rb
 lib/ultracart_api/models/sfvb_container_version.rb
 lib/ultracart_api/models/sfvb_container_versions_response.rb
 lib/ultracart_api/models/sfvb_container_write_request.rb
+lib/ultracart_api/models/sfvb_docs_gap.rb
+lib/ultracart_api/models/sfvb_docs_gap_report.rb
+lib/ultracart_api/models/sfvb_docs_gap_report_gap.rb
 lib/ultracart_api/models/sfvb_element.rb
 lib/ultracart_api/models/sfvb_element_schema_response.rb
 lib/ultracart_api/models/sfvb_elements_response.rb
