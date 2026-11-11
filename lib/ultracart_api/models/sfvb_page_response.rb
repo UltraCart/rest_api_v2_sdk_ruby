@@ -18,6 +18,9 @@ module UltracartClient
     # Every attribute this page has, including ones a template declares but nothing has set yet.  These are what the pageattribute element renders.  Sorted by name.
     attr_accessor :attributes
 
+    # Template that renders the blog posts under this page.  Omitted when not set.
+    attr_accessor :blog_post_template
+
     # The page description, the text a page template renders as the page's description.  Omitted when empty.
     attr_accessor :description
 
@@ -30,11 +33,29 @@ module UltracartClient
     # Template file that renders the item pages under this page.
     attr_accessor :item_template
 
+    # Items per page on a template that paginates.  Omitted when the template's default applies.
+    attr_accessor :items_per_page
+
     # The page's images, including codes a template declares but nothing has attached yet.  These are what the pageimage element renders - the default image when pageImageCode is empty, otherwise the image with that code.  The default image comes first.
     attr_accessor :multimedia
 
+    # S for a static page, D for a dynamic one.
+    attr_accessor :page_type
+
     # The page path, normalized to begin and end with a slash.
     attr_accessor :path
+
+    # Template that renders the item review pages under this page.  Omitted when not set.
+    attr_accessor :review_template
+
+    # Position among its siblings when the parent sorts child pages by a custom order.  Omitted when not set.
+    attr_accessor :sort_order
+
+    # How the pages under this one are ordered.  TA or TD by title, DA or DD by description, C custom.
+    attr_accessor :sort_order_child_groups
+
+    # How the page's items are ordered.  IA or ID by item id, DA or DD by description, SA or SD by manufacturer SKU, PA or PD by price, RA or RD by review, NA or ND by inventory, C custom.
+    attr_accessor :sort_order_child_items
 
     # The page title.
     attr_accessor :title
@@ -49,12 +70,19 @@ module UltracartClient
     def self.attribute_map
       {
         :'attributes' => :'attributes',
+        :'blog_post_template' => :'blog_post_template',
         :'description' => :'description',
         :'exclude_from_sitemap' => :'exclude_from_sitemap',
         :'group_template' => :'group_template',
         :'item_template' => :'item_template',
+        :'items_per_page' => :'items_per_page',
         :'multimedia' => :'multimedia',
+        :'page_type' => :'page_type',
         :'path' => :'path',
+        :'review_template' => :'review_template',
+        :'sort_order' => :'sort_order',
+        :'sort_order_child_groups' => :'sort_order_child_groups',
+        :'sort_order_child_items' => :'sort_order_child_items',
         :'title' => :'title',
         :'visible' => :'visible',
         :'visible_dts' => :'visible_dts'
@@ -70,12 +98,19 @@ module UltracartClient
     def self.openapi_types
       {
         :'attributes' => :'Array<SfvbPageAttribute>',
+        :'blog_post_template' => :'String',
         :'description' => :'String',
         :'exclude_from_sitemap' => :'Boolean',
         :'group_template' => :'String',
         :'item_template' => :'String',
+        :'items_per_page' => :'Integer',
         :'multimedia' => :'Array<SfvbPageMultimedia>',
+        :'page_type' => :'String',
         :'path' => :'String',
+        :'review_template' => :'String',
+        :'sort_order' => :'Integer',
+        :'sort_order_child_groups' => :'String',
+        :'sort_order_child_items' => :'String',
         :'title' => :'String',
         :'visible' => :'Boolean',
         :'visible_dts' => :'String'
@@ -109,6 +144,10 @@ module UltracartClient
         end
       end
 
+      if attributes.key?(:'blog_post_template')
+        self.blog_post_template = attributes[:'blog_post_template']
+      end
+
       if attributes.key?(:'description')
         self.description = attributes[:'description']
       end
@@ -125,14 +164,38 @@ module UltracartClient
         self.item_template = attributes[:'item_template']
       end
 
+      if attributes.key?(:'items_per_page')
+        self.items_per_page = attributes[:'items_per_page']
+      end
+
       if attributes.key?(:'multimedia')
         if (value = attributes[:'multimedia']).is_a?(Array)
           self.multimedia = value
         end
       end
 
+      if attributes.key?(:'page_type')
+        self.page_type = attributes[:'page_type']
+      end
+
       if attributes.key?(:'path')
         self.path = attributes[:'path']
+      end
+
+      if attributes.key?(:'review_template')
+        self.review_template = attributes[:'review_template']
+      end
+
+      if attributes.key?(:'sort_order')
+        self.sort_order = attributes[:'sort_order']
+      end
+
+      if attributes.key?(:'sort_order_child_groups')
+        self.sort_order_child_groups = attributes[:'sort_order_child_groups']
+      end
+
+      if attributes.key?(:'sort_order_child_items')
+        self.sort_order_child_items = attributes[:'sort_order_child_items']
       end
 
       if attributes.key?(:'title')
@@ -167,12 +230,19 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           attributes == o.attributes &&
+          blog_post_template == o.blog_post_template &&
           description == o.description &&
           exclude_from_sitemap == o.exclude_from_sitemap &&
           group_template == o.group_template &&
           item_template == o.item_template &&
+          items_per_page == o.items_per_page &&
           multimedia == o.multimedia &&
+          page_type == o.page_type &&
           path == o.path &&
+          review_template == o.review_template &&
+          sort_order == o.sort_order &&
+          sort_order_child_groups == o.sort_order_child_groups &&
+          sort_order_child_items == o.sort_order_child_items &&
           title == o.title &&
           visible == o.visible &&
           visible_dts == o.visible_dts
@@ -187,7 +257,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attributes, description, exclude_from_sitemap, group_template, item_template, multimedia, path, title, visible, visible_dts].hash
+      [attributes, blog_post_template, description, exclude_from_sitemap, group_template, item_template, items_per_page, multimedia, page_type, path, review_template, sort_order, sort_order_child_groups, sort_order_child_items, title, visible, visible_dts].hash
     end
 
     # Builds the object from hash
