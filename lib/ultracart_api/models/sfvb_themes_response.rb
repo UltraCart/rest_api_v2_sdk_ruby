@@ -18,6 +18,12 @@ module UltracartClient
     # Oid of the active theme, repeated here so a caller does not have to scan the list.
     attr_accessor :active_theme_oid
 
+    # How many themes the storefront holds now.  When it equals theme_limit, delete an inactive theme in the admin before duplicating.
+    attr_accessor :theme_count
+
+    # Most themes a storefront can hold, active and inactive together.  A duplicate or install at the limit is refused with sfvb.theme_limit_reached.
+    attr_accessor :theme_limit
+
     # Themes belonging to the storefront.  Exactly one is flagged active.
     attr_accessor :themes
 
@@ -25,6 +31,8 @@ module UltracartClient
     def self.attribute_map
       {
         :'active_theme_oid' => :'active_theme_oid',
+        :'theme_count' => :'theme_count',
+        :'theme_limit' => :'theme_limit',
         :'themes' => :'themes'
       }
     end
@@ -38,6 +46,8 @@ module UltracartClient
     def self.openapi_types
       {
         :'active_theme_oid' => :'Integer',
+        :'theme_count' => :'Integer',
+        :'theme_limit' => :'Integer',
         :'themes' => :'Array<SfvbTheme>'
       }
     end
@@ -67,6 +77,14 @@ module UltracartClient
         self.active_theme_oid = attributes[:'active_theme_oid']
       end
 
+      if attributes.key?(:'theme_count')
+        self.theme_count = attributes[:'theme_count']
+      end
+
+      if attributes.key?(:'theme_limit')
+        self.theme_limit = attributes[:'theme_limit']
+      end
+
       if attributes.key?(:'themes')
         if (value = attributes[:'themes']).is_a?(Array)
           self.themes = value
@@ -93,6 +111,8 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           active_theme_oid == o.active_theme_oid &&
+          theme_count == o.theme_count &&
+          theme_limit == o.theme_limit &&
           themes == o.themes
     end
 
@@ -105,7 +125,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [active_theme_oid, themes].hash
+      [active_theme_oid, theme_count, theme_limit, themes].hash
     end
 
     # Builds the object from hash

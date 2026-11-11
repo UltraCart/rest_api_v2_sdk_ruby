@@ -27,6 +27,9 @@ module UltracartClient
     # SHA-256 of the content.  Send this back as If-Match when writing.  The ETag header carries the same hash, but a compressing proxy may append a suffix such as -gzip to it, so this body value is the authoritative one.  Both forms are accepted on write.
     attr_accessor :hash_sha256
 
+    # True when a theme upgrade left unresolved merge conflicts in this file.  The content holds conflict marker lines.  Resolve each conflict and save the file without any marker lines to clear it - a save that still has marker lines is refused.
+    attr_accessor :merge_conflict
+
     # Mime type.
     attr_accessor :mime_type
 
@@ -55,6 +58,7 @@ module UltracartClient
         :'content' => :'content',
         :'fs_file_oid' => :'fs_file_oid',
         :'hash_sha256' => :'hash_sha256',
+        :'merge_conflict' => :'merge_conflict',
         :'mime_type' => :'mime_type',
         :'path' => :'path',
         :'size' => :'size',
@@ -77,6 +81,7 @@ module UltracartClient
         :'content' => :'String',
         :'fs_file_oid' => :'Integer',
         :'hash_sha256' => :'String',
+        :'merge_conflict' => :'Boolean',
         :'mime_type' => :'String',
         :'path' => :'String',
         :'size' => :'Integer',
@@ -122,6 +127,10 @@ module UltracartClient
 
       if attributes.key?(:'hash_sha256')
         self.hash_sha256 = attributes[:'hash_sha256']
+      end
+
+      if attributes.key?(:'merge_conflict')
+        self.merge_conflict = attributes[:'merge_conflict']
       end
 
       if attributes.key?(:'mime_type')
@@ -175,6 +184,7 @@ module UltracartClient
           content == o.content &&
           fs_file_oid == o.fs_file_oid &&
           hash_sha256 == o.hash_sha256 &&
+          merge_conflict == o.merge_conflict &&
           mime_type == o.mime_type &&
           path == o.path &&
           size == o.size &&
@@ -193,7 +203,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [auto_compiled, content, fs_file_oid, hash_sha256, mime_type, path, size, truncated, valid, velocity_errors, version].hash
+      [auto_compiled, content, fs_file_oid, hash_sha256, merge_conflict, mime_type, path, size, truncated, valid, velocity_errors, version].hash
     end
 
     # Builds the object from hash

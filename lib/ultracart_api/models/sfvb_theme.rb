@@ -24,6 +24,12 @@ module UltracartClient
     # Oid of the theme root directory in the storefront file system.
     attr_accessor :fs_directory_oid
 
+    # How many of the theme's files still have unresolved merge conflicts from an upgrade.  Find them with searchSfvbFiles, merge_conflicts true and this theme's path.
+    attr_accessor :merge_conflict_count
+
+    # False while any file in the theme has an unresolved merge conflict.  Never activate a theme that reports false - resolve every conflict first.  Activation itself happens in the UltraCart admin, which runs the same check.
+    attr_accessor :ok_to_activate
+
     # Root path of the theme in the storefront file system, for example /themes/mytheme/
     attr_accessor :path
 
@@ -51,6 +57,8 @@ module UltracartClient
         :'active' => :'active',
         :'description' => :'description',
         :'fs_directory_oid' => :'fs_directory_oid',
+        :'merge_conflict_count' => :'merge_conflict_count',
+        :'ok_to_activate' => :'ok_to_activate',
         :'path' => :'path',
         :'storefront_oid' => :'storefront_oid',
         :'theme_name' => :'theme_name',
@@ -72,6 +80,8 @@ module UltracartClient
         :'active' => :'Boolean',
         :'description' => :'String',
         :'fs_directory_oid' => :'Integer',
+        :'merge_conflict_count' => :'Integer',
+        :'ok_to_activate' => :'Boolean',
         :'path' => :'String',
         :'storefront_oid' => :'Integer',
         :'theme_name' => :'String',
@@ -113,6 +123,14 @@ module UltracartClient
 
       if attributes.key?(:'fs_directory_oid')
         self.fs_directory_oid = attributes[:'fs_directory_oid']
+      end
+
+      if attributes.key?(:'merge_conflict_count')
+        self.merge_conflict_count = attributes[:'merge_conflict_count']
+      end
+
+      if attributes.key?(:'ok_to_activate')
+        self.ok_to_activate = attributes[:'ok_to_activate']
       end
 
       if attributes.key?(:'path')
@@ -165,6 +183,8 @@ module UltracartClient
           active == o.active &&
           description == o.description &&
           fs_directory_oid == o.fs_directory_oid &&
+          merge_conflict_count == o.merge_conflict_count &&
+          ok_to_activate == o.ok_to_activate &&
           path == o.path &&
           storefront_oid == o.storefront_oid &&
           theme_name == o.theme_name &&
@@ -183,7 +203,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [active, description, fs_directory_oid, path, storefront_oid, theme_name, theme_oid, upgrade_available, valid, version].hash
+      [active, description, fs_directory_oid, merge_conflict_count, ok_to_activate, path, storefront_oid, theme_name, theme_oid, upgrade_available, valid, version].hash
     end
 
     # Builds the object from hash

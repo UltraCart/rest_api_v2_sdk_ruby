@@ -30,6 +30,9 @@ module UltracartClient
     # Job handle.  Poll getSfvbThemeJob with this.
     attr_accessor :job_id
 
+    # Paths of the copy's files that still have unresolved merge conflicts, read fresh on every poll, so the list shrinks as you resolve them.  Each needs its conflict marker lines resolved and the file saved before the theme can be activated.  Empty when there are none.
+    attr_accessor :merge_conflicts
+
     # Percent complete, 0-100.
     attr_accessor :progress
 
@@ -48,8 +51,14 @@ module UltracartClient
     # True only when the job finished successfully.  Check complete first.
     attr_accessor :success
 
-    # Path the new theme is being created at.  Returned when the job is started and on every poll, so you do not have to keep the response that started it.  The theme oid itself is NOT returned, so once the job completes you list themes and match on this path.  It is also what success is checked against - a finished job whose theme is not here reports success false rather than pretending.
+    # Path the new theme is being created at.  Returned when the job is started and on every poll, so you do not have to keep the response that started it.  Once the job completes, the theme found at this path is reported as theme_oid.  It is also what success is checked against - a finished job whose theme is not here reports success false rather than pretending.
     attr_accessor :target_path
+
+    # Oid of the theme the job created, once it is complete and the theme exists.  Null until then.
+    attr_accessor :theme_oid
+
+    # The version the copy was asked to be upgraded to, when the duplicate asked for an upgrade.  Null for a plain copy.  A complete job reports success only when the copy is at this version.
+    attr_accessor :upgrade_to_version
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -81,13 +90,16 @@ module UltracartClient
         :'error_message' => :'error_message',
         :'finished_dts' => :'finished_dts',
         :'job_id' => :'job_id',
+        :'merge_conflicts' => :'merge_conflicts',
         :'progress' => :'progress',
         :'progress_description' => :'progress_description',
         :'started_dts' => :'started_dts',
         :'status' => :'status',
         :'submitted_dts' => :'submitted_dts',
         :'success' => :'success',
-        :'target_path' => :'target_path'
+        :'target_path' => :'target_path',
+        :'theme_oid' => :'theme_oid',
+        :'upgrade_to_version' => :'upgrade_to_version'
       }
     end
 
@@ -104,13 +116,16 @@ module UltracartClient
         :'error_message' => :'String',
         :'finished_dts' => :'String',
         :'job_id' => :'Integer',
+        :'merge_conflicts' => :'Array<String>',
         :'progress' => :'Integer',
         :'progress_description' => :'String',
         :'started_dts' => :'String',
         :'status' => :'String',
         :'submitted_dts' => :'String',
         :'success' => :'Boolean',
-        :'target_path' => :'String'
+        :'target_path' => :'String',
+        :'theme_oid' => :'Integer',
+        :'upgrade_to_version' => :'String'
       }
     end
 
@@ -155,6 +170,12 @@ module UltracartClient
         self.job_id = attributes[:'job_id']
       end
 
+      if attributes.key?(:'merge_conflicts')
+        if (value = attributes[:'merge_conflicts']).is_a?(Array)
+          self.merge_conflicts = value
+        end
+      end
+
       if attributes.key?(:'progress')
         self.progress = attributes[:'progress']
       end
@@ -181,6 +202,14 @@ module UltracartClient
 
       if attributes.key?(:'target_path')
         self.target_path = attributes[:'target_path']
+      end
+
+      if attributes.key?(:'theme_oid')
+        self.theme_oid = attributes[:'theme_oid']
+      end
+
+      if attributes.key?(:'upgrade_to_version')
+        self.upgrade_to_version = attributes[:'upgrade_to_version']
       end
     end
 
@@ -219,13 +248,16 @@ module UltracartClient
           error_message == o.error_message &&
           finished_dts == o.finished_dts &&
           job_id == o.job_id &&
+          merge_conflicts == o.merge_conflicts &&
           progress == o.progress &&
           progress_description == o.progress_description &&
           started_dts == o.started_dts &&
           status == o.status &&
           submitted_dts == o.submitted_dts &&
           success == o.success &&
-          target_path == o.target_path
+          target_path == o.target_path &&
+          theme_oid == o.theme_oid &&
+          upgrade_to_version == o.upgrade_to_version
     end
 
     # @see the `==` method
@@ -237,7 +269,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [complete, description, error_message, finished_dts, job_id, progress, progress_description, started_dts, status, submitted_dts, success, target_path].hash
+      [complete, description, error_message, finished_dts, job_id, merge_conflicts, progress, progress_description, started_dts, status, submitted_dts, success, target_path, theme_oid, upgrade_to_version].hash
     end
 
     # Builds the object from hash

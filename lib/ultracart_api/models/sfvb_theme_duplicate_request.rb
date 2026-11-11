@@ -24,12 +24,16 @@ module UltracartClient
     # Name for the new theme.
     attr_accessor :theme_name
 
+    # Upgrade the copy to this theme version after copying it, as the admin's Duplicate and Upgrade does.  Only the copy is upgraded - the source theme is never touched.  Must be one of the available_versions from getSfvbThemeUpgradeCheck, which also predicts the merge conflicts.  Omit for a plain copy.
+    attr_accessor :upgrade_to_version
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'folder' => :'folder',
         :'target_storefront_oid' => :'target_storefront_oid',
-        :'theme_name' => :'theme_name'
+        :'theme_name' => :'theme_name',
+        :'upgrade_to_version' => :'upgrade_to_version'
       }
     end
 
@@ -43,7 +47,8 @@ module UltracartClient
       {
         :'folder' => :'String',
         :'target_storefront_oid' => :'Integer',
-        :'theme_name' => :'String'
+        :'theme_name' => :'String',
+        :'upgrade_to_version' => :'String'
       }
     end
 
@@ -79,6 +84,10 @@ module UltracartClient
       if attributes.key?(:'theme_name')
         self.theme_name = attributes[:'theme_name']
       end
+
+      if attributes.key?(:'upgrade_to_version')
+        self.upgrade_to_version = attributes[:'upgrade_to_version']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -101,7 +110,8 @@ module UltracartClient
       self.class == o.class &&
           folder == o.folder &&
           target_storefront_oid == o.target_storefront_oid &&
-          theme_name == o.theme_name
+          theme_name == o.theme_name &&
+          upgrade_to_version == o.upgrade_to_version
     end
 
     # @see the `==` method
@@ -113,7 +123,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [folder, target_storefront_oid, theme_name].hash
+      [folder, target_storefront_oid, theme_name, upgrade_to_version].hash
     end
 
     # Builds the object from hash
