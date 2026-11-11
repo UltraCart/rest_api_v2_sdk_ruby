@@ -20,6 +20,9 @@ module UltracartClient
 
     attr_accessor :error
 
+    # With error access_denied, a machine readable reason.  sfvb.beta_access_required means the account isn't enabled for the StoreFront CLI beta, not that a person clicked Deny.
+    attr_accessor :error_code
+
     attr_accessor :error_description
 
     attr_accessor :error_uri
@@ -29,6 +32,9 @@ module UltracartClient
 
     # The UltraCart merchant account that authorized this token.  Use it to map the token to the merchant within your own system.  Also returned by GET /oauth/me along with the account name.
     attr_accessor :merchant_id
+
+    # With error_code sfvb.beta_access_required, the merchant id that was refused.
+    attr_accessor :object_id
 
     # The refresh token that should be used to fetch a new access token when the expiration occurs
     attr_accessor :refresh_token
@@ -69,10 +75,12 @@ module UltracartClient
       {
         :'access_token' => :'access_token',
         :'error' => :'error',
+        :'error_code' => :'error_code',
         :'error_description' => :'error_description',
         :'error_uri' => :'error_uri',
         :'expires_in' => :'expires_in',
         :'merchant_id' => :'merchant_id',
+        :'object_id' => :'object_id',
         :'refresh_token' => :'refresh_token',
         :'refresh_token_expires_in' => :'refresh_token_expires_in',
         :'scope' => :'scope',
@@ -90,10 +98,12 @@ module UltracartClient
       {
         :'access_token' => :'String',
         :'error' => :'String',
+        :'error_code' => :'String',
         :'error_description' => :'String',
         :'error_uri' => :'String',
         :'expires_in' => :'String',
         :'merchant_id' => :'String',
+        :'object_id' => :'String',
         :'refresh_token' => :'String',
         :'refresh_token_expires_in' => :'String',
         :'scope' => :'String',
@@ -130,6 +140,10 @@ module UltracartClient
         self.error = attributes[:'error']
       end
 
+      if attributes.key?(:'error_code')
+        self.error_code = attributes[:'error_code']
+      end
+
       if attributes.key?(:'error_description')
         self.error_description = attributes[:'error_description']
       end
@@ -144,6 +158,10 @@ module UltracartClient
 
       if attributes.key?(:'merchant_id')
         self.merchant_id = attributes[:'merchant_id']
+      end
+
+      if attributes.key?(:'object_id')
+        self.object_id = attributes[:'object_id']
       end
 
       if attributes.key?(:'refresh_token')
@@ -195,10 +213,12 @@ module UltracartClient
       self.class == o.class &&
           access_token == o.access_token &&
           error == o.error &&
+          error_code == o.error_code &&
           error_description == o.error_description &&
           error_uri == o.error_uri &&
           expires_in == o.expires_in &&
           merchant_id == o.merchant_id &&
+          object_id == o.object_id &&
           refresh_token == o.refresh_token &&
           refresh_token_expires_in == o.refresh_token_expires_in &&
           scope == o.scope &&
@@ -214,7 +234,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_token, error, error_description, error_uri, expires_in, merchant_id, refresh_token, refresh_token_expires_in, scope, token_type].hash
+      [access_token, error, error_code, error_description, error_uri, expires_in, merchant_id, object_id, refresh_token, refresh_token_expires_in, scope, token_type].hash
     end
 
     # Builds the object from hash

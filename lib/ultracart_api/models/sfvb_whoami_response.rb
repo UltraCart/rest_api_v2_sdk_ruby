@@ -42,6 +42,8 @@ module UltracartClient
     # True when this token may write.  Writing a target that is not currently live needs only this.
     attr_accessor :can_write
 
+    attr_accessor :cli_access
+
     # Device scope name, when this is a device flow token.
     attr_accessor :device_scope
 
@@ -75,6 +77,7 @@ module UltracartClient
         :'can_read' => :'can_read',
         :'can_read_items' => :'can_read_items',
         :'can_write' => :'can_write',
+        :'cli_access' => :'cli_access',
         :'device_scope' => :'device_scope',
         :'login' => :'login',
         :'merchant_id' => :'merchant_id',
@@ -102,6 +105,7 @@ module UltracartClient
         :'can_read' => :'Boolean',
         :'can_read_items' => :'Boolean',
         :'can_write' => :'Boolean',
+        :'cli_access' => :'SfvbCliAccess',
         :'device_scope' => :'String',
         :'login' => :'String',
         :'merchant_id' => :'String',
@@ -169,6 +173,10 @@ module UltracartClient
         self.can_write = attributes[:'can_write']
       end
 
+      if attributes.key?(:'cli_access')
+        self.cli_access = attributes[:'cli_access']
+      end
+
       if attributes.key?(:'device_scope')
         self.device_scope = attributes[:'device_scope']
       end
@@ -229,6 +237,7 @@ module UltracartClient
           can_read == o.can_read &&
           can_read_items == o.can_read_items &&
           can_write == o.can_write &&
+          cli_access == o.cli_access &&
           device_scope == o.device_scope &&
           login == o.login &&
           merchant_id == o.merchant_id &&
@@ -247,7 +256,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [acting_as_user, application_name, authentication_type, can_edit_items, can_publish, can_publish_public, can_read, can_read_items, can_write, device_scope, login, merchant_id, scopes, storefronts, storefronts_withheld, user_name].hash
+      [acting_as_user, application_name, authentication_type, can_edit_items, can_publish, can_publish_public, can_read, can_read_items, can_write, cli_access, device_scope, login, merchant_id, scopes, storefronts, storefronts_withheld, user_name].hash
     end
 
     # Builds the object from hash
