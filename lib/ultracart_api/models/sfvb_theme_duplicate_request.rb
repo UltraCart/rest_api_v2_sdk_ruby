@@ -21,7 +21,7 @@ module UltracartClient
     # Storefront to create the copy on.  Defaults to the storefront in the path.  Supply it only when copying a theme between storefronts you own.
     attr_accessor :target_storefront_oid
 
-    # Name for the new theme.
+    # Ignored.  A theme is named by its settings.json themeName, which the copy keeps from the source, so the copy has the source's name.  Edit themeName in the copy's settings.json to rename it.  Kept so existing callers still work.
     attr_accessor :theme_name
 
     # Upgrade the copy to this theme version after copying it, as the admin's Duplicate and Upgrade does.  Only the copy is upgraded - the source theme is never touched.  Must be one of the available_versions from getSfvbThemeUpgradeCheck, which also predicts the merge conflicts.  Omit for a plain copy.
