@@ -9,6 +9,7 @@
 | **fs_file_oid** | **Integer** | StoreFront file system file oid. | [optional] |
 | **hash_sha256** | **String** | SHA-256 of the content.  Send this back as If-Match when writing.  The ETag header carries the same hash, but a compressing proxy may append a suffix such as -gzip to it, so this body value is the authoritative one.  Both forms are accepted on write. | [optional] |
 | **merge_conflict** | **Boolean** | True when a theme upgrade left unresolved merge conflicts in this file.  The content holds conflict marker lines.  Resolve each conflict and save the file without any marker lines to clear it - a save that still has marker lines is refused. | [optional] |
+| **metadata_error** | [**SfvbErrorDetail**](SfvbErrorDetail.md) |  | [optional] |
 | **mime_type** | **String** | Mime type. | [optional] |
 | **path** | **String** | Full path of the file. | [optional] |
 | **size** | **Integer** | Size in bytes. | [optional] |
@@ -28,6 +29,7 @@ instance = UltracartClient::SfvbFileContentResponse.new(
   fs_file_oid: null,
   hash_sha256: null,
   merge_conflict: null,
+  metadata_error: null,
   mime_type: null,
   path: null,
   size: null,

@@ -33,8 +33,14 @@ module UltracartClient
     # The UltraCart merchant account that authorized this token.  Use it to map the token to the merchant within your own system.  Also returned by GET /oauth/me along with the account name.
     attr_accessor :merchant_id
 
+    # With error_code sfvb.cli_upgrade_required, the lowest StoreFront CLI version the server supports.
+    attr_accessor :minimum_version
+
     # With error_code sfvb.beta_access_required, the merchant id that was refused.
     attr_accessor :object_id
+
+    # With error_code sfvb.cli_upgrade_required, the StoreFront CLI version to install.
+    attr_accessor :recommended_version
 
     # The refresh token that should be used to fetch a new access token when the expiration occurs
     attr_accessor :refresh_token
@@ -80,7 +86,9 @@ module UltracartClient
         :'error_uri' => :'error_uri',
         :'expires_in' => :'expires_in',
         :'merchant_id' => :'merchant_id',
+        :'minimum_version' => :'minimum_version',
         :'object_id' => :'object_id',
+        :'recommended_version' => :'recommended_version',
         :'refresh_token' => :'refresh_token',
         :'refresh_token_expires_in' => :'refresh_token_expires_in',
         :'scope' => :'scope',
@@ -103,7 +111,9 @@ module UltracartClient
         :'error_uri' => :'String',
         :'expires_in' => :'String',
         :'merchant_id' => :'String',
+        :'minimum_version' => :'String',
         :'object_id' => :'String',
+        :'recommended_version' => :'String',
         :'refresh_token' => :'String',
         :'refresh_token_expires_in' => :'String',
         :'scope' => :'String',
@@ -160,8 +170,16 @@ module UltracartClient
         self.merchant_id = attributes[:'merchant_id']
       end
 
+      if attributes.key?(:'minimum_version')
+        self.minimum_version = attributes[:'minimum_version']
+      end
+
       if attributes.key?(:'object_id')
         self.object_id = attributes[:'object_id']
+      end
+
+      if attributes.key?(:'recommended_version')
+        self.recommended_version = attributes[:'recommended_version']
       end
 
       if attributes.key?(:'refresh_token')
@@ -218,7 +236,9 @@ module UltracartClient
           error_uri == o.error_uri &&
           expires_in == o.expires_in &&
           merchant_id == o.merchant_id &&
+          minimum_version == o.minimum_version &&
           object_id == o.object_id &&
+          recommended_version == o.recommended_version &&
           refresh_token == o.refresh_token &&
           refresh_token_expires_in == o.refresh_token_expires_in &&
           scope == o.scope &&
@@ -234,7 +254,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_token, error, error_code, error_description, error_uri, expires_in, merchant_id, object_id, refresh_token, refresh_token_expires_in, scope, token_type].hash
+      [access_token, error, error_code, error_description, error_uri, expires_in, merchant_id, minimum_version, object_id, recommended_version, refresh_token, refresh_token_expires_in, scope, token_type].hash
     end
 
     # Builds the object from hash
