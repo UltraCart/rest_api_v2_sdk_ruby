@@ -27,13 +27,19 @@ module UltracartClient
     # Container name, where the owner has more than one container.
     attr_accessor :container_name
 
-    # When this snapshot was taken, ISO 8601 UTC.
+    # When this version's content was written, ISO 8601 UTC.  Same source and limits as content_edited_by.
+    attr_accessor :content_created_dts
+
+    # Login of whoever wrote this version's content, taken from the write recorded on the next older entry.  Absent on a create entry and on the oldest entry kept, such as a template body that was in place before any history.  Saves made outside this API, in the admin visual builder, are not recorded, so after one this names the previous API write.
+    attr_accessor :content_edited_by
+
+    # When the write that replaced this version happened, ISO 8601 UTC.  On the current entry, when it was written.
     attr_accessor :created_dts
 
     # True for the value currently stored.
     attr_accessor :current
 
-    # Login of whoever caused this snapshot.
+    # Login of whoever made the write that replaced this version.  On the current entry, whoever wrote it.  See content_edited_by for who wrote a history entry's content.
     attr_accessor :edited_by
 
     # SHA-256 of this version's CJSON.
@@ -80,6 +86,8 @@ module UltracartClient
         :'comment' => :'comment',
         :'container_history_oid' => :'container_history_oid',
         :'container_name' => :'container_name',
+        :'content_created_dts' => :'content_created_dts',
+        :'content_edited_by' => :'content_edited_by',
         :'created_dts' => :'created_dts',
         :'current' => :'current',
         :'edited_by' => :'edited_by',
@@ -103,6 +111,8 @@ module UltracartClient
         :'comment' => :'String',
         :'container_history_oid' => :'Integer',
         :'container_name' => :'String',
+        :'content_created_dts' => :'String',
+        :'content_edited_by' => :'String',
         :'created_dts' => :'String',
         :'current' => :'Boolean',
         :'edited_by' => :'String',
@@ -149,6 +159,14 @@ module UltracartClient
 
       if attributes.key?(:'container_name')
         self.container_name = attributes[:'container_name']
+      end
+
+      if attributes.key?(:'content_created_dts')
+        self.content_created_dts = attributes[:'content_created_dts']
+      end
+
+      if attributes.key?(:'content_edited_by')
+        self.content_edited_by = attributes[:'content_edited_by']
       end
 
       if attributes.key?(:'created_dts')
@@ -230,6 +248,8 @@ module UltracartClient
           comment == o.comment &&
           container_history_oid == o.container_history_oid &&
           container_name == o.container_name &&
+          content_created_dts == o.content_created_dts &&
+          content_edited_by == o.content_edited_by &&
           created_dts == o.created_dts &&
           current == o.current &&
           edited_by == o.edited_by &&
@@ -249,7 +269,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cjson, comment, container_history_oid, container_name, created_dts, current, edited_by, hash_sha256, operation, owner_object_id, owner_type, size].hash
+      [cjson, comment, container_history_oid, container_name, content_created_dts, content_edited_by, created_dts, current, edited_by, hash_sha256, operation, owner_object_id, owner_type, size].hash
     end
 
     # Builds the object from hash

@@ -12215,7 +12215,7 @@ module UltracartClient
     end
 
     # Request a human approval
-    # Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow.  For file.put_script send the script as content, or params.version for a revert; for tracking_html.put send the HTML as content and params.slot; for affiliate_network.change send affiliate_network.  These three start as reviewing while UltraCart's scanner and two AI models read the content, then become pending with the review attached, or refused.  Keep polling, and show approval_url only once it is pending.  Only the hash is kept, so the write must send the same content. 
+    # Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow.  For file.put_script and file.put_template send the file as content, or params.version for a revert; for tracking_html.put send the HTML as content and params.slot; for affiliate_network.change send affiliate_network.  These four start as reviewing while UltraCart's scanner and two AI models read the content, then become pending with the review attached, or refused.  Keep polling, and show approval_url only once it is pending.  Only the hash is kept, so the write must send the same content. 
     # @param approval_request [SfvbApprovalCreateRequest] The request
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :storefront_oid The storefront the action runs on.  Required for storefront actions, left out for account-wide ones.
@@ -12226,7 +12226,7 @@ module UltracartClient
     end
 
     # Request a human approval
-    # Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow.  For file.put_script send the script as content, or params.version for a revert; for tracking_html.put send the HTML as content and params.slot; for affiliate_network.change send affiliate_network.  These three start as reviewing while UltraCart&#39;s scanner and two AI models read the content, then become pending with the review attached, or refused.  Keep polling, and show approval_url only once it is pending.  Only the hash is kept, so the write must send the same content. 
+    # Asks the person who signed in the CLI to approve one gated action on one exact target.  Name the storefront with the storefront_oid query parameter.  The target is checked the way the action will check it, so nobody is asked to approve a call that would fail.  Show the person approval_url and user_code, poll GET approvals/{approval_id} every interval_seconds, and once it is approved repeat the gated call with the approval_id in the Approval-Id header.  Asking again for the same thing returns the pending request (200) rather than a new one (201).  A request lapses after 10 minutes.  Requires a token that resolves to a user, so use the device authorization flow.  For file.put_script and file.put_template send the file as content, or params.version for a revert; for tracking_html.put send the HTML as content and params.slot; for affiliate_network.change send affiliate_network.  These four start as reviewing while UltraCart&#39;s scanner and two AI models read the content, then become pending with the review attached, or refused.  Keep polling, and show approval_url only once it is pending.  Only the hash is kept, so the write must send the same content. 
     # @param approval_request [SfvbApprovalCreateRequest] The request
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :storefront_oid The storefront the action runs on.  Required for storefront actions, left out for account-wide ones.
@@ -15663,7 +15663,7 @@ module UltracartClient
     # @param file_write_request [SfvbFileWriteRequest] File content to write
     # @param [Hash] opts the optional parameters
     # @option opts [String] :path 
-    # @option opts [String] :approval_id For a .js or .mjs file, the approval_id of an approved file.put_script request for exactly these bytes.  Required for scripts.  See POST /sfvb/approvals.
+    # @option opts [String] :approval_id For a .js or .mjs file, the approval_id of an approved file.put_script request for exactly these bytes, and for a .vm or .html file inside a theme, of an approved file.put_template request.  Required for scripts and templates.  See POST /sfvb/approvals.
     # @return [SfvbFileWriteResponse]
     def put_sfvb_file_content(storefront_oid, if_match, file_write_request, opts = {})
       data, _status_code, _headers = put_sfvb_file_content_with_http_info(storefront_oid, if_match, file_write_request, opts)
@@ -15677,7 +15677,7 @@ module UltracartClient
     # @param file_write_request [SfvbFileWriteRequest] File content to write
     # @param [Hash] opts the optional parameters
     # @option opts [String] :path 
-    # @option opts [String] :approval_id For a .js or .mjs file, the approval_id of an approved file.put_script request for exactly these bytes.  Required for scripts.  See POST /sfvb/approvals.
+    # @option opts [String] :approval_id For a .js or .mjs file, the approval_id of an approved file.put_script request for exactly these bytes, and for a .vm or .html file inside a theme, of an approved file.put_template request.  Required for scripts and templates.  See POST /sfvb/approvals.
     # @return [Array<(SfvbFileWriteResponse, Integer, Hash)>] SfvbFileWriteResponse data, response status code and response headers
     def put_sfvb_file_content_with_http_info(storefront_oid, if_match, file_write_request, opts = {})
       if @api_client.config.debugging
@@ -18664,7 +18664,7 @@ module UltracartClient
     # @param if_match [String] Content hash of the file being reverted.  Required; 428 when absent, 412 when stale.
     # @param file_revert_request [SfvbFileRevertRequest] Version to revert the file to
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :approval_id For a .js or .mjs file, the approval_id of an approved file.put_script request naming this version.  Required for scripts.  See POST /sfvb/approvals.
+    # @option opts [String] :approval_id For a .js or .mjs file, the approval_id of an approved file.put_script request naming this version, and for a .vm or .html file inside a theme, of an approved file.put_template request.  Required for scripts and templates.  See POST /sfvb/approvals.
     # @return [SfvbFileWriteResponse]
     def revert_sfvb_file(storefront_oid, if_match, file_revert_request, opts = {})
       data, _status_code, _headers = revert_sfvb_file_with_http_info(storefront_oid, if_match, file_revert_request, opts)
@@ -18677,7 +18677,7 @@ module UltracartClient
     # @param if_match [String] Content hash of the file being reverted.  Required; 428 when absent, 412 when stale.
     # @param file_revert_request [SfvbFileRevertRequest] Version to revert the file to
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :approval_id For a .js or .mjs file, the approval_id of an approved file.put_script request naming this version.  Required for scripts.  See POST /sfvb/approvals.
+    # @option opts [String] :approval_id For a .js or .mjs file, the approval_id of an approved file.put_script request naming this version, and for a .vm or .html file inside a theme, of an approved file.put_template request.  Required for scripts and templates.  See POST /sfvb/approvals.
     # @return [Array<(SfvbFileWriteResponse, Integer, Hash)>] SfvbFileWriteResponse data, response status code and response headers
     def revert_sfvb_file_with_http_info(storefront_oid, if_match, file_revert_request, opts = {})
       if @api_client.config.debugging

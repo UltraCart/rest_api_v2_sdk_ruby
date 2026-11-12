@@ -30,7 +30,7 @@ module UltracartClient
     # For sequence_step.move, the condition, split or inboxgeek step it moves to the start of a side of.
     attr_accessor :branch_step_uuid
 
-    # For file.put_script and tracking_html.put, the SHA-256 of the exact bytes approved, and for affiliate_network.change the SHA-256 of the conversion pixel.  Set by the server, never by the caller.  The write must send bytes with this hash.
+    # For file.put_script, file.put_template and tracking_html.put, the SHA-256 of the exact bytes approved, and for affiliate_network.change the SHA-256 of the conversion pixel.  Set by the server, never by the caller.  The write must send bytes with this hash.
     attr_accessor :content_sha256
 
     # For sending_domain.delete, the sending domain.
@@ -48,7 +48,7 @@ module UltracartClient
     # For item.pricing, the item whose pricing changes.
     attr_accessor :merchant_item_oid
 
-    # The file path, for file.delete and file.put_script, or the page path for experiment.start of a page experiment.  Exactly as the gated call will send it.
+    # The file path, for file.delete, file.put_script and file.put_template, or the page path for experiment.start of a page experiment.  Exactly as the gated call will send it.
     attr_accessor :path
 
     # For experiment.start of a url experiment, the hash of the checked experiment approved, for item.pricing, tracking_provider.change and affiliate_network.change the hash of the change, and for smart_attribution.change the hash of the configuration the change would store.  Set by the server.  The gated call must send the same.
@@ -84,7 +84,7 @@ module UltracartClient
     # For upsell.enable, the oid of the offer or path to switch on.
     attr_accessor :upsell_oid
 
-    # For file.put_script, the history version a revert restores.  Leave it out, and send content instead, for a write.
+    # For file.put_script and file.put_template, the history version a revert restores.  Leave it out, and send content instead, for a write.
     attr_accessor :version
 
     # For experiment.start of a page experiment, the id of the experiment element.
