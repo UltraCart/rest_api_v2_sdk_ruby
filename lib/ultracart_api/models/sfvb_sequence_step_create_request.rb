@@ -24,8 +24,11 @@ module UltracartClient
     # A condition, split or inboxgeek step.  With side, the new step goes first on that side.
     attr_accessor :branch_step_uuid
 
-    # A wait step's settings, as the admin saves them and set-config changes them, namely delay_duration and delay_duration_unit (minutes, hours, days, weeks or months), and optionally the delay_until_* options.  Not for an email step.
+    # A wait step's settings, as the admin saves them and set-config changes them, namely delay_duration and delay_duration_unit (minutes, hours, days, weeks or months), and optionally the delay_until_* options.  For a split, percentage_left (0.01 to 0.99, 0.5 by default) and merchant_notes.  For a condition, reverse, disabled and merchant_notes.  Not for an email step.
     attr_accessor :config_json
+
+    # A condition step's rule, required for one, as an audience filter in the shape segments use.  Customers who match go to the yes side.  Only for a condition step.
+    attr_accessor :filter_profile_equation_json
 
     # An email item from the code library (#1589) to start the new email from, taking its body, with new element ids, and its subject and preview text unless subject or preview_text is given.  The item must be this account's own, shared with it, or published, approved by UltraCart and free.  Only for an email step.  The items are listed by the code library email read.
     attr_accessor :library_item_oid
@@ -42,7 +45,7 @@ module UltracartClient
     # The new email's subject line, 5 to 150 characters.  Optional with library_item_oid, whose subject is used when this is left out.
     attr_accessor :subject
 
-    # The kind of step, one of email (the default), wait or post_card.
+    # The kind of step, one of email (the default), wait, post_card, split or condition.
     attr_accessor :type
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -52,6 +55,7 @@ module UltracartClient
         :'after_step_uuid' => :'after_step_uuid',
         :'branch_step_uuid' => :'branch_step_uuid',
         :'config_json' => :'config_json',
+        :'filter_profile_equation_json' => :'filter_profile_equation_json',
         :'library_item_oid' => :'library_item_oid',
         :'name' => :'name',
         :'preview_text' => :'preview_text',
@@ -73,6 +77,7 @@ module UltracartClient
         :'after_step_uuid' => :'String',
         :'branch_step_uuid' => :'String',
         :'config_json' => :'String',
+        :'filter_profile_equation_json' => :'String',
         :'library_item_oid' => :'Integer',
         :'name' => :'String',
         :'preview_text' => :'String',
@@ -117,6 +122,10 @@ module UltracartClient
 
       if attributes.key?(:'config_json')
         self.config_json = attributes[:'config_json']
+      end
+
+      if attributes.key?(:'filter_profile_equation_json')
+        self.filter_profile_equation_json = attributes[:'filter_profile_equation_json']
       end
 
       if attributes.key?(:'library_item_oid')
@@ -166,6 +175,7 @@ module UltracartClient
           after_step_uuid == o.after_step_uuid &&
           branch_step_uuid == o.branch_step_uuid &&
           config_json == o.config_json &&
+          filter_profile_equation_json == o.filter_profile_equation_json &&
           library_item_oid == o.library_item_oid &&
           name == o.name &&
           preview_text == o.preview_text &&
@@ -183,7 +193,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [acknowledge_executable, after_step_uuid, branch_step_uuid, config_json, library_item_oid, name, preview_text, side, subject, type].hash
+      [acknowledge_executable, after_step_uuid, branch_step_uuid, config_json, filter_profile_equation_json, library_item_oid, name, preview_text, side, subject, type].hash
     end
 
     # Builds the object from hash
