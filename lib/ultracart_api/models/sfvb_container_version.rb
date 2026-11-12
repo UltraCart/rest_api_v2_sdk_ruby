@@ -45,7 +45,7 @@ module UltracartClient
     # SHA-256 of this version's CJSON.
     attr_accessor :hash_sha256
 
-    # What the container was before the write this entry precedes.  create means it did not exist, so reverting to this entry removes it again; update means it held the cjson recorded here.
+    # What the container was before the write this entry precedes.  create means it did not exist, so reverting to this entry removes it again; update means it held the cjson recorded here; delete means it held the cjson recorded here and the write after it removed the container, so reverting to this entry puts that cjson back.
     attr_accessor :operation
 
     # Owner object identifier.
@@ -212,7 +212,7 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      operation_validator = EnumAttributeValidator.new('String', ["create", "update"])
+      operation_validator = EnumAttributeValidator.new('String', ["create", "update", "delete"])
       return false unless operation_validator.valid?(@operation)
       owner_type_validator = EnumAttributeValidator.new('String', ["item", "upsell", "email", "postcardfront", "postcardback"])
       return false unless owner_type_validator.valid?(@owner_type)
@@ -222,7 +222,7 @@ module UltracartClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] operation Object to be assigned
     def operation=(operation)
-      validator = EnumAttributeValidator.new('String', ["create", "update"])
+      validator = EnumAttributeValidator.new('String', ["create", "update", "delete"])
       unless validator.valid?(operation)
         fail ArgumentError, "invalid value for \"operation\", must be one of #{validator.allowable_values}."
       end
