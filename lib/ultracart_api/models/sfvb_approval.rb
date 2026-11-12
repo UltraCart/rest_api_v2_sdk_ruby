@@ -27,6 +27,15 @@ module UltracartClient
     # When the request was made, ISO 8601 UTC.
     attr_accessor :created_at
 
+    # Who decided the request, once decided.
+    attr_accessor :decided_by
+
+    # The name of the colleague the request was handed to, while it is.  Tell the person who is now deciding.
+    attr_accessor :delegate_name
+
+    # True when the request was handed to a colleague to decide.
+    attr_accessor :delegated
+
     # The sentence the person reads before approving.  Written by the server, not the agent.
     attr_accessor :description
 
@@ -102,6 +111,9 @@ module UltracartClient
         :'approval_id' => :'approval_id',
         :'approval_url' => :'approval_url',
         :'created_at' => :'created_at',
+        :'decided_by' => :'decided_by',
+        :'delegate_name' => :'delegate_name',
+        :'delegated' => :'delegated',
         :'description' => :'description',
         :'expires_at' => :'expires_at',
         :'expires_in_seconds' => :'expires_in_seconds',
@@ -133,6 +145,9 @@ module UltracartClient
         :'approval_id' => :'String',
         :'approval_url' => :'String',
         :'created_at' => :'String',
+        :'decided_by' => :'String',
+        :'delegate_name' => :'String',
+        :'delegated' => :'Boolean',
         :'description' => :'String',
         :'expires_at' => :'String',
         :'expires_in_seconds' => :'Integer',
@@ -187,6 +202,18 @@ module UltracartClient
 
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'decided_by')
+        self.decided_by = attributes[:'decided_by']
+      end
+
+      if attributes.key?(:'delegate_name')
+        self.delegate_name = attributes[:'delegate_name']
+      end
+
+      if attributes.key?(:'delegated')
+        self.delegated = attributes[:'delegated']
       end
 
       if attributes.key?(:'description')
@@ -264,11 +291,23 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      decided_by_validator = EnumAttributeValidator.new('String', ["requester", "delegate"])
+      return false unless decided_by_validator.valid?(@decided_by)
       outcome_validator = EnumAttributeValidator.new('String', ["succeeded", "failed"])
       return false unless outcome_validator.valid?(@outcome)
       status_validator = EnumAttributeValidator.new('String', ["reviewing", "pending", "approved", "denied", "cancelled", "expired", "used", "refused"])
       return false unless status_validator.valid?(@status)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] decided_by Object to be assigned
+    def decided_by=(decided_by)
+      validator = EnumAttributeValidator.new('String', ["requester", "delegate"])
+      unless validator.valid?(decided_by)
+        fail ArgumentError, "invalid value for \"decided_by\", must be one of #{validator.allowable_values}."
+      end
+      @decided_by = decided_by
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -300,6 +339,9 @@ module UltracartClient
           approval_id == o.approval_id &&
           approval_url == o.approval_url &&
           created_at == o.created_at &&
+          decided_by == o.decided_by &&
+          delegate_name == o.delegate_name &&
+          delegated == o.delegated &&
           description == o.description &&
           expires_at == o.expires_at &&
           expires_in_seconds == o.expires_in_seconds &&
@@ -327,7 +369,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, approval_id, approval_url, created_at, description, expires_at, expires_in_seconds, fresh_code_required, interval_seconds, outcome, outcome_code, outcome_http_status, params, reason, review, scope, status, storefront_oid, used_at, user_code].hash
+      [action, approval_id, approval_url, created_at, decided_by, delegate_name, delegated, description, expires_at, expires_in_seconds, fresh_code_required, interval_seconds, outcome, outcome_code, outcome_http_status, params, reason, review, scope, status, storefront_oid, used_at, user_code].hash
     end
 
     # Builds the object from hash

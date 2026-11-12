@@ -27,6 +27,9 @@ module UltracartClient
     # For a file.put_script write, the exact script to be written, at most 256 KB, and for a file.put_template write the exact template.  For tracking_html.put, the exact HTML the write will send, at most 256 KB.  UltraCart reviews it and keeps only its hash, so send the same bytes again on the write.  Leave it out for a revert, which names params.version.
     attr_accessor :content
 
+    # Optional.  The email of a colleague on this account who should decide the request instead of the person who signed in.  They must hold an admin permission that covers the action; they get an email with a link and decide with their own authenticator code.  Any colleague who can't be used is refused with sfvb.delegate_not_allowed, for every reason alike.  The approval stays yours to poll and use.
+    attr_accessor :delegate_email
+
     attr_accessor :experiment_start
 
     attr_accessor :flow_backfill
@@ -95,6 +98,7 @@ module UltracartClient
         :'comms_list_import' => :'comms_list_import',
         :'comms_settings' => :'comms_settings',
         :'content' => :'content',
+        :'delegate_email' => :'delegate_email',
         :'experiment_start' => :'experiment_start',
         :'flow_backfill' => :'flow_backfill',
         :'item_attribute_rows' => :'item_attribute_rows',
@@ -128,6 +132,7 @@ module UltracartClient
         :'comms_list_import' => :'SfvbCommsProviderImportRequest',
         :'comms_settings' => :'SfvbCommsSettingsUpdateRequest',
         :'content' => :'String',
+        :'delegate_email' => :'String',
         :'experiment_start' => :'SfvbExperimentStartRequest',
         :'flow_backfill' => :'SfvbFlowBackfillRequest',
         :'item_attribute_rows' => :'Array<SfvbItemAttributeBatchRow>',
@@ -187,6 +192,10 @@ module UltracartClient
 
       if attributes.key?(:'content')
         self.content = attributes[:'content']
+      end
+
+      if attributes.key?(:'delegate_email')
+        self.delegate_email = attributes[:'delegate_email']
       end
 
       if attributes.key?(:'experiment_start')
@@ -299,6 +308,7 @@ module UltracartClient
           comms_list_import == o.comms_list_import &&
           comms_settings == o.comms_settings &&
           content == o.content &&
+          delegate_email == o.delegate_email &&
           experiment_start == o.experiment_start &&
           flow_backfill == o.flow_backfill &&
           item_attribute_rows == o.item_attribute_rows &&
@@ -327,7 +337,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, affiliate_network, comms_list_import, comms_settings, content, experiment_start, flow_backfill, item_attribute_rows, item_default_page_rows, item_preorder, item_preorder_children, item_pricing, item_variations, params, postcard_test_mail, reason, redirect_rows, segment_update, site_seo, smart_attribution, tracking_provider, transactional_email].hash
+      [action, affiliate_network, comms_list_import, comms_settings, content, delegate_email, experiment_start, flow_backfill, item_attribute_rows, item_default_page_rows, item_preorder, item_preorder_children, item_pricing, item_variations, params, postcard_test_mail, reason, redirect_rows, segment_update, site_seo, smart_attribution, tracking_provider, transactional_email].hash
     end
 
     # Builds the object from hash

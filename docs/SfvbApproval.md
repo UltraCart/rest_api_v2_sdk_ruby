@@ -8,6 +8,9 @@
 | **approval_id** | **String** | Send this as the Approval-Id header on the gated call once status is approved. | [optional] |
 | **approval_url** | **String** | The page where the person approves or denies.  Show it to them.  Never open or fill it in yourself. | [optional] |
 | **created_at** | **String** | When the request was made, ISO 8601 UTC. | [optional] |
+| **decided_by** | **String** | Who decided the request, once decided. | [optional] |
+| **delegate_name** | **String** | The name of the colleague the request was handed to, while it is.  Tell the person who is now deciding. | [optional] |
+| **delegated** | **Boolean** | True when the request was handed to a colleague to decide. | [optional] |
 | **description** | **String** | The sentence the person reads before approving.  Written by the server, not the agent. | [optional] |
 | **expires_at** | **String** | When this approval stops being usable, ISO 8601 UTC.  For a pending request, when it lapses undecided.  For an approved one, when it must have been used by. | [optional] |
 | **expires_in_seconds** | **Integer** | Seconds until expires_at.  Zero once passed. | [optional] |
@@ -35,6 +38,9 @@ instance = UltracartClient::SfvbApproval.new(
   approval_id: null,
   approval_url: null,
   created_at: null,
+  decided_by: null,
+  delegate_name: null,
+  delegated: null,
   description: null,
   expires_at: null,
   expires_in_seconds: null,
