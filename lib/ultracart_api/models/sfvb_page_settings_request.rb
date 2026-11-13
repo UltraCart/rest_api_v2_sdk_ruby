@@ -36,6 +36,15 @@ module UltracartClient
     # S for a static page, D for a dynamic one.
     attr_accessor :page_type
 
+    # The note on that redirect rule.  Up to 500 characters.  A note naming the page is used when left out.
+    attr_accessor :redirect_note
+
+    # 301 to redirect the page's address to redirect_target in the same call (#1102).  Only with visible false, on a page that is visible now.  The page is hidden and the rule added together, or neither.
+    attr_accessor :redirect_old_url
+
+    # Where the hidden page's address redirects to, for example /lp/summer-sale/.  Required with redirect_old_url, and checked like any redirect rule.
+    attr_accessor :redirect_target
+
     # Template that renders the item review pages under this page.
     attr_accessor :review_template
 
@@ -57,6 +66,28 @@ module UltracartClient
     # Keep the page hidden until this time (ISO 8601).  Null or empty clears it.
     attr_accessor :visible_dts
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -67,6 +98,9 @@ module UltracartClient
         :'item_template' => :'item_template',
         :'items_per_page' => :'items_per_page',
         :'page_type' => :'page_type',
+        :'redirect_note' => :'redirect_note',
+        :'redirect_old_url' => :'redirect_old_url',
+        :'redirect_target' => :'redirect_target',
         :'review_template' => :'review_template',
         :'sort_order' => :'sort_order',
         :'sort_order_child_groups' => :'sort_order_child_groups',
@@ -92,6 +126,9 @@ module UltracartClient
         :'item_template' => :'String',
         :'items_per_page' => :'Integer',
         :'page_type' => :'String',
+        :'redirect_note' => :'String',
+        :'redirect_old_url' => :'String',
+        :'redirect_target' => :'String',
         :'review_template' => :'String',
         :'sort_order' => :'Integer',
         :'sort_order_child_groups' => :'String',
@@ -151,6 +188,18 @@ module UltracartClient
         self.page_type = attributes[:'page_type']
       end
 
+      if attributes.key?(:'redirect_note')
+        self.redirect_note = attributes[:'redirect_note']
+      end
+
+      if attributes.key?(:'redirect_old_url')
+        self.redirect_old_url = attributes[:'redirect_old_url']
+      end
+
+      if attributes.key?(:'redirect_target')
+        self.redirect_target = attributes[:'redirect_target']
+      end
+
       if attributes.key?(:'review_template')
         self.review_template = attributes[:'review_template']
       end
@@ -190,7 +239,19 @@ module UltracartClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      redirect_old_url_validator = EnumAttributeValidator.new('String', ["301"])
+      return false unless redirect_old_url_validator.valid?(@redirect_old_url)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] redirect_old_url Object to be assigned
+    def redirect_old_url=(redirect_old_url)
+      validator = EnumAttributeValidator.new('String', ["301"])
+      unless validator.valid?(redirect_old_url)
+        fail ArgumentError, "invalid value for \"redirect_old_url\", must be one of #{validator.allowable_values}."
+      end
+      @redirect_old_url = redirect_old_url
     end
 
     # Checks equality by comparing each attribute.
@@ -205,6 +266,9 @@ module UltracartClient
           item_template == o.item_template &&
           items_per_page == o.items_per_page &&
           page_type == o.page_type &&
+          redirect_note == o.redirect_note &&
+          redirect_old_url == o.redirect_old_url &&
+          redirect_target == o.redirect_target &&
           review_template == o.review_template &&
           sort_order == o.sort_order &&
           sort_order_child_groups == o.sort_order_child_groups &&
@@ -223,7 +287,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [blog_post_template, description, exclude_from_sitemap, group_template, item_template, items_per_page, page_type, review_template, sort_order, sort_order_child_groups, sort_order_child_items, title, visible, visible_dts].hash
+      [blog_post_template, description, exclude_from_sitemap, group_template, item_template, items_per_page, page_type, redirect_note, redirect_old_url, redirect_target, review_template, sort_order, sort_order_child_groups, sort_order_child_items, title, visible, visible_dts].hash
     end
 
     # Builds the object from hash

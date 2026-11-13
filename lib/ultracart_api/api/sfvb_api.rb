@@ -9923,6 +9923,70 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Read the storefront's faceted search configuration
+    # Every facet the storefront can offer shoppers - the standard ones and one per item attribute on the storefront - with its heading and whether it is on, in the fixed order shoppers see them, and the Cost facet's price breaks.  The same settings as the store admin's Faceted Search Results.  Send hash_sha256 as If-Match to change them. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbSearchFacetsResponse]
+    def get_sfvb_search_facets(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_search_facets_with_http_info(storefront_oid, opts)
+      data
+    end
+
+    # Read the storefront&#39;s faceted search configuration
+    # Every facet the storefront can offer shoppers - the standard ones and one per item attribute on the storefront - with its heading and whether it is on, in the fixed order shoppers see them, and the Cost facet&#39;s price breaks.  The same settings as the store admin&#39;s Faceted Search Results.  Send hash_sha256 as If-Match to change them. 
+    # @param storefront_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbSearchFacetsResponse, Integer, Hash)>] SfvbSearchFacetsResponse data, response status code and response headers
+    def get_sfvb_search_facets_with_http_info(storefront_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_search_facets ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_search_facets"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/search/facets'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbSearchFacetsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_search_facets",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_search_facets\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List the secrets this server collects
     # The kinds of secret value, with what each looks like, and the secret fields (sinks) a handle can be written to.  Request a handle for a sink with POST secrets. 
     # @param [Hash] opts the optional parameters
@@ -15119,6 +15183,84 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Move or rename a page
+    # Moves a page to a new path - a new parent, a new last part, or both, so a rename is a move under the same parent.  Its sub-pages, their items and the page folder with its body move with it.  Refused for the root page, a path inside the page itself, a path where a page or folder already exists, a parent that does not exist, and a page whose folder holds a started experiment.  With redirect_old_url 301 the same call adds one pattern redirect from the old path to the new one, so every old address, sub-pages and items included, keeps working; the redirect is checked before anything moves, and if it is refused after the move the move is undone, so the page moves with its redirect or not at all.  dry_run runs every check and reports what would move.  Needs sfvb_publish, plus the approval of the person who signed in the CLI, as an approved page.move request for exactly this path, new path and redirect in the Approval-Id header. 
+    # @param storefront_oid [Integer] 
+    # @param page_move_request [SfvbPageMoveRequest] The page and where it goes
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id The approval_id of an approved page.move request for exactly this path, new path and redirect.  Required unless dry_run.  See POST /sfvb/approvals.
+    # @return [SfvbPageMoveResponse]
+    def move_sfvb_page(storefront_oid, page_move_request, opts = {})
+      data, _status_code, _headers = move_sfvb_page_with_http_info(storefront_oid, page_move_request, opts)
+      data
+    end
+
+    # Move or rename a page
+    # Moves a page to a new path - a new parent, a new last part, or both, so a rename is a move under the same parent.  Its sub-pages, their items and the page folder with its body move with it.  Refused for the root page, a path inside the page itself, a path where a page or folder already exists, a parent that does not exist, and a page whose folder holds a started experiment.  With redirect_old_url 301 the same call adds one pattern redirect from the old path to the new one, so every old address, sub-pages and items included, keeps working; the redirect is checked before anything moves, and if it is refused after the move the move is undone, so the page moves with its redirect or not at all.  dry_run runs every check and reports what would move.  Needs sfvb_publish, plus the approval of the person who signed in the CLI, as an approved page.move request for exactly this path, new path and redirect in the Approval-Id header. 
+    # @param storefront_oid [Integer] 
+    # @param page_move_request [SfvbPageMoveRequest] The page and where it goes
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id The approval_id of an approved page.move request for exactly this path, new path and redirect.  Required unless dry_run.  See POST /sfvb/approvals.
+    # @return [Array<(SfvbPageMoveResponse, Integer, Hash)>] SfvbPageMoveResponse data, response status code and response headers
+    def move_sfvb_page_with_http_info(storefront_oid, page_move_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.move_sfvb_page ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.move_sfvb_page"
+      end
+      # verify the required parameter 'page_move_request' is set
+      if @api_client.config.client_side_validation && page_move_request.nil?
+        fail ArgumentError, "Missing the required parameter 'page_move_request' when calling SfvbApi.move_sfvb_page"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/pages/move'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(page_move_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbPageMoveResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.move_sfvb_page",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#move_sfvb_page\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Move one step
     # Moves the step, in one transaction, to right after after_step_uuid (the begin step puts it first in the sequence) or to the start of one side of a condition, split or inboxgeek step (branch_step_uuid with side).  The step keeps its uuid, settings and the email or postcard it sends: nothing is archived or created.  Refused for the begin, end, continue and merge markers, for a condition, split or inboxgeek step, while any customer is waiting on the step, and when the new place is the one it is in.  Send the step's hash_sha256 as If-Match, and the hash_sha256 of after_step_uuid or branch_step_uuid as anchor_hash_sha256.  A sequence whose campaign or flow is live needs sfvb_publish and an approved sequence_step.move approval (Approval-Id); a draft or inactive one needs neither. 
     # @param storefront_oid [Integer] 
@@ -17094,7 +17236,7 @@ module UltracartClient
     end
 
     # Change a page's settings
-    # A partial update.  Only the fields you send change - title, description, templates, visibility, sitemap exclusion, sort orders, items per page and page type.  Unlike the store admin's page save, the page's attributes, images, items, selectors and permissions are left exactly as they are.  Fields that would move or rename the page, and fields this endpoint does not know, are refused.  The root page cannot be hidden.  Always needs sfvb_publish, because page settings are live. 
+    # A partial update.  Only the fields you send change - title, description, templates, visibility, sitemap exclusion, sort orders, items per page and page type.  Unlike the store admin's page save, the page's attributes, images, items, selectors and permissions are left exactly as they are.  Fields that would move or rename the page, and fields this endpoint does not know, are refused.  The root page cannot be hidden.  Always needs sfvb_publish, because page settings are live.  Hiding a page with redirect_old_url 301 and redirect_target also adds a 301 redirect from its address, checked first like any redirect rule.  The page is hidden and the rule added together, or neither. 
     # @param storefront_oid [Integer] 
     # @param path [String] Page path, for example /lp/spring-sale/
     # @param page_settings_request [SfvbPageSettingsRequest] The settings to change
@@ -17106,7 +17248,7 @@ module UltracartClient
     end
 
     # Change a page&#39;s settings
-    # A partial update.  Only the fields you send change - title, description, templates, visibility, sitemap exclusion, sort orders, items per page and page type.  Unlike the store admin&#39;s page save, the page&#39;s attributes, images, items, selectors and permissions are left exactly as they are.  Fields that would move or rename the page, and fields this endpoint does not know, are refused.  The root page cannot be hidden.  Always needs sfvb_publish, because page settings are live. 
+    # A partial update.  Only the fields you send change - title, description, templates, visibility, sitemap exclusion, sort orders, items per page and page type.  Unlike the store admin&#39;s page save, the page&#39;s attributes, images, items, selectors and permissions are left exactly as they are.  Fields that would move or rename the page, and fields this endpoint does not know, are refused.  The root page cannot be hidden.  Always needs sfvb_publish, because page settings are live.  Hiding a page with redirect_old_url 301 and redirect_target also adds a 301 redirect from its address, checked first like any redirect rule.  The page is hidden and the rule added together, or neither. 
     # @param storefront_oid [Integer] 
     # @param path [String] Page path, for example /lp/spring-sale/
     # @param page_settings_request [SfvbPageSettingsRequest] The settings to change
@@ -18566,7 +18708,7 @@ module UltracartClient
     # @param storefront_oid [Integer] 
     # @param owner_type [String] 
     # @param owner_object_id [String] 
-    # @param if_match [String] CJSON hash of the container being reverted.  Required; 428 when absent, 412 when stale.
+    # @param if_match [String] CJSON hash of the container being reverted.  Required while the container holds content; 428 when absent, 412 when stale.  Leave it out when the container has been removed, since there is nothing to match.
     # @param container_revert_request [SfvbContainerRevertRequest] Version to revert the container to
     # @param [Hash] opts the optional parameters
     # @option opts [String] :container_name 
@@ -18581,7 +18723,7 @@ module UltracartClient
     # @param storefront_oid [Integer] 
     # @param owner_type [String] 
     # @param owner_object_id [String] 
-    # @param if_match [String] CJSON hash of the container being reverted.  Required; 428 when absent, 412 when stale.
+    # @param if_match [String] CJSON hash of the container being reverted.  Required while the container holds content; 428 when absent, 412 when stale.  Leave it out when the container has been removed, since there is nothing to match.
     # @param container_revert_request [SfvbContainerRevertRequest] Version to revert the container to
     # @param [Hash] opts the optional parameters
     # @option opts [String] :container_name 
@@ -21441,6 +21583,84 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_redirect\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Change the storefront's faceted search configuration
+    # A partial update.  Turn facets on or off, change their headings, and replace the Cost facet's price breaks; facets left out and every other search setting are unchanged.  Facets cannot be reordered - the order is fixed.  Turning facets on or off, or changing the price breaks, starts a search index rebuild, reported in rebuild.  dry_run checks the change and reports it, and the rebuild it would start, without saving.  Needs sfvb_publish, because facets show on every search and category page at once. 
+    # @param storefront_oid [Integer] 
+    # @param search_facets_request [SfvbSearchFacetsRequest] The facets and price breaks to change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :if_match hash_sha256 from the last read.  Required unless dry_run; 428 when absent, 412 when stale.
+    # @return [SfvbSearchFacetsResponse]
+    def update_sfvb_search_facets(storefront_oid, search_facets_request, opts = {})
+      data, _status_code, _headers = update_sfvb_search_facets_with_http_info(storefront_oid, search_facets_request, opts)
+      data
+    end
+
+    # Change the storefront&#39;s faceted search configuration
+    # A partial update.  Turn facets on or off, change their headings, and replace the Cost facet&#39;s price breaks; facets left out and every other search setting are unchanged.  Facets cannot be reordered - the order is fixed.  Turning facets on or off, or changing the price breaks, starts a search index rebuild, reported in rebuild.  dry_run checks the change and reports it, and the rebuild it would start, without saving.  Needs sfvb_publish, because facets show on every search and category page at once. 
+    # @param storefront_oid [Integer] 
+    # @param search_facets_request [SfvbSearchFacetsRequest] The facets and price breaks to change
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :if_match hash_sha256 from the last read.  Required unless dry_run; 428 when absent, 412 when stale.
+    # @return [Array<(SfvbSearchFacetsResponse, Integer, Hash)>] SfvbSearchFacetsResponse data, response status code and response headers
+    def update_sfvb_search_facets_with_http_info(storefront_oid, search_facets_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.update_sfvb_search_facets ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.update_sfvb_search_facets"
+      end
+      # verify the required parameter 'search_facets_request' is set
+      if @api_client.config.client_side_validation && search_facets_request.nil?
+        fail ArgumentError, "Missing the required parameter 'search_facets_request' when calling SfvbApi.update_sfvb_search_facets"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/search/facets'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=UTF-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'If-Match'] = opts[:'if_match'] if !opts[:'if_match'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(search_facets_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbSearchFacetsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.update_sfvb_search_facets",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#update_sfvb_search_facets\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

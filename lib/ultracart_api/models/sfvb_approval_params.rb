@@ -48,8 +48,17 @@ module UltracartClient
     # For item.pricing, the item whose pricing changes.
     attr_accessor :merchant_item_oid
 
+    # For page.move, where the page goes, exactly as the move will send it.  path is the page as it is now.
+    attr_accessor :new_path
+
+    # For page.move, how many pages move, the page itself included, when it was requested.  Set by the server.
+    attr_accessor :pages_moved
+
     # The file path, for file.delete, file.put_script and file.put_template, or the page path for experiment.start of a page experiment.  Exactly as the gated call will send it.
     attr_accessor :path
+
+    # For page.move, 301 when the move also redirects the old addresses, as the move will send it.  Left out or none for no redirect.
+    attr_accessor :redirect_old_url
 
     # For experiment.start of a url experiment, the hash of the checked experiment approved, for item.pricing, tracking_provider.change and affiliate_network.change the hash of the change, and for smart_attribution.change the hash of the configuration the change would store.  Set by the server.  The gated call must send the same.
     attr_accessor :request_sha256
@@ -129,7 +138,10 @@ module UltracartClient
         :'experiment_oid' => :'experiment_oid',
         :'item_count' => :'item_count',
         :'merchant_item_oid' => :'merchant_item_oid',
+        :'new_path' => :'new_path',
+        :'pages_moved' => :'pages_moved',
         :'path' => :'path',
+        :'redirect_old_url' => :'redirect_old_url',
         :'request_sha256' => :'request_sha256',
         :'rows_sha256' => :'rows_sha256',
         :'rule_count' => :'rule_count',
@@ -166,7 +178,10 @@ module UltracartClient
         :'experiment_oid' => :'Integer',
         :'item_count' => :'Integer',
         :'merchant_item_oid' => :'Integer',
+        :'new_path' => :'String',
+        :'pages_moved' => :'Integer',
         :'path' => :'String',
+        :'redirect_old_url' => :'String',
         :'request_sha256' => :'String',
         :'rows_sha256' => :'String',
         :'rule_count' => :'Integer',
@@ -251,8 +266,20 @@ module UltracartClient
         self.merchant_item_oid = attributes[:'merchant_item_oid']
       end
 
+      if attributes.key?(:'new_path')
+        self.new_path = attributes[:'new_path']
+      end
+
+      if attributes.key?(:'pages_moved')
+        self.pages_moved = attributes[:'pages_moved']
+      end
+
       if attributes.key?(:'path')
         self.path = attributes[:'path']
+      end
+
+      if attributes.key?(:'redirect_old_url')
+        self.redirect_old_url = attributes[:'redirect_old_url']
       end
 
       if attributes.key?(:'request_sha256')
@@ -353,7 +380,10 @@ module UltracartClient
           experiment_oid == o.experiment_oid &&
           item_count == o.item_count &&
           merchant_item_oid == o.merchant_item_oid &&
+          new_path == o.new_path &&
+          pages_moved == o.pages_moved &&
           path == o.path &&
+          redirect_old_url == o.redirect_old_url &&
           request_sha256 == o.request_sha256 &&
           rows_sha256 == o.rows_sha256 &&
           rule_count == o.rule_count &&
@@ -379,7 +409,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [affiliate_network_oid, after_step_uuid, attribute_names, blog_post_oid, branch_step_uuid, content_sha256, domain, esp_twilio_uuid, experiment_oid, item_count, merchant_item_oid, path, request_sha256, rows_sha256, rule_count, segment_uuid, sequence_uuid, side, slot, step_uuid, tracking_provider, upsell_kind, upsell_oid, version, widget_id, winner_variation_number].hash
+      [affiliate_network_oid, after_step_uuid, attribute_names, blog_post_oid, branch_step_uuid, content_sha256, domain, esp_twilio_uuid, experiment_oid, item_count, merchant_item_oid, new_path, pages_moved, path, redirect_old_url, request_sha256, rows_sha256, rule_count, segment_uuid, sequence_uuid, side, slot, step_uuid, tracking_provider, upsell_kind, upsell_oid, version, widget_id, winner_variation_number].hash
     end
 
     # Builds the object from hash

@@ -45,6 +45,11 @@ module UltracartClient
     # The page path, normalized to begin and end with a slash.
     attr_accessor :path
 
+    attr_accessor :redirect
+
+    # Findings on that redirect that did not block it, such as a chain.  Left out when there are none.
+    attr_accessor :redirect_warnings
+
     # Template that renders the item review pages under this page.  Omitted when not set.
     attr_accessor :review_template
 
@@ -79,6 +84,8 @@ module UltracartClient
         :'multimedia' => :'multimedia',
         :'page_type' => :'page_type',
         :'path' => :'path',
+        :'redirect' => :'redirect',
+        :'redirect_warnings' => :'redirect_warnings',
         :'review_template' => :'review_template',
         :'sort_order' => :'sort_order',
         :'sort_order_child_groups' => :'sort_order_child_groups',
@@ -107,6 +114,8 @@ module UltracartClient
         :'multimedia' => :'Array<SfvbPageMultimedia>',
         :'page_type' => :'String',
         :'path' => :'String',
+        :'redirect' => :'SfvbRedirect',
+        :'redirect_warnings' => :'Array<SfvbErrorDetail>',
         :'review_template' => :'String',
         :'sort_order' => :'Integer',
         :'sort_order_child_groups' => :'String',
@@ -182,6 +191,16 @@ module UltracartClient
         self.path = attributes[:'path']
       end
 
+      if attributes.key?(:'redirect')
+        self.redirect = attributes[:'redirect']
+      end
+
+      if attributes.key?(:'redirect_warnings')
+        if (value = attributes[:'redirect_warnings']).is_a?(Array)
+          self.redirect_warnings = value
+        end
+      end
+
       if attributes.key?(:'review_template')
         self.review_template = attributes[:'review_template']
       end
@@ -239,6 +258,8 @@ module UltracartClient
           multimedia == o.multimedia &&
           page_type == o.page_type &&
           path == o.path &&
+          redirect == o.redirect &&
+          redirect_warnings == o.redirect_warnings &&
           review_template == o.review_template &&
           sort_order == o.sort_order &&
           sort_order_child_groups == o.sort_order_child_groups &&
@@ -257,7 +278,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attributes, blog_post_template, description, exclude_from_sitemap, group_template, item_template, items_per_page, multimedia, page_type, path, review_template, sort_order, sort_order_child_groups, sort_order_child_items, title, visible, visible_dts].hash
+      [attributes, blog_post_template, description, exclude_from_sitemap, group_template, item_template, items_per_page, multimedia, page_type, path, redirect, redirect_warnings, review_template, sort_order, sort_order_child_groups, sort_order_child_items, title, visible, visible_dts].hash
     end
 
     # Builds the object from hash

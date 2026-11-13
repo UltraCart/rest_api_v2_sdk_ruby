@@ -11,6 +11,9 @@
 | **item_template** | **String** | Template that renders the item pages under this page. | [optional] |
 | **items_per_page** | **Integer** | Items per page on a template that paginates.  Null returns to the template&#39;s default. | [optional] |
 | **page_type** | **String** | S for a static page, D for a dynamic one. | [optional] |
+| **redirect_note** | **String** | The note on that redirect rule.  Up to 500 characters.  A note naming the page is used when left out. | [optional] |
+| **redirect_old_url** | **String** | 301 to redirect the page&#39;s address to redirect_target in the same call (#1102).  Only with visible false, on a page that is visible now.  The page is hidden and the rule added together, or neither. | [optional] |
+| **redirect_target** | **String** | Where the hidden page&#39;s address redirects to, for example /lp/summer-sale/.  Required with redirect_old_url, and checked like any redirect rule. | [optional] |
 | **review_template** | **String** | Template that renders the item review pages under this page. | [optional] |
 | **sort_order** | **Integer** | Position among its siblings when the parent sorts child pages by a custom order.  Null clears it. | [optional] |
 | **sort_order_child_groups** | **String** | How the pages under this one are ordered.  TA or TD by title, DA or DD by description, C custom. | [optional] |
@@ -32,6 +35,9 @@ instance = UltracartClient::SfvbPageSettingsRequest.new(
   item_template: null,
   items_per_page: null,
   page_type: null,
+  redirect_note: null,
+  redirect_old_url: null,
+  redirect_target: null,
   review_template: null,
   sort_order: null,
   sort_order_child_groups: null,

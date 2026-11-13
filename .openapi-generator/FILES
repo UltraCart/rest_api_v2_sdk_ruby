@@ -1237,6 +1237,8 @@ docs/SfvbPageItemsAddRequest.md
 docs/SfvbPageItemsRemoveRequest.md
 docs/SfvbPageItemsResponse.md
 docs/SfvbPageListResponse.md
+docs/SfvbPageMoveRequest.md
+docs/SfvbPageMoveResponse.md
 docs/SfvbPageMultimedia.md
 docs/SfvbPageMultimediaRequest.md
 docs/SfvbPageRefreshRequest.md
@@ -1285,6 +1287,10 @@ docs/SfvbRedirectsResponse.md
 docs/SfvbRenderRequest.md
 docs/SfvbRenderResponse.md
 docs/SfvbRobotsTxt.md
+docs/SfvbSearchFacet.md
+docs/SfvbSearchFacetUpdate.md
+docs/SfvbSearchFacetsRequest.md
+docs/SfvbSearchFacetsResponse.md
 docs/SfvbSecretHandle.md
 docs/SfvbSecretKind.md
 docs/SfvbSecretKindsResponse.md
@@ -2741,6 +2747,8 @@ lib/ultracart_api/models/sfvb_page_items_add_request.rb
 lib/ultracart_api/models/sfvb_page_items_remove_request.rb
 lib/ultracart_api/models/sfvb_page_items_response.rb
 lib/ultracart_api/models/sfvb_page_list_response.rb
+lib/ultracart_api/models/sfvb_page_move_request.rb
+lib/ultracart_api/models/sfvb_page_move_response.rb
 lib/ultracart_api/models/sfvb_page_multimedia.rb
 lib/ultracart_api/models/sfvb_page_multimedia_request.rb
 lib/ultracart_api/models/sfvb_page_refresh_request.rb
@@ -2789,6 +2797,10 @@ lib/ultracart_api/models/sfvb_redirects_response.rb
 lib/ultracart_api/models/sfvb_render_request.rb
 lib/ultracart_api/models/sfvb_render_response.rb
 lib/ultracart_api/models/sfvb_robots_txt.rb
+lib/ultracart_api/models/sfvb_search_facet.rb
+lib/ultracart_api/models/sfvb_search_facet_update.rb
+lib/ultracart_api/models/sfvb_search_facets_request.rb
+lib/ultracart_api/models/sfvb_search_facets_response.rb
 lib/ultracart_api/models/sfvb_secret_handle.rb
 lib/ultracart_api/models/sfvb_secret_kind.rb
 lib/ultracart_api/models/sfvb_secret_kinds_response.rb

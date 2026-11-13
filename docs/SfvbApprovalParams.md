@@ -15,7 +15,10 @@
 | **experiment_oid** | **Integer** | For experiment.end, the experiment to end. | [optional] |
 | **item_count** | **Integer** | For item.attribute_batch, how many items the batch would change when it was requested.  Set by the server. | [optional] |
 | **merchant_item_oid** | **Integer** | For item.pricing, the item whose pricing changes. | [optional] |
+| **new_path** | **String** | For page.move, where the page goes, exactly as the move will send it.  path is the page as it is now. | [optional] |
+| **pages_moved** | **Integer** | For page.move, how many pages move, the page itself included, when it was requested.  Set by the server. | [optional] |
 | **path** | **String** | The file path, for file.delete, file.put_script and file.put_template, or the page path for experiment.start of a page experiment.  Exactly as the gated call will send it. | [optional] |
+| **redirect_old_url** | **String** | For page.move, 301 when the move also redirects the old addresses, as the move will send it.  Left out or none for no redirect. | [optional] |
 | **request_sha256** | **String** | For experiment.start of a url experiment, the hash of the checked experiment approved, for item.pricing, tracking_provider.change and affiliate_network.change the hash of the change, and for smart_attribution.change the hash of the configuration the change would store.  Set by the server.  The gated call must send the same. | [optional] |
 | **rows_sha256** | **String** | For redirect.delete_batch and item.attribute_batch, the plan_hash of the exact rows approved.  Set by the server.  The batch must send rows with this hash. | [optional] |
 | **rule_count** | **Integer** | For redirect.delete_batch, how many rules the batch would delete when it was requested.  Set by the server. | [optional] |
@@ -48,7 +51,10 @@ instance = UltracartClient::SfvbApprovalParams.new(
   experiment_oid: null,
   item_count: null,
   merchant_item_oid: null,
+  new_path: null,
+  pages_moved: null,
   path: null,
+  redirect_old_url: null,
   request_sha256: null,
   rows_sha256: null,
   rule_count: null,
