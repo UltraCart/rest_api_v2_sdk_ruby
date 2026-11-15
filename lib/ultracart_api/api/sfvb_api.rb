@@ -7466,6 +7466,81 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Read several storefront files
+    # The current content of up to 50 files in one call, each answered exactly as the single file read answers it.  A file that can't be read carries its own error and the others are still read.  When the response reaches its size limit, the paths not yet read come back in remaining_paths; send them again.  Only reads - a POST because the list of paths can be long. 
+    # @param storefront_oid [Integer] 
+    # @param files_request [SfvbFilesContentRequest] The files to read
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbFilesContentResponse]
+    def get_sfvb_file_contents(storefront_oid, files_request, opts = {})
+      data, _status_code, _headers = get_sfvb_file_contents_with_http_info(storefront_oid, files_request, opts)
+      data
+    end
+
+    # Read several storefront files
+    # The current content of up to 50 files in one call, each answered exactly as the single file read answers it.  A file that can&#39;t be read carries its own error and the others are still read.  When the response reaches its size limit, the paths not yet read come back in remaining_paths; send them again.  Only reads - a POST because the list of paths can be long. 
+    # @param storefront_oid [Integer] 
+    # @param files_request [SfvbFilesContentRequest] The files to read
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbFilesContentResponse, Integer, Hash)>] SfvbFilesContentResponse data, response status code and response headers
+    def get_sfvb_file_contents_with_http_info(storefront_oid, files_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_file_contents ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_file_contents"
+      end
+      # verify the required parameter 'files_request' is set
+      if @api_client.config.client_side_validation && files_request.nil?
+        fail ArgumentError, "Missing the required parameter 'files_request' when calling SfvbApi.get_sfvb_file_contents"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/files/content'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(files_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbFilesContentResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_file_contents",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_file_contents\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get a URL to upload a binary asset to
     # Binary content does not travel through this API as JSON, so uploading an image, font, video or PDF is two steps.  Ask here for a URL, PUT the raw bytes straight to it, then call uploadSfvbFile quoting the key you were given.  The bytes never pass through the API server.  The extension is checked against the accepted type list before a URL is issued, so an unsupported type fails here rather than after you have sent the file.  The URL is short lived and the key is bound to your account. 
     # @param storefront_oid [Integer] 
@@ -8785,9 +8860,10 @@ module UltracartClient
     end
 
     # List a storefront's store menus
-    # The menus a menu element's menuName can name, sorted by code and without their entries.  A code the active theme's templates ask for but nothing has created is included with unconfigured true - that code renders an empty list today, and writing it creates it.  A menu no template names is marked undeclared, which usually means a menuName is misspelled. 
+    # The menus a menu element's menuName can name, sorted by code.  Without include_entries each menu is listed without its entries; with include_entries=true each carries the tree the single-menu read returns, so one call reads every menu.  A code the active theme's templates ask for but nothing has created is included with unconfigured true - that code renders an empty list today, and writing it creates it.  A menu no template names is marked undeclared, which usually means a menuName is misspelled. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :include_entries True to include each menu&#39;s entries
     # @return [SfvbMenusResponse]
     def get_sfvb_menus(storefront_oid, opts = {})
       data, _status_code, _headers = get_sfvb_menus_with_http_info(storefront_oid, opts)
@@ -8795,9 +8871,10 @@ module UltracartClient
     end
 
     # List a storefront&#39;s store menus
-    # The menus a menu element&#39;s menuName can name, sorted by code and without their entries.  A code the active theme&#39;s templates ask for but nothing has created is included with unconfigured true - that code renders an empty list today, and writing it creates it.  A menu no template names is marked undeclared, which usually means a menuName is misspelled. 
+    # The menus a menu element&#39;s menuName can name, sorted by code.  Without include_entries each menu is listed without its entries; with include_entries&#x3D;true each carries the tree the single-menu read returns, so one call reads every menu.  A code the active theme&#39;s templates ask for but nothing has created is included with unconfigured true - that code renders an empty list today, and writing it creates it.  A menu no template names is marked undeclared, which usually means a menuName is misspelled. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :include_entries True to include each menu&#39;s entries
     # @return [Array<(SfvbMenusResponse, Integer, Hash)>] SfvbMenusResponse data, response status code and response headers
     def get_sfvb_menus_with_http_info(storefront_oid, opts = {})
       if @api_client.config.debugging
@@ -8812,6 +8889,7 @@ module UltracartClient
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'include_entries'] = opts[:'include_entries'] if !opts[:'include_entries'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -9135,23 +9213,25 @@ module UltracartClient
     end
 
     # Read a page's attributes and images
-    # What the pageattribute and pageimage elements render for this page.  These are not in any file, which is why a page folder can be empty and its elements still render something.  Attributes and image codes a template declares but nothing has set are included, so the response describes what the page can show rather than only what has been saved. 
+    # What the pageattribute and pageimage elements render for this page.  These are not in any file, which is why a page folder can be empty and its elements still render something.  Attributes and image codes a template declares but nothing has set are included, so the response describes what the page can show rather than only what has been saved.  Name the page by path or by catalog_group_oid, not both.  The oid is the id the page list and menu reads return, and it stays the same when the page moves. 
     # @param storefront_oid [Integer] 
-    # @param path [String] Page path, for example /catalog/dispensers/
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :path Page path, for example /catalog/dispensers/.  Required unless catalog_group_oid is given.
+    # @option opts [Integer] :catalog_group_oid The page&#39;s id, in place of path
     # @return [SfvbPageResponse]
-    def get_sfvb_page(storefront_oid, path, opts = {})
-      data, _status_code, _headers = get_sfvb_page_with_http_info(storefront_oid, path, opts)
+    def get_sfvb_page(storefront_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_page_with_http_info(storefront_oid, opts)
       data
     end
 
     # Read a page&#39;s attributes and images
-    # What the pageattribute and pageimage elements render for this page.  These are not in any file, which is why a page folder can be empty and its elements still render something.  Attributes and image codes a template declares but nothing has set are included, so the response describes what the page can show rather than only what has been saved. 
+    # What the pageattribute and pageimage elements render for this page.  These are not in any file, which is why a page folder can be empty and its elements still render something.  Attributes and image codes a template declares but nothing has set are included, so the response describes what the page can show rather than only what has been saved.  Name the page by path or by catalog_group_oid, not both.  The oid is the id the page list and menu reads return, and it stays the same when the page moves. 
     # @param storefront_oid [Integer] 
-    # @param path [String] Page path, for example /catalog/dispensers/
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :path Page path, for example /catalog/dispensers/.  Required unless catalog_group_oid is given.
+    # @option opts [Integer] :catalog_group_oid The page&#39;s id, in place of path
     # @return [Array<(SfvbPageResponse, Integer, Hash)>] SfvbPageResponse data, response status code and response headers
-    def get_sfvb_page_with_http_info(storefront_oid, path, opts = {})
+    def get_sfvb_page_with_http_info(storefront_oid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_page ...'
       end
@@ -9159,16 +9239,13 @@ module UltracartClient
       if @api_client.config.client_side_validation && storefront_oid.nil?
         fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_page"
       end
-      # verify the required parameter 'path' is set
-      if @api_client.config.client_side_validation && path.nil?
-        fail ArgumentError, "Missing the required parameter 'path' when calling SfvbApi.get_sfvb_page"
-      end
       # resource path
       local_var_path = '/sfvb/storefronts/{storefront_oid}/pages'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'path'] = path
+      query_params[:'path'] = opts[:'path'] if !opts[:'path'].nil?
+      query_params[:'catalog_group_oid'] = opts[:'catalog_group_oid'] if !opts[:'catalog_group_oid'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -14687,10 +14764,13 @@ module UltracartClient
     end
 
     # List the storefront's pages
-    # Every page with its settings, sorted by path with the root first.  Hidden pages are included.  Pass under to list one page and everything below it.  Read from the same cached catalog the admin page tree uses, so a page created a moment ago can take a moment to appear here - read it directly with the single-page read to confirm a write. 
+    # Every page with its settings, sorted by path with the root first.  Hidden pages are included.  Pass under to list one page and everything below it.  Read from the same cached catalog the admin page tree uses, so a page created a moment ago can take a moment to appear here - read it directly with the single-page read to confirm a write.  Pass detail=true to get each page's single-page read in detail as well, at most 25 pages a call.  Page through with offset and limit, following next_offset until it is omitted. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :under Only this page and the pages below it, for example /lp/
+    # @option opts [Boolean] :detail True to include each page&#39;s single-page read, a window at a time
+    # @option opts [Integer] :offset Where the window starts, with detail&#x3D;true.  Default 0.
+    # @option opts [Integer] :limit Pages in the window, 1 to 25, with detail&#x3D;true.  Default 25.
     # @return [SfvbPageListResponse]
     def list_sfvb_pages(storefront_oid, opts = {})
       data, _status_code, _headers = list_sfvb_pages_with_http_info(storefront_oid, opts)
@@ -14698,10 +14778,13 @@ module UltracartClient
     end
 
     # List the storefront&#39;s pages
-    # Every page with its settings, sorted by path with the root first.  Hidden pages are included.  Pass under to list one page and everything below it.  Read from the same cached catalog the admin page tree uses, so a page created a moment ago can take a moment to appear here - read it directly with the single-page read to confirm a write. 
+    # Every page with its settings, sorted by path with the root first.  Hidden pages are included.  Pass under to list one page and everything below it.  Read from the same cached catalog the admin page tree uses, so a page created a moment ago can take a moment to appear here - read it directly with the single-page read to confirm a write.  Pass detail&#x3D;true to get each page&#39;s single-page read in detail as well, at most 25 pages a call.  Page through with offset and limit, following next_offset until it is omitted. 
     # @param storefront_oid [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :under Only this page and the pages below it, for example /lp/
+    # @option opts [Boolean] :detail True to include each page&#39;s single-page read, a window at a time
+    # @option opts [Integer] :offset Where the window starts, with detail&#x3D;true.  Default 0.
+    # @option opts [Integer] :limit Pages in the window, 1 to 25, with detail&#x3D;true.  Default 25.
     # @return [Array<(SfvbPageListResponse, Integer, Hash)>] SfvbPageListResponse data, response status code and response headers
     def list_sfvb_pages_with_http_info(storefront_oid, opts = {})
       if @api_client.config.debugging
@@ -14717,6 +14800,9 @@ module UltracartClient
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'under'] = opts[:'under'] if !opts[:'under'].nil?
+      query_params[:'detail'] = opts[:'detail'] if !opts[:'detail'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -21588,7 +21674,7 @@ module UltracartClient
     end
 
     # Change the storefront's faceted search configuration
-    # A partial update.  Turn facets on or off, change their headings, and replace the Cost facet's price breaks; facets left out and every other search setting are unchanged.  Facets cannot be reordered - the order is fixed.  Turning facets on or off, or changing the price breaks, starts a search index rebuild, reported in rebuild.  dry_run checks the change and reports it, and the rebuild it would start, without saving.  Needs sfvb_publish, because facets show on every search and category page at once. 
+    # A partial update.  Turn facets on or off, change their headings, and replace the Cost facet's price breaks; facets left out and every other search setting are unchanged.  Facets cannot be reordered - the order is fixed.  Turning facets on or off, or changing the price breaks, starts a search index rebuild, reported in rebuild.  dry_run checks the change and reports it, and the rebuild it would start, without saving.  Needs sfvb_publish, because facets show on every search and category page at once.  Changes are limited to 30 an hour and 100 a day per storefront, and those that start a rebuild to 6 an hour and 20 a day (429, nothing saved). 
     # @param storefront_oid [Integer] 
     # @param search_facets_request [SfvbSearchFacetsRequest] The facets and price breaks to change
     # @param [Hash] opts the optional parameters
@@ -21600,7 +21686,7 @@ module UltracartClient
     end
 
     # Change the storefront&#39;s faceted search configuration
-    # A partial update.  Turn facets on or off, change their headings, and replace the Cost facet&#39;s price breaks; facets left out and every other search setting are unchanged.  Facets cannot be reordered - the order is fixed.  Turning facets on or off, or changing the price breaks, starts a search index rebuild, reported in rebuild.  dry_run checks the change and reports it, and the rebuild it would start, without saving.  Needs sfvb_publish, because facets show on every search and category page at once. 
+    # A partial update.  Turn facets on or off, change their headings, and replace the Cost facet&#39;s price breaks; facets left out and every other search setting are unchanged.  Facets cannot be reordered - the order is fixed.  Turning facets on or off, or changing the price breaks, starts a search index rebuild, reported in rebuild.  dry_run checks the change and reports it, and the rebuild it would start, without saving.  Needs sfvb_publish, because facets show on every search and category page at once.  Changes are limited to 30 an hour and 100 a day per storefront, and those that start a rebuild to 6 an hour and 20 a day (429, nothing saved). 
     # @param storefront_oid [Integer] 
     # @param search_facets_request [SfvbSearchFacetsRequest] The facets and price breaks to change
     # @param [Hash] opts the optional parameters

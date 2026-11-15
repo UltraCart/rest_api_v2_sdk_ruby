@@ -15,8 +15,13 @@ require 'time'
 
 module UltracartClient
   class SfvbPageSummary
+    # The page's id.  It stays the same when the page is moved or renamed, where the path and the page folder's id do not, and it is what a menu entry's catalog_group_oid names.
+    attr_accessor :catalog_group_oid
+
     # Number of pages directly under this one.
     attr_accessor :child_count
+
+    attr_accessor :detail
 
     # True when the page is left out of the sitemap and marked noindex.
     attr_accessor :exclude_from_sitemap
@@ -60,7 +65,9 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'catalog_group_oid' => :'catalog_group_oid',
         :'child_count' => :'child_count',
+        :'detail' => :'detail',
         :'exclude_from_sitemap' => :'exclude_from_sitemap',
         :'group_template' => :'group_template',
         :'item_count' => :'item_count',
@@ -85,7 +92,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'catalog_group_oid' => :'Integer',
         :'child_count' => :'Integer',
+        :'detail' => :'SfvbPageResponse',
         :'exclude_from_sitemap' => :'Boolean',
         :'group_template' => :'String',
         :'item_count' => :'Integer',
@@ -123,8 +132,16 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'catalog_group_oid')
+        self.catalog_group_oid = attributes[:'catalog_group_oid']
+      end
+
       if attributes.key?(:'child_count')
         self.child_count = attributes[:'child_count']
+      end
+
+      if attributes.key?(:'detail')
+        self.detail = attributes[:'detail']
       end
 
       if attributes.key?(:'exclude_from_sitemap')
@@ -198,7 +215,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          catalog_group_oid == o.catalog_group_oid &&
           child_count == o.child_count &&
+          detail == o.detail &&
           exclude_from_sitemap == o.exclude_from_sitemap &&
           group_template == o.group_template &&
           item_count == o.item_count &&
@@ -223,7 +242,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [child_count, exclude_from_sitemap, group_template, item_count, item_template, page_type, parent_path, path, root, sort_order, title, uses_selectors, visible, visible_dts].hash
+      [catalog_group_oid, child_count, detail, exclude_from_sitemap, group_template, item_count, item_template, page_type, parent_path, path, root, sort_order, title, uses_selectors, visible, visible_dts].hash
     end
 
     # Builds the object from hash

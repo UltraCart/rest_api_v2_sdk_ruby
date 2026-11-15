@@ -21,6 +21,9 @@ module UltracartClient
     # Template that renders the blog posts under this page.  Omitted when not set.
     attr_accessor :blog_post_template
 
+    # The page's id.  It stays the same when the page is moved or renamed, where the path and the page folder's id do not.  The page read accepts it in place of path.
+    attr_accessor :catalog_group_oid
+
     # The page description, the text a page template renders as the page's description.  Omitted when empty.
     attr_accessor :description
 
@@ -76,6 +79,7 @@ module UltracartClient
       {
         :'attributes' => :'attributes',
         :'blog_post_template' => :'blog_post_template',
+        :'catalog_group_oid' => :'catalog_group_oid',
         :'description' => :'description',
         :'exclude_from_sitemap' => :'exclude_from_sitemap',
         :'group_template' => :'group_template',
@@ -106,6 +110,7 @@ module UltracartClient
       {
         :'attributes' => :'Array<SfvbPageAttribute>',
         :'blog_post_template' => :'String',
+        :'catalog_group_oid' => :'Integer',
         :'description' => :'String',
         :'exclude_from_sitemap' => :'Boolean',
         :'group_template' => :'String',
@@ -155,6 +160,10 @@ module UltracartClient
 
       if attributes.key?(:'blog_post_template')
         self.blog_post_template = attributes[:'blog_post_template']
+      end
+
+      if attributes.key?(:'catalog_group_oid')
+        self.catalog_group_oid = attributes[:'catalog_group_oid']
       end
 
       if attributes.key?(:'description')
@@ -250,6 +259,7 @@ module UltracartClient
       self.class == o.class &&
           attributes == o.attributes &&
           blog_post_template == o.blog_post_template &&
+          catalog_group_oid == o.catalog_group_oid &&
           description == o.description &&
           exclude_from_sitemap == o.exclude_from_sitemap &&
           group_template == o.group_template &&
@@ -278,7 +288,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attributes, blog_post_template, description, exclude_from_sitemap, group_template, item_template, items_per_page, multimedia, page_type, path, redirect, redirect_warnings, review_template, sort_order, sort_order_child_groups, sort_order_child_items, title, visible, visible_dts].hash
+      [attributes, blog_post_template, catalog_group_oid, description, exclude_from_sitemap, group_template, item_template, items_per_page, multimedia, page_type, path, redirect, redirect_warnings, review_template, sort_order, sort_order_child_groups, sort_order_child_items, title, visible, visible_dts].hash
     end
 
     # Builds the object from hash

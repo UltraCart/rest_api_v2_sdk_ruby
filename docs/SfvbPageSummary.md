@@ -4,7 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **catalog_group_oid** | **Integer** | The page&#39;s id.  It stays the same when the page is moved or renamed, where the path and the page folder&#39;s id do not, and it is what a menu entry&#39;s catalog_group_oid names. | [optional] |
 | **child_count** | **Integer** | Number of pages directly under this one. | [optional] |
+| **detail** | [**SfvbPageResponse**](SfvbPageResponse.md) |  | [optional] |
 | **exclude_from_sitemap** | **Boolean** | True when the page is left out of the sitemap and marked noindex. | [optional] |
 | **group_template** | **String** | Template file that renders the page itself, a bare .vm name found anywhere in the active theme. | [optional] |
 | **item_count** | **Integer** | Number of items assigned to the page.  The catalog stops counting at its per-page item ceiling. | [optional] |
@@ -25,7 +27,9 @@
 require 'ultracart_api'
 
 instance = UltracartClient::SfvbPageSummary.new(
+  catalog_group_oid: null,
   child_count: null,
+  detail: null,
   exclude_from_sitemap: null,
   group_template: null,
   item_count: null,

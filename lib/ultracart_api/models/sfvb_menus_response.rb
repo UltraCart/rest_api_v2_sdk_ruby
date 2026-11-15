@@ -15,7 +15,7 @@ require 'time'
 
 module UltracartClient
   class SfvbMenusResponse
-    # The storefront's menus, sorted by code.  Entries are omitted here - read a single menu to get its tree.
+    # The storefront's menus, sorted by code.  Entries are omitted unless include_entries=true was passed, in which case each menu carries the same tree the single-menu read returns.
     attr_accessor :menus
 
     # Attribute mapping from ruby-style variable name to JSON key.

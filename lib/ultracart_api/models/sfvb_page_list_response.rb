@@ -15,13 +15,21 @@ require 'time'
 
 module UltracartClient
   class SfvbPageListResponse
+    # The offset of the next window, omitted on the last one.  Only with detail=true.
+    attr_accessor :next_offset
+
     # Pages sorted by path, the root first.  Hidden pages are included.
     attr_accessor :pages
+
+    # How many pages the whole list has.  Only with detail=true.
+    attr_accessor :total
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'pages' => :'pages'
+        :'next_offset' => :'next_offset',
+        :'pages' => :'pages',
+        :'total' => :'total'
       }
     end
 
@@ -33,7 +41,9 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'pages' => :'Array<SfvbPageSummary>'
+        :'next_offset' => :'Integer',
+        :'pages' => :'Array<SfvbPageSummary>',
+        :'total' => :'Integer'
       }
     end
 
@@ -58,10 +68,18 @@ module UltracartClient
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'next_offset')
+        self.next_offset = attributes[:'next_offset']
+      end
+
       if attributes.key?(:'pages')
         if (value = attributes[:'pages']).is_a?(Array)
           self.pages = value
         end
+      end
+
+      if attributes.key?(:'total')
+        self.total = attributes[:'total']
       end
     end
 
@@ -83,7 +101,9 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          pages == o.pages
+          next_offset == o.next_offset &&
+          pages == o.pages &&
+          total == o.total
     end
 
     # @see the `==` method
@@ -95,7 +115,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pages].hash
+      [next_offset, pages, total].hash
     end
 
     # Builds the object from hash
