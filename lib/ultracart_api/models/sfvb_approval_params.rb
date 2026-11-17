@@ -42,6 +42,9 @@ module UltracartClient
     # For experiment.end, the experiment to end.
     attr_accessor :experiment_oid
 
+    # For cli.location, the IPv4 address the StoreFront CLI sign-in asks to be used from.  Set by the server from the caller's own address, never by the caller.
+    attr_accessor :ip
+
     # For item.attribute_batch, how many items the batch would change when it was requested.  Set by the server.
     attr_accessor :item_count
 
@@ -136,6 +139,7 @@ module UltracartClient
         :'domain' => :'domain',
         :'esp_twilio_uuid' => :'esp_twilio_uuid',
         :'experiment_oid' => :'experiment_oid',
+        :'ip' => :'ip',
         :'item_count' => :'item_count',
         :'merchant_item_oid' => :'merchant_item_oid',
         :'new_path' => :'new_path',
@@ -176,6 +180,7 @@ module UltracartClient
         :'domain' => :'String',
         :'esp_twilio_uuid' => :'String',
         :'experiment_oid' => :'Integer',
+        :'ip' => :'String',
         :'item_count' => :'Integer',
         :'merchant_item_oid' => :'Integer',
         :'new_path' => :'String',
@@ -256,6 +261,10 @@ module UltracartClient
 
       if attributes.key?(:'experiment_oid')
         self.experiment_oid = attributes[:'experiment_oid']
+      end
+
+      if attributes.key?(:'ip')
+        self.ip = attributes[:'ip']
       end
 
       if attributes.key?(:'item_count')
@@ -378,6 +387,7 @@ module UltracartClient
           domain == o.domain &&
           esp_twilio_uuid == o.esp_twilio_uuid &&
           experiment_oid == o.experiment_oid &&
+          ip == o.ip &&
           item_count == o.item_count &&
           merchant_item_oid == o.merchant_item_oid &&
           new_path == o.new_path &&
@@ -409,7 +419,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [affiliate_network_oid, after_step_uuid, attribute_names, blog_post_oid, branch_step_uuid, content_sha256, domain, esp_twilio_uuid, experiment_oid, item_count, merchant_item_oid, new_path, pages_moved, path, redirect_old_url, request_sha256, rows_sha256, rule_count, segment_uuid, sequence_uuid, side, slot, step_uuid, tracking_provider, upsell_kind, upsell_oid, version, widget_id, winner_variation_number].hash
+      [affiliate_network_oid, after_step_uuid, attribute_names, blog_post_oid, branch_step_uuid, content_sha256, domain, esp_twilio_uuid, experiment_oid, ip, item_count, merchant_item_oid, new_path, pages_moved, path, redirect_old_url, request_sha256, rows_sha256, rule_count, segment_uuid, sequence_uuid, side, slot, step_uuid, tracking_provider, upsell_kind, upsell_oid, version, widget_id, winner_variation_number].hash
     end
 
     # Builds the object from hash

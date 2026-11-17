@@ -188,6 +188,8 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**insert_sfvb_comms_twilio_account**](SfvbApi.md#insert_sfvb_comms_twilio_account) | **POST** /sfvb/comms/twilio_account | Connect the Twilio account |
 | [**insert_sfvb_docs_gap**](SfvbApi.md#insert_sfvb_docs_gap) | **POST** /sfvb/docs/gaps | Send UltraCart a documentation-gap report |
 | [**insert_sfvb_item_child**](SfvbApi.md#insert_sfvb_item_child) | **POST** /sfvb/storefronts/{storefront_oid}/items/children | Create a child item for a parent&#39;s variations |
+| [**insert_sfvb_location**](SfvbApi.md#insert_sfvb_location) | **POST** /sfvb/location | Add the caller&#39;s address to this StoreFront CLI sign-in |
+| [**insert_sfvb_location_approval**](SfvbApi.md#insert_sfvb_location_approval) | **POST** /sfvb/location/approval | Ask to use this StoreFront CLI sign-in from the caller&#39;s address |
 | [**insert_sfvb_page**](SfvbApi.md#insert_sfvb_page) | **POST** /sfvb/storefronts/{storefront_oid}/pages | Create a page |
 | [**insert_sfvb_redirect**](SfvbApi.md#insert_sfvb_redirect) | **POST** /sfvb/storefronts/{storefront_oid}/redirects | Create a 301 redirect rule |
 | [**insert_sfvb_secret_request**](SfvbApi.md#insert_sfvb_secret_request) | **POST** /sfvb/secrets | Ask a person to enter secret values |
@@ -10297,6 +10299,110 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## insert_sfvb_location
+
+> insert_sfvb_location(opts)
+
+Add the caller's address to this StoreFront CLI sign-in
+
+Spends an approved cli.location approval, named in the Approval-Id header, from the address it was asked for.  From then on the sign-in may be used from that address until it ends.  An approval asked for from another address is refused with sfvb.approval_mismatch. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_sfvb_location_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> insert_sfvb_location_with_http_info(opts)
+
+```ruby
+begin
+  # Add the caller's address to this StoreFront CLI sign-in
+  data, status_code, headers = api_instance.insert_sfvb_location_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->insert_sfvb_location_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **approval_id** | **String** | The approval_id of an approved cli.location request asked for from this address.  See POST /sfvb/location/approval. | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## insert_sfvb_location_approval
+
+> <SfvbApproval> insert_sfvb_location_approval
+
+Ask to use this StoreFront CLI sign-in from the caller's address
+
+For a StoreFront CLI sign-in refused with sfvb.location_approval_required.  Asks the person who signed in to approve the address this call comes from (a cli.location approval).  Show them approval_url and user_code, poll GET approvals/{approval_id}, and once it is approved call POST location from the same address with the approval_id in the Approval-Id header.  Asking again returns the pending request (200).  The person is also emailed, so a request they didn't expect warns them. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_sfvb_location_approval_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbApproval>, Integer, Hash)> insert_sfvb_location_approval_with_http_info
+
+```ruby
+begin
+  # Ask to use this StoreFront CLI sign-in from the caller's address
+  data, status_code, headers = api_instance.insert_sfvb_location_approval_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbApproval>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->insert_sfvb_location_approval_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SfvbApproval**](SfvbApproval.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
