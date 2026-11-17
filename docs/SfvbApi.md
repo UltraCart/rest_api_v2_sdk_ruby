@@ -150,6 +150,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_sequence**](SfvbApi.md#get_sfvb_sequence) | **GET** /sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid} | Get a campaign&#39;s or flow&#39;s steps as a tree |
 | [**get_sfvb_sequence_step_dispatch_logs**](SfvbApi.md#get_sfvb_sequence_step_dispatch_logs) | **GET** /sfvb/storefronts/{storefront_oid}/sequences/{sequence_uuid}/steps/{step_uuid}/dispatch_logs | Read a flow or campaign step&#39;s dispatch log and counts |
 | [**get_sfvb_server_log**](SfvbApi.md#get_sfvb_server_log) | **GET** /sfvb/storefronts/{storefront_oid}/logs/{log_id} | Get one storefront render log |
+| [**get_sfvb_session**](SfvbApi.md#get_sfvb_session) | **GET** /sfvb/session | Who this token is |
 | [**get_sfvb_site_attributes**](SfvbApi.md#get_sfvb_site_attributes) | **GET** /sfvb/storefronts/{storefront_oid}/attributes | Read a storefront&#39;s site attributes |
 | [**get_sfvb_site_seo**](SfvbApi.md#get_sfvb_site_seo) | **GET** /sfvb/storefronts/{storefront_oid}/seo | Read a storefront&#39;s search engine settings |
 | [**get_sfvb_sitemaps**](SfvbApi.md#get_sfvb_sitemaps) | **GET** /sfvb/storefronts/{storefront_oid}/sitemaps | Read a storefront&#39;s sitemaps and robots.txt |
@@ -172,7 +173,6 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_utm_shortcode**](SfvbApi.md#get_sfvb_utm_shortcode) | **GET** /sfvb/storefronts/{storefront_oid}/utm_shortcodes/{shortcode_oid} | Read one UTM shortcode |
 | [**get_sfvb_utm_shortcodes**](SfvbApi.md#get_sfvb_utm_shortcodes) | **GET** /sfvb/storefronts/{storefront_oid}/utm_shortcodes | List a storefront&#39;s UTM shortcodes |
 | [**get_sfvb_version**](SfvbApi.md#get_sfvb_version) | **GET** /sfvb/version | Compiler version for this merchant |
-| [**get_sfvb_whoami**](SfvbApi.md#get_sfvb_whoami) | **GET** /sfvb/whoami | Who this token is |
 | [**ignore_sfvb_not_found_entry**](SfvbApi.md#ignore_sfvb_not_found_entry) | **POST** /sfvb/storefronts/{storefront_oid}/not_found/{not_found_id}/ignore | Ignore a 404 path |
 | [**import_sfvb_comms_provider_lists**](SfvbApi.md#import_sfvb_comms_provider_lists) | **POST** /sfvb/storefronts/{storefront_oid}/comms/providers/import | Import lists from another email provider |
 | [**import_sfvb_redirects**](SfvbApi.md#import_sfvb_redirects) | **POST** /sfvb/storefronts/{storefront_oid}/redirects/import | Apply a reviewed redirect import |
@@ -8250,6 +8250,57 @@ end
 - **Accept**: application/json
 
 
+## get_sfvb_session
+
+> <SfvbWhoamiResponse> get_sfvb_session
+
+Who this token is
+
+Returns the merchant, user, granted scopes and reachable storefronts for the calling token.  Declared for any scope so an application can always discover which account it is connected to. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_session_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbWhoamiResponse>, Integer, Hash)> get_sfvb_session_with_http_info
+
+```ruby
+begin
+  # Who this token is
+  data, status_code, headers = api_instance.get_sfvb_session_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbWhoamiResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_session_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SfvbWhoamiResponse**](SfvbWhoamiResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_sfvb_site_attributes
 
 > <SfvbSiteAttributesResponse> get_sfvb_site_attributes(storefront_oid)
@@ -9430,57 +9481,6 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**SfvbVersionResponse**](SfvbVersionResponse.md)
-
-### Authorization
-
-[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_sfvb_whoami
-
-> <SfvbWhoamiResponse> get_sfvb_whoami
-
-Who this token is
-
-Returns the merchant, user, granted scopes and reachable storefronts for the calling token.  Declared for any scope so an application can always discover which account it is connected to. 
-
-
-### Examples
-
-
-(No example for this operation).
-
-
-#### Using the get_sfvb_whoami_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<SfvbWhoamiResponse>, Integer, Hash)> get_sfvb_whoami_with_http_info
-
-```ruby
-begin
-  # Who this token is
-  data, status_code, headers = api_instance.get_sfvb_whoami_with_http_info
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <SfvbWhoamiResponse>
-rescue UltracartClient::ApiError => e
-  puts "Error when calling SfvbApi->get_sfvb_whoami_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**SfvbWhoamiResponse**](SfvbWhoamiResponse.md)
 
 ### Authorization
 
