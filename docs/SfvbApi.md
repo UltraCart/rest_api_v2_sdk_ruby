@@ -74,6 +74,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**get_sfvb_blog_post**](SfvbApi.md#get_sfvb_blog_post) | **GET** /sfvb/storefronts/{storefront_oid}/blog_posts/{blog_post_oid} | Read a blog post |
 | [**get_sfvb_campaign**](SfvbApi.md#get_sfvb_campaign) | **GET** /sfvb/storefronts/{storefront_oid}/campaigns/{campaign_uuid} | Get a campaign |
 | [**get_sfvb_cjson_used_elements**](SfvbApi.md#get_sfvb_cjson_used_elements) | **POST** /sfvb/cjson/elements | Element types used by a container |
+| [**get_sfvb_code_library_email**](SfvbApi.md#get_sfvb_code_library_email) | **GET** /sfvb/storefronts/{storefront_oid}/code_library/emails/{library_item_oid} | One code library email item, with its body and file list |
 | [**get_sfvb_comms_campaign_folder**](SfvbApi.md#get_sfvb_comms_campaign_folder) | **GET** /sfvb/storefronts/{storefront_oid}/campaign_folders/{folder_uuid} | Read one campaign folder |
 | [**get_sfvb_comms_campaign_folders**](SfvbApi.md#get_sfvb_comms_campaign_folders) | **GET** /sfvb/storefronts/{storefront_oid}/campaign_folders | List the campaign folders |
 | [**get_sfvb_comms_dashboard_stats**](SfvbApi.md#get_sfvb_comms_dashboard_stats) | **GET** /sfvb/storefronts/{storefront_oid}/comms/stats/dashboard | Read every flow&#39;s and campaign&#39;s counts over a window, with the account&#39;s daily sending |
@@ -179,6 +180,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**insert_sfvb_affiliate_network**](SfvbApi.md#insert_sfvb_affiliate_network) | **POST** /sfvb/storefronts/{storefront_oid}/tracking/affiliate_networks | Add an affiliate network |
 | [**insert_sfvb_approval**](SfvbApi.md#insert_sfvb_approval) | **POST** /sfvb/approvals | Request a human approval |
 | [**insert_sfvb_blog_post**](SfvbApi.md#insert_sfvb_blog_post) | **POST** /sfvb/storefronts/{storefront_oid}/blog_posts | Create a blog post |
+| [**insert_sfvb_code_library_email**](SfvbApi.md#insert_sfvb_code_library_email) | **POST** /sfvb/storefronts/{storefront_oid}/code_library/emails | Save a reusable email to this account&#39;s code library |
 | [**insert_sfvb_comms_campaign_folder**](SfvbApi.md#insert_sfvb_comms_campaign_folder) | **POST** /sfvb/storefronts/{storefront_oid}/campaign_folders | Create a campaign folder |
 | [**insert_sfvb_comms_flow_folder**](SfvbApi.md#insert_sfvb_comms_flow_folder) | **POST** /sfvb/storefronts/{storefront_oid}/flow_folders | Create a flow folder |
 | [**insert_sfvb_comms_folder**](SfvbApi.md#insert_sfvb_comms_folder) | **POST** /sfvb/storefronts/{storefront_oid}/list_segment_folders | Create a list and segment folder |
@@ -4128,6 +4130,60 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_sfvb_code_library_email
+
+> <SfvbCodeLibraryEmailResponse> get_sfvb_code_library_email(storefront_oid, library_item_oid)
+
+One code library email item, with its body and file list
+
+Answers for an item this account owns, one shared with it, or one published for everyone, approved by UltraCart and free, the same items listSfvbCodeLibraryEmails lists; anything else is not found.  Returns the title, description, subject, preview text, the body as stored and the image files the item carries, without their contents (#2126). 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the get_sfvb_code_library_email_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCodeLibraryEmailResponse>, Integer, Hash)> get_sfvb_code_library_email_with_http_info(storefront_oid, library_item_oid)
+
+```ruby
+begin
+  # One code library email item, with its body and file list
+  data, status_code, headers = api_instance.get_sfvb_code_library_email_with_http_info(storefront_oid, library_item_oid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCodeLibraryEmailResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->get_sfvb_code_library_email_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **library_item_oid** | **Integer** |  |  |
+
+### Return type
+
+[**SfvbCodeLibraryEmailResponse**](SfvbCodeLibraryEmailResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -9815,6 +9871,60 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=UTF-8
+- **Accept**: application/json
+
+
+## insert_sfvb_code_library_email
+
+> <SfvbCodeLibraryEmailResponse> insert_sfvb_code_library_email(storefront_oid, code_library_email_create_request)
+
+Save a reusable email to this account's code library
+
+Saves a whole email (body, subject and preview text) as a code library email item that the admin's \"start from library\" picker and the step insert's library_item_oid can start a new email from (#2126).  No flow, campaign, sequence or step is made, and nothing sends.  The item is private to this account, never published or shared.  The body must pass the library content scanner and the email container rules.  Image files the body names by a path starting with / are carried with the item when they are PNG, JPEG or GIF and their contents are that image, up to 25 files, 5 MB each and 20 MB in all; any other file is listed in files_skipped with the reason.  Make a new uuid for each save.  Sending the same uuid again returns the item it saved, unchanged, with created false, so a retry after an uncertain response is safe.  Titles may repeat. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the insert_sfvb_code_library_email_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SfvbCodeLibraryEmailResponse>, Integer, Hash)> insert_sfvb_code_library_email_with_http_info(storefront_oid, code_library_email_create_request)
+
+```ruby
+begin
+  # Save a reusable email to this account's code library
+  data, status_code, headers = api_instance.insert_sfvb_code_library_email_with_http_info(storefront_oid, code_library_email_create_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SfvbCodeLibraryEmailResponse>
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->insert_sfvb_code_library_email_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storefront_oid** | **Integer** |  |  |
+| **code_library_email_create_request** | [**SfvbCodeLibraryEmailCreateRequest**](SfvbCodeLibraryEmailCreateRequest.md) | The email to save, with the uuid that makes a retry safe |  |
+
+### Return type
+
+[**SfvbCodeLibraryEmailResponse**](SfvbCodeLibraryEmailResponse.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

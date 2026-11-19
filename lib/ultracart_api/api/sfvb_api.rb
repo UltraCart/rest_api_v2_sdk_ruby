@@ -5217,6 +5217,76 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # One code library email item, with its body and file list
+    # Answers for an item this account owns, one shared with it, or one published for everyone, approved by UltraCart and free, the same items listSfvbCodeLibraryEmails lists; anything else is not found.  Returns the title, description, subject, preview text, the body as stored and the image files the item carries, without their contents (#2126). 
+    # @param storefront_oid [Integer] 
+    # @param library_item_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCodeLibraryEmailResponse]
+    def get_sfvb_code_library_email(storefront_oid, library_item_oid, opts = {})
+      data, _status_code, _headers = get_sfvb_code_library_email_with_http_info(storefront_oid, library_item_oid, opts)
+      data
+    end
+
+    # One code library email item, with its body and file list
+    # Answers for an item this account owns, one shared with it, or one published for everyone, approved by UltraCart and free, the same items listSfvbCodeLibraryEmails lists; anything else is not found.  Returns the title, description, subject, preview text, the body as stored and the image files the item carries, without their contents (#2126). 
+    # @param storefront_oid [Integer] 
+    # @param library_item_oid [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCodeLibraryEmailResponse, Integer, Hash)>] SfvbCodeLibraryEmailResponse data, response status code and response headers
+    def get_sfvb_code_library_email_with_http_info(storefront_oid, library_item_oid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.get_sfvb_code_library_email ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.get_sfvb_code_library_email"
+      end
+      # verify the required parameter 'library_item_oid' is set
+      if @api_client.config.client_side_validation && library_item_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'library_item_oid' when calling SfvbApi.get_sfvb_code_library_email"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/code_library/emails/{library_item_oid}'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s)).sub('{' + 'library_item_oid' + '}', CGI.escape(library_item_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCodeLibraryEmailResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.get_sfvb_code_library_email",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#get_sfvb_code_library_email\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read one campaign folder
     # The folder, with the name and uuid of each campaign filed in it. 
     # @param storefront_oid [Integer] 
@@ -12498,6 +12568,81 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_blog_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Save a reusable email to this account's code library
+    # Saves a whole email (body, subject and preview text) as a code library email item that the admin's \"start from library\" picker and the step insert's library_item_oid can start a new email from (#2126).  No flow, campaign, sequence or step is made, and nothing sends.  The item is private to this account, never published or shared.  The body must pass the library content scanner and the email container rules.  Image files the body names by a path starting with / are carried with the item when they are PNG, JPEG or GIF and their contents are that image, up to 25 files, 5 MB each and 20 MB in all; any other file is listed in files_skipped with the reason.  Make a new uuid for each save.  Sending the same uuid again returns the item it saved, unchanged, with created false, so a retry after an uncertain response is safe.  Titles may repeat. 
+    # @param storefront_oid [Integer] 
+    # @param code_library_email_create_request [SfvbCodeLibraryEmailCreateRequest] The email to save, with the uuid that makes a retry safe
+    # @param [Hash] opts the optional parameters
+    # @return [SfvbCodeLibraryEmailResponse]
+    def insert_sfvb_code_library_email(storefront_oid, code_library_email_create_request, opts = {})
+      data, _status_code, _headers = insert_sfvb_code_library_email_with_http_info(storefront_oid, code_library_email_create_request, opts)
+      data
+    end
+
+    # Save a reusable email to this account&#39;s code library
+    # Saves a whole email (body, subject and preview text) as a code library email item that the admin&#39;s \&quot;start from library\&quot; picker and the step insert&#39;s library_item_oid can start a new email from (#2126).  No flow, campaign, sequence or step is made, and nothing sends.  The item is private to this account, never published or shared.  The body must pass the library content scanner and the email container rules.  Image files the body names by a path starting with / are carried with the item when they are PNG, JPEG or GIF and their contents are that image, up to 25 files, 5 MB each and 20 MB in all; any other file is listed in files_skipped with the reason.  Make a new uuid for each save.  Sending the same uuid again returns the item it saved, unchanged, with created false, so a retry after an uncertain response is safe.  Titles may repeat. 
+    # @param storefront_oid [Integer] 
+    # @param code_library_email_create_request [SfvbCodeLibraryEmailCreateRequest] The email to save, with the uuid that makes a retry safe
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SfvbCodeLibraryEmailResponse, Integer, Hash)>] SfvbCodeLibraryEmailResponse data, response status code and response headers
+    def insert_sfvb_code_library_email_with_http_info(storefront_oid, code_library_email_create_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.insert_sfvb_code_library_email ...'
+      end
+      # verify the required parameter 'storefront_oid' is set
+      if @api_client.config.client_side_validation && storefront_oid.nil?
+        fail ArgumentError, "Missing the required parameter 'storefront_oid' when calling SfvbApi.insert_sfvb_code_library_email"
+      end
+      # verify the required parameter 'code_library_email_create_request' is set
+      if @api_client.config.client_side_validation && code_library_email_create_request.nil?
+        fail ArgumentError, "Missing the required parameter 'code_library_email_create_request' when calling SfvbApi.insert_sfvb_code_library_email"
+      end
+      # resource path
+      local_var_path = '/sfvb/storefronts/{storefront_oid}/code_library/emails'.sub('{' + 'storefront_oid' + '}', CGI.escape(storefront_oid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(code_library_email_create_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SfvbCodeLibraryEmailResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.insert_sfvb_code_library_email",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#insert_sfvb_code_library_email\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

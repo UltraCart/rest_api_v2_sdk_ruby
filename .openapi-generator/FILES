@@ -1014,7 +1014,12 @@ docs/SfvbCliAccess.md
 docs/SfvbCliLocation.md
 docs/SfvbCliVersion.md
 docs/SfvbCodeLibraryEmail.md
+docs/SfvbCodeLibraryEmailCreateRequest.md
+docs/SfvbCodeLibraryEmailDetail.md
+docs/SfvbCodeLibraryEmailResponse.md
 docs/SfvbCodeLibraryEmailsResponse.md
+docs/SfvbCodeLibraryFile.md
+docs/SfvbCodeLibraryFileSkipped.md
 docs/SfvbCommsBranchStat.md
 docs/SfvbCommsChange.md
 docs/SfvbCommsClick.md
@@ -2528,7 +2533,12 @@ lib/ultracart_api/models/sfvb_cli_access.rb
 lib/ultracart_api/models/sfvb_cli_location.rb
 lib/ultracart_api/models/sfvb_cli_version.rb
 lib/ultracart_api/models/sfvb_code_library_email.rb
+lib/ultracart_api/models/sfvb_code_library_email_create_request.rb
+lib/ultracart_api/models/sfvb_code_library_email_detail.rb
+lib/ultracart_api/models/sfvb_code_library_email_response.rb
 lib/ultracart_api/models/sfvb_code_library_emails_response.rb
+lib/ultracart_api/models/sfvb_code_library_file.rb
+lib/ultracart_api/models/sfvb_code_library_file_skipped.rb
 lib/ultracart_api/models/sfvb_comms_branch_stat.rb
 lib/ultracart_api/models/sfvb_comms_change.rb
 lib/ultracart_api/models/sfvb_comms_click.rb
