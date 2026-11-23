@@ -15,6 +15,9 @@ require 'time'
 
 module UltracartClient
   class EmailSettings
+    # Campaign hourly send divisor, default 8
+    attr_accessor :campaign_hourly_divisor
+
     # Emails per day allowed
     attr_accessor :emails_per_day
 
@@ -64,6 +67,7 @@ module UltracartClient
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'campaign_hourly_divisor' => :'campaign_hourly_divisor',
         :'emails_per_day' => :'emails_per_day',
         :'emails_per_hour' => :'emails_per_hour',
         :'emails_per_month' => :'emails_per_month',
@@ -95,6 +99,7 @@ module UltracartClient
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'campaign_hourly_divisor' => :'Integer',
         :'emails_per_day' => :'Integer',
         :'emails_per_hour' => :'Integer',
         :'emails_per_month' => :'Integer',
@@ -138,6 +143,10 @@ module UltracartClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'campaign_hourly_divisor')
+        self.campaign_hourly_divisor = attributes[:'campaign_hourly_divisor']
+      end
 
       if attributes.key?(:'emails_per_day')
         self.emails_per_day = attributes[:'emails_per_day']
@@ -238,6 +247,7 @@ module UltracartClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          campaign_hourly_divisor == o.campaign_hourly_divisor &&
           emails_per_day == o.emails_per_day &&
           emails_per_hour == o.emails_per_hour &&
           emails_per_month == o.emails_per_month &&
@@ -269,7 +279,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [emails_per_day, emails_per_hour, emails_per_month, machine_open_ignore, marketing_esp_domain_user, marketing_esp_domain_uuid, marketing_esp_friendly_name, postcard_from_address1, postcard_from_address2, postcard_from_city, postcard_from_name, postcard_from_postal_code, postcard_from_state, require_order_within_last, reviews_io_configured, sms_esp_twilio_uuid, sms_phone_number, transactional_esp_domain_user, transactional_esp_domain_uuid, transactional_esp_friendly_name].hash
+      [campaign_hourly_divisor, emails_per_day, emails_per_hour, emails_per_month, machine_open_ignore, marketing_esp_domain_user, marketing_esp_domain_uuid, marketing_esp_friendly_name, postcard_from_address1, postcard_from_address2, postcard_from_city, postcard_from_name, postcard_from_postal_code, postcard_from_state, require_order_within_last, reviews_io_configured, sms_esp_twilio_uuid, sms_phone_number, transactional_esp_domain_user, transactional_esp_domain_uuid, transactional_esp_friendly_name].hash
     end
 
     # Builds the object from hash

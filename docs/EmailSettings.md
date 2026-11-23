@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **campaign_hourly_divisor** | **Integer** | Campaign hourly send divisor, default 8 | [optional] |
 | **emails_per_day** | **Integer** | Emails per day allowed | [optional] |
 | **emails_per_hour** | **Integer** | Emails per hour allowed | [optional] |
 | **emails_per_month** | **Integer** | Emails per month allowed | [optional] |
@@ -31,6 +32,7 @@
 require 'ultracart_api'
 
 instance = UltracartClient::EmailSettings.new(
+  campaign_hourly_divisor: null,
   emails_per_day: null,
   emails_per_hour: null,
   emails_per_month: null,
