@@ -67,6 +67,7 @@ All URIs are relative to *https://secure.ultracart.com/rest/v2*
 | [**export_sfvb_not_found**](SfvbApi.md#export_sfvb_not_found) | **GET** /sfvb/storefronts/{storefront_oid}/not_found/export | Export the open 404 paths |
 | [**favorite_sfvb_library_entry**](SfvbApi.md#favorite_sfvb_library_entry) | **PUT** /sfvb/storefronts/{storefront_oid}/library/{library_oid}/favorite | Favorite a library entry |
 | [**fix_sfvb_not_found_entry**](SfvbApi.md#fix_sfvb_not_found_entry) | **POST** /sfvb/storefronts/{storefront_oid}/not_found/{not_found_id}/fixed | Mark a 404 path fixed |
+| [**flush_sfvb_store_front_cache**](SfvbApi.md#flush_sfvb_store_front_cache) | **POST** /sfvb/cache/flush | Flush the StoreFront page cache |
 | [**get_sfvb_affiliate_network**](SfvbApi.md#get_sfvb_affiliate_network) | **GET** /sfvb/storefronts/{storefront_oid}/tracking/affiliate_networks/{affiliate_network_oid} | Read one affiliate network |
 | [**get_sfvb_affiliate_networks**](SfvbApi.md#get_sfvb_affiliate_networks) | **GET** /sfvb/storefronts/{storefront_oid}/tracking/affiliate_networks | List a storefront&#39;s affiliate networks |
 | [**get_sfvb_approval**](SfvbApi.md#get_sfvb_approval) | **GET** /sfvb/approvals/{approval_id} | Read one approval request |
@@ -3752,6 +3753,59 @@ end
 ### Return type
 
 [**SfvbNotFoundEntry**](SfvbNotFoundEntry.md)
+
+### Authorization
+
+[ultraCartOauth](../README.md#ultraCartOauth), [ultraCartSimpleApiKey](../README.md#ultraCartSimpleApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## flush_sfvb_store_front_cache
+
+> flush_sfvb_store_front_cache(opts)
+
+Flush the StoreFront page cache
+
+Marks every cached page on every storefront of the account out of date, so each re-renders on its next visit.  Templates, settings and files are not changed.  Allowed once per account every 15 minutes; an earlier call answers 429.  Needs an approved storefront_cache.flush request (POST approvals with no storefront_oid and empty params), and every request needs a fresh code. 
+
+
+### Examples
+
+
+(No example for this operation).
+
+
+#### Using the flush_sfvb_store_front_cache_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> flush_sfvb_store_front_cache_with_http_info(opts)
+
+```ruby
+begin
+  # Flush the StoreFront page cache
+  data, status_code, headers = api_instance.flush_sfvb_store_front_cache_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue UltracartClient::ApiError => e
+  puts "Error when calling SfvbApi->flush_sfvb_store_front_cache_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **approval_id** | **String** | The approval_id of an approved storefront_cache.flush request for this account.  See POST /sfvb/approvals. | [optional] |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 

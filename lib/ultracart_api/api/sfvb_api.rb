@@ -4754,6 +4754,67 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Flush the StoreFront page cache
+    # Marks every cached page on every storefront of the account out of date, so each re-renders on its next visit.  Templates, settings and files are not changed.  Allowed once per account every 15 minutes; an earlier call answers 429.  Needs an approved storefront_cache.flush request (POST approvals with no storefront_oid and empty params), and every request needs a fresh code. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id The approval_id of an approved storefront_cache.flush request for this account.  See POST /sfvb/approvals.
+    # @return [nil]
+    def flush_sfvb_store_front_cache(opts = {})
+      flush_sfvb_store_front_cache_with_http_info(opts)
+      nil
+    end
+
+    # Flush the StoreFront page cache
+    # Marks every cached page on every storefront of the account out of date, so each re-renders on its next visit.  Templates, settings and files are not changed.  Allowed once per account every 15 minutes; an earlier call answers 429.  Needs an approved storefront_cache.flush request (POST approvals with no storefront_oid and empty params), and every request needs a fresh code. 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :approval_id The approval_id of an approved storefront_cache.flush request for this account.  See POST /sfvb/approvals.
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def flush_sfvb_store_front_cache_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SfvbApi.flush_sfvb_store_front_cache ...'
+      end
+      # resource path
+      local_var_path = '/sfvb/cache/flush'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'Approval-Id'] = opts[:'approval_id'] if !opts[:'approval_id'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"SfvbApi.flush_sfvb_store_front_cache",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SfvbApi#flush_sfvb_store_front_cache\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read one affiliate network
     # The network with its conversion_pixel, and the hash_sha256 an update or delete sends back as If-Match. 
     # @param storefront_oid [Integer] 
