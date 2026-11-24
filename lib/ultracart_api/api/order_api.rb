@@ -395,6 +395,81 @@ module UltracartClient
       return data, status_code, headers
     end
 
+    # Cancel an order with options
+    # Cancel an order on the UltraCart account, with the options in the request body.  If the success flag is false, then consult the error message for why it failed.  An empty request body behaves the same as cancelOrder. 
+    # @param order_id [String] The order id to cancel.
+    # @param cancel_request [OrderCancelRequest] Cancel order options
+    # @param [Hash] opts the optional parameters
+    # @return [BaseResponse]
+    def cancel_order_with_options(order_id, cancel_request, opts = {})
+      data, _status_code, _headers = cancel_order_with_options_with_http_info(order_id, cancel_request, opts)
+      data
+    end
+
+    # Cancel an order with options
+    # Cancel an order on the UltraCart account, with the options in the request body.  If the success flag is false, then consult the error message for why it failed.  An empty request body behaves the same as cancelOrder. 
+    # @param order_id [String] The order id to cancel.
+    # @param cancel_request [OrderCancelRequest] Cancel order options
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BaseResponse, Integer, Hash)>] BaseResponse data, response status code and response headers
+    def cancel_order_with_options_with_http_info(order_id, cancel_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.cancel_order_with_options ...'
+      end
+      # verify the required parameter 'order_id' is set
+      if @api_client.config.client_side_validation && order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.cancel_order_with_options"
+      end
+      # verify the required parameter 'cancel_request' is set
+      if @api_client.config.client_side_validation && cancel_request.nil?
+        fail ArgumentError, "Missing the required parameter 'cancel_request' when calling OrderApi.cancel_order_with_options"
+      end
+      # resource path
+      local_var_path = '/order/orders/{order_id}/cancel_with_options'.sub('{' + 'order_id' + '}', CGI.escape(order_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(cancel_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BaseResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"OrderApi.cancel_order_with_options",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#cancel_order_with_options\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete an order
     # Delete an order on the UltraCart account. 
     # @param order_id [String] The order id to delete.
@@ -2751,6 +2826,70 @@ module UltracartClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: OrderApi#resend_shipment_confirmation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Send update billing email
+    # Queues the update billing email to the customer on an order in Accounts Receivable, the same as the Send Billing Update button.  The email is sent within a minute.  The request is refused if the merchant has turned off the update billing notification, if a StoreFront communication flow handles unprocessed payments for the order, or if this method already sent the email for the order in the last 24 hours.  While the order is less than 7 days old, a reminder is sent every 2 days. 
+    # @param order_id [String] The order id to send the update billing email for.
+    # @param [Hash] opts the optional parameters
+    # @return [BaseResponse]
+    def send_update_billing_email(order_id, opts = {})
+      data, _status_code, _headers = send_update_billing_email_with_http_info(order_id, opts)
+      data
+    end
+
+    # Send update billing email
+    # Queues the update billing email to the customer on an order in Accounts Receivable, the same as the Send Billing Update button.  The email is sent within a minute.  The request is refused if the merchant has turned off the update billing notification, if a StoreFront communication flow handles unprocessed payments for the order, or if this method already sent the email for the order in the last 24 hours.  While the order is less than 7 days old, a reminder is sent every 2 days. 
+    # @param order_id [String] The order id to send the update billing email for.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BaseResponse, Integer, Hash)>] BaseResponse data, response status code and response headers
+    def send_update_billing_email_with_http_info(order_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.send_update_billing_email ...'
+      end
+      # verify the required parameter 'order_id' is set
+      if @api_client.config.client_side_validation && order_id.nil?
+        fail ArgumentError, "Missing the required parameter 'order_id' when calling OrderApi.send_update_billing_email"
+      end
+      # resource path
+      local_var_path = '/order/orders/{order_id}/send_update_billing_email'.sub('{' + 'order_id' + '}', CGI.escape(order_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      header_params['X-UltraCart-Api-Version'] = @api_client.select_header_api_version()
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BaseResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ultraCartOauth', 'ultraCartSimpleApiKey']
+
+      new_options = opts.merge(
+        :operation => :"OrderApi.send_update_billing_email",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#send_update_billing_email\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -21,11 +21,15 @@ module UltracartClient
     # Card verification number token from hosted fields used during credit card transaction processing (optional)
     attr_accessor :card_verification_number_token
 
+    # Rotating transaction gateway code to process the payment through (optional).  Must be an active rotating transaction gateway on the account.  The charge is attempted on that gateway only, without cascading to other gateways, the same as choosing a gateway on the Accounts Receivable Process Payment screen.
+    attr_accessor :rotating_transaction_gateway_code
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'amount' => :'amount',
-        :'card_verification_number_token' => :'card_verification_number_token'
+        :'card_verification_number_token' => :'card_verification_number_token',
+        :'rotating_transaction_gateway_code' => :'rotating_transaction_gateway_code'
       }
     end
 
@@ -38,7 +42,8 @@ module UltracartClient
     def self.openapi_types
       {
         :'amount' => :'Float',
-        :'card_verification_number_token' => :'String'
+        :'card_verification_number_token' => :'String',
+        :'rotating_transaction_gateway_code' => :'String'
       }
     end
 
@@ -70,6 +75,10 @@ module UltracartClient
       if attributes.key?(:'card_verification_number_token')
         self.card_verification_number_token = attributes[:'card_verification_number_token']
       end
+
+      if attributes.key?(:'rotating_transaction_gateway_code')
+        self.rotating_transaction_gateway_code = attributes[:'rotating_transaction_gateway_code']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -91,7 +100,8 @@ module UltracartClient
       return true if self.equal?(o)
       self.class == o.class &&
           amount == o.amount &&
-          card_verification_number_token == o.card_verification_number_token
+          card_verification_number_token == o.card_verification_number_token &&
+          rotating_transaction_gateway_code == o.rotating_transaction_gateway_code
     end
 
     # @see the `==` method
@@ -103,7 +113,7 @@ module UltracartClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, card_verification_number_token].hash
+      [amount, card_verification_number_token, rotating_transaction_gateway_code].hash
     end
 
     # Builds the object from hash
